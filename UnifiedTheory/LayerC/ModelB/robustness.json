@@ -1,0 +1,28 @@
+{
+  "total_configs": 390,
+  "total_tested": 388,
+  "pass": 388,
+  "fail": 0,
+  "skip": 2,
+  "pass_rate": 1.0,
+  "zero_failures": true,
+  "sweeps": {
+    "seeds_1p1": {
+      "total": 120,
+      "pass": 120
+    },
+    "sizes_1p1": {
+      "total": 118,
+      "pass": 118
+    },
+    "strengths": {
+      "total": 120,
+      "pass": 120
+    },
+    "dim_2p1": {
+      "total": 50,
+      "pass": 50
+    }
+  },
+  "ROBUSTNESS_VERIFIED": true
+}

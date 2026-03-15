@@ -1,0 +1,61 @@
+{
+  "inverse_square": {
+    "test": "inverse_square",
+    "passed": true,
+    "mean_alpha": 0.9881695618945142,
+    "std": 3.040470972244059e-16,
+    "details": [
+      {
+        "K_source": 0.5,
+        "alpha_fit": 0.9881695618945144,
+        "A_fit": 0.08249774273264544,
+        "expected_alpha": 1.0,
+        "error_pct": 1.1830438105485563
+      },
+      {
+        "K_source": 1.0,
+        "alpha_fit": 0.9881695618945138,
+        "A_fit": 0.1649954854652908,
+        "expected_alpha": 1.0,
+        "error_pct": 1.183043810548623
+      },
+      {
+        "K_source": 2.0,
+        "alpha_fit": 0.9881695618945141,
+        "A_fit": 0.3299909709305816,
+        "expected_alpha": 1.0,
+        "error_pct": 1.1830438105485896
+      },
+      {
+        "K_source": 5.0,
+        "alpha_fit": 0.9881695618945145,
+        "A_fit": 0.8249774273264546,
+        "expected_alpha": 1.0,
+        "error_pct": 1.1830438105485452
+      }
+    ]
+  },
+  "composition": {
+    "test": "composition",
+    "passed": true,
+    "total": 325,
+    "pass": 325,
+    "bridge_violations": 0
+  },
+  "conserved_charge": {
+    "test": "conserved_charge",
+    "passed": true,
+    "total": 7,
+    "pass": 7,
+    "charge_properties": {
+      "zero_for_inert": true,
+      "nonzero_for_source": true,
+      "signed": true,
+      "additive": true,
+      "conserved": true,
+      "determines_sector": true,
+      "anti_defect_annihilation": true
+    }
+  },
+  "ALL_PASS": true
+}

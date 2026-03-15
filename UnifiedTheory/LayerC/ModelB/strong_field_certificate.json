@@ -1,0 +1,33 @@
+{
+  "nonlinear_focusing": {
+    "test": "nonlinear_focusing",
+    "weak_ratio": 0.19532476799624596,
+    "strong_ratio": 2500000.0,
+    "monotonic": true,
+    "passed": true
+  },
+  "horizon_trapping": {
+    "test": "horizon_trapping",
+    "trapping_exists": true,
+    "b_crit_over_Q": 5.093480576441102,
+    "ratio_std": 2.2193368711051664,
+    "universal": true,
+    "passed": true
+  },
+  "strong_deflection": {
+    "test": "strong_deflection",
+    "weak_excess": 0.3056197759699898,
+    "strong_excess": 1.7820440779294302,
+    "monotonic": true,
+    "passed": true
+  },
+  "focusing_collapse": {
+    "test": "focusing_collapse",
+    "all_collapse": true,
+    "b_crit_grows": true,
+    "linear_scaling": true,
+    "b_crit_over_Q": 3.087561090225564,
+    "passed": true
+  },
+  "ALL_PASS": true
+}

@@ -1,0 +1,48 @@
+{
+  "raychaudhuri": {
+    "test": "raychaudhuri",
+    "all_converging": true,
+    "alpha_fit": 0.9827212112265937,
+    "A_fit": 2.0907650505990776,
+    "expected_alpha": 1.0,
+    "passed": true
+  },
+  "shapiro": {
+    "test": "shapiro",
+    "all_positive": true,
+    "slope": 3.9426785290728996,
+    "expected_slope": 4.0,
+    "r_squared": 0.9897483282256667,
+    "passed": true
+  },
+  "deflection": {
+    "test": "deflection",
+    "mean_alpha": 1.0301789841325364,
+    "proportionality_slope": 3.542594537509482,
+    "passed": true,
+    "details": [
+      {
+        "Q": 0.5,
+        "alpha_fit": 1.0729569134072925,
+        "A_fit": 2.1040953198010968,
+        "expected_A": 2.0,
+        "all_positive": true
+      },
+      {
+        "Q": 1.0,
+        "alpha_fit": 1.0600688326068333,
+        "A_fit": 4.397642768473921,
+        "expected_A": 4.0,
+        "all_positive": true
+      },
+      {
+        "Q": 2.0,
+        "alpha_fit": 0.9575112063834827,
+        "A_fit": 7.522437162048936,
+        "expected_A": 8.0,
+        "all_positive": true
+      }
+    ]
+  },
+  "ALL_PASS": true
+}
