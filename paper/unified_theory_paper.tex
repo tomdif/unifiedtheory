@@ -11,9 +11,9 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\title{A Formally Verified Unified Theory:\\Gravity, Matter, and Quantum Structure\\from a Single Parent Object}
+\title{A Machine-Checked Framework for Emergent Gravity,\\Matter, and Quantum Structure\\from a Common Parent Object}
 
-\author{Thomas DiFranzo}
+\author{Tom DiFiore}
 
 \date{\today}
 
@@ -22,31 +22,33 @@
 \maketitle
 
 \begin{abstract}
-We present a unified theoretical framework in which gravity, matter emergence, conserved charge algebra, and quantum interference all arise from a single parent structure, with every theorem machine-checked in Lean~4 using only the three standard axioms of its foundations (propositional extensionality, classical choice, quotient soundness). No custom physics axioms are assumed. The framework produces: (1)~the inverse-square law as the unique renormalization fixed point; (2)~the Einstein field equation from the contracted Bianchi identity and Lovelock classification; (3)~a matter sector with conserved charge, conjugation, annihilation, bound states, and far-field reduction; (4)~quantum interference, Born rule, and phase invariance derived from the source/dressing decomposition; and (5)~decoherence as the mechanism recovering classical physics. Concrete computational models in $3{+}1$ dimensions reproduce eight general-relativistic observables (inverse-square law, Raychaudhuri focusing, Shapiro delay, gravitational deflection, nonlinear amplification, horizon-like trapping, strong-field deflection excess, and multi-source focusing collapse) and five canonical quantum phenomena (double-slit interference at $0.1\%$ accuracy, Aharonov--Bohm phase shift, Bell/CHSH violation at the Tsirelson bound, Mach--Zehnder quantum eraser, and GHZ/Mermin $N$-party entanglement with exact exponential scaling). All formal proofs and computational models are publicly available.
+We present a machine-checked parent-structure framework in which an algebraic gravity core, a defect-based matter sector, and a quantum-style amplitude layer are derived or conditionally induced from a common formal object. The Lean~4 development proves the renormalization fixed point ($\alpha = 2$), null-cone tensor determination ($1{+}1$ dimensions), source/dressing decomposition from a source functional, Bianchi and contracted Bianchi identities from metric derivative symmetries, the Einstein-tensor divergence law, linear defect charge algebra (additivity, conjugation, annihilation), and a unique Born-type quadratic observable on the source/dressing pair. No custom axioms beyond the framework's explicit primitive structures are assumed in the Lean development. Separate deterministic computational models reproduce a range of weak-field and strong-field gravitational observables in $3{+}1$ dimensions, as well as canonical quantum benchmarks including double-slit interference ($0.1\%$ accuracy on the fringe law), Aharonov--Bohm phase shift, CHSH violation at the Tsirelson bound, Mach--Zehnder erasure, and GHZ/Mermin $N$-party entanglement with exact exponential scaling. The result is a formally specified and partially derived framework, together with concrete non-vacuous realizations, rather than a claim of final closure of fundamental physics. All formal proofs and computational models are publicly available.
 \end{abstract}
 
 \section{Introduction}
 
-The search for a unified theory of fundamental physics has been one of the central programs of theoretical physics for over a century. The standard approach postulates separate mathematical structures for gravity (pseudo-Riemannian geometry), matter (gauge field theory on fiber bundles), and quantum mechanics (Hilbert space operators), then seeks a framework that contains all three as limiting cases.
+The search for a unified description of fundamental physics has been one of the central programs of theoretical physics for over a century. The standard approach postulates separate mathematical structures for gravity (pseudo-Riemannian geometry), matter (gauge field theory on fiber bundles), and quantum mechanics (Hilbert space operators), then seeks a framework that contains all three as limiting cases.
 
-We take a different approach. Rather than unifying pre-existing mathematical structures, we define a single parent object---a minimal structure we call \texttt{ParentU}---and derive gravity, matter, and quantum behavior as \emph{projections} of this object. The derivations are not heuristic arguments or perturbative approximations; they are machine-checked formal proofs in the Lean~4 proof assistant \cite{lean4}, depending only on the three standard axioms of its logical foundations.
+We take a different approach. Rather than unifying pre-existing mathematical structures, we define a single parent object---a minimal structure we call \texttt{ParentU}---and derive or conditionally induce gravity, matter, and quantum behavior as \emph{projections} of this object. The algebraic core is machine-checked in Lean~4, while the concrete spacetime realizations are computationally verified in deterministic Python models.
 
 The key results, summarized informally:
 \begin{enumerate}
-\item \textbf{Gravity selection.} The renormalization operator $R_\ell$ acting on power-law potentials $B_\alpha(r) = c\, r^{-\alpha}$ has $\alpha = 2$ as its unique fixed point (Theorem~\ref{thm:rg}). The contracted Bianchi identity, derived from metric second derivatives and commutativity of partial derivatives (Theorem~\ref{thm:bianchi}), combined with the Lovelock classification (Theorem~\ref{thm:lovelock}), forces the field equation to be Einstein's equation with cosmological constant.
+\item \textbf{Gravity selection.} The renormalization operator $R_\ell$ acting on power-law potentials $B_\alpha(r) = c\, r^{-\alpha}$ has $\alpha = 2$ as its unique fixed point (Theorem~\ref{thm:rg}). The contracted Bianchi identity, derived from metric second derivatives and commutativity of partial derivatives (Theorem~\ref{thm:bianchi}), combined with the Lovelock classification (Theorem~\ref{thm:lovelock}), forces the field equation to be of the Einstein-plus-cosmological-constant form.
 
-\item \textbf{Matter emergence.} Stable defects of the parent structure simultaneously project to BF-type source data and null-focusing bias (Theorem~\ref{thm:bridge}). The source strength defines a conserved charge with additivity, conjugation, and annihilation (Theorems~\ref{thm:charge}--\ref{thm:annihilation}). Bound states of conjugate pairs are gravitationally inert (Theorem~\ref{thm:bound}).
+\item \textbf{Matter emergence.} Within the linear defect sector, source strength defines a conserved charge with additivity, conjugation, and annihilation, all derived from linearity of projections (Theorems~\ref{thm:charge}--\ref{thm:annihilation}). Bound states of conjugate pairs are gravitationally inert (Theorem~\ref{thm:bound}).
 
-\item \textbf{Quantum structure.} The source/dressing decomposition forces complex-valued amplitudes: the source strength $Q$ gives the real part and the dressing content $P$ gives the imaginary part of a complex amplitude $z = Q + iP$ (Theorem~\ref{thm:complex}). The Born rule $|z|^2$ is the unique rotation-invariant quadratic observable on the $(Q, P)$ pair (Theorem~\ref{thm:born_unique}). Phase averaging over dressing content recovers classical additive observables (Theorem~\ref{thm:decoherence}).
+\item \textbf{Quantum-style amplitude structure.} The source/dressing decomposition provides a natural complex amplitude $z = Q + iP$ (Theorem~\ref{thm:complex}). Within the framework, the Born-type quadratic observable $|z|^2$ is the unique rotation-invariant quadratic observable on the $(Q, P)$ pair (Theorem~\ref{thm:born_unique}), and is not separately postulated. Phase averaging over dressing content recovers classical additive observables (Theorem~\ref{thm:decoherence}).
 
-\item \textbf{Concrete realizations.} Explicit models in $3{+}1$ dimensions reproduce general-relativistic phenomenology (Section~\ref{sec:gr}) and canonical quantum phenomena (Section~\ref{sec:quantum_bench}).
+\item \textbf{Concrete realizations.} Explicit computational models in $3{+}1$ dimensions reproduce a nontrivial set of GR-like and quantum benchmark observables (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}).
 \end{enumerate}
 
 \subsection{Formal verification}
 
-Every theorem in this paper has been formally verified in Lean~4 with the Mathlib library. The complete proof development is available at \url{https://github.com/tomdif/unifiedtheory}. The command \texttt{lake build} verifies all proofs, and \texttt{\#print axioms} confirms that no theorem depends on any axiom beyond \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+Every algebraic theorem in this paper has been formally verified in Lean~4 with the Mathlib library. The complete proof development is available at \url{https://github.com/tomdif/unifiedtheory}. The command \texttt{lake build} verifies all proofs, and \texttt{\#print axioms} confirms that no Lean theorem depends on any axiom beyond \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
 
-This level of formal verification is, to our knowledge, unprecedented in unified theory proposals. It means the logical gap between hypotheses and conclusions is zero: any error would be caught by the proof checker.
+The computational sections (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}) are not Lean proofs; they are deterministic numerical benchmarks run in Python with fixed seeds, reproducible via \texttt{https://github.com/tomdif/causalq}.
+
+This combination of formal algebraic verification and computational benchmark validation is, to our knowledge, unusual in the context of candidate unified frameworks.
 
 \section{The Parent Object}
 \label{sec:parent}
@@ -61,9 +63,12 @@ A \emph{parent structure} $U$ consists of four data blocks:
 \end{enumerate}
 \end{definition}
 
-The parent structure is intentionally minimal: it carries exactly enough data to support four projections, one for each pillar of the theory.
+The parent structure is intentionally minimal: it carries exactly enough data to support four projections, one for each pillar of the framework. It is a formal interface, not an ontological claim about the fundamental constituents of nature.
 
 \section{Layer A: Algebraic Backbone}
+\label{sec:layer_a}
+
+All theorems in this section are formally proven in Lean~4.
 
 \subsection{Renormalization rigidity}
 
@@ -97,8 +102,10 @@ Let $\eta(v) = -v_0^2 + v_1^2$ be the Minkowski form on $\mathbb{R}^{1+1}$. If a
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-Evaluate at $v = (1,1)$ and $v = (1,-1)$. Both are null. The resulting equations $a + 2b + c = 0$ and $a - 2b + c = 0$ give $b = 0$ and $c = -a$.
+Evaluate at $v = (1,1)$ and $v = (1,-1)$, both null. The resulting system $a + 2b + c = 0$ and $a - 2b + c = 0$ gives $b = 0$ and $c = -a$.
 \end{proof}
+
+\textbf{Remark.} This is proven for $1{+}1$ dimensions. The general $n{+}1$ version follows the same strategy with $n{+}1$ test vectors, but is not yet formalized.
 
 \subsection{Source/dressing decomposition}
 
@@ -112,10 +119,10 @@ Then: (i) $\pi_K$ is idempotent; (ii) $v = \pi_K(v) + \pi_P(v)$; (iii) $\varphi(
 \end{theorem}
 
 \begin{proof}
-Idempotency follows from $\varphi(v_0) \neq 0$ and field arithmetic. Property (iii) follows from $\varphi(v - \pi_K(v)) = \varphi(v) - \varphi(v) = 0$.
+Idempotency follows from $\varphi(v_0) \neq 0$ and field arithmetic. Property~(iii) follows from $\varphi(v - \pi_K(v)) = \varphi(v) - \varphi(v) = 0$.
 \end{proof}
 
-The source/dressing split is not postulated; it is a consequence of having a source functional.
+The source/dressing split is not postulated; it is a consequence of having a source functional. Note that this construction produces a rank-1 source sector: one source direction, hence one conserved charge. Multiple independent source functionals would be needed for richer charge structure.
 
 \subsection{Bianchi identity and Lovelock endpoint}
 
@@ -146,7 +153,7 @@ satisfies both antisymmetries and the second Bianchi identity.
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-Antisymmetries follow from \texttt{ring}. The Bianchi identity follows because all 12 terms in the cyclic sum cancel in 6 pairs, each pair identified by $k$-symmetry rewrites.
+Antisymmetries follow by algebraic cancellation (\texttt{ring} in Lean). The Bianchi identity follows because all 12 terms in the cyclic sum cancel in 6 pairs, each pair identified by $k$-symmetry rewrites. This is the local normal-coordinate derivation; the global tensorial lift is standard but not fully formalized in the current Lean development.
 \end{proof}
 
 \begin{theorem}[Lovelock endpoint]
@@ -159,11 +166,14 @@ where $G_{ab} = R_{ab} - \tfrac{1}{2}R\, g_{ab}$ is the Einstein tensor.
 \end{theorem}
 
 \section{Layer B: Matter and Quantum Structure}
+\label{sec:layer_b}
+
+All algebraic theorems in this section are formally proven in Lean~4.
 
 \subsection{Defect matter emergence}
 
 \begin{definition}[Linear defect block]
-A \emph{linear defect block} over a vector space $V$ consists of: a type of defects with perturbations in $V$; linear projections $\pi_K, \pi_P$ and functionals $\varphi_{\text{source}}, \varphi_{\text{bias}}$; a bridge equation $\varphi_{\text{source}} \circ \pi_K = \lambda \cdot \varphi_{\text{bias}}$; a neutrality equation $\varphi_{\text{source}} \circ \pi_P = 0$; and composition $=$ addition, conjugation $=$ negation.
+A \emph{linear defect block} over a vector space $V$ consists of: a type of defects with perturbations in $V$; linear projections $\pi_K, \pi_P$ and functionals $\varphi_{\text{source}}, \varphi_{\text{bias}}$; a bridge equation $\varphi_{\text{source}} \circ \pi_K = \lambda \cdot \varphi_{\text{bias}}$; a neutrality equation $\varphi_{\text{source}} \circ \pi_P = 0$; and composition defined as addition, conjugation as negation of perturbations.
 \end{definition}
 
 \begin{theorem}[Charge algebra from linearity]
@@ -180,29 +190,29 @@ All four follow from \texttt{map\_add} and \texttt{map\_neg} (linearity of the f
 
 \begin{theorem}[Annihilation]
 \label{thm:annihilation}
-For any defect $d$ and its conjugate $\bar{d}$: $Q(d \oplus \bar{d}) = 0$ and the composite is gravitationally inert.
+For any defect $d$ and its conjugate $\bar{d}$: $Q(d \oplus \bar{d}) = 0$ and the composite is gravitationally inert (within the framework's definition of inertness).
 \end{theorem}
 
 \begin{theorem}[Bound states]
 \label{thm:bound}
-A neutral composite of two source-carrying defects is gravitationally inert: $Q = 0$, bias $= 0$, far-field response $= 0$.
+A neutral composite of two source-carrying defects has $Q = 0$, bias $= 0$, and far-field response $= 0$.
 \end{theorem}
 
-\begin{theorem}[Structural inevitability]
+\begin{theorem}[Structural consequences of the linear defect sector]
 \label{thm:structure}
-The defect sector satisfies: (1) enclosure (far field = total enclosed charge); (2) like charges never cancel; (3) conjugate neutralization always possible; (4) sector trichotomy ($Q = 0$ or $Q > 0$ or $Q < 0$, exhaustive); (5) unique neutralizer; (6) opposite charges reduce magnitude.
+The defect sector satisfies: (1)~enclosure (far field = total enclosed charge); (2)~like charges never cancel; (3)~conjugate neutralization always possible; (4)~sector trichotomy ($Q = 0$ or $Q > 0$ or $Q < 0$, exhaustive); (5)~unique neutralizer; (6)~opposite charges reduce magnitude.
 \end{theorem}
 
-\subsection{Emergent quantum structure}
+\subsection{Quantum-style amplitude structure}
 
 \begin{theorem}[Complex amplitudes from dressing]
 \label{thm:complex}
-The source/dressing decomposition naturally provides complex amplitude structure: a defect with source strength $Q$ and dressing content $P$ defines amplitude $z = Q + iP$. Dressing rotation is $U(1)$ phase rotation, and $|z|^2 = Q^2 + P^2$ includes dressing energy.
+The source/dressing decomposition provides a natural complex amplitude structure: a defect with source strength $Q$ and dressing content $P$ defines amplitude $z = Q + iP$. Dressing rotation corresponds to $U(1)$ phase rotation, and $|z|^2 = Q^2 + P^2$ includes dressing energy.
 \end{theorem}
 
-\begin{theorem}[Born rule uniqueness]
+\begin{theorem}[Born-type observable uniqueness]
 \label{thm:born_unique}
-Any rotation-invariant quadratic observable on the $(Q, P)$ pair must be proportional to $Q^2 + P^2 = |z|^2$. The Born rule is the unique such observable up to normalization.
+Any rotation-invariant quadratic observable on the $(Q, P)$ pair must be proportional to $Q^2 + P^2 = |z|^2$. Within the framework, the Born-type quadratic observable is not separately postulated; it is uniquely induced by the source/dressing pair and rotation invariance.
 \end{theorem}
 
 \begin{proof}[Proof sketch]
@@ -215,22 +225,24 @@ Phase averaging over $\theta$ and $\theta + \pi$ eliminates the interference ter
 \[
 |z_1 + e^{i\theta}z_2|^2 + |z_1 + e^{i(\theta+\pi)}z_2|^2 = 2(|z_1|^2 + |z_2|^2).
 \]
-The classical world is the phase-averaged quantum world.
+Within the framework, classical additive observables are the phase-averaged limit of the quantum-style interference algebra.
 \end{theorem}
 
-\section{Concrete Realizations}
+\section{Concrete Computational Realizations}
 \label{sec:realizations}
 
-\subsection{General-relativistic observables}
+The following observables are reproduced in deterministic computational models and benchmark sweeps. These results are empirical validations of the framework's concrete realizations, not formal Lean theorems.
+
+\subsection{Gravitational observables}
 \label{sec:gr}
 
-A $3{+}1$-dimensional causal diamond model with Poisson-sprinkled events, causal links, and source defects reproduces eight GR predictions (Table~\ref{tab:gr}).
+A $3{+}1$-dimensional causal diamond model with Poisson-sprinkled events, causal links, and source defects reproduces the observables in Table~\ref{tab:gr}.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{lcc}
 \toprule
-Observable & Measured & Expected \\
+Observable & Measured & Expected (GR) \\
 \midrule
 Inverse-square exponent $\alpha$ & $2.004 \pm 0.063$ & $2.0$ \\
 Raychaudhuri focusing & $\theta \propto b^{-0.983}$ & $b^{-1}$ \\
@@ -242,7 +254,7 @@ Strong-field deflection excess & $1.78\times$ weak-field & Present \\
 Multi-source collapse & All $N$ collapse & Present \\
 \bottomrule
 \end{tabular}
-\caption{General-relativistic observables from the $3{+}1$ causal diamond model. Weak-field results are quantitative; strong-field results are qualitative.}
+\caption{Gravitational observables from the $3{+}1$ causal diamond model. Weak-field results are quantitative; strong-field results are qualitative.}
 \label{tab:gr}
 \end{table}
 
@@ -253,51 +265,52 @@ Multi-source collapse & All $N$ collapse & Present \\
 \centering
 \begin{tabular}{lcc}
 \toprule
-Benchmark & Key result & Error \\
+Benchmark & Key result & Accuracy \\
 \midrule
 Double-slit fringe formula & $d\sin\theta = n\lambda$ & $0.1\%$ \\
 Aharonov--Bohm & Shift $\propto$ flux, $2\pi$-periodic & $1.5\%$ \\
-Bell/CHSH & $S = 2\sqrt{2}$ (Tsirelson bound) & Exact \\
+Bell/CHSH & $|S| = 2\sqrt{2}$ (Tsirelson bound) & Exact \\
 Mach--Zehnder / eraser & Visibility 1.0/0.0/1.0 & Exact \\
 GHZ/Mermin $N$-party & $|M| = 2^{N-1}$ & Exact \\
 \bottomrule
 \end{tabular}
-\caption{Quantum benchmarks reproduced from geometric path amplitudes.}
+\caption{Quantum benchmarks reproduced from geometric path amplitudes. These are computational results, not Lean proofs.}
 \label{tab:quantum}
 \end{table}
 
 \section{Derivation Integrity}
+\label{sec:integrity}
 
-We distinguish three categories of claims:
+We distinguish three categories of claims in this work:
 
-\textbf{Formally proven (Lean 4, zero custom axioms):} Renormalization rigidity, null-cone determination, source/dressing split (derived from source functional), Bianchi identity (derived from metric derivatives), Lovelock endpoint, defect charge algebra (derived from linearity), quantum interference formula, Born rule uniqueness, decoherence, structural inevitability.
+\textbf{Formally proven (Lean 4).} Renormalization rigidity, null-cone determination ($1{+}1$~dim), source/dressing split (derived from source functional), contracted Bianchi identity (derived from metric derivatives), Riemann symmetries and second Bianchi identity from metric data (local, normal-coordinate derivation formalized), Lovelock endpoint, defect charge algebra (derived from linearity of projections), quantum-style interference formula, Born-type observable uniqueness, decoherence formula. The Lean development introduces no custom axioms beyond the framework's explicit primitive structures. The axiom footprint of every Lean theorem is $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$.
 
-\textbf{Computationally verified (Python, deterministic):} GR observables in $3{+}1$ dimensions, quantum benchmarks (double-slit, AB, CHSH, MZ, GHZ), molecular chemistry (H$_2$, LiH, H$_2$O, BeH$_2$).
+\textbf{Computationally verified (Python, deterministic).} GR observables in $3{+}1$ dimensions (Table~\ref{tab:gr}), quantum benchmarks (Table~\ref{tab:quantum}), robustness across 388 configurations in $1{+}1$, $2{+}1$, and $3{+}1$ dimensions.
 
-\textbf{Honestly axiomatic:} The second Bianchi identity is derived from metric data in normal coordinates; the global extension relies on its tensorial nature (not formalized). The source functional $\varphi$ is primitive---the framework does not derive \emph{why} nature has one. The rank of the source sector is 1 (one conserved charge); richer particle structure requires multiple independent source functionals.
+\textbf{Honestly primitive or incomplete.} The source functional $\varphi$ is a framework primitive---the development does not derive \emph{why} nature should have one. The Bianchi identity is derived locally from metric data (commutativity of partial derivatives in normal coordinates); the global tensorial lift is standard differential geometry but not formalized in the current Lean codebase. The source sector has rank~1 (one conserved charge); richer particle structure would require multiple independent source functionals, which are not yet implemented.
 
 \section{Discussion}
 
-The framework presented here is, to our knowledge, the first formally verified unified theory covering gravity, matter, and quantum structure from a single parent object. The verification is not symbolic or heuristic; every theorem is machine-checked, and the axiom footprint is exactly $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$.
+The framework presented here is one of the first machine-checked developments attempting a common parent-structure treatment of gravity, matter, and quantum-style amplitude structure. The formal verification means the logical gap between hypotheses and conclusions is zero for the algebraic core: any error would be caught by the proof checker.
 
-The passage from classical to quantum is not a postulate but a consequence: if the parent object has a source functional (needed for gravity), and the dressing sector is nontrivial, then defects carry complex amplitudes, the Born rule is the unique rotation-invariant quadratic observable, and decoherence arises from phase averaging.
+Within the framework, the passage from classical to quantum-style behavior is not separately postulated but conditionally induced: if the parent object has a source functional (needed for a gravitational source term), and the dressing sector is nontrivial, then defects carry complex amplitudes, the Born-type observable is the unique rotation-invariant quadratic observable, and classical behavior arises from phase averaging.
 
-The concrete models show this is not vacuous: the same framework that selects the Einstein equation also produces interference fringes matching $d\sin\theta = n\lambda$ at $0.1\%$ accuracy and CHSH violation at the exact Tsirelson bound.
+The concrete models show this framework is not vacuous: the same structure that selects the Einstein-type field equation also produces interference fringes matching $d\sin\theta = n\lambda$ at $0.1\%$ accuracy and CHSH violation at the exact Tsirelson bound.
 
 \subsection{Limitations}
 
-The null-cone theorem is proven for $1{+}1$ dimensions; the general $n{+}1$ version requires the same strategy with more indices. The Hamiltonian coefficients for molecular benchmarks are taken from the literature, not derived from first principles. The BF source/dressing split produces a rank-1 source direction; multiple conserved charges require a generalization to multiple source functionals.
+The null-cone theorem is proven for $1{+}1$ dimensions only. The molecular benchmark Hamiltonian coefficients are taken from the literature, not derived within the framework. The BF source/dressing split produces a rank-1 source direction (one conserved charge); multiple charges require generalization. The Bianchi identity's global extension is not formalized. The quantum benchmarks are computed from the amplitude rule $z = e^{ikL}$, which is the standard Feynman prescription applied to the framework's path geometry; the derivation of this rule from the parent object's causal history structure is demonstrated computationally but not yet formalized in Lean.
 
 \subsection{Open questions}
 
-Can the framework produce Standard Model-like internal symmetry from multiple source functionals? Can the dressing sector generate spin-like quantum numbers? Is the branch unique among admissible parent structures?
+Can the framework produce Standard Model-like internal symmetry from multiple source functionals? Can the dressing sector generate spin-like quantum numbers? Is the branch unique among admissible parent structures? Can the $1{+}1$ null-cone theorem be extended to general $n{+}1$ in the formal development?
 
 \section{Conclusion}
 
-We have presented a unified framework in which gravity, matter emergence, and quantum interference arise from a single parent structure, with all derivations machine-checked in Lean~4. The concrete realizations reproduce quantitative general-relativistic and quantum-mechanical predictions. The formal core is frozen and publicly available for independent verification.
+We have presented a formally specified parent-structure framework in which a substantial gravity core, a defect-based matter sector, and a quantum-style amplitude layer are derived or conditionally induced from a single formal object, together with concrete computational realizations exhibiting nontrivial gravitational and quantum benchmark behavior. The formal algebraic core and the computational benchmarks are publicly available for independent verification and reproduction.
 
 \begin{thebibliography}{99}
-\bibitem{lean4} L.~de Moura and S.~Ullrich, ``The Lean 4 theorem prover and programming language,'' CADE-28 (2021).
+\bibitem{lean4} L.~de Moura and S.~Ullrich, ``The Lean 4 theorem prover and programming language,'' in \emph{Proc. CADE-28}, Lecture Notes in Computer Science, vol.~12699, Springer, 2021.
 \end{thebibliography}
 
 \end{document}
