@@ -74,7 +74,14 @@ theorem calibration_determines_all (cv : CountingVolume)
     (ref : ℕ) (vol_ref : ℝ) (hvol : 0 < vol_ref)
     (h_cal : cv.volume ref = vol_ref) (i : ℕ) :
     cv.volume i = vol_ref * (cv.count i / cv.count ref) := by
-  sorry -- calibration algebra; provable with field_simp + density arithmetic
+  have hd := ne_of_gt cv.density_pos
+  have hr := ne_of_gt (cv.count_pos ref)
+  simp only [CountingVolume.volume] at h_cal ⊢
+  -- h_cal : count(ref) / ρ = vol_ref
+  -- Goal : count(i) / ρ = vol_ref * (count(i) / count(ref))
+  -- = (count(ref)/ρ) * (count(i)/count(ref))  [by h_cal]
+  -- = count(i)/ρ  ✓
+  rw [← h_cal]; field_simp
 
 /-! ### Theorem 3: Uniqueness of the counting volume -/
 
@@ -151,8 +158,9 @@ theorem proper_time_roundtrip
   have : ρ * cd * τ ^ d / (ρ * cd) = τ ^ d := by
     field_simp
   rw [this]
-  -- τ^d ^ (1/d) = τ for τ > 0
-  sorry -- requires rpow_natCast + rpow_inv; provable
+  -- (τ^d)^(1/d) = τ for τ > 0, d > 0
+  -- (τ^d)^(1/d) = τ for τ > 0, d > 0
+  sorry -- rpow algebra: (x^n)^(1/n) = x for x > 0, n > 0
 
 /-! ### The volume-from-counting theorem -/
 

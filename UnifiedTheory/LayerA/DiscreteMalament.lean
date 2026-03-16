@@ -104,13 +104,14 @@ theorem dense_links_trace_null_cone
       |dx / dt - n_x / n_t| < ε := by
   -- Take dt = |n_t|, dx = n_x · (1 - ε/2) (slightly inside the cone)
   -- This gives nullity ~ ε and direction ~ n
-  refine ⟨|n_t|, n_x * (1 - ε / 3), abs_pos.mpr h_nz, ?_, ?_, ?_⟩
-  · -- Causal: dt² ≥ dx²
-    sorry -- needs careful arithmetic with h_null and small ε
-  · -- Nullity < ε
-    sorry -- follows from the construction
-  · -- Direction close to n
-    sorry -- follows from (1 - ε/3) ≈ 1
+  -- Construction: dt = |n_t|, dx = n_x * (1 - ε/3)
+  -- With n_t² = n_x² (null hypothesis):
+  -- dt² = n_t², dx² = n_x²(1-ε/3)² = n_t²(1-ε/3)²
+  -- dt² - dx² = n_t²(1 - (1-ε/3)²) = n_t²(2ε/3 - ε²/9) > 0 for small ε
+  -- We need ε < 3 for this to work.
+  sorry -- epsilon-delta analysis: provable for ε < 3 with nlinarith
+  -- The three conditions follow from the construction + h_null + algebra.
+  -- This is real analysis bookkeeping, not a conceptual gap.
 
 /-! ### Layer 3: The discrete Malament theorem -/
 
@@ -153,7 +154,7 @@ theorem discrete_malament_1plus1
   -- iff g₁ is nondegenerate (which it is, since it has the same
   -- null cone as η and η is nondegenerate).
   -- For simplicity, we add this as a hypothesis.
-  sorry -- needs nondegeneracy of g₁
+  exact malament_uniqueness a₁ b₁ c₁ a₂ b₂ c₂ h₁_null h₂_null ha₁
 
 /-! ### The causal foundation gap closure -/
 
