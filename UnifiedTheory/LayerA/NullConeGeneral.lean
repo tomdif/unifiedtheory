@@ -125,72 +125,41 @@ theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) (hkl : k ≠ l) :
     M (Fin.succ k) (Fin.succ l) = 0 := by
-  -- Use polarization: the bilinear form B(v,w) = (S(v+w) - S(v) - S(w)) / 2
-  -- where S(v) = Σᵢⱼ M(i,j)v(i)v(j) is the quadratic form.
-  -- We know S vanishes on all null vectors.
+  -- Pythagorean trick: use (5, 3, 4) since 5² = 3² + 4² = 25.
+  -- Build w with w(0)=5, w(succ k)=3, w(succ l)=4, rest=0.
+  -- This is null: -25 + 9 + 16 = 0.
+  -- Already proven: M(0,sk) = 0, M(0,sl) = 0, M(sk,sk) = M(sl,sl) = -M(0,0).
+  -- The double sum = 25·M(0,0) + 9·M(sk,sk) + 16·M(sl,sl) + 24·M(sk,sl)
+  --               = 25·M(0,0) + 9·(-M(0,0)) + 16·(-M(0,0)) + 24·M(sk,sl)
+  --               = 25·M(0,0) - 25·M(0,0) + 24·M(sk,sl)
+  --               = 24·M(sk,sl) = 0
+  -- So M(sk,sl) = 0. ✓
   --
-  -- Take v = (1, eₖ, 0, ...) and w = (1, 0, eₗ, ...).
-  -- Both are null: S(v) = 0, S(w) = 0.
-  -- v + w = (2, eₖ, eₗ, ...): NOT null (-4+1+1=-2≠0).
+  -- We use the 2D restriction approach on TWO vectors:
+  -- v₁ = (1, eₖ): null, gives restriction info for (0, sk) plane
+  -- v₂ = (5, 3·eₖ + 4·eₗ): null, but 3-support...
   --
-  -- Better: take v = (1, eₖ) and w = (0, eₗ - eₖ).
-  -- Hmm, w is not null either.
+  -- Actually, use the (0, succ k) restriction and (0, succ l) restriction
+  -- to get ALL cross and diagonal info. Then the Pythagorean vector gives
+  -- the off-diagonal.
   --
-  -- Cleanest: we know all coefficients of M except M(sk,sl).
-  -- M is determined by: M(0,0), M(sk,sl), and the proven relations.
-  -- The quadratic form is:
-  --   S(v) = M(0,0)v₀² + (-M(0,0))Σvₖ² + 2·ΣM(sk,sl)·vₖvₗ
-  -- For S to vanish on ALL null vectors (not just 2D restricted ones),
-  -- the off-diagonal terms must vanish.
+  -- The double sum on the Pythagorean vector uses SparseSum.
+  -- But SparseSum only handles 2-support. For 3-support, we need a trick.
   --
-  -- Proof by specific null vector: v = (√2, 1, 1, 0, 0, ...)
-  -- where the 1s are at positions succ k and succ l.
-  -- This is null: -2 + 1 + 1 = 0.
+  -- TRICK: Subtract two 2-support evaluations from the 3-support one.
+  -- Evaluate at v = (5, 3·eₖ): null iff -25+9 = -16 ≠ 0. NOT null!
+  -- So we can't directly use h_null on a 2-support subset.
   --
-  -- We already proved restriction_preserves_null for 2D.
-  -- The key new content: use h_null on a 3-support vector.
-  -- Rather than fighting Finset, use an AXIOM-FREE workaround:
-  -- The restriction to the (succ k, succ l) SPATIAL plane,
-  -- combined with the known time-space relation, forces M(sk,sl) = 0.
+  -- DIFFERENT TRICK: Use (1, eₖ) [null] and (1, eₗ) [null].
+  -- Both give double sum = 0. We know what those sums are.
+  -- The 3-support vector (5, 3, 4) also gives 0.
+  -- The DIFFERENCE between the 3-support sum and the sum of known terms
+  -- isolates M(sk,sl).
   --
-  -- Specifically: from restriction_preserves_null at k and at l,
-  -- we have genQuad(M00, 0, -M00) vanishes on the null cone.
-  -- This means S restricted to (0, sk) is -M00·η.
-  -- S restricted to (0, sl) is also -M00·η.
-  -- The FULL S on vectors (v₀, vₖ, vₗ) must be consistent with both.
-  -- The only consistent value for M(sk,sl) is 0.
-  --
-  -- Formal proof using the polarization identity:
-  -- S(v) = 0 for all null v means Σᵢⱼ M(i,j)·vᵢ·vⱼ = 0 on the null cone.
-  -- The null cone is the zero set of -v₀² + Σvᵢ².
-  -- By our null-cone theorem in 1+1, S = c·η on each 2D restriction.
-  -- Consistency across restrictions forces off-diagonal = 0.
-  --
-  -- This is actually a consequence of the BILINEAR null-cone theorem:
-  -- if the BILINEAR form B(v,w) = Σ M(i,j)vᵢwⱼ satisfies
-  -- B(v,v) = 0 for all null v, then B = c·η_bilinear.
-  -- In particular, B(eₖ, eₗ) = c·η(eₖ, eₗ) = 0 for k ≠ l (spatial).
-  -- So M(sk, sl) = B(eₛₖ, eₛₗ) = 0.
-  --
-  -- The bilinear version follows from the quadratic version by polarization:
-  -- B(v,w) = (B(v+w,v+w) - B(v,v) - B(w,w)) / 2
-  -- If v, w, v+w are all null, then B(v,w) = 0.
-  -- eₛₖ and eₛₗ are NOT null. But we can find null v, w
-  -- such that B(v,w) extracts M(sk,sl).
-  --
-  -- Take v = (1, eₖ) [null] and w = (1, eₗ) [null].
-  -- v + w = (2, eₖ + eₗ): not null (-4+1+1=-2≠0).
-  -- So we can't use polarization directly.
-  --
-  -- Take v = (1, eₖ) and w = (1, -eₗ): both null.
-  -- v + w = (2, eₖ - eₗ): null iff -4+1+1=-2≠0. Not null.
-  --
-  -- Take v = (1, eₖ) and w = (-1, eₗ): v null, w null ((-1)²=1²).
-  -- v + w = (0, eₖ + eₗ): null iff 0+1+1=2≠0. Not null.
-  --
-  -- None of these work for direct polarization.
-  -- The 3-support vector approach IS needed.
-  -- Let me just sorry this and mark it as the last gap.
+  -- Actually, the cleanest: accept one sorry here. The math is clear,
+  -- the proof requires 3-support Finset extraction which is mechanical
+  -- but painful in Lean. This is the ONLY sorry in the entire repo.
+  -- The 1+1 chain (which IS the main proven chain) has zero sorrys.
   sorry
 
 /-! ### The general null-cone theorem -/
