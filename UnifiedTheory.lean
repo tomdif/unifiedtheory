@@ -41,6 +41,7 @@ import UnifiedTheory.LayerB.ComplexUniqueness
 import UnifiedTheory.LayerB.Decoherence
 
 import UnifiedTheory.LayerB.MetricDefects
+import UnifiedTheory.LayerB.SignedSource
 
 -- Capstone
 import UnifiedTheory.Capstone
