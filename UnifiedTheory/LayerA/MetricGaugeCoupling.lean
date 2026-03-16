@@ -9,12 +9,15 @@
   - The K/P split from the trace functional is NOT abstract linear algebra —
     it is the gravity/gauge separation
 
-  This gives physical meaning to every result in the chain:
-  - K-charge = gravitational source strength
-  - P-content = gauge/internal degrees of freedom
-  - z = K + iP = gravity + i·gauge
-  - |z|² = gravitational² + gauge² = total energy
-  - Interference = gravity-gauge cross terms
+  This gives physical meaning to the K/P split:
+  - K = trace-visible scalar/source channel
+  - P = trace-free channel containing gauge stress-energy
+  - z = Q + iP packages trace-visible and trace-free components
+  - d=4 is uniquely where this separation is exact
+
+  Important caveat: traceless ≠ gravitationally invisible.
+  Gauge fields still gravitate through the full T_{ab}, not just tr(T).
+  The trace functional doesn't see them, but the metric does.
 
   The proof: for Yang-Mills theory, tr(T) = (1 - n/4) · |F|².
   In n=4: the factor (1 - 4/4) = 0, so tr(T) = 0.
@@ -126,32 +129,27 @@ theorem four_is_unique_traceless :
 
 /-! ## Physical interpretation of the K/P split -/
 
-/-- **THE K/P SPLIT IS THE GRAVITY/GAUGE SEPARATION.**
+/-- **GAUGE TRACE THEOREM: trace-visible vs trace-free separation.**
 
-    In the metric perturbation space with the trace functional:
+    In d=4, gauge stress-energy is uniquely traceless. Therefore the
+    trace functional canonically separates:
 
-    K = im(πK) = trace-ful perturbations = GRAVITATIONAL content
-      (scalar curvature, conformal mode, Newtonian potential)
+    K = trace-visible scalar/source channel
+      (captures scalar curvature, conformal mode)
 
-    P = ker(tr) = traceless perturbations = GAUGE content
-      (gauge field stress-energy, shear, tidal forces)
+    P = ker(tr) = trace-free channel, containing gauge stress-energy
+      (P is larger than "the gauge sector" — it includes shear, tidal, etc.)
 
-    This identification is forced in d=4 by the tracelessness theorem:
-    the gauge stress-energy has zero trace, so it lives in P.
+    Important: traceless does NOT mean gravitationally invisible.
+    Gauge fields still gravitate through the full tensor T_{ab}.
+    The trace functional does not see them, but the metric does.
 
-    The quantum amplitude z = K + iP = Q + iP now means:
-    - Q = gravitational charge (source strength = trace content)
-    - P = gauge content (internal degrees of freedom)
-    - |z|² = Q² + P² = gravitational² + gauge² = total energy
+    The amplitude z = Q + iP packages:
+    - Q = trace-visible source component
+    - P = trace-free internal/gauge-like component
 
-    The interference term 2·Re(z₁·conj(z₂)) represents
-    gravity-gauge cross-correlations.
-
-    This is not stipulated — it follows from:
-    1. The trace functional is the canonical source functional (DerivedUnification)
-    2. Gauge stress-energy is traceless in d=4 (this file)
-    3. Therefore gauge content lives in P = ker(trace) -/
-theorem kp_is_gravity_gauge_separation :
+    d=4 is the unique dimension where this separation is exact. -/
+theorem gauge_trace_separation :
     -- In d=4, gauge stress-energy trace vanishes
     (∀ norm_sq : ℝ, gaugeStressEnergyTrace 4 norm_sq = 0)
     -- d=4 is unique for this property
@@ -162,5 +160,31 @@ theorem kp_is_gravity_gauge_separation :
   ⟨gauge_traceless_4d,
    four_is_unique_traceless,
    fieldStrengthNorm_nonneg⟩
+
+/-! ## Traceless does NOT mean inert -/
+
+/-- **TRACELESS BUT SOURCEFUL.**
+
+    The gauge stress-energy is traceless in d=4 but generally NONZERO.
+    It contributes to gravitational sourcing through the full Einstein
+    equation G_{μν} = 8π T_{μν}, even though tr(T) = 0.
+
+    This theorem: if the field strength is nonzero, the stress-energy
+    is nonzero (as witnessed by |F|² > 0). The gauge field gravitates
+    through its traceless tensor structure, not through a scalar trace.
+
+    Physically: electromagnetic and Yang-Mills fields curve spacetime
+    even though they don't contribute to the Ricci scalar R. They
+    contribute to the traceless part of the Ricci tensor (Weyl curvature). -/
+theorem traceless_but_sourceful (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim)
+    (hF : fieldStrengthNorm sc conn ≠ 0) :
+    -- |F|² > 0 (the gauge field is nontrivial)
+    0 < fieldStrengthNorm sc conn
+    -- AND the trace vanishes in d=4 (invisible to trace functional)
+    ∧ gaugeStressEnergyTrace 4 (fieldStrengthNorm sc conn) = 0 := by
+  constructor
+  · exact lt_of_le_of_ne (fieldStrengthNorm_nonneg sc conn) (Ne.symm hF)
+  · exact gauge_traceless_4d _
 
 end UnifiedTheory.LayerA.MetricGaugeCoupling
