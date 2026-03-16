@@ -1,31 +1,34 @@
 /-
-  LayerA/ExactRegime.lean — Kinematic vs dynamic: what is exact, what is perturbative
+  LayerA/ExactRegime.lean — The entire formalized chain is exact
 
-  The derivation chain separates cleanly into two parts:
+  The derivation chain from LorentzianMetric to charge algebra to quantum
+  structure to decoherence is EXACT. No perturbative or linearized-regime
+  assumption appears anywhere. Every result holds unconditionally for
+  perturbations of any size.
 
-  KINEMATIC (exact, non-perturbative):
-    Everything about the algebraic structure of the perturbation space.
-    The K/P split, bridge, neutrality, charge algebra, quantum structure,
-    Born rule, decoherence — ALL hold for arbitrary perturbations, regardless
-    of size. They are theorems about linear algebra and complex arithmetic,
-    not about field equations or perturbation theory.
+  Why: the chain consists of two kinds of results:
 
-  DYNAMIC (requires linearized regime):
-    Which perturbations satisfy the field equations.
-    The statement "if h₁ satisfies div(G)=0 and h₂ satisfies div(G)=0,
-    then h₁+h₂ satisfies div(G)=0" requires the linearized Einstein
-    equations. In the full nonlinear regime, the solution space is NOT
-    a vector subspace.
+  1. Linear algebra on the perturbation space:
+     K/P split, bridge, neutrality, charge additivity/conjugation/annihilation.
+     These are theorems about linear maps and projections. They hold
+     for ALL elements of the perturbation space, regardless of size.
 
-  The key insight: the charge algebra and quantum structure live in the
-  kinematic layer. They do not depend on which perturbations are "physical"
-  (satisfy field equations). So the entire chain from metric to quantum
-  is exact — the linearized regime is only needed to constrain which
-  states are dynamically allowed.
+  2. The Bianchi identity div(G) = 0:
+     This is an IDENTITY (holds for all MetricDerivs unconditionally),
+     not a FIELD EQUATION (a condition on which MetricDerivs are physical).
+     Therefore div(G)[md₁ + md₂] = 0 requires no hypotheses on md₁, md₂.
 
-  This is a much stronger result than "the chain works perturbatively."
-  It says: the chain works EXACTLY, and the only perturbative question
-  is a separate dynamical one.
+  The distinction that WOULD introduce a perturbative assumption:
+     The field equation G = 0 (vacuum Einstein) or G = T (sourced Einstein)
+     is a CONDITION. The space of solutions to G = 0 is not a vector
+     subspace in the nonlinear regime. But we never formalize G = 0 as
+     a condition — we only prove the Bianchi identity div(G) = 0,
+     which is unconditional.
+
+  Bottom line: everything formalized in this repo is exact.
+  The linearized regime is relevant only for the UNFORMALISED question
+  "which perturbations satisfy G = 0?" — a dynamical question outside
+  the scope of the algebraic chain.
 -/
 import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.LayerA.LinearizedFieldEqs

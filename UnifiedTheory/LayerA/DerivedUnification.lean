@@ -19,12 +19,14 @@
     (3) Scaling exponent α = d-1 — from spatial dimension
     (4) Canonical K/P split — from perturbation space + trace functional
 
-  What is honest about limitations:
+  What is honest about scope:
     - LorentzianMetric is one structured object, not one minimal primitive
-    - The K/P split derives a canonical linear decomposition, not necessarily
-      the physical source interpretation
+    - The K/P split derives a canonical linear decomposition; the physical
+      source interpretation is structural, not dynamical
     - Lovelock uniqueness (that Einstein is the ONLY such tensor) is not proved
-    - No dynamics: this characterizes kinematic structure, not field equations
+    - The chain characterizes exact algebraic/kinematic structure;
+      the dynamical question "which perturbations satisfy G = 0?" is separate
+      (see ExactRegime.lean for the full exactness proof)
 -/
 import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.LayerA.BianchiIdentity

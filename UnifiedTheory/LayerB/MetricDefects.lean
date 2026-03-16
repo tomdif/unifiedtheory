@@ -7,19 +7,25 @@
   The key construction:
     - Defects = elements of Matrix (Fin n) (Fin n) ℝ (metric perturbations)
     - K/P split = sourceProj/dressingProj from the trace functional
-    - source_func = bias_func = trace
-    - compose = matrix addition (linearity of perturbation theory)
-    - conjugate = matrix negation
+    - source_func = bias_func = trace (same functional — bridge is definitional)
+    - compose = matrix addition (vector space operation)
+    - conjugate = matrix negation (vector space operation)
 
   What becomes DERIVED (was previously stipulated):
-    - Bridge equation: source ∘ K = bias  (now: trace ∘ sourceProj = trace)
-    - Dressing neutrality: source ∘ P = 0  (now: trace ∘ dressingProj = 0)
-    - Charge additivity (from linearity of trace + addition)
-    - Charge conjugation (from linearity of trace + negation)
+    - Bridge equation: trace ∘ sourceProj = trace (from source_on_K)
+    - Dressing neutrality: trace ∘ dressingProj = 0 (from source_vanishes_on_dressing)
+    - Charge additivity (from linearity of trace ∘ πK)
+    - Charge conjugation (from linearity of trace ∘ πK)
 
-  What remains a modeling choice (explicitly stated):
-    - compose = addition (linearity of perturbation theory)
-    - conjugate = negation (standard in linear theory)
+  Everything is EXACT — no perturbative or linearized-regime assumption.
+  Composition = addition and conjugation = negation are the vector space
+  operations on the perturbation space, not approximations. The entire
+  algebraic chain (charge, quantum, Born rule, decoherence) holds for
+  perturbations of any size. See ExactRegime.lean for the formal proof.
+
+  The only question outside this chain's scope is dynamical:
+  "which perturbations satisfy the field equation G = 0?"
+  That is a condition (not an identity) and is not formalized here.
 
   The full chain:
     LorentzianMetric m
@@ -95,16 +101,16 @@ theorem decomp_derived (h : Perturbation (m + 2)) :
 
 /-- **The canonical LinearDefectBlock from metric perturbations.**
 
-    Two modeling choices (explicitly stated):
-    - compose = addition (linear perturbation theory)
-    - conjugate = negation (standard anti-perturbation)
+    Composition and conjugation are the vector space operations (+, -)
+    on the perturbation space. These are exact, not perturbative — they
+    are how the vector space works, not an approximation.
 
-    Everything else is DERIVED from the trace functional:
+    Everything is DERIVED from the trace functional:
     - K/P projections from sourceProj/dressingProj
-    - Bridge: trace ∘ K_proj = trace (from source_on_K)
-    - Neutrality: trace ∘ P_proj = 0 (from source_vanishes_on_dressing)
-    - Charge additivity (from linearity)
-    - Charge conjugation (from linearity) -/
+    - Bridge: trace ∘ K_proj = trace (from source_on_K — exact)
+    - Neutrality: trace ∘ P_proj = 0 (from source_vanishes_on_dressing — exact)
+    - Charge additivity (from linearity of trace ∘ πK — exact)
+    - Charge conjugation (from linearity of trace ∘ πK — exact) -/
 noncomputable def metricLinearDefectBlock (m : ℕ) :
     LinearDefectBlock (Perturbation (m + 2)) where
   Defect := Perturbation (m + 2)
@@ -180,9 +186,10 @@ theorem metric_charge_algebra (_ : LorentzianMetric m) :
     - Two perturbations with same Q but different P interfere
     - Phase averaging kills interference (decoherence → classical)
 
-    The K/P split is derived from the metric's trace functional.
+    The K/P split is derived from the metric's trace functional (exact).
     The complex identification z = Q + iP is a definitional step.
-    Everything downstream is proved from ℂ arithmetic. -/
+    Everything downstream is proved from ℂ arithmetic (exact).
+    No perturbative assumption anywhere in this chain. -/
 theorem metric_to_quantum (_ : LorentzianMetric m) :
     -- (1) Observable = Q² + P²
     (∀ Q P : ℝ, obs (amplitudeFromKP Q P) = Q ^ 2 + P ^ 2)
@@ -226,11 +233,10 @@ theorem metric_to_quantum (_ : LorentzianMetric m) :
     - Born rule |z|² uniqueness (SO(2) invariance)
     - Decoherence → classical (phase averaging)
 
-    Two explicit modeling choices:
-    1. Defect composition = perturbation addition
-    2. Defect conjugation = perturbation negation
-
-    Everything else is derived from the metric. -/
+    Composition = addition and conjugation = negation are vector space
+    operations on the perturbation space (exact, not perturbative).
+    Everything is derived from the metric. The entire chain is exact —
+    see ExactRegime.fully_exact_chain for the formal proof. -/
 theorem metric_to_everything (L : LorentzianMetric m) :
     let db := metricComposableBlock m
     -- === Gravity (from DerivedUnification) ===

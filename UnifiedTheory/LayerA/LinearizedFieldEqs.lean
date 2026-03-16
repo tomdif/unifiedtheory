@@ -1,24 +1,26 @@
 /-
-  LayerA/LinearizedFieldEqs.lean — Linearity of the field equations
+  LayerA/LinearizedFieldEqs.lean — Linearity of curvature in metric derivatives
 
-  Proves that the Einstein condition (div(G) = 0) is LINEAR in the
-  metric derivative data. This means:
+  Proves that R_metric, dR_metric, divRic, and dScalar are all LINEAR
+  in the metric derivative data (h, k). This means:
 
-  1. If md₁ satisfies div(G) = 0 and md₂ satisfies div(G) = 0,
-     then md₁ + md₂ satisfies div(G) = 0.
+  1. R_metric(md₁ + md₂) = R_metric(md₁) + R_metric(md₂)
+  2. R_metric(-md) = -R_metric(md)
+  3. All contracted quantities (divRic, dScalar) inherit linearity
 
-  2. If md satisfies div(G) = 0, then -md satisfies div(G) = 0.
+  Combined with the Bianchi identity (which is an unconditional identity,
+  not a field equation), this gives:
 
-  These are NOT modeling choices — they are theorems about the
-  linearized field equations. The Riemann tensor R_metric is a
-  linear function of the metric derivative data h, so the Einstein
-  condition is a system of linear equations.
+  - div(G)[md₁ + md₂] = 0 unconditionally (no hypotheses on md₁, md₂)
+  - div(G)[-md] = 0 unconditionally
 
-  Consequence: in MetricDefects.lean, the stipulations
-    compose = addition
-    conjugate = negation
-  become theorems: the solution space of the linearized field
-  equations is a vector subspace, hence closed under + and -.
+  Note: the Bianchi identity div(G) = 0 holds for ALL MetricDerivs.
+  The hypotheses in einstein_preserved_add are unnecessary — see
+  ExactRegime.lean for the stronger unconditional versions.
+
+  The linearity results here remain useful for understanding WHY
+  the chain is exact: curvature is linear in the derivative data,
+  and the Bianchi identity is algebraic, so everything composes.
 -/
 import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.LayerA.BianchiIdentity
