@@ -1,0 +1,33 @@
+{
+  "alternative_histories": {
+    "test": "alternative_histories",
+    "n_paths": 200,
+    "n_pairs_tested": 95,
+    "n_pairs_with_alternatives": 29,
+    "passed": true
+  },
+  "dressing_phases": {
+    "test": "dressing_phases",
+    "total_pairs": 43,
+    "distinct_pairs": 43,
+    "mean_phase_diff": 0.059374239219174306,
+    "passed": true
+  },
+  "interference": {
+    "test": "interference",
+    "total_cases": 10,
+    "interference_cases": 10,
+    "constructive": 2,
+    "destructive": 8,
+    "passed": true
+  },
+  "decoherence": {
+    "test": "decoherence",
+    "n_samples": 190,
+    "mean_interference": 0.14466613888507723,
+    "std_interference": 0.5683019669871215,
+    "individual_large": 189,
+    "passed": true
+  },
+  "ALL_PASS": true
+}
