@@ -1,0 +1,74 @@
+{
+  "positive": {
+    "Q": 2.0,
+    "focusing": {
+      "value": -278046974172990.6,
+      "sign": "negative"
+    },
+    "deflection": {
+      "value": 1.6,
+      "sign": "positive",
+      "impact_parameter": 5.0
+    },
+    "shapiro": {
+      "value": 18.420680743952367,
+      "sign": "positive",
+      "impact_parameter": 5.0,
+      "reference_distance": 50.0
+    }
+  },
+  "neutral": {
+    "Q": 0.0,
+    "focusing": {
+      "value": 0.0,
+      "sign": "zero"
+    },
+    "deflection": {
+      "value": 0.0,
+      "sign": "zero",
+      "impact_parameter": 5.0
+    },
+    "shapiro": {
+      "value": 0.0,
+      "sign": "zero",
+      "impact_parameter": 5.0,
+      "reference_distance": 50.0
+    }
+  },
+  "negative": {
+    "Q": -2.0,
+    "focusing": {
+      "value": 0.6910507791264309,
+      "sign": "positive"
+    },
+    "deflection": {
+      "value": -1.6,
+      "sign": "negative",
+      "impact_parameter": 5.0
+    },
+    "shapiro": {
+      "value": -18.420680743952367,
+      "sign": "negative",
+      "impact_parameter": 5.0,
+      "reference_distance": 50.0
+    }
+  },
+  "verification": {
+    "checks": {
+      "positive_focuses": true,
+      "positive_deflects_inward": true,
+      "positive_delays": true,
+      "neutral_no_focusing": true,
+      "neutral_no_deflection": true,
+      "neutral_no_delay": true,
+      "negative_defocuses": true,
+      "negative_deflects_outward": true,
+      "negative_advances": true,
+      "deflection_magnitude_symmetric": true,
+      "shapiro_magnitude_symmetric": true
+    },
+    "all_pass": true,
+    "total": 11,
+    "passed": 11
+  }
+}
