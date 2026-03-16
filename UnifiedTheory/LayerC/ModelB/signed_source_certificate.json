@@ -1,0 +1,52 @@
+{
+  "positive_source": {
+    "Q": 2.0,
+    "behavior": "focusing",
+    "delta_theta": -278046974172990.6,
+    "theta_final": -278046974172990.6,
+    "expected": "focusing"
+  },
+  "negative_source": {
+    "Q": -2.0,
+    "behavior": "defocusing",
+    "delta_theta": 0.5054502854459287,
+    "theta_final": 0.5054502854459287,
+    "expected": "defocusing"
+  },
+  "screened_pair": {
+    "Q": 0.0,
+    "behavior": "neutral",
+    "delta_theta": 0.0,
+    "theta_final": 0.0,
+    "expected": "neutral"
+  },
+  "overscreened": {
+    "Q_positive": 2.0,
+    "Q_negative": -5.0,
+    "Q_net": -3.0,
+    "behavior": "defocusing",
+    "delta_theta": 0.5908860615843274,
+    "theta_final": 0.5908860615843274,
+    "expected": "defocusing"
+  },
+  "partial_screening": {
+    "Q_positive": 5.0,
+    "Q_negative": -2.0,
+    "Q_net": 3.0,
+    "Q_net_less_than_Q_positive": true,
+    "behavior": "focusing",
+    "expected": "focusing but reduced Q"
+  },
+  "verification": {
+    "checks": {
+      "positive_source_focuses": true,
+      "negative_source_defocuses": true,
+      "neutral_source_inert": true,
+      "overscreening_reverses_focusing": true,
+      "screening_reduces_focusing": true
+    },
+    "all_pass": true,
+    "total": 5,
+    "passed": 5
+  }
+}
