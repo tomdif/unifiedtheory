@@ -16,6 +16,7 @@ import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.LayerA.SourceFromMetric
 import UnifiedTheory.LayerA.SinglePrimitive
 import UnifiedTheory.LayerA.DerivedUnification
+import UnifiedTheory.LayerA.LinearizedFieldEqs
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
