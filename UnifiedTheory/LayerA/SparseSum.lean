@@ -1,65 +1,100 @@
 /-
   LayerA/SparseSum.lean — Sparse vector double sum reduction
 
-  The utility theorem that closes NullConeGeneral sorrys.
+  One utility: if w is zero outside {a, b}, the double sum collapses.
 -/
 import Mathlib.Analysis.Normed.Field.Basic
 
 namespace UnifiedTheory.LayerA.SparseSum
 
-/-- If w(i) = 0, the inner sum at i vanishes. -/
-lemma inner_sum_zero {n : ℕ} (M : Fin n → Fin n → ℝ)
-    (w : Fin n → ℝ) (i : Fin n) (hw : w i = 0) :
-    ∑ j : Fin n, M i j * w i * w j = 0 := by
-  apply Finset.sum_eq_zero; intro j _; simp [hw]
-
-/-- Extract a single-element sum: if f(i) = 0 for i ≠ k, then Σf = f(k). -/
-lemma sum_eq_single_nonzero {n : ℕ} (f : Fin n → ℝ) (k : Fin n)
-    (hf : ∀ i, i ≠ k → f i = 0) :
-    ∑ i : Fin n, f i = f k := by
-  exact (Finset.sum_eq_single_of_mem k (Finset.mem_univ k)
-    (fun b _ hb => hf b hb)).symm ▸ rfl
-
-/-- Extract a two-element sum: if f(i) = 0 for i ∉ {a, b}, then Σf = f(a) + f(b). -/
-lemma sum_eq_two {n : ℕ} (f : Fin n → ℝ) (a b : Fin n) (hab : a ≠ b)
+/-- Two-element sum extraction: if f vanishes outside {a, b}, Σf = f(a) + f(b). -/
+lemma sum_pair {n : ℕ} (f : Fin n → ℝ) (a b : Fin n) (hab : a ≠ b)
     (hf : ∀ i, i ≠ a → i ≠ b → f i = 0) :
     ∑ i : Fin n, f i = f a + f b := by
-  have key : ∑ i : Fin n, f i =
-      ∑ i : Fin n, (if i = a then f a else if i = b then f b else 0) := by
-    apply Finset.sum_congr rfl; intro i _
-    by_cases ha : i = a
-    · simp [ha]
-    · by_cases hb : i = b
-      · simp [ha, hb]
-      · simp [ha, hb, hf i ha hb]
-  rw [key, show (fun i : Fin n => if i = a then f a else if i = b then f b else 0) =
-    (fun i => if i = a then f a else 0) + (fun i => if i = b then f b else 0) from by
-      ext i; simp [Pi.add_apply]; by_cases ha : i = a <;> simp [ha]]
-  rw [Finset.sum_add_distrib,
-      Finset.sum_ite_eq' Finset.univ a (fun _ => f a),
-      Finset.sum_ite_eq' Finset.univ b (fun _ => f b)]
-  simp
+  classical
+  have key : ∀ i, i ≠ a → i ≠ b → f i = 0 := hf
+  have ha_mem : a ∈ Finset.univ (α := Fin n) := Finset.mem_univ a
+  have hb_mem : b ∈ Finset.univ (α := Fin n) := Finset.mem_univ b
+  have : (∑ i : Fin n, f i) = (∑ i ∈ ({a, b} : Finset (Fin n)), f i) := by
+    symm; apply Finset.sum_subset (Finset.subset_univ _)
+    intro i _ hi; simp at hi; exact hf i hi.1 hi.2
+  rw [this, Finset.sum_pair hab]
 
 /-- **Two-support double sum (symmetric M).**
     If w is zero outside {a, b} and M is symmetric:
-    ∑ᵢ ∑ⱼ M(i,j) w(i) w(j) = M(a,a)w(a)² + 2M(a,b)w(a)w(b) + M(b,b)w(b)² -/
+    ∑ᵢ ∑ⱼ M(i,j)w(i)w(j) = M(a,a)w(a)² + 2M(a,b)w(a)w(b) + M(b,b)w(b)² -/
 theorem double_sum_two_support_sym {n : ℕ}
     (M : Fin n → Fin n → ℝ) (hSym : ∀ i j, M i j = M j i)
     (w : Fin n → ℝ) (a b : Fin n) (hab : a ≠ b)
     (hw : ∀ i, i ≠ a → i ≠ b → w i = 0) :
     ∑ i : Fin n, ∑ j : Fin n, M i j * w i * w j =
     M a a * w a * w a + 2 * M a b * w a * w b + M b b * w b * w b := by
-  -- Outer sum: only i = a and i = b contribute
-  have houter : ∀ i, i ≠ a → i ≠ b →
-      (∑ j, M i j * w i * w j) = 0 :=
-    fun i ha hb => inner_sum_zero M w i (hw i ha hb)
-  -- Inner sum at a: only j = a and j = b contribute
-  have ha_inner : ∀ j, j ≠ a → j ≠ b → M a j * w a * w j = 0 :=
-    fun j hja hjb => by rw [hw j hja hjb, mul_zero]
-  -- Inner sum at b: only j = a and j = b contribute
-  have hb_inner : ∀ j, j ≠ a → j ≠ b → M b j * w b * w j = 0 :=
-    fun j hja hjb => by rw [hw j hja hjb, mul_zero]
-  -- Use sum_eq_two for outer, then for each inner
-  sorry -- 3 applications of sum_eq_two + ring with symmetry
+  -- Outer: kill i ∉ {a, b}
+  have houter : ∀ i, i ≠ a → i ≠ b → (∑ j, M i j * w i * w j) = 0 := by
+    intro i ha hb; apply Finset.sum_eq_zero; intro j _
+    simp [hw i ha hb]
+  rw [sum_pair _ a b hab houter]
+  -- Inner at a: kill j ∉ {a, b}
+  have hinner_a : ∀ j, j ≠ a → j ≠ b → M a j * w a * w j = 0 := by
+    intro j hja hjb; simp [hw j hja hjb]
+  rw [sum_pair _ a b hab hinner_a]
+  -- Inner at b: kill j ∉ {a, b}
+  have hinner_b : ∀ j, j ≠ a → j ≠ b → M b j * w b * w j = 0 := by
+    intro j hja hjb; simp [hw j hja hjb]
+  rw [sum_pair _ a b hab hinner_b]
+  -- Now: M a a * w a * w a + M a b * w a * w b +
+  --     (M b a * w b * w a + M b b * w b * w b)
+  -- Use symmetry M b a = M a b, then ring
+  rw [hSym b a]; ring
+
+/-- **Three-support sum extraction.**
+    If f vanishes outside {a, b, c} (all distinct), Σf = f(a)+f(b)+f(c). -/
+lemma sum_triple {n : ℕ} (f : Fin n → ℝ) (a b c : Fin n)
+    (hab : a ≠ b) (hac : a ≠ c) (hbc : b ≠ c)
+    (hf : ∀ i, i ≠ a → i ≠ b → i ≠ c → f i = 0) :
+    ∑ i : Fin n, f i = f a + f b + f c := by
+  classical
+  have : (∑ i : Fin n, f i) = (∑ i ∈ ({a, b, c} : Finset (Fin n)), f i) := by
+    symm; apply Finset.sum_subset (Finset.subset_univ _)
+    intro i _ hi
+    simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+    exact hf i hi.1 hi.2.1 hi.2.2
+  rw [this]
+  rw [show ({a, b, c} : Finset (Fin n)) = {a, b, c} from rfl]
+  have ha_not : a ∉ ({b, c} : Finset (Fin n)) := by
+    intro h; simp only [Finset.mem_insert, Finset.mem_singleton] at h
+    rcases h with rfl | rfl <;> contradiction
+  rw [Finset.sum_insert ha_not]
+  rw [Finset.sum_pair hbc]
+
+/-- **Three-support double sum (symmetric M).** -/
+theorem double_sum_three_support_sym {n : ℕ}
+    (M : Fin n → Fin n → ℝ) (hSym : ∀ i j, M i j = M j i)
+    (w : Fin n → ℝ) (a b c : Fin n)
+    (hab : a ≠ b) (hac : a ≠ c) (hbc : b ≠ c)
+    (hw : ∀ i, i ≠ a → i ≠ b → i ≠ c → w i = 0) :
+    ∑ i : Fin n, ∑ j : Fin n, M i j * w i * w j =
+    M a a * w a * w a + 2 * M a b * w a * w b + 2 * M a c * w a * w c +
+    M b b * w b * w b + 2 * M b c * w b * w c +
+    M c c * w c * w c := by
+  -- Outer: kill i ∉ {a, b, c}
+  have houter : ∀ i, i ≠ a → i ≠ b → i ≠ c →
+      (∑ j, M i j * w i * w j) = 0 := by
+    intro i ha hb hc; apply Finset.sum_eq_zero; intro j _; simp [hw i ha hb hc]
+  rw [sum_triple _ a b c hab hac hbc houter]
+  -- Inner at a:
+  have ha_inner : ∀ j, j ≠ a → j ≠ b → j ≠ c → M a j * w a * w j = 0 := by
+    intro j hja hjb hjc; simp [hw j hja hjb hjc]
+  rw [sum_triple _ a b c hab hac hbc ha_inner]
+  -- Inner at b:
+  have hb_inner : ∀ j, j ≠ a → j ≠ b → j ≠ c → M b j * w b * w j = 0 := by
+    intro j hja hjb hjc; simp [hw j hja hjb hjc]
+  rw [sum_triple _ a b c hab hac hbc hb_inner]
+  -- Inner at c:
+  have hc_inner : ∀ j, j ≠ a → j ≠ b → j ≠ c → M c j * w c * w j = 0 := by
+    intro j hja hjb hjc; simp [hw j hja hjb hjc]
+  rw [sum_triple _ a b c hab hac hbc hc_inner]
+  -- Use symmetry and ring
+  rw [hSym b a, hSym c a, hSym c b]; ring
 
 end UnifiedTheory.LayerA.SparseSum
