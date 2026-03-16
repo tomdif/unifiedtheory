@@ -15,6 +15,7 @@ import UnifiedTheory.LayerA.BianchiIdentity
 import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.LayerA.SourceFromMetric
 import UnifiedTheory.LayerA.SinglePrimitive
+import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
