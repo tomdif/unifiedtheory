@@ -36,6 +36,8 @@ import UnifiedTheory.LayerB.ComplexFromDressing
 import UnifiedTheory.LayerB.ComplexUniqueness
 import UnifiedTheory.LayerB.Decoherence
 
+import UnifiedTheory.LayerB.MetricDefects
+
 -- Layer C: Concrete Realizations
 import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
