@@ -1,47 +1,59 @@
 /-
   LayerA/NullConeGeneral.lean — Null-cone theorem for general n+1 dimensions
 
-  Strategy: instead of evaluating Finset.sums at test vectors (tedious),
-  prove everything by RESTRICTING to 2D subspaces where the 1+1 theorem
-  applies directly.
-
-  For any pair of indices (0, k+1), restrict to the 2D subspace
-  spanned by e₀ and e_{k+1}. The Minkowski form restricts to the
-  1+1 Minkowski form. The null-cone theorem in that subspace gives
-  the coefficient relations.
+  Strategy: restrict to 2D subspaces where the 1+1 theorem applies.
+  Two standalone helper lemmas handle the sparse-vector Finset extraction.
 -/
 import UnifiedTheory.LayerA.NullConeTensor
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
 namespace UnifiedTheory.LayerA.NullConeGeneral
 
-/-! ### Restriction to 2D subspaces -/
+/-! ### Helper 1: Sparse double sum reduction -/
 
-/-- Restrict a quadratic form on ℝ^{n+1} to the 2D subspace
-    spanned by coordinates 0 and k+1.
-    The restriction maps (s, t) ↦ v where v₀ = s, v_{k+1} = t, rest = 0. -/
-def restrict2D {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
-    (k : Fin n) (s t : ℝ) : ℝ :=
-  M 0 0 * s * s + 2 * M 0 (Fin.succ k) * s * t +
-  M (Fin.succ k) (Fin.succ k) * t * t
+/-- A vector that is nonzero only at positions 0 and j. -/
+def sparseVec {n : ℕ} (j : Fin (n + 1)) (s t : ℝ) : Fin (n + 1) → ℝ :=
+  fun i => if i = 0 then s else if i = j then t else 0
 
-/-- The Minkowski form restricted to the (0, k+1) plane is the 1+1 Minkowski form. -/
-theorem mink_restrict {n : ℕ} (k : Fin n) (s t : ℝ) :
-    -s ^ 2 + t ^ 2 = genQuad (-1) 0 1 (fun i : Fin 2 => if i = 0 then s else t) := by
-  simp only [genQuad, show (0 : Fin 2) = 0 from rfl,
-    show ¬((1 : Fin 2) = 0) from by decide, ite_true, ite_false]
-  ring
+/-- For the sparse vector, entries outside {0, j} are zero. -/
+lemma sparseVec_zero {n : ℕ} (j : Fin (n + 1)) (hj : j ≠ 0) (s t : ℝ)
+    (i : Fin (n + 1)) (hi0 : i ≠ 0) (hij : i ≠ j) :
+    sparseVec j s t i = 0 := by
+  simp [sparseVec, hi0, hij]
 
-/-- The restricted form matches the 1+1 genQuad parametrization. -/
-theorem restrict_is_genQuad {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
-    (k : Fin n) (v : Fin 2 → ℝ) :
-    genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v =
-    restrict2D M k (v 0) (v 1) := by
-  simp [genQuad, restrict2D]; ring
+/-- sparseVec at 0 is s. -/
+lemma sparseVec_at_zero {n : ℕ} (j : Fin (n + 1)) (s t : ℝ) :
+    sparseVec j s t 0 = s := if_pos rfl
 
-/-- **Key lemma**: if M vanishes on all null vectors of η in ℝ^{n+1},
-    then the 2D restriction to the (0, k+1) plane vanishes on all
-    null vectors of the restricted η. -/
+/-- sparseVec at j is t (when j ≠ 0). -/
+lemma sparseVec_at_j {n : ℕ} (j : Fin (n + 1)) (hj : j ≠ 0) (s t : ℝ) :
+    sparseVec j s t j = t := by simp [sparseVec, hj]
+
+/-- **Sparse double sum lemma**: the double sum of M·w·w over a sparse vector
+    reduces to 4 terms when only positions 0 and j are nonzero.
+
+    Σᵢ Σⱼ M(i,k) w(i) w(k) = M(0,0)s² + M(0,j)st + M(j,0)ts + M(j,j)t²
+
+    With symmetry M(0,j) = M(j,0), this is:
+    M(0,0)s² + 2M(0,j)st + M(j,j)t² -/
+lemma sparse_double_sum {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+    (hSym : ∀ i j, M i j = M j i)
+    (j : Fin (n + 1)) (hj : j ≠ 0) (s t : ℝ) :
+    ∑ a : Fin (n + 1), ∑ b : Fin (n + 1), M a b * sparseVec j s t a * sparseVec j s t b =
+    M 0 0 * s * s + 2 * M 0 j * s * t + M j j * t * t := by
+  -- Every term with a ∉ {0, j} or b ∉ {0, j} vanishes
+  -- because sparseVec is 0 there.
+  -- Strategy: split each sum into cases a = 0, a = j, a = other.
+  -- Terms with a = other: sparseVec = 0, so term = 0.
+  -- Terms with a ∈ {0, j}: split b similarly.
+  sorry -- Finset.sum extraction: sparse vector → 4 nonzero terms
+
+/-! ### The 2D restriction via sparse vectors -/
+
+/-- **Restriction theorem**: M vanishes on the 2D null restriction.
+
+    For any k, restrict to the (0, k+1) plane using a sparse vector.
+    The 1+1 null-cone theorem then applies. -/
 theorem restriction_preserves_null {n : ℕ}
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
@@ -49,27 +61,31 @@ theorem restriction_preserves_null {n : ℕ}
       (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k : Fin n) :
-    -- The 2D restriction vanishes on null vectors of -s² + t² = 0
     ∀ v : Fin 2 → ℝ, minkQuad v = 0 →
       genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v = 0 := by
   intro v hv
-  -- Embed v into ℝ^{n+1}: put v₀ at position 0, v₁ at position k+1, rest = 0
-  let w : Fin (n + 1) → ℝ := fun i =>
-    if i = 0 then v 0
-    else if i = Fin.succ k then v 1
-    else 0
-  -- w is null in ℝ^{n+1}: only positions 0 and k+1 are nonzero
-  -- so -w₀² + w_{k+1}² = -v₀² + v₁² = minkQuad v = 0
-  -- The double sum of M over w reduces to the 3 nonzero-index terms
-  -- giving genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v
-  -- This is the Finset.sum extraction step.
-  sorry -- Mechanical: sparse vector w has 2 nonzero entries → double sum has 4 nonzero terms
+  -- Use sparse vector: w = sparseVec (Fin.succ k) (v 0) (v 1)
+  let w := sparseVec (Fin.succ k) (v 0) (v 1)
+  -- w is null
+  have hw_null : -(w 0) ^ 2 + ∑ i : Fin n, (w (Fin.succ i)) ^ 2 = 0 := by
+    sorry -- sparse sum extraction: w nonzero only at 0 and succ k
+  -- Apply h_null
+  have hMw := h_null w hw_null
+  -- hMw: the full double sum = 0
+  -- genQuad = the same sum restricted to {0, k+1}
+  -- Both equal 0 because the non-{0,k+1} terms vanish (sparse).
+  simp only [genQuad]
+  -- Goal: M 0 0 * (v 0)² + 2 * M 0 (succ k) * (v 0) * (v 1) +
+  --        M (succ k) (succ k) * (v 1)² = 0
+  -- This equals hMw (full sum) because all other terms are zero.
+  -- We need: full sum = this expression.
+  -- Use sparse_double_sum as the key extraction... but it has a sorry.
+  -- Alternative: directly prove this special case.
+  sorry
 
-/-! ### Apply the 1+1 null-cone theorem to each restriction -/
+/-! ### Apply the 1+1 null-cone theorem -/
 
-/-- **Cross terms vanish**: M(0, k+1) = 0 for all k.
-
-    By restriction to the (0, k+1) plane and the 1+1 null-cone theorem. -/
+/-- **Cross terms vanish**: M(0, k+1) = 0. -/
 theorem cross_terms_vanish {n : ℕ} (hn : 0 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
@@ -78,14 +94,10 @@ theorem cross_terms_vanish {n : ℕ} (hn : 0 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k : Fin n) :
     M 0 (Fin.succ k) = 0 := by
-  -- The 1+1 null-cone theorem gives: b = 0 for the restriction
-  -- where a = M(0,0), b = M(0, k+1), c = M(k+1, k+1)
   have h_restrict := restriction_preserves_null M hSym h_null k
-  have ⟨hb, _⟩ := null_cone_coeffs (M 0 0) (M 0 (Fin.succ k))
-    (M (Fin.succ k) (Fin.succ k)) h_restrict
-  exact hb
+  exact (null_cone_coeffs _ _ _ h_restrict).1
 
-/-- **Time-space relation**: M(0,0) = -M(k+1, k+1) for all k. -/
+/-- **Time-space relation**: M(k+1,k+1) = -M(0,0). -/
 theorem time_space_relation {n : ℕ} (hn : 0 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
@@ -95,11 +107,9 @@ theorem time_space_relation {n : ℕ} (hn : 0 < n)
     (k : Fin n) :
     M (Fin.succ k) (Fin.succ k) = -(M 0 0) := by
   have h_restrict := restriction_preserves_null M hSym h_null k
-  have ⟨_, hc⟩ := null_cone_coeffs (M 0 0) (M 0 (Fin.succ k))
-    (M (Fin.succ k) (Fin.succ k)) h_restrict
-  exact hc
+  exact (null_cone_coeffs _ _ _ h_restrict).2
 
-/-- **Spatial diagonal uniformity**: M(k+1,k+1) = M(l+1,l+1). -/
+/-- **Spatial uniformity**: M(k+1,k+1) = M(l+1,l+1). -/
 theorem spatial_uniform {n : ℕ} (hn : 0 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
@@ -108,16 +118,10 @@ theorem spatial_uniform {n : ℕ} (hn : 0 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) :
     M (Fin.succ k) (Fin.succ k) = M (Fin.succ l) (Fin.succ l) := by
-  -- Both equal -M(0,0) by time_space_relation
-  have hk := time_space_relation hn M hSym h_null k
-  have hl := time_space_relation hn M hSym h_null l
-  linarith
+  linarith [time_space_relation hn M hSym h_null k,
+            time_space_relation hn M hSym h_null l]
 
-/-- **Off-diagonal spatial vanishing**: M(k+1, l+1) = 0 for k ≠ l.
-
-    Restrict to the 3D subspace (0, k+1, l+1). A null vector in this
-    subspace has -s² + t² + u² = 0. Evaluate at (1, cosθ, sinθ)
-    for two values of θ to extract M(k+1, l+1) = 0. -/
+/-- **Off-diagonal vanishing**: M(k+1, l+1) = 0 for k ≠ l. -/
 theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
@@ -126,22 +130,15 @@ theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) (hkl : k ≠ l) :
     M (Fin.succ k) (Fin.succ l) = 0 := by
-  -- Embed (1, 1/√2, 1/√2, 0...) and (1, 1/√2, -1/√2, 0...) into ℝ^{n+1}
-  -- Both are null. Their S-values differ by 4·M(k+1,l+1)·(1/2).
-  -- Since both are 0, M(k+1,l+1) = 0.
-  sorry -- requires 3D subspace restriction + Finset.sum evaluation
+  -- Use null vectors (1, ..., eₖ/√2 + eₗ/√2, ...) and (1, ..., eₖ/√2 - eₗ/√2, ...)
+  -- Their S-values differ by 4·M(k+1,l+1)·(1/2).
+  -- Since both are null and both give S = 0, M(k+1,l+1) = 0.
+  sorry
 
 /-! ### The general null-cone theorem -/
 
-/-- **Null-cone theorem (general n+1 dimensions, n ≥ 2).**
-
-    If M is symmetric and S_M vanishes on all null vectors of η,
-    then M is proportional to η:
-    - Cross terms M(0, k+1) = 0
-    - Off-diagonal spatial M(k+1, l+1) = 0 for k ≠ l
-    - All spatial diagonals equal: M(k+1,k+1) = M(l+1,l+1)
-    - Time-space: M(k+1,k+1) = -M(0,0) -/
-theorem null_cone_general_2plus {n : ℕ} (hn : 1 < n)
+/-- **Null-cone theorem (general n+1, n ≥ 2).** -/
+theorem null_cone_general {n : ℕ} (hn : 1 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
     (h_null : ∀ v : Fin (n + 1) → ℝ,
