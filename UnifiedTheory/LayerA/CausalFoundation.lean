@@ -25,6 +25,7 @@ import Mathlib.Order.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import Mathlib.Analysis.Real.Pi.Bounds
 
 namespace UnifiedTheory.LayerA.CausalFoundation
 
@@ -96,15 +97,12 @@ theorem dimension_fractions_distinct :
   -- These are numerical facts about pi; the key insight is that
   -- dimension fractions are distinct, making dimension recoverable.
   refine ⟨?_, ?_, ?_⟩
-  · -- 1/2 ≠ 3π/16: since π > 3, 3π/16 > 9/16 > 1/2
+  · -- 1/2 ≠ 3π/16: since 8/3 < 3 < π, we have π ≠ 8/3
     simp [dimensionFraction]
-    sorry -- 1/2 ≠ 3π/16; needs π ≠ 8/3
-  · -- 3π/16 ≠ 2/3: since π < 4, 3π/16 < 12/16 = 3/4 and 2/3 < 3/4
-    -- but we need exact: 3π/16 = 2/3 → π = 32/9 ≈ 3.556
-    -- π ≠ 32/9 because 32/9 < 3.6 < π would need π > 3.556
-    -- Actually this is hard without tighter pi bounds. Use sorry.
+    intro h; linarith [Real.pi_gt_three]
+  · -- 3π/16 ≠ 2/3: since π < 32/9, we have 3π/16 < 2/3, so ≠
     simp [dimensionFraction]
-    sorry -- needs: 3π/16 ≠ 2/3, i.e., π ≠ 32/9; true but needs pi bounds
+    intro h; linarith [Real.pi_lt_d2]
   · simp [dimensionFraction]; norm_num
 
 /-! ### Stage 3: Conformal metric from causal order (OPEN) -/
@@ -181,7 +179,15 @@ theorem metric_from_conformal_and_volume
     (h_constraint : Omega ^ n = vol_ratio) :
     -- The conformal factor Ω is uniquely determined by vol_ratio
     Omega = vol_ratio ^ ((1 : ℝ) / (n : ℝ)) := by
-  sorry -- Omega^n = vol_ratio with Omega > 0 → Omega = vol_ratio^(1/n); rpow algebra
+  -- Omega^n = vol_ratio, Omega > 0
+  -- → Omega = vol_ratio^(1/n)
+  -- Proof: Omega = (Omega^n)^(1/n) = vol_ratio^(1/n)
+  have hdn : (↑n : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  conv_lhs => rw [show Omega = (Omega ^ n) ^ ((1:ℝ) / n) from by
+    rw [← Real.rpow_natCast Omega n, ← Real.rpow_mul hΩ.le,
+        show (↑n : ℝ) * ((1:ℝ) / ↑n) = 1 from mul_div_cancel₀ 1 hdn,
+        Real.rpow_one]]
+  rw [h_constraint]
 
 /-! ### Stage 6: Connect to the framework (PROVABLE given stages 3-5) -/
 

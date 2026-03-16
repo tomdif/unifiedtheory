@@ -159,8 +159,10 @@ theorem proper_time_roundtrip
     field_simp
   rw [this]
   -- (τ^d)^(1/d) = τ for τ > 0, d > 0
-  -- (τ^d)^(1/d) = τ for τ > 0, d > 0
-  sorry -- rpow algebra: (x^n)^(1/n) = x for x > 0, n > 0
+  rw [← Real.rpow_natCast τ d, ← Real.rpow_mul hτ.le]
+  have hdn : (↑d : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (by omega)
+  rw [show (↑d : ℝ) * ((1:ℝ) / ↑d) = 1 from mul_div_cancel₀ 1 hdn]
+  exact Real.rpow_one τ
 
 /-! ### The volume-from-counting theorem -/
 
