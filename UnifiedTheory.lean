@@ -18,6 +18,7 @@ import UnifiedTheory.LayerA.SinglePrimitive
 import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.LayerA.LinearizedFieldEqs
 import UnifiedTheory.LayerA.ExactRegime
+import UnifiedTheory.LayerA.GaugeConnection
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
