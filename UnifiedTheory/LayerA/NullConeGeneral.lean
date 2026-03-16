@@ -1,153 +1,159 @@
 /-
-  LayerA/NullConeGeneral.lean — Null-cone tensor lemma for general n+1 dimensions
+  LayerA/NullConeGeneral.lean — Null-cone theorem for general n+1 dimensions
 
-  Extends the 1+1 result to arbitrary dimension: if a symmetric quadratic
-  form vanishes on all null vectors of an indefinite nondegenerate form,
-  it is proportional to that form.
+  Strategy: instead of evaluating Finset.sums at test vectors (tedious),
+  prove everything by RESTRICTING to 2D subspaces where the 1+1 theorem
+  applies directly.
 
-  Strategy: use n+1 test vectors to extract all coefficients.
-  For the Minkowski form η = -v₀² + v₁² + ... + vₙ²:
-  - Test at (1, eᵢ) for each spatial basis vector eᵢ (n tests)
-  - Test at (1, (eᵢ + eⱼ)/√2) for pairs (n choose 2 tests)
-  - These determine all diagonal and off-diagonal coefficients.
-
-  The proof shows: any symmetric form S with S(v,v) = 0 on the null
-  cone of η must have S = c·η for some scalar c.
-
-  Proven for:
-  - General dimension n+1 using Fin (n+1)
-  - Quadratic form parametrized by a symmetric matrix
+  For any pair of indices (0, k+1), restrict to the 2D subspace
+  spanned by e₀ and e_{k+1}. The Minkowski form restricts to the
+  1+1 Minkowski form. The null-cone theorem in that subspace gives
+  the coefficient relations.
 -/
+import UnifiedTheory.LayerA.NullConeTensor
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.LinearAlgebra.Matrix.Symmetric
 
 namespace UnifiedTheory.LayerA.NullConeGeneral
 
-open Finset
+/-! ### Restriction to 2D subspaces -/
 
-/-! ### Minkowski form in n+1 dimensions -/
+/-- Restrict a quadratic form on ℝ^{n+1} to the 2D subspace
+    spanned by coordinates 0 and k+1.
+    The restriction maps (s, t) ↦ v where v₀ = s, v_{k+1} = t, rest = 0. -/
+def restrict2D {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+    (k : Fin n) (s t : ℝ) : ℝ :=
+  M 0 0 * s * s + 2 * M 0 (Fin.succ k) * s * t +
+  M (Fin.succ k) (Fin.succ k) * t * t
 
-/-- Minkowski quadratic form on ℝ^{n+1}: η(v) = -v₀² + Σᵢ vᵢ² -/
-def minkQuadN {n : ℕ} (v : Fin (n + 1) → ℝ) : ℝ :=
-  -(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2
+/-- The Minkowski form restricted to the (0, k+1) plane is the 1+1 Minkowski form. -/
+theorem mink_restrict {n : ℕ} (k : Fin n) (s t : ℝ) :
+    -s ^ 2 + t ^ 2 = genQuad (-1) 0 1 (fun i : Fin 2 => if i = 0 then s else t) := by
+  simp only [genQuad, show (0 : Fin 2) = 0 from rfl,
+    show ¬((1 : Fin 2) = 0) from by decide, ite_true, ite_false]
+  ring
 
-/-- General symmetric quadratic form: S(v) = Σᵢⱼ M(i,j) vᵢ vⱼ -/
-def symQuad {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ) (v : Fin (n + 1) → ℝ) : ℝ :=
-  ∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j
+/-- The restricted form matches the 1+1 genQuad parametrization. -/
+theorem restrict_is_genQuad {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+    (k : Fin n) (v : Fin 2 → ℝ) :
+    genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v =
+    restrict2D M k (v 0) (v 1) := by
+  simp [genQuad, restrict2D]; ring
 
-/-! ### Test vectors -/
-
-/-- Unit vector: eₖ has 1 at position k, 0 elsewhere. -/
-def unitVec {m : ℕ} (k : Fin m) : Fin m → ℝ :=
-  fun i => if i = k then 1 else 0
-
-/-- Null test vector: (1, eₖ) for spatial direction k.
-    This has v₀ = 1 and v_{k+1} = 1, all others 0.
-    It's null because -1² + 1² = 0. -/
-def nullTestSingle {n : ℕ} (k : Fin n) : Fin (n + 1) → ℝ :=
-  fun i => if i = 0 then 1 else if i = Fin.succ k then 1 else 0
-
-/-- Null test vector with negative spatial: (1, -eₖ). -/
-def nullTestNeg {n : ℕ} (k : Fin n) : Fin (n + 1) → ℝ :=
-  fun i => if i = 0 then 1 else if i = Fin.succ k then -1 else 0
-
-/-- Null test with two spatial directions: (1, (eₖ + eₗ)/√2).
-    Null because -1 + (1/√2)² + (1/√2)² = -1 + 1/2 + 1/2 = 0. -/
-noncomputable def nullTestPair {n : ℕ} (k l : Fin n) : Fin (n + 1) → ℝ :=
-  fun i => if i = 0 then 1
-    else if i = Fin.succ k then 1 / Real.sqrt 2
-    else if i = Fin.succ l then 1 / Real.sqrt 2
-    else 0
-
-/-! ### Coefficient extraction -/
-
-/-- **Diagonal extraction**: evaluating S at (1, eₖ) and (1, -eₖ)
-    extracts the diagonal coefficient M(k+1, k+1) and the
-    time-spatial cross term M(0, k+1). -/
-theorem diagonal_extraction {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+/-- **Key lemma**: if M vanishes on all null vectors of η in ℝ^{n+1},
+    then the 2D restriction to the (0, k+1) plane vanishes on all
+    null vectors of the restricted η. -/
+theorem restriction_preserves_null {n : ℕ}
+    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v, minkQuadN v = 0 → symQuad M v = 0)
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k : Fin n) :
-    -- Adding S(1,eₖ) + S(1,-eₖ) gives: 2(M₀₀ + M_{k+1,k+1} + 2M₀₀)
-    -- Subtracting gives: 4 M(0, k+1)
-    -- These two equations, combined with the null condition, determine
-    -- the diagonal and cross terms.
+    -- The 2D restriction vanishes on null vectors of -s² + t² = 0
+    ∀ v : Fin 2 → ℝ, minkQuad v = 0 →
+      genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v = 0 := by
+  intro v hv
+  -- Embed v into ℝ^{n+1}: put v₀ at position 0, v₁ at position k+1, rest = 0
+  let w : Fin (n + 1) → ℝ := fun i =>
+    if i = 0 then v 0
+    else if i = Fin.succ k then v 1
+    else 0
+  -- w is null in ℝ^{n+1}: only positions 0 and k+1 are nonzero
+  -- so -w₀² + w_{k+1}² = -v₀² + v₁² = minkQuad v = 0
+  -- The double sum of M over w reduces to the 3 nonzero-index terms
+  -- giving genQuad (M 0 0) (M 0 (Fin.succ k)) (M (Fin.succ k) (Fin.succ k)) v
+  -- This is the Finset.sum extraction step.
+  sorry -- Mechanical: sparse vector w has 2 nonzero entries → double sum has 4 nonzero terms
+
+/-! ### Apply the 1+1 null-cone theorem to each restriction -/
+
+/-- **Cross terms vanish**: M(0, k+1) = 0 for all k.
+
+    By restriction to the (0, k+1) plane and the 1+1 null-cone theorem. -/
+theorem cross_terms_vanish {n : ℕ} (hn : 0 < n)
+    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+    (hSym : ∀ i j, M i j = M j i)
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
+    (k : Fin n) :
     M 0 (Fin.succ k) = 0 := by
-  -- S(1, eₖ) = 0 and S(1, -eₖ) = 0 on the null cone
-  -- Their difference = 4 · M(0, k+1) · 1 · 1 = 0
-  -- So M(0, k+1) = 0
-  sorry -- requires careful symQuad evaluation at test vectors
+  -- The 1+1 null-cone theorem gives: b = 0 for the restriction
+  -- where a = M(0,0), b = M(0, k+1), c = M(k+1, k+1)
+  have h_restrict := restriction_preserves_null M hSym h_null k
+  have ⟨hb, _⟩ := null_cone_coeffs (M 0 0) (M 0 (Fin.succ k))
+    (M (Fin.succ k) (Fin.succ k)) h_restrict
+  exact hb
 
-/-- **Off-diagonal extraction**: evaluating at null pair vectors
-    extracts M(k+1, l+1) for k ≠ l. -/
-theorem offdiagonal_extraction {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+/-- **Time-space relation**: M(0,0) = -M(k+1, k+1) for all k. -/
+theorem time_space_relation {n : ℕ} (hn : 0 < n)
+    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v, minkQuadN v = 0 → symQuad M v = 0)
-    (k l : Fin n) (hkl : k ≠ l) :
-    M (Fin.succ k) (Fin.succ l) = 0 := by
-  sorry -- requires evaluation at nullTestPair and nullTestPair with sign flip
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
+    (k : Fin n) :
+    M (Fin.succ k) (Fin.succ k) = -(M 0 0) := by
+  have h_restrict := restriction_preserves_null M hSym h_null k
+  have ⟨_, hc⟩ := null_cone_coeffs (M 0 0) (M 0 (Fin.succ k))
+    (M (Fin.succ k) (Fin.succ k)) h_restrict
+  exact hc
 
-/-- **Spatial diagonal uniformity**: all spatial diagonal entries are equal.
-    M(1,1) = M(2,2) = ... = M(n,n). -/
-theorem spatial_diagonal_uniform {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+/-- **Spatial diagonal uniformity**: M(k+1,k+1) = M(l+1,l+1). -/
+theorem spatial_uniform {n : ℕ} (hn : 0 < n)
+    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v, minkQuadN v = 0 → symQuad M v = 0)
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) :
     M (Fin.succ k) (Fin.succ k) = M (Fin.succ l) (Fin.succ l) := by
-  sorry -- from evaluating at (1, eₖ) and (1, eₗ), both null
+  -- Both equal -M(0,0) by time_space_relation
+  have hk := time_space_relation hn M hSym h_null k
+  have hl := time_space_relation hn M hSym h_null l
+  linarith
 
-/-- **Time-spatial relation**: M(0,0) = -M(k+1,k+1) for any k. -/
-theorem time_spatial_relation {n : ℕ} (M : Fin (n + 1) → Fin (n + 1) → ℝ)
+/-- **Off-diagonal spatial vanishing**: M(k+1, l+1) = 0 for k ≠ l.
+
+    Restrict to the 3D subspace (0, k+1, l+1). A null vector in this
+    subspace has -s² + t² + u² = 0. Evaluate at (1, cosθ, sinθ)
+    for two values of θ to extract M(k+1, l+1) = 0. -/
+theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
+    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v, minkQuadN v = 0 → symQuad M v = 0)
-    (k : Fin n) :
-    M 0 0 = -(M (Fin.succ k) (Fin.succ k)) := by
-  sorry -- from S(1, eₖ) = 0: M₀₀ + M_{k+1,k+1} + cross terms = 0
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
+    (k l : Fin n) (hkl : k ≠ l) :
+    M (Fin.succ k) (Fin.succ l) = 0 := by
+  -- Embed (1, 1/√2, 1/√2, 0...) and (1, 1/√2, -1/√2, 0...) into ℝ^{n+1}
+  -- Both are null. Their S-values differ by 4·M(k+1,l+1)·(1/2).
+  -- Since both are 0, M(k+1,l+1) = 0.
+  sorry -- requires 3D subspace restriction + Finset.sum evaluation
 
 /-! ### The general null-cone theorem -/
 
-/-- **Null-cone theorem (general n+1 dimensions).**
+/-- **Null-cone theorem (general n+1 dimensions, n ≥ 2).**
 
-    If a symmetric matrix M defines a quadratic form that vanishes
-    on all null vectors of the Minkowski form, then M is proportional
-    to the Minkowski metric:
-
-    M = c · diag(-1, 1, 1, ..., 1)
-
-    Proof structure:
-    1. M(0, k+1) = 0 for all k (diagonal_extraction)
-    2. M(k+1, l+1) = 0 for k ≠ l (offdiagonal_extraction)
-    3. M(k+1, k+1) = M(l+1, l+1) for all k, l (spatial_diagonal_uniform)
-    4. M(0,0) = -M(1,1) (time_spatial_relation)
-
-    Steps 1-2 say M is diagonal. Step 3 says all spatial entries are equal.
-    Step 4 relates time to space. Together: M = c · η. -/
-theorem null_cone_general {n : ℕ} (hn : 0 < n)
+    If M is symmetric and S_M vanishes on all null vectors of η,
+    then M is proportional to η:
+    - Cross terms M(0, k+1) = 0
+    - Off-diagonal spatial M(k+1, l+1) = 0 for k ≠ l
+    - All spatial diagonals equal: M(k+1,k+1) = M(l+1,l+1)
+    - Time-space: M(k+1,k+1) = -M(0,0) -/
+theorem null_cone_general_2plus {n : ℕ} (hn : 1 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v : Fin (n + 1) → ℝ, minkQuadN v = 0 → symQuad M v = 0) :
-    -- M is proportional to the Minkowski metric:
-    -- M(i,j) = 0 for i ≠ j
-    -- M(k+1, k+1) = M(1,1) for all k (spatial entries equal)
-    -- M(0,0) = -M(1,1) (time = negative of space)
-    (∀ (k : Fin n), M 0 (Fin.succ k) = 0) ∧
-    (∀ (k l : Fin n), k ≠ l → M (Fin.succ k) (Fin.succ l) = 0) ∧
-    (∀ (k l : Fin n), M (Fin.succ k) (Fin.succ k) = M (Fin.succ l) (Fin.succ l)) ∧
-    (∀ (k : Fin n), M 0 0 = -(M (Fin.succ k) (Fin.succ k))) := by
-  exact ⟨
-    diagonal_extraction M hSym h_null,
-    offdiagonal_extraction M hSym h_null,
-    spatial_diagonal_uniform M hSym h_null,
-    time_spatial_relation M hSym h_null⟩
-
-/-- **Proportionality form**: M = c · η where c = -M(0,0). -/
-theorem null_cone_proportional {n : ℕ} (hn : 0 < n)
-    (M : Fin (n + 1) → Fin (n + 1) → ℝ)
-    (hSym : ∀ i j, M i j = M j i)
-    (h_null : ∀ v : Fin (n + 1) → ℝ, minkQuadN v = 0 → symQuad M v = 0) :
-    ∃ c : ℝ, ∀ v : Fin (n + 1) → ℝ, symQuad M v = c * minkQuadN v := by
-  obtain ⟨h_diag, h_offdiag, h_uniform, h_time⟩ := null_cone_general hn M hSym h_null
-  -- c = M(1,1) (any spatial diagonal entry)
-  sorry -- requires reassembling the quadratic form from the coefficient conditions
+    (h_null : ∀ v : Fin (n + 1) → ℝ,
+      (-(v 0) ^ 2 + ∑ i : Fin n, (v (Fin.succ i)) ^ 2 = 0) →
+      (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0)) :
+    (∀ k : Fin n, M 0 (Fin.succ k) = 0) ∧
+    (∀ k l : Fin n, k ≠ l → M (Fin.succ k) (Fin.succ l) = 0) ∧
+    (∀ k l : Fin n, M (Fin.succ k) (Fin.succ k) = M (Fin.succ l) (Fin.succ l)) ∧
+    (∀ k : Fin n, M (Fin.succ k) (Fin.succ k) = -(M 0 0)) :=
+  ⟨cross_terms_vanish (by omega) M hSym h_null,
+   offdiag_vanish hn M hSym h_null,
+   spatial_uniform (by omega) M hSym h_null,
+   time_space_relation (by omega) M hSym h_null⟩
 
 end UnifiedTheory.LayerA.NullConeGeneral
