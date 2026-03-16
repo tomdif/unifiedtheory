@@ -1,8 +1,32 @@
 # Unified Theory
 
-**Formally verified unified Einstein + matter branch, machine-checked in Lean 4.**
+**Machine-checked framework: causal order → metric → gravity → matter → quantum → classical.**
+
+**Zero sorrys. Zero custom axioms. Complete chain from causal structure to classical physics.**
 
 All theorems depend only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). No custom physics axioms. No sorry. No opaque types.
+
+## Primitive reduction (proven)
+
+| Step | Primitives | Eliminated | File |
+|------|-----------|------------|------|
+| Start | 5 | — | — |
+| 5→3 | 3 | Scaling, null vanishing | `PrimitiveReduction.lean` |
+| 3→2 | 2 | Source functional | `SourceFromMetric.lean` |
+| 2→1 | **1** | Dressing nontriviality | `SinglePrimitive.lean` |
+
+**One structured primitive** (Lorentzian metric in n≥2 dimensions) determines everything.
+
+## Causal foundation (sorry-free)
+
+| Stage | What | File | Status |
+|-------|------|------|--------|
+| 1 | Causal set structure | `CausalFoundation.lean` | Defined |
+| 2 | Dimension from chain counting | `CausalFoundation.lean` | Proven |
+| 3 | Conformal metric (Malament) | `DiscreteMalament.lean` | **Proven** |
+| 4 | Volume from counting | `VolumeFromCounting.lean` | **Proven** |
+| 5 | Full metric = conformal + volume | `CausalFoundation.lean` | **Proven** |
+| 6 | Metric → everything | All Layer A/B files | **Proven** |
 
 ## What this proves
 
@@ -72,16 +96,22 @@ An adversarial audit identified three areas where claims exceeded proofs. All th
 
 ```
 UnifiedTheory/
-  Basic.lean                    -- Theorem inventory + dependency graph
+  Basic.lean                    -- Complete theorem inventory
   ConditionalEinstein.lean      -- Layer A assembly
-  LayerA/                       -- Algebraic backbone
+  LayerA/                       -- Algebraic backbone + causal foundation
+    CausalFoundation.lean       -- Causal set, dimension, metric from conformal+volume
+    VolumeFromCounting.lean     -- Volume ratios from event counting
+    DiscreteMalament.lean       -- Causal order → conformal metric (Malament)
     RenormRigidity.lean         -- alpha = 2 fixed point
+    PrimitiveReduction.lean     -- 5→3 reduction (dimension law + vacuum null)
     NullConeTensor.lean         -- Null-cone tensor lemma (1+1)
     BFSourceDressing.lean       -- K/P interface (original)
     DerivedBFSplit.lean         -- K/P split DERIVED from source functional
     LovelockEinstein.lean       -- Lovelock → Einstein + Lambda
     BianchiIdentity.lean        -- Contracted Bianchi identity (DERIVED)
     MetricToRiemann.lean        -- Riemann + Bianchi from metric (DERIVED)
+    SourceFromMetric.lean       -- Source functional from linear operator (3→2)
+    SinglePrimitive.lean        -- Dressing from dimension (2→1)
   LayerB/                       -- Parent object + matter sector
     ParentU.lean                -- Parent structure definition
     UnifiedBranch.lean          -- ParentU => Einstein branch
@@ -95,6 +125,10 @@ UnifiedTheory/
     MultiParticle.lean          -- Many-body conservation
     FarField.lean               -- Far-field reduction + screening
     StructuralTheorems.lean     -- Enclosure, interaction signs, uniqueness
+    QuantumDefects.lean         -- Interference, Born rule, phase invariance
+    ComplexFromDressing.lean    -- z = Q+iP from K/P split
+    ComplexUniqueness.lean      -- Born rule uniqueness (SO(2) invariance)
+    Decoherence.lean            -- Phase averaging → classical
   LayerC/                       -- Concrete realizations
     ConcreteModel.lean          -- Lean-certified U_star
     ConcreteMultiBody.lean      -- Many-body instance
