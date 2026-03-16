@@ -125,20 +125,72 @@ theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) (hkl : k ≠ l) :
     M (Fin.succ k) (Fin.succ l) = 0 := by
-  -- Use the already-proven results to simplify.
-  -- We know: M(0, succ k) = 0, M(0, succ l) = 0 (cross_terms_vanish)
-  -- M(succ k, succ k) = -M(0,0), M(succ l, succ l) = -M(0,0) (time_space)
-  -- Construct a null vector w with w(0)=1, w(succ k)=1, w(succ l)=0
-  -- It's null: -1 + 1 = 0. Apply h_null.
-  -- The double sum gives: M(0,0) + 2·0·1 + M(sk,sk)·1 = M(0,0) + (-M(0,0)) = 0 ✓
-  -- Now construct w' with w'(0)=1, w'(succ k)=1/√2, w'(succ l)=1/√2
-  -- It's null: -1 + 1/2 + 1/2 = 0. Apply h_null.
-  -- The sum gives: M(0,0) + (-M(0,0))·1/2 + (-M(0,0))·1/2 + 2·M(sk,sl)·1/2 = 0
-  -- = M(0,0) - M(0,0) + M(sk,sl) = M(sk,sl) = 0
-  -- So M(succ k, succ l) = 0.
+  -- Use polarization: the bilinear form B(v,w) = (S(v+w) - S(v) - S(w)) / 2
+  -- where S(v) = Σᵢⱼ M(i,j)v(i)v(j) is the quadratic form.
+  -- We know S vanishes on all null vectors.
   --
-  -- This requires a 3-support version of the sparse sum lemma.
-  -- For now, we use the cross_terms and time_space results we already proved.
+  -- Take v = (1, eₖ, 0, ...) and w = (1, 0, eₗ, ...).
+  -- Both are null: S(v) = 0, S(w) = 0.
+  -- v + w = (2, eₖ, eₗ, ...): NOT null (-4+1+1=-2≠0).
+  --
+  -- Better: take v = (1, eₖ) and w = (0, eₗ - eₖ).
+  -- Hmm, w is not null either.
+  --
+  -- Cleanest: we know all coefficients of M except M(sk,sl).
+  -- M is determined by: M(0,0), M(sk,sl), and the proven relations.
+  -- The quadratic form is:
+  --   S(v) = M(0,0)v₀² + (-M(0,0))Σvₖ² + 2·ΣM(sk,sl)·vₖvₗ
+  -- For S to vanish on ALL null vectors (not just 2D restricted ones),
+  -- the off-diagonal terms must vanish.
+  --
+  -- Proof by specific null vector: v = (√2, 1, 1, 0, 0, ...)
+  -- where the 1s are at positions succ k and succ l.
+  -- This is null: -2 + 1 + 1 = 0.
+  --
+  -- We already proved restriction_preserves_null for 2D.
+  -- The key new content: use h_null on a 3-support vector.
+  -- Rather than fighting Finset, use an AXIOM-FREE workaround:
+  -- The restriction to the (succ k, succ l) SPATIAL plane,
+  -- combined with the known time-space relation, forces M(sk,sl) = 0.
+  --
+  -- Specifically: from restriction_preserves_null at k and at l,
+  -- we have genQuad(M00, 0, -M00) vanishes on the null cone.
+  -- This means S restricted to (0, sk) is -M00·η.
+  -- S restricted to (0, sl) is also -M00·η.
+  -- The FULL S on vectors (v₀, vₖ, vₗ) must be consistent with both.
+  -- The only consistent value for M(sk,sl) is 0.
+  --
+  -- Formal proof using the polarization identity:
+  -- S(v) = 0 for all null v means Σᵢⱼ M(i,j)·vᵢ·vⱼ = 0 on the null cone.
+  -- The null cone is the zero set of -v₀² + Σvᵢ².
+  -- By our null-cone theorem in 1+1, S = c·η on each 2D restriction.
+  -- Consistency across restrictions forces off-diagonal = 0.
+  --
+  -- This is actually a consequence of the BILINEAR null-cone theorem:
+  -- if the BILINEAR form B(v,w) = Σ M(i,j)vᵢwⱼ satisfies
+  -- B(v,v) = 0 for all null v, then B = c·η_bilinear.
+  -- In particular, B(eₖ, eₗ) = c·η(eₖ, eₗ) = 0 for k ≠ l (spatial).
+  -- So M(sk, sl) = B(eₛₖ, eₛₗ) = 0.
+  --
+  -- The bilinear version follows from the quadratic version by polarization:
+  -- B(v,w) = (B(v+w,v+w) - B(v,v) - B(w,w)) / 2
+  -- If v, w, v+w are all null, then B(v,w) = 0.
+  -- eₛₖ and eₛₗ are NOT null. But we can find null v, w
+  -- such that B(v,w) extracts M(sk,sl).
+  --
+  -- Take v = (1, eₖ) [null] and w = (1, eₗ) [null].
+  -- v + w = (2, eₖ + eₗ): not null (-4+1+1=-2≠0).
+  -- So we can't use polarization directly.
+  --
+  -- Take v = (1, eₖ) and w = (1, -eₗ): both null.
+  -- v + w = (2, eₖ - eₗ): null iff -4+1+1=-2≠0. Not null.
+  --
+  -- Take v = (1, eₖ) and w = (-1, eₗ): v null, w null ((-1)²=1²).
+  -- v + w = (0, eₖ + eₗ): null iff 0+1+1=2≠0. Not null.
+  --
+  -- None of these work for direct polarization.
+  -- The 3-support vector approach IS needed.
+  -- Let me just sorry this and mark it as the last gap.
   sorry
 
 /-! ### The general null-cone theorem -/
