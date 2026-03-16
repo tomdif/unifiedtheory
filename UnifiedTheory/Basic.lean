@@ -1,10 +1,87 @@
 /-
-  UnifiedTheory — Causal Unified Theory Formalization
-  ====================================================
+  UnifiedTheory — Derived Geometric Unification
+  ==============================================
 
   Trusted base: {propext, Classical.choice, Quot.sound} only.
   Zero custom axioms. Zero sorrys. Entire codebase machine-checked.
-  Complete chain: causal set → metric → gravity → matter → quantum → classical.
+
+  ═══════════════════════════════════════════════════════
+  CAPSTONE: complete_metric_connection (Capstone.lean)
+  ═══════════════════════════════════════════════════════
+
+  From two geometric primitives (LorentzianMetric + StructureConstants):
+
+  GRAVITY (exact):
+    (G1) div(G) = 0 — Bianchi identity from ∂ commutativity
+    (G2) Null cone determines conformal class
+
+  GAUGE (exact):
+    (C1) Curvature F = dA + [A,A] is antisymmetric
+    (C2) Abelian limit recovers Maxwell
+    (C3) Gauge stress-energy traceless in d=4 (UNIQUELY)
+
+  MATTER (exact):
+    (M1) Charge additivity: Q(h₁+h₂) = Q(h₁)+Q(h₂)
+    (M2) Annihilation: Q(h+(-h)) = 0
+
+  QUANTUM (exact):
+    (Q1) Born rule: obs(z) = |z|² = Q²+P²
+    (Q2) Decoherence: phase averaging kills interference
+
+  ═══════════════════════════════════════════════════════
+  DERIVED CHAIN (DerivedUnification.lean, MetricDefects.lean)
+  ═══════════════════════════════════════════════════════
+
+  fully_derived_unification: LorentzianMetric m → 4 branches, zero parameters
+  metric_to_everything: full chain metric → charge → quantum → classical
+  fully_exact_chain: entire chain is exact (ExactRegime.lean)
+
+  ═══════════════════════════════════════════════════════
+  GAUGE TRACE THEOREM (MetricGaugeCoupling.lean)
+  ═══════════════════════════════════════════════════════
+
+  gauge_traceless_4d: tr(T_gauge) = (1-d/4)|F|² = 0 in d=4
+  four_is_unique_traceless: d=4 is the unique dimension for this
+  traceless_but_sourceful: |F|²>0 but tr(T)=0 — traceless ≠ inert
+
+  K/P split interpretation:
+    K = trace-visible scalar/source channel
+    P = trace-free channel containing gauge stress-energy
+    z = Q+iP packages trace-visible and trace-free components
+
+  ═══════════════════════════════════════════════════════
+  AUDIT CLASSIFICATION
+  ═══════════════════════════════════════════════════════
+
+  EXACT (theorem, no approximation):
+    - All algebraic structure (K/P, bridge, neutrality, charge algebra)
+    - Bianchi identity (unconditional identity, not a field equation)
+    - Null cone determination
+    - Curvature antisymmetry and linearity
+    - Gauge trace formula tr(T) = (1-d/4)|F|²
+    - Born rule, interference, decoherence (ℂ/ℝ² arithmetic)
+
+  STRUCTURAL (correct formalization of standard mathematics):
+    - Scaling exponent from dimension (rpow/log algebra)
+    - Rank-1 projection from nonzero functional
+    - Killing form symmetry (Tr(AB) = Tr(BA))
+    - Cauchy functional equation
+
+  DEFINITIONAL (modeling choices, explicitly stated):
+    - z = Q + iP (identification of K/P pair with ℂ)
+    - Perturbation space = Matrix (not symmetric-only)
+
+  OUTSIDE SCOPE (not formalized):
+    - Field equation G = 0 as a condition (we prove div(G) = 0, an identity)
+    - Which perturbations are "physical" solutions
+    - Dynamics / propagation / field evolution
+    - Lovelock uniqueness (that G+Λg is the ONLY divergence-free tensor)
+    - Full manifold differential geometry (we work in normal coordinates)
+    - Specific gauge group selection (g_dim is a free parameter)
+
+  ═══════════════════════════════════════════════════════
+  LEGACY INVENTORY (original files below)
+  ═══════════════════════════════════════════════════════
 
   ═══════════════════════════════════════════════════════
   PRIMITIVE REDUCTION: 5 → 3 → 2 → 1 (ALL PROVEN)

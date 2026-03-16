@@ -42,6 +42,9 @@ import UnifiedTheory.LayerB.Decoherence
 
 import UnifiedTheory.LayerB.MetricDefects
 
+-- Capstone
+import UnifiedTheory.Capstone
+
 -- Layer C: Concrete Realizations
 import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
