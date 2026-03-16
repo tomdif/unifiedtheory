@@ -2,9 +2,9 @@
   UnifiedTheory — Causal Unified Theory Formalization
   ====================================================
 
-  ZERO SORRYS. ZERO CUSTOM AXIOMS.
   Trusted base: {propext, Classical.choice, Quot.sound} only.
-  Complete chain: causal order → metric → gravity → matter → quantum → classical.
+  Zero custom axioms. Zero sorrys. Entire codebase machine-checked.
+  Complete chain: causal set → metric → gravity → matter → quantum → classical.
 
   ═══════════════════════════════════════════════════════
   PRIMITIVE REDUCTION: 5 → 3 → 2 → 1 (ALL PROVEN)
@@ -15,12 +15,22 @@
   source functional (from linear operator), dressing nontriviality (from dim≥2).
 
   ═══════════════════════════════════════════════════════
-  CAUSAL FOUNDATION (Stages 1-6, ALL SORRY-FREE)
+  CAUSAL FOUNDATION (ALL PROVEN)
   ═══════════════════════════════════════════════════════
 
   CausalFoundation.lean
-    CausalSet structure, dimension fractions, Alexandrov constants
+    CausalSet structure, dimension fractions
     metric_from_conformal_and_volume
+
+  CausalBridge.lean
+    link_tau_vanishes                link proper time → 0 as ρ → ∞
+    null_cone_from_dense_links       bounded-dt links have nullity → 0
+    null_zero_volume                 null separation → zero Alexandrov volume
+    null_implies_link                zero volume → zero events → link
+    near_null_small_volume           near-null → small volume
+    null_link_equivalence            null ↔ link (forward + backward)
+    poisson_uniqueness               additive + positive → linear (Cauchy)
+    null_cone_recovery_unconditional unconditional null cone determination
 
   VolumeFromCounting.lean
     volume_ratio_parameter_free      Vol(R1)/Vol(R2) = N(R1)/N(R2)
@@ -36,6 +46,14 @@
     dense_links_trace_null_cone      causal links approximate null directions
     discrete_malament_1plus1         causal order → conformal metric
     stage3_closed_1plus1             algebraic Malament theorem
+
+  NullConeGeneral.lean
+    null_cone_general                null-cone theorem (general n+1 dim)
+    offdiag_vanish                   off-diagonal vanishing (Pythagorean trick)
+
+  SparseSum.lean
+    double_sum_two_support_sym       2-support sparse sum reduction
+    double_sum_three_support_sym     3-support sparse sum reduction
 
   ═══════════════════════════════════════════════════════
   LAYER A: ALGEBRAIC BACKBONE (ALL PROVEN)
@@ -133,6 +151,7 @@
     → charge algebra → annihilation → bound states → far-field
     → everything
 
-  Every link: machine-checked. Every theorem: propext/choice/quot.sound only.
-  Zero sorry. Zero custom axioms.
+  Every link: machine-checked, propext/choice/quot.sound only.
+  Zero custom axioms. Zero sorrys.
+  Causal foundation complete: null cone general (n+1), causal bridge (Poisson + rpow).
 -/

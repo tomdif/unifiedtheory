@@ -125,42 +125,48 @@ theorem offdiag_vanish {n : ℕ} (hn : 1 < n)
       (∑ i : Fin (n + 1), ∑ j : Fin (n + 1), M i j * v i * v j = 0))
     (k l : Fin n) (hkl : k ≠ l) :
     M (Fin.succ k) (Fin.succ l) = 0 := by
-  -- Pythagorean trick: use (5, 3, 4) since 5² = 3² + 4² = 25.
-  -- Build w with w(0)=5, w(succ k)=3, w(succ l)=4, rest=0.
-  -- This is null: -25 + 9 + 16 = 0.
-  -- Already proven: M(0,sk) = 0, M(0,sl) = 0, M(sk,sk) = M(sl,sl) = -M(0,0).
-  -- The double sum = 25·M(0,0) + 9·M(sk,sk) + 16·M(sl,sl) + 24·M(sk,sl)
-  --               = 25·M(0,0) + 9·(-M(0,0)) + 16·(-M(0,0)) + 24·M(sk,sl)
-  --               = 25·M(0,0) - 25·M(0,0) + 24·M(sk,sl)
-  --               = 24·M(sk,sl) = 0
-  -- So M(sk,sl) = 0. ✓
-  --
-  -- We use the 2D restriction approach on TWO vectors:
-  -- v₁ = (1, eₖ): null, gives restriction info for (0, sk) plane
-  -- v₂ = (5, 3·eₖ + 4·eₗ): null, but 3-support...
-  --
-  -- Actually, use the (0, succ k) restriction and (0, succ l) restriction
-  -- to get ALL cross and diagonal info. Then the Pythagorean vector gives
-  -- the off-diagonal.
-  --
-  -- The double sum on the Pythagorean vector uses SparseSum.
-  -- But SparseSum only handles 2-support. For 3-support, we need a trick.
-  --
-  -- TRICK: Subtract two 2-support evaluations from the 3-support one.
-  -- Evaluate at v = (5, 3·eₖ): null iff -25+9 = -16 ≠ 0. NOT null!
-  -- So we can't directly use h_null on a 2-support subset.
-  --
-  -- DIFFERENT TRICK: Use (1, eₖ) [null] and (1, eₗ) [null].
-  -- Both give double sum = 0. We know what those sums are.
-  -- The 3-support vector (5, 3, 4) also gives 0.
-  -- The DIFFERENCE between the 3-support sum and the sum of known terms
-  -- isolates M(sk,sl).
-  --
-  -- Actually, the cleanest: accept one sorry here. The math is clear,
-  -- the proof requires 3-support Finset extraction which is mechanical
-  -- but painful in Lean. This is the ONLY sorry in the entire repo.
-  -- The 1+1 chain (which IS the main proven chain) has zero sorrys.
-  sorry
+  -- Pythagorean trick: vector w with w(0)=5, w(succ k)=3, w(succ l)=4, rest=0.
+  -- This is null: -25 + 9 + 16 = 0. The double sum gives 24·M(sk,sl) = 0.
+  let sk := Fin.succ k
+  let sl := Fin.succ l
+  have hsk_ne_zero : sk ≠ 0 := Fin.succ_ne_zero k
+  have hsl_ne_zero : sl ≠ 0 := Fin.succ_ne_zero l
+  have hsk_ne_sl : sk ≠ sl := by intro h; exact hkl (Fin.succ_injective _ h)
+  -- Known results from 2D restrictions
+  have h_cross_k := cross_terms_vanish (by omega : 0 < n) M hSym h_null k
+  have h_cross_l := cross_terms_vanish (by omega : 0 < n) M hSym h_null l
+  have h_diag_k := time_space_relation (by omega : 0 < n) M hSym h_null k
+  have h_diag_l := time_space_relation (by omega : 0 < n) M hSym h_null l
+  -- Build Pythagorean vector
+  let w : Fin (n + 1) → ℝ := fun i =>
+    if i = (0 : Fin (n + 1)) then 5 else if i = sk then 3 else if i = sl then 4 else 0
+  -- w is 3-sparse
+  have hw_sparse : ∀ i : Fin (n + 1), i ≠ 0 → i ≠ sk → i ≠ sl → w i = 0 := by
+    intro i h0 hk hl; simp only [w, if_neg h0, if_neg hk, if_neg hl]
+  have hw0 : w 0 = 5 := if_pos rfl
+  have hwk : w sk = 3 := by
+    simp [w, hsk_ne_zero]
+  have hwl : w sl = 4 := by
+    simp [w, hsl_ne_zero, Ne.symm hsk_ne_sl]
+  -- w is null: -25 + 9 + 16 = 0
+  have hw_null : -(w 0) ^ 2 + ∑ i : Fin n, (w (Fin.succ i)) ^ 2 = 0 := by
+    rw [hw0]
+    -- The spatial sum has support only at k and l
+    have hsupp : ∀ i : Fin n, i ≠ k → i ≠ l → (w (Fin.succ i)) ^ 2 = 0 := by
+      intro i hik hil
+      have : w (Fin.succ i) = 0 := hw_sparse (Fin.succ i) (Fin.succ_ne_zero i)
+        (fun h => hik (Fin.succ_injective _ h)) (fun h => hil (Fin.succ_injective _ h))
+      simp [this]
+    rw [SparseSum.sum_pair _ k l hkl hsupp, hwk, hwl]; norm_num
+  -- Apply h_null
+  have hMw := h_null w hw_null
+  -- Expand double sum using 3-support lemma
+  have hexpand := SparseSum.double_sum_three_support_sym M hSym w 0 sk sl
+    hsk_ne_zero.symm hsl_ne_zero.symm hsk_ne_sl hw_sparse
+  rw [hexpand, hw0, hwk, hwl] at hMw
+  -- Substitute known values
+  rw [h_cross_k, h_cross_l, h_diag_k, h_diag_l] at hMw
+  linarith
 
 /-! ### The general null-cone theorem -/
 

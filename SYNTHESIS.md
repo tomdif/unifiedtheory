@@ -13,6 +13,12 @@ From a single mathematical structure (ParentU), we formally derive:
 7. **Annihilation**: d + d_bar is gravitationally inert.
 8. **Far-field reduction**: the gravitational far field of any composite depends only on net charge. Neutral composites are invisible.
 
+Additionally, the **causal foundation** is now complete:
+
+9. **Null-link equivalence**: null separations have zero Alexandrov volume, hence are always links; conversely, links have proper time → 0 as density → ∞.
+10. **Poisson uniqueness**: any additive, positive counting measure with N(0) = 0 is linear (Cauchy functional equation via Archimedean squeeze).
+11. **Null-cone general**: the null-cone determination theorem extends to arbitrary n+1 dimensions.
+
 All theorems are machine-checked in Lean 4 with Mathlib, depending only on the three standard Lean axioms (propext, Classical.choice, Quot.sound). No custom axioms. No sorry.
 
 ## What ParentU means physically
@@ -85,12 +91,13 @@ These are the three standard axioms of Lean 4's foundation. No physics axioms, n
 
 ## Status
 
-The project is frozen as of 2026-03-15. The formal core covers:
-- Gravity selection from a common parent object
-- Einstein endpoint derivation
-- Matter emergence via stable defects
-- Conserved charge algebra with conjugation and annihilation
-- Multi-particle sector with far-field reduction
-- Two concrete certified realizations
+As of 2026-03-16, the formal core is complete:
+- Causal foundation: null-link equivalence, Poisson uniqueness, null-cone general (n+1)
+- Gravity: RG rigidity, null-cone determination, Bianchi, Lovelock → Einstein + Λ
+- Matter: defect charge algebra, annihilation, far-field reduction
+- Quantum: complex amplitudes, Born rule uniqueness, decoherence
+- Concrete: two Lean-certified realizations (U_star, many-body)
+
+Zero sorrys. Zero custom axioms. Complete chain from causal order to classical physics.
 
 The next frontier is deeper physics: richer 3+1 models, interaction/binding laws, or a sharper dictionary to known particle physics.

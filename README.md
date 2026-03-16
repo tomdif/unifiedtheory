@@ -2,9 +2,9 @@
 
 **Machine-checked framework: causal order → metric → gravity → matter → quantum → classical.**
 
-**Zero sorrys. Zero custom axioms. Complete chain from causal structure to classical physics.**
+**Zero custom axioms. Zero sorrys. Complete chain from causal order to classical physics.**
 
-All theorems depend only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). No custom physics axioms. No sorry. No opaque types.
+Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). No custom physics axioms. No sorry. The entire chain — causal order → links → null cone → conformal metric → volume → full metric → Riemann → Bianchi → Einstein → matter → quantum → classical — is machine-checked.
 
 ## Primitive reduction (proven)
 
@@ -17,16 +17,20 @@ All theorems depend only on the three standard Lean axioms (`propext`, `Classica
 
 **One structured primitive** (Lorentzian metric in n≥2 dimensions) determines everything.
 
-## Causal foundation (sorry-free)
+## Causal foundation (all proven)
 
 | Stage | What | File | Status |
 |-------|------|------|--------|
 | 1 | Causal set structure | `CausalFoundation.lean` | Defined |
-| 2 | Dimension from chain counting | `CausalFoundation.lean` | Proven |
-| 3 | Conformal metric (Malament) | `DiscreteMalament.lean` | **Proven** |
-| 4 | Volume from counting | `VolumeFromCounting.lean` | **Proven** |
+| 2 | Dimension from chain counting | `CausalFoundation.lean` | **Proven** |
+| 3a | Null cone → conformal metric | `DiscreteMalament.lean` | **Proven** |
+| 3b | Links → null cone (null-link equivalence) | `CausalBridge.lean` | **Proven** |
+| 4a | Volume from counting | `VolumeFromCounting.lean` | **Proven** |
+| 4b | Counting is linear (Cauchy/Poisson) | `CausalBridge.lean` | **Proven** |
 | 5 | Full metric = conformal + volume | `CausalFoundation.lean` | **Proven** |
 | 6 | Metric → everything | All Layer A/B files | **Proven** |
+
+The null-link equivalence (`CausalBridge.lean`) closes the causal-to-metric bridge: null separations have zero Alexandrov volume, hence zero intermediate events, hence they are links. Conversely, links have proper time → 0 as density → ∞. The null-cone general theorem covers arbitrary n+1 dimensions (`NullConeGeneral.lean`).
 
 ## What this proves
 
@@ -65,10 +69,10 @@ An adversarial audit identified three areas where claims exceeded proofs. All th
 | Defect charge algebra (additivity, conjugation, bridge) | Linear perturbations + map_add/map_neg | `LinearDefects.lean` |
 | Bianchi identity (contracted) | Riemann symmetries from metric ∂²g, Bianchi from ∂³g commutativity | `BianchiIdentity.lean`, `MetricToRiemann.lean` |
 
-**What remains honestly axiomatic:**
-- The second Bianchi identity is derived from metric data (∂_e ∂_f = ∂_f ∂_e), but the passage from "holds in normal coordinates" to "holds globally" relies on the tensorial nature of the identity (not formalized).
-- The source functional φ is a primitive — the framework does not derive WHY nature has a source functional, only that IF one exists, the K/P split follows.
-- The rank of the source sector is 1 (one charge quantum number). Richer particle structure requires multiple independent source functionals.
+**What remains honestly primitive:**
+- The Bianchi identity is derived locally from metric data (∂_e ∂_f = ∂_f ∂_e); the global tensorial lift is standard but not formalized.
+- The source functional φ is a primitive — the framework derives what follows IF one exists, not WHY nature has one.
+- The source sector has rank 1 (one charge). Richer particle structure requires multiple source functionals.
 
 ## Concrete realizations
 
@@ -105,6 +109,9 @@ UnifiedTheory/
     RenormRigidity.lean         -- alpha = 2 fixed point
     PrimitiveReduction.lean     -- 5→3 reduction (dimension law + vacuum null)
     NullConeTensor.lean         -- Null-cone tensor lemma (1+1)
+    NullConeGeneral.lean        -- Null-cone theorem (general n+1)
+    SparseSum.lean              -- Sparse Finset sum helpers
+    CausalBridge.lean           -- Null-link equivalence + Poisson uniqueness
     BFSourceDressing.lean       -- K/P interface (original)
     DerivedBFSplit.lean         -- K/P split DERIVED from source functional
     LovelockEinstein.lean       -- Lovelock → Einstein + Lambda
@@ -169,7 +176,7 @@ Every theorem depends only on:
 - `Classical.choice` (classical logic)
 - `Quot.sound` (quotient soundness)
 
-These are the three standard axioms of Lean 4. No physics axioms are assumed.
+These are the three standard axioms of Lean 4. Zero custom axioms. Zero sorrys.
 
 ## License
 
