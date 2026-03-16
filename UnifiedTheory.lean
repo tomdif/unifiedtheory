@@ -42,6 +42,7 @@ import UnifiedTheory.LayerB.Decoherence
 
 import UnifiedTheory.LayerB.MetricDefects
 import UnifiedTheory.LayerB.SignedSource
+import UnifiedTheory.LayerB.SourceFocusing
 
 -- Capstone
 import UnifiedTheory.Capstone
