@@ -2,7 +2,10 @@ import UnifiedTheory.Basic
 import UnifiedTheory.LayerA.RenormRigidity
 import UnifiedTheory.LayerA.NullConeTensor
 import UnifiedTheory.LayerA.BFSourceDressing
+import UnifiedTheory.LayerA.DerivedBFSplit
 import UnifiedTheory.LayerA.LovelockEinstein
+import UnifiedTheory.LayerA.BianchiIdentity
+import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.ConditionalEinstein
 import UnifiedTheory.LayerB.ParentU
 import UnifiedTheory.LayerB.UnifiedBranch
@@ -10,10 +13,12 @@ import UnifiedTheory.LayerB.DefectSector
 import UnifiedTheory.LayerB.DefectBridge
 import UnifiedTheory.LayerB.MatterBranch
 import UnifiedTheory.LayerB.DefectEquivalence
+import UnifiedTheory.LayerB.DefectComposition
+import UnifiedTheory.LayerB.LinearDefects
+import UnifiedTheory.LayerB.ChargeSectors
+import UnifiedTheory.LayerB.MultiParticle
+import UnifiedTheory.LayerB.FarField
+import UnifiedTheory.LayerB.StructuralTheorems
 import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
 import UnifiedTheory.LayerC.ConcreteMultiBody
-import UnifiedTheory.LayerB.FarField
-import UnifiedTheory.LayerB.MultiParticle
-import UnifiedTheory.LayerB.ChargeSectors
-import UnifiedTheory.LayerB.DefectComposition
