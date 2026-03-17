@@ -27,6 +27,9 @@ import UnifiedTheory.LayerA.GaugeDerived
 import UnifiedTheory.LayerA.SubstrateBridge
 import UnifiedTheory.LayerA.NormalizationTheorem
 import UnifiedTheory.LayerA.GaussBonnetExpansion
+import UnifiedTheory.LayerA.NonabelianYangMills
+import UnifiedTheory.LayerA.RotationInvariance
+import UnifiedTheory.LayerB.LindbladDecoherence
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
