@@ -92,26 +92,12 @@ theorem nullFocusing_neg (md : MetricDerivs n) (k : Fin n → ℝ) :
     are proportional to φ. Since Q = trace ∝ n · φ, this gives
     focusing ∝ Q — instantiating FocusingHypothesis. -/
 
-/-- **SCALAR SECTOR BRIDGE.**
-
-    For the scalar sector of metric perturbations (conformal mode),
-    the null focusing is controlled by the trace. This provides a
-    concrete instantiation of FocusingHypothesis.
-
-    The proportionality constant depends on:
-    - The dimension n
-    - The null direction k
-    - The specific conformal factor
-
-    For the full perturbation space (including traceless tensorial modes),
-    the relationship between null focusing and trace is mediated by the
-    tensor structure, and the bridge applies specifically to the scalar
-    (K-sector) component.
-
-    This is the physical content of the bridge:
-    the trace-visible sector (K) directly controls null focusing,
-    while the trace-free sector (P) affects focusing through its
-    tensor structure, not through the trace. -/
+/-- **Null focusing is linear in MetricDerivs.**
+    This proves additivity and negation-compatibility of nullFocusing.
+    The physical claim that the scalar/trace sector controls focusing
+    (i.e., nullFocusing is proportional to trace for conformal perturbations)
+    is a standard GR result but is NOT proved here — it would require
+    evaluating the Ricci contraction on a specific conformal perturbation. -/
 theorem scalar_sector_controls_focusing :
     -- Null focusing is additive in the metric data
     (∀ (md₁ md₂ : MetricDerivs n) (k : Fin n → ℝ),

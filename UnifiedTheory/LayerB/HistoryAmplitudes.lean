@@ -45,13 +45,13 @@ abbrev History (m : ℕ) := List (Perturbation (m + 2))
 def netPerturbation (h : History m) : Perturbation (m + 2) :=
   h.foldl (· + ·) 0
 
-/-- The **amplitude** of a single perturbation: z = Q + iP
-    where Q = trace-visible charge and P = trace-free content.
-
-    For this formalization, we use Q(h) as the real part and
-    a dressing functional D(h) as the imaginary part. -/
+/-- The **amplitude** of a single perturbation.
+    Currently assigns real-valued amplitudes (P = 0).
+    The interference theorems below are proved for generic z : ℂ,
+    not specifically for these history amplitudes. A full path-amplitude
+    theory would need a dressing phase functional D(h) for the imaginary part. -/
 noncomputable def stepAmplitude (h : Perturbation (m + 2)) : ℂ :=
-  ⟨Q h, 0⟩  -- For now, P = 0; the dressing phase enters via path structure
+  ⟨Q h, 0⟩
 
 /-- The **amplitude** of a history: the complex amplitude assigned
     to a path through the perturbation space.
@@ -157,8 +157,10 @@ theorem phase_modulates_cross_term (z₁ z₂ : ℂ) (θ : ℝ) :
     (6) Phase modulates the cross term (fringe pattern)
     (7) Incoherent limit: no cross → classical additivity
 
-    This upgrades the quantum layer from pointwise defect amplitudes
-    to a real path-amplitude theory. -/
+    The interference identities hold for generic complex amplitudes.
+    The history/event structure provides the organizational framework;
+    a full path-amplitude theory would additionally need a dressing
+    phase functional. -/
 theorem history_amplitude_structure :
     -- (1) Two-path interference formula
     (∀ z₁ z₂ : ℂ, obs (z₁ + z₂) = obs z₁ + obs z₂ + 2 * (z₁ * conj z₂).re)

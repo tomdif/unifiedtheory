@@ -90,7 +90,7 @@
     - Null cone determination
     - Curvature antisymmetry and linearity
     - Gauge trace formula tr(T) = (1-d/4)|F|²
-    - Unique complexification of 2D division algebra (ℂ is forced, not chosen)
+    - Unique complexification: IF 2D division algebra assumed, THEN ℂ is forced
     - |z|² as unique multiplicative positive-definite norm
     - History/event interference from coherent sum
     - Phase-averaging decoherence (N=2, N=4, continuous limit)
@@ -105,7 +105,8 @@
     - Cauchy functional equation
 
   DEFINITIONAL (modeling choices, explicitly stated):
-    - z = Q + iP (identification of K/P pair with ℂ)
+    - z = Q + iP (complexification_unique shows ℂ is unique among 2D division
+      algebras, but the division algebra structure on K/P is not derived)
     - Perturbation space = Matrix (not symmetric-only)
 
   OUTSIDE SCOPE (not formalized):

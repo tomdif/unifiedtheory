@@ -97,7 +97,7 @@ The charge algebra is signed: Q ∈ ℝ, not ℝ≥0. See [`SIGNED_SOURCE.md`](S
 |----------|------|---------|
 | **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, unique complexification of K/P sector, |z|² as unique norm, history interference, phase-averaging decoherence, signed source algebra, GR focusing coupling κ = 8π |
 | **Structural** | Standard mathematics correctly formalized | Scaling exponent, rank-1 projection, Killing form symmetry |
-| **Definitional** | Modeling choices, explicitly stated | Perturbation space = Matrix (not symmetric-only) |
+| **Definitional** | Modeling choices, explicitly stated | z = Q+iP identification (complexification_unique shows ℂ is unique IF a 2D division algebra is assumed, but the algebra structure itself is not derived), perturbation space = Matrix |
 | **Outside scope** | Not formalized | G=0 as condition (vs div(G)=0 identity), dynamics, Lovelock uniqueness, gauge group selection |
 
 ## Project structure

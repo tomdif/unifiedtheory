@@ -115,7 +115,13 @@ noncomputable def metricLinearDefectBlock (m : ℕ) :
     LinearDefectBlock (Perturbation (m + 2)) where
   Defect := Perturbation (m + 2)
   perturbation := id
-  Stable := fun _ => True  -- all perturbations are stable
+  -- Stability is trivially satisfied: all perturbations are accepted.
+  -- This means all stability-conditioned theorems (sourceMatchesBias,
+  -- dressingNeutral, annihilation_is_inert) hold unconditionally.
+  -- A nontrivial stability predicate would require defining which
+  -- perturbations satisfy the field equations (G = 0), which is
+  -- outside the scope of the algebraic chain.
+  Stable := fun _ => True
   K_proj := K_proj m
   P_proj := P_proj m
   decomp := decomp_derived

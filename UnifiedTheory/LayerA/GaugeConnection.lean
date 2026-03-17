@@ -4,9 +4,12 @@
   The second geometric primitive: a connection on a principal bundle.
 
   Metric chain:     MetricDerivs → Riemann → Bianchi → div(G) = 0
-  Connection chain:  ConnectionData → Curvature F → Gauge Bianchi
+  Connection chain:  ConnectionData → Curvature F → antisymmetry + linearity
 
-  Both are identities. Both are exact. The connection brings genuinely
+  The gauge Bianchi identity (D_λ F_μν + cyclic = 0) is a standard
+  result but is not yet formalized in this file.
+
+  Both chains are exact. The connection brings genuinely
   nonabelian structure via the Lie bracket [A_μ, A_ν] that cannot emerge
   from metric perturbations alone.
 

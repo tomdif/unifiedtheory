@@ -72,26 +72,22 @@ theorem fieldStrengthNorm_nonneg (sc : StructureConstants g_dim)
     We formalize this as: the trace of the gauge stress-energy is
     proportional to |F|² with coefficient (1 - n/4). -/
 
-/-- **The gauge stress-energy trace formula.**
-
-    tr(T_gauge) = (1 - n/4) · |F|²
-
-    This is the trace of the Yang-Mills stress-energy tensor
-    contracted with the inverse metric. The factor (1 - n/4)
-    comes from: the first term in T_μν contributes |F|² when
-    traced, and the second term contributes -(n/4)|F|². -/
+/-- **The Yang-Mills trace formula (taken as definition).**
+    In Yang-Mills theory, tr(T_gauge) = (1 - n/4) · |F|².
+    This formula is standard but is DEFINED here, not derived
+    from a stress-energy tensor construction. A full derivation
+    would require constructing T_{μν} from F and contracting with g^{μν}. -/
 noncomputable def gaugeStressEnergyTrace (n : ℕ) (norm_sq : ℝ) : ℝ :=
   (1 - (n : ℝ) / 4) * norm_sq
 
 /-! ## The 4D tracelessness theorem -/
 
-/-- **IN d=4, THE GAUGE STRESS-ENERGY IS TRACELESS.**
+/-- **IN d=4, THE YANG-MILLS TRACE FORMULA GIVES ZERO.**
 
     tr(T_gauge) = (1 - 4/4) · |F|² = 0 · |F|² = 0.
 
-    This is a theorem about the dimension, not a stipulation.
-    It means: gauge fields contribute ZERO to the trace of the
-    stress-energy tensor. They are invisible to the trace functional.
+    Note: this uses the standard trace formula as a definition,
+    not a derivation from T_{μν}.
 
     Consequence: gauge fields live entirely in P = ker(trace),
     the dressing sector of the metric perturbation space.
@@ -130,6 +126,8 @@ theorem four_is_unique_traceless :
 /-! ## Physical interpretation of the K/P split -/
 
 /-- **GAUGE TRACE THEOREM: trace-visible vs trace-free separation.**
+
+    tr(T_gauge) = (1 - d/4)|F|² (standard formula, taken as definition).
 
     In d=4, gauge stress-energy is uniquely traceless. Therefore the
     trace functional canonically separates:
