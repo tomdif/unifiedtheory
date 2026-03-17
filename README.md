@@ -7,13 +7,13 @@
 - **Gravity**: Complete 4D Lovelock uniqueness → a·G + Λ·g is the unique field equation
 - **Gauge**: Full nonabelian Yang-Mills D^μF_μν = 0 + Bianchi D_λF_μν + cyclic = 0 (Jacobi proven)
 - **Matter**: Multiple conserved charges, spin-statistics, representation covariance from Lie algebra
-- **Quantum**: Born rule from 4 operational hypotheses (each proven necessary), amplitude uniqueness
+- **Quantum**: A minimal amplitude calculus reproducing interference, phase invariance, and non-classical correlations — from 4 operational hypotheses (each proven necessary). We do not claim a full derivation of quantum mechanics, but rather the recovery of the minimal structure underlying quantum behavior without invoking Hilbert space postulates.
 - **Decoherence**: Lindblad dynamics γ=e^{-Γt}, classical limit proven (ε-δ)
 - **Dimension**: d=3 uniquely selected (Ehrenfest: stable orbits + clean propagation)
 - **Primitives**: All 5 proven necessary (removing any → degenerate theory)
-- **Prediction**: Λ = 1/√(ρV) ~ 10^{-120} from Poisson substrate (Sorkin), Λ fluctuates with δΛ/Λ ~ Λ/2
+- **Scaling relation**: Λ = 1/√(ρV) ~ 10^{-120}, a scaling relation suggested by the discrete causal counting model (Sorkin). Λ fluctuates with δΛ/Λ ~ Λ/2.
 
-Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). The kinematic chain (Bianchi, charge algebra, interference) is exact for all perturbations. The dynamical chain (Lovelock, Yang-Mills, stability) restricts to stated classes.
+Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). By "derived" we mean algebraically implied within the formal system; by "conditionally induced" we mean implied given explicit structural hypotheses (e.g., existence of a source functional or rotation invariance). The kinematic chain (Bianchi, charge algebra, interference) is exact for all perturbations. The dynamical chain (Lovelock, Yang-Mills, stability) restricts to stated classes.
 
 ## What's new (Session 58)
 
@@ -69,7 +69,7 @@ Major upgrades across all sectors:
 
 ## Gravity: from kinematics to dynamics
 
-The gravity sector has a layered derivation chain:
+The framework identifies the unique admissible tensor structure (Einstein-type equations) but does not yet formalize a full variational or dynamical selection principle distinguishing physical solutions within this class. The gravity sector has a layered derivation chain:
 
 ```
 g → R → Bianchi → ∇ᵃGₐᵦ = 0  (kinematic, all metrics)
@@ -175,14 +175,14 @@ Volume ratios are parameter-free (ρ cancels). See [`NormalizationTheorem.lean`]
 | "Primitives forced" | PROVEN | All 5 primitives necessary. Removing any → degenerate theory. |
 | "Operational quantum" | PROVEN | 4 hypotheses → full quantum package. Each hypothesis necessary. |
 | "Richer matter" | PROVEN | Multiple charges, spin-statistics, representation covariance. |
-| "Cosmological constant" | PROVEN (scaling) | Λ=1/√(ρV), Λ²N=1, self-consistency, Λ fluctuates. |
+| "Cosmological constant" | SCALING RELATION | Λ=1/√(ρV) suggested by discrete counting model. Not yet a rigorous prediction — requires tighter normalization and volume definition. |
 | "Zero axioms/sorrys" | **VERIFIED** | Zero sorry in entire codebase. Only propext, Classical.choice, Quot.sound. |
 
 **What this project IS**: A machine-checked formalization of the algebraic/kinematic structure connecting gravity, gauge theory, matter, and quantum mechanics, with uniqueness theorems within explicitly stated classes.
 
 **What this project is NOT**: A complete derivation of physics from first principles. The assumptions (Lorentzian signature, Lie algebra structure, linear composition, rotation invariance, quadratic observables) are modeling choices — though each is proven NECESSARY (removing any gives a degenerate theory, see `PrimitivesForced.lean`).
 
-## Novel prediction: the cosmological constant
+## Scaling relation: the cosmological constant
 
 In the discrete causal-substrate picture, the cosmological constant is not a fixed Planck-scale vacuum energy density that must be fine-tuned away. It is a finite-number fluctuation of a causal counting measure, giving the scaling law **Λ ~ N^{-1/2}**. The observed smallness of Λ is thus attributed to the largeness of the cosmic causal set, not to ultraviolet cancellation.
 
@@ -202,7 +202,7 @@ The fundamental equation is **Λ² · N = 1**, where N = ρ·V is the number of 
 
 ## Substrate bridge
 
-A Poisson point process on a Lorentzian manifold automatically satisfies all conditions assumed by the causal reconstruction chain. See [`SubstrateBridge.lean`](UnifiedTheory/LayerA/SubstrateBridge.lean).
+A Poisson point process on a Lorentzian manifold automatically satisfies all conditions assumed by the causal reconstruction chain. The null-link equivalence is established at the algebraic level under density and boundedness conditions; a full measure-theoretic derivation from Poisson processes is not formalized here. See [`SubstrateBridge.lean`](UnifiedTheory/LayerA/SubstrateBridge.lean).
 
 ## Project structure
 
