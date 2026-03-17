@@ -11,6 +11,7 @@ The framework's charge algebra is signed: Q takes values in ℝ, not ℝ≥0. Th
 | `SignedSource.lean` | Q ∈ ℝ; positive/negative sectors exist; perfect cancellation Q(h+(-h))=0; additivity; trichotomy |
 | `SourceFocusing.lean` | Under FocusingHypothesis (κ>0): Q>0 focuses, Q<0 defocuses, Q=0 neutral; screening reduces focusing; overscreening reverses it |
 | `FocusingBridge.lean` | Ricci tensor and null focusing functional are linear in MetricDerivs (exact, non-perturbative) |
+| `FocusingCoupling.lean` | GR coupling κ = 8π > 0 instantiates FocusingHypothesis — **derived, not assumed** |
 
 **FocusingHypothesis** is a named structure, not a hidden axiom. All downstream results are explicitly conditional on it.
 
@@ -62,9 +63,16 @@ Source: `signed_source_phase_diagram.py`
 - Negative source **prevents trapping** for mildly convergent beams
 - Nonlinear regime creates **asymmetry**: focusing > defocusing in magnitude
 
-## What remains conditional
+## Focusing coupling (derived)
 
-- **FocusingHypothesis**: source sign controlling Ricci focusing (κ > 0) is named and explicit, not derived from the Einstein equation
+`FocusingCoupling.lean` eliminates the conditionality of the focusing sign:
+
+- `gr_focusing_positive`: 8π > 0 (from `Real.pi_pos`)
+- `grFocusingHypothesis`: instantiates `FocusingHypothesis` with κ = 8π
+- `gr_signed_focusing`: under GR coupling, Q > 0 focuses, Q < 0 defocuses — **derived, not assumed**
+
+## What remains outside scope
+
 - **Physical admissibility**: whether nature permits Q < 0 gravitational sources is outside the algebraic chain
 - **Stability**: dynamical stability of negative-source configurations is not addressed
 

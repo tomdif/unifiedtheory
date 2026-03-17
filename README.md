@@ -66,11 +66,33 @@ The gauge/internal sector requires a second geometric primitive beyond the metri
 - Curvature: F_μν^a = ∂_μ A_ν^a - ∂_ν A_μ^a + c^a_{bd} A_μ^b A_ν^d
 - `g_dim` is a free parameter: 1 = U(1), 3 = SU(2), 8 = SU(3)
 
+## Signed source sectors
+
+The charge algebra is signed: Q ∈ ℝ, not ℝ≥0. See [`SIGNED_SOURCE.md`](SIGNED_SOURCE.md) for the full benchmark pack.
+
+**Formal chain** (Lean 4):
+- [`SignedSource.lean`](UnifiedTheory/LayerB/SignedSource.lean) — Q > 0 and Q < 0 sectors exist; perfect cancellation; additivity
+- [`SourceFocusing.lean`](UnifiedTheory/LayerB/SourceFocusing.lean) — Q > 0 focuses, Q < 0 defocuses (conditional on FocusingHypothesis)
+- [`FocusingBridge.lean`](UnifiedTheory/LayerB/FocusingBridge.lean) — Ricci tensor and null focusing are linear in MetricDerivs (exact)
+- [`FocusingCoupling.lean`](UnifiedTheory/LayerB/FocusingCoupling.lean) — GR coupling κ = 8π > 0 instantiates FocusingHypothesis (derived, not assumed)
+
+**Weak field** (11/11 checks):
+
+| Q | Focusing | Deflection | Shapiro |
+|---|----------|------------|---------|
+| +2 | converge | inward | delay |
+| 0 | none | none | none |
+| -2 | diverge | outward | advance |
+
+**Strong field** (6/6 checks): trapping vs anti-trapping, bounce, nonlinear asymmetry (|θ(+Q)|/|θ(-Q)| = 2.07)
+
+**Phase diagram** (5/5 checks): three phases (trap/bounce/free) in (Q, θ₀) space with clear boundaries
+
 ## Audit classification
 
 | Category | What | Examples |
 |----------|------|---------|
-| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, Born rule, decoherence |
+| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, Born rule, decoherence, signed source algebra, GR focusing coupling κ = 8π |
 | **Structural** | Standard mathematics correctly formalized | Scaling exponent, rank-1 projection, Killing form symmetry |
 | **Definitional** | Modeling choices, explicitly stated | z = Q+iP identification, perturbation space = Matrix |
 | **Outside scope** | Not formalized | G=0 as condition (vs div(G)=0 identity), dynamics, Lovelock uniqueness, gauge group selection |
@@ -107,6 +129,10 @@ UnifiedTheory/
     SparseSum.lean              -- Sparse Finset sum helpers
   LayerB/                       -- Matter + quantum sector
     MetricDefects.lean          -- Full chain: metric → charge → quantum (NEW)
+    SignedSource.lean           -- Signed charge algebra Q ∈ ℝ (NEW)
+    SourceFocusing.lean         -- Q sign controls focusing (NEW)
+    FocusingBridge.lean         -- Ricci/null focusing from metric (NEW)
+    FocusingCoupling.lean       -- GR coupling κ = 8π derives focusing (NEW)
     LinearDefects.lean          -- Charge algebra from linearity
     ParentU.lean                -- Parent structure (legacy)
     UnifiedBranch.lean          -- ParentU → Einstein branch (legacy)
@@ -126,6 +152,12 @@ UnifiedTheory/
   LayerC/                       -- Concrete realizations
     ConcreteModel.lean          -- Lean-certified U_star
     ConcreteMultiBody.lean      -- Many-body instance
+    ModelB/
+      signed_source_demo.py              -- Focusing sign (5/5)
+      signed_source_observables.py       -- Deflection + Shapiro sign (11/11)
+      signed_source_strong_field.py      -- Trapping/bounce/asymmetry (6/6)
+      signed_source_phase_diagram.py     -- Phase diagram (5/5)
+      signed_source_phase_diagram.png    -- Three-panel visualization
   paper/
     unified_theory_paper.tex    -- LaTeX paper
 ```

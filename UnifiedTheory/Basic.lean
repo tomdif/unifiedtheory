@@ -60,6 +60,9 @@
     - Curvature antisymmetry and linearity
     - Gauge trace formula tr(T) = (1-d/4)|F|²
     - Born rule, interference, decoherence (ℂ/ℝ² arithmetic)
+    - Signed source algebra (Q ∈ ℝ, ±sectors, cancellation)
+    - GR focusing coupling κ = 8π > 0 (from Real.pi_pos)
+    - Ricci tensor and null focusing linear in MetricDerivs
 
   STRUCTURAL (correct formalization of standard mathematics):
     - Scaling exponent from dimension (rpow/log algebra)
@@ -78,6 +81,45 @@
     - Lovelock uniqueness (that G+Λg is the ONLY divergence-free tensor)
     - Full manifold differential geometry (we work in normal coordinates)
     - Specific gauge group selection (g_dim is a free parameter)
+
+  ═══════════════════════════════════════════════════════
+  SIGNED SOURCE BRANCH (SignedSource.lean + 3 files)
+  ═══════════════════════════════════════════════════════
+
+  SignedSource.lean
+    positive_source_exists          Q(I) = m+2 > 0 (identity matrix)
+    negative_source_exists          Q(-I) < 0
+    Q_add                           Q(h₁+h₂) = Q(h₁) + Q(h₂)
+    Q_neg                           Q(-h) = -Q(h)
+    perfect_cancellation            Q(h + (-h)) = 0
+    signed_source_algebra           capstone (6 conjuncts)
+
+  SourceFocusing.lean
+    positive_source_focuses         Q > 0 → focusing > 0 (under FocusingHypothesis)
+    negative_source_defocuses       Q < 0 → focusing < 0
+    neutral_source_inert            Q = 0 → focusing = 0
+    cancellation_eliminates_focusing h + (-h) → zero focusing
+    screening_reduces_focusing      opposite signs reduce magnitude
+    overscreening_reverses_focusing excess negative → net repulsive
+
+  FocusingBridge.lean
+    Ricci                           Ric_{ab} = Σ_c R_{acbc}
+    nullFocusing                    Σ_{ab} Ric_{ab} k^a k^b
+    Ricci_add / Ricci_neg           Ricci is linear in MetricDerivs
+    nullFocusing_add / _neg         null focusing is linear
+
+  FocusingCoupling.lean
+    gr_focusing_positive            8π > 0
+    grFocusingHypothesis            FocusingHypothesis with κ = 8π
+    gr_signed_focusing              GR coupling → Q>0 focuses, Q<0 defocuses
+
+  Computational benchmarks (LayerC/ModelB/):
+    signed_source_demo.py           5/5 focusing sign checks
+    signed_source_observables.py    11/11 weak-field sign table
+    signed_source_strong_field.py   6/6 trapping/bounce/asymmetry
+    signed_source_phase_diagram.py  5/5 phase diagram (Q, θ₀) space
+
+  See SIGNED_SOURCE.md for the complete benchmark pack.
 
   ═══════════════════════════════════════════════════════
   LEGACY INVENTORY (original files below)
