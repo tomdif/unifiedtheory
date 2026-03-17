@@ -30,6 +30,7 @@ import UnifiedTheory.LayerA.CosmologicalConstant
 import UnifiedTheory.LayerA.NormalizationTheorem
 import UnifiedTheory.LayerA.GaussBonnetExpansion
 import UnifiedTheory.LayerA.NonabelianYangMills
+import UnifiedTheory.LayerA.GaugeGroupConstraints
 import UnifiedTheory.LayerA.RotationInvariance
 import UnifiedTheory.LayerA.DimensionSelection
 import UnifiedTheory.LayerA.PrimitivesForced
