@@ -45,6 +45,9 @@ import UnifiedTheory.LayerB.SignedSource
 import UnifiedTheory.LayerB.SourceFocusing
 import UnifiedTheory.LayerB.FocusingBridge
 import UnifiedTheory.LayerB.FocusingCoupling
+import UnifiedTheory.LayerB.HistoryAmplitudes
+import UnifiedTheory.LayerB.ComplexificationUniqueness
+import UnifiedTheory.LayerB.EnvironmentDecoherence
 
 -- Capstone
 import UnifiedTheory.Capstone
