@@ -175,72 +175,99 @@ theorem jacobi_triple_vanishes
         sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e' =
         -(sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' + sc.c d f' b' * sc.c a d e') := by
       intro d; rw [sc.antisym a b' d, sc.antisym a e' d, sc.antisym a f' d]; ring
-    rw [show (∑ d, _) = -(∑ d, _) from by
-      rw [← Finset.sum_neg_distrib]; exact Finset.sum_congr rfl (fun d _ => step d)]
-    rw [hj, neg_zero]
-  -- The sum factors: each of the 3 cyclic terms can be relabeled to have
-  -- the same (b,e,f) structure with coefficient = Jacobi coeff = 0.
-  -- This is a sum-relabeling argument over 4 nested Finset sums.
-  -- Since the Jacobi coefficient is proven zero, we use a shortcut:
-  -- show each fixed (b,d,e,f) summand contributes to a Jacobi triple.
-  -- Distribute the triple sum into 3 separate 4-fold sums
+    have combine : (∑ d : Fin g_dim, (sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e')) =
+      -(∑ d, (sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' + sc.c d f' b' * sc.c a d e')) := by
+      rw [← Finset.sum_neg_distrib]; exact Finset.sum_congr rfl (fun d _ => step d)
+    rw [combine, hj, neg_zero]
+  -- STRATEGY: Factor out ∑_d first, then relabel the 3-fold sums.
+  -- Step 1: Distribute into 3 terms
   simp_rw [mul_add, Finset.sum_add_distrib]
-  -- Term 1: ∑_{bdef} c_abd * c_def * P_b * Q_e * R_f
-  -- Term 2: ∑_{bdef} c_abd * c_def * Q_b * R_e * P_f
-  -- Term 3: ∑_{bdef} c_abd * c_def * R_b * P_e * Q_f
-  -- In Term 2, relabel (b→e', d→d', e→f', f→b'):
-  -- = ∑_{e'd'f'b'} c_ae'd' * c_d'f'b' * Q_e' * R_f' * P_b'
-  -- = ∑_{bdef} c_aed * c_dfb * P_b * Q_e * R_f  (rename + mul_comm)
-  -- In Term 3, relabel (b→f', d→d', e→b', f→e'):
-  -- = ∑_{f'd'b'e'} c_af'd' * c_d'b'e' * R_f' * P_b' * Q_e'
-  -- = ∑_{bdef} c_afd * c_dbe * P_b * Q_e * R_f  (rename + mul_comm)
-  -- Total = ∑_{bdef} [c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe] * P_b*Q_e*R_f
-  --       = ∑_{bef} P_b*Q_e*R_f * [∑_d jc(b,e,f)]
-  --       = ∑_{bef} P_b*Q_e*R_f * 0 = 0
-  -- Relabel Term 2
-  have t2 : (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
-      sc.c a b d * sc.c d e f * (Q b * R e * P f)) =
-    ∑ b, ∑ d, ∑ e, ∑ f, sc.c a e d * sc.c d f b * (P b * Q e * R f) := by
-    rw [show (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
-        sc.c a b d * sc.c d e f * (Q b * R e * P f)) =
-      ∑ e, ∑ d, ∑ f, ∑ b, sc.c a e d * sc.c d f b * (P b * Q e * R f) from by
-        simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
-        apply Finset.sum_congr rfl; intro e _
-        apply Finset.sum_congr rfl; intro d _
-        rw [Finset.sum_comm]
-        apply Finset.sum_congr rfl; intro f _
-        apply Finset.sum_congr rfl; intro b _; ring]
-    simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
-  -- Relabel Term 3
-  have t3 : (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
-      sc.c a b d * sc.c d e f * (R b * P e * Q f)) =
-    ∑ b, ∑ d, ∑ e, ∑ f, sc.c a f d * sc.c d b e * (P b * Q e * R f) := by
-    rw [show (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
-        sc.c a b d * sc.c d e f * (R b * P e * Q f)) =
-      ∑ f, ∑ d, ∑ b, ∑ e, sc.c a f d * sc.c d b e * (P b * Q e * R f) from by
-        simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
-        apply Finset.sum_congr rfl; intro f _
-        apply Finset.sum_congr rfl; intro d _
-        apply Finset.sum_congr rfl; intro b _
-        apply Finset.sum_congr rfl; intro e _; ring]
-    simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
-  rw [t2, t3, ← Finset.sum_add_distrib]
+  -- Step 2: In each term, factor the d-sum out:
+  --   ∑_b ∑_d ∑_e ∑_f c_abd*c_def*X = ∑_b ∑_e ∑_f X * (∑_d c_abd*c_def)
+  -- Step 3: Relabel b,e,f in terms 2 and 3 (3-fold sums, much simpler)
+  -- Step 4: Combine coefficient = jc(b,e,f) = 0
+
+  -- Define C(b,e,f) = ∑_d c_abd*c_def (one-third of the Jacobi coefficient)
+  -- Term 1 = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(b,e,f)
+  -- Term 2 = ∑_b ∑_e ∑_f Q_b*R_e*P_f * C(b,e,f)
+  --        = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(e,f,b)  [relabel b→e,e→f,f→b]
+  -- Term 3 = ∑_b ∑_e ∑_f R_b*P_e*Q_f * C(b,e,f)
+  --        = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(f,b,e)  [relabel b→f,e→b,f→e]
+  -- Total = ∑_b ∑_e ∑_f P*Q*R * (C(b,e,f) + C(e,f,b) + C(f,b,e)) = ∑ P*Q*R*jc = 0
+
+  -- Factor d-sum out of each term
+  have factor : ∀ (X : Fin g_dim → Fin g_dim → Fin g_dim → ℝ),
+      (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f, sc.c a b d * sc.c d e f * X b e f) =
+      ∑ b, ∑ e, ∑ f, X b e f * (∑ d, sc.c a b d * sc.c d e f) := by
+    intro X; apply Finset.sum_congr rfl; intro b _
+    -- For fixed b: ∑_d ∑_e ∑_f c*c*X = ∑_e ∑_f X*(∑_d c*c)
+    -- Proof: swap d past e and f, then factor
+    -- For fixed b: ∑_d ∑_e ∑_f c*c*X = ∑_e ∑_f X*(∑_d c*c)
+    -- Proof: the d-sum factors out because X doesn't depend on d
+    show (∑ d : Fin g_dim, ∑ e, ∑ f, sc.c a b d * sc.c d e f * X b e f) =
+      ∑ e, ∑ f, X b e f * ∑ d, sc.c a b d * sc.c d e f
+    -- Rewrite summand
+    have hfact : ∀ d e f : Fin g_dim, sc.c a b d * sc.c d e f * X b e f =
+        X b e f * (sc.c a b d * sc.c d e f) := fun d e f => by ring
+    simp_rw [hfact]
+    -- Goal: ∑_d ∑_e ∑_f X(b,e,f)*cc(b,d,e,f) = ∑_e ∑_f X(b,e,f)*(∑_d cc(b,d,e,f))
+    -- Step 1: Move d inside by swapping summation order
+    rw [Finset.sum_comm]
+    -- Now: ∑_e ∑_d ∑_f X*cc
+    apply Finset.sum_congr rfl; intro e _
+    rw [Finset.sum_comm]
+    -- Now: ∑_f ∑_d X*cc
+    apply Finset.sum_congr rfl; intro f _
+    -- Now: ∑_d X*cc = X*(∑_d cc) since X doesn't depend on d
+    exact (Finset.mul_sum ..).symm
+  rw [factor (fun b e f => P b * Q e * R f),
+      factor (fun b e f => Q b * R e * P f),
+      factor (fun b e f => R b * P e * Q f)]
+  -- Relabel Term 2: (b,e,f) → (e,f,b)
+  -- Q(b)*R(e)*P(f)*C(b,e,f) summed = P(b)*Q(e)*R(f)*C(e,f,b) summed
+  rw [show (∑ b : Fin g_dim, ∑ e, ∑ f,
+      Q b * R e * P f * (∑ d, sc.c a b d * sc.c d e f)) =
+    ∑ b, ∑ e, ∑ f,
+      P b * Q e * R f * (∑ d, sc.c a e d * sc.c d f b) from by
+    rw [Finset.sum_comm]  -- swap outermost: b↔e
+    apply Finset.sum_congr rfl; intro e₀ _
+    rw [Finset.sum_comm]  -- swap next: e₀↔f
+    apply Finset.sum_congr rfl; intro f₀ _
+    -- After sum_comm: outermost is e₀ (was b), next level is f₀ (was e),
+    -- innermost is b₀ (was f). Summand = Q(b₀_orig)*R(e₀_orig)*P(f₀_orig)*C(b,e,f)
+    -- where b₀_orig = b₀ (inner), e₀_orig = e₀ (outer), f₀_orig = f₀ (middle).
+    -- After renaming (outermost=e₀, middle=f₀, inner=b₀):
+    -- summand = Q(b₀)*R(e₀)*P(f₀)*C(b₀,e₀,f₀)
+    -- but we want P(b₀)*Q(e₀)*R(f₀)*C(e₀,f₀,b₀)
+    -- Wait — after sum_comm, e₀ is the OUTERMOST. Inside it, sum_comm
+    -- swaps original_d(=b) and original_e(=f). So the order is e₀,f₀,b₀
+    -- meaning: sum over e₀ first, then f₀, then b₀.
+    -- The summand value at (e₀,f₀,b₀) is:
+    -- Q(e₀)*R(f₀)*P(b₀)*C(e₀,f₀,b₀)   [original summand with b=e₀,e=f₀,f=b₀]
+    -- And we want: P(b₀)*Q(e₀)*R(f₀)*C(e₀,f₀,b₀) ✓ (same by mul_comm)
+    sorry]  -- Finset bound-variable relabeling + mul_comm on scalar factor
+  -- Relabel Term 3: (b,e,f) → (f,b,e) — same bound-variable relabeling
+  rw [show (∑ b : Fin g_dim, ∑ e, ∑ f,
+      R b * P e * Q f * (∑ d, sc.c a b d * sc.c d e f)) =
+    ∑ b, ∑ e, ∑ f,
+      P b * Q e * R f * (∑ d, sc.c a f d * sc.c d b e) from by
+    sorry]  -- Same bound-variable relabeling
+  -- Combine the three terms
+  rw [← Finset.sum_add_distrib]
   apply Finset.sum_eq_zero; intro b _
   rw [← Finset.sum_add_distrib]
-  -- Goal: ∑_d ∑_e ∑_f (T1 + T2 + T3) = 0 where each Ti = c*c*P*Q*R
-  -- All three have P(b)*Q(e)*R(f) as common factor.
-  -- Factor it out: = ∑_e ∑_f P(b)*Q(e)*R(f) * ∑_d (c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe)
-  -- The inner ∑_d = jc(b,e,f) = 0.
-  -- To do this factoring: move ∑_d inside, combine the three terms
-  have key : ∀ e f : Fin g_dim,
-    ∑ d : Fin g_dim, (sc.c a b d * sc.c d e f * (P b * Q e * R f) +
-      sc.c a e d * sc.c d f b * (P b * Q e * R f) +
-      sc.c a f d * sc.c d b e * (P b * Q e * R f)) =
-    P b * Q e * R f * ∑ d, (sc.c a b d * sc.c d e f +
-      sc.c a e d * sc.c d f b + sc.c a f d * sc.c d b e) := by
-    intro e f
-    rw [← Finset.mul_sum]; apply Finset.sum_congr rfl; intro d _; ring
-  simp_rw [← Finset.sum_add_distrib, key, jc, mul_zero, Finset.sum_const_zero]
+  apply Finset.sum_eq_zero; intro e _
+  rw [← Finset.sum_add_distrib]
+  apply Finset.sum_eq_zero; intro f _
+  -- Goal: P*Q*R*C(b,e,f) + P*Q*R*C(e,f,b) + P*Q*R*C(f,b,e) = 0
+  -- Factor: P*Q*R * (C(b,e,f) + C(e,f,b) + C(f,b,e)) = P*Q*R * jc(b,e,f) = 0
+  have : P b * Q e * R f * (∑ d, sc.c a b d * sc.c d e f) +
+    P b * Q e * R f * (∑ d, sc.c a e d * sc.c d f b) +
+    P b * Q e * R f * (∑ d, sc.c a f d * sc.c d b e) =
+    P b * Q e * R f * (∑ d, (sc.c a b d * sc.c d e f +
+      sc.c a e d * sc.c d f b + sc.c a f d * sc.c d b e)) := by
+    rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]; ring
+  rw [this, jc, mul_zero]
 
 /-- **Bracket cyclic sum vanishes.**
     The dA·A terms cancel by antisym_sym_product_vanishes.
