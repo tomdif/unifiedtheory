@@ -195,23 +195,12 @@ theorem simple_bound_insufficient :
     -- SO(4) dim = 6, but SU(3)×SU(2) dim = 11 > 6
     soDim 4 < 11 := by unfold soDim; omega
 
-/-- **What WOULD work (research conjecture, not proven):**
-    If the causal set's TOPOLOGICAL structure (not just local
-    combinatorics) constrains the allowed bundles, then the
-    classification of principal bundles over the causal set
-    would restrict the gauge group. In the continuum limit,
-    principal G-bundles over S⁴ are classified by π₃(G).
-    For SU(n): π₃(SU(n)) = ℤ for all n ≥ 2.
-    For products: π₃(G₁×G₂) = π₃(G₁) × π₃(G₂).
-    The instanton number (Pontryagin class) gives an integer
-    labeling the topology.
-
-    A DISCRETE version of this classification, applied to
-    Poisson causal sets in 4D, might constrain which groups
-    admit well-defined parallel transport on the discrete
-    structure. This is the most promising direction, but it
-    requires developing discrete bundle theory — which is
-    genuinely open mathematics. -/
-theorem topological_direction_noted : True := trivial
+-- OPEN DIRECTION: Discrete principal bundle classification.
+-- In the continuum, principal G-bundles over S⁴ are classified by π₃(G),
+-- and anomaly cancellation constrains which representations propagate.
+-- On a causal set, the discrete topology differs from the continuum,
+-- and the constraints could be stronger or weaker. Discrete principal
+-- bundle theory essentially doesn't exist yet. This is the most
+-- promising route to gauge group selection but requires new mathematics.
 
 end UnifiedTheory.LayerA.GaugeSelection
