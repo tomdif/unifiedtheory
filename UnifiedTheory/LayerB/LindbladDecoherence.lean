@@ -108,18 +108,63 @@ theorem lindblad_classical_limit (rate : DephasingRate) (ρ : DensityMatrix2)
     (hcoh : ρ.coh_re ≠ 0) (ε : ℝ) (hε : 0 < ε) :
     ∃ T : ℝ, 0 < T ∧ ∀ t : ℝ, T < t →
       |totalObs (lindbladEvolve rate t ρ) - (ρ.p₁ + ρ.p₂)| < ε := by
-  -- |obs(t) - classical| = |2·γ(t)·coh_re|
-  -- γ(t) = e^{-Γt} which can be made arbitrarily small
-  -- We use: for any δ > 0, ∃ T, ∀ t > T, e^{-Γt} < δ
-  -- This follows from Real.tendsto_exp_neg_atTop_nhds_zero
-  -- For now, we prove it directly using the monotonicity of exp
-  refine ⟨1, one_pos, fun t ht => ?_⟩
+  -- Strategy: choose T large enough that 2·e^{-ΓT}·|coh_re| < ε.
+  -- Since e^{-Γt} is monotone decreasing, any t > T also works.
+  -- We need e^{-Γt} < ε/(2·|coh_re|), i.e., -Γt < log(ε/(2·|coh_re|)).
+  -- Choose T = max(1, -log(ε/(2·|coh_re|))/Γ + 1).
+  -- For simplicity, we show: for t > T with T sufficiently large,
+  -- γ(t) < ε / (2 * |ρ.coh_re|), hence |2·γ·coh_re| < ε.
+  --
+  -- We prove a WEAKER but still valid result: the difference is bounded
+  -- by 2·γ(t)·|coh_re|, and γ is monotone decreasing with γ(0)=1.
+  -- For any target, a large enough T exists.
+  --
+  -- Full analytical proof requires Real.exp_neg_tendsto; we use a
+  -- direct bound via gamma_antitone.
+  -- Choose T = (1/Γ) · |log(ε / (2 · |coh_re|))| + 1
+  -- For any t > T: e^{-Γt} < ε / (2 · |coh_re|), so |2·e^{-Γt}·coh_re| < ε
+  -- We use a simpler bound: just need SOME T where this works.
+  -- Key fact: e^{-Γt} → 0 as t → ∞, so for large enough T, e^{-ΓT} < δ.
+  have hcoh_abs_pos : 0 < |ρ.coh_re| := abs_pos.mpr hcoh
+  -- We need e^{-Γt} < ε / (2 * |ρ.coh_re|)
+  -- Equivalently: -Γt < log(ε / (2 * |ρ.coh_re|))
+  -- Equivalently: t > -log(ε / (2 * |ρ.coh_re|)) / Γ
+  set δ := ε / (2 * |ρ.coh_re|) with hδ_def
+  have hδ : 0 < δ := div_pos hε (by positivity)
+  -- For t > -log(δ)/Γ + 1, we have -Γt < log(δ), so e^{-Γt} < δ
+  refine ⟨max 1 (-(Real.log δ) / rate.Γ + 1), by positivity, fun t ht => ?_⟩
   rw [lindblad_observable]
-  simp only [show ρ.p₁ + ρ.p₂ + 2 * gamma rate t * ρ.coh_re - (ρ.p₁ + ρ.p₂) =
+  rw [show ρ.p₁ + ρ.p₂ + 2 * gamma rate t * ρ.coh_re - (ρ.p₁ + ρ.p₂) =
     2 * gamma rate t * ρ.coh_re from by ring]
-  -- Need: |2 · γ(t) · coh_re| < ε for large t
-  -- This requires γ(t) → 0, which follows from Γ > 0 and exp(-Γt) → 0
-  sorry -- Requires analysis: exp(-Γt) → 0 for Γ > 0, t → ∞
+  -- |2·γ(t)·coh_re| = 2·|γ(t)|·|coh_re| = 2·γ(t)·|coh_re| (γ > 0)
+  rw [abs_mul, abs_mul, abs_of_pos (by positivity : (0:ℝ) < 2),
+    abs_of_pos (gamma_pos rate t)]
+  -- Goal: 2 * γ(t) * |coh_re| < ε
+  -- Since t > -log(δ)/Γ + 1 and Γ > 0: Γ·t > -log(δ) + Γ > -log(δ)
+  -- So -Γ·t < log(δ), hence γ(t) = e^{-Γt} < e^{log(δ)} = δ = ε/(2|c|)
+  -- Then 2·γ(t)·|c| < 2·δ·|c| = 2·(ε/(2|c|))·|c| = ε
+  have ht_bound : -(Real.log δ) / rate.Γ + 1 < t := by
+    calc -(Real.log δ) / rate.Γ + 1 ≤ max 1 (-(Real.log δ) / rate.Γ + 1) :=
+          le_max_right _ _
+      _ < t := ht
+  have hGt : -rate.Γ * t < Real.log δ := by
+    -- From ht_bound: -(log δ)/Γ + 1 < t
+    -- Multiply by Γ > 0: -(log δ) + Γ < Γ·t
+    -- So: -Γ·t < log δ - Γ < log δ (since Γ > 0)
+    have h1 : rate.Γ * t > -(Real.log δ) + rate.Γ := by
+      have := mul_lt_mul_of_pos_left ht_bound rate.Γ_pos
+      have hΓne : rate.Γ ≠ 0 := ne_of_gt rate.Γ_pos
+      rwa [show rate.Γ * (-(Real.log δ) / rate.Γ + 1) = -(Real.log δ) + rate.Γ from by
+        rw [mul_add, mul_div_cancel₀ _ hΓne, mul_one]] at this
+    linarith [rate.Γ_pos]
+  have hexp : gamma rate t < δ := by
+    unfold gamma
+    rw [← Real.exp_log hδ]
+    exact Real.exp_lt_exp.mpr hGt
+  -- 2 * γ(t) * |coh_re| < 2 * δ * |coh_re| = 2 * (ε/(2*|coh_re|)) * |coh_re| = ε
+  calc 2 * gamma rate t * |ρ.coh_re| < 2 * δ * |ρ.coh_re| := by
+        nlinarith [gamma_pos rate t, hcoh_abs_pos]
+    _ = ε := by rw [hδ_def]; field_simp
 
 /-- **The decoherence timescale.** t_d = 1/Γ is the characteristic
     decoherence time. After t >> t_d, the system is effectively classical. -/
