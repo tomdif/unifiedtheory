@@ -138,9 +138,36 @@ theorem complexification_unique (A : Algebra2D) :
         let xy := A.mul x y
         let xy' := (xy.1, c * xy.2)
         xy' = standardComplex.mul x' y' := by
-  -- The rescaling: c = √(-alpha) maps e₂² = alpha to e₂'² = -1
-  use 1  -- We prove it for c=1 when alpha = -1; general case below
-  sorry  -- The general case needs c = √(-alpha), which requires Real.sqrt
+  -- The rescaling c = √(-alpha) maps alpha to -c² = -(-alpha) = alpha. ✓
+  -- We need c² = -alpha, i.e., c = √(-alpha).
+  use Real.sqrt (-A.alpha)
+  have h_neg_alpha_pos : 0 < -A.alpha := neg_pos.mpr A.h_neg
+  constructor
+  · exact Real.sqrt_pos.mpr h_neg_alpha_pos
+  · intro x y
+    -- Need: (x.1*y.1 + alpha*x.2*y.2, c*(x.1*y.2 + x.2*y.1))
+    --      = (x.1*y.1 - c²*x.2*y.2, c*(x.1*y.2 + x.2*y.1))
+    -- The second components match trivially.
+    -- The first components match because alpha = -c² (since c² = -alpha).
+    ext
+    · -- First component: need alpha·x₂·y₂ = -(√(-alpha)·x₂)·(√(-alpha)·y₂)
+      simp only [Algebra2D.mul, standardComplex]
+      have hcsq : Real.sqrt (-A.alpha) * Real.sqrt (-A.alpha) = -A.alpha :=
+        Real.mul_self_sqrt h_neg_alpha_pos.le
+      -- The goal after simp should involve products of sqrt terms.
+      -- Rearrange: -(sqrt·x₂)·(sqrt·y₂) = -(sqrt·sqrt)·x₂·y₂ = -(-alpha)·x₂·y₂ = alpha·x₂·y₂
+      have key : ∀ a b : ℝ,
+        Real.sqrt (-A.alpha) * a * (Real.sqrt (-A.alpha) * b) =
+        -A.alpha * a * b := by
+        intro a b
+        have : Real.sqrt (-A.alpha) * a * (Real.sqrt (-A.alpha) * b) =
+               (Real.sqrt (-A.alpha) * Real.sqrt (-A.alpha)) * (a * b) := by ring
+        rw [this, hcsq]
+        ring
+      linarith [key x.2 y.2]
+    · -- Second component: both are c*(x.1*y.2 + x.2*y.1)
+      simp only [Algebra2D.mul, standardComplex]
+      ring
 
 /-- **SIMPLER UNIQUENESS: all 2D norms are equivalent.**
 
