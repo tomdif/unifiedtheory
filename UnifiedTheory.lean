@@ -44,6 +44,7 @@ import UnifiedTheory.LayerB.MetricDefects
 import UnifiedTheory.LayerB.SignedSource
 import UnifiedTheory.LayerB.SourceFocusing
 import UnifiedTheory.LayerB.FocusingBridge
+import UnifiedTheory.LayerB.FocusingCoupling
 
 -- Capstone
 import UnifiedTheory.Capstone
