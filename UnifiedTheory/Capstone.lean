@@ -23,8 +23,8 @@
 
   QUANTUM (exact, from ℂ arithmetic):
     - z = Q + iP packages trace-visible and trace-free components
-    - Born rule |z|² uniqueness from SO(2) invariance
-    - Decoherence: phase averaging kills interference
+    - SO(2)-invariant quadratic observable |z|²
+    - Phase averaging: discrete cancellation of interference
 
   Everything is exact (non-perturbative). Zero custom axioms.
   The only unformalised question: "which perturbations satisfy G = 0?"

@@ -1,5 +1,5 @@
 /-
-  LayerB/QuantumDefects.lean — Emergent quantum structure
+  LayerB/QuantumDefects.lean — Complex amplitude structure from K/P decomposition
 
   If defect amplitudes are complex-valued (not just real), then
   quantum-like behavior emerges from pure linear algebra:
@@ -71,7 +71,7 @@ noncomputable def phaseRotate (θ : ℝ) (z : ℂ) : ℂ :=
   Complex.exp (θ * Complex.I) * z
 
 /-- **Phase invariance of observables**: |e^{iθ} z|² = |z|².
-    Global phase is unobservable — the hallmark of quantum mechanics. -/
+    Global phase is unobservable — a standard property of complex amplitudes. -/
 theorem phase_invariance (θ : ℝ) (z : ℂ) :
     obs (phaseRotate θ z) = obs z := by
   simp only [phaseRotate, obs]
@@ -157,7 +157,7 @@ theorem classical_composition (q₁ q₂ : ℝ) :
 
 /-! ### Summary theorem -/
 
-/-- **Emergent quantum structure theorem.**
+/-- **Complex amplitude structure theorem.**
     From the single assumption that defect amplitudes are complex:
     (1) Interference formula: obs(z₁+z₂) = obs(z₁) + obs(z₂) + interference
     (2) Born rule: obs ≥ 0, with obs = 0 iff z = 0

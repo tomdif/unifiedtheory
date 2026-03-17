@@ -59,7 +59,7 @@
     - Null cone determination
     - Curvature antisymmetry and linearity
     - Gauge trace formula tr(T) = (1-d/4)|F|²
-    - Born rule, interference, decoherence (ℂ/ℝ² arithmetic)
+    - |z|² observable, interference, phase-averaging cancellation (ℂ/ℝ² arithmetic)
     - Signed source algebra (Q ∈ ℝ, ±sectors, cancellation)
     - GR focusing coupling κ = 8π > 0 (from Real.pi_pos)
     - Ricci tensor and null focusing linear in MetricDerivs
@@ -266,7 +266,7 @@
     + counting → volume → full metric
     → Riemann → Bianchi → Einstein + Lambda
     → source functional → K/P split → dressing nontrivial
-    → complex amplitudes → Born rule → interference → decoherence
+    → complex amplitudes → |z|² observable → interference → phase averaging
     → charge algebra → annihilation → bound states → far-field
     → everything
 

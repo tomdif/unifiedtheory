@@ -14,7 +14,7 @@ namespace UnifiedTheory.LayerB
 
 /-- **Phase flip negates interference.**
     The interference term at θ+π is the negative of that at θ.
-    This is the mechanism of decoherence. -/
+    This is the discrete phase-averaging cancellation identity. -/
 theorem phase_flip_negates (z₁ z₂ : ℂ) (θ : ℝ) :
     interferenceTerm z₁ (phaseRotate (θ + Real.pi) z₂) =
     -(interferenceTerm z₁ (phaseRotate θ z₂)) := by

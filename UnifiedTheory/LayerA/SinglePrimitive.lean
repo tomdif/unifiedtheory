@@ -12,7 +12,7 @@
     → any nonzero φ : V → ℝ has rank ≤ 1
     → ker(φ) has dim ≥ dim(V) - 1 ≥ 1  (rank-nullity)
     → ker(φ) contains a nonzero vector   (dressing exists)
-    → K/P split, complex amplitudes, Born rule, decoherence
+    → K/P split, complex amplitudes, |z|² observable, phase averaging
 -/
 import UnifiedTheory.LayerA.SourceFromMetric
 import Mathlib.LinearAlgebra.FiniteDimensional.Defs

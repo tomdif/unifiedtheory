@@ -1,7 +1,7 @@
 /-
   Layer A.4 — Lovelock endpoint (PROVEN)
 
-  The Lovelock theorem in 4D: any symmetric, divergence-free,
+  The Lovelock constraint in 4D: any symmetric, divergence-free,
   second-order natural 2-tensor is a·G + b·g.
 
   This file proves it algebraically in two steps:
@@ -80,9 +80,9 @@ theorem lovelock_decomposition {T : Type*} [AddCommGroup T] [Module ℝ T]
   have hcoeff : -c / 2 * cd.R_scalar = -(c * (cd.R_scalar / 2)) := by ring
   rw [hcoeff, neg_smul, ← sub_eq_add_neg]
 
-/-! ### Combined Lovelock theorem -/
+/-! ### Combined Lovelock constraint -/
 
-/-- **Lovelock-Einstein theorem (algebraic, 4D).**
+/-- **Lovelock-Einstein constraint (algebraic, 4D).**
     Any natural tensor E = c·R + d·R·g + e·g whose divergence vanishes
     for all metrics (encoded by: (c/2+d)·∇R = 0 for arbitrary ∇R)
     must be of the form a·G + b·g.

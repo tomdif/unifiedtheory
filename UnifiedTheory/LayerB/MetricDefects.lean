@@ -20,7 +20,7 @@
   Everything is EXACT — no perturbative or linearized-regime assumption.
   Composition = addition and conjugation = negation are the vector space
   operations on the perturbation space, not approximations. The entire
-  algebraic chain (charge, quantum, Born rule, decoherence) holds for
+  algebraic chain (charge, quantum, |z|² observable, phase-averaging cancellation) holds for
   perturbations of any size. See ExactRegime.lean for the formal proof.
 
   The only question outside this chain's scope is dynamical:
@@ -34,7 +34,7 @@
       → LinearDefectBlock (bridge + neutrality derived)
       → ComposableDefectBlock (charge algebra derived)
       → complex amplitudes z = K + iP
-      → interference, Born rule, decoherence
+      → interference, |z|² observable, phase averaging
 -/
 import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.LayerB.LinearDefects
@@ -181,10 +181,10 @@ theorem metric_charge_algebra (_ : LorentzianMetric m) :
     From metric perturbations, the quantum amplitude structure follows:
     - K/P split gives (Q, P) pair for each perturbation
     - z = Q + iP is the complex amplitude
-    - |z|² = Q² + P² is the observable (Born rule)
+    - |z|² = Q² + P² is the observable (|z|² observable)
     - Phase rotation preserves observable (U(1) invariance)
     - Two perturbations with same Q but different P interfere
-    - Phase averaging kills interference (decoherence → classical)
+    - Phase averaging kills interference (phase-averaging cancellation → classical)
 
     The K/P split is derived from the metric's trace functional (exact).
     The complex identification z = Q + iP is a definitional step.
@@ -230,8 +230,8 @@ theorem metric_to_quantum (_ : LorentzianMetric m) :
     - Charge conjugation (DERIVED: from linearity)
     - Annihilation (DERIVED: Q + (-Q) = 0)
     - Complex amplitudes z = Q + iP (definitional)
-    - Born rule |z|² uniqueness (SO(2) invariance)
-    - Decoherence → classical (phase averaging)
+    - |z|² observable uniqueness (SO(2) invariance)
+    - Phase-averaging cancellation → classical
 
     Composition = addition and conjugation = negation are vector space
     operations on the perturbation space (exact, not perturbative).

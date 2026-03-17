@@ -174,7 +174,7 @@ theorem unconditional_negation (md : MetricDerivs n) (b : Fin n) :
     identity that holds always. So the linearized regime never enters.
 
     The entire chain from LorentzianMetric to charge algebra to
-    quantum structure to decoherence is EXACT. -/
+    complex amplitude structure to phase averaging is EXACT. -/
 theorem fully_exact_chain :
     -- Algebraic structure: exact for ALL perturbations
     (∀ h : Pert n, h = πK n hn h + πP n hn h)

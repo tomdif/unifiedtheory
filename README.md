@@ -19,8 +19,8 @@ Every theorem depends only on the three standard Lean axioms (`propext`, `Classi
 | **Gauge** | Stress-energy traceless in d=4 (uniquely) | `gauge_traceless_4d`, `four_is_unique_traceless` | Exact |
 | **Matter** | Charge additivity Q(h₁+h₂) = Q(h₁)+Q(h₂) | `charge_additive` | Exact |
 | **Matter** | Annihilation Q(h+(-h)) = 0 | `annihilation_charge` | Exact |
-| **Quantum** | Born rule |z|² = Q²+P² | `obs_from_KP` | Exact |
-| **Quantum** | Decoherence: phase averaging kills interference | `discrete_decoherence_sum` | Exact |
+| **Quantum** | Quadratic observable |z|² = Q²+P² | `obs_from_KP` | Exact |
+| **Quantum** | Phase averaging: discrete cancellation of interference | `discrete_decoherence_sum` | Exact |
 
 ## Derived chain
 
@@ -35,7 +35,7 @@ LorentzianMetric m
   → Bridge: trace(πK(h)) = trace(h)                        (exact)
   → Neutrality: trace(πP(h)) = 0                           (exact)
   → Charge additivity, conjugation, annihilation            (exact)
-  → z = Q + iP → interference → Born rule → decoherence    (exact)
+  → z = Q + iP → interference → |z|² observable → phase averaging    (exact)
 ```
 
 Key files:
@@ -92,7 +92,7 @@ The charge algebra is signed: Q ∈ ℝ, not ℝ≥0. See [`SIGNED_SOURCE.md`](S
 
 | Category | What | Examples |
 |----------|------|---------|
-| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, Born rule, decoherence, signed source algebra, GR focusing coupling κ = 8π |
+| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, quadratic observable, phase-averaging cancellation, signed source algebra, GR focusing coupling κ = 8π |
 | **Structural** | Standard mathematics correctly formalized | Scaling exponent, rank-1 projection, Killing form symmetry |
 | **Definitional** | Modeling choices, explicitly stated | z = Q+iP identification, perturbation space = Matrix |
 | **Outside scope** | Not formalized | G=0 as condition (vs div(G)=0 identity), dynamics, Lovelock uniqueness, gauge group selection |
