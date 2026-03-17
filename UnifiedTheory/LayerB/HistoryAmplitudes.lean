@@ -125,6 +125,29 @@ theorem two_path_interference (z₁ z₂ : ℂ) :
     Complex.mul_re, Complex.conj_re, Complex.conj_im]
   ring
 
+/-! ## Connecting histories to interference -/
+
+/-- **TWO-HISTORY EVENT AMPLITUDE.**
+    For an event with exactly two histories, the event amplitude
+    equals the sum of the two history amplitudes. -/
+theorem two_history_amplitude (D : Perturbation (m + 2) → ℝ)
+    (h₁ h₂ : History m) :
+    eventAmplitude D [h₁, h₂] =
+    historyAmplitude D h₁ + historyAmplitude D h₂ := by
+  simp [eventAmplitude, List.map, List.foldl]
+
+/-- **TWO-HISTORY EVENT OBSERVABLE shows interference.**
+    The observable of a two-history event equals the sum of individual
+    observables plus an interference cross-term. This connects the
+    history/event infrastructure to the interference formula. -/
+theorem two_history_observable (D : Perturbation (m + 2) → ℝ)
+    (h₁ h₂ : History m) :
+    eventObservable D [h₁, h₂] =
+    obs (historyAmplitude D h₁) + obs (historyAmplitude D h₂) +
+    2 * (historyAmplitude D h₁ * conj (historyAmplitude D h₂)).re := by
+  simp only [eventObservable, two_history_amplitude]
+  exact two_path_interference _ _
+
 /-- **INCOHERENT LIMIT.**
     If the cross term vanishes (e.g., by phase averaging),
     the coherent sum reduces to the incoherent sum. -/
@@ -162,15 +185,17 @@ theorem phase_modulates_cross_term (z₁ z₂ : ℂ) (θ : ℝ) :
 
 /-- **HISTORY AMPLITUDE STRUCTURE.**
 
-    The framework supports a sum-over-histories amplitude theory:
+    The framework provides coherent-sum amplitude machinery:
 
-    (1) Histories are paths through the perturbation space
-    (2) Each history has a complex amplitude A(h)
-    (3) Event amplitude = sum of history amplitudes (coherent sum)
-    (4) Event observable = |A(E)|² (quadratic rule)
-    (5) Two-path events show interference (cross term ≠ 0 generically)
-    (6) Phase modulates the cross term (fringe pattern)
-    (7) Incoherent limit: no cross → classical additivity
+    (1) Histories are lists of perturbations; amplitudes are z = Q(h) + i·D(h)
+    (2) Event amplitude = sum of history amplitudes (coherent sum)
+    (3) Two-history events show interference (two_history_observable)
+    (4) Phase modulates the cross term (fringe pattern)
+    (5) Incoherent limit: no cross → classical additivity
+
+    Note: the history amplitude depends only on the net perturbation
+    (sum of steps), not the path ordering. A path-integral-like theory
+    with action weighting would require multiplicative composition.
 
     The interference identities hold for generic complex amplitudes.
     The history/event structure provides the organizational framework.

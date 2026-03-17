@@ -116,14 +116,13 @@ noncomputable def metricLinearDefectBlock (m : ℕ) :
   Defect := Perturbation (m + 2)
   perturbation := id
   -- Stability must be closed under compose (addition) and conjugate (negation).
-  -- The only predicate on a vector space closed under + and - without
-  -- additional algebraic structure is `fun _ => True`. A nontrivial
-  -- predicate like `h ≠ 0` fails because h₁ + h₂ = 0 is possible.
-  -- A predicate like `Q(h) ≠ 0` fails because Q(h₁) + Q(h₂) = 0 is possible.
-  -- The physically meaningful "source-carrying" condition is captured
-  -- separately by `SourceCarrying` below, which is NOT closed under
-  -- composition (annihilation is physical: two source-carrying defects
-  -- can compose to a source-free one).
+  -- Nontrivial +-closed predicates exist (any subspace works), but choosing
+  -- a specific subspace requires additional physical structure (e.g., which
+  -- perturbations satisfy a field equation). Without such structure,
+  -- `fun _ => True` is the natural default — it accepts all perturbations.
+  -- The physically meaningful non-vacuous condition (nonzero source charge)
+  -- is captured separately by `SourceCarrying` below, which is NOT closed
+  -- under composition (annihilation is physical).
   Stable := fun _ => True
   K_proj := K_proj m
   P_proj := P_proj m
@@ -146,13 +145,14 @@ noncomputable def metricLinearDefectBlock (m : ℕ) :
 
 /-! ## Step 4b: Source-carrying predicate (non-vacuous content)
 
-    The stability predicate `fun _ => True` is the unique predicate closed
-    under composition and conjugation on a vector space. But the physically
-    interesting condition — that a perturbation carries nonzero source charge —
-    is NOT closed under composition: two source-carrying defects can annihilate
-    (h + (-h) = 0 has zero charge). This is physical, not a deficiency.
+    Stable = True accepts all perturbations. Nontrivial +-closed predicates
+    exist (any subspace works), but choosing one requires specifying which
+    perturbations are "physical" — e.g., solutions of a field equation.
+    Without such a specification, True is the natural default.
 
-    We define SourceCarrying separately and prove the key theorems under it. -/
+    The physically interesting condition — nonzero source charge — is NOT
+    closed under composition (annihilation: h + (-h) has zero charge).
+    We define SourceCarrying separately and prove key theorems under it. -/
 
 /-- A perturbation is **source-carrying** if its trace (source charge) is nonzero.
     This is the physically meaningful non-vacuous condition on defects. -/
@@ -186,12 +186,14 @@ theorem source_carrying_charge_nonzero (h : Perturbation (m + 2))
       ((metricLinearDefectBlock m).K_proj h) ≠ 0 :=
   source_carrying_has_nonzero_source h hsc
 
-/-- **Stable = True is forced by closure under composition and conjugation.**
-    Any predicate P closed under + and - that holds for ANY element
-    must hold for 0 (since h + (-h) = 0). In a vector space, this means
-    the zero perturbation is always "stable." Combined with closure under
-    addition, P is either True or empty — there is no nontrivial predicate
-    on a vector space that is closed under + and -. -/
+/-- **Any +-closed predicate must include 0.**
+    If P is closed under + and -, and P holds for some element h,
+    then P(0) holds (since h + (-h) = 0). This means the zero
+    perturbation is always in any nonempty +-closed stability class.
+
+    Note: this does NOT force P = True. Subspaces are nontrivial
+    +-closed predicates. The choice of Stable = True above is a
+    modeling decision (accept all perturbations), not a forced consequence. -/
 theorem stable_must_include_zero
     (P : Perturbation (m + 2) → Prop)
     (h_add : ∀ h₁ h₂, P h₁ → P h₂ → P (h₁ + h₂))
