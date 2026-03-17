@@ -17,7 +17,7 @@ def sparseVec {n : ℕ} (j : Fin (n + 1)) (s t : ℝ) : Fin (n + 1) → ℝ :=
   fun i => if i = 0 then s else if i = j then t else 0
 
 /-- For the sparse vector, entries outside {0, j} are zero. -/
-lemma sparseVec_zero {n : ℕ} (j : Fin (n + 1)) (hj : j ≠ 0) (s t : ℝ)
+lemma sparseVec_zero {n : ℕ} (j : Fin (n + 1)) (_hj : j ≠ 0) (s t : ℝ)
     (i : Fin (n + 1)) (hi0 : i ≠ 0) (hij : i ≠ j) :
     sparseVec j s t i = 0 := by
   simp [sparseVec, hi0, hij]
@@ -81,7 +81,7 @@ theorem restriction_preserves_null {n : ℕ}
 /-! ### Apply the 1+1 null-cone theorem -/
 
 /-- **Cross terms vanish**: M(0, k+1) = 0. -/
-theorem cross_terms_vanish {n : ℕ} (hn : 0 < n)
+theorem cross_terms_vanish {n : ℕ} (_hn : 0 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
     (h_null : ∀ v : Fin (n + 1) → ℝ,
@@ -93,7 +93,7 @@ theorem cross_terms_vanish {n : ℕ} (hn : 0 < n)
   exact (null_cone_coeffs _ _ _ h_restrict).1
 
 /-- **Time-space relation**: M(k+1,k+1) = -M(0,0). -/
-theorem time_space_relation {n : ℕ} (hn : 0 < n)
+theorem time_space_relation {n : ℕ} (_hn : 0 < n)
     (M : Fin (n + 1) → Fin (n + 1) → ℝ)
     (hSym : ∀ i j, M i j = M j i)
     (h_null : ∀ v : Fin (n + 1) → ℝ,

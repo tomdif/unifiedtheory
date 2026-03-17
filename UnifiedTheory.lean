@@ -21,6 +21,7 @@ import UnifiedTheory.LayerA.ExactRegime
 import UnifiedTheory.LayerA.GaugeConnection
 import UnifiedTheory.LayerA.MetricGaugeCoupling
 import UnifiedTheory.LayerA.VariationalEinstein
+import UnifiedTheory.LayerA.PhysicalSelection
 import UnifiedTheory.LayerA.GaussBonnet4D
 import UnifiedTheory.LayerA.LovelockComplete
 import UnifiedTheory.LayerA.GaugeDerived
@@ -50,6 +51,7 @@ import UnifiedTheory.LayerB.FarField
 import UnifiedTheory.LayerB.StructuralTheorems
 import UnifiedTheory.LayerB.QuantumDefects
 import UnifiedTheory.LayerB.ComplexFromDressing
+import UnifiedTheory.LayerB.PropagationRule
 import UnifiedTheory.LayerB.ComplexUniqueness
 import UnifiedTheory.LayerB.Decoherence
 
@@ -76,3 +78,4 @@ import UnifiedTheory.Capstone
 import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
 import UnifiedTheory.LayerC.ConcreteMultiBody
+import UnifiedTheory.LayerB.PropagationRule
