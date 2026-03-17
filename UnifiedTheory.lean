@@ -81,3 +81,4 @@ import UnifiedTheory.LayerC.ConcreteModel
 import UnifiedTheory.LayerC.ConcreteMultiBody
 import UnifiedTheory.LayerB.PropagationRule
 import UnifiedTheory.LayerA.GaugeSelection
+import UnifiedTheory.LayerA.DiscreteBundles
