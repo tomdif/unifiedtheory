@@ -131,22 +131,21 @@ theorem entry_obs_noncommutative (hm : 0 < m) :
 
 /-! ## The trace is distinguished by commutativity -/
 
-/-- **THE TRACE IS DISTINGUISHED AS THE UNIQUE COMMUTATIVE OBSERVABLE.**
+/-- **THE TRACE IS A DISTINGUISHED ORDER-INSENSITIVE OBSERVABLE.**
 
-    Among all observables on the perturbation space:
+    Among observables on the perturbation space:
     - Matrix-entry observables O_{ij} do NOT commute with multiplication
     - The trace Tr DOES commute: Tr(AB) = Tr(BA)
 
-    This means: the charge functional Q = Tr is not just "a" linear
-    functional — it is the DISTINGUISHED functional that is invariant
-    under reordering of composition. All other linear functionals
-    (matrix entries, off-diagonal sums, etc.) see the non-commutativity.
+    This means: the charge functional Q = Tr is a distinguished
+    order-insensitive observable. The traceless sector carries
+    order-sensitive degrees of freedom not visible to trace.
 
     Physical interpretation:
-    - Q = Tr is the "classical" observable (order-independent)
-    - Matrix entries are "quantum" observables (order-dependent)
-    - The K/P split separates the commutative part (K = trace)
-      from the non-commutative part (P = traceless)
+    - Q = Tr is an order-insensitive (classical-like) observable
+    - Matrix entries detect order-sensitive (quantum-like) structure
+    - The K/P split separates order-insensitive content (K = trace)
+      from order-sensitive content (P = traceless)
 
     This is genuine geometric content: the non-commutativity is
     intrinsic to the matrix algebra, not imported from QM. -/
@@ -159,5 +158,103 @@ theorem trace_is_distinguished (hm : 0 < m) :
     -- (3) Matrix multiplication is genuinely non-commutative
     ∧ (∃ A B : Perturbation (m + 2), A * B ≠ B * A) := by
   exact ⟨trace_commutes, entry_obs_noncommutative hm, matrix_mul_noncommutative hm⟩
+
+/-! ## Trace classification: uniqueness up to scale -/
+
+/-- **Diagonal values of a cyclic functional are all equal.**
+    If φ(AB) = φ(BA) for all A, B, then φ(E_{ii}) = φ(E_{jj}) for
+    all i, j, where E_{ij} = Matrix.single i j 1. -/
+private lemma cyclic_diagonal_eq {n : ℕ} [NeZero n]
+    (φ : Matrix (Fin n) (Fin n) ℝ →ₗ[ℝ] ℝ)
+    (h_cyclic : ∀ A B : Matrix (Fin n) (Fin n) ℝ, φ (A * B) = φ (B * A))
+    (i j : Fin n) : φ (Matrix.single i i 1) = φ (Matrix.single j j 1) := by
+  -- φ(E_{ij} * E_{ji}) = φ(E_{ii}) since j=j in the product
+  have h1 : φ (Matrix.single i j 1 * Matrix.single j i 1) =
+            φ (Matrix.single i i (1 * 1)) := by
+    rw [Matrix.single_mul_single_same]
+  -- φ(E_{ji} * E_{ij}) = φ(E_{jj})
+  have h2 : φ (Matrix.single j i 1 * Matrix.single i j 1) =
+            φ (Matrix.single j j (1 * 1)) := by
+    rw [Matrix.single_mul_single_same]
+  -- By cyclic property: φ(E_{ij} * E_{ji}) = φ(E_{ji} * E_{ij})
+  have h3 := h_cyclic (Matrix.single i j 1) (Matrix.single j i 1)
+  simp only [mul_one] at h1 h2
+  linarith
+
+/-- **Off-diagonal values of a cyclic functional are zero.**
+    If φ(AB) = φ(BA) and i ≠ j, then φ(E_{ij}) = 0. -/
+private lemma cyclic_offdiag_zero {n : ℕ} [NeZero n]
+    (φ : Matrix (Fin n) (Fin n) ℝ →ₗ[ℝ] ℝ)
+    (h_cyclic : ∀ A B : Matrix (Fin n) (Fin n) ℝ, φ (A * B) = φ (B * A))
+    (i j : Fin n) (hij : i ≠ j) : φ (Matrix.single i j 1) = 0 := by
+  -- E_{ij} * E_{jj} = E_{ij} (since j=j in the product)
+  have h1 : Matrix.single i j (1 : ℝ) * Matrix.single j j 1 =
+            Matrix.single i j (1 * 1) :=
+    Matrix.single_mul_single_same 1 i j j 1
+  -- E_{jj} * E_{ij} = 0 (since j ≠ i)
+  have h2 : Matrix.single j j (1 : ℝ) * Matrix.single i j 1 = 0 :=
+    Matrix.single_mul_single_of_ne 1 j j i (hij.symm) 1
+  -- By cyclic: φ(E_{ij} * E_{jj}) = φ(E_{jj} * E_{ij})
+  have h3 := h_cyclic (Matrix.single i j 1) (Matrix.single j j 1)
+  simp only [mul_one] at h1
+  rw [h1, h2] at h3
+  rw [map_zero] at h3
+  exact h3
+
+/-- **TRACE CLASSIFICATION THEOREM: uniqueness up to scale.**
+
+    Any linear functional φ on Matrix (Fin n) (Fin n) ℝ satisfying the
+    cyclic property φ(AB) = φ(BA) for all A, B must be proportional to
+    the trace. That is, there exists c ∈ ℝ such that φ = c · Tr.
+
+    Proof strategy (elementary matrices):
+    1. All diagonal values are equal: φ(E_{ii}) = φ(E_{jj}) for all i,j
+       (from φ(E_{ij}E_{ji}) = φ(E_{ji}E_{ij}) by cyclic property)
+    2. Off-diagonal values vanish: φ(E_{ij}) = 0 for i ≠ j
+       (from φ(E_{ij}E_{jj}) = φ(E_{jj}E_{ij}) and E_{jj}E_{ij} = 0)
+    3. Any A = Σ_{ij} a_{ij} E_{ij}, so φ(A) = Σ_i a_{ii} φ(E_{11}) = φ(E_{11}) · Tr(A)
+
+    This upgrades `trace_is_distinguished` from "distinguished" to
+    "unique up to scale" among cyclic linear functionals. -/
+theorem trace_unique_cyclic {n : ℕ} (hn : 0 < n)
+    (φ : Matrix (Fin n) (Fin n) ℝ →ₗ[ℝ] ℝ)
+    (h_cyclic : ∀ A B : Matrix (Fin n) (Fin n) ℝ, φ (A * B) = φ (B * A)) :
+    ∃ c : ℝ, ∀ A : Matrix (Fin n) (Fin n) ℝ, φ A = c * Matrix.trace A := by
+  haveI : NeZero n := ⟨by omega⟩
+  -- The constant is φ(E_{00})
+  use φ (Matrix.single (0 : Fin n) (0 : Fin n) 1)
+  intro A
+  -- Helper: φ(single i j (r)) = r • φ(single i j 1)
+  have φ_single_smul : ∀ (i j : Fin n) (r : ℝ),
+      φ (Matrix.single i j r) = r * φ (Matrix.single i j 1) := by
+    intro i j r
+    have : Matrix.single i j r = r • Matrix.single i j 1 := by
+      ext p q; simp [Matrix.single, mul_one]
+    rw [this, map_smul, smul_eq_mul]
+  -- Key: φ(single i j (A i j)) = if i = j then A i j * φ(E₀₀) else 0
+  have key : ∀ (i j : Fin n), φ (Matrix.single i j (A i j)) =
+      if i = j then A i j * φ (Matrix.single 0 0 1) else 0 := by
+    intro i j
+    rw [φ_single_smul]
+    split_ifs with h
+    · subst h
+      rw [cyclic_diagonal_eq φ h_cyclic i 0]
+    · rw [cyclic_offdiag_zero φ h_cyclic i j h, mul_zero]
+  -- Decompose A = Σ_{i,j} A(i,j) · E_{ij}
+  conv_lhs => rw [Matrix.matrix_eq_sum_single A]
+  rw [map_sum]
+  simp_rw [map_sum, key]
+  -- Inner sum: Σ_j (if i=j then ... else 0) = A i i * c
+  have inner : ∀ i : Fin n, ∑ j : Fin n, (if i = j then A i j *
+      φ (Matrix.single 0 0 1) else 0) = A i i * φ (Matrix.single 0 0 1) := by
+    intro i
+    rw [Finset.sum_eq_single i (fun j _ hji => if_neg (Ne.symm hji))
+      (fun h => absurd (Finset.mem_univ i) h)]
+    simp
+  simp_rw [inner]
+  -- Σ_i A i i * c = c * Tr(A)
+  simp only [Matrix.trace, Matrix.diag]
+  rw [Finset.mul_sum]
+  congr 1; ext i; ring
 
 end UnifiedTheory.LayerB.NonCommutative
