@@ -29,6 +29,7 @@ import UnifiedTheory.LayerA.NormalizationTheorem
 import UnifiedTheory.LayerA.GaussBonnetExpansion
 import UnifiedTheory.LayerA.NonabelianYangMills
 import UnifiedTheory.LayerA.RotationInvariance
+import UnifiedTheory.LayerA.DimensionSelection
 import UnifiedTheory.LayerB.LindbladDecoherence
 import UnifiedTheory.ConditionalEinstein
 
