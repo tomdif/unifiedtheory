@@ -1,0 +1,188 @@
+{
+  "trapping": {
+    "Q": 10.0,
+    "outcome": "trapped",
+    "theta_final": -1000000.000033569,
+    "lambda_at_end": 1.7076732524758387,
+    "terminated_early": true,
+    "description": "Large Q > 0: nonlinear self-amplification causes caustic"
+  },
+  "anti_trapping": {
+    "Q": -10.0,
+    "outcome": "mildly_defocused",
+    "theta_final": 0.7909903327928807,
+    "lambda_at_end": 5.0,
+    "terminated_early": false,
+    "description": "Large Q < 0: defocusing resists caustic formation"
+  },
+  "critical_threshold": {
+    "sweep": [
+      {
+        "Q": 5.0,
+        "outcome": "trapped",
+        "theta_final": -1000000.0000654117,
+        "trapped": true
+      },
+      {
+        "Q": 4.5,
+        "outcome": "trapped",
+        "theta_final": -1000000.000003444,
+        "trapped": true
+      },
+      {
+        "Q": 4.0,
+        "outcome": "trapped",
+        "theta_final": -999999.9999972642,
+        "trapped": true
+      },
+      {
+        "Q": 3.5,
+        "outcome": "trapped",
+        "theta_final": -1000000.0000706194,
+        "trapped": true
+      },
+      {
+        "Q": 3.0,
+        "outcome": "trapped",
+        "theta_final": -999999.9999626481,
+        "trapped": true
+      },
+      {
+        "Q": 2.5,
+        "outcome": "trapped",
+        "theta_final": -999999.9995049436,
+        "trapped": true
+      },
+      {
+        "Q": 2.0,
+        "outcome": "trapped",
+        "theta_final": -1000000.0001488153,
+        "trapped": true
+      },
+      {
+        "Q": 1.5,
+        "outcome": "mildly_focused",
+        "theta_final": -2.7602368660339622,
+        "trapped": false
+      },
+      {
+        "Q": 1.0,
+        "outcome": "mildly_focused",
+        "theta_final": -0.7479361950206488,
+        "trapped": false
+      },
+      {
+        "Q": 0.5,
+        "outcome": "mildly_focused",
+        "theta_final": -0.2395038398941756,
+        "trapped": false
+      },
+      {
+        "Q": 0.0,
+        "outcome": "neutral",
+        "theta_final": 0.0,
+        "trapped": false
+      },
+      {
+        "Q": -0.5,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.14375892089891892,
+        "trapped": false
+      },
+      {
+        "Q": -1.0,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.24241210206848696,
+        "trapped": false
+      },
+      {
+        "Q": -1.5,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.31615925058548283,
+        "trapped": false
+      },
+      {
+        "Q": -2.0,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.3746488439354303,
+        "trapped": false
+      },
+      {
+        "Q": -2.5,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.4230749012974825,
+        "trapped": false
+      },
+      {
+        "Q": -3.0,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.46448399474954816,
+        "trapped": false
+      },
+      {
+        "Q": -3.5,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.5007828629636788,
+        "trapped": false
+      },
+      {
+        "Q": -4.0,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.5332272184639908,
+        "trapped": false
+      },
+      {
+        "Q": -4.5,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.5626787780906573,
+        "trapped": false
+      },
+      {
+        "Q": -5.0,
+        "outcome": "mildly_defocused",
+        "theta_final": 0.5897493533982258,
+        "trapped": false
+      }
+    ],
+    "Q_crit_upper_bound": 2.0,
+    "Q_crit_lower_bound": 1.5,
+    "description": "Sweep Q: find where caustic formation stops"
+  },
+  "bounce_vs_collapse": {
+    "negative_Q": {
+      "Q": -5.0,
+      "theta0": -0.5,
+      "outcome": "mildly_defocused",
+      "theta_final": 0.30543655987088714,
+      "description": "Initially converging + negative source: bounce/resist collapse"
+    },
+    "positive_Q": {
+      "Q": 5.0,
+      "theta0": -0.5,
+      "outcome": "trapped",
+      "theta_final": -999999.9999939775,
+      "description": "Initially converging + positive source: accelerate collapse"
+    }
+  },
+  "nonlinear_asymmetry": {
+    "Q": 3.0,
+    "theta_positive_Q": -0.7792814782199468,
+    "theta_negative_Q": 0.3770622716506009,
+    "ratio": 2.0667182500349868,
+    "positive_stronger": "True",
+    "description": "Nonlinear -\u03b8\u00b2/2 amplifies focusing more than defocusing"
+  },
+  "verification": {
+    "checks": {
+      "positive_Q_traps": true,
+      "negative_Q_avoids_trap": true,
+      "negative_Q_resists_collapse": true,
+      "positive_Q_accelerates_collapse": true,
+      "focusing_stronger_than_defocusing": true,
+      "critical_threshold_exists": true
+    },
+    "all_pass": true,
+    "total": 6,
+    "passed": 6
+  }
+}
