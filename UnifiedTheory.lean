@@ -55,6 +55,9 @@ import UnifiedTheory.LayerB.ComplexificationUniqueness
 import UnifiedTheory.LayerB.EnvironmentDecoherence
 import UnifiedTheory.LayerB.NonCommutative
 import UnifiedTheory.LayerB.QuantumUniqueness
+import UnifiedTheory.LayerB.DynamicalStability
+import UnifiedTheory.LayerB.AmplitudeUniqueness
+import UnifiedTheory.LayerB.DensityMatrix
 
 -- Capstone
 import UnifiedTheory.Capstone
