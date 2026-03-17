@@ -53,6 +53,18 @@ def netPerturbation (h : History m) : Perturbation (m + 2) :=
 noncomputable def stepAmplitude (D : Perturbation (m + 2) → ℝ) (h : Perturbation (m + 2)) : ℂ :=
   ⟨Q h, D h⟩
 
+/-- A concrete dressing functional: the (0,1) matrix entry.
+    This is a nonzero trace-free functional on the perturbation space. -/
+def concreteDressing (m : ℕ) (h : Perturbation (m + 2)) : ℝ :=
+  h 0 1
+
+/-- The concrete dressing functional is nonzero on some perturbations. -/
+theorem concreteDressing_nonzero :
+    ∃ h : Perturbation (m + 2), concreteDressing m h ≠ 0 := by
+  -- The matrix with 1 at position (0,1) has nonzero dressing
+  use (fun i j => if i = 0 ∧ j = 1 then 1 else 0)
+  simp [concreteDressing]
+
 /-- The **amplitude** of a history: the complex amplitude assigned
     to a path through the perturbation space, using the dressing
     functional `D` for the imaginary component.

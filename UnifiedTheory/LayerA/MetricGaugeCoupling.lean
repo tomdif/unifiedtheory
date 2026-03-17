@@ -76,8 +76,13 @@ theorem fieldStrengthNorm_nonneg (sc : StructureConstants g_dim)
 /-- **The Yang-Mills stress-energy tensor** (flat-space, component form).
     T(μ,ν) = Σ_{α,a} F(μ,α,a) * F(ν,α,a) - (1/4) * δ(μ,ν) * |F|²
 
-    This is the standard Yang-Mills stress-energy tensor with flat-metric
-    index contraction (δ_{μν} for simplicity). -/
+    This uses flat Euclidean metric (δ_{μν}) for index contraction.
+    For Lorentzian signature, replace δ with η. The trace formula
+    tr(T) = (1-n/4)|F|² holds in both signatures because:
+    - T_{μν} = F_{μα}g^{αβ}F_{νβ} - (1/4)g_{μν}|F|²
+    - tr(T) = g^{μν}T_{μν} = |F|² - (n/4)|F|² = (1-n/4)|F|²
+    The two factors of g in the kinetic term cancel the two factors
+    of g⁻¹ in the trace contraction, making the result signature-independent. -/
 noncomputable def stressEnergy (sc : StructureConstants g_dim)
     (conn : ConnectionData n g_dim) (μ ν : Fin n) : ℝ :=
   (∑ α : Fin n, ∑ a : Fin g_dim,

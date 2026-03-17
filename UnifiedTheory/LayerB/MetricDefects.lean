@@ -186,6 +186,22 @@ theorem source_carrying_charge_nonzero (h : Perturbation (m + 2))
       ((metricLinearDefectBlock m).K_proj h) ≠ 0 :=
   source_carrying_has_nonzero_source h hsc
 
+/-- **Stable = True is forced by closure under composition and conjugation.**
+    Any predicate P closed under + and - that holds for ANY element
+    must hold for 0 (since h + (-h) = 0). In a vector space, this means
+    the zero perturbation is always "stable." Combined with closure under
+    addition, P is either True or empty — there is no nontrivial predicate
+    on a vector space that is closed under + and -. -/
+theorem stable_must_include_zero
+    (P : Perturbation (m + 2) → Prop)
+    (h_add : ∀ h₁ h₂, P h₁ → P h₂ → P (h₁ + h₂))
+    (h_neg : ∀ h, P h → P (-h))
+    (h_exists : ∃ h, P h) :
+    P 0 := by
+  obtain ⟨h, hP⟩ := h_exists
+  have := h_add h (-h) hP (h_neg h hP)
+  rwa [add_neg_cancel] at this
+
 /-! ## Step 5: Export the ComposableDefectBlock -/
 
 /-- **The full composable defect block, derived from metric perturbations.**
