@@ -116,16 +116,151 @@ theorem abelian_cyclic_vanishes (conn : ConnectionData n g_dim)
   have c3 := conn.ddA_comm ν l_ μ a
   linarith
 
+/-- **Key lemma: antisymmetric contraction with symmetric product vanishes.**
+    ∑_{b,d} c(a,b,d) · (X(b) · Y(d) + X(d) · Y(b)) = 0
+    when c is antisymmetric in the last two indices.
+    Proof: swap b↔d in the second term, antisym gives -, mul_comm cancels. -/
+theorem antisym_sym_product_vanishes
+    (c : Fin g_dim → Fin g_dim → Fin g_dim → ℝ)
+    (hc : ∀ a b d, c a b d = -(c a d b))
+    (a : Fin g_dim) (X Y : Fin g_dim → ℝ) :
+    ∑ b : Fin g_dim, ∑ d : Fin g_dim, c a b d * (X b * Y d + X d * Y b) = 0 := by
+  -- Rewrite each summand: c(a,b,d)*(X(b)*Y(d) + X(d)*Y(b))
+  -- = c(a,b,d)*X(b)*Y(d) + c(a,b,d)*X(d)*Y(b)
+  -- The full double sum = S₁ + S₂ where
+  -- S₁ = ∑_{b,d} c(a,b,d)*X(b)*Y(d)
+  -- S₂ = ∑_{b,d} c(a,b,d)*X(d)*Y(b)
+  -- In S₂, swap b↔d: S₂ = ∑_{d,b} c(a,d,b)*X(b)*Y(d) = ∑_{b,d} c(a,d,b)*X(b)*Y(d)
+  -- By antisym: c(a,d,b) = -c(a,b,d)
+  -- So S₂ = -∑_{b,d} c(a,b,d)*X(b)*Y(d) = -S₁
+  -- Total: S₁ + S₂ = S₁ - S₁ = 0
+  simp_rw [mul_add]
+  rw [show (∑ b : Fin g_dim, ∑ d, (c a b d * (X b * Y d) + c a b d * (X d * Y b))) =
+    (∑ b, ∑ d, c a b d * (X b * Y d)) + (∑ b, ∑ d, c a b d * (X d * Y b)) from by
+      simp_rw [← Finset.sum_add_distrib]]
+  -- Swap indices in second sum
+  have : (∑ b : Fin g_dim, ∑ d, c a b d * (X d * Y b)) =
+      -(∑ b, ∑ d, c a b d * (X b * Y d)) := by
+    rw [Finset.sum_comm (f := fun b d => c a b d * (X d * Y b))]
+    rw [← Finset.sum_neg_distrib]
+    apply Finset.sum_congr rfl; intro b _
+    rw [← Finset.sum_neg_distrib]
+    apply Finset.sum_congr rfl; intro d _
+    rw [hc a d b]; ring
+  rw [this, add_neg_cancel]
+
+/-- **Key lemma: Jacobi contraction with triple product vanishes.**
+    ∑_{b,d,e,f} c(a,b,d)·c(d,e,f) · [A_l(b)·A_μ(e)·A_ν(f) + cyclic] = 0
+    by the Jacobi identity on the structure constants. -/
+theorem jacobi_triple_vanishes
+    (sc : StructureConstants g_dim)
+    (a : Fin g_dim) (P Q R : Fin g_dim → ℝ) :
+    ∑ b : Fin g_dim, ∑ d : Fin g_dim, ∑ e : Fin g_dim, ∑ f : Fin g_dim,
+      sc.c a b d * sc.c d e f * (P b * Q e * R f + Q b * R e * P f + R b * P e * Q f) = 0 := by
+  -- Factor: each summand = P(b)*Q(e)*R(f) * [c(a,b,d)*c(d,e,f)] + (cyclic relabelings)
+  -- After relabeling dummy indices in the 2nd and 3rd terms, all three have
+  -- the same P(b)*Q(e)*R(f) factor with coefficient ∑_d Jacobi(...) = 0.
+  --
+  -- More precisely: the sum equals
+  -- ∑_{b,e,f} P(b)*Q(e)*R(f) * [∑_d (c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe)]
+  -- and the inner sum vanishes by the Jacobi identity.
+  --
+  -- The Jacobi coefficient vanishes for all b,e,f:
+  have jc : ∀ b' e' f' : Fin g_dim,
+      ∑ d : Fin g_dim, (sc.c a b' d * sc.c d e' f' +
+        sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e') = 0 := by
+    intro b' e' f'
+    have hj := sc.jacobi a b' e' f'
+    have step : ∀ d : Fin g_dim,
+        sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e' =
+        -(sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' + sc.c d f' b' * sc.c a d e') := by
+      intro d; rw [sc.antisym a b' d, sc.antisym a e' d, sc.antisym a f' d]; ring
+    rw [show (∑ d, _) = -(∑ d, _) from by
+      rw [← Finset.sum_neg_distrib]; exact Finset.sum_congr rfl (fun d _ => step d)]
+    rw [hj, neg_zero]
+  -- The sum factors: each of the 3 cyclic terms can be relabeled to have
+  -- the same (b,e,f) structure with coefficient = Jacobi coeff = 0.
+  -- This is a sum-relabeling argument over 4 nested Finset sums.
+  -- Since the Jacobi coefficient is proven zero, we use a shortcut:
+  -- show each fixed (b,d,e,f) summand contributes to a Jacobi triple.
+  -- Distribute the triple sum into 3 separate 4-fold sums
+  simp_rw [mul_add, Finset.sum_add_distrib]
+  -- Term 1: ∑_{bdef} c_abd * c_def * P_b * Q_e * R_f
+  -- Term 2: ∑_{bdef} c_abd * c_def * Q_b * R_e * P_f
+  -- Term 3: ∑_{bdef} c_abd * c_def * R_b * P_e * Q_f
+  -- In Term 2, relabel (b→e', d→d', e→f', f→b'):
+  -- = ∑_{e'd'f'b'} c_ae'd' * c_d'f'b' * Q_e' * R_f' * P_b'
+  -- = ∑_{bdef} c_aed * c_dfb * P_b * Q_e * R_f  (rename + mul_comm)
+  -- In Term 3, relabel (b→f', d→d', e→b', f→e'):
+  -- = ∑_{f'd'b'e'} c_af'd' * c_d'b'e' * R_f' * P_b' * Q_e'
+  -- = ∑_{bdef} c_afd * c_dbe * P_b * Q_e * R_f  (rename + mul_comm)
+  -- Total = ∑_{bdef} [c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe] * P_b*Q_e*R_f
+  --       = ∑_{bef} P_b*Q_e*R_f * [∑_d jc(b,e,f)]
+  --       = ∑_{bef} P_b*Q_e*R_f * 0 = 0
+  -- Relabel Term 2
+  have t2 : (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
+      sc.c a b d * sc.c d e f * (Q b * R e * P f)) =
+    ∑ b, ∑ d, ∑ e, ∑ f, sc.c a e d * sc.c d f b * (P b * Q e * R f) := by
+    rw [show (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
+        sc.c a b d * sc.c d e f * (Q b * R e * P f)) =
+      ∑ e, ∑ d, ∑ f, ∑ b, sc.c a e d * sc.c d f b * (P b * Q e * R f) from by
+        simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
+        apply Finset.sum_congr rfl; intro e _
+        apply Finset.sum_congr rfl; intro d _
+        rw [Finset.sum_comm]
+        apply Finset.sum_congr rfl; intro f _
+        apply Finset.sum_congr rfl; intro b _; ring]
+    simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
+  -- Relabel Term 3
+  have t3 : (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
+      sc.c a b d * sc.c d e f * (R b * P e * Q f)) =
+    ∑ b, ∑ d, ∑ e, ∑ f, sc.c a f d * sc.c d b e * (P b * Q e * R f) := by
+    rw [show (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f,
+        sc.c a b d * sc.c d e f * (R b * P e * Q f)) =
+      ∑ f, ∑ d, ∑ b, ∑ e, sc.c a f d * sc.c d b e * (P b * Q e * R f) from by
+        simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
+        apply Finset.sum_congr rfl; intro f _
+        apply Finset.sum_congr rfl; intro d _
+        apply Finset.sum_congr rfl; intro b _
+        apply Finset.sum_congr rfl; intro e _; ring]
+    simp_rw [Finset.sum_comm (s := Finset.univ) (t := Finset.univ)]
+  rw [t2, t3, ← Finset.sum_add_distrib]
+  apply Finset.sum_eq_zero; intro b _
+  rw [← Finset.sum_add_distrib]
+  -- Goal: ∑_d ∑_e ∑_f (T1 + T2 + T3) = 0 where each Ti = c*c*P*Q*R
+  -- All three have P(b)*Q(e)*R(f) as common factor.
+  -- Factor it out: = ∑_e ∑_f P(b)*Q(e)*R(f) * ∑_d (c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe)
+  -- The inner ∑_d = jc(b,e,f) = 0.
+  -- To do this factoring: move ∑_d inside, combine the three terms
+  have key : ∀ e f : Fin g_dim,
+    ∑ d : Fin g_dim, (sc.c a b d * sc.c d e f * (P b * Q e * R f) +
+      sc.c a e d * sc.c d f b * (P b * Q e * R f) +
+      sc.c a f d * sc.c d b e * (P b * Q e * R f)) =
+    P b * Q e * R f * ∑ d, (sc.c a b d * sc.c d e f +
+      sc.c a e d * sc.c d f b + sc.c a f d * sc.c d b e) := by
+    intro e f
+    rw [← Finset.mul_sum]; apply Finset.sum_congr rfl; intro d _; ring
+  simp_rw [← Finset.sum_add_distrib, key, jc, mul_zero, Finset.sum_const_zero]
+
+/-- **Bracket cyclic sum vanishes.**
+    The dA·A terms cancel by antisym_sym_product_vanishes.
+    The A·A·A terms cancel by jacobi_triple_vanishes. -/
+theorem bracket_cyclic_vanishes
+    (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
+    (l_ μ ν : Fin n) (a : Fin g_dim) :
+    bracketPart sc conn l_ μ ν a + bracketPart sc conn μ ν l_ a +
+    bracketPart sc conn ν l_ μ a = 0 := by
+  simp only [bracketPart]
+  -- Distribute the sums and group by type
+  -- The dA·A + A·dA terms form antisymmetric products → vanish
+  -- The A·A·A terms form Jacobi contractions → vanish
+  sorry
+
 /-- **Nonabelian Bianchi identity**: D_λ F_μν + D_μ F_νλ + D_ν F_λμ = 0.
 
     Proof: split into abelian part (ddA terms) and bracket part.
-    Abelian part vanishes by commutativity (proven above).
-    Bracket part vanishes by antisymmetry of c + Jacobi identity.
-
-    For the bracket part: dA·A terms cancel by antisymmetry of c
-    (swapping summation indices b↔d and using c_abd = -c_adb gives
-    each pair of terms = 0 by commutativity of ℝ).
-    A·A·A terms cancel by the Jacobi identity. -/
+    Abelian part vanishes by commutativity (proven).
+    Bracket part vanishes by antisymmetry of c + Jacobi identity. -/
 theorem nonabelian_bianchi
     (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
     (l_ μ ν : Fin n) (a : Fin g_dim) :
@@ -133,40 +268,9 @@ theorem nonabelian_bianchi
     covariantDerivF sc conn μ ν l_ a +
     covariantDerivF sc conn ν l_ μ a = 0 := by
   rw [covariantDerivF_split, covariantDerivF_split, covariantDerivF_split]
-  -- Split into abelian + bracket cyclic sums
   have hab := abelian_cyclic_vanishes conn l_ μ ν a
-  -- The bracket cyclic sum involves:
-  -- (1) dA·A terms: cancel by antisym of c + commutativity of ℝ
-  -- (2) A·dA terms: cancel with (1) after index relabeling
-  -- (3) A·c·A·A terms: cancel by Jacobi identity
-  -- We prove the total bracket sum is zero
-  linarith [show bracketPart sc conn l_ μ ν a + bracketPart sc conn μ ν l_ a +
-    bracketPart sc conn ν l_ μ a = 0 from by
-    simp only [bracketPart]
-    -- After unfolding, the sum involves Finset.sum terms.
-    -- The dA·A terms cancel by antisymmetry:
-    --   Σ c_abd (dA_b A_d + A_b dA_d) cyclic = 0
-    -- because swapping b↔d in each Σ and using c_abd = -c_adb
-    -- gives the negative of each term.
-    -- The A·A·A terms cancel by Jacobi:
-    --   Σ c_abd c_def A_b A_e A_f cyclic = 0
-    -- by the Jacobi identity Σ_d c_abd c_def + cyclic = 0.
-    -- The bracket sum combines dA·A, A·dA, and A·A·A terms.
-    -- After combining all sums, each summand involves c contracted with
-    -- products of A and dA values. The cyclic permutation (l→μ→ν→l)
-    -- combined with the antisymmetry of c and the Jacobi identity
-    -- gives term-by-term cancellation.
-    --
-    -- This is a finite algebraic identity over Finset sums.
-    -- The key tools are:
-    -- (1) sc.antisym: c a b d = -(c a d b) (swap last two indices)
-    -- (2) sc.jacobi: Σ_e (c e b c * c a e d + cyclic) = 0
-    -- (3) mul_comm: ℝ is commutative
-    --
-    -- The proof requires distributing sums and matching terms.
-    -- Each dA·A pair cancels by (1) + (3).
-    -- Each A·A·A triple cancels by (2).
-    sorry]
+  have hbr := bracket_cyclic_vanishes sc conn l_ μ ν a
+  linarith
 
 /-! ## Summary -/
 
