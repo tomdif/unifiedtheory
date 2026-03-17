@@ -149,6 +149,23 @@ theorem antisym_sym_product_vanishes
     rw [hc a d b]; ring
   rw [this, add_neg_cancel]
 
+/-- Helper: reverse cyclic permutation of a triple nested sum.
+    ∑_b ∑_e ∑_f g(b,e,f) = ∑_b ∑_e ∑_f g(f,b,e). -/
+private theorem sum3_rev_cycle (g : Fin g_dim → Fin g_dim → Fin g_dim → ℝ) :
+    ∑ b : Fin g_dim, ∑ e : Fin g_dim, ∑ f : Fin g_dim, g b e f =
+    ∑ b, ∑ e, ∑ f, g f b e := by
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl; intro e₀ _
+  rw [Finset.sum_comm]
+
+/-- Helper: forward cyclic permutation.
+    ∑_b ∑_e ∑_f g(b,e,f) = ∑_b ∑_e ∑_f g(e,f,b). -/
+private theorem sum3_fwd_cycle (g : Fin g_dim → Fin g_dim → Fin g_dim → ℝ) :
+    ∑ b : Fin g_dim, ∑ e : Fin g_dim, ∑ f : Fin g_dim, g b e f =
+    ∑ b, ∑ e, ∑ f, g e f b := by
+  rw [sum3_rev_cycle (g := g)]
+  rw [sum3_rev_cycle (g := fun b e f => g f b e)]
+
 /-- **Key lemma: Jacobi contraction with triple product vanishes.**
     ∑_{b,d,e,f} c(a,b,d)·c(d,e,f) · [A_l(b)·A_μ(e)·A_ν(f) + cyclic] = 0
     by the Jacobi identity on the structure constants. -/
@@ -157,14 +174,6 @@ theorem jacobi_triple_vanishes
     (a : Fin g_dim) (P Q R : Fin g_dim → ℝ) :
     ∑ b : Fin g_dim, ∑ d : Fin g_dim, ∑ e : Fin g_dim, ∑ f : Fin g_dim,
       sc.c a b d * sc.c d e f * (P b * Q e * R f + Q b * R e * P f + R b * P e * Q f) = 0 := by
-  -- Factor: each summand = P(b)*Q(e)*R(f) * [c(a,b,d)*c(d,e,f)] + (cyclic relabelings)
-  -- After relabeling dummy indices in the 2nd and 3rd terms, all three have
-  -- the same P(b)*Q(e)*R(f) factor with coefficient ∑_d Jacobi(...) = 0.
-  --
-  -- More precisely: the sum equals
-  -- ∑_{b,e,f} P(b)*Q(e)*R(f) * [∑_d (c_abd*c_def + c_aed*c_dfb + c_afd*c_dbe)]
-  -- and the inner sum vanishes by the Jacobi identity.
-  --
   -- The Jacobi coefficient vanishes for all b,e,f:
   have jc : ∀ b' e' f' : Fin g_dim,
       ∑ d : Fin g_dim, (sc.c a b' d * sc.c d e' f' +
@@ -175,132 +184,160 @@ theorem jacobi_triple_vanishes
         sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e' =
         -(sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' + sc.c d f' b' * sc.c a d e') := by
       intro d; rw [sc.antisym a b' d, sc.antisym a e' d, sc.antisym a f' d]; ring
-    have combine : (∑ d : Fin g_dim, (sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' + sc.c a f' d * sc.c d b' e')) =
-      -(∑ d, (sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' + sc.c d f' b' * sc.c a d e')) := by
+    have combine : (∑ d : Fin g_dim, (sc.c a b' d * sc.c d e' f' + sc.c a e' d * sc.c d f' b' +
+        sc.c a f' d * sc.c d b' e')) =
+      -(∑ d, (sc.c d b' e' * sc.c a d f' + sc.c d e' f' * sc.c a d b' +
+        sc.c d f' b' * sc.c a d e')) := by
       rw [← Finset.sum_neg_distrib]; exact Finset.sum_congr rfl (fun d _ => step d)
     rw [combine, hj, neg_zero]
-  -- STRATEGY: Factor out ∑_d first, then relabel the 3-fold sums.
-  -- Step 1: Distribute into 3 terms
+  -- Distribute into 3 terms
   simp_rw [mul_add, Finset.sum_add_distrib]
-  -- Step 2: In each term, factor the d-sum out:
-  --   ∑_b ∑_d ∑_e ∑_f c_abd*c_def*X = ∑_b ∑_e ∑_f X * (∑_d c_abd*c_def)
-  -- Step 3: Relabel b,e,f in terms 2 and 3 (3-fold sums, much simpler)
-  -- Step 4: Combine coefficient = jc(b,e,f) = 0
-
-  -- Define C(b,e,f) = ∑_d c_abd*c_def (one-third of the Jacobi coefficient)
-  -- Term 1 = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(b,e,f)
-  -- Term 2 = ∑_b ∑_e ∑_f Q_b*R_e*P_f * C(b,e,f)
-  --        = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(e,f,b)  [relabel b→e,e→f,f→b]
-  -- Term 3 = ∑_b ∑_e ∑_f R_b*P_e*Q_f * C(b,e,f)
-  --        = ∑_b ∑_e ∑_f P_b*Q_e*R_f * C(f,b,e)  [relabel b→f,e→b,f→e]
-  -- Total = ∑_b ∑_e ∑_f P*Q*R * (C(b,e,f) + C(e,f,b) + C(f,b,e)) = ∑ P*Q*R*jc = 0
-
   -- Factor d-sum out of each term
   have factor : ∀ (X : Fin g_dim → Fin g_dim → Fin g_dim → ℝ),
       (∑ b : Fin g_dim, ∑ d, ∑ e, ∑ f, sc.c a b d * sc.c d e f * X b e f) =
       ∑ b, ∑ e, ∑ f, X b e f * (∑ d, sc.c a b d * sc.c d e f) := by
     intro X; apply Finset.sum_congr rfl; intro b _
-    -- For fixed b: ∑_d ∑_e ∑_f c*c*X = ∑_e ∑_f X*(∑_d c*c)
-    -- Proof: swap d past e and f, then factor
-    -- For fixed b: ∑_d ∑_e ∑_f c*c*X = ∑_e ∑_f X*(∑_d c*c)
-    -- Proof: the d-sum factors out because X doesn't depend on d
     show (∑ d : Fin g_dim, ∑ e, ∑ f, sc.c a b d * sc.c d e f * X b e f) =
       ∑ e, ∑ f, X b e f * ∑ d, sc.c a b d * sc.c d e f
-    -- Rewrite summand
-    have hfact : ∀ d e f : Fin g_dim, sc.c a b d * sc.c d e f * X b e f =
-        X b e f * (sc.c a b d * sc.c d e f) := fun d e f => by ring
-    simp_rw [hfact]
-    -- Goal: ∑_d ∑_e ∑_f X(b,e,f)*cc(b,d,e,f) = ∑_e ∑_f X(b,e,f)*(∑_d cc(b,d,e,f))
-    -- Step 1: Move d inside by swapping summation order
+    simp_rw [fun d e f => show sc.c a b d * sc.c d e f * X b e f =
+        X b e f * (sc.c a b d * sc.c d e f) from by ring]
     rw [Finset.sum_comm]
-    -- Now: ∑_e ∑_d ∑_f X*cc
     apply Finset.sum_congr rfl; intro e _
     rw [Finset.sum_comm]
-    -- Now: ∑_f ∑_d X*cc
     apply Finset.sum_congr rfl; intro f _
-    -- Now: ∑_d X*cc = X*(∑_d cc) since X doesn't depend on d
     exact (Finset.mul_sum ..).symm
   rw [factor (fun b e f => P b * Q e * R f),
       factor (fun b e f => Q b * R e * P f),
       factor (fun b e f => R b * P e * Q f)]
-  -- Relabel Term 2: (b,e,f) → (e,f,b)
-  -- Q(b)*R(e)*P(f)*C(b,e,f) summed = P(b)*Q(e)*R(f)*C(e,f,b) summed
-  rw [show (∑ b : Fin g_dim, ∑ e, ∑ f,
-      Q b * R e * P f * (∑ d, sc.c a b d * sc.c d e f)) =
-    ∑ b, ∑ e, ∑ f,
-      P b * Q e * R f * (∑ d, sc.c a e d * sc.c d f b) from by
-    rw [Finset.sum_comm]  -- swap outermost: b↔e
-    apply Finset.sum_congr rfl; intro e₀ _
-    rw [Finset.sum_comm]  -- swap next: e₀↔f
-    apply Finset.sum_congr rfl; intro f₀ _
-    -- After sum_comm: outermost is e₀ (was b), next level is f₀ (was e),
-    -- innermost is b₀ (was f). Summand = Q(b₀_orig)*R(e₀_orig)*P(f₀_orig)*C(b,e,f)
-    -- where b₀_orig = b₀ (inner), e₀_orig = e₀ (outer), f₀_orig = f₀ (middle).
-    -- After renaming (outermost=e₀, middle=f₀, inner=b₀):
-    -- summand = Q(b₀)*R(e₀)*P(f₀)*C(b₀,e₀,f₀)
-    -- but we want P(b₀)*Q(e₀)*R(f₀)*C(e₀,f₀,b₀)
-    -- Wait — after sum_comm, e₀ is the OUTERMOST. Inside it, sum_comm
-    -- swaps original_d(=b) and original_e(=f). So the order is e₀,f₀,b₀
-    -- meaning: sum over e₀ first, then f₀, then b₀.
-    -- The summand value at (e₀,f₀,b₀) is:
-    -- Q(e₀)*R(f₀)*P(b₀)*C(e₀,f₀,b₀)   [original summand with b=e₀,e=f₀,f=b₀]
-    -- And we want: P(b₀)*Q(e₀)*R(f₀)*C(e₀,f₀,b₀) ✓ (same by mul_comm)
-    -- After two sum_comms, the bound vars are (e₀=orig_b, f₀=orig_e, inner=orig_f)
-    -- Need to enter the f₀ level and show summands match up to mul_comm
-    apply Finset.sum_congr rfl; intro x _
-    -- At the summand: Q(orig_b=e₀)*R(orig_e=f₀)*P(orig_f=x)*(∑d c(a,e₀,d)*c(d,f₀,x))
-    -- = P(x)*Q(e₀)*R(f₀)*(∑d c(a,e₀,d)*c(d,f₀,x))
-    -- The sums are identical; just commute Q*R*P → P*Q*R
-    -- Use mul_left_cancel or direct multiplication lemma
-    -- Use mul_left_cancel strategy: show LHS and RHS differ only by mul_comm on prefix
-    simp only [mul_assoc]
-    -- After mul_assoc: LHS = Q(e₀) * (R(x) * (P(f₀) * S))
-    --                  RHS = P(f₀) * (Q(e₀) * (R(x) * S))
-    -- Use mul_left_comm repeatedly
-    simp only [mul_left_comm]]
-  -- Relabel Term 3: same strategy
-  rw [show (∑ b : Fin g_dim, ∑ e, ∑ f,
-      R b * P e * Q f * (∑ d, sc.c a b d * sc.c d e f)) =
-    ∑ b, ∑ e, ∑ f,
-      P b * Q e * R f * (∑ d, sc.c a f d * sc.c d b e) from by
-    rw [Finset.sum_comm]
-    apply Finset.sum_congr rfl; intro e₀ _
-    rw [Finset.sum_comm]
-    apply Finset.sum_congr rfl; intro f₀ _
-    apply Finset.sum_congr rfl; intro x _
-    simp only [mul_assoc, mul_left_comm]]
-  -- Combine the three terms
-  rw [← Finset.sum_add_distrib]
+  set C := fun b e f => ∑ d : Fin g_dim, sc.c a b d * sc.c d e f with hC
+  -- Relabel T₂ using forward cycle
+  have ht2 : (∑ b : Fin g_dim, ∑ e, ∑ f,
+      Q b * R e * P f * C b e f) =
+    ∑ b, ∑ e, ∑ f, P b * Q e * R f * C e f b := by
+    rw [sum3_fwd_cycle (g := fun b e f => Q b * R e * P f * C b e f)]
+    apply Finset.sum_congr rfl; intro b _
+    apply Finset.sum_congr rfl; intro e _
+    apply Finset.sum_congr rfl; intro f _; ring
+  -- Relabel T₃ using reverse cycle
+  have ht3 : (∑ b : Fin g_dim, ∑ e, ∑ f,
+      R b * P e * Q f * C b e f) =
+    ∑ b, ∑ e, ∑ f, P b * Q e * R f * C f b e := by
+    rw [sum3_rev_cycle (g := fun b e f => R b * P e * Q f * C b e f)]
+    apply Finset.sum_congr rfl; intro b _
+    apply Finset.sum_congr rfl; intro e _
+    apply Finset.sum_congr rfl; intro f _; ring
+  rw [ht2, ht3, ← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
   apply Finset.sum_eq_zero; intro b _
-  rw [← Finset.sum_add_distrib]
+  rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
   apply Finset.sum_eq_zero; intro e _
-  rw [← Finset.sum_add_distrib]
+  rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]
   apply Finset.sum_eq_zero; intro f _
-  -- Goal: P*Q*R*C(b,e,f) + P*Q*R*C(e,f,b) + P*Q*R*C(f,b,e) = 0
-  -- Factor: P*Q*R * (C(b,e,f) + C(e,f,b) + C(f,b,e)) = P*Q*R * jc(b,e,f) = 0
-  have : P b * Q e * R f * (∑ d, sc.c a b d * sc.c d e f) +
-    P b * Q e * R f * (∑ d, sc.c a e d * sc.c d f b) +
-    P b * Q e * R f * (∑ d, sc.c a f d * sc.c d b e) =
-    P b * Q e * R f * (∑ d, (sc.c a b d * sc.c d e f +
-      sc.c a e d * sc.c d f b + sc.c a f d * sc.c d b e)) := by
-    rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]; ring
-  rw [this, jc, mul_zero]
+  have hcombine : P b * Q e * R f * C b e f +
+    P b * Q e * R f * C e f b +
+    P b * Q e * R f * C f b e =
+    P b * Q e * R f * (C b e f + C e f b + C f b e) := by ring
+  rw [hcombine]
+  simp only [hC]
+  rw [show (∑ d, sc.c a b d * sc.c d e f) + (∑ d, sc.c a e d * sc.c d f b) +
+    (∑ d, sc.c a f d * sc.c d b e) =
+    ∑ d, (sc.c a b d * sc.c d e f + sc.c a e d * sc.c d f b +
+      sc.c a f d * sc.c d b e) from by
+    rw [← Finset.sum_add_distrib, ← Finset.sum_add_distrib]]
+  rw [jc, mul_zero]
 
 /-- **Bracket cyclic sum vanishes.**
     The dA·A terms cancel by antisym_sym_product_vanishes.
     The A·A·A terms cancel by jacobi_triple_vanishes. -/
+-- Helper definitions for splitting bracketPart
+private def dAPart (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
+    (l_ μ ν : Fin n) (a : Fin g_dim) : ℝ :=
+  ∑ b : Fin g_dim, ∑ d : Fin g_dim,
+    sc.c a b d * (conn.dA l_ μ b * conn.A ν d + conn.A μ b * conn.dA l_ ν d) +
+  ∑ b : Fin g_dim, ∑ d : Fin g_dim,
+    sc.c a b d * conn.A l_ b * (conn.dA μ ν d - conn.dA ν μ d)
+
+private def AAAPart (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
+    (l_ μ ν : Fin n) (a : Fin g_dim) : ℝ :=
+  ∑ b : Fin g_dim, ∑ d : Fin g_dim,
+    sc.c a b d * conn.A l_ b *
+    (∑ e : Fin g_dim, ∑ f : Fin g_dim, sc.c d e f * conn.A μ e * conn.A ν f)
+
+private theorem bracketPart_eq_dA_plus_AAA (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim) (l_ μ ν : Fin n) (a : Fin g_dim) :
+    bracketPart sc conn l_ μ ν a = dAPart sc conn l_ μ ν a + AAAPart sc conn l_ μ ν a := by
+  simp only [bracketPart, dAPart, AAAPart]
+  simp_rw [mul_add, mul_sub, Finset.sum_add_distrib, Finset.sum_sub_distrib]
+  ring
+
+private theorem dA_cyclic_vanishes
+    (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
+    (l_ μ ν : Fin n) (a : Fin g_dim) :
+    dAPart sc conn l_ μ ν a + dAPart sc conn μ ν l_ a + dAPart sc conn ν l_ μ a = 0 := by
+  simp only [dAPart]
+  -- Use antisym_sym_product_vanishes for the three cyclic pairs
+  have h1 := antisym_sym_product_vanishes (sc.c) sc.antisym a (conn.dA l_ μ) (conn.A ν)
+  have h2 := antisym_sym_product_vanishes (sc.c) sc.antisym a (conn.dA μ ν) (conn.A l_)
+  have h3 := antisym_sym_product_vanishes (sc.c) sc.antisym a (conn.dA ν l_) (conn.A μ)
+  -- Show the goal equals h1 + h2 + h3 = 0 + 0 + 0 = 0
+  -- by converting both sides to the same normal form.
+  -- Goal after simp only [dAPart]:
+  --   (∑∑ c*(dA(l_,μ)*A(ν) + A(μ)*dA(l_,ν)) + ∑∑ c*A(l_)*(dA(μ,ν) - dA(ν,μ)))
+  -- + (∑∑ c*(dA(μ,ν)*A(l_) + A(ν)*dA(μ,l_)) + ∑∑ c*A(μ)*(dA(ν,l_) - dA(l_,ν)))
+  -- + (∑∑ c*(dA(ν,l_)*A(μ) + A(l_)*dA(ν,μ)) + ∑∑ c*A(ν)*(dA(l_,μ) - dA(μ,l_)))
+  -- = 0
+  --
+  -- h1: ∑∑ c*(dA(l_,μ)*A(ν) + dA(l_,μ,·swapped·)*A(ν,·swapped·)) = 0
+  -- The key insight: the goal can be rewritten as h1+h2+h3 if we first
+  -- show that ∑∑ c*A(σ₁,b)*(dA(σ₂,σ₃,d)) can be expressed via antisym_sym
+  --
+  -- Direct approach: show goal = h1 + h2 + h3 by converting to a single ∑∑
+  -- and showing summands match by ring.
+  suffices goal_eq :
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA l_ μ b * conn.A ν d + conn.A μ b * conn.dA l_ ν d)) +
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * conn.A l_ b * (conn.dA μ ν d - conn.dA ν μ d)) +
+    ((∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA μ ν b * conn.A l_ d + conn.A ν b * conn.dA μ l_ d)) +
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * conn.A μ b * (conn.dA ν l_ d - conn.dA l_ ν d))) +
+    ((∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA ν l_ b * conn.A μ d + conn.A l_ b * conn.dA ν μ d)) +
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * conn.A ν b * (conn.dA l_ μ d - conn.dA μ l_ d))) =
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA l_ μ b * conn.A ν d + conn.dA l_ μ d * conn.A ν b)) +
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA μ ν b * conn.A l_ d + conn.dA μ ν d * conn.A l_ b)) +
+    (∑ b : Fin g_dim, ∑ d : Fin g_dim,
+      sc.c a b d * (conn.dA ν l_ b * conn.A μ d + conn.dA ν l_ d * conn.A μ b)) by
+    rw [goal_eq]; linarith
+  -- Merge all double sums into one double sum, then show summands equal by ring
+  simp only [sub_eq_add_neg, mul_neg, neg_mul, mul_add, ← Finset.sum_add_distrib]
+  apply Finset.sum_congr rfl; intro b _
+  apply Finset.sum_congr rfl; intro d _
+  ring
+
+private theorem AAA_cyclic_vanishes
+    (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
+    (l_ μ ν : Fin n) (a : Fin g_dim) :
+    AAAPart sc conn l_ μ ν a + AAAPart sc conn μ ν l_ a + AAAPart sc conn ν l_ μ a = 0 := by
+  simp only [AAAPart]
+  simp_rw [Finset.mul_sum, mul_assoc]
+  have hj := jacobi_triple_vanishes sc a (conn.A l_) (conn.A μ) (conn.A ν)
+  simp_rw [mul_add, Finset.sum_add_distrib] at hj
+  simp_rw [mul_assoc, mul_left_comm] at hj ⊢
+  linarith
+
 theorem bracket_cyclic_vanishes
     (sc : StructureConstants g_dim) (conn : ConnectionData n g_dim)
     (l_ μ ν : Fin n) (a : Fin g_dim) :
     bracketPart sc conn l_ μ ν a + bracketPart sc conn μ ν l_ a +
     bracketPart sc conn ν l_ μ a = 0 := by
-  -- The bracketPart cyclic sum has two types of terms:
-  -- (1) dA·A terms: cancel by antisym_sym_product_vanishes (PROVEN)
-  -- (2) A·A·A terms: cancel by jacobi_triple_vanishes (Jacobi coeff PROVEN)
-  -- Connecting the bracketPart definition to these lemma signatures
-  -- requires distributing ~12 Finset.sum terms and matching the patterns.
-  -- All component lemmas are proven; this is a MECHANICAL distribution step.
-  sorry
+  rw [bracketPart_eq_dA_plus_AAA, bracketPart_eq_dA_plus_AAA, bracketPart_eq_dA_plus_AAA]
+  have hdA := dA_cyclic_vanishes sc conn l_ μ ν a
+  have hAAA := AAA_cyclic_vanishes sc conn l_ μ ν a
+  linarith
 
 /-- **Nonabelian Bianchi identity**: D_λ F_μν + D_μ F_νλ + D_ν F_λμ = 0.
 
@@ -329,11 +366,11 @@ theorem nonabelian_bianchi
     (3) Nonabelian Yang-Mills equation D^μ F_μν = 0
     (4) Zero connection is a solution (trivially)
     (5) Abelian limit: nonabelian reduces to abelian when c = 0
-    (6) Nonabelian Bianchi: D_λ F_μν + cyclic = 0 (sorry for Jacobi cancellation)
+    (6) Nonabelian Bianchi: D_λ F_μν + cyclic = 0 (fully proven via Jacobi identity)
 
     This upgrades the gauge sector from "abelian only" to "full nonabelian"
-    with one remaining sorry in the Bianchi identity (mechanical Jacobi
-    cancellation, not a conceptual gap). -/
+    with zero sorries. The Bianchi identity is fully proven using
+    antisymmetry of structure constants and the Jacobi identity. -/
 theorem nonabelian_ym_summary (sc : StructureConstants g_dim) :
     -- Zero connection satisfies nonabelian YM
     satisfiesNonabelianYM sc (GaugeDerived.zeroConnection (n := n) (g_dim := g_dim))
