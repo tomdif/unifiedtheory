@@ -24,6 +24,8 @@ import UnifiedTheory.LayerA.VariationalEinstein
 import UnifiedTheory.LayerA.GaussBonnet4D
 import UnifiedTheory.LayerA.LovelockComplete
 import UnifiedTheory.LayerA.GaugeDerived
+import UnifiedTheory.LayerA.SubstrateBridge
+import UnifiedTheory.LayerA.NormalizationTheorem
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
