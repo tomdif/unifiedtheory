@@ -2,9 +2,15 @@
 
 **Machine-checked formalization: metric + Lie algebra → gravity + gauge + matter + quantum + classical.**
 
-**Zero custom axioms. Zero sorrys. 4D Lovelock uniqueness (within tensorial second-order natural class). Quantum observable uniqueness (within rotation-invariant quadratic class).**
+**Zero custom axioms. Zero sorrys.** Within explicitly stated classes, the following are uniquely determined:
 
-Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). The entire chain is exact — no linearized-regime or perturbative approximation anywhere.
+- **Gravity**: 4D Lovelock field equation a·G + Λ·g (tensorial, second-order, δ-contraction natural class)
+- **Gauge**: Curvature F = dA + [A,A], Yang-Mills field equation (abelian form; nonabelian covariant derivative out of scope)
+- **Matter**: Charge algebra from linearity primitives (composition = addition, charge = linear functional)
+- **Quantum**: Born rule |z|² (from rotation invariance within the quadratic class; these are modeling assumptions)
+- **Decoherence**: Discrete phase-averaging cancellation + density matrix dephasing model
+
+Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). The kinematic chain (Bianchi, charge algebra, interference) is exact for all perturbations. The dynamical chain (Lovelock, Yang-Mills, stability) restricts to stated classes.
 
 ## What's new (Session 58)
 
