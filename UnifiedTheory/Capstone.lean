@@ -41,12 +41,15 @@ import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.LayerA.ExactRegime
 import UnifiedTheory.LayerA.GaugeConnection
 import UnifiedTheory.LayerA.MetricGaugeCoupling
+import UnifiedTheory.LayerA.LovelockComplete
+import UnifiedTheory.LayerA.GaussBonnet4D
 import UnifiedTheory.LayerB.MetricDefects
 
 namespace UnifiedTheory.Capstone
 
 open LayerA.Derived LayerA.Bianchi LayerA.Reduction
 open LayerA.GaugeConnection LayerA.MetricGaugeCoupling
+open LayerA.LovelockComplete LayerA.GaussBonnet4D
 open LayerB.MetricDefects LayerB
 
 /-- **THE COMPLETE METRIC + CONNECTION THEOREM.**
@@ -72,9 +75,14 @@ open LayerB.MetricDefects LayerB
 
     QUANTUM:
     (Q1) Born rule uniqueness: rotation-invariant quadratic obs must be a(Q²+P²)
-    (Q2) Phase averaging kills interference (decoherence)
+    (Q2) Phase averaging kills interference (discrete 2-point)
 
-    Zero custom axioms. Everything exact. -/
+    LOVELOCK (4D uniqueness, within tensorial second-order δ-contraction class):
+    (L1) Gauss-Bonnet tensor vanishes in 4D (pigeonhole on rank-5 delta)
+    (L2) ε·ε = generalized Kronecker delta (ε-exclusion mechanism)
+    (L3) Tensor parity: odd ε-count excluded for true tensors
+
+    Zero custom axioms. -/
 theorem complete_metric_connection
     {m : ℕ}
     (L : LorentzianMetric m)
@@ -115,12 +123,20 @@ theorem complete_metric_connection
           quadObs a b c (Q * Real.cos θ - P * Real.sin θ)
                          (Q * Real.sin θ + P * Real.cos θ)) →
         ∀ Q P : ℝ, quadObs a b c Q P = a * (Q ^ 2 + P ^ 2))
-    -- (Q2) Decoherence
+    -- (Q2) Decoherence (discrete 2-point averaging)
     ∧ (∀ z₁ z₂ : ℂ, ∀ θ : ℝ,
         obs (z₁ + phaseRotate θ z₂) + obs (z₁ + phaseRotate (θ + Real.pi) z₂) =
-        2 * (obs z₁ + obs z₂)) := by
+        2 * (obs z₁ + obs z₂))
+    -- === LOVELOCK UNIQUENESS (4D) ===
+    -- (L1) Gauss-Bonnet tensor vanishes in 4D
+    ∧ (∀ R : Fin 4 → Fin 4 → Fin 4 → Fin 4 → ℝ,
+        ∀ a b : Fin 4, gaussBonnetTensor R a b = 0)
+    -- (L2) ε·ε = generalized Kronecker delta
+    ∧ (∀ a b : Fin 4 → Fin 4, leviCivita a * leviCivita b = genKronecker a b)
+    -- (L3) Tensor parity: (-1)^k = 1 ↔ k even
+    ∧ (∀ k : ℕ, (-1 : ℝ) ^ k = 1 ↔ Even k) := by
   exact ⟨
-    -- G1: Einstein
+    -- G1: Einstein divergence-free (kinematic)
     LayerA.Derived.einstein_div_free_from_metric L,
     -- G2: Null cone
     fun a b c h => LayerA.Derived.null_cone_determines_conformal_1plus1 a b c h,
@@ -131,13 +147,19 @@ theorem complete_metric_connection
     -- C3: Gauge traceless in d=4
     gauge_traceless_4d,
     four_is_unique_traceless,
-    -- M1: Charge additivity (DERIVED from linearity via map_add)
+    -- M1: Charge additivity (from compose_is_add + map_add)
     fun d₁ d₂ => charge_additive _ d₁ d₂,
-    -- M2: Annihilation (DERIVED from linearity via add_neg_cancel)
+    -- M2: Annihilation (from conjugate_is_neg + add_neg_cancel)
     fun d => annihilation_charge _ d,
-    -- Q1: Born rule uniqueness (DERIVED from rotation invariance)
+    -- Q1: Born rule uniqueness (within rotation-invariant quadratic class)
     fun a b c ha hrot => complex_observable_unique a b c hrot ha,
-    -- Q2: Decoherence
-    discrete_decoherence_sum⟩
+    -- Q2: Decoherence (discrete 2-point)
+    discrete_decoherence_sum,
+    -- L1: Gauss-Bonnet vanishes in 4D
+    gaussBonnet_vanishes_4d,
+    -- L2: ε·ε = δ
+    fun a b => epsilon_product_eq_genKronecker a b,
+    -- L3: Tensor parity
+    orientation_parity⟩
 
 end UnifiedTheory.Capstone
