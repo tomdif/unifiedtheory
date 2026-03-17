@@ -245,13 +245,22 @@ theorem jacobi_triple_vanishes
     -- The summand value at (e₀,f₀,b₀) is:
     -- Q(e₀)*R(f₀)*P(b₀)*C(e₀,f₀,b₀)   [original summand with b=e₀,e=f₀,f=b₀]
     -- And we want: P(b₀)*Q(e₀)*R(f₀)*C(e₀,f₀,b₀) ✓ (same by mul_comm)
-    sorry]  -- Finset bound-variable relabeling + mul_comm on scalar factor
-  -- Relabel Term 3: (b,e,f) → (f,b,e) — same bound-variable relabeling
+    apply Finset.sum_congr rfl; intro b₀ _
+    -- Q*R*P*(∑d cc) = P*Q*R*(∑d cc) — just mul_comm on the scalar prefix.
+    -- The ∑_d parts are definitionally equal after sum_comm relabeling.
+    -- ring can't see through ∑ but the equality is A*S = B*S with A=B by ring.
+    sorry]
+  -- Relabel Term 3: (b,e,f) → (f,b,e)
   rw [show (∑ b : Fin g_dim, ∑ e, ∑ f,
       R b * P e * Q f * (∑ d, sc.c a b d * sc.c d e f)) =
     ∑ b, ∑ e, ∑ f,
       P b * Q e * R f * (∑ d, sc.c a f d * sc.c d b e) from by
-    sorry]  -- Same bound-variable relabeling
+    rw [Finset.sum_comm]
+    apply Finset.sum_congr rfl; intro f₀ _
+    rw [Finset.sum_comm]
+    apply Finset.sum_congr rfl; intro b₀ _
+    apply Finset.sum_congr rfl; intro e₀ _
+    congr 1; ring]
   -- Combine the three terms
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_eq_zero; intro b _
