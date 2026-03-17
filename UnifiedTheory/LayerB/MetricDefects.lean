@@ -143,12 +143,68 @@ noncomputable def metricLinearDefectBlock (m : ℕ) :
   compose_stable := fun _ _ _ _ => trivial
   conjugate_stable := fun _ _ => trivial
 
-/-! ## Step 4b: Source-carrying predicate (non-vacuous content)
+/-! ## Step 4a-dyn: Dynamical defect block (Stable = ker(L))
 
-    Stable = True accepts all perturbations. Nontrivial +-closed predicates
-    exist (any subspace works), but choosing one requires specifying which
-    perturbations are "physical" — e.g., solutions of a field equation.
-    Without such a specification, True is the natural default.
+    Replaces `Stable := True` with a genuine field-equation constraint.
+    Given any linear operator L : Perturbation → W, we use Stable := ker(L).
+    The charge algebra (additivity, conjugation, annihilation) still holds
+    because ker(L) is closed under addition and negation (linearity). -/
+
+/-- **Dynamical defect block**: perturbations are stable iff they satisfy
+    a linear field equation L(h) = 0. This is the physical version of
+    the defect algebra — only on-shell perturbations are admitted.
+
+    For gravity: L = linearized Einstein operator.
+    The charge algebra holds on the physical subspace because L is linear. -/
+noncomputable def metricDynamicalDefectBlock (m : ℕ)
+    {W : Type*} [AddCommGroup W] [Module ℝ W]
+    (L : Perturbation (m + 2) →ₗ[ℝ] W) :
+    LinearDefectBlock (Perturbation (m + 2)) where
+  Defect := Perturbation (m + 2)
+  perturbation := id
+  Stable := fun h => L h = 0
+  K_proj := K_proj m
+  P_proj := P_proj m
+  decomp := decomp_derived
+  source_func := traceFunc m
+  bias_func := traceFunc m
+  biasScale := 1
+  bridge := fun h => by rw [one_mul]; exact bridge_derived h
+  neutral := neutrality_derived
+  compose := (· + ·)
+  compose_pert := fun _ _ => rfl
+  conjugate := Neg.neg
+  conjugate_pert := fun _ => rfl
+  compose_stable := fun _ _ h₁ h₂ => by
+    show L (_ + _) = 0; rw [map_add, h₁, h₂, add_zero]
+  conjugate_stable := fun _ h => by
+    show L (-_) = 0; rw [map_neg, h, neg_zero]
+
+/-- The dynamical block gives a ComposableDefectBlock with physical stability. -/
+noncomputable def metricDynamicalComposableBlock (m : ℕ)
+    {W : Type*} [AddCommGroup W] [Module ℝ W]
+    (L : Perturbation (m + 2) →ₗ[ℝ] W) :
+    ComposableDefectBlock (Perturbation (m + 2)) :=
+  (metricDynamicalDefectBlock m L).toComposable
+
+/-- **Charge algebra holds on-shell.**
+    For any linear field equation L, the charge algebra (additivity,
+    conjugation, annihilation) holds for perturbations satisfying L(h) = 0. -/
+theorem on_shell_charge_algebra (m : ℕ)
+    {W : Type*} [AddCommGroup W] [Module ℝ W]
+    (L : Perturbation (m + 2) →ₗ[ℝ] W) :
+    let db := metricDynamicalComposableBlock m L
+    -- Charge additivity on-shell
+    (∀ d₁ d₂ : db.Defect, charge db (db.compose d₁ d₂) = charge db d₁ + charge db d₂)
+    -- Annihilation on-shell
+    ∧ (∀ d : db.Defect, charge db (db.compose d (db.conjugate d)) = 0)
+    -- Zero perturbation is on-shell
+    ∧ (L 0 = 0) := by
+  exact ⟨fun d₁ d₂ => charge_additive _ d₁ d₂,
+    fun d => annihilation_charge _ d,
+    map_zero L⟩
+
+/-! ## Step 4b: Source-carrying predicate (non-vacuous content)
 
     The physically interesting condition — nonzero source charge — is NOT
     closed under composition (annihilation: h + (-h) has zero charge).

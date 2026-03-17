@@ -114,6 +114,47 @@ theorem gaussBonnet_vanishes_4d
   simp only [gaussBonnetTensor, genKronecker_vanishes (by omega : 4 < 5),
     zero_mul, mul_zero, Finset.sum_const_zero, mul_zero, neg_mul, neg_zero]
 
+/-! ## Part 3b: Standard-form Gauss-Bonnet quantities -/
+
+/-- **Kretschner scalar** (Riemann norm squared):
+    |Riem|² = Σ_{abcd} R_{abcd}². -/
+noncomputable def kretschnerScalar {n : ℕ} (R : Fin n → Fin n → Fin n → Fin n → ℝ) : ℝ :=
+  ∑ a : Fin n, ∑ b : Fin n, ∑ c : Fin n, ∑ d : Fin n, R a b c d ^ 2
+
+/-- **Ricci norm squared**: |Ric|² = Σ_{bd} Ric_{bd}². -/
+noncomputable def ricciNormSq {n : ℕ} (R : Fin n → Fin n → Fin n → Fin n → ℝ) : ℝ :=
+  ∑ b : Fin n, ∑ d : Fin n, (∑ a : Fin n, R a b a d) ^ 2
+
+/-- **Scalar curvature squared**: R² = (Σ_b Ric_{bb})². -/
+noncomputable def scalarCurvatureSq {n : ℕ} (R : Fin n → Fin n → Fin n → Fin n → ℝ) : ℝ :=
+  (∑ b : Fin n, ∑ a : Fin n, R a b a b) ^ 2
+
+/-- **Standard Gauss-Bonnet scalar** (Euler density in 4D):
+    G₄ = |Riem|² - 4|Ric|² + R².
+    In 4D, ∫ G₄ √g d⁴x = 32π² χ(M) is topological.
+    The VARIATION of G₄ gives the Lanczos-Lovelock tensor H_{ab}. -/
+noncomputable def gaussBonnetScalarStd {n : ℕ}
+    (R : Fin n → Fin n → Fin n → Fin n → ℝ) : ℝ :=
+  kretschnerScalar R - 4 * ricciNormSq R + scalarCurvatureSq R
+
+/-- **The standard GB scalar is a specific quadratic curvature invariant.**
+    This definition matches the standard physics textbook form.
+    The Kronecker-delta definition (gaussBonnetTensor) uses the Lovelock
+    formalism. Both definitions of the TENSOR H_{ab} vanish in 4D:
+    - Kronecker: because rank 5 > dim 4 (pigeonhole)
+    - Standard: because the Euler density is topological in 4D
+
+    The algebraic identity gaussBonnetScalarStd = (Kronecker scalar form)
+    is a known result but involves expanding the rank-4 generalized
+    Kronecker delta (24 terms). We leave this expansion as future work
+    and note that the VANISHING theorem is proven for the Kronecker form. -/
+theorem gaussBonnet_standard_defined :
+    -- The standard GB scalar is well-defined (just a computation)
+    ∀ R : Fin 4 → Fin 4 → Fin 4 → Fin 4 → ℝ,
+      gaussBonnetScalarStd R =
+      kretschnerScalar R - 4 * ricciNormSq R + scalarCurvatureSq R := by
+  intro R; rfl
+
 /-! ## Part 4: Consequence for the Lovelock theorem -/
 
 /-- **All Lovelock tensors of order p ≥ 2 vanish in 4D.**

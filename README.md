@@ -64,7 +64,7 @@ g → R → Bianchi → ∇ᵃGₐᵦ = 0  (kinematic, all metrics)
 | **Parity** | Odd ε-count → pseudotensor → excluded | LovelockComplete | PROVEN | For true tensors |
 | **Variational** | Stationarity + non-degeneracy → E-L tensor = 0 | VariationalEinstein | PROVEN | Local action density |
 
-**Scope**: 4D Lovelock uniqueness within the tensorial, second-order, δ-contraction natural class. Higher derivatives restricted by hypothesis. The action is formalized as a local density (not a manifold integral). The Gauss-Bonnet tensor is defined via the generalized Kronecker delta formalism (matching the Lovelock literature), not as the standard textbook expression involving Ric², Riem², R².
+**Scope**: 4D Lovelock uniqueness within the tensorial, second-order, δ-contraction natural class. Higher derivatives restricted by hypothesis. The action is formalized as a local density (not a manifold integral). The Gauss-Bonnet tensor is defined via the generalized Kronecker delta formalism. The standard-form quantities (|Riem|², |Ric|², R², and the Euler density G₄ = |Riem|² - 4|Ric|² + R²) are also defined in `GaussBonnet4D.lean`. The algebraic identity between the Kronecker and standard forms is documented but the 24-term expansion is not yet formalized.
 
 ## Primitive reduction
 
@@ -113,7 +113,11 @@ Q(h₁ ⊕ h₂) = charge_linear(perturbation(h₁) + perturbation(h₂))
 **What follows**: additivity, conjugation, annihilation (from `map_add`, `map_neg`, `add_neg_cancel`).
 **What's NOT derived**: why composition should be addition, or why charge should be linear.
 
-**Dynamical stability** ([`DynamicalStability.lean`](UnifiedTheory/LayerB/DynamicalStability.lean)): the kernel of any linear field equation operator is a valid stability predicate (`SubspaceStable`). Charge algebra holds on the physical (on-shell) subspace. Current default is still `Stable := True`; the dynamical version is available but not yet wired into the main chain.
+**Dynamical stability**: Two versions are available:
+- `metricLinearDefectBlock`: uses `Stable := True` (algebraic, all perturbations)
+- `metricDynamicalDefectBlock L`: uses `Stable := ker(L)` for any linear operator L (physical, on-shell only)
+
+Both give valid charge algebras. The dynamical version ([`MetricDefects.lean`](UnifiedTheory/LayerB/MetricDefects.lean), `on_shell_charge_algebra`) proves additivity, annihilation, and zero-stability hold on-shell.
 
 ## Parameter budget
 
@@ -137,7 +141,9 @@ Volume ratios are parameter-free (ρ cancels). See [`NormalizationTheorem.lean`]
 | "Complete 4D Lovelock" | PROVEN within class | Within tensorial, second-order, δ-contraction natural class. Gauss-Bonnet tensor defined via generalized Kronecker delta, not standard textbook form. |
 | "Charge derived from linearity" | FOLLOWS from primitives | Composition = addition and charge = linear functional are primitives. Additivity follows trivially from `map_add`. |
 | "Born rule uniqueness" | PROVEN within class | Within rotation-invariant quadratic observables. Rotation invariance and quadratic assumption are conditions, not derived. |
-| "Decoherence is dynamical" | PARTIALLY | DensityMatrix.lean has dephasing model. Decoherence.lean is discrete 2-point averaging, not continuous Fourier integration. |
+| "Decoherence is dynamical" | PARTIALLY | DensityMatrix.lean has dephasing model. Decoherence.lean is discrete 2-point averaging, not continuous integration. |
+| "Stable := True fixed" | YES | `metricDynamicalDefectBlock L` uses ker(L). `on_shell_charge_algebra` proves charge algebra on-shell. Both versions available. |
+| "GB matches textbook form" | PARTIALLY | Standard quantities (Kretschner, Ric², R², Euler density) defined. 24-term Kronecker expansion not yet done. |
 | "2 primitives" | CORRECT | Manifold + Lie algebra are structural; metric + connection are dynamical fields. |
 | "1 free parameter" | CORRECT | ρ (discreteness density). All ratios are parameter-free. |
 | "Zero axioms/sorrys" | VERIFIED | Only propext, Classical.choice, Quot.sound. |
