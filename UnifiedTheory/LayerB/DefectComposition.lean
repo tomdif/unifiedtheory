@@ -72,12 +72,16 @@ structure ComposableDefectBlock (V : Type*) [AddCommGroup V] [Module ℝ V]
 def charge (db : ComposableDefectBlock V) (d : db.Defect) : ℝ :=
   db.sourceMeas.measure (db.toBF d).Kpart
 
-/-- **Charge additivity (DERIVED from linearity)**:
+/-- **Charge additivity (follows from linear structure)**:
     Q(d₁ + d₂) = Q(d₁) + Q(d₂).
 
     Proof: charge = charge_linear ∘ perturbation (a linear functional).
-    Composition maps to addition (compose_is_add).
-    Linearity (map_add) gives additivity. NOT stipulated. -/
+    Composition maps to addition (compose_is_add — a modeling primitive).
+    Linearity (map_add) gives additivity.
+
+    NOTE: composition = addition and charge = linear functional are PRIMITIVES
+    of ComposableDefectBlock, not derived from deeper principles. Additivity
+    is a consequence of these choices, not an independent postulate. -/
 theorem charge_additive (db : ComposableDefectBlock V) (d₁ d₂ : db.Defect) :
     charge db (db.compose d₁ d₂) = charge db d₁ + charge db d₂ := by
   simp only [charge, db.charge_eq, db.compose_is_add, map_add]

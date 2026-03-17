@@ -1,8 +1,8 @@
 # Unified Theory
 
-**Machine-checked derivation: metric + Lie algebra → gravity + gauge + matter + quantum + classical.**
+**Machine-checked formalization: metric + Lie algebra → gravity + gauge + matter + quantum + classical.**
 
-**Zero custom axioms. Zero sorrys. Complete 4D Lovelock uniqueness. Quantum structure uniqueness.**
+**Zero custom axioms. Zero sorrys. 4D Lovelock uniqueness (within tensorial second-order natural class). Quantum observable uniqueness (within rotation-invariant quadratic class).**
 
 Every theorem depends only on the three standard Lean axioms (`propext`, `Classical.choice`, `Quot.sound`). The entire chain is exact — no linearized-regime or perturbative approximation anywhere.
 
@@ -12,10 +12,10 @@ Major upgrades across all sectors:
 
 | Sector | Before | After |
 |--------|--------|-------|
-| **Gravity** | div(G) = 0 (kinematic identity) | Complete 4D Lovelock: a·G + Λ·g is the **unique** field equation (tensorial, second-order natural class) |
-| **Matter** | Charge additivity stipulated | Charge additivity **derived** from linearity (`map_add`) |
-| **Quantum** | obs := \|z\|² (definition) | Born rule **uniqueness**: the only rotation-invariant quadratic observable |
-| **Decoherence** | Trig identity | Density matrix dephasing: γ=0 is the **unique** classical limit |
+| **Gravity** | div(G) = 0 (kinematic identity) | 4D Lovelock: a·G + Λ·g is the unique field eq. within tensorial, second-order, δ-contraction natural class |
+| **Matter** | Charge additivity stipulated as structure field | Charge additivity follows from modeling choice: composition = addition + linear charge functional |
+| **Quantum** | obs := \|z\|² (definition) | Born rule uniqueness: the only rotation-invariant quadratic observable (within that class) |
+| **Decoherence** | Trig identity | Density matrix dephasing model: γ=0 is the unique fully decohered state |
 | **Primitives** | 3 (metric + Lie algebra + connection) | **2 structural + 2 dynamical** (connection is a field, not a primitive) |
 | **Parameters** | Uncounted | **1 free parameter** (ρ = discreteness density) |
 
@@ -23,38 +23,48 @@ Major upgrades across all sectors:
 
 `complete_metric_connection` ([Capstone.lean](UnifiedTheory/Capstone.lean)): from two structural primitives — a `LorentzianMetric` and `StructureConstants` for a Lie algebra — the following are all derived:
 
-| Branch | Result | Theorem | How derived |
-|--------|--------|---------|-------------|
-| **Gravity** | div(G) = 0 | `einstein_div_free_from_metric` | Bianchi identity (kinematic) |
-| **Gravity** | G + Λ·g = 0 is the unique field eq. | `complete_lovelock_4d` | Lovelock uniqueness (dynamic) |
-| **Gravity** | Null cone determines conformal class | `null_cone_determines_conformal_1plus1` | Linear algebra |
-| **Gauge** | Curvature F = dA + [A,A] antisymmetric | `curvature_antisym` | Lie bracket antisymmetry |
-| **Gauge** | Stress-energy traceless in d=4 (uniquely) | `gauge_traceless_4d` | Trace formula derivation |
-| **Matter** | Charge additivity Q(h₁+h₂) = Q(h₁)+Q(h₂) | `charge_additive` | Linearity (`map_add`) |
-| **Matter** | Annihilation Q(h+(-h)) = 0 | `annihilation_charge` | Linearity (`add_neg_cancel`) |
-| **Quantum** | Born rule is unique | `complex_observable_unique` | Rotation invariance forces a(Q²+P²) |
-| **Quantum** | Decoherence → classical | `decoherence_dynamical` | Dephasing γ=0 uniquely recovers additivity |
+| Branch | Result | Theorem | How derived | Scope |
+|--------|--------|---------|-------------|-------|
+| **Gravity** | div(G) = 0 | `einstein_div_free_from_metric` | Bianchi identity | Kinematic identity, all metrics |
+| **Gravity** | Null cone → conformal class | `null_cone_determines_conformal_1plus1` | Linear algebra | 1+1 dimensions |
+| **Gauge** | F = dA + [A,A] antisymmetric | `curvature_antisym` | Lie bracket antisymmetry | From StructureConstants |
+| **Gauge** | Stress-energy traceless in d=4 | `gauge_traceless_4d` | Trace formula | Uniquely d=4 |
+| **Matter** | Charge additivity | `charge_additive` | `map_add` on `charge_linear` | Given compose = addition |
+| **Matter** | Annihilation Q(h+(-h)) = 0 | `annihilation_charge` | `add_neg_cancel` | Given conjugate = negation |
+| **Quantum** | Born rule uniqueness | `complex_observable_unique` | SO(2) invariance | Within quadratic class |
+| **Quantum** | Discrete decoherence | `discrete_decoherence_sum` | Phase flip cancellation | 2-point averaging |
+
+**Not in the capstone theorem** (separate files):
+
+| Result | Theorem | File | Scope |
+|--------|---------|------|-------|
+| Lovelock uniqueness in 4D | `complete_lovelock_4d` | LovelockComplete | Within tensorial, second-order, δ-contraction class |
+| Gauss-Bonnet vanishing | `gaussBonnet_vanishes_4d` | GaussBonnet4D | Rank-5 delta, pigeonhole |
+| Density matrix decoherence | `decoherence_dynamical` | DensityMatrix | Dephasing model |
+| Amplitude rule uniqueness | `amplitude_rule_unique` | AmplitudeUniqueness | Given linearity + rotation inv. |
+| K/P split uniqueness | `sourceProj_unique` | QuantumUniqueness | Given rank-1 + source-capturing |
 
 ## Gravity: from kinematics to dynamics
 
-The gravity sector now has a complete derivation chain:
+The gravity sector has a layered derivation chain:
 
 ```
-g → R → Bianchi → ∇ᵃGₐᵦ = 0 → complete 4D Lovelock uniqueness → a·G + Λ·g
+g → R → Bianchi → ∇ᵃGₐᵦ = 0  (kinematic, all metrics)
+                 → Lovelock → a·G + Λ·g  (within restricted class)
 ```
 
-| Layer | What | File | Status |
-|-------|------|------|--------|
-| **Kinematic** | div(G) = 0 for ALL metrics | BianchiIdentity | PROVEN |
-| **Contraction** | Ric is the only rank-2 δ-contraction of Riemann | VariationalEinstein | PROVEN |
-| **Bianchi constraint** | div-free forces d = -c/2 → a·G + Λ·g | LovelockEinstein | PROVEN |
-| **Gauss-Bonnet** | H_{ab} ≡ 0 in d=4 (rank-5 delta vanishes by pigeonhole) | GaussBonnet4D | PROVEN |
-| **Higher Lovelock** | All p≥2 Lovelock tensors vanish in d=4 | GaussBonnet4D | PROVEN |
-| **ε-exclusion** | ε·ε = δ, tensor parity excludes pseudotensors | LovelockComplete | PROVEN |
-| **Variational** | Stationarity + non-degeneracy → field equation | VariationalEinstein | PROVEN |
-| **Assembly** | `complete_lovelock_4d` | LovelockComplete | PROVEN |
+| Layer | What | File | Status | Scope |
+|-------|------|------|--------|-------|
+| **Kinematic** | div(G) = 0 for ALL metrics | BianchiIdentity | PROVEN | Unconditional identity |
+| **Contraction** | Ric is only rank-2 δ-contraction of Riemann | VariationalEinstein | PROVEN | Within δ-contractions |
+| **Bianchi constraint** | div-free within {c·Ric+d·R·g+e·g} forces a·G+Λ·g | LovelockEinstein | PROVEN | Within parametric family |
+| **Gauss-Bonnet** | H_{ab} ≡ 0 in d=4 | GaussBonnet4D | PROVEN | Pigeonhole on rank-5 delta |
+| **Higher Lovelock** | All p≥2 tensors vanish in d=4 | GaussBonnet4D | PROVEN | Same mechanism |
+| **ε-exclusion** | ε·ε = δ converts ε-pairs to δ-contractions | LovelockComplete | PROVEN | Even ε-count only |
+| **Parity** | Odd ε-count → pseudotensor → excluded | LovelockComplete | PROVEN | For true tensors |
+| **Variational** | Stationarity + non-degeneracy → E-L tensor = 0 | VariationalEinstein | PROVEN | Local action density |
 
-**Scope**: Complete 4D Lovelock uniqueness within the tensorial, second-order natural class. Higher derivatives restricted by hypothesis (Ostrogradsky stability).
+**Scope**: 4D Lovelock uniqueness within the tensorial, second-order, δ-contraction natural class. Higher derivatives restricted by hypothesis. The action is formalized as a local density (not a manifold integral). The Gauss-Bonnet tensor is defined via the generalized Kronecker delta formalism (matching the Lovelock literature), not as the standard textbook expression involving Ric², Riem², R².
 
 ## Primitive reduction
 
@@ -70,31 +80,40 @@ The framework has **2 structural primitives** and **2 dynamical fields**:
 
 The connection is NOT an independent primitive — it is a dynamical field on the Lie algebra, selected by the Yang-Mills equation. See [`GaugeDerived.lean`](UnifiedTheory/LayerA/GaugeDerived.lean).
 
-## Quantum uniqueness
+## Quantum uniqueness (within stated classes)
 
-Every step in the quantum derivation is a **uniqueness** theorem:
+Each step in the quantum layer is a uniqueness theorem within an explicit class:
 
-| Step | What's unique | Theorem |
-|------|---------------|---------|
-| K/P split | The only rank-1 source-capturing projection | `sourceProj_unique` |
-| Algebra | ℂ is the only 2D real division algebra | `complexification_unique` |
-| Observable | a·(Q²+P²) is the only rotation-invariant quadratic obs | `complex_observable_unique` |
-| Composition | Sum-then-square is the only faithful nonlinear rule | `amplitude_rule_unique` |
-| Classical limit | γ=0 is the only fully decohered state | `classical_limit_unique` |
+| Step | What's unique | Theorem | Assumed class |
+|------|---------------|---------|---------------|
+| K/P split | Only rank-1 source-capturing projection | `sourceProj_unique` | Given: range ⊆ span{v₀}, φ∘π = φ |
+| Algebra | Only 2D real commutative division algebra | `complexification_unique` | Given: 2D, commutative, α < 0 |
+| Observable | Only rotation-invariant quadratic observable | `complex_observable_unique` | Given: quadratic, SO(2)-invariant, a > 0 |
+| Composition | Equal-weight sum is the only symmetric linear rule | `additive_rule_unique` | Given: linear, permutation-symmetric |
+| Classical limit | γ=0 is the only value killing all coherence | `classical_limit_unique` | Given: dephasing model γ·c |
+
+**Honest scope**: These are uniqueness theorems WITHIN explicitly stated classes. The assumptions (quadratic, rotation-invariant, linear, etc.) are conditions, not derived from deeper principles. A Hardy/CDP-style derivation of these conditions from operational axioms is not formalized.
 
 See [`QuantumUniqueness.lean`](UnifiedTheory/LayerB/QuantumUniqueness.lean) and [`AmplitudeUniqueness.lean`](UnifiedTheory/LayerB/AmplitudeUniqueness.lean).
 
-## Matter: charge algebra derived from linearity
+## Matter: charge algebra from linear structure
 
-Charge additivity is **derived**, not stipulated:
+Charge additivity follows from two modeling choices:
+1. **Composition = vector addition** (`compose_is_add` — a primitive, not derived)
+2. **Charge = linear functional** (`charge_linear : V →ₗ[ℝ] ℝ` — a primitive, not derived)
 
+Given these choices, additivity is a `map_add` consequence:
 ```
-compose = vector addition  →  charge_linear ∘ perturbation is linear  →  map_add  →  Q(h₁+h₂) = Q(h₁) + Q(h₂)
+Q(h₁ ⊕ h₂) = charge_linear(perturbation(h₁) + perturbation(h₂))
+            = charge_linear(perturbation(h₁)) + charge_linear(perturbation(h₂))
+            = Q(h₁) + Q(h₂)
 ```
 
-The `ComposableDefectBlock` structure exposes the linear primitives (`perturbation`, `charge_linear`, `compose_is_add`), and charge algebra follows from `map_add`, `map_neg`, `add_neg_cancel`.
+**What's primitive**: composition = addition, charge = linear functional.
+**What follows**: additivity, conjugation, annihilation (from `map_add`, `map_neg`, `add_neg_cancel`).
+**What's NOT derived**: why composition should be addition, or why charge should be linear.
 
-**Dynamical stability** ([`DynamicalStability.lean`](UnifiedTheory/LayerB/DynamicalStability.lean)): the kernel of any linear field equation operator is a valid stability predicate. Charge algebra holds on the physical (on-shell) subspace.
+**Dynamical stability** ([`DynamicalStability.lean`](UnifiedTheory/LayerB/DynamicalStability.lean)): the kernel of any linear field equation operator is a valid stability predicate (`SubspaceStable`). Charge algebra holds on the physical (on-shell) subspace. Current default is still `Stable := True`; the dynamical version is available but not yet wired into the main chain.
 
 ## Parameter budget
 
@@ -110,6 +129,22 @@ The framework has exactly **1 continuous free parameter** (the discreteness dens
 | a (Born coeff) | Derived | Normalization (a=1) |
 
 Volume ratios are parameter-free (ρ cancels). See [`NormalizationTheorem.lean`](UnifiedTheory/LayerA/NormalizationTheorem.lean).
+
+## Honest scope assessment
+
+| Claim | Actual status | Qualification |
+|-------|---------------|---------------|
+| "Complete 4D Lovelock" | PROVEN within class | Within tensorial, second-order, δ-contraction natural class. Gauss-Bonnet tensor defined via generalized Kronecker delta, not standard textbook form. |
+| "Charge derived from linearity" | FOLLOWS from primitives | Composition = addition and charge = linear functional are primitives. Additivity follows trivially from `map_add`. |
+| "Born rule uniqueness" | PROVEN within class | Within rotation-invariant quadratic observables. Rotation invariance and quadratic assumption are conditions, not derived. |
+| "Decoherence is dynamical" | PARTIALLY | DensityMatrix.lean has dephasing model. Decoherence.lean is discrete 2-point averaging, not continuous Fourier integration. |
+| "2 primitives" | CORRECT | Manifold + Lie algebra are structural; metric + connection are dynamical fields. |
+| "1 free parameter" | CORRECT | ρ (discreteness density). All ratios are parameter-free. |
+| "Zero axioms/sorrys" | VERIFIED | Only propext, Classical.choice, Quot.sound. |
+
+**What this project IS**: A machine-checked formalization of the algebraic/kinematic structure connecting gravity, gauge theory, matter, and quantum mechanics, with uniqueness theorems within explicitly stated classes.
+
+**What this project is NOT**: A complete derivation of physics from first principles. The assumptions (Lorentzian signature, Lie algebra structure, linear composition, rotation invariance, quadratic observables) are modeling choices, not derived from deeper axioms.
 
 ## Substrate bridge
 

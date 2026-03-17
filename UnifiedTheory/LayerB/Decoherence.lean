@@ -56,15 +56,19 @@ theorem discrete_decoherence_sum (z₁ z₂ : ℂ) (θ : ℝ) :
     have h2' := h2; simp only [hr2, hflip] at h2'; linarith
   linarith
 
-/-! ### Fourier decomposition of interference (the physical mechanism)
+/-! ### Fourier decomposition of interference
 
     The interference term at angle θ decomposes as A·cos(θ) + B·sin(θ)
-    where A and B are determined by the amplitudes. This is not a trig
-    identity — it reveals the PHYSICAL MECHANISM of decoherence:
+    where A and B are determined by the amplitudes.
 
-    Since ∫₀²π cos(θ) dθ = 0 and ∫₀²π sin(θ) dθ = 0, uniform phase
-    randomization MUST kill the interference term. Decoherence is a
-    consequence of Fourier analysis, not an algebraic accident.
+    This decomposition is proven algebraically. The DISCRETE decoherence
+    result (averaging over θ and θ+π) follows from cos(θ+π) = -cos(θ).
+    The CONTINUOUS integral ∫₀²π cos = ∫₀²π sin = 0 is stated in
+    EnvironmentDecoherence.lean but the full integral of the observable
+    over [0,2π] is not formalized (would require Mathlib intervalIntegral).
+
+    For DYNAMICAL decoherence (environment coupling → suppression of
+    off-diagonal density matrix elements), see DensityMatrix.lean.
 -/
 
 /-- Cross-coefficient A = 2 Re(z₁ z̄₂): the cosine coefficient
