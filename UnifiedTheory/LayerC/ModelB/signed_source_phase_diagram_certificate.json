@@ -1,0 +1,61 @@
+{
+  "phase_counts": {
+    "trap": 3504,
+    "bounce": 641,
+    "free": 796,
+    "total": 4941
+  },
+  "collapse_threshold_Q": -0.49999999999999956,
+  "Q_range": [
+    -10.0,
+    10.0
+  ],
+  "theta0_range": [
+    -3.0,
+    1.0
+  ],
+  "phase_boundary": {
+    "Q": [
+      -9.375,
+      -8.875,
+      -8.375,
+      -7.625,
+      -7.125,
+      -6.625,
+      -6.125,
+      -5.625,
+      -5.125,
+      -4.875
+    ],
+    "theta0": [
+      -1.7333333333333334,
+      -1.6666666666666667,
+      -1.6,
+      -1.5333333333333334,
+      -1.4666666666666668,
+      -1.4,
+      -1.3333333333333333,
+      -1.2666666666666666,
+      -1.2,
+      -1.1333333333333333
+    ]
+  },
+  "key_findings": {
+    "negative_Q_never_traps": false,
+    "positive_Q_traps_when_converging": true,
+    "bounce_region_exists": true,
+    "bounce_requires_negative_Q_or_positive_theta0": true
+  },
+  "verification": {
+    "checks": {
+      "strong_negative_Q_prevents_trap": true,
+      "positive_Q_can_trap": true,
+      "bounce_region_exists": true,
+      "three_phases_present": true,
+      "threshold_found": true
+    },
+    "all_pass": true,
+    "total": 5,
+    "passed": 5
+  }
+}
