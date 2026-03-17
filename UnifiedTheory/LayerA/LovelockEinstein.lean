@@ -1,8 +1,19 @@
 /-
-  Layer A.4 — Lovelock endpoint (PROVEN)
+  Layer A.4 — Lovelock-type endpoint constraint (PROVEN)
 
-  The Lovelock constraint in 4D: any symmetric, divergence-free,
-  second-order natural 2-tensor is a·G + b·g.
+  Within the class of tensors of the form E = c·Ric + d·R·g + e·g
+  (rank-2 tensors linear in Riemann, obtained by δ-contraction),
+  the divergence-free condition forces E = a·G + b·g.
+
+  SCOPE: This is the Bianchi-constraint step of the Lovelock argument.
+  It does NOT prove the full classical Lovelock theorem (1971), which
+  additionally requires:
+  - Contraction classification (proven in VariationalEinstein.lean):
+    Ric is the only independent δ-contraction of Riemann
+  - Gauss-Bonnet vanishing in d=4 (NOW PROVEN in GaussBonnet4D.lean):
+    H_{ab} ≡ 0 via rank-5 Kronecker delta vanishing by pigeonhole
+  - ε-tensor exclusion (NOW PROVEN in LovelockComplete.lean):
+    ε·ε = δ identity + tensor parity excludes Levi-Civita contractions
 
   This file proves it algebraically in two steps:
 
@@ -82,12 +93,18 @@ theorem lovelock_decomposition {T : Type*} [AddCommGroup T] [Module ℝ T]
 
 /-! ### Combined Lovelock constraint -/
 
-/-- **Lovelock-Einstein constraint (algebraic, 4D).**
-    Any natural tensor E = c·R + d·R·g + e·g whose divergence vanishes
-    for all metrics (encoded by: (c/2+d)·∇R = 0 for arbitrary ∇R)
-    must be of the form a·G + b·g.
+/-- **Lovelock-type endpoint constraint.**
+    Within the parametric family E = c·Ric + d·R·g + e·g (tensors linear
+    in Riemann obtained by δ-contraction), the divergence-free condition
+    forces E = a·G + b·g.
 
-    FULLY PROVEN. No axioms beyond Lean core. -/
+    This is the Bianchi-constraint step. The contraction classification
+    (VariationalEinstein.contraction_classification) proves this parametric
+    family covers all δ-contractions of a single Riemann tensor. The full
+    classical Lovelock theorem additionally requires Gauss-Bonnet vanishing
+    (for quadratic terms) and ε-tensor exclusion (not yet formalized).
+
+    FULLY PROVEN within its stated scope. No axioms beyond Lean core. -/
 theorem lovelock_endpoint
     {T : Type*} [AddCommGroup T] [Module ℝ T]
     {Ω : Type*} [AddCommGroup Ω] [Module ℝ Ω]

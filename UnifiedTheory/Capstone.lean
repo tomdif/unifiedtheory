@@ -6,25 +6,33 @@
   From a LorentzianMetric (spacetime geometry) and StructureConstants
   (Lie algebra of the gauge group), the following are all derived:
 
-  GRAVITY (exact, from metric):
-    - Einstein divergence-free: div(G) = 0
+  GRAVITY (from metric):
+    - KINEMATIC: div(G) = 0 — identity for ALL metrics (Bianchi)
+    - DYNAMIC: G + Λ·g = 0 is the unique field equation
+      Complete 4D Lovelock uniqueness theorem (tensorial, second-order
+      natural class) — see LovelockComplete.complete_lovelock_4d
+      All components proven: contraction classification, Bianchi constraint,
+      Gauss-Bonnet vanishing, ε-exclusion, tensor parity
     - Null cone determines conformal class
     - Scaling exponent α = m from dimension
 
-  MATTER (exact, from trace functional on perturbation space):
+  MATTER (from trace functional on perturbation space):
     - K/P split: trace-visible vs trace-free
     - Bridge: trace(πK(h)) = trace(h)
-    - Charge additivity, conjugation, annihilation
+    - Charge additivity: DERIVED from linearity (map_add), not stipulated
+    - Conjugation, annihilation: DERIVED from map_neg, add_neg_cancel
 
   GAUGE (exact, from connection):
     - Curvature F = dA + [A,A] with nonabelian bracket
     - Gauge stress-energy is traceless in d=4 (uniquely)
     - Gauge content lives in P = ker(trace)
 
-  QUANTUM (exact, from ℂ arithmetic):
+  QUANTUM (from rotation invariance + ℂ arithmetic):
     - z = Q + iP packages trace-visible and trace-free components
-    - SO(2)-invariant quadratic observable |z|²
-    - Phase averaging: discrete cancellation of interference
+    - Born rule UNIQUENESS: any SO(2)-invariant quadratic obs = a(Q²+P²)
+      (derived from rotation_forces_complex, not stipulated)
+    - Interference Fourier decomposition: IT(θ) = A·cos(θ) + B·sin(θ)
+    - Phase averaging: discrete cancellation (∫cos = ∫sin = 0 mechanism)
 
   Everything is exact (non-perturbative). Zero custom axioms.
   The only unformalised question: "which perturbations satisfy G = 0?"
@@ -63,7 +71,7 @@ open LayerB.MetricDefects LayerB
     (M2) Annihilation: Q(h + (-h)) = 0
 
     QUANTUM:
-    (Q1) Observable |z|² = Q² + P²
+    (Q1) Born rule uniqueness: rotation-invariant quadratic obs must be a(Q²+P²)
     (Q2) Phase averaging kills interference (decoherence)
 
     Zero custom axioms. Everything exact. -/
@@ -99,8 +107,14 @@ theorem complete_metric_connection
     ∧ (let db := metricComposableBlock m
        ∀ d : db.Defect, charge db (db.compose d (db.conjugate d)) = 0)
     -- === QUANTUM ===
-    -- (Q1) Born rule
-    ∧ (∀ Q P : ℝ, obs (amplitudeFromKP Q P) = Q ^ 2 + P ^ 2)
+    -- (Q1) Born rule UNIQUENESS: any rotation-invariant quadratic observable
+    --      on the (Q,P) pair must be proportional to Q² + P² = |z|².
+    --      This is DERIVED from SO(2) invariance, not stipulated.
+    ∧ (∀ a b c : ℝ, 0 < a →
+        (∀ θ Q P : ℝ, quadObs a b c Q P =
+          quadObs a b c (Q * Real.cos θ - P * Real.sin θ)
+                         (Q * Real.sin θ + P * Real.cos θ)) →
+        ∀ Q P : ℝ, quadObs a b c Q P = a * (Q ^ 2 + P ^ 2))
     -- (Q2) Decoherence
     ∧ (∀ z₁ z₂ : ℂ, ∀ θ : ℝ,
         obs (z₁ + phaseRotate θ z₂) + obs (z₁ + phaseRotate (θ + Real.pi) z₂) =
@@ -117,12 +131,12 @@ theorem complete_metric_connection
     -- C3: Gauge traceless in d=4
     gauge_traceless_4d,
     four_is_unique_traceless,
-    -- M1: Charge additivity
+    -- M1: Charge additivity (DERIVED from linearity via map_add)
     fun d₁ d₂ => charge_additive _ d₁ d₂,
-    -- M2: Annihilation
+    -- M2: Annihilation (DERIVED from linearity via add_neg_cancel)
     fun d => annihilation_charge _ d,
-    -- Q1: Born rule
-    obs_from_KP,
+    -- Q1: Born rule uniqueness (DERIVED from rotation invariance)
+    fun a b c ha hrot => complex_observable_unique a b c hrot ha,
     -- Q2: Decoherence
     discrete_decoherence_sum⟩
 

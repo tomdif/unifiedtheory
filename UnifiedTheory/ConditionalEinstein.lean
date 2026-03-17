@@ -6,7 +6,10 @@
   1. RG rigidity (PROVEN): α = 2 is the unique scale-invariant exponent.
   2. Null-cone determination (PROVEN): null-vanishing ⟹ S ∝ η.
   3. BF source/dressing split (PROVEN): K-channel sources, P decouples.
-  4. Lovelock constraint (PROVEN): div-free natural tensor = a·G + b·g.
+  4. Lovelock-type endpoint (PROVEN): within the linear-in-Riemann
+     contraction-natural class, div-free tensor = a·G + b·g.
+     (Full Lovelock: PROVEN — see LovelockComplete.complete_lovelock_4d.
+      Gauss-Bonnet, ε-exclusion, parity all formalized.)
 
   ALL FOUR STEPS ARE FULLY PROVEN.
   No sorry. No axioms beyond Lean core (propext, choice, quot.sound).

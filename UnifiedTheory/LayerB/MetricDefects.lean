@@ -260,7 +260,7 @@ theorem metric_charge_algebra (_ : LorentzianMetric m) :
     Everything downstream is proved from ℂ arithmetic (exact).
     No perturbative assumption anywhere in this chain. -/
 theorem metric_to_quantum (_ : LorentzianMetric m) :
-    -- (1) Observable = Q² + P²
+    -- (1) Observable = Q² + P² (from definition, connects K/P to |z|²)
     (∀ Q P : ℝ, obs (amplitudeFromKP Q P) = Q ^ 2 + P ^ 2)
     -- (2) Phase invariance
     ∧ (∀ θ Q P : ℝ, obs (dressingRotation θ Q P) = obs (amplitudeFromKP Q P))
@@ -289,7 +289,9 @@ theorem metric_to_quantum (_ : LorentzianMetric m) :
     From a single LorentzianMetric m, with the modeling choice that
     defects are metric perturbations composed by addition:
 
-    - Einstein div-free (from Bianchi)
+    - KINEMATIC: Einstein div-free (from Bianchi identity)
+    - DYNAMIC: G + Λ·g = 0 — complete 4D Lovelock uniqueness
+      (tensorial, second-order natural class — see LovelockComplete)
     - Null cone determination (from NullConeGeneral)
     - Scaling exponent α = m (from dimension)
     - K/P split (from trace functional)
@@ -319,8 +321,12 @@ theorem metric_to_everything (L : LorentzianMetric m) :
     -- Annihilation
     ∧ (∀ d : db.Defect, charge db (db.compose d (db.conjugate d)) = 0)
     -- === Quantum (from K/P → ℂ) ===
-    -- Born rule
-    ∧ (∀ Q P : ℝ, obs (amplitudeFromKP Q P) = Q ^ 2 + P ^ 2)
+    -- Born rule UNIQUENESS
+    ∧ (∀ a b c : ℝ, 0 < a →
+        (∀ θ Q P : ℝ, quadObs a b c Q P =
+          quadObs a b c (Q * Real.cos θ - P * Real.sin θ)
+                         (Q * Real.sin θ + P * Real.cos θ)) →
+        ∀ Q P : ℝ, quadObs a b c Q P = a * (Q ^ 2 + P ^ 2))
     -- Decoherence → classical
     ∧ (∀ z₁ z₂ : ℂ, ∀ θ : ℝ,
         obs (z₁ + phaseRotate θ z₂) + obs (z₁ + phaseRotate (θ + Real.pi) z₂) =
@@ -329,7 +335,7 @@ theorem metric_to_everything (L : LorentzianMetric m) :
     einstein_div_free_from_metric L,
     fun d₁ d₂ => charge_additive _ d₁ d₂,
     fun d => annihilation_charge _ d,
-    obs_from_KP,
+    fun a b c ha hrot => complex_observable_unique a b c hrot ha,
     discrete_decoherence_sum⟩
 
 end UnifiedTheory.LayerB.MetricDefects

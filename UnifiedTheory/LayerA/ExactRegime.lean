@@ -19,16 +19,20 @@
      Therefore div(G)[md₁ + md₂] = 0 requires no hypotheses on md₁, md₂.
 
   The distinction that WOULD introduce a perturbative assumption:
-     The field equation G = 0 (vacuum Einstein) or G = T (sourced Einstein)
-     is a CONDITION. The space of solutions to G = 0 is not a vector
-     subspace in the nonlinear regime. But we never formalize G = 0 as
-     a condition — we only prove the Bianchi identity div(G) = 0,
-     which is unconditional.
+     The field equation G + Λ·g = 0 (vacuum Einstein) or G = T (sourced)
+     is a CONDITION selecting physical metrics. The space of solutions is
+     not a vector subspace in the nonlinear regime.
 
-  Bottom line: everything formalized in this repo is exact.
-  The linearized regime is relevant only for the UNFORMALISED question
-  "which perturbations satisfy G = 0?" — a dynamical question outside
-  the scope of the algebraic chain.
+  UPDATE: VariationalEinstein.lean now provides a dynamical upgrade:
+  - Complete 4D Lovelock uniqueness: G + Λ·g is the only admissible tensor
+    (tensorial, second-order natural class — LovelockComplete.lean)
+  - Variational stationarity + non-degeneracy selects G + Λ·g = 0
+  - The kinematic chain (this file) still holds unconditionally;
+    the dynamic chain (VariationalEinstein) adds the field equation.
+
+  Bottom line: the KINEMATIC chain is exact and unconditional.
+  The DYNAMIC field equation G + Λ·g = 0 is a genuine condition on
+  which MetricDerivs are physical (see VariationalEinstein.lean).
 -/
 import UnifiedTheory.LayerA.DerivedUnification
 import UnifiedTheory.LayerA.LinearizedFieldEqs

@@ -109,13 +109,100 @@
       algebras, but the division algebra structure on K/P is not derived)
     - Perturbation space = Matrix (not symmetric-only)
 
+  PROVEN — Complete 4D Lovelock uniqueness (tensorial, second-order natural class):
+    - Field equation G + Λ·g = 0 from variational stationarity
+    - Contraction classification: Ric is the only independent δ-contraction
+      of a single Riemann tensor (6 cases, VariationalEinstein.lean)
+    - Bianchi constraint: div-free forces a·G + Λ·g (LovelockEinstein.lean)
+    - Gauss-Bonnet vanishing: H_{ab} ≡ 0 in 4D (GaussBonnet4D.lean)
+    - ε-exclusion: ε·ε = δ + tensor parity (LovelockComplete.lean)
+    - Assembly: complete_lovelock_4d (LovelockComplete.lean)
+
+  PROVEN (GaussBonnet4D.lean):
+    - Gauss-Bonnet vanishing: H_{ab} ≡ 0 in d=4 (pigeonhole on rank-5 delta)
+    - All higher Lovelock tensors (p ≥ 2) also vanish in d=4
+
+  PROVEN (LovelockComplete.lean — full Lovelock assembly):
+    - ε·ε = δ identity (converts ε-contractions to δ-contractions)
+    - Tensor parity (odd ε-count → pseudotensor → excluded)
+    - Higher derivatives: restricted by hypothesis (framework design)
+    - complete_lovelock_4d: assembles all components
+
+  PROVEN (QuantumUniqueness.lean — quantum structure is forced):
+    - sourceProj_unique: K/P split is the UNIQUE source-capturing rank-1 projection
+    - complex_observable_unique: Born rule is the UNIQUE rotation-invariant obs
+    - full_rotation_invariance: rotation invariance forces b=0, a=c (no cross term)
+    - discrete_decoherence_sum: phase averaging uniquely recovers classical additivity
+    - quantum_structure_inevitable: assembles all uniqueness results
+
   OUTSIDE SCOPE (not formalized):
-    - Field equation G = 0 as a condition (we prove div(G) = 0, an identity)
-    - Which perturbations are "physical" solutions
+    - Which perturbations are "physical" solutions of G + Λ·g = 0
     - Dynamics / propagation / field evolution
-    - Lovelock uniqueness (that G+Λg is the ONLY divergence-free tensor)
     - Full manifold differential geometry (we work in normal coordinates)
     - Specific gauge group selection (g_dim is a free parameter)
+
+  ═══════════════════════════════════════════════════════
+  PRIMITIVE JUSTIFICATION TABLE
+  ═══════════════════════════════════════════════════════
+
+  Each primitive is either mathematically unavoidable or physically standard.
+  Format: Primitive → Why needed → What it predicts → Can it be reduced?
+
+  1. LorentzianMetric m (metric + Minkowski signature)
+     WHY: Encodes spacetime geometry. Without it, no curvature, no gravity.
+     PREDICTS: Light cones, gravitational lensing, frame dragging.
+     FALSIFY: If spacetime had Euclidean (not Lorentzian) signature, or if
+              gravity were not described by curvature.
+     REDUCE: Cannot — metric is the minimal input for Riemannian geometry.
+     STATUS: Physically standard (GR foundation since 1915).
+
+  2. StructureConstants g_dim (Lie algebra for gauge group)
+     WHY: Encodes internal symmetry. Without it, no gauge curvature F = dA+[A,A].
+     PREDICTS: Non-abelian gauge interactions, charge quantization, confinement.
+     FALSIFY: If gauge interactions were abelian only (no strong/weak force).
+     REDUCE: Not within this framework. Derivation from fiber bundle geometry
+             would eliminate this as an independent primitive.
+     STATUS: Physically standard (Yang-Mills foundation since 1954).
+
+  3. ConnectionData (gauge connection A_μ^a)
+     WHY: Encodes the gauge field. Without it, no F, no Maxwell/Yang-Mills.
+     PREDICTS: Electromagnetic waves, gluon jets, W/Z bosons.
+     FALSIFY: If electromagnetic fields didn't exist.
+     REDUCE: Could be derived from principal bundle geometry on the metric manifold.
+     STATUS: Physically standard. The connection is the gauge potential.
+
+  4. Composition = vector addition (defect composition law)
+     WHY: The perturbation space is a vector space; addition is the natural
+          composition. Charge additivity is DERIVED from this (via map_add).
+     PREDICTS: Charge conservation, superposition, annihilation.
+     FALSIFY: If charges were not additive (no known counterexample).
+     REDUCE: Cannot — addition IS the vector space operation.
+     STATUS: Mathematically unavoidable in a linear framework.
+
+  5. Source functional φ = trace (canonical source measurement)
+     WHY: The trace is the UNIQUE (up to scale) linear functional on n×n
+          matrices that is invariant under conjugation (cyclic property).
+     PREDICTS: The K/P split, charge sectors, dressing invisibility.
+     FALSIFY: If source strength were not measured by a linear functional.
+     REDUCE: Cannot — trace is the unique invariant functional (Schur's lemma).
+     STATUS: Mathematically unavoidable.
+
+  6. Rotation invariance of observable (SO(2) symmetry of dressing)
+     WHY: The dressing (P-channel) is invisible to the source functional.
+          Rotations in the (Q,P) plane preserve source strength Q.
+     PREDICTS: Born rule |z|² (UNIQUE rotation-invariant quadratic obs).
+     FALSIFY: If the observable depended on the dressing angle.
+     REDUCE: Cannot — follows from dressing invisibility.
+     STATUS: Physically natural (U(1) gauge invariance).
+
+  7. Higher derivatives restricted to ≤ 2nd order (Lovelock hypothesis)
+     WHY: The Lovelock theorem restricts to tensors from (g, ∂g, ∂²g).
+          Without this, higher-derivative field equations could appear.
+     PREDICTS: Second-order field equations (no Ostrogradsky instability).
+     FALSIFY: If physical field equations required ∂³g or higher.
+     REDUCE: Cannot — this is a physical assumption about stability.
+     STATUS: Physically standard (Ostrogradsky theorem: higher-derivative
+             Lagrangians have unbounded-below Hamiltonians).
 
   ═══════════════════════════════════════════════════════
   SIGNED SOURCE BRANCH (SignedSource.lean + 3 files)
@@ -248,10 +335,31 @@
     bianchi2                         second Bianchi from metric
     riemannFromMetric                all RiemannData fields proven
 
-  LovelockEinstein.lean
+  LovelockEinstein.lean (Bianchi constraint step of Lovelock)
     lovelock_bianchi_constraint      div-free → d = -c/2
     lovelock_decomposition           c*R + (-c/2)*S*g + e*g = c*G + e*g
     lovelock_endpoint                exists a b, E = a*G + b*g
+
+  VariationalEinstein.lean (variational + contraction classification)
+    R_metric_pair_symm               R_{abcd} = R_{cdab} (pair symmetry)
+    ricciTensor, ricciTensor_symm    Ric_{bd} = Ric_{db}
+    scalarCurvature, einsteinTensor  explicit from MetricDerivs
+    contraction_classification       all 6 δ-contractions of R give ±Ric or 0
+    full_lovelock                    Bianchi step within contraction-natural class
+    pairing_nondegenerate            ⟨E,h⟩=0 for all h → E=0 (variational)
+    einstein_field_equation_structure  kinematic + dynamic + non-degeneracy
+
+  GaussBonnet4D.lean (Gauss-Bonnet vanishing via generalized Kronecker delta)
+    genKronecker_vanishes             rank > dim → δ^{...}_{...} = 0 (pigeonhole)
+    gaussBonnet_vanishes_4d           H_{ab} ≡ 0 in 4D
+    higher_lovelock_rank_exceeds_4d   all Lovelock p≥2 vanish in 4D
+
+  LovelockComplete.lean (full 4D Lovelock uniqueness assembly)
+    leviCivita                        Levi-Civita symbol = det of basis rows
+    epsilon_product_eq_genKronecker   ε·ε = generalized Kronecker delta
+    orientation_parity                (-1)^k = 1 ↔ k even (tensor parity)
+    complete_lovelock_4d              COMPLETE 4D Lovelock uniqueness theorem
+                                      (tensorial, second-order natural class)
 
   SourceFromMetric.lean
     sourceFromOperator               phi = psi composed L

@@ -15,6 +15,9 @@
 
   What is derived:
     (1) Einstein divergence structure — from MetricDerivs → Riemann → Bianchi
+        KINEMATIC: div(G) = 0 (identity for all metrics)
+        DYNAMIC: G + Λ·g = 0 selected by Lovelock + stationarity
+        (see VariationalEinstein.lean for the full upgrade)
     (2) Null-cone determination — metric defines cone, cone determines metric
     (3) Scaling exponent α = d-1 — from spatial dimension
     (4) Canonical K/P split — from perturbation space + trace functional
@@ -23,10 +26,14 @@
     - LorentzianMetric is one structured object, not one minimal primitive
     - The K/P split derives a canonical linear decomposition; the physical
       source interpretation is structural, not dynamical
-    - Lovelock uniqueness (that Einstein is the ONLY such tensor) is not proved
+    - Complete 4D Lovelock uniqueness (tensorial, second-order natural class):
+      G + Λ·g is the unique symmetric div-free natural tensor in 4D.
+      All components proven: contraction classification, Bianchi constraint,
+      Gauss-Bonnet vanishing, ε-exclusion, tensor parity.
+      See LovelockComplete.complete_lovelock_4d for the full assembly.
     - The chain characterizes exact algebraic/kinematic structure;
-      the dynamical question "which perturbations satisfy G = 0?" is separate
-      (see ExactRegime.lean for the full exactness proof)
+      the dynamical question "which perturbations satisfy G = 0?" is addressed
+      by the variational principle (see VariationalEinstein.lean, ExactRegime.lean)
 -/
 import UnifiedTheory.LayerA.MetricToRiemann
 import UnifiedTheory.LayerA.BianchiIdentity

@@ -34,6 +34,10 @@ private lemma bias_eq (d : ConcreteDefect) :
     (concreteToNull d).bias = d.κ := by
   simp [concreteToNull]
 
+/-- The perturbation embedding: ConcreteDefect → FieldSpace = Fin 2 → ℝ. -/
+def concretePerturbation (d : ConcreteDefect) : FieldSpace :=
+  fun i => if i = (0 : Fin 2) then d.κ else d.δ
+
 noncomputable def concreteComposable : ComposableDefectBlock FieldSpace where
   Defect := ConcreteDefect
   Stable := allStable
@@ -47,22 +51,22 @@ noncomputable def concreteComposable : ComposableDefectBlock FieldSpace where
   dressingNeutral := fun d _ => by
     change proj₁ (concreteToBF d).Ppart = 0
     simp [proj₁, concreteToBF]
+  -- Linear structure primitives
+  perturbation := concretePerturbation
+  charge_linear := proj₁
+  charge_eq := fun d => by simp [proj₁, concreteToBF, concretePerturbation]
+  bias_linear := proj₁
+  bias_eq := fun d => by simp [proj₁, concreteToNull, concretePerturbation]
   compose := composeDefects
+  compose_is_add := fun d₁ d₂ => by
+    ext i; simp [concretePerturbation, composeDefects, Pi.add_apply]
+    split <;> rfl
   compose_stable := fun _ _ _ _ => trivial
-  compose_K_additive := fun d₁ d₂ => by
-    change proj₁ (concreteToBF (composeDefects d₁ d₂)).Kpart =
-      proj₁ (concreteToBF d₁).Kpart + proj₁ (concreteToBF d₂).Kpart
-    simp [source_eq, composeDefects]
-  compose_bias_additive := fun d₁ d₂ => by
-    simp [concreteToNull, composeDefects]
   conjugate := conjugateDefect
+  conjugate_is_neg := fun d => by
+    ext i; simp [concretePerturbation, conjugateDefect, Pi.neg_apply]
+    split <;> rfl
   conjugate_stable := fun _ _ => trivial
-  conjugate_K_neg := fun d => by
-    change proj₁ (concreteToBF (conjugateDefect d)).Kpart =
-      -(proj₁ (concreteToBF d).Kpart)
-    simp [source_eq, conjugateDefect]
-  conjugate_bias_neg := fun d => by
-    simp [concreteToNull, conjugateDefect]
 
 /-! ### Charge computation helper -/
 

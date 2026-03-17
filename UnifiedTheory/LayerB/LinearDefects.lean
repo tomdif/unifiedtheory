@@ -152,27 +152,18 @@ noncomputable def LinearDefectBlock.toComposable : ComposableDefectBlock V where
   dressingNeutral := fun d hd => by
     show lb.source_func (lb.P_proj (lb.perturbation d)) = 0
     exact lb.dressingNeutral_derived d hd
+  -- Linear structure primitives (enable DERIVING charge algebra)
+  perturbation := lb.perturbation
+  charge_linear := lb.source_func.comp lb.K_proj
+  charge_eq := fun _ => rfl
+  bias_linear := lb.bias_func
+  bias_eq := fun _ => rfl
   compose := lb.compose
+  compose_is_add := lb.compose_pert
   compose_stable := lb.compose_stable
-  compose_K_additive := fun d₁ d₂ => by
-    show lb.source_func (lb.K_proj (lb.perturbation (lb.compose d₁ d₂))) =
-         lb.source_func (lb.K_proj (lb.perturbation d₁)) +
-         lb.source_func (lb.K_proj (lb.perturbation d₂))
-    exact lb.charge_additive_derived d₁ d₂
-  compose_bias_additive := fun d₁ d₂ => by
-    show lb.bias_func (lb.perturbation (lb.compose d₁ d₂)) =
-         lb.bias_func (lb.perturbation d₁) + lb.bias_func (lb.perturbation d₂)
-    exact lb.bias_additive_derived d₁ d₂
   conjugate := lb.conjugate
+  conjugate_is_neg := lb.conjugate_pert
   conjugate_stable := lb.conjugate_stable
-  conjugate_K_neg := fun d => by
-    show lb.source_func (lb.K_proj (lb.perturbation (lb.conjugate d))) =
-         -(lb.source_func (lb.K_proj (lb.perturbation d)))
-    exact lb.conjugate_K_neg_derived d
-  conjugate_bias_neg := fun d => by
-    show lb.bias_func (lb.perturbation (lb.conjugate d)) =
-         -(lb.bias_func (lb.perturbation d))
-    exact lb.conjugate_bias_neg_derived d
 
 /-! ### The derivation theorem -/
 

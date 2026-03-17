@@ -158,7 +158,7 @@ def bindingBias (db : ComposableDefectBlock V) (d₁ d₂ : db.Defect) : ℝ :=
     Physical binding comes from non-additive corrections in richer models. -/
 theorem binding_bias_zero (db : ComposableDefectBlock V) (d₁ d₂ : db.Defect) :
     bindingBias db d₁ d₂ = 0 := by
-  simp [bindingBias, db.compose_bias_additive]
+  simp [bindingBias, db.bias_eq, db.compose_is_add, map_add]
 
 /-- **Conjugate pair has zero net bias**: a bound state of d and d̄
     has exactly zero focusing, confirming gravitational invisibility. -/

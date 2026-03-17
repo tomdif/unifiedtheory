@@ -20,6 +20,9 @@ import UnifiedTheory.LayerA.LinearizedFieldEqs
 import UnifiedTheory.LayerA.ExactRegime
 import UnifiedTheory.LayerA.GaugeConnection
 import UnifiedTheory.LayerA.MetricGaugeCoupling
+import UnifiedTheory.LayerA.VariationalEinstein
+import UnifiedTheory.LayerA.GaussBonnet4D
+import UnifiedTheory.LayerA.LovelockComplete
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
@@ -50,6 +53,7 @@ import UnifiedTheory.LayerB.RiemannAction
 import UnifiedTheory.LayerB.ComplexificationUniqueness
 import UnifiedTheory.LayerB.EnvironmentDecoherence
 import UnifiedTheory.LayerB.NonCommutative
+import UnifiedTheory.LayerB.QuantumUniqueness
 
 -- Capstone
 import UnifiedTheory.Capstone

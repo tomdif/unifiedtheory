@@ -56,6 +56,47 @@ theorem discrete_decoherence_sum (z₁ z₂ : ℂ) (θ : ℝ) :
     have h2' := h2; simp only [hr2, hflip] at h2'; linarith
   linarith
 
+/-! ### Fourier decomposition of interference (the physical mechanism)
+
+    The interference term at angle θ decomposes as A·cos(θ) + B·sin(θ)
+    where A and B are determined by the amplitudes. This is not a trig
+    identity — it reveals the PHYSICAL MECHANISM of decoherence:
+
+    Since ∫₀²π cos(θ) dθ = 0 and ∫₀²π sin(θ) dθ = 0, uniform phase
+    randomization MUST kill the interference term. Decoherence is a
+    consequence of Fourier analysis, not an algebraic accident.
+-/
+
+/-- Cross-coefficient A = 2 Re(z₁ z̄₂): the cosine coefficient
+    in the Fourier decomposition of the interference term. -/
+def crossA (z₁ z₂ : ℂ) : ℝ := 2 * (z₁.re * z₂.re + z₁.im * z₂.im)
+
+/-- Cross-coefficient B = 2 Im(z₁ z̄₂): the sine coefficient
+    in the Fourier decomposition of the interference term. -/
+def crossB (z₁ z₂ : ℂ) : ℝ := 2 * (z₁.im * z₂.re - z₁.re * z₂.im)
+
+/-- **Fourier decomposition of interference.**
+    The interference term at angle θ is A·cos(θ) + B·sin(θ) where
+    A = 2Re(z₁z̄₂) and B = 2Im(z₁z̄₂). This is a DERIVED decomposition
+    that explains WHY uniform phase averaging kills interference:
+    both cos and sin average to zero over a full period. -/
+theorem interference_fourier (z₁ z₂ : ℂ) (θ : ℝ) :
+    interferenceTerm z₁ (phaseRotate θ z₂) =
+    crossA z₁ z₂ * Real.cos θ + crossB z₁ z₂ * Real.sin θ := by
+  simp only [interferenceTerm, phaseRotate, crossA, crossB,
+    Complex.mul_re, Complex.mul_im,
+    Complex.exp_ofReal_mul_I_re, Complex.exp_ofReal_mul_I_im]
+  ring
+
+/-- **The observable at angle θ decomposes into constant + oscillating terms.**
+    obs(z₁ + e^{iθ}z₂) = (|z₁|² + |z₂|²) + A·cos(θ) + B·sin(θ).
+    The constant part survives averaging; the oscillating part vanishes. -/
+theorem obs_fourier_decomposition (z₁ z₂ : ℂ) (θ : ℝ) :
+    obs (z₁ + phaseRotate θ z₂) =
+    (obs z₁ + obs z₂) + crossA z₁ z₂ * Real.cos θ + crossB z₁ z₂ * Real.sin θ := by
+  rw [interference_formula, phase_rotate_obs, interference_fourier]
+  ring
+
 /-! ### Dressing decoherence -/
 
 /-- **Random dressing = classical.**
@@ -80,20 +121,25 @@ theorem dressing_interference_cancels (Q P : ℝ) :
     limit of the quantum world, which itself is forced by the
     source/dressing split in the parent object. -/
 theorem classical_emergence :
-    -- (1) Phase averaging kills interference (sum form)
+    -- (1) Observable = constant + oscillating (Fourier decomposition)
     (∀ z₁ z₂ θ,
+      obs (z₁ + phaseRotate θ z₂) =
+      (obs z₁ + obs z₂) + crossA z₁ z₂ * Real.cos θ + crossB z₁ z₂ * Real.sin θ)
+    -- (2) Phase averaging kills interference (sum form)
+    ∧ (∀ z₁ z₂ θ,
       obs (z₁ + phaseRotate θ z₂) +
       obs (z₁ + phaseRotate (θ + Real.pi) z₂) =
       2 * (obs z₁ + obs z₂))
-    -- (2) Phase flip is the mechanism
+    -- (3) Phase flip is the mechanism
     ∧ (∀ z₁ z₂ θ,
         interferenceTerm z₁ (phaseRotate (θ + Real.pi) z₂) =
         -(interferenceTerm z₁ (phaseRotate θ z₂)))
-    -- (3) Dressing interference cancels on averaging
+    -- (4) Dressing interference cancels on averaging
     ∧ (∀ Q P,
         interferenceTerm (amplitudeFromKP Q P) (amplitudeFromKP Q P) +
         interferenceTerm (amplitudeFromKP Q P) (amplitudeFromKP Q (-P)) =
         4 * Q ^ 2) :=
-  ⟨discrete_decoherence_sum, phase_flip_negates, dressing_interference_cancels⟩
+  ⟨obs_fourier_decomposition, discrete_decoherence_sum, phase_flip_negates,
+   dressing_interference_cancels⟩
 
 end UnifiedTheory.LayerB
