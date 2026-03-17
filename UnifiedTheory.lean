@@ -48,6 +48,7 @@ import UnifiedTheory.LayerB.FocusingCoupling
 import UnifiedTheory.LayerB.HistoryAmplitudes
 import UnifiedTheory.LayerB.ComplexificationUniqueness
 import UnifiedTheory.LayerB.EnvironmentDecoherence
+import UnifiedTheory.LayerB.NonCommutative
 
 -- Capstone
 import UnifiedTheory.Capstone
