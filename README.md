@@ -19,8 +19,10 @@ Every theorem depends only on the three standard Lean axioms (`propext`, `Classi
 | **Gauge** | Stress-energy traceless in d=4 (uniquely) | `gauge_traceless_4d`, `four_is_unique_traceless` | Exact |
 | **Matter** | Charge additivity Q(h₁+h₂) = Q(h₁)+Q(h₂) | `charge_additive` | Exact |
 | **Matter** | Annihilation Q(h+(-h)) = 0 | `annihilation_charge` | Exact |
-| **Quantum** | Quadratic observable |z|² = Q²+P² | `obs_from_KP` | Exact |
-| **Quantum** | Phase averaging: discrete cancellation of interference | `discrete_decoherence_sum` | Exact |
+| **Quantum** | ℂ is unique 2D real division algebra | `complexification_unique` | Exact |
+| **Quantum** | |z|² is unique multiplicative norm | `norm_uniqueness` | Exact |
+| **Quantum** | Two-path interference formula | `two_path_interference` | Exact |
+| **Quantum** | Phase-averaging decoherence (N=2,4,∞) | `environment_decoherence` | Exact |
 
 ## Derived chain
 
@@ -35,7 +37,8 @@ LorentzianMetric m
   → Bridge: trace(πK(h)) = trace(h)                        (exact)
   → Neutrality: trace(πP(h)) = 0                           (exact)
   → Charge additivity, conjugation, annihilation            (exact)
-  → z = Q + iP → interference → |z|² observable → phase averaging    (exact)
+  → K/P split → 2D division algebra → ℂ uniquely (complexification_unique)
+  → |z|² as unique norm → interference → phase-averaging decoherence  (exact)
 ```
 
 Key files:
@@ -92,9 +95,9 @@ The charge algebra is signed: Q ∈ ℝ, not ℝ≥0. See [`SIGNED_SOURCE.md`](S
 
 | Category | What | Examples |
 |----------|------|---------|
-| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, quadratic observable, phase-averaging cancellation, signed source algebra, GR focusing coupling κ = 8π |
+| **Exact** | Theorems with no approximation | Bianchi identity, charge algebra, gauge trace formula, unique complexification of K/P sector, |z|² as unique norm, history interference, phase-averaging decoherence, signed source algebra, GR focusing coupling κ = 8π |
 | **Structural** | Standard mathematics correctly formalized | Scaling exponent, rank-1 projection, Killing form symmetry |
-| **Definitional** | Modeling choices, explicitly stated | z = Q+iP identification, perturbation space = Matrix |
+| **Definitional** | Modeling choices, explicitly stated | Perturbation space = Matrix (not symmetric-only) |
 | **Outside scope** | Not formalized | G=0 as condition (vs div(G)=0 identity), dynamics, Lovelock uniqueness, gauge group selection |
 
 ## Project structure
@@ -133,6 +136,9 @@ UnifiedTheory/
     SourceFocusing.lean         -- Q sign controls focusing (NEW)
     FocusingBridge.lean         -- Ricci/null focusing from metric (NEW)
     FocusingCoupling.lean       -- GR coupling κ = 8π derives focusing (NEW)
+    HistoryAmplitudes.lean      -- Sum-over-histories interference (NEW)
+    ComplexificationUniqueness.lean -- ℂ is unique 2D division algebra (NEW)
+    EnvironmentDecoherence.lean -- Phase-averaging decoherence (NEW)
     LinearDefects.lean          -- Charge algebra from linearity
     ParentU.lean                -- Parent structure (legacy)
     UnifiedBranch.lean          -- ParentU → Einstein branch (legacy)

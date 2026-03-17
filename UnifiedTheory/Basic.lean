@@ -50,6 +50,37 @@
     z = Q+iP packages trace-visible and trace-free components
 
   ═══════════════════════════════════════════════════════
+  QUANTUM AMPLITUDE CHAIN (3 files, 0 sorry)
+  ═══════════════════════════════════════════════════════
+
+  HistoryAmplitudes.lean
+    two_path_interference           obs(z₁+z₂) = obs(z₁)+obs(z₂)+2Re(z₁·conj z₂)
+    coherent_neq_incoherent         interference exists generically
+    incoherent_limit                cross term = 0 → classical additivity
+    phase_modulates_cross_term      relative phase controls fringe pattern
+    history_amplitude_structure     capstone (3 conjuncts)
+
+  ComplexificationUniqueness.lean
+    norm_pos                        2D division algebra has positive-definite norm
+    norm_mul                        norm is multiplicative: N(xy) = N(x)·N(y)
+    no_zero_divisors                division algebra (no zero divisors)
+    complexification_unique         ℂ is the UNIQUE 2D real division algebra
+                                    (isomorphism via √(-α) rescaling, FULLY PROVED)
+    norm_uniqueness                 Q²+|α|P² is the unique multiplicative norm
+
+  EnvironmentDecoherence.lean
+    two_point_decoherence           N=2 averaging eliminates interference
+    four_point_decoherence          N=4 averaging eliminates interference
+    cos_integral_shifted            ∫₀²π cos(θ+φ)dθ = 0 (continuous limit)
+    environment_decoherence         capstone (3 conjuncts)
+
+  Chain: source functional → K/P split → 2D real division algebra
+         → ℂ uniquely (complexification_unique)
+         → |z|² as unique rotation-invariant quadratic observable
+         → interference from sum-over-histories
+         → phase-averaging decoherence
+
+  ═══════════════════════════════════════════════════════
   AUDIT CLASSIFICATION
   ═══════════════════════════════════════════════════════
 
@@ -59,7 +90,10 @@
     - Null cone determination
     - Curvature antisymmetry and linearity
     - Gauge trace formula tr(T) = (1-d/4)|F|²
-    - |z|² observable, interference, phase-averaging cancellation (ℂ/ℝ² arithmetic)
+    - Unique complexification of 2D division algebra (ℂ is forced, not chosen)
+    - |z|² as unique multiplicative positive-definite norm
+    - History/event interference from coherent sum
+    - Phase-averaging decoherence (N=2, N=4, continuous limit)
     - Signed source algebra (Q ∈ ℝ, ±sectors, cancellation)
     - GR focusing coupling κ = 8π > 0 (from Real.pi_pos)
     - Ricci tensor and null focusing linear in MetricDerivs
