@@ -30,6 +30,7 @@ import UnifiedTheory.LayerA.GaussBonnetExpansion
 import UnifiedTheory.LayerA.NonabelianYangMills
 import UnifiedTheory.LayerA.RotationInvariance
 import UnifiedTheory.LayerA.DimensionSelection
+import UnifiedTheory.LayerA.PrimitivesForced
 import UnifiedTheory.LayerB.LindbladDecoherence
 import UnifiedTheory.ConditionalEinstein
 
@@ -65,6 +66,7 @@ import UnifiedTheory.LayerB.QuantumUniqueness
 import UnifiedTheory.LayerB.DynamicalStability
 import UnifiedTheory.LayerB.AmplitudeUniqueness
 import UnifiedTheory.LayerB.DensityMatrix
+import UnifiedTheory.LayerB.OperationalQuantum
 
 -- Capstone
 import UnifiedTheory.Capstone
