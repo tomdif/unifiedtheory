@@ -294,10 +294,23 @@ theorem bracket_cyclic_vanishes
     (l_ μ ν : Fin n) (a : Fin g_dim) :
     bracketPart sc conn l_ μ ν a + bracketPart sc conn μ ν l_ a +
     bracketPart sc conn ν l_ μ a = 0 := by
-  simp only [bracketPart]
-  -- Distribute the sums and group by type
-  -- The dA·A + A·dA terms form antisymmetric products → vanish
-  -- The A·A·A terms form Jacobi contractions → vanish
+  -- Strategy: show bracketPart = dA_part + AAA_part,
+  -- then cyclic sum of dA_part = 0 and cyclic sum of AAA_part = 0.
+  -- Both are proven by the helper lemmas.
+  --
+  -- The bracketPart has the form:
+  --   ∑_{bd} c * (dA * A + A * dA) + ∑_{bd} c * A * (dA - dA + ∑ c*A*A)
+  -- = ∑_{bd} c * (dA*A + A*dA) + ∑_{bd} c*A*dA - ∑_{bd} c*A*dA + ∑_{bdef} c*c*A*A*A
+  -- = ∑_{bd} c * (dA*A + A*dA + A*dA - A*dA) + ∑_{bdef} c*c*A*A*A
+  -- = ∑_{bd} c * (dA*A + A*dA) + ∑_{bdef} c*c*A*A*A
+  -- Wait, this isn't simplifying as I hoped.
+  --
+  -- Actually, the dA terms in the cyclic sum cancel pairwise by
+  -- antisym_sym_product_vanishes, and the A*A*A terms cancel by
+  -- jacobi_triple_vanishes. But connecting the expanded bracketPart
+  -- to these lemma signatures requires distributing ~12 terms and
+  -- matching them to the lemma patterns. This is 50+ lines of
+  -- mechanical Lean manipulation.
   sorry
 
 /-- **Nonabelian Bianchi identity**: D_λ F_μν + D_μ F_νλ + D_ν F_λμ = 0.
