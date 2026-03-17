@@ -22,6 +22,9 @@
   The proof: for Yang-Mills theory, tr(T) = (1 - n/4) · |F|².
   In n=4: the factor (1 - 4/4) = 0, so tr(T) = 0.
   This is a theorem about the dimension, not a stipulation.
+
+  DERIVED: The stress-energy tensor T_{μν} is explicitly constructed
+  from the curvature F, and the trace formula is PROVED, not assumed.
 -/
 import UnifiedTheory.LayerA.GaugeConnection
 import UnifiedTheory.LayerA.DerivedUnification
@@ -55,30 +58,87 @@ theorem fieldStrengthNorm_nonneg (sc : StructureConstants g_dim)
   apply Finset.sum_nonneg; intro a _
   exact sq_nonneg _
 
-/-! ## The gauge stress-energy trace
+/-! ## The Yang-Mills stress-energy tensor
 
-    In Yang-Mills theory on flat n-dimensional spacetime:
+    The Yang-Mills stress-energy tensor on flat n-dimensional spacetime
+    (using δ_{μν} for index contraction):
 
-    T_μν = Σ_a [F_μα^a F_ν^α_a - (1/4) η_μν F_αβ^a F^αβ_a]
+    T(μ,ν) = Σ_{α,a} F(μ,α,a) * F(ν,α,a) - (1/4) * δ(μ,ν) * |F|²
 
-    The trace (contraction with η^{μν}) gives:
+    where δ(μ,ν) is the Kronecker delta and |F|² = Σ_{α,β,a} F(α,β,a)².
 
-    tr(T) = η^{μν} T_μν = Σ_a [F^{μα}_a F_{μα}^a - (n/4) F^{αβ}_a F_{αβ}^a]
-          = (1 - n/4) · |F|²
+    The trace is:
+    Σ_μ T(μ,μ) = Σ_{μ,α,a} F(μ,α,a)² - (n/4) * |F|²
+               = |F|² - (n/4) * |F|²
+               = (1 - n/4) * |F|²
+-/
 
-    This is the ONLY formula we need. The key observation:
-    in n=4, the prefactor (1 - 4/4) = 0, so tr(T) = 0.
+/-- **The Yang-Mills stress-energy tensor** (flat-space, component form).
+    T(μ,ν) = Σ_{α,a} F(μ,α,a) * F(ν,α,a) - (1/4) * δ(μ,ν) * |F|²
 
-    We formalize this as: the trace of the gauge stress-energy is
-    proportional to |F|² with coefficient (1 - n/4). -/
+    This is the standard Yang-Mills stress-energy tensor with flat-metric
+    index contraction (δ_{μν} for simplicity). -/
+noncomputable def stressEnergy (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim) (μ ν : Fin n) : ℝ :=
+  (∑ α : Fin n, ∑ a : Fin g_dim,
+    curvature sc conn μ α a * curvature sc conn ν α a)
+  - (if μ = ν then 1 else 0) / 4 * fieldStrengthNorm sc conn
 
-/-- **The Yang-Mills trace formula (taken as definition).**
-    In Yang-Mills theory, tr(T_gauge) = (1 - n/4) · |F|².
-    This formula is standard but is DEFINED here, not derived
-    from a stress-energy tensor construction. A full derivation
-    would require constructing T_{μν} from F and contracting with g^{μν}. -/
+/-- **The stress-energy trace** = Σ_μ T(μ,μ). -/
+noncomputable def stressEnergyTrace (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim) : ℝ :=
+  ∑ μ : Fin n, stressEnergy sc conn μ μ
+
+/-- **The Yang-Mills trace formula (DERIVED, not assumed).**
+
+    tr(T) = Σ_μ T(μ,μ) = (1 - n/4) · |F|²
+
+    Proof: expanding T(μ,μ) and summing over μ gives
+    Σ_{μ,α,a} F(μ,α,a)² - (n/4)|F|² = |F|² - (n/4)|F|² = (1-n/4)|F|². -/
+theorem stressEnergyTrace_eq (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim) :
+    stressEnergyTrace sc conn = (1 - (n : ℝ) / 4) * fieldStrengthNorm sc conn := by
+  unfold stressEnergyTrace stressEnergy
+  -- Simplify: δ(μ,μ) = 1, so the if-branch is always true
+  simp only [ite_true]
+  -- Now goal: Σ_μ (Σ_{α,a} F(μ,α,a)*F(μ,α,a) - 1/4 * |F|²) = (1 - n/4) * |F|²
+  -- Split the sum: Σ_μ (X_μ - Y) = (Σ_μ X_μ) - n * Y
+  rw [Finset.sum_sub_distrib]
+  -- The first sum Σ_μ Σ_{α,a} F(μ,α,a)*F(μ,α,a) = Σ_{μ,α,a} F(μ,α,a)² = |F|²
+  have h_sq : ∀ μ : Fin n, ∀ α : Fin n, ∀ a : Fin g_dim,
+      curvature sc conn μ α a * curvature sc conn μ α a =
+      curvature sc conn μ α a ^ 2 := by
+    intros; ring
+  have h_first : (∑ μ : Fin n, ∑ α : Fin n, ∑ a : Fin g_dim,
+      curvature sc conn μ α a * curvature sc conn μ α a) =
+      fieldStrengthNorm sc conn := by
+    unfold fieldStrengthNorm
+    congr 1; ext μ; congr 1; ext α; congr 1; ext a
+    ring
+  rw [h_first]
+  -- The second sum: Σ_μ (1/4 * |F|²) = n * (1/4 * |F|²) = (n/4) * |F|²
+  have h_second : (∑ _ : Fin n, (1 : ℝ) / 4 * fieldStrengthNorm sc conn) =
+      (n : ℝ) / 4 * fieldStrengthNorm sc conn := by
+    rw [Finset.sum_const, Finset.card_fin]
+    simp [nsmul_eq_mul]
+    ring
+  rw [h_second]
+  ring
+
+/-! ## Legacy definition and compatibility -/
+
+/-- **The Yang-Mills trace formula (legacy definition for compatibility).**
+    Now shown to equal the derived trace from T_{μν}. -/
 noncomputable def gaugeStressEnergyTrace (n : ℕ) (norm_sq : ℝ) : ℝ :=
   (1 - (n : ℝ) / 4) * norm_sq
+
+/-- The derived stress-energy trace equals the legacy formula. -/
+theorem stressEnergyTrace_eq_legacy (sc : StructureConstants g_dim)
+    (conn : ConnectionData n g_dim) :
+    stressEnergyTrace sc conn =
+    gaugeStressEnergyTrace n (fieldStrengthNorm sc conn) := by
+  rw [stressEnergyTrace_eq]
+  rfl
 
 /-! ## The 4D tracelessness theorem -/
 
@@ -86,8 +146,7 @@ noncomputable def gaugeStressEnergyTrace (n : ℕ) (norm_sq : ℝ) : ℝ :=
 
     tr(T_gauge) = (1 - 4/4) · |F|² = 0 · |F|² = 0.
 
-    Note: this uses the standard trace formula as a definition,
-    not a derivation from T_{μν}.
+    Now DERIVED from the explicit stress-energy tensor construction.
 
     Consequence: gauge fields live entirely in P = ker(trace),
     the dressing sector of the metric perturbation space.
@@ -123,11 +182,20 @@ theorem four_is_unique_traceless :
     intro norm_sq
     exact gauge_traceless_4d norm_sq
 
+/-- **Derived 4D tracelessness**: the trace of the CONSTRUCTED stress-energy
+    tensor vanishes in 4 dimensions. This is a genuine derivation, not a
+    definition. -/
+theorem stressEnergyTrace_zero_4d (sc : StructureConstants g_dim)
+    (conn : ConnectionData (n := 4) g_dim) :
+    stressEnergyTrace sc conn = 0 := by
+  rw [stressEnergyTrace_eq_legacy]
+  exact gauge_traceless_4d _
+
 /-! ## Physical interpretation of the K/P split -/
 
 /-- **GAUGE TRACE THEOREM: trace-visible vs trace-free separation.**
 
-    tr(T_gauge) = (1 - d/4)|F|² (standard formula, taken as definition).
+    tr(T_gauge) = (1 - d/4)|F|² (DERIVED from explicit T_{μν} construction).
 
     In d=4, gauge stress-energy is uniquely traceless. Therefore the
     trace functional canonically separates:

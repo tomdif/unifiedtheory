@@ -92,13 +92,8 @@ theorem nullFocusing_neg (md : MetricDerivs n) (k : Fin n → ℝ) :
     are proportional to φ. Since Q = trace ∝ n · φ, this gives
     focusing ∝ Q — instantiating FocusingHypothesis. -/
 
-/-- **Null focusing is linear in MetricDerivs.**
-    This proves additivity and negation-compatibility of nullFocusing.
-    The physical claim that the scalar/trace sector controls focusing
-    (i.e., nullFocusing is proportional to trace for conformal perturbations)
-    is a standard GR result but is NOT proved here — it would require
-    evaluating the Ricci contraction on a specific conformal perturbation. -/
-theorem scalar_sector_controls_focusing :
+/-- **Null focusing is linear in MetricDerivs.** -/
+theorem focusing_linearity :
     -- Null focusing is additive in the metric data
     (∀ (md₁ md₂ : MetricDerivs n) (k : Fin n → ℝ),
       nullFocusing (LayerA.LinearizedFieldEqs.mdAdd md₁ md₂) k =

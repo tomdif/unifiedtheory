@@ -7,7 +7,7 @@
 
   Key definitions:
     - History: a sequence of perturbations (path through perturbation space)
-    - Amplitude of a history: A(h) = Q(h) + i·P(h) ∈ ℂ
+    - Amplitude of a history: A(h) = Q(h) + i·D(h) ∈ ℂ, where D is a dressing functional
     - Amplitude of an event: A(E) = Σ_{h ∈ histories(E)} A(h)
     - Observable of an event: Obs(E) = |A(E)|²
 
@@ -45,35 +45,38 @@ abbrev History (m : ℕ) := List (Perturbation (m + 2))
 def netPerturbation (h : History m) : Perturbation (m + 2) :=
   h.foldl (· + ·) 0
 
-/-- The **amplitude** of a single perturbation.
-    Currently assigns real-valued amplitudes (P = 0).
-    The interference theorems below are proved for generic z : ℂ,
-    not specifically for these history amplitudes. A full path-amplitude
-    theory would need a dressing phase functional D(h) for the imaginary part. -/
-noncomputable def stepAmplitude (h : Perturbation (m + 2)) : ℂ :=
-  ⟨Q h, 0⟩
+/-- The **amplitude** of a single perturbation step.
+    The real part comes from the signed-source functional Q,
+    and the imaginary part from a **dressing functional** `D`.
+    When `D = 0`, the amplitude is purely real;
+    a nonzero `D` produces genuine complex amplitudes and interference. -/
+noncomputable def stepAmplitude (D : Perturbation (m + 2) → ℝ) (h : Perturbation (m + 2)) : ℂ :=
+  ⟨Q h, D h⟩
 
 /-- The **amplitude** of a history: the complex amplitude assigned
-    to a path through the perturbation space.
+    to a path through the perturbation space, using the dressing
+    functional `D` for the imaginary component.
 
     For additive composition (our framework), the amplitude of a
     history is the amplitude of its net perturbation. -/
-noncomputable def historyAmplitude (hist : History m) : ℂ :=
-  stepAmplitude (netPerturbation hist)
+noncomputable def historyAmplitude (D : Perturbation (m + 2) → ℝ) (hist : History m) : ℂ :=
+  stepAmplitude D (netPerturbation hist)
 
 /-! ## Event structure -/
 
 /-- The **amplitude of an event**: sum of all history amplitudes.
-    A(E) = Σ_{h ∈ histories} A(h). -/
-noncomputable def eventAmplitude (histories : List (History m)) : ℂ :=
-  (histories.map historyAmplitude).foldl (· + ·) 0
+    A(E) = Σ_{h ∈ histories} A(h), using the dressing functional `D`. -/
+noncomputable def eventAmplitude (D : Perturbation (m + 2) → ℝ)
+    (histories : List (History m)) : ℂ :=
+  (histories.map (historyAmplitude D)).foldl (· + ·) 0
 
 /-- The **observable** of a complex amplitude: |z|² = re² + im². -/
 def obs (z : ℂ) : ℝ := z.re ^ 2 + z.im ^ 2
 
 /-- The **observable of an event**: Obs(E) = |A(E)|². -/
-noncomputable def eventObservable (histories : List (History m)) : ℝ :=
-  obs (eventAmplitude histories)
+noncomputable def eventObservable (D : Perturbation (m + 2) → ℝ)
+    (histories : List (History m)) : ℝ :=
+  obs (eventAmplitude D histories)
 
 /-! ## The sum-over-histories observable rule -/
 
@@ -158,9 +161,9 @@ theorem phase_modulates_cross_term (z₁ z₂ : ℂ) (θ : ℝ) :
     (7) Incoherent limit: no cross → classical additivity
 
     The interference identities hold for generic complex amplitudes.
-    The history/event structure provides the organizational framework;
-    a full path-amplitude theory would additionally need a dressing
-    phase functional. -/
+    The history/event structure provides the organizational framework.
+    The dressing functional D parameterizes stepAmplitude, historyAmplitude,
+    and eventAmplitude, giving genuinely complex amplitudes when D ≠ 0. -/
 theorem history_amplitude_structure :
     -- (1) Two-path interference formula
     (∀ z₁ z₂ : ℂ, obs (z₁ + z₂) = obs z₁ + obs z₂ + 2 * (z₁ * conj z₂).re)

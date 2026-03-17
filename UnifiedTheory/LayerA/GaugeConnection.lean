@@ -4,10 +4,11 @@
   The second geometric primitive: a connection on a principal bundle.
 
   Metric chain:     MetricDerivs → Riemann → Bianchi → div(G) = 0
-  Connection chain:  ConnectionData → Curvature F → antisymmetry + linearity
+  Connection chain:  ConnectionData → Curvature F → antisymmetry + Bianchi
 
-  The gauge Bianchi identity (D_λ F_μν + cyclic = 0) is a standard
-  result but is not yet formalized in this file.
+  The abelian gauge Bianchi identity (∂_λ F_μν + cyclic = 0) is proved.
+  The full nonabelian Bianchi (D_λ F_μν + cyclic = 0) requires
+  additionally proving the Jacobi cancellation of bracket terms.
 
   Both chains are exact. The connection brings genuinely
   nonabelian structure via the Lie bracket [A_μ, A_ν] that cannot emerge
@@ -209,6 +210,31 @@ theorem killingForm_symm (sc : StructureConstants g_dim) (x y : Fin g_dim) :
   apply Finset.sum_congr rfl; intro a _
   apply Finset.sum_congr rfl; intro b _
   ring
+
+/-! ## Gauge Bianchi identity (abelian case)
+
+    For abelian gauge theory (c = 0), the Bianchi identity is:
+    ∂_λ F_μν + ∂_μ F_νλ + ∂_ν F_λμ = 0
+
+    This is the Maxwell Bianchi identity dF = 0.
+    The proof: the 6 ddA terms cancel in 3 pairs by commutativity. -/
+
+/-- **ABELIAN GAUGE BIANCHI IDENTITY (Maxwell: dF = 0).**
+
+    ∂_λ F_μν + ∂_μ F_νλ + ∂_ν F_λμ = 0
+
+    where F_μν = ∂_μ A_ν - ∂_ν A_μ (abelian curvature).
+
+    Proof: 6 second-derivative terms cancel in 3 pairs by ∂_λ ∂_ρ = ∂_ρ ∂_λ.
+    This is the content of dF = 0 (closedness of the field strength 2-form). -/
+theorem abelian_bianchi (conn : ConnectionData n g_dim) (l μ ν : Fin n) (a : Fin g_dim) :
+    (conn.ddA l μ ν a - conn.ddA l ν μ a) +
+    (conn.ddA μ ν l a - conn.ddA μ l ν a) +
+    (conn.ddA ν l μ a - conn.ddA ν μ l a) = 0 := by
+  have c1 := conn.ddA_comm l μ ν a  -- ddA l μ ν = ddA μ l ν
+  have c2 := conn.ddA_comm μ ν l a  -- ddA μ ν l = ddA ν μ l
+  have c3 := conn.ddA_comm ν l μ a  -- ddA ν l μ = ddA l ν μ
+  linarith
 
 /-! ## Summary
 
