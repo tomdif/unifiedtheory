@@ -22,9 +22,7 @@
 \maketitle
 
 \begin{abstract}
-We present a formally verified parent-structure framework in which gravity, gauge structure, a defect-based matter sector, and a quantum-amplitude layer arise from a common formal architecture. The algebraic development proves renormalization rigidity ($\alpha = d{-}1$ from spatial dimension), null-cone determination, causal counting and null-link relations, source/dressing decomposition from a source functional, Riemann and Bianchi identities from metric derivative symmetries, the divergence-free Einstein tensor, complete 4D Lovelock uniqueness within the tensorial second-order natural class (including contraction classification, Gauss--Bonnet vanishing, and $\varepsilon$-tensor exclusion), full nonabelian Yang--Mills structure including the nonabelian Bianchi identity, linear defect charge algebra with multiple conserved charges, spin-statistics structure, representation covariance under the adjoint action, and uniqueness results for the complex amplitude and Born-type quadratic observable within the stated symmetry class. A dynamical decoherence layer is provided by density-matrix and Lindblad-type dephasing models with a proven classical limit. Dimension selection proves $d = 3$ is the unique spatial dimension with both stable orbits and clean wave propagation. Each of five framework primitives is proven necessary (removing any gives a degenerate theory). A discrete causal-counting model suggests a scaling relation $\Lambda \sim N^{-1/2}$ for the cosmological constant.
-
-Separate deterministic computational models reproduce nontrivial gravitational observables in $3{+}1$ dimensions and canonical quantum benchmarks including double-slit interference, Aharonov--Bohm phase shift, Tsirelson-saturating CHSH violation, Mach--Zehnder erasure, and GHZ/Mermin scaling. The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements. The result is a formally closed candidate framework with explicit primitive assumptions, together with concrete realizations, rather than a claim of final closure of fundamental physics.
+We present a parent-structure framework in which gravity, gauge structure, a defect-based matter sector, and a quantum-amplitude layer are derived or conditionally induced from five explicit primitives: a Lorentzian metric, a Lie algebra, a source functional, linear composition, and a perturbation space of dimension $\geq 2$. The headline results are complete 4D Lovelock uniqueness for the gravitational field equation, full nonabelian Yang--Mills structure with a machine-checked Bianchi identity, a charge algebra with multiple conserved quantum numbers, and a unique Born-type quadratic observable within the rotation-invariant class---together with Lindblad decoherence, dimension selection ($d = 3$ unique), and a cosmological constant scaling relation $\Lambda \sim N^{-1/2}$. Each primitive is proven necessary: removing any one gives a provably degenerate theory. Separate computational models reproduce GR weak-field observables and canonical quantum benchmarks (double-slit, CHSH at the Tsirelson bound, GHZ/Mermin scaling), though these benchmarks assume the standard geometric phase prescription and are demonstrations of consistency rather than predictions. The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements. This is a candidate framework with explicit assumptions, not a claim of final closure.
 \end{abstract}
 
 \section{Introduction}
@@ -45,7 +43,7 @@ The key results, summarized informally:
 
 \item \textbf{Quantum amplitude structure.} The source/dressing decomposition induces a canonical two-component amplitude structure, uniquely representable in complex form within the stated class (Theorem~\ref{thm:complex}). The Born-type quadratic observable $|z|^2$ is the unique rotation-invariant quadratic observable (Theorem~\ref{thm:born_unique}). We do not claim a full derivation of quantum mechanics in the traditional operational sense; rather, we derive a minimal amplitude calculus reproducing interference, non-classical correlations, and a unique Born-type observable within the framework's symmetry class. Dynamical decoherence via Lindblad-type dephasing gives exponential decay of coherence with a proven classical limit (Theorem~\ref{thm:lindblad}).
 
-\item \textbf{Concrete realizations.} Explicit computational models in $3{+}1$ dimensions reproduce a nontrivial set of GR-like and quantum benchmark observables (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}).
+\item \textbf{Concrete realizations.} Explicit computational models in $3{+}1$ dimensions reproduce GR-like and quantum benchmark observables (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}). \textbf{Important caveat}: the quantum benchmarks use the standard geometric phase prescription $e^{ikL}$ on path classes, which is assumed rather than derived from the parent structure. These benchmarks are therefore demonstrations of \emph{consistency} (the framework admits realizations reproducing known quantum behavior) rather than \emph{predictions}.
 \end{enumerate}
 
 \subsection{Formal verification}
@@ -74,7 +72,23 @@ Field equation & $G + \Lambda g = 0$ & $D^\mu F_{\mu\nu} = 0$ \\
 \end{tabular}
 \end{center}
 
-Each of the five framework primitives (source functional, linear composition, Lorentzian signature, Lie algebra, perturbation dimension $\geq 2$) is proven \emph{necessary}: removing any one gives a provably degenerate or trivial theory.
+Each of the five primitives is proven \emph{necessary}: removing any one gives a provably degenerate or trivial theory. The derivation tree is:
+
+\begin{center}
+\begin{tabular}{lcl}
+\toprule
+Primitive & $\longrightarrow$ & Downstream structure \\
+\midrule
+Lorentzian metric & $\longrightarrow$ & Riemann, Bianchi, $\nabla^a G_{ab} = 0$, Lovelock $\to a G + \Lambda g$ \\
+Lie algebra & $\longrightarrow$ & $F = dA + [A,A]$, $D^\mu F_{\mu\nu} = 0$, nonabelian Bianchi \\
+Source functional $\varphi$ & $\longrightarrow$ & K/P split, charge $Q = \varphi \circ \pi_K$, matter sector \\
+Linear composition & $\longrightarrow$ & Charge additivity, conjugation, annihilation \\
+dim$(V) \geq 2$ & $\longrightarrow$ & Nontrivial dressing, $z = Q + iP$, interference, $|z|^2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The five primitives are not independent postulates about different sectors; they jointly define a single architecture from which all downstream structure descends.
 
 \section{Classification Results}
 \label{sec:classification}
@@ -139,6 +153,8 @@ Given $k$ independent linear functionals $\varphi_1, \ldots, \varphi_k$, all $k$
 Any rotation-invariant quadratic observable on the $(Q, P)$ pair must be proportional to $Q^2 + P^2 = |z|^2$. The observable is uniquely induced by the source/dressing pair and rotation invariance, not separately postulated.
 \end{theorem}
 
+\textbf{Remark (relation to Gleason's theorem).} Gleason's theorem derives the Born rule from the structure of Hilbert space projectors (dimension $\geq 3$). Our result is complementary: it derives the $|z|^2$ observable from SO(2) invariance on a 2D real space, without invoking Hilbert space. The rotation invariance hypothesis plays the role that the measure-on-projectors hypothesis plays in Gleason. Neither result derives its hypothesis from deeper principles; the difference is the starting mathematical structure (K/P pair vs.\ Hilbert space).
+
 \begin{theorem}[Complex amplitudes]
 \label{thm:complex}
 The source/dressing decomposition induces a canonical two-component amplitude structure. The source projection $\pi_K$ is the \emph{unique} rank-1 linear map satisfying $\varphi \circ \pi_K = \varphi$ (universal property). The complex identification $z = Q + iP$ is uniquely forced within the 2D commutative division algebra class (Frobenius).
@@ -152,6 +168,8 @@ The dephasing parameter $\gamma(t) = e^{-\Gamma t}$ gives exponential decay of c
 \begin{theorem}[Dimension selection]
 $d = 3$ is the unique spatial dimension with both stable Keplerian orbits ($2 \leq d \leq 3$) and clean wave propagation (Huygens' principle: odd $d \geq 3$). Spacetime dimension $= 3 + 1 = 4$.
 \end{theorem}
+
+\textbf{Remark.} The physical argument dates to Ehrenfest (1917) and was elaborated by Tegmark (1997)~\cite{ehrenfest,tegmark}. What is new here is: (a)~the formal machine-checked proof (via \texttt{omega} on the arithmetic conditions), and (b)~the integration into the parent framework as a derived consequence rather than an independent observation.
 
 \section{Concrete Computational Realizations}
 \label{sec:realizations}
@@ -247,6 +265,8 @@ We have presented a formally verified parent-structure framework in which the gr
 \bibitem{lean4} L.~de Moura and S.~Ullrich, ``The Lean 4 theorem prover and programming language,'' in \emph{Proc. CADE-28}, LNCS vol.~12699, Springer, 2021.
 \bibitem{sorkin} R.~D.~Sorkin, ``Spacetime and causal sets,'' in \emph{Relativity and Gravitation: Classical and Quantum}, World Scientific, 1991.
 \bibitem{lovelock} D.~Lovelock, ``The Einstein tensor and its generalizations,'' \emph{J.\ Math.\ Phys.}\ \textbf{12}(3):498--501, 1971.
+\bibitem{ehrenfest} P.~Ehrenfest, ``In what way does it become manifest in the fundamental laws of physics that space has three dimensions?'' \emph{Proc.\ Amsterdam Acad.}\ \textbf{20}:200--209, 1917.
+\bibitem{tegmark} M.~Tegmark, ``On the dimensionality of spacetime,'' \emph{Class.\ Quantum Grav.}\ \textbf{14}:L69--L75, 1997.
 \end{thebibliography}
 
 \end{document}
