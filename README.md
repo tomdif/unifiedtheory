@@ -103,7 +103,7 @@ Each step in the quantum layer is a uniqueness theorem within an explicit class:
 | Composition | Equal-weight sum is the only symmetric linear rule | `additive_rule_unique` | Given: linear, permutation-symmetric |
 | Classical limit | γ=0 is the only value killing all coherence | `classical_limit_unique` | Given: dephasing model γ·c |
 
-**Honest scope**: These are uniqueness theorems WITHIN explicitly stated classes. The assumptions (quadratic, rotation-invariant, linear, etc.) are conditions, not derived from deeper principles. A Hardy/CDP-style derivation of these conditions from operational axioms is not formalized.
+**Honest scope**: These are uniqueness theorems WITHIN explicitly stated classes. The assumptions (quadratic, rotation-invariant, linear, etc.) are conditions, not derived from deeper principles. A Hardy/CDP-style derivation of these conditions from operational hypotheses is not formalized.
 
 See [`QuantumUniqueness.lean`](UnifiedTheory/LayerB/QuantumUniqueness.lean) and [`AmplitudeUniqueness.lean`](UnifiedTheory/LayerB/AmplitudeUniqueness.lean).
 

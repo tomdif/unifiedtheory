@@ -1,5 +1,5 @@
 /-
-  LayerB/OperationalQuantum.lean — Quantum structure from operational axioms
+  LayerB/OperationalQuantum.lean — Quantum structure from operational hypotheses
 
   Proves that the ENTIRE quantum package (Born rule, interference,
   decoherence, classical limit) follows uniquely from four operational
@@ -11,14 +11,14 @@
   Axiom 3 (Quadratic regularity): obs is a quadratic polynomial.
   Axiom 4 (Rotational invariance): obs is SO(2)-invariant on the K/P plane.
 
-  From these four axioms, we DERIVE:
+  From these four hypotheses, we DERIVE:
   - Complex amplitudes (the K/P plane IS the complex plane)
   - Born rule obs = a|z|^2 (the unique such observable)
   - Interference formula (forced by composition + Born)
   - Decoherence mechanism (from Fourier structure)
   - Classical limit (from phase averaging)
 
-  We also prove that violating any single axiom leads to either
+  We also prove that violating any single hypothesis leads to either
   trivial or inconsistent observables.
 
   Zero sorry.
@@ -28,7 +28,7 @@ import UnifiedTheory.LayerB.ComplexUniqueness
 
 namespace UnifiedTheory.LayerB
 
-/-! ## Operational axiom structures -/
+/-! ## Operational hypothesis structures -/
 
 /-- An **operational observable** on ℝ² (the K/P plane) satisfying:
     1. Faithfulness: obs(Q,P) = 0 iff (Q,P) = (0,0)
@@ -75,7 +75,7 @@ theorem operational_is_born (O : OperationalObs) :
 /-! ## Step 3: Composition (Axiom 1) forces the interference formula -/
 
 /-- Given composition (amplitudes add) and the Born rule, the interference
-    formula is algebraically forced. No additional axioms are needed. -/
+    formula is algebraically forced. No additional hypotheses are needed. -/
 theorem composition_forces_interference (O : OperationalObs)
     (Q₁ P₁ Q₂ P₂ : ℝ) :
     O.a * obs (amplitudeFromKP Q₁ P₁ + amplitudeFromKP Q₂ P₂) =
@@ -97,7 +97,7 @@ theorem operational_fourier (O : OperationalObs)
   rw [interference_fourier]
 
 /-- Phase averaging kills interference: the discrete decoherence
-    identity is forced by the operational axioms. -/
+    identity is forced by the operational hypotheses. -/
 theorem operational_decoherence (O : OperationalObs)
     (z₁ z₂ : ℂ) (θ : ℝ) :
     O.a * obs (z₁ + phaseRotate θ z₂) +
@@ -194,7 +194,7 @@ theorem violate_composition_classical :
     (D) Discrete decoherence: averaging θ, θ+π kills interference.
     (E) Classical limit: P = 0 gives obs = a Q².
     (F) Faithfulness: obs = 0 iff (Q,P) = (0,0). -/
-theorem quantum_from_operational_axioms (O : OperationalObs) :
+theorem quantum_from_operational_hypotheses (O : OperationalObs) :
     -- (A) Born rule
     (∀ Q P : ℝ,
       quadObs O.a O.b O.c Q P =
@@ -231,13 +231,13 @@ theorem quantum_from_operational_axioms (O : OperationalObs) :
 
 /-! ## Axiom violation consequences -/
 
-/-- **Violating ANY single axiom collapses the quantum package.**
+/-- **Violating ANY single hypothesis collapses the quantum package.**
 
     (1) Drop faithfulness: trivial (zero observable)
     (2) Drop rotation invariance: dressing detectable
     (3) Drop quadraticity: linear obs not faithful
     (4) Drop composition: no interference (classical only) -/
-theorem axiom_violations :
+theorem hypothesis_violations :
     (∀ Q P : ℝ, quadObs 0 0 0 Q P = 0)
     ∧ (∀ b : ℝ, b ≠ 0 →
         ¬ (∀ θ Q P : ℝ,
@@ -256,8 +256,8 @@ theorem axiom_violations :
 
 /-! ## Uniqueness and consistency -/
 
-/-- The standard Born rule satisfies all operational axioms.
-    This shows the axiom structure is consistent. -/
+/-- The standard Born rule satisfies all operational hypotheses.
+    This shows the hypothesis structure is consistent. -/
 noncomputable def standardObs : OperationalObs where
   a := 1
   b := 0
