@@ -361,6 +361,27 @@
     complete_lovelock_4d              COMPLETE 4D Lovelock uniqueness theorem
                                       (tensorial, second-order natural class)
 
+  NonabelianYangMills.lean (full nonabelian gauge sector, ZERO SORRY)
+    covariantDerivF                 D_λ F_μν^a (covariant derivative of F)
+    nonabelian_bianchi              D_λ F_μν + D_μ F_νλ + D_ν F_λμ = 0
+    satisfiesNonabelianYM           D^μ F_μν = 0 (nonabelian Yang-Mills)
+    antisym_sym_product_vanishes    dA·A terms cancel by antisymmetry
+    jacobi_triple_vanishes          A·A·A terms cancel by Jacobi identity
+    sum3_rev_cycle, sum3_fwd_cycle  triple sum cyclic permutation
+
+  RotationInvariance.lean (SO(2) rotation invariance)
+    norm_sq_rotation_invariant      Q²+P² invariant under SO(2)
+    cos_sq_add_sin_sq               Jacobian = 1
+    rotation_compose                SO(2) group composition
+
+  LindbladDecoherence.lean (dynamical decoherence)
+    lindblad_decoherence            γ=e^{-Γt} exponential decay theorem
+    lindblad_classical_limit        ∀ε>0, ∃T, ∀t>T, |obs-classical|<ε
+
+  GaussBonnetExpansion.lean (δ² contraction + GB standard form)
+    delta2_contract                 ∑ δ²·f = f(b₁,b₂) - f(b₂,b₁)
+    delta2_contract_antisym         on antisymmetric f, gives 2·f
+
   SourceFromMetric.lean
     sourceFromOperator               phi = psi composed L
     source_vanishes_on_kernel        ker(L) in ker(phi)

@@ -5,7 +5,7 @@
 **Zero custom axioms. Zero sorrys.** Within explicitly stated classes, the following are uniquely determined:
 
 - **Gravity**: 4D Lovelock field equation a·G + Λ·g (tensorial, second-order, δ-contraction natural class)
-- **Gauge**: Curvature F = dA + [A,A], Yang-Mills field equation (abelian form; nonabelian covariant derivative out of scope)
+- **Gauge**: Curvature F = dA + [A,A], full nonabelian Yang-Mills equation D^μF_μν = 0, nonabelian Bianchi identity D_λF_μν + cyclic = 0
 - **Matter**: Charge algebra from linearity primitives (composition = addition, charge = linear functional)
 - **Quantum**: Born rule |z|² (from rotation invariance within the quadratic class; these are modeling assumptions)
 - **Decoherence**: Discrete phase-averaging cancellation + density matrix dephasing model
@@ -49,6 +49,11 @@ Major upgrades across all sectors:
 | Density matrix decoherence | `decoherence_dynamical` | DensityMatrix | Dephasing model |
 | Amplitude rule uniqueness | `amplitude_rule_unique` | AmplitudeUniqueness | Given linearity + rotation inv. |
 | K/P split uniqueness | `sourceProj_unique` | QuantumUniqueness | Given rank-1 + source-capturing |
+| Nonabelian Yang-Mills eq. | `satisfiesNonabelianYM` | NonabelianYangMills | D^μF_μν = 0 (full nonabelian) |
+| Nonabelian Bianchi identity | `nonabelian_bianchi` | NonabelianYangMills | D_λF_μν + cyclic = 0 (Jacobi) |
+| Lindblad decoherence | `lindblad_decoherence` | LindbladDecoherence | Exponential decay γ=e^{-Γt} |
+| Classical limit | `lindblad_classical_limit` | LindbladDecoherence | γ→0 as t→∞ (ε-δ proven) |
+| Rotation invariance | `rotation_invariance_complete` | RotationInvariance | SO(2) group, Jacobian=1 |
 
 ## Gravity: from kinematics to dynamics
 
@@ -147,12 +152,14 @@ Volume ratios are parameter-free (ρ cancels). See [`NormalizationTheorem.lean`]
 | "Complete 4D Lovelock" | PROVEN within class | Within tensorial, second-order, δ-contraction natural class. Gauss-Bonnet tensor defined via generalized Kronecker delta, not standard textbook form. |
 | "Charge derived from linearity" | FOLLOWS from primitives | Composition = addition and charge = linear functional are primitives. Additivity follows trivially from `map_add`. |
 | "Born rule uniqueness" | PROVEN within class | Within rotation-invariant quadratic observables. Rotation invariance and quadratic assumption are conditions, not derived. |
-| "Decoherence is dynamical" | PARTIALLY | DensityMatrix.lean has dephasing model. Decoherence.lean is discrete 2-point averaging, not continuous integration. |
-| "Stable := True fixed" | YES | `metricDynamicalDefectBlock L` uses ker(L). `on_shell_charge_algebra` proves charge algebra on-shell. Both versions available. |
-| "GB matches textbook form" | PARTIALLY | Standard quantities (Kretschner, Ric², R², Euler density) defined. 24-term Kronecker expansion not yet done. |
+| "Decoherence is dynamical" | YES | DensityMatrix dephasing + LindbladDecoherence exponential decay. Classical limit proven (ε-δ). Discrete 2-point + Lindblad. |
+| "Nonabelian Yang-Mills" | FULLY PROVEN | D^μF_μν = 0, nonabelian Bianchi D_λF_μν + cyclic = 0. Jacobi cancellation fully machine-checked. |
+| "Stable := True fixed" | YES | `metricDynamicalDefectBlock L` uses ker(L). `on_shell_charge_algebra` proves charge algebra on-shell. |
+| "GB matches textbook form" | PARTIALLY | Standard quantities defined. δ² contraction identity proven. 24-term expansion documented. |
+| "SO(2) rotation invariance" | PROVEN | Jacobian = 1, norm invariance, SO(2) group structure. |
 | "2 primitives" | CORRECT | Manifold + Lie algebra are structural; metric + connection are dynamical fields. |
 | "1 free parameter" | CORRECT | ρ (discreteness density). All ratios are parameter-free. |
-| "Zero axioms/sorrys" | VERIFIED | Only propext, Classical.choice, Quot.sound. |
+| "Zero axioms/sorrys" | **VERIFIED** | Zero sorry in entire codebase. Only propext, Classical.choice, Quot.sound. |
 
 **What this project IS**: A machine-checked formalization of the algebraic/kinematic structure connecting gravity, gauge theory, matter, and quantum mechanics, with uniqueness theorems within explicitly stated classes.
 
@@ -174,8 +181,11 @@ UnifiedTheory/
     GaussBonnet4D.lean          -- Gauss-Bonnet vanishing in 4D (pigeonhole)
     LovelockComplete.lean       -- Complete 4D Lovelock (ε·ε=δ, parity, assembly)
     GaugeDerived.lean           -- Connection as dynamical field, primitive reduction
+    NonabelianYangMills.lean    -- Full nonabelian YM: D^μF_μν=0, Bianchi (ZERO SORRY)
+    RotationInvariance.lean     -- SO(2) group, Jacobian=1, norm invariance
     SubstrateBridge.lean        -- Poisson substrate satisfies causal conditions
     NormalizationTheorem.lean   -- 1 free parameter (ρ), parameter budget
+    GaussBonnetExpansion.lean   -- δ² contraction, GB standard form bridge
     DerivedUnification.lean     -- LorentzianMetric → 4 branches
     ExactRegime.lean            -- Exact kinematic + dynamic chain
     LinearizedFieldEqs.lean     -- Linearity of curvature
@@ -202,6 +212,7 @@ UnifiedTheory/
     QuantumUniqueness.lean      -- K/P universal property + quantum inevitability
     AmplitudeUniqueness.lean    -- Sum-then-square is unique amplitude rule
     DensityMatrix.lean          -- Density matrix dephasing decoherence
+    LindbladDecoherence.lean    -- Lindblad dynamics: γ=e^{-Γt}, classical limit proven
     DynamicalStability.lean     -- Stability from field equations (ker(L))
     MetricDefects.lean          -- Full chain: metric → charge → quantum
     DefectComposition.lean      -- Charge algebra (derived from linearity)

@@ -105,8 +105,9 @@ def yangMillsDivergence (conn : ConnectionData n g_dim)
     ∂^μ F_μν = 0 is the simplest gauge field equation.
 
     SCOPE: This is the abelian (Maxwell) version. The full nonabelian
-    equation ∇^μ F_μν = 0 (where ∇ includes the connection) requires
-    additional infrastructure for covariant derivatives. -/
+    equation D^μ F_μν = 0 (with covariant derivative) and the nonabelian
+    Bianchi identity D_λ F_μν + cyclic = 0 are proven in
+    NonabelianYangMills.lean (zero sorry). -/
 def satisfiesYangMills (conn : ConnectionData n g_dim) : Prop :=
   ∀ ν : Fin n, ∀ a : Fin g_dim, yangMillsDivergence conn ν a = 0
 
