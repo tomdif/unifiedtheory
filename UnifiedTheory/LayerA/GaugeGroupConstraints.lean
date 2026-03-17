@@ -12,11 +12,19 @@
      for positive-definite energy. Positive-definite subspaces would give
      unbounded-below energy.
 
-  3. Dimension constraints: the adjoint representation has dim = dim(g).
-     For gauge fields on n-dimensional spacetime, dim(g) <= n^2 (the
-     perturbation space of n x n symmetric tensors).
+  3. Dimension constraints: IF dim(g) <= n^2 is imposed as an additional
+     hypothesis (NOT derived from the framework), this bounds the allowed
+     algebras. This bound does NOT follow from the existing primitives;
+     in standard Yang-Mills on a manifold, any gauge group works on any
+     manifold. A genuine derivation would need to come from the causal-set
+     substrate or a counting argument on the discrete structure, which is
+     NOT YET FORMALIZED.
 
-  4. Standard Model check: SU(3) x SU(2) x U(1) has dim 8 + 3 + 1 = 12 <= 16.
+  4. Standard Model note: SU(3) x SU(2) x U(1) is NOT semisimple (U(1)
+     is abelian). The semisimplicity constraint eliminates the SM as written.
+     The U(1) hypercharge factor would need to arise from a different mechanism
+     (e.g., the source functional itself, which provides a natural U(1) via
+     the trace). This is an OPEN QUESTION, not a solved problem.
 
   5. Abelian Killing form vanishes: if all structure constants are zero,
      the Killing form is identically zero (degenerate).
@@ -175,26 +183,50 @@ theorem unbounded_energy_of_positive_killing (sc : StructureConstants g_dim)
     _ < k * w := by exact mul_lt_mul_of_pos_left hw_bound hpos
     _ ≤ k * (w ^ 2) := by exact mul_le_mul_of_nonneg_left hw_sq (le_of_lt hpos)
 
-/-! ## Dimension constraints from the perturbation space -/
+/-! ## Dimension constraints (HYPOTHETICAL, not derived)
 
-/-- The **adjoint dimension constraint**: gauge fields on n-dimensional
-    spacetime live in the perturbation space of n x n objects. The
-    adjoint representation has dimension dim(g). For the gauge field
-    A_mu^a to fit, we need dim(g) <= n^2. -/
+    IMPORTANT: The constraint dim(g) ≤ n² is a HYPOTHESIS, not a theorem
+    derived from the framework. In standard Yang-Mills theory on a smooth
+    manifold, there is no bound on dim(g) from the spacetime dimension —
+    any gauge group can be placed on any manifold.
+
+    A genuine derivation of a dimension bound would need to come from:
+    - The causal-set substrate (discrete degrees of freedom are finite)
+    - A counting argument on the number of independent links/directions
+    - Representation-theoretic constraints from the discrete structure
+
+    None of these are formalized. The constraint below is stated as a
+    DEFINITION (a property one could impose), not as a theorem. -/
+
+/-- The dimension constraint AS A HYPOTHESIS (not derived). -/
 def gaugeDimConstraint (gdim spacedim : ℕ) : Prop := gdim ≤ spacedim ^ 2
 
-/-- **In 4D spacetime, the gauge algebra dimension is at most 16.** -/
+/-- IF the dimension constraint holds in 4D, THEN dim(g) ≤ 16. -/
 theorem gauge_dim_bound_4d (gdim : ℕ) (h : gaugeDimConstraint gdim 4) :
     gdim ≤ 16 := by
   unfold gaugeDimConstraint at h; omega
 
-/-! ## The Standard Model check -/
+/-! ## The Standard Model check
+
+    CRITICAL CAVEAT: SU(3) × SU(2) × U(1) is NOT semisimple.
+    U(1) is abelian, so its Killing form is identically zero.
+    The semisimplicity constraint (Killing form non-degenerate)
+    actually ELIMINATES the Standard Model gauge group as written.
+
+    Possible resolutions (all OPEN, none formalized):
+    (a) The U(1)_Y hypercharge arises from the SOURCE FUNCTIONAL
+        (the trace), not from the Lie algebra. The K/P split provides
+        a natural U(1) symmetry (phase rotation of z = Q + iP).
+    (b) Weaken to "reductive" (semisimple ⊕ abelian center).
+    (c) The U(1) is a remnant of a larger semisimple group after
+        symmetry breaking (e.g., SU(5) → SM, but SU(5) dim=24 > 16).
+
+    The dimension constraint (IF imposed) admits the SM semisimple
+    part SU(3) × SU(2) (dim 11), with U(1) from another origin. -/
 
 /-- **Standard Model gauge group dimensions.**
-    SU(3): dim = 8 (strong force, color)
-    SU(2): dim = 3 (weak force, isospin)
-    U(1):  dim = 1 (electromagnetism, hypercharge)
-    Total: 8 + 3 + 1 = 12. -/
+    SU(3): dim = 8, SU(2): dim = 3, U(1): dim = 1.
+    Total: 12. The SEMISIMPLE part has dim = 11. -/
 def standardModelDim : ℕ := 8 + 3 + 1
 
 /-- The Standard Model has gauge algebra dimension 12. -/
