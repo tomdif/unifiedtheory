@@ -23,6 +23,7 @@ import UnifiedTheory.LayerA.MetricGaugeCoupling
 import UnifiedTheory.LayerA.VariationalEinstein
 import UnifiedTheory.LayerA.GaussBonnet4D
 import UnifiedTheory.LayerA.LovelockComplete
+import UnifiedTheory.LayerA.GaugeDerived
 import UnifiedTheory.ConditionalEinstein
 
 -- Layer B: Matter + Quantum
