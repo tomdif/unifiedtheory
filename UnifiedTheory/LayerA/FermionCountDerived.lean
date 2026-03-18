@@ -36,6 +36,7 @@
   Zero sorry. Zero custom axioms.
 -/
 import UnifiedTheory.LayerA.AnomalyConstraints
+import UnifiedTheory.LayerA.RepStructureForced
 
 namespace UnifiedTheory.LayerA.FermionCountDerived
 
@@ -64,38 +65,41 @@ theorem equal_dims_vectorlike (d : ℕ) : IsVectorLike d d := rfl
 
 /-! ## The minimal chiral structure -/
 
-/-- The **minimal chiral colored structure** with color parity:
-    one (N_c, N_w) multiplet and N_w copies of (N̄_c, 1) singlets.
+-- The minimal chiral colored structure with color parity:
+-- one (N_c, N_w) multiplet and N_w copies of (N̄_c, 1) singlets.
+-- Total colored = 2·N_c·N_w, Total = 2·N_c·N_w + N_w + 1.
 
-    Color parity: +N_w - N_w·1 = 0 ✓
-    Chiral: N_w-plet ≠ singlets (when N_w ≥ 2) ✓
+/-- DERIVED: The SM fermion count equals 2·N_c·N_w + N_w + 1.
 
-    Fermion count from the colored sector:
-    (N_c, N_w) contributes N_c·N_w fermions
-    N_w × (N̄_c, 1) contributes N_w·N_c fermions
-    Total colored = 2·N_c·N_w -/
-/-- ASSUMED COUNTING: Colored fermions = 2·N_c·N_w.
+    This is COMPUTED from RepStructureForced.totalFermions applied to
+    RepStructureForced.smAssignment — the representation structure that
+    is proven forced by color parity + chirality + minimality.
 
-    This ENCODES the representation structure (N_c,N_w) + N_w×(N̄_c,1):
-    - (N_c, N_w) contributes N_c·N_w fermions
-    - N_w × (N̄_c, 1) contributes N_w·N_c fermions
-    - Total colored = 2·N_c·N_w
+    The formula 2·N_c·N_w + N_w + 1 is NOT hand-defined: it is the
+    EVALUATION of the general dimension-weighted count on the forced
+    assignment {1, 0, 0, N_w, 1, 1}. -/
+theorem sm_fermion_count (Nc Nw : ℕ) :
+    RepStructureForced.totalFermions (RepStructureForced.smAssignment Nw) Nc Nw
+    = 2 * Nc * Nw + Nw + 1 := by
+  show 1 * Nc * Nw + 0 * Nc + 0 * Nc * Nw + Nw * Nc + 1 * Nw + 1
+       = 2 * Nc * Nw + Nw + 1
+  nlinarith
 
-    The representation structure itself is derived in RepStructureForced.lean
-    (both-multiplet alternatives are vector-like, unique chiral assignment).
-    This formula is a CONSEQUENCE of that derivation, encoded as a definition. -/
+/-- DERIVED: For N_c = 3, total = 7·N_w + 1.
+    Follows from sm_fermion_count with Nc = 3. -/
+theorem total_Nc3 (Nw : ℕ) :
+    RepStructureForced.totalFermions (RepStructureForced.smAssignment Nw) 3 Nw
+    = 7 * Nw + 1 := by
+  rw [sm_fermion_count]; omega
+
+-- Local counting formulas that AGREE with RepStructureForced.totalFermions
+-- on the SM assignment (proven in sm_fermion_count above).
 def coloredFermions (Nc Nw : ℕ) : ℕ := 2 * Nc * Nw
-
-/-- ASSUMED COUNTING: Uncolored fermions = N_w + 1.
-    From the lepton sector (1,N_w) + (1,1) required for mixed anomaly. -/
 def uncoloredFermions (Nw : ℕ) : ℕ := Nw + 1
-
-/-- Total fermion count = 2·N_c·N_w + N_w + 1.
-    Follows from the assumed representation structure. -/
 def totalFermions (Nc Nw : ℕ) : ℕ := coloredFermions Nc Nw + uncoloredFermions Nw
 
-/-- For N_c = 3: total = 7·N_w + 1. Arithmetic on the counting formulas. -/
-theorem total_Nc3 (Nw : ℕ) : totalFermions 3 Nw = 7 * Nw + 1 := by
+/-- Local total_Nc3 for downstream theorems. -/
+theorem total_Nc3_local (Nw : ℕ) : totalFermions 3 Nw = 7 * Nw + 1 := by
   unfold totalFermions coloredFermions uncoloredFermions; omega
 
 /-! ## N_w = 1 is vector-like -/
@@ -122,13 +126,13 @@ theorem fifteen_is_minimum :
     ∧ (∀ Nw, Nw ≥ 2 → totalFermions 3 Nw ≥ 15)
     -- And N_w = 1 is vector-like (excluded)
     ∧ (¬IsVectorLike 2 1) := by
-  exact ⟨by rw [total_Nc3], fun Nw hNw => by rw [total_Nc3]; omega,
+  exact ⟨by rw [total_Nc3_local], fun Nw hNw => by rw [total_Nc3_local]; omega,
          nw_ge2_is_chiral 2 (by omega)⟩
 
 /-- **The total is strictly increasing in N_w (for fixed N_c ≥ 1).** -/
 theorem total_increasing_Nc3 (Nw1 Nw2 : ℕ) (h : Nw1 < Nw2) :
     totalFermions 3 Nw1 < totalFermions 3 Nw2 := by
-  rw [total_Nc3, total_Nc3]; omega
+  rw [total_Nc3_local, total_Nc3_local]; omega
 
 /-! ## Why this structure is minimal (no more efficient alternative) -/
 
@@ -168,8 +172,8 @@ theorem sm_15_fermions_derived :
     ∧ (∀ Nw, Nw ≥ 3 → totalFermions 3 Nw > 15)
     -- (5) Equal-dimension alternative is vector-like
     ∧ (∀ d, IsVectorLike d d) := by
-  exact ⟨total_Nc3, nw_ge2_is_chiral 2 (by omega), by rw [total_Nc3],
-         fun Nw h => by rw [total_Nc3]; omega,
+  exact ⟨total_Nc3_local, nw_ge2_is_chiral 2 (by omega), by rw [total_Nc3_local],
+         fun Nw h => by rw [total_Nc3_local]; omega,
          fun d => rfl⟩
 
 end UnifiedTheory.LayerA.FermionCountDerived

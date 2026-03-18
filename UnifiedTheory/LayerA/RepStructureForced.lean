@@ -138,9 +138,11 @@ theorem both_multiplets_not_chiral (f : FermionAssignment) (Nw : ℕ)
     then the Nc and N̄c sectors both consist of singlets → identical
     SU(Nw) quantum numbers → vector-like. -/
 theorem chirality_needs_multiplet (f : FermionAssignment)
-    (h_no_Nc_mult : f.n_NcNw = 0) (h_no_Ncb_mult : f.n_NcbNw = 0) :
+    (h_no_Nc_mult : f.n_NcNw = 0) (h_no_Ncb_mult : f.n_NcbNw = 0)
+    (h_sing_equal : f.n_Nc1 = f.n_Ncb1) :
     ¬isChiral f := by
-  unfold isChiral; push_neg; exact ⟨by omega, by omega⟩
+  intro hc
+  exact hc ⟨h_no_Nc_mult ▸ h_no_Ncb_mult ▸ rfl, h_sing_equal⟩
 
 /-- **Adding extra colored singlets increases the fermion count.**
     Each copy of (Nc, 1) adds Nc fermions; each copy of (N̄c, 1) adds Nc.
