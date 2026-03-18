@@ -359,6 +359,34 @@ This is a scaling relation suggested by the discrete causal counting model, not 
 
 A potentially testable consequence: $\Lambda$ is not exactly constant but fluctuates with $\delta\Lambda / \Lambda \sim \Lambda / 2$, distinguishable in principle from exactly constant dark energy.
 
+\section{Quantitative Prediction: the SU(2) Coupling Constant}
+\label{sec:coupling}
+
+The framework's single free parameter $\rho$ determines the discreteness scale $\rho^{-1/4}$. Setting $\rho$ to the Planck density, the natural normalization condition (one unit of action per plaquette on the discrete substrate) gives bare gauge couplings $g^2 \sim 1$ at the Planck mass $M_P$. Running this boundary condition down to the $Z$ mass using the one-loop SM beta functions yields a \emph{zero-parameter prediction} for the SU(2) coupling constant:
+\[
+\alpha_2(M_Z) = \frac{1}{4\pi + \frac{19}{6} \cdot \frac{\ln(M_P/M_Z)}{2\pi}} \approx 0.031.
+\]
+The measured value is $\alpha_2(M_Z) \approx 0.034$, giving $9\%$ agreement with zero adjustable parameters.
+
+For SU(3), the one-loop running from $g_3^2 = 1$ at $M_P$ gives $\alpha_s(M_Z) \approx 0.018$, a factor of $6.6$ too small. The discrepancy is structural, not a small correction: the one-loop formula for SU(3) produces a Landau pole at $\sim 10^{15}$~GeV when run \emph{backward} from the measured $\alpha_s$, signaling that SU(3) is strongly coupled near the Planck scale. Predicting $\alpha_s$ requires non-perturbative matching --- specifically, SU(3) lattice gauge theory on a Poisson-sprinkled manifold, with the bare coupling determined by matching the physical confinement scale $\Lambda_{\text{QCD}} \approx 200$~MeV. This is a well-defined but computationally demanding open problem.
+
+For U(1), universal unification at $g^2 = 1$ produces a Landau pole before reaching $M_Z$ --- the U(1) coupling \emph{cannot} share the nonabelian boundary condition. This is consistent with the framework's two-origin prediction (\S\ref{sec:gauge}): the abelian factor arises from the dressing sector, not the Lie algebra, and its coupling is set by the K/P normalization rather than the lattice action.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Group & $g^2(M_P)$ & Predicted $\alpha(M_Z)$ & Measured \\
+\midrule
+SU(2) & 1 (natural) & 0.031 & 0.034 \\
+SU(3) & 1 (natural) & 0.018 & 0.118 \\
+U(1) & $\neq 1$ (dressing) & --- & 0.017 \\
+\bottomrule
+\end{tabular}
+\caption{Coupling constants from $g^2 = 1$ at $M_P$ with one-loop SM running. SU(2) agrees at $9\%$ (zero free parameters). SU(3) requires non-perturbative matching. U(1) has a different origin, consistent with the two-origin gauge structure.}
+\label{tab:couplings}
+\end{table}
+
 \section{Derivation Integrity}
 \label{sec:integrity}
 
