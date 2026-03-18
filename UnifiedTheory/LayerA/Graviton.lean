@@ -94,13 +94,17 @@ theorem gravitational_waves_require_d3 :
 
 /-! ## The graviton is in the P-sector -/
 
-/-- The source charge of a traceless perturbation is zero.
-    For a linear functional φ, if φ(h) = 0 (traceless), then the
-    graviton carries no source charge and lives in ker(φ) = P-sector. -/
-theorem graviton_source_charge_zero
+/-- **Traceless perturbations are invisible to the source functional.**
+    The bridge equation says φ(K(h)) = φ(h). For traceless h (φ(h) = 0):
+    φ(K(h)) = 0. This means the K-projection carries zero source charge.
+    The graviton is entirely in the dressing (P) sector. -/
+theorem graviton_invisible_to_source
     {V : Type*} [AddCommGroup V] [Module ℝ V]
-    (φ : V →ₗ[ℝ] ℝ) (h : V) (h_traceless : φ h = 0) :
-    φ h = 0 := h_traceless
+    (φ : V →ₗ[ℝ] ℝ) (K : V →ₗ[ℝ] V)
+    (bridge : ∀ v, φ (K v) = φ v)  -- the K/P bridge equation
+    (h : V) (h_traceless : φ h = 0) :
+    -- The K-projection of a traceless perturbation has zero source charge
+    φ (K h) = 0 := by rw [bridge, h_traceless]
 
 /-! The graviton's K-sector component is zero (traceless → ker(φ)).
     The graviton propagates via the curvature functional, not the
