@@ -67,8 +67,9 @@ theorem count_increasing (N M : ℕ) (h : N < M) :
 
 /-! ## The distinctness condition -/
 
-/-- **SU(N_c) with N_c = 2 gives the SAME group as SU(2)_weak.**
-    The color and weak factors would be indistinguishable. -/
+/-- Arithmetic fact: N_c = 2 (the statement is just `2 = 2`).
+    The physics argument that SU(2)_color = SU(2)_weak makes factors
+    indistinguishable is in the comments, not in this theorem. -/
 theorem nc2_same_as_weak : (2 : ℕ) = 2 := rfl
 
 /-- **For N_c ≥ 3: G_c = SU(N_c) ≠ SU(2) = G_weak.**
@@ -142,28 +143,24 @@ theorem sm_gauge_group_forced :
     the factors are isomorphic. -/
 def HasExchangeSymmetry (Nc Nw : ℕ) : Prop := Nc = Nw
 
-/-- The exchange symmetry is incompatible with chirality:
-    it would swap the chiral factor with the vector-like factor.
-    Chirality (proven) distinguishes them, so the exchange must be absent. -/
+/-- Structural note: the hypothesis `h_chiral : Nc ≠ Nw → True` is
+    vacuous (always satisfied) and serves as a placeholder. The actual
+    content is `h_no_exchange : ¬HasExchangeSymmetry Nc Nw` which
+    directly gives `Nc ≠ Nw`. The physics argument about chirality
+    breaking exchange symmetry is in the comments, not encoded here. -/
 theorem chirality_breaks_exchange (Nc Nw : ℕ)
     (h_chiral : Nc ≠ Nw → True)  -- chirality distinguishes when Nc ≠ Nw
     (h_no_exchange : ¬HasExchangeSymmetry Nc Nw) :
     Nc ≠ Nw := by
   intro heq; exact h_no_exchange heq
 
-/-- **COMPLETE GAUGE GROUP DERIVATION.**
-
-    From the framework:
-    (1) K/P split → chirality → one factor chiral, one vector-like (proven)
-    (2) Chirality → no exchange symmetry → G_c ≠ G' (this theorem)
-    (3) Minimality of G': 7N+1 → SU(2) (FermionRepForced)
-    (4) Distinctness G_c ≠ SU(2) → N_c ≥ 3 (this file)
-    (5) Minimality of G_c: 4N_c+3 → N_c = 3 → SU(3) (this file)
-    (6) U(1) from dressing (GaugeSelection)
-    (7) Hypercharges from cubic factorization (AnomalyConstraints)
-
-    Result: SU(3) × SU(2) × U(1) with charges (1,-4,2,-3,6)·y_Q.
-    The FULL SM gauge group and charge structure is derived. -/
+/-- Assembles arithmetic facts (not a single derivation):
+    (a) 7*N+1 > 7*2+1 for N >= 3 (arithmetic),
+    (b) 3 ≠ 2 (arithmetic),
+    (c) fermionCountColor 3 = 15 (evaluation of defined formula),
+    (d) SM hypercharge arithmetic (norm_num).
+    The physics narrative connecting these to gauge group derivation
+    is in the comments above. -/
 theorem full_sm_derived :
     -- SU(2) is the unique minimal weak group
     (∀ N : ℕ, N ≥ 3 → 7 * N + 1 > 7 * 2 + 1)

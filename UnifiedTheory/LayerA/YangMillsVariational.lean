@@ -101,18 +101,11 @@ theorem actionVariation_linear (sc : StructureConstants g_dim) (conn : Connectio
     rw [← Finset.sum_add_distrib]; apply Finset.sum_congr rfl; intro b _
     rw [linearizedCurvature_add]; ring]
 
-/-- **The Yang-Mills equation is the stationarity condition.**
-
-    D^μ F_μν = 0 is equivalent to: for all δA, δS = 0.
-    The action variation involves κ_ab F^a · D(δA)^b.
-    Setting this to zero for all δA (using κ non-degenerate)
-    gives D^μ F_μν^a = 0 for all a, ν.
-
-    This is the DYNAMICAL content of the Yang-Mills equation:
-    it selects the connections that are stationary points of the
-    Yang-Mills action. The Bianchi identity (kinematic) holds for
-    ALL connections; the field equation (dynamic) holds only for
-    STATIONARY ones. -/
+/-- Placeholder (not proven): the statement is literally `True`.
+    The Yang-Mills equation D^μ F_μν = 0 as a stationarity condition
+    is described in the comments but not formalized. The integration-by-parts
+    step that would connect δS = 0 to D^μ F = 0 requires a manifold
+    integral not available in this discrete framework. -/
 theorem ym_equation_is_stationary :
     -- The Yang-Mills equation is: the action variation vanishes
     -- for all perturbations δA at a stationary point.
@@ -159,8 +152,9 @@ theorem complete_gauge_chain :
     ∧ (∀ sc : StructureConstants g_dim, ∀ conn : ConnectionData n g_dim,
       ∀ μ ν : Fin n, ∀ a : Fin g_dim,
       curvature sc conn μ ν a = -(curvature sc conn ν μ a))
-    -- (3) Linearized curvature is linear in δA (proven)
-    ∧ True  -- linearizedCurvature_add in GaugeConnection.lean
+    -- (3) Placeholder (not proven): `True` stands in for the linearized
+    --     curvature linearity claim; see linearizedCurvature_add in GaugeConnection.lean
+    ∧ True
     := by
   exact ⟨fun sc x y => killingForm_symm sc x y,
          fun sc conn μ ν a => curvature_antisym sc conn μ ν a,

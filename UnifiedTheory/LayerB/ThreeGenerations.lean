@@ -54,7 +54,9 @@ namespace UnifiedTheory.LayerB.ThreeGenerations
     For the metric to remain symmetric, h_ij is symmetric. -/
 def SpatialPerturbation (d : ℕ) := { M : Matrix (Fin d) (Fin d) ℝ // M = M.transpose }
 
-/-- The dimension of the space of d×d symmetric matrices is d(d+1)/2. -/
+/-- Arithmetic fact: `rfl` (the tautology `d*(d+1)/2 = d*(d+1)/2`).
+    This does not prove the dimension formula for symmetric matrices;
+    it asserts the expression equals itself. -/
 theorem symmetric_matrix_dim (d : ℕ) :
     d * (d + 1) / 2 = d * (d + 1) / 2 := rfl
 
@@ -67,26 +69,15 @@ theorem spatial_dim_3 : 3 * (3 + 1) / 2 = 6 := by norm_num
 /-! The spectral theorem: a d×d real symmetric matrix has d real eigenvalues.
     The spatial metric perturbation has d independent deformation modes. -/
 
-/-- The number of eigenvalues of a d×d matrix equals d. -/
-theorem eigenvalue_count (d : ℕ) :
-    -- The characteristic polynomial of a d×d matrix has degree d
-    -- Therefore it has exactly d roots (counting multiplicity) in ℂ
-    -- For real symmetric matrices, all roots are real
-    -- So: d eigenvalues
-    d = d := rfl
+/-- For d = 3: a 3×3 symmetric matrix has 6 ≥ 3 entries. -/
+theorem symmetric_ge_diagonal : 3 * (3 + 1) / 2 ≥ 3 := by norm_num
 
-/-! ## The generation conjecture -/
+/-! ## The generation conjecture (OPEN)
 
-/-! ### Conjecture: generations = spatial eigenvalues
-
-    Each eigenvalue of h_ij corresponds to an independent mass parameter.
-    d eigenvalues → d independent k values → d generations → N_g = d = 3. -/
-
-/-- **If N_g = d, then N_g = 3.**
-    This follows immediately from the dimension selection theorem. -/
-theorem three_generations_if_Ng_eq_d
-    (Ng_eq_d : ∀ d : ℕ, d = 3 → True) :  -- placeholder
-    3 = 3 := rfl
+    Conjecture: N_g = d via eigenvalues of spatial metric perturbation.
+    Status: computational test INCONCLUSIVE (eigenvector persistence not
+    observed at ρ = 50-180). The conjecture remains open.
+    What IS proven: N_g ≥ 3 from CP violation (below). -/
 
 /-! ## Supporting structure: the mixing matrix -/
 

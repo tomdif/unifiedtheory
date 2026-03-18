@@ -100,9 +100,10 @@ def IsElementaryCharge (q : ℝ) (charges : Set ℝ) : Prop :=
   ∀ q₁ q₂ : ℝ, q₁ ∈ charges → q₂ ∈ charges → q₁ + q₂ = q →
     |q₁| ≥ |q| ∨ |q₂| ≥ |q|
 
-/-- **The fundamental charge generates all others.**
-    If q₀ is the elementary charge and all charges are integer multiples
-    of q₀, then the elementary defect generates the full charge spectrum. -/
+/-- Definitional: this is `rfl` (the tautology `n * q₀ = n * q₀`).
+    The hypotheses `hq : q₀ ≠ 0` and the ℤ parameter are unused.
+    The lattice generation claim is proved in `integer_lattice` above;
+    this theorem does not add content. -/
 theorem elementary_generates_lattice
     (q₀ : ℝ) (hq : q₀ ≠ 0) (n : ℤ) :
     -- Every integer multiple of q₀ is reachable

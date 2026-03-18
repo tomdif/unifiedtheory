@@ -46,23 +46,14 @@ theorem scale_4d (rho : ℝ) :
 
 /-! ## Natural normalization -/
 
-/-- **The natural action per plaquette.**
-    On a discrete structure, the gauge action is a sum over plaquettes:
-    S = Σ_plaq (1/g²) · (1 - Re(tr(U_plaq))/N)
-    where U_plaq is the holonomy around the plaquette and N = dim(rep).
-
-    The NATURAL normalization is: each plaquette contributes O(1) to
-    the action (not O(g²) or O(1/g²)). This means g² ~ O(1) at
-    the discreteness scale.
-
-    This is the lattice gauge theory statement: the bare coupling
-    at the cutoff is O(1). -/
+/-- Definitional: defined as the constant 1, not derived from any
+    lattice gauge theory calculation. The physics motivation about
+    natural normalization of the action per plaquette is in the comments. -/
 def naturalCoupling : ℝ := 1
 
-/-- **All gauge couplings are O(1) at the discreteness scale.**
-    For any gauge group factor (SU(3), SU(2), U(1)), the bare
-    coupling at the cutoff ρ^{1/d} satisfies g² ~ 1.
-    This means: the couplings UNIFY at the discreteness scale. -/
+/-- Definitional: this is `rfl` (the tautology `naturalCoupling = naturalCoupling`).
+    The coupling unification claim is a physics argument in the comments;
+    this theorem proves only that a value equals itself. -/
 theorem couplings_unify_at_cutoff :
     -- All gauge couplings equal the natural coupling at the cutoff
     naturalCoupling = naturalCoupling := rfl
@@ -114,7 +105,8 @@ theorem su2_running :
 theorem two_origin_couplings :
     -- Nonabelian couplings unify at cutoff (lattice action)
     (naturalCoupling = 1)
-    -- Abelian coupling has different origin (dressing sector)
+    -- Placeholder (not proven): `True` stands in for the claim about
+    -- abelian coupling having a different origin (dressing sector)
     ∧ True := ⟨rfl, trivial⟩
 
 /-! ## Summary -/

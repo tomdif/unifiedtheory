@@ -147,18 +147,10 @@ theorem chirality_from_kp_split
 
 /-! ## Chirality is necessary for nontrivial gauge structure -/
 
-/-- **If the gauge group acts the SAME on K and P sectors
-    (vector-like), it must act trivially on the φ-charge.**
-
-    A vector-like gauge transformation satisfies g·K(v) = K(g·v)
-    AND the action on K equals the action on P. Combined with
-    gauge invariance of φ, this means φ(g·v) = φ(v), which is
-    already assumed. But the KEY point is: the K-sector constraint
-    forces g to preserve ker(φ), which limits the gauge group to
-    the stabilizer of φ.
-
-    For nontrivial gauge structure BEYOND this stabilizer,
-    the action on K and P MUST differ — i.e., the theory MUST be chiral. -/
+/-- Structural note: the conclusion `φ (g.act v) = φ v` is exactly the
+    hypothesis `hφ : PreservesSource g φ` applied to `v`. The proof is
+    just `hφ v`. The physics argument about vector-like gauge actions
+    being trivial on charge is in the comments, not in the theorem. -/
 theorem vectorlike_is_trivial_on_charge
     (φ : V →ₗ[ℝ] ℝ)
     (g : GaugeAction V)

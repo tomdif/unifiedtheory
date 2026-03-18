@@ -123,19 +123,13 @@ theorem ksector_breaks_u1 (K : ℝ) (hK : K ≠ 0) :
 
 /-! ## The Goldstone mode -/
 
-/-- **The P-sector is the Goldstone mode.**
-    The P-component of z = K + iP parameterizes the phase:
-    z = |z| · e^{iφ} where φ = arctan(P/K).
-    Fluctuations in P (at fixed K) are fluctuations in the phase.
-    These are the Goldstone bosons of the broken U(1).
-
-    The Goldstone mode is "massless" in the sense that the Born-rule
-    observable |z|² = K² + P² depends on P² (quadratic), so small
-    P fluctuations cost energy ∝ P² (quadratic, not linear).
-    This is the standard quadratic dispersion of Goldstone modes. -/
-theorem goldstone_quadratic (K P : ℝ) :
-    -- The observable is quadratic in the Goldstone mode P
-    K ^ 2 + P ^ 2 = K ^ 2 + P ^ 2 := rfl
+/-- The Goldstone mode is massless: the GL potential V = -a(K²+P²) + b(K²+P²)²
+    at the vacuum K = v, P = 0 has zero second derivative in the P direction.
+    V(v, δP) = -a(v²+δP²) + b(v²+δP²)². The δP² coefficient is
+    -a + 2bv². At v² = a/(2b): coefficient = -a + a = 0. Massless. -/
+theorem goldstone_massless_at_vacuum (a b v : ℝ) (hb : b ≠ 0) (hv : v ^ 2 = a / (2 * b)) :
+    -- The P² coefficient at the vacuum is zero (massless Goldstone)
+    -a + 2 * b * v ^ 2 = 0 := by rw [hv]; field_simp; ring
 
 /-! ## Summary -/
 

@@ -54,16 +54,9 @@ theorem wick_is_real (β s : ℝ) :
 /-! The quantum two-path formula |z₁+z₂|² = 2+2cos(k(s₁-s₂))
     is proven in PropagationRule.two_path_interference. -/
 
-/-- **The thermal two-point correlator.**
-    Under the Wick rotation k → iβ, the interference term
-    cos(k(s₁-s₂)) → cosh(β(s₁-s₂)).
-
-    The thermal observable: e^{-βs₁} + e^{-βs₂} + 2e^{-β(s₁+s₂)/2}·cosh(β(s₁-s₂)/2)
-    = (e^{-βs₁/2} + e^{-βs₂/2})².
-
-    More directly: the Wick rotation of the interference formula gives
-    the thermal partition function for two states:
-    Z = e^{-βs₁} + e^{-βs₂} (sum of Boltzmann weights, no interference). -/
+/-- Definitional: this is `rfl` (the tautology `a + b = a + b`).
+    The physics interpretation connecting this to the thermal partition
+    function and Wick rotation is in the comments, not in the theorem. -/
 theorem thermal_partition_function (β s₁ s₂ : ℝ) :
     Real.exp (-(β * s₁)) + Real.exp (-(β * s₂)) =
     Real.exp (-(β * s₁)) + Real.exp (-(β * s₂)) := rfl

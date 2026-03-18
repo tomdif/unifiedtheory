@@ -91,7 +91,9 @@ theorem sm_color_parity :
     Color parity requires (3,d) + d×(3̄,1). With leptons (1,d) + (1,1),
     total = 6d + d + 1 = 7d + 1. For d=2: 15 (SM). For d≥3: >15. -/
 
-/-- Fermion count for G' = SU(N) with the simplest color-parity structure. -/
+/-- Definitional: a counting formula defined as 3*N + 3*N + N + 1.
+    This encodes the assumed color-parity structure, not derived from
+    representation theory. -/
 def fermionCount_SUN (N : ℕ) : ℕ :=
   -- Colored: (3, N) + N × (3̄, 1) = 3N + 3N = 6N fermions
   -- But actually: (3, N) gives 3·N, and N×(3̄,1) gives 3·N
@@ -124,33 +126,14 @@ theorem su2_is_minimal :
 
 /-! ## The complete derivation -/
 
-/-- **THE SM FERMION CONTENT IS FORCED.**
-
-    Given:
-    (H1) SU(3)_c × U(1)_Y × G' with G' simple
-    (H2) Color parity (SU(3)³ anomaly cancellation)
-    (H3) Minimal fermion content
-    (H4) All anomalies cancel
-
-    Then:
-    (C1) G' = SU(2) (unique minimum, this file)
-    (C2) 15 fermions per generation (this file)
-    (C3) Hypercharges uniquely determined (AnomalyConstraints.lean)
-
-    The representation content is NO LONGER A FREE HYPOTHESIS.
-    It follows from:
-    - SU(3) as the color group (from the Lie algebra primitive)
-    - U(1) from the dressing sector (proven in GaugeSelection.lean)
-    - Color parity (from SU(3)³ anomaly)
-    - Minimality (smallest anomaly-free chiral set)
-    - G' simple (structural assumption on the Lie algebra)
-
-    Together with the anomaly uniqueness theorem (cubic factorization),
-    the ENTIRE SM generation is derived:
-    - The group: SU(3) × SU(2) × U(1)
-    - The representations: (3,2), (3̄,1), (3̄,1), (1,2), (1,1)
-    - The hypercharges: (1/6, -2/3, 1/3, -1/2, 1) × y_Q
-    - All from anomaly cancellation + minimality + color parity -/
+/-- Assembles facts about the defined counting formula `fermionCount_SUN`:
+    (1) fermionCount_SUN 2 = 15 (evaluation of the defined formula),
+    (2) fermionCount_SUN N > 15 for N >= 3 (arithmetic on the formula),
+    (3) n3 - n3b = 0 implies n3 = n3b (omega),
+    (4) smCharges satisfies the anomaly conditions (from AnomalyConstraints).
+    The physics narrative about SM fermion content being "forced" is in
+    the comments. The counting formula itself is a defined input, not
+    derived from representation theory. -/
 theorem sm_generation_forced :
     -- (1) SU(2) gives the minimal count
     fermionCount_SUN 2 = 15

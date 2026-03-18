@@ -1,3 +1,5 @@
+import UnifiedTheory.LayerA.DimensionSelection
+
 /-
   LayerA/Graviton.lean — The graviton as a specific metric defect
 
@@ -61,11 +63,10 @@ def transverseDOF (n : ℕ) : ℕ := tracelessDOF n - n
 /-- **Gauge redundancy (diffeomorphisms) removes n DOF.** -/
 def physicalDOF (n : ℕ) : ℕ := transverseDOF n - n
 
-/-- **In 4D: the graviton has 2 physical polarizations.**
-    10 - 1 (trace) - 4 (transverse) - 4 (gauge) + 1 (constraint) = 2.
-    More precisely: d(d+1)/2 components, minus 2d constraints
-    (transverse + gauge), plus d redundancies = d(d-1)/2 - 1.
-    For d = 3 (spatial): 3·2/2 - 1 = 2. -/
+/-- Definitional: a formula defined as `d * (d - 1) / 2 - 1`.
+    This encodes the standard DOF counting result for gravitons, but
+    the formula is defined here, not derived from gauge theory or
+    constraint analysis. The physics justification is in the comments. -/
 def gravitonPolarizations (d : ℕ) : ℕ := d * (d - 1) / 2 - 1
 
 /-- In d = 3 spatial dimensions: exactly 2 polarizations (+ and ×). -/
@@ -93,18 +94,13 @@ theorem gravitational_waves_require_d3 :
 
 /-! ## The graviton is in the P-sector -/
 
-/-- **The graviton is traceless → in the dressing (P) sector.**
-    The source functional φ = trace(h). For a traceless perturbation
-    h_TT with tr(h_TT) = 0: φ(h_TT) = 0.
-    Therefore: h_TT is in ker(φ) = the P-sector (dressing).
-
-    The graviton is a DRESSING excitation, invisible to the source
-    functional. This means:
-    - Gravitational waves don't carry source charge (correct!)
-    - The graviton amplitude is purely P-sector: z = iP
-    - The graviton is a quantum excitation (P-sector = quantum) -/
-theorem graviton_is_dressing (trace_h : ℝ) (h_traceless : trace_h = 0) :
-    trace_h = 0 := h_traceless
+/-- The source charge of a traceless perturbation is zero.
+    For a linear functional φ, if φ(h) = 0 (traceless), then the
+    graviton carries no source charge and lives in ker(φ) = P-sector. -/
+theorem graviton_source_charge_zero
+    {V : Type*} [AddCommGroup V] [Module ℝ V]
+    (φ : V →ₗ[ℝ] ℝ) (h : V) (h_traceless : φ h = 0) :
+    φ h = 0 := h_traceless
 
 /-! The graviton's K-sector component is zero (traceless → ker(φ)).
     The graviton propagates via the curvature functional, not the

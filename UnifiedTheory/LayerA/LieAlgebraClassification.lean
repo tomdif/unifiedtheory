@@ -54,9 +54,10 @@ inductive RepType where
 
 open RepType
 
-/-- Classification of compact simple Lie algebras by the representation
-    type of their fundamental (smallest faithful) representation.
-    This is a standard result in representation theory. -/
+/-- Hardcoded lookup table from standard references: maps algebra
+    names (as strings) to their fundamental representation type.
+    This is not derived or verified — it is a manually entered
+    reference table with a default fallback to `real`. -/
 def fundamentalRepType : String → RepType
   | "su(2)" => pseudoreal
   | "su(3)" => complex
@@ -119,7 +120,9 @@ theorem su_has_smallest_chiral_fundamental :
     A simple algebra acts the same on K and P (vector-like) or via
     conjugate reps (chiral). Having both behaviors requires two factors. -/
 
-/-- The number of simple factors needed for chirality + vector-like. -/
+/-- Arithmetic fact: 1 + 1 = 2. The physics argument that chirality
+    plus vector-like behavior requires two factors is in the comments,
+    not in this theorem. -/
 theorem two_factors_from_chirality :
     -- One factor is chiral (different on K/P)
     -- One factor is vector-like (same on K/P)
@@ -153,7 +156,9 @@ theorem two_factors_from_chirality :
 theorem su3_smaller_than_e6 : (3 : ℕ) < 27 := by omega
 theorem su3_smaller_than_so10 : (3 : ℕ) < 16 := by omega
 
-/-- **The SM algebra su(3) ⊕ su(2) ⊕ u(1) is uniquely selected.** -/
+/-- Arithmetic comparisons on defined values: 3 < 27, 3 < 16,
+    3 ≠ 2, and 1 + 1 = 2. The physics argument about SM algebra
+    uniqueness is in the doc comments above, not in this theorem. -/
 theorem sm_algebra_unique :
     -- SU(3) fundamental (dim 3) is smaller than E₆ (dim 27) and SO(10) (dim 16)
     ((3 : ℕ) < 27) ∧ ((3 : ℕ) < 16)
