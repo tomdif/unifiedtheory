@@ -110,16 +110,32 @@ theorem charge_not_gauge_invariant :
     dim H⁰(CP^n, O(k)) = C(n+k, k).
 
     For the hyperplane bundle O(1): C(n+1, 1) = n+1. -/
+/-- POSTULATED MATHEMATICAL FACT: dim H⁰(CP^n, O(1)) = n + 1.
+
+    This is a theorem in algebraic geometry (Griffiths-Harris, Ch. 1 §4):
+    the global sections of O(1) on CP^n are the linear forms on ℂ^{n+1},
+    which form an (n+1)-dimensional vector space.
+
+    The proof requires sheaf cohomology on projective space, which is not
+    in Lean/Mathlib. We encode the RESULT as a definition.
+
+    What IS proven in Lean (in FiberSections.lean):
+    - The coordinate functions z₀,...,z_n are degree-1 homogeneous (sections of O(1))
+    - They are pairwise distinct
+    - There are exactly n+1 of them
+    What is NOT proven in Lean:
+    - That these are ALL the sections (spanning = completeness)
+    - The sheaf cohomology computation dim H⁰(CP^n, O(1)) = n+1 -/
 def sections_O1 (n : ℕ) : ℕ := n + 1
 
-/-- The sections of O(1) are exactly the coordinate functions.
-    dim H⁰(CP^n, O(1)) = n + 1 = number of homogeneous coordinates. -/
+/-- Arithmetic: sections_O1 n = n + 1 by definition.
+    NOTE: This is NOT a proof that dim H⁰ = n+1. It is the definition unfolded. -/
 theorem sections_O1_eq_coords (n : ℕ) : sections_O1 n = n + 1 := rfl
 
-/-- For CP²: dim H⁰(CP², O(1)) = 3. -/
+/-- sections_O1 2 = 3. Arithmetic on the postulated formula. -/
 theorem sections_O1_CP2 : sections_O1 2 = 3 := rfl
 
-/-- For CP^{N_c - 1}: dim H⁰ = N_c. -/
+/-- sections_O1 (N_c - 1) = N_c for N_c ≥ 1. Arithmetic. -/
 theorem sections_O1_general (Nc : ℕ) (hNc : Nc ≥ 1) :
     sections_O1 (Nc - 1) = Nc := by
   simp [sections_O1]; omega
@@ -142,14 +158,26 @@ theorem sections_O1_general (Nc : ℕ) (hNc : Nc ≥ 1) :
   in the same bundle O(1), at the same "level."
 -/
 
-/-- The number of fermion generations.
+/-- The number of fermion generations := dim H⁰(CP^{N_c-1}, O(1)).
 
-    N_g = sections_O1(N_c - 1) = N_c.
-    This counts the independent sections of the hyperplane bundle O(1)
-    on the gauge orbit fiber CP^{N_c-1}. -/
+    HONEST STATUS: This DEFINES N_g as sections_O1(N_c - 1). The definition
+    encodes the identification "generations = O(1) sections on the gauge fiber."
+
+    What justifies this definition (proven in Lean):
+    (A) charge_not_gauge_invariant: φ depends on the gauge fiber
+    (B) coordProj_homogeneous: z_k are O(1) sections
+    (C) orthogonal_independence: sections yield independent 4D dynamics
+
+    What justifies this definition (standard math, not in Lean):
+    (D) Product Laplacian decomposition
+    (E) Hodge theorem
+    (F) dim H⁰(CP^n, O(1)) = n+1 (Griffiths-Harris)
+
+    What this definition IS NOT: a derivation of N_g from first principles.
+    It is a formalization of the conclusion of the argument in Steps A-F. -/
 def generationCount (Nc : ℕ) (_hNc : Nc ≥ 1) : ℕ := sections_O1 (Nc - 1)
 
-/-- N_g = N_c: proved from sections of O(1). -/
+/-- N_g = N_c: arithmetic on the definition. -/
 theorem generations_eq_colors (Nc : ℕ) (hNc : Nc ≥ 1) :
     generationCount Nc hNc = Nc := by
   simp [generationCount, sections_O1]; omega

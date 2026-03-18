@@ -74,16 +74,27 @@ theorem equal_dims_vectorlike (d : ℕ) : IsVectorLike d d := rfl
     (N_c, N_w) contributes N_c·N_w fermions
     N_w × (N̄_c, 1) contributes N_w·N_c fermions
     Total colored = 2·N_c·N_w -/
+/-- ASSUMED COUNTING: Colored fermions = 2·N_c·N_w.
+
+    This ENCODES the representation structure (N_c,N_w) + N_w×(N̄_c,1):
+    - (N_c, N_w) contributes N_c·N_w fermions
+    - N_w × (N̄_c, 1) contributes N_w·N_c fermions
+    - Total colored = 2·N_c·N_w
+
+    The representation structure itself is derived in RepStructureForced.lean
+    (both-multiplet alternatives are vector-like, unique chiral assignment).
+    This formula is a CONSEQUENCE of that derivation, encoded as a definition. -/
 def coloredFermions (Nc Nw : ℕ) : ℕ := 2 * Nc * Nw
 
-/-- The minimal uncolored sector: (1, N_w) + (1, 1) = N_w + 1 fermions.
-    This provides the lepton doublet and charged lepton singlet analogs. -/
+/-- ASSUMED COUNTING: Uncolored fermions = N_w + 1.
+    From the lepton sector (1,N_w) + (1,1) required for mixed anomaly. -/
 def uncoloredFermions (Nw : ℕ) : ℕ := Nw + 1
 
-/-- **Total fermion count = 2·N_c·N_w + N_w + 1.** -/
+/-- Total fermion count = 2·N_c·N_w + N_w + 1.
+    Follows from the assumed representation structure. -/
 def totalFermions (Nc Nw : ℕ) : ℕ := coloredFermions Nc Nw + uncoloredFermions Nw
 
-/-- For N_c = 3: total = 7·N_w + 1. DERIVED from the structure, not defined. -/
+/-- For N_c = 3: total = 7·N_w + 1. Arithmetic on the counting formulas. -/
 theorem total_Nc3 (Nw : ℕ) : totalFermions 3 Nw = 7 * Nw + 1 := by
   unfold totalFermions coloredFermions uncoloredFermions; omega
 

@@ -40,27 +40,25 @@ open FermionCountDerived
 
 /-! ## Gap 2: N_w = 2 is uniquely determined by charge determinacy -/
 
-/-- The number of independent charge variables for the structure
-    (N_c, N_w) + N_w × (N̄_c, 1) + (1, N_w) + (1, 1).
+/-- ASSUMPTION: The charge variable count for the representation structure
+    (N_c, N_w) + N_w × (N̄_c, 1) + (1, N_w) + (1, 1) is N_w + 3.
 
-    Each of the N_w copies of (N̄_c, 1) can have a different charge.
-    Total charge variables:
-    - Y_Q: 1 (for the (N_c, N_w) multiplet)
-    - Y_1, ..., Y_{N_w}: N_w (for each (N̄_c, 1) singlet)
-    - Y_L: 1 (for the (1, N_w) multiplet)
-    - Y_e: 1 (for the (1, 1) singlet)
-    Total = 1 + N_w + 1 + 1 = N_w + 3 -/
+    This encodes the ASSUMED representation content from RepStructureForced.lean.
+    The counting (1 + N_w + 1 + 1 = N_w + 3) follows from that assumption.
+
+    The REAL proof that N_w = 2 gives unique charges is the algebraic
+    anomaly_uniqueness theorem in AnomalyConstraints.lean, which shows
+    the 4 anomaly conditions determine all hypercharge ratios up to
+    one normalization for the specific case N_c = 3, N_w = 2. -/
 def chargeVariables (Nw : ℕ) : ℕ := Nw + 3
 
-/-- The number of independent anomaly conditions is always 4:
-    SU(N_c)² × U(1), SU(N_w)² × U(1), gravitational, cubic U(1)³.
-    (3 linear + 1 cubic = 4 effective constraints.) -/
+/-- ASSUMPTION: 4 independent anomaly conditions.
+    SU(N_c)²×U(1), SU(N_w)²×U(1), gravitational, cubic U(1)³. -/
 def anomalyConditions : ℕ := 4
 
-/-- The number of free parameters after anomaly cancellation.
-    free = chargeVariables - anomalyConditions = (N_w + 3) - 4 = N_w - 1.
-    For charges to be "fully determined up to normalization":
-    free = 1 (one overall scale). So N_w - 1 = 1, i.e., N_w = 2. -/
+/-- Parameter counting: free = (N_w + 3) - 4 = N_w - 1.
+    NOTE: This is arithmetic on the ASSUMED counting formulas above.
+    The substantive content is in AnomalyConstraints.lean:anomaly_uniqueness. -/
 def freeParameters (Nw : ℕ) : ℤ := (chargeVariables Nw : ℤ) - anomalyConditions
 
 /-- **N_w = 1: vector-like (0 free parameters, but excluded by chirality).** -/

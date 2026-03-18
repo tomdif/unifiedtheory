@@ -57,39 +57,59 @@ theorem coordProj_distinct {n : ℕ} (j k : Fin n) (hjk : j ≠ k) :
   rw [h] at h1
   exact absurd (h1.symm.trans h2) one_ne_zero
 
-/-- THE KEY THEOREM: The number of linearly independent degree-1
-    homogeneous functions on ℂ^{n+1} is exactly n+1.
+/-- WHAT IS PROVEN HERE about sections of O(1):
 
-    This equals dim H⁰(CP^n, O(1)) by the definition of O(1). -/
-theorem sections_O1_dim (n : ℕ) :
-    n + 1 = n + 1 := rfl
+    1. coordProj_homogeneous: The n+1 coordinate projections are degree-1
+       homogeneous functions on ℂ^{n+1}. (PROVEN)
+    2. coordProj_distinct: They are pairwise distinct. (PROVEN)
+    3. There are exactly n+1 of them. (TRIVIAL: Fin (n+1) has card n+1)
 
-/-! ## Connection to the generation argument
+    WHAT IS NOT PROVEN HERE:
+    4. That these are ALL the degree-1 homogeneous functions (completeness/spanning).
+       This requires showing that linear forms on ℂ^{n+1} have dimension n+1,
+       which is a real Mathlib theorem (Module.finrank_fin_fun) but not invoked here.
+    5. That degree-1 homogeneous functions = sections of O(1) (sheaf cohomology).
 
-  The source functional z = (z₀, z₁, ..., z_{N_c-1}) ∈ ℂ^{N_c} defines
-  N_c degree-1 homogeneous functions on ℂ^{N_c} (the coordinate projections).
+    The "key theorem" `n + 1 = n + 1 := rfl` was rightly flagged as a tautology.
+    It is replaced below with a reference to Mathlib's dimension computation. -/
 
-  On the quotient CP^{N_c-1} = (ℂ^{N_c} \ {0}) / ℂ*, these become
-  sections of O(1). The coordinate projections form a basis.
+/-- The number of coordinate projections on ℂ^{n+1} is n+1.
+    This is the cardinality of Fin (n+1), which is a tautology.
+    The REAL theorem (that these SPAN the space of linear forms,
+    giving dim = n+1) requires Mathlib's Module.finrank. -/
+theorem n_coordinate_projections (n : ℕ) : Fintype.card (Fin (n + 1)) = n + 1 :=
+  Fintype.card_fin (n + 1)
 
-  Therefore:
-  - dim H⁰(CP^{N_c-1}, O(1)) = N_c
-  - For N_c = 3: three independent sections → three generations
+/-! ## Generation count
+
+  HONEST STATUS: generationCount Nc := Nc is the IDENTITY FUNCTION.
+  The theorem `three_generations : generationCount 3 = 3` is `3 = 3`.
+
+  This is NOT a proof that there are 3 generations. It is a DEFINITION
+  that RECORDS the conclusion of the argument:
+    (A) φ depends on gauge fiber (charge_not_gauge_invariant — PROVEN)
+    (B) z ∈ ℂ³ gives 3 sections of O(1) (coordProj — PROVEN for existence,
+        NOT for completeness)
+    (C) Sections are dynamically independent (orthogonal_independence — PROVEN)
+    (D) dim H⁰(CP², O(1)) = 3 (STANDARD MATH, not in Lean)
+
+  The definition is justified by the argument, but the Lean code only
+  verifies the internal consistency of the definition, not the argument itself.
 -/
 
-/-- The generation count from O(1) sections. -/
+/-- Generation count := N_c. See documentation above for justification. -/
 def generationCount (Nc : ℕ) : ℕ := Nc
 
-/-- N_g = N_c for all N_c. -/
+/-- N_g = N_c by definition. -/
 theorem generations_eq_colors (Nc : ℕ) : generationCount Nc = Nc := rfl
 
-/-- N_g = 3 for the Standard Model. -/
+/-- N_g = 3 by definition with N_c = 3. -/
 theorem three_generations : generationCount 3 = 3 := rfl
 
-/-! ## Why this is NOT a circular definition
+/-! ## Why this definition is MOTIVATED (but not a proof)
 
-  generationCount Nc := Nc looks circular. It's not, because the content
-  is in the DERIVATION of why it should be N_c:
+  generationCount Nc := Nc IS the identity function. The content
+  is in the argument for WHY it should be N_c:
 
   1. The gauge group SU(N_c) acts on ℂ^{N_c} (derived, not assumed)
   2. The orbit space is CP^{N_c-1} (geometry of the group action)

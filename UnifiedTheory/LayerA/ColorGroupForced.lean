@@ -26,7 +26,17 @@ open AnomalyConstraints
 
 /-- The cubic anomaly condition for SU(N_c) × SU(2) × U(1) after
     substituting the linear constraints, as a function of N_c and r = Y_d/Y_Q.
-    The condition is: 6·N_c·(N_c² - (r+1)²) = 0. -/
+
+    NOTE: The substitution that reduces the full cubic anomaly condition
+    to this form uses the three linear anomaly constraints (SU(N_c)²×U(1),
+    SU(2)²×U(1), gravitational). This substitution is performed algebraically
+    in AnomalyConstraints.lean:anomaly_uniqueness for the case N_c=3.
+    The generalization to arbitrary N_c (claimed here) follows the same
+    algebraic pattern but is not formally connected to AnomalyConstraints.lean.
+
+    The factored form 6·N_c·(N_c² - (r+1)²) = 0 IS proven to factor
+    correctly (cubic_factors below). The solutions ARE correctly derived
+    (cubic_solutions below). These are genuine algebraic theorems. -/
 def cubicForNc (Nc : ℕ) (r : ℝ) : ℝ :=
   6 * Nc * ((Nc : ℝ) ^ 2 - (r + 1) ^ 2)
 

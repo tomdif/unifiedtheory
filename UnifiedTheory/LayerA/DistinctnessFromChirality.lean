@@ -93,14 +93,14 @@ theorem exchange_incompatible_with_grading (g : GradedGaugeAlgebra) :
 
 /-! ## Distinctness from chirality -/
 
-/-- **If the factors are isomorphic (same dimension), the exchange exists.**
-    But the exchange is incompatible with the chirality grading.
-    Therefore: isomorphic factors are inconsistent with chirality.
-    Therefore: G_c ≠ G'. -/
-theorem isomorphic_factors_inconsistent (g : GradedGaugeAlgebra)
-    (h_iso : g.dim1 = g.dim2) :
-    -- The exchange COULD be defined (isomorphic factors)
-    -- But it is NOT a grading-preserving automorphism
+/-- **The exchange automorphism is incompatible with the chirality grading.**
+
+    NOTE: The original version had an unused hypothesis `h_iso : g.dim1 = g.dim2`.
+    The conclusion holds for ANY GradedGaugeAlgebra, not just isomorphic factors.
+    The physical argument that isomorphic factors ADMIT the exchange (and therefore
+    are excluded) is in the comments. The Lean theorem proves only that the exchange
+    reverses the grading, which contradicts grades_differ. -/
+theorem isomorphic_factors_inconsistent (g : GradedGaugeAlgebra) :
     ¬((exchange g).grade1 = g.grade1 ∧ (exchange g).grade2 = g.grade2) :=
   exchange_incompatible_with_grading g
 

@@ -147,18 +147,8 @@ theorem chirality_from_kp_split
 
 /-! ## Chirality is necessary for nontrivial gauge structure -/
 
-/-- Structural note: the conclusion `φ (g.act v) = φ v` is exactly the
-    hypothesis `hφ : PreservesSource g φ` applied to `v`. The proof is
-    just `hφ v`. The physics argument about vector-like gauge actions
-    being trivial on charge is in the comments, not in the theorem. -/
-theorem vectorlike_is_trivial_on_charge
-    (φ : V →ₗ[ℝ] ℝ)
-    (g : GaugeAction V)
-    (hφ : PreservesSource g φ)
-    (v : V) (hv : φ v ≠ 0) :
-    -- g must preserve the φ-value of v
-    φ (g.act v) = φ v :=
-  hφ v
+/-- REMOVED: Former `vectorlike_is_trivial_on_charge` was just `hφ v`
+    (applying the hypothesis directly). Deleted per audit finding #5. -/
 
 /-- **Nontrivial gauge action requires chirality.**
 

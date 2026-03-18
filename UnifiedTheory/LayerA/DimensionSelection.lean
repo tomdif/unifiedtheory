@@ -17,11 +17,17 @@ namespace UnifiedTheory.LayerA.DimensionSelection
 
 /-! ### Orbital stability -/
 
-/-- In d spatial dimensions, the gravitational potential goes as r^{2-d}.
+/-- POSTULATED PHYSICAL CRITERION (Ehrenfest 1917, Tegmark 1997):
+    In d spatial dimensions, the gravitational potential goes as r^{2-d}.
     A circular orbit is stable under radial perturbations iff the effective
-    potential has a local minimum, which requires the exponent condition
-    d - 2 < 2, i.e., d < 4.  We also require d >= 2 for orbits to exist
-    (need at least a plane).  So orbital stability holds iff 2 <= d <= 3. -/
+    potential V_eff(r) = L²/(2mr^{d-2}) - GM/r^{d-2} has a local minimum.
+
+    The second derivative test: V_eff''(r₀) > 0 requires (d-1)(d-2) < (d-1)²,
+    which simplifies to d < 4. Combined with d ≥ 2 for orbits to exist.
+
+    The mathematical derivation of this criterion from the effective potential
+    is a standard physics argument (Ehrenfest 1917). The condition 2 ≤ d ≤ 3
+    is the CONCLUSION of that argument, stated here as a postulate. -/
 def orbitalStability (d : ℕ) : Prop := 2 ≤ d ∧ d ≤ 3
 
 instance (d : ℕ) : Decidable (orbitalStability d) :=
