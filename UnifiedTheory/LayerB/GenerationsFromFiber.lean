@@ -21,16 +21,20 @@
      b_{2k+1}(CP^n) = 0 for all k. Therefore:
      Σ b_k = Σ b_{2k} = χ(CP^n) = n + 1.
 
-  6. CONCLUSION: N_g = χ(CP^{N_c-1}) = N_c = 3.
+  6. CONDITIONAL CONCLUSION: N_g = χ(CP^{N_c-1}) = N_c = 3.
 
-  WHAT THIS PROVES:
+  WHAT IS PROVEN UNCONDITIONALLY (pure mathematics):
   - χ(CP^n) = n + 1 (from the Betti number computation)
-  - All odd Betti numbers of CP^n vanish
-  - The total harmonic form count equals χ for CP^n
+  - All odd Betti numbers of CP^n vanish (b_{2k+1} = 0)
+  - The total harmonic form count equals χ for CP^n (since b_odd = 0)
+  - For N_c = 3: the fiber is CP², χ(CP²) = 3
 
-  WHAT IS ASSERTED (the bridge):
-  - The K/P source functional reduces via harmonic forms on the fiber
-  - Each harmonic form gives one generation
+  WHAT IS HYPOTHESIZED (the KK bridge, NOT derived from K/P):
+  - Fermion generations = harmonic forms on the gauge orbit fiber
+  - i.e., the standard Kaluza-Klein mechanism applies to the K/P source functional
+
+  This reduces the generation problem to a single hypothesis: "KK applies to
+  the K/P source on the gauge fiber." Given this, N_g = 3 is a theorem.
 
   WHY χ RATHER THAN Â:
   The K/P framework derives dynamics from a source functional (0-form),
@@ -94,26 +98,37 @@ theorem harmonic_count_eq_euler (n : ℕ) :
     (totalHarmonicForms n : ℤ) = eulerCharCP n := by
   simp [totalHarmonicForms, eulerCharCP]
 
-/-! ## The generation count -/
+/-! ## The generation count
 
-/-- The number of fermion generations in the K/P framework.
+  STATUS: The mathematical chain below is proven. The physical identification
+  "fermion generations = harmonic forms on the gauge orbit fiber" is a
+  HYPOTHESIS, not a consequence of the K/P framework alone.
 
-    Given:
-    - N_c: the number of colors (dimension of fundamental representation)
-    - The gauge orbit fiber is CP^{N_c - 1}
-    - The K/P source functional reduces via harmonic forms on the fiber
-    - Number of KK modes = totalHarmonicForms (N_c - 1) = N_c
+  The hypothesis is well-motivated by Kaluza-Klein precedent: in any
+  dimensional reduction, massless 4D fields correspond to zero modes of
+  the internal Laplacian, which are harmonic forms. The K/P framework
+  provides the fiber (CP²) and the source functional (a scalar/0-form);
+  the hypothesis is that the standard KK mechanism applies.
 
-    This gives N_g = N_c. -/
+  What this gives: N_g = 3 conditional on one identification.
+  What it does NOT give: a derivation of that identification from the
+  7 inputs of the framework.
+-/
+
+/-- HYPOTHESIS: Fermion generations correspond to harmonic forms on the
+    gauge orbit fiber CP^{N_c - 1}. Under this identification:
+    N_g = totalHarmonicForms(N_c - 1) = N_c.
+
+    This is the KK hypothesis, not a derived result. -/
 def generationCount (Nc : ℕ) (_hNc : Nc ≥ 1) : ℕ := totalHarmonicForms (Nc - 1)
 
-/-- N_g = N_c: the number of generations equals the number of colors. -/
+/-- CONDITIONAL: If N_g = χ(fiber), then N_g = N_c. -/
 theorem generations_eq_colors (Nc : ℕ) (hNc : Nc ≥ 1) :
     generationCount Nc hNc = Nc := by
   simp [generationCount, totalHarmonicForms]
   omega
 
-/-- For the Standard Model: N_c = 3 gives N_g = 3. -/
+/-- CONDITIONAL: If N_g = χ(fiber) and N_c = 3, then N_g = 3. -/
 theorem three_generations : generationCount 3 (by omega) = 3 := by
   simp [generationCount, totalHarmonicForms]
 
