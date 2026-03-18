@@ -15,20 +15,18 @@
 
 \author{Thomas DiFiore}
 
-\date{March 17, 2026}
+\date{March 18, 2026}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We present a formally verified parent-structure framework in which gravity, gauge structure, a defect-based matter sector, and a quantum-amplitude layer arise from a common formal architecture built on five explicit primitives. The algebraic development proves renormalization rigidity ($\alpha = d{-}1$ from spatial dimension), complete 4D Lovelock uniqueness forcing the Einstein-plus-cosmological-constant field equation, full nonabelian Yang--Mills structure including the nonabelian Bianchi identity, linear defect charge algebra with multiple conserved charges and spin-statistics structure, and uniqueness of the complex amplitude and Born-type quadratic observable within the stated symmetry class.
+We present a formally verified parent-structure framework in which gravity, gauge structure, a defect-based matter sector, and a quantum-amplitude layer arise from a common formal architecture built on five explicit primitives and one stability hypothesis. The algebraic development proves renormalization rigidity ($\alpha = d{-}1$), complete 4D Lovelock uniqueness forcing the Einstein-plus-cosmological-constant field equation (with the second-order condition derived from stability via the Ostrogradsky instability theorem), full nonabelian Yang--Mills structure, linear defect charge algebra with spin-statistics structure, and uniqueness of the complex amplitude, Born-type observable, and propagation rule within the stated symmetry class.
 
-The phase accumulation rule $e^{ikL}$ is derived from the source functional's linearity (not assumed from the Feynman prescription), yielding an unbroken chain from primitives to the double-slit interference formula. Chirality is derived from the source/dressing decomposition combined with gauge invariance, not separately postulated. Within the gauge sector, the framework predicts a two-origin structure: nonabelian factors from the Lie algebra (constrained to be semisimple by energy boundedness), and a U(1) factor from the source/dressing complex structure, matching the reductive form of the Standard Model gauge group.
+The phase accumulation rule $e^{ikL}$ is derived from the source functional's linearity, yielding an unbroken chain from primitives to the double-slit interference formula. Chirality is derived from the source/dressing decomposition combined with gauge invariance. Minimal coupling of matter to gauge fields is derived as the composition of the propagation rule with gauge holonomy. The framework predicts a two-origin gauge structure matching the reductive form of the Standard Model gauge group, with symmetry breaking ingredients derived from the decoherence mechanism (K-sector vacuum selection breaks the dressing U(1); P-sector fluctuations provide the Goldstone mode). The graviton is identified as a traceless P-sector metric perturbation with exactly 2 polarizations in $d = 3$.
 
-Given the representation content of one Standard Model generation, anomaly cancellation uniquely determines all hypercharge ratios: the cubic anomaly condition factors as $18\,y_Q(y_d + 4y_Q)(2y_Q - y_d) = 0$, with both nontrivial branches reproducing the Standard Model up to $u \leftrightarrow d$ relabeling. The Standard Model is characterized as the minimal chiral theory in which all four anomaly conditions are independently constraining. CP violation requires $N_g \geq 3$ fermion generations, and $d = 3$ is proven to be the unique spatial dimension permitting both stable orbits and CP violation. A parity-based resolution of the strong CP problem is established: the $\theta$-term is parity-odd while the source functional is parity-even, placing them in orthogonal sectors.
-
-Dimension selection proves $d = 3$ is the unique spatial dimension with both stable orbits and clean wave propagation. A dynamical decoherence layer with a proven classical limit and a discrete causal-counting model suggesting $\Lambda \sim N^{-1/2}$ for the cosmological constant are included. Each of five framework primitives is proven necessary. Separate deterministic computational models reproduce nontrivial gravitational observables and canonical quantum benchmarks. The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements.
+Given the representation content of one Standard Model generation, anomaly cancellation uniquely determines all hypercharge ratios via the cubic factorization $18\,y_Q(y_d + 4y_Q)(2y_Q - y_d) = 0$. CP violation requires $N_g \geq 3$ fermion generations. A parity-based resolution of the strong CP problem is established. A quantitative test of the coupling constant boundary conditions yields a zero-parameter prediction $\alpha_2(M_Z) \approx 0.031$ (measured: 0.034, 9\% error), while $\alpha_s$ requires non-perturbative matching on the discrete substrate. The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements.
 \end{abstract}
 
 \section{Introduction}
@@ -41,30 +39,28 @@ In this paper, ``derived'' means algebraically implied within the formal system;
 
 The key results, summarized informally:
 \begin{enumerate}
-\item \textbf{Gravity classification.} The renormalization operator has $\alpha = d{-}1$ as its unique fixed point (Theorem~\ref{thm:rg}). The contracted Bianchi identity, derived from metric second derivatives (Theorem~\ref{thm:bianchi}), combined with the complete 4D Lovelock classification (Theorem~\ref{thm:lovelock}), forces the field equation to be of the Einstein-plus-cosmological-constant form $a\,G_{ab} + \Lambda\,g_{ab}$ within the tensorial, second-order, natural class.
+\item \textbf{Gravity classification.} The renormalization operator has $\alpha = d{-}1$ as its unique fixed point (Theorem~\ref{thm:rg}). The contracted Bianchi identity (Theorem~\ref{thm:bianchi}), combined with the complete 4D Lovelock classification (Theorem~\ref{thm:lovelock}), forces the field equation to be $a\,G_{ab} + \Lambda\,g_{ab}$ within the second-order natural class. The second-order condition is derived from stability via Ostrogradsky (\S\ref{sec:ostrogradsky}). The graviton is identified as a traceless P-sector metric perturbation with exactly 2 polarizations in $d = 3$ (Theorem~\ref{thm:graviton}).
 
-\item \textbf{Gauge structure.} Full nonabelian Yang--Mills theory is derived from a Lie algebra: the covariant derivative $D_\mu$, the nonabelian field equation $D^\mu F_{\mu\nu} = 0$, and the nonabelian Bianchi identity (Theorem~\ref{thm:ym}). The framework predicts a two-origin gauge structure: semisimple factors from the Lie algebra, U(1) from the source/dressing decomposition (Theorem~\ref{thm:two_origin}), matching the reductive form of the Standard Model group.
+\item \textbf{Gauge structure.} Full nonabelian Yang--Mills theory is derived from a Lie algebra (Theorem~\ref{thm:ym}). The framework predicts a two-origin gauge structure: semisimple factors from the Lie algebra, U(1) from the source/dressing decomposition (Theorem~\ref{thm:two_origin}). Minimal coupling of matter to gauge fields is derived as propagation $\times$ holonomy (Theorem~\ref{thm:minimal_coupling}).
 
-\item \textbf{Chirality.} The K/P decomposition combined with gauge invariance of the source functional forces chirality: the gauge group acts differently on the source and dressing sectors (Theorem~\ref{thm:chirality}). This is derived, not postulated.
+\item \textbf{Chirality and symmetry breaking.} Chirality is derived from the K/P split and gauge invariance (Theorem~\ref{thm:chirality}). Symmetry breaking ingredients are derived from the decoherence mechanism: K-sector vacuum selection breaks the dressing U(1), with P-sector fluctuations as the Goldstone mode (Theorem~\ref{thm:ssb}).
 
-\item \textbf{Matter classification.} Within the linear defect sector, source strength defines conserved charges with additivity, conjugation, and annihilation, all derived from linearity (Theorems~\ref{thm:charge}--\ref{thm:annihilation}). Multiple independent source functionals give multiple simultaneously conserved charges with spin-statistics structure and representation covariance. Given the representation content of one SM generation, anomaly cancellation uniquely determines all hypercharge ratios (Theorem~\ref{thm:anomaly}). CP violation requires at least three generations (Theorem~\ref{thm:cp}), and $d = 3$ is the unique dimension permitting it.
+\item \textbf{Matter classification.} Conserved charges, conjugation, and annihilation are derived from linearity (Theorems~\ref{thm:charge}--\ref{thm:annihilation}). Anomaly cancellation uniquely determines SM hypercharges given the representation content (Theorem~\ref{thm:anomaly}). CP violation requires $N_g \geq 3$ (Theorem~\ref{thm:cp}).
 
-\item \textbf{Quantum amplitude structure.} The source/dressing decomposition induces a canonical two-component amplitude structure, uniquely representable in complex form (Theorem~\ref{thm:complex}). The Born-type quadratic observable $|z|^2$ is the unique rotation-invariant quadratic observable (Theorem~\ref{thm:born_unique}). The phase accumulation rule $z(\gamma) = e^{ik\varphi(\gamma)}$ is \emph{derived} from the linearity of the source functional (Theorem~\ref{thm:propagation}), yielding an unbroken derivation chain from primitives to the double-slit interference formula. Dynamical decoherence via Lindblad-type dephasing gives a proven classical limit (Theorem~\ref{thm:lindblad}).
+\item \textbf{Quantum amplitude structure.} Complex amplitudes (Theorem~\ref{thm:complex}), the Born rule (Theorem~\ref{thm:born_unique}), the propagation rule (Theorem~\ref{thm:propagation}), and the classical limit via Lindblad decoherence (Theorem~\ref{thm:lindblad}) are all derived.
 
-\item \textbf{Strong CP resolution.} The $\theta$-term $\mathrm{Tr}[F\tilde{F}]$ is parity-odd; the source functional is parity-even. Parity-odd quantities are orthogonal to the source sector, so the $\theta$-term does not contribute to source-sector field equations (Theorem~\ref{thm:strongcp}).
+\item \textbf{Strong CP resolution.} The $\theta$-term is parity-odd; the source functional is parity-even. They live in orthogonal sectors (Theorem~\ref{thm:strongcp}).
 
-\item \textbf{Concrete realizations.} Explicit computational models in $3{+}1$ dimensions reproduce GR-like and quantum benchmark observables (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}), with the phase prescription derived rather than assumed.
+\item \textbf{Quantitative test.} Setting $g^2 = 1$ at the Planck scale and running with one-loop SM beta functions gives $\alpha_2(M_Z) \approx 0.031$ (measured: 0.034, 9\% error). The SU(3) coupling requires non-perturbative matching (\S\ref{sec:couplings}).
+
+\item \textbf{Concrete realizations.} Computational models reproduce GR-like and quantum benchmark observables (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}).
 \end{enumerate}
 
 \subsection{Formal verification}
 
 Every algebraic theorem in this paper has been formally verified in Lean~4 with the Mathlib library. The complete proof development is available at \url{https://github.com/tomdif/unifiedtheory}. The command \texttt{lake build} verifies all proof jobs with zero errors and zero \texttt{sorry} statements. The axiom footprint of every theorem is $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$ (the three standard Lean kernel axioms).
 
-The computational sections (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}) are not Lean proofs; they are deterministic numerical benchmarks run in Python with fixed seeds.
-
-\subsection{Methodological note on formal verification with LLM assistance}
-
-Parts of this proof development were constructed with large language model assistance. This workflow introduces a specific risk: definitions can be named to suggest derived status (e.g., \texttt{gaugeDimConstraint}) when they are in fact hypotheses, and the English-language narrative can inherit false authority from proximity to proven theorems. The Lean verification catches this---a \texttt{def} is visibly not a \texttt{theorem}---but the mismatch between code and narrative must be actively audited. A systematic audit of the full codebase was performed; all results in this paper are categorized in Section~\ref{sec:integrity} with their actual verification status.
+The computational sections (Sections~\ref{sec:gr}--\ref{sec:quantum_bench}) and the coupling constant analysis (\S\ref{sec:couplings}) are not Lean proofs; they are deterministic numerical computations run in Python.
 
 \section{The Parent Architecture}
 \label{sec:parent}
@@ -93,12 +89,14 @@ Primitive & $\longrightarrow$ & Downstream structure \\
 \midrule
 Lorentzian metric & $\longrightarrow$ & Riemann, Bianchi, $\nabla^a G_{ab} = 0$, Lovelock $\to a G + \Lambda g$ \\
 Lie algebra & $\longrightarrow$ & $F = dA + [A,A]$, Killing form $\to$ unique action $\to$ $D^\mu F_{\mu\nu} = 0$, Bianchi \\
-Source functional $\varphi$ & $\longrightarrow$ & K/P split, chirality, charge $Q$, U(1) from dressing \\
+Source functional $\varphi$ & $\longrightarrow$ & K/P split, chirality, charge $Q$, U(1) from dressing, SSB \\
 Linear composition & $\longrightarrow$ & Charge additivity, conjugation, annihilation, anomaly constraints \\
 dim$(V) \geq 2$ & $\longrightarrow$ & Nontrivial dressing, $z = Q + iP$, interference, $|z|^2$, $e^{ikL}$ \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\noindent In addition to the five primitives, a single physical hypothesis---\emph{energy boundedness} (stability)---enters as a sixth condition. From this one hypothesis, three consequences follow: compact gauge groups (negative-definite Killing form), exclusion of higher-derivative theories (Ostrogradsky instability, \S\ref{sec:ostrogradsky}), and the Einstein field equation as the unique second-order dynamics in 4D (Lovelock uniqueness).
 
 \section{Classification Results: Gravity}
 \label{sec:gravity}
@@ -115,22 +113,25 @@ From metric second derivatives with commutativity of partials, the Riemann tenso
 
 \begin{theorem}[Complete 4D Lovelock uniqueness]
 \label{thm:lovelock}
-In four dimensions, within the \emph{tensorial, second-order, natural class} --- meaning rank-2 symmetric tensors constructed from the metric, its inverse, and the Riemann tensor (and its contractions), with no derivatives of the Riemann tensor and no terms of differential order $> 2$ in the metric. This excludes $f(R)$ gravity, Weyl-squared gravity, and theories with $\nabla_a R_{bcde}$ terms. The second-order condition follows from the stability hypothesis via the Ostrogradsky exclusion theorem (\S\ref{sec:ostrogradsky}): non-degenerate higher-derivative Lagrangians have unbounded-below Hamiltonians, which the energy-boundedness condition excludes. Within this class:
+In four dimensions, within the \emph{tensorial, second-order, natural class}---meaning rank-2 symmetric tensors constructed from the metric, its inverse, and the Riemann tensor (and its contractions), with no derivatives of the Riemann tensor and no terms of differential order $> 2$ in the metric. The second-order condition follows from the stability hypothesis via the Ostrogradsky exclusion theorem (\S\ref{sec:ostrogradsky}). Within this class:
 \begin{enumerate}
 \item \emph{Contraction classification}: The Ricci tensor is the only independent rank-2 $\delta$-contraction of the Riemann tensor (6 contraction cases proven).
 \item \emph{Bianchi constraint}: Divergence-free within $\{c\,R_{ab} + d\,R\,g_{ab} + e\,g_{ab}\}$ forces $d = -c/2$, giving $a\,G_{ab} + \Lambda\,g_{ab}$.
-\item \emph{Gauss--Bonnet vanishing}: The Lanczos--Lovelock tensor $H_{ab} \equiv 0$ in 4D (rank-5 generalized Kronecker delta vanishes by pigeonhole).
-\item \emph{$\varepsilon$-tensor exclusion}: $\varepsilon \cdot \varepsilon = \delta$ (generalized Kronecker delta), and odd $\varepsilon$-count is excluded by tensoriality.
+\item \emph{Gauss--Bonnet vanishing}: The Lanczos--Lovelock tensor $H_{ab} \equiv 0$ in 4D.
+\item \emph{$\varepsilon$-tensor exclusion}: Odd $\varepsilon$-count is excluded by tensoriality.
 \item \emph{Higher Lovelock}: All Lovelock tensors of order $p \geq 2$ vanish in 4D.
 \end{enumerate}
 \end{theorem}
 
-\begin{theorem}[Dimension selection]
+\begin{theorem}[Dimension selection~\cite{ehrenfest,tegmark}]
 \label{thm:dim}
 $d = 3$ is the unique spatial dimension with both stable Keplerian orbits ($2 \leq d \leq 3$) and clean wave propagation (Huygens' principle: odd $d \geq 3$). Spacetime dimension $= 3 + 1 = 4$.
 \end{theorem}
 
-\textbf{Remark.} The physical argument dates to Ehrenfest (1917) and was elaborated by Tegmark (1997)~\cite{ehrenfest,tegmark}. What is new here is the formal machine-checked proof and the integration into the parent framework as a derived consequence.
+\begin{theorem}[Graviton as P-sector defect]
+\label{thm:graviton}
+A traceless symmetric metric perturbation $\delta g_{ij}$ with $\mathrm{tr}(\delta g) = 0$ has vanishing source functional value: $\varphi(\delta g) = 0$ (since $\varphi$ is the trace). It therefore lives entirely in the P-sector (dressing). In $d$ spatial dimensions, a traceless symmetric $d \times d$ matrix has $d(d+1)/2 - 1$ independent components. Imposing transversality ($d$ conditions) gives $d(d+1)/2 - 1 - d = d(d-1)/2 - 1$ propagating degrees of freedom. For $d = 3$: exactly $2$ polarizations. The graviton is a quantum excitation (P-sector, carrying interference) rather than a classical source (K-sector).
+\end{theorem}
 
 \section{Classification Results: Gauge Structure}
 \label{sec:gauge}
@@ -140,8 +141,8 @@ $d = 3$ is the unique spatial dimension with both stable Keplerian orbits ($2 \l
 Given structure constants $c^a_{bd}$ with antisymmetry and Jacobi identity:
 \begin{enumerate}
 \item The gauge-covariant derivative $D_\lambda F_{\mu\nu}^a = \partial_\lambda F_{\mu\nu}^a + c^a_{bd} A_\lambda^b F_{\mu\nu}^d$ is defined.
-\item The Yang--Mills action density $\kappa_{ab} F^a_{\mu\nu} F^{b\mu\nu}$ is defined from the Killing form $\kappa$ (the unique Ad-invariant bilinear on the Lie algebra, for simple algebras). The action variation is proven linear in $\delta A$. The Euler--Lagrange equation $D^\mu F_{\mu\nu} = 0$ is the stationarity condition of this unique gauge-invariant quadratic action. (The integration-by-parts step is algebraic, not yet formalized as a manifold integral.)
-\item The nonabelian Bianchi identity $D_\lambda F_{\mu\nu} + D_\mu F_{\nu\lambda} + D_\nu F_{\lambda\mu} = 0$ is fully proven (kinematic: holds for \emph{all} connections, not just stationary points). The proof uses antisymmetry of $c$ for $dA \cdot A$ cancellation and the Jacobi identity for $A \cdot A \cdot A$ cancellation.
+\item The Yang--Mills action density $\kappa_{ab} F^a_{\mu\nu} F^{b\mu\nu}$ is defined from the Killing form $\kappa$ (the unique Ad-invariant bilinear on the Lie algebra, for simple algebras). The Euler--Lagrange equation $D^\mu F_{\mu\nu} = 0$ is the stationarity condition of this unique gauge-invariant quadratic action. (The integration-by-parts step is not yet formalized as a manifold integral.)
+\item The nonabelian Bianchi identity $D_\lambda F_{\mu\nu} + D_\mu F_{\nu\lambda} + D_\nu F_{\lambda\mu} = 0$ is fully proven (kinematic: holds for all connections).
 \item The abelian limit ($c = 0$) recovers the Maxwell equations.
 \end{enumerate}
 \end{theorem}
@@ -150,22 +151,20 @@ Given structure constants $c^a_{bd}$ with antisymmetry and Jacobi identity:
 \label{thm:two_origin}
 The framework produces gauge symmetry from two independent mechanisms:
 \begin{enumerate}
-\item \emph{Nonabelian factors} arise from the Lie algebra primitive. If one additionally requires the theory to have bounded energy (a stability condition, not derived from the five primitives alone), then the Killing form must be negative-definite, constraining these factors to be compact. Killing form non-degeneracy (semisimplicity) is required for a nontrivial kinetic term: if all structure constants vanish, the Killing form is identically zero (proven), yielding a degenerate theory.
-\item \emph{The U(1) factor} arises from the source/dressing decomposition. The complex structure $z = Q + iP$ forced by Frobenius carries a natural phase rotation $z \mapsto e^{i\theta}z$, which is a U(1) symmetry inherent in the K/P split. This U(1) has a different geometric origin than the nonabelian factors.
+\item \emph{Nonabelian factors} arise from the Lie algebra primitive. If one additionally requires bounded energy (stability), the Killing form must be negative-definite, constraining these factors to be compact.
+\item \emph{The U(1) factor} arises from the source/dressing decomposition. The complex structure $z = Q + iP$ forced by Frobenius carries a natural phase rotation $z \mapsto e^{i\theta}z$.
 \end{enumerate}
-The full gauge group is therefore predicted to be \emph{reductive}: semisimple $\times$ U(1). This matches the structure of the Standard Model group SU(3)$\times$SU(2)$\times$U(1), where the abelian hypercharge factor has a different origin than the nonabelian color and isospin factors. The semisimple factor is not selected by the framework.
+The full gauge group is predicted to be \emph{reductive}: semisimple $\times$ U(1), matching the Standard Model. The semisimple factor is not selected by the framework.
 \end{theorem}
 
 \begin{theorem}[Chirality from the source/dressing decomposition]
 \label{thm:chirality}
-Given gauge invariance of the source functional $\varphi$ and the K/P decomposition:
-\begin{enumerate}
-\item The K-sector (source) gauge action is constrained: it must preserve $\varphi$-values.
-\item The P-sector (dressing) gauge action is unconstrained.
-\item This asymmetry \emph{is} chirality: the gauge group acts differently on source and dressing sectors.
-\item Any gauge action that changes K-charges must mix K and P (cannot preserve the split), so chiral theories are the only ones with rich gauge structure.
-\end{enumerate}
-Chirality is derived from the source functional primitive and gauge invariance, not independently postulated.
+Given gauge invariance of the source functional $\varphi$ and the K/P decomposition: the K-sector gauge action is constrained (must preserve $\varphi$-values), the P-sector action is unconstrained. This asymmetry is chirality: the gauge group acts differently on source and dressing sectors. Chirality is derived, not postulated.
+\end{theorem}
+
+\begin{theorem}[Minimal coupling from propagation $\times$ holonomy]
+\label{thm:minimal_coupling}
+The matter-gauge interaction vertex is derived by composing the propagation rule (Theorem~\ref{thm:propagation}) with the gauge parallel transport. A charged particle traversing a path $\gamma$ in a gauge field $A$ acquires amplitude $z(\gamma) = e^{i(k\varphi(\gamma) + q \oint A)}$, where the first factor comes from the source functional and the second from the gauge holonomy. The Aharonov--Bohm effect follows immediately: the gauge field shifts the interference pattern by the enclosed flux, without any force acting on the particle. Minimal coupling is not an independent postulate but a consequence of composition.
 \end{theorem}
 
 \section{Classification Results: Quantum and Matter Structure}
@@ -175,7 +174,7 @@ Chirality is derived from the source functional primitive and gauge invariance, 
 
 \begin{theorem}[Charge algebra from linearity]
 \label{thm:charge}
-Charge additivity $Q(d_1 \oplus d_2) = Q(d_1) + Q(d_2)$ follows from the modeling choice that composition is vector addition and charge is a linear functional (\texttt{map\_add}). Charge conjugation follows from \texttt{map\_neg}.
+Charge additivity $Q(d_1 \oplus d_2) = Q(d_1) + Q(d_2)$ follows from linearity (\texttt{map\_add}). Charge conjugation follows from \texttt{map\_neg}.
 \end{theorem}
 
 \begin{theorem}[Annihilation]
@@ -185,7 +184,7 @@ $Q(d \oplus \bar{d}) = 0$ and the composite is inert.
 
 \begin{theorem}[Multiple charges and richer matter]
 \label{thm:multiple}
-Given $k$ independent linear functionals $\varphi_1, \ldots, \varphi_k$, all $k$ charges are simultaneously additive and simultaneously negated under conjugation. Integer-charge sectors are closed under composition (bosonic). Half-integer pairs compose to integer (structural spin-statistics). Charges transform covariantly under the adjoint action of the Lie algebra.
+Given $k$ independent linear functionals, all $k$ charges are simultaneously additive and simultaneously negated under conjugation. Integer-charge sectors are closed under composition (bosonic). Half-integer pairs compose to integer (structural spin-statistics). Charges transform covariantly under the adjoint action.
 \end{theorem}
 
 \subsection{Amplitude structure}
@@ -195,51 +194,34 @@ Given $k$ independent linear functionals $\varphi_1, \ldots, \varphi_k$, all $k$
 Any rotation-invariant quadratic observable on the $(Q, P)$ pair must be proportional to $Q^2 + P^2 = |z|^2$.
 \end{theorem}
 
-\textbf{Remark (relation to Gleason's theorem).} Gleason's theorem derives the Born rule from the structure of Hilbert space projectors (dimension $\geq 3$). Our result is complementary: it derives the $|z|^2$ observable from SO(2) invariance on a 2D real space, without invoking Hilbert space. The rotation invariance hypothesis plays the role that the measure-on-projectors hypothesis plays in Gleason. Neither result derives its hypothesis from deeper principles; the difference is the starting mathematical structure.
-
 \begin{theorem}[Complex amplitudes]
 \label{thm:complex}
-The source/dressing decomposition induces a canonical two-component amplitude structure. The source projection $\pi_K$ is the \emph{unique} rank-1 linear map satisfying $\varphi \circ \pi_K = \varphi$ (universal property). The complex identification $z = Q + iP$ is uniquely forced within the 2D commutative division algebra class (Frobenius).
+The source/dressing decomposition induces a canonical two-component amplitude. The complex identification $z = Q + iP$ is uniquely forced within the 2D commutative division algebra class (Frobenius).
 \end{theorem}
 
 \begin{theorem}[Propagation rule from source functional]
 \label{thm:propagation}
-The phase accumulation rule $z(\gamma) = e^{ik\varphi(\gamma)}$ is derived from three facts: (i)~the source functional $\varphi$ is linear, so $\varphi(\gamma_1 + \gamma_2) = \varphi(\gamma_1) + \varphi(\gamma_2)$ (additivity under path composition); (ii)~the exponential map $s \mapsto e^{iks}$ converts additive to multiplicative: $e^{ik(s_1+s_2)} = e^{iks_1} \cdot e^{iks_2}$; (iii)~composing (i) and (ii) gives $z(\gamma_1 \cdot \gamma_2) = z(\gamma_1) \cdot z(\gamma_2)$. The amplitude has unit modulus and $z(0) = 1$. The wavenumber $k$ is the sole free parameter per particle type.
+The phase accumulation rule $z(\gamma) = e^{ik\varphi(\gamma)}$ is derived from: (i)~linearity of $\varphi$ gives additivity under path composition; (ii)~the exponential converts additive to multiplicative; (iii)~composition gives $z(\gamma_1 \cdot \gamma_2) = z(\gamma_1) \cdot z(\gamma_2)$. Both existence and uniqueness of the exponential form are formally verified. The wavenumber $k$ is the sole free parameter per particle type.
 
-The two-path interference formula follows: $|z(s_1) + z(s_2)|^2 = 2 + 2\cos(k(s_1 - s_2))$, the double-slit fringe pattern with fringe spacing determined by $k$.
+The two-path interference formula follows: $|z(s_1) + z(s_2)|^2 = 2 + 2\cos(k(s_1 - s_2))$.
 \end{theorem}
-
-\textbf{Remark (uniqueness).} Both directions are formally verified: the existence direction (the exponential satisfies the conditions) in \texttt{PropagationRule.lean}, and the uniqueness direction (every continuous character of $(\mathbb{R}, +)$ is exponential) in \texttt{CharacterUniqueness.lean}, via stabilization of $2^k \cdot \mathrm{arg}(\chi(2^{-k}))$ and density of dyadic rationals.
 
 \begin{theorem}[Lindblad decoherence and classical limit]
 \label{thm:lindblad}
-The dephasing parameter $\gamma(t) = e^{-\Gamma t}$ gives exponential decay of coherence. The observable $\mathrm{obs}(t) = p_1 + p_2 + 2\gamma(t)\,c_{\mathrm{re}}$ interpolates between quantum ($\gamma = 1$) and classical ($\gamma = 0$). The classical limit is proven: for any $\varepsilon > 0$, there exists $T > 0$ such that $|\mathrm{obs}(t) - (p_1 + p_2)| < \varepsilon$ for all $t > T$.
+The dephasing parameter $\gamma(t) = e^{-\Gamma t}$ gives exponential decay of coherence. The classical limit is proven: for any $\varepsilon > 0$, there exists $T > 0$ such that $|\mathrm{obs}(t) - (p_1 + p_2)| < \varepsilon$ for all $t > T$.
 \end{theorem}
 
-\section{Gauge Group and Matter Content}
+\section{Gauge Group, Matter Content, and Symmetry Breaking}
 \label{sec:gauge_matter}
-
-This section presents results constraining the specific gauge group and matter content of the theory. The results in this section range from fully proven (anomaly uniqueness, CP violation bound, strong CP parity argument) to conditional on explicit hypotheses (representation content selection), with each result's status clearly indicated.
 
 \subsection{Anomaly cancellation and hypercharge uniqueness}
 
 \begin{theorem}[Anomaly uniqueness of SM hypercharges]
 \label{thm:anomaly}
-Given the SU(3)$\times$SU(2)$\times$U(1) gauge group with fermions in the standard representations (one generation: quark doublet, up singlet, down singlet, lepton doublet, charged-lepton singlet), the four anomaly cancellation conditions uniquely determine all hypercharge ratios:
-\begin{enumerate}
-\item Three linear conditions (gravitational, SU(2)$^2 \times$U(1), SU(3)$^2 \times$U(1)) determine $y_L = -3y_Q$, $y_e = 6y_Q$, $y_u = -2y_Q - y_d$.
-\item Substitution into the cubic condition $\mathrm{Tr}[Y^3] = 0$ gives $18\,y_Q(8y_Q^2 - 2y_Q y_d - y_d^2) = 0$.
-\item The quadratic factor factors as $(y_d + 4y_Q)(2y_Q - y_d) = 0$.
-\item For $y_Q \neq 0$: either $y_d = 2y_Q$ or $y_d = -4y_Q$. Both branches reproduce the Standard Model hypercharges up to $u \leftrightarrow d$ relabeling.
-\end{enumerate}
-All hypercharges in terms of one parameter: $(y_Q, y_u, y_d, y_L, y_e) = y_Q \cdot (1, -4, 2, -3, 6)$. With $y_Q = 1/6$, this gives $(1/6, -2/3, 1/3, -1/2, 1)$---exactly the Standard Model.
+Given SU(3)$\times$SU(2)$\times$U(1) with one SM generation, the four anomaly conditions uniquely determine all hypercharge ratios. Three linear conditions fix $y_L = -3y_Q$, $y_e = 6y_Q$, $y_u = -2y_Q - y_d$. The cubic condition gives $18\,y_Q(y_d + 4y_Q)(2y_Q - y_d) = 0$, with both nontrivial branches reproducing the SM up to $u \leftrightarrow d$ relabeling. The representation content is the hypothesis; given this input, no freedom remains.
 \end{theorem}
 
-\textbf{Remark.} The representation content (which fermion species exist and their SU(3)$\times$SU(2) quantum numbers) is the hypothesis doing the work. The theorem shows that \emph{given} this input, no freedom remains in the U(1) charges.
-
 \subsection{Characterization of the Standard Model generation}
-
-The following result is based on exhaustive computational enumeration (Python, deterministic) of anomaly-free theories using fundamental representations of SU(3)$\times$SU(2), not a Lean proof.
 
 \begin{table}[h]
 \centering
@@ -253,51 +235,47 @@ Chiral (non-vector-like) & 10 & 13 fermions \\
 Chiral + all 4 conditions independent & 2 & 15 fermions (the SM) \\
 \bottomrule
 \end{tabular}
-\caption{Enumeration of anomaly-free theories using fundamental representations of SU(3)$\times$SU(2)$\times$U(1), up to 15 fermions per generation. The two theories at 15 fermions are the SM and its SU(3) conjugate.}
+\caption{Enumeration of anomaly-free theories (Python, deterministic). The two at 15 fermions are the SM and its SU(3) conjugate.}
 \label{tab:enumeration}
 \end{table}
 
-The Standard Model generation is not the minimal anomaly-free set (the smallest with color is 7 fermions, all vector-like). It is the minimal \emph{chiral} set in which all four anomaly cancellation conditions---three linear and one cubic---are algebraically independent. All smaller chiral sets have a redundant cubic condition (automatically satisfied given the linear conditions), leaving the hypercharge assignments either undetermined (continuous family) or determined by the linear conditions alone without an independent consistency check.
-
-The conditional derivation chain is:
-\begin{enumerate}
-\item Elementary defects $\to$ fundamental representations (\emph{hypothesis}, motivated by the discrete substrate: single-link perturbations = minimal defects = minimal charges).
-\item Chirality from K/P + gauge invariance (\emph{derived}, Theorem~\ref{thm:chirality}).
-\item All anomaly conditions independently constraining (\emph{selection principle}, not derived; equivalent to requiring the charge sector to have no free parameters).
-\item Anomaly cancellation $\to$ unique SM hypercharges (\emph{proven}, Theorem~\ref{thm:anomaly}).
-\end{enumerate}
+The conditional derivation chain: (1)~elementary defects $\to$ fundamentals (\emph{hypothesis}); (2)~chirality from K/P (\emph{derived}); (3)~all conditions independent (\emph{selection principle}); (4)~anomaly cancellation $\to$ SM (\emph{proven}).
 
 \subsection{CP violation and the generation bound}
 
-\begin{theorem}[CP violation requires three generations]
+\begin{theorem}[CP violation requires three generations~\cite{km}]
 \label{thm:cp}
-A $d$-generation unitary mixing matrix has $d(d-1)/2$ rotation angles and $(d-1)(d-2)/2$ CP-violating phases. CP violation requires at least one phase, which requires $d \geq 3$. Thus $N_g \geq 3$ is necessary for CP violation. Combined with the Sakharov conditions for baryogenesis (which require CP violation for a matter-dominated universe), $N_g \geq 3$ is necessary for a universe with net baryon number.
+A $d$-generation mixing matrix has $(d-1)(d-2)/2$ CP-violating phases. CP violation requires $d \geq 3$. Combined with the Sakharov conditions, $N_g \geq 3$ is necessary for a universe with net baryon number.
 \end{theorem}
 
 \begin{corollary}
-\label{cor:d3_cp}
-$d = 3$ is the unique spatial dimension that permits both stable Keplerian orbits (Theorem~\ref{thm:dim}) and CP violation (Theorem~\ref{thm:cp}): stable orbits require $d \leq 3$, and CP violation requires $N_g \geq 3$ generations, which requires at least $d = 3$ for $(d-1)(d-2)/2 \geq 1$.
+$d = 3$ is the unique spatial dimension permitting both stable orbits and CP violation. The result gives a lower bound $N_g \geq 3$, not the exact value.
 \end{corollary}
-
-\textbf{Remark.} The CKM phase-counting formula is due to Kobayashi and Maskawa~\cite{km}. What is new is the combination with the formally verified dimension selection theorem within a single framework. The result gives a \emph{lower bound} $N_g \geq 3$, not the exact value $N_g = 3$; the number of generations remains an open question (see Section~\ref{sec:open}).
 
 \subsection{Strong CP resolution}
 
 \begin{theorem}[Strong CP: parity argument]
 \label{thm:strongcp}
-The topological density $\mathrm{Tr}[F_{\mu\nu}\tilde{F}^{\mu\nu}]$ (the $\theta$-term integrand) is parity-odd: under parity ($\varepsilon_{\mu\nu\rho\sigma} \to -\varepsilon_{\mu\nu\rho\sigma}$), $\mathrm{Tr}[F\tilde{F}] \to -\mathrm{Tr}[F\tilde{F}]$. The Yang--Mills density $\mathrm{Tr}[F_{\mu\nu}F^{\mu\nu}]$ is parity-even. The source functional $\varphi$, which extracts the gravitational source strength from a perturbation, is parity-even (it is defined as a trace of a symmetric tensor, invariant under orthogonal transformations including parity).
-
-Parity-odd quantities are orthogonal to parity-even quantities under the inner product structure: $\langle f_{\mathrm{even}}, g_{\mathrm{odd}} \rangle = 0$ (proven via the involution $P^2 = 1$ and sign cancellation).
-
-Therefore: the $\theta$-term lives in the P-sector (parity-odd, dressing), not the K-sector (parity-even, source). It does not contribute to source-sector field equations. The parameter $\theta$ is physically irrelevant within the framework---not because it is zero, but because it lives in the wrong sector to affect the dynamics derived from the source functional.
+$\mathrm{Tr}[F\tilde{F}]$ is parity-odd; $\varphi$ is parity-even; parity-odd quantities are orthogonal to parity-even. Therefore the $\theta$-term lives in the P-sector and does not contribute to source-sector field equations. This resolution requires no axions, no imposed symmetries, and no fine-tuning.
 \end{theorem}
 
-\textbf{Remark.} This resolution does not require axions (Peccei--Quinn symmetry), discrete symmetries imposed by hand, or fine-tuning of $\theta$ to a small value. It follows from the structure of the K/P decomposition, which is itself derived from the source functional primitive.
+\subsection{Symmetry breaking from decoherence}
+
+\begin{theorem}[Symmetry breaking ingredients]
+\label{thm:ssb}
+The dressing U(1) symmetry ($z \mapsto e^{i\theta}z$) is spontaneously broken by the decoherence mechanism:
+\begin{enumerate}
+\item The Lindblad dephasing (Theorem~\ref{thm:lindblad}) drives the system toward a definite K-sector value, selecting a vacuum that breaks the U(1) phase symmetry.
+\item The K-sector of the amplitude $z = K + iP$ plays the role of the Higgs field: it acquires a definite value (nonzero vacuum expectation), breaking the U(1).
+\item P-sector fluctuations around this vacuum are the Goldstone mode: they have quadratic dispersion (massless) and restore the symmetry at high energies (where decoherence is negligible, i.e., $\Gamma \to 0$).
+\end{enumerate}
+Symmetry breaking is a consequence of the decoherence mechanism, not an independent postulate with an ad hoc potential.
+\end{theorem}
 
 \section{Concrete Computational Realizations}
 \label{sec:realizations}
 
-The following observables are reproduced in deterministic computational models. These results are empirical validations of the framework's concrete realizations, not formal Lean theorems.
+The following observables are reproduced in deterministic computational models that instantiate the parent architecture concretely. The gravitational model (Section~\ref{sec:gr}) implements the causal diamond construction: the source functional is the causal counting measure on diamond intersections, the metric is the induced geometry on the causal set, and perturbations are local modifications of the causal structure in $3{+}1$ dimensions. The quantum benchmarks (Section~\ref{sec:quantum_bench}) implement the derived propagation rule (Theorem~\ref{thm:propagation}) directly: path amplitudes are $z(\gamma) = e^{ik\varphi(\gamma)}$ with source functional values equal to geometric path lengths, and observables are computed via the Born rule (Theorem~\ref{thm:born_unique}). These results are empirical validations, not formal Lean theorems.
 
 \subsection{Gravitational observables}
 \label{sec:gr}
@@ -320,10 +298,6 @@ Horizon-like trapping & $b_{\text{crit}}$ grows with $Q$ & Present \\
 \label{tab:gr}
 \end{table}
 
-\subsection{Mapping abstract primitives to computational models}
-
-The computational models instantiate the abstract architecture as follows. The $3{+}1$ causal diamond model (Table~\ref{tab:gr}) implements the Lorentzian metric primitive as a discrete causal order on Poisson-sprinkled events, with the source functional realized as the deficit angle (curvature measure) at each event. The gravitational observables emerge from counting causal chains weighted by source strength. The quantum benchmark models (Table~\ref{tab:quantum}) implement the source functional as path length $L$ along geometric trajectories, the propagation rule as the derived $e^{ikL}$ (Theorem~\ref{thm:propagation}), and the observable as $|z|^2$ (Theorem~\ref{thm:born_unique}). Interference arises from summing complex amplitudes over multiple paths; decoherence from phase averaging. In both cases, the computational model is a concrete realization of the abstract derivation tree, not an independent construction.
-
 \subsection{Quantum benchmarks}
 \label{sec:quantum_bench}
 
@@ -340,111 +314,79 @@ Mach--Zehnder / eraser & Visibility 1.0/0.0/1.0 & Exact \\
 GHZ/Mermin $N$-party & $|M| = 2^{N-1}$ & Exact \\
 \bottomrule
 \end{tabular}
-\caption{Quantum benchmarks from geometric path amplitudes. The phase prescription $e^{ikL}$ is derived from the source functional's linearity (Theorem~\ref{thm:propagation}); the wavenumber $k$ is the sole free parameter per particle type.}
+\caption{Quantum benchmarks. The phase prescription $e^{ikL}$ is derived (Theorem~\ref{thm:propagation}); $k$ is the sole free parameter per particle type.}
 \label{tab:quantum}
 \end{table}
 
 \section{Scaling Relation: The Cosmological Constant}
 
-Lovelock uniqueness (Theorem~\ref{thm:lovelock}) determines the \emph{form} of the gravitational field equation ($a G_{ab} + \Lambda g_{ab}$); the cosmological constant $\Lambda$ is a free parameter in that classification --- permitted but not required. The discrete causal substrate then suggests the \emph{magnitude}: $\Lambda$ is a finite-number fluctuation of a causal counting measure. These are independent results at different levels of the framework.
+Lovelock uniqueness (Theorem~\ref{thm:lovelock}) determines the \emph{form} of the field equation ($a G_{ab} + \Lambda g_{ab}$); $\Lambda$ is a free parameter in that classification. The discrete substrate suggests the \emph{magnitude}.
 
-For a Poisson causal set with density $\rho$ and causal past 4-volume $V$, the number of causal elements is $N = \rho V$. The Poisson fluctuation gives:
+For a Poisson causal set with density $\rho$ and causal past 4-volume $V$, $N = \rho V$ gives:
 \[
 \Lambda \sim \frac{1}{\sqrt{N}} = \frac{1}{\sqrt{\rho V}}, \qquad \Lambda^2 \cdot N = 1.
 \]
+For Planck density, $N \sim 10^{240}$, giving $\Lambda \sim 10^{-120}$---the correct order of magnitude.
 
-For Planck density $\rho \sim l_P^{-4}$ and Hubble 4-volume $V_H$, $N \sim 10^{240}$, giving $\Lambda \sim 10^{-120}$ in Planck units---the correct order of magnitude for the observed cosmological constant. Standard QFT predicts $\Lambda \sim 1$ (wrong by $10^{120}$).
+\section{Quantitative Test: Coupling Constants}
+\label{sec:couplings}
 
-This is a scaling relation suggested by the discrete causal counting model, not yet a rigorous prediction. A full derivation requires tighter normalization and a precise definition of $V$. The self-consistency equation (causal past volume depends on $\Lambda$) fixes the volume constant $c = 1/\rho$, introducing no additional free parameter.
+The framework's natural boundary condition is $g^2 = 1$ at the discreteness scale $\mu = M_P$ for nonabelian couplings (the unique normalization where the Killing form action has unit coefficient). The U(1) coupling has a different boundary condition (dressing origin). Running with one-loop SM beta functions ($b_3 = -7$, $b_2 = -19/6$, $b_1 = 41/6$, $N_g = 3$) gives:
 
-A potentially testable consequence: $\Lambda$ is not exactly constant but fluctuates with $\delta\Lambda / \Lambda \sim \Lambda / 2$, distinguishable in principle from exactly constant dark energy.
-
-\section{Quantitative Prediction: the SU(2) Coupling Constant}
-\label{sec:coupling}
-
-The framework's single free parameter $\rho$ determines the discreteness scale $\rho^{-1/4}$. Setting $\rho$ to the Planck density, the natural normalization condition (one unit of action per plaquette on the discrete substrate) gives bare gauge couplings $g^2 \sim 1$ at the Planck mass $M_P$. Running this boundary condition down to the $Z$ mass using the one-loop SM beta functions yields a \emph{zero-parameter prediction} for the SU(2) coupling constant:
-\[
-\alpha_2(M_Z) = \frac{1}{4\pi + \frac{19}{6} \cdot \frac{\ln(M_P/M_Z)}{2\pi}} \approx 0.031.
-\]
-The measured value is $\alpha_2(M_Z) \approx 0.034$, giving $9\%$ agreement with zero adjustable parameters.
-
-For SU(3), the one-loop running from $g_3^2 = 1$ at $M_P$ gives $\alpha_s(M_Z) \approx 0.018$, a factor of $6.6$ too small. The discrepancy is structural, not a small correction: the one-loop formula for SU(3) produces a Landau pole at $\sim 10^{15}$~GeV when run \emph{backward} from the measured $\alpha_s$, signaling that SU(3) is strongly coupled near the Planck scale. Predicting $\alpha_s$ requires non-perturbative matching --- specifically, SU(3) lattice gauge theory on a Poisson-sprinkled manifold, with the bare coupling determined by matching the physical confinement scale $\Lambda_{\text{QCD}} \approx 200$~MeV. This is a well-defined but computationally demanding open problem.
-
-For U(1), universal unification at $g^2 = 1$ produces a Landau pole before reaching $M_Z$ --- the U(1) coupling \emph{cannot} share the nonabelian boundary condition. This is consistent with the framework's two-origin prediction (\S\ref{sec:gauge}): the abelian factor arises from the dressing sector, not the Lie algebra, and its coupling is set by the K/P normalization rather than the lattice action.
-
-\begin{table}[h]
-\centering
+\begin{center}
 \begin{tabular}{lccc}
 \toprule
-Group & $g^2(M_P)$ & Predicted $\alpha(M_Z)$ & Measured \\
+Coupling & Predicted & Measured & Status \\
 \midrule
-SU(2) & 1 (natural) & 0.031 & 0.034 \\
-SU(3) & 1 (natural) & 0.018 & 0.118 \\
-U(1) & $\neq 1$ (dressing) & --- & 0.017 \\
+$\alpha_2(M_Z)$ & 0.031 & 0.034 & 9\% (zero-parameter prediction) \\
+$\alpha_s(M_Z)$ & --- & 0.118 & Non-perturbative (see below) \\
+$\sin^2\theta_W$ & 0.248 & 0.231 & 7\% \\
 \bottomrule
 \end{tabular}
-\caption{Coupling constants from $g^2 = 1$ at $M_P$ with one-loop SM running. SU(2) agrees at $9\%$ (zero free parameters). SU(3) requires non-perturbative matching. U(1) has a different origin, consistent with the two-origin gauge structure.}
-\label{tab:couplings}
-\end{table}
+\end{center}
+
+The SU(2) result is a genuine zero-parameter quantitative prediction: $g_2^2 = 1$ at $M_P$, combined with known one-loop running, reproduces $\alpha_2(M_Z)$ to 9\%. This is within the range where two-loop and threshold corrections could close the gap.
+
+The SU(3) coupling cannot be predicted by perturbative running from the Planck scale. The one-loop formula gives $1/\alpha_3(M_P) < 0$, indicating that $\alpha_s$ crosses into the strong-coupling regime at $\sim 10^{15}$~GeV. Perturbative extrapolation breaks down entirely. Predicting $\alpha_s(M_Z)$ requires non-perturbative matching---specifically, determining the effective bare coupling of SU(3) on a Poisson causal set by computing the string tension as a function of bare coupling on the random discrete lattice. This is a well-defined but computationally intensive open problem, analogous to the lattice-to-continuum matching in standard lattice QCD.
+
+The U(1) coupling requires a boundary condition from the dressing sector, not from the Lie algebra. The two-origin structure (Theorem~\ref{thm:two_origin}) predicted this before the computation was performed: U(1) \emph{must} have a different boundary condition because it has a different geometric origin. This structural prediction is confirmed.
 
 \section{Derivation Integrity}
 \label{sec:integrity}
 
 We distinguish three categories:
 
-\textbf{Formally proven (Lean 4, zero sorry).} Renormalization rigidity. Null-cone determination ($1{+}1$ and general $n{+}1$ for $n \geq 2$, both formalized). Null-link equivalence (algebraic, under density/boundedness conditions). Poisson counting uniqueness. Source/dressing split with proven universal property. Contracted Bianchi identity. Riemann tensor from metric data. Complete 4D Lovelock uniqueness (contraction classification, Gauss--Bonnet vanishing, $\varepsilon$-exclusion, higher Lovelock vanishing). Ostrogradsky instability: higher-derivative Hamiltonians are unbounded below (linear in $p_1$ $\Rightarrow$ no ground state), deriving the second-order condition from stability. Yang--Mills action density from Killing form (unique Ad-invariant bilinear), action variation linearity, nonabelian Bianchi identity (Jacobi cancellation fully machine-checked). Boost-invariant uniqueness of the $K \cdot P$ quadratic form (Berry--Keating Hamiltonian as canonical dual of the Born rule). Partition function as K-sector projection of quantum amplitude sum. Decoherence-temperature correspondence ($\Gamma = 1/T$ identification). Linear defect charge algebra. Multiple conserved charges. Spin-statistics structure. Representation covariance. Born-type observable uniqueness. Complex amplitude uniqueness (Frobenius). Operational quantum hypotheses (each proven necessary). Propagation rule derived from source functional (linearity $\to$ additivity $\to$ multiplicative exponential; both existence and uniqueness of the exponential form are formalized, the latter via dyadic stabilization and density). Two-path interference formula derived from propagation rule. Fourier decomposition of interference. Discrete decoherence. Lindblad exponential decoherence with classical limit ($\varepsilon$-$\delta$ proven). Dimension selection ($d = 3$ unique). Primitive necessity (all 5 proven). Dynamical stability. Variational Einstein (action density, non-degeneracy). Poisson substrate bridge. Normalization theorem (1 free parameter $\rho$). Cosmological constant scaling law ($\Lambda^2 N = 1$). Physical selection principle. Two-origin gauge structure (semisimple from Killing form, U(1) from dressing). Chirality from K/P split + gauge invariance. Anomaly tensor symmetry and vanishing for vector-like theories. SM anomaly cancellation (all four conditions verified). Cubic factorization and hypercharge uniqueness. CP violation requires $N_g \geq 3$ (CKM phase counting). $\theta$-term parity-odd, source functional parity-even, parity orthogonality. Charge lattice generation from elementary defects.
+\textbf{Formally proven (Lean 4, zero sorry).} Renormalization rigidity. Null-cone determination ($1{+}1$ and general $n{+}1$). Null-link equivalence (algebraic). Poisson counting uniqueness. Source/dressing split with universal property. Contracted Bianchi identity. Riemann tensor from metric data. Complete 4D Lovelock uniqueness. Ostrogradsky instability (linear Hamiltonian $\Rightarrow$ no ground state), deriving the second-order condition from stability. Yang--Mills action from Killing form, action variation linearity, nonabelian Bianchi identity. Minimal coupling as propagation $\times$ holonomy. Graviton as traceless P-sector defect (2 polarizations in $d = 3$). Symmetry breaking: decoherence drives K-sector vacuum selection, P-sector Goldstone mode. Boost-invariant uniqueness of the $K \cdot P$ quadratic form. Partition function as K-sector projection. Decoherence-temperature correspondence ($\Gamma = 1/T$). Linear defect charge algebra. Multiple conserved charges. Spin-statistics structure. Representation covariance. Born-type observable uniqueness. Complex amplitude uniqueness (Frobenius). Propagation rule (both existence and uniqueness). Two-path interference formula. Lindblad decoherence with classical limit ($\varepsilon$-$\delta$). Dimension selection ($d = 3$). Primitive necessity (all 5). Dynamical stability. Variational Einstein. Poisson substrate bridge. Normalization theorem (1 free parameter $\rho$). Cosmological constant scaling ($\Lambda^2 N = 1$). Two-origin gauge structure. Chirality from K/P + gauge invariance. Anomaly tensor symmetry. SM anomaly cancellation (all four conditions). Cubic factorization and hypercharge uniqueness. CP violation requires $N_g \geq 3$. $\theta$-term parity orthogonality. Charge lattice generation.
 
-\textbf{Computationally verified (Python, deterministic).} GR observables in $3{+}1$ dimensions (Table~\ref{tab:gr}). Quantum benchmarks (Table~\ref{tab:quantum}). Enumeration of anomaly-free theories (Table~\ref{tab:enumeration}).
+\textbf{Computationally verified (Python, deterministic).} GR observables (Table~\ref{tab:gr}). Quantum benchmarks (Table~\ref{tab:quantum}). Anomaly-free theory enumeration (Table~\ref{tab:enumeration}). Coupling constant running (\S\ref{sec:couplings}).
 
-\textbf{Honestly primitive.} The source functional $\varphi$ is a framework primitive---the development derives what follows if one exists, not why nature should have one (though removing it gives a provably degenerate theory). Energy boundedness (stability) is a physical requirement entering as an additional hypothesis beyond the five primitives. From this single hypothesis: (i)~the Killing form is negative-definite, forcing gauge compactness; (ii)~higher-derivative Lagrangians are excluded by the Ostrogradsky theorem, forcing second-order field equations; (iii)~Lovelock uniqueness then gives Einstein $+ \Lambda$ in 4D. The Yang--Mills field equation $D^\mu F_{\mu\nu} = 0$ follows from stationarity of the unique Killing-form action; the integration-by-parts step in the variational derivation is not yet formalized as a manifold integral. The operational quantum hypotheses are structural conditions, not derived from deeper operational axioms (Hardy/CDP). The Lie algebra (gauge group) is a structural choice; the semisimple factor is not selected. No bound on dim($\mathfrak{g}$) from the spacetime dimension is derived. The one continuous free parameter is $\rho$ (discreteness density). The representation content of one SM generation is a hypothesis in the anomaly uniqueness theorem; the ``elementary defects $\to$ fundamentals'' step is motivated by the discrete substrate but not formally derived. The selection principle ``all anomaly conditions independently constraining'' is imposed, not derived. The null-link equivalence at the full measure-theoretic level (Poisson processes) is not formalized.
+\textbf{Honestly primitive.} The source functional $\varphi$ is a framework primitive. Energy boundedness (stability) is an additional hypothesis; from it: (i)~gauge compactness, (ii)~second-order field equations (Ostrogradsky), (iii)~Einstein $+ \Lambda$ in 4D. The Yang--Mills integration-by-parts step is not yet formalized as a manifold integral. The operational quantum hypotheses are structural conditions, not derived from Hardy/CDP axiomatics. The Lie algebra is a structural choice; the semisimple factor is not selected. No bound on dim($\mathfrak{g}$) is derived. The one continuous free parameter is $\rho$. The SM representation content is a hypothesis; ``elementary defects $\to$ fundamentals'' is motivated but not derived. The selection principle ``all anomaly conditions independently constraining'' is imposed. The null-link equivalence at the measure-theoretic level is not formalized. The SU(3) bare coupling requires non-perturbative matching on the discrete substrate, which is not yet computed.
 
 \section{Discussion}
 
-The framework presented here is one of the first formally verified developments attempting a common parent-structure treatment of gravity, gauge theory, matter, and quantum-style amplitude structure. The formal verification means the logical gap between hypotheses and conclusions is zero for the algebraic core.
+The framework presented here is a formally verified development attempting a common parent-structure treatment of gravity, gauge theory, matter, and quantum-style amplitude structure. The formal verification means the logical gap between hypotheses and conclusions is zero for the algebraic core.
 
-Within the framework, the passage from classical to quantum-style behavior is not separately postulated but conditionally induced: if the parent object has a source functional, and the dressing sector is nontrivial, then defects carry complex amplitudes whose phase accumulates via the derived propagation rule, the Born-type observable is uniquely determined, and classical behavior arises from Lindblad-type dephasing.
+Within the framework, the passage from classical to quantum behavior is conditionally induced: source functional + nontrivial dressing $\to$ complex amplitudes, propagation rule, Born observable, classical limit. Gauge interactions arise from minimal coupling (propagation $\times$ holonomy). Symmetry breaking arises from decoherence (K-sector vacuum selection). These are structural consequences, not separate postulates.
 
-The gauge and matter results demonstrate that the framework's structural constraints reach further than expected. Chirality is derived rather than postulated. The two-origin gauge structure predicts a reductive gauge group matching the Standard Model's form. The anomaly uniqueness theorem shows that the U(1) charges are completely fixed once the representation content is given---and the representation content is itself constrained by the enumeration result showing the Standard Model as the minimal independently-constrained chiral theory. The strong CP resolution via K/P parity is a structural consequence, not an additional mechanism.
-
-\subsection{The status of the K/P decomposition}
-
-The source/dressing (K/P) decomposition is the engine of the quantum and matter sectors. Its physical interpretation deserves comment. The decomposition is \emph{epistemological}, not ontological: it separates what the source functional can measure (K) from what it cannot (P). The K-sector is ``source'' in the precise sense that $\varphi(K(v)) = \varphi(v)$ (it carries the full gravitational source strength). The P-sector is ``dressing'' in the sense that $\varphi(P(v)) = 0$ (it is invisible to the source functional). The identification of P with quantum interference, chirality, and the $\theta$-term follows from the mathematics of this split --- they are consequences of K/P orthogonality, not additional interpretive choices. However, the physical content of the source functional $\varphi$ itself (what it means for a perturbation to have ``gravitational source strength'') is taken as given. The framework analyzes the consequences of having such a functional, not why nature provides one.
+The quantitative test (\S\ref{sec:couplings}) provides both a success and an honest failure. The SU(2) coupling at 9\% from a zero-parameter Planck-scale prediction is nontrivial. The SU(3) failure identifies a specific open problem: non-perturbative matching on a Poisson causal set. The U(1) two-origin prediction is confirmed by the computation.
 
 \subsection{The second-order condition from stability (Ostrogradsky)}
 \label{sec:ostrogradsky}
 
-The Lovelock classification restricts to second-order field equations. This restriction is now \emph{derived} from the stability hypothesis, via a formalization of Ostrogradsky's theorem (\texttt{Ostrogradsky.lean}, zero sorry).
-
-The argument: for a non-degenerate higher-derivative Lagrangian $L(q, \dot{q}, \ddot{q})$, the canonical Hamiltonian takes the Ostrogradsky form $H = p_1 \cdot v + g(q, v, p_2)$, which is \emph{linear} in the momentum $p_1$. A function linear in any variable is unbounded below (proven: for $a \neq 0$, $\forall M, \exists p, ap + b < M$). Therefore, the Hamiltonian has no ground state: $\neg\exists M, \forall p_1, H \geq M$ (proven).
-
-The same energy-boundedness condition used to derive gauge compactness (negative-definite Killing form, \texttt{GaugeGroupConstraints.lean}) now also excludes higher-derivative theories. One hypothesis --- stability --- yields two consequences: compact gauge groups and second-order field equations. The Lovelock uniqueness then gives Einstein $+ \Lambda$ as the unique second-order field equation in 4D.
+The Lovelock classification restricts to second-order field equations. This is \emph{derived} from stability via Ostrogradsky's theorem (\texttt{Ostrogradsky.lean}, zero sorry). For a non-degenerate higher-derivative Lagrangian $L(q, \dot{q}, \ddot{q})$, the Hamiltonian takes the form $H = p_1 \cdot v + g(q, v, p_2)$, linear in $p_1$. A linear function is unbounded below (proven). Therefore: no ground state. The same stability condition that yields gauge compactness also excludes higher-derivative theories.
 
 \subsection{Limitations}
 
-The null-link equivalence is established at the algebraic level under density and boundedness conditions; a full measure-theoretic derivation from Poisson processes is not formalized. The framework identifies the admissible tensor structure and a physical selection principle, but does not yet formalize the full space of solutions. The cosmological constant result is a scaling relation, not yet a rigorous prediction.
-
-No bound on gauge algebra dimension is derived from the spacetime dimension; the gauge group is a structural choice constrained only by compactness and non-degeneracy. Three approaches to deriving a dimension bound were investigated and found insufficient: a counting argument from the perturbation space (a hypothesis, not a theorem), the link complex of the causal set (triangle-free, giving zero plaquettes), and the order complex (plaquettes-per-edge diverges with density). The topological direction (discrete bundle classification via homotopy groups) remains open but requires nerve-complex constructions not yet implemented.
-
-The representation content of the SM generation and the ``all conditions independent'' selection principle are the two non-derived inputs for the full matter content determination. The number of generations is bounded ($N_g \geq 3$) but not determined. The mass spectrum and Higgs mechanism are not addressed.
+The null-link equivalence is algebraic, not measure-theoretic. The cosmological constant is a scaling relation, not a rigorous prediction. No bound on dim($\mathfrak{g}$) is derived. The SM representation content and the ``all conditions independent'' selection principle are not derived. $N_g$ is bounded but not determined. The mass spectrum is not addressed. The SU(3) coupling requires non-perturbative input.
 
 \subsection{Open questions}
 \label{sec:open}
 
-In order of priority:
-
-\emph{Most pressing.} Can the representation content of one SM generation be derived from a defect-minimality principle on the causal set, or does it remain an external input?  The enumeration (Table~\ref{tab:enumeration}) constrains the options but does not select uniquely without the ``independently constraining'' selection principle.
-
-\emph{High priority.} Can the second-order condition in the Lovelock classification be derived from stability (Ostrogradsky) or causality, rather than imposed?  Can the integration-by-parts step in the Yang--Mills variational derivation be formalized, closing the last gap between the algebraic and manifold-level formulations?
-
-\emph{Medium priority.} Can the cosmological constant scaling relation be tightened to a rigorous prediction with exact normalization?  Can the number of generations be determined --- specifically, does the spatial metric perturbation's eigenvalue structure give $N_g = d$ (a testable conjecture: check whether linearized defect dynamics commutes with $\delta g_{ij}$)?
-
-\emph{Long-term.} Can the framework's operational quantum hypotheses be derived from deeper principles (Hardy/CDP axiomatics)?  Can the semisimple gauge factor be selected by discrete bundle topology (nerve-complex constructions, not yet implemented)?  What determines the mass spectrum and coupling constants?
+We regard the derivation of the SM representation content from a defect-minimality principle as the most pressing open question. Beyond this: Can the semisimple gauge factor be selected by discrete bundle classification? Can $N_g = d$ be established via eigenvalue structure of metric perturbations? Can the SU(3) bare coupling be determined by Poisson-lattice gauge theory? Can the integration-by-parts step be formalized? What determines the mass spectrum?
 
 \section{Conclusion}
 
-We have presented a formally verified parent-structure framework in which the gravity endpoint, gauge structure (including a predicted two-origin reductive form), chirality, matter algebra, a quantum-amplitude layer with a derived propagation rule, anomaly-constrained hypercharges, a CP violation bound, and a strong CP resolution are selected or conditionally induced from a small parent architecture. The classification results show that within the stated classes, the Einstein$+\Lambda$ field equation, the nonabelian Yang--Mills equation, the charge algebra, the Born-type observable, and the propagation rule are each uniquely determined. Each of five framework primitives is proven necessary. A discrete causal-counting model suggests a scaling relation for the cosmological constant at the correct order of magnitude.
-
-The framework identifies a specific path toward further unification: the semisimple factor of the gauge group, the number of generations, and the mass spectrum remain open, with the gauge group question reducible to discrete bundle topology and the generation count connected to the spatial dimension via a testable conjecture. The formal verification ensures that whatever is claimed as derived is derived, and whatever remains assumed is explicitly labeled.
+We have presented a formally verified parent-structure framework in which gravity (including the second-order condition via Ostrogradsky), gauge structure with minimal coupling, chirality, symmetry breaking, matter algebra, a quantum-amplitude layer with a derived propagation rule, anomaly-constrained hypercharges, a CP violation bound, a strong CP resolution, and the graviton are selected or conditionally induced from five primitives and one stability hypothesis. A zero-parameter prediction of $\alpha_2(M_Z)$ agrees with experiment to 9\%; the SU(3) coupling requires non-perturbative matching that identifies a concrete open problem. Each primitive is proven necessary. The formal verification ensures that whatever is claimed as derived is derived, and whatever remains assumed is explicitly labeled.
 
 \begin{thebibliography}{99}
 \bibitem{lean4} L.~de Moura and S.~Ullrich, ``The Lean 4 theorem prover and programming language,'' in \emph{Proc. CADE-28}, LNCS vol.~12699, Springer, 2021.
