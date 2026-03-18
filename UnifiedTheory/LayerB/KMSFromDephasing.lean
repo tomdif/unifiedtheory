@@ -192,11 +192,15 @@ theorem decoherence_is_inverse_temperature :
        the same form as a thermal propagator at temperature T = 1/Γ
     4. Matsubara quantization: thermal periodicity forces k = 2πnT
 
-    Conclusion: decoherence and thermality are the SAME phenomenon.
-    A system decoheres because it thermalizes, and the decoherence
-    rate determines the temperature. The K-sector (source) sees
-    the thermal/classical behavior; the P-sector (dressing) carries
-    the quantum/coherent behavior. -/
+    What is proven: the dephasing parameter Γ admits a thermodynamic
+    interpretation as inverse temperature (T = 1/Γ in natural units).
+    The dephased amplitude has the same form as a thermal propagator.
+
+    What is NOT proven: the full KMS condition (periodicity of
+    correlation functions in imaginary time). That would require
+    showing ⟨A(t)B(0)⟩ = ⟨B(0)A(t+iβ)⟩ for the framework's
+    two-point functions, which needs analytic continuation of the
+    propagation rule to complex arguments. -/
 theorem decoherence_temperature_unification :
     -- (1) The dephased amplitude decomposes as decay × phase
     (∀ k Γ s : ℝ, dephasedAmplitude k Γ s =
