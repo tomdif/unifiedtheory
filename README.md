@@ -2,7 +2,7 @@
 
 **From seven inputs to SU(3)×SU(2)×U(1) with 15 fermions and unique hypercharges — every step machine-checked in Lean 4.**
 
-Zero custom axioms. Zero `sorry`. 2327 proof jobs. Adversarial audit verified.
+Zero custom axioms. Zero `sorry`. 2327 proof jobs.
 
 ## The Result
 
@@ -95,7 +95,7 @@ Requires Lean 4 and Mathlib. The axiom footprint is `{propext, Classical.choice,
 
 ## Paper
 
-The paper is at `paper/unified_theory_paper.tex`. It has been through 5 adversarial audits verifying that every claim matches the Lean code.
+The paper is at `paper/unified_theory_paper.tex`.
 
 ## What's Open
 

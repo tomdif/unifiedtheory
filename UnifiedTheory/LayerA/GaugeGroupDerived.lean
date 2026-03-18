@@ -1,7 +1,7 @@
 /-
-  LayerA/GaugeGroupDerived.lean — The SM gauge group DERIVED (closing audit gaps)
+  LayerA/GaugeGroupDerived.lean — The SM gauge group DERIVED
 
-  This file closes the two gaps identified by the adversarial audit:
+  This file addresses two key issues in the derivation chain:
 
   GAP 1: "Isomorphic factors → exchange must be a symmetry"
   SOLUTION: Define INTRINSIC grading (invariant under ALL automorphisms).
