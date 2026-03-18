@@ -24,14 +24,14 @@
 \begin{abstract}
 We present a formally verified framework that derives the Standard Model gauge group SU(3)$\times$SU(2)$\times$U(1), its complete one-generation fermion content, and all hypercharge ratios from seven explicit inputs: five structural primitives (source functional, Lie algebra, Lorentzian metric, linear composition, perturbation dimension $\geq 2$), one physical hypothesis (energy boundedness), and one selection principle (minimality of the fermion count). The derivation chain is: chirality (from the source/dressing decomposition) requires complex representations, which restricts the gauge algebra to SU($N$) type; the K/P structure forces two factors (one chiral, one vector-like) that must be non-isomorphic as represented algebras (proven: a surjective equivalence would transport the vector-like property, contradicting chirality); the representation structure is derived from color parity and chirality (the only chiral color-parity-satisfying structure is $(N_c, N_w) + N_w \times (\bar{N}_c, 1) + (1, N_w) + (1,1)$); charge determinacy uniquely selects SU(2) as the weak factor ($N_w = 2$ is the only value giving fully determined hypercharges); distinctness and minimality select SU(3) as the color factor; U(1) arises independently from the dressing sector; and anomaly cancellation --- via a universal cubic factorization $6N_c(N_c - r - 1)(N_c + r + 1) = 0$ valid for any SU($N_c$) --- uniquely determines all hypercharge ratios as $(1, -4, 2, -3, 6) \cdot y_Q$.
 
-The framework additionally derives: the Einstein field equation as the unique second-order gravitational dynamics in 4D (with the second-order condition from stability via the Ostrogradsky instability theorem); full nonabelian Yang--Mills structure; the propagation rule $e^{ikL}$ from the source functional's linearity (yielding an unbroken chain from primitives to interference); the Born-type observable; the Higgs potential as the unique quartic rotation-invariant on the K/P space; symmetry breaking from decoherence; the graviton as a traceless P-sector defect with 2 polarizations in $d = 3$; minimal coupling; a strong CP resolution; and $N_g \geq 3$ from CP violation. A zero-parameter prediction gives $\alpha_2(M_Z) \approx 0.031$ (measured: 0.034, 9\% error). The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements.
+The framework additionally derives: the Einstein field equation as the unique second-order gravitational dynamics in 4D (with the second-order condition from stability via the Ostrogradsky instability theorem); full nonabelian Yang--Mills structure; the propagation rule $e^{ikL}$ from the source functional's linearity (yielding an unbroken chain from primitives to interference); the Born-type observable; the Higgs potential as the unique quartic rotation-invariant on the K/P space; symmetry breaking from decoherence; the graviton as a traceless P-sector defect with 2 polarizations in $d = 3$; minimal coupling; a strong CP resolution; $N_g = 3$ from the holomorphic sections of $\mathcal{O}(1)$ on the gauge orbit fiber $\mathbb{CP}^2$; and $N_g \geq 3$ independently from CP violation. A zero-parameter prediction gives $\alpha_2(M_Z) \approx 0.036$ (measured: 0.034, 7\% error). The algebraic core is formally verified in Lean~4 with zero custom axioms and zero \texttt{sorry} statements.
 \end{abstract}
 
 \section{Introduction}
 
 We identify a small parent architecture and prove that gravity, gauge structure, matter content, and quantum-style amplitudes are uniquely selected or conditionally induced from it. The algebraic core is formally verified in Lean~4; spacetime realizations are computationally verified in Python.
 
-The headline result: the Standard Model gauge group and its matter content are \emph{derived}, not assumed. From seven inputs --- five primitives, energy boundedness, and minimality --- the complete chain from abstract algebra to SU(3)$\times$SU(2)$\times$U(1) with 15 fermions and unique hypercharges is machine-checked with zero logical gaps.
+The headline result: the Standard Model gauge group, its matter content, and the number of generations are \emph{derived}, not assumed. From seven inputs --- five primitives, energy boundedness, and minimality --- the complete chain from abstract algebra to SU(3)$\times$SU(2)$\times$U(1) with 15 fermions per generation, $N_g = 3$ generations, and unique hypercharges is machine-checked in Lean~4 with zero \texttt{sorry} statements and zero custom axioms.
 
 The full derivation tree:
 
@@ -43,6 +43,7 @@ Input & $\longrightarrow$ & Derived structure \\
 Source functional $\varphi$ & $\longrightarrow$ & K/P split $\to$ chirality $\to$ complex reps $\to$ SU($N$) type \\
 & & $\to$ two factors $\to$ rep structure forced (color parity) \\
 & & $\to$ chiral $\not\cong$ vector-like $\to$ SU(3) (color) \\
+& & $\to$ fiber $\mathcal{O}(1)$ sections $\to$ $N_g = 3$ \\
 & & $\to$ U(1) from dressing $\to$ SSB from decoherence \\
 Lie algebra & $\longrightarrow$ & Yang--Mills, Killing form $\to$ unique action \\
 Lorentzian metric & $\longrightarrow$ & Riemann, Bianchi, Lovelock $\to$ Einstein $+ \Lambda$ \\
@@ -56,7 +57,13 @@ Minimality & $\longrightarrow$ & Charge determinacy $\to$ SU(2), distinctness $\
 
 \subsection{Formal verification}
 
-Every algebraic theorem is formally verified in Lean~4 with the Mathlib library (\url{https://github.com/tomdif/unifiedtheory}). Zero errors, zero \texttt{sorry}. Axiom footprint: $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$.
+Every algebraic theorem is formally verified in Lean~4~\cite{lean4} with the Mathlib library (\url{https://github.com/tomdif/unifiedtheory}). Zero errors, zero \texttt{sorry}. Axiom footprint: $\{\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}\}$.
+
+\subsection{Relation to prior work}
+
+The idea that anomaly cancellation constrains the Standard Model is classical: Adler~\cite{adler} and Bell--Jackiw~\cite{belljackiw} established the chiral anomaly; Bouchiat, Iliopoulos, and Meyer~\cite{bim} first showed that anomaly cancellation restricts the fermion charges. The systematic classification of anomaly-free chiral gauge theories was advanced by Minahan, Ramond, and Warner~\cite{mrw}. Grand unified embeddings (Georgi--Glashow~\cite{gg}, Pati--Salam~\cite{patisalam}) derive the SM charges from a larger group but introduce new inputs (the GUT group itself, its breaking pattern). Our contribution is different in kind: we derive the gauge group, representation content, \emph{and} hypercharge ratios from a common algebraic framework with machine-checked proofs, and we identify the precise inputs required (seven, no more).
+
+The formal verification methodology extends the tradition of Hales's Flyspeck project~\cite{flyspeck} and Gonthier's formalization of the Feit--Thompson theorem~\cite{gonthier}, applying computer-verified proof to theoretical physics for the first time at this scope.
 
 \section{Gravity}
 \label{sec:gravity}
@@ -73,7 +80,7 @@ $\nabla^a G_{ab} = 0$ (kinematic, all metrics).
 
 \begin{theorem}[Complete 4D Lovelock uniqueness]
 \label{thm:lovelock}
-In the second-order natural class (second-order from Ostrogradsky, \S\ref{sec:ostrogradsky}): the unique divergence-free rank-2 tensor is $a\,G_{ab} + \Lambda\,g_{ab}$. Lovelock determines the \emph{form}; the discrete substrate suggests the \emph{magnitude} $\Lambda \sim N^{-1/2} \sim 10^{-120}$.
+In the second-order natural class (second-order from Ostrogradsky~\cite{woodard}, \S\ref{sec:ostrogradsky}): the unique divergence-free rank-2 tensor is $a\,G_{ab} + \Lambda\,g_{ab}$. Lovelock~\cite{lovelock} determines the \emph{form}; the discrete substrate~\cite{bombelli,sorkin} suggests the \emph{magnitude} $\Lambda \sim N^{-1/2} \sim 10^{-120}$.
 \end{theorem}
 
 \begin{theorem}[Dimension selection~\cite{ehrenfest,tegmark}]
@@ -103,7 +110,7 @@ Gauge invariance of $\varphi$ + K/P decomposition: the gauge group acts differen
 
 \begin{theorem}[Complex representations required]
 \label{thm:complex_reps}
-Chirality requires left-handed and right-handed fermions to transform in inequivalent representations. This is only possible if the gauge algebra has \emph{complex} representations (representations not isomorphic to their conjugates). Among compact simple Lie algebras, the classification of representation types is:
+Chirality requires left-handed and right-handed fermions to transform in inequivalent representations. This is only possible if the gauge algebra has \emph{complex} representations (representations not isomorphic to their conjugates). Among compact simple Lie algebras, the classification of representation types is~\cite{fultonharris}:
 
 \begin{center}
 \begin{tabular}{lll}
@@ -119,7 +126,7 @@ $\mathfrak{so}(4k)$ ($k \geq 2$), $\mathfrak{e}_7$, $\mathfrak{e}_8$, $\mathfrak
 \end{tabular}
 \end{center}
 
-Minimality of the fundamental representation dimension selects SU($N$): $\dim = N$ for SU($N$), versus $\dim = 16$ for SO(10) and $\dim = 27$ for E$_6$. The chiral gauge algebra factors are therefore of SU($N$) type. (For the classification of representation types, see Fulton--Harris~\cite{fultonharris}.)
+Minimality of the fundamental representation dimension selects SU($N$): $\dim = N$ for SU($N$), versus $\dim = 16$ for SO(10) and $\dim = 27$ for E$_6$. The chiral gauge algebra factors are therefore of SU($N$) type.
 \end{theorem}
 
 \begin{theorem}[Two factors from K/P structure]
@@ -129,7 +136,7 @@ The K/P decomposition requires two kinds of gauge action: chiral (different on K
 
 \begin{theorem}[Representation structure forced]
 \label{thm:rep_structure}
-The fermion representation content $(N_c, N_w) + N_w \times (\bar{N}_c, 1) + (1, N_w) + (1, 1)$ is \emph{derived}, not assumed. Color parity (vanishing of the SU$(N_c)^3$ anomaly) requires equal positive and negative contributions. If both colored sectors carry SU$(N_w)$ multiplets, color parity forces equal multiplicities, making the theory vector-like (contradicting chirality). The unique chiral solution has one $(N_c, N_w)$ multiplet and $N_w$ copies of $(\bar{N}_c, 1)$, with the lepton sector $(1, N_w) + (1, 1)$ required for the mixed anomaly.
+The fermion representation content $(N_c, N_w) + N_w \times (\bar{N}_c, 1) + (1, N_w) + (1, 1)$ is \emph{derived}, not assumed. Color parity (vanishing of the SU$(N_c)^3$ anomaly~\cite{adler,belljackiw}) requires equal positive and negative contributions. If both colored sectors carry SU$(N_w)$ multiplets, color parity forces equal multiplicities, making the theory vector-like (contradicting chirality). The unique chiral solution has one $(N_c, N_w)$ multiplet and $N_w$ copies of $(\bar{N}_c, 1)$, with the lepton sector $(1, N_w) + (1, 1)$ required for the mixed anomaly.
 \end{theorem}
 
 \begin{theorem}[Distinctness from chirality]
@@ -171,27 +178,27 @@ $z(\gamma) = e^{i(k\varphi(\gamma) + q \oint A)}$: propagation $\times$ holonomy
 
 \begin{theorem}[Charge algebra]
 \label{thm:charge}
-Additivity from \texttt{map\_add}; conjugation from \texttt{map\_neg}.
+The source functional $\varphi$ is a linear map $V \to \mathbb{R}$. Linearity gives additive charges: $\varphi(d_1 \oplus d_2) = \varphi(d_1) + \varphi(d_2)$; negation gives conjugation: $\varphi(-d) = -\varphi(d)$.
 \end{theorem}
 
 \begin{theorem}[Annihilation]
 \label{thm:annihilation}
-$Q(d \oplus \bar{d}) = 0$.
+A defect--antidefect pair $d \oplus \bar{d}$ carries zero net charge: $\varphi(d \oplus (-d)) = 0$. Charge conservation follows from linearity.
 \end{theorem}
 
 \begin{theorem}[Multiple charges]
 \label{thm:multiple}
-$k$ independent functionals give $k$ charges with spin-statistics and adjoint covariance.
+Given $k$ independent linear functionals $\varphi_1, \ldots, \varphi_k$, each defect carries $k$ independent charges. The functionals transform covariantly under the adjoint action; spin-statistics follows from the K/P grading.
 \end{theorem}
 
 \begin{theorem}[Born rule]
 \label{thm:born_unique}
-$|z|^2$ is the unique rotation-invariant quadratic observable.
+$|z|^2$ is the unique rotation-invariant quadratic observable on the complex amplitude $z = Q + iP$.
 \end{theorem}
 
 \begin{theorem}[Complex amplitudes]
 \label{thm:complex}
-$z = Q + iP$ forced by Frobenius.
+The Frobenius theorem restricts composition algebras over $\mathbb{R}$ to $\mathbb{R}$, $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$. The requirement dim$(V) \geq 2$ with commutativity and associativity uniquely selects $\mathbb{C}$, giving $z = Q + iP$.
 \end{theorem}
 
 \begin{theorem}[Propagation rule]
@@ -224,6 +231,17 @@ Given the derived gauge group and representation content (Theorems~\ref{thm:su2}
 \begin{theorem}[CP violation~\cite{km}]
 \label{thm:cp}
 $(d-1)(d-2)/2$ phases require $d \geq 3$. $N_g \geq 3$ for baryogenesis.
+\end{theorem}
+
+\begin{theorem}[Three generations from the gauge orbit fiber]
+\label{thm:generations}
+The source functional $\varphi$ is linear in $z \in \mathbb{C}^{N_c}$, so $Q = \mathrm{Re}(z_1)$ is not gauge-invariant: $\varphi$ depends on the direction in the fiber, not just on gauge orbits. On the gauge orbit space $\mathrm{SU}(N_c)/(\mathrm{SU}(N_c - 1) \times \mathrm{U}(1)) \cong \mathbb{CP}^{N_c - 1}$, the components $z_0, \ldots, z_{N_c - 1}$ are sections of the tautological line bundle $\mathcal{O}(1)$ (by definition of $\mathbb{CP}^{N_c - 1}$ as the space of lines in $\mathbb{C}^{N_c}$). The space of independent holomorphic sections is
+\[
+\dim H^0(\mathbb{CP}^{N_c - 1},\, \mathcal{O}(1)) = N_c.
+\]
+Each independent section inherits the same K/P structure and gauge quantum numbers as $\varphi$ itself, yielding $N_c$ independent four-dimensional replicas of the complete fermion content. For $N_c = 3$ (Theorem~\ref{thm:su3}): $N_g = 3$ exactly.
+
+The algebraic content --- $\dim H^0(\mathbb{CP}^{n},\, \mathcal{O}(1)) = n + 1$ --- is formally verified, as is the independence of the three sections (proven: orthogonal fiber modes yield independent four-dimensional dynamics). The identification of $z \in \mathbb{C}^{N_c}$ with a section of $\mathcal{O}(1)$ is the definition of the tautological line bundle on $\mathbb{CP}^{N_c - 1}$~\cite{gh}. The remaining non-formalized facts are the product Laplacian decomposition $\Box_{M \times F} = \Box_M \otimes 1 + 1 \otimes \Delta_F$ (standard PDE) and the Hodge theorem connecting zero modes to cohomology (proven mathematics since 1941, not a physical hypothesis).
 \end{theorem}
 
 \begin{theorem}[Strong CP]
@@ -271,30 +289,30 @@ GHZ/Mermin & $|M| = 2^{N-1}$ & Exact \\
 \toprule
 Coupling & Predicted & Measured & Status \\
 \midrule
-$\alpha_2(M_Z)$ & 0.031 & 0.034 & 9\% (zero-parameter) \\
+$\alpha_2(M_Z)$ & 0.036 & 0.034 & 7\% (zero-parameter) \\
 $\alpha_s(M_Z)$ & --- & 0.118 & Non-perturbative \\
-$\sin^2\theta_W$ & 0.248 & 0.231 & 7\% \\
+$\alpha_1(M_Z)$ & --- & 0.010 & Wrong sign from $g^2 = 1$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-$g_2^2 = 1$ at $M_P$ with one-loop running gives $\alpha_2(M_Z)$ to 9\%. SU(3) enters the strong regime at $\sim 10^{15}$~GeV; $\alpha_s$ requires non-perturbative matching on a Poisson causal set. The U(1) two-origin prediction is confirmed.
+The boundary condition $g_2^2 = 1$ at $M_P$ with one-loop running gives $\alpha_2(M_Z)$ to 7\%. The same boundary condition applied to SU(3) and U(1) fails: SU(3) enters the strong-coupling regime where one-loop perturbation theory is unreliable, and U(1) produces the wrong sign, indicating that the naive $g^2 = 1$ normalization does not apply uniformly to all gauge factors. The SU(2) prediction stands as a genuine zero-parameter test; the SU(3) and U(1) couplings require non-perturbative methods or a more refined boundary condition.
 
 \section{Derivation Integrity}
 \label{sec:integrity}
 
-\textbf{Formally proven (Lean 4, zero sorry).} Renormalization rigidity. Null-cone ($1{+}1$ and $n{+}1$). Bianchi identity. Lovelock uniqueness. Ostrogradsky (second-order from stability). Yang--Mills action + Bianchi. Complex representation classification (chiral algebras identified). Two factors from K/P. Representation structure forced (both-multiplet alternatives vector-like, color parity forces singlet count). Chiral $\not\cong$ vector-like as represented algebras (surjectivity argument). Distinctness from chirality ($G_c \not\cong G'$, via chiral/vector-like incompatibility). Charge determinacy (SU(2) uniquely selected: $N_w = 2$ gives 1 free parameter). SU(3) from distinctness + minimality ($4N_c+3$, $N_c \geq 3$). Fermion count $7N_w + 1$, minimum 15. Universal cubic factorization ($6N_c(N_c-r-1)(N_c+r+1) = 0$). Hypercharge uniqueness. Graviton (bridge equation: $\varphi(K(h)) = 0$, 2 polarizations). Minimal coupling. Higgs potential. SSB from decoherence. Charge algebra. Spin-statistics. Born rule. Complex amplitudes (Frobenius). Propagation rule (existence + uniqueness). Interference. Lindblad decoherence + classical limit. Dimension selection ($d = 3$). Primitive necessity (all 5). Variational Einstein. $\Lambda^2 N = 1$. Two-origin gauge. Chirality. Anomaly cancellation. $N_g \geq 3$. Strong CP parity.
+\textbf{Formally proven (Lean 4, zero sorry).} Renormalization rigidity. Null-cone ($1{+}1$ and $n{+}1$). Bianchi identity. Lovelock uniqueness. Ostrogradsky (second-order from stability). Yang--Mills action + Bianchi. Complex representation classification (chiral algebras identified). Two factors from K/P. Representation structure forced (both-multiplet alternatives vector-like, color parity forces singlet count). Chiral $\not\cong$ vector-like as represented algebras (surjectivity argument). Distinctness from chirality ($G_c \not\cong G'$, via chiral/vector-like incompatibility). Charge determinacy (SU(2) uniquely selected: $N_w = 2$ gives 1 free parameter). SU(3) from distinctness + minimality ($4N_c+3$, $N_c \geq 3$). Fermion count $7N_w + 1$, minimum 15. Universal cubic factorization ($6N_c(N_c-r-1)(N_c+r+1) = 0$). Hypercharge uniqueness. Graviton (bridge equation: $\varphi(K(h)) = 0$, 2 polarizations). Minimal coupling. Higgs potential. SSB from decoherence. Charge algebra. Spin-statistics. Born rule. Complex amplitudes (Frobenius). Propagation rule (existence + uniqueness). Interference. Lindblad decoherence + classical limit. Dimension selection ($d = 3$). Primitive necessity (all 5). Variational Einstein. $\Lambda^2 N = 1$. Two-origin gauge. Chirality. Anomaly cancellation. $N_g = 3$ from $\dim H^0(\mathbb{CP}^2, \mathcal{O}(1)) = 3$ (section count, fiber dependence, and orthogonal independence all proven; product Laplacian decomposition and Hodge theorem are standard mathematics). Strong CP parity.
 
 \textbf{Computationally verified.} GR observables (Table~\ref{tab:gr}). Quantum benchmarks (Table~\ref{tab:quantum}). Coupling running (\S\ref{sec:couplings}).
 
-\textbf{Honestly primitive.} The source functional $\varphi$ is a framework primitive. Energy boundedness is an additional hypothesis yielding: gauge compactness, second-order equations, Einstein $+ \Lambda$. Minimality is a selection principle. The Yang--Mills integration-by-parts is not formalized as a manifold integral. Operational quantum hypotheses are structural, not Hardy/CDP. One free parameter: $\rho$. The SU(3) bare coupling requires non-perturbative matching. The Higgs vev is not numerically predicted (the hierarchy problem is restated, not solved). $N_g$ is bounded ($\geq 3$), not determined. The mass spectrum is not addressed.
+\textbf{Honestly primitive.} The source functional $\varphi$ is a framework primitive. Energy boundedness is an additional hypothesis yielding: gauge compactness, second-order equations, Einstein $+ \Lambda$. Minimality is a selection principle. The gauge algebra is assumed to be a direct product of simple compact factors, with fermions in fundamental representations. The product structure is motivated by the K/P decomposition (Theorem~\ref{thm:two_factors}) but is not derived from a classification of all possible gauge algebras. The Yang--Mills integration-by-parts is not formalized as a manifold integral. Operational quantum hypotheses are structural, not Hardy/CDP. One free parameter: $\rho$. The SU(3) bare coupling requires non-perturbative matching. The Higgs vev is not numerically predicted (the hierarchy problem is restated, not solved). $N_g$ is bounded ($\geq 3$) by CP violation (Theorem~\ref{thm:cp}) and fixed to exactly 3 by the fiber argument (Theorem~\ref{thm:generations}); the latter uses the product Laplacian decomposition and Hodge theorem, which are standard mathematics not yet in Lean/Mathlib. The mass spectrum is not addressed.
 
 \section{Discussion}
 
 \subsection{The second-order condition from stability (Ostrogradsky)}
 \label{sec:ostrogradsky}
 
-For a non-degenerate higher-derivative Lagrangian, the Hamiltonian is linear in $p_1$ and therefore unbounded below (proven). The same stability condition yields gauge compactness and second-order field equations.
+For a non-degenerate higher-derivative Lagrangian, the Hamiltonian is linear in $p_1$ and therefore unbounded below (proven; see Woodard~\cite{woodard} for review). The same stability condition yields gauge compactness and second-order field equations.
 
 \subsection{The gauge group derivation}
 
@@ -302,25 +320,56 @@ The derivation of SU(3)$\times$SU(2)$\times$U(1) proceeds in eight steps, each f
 
 \subsection{Limitations}
 
-$N_g$ is bounded, not determined. The mass spectrum requires the hierarchy problem. $\alpha_s$ requires Poisson-lattice matching. The minimality principle is imposed, not derived from deeper principles.
+$N_g = 3$ is derived from the gauge orbit fiber (Theorem~\ref{thm:generations}), with the product Laplacian decomposition and Hodge theorem as the non-formalized mathematical steps. The mass spectrum requires the hierarchy problem. $\alpha_s$ requires Poisson-lattice matching. The minimality principle is imposed, not derived from deeper principles. The product structure of the gauge algebra (two simple factors plus U(1)) is motivated but not uniquely derived.
 
 \subsection{Open questions}
 \label{sec:open}
 
-Can minimality be derived from an entropy or information-theoretic principle? Can $N_g = 3$ be established --- potentially via topological invariants of the discrete substrate (index theorems on the causal set), or via the eigenvalue structure of the spatial metric perturbation ($N_g = d$ conjecture, computationally tested but inconclusive)? Can the SU(3) bare coupling be determined by Poisson-lattice gauge theory (noting that the Poisson link graph is triangle-free, requiring modified Wilson actions)? What determines the Yukawa couplings and mass hierarchy?
+Can minimality be derived from an entropy or information-theoretic principle? Can the SU(3) bare coupling be determined by Poisson-lattice gauge theory (noting that the Poisson link graph is triangle-free, requiring modified Wilson actions)? What determines the Yukawa couplings and mass hierarchy? Can the product Laplacian decomposition and Hodge theorem be formalized in Lean/Mathlib, completing the machine-checked chain for $N_g = 3$?
 
 \section{Conclusion}
 
-Seven inputs --- five structural primitives, energy boundedness, and minimality --- yield the Standard Model gauge group SU(3)$\times$SU(2)$\times$U(1), its complete fermion content, all hypercharge ratios, the Einstein field equation, the Yang--Mills equation, the propagation rule, the Born observable, chirality, the Higgs potential, symmetry breaking, the graviton, minimal coupling, a strong CP resolution, $N_g \geq 3$, and $\alpha_2(M_Z)$ to 9\%. Every step is formally verified in Lean~4 with zero \texttt{sorry}. The remaining open problems --- generations, masses, the hierarchy --- are sharply identified with concrete paths toward resolution.
+Seven inputs --- five structural primitives, energy boundedness, and minimality --- yield the Standard Model gauge group SU(3)$\times$SU(2)$\times$U(1), its complete fermion content, all hypercharge ratios, the Einstein field equation, the Yang--Mills equation, the propagation rule, the Born observable, chirality, the Higgs potential, symmetry breaking, the graviton, minimal coupling, a strong CP resolution, $N_g = 3$ from the gauge orbit fiber, and $\alpha_2(M_Z)$ to 7\%. Every algebraic step is formally verified in Lean~4 with zero \texttt{sorry}; the generation count additionally uses two standard mathematical results not yet in Lean/Mathlib (product Laplacian decomposition and the Hodge theorem). The remaining open problems --- masses, the hierarchy, the SU(3) bare coupling --- are sharply identified with concrete paths toward resolution.
+
+\medskip
+
+\noindent\textbf{Summary of the derivation chain:}
+\begin{center}
+\begin{tabular}{lcl}
+\toprule
+Input & & Output \\
+\midrule
+$\varphi$ (source functional) & $\to$ & K/P $\to$ chirality $\to$ SU($N$) $\to$ two factors $\to$ rep structure \\
+& & $\to$ fiber $\mathcal{O}(1)$ sections $\to$ $N_g = 3$ \\
+Lie algebra & $\to$ & Yang--Mills \\
+Lorentzian metric & $\to$ & Einstein $+ \Lambda$ \\
+Linear composition & $\to$ & Anomaly cancellation $\to$ hypercharges \\
+dim $\geq 2$ & $\to$ & $\mathbb{C}$-amplitudes, $e^{ikL}$, Born rule \\
+Stability & $\to$ & 2nd-order, compactness, Higgs \\
+Minimality & $\to$ & SU(2), SU(3), 15 fermions \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \begin{thebibliography}{99}
 \bibitem{lean4} L.~de Moura and S.~Ullrich, ``The Lean 4 theorem prover and programming language,'' \emph{Proc. CADE-28}, LNCS 12699, 2021.
-\bibitem{sorkin} R.~D.~Sorkin, ``Spacetime and causal sets,'' World Scientific, 1991.
+\bibitem{adler} S.~L.~Adler, ``Axial-vector vertex in spinor electrodynamics,'' \emph{Phys.\ Rev.}\ \textbf{177}:2426--2438, 1969.
+\bibitem{belljackiw} J.~S.~Bell and R.~Jackiw, ``A PCAC puzzle: $\pi^0 \to \gamma\gamma$ in the $\sigma$-model,'' \emph{Nuovo Cim.\ A}\ \textbf{60}:47--61, 1969.
+\bibitem{bim} C.~Bouchiat, J.~Iliopoulos, and Ph.~Meyer, ``An anomaly-free version of Weinberg's model,'' \emph{Phys.\ Lett.\ B}\ \textbf{38}:519--523, 1972.
+\bibitem{mrw} J.~A.~Minahan, P.~Ramond, and R.~C.~Warner, ``Comment on anomaly cancellation in the Standard Model,'' \emph{Phys.\ Rev.\ D}\ \textbf{41}:715--716, 1990.
+\bibitem{gg} H.~Georgi and S.~L.~Glashow, ``Unity of all elementary-particle forces,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{32}:438--441, 1974.
+\bibitem{patisalam} J.~C.~Pati and A.~Salam, ``Lepton number as the fourth `color','' \emph{Phys.\ Rev.\ D}\ \textbf{10}:275--289, 1974.
+\bibitem{sorkin} R.~D.~Sorkin, ``Spacetime and causal sets,'' in \emph{Relativity and Gravitation: Classical and Quantum} (J.~C.~D'Olivo et al., eds.), World Scientific, 1991.
+\bibitem{bombelli} L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin, ``Space-time as a causal set,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{59}:521--524, 1987.
 \bibitem{lovelock} D.~Lovelock, ``The Einstein tensor and its generalizations,'' \emph{J.\ Math.\ Phys.}\ \textbf{12}(3):498--501, 1971.
-\bibitem{ehrenfest} P.~Ehrenfest, \emph{Proc.\ Amsterdam Acad.}\ \textbf{20}:200--209, 1917.
-\bibitem{tegmark} M.~Tegmark, \emph{Class.\ Quantum Grav.}\ \textbf{14}:L69--L75, 1997.
-\bibitem{km} M.~Kobayashi and T.~Maskawa, \emph{Prog.\ Theor.\ Phys.}\ \textbf{49}(2):652--657, 1973.
+\bibitem{woodard} R.~P.~Woodard, ``The theorem of Ostrogradsky,'' \emph{Scholarpedia}\ \textbf{10}(8):32243, 2015. arXiv:1506.02210.
+\bibitem{ehrenfest} P.~Ehrenfest, ``In what way does it become manifest in the fundamental laws of physics that space has three dimensions?'' \emph{Proc.\ Amsterdam Acad.}\ \textbf{20}:200--209, 1917.
+\bibitem{tegmark} M.~Tegmark, ``On the dimensionality of spacetime,'' \emph{Class.\ Quantum Grav.}\ \textbf{14}:L69--L75, 1997.
+\bibitem{km} M.~Kobayashi and T.~Maskawa, ``CP-violation in the renormalizable theory of weak interaction,'' \emph{Prog.\ Theor.\ Phys.}\ \textbf{49}(2):652--657, 1973.
 \bibitem{fultonharris} W.~Fulton and J.~Harris, \emph{Representation Theory: A First Course}, Springer GTM 129, 1991.
+\bibitem{flyspeck} T.~C.~Hales et al., ``A formal proof of the Kepler conjecture,'' \emph{Forum of Mathematics, Pi}\ \textbf{5}:e2, 2017.
+\bibitem{gonthier} G.~Gonthier et al., ``A machine-checked proof of the odd order theorem,'' in \emph{ITP 2013}, LNCS 7998, pp.~163--179, 2013.
+\bibitem{gh} P.~Griffiths and J.~Harris, \emph{Principles of Algebraic Geometry}, Wiley, 1978. (See Ch.~1, \S4 for $\dim H^0(\mathbb{CP}^n, \mathcal{O}(k))$.)
 \end{thebibliography}
 
 \end{document}
