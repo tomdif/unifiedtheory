@@ -155,13 +155,10 @@ theorem extra_singlets_cost (Nc : ℕ) (hNc : Nc ≥ 2) :
 theorem extra_multiplets_cost (Nc Nw : ℕ) (hNc : Nc ≥ 2) (hNw : Nw ≥ 2) :
     2 * Nc * Nw ≥ 8 := by nlinarith
 
-/-- **The SM assignment (1 multiplet, 0 extra singlets) has the minimum
-    colored fermion count among chiral color-parity assignments.**
-    Colored fermions = 2·Nc·(n_NcNw·Nw + n_Nc1) by color parity.
-    Minimum chiral value: n_NcNw = 1, n_Nc1 = 0 → 2·Nc·Nw. -/
-theorem sm_colored_is_minimal (Nc Nw : ℕ) :
-    -- SM colored count
-    2 * Nc * Nw ≤ 2 * Nc * Nw := le_refl _
+/-! The SM colored sector (1 multiplet + Nw singlets, 0 extras) has
+    the minimum colored count 2·Nc·Nw among chiral options.
+    Adding extra singlets costs ≥ 2·Nc; extra multiplets cost ≥ 2·Nc·Nw.
+    See `extra_singlets_cost` and `extra_multiplets_cost` above. -/
 
 /-! ## Anomaly independence forces the charge count -/
 
