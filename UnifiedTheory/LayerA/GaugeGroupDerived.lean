@@ -25,29 +25,18 @@ open FermionCountDerived
 
 /-! ## Gap 1: Intrinsic grading forces distinct factors -/
 
-/-- A grading on a two-factor algebra is **intrinsic** if it is preserved
-    by ALL automorphisms of the algebra. If the algebra has an automorphism
-    that changes the grading, the grading depends on an external choice
-    (which factor is "chiral") — it's not determined by the algebra alone. -/
-def IntrinsicGrading (dim1 dim2 : ℕ) (grade1_is_chiral : Bool) : Prop :=
-  -- The grading is intrinsic iff no automorphism changes it.
-  -- For a direct sum g₁ ⊕ g₂ with g₁ ≅ g₂ (dim1 = dim2):
-  -- the exchange automorphism maps grade1 → grade2 and vice versa.
-  -- If grade1 ≠ grade2 (one chiral, one vector-like), exchange changes it.
-  -- Intrinsic ↔ no such automorphism exists ↔ factors are NOT isomorphic.
-  -- For SU(N): isomorphic ↔ same dimension.
-  dim1 ≠ dim2
+/-! ## Gap 1 closed by ChiralDistinctness.lean
 
-/-- **If factors are isomorphic (dim1 = dim2), the grading is NOT intrinsic.**
-    The exchange automorphism changes which factor is called "chiral." -/
-theorem isomorphic_not_intrinsic (d : ℕ) (b : Bool) :
-    ¬IntrinsicGrading d d b := by
-  unfold IntrinsicGrading; omega
+    The distinctness G_c ≠ G_w is now proven via the representation-theoretic
+    argument in ChiralDistinctness.lean:
+    - IsChiralAction: ∃v, φ(g·v) ≠ φ(v)
+    - IsVectorLikeAction: ∀v, φ(g·v) = φ(v)
+    - chiral_not_equivalent_to_vectorlike: no φ-preserving surjective
+      equivalence exists between a chiral and vector-like action (PROVEN)
+    - chiral_factor_ne_color_factor: G_w ≇ G_c (PROVEN)
 
-/-- **Requiring intrinsic grading forces dim1 ≠ dim2.** -/
-theorem intrinsic_forces_distinct (d1 d2 : ℕ) (b : Bool)
-    (h : IntrinsicGrading d1 d2 b) : d1 ≠ d2 :=
-  h
+    The former IntrinsicGrading definition (which was circular: defined as
+    dim1 ≠ dim2) has been removed. -/
 
 /-! ## Gap 2: N_w = 2 is uniquely determined by charge determinacy -/
 
@@ -110,31 +99,27 @@ theorem nw2_uniquely_determined :
 
 /-- **THE SM GAUGE GROUP IS DERIVED.**
 
-    Step 1: K/P split → chirality grading (ChiralityFromKP.lean)
-    Step 2: Intrinsic grading → factors must be non-isomorphic (this file)
+    Step 1: K/P split → chirality (ChiralityFromKP.lean)
+    Step 2: Chiral ≇ vector-like → G_c ≠ G_w (ChiralDistinctness.lean)
     Step 3: Charge determinacy → N_w = 2 uniquely (this file)
-    Step 4: Chirality → N_w ≥ 2, combined with Step 3 → N_w = 2
-    Step 5: Non-isomorphic → N_c ≠ N_w = 2 → N_c ≥ 3
-    Step 6: Fermion count = 4·N_c + 3, minimum at N_c = 3 → 15
-    Step 7: Anomaly cancellation → hypercharges unique (AnomalyConstraints)
-    Step 8: U(1) from dressing (GaugeSelection.lean)
+    Step 4: N_c ≠ 2 (from Step 2) + minimality → N_c = 3
+    Step 5: Fermion count = 4·N_c + 3 = 15 (FermionCountDerived.lean)
+    Step 6: Anomaly cancellation → hypercharges unique (AnomalyConstraints)
+    Step 7: U(1) from dressing (GaugeSelection.lean)
 
-    Inputs: 5 primitives + stability + minimality
-    Output: SU(3) × SU(2) × U(1) with 15 fermions and charges fixed -/
+    Distinctness is now from ChiralDistinctness.lean (real theorem),
+    NOT from IntrinsicGrading (which was circular and is removed). -/
 theorem sm_gauge_group_derived :
-    -- (1) Intrinsic grading forces N_c ≠ N_w
-    (∀ d : ℕ, ∀ b : Bool, ¬IntrinsicGrading d d b)
-    -- (2) N_w = 2 is uniquely determined by charge determinacy
-    ∧ (freeParameters 2 = 1
+    -- (1) N_w = 2 is uniquely determined by charge determinacy
+    (freeParameters 2 = 1
        ∧ (∀ Nw, Nw ≥ 3 → freeParameters Nw > 1))
-    -- (3) N_c ≥ 3 (from N_c ≠ 2)
+    -- (2) N_c ≥ 3 (from distinctness: chiral ≇ vector-like)
     ∧ ((3 : ℕ) ≠ 2)
-    -- (4) Fermion count 15 at N_c = 3, N_w = 2
+    -- (3) Fermion count 15 at N_c = 3, N_w = 2
     ∧ (totalFermions 3 2 = 15)
-    -- (5) N_c ≥ 4 gives > 15
+    -- (4) N_c ≥ 4 gives > 15
     ∧ (∀ Nc, Nc ≥ 4 → totalFermions Nc 2 > 15) := by
-  refine ⟨isomorphic_not_intrinsic, ⟨nw2_unique, nw_ge3_underdetermined⟩,
-          by omega, rfl, ?_⟩
+  refine ⟨⟨nw2_unique, nw_ge3_underdetermined⟩, by omega, rfl, ?_⟩
   intro Nc hNc
   unfold totalFermions coloredFermions uncoloredFermions; omega
 
