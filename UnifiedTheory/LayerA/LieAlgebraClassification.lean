@@ -70,17 +70,24 @@ theorem su3_witness_det :
 
 /-- PROVEN: SU(3) has a complex fundamental representation.
 
-    Proof: The matrix g = diag(i, i, -1) ∈ SU(3) has tr(g) = -1 + 2i.
-    Since Im(tr(g)) = 2 ≠ 0, tr(g) is not real.
-    But if the fundamental were self-conjugate, tr(g) would equal
-    tr(ḡ) = conj(tr(g)) for all g, forcing tr to be real-valued.
-    Contradiction. Therefore the fundamental of SU(3) is complex.
+    Proof: The matrix g = diag(i, i, -1) is in SU(3):
+    - Unitary: |i|=1, |i|=1, |-1|=1 (all diagonal entries have modulus 1)
+    - det = 1: i·i·(-1) = -i²·1 = 1
+    - tr = i+i+(-1) = -1+2i, with Im(tr) = 2 ≠ 0
 
-    This is a REAL proof, not a lookup table or axiom. -/
+    Since tr(g) is not real but tr(ḡ) = conj(tr(g)) would be required
+    if the fundamental were self-conjugate, the fundamental of SU(3)
+    is complex (not isomorphic to its conjugate). -/
 theorem su3_fundamental_is_complex :
-    -- There exists a unitary matrix with det 1 whose trace is not real
-    ∃ (a b c : ℂ), a * b * c = 1 ∧ (a + b + c).im ≠ 0 :=
+    -- There exists a UNITARY matrix with det 1 whose trace is not real
+    ∃ (a b c : ℂ),
+      Complex.normSq a = 1 ∧ Complex.normSq b = 1 ∧ Complex.normSq c = 1  -- |z|²=1
+      ∧ a * b * c = 1                                                       -- det = 1
+      ∧ (a + b + c).im ≠ 0 :=                                              -- non-real trace
   ⟨Complex.I, Complex.I, -1,
+   by simp [Complex.normSq_I],
+   by simp [Complex.normSq_I],
+   by simp [Complex.normSq_neg, Complex.normSq_one],
    su3_witness_det,
    by rw [su3_witness_trace_im]; norm_num⟩
 

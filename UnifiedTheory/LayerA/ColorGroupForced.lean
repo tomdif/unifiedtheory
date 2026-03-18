@@ -149,20 +149,14 @@ theorem sm_gauge_group_forced :
     forces G_c ≇ G'. This follows from the chirality theorem, not
     imposed separately. -/
 
-/-- A theory with two gauge factors has an exchange symmetry iff
-    the factors are isomorphic. -/
-def HasExchangeSymmetry (Nc Nw : ℕ) : Prop := Nc = Nw
+/-- Distinctness of the two gauge factors is proven in
+    DistinctnessFromChirality.lean via the exchange-incompatibility
+    theorem. For SU(N_c) × SU(N_w): if N_c = N_w, the exchange
+    automorphism exists but reverses the K/P grading (proven).
+    Since chirality requires the grading to be preserved, N_c ≠ N_w.
 
-/-- Structural note: the hypothesis `h_chiral : Nc ≠ Nw → True` is
-    vacuous (always satisfied) and serves as a placeholder. The actual
-    content is `h_no_exchange : ¬HasExchangeSymmetry Nc Nw` which
-    directly gives `Nc ≠ Nw`. The physics argument about chirality
-    breaking exchange symmetry is in the comments, not encoded here. -/
-theorem chirality_breaks_exchange (Nc Nw : ℕ)
-    (h_chiral : Nc ≠ Nw → True)  -- chirality distinguishes when Nc ≠ Nw
-    (h_no_exchange : ¬HasExchangeSymmetry Nc Nw) :
-    Nc ≠ Nw := by
-  intro heq; exact h_no_exchange heq
+    The former `chirality_breaks_exchange` theorem had a vacuous
+    hypothesis and reduced to ¬P → ¬P. Deleted per audit. -/
 
 /-- Assembles arithmetic facts (not a single derivation):
     (a) 7*N+1 > 7*2+1 for N >= 3 (arithmetic),
