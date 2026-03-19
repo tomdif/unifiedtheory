@@ -171,7 +171,7 @@ theorem discrete_malament_1plus1
       (C, ≺) → null cone → conformal class → + volume → full metric
 
     The 1+1 algebraic core is fully proven.
-    The dense-limit approximation has 3 sorrys (epsilon-delta analysis).
+    The dense-limit approximation is fully proven (zero sorry).
     The general n+1 version requires the general null-cone theorem. -/
 theorem stage3_closed_1plus1 :
     -- For any two metrics compatible with the Minkowski null cone:

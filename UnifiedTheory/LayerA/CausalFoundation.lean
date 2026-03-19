@@ -52,14 +52,13 @@ def CausalSet.isChain (C : CausalSet) (chain : List C.Event) : Prop :=
   ∀ (i j : Fin chain.length), i.val < j.val →
     C.prec (chain.get i) (chain.get j)
 
-/-- The **length** of the longest chain between two events.
-    This is the discrete analogue of proper time. -/
+/-- Placeholder for the longest chain length between two events.
+    Returns 0 (not implemented — real computation requires chain enumeration).
+    The discrete analogue of proper time. -/
 noncomputable def CausalSet.longestChain (C : CausalSet)
     [DecidableEq C.Event] [Fintype C.Event]
     (a b : C.Event) : ℕ :=
-  -- In a finite causal set, this is computable
-  -- For now, define it as the sup over chain lengths
-  0 -- placeholder; real implementation requires chain enumeration
+  0 -- placeholder; not used by any theorem
 
 /-! ### Stage 2: Dimension from chain counting -/
 

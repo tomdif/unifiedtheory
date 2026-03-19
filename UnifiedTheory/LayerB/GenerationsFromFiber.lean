@@ -120,24 +120,7 @@ theorem charge_not_gauge_invariant :
 theorem vector_space_dim (n : ℕ) : Module.finrank ℝ (Fin n → ℝ) = n := by
   rw [Module.finrank_eq_card_basis (Pi.basisFun ℝ (Fin n)), Fintype.card_fin]
 
-/-- The generation count := dim(ℝ^{N_c}) = N_c.
-
-    This uses the vector space dimension theorem (a Mathlib proof), not
-    a hand-defined function. The number of independent linear forms on
-    ℝ^{N_c} (≅ sections of O(1) on CP^{N_c-1}) is N_c. -/
-noncomputable def generationCount' (Nc : ℕ) : ℕ := Module.finrank ℝ (Fin Nc → ℝ)
-
-/-- PROVEN: generationCount' N_c = N_c via Mathlib linear algebra.
-    This is NOT arithmetic on a hand-defined function — it invokes
-    finrank_eq_card_basis and Fintype.card_fin from Mathlib. -/
-theorem generationCount'_eq (Nc : ℕ) : generationCount' Nc = Nc := by
-  unfold generationCount'
-  exact vector_space_dim Nc
-
-/-- PROVEN: For the Standard Model (N_c = 3): N_g = 3.
-    Uses Mathlib's vector space dimension, not `3 = 3 := rfl`. -/
-theorem three_generations' : generationCount' 3 = 3 :=
-  generationCount'_eq 3
+-- generationCount' was a duplicate of generationCount (below). Removed.
 
 -- DELETED: Former sections_O1 (n) := n + 1 was the successor function.
 -- The real proof is vector_space_dim above (via Module.finrank).

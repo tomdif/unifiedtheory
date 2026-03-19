@@ -50,7 +50,7 @@ theorem enclosure_single_vs_composite (db : ComposableDefectBlock V)
     opposite sign strictly reduces the absolute charge. -/
 theorem opposite_reduces_magnitude (db : ComposableDefectBlock V)
     (d₁ d₂ : db.Defect)
-    (_h₁ : 0 < charge db d₁) (h₂ : charge db d₂ < 0) :
+    (h₂ : charge db d₂ < 0) :
     charge db (db.compose d₁ d₂) < charge db d₁ := by
   rw [charge_additive]; linarith
 
@@ -208,7 +208,7 @@ theorem structural_inevitability (db : ComposableDefectBlock V) :
     ∧ (∀ d p, charge db (db.compose d p) = 0 →
         charge db p = -(charge db d))
     -- (6) Opposite reduces
-    ∧ (∀ d₁ d₂, 0 < charge db d₁ → charge db d₂ < 0 →
+    ∧ (∀ d₁ d₂, charge db d₂ < 0 →
         charge db (db.compose d₁ d₂) < charge db d₁) :=
   ⟨enclosure_theorem db,
    like_charges_never_neutral db,
