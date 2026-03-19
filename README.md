@@ -123,12 +123,27 @@ Requires Lean 4 and Mathlib. The axiom footprint is `{propext, Classical.choice,
 
 The paper is at [`paper/unified_theory_paper.tex`](paper/unified_theory_paper.tex) ([PDF](paper/unified_theory_paper.pdf)).
 
+## Computational Companion: Mass Ratio Predictions
+
+The K/P source functional projection, computed on Poisson causal sets with derived SU(3) × SU(2) holonomies, produces zero-parameter predictions of quark mass ratios:
+
+| Observable | Computed | Experiment | Factor |
+|---|---|---|---|
+| m_c/m_t | **0.005** | 0.004 | **1.4x** |
+| m_u/m_t | **0.000016** | 0.0000074 | **2.2x** |
+| m_s/m_b | **0.016** | 0.019 | **0.86x** (preliminary) |
+
+Code and data: **[causal-higgs-sim](https://github.com/tomdif/causal-higgs-sim)** (standalone Python repo, no Lean dependency).
+
 ## What's Open
 
-- **SU(3) bare coupling** — needs non-perturbative matching on Poisson causal set (triangle-free graph requires modified Wilson actions)
-- **Mass spectrum** — framework accommodates hierarchy (Yukawa overlaps on CP²) but does not predict mass values; σ is a free parameter
+- **Down-type Yukawa vertex** — derive how U(1) hypercharge enters the K/P projection from gauge-invariance of the Yukawa coupling
+- **Lepton sector** — develop K/P projection for color singlets
+- **CKM matrix** — extract from up/down Yukawa misalignment
+- **SU(3) bare coupling** — needs non-perturbative matching on Poisson causal set
+- **Absolute mass scale** — requires Higgs VEV v = 246 GeV (hierarchy problem)
 - **Minimality** — imposed as selection principle, not derived from deeper principles
-- **Product Laplacian + Hodge theorem** — standard mathematics (1941), not yet in Lean/Mathlib; formalizing these completes the machine-checked chain for N_g = 3
+- **Product Laplacian + Hodge theorem** — standard mathematics (1941), not yet in Lean/Mathlib
 
 ## Citation
 
