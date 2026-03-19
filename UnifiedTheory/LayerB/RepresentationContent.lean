@@ -335,11 +335,8 @@ theorem conditional_sm_derivation :
 def CubicIsIndependent (null_dim : ℕ) (cubic_degenerate : Bool) : Prop :=
   null_dim = 2 ∧ cubic_degenerate = false
 
-/-- Arithmetic fact: `rfl` (5 = 5). The identification of 5 species
-    types with specific SM fermions is in the comments, not in the theorem. -/
-theorem sm_has_five_species :
-    -- Q_L, ū_L, d̄_L, L_L, ē_L
-    5 = 5 := rfl
+-- DELETED: Former `sm_has_five_species` was `5 = 5 := rfl`.
+-- The species count is encoded in RepStructureForced.smAssignment.
 
 /-- Arithmetic fact: 5 - 3 = 2 (omega). The interpretation as
     null-space dimension of anomaly conditions is in the comments. -/

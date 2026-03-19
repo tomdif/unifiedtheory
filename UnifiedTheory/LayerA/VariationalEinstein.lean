@@ -185,11 +185,10 @@ theorem riemann_self_contract_34 (rd : RiemannData n) (a b : Fin n) :
   have := rd.antisym2 a b c c
   linarith
 
-/-- **Cross-contraction (1,3) is the Ricci contraction.**
-    ∑_a R_{abad} is the defining contraction for Ric_{bd}.
-    This is the UNIQUE independent single contraction of the Riemann tensor. -/
-theorem riemann_contract_13 (rd : RiemannData n) (b d : Fin n) :
-    ∑ a : Fin n, rd.R a b a d = ∑ a : Fin n, rd.R a b a d := rfl
+/-- The Ricci tensor as the (1,3)-contraction of Riemann.
+    Ric_{bd} := ∑_a R_{abad}. This is the DEFINING contraction for Ricci. -/
+def ricciContraction (rd : RiemannData n) (b d : Fin n) : ℝ :=
+  ∑ a : Fin n, rd.R a b a d
 
 /-- **Cross-contraction (1,4) gives -Ric.**
     ∑_a R_{abca} = -(∑_a R_{abac}) (from antisym2). -/

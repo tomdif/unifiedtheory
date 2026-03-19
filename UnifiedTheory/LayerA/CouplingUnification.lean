@@ -51,12 +51,8 @@ theorem scale_4d (rho : ℝ) :
     natural normalization of the action per plaquette is in the comments. -/
 def naturalCoupling : ℝ := 1
 
-/-- Definitional: this is `rfl` (the tautology `naturalCoupling = naturalCoupling`).
-    The coupling unification claim is a physics argument in the comments;
-    this theorem proves only that a value equals itself. -/
-theorem couplings_unify_at_cutoff :
-    -- All gauge couplings equal the natural coupling at the cutoff
-    naturalCoupling = naturalCoupling := rfl
+-- DELETED: Former `couplings_unify_at_cutoff` was `naturalCoupling = naturalCoupling := rfl`.
+-- The coupling unification claim is a physics argument, not a Lean theorem.
 
 /-! ## Running from Planck to electroweak -/
 

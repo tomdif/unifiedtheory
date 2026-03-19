@@ -38,13 +38,9 @@ namespace UnifiedTheory.LayerA.NormalizationTheorem
 
 /-! ## Part 1: Scaling exponent is determined by dimension -/
 
-/-- **The scaling exponent α = d-1 is determined by dimension alone.**
-    In spatial dimension d, the unique RG fixed-point exponent is α = d-1.
-    In 3+1 dimensions (d=3): α = 2 (inverse-square law).
-    This is NOT a free parameter — it is derived. -/
-theorem scaling_from_dimension (d : ℕ) :
-    -- The exponent is d-1
-    (d : ℤ) - 1 = (d : ℤ) - 1 := rfl  -- Trivially true; the content is derived in RenormRigidity
+-- The scaling exponent α = d-1 is determined by dimension alone.
+-- DELETED: Former `scaling_from_dimension` was `(d:ℤ)-1 = (d:ℤ)-1 := rfl`.
+-- The real content is in RenormRigidity.lean (renormalization_rigidity theorem).
 
 /-! ## Part 2: Volume ratios need no parameters -/
 

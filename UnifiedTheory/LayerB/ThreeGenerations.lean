@@ -193,17 +193,19 @@ theorem sym_2x2_has_real_eigenvalues (a b c : ℝ) :
   dim(ℝ³) = 3, whether you decompose via eigenvalues or O(1) sections.
 -/
 
-/-- PROVEN: The eigenvalue conjecture for d = 3.
+/-- The spectral + dimensional chain for d = 3.
 
-    A 3×3 real symmetric matrix has 3 real eigenvalues:
-    (a) Char poly degree = 3 → at least 1 real root (odd degree)
-    (b) After deflation: 2×2 symmetric → 2 more real roots (discriminant ≥ 0)
-    (c) Each eigenvalue gives an independent mode (orthogonal decomposition)
-    (d) 3 modes = 3 generations
+    Proven facts assembled:
+    (a) Eigenvalue index set has cardinality 3 (Fintype.card_fin)
+    (b) Spatial vector space is 3-dimensional (Module.finrank via Mathlib)
+    (c) 2×2 symmetric eigenvalue problem has real solutions (discriminant ≥ 0)
+    (d) CP violation requires d ≥ 3 (phase counting)
+    (e) Orbital stability requires d ≤ 3
 
-    The key mathematical fact: the 2×2 residual has non-negative discriminant
-    for symmetric matrices. This is proven (sym_2x2_has_real_eigenvalues). -/
-theorem eigenvalue_conjecture_resolved :
+    The identification "eigenvalue = generation" is the SAME identification
+    as in the fiber argument: independent modes of a d-dimensional space
+    give independent 4D fields. This is a definition, not a derivation. -/
+theorem spectral_dimension_chain :
     -- (a) 3×3 symmetric matrix has 3 eigenvalues
     (Fintype.card (Fin 3) = 3)
     -- (b) 3-dimensional spatial space (= number of eigenvectors)

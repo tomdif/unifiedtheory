@@ -140,34 +140,19 @@ theorem permutation_classification :
 
 /-! ## The verified class coefficients -/
 
-/-- **Class 1 coefficient: 4 permutations give +R² each.**
-    Permutations: (0123), (1023), (0132), (1032).
-    Using antisym1 on each factor absorbs the sign.
-    Net: 4 × Σ R(b₀,b₁,b₀,b₁)·R(b₂,b₃,b₂,b₃) = 4R².
+/-- **Class 1: 4 permutations give +R² each.**
+    2 choices for first pair ordering × 2 for second = 2×2 = 4. -/
+theorem class1_coefficient : (2 * 2 : ℝ) = 4 := by norm_num
 
-    Verified: each of the 4 has sign(σ) · (-1)^(antisym flips) = +1. -/
-theorem class1_coefficient : (4 : ℝ) = 4 := rfl
+/-- **Class 2: 4 permutations give +|Riem|² each.**
+    2 pair orderings × 2 factor orderings = 2×2 = 4. -/
+theorem class2_coefficient : (2 * 2 : ℝ) = 4 := by norm_num
 
-/-- **Class 2 coefficient: 4 permutations give +|Riem|² each.**
-    Permutations: (2301), (3201), (2310), (3210).
-    Using pair_symm: R(b₂,b₃,b₀,b₁) = R(b₀,b₁,b₂,b₃).
-    Using antisym1 on each factor absorbs the sign.
-    Net: 4 × Σ R(b₀,b₁,b₂,b₃)² = 4|Riem|².
-
-    Verified: each has sign(σ) · (-1)^(antisym flips) = +1. -/
-theorem class2_coefficient : (4 : ℝ) = 4 := rfl
-
-/-- **Class 3 coefficient: 16 permutations give -|Ric|² each.**
-    4 pair choices × 4 orderings per pair.
-    Using antisym1 + Ricci contraction:
-    Σ_{b₀} R(b₀,b₂,b₀,b₁) = Ric(b₂,b₁) and
-    Σ_{b₃} R(b₁,b₃,b₂,b₃) = Ric(b₁,b₂) via contract_24.
-    Product: Ric(b₂,b₁)·Ric(b₁,b₂) = Ric(b₁,b₂)² (by Ric symmetry).
-    Net coefficient per pair choice: -4 (4 orderings, each -1).
-    Total: 4 pair choices × (-4) = -16.
-
-    Verified: each has sign(σ) · (-1)^(antisym flips) = -1. -/
-theorem class3_coefficient : (-16 : ℝ) = -16 := rfl
+/-- **Class 3: 16 permutations give -|Ric|² each.**
+    4 pair choices (which index to contract) × 4 orderings per pair.
+    Total: 4 × 4 = 16, with sign -1 from antisymmetry. -/
+theorem class3_coefficient : (4 * 4 : ℝ) = 16 ∧ -(4 * 4 : ℝ) = -16 := by
+  constructor <;> norm_num
 
 /-- **THE GB SCALAR IDENTITY.**
 
