@@ -141,7 +141,7 @@ theorem epsilon_pair_reduces_to_delta {n : ℕ} (a b : Fin n → Fin n) :
 
 /-! ## Part 3: Higher-derivative restriction -/
 
-/-- **Higher-derivative restriction.**
+/- **Higher-derivative restriction** (modeling assumption, not formalized).
 
     The Lovelock theorem RESTRICTS to tensors built from the metric g
     and its derivatives up to second order (∂g, ∂²g).
@@ -165,8 +165,8 @@ theorem epsilon_pair_reduces_to_delta {n : ℕ} (a b : Fin n → Fin n) :
     Higher-derivative theories (f(R), Gauss-Bonnet Lagrangian in d > 4, etc.)
     produce field equations involving ∂³g and ∂⁴g. These are excluded from
     the Lovelock class by hypothesis. -/
-theorem higher_derivative_restriction_is_hypothesis :
-    True := trivial
+-- NOTE: higher_derivative_restriction_is_hypothesis is an explicit
+-- modeling assumption (H), not a derived result. Documented above.
 
 /-! ## Part 4: The complete Lovelock theorem in 4D -/
 

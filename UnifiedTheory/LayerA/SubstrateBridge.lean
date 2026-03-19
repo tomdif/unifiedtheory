@@ -101,7 +101,7 @@ theorem dense_limit_recovers_null (d : ℕ) (hd : 0 < d) (ε : ℝ) (hε : 0 < �
   rw [show ε * ρ * (1 / ρ) = ε from by field_simp] at h2
   linarith
 
-/-- **Isotropy: Poisson sprinklings are direction-independent.**
+/- **Isotropy: Poisson sprinklings are direction-independent** (not formalized).
     A Poisson process on a Lorentzian manifold is invariant under the
     local Lorentz group (boosts and rotations). This means:
     - Links are equally likely in all null directions
@@ -111,12 +111,13 @@ theorem dense_limit_recovers_null (d : ℕ) (hd : 0 < d) (ε : ℝ) (hε : 0 < �
     This is a property of the Poisson process, not of the geometry.
     We state it as an axiom of the Poisson model; in a full measure-theory
     formalization, it would follow from the rotation-invariance of the
-    Lebesgue measure. -/
-theorem poisson_isotropy :
-    -- Isotropy means the counting measure is invariant under rotations.
-    -- In the Poisson model, this follows from Lebesgue invariance.
-    -- We state the CONSEQUENCE: all null directions are equally populated.
-    True := trivial  -- Content is in the docstring; full proof needs measure theory
+    Lebesgue measure.
+
+    CLAIM (not formalized): poisson_isotropy -/
+-- poisson_isotropy removed: was True := trivial (documentation only)
+-- Isotropy means the counting measure is invariant under rotations.
+-- In the Poisson model, this follows from Lebesgue invariance.
+-- Full proof needs measure theory formalization.
 
 /-! ## Part 3: The substrate bridge theorem -/
 

@@ -200,7 +200,7 @@ theorem primitive_reduction :
 
 /-! ## Part 5: The honest primitive inventory -/
 
-/-- **WHAT IS A PRIMITIVE vs WHAT IS A DYNAMICAL FIELD.**
+/- **WHAT IS A PRIMITIVE vs WHAT IS A DYNAMICAL FIELD** (structural note).
 
     The distinction matters for "first principles" claims:
 
@@ -222,7 +222,7 @@ theorem primitive_reduction :
     fields selected by their respective field equations."
 
     The number of STRUCTURAL PRIMITIVES is 2, not 3. -/
-theorem two_primitives_two_fields :
-    True := trivial  -- This is a documentation theorem; the content is in the docstring
+-- NOTE: two_primitives_two_fields is a structural observation, not a theorem.
+-- The content is in the docstring above.
 
 end UnifiedTheory.LayerA.GaugeDerived

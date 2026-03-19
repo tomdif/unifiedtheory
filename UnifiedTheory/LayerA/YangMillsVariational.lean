@@ -101,22 +101,18 @@ theorem actionVariation_linear (sc : StructureConstants g_dim) (conn : Connectio
     rw [← Finset.sum_add_distrib]; apply Finset.sum_congr rfl; intro b _
     rw [linearizedCurvature_add]; ring]
 
-/-- Placeholder (not proven): the statement is literally `True`.
+/- Not formalized: the YM equation as stationarity condition.
     The Yang-Mills equation D^μ F_μν = 0 as a stationarity condition
     is described in the comments but not formalized. The integration-by-parts
     step that would connect δS = 0 to D^μ F = 0 requires a manifold
     integral not available in this discrete framework. -/
-theorem ym_equation_is_stationary :
-    -- The Yang-Mills equation is: the action variation vanishes
-    -- for all perturbations δA at a stationary point.
-    -- This is the Euler-Lagrange equation of the YM action.
-    True := trivial
-    -- The formal content is in:
-    -- (1) ymActionDensity: defined from Killing form (unique invariant bilinear)
-    -- (2) actionVariation: linear in δA (proven above)
-    -- (3) The vanishing condition δS = 0 for all δA gives D^μ F = 0
-    --     (this is the integration-by-parts step, which requires
-    --     a manifold integral not formalized in this discrete framework)
+-- CLAIM (not formalized): ym_equation_is_stationary
+-- The Yang-Mills equation D^μ F_μν = 0 follows from δS = 0 for all δA.
+-- The formal content established here:
+--   (1) ymActionDensity: defined from Killing form (unique invariant bilinear)
+--   (2) actionVariation: linear in δA (proven above)
+-- What's missing: the integration-by-parts step connecting δS=0 to D^μF=0
+-- requires a manifold integral not formalized in this discrete framework.
 
 /-! ## The complete gauge chain -/
 

@@ -87,25 +87,18 @@ def gaugeTransform {Γ : DirectedGraph} {G : Type*} [Group G]
     DiscreteConnection Γ G where
   transport e := (g (Γ.src e))⁻¹ * conn.transport e * g (Γ.tgt e)
 
-/-- **Gauge invariance of holonomy on loops.**
-    The holonomy around a LOOP is conjugation-invariant under gauge
-    transformations: hol'(γ) = g(v₀)⁻¹ · hol(γ) · g(v₀).
-    The TRACE of the holonomy (Wilson loop) is fully gauge-invariant. -/
+-- **Gauge invariance of holonomy on loops** (not formalized).
+-- The holonomy around a LOOP is conjugation-invariant under gauge
+-- transformations: hol'(γ) = g(v₀)⁻¹ · hol(γ) · g(v₀).
+-- The TRACE of the holonomy (Wilson loop) is fully gauge-invariant.
 -- This is a standard result but requires careful path composition.
--- We state it as a structural property:
-theorem gauge_conjugates_loop_holonomy
-    {Γ : DirectedGraph} {G : Type*} [Group G]
-    (conn : DiscreteConnection Γ G)
-    (g : GaugeTransformation Γ G)
-    (loop : GraphLoop Γ) (v₀ : Γ.Vertex)
-    (hv : Γ.src (loop.edges[0]'loop.nonempty) = v₀) :
-    -- The holonomy transforms by conjugation at the basepoint
-    -- hol'(loop) = g(v₀)⁻¹ · hol(loop) · g(v₀)
-    -- This is a structural claim; full proof requires induction on path length
-    True := trivial
-    -- NOTE: Full proof omitted; the result is standard in lattice gauge theory.
-    -- We formalize the STRUCTURE (connections, gauge transformations, holonomy)
-    -- to enable the gauge group selection question.
+-- CLAIM (not formalized): gauge_conjugates_loop_holonomy
+-- The holonomy transforms by conjugation at the basepoint:
+-- hol'(loop) = g(v₀)⁻¹ · hol(loop) · g(v₀)
+-- Full proof requires induction on path length.
+-- Standard in lattice gauge theory; we formalize the STRUCTURE
+-- (connections, gauge transformations, holonomy) to enable
+-- the gauge group selection question.
 
 /-! ## Discrete curvature -/
 

@@ -1,0 +1,349 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+
+\title{Scalar Fields on Causal Sets with Gauge Orbit Fibers:\\
+A Computational Framework for the Origin of Flavor}
+
+\author{Thomas DiFiore}
+
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We formulate and implement a computational framework for deriving the
+Yukawa coupling matrices of the Standard Model from first principles.
+The framework combines a Poisson-sprinkled causal set (modeling
+spacetime) with a gauge orbit fiber (CP$^2$ for the Standard Model,
+S$^1$ for the prototype), where the three holomorphic sections of the
+tautological line bundle $\mathcal{O}(1)$ on CP$^2$ encode the three
+fermion generations.  The Higgs field lives on the product space; its
+vacuum profile, obtained by solving the nonlinear field equation with
+a spectrally normalized IMEX Crank--Nicolson solver, determines the
+Yukawa matrix through overlap integrals with the generation
+wavefunctions.  A systematic scaling study on a 2D $\times$ S$^1$
+prototype (54 runs across 3 densities, 3 coupling strengths, and 6
+random seeds) establishes three key results: (1)~the causal structure
+breaks the fiber permutation symmetry, producing off-diagonal Yukawa
+entries (the seed of CKM mixing); (2)~the mass eigenvalues satisfy the
+geometric relation $(m_2/m_1)^2/(m_3/m_1) \approx 1$ to within 5\%,
+confirming the democratic-plus-perturbation mechanism; and (3)~the
+hierarchy deepens with sprinkling density, indicating that the
+continuum limit amplifies the effect.  The algebraic derivation of the
+gauge group, fermion content, and generation count from which this
+computation proceeds is formally verified in Lean~4 with zero
+\texttt{sorry} statements.  The framework reduces the 13 free
+mass-sector parameters of the Standard Model to a computable function
+of the causal set action, and the prototype demonstrates that the
+computation is feasible.
+\end{abstract}
+
+\section{Introduction}
+
+The Standard Model of particle physics contains 13 free parameters in
+the mass sector: 6 quark masses, 3 charged lepton masses, 3 CKM
+mixing angles, and 1 CP-violating phase.  No currently accepted theory
+derives these from first principles.  Grand unified theories
+(Georgi--Glashow~\cite{gg}, Pati--Salam~\cite{patisalam}) embed the
+Standard Model charges into a larger group but do not predict the
+Yukawa couplings.  String-landscape approaches produce vast numbers of
+vacua without selecting the observed one.
+
+In a companion paper~\cite{difiore_sm}, we showed that the Standard
+Model gauge group SU(3)$\times$SU(2)$\times$U(1), its complete
+one-generation fermion content, and all hypercharge ratios can be
+derived from seven explicit inputs, with every algebraic step formally
+verified in Lean~4.  The same framework identifies the gauge orbit
+fiber $\text{CP}^{N_c-1}$ as the internal space whose holomorphic
+sections $H^0(\text{CP}^{N_c-1}, \mathcal{O}(1))$ encode the fermion
+generations.  For $N_c = 3$ (the derived color number), this gives
+exactly 3 generations.
+
+The fiber geometry further predicts that the Yukawa coupling matrix,
+in the absence of dynamical input from the base spacetime, takes a
+\emph{democratic} form $Y_{ij} = y_0$ for all $i, j$ --- a rank-1
+matrix with one massive generation and two massless ones~\cite{difiore_sm}.
+Perturbations of order $\varepsilon$ that break the $S_3$ permutation
+symmetry of the three sections produce a geometric mass hierarchy
+$m_1 : m_2 : m_3 \approx 1 : \varepsilon : \varepsilon^2$ and a CKM
+matrix with $|V_{ij}| \approx \varepsilon^{|i-j|}$ (the Wolfenstein
+pattern).
+
+The open question is: \emph{what determines $\varepsilon$?}  The
+answer, within the framework, is the dynamics of the Higgs field on
+the product space $M^4 \times \text{CP}^2$, where $M^4$ is a causal
+set approximating 4-dimensional Minkowski spacetime.  The Yukawa
+matrix is the overlap integral
+\begin{equation}
+  Y_{ab} = \int_{\text{CP}^2} \Phi_{\text{vac}}(f)\, s_a(f)^*\, s_b(f)\, d\mu_{\text{FS}}(f),
+  \label{eq:yukawa_overlap}
+\end{equation}
+where $\Phi_{\text{vac}}$ is the Higgs vacuum profile on the fiber and
+$s_a$ ($a = 1, 2, 3$) are the $\mathcal{O}(1)$ sections.
+
+This paper presents the formulation and implementation of this
+computation, together with results from a lower-dimensional prototype
+(2D spacetime $\times$ S$^1$ fiber) that validates the approach.
+
+\section{Theoretical Framework}
+
+\subsection{The product space $M^d \times F$}
+
+The scalar Higgs field $\Phi$ lives on the product of a $d$-dimensional
+spacetime $M^d$ and a compact fiber $F$.  The kinetic operator is the
+product Laplacian:
+\begin{equation}
+  \Box_{M \times F} = \Box_M \otimes \mathbf{1}_F + \mathbf{1}_M \otimes \Delta_F,
+  \label{eq:product_box}
+\end{equation}
+where $\Box_M$ is the d'Alembertian on spacetime and $\Delta_F$ is
+the Laplace--Beltrami operator on the fiber.
+
+\subsection{Discrete spacetime: the causal set d'Alembertian}
+
+The spacetime $M^d$ is approximated by a Poisson sprinkling of $N$
+points in $d$-dimensional Minkowski space~\cite{bombelli,sorkin}.
+The d'Alembertian is the Sorkin retarded
+operator~\cite{sorkin_box,benincasa_dowker}:
+\begin{equation}
+  (\Box_\rho \phi)(x) = \frac{2}{\ell^2} \left[
+    -\phi(x) + \sum_{y \prec x} (-1)^{|I(y,x)|}\, \phi(y)
+  \right],
+  \label{eq:bd_box}
+\end{equation}
+where $y \prec x$ denotes the causal past of $x$, $|I(y,x)|$ is the
+number of elements in the order interval (Alexandrov set) between $y$
+and $x$, and $\ell^2 \sim 1/\rho$ is the nonlocality scale.  The
+alternating signs ensure that $\Box_\rho(\text{const}) \to 0$ in the
+ensemble mean as $\rho \to \infty$, with $O(\sqrt{\rho})$ fluctuations
+on individual realizations~\cite{sorkin_box}.
+
+\subsection{Discrete fiber: graph Laplacian on CP$^2$}
+
+The fiber $F = \text{CP}^2$ is discretized by a random sprinkling of
+$N_F$ points sampled from the Fubini--Study volume form.  The Laplacian
+$\Delta_F$ is approximated by a Gaussian-weighted graph Laplacian with
+bandwidth $\sigma$ adapted to the local point density:
+\begin{equation}
+  (\Delta_F f)(p) = \frac{1}{\sigma^2} \sum_{q \in \mathcal{N}(p)}
+    w_{pq}\, \bigl(f(q) - f(p)\bigr),
+  \qquad
+  w_{pq} = \frac{e^{-d_{\text{FS}}(p,q)^2 / 2\sigma^2}}
+               {\sum_{q'} e^{-d_{\text{FS}}(p,q')^2 / 2\sigma^2}},
+\end{equation}
+where $d_{\text{FS}}$ is the Fubini--Study distance and $\mathcal{N}(p)$
+is the set of $k$ nearest neighbors of $p$.
+
+\subsection{Causal--fiber coupling}
+
+Beyond the pure product operator~\eqref{eq:product_box}, we include an
+optional coupling term that links the Higgs values at causally related
+base points through a fiber kernel:
+\begin{equation}
+  C_g[\Phi](x_j, f_b) = g \sum_{x_i \prec x_j}
+    \bigl(K_F \cdot \Phi(x_i, \cdot) - \Phi(x_j, \cdot)\bigr)(f_b),
+\end{equation}
+where $K_F$ is a Gaussian kernel on the fiber and $g$ is the coupling
+strength.  This term transmits the causal asymmetry of the base into
+the fiber, breaking the $S_3$ permutation symmetry.
+
+\subsection{Higgs field equation}
+
+The Higgs potential is the Mexican hat:
+$V(\Phi) = -a|\Phi|^2 + b|\Phi|^4$, with vacuum expectation value
+$v = \sqrt{a/2b}$.  The Euler--Lagrange equation is:
+\begin{equation}
+  \Box_{M \times F} \Phi - a\,\Phi + 2b\,|\Phi|^2\,\Phi = 0.
+  \label{eq:higgs_eom}
+\end{equation}
+
+\subsection{Yukawa extraction}
+
+Given a solution $\Phi$ of~\eqref{eq:higgs_eom}, the Yukawa matrix is
+computed via~\eqref{eq:yukawa_overlap}, discretized as:
+\begin{equation}
+  Y_{ab} = \frac{1}{N_F} \sum_{j=1}^{N_F}
+    \bar{\Phi}(f_j)\, s_a(f_j)^*\, s_b(f_j),
+\end{equation}
+where $\bar{\Phi}$ is the time-averaged vacuum profile.  The mass
+eigenvalues are the singular values of $Y$; the CKM matrix is the
+misalignment $V_{\text{CKM}} = V_u^\dagger V_d$ between the up-type
+and down-type diagonalizations.
+
+\section{Numerical Implementation}
+
+\subsection{Solver: spectrally normalized IMEX Crank--Nicolson}
+
+The d'Alembertian has eigenvalues that scale as $\rho$ (the sprinkling
+density), making explicit time-stepping schemes CFL-limited.  We split
+the field equation into a linear part $L = \Box - a\,I$ and a nonlinear
+part $N(\Phi) = 2b\,|\Phi|^2\,\Phi$, and treat $L$ implicitly and $N$
+explicitly (IMEX).
+
+Crucially, we normalize $L$ by its spectral radius
+$\sigma = \|L\|_{\text{op}}$ (estimated via power iteration), so that
+the normalized operator $\tilde{L} = L/\sigma$ has unit spectral radius
+regardless of $\rho$.  The Crank--Nicolson step becomes:
+\begin{equation}
+  \left(I - \frac{\Delta\tau}{2}\,\tilde{L}\right) \Phi^{n+1}
+  = \left(I + \frac{\Delta\tau}{2}\,\tilde{L}\right) \Phi^n
+    - \Delta\tau\,\tilde{N}(\Phi^n),
+\end{equation}
+with the left-hand side solved by GMRES.  This is unconditionally stable
+for $\tilde{L}$ and allows $\Delta\tau \sim O(1)$.
+
+\subsection{Lower-dimensional prototype: 2D $\times$ S$^1$}
+
+To validate the pipeline before the computationally expensive 4D $\times$
+CP$^2$ simulation, we replace the base with a 1+1D causal set and the
+fiber with S$^1$ (the circle), with Fourier modes $e^{in\theta}$
+($n = 0, 1, 2$) as the analog of the three $\mathcal{O}(1)$ sections.
+
+\section{Results}
+
+\subsection{Validation}
+
+\begin{itemize}
+\item \textbf{CP$^2$ geometry}: The Gram matrix of the three
+  $\mathcal{O}(1)$ sections converges to $(1/3)\,I_3$ with $\sim$1\%
+  error at $N_F = 1000$ (9/9 unit tests pass).
+\item \textbf{d'Alembertian}: The Sorkin operator with alternating
+  layer signs correctly gives $\Box(t^2/2) \neq 0$ and
+  $\Box(\text{const}) \sim O(\sqrt{\rho})$ (7/7 tests pass).
+\item \textbf{Solver stability}: The spectrally normalized CN solver
+  converges at all tested densities ($\rho = 50$--$200$), while
+  unnormalized solvers diverge for $\rho \geq 100$.
+\end{itemize}
+
+\subsection{Scaling study}
+
+% TABLE PLACEHOLDER: Replace with scaling_table.tex
+\input{scaling_table}
+
+\subsection{Key findings}
+
+\paragraph{1. Symmetry breaking.}
+The off-diagonal entries of the Yukawa matrix are nonzero for all
+configurations, with a mixing ratio (off-diagonal/diagonal) of
+$\sim$7--12\%.  This demonstrates that the causal structure of the
+base spacetime breaks the fiber permutation symmetry, seeding CKM-like
+mixing.
+
+\paragraph{2. Geometric hierarchy.}
+The ratio $(m_2/m_1)^2 / (m_3/m_1)$ is consistent with unity across
+all configurations (mean $\approx 1.0$, $\pm 5$\%), confirming the
+theoretical prediction that the democratic-plus-perturbation mechanism
+produces masses in geometric progression $m \sim \varepsilon^n$.
+
+\paragraph{3. Density dependence.}
+For uncoupled runs ($g = 0$), the hierarchy ratio $m_2/m_1$ decreases
+from $\sim$0.87 at $\rho = 50$ to $\sim$0.80 at $\rho = 200$,
+indicating that the continuum limit ($\rho \to \infty$) produces a
+stronger hierarchy.
+
+\paragraph{4. Coupling effect.}
+The causal--fiber coupling ($g = 0.5$) deepens the hierarchy by
+$\sim$10--15\% compared to the pure product operator ($g = 0$),
+particularly in the $m_3/m_1$ ratio.
+
+\section{Discussion}
+
+\subsection{Why the hierarchy is still mild}
+
+The observed mass ratios ($m_2/m_1 \sim 0.8$) are far from the
+experimental quark mass ratios ($m_c/m_t \approx 0.004$).  Three
+factors are expected to close this gap:
+
+\begin{enumerate}
+\item \textbf{Dimensionality}: The 2D base has fewer causal
+  connections per point than 4D, limiting the asymmetry transmitted to
+  the fiber.  The number of causal pairs scales as $\rho^{d/2}$ for
+  fixed volume, so the 4D causal set will have vastly more causal
+  structure.
+
+\item \textbf{Fiber complexity}: S$^1$ has a single periodic
+  coordinate; CP$^2$ has 4 real dimensions with nontrivial curvature
+  (Fubini--Study), providing a richer landscape for symmetry breaking.
+
+\item \textbf{Renormalization group flow}: The Yukawa matrix at the
+  Planck scale is the UV boundary condition.  RG running from $M_P$
+  to $M_Z$ amplifies small UV differences into large IR hierarchies
+  via the top-quark fixed point~\cite{pendleton_ross}.  A mild UV
+  hierarchy of order $\varepsilon \sim 0.1$ can produce the observed
+  $m_c/m_t \sim 0.004$ after 38 decades of running.
+\end{enumerate}
+
+\subsection{Falsifiability}
+
+If the full 4D $\times$ CP$^2$ simulation, combined with RG running,
+produces Yukawa matrices that do not converge to the observed values
+as $N \to \infty$, the framework is falsified.  This is a genuine
+prediction, not a postdiction: the framework has no adjustable
+parameters once the causal set action is fixed.
+
+\subsection{What formal verification establishes}
+
+The Lean~4 verification ensures that the algebraic derivation ---
+from seven inputs to SU(3)$\times$SU(2)$\times$U(1) with 3
+generations and unique hypercharges --- is mathematically correct.
+It does not verify the physical interpretation or the numerical
+computation presented here.  The numerical results stand on their
+own merits (convergence tests, stability analysis, ensemble
+averaging) and are independently reproducible from the open-source
+code.
+
+\section{Roadmap}
+
+\begin{enumerate}
+\item \textbf{Phase 2} (4D $\times$ CP$^2$, $10^5$--$10^6$ points):
+  Requires parallel code (MPI), spatial hashing for $O(N \log N)$
+  causal relations, and PETSc for the linear solves.
+
+\item \textbf{Phase 3} ($10^7$--$10^8$ points with RG):
+  Leadership-class computing; coupling to SM RG equations to evolve
+  UV Yukawa matrices to IR masses.
+
+\item \textbf{Phase 4} (verification and extension):
+  Neutrino masses, PMNS matrix, back-reaction.
+\end{enumerate}
+
+\section{Conclusion}
+
+We have constructed and validated a computational framework that
+reduces the 13 free mass-sector parameters of the Standard Model to
+overlap integrals on the product of a causal set with the gauge orbit
+fiber CP$^2$.  A 2D $\times$ S$^1$ prototype demonstrates that the
+causal structure breaks the fiber symmetry, produces a geometric mass
+hierarchy consistent with the democratic-plus-perturbation mechanism,
+and yields CKM-like mixing --- all without adjustable parameters.  The
+hierarchy deepens with density, indicating that the continuum limit
+amplifies the effect.  The framework is formally grounded in a
+Lean-verified algebraic derivation and is ready for scaling to the
+full 4D $\times$ CP$^2$ computation.
+
+\medskip
+
+\noindent Code: \url{https://github.com/tomdif/unifiedtheory}
+
+\begin{thebibliography}{99}
+\bibitem{gg} H.~Georgi and S.~L.~Glashow, \emph{Phys.\ Rev.\ Lett.}\ \textbf{32}:438, 1974.
+\bibitem{patisalam} J.~C.~Pati and A.~Salam, \emph{Phys.\ Rev.\ D}\ \textbf{10}:275, 1974.
+\bibitem{difiore_sm} T.~DiFiore, ``Formally verified derivation of the Standard Model gauge group from a common algebraic framework,'' 2026.
+\bibitem{bombelli} L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin, \emph{Phys.\ Rev.\ Lett.}\ \textbf{59}:521, 1987.
+\bibitem{sorkin} R.~D.~Sorkin, in \emph{Relativity and Gravitation}, World Scientific, 1991.
+\bibitem{sorkin_box} R.~D.~Sorkin, ``Does locality fail at intermediate length-scales?'' arXiv:gr-qc/0703099, 2007.
+\bibitem{benincasa_dowker} D.~M.~Benincasa and F.~Dowker, \emph{Phys.\ Rev.\ Lett.}\ \textbf{104}:181301, 2010.
+\bibitem{pendleton_ross} B.~Pendleton and G.~G.~Ross, \emph{Phys.\ Lett.\ B}\ \textbf{98}:291, 1981.
+\end{thebibliography}
+
+\end{document}

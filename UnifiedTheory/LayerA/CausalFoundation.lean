@@ -159,7 +159,7 @@ theorem metric_from_conformal_and_volume
 
 /-! ### Stage 6: Connect to the framework (PROVABLE given stages 3-5) -/
 
-/-- **The complete causal-to-framework chain.**
+/- **The complete causal-to-framework chain** (summary, not a theorem).
 
     IF the causal set program succeeds (stages 3-4), then:
 
@@ -186,6 +186,7 @@ theorem metric_from_conformal_and_volume
     - Metric → Riemann → Bianchi → Einstein → everything (Layer A/B)
 
     Zero sorrys. Zero custom axioms. -/
-theorem bridge_complete : True := trivial
+-- NOTE: bridge_complete is a summary of the derivation chain documented
+-- above, not a formal theorem.
 
 end UnifiedTheory.LayerA.CausalFoundation

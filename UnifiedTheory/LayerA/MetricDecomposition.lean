@@ -132,7 +132,7 @@ theorem metric_decomposition :
 
 /-! ### What remains primitive -/
 
-/-- **The irreducible foundation.**
+/- **The irreducible foundation** (structural summary, not a theorem).
 
     After all reductions, the framework rests on:
 
@@ -156,6 +156,7 @@ theorem metric_decomposition :
     The partial order is the simplest possible mathematical structure
     on which the entire framework can rest:
     a set with a relation. -/
-theorem foundation_summary : True := trivial
+-- NOTE: foundation_summary is a structural observation documented above,
+-- not a formal theorem.
 
 end UnifiedTheory.LayerA.MetricDecomposition
