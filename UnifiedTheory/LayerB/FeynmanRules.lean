@@ -1,40 +1,27 @@
 /-
-  LayerB/FeynmanRules.lean — Scattering amplitudes from structured history sums
+  LayerB/FeynmanRules.lean — Scattering amplitudes from the K/P amplitude algebra
 
-  Derives the perturbative S-matrix from two ingredients:
+  The framework provides a specific amplitude construction:
+    z(h) = Q(h) + i·D(h)
+  where Q = trace ∘ K_proj and D is a linear functional on perturbation space.
 
-  (A) HistoryAmplitudes.lean: z = Q(h) + i·D(h) ∈ ℂ — the GENERAL complex
-      amplitude of a perturbation, with variable modulus |z|² = Q² + D².
-      This is NOT unit modulus: different perturbations give different |z|².
+  This file proves properties of scattering amplitudes that are SPECIFIC
+  to this construction — not generic complex algebra. Each theorem uses
+  at least one of:
+    (a) Linearity of Q (from trace ∘ K_proj)
+    (b) The K/P decomposition (h = K_proj(h) + P_proj(h))
+    (c) Dressing neutrality (trace ∘ P_proj = 0)
+    (d) The on-shell propagation rule (e^{ikφ} from character uniqueness)
 
-  (B) MinimalCoupling.lean: the coupled propagation amplitude e^{i(kφ+qA)}
-      describes FREE on-shell propagation through a gauge field background.
-      This IS unit modulus (phase only).
+  Theorems that hold for ALL complex numbers are labeled as such and
+  placed in a separate "Complex algebra" section for honesty.
 
-  The actual Feynman amplitude for a process combines BOTH:
-  - The on-shell propagation factor e^{i(kφ+qA)} (phase, unit modulus)
-  - The off-shell vertex/propagator weight w(h) = Q(h) + i·D(h) (NOT unit modulus)
-
-  The product z_total = w(h) · e^{i(kφ+qA)} has variable modulus |w|,
-  which encodes the DYNAMICS: heavier virtual particles → smaller |w|,
-  resonances → larger |w|. This is what makes different Feynman diagrams
-  contribute with different strengths.
-
-  Key results (all proven, zero sorry):
-    1. Off-shell amplitudes are NOT unit modulus (variable |z|²)
-    2. Factorization: multi-vertex amplitude = product of vertex amplitudes
-    3. Cross-section includes interference (non-trivially, since |z|² ≠ 1)
-    4. Gauge invariance is non-trivial (requires Ward-identity cancellation)
-    5. Crossing symmetry with variable modulus
-    6. Coherent ≠ incoherent (quantitative gap from off-shell content)
-
-  IMPORTANT: What is NOT claimed:
-    - Specific propagator forms (1/(p²-m²) requires Fourier transform)
+  What is NOT claimed:
+    - Specific propagator forms (1/(p²-m²) needs Fourier analysis)
     - Loop integrals or renormalization
     - Confinement or hadronization
-    The file formalizes the ALGEBRAIC STRUCTURE of scattering amplitudes.
-    The dynamical content (which diagrams dominate) comes from the specific
-    values of Q(h) and D(h) for physical processes.
+
+  Zero sorry. Zero custom axioms.
 -/
 import UnifiedTheory.LayerB.HistoryAmplitudes
 import UnifiedTheory.LayerB.MinimalCoupling
@@ -46,206 +33,248 @@ open scoped ComplexConjugate
 
 variable {m : ℕ}
 
-/-! ## Off-shell amplitudes
+/-! ## Section 1: Framework-specific amplitude properties
 
-    The crucial difference from on-shell propagation: a perturbation h
-    produces amplitude z = Q(h) + i·D(h) whose modulus |z|² = Q² + D²
-    is NOT constrained to be 1. Different perturbations have different
-    "weight" in the amplitude sum. This is the off-shell content.
+    These theorems use the specific structure of Q = trace ∘ K_proj
+    and the K/P decomposition. They are NOT true for arbitrary
+    complex-valued functions on an abstract space.
 -/
 
-/-- **Off-shell amplitudes have variable modulus.**
-    Unlike the on-shell propagation rule (|e^{ikφ}|² = 1), the
-    step amplitude z = Q + iD can have any non-negative modulus.
-    Heavier virtual particles → smaller Q,D → smaller |z|². -/
-theorem offshell_variable_modulus (D : Perturbation (m + 2) → ℝ) (h : Perturbation (m + 2)) :
-    obs (stepAmplitude D h) = (Q h) ^ 2 + (D h) ^ 2 := by
-  simp only [obs, stepAmplitude]
+/-- **Superposition from linearity.**
+    If D is a linear functional on perturbation space, then
+    the amplitude is ADDITIVE under composition of perturbations:
+      z(h₁ + h₂) = z(h₁) + z(h₂)
 
-/-- **Off-shell amplitudes can be zero.** The zero perturbation gives
-    zero amplitude — a process with no perturbation doesn't happen.
-    This is non-trivial: it means the amplitude genuinely measures
-    the "size" of the perturbation, not just a phase. -/
-theorem zero_perturbation_zero_amplitude (D : Perturbation (m + 2) → ℝ)
-    (hD : D 0 = 0) :
-    stepAmplitude D 0 = 0 := by
+    This is the quantum superposition principle, DERIVED from:
+    - Q is linear (trace ∘ K_proj is a composition of linear maps)
+    - D is linear (hypothesis)
+
+    This is framework-specific: for a NONLINEAR functional f,
+    f(h₁+h₂) ≠ f(h₁)+f(h₂) and superposition would fail. -/
+theorem amplitude_additive
+    (D : Perturbation (m + 2) →ₗ[ℝ] ℝ)
+    (h₁ h₂ : Perturbation (m + 2)) :
+    stepAmplitude D (h₁ + h₂) = stepAmplitude D h₁ + stepAmplitude D h₂ := by
+  simp only [stepAmplitude]
+  apply Complex.ext
+  · simp [Complex.add_re, Q_add]
+  · simp [Complex.add_im, map_add]
+
+/-- **Annihilation**: the amplitude of a perturbation plus its conjugate is zero.
+    z(h) + z(-h) = 0, because Q(h)+Q(-h) = 0 and D(h)+D(-h) = 0.
+
+    This is the amplitude-level version of charge annihilation.
+    Framework-specific: requires linearity of BOTH Q and D. -/
+theorem amplitude_annihilation
+    (D : Perturbation (m + 2) →ₗ[ℝ] ℝ)
+    (h : Perturbation (m + 2)) :
+    stepAmplitude D h + stepAmplitude D (-h) = 0 := by
+  have := amplitude_additive D h (-h)
+  rw [add_neg_cancel] at this
+  rw [← this]
   simp only [stepAmplitude]
   apply Complex.ext
   · simp [Q, K_proj, traceFunc, map_zero]
-  · simp [hD]
+  · simp [map_zero]
 
-/-- **Nonzero perturbation can give nonzero amplitude.**
-    There exist perturbations with obs > 0. -/
-theorem nonzero_amplitude_exists (D : Perturbation (m + 2) → ℝ)
-    (hD : ∃ h, Q h ≠ 0 ∨ D h ≠ 0) :
-    ∃ h, obs (stepAmplitude D h) > 0 := by
-  obtain ⟨h, hne⟩ := hD
-  use h
-  rw [offshell_variable_modulus]
-  rcases hne with hQ | hDh
-  · positivity
-  · positivity
+/-- **Pure dressing perturbations have purely imaginary amplitude.**
+    If h is in the P-sector (K_proj(h) = 0), then Q(h) = 0, so z(h) = i·D(h).
+
+    Physical meaning: P-sector perturbations (gauge content in d=4)
+    contribute to interference but NOT to the classical charge.
+    This is framework-specific: it uses dressing neutrality
+    (trace ∘ P_proj = 0) and the K/P decomposition. -/
+theorem pure_dressing_imaginary
+    (D : Perturbation (m + 2) → ℝ)
+    (h : Perturbation (m + 2))
+    (hP : K_proj m h = 0) :
+    (stepAmplitude D h).re = 0 := by
+  simp only [stepAmplitude, Q]
+  rw [hP, map_zero]
+
+/-- **Pure source perturbations have purely real amplitude.**
+    If h is in the K-sector (P_proj(h) = 0) and D vanishes on the
+    K-sector, then D(h) = 0, so z(h) = Q(h) (real).
+
+    Physical meaning: K-sector perturbations are the "classical"
+    part — they carry charge but no dressing phase.
+    This is the ComplexFromDressing.lean result that classical
+    defects sit on the real axis: z = Q + i·0 = Q. -/
+theorem pure_source_real
+    (D : Perturbation (m + 2) → ℝ)
+    (h : Perturbation (m + 2))
+    (hD_on_K : D (K_proj m h) = 0)
+    (hK : P_proj m h = 0) :
+    (stepAmplitude D h).im = 0 := by
+  simp only [stepAmplitude]
+  -- h = K_proj(h) + P_proj(h) = K_proj(h) + 0 = K_proj(h)
+  have h_eq : h = K_proj m h := by
+    have := decomp_derived h
+    rw [hK, add_zero] at this
+    exact this
+  rw [h_eq]
+  exact hD_on_K
+
+/-- **The K/P decomposition splits the amplitude.**
+    z(h) = z(K_proj(h)) + z(P_proj(h)) when D is linear.
+
+    The amplitude of any perturbation decomposes into a K-sector
+    contribution and a P-sector contribution. The K-part carries
+    the charge (real part), the P-part carries the dressing (can
+    contribute to imaginary part).
+
+    Framework-specific: uses h = K_proj(h) + P_proj(h). -/
+theorem amplitude_KP_decomposition
+    (D : Perturbation (m + 2) →ₗ[ℝ] ℝ)
+    (h : Perturbation (m + 2)) :
+    stepAmplitude D h =
+    stepAmplitude D (K_proj m h) + stepAmplitude D (P_proj m h) := by
+  conv_lhs => rw [decomp_derived h]
+  exact amplitude_additive D (K_proj m h) (P_proj m h)
+
+/-- **The charge of the K-part equals the charge of the whole.**
+    Q(K_proj(h)) = Q(h). The K-projection preserves the charge
+    because trace ∘ K_proj = trace (the bridge equation).
+
+    This means the real part of the amplitude is determined entirely
+    by the K-sector. The P-sector doesn't contribute to Q. -/
+theorem charge_from_K_part (h : Perturbation (m + 2)) :
+    Q (K_proj m h) = Q h := by
+  -- Q(K(h)) = trace(K(K(h))), Q(h) = trace(K(h))
+  -- Need: trace(K(K(h))) = trace(K(h)), i.e. bridge applied to K(h)
+  simp only [Q]
+  -- trace(K(K(h))) = trace(K(h)) by bridge applied to K(h)
+  rw [bridge_derived (K_proj m h)]
+  -- Now: trace(K(h)) = trace(K(h))
+
+/-- **The P-sector carries zero charge.**
+    Q(P_proj(h)) = 0. Dressing perturbations are charge-neutral.
+
+    This is the dressing neutrality theorem from MetricDefects.lean.
+    Physical meaning: gauge field content (which lives in P in d=4)
+    does not contribute to the scalar source charge. -/
+theorem dressing_zero_charge (h : Perturbation (m + 2)) :
+    Q (P_proj m h) = 0 := by
+  -- Q(P(h)) = trace(K(P(h))). Need trace(K(P(h))) = 0.
+  -- From decomp: P(h) = P(h), and K_proj(P_proj(h)) should give
+  -- a perturbation whose trace is 0.
+  -- Actually: Q(P(h)) = trace(K(P(h))).
+  -- bridge_derived on P(h): trace(K(P(h))) = trace(P(h))
+  -- neutrality_derived: trace(P(h)) = 0
+  simp only [Q]
+  rw [bridge_derived (P_proj m h)]
+  exact neutrality_derived h
 
 
-/-! ## Scattering amplitudes
+/-! ## Section 2: Interference with K/P structure
 
-    A scattering process amplitude is a sum of WEIGHTED histories.
-    Each history h contributes:
-      A(h) = stepAmplitude D h = Q(h) + i·D(h)
-
-    The EVENT amplitude is the coherent sum A(E) = Σ A(hᵢ).
-    The OBSERVABLE is |A(E)|² = |Σ A(hᵢ)|².
-
-    This is NOT Σ|A(hᵢ)|² — the difference is INTERFERENCE.
-    Because |A(hᵢ)|² ≠ 1 in general, the interference is
-    non-trivial (not just a phase shift between unit vectors).
+    These theorems combine the interference formula (which is generic
+    complex algebra) with the K/P decomposition (which is framework-specific)
+    to get results that are NOT true for arbitrary complex numbers.
 -/
 
-/-- **Two-channel interference formula.**
-    For a process with two contributing channels (histories):
-    σ = |z₁|² + |z₂|² + 2·Re(z₁·z̄₂)
-    where z₁, z₂ are the channel amplitudes.
+/-- **K-sector and P-sector don't interfere when D respects K/P.**
+    If D vanishes on K-sector perturbations and Q vanishes on P-sector
+    perturbations (which is always true by dressing neutrality), then
+    the interference term between a pure-K and pure-P perturbation is zero:
+      2·Re(z_K · z̄_P) = 0
 
-    The cross term 2·Re(z₁·z̄₂) is nonzero when the channels are
-    not "orthogonal" in amplitude space. Since |zᵢ|² ≠ 1 in general,
-    the cross term depends on BOTH the phases AND the moduli. -/
-theorem two_channel_interference (D : Perturbation (m + 2) → ℝ)
-    (h₁ h₂ : History m) :
-    eventObservable D [h₁, h₂] =
-    obs (historyAmplitude D h₁) + obs (historyAmplitude D h₂) +
-    2 * (historyAmplitude D h₁ * conj (historyAmplitude D h₂)).re :=
-  two_history_observable D h₁ h₂
+    Physical meaning: classical (source/charge) content and quantum
+    (dressing/gauge) content contribute independently to the observable.
+    There is no "cross-talk" between the two sectors.
+
+    Framework-specific: uses the orthogonality of K and P sectors. -/
+theorem KP_sectors_no_interference
+    (D : Perturbation (m + 2) → ℝ)
+    (h_K h_P : Perturbation (m + 2))
+    (hK : P_proj m h_K = 0)   -- h_K is pure K-sector
+    (hP : K_proj m h_P = 0)   -- h_P is pure P-sector
+    (hD_K : D (K_proj m h_K) = 0)  -- D vanishes on K-sector
+    :
+    (stepAmplitude D h_K).re * (stepAmplitude D h_P).re +
+    (stepAmplitude D h_K).im * (stepAmplitude D h_P).im = 0 := by
+  -- h_K is pure K, so z_K = (Q(h_K), 0) since D vanishes on K
+  have hK_im : (stepAmplitude D h_K).im = 0 := by
+    exact pure_source_real D h_K hD_K hK
+  -- h_P is pure P, so z_P = (0, D(h_P)) since Q vanishes on P
+  have hP_re : (stepAmplitude D h_P).re = 0 := by
+    exact pure_dressing_imaginary D h_P hP
+  rw [hK_im, hP_re, mul_zero, zero_mul, add_zero]
+
+/-- **Observable decomposes into K and P contributions.**
+    For a perturbation h, if D is linear and vanishes on K-sector:
+      |z(h)|² = Q(h)² + D(P_proj(h))²
+
+    The observable splits into a charge part (from K) and a
+    dressing part (from P), with NO cross term. This is a
+    framework-specific Pythagorean theorem for the amplitude.
+
+    Uses: K/P decomposition + K/P orthogonality. -/
+theorem observable_KP_pythagorean
+    (D : Perturbation (m + 2) →ₗ[ℝ] ℝ)
+    (h : Perturbation (m + 2))
+    (hD_K : D (K_proj m h) = 0) :
+    obs (stepAmplitude D h) =
+    (Q h) ^ 2 + (D (P_proj m h)) ^ 2 := by
+  simp only [obs, stepAmplitude]
+  congr 1
+  -- The imaginary part D(h) = D(K_proj(h)) + D(P_proj(h)) = 0 + D(P_proj(h))
+  congr 1
+  have h_decomp := decomp_derived h
+  conv_lhs => rw [h_decomp]
+  rw [map_add, hD_K, zero_add]
 
 
-/-! ## Non-trivial gauge invariance
+/-! ## Section 3: Charge algebra (framework-specific)
 
-    For off-shell amplitudes, gauge invariance is NOT automatic.
-    An on-shell amplitude e^{iθ} trivially has |z|² = 1 for any θ.
-    But an off-shell amplitude z = Q + iD has |z|² = Q² + D²,
-    which changes if Q or D change.
-
-    Gauge invariance for the FULL scattering amplitude requires
-    that gauge transformations preserve the total Q and D values
-    when summed over all contributing diagrams. This is the
-    content of the Ward identity.
-
-    We prove: if the dressing functional D is gauge-invariant
-    (D(h) doesn't change under gauge transformation), and
-    Q is gauge-invariant (trace is gauge-invariant), then
-    the scattering amplitude is gauge-invariant.
+    These use Q = trace ∘ K_proj specifically.
 -/
 
-/-- **Q is additive** (from SignedSource.lean).
-    Q(h₁ + h₂) = Q(h₁) + Q(h₂). This is essential for gauge
-    invariance: the total source charge is determined by the
-    endpoint perturbations, not the intermediate path. -/
-theorem source_charge_additive (h₁ h₂ : Perturbation (m + 2)) :
+/-- **Charge additivity.** Q(h₁+h₂) = Q(h₁) + Q(h₂).
+    From linearity of trace ∘ K_proj. -/
+theorem charge_additive (h₁ h₂ : Perturbation (m + 2)) :
     Q (h₁ + h₂) = Q h₁ + Q h₂ := Q_add h₁ h₂
 
-/-- **Q respects cancellation**: opposite perturbations have opposite Q.
-    This is the Ward identity at the algebraic level: ghost contributions
-    cancel real contributions in gauge-dependent quantities. -/
-theorem source_charge_cancellation (h : Perturbation (m + 2)) :
+/-- **Charge annihilation.** Q(h + (-h)) = 0.
+    Conjugate perturbations cancel all charge. -/
+theorem charge_annihilation (h : Perturbation (m + 2)) :
     Q (h + (-h)) = 0 := by
   rw [Q_add, Q_neg, add_neg_cancel]
 
-
-/-! ## Crossing symmetry (off-shell)
-
-    For off-shell amplitudes z = Q + iD, the antiparticle amplitude
-    is z̄ = Q - iD (complex conjugate). Unlike the on-shell case where
-    |z|² = |z̄|² = 1, here the equality |z|² = |z̄|² is a statement
-    about PHYSICS: particles and antiparticles have equal cross-sections.
--/
-
-/-- **Off-shell crossing**: the conjugate amplitude has the same observable.
-    This is NOT tautological because |z|² ≠ 1 in general.
-    It follows from |z̄|² = |z|² (a property of the norm, not of unit modulus).
-
-    Physical content: a particle with source Q and dressing D has the
-    same scattering cross-section as its antiparticle with source Q
-    and dressing -D, because (Q)² + (D)² = (Q)² + (-D)². -/
-theorem offshell_crossing (z : ℂ) :
-    obs (conj z) = obs z := by
-  simp only [obs, Complex.conj_re, Complex.conj_im]
-  ring
+/-- **Charge scaling.** Q(c·h) = c·Q(h).
+    Scaling a perturbation scales the charge proportionally. -/
+theorem charge_scaling (c : ℝ) (h : Perturbation (m + 2)) :
+    Q (c • h) = c * Q h := Q_smul c h
 
 
-/-! ## Coherent vs incoherent: the interference gap
+/-! ## Section 4: On-shell propagation (genuine physics)
 
-    The key quantitative result: for off-shell amplitudes, the
-    interference gap Δ = |Σzᵢ|² - Σ|zᵢ|² depends on the
-    MODULI as well as the phases. Larger off-shell amplitudes
-    produce larger interference effects.
--/
-
-/-- **Interference gap for two channels.**
-    Δ = |z₁+z₂|² - (|z₁|²+|z₂|²) = 2·Re(z₁·z̄₂).
-    This measures how much the coherent cross-section differs
-    from the incoherent (classical) sum.
-
-    For off-shell amplitudes: Δ depends on Q₁Q₂ + D₁D₂.
-    This is zero only when the channels are "orthogonal"
-    (Q₁Q₂ + D₁D₂ = 0). -/
-theorem interference_gap (z₁ z₂ : ℂ) :
-    obs (z₁ + z₂) - (obs z₁ + obs z₂) =
-    2 * (z₁.re * z₂.re + z₁.im * z₂.im) := by
-  simp only [obs, Complex.add_re, Complex.add_im]
-  ring
-
-/-- **The interference gap is exactly the interference term.** -/
-theorem interference_gap_eq_cross_term (z₁ z₂ : ℂ) :
-    obs (z₁ + z₂) - (obs z₁ + obs z₂) =
-    2 * (z₁ * conj z₂).re := by
-  simp only [obs, Complex.add_re, Complex.add_im,
-    Complex.mul_re, Complex.conj_re, Complex.conj_im]
-  ring
-
-/-- **Constructive interference amplifies**: when sources are aligned
-    (Q₁Q₂ + D₁D₂ > 0), the coherent cross-section EXCEEDS the
-    incoherent sum. Real QFT example: resonance enhancement. -/
-theorem constructive_amplifies (z₁ z₂ : ℂ)
-    (h_aligned : z₁.re * z₂.re + z₁.im * z₂.im > 0) :
-    obs (z₁ + z₂) > obs z₁ + obs z₂ := by
-  have := interference_gap z₁ z₂
-  linarith
-
-/-- **Destructive interference suppresses**: when sources are anti-aligned
-    (Q₁Q₂ + D₁D₂ < 0), the coherent cross-section is LESS than the
-    incoherent sum. Real QFT example: GIM cancellation. -/
-theorem destructive_suppresses (z₁ z₂ : ℂ)
-    (h_anti : z₁.re * z₂.re + z₁.im * z₂.im < 0) :
-    obs (z₁ + z₂) < obs z₁ + obs z₂ := by
-  have := interference_gap z₁ z₂
-  linarith
-
-
-/-! ## On-shell limit
-
-    When the amplitude IS a pure phase (free on-shell propagation),
-    the off-shell framework reduces to the results from
-    MinimalCoupling.lean. This is a consistency check.
+    These use the specific form e^{ikφ} derived from character
+    uniqueness of the exponential map.
 -/
 
 /-- **On-shell amplitudes are unit modulus.**
-    The propagation rule gives z = e^{ikφ}, so |z|² = 1.
-    This is a SPECIAL CASE of the off-shell framework. -/
+    |e^{ikφ}|² = cos²(kφ) + sin²(kφ) = 1.
+    Uses the Pythagorean identity (genuine trigonometric content). -/
 theorem onshell_unit_modulus (k s : ℝ) :
     Complex.normSq (expAmplitude k s) = 1 :=
   exp_unit_modulus k s
 
-/-- **On-shell interference is phase-only.**
-    For unit-modulus amplitudes, |z₁+z₂|² = 2 + 2cos(θ₁-θ₂).
-    The interference depends only on the phase difference, not
-    on any modulus (because both moduli are 1). -/
-theorem onshell_interference (k s₁ s₂ : ℝ) :
-    Complex.normSq (expAmplitude k s₁ + expAmplitude k s₂) =
-    2 + 2 * Real.cos (k * s₁ - k * s₂) :=
-  two_path_interference k s₁ s₂
+/-- **On-shell composition is multiplicative.**
+    e^{ik(φ₁+φ₂)} = e^{ikφ₁} · e^{ikφ₂}.
+    Uses the angle addition formulas (genuine trigonometric content).
+    This is the propagation rule: amplitudes MULTIPLY along a path. -/
+theorem onshell_multiplicative (k s₁ s₂ : ℝ) :
+    expAmplitude k (s₁ + s₂) = expAmplitude k s₁ * expAmplitude k s₂ :=
+  exp_multiplicative k s₁ s₂
 
-/-- **The Aharonov-Bohm effect**: for on-shell propagation through
-    a gauge field, the fringe pattern depends on the enclosed flux.
-    This is a genuine physical prediction from the framework. -/
+/-- **The Aharonov-Bohm effect.**
+    Two paths with same source value but different gauge phases produce
+    a fringe pattern: |z₁+z₂|² = 2 + 2·cos(qA₁-qA₂).
+
+    Genuine physical prediction: the gauge field shifts the interference
+    pattern by the enclosed flux, even in field-free regions.
+    Uses: coupled amplitude from MinimalCoupling.lean + trig identities. -/
 theorem aharonov_bohm (k φ qA₁ qA₂ : ℝ) :
     Complex.normSq (coupledAmplitude k φ qA₁ + coupledAmplitude k φ qA₂) =
     2 + 2 * Real.cos (qA₁ - qA₂) := by
@@ -254,66 +283,72 @@ theorem aharonov_bohm (k φ qA₁ qA₂ : ℝ) :
   exact h
 
 
-/-! ## The complete scattering amplitude structure -/
+/-! ## Section 5: Generic complex algebra (labeled honestly)
 
-/-- **SCATTERING AMPLITUDES FROM THE CAUSAL FRAMEWORK.**
+    These identities hold for ALL complex numbers. They are included
+    because they are used in scattering calculations, but they are
+    NOT framework-specific. Labeled as such for intellectual honesty.
+-/
 
-    Two layers, both derived:
+/-- **Interference formula (generic complex algebra).**
+    |z₁+z₂|² = |z₁|² + |z₂|² + 2·Re(z₁·z̄₂).
+    True for ALL complex numbers. -/
+theorem interference_formula_generic (z₁ z₂ : ℂ) :
+    obs (z₁ + z₂) = obs z₁ + obs z₂ + 2 * (z₁ * conj z₂).re := by
+  simp only [obs, Complex.add_re, Complex.add_im,
+    Complex.mul_re, Complex.conj_re, Complex.conj_im]
+  ring
 
-    LAYER 1 — Off-shell content (from HistoryAmplitudes.lean):
-    (1) Amplitudes z = Q + iD have variable modulus (NOT unit modulus)
-    (2) Interference depends on moduli AND phases (non-trivial)
-    (3) Constructive/destructive interference from alignment of Q,D values
-    (4) Crossing: |z̄|² = |z|² (CPT, not tautological since |z|² ≠ 1)
+/-- **Crossing symmetry (generic complex algebra).**
+    |conj(z)|² = |z|². True for ALL complex numbers. -/
+theorem crossing_generic (z : ℂ) :
+    obs (conj z) = obs z := by
+  simp only [obs, Complex.conj_re, Complex.conj_im]
+  ring
 
-    LAYER 2 — On-shell propagation (from MinimalCoupling.lean):
-    (5) Free propagation gives unit-modulus phase factors
-    (6) Aharonov-Bohm: gauge flux shifts the fringe pattern
 
-    What is NOT proven (and not claimed):
-    - Specific propagator form 1/(p²-m²) (needs Fourier analysis)
-    - Loop corrections (needs regularization + renormalization)
-    - Confinement (needs nonperturbative lattice calculation)
-    - Mass spectrum (needs Yukawa couplings)
+/-! ## Capstone -/
 
-    The file establishes that the framework's amplitude algebra
-    CONTAINS the structure of perturbative scattering: variable-weight
-    channels that interfere coherently, with gauge invariance from
-    the additivity of the source charge Q. -/
-theorem scattering_amplitude_structure
-    (D : Perturbation (m + 2) → ℝ) :
-    -- (1) Off-shell amplitudes have variable modulus
-    (∀ h : Perturbation (m + 2),
-      obs (stepAmplitude D h) = (Q h) ^ 2 + (D h) ^ 2)
-    -- (2) Two-channel interference (non-trivial, off-shell)
-    ∧ (∀ h₁ h₂ : History m,
-      eventObservable D [h₁, h₂] =
-      obs (historyAmplitude D h₁) + obs (historyAmplitude D h₂) +
-      2 * (historyAmplitude D h₁ * conj (historyAmplitude D h₂)).re)
-    -- (3) Constructive interference exists (amplification)
-    ∧ (∀ z₁ z₂ : ℂ,
-      z₁.re * z₂.re + z₁.im * z₂.im > 0 →
-      obs (z₁ + z₂) > obs z₁ + obs z₂)
-    -- (4) Destructive interference exists (suppression)
-    ∧ (∀ z₁ z₂ : ℂ,
-      z₁.re * z₂.re + z₁.im * z₂.im < 0 →
-      obs (z₁ + z₂) < obs z₁ + obs z₂)
-    -- (5) Source charge is additive (Ward identity, algebraic)
-    ∧ (∀ h₁ h₂ : Perturbation (m + 2),
-      Q (h₁ + h₂) = Q h₁ + Q h₂)
-    -- (6) Source charge cancellation (ghost cancellation)
+/-- **SCATTERING AMPLITUDE STRUCTURE FROM THE CAUSAL FRAMEWORK.**
+
+    Framework-specific results (Sections 1-4):
+    (1) Superposition: z(h₁+h₂) = z(h₁)+z(h₂) [from linearity of Q and D]
+    (2) Annihilation: z(h)+z(-h) = 0 [from linearity]
+    (3) K/P decomposition of amplitude [from h = K_proj(h) + P_proj(h)]
+    (4) P-sector is charge-neutral [from trace ∘ P_proj = 0]
+    (5) Charge additivity [from trace ∘ K_proj linear]
+    (6) On-shell multiplicativity [from exp addition formula]
+    (7) Aharonov-Bohm [from coupled amplitude + trig]
+
+    Generic complex results (Section 5, labeled as such):
+    - Interference formula, crossing symmetry -/
+theorem scattering_from_framework
+    (D : Perturbation (m + 2) →ₗ[ℝ] ℝ) :
+    -- (1) Superposition from linearity
+    (∀ h₁ h₂ : Perturbation (m + 2),
+      stepAmplitude D (h₁ + h₂) = stepAmplitude D h₁ + stepAmplitude D h₂)
+    -- (2) Annihilation
     ∧ (∀ h : Perturbation (m + 2),
-      Q (h + (-h)) = 0)
-    -- (7) Aharonov-Bohm (on-shell, physical prediction)
+      stepAmplitude D h + stepAmplitude D (-h) = 0)
+    -- (3) P-sector carries zero charge
+    ∧ (∀ h : Perturbation (m + 2), Q (P_proj m h) = 0)
+    -- (4) Charge from K-part equals total charge
+    ∧ (∀ h : Perturbation (m + 2), Q (K_proj m h) = Q h)
+    -- (5) Charge additivity
+    ∧ (∀ h₁ h₂ : Perturbation (m + 2), Q (h₁ + h₂) = Q h₁ + Q h₂)
+    -- (6) On-shell multiplicativity
+    ∧ (∀ k s₁ s₂ : ℝ,
+      expAmplitude k (s₁ + s₂) = expAmplitude k s₁ * expAmplitude k s₂)
+    -- (7) Aharonov-Bohm
     ∧ (∀ k φ qA₁ qA₂ : ℝ,
       Complex.normSq (coupledAmplitude k φ qA₁ + coupledAmplitude k φ qA₂) =
       2 + 2 * Real.cos (qA₁ - qA₂)) :=
-  ⟨offshell_variable_modulus D,
-   two_channel_interference D,
-   constructive_amplifies,
-   destructive_suppresses,
-   source_charge_additive,
-   source_charge_cancellation,
+  ⟨amplitude_additive D,
+   amplitude_annihilation D,
+   dressing_zero_charge,
+   charge_from_K_part,
+   charge_additive,
+   onshell_multiplicative,
    aharonov_bohm⟩
 
 end UnifiedTheory.LayerB.FeynmanRules
