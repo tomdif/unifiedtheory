@@ -83,13 +83,11 @@ $\nabla^a G_{ab} = 0$ (kinematic, all metrics).
 
 \begin{theorem}[Complete 4D Lovelock uniqueness]
 \label{thm:lovelock}
-In the second-order natural class (second-order from Ostrogradsky~\cite{woodard}, \S\ref{sec:ostrogradsky}): the unique divergence-free rank-2 tensor is $a\,G_{ab} + \Lambda\,g_{ab}$. Lovelock~\cite{lovelock} determines the \emph{form}; the discrete substrate~\cite{bombelli,sorkin} \emph{heuristically} suggests the magnitude $\Lambda \sim N^{-1/2} \sim 10^{-120}$ (a dimensional estimate, not a derivation).
+In the second-order natural class (second-order from Ostrogradsky~\cite{woodard}, \S\ref{sec:ostrogradsky}): the unique divergence-free rank-2 tensor is $a\,G_{ab} + \Lambda\,g_{ab}$. Lovelock~\cite{lovelock} determines the \emph{form}; the discrete substrate~\cite{bombelli,sorkin} suggests a heuristic scaling $\Lambda \sim N^{-1/2} \sim 10^{-120}$, but this is a dimensional estimate only --- $\Lambda$ is \emph{not} derived from the framework.
 \end{theorem}
 
-\begin{theorem}[Dimension selection~\cite{ehrenfest,tegmark}]
-\label{thm:dim}
-$d = 3$ is the unique spatial dimension with stable orbits and Huygens propagation. This is an external result (not derived from the seven inputs) used as a consistency check: the framework's gravitational sector requires $d \geq 2$; the physical value $d = 3$ is selected by independent stability arguments.
-\end{theorem}
+\noindent\textbf{Remark (Dimension selection, external).}
+$d = 3$ is the unique spatial dimension with stable orbits and Huygens propagation~\cite{ehrenfest,tegmark}. This is not derived from the seven inputs; it is an independent result used as a consistency check. The framework requires $d \geq 2$; the physical value $d = 3$ is selected by stability arguments external to the framework.
 
 \begin{theorem}[Graviton]
 \label{thm:graviton}
@@ -293,9 +291,9 @@ $m_s/m_b$ & $0.016$ & $0.019$ & $0.86\times$ & Preliminary$^*$ \\
 \end{tabular}
 \end{center}
 
-\noindent{\small $^*$The down-type result uses the U(1) hypercharge phase (derived charge $y_d = 2$) in the K/P projection. The hypercharge enters through the gauge-invariance of the Yukawa vertex $\bar{\psi}_L \Phi \psi_R$, which requires a U(1) charge balance. The precise form of this coupling for the down-type sector (which uses $\tilde{\Phi}$ rather than $\Phi$) requires further development. The up-type results use the pure color $+$ weak K/P projection with no sector-dependent choices.}
+\noindent{\small $^*$The down-type result uses the U(1) hypercharge phase (derived charge $y_d = 2$) in the K/P projection. The hypercharge enters through the gauge-invariance of the Yukawa vertex, which requires a U(1) charge balance. In the SM, the up-type coupling uses $\tilde{\Phi}$ while the down-type uses $\Phi$ directly; the precise form of this distinction within the K/P framework requires further development. The up-type results use the pure color $+$ weak K/P projection with no sector-dependent choices. See~\cite{difiore_causal} for the full computational framework and ensemble statistics.}
 
-The computation has zero free parameters: $\beta = 6$ is derived from $g^2(M_P) = 1$, the fiber geometry is derived from SU(3)$\times$SU(2)$\times$U(1), and the $\mathcal{O}(1)$ sections are the derived generation wavefunctions. The up-type results converge from $N = 5{,}000$ onward and are confirmed by 50-seed ensemble averaging with SEM $< 0.001$. The lepton sector and CKM matrix elements beyond $|V_{us}|$ are not yet computed; the same K/P machinery applies but requires the correct representation-theoretic treatment for each fermion species.
+The computation has zero free parameters: $\beta = 6$ is derived from $g^2(M_P) = 1$, the fiber geometry is derived from SU(3)$\times$SU(2)$\times$U(1), and the $\mathcal{O}(1)$ sections are the derived generation wavefunctions. The up-type results converge from $N = 5{,}000$ onward and are confirmed by 50-seed ensemble averaging with SEM $< 0.001$~\cite{difiore_causal}. The lepton sector and CKM matrix elements beyond $|V_{us}|$ are not yet computed; the same K/P machinery applies but requires the correct representation-theoretic treatment for each fermion species.
 \end{theorem}
 
 \section{Computational Realizations}
@@ -345,7 +343,7 @@ $\alpha_1(M_Z)$ & --- & 0.010 & Wrong sign from $g^2 = 1$ \\
 \end{tabular}
 \end{center}
 
-The boundary condition $g_2^2 = 1$ at $M_P$ is motivated by the symmetric appearance of the source and gauge terms in the coupled amplitude $z = e^{i(k\varphi + gA)}$: at the fundamental (lattice) scale, the natural normalization gives $g/k = 1$. This is a symmetry argument, not a derivation from the seven inputs; it constitutes an additional assumption for the coupling prediction. With one-loop running, this gives $\alpha_2(M_Z)$ to 7\%. The same boundary condition applied to SU(3) and U(1) fails: SU(3) enters the strong-coupling regime where one-loop perturbation theory is unreliable, and U(1) produces the wrong sign, indicating that the naive $g^2 = 1$ normalization does not apply uniformly to all gauge factors. The SU(2) prediction stands as a genuine zero-parameter test; the SU(3) and U(1) couplings require non-perturbative methods or a more refined boundary condition. Measured values use $\overline{\mathrm{MS}}$ scheme electroweak inputs from the Particle Data Group~\cite{pdg}.
+The boundary condition $g_2^2 = 1$ at $M_P$ is motivated by the symmetric appearance of the source and gauge terms in the coupled amplitude $z = e^{i(k\varphi + gA)}$: at the fundamental (lattice) scale, the natural normalization gives $g/k = 1$. This is a symmetry argument, not a derivation from the seven inputs; it constitutes an additional assumption for the coupling prediction. With one-loop running, this gives $\alpha_2(M_Z)$ to 7\%. The same boundary condition applied to SU(3) and U(1) fails: SU(3) enters the strong-coupling regime where one-loop perturbation theory is unreliable, and U(1) produces the wrong sign, indicating that the naive $g^2 = 1$ normalization does not apply uniformly to all gauge factors.  (U(1) has a different geometric origin within the framework --- it arises from the dressing sector (Theorem~\ref{thm:u1}), not from a simple Lie algebra factor --- and its coupling normalization is not fixed by the same symmetry argument as SU(2) and SU(3).)  The SU(2) prediction stands as a genuine zero-parameter test; the SU(3) and U(1) couplings require non-perturbative methods or a more refined boundary condition. Measured values use $\overline{\mathrm{MS}}$ scheme electroweak inputs from the Particle Data Group~\cite{pdg}.
 
 \section{Derivation Integrity}
 \label{sec:integrity}
@@ -362,7 +360,7 @@ The boundary condition $g_2^2 = 1$ at $M_P$ is motivated by the symmetric appear
 
 \emph{Generations:} $N_g = 3$ from $\dim H^0(\mathbb{CP}^2, \mathcal{O}(1)) = 3$ (section count, fiber dependence, and orthogonal independence all proven; product Laplacian decomposition and Hodge theorem are standard mathematics).
 
-\textbf{(C) Computationally verified (zero free parameters).} Up-type quark mass ratios from double K/P projection on a Poisson causal set: $m_c/m_t = 0.005$ (experiment: 0.004, factor 1.4), $m_u/m_t = 0.000016$ (experiment: 0.0000074, factor 2.2). Confirmed by 50-seed ensemble at $N = 10{,}000$--$50{,}000$ with convergent plateau (SEM $< 0.001$). The derived coupling $\beta = 6$ ($g^2(M_P) = 1$) gives the best match; the results are $\beta$-sensitive but $\beta$ is derived.
+\textbf{(C) Computationally verified (zero free parameters).} Up-type quark mass ratios from double K/P projection on a Poisson causal set~\cite{difiore_causal}: $m_c/m_t = 0.005$ (experiment: 0.004, factor 1.4), $m_u/m_t = 0.000016$ (experiment: 0.0000074, factor 2.2). Confirmed by 50-seed ensemble at $N = 10{,}000$--$50{,}000$ with convergent plateau (SEM $< 0.001$). The derived coupling $\beta = 6$ ($g^2(M_P) = 1$) gives the best match; the results are $\beta$-sensitive but $\beta$ is derived.
 
 \textbf{(C$'$) Preliminary computational results.} Down-type quark mass ratio $m_s/m_b = 0.016$ (experiment: 0.019, factor 0.86) using U(1) hypercharge-modified K/P projection. The way the hypercharge phase enters the K/P projection for different fermion species needs to be derived from the gauge-invariance of the Yukawa vertex rather than chosen post hoc. The lepton sector and CKM matrix elements beyond the Cabibbo angle are not yet computed; initial results indicate that color singlets (leptons) require a different K/P structure.
 
@@ -445,6 +443,7 @@ Minimality & $\to$ & SU(2), SU(3), 15 fermions \\
 \bibitem{pdg} R.~L.~Workman et al.\ (Particle Data Group), \emph{Prog.\ Theor.\ Exp.\ Phys.}\ \textbf{2022}, 083C01, and 2024 update.
 \bibitem{wolfenstein} L.~Wolfenstein, ``Parametrization of the Kobayashi--Maskawa matrix,'' \emph{Phys.\ Rev.\ Lett.}\ \textbf{51}:1945--1947, 1983.
 \bibitem{kk_review} T.~Appelquist, A.~Chodos, and P.~G.~O.~Freund (eds.), \emph{Modern Kaluza--Klein Theories}, Addison-Wesley, 1987.
+\bibitem{difiore_causal} T.~DiFiore, ``Scalar fields on causal sets with gauge orbit fibers: a computational framework for the origin of flavor,'' 2026. Code: \url{https://github.com/tomdif/causal-higgs-sim}.
 \end{thebibliography}
 
 \end{document}
