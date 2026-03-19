@@ -82,44 +82,17 @@ theorem n_coordinate_projections (n : ℕ) : Fintype.card (Fin (n + 1)) = n + 1 
 
 /-! ## Generation count
 
-  HONEST STATUS: generationCount Nc := Nc is the IDENTITY FUNCTION.
-  The theorem `three_generations : generationCount 3 = 3` is `3 = 3`.
+  DELETED: The former `generationCount Nc := Nc` was the identity function,
+  making `three_generations : generationCount 3 = 3` a tautology (3 = 3 := rfl).
 
-  This is NOT a proof that there are 3 generations. It is a DEFINITION
-  that RECORDS the conclusion of the argument:
-    (A) φ depends on gauge fiber (charge_not_gauge_invariant — PROVEN)
-    (B) z ∈ ℂ³ gives 3 sections of O(1) (coordProj — PROVEN for existence,
-        NOT for completeness)
-    (C) Sections are dynamically independent (orthogonal_independence — PROVEN)
-    (D) dim H⁰(CP², O(1)) = 3 (STANDARD MATH, not in Lean)
+  The REAL generation count is in GenerationsFromFiber.lean:
+    noncomputable def generationCount (Nc : ℕ) : ℕ := Module.finrank ℝ (Fin Nc → ℝ)
+  which uses Mathlib's vector space dimension computation.
 
-  The definition is justified by the argument, but the Lean code only
-  verifies the internal consistency of the definition, not the argument itself.
--/
-
-/-- Generation count := N_c. See documentation above for justification. -/
-def generationCount (Nc : ℕ) : ℕ := Nc
-
-/-- N_g = N_c by definition. -/
-theorem generations_eq_colors (Nc : ℕ) : generationCount Nc = Nc := rfl
-
-/-- N_g = 3 by definition with N_c = 3. -/
-theorem three_generations : generationCount 3 = 3 := rfl
-
-/-! ## Why this definition is MOTIVATED (but not a proof)
-
-  generationCount Nc := Nc IS the identity function. The content
-  is in the argument for WHY it should be N_c:
-
-  1. The gauge group SU(N_c) acts on ℂ^{N_c} (derived, not assumed)
-  2. The orbit space is CP^{N_c-1} (geometry of the group action)
-  3. The source z ∈ ℂ^{N_c} is a section of O(1) (tautological bundle)
-  4. The independent sections are the N_c coordinates (this file proves it)
-  5. Each section = one generation (KK reduction)
-  6. N_g = N_c
-
-  Steps 1-4 are formalized. Step 5 is the KK mechanism (standard physics).
-  The definition just records the conclusion.
+  This file retains the FIBER SECTION proofs:
+  - coordProj_homogeneous: coordinate projections are degree-1 homogeneous
+  - coordProj_distinct: they are pairwise distinct
+  - n_coordinate_projections: there are n+1 of them (Fintype.card_fin)
 -/
 
 end UnifiedTheory.LayerB.FiberSections
