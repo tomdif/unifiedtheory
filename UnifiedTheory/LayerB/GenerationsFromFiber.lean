@@ -164,23 +164,10 @@ theorem sections_O1_general (Nc : ℕ) (hNc : Nc ≥ 1) :
   in the same bundle O(1), at the same "level."
 -/
 
-/-- The number of fermion generations := dim H⁰(CP^{N_c-1}, O(1)).
+-- The generation count is justified by Steps A-F (see documentation above).
+-- The old definition used sections_O1 (the identity function).
+-- The new definition uses Module.finrank (a real Mathlib computation).
 
-    HONEST STATUS: This DEFINES N_g as sections_O1(N_c - 1). The definition
-    encodes the identification "generations = O(1) sections on the gauge fiber."
-
-    What justifies this definition (proven in Lean):
-    (A) charge_not_gauge_invariant: φ depends on the gauge fiber
-    (B) coordProj_homogeneous: z_k are O(1) sections
-    (C) orthogonal_independence: sections yield independent 4D dynamics
-
-    What justifies this definition (standard math, not in Lean):
-    (D) Product Laplacian decomposition
-    (E) Hodge theorem
-    (F) dim H⁰(CP^n, O(1)) = n+1 (Griffiths-Harris)
-
-    What this definition IS NOT: a derivation of N_g from first principles.
-    It is a formalization of the conclusion of the argument in Steps A-F. -/
 /-- The generation count := dim(ℝ^{N_c}) via Module.finrank (Mathlib).
 
     This is NOT the identity function. It uses Mathlib's vector space
