@@ -82,3 +82,6 @@ import UnifiedTheory.LayerC.ConcreteMultiBody
 import UnifiedTheory.LayerB.PropagationRule
 import UnifiedTheory.LayerA.GaugeSelection
 import UnifiedTheory.LayerA.DiscreteBundles
+
+-- Feynman rules from structured history sums
+import UnifiedTheory.LayerB.FeynmanRules
