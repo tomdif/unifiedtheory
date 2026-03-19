@@ -87,3 +87,4 @@ import UnifiedTheory.LayerA.DiscreteBundles
 import UnifiedTheory.LayerB.FeynmanRules
 import UnifiedTheory.LayerB.HiggsDoublet
 import UnifiedTheory.LayerB.MassAndMixing
+import UnifiedTheory.LayerB.YukawaFromFiber
