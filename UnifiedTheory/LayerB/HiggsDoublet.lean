@@ -119,33 +119,32 @@ theorem potential_su2_invariant (a b : ℝ) (α β : ℂ) (Φ : HiggsField)
   rw [su2_preserves_norm α β Φ h_unitary]
 
 
-/-! ## GAP 2 CLOSED: Derivative verification as polynomial identity
+/-! ## GAP 2 CLOSED: Global minimum (not just critical point)
 
-    Instead of defining calculus, we prove the POLYNOMIAL EXPANSION:
-      V(ρ₀ + ε) = V(ρ₀) + 0·ε + b·ε²
-    This simultaneously verifies V'(ρ₀) = 0 and V''(ρ₀) = 2b
-    as a single algebraic identity, without using limits or derivatives.
+    We prove V(ρ) ≥ V(ρ₀) for ALL ρ, not just that V'(ρ₀) = 0.
+    This is the GLOBAL minimum statement, strictly stronger than
+    the critical point condition.
 -/
 
 /-- **Polynomial expansion of V around the minimum.**
     V(ρ₀+ε) - V(ρ₀) = b·ε² when ρ₀ = a/(2b).
-
-    This is a polynomial identity. The absence of the linear term ε
-    proves V'(ρ₀) = 0 (critical point). The coefficient of ε² is b,
-    so V''(ρ₀) = 2b (it's a minimum when b > 0). -/
+    Since b > 0, this is non-negative for all ε. -/
 theorem potential_expansion_at_minimum (a b ε : ℝ) (hb : b ≠ 0) :
     (-a * (a / (2 * b) + ε) + b * (a / (2 * b) + ε) ^ 2) -
     (-a * (a / (2 * b)) + b * (a / (2 * b)) ^ 2) = b * ε ^ 2 := by
   field_simp
   ring
 
-/-- **No linear term means critical point.** Setting ε = t for any t:
-    the difference V(ρ₀+t) - V(ρ₀) has no term proportional to t.
-    Equivalently: V(ρ₀+t) - V(ρ₀) - b·t² = 0 for all t. -/
-theorem critical_point_verified (a b t : ℝ) (hb : b ≠ 0) :
-    (-a * (a / (2 * b) + t) + b * (a / (2 * b) + t) ^ 2) =
-    (-a * (a / (2 * b)) + b * (a / (2 * b)) ^ 2) + b * t ^ 2 := by
-  have := potential_expansion_at_minimum a b t hb
+/-- **ρ₀ = a/(2b) is a GLOBAL minimum of V(ρ) = -aρ + bρ².**
+    V(ρ) ≥ V(ρ₀) for ALL ρ ∈ ℝ, not just nearby ρ.
+
+    Proof: V(ρ) - V(ρ₀) = b·(ρ - ρ₀)² ≥ 0 when b > 0.
+    This is strictly stronger than the critical point condition V'(ρ₀) = 0. -/
+theorem potential_global_minimum (a b ρ : ℝ) (hb : 0 < b) :
+    -a * ρ + b * ρ ^ 2 ≥ -a * (a / (2 * b)) + b * (a / (2 * b)) ^ 2 := by
+  -- Write ρ = ρ₀ + ε where ε = ρ - a/(2b)
+  have key := potential_expansion_at_minimum a b (ρ - a / (2 * b)) (ne_of_gt hb)
+  have h_sq : b * (ρ - a / (2 * b)) ^ 2 ≥ 0 := by positivity
   linarith
 
 /-- **Higgs mass from the quadratic coefficient.**
