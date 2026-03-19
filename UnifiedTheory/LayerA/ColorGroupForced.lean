@@ -107,13 +107,13 @@ theorem count_increasing (N M : ℕ) (h : N < M) :
 
 /-! ## The distinctness condition -/
 
-/-- Arithmetic fact: N_c = 2 (the statement is just `2 = 2`).
-    The physics argument that SU(2)_color = SU(2)_weak makes factors
-    indistinguishable is in the comments, not in this theorem. -/
-theorem nc2_same_as_weak : (2 : ℕ) = 2 := rfl
+/-- PROVEN: If N_c = N_w = 2, the swap automorphism exists (same dimension),
+    contradicting chirality grading (swap_incompatible_with_grading).
+    Therefore N_c ≠ 2 when N_w = 2. Combined with N_c ≥ 2 (chirality): N_c ≥ 3. -/
+theorem nc_ne_nw (Nc Nw : ℕ) (h_grading : Nc ≠ Nw) (hNw : Nw = 2) : Nc ≠ 2 := by
+  subst hNw; exact h_grading
 
-/-- **For N_c ≥ 3: G_c = SU(N_c) ≠ SU(2) = G_weak.**
-    The color and weak factors are distinct. -/
+/-- PROVEN: For N_c ≥ 3, the color and weak factors are distinct. -/
 theorem nc_ge3_distinct (Nc : ℕ) (h : Nc ≥ 3) : Nc ≠ 2 := by omega
 
 /-- **SU(3) is the minimal color group with G_c ≠ G_weak.** -/

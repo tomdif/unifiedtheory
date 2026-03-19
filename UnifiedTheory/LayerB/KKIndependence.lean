@@ -144,10 +144,11 @@ theorem orthogonal_independence' (c : Fin 3 → ℂ)
   this completes the derivation of N_g = 3.
 -/
 
-/-- The generation count follows from independence + section count. -/
-theorem generation_count_from_independence :
-    -- The number of independent solutions = number of sections = 3
-    (3 : ℕ) = 3 := rfl
+-- The generation count follows from:
+-- 1. orthogonal_independence (this file): 3 independent fiber modes
+-- 2. vector_space_dim (GenerationsFromFiber): dim(ℝ³) = 3 via Mathlib
+-- 3. three_generations (GenerationsFromFiber): generationCount 3 = 3
+-- The former `generation_count_from_independence` was `3 = 3 := rfl`. Deleted.
 
 /-! ## Summary
 

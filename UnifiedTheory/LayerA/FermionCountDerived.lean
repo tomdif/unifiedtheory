@@ -58,7 +58,11 @@ def colorParitySatisfied (contributions_Nc contributions_Ncbar : ℕ) : Prop :=
     so left-handed and right-handed fermions have identical quantum numbers. -/
 def IsVectorLike (d_Nc d_Ncbar : ℕ) : Prop := d_Nc = d_Ncbar
 
-/-- Equal weak dimensions → vector-like. -/
+/-- PROVEN: Equal weak dimensions → vector-like.
+    This is definitional (IsVectorLike d d unfolds to d = d),
+    but the PHYSICS is: if N_c and N̄_c sectors have the same
+    SU(N_w) representation dimension, the theory is vector-like.
+    The real proof is in RepStructureForced.both_multiplets_not_chiral. -/
 theorem equal_dims_vectorlike (d : ℕ) : IsVectorLike d d := rfl
 
 /-! Chirality requires different weak dims for N_c and N̄_c sectors. -/
@@ -104,9 +108,12 @@ theorem total_Nc3_local (Nw : ℕ) : totalFermions 3 Nw = 7 * Nw + 1 := by
 
 /-! ## N_w = 1 is vector-like -/
 
-/-- **At N_w = 1: the colored sector is (N_c, 1) + 1×(N̄_c, 1).**
-    Both are SU(N_w) singlets → same weak quantum numbers → vector-like. -/
-theorem nw1_is_vectorlike : IsVectorLike 1 1 := rfl
+/-- PROVEN: At N_w = 1, the SM assignment is NOT chiral.
+    The colored sector is (N_c, 1) + 1×(N̄_c, 1): both singlets,
+    same weak quantum numbers. Derived from RepStructureForced. -/
+theorem nw1_not_chiral : ¬RepStructureForced.isChiral (RepStructureForced.smAssignment 1) := by
+  unfold RepStructureForced.isChiral RepStructureForced.smAssignment
+  push_neg; exact ⟨by omega, by rfl⟩
 
 /-- **At N_w ≥ 2: the colored sector is chiral.**
     (N_c, N_w) is an N_w-plet, while (N̄_c, 1) is a singlet.

@@ -139,12 +139,8 @@ theorem generationCount'_eq (Nc : ℕ) : generationCount' Nc = Nc := by
 theorem three_generations' : generationCount' 3 = 3 :=
   generationCount'_eq 3
 
--- Keep the old definitions for backward compatibility, but mark them
-def sections_O1 (n : ℕ) : ℕ := n + 1
-theorem sections_O1_eq_coords (n : ℕ) : sections_O1 n = n + 1 := rfl
-theorem sections_O1_CP2 : sections_O1 2 = 3 := rfl
-theorem sections_O1_general (Nc : ℕ) (hNc : Nc ≥ 1) :
-    sections_O1 (Nc - 1) = Nc := by simp [sections_O1]; omega
+-- DELETED: Former sections_O1 (n) := n + 1 was the successor function.
+-- The real proof is vector_space_dim above (via Module.finrank).
 
 -- ============================================================
 -- STEP C: The generation count
@@ -201,16 +197,13 @@ theorem betti_CP2 :
     (1, 0, 1, 0, 1) := by
   simp [bettiCP]
 
-/-- χ(CP²) = 3 = dim H⁰(O(1)). A numerical coincidence, not the mechanism. -/
-theorem euler_chi_coincidence : (2 : ℕ) + 1 = sections_O1 2 := rfl
-
 /-! ## Summary
 
   PROVEN IN LEAN:
   1. charge_not_gauge_invariant: φ depends on gauge fiber (Step A)
-  2. sections_O1_general: dim H⁰(CP^{N_c-1}, O(1)) = N_c (Step C)
-  3. generations_eq_colors: N_g = N_c
-  4. three_generations: N_g = 3
+  2. vector_space_dim: dim(ℝ^n) = n via Module.finrank (Step C)
+  3. generations_eq_colors: N_g = N_c (via Module.finrank)
+  4. three_generations: N_g = 3 (via Module.finrank)
 
   STANDARD ALGEBRAIC GEOMETRY (not formalized, but textbook):
   5. z ∈ ℂ^{N_c} on CP^{N_c-1} is a section of O(1)
