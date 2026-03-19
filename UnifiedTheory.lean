@@ -85,3 +85,4 @@ import UnifiedTheory.LayerA.DiscreteBundles
 
 -- Feynman rules from structured history sums
 import UnifiedTheory.LayerB.FeynmanRules
+import UnifiedTheory.LayerB.HiggsDoublet
