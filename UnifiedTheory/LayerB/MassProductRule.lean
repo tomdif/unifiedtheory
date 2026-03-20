@@ -99,4 +99,41 @@ theorem product_rule_lt_one : massProductRule < 1 := by
   have hpos := product_rule_pos
   nlinarith [sq_nonneg (massProductRule - 1), sq_nonneg massProductRule]
 
+/-! ## Bridge to the K/P concentration theorem -/
+
+/-- The concentration amplitude A(β, N) for SU(N) at coupling β.
+    This is the prefactor in the CLT concentration: r ~ A/√(samples).
+    A = √(dimPerp) / β where dimPerp = N-1 (perpendicular directions). -/
+noncomputable def concentrationAmplitude (N : ℕ) (beta : ℝ) : ℝ :=
+  Real.sqrt (dimPerp N : ℝ) / beta
+
+/-- The concentration amplitude for SU(3) at β=6. -/
+theorem concentration_color :
+    concentrationAmplitude N_c (wilsonBeta N_c 1) = Real.sqrt 2 / 6 := by
+  unfold concentrationAmplitude; rw [dimPerp_color, beta_color]; push_cast; ring
+
+/-- The concentration amplitude for SU(2) at β=4. -/
+theorem concentration_weak :
+    concentrationAmplitude N_w (wilsonBeta N_w 1) = Real.sqrt 1 / 4 := by
+  unfold concentrationAmplitude; rw [dimPerp_weak, beta_weak]; push_cast; ring
+
+/-- **Bridge theorem: the mass product rule IS the ratio of concentration amplitudes.**
+
+    massProductRule = A_color / A_weak
+
+    This is the formal connection between the algebraic product rule
+    and the physical K/P concentration theorem. The concentration
+    theorem says:
+      m_c/m_t ~ A_color / √N  (intra-sector ratio)
+      m_t/m_b ~ √N / A_weak   (inter-sector ratio, from K/P VEV alignment)
+
+    The product is N-independent: (A_color/√N) × (√N/A_weak) = A_color/A_weak. -/
+theorem product_rule_is_concentration_ratio :
+    massProductRule =
+    concentrationAmplitude N_c (wilsonBeta N_c 1) /
+    concentrationAmplitude N_w (wilsonBeta N_w 1) := by
+  rw [concentration_color, concentration_weak, Real.sqrt_one]
+  rw [product_rule_value]
+  field_simp; ring
+
 end UnifiedTheory.LayerB.MassProductRule
