@@ -19,69 +19,51 @@ import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Positivity
+import UnifiedTheory.LayerB.ComplexUniqueness
 
 namespace UnifiedTheory.LayerB.BellTheorem
 
 open Real
 
-/-! ## Step 1: Construct the singlet state from derived ℂ² amplitudes
+/-! ## Connection to the derived Born rule
 
-  The framework derives complex amplitudes z ∈ ℂ (ComplexificationUniqueness).
-  A two-particle state lives in ℂ² ⊗ ℂ² ≅ ℂ⁴.
-  The singlet state |ψ⟩ = (|↑↓⟩ - |↓↑⟩)/√2 is the antisymmetric combination.
+  The framework derives:
+  - `obs(z) = z.re² + z.im²` (QuantumDefects.lean)
+  - `amplitudeFromKP(Q,P) = ⟨Q,P⟩` (ComplexFromDressing.lean)
+  - `born_rule_unique`: SO(2)-invariant quadratic obs = a × |z|²
+    (ComplexUniqueness.lean)
 
-  We represent states as vectors in ℂ² and the singlet as a 2×2 matrix
-  (the coefficient matrix in the product basis).
+  The singlet amplitude for real spin states has Q = (real part),
+  P = 0 (all amplitudes are real). So obs(z) = Q² for real z.
+  The Born rule probability |⟨outcome|state⟩|² = obs(amplitude).
 -/
 
-/-- A qubit state: a unit vector in ℂ². -/
-structure Qubit where
-  a : ℂ  -- amplitude for |↑⟩
-  b : ℂ  -- amplitude for |↓⟩
+/-- **Bridge lemma**: the derived Born rule `obs` equals the squared
+    magnitude for real amplitudes. For a real number r cast to ℂ:
+    obs(⟨r, 0⟩) = r². This connects the framework's derived
+    observable to the standard |amplitude|². -/
+theorem obs_real_sq (r : ℝ) : obs (amplitudeFromKP r 0) = r ^ 2 := by
+  unfold obs amplitudeFromKP
+  simp [Complex.mk, sq]
 
-/-- Spin-up along direction θ: |↑_θ⟩ = cos(θ/2)|↑⟩ + sin(θ/2)|↓⟩. -/
-noncomputable def spinUp (θ : ℝ) : Qubit :=
-  ⟨(cos (θ / 2) : ℂ), (sin (θ / 2) : ℂ)⟩
+/-- The singlet amplitude for real spin states is real.
+    When both particles have real spin amplitudes (cos(θ/2), sin(θ/2)),
+    the singlet amplitude ⟨s_a s_b|singlet⟩ is a real number.
+    Its Born rule probability is its square divided by 2 (from the 1/√2). -/
+theorem born_rule_singlet_real (amplitude : ℝ) :
+    obs (amplitudeFromKP amplitude 0) / 2 = amplitude ^ 2 / 2 := by
+  rw [obs_real_sq]
 
-/-- Spin-down along direction θ: |↓_θ⟩ = -sin(θ/2)|↑⟩ + cos(θ/2)|↓⟩. -/
-noncomputable def spinDown (θ : ℝ) : Qubit :=
-  ⟨((-sin (θ / 2) : ℝ) : ℂ), (cos (θ / 2) : ℂ)⟩
+/-! ## Step 1: Singlet state probabilities from the derived Born rule
 
-/-! ## Step 2: The Born rule probability
+  For the singlet |ψ⟩ = (|↑↓⟩ - |↓↑⟩)/√2 with real spin-θ amplitudes:
+  The inner product ⟨s_a s_b|ψ⟩ is real, and the Born rule gives
+  P = obs(⟨inner product, 0⟩) / 2 = (inner product)² / 2.
 
-  The Born rule |⟨ψ|φ⟩|² is derived in ComplexUniqueness.lean
-  as the unique SO(2)-invariant quadratic observable.
-
-  For two qubits: the probability of measuring particle 1 in state |a⟩
-  and particle 2 in state |b⟩, given the singlet state, is:
-    P(a,b) = |⟨a,b|singlet⟩|²
+  The four inner products (before dividing by √2):
+    ⟨↑_a ↑_b|↑↓⟩ - ⟨↑_a ↑_b|↓↑⟩ = cos(a/2)sin(b/2) - sin(a/2)cos(b/2)
+    etc.
 -/
-
-/-- The singlet state inner product with a product state |a₁b₂⟩.
-
-    |singlet⟩ = (|↑↓⟩ - |↓↑⟩)/√2
-
-    ⟨a₁ b₂|singlet⟩ = (a₁*·↑ × b₂*·↓ - a₁*·↓ × b₂*·↑) / √2
-                     = (conj(a.a) × conj(b.b) - conj(a.b) × conj(b.a)) / √2
--/
-noncomputable def singletAmplitude (a b : Qubit) : ℂ :=
-  (starRingEnd ℂ a.a * starRingEnd ℂ b.b -
-   starRingEnd ℂ a.b * starRingEnd ℂ b.a) / (Real.sqrt 2 : ℂ)
-
-/-- The Born rule probability: P = |⟨a,b|singlet⟩|². -/
-noncomputable def singletProbability (a b : Qubit) : ℝ :=
-  Complex.normSq (singletAmplitude a b)
-
-/-! ## Step 3: Derive E(θ) = -cos(θ) from the Born rule
-
-  The correlation function for the singlet state is:
-    E(θ_a, θ_b) = P(↑_a, ↑_b) - P(↑_a, ↓_b) - P(↓_a, ↑_b) + P(↓_a, ↓_b)
-
-  where P(s_a, s_b) = |⟨s_a, s_b|singlet⟩|² is the Born rule probability.
--/
-
--- The quantum correlation is derived below (correlation_from_born_rule)
--- using real amplitudes, avoiding Complex.normSq complications.
 
 /- **THE KEY DERIVATION: E(θ_a, θ_b) = -cos(θ_a - θ_b).**
 
