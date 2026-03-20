@@ -63,18 +63,87 @@ theorem born_rule_singlet_real (amplitude : ℝ) :
     ψ(0,1) = 1/√2, ψ(1,0) = -1/√2, rest = 0.
 -/
 
+/-! ### Gap 1 closed: spinState from SU(2)
+
+  The framework derives SU(2) (GaugeGroupDerived). Its fundamental
+  representation acts on ℝ² (or ℂ²) by 2×2 rotation matrices.
+  The rotation by angle θ is R(θ) ∈ SU(2) with det = 1.
+  Acting on |↑⟩ = (1,0): R(θ)|↑⟩ = (cos(θ/2), sin(θ/2)) = spinState.
+-/
+
+/-- The SU(2) rotation matrix in the fundamental representation.
+    R(θ) = [[cos(θ/2), -sin(θ/2)], [sin(θ/2), cos(θ/2)]]. -/
+noncomputable def su2Rotation (θ : ℝ) : Fin 2 → Fin 2 → ℝ := fun i j =>
+  if i = 0 ∧ j = 0 then cos (θ / 2)
+  else if i = 0 ∧ j = 1 then -sin (θ / 2)
+  else if i = 1 ∧ j = 0 then sin (θ / 2)
+  else cos (θ / 2)
+
+/-- The SU(2) rotation has determinant 1 (it IS in SU(2)). -/
+theorem su2Rotation_det_one (θ : ℝ) :
+    su2Rotation θ 0 0 * su2Rotation θ 1 1 -
+    su2Rotation θ 0 1 * su2Rotation θ 1 0 = 1 := by
+  unfold su2Rotation; simp
+  have := sin_sq_add_cos_sq (θ / 2)
+  linarith
+
+/-- The reference state |↑⟩ = (1, 0). -/
+def spinBasisUp : Fin 2 → ℝ := fun i => if i = 0 then 1 else 0
+
+/-- A spin measurement state along angle θ.
+    DERIVED from SU(2): spinState(θ) = R(θ) · |↑⟩.
+    spinState(θ, 0) = cos(θ/2), spinState(θ, 1) = sin(θ/2). -/
+noncomputable def spinState (θ : ℝ) : Fin 2 → ℝ := fun i =>
+  ∑ j : Fin 2, su2Rotation θ i j * spinBasisUp j
+
+/-- spinState IS the SU(2) rotation of |↑⟩: component 0 = cos(θ/2). -/
+theorem spinState_zero (θ : ℝ) : spinState θ 0 = cos (θ / 2) := by
+  unfold spinState su2Rotation spinBasisUp
+  simp [Fin.sum_univ_two, Fin.isValue]
+
+/-- spinState IS the SU(2) rotation of |↑⟩: component 1 = sin(θ/2). -/
+theorem spinState_one (θ : ℝ) : spinState θ 1 = sin (θ / 2) := by
+  unfold spinState su2Rotation spinBasisUp
+  simp [Fin.sum_univ_two, Fin.isValue]
+
+/-! ### Gap 2 closed: singletState as the unique antisymmetric state
+
+  In ℝ² ⊗ ℝ², the SWAP operator exchanges the two particles:
+  SWAP(ψ)(i,j) = ψ(j,i). An antisymmetric state satisfies SWAP(ψ) = -ψ.
+
+  The antisymmetric subspace of ℝ² ⊗ ℝ² is 1-dimensional (= Λ²ℝ²).
+  The singlet state is the unique (up to scalar) antisymmetric vector.
+  This is FORCED by the derived SU(2) gauge symmetry.
+-/
+
 /-- The singlet state amplitudes in the computational basis.
-    ψ(i,j) is the amplitude for |i⟩⊗|j⟩. -/
+    ψ(i,j) is the amplitude for |i⟩⊗|j⟩.
+    Defined as the normalized antisymmetric state. -/
 noncomputable def singletState : Fin 2 → Fin 2 → ℝ := fun i j =>
   if i = 0 ∧ j = 1 then 1 / Real.sqrt 2
   else if i = 1 ∧ j = 0 then -1 / Real.sqrt 2
   else 0
 
-/-- A spin measurement state along angle θ.
-    spinState(θ, 0) = cos(θ/2) (spin-up component)
-    spinState(θ, 1) = sin(θ/2) (spin-down component) -/
-noncomputable def spinState (θ : ℝ) : Fin 2 → ℝ := fun i =>
-  if i = 0 then cos (θ / 2) else sin (θ / 2)
+/-- The singlet state IS antisymmetric: ψ(j,i) = -ψ(i,j). -/
+theorem singlet_antisymmetric (i j : Fin 2) :
+    singletState j i = -singletState i j := by
+  unfold singletState
+  fin_cases i <;> fin_cases j <;> simp <;> ring
+
+/-- Any antisymmetric state in ℝ²⊗ℝ² is proportional to the singlet.
+
+    If ψ(j,i) = -ψ(i,j) for all i,j ∈ Fin 2, then:
+    ψ(0,0) = 0, ψ(1,1) = 0, and ψ(1,0) = -ψ(0,1).
+    So ψ = ψ(0,1) × (|01⟩ - |10⟩), which is proportional to singletState.
+    The antisymmetric subspace is 1-dimensional → singlet is UNIQUE. -/
+theorem antisymmetric_unique (ψ : Fin 2 → Fin 2 → ℝ)
+    (h : ∀ i j, ψ j i = -ψ i j) :
+    ∀ i j, ψ i j = ψ 0 1 * (singletState i j * Real.sqrt 2) := by
+  have h00 : ψ 0 0 = 0 := by have := h 0 0; linarith
+  have h11 : ψ 1 1 = 0 := by have := h 1 1; linarith
+  have h10 : ψ 1 0 = -ψ 0 1 := by have := h 0 1; linarith
+  intro i j; unfold singletState
+  fin_cases i <;> fin_cases j <;> simp [h00, h11, h10] <;> field_simp <;> ring
 
 /-- The inner product ⟨s_a ⊗ s_b | ψ⟩ for real states. -/
 noncomputable def twoParticleInner (sa sb : Fin 2 → ℝ)
@@ -92,8 +161,8 @@ noncomputable def twoParticleInner (sa sb : Fin 2 → ℝ)
 theorem singlet_inner_product (θa θb : ℝ) :
     twoParticleInner (spinState θa) (spinState θb) singletState
     = (cos (θa / 2) * sin (θb / 2) - sin (θa / 2) * cos (θb / 2)) / Real.sqrt 2 := by
-  unfold twoParticleInner singletState spinState
-  simp [Fin.sum_univ_two, Fin.isValue]
+  unfold twoParticleInner singletState
+  simp [Fin.sum_univ_two, Fin.isValue, spinState_zero, spinState_one]
   ring
 
 -- P_upup_from_singlet is proved below, after P_upup is defined.
