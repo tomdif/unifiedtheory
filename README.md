@@ -69,7 +69,7 @@ Non-formalized standard math: product Laplacian decomposition, Hodge theorem (19
 ## Build
 
 ```bash
-lake build    # ~2327 jobs, zero errors, zero sorry
+lake build    # ~2061 jobs, zero errors, zero sorry
 ```
 
 Requires Lean 4 and Mathlib. The axiom footprint is `{propext, Classical.choice, Quot.sound}` (standard kernel axioms only).
@@ -118,6 +118,13 @@ Requires Lean 4 and Mathlib. The axiom footprint is `{propext, Classical.choice,
 | `KKIndependence.lean` | Orthogonal fiber modes → independent 4D dynamics |
 | `ThreeGenerations.lean` | CP violation requires N_g ≥ 3 |
 | `StrongCP.lean` | θ-term parity-odd; parity averaging proven |
+
+### New Results (LayerA/B)
+| File | Key theorem |
+|------|-------------|
+| `MassProductRule.lean` | Product rule m_c/m_t × m_t/m_b = √2 × 2/3 (formally verified constraint on mass ratios) |
+| `BellTheorem.lean` | Bell inequality violation S² = 8 > 4 derived from Born rule; classical bound \|S\| ≤ 2; singlet state unique |
+| `InputIndependence.lean` | All 7 inputs are independent — removing any one admits non-SM alternatives |
 
 ## Paper
 
