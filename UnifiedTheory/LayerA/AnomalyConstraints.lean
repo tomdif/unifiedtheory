@@ -728,4 +728,75 @@ theorem weinberg_from_charge_consistency (ca : ChargeAssignment)
   -- Goal: 2 / (2 + 120 * ca.yQ ^ 2) = 3 / 8
   rw [hyQ2]; norm_num
 
+/-! ## CAPSTONE: Every SM electric charge derived from first principles -/
+
+/-- Electric charges of all five SM fermion species, computed from
+    hypercharge Y via Q = T₃ + Y. -/
+noncomputable def allCharges (ca : ChargeAssignment) :=
+  ( 1/2 + ca.yQ,    -- Q(u_L): up quark (T₃ = +1/2 in doublet)
+   -1/2 + ca.yQ,    -- Q(d_L): down quark (T₃ = -1/2 in doublet)
+    1/2 + ca.yL,    -- Q(ν_L): neutrino (T₃ = +1/2 in doublet)
+   -1/2 + ca.yL,    -- Q(e_L): electron (T₃ = -1/2 in doublet)
+    ca.ye )          -- Q(ē_L): positron (SU(2) singlet, T₃ = 0)
+
+/-- **CAPSTONE: All five SM electric charges derived from anomaly cancellation.**
+
+    From anomaly_uniqueness + charge consistency + charged electron:
+    (Q_u, Q_d, Q_ν, Q_e, Q_ē) = (2/3, -1/3, 0, -1, 1).
+
+    Every electric charge in the Standard Model is a THEOREM, not an input.
+
+    The derivation chain:
+    1. anomaly_uniqueness → (yQ, yu, yd, yL, ye) = yQ·(1, -4, 2, -3, 6)
+    2. upQuarkChargeConsistent → yQ = 1/6 (or -1/6)
+    3. electronCharge ≠ 0 → yQ = 1/6 (mirror excluded)
+    4. Q = T₃ + Y → all charges follow
+
+    Physical inputs: (a) anomaly cancellation (from gauge invariance),
+    (b) left = right quark charge, (c) electron is charged.
+    Zero free parameters. -/
+theorem all_sm_charges_derived (ca : ChargeAssignment)
+    (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
+    (hsu3 : su3MixedCondition ca) (hlin : linearCondition ca)
+    (hQ : ca.yQ ≠ 0)
+    (h_consistent : upQuarkChargeConsistent ca)
+    (h_charged : electronCharge ca ≠ 0) :
+    allCharges ca = (2/3, -1/3, 0, -1, 1) := by
+  have ⟨hyQ, _⟩ := electron_charge_derived ca hcubic hsu2 hsu3 hlin hQ h_consistent h_charged
+  have hyL := anomaly_determines_yL ca hsu2
+  have hye := anomaly_determines_ye ca hsu2 hsu3 hlin
+  unfold allCharges
+  rw [hyQ]; rw [show ca.yL = -3 * (1/6 : ℝ) from by rw [← hyQ]; exact hyL]
+  rw [show ca.ye = 6 * (1/6 : ℝ) from by rw [← hyQ]; exact hye]
+  norm_num
+
+/-- **DERIVED: Neutrino neutrality is a CONSEQUENCE, not an assumption.**
+    Q_ν = 0 follows from anomaly cancellation + charge consistency + Q_e ≠ 0.
+    The neutrino's zero charge is DERIVED from the same conditions that
+    fix the electron's charge to -1. -/
+theorem neutrino_neutrality_derived (ca : ChargeAssignment)
+    (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
+    (hsu3 : su3MixedCondition ca) (hlin : linearCondition ca)
+    (hQ : ca.yQ ≠ 0)
+    (h_consistent : upQuarkChargeConsistent ca)
+    (h_charged : electronCharge ca ≠ 0) :
+    1/2 + ca.yL = 0 := by
+  have ⟨hyQ, _⟩ := electron_charge_derived ca hcubic hsu2 hsu3 hlin hQ h_consistent h_charged
+  have hyL := anomaly_determines_yL ca hsu2
+  rw [hyL, hyQ]; norm_num
+
+/-- **DERIVED: Quark charges are fractional (±1/3, ±2/3) — a consequence.**
+    Fractional quark charges are not assumed — they FOLLOW from anomaly
+    cancellation + the electron being charged. The 1/3 quantization emerges
+    from yQ = 1/6 combined with T₃ = ±1/2. -/
+theorem quark_charge_fractionality (ca : ChargeAssignment)
+    (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
+    (hsu3 : su3MixedCondition ca) (hlin : linearCondition ca)
+    (hQ : ca.yQ ≠ 0)
+    (h_consistent : upQuarkChargeConsistent ca)
+    (h_charged : electronCharge ca ≠ 0) :
+    1/2 + ca.yQ = 2/3 ∧ -1/2 + ca.yQ = -1/3 := by
+  have ⟨hyQ, _⟩ := electron_charge_derived ca hcubic hsu2 hsu3 hlin hQ h_consistent h_charged
+  rw [hyQ]; constructor <;> norm_num
+
 end UnifiedTheory.LayerA.AnomalyConstraints
