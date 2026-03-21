@@ -50,12 +50,14 @@ open LayerB.ThreeGenerations
 open LayerB.GenerationsFromFiber
 open LayerB.BellTheorem
 
-/-- **THE STANDARD MODEL IS A THEOREM.**
+/-- **The SM content is uniquely determined by the framework's inputs.**
 
-    Every entry in the Standard Model particle table is DERIVED:
+    Given: anomaly cancellation (encoding the SM rep structure),
+    charge consistency, chirality, minimality, and orbital stability,
+    the following are all DERIVED (not assumed):
 
     SPACETIME:
-    - d = 3 spatial dimensions (stable orbits + Huygens' principle)
+    - d = 3 spatial dimensions (stable orbits [POSTULATE] + Huygens' principle)
     - Spacetime = 3+1 = 4 dimensions
 
     GAUGE GROUP:

@@ -64,7 +64,8 @@ theorem yukawa_conserves_hypercharge (ca : ChargeAssignment)
 /-! ## Non-renormalizability of B-violating operators -/
 
 -- The lowest-dimension B-violating operator (qqql) has four fermion fields.
--- Each fermion field has mass dimension 3/2 in 4D.
+-- Each fermion field has mass dimension 3/2 in 4D (standard QFT result,
+-- not derived from the framework — assumed as part of QFT formalism).
 -- Total dimension = 4 × 3/2 = 6 > 4 → non-renormalizable.
 
 /-- Four fermion fields have total mass dimension 6 (each contributes 3/2). -/
