@@ -231,7 +231,7 @@ theorem lindblad_decoherence (rate : DephasingRate) :
     the system irreversibly approaches classicality. The proof uses
     gamma_antitone (γ₂ ≤ γ₁ for t₂ ≥ t₁) and positivity of γ. -/
 theorem observable_approaches_classical (rate : DephasingRate)
-    (ρ : DensityMatrix2) (t₁ t₂ : ℝ) (ht₁ : 0 ≤ t₁) (h : t₁ ≤ t₂) :
+    (ρ : DensityMatrix2) (t₁ t₂ : ℝ) (h : t₁ ≤ t₂) :
     |totalObs (lindbladEvolve rate t₂ ρ) - (ρ.p₁ + ρ.p₂)| ≤
     |totalObs (lindbladEvolve rate t₁ ρ) - (ρ.p₁ + ρ.p₂)| := by
   simp only [lindblad_observable]
