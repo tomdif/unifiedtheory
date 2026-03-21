@@ -60,14 +60,15 @@ theorem complexify_i_linear (φ : (Fin 3 → ℂ) → ℝ)
   -- φ(iz) - i·φ(i·iz) = φ(iz) - i·φ(-z) = φ(iz) + i·φ(z)
   -- i·(φ(z) - i·φ(iz)) = i·φ(z) + φ(iz)
   -- These are equal.
-  -- The proof reduces to showing two complex numbers are equal
-  -- by checking real and imaginary parts separately.
-  -- φ̃(iz) = φ(iz) - i·φ(i²z) = φ(iz) - i·φ(-z) = φ(iz) + i·φ(z)
-  -- i·φ̃(z) = i·φ(z) - i²·φ(iz) = i·φ(z) + φ(iz)
-  -- These are equal.
-  sorry  -- The i-linearity proof requires careful handling of
-         -- Complex.ofReal coercions that Lean's simp struggles with.
-         -- The mathematical content is: i²=-1 implies φ̃(iz) = i·φ̃(z).
+  have step1 : (fun j => Complex.I * (Complex.I * z j)) = fun j => ((-1 : ℝ) : ℂ) * z j := by
+    funext j; simp [← mul_assoc, Complex.I_mul_I]
+  have step2 : φ (fun j => ((-1 : ℝ) : ℂ) * z j) = -φ z := by
+    rw [h_scale (-1) z]; ring
+  show ↑(φ (fun j => Complex.I * z j)) - Complex.I * ↑(φ (fun j => Complex.I * (Complex.I * z j))) =
+       Complex.I * (↑(φ z) - Complex.I * ↑(φ (fun j => Complex.I * z j)))
+  rw [step1, step2, Complex.ofReal_neg]
+  rw [mul_neg, sub_neg_eq_add, mul_sub, ← mul_assoc, Complex.I_mul_I, neg_one_mul,
+      sub_neg_eq_add, add_comm]
 
 /-! ## The source functional determines a fiber direction
 
