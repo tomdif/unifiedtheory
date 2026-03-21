@@ -227,8 +227,9 @@ theorem lindblad_decoherence (rate : DephasingRate) :
 
     |obs(t₂) - classical| ≤ |obs(t₁) - classical| for t₁ ≤ t₂.
 
-    This is the ARROW OF TIME derived from the Lindblad equation:
-    the system irreversibly evolves toward classicality. -/
+    This is an arrow of time for the Lindblad dephasing model:
+    the system irreversibly approaches classicality. The proof uses
+    gamma_antitone (γ₂ ≤ γ₁ for t₂ ≥ t₁) and positivity of γ. -/
 theorem observable_approaches_classical (rate : DephasingRate)
     (ρ : DensityMatrix2) (t₁ t₂ : ℝ) (ht₁ : 0 ≤ t₁) (h : t₁ ≤ t₂) :
     |totalObs (lindbladEvolve rate t₂ ρ) - (ρ.p₁ + ρ.p₂)| ≤

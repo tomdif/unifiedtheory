@@ -555,21 +555,17 @@ theorem anomaly_selects_sm :
 -- The unweighted sum 1+(-4)+2+(-3)+6 = 2 ≠ 0.
 
 /-- **PROVEN: The hypercharge-squared sum rule.**
-    For the SM charges: Σ dᵢ · Yᵢ² is determined by yQ.
-    6·(yQ)² + 3·(-4yQ)² + 3·(2yQ)² + 2·(-3yQ)² + (6yQ)² = 96·yQ².
-    This controls the Z-boson coupling to fermions. -/
+    Σ dᵢ · Yᵢ² for the SM charges at normalization yQ = 1/6.
+    This is arithmetic on the derived charge values from anomaly_uniqueness. -/
 theorem hypercharge_sq_sum :
     6 * (1/6 : ℝ)^2 + 3 * (2/3)^2 + 3 * (1/3)^2 + 2 * (1/2)^2 + 1^2
     = 10/3 := by norm_num
 
-/-- **PROVEN: The Weinberg angle prediction.**
-    sin²θ_W = g'²/(g²+g'²) where g'/g = √(Σ Y²_colored / Σ Y²_all) at unification.
-    At tree level with g²(M_P) = 1, the ratio of SU(2) to U(1) couplings
-    gives sin²θ_W = 3/8 (the SU(5) GUT prediction, also arising here).
-
-    3/8 = 0.375. Experiment: sin²θ_W(M_Z) = 0.231.
-    With RG running: α₁ and α₂ evolve differently, and at M_Z the
-    prediction is sin²θ_W ≈ 0.231 (matches experiment, standard RG). -/
+/-- **Arithmetic: 3/8 = 0.375.**
+    The physics claim (sin²θ_W = 3/8 at tree level for SU(5)-normalized
+    hypercharges) is standard but NOT formalized here — this theorem
+    only verifies the decimal conversion. The tree-level Weinberg angle
+    3/8 matches experiment (0.231) after standard RG running to M_Z. -/
 theorem weinberg_angle_tree_level :
     (3 : ℝ) / 8 = 0.375 := by norm_num
 
@@ -582,10 +578,11 @@ theorem hypercharge_quartic_sum :
     6 * (1/6 : ℝ)^4 + 3 * (2/3)^4 + 3 * (1/3)^4 + 2 * (1/2)^4 + 1^4
     = 95/54 := by norm_num
 
-/-- **PROVEN: The quartic trace is nonzero — no extra U(1) is anomaly-free.**
-    If an additional U(1)' existed with charges proportional to hypercharge,
-    the mixed U(1)²×U(1)'² anomaly would be proportional to Tr[Y⁴],
-    which is nonzero. Therefore no such U(1)' exists. -/
+/-- **Arithmetic: Tr[Y⁴] ≠ 0.**
+    The physics interpretation (an additional U(1)' with charges proportional
+    to Y would have mixed anomaly proportional to Tr[Y⁴], hence inconsistent)
+    is stated here but not formalized — this theorem only proves the
+    nonvanishing of the quartic trace. -/
 theorem no_extra_u1 :
     6 * (1/6 : ℝ)^4 + 3 * (2/3)^4 + 3 * (1/3)^4 + 2 * (1/2)^4 + 1^4 ≠ 0 := by
   norm_num
