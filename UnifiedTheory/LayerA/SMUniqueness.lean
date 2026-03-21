@@ -14,6 +14,12 @@
   - A_2 = SU(3) with d_w ≥ 3: 7×3+1 = 22 > 15 → too many fermions
   - Only survivor: A_2 × A_1 = SU(3) × SU(2) with 2×3×2+2+1 = 15
 
+  ENCODED INPUTS (standard mathematical data, not proven from axioms):
+  - The Cartan classification of compact simple Lie algebras (Killing 1888, Cartan 1894)
+  - Dynkin's classification of representation types: real/pseudoreal/complex (Dynkin 1957)
+  - Fundamental representation dimensions for each Cartan type
+  The SU(3) case IS proven from scratch (explicit witness in su3_fundamental_is_complex).
+
   Zero sorry. Zero custom axioms.
 -/
 
