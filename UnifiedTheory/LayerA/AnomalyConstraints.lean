@@ -714,8 +714,9 @@ theorem electron_charge_derived (ca : ChargeAssignment)
     (7) 2/(2+10/3) = 3/8
         [PROVEN: arithmetic]
 
-    Physical inputs: (a) left-right charge consistency, (b) single gauge coupling.
-    Both follow from the framework's g²(M_P) = 1.
+    Physical input for the RATIO: (a) left-right charge consistency only.
+    To IDENTIFY this ratio with sin²θ_W: also need (b) single gauge coupling
+    (proven in single_coupling_weinberg_formula, pure algebra).
     No free parameters. No GUT embedding. -/
 theorem weinberg_from_charge_consistency (ca : ChargeAssignment)
     (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
