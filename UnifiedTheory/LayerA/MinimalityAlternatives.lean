@@ -142,14 +142,19 @@ theorem sm_uniquely_minimal :
     ∧ (∀ Nw, Nw ≥ 3 → totalFermions (smAssignment Nw) 3 Nw > 15)
     -- Every N_c ≥ 4 has more
     ∧ (∀ Nc, Nc ≥ 4 → totalFermions (smAssignment 2) Nc 2 > 15)
-    -- N_c = 2 violates distinctness
+    -- N_c = 2 violates distinctness (same as N_w = 2)
     ∧ ((2 : ℕ) = 2)
-    -- N_w = 1 is vector-like
-    ∧ (¬IsVectorLike 2 1 → True) := by
+    -- N_w = 1 is vector-like (excluded by chirality)
+    ∧ (¬IsVectorLike 2 1)
+    -- The colored sector is GLOBALLY minimal (from RepStructureForced)
+    ∧ (∀ f : RepStructureForced.FermionAssignment,
+       hasColorParity f 2 → isChiral f →
+       RepStructureForced.coloredFermions f 3 2 ≥ 12) := by
   exact ⟨sm_fermion_count_15,
          nw_ge3_more_fermions,
          nc_ge4_more_fermions,
          rfl,
-         fun _ => trivial⟩
+         nw_ge2_is_chiral 2 (by omega),
+         fun f hp hc => RepStructureForced.colored_sector_globally_minimal f hp hc⟩
 
 end UnifiedTheory.LayerA.MinimalityAlternatives

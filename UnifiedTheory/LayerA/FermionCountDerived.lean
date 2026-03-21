@@ -158,6 +158,30 @@ theorem alternative_a_vectorlike (d : ℕ) :
 theorem alternative_b_no_parity (d1 d2 : ℕ) (h : d1 ≠ d2) :
     ¬colorParitySatisfied d1 d2 := h
 
+/-! ### Global minimality from RepStructureForced
+
+    The colored sector global minimum (≥ 12) is proven in
+    RepStructureForced.colored_sector_globally_minimal via:
+    color parity + chirality → n_NcNw ≠ n_NcbNw → colored ≥ 12.
+    The SM achieves this bound exactly (= 12).
+    Adding the minimum uncolored sector (1 doublet + 1 singlet = 3)
+    gives total ≥ 15, achieved exactly by the SM at N_w = 2. -/
+
+/-- **PROVEN: The SM total 15 is globally minimal among all chiral,
+    color-parity-satisfying assignments at Nc=3, Nw=2, with at least
+    one uncolored doublet and one uncolored singlet.**
+
+    Uses RepStructureForced.colored_sector_globally_minimal for the
+    colored sector bound (≥ 12) and adds the minimal lepton sector (≥ 3). -/
+theorem sm_15_globally_minimal (f : RepStructureForced.FermionAssignment)
+    (h_parity : RepStructureForced.hasColorParity f 2)
+    (h_chiral : RepStructureForced.isChiral f)
+    (h_leptons : f.n_1Nw ≥ 1 ∧ f.n_11 ≥ 1) :
+    RepStructureForced.totalFermions f 3 2 ≥ 15 := by
+  have hcol := RepStructureForced.colored_sector_globally_minimal f h_parity h_chiral
+  unfold RepStructureForced.totalFermions RepStructureForced.coloredFermions at *
+  omega
+
 /-! ## The complete derivation -/
 
 /-- **THE 15-FERMION SM GENERATION IS DERIVED.**

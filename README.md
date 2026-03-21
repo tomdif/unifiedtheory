@@ -134,15 +134,15 @@ The paper is at [`paper/unified_theory_paper.tex`](paper/unified_theory_paper.te
 
 The K/P source functional projection, computed on Poisson causal sets with derived SU(3) × SU(2) holonomies, produces zero-parameter predictions of five charged-fermion mass ratios spanning four orders of magnitude:
 
-| Ratio | Computed | Experiment | Factor | Mechanism |
+| Ratio | Computed (after RG) | Experiment | Factor | Mechanism |
 |---|---|---|---|---|
-| m_c/m_t | **0.007** | 0.004 | **1.9×** | Color K/P |
-| m_u/m_t | **0.000013** | 0.0000074 | **1.7×** | Color × Weak K/P |
-| m_μ/m_τ | **0.025** | 0.060 | **2.4×** | Weak K/P only |
-| m_e/m_τ | **0.00061** | 0.000288 | **2.1×** | Weak × P-sector |
-| m_t/m_b | **354** | 41 | **8.6×** | K vs P VEV alignment |
+| m_t/m_b | **39.5** | 41 | **0.96x** | K vs P VEV alignment |
+| m_u/m_t | **0.0000090** | 0.0000074 | **1.22x** | Color x Weak K/P |
+| m_c/m_t | **0.0058** | 0.004 | **1.45x** | Color K/P |
+| m_mu/m_tau | **0.025** | 0.060 | **2.4x** | Weak K/P only |
+| m_e/m_tau | **0.00061** | 0.000288 | **2.1x** | Weak x P-sector |
 
-Four intra-sector ratios within factor 2.4×. Lepton sector uses only the weak CP¹ fiber — no color projection, confirming K/P mechanism across all charged fermion sectors.
+Three quark ratios within factor 1.45x after one-loop SM RG running. Lattice couplings: beta_color = 6, beta_weak = 4. CKM matrix: 5 elements within 3% of experiment. Lepton sector uses only the weak CP^1 fiber — no color projection, confirming K/P mechanism across all charged fermion sectors.
 
 Code and data: **[causal-higgs-sim](https://github.com/tomdif/causal-higgs-sim)** (standalone Python repo, no Lean dependency).
 

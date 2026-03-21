@@ -162,6 +162,45 @@ theorem extra_multiplets_cost (Nc Nw : ℕ) (hNc : Nc ≥ 2) (hNw : Nw ≥ 2) :
     Adding extra singlets costs ≥ 2·Nc; extra multiplets cost ≥ 2·Nc·Nw.
     See `extra_singlets_cost` and `extra_multiplets_cost` above. -/
 
+/-- The colored fermion count of an assignment. -/
+def coloredFermions (f : FermionAssignment) (Nc Nw : ℕ) : ℕ :=
+  f.n_NcNw * Nc * Nw + f.n_Nc1 * Nc + f.n_NcbNw * Nc * Nw + f.n_Ncb1 * Nc
+
+/-- **PROVEN: Color parity + chirality forces n_NcNw ≠ n_NcbNw.**
+    If n_NcNw = n_NcbNw, color parity forces n_Nc1 = n_Ncb1,
+    making the theory vector-like (contradicting chirality). -/
+theorem chiral_forces_multiplet_asymmetry (f : FermionAssignment) (Nw : ℕ)
+    (h_parity : hasColorParity f Nw)
+    (h_chiral : isChiral f) :
+    f.n_NcNw ≠ f.n_NcbNw := by
+  intro heq
+  unfold isChiral at h_chiral
+  unfold hasColorParity at h_parity
+  exact h_chiral ⟨heq, by rw [heq] at h_parity; omega⟩
+
+/-- **PROVEN: Global minimality of the SM colored sector.**
+    ANY fermion assignment satisfying color parity + chirality at Nc=3, Nw=2
+    has at least 12 colored fermions. The SM achieves this bound exactly
+    (1×(3,2) + 2×(3̄,1) = 6 + 6 = 12).
+
+    Proof: color parity + chirality → n_NcNw ≠ n_NcbNw. WLOG n_NcNw > n_NcbNw.
+    Then n_Ncb1 = n_Nc1 + 2(n_NcNw - n_NcbNw). Colored count simplifies to
+    12·n_NcNw + 6·n_Nc1. Since n_NcNw ≥ 1: colored ≥ 12. -/
+theorem colored_sector_globally_minimal (f : FermionAssignment)
+    (h_parity : hasColorParity f 2)
+    (h_chiral : isChiral f) :
+    coloredFermions f 3 2 ≥ 12 := by
+  have hne := chiral_forces_multiplet_asymmetry f 2 h_parity h_chiral
+  unfold coloredFermions
+  unfold hasColorParity at h_parity
+  -- n_NcNw ≠ n_NcbNw, so one is strictly greater. omega handles the rest.
+  omega
+
+/-- **PROVEN: The SM colored sector achieves the global minimum.** -/
+theorem sm_colored_sector_achieves_minimum :
+    coloredFermions (smAssignment 2) 3 2 = 12 := by
+  native_decide
+
 /-! ## Anomaly independence forces the charge count -/
 
 /-- **Anomaly conditions count.**
