@@ -166,9 +166,11 @@ theorem extra_multiplets_cost (Nc Nw : ℕ) (hNc : Nc ≥ 2) (hNw : Nw ≥ 2) :
 def coloredFermions (f : FermionAssignment) (Nc Nw : ℕ) : ℕ :=
   f.n_NcNw * Nc * Nw + f.n_Nc1 * Nc + f.n_NcbNw * Nc * Nw + f.n_Ncb1 * Nc
 
-/-- **PROVEN: Color parity + chirality forces n_NcNw ≠ n_NcbNw.**
-    If n_NcNw = n_NcbNw, color parity forces n_Nc1 = n_Ncb1,
-    making the theory vector-like (contradicting chirality). -/
+/-- Color parity + chirality → n_NcNw ≠ n_NcbNw.
+    Proof: assume n_NcNw = n_NcbNw. Substituting into the color parity
+    equation (n_NcNw·Nw + n_Nc1 = n_NcbNw·Nw + n_Ncb1) gives n_Nc1 = n_Ncb1.
+    Then isChiral (which requires ¬(n_NcNw = n_NcbNw ∧ n_Nc1 = n_Ncb1))
+    is contradicted. The inference uses omega after rewriting. -/
 theorem chiral_forces_multiplet_asymmetry (f : FermionAssignment) (Nw : ℕ)
     (h_parity : hasColorParity f Nw)
     (h_chiral : isChiral f) :

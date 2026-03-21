@@ -583,9 +583,10 @@ theorem universal_trY4 (ca : ChargeAssignment)
   (unfold trY4; rw [hu, hd, hL, he]; ring)
 
 /-- **UNIVERSAL: Tr[Y⁴] ≠ 0 for ANY anomaly-free assignment with yQ ≠ 0.**
-    This rules out an additional anomaly-free U(1) with charges proportional
-    to hypercharge: the mixed U(1)²×U(1)'² anomaly ∝ Tr[Y⁴] ≠ 0.
-    Proven universally, not just for specific charge values. -/
+    A necessary condition for an additional U(1)' with Y-proportional charges
+    to be anomaly-free is Tr[Y⁴] = 0. Since Tr[Y⁴] = 2280·yQ⁴ ≠ 0,
+    the condition fails. The connection Tr[Y⁴] → mixed anomaly is standard
+    physics (not formalized here); this theorem proves only the nonvanishing. -/
 theorem universal_no_extra_u1 (ca : ChargeAssignment)
     (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
     (hsu3 : su3MixedCondition ca) (hlin : linearCondition ca)
@@ -600,16 +601,21 @@ noncomputable def trT3sq : ℝ := 3 * (2 * (1/2 : ℝ) ^ 2) + 2 * (1/2 : ℝ) ^ 
 
 theorem trT3sq_eq : trT3sq = 2 := by unfold trT3sq; norm_num
 
-/-- **DERIVED: sin²θ_W = 3/8 from the universal Tr[Y²] and Tr[T₃²].**
+/-- **Arithmetic: the Weinberg angle ratio k/(k+1) = 3/8.**
 
-    At unification (g₁ = g₂): sin²θ_W = k/(k+1) where k = Tr[T₃²]/Tr[Y²].
-    Tr[T₃²] = 2 (computed above). Tr[Y²] = 120·yQ² (universal_trY2).
-    The GUT-normalized Y has Tr[Y²] = 10/3 at yQ = 1/6.
-    k = 2/(10/3) = 3/5.
-    sin²θ_W = (3/5)/(3/5 + 1) = (3/5)/(8/5) = 3/8.
+    GIVEN (not derived here):
+    - The GUT unification formula sin²θ_W = k/(k+1)
+    - The normalization yQ = 1/6 (a convention)
+    - The assumption g₁ = g₂ at unification
 
-    This derivation uses ONLY anomaly cancellation — no GUT embedding assumed. -/
-theorem weinberg_angle_derived :
+    COMPUTED HERE:
+    - k = Tr[T₃²] / Tr[Y²] = 2 / (10/3) = 3/5
+    - k/(k+1) = 3/8
+
+    The 3/8 is a well-known GUT prediction. This theorem only verifies the
+    arithmetic; the physical derivation of the formula requires GUT embedding
+    and coupling unification, which are NOT formalized. -/
+theorem weinberg_angle_at_unification :
     let k := trT3sq / (120 * (1/6 : ℝ) ^ 2)
     k / (k + 1) = 3 / 8 := by
   simp only [trT3sq_eq]

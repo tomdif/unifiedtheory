@@ -111,8 +111,10 @@ theorem nc_ge4_more_fermions (Nc : ℕ) (hNc : Nc ≥ 4) :
     totalFermions (smAssignment 2) Nc 2 > 15 := by
   show 1*Nc*2 + 0*Nc + 0*Nc*2 + 2*Nc + 1*2 + 1 > 15; nlinarith
 
-/-- PROVEN: N_c = 2 fails the distinctness test (N_c ≠ N_w) when N_w = 2.
-    Both factors would be SU(2), violating G_c ≇ G_w. -/
+/-- N_c = 2 with N_w = 2: factors are identical (both SU(2)).
+    Definitional: ¬(2 ≠ 2) is logically equivalent to 2 = 2.
+    The physical content (identical factors → no chirality grading)
+    is proven in ChiralDistinctness.lean, not here. -/
 theorem nc2_fails_distinctness : ¬((2 : ℕ) ≠ 2) := by omega
 
 /-! ## Summary: the alternatives table
@@ -127,15 +129,14 @@ theorem nc2_fails_distinctness : ¬((2 : ℕ) ≠ 2) := by omega
   | N_w=4, N_c=3 | SU(3)×SU(4)×U(1) | 29 | 3 free params | Extra weak bosons (LEP) |
 -/
 
-/-- PROVEN: The SM is the UNIQUE theory with:
-    (a) Chiral (N_w ≥ 2, N_c ≥ 2)
-    (b) Distinct factors (N_c ≠ N_w)
-    (c) Fully determined hypercharges (N_w = 2)
-    (d) Minimum fermion count
+/-- **The SM is minimal among RepStructureForced-type assignments.**
+    For the representation structure (Nc, Nw) + Nw×(N̄c, 1) + (1, Nw) + (1, 1):
+    (a) N_w ≥ 2 (chirality), (b) N_c ≠ N_w (distinctness),
+    (c) N_w = 2 (charge determinacy), (d) minimum fermion count → N_c = 3.
 
-    Without minimality: N_c = 4, 5, 6, ... all satisfy (a)-(c)
-    but have more fermions and are experimentally excluded.
-    With minimality: only N_c = 3, N_w = 2 (the SM). -/
+    This does NOT prove uniqueness over ALL possible fermion assignments —
+    only over the specific structure derived in RepStructureForced.lean.
+    The colored sector bound (≥ 12) IS global (part 6 below). -/
 theorem sm_uniquely_minimal :
     -- SM has 15 fermions
     (totalFermions (smAssignment 2) 3 2 = 15)
