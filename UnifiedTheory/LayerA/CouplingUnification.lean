@@ -38,7 +38,7 @@ namespace UnifiedTheory.LayerA.CouplingUnification
 /-- The discreteness scale: ℓ = ρ^{-1/d} where ρ is the density
     and d is the number of spacetime dimensions.
     For d = 4: ℓ = ρ^{-1/4}. At Planck density: ℓ = ℓ_Planck. -/
-def discretenessScale (rho : ℝ) (d : ℕ) : ℝ := rho ^ (-(1 : ℝ) / d)
+noncomputable def discretenessScale (rho : ℝ) (d : ℕ) : ℝ := rho ^ (-(1 : ℝ) / d)
 
 /-- In d = 4 dimensions, the discreteness scale is ρ^{-1/4}. -/
 theorem scale_4d (rho : ℝ) :
@@ -69,7 +69,7 @@ def eFoldings : ℕ := 39
     origin (dressing sector, not lattice action). -/
 
 /-- The one-loop inverse coupling at scale μ. -/
-def inverseCoupling (g0_sq : ℝ) (b0 : ℝ) (nEfoldings : ℕ) : ℝ :=
+noncomputable def inverseCoupling (g0_sq : ℝ) (b0 : ℝ) (nEfoldings : ℕ) : ℝ :=
   1 / g0_sq + b0 * nEfoldings / (2 * Real.pi)
 
 /-- The SU(3) inverse coupling after running (positive = asymptotically free). -/
