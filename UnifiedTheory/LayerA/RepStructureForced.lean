@@ -199,7 +199,7 @@ theorem colored_sector_globally_minimal (f : FermionAssignment)
 /-- **PROVEN: The SM colored sector achieves the global minimum.** -/
 theorem sm_colored_sector_achieves_minimum :
     coloredFermions (smAssignment 2) 3 2 = 12 := by
-  native_decide
+  show 1 * 3 * 2 + 0 * 3 + 0 * 3 * 2 + 2 * 3 = 12; omega
 
 /-! ## Anomaly independence forces the charge count -/
 

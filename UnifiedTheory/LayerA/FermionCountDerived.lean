@@ -58,11 +58,10 @@ def colorParitySatisfied (contributions_Nc contributions_Ncbar : ℕ) : Prop :=
     so left-handed and right-handed fermions have identical quantum numbers. -/
 def IsVectorLike (d_Nc d_Ncbar : ℕ) : Prop := d_Nc = d_Ncbar
 
-/-- PROVEN: Equal weak dimensions → vector-like.
-    This is definitional (IsVectorLike d d unfolds to d = d),
-    but the PHYSICS is: if N_c and N̄_c sectors have the same
-    SU(N_w) representation dimension, the theory is vector-like.
-    The real proof is in RepStructureForced.both_multiplets_not_chiral. -/
+/-- Definitional: IsVectorLike d d unfolds to d = d (true by rfl).
+    The substantive physics theorem is RepStructureForced.both_multiplets_not_chiral:
+    if both colored sectors have the same SU(N_w) content AND color parity holds,
+    then the theory is not chiral. This theorem is just the definitional wrapper. -/
 theorem equal_dims_vectorlike (d : ℕ) : IsVectorLike d d := rfl
 
 /-! Chirality requires different weak dims for N_c and N̄_c sectors. -/

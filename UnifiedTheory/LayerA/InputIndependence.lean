@@ -46,13 +46,13 @@ namespace UnifiedTheory.LayerA.InputIndependence
   This gives a CLASSICAL theory, not quantum mechanics.
 -/
 
-/-- A 1-dimensional vector space satisfies all inputs except dim ≥ 2.
-    The resulting theory has real (not complex) amplitudes. -/
--- dim(ℝ¹) = 1: the 1D real vector space
-theorem dim_one_is_real : (1 : ℕ) = 1 := rfl
-
 -- The key point: with dim=1, the only division algebra is ℝ (no ℂ).
 -- This is Frobenius's theorem — we state the consequence directly.
+
+/-- PROVEN: A 1-dimensional real vector space has finrank 1, confirming
+    it fails the dim ≥ 2 requirement. -/
+theorem dim_one_lt_two : Module.finrank ℝ (Fin 1 → ℝ) < 2 := by
+  rw [Module.finrank_eq_card_basis (Pi.basisFun ℝ (Fin 1)), Fintype.card_fin]; norm_num
 
 /-- With dim = 1, the "amplitude" space is ℝ, which has no imaginary part.
     The quadratic observable on ℝ is just x², with no interference term. -/
@@ -181,7 +181,9 @@ def isVectorLike (dL dR : ℕ) : Prop := dL = dR
 theorem sm_is_chiral : ¬ isVectorLike 2 1 := by
   unfold isVectorLike; omega
 
-/-- A vector-like theory exists with dL = dR = 2. -/
+/-- Definitional: isVectorLike 2 2 unfolds to 2 = 2. The physics content
+    is that without the source functional φ, a vector-like assignment
+    (equal left and right reps) is consistent with all other inputs. -/
 theorem vectorlike_exists : isVectorLike 2 2 := by
   unfold isVectorLike; rfl
 

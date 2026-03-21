@@ -94,7 +94,10 @@ theorem phi_times_conjugate : phi * (phi - 1) = 1 := by
   of the element at layer k-1. This "overlap by one" gives:
     paths(L) = paths(L-1) + paths(L-2)
 
-  We PROVE this from the overlap structure, not define it.
+  We DERIVE the Fibonacci values from the overlap recursion axiom,
+  not define them as Fibonacci. The recursion itself is a structural
+  property of the poset (one shared successor per layer), formalized
+  as the `overlap_recursion` field of BinaryOverlapPoset.
 -/
 
 /-- A layered path counter with overlap structure.

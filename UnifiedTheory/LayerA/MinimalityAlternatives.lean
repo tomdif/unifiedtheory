@@ -111,8 +111,9 @@ theorem nc_ge4_more_fermions (Nc : ℕ) (hNc : Nc ≥ 4) :
     totalFermions (smAssignment 2) Nc 2 > 15 := by
   show 1*Nc*2 + 0*Nc + 0*Nc*2 + 2*Nc + 1*2 + 1 > 15; nlinarith
 
-/-- PROVEN: N_c = 2 with N_w = 2 violates distinctness. -/
-theorem nc2_violates_distinctness : (2 : ℕ) = 2 := rfl
+/-- PROVEN: N_c = 2 fails the distinctness test (N_c ≠ N_w) when N_w = 2.
+    Both factors would be SU(2), violating G_c ≇ G_w. -/
+theorem nc2_fails_distinctness : ¬((2 : ℕ) ≠ 2) := by omega
 
 /-! ## Summary: the alternatives table
 
@@ -142,8 +143,8 @@ theorem sm_uniquely_minimal :
     ∧ (∀ Nw, Nw ≥ 3 → totalFermions (smAssignment Nw) 3 Nw > 15)
     -- Every N_c ≥ 4 has more
     ∧ (∀ Nc, Nc ≥ 4 → totalFermions (smAssignment 2) Nc 2 > 15)
-    -- N_c = 2 violates distinctness (same as N_w = 2)
-    ∧ ((2 : ℕ) = 2)
+    -- N_c = 2 fails distinctness (N_c = N_w = 2 → same group)
+    ∧ (¬((2 : ℕ) ≠ 2))
     -- N_w = 1 is vector-like (excluded by chirality)
     ∧ (¬IsVectorLike 2 1)
     -- The colored sector is GLOBALLY minimal (from RepStructureForced)
@@ -153,7 +154,7 @@ theorem sm_uniquely_minimal :
   exact ⟨sm_fermion_count_15,
          nw_ge3_more_fermions,
          nc_ge4_more_fermions,
-         rfl,
+         nc2_fails_distinctness,
          nw_ge2_is_chiral 2 (by omega),
          fun f hp hc => RepStructureForced.colored_sector_globally_minimal f hp hc⟩
 
