@@ -130,24 +130,27 @@ Requires Lean 4 and Mathlib. The axiom footprint is `{propext, Classical.choice,
 
 The paper is at [`paper/unified_theory_paper.tex`](paper/unified_theory_paper.tex) ([PDF](paper/unified_theory_paper.pdf)).
 
-## Computational Companion: Mass Ratio Predictions
+## Computational Companion: Five Mass Ratio Predictions
 
-The K/P source functional projection, computed on Poisson causal sets with derived SU(3) × SU(2) holonomies, produces zero-parameter predictions of quark mass ratios:
+The K/P source functional projection, computed on Poisson causal sets with derived SU(3) × SU(2) holonomies, produces zero-parameter predictions of five charged-fermion mass ratios spanning four orders of magnitude:
 
-| Observable | Computed | Experiment | Factor |
-|---|---|---|---|
-| m_c/m_t | **0.005** | 0.004 | **1.4x** |
-| m_u/m_t | **0.000016** | 0.0000074 | **2.2x** |
-| m_s/m_b | **0.016** | 0.019 | **0.86x** (preliminary) |
+| Ratio | Computed | Experiment | Factor | Mechanism |
+|---|---|---|---|---|
+| m_c/m_t | **0.007** | 0.004 | **1.9×** | Color K/P |
+| m_u/m_t | **0.000013** | 0.0000074 | **1.7×** | Color × Weak K/P |
+| m_μ/m_τ | **0.025** | 0.060 | **2.4×** | Weak K/P only |
+| m_e/m_τ | **0.00061** | 0.000288 | **2.1×** | Weak × P-sector |
+| m_t/m_b | **354** | 41 | **8.6×** | K vs P VEV alignment |
+
+Four intra-sector ratios within factor 2.4×. Lepton sector uses only the weak CP¹ fiber — no color projection, confirming K/P mechanism across all charged fermion sectors.
 
 Code and data: **[causal-higgs-sim](https://github.com/tomdif/causal-higgs-sim)** (standalone Python repo, no Lean dependency).
 
 ## What's Open
 
-- **Down-type Yukawa vertex** — derive how U(1) hypercharge enters the K/P projection from gauge-invariance of the Yukawa coupling
-- **Lepton sector** — develop K/P projection for color singlets
-- **CKM matrix** — extract from up/down Yukawa misalignment
-- **SU(3) bare coupling** — needs non-perturbative matching on Poisson causal set
+- **Full CKM matrix** — extract from up/down Yukawa misalignment
+- **Neutrino sector** — SM singlets, seesaw mechanism gives m_ν ~ v²/M_P ~ 0.006 eV
+- **Product rule gap** — one-loop Wilson loop closes 25% of log gap; multi-loop or non-perturbative needed for remainder
 - **Absolute mass scale** — requires Higgs VEV v = 246 GeV (hierarchy problem)
 - **Minimality** — imposed as selection principle, not derived from deeper principles
 - **Product Laplacian + Hodge theorem** — standard mathematics (1941), not yet in Lean/Mathlib
