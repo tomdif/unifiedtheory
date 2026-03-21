@@ -595,11 +595,18 @@ theorem universal_no_extra_u1 (ca : ChargeAssignment)
   rw [universal_trY4 ca hcubic hsu2 hsu3 hlin hQ]
   exact mul_ne_zero (by norm_num) (pow_ne_zero 4 hQ)
 
-/-- Tr[T₃²] for one SM generation: SU(2) doublets contribute T₃ = ±1/2.
-    Q_L: 3 colors × 2 × (1/2)² = 3/2. L_L: 2 × (1/2)² = 1/2. Total = 2. -/
-noncomputable def trT3sq : ℝ := 3 * (2 * (1/2 : ℝ) ^ 2) + 2 * (1/2 : ℝ) ^ 2
+/-- Tr[T₃²] for one generation with Nc colors.
+    The SU(2) doublets are: Q_L (Nc colors, each a doublet) + L_L (1 doublet).
+    Each doublet contributes 2 × (1/2)² = 1/2 to Tr[T₃²].
+    Total: (Nc + 1) × 1/2 = (Nc + 1)/2. -/
+noncomputable def trT3sq (Nc : ℕ) : ℝ := ((Nc : ℝ) + 1) / 2
 
-theorem trT3sq_eq : trT3sq = 2 := by unfold trT3sq; norm_num
+/-- For Nc = 3: Tr[T₃²] = 2. -/
+theorem trT3sq_eq : trT3sq 3 = 2 := by unfold trT3sq; norm_num
+
+/-- Universal Tr[T₃²] for arbitrary Nc. -/
+theorem trT3sq_general (Nc : ℕ) : trT3sq Nc = ((Nc : ℝ) + 1) / 2 :=
+  rfl
 
 /-! ## Electric charge quantization fixes the normalization -/
 
@@ -628,34 +635,33 @@ theorem charge_quantization_fixes_yQ (ca : ChargeAssignment)
 
 /-! ## The Weinberg angle from anomaly cancellation -/
 
-/-- **DERIVED: sin²θ_W = 3/8 from anomaly cancellation + charge quantization.**
+/-- **PROVEN: The Weinberg angle ratio Tr[T₃²]/(Tr[T₃²]+Tr[Y²]) = 3/8.**
 
-    The complete derivation chain (every step proven or clearly hypothesized):
+    What the theorem PROVES: for any anomaly-free charges with yL = -1/2,
+    the ratio Tr[T₃²]/(Tr[T₃²]+Tr[Y²]) equals 3/8 at Nc = 3.
 
-    (1) Anomaly cancellation → charges = (yQ, -4yQ, 2yQ, -3yQ, 6yQ)
-        [PROVEN: anomaly_uniqueness]
-    (2) Electron charge Q_e = -1 with T₃ = -1/2 → yL = -1/2
-        [INPUT: the electron has unit negative charge]
-    (3) yL = -3·yQ = -1/2 → yQ = 1/6
-        [PROVEN: charge_quantization_fixes_yQ]
-    (4) Tr[Y²] = 120·yQ² = 120/36 = 10/3
-        [PROVEN: universal_trY2]
-    (5) Tr[T₃²] = 2
-        [PROVEN: trT3sq_eq]
-    (6) Single coupling g²(M_P) = 1 → g'²/g₂² = Tr[T₃²]/Tr[Y²]
+    The identification of this ratio WITH sin²θ_W requires one additional
+    hypothesis NOT proven here:
+    (6) Single coupling g²(M_P) = 1 → sin²θ_W = Tr[T₃²]/(Tr[T₃²]+Tr[Y²])
         [HYPOTHESIS: equal gauge action per fermion at M_P]
-    (7) sin²θ_W = g'²/(g'²+g₂²) = Tr[T₃²]/(Tr[T₃²]+Tr[Y²]) = 3/8
-        [PROVEN: arithmetic]
 
-    Input beyond anomaly cancellation: the electron has integer charge (step 2)
-    and the gauge coupling is universal at M_P (step 6).
-    No GUT embedding is assumed. -/
+    The derivation chain for the ratio itself:
+    (1) anomaly_uniqueness → charges = (yQ, -4yQ, 2yQ, -3yQ, 6yQ)  [PROVEN]
+    (2) Q_e = -1, T₃ = -1/2 → yL = -1/2                           [INPUT]
+    (3) charge_quantization_fixes_yQ → yQ = 1/6                     [PROVEN]
+    (4) universal_trY2 → Tr[Y²] = 10/3                              [PROVEN]
+    (5) trT3sq_eq → Tr[T₃²] = 2                                     [PROVEN]
+    (7) 2/(2+10/3) = 3/8                                             [PROVEN]
+
+    No GUT embedding assumed. The only inputs beyond anomaly cancellation
+    are: (a) the electron has unit negative charge, (b) equal gauge action
+    at M_P (for the identification with sin²θ_W). -/
 theorem weinberg_from_anomaly (ca : ChargeAssignment)
     (hcubic : cubicCondition ca) (hsu2 : su2MixedCondition ca)
     (hsu3 : su3MixedCondition ca) (hlin : linearCondition ca)
     (hQ : ca.yQ ≠ 0)
     (h_electron_charge : ca.yL = -1/2) :
-    trT3sq / (trT3sq + trY2 ca) = 3 / 8 := by
+    trT3sq 3 / (trT3sq 3 + trY2 ca) = 3 / 8 := by
   have hyQ := charge_quantization_fixes_yQ ca hcubic hsu2 hsu3 hlin hQ h_electron_charge
   rw [universal_trY2 ca hcubic hsu2 hsu3 hlin hQ, trT3sq_eq, hyQ]
   norm_num
