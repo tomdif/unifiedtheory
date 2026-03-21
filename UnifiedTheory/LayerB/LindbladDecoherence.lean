@@ -218,4 +218,39 @@ theorem lindblad_decoherence (rate : DephasingRate) :
     decoherence_time_pos rate
   ⟩
 
+/-! ## Observable monotonicity: the arrow of time -/
+
+/-- **PROVEN: The interference contribution is monotone decreasing.**
+    For positive coherence (coh_re > 0), the observable decreases toward
+    the classical value. For negative coherence, it increases toward it.
+    In both cases, the DISTANCE from the classical value decreases.
+
+    |obs(t₂) - classical| ≤ |obs(t₁) - classical| for t₁ ≤ t₂.
+
+    This is the ARROW OF TIME derived from the Lindblad equation:
+    the system irreversibly evolves toward classicality. -/
+theorem observable_approaches_classical (rate : DephasingRate)
+    (ρ : DensityMatrix2) (t₁ t₂ : ℝ) (ht₁ : 0 ≤ t₁) (h : t₁ ≤ t₂) :
+    |totalObs (lindbladEvolve rate t₂ ρ) - (ρ.p₁ + ρ.p₂)| ≤
+    |totalObs (lindbladEvolve rate t₁ ρ) - (ρ.p₁ + ρ.p₂)| := by
+  simp only [lindblad_observable]
+  -- Goal: |2*γ₂*c| ≤ |2*γ₁*c| where c = ρ.coh_re
+  have key₂ : ρ.p₁ + ρ.p₂ + 2 * gamma rate t₂ * ρ.coh_re - (ρ.p₁ + ρ.p₂)
+    = 2 * gamma rate t₂ * ρ.coh_re := by ring
+  have key₁ : ρ.p₁ + ρ.p₂ + 2 * gamma rate t₁ * ρ.coh_re - (ρ.p₁ + ρ.p₂)
+    = 2 * gamma rate t₁ * ρ.coh_re := by ring
+  rw [key₂, key₁]
+  -- |2*γ₂*c| ≤ |2*γ₁*c| ← γ₂ ≤ γ₁ (antitone)
+  have hγ := gamma_antitone rate t₁ t₂ h
+  have hγ₂_pos := gamma_pos rate t₂
+  have hγ₁_pos := gamma_pos rate t₁
+  have h2 : |2 * gamma rate t₂ * ρ.coh_re| = 2 * gamma rate t₂ * |ρ.coh_re| := by
+    rw [show 2 * gamma rate t₂ * ρ.coh_re = (2 * gamma rate t₂) * ρ.coh_re from by ring,
+        abs_mul, abs_of_pos (by positivity)]
+  have h1 : |2 * gamma rate t₁ * ρ.coh_re| = 2 * gamma rate t₁ * |ρ.coh_re| := by
+    rw [show 2 * gamma rate t₁ * ρ.coh_re = (2 * gamma rate t₁) * ρ.coh_re from by ring,
+        abs_mul, abs_of_pos (by positivity)]
+  rw [h2, h1]
+  nlinarith [abs_nonneg ρ.coh_re]
+
 end UnifiedTheory.LayerB.LindbladDecoherence
