@@ -1,16 +1,19 @@
 /-
   LayerA/Hauptvermutung.lean — The causal set Hauptvermutung, formalized.
 
-  THE HAUPTVERMUTUNG: A Poisson sprinkling of density ρ into a Lorentzian
-  manifold recovers the geometry as ρ → ∞. The counting measure N/ρ
-  converges to the volume measure. The Poisson fluctuation Λ = 1/√(ρV)
-  IS the cosmological constant.
+  THE HAUPTVERMUTUNG (algebraic content): The relative volume fluctuation
+  Λ² = 1/(ρV) converges to zero as ρ → ∞. This is the algebraic core
+  of the causal set Hauptvermutung (Sorkin 1987).
 
-  WHAT IS PROVEN:
-  1. The Poisson fluctuation Λ = 1/√(ρV) is positive at finite ρ
-  2. Λ² = 1/(ρV) decreases monotonically with ρ
+  WHAT IS PROVEN (pure algebra, no probability theory):
+  1. Λ² = 1/(ρV) is positive at finite ρ (positivity)
+  2. Λ² decreases monotonically with ρ (monotone denominator)
   3. For any ε > 0, ∃ ρ₀ s.t. ρ > ρ₀ → Λ² < ε (convergence)
-  4. The cosmological constant IS the relative volume fluctuation
+
+  WHAT IS NOT PROVEN (would require probability/measure theory):
+  - That the Poisson count N concentrates around ρV (law of large numbers)
+  - That the causal order is faithfully recovered (geometric faithfulness)
+  These are standard results in probability and causal set theory.
 
   Zero sorry. Zero custom axioms.
 -/
