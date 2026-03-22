@@ -351,7 +351,7 @@ are shorter and less momentum is needed to achieve the same total phase.
 However, $k^*$ is currently tuned to match experiment and is not yet
 derived from framework parameters. The amplitude-weighted result is
 therefore reported as a consistency check, not as a zero-parameter
-prediction. The count-weighted result ($0.051$ at $\rho = 10{,}000$) is
+prediction. The count-weighted result ($0.056$ at $\rho = 10{,}000$) is
 the honest zero-parameter number.
 
 \subsection{Summary: all methods compared}
@@ -792,15 +792,21 @@ The full inter-sector ratio combines the weak SU(2) projection
 compared to the experimental range $m_t/m_b = 60$--$90$ at the Planck
 scale (factor $0.85\times$ at the central value $75$).
 
-Each factor is a theorem of the framework:
+Each factor is a theorem of the framework, formally verified in
+Lean~4 (\texttt{CasimirScaling.lean}):
 \begin{itemize}[nosep]
   \item $1/r_{\mu\tau} = 17.9$: computed from the SU(2) holonomy
     on Poisson causal sets (Section~4).
-  \item $C_2(\mathrm{SU}(3))/C_2(\mathrm{SU}(2)) = 16/9$: the
-    quadratic Casimir invariants of the derived gauge group
-    (Paper~I).
-  \item $|Y(t_R)/Y(b_R)| = 2$: the hypercharges determined by
-    anomaly cancellation (Paper~I, Theorem~\ref{thm:electron}).
+  \item $C_2(\mathrm{SU}(3))/C_2(\mathrm{SU}(2)) = 16/9$:
+    \texttt{casimir\_ratio\_3\_2}, from the quadratic Casimir
+    formula $C_2 = (N^2-1)/(2N)$ applied to the derived gauge group.
+  \item $|Y(t_R)/Y(b_R)| = 2$:
+    \texttt{hypercharge\_ratio\_top\_bottom}, from the anomaly-determined
+    hypercharges (Paper~I).
+  \item Combined correction $32/9$: \texttt{correction\_factor}.
+  \item $m_t/m_b = (32/9)/r_{\mu\tau}$: \texttt{mt\_mb\_simplified}.
+  \item Variance ratio is chain-length independent:
+    \texttt{variance\_ratio} ($L$ cancels in the ratio).
 \end{itemize}
 No free parameters.  The formula is not a fit --- it is the
 K/P trace over the derived gauge group, evaluated for the

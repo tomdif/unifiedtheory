@@ -47,7 +47,9 @@ are now derived: the first two from anomaly non-triviality
 phase transition (\texttt{LatticeCoupling.lean}).
 
 Every step is formally verified in Lean~4 using the Mathlib library:
-17 files, $\sim$4{,}000 lines, zero \texttt{sorry} statements, zero
+18 core files in the derivation chain ($\sim$4{,}600 lines), within a
+larger codebase of $\sim$17{,}000 lines across 80 files.
+Zero \texttt{sorry} statements, zero
 custom axioms.  The \texttt{\#print axioms} command on the capstone
 theorem returns only Lean's built-in foundations (\texttt{propext},
 \texttt{Classical.choice}, \texttt{Quot.sound}).  The codebase
@@ -308,7 +310,8 @@ Higgs potential form & Derived & Renormalizability in $d = 4$ \\
 \end{tabular}
 \end{center}
 
-\noindent\textit{Lean verification: 17 files, $\sim$4{,}000 lines,
+\noindent\textit{Lean verification: 18 core files, $\sim$4{,}600 lines
+(within $\sim$17{,}000 total),
 zero sorry, zero custom axioms.}
 \begin{center}
 \begin{tabular}{@{}ll@{}}
@@ -330,6 +333,7 @@ File & Content \\
 \texttt{DiscreteAmbroseSinger.lean} & $\mathrm{Hol} = \langle\mathrm{curvatures}\rangle$ \\
 \texttt{ChargeConsistency.lean} & $Q_e = 0 \to$ trivial U(1) \\
 \texttt{LatticeCoupling.lean} & $g^2 = 2N/\beta_c$ \\
+\texttt{CasimirScaling.lean} & $m_t/m_b = (32/9)/r_{\mu\tau}$ \\
 \texttt{HiggsPotentialForm.lean} & $V = \mu^2|\phi|^2 + \lambda|\phi|^4$ \\
 \texttt{PhysicsFromOrder.lean} & Capstone structure \\
 \bottomrule
@@ -581,7 +585,7 @@ gauge coupling is derived from the lattice phase transition
 \subsection{What formal verification establishes}
 
 The Lean~4 verification ensures that every step from the definition
-of a locally finite partial order to the thirteen capstone properties
+of a locally finite partial order to the fifteen capstone properties
 is mathematically correct, with zero \texttt{sorry} statements and
 zero custom axioms.  It does not verify the physical interpretation.
 The single axiom (a finite partial order exists) is a physical
@@ -628,16 +632,18 @@ conditions.
 Result & Method & Status \\
 \midrule
 Gauge group, charges, dimension & Lean~4 & Zero sorry \\
-Input reduction (5$\to$1) & Lean~4 & Zero sorry (17 files) \\
+Input reduction (5$\to$1) & Lean~4 & Zero sorry (18 core files) \\
 Continuum limit (prime-phase) & Lean~4 & Zero sorry \\
 Charge consistency, $Q_e \neq 0$ & Lean~4 & Zero sorry \\
 Gauge coupling $g^2$ & Lean~4 & Zero sorry \\
 Higgs potential form & Lean~4 & Zero sorry \\
 Discrete Ambrose-Singer & Lean~4 & Zero sorry (27 theorems) \\
+Casimir scaling ($m_t/m_b$ formula) & Lean~4 & Zero sorry (9 theorems) \\
 \midrule
 Mass ratios (Paper~II) & Monte Carlo & Computational \\
 Cabibbo angle (Paper~II) & Monte Carlo & Computational (20 seeds) \\
 Higgs $m_H/v$ (Paper~II) & Monte Carlo & Computational ($0.42 \pm 0.05$) \\
+$m_t/m_b$ formula (Paper~II) & Lean~4 + Monte Carlo & Formula verified; $r_{\mu\tau}$ computational \\
 CKM hierarchy (Paper~II) & Monte Carlo & Not yet reproduced \\
 Higgs parameters $\mu^2$, $\lambda$ & --- & Not derived \\
 \bottomrule

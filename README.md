@@ -32,7 +32,7 @@ Seven predictions across five orders of magnitude, all within a factor of 1.5×.
 
 ## Lean Formalization
 
-**18 files. 140+ theorems. Zero sorry. Zero axioms. Zero sorryAx.**
+**18 core files in LayerA (80 total). 750+ theorems. Zero sorry. Zero axioms. Zero sorryAx.**
 
 `#print axioms` on every capstone theorem returns only: `propext`, `Classical.choice`, `Quot.sound`.
 
