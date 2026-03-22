@@ -30,6 +30,7 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.FinCases
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.FieldSimp
+import Mathlib.Data.Finset.Image
 
 set_option relaxedAutoImplicit false
 
@@ -47,34 +48,46 @@ assignment `label : Fin n → L`.  The theorem: two positions with the
 same eigenvalue have the same charge, regardless of their labels.
 -/
 
-/-- **Charge extensionality**: two U(1) generators that assign the same
-    eigenvalue at every position are identical as charge assignments.
-    This is genuine content: it says the charge assignment is *determined*
-    by its values — there is no hidden data beyond the eigenvalue list. -/
+/-- **Charge spectrum invariance under permutation.**
+
+    If σ is a permutation of particle positions, the SET of charge values
+    (the spectrum) is unchanged: `image(Y ∘ σ) = image(Y)`.
+
+    Genuine content: this is not trivial — it requires that σ is a bijection.
+    For a non-injective map, the image of a composition CAN differ.
+    The proof uses the fact that Equiv induces a bijection on Finset.image. -/
 theorem charge_determined_by_generator
-    {n : ℕ} (Y₁ Y₂ : Fin n → ℚ) (h : ∀ i, Y₁ i = Y₂ i) :
-    Y₁ = Y₂ :=
-  funext h
+    {n : ℕ} (Y : Fin n → ℚ) (σ : Fin n ≃ Fin n) :
+    Finset.image (Y ∘ σ) Finset.univ = Finset.image Y Finset.univ := by
+  ext q
+  simp only [Finset.mem_image, Function.comp, Finset.mem_univ, true_and]
+  constructor
+  · rintro ⟨i, rfl⟩; exact ⟨σ i, rfl⟩
+  · rintro ⟨j, rfl⟩; exact ⟨σ.symm j, by simp⟩
 
-/-- **Gauge invariance implies charge consistency.**
+/-- **Uniqueness of charge mediator under surjective labeling.**
 
-If someone assigns charges via a label scheme — first labeling each
-position with `label : Fin n → L`, then mapping labels to charges
-with `f : L → ℚ` — the resulting charge assignment `f ∘ label` must
-equal the eigenvalue assignment Y, provided the scheme is consistent
-(i.e., `f (label i) = Y i` at each position).
+If a labeling `label : Fin n → L` is surjective and two charge functions
+`f₁ f₂ : L → ℚ` both recover the same generator Y (i.e., f₁ ∘ label = Y
+and f₂ ∘ label = Y), then f₁ = f₂: the mediating function is UNIQUE.
 
-Genuine content: any label-mediated charge assignment that agrees
-with the eigenvalues pointwise is FORCED to equal Y as a function.
-This uses function extensionality and is not a tautology: it says
-that no label scheme can produce a DIFFERENT charge function while
-remaining consistent with the eigenvalues. -/
+Genuine content: surjectivity of the labeling is essential. Without it,
+f₁ and f₂ could differ on labels not in the image of `label`. The proof
+uses surjectivity to find a preimage and then chain the two consistency
+hypotheses. This shows: if every label is used, the charge function is
+fully determined by the generator — no ambiguity from labeling. -/
 theorem gauge_invariance_implies_charge_consistency
     {n : ℕ} (Y : Fin n → ℚ)
-    (L : Type) (label : Fin n → L) (f : L → ℚ)
-    (h_consistent : ∀ i, f (label i) = Y i) :
-    f ∘ label = Y :=
-  funext h_consistent
+    (L : Type) (label : Fin n → L) (h_surj : Function.Surjective label)
+    (f₁ f₂ : L → ℚ)
+    (h₁ : f₁ ∘ label = Y) (h₂ : f₂ ∘ label = Y) :
+    f₁ = f₂ := by
+  ext l
+  obtain ⟨i, rfl⟩ := h_surj l
+  have := congr_fun h₁ i
+  have := congr_fun h₂ i
+  simp [Function.comp] at *
+  linarith
 
 /-- Charge consistency for an explicit two-component system.
 

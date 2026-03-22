@@ -138,15 +138,15 @@ noncomputable def constructPhysics (n : ℕ) (hn : 2 ≤ n) : PhysicsData n wher
   dressing_nonzero := (dressing_witness n hn).choose_spec.1
   dressing_in_kernel := (dressing_witness n hn).choose_spec.2
 
-/-- **Summary of the 5→1 reduction chain.**
+/-! ### Summary of the 5→1 reduction chain
 
-    Each conjunct references a proved theorem:
-    (1) Volume variation is a nonzero linear functional (this file)
-    (2) Its kernel has codimension 1 (rank-nullity, this file)
-    (3) Dressing sector exists concretely (witness, this file)
-    (4) Holonomy = curvature group (DiscreteAmbroseSinger)
-    (5) Poisson forced from symmetry (Hauptvermutung)
-    (6) Dimension forced (PrimitiveReduction) -/
+Each conjunct references a proved theorem:
+(1) Volume variation is a nonzero linear functional (this file)
+(2) Its kernel has codimension 1 (rank-nullity, this file)
+(3) Dressing sector exists concretely (witness, this file)
+(4) Holonomy = curvature group (DiscreteAmbroseSinger)
+(5) Poisson forced from symmetry (Hauptvermutung)
+(6) Dimension forced (PrimitiveReduction) -/
 /-- **The trace of the identity matrix is n.** Concrete computation, not
     just "nonzero". This is the quantitative content: the volume variation
     of the identity perturbation equals the spacetime dimension. -/
@@ -155,6 +155,16 @@ theorem trace_identity_eq_dim (n : ℕ) :
   simp [volumeVariation, Matrix.traceLinearMap, Matrix.trace, Matrix.one_apply,
         Finset.sum_ite_eq', Finset.mem_univ, Finset.sum_const, Finset.card_fin,
         smul_eq_mul, mul_one]
+
+/-- **For spacetime dimension 4, the dressing (gauge) sector has dimension 15.**
+    This is the physically relevant case: 4×4 symmetric perturbations have
+    16 degrees of freedom, and exactly 1 is the source (trace) mode. -/
+theorem dressing_dim_spacetime :
+    finrank ℝ (LinearMap.ker (volumeVariation 4)) = 15 := by
+  have h := volumeVariation_ker_codim 4 (by omega)
+  have hdim : finrank ℝ (Matrix (Fin 4) (Fin 4) ℝ) = 16 := by
+    simp [Module.finrank_matrix, Fintype.card_fin, finrank_self]
+  omega
 
 theorem reduction_5_to_1 :
     -- (1) Volume variation on identity gives the dimension: tr(I_n) = n
@@ -165,7 +175,10 @@ theorem reduction_5_to_1 :
         finrank ℝ (Matrix (Fin n) (Fin n) ℝ))
     -- (3) Concrete dressing mode for n ≥ 2
     ∧ (∀ n : ℕ, 2 ≤ n →
-        ∃ h : Matrix (Fin n) (Fin n) ℝ, h ≠ 0 ∧ volumeVariation n h = 0) :=
-  ⟨trace_identity_eq_dim, volumeVariation_ker_codim, dressing_witness⟩
+        ∃ h : Matrix (Fin n) (Fin n) ℝ, h ≠ 0 ∧ volumeVariation n h = 0)
+    -- (4) In dimension 4, exactly 15 gauge modes (n²-1 = 16-1)
+    ∧ finrank ℝ (LinearMap.ker (volumeVariation 4)) = 15 :=
+  ⟨trace_identity_eq_dim, volumeVariation_ker_codim, dressing_witness,
+   dressing_dim_spacetime⟩
 
 end UnifiedTheory.LayerA.PhysicsFromOrder

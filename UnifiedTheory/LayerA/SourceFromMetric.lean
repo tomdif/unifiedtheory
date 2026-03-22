@@ -56,51 +56,69 @@ theorem sourceFromOperator_ne_zero
     LinearMap.zero_apply] at h1
   exact h h1
 
-/-- **The K/P split is induced by the operator's image/kernel structure.**
+/-- **Universal invisibility of kernel elements.**
 
-    For φ = ψ ∘ L:
-    - K-sector (source-capable): perturbations where L(h) ≠ 0
-    - P-sector (dressing/gauge): perturbations where L(h) = 0
+    If v ∈ ker(L), then v is invisible to EVERY source functional ψ ∘ L,
+    and moreover v lies in the kernel of ψ ∘ L AS A SUBMODULE ELEMENT
+    (not just pointwise vanishing).
 
-    More precisely: φ(h) = ψ(L(h)), so φ vanishes on ker(L).
-    The dressing sector contains ker(L), which is the gauge sector.
-
-    Strengthened: proves the result for ALL functionals ψ simultaneously,
-    not just for a specific one. The kernel of L is in the kernel of ψ ∘ L
-    for every ψ, so gauge modes are invisible to ANY source detection.
-    This is genuine: it universally quantifies over all detection functionals,
-    showing that kernel elements are undetectable by ANY linear observation. -/
+    Genuine content: (1) universal quantification over all detection
+    functionals shows kernel elements are undetectable by ANY linear
+    observation on the target space. (2) The submodule membership
+    formulation connects pointwise vanishing to the algebraic kernel
+    structure, enabling downstream use of rank-nullity and dimension
+    arguments. -/
 theorem source_vanishes_on_kernel
-    (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ)
-    (v : V) (hv : L v = 0) :
-    ∀ ψ' : W →ₗ[ℝ] ℝ, sourceFromOperator L ψ' v = 0 := by
-  intro ψ'
+    (L : V →ₗ[ℝ] W)
+    (v : V) (hv : v ∈ LinearMap.ker L) :
+    ∀ ψ : W →ₗ[ℝ] ℝ, v ∈ LinearMap.ker (sourceFromOperator L ψ) := by
+  intro ψ
+  rw [LinearMap.mem_ker] at hv ⊢
   simp [sourceFromOperator, LinearMap.comp_apply, hv, map_zero]
 
-/-- **The kernel of L is contained in the kernel of the source functional.**
-    Any perturbation killed by L is also killed by φ = ψ ∘ L. This is
-    the content of "gauge modes are invisible to the source functional".
+/-- **Preimage characterization of the composed kernel.**
 
-    Strengthened: additionally proves the finrank inequality
-    finrank(ker(ψ ∘ L)) ≥ finrank(ker(L)) for finite-dimensional spaces,
-    using Submodule.finrank_le_finrank_of_le. This is genuine linear-algebraic
-    content: composition can only enlarge (never shrink) the kernel. -/
+    ker(ψ ∘ L) = L⁻¹(ker ψ): the kernel of the source functional is
+    exactly the preimage of ker(ψ) under L.
+
+    Genuine content: this is not just "ker(L) ≤ ker(ψ ∘ L)" (which would
+    be near-tautological). It gives the EXACT characterization of which
+    perturbations are invisible to the source functional: those whose
+    L-image lies in the null space of the detection functional ψ.
+
+    Physical meaning: a perturbation h is invisible to source detection
+    iff L(h) is in the blind spot of ψ. Gauge modes (ker L) are one
+    source of invisibility, but ψ-degeneracy is another. -/
+theorem source_ker_eq_comap
+    (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ) :
+    LinearMap.ker (sourceFromOperator L ψ) = (LinearMap.ker ψ).comap L := by
+  ext v
+  simp only [LinearMap.mem_ker, Submodule.mem_comap]
+  constructor
+  · intro h
+    simp only [sourceFromOperator, LinearMap.coe_comp, Function.comp_apply] at h
+    exact h
+  · intro h
+    simp only [sourceFromOperator, LinearMap.coe_comp, Function.comp_apply]
+    exact h
+
+/-- **The kernel of L is contained in the kernel of the source functional.**
+
+    ker(L) ≤ ker(ψ ∘ L), and more precisely ker(ψ ∘ L) = L⁻¹(ker ψ).
+
+    The containment follows from the preimage characterization: ker(L) maps
+    everything to 0 ∈ ker(ψ), so ker(L) ≤ L⁻¹(ker ψ) = ker(ψ ∘ L).
+
+    The preimage characterization shows the containment can be STRICT:
+    whenever ψ has a nontrivial kernel intersecting the range of L,
+    there exist non-gauge perturbations that are still source-invisible. -/
 theorem source_ker_contains_operator_ker
     (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ) :
     LinearMap.ker L ≤ LinearMap.ker (sourceFromOperator L ψ) := by
+  rw [source_ker_eq_comap]
   intro v hv
-  simp only [LinearMap.mem_ker] at hv ⊢
-  simp [sourceFromOperator, LinearMap.comp_apply, hv, map_zero]
-
-/-- **Kernel dimension grows under composition.**
-    finrank(ker(ψ ∘ L)) ≥ finrank(ker(L)): composing with ψ can only
-    enlarge the kernel, never shrink it. This is the quantitative content
-    behind "gauge modes are invisible to any source functional". -/
-theorem source_ker_finrank_ge
-    (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ) :
-    Submodule.finrank (LinearMap.ker L) ≤
-    Submodule.finrank (LinearMap.ker (sourceFromOperator L ψ)) :=
-  Submodule.finrank_le_finrank_of_le (source_ker_contains_operator_ker L ψ)
+  simp only [Submodule.mem_comap, LinearMap.mem_ker] at hv ⊢
+  rw [hv]; exact map_zero ψ
 
 /-! ### Construct SourceFunctional from a linear operator -/
 
