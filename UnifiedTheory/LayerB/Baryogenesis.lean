@@ -131,11 +131,20 @@ theorem sakharov_conditions :
          cp_violation_requires_d_ge_3,
          by norm_num⟩
 
-/-- **N_g = 3 is the minimum for baryogenesis.**
-    With fewer than 3 generations: nPhases = 0, no CP violation,
-    no matter-antimatter asymmetry, no baryonic universe.
-    The framework's derived N_g = 3 is not just "how many generations
-    exist" — it's "the minimum for the universe to contain matter." -/
+/-- **N_g = 3 is the minimum for CKM CP violation (Kobayashi-Maskawa 2008).**
+    The phase counting nPhases = (N_g-1)(N_g-2)/2 is standard (KM).
+    The NEW content: N_g = 3 is DERIVED from algebraic constraints
+    (integer baryon charge + chirality + UV completeness), independently
+    of any cosmological consideration.
+
+    The coincidence: the algebraically forced N_g = 3 is also the
+    cosmologically minimum N_g for CP violation to exist.
+
+    CAVEAT: CKM CP violation is NECESSARY but likely NOT SUFFICIENT
+    for the observed baryon asymmetry η ~ 6×10⁻¹⁰. The CKM phase
+    produces ~10 orders of magnitude too little asymmetry. Additional
+    CP violation (neutrino sector / leptogenesis / BSM) may be needed.
+    The framework derives the necessary condition, not the sufficient one. -/
 theorem three_generations_necessary_for_baryogenesis :
     -- N_g = 2 gives no CP phase → no baryogenesis
     nPhases 2 = 0
