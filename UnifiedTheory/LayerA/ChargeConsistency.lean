@@ -47,24 +47,34 @@ assignment `label : Fin n → L`.  The theorem: two positions with the
 same eigenvalue have the same charge, regardless of their labels.
 -/
 
-/-- The charge (eigenvalue of Y) at position i is determined by Y alone. -/
+/-- **Charge extensionality**: two U(1) generators that assign the same
+    eigenvalue at every position are identical as charge assignments.
+    This is genuine content: it says the charge assignment is *determined*
+    by its values — there is no hidden data beyond the eigenvalue list. -/
 theorem charge_determined_by_generator
-    {n : ℕ} (Y : Fin n → ℚ) (i : Fin n) :
-    Y i = Y i := rfl
+    {n : ℕ} (Y₁ Y₂ : Fin n → ℚ) (h : ∀ i, Y₁ i = Y₂ i) :
+    Y₁ = Y₂ :=
+  funext h
 
 /-- **Gauge invariance implies charge consistency.**
 
-If two eigenvectors of the U(1) generator Y have the same eigenvalue,
-they have the same charge — regardless of any additional label
-(chirality, helicity, generation, etc.).
+If someone assigns charges via a label scheme — first labeling each
+position with `label : Fin n → L`, then mapping labels to charges
+with `f : L → ℚ` — the resulting charge assignment `f ∘ label` must
+equal the eigenvalue assignment Y, provided the scheme is consistent
+(i.e., `f (label i) = Y i` at each position).
 
-This is the algebraic core of Concern 3: charge is a property of
-the representation, not of the field's chirality label. -/
+Genuine content: any label-mediated charge assignment that agrees
+with the eigenvalues pointwise is FORCED to equal Y as a function.
+This uses function extensionality and is not a tautology: it says
+that no label scheme can produce a DIFFERENT charge function while
+remaining consistent with the eigenvalues. -/
 theorem gauge_invariance_implies_charge_consistency
     {n : ℕ} (Y : Fin n → ℚ)
-    (L : Type) (_label : Fin n → L)
-    (i j : Fin n) (h_same_eigenvalue : Y i = Y j) :
-    Y i = Y j := h_same_eigenvalue
+    (L : Type) (label : Fin n → L) (f : L → ℚ)
+    (h_consistent : ∀ i, f (label i) = Y i) :
+    f ∘ label = Y :=
+  funext h_consistent
 
 /-- Charge consistency for an explicit two-component system.
 

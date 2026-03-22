@@ -147,9 +147,18 @@ noncomputable def constructPhysics (n : ℕ) (hn : 2 ≤ n) : PhysicsData n wher
     (4) Holonomy = curvature group (DiscreteAmbroseSinger)
     (5) Poisson forced from symmetry (Hauptvermutung)
     (6) Dimension forced (PrimitiveReduction) -/
+/-- **The trace of the identity matrix is n.** Concrete computation, not
+    just "nonzero". This is the quantitative content: the volume variation
+    of the identity perturbation equals the spacetime dimension. -/
+theorem trace_identity_eq_dim (n : ℕ) :
+    volumeVariation n (1 : Matrix (Fin n) (Fin n) ℝ) = (n : ℝ) := by
+  simp [volumeVariation, Matrix.traceLinearMap, Matrix.trace, Matrix.one_apply,
+        Finset.sum_ite_eq', Finset.mem_univ, Finset.sum_const, Finset.card_fin,
+        smul_eq_mul, mul_one]
+
 theorem reduction_5_to_1 :
-    -- (1) Volume variation is nonzero for n ≥ 1
-    (∀ n : ℕ, 0 < n → volumeVariation n ≠ 0)
+    -- (1) Volume variation on identity gives the dimension: tr(I_n) = n
+    (∀ n : ℕ, volumeVariation n (1 : Matrix (Fin n) (Fin n) ℝ) = (n : ℝ))
     -- (2) Kernel codimension = 1
     ∧ (∀ n : ℕ, 0 < n →
         finrank ℝ (LinearMap.ker (volumeVariation n)) + 1 =
@@ -157,6 +166,6 @@ theorem reduction_5_to_1 :
     -- (3) Concrete dressing mode for n ≥ 2
     ∧ (∀ n : ℕ, 2 ≤ n →
         ∃ h : Matrix (Fin n) (Fin n) ℝ, h ≠ 0 ∧ volumeVariation n h = 0) :=
-  ⟨volumeVariation_nonzero, volumeVariation_ker_codim, dressing_witness⟩
+  ⟨trace_identity_eq_dim, volumeVariation_ker_codim, dressing_witness⟩
 
 end UnifiedTheory.LayerA.PhysicsFromOrder
