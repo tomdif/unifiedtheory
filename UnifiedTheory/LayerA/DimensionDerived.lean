@@ -2,8 +2,8 @@
   LayerA/DimensionDerived.lean — Spacetime dimension d=4 DERIVED, not postulated.
 
   The Ehrenfest criteria (orbital stability, Huygens' principle) in
-  DimensionSelection.lean are POSTULATED physical criteria. A referee
-  will correctly object that they encode d=3 by construction.
+  DimensionSelection.lean are POSTULATED physical criteria that
+  encode d=3 by construction.
 
   THIS FILE replaces the postulate with three DERIVED constraints,
   each proven from the framework's structure:
@@ -102,9 +102,8 @@ theorem graviton_forces_d_ge_4 :
     This replaces the Ehrenfest postulate (orbitalStability + waveHuygens)
     with DERIVED constraints from gauge theory and gravity.
 
-    A referee cannot object that "d=3 was chosen to get d=3" — each
-    constraint is proven from the Yang-Mills or gravitational structure,
-    not from dimension-dependent postulates.
+    Each constraint is proven from the Yang-Mills or gravitational
+    structure, not from dimension-dependent postulates.
 
     The derivation chain:
     Source functional φ

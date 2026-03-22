@@ -169,7 +169,7 @@ theorem antimatter_same_gravitational_energy (Q P : ℝ) :
 
 /-- **The equivalence principle from the K/P structure.**
 
-    WHY inertial mass = gravitational mass (the referee-proof argument):
+    WHY inertial mass = gravitational mass:
 
     In the K/P framework, there is exactly ONE scalar functional: φ.
     - Inertial mass: |φ(v)| (response to applied force = source strength)
