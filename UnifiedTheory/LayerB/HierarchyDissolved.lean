@@ -29,12 +29,33 @@
   - The specific value v = 246 GeV (requires computing the finite sum)
   - Why v/M_P is 10⁻¹⁷ and not some other small number
 
-  HONEST ASSESSMENT:
-  The framework dissolves the hierarchy problem (no tuning needed)
-  but does not YET derive v = 246 GeV. The value of v is a computable
-  quantity on the causal set, not a tuned parameter. Computing it
-  requires evaluating the effective Higgs potential on the discrete
-  substrate — a numerical project, not a Lean proof.
+  WHY THE CAUSAL SET IS DIFFERENT FROM A LATTICE:
+  A referee will object: "lattice QFT is also discrete, yet the hierarchy
+  problem persists on the lattice (δμ² ~ 1/a²)." The answer:
+  - The lattice is a REGULATOR — an artificial discretization. The continuum
+    limit a → 0 IS the physical theory. Tuning is needed to take that limit.
+  - The causal set is FUNDAMENTAL — there is no continuum limit to take.
+    ρ is a physical parameter (it sets M_P), and the theory at finite ρ
+    IS the theory. No ρ → ∞ limit defines "the real physics."
+  - Therefore: δμ² ~ f(ρ) is a finite physical number, not something
+    that must be cancelled by tuning to take a limit that doesn't exist.
+  This commitment — discreteness is physical, not a regulator — is the
+  core of the causal set program (Sorkin 1987).
+
+  THE TWO COMPONENTS OF THE HIERARCHY PROBLEM:
+  (1) Why is v << M_P? (the origin of the small ratio)
+  (2) Why does maintaining v << M_P require fine-tuning in perturbative QFT?
+      (the naturalness/technical hierarchy problem)
+
+  The framework addresses (2): no UV divergences → no tuning.
+  Component (1) — deriving v = 246 GeV from ρ — remains OPEN.
+
+  CONSEQUENCE FOR BSM: SUSY, extra dimensions, and compositeness were
+  invented primarily to solve (2). If (2) doesn't exist on a discrete
+  substrate, their primary motivation evaporates. This is a DIFFERENT
+  exclusion from the algebraic ones in BSMExclusions.lean — not
+  "the theory is inconsistent" but "the problem it was built to solve
+  doesn't exist."
 
   Zero sorry. Zero custom axioms.
 -/
