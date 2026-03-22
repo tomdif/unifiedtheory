@@ -42,12 +42,19 @@ noncomputable def sourceFromOperator
     (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ) : V →ₗ[ℝ] ℝ :=
   ψ ∘ₗ L
 
-/-- The source functional from an operator is nonzero when L and ψ
-    are chosen appropriately. -/
-theorem sourceFromOperator_nonzero
+/-- **The source functional from an operator is nonzero as a map
+    when its defining data is nontrivial.** Given v₀ with ψ(L(v₀)) ≠ 0,
+    the composite φ = ψ ∘ L is a nonzero linear map (not just nonzero
+    at one point, but nonzero as an element of the dual space). -/
+theorem sourceFromOperator_ne_zero
     (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ)
     (v₀ : V) (h : ψ (L v₀) ≠ 0) :
-    sourceFromOperator L ψ v₀ ≠ 0 := h
+    sourceFromOperator L ψ ≠ 0 := by
+  intro heq
+  have h1 := LinearMap.ext_iff.mp heq v₀
+  simp only [sourceFromOperator, LinearMap.coe_comp, Function.comp_apply,
+    LinearMap.zero_apply] at h1
+  exact h h1
 
 /-- **The K/P split is induced by the operator's image/kernel structure.**
 
@@ -63,12 +70,15 @@ theorem source_vanishes_on_kernel
     sourceFromOperator L ψ v = 0 := by
   simp [sourceFromOperator, LinearMap.comp_apply, hv, map_zero]
 
-/-- **The source functional detects nontrivial perturbations.**
-    If L(v) ≠ 0 and ψ detects L(v), then φ(v) ≠ 0. -/
-theorem source_detects_nontrivial
-    (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ)
-    (v : V) (h : ψ (L v) ≠ 0) :
-    sourceFromOperator L ψ v ≠ 0 := h
+/-- **The kernel of L is contained in the kernel of the source functional.**
+    Any perturbation killed by L is also killed by φ = ψ ∘ L. This is
+    the content of "gauge modes are invisible to the source functional". -/
+theorem source_ker_contains_operator_ker
+    (L : V →ₗ[ℝ] W) (ψ : W →ₗ[ℝ] ℝ) :
+    LinearMap.ker L ≤ LinearMap.ker (sourceFromOperator L ψ) := by
+  intro v hv
+  simp only [LinearMap.mem_ker] at hv ⊢
+  simp [sourceFromOperator, LinearMap.comp_apply, hv, map_zero]
 
 /-! ### Construct SourceFunctional from a linear operator -/
 
