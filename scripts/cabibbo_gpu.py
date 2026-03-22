@@ -144,46 +144,61 @@ def sample_chains_guided(adj, dp_fwd, target_length, n_sample, rng, all_nodes):
 # 2. GPU-accelerated SU(N) generation
 # ============================================================
 
-def random_su3_batch_gpu(n, seed, beta=6.0):
-    """Generate n random SU(3) matrices on GPU using batched operations."""
-    rng = torch.Generator(device=DEVICE).manual_seed(seed)
-    # Random Hermitian traceless matrix
-    H_real = torch.randn(n, 3, 3, device=DEVICE, generator=rng)
-    H_imag = torch.randn(n, 3, 3, device=DEVICE, generator=rng)
-    H = (H_real + 1j * H_imag).to(torch.complex128)
-    H = (H + H.conj().transpose(-2, -1)) / 2
-    trace = torch.diagonal(H, dim1=-2, dim2=-1).sum(-1, keepdim=True).unsqueeze(-1)
-    H = H - (trace / 3) * torch.eye(3, device=DEVICE, dtype=torch.complex128).unsqueeze(0)
+def random_su3_fast(n, seed, beta=6.0):
+    """Generate n random SU(3) matrices on GPU via Cayley map. float32 only.
 
-    # Matrix exponential: U = exp(iH/beta)
-    iH = 1j * H / beta
-    U = torch.linalg.matrix_exp(iH)
+    Cayley approximation: U = (I + iH/beta)(I - iH/beta)^{-1}
+    Maps Hermitian traceless matrices to SU(3) without matrix_exp.
+    Uses torch.linalg.solve instead of explicit inverse for numerical stability.
+    ~10x less memory than complex128 matrix_exp (float32 vs float64, no exp workspace).
+    """
+    rng = torch.Generator(device=DEVICE).manual_seed(seed)
+    # Random Hermitian traceless matrix in float32
+    H_real = torch.randn(n, 3, 3, device=DEVICE, generator=rng, dtype=torch.float32)
+    H_imag = torch.randn(n, 3, 3, device=DEVICE, generator=rng, dtype=torch.float32)
+    H = torch.complex(H_real, H_imag)  # complex64
+    H = (H + H.conj().transpose(-2, -1)) / 2  # Hermitian
+    trace = torch.diagonal(H, dim1=-2, dim2=-1).sum(-1, keepdim=True).unsqueeze(-1)
+    eye3 = torch.eye(3, dtype=torch.complex64, device=DEVICE).unsqueeze(0)
+    H = H - (trace / 3) * eye3  # traceless
+
+    # Cayley map: U = (I + iH/beta) @ (I - iH/beta)^{-1}
+    # Rewrite as: U = A @ B^{-1} where A = I + iH/beta, B = I - iH/beta
+    # Solve B^T X^T = A^T then U = X, i.e. U = solve(B, A) via batched solve
+    iH_beta = (1j * H) / beta
+    A = eye3 + iH_beta
+    B = eye3 - iH_beta
+    # U = A @ B^{-1} = (B^{-T} @ A^T)^T  — use solve for stability
+    U = torch.linalg.solve(B, A)
 
     # Project to SU(3): U *= (det(U)*/|det(U)|)^{1/3}
     det = torch.linalg.det(U)
-    phase = (det.conj() / (det.abs() + 1e-30)) ** (1/3)
+    phase = (det.conj() / (det.abs() + 1e-8)) ** (1.0 / 3.0)
     U = U * phase.unsqueeze(-1).unsqueeze(-1)
 
     return U
 
 
-def random_su2_batch_gpu(n, seed, beta=4.0):
-    """Generate n random SU(2) matrices on GPU using batched operations."""
+def random_su2_fast(n, seed, beta=4.0):
+    """Batched SU(2) via quaternion parameterization. float32 only.
+
+    SU(2) = unit quaternions: U = a0*I + i*(a1*s1 + a2*s2 + a3*s3)
+    Sample a 4-vector from N(0, 1/beta), bias toward identity, normalize.
+    Uses ONLY real float32 arithmetic until final complex64 matrix assembly.
+    """
     rng = torch.Generator(device=DEVICE).manual_seed(seed)
-    H_real = torch.randn(n, 2, 2, device=DEVICE, generator=rng)
-    H_imag = torch.randn(n, 2, 2, device=DEVICE, generator=rng)
-    H = (H_real + 1j * H_imag).to(torch.complex128)
-    H = (H + H.conj().transpose(-2, -1)) / 2
-    trace = torch.diagonal(H, dim1=-2, dim2=-1).sum(-1, keepdim=True).unsqueeze(-1)
-    H = H - (trace / 2) * torch.eye(2, device=DEVICE, dtype=torch.complex128).unsqueeze(0)
+    q = torch.randn(n, 4, device=DEVICE, generator=rng, dtype=torch.float32) / beta
+    q[:, 0] += 1.0  # bias toward identity
 
-    iH = 1j * H / beta
-    U = torch.linalg.matrix_exp(iH)
+    norm = q.norm(dim=1, keepdim=True).clamp(min=1e-8)
+    q = q / norm
+    a0, a1, a2, a3 = q[:, 0], q[:, 1], q[:, 2], q[:, 3]
 
-    det = torch.linalg.det(U)
-    phase = (det.conj() / (det.abs() + 1e-30)) ** 0.5
-    U = U * phase.unsqueeze(-1).unsqueeze(-1)
-
+    U = torch.zeros(n, 2, 2, dtype=torch.complex64, device=DEVICE)
+    U[:, 0, 0] = torch.complex(a0, a3)
+    U[:, 0, 1] = torch.complex(a2, a1)
+    U[:, 1, 0] = torch.complex(-a2, a1)
+    U[:, 1, 1] = torch.complex(a0, -a3)
     return U
 
 
@@ -203,8 +218,8 @@ def compute_holonomies_gpu(chains, link_indices, Us_color, Us_weak,
     """
     n_chains = len(chains)
     if n_chains == 0:
-        return (torch.zeros(3, 3, dtype=torch.complex128, device=DEVICE),
-                torch.zeros(3, 3, dtype=torch.complex128, device=DEVICE))
+        return (torch.zeros(3, 3, dtype=torch.complex64, device=DEVICE),
+                torch.zeros(3, 3, dtype=torch.complex64, device=DEVICE))
 
     chain_len = len(chains[0])  # all chains same length at this L
     n_links_per_chain = chain_len - 1
@@ -212,8 +227,8 @@ def compute_holonomies_gpu(chains, link_indices, Us_color, Us_weak,
     # Build index arrays for all chains' links
     color_idx = torch.zeros(n_chains, n_links_per_chain, dtype=torch.long, device=DEVICE)
     weak_idx = torch.zeros(n_chains, n_links_per_chain, dtype=torch.long, device=DEVICE)
-    theta_vals = torch.zeros(n_chains, n_links_per_chain, dtype=torch.float64, device=DEVICE)
-    tau_vals = torch.zeros(n_chains, n_links_per_chain, dtype=torch.float64, device=DEVICE)
+    theta_vals = torch.zeros(n_chains, n_links_per_chain, dtype=torch.float32, device=DEVICE)
+    tau_vals = torch.zeros(n_chains, n_links_per_chain, dtype=torch.float32, device=DEVICE)
     valid_mask = torch.zeros(n_chains, n_links_per_chain, dtype=torch.bool, device=DEVICE)
 
     for ci, chain in enumerate(chains):
@@ -229,8 +244,8 @@ def compute_holonomies_gpu(chains, link_indices, Us_color, Us_weak,
 
     # Compute chain holonomies via sequential matmul (link by link)
     # Color: (n_chains, 3, 3)
-    W_color = torch.eye(3, dtype=torch.complex128, device=DEVICE).unsqueeze(0).expand(n_chains, -1, -1).clone()
-    W_weak = torch.eye(2, dtype=torch.complex128, device=DEVICE).unsqueeze(0).expand(n_chains, -1, -1).clone()
+    W_color = torch.eye(3, dtype=torch.complex64, device=DEVICE).unsqueeze(0).expand(n_chains, -1, -1).clone()
+    W_weak = torch.eye(2, dtype=torch.complex64, device=DEVICE).unsqueeze(0).expand(n_chains, -1, -1).clone()
 
     for li in range(n_links_per_chain):
         c_mats = Us_color[color_idx[:, li]]  # (n_chains, 3, 3)
@@ -238,8 +253,8 @@ def compute_holonomies_gpu(chains, link_indices, Us_color, Us_weak,
         # Only apply where valid
         mask3 = valid_mask[:, li].view(-1, 1, 1).expand_as(c_mats)
         mask2 = valid_mask[:, li].view(-1, 1, 1).expand_as(w_mats)
-        eye3 = torch.eye(3, dtype=torch.complex128, device=DEVICE).unsqueeze(0).expand_as(c_mats)
-        eye2 = torch.eye(2, dtype=torch.complex128, device=DEVICE).unsqueeze(0).expand_as(w_mats)
+        eye3 = torch.eye(3, dtype=torch.complex64, device=DEVICE).unsqueeze(0).expand_as(c_mats)
+        eye2 = torch.eye(2, dtype=torch.complex64, device=DEVICE).unsqueeze(0).expand_as(w_mats)
         c_mats = torch.where(mask3, c_mats, eye3)
         w_mats = torch.where(mask2, w_mats, eye2)
         W_color = torch.bmm(c_mats, W_color)
@@ -252,12 +267,12 @@ def compute_holonomies_gpu(chains, link_indices, Us_color, Us_weak,
 
     # U(1) phases
     theta_chain = theta_vals.sum(dim=1)  # (n_chains,)
-    phase_u = torch.exp(1j * torch.tensor(Y_uR - Y_Q, device=DEVICE) * theta_chain.to(torch.complex128))
-    phase_d = torch.exp(1j * torch.tensor(Y_dR - Y_Q, device=DEVICE) * theta_chain.to(torch.complex128))
+    phase_u = torch.exp(1j * torch.tensor(Y_uR - Y_Q, device=DEVICE) * theta_chain.to(torch.complex64))
+    phase_d = torch.exp(1j * torch.tensor(Y_dR - Y_Q, device=DEVICE) * theta_chain.to(torch.complex64))
 
     # Amplitude phase
     S_chain = tau_vals.sum(dim=1)  # (n_chains,)
-    amp_phase = torch.exp(1j * k_momentum * S_chain.to(torch.complex128))
+    amp_phase = torch.exp(1j * k_momentum * S_chain.to(torch.complex64))
 
     # Full weights
     w_up = w_up_weak * phase_u * amp_phase      # (n_chains,)
@@ -308,8 +323,8 @@ def compute_ckm_gpu(rho=10000, beta_color=6.0, beta_weak=4.0,
 
     # GPU: generate gauge fields
     t1 = time.time()
-    Us_color = random_su3_batch_gpu(n_links, seed + 5000, beta_color)
-    Us_weak = random_su2_batch_gpu(n_links, seed + 9000, beta_weak)
+    Us_color = random_su3_fast(n_links, seed + 5000, beta_color)
+    Us_weak = random_su2_fast(n_links, seed + 9000, beta_weak)
     t_gauge = time.time() - t1
 
     # U(1) angles (CPU, small)
@@ -318,15 +333,15 @@ def compute_ckm_gpu(rho=10000, beta_color=6.0, beta_weak=4.0,
 
     Y_uR, Y_dR, Y_Q = -2/3, 1/3, 1/6
 
-    s_weak_ref = torch.tensor([1, 0], dtype=torch.complex128, device=DEVICE)
-    color_sections = [torch.tensor([1, 0, 0], dtype=torch.complex128, device=DEVICE),
-                      torch.tensor([0, 1, 0], dtype=torch.complex128, device=DEVICE),
-                      torch.tensor([0, 0, 1], dtype=torch.complex128, device=DEVICE)]
+    s_weak_ref = torch.tensor([1, 0], dtype=torch.complex64, device=DEVICE)
+    color_sections = [torch.tensor([1, 0, 0], dtype=torch.complex64, device=DEVICE),
+                      torch.tensor([0, 1, 0], dtype=torch.complex64, device=DEVICE),
+                      torch.tensor([0, 0, 1], dtype=torch.complex64, device=DEVICE)]
 
     rng_chain = np.random.default_rng(seed + 3000)
 
-    Y_up_total = torch.zeros(3, 3, dtype=torch.complex128, device=DEVICE)
-    Y_down_total = torch.zeros(3, 3, dtype=torch.complex128, device=DEVICE)
+    Y_up_total = torch.zeros(3, 3, dtype=torch.complex64, device=DEVICE)
+    Y_down_total = torch.zeros(3, 3, dtype=torch.complex64, device=DEVICE)
     total_weight = 0.0
 
     t2 = time.time()
