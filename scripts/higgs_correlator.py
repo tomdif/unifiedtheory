@@ -278,7 +278,11 @@ if __name__ == "__main__":
     print(f"  Device: {DEVICE}")
     print("=" * 80)
 
-    all_mHv = []
+    # Collect ALL correlators and VEVs across seeds, then fit the AVERAGE
+    # (standard lattice QCD methodology: average C first, fit once)
+    all_C = []
+    all_vev = []
+    all_mHv_perseed = []
 
     for seed_idx in range(n_seeds):
         r = run_higgs_correlator(rho=rho, beta=beta, n_sample=n_sample,
@@ -287,34 +291,60 @@ if __name__ == "__main__":
             print(f"  seed={seed_idx:>2d}: FAILED (no chains)", flush=True)
             continue
 
-        all_mHv.append(r['mH_over_v'])
+        all_C.append(r['C_avg'])
+        all_vev.append(r['vev'])
+        all_mHv_perseed.append(r['mH_over_v'])
 
         status = "OK" if r['fit_success'] else "FIT FAILED"
-        print(f"  seed={seed_idx:>2d}: m_H/v = {r['mH_over_v']:.4f}  "
+        print(f"  seed={seed_idx:>2d}: m_H/v(per-seed) = {r['mH_over_v']:.4f}  "
               f"m = {r['m_fit']:.4f}  vev = {r['vev']:.4f}  "
-              f"A = {r.get('A_fit', 0):.4f}  C_inf = {r.get('C_inf', 0):.6f}  "
               f"[{status}]  "
               f"({r['n_lengths']} lengths, L_max={r['L_max']})  "
               f"t={r['time']:.0f}s", flush=True)
 
-        # Show correlator shape
-        C = r['C_avg']
-        if len(C) >= 4:
-            print(f"         C(tau): {C[0]:.4f}  {C[1]:.4f}  {C[2]:.4f}  {C[3]:.4f} ...",
-                  flush=True)
-
     print(f"\n{'='*80}")
-    print(f"  RESULTS ({len(all_mHv)} seeds)")
+    print(f"  RESULTS ({len(all_C)} seeds)")
     print(f"{'='*80}")
 
-    if all_mHv:
-        valid = [x for x in all_mHv if np.isfinite(x)]
-        if valid:
-            m = np.mean(valid)
-            s = np.std(valid) / np.sqrt(len(valid)) if len(valid) > 1 else 0
-            print(f"  m_H/v = {m:.4f} +/- {s:.4f}")
+    if all_C:
+        # CORRECT METHOD: average correlator across seeds, then fit ONCE
+        min_len = min(len(c) for c in all_C)
+        C_grand = np.mean([c[:min_len] for c in all_C], axis=0)
+        vev_grand = np.mean(all_vev)
+
+        print(f"\n  Grand-averaged correlator C(tau):")
+        for tau in range(min(min_len, 13)):
+            print(f"    tau={tau:>2d}:  C = {C_grand[tau]:.6f}")
+
+        # Fit the grand average
+        def exp_decay(t, A, m, C_inf):
+            return A * np.exp(-m * t) + C_inf
+
+        tau_arr = np.arange(min_len)
+        mH_grand = np.nan
+        try:
+            popt, _ = curve_fit(exp_decay, tau_arr, C_grand,
+                                p0=[0.04, 0.3, -0.02],
+                                bounds=([0, 0.01, -0.1], [1, 3, 0.1]),
+                                maxfev=10000)
+            A_grand, mH_grand, Cinf_grand = popt
+            mHv_grand = mH_grand / vev_grand
+            print(f"\n  Grand-average fit: C(tau) = {A_grand:.4f} * exp(-{mH_grand:.4f}*tau) + ({Cinf_grand:.6f})")
+            print(f"  m_H (lattice) = {mH_grand:.4f}")
+            print(f"  v (lattice)   = {vev_grand:.4f}")
+            print(f"  m_H/v (GRAND AVG) = {mHv_grand:.4f}")
             print(f"  SM target: {SM_MH_OVER_V:.4f}")
-            print(f"  Ratio to SM: {m / SM_MH_OVER_V:.2f}x")
+            print(f"  Ratio to SM: {mHv_grand / SM_MH_OVER_V:.2f}x")
+        except Exception as e:
+            print(f"  Grand fit failed: {e}")
+            mHv_grand = np.nan
+
+        # Also report per-seed average for comparison
+        valid = [x for x in all_mHv_perseed if np.isfinite(x)]
+        if valid:
+            m_ps = np.mean(valid)
+            s_ps = np.std(valid) / np.sqrt(len(valid)) if len(valid) > 1 else 0
+            print(f"\n  Per-seed average (less reliable): m_H/v = {m_ps:.4f} +/- {s_ps:.4f}")
             print()
             print(f"  Interpretation:")
             print(f"    The scalar correlator mass extracted from SU(2) holonomy")
