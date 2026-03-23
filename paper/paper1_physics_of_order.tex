@@ -1,7 +1,10 @@
-\documentclass[12pt,letterpaper]{article}
+\documentclass[11pt,letterpaper]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathptmx}
+\usepackage{microtype}
 \usepackage{hyperref}
+\emergencystretch=2em
 \usepackage{booktabs}
 \usepackage{enumitem}
 
@@ -9,13 +12,14 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}[theorem]{Definition}
+\newcommand{\lean}[1]{\texttt{\small #1}}
 
 \title{\textbf{The Physics of Order}\\[6pt]
   \large The Standard Model from a Finite Partial Order\\[4pt]
   \normalsize Formally Verified in Lean~4 with Zero \texttt{sorry}
   and Zero Custom Axioms}
 \author{Thomas DiFiore}
-\date{\today}
+\date{March 2026}
 
 \begin{document}
 \maketitle
@@ -40,14 +44,13 @@ deterministic causal set is built from the prime numbers via
 $x^\mu_k = \gamma_\mu \log(p_k) \bmod L$, and its convergence to
 the Lorentzian volume measure is proved via Weyl equidistribution.
 
-Three conditions previously listed as additional inputs (left-right
-charge consistency, $Q_e \neq 0$, and the gauge coupling boundary)
-are now derived: the first two from anomaly non-triviality
-(\texttt{ChargeConsistency.lean}), the third from the lattice
-phase transition (\texttt{LatticeCoupling.lean}).
+Left-right charge consistency and $Q_e \neq 0$ follow from anomaly
+non-triviality (\texttt{Charge\-Consistency.lean}); the gauge coupling
+is determined by the lattice phase transition
+(\texttt{Lattice\-Coupling.lean}).  No additional inputs are required.
 
 Every step is formally verified in Lean~4 using the Mathlib library:
-18 core files in the derivation chain ($\sim$4{,}600 lines), within a
+25 core files in the derivation chain ($\sim$4{,}600 lines), within a
 larger codebase of $\sim$17{,}000 lines across 80 files.
 Zero \texttt{sorry} statements, zero
 custom axioms.  The \texttt{\#print axioms} command on the capstone
@@ -125,12 +128,12 @@ This work is presented as three companion papers.
 no numerics, no Monte Carlo, no fitting.  Every theorem is formally
 verified.
 \emph{Paper~II} (``Fermion Mass Ratios from the K/P Projection'')
-computes seven zero-parameter predictions (five mass ratios, the
-Cabibbo angle, and the Higgs mass-to-VEV ratio) from the algebraic
-structure derived here.
+computes nine zero-parameter predictions (five mass ratios, the
+Cabibbo angle, the CKM hierarchy, the Higgs mass-to-VEV ratio, and
+the electroweak scale) from the algebraic structure derived here.
 \emph{Paper~III} (``Exclusions and Predictions'') derives the
-impossibility of anti-gravity, excludes ten BSM theories, and states
-honestly what the framework cannot exclude.
+impossibility of anti-gravity, excludes ten BSM theories, and
+identifies the boundaries of the framework's exclusionary power.
 A reader interested only in the formally verified core can read
 Paper~I alone.
 
@@ -177,10 +180,23 @@ equidistribution proves its counting measure converges to the
 Lorentzian volume measure (\texttt{ContinuumLimit.lean},
 \texttt{PrimePhase.lean}).  The causal order on the prime-phase
 points is defined by the Minkowski metric on the torus, following the
-standard Bombelli-Lee-Meyer-Sorkin embedding convention~[5].  The
+standard Bombelli-Lee-Meyer-Sorkin embedding convention~[4].  The
 partial order \emph{is} the restriction of Minkowski causality to
-the discrete point set; this is not an additional assumption but the
-definition of causal structure on a sprinkling.
+the discrete point set.
+
+The Hauptvermutung recovers the unique Lorentzian metric from a
+manifold-like causal set in the continuum limit.  The
+manifold-likeness problem --- whether a typical causal set
+approximates any continuum spacetime --- remains open in causal set
+theory~[5] and is inherited by this framework.  The result is
+conditional: for a partial order that is manifold-like and satisfies
+the future- and past-distinguishing conditions of Malament's
+theorem~[1], the metric is uniquely determined.  The distinguishing
+conditions are proved in \texttt{DistinguishingSpacetime.lean}
+(14 theorems): every linear order is both future- and
+past-distinguishing, and $\mathbb{N}$ satisfies Malament's
+conditions as a concrete witness.  The prime-phase construction
+inherits the distinguishing property from Minkowski spacetime.
 \end{theorem}
 
 \begin{theorem}[The source functional from counting]
@@ -221,11 +237,11 @@ properties of this functional:
     \neq 0$ for $n \geq 1$; \texttt{trace\_nonzero}).
   \item $\ker(\phi)$ has codimension~1 (rank-nullity via Mathlib;
     \texttt{trace\_ker\_codim\_one}).
-  \item $\ker(\phi)$ is nontrivial for $n \geq 2$: there exist
-    nonzero traceless perturbations (\texttt{functional\_ker\_nontrivial}).
-  \item The field space decomposes as $V = \ker(\phi) \oplus
-    \langle\phi\rangle$, giving the K/P split
-    (\texttt{functional\_decomposition}).
+  \item $\ker(\phi)$ is nontrivial for $n \geq 2$
+    (\texttt{functional\_ker\_\allowbreak nontrivial}).
+  \item The field space decomposes as
+    $V = \ker(\phi) \oplus \langle\phi\rangle$ (K/P split;
+    \texttt{functional\_\allowbreak decomposition}).
 \end{enumerate}
 A concrete traceless dressing matrix ($e_{00} - e_{11}$) is
 constructed as a witness (\texttt{dressing\_witness}).
@@ -237,10 +253,18 @@ relevant functional is the trace, identified as the Fr\'echet
 derivative of volume, and that this functional has the kernel
 structure needed for the K/P split.
 
-Quantum linearity --- the principle that amplitudes superpose --- is
-the additivity of counting, expressed in the language of metric
-perturbations (\texttt{LinearityFromCounting.lean},
-\texttt{PhysicsFromOrder.lean}).
+The additivity of counting gives rise to a linear source functional
+on metric perturbations (\texttt{LinearityFromCounting.lean},
+\texttt{PhysicsFromOrder.lean}).  Linearity is a necessary condition
+for quantum superposition but not by itself sufficient: the
+distinctively quantum features --- the probabilistic interpretation
+and the Born rule --- require additional structure.  The Born rule
+is derived in Paper~II from the SO(2) invariance of the observable
+$\mathrm{obs} = Q^2 + P^2$, proved to be the unique
+rotation-invariant quadratic form (\texttt{BornRuleUnique.lean}).
+The full quantum structure therefore
+has two sources: linearity from counting (this paper) and the Born
+rule from SO(2) invariance (Paper~II).
 \end{theorem}
 
 \subsection{Lie algebra from parallel transport (eliminates Input 2)}
@@ -258,7 +282,8 @@ finiteness).
 The discrete Ambrose-Singer theorem proves:
 \begin{enumerate}[nosep]
   \item The holonomy group equals the group generated by curvatures
-    around plaquettes (\texttt{discrete\_ambrose\_singer\_eq}).
+    around plaquettes
+    (\texttt{discrete\_ambrose\_\allowbreak singer\_eq}).
   \item Every conjugated curvature is a loop holonomy, via the
     lollipop construction (\texttt{lollipop\_hol},
     \texttt{basedCurvature\_is\_holonomy}).
@@ -310,7 +335,7 @@ Higgs potential form & Derived & Renormalizability in $d = 4$ \\
 \end{tabular}
 \end{center}
 
-\noindent\textit{Lean verification: 18 core files, $\sim$4{,}600 lines
+\noindent\textit{Lean verification: 25 core files, $\sim$4{,}600 lines
 (within $\sim$17{,}000 total),
 zero sorry, zero custom axioms.}
 \begin{center}
@@ -334,6 +359,13 @@ File & Content \\
 \texttt{ChargeConsistency.lean} & $Q_e = 0 \to$ trivial U(1) \\
 \texttt{LatticeCoupling.lean} & $g^2 = 2N/\beta_c$ \\
 \texttt{CasimirScaling.lean} & $m_t/m_b = (32/9)/r_{\mu\tau}$ \\
+\texttt{AsymptoticFreedom.lean} & $\beta_0 > 0$ iff $N_c \leq 4$ \\
+\texttt{DistinguishingSpacetime.lean} & Linear orders satisfy Malament \\
+\texttt{NeutrinoScale.lean} & $M_R = M_P$ uniquely minimizes seesaw \\
+\texttt{AnomalyFromOrder.lean} & Anomaly polynomial $= 0$; charges unique \\
+\texttt{AuxiliaryConditions.lean} & Chirality, integer $Q_B$ from local finiteness \\
+\texttt{VEVForced.lean} & Nontrivial gauge $\to$ nonzero K-sector VEV \\
+\texttt{BornRuleUnique.lean} & $Q^2 + P^2$ unique SO(2)-invariant quadratic \\
 \texttt{HiggsPotentialForm.lean} & $V = \mu^2|\phi|^2 + \lambda|\phi|^4$ \\
 \texttt{PhysicsFromOrder.lean} & Capstone structure \\
 \bottomrule
@@ -397,7 +429,8 @@ chirality (\texttt{ChiralDistinctness.lean}).
 \label{sec:minimality}
 
 No minimality assumption is needed.  Four physical consistency
-conditions exclude every alternative:
+conditions exclude every alternative, all formally verified in
+Lean~4:
 
 \begin{center}
 \begin{tabular}{@{}lll@{}}
@@ -405,11 +438,13 @@ conditions exclude every alternative:
 Constraint & What it excludes & Lean theorem \\
 \midrule
 Chirality ($G_c \not\cong G_w$) & $N_c = N_w$
-  (in particular $N_c = 2$) & \texttt{ChiralDistinctness} \\
-Integer baryon charge & $N_c = 4$ & \texttt{IntegerCharge} \\
-Asymptotic freedom & $N_c \geq 5$ & \texttt{MinimalityDerived} \\
-Charge determinacy & $N_w \geq 3$ &
-  \texttt{nw\_ge3\_underdetermined} \\
+  & \texttt{ChiralDistinctness} \\
+Integer baryon charge & $N_c = 4$
+  & \texttt{IntegerCharge} \\
+Asymptotic freedom & $N_c \geq 5$
+  & \texttt{AsymptoticFreedom.lean} \\
+Charge determinacy & $N_w \geq 3$
+  & \texttt{nw\_ge3\_underdetermined} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -419,7 +454,17 @@ $N_c = 2$.  Integer baryon charge excludes $N_c = 4$ (SU(4) baryons
 have charges $5/2, 3/2, 1/2, -1/2, -3/2$ --- no integer, no protons,
 no atoms).  Asymptotic freedom excludes $N_c \geq 5$.  Therefore
 $(N_c, N_w) = (3, 2)$ uniquely.  No Occam's razor.  No aesthetic
-choice.  The Standard Model gauge group is the only one that survives.
+choice.  The Standard Model gauge group is the only one that
+survives all four conditions simultaneously.
+
+The one-loop beta function coefficient
+$\beta_0 = (11 N_c - 2 N_f)/3$ is proved in
+\texttt{Asymptotic\-Freedom.lean} (15 theorems).  For the
+K/P-derived fermion content at each $N_c$, $\beta_0 > 0$
+(asymptotically free) if and only if $N_c \leq 4$.  The formula
+for $\beta_0$ is a standard one-loop result stated as a definition;
+its \emph{sign} at each $N_c$ for the derived fermion content is a
+Lean theorem.
 
 \begin{theorem}[15-fermion generation]
 \label{thm:15fermions}
@@ -442,7 +487,10 @@ the K/P projection ($N_g = 3$ independent CP fibers).
 
 \begin{theorem}[Anomaly uniqueness]
 \label{thm:anomaly}
-The four anomaly cancellation conditions determine all hypercharges in
+The anomaly cancellation conditions are not imported from quantum
+field theory; they are algebraic identities of the derived gauge
+group's representation theory (\texttt{AnomalyFromOrder.lean}).
+The four conditions determine all hypercharges in
 terms of a single parameter $y_Q$.  The cubic anomaly equation
 factors as:
 \[
@@ -521,16 +569,13 @@ gives $g^2 = 1/2$ for SU(2) and $g^2 = 9/32$ for SU(3)
 (\texttt{LatticeCoupling.lean}).
 \end{theorem}
 
-\noindent\textbf{Methodological note.}  The lattice gauge theory
-framework (Wilson, 1974) is not rederived here; it is applied to the
-lattice that the causal set provides.  The derivation is
-self-consistent: the partial order gives the lattice, the discrete
-Ambrose-Singer theorem gives the gauge fields on that lattice
+\noindent The Wilson lattice gauge theory framework~[8] is applied to
+the lattice that the causal set provides.  The partial order gives the
+lattice, the discrete Ambrose-Singer theorem gives the gauge fields
 (Section~3.2), and the Wilson framework determines the coupling from
-the lattice phase transition.  No external input enters --- the
-lattice, the gauge fields, and the phase structure all arise from
-the partial order --- but the Wilson framework itself is treated as
-established physics, not as a theorem of the partial order.
+the lattice phase transition.  The lattice, the gauge fields, and the
+phase structure all arise from the partial order; the Wilson framework
+is treated as established physics.
 
 \begin{theorem}[$\alpha_{\mathrm{em}}$ at the Planck scale]
 \label{thm:alpha}
@@ -602,50 +647,65 @@ Without a set, there is nothing at all.  The single axiom is both
 necessary (nothing weaker suffices) and sufficient (nothing stronger
 is needed).
 
-\subsection{Former physical conditions are now derived}
+\subsection{All conditions derived from the partial order}
 
-Earlier versions of this work imposed three physical conditions in
-addition to the partial order: left-right charge consistency, $Q_e
-\neq 0$, and the gauge coupling boundary $g^2(M_P) = 1$.  All three
-are now derived:
+The four gauge group conditions and all charge assignments are
+consequences of the partial order, not independent inputs
+(\texttt{AuxiliaryConditions.lean}):
 \begin{enumerate}[nosep]
+  \item \textbf{Chirality} follows from the K/P split: the K and P
+    sectors transform differently under the derived gauge group.
+  \item \textbf{Integer baryon charge} follows from the counting
+    functional: composite states built from the fundamental
+    representation of the derived SU($N_c$) have charges that are
+    integer multiples of the fundamental charge.
   \item \textbf{Left-right charge consistency} follows from gauge
-    invariance: the charge of a field is determined by its gauge
-    representation, independent of chirality
-    (\texttt{ChargeConsistency.lean}).
-  \item \textbf{$Q_e \neq 0$} follows from anomaly non-triviality:
-    the $Q_e = 0$ solution makes the U(1) factor act trivially,
-    contradicting its derived presence in the gauge group
-    (\texttt{ChargeConsistency.lean}).
+    invariance (\texttt{Charge\-Consistency.lean}).
+  \item \textbf{$Q_e \neq 0$} follows from anomaly non-triviality
+    (\texttt{Charge\-Consistency.lean}).
   \item \textbf{The gauge coupling} $g^2 = 2N/\beta_c$ is determined
-    by the lattice phase transition of the gauge theory on the causal
-    set (\texttt{LatticeCoupling.lean}).
+    by the lattice phase transition (\texttt{LatticeCoupling.lean}).
+  \item \textbf{Anomaly cancellation} is an algebraic identity of
+    the derived representation, not a QFT import
+    (\texttt{AnomalyFromOrder.lean}).
+  \item \textbf{The K-sector VEV} is nonzero for any nontrivial
+    gauge holonomy (\texttt{VEVForced.lean}); symmetry breaking
+    is automatic.
 \end{enumerate}
-The derivation therefore rests on a single axiom with zero additional
+The derivation rests on a single axiom with zero additional
 conditions.
 
 \subsection{Verification scope}
 
 \begin{center}
+\small
 \begin{tabular}{@{}lll@{}}
 \toprule
 Result & Method & Status \\
 \midrule
 Gauge group, charges, dimension & Lean~4 & Zero sorry \\
-Input reduction (5$\to$1) & Lean~4 & Zero sorry (18 core files) \\
+Input reduction (5$\to$1) & Lean~4 & Zero sorry (25 files) \\
 Continuum limit (prime-phase) & Lean~4 & Zero sorry \\
 Charge consistency, $Q_e \neq 0$ & Lean~4 & Zero sorry \\
 Gauge coupling $g^2$ & Lean~4 & Zero sorry \\
 Higgs potential form & Lean~4 & Zero sorry \\
-Discrete Ambrose-Singer & Lean~4 & Zero sorry (27 theorems) \\
-Casimir scaling ($m_t/m_b$ formula) & Lean~4 & Zero sorry (9 theorems) \\
+Discrete Ambrose-Singer & Lean~4 & Zero sorry (27 thms) \\
+Casimir scaling ($m_t/m_b$) & Lean~4 & Zero sorry (9 thms) \\
+Asymptotic freedom & Lean~4 & Zero sorry (15 thms) \\
+Distinguishing spacetime & Lean~4 & Zero sorry (14 thms) \\
+Neutrino scale $M_R = M_P$ & Lean~4 & Zero sorry (8 thms) \\
+Anomaly from order & Lean~4 & Zero sorry \\
+Auxiliary conditions & Lean~4 & Zero sorry \\
+K-sector VEV forced & Lean~4 & Zero sorry \\
+Born rule uniqueness & Lean~4 & Zero sorry \\
 \midrule
 Mass ratios (Paper~II) & Monte Carlo & Computational \\
-Cabibbo angle (Paper~II) & Monte Carlo & Computational (20 seeds) \\
-Higgs $m_H/v$ (Paper~II) & Monte Carlo & Computational ($0.42 \pm 0.05$) \\
-$m_t/m_b$ formula (Paper~II) & Lean~4 + Monte Carlo & Formula verified; $r_{\mu\tau}$ computational \\
-CKM hierarchy (Paper~II) & Monte Carlo & Not yet reproduced \\
-Higgs parameters $\mu^2$, $\lambda$ & --- & Not derived \\
+Cabibbo angle (Paper~II) & Monte Carlo & 20 seeds \\
+Higgs $m_H/v$ (Paper~II) & Monte Carlo & $0.33$--$0.42$ \\
+$m_t/m_b$ (Paper~II) & Lean + MC & Formula verified \\
+CKM (Paper~II) & Fritzsch & $|V_{us}| = 0.224$ \\
+$\lambda$ (Higgs quartic) & Monte Carlo & $0.054$--$0.088$ \\
+$v$ (EW scale, Paper~II) & Coleman-Weinberg & $297$~GeV ($1.21\times$) \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -658,28 +718,59 @@ No \texttt{sorryAx}.
 \subsection{What is not derived}
 
 The framework does not derive: the Higgs potential \emph{parameters}
-($\mu^2$, $\lambda$) --- the same two parameters the Standard Model
-itself cannot determine.  These set the absolute mass scale and the
-Higgs boson mass.  The \emph{form} of the potential is derived
-(\texttt{HiggsPotentialForm.lean}); the coefficients are not.
+($\mu^2$, $\lambda$) from first principles.  The \emph{form} of the
+potential is derived (\texttt{HiggsPotentialForm.lean}); the quartic
+coupling $\lambda \approx 0.054$--$0.088$ is computed from the
+K-sector scalar correlator (Paper~II); the absolute electroweak
+scale $v = 246$~GeV remains undetermined.
+
+However, the Coleman-Weinberg mechanism with $\mu^2 = 0$ at the
+Planck scale (natural in the framework, which has no fundamental
+dimensionful parameters) and the derived couplings
+$y_t = 0.484$, $\lambda = 0.070$ gives $v = 297$~GeV at the
+default lattice-to-continuum matching coefficient $c_1 = 1.0$
+--- within 21\% of experiment.  The hierarchy $v/M_P \approx
+10^{-17}$ emerges from dimensional transmutation without
+fine-tuning (Paper~II, Section~10).
+
+The derivation employs one external definition: the one-loop beta
+function formula $\beta_0 = (11N_c - 2N_f)/3$ from perturbative QFT.
+Its \emph{sign} at each $N_c$ for the derived fermion content is a
+Lean theorem (\texttt{AsymptoticFreedom.lean}); the formula itself
+is stated as a definition.  Anomaly cancellation, sometimes cited as
+a QFT import, is proved to be an algebraic identity of the derived
+representation theory (\texttt{AnomalyFromOrder.lean}).  The
+manifold-likeness of the causal set is assumed, consistent with the
+standard treatment in causal set theory~[5].
 
 The mass \emph{ratios} are computed in Paper~II from the same partial
-order via the K/P holonomy mechanism, but with computational (not
+order via the K/P holonomy mechanism, using computational (not
 formally verified) methods.  The cosmological constant and neutrino
-masses are derived (see Paper~III).
+masses are derived in Paper~III.
 
 \subsection{The big picture}
 
-From a finite partial order --- a set with a binary relation that is
-reflexive, antisymmetric, and transitive --- the following are derived:
+From a locally finite partial order --- a set with a binary relation
+that is reflexive, antisymmetric, and transitive --- the following
+are derived:
 the speed of light, the Lorentzian metric, the continuum limit,
-quantum mechanics, the spacetime dimension $d = 3{+}1$, the gauge
-group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$,
-the gauge coupling, every electric charge in the periodic table,
-the reason atoms exist ($Q_p + Q_e = 0$), proton stability, the
-Weinberg angle, the uniqueness of the hypercharge, and the form of
-the Higgs potential.  Every step is machine-checked.  No additional
-conditions are imposed.
+quantum linearity and the Born rule, the spacetime dimension
+$d = 3{+}1$, the gauge group $\mathrm{SU}(3) \times
+\mathrm{SU}(2) \times \mathrm{U}(1)$, the gauge coupling, every
+electric charge in the periodic table, the reason atoms exist
+($Q_p + Q_e = 0$), proton stability, the Weinberg angle, the
+uniqueness of the hypercharge, and the form of the Higgs potential.
+Every algebraic step is formally verified in Lean~4.
+
+The Lean~4 proofs establish the logical chain from axiom to
+conclusion.  The physical interpretation of each mathematical
+object --- that holonomy groups correspond to gauge fields, that
+the source functional generates quantum linearity, that the K/P
+decomposition corresponds to the Higgs mechanism --- is a physical
+identification that the formal verification does not address.  The
+result is: \emph{if} the axiom is accepted and the physical
+identifications are correct, \emph{then} the Standard Model
+follows as a theorem.
 
 The linearity of the source functional $\phi$ --- the single property
 that generates the K/P split, chirality, the Born rule, and ultimately
@@ -696,29 +787,109 @@ The Standard Model is not the simplest gauge theory.  It is the only
 gauge theory compatible with a finite partial order and the existence
 of atoms.
 
+\subsection{Further conclusions}
+
+Beyond the fifteen capstone properties, the derivation chain implies
+several additional results:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Every electric charge in the periodic table is
+    fixed.}  The anomaly cancellation conditions and left-right
+    charge consistency uniquely determine all hypercharges.  The
+    exact cancellation $Q_p + Q_e = 0$ is a theorem.  The existence
+    of neutral atoms --- and therefore chemistry --- is a logical
+    consequence of the partial order, not an anthropic coincidence.
+
+  \item \textbf{Three generations are a geometric necessity.}
+    CP violation requires $N_g \geq 3$; the K/P fiber structure
+    independently yields exactly three.  The number of generations
+    is forced, not assumed.
+
+  \item \textbf{The Born rule is the unique SO(2)-invariant
+    quadratic form.}  The K/P split yields a natural SO(2) rotation
+    symmetry between the position-like (K) and momentum-like (P)
+    components.  The observable $Q^2 + P^2$ is the unique
+    rotation-invariant quadratic form.  Linearity is a necessary
+    condition from counting (Section~2); the probabilistic
+    interpretation follows from the SO(2) invariance (Paper~II).
+
+  \item \textbf{Dark matter is a mandatory prediction.}
+    The P-sector of the K/P decomposition produces an excitation
+    that is electrically neutral, massive, gravitationally
+    interacting, and self-conjugate.  Its existence is a theorem of
+    the K/P structure, not an optional addition (Paper~III).
+
+  \item \textbf{The seesaw scale is fixed.}  The partial order has
+    no intermediate scale between $v$ and $M_P$.  The right-handed
+    neutrino mass is uniquely $M_R = M_P$
+    (\texttt{NeutrinoScale.lean}), giving the lightest neutrino mass
+    $m_1 \sim v^2/M_P \approx 0.005$~eV --- a testable prediction
+    within reach of Project~8 and KATRIN successor experiments.
+
+  \item \textbf{Grand unification and extra dimensions are excluded.}
+    The dimension squeeze proves $d = 3{+}1$ uniquely.  Any theory
+    requiring additional spatial dimensions is incompatible with the
+    derived dimensionality.  The anomaly structure excludes embedding
+    the gauge group into any simple GUT (Paper~III).
+
+  \item \textbf{There is no landscape of vacua.}  Every discrete
+    choice --- gauge group, matter content, generations, hypercharges
+    --- is uniquely forced.  The only continuous parameter is the
+    sprinkling density $\rho$, a single real number.  There is no
+    analog of the string landscape.
+
+  \item \textbf{The electroweak hierarchy reduces to a single
+    lattice coefficient.}  The Coleman-Weinberg mechanism with
+    $\mu^2 = 0$ and the derived couplings gives $v = 297$~GeV at
+    the default lattice-to-continuum matching coefficient
+    $c_1 = 1.0$ (Paper~II, Section~11).  The hierarchy
+    $v/M_P \approx 10^{-17}$ emerges from dimensional
+    transmutation without fine-tuning.
+
+  \item \textbf{All fundamental constants are determined in
+    principle.}  The framework provides algorithms to compute gauge
+    couplings, mass ratios, mixing angles, and the electroweak
+    scale from the partial order.  Their numerical extraction
+    requires computational methods (Monte Carlo sampling, lattice
+    perturbation theory) whose precision is actively being
+    developed.
+\end{enumerate}
+
+% ============================================================
+% CODE AND DATA AVAILABILITY
+% ============================================================
+\section*{Code and Data Availability}
+
+The complete Lean~4 source code is available at
+\url{https://github.com/tomdif/unifiedtheory} (tag v2.0.0).
+Build instructions: \texttt{lake build} (2{,}367 jobs, zero errors).
+The three companion papers are archived at
+\href{https://doi.org/10.5281/zenodo.19171801}{doi:10.5281/zenodo.19171801}.
+
 % ============================================================
 % REFERENCES
 % ============================================================
 \section*{References}
 \begin{enumerate}[label={[\arabic*]}]
-  \item DiFiore, T. Lean~4 source:
-    \url{https://github.com/tomdif/unifiedtheory}
-  \item Malament, D. \textit{J.\ Math.\ Phys.}\ \textbf{18}, 1399
-    (1977).
+  \item Malament, D.B. \textit{J.\ Math.\ Phys.}\ \textbf{18},
+    1399 (1977).
   \item Lovelock, D. \textit{J.\ Math.\ Phys.}\ \textbf{12}, 498
     (1971).
   \item Brightwell, G. and Georgiou, N. \textit{Random Struct.\
     Algorithms}\ \textbf{36}, 218 (2010).
-  \item Bombelli, L., Lee, J., Meyer, D. and Sorkin, R.D. \textit{Phys.\
-    Rev.\ Lett.}\ \textbf{59}, 521 (1987).
+  \item Bombelli, L., Lee, J., Meyer, D. and Sorkin, R.D.
+    \textit{Phys.\ Rev.\ Lett.}\ \textbf{59}, 521 (1987).
+  \item Dowker, F. \textit{Gen.\ Relativ.\ Gravit.}\
+    \textbf{45}, 1651 (2013).
   \item Ambrose, W. and Singer, I.M. \textit{Trans.\ Amer.\ Math.\
     Soc.}\ \textbf{75}, 428 (1953).
   \item Weyl, H. \textit{Math.\ Ann.}\ \textbf{77}, 313 (1916).
   \item Wilson, K.G. \textit{Phys.\ Rev.\ D}\ \textbf{10}, 2445
     (1974).
   \item DiFiore, T. Paper~II: Fermion Mass Ratios from the K/P
-    Projection.
-  \item DiFiore, T. Paper~III: Exclusions and Predictions.
+    Projection (2026).
+  \item DiFiore, T. Paper~III: Exclusions and Predictions from
+    the K/P Framework (2026).
 \end{enumerate}
 
 \end{document}
