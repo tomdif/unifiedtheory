@@ -34,7 +34,7 @@ Nine predictions across 17 orders of magnitude (from v/M_P ≈ 10⁻¹⁷ to m_u
 
 ## Lean Formalization
 
-**25 core files in LayerA (80+ total). 950+ theorems. Zero sorry. Zero axioms. Zero sorryAx.**
+**172 files across LayerA/B/C (~35,000 lines). 1,600+ theorems. Zero sorry. Zero custom axioms.**
 
 `#print axioms` on every capstone theorem returns only: `propext`, `Classical.choice`, `Quot.sound`.
 
@@ -60,6 +60,17 @@ Nine predictions across 17 orders of magnitude (from v/M_P ≈ 10⁻¹⁷ to m_u
 | `ContinuumLimit` | `sqrt2_equidistributed` | Weyl equidistribution (fully proved) |
 | `HiggsPotentialForm` | `higgs_two_parameter_family` | V = μ²φ² + λφ⁴ unique in d=4 |
 | `LatticeCoupling` | `coupling_uniquely_determined` | g² = 2N/β_c (no freedom) |
+| `DecoherenceIsPartialOrder` | `self_consistency` | Second law → partial order axioms |
+| `GaugeContentForcesD4` | `bidirectional_d4` | SM content (12+3=15) ↔ n=4 |
+| `WeinbergAngle` | `weinberg_angle_rigid` | sin²θ_W = 3/8, rigid under perturbation |
+| `FermionCountFromAnomaly` | `fermion_count_derived` | (3,2) unique minimum among Nc≥2, Nw≥2 |
+| `DimensionTripleCoincidence` | `conditions_independent_over_Z` | Three d=4 proofs independent over ℤ |
+| `BornRuleQuadratic` | `born_rule_must_be_quadratic` | Orthogonal additivity forces degree 2 |
+| `DecoherenceFromDensity` | `decoherenceRate_injective` | Γ=(ρ·π/24)^{1/4}, injective |
+| `LatticeReflectionPositivity` | `reflection_positivity_1d_factored` | Wilson action RP = perfect square ≥ 0 |
+| `ModuliCannotBeRemoved` | `stabilization_exceeds_gauge` | d=4 uniquely needs zero stabilization |
+| `ChiralityForced` | `exchange_changes_fermion_count` | Nc↔Nw exchange changes count (15 vs 16) |
+| `LinearityFromUnitarization` | `linearity_from_unitarization` | Finite holonomy → bounded → linear |
 
 ### Input Reduction Chain (5 → 1)
 
@@ -91,6 +102,17 @@ Nine predictions across 17 orders of magnitude (from v/M_P ≈ 10⁻¹⁷ to m_u
 | Neutrino scale unique | Lean 4 | Zero sorry |
 | Casimir scaling m_t/m_b | Lean 4 | Zero sorry |
 | Lattice coupling determined | Lean 4 | Zero sorry |
+| Decoherence → partial order | Lean 4 | Zero sorry |
+| SM forces d=4 (converse) | Lean 4 | Zero sorry |
+| sin²θ_W = 3/8 (rigid) | Lean 4 | Zero sorry |
+| Fermion count derived | Lean 4 | Zero sorry |
+| d=4 triple coincidence | Lean 4 | Zero sorry |
+| Born rule must be degree 2 | Lean 4 | Zero sorry |
+| Decoherence rate from ρ | Lean 4 | Zero sorry |
+| Lattice reflection positivity | Lean 4 | Zero sorry |
+| Moduli stabilization adds params | Lean 4 | Zero sorry |
+| Chirality from fermion count | Lean 4 | Zero sorry |
+| Linearity from holonomy bound | Lean 4 | Zero sorry |
 | Mass ratios (9 predictions) | GPU Monte Carlo | ± stated uncertainties |
 | CKM (Fritzsch) | Analytical | From derived mass ratios |
 | EW scale (Coleman-Weinberg) | Analytical | μ²=0, c₁=1.0 |
@@ -108,6 +130,7 @@ GPU-accelerated (PyTorch + CUDA) Monte Carlo on causal sets:
 | `scripts/generation_phase.py` | m_e/m_τ from fiber generation phase |
 | `scripts/quark_mass_ratios.py` | m_t/m_b from Casimir + hypercharge |
 | `scripts/density_scan.py` | Convergence across densities |
+| `scripts/decoherence_separation.py` | Tests m = m_phys + c·ρ^{1/4} (negative result: R²=0.007) |
 
 ## Building
 
@@ -141,6 +164,6 @@ Apache 2.0
   author={DiFiore, Thomas},
   year={2026},
   doi={10.5281/zenodo.19171801},
-  note={Lean 4 formalization: 25 core files, 950+ theorems, zero sorry}
+  note={Lean 4 formalization: 172 files, 1600+ theorems, zero sorry, zero custom axioms}
 }
 ```
