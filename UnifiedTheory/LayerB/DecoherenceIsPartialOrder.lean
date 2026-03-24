@@ -1,37 +1,21 @@
 /-
-  LayerB/DecoherenceIsPartialOrder.lean — The partial order IS the decoherence relation
+  LayerB/DecoherenceIsPartialOrder.lean — Partial order from decoherence
 
-  THE CLAIM: The partial order axioms are not assumed — they are DERIVED
-  from the properties of Lindblad decoherence channels.
+  The locally finite partial order axioms follow from the irreversibility
+  of Lindblad decoherence channels on a finite set of elements.
 
-  THE SETUP: N elements. Between some pairs (i,j) there exists a
-  decoherence channel with coupling Γ > 0 and time parameter t > 0,
-  giving correlator decay γ = e^{-Γt} ∈ (0,1). The ONLY input data
-  is the channel assignment. No ordering is assumed.
+  Mathematical content (proven):
+    (a) γ = e^{-Γt} ∈ (0,1) for Γ, t > 0
+    (b) x² < x for x ∈ (0,1): round-trip correlator strictly decays
+    (c) Composed channels satisfy γ_composite < min(γ₁, γ₂)
+    (d) Directional channels on a finite set form a strict partial order
 
-  THE DERIVATIONS:
-  1. IRREFLEXIVITY: An element cannot decohere to itself because
-     self-decoherence would require γ < 1 at t = 0, but γ(0) = 1.
-     Formalized: channels have t > 0, and t > 0 means the target
-     is DIFFERENT from the source.
+  Physical input (encoded as structure constraints):
+    - no_self_channel: self-decoherence does not occur (t > 0)
+    - no_reverse: decoherence is irreversible (second law)
 
-  2. ANTISYMMETRY: If A→B has a channel (γ_AB < 1), then B→A cannot
-     have a channel with γ_BA ≤ γ_AB. The round-trip A→B→A has
-     γ² < γ (strictly), so the return path would need to INCREASE
-     the correlator — impossible under Lindblad evolution.
-     Formalized: directional channels with the "no return" property
-     (if channel i j exists, channel j i does not).
-
-  3. TRANSITIVITY: If A→B and B→C have channels, then the composed
-     channel A→C exists with γ_AC = γ_AB · γ_BC < min(γ_AB, γ_BC).
-     Formalized: compose_channels produces a valid channel.
-
-  4. LOCAL FINITENESS: The channel assignment on N elements means
-     each element has at most N-1 successors, so intervals are finite.
-
-  CRITICAL DESIGN: The structure `DecoherenceSystem` has channels as
-  DATA but NOT ordering axioms as fields. Irreflexivity and antisymmetry
-  are THEOREMS derived from the channel properties, not assumptions.
+  The γ² < γ inequality provides the quantitative algebraic content
+  underlying the no_reverse constraint.
 
   Zero sorry. Zero custom axioms.
 -/
@@ -119,22 +103,15 @@ theorem compose_lt_second (c₁ c₂ : Channel) :
 
 /-- A decoherence system on N elements.
 
-    CRITICAL: This structure contains ONLY the channel data.
-    It does NOT assume any ordering axioms. The partial order
-    properties will be DERIVED from the channel structure.
+    Components:
+    - `channel`: assignment of decoherence channels between element pairs
+    - `no_self_channel`: no element has a channel to itself (t > 0 convention)
+    - `no_reverse`: if a channel exists from i to j, none exists from j to i
+      (irreversibility of decoherence, justified by γ² < γ)
 
-    The key physical constraint: channels are DIRECTIONAL.
-    If a channel exists from i to j with decay γ < 1, no channel
-    exists from j to i. This is the content of Lindblad irreversibility:
-    - A channel from i to j means information flows from i to j
-    - The correlator decays: γ_ij < 1
-    - A reverse channel would require UNDOING the decay
-    - But γ² < γ: the round-trip correlator is strictly less
-    - Therefore no physical process can establish a reverse channel
-
-    We encode this as: channel i j is Some → channel j i is None.
-    This is NOT an ordering axiom — it is a PHYSICAL CONSEQUENCE
-    of the irreversibility of Lindblad evolution (γ² < γ). -/
+    The constraints `no_self_channel` and `no_reverse` encode the physical
+    irreversibility of Lindblad evolution. The theorems below prove that
+    these constraints produce a strict partial order on the elements. -/
 structure DecoherenceSystem (N : ℕ) where
   /-- The channel assignment. None = no direct decoherence. -/
   channel : Fin N → Fin N → Option Channel
@@ -154,16 +131,18 @@ def precedes {N : ℕ} (sys : DecoherenceSystem N) (i j : Fin N) : Prop :=
 
 /-! ## 4. DERIVED partial order properties -/
 
-/-- **IRREFLEXIVITY (DERIVED)**: No element precedes itself.
-    Proof: no_self_channel gives channel i i = none, hence ¬ isSome. -/
+/-- **IRREFLEXIVITY**: No element precedes itself.
+    Follows from the no_self_channel constraint (the physical
+    convention that t > 0 means endpoints are distinct). -/
 theorem irrefl_derived {N : ℕ} (sys : DecoherenceSystem N) (i : Fin N) :
     ¬ precedes sys i i := by
   unfold precedes
   rw [sys.no_self_channel]
   simp
 
-/-- **ANTISYMMETRY (DERIVED)**: If i precedes j, then j does not precede i.
-    Proof: no_reverse gives channel j i = none when channel i j is Some. -/
+/-- **ANTISYMMETRY**: If i precedes j, then j does not precede i.
+    Follows from the no_reverse constraint (the second law: decoherence
+    is irreversible, γ² < γ makes return channels impossible). -/
 theorem antisymm_derived {N : ℕ} (sys : DecoherenceSystem N)
     (i j : Fin N) (h : precedes sys i j) :
     ¬ precedes sys j i := by
@@ -171,16 +150,10 @@ theorem antisymm_derived {N : ℕ} (sys : DecoherenceSystem N)
   rw [sys.no_reverse i j h]
   simp
 
-/-- **TRANSITIVITY (DERIVED)**: If i ≺ j and j ≺ k, and the system is
-    transitively closed (composed channels are recorded), then i ≺ k.
-
-    Note: We prove that the COMPOSITION of two channels is a valid channel
-    (compose_valid), and that it has strictly more decay than either part
-    (compose_lt_first/second). A transitively closed decoherence system
-    would record this composed channel, giving i ≺ k.
-
-    We formalize this as: IF the system records composed channels, THEN
-    the relation is transitive. -/
+/-- **TRANSITIVITY**: If the system is transitively closed, the relation
+    is transitive. The IsTransitivelyClosed hypothesis encodes that composed
+    channels are recorded in the system — this is an additional structural
+    requirement beyond the second law. -/
 def IsTransitivelyClosed {N : ℕ} (sys : DecoherenceSystem N) : Prop :=
   ∀ i j k : Fin N,
     (sys.channel i j).isSome → (sys.channel j k).isSome →
@@ -212,26 +185,7 @@ theorem interval_bounded {N : ℕ} (sys : DecoherenceSystem N)
 
 /-! ## 5. The physical justification for no_reverse -/
 
-/-- **WHY no_reverse holds physically.**
-
-    The constraint `no_reverse` (if channel i→j exists, channel j→i doesn't)
-    is NOT an axiom — it is a CONSEQUENCE of Lindblad irreversibility.
-
-    The argument:
-    1. A channel from i to j has correlator γ_ij = e^{-Γt} ∈ (0,1)
-    2. If a reverse channel j→i also existed, the round-trip would have
-       correlator γ_ij · γ_ji
-    3. By compose_lt_first: γ_ij · γ_ji < γ_ij
-    4. But the round-trip should recover the original correlator (= 1)
-    5. Since γ_ij · γ_ji < γ_ij < 1 ≠ 1, the round-trip CANNOT recover
-       the original state
-    6. Therefore the reverse channel is physically impossible
-
-    This is the second law of thermodynamics applied to the K-sector:
-    decoherence increases entropy, and entropy cannot decrease.
-
-    We prove: for ANY two channels, their composition has strictly
-    smaller correlator than either individually. -/
+/-! ## 5. Algebraic content of irreversibility -/
 theorem no_reverse_from_physics (c₁ c₂ : Channel) :
     (compose c₁ c₂).gamma < c₁.gamma ∧
     (compose c₁ c₂).gamma < c₂.gamma ∧
@@ -248,20 +202,10 @@ theorem round_trip_cannot_recover (c : Channel) :
 
 /-! ## 6. The self-consistency theorem -/
 
-/-- **SELF-CONSISTENCY THEOREM.**
-
-    A decoherence system with transitively closed channels defines
-    a strict partial order on its elements:
-    - Irreflexive (from no self-decoherence)
-    - Antisymmetric (from Lindblad irreversibility)
-    - Transitive (from channel composition)
-    - Locally finite (from finiteness of the element set)
-
-    These properties are DERIVED from channel physics, not assumed.
-    The `no_self_channel` constraint follows from t > 0 (channel
-    endpoints must be distinct). The `no_reverse` constraint follows
-    from γ² < γ (decoherence is irreversible). Both are physical
-    consequences of Lindblad evolution, not ordering axioms. -/
+/-- A transitively closed decoherence system is a locally finite
+    strict partial order. The ordering axioms follow from the
+    physical constraints on channels (no_self_channel, no_reverse)
+    together with transitive closure and finiteness of Fin N. -/
 theorem self_consistency {N : ℕ} (sys : DecoherenceSystem N)
     (h_closed : IsTransitivelyClosed sys) :
     -- Irreflexive
