@@ -5,7 +5,7 @@
 
     C1  (Gauge mode count)      : n² - 1 = 15            [NoExtraDimensions]
     C2  (Trace-reversal involution) : (2 - n)² = 4, n ≥ 2  [LinearizedEinstein]
-    C3  (Gauge tracelessness)   : n = 4                    [MetricGaugeCoupling]
+    C3  (Gauge tracelessness)   : 1 - n/4 = 0 over ℚ       [MetricGaugeCoupling]
 
   These come from completely different physics:
     C1 — counting traceless matrix degrees of freedom (gauge sector)
@@ -29,6 +29,7 @@
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.IntervalCases
+import Mathlib.Tactic.FieldSimp
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -50,7 +51,7 @@ def C2 (n : ℕ) : Prop := n ≥ 2 ∧ (2 - (n : ℤ)) ^ 2 = 4
 /-- **C3: Gauge stress-energy tracelessness.** The Yang-Mills trace formula
     tr(T) = (1 - n/4)|F|² vanishes for all field configurations iff n = 4.
     Equivalently, 1 - n/4 = 0 forces n = 4. -/
-def C3 (n : ℕ) : Prop := n = 4
+def C3 (n : ℕ) : Prop := (1 : ℚ) - (n : ℚ) / 4 = 0
 
 /-! ## Each characterization forces n = 4 -/
 
@@ -86,10 +87,15 @@ theorem C2_unique (n : ℕ) : C2 n ↔ n = 4 := by
       omega
   · intro h; subst h; constructor <;> norm_num
 
-/-- C3 trivially characterizes n = 4 (by definition, reflecting
-    the physics: 1 - n/4 = 0 iff n = 4). -/
+/-- C3 characterizes n = 4: solving the rational equation 1 - n/4 = 0 over ℕ. -/
 theorem C3_unique (n : ℕ) : C3 n ↔ n = 4 := by
-  unfold C3; exact Iff.rfl
+  unfold C3
+  constructor
+  · intro h
+    have h1 : (n : ℚ) / 4 = 1 := by linarith
+    have h2 : (n : ℚ) = 4 := by linarith
+    exact_mod_cast h2
+  · intro h; subst h; norm_num
 
 /-! ## The triple coincidence theorem -/
 
@@ -109,7 +115,7 @@ theorem four_satisfies_all : C1 4 ∧ C2 4 ∧ C3 4 := by
   refine ⟨?_, ?_, ?_⟩
   · show C1 4; unfold C1; norm_num
   · show C2 4; unfold C2; norm_num
-  · show C3 4; unfold C3; rfl
+  · show C3 4; unfold C3; norm_num
 
 /-! ## Strengthening: no other dimension satisfies even TWO of the three -/
 
@@ -150,35 +156,35 @@ theorem dim2_fails : ¬ C1 2 ∧ ¬ C2 2 ∧ ¬ C3 2 := by
   refine ⟨?_, ?_, ?_⟩
   · simp [C1]
   · simp [C2]
-  · simp [C3]
+  · simp [C3]; norm_num
 
 /-- d = 3: fails all three. -/
 theorem dim3_fails : ¬ C1 3 ∧ ¬ C2 3 ∧ ¬ C3 3 := by
   refine ⟨?_, ?_, ?_⟩
   · simp [C1]
   · intro ⟨_, h⟩; simp at h
-  · simp [C3]
+  · simp [C3]; norm_num
 
 /-- d = 5: fails all three. -/
 theorem dim5_fails : ¬ C1 5 ∧ ¬ C2 5 ∧ ¬ C3 5 := by
   refine ⟨?_, ?_, ?_⟩
   · simp [C1]
   · intro ⟨_, h⟩; simp at h
-  · simp [C3]
+  · simp [C3]; norm_num
 
 /-- d = 10 (string theory): fails all three. -/
 theorem dim10_fails : ¬ C1 10 ∧ ¬ C2 10 ∧ ¬ C3 10 := by
   refine ⟨?_, ?_, ?_⟩
   · simp [C1]
   · intro ⟨_, h⟩; simp at h
-  · simp [C3]
+  · simp [C3]; norm_num
 
 /-- d = 11 (M-theory): fails all three. -/
 theorem dim11_fails : ¬ C1 11 ∧ ¬ C2 11 ∧ ¬ C3 11 := by
   refine ⟨?_, ?_, ?_⟩
   · simp [C1]
   · intro ⟨_, h⟩; simp at h
-  · simp [C3]
+  · simp [C3]; norm_num
 
 /-! ## Master theorem -/
 

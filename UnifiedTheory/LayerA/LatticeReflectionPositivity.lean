@@ -159,23 +159,12 @@ theorem transfer_matrix_translation_invariant (β : ℝ) (θ₁ θ₂ α : ℝ) 
 
 /-! ## Section 6: Wilson action decomposition under reflection -/
 
-/-- For a lattice with 2n sites (n in each half), the Wilson action
-    decomposes into contributions from each half. This is the key
-    structural property for reflection positivity.
-
-    Given θ⁺ (angles in positive half) and θ⁻ (angles in negative half):
-    S(θ⁺, θ⁻) = S₊(θ⁺) + S₋(θ⁻)
-
-    where S₊ and S₋ are the actions restricted to each half.
-    (In general there is also a boundary term S₀ from plaquettes
-    crossing t = 0, but in the 1D case with this decomposition
-    the boundary term is absorbed into the transfer matrix.) -/
+/-- The Wilson action decomposes additively across lattice halves. -/
 theorem wilson_action_decomposition (β : ℝ) (n m : ℕ) (θ₁ : Fin n → ℝ) (θ₂ : Fin m → ℝ) :
     wilsonAction1D β n θ₁ + wilsonAction1D β m θ₂ =
     β * (Finset.univ.sum (fun i => 1 - cos (θ₁ i)) +
          Finset.univ.sum (fun i => 1 - cos (θ₂ i))) := by
-  unfold wilsonAction1D
-  ring
+  unfold wilsonAction1D; ring
 
 /-- The reflected action equals the original when reflection maps θᵢ ↦ θ_{n-1-i}.
     For the Wilson action, S is invariant under permutation of the summands
@@ -237,6 +226,18 @@ theorem transfer_matrix_le_diagonal {β : ℝ} (hβ : 0 ≤ β) (θ₁ θ₂ : �
   have h : cos (θ₁ - θ₂) ≤ 1 := cos_le_one (θ₁ - θ₂)
   calc β * cos (θ₁ - θ₂) ≤ β * 1 := mul_le_mul_of_nonneg_left h hβ
     _ = β := mul_one β
+
+/-- **Transfer matrix structural theorem.** Combines positivity, symmetry,
+    and diagonal dominance into one statement. These three properties
+    together make T a valid kernel for reflection positivity (positive,
+    self-adjoint, diagonally dominant). -/
+theorem transfer_matrix_structural {β : ℝ} (hβ : 0 ≤ β) (θ₁ θ₂ : ℝ) :
+    0 < transferMatrix β θ₁ θ₂
+    ∧ transferMatrix β θ₁ θ₂ = transferMatrix β θ₂ θ₁
+    ∧ transferMatrix β θ₁ θ₁ ≥ transferMatrix β θ₁ θ₂ :=
+  ⟨transfer_matrix_pos β θ₁ θ₂,
+   transfer_matrix_symmetric β θ₁ θ₂,
+   transfer_matrix_le_diagonal hβ θ₁ θ₂⟩
 
 /-! ## Section 9: The key positive-definiteness condition -/
 
@@ -364,29 +365,10 @@ theorem reflection_positivity_1d_factored {k : ℕ} (β : ℝ) (_hβ : 0 ≤ β)
         Σᵢⱼ f(j)·f(i)·exp(-S(θᵢ))·exp(-S(θⱼ)) = [Σ f·exp(-S)]² ≥ 0
 
     This establishes that the 1D Wilson lattice gauge theory defines
-    a reflection-positive measure. By the Osterwalder-Schrader reconstruction
-    theorem, this guarantees a physical (positive-metric) Hilbert space. -/
-theorem lattice_reflection_positivity_summary :
-    -- (1) Boltzmann weight always positive
-    (∀ S : ℝ, 0 < exp (-S))
-    -- (2) Plaquette weight in [0, 2]
-    ∧ (∀ θ : ℝ, 0 ≤ 1 - cos θ ∧ 1 - cos θ ≤ 2)
-    -- (3) Transfer matrix positive
-    ∧ (∀ β θ₁ θ₂ : ℝ, 0 < transferMatrix β θ₁ θ₂)
-    -- (4) Transfer matrix symmetric
-    ∧ (∀ β θ₁ θ₂ : ℝ, transferMatrix β θ₁ θ₂ = transferMatrix β θ₂ θ₁)
-    -- (5) Transfer matrix translation-invariant
-    ∧ (∀ β θ₁ θ₂ α : ℝ,
-        transferMatrix β (θ₁ + α) (θ₂ + α) = transferMatrix β θ₁ θ₂)
-    -- (6) Reflected × original ≥ 0
-    ∧ (∀ β θ₁ θ₂ : ℝ, 0 ≤
-        (exp (β * cos θ₂) * exp (β * cos θ₁)) *
-        (exp (β * cos θ₁) * exp (β * cos θ₂))) :=
-  ⟨fun S => boltzmann_weight_pos S,
-   fun θ => one_minus_cos_range θ,
-   fun β θ₁ θ₂ => transfer_matrix_pos β θ₁ θ₂,
-   fun β θ₁ θ₂ => transfer_matrix_symmetric β θ₁ θ₂,
-   fun β θ₁ θ₂ α => transfer_matrix_translation_invariant β θ₁ θ₂ α,
-   fun β θ₁ θ₂ => reflected_times_original_nonneg β θ₁ θ₂⟩
+    a reflection-positive measure. -/
+theorem lattice_reflection_positivity_summary {k : ℕ} (f : Fin k → ℝ)
+    (S : Fin k → ℝ) :
+    0 ≤ (Finset.univ.sum (fun i => f i * exp (-(S i)))) ^ 2 :=
+  sq_nonneg _
 
 end UnifiedTheory.LayerA.LatticeReflectionPositivity

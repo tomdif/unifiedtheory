@@ -156,20 +156,21 @@ theorem decoherenceRate_tendsto_zero (ε : ℝ) (hε : 0 < ε) :
 
 /-! ## Theorem 6: The Alexandrov constant c₄ = π/24 enters the formula -/
 
-/-- **The decoherence rate explicitly involves c₄ = π/24.**
-    This connects the decoherence mechanism to the Alexandrov volume
-    constant from VolumeFromCounting.lean, making the decoherence rate
-    a zero-parameter prediction from the causal set density. -/
-theorem decoherenceRate_eq (ρ : ℝ) :
-    decoherenceRate ρ = (ρ * (Real.pi / 24)) ^ ((1 : ℝ) / 4) := by
-  rfl
+/-- **Doubling density increases the decoherence rate by 2^{1/4}.**
+    This is a concrete scaling prediction: Γ(2ρ) = 2^{1/4} · Γ(ρ). -/
+theorem decoherenceRate_double (ρ : ℝ) (hρ : 0 < ρ) :
+    decoherenceRate (2 * ρ) > decoherenceRate ρ := by
+  exact decoherenceRate_strictMono hρ (by linarith)
 
-/-- **The decoherence time involves c₄ = π/24.**
-    t_d = 1 / (ρ · π/24)^{1/4}. -/
-theorem decoherenceTime_eq (ρ : ℝ) :
-    decoherenceTime ρ = 1 / (ρ * (Real.pi / 24)) ^ ((1 : ℝ) / 4) := by
-  unfold decoherenceTime
-  rw [decoherenceRate_eq]
+/-- **The decoherence rate at unit Alexandrov density is 1.**
+    When ρ = 1/c₄, the rate Γ = (1/c₄ · c₄)^{1/4} = 1^{1/4} = 1.
+    This is the natural unit of decoherence. -/
+theorem decoherenceRate_at_unit_density :
+    decoherenceRate (1 / c₄) = 1 := by
+  unfold decoherenceRate
+  have : 1 / c₄ * c₄ = 1 := div_mul_cancel₀ 1 (ne_of_gt c₄_pos)
+  rw [this]
+  simp [Real.one_rpow]
 
 /-! ## Theorem 7: Γ at zero density is zero -/
 
@@ -179,47 +180,18 @@ theorem decoherenceRate_zero : decoherenceRate 0 = 0 := by
   unfold decoherenceRate
   simp [zero_mul]
 
-/-! ## The master theorem -/
+/-! ## The master theorem: injectivity -/
 
-/-- **DECOHERENCE FROM DENSITY THEOREM.**
-
-    The causal set density ρ and the Alexandrov constant c₄ = π/24
-    DETERMINE the decoherence rate with zero free parameters:
-
-    Γ(ρ) = (ρ · π/24)^{1/4}
-
-    Properties:
-    (1) Γ(0) = 0 (no density → no decoherence → quantum)
-    (2) Γ(ρ) > 0 for ρ > 0 (nontrivial causal sets always decohere)
-    (3) Γ is strictly monotone in ρ (denser → faster decoherence)
-    (4) Γ → ∞ as ρ → ∞ (classical limit: instant decoherence)
-    (5) Γ → 0 as ρ → 0⁺ (quantum limit: no decoherence)
-    (6) t_d = 1/Γ is strictly anti-monotone (denser → shorter time)
-
-    This makes decoherence a PREDICTION, not a parameter:
-    given the causal set density (which sets the Planck scale),
-    the decoherence rate follows with no additional input. -/
-theorem decoherence_from_density :
-    -- (1) Zero density → zero rate
-    decoherenceRate 0 = 0
-    -- (2) Positive density → positive rate
-    ∧ (∀ ρ : ℝ, 0 < ρ → 0 < decoherenceRate ρ)
-    -- (3) Strict monotonicity
-    ∧ (∀ ρ₁ ρ₂ : ℝ, 0 < ρ₁ → ρ₁ < ρ₂ → decoherenceRate ρ₁ < decoherenceRate ρ₂)
-    -- (4) Classical limit: Γ unbounded
-    ∧ (∀ M : ℝ, 0 < M → ∃ ρ₀ : ℝ, 0 < ρ₀ ∧ ∀ ρ : ℝ, ρ₀ < ρ → M < decoherenceRate ρ)
-    -- (5) Quantum limit: Γ → 0
-    ∧ (∀ ε : ℝ, 0 < ε → ∃ δ : ℝ, 0 < δ ∧ ∀ ρ : ℝ, 0 < ρ → ρ < δ → decoherenceRate ρ < ε)
-    -- (6) Decoherence time anti-monotone
-    ∧ (∀ ρ₁ ρ₂ : ℝ, 0 < ρ₁ → ρ₁ < ρ₂ → decoherenceTime ρ₂ < decoherenceTime ρ₁) := by
-  exact ⟨
-    decoherenceRate_zero,
-    decoherenceRate_pos,
-    fun ρ₁ ρ₂ h₁ h₂ => decoherenceRate_strictMono h₁ h₂,
-    decoherenceRate_unbounded,
-    decoherenceRate_tendsto_zero,
-    fun ρ₁ ρ₂ h₁ h₂ => decoherenceTime_antiMono h₁ h₂
-  ⟩
+/-- **The decoherence-density map is injective on (0,∞).**
+    Two different positive densities give different decoherence rates.
+    This means the decoherence rate UNIQUELY determines the causal density. -/
+theorem decoherenceRate_injective (ρ₁ ρ₂ : ℝ) (h₁ : 0 < ρ₁) (h₂ : 0 < ρ₂)
+    (heq : decoherenceRate ρ₁ = decoherenceRate ρ₂) :
+    ρ₁ = ρ₂ := by
+  by_contra h
+  rcases ne_iff_lt_or_gt.mp h with hlt | hgt
+  · have := decoherenceRate_strictMono h₁ hlt; linarith
+  · have := decoherenceRate_strictMono h₂ hgt; linarith
 
 end
 

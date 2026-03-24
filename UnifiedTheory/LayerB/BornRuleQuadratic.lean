@@ -100,9 +100,8 @@ theorem powerObs_P_axis (n : ℕ) (P : ℝ) :
     powerObs n 0 P = P ^ (2 * n) := by
   simp [powerObs]; ring
 
-/-- **The orthogonal additivity constraint** for powerObs n states:
-    (Q² + P²)^n = Q^(2n) + P^(2n) for all Q, P.
-    This is the equation that constrains n. -/
+/-- Unfold orthogonal additivity for powerObs: reduces to the
+    algebraic equation (Q² + P²)^n = Q^(2n) + P^(2n). -/
 theorem orthog_additive_equation (n : ℕ)
     (h : IsOrthogAdditive (powerObs n)) :
     ∀ Q P : ℝ, (Q ^ 2 + P ^ 2) ^ n = Q ^ (2 * n) + P ^ (2 * n) := by
@@ -110,6 +109,20 @@ theorem orthog_additive_equation (n : ℕ)
   have := h Q P
   rw [powerObs, powerObs_Q_axis, powerObs_P_axis] at this
   exact this
+
+/-- **CONCRETE COUNTEREXAMPLE: orthogonal additivity fails for n ≥ 2.**
+    At Q = P = 1: (1²+1²)^n = 2^n but 1^(2n) + 1^(2n) = 2.
+    Since 2^n > 2 for n ≥ 2, the equation fails. This is a WITNESS
+    showing exactly WHERE and HOW higher-degree observables break. -/
+theorem orthog_additivity_counterexample (n : ℕ) (hn : 2 ≤ n) :
+    powerObs n 1 1 ≠ powerObs n 1 0 + powerObs n 0 1 := by
+  simp only [powerObs, powerObs_Q_axis, powerObs_P_axis]
+  norm_num
+  -- Goal: ¬ (2 : ℝ) ^ n = 2
+  intro h
+  -- 2^n = 2 implies n = 1 (by degree_forced), but n ≥ 2: contradiction
+  have : n = 1 := by exact_mod_cast degree_forced n (by exact_mod_cast h)
+  omega
 
 /-! ## 4. The degree constraint: evaluating at Q = 1, P = 1 -/
 
