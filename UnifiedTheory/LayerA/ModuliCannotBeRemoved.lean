@@ -181,39 +181,26 @@ theorem stabilization_cost_increases (n : ℕ) (hn : n > 4) :
   have h_exp : (n + 1) ^ 2 = n ^ 2 + 2 * n + 1 := by nlinarith
   omega
 
-/-! ## Master theorem -/
+/-! ## Master theorem: stabilization exceeds gauge content -/
 
-/-- The complete moduli stabilization result.
+/-- **The cure is worse than the disease.**
 
-    The string theorist's "flux stabilization" loophole is closed:
+    For n ≥ 6, the number of stabilization parameters needed to reduce the
+    kernel down to 15 EXCEEDS 15 itself — the total gauge boson count of the
+    Standard Model (8 gluons + W⁺ + W⁻ + Z + γ + 3 would-be Goldstones = 15
+    generators of SU(3)×SU(2)×U(1)).
 
-    (a) For n > 4, stabilization is needed (kernel > 15).
-    (b) The number of stabilization parameters is n² - 16 > 0.
-    (c) String theory needs 84 parameters; M-theory needs 105.
-    (d) d = 4 is the unique dimension (among n ≥ 2 with sufficient kernel)
-        requiring zero stabilization parameters.
-    (e) Stabilization does not remove modes — it merely makes them massive.
-    (f) The parameter cost grows quadratically with extra dimensions. -/
-theorem moduli_cannot_be_removed :
-    -- (a) Stabilization needed for n > 4
-    (∀ n : ℕ, n > 4 → kernel_dim n > 15)
-    -- (b) Stabilization params positive for n > 4
-    ∧ (∀ n : ℕ, n > 4 → stabilization_params n > 0)
-    -- (c) Specific counts
-    ∧ stabilization_params 10 = 84
-    ∧ stabilization_params 11 = 105
-    -- (d) d = 4 needs zero
-    ∧ stabilization_params 4 = 0
-    -- (e) Modes are conserved
-    ∧ (∀ n k : ℕ, k ≤ kernel_dim n → effective_modes n k + massive_modes k = kernel_dim n)
-    -- (f) Cost grows with dimension
-    ∧ (∀ n : ℕ, n > 4 → stabilization_params (n + 1) > stabilization_params n) :=
-  ⟨stabilization_needed,
-   stabilization_params_pos,
-   string_needs_84,
-   m_theory_needs_105,
-   d4_needs_zero,
-   modes_conserved,
-   stabilization_cost_increases⟩
+    In other words, flux stabilization introduces MORE free parameters than
+    the entire gauge sector it is trying to reproduce. The stabilization
+    mechanism is more complex than the physics it purports to explain.
+
+    For n = 5 (Kaluza-Klein): stabilization_params 5 = 9 < 15 (borderline).
+    For n = 6: stabilization_params 6 = 20 > 15 (already exceeds).
+    For n ≥ 6: stabilization_params n = n² - 16 ≥ 20 > 15. -/
+theorem stabilization_exceeds_gauge (n : ℕ) (hn : n ≥ 6) :
+    stabilization_params n > 15 := by
+  unfold stabilization_params kernel_dim
+  have h1 : n ^ 2 ≥ 36 := by nlinarith
+  omega
 
 end UnifiedTheory.LayerA.ModuliCannotBeRemoved
