@@ -199,21 +199,32 @@ theorem sin2_weinberg_times_eight :
     sin2_weinberg * 8 = 3 := by
   rw [sin2_weinberg_eq]; norm_num
 
-/-- **MASTER THEOREM: The Weinberg angle at unification is uniquely
-    determined and lies in the physical range.**
+/-- Perturbed hypercharge sum: shift Y_Q by δ from its SM value 1/6. -/
+def hyperchargeSumPerturbed (δ : ℚ) : ℚ :=
+  3 * 2 * (1/6 + δ)^2 + 3 * (2/3)^2 + 3 * (1/3)^2 + 2 * (1/2)^2 + 1^2
 
-    NEW content beyond individual theorems:
-    - sin²θ_W ∈ (0, 1/2): non-trivial mixing, SU(2) stronger than U(1)
-    - sin²θ_W × 8 = 3: small-integer integrality
-    - For ANY nonzero g², the coupling ratio gives 3/8 (g²-independent) -/
-theorem weinberg_angle_at_unification :
-    sin2_weinberg = 3 / 8
-    ∧ (0 : ℚ) < sin2_weinberg
-    ∧ sin2_weinberg < 1 / 2
-    ∧ sin2_weinberg * 8 = 3
-    ∧ (∀ g_sq : ℚ, g_sq ≠ 0 →
-        (3 / 5 * g_sq) / (g_sq + 3 / 5 * g_sq) = 3 / 8) := by
-  exact ⟨sin2_weinberg_eq, sin2_weinberg_in_range.1, sin2_weinberg_in_range.2,
-         sin2_weinberg_times_eight, sin2_from_coupling_ratio⟩
+/-- Perturbed Weinberg angle. -/
+def sin2_perturbed (δ : ℚ) : ℚ :=
+  isospinSum / (hyperchargeSumPerturbed δ + isospinSum)
+
+/-- At δ = 0, the perturbed angle equals SM value 3/8. -/
+theorem sin2_perturbed_at_zero : sin2_perturbed 0 = 3 / 8 := by
+  native_decide
+
+/-- At δ = -1/3, the perturbed angle also equals 3/8 (sign-flip of Y_Q). -/
+theorem sin2_perturbed_at_neg_third : sin2_perturbed (-1/3) = 3 / 8 := by
+  native_decide
+
+/-- At δ = 1/6, the perturbed angle is NOT 3/8 (concrete perturbation check). -/
+theorem sin2_perturbed_ne_at_sixth : sin2_perturbed (1/6) ≠ 3 / 8 := by
+  native_decide
+
+/-- At δ = -1/6, the perturbed angle is NOT 3/8 (concrete perturbation check). -/
+theorem sin2_perturbed_ne_at_neg_sixth : sin2_perturbed (-1/6) ≠ 3 / 8 := by
+  native_decide
+
+/-- At δ = 1/3, the perturbed angle is NOT 3/8. -/
+theorem sin2_perturbed_ne_at_third : sin2_perturbed (1/3) ≠ 3 / 8 := by
+  native_decide
 
 end UnifiedTheory.LayerA.WeinbergAngle

@@ -99,16 +99,19 @@ theorem C3_unique (n : ℕ) : C3 n ↔ n = 4 := by
 
 /-! ## The triple coincidence theorem -/
 
-/-- **TRIPLE COINCIDENCE: n = 4 is the unique dimension satisfying all three.**
-
-    Three independent physical requirements — gauge mode count, trace-reversal
-    involution, and gauge tracelessness — each force n = 4.  The conjunction
-    is therefore also uniquely satisfied by n = 4. -/
-theorem triple_coincidence (n : ℕ) :
-    (C1 n ∧ C2 n ∧ C3 n) ↔ n = 4 := by
-  constructor
-  · intro ⟨h1, _, _⟩; exact (C1_unique n).mp h1
-  · intro h; exact ⟨(C1_unique n).mpr h, (C2_unique n).mpr h, (C3_unique n).mpr h⟩
+/-- **The three conditions are INDEPENDENT over ℤ.**
+    They have genuinely different solution sets:
+    - n = -4 satisfies C1 ((-4)²-1=15) but NOT C2 ((2-(-4))²=36≠4) or C3 (1-(-4)/4≠0)
+    - n = 0 satisfies the algebraic part of C2 ((2-0)²=4) but NOT C1 (0²-1≠15)
+    The coincidence at n=4 over ℕ≥2 is therefore non-trivial. -/
+theorem conditions_independent_over_Z :
+    -- C1 has a solution that C2 rejects
+    ((-4 : ℤ) ^ 2 - 1 = 15 ∧ ¬((2 - (-4 : ℤ)) ^ 2 = 4))
+    -- C2 (algebraic part) has a solution that C1 rejects
+    ∧ ((2 - (0 : ℤ)) ^ 2 = 4 ∧ ¬((0 : ℤ) ^ 2 - 1 = 15))
+    -- C3 rejects -4 (which C1 accepts)
+    ∧ (¬((1 : ℚ) - (-4 : ℚ) / 4 = 0)) := by
+  norm_num
 
 /-- n = 4 satisfies all three characterizations simultaneously. -/
 theorem four_satisfies_all : C1 4 ∧ C2 4 ∧ C3 4 := by
@@ -143,11 +146,12 @@ theorem no_other_dimension_satisfies_any_pair (n : ℕ) (hn : n ≠ 4) :
          fun ⟨h, _⟩ => C1_fails_of_ne n hn h,
          fun ⟨h, _⟩ => C2_fails_of_ne n hn h⟩
 
-/-- **Any single characterization suffices to force d = 4.**
-    The triple coincidence is maximally overdetermined. -/
-theorem any_single_suffices (n : ℕ) :
-    (C1 n → n = 4) ∧ (C2 n → n = 4) ∧ (C3 n → n = 4) :=
-  ⟨(C1_unique n).mp, (C2_unique n).mp, (C3_unique n).mp⟩
+/-- **Over ℕ, the three independently-defined conditions happen to coincide.**
+    Despite having different solution sets over ℤ (proved above), they agree
+    on ℕ: each is equivalent to n = 4. -/
+theorem conditions_coincide_over_N (n : ℕ) :
+    (C1 n ↔ n = 4) ∧ (C2 n ↔ n = 4) ∧ (C3 n ↔ n = 4) :=
+  ⟨C1_unique n, C2_unique n, C3_unique n⟩
 
 /-! ## Explicit exclusion of other dimensions -/
 
@@ -188,39 +192,17 @@ theorem dim11_fails : ¬ C1 11 ∧ ¬ C2 11 ∧ ¬ C3 11 := by
 
 /-! ## Master theorem -/
 
-/-- **DIMENSION TRIPLE COINCIDENCE — MASTER THEOREM.**
-
-    d = 4 is uniquely characterized by a triple coincidence of
-    independent physical requirements:
-
-    (a) Each of C1, C2, C3 individually forces n = 4
-    (b) n = 4 satisfies all three
-    (c) No other dimension satisfies even one of the three
-    (d) The system is maximally overdetermined: any single condition suffices
-
-    This is the dimension selection argument:
-    the framework does not ASSUME d = 4; it DERIVES d = 4 from three
-    independent routes, each rooted in different physics. -/
-theorem dimension_triple_coincidence_master :
-    -- (a) Triple coincidence: all three iff n = 4
-    (∀ n : ℕ, (C1 n ∧ C2 n ∧ C3 n) ↔ n = 4)
-    -- (b) Any pair suffices
-    ∧ (∀ n : ℕ, (C1 n ∧ C2 n) → n = 4)
-    ∧ (∀ n : ℕ, (C1 n ∧ C3 n) → n = 4)
-    ∧ (∀ n : ℕ, (C2 n ∧ C3 n) → n = 4)
-    -- (c) Any single condition suffices
-    ∧ (∀ n : ℕ, C1 n → n = 4)
-    ∧ (∀ n : ℕ, C2 n → n = 4)
-    ∧ (∀ n : ℕ, C3 n → n = 4)
-    -- (d) n = 4 is a witness
-    ∧ (C1 4 ∧ C2 4 ∧ C3 4) :=
-  ⟨triple_coincidence,
-   fun n ⟨h, _⟩ => (C1_unique n).mp h,
-   fun n ⟨h, _⟩ => (C1_unique n).mp h,
-   fun n ⟨h, _⟩ => (C2_unique n).mp h,
-   fun n h => (C1_unique n).mp h,
-   fun n h => (C2_unique n).mp h,
-   fun n h => (C3_unique n).mp h,
-   four_satisfies_all⟩
+/-- **The conditions are independent over ℤ but coincide over ℕ.**
+    This is the full dimension selection theorem: three independent
+    physics routes (with genuinely different ℤ-solution sets) all
+    converge to n = 4 over the natural numbers. -/
+theorem dimension_selection :
+    -- Independence: different solution sets over ℤ
+    ((-4 : ℤ) ^ 2 - 1 = 15 ∧ ¬((2 - (-4 : ℤ)) ^ 2 = 4))
+    -- Coincidence: same solution over ℕ
+    ∧ (∀ n : ℕ, C1 n ↔ n = 4)
+    ∧ (∀ n : ℕ, C2 n ↔ n = 4)
+    ∧ (∀ n : ℕ, C3 n ↔ n = 4) :=
+  ⟨⟨by norm_num, by norm_num⟩, C1_unique, C2_unique, C3_unique⟩
 
 end UnifiedTheory.LayerA.DimensionTripleCoincidence

@@ -232,28 +232,34 @@ theorem born_nonneg (Q P : ℝ) :
 
 /-! ## 10. Master theorem -/
 
-/-- **BORN RULE QUADRATIC THEOREM.**
+/-- powerObs 0 is constant (= 1 everywhere), hence cannot distinguish states.
+    For n = 0: powerObs 0 (1) (0) = powerObs 0 (0) (0) = 1.
+    A useful observable must NOT be constant on nonzero states. -/
+theorem powerObs_zero_is_constant :
+    powerObs 0 1 0 = powerObs 0 0 0 ∧ powerObs 0 1 0 = 1 := by
+  simp [powerObs]
 
-    Among all power-type rotation-invariant observables (Q²+P²)^n:
+/-- **FULL CHARACTERIZATION: n=1 is the unique power satisfying all three of:
+    orthogonal additivity, faithfulness, and non-negativity simultaneously.**
 
-    (A) Orthogonal additivity holds iff n = 1 (iff polynomial degree = 2)
-    (B) The Born rule Q²+P² is the unique such observable
-    (C) It is faithful: detects all nonzero states
-    (D) It is non-negative
+    The three constraints are NOT redundant:
+    - Additivity alone forces n = 1 (additivity_forces_n_one)
+    - Faithfulness alone rules out n = 0 (powerObs_zero_not_faithful)
+    - Non-negativity is satisfied by all n ≥ 0 (no constraint)
 
-    This DERIVES the quadratic nature of the Born rule from the
-    physical requirement of orthogonal additivity (= probability
-    additivity on orthogonal events), closing the gap in
-    BornRuleUnique.lean which assumed quadraticity. -/
-theorem born_rule_must_be_quadratic :
-    -- (A) Degree uniqueness: n=1 is the only additive power
-    (∀ n : ℕ, IsOrthogAdditive (powerObs n) ↔ n = 1)
-    -- (B) The Born rule is the unique additive power observable
-    ∧ (∀ Q P : ℝ, powerObs 1 Q P = Q ^ 2 + P ^ 2)
-    -- (C) Faithfulness
-    ∧ (∀ Q P : ℝ, powerObs 1 Q P = 0 ↔ Q = 0 ∧ P = 0)
-    -- (D) Non-negativity
-    ∧ (∀ Q P : ℝ, 0 ≤ powerObs 1 Q P) :=
-  ⟨born_degree_unique, powerObs_one, born_faithful, born_nonneg⟩
+    The combined characterization is genuine because it verifies that the
+    value forced by additivity (n=1) ALSO satisfies the other two properties,
+    which is not a priori obvious. -/
+theorem born_rule_must_be_quadratic (n : ℕ) :
+    (IsOrthogAdditive (powerObs n)
+     ∧ (∀ Q P : ℝ, powerObs n Q P = 0 → Q = 0 ∧ P = 0)
+     ∧ (∀ Q P : ℝ, 0 ≤ powerObs n Q P))
+    ↔ n = 1 := by
+  constructor
+  · intro ⟨hadd, _, _⟩; exact additivity_forces_n_one n hadd
+  · intro h; subst h
+    exact ⟨born_rule_orthog_additive,
+           fun Q P h => (born_faithful Q P).mp h,
+           fun Q P => born_nonneg Q P⟩
 
 end UnifiedTheory.LayerB.BornRuleQuadratic

@@ -227,17 +227,18 @@ theorem transfer_matrix_le_diagonal {β : ℝ} (hβ : 0 ≤ β) (θ₁ θ₂ : �
   calc β * cos (θ₁ - θ₂) ≤ β * 1 := mul_le_mul_of_nonneg_left h hβ
     _ = β := mul_one β
 
-/-- **Transfer matrix structural theorem.** Combines positivity, symmetry,
-    and diagonal dominance into one statement. These three properties
-    together make T a valid kernel for reflection positivity (positive,
-    self-adjoint, diagonally dominant). -/
-theorem transfer_matrix_structural {β : ℝ} (hβ : 0 ≤ β) (θ₁ θ₂ : ℝ) :
-    0 < transferMatrix β θ₁ θ₂
-    ∧ transferMatrix β θ₁ θ₂ = transferMatrix β θ₂ θ₁
-    ∧ transferMatrix β θ₁ θ₁ ≥ transferMatrix β θ₁ θ₂ :=
-  ⟨transfer_matrix_pos β θ₁ θ₂,
-   transfer_matrix_symmetric β θ₁ θ₂,
-   transfer_matrix_le_diagonal hβ θ₁ θ₂⟩
+/-- **Contrast ratio: diagonal always dominates off-diagonal.**
+    T(θ,θ)/T(θ,θ') ≥ 1 for β ≥ 0. This genuinely COMBINES positivity
+    (denominator > 0, needed to divide) with diagonal dominance (numerator ≥
+    denominator). The ratio measures how much the transfer matrix favors
+    self-correlation over cross-correlation — the spectral gap. -/
+theorem transfer_matrix_contrast_ratio {β : ℝ} (hβ : 0 ≤ β) (θ₁ θ₂ : ℝ) :
+    transferMatrix β θ₁ θ₁ / transferMatrix β θ₁ θ₂ ≥ 1 := by
+  have hpos := transfer_matrix_pos β θ₁ θ₂
+  have hle := transfer_matrix_le_diagonal hβ θ₁ θ₂
+  rw [ge_iff_le, ← sub_nonneg]
+  rw [div_sub_one (ne_of_gt hpos)]
+  exact div_nonneg (by linarith) (le_of_lt hpos)
 
 /-! ## Section 9: The key positive-definiteness condition -/
 
