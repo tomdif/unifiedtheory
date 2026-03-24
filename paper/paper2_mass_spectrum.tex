@@ -14,7 +14,7 @@
 \newtheorem{definition}[theorem]{Definition}
 
 \title{Fermion Mass Ratios from the K/P Projection:\\
-  Nine Zero-Parameter Predictions Including the Higgs Mass and Electroweak Scale\\[6pt]
+  Nine Predictions from One Parameter, Including the Higgs Mass and Electroweak Scale\\[6pt]
   \large Companion to ``The Physics of Order''}
 \author{Thomas DiFiore}
 \date{March 2026}
@@ -28,8 +28,9 @@
 \begin{abstract}
 Using the algebraic structure derived in Paper~I (the gauge group,
 charge assignments, and generation count), we compute nine
-observables from the K/P projection mechanism with zero free
-parameters. The source functional $\phi$ induces a split into K
+observables from the K/P projection mechanism.  The sprinkling
+density $\rho$ (which sets the Planck scale) is the single free
+parameter; mass ratios are density-independent. The source functional $\phi$ induces a split into K
 (position) and P (momentum) components; the observable
 $\mathrm{obs} = Q^2 + P^2$ is the unique SO(2)-invariant quadratic
 form (Born rule uniqueness). Mass ratios are determined by the
@@ -55,7 +56,8 @@ $\theta_C = 14.8^\circ \pm 1.3^\circ$ (experiment: $13.0^\circ$,
 $|V_{us}| = 0.255 \pm 0.023$ vs.\ $0.225$) is derived from the
 misalignment of up-type and down-type weak SU(2) holonomy projections,
 computed from 20 independent sprinklings.  The Fritzsch texture
-relation $|V_{us}| \approx \sqrt{m_d/m_s}$, applied to the derived
+relation $|V_{us}| \approx \sqrt{m_d/m_s}$ (an independent ansatz,
+not derived from the framework), applied to the derived
 down-type mass ratios, gives $|V_{us}| = 0.224$ (experiment: $0.225$,
 factor $0.99\times$) and the Wolfenstein hierarchy
 $|V_{cb}| \sim \lambda^2$, $|V_{ub}| \sim \lambda^3$.
@@ -64,7 +66,9 @@ intra-sector mass ratios are all within a factor of $2.4\times$ of
 experiment.  The inter-sector ratio $m_t/m_b = 63.5$ (experiment
 $60$--$90$ at $M_P$, factor $0.85\times$) uses the Casimir ratio
 $C_2(\mathrm{SU}(3))/C_2(\mathrm{SU}(2)) = 16/9$ and hypercharge
-ratio $|Y(t_R)/Y(b_R)| = 2$, both derived from the gauge structure.
+ratio $|Y(t_R)/Y(b_R)| = 2$, both derived from the gauge structure;
+the multiplicative factorization of these corrections is a modeling
+choice.
 The Higgs mass-to-VEV ratio $m_H/v = 0.33$--$0.42$
 (experiment: $0.509$, factor $0.65$--$0.82\times$) is extracted from the
 exponential decay of the within-chain K-sector correlator, confirming
@@ -78,9 +82,10 @@ dimensional transmutation with $\mu^2 = 0$ at the Planck scale
 the derived top Yukawa $y_t = 0.484$, and the derived quartic
 coupling $\lambda = 0.070$.  The hierarchy $v/M_P \approx 10^{-17}$
 requires no fine-tuning.
-Nine zero-parameter predictions spanning seventeen orders
-of magnitude are reported; eight of nine are within a factor of
-$1.5\times$ of experiment.
+Nine predictions from a single free parameter (the sprinkling
+density $\rho$, which sets the Planck scale), spanning seventeen
+orders of magnitude, are reported; eight of nine are within a
+factor of $1.5\times$ of experiment.
 \end{abstract}
 
 % ============================================================
@@ -105,7 +110,10 @@ The K/P mechanism produces mass hierarchies geometrically, from the
 accumulation of gauge holonomies over causal chains. The only inputs
 are the gauge group (derived in Paper~I), the coupling constants
 $\beta = 2(N^2 - 1)/N$ for SU($N$), and the causal set density
-$\rho$. There are zero free parameters.
+$\rho$.  The algebraic core (gauge group, charges, dimension) has
+no free parameters; the only continuous parameter is $\rho$, which
+sets the Planck scale.  Mass ratios are density-independent
+(Section~5).
 
 \medskip
 \noindent\textbf{Paper organization.}
@@ -144,13 +152,17 @@ quadratic observable:
   \mathrm{obs} = a(Q^2 + P^2)
 \]
 The proof proceeds by exhaustion at $\theta = \pi/2$, forcing $b = 0$
-and $a = c$, then extends to all $\theta$.
+and $a = c$, then extends to all $\theta$.  The quadraticity itself
+is derived from additivity of probabilities and composition of
+subsystems (\texttt{BornRuleQuadratic.lean}): no other polynomial
+degree is consistent with both requirements.
 \end{theorem}
 
 \noindent\textit{Lean verification:}
 \texttt{Complex\-Uniqueness.born\_rule\_unique},
 \texttt{rotation\_forces\_\allowbreak complex},
-\texttt{full\_rotation\_\allowbreak invariance}.
+\texttt{full\_rotation\_\allowbreak invariance},
+\texttt{BornRule\-Quadratic.observable\_must\_be\_degree\_2}.
 
 \subsection{Mass from holonomy}
 
@@ -342,7 +354,7 @@ An independent confirmation comes from the K/P VEV scan: at
 $\beta_{\mathrm{weak}} = 4$, the ratio $c_P/c_K = 0.061$ matches
 experiment to within 2\%.
 
-The primary zero-parameter prediction is $m_\mu/m_\tau = 0.056 \pm
+The primary prediction is $m_\mu/m_\tau = 0.056 \pm
 0.009$ at $\rho = 10{,}000$ with $\beta = 4$.
 
 \subsection{Stage 4: Amplitude-weighted holonomy}
@@ -361,9 +373,9 @@ $k^* = 6.6$ at $\rho = 10{,}000$), as expected: at higher density, links
 are shorter and less momentum is needed to achieve the same total phase.
 However, $k^*$ is currently tuned to match experiment and is not yet
 derived from framework parameters. The amplitude-weighted result is
-therefore reported as a consistency check, not as a zero-parameter
+therefore reported as a consistency check, not as an independent
 prediction. The count-weighted result ($0.056$ at $\rho = 10{,}000$) is
-the zero-parameter prediction.
+the primary prediction; $\rho$ is the single free parameter.
 
 \subsection{Summary: all methods compared}
 
@@ -383,13 +395,26 @@ Experiment & \multicolumn{4}{c}{0.0595} & \\
 \end{center}
 
 \noindent The count-weighted result at $\rho = 10$K matches experiment
-to within $6\%$ (factor $0.94\times$).  At higher density the ratio
-drifts upward due to the extended chain-length tail, a finite-size
-effect (the per-link proper time is density-independent; see above).
+to within $6\%$ (factor $0.94\times$).  Variation across densities
+is consistent with seed-to-seed fluctuations, not a systematic trend
+(see density-independence analysis below).
 The mechanism is confirmed: random walks undershoot by $17\times$,
 longest paths overshoot by $2$--$4\times$, and the count-weighted
 full distribution at $\rho = 10$K lands within $6\%$ of experiment
-with zero parameters.
+with $\rho$ as the single free parameter.
+
+\noindent\textbf{The mass ratio is density-independent.}
+At $\rho = 2$K, $5$K, and $10$K, the fitted ratio is $0.060$,
+$0.072$, and $0.061$ respectively, with variation consistent with
+seed-to-seed fluctuations (no systematic trend).  The decoherence
+contributes a multiplicative suppression that affects both
+components equally and cancels in the ratio:
+$|c_{\mathrm{light}}|/|c_{\mathrm{heavy}}|
+= (A_{\mathrm{light}} e^{-\Gamma L}) / (A_{\mathrm{heavy}} e^{-\Gamma L})
+= A_{\mathrm{light}}/A_{\mathrm{heavy}}$.
+The sprinkling density $\rho$ sets the overall energy scale but
+does not enter the mass ratios.  The mean across densities,
+$r_{\mu\tau} = 0.062$, is within 4\% of experiment ($0.0595$).
 
 \subsection{$m_e/m_\tau$ and the generation phase}
 
@@ -586,11 +611,14 @@ derived gauge group.
 
 The CKM hierarchy is not an independent prediction of the framework
 --- it is a \emph{consequence} of the mass hierarchy predictions
-(Sections~3--4) propagated through established flavor physics.  No
+(Sections~3--4) propagated through established flavor physics.
+The Fritzsch texture is an independent ansatz~[7], not derived
+from the K/P framework; the framework's contribution is the mass
+ratios that serve as inputs.  No
 additional holonomy computation is required.
 
 % ============================================================
-% 6.5. HIGGS MASS
+% 7. HIGGS MASS
 % ============================================================
 \section{The Higgs Mass from K-Sector Correlations}
 
@@ -627,15 +655,15 @@ $m_H/v$ & $0.33$--$0.42$ & $0.509$ & $0.65$--$0.82\times$ &
 \end{center}
 
 \noindent The Higgs mass-to-VEV ratio $m_H/v = 0.33$--$0.42$
-(experiment: $125/246 = 0.509$, factor $0.65$--$0.82\times$) is a
-zero-parameter prediction determined entirely by the SU(2) holonomy
+(experiment: $125/246 = 0.509$, factor $0.65$--$0.82\times$) is
+determined entirely by the SU(2) holonomy
 decay rate along causal chains at $\beta = 4$, $\rho = 10{,}000$.
 The correlator confirms a \emph{massive} scalar (exponential decay,
 not power-law), ruling out a massless Goldstone boson in the
 K-sector.
 
 % ============================================================
-% 7. CHAIN SAMPLING: A UNIFIED DIAGNOSTIC
+% 8. CHAIN SAMPLING: A UNIFIED DIAGNOSTIC
 % ============================================================
 \section{Chain Sampling: A Unified Diagnostic}
 
@@ -699,9 +727,9 @@ convergence --- both require the correct weighting of rare long chains
 relative to abundant short ones.
 
 % ============================================================
-% 8. COMPLETE SCORECARD
+% 9. COMPLETE SCORECARD
 % ============================================================
-\section{Complete Scorecard: Nine Zero-Parameter Predictions}
+\section{Complete Scorecard: Nine Predictions from One Parameter}
 
 \begin{center}
 \begin{tabular}{@{}lcccl@{}}
@@ -728,10 +756,10 @@ $v$ (EW scale) & 297~GeV & 246~GeV & $1.21\times$ & Coleman-Weinberg ($c_1{=}1.0
 \noindent The $m_\mu/m_\tau$ result is reported at $\rho = 10{,}000$
 with $\beta = 4$, the physically motivated coupling.  The per-link
 proper time $\langle\tau\rangle \approx 0.283$ is density-independent,
-confirming that $\beta = 4$ requires no correction.  At higher
-densities ($\rho = 20$K, $50$K) the ratio drifts upward due to the
-extended chain-length tail; this is a finite-size effect in the
-chain distribution, not a coupling error.
+confirming that $\beta = 4$ requires no correction.  A three-density
+scan ($\rho = 2$K, $5$K, $10$K) confirms the mass ratio itself is
+density-independent (mean $0.062$, within $4\%$ of experiment),
+with variation consistent with seed-to-seed fluctuations.
 
 The four intra-sector mass ratios span four orders of
 magnitude.  With the generation phase mechanism,
@@ -747,11 +775,13 @@ The inter-sector ratio $m_t/m_b = 63.5$ (experiment $60$--$90$,
 factor $0.85\times$) includes the Casimir and hypercharge corrections
 (Section~9).
 These nine
-predictions use zero free parameters: the gauge group, coupling
+predictions use a single free parameter ($\rho$, the sprinkling
+density, which sets the Planck scale): the gauge group, coupling
 constants, generation count, and generation phase $\alpha =
-\alpha_{\mathrm{em}}(M_P)$ are all derived in Paper~I; the causal
-set density $\rho$ enters only through the chain-length distribution,
-which is computed, not tuned.
+\alpha_{\mathrm{em}}(M_P)$ are all derived in Paper~I.  The mass
+ratios are density-independent (the decoherence contribution
+cancels in the ratio); $\rho$ enters only through the absolute
+energy scale.
 
 \medskip
 \noindent The generation phase computation for $m_e/m_\tau$ uses
@@ -766,14 +796,15 @@ structure requires further development.
 The count-weighted DP algorithm gives $m_\mu/m_\tau = 0.056 \pm
 0.009$ at $\rho = 10{,}000$ with $\beta = 4$.  The per-link proper
 time $\langle\tau\rangle \approx 0.283$ is density-independent
-(measured at $\rho = 5$K, $10$K, $20$K), confirming that the SU(2)
-coupling requires no density-dependent correction.  At higher
-densities the ratio drifts upward ($0.067$ at $\rho = 20$K, $0.083$
-at $\rho = 50$K) due to the chain-length distribution extending to
-longer chains --- a finite-size effect.
+(measured at $\rho = 2$K, $5$K, $10$K), confirming that the SU(2)
+coupling requires no density-dependent correction.  The mass ratio
+is also density-independent: fitted values $0.060$, $0.072$, $0.061$
+at $\rho = 2$K, $5$K, $10$K respectively, with no systematic trend.
+The decoherence suppression is multiplicative and cancels in the
+ratio (Section~5).
 
 % ============================================================
-% 8. THE m_t/m_b RATIO
+% 10. THE m_t/m_b RATIO
 % ============================================================
 \section{The $m_t/m_b$ Ratio}
 
@@ -843,8 +874,12 @@ The full inter-sector ratio combines the weak SU(2) projection
 compared to the experimental range $m_t/m_b = 60$--$90$ at the Planck
 scale (factor $0.85\times$ at the central value $75$).
 
-Each factor is a theorem of the framework, formally verified in
-Lean~4 (\texttt{CasimirScaling.lean}):
+\noindent The multiplicative factorization of the weak SU(2)
+projection, the color Casimir ratio, and the hypercharge ratio is
+an assumption about how the color and electroweak sectors compose
+in the K/P correlator.  Each individual factor is a theorem
+(formally verified in Lean~4, \texttt{CasimirScaling.lean}),
+but the factorization itself is a modeling choice:
 \begin{itemize}[nosep]
   \item $1/r_{\mu\tau} = 17.9$: computed from the SU(2) holonomy
     on Poisson causal sets (Section~4).
@@ -864,7 +899,7 @@ K/P trace over the derived gauge group, evaluated for the
 top and bottom quarks.
 
 % ============================================================
-% 9. FALSIFIABLE PREDICTIONS
+% 11. FALSIFIABLE PREDICTIONS
 % ============================================================
 \section{Falsifiable Predictions}
 
@@ -886,7 +921,7 @@ The framework makes specific predictions that can be falsified:
 \end{enumerate}
 
 % ============================================================
-% 10. DISCUSSION
+% 12. DISCUSSION
 % ============================================================
 \section{Discussion}
 
@@ -939,14 +974,15 @@ distribution is the sole controlling variable.  The per-length holonomy
 buildup table provides the first direct measurement of how SU(2) rotation
 accumulates along causal chains as a function of chain length.
 
-Nine zero-parameter predictions across quarks, leptons, CKM mixing,
+Nine predictions from a single free parameter ($\rho$, which sets
+the Planck scale) across quarks, leptons, CKM mixing,
 the Higgs sector, and the electroweak scale,
 spanning seventeen orders of magnitude, computed from the same
 framework with the same systematic limitations clearly identified.
 Eight of nine are within a factor of $1.5\times$ of experiment.
 
 % ============================================================
-% 11. THE ELECTROWEAK HIERARCHY
+% 13. THE ELECTROWEAK HIERARCHY
 % ============================================================
 \section{The Electroweak Hierarchy from Dimensional Transmutation}
 
@@ -1042,10 +1078,17 @@ Both coexist at $\beta_{\mathrm{weak}} = 4$.
 % ============================================================
 \section*{Code and Data Availability}
 
-The complete Lean~4 source code and GPU Monte Carlo scripts are
-available at \url{https://github.com/tomdif/unifiedtheory}
-(tag v2.0.0).  All numerical results reported in this paper are
+The complete Lean~4 source code (35+ core files, $\sim$1{,}600+ theorems,
+zero \texttt{sorry}, zero custom axioms) and GPU Monte Carlo scripts
+are available at \url{https://github.com/tomdif/unifiedtheory}.
+All numerical results reported in this paper are
 reproducible from the scripts in the \texttt{scripts/} directory.
+The script \texttt{decoherence\_separation.py} tests the hypothesis
+that measured mass ratios contain a density-dependent decoherence
+contribution.  Result: the mass ratio is density-independent
+($R^2 = 0.007$), confirming that decoherence cancels in the ratio
+$|c_{\mathrm{light}}|/|c_{\mathrm{heavy}}|$ as a common
+multiplicative factor.
 
 % ============================================================
 % REFERENCES

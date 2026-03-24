@@ -30,17 +30,27 @@ Using the derived structure of Papers~I and~II --- spacetime dimension
 $d = 3+1$, gauge group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times
 \mathrm{U}(1)$, 15-fermion generations, unique hypercharges, and the
 K/P observable $\mathrm{obs} = Q^2 + P^2$ --- we derive the
-impossibility of anti-gravity, exclude all extra-dimensional theories,
+impossibility of anti-gravity, exclude extra-dimensional theories
+within the purely metric sector,
 exclude six grand unified theories, prove the absence of a string
 landscape, predict a dark matter candidate from the P-sector of
 the K/P decomposition (electrically neutral, massive, gravitationally
 interacting, self-conjugate --- all formally verified), and predict
 the lightest neutrino mass $m_1 \sim 0.005$~eV from the seesaw
-mechanism with $M_R = M_P$.
+mechanism with $M_R = M_P$ (assuming no intermediate scale between
+$v$ and $M_P$).
 All exclusion theorems are formally verified in Lean~4.
 The anti-gravity impossibility follows from three independent routes,
 each blocked by the derived structure. The extra-dimension exclusions
-follow from the dimension squeeze theorem ($d = 4$ uniquely). The GUT
+follow from both the dimension squeeze theorem ($d = 4$ uniquely)
+and the kernel dimension argument ($n^2 - 1 = 15$ forces $n = 4$);
+a machine-checked theorem proves that block-diagonal
+compactification cannot reduce the kernel to 15 for any $n > 4$.
+The converse also holds: the observed SM gauge content uniquely
+forces $n = 4$ (\texttt{GaugeContentForcesD4.lean}).
+Moduli stabilization does not evade the exclusion --- it adds free
+parameters, with $d = 4$ uniquely requiring zero
+(\texttt{ModuliCannotBeRemoved.lean}). The GUT
 exclusions follow from the uniquely derived fermion content (15 per
 generation, forced by chirality, integer baryon charge, asymptotic
 freedom, and charge determinacy --- no minimality assumption).
@@ -149,44 +159,131 @@ linear (Born rule), but the anti-gravity impossibility does not.
 % ============================================================
 \section{Exclusion of Extra Dimensions}
 
-\begin{theorem}[All extra dimensions excluded]
+The framework derives $d = 3{+}1$ spacetime dimensions through two
+independent routes, each machine-checked in Lean~4.
+
+\subsection{The dimension squeeze}
+
+\begin{theorem}[Dimension squeeze]
 \label{thm:extradim}
-The dimension squeeze (Paper~I, Theorem~3) derives $d = 4$ spacetime
-from two independent bounds: the Lovelock classification ($d \leq 4$)
-and graviton DOF counting ($d \geq 4$). Any theory requiring
-$d > 4$ spacetime dimensions is excluded.
+Two bounds, opposite directions, unique intersection:
+\begin{enumerate}[nosep]
+  \item \textbf{Lovelock upper bound} ($d \leq 4$).  In a purely
+    metric theory of gravity with second-order field equations, the
+    Einstein tensor with cosmological constant is the unique
+    gravitational field equation in $d \leq 4$.  In $d \geq 5$,
+    additional Gauss-Bonnet and higher-order terms appear.
+  \item \textbf{Graviton lower bound} ($d \geq 4$).  The Weyl
+    tensor vanishes identically in $d < 4$; propagating
+    gravitational waves require $d \geq 4$.
+\end{enumerate}
+Therefore $d = 4$ uniquely.  The trace-reversal involution
+$L^2 = \mathrm{id}$ is proved to hold exclusively in $d = 4$
+(\texttt{LinearizedEinstein.lean}).
 \end{theorem}
+
+\subsection{The kernel dimension argument}
+
+The volume variation $\phi = \mathrm{tr}(h)$ on $n \times n$
+symmetric metric perturbations has kernel dimension $n^2 - 1$
+(\texttt{PhysicsFromOrder.lean}).  This kernel is the dressing
+sector --- the gauge and Goldstone degrees of freedom.
+
+\begin{theorem}[\texttt{kernel\_dim\_forces\_n}]
+\label{thm:kernel15}
+$n^2 - 1 = 15$ if and only if $n = 4$.  The observed 15 dressing
+modes uniquely determine the spacetime dimension.
+\end{theorem}
+
+The Standard Model has exactly $8 + 3 + 1 + 3 = 15$ gauge and
+Goldstone modes (8 gluons, 3 weak bosons, 1 hypercharge boson,
+3 Goldstone bosons absorbed by the Higgs mechanism), matching
+$\dim(\mathrm{sl}(4, \mathbb{R})) = 15$.  For any $k > 0$
+extra dimensions, the kernel grows:
 
 \begin{center}
 \small
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-Theory & Required $d$ & Exclusion & Lean theorem \\
+Theory & $n$ & $\dim(\ker) = n^2 {-} 1$ & Surplus \\
 \midrule
-String theory & $9{+}1$ & $d > 4$ fails Lovelock &
-  \texttt{string\_theory\_d9\_excluded} \\
-M-theory & $10{+}1$ & Same &
-  \texttt{m\_theory\_d10\_excluded} \\
-Kaluza-Klein & $4{+}1$ & Same &
-  \texttt{kaluza\_klein\_d5\_excluded} \\
-All $d \geq 5$ & $\geq 5$ & $d \leq 4$ derived &
-  \texttt{all\_extra\_dimensions\_excluded} \\
+Standard Model & 4 & 15 & 0 \\
+Kaluza-Klein & 5 & 24 & 9 \\
+String theory & 10 & 99 & 84 \\
+M-theory & 11 & 120 & 105 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent The standard response from string theory --- ``compactified
-dimensions do not violate the Lovelock bound because they are below
-the compactification scale'' --- does not apply here. The dimension
-squeeze derives $d = 4$ as the \emph{total} spacetime dimensionality,
-not as an effective low-energy dimension. The Lovelock upper bound
-($d \leq 4$) assumes a purely metric theory; in this framework, the
-gravitational sector \emph{is} a purely metric theory, forced by the
-Lovelock classification itself at $d = 4$. There are no additional
-dimensions at any scale --- not compactified, not large, not warped.
-The causal set has $d = 3$ spatial dimensions, period.  A theory that
-requires $d > 4$ is not merely disfavored; it is incompatible with the
-derived total dimension.
+\noindent Each surplus mode is an unobserved scalar field (a
+modulus) that must be stabilized.  The framework has zero moduli
+because $n = 4$ exactly.
+
+\subsection{Compactification cannot reduce the kernel}
+
+The standard response to the dimension constraint is
+compactification: the extra $k$ dimensions are rolled up at a
+small radius, making them unobservable at low energies.  In
+string theory, the 10-dimensional spacetime is compactified as
+$M^{10} = M^4 \times K^6$ where $K^6$ is a Calabi-Yau threefold.
+The claim is that compactification reduces the 99 kernel modes
+to the 15 observed in the Standard Model, with the remaining 84
+becoming massive.
+
+\begin{theorem}[\texttt{block\_diagonal\_kernel\_dimension}]
+\label{thm:block}
+Block-diagonal compactification $n = a + b$ produces a kernel on
+the block-diagonal subalgebra of dimension $a^2 + b^2 - 1$.
+This is always $\geq a^2$ for $b \geq 1$.  Compactification can
+only increase the kernel, never decrease it.
+\end{theorem}
+
+For string theory ($a = 4$, $b = 6$):
+
+\begin{theorem}[\texttt{string\_compactification\_too\_large}]
+$4^2 + 6^2 - 1 = 51 > 15$.  Block-diagonal compactification of
+10D to $4 + 6$ produces 51 kernel modes on the block-diagonal
+subalgebra --- more than three times the observed 15.
+\end{theorem}
+
+\begin{theorem}[\texttt{dimensional\_reduction\_cannot\_fix\_kernel}]
+\label{thm:noreduction}
+For all $n > 4$:
+\begin{enumerate}[nosep,label=(\alph*)]
+  \item The full kernel has $n^2 - 1 > 15$ modes.
+  \item Any block decomposition $n = 4 + k$ with $k \geq 1$
+    produces $\geq 16 + k^2$ kernel modes on the block-diagonal
+    subalgebra.
+  \item The moduli count $n^2 - 16 \geq 1$ is strictly positive.
+  \item Only $n = 4$ with $k = 0$ gives exactly 15.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Scope}
+
+This exclusion operates within the framework's purely metric
+gravitational sector.  A string theorist
+may reject the framework's axiom (a locally finite partial order)
+and continue working in 10 or 11 dimensions.  The exclusion
+states: \emph{if spacetime is a locally finite partial order
+whose volume variation has the trace as its source functional,
+then the spacetime dimension is exactly 4 and no compact extra
+dimensions exist at any scale.}
+
+This is not an empirical disproof of string theory.  It is a
+mathematical incompatibility: the framework's axiom and the
+requirement $d > 4$ cannot both hold.  Theories with additional
+non-metric fields (e.g., Ramond-Ramond fluxes, dilaton, form
+fields) could in principle modify the dressing sector in ways
+that the kernel dimension argument does not address; such
+theories require separate analysis.  All theorems are proved
+in \texttt{NoExtraDimensions.lean} (18 theorems, zero
+\texttt{sorry}, zero custom axioms).  The exclusion is further
+strengthened by three independent characterizations of $d = 4$
+(\texttt{DimensionTripleCoincidence.lean}, 16 theorems): kernel
+counting, trace-reversal involution, and gauge tracelessness each
+independently force $d = 4$, and no other dimension satisfies even
+one of the three.
 
 % ============================================================
 % 4. GUT EXCLUSIONS
@@ -197,7 +294,13 @@ The 15-fermion generation (Paper~I, Theorem~\ref{thm:15fermions}) is the
 unique chiral anomaly-free fermion content for the derived gauge group
 (see Paper~I: chirality, integer baryon charge, asymptotic freedom, and
 charge determinacy together force the SM uniquely, with no minimality
-assumption).
+assumption).  The fermion count $2 N_c N_w + N_w + 1$ is derived from
+the anomaly polynomial, not postulated
+(\texttt{FermionCountFromAnomaly.lean}, 18 theorems).  The exchange
+$N_c \leftrightarrow N_w$ changes the fermion count ($15 \to 16$
+for $\mathrm{SU}(3) \times \mathrm{SU}(2)$), confirming the
+color-weak distinction is physical
+(\texttt{ChiralityForced.lean}).
 
 \medskip
 \noindent
@@ -266,18 +369,22 @@ the mixed $\mathrm{U}(1)$-$\mathrm{U}(1)'$ anomaly. Therefore the
 SM hypercharge U(1) is unique and no $Z'$ boson exists.
 \end{theorem}
 
-\begin{theorem}[No landscape]
+\begin{theorem}[Unique algebraic content]
 \label{thm:nolandscape}
 The framework has zero discrete freedom. The gauge group, matter
 content, charges, and generation count are all uniquely determined.
-There is no analog of the string landscape ($\sim 10^{500}$ vacua)
---- the Standard Model is the \emph{unique} solution, not one of many.
+Unlike string theory, where many consistent low-energy theories
+exist ($\sim 10^{500}$ vacua), the algebraic content of the
+Standard Model is the unique solution within this framework.
 \end{theorem}
 
-\noindent The ``no landscape'' result excludes
-the \emph{discrete} landscape: the vast number of distinct gauge groups,
+\noindent This uniqueness result addresses the \emph{discrete}
+landscape: the vast number of distinct gauge groups,
 matter contents, and vacuum configurations that characterize the string
-landscape. The framework does contain continuous parameters --- notably
+landscape.  The ``landscape'' in string theory refers to metastable
+vacua in a complex potential; the framework does not contain an
+analogous potential, so the comparison is limited to the algebraic
+content.  The framework does contain continuous parameters --- notably
 the causal set density $\rho$ --- but the algebraic content (what
 particles exist, what charges they carry, how many generations there
 are) has a unique solution. The numerical values of mass ratios depend
@@ -394,8 +501,11 @@ P-sector ($Q = 0$) & Graviton + scalar excitation &
 The K/P framework determines the right-handed neutrino mass scale:
 $M_R = M_P$ (the Planck mass), because the causal set has no
 intermediate scale between the electroweak scale $v$ and the
-fundamental discreteness scale $M_P$.  This uniqueness is
-proved in \texttt{NeutrinoScale.lean} (8 theorems, zero sorry):
+fundamental discreteness scale $M_P$.  The absence of intermediate
+scales is an assumption of the framework, not a derivation; if new
+physics exists between $v$ and $M_P$, the seesaw scale would shift.
+Given this assumption, the uniqueness is
+proved in \texttt{NeutrinoScale.lean} (7 theorems, zero sorry):
 $M_P$ is the unique scale that minimizes the seesaw mass in a
 framework with no intermediate scales.  The seesaw formula then gives:
 \[
@@ -464,23 +574,27 @@ The framework's exclusionary power has definite limits:
 \toprule
 Property & K/P & String & LQG & CDT \\
 \midrule
-Gauge group derived & \checkmark & Partial & --- & --- \\
-Charges derived & \checkmark & Partial & --- & --- \\
-$d = 4$ derived & \checkmark & Input & \checkmark & Emergent \\
-Mass ratios computed & \checkmark & --- & --- & --- \\
-Cabibbo angle computed & \checkmark & --- & --- & --- \\
-DM candidate predicted & \checkmark & Landscape & --- & --- \\
-Formally verified & \checkmark & --- & --- & --- \\
+Gauge group derived & \checkmark$^*$ & Partial & --- & --- \\
+Charges derived & \checkmark$^*$ & Partial & --- & --- \\
+$d = 4$ derived & \checkmark$^*$ & Input & \checkmark & Emergent \\
+Mass ratios computed & \checkmark$^\dagger$ & --- & --- & --- \\
+Cabibbo angle computed & \checkmark$^\dagger$ & --- & --- & --- \\
+DM candidate predicted & \checkmark$^*$ & Landscape & --- & --- \\
+Algebraic core verified & \checkmark$^*$ & --- & --- & --- \\
 Predictions falsified & None & None & None & None \\
 \bottomrule
+\multicolumn{5}{@{}l}{\footnotesize $^*$Lean~4 verified \quad
+  $^\dagger$Computational (Monte Carlo), not formally verified}
 \end{tabular}
 \end{center}
 
 \noindent The K/P framework is the only approach that has produced
-formally verified derivations of the gauge group, charge assignments,
-and mass ratios from a common set of inputs. This does not make it
-correct --- it makes it testable in a way that other frameworks are
-not.
+formally verified derivations of the gauge group and charge
+assignments from a common set of inputs.  The mass ratios and
+mixing angles are computational results within the framework,
+not formally verified.  This does not make the framework
+correct --- it makes the algebraic core testable in a way that
+other frameworks are not.
 
 % ============================================================
 % 9. SUMMARY OF ALL EXCLUSIONS
@@ -494,14 +608,14 @@ not.
 Theory & Exclusion mechanism & Lean theorem \\
 \midrule
 \multicolumn{3}{@{}l}{\textit{Extra dimensions}} \\
-\quad String ($d{=}9{+}1$) & $d \leq 4$ (Lovelock) &
-  \texttt{string\_theory\_d9\_excluded} \\
-\quad M-theory ($d{=}10{+}1$) & Same &
+\quad String ($d{=}9{+}1$) & $n^2{-}1 = 99 \neq 15$; compactification gives 51 &
+  \texttt{string\_compactification\_too\_large} \\
+\quad M-theory ($d{=}10{+}1$) & $n^2{-}1 = 120 \neq 15$ &
   \texttt{m\_theory\_d10\_excluded} \\
-\quad Kaluza-Klein & Same &
+\quad Kaluza-Klein & $n^2{-}1 = 24 \neq 15$ &
   \texttt{kaluza\_klein\_d5\_excluded} \\
-\quad All $d \geq 5$ & Same &
-  \texttt{all\_extra\_dimensions\_excluded} \\[4pt]
+\quad All $d \geq 5$ & Kernel $> 15$; block reduction fails &
+  \texttt{dimensional\_reduction\_cannot\_fix\_kernel} \\[4pt]
 \multicolumn{3}{@{}l}{\textit{Grand unification}} \\
 \quad SU(5) GUT & Proton decay $\tau \sim 10^{31}$ yr &
   \texttt{su5\_gut\_excluded} \\
@@ -515,7 +629,7 @@ Theory & Exclusion mechanism & Lean theorem \\
 \quad $Z'$ (extra U(1)) & $\mathrm{Tr}[Y^4] \neq 0$ &
   \texttt{no\_zprime} \\[4pt]
 \multicolumn{3}{@{}l}{\textit{Structural}} \\
-\quad String landscape & Zero discrete freedom &
+\quad Unique algebraic content & Zero discrete freedom &
   \texttt{no\_landscape} \\
 \quad Anti-gravity & $\mathrm{obs} \geq 0$, CPT &
   \texttt{positivity} \\
@@ -567,7 +681,10 @@ prevents overclaiming.
 \section*{Code and Data Availability}
 
 All exclusion theorems are formally verified in the Lean~4 codebase
-at \url{https://github.com/tomdif/unifiedtheory} (tag v2.0.0).
+(35+ core files, $\sim$1{,}600+ theorems, zero \texttt{sorry}, zero custom
+axioms) at \url{https://github.com/tomdif/unifiedtheory}.
+The three companion papers are archived at
+\href{https://doi.org/10.5281/zenodo.19171801}{doi:10.5281/zenodo.19171801}.
 
 % ============================================================
 % REFERENCES

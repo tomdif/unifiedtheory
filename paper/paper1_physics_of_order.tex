@@ -29,15 +29,29 @@
 % ============================================================
 \begin{abstract}
 The complete algebraic structure of the Standard Model of particle
-physics is derived from a single axiom: a locally finite partial
-order.  No additional mathematical structure is assumed.  No
-physical conditions are imposed.  The Lorentzian metric, the speed
+physics is derived from a single physical principle: the
+irreversibility of decoherence on a finite discrete set.  The
+locally finite partial order --- the framework's starting
+axiom --- is not an independent postulate; it is the unique
+algebraic structure consistent with irreversible information loss
+(the second law of thermodynamics applied to quantum correlators)
+on a discrete set with composable channels
+(\texttt{DecoherenceIsPartialOrder.lean}).
+
+From this foundation, the Lorentzian metric, the speed
 of light, quantum linearity, the gauge group $\mathrm{SU}(3) \times
 \mathrm{SU}(2) \times \mathrm{U}(1)$, every electric charge, three
 generations, the Weinberg angle $\sin^2\theta_W = 3/8$, the gauge
 coupling $g^2 = 2N/\beta_c$, proton stability, the uniqueness of
 the hypercharge $\mathrm{U}(1)$, and the form of the Higgs potential
-$V = \mu^2|\phi|^2 + \lambda|\phi|^4$ are all theorems.
+$V = \mu^2|\phi|^2 + \lambda|\phi|^4$ are all algebraic theorems
+of the framework, formally verified in Lean~4.
+The physical identification of these algebraic objects with
+observed particles and fields is a separate interpretive step,
+discussed in the Assumptions and Limitations section.
+The converse also holds: the observed Standard Model gauge content
+(12 bosons $+$ 3 Goldstones $= 15$) uniquely forces $d = 4$
+(\texttt{GaugeContentForcesD4.lean}).
 
 The continuum limit is not assumed --- it is constructed.  A specific,
 deterministic causal set is built from the prime numbers via
@@ -50,18 +64,19 @@ is determined by the lattice phase transition
 (\texttt{Lattice\-Coupling.lean}).  No additional inputs are required.
 
 Every step is formally verified in Lean~4 using the Mathlib library:
-25 core files in the derivation chain ($\sim$4{,}600 lines), within a
-larger codebase of $\sim$17{,}000 lines across 80 files.
+35+ core files in the derivation chain ($\sim$7{,}000 lines), within a
+larger codebase of $\sim$35{,}000 lines across 172 files, comprising
+$\sim$1{,}600+ theorems.
 Zero \texttt{sorry} statements, zero
 custom axioms.  The \texttt{\#print axioms} command on the capstone
 theorem returns only Lean's built-in foundations (\texttt{propext},
 \texttt{Classical.choice}, \texttt{Quot.sound}).  The codebase
-compiles end-to-end with \texttt{lake build}: 2{,}367 jobs, zero
+compiles end-to-end with \texttt{lake build}, zero
 errors.  The gauge group is uniquely
 forced by chirality, integer baryon charge, asymptotic freedom, and
-charge determinacy.  The Standard Model is not the simplest gauge
-theory.  It is the only gauge theory compatible with a finite partial
-order and the existence of atoms.
+charge determinacy.  The algebraic structure of the Standard Model
+is not the simplest gauge theory.  It is the only gauge algebra
+compatible with a finite partial order and the existence of atoms.
 \end{abstract}
 
 % ============================================================
@@ -75,10 +90,11 @@ $\preceq$ that is reflexive, antisymmetric, and transitive.
 Undergraduates encounter it in the first weeks of a discrete
 mathematics course.
 
-This paper proves that the Standard Model of particle physics ---
+This paper proves that the algebraic structure of the Standard Model
+of particle physics ---
 its gauge group, its matter content, its charge assignments, its
 coupling relations --- is a theorem of a locally finite partial order.
-The logical structure is purely deductive.  The single axiom is:
+The logical structure is purely deductive.  The axiom is:
 
 \begin{quote}
 \emph{There exists a locally finite partially ordered set
@@ -86,6 +102,22 @@ $(\mathcal{C}, \preceq)$, where locally finite means that every
 interval $[a, b] = \{x : a \preceq x \preceq b\}$ contains finitely
 many elements.}
 \end{quote}
+
+\noindent This axiom is not an arbitrary starting point.  The partial
+order is the unique algebraic structure that emerges from irreversible
+decoherence on a finite discrete set: antisymmetry follows from the
+irreversibility of information loss ($\gamma^2 < \gamma$ for
+decoherence channels), transitivity from channel composition, and
+local finiteness from finite density
+(\texttt{DecoherenceIsPartialOrder.lean}).  The second law of
+thermodynamics, applied to quantum correlators, generates the
+partial order.
+
+The derivation assumes one unproved mathematical conjecture: the
+Hauptvermutung of causal set theory, which states that a
+manifold-like causal set uniquely determines the Lorentzian
+metric up to conformal isometry.  All other steps in the chain
+are machine-checked theorems.
 
 No metric, no Hilbert space, no gauge group, no Lagrangian, no
 quantum mechanics is assumed.  Each of these structures is derived.
@@ -128,9 +160,10 @@ This work is presented as three companion papers.
 no numerics, no Monte Carlo, no fitting.  Every theorem is formally
 verified.
 \emph{Paper~II} (``Fermion Mass Ratios from the K/P Projection'')
-computes nine zero-parameter predictions (five mass ratios, the
+computes nine predictions from a single free parameter
+(the sprinkling density $\rho$): five mass ratios, the
 Cabibbo angle, the CKM hierarchy, the Higgs mass-to-VEV ratio, and
-the electroweak scale) from the algebraic structure derived here.
+the electroweak scale.
 \emph{Paper~III} (``Exclusions and Predictions'') derives the
 impossibility of anti-gravity, excludes ten BSM theories, and
 identifies the boundaries of the framework's exclusionary power.
@@ -150,8 +183,9 @@ is arithmetic, not a law of nature.
 
 \begin{theorem}[Hauptvermutung: from causal order to unique metric]
 \label{thm:hauptvermutung}
-The bridge from discrete counting to continuous geometry is proven in
-four steps:
+Under the assumption that the causal set is manifold-like (admits a
+faithful embedding into a Lorentzian manifold), the bridge from
+discrete counting to continuous geometry proceeds in four steps:
 \begin{enumerate}[nosep]
   \item \textbf{Causal order $\to$ null cone.}  Dense causal links
     determine the null cone.  The speed of light $c = 1$ is a theorem:
@@ -193,7 +227,7 @@ conditional: for a partial order that is manifold-like and satisfies
 the future- and past-distinguishing conditions of Malament's
 theorem~[1], the metric is uniquely determined.  The distinguishing
 conditions are proved in \texttt{DistinguishingSpacetime.lean}
-(14 theorems): every linear order is both future- and
+(8 theorems): every linear order is both future- and
 past-distinguishing, and $\mathbb{N}$ satisfies Malament's
 conditions as a concrete witness.  The prime-phase construction
 inherits the distinguishing property from Minkowski spacetime.
@@ -262,6 +296,9 @@ and the Born rule --- require additional structure.  The Born rule
 is derived in Paper~II from the SO(2) invariance of the observable
 $\mathrm{obs} = Q^2 + P^2$, proved to be the unique
 rotation-invariant quadratic form (\texttt{BornRuleUnique.lean}).
+The quadraticity itself is derived from additivity of probabilities
+and composition of subsystems (\texttt{BornRuleQuadratic.lean},
+20 theorems): the observable must be degree~2.
 The full quantum structure therefore
 has two sources: linearity from counting (this paper) and the Born
 rule from SO(2) invariance (Paper~II).
@@ -335,8 +372,8 @@ Higgs potential form & Derived & Renormalizability in $d = 4$ \\
 \end{tabular}
 \end{center}
 
-\noindent\textit{Lean verification: 25 core files, $\sim$4{,}600 lines
-(within $\sim$17{,}000 total),
+\noindent\textit{Lean verification: 35+ core files, $\sim$7{,}000 lines
+(within $\sim$35{,}000 total),
 zero sorry, zero custom axioms.}
 \begin{center}
 \begin{tabular}{@{}ll@{}}
@@ -366,7 +403,17 @@ File & Content \\
 \texttt{AuxiliaryConditions.lean} & Chirality, integer $Q_B$ from local finiteness \\
 \texttt{VEVForced.lean} & Nontrivial gauge $\to$ nonzero K-sector VEV \\
 \texttt{BornRuleUnique.lean} & $Q^2 + P^2$ unique SO(2)-invariant quadratic \\
+\texttt{WeinbergAngle.lean} & $\sin^2\theta_W = 3/8$ from hypercharges \\
+\texttt{FermionCountFromAnomaly.lean} & 15 fermions derived from anomaly polynomial \\
+\texttt{DimensionTripleCoincidence.lean} & Three independent $d{=}4$ proofs unified \\
+\texttt{LatticeReflectionPositivity.lean} & Osterwalder-Seiler positivity \\
 \texttt{HiggsPotentialForm.lean} & $V = \mu^2|\phi|^2 + \lambda|\phi|^4$ \\
+\texttt{GaugeContentForcesD4.lean} & SM content forces $n{=}4$ (converse) \\
+\texttt{ChiralityForced.lean} & K/P split forces chiral fermions \\
+\texttt{LinearityFromUnitarization.lean} & Finite holonomy $\to$ unitary $\to$ linear \\
+\texttt{ModuliCannotBeRemoved.lean} & Stabilization adds parameters; $d{=}4$ unique \\
+\texttt{DecoherenceIsPartialOrder.lean} & Second law $\to$ partial order (fixed point) \\
+\texttt{FrameworkAxioms.lean} & Honest enumeration of all assumptions \\
 \texttt{PhysicsFromOrder.lean} & Capstone structure \\
 \bottomrule
 \end{tabular}
@@ -385,14 +432,20 @@ intersection:
   \item \textbf{Lovelock upper bound} ($d \leq 4$).
     The Gauss-Bonnet tensor $H_{ab}$ vanishes identically for
     $d \leq 4$.  For $d \geq 5$, higher Lovelock invariants
-    contribute to the field equations and Einstein gravity is no longer
-    unique.  Pure combinatorics (antisymmetric index pigeonhole).
+    contribute additional terms to the gravitational field equations;
+    the framework's purely metric gravitational sector (derived from
+    the trace functional) matches Einstein gravity, and this match
+    is unique only in $d \leq 4$.  In $d \geq 5$, additional
+    Gauss-Bonnet terms are permitted but not required; the framework
+    provides no mechanism to set their coefficients to zero.
   \item \textbf{Graviton lower bound} ($d \geq 4$).
     In $d = 3$ spacetime, the Weyl tensor vanishes and gravity is
     topological (zero local degrees of freedom).  Propagating gravity
     with the observed two polarizations requires $d \geq 4$.
 \end{enumerate}
-Therefore $d = 4$ uniquely.  No axiom encodes the answer.
+Therefore $d = 4$ is the unique dimension where the derived
+gravitational sector is both propagating and complete (no additional
+terms permitted).  No axiom encodes the answer.
 \end{theorem}
 
 \noindent\textbf{Cross-check (Yang-Mills tracelessness).}
@@ -404,6 +457,14 @@ The linearized Einstein operator $L(h) = h - \tfrac{1}{2}\mathrm{tr}(h)I$
 satisfies $L^2 = \mathrm{id}$ if and only if $d = 4$
 (\texttt{LinearizedEinstein.lean: traceReversal\_involutive\_4d}).
 A third independent route to the same dimension.
+
+\noindent These three results --- kernel counting ($n^2 - 1 = 15$),
+trace-reversal involutivity, and Yang-Mills tracelessness --- are
+proved to coincide uniquely at $d = 4$
+(\texttt{DimensionTripleCoincidence.lean}).  The coincidence is not
+an accident: $d = 4$ is the unique dimension where the traceless
+sector and the trace sector are exactly orthogonal under the
+Einstein inner product.
 
 % ============================================================
 % 5. GAUGE GROUP
@@ -459,7 +520,7 @@ survives all four conditions simultaneously.
 
 The one-loop beta function coefficient
 $\beta_0 = (11 N_c - 2 N_f)/3$ is proved in
-\texttt{Asymptotic\-Freedom.lean} (15 theorems).  For the
+\texttt{Asymptotic\-Freedom.lean} (14 theorems).  For the
 K/P-derived fermion content at each $N_c$, $\beta_0 > 0$
 (asymptotically free) if and only if $N_c \leq 4$.  The formula
 for $\beta_0$ is a standard one-loop result stated as a definition;
@@ -470,7 +531,9 @@ Lean theorem.
 \label{thm:15fermions}
 The 15 Weyl fermions per generation --- $(3,2) + 3 \times (\bar{3},1)
 + (1,2) + (1,1)$ --- are uniquely forced by the derived gauge group,
-chirality, and anomaly cancellation.
+chirality, and anomaly cancellation.  The fermion count is
+\emph{derived} from the anomaly polynomial, not postulated
+(\texttt{FermionCountFromAnomaly.lean}, 18 theorems).
 \end{theorem}
 
 \begin{theorem}[Three generations]
@@ -479,6 +542,15 @@ $N_g = 3$ from two independent arguments: the CP-violation requirement
 ($N_g \geq 3$ for a physical CKM phase) and the fiber structure of
 the K/P projection ($N_g = 3$ independent CP fibers).
 \end{theorem}
+
+\noindent The fiber argument: the K/P projection maps the holonomy
+$U_\gamma \in \mathrm{SU}(2)$ to a point in the $(Q, P)$ plane.
+The CP transformation acts as complex conjugation on this plane,
+creating a $\mathbb{Z}_2$ fiber over each projected point.  The
+number of independent fibers equals the number of distinct
+CP-conjugation orbits in the $\mathrm{SU}(2)$ representation space,
+which is $N_w + 1 = 3$ for $N_w = 2$.  Each fiber corresponds to
+one generation.
 
 % ============================================================
 % 6. CHARGE QUANTIZATION
@@ -528,10 +600,11 @@ theorem of the anomaly structure.
 
 \begin{theorem}[Weinberg angle]
 \label{thm:weinberg}
-The zero-gap chain:
-$\text{anomaly cancellation} \to y_Q = 1/6 \to
-\mathrm{Tr}[Y^2] = 10/3 \to
-\sin^2\theta_W = 2/(2 + 10/3) = 3/8$.
+The zero-gap chain
+(\texttt{Weinberg\-Angle.lean}, 21 theorems):
+anomaly cancellation $\to y_Q = 1/6 \to
+\mathrm{Tr}[Y^2] = 10/3$, giving
+$\sin^2\theta_W = 3/8$.
 Unlike the standard GUT derivation (which assumes SU(5) or SO(10)
 embedding), this follows from anomaly cancellation at the SM gauge
 group itself.
@@ -689,15 +762,21 @@ Continuum limit (prime-phase) & Lean~4 & Zero sorry \\
 Charge consistency, $Q_e \neq 0$ & Lean~4 & Zero sorry \\
 Gauge coupling $g^2$ & Lean~4 & Zero sorry \\
 Higgs potential form & Lean~4 & Zero sorry \\
-Discrete Ambrose-Singer & Lean~4 & Zero sorry (27 thms) \\
+Discrete Ambrose-Singer & Zero sorry (22 thms) \\
 Casimir scaling ($m_t/m_b$) & Lean~4 & Zero sorry (9 thms) \\
-Asymptotic freedom & Lean~4 & Zero sorry (15 thms) \\
-Distinguishing spacetime & Lean~4 & Zero sorry (14 thms) \\
-Neutrino scale $M_R = M_P$ & Lean~4 & Zero sorry (8 thms) \\
+Asymptotic freedom & Lean~4 & Zero sorry (14 thms) \\
+Distinguishing spacetime & Lean~4 & Zero sorry (8 thms) \\
+Neutrino scale $M_R = M_P$ & Lean~4 & Zero sorry (7 thms) \\
 Anomaly from order & Lean~4 & Zero sorry \\
 Auxiliary conditions & Lean~4 & Zero sorry \\
 K-sector VEV forced & Lean~4 & Zero sorry \\
 Born rule uniqueness & Lean~4 & Zero sorry \\
+Weinberg angle $\sin^2\theta_W = 3/8$ & Lean~4 & Zero sorry (21 theorems) \\
+Fermion count from anomaly & Lean~4 & Zero sorry (18 theorems) \\
+$d{=}4$ triple coincidence & Lean~4 & Zero sorry (16 theorems) \\
+Lattice reflection positivity & Lean~4 & Zero sorry (27 theorems) \\
+Born rule must be quadratic & Lean~4 & Zero sorry (20 theorems) \\
+Decoherence rate from $\rho$ & Lean~4 & Zero sorry (12 theorems) \\
 \midrule
 Mass ratios (Paper~II) & Monte Carlo & Computational \\
 Cabibbo angle (Paper~II) & Monte Carlo & 20 seeds \\
@@ -805,13 +884,14 @@ several additional results:
     independently yields exactly three.  The number of generations
     is forced, not assumed.
 
-  \item \textbf{The Born rule is the unique SO(2)-invariant
-    quadratic form.}  The K/P split yields a natural SO(2) rotation
-    symmetry between the position-like (K) and momentum-like (P)
-    components.  The observable $Q^2 + P^2$ is the unique
-    rotation-invariant quadratic form.  Linearity is a necessary
-    condition from counting (Section~2); the probabilistic
-    interpretation follows from the SO(2) invariance (Paper~II).
+  \item \textbf{The Born rule is forced to be quadratic.}
+    The K/P split yields a natural SO(2) rotation symmetry.  The
+    observable $Q^2 + P^2$ is the unique rotation-invariant
+    quadratic form (\texttt{BornRuleUnique.lean}).  The
+    \emph{quadraticity} itself is derived from additivity of
+    probabilities and composition of subsystems
+    (\texttt{BornRuleQuadratic.lean}): no other polynomial
+    degree is consistent with both requirements.
 
   \item \textbf{Dark matter is a mandatory prediction.}
     The P-sector of the K/P decomposition produces an excitation
@@ -832,11 +912,12 @@ several additional results:
     derived dimensionality.  The anomaly structure excludes embedding
     the gauge group into any simple GUT (Paper~III).
 
-  \item \textbf{There is no landscape of vacua.}  Every discrete
+  \item \textbf{The algebraic content is unique.}  Every discrete
     choice --- gauge group, matter content, generations, hypercharges
     --- is uniquely forced.  The only continuous parameter is the
-    sprinkling density $\rho$, a single real number.  There is no
-    analog of the string landscape.
+    sprinkling density $\rho$, a single real number.  Unlike string
+    theory, where many consistent low-energy algebraic structures
+    exist, this framework admits only one.
 
   \item \textbf{The electroweak hierarchy reduces to a single
     lattice coefficient.}  The Coleman-Weinberg mechanism with
@@ -856,13 +937,69 @@ several additional results:
 \end{enumerate}
 
 % ============================================================
+% ASSUMPTIONS AND LIMITATIONS
+% ============================================================
+\subsection{Assumptions and limitations}
+
+The derivation chain rests on the following assumptions, each
+explicitly catalogued in \texttt{Framework\-Axioms.lean}:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{The partial order is manifold-like}
+    (Hauptvermutung).  The causal set admits a faithful embedding
+    into a Lorentzian manifold.  This is a conjecture in causal
+    set theory, not a theorem.  It is the only unproved mathematical
+    conjecture in the derivation chain.
+
+  \item \textbf{The identification of the trace functional with the
+    quantum amplitude} is a physical interpretation, not a Lean
+    theorem.  What is proved: the trace is the unique
+    $\mathrm{GL}(n)$-invariant linear form on symmetric
+    perturbations.
+
+  \item \textbf{Chirality follows from the K/P split} via the
+    exchange automorphism: gauge factors with different K-sector
+    dimensions cannot be exchanged, forcing chiral fermion
+    couplings (\texttt{ChiralityForced.lean}).  The connection
+    from algebraic asymmetry to physical chirality is a
+    physical identification.
+
+  \item \textbf{The mass predictions} (Paper~II) use specific
+    modeling choices within the framework: holonomy averaging
+    along causal chains, the Fritzsch texture for CKM elements,
+    and the Coleman-Weinberg mechanism for the electroweak scale.
+    These are computed within the framework, not derived from
+    the partial order alone.
+
+  \item \textbf{The extra-dimension exclusions} address algebraic
+    compactification (block-diagonal restriction of the
+    perturbation algebra).  Dynamical stabilization mechanisms
+    (fluxes, orientifold projections) operate outside this
+    algebraic framework (\texttt{ModuliCannotBeRemoved.lean}
+    proves that stabilization adds free parameters, with $d = 4$
+    uniquely requiring zero).
+
+  \item \textbf{The lattice-to-continuum matching coefficient}
+    $c_1$ in the Coleman-Weinberg computation is not yet computed
+    from first principles.  The electroweak scale $v = 297$~GeV
+    at $c_1 = 1.0$ represents a 21\% discrepancy with experiment.
+\end{enumerate}
+
+\noindent The Lean~4 codebase makes the logical dependencies
+between these assumptions explicit.  Every theorem states its
+hypotheses; the \texttt{FrameworkAxioms.lean} file enumerates
+which physical inputs are assumed, which are derived, and which
+are motivated but unproved.
+
+% ============================================================
 % CODE AND DATA AVAILABILITY
 % ============================================================
 \section*{Code and Data Availability}
 
-The complete Lean~4 source code is available at
-\url{https://github.com/tomdif/unifiedtheory} (tag v2.0.0).
-Build instructions: \texttt{lake build} (2{,}367 jobs, zero errors).
+The complete Lean~4 source code (35+ core files, $\sim$1{,}600+ theorems,
+zero \texttt{sorry}, zero custom axioms) is available at
+\url{https://github.com/tomdif/unifiedtheory}.
+Build instructions: \texttt{lake build} (zero errors).
 The three companion papers are archived at
 \href{https://doi.org/10.5281/zenodo.19171801}{doi:10.5281/zenodo.19171801}.
 
