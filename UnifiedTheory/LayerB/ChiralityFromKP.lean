@@ -147,8 +147,7 @@ theorem chirality_from_kp_split
 
 /-! ## Chirality is necessary for nontrivial gauge structure -/
 
--- REMOVED: Former `vectorlike_is_trivial_on_charge` was just `hφ v`
--- (applying the hypothesis directly). Deleted per audit finding #5.
+-- Former `vectorlike_is_trivial_on_charge` removed (was redundant with hypothesis).
 
 /-- **Nontrivial gauge action requires chirality.**
 

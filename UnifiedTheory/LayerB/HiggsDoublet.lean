@@ -1,7 +1,7 @@
 /-
   LayerB/HiggsDoublet.lean — The Higgs SU(2) doublet from the K/P framework
 
-  All 5 audit gaps closed:
+  Proves:
   (1) General VEV rotation: ANY nonzero doublet → (0,v) by explicit SU(2) construction
   (2) Derivative verification: V(ρ₀+ε) = V(ρ₀) + b·ε² proven as polynomial identity
   (3) Goldstone masslessness: V constant on SU(2) orbits → flat directions at VEV
@@ -46,7 +46,7 @@ theorem su2_preserves_norm (α β : ℂ) (Φ : HiggsField)
              sq_nonneg α.re, sq_nonneg α.im, sq_nonneg β.re, sq_nonneg β.im]
 
 
-/-! ## GAP 1 CLOSED: General VEV gauge rotation
+/-! ## Section 1: General VEV gauge rotation
 
     For ANY nonzero doublet Φ = (φ₁, φ₂), the SU(2) element
       α = φ₂/|Φ|,  β = -φ₁/|Φ|
@@ -119,7 +119,7 @@ theorem potential_su2_invariant (a b : ℝ) (α β : ℂ) (Φ : HiggsField)
   rw [su2_preserves_norm α β Φ h_unitary]
 
 
-/-! ## GAP 2 CLOSED: Global minimum (not just critical point)
+/-! ## Section 2: Global minimum (not just critical point)
 
     We prove V(ρ) ≥ V(ρ₀) for ALL ρ, not just that V'(ρ₀) = 0.
     This is the GLOBAL minimum statement, strictly stronger than
@@ -182,7 +182,7 @@ theorem vacuum_energy_negative (a b : ℝ) (ha : 0 < a) (hb : 0 < b) :
   · positivity
 
 
-/-! ## GAP 3 CLOSED: Goldstone masslessness
+/-! ## Section 3: Goldstone masslessness
 
     The potential V depends only on |Φ|². SU(2) transformations preserve |Φ|².
     Therefore V is CONSTANT along SU(2) orbits. This means: the second
@@ -239,7 +239,7 @@ theorem three_independent_flat_directions (a b v : ℝ) :
   }
 
 
-/-! ## GAP 4 CLOSED: Generator counting from matrix dimension
+/-! ## Section 4: Generator counting from matrix dimension
 
     dim(SU(N)) = N²-1 because the Lie algebra is traceless anti-Hermitian
     N×N matrices. The space of N×N matrices has dimension N² (real) for
@@ -305,7 +305,7 @@ theorem su2_has_three_generators :
   ⟨pauli1_traceless, pauli2_traceless, pauli3_traceless, pauli_independent⟩
 
 
-/-! ## GAP 5 CLOSED: Goldstone counting from rank -/
+/-! ## Section 5: Goldstone counting from rank -/
 
 def suGenerators (N : ℕ) : ℕ := N ^ 2 - 1
 def ewGenerators (N : ℕ) : ℕ := N ^ 2
@@ -340,7 +340,7 @@ theorem doubletNorm_nonneg (Φ : HiggsField) : 0 ≤ doubletNormSq Φ := by
 
 /-! ## Capstone -/
 
-/-- **THE HIGGS DOUBLET: ALL GAPS CLOSED.**
+/-- **THE HIGGS DOUBLET: COMPLETE DERIVATION.**
 
     (1) SU(2) preserves |Φ|² [from explicit computation]
     (2) V(UΦ) = V(Φ) [from norm preservation]

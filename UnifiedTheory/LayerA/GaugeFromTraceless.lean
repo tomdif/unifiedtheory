@@ -1,11 +1,9 @@
 /-
   LayerA/GaugeFromTraceless.lean — Traceless matrices carry gauge structure
 
-  THE GAP CLOSED:
-    The codebase establishes that the kernel of trace (= traceless matrices)
-    is the dressing sector, but never formally proves that traceless matrices
-    form a Lie algebra closed under the adjoint action. This file bridges
-    "traceless matrices" to "gauge bosons" by proving:
+  Proves that the kernel of trace (= traceless matrices = the dressing
+  sector) forms a Lie algebra closed under the adjoint action. This
+  bridges "traceless matrices" to "gauge bosons" by proving:
 
   THREE THEOREMS (zero sorry, zero axioms):
 

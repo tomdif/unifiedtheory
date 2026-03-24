@@ -292,10 +292,8 @@ theorem full_hauptvermutung :
 
 /-! ## Part 2: WHY POISSON — derivation from symmetry
 
-The critic's objection: "The Chebyshev argument assumes Poisson sprinkling.
-This is not a purely combinatorial theorem."
-
-Response: We derive the Poisson property (Var = Mean) from three axioms:
+The Chebyshev argument uses Poisson sprinkling (Var = Mean).
+We derive this property from three symmetry axioms:
   (A) Mean ∝ volume (Lorentz invariance)
   (B) Variance is additive across disjoint regions (causal independence)
   (C) Variance at unit volume equals density (single physical input: ρ atoms/volume)
