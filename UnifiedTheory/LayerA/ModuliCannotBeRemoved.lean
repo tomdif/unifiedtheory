@@ -1,9 +1,10 @@
 /-
   LayerA/ModuliCannotBeRemoved.lean — Moduli stabilization does not reduce kernel dimension
 
-  This file closes the "flux stabilization" loophole in the extra dimensions
-  argument.  The criticism: "string theory can stabilize moduli with fluxes,
-  so your kernel counting is incomplete."
+  Stabilization (e.g. by fluxes) makes moduli massive but does not remove
+  them as degrees of freedom. This file proves that the number of
+  stabilization parameters required equals n² - 16 for n > 4, and that
+  d = 4 is the unique dimension requiring zero stabilization parameters.
 
   The key insight: making moduli MASSIVE changes their dynamics (they oscillate
   around a minimum of a potential V(phi) with V''(phi_0) > 0) but does NOT

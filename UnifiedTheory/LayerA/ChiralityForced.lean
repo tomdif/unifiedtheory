@@ -1,12 +1,9 @@
 /-
-  LayerA/ChiralityForced.lean — Isomorphic gauge factors are FORBIDDEN
+  LayerA/ChiralityForced.lean — Isomorphic gauge factors are forbidden
 
-  THE GAP THIS CLOSES:
-
-  The criticism: "chirality from K/P is re-expressed, not derived."
-  ChiralityFromKP.lean and ChiralDistinctness.lean prove that IF the K/P split
-  exists, THEN gauge actions have asymmetric effects. But they don't prove the
-  KEY step: that ISOMORPHIC gauge factors are FORBIDDEN.
+  Proves that exchanging the color and weak gauge factors changes the
+  fermion count, hence is not a symmetry of the theory. This establishes
+  that Nc ≠ Nw is a consequence of the fermion content, not an assumption.
 
   THE ARGUMENT (fermion counting):
 

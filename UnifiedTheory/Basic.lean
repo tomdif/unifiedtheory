@@ -81,7 +81,7 @@
          → phase-averaging decoherence
 
   ═══════════════════════════════════════════════════════
-  AUDIT CLASSIFICATION
+  THEOREM CLASSIFICATION
   ═══════════════════════════════════════════════════════
 
   EXACT (theorem, no approximation):

@@ -1,15 +1,12 @@
 /-
-  LayerA/FrameworkAxioms.lean — Honest enumeration of framework assumptions
+  LayerA/FrameworkAxioms.lean — Enumeration of framework assumptions
 
-  The unified theory claims to derive physics from minimal inputs.
-  Critics rightly ask: what are the ACTUAL inputs?
+  The unified theory derives physics from minimal inputs. This file
+  makes every assumption explicit, classifies each as AXIOM / DERIVED /
+  PARTIAL, proves the five inputs are independent, and catalogues
+  what is derived from which combinations.
 
-  This file makes every assumption explicit, classifies each as
-  AXIOM / DERIVED / PARTIAL, proves the five inputs are independent,
-  and catalogues what is derived from which combinations.
-
-  The main value is HONESTY, not deep math.
-  Zero sorry. Zero custom axioms. Minimal imports.
+  Zero sorry. Zero custom axioms.
 -/
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Linarith

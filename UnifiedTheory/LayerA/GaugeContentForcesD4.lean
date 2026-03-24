@@ -19,11 +19,9 @@
     - Forward: partial order → d = 4 → SM
     - Converse: SM → d = 4 → consistent with partial order
 
-  The converse addresses criticism (a): "why a partial order?"
-  Answer: because the SM gauge content, interpreted as traceless metric
-  perturbations, uniquely determines n = 4. The partial order is not
-  an arbitrary choice — it is the unique discrete structure consistent
-  with the observed gauge content.
+  The SM gauge content, interpreted as traceless metric perturbations,
+  uniquely determines n = 4. The partial order is the unique discrete
+  structure consistent with the observed gauge content.
 
   Zero sorry. Zero custom axioms. All proofs by arithmetic.
 -/

@@ -30,8 +30,8 @@
   - Why v/M_P is 10⁻¹⁷ and not some other small number
 
   WHY THE CAUSAL SET IS DIFFERENT FROM A LATTICE:
-  OBJECTION: "Lattice QFT is also discrete, yet the hierarchy problem
-  persists on the lattice (δμ² ~ 1/a²)." The answer:
+  Lattice QFT is also discrete, yet the hierarchy problem persists
+  on the lattice (δμ² ~ 1/a²). The distinction:
   - The lattice is a REGULATOR — an artificial discretization. The continuum
     limit a → 0 IS the physical theory. Tuning is needed to take that limit.
   - The causal set is FUNDAMENTAL — there is no continuum limit to take.

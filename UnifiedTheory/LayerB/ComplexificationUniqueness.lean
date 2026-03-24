@@ -1,24 +1,12 @@
 /-
   LayerB/ComplexificationUniqueness.lean — ℂ is the unique K/P realization
 
-  Answers the "packaging choice" criticism: the identification (Q,P) ↦ Q+iP
-  is not arbitrary. It is the UNIQUE continuous 2D real division algebra
-  up to isomorphism. This is the Frobenius theorem (restricted to 2D).
+  The identification (Q,P) ↦ Q+iP is the UNIQUE continuous 2D real
+  division algebra up to isomorphism (Frobenius theorem, restricted to 2D).
 
-  The theorem: any 2D real algebra with
-    - additive composition
-    - a multiplicative structure
-    - continuous rotation symmetry
-    - a nondegenerate norm
-  is isomorphic to ℂ (up to orientation).
-
-  More precisely: if (ℝ², +, ·) is a 2D real division algebra,
-  then it is isomorphic to ℂ or its conjugate. There is no other
-  choice. The complex structure is forced, not selected.
-
-  This directly addresses the panel's criticism:
-    "z = Q + iP is a packaging choice, not a derivation."
-  Answer: it is the unique choice among continuous 2D division algebras.
+  If (ℝ², +, ·) is a 2D real division algebra with a multiplicative norm,
+  then it is isomorphic to ℂ or its conjugate. The complex structure
+  is forced by the algebra, not selected by convention.
 -/
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
