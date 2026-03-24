@@ -35,10 +35,12 @@ within the purely metric sector,
 exclude six grand unified theories, prove the absence of a string
 landscape, predict a dark matter candidate from the P-sector of
 the K/P decomposition (electrically neutral, massive, gravitationally
-interacting, self-conjugate --- all formally verified), and predict
-the lightest neutrino mass $m_1 \sim 0.005$~eV from the seesaw
-mechanism with $M_R = M_P$ (assuming no intermediate scale between
-$v$ and $M_P$).
+interacting, self-conjugate --- all formally verified; mass
+computation in progress), and predict
+the lightest neutrino mass $m_1 \approx 5\;\mu$eV
+(normal ordering with $m_1 \approx 0$)
+from the seesaw mechanism with $M_R = M_P$ (assuming no intermediate
+scale between $v$ and $M_P$).
 All exclusion theorems are formally verified in Lean~4.
 The anti-gravity impossibility follows from three independent routes,
 each blocked by the derived structure. The extra-dimension exclusions
@@ -435,6 +437,7 @@ not introduce a new particle.
 % 7. DARK MATTER FROM THE P-SECTOR
 % ============================================================
 \section{Dark Matter from the P-Sector}
+\label{sec:darkmatter}
 
 The K/P decomposition that generates the Standard Model also predicts
 a dark matter candidate.  This is not an ad hoc particle added to
@@ -469,9 +472,21 @@ electrically neutral, massive, interacting only gravitationally, and
 distinct from all known Standard Model particles.
 
 \medskip
-\noindent\textbf{What is not yet determined.}
-The mass depends on the causal set discreteness scale (computable but
-not yet computed).  Stability requires a topological or discrete
+\noindent\textbf{Mass: not yet computed.}
+The P-sector scalar mass requires a correlator computation on the
+traceless (P) component of the gauge holonomy.  The SU(2) weak
+sector is unsuitable because the K and P components are
+complementary parts of a unit vector ($K^2 + P^2 = 1$), not
+independent degrees of freedom.  A valid computation requires
+the SU(3) color sector, where the 8-dimensional traceless algebra
+has genuinely independent components.  This computation is in
+progress; the mass is expected to lie in the GeV--TeV range based
+on the correlator decay scales observed in the K-sector, but no
+specific value is reported here.
+
+\medskip
+\noindent\textbf{What remains open.}
+Stability requires a topological or discrete
 symmetry argument (the winding number of the U(1) dressing phase is a
 candidate).  The relic abundance requires a cosmological calculation
 (thermal freeze-out or gravitational production).  These are open
@@ -507,15 +522,23 @@ physics exists between $v$ and $M_P$, the seesaw scale would shift.
 Given this assumption, the uniqueness is
 proved in \texttt{NeutrinoScale.lean} (7 theorems, zero sorry):
 $M_P$ is the unique scale that minimizes the seesaw mass in a
-framework with no intermediate scales.  The seesaw formula then gives:
+framework with no intermediate scales.  The seesaw formula gives:
 \[
-  m_\nu = \frac{v^2}{M_P} = \frac{(246\;\mathrm{GeV})^2}
-  {1.2 \times 10^{19}\;\mathrm{GeV}} \approx 0.005\;\mathrm{eV}
+  m_1 = \frac{v^2}{M_P} = \frac{(246.22\;\mathrm{GeV})^2}
+  {1.221 \times 10^{19}\;\mathrm{GeV}}
+  = 4.96 \times 10^{-6}\;\mathrm{eV} \approx 5\;\mu\mathrm{eV}
 \]
-This is the lightest neutrino mass $m_1$.  The heavier masses follow
-from the K/P projection applied to the lepton sector, giving
-$m_2 \sim 0.009$~eV and $m_3 \sim 0.05$~eV (from the atmospheric
-mass splitting $\Delta m^2 \approx 2.5 \times 10^{-3}$~eV$^2$).
+This is essentially zero on the scale of observed neutrino mass
+splittings: $\Delta m^2_{21} = 7.5 \times 10^{-5}$~eV$^2$
+implies $m_2 \geq 0.0087$~eV, which is $\sim$1{,}700 times larger
+than $m_1$.  The prediction is \textbf{normal mass ordering}
+with $m_1 \approx 0$:
+\[
+  m_1 \approx 5\;\mu\mathrm{eV}, \quad
+  m_2 \approx 0.0087\;\mathrm{eV}, \quad
+  m_3 \approx 0.050\;\mathrm{eV}, \quad
+  \Sigma m_\nu \approx 0.059\;\mathrm{eV}
+\]
 
 \begin{center}
 \begin{tabular}{@{}llc@{}}
@@ -524,18 +547,34 @@ Experiment & Bound/Measurement & Consistent? \\
 \midrule
 KATRIN (direct) & $m_\nu < 0.45$~eV & \checkmark \\
 Planck+BAO (cosmological) & $\Sigma m_\nu < 0.12$~eV &
-  \checkmark\; ($\Sigma \approx 0.064$~eV) \\
+  \checkmark\; ($\Sigma \approx 0.059$~eV) \\
 Oscillations (atmospheric) & $\Delta m^2 \approx 2.5 \times
   10^{-3}$~eV$^2$ & \checkmark \\
+JUNO (mass ordering) & Normal vs.\ inverted & Predicts normal \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent\textbf{Testable prediction.}
-The lightest neutrino mass $m_1 \sim 0.005$~eV is within reach of
-next-generation experiments (Project~8 target: 0.04~eV).  If the
-lightest neutrino mass is measured to be $\sim$0.005~eV, it would
-confirm the seesaw scale $M_R = M_P$.
+\noindent\textbf{Testable predictions.}
+(1)~The mass ordering is \textbf{normal} ($m_1 \ll m_2 < m_3$).
+JUNO will determine the ordering within 6 years of operation;
+inverted ordering would falsify $M_R = M_P$.
+(2)~$\Sigma m_\nu \approx 0.059$~eV.  CMB-S4 and Euclid aim to
+measure $\Sigma m_\nu$ to $\sim$0.02~eV precision.  A measurement
+significantly above 0.06~eV would indicate $m_1 > 5\;\mu$eV,
+requiring $M_R < M_P$.
+(3)~$m_1$ is too small to be measured directly by any
+foreseeable experiment ($\sim 5\;\mu$eV $\ll$ 0.01~eV sensitivity).
+
+\medskip
+\noindent\textbf{No new particles below the discreteness scale.}
+The framework derives the complete particle content of the Standard
+Model with no additional states.  This predicts that all Higgs
+couplings measured at FCC-ee/ILC will match Standard Model values
+to sub-percent precision, with zero deviations from BSM
+contributions.  This is inconsistent with supersymmetry (which
+predicts Higgs coupling deviations of $\sim$1--5\%), composite Higgs
+models ($\sim$5--10\%), and most other BSM scenarios.
 
 \medskip
 \noindent\textit{Lean verification:}
@@ -640,7 +679,7 @@ Theory & Exclusion mechanism & Lean theorem \\
   \texttt{psector\_zero\_charge} \\
 \quad Pos.\ cosm.\ const. & $\Lambda_{\mathrm{Lov.}} = \Lambda_{\mathrm{Pois.}}$ &
   \texttt{lambda\_determined} \\
-\quad $m_\nu \sim 0.005$~eV & Seesaw, $M_R = M_P$ &
+\quad $m_1 \approx 5\;\mu$eV (normal ordering) & Seesaw, $M_R = M_P$ &
   \texttt{seesaw\_suppression} \\
 \quad $\theta_C = 14.8^\circ$ & Weak SU(2) holonomy &
   Computational (Paper~II) \\
