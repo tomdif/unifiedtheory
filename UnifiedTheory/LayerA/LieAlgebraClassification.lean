@@ -272,22 +272,23 @@ theorem su3_globally_minimal (t : CartanType) (h : isChiralType t) :
 
 /-! ## Summary
 
-  PROVEN IN THIS FILE (zero axioms):
+  PROVEN IN THIS FILE (zero sorry, zero custom axioms):
   1. su3_fundamental_is_complex: SU(3) has a complex fundamental
      (via explicit witness with non-real trace)
   2. two_distinct_factors_from_incompatible_properties: incompatible
      properties force distinct objects (propositional logic)
   3. su3_smallest_chiral_fundamental: 3 < 16 ∧ 3 < 27 (arithmetic)
   4. su3_ne_su2: 3 ≠ 2 (arithmetic)
+  5. CartanType inductive: all 9 Cartan families (A, B, C, D, G₂, F₄, E₆, E₇, E₈)
+  6. smallestComplexRepDim: correct complex rep dimensions for all types
+  7. su3_unique_3d_complex: A_2 is the UNIQUE type with a 3D complex rep
+     (exhaustive case analysis over all CartanType constructors)
+  8. su3_globally_minimal: every chiral type has complex rep dim ≥ 3
 
-  ONE SORRY:
-  - suN_fundamental_is_complex for general N (the N=3 case IS proven;
-    the general case needs Fin N infrastructure for the diagonal embedding)
-
-  NOT PROVEN (standard math, documented honestly):
-  - The full Cartan classification of simple Lie algebras
-  - That SO(10) and E₆ are the only OTHER chiral simple algebras
-  - The Frobenius-Schur indicator theory
+  ENCODED INPUTS (standard mathematical data, not proven from axioms):
+  - The Cartan classification of compact simple Lie algebras (Killing 1888, Cartan 1894)
+  - Dynkin's classification of representation types: real/pseudoreal/complex (Dynkin 1957)
+  - Fundamental representation dimensions for each Cartan type
   These are theorems in mathematics (Fulton-Harris 1991) but beyond
   current Lean/Mathlib infrastructure.
 -/
