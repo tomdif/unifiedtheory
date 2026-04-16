@@ -29,12 +29,15 @@ namespace UnifiedTheory.LayerA.FrameworkAxioms
       anything more primitive.
 
   A2: The partial order approximates a Lorentzian manifold.
-      STATUS: PARTIAL. The Myrheim-Meyer dimension estimator recovers
-      dimension from chain counting (CausalFoundation.lean), and the
-      null-link equivalence recovers the conformal metric
-      (CausalBridge.lean, DiscreteMalament.lean). However, the
-      faithfulness of the Poisson sprinkling (that a random sprinkling
-      into Minkowski space reproduces the order) is assumed, not derived.
+      STATUS: CONDITIONALLY DERIVED. The algebraic content is fully
+      derived: (1) Myrheim-Meyer dimension estimator recovers d from
+      chain counting (CausalFoundation.lean), (2) null-cone recovery
+      gives conformal metric (CausalBridge.lean, DiscreteMalament.lean),
+      (3) volume convergence Λ²→0 proved (Hauptvermutung.lean),
+      (4) width-dimension correspondence connects CAG polynomial width
+      bound to manifold-likeness (HauptvermutungBridge.lean).
+      The ONLY remaining assumption is Poisson sprinkling faithfulness
+      — a probabilistic statement, not an algebraic one.
 
   A3: A linear source functional φ : V →ₗ[ℝ] ℝ exists on the
       perturbation space.
@@ -64,9 +67,10 @@ namespace UnifiedTheory.LayerA.FrameworkAxioms
 
 /-- Classification of an assumption's epistemic status. -/
 inductive AssumptionStatus where
-  | assumed    : AssumptionStatus  -- taken as given, not derived
-  | derived    : AssumptionStatus  -- proven from prior inputs
-  | motivated  : AssumptionStatus  -- partially motivated but not fully proven
+  | assumed              : AssumptionStatus  -- taken as given, not derived
+  | derived              : AssumptionStatus  -- proven from prior inputs
+  | motivated            : AssumptionStatus  -- partially motivated but not fully proven
+  | conditionallyDerived : AssumptionStatus  -- algebraic content derived; residual is probabilistic
   deriving DecidableEq, Repr
 
 /-- The five framework inputs with their honest classifications. -/
@@ -83,8 +87,8 @@ def A1_causal_order : FrameworkInput :=
 
 def A2_manifold_likeness : FrameworkInput :=
   { name        := "A2: Manifold approximation"
-    status      := .motivated
-    description := "The partial order approximates a Lorentzian manifold in a dense limit. The Myrheim-Meyer estimator and null-link equivalence are proven, but faithfulness of Poisson sprinkling is assumed." }
+    status      := .conditionallyDerived
+    description := "The ALGEBRAIC content of manifold-likeness is fully derived: (1) Myrheim-Meyer dimension estimator (CausalFoundation), (2) null-cone recovery (CausalBridge, DiscreteMalament), (3) volume convergence (Hauptvermutung), (4) width-dimension correspondence connecting CAG and unified theory sides (HauptvermutungBridge). The ONLY remaining assumption is Poisson sprinkling faithfulness, which is a PROBABILISTIC statement, not an algebraic one." }
 
 def A3_source_functional : FrameworkInput :=
   { name        := "A3: Linear source functional"
@@ -106,16 +110,22 @@ def allInputs : List FrameworkInput :=
   [A1_causal_order, A2_manifold_likeness, A3_source_functional,
    A4_gauge_group, A5_minimality]
 
-/-- Count of genuinely assumed (non-derived) inputs. -/
+/-- Count of genuinely assumed (non-derived) inputs.
+    Conditionally derived inputs count as non-derived because
+    the probabilistic residual is not algebraically discharged. -/
 def countNonDerived : Nat :=
   (List.filter (fun i => match i.status with
     | .assumed => true
     | .motivated => true
+    | .conditionallyDerived => true
     | .derived => false) allInputs).length
 
-/-- There are exactly 3 non-derived inputs (2 axioms + 1 partial).
-    The claim of "one axiom" is misleading; there are at least 2
-    fully assumed inputs (A1, A5) and 1 partially justified (A2). -/
+/-- There are exactly 3 non-derived inputs: 2 axioms (A1, A5)
+    and 1 conditionally derived (A2: algebraic content derived,
+    probabilistic residual remains).
+    The claim of "one axiom" is misleading; but the gap is now
+    narrower than before — A2's algebraic content is fully derived
+    via the CAG-unified-theory bridge (HauptvermutungBridge.lean). -/
 theorem honest_count : countNonDerived = 3 := by native_decide
 
 /-! ## Section 3: Independence of the five inputs — concrete mathematical witnesses
@@ -272,8 +282,8 @@ def D3_kp_decomposition : Derivation :=
 def D4_gauge_algebra : Derivation :=
   { name     := "D4: Gauge algebra sl(n) and chirality"
     inputs   := ["A1", "A2"]
-    result   := "Holonomy of the recovered connection gives the gauge Lie algebra. Structure constants from discrete Ambrose-Singer. Chiral distinction from orientation."
-    file_ref := "DiscreteAmbroseSinger.lean, ChiralDistinctness.lean" }
+    result   := "Holonomy of the recovered connection gives the gauge Lie algebra. Structure constants from discrete Ambrose-Singer. Chiral distinction from orientation. Chirality identification (formerly gap (iii): algebraic K/P asymmetry ↔ physical γ₅) is now a THEOREM via Hodge duality in d=4 (ChiralityFromHodge.lean)."
+    file_ref := "DiscreteAmbroseSinger.lean, ChiralDistinctness.lean, ChiralityFromHodge.lean" }
 
 def D5_sm_gauge_group : Derivation :=
   { name     := "D5: SM gauge group SU(3)xSU(2)xU(1)"
@@ -331,7 +341,7 @@ def ND2_sprinkling : NonDerivation :=
 
 def ND3_three_generations : NonDerivation :=
   { claim  := "Exactly 3 generations of fermions"
-    reason := "The framework constrains the gauge group given a generation count, but does not derive the number 3 from the causal order." }
+    reason := "The framework constrains the gauge group given a generation count, but does not derive the number 3 from the causal order alone. Anomaly cancellation (FermionCountFromAnomaly.lean) forces 15 Weyl fermion reps PER generation, and the S₄ irrep structure (1,1,2,3,3) provides a suggestive combinatorial hint, but neither pins down the generation count." }
 
 def ND4_coupling_values : NonDerivation :=
   { claim  := "Numerical values of coupling constants"
@@ -350,18 +360,27 @@ def allNonDerivations : List NonDerivation :=
 
   The framework has:
   - 2 genuine axioms (A1: causal order, A5: minimality)
-  - 1 partially justified assumption (A2: manifold-likeness)
+  - 1 conditionally derived assumption (A2: manifold-likeness —
+    algebraic content fully derived via CAG bridge, probabilistic
+    residual remains)
   - 2 derived inputs (A3: source functional, A4: gauge group)
   - 7 major derivations (D1-D7)
   - 5 known non-derivations (ND1-ND5)
 
   The claim "everything from one axiom" should be:
   "most of physics from two axioms (A1+A2), with the specific SM gauge
-   group requiring a third (A5)."
+   group requiring a third (A5). The algebraic content of A2 is itself
+   derived from the CAG polynomial width bound + Hauptvermutung."
+
+  Key progress since initial formulation:
+  - A2 upgraded from .motivated to .conditionallyDerived
+  - Chirality identification (former gap (iii)) closed by ChiralityFromHodge.lean
+  - Width-dimension correspondence bridges CAG and unified theory
 -/
 
-/-- **Honest summary**: the framework requires 2 axioms, 1 partial
-    assumption, and derives 2 of its 5 inputs from the others.
+/-- **Honest summary**: the framework requires 2 axioms, 1 conditionally
+    derived assumption (algebraic content proved, probabilistic residual
+    remains), and derives 2 of its 5 inputs from the others.
     The five inputs are logically independent. -/
 theorem framework_summary :
     -- Five inputs total
@@ -369,10 +388,10 @@ theorem framework_summary :
     -- Two are genuinely axioms
     ∧ (List.filter (fun i => match i.status with
         | .assumed => true | _ => false) allInputs).length = 2
-    -- One is partially motivated
+    -- One is conditionally derived (A2: algebraic content derived)
     ∧ (List.filter (fun i => match i.status with
-        | .motivated => true | _ => false) allInputs).length = 1
-    -- Two are derived
+        | .conditionallyDerived => true | _ => false) allInputs).length = 1
+    -- Two are fully derived
     ∧ (List.filter (fun i => match i.status with
         | .derived => true | _ => false) allInputs).length = 2
     -- Seven major derivations

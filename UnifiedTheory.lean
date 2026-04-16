@@ -74,6 +74,7 @@ import UnifiedTheory.LayerB.OperationalQuantum
 
 -- Capstone
 import UnifiedTheory.Capstone
+import UnifiedTheory.Predictions
 
 -- Layer C: Concrete Realizations
 import UnifiedTheory.LayerC.Placeholder
@@ -84,6 +85,7 @@ import UnifiedTheory.LayerA.GaugeSelection
 import UnifiedTheory.LayerA.DiscreteBundles
 import UnifiedTheory.LayerA.ChargeConsistency
 import UnifiedTheory.LayerA.HiggsPotentialForm
+import UnifiedTheory.LayerA.HiggsMassDerived
 
 -- Feynman rules from structured history sums
 import UnifiedTheory.LayerB.FeynmanRules
