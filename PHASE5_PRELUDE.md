@@ -257,3 +257,75 @@ This is a clean, defensible result with explicit constructive bound. Worth a sho
 - `/tmp/tomographic_locality_check.py` (β-CDP precommit): poset enumeration + bipartition + extension counting + tomographic-locality test. Run on 5,609 bipartitions; **0/5,609 satisfy locality** (failure 100%).
 
 These two scripts are the empirical foundation of today's pivot. They are not committed to the unifiedtheory repo — they live in `/tmp/`. If the substrate-level no-go is to become a publishable result, they should be archived in a dedicated repo (e.g., `tomdif/causal-set-substrate-nogo`) with reproducibility instructions.
+
+---
+
+## Phase 5 pre-implementation pencil findings (2026-05-01) — (α″) is not viable as scoped
+
+After the user committed to "Pursue (α″) continuum-limit M–O as Phase 5 implementation," the recommended pre-implementation pencil exploration was dispatched. The result is a critical structural finding that **(α″) is not viable in 4–6 months as written**, because the continuum-limit object itself is not constructed in the framework.
+
+### Sub-exploration 1 result — the continuum-limit object is not constructed
+
+A focused read of the framework's "m → ∞" rhetoric across `SpectralGapInvariance.lean`, `ContinuumLimit.lean`, `Hauptvermutung.lean`, `PoissonFaithfulness.lean`, `CausalBridge.lean`, `CausalFoundation.lean`, and `KFHermitian/General.lean` yields a uniform negative finding:
+
+> **No continuum operator is constructed anywhere in the codebase.** Every "limit" theorem in the framework is *scalar* (eigenvalue ratios, volume errors, link proper times). There is no `K_F.realHilbertSpace`, no GNS triple, no continuum self-adjoint operator, no inductive or projective limit, and no compatible system `K_F[m, d] → K_F[m+1, d]`.
+
+Specifically:
+- `SpectralGapInvariance.lean` limits the eigenvalue ratio `(d+1)/(d−1)`, not an operator.
+- `ContinuumLimit.lean` proves Weyl equidistribution of `n·√2 mod 1` — a measure statement.
+- `Hauptvermutung.lean` limits the scalar `Λ² = 1/(ρV) → 0`.
+- `CausalBridge.lean` limits scalar link proper time `τ → 0`.
+- `PoissonFaithfulness.lean` assembles dimension/conformal/volume into a metric-recovery statement (geometric data, not Hilbert-space data).
+
+The chamber-point space `[m]^d / ~` is not a subspace of `[m+1]^d / ~` in any canonical way (different combinatorial structures), and the natural-looking shift embedding fails (this is exactly the swarm Agent 2 finding for `[T₊, T₋]` indefiniteness).
+
+### Candidate continuum-limit objects, ranked
+
+| Candidate | Form | Viability |
+|---|---|---|
+| (L1) Inductive limit `colim_m K_F[m,d]` | unbounded SA op on colimit Hilbert space | **Blocked**: no transition map exists. Same obstruction as the swarm's `[T₊, T₋]` finding. |
+| **(L2) Sprinkling-class GNS Hilbert space** | `L²(Sprinkling-Poisson on Mink^d)` with `K_F^∞` as integral operator | **Most plausible**, but undefined: needs explicit kernel `K_F^∞(P, Q)` for `P, Q : Fin d → Mink^d` and self-adjoint extension theorem. The order-kernel `ζ(i,j) = [i ≤ j]` has discontinuities along the lightcone — `K_F^∞` would have a singular kernel. **This is essential mathematical content not in the framework.** |
+| (L3) Spectral-measure-on-`(d+1)/(d−1)` | scalar spectral measure | Insufficient — M-O needs the operator algebra, not just the spectrum. |
+| (L4) UHF C*-algebra of order-kernel observables | inductive limit of matrix algebras | Type III von Neumann factor; no Poincaré structure unless externally imposed. |
+
+### Sub-exploration 2 result — Poincaré hypotheses, conditional on (L2)
+
+If (L2) were constructed, the M-O hypotheses can be checked:
+
+- **(M1) Locally faithful**: plausibly yes, but requires non-trivial measure-theoretic argument (Poincaré on Sprinkling-configuration-space has measure-zero kernel; faithfulness-on-the-class needs proof). **Low risk, moderate work.**
+- **(M2) Continuous**: yes if (L2) is built; needs kernel continuity in operator norm. **Medium risk.**
+- **(M3) Irreducible**: **THE KILLER.** Even in formal Wightman QFT, irreducibility of the Poincaré rep on the one-particle space is a *hypothesis*. Generic Poisson-sprinkling-class L² is highly *reducible* (decomposes into Wigner mass-spin sectors). The Lean infrastructure must include Wigner classification (not in Mathlib), spectral decomposition of `M²`, projection to a chosen sector. **High risk: multi-month work.**
+- **(M4) M² ≥ 0**: plausibly yes for continuum Mink translations, but only if (L2) kernel respects Mink translation structure exactly. **Medium-high risk: needs careful kernel construction.**
+
+### Sub-exploration 3 result — implementation strategy
+
+If we proceeded, the work splits as 8 Lean files in a new repo `tomdif/continuum-mo-lean`, ~2,800–3,500 lines, ~30–50 declarations. **Critical-path file: `KFContinuum.lean` constructing `K_F^∞`** (~600–800 lines of the most uncertain content). If `K_F^∞` doesn't exist or convergence fails, the project halts.
+
+**Solèr is axiomatized cleanly** with explicit citation, ~80 lines, single `axiom Soler_theorem`. Mathlib + framework + axiomatized Solèr give all other infrastructure modulo (M3) irreducibility.
+
+### The verdict
+
+**(α″) is not viable in 4–6 months as scoped.** The first 3 months would be consumed *before any M-O argument*, just defining (L2) and proving `K_F^∞` exists, is self-adjoint, and converges from the finite K_F's. **The framework's "m → ∞" rhetoric is precisely the claim this object exists; axiomatizing the limit would axiomatize the very thing one is trying to derive.**
+
+### Three honest options
+
+1. **(β-coarse-grained)** — skip the substrate Boxworld no-go by axiomatizing information-causality at the appropriate scale. ~3–4 months. Weaker result: assumes the cut from no-signaling polytope to ℂ-QM rather than deriving it. Honest about the axiom.
+
+2. **(α‴) finite-m approximate M-O** — prove a *sequence* of finite-dim M-O analogues at each `m`, each carrying an approximate complex structure `J_m` with `‖J_m² + I‖ → 0` in operator norm. ~5–7 months. Avoids constructing the continuum operator entirely. Result: "the approximate complex structure converges" — near-quantum, but not exactly quantum. **All work in finite-dim Mathlib; sorry-free modulo Solèr.**
+
+3. **(α″ bullet)** — accept that constructing `K_F^∞` IS the project's first deliverable, not preamble. ~12+ months total. Strong result if delivered, but the construction may itself be impossible (singular kernel along lightcone is a real mathematical obstacle, not a formalization issue).
+
+### Recommendation
+
+**Option 2 — (α‴) finite-m approximate M-O.** Three reasons:
+- It is sorry-free (modulo the single axiomatized Solèr). The framework's discipline is preserved.
+- It avoids the "construct the continuum first" substrate-level work that none of the framework's existing files have done.
+- It produces a *theorem about the framework's actual deliverable* (the finite K_F's, with their convergent spectral structure) rather than a theorem about a hypothetical continuum object.
+
+**The result is weaker** ("the approximate complex structure converges") **than the originally-imagined α″** ("the complex structure is uniquely determined") **but it is what the framework actually supports.** This is exactly the same shape as the original Phase 4a finding: name what is actually proved, distinguish it from what is claimed, ship the actually-proved version.
+
+### What the user should weigh
+
+If the user has an *unwritten pencil note* on the explicit construction of `K_F^∞` — a kernel formula for `K_F^∞(P, Q)` with `P, Q : Fin d → Mink^d`, a self-adjointness argument, or a convergence theorem from finite K_F's — that changes the picture entirely. **Before pivoting to option 2, confirm such a note does not exist somewhere in the user's research files.** If it does, share it and we re-evaluate.
+
+If no such note exists, options 1, 2, 3 are the honest forward paths; recommendation is option 2.
