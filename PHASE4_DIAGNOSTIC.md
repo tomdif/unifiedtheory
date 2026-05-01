@@ -274,3 +274,52 @@ Findings that span multiple sub-phases will be added here as Phase 4 progresses.
 - **The complex Hilbert space structure is presupposed throughout.** All three Phase 4 target files (`ComplexFromDressing`, `BornRuleUnique`, `PosetGrowthIsQuantum`) inherit ℂ from the type signatures of their inputs. The bridge does not change this — the bridge produces `Matrix _ _ ℂ` whose `ℂ` is also presupposed. The single open structural question (a)/(b), once closed, would close the gap for all three files simultaneously.
 
 - **The retrospective is a living document.** New findings get appended; nothing is removed. If a finding is later overturned by deeper analysis (e.g., a candidate J is found in a file not searched in 4a), the original entry stays and a new entry records the update. The audit trail is the value.
+
+---
+
+## Phase 4d — Retrospective extension (swarm, 2026-05-01)
+
+A swarm of research agents was tasked with extending the Phase 4a–c diagnostic discipline to additional `LayerA` and `LayerB` files in the framework. Eight files audited:
+
+`AmplitudeUniqueness.lean`, `BellTheorem.lean`, `CPTFromKP.lean`, `Decoherence.lean`, `NoSpookyAction.lean`, `BigBangIsPosetMinimum.lean`, `ContinuousTimeEmergent.lean`, `Baryogenesis.lean`.
+
+### Tabulated findings
+
+| File | Type | Overclaim? | New gap? | Inherits ℂ? |
+|---|---|---|---|---|
+| `AmplitudeUniqueness.lean` | Case 1 | No | No | Yes (SO(2) inherited) |
+| `BellTheorem.lean` | Case 1 | No | No | Yes (ℂ + N_w inherited) |
+| `CPTFromKP.lean` | Case 1 | No | No | No (ℝ-level proof) |
+| `Decoherence.lean` | Case 1 | No | No | Yes (ℂ inherited) |
+| `NoSpookyAction.lean` | Case 1 | No | No | No (order-theoretic) |
+| `BigBangIsPosetMinimum.lean` | Case 1 | No | No | No (order-theoretic) |
+| `ContinuousTimeEmergent.lean` | Case 1 | Minor physics gloss | No | No (order-theoretic) |
+| `Baryogenesis.lean` | **Case 3** | **Yes (condition 3)** | **Yes (out-of-equilibrium not formalized)** | Implicit (SM structure) |
+
+**Summary statistics:** 7 Case 1 / 0 Case 2 / 1 Case 3.
+
+### Key cross-cutting finding
+
+**The ℂ-presupposition is localized, not spreading.** Files operating at the ℝ level (`CPTFromKP`, `NoSpookyAction`, `BigBangIsPosetMinimum`, `ContinuousTimeEmergent`) avoid the ℂ-presupposition entirely. Files operating at the amplitude/observable level (`AmplitudeUniqueness`, `BellTheorem`, `Decoherence`) inherit it without adding new layers.
+
+This is meaningful for the strategic position of the framework: the open question (a)/(b) from Phase 4a is **the** structural gap, not one of many. Closing it would close the framework's complex-structure derivation in one stroke.
+
+### Baryogenesis Case 3 detail
+
+`Baryogenesis.lean`'s opening docstring claims all three Sakharov conditions are "DERIVED, not assumed." The file proves:
+
+- **(1) B violation** from gauge invariance of `qqql`: derived. ✓
+- **(2) CP violation** from CKM with 3 generations: derived. ✓
+- **(3) Out-of-equilibrium** from electroweak phase transition: **stated in a comment, not formalized in Lean**.
+
+The master theorem `sakharov_conditions` does not include condition (3) as a formal hypothesis. The docstring's claim to derive condition (3) is not supported by the code.
+
+**Recommended (A) edit (deferred for user decision):** reword the opening to distinguish DERIVED conditions (1)–(2) from STATED condition (3). Specifically: "Conditions (1) and (2) are derived from the framework. Condition (3) is stated as a hypothesis: the electroweak phase transition provides out-of-equilibrium dynamics. Note: in the SM the transition is a crossover (insufficient for baryogenesis); the framework's predicted Poisson-fluctuation contribution from the causal-set substrate is referenced but not formalized."
+
+### Negative finding (no new ℂ-derivation discovered)
+
+**No file in the 4d batch derives complex structure from order-theoretic data in a way the earlier diagnostic missed.** This was an explicit search target. The negative result strengthens the Phase 4a finding: there is one structural gap, not several latent ones.
+
+### What 4d does NOT cover
+
+The audit did not extend to `QuantumMechanicsIsATheorem.lean`, `PhysicsFromCounting.lean`, the Capstone files, or any of the `LayerC/` content. A future 4e batch could continue the discipline if needed.

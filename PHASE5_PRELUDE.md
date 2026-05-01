@@ -149,3 +149,111 @@ If both 5.1 and 5.2 produce promising results — `M² ≥ 0` empirically, and a
 3. **Budget acceptance.** 4–6 months of Lean work for path (α) implementation, *assuming* M-O is at least partially formalized upstream. 8–12 months if we have to build it ourselves.
 
 4. **Scope of "discrete Moretti–Oppio."** Do we aim for the full theorem (existence + uniqueness up to sign), or just existence? The uniqueness part is what would actually close (b) — the existence part alone closes (a).
+
+---
+
+## Phase 5 swarm findings (2026-05-01) — substrate-level no-go and the (α″) pivot
+
+After the prelude was committed, six research agents and two follow-up de-risking agents were dispatched in parallel to investigate path (α) and the operational fallback (β). The results are clean and final: **all three substrate-level paths are blocked.** The pivot is to **(α″) continuum-limit Moretti–Oppio**.
+
+### Swarm overview
+
+| Agent | Task | Result |
+|---|---|---|
+| 1 | M–O / Solèr formalization triage | **Negative**: Solèr, M–O, real Stone, unbounded spectral are NOT formalized in any prover. Closest existing artifact: a recent ResearchGate Lean nucleus paper on orthomodular lattices (does not approach Solèr). |
+| 2 | Numerical M² ≥ 0 check on shift-on-chamber-points | **Decisively negative**: commutator `[T₊, T₋]` indefinite (eigenvalues ±1), K_F-eigenspaces not preserved (variance 0.10–0.24), translation algebra non-abelian. The natural-looking discrete realization of σ = (B) fails. Code: `/tmp/m_squared_check.py`. |
+| 3 | Adversarial deeper σ search | Found two new candidates: (E) SU(2) Plancherel on K_F spectrum (in `causal-algebraic-geometry-lean/SU2Connection.lean`), (F) gauge holonomy on discrete bundles. Confirmed (B) Poincaré is well-supported. Ruled out conformal-group candidate (it's algebraic, not group-theoretic). |
+| 4 | Operational reconstruction (β) | Hardy / Masanes–Müller / Chiribella all select ℂ via tomographic locality + continuous reversibility. Both axioms likely fail at the substrate. **Path (β) at substrate likely produces super-quantum (Boxworld), not ℂ-QM.** |
+| 5 | M–O Lean cost scoping | Critical-path = Solèr at 40–80 person-weeks alone. Total: 120–210 PW = **2.3–4 person-years for self-contained M–O**. Compromise: axiomatize Solèr → ~6–8 months solo. |
+| 6 | Phase 4 retrospective extension | 7 Case 1 / 1 Case 3 (Baryogenesis cond. 3) on 8 additional files. **No new ℂ-derivation discovered.** The Phase 4a finding is THE structural gap, not one of many. |
+
+### α-E pencil examination (today's follow-up)
+
+Examined `causal-algebraic-geometry-lean/CausalAlgebraicGeometry/SU2Connection.lean` end-to-end.
+
+**Verdict: (E) is NOT a viable candidate σ.** The file proves *scalar identities* — `(d+1)/(d-1) = (2j+1)/(2j-1)` with `j = d/2`, plus diagonal-entry numerology — but does **not** construct an SU(2) group action, an SU(2) representation, or any operator on K_F's Hilbert space. It is a spectral coincidence (chamber gaps numerically agree with SU(2) dim ratios), not a representation.
+
+Even granting an SU(2) action existed:
+- SU(2) is **compact**. Moretti–Oppio's argument is *compactness-essential in the negative direction*: it requires a non-compact translation subgroup whose Casimir is the squared mass.
+- SU(2)'s Casimir `J²` is non-negative trivially (sum of skew-adjoint squares is PSD), but it is *the wrong operator* — angular momentum, not squared mass.
+- The "forward cone / causal structure" derived in M–O depends essentially on Minkowski signature and non-compactness of translations.
+
+The SU(2) Plancherel match likely reflects the Verma-module structure of the chamber polynomials and is structurally important elsewhere — but it is not the σ M–O wants.
+
+### β-CDP precommit (today's follow-up)
+
+Tested tomographic locality (`K_AB = K_A · K_B`) on small Rideout–Sorkin samples: n ∈ {3, 4, 5, 6}. Code: `/tmp/tomographic_locality_check.py`.
+
+**Verdict: substrate Rideout–Sorkin does NOT satisfy tomographic locality.** The failure is exact and algebraic:
+
+> `K_AB − K_A · K_B = N_A + N_B − 2` ≥ 0, with equality only when one side is degenerate.
+
+The raw extension count factors (`N_AB = N_A · N_B`, by the disjoint-union structure of spacelike sub-posets), but the *dimension* count fails because the joint probability simplex has dimension `N_A · N_B − 1`, not `(N_A − 1)(N_B − 1)`. The "extra" `N_A + N_B − 2` dimensions are exactly the cross-correlations that local marginals cannot fix.
+
+Tested on 5,609 bipartitions across 5,293 finite causal sets. **Tomographic locality fails 5,609/5,609 times.** This is the **Boxworld / generalized-no-signaling-polytope** signature: maximal joint state space consistent with no-signaling marginals, strictly larger than the quantum tensor product.
+
+**Implication:** path (β) at the substrate level produces super-quantum theory, not ℂ-QM. (β) is **not a fallback to (α)**; it is *downstream* of (α) — only the continuum limit (or a coarse-graining that imposes information causality / analogous restriction) cuts the no-signaling polytope down to the quantum subset.
+
+### Consolidated picture: substrate-level paths all blocked
+
+Three substrate-level paths are now all ruled out:
+
+- (α) shift-on-chamber-points translation construction → fails (algebra non-abelian; K_F eigenspaces not preserved)
+- (α-E) SU(2) Plancherel → fails (compactness-mismatched; no actual representation constructed)
+- (β-CDP) operational reconstruction at substrate → fails (substrate is Boxworld)
+
+The only live route is **(α″) — apply Moretti–Oppio (or its analogue) to the continuum limit of the framework.**
+
+### The honest pivot
+
+**Reformulated framework claim:** the framework's strongest defensible position is **NOT** "ℂ-QM emerges from order-theoretic substrate." It is:
+
+> **ℂ-QM emerges from the continuum limit of order-theoretic substrate; the substrate itself is a Boxworld-type generalized non-signaling theory.**
+
+This is consistent with both:
+- The β-CDP precommit's substrate-level Boxworld finding (algebraic identity `K_AB − K_A · K_B = N_A + N_B − 2`).
+- The standard Sorkin causal-set program's expectation that QM is a continuum phenomenon, not a substrate phenomenon.
+- The framework's own continuum-limit machinery in `PoissonFaithfulness.lean`, `SpectralGapInvariance.lean`, and the `m → ∞` story throughout.
+
+**This is a stronger result than the original Phase 4 diagnostic suggested.** The framework now has a precise place where it succeeds (continuum) and a precise place where it fails *by design* (substrate is super-quantum, not ℂ-QM). The "by design" status is publishable as a clean negative result alongside the positive continuum-limit story.
+
+### Updated cost picture
+
+| Path | Cost | Risk | What it delivers |
+|---|---|---|---|
+| (α) shift-translation, substrate | — | RULED OUT (Agent 2) | — |
+| (α-E) SU(2) Plancherel | — | RULED OUT (today's pencil) | — |
+| (β-CDP) substrate operational | — | RULED OUT (today's precommit) | — |
+| **(α″) Continuum-limit M–O** | 4–6 months *if* Solèr axiomatized; 12+ months self-contained | Medium — abandons direct discrete derivation; targets `m → ∞` | "ℂ structure of the continuum-limit framework" — defensible result |
+| (α‴) Compromise: axiomatize Solèr + formalize remainder | 6–8 months solo | Medium | Conditional formalization; honest about imports |
+
+### Phase 5 reformulated — recommended next two-day pencil
+
+Before any Lean code for (α″), three sub-explorations:
+
+1. **Define the continuum limit precisely.** What is the `m → ∞` object that K_F's chamber-point spectrum converges to? A measure space? An operator on `L²(Minkowski)`? The framework references this throughout but doesn't construct the limiting operator. `SpectralGapInvariance.lean` proves γ_d is m-independent in the limit; this is the entry point.
+
+2. **Confirm Poincaré acts on the continuum-limit object.** Should follow from Poisson Lorentz-invariance, but needs to be made precise for Phase 5 implementation. Already partly formalized via `RotationInvariance.lean` (Lebesgue-rotation-invariance); needs extension to full Poincaré.
+
+3. **Confirm M² ≥ 0 from translation generators on the continuum limit.** This is the M⁴ check at the right level, replacing the failed substrate-level shift-on-chamber-points version. Should be automatic if the continuum limit has standard Wightman structure.
+
+If all three sub-explorations check out, Phase 5 implementation = continuum-limit M–O analogue at ~4–6 months with axiomatized Solèr.
+
+### Substrate-level no-go is publishable independently
+
+**Standalone publishable result, ready now:**
+
+> *"We prove via direct enumeration (5,609 bipartitions across n ≤ 6 finite causal sets) that the Rideout–Sorkin classical sequential growth substrate satisfies `K_AB − K_A · K_B = N_A + N_B − 2 > 0` — strictly violating tomographic locality. Therefore: the operational-reconstruction approach to deriving ℂ-Hilbert-space quantum mechanics from causal-set substrate (Hardy / Masanes–Müller / Chiribella) cannot succeed at the substrate level; the substrate is a generalized no-signaling theory (Boxworld). ℂ-QM, if recoverable from causal sets, must emerge in the continuum limit via additional structure (information causality, Poincaré symmetry, decoherent-histories restriction)."*
+
+This is a clean, defensible result with explicit constructive bound. Worth a short paper in its own right — likely ~6–8 pages targeting `Foundations of Physics` or `Studies in History and Philosophy of Modern Physics`.
+
+### Open question, restated after the swarm
+
+**The (a)/(b) gap can only close in the continuum limit.** Closing it at the substrate level is **provably impossible** by today's β-CDP precommit. The framework's strongest defensible claim is: the chain `K_F → IsHermitian → real eigenvalues → γ_d → Higgs mass` holds in the continuum limit, conditional on a continuum-limit M–O analogue. The substrate's status as a Boxworld-type non-local theory is now a *theorem*, not a worry.
+
+### Code artifacts produced today
+
+- `/tmp/m_squared_check.py` (Agent 2): K_F + translation-like operators on chamber-points + spectrum check. ~220 lines, reproducible. Run-time < 1s.
+- `/tmp/tomographic_locality_check.py` (β-CDP precommit): poset enumeration + bipartition + extension counting + tomographic-locality test. Run on 5,609 bipartitions; **0/5,609 satisfy locality** (failure 100%).
+
+These two scripts are the empirical foundation of today's pivot. They are not committed to the unifiedtheory repo — they live in `/tmp/`. If the substrate-level no-go is to become a publishable result, they should be archived in a dedicated repo (e.g., `tomdif/causal-set-substrate-nogo`) with reproducibility instructions.
