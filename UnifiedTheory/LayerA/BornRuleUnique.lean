@@ -210,16 +210,28 @@ theorem nonneg_invariant_form_positive_coeff (f : QuadForm)
 
 /-! ## 9. Master theorem -/
 
-/-- **BORN RULE UNIQUENESS THEOREM.**
+/-- **BORN RULE UNIQUENESS THEOREM (algebraic content only).**
 
     (1) Every SO(2)-invariant quadratic form is proportional to Q² + P²
     (2) Q² + P² is SO(2)-invariant (converse)
     (3) The proportionality constant is positive for non-negative forms
     (4) With normalization a = 1, the form IS the Born rule |ψ|² = Q² + P²
 
-    This is the algebraic content of the Born rule. The physical content
-    (why we need SO(2) invariance) comes from the isotropy of the
-    Poisson sprinkling, proved in RotationInvariance.lean. -/
+    This is the **algebraic content** of the Born rule: the unique normalized
+    SO(2)-invariant quadratic form on ℝ² is Q² + P². It does NOT address
+    probabilities-from-projectors, expectation-values-from-density-matrices,
+    Gleason-style projector additivity, or pure-vs-mixed states.
+
+    The SO(2) invariance is taken as hypothesis here. `RotationInvariance.lean`
+    proves that Q² + P² is invariant under coordinate rotation on ℝ², but
+    the derivation of an SO(2) **action on the K/P pair** from spatial
+    isotropy of the underlying causal-poset structure is open; see
+    `PHASE4_DIAGNOSTIC.md`.
+
+    The same uniqueness fact is also proved in `LayerB.ComplexUniqueness`
+    and `LayerB.PosetGrowthIsQuantum` under different framings (observable
+    vs. amplitude vs. growth probability). All three are intentional
+    re-statements of one underlying algebraic fact. -/
 theorem born_rule_uniqueness :
     -- (1) Uniqueness: invariance forces the form
     (∀ f : QuadForm, f.IsSO2Invariant → f.b = 0 ∧ f.a = f.c)

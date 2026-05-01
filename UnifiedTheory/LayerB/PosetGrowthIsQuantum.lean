@@ -1,26 +1,27 @@
 /-
-  LayerB/PosetGrowthIsQuantum.lean — Quantum mechanics IS the statistics of poset growth
+  LayerB/PosetGrowthIsQuantum.lean — Born-rule shape for dressing-invariant
+  growth probabilities.
 
-  The Rideout-Sorkin classical sequential growth model says: a causal set
-  grows by adding one element at a time, with probabilities determined by
-  the current structure.
+  CONTENT: If poset-growth probability is quadratic in (Q, P) and dressing-
+  invariant under the SO(2) action on the K/P plane, then it is proportional
+  to Q² + P² — the same algebraic uniqueness result as `BornRuleUnique.lean`
+  and `ComplexUniqueness.lean`, applied to growth dynamics rather than to
+  measurement observables. All three files prove the same uniqueness fact
+  under different framings; this is intentional re-statement, not three
+  independent results.
 
-  The K/P decomposition says: each possible addition has a source component
-  Q (visible to the source functional φ) and a dressing component P
-  (invisible to φ).
+  WHAT THIS FILE DOES NOT CONTAIN: the Rideout–Sorkin sequential growth
+  model is referenced but not formalized. There is no Hilbert space attached
+  to the growth process, no unitary evolution operator, and no derivation of
+  Born-rule probabilities from unitary transition amplitudes. The chain
+  "growth probability ∝ Q² + P² ⇒ Born rule ⇒ quantum mechanics" is asserted
+  by analogy; only the first arrow (algebraic uniqueness given dressing
+  invariance) is formalized here.
 
-  The dressing is INVISIBLE: φ(P-sector) = 0 by construction (DerivedBFSplit.lean).
-  Therefore the growth probability CANNOT depend on P independently — it can
-  only depend on P through a combination that's invariant under dressing rotations.
-
-  The unique nonneg quadratic function of (Q, P) that's invariant under
-  (Q, P) → (Q cos θ - P sin θ, Q sin θ + P cos θ) is Q² + P².
-
-  Therefore: growth probability ∝ Q² + P² = |z|² = Born rule.
-
-  This is the SAME uniqueness argument as ComplexUniqueness.lean, but applied
-  to GROWTH DYNAMICS rather than MEASUREMENT. The Born rule governs both
-  because both are constrained by the same symmetry: dressing invisibility.
+  The SO(2) "dressing rotation" on the K/P plane is taken as stipulation, as
+  in `BornRuleUnique` and `ComplexFromDressing`. Its derivation from causal-
+  poset structure is open; see `PHASE4_DIAGNOSTIC.md` for the surviving open
+  question (a)/(b) and the Solèr–Moretti–Oppio continuum analogue.
 
   Zero sorry. Zero custom axioms.
 -/
@@ -169,25 +170,41 @@ theorem only_born_is_invariant (a b c : ℝ)
     PART 6: THE MASTER THEOREM
     ═══════════════════════════════════════════════════════════════ -/
 
-/-- **POSET GROWTH IS QUANTUM.**
+/-- **DRESSING-INVARIANT QUADRATIC GROWTH PROBABILITIES HAVE BORN-RULE SHAPE.**
 
-    The growth of a finite partial order (adding elements one at a time)
-    with dressing-invariant quadratic probability IS quantum mechanics.
+    If poset-growth probability is quadratic in (Q, P) and dressing-invariant
+    under the SO(2) action on the K/P plane, then it is proportional to
+    Q² + P². Specifically:
 
-    Specifically:
     (1) Each growth step has (Q, P) ∈ ℝ² from the K/P decomposition
-    (2) Dressing invariance forces prob ∝ Q² + P² (Born rule)
-    (3) The Born rule is nonneg (valid probability)
-    (4) The Born rule is dressing-invariant (consistent)
-    (5) No other quadratic rule is dressing-invariant (unique)
+    (2) Dressing invariance forces prob ∝ Q² + P² (algebraic uniqueness)
+    (3) The Born-shape rule is nonneg (valid probability for a ≥ 0)
+    (4) Q² + P² is dressing-invariant (consistent)
+    (5) No other quadratic rule is dressing-invariant (uniqueness)
 
-    This connects the ontological claim (poset growth) to the
-    empirical content (Born rule) through a single symmetry
-    principle: the source functional cannot see the dressing.
+    Limits of this theorem (read carefully):
 
-    The Born rule is not a law of nature. It is a theorem about
-    what happens when you grow a partial order with a source functional. -/
-theorem poset_growth_is_quantum :
+    * **Same fact as `BornRuleUnique` and `ComplexUniqueness`.** The
+      algebraic uniqueness statement is identical; the framing differs
+      (growth probability vs. measurement observable vs. complex amplitude).
+
+    * **Sequential-growth dynamics not formalized.** Rideout–Sorkin
+      classical sequential growth is referenced in the file docstring
+      but not implemented in Lean. This theorem does not establish that
+      poset-growth dynamics ARE the Rideout–Sorkin model; it characterizes
+      the shape of an individual-step probability distribution under
+      stated symmetry assumptions.
+
+    * **No Hilbert space, no unitary evolution.** The theorem does not
+      derive that growth probabilities respect a unitary evolution on
+      a complex Hilbert space. The chain "Born-shape probability ⇒
+      Born rule ⇒ quantum mechanics" is asserted by analogy; only the
+      first arrow is formalized here.
+
+    * **SO(2) action stipulated.** The dressing rotation is defined in
+      this file, not derived from causal-poset data. See
+      `PHASE4_DIAGNOSTIC.md` for the surviving open question. -/
+theorem dressing_invariant_quadratic_is_born_form :
     -- (1) Born rule forced by dressing invariance
     (∀ a b c : ℝ,
       (∀ Q P : ℝ, quadGrowthProb a b c (-P) Q = quadGrowthProb a b c Q P) →

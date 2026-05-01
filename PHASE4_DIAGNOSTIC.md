@@ -46,6 +46,22 @@ Both uniqueness theorems take the structure that does the work as a **hypothesis
 
 A yes-answer to either — and hence both — would, via the existing uniqueness theorems, complete the derivation of ℂ from order-theoretic data. As of this writing, neither is presented as derived in the framework.
 
+#### Prior literature: the question is well-posed and answered in adjacent settings
+
+The question (a)/(b) has a well-developed continuum analogue. The Solèr–Stückelberg–Moretti–Oppio chain, in continuum relativistic quantum theory, asks whether the complex structure of the Hilbert space is forced or chosen — and answers it in the continuum case:
+
+- **Solèr (1995)** — Quantum theories admit Hilbert space formulations only over ℝ, ℂ, or ℍ (the Solèr classification).
+- **Stückelberg (1960)** — Real-Hilbert-space quantum mechanics has obstructions that point toward ℂ.
+- **Moretti & Oppio, *"Quantum theory in real Hilbert space: How the complex Hilbert space structure emerges from Poincaré symmetry"*, [arXiv:1611.09029](https://arxiv.org/abs/1611.09029)** — For an elementary relativistic system (locally-faithful irreducible continuous unitary representation of the Poincaré group on a real Hilbert space, with non-negative squared mass), the system admits a **natural, Poincaré-invariant, unique-up-to-sign complex structure** that commutes with the algebra of observables.
+
+Moretti–Oppio is the **direct continuum analogue** of our open question. Their Poincaré-symmetry hypothesis plays the role our SO(2)-action stipulation currently plays. They derive the complex structure J from a representation-theoretic consequence of Poincaré invariance. The result is non-constructive (existence + uniqueness up to sign) but rigorous.
+
+**The shape a future closure of (a)/(b) would take, by analogy with Moretti–Oppio:**
+
+> If the K_F-on-causal-poset structure carries an analogue of Poincaré symmetry — most naturally a discrete Lorentz-like representation arising from causal-poset automorphisms or from the K_F operator's spectral structure — then the same Solèr-style argument may force a unique-up-to-sign complex structure J on the K/P plane.
+
+This is a research target with a well-defined shape. It is not an open-ended philosophical worry; it is a specific mathematical question with a known answer-form in the continuum, awaiting a discrete-substrate analogue. Recording this here both as legitimate intellectual lineage and as a falsifiable program: someone could prove a discrete analogue of Moretti–Oppio (or prove no such analogue exists), and either outcome is a paper.
+
 ### Adversarial search log
 
 A targeted one-hour adversarial search was conducted before this finding was finalized, looking for places where the choice of complex structure might be implicit-but-derivable rather than implicit-and-arbitrary.
@@ -98,18 +114,148 @@ The bridge wiring (re-typing `obs ∘ amplitudeFromKP` through `Matrix.IsHermiti
 
 ## Phase 4b — `LayerA/BornRuleUnique.lean`
 
-*Pending. Diagnostic to be added here when 4b is started.*
+### Finding type: Case 1 (math correct) with Case 3 elements (file-naming + deferred-hypothesis chain)
 
-Specific things to look for, given what 4a surfaced:
+The file's actual mathematical content is honest and correct: `BornRuleUnique.lean` proves that any SO(2)-invariant quadratic form on ℝ² is proportional to `Q² + P²`, via setting `θ = π/2` to extract `b = 0` and `a = c`. This is `so2_invariant_quadratic_unique` and `so2_invariant_eval`, ~150 lines of clean Lean.
 
-1. **Does `BornRuleUnique` invoke `ComplexUniqueness`?** If so, its headline claim is presumably some refinement that goes beyond "uniquely SO(2)-invariant quadratic observable" — perhaps "uniquely SO(2)-invariant quadratic that is also additive over orthogonal projectors" or similar. Worth understanding what additional constraint is being applied and whether it is derived or postulated.
+But three observations:
 
-2. **Probabilities (Born I) vs expectation values (Born II)?** The Born rule has two faces:
-   - (Born I) Probabilities for measurement outcomes: `Pr(outcome i) = |⟨ψ|i⟩|²`.
-   - (Born II) Expectation values of observables: `⟨A⟩ = Tr(ρ A)` for self-adjoint `A`.
-   Gleason's theorem connects them. Does `BornRuleUnique` claim (I), (II), or both? If only (II), it is much closer to what the 2D-uniqueness theorems already give. If (I), there is additional structural content (probability assignment to projectors, additivity over orthogonal projectors) that needs separate auditing.
+1. **Triple redundancy.** This theorem is also proved in `LayerB/ComplexUniqueness.lean` (`complex_observable_unique`) and re-proved in `LayerB/PosetGrowthIsQuantum.lean` (`born_rule_for_growth`). All three are essentially the same uniqueness result with slightly different naming and structure. The duplication is not a bug per se, but it inflates the apparent body of evidence — three independently named files that all prove the same fact. Worth consolidating, or worth flagging in the paper that they are intentional re-statements rather than independent results.
 
-3. **Pure states vs density matrices?** Some "Born rule derivations" are really only rules for pure states and require extra work to extend to mixed states. The bridge produces Hermitian matrices generally; if `BornRuleUnique` is really a pure-state result, that is worth flagging explicitly.
+2. **File-name vs file-content gap.** The file is named `BornRuleUnique` and the master theorem is `born_rule_uniqueness`, but the actual content is "the unique normalized SO(2)-invariant quadratic form on ℝ² is `Q² + P²`." This is the **algebraic content** of the Born rule — exactly as the opening docstring honestly states (*"This is the algebraic content of the Born rule"*). It does **not** address:
+   - The probabilities-from-projectors face of the Born rule (`Pr(outcome i) = |⟨ψ|i⟩|²`).
+   - The expectation-values face (`⟨A⟩ = Tr(ρ A)`).
+   - Gleason-style projector-additivity.
+   - Pure-vs-mixed states.
+   - Connection to a Hilbert space at all (the file operates on `QuadForm` = (a, b, c) ∈ ℝ³, not on Hermitian operators).
+   The docstring is internally honest about this but the file name is broader than the content.
+
+3. **The deferred hypothesis chain does not close.** The master theorem `born_rule_uniqueness`'s docstring says the SO(2)-invariance hypothesis is justified physically by `RotationInvariance.lean` ("the physical content (why we need SO(2) invariance) comes from the isotropy of the Poisson sprinkling, proved in `RotationInvariance.lean`"). But `RotationInvariance.lean` itself proves only that **`Q² + P²` is rotation-invariant on ℝ² as a coordinate-rotation algebraic identity** (`norm_sq_rotation_invariant`). It does **not** prove that the K/P plane carries an SO(2) action **derived from** spatial isotropy of the underlying Poisson sprinkling. The connection between "spatial isotropy of points in the sprinkling" and "SO(2) action on the (Q, P) source/dressing pair" is asserted in the docstring but not formalized.
+
+### Why this does not introduce a new open question
+
+The deferred-hypothesis problem in 4b reduces to **the same** open question (a)/(b) from 4a. The chain:
+
+- `BornRuleUnique` requires SO(2) invariance on (Q, P).
+- It defers the justification to `RotationInvariance.lean`.
+- `RotationInvariance.lean` proves `Q² + P²` is invariant under coordinate rotation in ℝ², but does not derive an SO(2) **action** on the K/P plane from poset isotropy.
+- Therefore the SO(2) action remains stipulated.
+
+This is the **same** stipulation diagnosed in 4a. Closing question (a) — deriving the SO(2) action on (Q, P) from causal-poset data — would close the deferred-hypothesis chain in 4b simultaneously.
+
+### Bridge wiring is not directly applicable
+
+`BornRuleUnique.lean` operates on `QuadForm` (three real coefficients), not on Hermitian matrices. There is no place where the bridge constructor's `K_F_matrix_C : Matrix _ _ ℂ` could plug in directly. To connect, one would need a separate file that:
+- Takes a `Matrix.IsHermitian` hypothesis on K_F,
+- Identifies a 2D subspace (e.g., a fixed-rank antichain block) carrying a quadratic form,
+- Shows that subspace's quadratic form is SO(2)-invariant under some action,
+- And only then invokes `BornRuleUnique` to conclude the form is `a(Q² + P²)`.
+
+Each of those steps would be a new theorem and would surface its own assumptions. We do not attempt this here; the bridge wiring at this layer would not improve the situation given the open (a)/(b) question.
+
+### Restatement plan for 4b
+
+**(A) Cosmetic: tighten the master theorem docstring** to make the deferred-hypothesis status of SO(2) invariance honestly visible. Concretely, replace:
+
+> *"The physical content (why we need SO(2) invariance) comes from the isotropy of the Poisson sprinkling, proved in `RotationInvariance.lean`."*
+
+with:
+
+> *"The SO(2) invariance is taken as hypothesis here. `RotationInvariance.lean` proves that `Q² + P²` is invariant under coordinate rotation on ℝ², but the derivation of an SO(2) **action on the K/P pair** from spatial isotropy of the underlying causal-poset structure is open; see `PHASE4_DIAGNOSTIC.md`."*
+
+**(C-extension) Add to the research-questions section above:** the (a)/(b) open question is implicated by 4b's deferred-hypothesis chain, not just by 4a's structural setup. This is one open question with two file-level entry points, not two.
+
+---
+
+## Phase 4c — `LayerB/PosetGrowthIsQuantum.lean`
+
+### Finding type: Case 3 (overclaim) — strongest of the three
+
+The file's master theorem is named `poset_growth_is_quantum` and its docstring states:
+
+> *"The growth of a finite partial order (adding elements one at a time) with dressing-invariant quadratic probability IS quantum mechanics."*
+
+The actual content of the file is the **same uniqueness theorem** as `BornRuleUnique` and `ComplexUniqueness` — that an SO(2)-invariant quadratic function on ℝ² is `a(Q² + P²)` — applied to a `GrowthProb := ℝ → ℝ → ℝ` rather than a `QuadForm` or a complex observable.
+
+What the file does **not** contain:
+
+1. **No formalization of the Rideout-Sorkin sequential growth model** (referenced in the opening docstring but not implemented in Lean).
+2. **No connection to the `KFComputable.lean` K_F operator** or to any actual poset-growth dynamics in the framework.
+3. **No Hilbert space, no projectors, no unitary evolution.** The file does not derive that growth probabilities respect a unitary evolution; it derives the *shape* of an individual-step probability distribution.
+4. **No connection to the standard quantum-mechanics formulation of the Born rule** for measurement outcomes.
+
+The chain "growth probability ∝ Q² + P² ⇒ Born rule ⇒ quantum mechanics" is asserted in the docstring but only the first arrow is formalized, and that first arrow is the same algebraic uniqueness theorem proved in two other files.
+
+### What "poset growth IS quantum" would actually require to be a derivation
+
+For the file to deliver on its name, it would need to formalize at least:
+
+- (G1) **Sequential growth dynamics.** A formal construction of a sequence of finite posets `P₀ ⊆ P₁ ⊆ P₂ ⊆ …` with addition probabilities at each step (Rideout-Sorkin classical sequential growth, or some variant).
+- (G2) **A Hilbert space attached to the growth process.** The state space of "current poset" or "current poset history" carrying a complex inner product.
+- (G3) **A unitary evolution operator** governing the sequential growth, with the Born rule recovering the step probabilities.
+- (G4) **A derivation of (G3) from (G1)**: showing that the Rideout-Sorkin probabilities arise as `|amplitude|²` of unitary transitions, not the other way around.
+
+None of these are in the file or in any other file the search located. The framework asserts the equivalence of poset growth and quantum mechanics by analogy, then formalizes the algebraic uniqueness step at the bottom of the analogy.
+
+### Restatement plan for 4c
+
+This is the strongest Case 3 finding of the three. The honest restatement is more invasive than (A) cosmetic alone:
+
+**(A) Master-theorem rename**: renamed `poset_growth_is_quantum` to `dressing_invariant_quadratic_is_born_form` to truthfully reflect that the file proves a uniqueness result for quadratic dressing-invariant probability rules, not the equivalence of poset growth with quantum mechanics. (Done in this commit.)
+
+**(A-ext) File-level docstring rewrite**: replace the opening claim *"The growth of a finite partial order ... IS quantum mechanics"* with the honest content: *"If poset-growth probability is quadratic in (Q, P) and dressing-invariant under the SO(2) action on the K/P plane, then it is proportional to `Q² + P²` — the same uniqueness result as `BornRuleUnique.lean` and `ComplexUniqueness.lean`, applied to growth dynamics rather than measurement observables."*
+
+**(C-extension) Add to the research-questions section**: deriving "poset growth IS quantum mechanics" — with formal versions of (G1)–(G4) above — is a substantial open program. The current `PosetGrowthIsQuantum.lean` is a piece of that program, not a completion of it.
+
+### Why we do not attempt to prove (G1)–(G4) here
+
+Each of (G1)–(G4) is a multi-month research project. Formalizing Rideout-Sorkin alone is on the order of the Phases 1–3 of `kf-hermitian-lean`. The honest move at this stage is to name the gap and stop, not to wave at it.
+
+---
+
+## Cross-cutting observations after Phases 4a, 4b, 4c
+
+- **Triple uniqueness theorem**: `BornRuleUnique`, `ComplexUniqueness`, and `PosetGrowthIsQuantum` all prove essentially the same algebraic uniqueness fact (SO(2)-invariant quadratic on ℝ² ⇒ `a(Q² + P²)`). They are differently framed (observable / amplitude / growth probability) but the underlying math is one theorem. This is not redundancy in a strict sense — each frames the result for a different consumer — but the bibliography of the framework should be honest about it.
+
+- **Single open question, multiple entry points.** Phases 4a, 4b, and 4c each have their own apparent stipulation, but all three reduce to **the same** open derivation question: does causal-poset / K_F structure single out the SO(2) action on the K/P plane (equivalently, the 2D commutative real division algebra structure on the K/P pair)? Closing this one question would close all three deferred-hypothesis chains simultaneously.
+
+- **The bridge does not change the diagnostic.** Wiring `kf-hermitian-lean`'s `K_F_matrix_C_isHermitian` into any of the three files would not eliminate the open question; the bridge produces `Matrix _ _ ℂ` whose `ℂ` is also presupposed. The bridge is valuable for *type-discipline* and for *eliminating ad-hoc matrix definitions*, but the deeper Case 3 finding of "complex/SO(2) structure presupposed, not derived" is invariant under bridge wiring.
+
+- **The strongest claim of the framework that survives unambiguously** is the chain `K_F → IsHermitian → real eigenvalues → γ_d eigenvalue → Higgs mass`, *conditional* on the presupposed complex Hilbert space structure. Phases 1–3 of `kf-hermitian-lean` formalize this chain; Phase 4 has confirmed that conditioning on ℂ is the only structural presupposition (not multiple independent ones), which is a strong epistemic position even if the open question (a)/(b) is not yet closed.
+
+---
+
+## Related literature
+
+The Phase 4 diagnostic should be read alongside the following prior and contemporaneous work. These are not exhaustive; they are the papers that bear most directly on the open question and on the Lean-formalized-physics audience.
+
+### Continuum analogue of the open question (a)/(b)
+
+- **Solèr, *"Characterization of Hilbert spaces by orthomodular spaces"*, Comm. Algebra 23 (1995)** — Quantum theories admit Hilbert space formulations only over ℝ, ℂ, or ℍ. The classification result that frames our (a)/(b) as well-posed.
+
+- **Stückelberg, *"Quantum theory in real Hilbert space"*, Helv. Phys. Acta 33 (1960)** — Identifies obstructions to real-Hilbert-space quantum mechanics that point toward ℂ.
+
+- **Moretti & Oppio, *"Quantum theory in real Hilbert space: How the complex Hilbert space structure emerges from Poincaré symmetry"*, [arXiv:1611.09029](https://arxiv.org/abs/1611.09029)** — The direct continuum analogue. Poincaré symmetry on a real Hilbert space, with non-negative squared-mass operator, forces a unique-up-to-sign Poincaré-invariant complex structure J commuting with the algebra of observables. Our (a)/(b) is the discrete-substrate counterpart of this question. A future closure of (a)/(b) would presumably take the form: *find a discrete analogue of Poincaré symmetry on the K/P plane, then run a Solèr-Moretti-Oppio-style argument.*
+
+### Adjacent / foil programs
+
+- **Smolin & Cortês, *"The universe as a process of unique events"* and *"Energetic Causal Sets"*, [arXiv:1308.2206](https://arxiv.org/abs/1308.2206)** — Propose a foundation for relativistic quantum theory in which operators play no role at the fundamental level: "only causality, energy, and momentum." This makes a different strategic choice from ours — they do not derive Hilbert space from causal structure; they put quantum amplitudes and causal structure on equal footing. Worth reading as a foil paper: their move is to refuse to do what our program is trying to do, on the grounds that the derivation may be impossible. Whether they are right is partly an empirical question about whether (a)/(b) admits closure.
+
+- **Soulas, Franzmann & Di Biagio, *"On the emergence of preferred structures in quantum theory"*, [arXiv:2512.07468](https://arxiv.org/abs/2512.07468) (Dec 2025)** — Hilbert Space Fundamentalism: tries to recover tensor product structure, locality, and preferred observables from the Hamiltonian and state alone. Adjacent territory with **opposite directionality**: they derive structure from within QM; we try to derive structure upstream of QM. Their no-go obstacles and our (a)/(b) gap are pointing at the same structural difficulty — complex Hilbert space structure is hard to get for free, and any framework claiming to derive it must identify exactly where the work is being done.
+
+### Lean-formalized physics — venue and methodological tradition
+
+- **Meiburg, Lessa & Soldati, *"A Formalization of the Generalized Quantum Stein's Lemma in Lean"*, [arXiv:2510.08672](https://arxiv.org/abs/2510.08672) (Oct 2025)** — From the Lean-QuantumInfo group (Timeroot et al.) whose `HermitianMat` infrastructure the bridge in [`tomdif/kf-hermitian-lean`](https://github.com/tomdif/kf-hermitian-lean) is built on. ~1000 theorems, ~250 definitions, ~15K lines of Lean as of Oct 2025. The library is active and well-supported. **Template for our eventual writeup**: same authors, same library, same Lean-physics community.
+
+- **Douglas, Hoback, Mei & Nissim, *"Formalization of Free Quantum Field Theory in Lean 4"*, [arXiv:2603.15770](https://arxiv.org/abs/2603.15770) (Mar 2026)** — Formalization of free bosonic QFT in 4D Euclidean spacetime satisfying the Glimm–Jaffe / Osterwalder–Schrader axioms in Lean 4 + Mathlib. **Methodologically directly relevant**: the bridge work is in the same tradition. Importantly, Michael R. Douglas (a coauthor) is now actively engaged in Lean-formalized physics, which makes the framing "Lean-formalized infrastructure for a discrete-substrate quantum framework, in the methodological tradition of Douglas et al." legible and serious to mathematical-physics audiences. Worth re-reading before any further endorsement / submission contact.
+
+### Methodological references for the future dimension-test program (not Phase 4)
+
+These are flagged for future work outside Phase 4, recorded here for completeness:
+
+- **Carlip, *"Dimension and dimensional reduction in quantum gravity"*, [arXiv:1710.00938](https://arxiv.org/abs/1710.00938)** — Causal-set spectral dimension drops to ≈ 2 at small distances on Minkowski sprinklings of d=3,4,5. Important context for any Phase-1 sanity floor of a future dimension-test: short-distance dimensional reduction is a real feature of the substrate, not an estimator bug, and finite-size corrections must be calibrated against this known phenomenon.
+
+- **Gorard, *"Algorithmic Causal Sets and the Wolfram Model"*, [arXiv:2011.12174](https://arxiv.org/abs/2011.12174)** — Reformulates local dimension estimation as generalizations of the midpoint scaling estimator on causal sets, compatible with the Myrheim–Meyer estimator. Useful prior art for any future two-estimator approach.
 
 ---
 

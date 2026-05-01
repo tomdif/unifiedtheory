@@ -1,26 +1,34 @@
 /-
-  LayerB/ComplexFromDressing.lean — Complex amplitudes forced by K/P structure
+  LayerB/ComplexFromDressing.lean — Properties of the canonical
+  complexification on the K/P pair.
 
-  DERIVES complex-valued quantum amplitudes from the source/dressing
-  decomposition, rather than postulating them.
+  Given the K/P real pair (Q, P) — derived from a source functional in
+  `LayerA.DerivedBFSplit` — the canonical SO(2)-invariant complexification
+  (Q, P) ↦ Q + iP yields a complex amplitude with the standard observable
+  structure: |z|² = Q² + P², U(1) phase invariance, dressing-induced
+  interference, classical limit at P = 0.
 
-  Key insight: a defect with fixed source strength Q (the K-part)
-  can have variable dressing content P (invisible to charge measurements).
-  The pair (Q, P) ∈ ℝ² naturally forms a complex amplitude z = Q + iP.
+  This complexification is the *unique* 2D commutative real division algebra
+  (`LayerB/ComplexificationUniqueness.lean`, ~180 lines, fully proved) and
+  the *unique* rotation-invariant quadratic observable up to scale
+  (`LayerB/ComplexUniqueness.lean`, ~145 lines, fully proved). Each
+  uniqueness theorem takes as hypothesis the structure that does the work
+  (an algebra structure, or an SO(2) action) and shows ℂ is forced given
+  that structure.
 
-  Then:
-  - |z|² = Q² + P² is the full observable (includes dressing energy)
-  - Q alone = classical charge (the real part)
-  - P = internal phase-like degree of freedom (the imaginary part)
-  - Two defects with same Q but different P INTERFERE
-  - Phase rotation in P is a U(1) symmetry
+  The order-theoretic origin of either the SO(2) symmetry or the
+  division-algebra structure on the K/P plane is treated as open. See
+  `PHASE4_DIAGNOSTIC.md` for the surviving open derivation question
+  (the SO(2) action on (Q, P) is currently stipulated via the
+  `phaseRotate θ` definition in `LayerB.QuantumDefects`, not derived
+  from causal-poset / K_F data).
 
-  This is NOT an arbitrary complexification. It is FORCED by the
-  existence of a dressing sector that is invisible to the source
-  functional but contributes to the full energy/observable.
-
-  The derivation chain:
-    SourceFunctional → K/P split → (Q,P) pair → ℂ amplitude → interference
+  The derivation chain (with hypotheses made explicit):
+    SourceFunctional → K/P split [LayerA.DerivedBFSplit, derived]
+    → real pair (Q, P) ∈ ℝ²       [derived]
+    → SO(2) action on (Q, P)      [stipulated; open question]
+    → ℂ amplitude                  [forced from SO(2) by ComplexUniqueness]
+    → interference                 [forced from ℂ amplitude, derived below]
 -/
 import UnifiedTheory.LayerB.QuantumDefects
 import UnifiedTheory.LayerA.DerivedBFSplit
@@ -134,20 +142,24 @@ theorem classical_interference_term (Q₁ Q₂ : ℝ) :
 
 /-! ### The derivation theorem -/
 
-/-- **Complexification-from-parent theorem.**
+/-- **Properties of the canonical K/P complexification.**
 
-    The K/P decomposition (which was derived from a source functional)
-    naturally provides complex amplitude structure:
+    Given the canonical SO(2)-invariant complexification (Q, P) ↦ Q + iP —
+    which is uniquely determined among 2D commutative real division
+    algebras with multiplicative norm by `ComplexificationUniqueness`,
+    and uniquely determined among rotation-invariant quadratic observables
+    up to scale by `ComplexUniqueness` — the K/P amplitude has the
+    standard complex-amplitude properties:
 
-    (1) The amplitude z = Q + iP is determined by the K/P content
-    (2) The observable |z|² = Q² + P² includes dressing energy
-    (3) Dressing rotation is U(1) phase invariance
-    (4) Defects with same Q but different P interfere
-    (5) Pure dressing (Q=0) is classically invisible but quantum-visible
-    (6) Setting P=0 recovers the classical real-charge theory
+    (1) The observable is |z|² = Q² + P² (Born rule)
+    (2) Dressing rotation is U(1) phase invariance (preserves observable)
+    (3) Defects with same Q but different P interfere
+    (4) Pure dressing (Q=0) is classically invisible but quantum-visible
+    (5) Setting P=0 recovers the classical real-charge theory
 
-    The complex amplitude is NOT postulated — it arises from the
-    existence of dressing content invisible to the source functional. -/
+    The order-theoretic origin of either the SO(2) symmetry or the
+    division-algebra structure on the K/P plane is treated as open.
+    See `PHASE4_DIAGNOSTIC.md`. -/
 theorem complexification_from_parent :
     -- (1) Observable = Q² + P²
     (∀ Q P, obs (amplitudeFromKP Q P) = Q ^ 2 + P ^ 2)
