@@ -596,6 +596,22 @@ import UnifiedTheory.LayerB.E8IsingZamolodchikov
 -- 0 sorry, 0 custom axioms.
 import UnifiedTheory.LayerB.FrameworkCapstone
 
+-- Yang-Mills causal-set + Feshbach attack on the Clay Millennium Problem.
+-- HONEST PARTIAL RESULT (does NOT solve Clay-YM):
+-- (1) defines pure SO(10) YM on a finite causal substrate, (2) projects
+-- the transfer-matrix transfer onto the 3-channel YM chamber via the same
+-- Feshbach reduction as K_F at d=4, (3) PROVES the chamber Hamiltonian
+-- has characteristic polynomial (5x-3)(150x²-50x+3), eigenvalues
+-- {3/5, (5±√7)/30} in ℚ(√7), and additive gap (13-√7)/30 > 0 plus log
+-- gap ln(5-√7) > 0 (closed-form, NOT estimates). (4) Records ℚ(√7) as
+-- the UNIQUE chamber-gap field by primality of the Feshbach discriminant
+-- f(d=4)=7 (only d∈{3,4,5} with f prime). (5) Explicitly states open:
+-- continuum-limit (CL1), Wightman/OS axioms (CL2), Glimm-Jaffe constructive
+-- measure (CL3). Master theorem causal_YM_partial_result + honest scope
+-- statement honest_clay_YM_scope_statement classify each requirement as
+-- PROVED / CONDITIONAL / OPEN / NOT-ADDRESSED. Zero sorry, zero custom axioms.
+import UnifiedTheory.LayerB.YangMillsCausalAttack
+
 -- Pre-registration honesty ledger (locked 2026-05-11). Formally tags
 -- each major framework prediction as one of three categories:
 -- PRE_REGISTERED (5 entries: κ_λ = 1, V_ub = √21/1200, Ω_b/Ω_DM = 4/21,
