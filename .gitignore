@@ -5,3 +5,6 @@ build/
 *.trace
 *.hash
 lake-packages/
+.claude/
+.DS_Store
+**/.DS_Store

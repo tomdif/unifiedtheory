@@ -1,0 +1,6 @@
+================================================================================
+  CABIBBO PARALLEL: rho=10000 k=0.0 seeds=20 workers=10
+  Target: |V_us| = 0.225 (theta_C = 13.0 deg)
+================================================================================
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
