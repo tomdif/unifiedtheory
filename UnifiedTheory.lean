@@ -612,6 +612,15 @@ import UnifiedTheory.LayerB.FrameworkCapstone
 -- PROVED / CONDITIONAL / OPEN / NOT-ADDRESSED. Zero sorry, zero custom axioms.
 import UnifiedTheory.LayerB.YangMillsCausalAttack
 
+-- CL2 Wightman-axiom classification for the causal-set + chamber-Feshbach
+-- YM attack. Seven-axiom status table: W2 PROVED (positive chamber spectrum
+-- with explicit lower bound (5−√7)/30), W5 PROVED (causal-set microcausality),
+-- W1 + W3 PARTIAL_FREE (discrete part proved, continuum lift conditional on
+-- CL1), W4 + W6 + W7 NOT_ADDRESSED (outside chamber framework's scope).
+-- Master theorem wightman_axioms_classification + honest summary
+-- wightman_status_summary. Zero sorry, zero custom axioms.
+import UnifiedTheory.LayerB.CL2_WightmanAxioms
+
 -- Pre-registration honesty ledger (locked 2026-05-11). Formally tags
 -- each major framework prediction as one of three categories:
 -- PRE_REGISTERED (5 entries: κ_λ = 1, V_ub = √21/1200, Ω_b/Ω_DM = 4/21,
