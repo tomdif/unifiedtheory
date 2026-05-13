@@ -64,6 +64,7 @@ import UnifiedTheory.LayerC.UnifiedSelectionSpectralTheorem
 import UnifiedTheory.LayerC.G1ClosureVolterraDerivation
 import UnifiedTheory.LayerC.G1ClosureChannelCount
 import UnifiedTheory.LayerC.AffineResidueAnalysis
+import UnifiedTheory.LayerC.DefectCalculusJ4
 
 -- NEGATIVE RESULTS (the obstruction stack)
 import UnifiedTheory.LayerC.Avenue2Test
