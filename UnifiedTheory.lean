@@ -92,6 +92,8 @@ import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
 import UnifiedTheory.LayerC.ConcreteMultiBody
 import UnifiedTheory.LayerC.CandidateOperatorUnbounded
+import UnifiedTheory.LayerC.TypedPacketMetaSelection
+import UnifiedTheory.LayerC.TypedPacketSpectralRigidity
 import UnifiedTheory.LayerB.PropagationRule
 import UnifiedTheory.LayerA.GaugeSelection
 import UnifiedTheory.LayerA.DiscreteBundles
