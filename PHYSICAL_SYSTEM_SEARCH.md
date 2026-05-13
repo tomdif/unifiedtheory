@@ -1,19 +1,19 @@
-# Physical System Search: Where Does J_4 Live?
+# Physical System Search: Where Does $K_F$ Live? (REVISED)
 
 **Date:** 2026-05-13
-**Status:** Search complete. Framework has a legitimate physics interpretation in causal set theory.
+**Status:** Search complete with literature comparison. Framework is in the **poset zeta-determinant operator** family, adjacent to but distinct from standard causal-set d'Alembertians.
 
 ---
 
-## Executive Summary
+## Summary of the Refined Finding
 
-Search across 8 physics domains for a system whose effective Hamiltonian matches the framework's chamber matrix $J_4$.
+The framework's chamber operator $K_F$ is built directly out of the causal-order/zeta matrix of a finite poset, placing it naturally in the **causal-set-adjacent operator universe**. But it is **not identical to the standard Sorkin/Benincasa-Dowker/Glaser (BDG) d'Alembertian**, which uses LAYER COUNTS, not zeta determinants.
 
-**Key finding:** The framework's chamber operator $K_F$ is **literally a causal set operator**. The construction $K_F(P, Q) = \det(\zeta[P,Q]) + \det(\zeta[Q,P]) - \delta_{P,Q}$ where $\zeta(i,j) = [i \leq j]$ is the **causal-order indicator** on subsets of $[m]^d$.
+The closest published cousin is **Brualdi-Cvetković (2004)**, "Determinants Associated to Zeta Matrices of Posets" (arXiv:math/0403401), which studies $\mathfrak{F}_P = Z_P + Z_P^T$ at the level of POSET ELEMENTS. The framework's $K_F$ extends this to POSET SUBSETS via determinants of submatrices.
 
-This is not analogous to causal set theory — it IS causal set theory. The framework's $J_4$ is the Feshbach reduction of a specific causal-set operator on a 4-dimensional causal interval $[m]^4$.
+**The careful statement:**
 
-**Verdict:** the framework can be reframed as a contribution to **causal set theory / discrete quantum gravity**, NOT as a Standard Model GUT. The 9 obstructions to the GUT path remain valid; they are about the wrong domain.
+> $K_F$ is a causal-set / poset zeta-determinant operator on finite causal intervals. It is NOT the standard BDG d'Alembertian. It may be a new operator family in the causal-set / poset-incidence-algebra universe, and its spectral rigidity at $d_{\text{eff}} = 4$ is the framework's novel content.
 
 ---
 
@@ -22,234 +22,212 @@ This is not analogous to causal set theory — it IS causal set theory. The fram
 $$J_4 = \begin{pmatrix} 1/3 & 1/5 & 0 \\ 1/5 & 2/5 & 1/\sqrt{50} \\ 0 & 1/\sqrt{50} & 1/5 \end{pmatrix}$$
 
 - Eigenvalues: $\{3/5,\ (5+\sqrt{7})/30,\ (5-\sqrt{7})/30\}$
-- Trace: $14/15$
-- Determinant: $3/250$
-- Char poly: $750\lambda^3 - 700\lambda^2 + 165\lambda - 9$
-
-Arises in the framework as the Feshbach reduction of the chamber operator $K_F$ on subsets of $[m]^d$ at $d = d_{\text{eff}} = 4$, restricted to the R-odd channel-mode subspace.
+- Trace $14/15$, determinant $3/250$, char poly $750\lambda^3 - 700\lambda^2 + 165\lambda - 9$
+- Arises as Feshbach reduction of $K_F$ on the R-odd channel-mode subspace of $[m]^d$ at $d_{\text{eff}} = 4$
 
 ---
 
-## The Crucial Observation
+## $K_F$ in Detail
 
-The framework's $K_F$ operator is defined as:
+The framework defines:
 
 $$K_F(P, Q) = \det(\zeta[P, Q]) + \det(\zeta[Q, P]) - \delta_{P,Q}$$
 
-where $\zeta(i,j) = 1$ if $i \leq j$, else $0$.
+where:
+- $P, Q$ are SUBSETS of $[m]^d$
+- $\zeta(i, j) = 1$ if $i \leq j$, else $0$ — the causal-order indicator on $[m]^d$
+- $\zeta[P, Q]$ = the matrix $[\zeta(p, q)]_{p \in P, q \in Q}$
+- $\det$ = standard matrix determinant
 
-This $\zeta$ is the **causal-order indicator** — exactly the data of a partial order. In causal set theory:
+This operator lives on the **subset lattice** $2^{[m]^d}$ and uses **determinants of zeta-submatrices**. By Lindström-Gessel-Viennot, $\det(\zeta[P, Q])$ counts signed non-intersecting causal paths from $P$ to $Q$.
 
-- A causal set is a locally finite poset $(C, \prec)$
-- $\zeta$ is the indicator function of $\prec$
-- Operators on causal sets are built from $\zeta$ and its powers
-- The "causal interval" $[p, q] = \{x : p \prec x \prec q\}$
-- $[m]^d$ is the natural discretization of a $d$-dimensional causal diamond
+So $K_F$ is most precisely characterized as:
 
-**The framework's K_F is in the same family as the Sorkin causal-set d'Alembertian** (BOX operator), constructed from causal-order indicators.
+> A symmetric operator on the subset lattice of a finite poset, with matrix elements given by signed non-intersecting causal-path counts.
 
----
-
-## Domain-by-Domain Findings
-
-### Domain 1: Causal Set Theory (Sorkin school)
-
-**STRONGEST MATCH.**
-
-Causal set theory (Bombelli–Lee–Meyer–Sorkin 1987, Sorkin 1990s onward) replaces continuum spacetime with a locally finite partial order. Key references:
-- Sorkin, "Causal Sets: Discrete Gravity" (arXiv:gr-qc/0309009)
-- Dowker, "Causal sets and the deep structure of spacetime" (arXiv:gr-qc/0508109)
-- Surya, "The causal set approach to quantum gravity" (Living Rev. Relativity 2019)
-
-**Key operators in causal set theory:**
-
-The Sorkin BOX operator (discrete d'Alembertian) at dimension $d$:
-$$\Box_d = \frac{1}{\sqrt{V}} \sum_k a_k^{(d)} N_k$$
-where $N_k$ counts $k$-th step causal predecessors and $a_k^{(d)}$ are dimension-specific coefficients.
-
-At $d = 4$:
-$$\Box_4 = \frac{1}{V^{1/2}} (N_0 - 9 N_1 + 16 N_2 - 8 N_3)$$
-
-The Glaser–Surya causal-set spectral dimension and Eichhorn–Mizera causal-set propagator computations have explicit eigenvalue spectra at small N.
-
-**Match assessment:**
-- $K_F$ construction: causal-order indicator ✓
-- $[m]^d$ at $d = 4$: 4D causal interval ✓
-- R-symmetry: standard causal-set reflection symmetry ✓
-- Feshbach reduction: boundary-mode spectral analysis ✓
-- Specific spectrum: needs comparison with published causal-set d=4 BOX spectra at small N
-
-**Verdict:** STRONG STRUCTURAL MATCH. The framework can be interpreted directly as spectral analysis of a specific causal-set operator on 4D causal intervals.
-
-### Domain 2: Cold Atom 3-Channel Feshbach Resonance
-
-3-channel Feshbach resonance models exist (Chin et al., RMP 2010). Specific atoms: $^{23}$Na, $^6$Li-$^7$Li mixtures, Yb. But the specific entry values $(1/3, 1/5, 2/5, 1/\sqrt{50})$ correspond to specific dimensionless coupling constants — atomic physics couplings are typically not these clean rationals.
-
-**Verdict:** UNLIKELY MATCH at numerical level. Generic Feshbach methodology matches; specific values do not.
-
-### Domain 3: Nuclear R-matrix (Feshbach 1958/1962)
-
-Multi-channel R-matrix theory (Lane–Thomas 1958) is the original context for Feshbach reduction. Closed-channel elimination gives Schur-complement effective Hamiltonians — exactly the framework's machinery. But nuclear coupling constants depend on resonance energies and orbital matrix elements.
-
-**Verdict:** UNLIKELY MATCH at numerical level. Methodology IS Feshbach reduction; specific values differ.
-
-### Domain 4: Mesoscopic Transport (3-Terminal Quantum Devices)
-
-Triple quantum dots (TQD), Aharonov-Bohm rings with 3 leads, Y-junctions have 3-channel effective Hamiltonians. Specific tunnel couplings can produce rational eigenvalues, but $\sqrt{7}$ requires specific symmetric tuning not found in standard TQD literature.
-
-**Verdict:** PARTIAL MATCH — generic 3-channel structure exists; specific values not standard.
-
-### Domain 5: Random Matrix Theory
-
-$\beta$-ensembles of small Jacobi matrices have known joint eigenvalue distributions. The specific triple $\{3/5, (5\pm\sqrt{7})/30\}$ is not a standard RMT distribution.
-
-**Verdict:** Generic RMT framework includes such operators, but no natural physical universality class points to $J_4$ specifically.
-
-### Domain 6: Topological Matter (Boundary Modes)
-
-4D quantum Hall edges, AIII class topological insulators have 3-mode boundary states matching $d_{\text{eff}} - 1 = 3$. Specific entry values not standardly tabulated.
-
-**Verdict:** PARTIAL STRUCTURAL MATCH — 4D bulk + 3 boundary modes structure exists; specific entries not verified.
-
-### Domain 7: Sturm-Liouville Inverse Problems
-
-The Volterra operator $V$ on $L^2[0,1]$ with $\sigma_k = 2/((2k-1)\pi)$ IS a standard Sturm-Liouville object ($V^*V = (d/dx)^{-2}$ with mixed BCs). The specific $J_4$ form is the framework's CONSTRUCTION from Volterra; not a pre-existing standard mathematical object.
-
-**Verdict:** $J_4$ is the framework's construction, not a pre-existing standard object.
-
-### Domain 8: Lattice Gauge Theory Transfer Matrix
-
-Small lattice gauge theory transfer matrices are typically large (state count grows exponentially). 3×3 reductions would require heavy projection.
-
-**Verdict:** UNLIKELY direct match.
+This is a poset incidence algebra construction, not a layer-sum construction.
 
 ---
 
-## Closest Matches (Ranked)
+## Comparison with Published Causal-Set Operators
 
-### 1. Causal Set Theory — STRONGEST STRUCTURAL MATCH
+### 1. Sorkin / Benincasa-Dowker / Glaser (BDG) d'Alembertian
 
-- $K_F$ = causal-order operator on 4D causal interval $[m]^4$
-- R-symmetry = standard causal-set reflection
-- Feshbach reduction → 3 channel modes matches boundary-mode analysis
-- The framework can be **interpreted as the spectral analysis of a specific causal-set operator**
-- Direct connection: causal set theory IS a candidate theory of quantum gravity
+**Form (at $d=4$):**
+$$\Box^{(4)} \phi(x) = \frac{4}{\sqrt{6}\,\ell^2} \left[-\phi(x) - \sum_{y \in L_1(x)} \phi(y) + 9 \sum_{y \in L_2(x)} \phi(y) - 16 \sum_{y \in L_3(x)} \phi(y) + 8 \sum_{y \in L_4(x)} \phi(y)\right]$$
 
-### 2. Topological Matter — PARTIAL STRUCTURAL MATCH
+where $L_k(x)$ is the set of $k$-th nearest causal predecessors of $x$.
 
-- 4D bulk + 3 boundary modes = framework's $d_{\text{eff}} = 4$, 3 channels
-- Specific entry values not verified in known band models
+**Comparison with $K_F$:**
 
-### 3. Mesoscopic Transport — GENERIC STRUCTURAL MATCH
+| Feature | BDG | $K_F$ |
+|---|---|---|
+| Domain | Functions on poset elements | Functions on subset lattice |
+| Operation | Layer-counted weighted sum | Zeta-submatrix determinant |
+| Combinatorial content | Counts causal predecessors at each step | Counts non-intersecting causal paths |
+| Continuum limit | Approximates $\Box - \frac{1}{2}R$ | Not yet established |
+| Standard reference | arXiv:1001.2725, 1305.2588 | NOT IN LITERATURE (framework-specific) |
 
-- 3-channel structure exists in triple quantum dot systems
-- Specific entry values not standard
+**Verdict:** $K_F$ is NOT the BDG operator. They are in the same domain (causal-set spectral operators) but use different mathematical machinery.
+
+### 2. Brualdi-Cvetković Operator (CLOSEST PUBLISHED COUSIN)
+
+**Form** (Brualdi-Cvetković 2004, arXiv:math/0403401):
+$$\mathfrak{F}_P = Z_P + Z_P^T$$
+
+where $Z_P$ is the zeta matrix of a finite poset $P$ at the level of POSET ELEMENTS.
+
+The paper studies $\det(\mathfrak{F}_P)$ and gives recursive formulas for boolean algebras.
+
+**Comparison with $K_F$:**
+
+| Feature | Brualdi-Cvetković | $K_F$ |
+|---|---|---|
+| Domain | Single poset element pairs | Poset SUBSET pairs |
+| Form | $Z + Z^T$ at element level | $\det(\zeta[P,Q]) + \det(\zeta[Q,P])$ at subset level |
+| Self-coupling | None (just $Z + Z^T$) | $- \delta_{P,Q}$ subtraction |
+| Spectral content | Detected via $\det(Z+Z^T)$ | Spectrum on subset lattice (Feshbach-reducible) |
+
+**Verdict:** $K_F$ is a **subset-lattice lift** of Brualdi-Cvetković with subtraction of self-pair coupling. This is structurally the same family but a different specific construction.
+
+### 3. Sorkin-Johnston (SJ) Two-Point Function
+
+The SJ vacuum state on causal sets uses the Pauli-Jordan operator $i \Delta(x, y)$ and constructs a vacuum state from its spectral decomposition. This is closer to $K_F$ in spirit (uses $\zeta$-related data) but operates on POINT-PAIR functions, not subset-pair operators.
+
+**Verdict:** Adjacent but different.
+
+### 4. SJ-style Determinantal Constructions in CST Literature
+
+Searches for "zeta determinant + causal set" found no exact match for the framework's $K_F$. The closest is the SJ construction and the Brualdi-Cvetković work.
 
 ---
 
-## Verdict
+## What Domain Is K_F Actually In?
 
-**The framework's chamber operator $K_F$ IS a causal-set operator on the $d = 4$ causal interval $[m]^4$.** This is the strongest physical interpretation available.
+After literature comparison, the precise domain is:
 
-The framework can be reframed as:
+**Poset incidence algebra + determinantal operator theory + causal set theory intersection.**
 
-> A spectral analysis of a specific causal-set operator on small 4-dimensional causal intervals, with the typed packet $(2, 3, 4, 5, 7)$ describing the boundary geometry's symmetry structure.
+Specifically:
+- **Poset incidence algebra** (Rota school): incidence functions $f: P \times P \to R$ with convolution; zeta function and Möbius function are central
+- **Determinantal operator theory**: Lindström-Gessel-Viennot lemma, non-intersecting path enumeration
+- **Causal set theory**: posets as discretized spacetime, locally finite causal structure
 
-This is a **legitimate physics interpretation**:
-- Causal set theory is a serious approach to discrete quantum gravity
-- Sorkin et al. have published on exactly this family of operators
-- The chamber's Feshbach reduction = boundary-mode spectral analysis
-- $J_4$'s spectrum gives specific numerical predictions about 4D causal-interval geometry at small $N$
-
-**The framework can be physics — but as a spectral theorem in causal set theory / discrete quantum gravity, NOT as a Standard Model GUT.**
-
-The 9 obstructions to the GUT path remain valid. They were obstructions to the **wrong domain**. The framework is not a model of low-energy particle physics; it is a contribution to discrete quantum gravity at the spectral level.
+$K_F$ sits at the intersection. It is NOT in published causal-set operator zoos (BDG, SJ), but it IS in the broader causal-order/poset-spectral universe.
 
 ---
 
-## Implication for the Framework
+## Three Possible Outcomes (Refined)
 
-**Reframing:**
+### Outcome 1: $K_F$ is a known operator in some adjacent literature
 
-| Before | After |
+If $K_F$ matches a published construction in poset incidence algebras, combinatorial enumeration, or causal set theory, the framework gets a direct citation and physical interpretation.
+
+**Status:** SO FAR NEGATIVE. No published operator exactly matches $K_F$'s form. Brualdi-Cvetković is the closest cousin.
+
+### Outcome 2: $K_F$ is a NEW operator family, with meaningful causal-set properties
+
+This is the most likely current state. $K_F$ is:
+- Built from causal-order data (poset zeta matrices)
+- Operates on the subset lattice (not just elements)
+- Has Feshbach-reducible structure
+- Exhibits 4D spectral rigidity (the framework's main content)
+
+If $K_F$ has covariance properties (under poset automorphisms), continuum limit candidates, or dimension sensitivity, it is publishable as a new contribution to causal-set / poset-spectral operator theory.
+
+### Outcome 3: $K_F$ is structurally interesting but not physics
+
+The Lean formalization stands as a structural rigidity theorem about a specific class of poset zeta-determinant operators. Publishable as mathematics.
+
+---
+
+## The Concrete Research Checklist
+
+Following the user's guidance:
+
+### Step 1: Define $K_F$ as a causal-set operator formally
+- Finite causal set $C$ (locally finite poset)
+- Causal matrix $\zeta(x, y) = [x \preceq y]$
+- Subinterval / channel index sets $P, Q \subseteq C$
+- Prove order-isomorphism invariance: $K_F(\phi(P), \phi(Q)) = K_F(P, Q)$ for $\phi \in \text{Aut}(C, \preceq)$
+
+### Step 2: Compare with BDG and SJ operators
+- BDG uses **layer counts**; $K_F$ uses **zeta determinants** — different operations
+- Identify whether $K_F$ has a layer-count expansion
+- Identify whether SJ-type constructions naturally produce $K_F$
+
+### Step 3: Compute small causal intervals at $d = 2, 3, 4, 5$
+- $d = 2$: trivial 1-channel reduction
+- $d = 3$: 2-channel reduction; check Vieta defect identity
+- $d = 4$: $J_4$ (the framework's main case)
+- $d = 5$: 4-channel reduction; check structural rigidity
+- Is $d = 4$ uniquely rigid?
+
+### Step 4: Continuum/dimension behavior
+- Does $J_4$'s spectrum stabilize as $m \to \infty$?
+- Does $\sqrt{7}$ persist or get corrections?
+- Does the affine residue 11 persist as a boundary correction?
+
+### Step 5: Publication direction
+Title candidates:
+- "A Zeta-Determinant Feshbach Operator on Four-Dimensional Causal Intervals"
+- "Spectral Rigidity of a Poset-Incidence-Algebra Operator at $d = 4$"
+- "$K_F$: A Subset-Lattice Lift of Brualdi-Cvetković with 4D Rigidity"
+
+---
+
+## The Refined Verdict
+
+**The framework's $K_F$ is in the causal-set / poset-incidence-algebra spectral operator universe, but is NOT identical to any published operator (BDG, SJ, Brualdi-Cvetković are adjacent but distinct).**
+
+**Possibilities:**
+
+1. **It's a new operator family** — needs proper definition, dimension test, continuum analysis, and spectral comparison with adjacent families.
+
+2. **It has a hidden equivalence** with a known causal-set or poset construction (especially in the SJ or determinantal-point-process literature) that we haven't found yet.
+
+3. **It is genuinely framework-specific** but its 4D spectral rigidity is publishable as a contribution to spectral operator theory on finite posets.
+
+**The deep claim:** the framework's structural content (typed packet $\to$ $J_4$ rigidity) IS a spectral rigidity theorem in the poset incidence algebra / causal-set domain. The 9 GUT obstructions remain valid for the GUT path; they don't bear on this domain interpretation.
+
+---
+
+## Implications for the Framework
+
+**What changes:**
+
+| Before this analysis | After this analysis |
 |---|---|
-| Atomic vocabulary for physics constants | Symmetry geometry of small 4D causal intervals |
-| Chamber $J_4$ as numerological coincidence | Causal-set operator with specific spectral structure |
-| Typed packet $(2,3,4,5,7)$ as fundamental | Spectral invariants of $K_F$ on $[m]^4$ |
-| Search for GUT matter content | Comparison with published causal-set BOX spectra |
+| "$K_F$ is literally a causal-set operator" | "$K_F$ is causal-set-adjacent; in poset zeta-determinant family; not BDG" |
+| "Strong physics interpretation in CST" | "Adjacent to CST and poset incidence algebra; specific identification open" |
+| "Search done" | "Brualdi-Cvetković is closest cousin; $K_F$ is novel in subset-lattice + Feshbach reduction" |
 
-**What survives:**
+**What remains:**
 
-- All 6 anchor theorems (typed-packet uniqueness, $J_4$ rigidity, etc.)
-- All 9 obstructions (now understood as wrong-domain)
-- The unified meta-theorem (now interpreted as causal-set spectral statement)
-- The Vieta defect identity $11 = N_W \cdot \text{disc} - N_c$ (boundary correction in causal-set Feshbach reduction)
-
-**What gets a new interpretation:**
-
-- $N_c = 3$: number of R-odd channel modes in 4D causal interval = $d - 1$
-- $d_{\text{eff}} = 4$: causal interval dimension (matches physical spacetime!)
-- $N_{\text{total}} = 5$: combined rank in the spectral algebra
-- $\text{disc} = 7$: dimension of effective boundary geometry
-- $11$: first-order boundary correction in the Feshbach effective Hamiltonian
-
-The atoms are now physical parameters of a causal-interval spectral problem, not free integers.
+The framework's structural content (typed-packet uniqueness, $J_4$ rigidity, Vieta defect, single-point character) is unchanged. What's clarified is the **mathematical neighborhood** $K_F$ lives in: poset zeta-determinant operators, NOT layer-sum d'Alembertians.
 
 ---
 
-## Recommended Next Steps
+## The Most Decisive Open Question
 
-### Step 1 (concrete, weeks): Numerical comparison with published causal-set spectra
+> **Is $K_F$ a new operator in the poset zeta-determinant family, or is there a published equivalent in the causal-set / determinantal-point-process / random-matrix literature that we haven't yet found?**
 
-Compare $J_4$'s spectrum $\{3/5, (5\pm\sqrt{7})/30\}$ to:
+This is a finite, citable, research-grade question. The answer determines whether the framework's $J_4$ rigidity theorem is:
 
-1. **Sorkin BOX operator at $d=4$, small $N$**:
-   - Glaser, "The Ising model coupled to 2-dimensional causal sets" (arXiv:1802.05346)
-   - Eichhorn, "Steps towards Lorentzian quantum gravity with causal sets" (arXiv:1709.10419)
-   - Surya group computations of causal-set d'Alembertian eigenvalues at small $N$
-
-2. **Glaser-Surya causal-set spectral dimension** at small N for $d=4$.
-
-3. **Eichhorn-Mizera causal-set propagator** spectral content.
-
-If any published spectrum matches $J_4$'s eigenvalues (possibly after rescaling), the framework's connection to causal set theory is direct and citable.
-
-### Step 2 (months): Formalize the reframing
-
-Write a paper repositioning the framework as a contribution to causal set theory:
-
-- Title: "A Spectral Rigidity Theorem for Causal-Set Feshbach Reductions on 4D Causal Intervals"
-- Section 1: $K_F$ as a causal-set operator
-- Section 2: Typed-packet uniqueness as a spectral classification result
-- Section 3: $J_4$'s effective rigidity and the affine residue 11
-- Section 4: Comparison with Sorkin BOX spectra
-- Section 5: Implications for discrete quantum gravity
-- Appendix: Lean formalization
-
-### Step 3 (research program): Causal-set physics consequences
-
-If the framework's spectral structure matches known causal-set physics, explore:
-- What 4D causal-interval geometries does $J_4$ describe?
-- Does the affine residue 11 correspond to a known boundary correction in causal-set effective theories?
-- Does the typed-packet uniqueness theorem give a NEW classification of small 4D causal intervals?
-- Connection to causal-set entanglement entropy / causal-set black hole entropy
-
-### Path E (mathematics) remains valid as a fallback
-
-If the causal-set spectral matching doesn't pan out, the framework is still a mathematical structural theorem about Sturm-Liouville rigidity at small N, publishable as pure mathematics.
+- A known result re-derived via Lean (low novelty)
+- A new spectral fact in an established operator family (medium-high novelty)
+- A new operator family with rigid 4D spectrum (high novelty)
 
 ---
 
-## Bottom Line
+## Sources
 
-**The framework gets physics through causal set theory, not through GUTs.**
-
-The 9 obstructions to the GUT path remain valid — but they were obstructions to the wrong domain. The framework's $K_F$ construction is literally a causal-set operator, and its Feshbach reduction $J_4$ is a spectral object in discrete quantum gravity.
-
-**Concrete next step:** numerical comparison with published Sorkin BOX spectra at $d = 4$, small $N$. If they match (after possible rescaling), the framework's connection to causal set theory is direct and citable.
-
-If positive: the framework converts from "structural mathematics looking for physics" to a **causal-set spectral rigidity theorem** with physical interpretation in discrete quantum gravity.
-
-If negative (no match with published causal-set spectra): the framework remains pure mathematics (Path E), still a structural theorem worth publishing.
-
-Either way, the framework's status is now precisely characterized at every level: structural (proved), phenomenological GUT (obstructed), causal-set spectral (positive structural match, awaiting numerical verification).
+- [Sorkin, Causal Sets: Discrete Gravity (gr-qc/0309009)](https://arxiv.org/abs/gr-qc/0309009)
+- [Benincasa-Dowker, Scalar Curvature of a Causal Set (arXiv:1001.2725)](https://arxiv.org/abs/1001.2725)
+- [Dowker-Glaser, Causal set d'Alembertians for various dimensions (arXiv:1305.2588)](https://arxiv.org/abs/1305.2588)
+- [Aslanbeigi-Saravani-Sorkin, Generalized Causal Set d'Alembertians (arXiv:1403.1622)](https://arxiv.org/abs/1403.1622)
+- [Yazdi-Kempf, Towards Spectral Geometry for Causal Sets (arXiv:1611.09947)](https://arxiv.org/abs/1611.09947)
+- [Surya, The causal set approach to quantum gravity (Living Rev. Relativity 2019)](https://link.springer.com/article/10.1007/s41114-019-0023-1)
+- [**Brualdi-Cvetković, Determinants Associated to Zeta Matrices of Posets (math/0403401)**](https://arxiv.org/abs/math/0403401) ← closest published cousin
+- [Wikipedia: Incidence algebra](https://en.wikipedia.org/wiki/Incidence_algebra)
+- [Wikipedia: Causal sets](https://en.wikipedia.org/wiki/Causal_sets)
