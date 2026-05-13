@@ -91,6 +91,7 @@ import UnifiedTheory.Predictions
 import UnifiedTheory.LayerC.Placeholder
 import UnifiedTheory.LayerC.ConcreteModel
 import UnifiedTheory.LayerC.ConcreteMultiBody
+import UnifiedTheory.LayerC.CandidateOperatorUnbounded
 import UnifiedTheory.LayerB.PropagationRule
 import UnifiedTheory.LayerA.GaugeSelection
 import UnifiedTheory.LayerA.DiscreteBundles
