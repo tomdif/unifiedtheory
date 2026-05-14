@@ -43,6 +43,14 @@ $K_F$ admits a smooth q-deformation $K_F^{(q)}$, suggesting potential Hecke-alge
 ### 9. Specificity to $[m]^d$ causal diamond
 $K_F$'s d=4 spectrum is specific to the causal diamond structure; other 16-element posets (chains, antichains, stacked chains) give different spectra.
 
+### 10. Single-point spectral uniqueness (Tier 1 next-frontier result)
+By enumeration over 744 candidate $(a, b)$ pairs with $a, b \geq 3$, $a + b \leq 60$, $d_{\text{eff}} = 4$, the typed packet $(7, 3)$ is the **unique** point satisfying the conjunction of three rigidity conditions:
+  - **(R-V)** Vieta defect identity: $M_{\text{num}} = T_{\text{num}} - D_{\text{num}}$
+  - **(R-T)** Trivariate identity: $M_{\text{num}} = N_W \cdot \text{disc} - N_c$
+  - **(R-P)** Affine residue prime: $M_{\text{num}}$ is prime
+
+5 candidates pass (R-V) ∧ (R-P) but fail (R-T); 4 pass (R-T) ∧ (R-P) but fail (R-V); only $(7, 3)$ passes all three. This **sharpens H3's uniqueness** (typed-packet meta-selection) by an independent spectral-arithmetic witness. See `OtherRigidPointsSearch.lean`.
+
 ---
 
 ## What This Is NOT (negative bounds)

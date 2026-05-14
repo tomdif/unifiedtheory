@@ -65,6 +65,7 @@ import UnifiedTheory.LayerC.G1ClosureVolterraDerivation
 import UnifiedTheory.LayerC.G1ClosureChannelCount
 import UnifiedTheory.LayerC.AffineResidueAnalysis
 import UnifiedTheory.LayerC.DefectCalculusJ4
+import UnifiedTheory.LayerC.OtherRigidPointsSearch
 
 -- NEGATIVE RESULTS (the obstruction stack)
 import UnifiedTheory.LayerC.Avenue2Test
@@ -174,15 +175,29 @@ def anchor6_G1_derivation : StructuralAnchor :=
       "(not define) trace = 14/15, λ_0 = 3/5, Δ_quad = 7/225. The " ++
       "Spin↔Sturm-Liouville functorial map is empirical." }
 
+def anchor7_other_rigid_points : StructuralAnchor :=
+  { number := 7,
+    name := "Single-point spectral uniqueness (no other rigid points)",
+    source_file := "OtherRigidPointsSearch.lean",
+    key_theorem := "unique_full_rigidity",
+    status := "PROVED by enumeration over 744 candidates",
+    one_line_statement :=
+      "Among all (a, b) with a, b ≥ 3, a + b ≤ 60, d_eff = 4, ONLY " ++
+      "(a, b) = (7, 3) satisfies the conjunction (Vieta defect identity " ++
+      "M_num = T_num − D_num) ∧ (typed-packet trivariate identity " ++
+      "M_num = N_W·disc − N_c) ∧ (M_num prime). 5 vieta-only and 4 " ++
+      "trivariate-only candidates exist; ONE point (7, 3) satisfies both." }
+
 def all_anchors : List StructuralAnchor :=
   [anchor1_meta_selection,
    anchor2_typed_packet_uniqueness,
    anchor3_J4_rigid,
    anchor4_unified_meta_theorem,
    anchor5_affine_residue_11,
-   anchor6_G1_derivation]
+   anchor6_G1_derivation,
+   anchor7_other_rigid_points]
 
-theorem six_anchors : all_anchors.length = 6 := by
+theorem seven_anchors : all_anchors.length = 7 := by
   unfold all_anchors; decide
 
 /-! ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -369,6 +384,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"AffineResidueAnalysis.lean", "anchor", "PROVED (within J_4)"⟩,
   ⟨"G1ClosureVolterraDerivation.lean", "anchor", "PROVED (with functorial gap)"⟩,
   ⟨"G1ClosureChannelCount.lean", "anchor", "PROVED (channel count); empirical match"⟩,
+  ⟨"OtherRigidPointsSearch.lean", "anchor", "PROVED (single-point spectral uniqueness)"⟩,
   -- OBSTRUCTIONS (9)
   ⟨"Avenue2Test.lean", "obstruction", "REFUTED"⟩,
   ⟨"ChamberSpin10Bridge.lean", "obstruction", "Co-realization, no mechanism"⟩,
@@ -385,7 +401,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"ChamberActionPrinciple.lean", "scaffold", "Open conjecture statement"⟩
 ]
 
-theorem manifest_count : lean_artifact_manifest.length = 21 := by
+theorem manifest_count : lean_artifact_manifest.length = 22 := by
   unfold lean_artifact_manifest; decide
 
 /-! ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
