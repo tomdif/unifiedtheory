@@ -66,6 +66,7 @@ import UnifiedTheory.LayerC.G1ClosureChannelCount
 import UnifiedTheory.LayerC.AffineResidueAnalysis
 import UnifiedTheory.LayerC.DefectCalculusJ4
 import UnifiedTheory.LayerC.OtherRigidPointsSearch
+import UnifiedTheory.LayerC.ThreePathExtension
 
 -- NEGATIVE RESULTS (the obstruction stack)
 import UnifiedTheory.LayerC.Avenue2Test
@@ -385,6 +386,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"G1ClosureVolterraDerivation.lean", "anchor", "PROVED (with functorial gap)"⟩,
   ⟨"G1ClosureChannelCount.lean", "anchor", "PROVED (channel count); empirical match"⟩,
   ⟨"OtherRigidPointsSearch.lean", "anchor", "PROVED (single-point spectral uniqueness)"⟩,
+  ⟨"ThreePathExtension.lean", "anchor", "NEGATIVE for 3 generalizations (sharpens uniqueness)"⟩,
   -- OBSTRUCTIONS (9)
   ⟨"Avenue2Test.lean", "obstruction", "REFUTED"⟩,
   ⟨"ChamberSpin10Bridge.lean", "obstruction", "Co-realization, no mechanism"⟩,
@@ -401,7 +403,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"ChamberActionPrinciple.lean", "scaffold", "Open conjecture statement"⟩
 ]
 
-theorem manifest_count : lean_artifact_manifest.length = 22 := by
+theorem manifest_count : lean_artifact_manifest.length = 23 := by
   unfold lean_artifact_manifest; decide
 
 /-! ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

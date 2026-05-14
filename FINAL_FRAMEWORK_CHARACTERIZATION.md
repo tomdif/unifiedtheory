@@ -51,6 +51,15 @@ By enumeration over 744 candidate $(a, b)$ pairs with $a, b \geq 3$, $a + b \leq
 
 5 candidates pass (R-V) ∧ (R-P) but fail (R-T); 4 pass (R-T) ∧ (R-P) but fail (R-V); only $(7, 3)$ passes all three. This **sharpens H3's uniqueness** (typed-packet meta-selection) by an independent spectral-arithmetic witness. See `OtherRigidPointsSearch.lean`.
 
+### 11. Three-path extension search — all NEGATIVE (sharpens (7, 3) further)
+Three orthogonal attempts to extend (7, 3) into a generalizing structure ALL return negative:
+
+- **Path 1** (higher chamber dimensions): SU-family search at $d_{\text{eff}} \in \{6, 8\}$ yields ZERO full-conjunction hits. The (7, 3) result does NOT generalize to a discrete series across chamber dimensions.
+- **Path 2** (q-deformation): The natural q-deformation $J_4(q)$ has $q \to 1$ limit recovering the framework, but the Vieta defect identity $T_{\text{num}} - D_{\text{num}} = M_{\text{num}}$ does NOT extend as a polynomial identity in $q$. The polynomial $V(q) = T_{\text{norm}}(q) - D_{\text{norm}}(q) - M_{\text{norm}}(q)$ vanishes only at $q \in \{0, -1\}$ (degenerate). At $q = -1$ a DIFFERENT value-level identity appears: $T(-1) = M(-1) + D(-1) = 4$. The framework's rigidity is intrinsically a **q=1 phenomenon**, not a Hecke special point.
+- **Path 3** (modular forms): LMFDB search across newforms of level ≤ 30, weight ≤ 12 finds NO modular form whose Hecke eigenvalues reproduce the typed-packet atoms. The "natural candidate" 11.2.a.a (Cremona 11a1) shares only $a_2 = -2$ with the framework atoms — a Deligne-forced coincidence, not structural.
+
+**Bottom line:** (7, 3) is now witnessed as exceptional by **five independent criteria** (H3 meta-selection + spectral conjunction + three failed extensions). It is an isolated $q=1$ arithmetic coincidence in the Cartan/Killing/icosahedron sense, NOT a pattern-instance in any visible categorical hierarchy. See `ThreePathExtension.lean`.
+
 ---
 
 ## What This Is NOT (negative bounds)
