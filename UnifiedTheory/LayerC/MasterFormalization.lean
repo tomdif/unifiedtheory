@@ -70,6 +70,7 @@ import UnifiedTheory.LayerC.ThreePathExtension
 import UnifiedTheory.LayerC.LambdaIncidenceOperator
 import UnifiedTheory.LayerC.LambdaIncidenceExperiments
 import UnifiedTheory.LayerC.CriticalLineOperator
+import UnifiedTheory.LayerC.MellinWeilQuadraticForm
 
 -- NEGATIVE RESULTS (the obstruction stack)
 import UnifiedTheory.LayerC.Avenue2Test
@@ -393,6 +394,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"LambdaIncidenceOperator.lean", "anchor", "PROVED Λ_Inc = M_0·Z'_0 (RH-relevant pivot)"⟩,
   ⟨"LambdaIncidenceExperiments.lean", "anchor", "Trace classification + 2 negatives on RH bridge"⟩,
   ⟨"CriticalLineOperator.lean", "anchor", "H̃ has log-N spectrum scaling (RH-correct family)"⟩,
+  ⟨"MellinWeilQuadraticForm.lean", "anchor", "EF closes at finite N; Weil positivity test inconclusive"⟩,
   -- OBSTRUCTIONS (9)
   ⟨"Avenue2Test.lean", "obstruction", "REFUTED"⟩,
   ⟨"ChamberSpin10Bridge.lean", "obstruction", "Co-realization, no mechanism"⟩,
@@ -409,7 +411,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"ChamberActionPrinciple.lean", "scaffold", "Open conjecture statement"⟩
 ]
 
-theorem manifest_count : lean_artifact_manifest.length = 26 := by
+theorem manifest_count : lean_artifact_manifest.length = 27 := by
   unfold lean_artifact_manifest; decide
 
 /-! ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
