@@ -73,6 +73,7 @@ import UnifiedTheory.LayerC.CriticalLineOperator
 import UnifiedTheory.LayerC.MellinWeilQuadraticForm
 import UnifiedTheory.LayerC.WeilPositivityNontrivial
 import UnifiedTheory.LayerC.RHBridgeFinalVerdict
+import UnifiedTheory.LayerC.ConnesStyleAttempts
 
 -- NEGATIVE RESULTS (the obstruction stack)
 import UnifiedTheory.LayerC.Avenue2Test
@@ -399,6 +400,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"MellinWeilQuadraticForm.lean", "anchor", "EF closes at finite N; Weil positivity test inconclusive"⟩,
   ⟨"WeilPositivityNontrivial.lean", "anchor", "Q_N positive for h(±i/2)=0 — RH-bridge limit reached"⟩,
   ⟨"RHBridgeFinalVerdict.lean", "anchor", "All 6 fixes/workarounds fail — structural endpoint"⟩,
+  ⟨"ConnesStyleAttempts.lean", "anchor", "4 Connes-style finite attempts — only Z_N → ζ classical works"⟩,
   -- OBSTRUCTIONS (9)
   ⟨"Avenue2Test.lean", "obstruction", "REFUTED"⟩,
   ⟨"ChamberSpin10Bridge.lean", "obstruction", "Co-realization, no mechanism"⟩,
@@ -415,7 +417,7 @@ def lean_artifact_manifest : List LeanArtifact := [
   ⟨"ChamberActionPrinciple.lean", "scaffold", "Open conjecture statement"⟩
 ]
 
-theorem manifest_count : lean_artifact_manifest.length = 29 := by
+theorem manifest_count : lean_artifact_manifest.length = 30 := by
   unfold lean_artifact_manifest; decide
 
 /-! ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
