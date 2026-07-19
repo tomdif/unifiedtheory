@@ -134,6 +134,14 @@ are stronger than another atomic-number identity:
     algebraic exceptional locus. The explicit Liouville-affine schedule remains
     all-parent zero-free while `g_n -> 1` and
     `(n+1)(g_n-1) -> 2(L-1)`.
+27. **Transcendence is unnecessary and critical zero-freeness is effective:**
+    constant coefficient one forces every rational root of every parent
+    polynomial into `[-1,1]`. Hence
+    `lambda_n=(n+2)/(n+1)>1` is simultaneously zero-free for every n-parent and
+    defines one genuinely rank-dependent projective growth law with
+    `g_n -> 1` and `(n+1)(g_n-1) -> 2`. Denominator clearing gives the explicit
+    all-parent bounds `|Z_C(lambda_n)| >= (n+1)^(-n(n-1))` and
+    `condition(C,lambda_n) <= 2^n (n+2)^(n(n-1))`.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -144,7 +152,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 833 Lean files (832 below `UnifiedTheory/`). The search
+The repository contains 864 Lean files (863 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;
@@ -1256,10 +1264,34 @@ g_n = lambda_n^2
 
 keeps every rank transcendental, full-support, and all-parent zero-free while
 `g_n -> 1` and `(n+1)(g_n-1) -> 2(L-1)`. Thus critical running does not force a
-return to an exceptional coupling at any finite rank. What remains is stronger
-and physical: derive/select the trajectory and prove a uniform or subexponential
-bound on its parent-partition condition numbers. Generic transcendence alone
-does not supply that quantitative stability theorem.
+return to an exceptional coupling at any finite rank.
+
+`UnifiedTheory/Audit/KFCausalSetRationalCriticalRunning.lean` strengthens this
+from qualitative genericity to an effective arithmetic theorem. Since every
+parent polynomial has integer coefficients and constant coefficient exactly
+one, the rational-root theorem puts every rational root in `[-1,1]`. Therefore
+
+```text
+lambda_n = (n+2)/(n+1),
+g_n = lambda_n^2
+```
+
+is full-support and zero-free for every parent at every rank, while `g_n -> 1`
+and `(n+1)(g_n-1) -> 2`. It defines a single rank-dependent normalized law,
+not merely a family of fixed-rank examples; its finite decoherence functionals
+are projectively consistent and its infinite cylinder functional is normalized,
+Hermitian, and strongly positive. Denominator clearing also proves
+
+```text
+|Z_C(lambda_n)| >= (n+1)^(-n(n-1)),
+condition(C,lambda_n) <= 2^n (n+2)^(n(n-1)).
+```
+
+The remaining problem is now narrower: the certified condition bound is
+superexponential, so one must derive/select the trajectory from microphysics
+and obtain subexponential or polynomial stability if a controlled infrared
+limit requires it. Transcendence is neither necessary for zero-freeness nor
+sufficient for that sharper stability theorem.
 See `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`.
 
 The higher-rank escape is exact. An explicit two-component amplitude has Gram

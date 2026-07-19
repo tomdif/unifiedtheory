@@ -190,17 +190,41 @@ algebraic exceptional set. This proves that critical running and exact
 zero-freeness are compatible. It does not bound how close a nonzero partition
 may come to zero.
 
+`KFCausalSetRationalCriticalRunning.lean` then proves a stronger elementary
+result. Every parent polynomial has integer coefficients and constant
+coefficient one, so every rational root has absolute value at most one. The
+schedule
+
+```text
+lambda_n = (n+2)/(n+1),
+g_n = lambda_n^2
+```
+
+is therefore zero-free for every n-parent, satisfies `g_n -> 1` and
+`(n+1)(g_n-1) -> 2`, and defines one rank-dependent normalized, projectively
+consistent, strongly-positive infinite-cylinder law. Clearing the denominator
+proves the uniform-at-fixed-rank estimates
+
+```text
+|Z_C(lambda_n)| >= (n+1)^(-n(n-1)),
+condition(C,lambda_n) <= 2^n (n+2)^(n(n-1)).
+```
+
+Thus transcendence was sufficient but not necessary. Exact zero-freeness and
+an effective finite-rank stability margin now both hold; the certified margin
+still deteriorates superexponentially with rank.
+
 ## Honest conclusion
 
 The newest model generalizes successfully as a normalized, Bell-causal,
 strongly-positive finite and infinite-cylinder construction, and now admits an
 explicit zero-free trajectory in the critical window. It does not yet derive
-that trajectory from microscopic physics or prove it numerically stable. The
+that trajectory from microscopic physics or prove subexponential stability. The
 test replaces the former question “which constant coupling?” with the sharper
 problem:
 
 > Select a refinement-covariant critical trajectory from microphysics and keep
-> its all-parent partition condition numbers uniformly controlled.
+> its all-parent partition condition numbers subexponentially controlled.
 
 The next mathematical target is an RG transformation on the effective
 coupling and interference data, not another constant-coupling selection rule.

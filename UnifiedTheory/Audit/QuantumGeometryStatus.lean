@@ -170,6 +170,10 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "an explicit zero-free pair coupling runs into the 1/n critical window",
     scope := .provedFinite },
+  { name := "unit parent constant term excludes rational cancellation above one",
+    scope := .provedFinite },
+  { name := "rational critical running has an effective all-parent partition margin",
+    scope := .provedFinite },
   { name := "chamber Poincare action is non-faithful",
     scope := .provedFinite },
   { name := "structural mass-gap and Wilson flows erase parameters",
@@ -187,7 +191,7 @@ def claimLedger : List ClaimEntry := [
     scope := .openTarget },
   { name := "ordinary GR and QFT recovered in the infrared",
     scope := .openTarget },
-  { name := "microphysics selects a condition-number-stable running pair coupling, \
+  { name := "microphysics selects a subexponentially stable running pair coupling, \
       complement symmetry, and chirality source",
     scope := .openTarget }
 ]
@@ -197,8 +201,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 69
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 61
+    claimLedger.length = 71
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 63
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 1
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 6 := by

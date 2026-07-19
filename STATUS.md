@@ -283,7 +283,7 @@
 > `lambda_n=1+(L-1)/(n+1)`, whose every term remains transcendental,
 > full-support, and all-parent zero-free while `g_n=lambda_n^2 -> 1` and
 > `(n+1)(g_n-1) -> 2(L-1)`. The new honest residual is a genuinely new
-> microscopic selector with uniform condition-number control and the
+> microscopic selector with useful condition-number control and the
 > reflection-odd sign. The full
 > local generalization test now identifies why running is necessary: the exact
 > adjacent-sector multiplier is `g^omega`. Fixed `g>1` flows rapidly to the
@@ -293,6 +293,15 @@
 > zero-freeness in that window, but the tested critical trajectory still exposes
 > growing destructive-interference condition numbers. See
 > `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`.
+> `KFCausalSetRationalCriticalRunning.lean` strengthens this again. The rational
+> root theorem plus constant coefficient one excludes every rational root with
+> `lambda>1`, so the elementary schedule `lambda_n=(n+2)/(n+1)` needs neither
+> transcendence nor fallback. It is packaged as one rank-dependent normalized
+> unlabeled law with projective strongly-positive cylinder dynamics. Denominator
+> clearing proves `||Z_C|| >= (n+1)^(-n(n-1))` for every n-parent and the explicit
+> condition-number bound `2^n (n+2)^(n(n-1))`. This is effective but far too weak
+> for a continuum limit; subexponential stability and microscopic selection
+> remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second

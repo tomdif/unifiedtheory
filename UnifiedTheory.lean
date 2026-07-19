@@ -5059,4 +5059,9 @@ import UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 -- exceptional locus is countable.  An explicit Liouville-affine full-support
 -- trajectory remains zero-free while g_n -> 1 in the nontrivial 1/n window.
 import UnifiedTheory.Audit.KFCausalSetCriticalRunning
+-- The unit parent-polynomial constant term excludes every rational root with
+-- |lambda|>1.  The elementary schedule lambda_n=(n+2)/(n+1) therefore gives
+-- one rank-dependent normalized strongly-positive law, an explicit partition
+-- margin, and a certified finite-rank condition-number bound.
+import UnifiedTheory.Audit.KFCausalSetRationalCriticalRunning
 import UnifiedTheory.LayerC.ContextualFraction

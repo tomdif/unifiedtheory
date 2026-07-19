@@ -712,9 +712,19 @@ to a countable algebraic exceptional locus, and constructs
 `lambda_n=1+(L-1)/(n+1)`. Every finite-rank coupling on this trajectory is
 transcendental, full-support, and all-parent zero-free, while
 `g_n=lambda_n^2 -> 1` and `(n+1)(g_n-1) -> 2(L-1)`. Therefore the critical
-window is compatible with exact zero-freeness. No uniform lower bound on
-partition magnitude follows: the remaining target is microscopic selection
-plus uniform or subexponential condition-number control. See
+window is compatible with exact zero-freeness.
+
+`KFCausalSetRationalCriticalRunning.lean` removes the reliance on
+transcendence. The unit constant coefficient of every integer parent
+polynomial implies that any rational root has absolute value at most one.
+Consequently `lambda_n=(n+2)/(n+1)>1` is zero-free for every n-parent and yields
+one rank-dependent projective law with `g_n -> 1` and
+`(n+1)(g_n-1) -> 2`. The same formalization supplies the effective estimates
+`|Z_C(lambda_n)| >= (n+1)^(-n(n-1))` and
+`condition(C,lambda_n) <= 2^n (n+2)^(n(n-1))`. This closes finite-rank
+effective nonvanishing, but the condition estimate is superexponential. The
+remaining target is microscopic selection plus subexponential or polynomial
+condition-number control. See
 `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md` for the reproducible finite evidence.
 
 `KFOrientationHigherRankDecoherence.lean` closes the alternative mixed-state

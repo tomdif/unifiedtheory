@@ -104,10 +104,12 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   law `lambda^(omega(omega-1)) (±i)^m`, with canonical base-two Liouville
   `lambda`, is proved zero-free at every finite parent and therefore needs no
   fallback. Exact cancellations across all finite parents are confined to a
-  countable algebraic exceptional locus. An explicit full-support trajectory
-  remains transcendental and zero-free while its effective coupling runs to
-  `g=1` in the required `1/n` critical window. Uniform condition-number control,
-  physical coupling/sign selection, and the infrared limit remain open.
+  countable algebraic exceptional locus. More strongly, the unit constant term
+  excludes every rational cancellation with `lambda>1`. The elementary schedule
+  `lambda_n=(n+2)/(n+1)` defines one rank-dependent normalized law, runs to
+  `g=1` in the required `1/n` window, and has an explicit all-parent partition
+  and condition-number bound. Subexponential stability, physical coupling/sign
+  selection, and the infrared limit remain open.
 - The original growth/Born result is only a finite implication from a quadratic
   SO(2)-invariant ansatz. The later causal-growth modules derive `b=+/-i` from
   normalized elementary relation-complement symmetry and prove that a nonzero
@@ -434,8 +436,14 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   `lambda_n = 1 + (L-1)/(n+1)`: every term is transcendental, full-support, and
   all-parent zero-free, while `g_n=lambda_n^2 -> 1` and
   `(n+1)(g_n-1) -> 2(L-1)`. Thus zero-freeness is compatible with critical
-  running. What remains open is a microscopic selector with uniform partition
-  condition-number control and the reflection-odd sign/source.
+  running. The rational-root refinement is stronger: constant coefficient one
+  implies that no rational `lambda>1` can cancel. Taking
+  `lambda_n=(n+2)/(n+1)` yields a single genuinely rank-dependent normalized,
+  projective, strongly-positive law and the effective estimates
+  `||Z_C|| >= (n+1)^(-n(n-1))` and
+  `condition <= 2^n (n+2)^(n(n-1))`. Transcendence is therefore sufficient but
+  unnecessary. What remains open is a microscopic selector with a useful
+  subexponential condition-number bound and the reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
@@ -531,6 +539,9 @@ orientation endpoint are in
 The rank-controlled degree/height bounds, countable algebraic cancellation
 locus, and explicit zero-free `1/n` critical-running trajectory are in
 `UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean`.
+The rational-root exclusion theorem, denominator-cleared partition margin,
+explicit condition-number bound, and single rank-dependent critical growth law
+are in `UnifiedTheory/Audit/KFCausalSetRationalCriticalRunning.lean`.
 The concise physics interpretation, falsification boundary, and next theorem are
 collected in
 [`ORIENTATION_PATH_SPINOR_NOTE.md`](ORIENTATION_PATH_SPINOR_NOTE.md).
