@@ -701,8 +701,20 @@ fixed `0<=g<1` concentrates on the zero/one-ancestor sparse sector. A nontrivial
 large-rank balance requires `(n-1) log g_n = O(1)` and hence `g_n -> 1`. The tested
 critical running trajectory keeps many precursor sectors alive but also produces
 large cancellation condition numbers. Thus the refined open target is a
-refinement-covariant running coupling together with a uniform lower bound or other
-zero-control theorem for parent partitions. See
+microscopically selected refinement-covariant running coupling together with a
+uniform lower bound or other condition-number control theorem for parent
+partitions.
+
+`KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from
+quantitative stability. It proves degree `<= n(n-1)` and coefficient height
+`<= 2^n`, shows that every exact cancellation over every finite parent belongs
+to a countable algebraic exceptional locus, and constructs
+`lambda_n=1+(L-1)/(n+1)`. Every finite-rank coupling on this trajectory is
+transcendental, full-support, and all-parent zero-free, while
+`g_n=lambda_n^2 -> 1` and `(n+1)(g_n-1) -> 2(L-1)`. Therefore the critical
+window is compatible with exact zero-freeness. No uniform lower bound on
+partition magnitude follows: the remaining target is microscopic selection
+plus uniform or subexponential condition-number control. See
 `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md` for the reproducible finite evidence.
 
 `KFOrientationHigherRankDecoherence.lean` closes the alternative mixed-state

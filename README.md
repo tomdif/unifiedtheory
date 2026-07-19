@@ -103,7 +103,11 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   consistent, strongly positive decoherence functionals. A concrete Bell-causal
   law `lambda^(omega(omega-1)) (±i)^m`, with canonical base-two Liouville
   `lambda`, is proved zero-free at every finite parent and therefore needs no
-  fallback. Its physical coupling/sign selection and infrared limit remain open.
+  fallback. Exact cancellations across all finite parents are confined to a
+  countable algebraic exceptional locus. An explicit full-support trajectory
+  remains transcendental and zero-free while its effective coupling runs to
+  `g=1` in the required `1/n` critical window. Uniform condition-number control,
+  physical coupling/sign selection, and the infrared limit remain open.
 - The original growth/Born result is only a finite implication from a quadratic
   SO(2)-invariant ansatz. The later causal-growth modules derive `b=+/-i` from
   normalized elementary relation-complement symmetry and prove that a nonzero
@@ -423,8 +427,15 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   excludes exactly that degenerate law, but still does not restore uniqueness:
   `lambda+1` is machine-checked as a second positive transcendental,
   full-support, all-rank-zero-free, strongly-positive law with the same
-  endpoint and a genuinely different effective coupling. What remains open is
-  a microscopic selector for a running `g` and the reflection-odd sign/source.
+  endpoint and a genuinely different effective coupling. The quantitative
+  extension bounds every n-parent polynomial by degree `n(n-1)` and coefficient
+  height `2^n`, and proves that all exact cancellation couplings over all ranks
+  form a countable subset of the algebraic reals. It also constructs
+  `lambda_n = 1 + (L-1)/(n+1)`: every term is transcendental, full-support, and
+  all-parent zero-free, while `g_n=lambda_n^2 -> 1` and
+  `(n+1)(g_n-1) -> 2(L-1)`. Thus zero-freeness is compatible with critical
+  running. What remains open is a microscopic selector with uniform partition
+  condition-number control and the reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
@@ -517,6 +528,9 @@ defect, canonical Liouville coupling, fallback-free normalized growth law,
 infinite-cylinder strong positivity, and exact recovery of the same finite
 orientation endpoint are in
 `UnifiedTheory/Audit/KFCausalSetCompleteChiralLaw.lean`.
+The rank-controlled degree/height bounds, countable algebraic cancellation
+locus, and explicit zero-free `1/n` critical-running trajectory are in
+`UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean`.
 The concise physics interpretation, falsification boundary, and next theorem are
 collected in
 [`ORIENTATION_PATH_SPINOR_NOTE.md`](ORIENTATION_PATH_SPINOR_NOTE.md).

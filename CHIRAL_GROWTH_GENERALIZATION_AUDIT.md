@@ -173,16 +173,34 @@ fixed character at that boundary can have exact partition zeros. A viable law
 therefore needs a scale-dependent approach to the boundary together with a
 mechanism controlling destructive interference.
 
+The qualitative existence half is now machine-checked in
+`KFCausalSetCriticalRunning.lean`. For the canonical Liouville number `L`, set
+
+```text
+lambda_n = 1 + (L - 1)/(n + 1),
+g_n = lambda_n^2.
+```
+
+Every `lambda_n` is transcendental, positive, full-support, and zero-free at
+every finite parent. Moreover `g_n -> 1` and
+`(n+1)(g_n-1) -> 2(L-1)`. The same module proves degree at most `n(n-1)` and
+coefficient height at most `2^n` for every n-parent partition polynomial, and
+confines every exact cancellation across every finite parent to a countable
+algebraic exceptional set. This proves that critical running and exact
+zero-freeness are compatible. It does not bound how close a nonzero partition
+may come to zero.
+
 ## Honest conclusion
 
 The newest model generalizes successfully as a normalized, Bell-causal,
-strongly-positive finite and infinite-cylinder construction. It does not yet
-generalize as a credible fixed-coupling continuum dynamics. The test replaces
-the former question “which constant coupling?” with the sharper problem:
+strongly-positive finite and infinite-cylinder construction, and now admits an
+explicit zero-free trajectory in the critical window. It does not yet derive
+that trajectory from microscopic physics or prove it numerically stable. The
+test replaces the former question “which constant coupling?” with the sharper
+problem:
 
-> Derive a refinement-covariant running pair coupling that stays on the
-> nontrivial critical trajectory while keeping every parent partition safely
-> away from zero.
+> Select a refinement-covariant critical trajectory from microphysics and keep
+> its all-parent partition condition numbers uniformly controlled.
 
 The next mathematical target is an RG transformation on the effective
 coupling and interference data, not another constant-coupling selection rule.

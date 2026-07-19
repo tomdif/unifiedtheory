@@ -5054,4 +5054,9 @@ import UnifiedTheory.Audit.KFCausalSetChiralDynamics
 -- resulting unlabeled growth law needs no fallback and inherits the exact
 -- projective, normalized, strongly positive infinite-cylinder construction.
 import UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
+-- Parent-polynomial degree and coefficient heights are rank-controlled; every
+-- exact all-parent cancellation coupling is algebraic and the global
+-- exceptional locus is countable.  An explicit Liouville-affine full-support
+-- trajectory remains zero-free while g_n -> 1 in the nontrivial 1/n window.
+import UnifiedTheory.Audit.KFCausalSetCriticalRunning
 import UnifiedTheory.LayerC.ContextualFraction

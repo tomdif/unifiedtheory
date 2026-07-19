@@ -128,6 +128,12 @@ are stronger than another atomic-number identity:
     growth and fixed `0<=g<1` concentrating on sparse growth. Nontrivial scaling
     requires `g_n -> 1` at logarithmic rate `O(1/n)`, where interference control
     becomes the new obstruction.
+26. **Generic zero-freeness survives critical running:** every n-parent
+    partition polynomial has degree at most `n(n-1)` and coefficient height at
+    most `2^n`; every exact all-rank cancellation coupling lies in a countable
+    algebraic exceptional locus. The explicit Liouville-affine schedule remains
+    all-parent zero-free while `g_n -> 1` and
+    `(n+1)(g_n-1) -> 2(L-1)`.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -1224,8 +1230,36 @@ relative weight requires `(n-1) log g_n = O(1)`, equivalently
 `g_n = exp(kappa/(n-1) + o(1/n))`. The tested running trajectory preserves
 precursor diversity but increases cancellation sensitivity, reaching a partition
 condition number about `652` on the rank-sixteen antichain. The remaining law must
-therefore derive a zero-safe running coupling, complement symmetry, and the
-reflection-odd sign, and then show a nontrivial infrared flow to ordinary QFT/GR.
+therefore select a stable running coupling, complement symmetry, and the
+reflection-odd sign from microphysics, and then show a nontrivial infrared flow
+to ordinary QFT/GR.
+
+`UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean` closes the qualitative
+zero-safe-running part without pretending to select the dynamics. For every
+n-event parent it proves
+
+```text
+degree P_C <= n(n-1),
+|coeff_k P_C| <= #Past(C) <= 2^n.
+```
+
+Any exact complex parent cancellation makes `lambda` a root of this nonzero
+integer polynomial. Hence every exceptional coupling is algebraic and the
+union over all finite parents is countable. This is the correct genericity
+statement: cancellation is confined to a countable subset of the algebraic
+locus, not asserted at every algebraic coupling. The explicit schedule
+
+```text
+lambda_n = 1 + (L-1)/(n+1),
+g_n = lambda_n^2
+```
+
+keeps every rank transcendental, full-support, and all-parent zero-free while
+`g_n -> 1` and `(n+1)(g_n-1) -> 2(L-1)`. Thus critical running does not force a
+return to an exceptional coupling at any finite rank. What remains is stronger
+and physical: derive/select the trajectory and prove a uniform or subexponential
+bound on its parent-partition condition numbers. Generic transcendence alone
+does not supply that quantitative stability theorem.
 See `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`.
 
 The higher-rank escape is exact. An explicit two-component amplitude has Gram

@@ -276,14 +276,22 @@
 > but does not determine the remaining nonzero coupling. In fact
 > `lambda+1` is a second proved positive transcendental, full-support,
 > all-rank-zero-free and strongly-positive law with the same endpoint but a
-> different signature law. The new honest residual is a genuinely new
-> microscopic selector for a running `g` and the reflection-odd sign. The full
+> different signature law. `KFCausalSetCriticalRunning.lean` now proves the
+> parent polynomial has degree at most `n(n-1)` and coefficient height at most
+> `2^n`, and that every exact cancellation coupling is algebraic; the all-rank
+> exceptional locus is countable. It constructs the explicit schedule
+> `lambda_n=1+(L-1)/(n+1)`, whose every term remains transcendental,
+> full-support, and all-parent zero-free while `g_n=lambda_n^2 -> 1` and
+> `(n+1)(g_n-1) -> 2(L-1)`. The new honest residual is a genuinely new
+> microscopic selector with uniform condition-number control and the
+> reflection-odd sign. The full
 > local generalization test now identifies why running is necessary: the exact
 > adjacent-sector multiplier is `g^omega`. Fixed `g>1` flows rapidly to the
 > full-precursor/timid channel; fixed `0<=g<1` flows to the sparse
 > zero/one-ancestor sector. Maintaining nontrivial high-rank balance requires
-> `(n-1) log g_n = O(1)`, so `g_n -> 1`, but the tested critical trajectory also
-> exposes growing destructive-interference condition numbers. See
+> `(n-1) log g_n = O(1)`, so `g_n -> 1`. The formal trajectory proves qualitative
+> zero-freeness in that window, but the tested critical trajectory still exposes
+> growing destructive-interference condition numbers. See
 > `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
