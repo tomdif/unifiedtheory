@@ -1,0 +1,95 @@
+{
+  "phenomenology_atlas": [
+    {
+      "family": "E1 polynomial",
+      "profile": "r(x) = 1 \u2212 x\u00b2",
+      "domain": "x \u2208 (\u22121, 1)  (r > 0)",
+      "R_form": "R(x) = 4(1 + x\u00b2)/(1 \u2212 x\u00b2)\u2074",
+      "R_sign": "\u2192 \u221e at nodes x = \u00b11; positive on (\u22121, 1)",
+      "cancellation": "Einstein-identity cancellation theorem at specific x (E1 Lean)",
+      "constant_R": false,
+      "spreading_behavior": "n/a (not a dynamic profile)",
+      "asymptotic": "blows up at boundary nodes",
+      "lean_theorem": "LohmillerSlotinePredictionE1.polyProfile_R_zero_at_x_one"
+    },
+    {
+      "family": "E2 Gaussian",
+      "profile": "r(x) = exp(\u2212x\u00b2/(2\u03c3\u00b2))",
+      "domain": "x \u2208 \u211d  (r > 0 everywhere)",
+      "R_form": "R_\u03c3(x) = 2/(\u03c3\u00b2\u00b7r\u00b2) = (2/\u03c3\u00b2)\u00b7exp(x\u00b2/\u03c3\u00b2)",
+      "R_sign": "strictly positive, varies with x",
+      "cancellation": "no global cancellation; matter and geometry both grow",
+      "constant_R": false,
+      "spreading_behavior": "n/a (static identity)",
+      "asymptotic": "R \u2192 0 at peak as \u03c3 \u2192 \u221e; R \u2192 \u221e as \u03c3 \u2192 0; R \u2192 \u221e at fixed x as \u03c3 \u2192 0",
+      "lean_theorem": "LohmillerSlotinePredictionE2.gaussianRicci_from_identity"
+    },
+    {
+      "family": "E3 sech soliton",
+      "profile": "r(x) = sech(x/\u03c3) = 1/cosh(x/\u03c3)",
+      "domain": "x \u2208 \u211d  (r > 0 everywhere)",
+      "R_form": "R_\u03c3(x) = 2/\u03c3\u00b2  (CONSTANT in x)",
+      "R_sign": "strictly positive, constant \u2014 'de Sitter-like' emergent geometry",
+      "cancellation": "homogeneous matter \u2194 homogeneous curvature",
+      "constant_R": true,
+      "spreading_behavior": "frozen at any \u03c3_const (admits constant-\u03c3 solution)",
+      "asymptotic": "R \u2192 0 as \u03c3 \u2192 \u221e (vacuum); R \u2192 \u221e as \u03c3 \u2192 0",
+      "lean_theorem": "LohmillerSlotinePredictionE3.sechRicci_from_identity"
+    },
+    {
+      "family": "E4 exponential",
+      "profile": "r(x) = exp(\u03b1x + \u03b2)",
+      "domain": "x \u2208 \u211d  (r > 0 everywhere, for any \u03b1, \u03b2)",
+      "R_form": "R(x) = 0  (IDENTICALLY)",
+      "R_sign": "zero everywhere \u2014 exact pointwise matter/geometry cancellation",
+      "cancellation": "(4m/\u210f\u00b2)\u00b7V exactly equals \u0394_geom (proved as `expProfile_einstein_cancellation`)",
+      "constant_R": true,
+      "spreading_behavior": "frozen (R = 0 vacuum geometry)",
+      "asymptotic": "no \u03c3-dependence; R = 0 for all \u03b1, \u03b2",
+      "lean_theorem": "LohmillerSlotinePredictionEExponential.derivedRicci_expProfile_zero"
+    },
+    {
+      "family": "E-Generalized sech",
+      "profile": "r(x) = A\u00b7sech(B\u00b7x)",
+      "domain": "x \u2208 \u211d  (r > 0 if A > 0)",
+      "R_form": "R = 2\u00b7(B/A)\u00b2  (CONSTANT in x, depends only on ratio)",
+      "R_sign": "\u2265 0; = 0 iff B = 0; > 0 for any B \u2260 0",
+      "cancellation": "homogeneous constant-curvature geometry",
+      "constant_R": true,
+      "spreading_behavior": "frozen at any (A, B)",
+      "asymptotic": "characteristic curvature radius = A/B",
+      "lean_theorem": "LohmillerSlotinePredictionEGeneralizedSech.derivedRicci_gSech"
+    }
+  ],
+  "classification_summary": {
+    "R_classification_complete": true,
+    "branches": [
+      {
+        "R_value": "R \u2261 0",
+        "family": "E4 exponential r = exp(\u03b1x + \u03b2)",
+        "achievable": true,
+        "lean_witness": "zero_R_realized_by_exponential"
+      },
+      {
+        "R_value": "R \u2261 2C, C > 0",
+        "family": "E-Gen-Sech r = A\u00b7sech(Bx) with (B/A)\u00b2 = C",
+        "achievable": true,
+        "lean_witness": "positive_R_realized_by_gen_sech"
+      },
+      {
+        "R_value": "R \u2261 2C, C < 0",
+        "family": "\u2014  (no globally smooth bounded positive profile)",
+        "achievable": false,
+        "lean_obstruction": [
+          "no_isLocalMax_for_constant_negative_R  (IsLocalMax bridge: no local maximum can host R < 0)",
+          "no_global_smooth_bounded_negative_R    (Taylor proof: globally bounded r \u2208 [m, M] cannot host R < 0)"
+        ]
+      }
+    ]
+  },
+  "summary_remarks": {
+    "complete_R_classification": "R = 0 (E4 exponential, witness), R > 0 (E-Gen-Sech, witness), R < 0 (impossible globally \u2014 Taylor proof)",
+    "dynamic_consequence": "All constant-R profiles admit frozen (\u03c3 \u2261 const) solutions, impossible in free Schr\u00f6dinger.  Backreaction enables vacuum and 'de Sitter-like' emergent geometries.",
+    "optimal_spreading_width": "\u03c3\u0307 = C\u00b7\u03c3\u00b7exp(\u2212\u03c3) is maximized at \u03c3 = 1.  This identifies a characteristic LSBridge length scale at which spreading is fastest."
+  }
+}

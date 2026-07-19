@@ -1,0 +1,239 @@
+{
+  "platforms": {
+    "photonic_waveguide_array": {
+      "label": "Photonic waveguide array (e.g., femtosecond-laser-written glass)",
+      "comment": "Photonic waveguide arrays implement a discrete Schr\u00f6dinger equation along the transverse coordinate as the beam propagates. Beam profile imaging allows direct measurement of \u03c3(z). Broad initial Gaussians (\u03c3_0 ~ 50-200 \u03bcm) are routine.",
+      "spatial_units": "\u03bcm",
+      "time_units": "mm (propagation distance z)",
+      "ell_natural_um": 1.0,
+      "rows": [
+        {
+          "sigma_0_um": 1.0,
+          "sigma_0_dimless": 1.0,
+          "T_free_phys": 0.00769800358919501,
+          "T_LS_phys": 0.013596073509537572,
+          "R_observable": 1.766181757647028,
+          "T_LS_lower_bound_dimless": 1.3591409142295225,
+          "T_LS_upper_bound_dimless": 7.38905609893065
+        },
+        {
+          "sigma_0_um": 5.0,
+          "sigma_0_dimless": 5.0,
+          "T_free_phys": 0.19245008972987526,
+          "T_LS_phys": 10.897972003938111,
+          "R_observable": 56.62752363085206,
+          "T_LS_lower_bound_dimless": 74.2065795512883,
+          "T_LS_upper_bound_dimless": 22026.465794806718
+        },
+        {
+          "sigma_0_um": 10.0,
+          "sigma_0_dimless": 10.0,
+          "T_free_phys": 0.769800358919501,
+          "T_LS_phys": 113836.26860035713,
+          "R_observable": 147877.65071990713,
+          "T_LS_lower_bound_dimless": 11013.232897403359,
+          "T_LS_upper_bound_dimless": 485165195.4097903
+        },
+        {
+          "sigma_0_um": 25.0,
+          "sigma_0_dimless": 25.0,
+          "T_free_phys": 4.811252243246881,
+          "T_LS_phys": 4.70472750970271e+17,
+          "R_observable": 9.77859249908651e+16,
+          "T_LS_lower_bound_dimless": 36002449668.69294,
+          "T_LS_upper_bound_dimless": 5.184705528587072e+21
+        },
+        {
+          "sigma_0_um": 50.0,
+          "sigma_0_dimless": 50.0,
+          "T_free_phys": 19.245008972987524,
+          "T_LS_phys": 1.2069123310461705e+39,
+          "R_observable": 6.271300432960068e+37,
+          "T_LS_lower_bound_dimless": 2.592352764293536e+21,
+          "T_LS_upper_bound_dimless": 2.6881171418161356e+43
+        },
+        {
+          "sigma_0_um": 100.0,
+          "sigma_0_dimless": 100.0,
+          "T_free_phys": 76.9800358919501,
+          "T_LS_phys": 1.6138823258485974e+82,
+          "R_observable": 2.096494639355401e+80,
+          "T_LS_lower_bound_dimless": 1.3440585709080678e+43,
+          "T_LS_upper_bound_dimless": 7.225973768125749e+86
+        },
+        {
+          "sigma_0_um": 200.0,
+          "sigma_0_dimless": 200.0,
+          "T_free_phys": 307.9201435678004,
+          "T_LS_phys": 5.816210140921949e+168,
+          "R_observable": 1.8888696509201543e+166,
+          "T_LS_lower_bound_dimless": 3.6129868840628745e+86,
+          "T_LS_upper_bound_dimless": 5.221469689764144e+173
+        }
+      ],
+      "minimum_sigma_for_R_threshold_um": {
+        "R\u22652.0": 5.0,
+        "R\u22655.0": 5.0,
+        "R\u226510.0": 5.0,
+        "R\u2265100.0": 10.0,
+        "R\u22651000.0": 10.0
+      },
+      "plot": "results/lsbridge_predictions/experimental_regimes/photonic_waveguide_array_regimes.png"
+    },
+    "exciton_polariton": {
+      "label": "Exciton-polariton propagation (semiconductor microcavity)",
+      "comment": "Polariton wavepackets propagate in engineered cavity potentials with very small effective mass (~ 10\u207b\u2074 m_e) and lifetimes ~ 10-100 ps.  Direct space-time imaging is standard.  Broad initial spots \u03c3_0 > 10 \u03bcm are accessible with shaped pumping.",
+      "spatial_units": "\u03bcm",
+      "time_units": "ps",
+      "ell_natural_um": 1.0,
+      "rows": [
+        {
+          "sigma_0_um": 1.0,
+          "sigma_0_dimless": 1.0,
+          "T_free_phys": 0.0014931472479042046,
+          "T_LS_phys": 0.002637169430729271,
+          "R_observable": 1.766181757647028,
+          "T_LS_lower_bound_dimless": 1.3591409142295225,
+          "T_LS_upper_bound_dimless": 7.38905609893065
+        },
+        {
+          "sigma_0_um": 2.0,
+          "sigma_0_dimless": 2.0,
+          "T_free_phys": 0.005972588991616818,
+          "T_LS_phys": 0.012652275960391667,
+          "R_observable": 2.118390530162132,
+          "T_LS_lower_bound_dimless": 3.694528049465325,
+          "T_LS_upper_bound_dimless": 54.598150033144236
+        },
+        {
+          "sigma_0_um": 5.0,
+          "sigma_0_dimless": 5.0,
+          "T_free_phys": 0.037328681197605115,
+          "T_LS_phys": 2.1138307766259268,
+          "R_observable": 56.62752363085206,
+          "T_LS_lower_bound_dimless": 74.2065795512883,
+          "T_LS_upper_bound_dimless": 22026.465794806718
+        },
+        {
+          "sigma_0_um": 10.0,
+          "sigma_0_dimless": 10.0,
+          "T_free_phys": 0.14931472479042046,
+          "T_LS_phys": 22080.310719896857,
+          "R_observable": 147877.65071990713,
+          "T_LS_lower_bound_dimless": 11013.232897403359,
+          "T_LS_upper_bound_dimless": 485165195.4097903
+        },
+        {
+          "sigma_0_um": 20.0,
+          "sigma_0_dimless": 20.0,
+          "T_free_phys": 0.5972588991616818,
+          "T_LS_phys": 5206653653444.475,
+          "R_observable": 8717582376340.615,
+          "T_LS_lower_bound_dimless": 242582597.70489514,
+          "T_LS_upper_bound_dimless": 2.3538526683702e+17
+        },
+        {
+          "sigma_0_um": 50.0,
+          "sigma_0_dimless": 50.0,
+          "T_free_phys": 3.7328681197605116,
+          "T_LS_phys": 2.340993745563693e+38,
+          "R_observable": 6.271300432960068e+37,
+          "T_LS_lower_bound_dimless": 2.592352764293536e+21,
+          "T_LS_upper_bound_dimless": 2.6881171418161356e+43
+        }
+      ],
+      "minimum_sigma_for_R_threshold_um": {
+        "R\u22652.0": 2.0,
+        "R\u22655.0": 5.0,
+        "R\u226510.0": 5.0,
+        "R\u2265100.0": 10.0,
+        "R\u22651000.0": 10.0
+      },
+      "plot": "results/lsbridge_predictions/experimental_regimes/exciton_polariton_regimes.png"
+    },
+    "bec_expansion_1d": {
+      "label": "Quasi-1D \u2078\u2077Rb BEC expansion (after trap release)",
+      "comment": "BEC expansion in a quasi-1D geometry (after release from a highly anisotropic trap) directly tests free-particle spreading in the matter-wave regime.  Standard absorption imaging gives the cloud width vs time.  Caveat: residual interactions and trap-release imperfections need to be controlled.",
+      "spatial_units": "\u03bcm",
+      "time_units": "ms",
+      "ell_natural_um": 1.0,
+      "rows": [
+        {
+          "sigma_0_um": 1.0,
+          "sigma_0_dimless": 1.0,
+          "T_free_phys": 2.3726723391354483,
+          "T_LS_phys": 4.1905706022547315,
+          "R_observable": 1.766181757647028,
+          "T_LS_lower_bound_dimless": 1.3591409142295225,
+          "T_LS_upper_bound_dimless": 7.38905609893065
+        },
+        {
+          "sigma_0_um": 2.0,
+          "sigma_0_dimless": 2.0,
+          "T_free_phys": 9.490689356541793,
+          "T_LS_phys": 20.104986457608675,
+          "R_observable": 2.118390530162132,
+          "T_LS_lower_bound_dimless": 3.694528049465325,
+          "T_LS_upper_bound_dimless": 54.598150033144236
+        },
+        {
+          "sigma_0_um": 5.0,
+          "sigma_0_dimless": 5.0,
+          "T_free_phys": 59.31680847838621,
+          "T_LS_phys": 3358.9639738165406,
+          "R_observable": 56.62752363085206,
+          "T_LS_lower_bound_dimless": 74.2065795512883,
+          "T_LS_upper_bound_dimless": 22026.465794806718
+        },
+        {
+          "sigma_0_um": 10.0,
+          "sigma_0_dimless": 10.0,
+          "T_free_phys": 237.26723391354483,
+          "T_LS_phys": 35086521.14394569,
+          "R_observable": 147877.65071990713,
+          "T_LS_lower_bound_dimless": 11013.232897403359,
+          "T_LS_upper_bound_dimless": 485165195.4097903
+        },
+        {
+          "sigma_0_um": 25.0,
+          "sigma_0_dimless": 25.0,
+          "T_free_phys": 1482.9202119596553,
+          "T_LS_phys": 1.4500872461412463e+20,
+          "R_observable": 9.77859249908651e+16,
+          "T_LS_lower_bound_dimless": 36002449668.69294,
+          "T_LS_upper_bound_dimless": 5.184705528587072e+21
+        },
+        {
+          "sigma_0_um": 50.0,
+          "sigma_0_dimless": 50.0,
+          "T_free_phys": 5931.680847838621,
+          "T_LS_phys": 3.719935266923129e+41,
+          "R_observable": 6.271300432960068e+37,
+          "T_LS_lower_bound_dimless": 2.592352764293536e+21,
+          "T_LS_upper_bound_dimless": 2.6881171418161356e+43
+        },
+        {
+          "sigma_0_um": 100.0,
+          "sigma_0_dimless": 100.0,
+          "T_free_phys": 23726.723391354484,
+          "T_LS_phys": 4.974294839944308e+84,
+          "R_observable": 2.096494639355401e+80,
+          "T_LS_lower_bound_dimless": 1.3440585709080678e+43,
+          "T_LS_upper_bound_dimless": 7.225973768125749e+86
+        }
+      ],
+      "minimum_sigma_for_R_threshold_um": {
+        "R\u22652.0": 2.0,
+        "R\u22655.0": 5.0,
+        "R\u226510.0": 5.0,
+        "R\u2265100.0": 10.0,
+        "R\u22651000.0": 10.0
+      },
+      "plot": "results/lsbridge_predictions/experimental_regimes/bec_expansion_1d_regimes.png"
+    }
+  },
+  "universal_R_curve_data": {
+    "plot": "results/lsbridge_predictions/experimental_regimes/universal_R_curve.png",
+    "description": "R(\u03c3_0) is universal across platforms because the platform rescaling factors cancel in the ratio T_LS/T_free.  Only the natural length scale \u2113 (which sets dimensionless \u03c3 = \u03c3_phys/\u2113) is platform-dependent."
+  }
+}

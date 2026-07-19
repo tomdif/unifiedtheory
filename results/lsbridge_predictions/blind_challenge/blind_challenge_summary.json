@@ -1,0 +1,349 @@
+{
+  "scenarios": [
+    {
+      "scenario": "S1_full_schedule_5pct",
+      "sigma_0_list": [
+        3.0,
+        5.0,
+        6.0,
+        7.0
+      ],
+      "n_trials": 50,
+      "noise": 0.05,
+      "confusion": {
+        "lsbridge": {
+          "lsbridge": 50,
+          "linear_loss": 0,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 0
+        },
+        "linear_loss": {
+          "lsbridge": 0,
+          "linear_loss": 32,
+          "kerr": 0,
+          "AL": 17,
+          "nnn": 1
+        },
+        "kerr": {
+          "lsbridge": 0,
+          "linear_loss": 0,
+          "kerr": 50,
+          "AL": 0,
+          "nnn": 0
+        },
+        "AL": {
+          "lsbridge": 0,
+          "linear_loss": 17,
+          "kerr": 0,
+          "AL": 31,
+          "nnn": 2
+        },
+        "nnn": {
+          "lsbridge": 0,
+          "linear_loss": 4,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 46
+        }
+      },
+      "summary": {
+        "lsbridge": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "linear_loss": {
+          "recall": 0.64,
+          "total": 50,
+          "correct": 32,
+          "precision": 0.6037735849056604,
+          "total_predicted": 53
+        },
+        "kerr": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "AL": {
+          "recall": 0.62,
+          "total": 50,
+          "correct": 31,
+          "precision": 0.6458333333333334,
+          "total_predicted": 48
+        },
+        "nnn": {
+          "recall": 0.92,
+          "total": 50,
+          "correct": 46,
+          "precision": 0.9387755102040817,
+          "total_predicted": 49
+        }
+      },
+      "plot": "results/lsbridge_predictions/blind_challenge/confusion_S1_full_schedule_5pct.png"
+    },
+    {
+      "scenario": "S2_minimal_5pct",
+      "sigma_0_list": [
+        5.0,
+        6.0
+      ],
+      "n_trials": 50,
+      "noise": 0.05,
+      "confusion": {
+        "lsbridge": {
+          "lsbridge": 50,
+          "linear_loss": 0,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 0
+        },
+        "linear_loss": {
+          "lsbridge": 0,
+          "linear_loss": 34,
+          "kerr": 0,
+          "AL": 13,
+          "nnn": 3
+        },
+        "kerr": {
+          "lsbridge": 0,
+          "linear_loss": 0,
+          "kerr": 50,
+          "AL": 0,
+          "nnn": 0
+        },
+        "AL": {
+          "lsbridge": 0,
+          "linear_loss": 23,
+          "kerr": 0,
+          "AL": 20,
+          "nnn": 7
+        },
+        "nnn": {
+          "lsbridge": 0,
+          "linear_loss": 8,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 42
+        }
+      },
+      "summary": {
+        "lsbridge": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "linear_loss": {
+          "recall": 0.68,
+          "total": 50,
+          "correct": 34,
+          "precision": 0.5230769230769231,
+          "total_predicted": 65
+        },
+        "kerr": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "AL": {
+          "recall": 0.4,
+          "total": 50,
+          "correct": 20,
+          "precision": 0.6060606060606061,
+          "total_predicted": 33
+        },
+        "nnn": {
+          "recall": 0.84,
+          "total": 50,
+          "correct": 42,
+          "precision": 0.8076923076923077,
+          "total_predicted": 52
+        }
+      },
+      "plot": "results/lsbridge_predictions/blind_challenge/confusion_S2_minimal_5pct.png"
+    },
+    {
+      "scenario": "S3_full_schedule_10pct",
+      "sigma_0_list": [
+        3.0,
+        5.0,
+        6.0,
+        7.0
+      ],
+      "n_trials": 50,
+      "noise": 0.1,
+      "confusion": {
+        "lsbridge": {
+          "lsbridge": 50,
+          "linear_loss": 0,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 0
+        },
+        "linear_loss": {
+          "lsbridge": 0,
+          "linear_loss": 21,
+          "kerr": 0,
+          "AL": 18,
+          "nnn": 11
+        },
+        "kerr": {
+          "lsbridge": 0,
+          "linear_loss": 0,
+          "kerr": 50,
+          "AL": 0,
+          "nnn": 0
+        },
+        "AL": {
+          "lsbridge": 0,
+          "linear_loss": 12,
+          "kerr": 0,
+          "AL": 31,
+          "nnn": 7
+        },
+        "nnn": {
+          "lsbridge": 0,
+          "linear_loss": 9,
+          "kerr": 0,
+          "AL": 1,
+          "nnn": 40
+        }
+      },
+      "summary": {
+        "lsbridge": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "linear_loss": {
+          "recall": 0.42,
+          "total": 50,
+          "correct": 21,
+          "precision": 0.5,
+          "total_predicted": 42
+        },
+        "kerr": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "AL": {
+          "recall": 0.62,
+          "total": 50,
+          "correct": 31,
+          "precision": 0.62,
+          "total_predicted": 50
+        },
+        "nnn": {
+          "recall": 0.8,
+          "total": 50,
+          "correct": 40,
+          "precision": 0.6896551724137931,
+          "total_predicted": 58
+        }
+      },
+      "plot": "results/lsbridge_predictions/blind_challenge/confusion_S3_full_schedule_10pct.png"
+    },
+    {
+      "scenario": "S4_wide_schedule_5pct",
+      "sigma_0_list": [
+        2.0,
+        3.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0
+      ],
+      "n_trials": 50,
+      "noise": 0.05,
+      "confusion": {
+        "lsbridge": {
+          "lsbridge": 50,
+          "linear_loss": 0,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 0
+        },
+        "linear_loss": {
+          "lsbridge": 0,
+          "linear_loss": 32,
+          "kerr": 0,
+          "AL": 18,
+          "nnn": 0
+        },
+        "kerr": {
+          "lsbridge": 0,
+          "linear_loss": 0,
+          "kerr": 50,
+          "AL": 0,
+          "nnn": 0
+        },
+        "AL": {
+          "lsbridge": 0,
+          "linear_loss": 17,
+          "kerr": 0,
+          "AL": 33,
+          "nnn": 0
+        },
+        "nnn": {
+          "lsbridge": 0,
+          "linear_loss": 1,
+          "kerr": 0,
+          "AL": 0,
+          "nnn": 49
+        }
+      },
+      "summary": {
+        "lsbridge": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "linear_loss": {
+          "recall": 0.64,
+          "total": 50,
+          "correct": 32,
+          "precision": 0.64,
+          "total_predicted": 50
+        },
+        "kerr": {
+          "recall": 1.0,
+          "total": 50,
+          "correct": 50,
+          "precision": 1.0,
+          "total_predicted": 50
+        },
+        "AL": {
+          "recall": 0.66,
+          "total": 50,
+          "correct": 33,
+          "precision": 0.6470588235294118,
+          "total_predicted": 51
+        },
+        "nnn": {
+          "recall": 0.98,
+          "total": 50,
+          "correct": 49,
+          "precision": 1.0,
+          "total_predicted": 49
+        }
+      },
+      "plot": "results/lsbridge_predictions/blind_challenge/confusion_S4_wide_schedule_5pct.png"
+    }
+  ],
+  "n_trials_per_truth": 50
+}

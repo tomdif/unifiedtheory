@@ -1,0 +1,62 @@
+{
+  "scenario": "B \u2014 no anomaly measured (R_measured \u2248 1 for all \u03c3_0); LSBridge falsified",
+  "measurements": [
+    {
+      "sigma_0_um": 1.0,
+      "R_measured": 1.0000369046007245,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 2.0,
+      "R_measured": 1.008962366125254,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 3.0,
+      "R_measured": 0.9917758643391335,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 4.0,
+      "R_measured": 0.9732822448372818,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 5.0,
+      "R_measured": 0.9863598764448483,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 6.0,
+      "R_measured": 0.9702506033501062,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 7.0,
+      "R_measured": 1.001804308077923,
+      "R_err": 0.03
+    },
+    {
+      "sigma_0_um": 8.0,
+      "R_measured": 1.040206457366636,
+      "R_err": 0.03
+    }
+  ],
+  "fit": {
+    "ell_best_um": 3.255398183159738,
+    "chi2_min": 8666.14726154641,
+    "reduced_chi2": 1238.0210373637728,
+    "dof": 7,
+    "n_data_points": 8,
+    "ell_lower_1sigma_um": 3.2404409871535216,
+    "ell_upper_1sigma_um": 3.270424418445872,
+    "model_consistent_with_data": false
+  },
+  "verdict": {
+    "verdict": "FALSIFIED_or_BAD_MODEL",
+    "chi2_min": 8666.14726154641,
+    "reduced_chi2": 1238.0210373637728,
+    "n_data_points": 8,
+    "interpretation": "reduced \u03c7\u00b2 = 1238.02 \u226b 1  (\u03c7\u00b2_min = 8666.15, dof = 7).  No \u2113 in the search range makes the LSBridge prediction consistent with the measurements.  Either the theory is falsified or the experiment has unmodelled systematics."
+  }
+}

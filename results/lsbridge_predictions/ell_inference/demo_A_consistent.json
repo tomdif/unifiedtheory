@@ -1,0 +1,68 @@
+{
+  "scenario": "A \u2014 LSBridge anomaly present, fit recovers \u2113",
+  "truth_ell_um": 1.0,
+  "measurements": [
+    {
+      "sigma_0_um": 1.0,
+      "R_measured": 1.7823273300722005,
+      "R_err": 0.05298545272941084
+    },
+    {
+      "sigma_0_um": 2.0,
+      "R_measured": 2.0522977556967623,
+      "R_err": 0.06355171590486397
+    },
+    {
+      "sigma_0_um": 3.0,
+      "R_measured": 4.988833476787885,
+      "R_err": 0.14636970470584634
+    },
+    {
+      "sigma_0_um": 4.0,
+      "R_measured": 15.610875623467255,
+      "R_err": 0.455474180404546
+    },
+    {
+      "sigma_0_um": 5.0,
+      "R_measured": 53.313054893348486,
+      "R_err": 1.6988257089255618
+    },
+    {
+      "sigma_0_um": 6.0,
+      "R_measured": 229.21611124652586,
+      "R_err": 7.156036666312604
+    },
+    {
+      "sigma_0_um": 7.0,
+      "R_measured": 1100.0017551072742,
+      "R_err": 32.87397399055831
+    },
+    {
+      "sigma_0_um": 8.0,
+      "R_measured": 5317.707605435137,
+      "R_err": 161.0592419287069
+    }
+  ],
+  "fit": {
+    "ell_best_um": 1.0013767199821362,
+    "chi2_min": 7.036384582052166,
+    "reduced_chi2": 1.0051977974360238,
+    "dof": 7,
+    "n_data_points": 8,
+    "ell_lower_1sigma_um": 1.001376719982136,
+    "ell_upper_1sigma_um": 1.001376719982136,
+    "model_consistent_with_data": true
+  },
+  "verdict": {
+    "verdict": "CONSISTENT_FIT",
+    "chi2_min": 7.036384582052166,
+    "reduced_chi2": 1.0051977974360238,
+    "n_data_points": 8,
+    "ell_best_um": 1.0013767199821362,
+    "ell_1sigma_range_um": [
+      1.001376719982136,
+      1.001376719982136
+    ],
+    "interpretation": "reduced \u03c7\u00b2 = 1.01 at \u2113 = 1.001 \u03bcm.  LSBridge is consistent with the data;  the natural length scale is bracketed at 1\u03c3 to [1.001, 1.001] \u03bcm."
+  }
+}

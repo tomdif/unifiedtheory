@@ -713,7 +713,17 @@ structure ScatteringConstruction (C : CausalSet) [Fintype C.Event] where
     research-level scoping for (W7).
 
     The structure is honestly NOT-INHABITED-IN-CLOSED-FORM here;
-    it is a precisely-stated research target. -/
+    it is a precisely-stated research target.
+
+    HONEST_SCOPE_NOTE.  Intentional `True` documentation marker:
+    its purpose is to be `True` so the file can record "no closed-
+    form inhabitation supplied — research-level".  The substantive
+    content this file DOES supply is the CONDITIONAL form
+    `W7_asymptotic_completeness_via_Haag_Ruelle` (defined just
+    below), which proves asymptotic completeness on the chamber
+    GIVEN a `ScatteringConstruction`.  That conditional is the
+    correct theorem-level statement; the inhabitation is what is
+    research-level. -/
 def ScatteringConstruction_is_research_level : Prop := True
 
 /-- (W7) ASYMPTOTIC COMPLETENESS via Haag-Ruelle (CONDITIONAL).

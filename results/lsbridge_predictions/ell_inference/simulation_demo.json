@@ -1,0 +1,49 @@
+{
+  "truth_ell_um": 1.0,
+  "measurements": [
+    {
+      "sigma_0_um": 1.0,
+      "R_measured": 1.820000332397603,
+      "R_err": 0.17661817576470282
+    },
+    {
+      "sigma_0_um": 2.0,
+      "R_measured": 1.8980812819442328,
+      "R_err": 0.21183905301621322
+    },
+    {
+      "sigma_0_um": 5.0,
+      "R_measured": 60.87714291328519,
+      "R_err": 5.662752363085207
+    },
+    {
+      "sigma_0_um": 7.5,
+      "R_measured": 2635.1637938381687,
+      "R_err": 240.86177104643895
+    },
+    {
+      "sigma_0_um": 10.0,
+      "R_measured": 119026.20070290711,
+      "R_err": 14787.765071990714
+    },
+    {
+      "sigma_0_um": 15.0,
+      "R_measured": 823496679.2155459,
+      "R_err": 94678509.38810015
+    }
+  ],
+  "fit": {
+    "ell_best_um": 1.0174634027476064,
+    "chi2_min": 23.475263092717817,
+    "n_data_points": 6,
+    "ell_lower_1sigma_um": 1.0174634027476064,
+    "ell_upper_1sigma_um": 1.0174634027476064,
+    "model_consistent_with_data": false
+  },
+  "verdict": {
+    "verdict": "FALSIFIED_or_BAD_MODEL",
+    "chi2_min": 23.475263092717817,
+    "n_data_points": 6,
+    "interpretation": "\u03c7\u00b2_min = 23.48 \u226b n + 5 = 11.  No \u2113 in the search range makes the LSBridge prediction consistent with the measurements.  Either the theory is falsified or the experiment has unmodelled systematic effects."
+  }
+}

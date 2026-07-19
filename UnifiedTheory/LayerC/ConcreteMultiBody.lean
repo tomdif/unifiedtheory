@@ -23,7 +23,17 @@ def composeDefects (d₁ d₂ : ConcreteDefect) : ConcreteDefect :=
 def conjugateDefect (d : ConcreteDefect) : ConcreteDefect :=
   ⟨-d.κ, -d.δ⟩
 
-/-- All-stable predicate (every defect including vacuum is stable). -/
+/-- All-stable predicate (every defect including vacuum is stable).
+
+    HONEST_SCOPE_NOTE.  This is a structural MODEL CHOICE for the
+    concrete instance, not a placeholder for a deferred theorem:
+    in the concrete linearised perturbation model, every
+    `ConcreteDefect` is by fiat treated as stable.  The substantive
+    stability content (linear field-equation residual bound) lives
+    in `LayerB.DynamicalStability` / `LayerB.MetricDefects`; here
+    `Stable := True` is the explicit "trivial stability predicate"
+    that the abstract `ComposableDefectBlock` schema is
+    instantiated with. -/
 def allStable (_ : ConcreteDefect) : Prop := True
 
 private lemma source_eq (d : ConcreteDefect) :

@@ -1,0 +1,71 @@
+{
+  "mode": "pilot",
+  "config": {
+    "sigma_0": 1.0,
+    "L": 80.0,
+    "t_max": 2.0,
+    "dt": 0.0005,
+    "sample_dt": 0.1,
+    "eps_list": [
+      0.001,
+      1e-05
+    ],
+    "N_list": [
+      2048
+    ],
+    "ic_list": [
+      "gaussian",
+      "sech"
+    ],
+    "aperture_W": 2.0
+  },
+  "table": [
+    {
+      "eps": 0.001,
+      "N": 2048,
+      "t_reached": 2.0,
+      "sigma_G": 9.619657364350592,
+      "sigma_S": 39.50467936986453,
+      "ratio_S_over_G": 4.106661794032768,
+      "F_G_end": 0.08865855770717326,
+      "F_S_end": 0.027479008861391933,
+      "norm_drift_G": 386901.2379920667,
+      "norm_drift_S": 1531374549428.7913,
+      "blowup_G": false,
+      "blowup_S": false,
+      "separation_above_threshold": true,
+      "fidelity_above_floor": false,
+      "no_blowup": true,
+      "config_passes": false
+    },
+    {
+      "eps": 1e-05,
+      "N": 2048,
+      "t_reached": 2.0,
+      "sigma_G": 17.07258278550391,
+      "sigma_S": 39.80468749999676,
+      "ratio_S_over_G": 2.331497700148472,
+      "F_G_end": 0.044138068730970745,
+      "F_S_end": 0.01862353474506127,
+      "norm_drift_G": 160539204.33727533,
+      "norm_drift_S": 7.020521941185536e+27,
+      "blowup_G": false,
+      "blowup_S": false,
+      "separation_above_threshold": true,
+      "fidelity_above_floor": false,
+      "no_blowup": true,
+      "config_passes": false
+    }
+  ],
+  "verdict": {
+    "n_eps_with_pass": 0,
+    "n_N_with_pass": 0,
+    "n_configs_passing": 0,
+    "n_configs_total": 2,
+    "pass_eps_threshold": false,
+    "pass_N_threshold": false,
+    "pass_overall": false,
+    "sep_threshold": 1.1,
+    "fidelity_floor": 0.9
+  }
+}

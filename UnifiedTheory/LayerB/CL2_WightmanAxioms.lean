@@ -554,16 +554,34 @@ theorem w3_continuum_conditional (h_CL1 : CL1)
 /-- (W4) Distributional fields: a placeholder Prop.  The framework
     does NOT construct operator-valued distributions on Schwartz
     space.  The "True" body records that no Lean theorem in this
-    file claims this axiom. -/
+    file claims this axiom.
+
+    HONEST_SCOPE_NOTE.  This is an INTENTIONAL `True` marker — its
+    role is to be `True` so that downstream classification
+    aggregates can be assembled with a trivial witness while the
+    file simultaneously DOCUMENTS that W4 is NOT_ADDRESSED.  This
+    is the only correct Prop encoding of "we explicitly do not
+    claim this axiom"; no substantive sibling is possible (the
+    substantive content WOULD be the missing construction). -/
 def W4_distributions_open : Prop := True
 
 /-- (W6) Cyclicity of the vacuum: a placeholder Prop.  The framework
     does NOT construct a polynomial field algebra acting on a
-    vacuum vector. -/
+    vacuum vector.
+
+    HONEST_SCOPE_NOTE.  Intentional `True` marker; see
+    `W4_distributions_open` for the design rationale. -/
 def W6_cyclicity_open : Prop := True
 
 /-- (W7) Asymptotic completeness: a placeholder Prop.  The framework
-    does NOT construct in/out scattering states. -/
+    does NOT construct in/out scattering states.
+
+    HONEST_SCOPE_NOTE.  Intentional `True` marker; see
+    `W4_distributions_open` for the design rationale.  The
+    CONDITIONAL form of W7 — "given a Haag–Ruelle scattering
+    construction, asymptotic completeness on the chamber holds"
+    — IS proved substantively in
+    `LayerB.CL2_LorentzianWightmanDirect.W7_asymptotic_completeness_via_Haag_Ruelle`. -/
 def W7_asymptotic_completeness_open : Prop := True
 
 /-- The three NOT_ADDRESSED axioms are explicitly flagged. -/

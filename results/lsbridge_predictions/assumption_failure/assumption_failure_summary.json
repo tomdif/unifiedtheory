@@ -1,0 +1,167 @@
+{
+  "scenarios": [
+    {
+      "scenario": "S0_clean_baseline",
+      "n_measurements": 7,
+      "MAP_ell_um": 1.0023060076324135,
+      "median_ell_um": 1.0023060076324135,
+      "CI_95_um": [
+        0.9946399266855394,
+        1.010031174078981
+      ],
+      "log_BF_vs_null": 18631.68367007078,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": 0.23060076324135093,
+      "classifier_chi2": {
+        "lsbridge": 6.5326445527114325,
+        "linear_loss": 37286.09840027575,
+        "kerr": 59942.03779005433,
+        "AL": 8775.2435146367,
+        "nnn": 38824.802220786936
+      }
+    },
+    {
+      "scenario": "S1_chip_truncation",
+      "n_measurements": 5,
+      "MAP_ell_um": 1.0061611767879854,
+      "median_ell_um": 1.0061611767879854,
+      "CI_95_um": [
+        0.9908289019166255,
+        1.0178158814204186
+      ],
+      "log_BF_vs_null": 3580.7453906731685,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": 0.6161176787985445,
+      "classifier_chi2": {
+        "lsbridge": 4.995320214739253,
+        "linear_loss": 7181.148642462507,
+        "kerr": 13258.853584527616,
+        "AL": 2139.872869464986,
+        "nnn": 7789.832737831717
+      }
+    },
+    {
+      "scenario": "S2_elevated_noise_10pct",
+      "n_measurements": 7,
+      "MAP_ell_um": 1.0061611767879854,
+      "median_ell_um": 1.0023060076324135,
+      "CI_95_um": [
+        0.9908289019166255,
+        1.0178158814204186
+      ],
+      "log_BF_vs_null": 4356.324112989492,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": 0.6161176787985445,
+      "classifier_chi2": {
+        "lsbridge": 6.387698703015935,
+        "linear_loss": 8733.783458421913,
+        "kerr": 14040.34072363126,
+        "AL": 1905.614153964227,
+        "nnn": 9097.955315756968
+      }
+    },
+    {
+      "scenario": "S3_AL_xi_loc_8um",
+      "n_measurements": 7,
+      "MAP_ell_um": 0.561370710924873,
+      "median_ell_um": 0.5592197841156038,
+      "CI_95_um": [
+        0.5592197841156038,
+        0.561370710924873
+      ],
+      "log_BF_vs_null": 108694.67062229956,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "AL",
+      "classifier_correct": false,
+      "ell_relative_error_pct": -43.862928907512696,
+      "classifier_chi2": {
+        "lsbridge": 21906.945054753054,
+        "linear_loss": 239312.64242655956,
+        "kerr": 288178.3318895367,
+        "AL": 3731.032195202438,
+        "nnn": 242488.97857174426
+      }
+    },
+    {
+      "scenario": "S4_kerr_strength_0.1",
+      "n_measurements": 7,
+      "MAP_ell_um": 1.099040435753303,
+      "median_ell_um": 1.0948293939377478,
+      "CI_95_um": [
+        1.086455653091108,
+        1.1032676744971384
+      ],
+      "log_BF_vs_null": 13912.26988207974,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": 9.904043575330302,
+      "classifier_chi2": {
+        "lsbridge": 23.00182369567398,
+        "linear_loss": 27863.679496909055,
+        "kerr": 47711.589514173575,
+        "AL": 6713.597934305074,
+        "nnn": 29194.39143890466
+      }
+    },
+    {
+      "scenario": "S5_sigma0_calibration_bias_10pct",
+      "n_measurements": 7,
+      "MAP_ell_um": 0.9105834931617347,
+      "median_ell_um": 0.9105834931617347,
+      "CI_95_um": [
+        0.9036189466915858,
+        0.9140858700503082
+      ],
+      "log_BF_vs_null": 25097.874613364093,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": -8.94165068382653,
+      "classifier_chi2": {
+        "lsbridge": 6.5400865193879945,
+        "linear_loss": 50218.55085875896,
+        "kerr": 76146.10564739323,
+        "AL": 11019.2803203971,
+        "nnn": 51977.69869349336
+      }
+    },
+    {
+      "scenario": "S6_ALL_FAILURES_combined",
+      "n_measurements": 5,
+      "MAP_ell_um": 0.9176017181295641,
+      "median_ell_um": 0.9176017181295641,
+      "CI_95_um": [
+        0.8932718769354483,
+        0.9425942256269813
+      ],
+      "log_BF_vs_null": 1017.6491727016828,
+      "BF_verdict": "DECISIVE evidence for LSBridge vs R \u2261 1",
+      "classifier_label": "lsbridge",
+      "classifier_correct": true,
+      "ell_relative_error_pct": -8.239828187043585,
+      "classifier_chi2": {
+        "lsbridge": 5.0841233339038086,
+        "linear_loss": 2053.6049524881305,
+        "kerr": 3607.2579118573462,
+        "AL": 726.590571808812,
+        "nnn": 2213.257747573699
+      }
+    }
+  ],
+  "interpretation": {
+    "S0_clean": "Baseline.  Pipeline should give correct verdict.",
+    "S1_truncation": "Drops large \u03c3_0;  fit should still work with the surviving points.",
+    "S2_noise": "10% noise vs 5%.  Verdict should remain CONSISTENT but CI widens.",
+    "S3_AL": "AL contamination above \u03be_loc = 8 \u03bcm.  Pipeline may misidentify.",
+    "S4_Kerr": "Multiplicative Kerr suppression.  R values are MODIFIED at all \u03c3_0; \u2113 fit biased.",
+    "S5_calibration": "\u03c3_0 systematic bias.  Inferred \u2113 is biased by the same factor.",
+    "S6_combined": "Worst-case realistic experiment.  This is the test of the pipeline."
+  }
+}

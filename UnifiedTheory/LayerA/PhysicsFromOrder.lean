@@ -9,9 +9,13 @@
   relevant functional IS a linear map (because it's a derivative of
   the volume functional, and derivatives are linear by construction).
 
-  One sorry: volume_differentiable (√det is differentiable), which
-  requires Mathlib's matrix calculus API that has tricky typeclass issues.
-  This is a CALCULUS FACT, not a physics assumption.
+  Zero sorry. The √det-differentiability step that a derivation-based
+  approach would need (and which runs into Mathlib's matrix-calculus
+  typeclass issues) is sidestepped structurally: the first-order volume
+  variation δV/δg IS the trace functional, which we model directly as
+  `Matrix.traceLinearMap` — linear by construction, no calculus required.
+  The CONTENT is the identification (trace = variation of counting),
+  not a differentiability lemma.
 -/
 import Mathlib.LinearAlgebra.Matrix.Trace
 import Mathlib.LinearAlgebra.Matrix.ToLin

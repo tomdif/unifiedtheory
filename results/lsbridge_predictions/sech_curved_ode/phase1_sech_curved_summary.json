@@ -1,0 +1,88 @@
+{
+  "ode_gaussian": "sigma * sigma_pp + sigma_prime**2 * (sigma - 1) = 0",
+  "ode_sech": "xi * xi_pp + xi_prime**2 * (xi - 1) = 1/xi  (hbar = m = 1)",
+  "frozen_test_rows": [
+    {
+      "width_0": 0.5,
+      "gaussian_initial_accel": 0.0,
+      "sech_initial_accel": 4.0,
+      "gaussian_admits_frozen": true,
+      "sech_rejects_frozen": true
+    },
+    {
+      "width_0": 1.0,
+      "gaussian_initial_accel": -0.0,
+      "sech_initial_accel": 1.0,
+      "gaussian_admits_frozen": true,
+      "sech_rejects_frozen": true
+    },
+    {
+      "width_0": 1.5,
+      "gaussian_initial_accel": -0.0,
+      "sech_initial_accel": 0.4444444444444444,
+      "gaussian_admits_frozen": true,
+      "sech_rejects_frozen": true
+    },
+    {
+      "width_0": 2.0,
+      "gaussian_initial_accel": -0.0,
+      "sech_initial_accel": 0.25,
+      "gaussian_admits_frozen": true,
+      "sech_rejects_frozen": true
+    },
+    {
+      "width_0": 3.0,
+      "gaussian_initial_accel": -0.0,
+      "sech_initial_accel": 0.1111111111111111,
+      "gaussian_admits_frozen": true,
+      "sech_rejects_frozen": true
+    }
+  ],
+  "divergence_rows": [
+    {
+      "width_0": 1.0,
+      "width_p0": 0.1,
+      "t_eval": 5.0,
+      "gaussian_width_at_t": 1.4842192399151966,
+      "sech_width_at_t": 3.992888287649156,
+      "abs_diff": 2.5086690477339593,
+      "rel_diff": 0.6282843062486373
+    },
+    {
+      "width_0": 1.0,
+      "width_p0": 0.2,
+      "t_eval": 5.0,
+      "gaussian_width_at_t": 1.9055869555253828,
+      "sech_width_at_t": 4.044275179985458,
+      "abs_diff": 2.1386882244600756,
+      "rel_diff": 0.5288186706592417
+    },
+    {
+      "width_0": 2.0,
+      "width_p0": 0.1,
+      "t_eval": 5.0,
+      "gaussian_width_at_t": 2.443174297482717,
+      "sech_width_at_t": 3.793407896416248,
+      "abs_diff": 1.350233598933531,
+      "rel_diff": 0.3559421068873556
+    },
+    {
+      "width_0": 0.5,
+      "width_p0": 0.1,
+      "t_eval": 5.0,
+      "gaussian_width_at_t": 1.0763823218525101,
+      "sech_width_at_t": 4.6244753087229755,
+      "abs_diff": 3.5480929868704654,
+      "rel_diff": 0.7672422815573974
+    }
+  ],
+  "verdict_frozen_test": "PASS",
+  "verdict_divergence": "PASS",
+  "lean_theorems_witnessed": [
+    "gaussian_curved_leading_order_sigma_ode",
+    "sech_curved_leading_order_sigma_ode",
+    "sech_curved_rejects_frozen",
+    "sech_curved_distinct_from_gaussian_curved"
+  ],
+  "phase": "Phase 1 (reduced-ODE only; no PDE; no regularizer)"
+}

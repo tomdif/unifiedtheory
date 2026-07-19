@@ -1,0 +1,378 @@
+{
+  "truth_ell_um": 1.0,
+  "noise_sweep": [
+    {
+      "n_trials": 80,
+      "rel_error_mean": -6.301745638024742e-05,
+      "rel_error_std": 0.0005457720429543597,
+      "rel_error_p95": 0.0009752416377014067,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 0.9782161267010496,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.01
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00014570809979440048,
+      "rel_error_std": 0.0010907295602108353,
+      "rel_error_p95": 0.00196761797657548,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 0.9728357251506413,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.02
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00024797179030238147,
+      "rel_error_std": 0.001634539114084695,
+      "rel_error_p95": 0.0029758045831261887,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 0.9671376011880639,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.03
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005107916934072879,
+      "rel_error_std": 0.002717489000658232,
+      "rel_error_p95": 0.00503457435160454,
+      "fit_width_mean": 0.0032837364686256615,
+      "reduced_chi2_median": 0.9552605521968129,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.05
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0008505614318873353,
+      "rel_error_std": 0.003792397746947045,
+      "rel_error_p95": 0.007136034788205038,
+      "fit_width_mean": 0.0046012572717378936,
+      "reduced_chi2_median": 0.9486617390828549,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.07
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0015021914706481066,
+      "rel_error_std": 0.005385742418136511,
+      "rel_error_p95": 0.01032628469582294,
+      "fit_width_mean": 0.007223034710446742,
+      "reduced_chi2_median": 0.9342966719515788,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.1
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0029559608069766874,
+      "rel_error_std": 0.007980577754238473,
+      "rel_error_p95": 0.01571091452564081,
+      "fit_width_mean": 0.011580596897681284,
+      "reduced_chi2_median": 0.8867805035149019,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.15
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00484566756217786,
+      "rel_error_std": 0.010494704270407574,
+      "rel_error_p95": 0.020012674052342874,
+      "fit_width_mean": 0.016092422365614718,
+      "reduced_chi2_median": 0.8550469424056475,
+      "consistent_fraction": 1.0,
+      "noise_fraction": 0.2
+    }
+  ],
+  "n_measurements_sweep": [
+    {
+      "n_trials": 80,
+      "rel_error_mean": 0.0007084527745388258,
+      "rel_error_std": 0.004100408356721947,
+      "rel_error_p95": 0.007853602130445345,
+      "fit_width_mean": 0.004608436803825051,
+      "reduced_chi2_median": 0.5524518790932647,
+      "consistent_fraction": 0.9875,
+      "n_measurements": 2,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00018537986807982965,
+      "rel_error_std": 0.0035919381637858376,
+      "rel_error_p95": 0.006474694337906371,
+      "fit_width_mean": 0.004604320548750672,
+      "reduced_chi2_median": 0.755664537848892,
+      "consistent_fraction": 1.0,
+      "n_measurements": 3,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0003825118308643391,
+      "rel_error_std": 0.002910426423586652,
+      "rel_error_p95": 0.005117032354381777,
+      "fit_width_mean": 0.004603412721710764,
+      "reduced_chi2_median": 0.9556728641092063,
+      "consistent_fraction": 1.0,
+      "n_measurements": 4,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00010622226769645416,
+      "rel_error_std": 0.0029557190260238457,
+      "rel_error_p95": 0.005824645753181967,
+      "fit_width_mean": 0.004604685083294065,
+      "reduced_chi2_median": 0.9546682847480958,
+      "consistent_fraction": 1.0,
+      "n_measurements": 5,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00033405871856531514,
+      "rel_error_std": 0.002682683325086875,
+      "rel_error_p95": 0.005354805234515497,
+      "fit_width_mean": 0.00460363585673612,
+      "reduced_chi2_median": 0.990740216636348,
+      "consistent_fraction": 1.0,
+      "n_measurements": 6,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005403420622752175,
+      "rel_error_std": 0.0027090090677667853,
+      "rel_error_p95": 0.004993094210858073,
+      "fit_width_mean": 0.004545505776657568,
+      "reduced_chi2_median": 0.9430305082929196,
+      "consistent_fraction": 1.0,
+      "n_measurements": 7,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005107916934072879,
+      "rel_error_std": 0.002717489000658232,
+      "rel_error_p95": 0.00503457435160454,
+      "fit_width_mean": 0.0032837364686256615,
+      "reduced_chi2_median": 0.9552605521968129,
+      "consistent_fraction": 1.0,
+      "n_measurements": 8,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005321176922473386,
+      "rel_error_std": 0.0024792871287799383,
+      "rel_error_p95": 0.005086794812506095,
+      "fit_width_mean": 0.0005201101249156625,
+      "reduced_chi2_median": 1.022126466221324,
+      "consistent_fraction": 1.0,
+      "n_measurements": 9,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0004358453675673654,
+      "rel_error_std": 0.0024058667154725176,
+      "rel_error_p95": 0.004685470580071471,
+      "fit_width_mean": 5.7995663169960186e-05,
+      "reduced_chi2_median": 0.9902873462001809,
+      "consistent_fraction": 1.0,
+      "n_measurements": 10,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005231707250044571,
+      "rel_error_std": 0.002182727328868869,
+      "rel_error_p95": 0.004398284643817629,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 1.0256270886115697,
+      "consistent_fraction": 1.0,
+      "n_measurements": 11,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005662309689571015,
+      "rel_error_std": 0.0018945903779367355,
+      "rel_error_p95": 0.003905588439281992,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 1.024782319881262,
+      "consistent_fraction": 1.0,
+      "n_measurements": 12,
+      "sigma_min": 1.0,
+      "sigma_max": 8.0
+    }
+  ],
+  "sigma_max_sweep": [
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0010591836864132453,
+      "rel_error_std": 0.012083863902921032,
+      "rel_error_p95": 0.0229500830216876,
+      "fit_width_mean": 0.02144510450529554,
+      "reduced_chi2_median": 0.9535654482011114,
+      "consistent_fraction": 1.0,
+      "sigma_max": 3.0,
+      "sigma_grid": [
+        1.0,
+        1.4,
+        1.8,
+        2.2,
+        2.6,
+        3.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0007748033676617056,
+      "rel_error_std": 0.007224772480615421,
+      "rel_error_p95": 0.014252196635344477,
+      "fit_width_mean": 0.012693835312335677,
+      "reduced_chi2_median": 0.9663160093884112,
+      "consistent_fraction": 1.0,
+      "sigma_max": 4.0,
+      "sigma_grid": [
+        1.0,
+        1.6,
+        2.2,
+        2.8,
+        3.4,
+        4.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0005888722288645759,
+      "rel_error_std": 0.005105654518935051,
+      "rel_error_p95": 0.010164155972183375,
+      "fit_width_mean": 0.009204949194034067,
+      "reduced_chi2_median": 0.9802146395212867,
+      "consistent_fraction": 1.0,
+      "sigma_max": 5.0,
+      "sigma_grid": [
+        1.0,
+        1.8,
+        2.6,
+        3.4000000000000004,
+        4.2,
+        5.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.000470807044362917,
+      "rel_error_std": 0.003931789180338824,
+      "rel_error_p95": 0.007838794050952846,
+      "fit_width_mean": 0.004603006106866689,
+      "reduced_chi2_median": 0.9857319032253162,
+      "consistent_fraction": 1.0,
+      "sigma_max": 6.0,
+      "sigma_grid": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0003910474238274494,
+      "rel_error_std": 0.0031909177373827743,
+      "rel_error_p95": 0.006366382999976366,
+      "fit_width_mean": 0.004603373413817775,
+      "reduced_chi2_median": 0.9889521861828077,
+      "consistent_fraction": 1.0,
+      "sigma_max": 7.0,
+      "sigma_grid": [
+        1.0,
+        2.2,
+        3.4,
+        4.6,
+        5.8,
+        7.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00033405871856531514,
+      "rel_error_std": 0.002682683325086875,
+      "rel_error_p95": 0.005354805234515497,
+      "fit_width_mean": 0.00460363585673612,
+      "reduced_chi2_median": 0.990740216636348,
+      "consistent_fraction": 1.0,
+      "sigma_max": 8.0,
+      "sigma_grid": [
+        1.0,
+        2.4,
+        3.8,
+        5.199999999999999,
+        6.6,
+        8.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.0002584874177507052,
+      "rel_error_std": 0.0020326857996085497,
+      "rel_error_p95": 0.0040599063647108686,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 0.9853287678101665,
+      "consistent_fraction": 1.0,
+      "sigma_max": 10.0,
+      "sigma_grid": [
+        1.0,
+        2.8,
+        4.6,
+        6.4,
+        8.2,
+        10.0
+      ]
+    },
+    {
+      "n_trials": 80,
+      "rel_error_mean": -0.00021077539679314471,
+      "rel_error_std": 0.001635557422381016,
+      "rel_error_p95": 0.003268383212391862,
+      "fit_width_mean": 0.0,
+      "reduced_chi2_median": 0.9815673235561536,
+      "consistent_fraction": 1.0,
+      "sigma_max": 12.0,
+      "sigma_grid": [
+        1.0,
+        3.2,
+        5.4,
+        7.6000000000000005,
+        9.8,
+        12.0
+      ]
+    }
+  ],
+  "recommendations": {
+    "max_noise_fraction": 0.05,
+    "min_n_measurements": 6,
+    "recommended_sigma_range_um": [
+      1.0,
+      7.0
+    ]
+  },
+  "plots": {
+    "noise_sensitivity": "results/lsbridge_predictions/sensitivity/noise_sensitivity.png",
+    "n_measurements_sensitivity": "results/lsbridge_predictions/sensitivity/n_measurements_sensitivity.png",
+    "sigma_max_sensitivity": "results/lsbridge_predictions/sensitivity/sigma_max_sensitivity.png"
+  }
+}

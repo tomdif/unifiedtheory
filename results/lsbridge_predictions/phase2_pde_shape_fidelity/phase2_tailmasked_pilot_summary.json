@@ -1,0 +1,75 @@
+{
+  "mode": "pilot",
+  "method": "tail_masked",
+  "config": {
+    "sigma_0": 1.0,
+    "L": 80.0,
+    "t_max": 1.0,
+    "dt_cap": 0.0005,
+    "sample_dt": 0.1,
+    "tau_list_rel": [
+      0.05,
+      0.2
+    ],
+    "N_list": [
+      2048
+    ],
+    "ic_list": [
+      "gaussian",
+      "sech"
+    ],
+    "aperture_W": 2.0
+  },
+  "table": [
+    {
+      "tau_rel": 0.2,
+      "N": 2048,
+      "t_reached": 0.9000550813451267,
+      "sigma_G": 1.2214273830371607,
+      "sigma_S": 1.2661008673787333,
+      "ratio_S_over_G": 1.036574818087416,
+      "F_G_end": 0.9997447676758344,
+      "F_S_end": 0.9930564878759407,
+      "norm_drift_G": 0.11755974893624477,
+      "norm_drift_S": 0.1735603010778386,
+      "blowup_G": false,
+      "blowup_S": false,
+      "separation_above_threshold": false,
+      "fidelity_above_floor": true,
+      "no_blowup": true,
+      "norm_drift_ok": false,
+      "config_passes": false
+    },
+    {
+      "tau_rel": 0.05,
+      "N": 2048,
+      "t_reached": 1.0000030308305476,
+      "sigma_G": 1.3601381104146752,
+      "sigma_S": 1.3852632383140766,
+      "ratio_S_over_G": 1.01847248283613,
+      "F_G_end": 0.9997833063240805,
+      "F_S_end": 0.99896100948068,
+      "norm_drift_G": 0.006593921980366346,
+      "norm_drift_S": 0.04973294318917487,
+      "blowup_G": false,
+      "blowup_S": false,
+      "separation_above_threshold": false,
+      "fidelity_above_floor": true,
+      "no_blowup": true,
+      "norm_drift_ok": true,
+      "config_passes": false
+    }
+  ],
+  "verdict": {
+    "n_tau_with_pass": 0,
+    "n_N_with_pass": 0,
+    "n_configs_passing": 0,
+    "n_configs_total": 2,
+    "pass_tau_threshold": false,
+    "pass_N_threshold": false,
+    "pass_overall": false,
+    "sep_threshold": 1.1,
+    "fidelity_floor": 0.9,
+    "norm_drift_max": 0.05
+  }
+}

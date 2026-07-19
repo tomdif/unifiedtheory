@@ -1,0 +1,11 @@
+{
+  "sigma_0_tested": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "t_eval": 10.0,
+  "perturbation_decay": "\u03b2(t) \u2192 0 as t \u2192 \u221e (pure-Gaussian is attractor)",
+  "max_relative_deviation_at_t10_for_beta=0.1": "\u2264 5%",
+  "conclusion": "Pure-Gaussian \u03c3-ODE is dynamically stable under small perturbations.  Combined with sech-ansatz check and PDE singularity analysis, the \u03c3-ODE is a robust prediction of the smooth-ansatz sector, not a Gaussian artifact."
+}

@@ -436,7 +436,14 @@ theorem iota2_chamber_bath_match :
     Stated as a `Prop`, vacuously `True`, with the documentary
     comment.  This is NOT a substitute for the missing construction;
     it is a NAMED RECORD of the obstruction so downstream code can
-    refer to it by name. -/
+    refer to it by name.
+
+    HONEST_SCOPE_NOTE.  Intentional `True` documentation marker:
+    its purpose is to NAME the obstruction (missing Mathlib
+    Peter-Weyl / character-orthogonality for compact connected Lie
+    groups) so downstream code can reference it by name without
+    claiming a discharge.  No substantive sibling is appropriate —
+    the substantive content WOULD be the missing Mathlib piece. -/
 def dim6_extension_obstacle : Prop := True
 
 theorem dim6_extension_obstacle_holds : dim6_extension_obstacle := trivial

@@ -1,0 +1,204 @@
+{
+  "platforms": {
+    "photonic_waveguide": {
+      "D_or_hbar_over_m": 225.0,
+      "time_unit": "mm (propagation distance)",
+      "max_observation_time": 50.0,
+      "min_observation_time": 0.001,
+      "min_sigma_phys_um": 0.5,
+      "max_sigma_phys_um": 200.0
+    },
+    "exciton_polariton": {
+      "D_or_hbar_over_m": 1160.0,
+      "time_unit": "ps",
+      "max_observation_time": 30.0,
+      "min_observation_time": 0.001,
+      "min_sigma_phys_um": 0.5,
+      "max_sigma_phys_um": 50.0
+    },
+    "bec_expansion": {
+      "D_or_hbar_over_m": 0.73,
+      "time_unit": "ms",
+      "max_observation_time": 100.0,
+      "min_observation_time": 0.001,
+      "min_sigma_phys_um": 1.0,
+      "max_sigma_phys_um": 100.0
+    }
+  },
+  "concordance_table": [
+    {
+      "ell_um": 0.1,
+      "photonic": [
+        0.5,
+        0.5
+      ],
+      "polariton": [
+        0.5,
+        0.7975951903807615
+      ],
+      "bec": null,
+      "all_three_overlap": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "ell_um": 0.3,
+      "photonic": [
+        0.5,
+        2.099198396793587
+      ],
+      "polariton": [
+        0.5991983967935872,
+        2.285571142284569
+      ],
+      "bec": [
+        1.0,
+        1.1983967935871744
+      ],
+      "all_three_overlap": [
+        1.0,
+        1.1983967935871744
+      ]
+    },
+    {
+      "ell_um": 0.5,
+      "photonic": [
+        0.5,
+        3.2985971943887775
+      ],
+      "polariton": [
+        0.6983967935871743,
+        3.5751503006012024
+      ],
+      "bec": [
+        1.0,
+        1.7935871743486973
+      ],
+      "all_three_overlap": [
+        1.0,
+        1.7935871743486973
+      ]
+    },
+    {
+      "ell_um": 1.0,
+      "photonic": [
+        0.5,
+        5.697394789579159
+      ],
+      "polariton": [
+        0.5,
+        6.45190380761523
+      ],
+      "bec": [
+        1.0,
+        2.785571142284569
+      ],
+      "all_three_overlap": [
+        1.0,
+        2.785571142284569
+      ]
+    },
+    {
+      "ell_um": 2.0,
+      "photonic": [
+        0.5,
+        10.095190380761522
+      ],
+      "polariton": [
+        0.5,
+        11.312625250501002
+      ],
+      "bec": [
+        1.0,
+        4.174348697394789
+      ],
+      "all_three_overlap": [
+        1.0,
+        4.174348697394789
+      ]
+    },
+    {
+      "ell_um": 5.0,
+      "photonic": [
+        0.5,
+        20.090180360721444
+      ],
+      "polariton": [
+        0.5,
+        23.315631262525052
+      ],
+      "bec": [
+        1.0,
+        4.7695390781563125
+      ],
+      "all_three_overlap": [
+        1.0,
+        4.7695390781563125
+      ]
+    }
+  ],
+  "recommended_schedules": {
+    "0.3": {
+      "photonic_waveguide": {
+        "sigma_phys_um": 1.3561365154551528,
+        "predicted_R": 29.582828626595255,
+        "T_LS_phys": 0.41881731366641084,
+        "T_free_phys": 0.014157446502255365
+      },
+      "exciton_polariton": {
+        "sigma_phys_um": 1.3657314629258517,
+        "predicted_R": 30.862362588140552,
+        "T_LS_phys": 0.08595327651335062,
+        "T_free_phys": 0.002785051736330121
+      },
+      "bec_expansion": {
+        "sigma_phys_um": 1.148296593186373,
+        "predicted_R": 12.296797221387234,
+        "T_LS_phys": 38.47139472829137,
+        "T_free_phys": 3.1285703127136153
+      }
+    },
+    "1.0": {
+      "photonic_waveguide": {
+        "sigma_phys_um": 4.542418169672679,
+        "predicted_R": 30.455176001109074,
+        "T_LS_phys": 4.83741612132777,
+        "T_free_phys": 0.15883724070915262
+      },
+      "exciton_polariton": {
+        "sigma_phys_um": 4.528056112224449,
+        "predicted_R": 29.88163607383895,
+        "T_LS_phys": 0.9148093830111156,
+        "T_free_phys": 0.030614434254890792
+      },
+      "bec_expansion": {
+        "sigma_phys_um": 2.785571142284569,
+        "predicted_R": 3.9531925416546576,
+        "T_LS_phys": 72.78036743760103,
+        "T_free_phys": 18.410529381181597
+      }
+    },
+    "3.0": {
+      "photonic_waveguide": {
+        "sigma_phys_um": 12.227454909819642,
+        "predicted_R": 16.685949265871727,
+        "T_LS_phys": 19.204418787274665,
+        "T_free_phys": 1.1509335478176264
+      },
+      "exciton_polariton": {
+        "sigma_phys_um": 13.22444889779559,
+        "predicted_R": 25.525622363263853,
+        "T_LS_phys": 6.665521650761828,
+        "T_free_phys": 0.26113062223919603
+      },
+      "bec_expansion": {
+        "sigma_phys_um": 1.0,
+        "predicted_R": 5.852845030458896,
+        "T_LS_phys": 13.886883509016194,
+        "T_free_phys": 2.3726723391354483
+      }
+    }
+  },
+  "plot": "results/lsbridge_predictions/cross_platform/concordance_per_ell.png"
+}
