@@ -5080,4 +5080,10 @@ import UnifiedTheory.Audit.KFCausalSetCriticalMultiplicity
 -- corrected window: it is all-parent zero-free, normalized, projective, and
 -- strongly positive, while the coherent antichain ratio tends to exp(-2 gamma).
 import UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
+-- The harmonic trajectory is equivalently the unique solution of a local
+-- refinement law. Exchangeability plus unit normalization forces the rank-n
+-- spectator source 1/n. The update leaves one rank-two boundary datum; its
+-- infrared constant is exp(-2(gamma+Q_2-H_2)), so harmonic matching uniquely
+-- selects Q_2=H_2 and accumulating the source gives H_n.
+import UnifiedTheory.Audit.KFCausalSetHarmonicRefinementLaw
 import UnifiedTheory.LayerC.ContextualFraction

@@ -299,7 +299,21 @@ It also packages the schedule as one normalized rank-dependent unlabeled law
 whose finite decoherence functionals are projectively consistent and whose
 infinite-cylinder functional is Hermitian, normalized, and strongly positive.
 Thus zero-freeness and multiplicity-corrected balance are compatible; their
-microscopic origin and all-parent conditioning remain open.
+closed-form origin is now reduced further. `KFCausalSetHarmonicRefinementLaw.lean`
+proves that exchangeability and normalization force spectator weight `1/n`.
+The local additive charge law
+
+```text
+Q_n = 2(n-1)(lambda_n-1),
+Q_(n+1) = Q_n + 1/(n+1)
+```
+
+classifies the trajectories as `Q_n=H_n+Q_2-H_2`. Every nonnegative seed has
+coherent limiting ratio `exp(-2(gamma+Q_2-H_2))`; matching `exp(-2gamma)`
+uniquely fixes `Q_2=H_2=3/2` and hence the schedule above. For this member the
+offset is exactly the spectator entropy anomaly `H_n-log n`. The irreducible
+open step is deriving the additive charge law and canonical seed from a causal
+action; all-parent conditioning also remains open.
 
 The independent exact-binomial scan tracks the convergence and conditioning:
 
@@ -365,13 +379,16 @@ critical window. The exact multiplicity theorem shows that every finite-`kappa`
 member nevertheless fails coherent unlabeled antichain balance, while the harmonic
 rational construction gives a zero-free, strongly-positive trajectory in the
 logarithmically corrected window with limiting ratio `exp(-2gamma)`. It does not
-yet derive that trajectory from microscopic physics or prove subexponential
-all-parent stability. Universal coefficient positivity is now ruled out.
+yet derive the additive charge update from a causal action or prove
+subexponential all-parent stability. Exchangeability, normalization, and that
+local update classify a one-parameter family; harmonic infrared matching then
+uniquely fixes its rank-two seed. Universal coefficient positivity is ruled
+out.
 The test replaces the former question “which constant coupling?” with the
 sharper problem:
 
-> Derive a refinement-covariant, multiplicity-corrected critical trajectory
-> from microphysics and keep its all-parent partition condition numbers
+> Derive the additive critical-charge source law and its rank-two boundary datum
+> from a causal action, and keep all-parent partition condition numbers
 > subexponentially controlled.
 
 The next mathematical target is an RG transformation on the effective

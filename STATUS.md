@@ -326,8 +326,15 @@
 > tends to one, and makes the exact coherent unlabeled antichain ratio converge
 > to `exp(-2gamma)`. Its growth law is normalized and projectively
 > strongly positive on the infinite-cylinder algebra. The remaining issue is
-> microscopic derivation and quantitative all-parent conditioning, not
-> kinematic existence.
+> narrowed by `KFCausalSetHarmonicRefinementLaw.lean`: exchangeability plus
+> normalization uniquely gives source weight `1/n`, and the local additive
+> recursion `Q_(n+1)=Q_n+1/(n+1)` classifies every trajectory as
+> `Q_n=H_n+Q_2-H_2`. For every nonnegative seed, the coherent ratio tends to
+> `exp(-2(gamma+Q_2-H_2))`; matching the harmonic value is equivalent to
+> `Q_2=H_2=3/2`. On that selected trajectory the offset is exactly the spectator
+> entropy anomaly `H_n-log n`. The remaining microscopic assumptions are that
+> this source adds to `Q` and that the causal action fixes the canonical
+> rank-two seed; quantitative all-parent conditioning is also open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -422,6 +429,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-867 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full build: 8,621 jobs successful (July 2026).
+868 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full build: 8,622 jobs successful (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

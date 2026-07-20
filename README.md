@@ -464,9 +464,18 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   rational and above one, hence universally zero-free, while `lambda_n -> 1`
   and the coherent unlabeled antichain ratio tends to `exp(-2gamma)`. The same law
   is normalized, projective, and strongly positive on infinite cylinders. What
-  remains open is deriving this or another corrected schedule from microphysics,
-  obtaining a useful all-parent condition-number bound, and selecting the
-  reflection-odd sign/source.
+  looked like an inserted closed form is now reduced to a local refinement law.
+  `KFCausalSetHarmonicRefinementLaw.lean` proves that exchangeability and unit
+  normalization uniquely force spectator weight `1/n`; the additive charge
+  recursion `Q_(n+1)=Q_n+1/(n+1)` classifies all solutions as
+  `Q_n=H_n+Q_2-H_2`. The canonical seed `Q_2=H_2=3/2` uniquely gives the
+  harmonic coupling above. Every nonnegative seed stays in the critical window
+  and has coherent limit `exp(-2(gamma+Q_2-H_2))`; matching `exp(-2gamma)` is
+  equivalent to the canonical seed. For that trajectory, the exact offset is
+  the discrete-continuum spectator anomaly `H_n-log n`. What remains open is
+  deriving both the additive coupling to `Q` and its rank-two boundary datum
+  from a causal action, obtaining a useful all-parent condition-number bound,
+  and selecting the reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

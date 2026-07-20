@@ -717,7 +717,13 @@ schedule `lambda_0=lambda_1=2` and
 zero-free for every finite parent, while an explicit logarithmic-error estimate
 proves that the coherent unlabeled antichain ratio converges to `exp(-2gamma)`. The same
 schedule defines a normalized, projective, strongly-positive infinite-cylinder
-law. What remains is to derive such a schedule from microphysics and control
+law. `KFCausalSetHarmonicRefinementLaw.lean` further proves that exchangeability
+and unit normalization force spectator source `1/n`, and that the local charge
+recursion `Q_(n+1)=Q_n+1/(n+1)` classifies all trajectories as
+`Q_n=H_n+Q_2-H_2`. Every nonnegative seed has coherent limit
+`exp(-2(gamma+Q_2-H_2))`, and matching the harmonic infrared constant uniquely
+selects `Q_2=H_2=3/2`. What remains is to derive both the additive coupling of
+that source to `Q` and the canonical seed from a causal action, and to control
 conditioning outside the antichain benchmark.
 
 `KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from

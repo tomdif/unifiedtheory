@@ -162,6 +162,14 @@ are stronger than another atomic-number identity:
     converges to one, and is zero-free for every finite parent. Its coherent
     unlabeled antichain ratio converges exactly to `exp(-2gamma)`, and its normalized
     projective infinite-cylinder decoherence functional is strongly positive.
+32. **The harmonic closed form is selected by a local refinement law:**
+    exchangeability and unit normalization force weight `1/n` on every
+    nonempty spectator slot. For the rescaled charge
+    `Q_n=2(n-1)(lambda_n-1)`, the rank-local update classifies every trajectory
+    as `Q_n=H_n+Q_2-H_2`. Every nonnegative seed has coherent infrared ratio
+    `exp(-2(gamma+Q_2-H_2))`, so matching `exp(-2gamma)` selects the unique seed
+    `Q_2=H_2=3/2`. The selected law's exact offset is `H_n-log n`, whose limit
+    is Euler's constant.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -172,7 +180,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 868 Lean files (867 below `UnifiedTheory/`). The search
+The repository contains 869 Lean files (868 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;
@@ -1294,8 +1302,31 @@ parent polynomial zero by the rational-root theorem. Lean proves
 the exact coherent limit `(n+1)^2/g_(n+1)^(2n) -> exp(-2gamma)`. The schedule is
 then promoted to one normalized projective strongly-positive infinite-cylinder
 growth law. The frontier has consequently moved again: kinematic compatibility
-is proved, while microscopic derivation and all-parent condition control are
-still open.
+is proved.
+
+`KFCausalSetHarmonicRefinementLaw.lean` classifies the remaining closed-form
+arbitrariness. It proves that an exchangeable, unit-normalized source on `n`
+spectator slots must assign each slot weight `1/n`. Writing
+`Q_n=2(n-1)(lambda_n-1)`, the local refinement equation
+`Q_(n+1)=Q_n+1/(n+1)` classifies its solutions as
+`Q_n=H_n+Q_2-H_2`. The canonical rank-two seed `Q_2=H_2=3/2` recovers the
+zero-free harmonic schedule exactly. The same module proves the universality
+law
+
+```text
+2n(lambda_(n+1)-1)-log(n+1) -> delta,
+scaled nonlinear log remainder -> 0
+  implies coherent Born ratio -> exp(-2delta).
+```
+
+It then discharges the nonlinear-remainder premise for every nonnegative seed,
+giving the exact family of limits `exp(-2(gamma+Q_2-H_2))`. Consequently,
+matching `exp(-2gamma)` is equivalent to the canonical seed. Its finite-rank
+offset is the discrete-continuum spectator entropy anomaly `H_n-log n`, and
+Lean proves that this tends to Euler's constant. The open microscopic question
+is now narrower: why the normalized spectator source enters additively in `Q`
+and why the physical causal action fixes `Q_2=3/2`. All-parent condition
+control also remains open.
 
 `UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean` closes the qualitative
 zero-safe-running part without pretending to select the dynamics. For every
