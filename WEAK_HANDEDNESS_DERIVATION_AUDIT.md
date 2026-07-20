@@ -91,17 +91,23 @@ growth laws have normalized, strongly positive, projectively consistent finite
 decoherence functionals.  One transports `Xi=+1`; its reflected partner
 transports `Xi=-1`.  The earlier reflection no-go is thus obeyed exactly.
 
-There is also no large-rank merger of geometry with these pure birth channels.
-The geometric orientation density obeys the rank-independent bound `|y|<1/4`,
-so it remains more than `1/4` away from both `+/-1/2` birth endpoints at every
-event.  This uniform separation is now cross-linked in the clock module.
+There is no continuous large-rank merger of the mixed geometric kernel with
+the pure birth endpoint.  The geometric orientation density obeys the
+rank-independent bound `|y|<1/4`, so it remains more than `1/4` away from both
+`+/-1/2` endpoints at every event.  The later conjugation-completeness module
+nevertheless proves that the newborn birth source is this same geometric odd
+residual: the architecture is one source followed by a sign-retaining,
+endpoint-saturating quantum response, not two independent sources.
 
 Simply replacing `tau` by `-tau` in the scalar phase conjugates `-i` to `+i`.
 For the concrete route Hamiltonian at the half-period, however, using the same
 `H_plus` at `+/- pi/2` does not by itself choose the reflected transition.
 The matrix-level conjugate branch is `H_minus`: it exchanges which holonomy
-sector is ground.  The unresolved datum is therefore an oriented clock/branch
-alignment, not merely the sign printed on a time coordinate.
+sector is ground.  At the clock-module boundary the unresolved datum is
+therefore an oriented clock/branch alignment, not merely the sign printed on a
+time coordinate.  The later modules derive the process-level source and prove
+the two printed signs conjugation-equivalent; deriving the response mechanism
+itself remains open.
 
 ## Process-level growth-arrow source
 
@@ -125,18 +131,23 @@ through every refinement.  The all-antichain trajectory remains an exact
 zero-source exceptional sector.
 
 This evades the fixed-input no-go without contradicting it: the input is now
-an oriented growth edge, not a reflection-fixed static action.  It does not yet
-derive the last binary choice.  The standard response sends a positive source
-to `-i`; its complex-conjugate response sends the same source to `+i`, and both
-obey the same reflection-covariance law.  Sequential growth has therefore
-generated the nonzero pseudoscalar, while the sign of its coupling to the clock
-remains microscopic input.
+an oriented growth edge, not a reflection-fixed static action.  The standard
+response sends a positive source to `-i`; its complex-conjugate response sends
+the same source to `+i`, and both obey the same reflection-covariance law.
+`KFCausalSetConjugationCompleteness.lean` follows this pair through the entire
+constructed growth theory.  Conjugation exchanges the raw and normalized edge
+laws even at an active zero-partition fallback, all finite paths and events,
+and the infinite-cylinder decoherence functional.  It commutes with arbitrary
+refinement and fixes every real cylinder quantum measure.  Quotienting by this
+global convention gives a subsingleton sector.  Thus the last binary label is
+not a second cylinder-operational theory; what remains to derive is the
+source-to-clock response mechanism, not an absolute printed sign of `i`.
 
-## Three-postulate causal-growth ledger
+## Two-postulate causal-growth ledger and response bridge
 
 The result is not yet an unconditional derivation of nature's vacuum from the
-partial-order postulate alone.  The causal-growth construction uses three named
-physical principles:
+partial-order postulate alone.  The causal-growth construction uses two named
+dynamical selection postulates and one interpretation bridge:
 
 1. **Full event-slot exchangeability.** Together with unit normalization it
    forces the uniform local action density.  It is strictly stronger than
@@ -146,13 +157,16 @@ physical principles:
    with the fractional number-volume increment.  One-cell growth then gives
    `1/(n+1)` and all dimensional parameters cancel, but the identification is
    postulated rather than derived.
-3. **Growth-arrow clock response.** The maximal-birth source derived above is
+3. **Source-to-clock response bridge.** The maximal-birth source derived above is
    coupled to the first orthogonal route-transition coefficient and used as the
    maximal-event signature character.  `SatisfiesClockBirthIdentification`
    formalizes the coefficient match.  The source is now derived for every
    linked birth, but `maximalBirthArrow_response_sign_not_fixed_by_reflection`
    proves that covariance alone leaves the standard and conjugate response
-   laws.  Their remaining Z2 coupling sign is the postulated part.
+   laws.  `sequentialGrowthChirality_conjugationCompleteness` proves that these
+   are one cylinder-operational conjugation-gauge orbit.  The bridge mechanism
+   itself remains conditional; its Z2 representative is not an additional
+   observable parameter at this scope.
 
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
@@ -172,8 +186,9 @@ The strongest supported headline is:
 
 > Finite, machine-checked generation of a nonzero reflection-odd source by
 > every linked future-maximal birth, together with a refinement-stable chiral
-> SU(2) charged current once its source-to-clock response sign is fixed.  The
-> standard response is left-handed; the conjugate response is right-handed.
+> SU(2) charged current unique up to global complex conjugation.  The standard
+> representative is left-handed, the conjugate representative is right-handed,
+> and all real cylinder-event measures agree.
 
 The unsupported headline is:
 
@@ -181,7 +196,9 @@ The unsupported headline is:
 > sign of the source-to-clock coupling, force nature's absolute left-handed
 > vacuum, and reconstruct the continuum Lorentzian Dirac field.
 
-Promoting the first statement requires selecting the Z2 response-coupling sign
-from additional microscopic dynamics, resolving or suppressing the all-
+Promoting the first statement to a continuum claim requires deriving the
+source-to-clock response mechanism, resolving or suppressing the all-
 gregarious zero-source sector, deriving the clock/birth match in the all-rank
 action, and completing the Lorentzian spin/Dirac continuum reconstruction.
+Selecting an absolute Z2 representative is not separately required inside the
+proved real cylinder-event theory.

@@ -5144,4 +5144,11 @@ import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 -- explicit conditional input and the next microscopic derivation target.
 import UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 import UnifiedTheory.Audit.KFCausalSetGrowthArrowChirality
+-- Complex conjugation exchanges the two complete chiral growth laws through
+-- raw aggregation, the active zero-partition fallback, every finite
+-- refinement, and the quotient of infinite cylinder events. Their real event
+-- measures agree, so the two labels form one cylinder-operational gauge orbit.
+-- The maximal-birth source is exactly the geometric odd residual at the
+-- newborn at every rank; rank-three witnesses are 1/6 (chain) and 1/5 (fork).
+import UnifiedTheory.Audit.KFCausalSetConjugationCompleteness
 import UnifiedTheory.LayerC.ContextualFraction

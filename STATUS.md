@@ -402,9 +402,10 @@
 > reflection doublet rather than an absolute vacuum selection. At this module
 > boundary the remaining input is a growth-arrow clock response: identify a
 > maximal birth with the first orthogonal transition and couple its orientation
-> to one reflected spectral assignment. The next module derives the source side
-> of that alignment and isolates the residual coupling sign. The continuum
-> Lorentzian Dirac reconstruction remains open.
+> to one reflected spectral assignment. The next modules derive the source side
+> of that alignment and then prove the residual printed sign is one
+> cylinder-operational conjugation gauge orbit. The response mechanism and
+> continuum Lorentzian Dirac reconstruction remain open.
 > `KFCausalSetGrowthArrowChirality.lean` identifies the process-level datum
 > absent from that static test. A sequential-growth edge distinguishes a
 > newborn maximal event. Its future incidence volume is exactly `1`, its past
@@ -417,8 +418,21 @@
 > `Xi=+1` transport law, while the all-antichain history remains source-free.
 > The residual theorem is equally sharp: complex-conjugate phase responses map
 > the same positive source to opposite quarter turns and both are reflection
-> covariant. Thus growth now generates the nonzero orientation datum, but one
-> Z2 source-to-clock coupling sign still has to be selected microscopically.
+> covariant. `KFCausalSetConjugationCompleteness.lean` now tests that apparent
+> Z2 on the complete constructed theory. Conjugation exchanges the raw edge
+> laws, coherent unlabeled aggregation, the provably active zero-partition
+> fallback, all finite path/event amplitudes, and the infinite-cylinder
+> decoherence functional. It commutes with arbitrary finite refinement and
+> fixes every real event quantum measure. The quotient of the two labels is a
+> subsingleton, so the cylinder-operational theory contains one conjugation
+> gauge orbit rather than two distinguishable absolute signs. Both
+> representatives remain normalized, Hermitian, and strongly positive. The
+> invariant statement is the growth-arrow/chirality correlation; this is not a
+> continuum CP classification and does not derive the source-to-clock response
+> mechanism. The same module proves that the maximal-birth source is exactly
+> the geometric odd residual at the newborn at every rank. The three-chain
+> newborn repeats `1/6`, while the rank-three fork gives `1/5`: the source is
+> unified, but its magnitude depends on geometry.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
@@ -433,9 +447,10 @@
 > separates the geometric kernel from every rank-one scalar-amplitude kernel.
 > Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
-> Deriving full exchangeability and the fractional-volume bridge, selecting the
-> remaining growth-arrow response-coupling sign, and obtaining quantitative
-> all-parent conditioning remain open.
+> Deriving full exchangeability, the fractional-volume bridge, and the
+> source-to-clock response mechanism, plus obtaining quantitative all-parent
+> conditioning, remain open. The absolute printed response sign is not a
+> separate open datum at the proved cylinder-event scope.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -449,11 +464,11 @@
 |---|---|---|
 | Full event-slot exchangeability | With unit normalization, forces the uniform local action density and harmonic additive charge | Strictly stronger than order-isomorphism covariance; covariance alone has a formal nonuniform counterexample |
 | Fractional-volume coupling bridge | Identifies the coupling increment with one-cell fractional number-volume growth, giving `1/(n+1)` with dimensional parameters canceled | The arithmetic and cancellations are derived; the coupling/volume identification is postulated |
-| Growth-arrow clock response | Couples the nonzero order-odd source of a linked maximal birth to its first orthogonal route-transition coefficient | `maximalBirthOrientationSourceQ_pos_iff_nonempty` derives the source and `firstLinkedBirth_source_exact` gives `1/6`; two conjugate reflection-covariant responses leave one Z2 coupling sign |
+| Source-to-clock response bridge | Interprets the derived nonzero newborn residual through the balanced first-orthogonal quarter-turn response | The source is exactly the geometric odd residual at every rank and the two full response laws form one conjugation-gauge orbit with identical real cylinder measures; deriving the response mechanism itself remains open, but its printed Z2 representative is not an extra observable parameter at this scope |
 
 The separate continuum target is to reconstruct the Lorentzian spin bundle,
-Dirac operator, and scaling limit. It is not counted as one of the three finite
-causal-growth principles.
+Dirac operator, and scaling limit. It is not counted among the two finite
+causal-growth postulates or the response bridge.
 
 ## Paper
 
@@ -469,7 +484,8 @@ DOI: [10.5281/zenodo.19613914](https://zenodo.org/records/19613914)
 
 The core algebraic/numerical proposal uses one ontological postulate, two
 physical identifications, and the Planck mass. The causal-growth extension is
-not included in that count: it has the separate three-principle ledger above.
+not included in that count: it has the two dynamical selection postulates and
+one source-to-clock interpretation bridge listed above.
 Within the stated core assumptions, the repository obtains the proposed
 Standard Model algebraic structure, the Higgs mass to 0.54%, the electroweak
 scale to 2.3%, and the mass hierarchy to 3.5%.
@@ -549,7 +565,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-876 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,630 jobs successful
+879 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,633 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

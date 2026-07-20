@@ -6,8 +6,11 @@ parameters. Machine-checked in Lean 4.**
 > **Current scope note (July 2026).** The finite-poset and matrix results are
 > machine-checked mathematics. The repository now constructs projective quantum
 > causal-set cylinder kinematics and a zero-free, normalized chiral
-> ancestor-pair law, but does **not** yet derive the remaining Z2 sign of its
-> growth-source/clock coupling or a continuum-stable pair coupling from deeper microphysics
+> ancestor-pair law. At the exact cylinder-event scope, the apparent Z2 sign
+> is now proved to be one global complex-conjugation gauge orbit, rather than
+> two distinguishable real-event theories. The repository does **not** yet
+> derive the source-to-clock response mechanism itself, a continuum-stable
+> pair coupling from deeper microphysics,
 > or recover ordinary GR/QFT through
 > a nontrivial coarse-graining flow. The direct Poisson-sprinkling test of the bare
 > `K_F -> J_4` identification was negative. The later scope statement in
@@ -15,9 +18,11 @@ parameters. Machine-checked in Lean 4.**
 > the executable audit in
 > [`QUANTUM_GEOMETRY_IR_AUDIT.md`](QUANTUM_GEOMETRY_IR_AUDIT.md) control quantum-
 > gravity and continuum claims.
-> The causal-growth extension has a separate three-principle ledger—event-slot
-> exchangeability, the fractional-volume bridge, and the growth-arrow clock
-> response—so the core slogan is not a count of the full dynamical inputs.
+> The causal-growth extension has two dynamical selection postulates—event-slot
+> exchangeability and the fractional-volume bridge—plus a source-to-clock
+> interpretation bridge. Its absolute printed chirality sign is not an
+> additional observable input at the cylinder level, so the core slogan is not
+> a count of the full dynamical inputs.
 
 The repository formally verifies a proposed chain from a locally finite partial order
 to Standard Model structures and numerical identifications. The finite algebraic steps
@@ -553,12 +558,13 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   reflected endpoints is exactly the strongly-positive mixed center `D_0`,
   with zero orientation. Thus the reflection-fixed vacuum action transports a
   sign perfectly but cannot create a preferred phase from static data. The causal-growth ledger has
-  three named principles: full event-slot exchangeability, the
-  fractional-volume bridge, and the growth-arrow clock response described
-  below. The first two select the harmonic law; the third connects the
-  process-generated odd source to the chiral birth character. Deriving the
-  first two and the remaining response-coupling sign, and obtaining a useful
-  all-parent condition bound remain open.
+  two named dynamical selection principles: full event-slot exchangeability
+  and the fractional-volume bridge. A separate source-to-clock bridge connects
+  the process-generated odd source to the chiral birth character. Deriving the
+  first two, deriving that response mechanism rather than interpreting it, and
+  obtaining a useful all-parent condition bound remain open. The printed Z2
+  response sign is no longer counted as an independent physical input at the
+  cylinder-event scope.
   `KFCausalSetWeakHandednessBridge.lean` now promotes that transported sign to
   an explicit Dirac-spinor weak doublet without conflating Weyl spin and weak
   isospin. It proves the standard gamma-five grading, the complexified
@@ -590,8 +596,9 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   is a growth-arrow clock response: identify a maximal birth with the first
   orthogonal route transition and couple its orientation to one reflected
   ground/excited assignment. The next module derives the nonzero orientation
-  source carried by a linked birth, while proving that the response-coupling
-  sign remains open. The geometric channel cannot close the gap even
+  source carried by a linked birth, while exposing an apparent
+  response-coupling sign ambiguity that the following global equivalence test
+  resolves. The geometric channel cannot close the gap even
   asymptotically: its rank-independent `|y|<1/4` bound keeps it uniformly away
   from the pure `+/-1/2` birth endpoints. A continuum Lorentzian Dirac
   reconstruction remains open. The relative lock among time, complex
@@ -610,8 +617,28 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   zero-source exception. A second theorem prevents overclaiming: the conjugate
   response sends the same positive source to `+i`, and both response laws obey
   identical reflection covariance. Sequential growth therefore generates the
-  missing nonzero pseudoscalar on every connected birth, but does not yet fix
-  the final Z2 sign of its coupling to the quantum clock.
+  missing nonzero pseudoscalar on every connected birth and leaves two
+  conjugate response representatives whose physical equivalence is tested next.
+  `KFCausalSetConjugationCompleteness.lean` settles what that last Z2 means at
+  the exact scope currently constructed. Complex conjugation exchanges the two
+  raw chiral characters, their coherently aggregated unlabeled transitions,
+  the active uniform fallback at zero partitions, every finite path and event,
+  and the decoherence functional on quotient infinite-cylinder histories. All
+  real finite and cylinder quantum measures are identical, the diagram
+  commutes with arbitrary refinement, and quotienting the two labels gives a
+  subsingleton gauge sector. Thus there is one cylinder-operational theory,
+  represented by two conjugate conventions. The invariant content is the
+  correlation between the growth arrow and transported chirality, not whether
+  the chosen complex coordinate prints `+i` or `-i`. This is deliberately
+  scoped: it is not a continuum CP theorem, and a complex-conjugation-sensitive
+  observable held fixed instead of transformed would lie outside the proved
+  gauge contract. The same module unifies the apparent geometric and birth
+  channels: the maximal-birth source is definitionally the geometric odd
+  residual at the newborn at every rank. The rank-three chain repeats `1/6`,
+  while the rank-three fork gives `1/5`, proving the identity is universal but
+  the numerical magnitude is geometry-dependent. Geometry supplies a strict
+  interior source; the balanced quantum response retains its sign and reaches
+  the pure conjugate endpoint pair.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
