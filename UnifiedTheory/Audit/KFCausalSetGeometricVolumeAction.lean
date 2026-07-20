@@ -1,12 +1,12 @@
 /-
   Audit/KFCausalSetGeometricVolumeAction.lean
 
-  GEOMETRIC ORIGIN OF THE HARMONIC SPECTATOR SOURCE
+  GEOMETRIC BRIDGE FOR THE HARMONIC SPECTATOR SOURCE
 
   The preceding microscopic-action module isolated one remaining input:
-  a relabeling-invariant, unit-normalized event-slot density.  This file
-  identifies an honest geometric origin for that density and, equally
-  importantly, proves the precise limit of the derivation.
+  an exchangeable, unit-normalized event-slot density.  This file replaces an
+  ad hoc numerical schedule by one explicit geometric bridge postulate and,
+  equally importantly, proves the precise limit of that postulate.
 
   In causal-set geometry, spacetime volume is event number times one nonzero
   cell volume.  A physical one-element birth therefore changes the volume by
@@ -16,10 +16,16 @@
       (V_{n+1} - V_n) / V_{n+1} = 1 / (n+1).
 
   The cell volume and any nonzero cosmological coupling cancel.  Thus the
-  previously postulated spectator action is constructed from the normalized
-  cosmological-volume sector of a discrete gravitational action.  Its complete
-  harmonic, zero-free, projective, strongly-positive dynamics follows from the
-  existing promotion theorem.
+  The arithmetic identity is free.  The physical content is the bridge
+
+      coupling increment = fractional number-volume increment.
+
+  Once this identification is postulated, the previously numerical spectator
+  schedule becomes parameter-free: sprinkling density, cell volume, and any
+  nonzero cosmological coupling cancel.  The bridge selects one member of the
+  admissible critical family, and its complete harmonic, zero-free,
+  projective, strongly-positive dynamics follows from the existing promotion
+  theorem.
 
   This is not a derivation from the full Benincasa--Dowker curvature action.
   Two sharp boundary theorems explain why:
@@ -29,10 +35,12 @@
   * a trace-free curvature correction preserves total normalization, but the
     density remains harmonic exactly when that correction vanishes pointwise.
 
-  Hence the new physics statement is scoped exactly: the harmonic law is the
-  unique normalized NUMBER--VOLUME channel.  Deriving why the spectator sector
-  projects out curvature, or how curvature feeds the independent orientation
-  channel, remains the next dynamical frontier.
+  Hence the new physics statement is scoped exactly: conditional on the
+  fractional-volume coupling bridge, the harmonic law is the unique normalized
+  NUMBER--VOLUME channel.  The bridge itself is not derived here.  Nor does
+  unlabeled order covariance imply full event-slot exchangeability: invariant
+  causal roles can remain distinguishable.  Deriving the bridge from deeper
+  dynamics remains open.
 -/
 
 import UnifiedTheory.Audit.KFCausalSetMicroscopicSpectatorAction
@@ -155,10 +163,22 @@ theorem normalizedCosmologicalVolumeBirthDensityQ_eq_uniform
   unfold causalSetCountingVolumeQ
   field_simp
 
-/-! ## 2. The geometric action and the complete quantum law -/
+/-! ## 2. The geometric bridge postulate and the complete quantum law -/
 
-/-- The vacuum spectator action constructed, rather than postulated, from the
-normalized number-volume increment. -/
+/-- The single physical identification made in this file.  It says that the
+microscopic coupling source equals the fractional post-birth number-volume
+increment.  The equality is a postulate; the parameter cancellation and every
+downstream consequence are theorems. -/
+def SatisfiesFractionalVolumeCouplingBridge
+    (action : VacuumSpectatorCausalAction) (cellVolume : ℚ) : Prop :=
+  ∀ (n : ℕ)
+    (path : RankedGrowthPath CausalSetGrowthBranch (n + 1))
+    (i : Fin (n + 1)),
+    action.source n path i =
+      normalizedNumberVolumeBirthDensityQ cellVolume n
+
+/-- The vacuum spectator action obtained by imposing the fractional-volume
+coupling bridge. -/
 def numberVolumeVacuumSpectatorCausalAction
     (cellVolume : ℚ) (hCell : cellVolume ≠ 0) :
     VacuumSpectatorCausalAction where
@@ -175,6 +195,14 @@ def numberVolumeVacuumSpectatorCausalAction
       cellVolume hCell n]
     simp [div_eq_mul_inv]
     field_simp
+
+theorem numberVolumeVacuumSpectatorCausalAction_satisfies_bridge
+    (cellVolume : ℚ) (hCell : cellVolume ≠ 0) :
+    SatisfiesFractionalVolumeCouplingBridge
+      (numberVolumeVacuumSpectatorCausalAction cellVolume hCell)
+      cellVolume := by
+  intro n path i
+  rfl
 
 /-- The geometric construction is definitionally independent of the history
 and uniquely coincides with the canonical microscopic action. -/
@@ -200,9 +228,10 @@ theorem geometricActionSource_eq_physicalVolumeIncrement
         causalSetCountingVolumeQ cellVolume (n + 1) := by
   rfl
 
-/-- The complete action-selected chiral dynamics now follows from one geometric
-input: causal-set number is spacetime volume with a nonzero cell volume. -/
-theorem numberVolumeAction_derives_completeQuantumGrowth
+/-- Conditional on the fractional-volume coupling bridge, the selected action
+produces the complete harmonic chiral dynamics.  This theorem derives the
+consequences of the bridge, not the bridge itself. -/
+theorem fractionalVolumeBridge_selects_completeQuantumGrowth
     (cellVolume : ℚ) (hCell : cellVolume ≠ 0)
     (chirality : Fin 2) :
     let action := numberVolumeVacuumSpectatorCausalAction cellVolume hCell
@@ -568,7 +597,7 @@ theorem geometricVolumeAction_frontier
             (microscopicSpectatorCausalSetGrowthLaw
               (numberVolumeVacuumSpectatorCausalAction cellVolume hCell)
               chirality)) := by
-  have hComplete := numberVolumeAction_derives_completeQuantumGrowth
+  have hComplete := fractionalVolumeBridge_selects_completeQuantumGrowth
     cellVolume hCell chirality
   exact ⟨hComplete.1, hComplete.2.1,
     normalizedCausalPastVolumeDensityQ_covariant,
@@ -578,7 +607,8 @@ theorem geometricVolumeAction_frontier
 #print axioms normalizedNumberVolumeBirthDensityQ_eq_uniform
 #print axioms countingVolume_singleEvent_fraction_eq_uniform
 #print axioms normalizedCosmologicalVolumeBirthDensityQ_eq_uniform
-#print axioms numberVolumeAction_derives_completeQuantumGrowth
+#print axioms numberVolumeVacuumSpectatorCausalAction_satisfies_bridge
+#print axioms fractionalVolumeBridge_selects_completeQuantumGrowth
 #print axioms causalOrderCovariance_does_not_force_eventSlotExchangeability
 #print axioms volumeCurvatureDensityQ_sum_one
 #print axioms volumeCurvatureDensityQ_eq_uniform_iff

@@ -5087,14 +5087,20 @@ import UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
 -- selects Q_2=H_2 and accumulating the source gives H_n.
 import UnifiedTheory.Audit.KFCausalSetHarmonicRefinementLaw
 -- A microscopic action on actual unlabeled growth histories closes the local
--- law's seed freedom. Event-slot permutation covariance plus unit normalization
+-- law's seed freedom. Full event-slot exchangeability plus unit normalization
 -- forces density 1/(n+1); summing from the empty causet derives Q_n=H_n,
 -- Q_2=3/2, and the complete zero-free projective harmonic dynamics.
 import UnifiedTheory.Audit.KFCausalSetMicroscopicSpectatorAction
--- The microscopic action is constructed from causal-set number-volume:
--- a one-element birth adds one nonzero volume cell, and dividing its local
--- cosmological-volume action by the post-birth volume gives 1/(n+1). Correct
--- order covariance alone is proved insufficient; trace-free curvature is the
--- exact obstruction to the uniform harmonic source.
+-- One explicit bridge postulate identifies the coupling increment with
+-- fractional causal-set number-volume growth. Its 1/(n+1) value and parameter
+-- cancellation are exact. Order covariance alone is insufficient; trace-free
+-- curvature is the obstruction to the uniform harmonic source.
 import UnifiedTheory.Audit.KFCausalSetGeometricVolumeAction
+-- At every finite rank, normalized inclusive-past volume has a unique split
+-- into dual-even shape and dual-odd trace-free orientation. The full odd sector
+-- is nevertheless not one-dimensional at rank four. Inclusive reflexivity
+-- forces the geometric parameter into |y|<1/2 and hence genuine latent-rank-two
+-- decoherence; balanced quantum birth separately forces the chiral lift ±i,
+-- while reflection cannot select its absolute sign.
+import UnifiedTheory.Audit.KFCausalSetGeometricOrientationDynamics
 import UnifiedTheory.LayerC.ContextualFraction

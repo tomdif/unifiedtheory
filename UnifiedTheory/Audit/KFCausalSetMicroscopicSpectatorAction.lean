@@ -68,8 +68,9 @@ theorem eventSlotRelabelingInvariant_implies_exchangeable {n : ℕ}
 
 At a birth from depth `n` to `n+1`, the completed path supplies the causal
 geometry and `Fin (n+1)` indexes the event slots after the birth. The source may
-a priori depend on the whole history. Permutation invariance is the microscopic
-general-covariance law; normalization fixes one unit of total local action. -/
+a priori depend on the whole history. Full permutation invariance is a physical
+event-slot exchangeability postulate, strictly stronger than covariance under
+order isomorphisms; normalization fixes one unit of total local action. -/
 @[ext]
 structure VacuumSpectatorCausalAction where
   source : ∀ n : ℕ,

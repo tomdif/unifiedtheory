@@ -473,27 +473,41 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   and has coherent limit `exp(-2(gamma+Q_2-H_2))`; matching `exp(-2gamma)` is
   equivalent to the canonical seed. For that trajectory, the exact offset is
   the discrete-continuum spectator anomaly `H_n-log n`.
-  `KFCausalSetMicroscopicSpectatorAction.lean` now derives both the additive
-  update and the seed from one action law on actual unlabeled growth histories.
-  Event-slot invariance under every finite permutation plus unit normalization
-  forces the newborn action density `1/(n+1)`; summing it from the empty causet
-  gives `Q_n=H_n` on every path and hence `Q_2=3/2`. The reconstructed coupling
-  is the same all-parent zero-free, projective, strongly-positive law above.
-  `KFCausalSetGeometricVolumeAction.lean` now constructs that action from the
-  causal-set number-volume correspondence. With nonzero cell volume `v`, every
-  physical one-element birth has `V_(n+1)-V_n=v`; normalizing its local
-  cosmological-volume action by `V_(n+1)` gives `1/(n+1)`. Both `v` and any
-  nonzero cosmological coupling cancel, in direct agreement with the existing
-  parameter-free volume-ratio theorem. The same file proves the sharp limit:
+  `KFCausalSetMicroscopicSpectatorAction.lean` derives both the additive update
+  and seed conditionally on one action principle over actual unlabeled growth
+  histories. Full event-slot exchangeability (which is stronger than order-
+  isomorphism covariance) plus unit normalization forces the newborn density
+  `1/(n+1)`; summing from the empty causet gives `Q_n=H_n` on every path and
+  hence `Q_2=3/2`. The reconstructed coupling is the same all-parent zero-free,
+  projective, strongly-positive law above.
+  `KFCausalSetGeometricVolumeAction.lean` replaces the numerical schedule by
+  the explicit bridge postulate that the coupling increment equals fractional
+  number-volume growth. With nonzero cell volume `v`, a physical birth has
+  `V_(n+1)-V_n=v`, so the postulated bridge gives `1/(n+1)`. The arithmetic is
+  elementary; the physical identification is not derived. What is derived is
+  that `v`, sprinkling density, and any nonzero cosmological coupling cancel,
+  so the single bridge selects a distinguished member of the previously
+  admissible critical family without another parameter. The same file proves
+  the sharp limit:
   correct order-isomorphism covariance admits normalized nonuniform densities,
   and a trace-free curvature correction preserves normalization but is uniform
   exactly when it vanishes pointwise. Finite averaging is furthermore the unique
   total-preserving projection into the permutation-invariant volume sector. On
   the two-chain its discarded centered profile is `(-1/6,+1/6)` and reverses
-  sign under endpoint reflection, giving a concrete geometric orientation
-  candidate. What remains open is extending that volume/orientation split to
-  a dynamical higher-rank curvature channel, obtaining a useful all-parent
-  condition-number bound, and selecting the reflection-odd sign/source.
+  sign under endpoint reflection. `KFCausalSetGeometricOrientationDynamics.lean`
+  extends this split to every finite causet: normalized inclusive-past volume
+  decomposes uniquely into a dual-even shape profile and a dual-odd,
+  trace-free orientation profile, covariantly on unlabeled representatives.
+  Reflection oddness alone is not unique—the rank-four odd profile space has
+  independent inner and outer modes—but the odd part of this chosen geometric
+  profile is canonical. Its local parameter always obeys `|y|<1/2`, so it
+  produces genuine mixed rank-two decoherence data at every event and can
+  never by itself reach a pure endpoint. Separately, balanced unit quantum
+  birth dynamics forces the lift to the pair `+i,-i`; reversing causal order
+  and microscopic chirality together leaves the lifted amplitude invariant.
+  A reflection-symmetric law cannot choose the absolute sign. What remains
+  open is deriving the fractional-volume bridge and a reflection-odd sign
+  source from deeper microdynamics, plus a useful all-parent condition bound.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

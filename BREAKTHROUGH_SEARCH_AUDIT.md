@@ -171,25 +171,37 @@ are stronger than another atomic-number identity:
     `Q_2=H_2=3/2`. The selected law's exact offset is `H_n-log n`, whose limit
     is Euler's constant.
 33. **A vacuum-normalized microscopic action removes the seed freedom:** on
-    complete unlabeled sequential-growth paths, invariance of event-slot action
-    density under every finite permutation plus unit normalization forces the
+    complete unlabeled sequential-growth paths, full event-slot exchangeability
+    under every finite permutation (stronger than order covariance) plus unit
+    normalization forces the
     newborn contribution `1/(n+1)`. Summing from the empty causet proves
     `Q_n=H_n` on every history, including `Q_2=3/2`, and reconstructs the same
     all-parent zero-free, projective, strongly-positive chiral law with coherent
     limit `exp(-2gamma)`.
-34. **The harmonic action is the normalized causal-set volume channel:** writing
+34. **One geometric bridge replaces an ad hoc critical schedule:** writing
     causal-set volume as `V_n=n v`, every physical one-element birth adds one
     nonzero cell `v`, and its fraction of the post-birth cosmological-volume
-    action is exactly `1/(n+1)`; the cell scale and every nonzero cosmological
-    coupling cancel. This constructs the microscopic spectator action and hence
-    the complete harmonic quantum growth law. A complementary no-go proves that
+    action is exactly `1/(n+1)`. Identifying the coupling increment with this
+    fractional volume increment is an explicit bridge postulate, not an
+    arithmetic derivation. Conditional on it, the cell scale, sprinkling density,
+    and every nonzero cosmological coupling cancel, selecting one distinguished
+    member of the admissible critical family. A complementary no-go proves that
     genuine order-isomorphism covariance allows normalized nonuniform event
     profiles, while a trace-free curvature correction preserves normalization
     and is harmonic exactly when it vanishes pointwise. Finite averaging is the
     unique total-preserving invariant volume projector, and the two-chain
-    residual `(-1/6,+1/6)` is reflection odd. The remaining selection problem
-    is therefore higher-rank curvature-to-orientation dynamics, not normalization
-    or covariance.
+    residual `(-1/6,+1/6)` is reflection odd.
+35. **The volume residual extends canonically, but pure chirality does not come
+    from it:** at every rank, normalized inclusive-past volume splits uniquely
+    into a dual-even shape profile and a dual-odd trace-free orientation profile.
+    This is uniqueness relative to the selected geometric profile, not uniqueness
+    of the full odd sector: independent inner and outer reflection-odd modes
+    already exist at rank four. Reflexivity forces every local geometric
+    orientation parameter into `|y|<1/2`, so its balanced kernel genuinely needs
+    latent rank two and never reaches a pure chiral endpoint. Balanced unit birth
+    dynamics separately forces the quantum lift to `+i` or `-i`; combined order
+    and chirality reflection is exact, and reflection-symmetric data cannot choose
+    the absolute sign.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -200,7 +212,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 871 Lean files (870 below `UnifiedTheory/`). The search
+The repository contains 872 Lean files (871 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

@@ -334,22 +334,35 @@
 > `Q_2=H_2=3/2`. On that selected trajectory the offset is exactly the spectator
 > entropy anomaly `H_n-log n`.
 > `KFCausalSetMicroscopicSpectatorAction.lean` closes the additive-law and seed
-> boundary conditionally on one microscopic principle: event-slot permutation
-> covariance and unit normalization of the local action density. On actual
-> unlabeled growth histories these conditions force density `1/(n+1)`;
+> boundary conditionally on one microscopic principle: full event-slot
+> exchangeability (strictly stronger than order-isomorphism covariance) and
+> unit normalization of the local action density. On actual unlabeled growth
+> histories these conditions force density `1/(n+1)`;
 > vacuum accumulation proves path independence, `Q_n=H_n`, and `Q_2=3/2`.
 > The resulting transition is all-parent zero-free, projective, and strongly
-> positive. `KFCausalSetGeometricVolumeAction.lean` constructs the action from
-> causal-set number-volume: a physical birth adds one cell `v`, so its fraction
-> of the post-birth cosmological-volume action is `v/((n+1)v)=1/(n+1)`;
-> arbitrary nonzero cell volume and cosmological coupling cancel. It also proves
+> positive. `KFCausalSetGeometricVolumeAction.lean` makes one explicit bridge
+> postulate: the coupling increment equals fractional number-volume growth. A
+> physical birth adds one cell `v`, so the postulate gives
+> `v/((n+1)v)=1/(n+1)`. This arithmetic does not derive the bridge. It does prove
+> that arbitrary nonzero cell volume, sprinkling density, and cosmological
+> coupling cancel, so one geometric identification selects a distinguished
+> member of the admissible critical family. The file also proves
 > that order covariance alone permits normalized nonuniform profiles, and that
 > trace-free curvature is the exact obstruction to uniformity. Finite averaging
 > is the unique total-preserving invariant volume projector; on the two-chain
-> its centered residual is `(-1/6,+1/6)` and is reflection odd. The remaining
-> microscopic target is extending this exact rank-two split to dynamical
-> higher-rank curvature/orientation transport; quantitative all-parent
-> conditioning also remains open.
+> its centered residual is `(-1/6,+1/6)` and is reflection odd.
+> `KFCausalSetGeometricOrientationDynamics.lean` extends the construction to
+> all ranks. Inclusive past volume splits uniquely into dual-even shape and a
+> dual-odd trace-free orientation profile. This is uniqueness of the split of
+> the selected geometric profile, not of the whole odd sector: rank four has
+> independent inner and outer odd modes. Reflexivity forces every local
+> geometric parameter into the strict interior `|y|<1/2`, hence its balanced
+> kernel genuinely requires latent rank two at every event. Balanced unit birth
+> dynamics separately forces the chiral lift to `+i` or `-i`; combined order and
+> chirality reflection is an exact symmetry, so reflection-symmetric data cannot
+> choose an absolute sign. Deriving the fractional-volume bridge and the sign
+> source from deeper microdynamics, plus quantitative all-parent conditioning,
+> remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -444,6 +457,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-870 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full build: 8,624 jobs successful (July 2026).
+871 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full build: 8,625 jobs successful (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
