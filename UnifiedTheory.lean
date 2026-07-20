@@ -5064,4 +5064,20 @@ import UnifiedTheory.Audit.KFCausalSetCriticalRunning
 -- one rank-dependent normalized strongly-positive law, an explicit partition
 -- margin, and a certified finite-rank condition-number bound.
 import UnifiedTheory.Audit.KFCausalSetRationalCriticalRunning
+-- Every positive rational c=a/b yields a complete critical schedule with
+-- scaled limit kappa=2a/b, explicit all-parent margins, and projective
+-- strongly-positive cylinder dynamics.  Kinematics therefore does not select
+-- kappa.  The two-antichain also proves that universal coefficient positivity
+-- cannot supply the missing subexponential stability estimate.
+import UnifiedTheory.Audit.KFCausalSetRationalCriticalFamily
+import UnifiedTheory.Audit.KFCausalSetPartitionCoefficientStructure
+-- Precursor multiplicity corrects the earlier adjacent-edge critical window.
+-- The labeled-slot antichain ratio is (n+1)/g^(2n), while coherent aggregation
+-- to an unlabeled child gives (n+1)^2/g^(2n). Every finite-kappa schedule makes
+-- both diverge; physical unlabeled balance requires a logarithmic correction.
+import UnifiedTheory.Audit.KFCausalSetCriticalMultiplicity
+-- The harmonic rational schedule lambda_n=1+H_n/(2(n-1)) realizes that
+-- corrected window: it is all-parent zero-free, normalized, projective, and
+-- strongly positive, while the coherent antichain ratio tends to exp(-2 gamma).
+import UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
 import UnifiedTheory.LayerC.ContextualFraction

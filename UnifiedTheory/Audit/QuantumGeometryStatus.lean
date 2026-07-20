@@ -174,6 +174,14 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "rational critical running has an effective all-parent partition margin",
     scope := .provedFinite },
+  { name := "every positive-rational critical modulus defines a projective zero-free law",
+    scope := .provedFinite },
+  { name := "real chiral parent-polynomial coefficients are not universally positive",
+    scope := .provedFinite },
+  { name := "finite-kappa running fails slot and coherent antichain balance",
+    scope := .provedFinite },
+  { name := "a harmonic rational law is zero-free and coherent-antichain balanced",
+    scope := .provedFinite },
   { name := "chamber Poincare action is non-faithful",
     scope := .provedFinite },
   { name := "structural mass-gap and Wilson flows erase parameters",
@@ -201,8 +209,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 71
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 63
+    claimLedger.length = 75
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 67
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 1
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 6 := by

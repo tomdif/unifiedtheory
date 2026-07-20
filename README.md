@@ -442,15 +442,40 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   projective, strongly-positive law and the effective estimates
   `||Z_C|| >= (n+1)^(-n(n-1))` and
   `condition <= 2^n (n+2)^(n(n-1))`. Transcendence is therefore sufficient but
-  unnecessary. What remains open is a microscopic selector with a useful
-  subexponential condition-number bound and the reflection-odd sign/source.
+  unnecessary. More generally, every positive rational `c=a/b` gives
+  `lambda_n=1+c/(n+1)` with scaled limit `kappa=2a/b`, the effective margin
+  `(b(n+1))^(-n(n-1))`, and its own complete projective strongly-positive law.
+  Thus `kappa=2` is a representative, not a kinematic prediction. The simplest
+  hoped-for stability mechanism is also ruled out: the two-antichain parent
+  polynomial has coefficients `P_0=1` and `P_2=-1`, so real-coefficient
+  positivity fails already at rank two. The exhaustive census finds a negative
+  real coefficient in 317 of 318 rank-six parents and absolute-coefficient
+  nonunimodality in 26 of them. A further exact correction comes from precursor
+  multiplicity. On an `(n+1)`-antichain the incoherent precursor-slot
+  one-missing/timid Born-mass ratio is `(n+1)/g_(n+1)^(2n)`, while the actual
+  unlabeled transition law first adds the isomorphic slots coherently and has
+  ratio `(n+1)^2/g_(n+1)^(2n)`. Hence every finite-`kappa` schedule with
+  `n log g_(n+1) -> kappa` sends both ratios to infinity, including the whole
+  positive-rational family above. The earlier `1/n` criterion balances two
+  individual edges, not complete unlabeled sectors. Coherent antichain balance
+  instead requires `2n log g_(n+1) = 2log(n+1)+O(1)`. That corrected window is
+  constructively inhabited. With rational harmonic numbers `H_n`, set
+  `lambda_0=lambda_1=2` and `lambda_n=1+H_n/(2(n-1))` for `n>=2`. Every term is
+  rational and above one, hence universally zero-free, while `lambda_n -> 1`
+  and the coherent unlabeled antichain ratio tends to `exp(-2gamma)`. The same law
+  is normalized, projective, and strongly positive on infinite cylinders. What
+  remains open is deriving this or another corrected schedule from microphysics,
+  obtaining a useful all-parent condition-number bound, and selecting the
+  reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
   channel, while fixed `0<=g<1` ran toward the zero/one-ancestor sparse sector.
-  A nontrivial large-rank balance therefore requires
-  `(n-1) log g_n = O(1)`, hence `g_n -> 1`, together with control of the
-  destructive interference that becomes severe near that critical surface.
+  Comparing two individual adjacent sectors requires
+  `(n-1) log g_n = O(1)`, hence `g_n -> 1`. Counting the multiplicity of every
+  precursor in a coherently aggregated unlabeled sector strengthens this on
+  antichains to `2(n-1) log g_n = 2log n + O(1)`. Both regimes require control of the
+  destructive interference that becomes severe near the critical surface.
   See [`CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`](CHIRAL_GROWTH_GENERALIZATION_AUDIT.md)
   and `scripts/chiral_growth_generalization.py`.
   The higher-rank alternative is exact: an explicit two-component latent
@@ -542,6 +567,14 @@ locus, and explicit zero-free `1/n` critical-running trajectory are in
 The rational-root exclusion theorem, denominator-cleared partition margin,
 explicit condition-number bound, and single rank-dependent critical growth law
 are in `UnifiedTheory/Audit/KFCausalSetRationalCriticalRunning.lean`.
+The complete positive-rational `kappa=2a/b` family is in
+`UnifiedTheory/Audit/KFCausalSetRationalCriticalFamily.lean`; the exact
+two-antichain mixed-sign coefficient obstruction is in
+`UnifiedTheory/Audit/KFCausalSetPartitionCoefficientStructure.lean`; and the
+multiplicity-corrected antichain scaling theorem is in
+`UnifiedTheory/Audit/KFCausalSetCriticalMultiplicity.lean`. The explicit
+harmonic zero-free law whose coherent antichain ratio tends to `exp(-2gamma)` is
+in `UnifiedTheory/Audit/KFCausalSetMultiplicityCorrectedRunning.lean`.
 The concise physics interpretation, falsification boundary, and next theorem are
 collected in
 [`ORIENTATION_PATH_SPINOR_NOTE.md`](ORIENTATION_PATH_SPINOR_NOTE.md).

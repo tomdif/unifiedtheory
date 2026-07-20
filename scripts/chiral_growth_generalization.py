@@ -11,9 +11,13 @@ of the proved all-rank law.  It
 
 * exhausts one representative of every unlabeled finite poset through rank 6;
 * checks exact signature identities and both chiralities;
-* tests canonical, shifted, sparse, and sign-reflected couplings;
+* tests canonical, shifted, sparse, transcendental-running, rational-critical,
+  and harmonic multiplicity-corrected couplings;
+* audits positivity and absolute-value unimodality of the real parent-polynomial
+  coefficients;
 * samples higher-rank naturally labelled posets through rank 12;
 * tests structured chain/antichain/two-layer families through rank 16; and
+* scans the harmonic antichain sector ratio and conditioning through rank 200;
 * reproduces the old C8-below-A6 zero before testing the interacting repair.
 
 Only the Python standard library is used.
@@ -390,6 +394,69 @@ def evaluate_parent(
     }
 
 
+def evaluate_antichain_rank_profile(rank: int, displacement: Decimal) -> dict[str, Decimal]:
+    """Evaluate an antichain in O(rank) using its exact binomial precursor count."""
+    coupling = Decimal(1) + displacement / Decimal(rank + 1)
+    return evaluate_antichain_at_coupling(rank, coupling)
+
+
+def harmonic_number_decimal(rank: int) -> Decimal:
+    return sum((Decimal(1) / Decimal(index) for index in range(1, rank + 1)), Decimal(0))
+
+
+def harmonic_corrected_coupling(rank: int) -> Decimal:
+    if rank <= 1:
+        return Decimal(2)
+    return Decimal(1) + harmonic_number_decimal(rank) / Decimal(2 * (rank - 1))
+
+
+def evaluate_antichain_at_coupling(rank: int, coupling: Decimal) -> dict[str, Decimal]:
+    """Evaluate an antichain at an explicitly supplied pair coupling."""
+    partition_re = Decimal(0)
+    partition_im = Decimal(0)
+    raw_l1 = Decimal(0)
+    raw_l2 = Decimal(0)
+    for omega in range(rank + 1):
+        magnitude = coupling ** (omega * (omega - 1))
+        multiplicity = Decimal(math.comb(rank, omega))
+        term = multiplicity * magnitude
+        raw_l1 += term
+        raw_l2 += multiplicity * magnitude * magnitude
+        phase = omega % 4
+        if phase == 0:
+            partition_re += term
+        elif phase == 1:
+            partition_im += term
+        elif phase == 2:
+            partition_re -= term
+        else:
+            partition_im -= term
+    partition_abs = complex_abs(partition_re, partition_im)
+    condition = raw_l1 / partition_abs
+    timid_born_share = coupling ** (2 * rank * (rank - 1)) / raw_l2
+    slot_one_missing_to_timid_born_ratio = (
+        Decimal(rank) / coupling ** (4 * (rank - 1))
+        if rank > 0
+        else Decimal(0)
+    )
+    coherent_one_missing_to_timid_born_ratio = (
+        Decimal(rank * rank) / coupling ** (4 * (rank - 1))
+        if rank > 0
+        else Decimal(0)
+    )
+    return {
+        "coupling": coupling,
+        "partition_abs": partition_abs,
+        "condition": condition,
+        "log_condition_per_rank": condition.ln() / Decimal(rank),
+        "slot_timid_born_share": timid_born_share,
+        "slot_one_missing_to_timid_born_ratio":
+            slot_one_missing_to_timid_born_ratio,
+        "coherent_one_missing_to_timid_born_ratio":
+            coherent_one_missing_to_timid_born_ratio,
+    }
+
+
 def update_metrics(metrics: CouplingMetrics, result: dict[str, object]) -> None:
     metrics.observe(
         partition_abs=result["partition_abs"],
@@ -512,6 +579,14 @@ def evaluate_family(
     chirality_checks = 0
     sign_checks = 0
     constant_coefficient_checks = 0
+    coefficient_structure = {
+        "parents": 0,
+        "parents_with_negative_real_coefficient": 0,
+        "parents_with_mixed_real_signs": 0,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 0,
+        "parents_with_complex_partition_zero_at_one": 0,
+    }
     for relation in relations:
         plus_re, plus_im, _ = partition_coefficients(relation, 1)
         minus_re, minus_im, _ = partition_coefficients(relation, -1)
@@ -520,6 +595,38 @@ def evaluate_family(
         assert plus_re.get(0, 0) == 1
         constant_coefficient_checks += 1
         chirality_checks += 1
+        nonzero_real = [
+            value for _, value in sorted(plus_re.items()) if value != 0
+        ]
+        abs_real = [abs(value) for value in nonzero_real]
+        peak = max(range(len(abs_real)), key=abs_real.__getitem__)
+        abs_real_unimodal = (
+            all(abs_real[index] <= abs_real[index + 1] for index in range(peak))
+            and all(
+                abs_real[index] >= abs_real[index + 1]
+                for index in range(peak, len(abs_real) - 1)
+            )
+        )
+        has_negative = any(value < 0 for value in nonzero_real)
+        has_positive = any(value > 0 for value in nonzero_real)
+        real_at_one = sum(plus_re.values())
+        imag_at_one = sum(plus_im.values())
+        coefficient_structure["parents"] += 1
+        coefficient_structure["parents_with_negative_real_coefficient"] += int(
+            has_negative
+        )
+        coefficient_structure["parents_with_mixed_real_signs"] += int(
+            has_negative and has_positive
+        )
+        coefficient_structure[
+            "parents_with_nonunimodal_abs_real_coefficients"
+        ] += int(not abs_real_unimodal)
+        coefficient_structure["parents_with_real_partition_zero_at_one"] += int(
+            real_at_one == 0
+        )
+        coefficient_structure[
+            "parents_with_complex_partition_zero_at_one"
+        ] += int(real_at_one == 0 and imag_at_one == 0)
         for name, coupling in couplings.items():
             result = evaluate_parent(relation, coupling, 1)
             reflected = evaluate_parent(relation, -coupling, 1)
@@ -532,6 +639,7 @@ def evaluate_family(
         "chirality_conjugation_checks": chirality_checks,
         "coupling_sign_checks": sign_checks,
         "constant_coefficient_checks": constant_coefficient_checks,
+        "real_coefficient_structure": coefficient_structure,
     }
 
 
@@ -564,6 +672,8 @@ def main() -> int:
         return {
             **fixed_couplings,
             "running_lambda": running_coupling(canonical, rank),
+            "rational_critical_lambda": Decimal(rank + 2) / Decimal(rank + 1),
+            "harmonic_corrected_lambda": harmonic_corrected_coupling(rank),
         }
 
     signature_checks = check_signature_identities(
@@ -641,6 +751,25 @@ def main() -> int:
         }
     assert len(set(json.dumps(value, sort_keys=True) for value in endpoint.values())) == 1
 
+    antichain_scan_ranks = (20, 40, 80, 120, 160, 200)
+    antichain_critical_scan = {
+        name: {
+            str(rank): decimal_json(evaluate_antichain_rank_profile(rank, value))
+            for rank in antichain_scan_ranks
+        }
+        for name, value in {
+            "c_half_kappa_one": Decimal(1) / Decimal(2),
+            "c_one_kappa_two": Decimal(1),
+            "c_two_kappa_four": Decimal(2),
+        }.items()
+    }
+    harmonic_corrected_scan = {
+        str(rank): decimal_json(
+            evaluate_antichain_at_coupling(rank, harmonic_corrected_coupling(rank))
+        )
+        for rank in antichain_scan_ranks
+    }
+
     output = {
         "model": "complete chiral causal growth",
         "law": "lambda^(omega*(omega-1)) * (chirality*i)^m",
@@ -662,12 +791,28 @@ def main() -> int:
                 for rank in range(args.structured_max_rank + 1)
             },
         },
+        "rational_critical_family": {
+            "representative_formula": "lambda_n = (n+2)/(n+1)",
+            "general_formula": "lambda_n(a,b) = 1 + (a/b)/(n+1)",
+            "effective_scaling_limit": "(n+1)(g_n-1) -> 2a/b",
+            "proved_partition_bound":
+                "|Z_C| >= (b(n+1))^(-n(n-1))",
+        },
+        "harmonic_multiplicity_corrected_schedule": {
+            "formula": "lambda_0=lambda_1=2; lambda_n=1+H_n/(2(n-1))",
+            "proved_limit":
+                "rank^2/lambda_rank^(4(rank-1)) -> exp(-2*EulerMascheroniConstant)",
+            "coarse_graining":
+                "isomorphic antichain slots add coherently before Born squaring",
+            "antichain_scan": harmonic_corrected_scan,
+        },
         "signature_checks": signature_checks,
         "endpoint_check": endpoint,
         "exhaustive": exhaustive_results,
         "random_higher_rank": random_results,
         "structured_higher_rank": structured_results,
         "old_obstruction": obstruction_results,
+        "antichain_critical_scan": antichain_critical_scan,
         "timing_seconds": {
             "exhaustive": round(exhaustive_seconds, 6),
             "total": round(time.perf_counter() - started, 6),

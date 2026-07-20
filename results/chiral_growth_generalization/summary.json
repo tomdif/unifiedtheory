@@ -39,6 +39,73 @@
       "16": "1.015828370175451598E+0"
     }
   },
+  "rational_critical_family": {
+    "representative_formula": "lambda_n = (n+2)/(n+1)",
+    "general_formula": "lambda_n(a,b) = 1 + (a/b)/(n+1)",
+    "effective_scaling_limit": "(n+1)(g_n-1) -> 2a/b",
+    "proved_partition_bound": "|Z_C| >= (b(n+1))^(-n(n-1))"
+  },
+  "harmonic_multiplicity_corrected_schedule": {
+    "formula": "lambda_0=lambda_1=2; lambda_n=1+H_n/(2(n-1))",
+    "proved_limit": "rank^2/lambda_rank^(4(rank-1)) -> exp(-2*EulerMascheroniConstant)",
+    "coarse_graining": "isomorphic antichain slots add coherently before Born squaring",
+    "antichain_scan": {
+      "20": {
+        "coupling": "1.094677359398517945E+0",
+        "partition_abs": "8.249545911051199091E+14",
+        "condition": "2.019114477565094563E+0",
+        "log_condition_per_rank": "3.513295189273043452E-2",
+        "slot_timid_born_share": "9.794679867139136775E-1",
+        "slot_one_missing_to_timid_born_ratio": "2.066729634358304633E-2",
+        "coherent_one_missing_to_timid_born_ratio": "4.133459268716609265E-1"
+      },
+      "40": {
+        "coupling": "1.054853115883799692E+0",
+        "partition_abs": "1.487376871304450593E+36",
+        "condition": "1.924351074307989053E+0",
+        "log_condition_per_rank": "1.636472016629363045E-2",
+        "slot_timid_born_share": "9.903960452448558711E-1",
+        "slot_one_missing_to_timid_born_ratio": "9.640721612477923368E-3",
+        "coherent_one_missing_to_timid_born_ratio": "3.856288644991169347E-1"
+      },
+      "80": {
+        "coupling": "1.031427084043958965E+0",
+        "partition_abs": "8.463328445218207169E+84",
+        "condition": "1.860596659682785146E+0",
+        "log_condition_per_rank": "7.761215263254565477E-3",
+        "slot_timid_born_share": "9.954747201050690414E-1",
+        "slot_one_missing_to_timid_born_ratio": "4.534340231780765347E-3",
+        "coherent_one_missing_to_timid_born_ratio": "3.627472185424612278E-1"
+      },
+      "120": {
+        "coupling": "1.022558270114930231E+0",
+        "partition_abs": "2.201677830563213600E+138",
+        "condition": "1.834266789898249043E+0",
+        "log_condition_per_rank": "5.055373600996800004E-3",
+        "slot_timid_born_share": "9.970685773933635390E-1",
+        "slot_one_missing_to_timid_born_ratio": "2.935364708094574892E-3",
+        "coherent_one_missing_to_timid_born_ratio": "3.522437649713489870E-1"
+      },
+      "160": {
+        "coupling": "1.017784626493521201E+0",
+        "partition_abs": "5.801586017576292484E+194",
+        "condition": "1.819379350151955396E+0",
+        "log_condition_per_rank": "3.740596415808527310E-3",
+        "slot_timid_born_share": "9.978395824296420274E-1",
+        "slot_one_missing_to_timid_born_ratio": "2.162599457052037126E-3",
+        "coherent_one_missing_to_timid_born_ratio": "3.460159131283259401E-1"
+      },
+      "200": {
+        "coupling": "1.014768921980204634E+0",
+        "partition_abs": "2.576732941638219803E+253",
+        "condition": "1.809640651928791493E+0",
+        "log_condition_per_rank": "2.965641453605557092E-3",
+        "slot_timid_born_share": "9.982922612160671448E-1",
+        "slot_one_missing_to_timid_born_ratio": "1.709118155267745636E-3",
+        "coherent_one_missing_to_timid_born_ratio": "3.418236310535491272E-1"
+      }
+    }
+  },
   "signature_checks": {
     "factorization_checks": 459,
     "sign_redundancy_checks": 459,
@@ -64,6 +131,14 @@
     "running_lambda": {
       "partition_re": "1.000000000000000000E+0",
       "partition_im": "1.000000000000000000E+0"
+    },
+    "rational_critical_lambda": {
+      "partition_re": "1.000000000000000000E+0",
+      "partition_im": "1.000000000000000000E+0"
+    },
+    "harmonic_corrected_lambda": {
+      "partition_re": "1.000000000000000000E+0",
+      "partition_im": "1.000000000000000000E+0"
     }
   },
   "exhaustive": {
@@ -74,7 +149,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.265625059604644775E+0"
+        "running_lambda": "1.265625059604644775E+0",
+        "rational_critical_lambda": "2.000000000000000000E+0",
+        "harmonic_corrected_lambda": "2.000000000000000000E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -166,11 +243,55 @@
           "max_normalization_error": "0.000000000000000000E+18",
           "mean_timid_born_share": "1.000000000000000000E+0",
           "mean_timid_quantum_measure": "1.000000000000000000E+0"
+        },
+        "rational_critical_lambda": {
+          "parents": 1,
+          "precursor_slots": 1,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.000000000000000000E+0",
+          "max_partition_condition": "1.000000000000000000E+0",
+          "max_born_concentration": "1.000000000000000000E+0",
+          "min_born_effective_slots": "1.000000000000000000E+0",
+          "min_timid_born_share": "1.000000000000000000E+0",
+          "max_timid_born_share": "1.000000000000000000E+0",
+          "sum_timid_born_share": "1.000000000000000000E+0",
+          "min_timid_quantum_measure": "1.000000000000000000E+0",
+          "max_timid_quantum_measure": "1.000000000000000000E+0",
+          "sum_timid_quantum_measure": "1.000000000000000000E+0",
+          "max_normalization_error": "0.000000000000000000E+18",
+          "mean_timid_born_share": "1.000000000000000000E+0",
+          "mean_timid_quantum_measure": "1.000000000000000000E+0"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 1,
+          "precursor_slots": 1,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.000000000000000000E+0",
+          "max_partition_condition": "1.000000000000000000E+0",
+          "max_born_concentration": "1.000000000000000000E+0",
+          "min_born_effective_slots": "1.000000000000000000E+0",
+          "min_timid_born_share": "1.000000000000000000E+0",
+          "max_timid_born_share": "1.000000000000000000E+0",
+          "sum_timid_born_share": "1.000000000000000000E+0",
+          "min_timid_quantum_measure": "1.000000000000000000E+0",
+          "max_timid_quantum_measure": "1.000000000000000000E+0",
+          "sum_timid_quantum_measure": "1.000000000000000000E+0",
+          "max_normalization_error": "0.000000000000000000E+18",
+          "mean_timid_born_share": "1.000000000000000000E+0",
+          "mean_timid_quantum_measure": "1.000000000000000000E+0"
         }
       },
       "chirality_conjugation_checks": 1,
-      "coupling_sign_checks": 5,
-      "constant_coefficient_checks": 1
+      "coupling_sign_checks": 7,
+      "constant_coefficient_checks": 1,
+      "real_coefficient_structure": {
+        "parents": 1,
+        "parents_with_negative_real_coefficient": 0,
+        "parents_with_mixed_real_signs": 0,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 0,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "1": {
       "unlabeled_posets": 1,
@@ -179,7 +300,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.265625059604644775E+0"
+        "running_lambda": "1.265625059604644775E+0",
+        "rational_critical_lambda": "1.500000000000000000E+0",
+        "harmonic_corrected_lambda": "2.000000000000000000E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -271,11 +394,55 @@
           "max_normalization_error": "1.000000000000000000E-89",
           "mean_timid_born_share": "5.000000000000000000E-1",
           "mean_timid_quantum_measure": "5.000000000000000000E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 1,
+          "precursor_slots": 2,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.414213562373095049E+0",
+          "max_partition_condition": "1.414213562373095049E+0",
+          "max_born_concentration": "5.000000000000000000E-1",
+          "min_born_effective_slots": "2.000000000000000000E+0",
+          "min_timid_born_share": "5.000000000000000000E-1",
+          "max_timid_born_share": "5.000000000000000000E-1",
+          "sum_timid_born_share": "5.000000000000000000E-1",
+          "min_timid_quantum_measure": "5.000000000000000000E-1",
+          "max_timid_quantum_measure": "5.000000000000000000E-1",
+          "sum_timid_quantum_measure": "5.000000000000000000E-1",
+          "max_normalization_error": "1.000000000000000000E-89",
+          "mean_timid_born_share": "5.000000000000000000E-1",
+          "mean_timid_quantum_measure": "5.000000000000000000E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 1,
+          "precursor_slots": 2,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.414213562373095049E+0",
+          "max_partition_condition": "1.414213562373095049E+0",
+          "max_born_concentration": "5.000000000000000000E-1",
+          "min_born_effective_slots": "2.000000000000000000E+0",
+          "min_timid_born_share": "5.000000000000000000E-1",
+          "max_timid_born_share": "5.000000000000000000E-1",
+          "sum_timid_born_share": "5.000000000000000000E-1",
+          "min_timid_quantum_measure": "5.000000000000000000E-1",
+          "max_timid_quantum_measure": "5.000000000000000000E-1",
+          "sum_timid_quantum_measure": "5.000000000000000000E-1",
+          "max_normalization_error": "1.000000000000000000E-89",
+          "mean_timid_born_share": "5.000000000000000000E-1",
+          "mean_timid_quantum_measure": "5.000000000000000000E-1"
         }
       },
       "chirality_conjugation_checks": 1,
-      "coupling_sign_checks": 5,
-      "constant_coefficient_checks": 1
+      "coupling_sign_checks": 7,
+      "constant_coefficient_checks": 1,
+      "real_coefficient_structure": {
+        "parents": 1,
+        "parents_with_negative_real_coefficient": 0,
+        "parents_with_mixed_real_signs": 0,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 0,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "2": {
       "unlabeled_posets": 2,
@@ -284,7 +451,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.265625059604644775E+0"
+        "running_lambda": "1.265625059604644775E+0",
+        "rational_critical_lambda": "1.333333333333333333E+0",
+        "harmonic_corrected_lambda": "1.750000000000000000E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -376,11 +545,55 @@
           "max_normalization_error": "5.000000000000000000E-90",
           "mean_timid_born_share": "5.114758495046112111E-1",
           "mean_timid_quantum_measure": "4.592161409654865577E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 2,
+          "precursor_slots": 7,
+          "zero_partitions": 0,
+          "min_partition_abs": "2.145911990647551760E+0",
+          "max_partition_condition": "2.226455604237540298E+0",
+          "max_born_concentration": "6.124401913875598086E-1",
+          "min_born_effective_slots": "2.221312517480739403E+0",
+          "min_timid_born_share": "5.130260521042084168E-1",
+          "max_timid_born_share": "6.124401913875598086E-1",
+          "sum_timid_born_share": "1.125466243491768225E+0",
+          "min_timid_quantum_measure": "3.626062322946175637E-1",
+          "max_timid_quantum_measure": "6.863270777479892761E-1",
+          "sum_timid_quantum_measure": "1.048933310042606840E+0",
+          "max_normalization_error": "2.000000000000000000E-90",
+          "mean_timid_born_share": "5.627331217458841127E-1",
+          "mean_timid_quantum_measure": "5.244666550213034199E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 2,
+          "precursor_slots": 7,
+          "zero_partitions": 0,
+          "min_partition_abs": "2.872961233640300967E+0",
+          "max_partition_condition": "2.110192065598555182E+0",
+          "max_born_concentration": "8.242361826295914864E-1",
+          "min_born_effective_slots": "1.439238769220436058E+0",
+          "min_timid_born_share": "7.576522562322499211E-1",
+          "max_timid_born_share": "8.242361826295914864E-1",
+          "sum_timid_born_share": "1.581888438861841408E+0",
+          "min_timid_quantum_measure": "5.358178977906717251E-1",
+          "max_timid_quantum_measure": "1.136299100804543303E+0",
+          "sum_timid_quantum_measure": "1.672116998595215028E+0",
+          "max_normalization_error": "1.000000000000000000E-90",
+          "mean_timid_born_share": "7.909442194309207038E-1",
+          "mean_timid_quantum_measure": "8.360584992976075142E-1"
         }
       },
       "chirality_conjugation_checks": 2,
-      "coupling_sign_checks": 10,
-      "constant_coefficient_checks": 2
+      "coupling_sign_checks": 14,
+      "constant_coefficient_checks": 2,
+      "real_coefficient_structure": {
+        "parents": 2,
+        "parents_with_negative_real_coefficient": 1,
+        "parents_with_mixed_real_signs": 1,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 1,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "3": {
       "unlabeled_posets": 5,
@@ -389,7 +602,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.125000026490952922E+0"
+        "running_lambda": "1.125000026490952922E+0",
+        "rational_critical_lambda": "1.250000000000000000E+0",
+        "harmonic_corrected_lambda": "1.458333333333333333E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -481,11 +696,55 @@
           "max_normalization_error": "0.000000000000000000E+18",
           "mean_timid_born_share": "4.325414313099331474E-1",
           "mean_timid_quantum_measure": "2.989078109855035162E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 5,
+          "precursor_slots": 28,
+          "zero_partitions": 0,
+          "min_partition_abs": "3.776425278569251899E+0",
+          "max_partition_condition": "3.310590397901801178E+0",
+          "max_born_concentration": "7.661595811423133950E-1",
+          "min_born_effective_slots": "1.641855056764714526E+0",
+          "min_timid_born_share": "5.623682131392829663E-1",
+          "max_timid_born_share": "7.661595811423133950E-1",
+          "sum_timid_born_share": "3.383894402153481915E+0",
+          "min_timid_quantum_measure": "3.492293843655440037E-1",
+          "max_timid_quantum_measure": "1.020371603808867677E+0",
+          "sum_timid_quantum_measure": "2.836395618695379343E+0",
+          "max_normalization_error": "0.000000000000000000E+18",
+          "mean_timid_born_share": "6.767788804306963829E-1",
+          "mean_timid_quantum_measure": "5.672791237390758686E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 5,
+          "precursor_slots": 28,
+          "zero_partitions": 0,
+          "min_partition_abs": "8.530005633504732345E+0",
+          "max_partition_condition": "2.344599806592233728E+0",
+          "max_born_concentration": "9.341461731118247810E-1",
+          "min_born_effective_slots": "1.142964271962990630E+0",
+          "min_timid_born_share": "8.404249994124651774E-1",
+          "max_timid_born_share": "9.341461731118247810E-1",
+          "sum_timid_born_share": "4.477544889389056541E+0",
+          "min_timid_quantum_measure": "5.660702110552565933E-1",
+          "max_timid_quantum_measure": "1.271695093508137464E+0",
+          "sum_timid_quantum_measure": "4.123190356738884650E+0",
+          "max_normalization_error": "1.000000000000000000E-89",
+          "mean_timid_born_share": "8.955089778778113083E-1",
+          "mean_timid_quantum_measure": "8.246380713477769301E-1"
         }
       },
       "chirality_conjugation_checks": 5,
-      "coupling_sign_checks": 25,
-      "constant_coefficient_checks": 5
+      "coupling_sign_checks": 35,
+      "constant_coefficient_checks": 5,
+      "real_coefficient_structure": {
+        "parents": 5,
+        "parents_with_negative_real_coefficient": 4,
+        "parents_with_mixed_real_signs": 4,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 2,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "4": {
       "unlabeled_posets": 16,
@@ -494,7 +753,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.081687194711251984E+0"
+        "running_lambda": "1.081687194711251984E+0",
+        "rational_critical_lambda": "1.200000000000000000E+0",
+        "harmonic_corrected_lambda": "1.347222222222222222E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -586,11 +847,55 @@
           "max_normalization_error": "3.000000000000000000E-90",
           "mean_timid_born_share": "3.824792532717892976E-1",
           "mean_timid_quantum_measure": "2.118812817665744881E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 16,
+          "precursor_slots": 135,
+          "zero_partitions": 0,
+          "min_partition_abs": "8.045778490993594595E+0",
+          "max_partition_condition": "4.287967471000497144E+0",
+          "max_born_concentration": "8.595503802652244273E-1",
+          "min_born_effective_slots": "1.335368183320027381E+0",
+          "min_timid_born_share": "5.995108536886728881E-1",
+          "max_timid_born_share": "8.595503802652244273E-1",
+          "sum_timid_born_share": "1.217725748147025552E+1",
+          "min_timid_quantum_measure": "3.072174719152347035E-1",
+          "max_timid_quantum_measure": "1.228043530529376185E+0",
+          "sum_timid_quantum_measure": "9.449207208701539569E+0",
+          "max_normalization_error": "1.000000000000000000E-89",
+          "mean_timid_born_share": "7.610785925918909700E-1",
+          "mean_timid_quantum_measure": "5.905754505438462231E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 16,
+          "precursor_slots": 135,
+          "zero_partitions": 0,
+          "min_partition_abs": "3.264011694423486644E+1",
+          "max_partition_condition": "2.314820058652833832E+0",
+          "max_born_concentration": "9.688844063058136422E-1",
+          "min_born_effective_slots": "1.064419864414557043E+0",
+          "min_timid_born_share": "8.839643784363411534E-1",
+          "max_timid_born_share": "9.688844063058136422E-1",
+          "sum_timid_born_share": "1.503900879502792804E+1",
+          "min_timid_quantum_measure": "5.356027903927637675E-1",
+          "max_timid_quantum_measure": "1.199605079025384764E+0",
+          "sum_timid_quantum_measure": "1.327495078170259410E+1",
+          "max_normalization_error": "2.383153649704156552E-90",
+          "mean_timid_born_share": "9.399380496892455025E-1",
+          "mean_timid_quantum_measure": "8.296844238564121309E-1"
         }
       },
       "chirality_conjugation_checks": 16,
-      "coupling_sign_checks": 80,
-      "constant_coefficient_checks": 16
+      "coupling_sign_checks": 112,
+      "constant_coefficient_checks": 16,
+      "real_coefficient_structure": {
+        "parents": 16,
+        "parents_with_negative_real_coefficient": 15,
+        "parents_with_mixed_real_signs": 15,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 3,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "5": {
       "unlabeled_posets": 63,
@@ -599,7 +904,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.060660184267776180E+0"
+        "running_lambda": "1.060660184267776180E+0",
+        "rational_critical_lambda": "1.166666666666666667E+0",
+        "harmonic_corrected_lambda": "1.285416666666666667E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -691,11 +998,55 @@
           "max_normalization_error": "1.000000000000000000E-89",
           "mean_timid_born_share": "3.478569736248754582E-1",
           "mean_timid_quantum_measure": "1.662733488923045025E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 63,
+          "precursor_slots": 766,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.575829886235562911E+1",
+          "max_partition_condition": "5.114222621988077371E+0",
+          "max_born_concentration": "9.038910119071610465E-1",
+          "min_born_effective_slots": "1.214960986481076340E+0",
+          "min_timid_born_share": "6.213333887571145886E-1",
+          "max_timid_born_share": "9.038910119071610465E-1",
+          "sum_timid_born_share": "5.111408112788586970E+1",
+          "min_timid_quantum_measure": "2.889887114662688521E-1",
+          "max_timid_quantum_measure": "1.918019064694958342E+0",
+          "sum_timid_quantum_measure": "3.929273707304522664E+1",
+          "max_normalization_error": "1.002307447562324129E-89",
+          "mean_timid_born_share": "8.113346210775534873E-1",
+          "mean_timid_quantum_measure": "6.236942392546861371E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 63,
+          "precursor_slots": 766,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.320948952640658394E+2",
+          "max_partition_condition": "2.277033659551074640E+0",
+          "max_born_concentration": "9.812663387216251444E-1",
+          "min_born_effective_slots": "1.038209851791342432E+0",
+          "min_timid_born_share": "9.088435817859754480E-1",
+          "max_timid_born_share": "9.812663387216251444E-1",
+          "sum_timid_born_share": "6.048267473708044978E+1",
+          "min_timid_quantum_measure": "5.621958098611564742E-1",
+          "max_timid_quantum_measure": "1.318211197988129210E+0",
+          "sum_timid_quantum_measure": "5.378146850158411278E+1",
+          "max_normalization_error": "2.030766070600978904E-89",
+          "mean_timid_born_share": "9.600424561441341235E-1",
+          "mean_timid_quantum_measure": "8.536741031997478219E-1"
         }
       },
       "chirality_conjugation_checks": 63,
-      "coupling_sign_checks": 315,
-      "constant_coefficient_checks": 63
+      "coupling_sign_checks": 441,
+      "constant_coefficient_checks": 63,
+      "real_coefficient_structure": {
+        "parents": 63,
+        "parents_with_negative_real_coefficient": 62,
+        "parents_with_mixed_real_signs": 62,
+        "parents_with_nonunimodal_abs_real_coefficients": 0,
+        "parents_with_real_partition_zero_at_one": 4,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "6": {
       "unlabeled_posets": 318,
@@ -704,7 +1055,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.048240688030753493E+0"
+        "running_lambda": "1.048240688030753493E+0",
+        "rational_critical_lambda": "1.142857142857142857E+0",
+        "harmonic_corrected_lambda": "1.245000000000000000E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -796,11 +1149,55 @@
           "max_normalization_error": "4.029749659600434125E-89",
           "mean_timid_born_share": "3.197808244790978882E-1",
           "mean_timid_quantum_measure": "1.435782962567657742E-1"
+        },
+        "rational_critical_lambda": {
+          "parents": 318,
+          "precursor_slots": 5439,
+          "zero_partitions": 0,
+          "min_partition_abs": "3.689602572826321822E+1",
+          "max_partition_condition": "5.966880661138097065E+0",
+          "max_born_concentration": "9.257078748856089105E-1",
+          "min_born_effective_slots": "1.161305761613938853E+0",
+          "min_timid_born_share": "6.322943944931046104E-1",
+          "max_timid_born_share": "9.257078748856089105E-1",
+          "sum_timid_born_share": "2.669621997295276703E+2",
+          "min_timid_quantum_measure": "2.367976320309854380E-1",
+          "max_timid_quantum_measure": "2.215938187262876552E+0",
+          "sum_timid_quantum_measure": "2.062861109092032109E+2",
+          "max_normalization_error": "1.035616926027976835E-89",
+          "mean_timid_born_share": "8.395037727343637430E-1",
+          "mean_timid_quantum_measure": "6.486984619786264494E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 318,
+          "precursor_slots": 5439,
+          "zero_partitions": 0,
+          "min_partition_abs": "6.117197533723756164E+2",
+          "max_partition_condition": "2.247417594954256693E+0",
+          "max_born_concentration": "9.872623844913828750E-1",
+          "min_born_effective_slots": "1.025810163095993574E+0",
+          "min_timid_born_share": "9.249011846538022572E-1",
+          "max_timid_born_share": "9.872623844913828750E-1",
+          "sum_timid_born_share": "3.087178528526520144E+2",
+          "min_timid_quantum_measure": "5.167491288010488061E-1",
+          "max_timid_quantum_measure": "1.371058786726772721E+0",
+          "sum_timid_quantum_measure": "2.771089252244883542E+2",
+          "max_normalization_error": "2.000000000000000000E-90",
+          "mean_timid_born_share": "9.708108580272075926E-1",
+          "mean_timid_quantum_measure": "8.714117145424162080E-1"
         }
       },
       "chirality_conjugation_checks": 318,
-      "coupling_sign_checks": 1590,
-      "constant_coefficient_checks": 318
+      "coupling_sign_checks": 2226,
+      "constant_coefficient_checks": 318,
+      "real_coefficient_structure": {
+        "parents": 318,
+        "parents_with_negative_real_coefficient": 317,
+        "parents_with_mixed_real_signs": 317,
+        "parents_with_nonunimodal_abs_real_coefficients": 26,
+        "parents_with_real_partition_zero_at_one": 6,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     }
   },
   "random_higher_rank": {
@@ -811,7 +1208,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.040041919689419049E+0"
+        "running_lambda": "1.040041919689419049E+0",
+        "rational_critical_lambda": "1.125000000000000000E+0",
+        "harmonic_corrected_lambda": "1.216071428571428571E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -903,11 +1302,55 @@
           "max_normalization_error": "3.981486802927226280E-89",
           "mean_timid_born_share": "2.659602679970891422E-1",
           "mean_timid_quantum_measure": "8.905643331491813312E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 4950,
+          "zero_partitions": 0,
+          "min_partition_abs": "9.732439502869323594E+1",
+          "max_partition_condition": "6.944254040369311415E+0",
+          "max_born_concentration": "9.380345748875755382E-1",
+          "min_born_effective_slots": "1.132475510899185655E+0",
+          "min_timid_born_share": "6.363232650401252756E-1",
+          "max_timid_born_share": "9.380345748875755382E-1",
+          "sum_timid_born_share": "1.046959259701550663E+2",
+          "min_timid_quantum_measure": "2.580352898793270341E-1",
+          "max_timid_quantum_measure": "2.091069463581932581E+0",
+          "sum_timid_quantum_measure": "7.510054753788844812E+1",
+          "max_normalization_error": "1.073065357369949799E-89",
+          "mean_timid_born_share": "8.179369216418364555E-1",
+          "mean_timid_quantum_measure": "5.867230276397535009E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 4950,
+          "zero_partitions": 0,
+          "min_partition_abs": "3.318983685391561070E+3",
+          "max_partition_condition": "2.219556933112297307E+0",
+          "max_born_concentration": "9.907537544225459202E-1",
+          "min_born_effective_slots": "1.018667022110045948E+0",
+          "min_timid_born_share": "9.362131978155524470E-1",
+          "max_timid_born_share": "9.907537544225459202E-1",
+          "sum_timid_born_share": "1.242141452153950865E+2",
+          "min_timid_quantum_measure": "5.675396571970429904E-1",
+          "max_timid_quantum_measure": "1.243234052085021243E+0",
+          "sum_timid_quantum_measure": "1.068116014663088680E+2",
+          "max_normalization_error": "1.012510516152131578E-89",
+          "mean_timid_born_share": "9.704230094952741129E-1",
+          "mean_timid_quantum_measure": "8.344656364555380314E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 127,
+        "parents_with_mixed_real_signs": 127,
+        "parents_with_nonunimodal_abs_real_coefficients": 53,
+        "parents_with_real_partition_zero_at_one": 6,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "8": {
       "distinct_natural_posets": 128,
@@ -916,7 +1359,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.034224946910999654E+0"
+        "running_lambda": "1.034224946910999654E+0",
+        "rational_critical_lambda": "1.111111111111111111E+0",
+        "harmonic_corrected_lambda": "1.194132653061224490E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -1008,11 +1453,55 @@
           "max_normalization_error": "1.259134141547540382E-88",
           "mean_timid_born_share": "2.554051554922897497E-1",
           "mean_timid_quantum_measure": "7.873392143678458482E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 8236,
+          "zero_partitions": 0,
+          "min_partition_abs": "2.863236617050332109E+2",
+          "max_partition_condition": "8.084679384823608013E+0",
+          "max_born_concentration": "9.459271215604445295E-1",
+          "min_born_effective_slots": "1.114523181553755550E+0",
+          "min_timid_born_share": "6.359520205680554769E-1",
+          "max_timid_born_share": "9.459271215604445295E-1",
+          "sum_timid_born_share": "1.059430632282456214E+2",
+          "min_timid_quantum_measure": "2.415609072058256068E-1",
+          "max_timid_quantum_measure": "1.626014686242148747E+0",
+          "sum_timid_quantum_measure": "8.271487421850940997E+1",
+          "max_normalization_error": "2.711389971130064756E-89",
+          "mean_timid_born_share": "8.276801814706689173E-1",
+          "mean_timid_quantum_measure": "6.462099548321047654E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 8236,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.875682089203763393E+4",
+          "max_partition_condition": "2.193354923450821530E+0",
+          "max_born_concentration": "9.929893106833918267E-1",
+          "min_born_effective_slots": "1.014121101307228110E+0",
+          "min_timid_born_share": "9.446456619143931204E-1",
+          "max_timid_born_share": "9.929893106833918267E-1",
+          "sum_timid_born_share": "1.248899899984597303E+2",
+          "min_timid_quantum_measure": "5.945591465947521490E-1",
+          "max_timid_quantum_measure": "1.212187600345899711E+0",
+          "sum_timid_quantum_measure": "1.115575937789058823E+2",
+          "max_normalization_error": "1.028758332021263997E-89",
+          "mean_timid_born_share": "9.757030468629666430E-1",
+          "mean_timid_quantum_measure": "8.715437013977022057E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 127,
+        "parents_with_mixed_real_signs": 127,
+        "parents_with_nonunimodal_abs_real_coefficients": 66,
+        "parents_with_real_partition_zero_at_one": 6,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "9": {
       "distinct_natural_posets": 128,
@@ -1021,7 +1510,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.029883578016358206E+0"
+        "running_lambda": "1.029883578016358206E+0",
+        "rational_critical_lambda": "1.100000000000000000E+0",
+        "harmonic_corrected_lambda": "1.176810515873015873E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -1113,11 +1604,55 @@
           "max_normalization_error": "2.104463788460870305E-88",
           "mean_timid_born_share": "2.479034264384636012E-1",
           "mean_timid_quantum_measure": "6.788381366771034155E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 13606,
+          "zero_partitions": 0,
+          "min_partition_abs": "7.692589193183868314E+2",
+          "max_partition_condition": "9.414373827842239516E+0",
+          "max_born_concentration": "9.514315788449749267E-1",
+          "min_born_effective_slots": "1.102216820066588475E+0",
+          "min_timid_born_share": "6.327248224071799822E-1",
+          "max_timid_born_share": "9.514315788449749267E-1",
+          "sum_timid_born_share": "1.065810010777180854E+2",
+          "min_timid_quantum_measure": "2.283774736344501724E-1",
+          "max_timid_quantum_measure": "1.543126686308701577E+0",
+          "sum_timid_quantum_measure": "7.772364719134641928E+1",
+          "max_normalization_error": "1.000000000000000000E-89",
+          "mean_timid_born_share": "8.326640709196725419E-1",
+          "mean_timid_quantum_measure": "6.072159936823939006E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 13606,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.137532063165467841E+5",
+          "max_partition_condition": "2.169458104501869364E+0",
+          "max_born_concentration": "9.945093965166080512E-1",
+          "min_born_effective_slots": "1.011042142215415120E+0",
+          "min_timid_born_share": "9.511804283881373103E-1",
+          "max_timid_born_share": "9.945093965166080512E-1",
+          "sum_timid_born_share": "1.253612035791655692E+2",
+          "min_timid_quantum_measure": "6.213168895556404787E-1",
+          "max_timid_quantum_measure": "1.174395953300984457E+0",
+          "sum_timid_quantum_measure": "1.098971499047164470E+2",
+          "max_normalization_error": "1.808592366223344131E-89",
+          "mean_timid_born_share": "9.793844029622310093E-1",
+          "mean_timid_quantum_measure": "8.585714836305972424E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 127,
+        "parents_with_mixed_real_signs": 127,
+        "parents_with_nonunimodal_abs_real_coefficients": 75,
+        "parents_with_real_partition_zero_at_one": 5,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "10": {
       "distinct_natural_posets": 128,
@@ -1126,7 +1661,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.026519560841450905E+0"
+        "running_lambda": "1.026519560841450905E+0",
+        "rational_critical_lambda": "1.090909090909090909E+0",
+        "harmonic_corrected_lambda": "1.162720458553791887E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -1218,11 +1755,55 @@
           "max_normalization_error": "9.248607853268741564E-89",
           "mean_timid_born_share": "2.411747659946828746E-1",
           "mean_timid_quantum_measure": "6.339418951868641640E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 20695,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.672697518879507705E+3",
+          "max_partition_condition": "7.915730332024532600E+0",
+          "max_born_concentration": "9.554941626459799367E-1",
+          "min_born_effective_slots": "1.093239928487484634E+0",
+          "min_timid_born_share": "6.580919502702309512E-1",
+          "max_timid_born_share": "9.554941626459799367E-1",
+          "sum_timid_born_share": "1.078092679491712973E+2",
+          "min_timid_quantum_measure": "2.437766021967733747E-1",
+          "max_timid_quantum_measure": "2.265197818268229837E+0",
+          "sum_timid_quantum_measure": "8.516649843295496881E+1",
+          "max_normalization_error": "3.998490780293398841E-89",
+          "mean_timid_born_share": "8.422599058529007602E-1",
+          "mean_timid_quantum_measure": "6.653632690074606938E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 20695,
+          "zero_partitions": 0,
+          "min_partition_abs": "7.181747399102510517E+5",
+          "max_partition_condition": "1.953712219377352759E+0",
+          "max_born_concentration": "9.955894246902626922E-1",
+          "min_born_effective_slots": "1.008860373112862698E+0",
+          "min_timid_born_share": "9.607030616558168768E-1",
+          "max_timid_born_share": "9.955894246902626922E-1",
+          "sum_timid_born_share": "1.258256014397676462E+2",
+          "min_timid_quantum_measure": "6.557476072978224801E-1",
+          "max_timid_quantum_measure": "1.183303887142617014E+0",
+          "sum_timid_quantum_measure": "1.134587225733476165E+2",
+          "max_normalization_error": "1.432879465047263238E-89",
+          "mean_timid_born_share": "9.830125112481847363E-1",
+          "mean_timid_quantum_measure": "8.863962701042782542E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 128,
+        "parents_with_mixed_real_signs": 128,
+        "parents_with_nonunimodal_abs_real_coefficients": 83,
+        "parents_with_real_partition_zero_at_one": 5,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "11": {
       "distinct_natural_posets": 128,
@@ -1231,7 +1812,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.023836260361369255E+0"
+        "running_lambda": "1.023836260361369255E+0",
+        "rational_critical_lambda": "1.083333333333333333E+0",
+        "harmonic_corrected_lambda": "1.150993867243867244E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -1323,11 +1906,55 @@
           "max_normalization_error": "5.708931475827887503E-88",
           "mean_timid_born_share": "2.450861482441521914E-1",
           "mean_timid_quantum_measure": "5.986688041672508671E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 31489,
+          "zero_partitions": 0,
+          "min_partition_abs": "4.779633573102825106E+3",
+          "max_partition_condition": "9.326719926782799529E+0",
+          "max_born_concentration": "9.586148986494302720E-1",
+          "min_born_effective_slots": "1.086402691660448600E+0",
+          "min_timid_born_share": "6.492180315387332449E-1",
+          "max_timid_born_share": "9.586148986494302720E-1",
+          "sum_timid_born_share": "1.088506469133584375E+2",
+          "min_timid_quantum_measure": "2.185841500425252927E-1",
+          "max_timid_quantum_measure": "1.944796530008116115E+0",
+          "sum_timid_quantum_measure": "8.099125814374643614E+1",
+          "max_normalization_error": "8.684184617956974825E-89",
+          "mean_timid_born_share": "8.503956790106127930E-1",
+          "mean_timid_quantum_measure": "6.327442042480190324E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 31489,
+          "zero_partitions": 0,
+          "min_partition_abs": "4.885508005922225196E+6",
+          "max_partition_condition": "1.956776740335626910E+0",
+          "max_born_concentration": "9.963835925316021165E-1",
+          "min_born_effective_slots": "1.007259138787741133E+0",
+          "min_timid_born_share": "9.641820712227188858E-1",
+          "max_timid_born_share": "9.963835925316021165E-1",
+          "sum_timid_born_share": "1.261802546196670432E+2",
+          "min_timid_quantum_measure": "6.210387150617785344E-1",
+          "max_timid_quantum_measure": "1.143517083312465177E+0",
+          "sum_timid_quantum_measure": "1.135748621144857691E+2",
+          "max_normalization_error": "2.340172654525800199E-89",
+          "mean_timid_born_share": "9.857832392161487752E-1",
+          "mean_timid_quantum_measure": "8.873036102694200711E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 127,
+        "parents_with_mixed_real_signs": 127,
+        "parents_with_nonunimodal_abs_real_coefficients": 88,
+        "parents_with_real_partition_zero_at_one": 6,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     },
     "12": {
       "distinct_natural_posets": 128,
@@ -1336,7 +1963,9 @@
         "shifted_lambda": "2.265625059604644775E+0",
         "subcritical_lambda": "2.656250596046447754E-1",
         "sparse_lambda": "0.000000000000000000E+18",
-        "running_lambda": "1.021646050615367297E+0"
+        "running_lambda": "1.021646050615367297E+0",
+        "rational_critical_lambda": "1.076923076923076923E+0",
+        "harmonic_corrected_lambda": "1.141055030827758100E+0"
       },
       "couplings": {
         "canonical_lambda": {
@@ -1428,11 +2057,55 @@
           "max_normalization_error": "3.306269511495407214E-88",
           "mean_timid_born_share": "2.397815602867292022E-1",
           "mean_timid_quantum_measure": "5.414717112620774843E-2"
+        },
+        "rational_critical_lambda": {
+          "parents": 128,
+          "precursor_slots": 48654,
+          "zero_partitions": 0,
+          "min_partition_abs": "1.393166595082858390E+4",
+          "max_partition_condition": "1.486931543734422108E+1",
+          "max_born_concentration": "9.610847807567934893E-1",
+          "min_born_effective_slots": "1.081026441049548572E+0",
+          "min_timid_born_share": "6.138389353424715806E-1",
+          "max_timid_born_share": "9.610847807567934893E-1",
+          "sum_timid_born_share": "1.093543445408127903E+2",
+          "min_timid_quantum_measure": "1.861203781681479249E-1",
+          "max_timid_quantum_measure": "1.617149999588201888E+0",
+          "sum_timid_quantum_measure": "8.096192924853046667E+1",
+          "max_normalization_error": "1.691478347206807250E-88",
+          "mean_timid_born_share": "8.543308167250999240E-1",
+          "mean_timid_quantum_measure": "6.325150722541442709E-1"
+        },
+        "harmonic_corrected_lambda": {
+          "parents": 128,
+          "precursor_slots": 48654,
+          "zero_partitions": 0,
+          "min_partition_abs": "3.461594994651472238E+7",
+          "max_partition_condition": "2.111390724741044801E+0",
+          "max_born_concentration": "9.969840252216866301E-1",
+          "min_born_effective_slots": "1.006050235234560089E+0",
+          "min_timid_born_share": "9.641723694216037289E-1",
+          "max_timid_born_share": "9.969840252216866301E-1",
+          "sum_timid_born_share": "1.264303733581226228E+2",
+          "min_timid_quantum_measure": "6.334997743125676818E-1",
+          "max_timid_quantum_measure": "1.123019441197449021E+0",
+          "sum_timid_quantum_measure": "1.142002232035512114E+2",
+          "max_normalization_error": "5.254013671212239897E-89",
+          "mean_timid_born_share": "9.877372918603329907E-1",
+          "mean_timid_quantum_measure": "8.921892437777438393E-1"
         }
       },
       "chirality_conjugation_checks": 128,
-      "coupling_sign_checks": 640,
-      "constant_coefficient_checks": 128
+      "coupling_sign_checks": 896,
+      "constant_coefficient_checks": 128,
+      "real_coefficient_structure": {
+        "parents": 128,
+        "parents_with_negative_real_coefficient": 128,
+        "parents_with_mixed_real_signs": 128,
+        "parents_with_nonunimodal_abs_real_coefficients": 88,
+        "parents_with_real_partition_zero_at_one": 3,
+        "parents_with_complex_partition_zero_at_one": 0
+      }
     }
   },
   "structured_higher_rank": {
@@ -1528,11 +2201,55 @@
             "max_normalization_error": "4.000000000000000000E-90",
             "mean_timid_born_share": "5.438706534212411487E-1",
             "mean_timid_quantum_measure": "1.108523284214485007E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 8,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.939300188841003664E+2",
+            "max_partition_condition": "1.005143204435123403E+0",
+            "max_born_concentration": "9.380345748875755382E-1",
+            "min_born_effective_slots": "1.132475510899185655E+0",
+            "min_timid_born_share": "9.380345748875755382E-1",
+            "max_timid_born_share": "9.380345748875755382E-1",
+            "sum_timid_born_share": "9.380345748875755382E-1",
+            "min_timid_quantum_measure": "5.266496575026522625E-1",
+            "max_timid_quantum_measure": "5.266496575026522625E-1",
+            "sum_timid_quantum_measure": "5.266496575026522625E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.380345748875755382E-1",
+            "mean_timid_quantum_measure": "5.266496575026522625E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 8,
+            "zero_partitions": 0,
+            "min_partition_abs": "4.120689163696839927E+3",
+            "max_partition_condition": "1.000242648406941371E+0",
+            "max_born_concentration": "9.907537544225459202E-1",
+            "min_born_effective_slots": "1.018667022110045948E+0",
+            "min_timid_born_share": "9.907537544225459202E-1",
+            "max_timid_born_share": "9.907537544225459202E-1",
+            "sum_timid_born_share": "9.907537544225459202E-1",
+            "min_timid_quantum_measure": "8.065353759059087719E-1",
+            "max_timid_quantum_measure": "8.065353759059087719E-1",
+            "sum_timid_quantum_measure": "8.065353759059087719E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.907537544225459202E-1",
+            "mean_timid_quantum_measure": "8.065353759059087719E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -1625,11 +2342,55 @@
             "max_normalization_error": "3.981486802927226280E-89",
             "mean_timid_born_share": "7.114634952878545790E-2",
             "mean_timid_quantum_measure": "1.833556595941913385E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 128,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.225856178503744404E+2",
+            "max_partition_condition": "6.944254040369311415E+0",
+            "max_born_concentration": "6.363232650401252756E-1",
+            "min_born_effective_slots": "2.408939195649684162E+0",
+            "min_timid_born_share": "6.363232650401252756E-1",
+            "max_timid_born_share": "6.363232650401252756E-1",
+            "sum_timid_born_share": "6.363232650401252756E-1",
+            "min_timid_quantum_measure": "1.318052912033187798E+0",
+            "max_timid_quantum_measure": "1.318052912033187798E+0",
+            "sum_timid_quantum_measure": "1.318052912033187798E+0",
+            "max_normalization_error": "1.000000000000000000E-89",
+            "mean_timid_born_share": "6.363232650401252756E-1",
+            "mean_timid_quantum_measure": "1.318052912033187798E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 128,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.489978624657154140E+3",
+            "max_partition_condition": "2.219556933112297307E+0",
+            "max_born_concentration": "9.362131978155524470E-1",
+            "min_born_effective_slots": "1.140239924593297389E+0",
+            "min_timid_born_share": "9.362131978155524470E-1",
+            "max_timid_born_share": "9.362131978155524470E-1",
+            "sum_timid_born_share": "9.362131978155524470E-1",
+            "min_timid_quantum_measure": "1.124391614684614071E+0",
+            "max_timid_quantum_measure": "1.124391614684614071E+0",
+            "sum_timid_quantum_measure": "1.124391614684614071E+0",
+            "max_normalization_error": "1.642042757600806456E-90",
+            "mean_timid_born_share": "9.362131978155524470E-1",
+            "mean_timid_quantum_measure": "1.124391614684614071E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -1722,11 +2483,55 @@
             "max_normalization_error": "1.012217375492439325E-89",
             "mean_timid_born_share": "2.303372179904693262E-1",
             "mean_timid_quantum_measure": "2.121130200788424598E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 23,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.409618713386812734E+2",
+            "max_partition_condition": "2.605270086236029287E+0",
+            "max_born_concentration": "7.845855623347849510E-1",
+            "min_born_effective_slots": "1.601735180924276674E+0",
+            "min_timid_born_share": "7.845855623347849510E-1",
+            "max_timid_born_share": "7.845855623347849510E-1",
+            "sum_timid_born_share": "7.845855623347849510E-1",
+            "min_timid_quantum_measure": "9.968012465413279119E-1",
+            "max_timid_quantum_measure": "9.968012465413279119E-1",
+            "sum_timid_quantum_measure": "9.968012465413279119E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "7.845855623347849510E-1",
+            "mean_timid_quantum_measure": "9.968012465413279119E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 23,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.664310320654040366E+3",
+            "max_partition_condition": "1.492663679749935164E+0",
+            "max_born_concentration": "9.636762894043646158E-1",
+            "min_born_effective_slots": "1.076446482405946160E+0",
+            "min_timid_born_share": "9.636762894043646158E-1",
+            "max_timid_born_share": "9.636762894043646158E-1",
+            "sum_timid_born_share": "9.636762894043646158E-1",
+            "min_timid_quantum_measure": "1.019949432297256897E+0",
+            "max_timid_quantum_measure": "1.019949432297256897E+0",
+            "sum_timid_quantum_measure": "1.019949432297256897E+0",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.636762894043646158E-1",
+            "mean_timid_quantum_measure": "1.019949432297256897E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "8": {
@@ -1821,11 +2626,55 @@
             "max_normalization_error": "2.000000000000000000E-90",
             "mean_timid_born_share": "5.521698777944535248E-1",
             "mean_timid_quantum_measure": "1.060721419121803155E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 9,
+            "zero_partitions": 0,
+            "min_partition_abs": "4.881041228604503472E+2",
+            "max_partition_condition": "1.002046644518127459E+0",
+            "max_born_concentration": "9.459271215604445295E-1",
+            "min_born_effective_slots": "1.114523181553755550E+0",
+            "min_timid_born_share": "9.459271215604445295E-1",
+            "max_timid_born_share": "9.459271215604445295E-1",
+            "sum_timid_born_share": "9.459271215604445295E-1",
+            "min_timid_quantum_measure": "5.595179074670868642E-1",
+            "max_timid_quantum_measure": "5.595179074670868642E-1",
+            "sum_timid_quantum_measure": "5.595179074670868642E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.459271215604445295E-1",
+            "mean_timid_quantum_measure": "5.595179074670868642E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 9,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.262724615074403509E+4",
+            "max_partition_condition": "1.000044193530935418E+0",
+            "max_born_concentration": "9.929893106833918267E-1",
+            "min_born_effective_slots": "1.014121101307228110E+0",
+            "min_timid_born_share": "9.929893106833918267E-1",
+            "max_timid_born_share": "9.929893106833918267E-1",
+            "sum_timid_born_share": "9.929893106833918267E-1",
+            "min_timid_quantum_measure": "8.329614400858883276E-1",
+            "max_timid_quantum_measure": "8.329614400858883276E-1",
+            "sum_timid_quantum_measure": "8.329614400858883276E-1",
+            "max_normalization_error": "2.000000000000000000E-90",
+            "mean_timid_born_share": "9.929893106833918267E-1",
+            "mean_timid_quantum_measure": "8.329614400858883276E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -1918,11 +2767,55 @@
             "max_normalization_error": "1.259134141547540382E-88",
             "mean_timid_born_share": "4.889265939635009943E-2",
             "mean_timid_quantum_measure": "1.448042725761548014E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 256,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.155628642958375171E+2",
+            "max_partition_condition": "8.084679384823608013E+0",
+            "max_born_concentration": "6.359520205680554769E-1",
+            "min_born_effective_slots": "2.418378723421151732E+0",
+            "min_timid_born_share": "6.359520205680554769E-1",
+            "max_timid_born_share": "6.359520205680554769E-1",
+            "sum_timid_born_share": "6.359520205680554769E-1",
+            "min_timid_quantum_measure": "1.338650374994109201E+0",
+            "max_timid_quantum_measure": "1.338650374994109201E+0",
+            "sum_timid_quantum_measure": "1.338650374994109201E+0",
+            "max_normalization_error": "2.711389971130064756E-89",
+            "mean_timid_born_share": "6.359520205680554769E-1",
+            "mean_timid_quantum_measure": "1.338650374994109201E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 256,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.956663166889926012E+4",
+            "max_partition_condition": "2.193354923450821530E+0",
+            "max_born_concentration": "9.446456619143931204E-1",
+            "min_born_effective_slots": "1.120195452219713404E+0",
+            "min_timid_born_share": "9.446456619143931204E-1",
+            "max_timid_born_share": "9.446456619143931204E-1",
+            "sum_timid_born_share": "9.446456619143931204E-1",
+            "min_timid_quantum_measure": "1.113925537414416012E+0",
+            "max_timid_quantum_measure": "1.113925537414416012E+0",
+            "sum_timid_quantum_measure": "1.113925537414416012E+0",
+            "max_normalization_error": "7.231148484846061781E-90",
+            "mean_timid_born_share": "9.446456619143931204E-1",
+            "mean_timid_quantum_measure": "1.113925537414416012E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -2015,11 +2908,55 @@
             "max_normalization_error": "4.000000000000000000E-90",
             "mean_timid_born_share": "2.262412752509370835E-1",
             "mean_timid_quantum_measure": "1.544156160491359890E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 31,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.762521384965964699E+2",
+            "max_partition_condition": "2.384358000213197751E+0",
+            "max_born_concentration": "8.085885565750878460E-1",
+            "min_born_effective_slots": "1.512750568743598244E+0",
+            "min_timid_born_share": "8.085885565750878460E-1",
+            "max_timid_born_share": "8.085885565750878460E-1",
+            "sum_timid_born_share": "8.085885565750878460E-1",
+            "min_timid_quantum_measure": "9.416315226544359139E-1",
+            "max_timid_quantum_measure": "9.416315226544359139E-1",
+            "sum_timid_quantum_measure": "9.416315226544359139E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "8.085885565750878460E-1",
+            "mean_timid_quantum_measure": "9.416315226544359139E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 31,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.056506980640133651E+4",
+            "max_partition_condition": "1.407435645609114967E+0",
+            "max_born_concentration": "9.723491397275331595E-1",
+            "min_born_effective_slots": "1.057478129337813642E+0",
+            "min_timid_born_share": "9.723491397275331595E-1",
+            "max_timid_born_share": "9.723491397275331595E-1",
+            "sum_timid_born_share": "9.723491397275331595E-1",
+            "min_timid_quantum_measure": "1.008388592276181365E+0",
+            "max_timid_quantum_measure": "1.008388592276181365E+0",
+            "sum_timid_quantum_measure": "1.008388592276181365E+0",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.723491397275331595E-1",
+            "mean_timid_quantum_measure": "1.008388592276181365E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "9": {
@@ -2114,11 +3051,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.597751296289118023E-1",
             "mean_timid_quantum_measure": "1.035208396351865505E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 10,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.249619865399897411E+3",
+            "max_partition_condition": "1.000799923165382761E+0",
+            "max_born_concentration": "9.514315788449749267E-1",
+            "min_born_effective_slots": "1.102216820066588475E+0",
+            "min_timid_born_share": "9.514315788449749267E-1",
+            "max_timid_born_share": "9.514315788449749267E-1",
+            "sum_timid_born_share": "9.514315788449749267E-1",
+            "min_timid_quantum_measure": "5.847777251799796232E-1",
+            "max_timid_quantum_measure": "5.847777251799796232E-1",
+            "sum_timid_quantum_measure": "5.847777251799796232E-1",
+            "max_normalization_error": "6.000000000000000000E-90",
+            "mean_timid_born_share": "9.514315788449749267E-1",
+            "mean_timid_quantum_measure": "5.847777251799796232E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 10,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.334876334420451719E+5",
+            "max_partition_condition": "1.000007491302591478E+0",
+            "max_born_concentration": "9.945093965166080512E-1",
+            "min_born_effective_slots": "1.011042142215415120E+0",
+            "min_timid_born_share": "9.945093965166080512E-1",
+            "max_timid_born_share": "9.945093965166080512E-1",
+            "sum_timid_born_share": "9.945093965166080512E-1",
+            "min_timid_quantum_measure": "8.528247042978719430E-1",
+            "max_timid_quantum_measure": "8.528247042978719430E-1",
+            "sum_timid_quantum_measure": "8.528247042978719430E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.945093965166080512E-1",
+            "mean_timid_quantum_measure": "8.528247042978719430E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -2211,11 +3192,55 @@
             "max_normalization_error": "2.104463788460870305E-88",
             "mean_timid_born_share": "3.359748316356084605E-2",
             "mean_timid_quantum_measure": "1.143380442513619801E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 512,
+            "zero_partitions": 0,
+            "min_partition_abs": "8.189605092597188269E+2",
+            "max_partition_condition": "9.414373827842239516E+0",
+            "max_born_concentration": "6.327248224071799822E-1",
+            "min_born_effective_slots": "2.447486556684082996E+0",
+            "min_timid_born_share": "6.327248224071799822E-1",
+            "max_timid_born_share": "6.327248224071799822E-1",
+            "sum_timid_born_share": "6.327248224071799822E-1",
+            "min_timid_quantum_measure": "1.361509707249463723E+0",
+            "max_timid_quantum_measure": "1.361509707249463723E+0",
+            "sum_timid_quantum_measure": "1.361509707249463723E+0",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "6.327248224071799822E-1",
+            "mean_timid_quantum_measure": "1.361509707249463723E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 512,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.172598295221795036E+5",
+            "max_partition_condition": "2.169458104501869364E+0",
+            "max_born_concentration": "9.511804283881373103E-1",
+            "min_born_effective_slots": "1.104987903540702398E+0",
+            "min_timid_born_share": "9.511804283881373103E-1",
+            "max_timid_born_share": "9.511804283881373103E-1",
+            "sum_timid_born_share": "9.511804283881373103E-1",
+            "min_timid_quantum_measure": "1.105206225973419508E+0",
+            "max_timid_quantum_measure": "1.105206225973419508E+0",
+            "sum_timid_quantum_measure": "1.105206225973419508E+0",
+            "max_normalization_error": "1.376190942351750062E-89",
+            "mean_timid_born_share": "9.511804283881373103E-1",
+            "mean_timid_quantum_measure": "1.105206225973419508E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -2308,11 +3333,55 @@
             "max_normalization_error": "1.635888172685191451E-89",
             "mean_timid_born_share": "1.662529937544956374E-1",
             "mean_timid_quantum_measure": "2.142737247956749539E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 47,
+            "zero_partitions": 0,
+            "min_partition_abs": "9.673132302813104341E+2",
+            "max_partition_condition": "2.867398275633906158E+0",
+            "max_born_concentration": "7.853752276387889494E-1",
+            "min_born_effective_slots": "1.603078770603159555E+0",
+            "min_timid_born_share": "7.853752276387889494E-1",
+            "max_timid_born_share": "7.853752276387889494E-1",
+            "sum_timid_born_share": "7.853752276387889494E-1",
+            "min_timid_quantum_measure": "9.759159301302669779E-1",
+            "max_timid_quantum_measure": "9.759159301302669779E-1",
+            "sum_timid_quantum_measure": "9.759159301302669779E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "7.853752276387889494E-1",
+            "mean_timid_quantum_measure": "9.759159301302669779E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 47,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.223471832747737707E+5",
+            "max_partition_condition": "1.468256495756257882E+0",
+            "max_born_concentration": "9.728606340034919445E-1",
+            "min_born_effective_slots": "1.056413483566059028E+0",
+            "min_timid_born_share": "9.728606340034919445E-1",
+            "max_timid_born_share": "9.728606340034919445E-1",
+            "sum_timid_born_share": "9.728606340034919445E-1",
+            "min_timid_quantum_measure": "1.015205329654434954E+0",
+            "max_timid_quantum_measure": "1.015205329654434954E+0",
+            "sum_timid_quantum_measure": "1.015205329654434954E+0",
+            "max_normalization_error": "7.126372747725708210E-90",
+            "mean_timid_born_share": "9.728606340034919445E-1",
+            "mean_timid_quantum_measure": "1.015205329654434954E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "10": {
@@ -2407,11 +3476,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.664241771062130345E-1",
             "mean_timid_quantum_measure": "1.024215409333151928E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 11,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.238583695414049764E+3",
+            "max_partition_condition": "1.000308729279696087E+0",
+            "max_born_concentration": "9.554943066966164913E-1",
+            "min_born_effective_slots": "1.093239598853112869E+0",
+            "min_timid_born_share": "9.554943066966164913E-1",
+            "max_timid_born_share": "9.554943066966164913E-1",
+            "sum_timid_born_share": "9.554943066966164913E-1",
+            "min_timid_quantum_measure": "6.042695497303972817E-1",
+            "max_timid_quantum_measure": "6.042695497303972817E-1",
+            "sum_timid_quantum_measure": "6.042695497303972817E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.554943066966164913E-1",
+            "mean_timid_quantum_measure": "6.042695497303972817E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 11,
+            "zero_partitions": 0,
+            "min_partition_abs": "8.383428495890035815E+5",
+            "max_partition_condition": "1.000001192828690643E+0",
+            "max_born_concentration": "9.955894246918867594E-1",
+            "min_born_effective_slots": "1.008860373109571266E+0",
+            "min_timid_born_share": "9.955894246918867594E-1",
+            "max_timid_born_share": "9.955894246918867594E-1",
+            "sum_timid_born_share": "9.955894246918867594E-1",
+            "min_timid_quantum_measure": "8.683868009043069293E-1",
+            "max_timid_quantum_measure": "8.683868009043069293E-1",
+            "sum_timid_quantum_measure": "8.683868009043069293E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.955894246918867594E-1",
+            "mean_timid_quantum_measure": "8.683868009043069293E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -2504,11 +3617,55 @@
             "max_normalization_error": "2.218479921005905484E-88",
             "mean_timid_born_share": "2.308612506028574843E-2",
             "mean_timid_quantum_measure": "9.027035317187993266E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 1024,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.138874092059864525E+3",
+            "max_partition_condition": "1.096316235059474258E+1",
+            "max_born_concentration": "6.275941562917578904E-1",
+            "min_born_effective_slots": "2.490675743747738444E+0",
+            "min_timid_born_share": "6.275941562917578904E-1",
+            "max_timid_born_share": "6.275941562917578904E-1",
+            "sum_timid_born_share": "6.275941562917578904E-1",
+            "min_timid_quantum_measure": "1.385385124778770292E+0",
+            "max_timid_quantum_measure": "1.385385124778770292E+0",
+            "sum_timid_quantum_measure": "1.385385124778770292E+0",
+            "max_normalization_error": "3.875413854125024395E-89",
+            "mean_timid_born_share": "6.275941562917578904E-1",
+            "mean_timid_quantum_measure": "1.385385124778770292E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 1024,
+            "zero_partitions": 0,
+            "min_partition_abs": "7.456153536039409324E+5",
+            "max_partition_condition": "2.147964052051826062E+0",
+            "max_born_concentration": "9.563920454907620902E-1",
+            "min_born_effective_slots": "1.093060528396348019E+0",
+            "min_timid_born_share": "9.563920454907620902E-1",
+            "max_timid_born_share": "9.563920454907620902E-1",
+            "sum_timid_born_share": "9.563920454907620902E-1",
+            "min_timid_quantum_measure": "1.097809179805173140E+0",
+            "max_timid_quantum_measure": "1.097809179805173140E+0",
+            "sum_timid_quantum_measure": "1.097809179805173140E+0",
+            "max_normalization_error": "1.438998370860354511E-89",
+            "mean_timid_born_share": "9.563920454907620902E-1",
+            "mean_timid_quantum_measure": "1.097809179805173140E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 1,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -2601,11 +3758,55 @@
             "max_normalization_error": "7.094615406457508122E-91",
             "mean_timid_born_share": "1.653189787095069046E-1",
             "mean_timid_quantum_measure": "1.546891982502742014E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 63,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.581155316028459520E+3",
+            "max_partition_condition": "2.697257210179443239E+0",
+            "max_born_concentration": "8.015881006786736998E-1",
+            "min_born_effective_slots": "1.541541669399393642E+0",
+            "min_timid_born_share": "8.015881006786736998E-1",
+            "max_timid_born_share": "8.015881006786736998E-1",
+            "sum_timid_born_share": "8.015881006786736998E-1",
+            "min_timid_quantum_measure": "9.512894574792483759E-1",
+            "max_timid_quantum_measure": "9.512894574792483759E-1",
+            "sum_timid_quantum_measure": "9.512894574792483759E-1",
+            "max_normalization_error": "8.488022572074839210E-90",
+            "mean_timid_born_share": "8.015881006786736998E-1",
+            "mean_timid_quantum_measure": "9.512894574792483759E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 63,
+            "zero_partitions": 0,
+            "min_partition_abs": "7.776968991791403367E+5",
+            "max_partition_condition": "1.405115782330735816E+0",
+            "max_born_concentration": "9.781580995315275659E-1",
+            "min_born_effective_slots": "1.045056943573477359E+0",
+            "min_timid_born_share": "9.781580995315275659E-1",
+            "max_timid_born_share": "9.781580995315275659E-1",
+            "sum_timid_born_share": "9.781580995315275659E-1",
+            "min_timid_quantum_measure": "1.009103722013001126E+0",
+            "max_timid_quantum_measure": "1.009103722013001126E+0",
+            "sum_timid_quantum_measure": "1.009103722013001126E+0",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.781580995315275659E-1",
+            "mean_timid_quantum_measure": "1.009103722013001126E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "11": {
@@ -2700,11 +3901,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.720778144945004954E-1",
             "mean_timid_quantum_measure": "1.022941144929551145E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 12,
+            "zero_partitions": 0,
+            "min_partition_abs": "8.468083258239714787E+3",
+            "max_partition_condition": "1.000118083505353800E+0",
+            "max_born_concentration": "9.586148986494302720E-1",
+            "min_born_effective_slots": "1.086402691660448600E+0",
+            "min_timid_born_share": "9.586148986494302720E-1",
+            "max_timid_born_share": "9.586148986494302720E-1",
+            "sum_timid_born_share": "9.586148986494302720E-1",
+            "min_timid_quantum_measure": "6.195739339766745357E-1",
+            "max_timid_quantum_measure": "6.195739339766745357E-1",
+            "sum_timid_quantum_measure": "6.195739339766745357E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.586148986494302720E-1",
+            "mean_timid_quantum_measure": "6.195739339766745357E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 12,
+            "zero_partitions": 0,
+            "min_partition_abs": "5.566129685653061282E+6",
+            "max_partition_condition": "1.000000179658032896E+0",
+            "max_born_concentration": "9.963835925316021165E-1",
+            "min_born_effective_slots": "1.007259138787741133E+0",
+            "min_timid_born_share": "9.963835925316021165E-1",
+            "max_timid_born_share": "9.963835925316021165E-1",
+            "sum_timid_born_share": "9.963835925316021165E-1",
+            "min_timid_quantum_measure": "8.809585483751658570E-1",
+            "max_timid_quantum_measure": "8.809585483751658570E-1",
+            "sum_timid_quantum_measure": "8.809585483751658570E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.963835925316021165E-1",
+            "mean_timid_quantum_measure": "8.809585483751658570E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -2797,11 +4042,55 @@
             "max_normalization_error": "6.267913626963840407E-88",
             "mean_timid_born_share": "1.586288261788876930E-2",
             "mean_timid_quantum_measure": "7.126215583037145162E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 2048,
+            "zero_partitions": 0,
+            "min_partition_abs": "5.613599666383354120E+3",
+            "max_partition_condition": "1.276721069345512614E+1",
+            "max_born_concentration": "6.211659105160446951E-1",
+            "min_born_effective_slots": "2.544609393874513965E+0",
+            "min_timid_born_share": "6.211659105160446951E-1",
+            "max_timid_born_share": "6.211659105160446951E-1",
+            "sum_timid_born_share": "6.211659105160446951E-1",
+            "min_timid_quantum_measure": "1.409874649200666300E+0",
+            "max_timid_quantum_measure": "1.409874649200666300E+0",
+            "sum_timid_quantum_measure": "1.409874649200666300E+0",
+            "max_normalization_error": "8.967117075065476788E-89",
+            "mean_timid_born_share": "6.211659105160446951E-1",
+            "mean_timid_quantum_measure": "1.409874649200666300E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 2048,
+            "zero_partitions": 0,
+            "min_partition_abs": "5.000704452925770802E+6",
+            "max_partition_condition": "2.128692978795622136E+0",
+            "max_born_concentration": "9.606425053418991823E-1",
+            "min_born_effective_slots": "1.083463435146326457E+0",
+            "min_timid_born_share": "9.606425053418991823E-1",
+            "max_timid_born_share": "9.606425053418991823E-1",
+            "sum_timid_born_share": "9.606425053418991823E-1",
+            "min_timid_quantum_measure": "1.091439681981755084E+0",
+            "max_timid_quantum_measure": "1.091439681981755084E+0",
+            "sum_timid_quantum_measure": "1.091439681981755084E+0",
+            "max_normalization_error": "3.686827742642884527E-89",
+            "mean_timid_born_share": "9.606425053418991823E-1",
+            "mean_timid_quantum_measure": "1.091439681981755084E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -2894,11 +4183,55 @@
             "max_normalization_error": "2.202537437706050500E-89",
             "mean_timid_born_share": "1.191291619725475867E-1",
             "mean_timid_quantum_measure": "1.882611299895693897E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 95,
+            "zero_partitions": 0,
+            "min_partition_abs": "6.768950575837792405E+3",
+            "max_partition_condition": "3.224662711356744247E+0",
+            "max_born_concentration": "7.799166493819977583E-1",
+            "min_born_effective_slots": "1.627706979784176905E+0",
+            "min_timid_born_share": "7.799166493819977583E-1",
+            "max_timid_born_share": "7.799166493819977583E-1",
+            "sum_timid_born_share": "7.799166493819977583E-1",
+            "min_timid_quantum_measure": "9.696627021541752234E-1",
+            "max_timid_quantum_measure": "9.696627021541752234E-1",
+            "sum_timid_quantum_measure": "9.696627021541752234E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "7.799166493819977583E-1",
+            "mean_timid_quantum_measure": "9.696627021541752234E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 95,
+            "zero_partitions": 0,
+            "min_partition_abs": "5.188917423548319999E+6",
+            "max_partition_condition": "1.453060354214117758E+0",
+            "max_born_concentration": "9.784867565539624238E-1",
+            "min_born_effective_slots": "1.044374362332801600E+0",
+            "min_timid_born_share": "9.784867565539624238E-1",
+            "max_timid_born_share": "9.784867565539624238E-1",
+            "sum_timid_born_share": "9.784867565539624238E-1",
+            "min_timid_quantum_measure": "1.013698016864836981E+0",
+            "max_timid_quantum_measure": "1.013698016864836981E+0",
+            "sum_timid_quantum_measure": "1.013698016864836981E+0",
+            "max_normalization_error": "3.714039183058042546E-91",
+            "mean_timid_born_share": "9.784867565539624238E-1",
+            "mean_timid_quantum_measure": "1.013698016864836981E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "12": {
@@ -2993,11 +4326,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.768078682768346365E-1",
             "mean_timid_quantum_measure": "1.028241557741960109E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 13,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.228791097827096289E+4",
+            "max_partition_condition": "1.000044866365775094E+0",
+            "max_born_concentration": "9.610847847150663192E-1",
+            "min_born_effective_slots": "1.081026432145032260E+0",
+            "min_timid_born_share": "9.610847847150663192E-1",
+            "max_timid_born_share": "9.610847847150663192E-1",
+            "sum_timid_born_share": "9.610847847150663192E-1",
+            "min_timid_quantum_measure": "6.318553705247919230E-1",
+            "max_timid_quantum_measure": "6.318553705247919230E-1",
+            "sum_timid_quantum_measure": "6.318553705247919230E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.610847847150663192E-1",
+            "mean_timid_quantum_measure": "6.318553705247919230E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 13,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.885493835501569757E+7",
+            "max_partition_condition": "1.000000025736753923E+0",
+            "max_born_concentration": "9.969840252216878823E-1",
+            "min_born_effective_slots": "1.006050235234557562E+0",
+            "min_timid_born_share": "9.969840252216878823E-1",
+            "max_timid_born_share": "9.969840252216878823E-1",
+            "sum_timid_born_share": "9.969840252216878823E-1",
+            "min_timid_quantum_measure": "8.913480824459460643E-1",
+            "max_timid_quantum_measure": "8.913480824459460643E-1",
+            "sum_timid_quantum_measure": "8.913480824459460643E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.969840252216878823E-1",
+            "mean_timid_quantum_measure": "8.913480824459460643E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -3090,11 +4467,55 @@
             "max_normalization_error": "3.306269511495407214E-88",
             "mean_timid_born_share": "1.089942293987417785E-2",
             "mean_timid_quantum_measure": "5.625250796047128447E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 4096,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.478998183772876880E+4",
+            "max_partition_condition": "1.486931543734422108E+1",
+            "max_born_concentration": "6.138389353424715806E-1",
+            "min_born_effective_slots": "2.607218183258671870E+0",
+            "min_timid_born_share": "6.138389353424715806E-1",
+            "max_timid_born_share": "6.138389353424715806E-1",
+            "sum_timid_born_share": "6.138389353424715806E-1",
+            "min_timid_quantum_measure": "1.434898325218154221E+0",
+            "max_timid_quantum_measure": "1.434898325218154221E+0",
+            "sum_timid_quantum_measure": "1.434898325218154221E+0",
+            "max_normalization_error": "1.691478347206807250E-88",
+            "mean_timid_born_share": "6.138389353424715806E-1",
+            "mean_timid_quantum_measure": "1.434898325218154221E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 4096,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.520280354341495331E+7",
+            "max_partition_condition": "2.111390724741044801E+0",
+            "max_born_concentration": "9.641723694216037289E-1",
+            "min_born_effective_slots": "1.075581757762023309E+0",
+            "min_timid_born_share": "9.641723694216037289E-1",
+            "max_timid_born_share": "9.641723694216037289E-1",
+            "sum_timid_born_share": "9.641723694216037289E-1",
+            "min_timid_quantum_measure": "1.085888613331481172E+0",
+            "max_timid_quantum_measure": "1.085888613331481172E+0",
+            "sum_timid_quantum_measure": "1.085888613331481172E+0",
+            "max_normalization_error": "5.254013671212239897E-89",
+            "mean_timid_born_share": "9.641723694216037289E-1",
+            "mean_timid_quantum_measure": "1.085888613331481172E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -3187,11 +4608,55 @@
             "max_normalization_error": "6.954240338136640500E-90",
             "mean_timid_born_share": "1.193312879072174637E-1",
             "mean_timid_quantum_measure": "1.379023117415651321E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 127,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.813955757395150888E+4",
+            "max_partition_condition": "3.072029573637318737E+0",
+            "max_born_concentration": "7.918938463903045641E-1",
+            "min_born_effective_slots": "1.580604290777379562E+0",
+            "min_timid_born_share": "7.918938463903045641E-1",
+            "max_timid_born_share": "7.918938463903045641E-1",
+            "sum_timid_born_share": "7.918938463903045641E-1",
+            "min_timid_quantum_measure": "9.539003965623726632E-1",
+            "max_timid_quantum_measure": "9.539003965623726632E-1",
+            "sum_timid_quantum_measure": "9.539003965623726632E-1",
+            "max_normalization_error": "3.000000000000000000E-90",
+            "mean_timid_born_share": "7.918938463903045641E-1",
+            "mean_timid_quantum_measure": "9.539003965623726632E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 127,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.651381053694902687E+7",
+            "max_partition_condition": "1.402421546546161050E+0",
+            "max_born_concentration": "9.820378780090491383E-1",
+            "min_born_effective_slots": "1.036859517115960097E+0",
+            "min_timid_born_share": "9.820378780090491383E-1",
+            "max_timid_born_share": "9.820378780090491383E-1",
+            "sum_timid_born_share": "9.820378780090491383E-1",
+            "min_timid_quantum_measure": "1.009312071604008498E+0",
+            "max_timid_quantum_measure": "1.009312071604008498E+0",
+            "sum_timid_quantum_measure": "1.009312071604008498E+0",
+            "max_normalization_error": "2.250126524735638691E-90",
+            "mean_timid_born_share": "9.820378780090491383E-1",
+            "mean_timid_quantum_measure": "1.009312071604008498E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "13": {
@@ -3286,11 +4751,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.807322188763611903E-1",
             "mean_timid_quantum_measure": "1.037963624185359040E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 14,
+            "zero_partitions": 0,
+            "min_partition_abs": "5.895504141147036047E+4",
+            "max_partition_condition": "1.000016961933958824E+0",
+            "max_born_concentration": "9.630864245759483825E-1",
+            "min_born_effective_slots": "1.076691638301898621E+0",
+            "min_timid_born_share": "9.630864245759483825E-1",
+            "max_timid_born_share": "9.630864245759483825E-1",
+            "sum_timid_born_share": "9.630864245759483825E-1",
+            "min_timid_quantum_measure": "6.419242705194126018E-1",
+            "max_timid_quantum_measure": "6.419242705194126018E-1",
+            "sum_timid_quantum_measure": "6.419242705194126018E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.630864245759483825E-1",
+            "mean_timid_quantum_measure": "6.419242705194126018E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 14,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.838912987932790718E+8",
+            "max_partition_condition": "1.000000003522474984E+0",
+            "max_born_concentration": "9.974485774568330051E-1",
+            "min_born_effective_slots": "1.005115919463141849E+0",
+            "min_timid_born_share": "9.974485774568330051E-1",
+            "max_timid_born_share": "9.974485774568330051E-1",
+            "sum_timid_born_share": "9.974485774568330051E-1",
+            "min_timid_quantum_measure": "9.000867638717623679E-1",
+            "max_timid_quantum_measure": "9.000867638717623679E-1",
+            "sum_timid_quantum_measure": "9.000867638717623679E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.974485774568330051E-1",
+            "mean_timid_quantum_measure": "9.000867638717623679E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -3383,11 +4892,55 @@
             "max_normalization_error": "1.840800789520283734E-87",
             "mean_timid_born_share": "7.488892836015451351E-3",
             "mean_timid_quantum_measure": "4.440181404811926989E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 8192,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.908581056188807849E+4",
+            "max_partition_condition": "1.731945514058676284E+1",
+            "max_born_concentration": "6.058843921237207872E-1",
+            "min_born_effective_slots": "2.677179506419913504E+0",
+            "min_timid_born_share": "6.058843921237207872E-1",
+            "max_timid_born_share": "6.058843921237207872E-1",
+            "sum_timid_born_share": "6.058843921237207872E-1",
+            "min_timid_quantum_measure": "1.460452539379399170E+0",
+            "max_timid_quantum_measure": "1.460452539379399170E+0",
+            "sum_timid_quantum_measure": "1.460452539379399170E+0",
+            "max_normalization_error": "5.081192636546429233E-88",
+            "mean_timid_born_share": "6.058843921237207872E-1",
+            "mean_timid_quantum_measure": "1.460452539379399170E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 8192,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.590483209971920383E+8",
+            "max_partition_condition": "2.095803799034947991E+0",
+            "max_born_concentration": "9.671481314817260033E-1",
+            "min_born_effective_slots": "1.068999179870449599E+0",
+            "min_timid_born_share": "9.671481314817260033E-1",
+            "max_timid_born_share": "9.671481314817260033E-1",
+            "sum_timid_born_share": "9.671481314817260033E-1",
+            "min_timid_quantum_measure": "1.081003188913820737E+0",
+            "max_timid_quantum_measure": "1.081003188913820737E+0",
+            "sum_timid_quantum_measure": "1.081003188913820737E+0",
+            "max_normalization_error": "1.330713132368446639E-88",
+            "mean_timid_born_share": "9.671481314817260033E-1",
+            "mean_timid_quantum_measure": "1.081003188913820737E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -3480,11 +5033,55 @@
             "max_normalization_error": "4.739268934835363844E-89",
             "mean_timid_born_share": "8.486627237896656976E-2",
             "mean_timid_quantum_measure": "1.417673138588257051E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 191,
+            "zero_partitions": 0,
+            "min_partition_abs": "4.790596194794550364E+4",
+            "max_partition_condition": "3.664732894618119249E+0",
+            "max_born_concentration": "7.714881669302254717E-1",
+            "min_born_effective_slots": "1.664531212510332989E+0",
+            "min_timid_born_share": "7.714881669302254717E-1",
+            "max_timid_born_share": "7.714881669302254717E-1",
+            "sum_timid_born_share": "7.714881669302254717E-1",
+            "min_timid_quantum_measure": "9.721797336171539201E-1",
+            "max_timid_quantum_measure": "9.721797336171539201E-1",
+            "sum_timid_quantum_measure": "9.721797336171539201E-1",
+            "max_normalization_error": "1.252778691122808205E-89",
+            "mean_timid_born_share": "7.714881669302254717E-1",
+            "mean_timid_quantum_measure": "9.721797336171539201E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 191,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.676637398864285942E+8",
+            "max_partition_condition": "1.441436477108047880E+0",
+            "max_born_concentration": "9.822631287399361752E-1",
+            "min_born_effective_slots": "1.036393284749113211E+0",
+            "min_timid_born_share": "9.822631287399361752E-1",
+            "max_timid_born_share": "9.822631287399361752E-1",
+            "sum_timid_born_share": "9.822631287399361752E-1",
+            "min_timid_quantum_measure": "1.012533626428553904E+0",
+            "max_timid_quantum_measure": "1.012533626428553904E+0",
+            "sum_timid_quantum_measure": "1.012533626428553904E+0",
+            "max_normalization_error": "1.395792680130210246E-90",
+            "mean_timid_born_share": "9.822631287399361752E-1",
+            "mean_timid_quantum_measure": "1.012533626428553904E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "14": {
@@ -3579,11 +5176,55 @@
             "max_normalization_error": "0.000000000000000000E+18",
             "mean_timid_born_share": "5.839790245729425314E-1",
             "mean_timid_quantum_measure": "1.050584053317728481E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 15,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.565518834452947470E+5",
+            "max_partition_condition": "1.000006387638297051E+0",
+            "max_born_concentration": "9.647401181980528209E-1",
+            "min_born_effective_slots": "1.073125132235649120E+0",
+            "min_timid_born_share": "9.647401181980528209E-1",
+            "max_timid_born_share": "9.647401181980528209E-1",
+            "sum_timid_born_share": "9.647401181980528209E-1",
+            "min_timid_quantum_measure": "6.503374992764985341E-1",
+            "max_timid_quantum_measure": "6.503374992764985341E-1",
+            "sum_timid_quantum_measure": "6.503374992764985341E-1",
+            "max_normalization_error": "8.000000000000000000E-90",
+            "mean_timid_born_share": "9.647401181980528209E-1",
+            "mean_timid_quantum_measure": "6.503374992764985341E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 15,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.162954510540053157E+9",
+            "max_partition_condition": "1.000000000462330574E+0",
+            "max_born_concentration": "9.978150733495443644E-1",
+            "min_born_effective_slots": "1.004379434644096561E+0",
+            "min_timid_born_share": "9.978150733495443644E-1",
+            "max_timid_born_share": "9.978150733495443644E-1",
+            "sum_timid_born_share": "9.978150733495443644E-1",
+            "min_timid_quantum_measure": "9.075422475760649229E-1",
+            "max_timid_quantum_measure": "9.075422475760649229E-1",
+            "sum_timid_quantum_measure": "9.075422475760649229E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.978150733495443644E-1",
+            "mean_timid_quantum_measure": "9.075422475760649229E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -3676,11 +5317,55 @@
             "max_normalization_error": "1.447044692872604880E-87",
             "mean_timid_born_share": "5.145482487743438212E-3",
             "mean_timid_quantum_measure": "3.504615056697057179E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 16384,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.035473508802451053E+5",
+            "max_partition_condition": "2.017582878521770760E+1",
+            "max_born_concentration": "5.974919740380750253E-1",
+            "min_born_effective_slots": "2.753630528727920612E+0",
+            "min_timid_born_share": "5.974919740380750253E-1",
+            "max_timid_born_share": "5.974919740380750253E-1",
+            "sum_timid_born_share": "5.974919740380750253E-1",
+            "min_timid_quantum_measure": "1.486542757749376852E+0",
+            "max_timid_quantum_measure": "1.486542757749376852E+0",
+            "sum_timid_quantum_measure": "1.486542757749376852E+0",
+            "max_normalization_error": "3.829542823661686097E-88",
+            "mean_timid_born_share": "5.974919740380750253E-1",
+            "mean_timid_quantum_measure": "1.486542757749376852E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 16384,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.985820105292550635E+9",
+            "max_partition_condition": "2.081703726743714157E+0",
+            "max_born_concentration": "9.696888099830724367E-1",
+            "min_born_effective_slots": "1.063423568924300107E+0",
+            "min_timid_born_share": "9.696888099830724367E-1",
+            "max_timid_born_share": "9.696888099830724367E-1",
+            "sum_timid_born_share": "9.696888099830724367E-1",
+            "min_timid_quantum_measure": "1.076668026674596021E+0",
+            "max_timid_quantum_measure": "1.076668026674596021E+0",
+            "sum_timid_quantum_measure": "1.076668026674596021E+0",
+            "max_normalization_error": "6.406192979402852955E-89",
+            "mean_timid_born_share": "9.696888099830724367E-1",
+            "mean_timid_quantum_measure": "1.076668026674596021E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 1,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -3773,11 +5458,55 @@
             "max_normalization_error": "4.048144627081469119E-89",
             "mean_timid_born_share": "8.537978216383412242E-2",
             "mean_timid_quantum_measure": "1.093019355091666915E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 255,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.289784917909785067E+5",
+            "max_partition_condition": "3.514364601583677493E+0",
+            "max_born_concentration": "7.808454467096899383E-1",
+            "min_born_effective_slots": "1.626168531027408537E+0",
+            "min_timid_born_share": "7.808454467096899383E-1",
+            "max_timid_born_share": "7.808454467096899383E-1",
+            "sum_timid_born_share": "7.808454467096899383E-1",
+            "min_timid_quantum_measure": "9.581219772654677683E-1",
+            "max_timid_quantum_measure": "9.581219772654677683E-1",
+            "sum_timid_quantum_measure": "9.581219772654677683E-1",
+            "max_normalization_error": "6.265155281284880013E-90",
+            "mean_timid_born_share": "7.808454467096899383E-1",
+            "mean_timid_quantum_measure": "9.581219772654677683E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 255,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.051164939535105476E+9",
+            "max_partition_condition": "1.399324933546206221E+0",
+            "max_born_concentration": "9.847986669799933188E-1",
+            "min_born_effective_slots": "1.031075864426913787E+0",
+            "min_timid_born_share": "9.847986669799933188E-1",
+            "max_timid_born_share": "9.847986669799933188E-1",
+            "sum_timid_born_share": "9.847986669799933188E-1",
+            "min_timid_quantum_measure": "1.009160989384884585E+0",
+            "max_timid_quantum_measure": "1.009160989384884585E+0",
+            "sum_timid_quantum_measure": "1.009160989384884585E+0",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.847986669799933188E-1",
+            "mean_timid_quantum_measure": "1.009160989384884585E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "15": {
@@ -3872,11 +5601,55 @@
             "max_normalization_error": "9.000000000000000000E-90",
             "mean_timid_born_share": "5.866687335082165298E-1",
             "mean_timid_quantum_measure": "1.065001770566932942E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 16,
+            "zero_partitions": 0,
+            "min_partition_abs": "4.169993224135870161E+5",
+            "max_partition_condition": "1.000002398082556032E+0",
+            "max_born_concentration": "9.661284160341605475E-1",
+            "min_born_effective_slots": "1.070141188859006027E+0",
+            "min_timid_born_share": "9.661284160341605475E-1",
+            "max_timid_born_share": "9.661284160341605475E-1",
+            "sum_timid_born_share": "9.661284160341605475E-1",
+            "min_timid_quantum_measure": "6.574815416623184344E-1",
+            "max_timid_quantum_measure": "6.574815416623184344E-1",
+            "sum_timid_quantum_measure": "6.574815416623184344E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.661284160341605475E-1",
+            "mean_timid_quantum_measure": "6.574815416623184344E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 16,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.712996048014357565E+10",
+            "max_partition_condition": "1.000000000058377251E+0",
+            "max_born_concentration": "9.981090813341012453E-1",
+            "min_born_effective_slots": "1.003789009702461531E+0",
+            "min_timid_born_share": "9.981090813341012453E-1",
+            "max_timid_born_share": "9.981090813341012453E-1",
+            "sum_timid_born_share": "9.981090813341012453E-1",
+            "min_timid_quantum_measure": "9.139788105837237227E-1",
+            "max_timid_quantum_measure": "9.139788105837237227E-1",
+            "sum_timid_quantum_measure": "9.139788105837237227E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.981090813341012453E-1",
+            "mean_timid_quantum_measure": "9.139788105837237227E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -3969,11 +5742,55 @@
             "max_normalization_error": "7.812263782583855130E-87",
             "mean_timid_born_share": "3.535331659383804666E-3",
             "mean_timid_quantum_measure": "2.766077538891657534E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 32768,
+            "zero_partitions": 0,
+            "min_partition_abs": "2.748734569014853379E+5",
+            "max_partition_condition": "2.350622825949923537E+1",
+            "max_born_concentration": "5.887977003002091006E-1",
+            "min_born_effective_slots": "2.836003336877728597E+0",
+            "min_timid_born_share": "5.887977003002091006E-1",
+            "max_timid_born_share": "5.887977003002091006E-1",
+            "sum_timid_born_share": "5.887977003002091006E-1",
+            "min_timid_quantum_measure": "1.513173248496860920E+0",
+            "max_timid_quantum_measure": "1.513173248496860920E+0",
+            "sum_timid_quantum_measure": "1.513173248496860920E+0",
+            "max_normalization_error": "3.534322783204143234E-88",
+            "mean_timid_born_share": "5.887977003002091006E-1",
+            "mean_timid_quantum_measure": "1.513173248496860920E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 32768,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.581125389476840961E+10",
+            "max_partition_condition": "2.068892768432414650E+0",
+            "max_born_concentration": "9.718817762194674340E-1",
+            "min_born_effective_slots": "1.058643849964967104E+0",
+            "min_timid_born_share": "9.718817762194674340E-1",
+            "max_timid_born_share": "9.718817762194674340E-1",
+            "sum_timid_born_share": "9.718817762194674340E-1",
+            "min_timid_quantum_measure": "1.072793724125856325E+0",
+            "max_timid_quantum_measure": "1.072793724125856325E+0",
+            "sum_timid_quantum_measure": "1.072793724125856325E+0",
+            "max_normalization_error": "2.291220516373976837E-88",
+            "mean_timid_born_share": "9.718817762194674340E-1",
+            "mean_timid_quantum_measure": "1.072793724125856325E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -4066,11 +5883,55 @@
             "max_normalization_error": "1.375733860139206604E-88",
             "mean_timid_born_share": "6.021635633405519534E-2",
             "mean_timid_quantum_measure": "1.021143383409484730E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 383,
+            "zero_partitions": 0,
+            "min_partition_abs": "3.424718045366851027E+5",
+            "max_partition_condition": "4.176428617889879253E+0",
+            "max_born_concentration": "7.614654539458456617E-1",
+            "min_born_effective_slots": "1.709162853965109789E+0",
+            "min_timid_born_share": "7.614654539458456617E-1",
+            "max_timid_born_share": "7.614654539458456617E-1",
+            "sum_timid_born_share": "7.614654539458456617E-1",
+            "min_timid_quantum_measure": "9.747755314463044570E-1",
+            "max_timid_quantum_measure": "9.747755314463044570E-1",
+            "sum_timid_quantum_measure": "9.747755314463044570E-1",
+            "max_normalization_error": "2.046263687483616076E-89",
+            "mean_timid_born_share": "7.614654539458456617E-1",
+            "mean_timid_quantum_measure": "9.747755314463044570E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 383,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.628291396928829752E+10",
+            "max_partition_condition": "1.432099885905331257E+0",
+            "max_born_concentration": "9.849606879269183312E-1",
+            "min_born_effective_slots": "1.030741612148259867E+0",
+            "min_timid_born_share": "9.849606879269183312E-1",
+            "max_timid_born_share": "9.849606879269183312E-1",
+            "sum_timid_born_share": "9.849606879269183312E-1",
+            "min_timid_quantum_measure": "1.011543567624035543E+0",
+            "max_timid_quantum_measure": "1.011543567624035543E+0",
+            "sum_timid_quantum_measure": "1.011543567624035543E+0",
+            "max_normalization_error": "5.657531783724978494E-90",
+            "mean_timid_born_share": "9.849606879269183312E-1",
+            "mean_timid_quantum_measure": "1.011543567624035543E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     },
     "16": {
@@ -4165,11 +6026,55 @@
             "max_normalization_error": "1.000000000000000000E-89",
             "mean_timid_born_share": "5.889064668418762471E-1",
             "mean_timid_quantum_measure": "1.080412012458643032E-1"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 17,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.113517363494566614E+6",
+            "max_partition_condition": "1.000000898054744143E+0",
+            "max_born_concentration": "9.673098231815341459E-1",
+            "min_born_effective_slots": "1.067609172797761774E+0",
+            "min_timid_born_share": "9.673098231815341459E-1",
+            "max_timid_born_share": "9.673098231815341459E-1",
+            "sum_timid_born_share": "9.673098231815341459E-1",
+            "min_timid_quantum_measure": "6.636302910368655326E-1",
+            "max_timid_quantum_measure": "6.636302910368655326E-1",
+            "sum_timid_quantum_measure": "6.636302910368655326E-1",
+            "max_normalization_error": "0.000000000000000000E+18",
+            "mean_timid_born_share": "9.673098231815341459E-1",
+            "mean_timid_quantum_measure": "6.636302910368655326E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 17,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.406362623022070311E+11",
+            "max_partition_condition": "1.000000000007110542E+0",
+            "max_born_concentration": "9.983483812793687352E-1",
+            "min_born_effective_slots": "1.003308706975272585E+0",
+            "min_timid_born_share": "9.983483812793687352E-1",
+            "max_timid_born_share": "9.983483812793687352E-1",
+            "sum_timid_born_share": "9.983483812793687352E-1",
+            "min_timid_quantum_measure": "9.195920584989360216E-1",
+            "max_timid_quantum_measure": "9.195920584989360216E-1",
+            "sum_timid_quantum_measure": "9.195920584989360216E-1",
+            "max_normalization_error": "1.000000000000000000E-89",
+            "mean_timid_born_share": "9.983483812793687352E-1",
+            "mean_timid_quantum_measure": "9.195920584989360216E-1"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 0,
+          "parents_with_mixed_real_signs": 0,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "antichain": {
         "couplings": {
@@ -4262,11 +6167,55 @@
             "max_normalization_error": "9.490312812348943999E-87",
             "mean_timid_born_share": "2.429017630786544176E-3",
             "mean_timid_quantum_measure": "2.183109687355911289E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 65536,
+            "zero_partitions": 0,
+            "min_partition_abs": "7.308877911259368012E+5",
+            "max_partition_condition": "2.738966975446159195E+1",
+            "max_born_concentration": "5.799011839720847047E-1",
+            "min_born_effective_slots": "2.923926381698055968E+0",
+            "min_timid_born_share": "5.799011839720847047E-1",
+            "max_timid_born_share": "5.799011839720847047E-1",
+            "sum_timid_born_share": "5.799011839720847047E-1",
+            "min_timid_quantum_measure": "1.540347731019099317E+0",
+            "max_timid_quantum_measure": "1.540347731019099317E+0",
+            "sum_timid_quantum_measure": "1.540347731019099317E+0",
+            "max_normalization_error": "1.863494215078472522E-87",
+            "mean_timid_born_share": "5.799011839720847047E-1",
+            "mean_timid_quantum_measure": "1.540347731019099317E+0"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 65536,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.304196953145377780E+11",
+            "max_partition_condition": "2.057202679516207600E+0",
+            "max_born_concentration": "9.737926183505000853E-1",
+            "min_born_effective_slots": "1.054503733420697840E+0",
+            "min_timid_born_share": "9.737926183505000853E-1",
+            "max_timid_born_share": "9.737926183505000853E-1",
+            "sum_timid_born_share": "9.737926183505000853E-1",
+            "min_timid_quantum_measure": "1.069309636772964346E+0",
+            "max_timid_quantum_measure": "1.069309636772964346E+0",
+            "sum_timid_quantum_measure": "1.069309636772964346E+0",
+            "max_normalization_error": "5.770131962410005598E-89",
+            "mean_timid_born_share": "9.737926183505000853E-1",
+            "mean_timid_quantum_measure": "1.069309636772964346E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 0,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       },
       "two_layer": {
         "couplings": {
@@ -4359,11 +6308,55 @@
             "max_normalization_error": "9.106566221199186353E-89",
             "mean_timid_born_share": "6.073496794781324647E-2",
             "mean_timid_quantum_measure": "8.328994103451724753E-2"
+          },
+          "rational_critical_lambda": {
+            "parents": 1,
+            "precursor_slots": 511,
+            "zero_partitions": 0,
+            "min_partition_abs": "9.251993312074148387E+5",
+            "max_partition_condition": "4.023005601069778552E+0",
+            "max_born_concentration": "7.690637123114401809E-1",
+            "min_born_effective_slots": "1.676569545938750035E+0",
+            "min_timid_born_share": "7.690637123114401809E-1",
+            "max_timid_born_share": "7.690637123114401809E-1",
+            "sum_timid_born_share": "7.690637123114401809E-1",
+            "min_timid_quantum_measure": "9.612792497298304181E-1",
+            "max_timid_quantum_measure": "9.612792497298304181E-1",
+            "sum_timid_quantum_measure": "9.612792497298304181E-1",
+            "max_normalization_error": "1.076446101644341562E-89",
+            "mean_timid_born_share": "7.690637123114401809E-1",
+            "mean_timid_quantum_measure": "9.612792497298304181E-1"
+          },
+          "harmonic_corrected_lambda": {
+            "parents": 1,
+            "precursor_slots": 511,
+            "zero_partitions": 0,
+            "min_partition_abs": "1.342700025958301039E+11",
+            "max_partition_condition": "1.396194340656090304E+0",
+            "max_born_concentration": "9.868559948199683183E-1",
+            "min_born_effective_slots": "1.026793171479533275E+0",
+            "min_timid_born_share": "9.868559948199683183E-1",
+            "max_timid_born_share": "9.868559948199683183E-1",
+            "sum_timid_born_share": "9.868559948199683183E-1",
+            "min_timid_quantum_measure": "1.008862196468287067E+0",
+            "max_timid_quantum_measure": "1.008862196468287067E+0",
+            "sum_timid_quantum_measure": "1.008862196468287067E+0",
+            "max_normalization_error": "1.037746258946466904E-89",
+            "mean_timid_born_share": "9.868559948199683183E-1",
+            "mean_timid_quantum_measure": "1.008862196468287067E+0"
           }
         },
         "chirality_conjugation_checks": 1,
-        "coupling_sign_checks": 5,
-        "constant_coefficient_checks": 1
+        "coupling_sign_checks": 7,
+        "constant_coefficient_checks": 1,
+        "real_coefficient_structure": {
+          "parents": 1,
+          "parents_with_negative_real_coefficient": 1,
+          "parents_with_mixed_real_signs": 1,
+          "parents_with_nonunimodal_abs_real_coefficients": 1,
+          "parents_with_real_partition_zero_at_one": 0,
+          "parents_with_complex_partition_zero_at_one": 0
+        }
       }
     }
   },
@@ -4594,11 +6587,269 @@
           "156": 6,
           "182": 0
         }
+      },
+      "rational_critical_lambda": {
+        "partition_re": "-5.610254339894660690E+4",
+        "partition_im": "1.179326374158406530E+5",
+        "partition_abs": "1.305970992927745935E+5",
+        "condition": "2.854297030925683400E+0",
+        "born_concentration": "8.098399786068543529E-1",
+        "born_effective_slots": "1.513658095308083537E+0",
+        "timid_born_share": "8.098399786068543529E-1",
+        "timid_quantum_measure": "9.345194156079610815E-1",
+        "normalization_error": "1.130686674129155929E-89",
+        "slots": 72,
+        "real_coefficients": {
+          "0": 1,
+          "2": 0,
+          "6": 0,
+          "12": 0,
+          "20": 0,
+          "30": 0,
+          "42": 0,
+          "56": 0,
+          "72": 0,
+          "90": -15,
+          "110": 0,
+          "132": 15,
+          "156": 0,
+          "182": -1
+        },
+        "imag_coefficients": {
+          "0": 1,
+          "2": 1,
+          "6": 1,
+          "12": 1,
+          "20": 1,
+          "30": 1,
+          "42": 1,
+          "56": 1,
+          "72": 6,
+          "90": 0,
+          "110": -20,
+          "132": 0,
+          "156": 6,
+          "182": 0
+        }
+      },
+      "harmonic_corrected_lambda": {
+        "partition_re": "-1.975777842665985285E+9",
+        "partition_im": "5.690266760076530061E+8",
+        "partition_abs": "2.056085951894563529E+9",
+        "condition": "1.329017315981466670E+0",
+        "born_concentration": "9.869646423510826379E-1",
+        "born_effective_slots": "1.026560156062159691E+0",
+        "timid_born_share": "9.869646423510826379E-1",
+        "timid_quantum_measure": "1.004336141667565951E+0",
+        "normalization_error": "0.000000000000000000E-71",
+        "slots": 72,
+        "real_coefficients": {
+          "0": 1,
+          "2": 0,
+          "6": 0,
+          "12": 0,
+          "20": 0,
+          "30": 0,
+          "42": 0,
+          "56": 0,
+          "72": 0,
+          "90": -15,
+          "110": 0,
+          "132": 15,
+          "156": 0,
+          "182": -1
+        },
+        "imag_coefficients": {
+          "0": 1,
+          "2": 1,
+          "6": 1,
+          "12": 1,
+          "20": 1,
+          "30": 1,
+          "42": 1,
+          "56": 1,
+          "72": 6,
+          "90": 0,
+          "110": -20,
+          "132": 0,
+          "156": 6,
+          "182": 0
+        }
+      }
+    }
+  },
+  "antichain_critical_scan": {
+    "c_half_kappa_one": {
+      "20": {
+        "coupling": "1.023809523809523810E+0",
+        "partition_abs": "8.478632436870417403E+3",
+        "condition": "2.204995020617002476E+3",
+        "log_condition_per_rank": "3.849240264827407467E-1",
+        "slot_timid_born_share": "2.733656329394762922E-2",
+        "slot_one_missing_to_timid_born_ratio": "3.344825317954077323E+0",
+        "coherent_one_missing_to_timid_born_ratio": "6.689650635908154646E+1"
+      },
+      "40": {
+        "coupling": "1.012195121951219512E+0",
+        "partition_abs": "1.712925806100941576E+8",
+        "condition": "3.085372804271415003E+6",
+        "log_condition_per_rank": "3.735545763048203536E-1",
+        "slot_timid_born_share": "1.511837114064098064E-3",
+        "slot_one_missing_to_timid_born_ratio": "6.037241552771915962E+0",
+        "coherent_one_missing_to_timid_born_ratio": "2.414896621108766385E+2"
+      },
+      "80": {
+        "coupling": "1.006172839506172840E+0",
+        "partition_abs": "7.512970094557123334E+16",
+        "condition": "5.784173166642076686E+12",
+        "log_condition_per_rank": "3.673268317405567653E-1",
+        "slot_timid_born_share": "4.549318490022086659E-6",
+        "slot_one_missing_to_timid_born_ratio": "1.144330809358883132E+1",
+        "coherent_one_missing_to_timid_born_ratio": "9.154646474871065057E+2"
+      },
+      "120": {
+        "coupling": "1.004132231404958678E+0",
+        "partition_abs": "3.348642839803012055E+25",
+        "condition": "1.074379288039436991E+19",
+        "log_condition_per_rank": "3.651738321269019714E-1",
+        "slot_timid_born_share": "1.363249119325407408E-8",
+        "slot_one_missing_to_timid_born_ratio": "1.685424178776120104E+1",
+        "coherent_one_missing_to_timid_born_ratio": "2.022509014531344125E+3"
+      },
+      "160": {
+        "coupling": "1.003105590062111801E+0",
+        "partition_abs": "1.498585452772175295E+34",
+        "condition": "1.991069253580309886E+25",
+        "log_condition_per_rank": "3.640831195790209290E-1",
+        "slot_timid_born_share": "4.080609349493384143E-11",
+        "slot_one_missing_to_timid_born_ratio": "2.226640882001395972E+1",
+        "coherent_one_missing_to_timid_born_ratio": "3.562625411202233555E+3"
+      },
+      "200": {
+        "coupling": "1.002487562189054726E+0",
+        "partition_abs": "6.717353785247070603E+42",
+        "condition": "3.686570948469007706E+31",
+        "log_condition_per_rank": "3.634241731327984400E-1",
+        "slot_timid_born_share": "1.220897242832656151E-13",
+        "slot_one_missing_to_timid_born_ratio": "2.767907182155989686E+1",
+        "coherent_one_missing_to_timid_born_ratio": "5.535814364311979372E+3"
+      }
+    },
+    "c_one_kappa_two": {
+      "20": {
+        "coupling": "1.047619047619047619E+0",
+        "partition_abs": "3.697795087874710726E+7",
+        "condition": "5.054224914188512820E+1",
+        "log_condition_per_rank": "1.961404801591823810E-1",
+        "slot_timid_born_share": "5.435354081894566973E-1",
+        "slot_one_missing_to_timid_born_ratio": "5.828712749485818797E-1",
+        "coherent_one_missing_to_timid_born_ratio": "1.165742549897163759E+1"
+      },
+      "40": {
+        "coupling": "1.024390243902439024E+0",
+        "partition_abs": "1.374781006914471222E+16",
+        "condition": "1.095587278834489289E+3",
+        "log_condition_per_rank": "1.749761456545258132E-1",
+        "slot_timid_born_share": "3.804399137288112117E-1",
+        "slot_one_missing_to_timid_born_ratio": "9.320781720539853109E-1",
+        "coherent_one_missing_to_timid_born_ratio": "3.728312688215941244E+1"
+      },
+      "80": {
+        "coupling": "1.012345679012345679E+0",
+        "partition_abs": "2.149584305011453034E+33",
+        "condition": "5.238947763435803249E+5",
+        "log_condition_per_rank": "1.646130766829229276E-1",
+        "slot_timid_born_share": "1.807281285303879473E-1",
+        "slot_one_missing_to_timid_born_ratio": "1.656451022827439245E+0",
+        "coherent_one_missing_to_timid_born_ratio": "1.325160818261951396E+2"
+      },
+      "120": {
+        "coupling": "1.008264462809917355E+0",
+        "partition_abs": "3.460362493276296711E+50",
+        "condition": "2.517089284228219035E+8",
+        "log_condition_per_rank": "1.611981994329570422E-1",
+        "slot_timid_born_share": "8.530271784854308309E-2",
+        "slot_one_missing_to_timid_born_ratio": "2.386371839649306566E+0",
+        "coherent_one_missing_to_timid_born_ratio": "2.863646207579167879E+2"
+      },
+      "160": {
+        "coupling": "1.006211180124223602E+0",
+        "partition_abs": "5.612297302721210679E+67",
+        "condition": "1.210899970914014078E+11",
+        "log_condition_per_rank": "1.594987492730784194E-1",
+        "slot_timid_born_share": "4.019927098548230407E-2",
+        "slot_one_missing_to_timid_born_ratio": "3.117653818077097117E+0",
+        "coherent_one_missing_to_timid_born_ratio": "4.988246108923355387E+2"
+      },
+      "200": {
+        "coupling": "1.004975124378109453E+0",
+        "partition_abs": "9.130099005593385698E+84",
+        "condition": "5.828360407362812038E+13",
+        "log_condition_per_rank": "1.584817096800143409E-1",
+        "slot_timid_born_share": "1.893231635410854629E-2",
+        "slot_one_missing_to_timid_born_ratio": "3.849476058022121016E+0",
+        "coherent_one_missing_to_timid_born_ratio": "7.698952116044242033E+2"
+      }
+    },
+    "c_two_kappa_four": {
+      "20": {
+        "coupling": "1.095238095238095238E+0",
+        "partition_abs": "1.003025235853542136E+15",
+        "condition": "1.990624069531430796E+0",
+        "log_condition_per_rank": "3.442240961764704923E-2",
+        "slot_timid_born_share": "9.802462448236403923E-1",
+        "slot_one_missing_to_timid_born_ratio": "1.987837403502536581E-2",
+        "coherent_one_missing_to_timid_born_ratio": "3.975674807005073163E-1"
+      },
+      "40": {
+        "coupling": "1.048780487804878049E+0",
+        "partition_abs": "1.791165727887825504E+32",
+        "condition": "2.844462222553106484E+0",
+        "log_condition_per_rank": "2.613435060615230028E-2",
+        "slot_timid_born_share": "9.765016182026373170E-1",
+        "slot_one_missing_to_timid_born_ratio": "2.372807843010977125E-2",
+        "coherent_one_missing_to_timid_born_ratio": "9.491231372043908499E-1"
+      },
+      "80": {
+        "coupling": "1.024691358024691358E+0",
+        "partition_abs": "8.419986843701707439E+66",
+        "condition": "6.080597216691895206E+0",
+        "log_condition_per_rank": "2.256378646979704773E-2",
+        "slot_timid_born_share": "9.646346643285784969E-1",
+        "slot_one_missing_to_timid_born_ratio": "3.594833347768376025E-2",
+        "coherent_one_missing_to_timid_born_ratio": "2.875866678214700820E+0"
+      },
+      "120": {
+        "coupling": "1.016528925619834711E+0",
+        "partition_abs": "4.349899656948575564E+101",
+        "condition": "1.312388940450580298E+1",
+        "log_condition_per_rank": "2.145361823414938522E-2",
+        "slot_timid_born_share": "9.521148859592370454E-1",
+        "slot_one_missing_to_timid_born_ratio": "4.899869026865210009E-2",
+        "coherent_one_missing_to_timid_born_ratio": "5.879842832238252011E+0"
+      },
+      "160": {
+        "coupling": "1.012422360248447205E+0",
+        "partition_abs": "2.303208103448130285E+136",
+        "condition": "2.839175644330372827E+1",
+        "log_condition_per_rank": "2.091311773094345644E-2",
+        "slot_timid_born_share": "9.395781331765918945E-1",
+        "slot_one_missing_to_timid_born_ratio": "6.223873226897207006E-2",
+        "coherent_one_missing_to_timid_born_ratio": "9.958197163035531210E+0"
+      },
+      "200": {
+        "coupling": "1.009950248756218905E+0",
+        "partition_abs": "1.231784887818269419E+171",
+        "condition": "6.147841041917443043E+1",
+        "log_condition_per_rank": "2.059343031542619243E-2",
+        "slot_timid_born_share": "9.271381956157130650E-1",
+        "slot_one_missing_to_timid_born_ratio": "7.555192311746660421E-2",
+        "coherent_one_missing_to_timid_born_ratio": "1.511038462349332084E+1"
       }
     }
   },
   "timing_seconds": {
-    "exhaustive": 1.292618,
-    "total": 19.742719
+    "exhaustive": 1.510593,
+    "total": 28.134294
   }
 }

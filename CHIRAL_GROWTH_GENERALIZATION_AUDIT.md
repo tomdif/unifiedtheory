@@ -37,7 +37,7 @@ The run used 90-digit decimal arithmetic and seed `20260719`.
 - Both chiralities, coupling-sign reflection, exact ordered/unordered-pair
   factorization, and the cross-pair composition law.
 
-Five coupling regimes were compared:
+Seven coupling regimes were compared:
 
 ```text
 canonical:    lambda = L_2                     = 1.2656250596...
@@ -45,6 +45,8 @@ shifted:      lambda = L_2 + 1                 = 2.2656250596...
 subcritical:  lambda = L_2 - 1                 = 0.2656250596...
 sparse:       lambda = 0
 running:      lambda_n = L_2^(1/max(1,n-1))
+rational:     lambda_n = (n+2)/(n+1)
+harmonic:     lambda_0=lambda_1=2; lambda_n=1+H_n/(2(n-1))
 ```
 
 The running schedule keeps the raw full-precursor versus one-missing-ancestor
@@ -61,7 +63,7 @@ All tested parents and coupling regimes passed the following checks.
 - Zero observed parent partitions: 0.
 - Endpoint partition at the one-event parent: `1+i` for every coupling.
 - Exact chirality conjugation checks: 1,204.
-- Exact coupling-sign redundancy checks on parents: 6,020.
+- Exact coupling-sign redundancy checks on parents: 8,428.
 - Signature factorization checks: 459.
 - Cross-pair composition checks: 289.
 - Maximum numerical normalization error: approximately `1.3e-89` for the
@@ -78,6 +80,8 @@ The old independently compositional character again gives exactly zero on
 | subcritical | `1.465` |
 | sparse | `1.414` |
 | running at rank 14 | `62.29` |
+| rational critical at rank 14 | `1.306e5` |
+| harmonic corrected at rank 14 | `6.529e4` |
 
 Thus the all-rank repair is not merely formal: it survives the known finite
 obstruction and every additional finite parent in this test.
@@ -153,7 +157,8 @@ n(n-1) - (n-1)(n-2) = 2(n-1).
 ```
 
 Equivalently, in the identifiable coupling `g=lambda^2`, the cross factor is
-`g^(n-1)`. Therefore a nontrivial large-rank balance requires
+`g^(n-1)`. Therefore finite relative weight for one individual adjacent pair
+requires
 
 ```text
 (n-1) log g_n = O(1),
@@ -171,7 +176,9 @@ timid dominance, while `0<=g<1` flows toward sparse dominance. The value
 `g=1` is the critical boundary, but the repo already proves that the naive
 fixed character at that boundary can have exact partition zeros. A viable law
 therefore needs a scale-dependent approach to the boundary together with a
-mechanism controlling destructive interference.
+mechanism controlling destructive interference. This is an edgewise criterion;
+the multiplicity correction below shows that it is not an aggregate-sector
+balance criterion.
 
 The qualitative existence half is now machine-checked in
 `KFCausalSetCriticalRunning.lean`. For the canonical Liouville number `L`, set
@@ -214,17 +221,158 @@ Thus transcendence was sufficient but not necessary. Exact zero-freeness and
 an effective finite-rank stability margin now both hold; the certified margin
 still deteriorates superexponentially with rank.
 
+The value `kappa=2` is not selected by this construction.
+`KFCausalSetRationalCriticalFamily.lean` proves the complete positive-rational
+family
+
+```text
+lambda_n(a,b) = 1 + (a/b)/(n+1),
+(n+1)(g_n(a,b)-1) -> 2a/b,
+```
+
+together with zero-freeness, projective strongly-positive dynamics, partition
+margin `(b(n+1))^(-n(n-1))`, and condition bound
+`2^n(b(n+1)+a)^(n(n-1))`. Consequently `kappa` is a dynamical modulus that
+microphysics must select, not a prediction of the kinematic axioms.
+
+## Multiplicity-corrected critical window
+
+The positive-rational family also reveals that selecting a finite `kappa` is
+not enough. In an `(n+1)`-antichain there is one timid/full precursor, but
+there are `n+1` precursors missing one ancestor. Their incoherent labeled-slot
+Born-mass ratio is exactly
+
+```text
+M_one-missing / M_timid = (n+1) / g_(n+1)^(2n).
+```
+
+The repository's unlabeled transition law first adds isomorphic slots
+coherently, so the physical child-sector ratio is instead
+
+```text
+M_one-missing / M_timid = (n+1)^2 / g_(n+1)^(2n).
+```
+
+`KFCausalSetCriticalMultiplicity.lean` proves both identities and the general
+asymptotic theorems
+
+```text
+n log g_(n+1) -> kappa in R
+  implies
+both ratios -> infinity.
+```
+
+It then applies the theorem to every positive-rational zero-free law. Thus the
+whole finite-`kappa` family is edgewise critical but not coherent unlabeled-sector
+critical on antichains. Holding the physical ratio finite and nonzero instead requires
+
+```text
+2n log g_(n+1) = 2log(n+1) + O(1).
+```
+
+The extra `log n` is a precursor-entropy correction. It is a change of scaling,
+not a different choice of the constant `kappa`. The formal theorem rules out
+the former finite-`kappa` window as the final infrared law whenever complete
+precursor sectors, rather than representative edges, are the observables that
+must remain balanced.
+
+`KFCausalSetMultiplicityCorrectedRunning.lean` then proves that the corrected
+window is nonempty by an explicit arithmetic construction. Let `H_n` be the
+rational harmonic number and define
+
+```text
+lambda_0 = lambda_1 = 2,
+lambda_n = 1 + H_n/(2(n-1))  for n >= 2,
+g_n = lambda_n^2.
+```
+
+Every `lambda_n` is rational and strictly greater than one, so the universal
+rational-root theorem makes every parent partition nonzero at every finite
+rank. The module proves `lambda_n -> 1`, controls the quadratic error between
+`log(1+x)` and `x`, and obtains the exact coherent unlabeled limit
+
+```text
+(n+1)^2/g_(n+1)^(2n) -> exp(-2*EulerMascheroniConstant).
+```
+
+It also packages the schedule as one normalized rank-dependent unlabeled law
+whose finite decoherence functionals are projectively consistent and whose
+infinite-cylinder functional is Hermitian, normalized, and strongly positive.
+Thus zero-freeness and multiplicity-corrected balance are compatible; their
+microscopic origin and all-parent conditioning remain open.
+
+The independent exact-binomial scan tracks the convergence and conditioning:
+
+| rank | coherent one-missing/timid ratio | condition | `log(condition)/rank` |
+|---:|---:|---:|---:|
+| 20 | `0.4133` | `2.019` | `0.0351` |
+| 40 | `0.3856` | `1.924` | `0.0164` |
+| 80 | `0.3627` | `1.861` | `0.0078` |
+| 120 | `0.3522` | `1.834` | `0.0051` |
+| 160 | `0.3460` | `1.819` | `0.0037` |
+| 200 | `0.3418` | `1.810` | `0.0030` |
+
+The ratio moves toward `exp(-2gamma) ≈ 0.3152`, as proved. The decreasing
+log-condition rate is encouraging but remains finite evidence, not a uniform
+subexponential all-parent theorem.
+
+## Coefficient-structure result
+
+The hoped-for universal positivity mechanism fails at the first nontrivial
+rank. `KFCausalSetPartitionCoefficientStructure.lean` proves exactly that the
+two-antichain real parent polynomial has constant coefficient `1` and
+quadratic coefficient `-1`. Hence no all-parent nonnegative-coefficient theorem
+can improve the arithmetic condition bound.
+
+The exhaustive coefficient census strengthens the diagnosis empirically:
+
+| rank | parents | mixed-sign real coefficients | nonunimodal absolute coefficients |
+|---:|---:|---:|---:|
+| 2 | 2 | 1 | 0 |
+| 3 | 5 | 4 | 0 |
+| 4 | 16 | 15 | 0 |
+| 5 | 63 | 62 | 0 |
+| 6 | 318 | 317 | 26 |
+
+The rational representative nevertheless behaves vastly better than its
+worst-case formal estimate over the tested range: its maximum condition number
+is `5.97` over all rank-six parents and `14.87` in the rank-twelve random
+sample. At rank sixteen it is `1.000001`, `27.39`, and `4.02` on the chain,
+antichain, and two-layer families respectively. These are finite observations,
+not an asymptotic theorem. An efficient antichain scan shows eventual growth,
+so the gap to subexponential control remains real.
+
+The exact-binomial `O(n)` antichain scan makes the tradeoff visible at rank
+200:
+
+| displacement `c` | `kappa=2c` | condition | timid raw Born share |
+|---:|---:|---:|---:|
+| `1/2` | `1` | `3.69e31` | `1.22e-13` |
+| `1` | `2` | `5.83e13` | `1.89e-2` |
+| `2` | `4` | `61.5` | `0.927` |
+
+Larger `kappa` suppresses the observed cancellation but simultaneously drives
+the antichain toward the timid sector. This is evidence for a conditioning--
+concentration tradeoff, not yet a theorem: the physically useful selector must
+control interference without simply restoring timid runaway.
+
 ## Honest conclusion
 
 The newest model generalizes successfully as a normalized, Bell-causal,
-strongly-positive finite and infinite-cylinder construction, and now admits an
-explicit zero-free trajectory in the critical window. It does not yet derive
-that trajectory from microscopic physics or prove subexponential stability. The
-test replaces the former question “which constant coupling?” with the sharper
-problem:
+strongly-positive finite and infinite-cylinder construction, and now admits a
+positive-rational family of explicit zero-free trajectories in the edgewise
+critical window. The exact multiplicity theorem shows that every finite-`kappa`
+member nevertheless fails coherent unlabeled antichain balance, while the harmonic
+rational construction gives a zero-free, strongly-positive trajectory in the
+logarithmically corrected window with limiting ratio `exp(-2gamma)`. It does not
+yet derive that trajectory from microscopic physics or prove subexponential
+all-parent stability. Universal coefficient positivity is now ruled out.
+The test replaces the former question “which constant coupling?” with the
+sharper problem:
 
-> Select a refinement-covariant critical trajectory from microphysics and keep
-> its all-parent partition condition numbers subexponentially controlled.
+> Derive a refinement-covariant, multiplicity-corrected critical trajectory
+> from microphysics and keep its all-parent partition condition numbers
+> subexponentially controlled.
 
 The next mathematical target is an RG transformation on the effective
 coupling and interference data, not another constant-coupling selection rule.

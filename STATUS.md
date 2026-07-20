@@ -302,6 +302,32 @@
 > condition-number bound `2^n (n+2)^(n(n-1))`. This is effective but far too weak
 > for a continuum limit; subexponential stability and microscopic selection
 > remain open.
+> `KFCausalSetRationalCriticalFamily.lean` proves that this was not a unique
+> schedule: every positive rational `c=a/b` gives a zero-free projective law
+> with `(n+1)(g_n-1) -> 2a/b`, partition margin
+> `(b(n+1))^(-n(n-1))`, and condition bound
+> `2^n(b(n+1)+a)^(n(n-1))`. Hence the critical modulus `kappa` is not selected
+> by zero-freeness, projectivity, or strong positivity. The coefficient route
+> also has a formal obstruction: `KFCausalSetPartitionCoefficientStructure.lean`
+> proves the two-antichain polynomial has constant coefficient `1` and
+> quadratic coefficient `-1`, excluding universal real-coefficient positivity.
+> `KFCausalSetCriticalMultiplicity.lean` then exposes a stricter obstruction.
+> On an `(n+1)`-antichain, the incoherent precursor-slot one-missing/timid
+> Born-mass ratio is `(n+1)/g_(n+1)^(2n)`. The repository's unlabeled dynamics
+> coherently aggregates isomorphic slots before Born squaring, so its child-sector
+> ratio is `(n+1)^2/g_(n+1)^(2n)`. Every finite-`kappa` trajectory sends both
+> ratios to infinity, including every positive-rational zero-free schedule.
+> The old `1/n` window balances individual adjacent transitions only; coherent
+> unlabeled antichain balance requires the logarithmically corrected law
+> `2n log g_(n+1) = 2log(n+1)+O(1)`.
+> `KFCausalSetMultiplicityCorrectedRunning.lean` constructs the repair rather
+> than stopping at the obstruction. The rational harmonic schedule
+> `lambda_0=lambda_1=2`, `lambda_n=1+H_n/(2(n-1))` is all-parent zero-free,
+> tends to one, and makes the exact coherent unlabeled antichain ratio converge
+> to `exp(-2gamma)`. Its growth law is normalized and projectively
+> strongly positive on the infinite-cylinder algebra. The remaining issue is
+> microscopic derivation and quantitative all-parent conditioning, not
+> kinematic existence.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -396,4 +422,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-~320 files in `UnifiedTheory/`, ~3000+ theorems, **zero sorry, zero custom axioms** in core mathematical content. Build: 8615 jobs successful (July 2026). Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
+867 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full build: 8,621 jobs successful (July 2026).
+Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

@@ -90,6 +90,23 @@ theorem aeval_eq_zero_of_real_eval₂_eq_zero {p : ℤ[X]} {q : ℚ}
   rw [map_zero, Polynomial.hom_eval₂]
   simpa using hReal
 
+/-- Every rational coupling strictly above one is simultaneously zero-free
+for every finite causal parent.  The statement is parent- and rank-uniform;
+only the selected rational value varies. -/
+theorem rational_parentPolynomial_eval_ne_zero_of_one_lt {n : ℕ}
+    {q : ℚ} (hq : 1 < q) (parent : CardinalCausalOrder n) :
+    (interactingChiralRealPartitionPolynomial parent).eval₂
+      (Int.castRingHom ℝ) (q : ℝ) ≠ 0 := by
+  intro hEvaluation
+  have hRationalRoot :
+      Polynomial.aeval q
+        (interactingChiralRealPartitionPolynomial parent) = 0 :=
+    aeval_eq_zero_of_real_eval₂_eq_zero hEvaluation
+  have hAbs := rationalRoot_abs_le_one_of_coeff_zero_eq_one
+    (interactingChiralRealPartitionPolynomial_coeff_zero parent) hRationalRoot
+  rw [abs_of_pos (lt_trans zero_lt_one hq)] at hAbs
+  exact (not_le_of_gt hq) hAbs
+
 /-! ## 2. The elementary rational critical trajectory -/
 
 def rationalCriticalPairCouplingQ (n : ℕ) : ℚ :=
@@ -173,17 +190,9 @@ theorem rationalCritical_parentPolynomial_eval_ne_zero {n : ℕ}
     (parent : CardinalCausalOrder n) :
     (interactingChiralRealPartitionPolynomial parent).eval₂
       (Int.castRingHom ℝ) (rationalCriticalPairCoupling n) ≠ 0 := by
-  intro hEvaluation
-  have hRationalRoot :
-      Polynomial.aeval (rationalCriticalPairCouplingQ n)
-        (interactingChiralRealPartitionPolynomial parent) = 0 := by
-    apply aeval_eq_zero_of_real_eval₂_eq_zero
-    simpa [rationalCriticalPairCoupling_cast] using hEvaluation
-  have hAbs := rationalRoot_abs_le_one_of_coeff_zero_eq_one
-    (interactingChiralRealPartitionPolynomial_coeff_zero parent) hRationalRoot
-  rw [abs_of_pos
-    (lt_trans zero_lt_one (rationalCriticalPairCouplingQ_gt_one n))] at hAbs
-  exact (not_le_of_gt (rationalCriticalPairCouplingQ_gt_one n)) hAbs
+  simpa [rationalCriticalPairCoupling_cast] using
+    (rational_parentPolynomial_eval_ne_zero_of_one_lt
+      (rationalCriticalPairCouplingQ_gt_one n) parent)
 
 /-- Denominator clearing turns qualitative nonvanishing into a finite-rank
 integer-separation estimate. -/

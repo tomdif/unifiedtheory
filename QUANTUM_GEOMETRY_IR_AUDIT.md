@@ -700,10 +700,25 @@ two-sided flow: fixed `g>1` concentrates on full-precursor/timid births, whereas
 fixed `0<=g<1` concentrates on the zero/one-ancestor sparse sector. A nontrivial
 large-rank balance requires `(n-1) log g_n = O(1)` and hence `g_n -> 1`. The tested
 critical running trajectory keeps many precursor sectors alive but also produces
-large cancellation condition numbers. Thus the refined open target is a
-microscopically selected refinement-covariant running coupling together with a
-uniform lower bound or other condition-number control theorem for parent
-partitions.
+large cancellation condition numbers. The adjacent-sector comparison alone is
+also incomplete: `KFCausalSetCriticalMultiplicity.lean` proves that an
+`(n+1)`-antichain has incoherent precursor-slot ratio
+`(n+1)/g_(n+1)^(2n)` and coherent unlabeled child-sector ratio
+`(n+1)^2/g_(n+1)^(2n)`. Every finite-`kappa` trajectory makes both diverge.
+Thus the refined open target is a microscopically selected,
+refinement-covariant coupling in the multiplicity-corrected window
+`2n log g_(n+1)=2log(n+1)+O(1)`, together with a uniform lower bound or other
+condition-number control theorem for parent partitions.
+
+Kinematic existence in that window is now closed.
+`KFCausalSetMultiplicityCorrectedRunning.lean` defines the rational harmonic
+schedule `lambda_0=lambda_1=2` and
+`lambda_n=1+H_n/(2(n-1))` for `n>=2`. The rational-root theorem makes it
+zero-free for every finite parent, while an explicit logarithmic-error estimate
+proves that the coherent unlabeled antichain ratio converges to `exp(-2gamma)`. The same
+schedule defines a normalized, projective, strongly-positive infinite-cylinder
+law. What remains is to derive such a schedule from microphysics and control
+conditioning outside the antichain benchmark.
 
 `KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from
 quantitative stability. It proves degree `<= n(n-1)` and coefficient height
@@ -726,6 +741,17 @@ effective nonvanishing, but the condition estimate is superexponential. The
 remaining target is microscopic selection plus subexponential or polynomial
 condition-number control. See
 `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md` for the reproducible finite evidence.
+
+`KFCausalSetRationalCriticalFamily.lean` shows that the representative scaling
+constant is not fixed: every positive rational `c=a/b` produces a complete law
+with `(n+1)(g_n-1) -> 2a/b` and the corresponding effective denominator bound.
+The infrared coefficient `kappa` is therefore a genuine dynamical modulus.
+Moreover, `KFCausalSetPartitionCoefficientStructure.lean` rules out universal
+real-coefficient positivity by proving the two-antichain coefficient pair
+`P_0=1`, `P_2=-1`. Any sharper stability mechanism must use more than the signs
+of the real polynomial coefficients. The same antichain family supplies the
+independent multiplicity obstruction above: the rational schedules are exact
+zero-free laws, but none is aggregate-sector critical at finite `kappa`.
 
 `KFOrientationHigherRankDecoherence.lean` closes the alternative mixed-state
 question. Every admissible `D_y` has an explicit two-component Cholesky/Gram

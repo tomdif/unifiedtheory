@@ -142,6 +142,26 @@ are stronger than another atomic-number identity:
     `g_n -> 1` and `(n+1)(g_n-1) -> 2`. Denominator clearing gives the explicit
     all-parent bounds `|Z_C(lambda_n)| >= (n+1)^(-n(n-1))` and
     `condition(C,lambda_n) <= 2^n (n+2)^(n(n-1))`.
+28. **The critical scaling coefficient is a rational modulus, not a prediction:**
+    every positive rational `c=a/b` defines a zero-free schedule
+    `lambda_n=1+c/(n+1)` with `(n+1)(g_n-1) -> 2a/b`, an effective all-parent
+    margin, and a normalized projective strongly-positive cylinder law.
+    Kinematics alone therefore leaves `kappa` undetermined.
+29. **Coefficient positivity cannot repair the stability bound:** the
+    two-antichain parent has real polynomial coefficients `P_0=1` and `P_2=-1`.
+    Thus no universal nonnegative-coefficient theorem is possible; finite
+    exhaustive data also finds absolute-coefficient nonunimodality by rank six.
+30. **Precursor multiplicity changes the critical window:** on an
+    `(n+1)`-antichain, the labeled-slot one-missing/timid Born-mass ratio is
+    `(n+1)/g_(n+1)^(2n)`, but coherent aggregation to the unlabeled child squares
+    the multiplicity and gives `(n+1)^2/g_(n+1)^(2n)`. Every trajectory with finite
+    `n log g_(n+1) -> kappa` makes both ratios diverge. Physical unlabeled balance
+    therefore needs `2n log g_(n+1)=2log(n+1)+O(1)`.
+31. **The corrected window has an explicit zero-free quantum law:** the rational
+    harmonic schedule `lambda_n=1+H_n/(2(n-1))` for `n>=2` stays above one,
+    converges to one, and is zero-free for every finite parent. Its coherent
+    unlabeled antichain ratio converges exactly to `exp(-2gamma)`, and its normalized
+    projective infinite-cylinder decoherence functional is strongly positive.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -152,7 +172,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 864 Lean files (863 below `UnifiedTheory/`). The search
+The repository contains 868 Lean files (867 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;
@@ -1242,6 +1262,41 @@ therefore select a stable running coupling, complement symmetry, and the
 reflection-odd sign from microphysics, and then show a nontrivial infrared flow
 to ordinary QFT/GR.
 
+That adjacent-edge criterion is necessary but not sufficient once sector
+degeneracy is counted. `KFCausalSetCriticalMultiplicity.lean` proves that an
+`(n+1)`-antichain has one timid precursor and `n+1` one-missing precursors. The
+exact incoherent precursor-slot Born-mass ratio is
+
+```text
+(one-missing mass)/(timid mass) = (n+1)/g_(n+1)^(2n).
+```
+
+The unlabeled transition law instead aggregates those isomorphic slots
+coherently before taking the Born square, giving the larger physical ratio
+`(n+1)^2/g_(n+1)^(2n)`. It then proves that both ratios tend to infinity whenever
+`n log g_(n+1) -> kappa` is finite. In particular, every positive-rational
+zero-free trajectory formalized below eventually loses coherent timid balance
+on antichains. Holding the unlabeled ratio finite instead requires the corrected
+window `2n log g_(n+1)=2log(n+1)+O(1)`. This is not a choice of a better constant
+`kappa`; it is a logarithmic change of scaling forced by precursor entropy.
+
+`KFCausalSetMultiplicityCorrectedRunning.lean` closes the corresponding
+existence problem. With `H_n` the rational harmonic number, the schedule
+
+```text
+lambda_0 = lambda_1 = 2,
+lambda_n = 1 + H_n/(2(n-1))  for n >= 2
+```
+
+is rational and strictly above one at every rank. It therefore avoids every
+parent polynomial zero by the rational-root theorem. Lean proves
+`lambda_n -> 1`, bounds the scaled nonlinear error in `log(1+x)`, and derives
+the exact coherent limit `(n+1)^2/g_(n+1)^(2n) -> exp(-2gamma)`. The schedule is
+then promoted to one normalized projective strongly-positive infinite-cylinder
+growth law. The frontier has consequently moved again: kinematic compatibility
+is proved, while microscopic derivation and all-parent condition control are
+still open.
+
 `UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean` closes the qualitative
 zero-safe-running part without pretending to select the dynamics. For every
 n-event parent it proves
@@ -1292,6 +1347,23 @@ superexponential, so one must derive/select the trajectory from microphysics
 and obtain subexponential or polynomial stability if a controlled infrared
 limit requires it. Transcendence is neither necessary for zero-freeness nor
 sufficient for that sharper stability theorem.
+
+`KFCausalSetRationalCriticalFamily.lean` also removes any accidental
+interpretation of the representative limit `kappa=2` as a prediction. For
+positive `a,b`, the schedule `lambda_n=1+(a/b)/(n+1)` has limit
+`(n+1)(g_n-1) -> 2a/b`, remains all-parent zero-free, and supplies a complete
+projective strongly-positive law with the denominator-adjusted effective
+bounds. Therefore the microscopic dynamics must select `kappa`; the kinematic
+axioms do not.
+
+The most direct coefficient shortcut is formally unavailable.
+`KFCausalSetPartitionCoefficientStructure.lean` proves that the two-antichain
+parent already has coefficients `P_0=1` and `P_2=-1`, hence no universal
+real-coefficient positivity theorem exists. In the exhaustive unlabeled census,
+317 of 318 rank-six parents have mixed-sign real coefficients and 26 already
+violate absolute-coefficient unimodality. A better condition theorem must see
+phase pairing, the imaginary coordinate, root geometry, or a dynamically
+restricted parent ensemble.
 See `CHIRAL_GROWTH_GENERALIZATION_AUDIT.md`.
 
 The higher-rank escape is exact. An explicit two-component amplitude has Gram
