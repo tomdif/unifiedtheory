@@ -5135,4 +5135,12 @@ import UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
 -- branch, so the result is a conditional derivation rather than an
 -- unconditional derivation of nature's vacuum choice.
 import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
+-- A single new microscopic bridge removes the remaining sign degeneracy:
+-- future-directed positive-frequency evolution U(E,tau)=exp(-i E tau), with
+-- E>0 and an elementary quarter turn E*tau=pi/2, uniquely selects phase -i.
+-- The proved causal dictionary sends -i to y=-1/2, Xi=+1, and therefore the
+-- exact nontrivial left-handed weak vertex.  Positive energy alone remains
+-- chirality-blind; the edge-character/Hamiltonian-phase identification is the
+-- explicit conditional input and the next microscopic derivation target.
+import UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 import UnifiedTheory.LayerC.ContextualFraction

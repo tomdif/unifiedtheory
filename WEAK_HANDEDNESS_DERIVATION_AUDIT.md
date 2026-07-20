@@ -45,16 +45,49 @@ This proves a precise relational statement:
 With the convention in which the explicit positive cubic witness orients our
 branch, the vertex is the standard left-handed charged current.
 
+## New positive-frequency sign selection
+
+`UnifiedTheory/Audit/KFCausalSetFutureFrequencyHandedness.lean` proves a
+stronger conditional result from one additional microscopic bridge that does
+not mention left or right.  A future-directed positive-energy growth step is
+required to carry the standard unitary phase
+
+```text
+U(E,tau) = exp(-i E tau),   E > 0, tau > 0.
+```
+
+For the elementary quarter turn `E*tau=pi/2`, this forces `U=-i`.  The theorem
+then proves that exactly one of the two Bell-causal microscopic characters
+matches this phase.  Its already-derived causal dictionary is
+
+```text
+-i  <->  y=-1/2  <->  Xi=-2y=+1  <->  P_weak=P_L.
+```
+
+Consequently the matched character has a nonzero purely left-handed charged
+weak current.  Reversing growth time complex-conjugates the phase to `+i` and
+selects the reflected `Xi=-1`, right-handed character.  With future time
+orientation and the positive-frequency convention fixed, the two signs are
+therefore no longer degenerate.
+
+Here "absolute" means relative to the jointly fixed future-time orientation,
+complex structure, and gamma-five convention.  Globally conjugating the
+complex structure while reflecting the spin convention exchanges the two
+descriptions.  The physical proposal is the relative lock among those three
+structures, not a claim that the printed symbol `-i` is convention-independent.
+
 ## Inputs that remain visible
 
 The result is not yet an unconditional derivation of nature's vacuum from the
 partial-order postulate alone.  Two physical bridges remain:
 
-1. **Nonzero branch selection.** The current parity-even finite vacuum action
-   cannot generate a preferred sign.  The machine-checked fixed-point no-go in
-   `KFCausalSetChiralityGenerationNoGo.lean` proves this is impossible without
-   a reflection-odd microscopic term or infinite-history spontaneous symmetry
-   breaking.
+1. **Positive-frequency growth bridge.** The current parity-even finite vacuum
+   action does not yet derive that its complex transition character is the
+   Hamiltonian phase `exp(-i E tau)` of an elementary growth clock.  Once this
+   standard spectrum/time-orientation law is supplied, the sign is uniquely
+   selected; deriving that identification from the sequential-growth action is
+   now the precise remaining microscopic problem.  Positive energy alone is
+   chirality-blind, as the new module also proves.
 2. **Continuum spin reconstruction.** The finite chirality/Weyl space and
    locking projector are explicit, but the repo has not yet reconstructed a
    Lorentzian spin bundle, continuum Dirac operator, and scaling limit from the
@@ -72,14 +105,14 @@ abstract grading, not a spin representation.
 The strongest supported headline is:
 
 > Conditional derivation of a refinement-stable, purely left-handed SU(2)
-> charged current from a nonzero causal orientation branch.
+> charged current from future-directed positive-frequency causal growth.
 
 The unsupported headline is:
 
-> Nature's left-handed weak interaction is derived from a reflection-symmetric
-> empty causal-set vacuum with no additional branch-selection or continuum-spin
-> input.
+> The existing scalar Bell-causal transition law itself has been proved to
+> generate the positive-frequency Hamiltonian phase and reconstruct the
+> continuum Lorentzian Dirac field.
 
-Promoting the first statement to the second requires a concrete reflection-odd
-microscopic growth term or a proved infinite-history symmetry-breaking state,
-followed by the Lorentzian spin/Dirac continuum reconstruction.
+Promoting the first statement to the second requires deriving the
+edge-character/Hamiltonian-phase identification from the microscopic growth
+action, followed by the Lorentzian spin/Dirac continuum reconstruction.

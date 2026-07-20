@@ -566,6 +566,17 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   no-go proves that the present reflection-fixed vacuum cannot generate the
   required nonzero branch. The exact claim ledger is in
   [`WEAK_HANDEDNESS_DERIVATION_AUDIT.md`](WEAK_HANDEDNESS_DERIVATION_AUDIT.md).
+  `KFCausalSetFutureFrequencyHandedness.lean` isolates one minimal dynamical
+  law that removes this degeneracy without assuming a chirality sign. If an
+  elementary future growth step carries the standard positive-frequency phase
+  `U(E,tau)=exp(-i E tau)` with `E>0`, `tau>0`, and `E*tau=pi/2`, its phase is
+  uniquely `-i`. The existing causal dictionary then forces `y=-1/2`,
+  `Xi=+1`, and the exact nontrivial left-handed weak vertex; reverse time gives
+  the reflected `+i`, right-handed law. This is a conditional absolute-sign
+  theorem relative to a fixed future-time, complex, and gamma-five orientation;
+  the relative lock, not the printed sign of `i`, is physical. The remaining
+  frontier is to derive the transition-character / Hamiltonian-phase
+  identification from sequential growth itself.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

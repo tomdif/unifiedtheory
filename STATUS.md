@@ -387,6 +387,15 @@
 > conditional: the current symmetric vacuum still cannot select nonzero `Xi`,
 > and the Lorentzian continuum spin/Dirac reconstruction remains open. See
 > `WEAK_HANDEDNESS_DERIVATION_AUDIT.md` for the exact claim boundary.
+> `KFCausalSetFutureFrequencyHandedness.lean` now proves a unique conditional
+> absolute-sign law. Standard future positive-frequency evolution
+> `exp(-i E tau)` at a positive-energy quarter turn is exactly `-i`; only one
+> Bell-causal chiral character matches it, and that character has `y=-1/2`,
+> `Xi=+1`, and the nontrivial purely left-handed weak vertex. Reverse growth
+> time gives the reflected `+i`, `Xi=-1` mirror. The new physical input is
+> explicit: sequential growth has not yet been proved to realize its edge
+> character as this Hamiltonian phase, and positive energy by itself does not
+> select chirality.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
