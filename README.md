@@ -536,11 +536,21 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   growth law. Reflection sends `Xi` to `-Xi`, conjugates the phase, and swaps
   the kernel; `Xi=0` leaves every orientation energetically degenerate. This
   is a finite conditional closure of the sign bridge, not yet a derivation of
-  a preferred nonzero triple from growth. What remains open is deriving the
+  a preferred nonzero triple from growth.
+  `KFCausalSetChiralityGenerationNoGo.lean` settles the refinement half and
+  proves why the generation half cannot follow from the current assumptions.
+  The action-derived harmonic law induces the selected pure kernel at depth
+  two, and the cylinder observable `Xi_cyl=-2 Im D(0,1)` remains exactly `+1`
+  or `-1` through every finite projective refinement. But no reflection-
+  equivariant selector can send a reflection-fixed vacuum input to the
+  fixed-point-free two-element chirality space. Equal mixing of the two
+  reflected endpoints is exactly the strongly-positive mixed center `D_0`,
+  with zero orientation. Thus finite-depth symmetric growth transports a sign
+  perfectly but cannot create a preferred one. What remains open is deriving the
   two postulates—full event-slot exchangeability and the fractional-volume
-  bridge—plus proving that growth generates a nonzero relational source and
-  transports it covariantly under refinement, and obtaining a useful
-  all-parent condition bound.
+  bridge—plus adding or deriving either a reflection-odd microscopic action
+  term or an infinite-history symmetry-breaking boundary condition, and
+  obtaining a useful all-parent condition bound.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

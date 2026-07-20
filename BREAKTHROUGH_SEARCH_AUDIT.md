@@ -234,7 +234,20 @@ are stronger than another atomic-number identity:
     swaps the endpoint; at `Xi=0`, the energy vanishes for every `y`, proving
     exact nonselection. This closes the finite algebraic sign bridge conditional
     on a nonzero relational triple. It does not yet show that sequential growth
-    generates such a triple or transports its sign under refinement.
+    generates such a triple; refinement transport is settled by the next result.
+39. **Sequential growth transports chirality exactly but cannot generate a
+    preferred sign from its present vacuum:** the action-derived harmonic law
+    agrees with the elementary chiral law at the first branching depth, so its
+    cylinder observable `Xi_cyl=-2 Im D(0,1)` is exactly `+1` or `-1`. The
+    existing projective refinement maps preserve this value at every later
+    finite rank. Generation fails for a structural reason: an equivariant map
+    must send a reflection-fixed input to a reflection-fixed output, but the
+    two-element microscopic chirality reflection has no fixed point. Equal
+    mixing of the reflected endpoints produces exactly `D_0`, with determinant
+    `1/4` and no scalar-amplitude realization, rather than either sign. Hence
+    the current finite symmetric dynamics can transport but cannot prefer
+    chirality. A reflection-odd microscopic term or an infinite-history
+    symmetry-breaking boundary condition is mathematically necessary.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -245,7 +258,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 875 Lean files (874 below `UnifiedTheory/`). The search
+The repository contains 876 Lean files (875 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

@@ -5117,7 +5117,13 @@ import UnifiedTheory.Audit.KFCausalSetGeometricOrientationEntropyGap
 -- A nonzero cubic relational pseudoscalar supplies the missing finite sign:
 -- Xi selects phase -i sign(Xi), endpoint -sign(Xi)/2, and the unique minimum
 -- of energy Xi*y. Reflection conjugates the phase and swaps the endpoint;
--- Xi=0 proves exact nonselection. The preferred triple and its refinement law
--- remain additional physical data.
+-- Xi=0 proves exact nonselection. A preferred nonzero triple remains
+-- additional physical data; the next module settles its refinement transport.
 import UnifiedTheory.Audit.KFCausalSetRelationalChiralitySelection
+-- The sign is transported, but cannot be generated from the present symmetric
+-- vacuum. The action-derived depth-two cylinder sign Xi_cyl=-2y is preserved
+-- by every projective refinement. Conversely, no reflection-equivariant map
+-- can select a fixed-point-free chirality from a reflection-fixed input, and
+-- equal mixing of the two laws gives the mixed center D_0.
+import UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
 import UnifiedTheory.LayerC.ContextualFraction

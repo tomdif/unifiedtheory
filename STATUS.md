@@ -367,7 +367,15 @@
 > `E_Xi(y)=Xi*y` select the same endpoint projector and complete strongly-
 > positive harmonic growth sector. Reflection conjugates the phase and swaps
 > the endpoint, while `Xi=0` proves exact nonselection. A preferred nonzero
-> triple and refinement-covariant transport of this source are not derived.
+> triple is not derived; the next module settles refinement transport.
+> `KFCausalSetChiralityGenerationNoGo.lean` now proves exact transport and a
+> matching generation obstruction. The action-derived depth-two cylinder sign
+> `Xi_cyl=-2 Im D(0,1)` equals the supplied relational sign and is unchanged by
+> every finite projective refinement. However, no reflection-equivariant
+> selector can choose a fixed-point-free chirality from the reflection-fixed
+> vacuum action; the equal reflected mixture is exactly the strongly-positive
+> mixed center `D_0`. The current finite dynamics therefore transports but
+> cannot spontaneously generate a preferred sign.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
@@ -383,8 +391,9 @@
 > Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
 > Deriving both named postulates—full exchangeability and the fractional-volume
-> bridge—plus dynamical generation and refinement transport of the relational
-> sign source, and quantitative all-parent conditioning, remain open.
+> bridge—plus a reflection-odd microscopic action term or an infinite-history
+> symmetry-breaking construction, and quantitative all-parent conditioning,
+> remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -479,7 +488,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-874 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,628 jobs successful; its
+875 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,629 jobs successful; its
 immediate parent also passed a clean rebuild of 8,634 jobs (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
