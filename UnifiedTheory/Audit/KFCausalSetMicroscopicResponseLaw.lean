@@ -11,9 +11,13 @@
 
                          E_g(Xi,y) = g Xi y.
 
-  A nonzero effective drive has a unique minimum on the strongly-positive
-  interval |y| <= 1/2.  Its two possible signs select the two pure quarter-turn
-  endpoints.  Independently, elementary Born normalization, relation-
+  A nonzero effective drive has a unique auxiliary minimum on the full
+  strongly-positive interval |y| <= 1/2.  Its two possible signs select the
+  two pure quarter-turn endpoints.  This is not geometric attainment: the
+  causal-volume coordinate obeys the stronger uniform bound |y_geom| < 1/4
+  at every finite rank, so it remains strictly above the boundary energy and
+  cannot approach either endpoint.  Independently, elementary Born
+  normalization, relation-
   complement symmetry, the ancestor gauge, and independent composition
   classify every signature law as exactly one of the two chiral characters.
   Complex conjugation identifies those two complete cylinder theories.
@@ -52,6 +56,8 @@ open UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
 open UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 open UnifiedTheory.Audit.KFCausalSetGrowthArrowChirality
 open UnifiedTheory.Audit.KFCausalSetConjugationCompleteness
+open UnifiedTheory.Audit.KFCausalSetGeometricOrientationDynamics
+open UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
 
 /-! ## 1. The unique local reflection-even source interaction -/
 
@@ -154,10 +160,11 @@ theorem affineBilinear_localInteraction_unique
   simp [affineBilinearOrientationEnergy, bilinearOrientationEnergy,
     hConstant, hSourceBias, hOrientationBias]
 
-/-! ## 2. Nonzero drive uniquely selects a pure endpoint -/
+/-! ## 2. Nonzero drive uniquely selects a pure auxiliary endpoint -/
 
-/-- A selected orientation is the unique minimum of an energy on the full
-strong-positivity interval. -/
+/-- A selected orientation is the unique minimum of an energy on the abstract
+full strong-positivity interval.  This definition does not assert that the
+selected value lies in the image of the finite causal-volume geometry. -/
 def IsUniqueAdmissibleMinimum
     (energy : ℝ → ℝ) (selected : ℝ) : Prop :=
   IsAdmissibleOrientationParameter selected ∧
@@ -369,8 +376,8 @@ theorem chiralMultiplicativeSignatureWeight_isBalancedCompositional
         multiplicativeSignatureWeight, chiralMaximalEventPhase,
         Complex.normSq_apply]
 
-/-- The selected chiral endpoint is exactly the unique variational minimum
-whenever the effective drive is nonzero. -/
+/-- The selected chiral endpoint is exactly the unique auxiliary variational
+minimum whenever the effective drive is nonzero. -/
 theorem driveSelectedChirality_uniqueMinimum
     {coupling source : ℝ} (hDrive : coupling * source ≠ 0) :
     IsUniqueAdmissibleMinimum
@@ -388,7 +395,7 @@ theorem driveSelectedChirality_uniqueMinimum
       (bilinear_positiveDrive_uniqueMinimum hPositive)
 
 /-- A balanced compositional law is variationally compatible when its pure
-endpoint is the unique minimum of the local source energy. -/
+auxiliary endpoint is the unique minimum of the local source energy. -/
 def IsVariationallySelectedBalancedSignatureLaw
     (coupling source : ℝ) (weight : ℕ → ℕ → ℂ) : Prop :=
   IsBalancedCompositionalSignatureLaw weight ∧
@@ -431,7 +438,100 @@ theorem variationalResponse_uniqueBalancedSignatureLaw
       chiralBoundaryOrientationParameter_injective hParameter
     rw [hCharacter, hChirality]
 
-/-! ## 5. The geometric birth source activates the classified law -/
+/-! ## 5. Attainment audit: finite geometry never reaches the minimizer -/
+
+/-- The finite geometric orientation coordinate is uniformly distinct from
+either pure chiral boundary value.  This is stronger than finite-rank strict
+interiority: the geometric image lies in `(-1/4,1/4)`, while the character
+endpoints have absolute value `1/2`. -/
+theorem finiteGeometricOrientation_ne_chiralBoundary {n : ℕ}
+    (parent : CardinalCausalOrder n) (event : Fin n)
+    (chirality : Fin 2) :
+    ((causalOrientationDensityQ parent event : ℚ) : ℝ) ≠
+      chiralBoundaryOrientationParameter chirality := by
+  intro hEqual
+  have hGeometric := causalOrientationDensityR_abs_lt_quarter parent event
+  have hBoundary := chiralBoundaryOrientationParameter_endpoint chirality
+  rw [hEqual] at hGeometric
+  nlinarith
+
+/-- For nonzero drive, every finite geometric coordinate has strictly greater
+energy than the auxiliary pure endpoint.  Thus the variational theorem is a
+boundary-character selection theorem, not an attainment theorem for the
+causal-volume coordinate. -/
+theorem finiteGeometricOrientation_strictlyAbove_variationalIdeal {n : ℕ}
+    (parent : CardinalCausalOrder n) (event : Fin n)
+    {coupling source : ℝ} (hDrive : coupling * source ≠ 0) :
+    bilinearOrientationEnergy coupling source
+        (chiralBoundaryOrientationParameter
+          (driveSelectedChirality coupling source)) <
+      bilinearOrientationEnergy coupling source
+        ((causalOrientationDensityQ parent event : ℚ) : ℝ) := by
+  let geometric : ℝ :=
+    ((causalOrientationDensityQ parent event : ℚ) : ℝ)
+  let selected : ℝ :=
+    chiralBoundaryOrientationParameter
+      (driveSelectedChirality coupling source)
+  have hGeometricQuarter : |geometric| < (1 : ℝ) / 4 := by
+    simpa [geometric] using
+      (causalOrientationDensityR_abs_lt_quarter parent event)
+  have hGeometricAdmissible : IsAdmissibleOrientationParameter geometric := by
+    exact le_trans (le_of_lt hGeometricQuarter) (by norm_num)
+  have hMinimum : IsUniqueAdmissibleMinimum
+      (bilinearOrientationEnergy coupling source) selected := by
+    simpa [selected] using driveSelectedChirality_uniqueMinimum hDrive
+  have hComparison := hMinimum.2 geometric hGeometricAdmissible
+  have hNotEqual : geometric ≠ selected := by
+    simpa [geometric, selected] using
+      finiteGeometricOrientation_ne_chiralBoundary parent event
+        (driveSelectedChirality coupling source)
+  have hEnergyNotEqual :
+      bilinearOrientationEnergy coupling source geometric ≠
+        bilinearOrientationEnergy coupling source selected := by
+    intro hEnergy
+    exact hNotEqual (hComparison.2.mp hEnergy)
+  exact lt_of_le_of_ne hComparison.1 hEnergyNotEqual.symm
+
+/-- Direct resolution of the apparent birth-source tension.  The source is
+definitionally the newborn's geometric odd residual, but that same finite
+coordinate never attains the pure response minimum.  The phase character is
+therefore a quantum sign response to an interior geometric source. -/
+theorem maximalBirthGeometry_strictlyAbove_variationalIdeal {n : ℕ}
+    (parent : CardinalCausalOrder n) (past : CausalPastSet parent)
+    {coupling : ℝ}
+    (hDrive : coupling *
+      (((maximalBirthOrientationSourceQ parent past : ℚ) : ℝ)) ≠ 0) :
+    bilinearOrientationEnergy coupling
+        (((maximalBirthOrientationSourceQ parent past : ℚ) : ℝ))
+        (chiralBoundaryOrientationParameter
+          (driveSelectedChirality coupling
+            (((maximalBirthOrientationSourceQ parent past : ℚ) : ℝ)))) <
+      bilinearOrientationEnergy coupling
+        (((maximalBirthOrientationSourceQ parent past : ℚ) : ℝ))
+        (((causalOrientationDensityQ
+          (precursorOneElementExtension parent past) (Fin.last n) : ℚ) : ℝ)) := by
+  exact finiteGeometricOrientation_strictlyAbove_variationalIdeal
+    (precursorOneElementExtension parent past) (Fin.last n) hDrive
+
+/-- **Resolved architecture.**  The birth source and geometric odd residual
+are one and the same finite-rank datum, at every rank; nevertheless that datum
+is disjoint from both pure character endpoints.  Thus source unification does
+not imply order-parameter attainment. -/
+theorem maximalBirthSource_isGeometric_and_ne_quantumBoundary {n : ℕ}
+    (parent : CardinalCausalOrder n) (past : CausalPastSet parent) :
+    maximalBirthOrientationSourceQ parent past =
+        causalOrientationDensityQ
+          (precursorOneElementExtension parent past) (Fin.last n)
+      ∧ ∀ chirality : Fin 2,
+        (((maximalBirthOrientationSourceQ parent past : ℚ) : ℝ)) ≠
+          chiralBoundaryOrientationParameter chirality := by
+  refine ⟨maximalBirthSource_eq_geometricOrientationResidual parent past, ?_⟩
+  intro chirality
+  rw [maximalBirthSource_eq_geometricOrientationResidual]
+  exact finiteGeometricOrientation_ne_chiralBoundary
+    (precursorOneElementExtension parent past) (Fin.last n) chirality
+
+/-! ## 6. The geometric birth source activates the classified law -/
 
 /-- Coupling sign associated with a representative of the conjugation pair.
 Slot `1` is the standard future-growth convention. -/
@@ -461,9 +561,10 @@ theorem chiralResponseCoupling_matches_linkedBirth
   · simp [chiralResponseCoupling, bilinearSelectedPhase?, hPositive,
       chiralMaximalEventPhase]
 
-/-- On the standard representative, the unique variational endpoint, the
-quarter-turn phase, and the projectively transported cylinder sign are one
-theorem. -/
+/-- On the standard representative, the unique auxiliary variational endpoint,
+the quarter-turn phase, and the projectively transported cylinder sign are one
+theorem.  The attainment audit above keeps this distinct from the finite
+geometric coordinate. -/
 theorem linkedMaximalBirth_standardResponse_complete {n : ℕ}
     (parent : CardinalCausalOrder n) (past : CausalPastSet parent)
     {ancestor : Fin n} (hAncestor : past.mem ancestor = true) :
@@ -513,7 +614,7 @@ theorem linkedMinimalBirth_reflectedResponse_complete {n : ℕ}
   simp [bilinearSelectedPhase?, hNegative,
     not_lt_of_ge (le_of_lt hNegative)]
 
-/-! ## 6. Conjugation completeness of the newest harmonic action law -/
+/-! ## 7. Conjugation completeness of the newest harmonic action law -/
 
 /-- The real ancestor-pair interaction does not disturb the conjugation
 doublet: at every signature, conjugating only reverses chirality. -/
@@ -873,13 +974,17 @@ theorem microscopicAction_elementaryPhase_matches_linkedBirth
     chiralResponseCoupling_matches_linkedBirth
       chirality parent past hAncestor⟩
 
-/-! ## 7. Finite response completeness -/
+/-! ## 8. Finite response completeness -/
 
-/-- **Microscopic response completeness.**  The local energy has one
-bilinear coefficient; the balanced compositional edge law has exactly one of
-two representatives; every linked birth activates its representative's pure
-phase; and the complete cylinder quotient has only one conjugation-gauge
-sector.  Hence there is no remaining finite response function to choose.
+/-- **Microscopic response completeness.**  Within the affine-bilinear
+lowest-order ansatz, the local energy has one coefficient; the balanced
+compositional edge law has exactly one of two representatives; every linked
+birth activates its representative's pure phase; and the complete cylinder
+quotient has only one conjugation-gauge sector.  The pure endpoint is an
+auxiliary boundary optimum: every finite geometric coordinate has strictly
+higher energy and is uniformly separated from it.  Hence there is no
+remaining finite response function to choose inside the stated ansatz, but
+there is also no claim that finite geometry attains the endpoint.
 
 The open physics is now outside this theorem's hypotheses: deriving affine
 locality and elementary relation-complement symmetry from deeper dynamics,
@@ -906,6 +1011,14 @@ theorem finiteMicroscopicResponseLaw_complete
           ∃! selectedWeight : ℕ → ℕ → ℂ,
             IsVariationallySelectedBalancedSignatureLaw
               effectiveCoupling source selectedWeight)
+      ∧ (∀ {n : ℕ} (parent : CardinalCausalOrder n) (event : Fin n)
+          {effectiveCoupling source : ℝ},
+        effectiveCoupling * source ≠ 0 →
+          bilinearOrientationEnergy effectiveCoupling source
+              (chiralBoundaryOrientationParameter
+                (driveSelectedChirality effectiveCoupling source)) <
+            bilinearOrientationEnergy effectiveCoupling source
+              ((causalOrientationDensityQ parent event : ℚ) : ℝ))
       ∧ (∀ (chirality : Fin 2) {n : ℕ}
           (parent : CardinalCausalOrder n) (past : CausalPastSet parent)
           {ancestor : Fin n}, past.mem ancestor = true →
@@ -920,6 +1033,10 @@ theorem finiteMicroscopicResponseLaw_complete
       constant sourceBias orientationBias coupling hReflection hNeutral,
     balancedCompositionalSignatureLaw_classification weight hWeight,
     fun hDrive => variationalResponse_uniqueBalancedSignatureLaw hDrive,
+    fun {n} parent event {effectiveCoupling source} hDrive =>
+      finiteGeometricOrientation_strictlyAbove_variationalIdeal
+        (n := n) parent event
+        (coupling := effectiveCoupling) (source := source) hDrive,
     fun chirality _ parent past _ hAncestor =>
       chiralResponseCoupling_matches_linkedBirth
         chirality parent past hAncestor,
@@ -933,6 +1050,10 @@ theorem finiteMicroscopicResponseLaw_complete
 #print axioms balancedCompositionalSignatureLaw_classification
 #print axioms balancedCompositionalSignatureLaws_equal_or_conjugate
 #print axioms variationalResponse_uniqueBalancedSignatureLaw
+#print axioms finiteGeometricOrientation_ne_chiralBoundary
+#print axioms finiteGeometricOrientation_strictlyAbove_variationalIdeal
+#print axioms maximalBirthGeometry_strictlyAbove_variationalIdeal
+#print axioms maximalBirthSource_isGeometric_and_ne_quantumBoundary
 #print axioms chiralResponseCoupling_matches_linkedBirth
 #print axioms linkedMaximalBirth_standardResponse_complete
 #print axioms linkedMinimalBirth_reflectedResponse_complete

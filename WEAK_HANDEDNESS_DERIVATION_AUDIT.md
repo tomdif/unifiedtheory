@@ -145,7 +145,12 @@ global convention gives a subsingleton sector. Thus the last binary label is
 not a second cylinder-operational theory. `KFCausalSetMicroscopicResponseLaw.lean`
 additionally proves that the response is unique within the affine-local,
 neutral, reflection-invariant class and propagates the same conjugation result
-through the newest zero-free harmonic action law. What remains to derive is
+through the newest zero-free harmonic action law. Its minimizer is explicitly
+an auxiliary boundary optimum: finite causal-volume geometry obeys
+`|y_geom|<1/4`, cannot attain or converge to `+/-1/2`, and has strictly greater
+bilinear energy for every nonzero drive. Thus linked-birth phase activation is
+a sign-to-character quantum response to the interior source, not geometric
+endpoint attainment. What remains to derive is
 why the microscopic action belongs to that class and obeys elementary
 relation-complement symmetry, not an absolute printed sign of `i` or another
 response table.
@@ -165,9 +170,11 @@ dynamical selection postulates and one local response principle:
    `1/(n+1)` and all dimensional parameters cancel, but the identification is
    postulated rather than derived.
 3. **Minimal local response principle.** The maximal-birth source is coupled to
-   the orientation coordinate by an energy affine in both variables. Achiral
+   an auxiliary orientation coordinate by an energy affine in both variables. Achiral
    neutrality and simultaneous reflection then uniquely force
-   `E_g(Xi,y)=g Xi y`. Nonzero drive uniquely minimizes at a pure endpoint;
+   `E_g(Xi,y)=g Xi y`. Nonzero drive uniquely minimizes at a pure auxiliary
+   endpoint. The geometric coordinate itself stays in `|y_geom|<1/4` and the
+   formal attainment audit proves its energy is strictly higher;
    elementary relation-complement symmetry and composition leave exactly the
    `+i/-i` characters. `finiteMicroscopicResponseLaw_complete` joins those
    results to every linked birth. `completeMicroscopicActionConjugationEquivalence`

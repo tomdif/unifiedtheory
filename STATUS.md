@@ -440,7 +440,11 @@
 > neutrality uniquely remove the constant and one-variable terms, leaving
 > `E_g(Xi,y)=g Xi y`. A positive effective drive uniquely minimizes at
 > `y=-1/2`; a negative drive uniquely minimizes at `y=+1/2`; zero drive has no
-> phase. Elementary Born normalization plus relation-complement symmetry,
+> phase. This minimum is an auxiliary optimum on the abstract closed
+> positivity interval, not a finite geometric value. The geometric image has
+> the rank-uniform bound `|y_geom|<1/4`; the attainment audit now proves it is
+> distinct from both endpoints and has strictly greater energy for every
+> nonzero drive. Elementary Born normalization plus relation-complement symmetry,
 > ancestor gauge, and independent composition classify the corresponding
 > signature character as exactly one of the conjugate `+i/-i` pair. Every
 > linked birth activates its character's phase. The conjugation proof is also
@@ -481,7 +485,7 @@
 |---|---|---|
 | Full event-slot exchangeability | With unit normalization, forces the uniform local action density and harmonic additive charge | Strictly stronger than order-isomorphism covariance; covariance alone has a formal nonuniform counterexample |
 | Fractional-volume coupling bridge | Identifies the coupling increment with one-cell fractional number-volume growth, giving `1/(n+1)` with dimensional parameters canceled | The arithmetic and cancellations are derived; the coupling/volume identification is postulated |
-| Minimal local response law | Couples the derived newborn pseudoscalar to the orientation coordinate and the elementary quarter-turn character | Within the affine-local class, neutrality and reflection uniquely force `E_g(Xi,y)=g Xi y`; nonzero drive uniquely selects a pure endpoint, balance/composition leave exactly `+/-i`, and the two newest harmonic action laws are conjugation-equivalent at every cylinder depth. Deriving affine locality and relation-complement symmetry from deeper dynamics remains open |
+| Minimal local response law | Couples the derived newborn pseudoscalar to an auxiliary orientation coordinate and the elementary quarter-turn character | Within the affine-local lowest-order class, neutrality and reflection uniquely force `E_g(Xi,y)=g Xi y`; nonzero drive selects a pure auxiliary endpoint, while finite geometry remains uniformly in `|y_geom|<1/4` and strictly above that energy. Balance/composition leave exactly `+/-i`, and the two newest harmonic action laws are conjugation-equivalent at every cylinder depth. Deriving affine locality and relation-complement symmetry from deeper dynamics remains open |
 
 The separate continuum target is to reconstruct the Lorentzian spin bundle,
 Dirac operator, and scaling limit. It is not counted among the two finite

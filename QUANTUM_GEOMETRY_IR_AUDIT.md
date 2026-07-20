@@ -742,7 +742,13 @@ classification at a separate, explicit hypothesis boundary. In the general
 energy affine in the newborn pseudoscalar `Xi` and orientation coordinate `y`,
 simultaneous reflection and achiral neutrality uniquely force the bilinear
 form `E_g(Xi,y)=g Xi y`. Every nonzero drive has one pure minimum on
-`|y|<=1/2`; zero drive has no selected phase. Elementary normalization,
+the abstract interval `|y|<=1/2`; zero drive has no selected phase. The
+attainment question is now closed in the negative: every finite geometric
+coordinate satisfies the stronger rank-uniform bound `|y_geom|<1/4`, is
+distinct from both pure endpoints, and has strictly greater bilinear energy
+than the auxiliary minimizer. Therefore the response law selects a quantum
+boundary character from the sign of an interior source; it does not drive the
+geometric coordinate to the boundary, even asymptotically. Elementary normalization,
 relation-complement symmetry, ancestor gauge, and independent composition
 leave exactly the conjugate `+i/-i` characters. The linked-birth source
 activates the matching elementary phase, and complex conjugation is proved to
