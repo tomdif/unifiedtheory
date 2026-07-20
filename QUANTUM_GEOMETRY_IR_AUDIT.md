@@ -726,8 +726,16 @@ selects `Q_2=H_2=3/2`. `KFCausalSetMicroscopicSpectatorAction.lean` derives the
 additive law and seed together from a vacuum action on actual unlabeled growth
 histories: event-slot permutation covariance and unit normalization force
 density `1/(n+1)`, and accumulation gives `Q_n=H_n` on every path. The open
-step is deriving this local spectator-action principle from geometric causal
-microphysics and controlling conditioning outside the antichain benchmark.
+step has narrowed again. `KFCausalSetGeometricVolumeAction.lean` derives this
+source from the number-volume sector: `V_n=n v` makes every physical birth's
+normalized volume increment `1/(n+1)`, with both the nonzero cell scale and
+cosmological coupling canceling. It also proves that order covariance alone
+allows normalized nonuniform densities and that trace-free curvature is the
+exact obstruction to uniformity. Finite averaging is the unique
+total-preserving invariant volume projector; the complementary two-chain
+profile is exactly `(-1/6,+1/6)` and reflection odd. What remains is extending
+this split to dynamical higher-rank curvature/orientation transport and
+controlling conditioning outside the antichain benchmark.
 
 `KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from
 quantitative stability. It proves degree `<= n(n-1)` and coefficient height

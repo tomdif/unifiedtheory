@@ -316,9 +316,16 @@ step has now moved. `KFCausalSetMicroscopicSpectatorAction.lean` defines a local
 action density on the actual unlabeled growth histories. Invariance under every
 event-slot permutation and unit normalization force the newborn contribution
 `1/(n+1)`; summing from the empty causet derives the additive law,
-`Q_n=H_n`, and `Q_2=3/2`. The remaining problem is deriving that spectator-action
+`Q_n=H_n`, and `Q_2=3/2`. At that stage the remaining problem was deriving that spectator-action
 principle from geometric causal microphysics; all-parent conditioning also
-remains open.
+remains open. `KFCausalSetGeometricVolumeAction.lean` now closes the pure-volume
+part: `V_n=n v` and one-element growth give normalized increment `1/(n+1)`,
+independent of nonzero cell volume and cosmological coupling. It also proves
+that correct order covariance permits nonuniform geometric densities and that
+trace-free curvature is the exact obstruction to the harmonic profile. The
+unique total-preserving invariant projection is finite averaging; its two-chain
+residual is `(-1/6,+1/6)` and reflection odd. The remaining dynamics must extend
+this rank-two volume/orientation split to higher-rank curvature transport.
 
 The independent exact-binomial scan tracks the convergence and conditioning:
 
@@ -383,18 +390,19 @@ positive-rational family of explicit zero-free trajectories in the edgewise
 critical window. The exact multiplicity theorem shows that every finite-`kappa`
 member nevertheless fails coherent unlabeled antichain balance, while the harmonic
 rational construction gives a zero-free, strongly-positive trajectory in the
-logarithmically corrected window with limiting ratio `exp(-2gamma)`. It does not
-yet derive the local spectator-action principle from geometric microphysics or
-prove subexponential all-parent stability. Conditional on permutation covariance
-and unit normalization, the new vacuum action does derive the additive update
-and rank-two seed, and promotes them to the complete projective dynamics.
+logarithmically corrected window with limiting ratio `exp(-2gamma)`. The model
+now derives the local spectator action from causal-set number-volume and uniquely
+characterizes its invariant volume projector, but does not yet extend the
+reflection-odd residual into a complete higher-rank curvature/orientation law or
+prove subexponential all-parent stability. The vacuum action derives the additive
+update and rank-two seed and promotes them to the complete projective dynamics.
 Universal coefficient positivity is ruled out.
 The test replaces the former question “which constant coupling?” with the
 sharper problem:
 
-> Derive the relabeling-invariant unit spectator density from a geometric causal
-> action, and keep all-parent partition condition numbers subexponentially
-> controlled.
+> Extend the unique number-volume projection and its reflection-odd residual to
+> a dynamical higher-rank curvature/orientation channel, and keep all-parent
+> partition condition numbers subexponentially controlled.
 
 The next mathematical target is an RG transformation on the effective
 coupling and interference data, not another constant-coupling selection rule.

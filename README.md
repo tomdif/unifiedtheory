@@ -479,9 +479,21 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   forces the newborn action density `1/(n+1)`; summing it from the empty causet
   gives `Q_n=H_n` on every path and hence `Q_2=3/2`. The reconstructed coupling
   is the same all-parent zero-free, projective, strongly-positive law above.
-  What remains open is deriving this normalized spectator-action law from a
-  geometric causal action, obtaining a useful all-parent condition-number
-  bound, and selecting the reflection-odd sign/source.
+  `KFCausalSetGeometricVolumeAction.lean` now constructs that action from the
+  causal-set number-volume correspondence. With nonzero cell volume `v`, every
+  physical one-element birth has `V_(n+1)-V_n=v`; normalizing its local
+  cosmological-volume action by `V_(n+1)` gives `1/(n+1)`. Both `v` and any
+  nonzero cosmological coupling cancel, in direct agreement with the existing
+  parameter-free volume-ratio theorem. The same file proves the sharp limit:
+  correct order-isomorphism covariance admits normalized nonuniform densities,
+  and a trace-free curvature correction preserves normalization but is uniform
+  exactly when it vanishes pointwise. Finite averaging is furthermore the unique
+  total-preserving projection into the permutation-invariant volume sector. On
+  the two-chain its discarded centered profile is `(-1/6,+1/6)` and reverses
+  sign under endpoint reflection, giving a concrete geometric orientation
+  candidate. What remains open is extending that volume/orientation split to
+  a dynamical higher-rank curvature channel, obtaining a useful all-parent
+  condition-number bound, and selecting the reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

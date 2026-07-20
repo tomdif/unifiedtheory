@@ -339,8 +339,17 @@
 > unlabeled growth histories these conditions force density `1/(n+1)`;
 > vacuum accumulation proves path independence, `Q_n=H_n`, and `Q_2=3/2`.
 > The resulting transition is all-parent zero-free, projective, and strongly
-> positive. Deriving this spectator-action principle from geometric causal
-> microphysics and quantitative all-parent conditioning remain open.
+> positive. `KFCausalSetGeometricVolumeAction.lean` constructs the action from
+> causal-set number-volume: a physical birth adds one cell `v`, so its fraction
+> of the post-birth cosmological-volume action is `v/((n+1)v)=1/(n+1)`;
+> arbitrary nonzero cell volume and cosmological coupling cancel. It also proves
+> that order covariance alone permits normalized nonuniform profiles, and that
+> trace-free curvature is the exact obstruction to uniformity. Finite averaging
+> is the unique total-preserving invariant volume projector; on the two-chain
+> its centered residual is `(-1/6,+1/6)` and is reflection odd. The remaining
+> microscopic target is extending this exact rank-two split to dynamical
+> higher-rank curvature/orientation transport; quantitative all-parent
+> conditioning also remains open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -435,6 +444,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-869 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full build: 8,623 jobs successful (July 2026).
+870 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full build: 8,624 jobs successful (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

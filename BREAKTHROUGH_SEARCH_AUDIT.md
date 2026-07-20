@@ -177,6 +177,19 @@ are stronger than another atomic-number identity:
     `Q_n=H_n` on every history, including `Q_2=3/2`, and reconstructs the same
     all-parent zero-free, projective, strongly-positive chiral law with coherent
     limit `exp(-2gamma)`.
+34. **The harmonic action is the normalized causal-set volume channel:** writing
+    causal-set volume as `V_n=n v`, every physical one-element birth adds one
+    nonzero cell `v`, and its fraction of the post-birth cosmological-volume
+    action is exactly `1/(n+1)`; the cell scale and every nonzero cosmological
+    coupling cancel. This constructs the microscopic spectator action and hence
+    the complete harmonic quantum growth law. A complementary no-go proves that
+    genuine order-isomorphism covariance allows normalized nonuniform event
+    profiles, while a trace-free curvature correction preserves normalization
+    and is harmonic exactly when it vanishes pointwise. Finite averaging is the
+    unique total-preserving invariant volume projector, and the two-chain
+    residual `(-1/6,+1/6)` is reflection odd. The remaining selection problem
+    is therefore higher-rank curvature-to-orientation dynamics, not normalization
+    or covariance.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -187,7 +200,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 870 Lean files (869 below `UnifiedTheory/`). The search
+The repository contains 871 Lean files (870 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;
@@ -1350,11 +1363,37 @@ Q_2=H_2=3/2.
 The reconstructed pair coupling is definitionally connected to the complete
 chiral transition-edge dynamics. Lean proves all-parent zero-freeness,
 normalization, projective consistency, infinite-cylinder strong positivity,
-and coherent limit `exp(-2gamma)` for either chirality. The honest open
-microscopic question is narrower again: derive the relabeling-invariant,
+and coherent limit `exp(-2gamma)` for either chirality. At that stage the open
+microscopic question had narrowed to deriving the relabeling-invariant,
 unit-normalized spectator-action density from a geometric causal action rather
 than postulating that local principle. Subexponential all-parent condition
 control also remains open.
+
+`KFCausalSetGeometricVolumeAction.lean` closes that question for the pure volume
+sector. Causal-set number-volume assigns `V_n=n v` for an arbitrary nonzero
+microscopic cell volume. Every certified one-element growth edge satisfies
+
+```text
+V_(n+1)-V_n = v,
+(V_(n+1)-V_n)/V_(n+1) = 1/(n+1).
+```
+
+The same quotient is unchanged after multiplying the action by any nonzero
+cosmological coupling. It is also a direct specialization of the existing
+`VolumeFromCounting.volume_ratio_parameter_free` theorem, so the sprinkling
+density cancels independently. It therefore constructs the canonical spectator
+action and inherits its `Q_n=H_n`, all-parent zero-free, projective,
+strongly-positive dynamics. The boundary is also machine-checked. Inclusive
+past volume gives an order-isomorphism-covariant, normalized density on the
+two-chain with weights `(1/3,2/3)`, disproving the inference from discrete
+general covariance to arbitrary slot exchangeability. More generally, a
+trace-free curvature correction leaves total density one but reproduces the
+uniform volume profile iff it vanishes pointwise. Finite averaging is proved to
+be the unique total-preserving map into the fully permutation-invariant volume
+sector. On the two-chain the complementary centered profile is exactly
+`(-1/6,+1/6)` and reverses sign under endpoint reflection. Thus the remaining
+geometric frontier is extending this volume/orientation split to a dynamical
+higher-rank curvature channel.
 
 `UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean` closes the qualitative
 zero-safe-running part without pretending to select the dynamics. For every

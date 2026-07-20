@@ -5091,4 +5091,10 @@ import UnifiedTheory.Audit.KFCausalSetHarmonicRefinementLaw
 -- forces density 1/(n+1); summing from the empty causet derives Q_n=H_n,
 -- Q_2=3/2, and the complete zero-free projective harmonic dynamics.
 import UnifiedTheory.Audit.KFCausalSetMicroscopicSpectatorAction
+-- The microscopic action is constructed from causal-set number-volume:
+-- a one-element birth adds one nonzero volume cell, and dividing its local
+-- cosmological-volume action by the post-birth volume gives 1/(n+1). Correct
+-- order covariance alone is proved insufficient; trace-free curvature is the
+-- exact obstruction to the uniform harmonic source.
+import UnifiedTheory.Audit.KFCausalSetGeometricVolumeAction
 import UnifiedTheory.LayerC.ContextualFraction
