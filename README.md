@@ -1,6 +1,7 @@
 # Time is a Partial Order
 
-**One postulate. Two identifications. Zero free parameters. Machine-checked in Lean 4.**
+**Core algebraic proposal: one postulate, two identifications, zero fitted
+parameters. Machine-checked in Lean 4.**
 
 > **Current scope note (July 2026).** The finite-poset and matrix results are
 > machine-checked mathematics. The repository now constructs projective quantum
@@ -14,6 +15,9 @@
 > the executable audit in
 > [`QUANTUM_GEOMETRY_IR_AUDIT.md`](QUANTUM_GEOMETRY_IR_AUDIT.md) control quantum-
 > gravity and continuum claims.
+> The causal-growth extension has a separate three-principle ledger—event-slot
+> exchangeability, the fractional-volume bridge, and oriented clock/birth
+> alignment—so the core slogan is not a count of the full dynamical inputs.
 
 The repository formally verifies a proposed chain from a locally finite partial order
 to Standard Model structures and numerical identifications. The finite algebraic steps
@@ -24,7 +28,9 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
 
 ## What Is Derived
 
-**From one postulate** (spacetime is a locally finite partial order), **two identifications** (λ_H = γ₄²/2 and v = M_P exp(-c/g²)), and **one scale** (M_P):
+**In the core finite proposal, from one postulate** (spacetime is a locally
+finite partial order), **two identifications** (λ_H = γ₄²/2 and
+v = M_P exp(-c/g²)), and **one scale** (M_P):
 
 ### Structure (Layer 1 — unconditional algebra)
 
@@ -546,11 +552,14 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   fixed-point-free two-element chirality space. Equal mixing of the two
   reflected endpoints is exactly the strongly-positive mixed center `D_0`,
   with zero orientation. Thus finite-depth symmetric growth transports a sign
-  perfectly but cannot create a preferred one. What remains open is deriving the
-  two postulates—full event-slot exchangeability and the fractional-volume
-  bridge—plus adding or deriving either a reflection-odd microscopic action
-  term or an infinite-history symmetry-breaking boundary condition, and
-  obtaining a useful all-parent condition bound.
+  perfectly but cannot create a preferred one. The causal-growth ledger has
+  three named principles: full event-slot exchangeability, the
+  fractional-volume bridge, and the oriented clock/birth alignment described
+  below. The first two select the harmonic law; the third connects a reflected
+  clock branch to the chiral birth character. Deriving them, or replacing the
+  third by a reflection-odd microscopic action or infinite-history
+  symmetry-breaking construction, and obtaining a useful all-parent condition
+  bound remain open.
   `KFCausalSetWeakHandednessBridge.lean` now promotes that transported sign to
   an explicit Dirac-spinor weak doublet without conflating Weyl spin and weak
   isospin. It proves the standard gamma-five grading, the complexified
@@ -566,26 +575,28 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   no-go proves that the present reflection-fixed vacuum cannot generate the
   required nonzero branch. The exact claim ledger is in
   [`WEAK_HANDEDNESS_DERIVATION_AUDIT.md`](WEAK_HANDEDNESS_DERIVATION_AUDIT.md).
-  `KFCausalSetFutureFrequencyHandedness.lean` now constructs the finite
-  positive-frequency law rather than merely parameterizing it. The native
-  two-route quotient-curvature Hamiltonian has spectrum `-1,+1`; requiring its
-  lower sector to have exactly zero energy uniquely fixes the shift
-  `H_plus=1+H=2P_plus`, so the relevant phase is not chosen by an arbitrary
-  additive constant. Its spectral flow is unitary for every time, the initial
-  route has mean energy `1`, and its first orthogonal transition occurs at
-  `tau=pi/2`, exactly saturating the two-level positive-energy speed limit and
-  producing `path13 -> -i path22`. Independent composition uniquely extends
-  this generated coefficient to the chiral signature weight; normalization
-  then gives a strongly positive, projectively consistent unlabeled growth
-  law whose induced `y=-1/2`, `Xi=+1` sign is unchanged by every finite
-  refinement and yields the exact nontrivial left-handed weak vertex. Reverse
-  time gives the reflected `+i`, right-handed law. The theorem remains finite
-  and conditional on identifying an elementary maximal birth with this first
-  orthogonal route transition. Deriving that clock/birth identification from
-  the general all-rank causal action, and reconstructing the continuum
-  Lorentzian Dirac field, remain open. The relative lock among future time,
-  complex structure, causal orientation, and gamma-five—not the printed sign
-  of `i` in isolation—is the physical claim.
+  `KFCausalSetFutureFrequencyHandedness.lean` now stress-tests the finite clock
+  construction. For a fixed oriented quotient-curvature operator `H`, it
+  proves `aI+H` is positive semidefinite exactly for `a>=1`, so zero-ground
+  normalization uniquely gives the minimal shift `H_plus=1+H=2P_plus`.
+  The spectrum is nondegenerate, the flow is unitary, both routes have the same
+  survival amplitude, and the first orthogonal transition is at `tau=pi/2`,
+  where `path13 -> -i path22`. Reflection exposes the decisive boundary:
+  `H_minus=1-H=2P_minus` is equally positive and zero-ground, has the same
+  first orthogonal time, and gives `path13 -> +i path22`. Each coefficient
+  extends to a normalized, strongly positive, projectively consistent
+  unlabeled growth law; the two laws transport `Xi=+1` and `Xi=-1`
+  respectively through every finite refinement. Thus the construction yields
+  a reflection doublet, not an absolute sign. The third named principle is an
+  **oriented clock/birth alignment**: identify a maximal birth with the first
+  orthogonal route transition and align the future growth clock with one of
+  the reflected ground/excited assignments. The existing symmetric axioms do
+  not select that alignment. The geometric channel cannot close the gap even
+  asymptotically: its rank-independent `|y|<1/4` bound keeps it uniformly away
+  from the pure `+/-1/2` birth endpoints. A continuum Lorentzian Dirac
+  reconstruction remains open. The relative lock among time, complex
+  structure, causal orientation, and gamma-five—not the printed sign of `i`
+  in isolation—is the supported physical claim.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

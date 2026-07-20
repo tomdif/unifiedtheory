@@ -1,48 +1,52 @@
 /-
   Audit/KFCausalSetFutureFrequencyHandedness.lean
 
-  FUTURE POSITIVE FREQUENCY SELECTS THE LEFT-HANDED ENDPOINT
+  CLOCK/BIRTH HANDEDNESS AND THE REFLECTION TRIPWIRE
 
   The preceding chirality-generation no-go is exact: a reflection-fixed
   vacuum cannot choose between the two phases `+i` and `-i`.  This file tests
-  a minimal way to escape that obstruction without inserting `left` as a
-  sign-valued boundary condition.
+  a proposed clock mechanism and then runs it through that obstruction.  The
+  result is a reflection doublet, not an escape from the no-go.
 
-  Sections 1--4 isolate a microscopic bridge law: one elementary,
+  Sections 1--4 isolate a branch-relative microscopic bridge law: one elementary,
   future-directed growth step is represented by the standard
   positive-frequency unitary phase
 
       U(E, tau) = exp(-i E tau),       E > 0, tau > 0,
 
   in units with hbar = 1.  At the elementary quarter turn `E tau = pi/2`, this
-  law forces `U = -i`; its complex conjugate `+i` is the reverse-time phase.
+  convention gives `U = -i`; its complex conjugate is `+i`.
 
   The repository had already proved the independent causal dictionary
 
       phase -i  <->  y = -1/2  <->  Xi = -2y = +1
                 <->  P_weak(Xi) = P_L.
 
-  Sections 5--8 then derive that phase inside the finite causal route sector.
-  The quotient-curvature operator has spectrum `-1,+1`.  Requiring its lower
-  sector to have exactly zero energy uniquely fixes the identity shift and
-  gives the positive Hamiltonian `H_plus = 1+H = 2P_plus`.  Its unitary spectral
-  flow has a first orthogonal transition at `pi/2`, where it sends the first
-  route to `-i` times the second.  Independent composition uniquely extends
-  this coefficient to the chiral signature weight.  The resulting unlabeled
-  sequential-growth law is normalized, strongly positive, projectively
-  consistent, and transports `Xi=+1` through every finite refinement.
+  Sections 5--9 stress-test that phase inside the finite causal route sector.
+  For fixed oriented curvature operator `H`, positivity and zero-ground
+  normalization uniquely give `H_plus = 1+H = 2P_plus`; its nondegenerate
+  unitary flow first orthogonalizes at `pi/2` and sends the first route to
+  `-i` times the second.  But reflection replaces `H` by `-H` and gives the
+  equally positive, zero-ground Hamiltonian `H_minus = 1-H = 2P_minus`.
+  Its first orthogonal transition occurs at the same time with coefficient
+  `+i`.  Both coefficients extend to normalized, strongly positive,
+  projectively consistent unlabeled growth laws and transport opposite
+  nonzero cylinder signs through every finite refinement.
 
-  The remaining physical identification is stated rather than hidden: an
-  elementary maximal birth is identified with this first orthogonal route
-  transition.  The partial-order axioms alone do not force that clock/birth
-  identification, and no continuum Lorentzian Dirac field is reconstructed
-  here.  Within that finite identification, however, neither `left`, `-i`, nor
-  a chirality slot is supplied as boundary data.
+  Thus positive frequency, positivity, ground-zero normalization, and clock
+  minimality do not select an absolute sign.  The exact remaining input is an
+  *oriented clock/birth alignment*: which reflected holonomy sector is ground,
+  together with identifying a maximal birth with the first orthogonal route
+  transition.  The future accretion arrow may motivate that alignment, but the
+  present all-rank growth axioms do not derive it.  This is precisely what the
+  prior reflection no-go requires.  No continuum Lorentzian Dirac field is
+  reconstructed here.
 
   Zero sorry. Zero custom axioms.
 -/
 
 import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
+import UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
 import UnifiedTheory.Audit.KFOrientationPathQuantum
 import UnifiedTheory.LayerB.MargolusLevitinTight
 
@@ -60,6 +64,9 @@ open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 open UnifiedTheory.Audit.KFCausalSetOrientationRestriction
 open UnifiedTheory.Audit.KFCausalSetChiralGrowth
 open UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
+open UnifiedTheory.Audit.KFCausalSetGeometricOrientationDynamics
+open UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
+open UnifiedTheory.Audit.KFCausalSetMicroscopicSpectatorAction
 open UnifiedTheory.Audit.KFOrientationGrowthDecoherence
 open UnifiedTheory.Audit.KFOrientationHistoryRigidity
 open UnifiedTheory.Audit.KFOrientationHigherRankDecoherence
@@ -186,7 +193,7 @@ theorem reverseTimePhase_selects_reflected_character
   · norm_num [chiralBoundaryOrientationParameter,
       chiralMaximalEventPhase]
 
-/-! ## 3. Promotion to nature's observed weak-handedness convention -/
+/-! ## 3. Promotion on the chosen positive-oriented branch -/
 
 /-- The unique future-positive-frequency endpoint gives exactly the standard
 left Weyl projector. -/
@@ -230,12 +237,14 @@ theorem futurePositiveFrequency_matched_character_is_left
   rw [futurePositiveFrequency_selects_leftWeakVertex]
   exact standard_charged_current_is_nontrivial_purely_left
 
-/-- **Conditional absolute-handedness theorem.**
+/-- **Branch-relative handedness theorem.**
 
-Once the intrinsic future growth arrow is required to carry the standard
-positive-frequency phase, a positive-energy elementary quarter turn uniquely
-matches one microscopic chiral character.  That character has `Xi = +1` and
-produces a nontrivial purely left-handed charged weak current. -/
+Once an oriented clock is required to carry the displayed positive-frequency
+phase, a positive-energy elementary quarter turn uniquely matches one
+microscopic chiral character.  That character has `Xi = +1` and produces a
+nontrivial purely left-handed charged weak current.  Section 7 proves that the
+reflected oriented clock satisfies the same reflection-even requirements and
+selects the opposite character. -/
 theorem future_positive_frequency_derives_left_handed_weak_interaction
     (energy properTime : ℝ)
     (hEnergy : 0 < energy) (hTime : 0 < properTime)
@@ -343,6 +352,50 @@ theorem causalPositiveOrientationHamiltonian_posSemidef :
   have hTwo : (0 : ℝ) ≤ 2 := by norm_num
   exact positiveOrientationProjector_isPathDensity.2.1.smul hTwo
 
+/-- Complete identity-shift stress test.  For the fixed oriented operator `H`,
+`offset*I+H` is positive semidefinite exactly when `offset >= 1`; hence the
+zero-ground choice is also the unique minimal positive shift.  This theorem is
+deliberately scoped to fixed `H`: reflection replaces `H` by `-H`, a distinct
+ambiguity handled below. -/
+theorem causalOrientationHamiltonianShift_posSemidef_iff (offset : ℝ) :
+    (causalOrientationHamiltonianShift offset).PosSemidef ↔ 1 ≤ offset := by
+  constructor
+  · intro hPos
+    let witness : Fin 2 → ℂ := ![(1 : ℂ), -Complex.I]
+    have hQuadratic := hPos.dotProduct_mulVec_nonneg witness
+    have hValue :
+        star witness ⬝ᵥ
+            (causalOrientationHamiltonianShift offset *ᵥ witness) =
+          ((2 * (offset - 1) : ℝ) : ℂ) := by
+      unfold witness causalOrientationHamiltonianShift
+      rw [quotientCurvatureHamiltonian_exact]
+      simp only [dotProduct, Matrix.mulVec, Fin.sum_univ_two,
+        Pi.star_apply]
+      norm_num [Fin.ext_iff, Complex.I_sq]
+      ring_nf
+      rw [Complex.I_sq]
+      ring
+    rw [hValue] at hQuadratic
+    have hReal : 0 ≤ 2 * (offset - 1) :=
+      (Complex.nonneg_iff.mp hQuadratic).1
+    linarith
+  · intro hOffset
+    have hScalar :
+        (((offset - 1 : ℝ) : ℂ) • (1 : SquareMatrix 2)).PosSemidef := by
+      have hNonnegative : (0 : ℂ) ≤ ((offset - 1 : ℝ) : ℂ) := by
+        rw [Complex.nonneg_iff]
+        exact ⟨by simpa using sub_nonneg.mpr hOffset, by simp⟩
+      exact Matrix.PosSemidef.one.smul hNonnegative
+    have hDecomposition :
+        causalOrientationHamiltonianShift offset =
+          ((offset - 1 : ℝ) : ℂ) • (1 : SquareMatrix 2) +
+            causalPositiveOrientationHamiltonian := by
+      unfold causalOrientationHamiltonianShift
+        causalPositiveOrientationHamiltonian
+      module
+    rw [hDecomposition]
+    exact hScalar.add causalPositiveOrientationHamiltonian_posSemidef
+
 /-- The positive holonomy sector has energy `2`. -/
 theorem causalPositiveOrientationHamiltonian_positiveKet :
     causalPositiveOrientationHamiltonian * positiveHolonomyKet =
@@ -357,6 +410,23 @@ theorem causalPositiveOrientationHamiltonian_negativeKet :
   unfold causalPositiveOrientationHamiltonian
   rw [Matrix.add_mul, Matrix.one_mul, quotientCurvature_negativeKet]
   module
+
+/-- The fixed branch has a genuine nondegenerate two-level spectrum: the
+normalized orthogonal holonomy basis carries distinct energies `2` and `0`.
+Thus no spectral degeneracy is hidden in the quarter-time argument. -/
+theorem causalPositiveOrientationHamiltonian_nondegenerate_spectralPair :
+    ketInner positiveHolonomyKet positiveHolonomyKet = 1
+      ∧ ketInner negativeHolonomyKet negativeHolonomyKet = 1
+      ∧ ketInner positiveHolonomyKet negativeHolonomyKet = 0
+      ∧ causalPositiveOrientationHamiltonian * positiveHolonomyKet =
+          (2 : ℂ) • positiveHolonomyKet
+      ∧ causalPositiveOrientationHamiltonian * negativeHolonomyKet = 0
+      ∧ (2 : ℂ) ≠ 0 := by
+  exact ⟨positiveHolonomyKet_normalized,
+    negativeHolonomyKet_normalized,
+    holonomyKets_orthogonal,
+    causalPositiveOrientationHamiltonian_positiveKet,
+    causalPositiveOrientationHamiltonian_negativeKet, by norm_num⟩
 
 /-- The first causal route is the equal superposition of the ground and
 excited holonomy eigenstates. -/
@@ -510,6 +580,19 @@ theorem causalPositive_excitedPhase_quarter :
     rw [show -2 * (Real.pi / 2) = -Real.pi by ring]
     simp [Real.sin_neg, Real.sin_pi]
 
+/-- At the negative quarter time the energy-2 eigenphase is still `-1`.
+Consequently reversing the parameter of this same concrete half-period
+evolution does not produce the conjugate route coefficient. -/
+theorem causalPositive_excitedPhase_negativeQuarter :
+    Complex.exp (((-2 * (-(Real.pi / 2)) : ℝ) : ℂ) * Complex.I) = -1 := by
+  apply Complex.ext
+  · rw [Complex.exp_ofReal_mul_I_re]
+    rw [show -2 * (-(Real.pi / 2)) = Real.pi by ring]
+    simp [Real.cos_pi]
+  · rw [Complex.exp_ofReal_mul_I_im]
+    rw [show -2 * (-(Real.pi / 2)) = Real.pi by ring]
+    simp [Real.sin_pi]
+
 /-- The positive Hamiltonian's quarter-time unitary is `-H_orientation`. -/
 theorem causalPositiveOrientationEvolution_quarter :
     causalPositiveOrientationEvolution (Real.pi / 2) =
@@ -518,6 +601,28 @@ theorem causalPositiveOrientationEvolution_quarter :
   rw [causalPositive_excitedPhase_quarter]
   unfold positiveOrientationProjector negativeOrientationProjector
   module
+
+/-- The same `H_plus` evolution at negative quarter time equals its positive
+quarter-time value.  The `+i` route transition therefore comes from the
+reflected ground/excited assignment `H_minus`, not merely from replacing
+`time` by `-time` while holding `H_plus` fixed. -/
+theorem causalPositiveOrientationEvolution_negativeQuarter :
+    causalPositiveOrientationEvolution (-(Real.pi / 2)) =
+      -quotientCurvatureHamiltonian := by
+  unfold causalPositiveOrientationEvolution
+  rw [causalPositive_excitedPhase_negativeQuarter]
+  unfold positiveOrientationProjector negativeOrientationProjector
+  module
+
+theorem causalPositiveOrientationEvolution_negativeQuarter_path13 :
+    causalPositiveOrientationEvolution (-(Real.pi / 2)) * path13Ket =
+      (-Complex.I) • path22Ket := by
+  rw [causalPositiveOrientationEvolution_negativeQuarter,
+    quotientCurvatureHamiltonian_exact]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [path13Ket, path22Ket, Matrix.mul_apply,
+      Fin.sum_univ_succ, Fin.ext_iff, Complex.I_sq]
 
 /-- **Dynamical phase selection.**  The positive causal Hamiltonian sends the
 first route to the orthogonal second route with coefficient exactly `-i`. -/
@@ -599,6 +704,26 @@ theorem causalOrientationEnergySpectrum_survival_eq_pathOverlap (time : ℝ) :
     exact hFirstComponent
   rw [hSpectrum, hPath]
 
+/-- Both designated causal routes have the same survival amplitude under the
+fixed Hamiltonian.  Therefore changing the initial route cannot produce an
+earlier orthogonalization hidden from the `path13` calculation. -/
+theorem causalPositiveOrientationEvolution_pathSurvival_equal (time : ℝ) :
+    ketInner path22Ket
+        (causalPositiveOrientationEvolution time * path22Ket) =
+      ketInner path13Ket
+        (causalPositiveOrientationEvolution time * path13Ket) := by
+  have hComponents :
+      causalPositiveOrientationEvolution time 1 1 =
+        causalPositiveOrientationEvolution time 0 0 := by
+    unfold causalPositiveOrientationEvolution
+      positiveOrientationProjector negativeOrientationProjector
+    rw [quotientCurvatureHamiltonian_exact]
+    norm_num [Matrix.one_apply, Fin.ext_iff]
+  unfold ketInner
+  simp only [Matrix.mul_apply, Fin.sum_univ_two]
+  norm_num [path13Ket, path22Ket, Matrix.conjTranspose_apply, Fin.ext_iff]
+  exact hComponents
+
 theorem causalOrientationEnergySpectrum_meanEnergy :
     causalOrientationEnergySpectrum.energyExpectation = 1 := by
   unfold causalOrientationEnergySpectrum
@@ -664,10 +789,271 @@ theorem causalPositiveOrientationEvolution_firstOrthogonal
   exact causalOrientationBirth_quarter_is_minimal time hTime
     (congrArg Complex.re hSurvival) (congrArg Complex.im hSurvival)
 
-/-! ## 7. Unconditional finite sign promotion -/
+theorem causalPositiveOrientationEvolution_path22_firstOrthogonal
+    (time : ℝ) (hTime : 0 ≤ time)
+    (hOrthogonal :
+      ketInner path22Ket
+        (causalPositiveOrientationEvolution time * path22Ket) = 0) :
+    Real.pi / 2 ≤ time := by
+  apply causalPositiveOrientationEvolution_firstOrthogonal time hTime
+  rw [← causalPositiveOrientationEvolution_pathSurvival_equal]
+  exact hOrthogonal
 
-/-- The dynamically generated transition coefficient matches exactly one
-Bell-causal microscopic chirality, and it is the left-selecting slot. -/
+/-! ## 7. Reflection tripwire: ground-zero and minimality leave a pair
+
+The fixed-orientation results above remove two genuine sources of slack: the
+identity shift is uniquely minimal and the first orthogonal time is exactly
+`pi/2`.  They do not choose an absolute orientation.  Reflection replaces
+`H` by `-H`, exchanges the two spectral projectors, and produces an equally
+positive ground-zero Hamiltonian whose quarter transition has the conjugate
+coefficient.  This is the precise point at which the earlier vacuum
+reflection no-go continues to apply. -/
+
+/-- Reflection partner of the positive-oriented Hamiltonian. -/
+def causalReflectedOrientationHamiltonian : SquareMatrix 2 :=
+  1 - quotientCurvatureHamiltonian
+
+theorem causalReflectedOrientationHamiltonian_eq_projector :
+    causalReflectedOrientationHamiltonian =
+      (2 : ℝ) • negativeOrientationProjector := by
+  unfold causalReflectedOrientationHamiltonian negativeOrientationProjector
+  module
+
+theorem causalReflectedOrientationHamiltonian_posSemidef :
+    causalReflectedOrientationHamiltonian.PosSemidef := by
+  rw [causalReflectedOrientationHamiltonian_eq_projector]
+  have hTwo : (0 : ℝ) ≤ 2 := by norm_num
+  exact negativeOrientationProjector_isPathDensity.2.1.smul hTwo
+
+/-- In the reflected branch the positive holonomy ket is the zero-energy
+ground state. -/
+theorem causalReflectedOrientationHamiltonian_positiveKet :
+    causalReflectedOrientationHamiltonian * positiveHolonomyKet = 0 := by
+  unfold causalReflectedOrientationHamiltonian
+  rw [Matrix.sub_mul, Matrix.one_mul, quotientCurvature_positiveKet]
+  module
+
+/-- The reflected negative holonomy sector has energy `2`. -/
+theorem causalReflectedOrientationHamiltonian_negativeKet :
+    causalReflectedOrientationHamiltonian * negativeHolonomyKet =
+      (2 : ℂ) • negativeHolonomyKet := by
+  unfold causalReflectedOrientationHamiltonian
+  rw [Matrix.sub_mul, Matrix.one_mul, quotientCurvature_negativeKet]
+  module
+
+theorem causalPositive_reflectedHamiltonians_ne :
+    causalPositiveOrientationHamiltonian ≠
+      causalReflectedOrientationHamiltonian := by
+  intro hEqual
+  have hEntry := congrFun (congrFun hEqual 0) 1
+  norm_num [causalPositiveOrientationHamiltonian,
+    causalReflectedOrientationHamiltonian,
+    quotientCurvatureHamiltonian_exact] at hEntry
+  have hImaginary := congrArg Complex.im hEntry
+  norm_num at hImaginary
+
+/-- Positive-frequency spectral evolution of the reflected ground/excited
+assignment. -/
+def causalReflectedOrientationEvolution (time : ℝ) : SquareMatrix 2 :=
+  Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I) •
+      negativeOrientationProjector +
+    positiveOrientationProjector
+
+theorem causalReflectedOrientationEvolution_conjTranspose (time : ℝ) :
+    (causalReflectedOrientationEvolution time)ᴴ =
+      star (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)) •
+          negativeOrientationProjector +
+        positiveOrientationProjector := by
+  unfold causalReflectedOrientationEvolution
+  rw [Matrix.conjTranspose_add, Matrix.conjTranspose_smul]
+  simp [(positiveOrientationProjector_isPathDensity.1).eq,
+    (negativeOrientationProjector_isPathDensity.1).eq]
+
+theorem causalReflectedOrientationEvolution_unitary (time : ℝ) :
+    (causalReflectedOrientationEvolution time)ᴴ *
+        causalReflectedOrientationEvolution time = 1 := by
+  rw [causalReflectedOrientationEvolution_conjTranspose]
+  unfold causalReflectedOrientationEvolution
+  simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul,
+    Matrix.mul_smul]
+  rw [negativeOrientationProjector_idempotent,
+    orientationProjectors_orthogonal_reverse,
+    orientationProjectors_orthogonal,
+    positiveOrientationProjector_idempotent]
+  simp only [smul_zero, add_zero, zero_add, smul_smul]
+  rw [mul_comm
+    (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I))
+    (star (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)))]
+  rw [causalPositive_excitedPhase_star_mul]
+  simp only [one_smul]
+  rw [add_comm]
+  exact orientationProjectors_sum
+
+theorem causalReflectedOrientationEvolution_quarter :
+    causalReflectedOrientationEvolution (Real.pi / 2) =
+      quotientCurvatureHamiltonian := by
+  unfold causalReflectedOrientationEvolution
+  rw [causalPositive_excitedPhase_quarter]
+  unfold positiveOrientationProjector negativeOrientationProjector
+  module
+
+/-- The reflected but still positive-frequency clock produces the conjugate
+transition coefficient `+i`. -/
+theorem causalReflectedOrientationEvolution_quarter_path13 :
+    causalReflectedOrientationEvolution (Real.pi / 2) * path13Ket =
+      Complex.I • path22Ket := by
+  rw [causalReflectedOrientationEvolution_quarter,
+    quotientCurvatureHamiltonian_exact]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [path13Ket, path22Ket, Matrix.mul_apply,
+      Fin.sum_univ_succ, Fin.ext_iff, Complex.I_sq]
+
+/-- Coefficient of the elementary transition from the first causal route to
+the second. -/
+def elementaryClockBirthCoefficient (evolution : SquareMatrix 2) : ℂ :=
+  ketInner path22Ket (evolution * path13Ket)
+
+theorem positiveClockBirthCoefficient_eq_negI :
+    elementaryClockBirthCoefficient
+        (causalPositiveOrientationEvolution (Real.pi / 2)) =
+      -Complex.I := by
+  unfold elementaryClockBirthCoefficient
+  rw [causalPositiveOrientationEvolution_quarter_path13]
+  norm_num [ketInner, path22Ket, Matrix.mul_apply,
+    Matrix.conjTranspose_apply, Fin.sum_univ_succ, Fin.ext_iff]
+
+theorem reflectedClockBirthCoefficient_eq_posI :
+    elementaryClockBirthCoefficient
+        (causalReflectedOrientationEvolution (Real.pi / 2)) =
+      Complex.I := by
+  unfold elementaryClockBirthCoefficient
+  rw [causalReflectedOrientationEvolution_quarter_path13]
+  norm_num [ketInner, path22Ket, Matrix.mul_apply,
+    Matrix.conjTranspose_apply, Fin.sum_univ_succ, Fin.ext_iff]
+
+/-- The third named microscopic principle in its exact theorem-level shape:
+the maximal-event signature character is identified with the first
+orthogonal causal-route transition coefficient.  The definition does not
+choose a sign; the oriented evolution supplied to it does. -/
+def SatisfiesClockBirthIdentification
+    (evolution : SquareMatrix 2) (weight : ℕ → ℕ → ℂ) : Prop :=
+  weight 0 1 = elementaryClockBirthCoefficient evolution
+
+theorem positiveClockBirthIdentification :
+    SatisfiesClockBirthIdentification
+      (causalPositiveOrientationEvolution (Real.pi / 2))
+      (chiralMultiplicativeSignatureWeight 1) := by
+  unfold SatisfiesClockBirthIdentification
+  rw [positiveClockBirthCoefficient_eq_negI]
+  norm_num [chiralMultiplicativeSignatureWeight,
+    multiplicativeSignatureWeight, chiralMaximalEventPhase]
+
+theorem reflectedClockBirthIdentification :
+    SatisfiesClockBirthIdentification
+      (causalReflectedOrientationEvolution (Real.pi / 2))
+      (chiralMultiplicativeSignatureWeight 0) := by
+  unfold SatisfiesClockBirthIdentification
+  rw [reflectedClockBirthCoefficient_eq_posI]
+  norm_num [chiralMultiplicativeSignatureWeight,
+    multiplicativeSignatureWeight, chiralMaximalEventPhase]
+
+/-- The reflected route has the same survival amplitude, so it has exactly the
+same first orthogonal time despite producing the opposite transition phase. -/
+theorem causalReflectedOrientationEnergySpectrum_survival_eq_pathOverlap
+    (time : ℝ) :
+    causalOrientationEnergySpectrum.survivalAmplitude time =
+      ketInner path13Ket
+        (causalReflectedOrientationEvolution time * path13Ket) := by
+  let phase : ℂ :=
+    Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)
+  have hSpectrum :
+      causalOrientationEnergySpectrum.survivalAmplitude time =
+        (1 + phase) / 2 := by
+    unfold causalOrientationEnergySpectrum saturatingSpectrum
+      EnergySpectrum.survivalAmplitude
+    rw [Fin.sum_univ_two]
+    simp only [Fin.isValue, if_true,
+      show ((1 : Fin 2) = 0) = False from by decide, if_false]
+    have hPhase :
+        Complex.exp
+            (-Complex.I * (((2 : ℝ) : ℂ)) * (time : ℂ)) = phase := by
+      unfold phase
+      congr 1
+      push_cast
+      ring
+    rw [hPhase]
+    norm_num
+    ring
+  have hPath :
+      ketInner path13Ket
+          (causalReflectedOrientationEvolution time * path13Ket) =
+        (1 + phase) / 2 := by
+    have hFirstComponent :
+        (causalReflectedOrientationEvolution time * path13Ket) 0 0 =
+          (1 + phase) / 2 := by
+      unfold causalReflectedOrientationEvolution
+        positiveOrientationProjector negativeOrientationProjector
+      rw [quotientCurvatureHamiltonian_exact]
+      norm_num [path13Ket, Matrix.mul_apply, Fin.sum_univ_succ,
+        Fin.ext_iff]
+      have hMatrixPhase :
+          Complex.exp (-(2 * (time : ℂ) * Complex.I)) = phase := by
+        unfold phase
+        congr 1
+        push_cast
+        ring
+      rw [hMatrixPhase]
+      ring
+    unfold ketInner
+    rw [Matrix.mul_apply]
+    simp only [Fin.sum_univ_two]
+    norm_num [path13Ket, Matrix.conjTranspose_apply, Fin.ext_iff]
+    exact hFirstComponent
+  rw [hSpectrum, hPath]
+
+theorem causalReflectedOrientationEvolution_firstOrthogonal
+    (time : ℝ) (hTime : 0 ≤ time)
+    (hOrthogonal :
+      ketInner path13Ket
+        (causalReflectedOrientationEvolution time * path13Ket) = 0) :
+    Real.pi / 2 ≤ time := by
+  have hSurvival :
+      causalOrientationEnergySpectrum.survivalAmplitude time = 0 := by
+    rw [causalReflectedOrientationEnergySpectrum_survival_eq_pathOverlap,
+      hOrthogonal]
+  exact causalOrientationBirth_quarter_is_minimal time hTime
+    (congrArg Complex.re hSurvival) (congrArg Complex.im hSurvival)
+
+/-- **Reflection tripwire.**  All reflection-even consistency requirements
+leave two distinct, equally admissible clock Hamiltonians.  Their first
+orthogonal births occur at the same time and carry conjugate phases.  Therefore
+the `-i`/left endpoint is branch-relative; it is not selected by positivity,
+ground-zero normalization, unitarity, or minimality alone. -/
+theorem causal_clock_birth_reflection_tripwire :
+    causalPositiveOrientationHamiltonian.PosSemidef
+      ∧ causalReflectedOrientationHamiltonian.PosSemidef
+      ∧ causalPositiveOrientationHamiltonian ≠
+          causalReflectedOrientationHamiltonian
+      ∧ causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+          (-Complex.I) • path22Ket
+      ∧ causalReflectedOrientationEvolution (Real.pi / 2) * path13Ket =
+          Complex.I • path22Ket
+      ∧ (∀ select : VacuumSpectatorCausalAction → Fin 2,
+          ¬(∀ action,
+            select (vacuumSpectatorActionReflection action) =
+              reflectedMicroscopicChirality (select action))) := by
+  exact ⟨causalPositiveOrientationHamiltonian_posSemidef,
+    causalReflectedOrientationHamiltonian_posSemidef,
+    causalPositive_reflectedHamiltonians_ne,
+    causalPositiveOrientationEvolution_quarter_path13,
+    causalReflectedOrientationEvolution_quarter_path13,
+    no_reflection_covariant_vacuum_chirality_selector⟩
+
+/-! ## 8. Branch-relative finite sign promotion -/
+
+/-- On the positive-oriented branch, the transition coefficient matches
+exactly one Bell-causal microscopic chirality, the left-selecting slot. -/
 theorem causalPositiveBirth_unique_chiral_phase :
     ∃! chirality : Fin 2,
       chiralMaximalEventPhase chirality = -Complex.I := by
@@ -679,11 +1065,11 @@ theorem causalPositiveBirth_unique_chiral_phase :
       norm_num [chiralMaximalEventPhase] at hImaginary
     · rfl
 
-/-! ## 8. Promotion to the projective sequential-growth tower -/
+/-! ## 9. Promotion to the projective sequential-growth tower -/
 
 /-- The normalized unlabeled sequential-growth law obtained by extending the
-dynamically generated elementary coefficient through the unique
-multiplicative chiral signature character. -/
+positive-branch elementary coefficient through the unique multiplicative
+chiral signature character. -/
 def causalPositiveOrientationGrowthLaw :
     RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch :=
   chiralCausalSetGrowthLaw 1
@@ -762,11 +1148,72 @@ theorem causalPositiveOrientationGrowthLaw_sign_transport (steps : ℕ) :
     futurePositiveFrequency_orientation_endpoint]
   ring
 
-/-- **Finite causal derivation of the left-handed choice.**  The native
-orientation operator canonically supplies a ground-shifted positive
-Hamiltonian.  Its first orthogonal birth is the exact Margolus--Levitin
-saturating transition `path13 -> -i path22`.  The generated `-i` coefficient
-uniquely selects `Xi=+1` and the standard nontrivial left-handed weak vertex. -/
+/-- Reflection partner of the branch-selected growth law. -/
+def causalReflectedOrientationGrowthLaw :
+    RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch :=
+  chiralCausalSetGrowthLaw 0
+
+theorem causalReflectedOrientationGrowthLaw_maximalPhase :
+    chiralMultiplicativeSignatureWeight 0 0 1 = Complex.I := by
+  norm_num [chiralMultiplicativeSignatureWeight,
+    multiplicativeSignatureWeight, chiralMaximalEventPhase]
+
+theorem causalReflectedOrientationGrowthLaw_kernel :
+    inducedOrientationKernel causalReflectedOrientationGrowthLaw
+        chiralRankTwoCoarseGraining =
+      balancedHistoryKernel (1 / 2) := by
+  unfold causalReflectedOrientationGrowthLaw
+  rw [chiral_inducedOrientationKernel_exact]
+  norm_num [chiralBoundaryOrientationParameter, chiralMaximalEventPhase]
+
+theorem causalReflectedOrientationGrowthLaw_sign_transport (steps : ℕ) :
+    inducedCylinderChiralitySign causalReflectedOrientationGrowthLaw
+        (chiralRankTwoCoarseGraining.refineBy steps) = -1 := by
+  rw [inducedCylinderChiralitySign_refineBy]
+  unfold inducedCylinderChiralitySign causalReflectedOrientationGrowthLaw
+  rw [chiral_inducedOrientationParameter_exact]
+  norm_num [chiralBoundaryOrientationParameter, chiralMaximalEventPhase]
+
+/-- The full projective construction remains a reflection doublet.  The same
+positive-frequency rule, zero-ground normalization, first-orthogonal clock,
+composition law, normalization, and refinement transport produce opposite
+nonzero cylinder signs on the two reflected branches. -/
+theorem projective_clock_birth_reflection_doublet :
+    SatisfiesClockBirthIdentification
+        (causalPositiveOrientationEvolution (Real.pi / 2))
+        (chiralMultiplicativeSignatureWeight 1)
+      ∧ SatisfiesClockBirthIdentification
+        (causalReflectedOrientationEvolution (Real.pi / 2))
+        (chiralMultiplicativeSignatureWeight 0)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = 1)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalReflectedOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = -1) := by
+  exact ⟨positiveClockBirthIdentification,
+    reflectedClockBirthIdentification,
+    causalPositiveOrientationGrowthLaw_sign_transport,
+    causalReflectedOrientationGrowthLaw_sign_transport⟩
+
+/-- **The geometric and birth channels do not merge at large rank.**  Every
+finite geometric orientation datum has a uniform strict quarter-gap from both
+pure birth endpoints.  Since the bound is independent of rank, no sequence of
+such data can converge to either endpoint. -/
+theorem geometric_clockBirth_channels_uniformly_disjoint {n : ℕ}
+    (parent : CardinalCausalOrder n) (event : Fin n) :
+    (1 : ℚ) / 4 <
+        |(1 : ℚ) / 2 - causalOrientationDensityQ parent event|
+      ∧ (1 : ℚ) / 4 <
+        |-(1 : ℚ) / 2 - causalOrientationDensityQ parent event| :=
+  geometricOrientation_uniform_gap_from_pure_endpoints parent event
+
+/-- **Finite positive-branch derivation.**  After choosing the `H_plus`
+orientation branch, its first orthogonal birth is the exact
+Margolus--Levitin-saturating transition `path13 -> -i path22`.  The coefficient
+selects `Xi=+1` and the standard nontrivial left-handed weak vertex.  The
+reflection tripwire above proves that this is conditional on the branch
+alignment, not an absolute vacuum selection. -/
 theorem finite_causal_positive_energy_derives_left_handed_weak_interaction :
     causalPositiveOrientationHamiltonian.PosSemidef
       ∧ ketInner path13Ket path22Ket = 0
@@ -788,12 +1235,13 @@ theorem finite_causal_positive_energy_derives_left_handed_weak_interaction :
   rw [futurePositiveFrequency_selects_leftWeakVertex]
   exact standard_charged_current_is_nontrivial_purely_left
 
-/-- **Projective sequential-growth capstone.**  The causal orientation
-Hamiltonian generates `-i`; composition extends it uniquely to a normalized
+/-- **Positive-branch projective capstone.**  The chosen orientation
+Hamiltonian gives `-i`; composition extends it uniquely to a normalized
 unlabeled growth law; all finite decoherence functionals are normalized,
-strongly positive, and projectively consistent; the induced nonzero
-`Xi=+1` sign survives every refinement and selects the standard left-handed
-charged current. -/
+strongly positive, and projectively consistent; the induced nonzero `Xi=+1`
+sign survives every refinement and selects the standard left-handed charged
+current.  `projective_clock_birth_reflection_doublet` is the accompanying
+absolute-claim boundary. -/
 theorem causal_positive_energy_sequential_growth_derives_left_handedness :
     causalPositiveOrientationHamiltonian.PosSemidef
       ∧ (∀ time : ℝ,
@@ -843,15 +1291,23 @@ theorem causal_positive_energy_sequential_growth_derives_left_handedness :
 #print axioms futurePositiveFrequency_unique_microscopic_chirality
 #print axioms future_positive_frequency_derives_left_handed_weak_interaction
 #print axioms causalOrientationHamiltonianShift_zeroGround_unique
+#print axioms causalOrientationHamiltonianShift_posSemidef_iff
 #print axioms causalPositiveOrientationHamiltonian_posSemidef
+#print axioms causalPositiveOrientationHamiltonian_nondegenerate_spectralPair
 #print axioms causalPositiveOrientationEvolution_unitary
 #print axioms causalPositiveOrientationEvolution_quarter_path13
+#print axioms causalPositiveOrientationEvolution_negativeQuarter_path13
 #print axioms causalOrientationBirth_quarter_is_minimal
 #print axioms causalPositiveOrientationEvolution_firstOrthogonal
+#print axioms causalReflectedOrientationEvolution_unitary
+#print axioms causalReflectedOrientationEvolution_quarter_path13
+#print axioms causal_clock_birth_reflection_tripwire
 #print axioms finite_causal_positive_energy_derives_left_handed_weak_interaction
 #print axioms causalPositiveOrientationGrowthLaw_signature_unique
 #print axioms causalPositiveOrientationGrowthLaw_projective
 #print axioms causalPositiveOrientationGrowthLaw_sign_transport
+#print axioms projective_clock_birth_reflection_doublet
+#print axioms geometric_clockBirth_channels_uniformly_disjoint
 #print axioms causal_positive_energy_sequential_growth_derives_left_handedness
 
 end

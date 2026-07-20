@@ -387,22 +387,24 @@
 > conditional: the current symmetric vacuum still cannot select nonzero `Xi`,
 > and the Lorentzian continuum spin/Dirac reconstruction remains open. See
 > `WEAK_HANDEDNESS_DERIVATION_AUDIT.md` for the exact claim boundary.
-> `KFCausalSetFutureFrequencyHandedness.lean` now closes the finite
-> positive-frequency construction. The quotient-curvature operator's
-> `-1,+1` spectrum has a unique identity shift with zero ground energy,
-> `H_plus=1+H=2P_plus`; it is positive semidefinite and generates an exactly
-> unitary spectral flow. The first causal route is an equal ground/excited
-> superposition with mean energy `1`; its first orthogonal transition is at
-> `pi/2`, saturates the two-level speed limit, and is exactly
-> `path13 -> -i path22`. Composition uniquely extends `-i` to the chiral
-> signature weight. The resulting unlabeled growth law has normalized,
-> strongly positive, projectively consistent finite decoherence functionals
-> and transports its induced `y=-1/2`, `Xi=+1` through every refinement,
-> selecting the nontrivial purely left-handed weak vertex. The honest remaining
-> input is narrower: an elementary maximal birth is identified with that first
-> orthogonal route transition. The general all-rank causal action does not yet
-> force this clock/birth identification, and the continuum Lorentzian Dirac
-> reconstruction remains open.
+> `KFCausalSetFutureFrequencyHandedness.lean` now gives the finite clock
+> construction its decisive reflection stress test. For a fixed oriented
+> quotient-curvature operator `H`, `aI+H` is positive semidefinite exactly for
+> `a>=1`; zero-ground normalization therefore selects the minimal shift
+> `H_plus=1+H=2P_plus`. Its spectrum is nondegenerate, its flow is unitary, and
+> both causal routes first orthogonalize at `pi/2`, with
+> `path13 -> -i path22`. Reflection gives the equally positive zero-ground
+> partner `H_minus=1-H=2P_minus`, the same survival amplitude and minimal time,
+> but `path13 -> +i path22`. Both coefficients extend to normalized, strongly
+> positive, projectively consistent unlabeled growth laws, transporting
+> opposite nonzero cylinder signs through every refinement. Positive frequency,
+> positivity, ground-zero normalization, and minimality thus produce a
+> reflection doublet rather than an absolute vacuum selection. The remaining
+> input is an oriented clock/birth alignment: identifying a maximal birth with
+> the first orthogonal transition and aligning the future growth clock with one
+> reflected spectral assignment. The symmetric all-rank action does not force
+> that alignment, and the continuum Lorentzian Dirac reconstruction remains
+> open.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
@@ -417,9 +419,10 @@
 > separates the geometric kernel from every rank-one scalar-amplitude kernel.
 > Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
-> Deriving both named postulates—full exchangeability and the fractional-volume
-> bridge—plus a reflection-odd microscopic action term or an infinite-history
-> symmetry-breaking construction, and quantitative all-parent conditioning,
+> Deriving the three named causal-growth principles—full exchangeability, the
+> fractional-volume bridge, and the oriented clock/birth alignment—or replacing
+> the third by a reflection-odd microscopic action or infinite-history
+> symmetry-breaking construction, plus quantitative all-parent conditioning,
 > remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
@@ -427,6 +430,18 @@
 > component vanishes exactly at the endpoints. The only reflection-fixed
 > balanced kernel is `D_0`, so choosing an endpoint sign necessarily requires a
 > reflection-odd chirality datum.
+
+## Causal-Growth Postulate Ledger
+
+| Principle | Exact role | Current theorem boundary |
+|---|---|---|
+| Full event-slot exchangeability | With unit normalization, forces the uniform local action density and harmonic additive charge | Strictly stronger than order-isomorphism covariance; covariance alone has a formal nonuniform counterexample |
+| Fractional-volume coupling bridge | Identifies the coupling increment with one-cell fractional number-volume growth, giving `1/(n+1)` with dimensional parameters canceled | The arithmetic and cancellations are derived; the coupling/volume identification is postulated |
+| Oriented clock/birth alignment | Matches a maximal-event signature coefficient to the first orthogonal route transition and aligns the future clock with one of `H_plus/H_minus` | `SatisfiesClockBirthIdentification` formalizes the match; `projective_clock_birth_reflection_doublet` proves symmetric data leave both signs |
+
+The separate continuum target is to reconstruct the Lorentzian spin bundle,
+Dirac operator, and scaling limit. It is not counted as one of the three finite
+causal-growth principles.
 
 ## Paper
 
@@ -440,7 +455,12 @@ DOI: [10.5281/zenodo.19613914](https://zenodo.org/records/19613914)
 
 ## Summary
 
-One postulate (spacetime is a locally finite partial order) + two physical identifications + the Planck mass → the complete algebraic structure of the Standard Model, the Higgs mass to 0.54%, the electroweak scale to 2.3%, and the mass hierarchy to 3.5%.
+The core algebraic/numerical proposal uses one ontological postulate, two
+physical identifications, and the Planck mass. The causal-growth extension is
+not included in that count: it has the separate three-principle ledger above.
+Within the stated core assumptions, the repository obtains the proposed
+Standard Model algebraic structure, the Higgs mass to 0.54%, the electroweak
+scale to 2.3%, and the mass hierarchy to 3.5%.
 
 The May 2026 audit chain (`PreRegistrationLedger.lean`) added: a 5-integer atomic vocabulary {N_W=2, N_c=3, N_total=5, d_eff=4, disc=7}, six audit-driven corrections strictly improving PDG fit, 17+ exact cross-sector identities, KPGAC selection principle, and 4D causal SO(10) substrate identification.
 
@@ -455,7 +475,9 @@ Every algebraic step is formally verified in Lean 4. Zero sorry. Zero custom axi
 | v = M_P exp(−c/g²) with g²=2 | Physical identification | `VEVIdentificationChain.lean` |
 | M_P | Dimensionful scale | One measured constant |
 
-Everything else is derived.
+Everything else in this core input table is derived within the stated
+framework. The causal-growth principles and continuum targets are recorded
+separately above.
 
 ## Three Layers
 

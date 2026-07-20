@@ -45,69 +45,90 @@ This proves a precise relational statement:
 With the convention in which the explicit positive cubic witness orients our
 branch, the vertex is the standard left-handed charged current.
 
-## Finite positive-frequency sign generation
+## Finite clock doublet and sign transport
 
-`UnifiedTheory/Audit/KFCausalSetFutureFrequencyHandedness.lean` now constructs
-the positive-frequency dynamics in the finite two-route causal sector.  The
-native quotient-curvature Hamiltonian has eigenvalues `-1,+1`.  Requiring its
-lower holonomy sector to have exactly zero energy uniquely fixes the otherwise
-ambiguous identity shift:
+`UnifiedTheory/Audit/KFCausalSetFutureFrequencyHandedness.lean` constructs and
+stress-tests positive-frequency dynamics in the finite two-route causal sector.
+The native quotient-curvature Hamiltonian has eigenvalues `-1,+1`.  Once an
+orientation of this operator is fixed, positivity and zero-ground normalization
+uniquely fix the minimal identity shift:
 
 ```text
 H_plus = 1 + H = 2 P_plus,   spectrum(H_plus) = {0,2}.
 ```
 
-The module proves that `H_plus` is Hermitian and positive semidefinite and that
-its spectral flow is unitary for every real time.  The first route is the equal
-superposition of its zero- and two-energy eigenstates, has mean energy one, and
-reaches the orthogonal second route for the first time at `tau=pi/2`:
+The shift stress test proves `a I + H` is positive semidefinite exactly when
+`a>=1`, and a nondegenerate spectral-pair theorem excludes hidden degeneracy.
+The spectral flow is unitary for every real time.  Both designated routes have
+the same survival amplitude, and their first possible orthogonalization is at
+`tau=pi/2`.  On the displayed orientation branch,
 
 ```text
-U(pi/2) path13 = -i path22,   tau < pi/2 cannot be orthogonal.
+U_plus(pi/2) path13 = -i path22,   tau < pi/2 cannot be orthogonal.
 ```
 
-Thus the quarter turn and `-i` coefficient are derived from the finite causal
-Hamiltonian plus ground-zero normalization, rather than inserted as a
-chirality label.  The exact causal dictionary remains
+The reflection tripwire is equally important.  Reflection sends `H` to `-H`
+and produces a second positive, zero-ground Hamiltonian with the same spectrum,
+unitarity, survival amplitude, and first orthogonal time:
 
 ```text
--i  <->  y=-1/2  <->  Xi=-2y=+1  <->  P_weak=P_L.
+H_minus = 1 - H = 2 P_minus,
+U_minus(pi/2) path13 = +i path22.
 ```
 
-Independent edge composition and the ancestor gauge uniquely extend the
-generated elementary coefficient to the complete chiral signature weight.
-After transition normalization this gives an unlabeled sequential-growth law
-whose finite decoherence functionals are normalized, strongly positive, and
-projectively consistent.  Its depth-two restriction produces the pure
-`y=-1/2` kernel, and the resulting nonzero `Xi=+1` is transported unchanged
-through every finite refinement.  The matched weak current is nonzero and
-purely left-handed.  Reversing growth time gives the conjugate `+i`, `Xi=-1`,
-right-handed mirror.
+Therefore positivity, ground-zero normalization, positive-frequency evolution,
+and first-orthogonal minimality leave a reflection pair; they do not select an
+absolute sign.  The two exact causal dictionaries are
 
-Here "absolute" means relative to the jointly fixed future-time orientation,
-complex structure, and gamma-five convention.  Globally conjugating the
-complex structure while reflecting the spin convention exchanges the two
-descriptions.  The physical proposal is the relative lock among those three
-structures, not a claim that the printed symbol `-i` is convention-independent.
+```text
+-i  <->  y=-1/2  <->  Xi=-2y=+1  <->  P_weak=P_L,
++i  <->  y=+1/2  <->  Xi=-2y=-1  <->  P_weak=P_R.
+```
 
-## Inputs that remain visible
+Independent edge composition and the ancestor gauge extend each coefficient
+uniquely to a complete chiral signature weight.  Both resulting unlabeled
+growth laws have normalized, strongly positive, projectively consistent finite
+decoherence functionals.  One transports `Xi=+1`; its reflected partner
+transports `Xi=-1`.  The earlier reflection no-go is thus obeyed exactly.
+
+There is also no large-rank merger of geometry with these pure birth channels.
+The geometric orientation density obeys the rank-independent bound `|y|<1/4`,
+so it remains more than `1/4` away from both `+/-1/2` birth endpoints at every
+event.  This uniform separation is now cross-linked in the clock module.
+
+Simply replacing `tau` by `-tau` in the scalar phase conjugates `-i` to `+i`.
+For the concrete route Hamiltonian at the half-period, however, using the same
+`H_plus` at `+/- pi/2` does not by itself choose the reflected transition.
+The matrix-level conjugate branch is `H_minus`: it exchanges which holonomy
+sector is ground.  The unresolved datum is therefore an oriented clock/branch
+alignment, not merely the sign printed on a time coordinate.
+
+## Three-postulate causal-growth ledger
 
 The result is not yet an unconditional derivation of nature's vacuum from the
-partial-order postulate alone.  Two physical bridges remain:
+partial-order postulate alone.  The causal-growth construction uses three named
+physical principles:
 
-1. **Orthogonal-birth/clock bridge.** The finite route geometry now supplies
-   the unique ground-zero positive Hamiltonian, its first orthogonal time, and
-   the `-i` coefficient.  The construction identifies an elementary maximal
-   causal birth with that first orthogonal route transition and uses its
-   coefficient as the maximal-event signature character.  The general
-   all-rank causal action has not yet been proved to force this identification.
-   This is narrower than assuming a sign, but it is still a physical bridge.
-   Positive energy without the route Hamiltonian and ground-zero condition is
-   chirality-blind.
-2. **Continuum spin reconstruction.** The finite chirality/Weyl space and
-   locking projector are explicit, but the repo has not yet reconstructed a
-   Lorentzian spin bundle, continuum Dirac operator, and scaling limit from the
-   unlabeled causal-set histories.
+1. **Full event-slot exchangeability.** Together with unit normalization it
+   forces the uniform local action density.  It is strictly stronger than
+   order-isomorphism covariance; the formal counterexample proves covariance
+   alone does not imply it.
+2. **Fractional-volume coupling bridge.** The coupling increment is identified
+   with the fractional number-volume increment.  One-cell growth then gives
+   `1/(n+1)` and all dimensional parameters cancel, but the identification is
+   postulated rather than derived.
+3. **Oriented clock/birth alignment.** A maximal event's signature coefficient
+   is identified with the first orthogonal route-transition coefficient, and
+   the future growth clock is aligned with one of the reflected `H_plus/H_minus`
+   spectral assignments.  The exact predicate
+   `SatisfiesClockBirthIdentification` formalizes the coefficient match; the
+   reflection-doublet theorem proves that the existing symmetric axioms do not
+   choose the alignment.
+
+The continuum spin reconstruction is a separate open target: the finite
+chirality/Weyl space and locking projector are explicit, but the repo has not
+yet reconstructed a Lorentzian spin bundle, continuum Dirac operator, and
+scaling limit from the unlabeled causal-set histories.
 
 The locking formula itself is no longer arbitrary within the stated affine
 grading class, but applying the selected projector specifically to the weak
@@ -120,16 +141,19 @@ abstract grading, not a spin representation.
 
 The strongest supported headline is:
 
-> Finite, machine-checked derivation of a refinement-stable, purely left-handed
-> SU(2) charged current from the ground-zero positive causal-route Hamiltonian,
-> conditional on the orthogonal-birth/clock identification.
+> Finite, machine-checked construction of a reflection pair of
+> refinement-stable chiral SU(2) charged currents.  The positive-oriented
+> clock branch is purely left-handed; the reflected branch is purely
+> right-handed.  Absolute selection remains conditional on the oriented
+> clock/birth alignment.
 
 The unsupported headline is:
 
-> The partial-order and general scalar Bell-causal axioms alone force every
-> maximal birth to be the finite route Hamiltonian's first orthogonal
-> transition and reconstruct the continuum Lorentzian Dirac field.
+> Future-directed sequential growth, positivity, and zero-ground normalization
+> alone select `H_plus`, force nature's absolute left-handed vacuum, and
+> reconstruct the continuum Lorentzian Dirac field.
 
-Promoting the first statement to the second requires deriving the
-orthogonal-birth/clock identification from the all-rank microscopic growth
-action, followed by the Lorentzian spin/Dirac continuum reconstruction.
+Promoting the first statement requires a microscopic reflection-odd mechanism
+that aligns the future growth arrow with one member of the clock doublet and
+derives the clock/birth match from the all-rank action, followed by the
+Lorentzian spin/Dirac continuum reconstruction.
