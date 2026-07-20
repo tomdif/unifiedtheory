@@ -45,30 +45,44 @@ This proves a precise relational statement:
 With the convention in which the explicit positive cubic witness orients our
 branch, the vertex is the standard left-handed charged current.
 
-## New positive-frequency sign selection
+## Finite positive-frequency sign generation
 
-`UnifiedTheory/Audit/KFCausalSetFutureFrequencyHandedness.lean` proves a
-stronger conditional result from one additional microscopic bridge that does
-not mention left or right.  A future-directed positive-energy growth step is
-required to carry the standard unitary phase
+`UnifiedTheory/Audit/KFCausalSetFutureFrequencyHandedness.lean` now constructs
+the positive-frequency dynamics in the finite two-route causal sector.  The
+native quotient-curvature Hamiltonian has eigenvalues `-1,+1`.  Requiring its
+lower holonomy sector to have exactly zero energy uniquely fixes the otherwise
+ambiguous identity shift:
 
 ```text
-U(E,tau) = exp(-i E tau),   E > 0, tau > 0.
+H_plus = 1 + H = 2 P_plus,   spectrum(H_plus) = {0,2}.
 ```
 
-For the elementary quarter turn `E*tau=pi/2`, this forces `U=-i`.  The theorem
-then proves that exactly one of the two Bell-causal microscopic characters
-matches this phase.  Its already-derived causal dictionary is
+The module proves that `H_plus` is Hermitian and positive semidefinite and that
+its spectral flow is unitary for every real time.  The first route is the equal
+superposition of its zero- and two-energy eigenstates, has mean energy one, and
+reaches the orthogonal second route for the first time at `tau=pi/2`:
+
+```text
+U(pi/2) path13 = -i path22,   tau < pi/2 cannot be orthogonal.
+```
+
+Thus the quarter turn and `-i` coefficient are derived from the finite causal
+Hamiltonian plus ground-zero normalization, rather than inserted as a
+chirality label.  The exact causal dictionary remains
 
 ```text
 -i  <->  y=-1/2  <->  Xi=-2y=+1  <->  P_weak=P_L.
 ```
 
-Consequently the matched character has a nonzero purely left-handed charged
-weak current.  Reversing growth time complex-conjugates the phase to `+i` and
-selects the reflected `Xi=-1`, right-handed character.  With future time
-orientation and the positive-frequency convention fixed, the two signs are
-therefore no longer degenerate.
+Independent edge composition and the ancestor gauge uniquely extend the
+generated elementary coefficient to the complete chiral signature weight.
+After transition normalization this gives an unlabeled sequential-growth law
+whose finite decoherence functionals are normalized, strongly positive, and
+projectively consistent.  Its depth-two restriction produces the pure
+`y=-1/2` kernel, and the resulting nonzero `Xi=+1` is transported unchanged
+through every finite refinement.  The matched weak current is nonzero and
+purely left-handed.  Reversing growth time gives the conjugate `+i`, `Xi=-1`,
+right-handed mirror.
 
 Here "absolute" means relative to the jointly fixed future-time orientation,
 complex structure, and gamma-five convention.  Globally conjugating the
@@ -81,13 +95,15 @@ structures, not a claim that the printed symbol `-i` is convention-independent.
 The result is not yet an unconditional derivation of nature's vacuum from the
 partial-order postulate alone.  Two physical bridges remain:
 
-1. **Positive-frequency growth bridge.** The current parity-even finite vacuum
-   action does not yet derive that its complex transition character is the
-   Hamiltonian phase `exp(-i E tau)` of an elementary growth clock.  Once this
-   standard spectrum/time-orientation law is supplied, the sign is uniquely
-   selected; deriving that identification from the sequential-growth action is
-   now the precise remaining microscopic problem.  Positive energy alone is
-   chirality-blind, as the new module also proves.
+1. **Orthogonal-birth/clock bridge.** The finite route geometry now supplies
+   the unique ground-zero positive Hamiltonian, its first orthogonal time, and
+   the `-i` coefficient.  The construction identifies an elementary maximal
+   causal birth with that first orthogonal route transition and uses its
+   coefficient as the maximal-event signature character.  The general
+   all-rank causal action has not yet been proved to force this identification.
+   This is narrower than assuming a sign, but it is still a physical bridge.
+   Positive energy without the route Hamiltonian and ground-zero condition is
+   chirality-blind.
 2. **Continuum spin reconstruction.** The finite chirality/Weyl space and
    locking projector are explicit, but the repo has not yet reconstructed a
    Lorentzian spin bundle, continuum Dirac operator, and scaling limit from the
@@ -104,15 +120,16 @@ abstract grading, not a spin representation.
 
 The strongest supported headline is:
 
-> Conditional derivation of a refinement-stable, purely left-handed SU(2)
-> charged current from future-directed positive-frequency causal growth.
+> Finite, machine-checked derivation of a refinement-stable, purely left-handed
+> SU(2) charged current from the ground-zero positive causal-route Hamiltonian,
+> conditional on the orthogonal-birth/clock identification.
 
 The unsupported headline is:
 
-> The existing scalar Bell-causal transition law itself has been proved to
-> generate the positive-frequency Hamiltonian phase and reconstruct the
-> continuum Lorentzian Dirac field.
+> The partial-order and general scalar Bell-causal axioms alone force every
+> maximal birth to be the finite route Hamiltonian's first orthogonal
+> transition and reconstruct the continuum Lorentzian Dirac field.
 
 Promoting the first statement to the second requires deriving the
-edge-character/Hamiltonian-phase identification from the microscopic growth
+orthogonal-birth/clock identification from the all-rank microscopic growth
 action, followed by the Lorentzian spin/Dirac continuum reconstruction.

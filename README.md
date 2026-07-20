@@ -566,17 +566,26 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   no-go proves that the present reflection-fixed vacuum cannot generate the
   required nonzero branch. The exact claim ledger is in
   [`WEAK_HANDEDNESS_DERIVATION_AUDIT.md`](WEAK_HANDEDNESS_DERIVATION_AUDIT.md).
-  `KFCausalSetFutureFrequencyHandedness.lean` isolates one minimal dynamical
-  law that removes this degeneracy without assuming a chirality sign. If an
-  elementary future growth step carries the standard positive-frequency phase
-  `U(E,tau)=exp(-i E tau)` with `E>0`, `tau>0`, and `E*tau=pi/2`, its phase is
-  uniquely `-i`. The existing causal dictionary then forces `y=-1/2`,
-  `Xi=+1`, and the exact nontrivial left-handed weak vertex; reverse time gives
-  the reflected `+i`, right-handed law. This is a conditional absolute-sign
-  theorem relative to a fixed future-time, complex, and gamma-five orientation;
-  the relative lock, not the printed sign of `i`, is physical. The remaining
-  frontier is to derive the transition-character / Hamiltonian-phase
-  identification from sequential growth itself.
+  `KFCausalSetFutureFrequencyHandedness.lean` now constructs the finite
+  positive-frequency law rather than merely parameterizing it. The native
+  two-route quotient-curvature Hamiltonian has spectrum `-1,+1`; requiring its
+  lower sector to have exactly zero energy uniquely fixes the shift
+  `H_plus=1+H=2P_plus`, so the relevant phase is not chosen by an arbitrary
+  additive constant. Its spectral flow is unitary for every time, the initial
+  route has mean energy `1`, and its first orthogonal transition occurs at
+  `tau=pi/2`, exactly saturating the two-level positive-energy speed limit and
+  producing `path13 -> -i path22`. Independent composition uniquely extends
+  this generated coefficient to the chiral signature weight; normalization
+  then gives a strongly positive, projectively consistent unlabeled growth
+  law whose induced `y=-1/2`, `Xi=+1` sign is unchanged by every finite
+  refinement and yields the exact nontrivial left-handed weak vertex. Reverse
+  time gives the reflected `+i`, right-handed law. The theorem remains finite
+  and conditional on identifying an elementary maximal birth with this first
+  orthogonal route transition. Deriving that clock/birth identification from
+  the general all-rank causal action, and reconstructing the continuum
+  Lorentzian Dirac field, remain open. The relative lock among future time,
+  complex structure, causal orientation, and gamma-five—not the printed sign
+  of `i` in isolation—is the physical claim.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

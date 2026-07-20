@@ -8,8 +8,9 @@
   a minimal way to escape that obstruction without inserting `left` as a
   sign-valued boundary condition.
 
-  New microscopic bridge law (stated openly): one elementary, future-directed
-  growth step is represented by the standard positive-frequency unitary phase
+  Sections 1--4 isolate a microscopic bridge law: one elementary,
+  future-directed growth step is represented by the standard
+  positive-frequency unitary phase
 
       U(E, tau) = exp(-i E tau),       E > 0, tau > 0,
 
@@ -21,18 +22,29 @@
       phase -i  <->  y = -1/2  <->  Xi = -2y = +1
                 <->  P_weak(Xi) = P_L.
 
-  Combining the two gives a unique left-handed weak vertex.  This is a genuine
-  conditional selection theorem, but not yet an unconditional derivation from
-  the existing scalar Bell-causal growth law: the identification of an edge
-  character with positive-frequency Hamiltonian evolution is the one new
-  physical bridge.  The theorem is useful precisely because it isolates that
-  bridge and contains no assumption whose statement says "choose left" or
-  "choose the negative imaginary phase".
+  Sections 5--8 then derive that phase inside the finite causal route sector.
+  The quotient-curvature operator has spectrum `-1,+1`.  Requiring its lower
+  sector to have exactly zero energy uniquely fixes the identity shift and
+  gives the positive Hamiltonian `H_plus = 1+H = 2P_plus`.  Its unitary spectral
+  flow has a first orthogonal transition at `pi/2`, where it sends the first
+  route to `-i` times the second.  Independent composition uniquely extends
+  this coefficient to the chiral signature weight.  The resulting unlabeled
+  sequential-growth law is normalized, strongly positive, projectively
+  consistent, and transports `Xi=+1` through every finite refinement.
+
+  The remaining physical identification is stated rather than hidden: an
+  elementary maximal birth is identified with this first orthogonal route
+  transition.  The partial-order axioms alone do not force that clock/birth
+  identification, and no continuum Lorentzian Dirac field is reconstructed
+  here.  Within that finite identification, however, neither `left`, `-i`, nor
+  a chirality slot is supplied as boundary data.
 
   Zero sorry. Zero custom axioms.
 -/
 
 import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
+import UnifiedTheory.Audit.KFOrientationPathQuantum
+import UnifiedTheory.LayerB.MargolusLevitinTight
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -41,10 +53,22 @@ namespace UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 
 noncomputable section
 
-open scoped ComplexConjugate
+open scoped ComplexConjugate ComplexOrder
+open Matrix
 open UnifiedTheory.Audit.KFCausalSetBellCausality
+open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetOrientationRestriction
+open UnifiedTheory.Audit.KFCausalSetChiralGrowth
+open UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
+open UnifiedTheory.Audit.KFOrientationGrowthDecoherence
+open UnifiedTheory.Audit.KFOrientationHistoryRigidity
 open UnifiedTheory.Audit.KFOrientationHigherRankDecoherence
 open UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
+open UnifiedTheory.Audit.KFOrientationCPChannelTower
+open UnifiedTheory.Audit.KFOrientationPathQuantum
+open UnifiedTheory.Audit.KFOrientationSpinOne
+open UnifiedTheory.LayerB.RobertsonSchrodinger
+open UnifiedTheory.LayerB.MargolusLevitinTight
 
 /-! ## 1. The future positive-frequency phase -/
 
@@ -246,10 +270,589 @@ theorem positiveEnergy_is_chirality_blind (energy : ℝ) :
       (0 < energy ∧ (1 : Fin 2) = 1) := by
   simp
 
+/-! ## 5. The causal path sector supplies the positive Hamiltonian
+
+The preceding sections stated the positive-frequency bridge abstractly.  The
+finite two-route causal sector already contains enough structure to construct
+it.  The native curvature Hamiltonian has eigenvalues `-1,+1`; shifting its
+ground energy to zero gives the positive Hamiltonian `H_plus = 1 + H`, with
+spectrum `0,2`.  Ground-energy shifts leave projective dynamics unchanged but
+fix the phase relevant to the Margolus--Levitin energy-above-ground bound. -/
+
+/-- The one-parameter family of identity shifts of the native orientation
+Hamiltonian. -/
+def causalOrientationHamiltonianShift (offset : ℝ) : SquareMatrix 2 :=
+  (offset : ℂ) • 1 + quotientCurvatureHamiltonian
+
+/-- The negative holonomy sector has shifted energy `offset-1`. -/
+theorem causalOrientationHamiltonianShift_negativeKet (offset : ℝ) :
+    causalOrientationHamiltonianShift offset * negativeHolonomyKet =
+      ((offset - 1 : ℝ) : ℂ) • negativeHolonomyKet := by
+  unfold causalOrientationHamiltonianShift
+  rw [Matrix.add_mul, Matrix.smul_mul, Matrix.one_mul,
+    quotientCurvature_negativeKet]
+  module
+
+/-- Ground-zero normalization removes the apparent arbitrary identity shift:
+the native negative holonomy eigenstate has energy zero for exactly one real
+offset, namely `offset=1`. -/
+theorem causalOrientationHamiltonianShift_zeroGround_unique
+    (offset : ℝ)
+    (hGround :
+      causalOrientationHamiltonianShift offset * negativeHolonomyKet = 0) :
+    offset = 1 := by
+  rw [causalOrientationHamiltonianShift_negativeKet] at hGround
+  have hComponent := congrArg (fun ket : PathKet => ket 0 0) hGround
+  norm_num [negativeHolonomyKet] at hComponent
+  have hSqrt : ((spinOneSqrtTwo : ℝ) : ℂ) ≠ 0 := by
+    exact_mod_cast spinOneSqrtTwo_ne_zero
+  field_simp [hSqrt] at hComponent
+  rcases hComponent with hOffset | hSqrtZero
+  · have hOffsetReal : offset - 1 = 0 := by exact_mod_cast hOffset
+    linarith
+  · exact (spinOneSqrtTwo_ne_zero hSqrtZero).elim
+
+/-- Ground-shifted causal orientation Hamiltonian. -/
+def causalPositiveOrientationHamiltonian : SquareMatrix 2 :=
+  1 + quotientCurvatureHamiltonian
+
+theorem causalPositiveOrientationHamiltonian_eq_uniqueGroundShift :
+    causalPositiveOrientationHamiltonian =
+      causalOrientationHamiltonianShift 1 := by
+  unfold causalPositiveOrientationHamiltonian
+    causalOrientationHamiltonianShift
+  norm_num
+
+theorem causalPositiveOrientationHamiltonian_eq_projector :
+    causalPositiveOrientationHamiltonian =
+      (2 : ℝ) • positiveOrientationProjector := by
+  unfold causalPositiveOrientationHamiltonian positiveOrientationProjector
+  module
+
+/-- The shifted causal Hamiltonian is Hermitian. -/
+theorem causalPositiveOrientationHamiltonian_isHermitian :
+    causalPositiveOrientationHamiltonian.IsHermitian := by
+  unfold causalPositiveOrientationHamiltonian
+  exact Matrix.isHermitian_one.add
+    quotientCurvatureHamiltonian_isHermitian
+
+/-- The shifted causal Hamiltonian is positive semidefinite. -/
+theorem causalPositiveOrientationHamiltonian_posSemidef :
+    causalPositiveOrientationHamiltonian.PosSemidef := by
+  rw [causalPositiveOrientationHamiltonian_eq_projector]
+  have hTwo : (0 : ℝ) ≤ 2 := by norm_num
+  exact positiveOrientationProjector_isPathDensity.2.1.smul hTwo
+
+/-- The positive holonomy sector has energy `2`. -/
+theorem causalPositiveOrientationHamiltonian_positiveKet :
+    causalPositiveOrientationHamiltonian * positiveHolonomyKet =
+      (2 : ℂ) • positiveHolonomyKet := by
+  unfold causalPositiveOrientationHamiltonian
+  rw [Matrix.add_mul, Matrix.one_mul, quotientCurvature_positiveKet]
+  module
+
+/-- The negative holonomy sector is the zero-energy ground sector. -/
+theorem causalPositiveOrientationHamiltonian_negativeKet :
+    causalPositiveOrientationHamiltonian * negativeHolonomyKet = 0 := by
+  unfold causalPositiveOrientationHamiltonian
+  rw [Matrix.add_mul, Matrix.one_mul, quotientCurvature_negativeKet]
+  module
+
+/-- The first causal route is the equal superposition of the ground and
+excited holonomy eigenstates. -/
+theorem path13Ket_equal_holonomy_superposition :
+    path13Ket =
+      ((1 / spinOneSqrtTwo : ℝ) : ℂ) • positiveHolonomyKet +
+        ((1 / spinOneSqrtTwo : ℝ) : ℂ) • negativeHolonomyKet := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [path13Ket, positiveHolonomyKet, negativeHolonomyKet,
+      Fin.ext_iff]
+  · field_simp [spinOneSqrtTwo_ne_zero]
+    norm_num [← pow_two, spinOneSqrtTwo_sq_complex]
+
+/-- Energy expectation of a path ket. -/
+def pathEnergyExpectation (hamiltonian : SquareMatrix 2)
+    (psi : PathKet) : ℝ :=
+  (ketInner psi (hamiltonian * psi)).re
+
+/-- The initial causal route has mean energy exactly `1` above the ground. -/
+theorem path13_causalPositive_meanEnergy :
+    pathEnergyExpectation causalPositiveOrientationHamiltonian path13Ket = 1 := by
+  have hAction :
+      causalPositiveOrientationHamiltonian * path13Ket =
+        !![(1 : ℂ); Complex.I] := by
+    unfold causalPositiveOrientationHamiltonian
+    rw [quotientCurvatureHamiltonian_exact]
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      norm_num [path13Ket, Matrix.mul_apply, Fin.sum_univ_succ,
+        Fin.ext_iff]
+  unfold pathEnergyExpectation
+  rw [hAction]
+  norm_num [ketInner, path13Ket, Matrix.mul_apply,
+    Matrix.conjTranspose_apply, Fin.sum_univ_succ, Fin.ext_iff]
+
+/-! ## 6. Exact spectral evolution and the minimal orthogonal birth -/
+
+/-- Spectral unitary evolution of the positive causal Hamiltonian.  The
+excited projector carries energy `2`; the ground projector carries energy
+`0`. -/
+def causalPositiveOrientationEvolution (time : ℝ) : SquareMatrix 2 :=
+  Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I) •
+      positiveOrientationProjector +
+    negativeOrientationProjector
+
+/-- The excited holonomy ket acquires precisely the energy-`2` phase. -/
+theorem causalPositiveOrientationEvolution_positiveKet (time : ℝ) :
+    causalPositiveOrientationEvolution time * positiveHolonomyKet =
+      Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I) •
+        positiveHolonomyKet := by
+  have hPositive :
+      positiveOrientationProjector * positiveHolonomyKet =
+        positiveHolonomyKet := by
+    unfold positiveOrientationProjector
+    rw [Matrix.smul_mul, Matrix.add_mul, Matrix.one_mul,
+      quotientCurvature_positiveKet]
+    module
+  have hNegative :
+      negativeOrientationProjector * positiveHolonomyKet = 0 := by
+    unfold negativeOrientationProjector
+    rw [Matrix.smul_mul, Matrix.sub_mul, Matrix.one_mul,
+      quotientCurvature_positiveKet]
+    module
+  unfold causalPositiveOrientationEvolution
+  rw [Matrix.add_mul, Matrix.smul_mul, hPositive, hNegative]
+  module
+
+/-- The negative holonomy ket is the stationary zero-energy ground state. -/
+theorem causalPositiveOrientationEvolution_negativeKet (time : ℝ) :
+    causalPositiveOrientationEvolution time * negativeHolonomyKet =
+      negativeHolonomyKet := by
+  have hPositive :
+      positiveOrientationProjector * negativeHolonomyKet = 0 := by
+    unfold positiveOrientationProjector
+    rw [Matrix.smul_mul, Matrix.add_mul, Matrix.one_mul,
+      quotientCurvature_negativeKet]
+    module
+  have hNegative :
+      negativeOrientationProjector * negativeHolonomyKet =
+        negativeHolonomyKet := by
+    unfold negativeOrientationProjector
+    rw [Matrix.smul_mul, Matrix.sub_mul, Matrix.one_mul,
+      quotientCurvature_negativeKet]
+    module
+  unfold causalPositiveOrientationEvolution
+  rw [Matrix.add_mul, Matrix.smul_mul, hPositive, hNegative]
+  module
+
+theorem orientationProjectors_orthogonal_reverse :
+    negativeOrientationProjector * positiveOrientationProjector = 0 := by
+  unfold positiveOrientationProjector negativeOrientationProjector
+  simp only [Matrix.smul_mul, Matrix.mul_smul,
+    Matrix.sub_mul, Matrix.mul_add, Matrix.one_mul, Matrix.mul_one,
+    quotientCurvatureHamiltonian_sq]
+  module
+
+/-- The excited phase has unit modulus, expressed algebraically in the form
+needed by the projector proof of unitarity. -/
+theorem causalPositive_excitedPhase_star_mul (time : ℝ) :
+    star (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)) *
+        Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I) = 1 := by
+  rw [Complex.star_def, Complex.conj_mul']
+  rw [Complex.norm_exp_ofReal_mul_I]
+  norm_num
+
+theorem causalPositiveOrientationEvolution_conjTranspose (time : ℝ) :
+    (causalPositiveOrientationEvolution time)ᴴ =
+      star (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)) •
+          positiveOrientationProjector +
+        negativeOrientationProjector := by
+  unfold causalPositiveOrientationEvolution
+  rw [Matrix.conjTranspose_add, Matrix.conjTranspose_smul]
+  simp [(positiveOrientationProjector_isPathDensity.1).eq,
+    (negativeOrientationProjector_isPathDensity.1).eq]
+
+/-- The spectral flow generated by the positive causal Hamiltonian is unitary
+at every real time. -/
+theorem causalPositiveOrientationEvolution_unitary (time : ℝ) :
+    (causalPositiveOrientationEvolution time)ᴴ *
+        causalPositiveOrientationEvolution time = 1 := by
+  rw [causalPositiveOrientationEvolution_conjTranspose]
+  unfold causalPositiveOrientationEvolution
+  simp only [Matrix.add_mul, Matrix.mul_add, Matrix.smul_mul,
+    Matrix.mul_smul]
+  rw [positiveOrientationProjector_idempotent,
+    orientationProjectors_orthogonal,
+    orientationProjectors_orthogonal_reverse,
+    negativeOrientationProjector_idempotent]
+  simp only [smul_zero, add_zero, zero_add, smul_smul]
+  rw [mul_comm
+    (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I))
+    (star (Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)))]
+  rw [causalPositive_excitedPhase_star_mul]
+  simp only [one_smul]
+  exact orientationProjectors_sum
+
+theorem causalPositiveOrientationEvolution_zero :
+    causalPositiveOrientationEvolution 0 = 1 := by
+  unfold causalPositiveOrientationEvolution
+  norm_num [orientationProjectors_sum]
+
+/-- At time `pi/2`, the excited energy-2 phase is exactly `-1`. -/
+theorem causalPositive_excitedPhase_quarter :
+    Complex.exp (((-2 * (Real.pi / 2) : ℝ) : ℂ) * Complex.I) = -1 := by
+  apply Complex.ext
+  · rw [Complex.exp_ofReal_mul_I_re]
+    rw [show -2 * (Real.pi / 2) = -Real.pi by ring]
+    simp [Real.cos_neg, Real.cos_pi]
+  · rw [Complex.exp_ofReal_mul_I_im]
+    rw [show -2 * (Real.pi / 2) = -Real.pi by ring]
+    simp [Real.sin_neg, Real.sin_pi]
+
+/-- The positive Hamiltonian's quarter-time unitary is `-H_orientation`. -/
+theorem causalPositiveOrientationEvolution_quarter :
+    causalPositiveOrientationEvolution (Real.pi / 2) =
+      -quotientCurvatureHamiltonian := by
+  unfold causalPositiveOrientationEvolution
+  rw [causalPositive_excitedPhase_quarter]
+  unfold positiveOrientationProjector negativeOrientationProjector
+  module
+
+/-- **Dynamical phase selection.**  The positive causal Hamiltonian sends the
+first route to the orthogonal second route with coefficient exactly `-i`. -/
+theorem causalPositiveOrientationEvolution_quarter_path13 :
+    causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+      (-Complex.I) • path22Ket := by
+  rw [causalPositiveOrientationEvolution_quarter,
+    quotientCurvatureHamiltonian_exact]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [path13Ket, path22Ket, Matrix.mul_apply,
+      Fin.sum_univ_succ, Fin.ext_iff, Complex.I_sq]
+
+/-- The endpoint reached by the positive causal evolution is orthogonal to the
+initial route. -/
+theorem causalPositiveOrientationEvolution_quarter_orthogonal :
+    ketInner path13Ket
+      (causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket) = 0 := by
+  rw [causalPositiveOrientationEvolution_quarter_path13]
+  norm_num [ketInner, path13Ket, path22Ket, Matrix.mul_apply,
+    Matrix.conjTranspose_apply, Fin.sum_univ_succ, Fin.ext_iff]
+
+/-- The causal route's energy distribution in the holonomy basis: equal
+weight on energies `0` and `2`. -/
+noncomputable def causalOrientationEnergySpectrum : EnergySpectrum 2 :=
+  saturatingSpectrum 2 (by norm_num)
+
+/-- The abstract `{0,2}` survival amplitude is exactly the overlap of the
+initial causal route with its matrix evolution, so the speed-limit statement
+applies to the same dynamics that generates the chiral coefficient. -/
+theorem causalOrientationEnergySpectrum_survival_eq_pathOverlap (time : ℝ) :
+    causalOrientationEnergySpectrum.survivalAmplitude time =
+      ketInner path13Ket
+        (causalPositiveOrientationEvolution time * path13Ket) := by
+  let phase : ℂ :=
+    Complex.exp (((-2 * time : ℝ) : ℂ) * Complex.I)
+  have hSpectrum :
+      causalOrientationEnergySpectrum.survivalAmplitude time =
+        (1 + phase) / 2 := by
+    unfold causalOrientationEnergySpectrum saturatingSpectrum
+      EnergySpectrum.survivalAmplitude
+    rw [Fin.sum_univ_two]
+    simp only [Fin.isValue, if_true,
+      show ((1 : Fin 2) = 0) = False from by decide, if_false]
+    have hPhase :
+        Complex.exp
+            (-Complex.I * (((2 : ℝ) : ℂ)) * (time : ℂ)) = phase := by
+      unfold phase
+      congr 1
+      push_cast
+      ring
+    rw [hPhase]
+    norm_num
+    ring
+  have hPath :
+      ketInner path13Ket
+          (causalPositiveOrientationEvolution time * path13Ket) =
+        (1 + phase) / 2 := by
+    have hFirstComponent :
+        (causalPositiveOrientationEvolution time * path13Ket) 0 0 =
+          (1 + phase) / 2 := by
+      unfold causalPositiveOrientationEvolution positiveOrientationProjector
+        negativeOrientationProjector
+      rw [quotientCurvatureHamiltonian_exact]
+      norm_num [path13Ket, Matrix.mul_apply, Fin.sum_univ_succ,
+        Fin.ext_iff]
+      have hMatrixPhase :
+          Complex.exp (-(2 * (time : ℂ) * Complex.I)) = phase := by
+        unfold phase
+        congr 1
+        push_cast
+        ring
+      rw [hMatrixPhase]
+      ring
+    unfold ketInner
+    rw [Matrix.mul_apply]
+    simp only [Fin.sum_univ_two]
+    norm_num [path13Ket, Matrix.conjTranspose_apply, Fin.ext_iff]
+    exact hFirstComponent
+  rw [hSpectrum, hPath]
+
+theorem causalOrientationEnergySpectrum_meanEnergy :
+    causalOrientationEnergySpectrum.energyExpectation = 1 := by
+  unfold causalOrientationEnergySpectrum
+  simpa using saturatingSpectrum_energyExpectation 2 (by norm_num)
+
+theorem causalOrientationEnergySpectrum_quarter_survival_zero :
+    (causalOrientationEnergySpectrum.survivalAmplitude
+        (Real.pi / 2)).re = 0
+      ∧ (causalOrientationEnergySpectrum.survivalAmplitude
+        (Real.pi / 2)).im = 0 := by
+  unfold causalOrientationEnergySpectrum
+  simpa using saturating_survival_zero 2 (by norm_num)
+
+/-- The causal birth exactly saturates the positive-energy quantum speed
+limit: `T * meanEnergy = pi/2`. -/
+theorem causalOrientationBirth_saturates_margolusLevitin :
+    (Real.pi / 2) * causalOrientationEnergySpectrum.energyExpectation =
+      Real.pi / 2 := by
+  rw [causalOrientationEnergySpectrum_meanEnergy]
+  ring
+
+/-- No orthogonal evolution of the same causal energy spectrum can occur
+earlier than `pi/2`. -/
+theorem causalOrientationBirth_quarter_is_minimal
+    (time : ℝ) (hTime : 0 ≤ time)
+    (hOrthogonalRe :
+      (causalOrientationEnergySpectrum.survivalAmplitude time).re = 0)
+    (_hOrthogonalIm :
+      (causalOrientationEnergySpectrum.survivalAmplitude time).im = 0) :
+    Real.pi / 2 ≤ time := by
+  have hCos : Real.cos (2 * time) = -1 := by
+    rw [EnergySpectrum.survivalAmplitude_re] at hOrthogonalRe
+    unfold causalOrientationEnergySpectrum saturatingSpectrum at hOrthogonalRe
+    rw [Fin.sum_univ_two] at hOrthogonalRe
+    norm_num at hOrthogonalRe
+    linarith
+  rcases Real.cos_eq_neg_one_iff.mp hCos with ⟨turns, hTurns⟩
+  have hTurnsNonnegative : (0 : ℤ) ≤ turns := by
+    by_contra hNegative
+    have hAtMostNegOne : turns ≤ -1 := by omega
+    have hCast : (turns : ℝ) ≤ -1 := by exact_mod_cast hAtMostNegOne
+    have hTwoTime : 0 ≤ 2 * time := by linarith
+    rw [← hTurns] at hTwoTime
+    nlinarith [Real.pi_pos]
+  have hTurnsCast : (0 : ℝ) ≤ turns := by exact_mod_cast hTurnsNonnegative
+  have hPiLe : Real.pi ≤ 2 * time := by
+    rw [← hTurns]
+    nlinarith [Real.pi_pos]
+  linarith
+
+/-- Matrix-level form of minimality: the unitary path evolution cannot make
+the initial route orthogonal to itself before `pi/2`. -/
+theorem causalPositiveOrientationEvolution_firstOrthogonal
+    (time : ℝ) (hTime : 0 ≤ time)
+    (hOrthogonal :
+      ketInner path13Ket
+        (causalPositiveOrientationEvolution time * path13Ket) = 0) :
+    Real.pi / 2 ≤ time := by
+  have hSurvival :
+      causalOrientationEnergySpectrum.survivalAmplitude time = 0 := by
+    rw [causalOrientationEnergySpectrum_survival_eq_pathOverlap,
+      hOrthogonal]
+  exact causalOrientationBirth_quarter_is_minimal time hTime
+    (congrArg Complex.re hSurvival) (congrArg Complex.im hSurvival)
+
+/-! ## 7. Unconditional finite sign promotion -/
+
+/-- The dynamically generated transition coefficient matches exactly one
+Bell-causal microscopic chirality, and it is the left-selecting slot. -/
+theorem causalPositiveBirth_unique_chiral_phase :
+    ∃! chirality : Fin 2,
+      chiralMaximalEventPhase chirality = -Complex.I := by
+  refine ⟨1, ?_, ?_⟩
+  · norm_num [chiralMaximalEventPhase]
+  · intro chirality hPhase
+    fin_cases chirality
+    · have hImaginary := congrArg Complex.im hPhase
+      norm_num [chiralMaximalEventPhase] at hImaginary
+    · rfl
+
+/-! ## 8. Promotion to the projective sequential-growth tower -/
+
+/-- The normalized unlabeled sequential-growth law obtained by extending the
+dynamically generated elementary coefficient through the unique
+multiplicative chiral signature character. -/
+def causalPositiveOrientationGrowthLaw :
+    RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch :=
+  chiralCausalSetGrowthLaw 1
+
+/-- The microscopic maximal-event character of the selected growth law is the
+same `-i` generated by the positive causal Hamiltonian. -/
+theorem causalPositiveOrientationGrowthLaw_maximalPhase :
+    chiralMultiplicativeSignatureWeight 1 0 1 = -Complex.I := by
+  norm_num [chiralMultiplicativeSignatureWeight,
+    multiplicativeSignatureWeight, chiralMaximalEventPhase]
+
+/-- Independent composition and the ancestor gauge extend the generated
+elementary phase to one and only one complete signature weight. -/
+theorem causalPositiveOrientationGrowthLaw_signature_unique
+    (weight : ℕ → ℕ → ℂ)
+    (hMultiplicative : IsMultiplicativeSignatureWeight weight)
+    (hAncestor : weight 1 0 = 1)
+    (hGeneratedPhase : weight 0 1 = -Complex.I) :
+    weight = chiralMultiplicativeSignatureWeight 1 := by
+  apply chiralMultiplicativeSignatureWeight_unique 1 weight
+    hMultiplicative hAncestor
+  simpa [chiralMaximalEventPhase] using hGeneratedPhase
+
+/-- Every finite restriction of the Hamiltonian-selected growth law is
+normalized and strongly positive. -/
+theorem causalPositiveOrientationGrowthLaw_finite_quantum_consistency
+    (depth : ℕ) :
+    IsNormalizedGrowthFunctional
+        (finiteRankedDepthDecoherence
+          causalPositiveOrientationGrowthLaw depth)
+      ∧ IsStronglyPositiveGrowthFunctional
+        (growthEventDecoherence
+          (finiteRankedDepthDecoherence
+            causalPositiveOrientationGrowthLaw depth)) := by
+  exact ⟨finiteRankedDepthDecoherence_normalized
+      causalPositiveOrientationGrowthLaw depth,
+    finiteRankedDepthDecoherence_stronglyPositive
+      causalPositiveOrientationGrowthLaw depth⟩
+
+/-- Its decoherence functional is exactly projectively consistent under every
+one-step refinement. -/
+theorem causalPositiveOrientationGrowthLaw_projective
+    (depth : ℕ)
+    (first second : Finset
+      (RankedGrowthPath CausalSetGrowthBranch depth)) :
+    growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          causalPositiveOrientationGrowthLaw (depth + 1))
+        (refineRankedGrowthEvent first) (refineRankedGrowthEvent second) =
+      growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          causalPositiveOrientationGrowthLaw depth) first second := by
+  exact finiteRankedDepthDecoherence_projective
+    causalPositiveOrientationGrowthLaw depth first second
+
+/-- At the first nontrivial route partition, the selected sequential-growth
+law produces the pure endpoint `y=-1/2` rather than receiving it as separate
+boundary data. -/
+theorem causalPositiveOrientationGrowthLaw_kernel :
+    inducedOrientationKernel causalPositiveOrientationGrowthLaw
+        chiralRankTwoCoarseGraining =
+      balancedHistoryKernel (-1 / 2) := by
+  unfold causalPositiveOrientationGrowthLaw
+  rw [chiral_inducedOrientationKernel_exact,
+    futurePositiveFrequency_orientation_endpoint]
+
+/-- **Generated-sign transport.**  The nonzero cylinder sign produced at the
+first branching depth is `Xi=+1` and is transported unchanged through every
+finite projective refinement. -/
+theorem causalPositiveOrientationGrowthLaw_sign_transport (steps : ℕ) :
+    inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+        (chiralRankTwoCoarseGraining.refineBy steps) = 1 := by
+  rw [inducedCylinderChiralitySign_refineBy]
+  unfold inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+  rw [chiral_inducedOrientationParameter_exact,
+    futurePositiveFrequency_orientation_endpoint]
+  ring
+
+/-- **Finite causal derivation of the left-handed choice.**  The native
+orientation operator canonically supplies a ground-shifted positive
+Hamiltonian.  Its first orthogonal birth is the exact Margolus--Levitin
+saturating transition `path13 -> -i path22`.  The generated `-i` coefficient
+uniquely selects `Xi=+1` and the standard nontrivial left-handed weak vertex. -/
+theorem finite_causal_positive_energy_derives_left_handed_weak_interaction :
+    causalPositiveOrientationHamiltonian.PosSemidef
+      ∧ ketInner path13Ket path22Ket = 0
+      ∧ causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+          (-Complex.I) • path22Ket
+      ∧ (Real.pi / 2) *
+          causalOrientationEnergySpectrum.energyExpectation = Real.pi / 2
+      ∧ (∃! chirality : Fin 2,
+          chiralMaximalEventPhase chirality = -Complex.I)
+      ∧ IsNontrivialPurelyLeftHanded
+          (causalWeakVertex
+            (-2 * chiralBoundaryOrientationParameter (1 : Fin 2))
+            weakRaising) := by
+  refine ⟨causalPositiveOrientationHamiltonian_posSemidef,
+    pathKets_orthogonal,
+    causalPositiveOrientationEvolution_quarter_path13,
+    causalOrientationBirth_saturates_margolusLevitin,
+    causalPositiveBirth_unique_chiral_phase, ?_⟩
+  rw [futurePositiveFrequency_selects_leftWeakVertex]
+  exact standard_charged_current_is_nontrivial_purely_left
+
+/-- **Projective sequential-growth capstone.**  The causal orientation
+Hamiltonian generates `-i`; composition extends it uniquely to a normalized
+unlabeled growth law; all finite decoherence functionals are normalized,
+strongly positive, and projectively consistent; the induced nonzero
+`Xi=+1` sign survives every refinement and selects the standard left-handed
+charged current. -/
+theorem causal_positive_energy_sequential_growth_derives_left_handedness :
+    causalPositiveOrientationHamiltonian.PosSemidef
+      ∧ (∀ time : ℝ,
+        (causalPositiveOrientationEvolution time)ᴴ *
+            causalPositiveOrientationEvolution time = 1)
+      ∧ causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+          (-Complex.I) • path22Ket
+      ∧ chiralMultiplicativeSignatureWeight 1 0 1 = -Complex.I
+      ∧ (∀ depth : ℕ,
+          IsNormalizedGrowthFunctional
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw depth)
+            ∧ IsStronglyPositiveGrowthFunctional
+              (growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  causalPositiveOrientationGrowthLaw depth)))
+      ∧ (∀ (depth : ℕ)
+          (first second : Finset
+            (RankedGrowthPath CausalSetGrowthBranch depth)),
+          growthEventDecoherence
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw (depth + 1))
+              (refineRankedGrowthEvent first)
+              (refineRankedGrowthEvent second) =
+            growthEventDecoherence
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw depth) first second)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = 1)
+      ∧ IsNontrivialPurelyLeftHanded
+          (causalWeakVertex
+            (-2 * chiralBoundaryOrientationParameter (1 : Fin 2))
+            weakRaising) := by
+  refine ⟨causalPositiveOrientationHamiltonian_posSemidef,
+    causalPositiveOrientationEvolution_unitary,
+    causalPositiveOrientationEvolution_quarter_path13,
+    causalPositiveOrientationGrowthLaw_maximalPhase,
+    causalPositiveOrientationGrowthLaw_finite_quantum_consistency,
+    causalPositiveOrientationGrowthLaw_projective,
+    causalPositiveOrientationGrowthLaw_sign_transport, ?_⟩
+  rw [futurePositiveFrequency_selects_leftWeakVertex]
+  exact standard_charged_current_is_nontrivial_purely_left
+
 #print axioms futurePositiveFrequencyPhase_quarter_turn
 #print axioms futurePositiveFrequencyPhase_reverse_time
 #print axioms futurePositiveFrequency_unique_microscopic_chirality
 #print axioms future_positive_frequency_derives_left_handed_weak_interaction
+#print axioms causalOrientationHamiltonianShift_zeroGround_unique
+#print axioms causalPositiveOrientationHamiltonian_posSemidef
+#print axioms causalPositiveOrientationEvolution_unitary
+#print axioms causalPositiveOrientationEvolution_quarter_path13
+#print axioms causalOrientationBirth_quarter_is_minimal
+#print axioms causalPositiveOrientationEvolution_firstOrthogonal
+#print axioms finite_causal_positive_energy_derives_left_handed_weak_interaction
+#print axioms causalPositiveOrientationGrowthLaw_signature_unique
+#print axioms causalPositiveOrientationGrowthLaw_projective
+#print axioms causalPositiveOrientationGrowthLaw_sign_transport
+#print axioms causal_positive_energy_sequential_growth_derives_left_handedness
 
 end
 

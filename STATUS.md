@@ -387,15 +387,22 @@
 > conditional: the current symmetric vacuum still cannot select nonzero `Xi`,
 > and the Lorentzian continuum spin/Dirac reconstruction remains open. See
 > `WEAK_HANDEDNESS_DERIVATION_AUDIT.md` for the exact claim boundary.
-> `KFCausalSetFutureFrequencyHandedness.lean` now proves a unique conditional
-> absolute-sign law. Standard future positive-frequency evolution
-> `exp(-i E tau)` at a positive-energy quarter turn is exactly `-i`; only one
-> Bell-causal chiral character matches it, and that character has `y=-1/2`,
-> `Xi=+1`, and the nontrivial purely left-handed weak vertex. Reverse growth
-> time gives the reflected `+i`, `Xi=-1` mirror. The new physical input is
-> explicit: sequential growth has not yet been proved to realize its edge
-> character as this Hamiltonian phase, and positive energy by itself does not
-> select chirality.
+> `KFCausalSetFutureFrequencyHandedness.lean` now closes the finite
+> positive-frequency construction. The quotient-curvature operator's
+> `-1,+1` spectrum has a unique identity shift with zero ground energy,
+> `H_plus=1+H=2P_plus`; it is positive semidefinite and generates an exactly
+> unitary spectral flow. The first causal route is an equal ground/excited
+> superposition with mean energy `1`; its first orthogonal transition is at
+> `pi/2`, saturates the two-level speed limit, and is exactly
+> `path13 -> -i path22`. Composition uniquely extends `-i` to the chiral
+> signature weight. The resulting unlabeled growth law has normalized,
+> strongly positive, projectively consistent finite decoherence functionals
+> and transports its induced `y=-1/2`, `Xi=+1` through every refinement,
+> selecting the nontrivial purely left-handed weak vertex. The honest remaining
+> input is narrower: an elementary maximal birth is identified with that first
+> orthogonal route transition. The general all-rank causal action does not yet
+> force this clock/birth identification, and the continuum Lorentzian Dirac
+> reconstruction remains open.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
