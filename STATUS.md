@@ -399,12 +399,26 @@
 > positive, projectively consistent unlabeled growth laws, transporting
 > opposite nonzero cylinder signs through every refinement. Positive frequency,
 > positivity, ground-zero normalization, and minimality thus produce a
-> reflection doublet rather than an absolute vacuum selection. The remaining
-> input is an oriented clock/birth alignment: identifying a maximal birth with
-> the first orthogonal transition and aligning the future growth clock with one
-> reflected spectral assignment. The symmetric all-rank action does not force
-> that alignment, and the continuum Lorentzian Dirac reconstruction remains
-> open.
+> reflection doublet rather than an absolute vacuum selection. At this module
+> boundary the remaining input is a growth-arrow clock response: identify a
+> maximal birth with the first orthogonal transition and couple its orientation
+> to one reflected spectral assignment. The next module derives the source side
+> of that alignment and isolates the residual coupling sign. The continuum
+> Lorentzian Dirac reconstruction remains open.
+> `KFCausalSetGrowthArrowChirality.lean` identifies the process-level datum
+> absent from that static test. A sequential-growth edge distinguishes a
+> newborn maximal event. Its future incidence volume is exactly `1`, its past
+> incidence volume is `1+precursorPopulation`, and its normalized orientation
+> source is therefore nonnegative, vanishing exactly on a gregarious birth.
+> Every causally linked birth produces a strictly positive order-odd source;
+> the order-dual minimal-birth process produces its negative. The first linked
+> birth is the canonical two-chain and has source exactly `1/6`. With the
+> standard phase response this gives `-i` and the complete projective
+> `Xi=+1` transport law, while the all-antichain history remains source-free.
+> The residual theorem is equally sharp: complex-conjugate phase responses map
+> the same positive source to opposite quarter turns and both are reflection
+> covariant. Thus growth now generates the nonzero orientation datum, but one
+> Z2 source-to-clock coupling sign still has to be selected microscopically.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
@@ -419,11 +433,9 @@
 > separates the geometric kernel from every rank-one scalar-amplitude kernel.
 > Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
-> Deriving the three named causal-growth principles—full exchangeability, the
-> fractional-volume bridge, and the oriented clock/birth alignment—or replacing
-> the third by a reflection-odd microscopic action or infinite-history
-> symmetry-breaking construction, plus quantitative all-parent conditioning,
-> remain open.
+> Deriving full exchangeability and the fractional-volume bridge, selecting the
+> remaining growth-arrow response-coupling sign, and obtaining quantitative
+> all-parent conditioning remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -437,7 +449,7 @@
 |---|---|---|
 | Full event-slot exchangeability | With unit normalization, forces the uniform local action density and harmonic additive charge | Strictly stronger than order-isomorphism covariance; covariance alone has a formal nonuniform counterexample |
 | Fractional-volume coupling bridge | Identifies the coupling increment with one-cell fractional number-volume growth, giving `1/(n+1)` with dimensional parameters canceled | The arithmetic and cancellations are derived; the coupling/volume identification is postulated |
-| Oriented clock/birth alignment | Matches a maximal-event signature coefficient to the first orthogonal route transition and aligns the future clock with one of `H_plus/H_minus` | `SatisfiesClockBirthIdentification` formalizes the match; `projective_clock_birth_reflection_doublet` proves symmetric data leave both signs |
+| Growth-arrow clock response | Couples the nonzero order-odd source of a linked maximal birth to its first orthogonal route-transition coefficient | `maximalBirthOrientationSourceQ_pos_iff_nonempty` derives the source and `firstLinkedBirth_source_exact` gives `1/6`; two conjugate reflection-covariant responses leave one Z2 coupling sign |
 
 The separate continuum target is to reconstruct the Lorentzian spin bundle,
 Dirac operator, and scaling limit. It is not counted as one of the three finite

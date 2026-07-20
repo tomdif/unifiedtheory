@@ -103,6 +103,35 @@ The matrix-level conjugate branch is `H_minus`: it exchanges which holonomy
 sector is ground.  The unresolved datum is therefore an oriented clock/branch
 alignment, not merely the sign printed on a time coordinate.
 
+## Process-level growth-arrow source
+
+`UnifiedTheory/Audit/KFCausalSetGrowthArrowChirality.lean` supplies the
+reflection-odd datum that the static vacuum action lacks.  A sequential-growth
+edge distinguishes the newborn maximal event.  At that event,
+
+```text
+future volume = 1,
+past volume   = 1 + precursor population,
+source        = precursor population / (2 total incidence volume).
+```
+
+The source is nonnegative and vanishes exactly for an empty-precursor
+gregarious birth.  It is strictly positive for every causally linked birth;
+after order reversal the same distinguished event is minimal and its source is
+strictly negative.  The first linked alternative is exactly the two-chain and
+has source `1/6`.  With the repository's standard phase response this yields
+`-i`, seeds `Xi=+1`, and the existing projective theorem transports that sign
+through every refinement.  The all-antichain trajectory remains an exact
+zero-source exceptional sector.
+
+This evades the fixed-input no-go without contradicting it: the input is now
+an oriented growth edge, not a reflection-fixed static action.  It does not yet
+derive the last binary choice.  The standard response sends a positive source
+to `-i`; its complex-conjugate response sends the same source to `+i`, and both
+obey the same reflection-covariance law.  Sequential growth has therefore
+generated the nonzero pseudoscalar, while the sign of its coupling to the clock
+remains microscopic input.
+
 ## Three-postulate causal-growth ledger
 
 The result is not yet an unconditional derivation of nature's vacuum from the
@@ -117,13 +146,13 @@ physical principles:
    with the fractional number-volume increment.  One-cell growth then gives
    `1/(n+1)` and all dimensional parameters cancel, but the identification is
    postulated rather than derived.
-3. **Oriented clock/birth alignment.** A maximal event's signature coefficient
-   is identified with the first orthogonal route-transition coefficient, and
-   the future growth clock is aligned with one of the reflected `H_plus/H_minus`
-   spectral assignments.  The exact predicate
-   `SatisfiesClockBirthIdentification` formalizes the coefficient match; the
-   reflection-doublet theorem proves that the existing symmetric axioms do not
-   choose the alignment.
+3. **Growth-arrow clock response.** The maximal-birth source derived above is
+   coupled to the first orthogonal route-transition coefficient and used as the
+   maximal-event signature character.  `SatisfiesClockBirthIdentification`
+   formalizes the coefficient match.  The source is now derived for every
+   linked birth, but `maximalBirthArrow_response_sign_not_fixed_by_reflection`
+   proves that covariance alone leaves the standard and conjugate response
+   laws.  Their remaining Z2 coupling sign is the postulated part.
 
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
@@ -141,19 +170,18 @@ abstract grading, not a spin representation.
 
 The strongest supported headline is:
 
-> Finite, machine-checked construction of a reflection pair of
-> refinement-stable chiral SU(2) charged currents.  The positive-oriented
-> clock branch is purely left-handed; the reflected branch is purely
-> right-handed.  Absolute selection remains conditional on the oriented
-> clock/birth alignment.
+> Finite, machine-checked generation of a nonzero reflection-odd source by
+> every linked future-maximal birth, together with a refinement-stable chiral
+> SU(2) charged current once its source-to-clock response sign is fixed.  The
+> standard response is left-handed; the conjugate response is right-handed.
 
 The unsupported headline is:
 
-> Future-directed sequential growth, positivity, and zero-ground normalization
-> alone select `H_plus`, force nature's absolute left-handed vacuum, and
-> reconstruct the continuum Lorentzian Dirac field.
+> Future-directed sequential growth and reflection covariance alone select the
+> sign of the source-to-clock coupling, force nature's absolute left-handed
+> vacuum, and reconstruct the continuum Lorentzian Dirac field.
 
-Promoting the first statement requires a microscopic reflection-odd mechanism
-that aligns the future growth arrow with one member of the clock doublet and
-derives the clock/birth match from the all-rank action, followed by the
-Lorentzian spin/Dirac continuum reconstruction.
+Promoting the first statement requires selecting the Z2 response-coupling sign
+from additional microscopic dynamics, resolving or suppressing the all-
+gregarious zero-source sector, deriving the clock/birth match in the all-rank
+action, and completing the Lorentzian spin/Dirac continuum reconstruction.

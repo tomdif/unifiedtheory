@@ -5143,4 +5143,5 @@ import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 -- chirality-blind; the edge-character/Hamiltonian-phase identification is the
 -- explicit conditional input and the next microscopic derivation target.
 import UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
+import UnifiedTheory.Audit.KFCausalSetGrowthArrowChirality
 import UnifiedTheory.LayerC.ContextualFraction

@@ -6,8 +6,8 @@ parameters. Machine-checked in Lean 4.**
 > **Current scope note (July 2026).** The finite-poset and matrix results are
 > machine-checked mathematics. The repository now constructs projective quantum
 > causal-set cylinder kinematics and a zero-free, normalized chiral
-> ancestor-pair law, but does **not** yet derive its symmetry/source or
-> a zero-safe running pair coupling from deeper microphysics
+> ancestor-pair law, but does **not** yet derive the remaining Z2 sign of its
+> growth-source/clock coupling or a continuum-stable pair coupling from deeper microphysics
 > or recover ordinary GR/QFT through
 > a nontrivial coarse-graining flow. The direct Poisson-sprinkling test of the bare
 > `K_F -> J_4` identification was negative. The later scope statement in
@@ -16,8 +16,8 @@ parameters. Machine-checked in Lean 4.**
 > [`QUANTUM_GEOMETRY_IR_AUDIT.md`](QUANTUM_GEOMETRY_IR_AUDIT.md) control quantum-
 > gravity and continuum claims.
 > The causal-growth extension has a separate three-principle ledger—event-slot
-> exchangeability, the fractional-volume bridge, and oriented clock/birth
-> alignment—so the core slogan is not a count of the full dynamical inputs.
+> exchangeability, the fractional-volume bridge, and the growth-arrow clock
+> response—so the core slogan is not a count of the full dynamical inputs.
 
 The repository formally verifies a proposed chain from a locally finite partial order
 to Standard Model structures and numerical identifications. The finite algebraic steps
@@ -551,15 +551,14 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   equivariant selector can send a reflection-fixed vacuum input to the
   fixed-point-free two-element chirality space. Equal mixing of the two
   reflected endpoints is exactly the strongly-positive mixed center `D_0`,
-  with zero orientation. Thus finite-depth symmetric growth transports a sign
-  perfectly but cannot create a preferred one. The causal-growth ledger has
+  with zero orientation. Thus the reflection-fixed vacuum action transports a
+  sign perfectly but cannot create a preferred phase from static data. The causal-growth ledger has
   three named principles: full event-slot exchangeability, the
-  fractional-volume bridge, and the oriented clock/birth alignment described
-  below. The first two select the harmonic law; the third connects a reflected
-  clock branch to the chiral birth character. Deriving them, or replacing the
-  third by a reflection-odd microscopic action or infinite-history
-  symmetry-breaking construction, and obtaining a useful all-parent condition
-  bound remain open.
+  fractional-volume bridge, and the growth-arrow clock response described
+  below. The first two select the harmonic law; the third connects the
+  process-generated odd source to the chiral birth character. Deriving the
+  first two and the remaining response-coupling sign, and obtaining a useful
+  all-parent condition bound remain open.
   `KFCausalSetWeakHandednessBridge.lean` now promotes that transported sign to
   an explicit Dirac-spinor weak doublet without conflating Weyl spin and weak
   isospin. It proves the standard gamma-five grading, the complexified
@@ -587,16 +586,32 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   extends to a normalized, strongly positive, projectively consistent
   unlabeled growth law; the two laws transport `Xi=+1` and `Xi=-1`
   respectively through every finite refinement. Thus the construction yields
-  a reflection doublet, not an absolute sign. The third named principle is an
-  **oriented clock/birth alignment**: identify a maximal birth with the first
-  orthogonal route transition and align the future growth clock with one of
-  the reflected ground/excited assignments. The existing symmetric axioms do
-  not select that alignment. The geometric channel cannot close the gap even
+  a reflection doublet, not an absolute sign. At this stage the missing input
+  is a growth-arrow clock response: identify a maximal birth with the first
+  orthogonal route transition and couple its orientation to one reflected
+  ground/excited assignment. The next module derives the nonzero orientation
+  source carried by a linked birth, while proving that the response-coupling
+  sign remains open. The geometric channel cannot close the gap even
   asymptotically: its rank-independent `|y|<1/4` bound keeps it uniformly away
   from the pure `+/-1/2` birth endpoints. A continuum Lorentzian Dirac
   reconstruction remains open. The relative lock among time, complex
   structure, causal orientation, and gamma-five—not the printed sign of `i`
   in isolation—is the supported physical claim.
+  `KFCausalSetGrowthArrowChirality.lean` then moves beyond the static-vacuum
+  no-go by using structure already present in a sequential-growth edge: the
+  distinguished newborn is maximal. Its inclusive future volume is exactly
+  `1`, while its inclusive past is `1 + precursorPopulation`; hence its
+  normalized order-odd source is nonnegative and is zero **iff** the birth is
+  gregarious. Every linked birth has a strictly positive source, and order
+  duality gives its strictly negative minimal-birth partner. At the first
+  linked alternative the source is exactly `1/6`. Under the standard
+  source-to-clock response it supplies `-i` and seeds the already-proved
+  refinement-stable `Xi=+1` law; the all-antichain trajectory remains an exact
+  zero-source exception. A second theorem prevents overclaiming: the conjugate
+  response sends the same positive source to `+i`, and both response laws obey
+  identical reflection covariance. Sequential growth therefore generates the
+  missing nonzero pseudoscalar on every connected birth, but does not yet fix
+  the final Z2 sign of its coupling to the quantum clock.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
