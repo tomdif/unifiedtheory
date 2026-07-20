@@ -360,9 +360,16 @@
 > kernel genuinely requires latent rank two at every event. Balanced unit birth
 > dynamics separately forces the chiral lift to `+i` or `-i`; combined order and
 > chirality reflection is an exact symmetry, so reflection-symmetric data cannot
-> choose an absolute sign. Deriving the fractional-volume bridge and the sign
-> source from deeper microdynamics, plus quantitative all-parent conditioning,
-> remain open.
+> choose an absolute sign. `KFCausalSetGeometricOrientationAsymptotics.lean`
+> closes the large-rank loophole: chain endpoints tend to zero, antichains are
+> exactly centered, and every finite causet satisfies the sharper universal
+> bound `|y|<1/4`. One-top causets tend to `1/4`, so the bound is optimal while
+> maintaining a uniform quarter-gap from pure chirality under any normalized
+> nonnegative sampling law. Because the cylinder quantum measure is nonadditive,
+> a numerical typical-event distribution still requires a sampling rule.
+> Deriving both named postulates—full exchangeability and the fractional-volume
+> bridge—and the sign source from deeper microdynamics, plus quantitative
+> all-parent conditioning, remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -457,6 +464,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-871 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full build: 8,625 jobs successful (July 2026).
+872 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full clean build: 8,634 jobs successful; immediate cached
+confirmation: 8,626 jobs successful (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

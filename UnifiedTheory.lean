@@ -5103,4 +5103,9 @@ import UnifiedTheory.Audit.KFCausalSetGeometricVolumeAction
 -- decoherence; balanced quantum birth separately forces the chiral lift ±i,
 -- while reflection cannot select its absolute sign.
 import UnifiedTheory.Audit.KFCausalSetGeometricOrientationDynamics
+-- Large-rank orientation remains uniformly mixed: chains dilute to y=0,
+-- antichains have y=0 exactly, and every finite causet obeys |y|<1/4. One-top
+-- causets converge to 1/4, proving the constant optimal while preserving a
+-- uniform quarter-gap from the pure ±1/2 endpoints under every sampling law.
+import UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
 import UnifiedTheory.LayerC.ContextualFraction

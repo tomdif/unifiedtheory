@@ -202,6 +202,16 @@ are stronger than another atomic-number identity:
     dynamics separately forces the quantum lift to `+i` or `-i`; combined order
     and chirality reflection is exact, and reflection-symmetric data cannot choose
     the absolute sign.
+36. **Large rank strengthens rather than erases the mixed/pure separation:** an
+    `n`-chain has exact profile `y_i=(2i+1-n)/(n(n+1))`, so its extremal event
+    tends to zero, and every antichain is exactly centered. More generally every
+    event of every finite causet obeys the dynamics-independent bound `|y|<1/4`.
+    A one-top causet has `y=n/(2(2n+1)) -> 1/4`, proving the constant optimal but
+    leaving a uniform quarter-gap from `+/-1/2`. Every separately normalized
+    nonnegative sampling distribution inherits the same mean bound. The critical
+    cylinder quantum measure is nonadditive, so defining a unique "typical y"
+    still requires an additional sampling or conditioning rule; no such rule can
+    violate the pointwise quarter bound.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -212,7 +222,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 872 Lean files (871 below `UnifiedTheory/`). The search
+The repository contains 873 Lean files (872 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

@@ -480,7 +480,8 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   `1/(n+1)`; summing from the empty causet gives `Q_n=H_n` on every path and
   hence `Q_2=3/2`. The reconstructed coupling is the same all-parent zero-free,
   projective, strongly-positive law above.
-  `KFCausalSetGeometricVolumeAction.lean` replaces the numerical schedule by
+  `KFCausalSetGeometricVolumeAction.lean` adds the second named postulate,
+  replacing the numerical schedule by
   the explicit bridge postulate that the coupling increment equals fractional
   number-volume growth. With nonzero cell volume `v`, a physical birth has
   `V_(n+1)-V_n=v`, so the postulated bridge gives `1/(n+1)`. The arithmetic is
@@ -502,12 +503,22 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   independent inner and outer modes—but the odd part of this chosen geometric
   profile is canonical. Its local parameter always obeys `|y|<1/2`, so it
   produces genuine mixed rank-two decoherence data at every event and can
-  never by itself reach a pure endpoint. Separately, balanced unit quantum
+  never by itself reach a pure endpoint. The large-rank loophole is closed by
+  `KFCausalSetGeometricOrientationAsymptotics.lean`: an `n`-chain has
+  `y_i=(2i+1-n)/(n(n+1))`, so its extremal event tends to zero, while an
+  antichain is exactly centered. Universally every finite causet satisfies the
+  sharper `|y|<1/4`; one-top causets tend to `1/4`, proving this constant
+  optimal but leaving a uniform quarter-gap from the pure endpoints. Hence no
+  critical-schedule weighting can push the geometric channel toward `+/-1/2`.
+  A numerical "typical y" still requires a sampling rule because the cylinder
+  quantum measure is nonadditive, but every normalized nonnegative sampling
+  distribution inherits the same bound. Separately, balanced unit quantum
   birth dynamics forces the lift to the pair `+i,-i`; reversing causal order
   and microscopic chirality together leaves the lifted amplitude invariant.
   A reflection-symmetric law cannot choose the absolute sign. What remains
-  open is deriving the fractional-volume bridge and a reflection-odd sign
-  source from deeper microdynamics, plus a useful all-parent condition bound.
+  open is deriving the two postulates—full event-slot exchangeability and the
+  fractional-volume bridge—and a reflection-odd sign source from deeper
+  microdynamics, plus a useful all-parent condition bound.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
