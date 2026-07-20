@@ -282,8 +282,8 @@ def D3_kp_decomposition : Derivation :=
 def D4_gauge_algebra : Derivation :=
   { name     := "D4: Gauge algebra sl(n) and chirality"
     inputs   := ["A1", "A2"]
-    result   := "Holonomy of the recovered connection gives the gauge Lie algebra. Structure constants from discrete Ambrose-Singer. Chiral distinction from orientation. Chirality identification (formerly gap (iii): algebraic K/P asymmetry ↔ physical γ₅) is now a THEOREM via Hodge duality in d=4 (ChiralityFromHodge.lean)."
-    file_ref := "DiscreteAmbroseSinger.lean, ChiralDistinctness.lean, ChiralityFromHodge.lean" }
+    result   := "Holonomy of the recovered connection gives the gauge Lie algebra. Structure constants from discrete Ambrose-Singer. Hodge duality gives an abstract Z/2 grading on 4D two-forms, but identifying the K/P kernel with that module and then with physical fermion γ₅ requires additional bridges. The explicit causal Weyl-projector bridge is conditional on orientation locking and a nonzero oriented branch."
+    file_ref := "DiscreteAmbroseSinger.lean, ChiralDistinctness.lean, ChiralityFromHodge.lean, Audit/KFCausalSetWeakHandednessBridge.lean" }
 
 def D5_sm_gauge_group : Derivation :=
   { name     := "D5: SM gauge group SU(3)xSU(2)xU(1)"
@@ -374,7 +374,10 @@ def allNonDerivations : List NonDerivation :=
 
   Key progress since initial formulation:
   - A2 upgraded from .motivated to .conditionallyDerived
-  - Chirality identification (former gap (iii)) closed by ChiralityFromHodge.lean
+  - Abstract involution grading proved by ChiralityFromHodge.lean; identifying
+    the K/P kernel with the Hodge 2-form module is still a bridge. The physical
+    causal-to-Weyl bridge and its remaining oriented-branch assumption are
+    isolated in Audit/KFCausalSetWeakHandednessBridge.lean
   - Width-dimension correspondence bridges CAG and unified theory
 -/
 

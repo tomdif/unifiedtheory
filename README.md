@@ -551,6 +551,21 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   bridge—plus adding or deriving either a reflection-odd microscopic action
   term or an infinite-history symmetry-breaking boundary condition, and
   obtaining a useful all-parent condition bound.
+  `KFCausalSetWeakHandednessBridge.lean` now promotes that transported sign to
+  an explicit Dirac-spinor weak doublet without conflating Weyl spin and weak
+  isospin. It proves the standard gamma-five grading, the complexified
+  `SU(2)` relations `[T3,T+]=T+`, `[T3,T-]=-T-`, and `[T+,T-]=2T3`, and the
+  unique affine orientation-locking projector
+  `P_weak(Xi)=(1-Xi*gammaFive)/2`. For `Xi=+1`, every refinement depth has the
+  same nonzero charged-current vertex, it annihilates every right Weyl state,
+  and it absorbs the left projector; `Xi=-1` gives the exact reflected mirror.
+  Reflection flips both `Xi` and gamma five, leaving the relationally
+  left-handed law covariant. This is a machine-checked conditional derivation
+  of a purely left-handed weak current on a positive oriented branch. It is not
+  yet an unconditional derivation of nature's vacuum choice: the preceding
+  no-go proves that the present reflection-fixed vacuum cannot generate the
+  required nonzero branch. The exact claim ledger is in
+  [`WEAK_HANDEDNESS_DERIVATION_AUDIT.md`](WEAK_HANDEDNESS_DERIVATION_AUDIT.md).
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

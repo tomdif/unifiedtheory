@@ -248,6 +248,20 @@ are stronger than another atomic-number identity:
     the current finite symmetric dynamics can transport but cannot prefer
     chirality. A reflection-odd microscopic term or an infinite-history
     symmetry-breaking boundary condition is mathematically necessary.
+40. **A nonzero causal orientation uniquely locks a purely chiral weak
+    vertex:** on a Dirac-spinor weak doublet with independent chirality,
+    Weyl-spin, and weak-isospin indices, the standard weak generators obey
+    `[T3,T+]=T+`, `[T3,T-]=-T-`, and `[T+,T-]=2T3`. Requiring an affine function
+    of the relative grading `Xi*gammaFive` to retain eigenvalue `-1` and kill
+    eigenvalue `+1` uniquely forces
+    `P_weak(Xi)=(1-Xi*gammaFive)/2`. At every projective refinement depth,
+    `Xi=+1` therefore produces a nonzero charged-current vertex that annihilates
+    every right Weyl state and depends only on the left projection. `Xi=-1`
+    gives the exact mirror, and simultaneous causal/spinor reflection preserves
+    the law. This derives a left-handed weak current relative to any nonzero
+    oriented branch. It does not evade result 39: generating nature's nonzero
+    branch from the reflection-fixed vacuum and reconstructing the Lorentzian
+    continuum spin bundle remain open.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -258,7 +272,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 876 Lean files (875 below `UnifiedTheory/`). The search
+The repository contains 877 Lean files (876 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

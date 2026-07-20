@@ -5126,4 +5126,13 @@ import UnifiedTheory.Audit.KFCausalSetRelationalChiralitySelection
 -- can select a fixed-point-free chirality from a reflection-fixed input, and
 -- equal mixing of the two laws gives the mixed center D_0.
 import UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
+-- The transported cylinder sign now acts on an explicit Dirac-spinor weak
+-- doublet through the unique affine locking projector
+-- P_weak(Xi)=(1-Xi*gammaFive)/2.  Xi=+1 gives a nonzero SU(2) charged-current
+-- vertex that annihilates every right Weyl state at every refinement depth;
+-- reflection gives the exact mirror.  The existing no-go remains decisive:
+-- the reflection-fixed vacuum does not yet generate the nonzero oriented
+-- branch, so the result is a conditional derivation rather than an
+-- unconditional derivation of nature's vacuum choice.
+import UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 import UnifiedTheory.LayerC.ContextualFraction

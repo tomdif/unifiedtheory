@@ -1,5 +1,5 @@
 /-
-  LayerA/ChiralityFromHodge.lean — BRIDGE THEOREM: algebraic chirality → physical chirality
+  LayerA/ChiralityFromHodge.lean — abstract Hodge grading of the K/P sector
 
   THE GAP THIS FILE CLOSES:
 
@@ -13,26 +13,37 @@
   Paper passage (lines 963-968): "The connection from algebraic asymmetry
   to physical chirality is a physical identification."
 
-  THIS FILE UPGRADES THAT IDENTIFICATION TO A THEOREM.
+  HONEST SCOPE OF THIS FILE:
+
+  This file proves the real-linear algebra behind an abstract Z/2 grading.  It
+  does NOT construct a Lorentzian Clifford module, gamma matrices, a spin
+  structure, Weyl fermions, or an SU(2)_L interaction.  Consequently it does
+  not by itself upgrade the K/P labels to physical fermion chirality.  The
+  executable Weyl-projector and weak-vertex bridge is formalized separately in
+  Audit/KFCausalSetWeakHandednessBridge.lean, where the remaining causal-to-
+  spinor locking law and oriented-branch condition are stated explicitly.
 
   THE ARGUMENT (three steps):
 
-  STEP 1: The ker(φ) sector (traceless perturbations) carries a ℤ/2 grading
-  from the Hodge star. In d=4, ★² = id on 2-forms gives eigenspaces V⁺
-  (self-dual) and V⁻ (anti-self-dual). Traceless perturbations produce Weyl
-  curvature, which decomposes as W⁺ + W⁻. Therefore ker(φ) inherits a
-  ℤ/2 grading: ker(φ) = ker(φ)⁺ ⊕ ker(φ)⁻.
+  STEP 1: Any supplied involution on ker(φ) gives complementary `+1` and `-1`
+  eigenspaces.  In d=4, Hodge star supplies such an involution on Euclidean
+  2-forms.  This file does not prove that the abstract `ker(φ)` is a 2-form
+  or Weyl-curvature module; the capstone takes the involution on `ker(φ)` as
+  an explicit hypothesis.
 
   STEP 2: The K-sector (1-dimensional, trace direction) does NOT carry this
   grading. A 1-dimensional space has only the trivial grading.
 
-  STEP 3: The Hodge ★ on 2-forms in d=4, via the Clifford algebra isomorphism
-  Λ² ≅ spin(3,1), acts as γ₅ = iγ⁰γ¹γ²γ³. Self-dual = (1,0) = left-handed,
-  anti-self-dual = (0,1) = right-handed. This is canonical.
+  CONTINUUM INTERPRETATION (not proved in this file): after complexification
+  in Lorentzian signature, self-dual and anti-self-dual bivectors transform in
+  the (1,0) and (0,1) Lorentz representations.  Relating those bivector
+  representations to the (1/2,0) and (0,1/2) Weyl spinor modules requires a
+  Clifford/spin construction.  Hodge star on Euclidean real 2-forms is not
+  literally the gamma-five operator on spinors.
 
-  CONCLUSION: Chirality is DERIVED:
-    partial order → source functional → K/P split → d=4 →
-    Hodge involution → chiral grading on ker(φ) → physical chirality.
+  CONCLUSION PROVED HERE: a supplied nontrivial involution on `ker(φ)` gives
+  a complementary Z/2 grading, while a one-dimensional complement cannot carry
+  a nontrivial complementary grading.
 
   Zero sorry. Zero custom axioms.
 -/
@@ -188,10 +199,11 @@ theorem one_dim_no_nontrivial_grading
     exact hm (Submodule.finrank_eq_zero.mp h0)
   omega
 
-/-! ### Step 3: Graded gauge action = physical chirality -/
+/-! ### Step 3: Gauge action relative to the abstract grading -/
 
-/-- A **graded gauge action**: preserves the chiral grading but may act
-    differently on V⁺ and V⁻. This IS physical chirality. -/
+/-- A **graded gauge action**: preserves the abstract grading but may act
+    differently on V⁺ and V⁻.  Calling this physical fermion chirality needs
+    an additional spinorial bridge. -/
 structure GradedGaugeAction (W : Type*) [AddCommGroup W] [Module ℝ W]
     (grading : ChiralGrading W) where
   act : W →ₗ[ℝ] W
@@ -209,8 +221,9 @@ def GradedGaugeAction.IsChirallyAsymmetric
 
 /-! ### The main bridge theorem -/
 
-/-- **BRIDGE THEOREM**: Gauge asymmetry + Hodge grading = physical chirality.
-    Connects to ChiralDistinctness.IsChiralAction. -/
+/-- Gauge asymmetry can be expressed relative to the Hodge grading and implies
+    the repo's algebraic `IsChiralAction` predicate.  This theorem does not
+    identify the graded vector space with a physical Weyl spinor module. -/
 theorem gauge_asymmetry_is_chiral_grading
     {W : Type*} [AddCommGroup W] [Module ℝ W]
     (grading : ChiralGrading W)
@@ -225,9 +238,9 @@ theorem gauge_asymmetry_is_chiral_grading
   obtain ⟨wp, wm, hwp, hwm, hne, heq⟩ := h_asymm
   exact ⟨h_nontrivial.1, ⟨wp, wm, hwp, hwm, hne, heq⟩, ⟨wp, hne⟩⟩
 
-/-! ### The capstone: chirality is DERIVED, not identified -/
+/-! ### The capstone: the abstract grading is derived -/
 
-/-- **CAPSTONE**: The full derivation chain for chirality.
+/-- **CAPSTONE**: The derivation chain for a nontrivial abstract grading.
 
     Given: φ nonzero, K/P split with dim(K)=1, Hodge involution on ker(φ)
     with nontrivial eigenspaces.
@@ -235,7 +248,10 @@ theorem gauge_asymmetry_is_chiral_grading
     Concludes:
     (a) ker(φ) has a nontrivial chiral grading
     (b) K has NO nontrivial grading
-    (c) ker(φ) is nontrivial (chirality lives only in the constrained sector) -/
+    (c) ker(φ) is nontrivial.
+
+    No Lorentz/Clifford representation or weak gauge vertex occurs in the
+    statement. -/
 theorem chirality_derived_not_identified
     {W : Type*} [AddCommGroup W] [Module ℝ W] [FiniteDimensional ℝ W]
     (φ : W →ₗ[ℝ] ℝ) (_hφ : φ ≠ 0)
@@ -264,20 +280,22 @@ theorem chirality_derived_not_identified
       exact Subtype.ext hw0
     exact h_nontrivial_plus this
 
-/-! ### Summary: the complete chirality derivation
+/-! ### Summary: the abstract Hodge-grading derivation
 
   1. Partial order → causal structure (CausalFoundation)
   2. Causal structure → source functional φ (SourceFromMetric)
   3. φ → K/P decomposition: V = ker(φ) ⊕ K, dim(K)=1 (KPDecomposition)
   4. d = 4 derived (DimensionDerived)
-  5. In d=4, Hodge ★² = id on 2-forms (HodgeStarFourD)
-  6. ★ induces ℤ/2 grading: ker(φ) = ker(φ)⁺ ⊕ ker(φ)⁻ (this file, Step 1)
+  5. In d=4, Hodge ★² = id on Euclidean 2-forms (HodgeStarFourD)
+  6. If an involution is supplied on ker(φ), it induces the grading
+     ker(φ) = ker(φ)⁺ ⊕ ker(φ)⁻ (this file, Step 1)
   7. K has NO nontrivial grading (this file, Step 2)
   8. Gauge invariance of φ constrains ker(φ) (ChiralityFromKP)
   9. Constrained sector carries chiral grading (this file, bridge theorem)
-  10. This grading IS γ₅ via Λ² ≅ spin(3,1) (Clifford algebra)
+  10. To obtain physical fermion chirality one must additionally construct a
+      Lorentzian spinor module and connect this grading to gamma-five.
 
-  Chirality is DERIVED. The quotes around "left-handed" and "right-handed"
-  in ChiralityFromKP.lean can now be removed. -/
+  The grading is derived.  The physical left/right interpretation is not a
+  theorem of this file. -/
 
 end UnifiedTheory.LayerA.ChiralityFromHodge

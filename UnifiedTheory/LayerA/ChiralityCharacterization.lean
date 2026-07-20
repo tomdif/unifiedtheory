@@ -1,5 +1,5 @@
 /-
-  LayerA/ChiralityCharacterization.lean — THE BICONDITIONAL
+  LayerA/ChiralityCharacterization.lean — conditional abstract interface
 
   Chirality ↔ PeriodicBC ∧ HodgeSelfDualExists
 
@@ -13,17 +13,25 @@
   2. ChiralityFromHodge.lean (this project):
      - In d=4, Hodge star on 2-forms satisfies star^2 = id
      - This gives a Z/2 grading: self-dual + anti-self-dual
-     - The grading on ker(phi) IS physical chirality
-     Conclusion: Hodge self-dual decomposition is SUFFICIENT for chirality.
+     - Identifying that grading with physical fermion chirality is not proved
+       by Hodge duality alone
+     Conclusion: Hodge self-dual decomposition supplies an abstract grading.
 
-  Neither project alone gives the biconditional. Together:
+  The implication to `ChiralFermions` below is conditional on the explicitly
+  supplied predicates `HodgeRealizesChirality` and `ChiralityRequiresHodge`.
+  Moreover the interface classes carry only `True`; they are proposition
+  tokens, not constructed fermion fields or representations.  Therefore the
+  theorem is a logical packaging of hypotheses, not an unconditional physical
+  derivation of Weyl fermions.
+
+  Under those hypotheses:
     Forward:  chirality → periodic BC (contrapositive of CAG no-go)
                         ∧ Hodge grading exists (chirality requires the Z/2 structure)
     Backward: periodic BC ∧ Hodge grading → chirality
 
-  Physical corollary: In d=4 with no spatial boundary (our universe),
-  periodic BC is automatic and d=4 is derived (DimensionDerived.lean).
-  Therefore chirality is a CONSEQUENCE of d=4.
+  A physical corollary requires, in addition, a Lorentz/Clifford bridge and a
+  chiral gauge vertex.  See Audit/KFCausalSetWeakHandednessBridge.lean for an
+  explicit finite Weyl-projector model and its remaining assumptions.
 
   Zero sorry. Zero custom axioms (CAG results stated as hypotheses).
 -/
@@ -148,15 +156,12 @@ theorem periodic_and_hodge_implies_chirality
 
 /-! ### Section 3: THE BICONDITIONAL -/
 
-/-- **THE MAIN THEOREM: Chirality ↔ Periodic BC ∧ Hodge self-dual decomposition.**
+/-- **Conditional interface theorem:** given the named realization and
+    necessity hypotheses, the proposition tokens satisfy
+    `ChiralFermions ↔ PeriodicBC ∧ HodgeSelfDualExists`.
 
-    This is the characterization theorem combining CAG and unified theory results.
-
-    Forward: Chirality requires periodic BC (by CAG contrapositive) and
-    Hodge grading (the grading IS the chirality mechanism).
-
-    Backward: Periodic BC + Hodge grading produces chirality via
-    nontrivial Wilson loop and the Z/2 grading on ker(phi). -/
+    This is not an unconditional construction of physical fermions: both
+    directions consume bridge hypotheses in the theorem statement. -/
 theorem chirality_iff_periodic_and_hodge
     (h_cag : CAGOpenBCKillsChirality)
     (h_bc_decide : BCDecidable)
@@ -243,8 +248,8 @@ theorem d4_unique_for_twoform_involution (n : ℕ) (hn : n ≥ 2) :
 
 /-! ### Section 6: Physical corollary — chirality from d=4 alone -/
 
-/-- **PHYSICAL COROLLARY**: In d=4 without spatial boundary, chirality
-    is automatic.
+/-- **Conditional corollary**: in d=4 without spatial boundary, the abstract
+    `ChiralFermions` token follows after supplying all bridge hypotheses.
 
     The universe has no spatial boundary (standard cosmology: closed or flat,
     either way periodic/no-boundary). So PeriodicBC holds.
@@ -252,10 +257,8 @@ theorem d4_unique_for_twoform_involution (n : ℕ) (hn : n ≥ 2) :
     d=4 is derived (DimensionDerived.lean). In d=4, the Hodge self-dual
     decomposition exists (d4_gives_hodge_grading above).
 
-    Therefore: chirality is a CONSEQUENCE of d=4.
-
-    This removes chirality from the list of independent assumptions
-    and adds it to the list of derived structures. -/
+    This statement does not remove physical chirality from the assumption
+    ledger because `h_req` and `h_hodge_realizes` are inputs. -/
 theorem chirality_from_d4_and_no_boundary
     (h_cag : CAGOpenBCKillsChirality)
     (h_bc_decide : BCDecidable)
@@ -286,7 +289,8 @@ theorem chirality_from_d4_and_no_boundary
   12. In our universe: d = 4 (step 4) + no boundary (step 8)
       → periodic BC ∧ Hodge self-dual → chirality (QED)
 
-  Chirality is DERIVED from d = 4 and the absence of a spatial boundary.
-  Both are themselves derived from the causal structure. -/
+  The displayed implication is conditional on `ChiralityRequiresHodge`,
+  `HodgeRealizesChirality`, the CAG boundary hypothesis, and a nontrivial
+  Wilson loop. -/
 
 end UnifiedTheory.LayerA.ChiralityCharacterization

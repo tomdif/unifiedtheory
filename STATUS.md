@@ -376,6 +376,17 @@
 > vacuum action; the equal reflected mixture is exactly the strongly-positive
 > mixed center `D_0`. The current finite dynamics therefore transports but
 > cannot spontaneously generate a preferred sign.
+> `KFCausalSetWeakHandednessBridge.lean` turns the transported sign into an
+> explicit weak vertex on a correctly factorized Dirac-spinor weak doublet.
+> Gamma five acts only on Dirac chirality, while the proved `T+`, `T-`, `T3`
+> commutators act only on weak isospin. The unique affine locking law
+> `P_weak(Xi)=(1-Xi*gammaFive)/2` gives `P_L` for `Xi=+1` and `P_R` for
+> `Xi=-1`. Hence a positive relational branch produces, at every refinement
+> depth, a nonzero charged current that annihilates all right Weyl states; the
+> negative branch is its exact reflected mirror. This is relational and
+> conditional: the current symmetric vacuum still cannot select nonzero `Xi`,
+> and the Lorentzian continuum spin/Dirac reconstruction remains open. See
+> `WEAK_HANDEDNESS_DERIVATION_AUDIT.md` for the exact claim boundary.
 > `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
@@ -488,7 +499,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-875 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,629 jobs successful; its
-immediate parent also passed a clean rebuild of 8,634 jobs (July 2026).
+876 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,630 jobs successful
+(July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
