@@ -8,9 +8,13 @@ parameters. Machine-checked in Lean 4.**
 > causal-set cylinder kinematics and a zero-free, normalized chiral
 > ancestor-pair law. At the exact cylinder-event scope, the apparent Z2 sign
 > is now proved to be one global complex-conjugation gauge orbit, rather than
-> two distinguishable real-event theories. The repository does **not** yet
-> derive the source-to-clock response mechanism itself, a continuum-stable
-> pair coupling from deeper microphysics,
+> two distinguishable real-event theories. The finite response is now rigid
+> inside the minimal affine-local ansatz: achiral neutrality and combined
+> reflection force `E_g(Xi,y)=g Xi y`, whose nonzero drive has one pure
+> endpoint, while elementary balance and composition leave exactly the
+> conjugate `+/-i` characters. The repository does **not** yet derive that
+> affine-local ansatz or elementary relation-complement symmetry from deeper
+> causal dynamics,
 > or recover ordinary GR/QFT through
 > a nontrivial coarse-graining flow. The direct Poisson-sprinkling test of the bare
 > `K_F -> J_4` identification was negative. The later scope statement in
@@ -19,8 +23,8 @@ parameters. Machine-checked in Lean 4.**
 > [`QUANTUM_GEOMETRY_IR_AUDIT.md`](QUANTUM_GEOMETRY_IR_AUDIT.md) control quantum-
 > gravity and continuum claims.
 > The causal-growth extension has two dynamical selection postulates—event-slot
-> exchangeability and the fractional-volume bridge—plus a source-to-clock
-> interpretation bridge. Its absolute printed chirality sign is not an
+> exchangeability and the fractional-volume bridge—plus a minimal local
+> response principle. Its absolute printed chirality sign is not an
 > additional observable input at the cylinder level, so the core slogan is not
 > a count of the full dynamical inputs.
 
@@ -559,10 +563,13 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   with zero orientation. Thus the reflection-fixed vacuum action transports a
   sign perfectly but cannot create a preferred phase from static data. The causal-growth ledger has
   two named dynamical selection principles: full event-slot exchangeability
-  and the fractional-volume bridge. A separate source-to-clock bridge connects
-  the process-generated odd source to the chiral birth character. Deriving the
-  first two, deriving that response mechanism rather than interpreting it, and
-  obtaining a useful all-parent condition bound remain open. The printed Z2
+  and the fractional-volume bridge. A separate minimal local response
+  principle connects the process-generated odd source to the chiral birth
+  character. The response function is now classified: affine locality,
+  zero-source neutrality, and combined reflection leave only `g Xi y`, and
+  balance leaves only the conjugate quarter turns. Deriving the first two
+  principles, deriving affine locality and complement symmetry from deeper
+  dynamics, and obtaining a useful all-parent condition bound remain open. The printed Z2
   response sign is no longer counted as an independent physical input at the
   cylinder-event scope.
   `KFCausalSetWeakHandednessBridge.lean` now promotes that transported sign to
@@ -612,7 +619,7 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   gregarious. Every linked birth has a strictly positive source, and order
   duality gives its strictly negative minimal-birth partner. At the first
   linked alternative the source is exactly `1/6`. Under the standard
-  source-to-clock response it supplies `-i` and seeds the already-proved
+  positive-coupling bilinear response it supplies `-i` and seeds the already-proved
   refinement-stable `Xi=+1` law; the all-antichain trajectory remains an exact
   zero-source exception. A second theorem prevents overclaiming: the conjugate
   response sends the same positive source to `+i`, and both response laws obey
@@ -639,6 +646,24 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   the numerical magnitude is geometry-dependent. Geometry supplies a strict
   interior source; the balanced quantum response retains its sign and reaches
   the pure conjugate endpoint pair.
+  `KFCausalSetMicroscopicResponseLaw.lean` removes the remaining arbitrary
+  response-function freedom at a precise boundary. Among energies affine in
+  the birth pseudoscalar `Xi` and the orientation coordinate `y`, simultaneous
+  reflection and zero-source neutrality uniquely force
+  `E_g(Xi,y)=g Xi y`. For `g Xi != 0`, minimization on the strong-positivity
+  interval `|y|<=1/2` has one endpoint: `-1/2` for positive drive and `+1/2`
+  for negative drive; zero drive gives no phase. Independently, elementary
+  Born normalization, relation-complement symmetry, the ancestor gauge, and
+  independent composition classify every such signature character as exactly
+  one of the `+i/-i` pair. Every linked maximal birth activates the matching
+  elementary phase. Crucially, the module propagates conjugation through the
+  repo's newest zero-free harmonic ancestor-pair law generated by the
+  microscopic spectator action—not only through the older totalized law—at
+  every transition, finite event, refinement, and infinite cylinder. Thus no
+  extra finite response table or observable Z2 remains. The honest residual
+  assumptions are the affine-local response class and elementary
+  relation-complement symmetry; deriving those from a deeper action and the
+  continuum Lorentzian/CP bridge remain open.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

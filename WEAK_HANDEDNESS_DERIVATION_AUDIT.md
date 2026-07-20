@@ -103,11 +103,13 @@ Simply replacing `tau` by `-tau` in the scalar phase conjugates `-i` to `+i`.
 For the concrete route Hamiltonian at the half-period, however, using the same
 `H_plus` at `+/- pi/2` does not by itself choose the reflected transition.
 The matrix-level conjugate branch is `H_minus`: it exchanges which holonomy
-sector is ground.  At the clock-module boundary the unresolved datum is
+sector is ground.  At the clock-module boundary the unresolved datum was
 therefore an oriented clock/branch alignment, not merely the sign printed on a
 time coordinate.  The later modules derive the process-level source and prove
-the two printed signs conjugation-equivalent; deriving the response mechanism
-itself remains open.
+the two printed signs conjugation-equivalent. The response-rigidity module then
+proves that, inside the minimal affine-local class, neutrality and reflection
+leave only the bilinear alignment `E_g(Xi,y)=g Xi y`; deriving that locality
+class from deeper causal dynamics remains open.
 
 ## Process-level growth-arrow source
 
@@ -139,15 +141,20 @@ constructed growth theory.  Conjugation exchanges the raw and normalized edge
 laws even at an active zero-partition fallback, all finite paths and events,
 and the infinite-cylinder decoherence functional.  It commutes with arbitrary
 refinement and fixes every real cylinder quantum measure.  Quotienting by this
-global convention gives a subsingleton sector.  Thus the last binary label is
-not a second cylinder-operational theory; what remains to derive is the
-source-to-clock response mechanism, not an absolute printed sign of `i`.
+global convention gives a subsingleton sector. Thus the last binary label is
+not a second cylinder-operational theory. `KFCausalSetMicroscopicResponseLaw.lean`
+additionally proves that the response is unique within the affine-local,
+neutral, reflection-invariant class and propagates the same conjugation result
+through the newest zero-free harmonic action law. What remains to derive is
+why the microscopic action belongs to that class and obeys elementary
+relation-complement symmetry, not an absolute printed sign of `i` or another
+response table.
 
-## Two-postulate causal-growth ledger and response bridge
+## Two-postulate causal-growth ledger and local response principle
 
 The result is not yet an unconditional derivation of nature's vacuum from the
-partial-order postulate alone.  The causal-growth construction uses two named
-dynamical selection postulates and one interpretation bridge:
+partial-order postulate alone. The causal-growth construction uses two named
+dynamical selection postulates and one local response principle:
 
 1. **Full event-slot exchangeability.** Together with unit normalization it
    forces the uniform local action density.  It is strictly stronger than
@@ -157,16 +164,17 @@ dynamical selection postulates and one interpretation bridge:
    with the fractional number-volume increment.  One-cell growth then gives
    `1/(n+1)` and all dimensional parameters cancel, but the identification is
    postulated rather than derived.
-3. **Source-to-clock response bridge.** The maximal-birth source derived above is
-   coupled to the first orthogonal route-transition coefficient and used as the
-   maximal-event signature character.  `SatisfiesClockBirthIdentification`
-   formalizes the coefficient match.  The source is now derived for every
-   linked birth, but `maximalBirthArrow_response_sign_not_fixed_by_reflection`
-   proves that covariance alone leaves the standard and conjugate response
-   laws.  `sequentialGrowthChirality_conjugationCompleteness` proves that these
-   are one cylinder-operational conjugation-gauge orbit.  The bridge mechanism
-   itself remains conditional; its Z2 representative is not an additional
-   observable parameter at this scope.
+3. **Minimal local response principle.** The maximal-birth source is coupled to
+   the orientation coordinate by an energy affine in both variables. Achiral
+   neutrality and simultaneous reflection then uniquely force
+   `E_g(Xi,y)=g Xi y`. Nonzero drive uniquely minimizes at a pure endpoint;
+   elementary relation-complement symmetry and composition leave exactly the
+   `+i/-i` characters. `finiteMicroscopicResponseLaw_complete` joins those
+   results to every linked birth. `completeMicroscopicActionConjugationEquivalence`
+   proves the two representatives of the newest zero-free harmonic action law
+   agree on every real finite/cylinder measure and commute with refinement.
+   The affine-local class and elementary complement symmetry remain physical
+   assumptions; the response function and printed Z2 do not.
 
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
@@ -185,20 +193,22 @@ abstract grading, not a spin representation.
 The strongest supported headline is:
 
 > Finite, machine-checked generation of a nonzero reflection-odd source by
-> every linked future-maximal birth, together with a refinement-stable chiral
-> SU(2) charged current unique up to global complex conjugation.  The standard
-> representative is left-handed, the conjugate representative is right-handed,
-> and all real cylinder-event measures agree.
+> every linked future-maximal birth; a unique neutral, reflection-invariant
+> affine-local endpoint response; and a refinement-stable chiral SU(2) charged
+> current unique up to global complex conjugation. The standard representative
+> is left-handed, the conjugate representative is right-handed, and all real
+> cylinder-event measures agree even for the newest zero-free harmonic action.
 
 The unsupported headline is:
 
-> Future-directed sequential growth and reflection covariance alone select the
-> sign of the source-to-clock coupling, force nature's absolute left-handed
-> vacuum, and reconstruct the continuum Lorentzian Dirac field.
+> Future-directed sequential growth and reflection covariance alone derive the
+> response without affine-locality or elementary complement symmetry, force
+> nature's absolute left-handed vacuum, and reconstruct the continuum
+> Lorentzian Dirac field.
 
 Promoting the first statement to a continuum claim requires deriving the
-source-to-clock response mechanism, resolving or suppressing the all-
-gregarious zero-source sector, deriving the clock/birth match in the all-rank
-action, and completing the Lorentzian spin/Dirac continuum reconstruction.
+affine-local response class and elementary complement symmetry from the deeper
+action, resolving or suppressing the all-gregarious zero-source sector, and
+completing the Lorentzian spin/Dirac continuum reconstruction.
 Selecting an absolute Z2 representative is not separately required inside the
 proved real cylinder-event theory.
