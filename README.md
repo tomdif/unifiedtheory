@@ -510,6 +510,16 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   sharper `|y|<1/4`; one-top causets tend to `1/4`, proving this constant
   optimal but leaving a uniform quarter-gap from the pure endpoints. Hence no
   critical-schedule weighting can push the geometric channel toward `+/-1/2`.
+  `KFCausalSetGeometricOrientationEntropyGap.lean` turns that sharp band into
+  a uniform quantum-information theorem. At every event, both orientation
+  spectral weights lie strictly between `1/4` and `3/4`; optimal chirality
+  predictability is below `3/4`; determinant is above `3/16`; matrix purity is
+  below `5/8`; the latent residual is above `3/8`; and spectral condition
+  number is below `3`. The binary spectral entropy is therefore strictly above
+  `binEntropy(1/4)/log 2`, approximately `0.811278` bits. Since every scalar-
+  amplitude history kernel has zero determinant, this also gives an invariant
+  uniform separation from every rank-one realization, not only from the two
+  named chiral endpoints.
   A numerical "typical y" still requires a sampling rule because the cylinder
   quantum measure is nonadditive, but every normalized nonnegative sampling
   distribution inherits the same bound. Separately, balanced unit quantum

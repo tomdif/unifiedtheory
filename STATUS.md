@@ -365,7 +365,14 @@
 > exactly centered, and every finite causet satisfies the sharper universal
 > bound `|y|<1/4`. One-top causets tend to `1/4`, so the bound is optimal while
 > maintaining a uniform quarter-gap from pure chirality under any normalized
-> nonnegative sampling law. Because the cylinder quantum measure is nonadditive,
+> nonnegative sampling law. `KFCausalSetGeometricOrientationEntropyGap.lean`
+> upgrades this to a uniform mixedness theorem: both spectral weights are in
+> `(1/4,3/4)`, chirality predictability is below `3/4`, determinant is above
+> `3/16`, matrix purity below `5/8`, latent residual above `3/8`, spectral
+> condition number below `3`, and binary spectral entropy above
+> `binEntropy(1/4)/log 2 ≈ 0.811278` bits. The determinant floor uniformly
+> separates the geometric kernel from every rank-one scalar-amplitude kernel.
+> Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
 > Deriving both named postulates—full exchangeability and the fractional-volume
 > bridge—and the sign source from deeper microdynamics, plus quantitative
@@ -464,7 +471,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-872 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full clean build: 8,634 jobs successful; immediate cached
-confirmation: 8,626 jobs successful (July 2026).
+873 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,627 jobs successful; its
+immediate parent also passed a clean rebuild of 8,634 jobs (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

@@ -212,6 +212,17 @@ are stronger than another atomic-number identity:
     cylinder quantum measure is nonadditive, so defining a unique "typical y"
     still requires an additional sampling or conditioning rule; no such rule can
     violate the pointwise quarter bound.
+37. **Geometry has a universal orientation-entropy floor:** the sharp quarter
+    band forces both eigenweights of every finite geometric orientation kernel
+    into `(1/4,3/4)`. Consequently the best chirality prediction is below `3/4`,
+    `det D_y > 3/16`, `Tr(D_y^2) < 5/8`, the latent two-component residual is
+    above `3/8`, and the spectral condition number is below `3`. Its binary
+    spectral entropy is strictly above `binEntropy(1/4)/log 2`, approximately
+    `0.811278` bits. Every scalar-amplitude history kernel has determinant zero,
+    so the determinant floor is a basis-invariant uniform separation from the
+    entire rank-one class, not merely from the two chiral endpoints. These are
+    finite model-internal no-purification results, not a thermodynamic or
+    continuum entropy claim.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -222,7 +233,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 873 Lean files (872 below `UnifiedTheory/`). The search
+The repository contains 874 Lean files (873 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

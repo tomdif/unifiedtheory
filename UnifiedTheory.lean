@@ -5108,4 +5108,10 @@ import UnifiedTheory.Audit.KFCausalSetGeometricOrientationDynamics
 -- causets converge to 1/4, proving the constant optimal while preserving a
 -- uniform quarter-gap from the pure ±1/2 endpoints under every sampling law.
 import UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
+-- The sharp quarter band has quantitative quantum-information consequences at
+-- every finite rank: both spectral weights lie in (1/4,3/4), determinant is
+-- above 3/16, purity below 5/8, condition number below 3, and binary entropy
+-- above h_2(1/4). This uniformly separates the geometric channel from every
+-- rank-one scalar-amplitude kernel.
+import UnifiedTheory.Audit.KFCausalSetGeometricOrientationEntropyGap
 import UnifiedTheory.LayerC.ContextualFraction
