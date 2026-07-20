@@ -223,6 +223,18 @@ are stronger than another atomic-number identity:
     entire rank-one class, not merely from the two chiral endpoints. These are
     finite model-internal no-purification results, not a thermodynamic or
     continuum entropy claim.
+38. **The missing finite chirality source is the cubic relational
+    pseudoscalar:** let `Xi=Im Tr(H1[H2,H3])/8`. For every `Xi != 0`, the
+    selector `b=-i sign(Xi)` fixes one of the two dynamically allowed quarter
+    turns, the endpoint `y=-sign(Xi)/2`, and the unique admissible minimum of
+    `E_Xi(y)=Xi*y`. The selected kernel agrees exactly with the independently
+    defined cubic-chirality projector, and inserting its sector into the
+    harmonic causal-growth law preserves the proved strongly-positive infinite
+    cylinder functional. Reflection sends `Xi` to `-Xi`, conjugates `b`, and
+    swaps the endpoint; at `Xi=0`, the energy vanishes for every `y`, proving
+    exact nonselection. This closes the finite algebraic sign bridge conditional
+    on a nonzero relational triple. It does not yet show that sequential growth
+    generates such a triple or transports its sign under refinement.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -233,7 +245,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 874 Lean files (873 below `UnifiedTheory/`). The search
+The repository contains 875 Lean files (874 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;

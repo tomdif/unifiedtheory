@@ -360,7 +360,15 @@
 > kernel genuinely requires latent rank two at every event. Balanced unit birth
 > dynamics separately forces the chiral lift to `+i` or `-i`; combined order and
 > chirality reflection is an exact symmetry, so reflection-symmetric data cannot
-> choose an absolute sign. `KFCausalSetGeometricOrientationAsymptotics.lean`
+> choose an absolute sign. `KFCausalSetRelationalChiralitySelection.lean`
+> identifies the existing cubic relational pseudoscalar
+> `Xi=Im Tr(H1[H2,H3])/8` as an exact finite source: for `Xi != 0`,
+> `b=-i sign(Xi)`, `y=-sign(Xi)/2`, and unique minimization of
+> `E_Xi(y)=Xi*y` select the same endpoint projector and complete strongly-
+> positive harmonic growth sector. Reflection conjugates the phase and swaps
+> the endpoint, while `Xi=0` proves exact nonselection. A preferred nonzero
+> triple and refinement-covariant transport of this source are not derived.
+> `KFCausalSetGeometricOrientationAsymptotics.lean`
 > closes the large-rank loophole: chain endpoints tend to zero, antichains are
 > exactly centered, and every finite causet satisfies the sharper universal
 > bound `|y|<1/4`. One-top causets tend to `1/4`, so the bound is optimal while
@@ -375,8 +383,8 @@
 > Because the cylinder quantum measure is nonadditive,
 > a numerical typical-event distribution still requires a sampling rule.
 > Deriving both named postulates—full exchangeability and the fractional-volume
-> bridge—and the sign source from deeper microdynamics, plus quantitative
-> all-parent conditioning, remain open.
+> bridge—plus dynamical generation and refinement transport of the relational
+> sign source, and quantitative all-parent conditioning, remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -471,7 +479,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-873 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,627 jobs successful; its
+874 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,628 jobs successful; its
 immediate parent also passed a clean rebuild of 8,634 jobs (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

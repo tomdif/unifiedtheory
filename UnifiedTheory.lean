@@ -5114,4 +5114,10 @@ import UnifiedTheory.Audit.KFCausalSetGeometricOrientationAsymptotics
 -- above h_2(1/4). This uniformly separates the geometric channel from every
 -- rank-one scalar-amplitude kernel.
 import UnifiedTheory.Audit.KFCausalSetGeometricOrientationEntropyGap
+-- A nonzero cubic relational pseudoscalar supplies the missing finite sign:
+-- Xi selects phase -i sign(Xi), endpoint -sign(Xi)/2, and the unique minimum
+-- of energy Xi*y. Reflection conjugates the phase and swaps the endpoint;
+-- Xi=0 proves exact nonselection. The preferred triple and its refinement law
+-- remain additional physical data.
+import UnifiedTheory.Audit.KFCausalSetRelationalChiralitySelection
 import UnifiedTheory.LayerC.ContextualFraction

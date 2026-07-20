@@ -525,10 +525,22 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   distribution inherits the same bound. Separately, balanced unit quantum
   birth dynamics forces the lift to the pair `+i,-i`; reversing causal order
   and microscopic chirality together leaves the lifted amplitude invariant.
-  A reflection-symmetric law cannot choose the absolute sign. What remains
-  open is deriving the two postulates—full event-slot exchangeability and the
-  fractional-volume bridge—and a reflection-odd sign source from deeper
-  microdynamics, plus a useful all-parent condition bound.
+  A reflection-symmetric law cannot choose the absolute sign.
+  `KFCausalSetRelationalChiralitySelection.lean` supplies the exact finite
+  source candidate already latent in the operator sector. For nonzero cubic
+  relational pseudoscalar `Xi = Im Tr(H1[H2,H3])/8`, the law
+  `b=-i sign(Xi)` selects `y=-sign(Xi)/2`; equivalently the source energy
+  `E_Xi(y)=Xi*y` has that endpoint as its unique admissible minimum. This
+  agrees exactly with the independently constructed chirality projector and
+  feeds the selected sector into the complete strongly-positive harmonic
+  growth law. Reflection sends `Xi` to `-Xi`, conjugates the phase, and swaps
+  the kernel; `Xi=0` leaves every orientation energetically degenerate. This
+  is a finite conditional closure of the sign bridge, not yet a derivation of
+  a preferred nonzero triple from growth. What remains open is deriving the
+  two postulates—full event-slot exchangeability and the fractional-volume
+  bridge—plus proving that growth generates a nonzero relational source and
+  transports it covariantly under refinement, and obtaining a useful
+  all-parent condition bound.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid
