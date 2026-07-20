@@ -722,9 +722,12 @@ and unit normalization force spectator source `1/n`, and that the local charge
 recursion `Q_(n+1)=Q_n+1/(n+1)` classifies all trajectories as
 `Q_n=H_n+Q_2-H_2`. Every nonnegative seed has coherent limit
 `exp(-2(gamma+Q_2-H_2))`, and matching the harmonic infrared constant uniquely
-selects `Q_2=H_2=3/2`. What remains is to derive both the additive coupling of
-that source to `Q` and the canonical seed from a causal action, and to control
-conditioning outside the antichain benchmark.
+selects `Q_2=H_2=3/2`. `KFCausalSetMicroscopicSpectatorAction.lean` derives the
+additive law and seed together from a vacuum action on actual unlabeled growth
+histories: event-slot permutation covariance and unit normalization force
+density `1/(n+1)`, and accumulation gives `Q_n=H_n` on every path. The open
+step is deriving this local spectator-action principle from geometric causal
+microphysics and controlling conditioning outside the antichain benchmark.
 
 `KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from
 quantitative stability. It proves degree `<= n(n-1)` and coefficient height

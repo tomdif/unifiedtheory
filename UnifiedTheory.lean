@@ -5086,4 +5086,9 @@ import UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
 -- infrared constant is exp(-2(gamma+Q_2-H_2)), so harmonic matching uniquely
 -- selects Q_2=H_2 and accumulating the source gives H_n.
 import UnifiedTheory.Audit.KFCausalSetHarmonicRefinementLaw
+-- A microscopic action on actual unlabeled growth histories closes the local
+-- law's seed freedom. Event-slot permutation covariance plus unit normalization
+-- forces density 1/(n+1); summing from the empty causet derives Q_n=H_n,
+-- Q_2=3/2, and the complete zero-free projective harmonic dynamics.
+import UnifiedTheory.Audit.KFCausalSetMicroscopicSpectatorAction
 import UnifiedTheory.LayerC.ContextualFraction

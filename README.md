@@ -472,10 +472,16 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
   harmonic coupling above. Every nonnegative seed stays in the critical window
   and has coherent limit `exp(-2(gamma+Q_2-H_2))`; matching `exp(-2gamma)` is
   equivalent to the canonical seed. For that trajectory, the exact offset is
-  the discrete-continuum spectator anomaly `H_n-log n`. What remains open is
-  deriving both the additive coupling to `Q` and its rank-two boundary datum
-  from a causal action, obtaining a useful all-parent condition-number bound,
-  and selecting the reflection-odd sign/source.
+  the discrete-continuum spectator anomaly `H_n-log n`.
+  `KFCausalSetMicroscopicSpectatorAction.lean` now derives both the additive
+  update and the seed from one action law on actual unlabeled growth histories.
+  Event-slot invariance under every finite permutation plus unit normalization
+  forces the newborn action density `1/(n+1)`; summing it from the empty causet
+  gives `Q_n=H_n` on every path and hence `Q_2=3/2`. The reconstructed coupling
+  is the same all-parent zero-free, projective, strongly-positive law above.
+  What remains open is deriving this normalized spectator-action law from a
+  geometric causal action, obtaining a useful all-parent condition-number
+  bound, and selecting the reflection-odd sign/source.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

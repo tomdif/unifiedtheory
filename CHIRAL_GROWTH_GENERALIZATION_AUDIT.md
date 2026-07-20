@@ -312,8 +312,13 @@ classifies the trajectories as `Q_n=H_n+Q_2-H_2`. Every nonnegative seed has
 coherent limiting ratio `exp(-2(gamma+Q_2-H_2))`; matching `exp(-2gamma)`
 uniquely fixes `Q_2=H_2=3/2` and hence the schedule above. For this member the
 offset is exactly the spectator entropy anomaly `H_n-log n`. The irreducible
-open step is deriving the additive charge law and canonical seed from a causal
-action; all-parent conditioning also remains open.
+step has now moved. `KFCausalSetMicroscopicSpectatorAction.lean` defines a local
+action density on the actual unlabeled growth histories. Invariance under every
+event-slot permutation and unit normalization force the newborn contribution
+`1/(n+1)`; summing from the empty causet derives the additive law,
+`Q_n=H_n`, and `Q_2=3/2`. The remaining problem is deriving that spectator-action
+principle from geometric causal microphysics; all-parent conditioning also
+remains open.
 
 The independent exact-binomial scan tracks the convergence and conditioning:
 
@@ -379,17 +384,17 @@ critical window. The exact multiplicity theorem shows that every finite-`kappa`
 member nevertheless fails coherent unlabeled antichain balance, while the harmonic
 rational construction gives a zero-free, strongly-positive trajectory in the
 logarithmically corrected window with limiting ratio `exp(-2gamma)`. It does not
-yet derive the additive charge update from a causal action or prove
-subexponential all-parent stability. Exchangeability, normalization, and that
-local update classify a one-parameter family; harmonic infrared matching then
-uniquely fixes its rank-two seed. Universal coefficient positivity is ruled
-out.
+yet derive the local spectator-action principle from geometric microphysics or
+prove subexponential all-parent stability. Conditional on permutation covariance
+and unit normalization, the new vacuum action does derive the additive update
+and rank-two seed, and promotes them to the complete projective dynamics.
+Universal coefficient positivity is ruled out.
 The test replaces the former question “which constant coupling?” with the
 sharper problem:
 
-> Derive the additive critical-charge source law and its rank-two boundary datum
-> from a causal action, and keep all-parent partition condition numbers
-> subexponentially controlled.
+> Derive the relabeling-invariant unit spectator density from a geometric causal
+> action, and keep all-parent partition condition numbers subexponentially
+> controlled.
 
 The next mathematical target is an RG transformation on the effective
 coupling and interference data, not another constant-coupling selection rule.

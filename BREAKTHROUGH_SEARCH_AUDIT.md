@@ -170,6 +170,13 @@ are stronger than another atomic-number identity:
     `exp(-2(gamma+Q_2-H_2))`, so matching `exp(-2gamma)` selects the unique seed
     `Q_2=H_2=3/2`. The selected law's exact offset is `H_n-log n`, whose limit
     is Euler's constant.
+33. **A vacuum-normalized microscopic action removes the seed freedom:** on
+    complete unlabeled sequential-growth paths, invariance of event-slot action
+    density under every finite permutation plus unit normalization forces the
+    newborn contribution `1/(n+1)`. Summing from the empty causet proves
+    `Q_n=H_n` on every history, including `Q_2=3/2`, and reconstructs the same
+    all-parent zero-free, projective, strongly-positive chiral law with coherent
+    limit `exp(-2gamma)`.
 
 The second result is the more consequential breakthrough. It gives a single technical
 reason why many formally correct “emergence” theorems do not yet recover physics:
@@ -180,7 +187,7 @@ reason why many formally correct “emergence” theorems do not yet recover phy
 
 ## Search scope and standard
 
-The repository contains 869 Lean files (868 below `UnifiedTheory/`). The search
+The repository contains 870 Lean files (869 below `UnifiedTheory/`). The search
 indexed the full source inventory and targeted:
 
 - root and capstone claims;
@@ -1323,9 +1330,30 @@ It then discharges the nonlinear-remainder premise for every nonnegative seed,
 giving the exact family of limits `exp(-2(gamma+Q_2-H_2))`. Consequently,
 matching `exp(-2gamma)` is equivalent to the canonical seed. Its finite-rank
 offset is the discrete-continuum spectator entropy anomaly `H_n-log n`, and
-Lean proves that this tends to Euler's constant. The open microscopic question
-is now narrower: why the normalized spectator source enters additively in `Q`
-and why the physical causal action fixes `Q_2=3/2`. All-parent condition
+Lean proves that this tends to Euler's constant.
+
+`KFCausalSetMicroscopicSpectatorAction.lean` turns the two remaining inputs into
+consequences of a single history-level action law. A source is allowed to
+depend on the complete unlabeled prefix and child, but must be invariant under
+every permutation of the `n+1` event slots and have unit total density.
+Permutation transitivity derives exchangeability and forces every slot to
+carry `1/(n+1)`. Defining the finite action as the sum of the newborn-slot
+density from the empty causet then proves, for every history,
+
+```text
+S(empty)=0,
+S(path snoc child)=S(path)+1/(n+1),
+S(path at depth n)=H_n,
+Q_2=H_2=3/2.
+```
+
+The reconstructed pair coupling is definitionally connected to the complete
+chiral transition-edge dynamics. Lean proves all-parent zero-freeness,
+normalization, projective consistency, infinite-cylinder strong positivity,
+and coherent limit `exp(-2gamma)` for either chirality. The honest open
+microscopic question is narrower again: derive the relabeling-invariant,
+unit-normalized spectator-action density from a geometric causal action rather
+than postulating that local principle. Subexponential all-parent condition
 control also remains open.
 
 `UnifiedTheory/Audit/KFCausalSetCriticalRunning.lean` closes the qualitative

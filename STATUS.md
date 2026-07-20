@@ -332,9 +332,15 @@
 > `Q_n=H_n+Q_2-H_2`. For every nonnegative seed, the coherent ratio tends to
 > `exp(-2(gamma+Q_2-H_2))`; matching the harmonic value is equivalent to
 > `Q_2=H_2=3/2`. On that selected trajectory the offset is exactly the spectator
-> entropy anomaly `H_n-log n`. The remaining microscopic assumptions are that
-> this source adds to `Q` and that the causal action fixes the canonical
-> rank-two seed; quantitative all-parent conditioning is also open.
+> entropy anomaly `H_n-log n`.
+> `KFCausalSetMicroscopicSpectatorAction.lean` closes the additive-law and seed
+> boundary conditionally on one microscopic principle: event-slot permutation
+> covariance and unit normalization of the local action density. On actual
+> unlabeled growth histories these conditions force density `1/(n+1)`;
+> vacuum accumulation proves path independence, `Q_n=H_n`, and `Q_2=3/2`.
+> The resulting transition is all-parent zero-free, projective, and strongly
+> positive. Deriving this spectator-action principle from geometric causal
+> microphysics and quantitative all-parent conditioning remain open.
 > `KFOrientationHigherRankDecoherence.lean` proves the complementary
 > result: every admissible `D_y` has an explicit two-component Gram amplitude,
 > strict interiors cannot have a scalar-amplitude realization, and the second
@@ -429,6 +435,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-868 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Full build: 8,622 jobs successful (July 2026).
+869 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Full build: 8,623 jobs successful (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
