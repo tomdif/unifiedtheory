@@ -22,9 +22,13 @@ parameters. Machine-checked in Lean 4.**
 > the executable audit in
 > [`QUANTUM_GEOMETRY_IR_AUDIT.md`](QUANTUM_GEOMETRY_IR_AUDIT.md) control quantum-
 > gravity and continuum claims.
-> The causal-growth extension has two dynamical selection postulates—event-slot
-> exchangeability and the fractional-volume bridge—plus a minimal local
-> response principle. Its absolute printed chirality sign is not an
+> The causal-growth extension now has a machine-checked dependency partition.
+> Finite character selection uses balanced birth symmetry and an explicit
+> source-sign response; abstract sign transport uses neither the clock,
+> exchangeability, nor the volume bridge. Exchangeability enters the concrete
+> harmonic spectator realization, the fractional-volume bridge supplies its
+> geometric interpretation, and clock/weak maps live only in the handedness
+> interpretation layer. Its absolute printed chirality sign is not an
 > additional observable input at the cylinder level, so the core slogan is not
 > a count of the full dynamical inputs.
 
@@ -562,11 +566,13 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   fixed-point-free two-element chirality space. Equal mixing of the two
   reflected endpoints is exactly the strongly-positive mixed center `D_0`,
   with zero orientation. Thus the reflection-fixed vacuum action transports a
-  sign perfectly but cannot create a preferred phase from static data. The causal-growth ledger has
-  two named dynamical selection principles: full event-slot exchangeability
-  and the fractional-volume bridge. A separate minimal local response
-  principle connects the process-generated odd source to the chiral birth
-  character. The response function is now classified: affine locality,
+  sign perfectly but cannot create a preferred phase from static data. The
+  checked causal-growth ledger is layered: balanced purity and the explicit
+  source-sign map close finite character selection; abstract projective
+  transport requires neither exchangeability nor the volume bridge;
+  exchangeability enters the concrete harmonic spectator action; and the
+  fractional-volume bridge interprets that action geometrically. The response
+  encoding is now classified: affine locality,
   zero-source neutrality, and combined reflection leave only `g Xi y`, and
   balance leaves only the conjugate quarter turns. Here `y=+/-1/2` is an
   auxiliary boundary optimum, not a value attained by the finite geometric
@@ -574,7 +580,8 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   energy is strictly above the optimum for every nonzero drive. The response
   is therefore a sign-to-character quantum lift of an interior geometric
   source, not geometric flow to a boundary. Deriving the first two
-  principles, deriving affine locality and complement symmetry from deeper
+  realization/interpretation principles, deriving affine locality and
+  complement symmetry from deeper
   dynamics, and obtaining a useful all-parent condition bound remain open. The printed Z2
   response sign is no longer counted as an independent physical input at the
   cylinder-event scope.
@@ -605,10 +612,11 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   extends to a normalized, strongly positive, projectively consistent
   unlabeled growth law; the two laws transport `Xi=+1` and `Xi=-1`
   respectively through every finite refinement. Thus the construction yields
-  a reflection doublet, not an absolute sign. At this stage the missing input
-  is a growth-arrow clock response: identify a maximal birth with the first
-  orthogonal route transition and couple its orientation to one reflected
-  ground/excited assignment. The next module derives the nonzero orientation
+  a reflection doublet, not an absolute sign. The clock/birth contract is now
+  isolated as an interpretation map: it identifies the already-selected
+  character with the first orthogonal route transition of one reflected
+  ground/excited assignment, but is not a dependency of finite selection or
+  abstract transport. The next module derives the nonzero orientation
   source carried by a linked birth, while exposing an apparent
   response-coupling sign ambiguity that the following global equivalence test
   resolves. The geometric channel cannot close the gap even
@@ -666,8 +674,11 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   greater at every finite event. Independently, elementary
   Born normalization, relation-complement symmetry, the ancestor gauge, and
   independent composition classify every such signature character as exactly
-  one of the `+i/-i` pair. Every linked maximal birth activates the matching
-  elementary phase by the sign of its interior source. This is a
+  one of the `+i/-i` pair. The explicit sign-response rule maps every linked
+  maximal birth to the matching elementary phase. The new mechanism audit
+  proves that, for nonzero drive, variational selection and direct sign
+  matching are extensionally equivalent. The energy adds no selection or
+  relaxation dynamics: it is covariant bookkeeping for the sign rule. This is a
   boundary-character selection, not geometric endpoint attainment.
   Crucially, the module propagates conjugation through the
   repo's newest zero-free harmonic ancestor-pair law generated by the
@@ -677,6 +688,22 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   assumptions are the affine-local response class and elementary
   relation-complement symmetry; deriving those from a deeper action and the
   continuum Lorentzian/CP bridge remain open.
+  `KFCausalSetSourceMagnitudeDecoherence.lean` proves that the discarded
+  magnitude is not spectator data in the mixed rank-two channel. The
+  rank-three chain source `1/6` has normalized-coherence retention base `1/3`
+  and purity `5/9`; the fork source `1/5` has base `2/5` and purity `29/50`.
+  Under the already formalized independent multiplicative refinement law, the
+  fork retains strictly more coherence at every positive depth; the exact
+  determinants are respectively `2/9` and `21/100`. This is conditional on
+  identifying refinement stages with the rank-two channel, not yet a
+  laboratory-time decoherence prediction.
+  `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
+  traversing transitive declaration dependencies. Finite balanced/sign
+  selection and abstract sign transport use neither the clock, exchangeable
+  action, nor volume bridge. The concrete harmonic spectator realization uses
+  exchangeability and normalization but not the volume bridge; the latter only
+  supplies its geometric interpretation. Clock evolution and the weak map
+  occur in the handedness interpretation layer, not the finite selector.
   A local exhaustive and higher-rank stress test sharpens this further. Adding
   one ancestor multiplies the effective amplitude by the exact factor
   `g^omega`; every tested fixed `g>1` ran toward the full-precursor/timid

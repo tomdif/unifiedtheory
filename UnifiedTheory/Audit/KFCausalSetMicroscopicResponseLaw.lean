@@ -327,7 +327,7 @@ theorem balancedCompositionalSignatureLaws_equal_or_conjugate
         (1 : Fin 2) omega maximal).symm
   · exact Or.inl rfl
 
-/-! ## 4. Variational selection removes the parallel-classification gap -/
+/-! ## 4. Balanced purity, sign matching, and its variational encoding -/
 
 /-- The chirality whose orientation endpoint minimizes a given nonzero
 effective drive. -/
@@ -394,6 +394,58 @@ theorem driveSelectedChirality_uniqueMinimum
       chiralBoundaryOrientationParameter, chiralMaximalEventPhase] using
       (bilinear_positiveDrive_uniqueMinimum hPositive)
 
+/-- The piecewise sign response returns the elementary coefficient of the
+drive-selected chiral character.  This is the explicit response rule; it is
+not a consequence of geometric endpoint attainment. -/
+theorem bilinearSelectedPhase?_eq_driveSelectedCharacter
+    {coupling source : ℝ} (hDrive : coupling * source ≠ 0) :
+    bilinearSelectedPhase? coupling source =
+      some (chiralMaximalEventPhase
+        (driveSelectedChirality coupling source)) := by
+  rcases lt_or_gt_of_ne hDrive with hNegative | hPositive
+  · have hNotPositive : ¬0 < coupling * source :=
+      not_lt_of_ge (le_of_lt hNegative)
+    simp [bilinearSelectedPhase?, driveSelectedChirality, hNegative,
+      hNotPositive, chiralMaximalEventPhase]
+  · simp [bilinearSelectedPhase?, driveSelectedChirality, hPositive,
+      chiralMaximalEventPhase]
+
+/-- A balanced character is sign-matched when its elementary phase is exactly
+the output of the source-response rule. -/
+def IsSignMatchedBalancedSignatureLaw
+    (coupling source : ℝ) (weight : ℕ → ℕ → ℂ) : Prop :=
+  IsBalancedCompositionalSignatureLaw weight ∧
+    bilinearSelectedPhase? coupling source = some (weight 0 1)
+
+/-- Balanced birth microphysics restricts the law to the pure conjugate pair;
+the explicit sign response then chooses exactly one member.  No clock/birth
+identification is a hypothesis of this finite theorem. -/
+theorem signResponse_uniqueBalancedSignatureLaw
+    {coupling source : ℝ} (hDrive : coupling * source ≠ 0) :
+    ∃! weight : ℕ → ℕ → ℂ,
+      IsSignMatchedBalancedSignatureLaw coupling source weight := by
+  let selected := driveSelectedChirality coupling source
+  refine ⟨chiralMultiplicativeSignatureWeight selected, ?_, ?_⟩
+  · constructor
+    · exact chiralMultiplicativeSignatureWeight_isBalancedCompositional selected
+    · rw [bilinearSelectedPhase?_eq_driveSelectedCharacter hDrive]
+      simp [selected, chiralMultiplicativeSignatureWeight,
+        multiplicativeSignatureWeight]
+  · intro weight hWeight
+    obtain ⟨chirality, hCharacter, _⟩ :=
+      balancedCompositionalSignatureLaw_classification weight hWeight.1
+    have hMatch := hWeight.2
+    rw [bilinearSelectedPhase?_eq_driveSelectedCharacter hDrive,
+      hCharacter] at hMatch
+    have hPhase : chiralMaximalEventPhase selected =
+        chiralMaximalEventPhase chirality := by
+      simpa [selected, chiralMultiplicativeSignatureWeight,
+        multiplicativeSignatureWeight] using Option.some.inj hMatch
+    have hChirality : selected = chirality := by
+      apply chiralBoundaryOrientationParameter_injective
+      simp [chiralBoundaryOrientationParameter, hPhase]
+    simpa [hChirality] using hCharacter
+
 /-- A balanced compositional law is variationally compatible when its pure
 auxiliary endpoint is the unique minimum of the local source energy. -/
 def IsVariationallySelectedBalancedSignatureLaw
@@ -437,6 +489,46 @@ theorem variationalResponse_uniqueBalancedSignatureLaw
     have hChirality : chirality = selected :=
       chiralBoundaryOrientationParameter_injective hParameter
     rw [hCharacter, hChirality]
+
+/-- **Mechanism audit.**  On nonzero drive, the variational predicate and the
+direct sign-matching predicate select exactly the same balanced character.
+Consequently the inaccessible boundary minimum covariantly encodes the sign
+rule but supplies no additional finite dynamical selection mechanism. -/
+theorem variationalSelection_iff_signMatching
+    {coupling source : ℝ} (hDrive : coupling * source ≠ 0)
+    (weight : ℕ → ℕ → ℂ) :
+    IsVariationallySelectedBalancedSignatureLaw coupling source weight ↔
+      IsSignMatchedBalancedSignatureLaw coupling source weight := by
+  let selectedWeight := chiralMultiplicativeSignatureWeight
+    (driveSelectedChirality coupling source)
+  have hVariationalSelected :
+      IsVariationallySelectedBalancedSignatureLaw
+        coupling source selectedWeight := by
+    exact ⟨chiralMultiplicativeSignatureWeight_isBalancedCompositional _,
+      driveSelectedChirality coupling source, rfl,
+      driveSelectedChirality_uniqueMinimum hDrive⟩
+  have hSignSelected :
+      IsSignMatchedBalancedSignatureLaw coupling source selectedWeight := by
+    exact ⟨chiralMultiplicativeSignatureWeight_isBalancedCompositional _, by
+      rw [bilinearSelectedPhase?_eq_driveSelectedCharacter hDrive]
+      simp [selectedWeight, chiralMultiplicativeSignatureWeight,
+        multiplicativeSignatureWeight]⟩
+  obtain ⟨variationalWitness, _hVariationalWitness, hVariationalUnique⟩ :=
+    variationalResponse_uniqueBalancedSignatureLaw hDrive
+  obtain ⟨signWitness, _hSignWitness, hSignUnique⟩ :=
+    signResponse_uniqueBalancedSignatureLaw hDrive
+  constructor
+  · intro hWeight
+    have hToWitness := hVariationalUnique weight hWeight
+    have hSelectedToWitness :=
+      hVariationalUnique selectedWeight hVariationalSelected
+    rw [hToWitness.trans hSelectedToWitness.symm]
+    exact hSignSelected
+  · intro hWeight
+    have hToWitness := hSignUnique weight hWeight
+    have hSelectedToWitness := hSignUnique selectedWeight hSignSelected
+    rw [hToWitness.trans hSelectedToWitness.symm]
+    exact hVariationalSelected
 
 /-! ## 5. Attainment audit: finite geometry never reaches the minimizer -/
 
@@ -531,7 +623,7 @@ theorem maximalBirthSource_isGeometric_and_ne_quantumBoundary {n : ℕ}
   exact finiteGeometricOrientation_ne_chiralBoundary
     (precursorOneElementExtension parent past) (Fin.last n) chirality
 
-/-! ## 6. The geometric birth source activates the classified law -/
+/-! ## 6. The geometric birth source is mapped by the classified sign law -/
 
 /-- Coupling sign associated with a representative of the conjugation pair.
 Slot `1` is the standard future-growth convention. -/
@@ -978,13 +1070,14 @@ theorem microscopicAction_elementaryPhase_matches_linkedBirth
 
 /-- **Microscopic response completeness.**  Within the affine-bilinear
 lowest-order ansatz, the local energy has one coefficient; the balanced
-compositional edge law has exactly one of two representatives; every linked
-birth activates its representative's pure phase; and the complete cylinder
-quotient has only one conjugation-gauge sector.  The pure endpoint is an
-auxiliary boundary optimum: every finite geometric coordinate has strictly
-higher energy and is uniformly separated from it.  Hence there is no
-remaining finite response function to choose inside the stated ansatz, but
-there is also no claim that finite geometry attains the endpoint.
+compositional edge law has exactly one of two representatives; the explicit
+sign rule maps every linked birth to its representative's pure phase; and the
+complete cylinder quotient has only one conjugation-gauge sector.  Direct
+sign matching and variational selection are extensionally identical for every
+nonzero drive.  The pure endpoint is only an auxiliary boundary optimum:
+every finite geometric coordinate has strictly higher energy and is uniformly
+separated from it.  The variational functional therefore supplies neither a
+relaxation flow nor an additional finite selection mechanism.
 
 The open physics is now outside this theorem's hypotheses: deriving affine
 locality and elementary relation-complement symmetry from deeper dynamics,
@@ -1011,6 +1104,13 @@ theorem finiteMicroscopicResponseLaw_complete
           ∃! selectedWeight : ℕ → ℕ → ℂ,
             IsVariationallySelectedBalancedSignatureLaw
               effectiveCoupling source selectedWeight)
+      ∧ (∀ {effectiveCoupling source : ℝ},
+        effectiveCoupling * source ≠ 0 →
+          ∀ candidate : ℕ → ℕ → ℂ,
+            IsVariationallySelectedBalancedSignatureLaw
+                effectiveCoupling source candidate ↔
+              IsSignMatchedBalancedSignatureLaw
+                effectiveCoupling source candidate)
       ∧ (∀ {n : ℕ} (parent : CardinalCausalOrder n) (event : Fin n)
           {effectiveCoupling source : ℝ},
         effectiveCoupling * source ≠ 0 →
@@ -1033,6 +1133,8 @@ theorem finiteMicroscopicResponseLaw_complete
       constant sourceBias orientationBias coupling hReflection hNeutral,
     balancedCompositionalSignatureLaw_classification weight hWeight,
     fun hDrive => variationalResponse_uniqueBalancedSignatureLaw hDrive,
+    fun hDrive candidate => variationalSelection_iff_signMatching
+      hDrive candidate,
     fun {n} parent event {effectiveCoupling source} hDrive =>
       finiteGeometricOrientation_strictlyAbove_variationalIdeal
         (n := n) parent event
@@ -1049,7 +1151,10 @@ theorem finiteMicroscopicResponseLaw_complete
 #print axioms bilinearSelectedPhase?_reflection
 #print axioms balancedCompositionalSignatureLaw_classification
 #print axioms balancedCompositionalSignatureLaws_equal_or_conjugate
+#print axioms bilinearSelectedPhase?_eq_driveSelectedCharacter
+#print axioms signResponse_uniqueBalancedSignatureLaw
 #print axioms variationalResponse_uniqueBalancedSignatureLaw
+#print axioms variationalSelection_iff_signMatching
 #print axioms finiteGeometricOrientation_ne_chiralBoundary
 #print axioms finiteGeometricOrientation_strictlyAbove_variationalIdeal
 #print axioms maximalBirthGeometry_strictlyAbove_variationalIdeal

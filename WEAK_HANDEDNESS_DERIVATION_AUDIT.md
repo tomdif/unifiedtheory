@@ -148,40 +148,49 @@ neutral, reflection-invariant class and propagates the same conjugation result
 through the newest zero-free harmonic action law. Its minimizer is explicitly
 an auxiliary boundary optimum: finite causal-volume geometry obeys
 `|y_geom|<1/4`, cannot attain or converge to `+/-1/2`, and has strictly greater
-bilinear energy for every nonzero drive. Thus linked-birth phase activation is
-a sign-to-character quantum response to the interior source, not geometric
-endpoint attainment. What remains to derive is
+bilinear energy for every nonzero drive. Thus the linked-birth phase map is a
+sign-to-character quantum response to the interior source, not geometric
+endpoint attainment. The mechanism audit now proves that this direct sign
+matching and the variational predicate select exactly the same balanced law
+for nonzero drive. Hence the energy supplies no flow, attainment, or additional
+selection mechanism. What remains to derive is
 why the microscopic action belongs to that class and obeys elementary
 relation-complement symmetry, not an absolute printed sign of `i` or another
 response table.
 
-## Two-postulate causal-growth ledger and local response principle
+## Checked core and interpretation-layer ledger
 
 The result is not yet an unconditional derivation of nature's vacuum from the
-partial-order postulate alone. The causal-growth construction uses two named
-dynamical selection postulates and one local response principle:
+partial-order postulate alone. The machine-checked dependency footprint now
+separates the ingredients by their actual theorem roles:
 
-1. **Full event-slot exchangeability.** Together with unit normalization it
-   forces the uniform local action density.  It is strictly stronger than
-   order-isomorphism covariance; the formal counterexample proves covariance
-   alone does not imply it.
-2. **Fractional-volume coupling bridge.** The coupling increment is identified
-   with the fractional number-volume increment.  One-cell growth then gives
-   `1/(n+1)` and all dimensional parameters cancel, but the identification is
-   postulated rather than derived.
-3. **Minimal local response principle.** The maximal-birth source is coupled to
-   an auxiliary orientation coordinate by an energy affine in both variables. Achiral
-   neutrality and simultaneous reflection then uniquely force
-   `E_g(Xi,y)=g Xi y`. Nonzero drive uniquely minimizes at a pure auxiliary
-   endpoint. The geometric coordinate itself stays in `|y_geom|<1/4` and the
-   formal attainment audit proves its energy is strictly higher;
-   elementary relation-complement symmetry and composition leave exactly the
-   `+i/-i` characters. `finiteMicroscopicResponseLaw_complete` joins those
-   results to every linked birth. `completeMicroscopicActionConjugationEquivalence`
-   proves the two representatives of the newest zero-free harmonic action law
-   agree on every real finite/cylinder measure and commute with refinement.
-   The affine-local class and elementary complement symmetry remain physical
-   assumptions; the response function and printed Z2 do not.
+1. **Finite selection core.** Elementary relation-complement symmetry and
+   normalized balanced birth weights force the pure `+i/-i` pair. The explicit
+   source-sign response chooses a representative; its conjugate is the same
+   global gauge orbit. Neither the clock, exchangeable spectator action, nor
+   fractional-volume bridge is a transitive dependency.
+2. **Abstract transport core.** The selected sign is projectively stable without
+   the clock, exchangeability, or volume bridge.
+3. **Harmonic action realization.** Full event-slot exchangeability plus unit
+   normalization forces the uniform spectator action and enters the concrete
+   projectively consistent harmonic dynamics.
+4. **Geometric interpretation.** The fractional-volume bridge identifies that
+   action with one-cell number-volume growth. It is not used by abstract sign
+   selection or transport.
+5. **Handedness interpretation.** The clock evolution and weak-current map name
+   the selected character as the first orthogonal transition and a left-handed
+   weak vertex. They do not generate the finite character.
+
+The affine-bilinear energy is now explicitly demoted: on nonzero drive its
+variational predicate is extensionally equivalent to direct sign matching,
+while `|y_geom|<1/4` forbids flow or attainment. Affine locality therefore
+constrains a covariant encoding but is not a microscopic relaxation law.
+
+The magnitude has a different conditional role. Under independent
+multiplicative refinement, the chain and fork sources `1/6` and `1/5` yield
+coherence bases `1/3` and `2/5`; the fork retains more coherence at every
+positive depth and has purity `29/50` rather than `5/9`. A physical clock-rate
+or laboratory observable dictionary for these stages remains open.
 
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
