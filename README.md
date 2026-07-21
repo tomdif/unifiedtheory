@@ -751,9 +751,10 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   chiral cell. Thus this finite conditional model makes chirality record-like
   while geometry remains quantum. Projective consistency transports any such
   chosen cylinder partition once realized, but does not classify new
-  higher-rank partitions. Deriving the tensor factorization from sequential
-  growth—and proving that no other fundamental decoherent partitions exist—
-  remains open.
+  higher-rank partitions. The scalar no-go below proves that deriving this
+  tensor factorization requires vector/operator-valued sequential growth;
+  constructing that enlarged law—and proving that no other fundamental
+  decoherent partitions exist—remains open.
   `KFCausalSetChiralityRecordCompounding.lean` extracts the new operational
   meaning of the interior magnitude. The chirality-record probabilities are
   exactly `(1/2-y,1/2+y)`, so the signed classical bias is `2y`: chain, fork,
@@ -773,10 +774,11 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   `r boxplus s=(r+s)/(1+rs)` for record bias `r=2y`. Repeated fixed positive
   evidence then converges to certainty, although every finite aggregate remains
   strictly nondeterministic. This is an odds/rapidity-addition law,
-  not the demoted `2yz` coherence channel. Deriving the common-sector
-  factorization for the actual varying sequence of causal-set births remains
-  the decisive open step; without it, deterministic character selection and
-  statistical geometric records remain separate layers.
+  not the demoted `2yz` coherence channel. Constructing the required
+  vector/operator-valued common-sector law for the actual varying sequence of
+  causal-set births remains the decisive open step; the scalar container is
+  now proved insufficient. Without the enlargement, deterministic character
+  selection and statistical geometric records remain separate layers.
   `KFCausalSetChiralityEvidenceAsymptotics.lean` identifies the exact additive
   coordinate of that conditional record law:
   `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`. Thus `q` is half the binary
@@ -796,7 +798,8 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   imply decisive records, and the chain theorem is not a typical-history
   theorem for the nonadditive quantum growth law. A growth-derived common
   sector plus a quantum-measure-appropriate typical charge-divergence result
-  remain open.
+  remain open; the scalar no-go below proves that the first requires a genuine
+  higher-rank enlargement of the growth law.
   `KFCausalSetChiralityEvidenceExtrema.lean` proves that the full chain is not
   even the rankwise linked minimum. For an `n`-event parent the exact source
   formula gives gregarious minimum `0`, positive linked minimum
@@ -809,6 +812,18 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   compatible along one trajectory. The full-chain exponent `4` is explicitly
   arithmetic—one factor `2` from its bias and one from converting half-log-odds
   to log-odds—not spacetime dimension.
+  `KFCausalSetChiralityFactorizationNoGo.lean` closes the scalar route to the
+  missing common-sector factorization. At every finite depth, every normalized
+  scalar sequential-growth law has a rank-one event kernel, hence
+  `D(A,A)D(B,B)=D(A,B)D(B,A)`. Two cells with nonzero diagonal weights must
+  interfere, so no scalar law—including one whose histories carry a conserved
+  chirality label—can realize the exactly decoherent interior record
+  `diag(1/2-y,1/2+y)`. The obstruction persists under every exhaustive
+  projective refinement and already excludes the first linked-birth record
+  `(1/3,2/3)`. The existing latent-rank-two construction is proved sufficient
+  and rank one impossible. Thus the next microscopic object must be a
+  vector/operator-valued growth amplitude or equivalent orthogonal record
+  algebra; another scalar transition ansatz cannot work.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

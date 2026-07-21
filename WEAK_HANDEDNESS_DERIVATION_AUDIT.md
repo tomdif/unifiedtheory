@@ -211,8 +211,8 @@ log-odds/log limit is `4`, and its log posterior-error/log limit is `-4`.
 Thus the conditional error is sharply `N^(-4+o(1))`, not `1/N`. This does not
 promote the result to arbitrary or typical growth histories: a checked positive interior
 source has summable charge, and the quantum measure is nonadditive. A derived
-common-sector factorization and an appropriate typical charge-divergence
-theorem remain outside the finite selection core.
+vector/operator-valued common-sector law and an appropriate typical
+charge-divergence theorem remain outside the finite selection core.
 
 The exponent `4` carries no dimensional or kinematic meaning. It is the
 product of two explicit arithmetic factors: the full-chain record bias is
@@ -223,6 +223,18 @@ precursor in the chain) to `n/(2(2n+1))` (the full antichain precursor/star),
 with gregarious source zero. The timid full-chain value is strictly interior
 for `n>=2`. These extrema are finite-rank statements, not a proof that their
 witnesses assemble into one growth trajectory.
+
+The common-sector bridge cannot be supplied inside the present scalar growth
+container. `KFCausalSetChiralityFactorizationNoGo.lean` proves that every
+two-event restriction of every finite-depth scalar sequential-growth
+functional has zero determinant. Hence two nonzero chirality cells necessarily
+interfere, and exact projective refinement preserves that interference. This
+excludes the interior record `diag(1/2-y,1/2+y)`—including `(1/3,2/3)` for the
+first linked birth—even if a conserved chirality label is appended to each
+history. The existing latent-rank-two construction is the minimal algebraic
+exit. A vector/operator-valued sequential law or equivalent orthogonal record
+algebra remains an explicit new microscopic requirement, not a hidden
+consequence of the scalar chiral law.
 
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
@@ -253,7 +265,8 @@ two-antichain ensemble, these two records decohere exactly and normalize to one,
 while the geometric empty/full interference `-784/2113` remains inside the
 selected pure chiral cell. This is a finite conditional realization of a
 classical handedness record with quantum geometry, not yet a factorization
-derived from causal growth.
+derived from causal growth. The scalar no-go below makes the required upgrade
+precise: it must be vector/operator-valued rather than another scalar law.
 
 The diagonal weights also expose a distinction that the handedness claim must
 retain. For a geometric source `y`, the chiral records have probabilities
@@ -273,9 +286,10 @@ transported chirality gives `(1/5,4/5)` and the exact composition law
 `y boxplus z=(y+z)/(1+4yz)`, equivalently `(r+s)/(1+rs)` for record bias
 `r=2y`. Fixed positive evidence converges to certainty under iteration, while
 every finite aggregate remains strictly nondeterministic. This conclusion
-requires the explicit common-sector transport/factorization
-contract. Sequential growth has not yet derived that contract or proved the
-needed divergence for its varying source sequence. Accordingly, the finite
+requires the explicit common-sector transport/factorization contract. Scalar
+sequential growth is now proved unable to derive that contract; an enlarged
+rank-two law and the needed divergence for its varying source sequence remain
+open. Accordingly, the finite
 core still derives a pure arrow-locked character; interpreting the geometric
 record statistics as repeated evidence for that same character remains a
 conditional realization layer.

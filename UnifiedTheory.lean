@@ -5198,8 +5198,9 @@ import UnifiedTheory.Audit.KFCausalSetSpectatorRecordChannel
 -- only an explicit common-transported-sector conditioning amplifies them to
 -- (1/5,4/5).  That conditional model obeys the distinct evidence law
 -- y boxplus z=(y+z)/(1+4yz), or (r+s)/(1+rs) in record-bias coordinates, and
--- fixed positive evidence converges to certainty.  Sequential growth has not
--- yet derived the common-sector factorization for a varying birth sequence.
+-- fixed positive evidence converges to certainty.  The scalar growth
+-- container cannot derive the common-sector factorization; the required
+-- vector/operator-valued law is isolated below.
 import UnifiedTheory.Audit.KFCausalSetChiralityRecordCompounding
 -- The common-sector law is ordinary binary Bayesian evidence accumulation:
 -- q(y)=artanh(2y) is half the record log-odds and q adds under boxplus.
@@ -5208,7 +5209,7 @@ import UnifiedTheory.Audit.KFCausalSetChiralityRecordCompounding
 -- posterior tends to one by harmonic divergence.  An explicit positive
 -- geometric-decay source has summable charge, proving that source sign alone
 -- gives no universal or typical-history conclusion.  The physical use still
--- requires the separately named common-sector factorization.
+-- requires the separately named higher-rank common-sector law.
 import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceAsymptotics
 -- The probability prerequisite fails at the first nontrivial geometric
 -- charge ensemble.  Above the two-antichain the three charges are distinct,
@@ -5231,6 +5232,14 @@ import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceSharpRate
 -- exponent four is history-specific arithmetic, not dimension; rankwise
 -- extremizers are not asserted to assemble into one growth trajectory.
 import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceExtrema
+-- The common-sector gate has a universal scalar-rank obstruction.  Every
+-- finite-depth scalar growth functional is a rank-one event kernel, so two
+-- nonzero chirality cells necessarily interfere; exhaustive refinement
+-- preserves that cross term exactly.  The interior record therefore cannot
+-- be derived by adding a conserved label to scalar histories.  Latent rank
+-- two is the sharp minimal exit, leaving vector/operator-valued sequential
+-- growth as the correctly isolated microscopic frontier.
+import UnifiedTheory.Audit.KFCausalSetChiralityFactorizationNoGo
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

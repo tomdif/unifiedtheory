@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The eighty `provedFinite` entries assert only their mathematical scope.
+The eighty-one `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -212,6 +212,8 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "rankwise linked-birth source has exact chain-bottom minimum and star maximum",
     scope := .provedFinite },
+  { name := "scalar sequential growth cannot realize a nontrivial exactly decoherent chirality record",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -236,7 +238,7 @@ def claimLedger : List ClaimEntry := [
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
     scope := .openTarget },
-  { name := "growth-derived protected record factorization, decoherent finite charge \
+  { name := "projectively consistent vector-valued protected record law, decoherent finite charge \
       concentration, and an evaluable infinite charge-divergence event",
     scope := .openTarget }
 ]
@@ -246,8 +248,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 92
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 80
+    claimLedger.length = 93
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 81
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by

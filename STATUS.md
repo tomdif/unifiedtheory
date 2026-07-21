@@ -498,9 +498,9 @@
 > `diag(1/2-y,1/2+y)`. Under a separately named source-times-chirality tensor
 > ansatz, the chiral cells are exactly decoherent while the geometric
 > empty/full entry `-784/2113` persists inside the selected pure cell. This
-> conditionally realizes “chirality classical, geometry quantum”; the growth
-> theory does not yet derive the tensor factor or classify all higher-rank
-> decoherent partitions. Projectivity only transports a partition already
+> conditionally realizes “chirality classical, geometry quantum”; the scalar
+> growth theory cannot derive the tensor factor and does not classify all
+> higher-rank decoherent partitions. Projectivity only transports a partition already
 > proved decoherent at its base cylinder depth.
 > `KFCausalSetChiralityRecordCompounding.lean` identifies the interior source's
 > exact record observable: chirality probabilities are
@@ -517,7 +517,9 @@
 > strictly below one. This is a conditional odds/rapidity law, not projective
 > refinement and not the `2yz` CP benchmark.
 > Growth still has to derive the common-sector factorization and establish the
-> required product-evidence condition for its varying source sequence.
+> required product-evidence condition for its varying source sequence. The
+> scalar-amplitude route is now excluded below; this requires higher-rank
+> transition data rather than another scalar law.
 > `KFCausalSetChiralityEvidenceAsymptotics.lean` turns that last condition into
 > exact log-odds arithmetic. The additive charge is
 > `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`; common-sector composition adds
@@ -534,8 +536,9 @@
 > A checked positive geometric-
 > decay source has summable charge, however. Positivity and a transported sign
 > therefore do not prove decisiveness for arbitrary paths, much less a
-> quantum-measure typical-history statement. Deriving the common-sector
-> factorization and the appropriate typical divergence theorem remains open.
+> quantum-measure typical-history statement. Constructing the necessary
+> vector/operator-valued common-sector law and proving the appropriate typical
+> divergence theorem remain open.
 > `KFCausalSetChiralityEvidenceExtrema.lean` proves the exact rankwise range.
 > For an `n`-event parent the source has gregarious minimum `0`, linked minimum
 > `1/(n(n+1)+4)` attained by the singleton-bottom precursor in a chain, and
@@ -543,6 +546,18 @@
 > full-chain source lies strictly inside this range for `n>=2`; thus rankwise
 > linked charge spans `O(1/n^2)` through a nonzero limiting constant. The
 > extremizers are not asserted to form a projectively compatible history.
+> `KFCausalSetChiralityFactorizationNoGo.lean` proves the exact factorization
+> obstruction. Every finite-depth scalar growth event kernel has zero
+> two-event determinant. Consequently two nonzero cells have nonzero
+> cross-decoherence, and projective refinement preserves that interference at
+> every later depth. This rules out every nontrivial exactly decoherent binary
+> chirality record in the scalar sequential-growth container, even after a
+> conserved chirality label is appended to the history alphabet. In
+> particular the interior record `diag(1/2-y,1/2+y)` and the first linked-birth
+> weights `(1/3,2/3)` are impossible. Latent rank two is already proved both
+> sufficient for the balanced kernel and necessary in its strict interior.
+> The surviving construction frontier is therefore a projectively consistent
+> vector/operator-valued growth law with an orthogonal transported sector.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
