@@ -5191,6 +5191,16 @@ import UnifiedTheory.Audit.KFCausalSetSourceInterferenceRefinement
 -- chirality tensor extension, the chiral cells decohere exactly while the
 -- geometric D(0,2)=-784/2113 survives inside the selected pure cell.
 import UnifiedTheory.Audit.KFCausalSetSpectatorRecordChannel
+-- Chirality-basis pinching gives the geometric source magnitude a direct
+-- operational role: it is half the signed classical record bias.  The first
+-- two linked chain births expose the multi-record tripwire.  Independent
+-- records have probabilities (1/9,2/9,2/9,4/9) and retain the 2/3 marginal;
+-- only an explicit common-transported-sector conditioning amplifies them to
+-- (1/5,4/5).  That conditional model obeys the distinct evidence law
+-- y boxplus z=(y+z)/(1+4yz), or (r+s)/(1+rs) in record-bias coordinates, and
+-- fixed positive evidence converges to certainty.  Sequential growth has not
+-- yet derived the common-sector factorization for a varying birth sequence.
+import UnifiedTheory.Audit.KFCausalSetChiralityRecordCompounding
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

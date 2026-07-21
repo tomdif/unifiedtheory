@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The seventy-three `provedFinite` entries assert only their mathematical scope.
+The seventy-five `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -198,6 +198,12 @@ def claimLedger : List ClaimEntry := [
   { name := "two-antichain tensor extension decoheres chirality while retaining \
       source interference",
     scope := .conditionalBridge },
+  { name := "geometric source magnitude is exactly half the signed chirality-record bias",
+    scope := .provedFinite },
+  { name := "independent two-birth chirality records preserve their one-birth marginals",
+    scope := .provedFinite },
+  { name := "common-sector transport compounds record bias by the hyperbolic addition law",
+    scope := .conditionalBridge },
   { name := "chamber Poincare action is non-faithful",
     scope := .provedFinite },
   { name := "structural mass-gap and Wilson flows erase parameters",
@@ -218,7 +224,8 @@ def claimLedger : List ClaimEntry := [
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
     scope := .openTarget },
-  { name := "growth-compatible D(Omega,Omega)-preserving record channel with protected chirality",
+  { name := "growth-derived protected record factorization and common-sector transport \
+      across varying births",
     scope := .openTarget }
 ]
 
@@ -227,9 +234,9 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 83
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 73
-    ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 2
+    claimLedger.length = 86
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 75
+    ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 3
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by
   decide

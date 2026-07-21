@@ -221,6 +221,31 @@ selected pure chiral cell. This is a finite conditional realization of a
 classical handedness record with quantum geometry, not yet a factorization
 derived from causal growth.
 
+The diagonal weights also expose a distinction that the handedness claim must
+retain. For a geometric source `y`, the chiral records have probabilities
+`(1/2-y,1/2+y)` and signed bias `2y`; chain, fork, and singleton-antichain
+births therefore have exact biases `1/3`, `2/5`, and `1/4`. The deterministic
+sign response, by contrast, selects a pure signature character. These are not
+two descriptions of one proved kernel: the former is the interior geometric
+record and the latter is the balanced birth law. A theorem now records that a
+positive source selects character `1` even though the corresponding finite
+geometric record has probability strictly below `3/4`.
+
+The first multi-birth test closes the easiest proposed reconciliation.
+Independent records for the first two linked chain births give
+`(1/9,2/9,2/9,4/9)` and leave the selected marginal at `2/3`; neither
+projectivity nor independence amplifies it. Conditioning instead on a common
+transported chirality gives `(1/5,4/5)` and the exact composition law
+`y boxplus z=(y+z)/(1+4yz)`, equivalently `(r+s)/(1+rs)` for record bias
+`r=2y`. Fixed positive evidence converges to certainty under iteration, while
+every finite aggregate remains strictly nondeterministic. This conclusion
+requires the explicit common-sector transport/factorization
+contract. Sequential growth has not yet derived that contract or proved the
+needed divergence for its varying source sequence. Accordingly, the finite
+core still derives a pure arrow-locked character; interpreting the geometric
+record statistics as repeated evidence for that same character remains a
+conditional realization layer.
+
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
 yet reconstructed a Lorentzian spin bundle, continuum Dirac operator, and

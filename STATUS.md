@@ -502,6 +502,22 @@
 > theory does not yet derive the tensor factor or classify all higher-rank
 > decoherent partitions. Projectivity only transports a partition already
 > proved decoherent at its base cylinder depth.
+> `KFCausalSetChiralityRecordCompounding.lean` identifies the interior source's
+> exact record observable: chirality probabilities are
+> `(1/2-y,1/2+y)`, hence the signed record bias is `2y`. The chain, fork, and
+> singleton-antichain biases are `1/3`, `2/5`, and `1/4`. This statistical
+> geometric record is not the pure signature character selected by the sign
+> response; a theorem now separates those two kernels explicitly. For the
+> first two linked chain births, independent records have table
+> `(1/9,2/9,2/9,4/9)` and preserve the `2/3` marginal, so independence does not
+> amplify handedness. A separately named common-sector transport contract does
+> amplify the same pair to `(1/5,4/5)` and induces
+> `y boxplus z=(y+z)/(1+4yz)`, or `(r+s)/(1+rs)` in bias coordinates. Repeated
+> fixed positive evidence converges to one, while every finite aggregate remains
+> strictly below one. This is a conditional odds/rapidity law, not projective
+> refinement and not the `2yz` CP benchmark.
+> Growth still has to derive the common-sector factorization and establish the
+> required product-evidence condition for its varying source sequence.
 > `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
@@ -646,7 +662,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-885 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,639 jobs successful
+886 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,640 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

@@ -754,6 +754,29 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   higher-rank partitions. Deriving the tensor factorization from sequential
   growth—and proving that no other fundamental decoherent partitions exist—
   remains open.
+  `KFCausalSetChiralityRecordCompounding.lean` extracts the new operational
+  meaning of the interior magnitude. The chirality-record probabilities are
+  exactly `(1/2-y,1/2+y)`, so the signed classical bias is `2y`: chain, fork,
+  and singleton-antichain births give biases `1/3`, `2/5`, and `1/4`.
+  This does **not** identify the statistical geometric kernel with the pure
+  signature character selected by balanced birth dynamics. The distinction is
+  proved directly: a positive source selects character `1`, while its finite
+  geometric record remains below probability `3/4`.
+  The first two sequential linked chain births settle the simplest compounding
+  test. Independent records have exact probabilities
+  `(1/9,2/9,2/9,4/9)` and leave the selected marginal at `2/3`; sign agreement
+  and projective transport alone do not amplify it. If an explicit
+  common-transported-chirality contract removes the mixed sectors and
+  renormalizes their matching likelihoods, the result is instead `(1/5,4/5)`.
+  Its effective parameter obeys
+  `y boxplus z=(y+z)/(1+4yz)`, equivalently
+  `r boxplus s=(r+s)/(1+rs)` for record bias `r=2y`. Repeated fixed positive
+  evidence then converges to certainty, although every finite aggregate remains
+  strictly nondeterministic. This is an odds/rapidity-addition law,
+  not the demoted `2yz` coherence channel. Deriving the common-sector
+  factorization for the actual varying sequence of causal-set births remains
+  the decisive open step; without it, deterministic character selection and
+  statistical geometric records remain separate layers.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable
