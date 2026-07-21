@@ -358,13 +358,13 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   chirality witnesses select exactly those endpoints. Thus microscopic dynamics
   or refinement covariance must select the physical phase; positivity alone
   cannot.
-- The multiplicative refinement mechanism now has an explicit quantum-channel
+- The multiplicative serial-composition mechanism now has an explicit quantum-channel
   realization. A four-Kraus CPTP map measures the two input curvature sectors
   and prepares their orientation-parity output, proving exactly
   `Phi(D_y ⊗ D_z)=D_(2yz)`. On the balanced sector it is associative,
   commutative under input exchange, reflection-equivariant, and uniquely fixed
   by its four pure-endpoint outputs. Consequently every nonzero interior kernel
-  contracts strictly under self-refinement, while exactly the two
+  contracts strictly under repeated channel composition, while exactly the two
   pure/chirality-selected endpoints preserve coherence magnitude. This derives
   the semigroup from a finite physical channel. The follow-up frontier theorem
   constructs the causal ordinal sum `P then Q`, proves that it is covariant under
@@ -692,7 +692,7 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   magnitude is not spectator data in the mixed rank-two channel. The
   rank-three chain source `1/6` has normalized-coherence retention base `1/3`
   and purity `5/9`; the fork source `1/5` has base `2/5` and purity `29/50`.
-  Under the already formalized independent multiplicative refinement law, the
+  Under the already formalized independent multiplicative channel benchmark, the
   fork retains strictly more coherence at every positive depth; the exact
   determinants are respectively `2/9` and `21/100`. This is conditional on
   identifying refinement stages with the rank-two channel, not yet a
@@ -709,6 +709,21 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   quantum measure alone supplies no classical typical-history expectation.
   If one explicitly adds singleton-Born renormalization as a sampling rule,
   the conditional one-stage expected retention is `6082/18405`.
+  `KFCausalSetSourceInterferenceRefinement.lean` proves the decisive separation
+  between that conditional mixing channel and actual cylinder refinement.
+  For every normalized ranked growth law, every pair of finite cylinder events,
+  and every number of exhaustive continuation steps,
+  `D(A↑k,B↑k)=D(A,B)` exactly. Hence every nonzero off-diagonal survives;
+  under an explicit cylinder-realization bridge the two-antichain entry remains
+  `D(0,2)=-784/2113` and its real interference remains `-1568/2113` at one,
+  two, and all depths. The multiplicative benchmark instead predicts zero for
+  this empty/full channel after one stage because the empty-bin factor is zero.
+  Projective sequential growth therefore transports interference and cannot by
+  itself make classical probability emerge. A physical classicalization claim
+  now requires a separately constructed CP/environmental/record-restriction
+  map compatible with the growth law. The same audit proves that ancestor count
+  is too coarse for higher-rank source bins: one-ancestor births already realize
+  distinct sources `1/6` and `1/8`, so full parent/precursor context is required.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable

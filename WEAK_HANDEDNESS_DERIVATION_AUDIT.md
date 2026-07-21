@@ -186,11 +186,18 @@ variational predicate is extensionally equivalent to direct sign matching,
 while `|y_geom|<1/4` forbids flow or attainment. Affine locality therefore
 constrains a covariant encoding but is not a microscopic relaxation law.
 
-The magnitude has a different conditional role. Under independent
-multiplicative refinement, the chain and fork sources `1/6` and `1/5` yield
+The magnitude has a different conditional role. Under an independent
+multiplicative mixing channel, the chain and fork sources `1/6` and `1/5` yield
 coherence bases `1/3` and `2/5`; the fork retains more coherence at every
 positive depth and has purity `29/50` rather than `5/9`. A physical clock-rate
 or laboratory observable dictionary for these stages remains open.
+
+This mixing channel is not the projective refinement of causal-set cylinder
+events. The projective-consistency audit proves
+`D(A↑k,B↑k)=D(A,B)` for every finite pair and every depth, so exhaustive growth
+preserves rather than damps interference. Any emergence of classical
+probability therefore needs an additional environment, record restriction, or
+non-projective CP coarse graining compatible with the growth dynamics.
 
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not

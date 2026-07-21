@@ -5167,6 +5167,15 @@ import UnifiedTheory.Audit.KFCausalSetSourceMagnitudeDecoherence
 -- normalization.  An ordinary expected retention is therefore conditional on
 -- an additional sampling rule, which the audit names and computes separately.
 import UnifiedTheory.Audit.KFCausalSetSourceQuantumEnsemble
+-- Projective consistency is a conservation law, not a decohering channel:
+-- exhaustive continuation preserves every cylinder decoherence entry at every
+-- depth.  In particular, any cylinder realization of the two-antichain
+-- empty/full source bins retains D(0,2)=-784/2113 and interference
+-- -1568/2113 forever.  Ancestor count also fails to determine source magnitude
+-- (one ancestor gives both 1/6 and 1/8).  Classicalization therefore requires
+-- an additional CP/environment/record coarse graining; the conditional |2y|
+-- mixing law cannot be identified with projective causal-set refinement.
+import UnifiedTheory.Audit.KFCausalSetSourceInterferenceRefinement
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

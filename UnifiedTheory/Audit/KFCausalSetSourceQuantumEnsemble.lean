@@ -29,6 +29,7 @@ namespace UnifiedTheory.Audit.KFCausalSetSourceQuantumEnsemble
 noncomputable section
 
 open scoped BigOperators ComplexConjugate
+open UnifiedTheory.Audit.KFOrientationGrowthDecoherence
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 open UnifiedTheory.Audit.KFCausalSetTransitionEdges
 open UnifiedTheory.Audit.KFCausalSetBellCausality
@@ -138,6 +139,58 @@ theorem antichainTwoSourceBinRetention_exact :
   norm_num [antichainTwoSourceBinRetention,
     antichainTwoSourceBinParameter]
 
+/-- The one-ancestor birth above the two-antichain has source `1/8`. -/
+theorem antichainTwoSingletonBirth_source_exact :
+    maximalBirthOrientationSourceQ (cardinalCausalAntichain 2)
+        (singletonAntichainPast (0 : Fin 2)) = (1 : ℚ) / 8 := by
+  have hAncestor :
+      (singletonAntichainPast (0 : Fin 2)).ancestorCount = 1 := by
+    rw [← antichainPastEquivFinset_card]
+    have hSet : antichainPastEquivFinset 2
+        (singletonAntichainPast (0 : Fin 2)) = {0} := by
+      ext i
+      fin_cases i <;>
+        simp [antichainPastEquivFinset, singletonAntichainPast]
+    rw [hSet]
+    simp
+  rw [maximalBirthOrientationSourceQ_formula,
+    precursorExtension_totalCausalPastVolumeQ,
+    precursorPopulationQ_eq_ancestorCount, hAncestor]
+  have hParent :
+      totalCausalPastVolumeQ (cardinalCausalAntichain 2) = 2 := by
+    unfold totalCausalPastVolumeQ
+    simp_rw [causalPastVolumeQ_antichain]
+    norm_num
+  rw [hParent]
+  norm_num
+
+/-- Ancestor count alone does not determine source magnitude.  The first
+linked birth and a singleton birth above the two-antichain both have one
+ancestor, but their sources are respectively `1/6` and `1/8`. -/
+theorem ancestorCount_does_not_determine_sourceMagnitude :
+    firstLinkedPast.ancestorCount =
+        (singletonAntichainPast (0 : Fin 2)).ancestorCount
+      ∧ maximalBirthOrientationSourceQ firstLinkedParent firstLinkedPast ≠
+        maximalBirthOrientationSourceQ (cardinalCausalAntichain 2)
+          (singletonAntichainPast (0 : Fin 2)) := by
+  have hFirstCount : firstLinkedPast.ancestorCount = 1 := by
+    exact fullCausalPastSet_ancestorCount firstLinkedParent
+  have hSingletonCount :
+      (singletonAntichainPast (0 : Fin 2)).ancestorCount = 1 := by
+    rw [← antichainPastEquivFinset_card]
+    have hSet : antichainPastEquivFinset 2
+        (singletonAntichainPast (0 : Fin 2)) = {0} := by
+      ext i
+      fin_cases i <;>
+        simp [antichainPastEquivFinset, singletonAntichainPast]
+    rw [hSet]
+    simp
+  constructor
+  · rw [hFirstCount, hSingletonCount]
+  · rw [firstLinkedBirth_source_exact,
+      antichainTwoSingletonBirth_source_exact]
+    norm_num
+
 /-! ## 2. Exact harmonic quantum-measure profile -/
 
 /-- Coherent raw amplitude in each of the three source bins at the harmonic
@@ -210,6 +263,32 @@ def harmonicAntichainTwoNormalizedSourceBinAmplitude
     (chirality : Fin 2) (bin : Fin 3) : ℂ :=
   harmonicAntichainTwoSourceBinAmplitude chirality bin /
     harmonicAntichainTwoSourcePartition chirality
+
+/-- Full decoherence functional of the three coherent source bins. -/
+def harmonicAntichainTwoSourceBinDecoherence (chirality : Fin 2) :
+    GrowthDecoherenceFunctional (Fin 3) :=
+  amplitudeDecoherence
+    (harmonicAntichainTwoNormalizedSourceBinAmplitude chirality)
+
+/-- The off-diagonal entry behind the nonzero empty/full interference. -/
+theorem harmonicAntichainTwoSourceBinDecoherence_zero_two
+    (chirality : Fin 2) :
+    harmonicAntichainTwoSourceBinDecoherence chirality 0 2 =
+      ((-784 / 2113 : ℝ) : ℂ) := by
+  unfold harmonicAntichainTwoSourceBinDecoherence amplitudeDecoherence
+    harmonicAntichainTwoNormalizedSourceBinAmplitude
+  rw [harmonicAntichainTwoSourceBinAmplitude_zero,
+    harmonicAntichainTwoSourceBinAmplitude_two,
+    harmonicAntichainTwoSourcePartition_exact]
+  fin_cases chirality <;>
+    norm_num [chiralMaximalEventPhase, Complex.div_re, Complex.div_im,
+      Complex.normSq_apply, Complex.ext_iff]
+
+theorem harmonicAntichainTwoSourceBinDecoherence_zero_two_ne_zero
+    (chirality : Fin 2) :
+    harmonicAntichainTwoSourceBinDecoherence chirality 0 2 ≠ 0 := by
+  rw [harmonicAntichainTwoSourceBinDecoherence_zero_two]
+  norm_num
 
 /-- Quantum measure of a single coherent source-bin event. -/
 def harmonicAntichainTwoSourceBinQuantumMeasure
@@ -432,6 +511,8 @@ theorem harmonicAntichainTwoSourceEnsemble_complete (chirality : Fin 2) :
 
 #print axioms antichainCoherentSourceSectorAmplitude_eq_sum
 #print axioms antichainTwoSourceBinParameter_eq_birthSource
+#print axioms ancestorCount_does_not_determine_sourceMagnitude
+#print axioms harmonicAntichainTwoSourceBinDecoherence_zero_two
 #print axioms harmonicAntichainTwoSourceBinQuantumMeasure_sum
 #print axioms harmonicAntichainTwoSourceBinInterference_zero_two
 #print axioms harmonicSourceQuantumMeasure_not_classicalProbability

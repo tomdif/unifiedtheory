@@ -462,7 +462,7 @@
 > separate exact role. For the rank-three chain/fork births, source values
 > `1/6` and `1/5` give normalized-coherence retention bases `1/3` and `2/5`,
 > purities `5/9` and `29/50`, and determinants `2/9` and `21/100`. Conditional
-> on independent multiplicative refinement, the fork retains more coherence
+> on an independent multiplicative mixing channel, the fork retains more coherence
 > at every positive depth. The general law is `r(y)=|2y|`: pure endpoints
 > persist, gregarious coherence vanishes after one stage, and every finite
 > geometric kernel decays strictly faster than `2^{-n}` to zero.
@@ -471,7 +471,16 @@
 > one; destructive empty/full interference `-1568/2113` restores normalized
 > total measure. A classical expectation therefore needs an extra sampling
 > rule; explicit singleton-Born renormalization gives `6082/18405` at this
-> rank. `KFCausalSetPostulateFootprint.lean` certifies the
+> rank. `KFCausalSetSourceInterferenceRefinement.lean` proves that exhaustive
+> projective continuation cannot supply the missing classicalization: every
+> cylinder entry obeys `D(A↑k,B↑k)=D(A,B)` at every depth. Thus nonzero
+> off-diagonals are conserved, and any cylinder realization of the local source
+> bins keeps `D(0,2)=-784/2113` and pair interference `-1568/2113` forever,
+> while the separate multiplicative benchmark predicts zero after one stage.
+> An actual CP/environment/record coarse graining is therefore required. The
+> same module boundary records that ancestor number is not a sufficient grain:
+> one-ancestor births have both source `1/6` and `1/8` depending on context.
+> `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
 > harmonic action uses exchangeability; volume supplies its interpretation;
@@ -615,7 +624,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-883 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,637 jobs successful
+884 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,638 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
