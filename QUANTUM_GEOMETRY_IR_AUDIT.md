@@ -778,6 +778,23 @@ at every positive refinement depth. This is a model-internal prediction-shaped
 statement, conditional on interpreting independent refinement depth as the
 relevant physical mixing evolution.
 
+The factor is general: normalized coherence retention per stage is exactly
+`|2y|`. Consequently the two pure endpoints retain unit coherence at every
+depth, `y=0` is erased after one stage, and the finite-geometric theorem
+`|y|<1/4` implies strict decay below `2^{-n}` and convergence to zero. This is
+a conditional geometry-decoheres/chirality-persists separation theorem for the
+multiplicative benchmark.
+
+The first exact harmonic ensemble also blocks an unjustified classical
+expectation. Above the two-antichain the three coherent source-bin quantum
+measures are `256/2113`, `1024/2113`, and `2401/2113`; their sum is
+`3681/2113`, although the total event has measure one. Exact destructive
+interference `-1568/2113` between the empty and full bins supplies the
+difference. Hence the quantum measure does not itself define a probability
+distribution over source magnitudes. The separately formalized
+singleton-Born normalization is an added sampling prescription and yields the
+conditional expected retention `6082/18405`, not an unconditional prediction.
+
 `KFCausalSetCriticalRunning.lean` now separates qualitative zero-control from
 quantitative stability. It proves degree `<= n(n-1)` and coefficient height
 `<= 2^n`, shows that every exact cancellation over every finite parent belongs

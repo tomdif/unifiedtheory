@@ -5161,6 +5161,12 @@ import UnifiedTheory.Audit.KFCausalSetMicroscopicResponseLaw
 -- multiplicative refinement the fork retains more coherence at every positive
 -- depth and has the exact larger purity 29/50 versus 5/9.
 import UnifiedTheory.Audit.KFCausalSetSourceMagnitudeDecoherence
+-- The first exact harmonic source ensemble is intrinsically nonadditive.  For
+-- the two-antichain its three source-bin quantum measures sum to 3681/2113,
+-- while destructive empty/full interference -1568/2113 restores total-event
+-- normalization.  An ordinary expected retention is therefore conditional on
+-- an additional sampling rule, which the audit names and computes separately.
+import UnifiedTheory.Audit.KFCausalSetSourceQuantumEnsemble
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

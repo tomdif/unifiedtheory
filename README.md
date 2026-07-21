@@ -696,7 +696,19 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   fork retains strictly more coherence at every positive depth; the exact
   determinants are respectively `2/9` and `21/100`. This is conditional on
   identifying refinement stages with the rank-two channel, not yet a
-  laboratory-time decoherence prediction.
+  laboratory-time decoherence prediction. More generally, the retention
+  factor is exactly `|2y|`. Pure endpoints retain unit coherence at every
+  depth, a gregarious `y=0` birth loses it after one stage, and the universal
+  finite-geometry bound `|y|<1/4` forces coherence below `2^{-n}` after every
+  positive depth and asymptotically to zero.
+  `KFCausalSetSourceQuantumEnsemble.lean` performs the first exact harmonic
+  source-ensemble calculation, above the two-antichain. Its three coherent
+  source-bin measures are `256/2113`, `1024/2113`, and `2401/2113`; they sum
+  to `3681/2113`, not one, while the total event remains normalized. The
+  difference is the exact empty/full-bin interference `-1568/2113`. Thus the
+  quantum measure alone supplies no classical typical-history expectation.
+  If one explicitly adds singleton-Born renormalization as a sampling rule,
+  the conditional one-stage expected retention is `6082/18405`.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable

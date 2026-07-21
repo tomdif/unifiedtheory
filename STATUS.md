@@ -463,7 +463,15 @@
 > `1/6` and `1/5` give normalized-coherence retention bases `1/3` and `2/5`,
 > purities `5/9` and `29/50`, and determinants `2/9` and `21/100`. Conditional
 > on independent multiplicative refinement, the fork retains more coherence
-> at every positive depth. `KFCausalSetPostulateFootprint.lean` certifies the
+> at every positive depth. The general law is `r(y)=|2y|`: pure endpoints
+> persist, gregarious coherence vanishes after one stage, and every finite
+> geometric kernel decays strictly faster than `2^{-n}` to zero.
+> `KFCausalSetSourceQuantumEnsemble.lean` then computes the first exact
+> harmonic source profile. Its bin measures sum to `3681/2113` rather than
+> one; destructive empty/full interference `-1568/2113` restores normalized
+> total measure. A classical expectation therefore needs an extra sampling
+> rule; explicit singleton-Born renormalization gives `6082/18405` at this
+> rank. `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
 > harmonic action uses exchangeability; volume supplies its interpretation;
@@ -607,7 +615,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-882 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,636 jobs successful
+883 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,637 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

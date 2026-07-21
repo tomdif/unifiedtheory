@@ -77,6 +77,114 @@ independent refinement stages. -/
 def independentRefinementCoherence (steps : ℕ) (source : ℝ) : ℝ :=
   |normalizedHistoryCoherence (nStageRefinement steps source)|
 
+/-- The per-stage retention factor is exactly `|2y|` for every balanced
+kernel parameter, not only for the chain and fork examples. -/
+theorem independentRefinementCoherence_eq_abs_pow
+    (steps : ℕ) (source : ℝ) :
+    independentRefinementCoherence steps source = |2 * source| ^ steps := by
+  rw [independentRefinementCoherence, normalizedHistoryCoherence,
+    nStageRefinement]
+  norm_num [abs_mul, abs_pow]
+  ring
+
+/-- Both pure endpoints retain unit coherence at every refinement depth. -/
+theorem pureEndpoint_independentRefinementCoherence
+    (steps : ℕ) (chirality : Fin 2) :
+    independentRefinementCoherence steps
+        (chiralBoundaryOrientationParameter chirality) = 1 := by
+  rw [independentRefinementCoherence_eq_abs_pow, abs_mul,
+    abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 2),
+    chiralBoundaryOrientationParameter_endpoint]
+  norm_num
+
+/-- Conversely, retaining unit coherence at every depth characterizes the
+two pure orientation endpoints. -/
+theorem coherencePreserved_allDepths_iff (source : ℝ) :
+    (∀ steps : ℕ, independentRefinementCoherence steps source = 1) ↔
+      source = -1 / 2 ∨ source = 1 / 2 := by
+  constructor
+  · intro hAll
+    have hOne := hAll 1
+    rw [independentRefinementCoherence_eq_abs_pow] at hOne
+    norm_num [abs_mul] at hOne
+    have hAbs : |source| = 1 / 2 := by linarith
+    rcases abs_choice source with hChoice | hChoice
+    · right
+      linarith
+    · left
+      linarith
+  · rintro (rfl | rfl) <;>
+      intro steps <;>
+      rw [independentRefinementCoherence_eq_abs_pow] <;> norm_num
+
+/-- A gregarious birth has zero source and loses all coherence after the first
+refinement stage. -/
+theorem gregarious_coherence_zero_after_one (steps : ℕ) :
+    independentRefinementCoherence (steps + 1) 0 = 0 := by
+  rw [independentRefinementCoherence_eq_abs_pow]
+  simp
+
+/-- Every finite geometric orientation has a universal per-stage retention
+factor below `1/2`; after `n>0` independent stages it is bounded strictly by
+`2^{-n}`. -/
+theorem finiteGeometry_coherence_lt_half_pow {n : ℕ}
+    (parent : CardinalCausalOrder n) (event : Fin n) (steps : ℕ) :
+    independentRefinementCoherence (steps + 1)
+        (((causalOrientationDensityQ parent event : ℚ) : ℝ)) <
+      (1 / 2 : ℝ) ^ (steps + 1) := by
+  rw [independentRefinementCoherence_eq_abs_pow]
+  have hQuarter := causalOrientationDensityR_abs_lt_quarter parent event
+  have hBase :
+      |2 * (((causalOrientationDensityQ parent event : ℚ) : ℝ))| <
+        (1 / 2 : ℝ) := by
+    rw [abs_mul, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 2)]
+    nlinarith
+  exact pow_lt_pow_left₀ hBase (abs_nonneg _) (Nat.succ_ne_zero steps)
+
+/-- Hence every finite geometric orientation decoheres asymptotically under
+the multiplicative refinement benchmark. -/
+theorem finiteGeometry_coherence_tendsto_zero {n : ℕ}
+    (parent : CardinalCausalOrder n) (event : Fin n) :
+    Filter.Tendsto
+      (fun steps : ℕ => independentRefinementCoherence steps
+        (((causalOrientationDensityQ parent event : ℚ) : ℝ)))
+      Filter.atTop (nhds 0) := by
+  have hQuarter := causalOrientationDensityR_abs_lt_quarter parent event
+  have hUnit :
+      |2 * (((causalOrientationDensityQ parent event : ℚ) : ℝ))| < 1 := by
+    rw [abs_mul, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 2)]
+    nlinarith
+  have hAbsUnit :
+      |(|2 * (((causalOrientationDensityQ parent event : ℚ) : ℝ))|)| < 1 := by
+    simpa only [abs_abs] using hUnit
+  simpa only [independentRefinementCoherence_eq_abs_pow] using
+    (tendsto_pow_atTop_nhds_zero_of_abs_lt_one hAbsUnit)
+
+/-- **Conditional scale separation.**  Under multiplicative refinement, every
+finite geometric orientation loses coherence with a universal rate strictly
+faster than `2^{-n}`, while both pure chiral endpoints retain unit coherence
+at every depth.  The gregarious source is erased after one stage. -/
+theorem multiplicativeRefinement_geometryDecoheres_chiralityPersists :
+    (∀ (steps : ℕ) (chirality : Fin 2),
+      independentRefinementCoherence steps
+        (chiralBoundaryOrientationParameter chirality) = 1)
+      ∧ (∀ {n : ℕ} (parent : CardinalCausalOrder n) (event : Fin n),
+        Filter.Tendsto
+          (fun steps : ℕ => independentRefinementCoherence steps
+            (((causalOrientationDensityQ parent event : ℚ) : ℝ)))
+          Filter.atTop (nhds 0))
+      ∧ (∀ {n : ℕ} (parent : CardinalCausalOrder n) (event : Fin n)
+          (steps : ℕ),
+        independentRefinementCoherence (steps + 1)
+            (((causalOrientationDensityQ parent event : ℚ) : ℝ)) <
+          (1 / 2 : ℝ) ^ (steps + 1))
+      ∧ (∀ steps : ℕ,
+        independentRefinementCoherence (steps + 1) 0 = 0) := by
+  exact ⟨pureEndpoint_independentRefinementCoherence,
+    finiteGeometry_coherence_tendsto_zero,
+    finiteGeometry_coherence_lt_half_pow,
+    gregarious_coherence_zero_after_one⟩
+
 theorem chainThree_normalizedHistoryCoherence :
     normalizedHistoryCoherence chainThreeNewbornSourceR = 1 / 3 := by
   rw [chainThreeNewbornSourceR_exact]
@@ -201,6 +309,11 @@ theorem sourceMagnitude_controls_refinementMixedness :
 #print axioms chainThreeNewbornSourceR_exact
 #print axioms forkThreeNewbornSourceR_exact
 #print axioms forkThree_retains_more_coherence
+#print axioms independentRefinementCoherence_eq_abs_pow
+#print axioms coherencePreserved_allDepths_iff
+#print axioms finiteGeometry_coherence_lt_half_pow
+#print axioms finiteGeometry_coherence_tendsto_zero
+#print axioms multiplicativeRefinement_geometryDecoheres_chiralityPersists
 #print axioms chainThree_orientationSpectralPurity_exact
 #print axioms forkThree_orientationSpectralPurity_exact
 #print axioms sourceMagnitude_controls_refinementMixedness
