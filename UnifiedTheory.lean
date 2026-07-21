@@ -5201,6 +5201,15 @@ import UnifiedTheory.Audit.KFCausalSetSpectatorRecordChannel
 -- fixed positive evidence converges to certainty.  Sequential growth has not
 -- yet derived the common-sector factorization for a varying birth sequence.
 import UnifiedTheory.Audit.KFCausalSetChiralityRecordCompounding
+-- The common-sector law is ordinary binary Bayesian evidence accumulation:
+-- q(y)=artanh(2y) is half the record log-odds and q adds under boxplus.
+-- Decisiveness is therefore a divergence question.  Along the actual
+-- future-maximal chain source y_n=n/((n+1)(n+2)), q_n >= 1/(n+2), so the
+-- posterior tends to one by harmonic divergence.  An explicit positive
+-- geometric-decay source has summable charge, proving that source sign alone
+-- gives no universal or typical-history conclusion.  The physical use still
+-- requires the separately named common-sector factorization.
+import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceAsymptotics
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

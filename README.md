@@ -777,6 +777,20 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   factorization for the actual varying sequence of causal-set births remains
   the decisive open step; without it, deterministic character selection and
   statistical geometric records remain separate layers.
+  `KFCausalSetChiralityEvidenceAsymptotics.lean` identifies the exact additive
+  coordinate of that conditional record law:
+  `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`. Thus `q` is half the binary
+  log-odds, and common-sector composition adds evidence charges. This is Bayes
+  arithmetic, not a derivation of Lorentz kinematics. The odds become decisive
+  exactly when the partial charge sums diverge. On the actual future-maximal
+  chain path, `y_n=n/((n+1)(n+2))` and `q(y_n)>=1/(n+2)`, so accumulated
+  evidence dominates a shifted harmonic series and the conditional posterior
+  tends to one. An explicit strictly positive geometric-decay source instead
+  has summable charge. Therefore linkedness and sign transport alone do not
+  imply decisive records, and the chain theorem is not a typical-history
+  theorem for the nonadditive quantum growth law. A growth-derived common
+  sector plus a quantum-measure-appropriate typical charge-divergence result
+  remain open.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable

@@ -518,6 +518,17 @@
 > refinement and not the `2yz` CP benchmark.
 > Growth still has to derive the common-sector factorization and establish the
 > required product-evidence condition for its varying source sequence.
+> `KFCausalSetChiralityEvidenceAsymptotics.lean` turns that last condition into
+> exact log-odds arithmetic. The additive charge is
+> `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`; common-sector composition adds
+> `q`, so this is binary Bayesian evidence rather than emergent Lorentz
+> kinematics. For future-maximal chain growth,
+> `y_n=n/((n+1)(n+2))` and `q(y_n)>=1/(n+2)`, forcing harmonic divergence and
+> conditional posterior convergence to one. A checked positive geometric-
+> decay source has summable charge, however. Positivity and a transported sign
+> therefore do not prove decisiveness for arbitrary paths, much less a
+> quantum-measure typical-history statement. Deriving the common-sector
+> factorization and the appropriate typical divergence theorem remains open.
 > `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
