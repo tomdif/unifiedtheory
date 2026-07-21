@@ -5218,6 +5218,12 @@ import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceAsymptotics
 -- finite-rank charge concentration needs the protected record factorization;
 -- projective source growth alone does not license a classical distribution.
 import UnifiedTheory.Audit.KFCausalSetChiralityChargePartitionNoGo
+-- The full-chain conditional record model has a sharp, rather than merely
+-- polynomial, rate.  Its bias sum telescopes to 2H_(N+1)+4/(N+2)-4 and the
+-- nonlinear artanh excess is summable.  Hence evidence/log N -> 2,
+-- log-odds/log N -> 4, and log posterior-error/log N -> -4, i.e.
+-- error=N^(-4+o(1)).  This is not a typical-history or tail-measure theorem.
+import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceSharpRate
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

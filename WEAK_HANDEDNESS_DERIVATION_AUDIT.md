@@ -205,11 +205,11 @@ the signed record bias. Under the explicitly named common-sector transport
 contract, the additive evidence coordinate is
 `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`; this is binary log-odds addition,
 not Lorentz kinematics. The exact future-maximal chain source
-`y_n=n/((n+1)(n+2))` has accumulated charge between one and four shifted
-harmonic tails, so its conditional record posterior tends to one on a
-polynomial rather than exponential scale. The current theorem does not fix the
-sharp power; a `1/N` law is not derived. This does not promote the
-result to arbitrary or typical growth histories: a checked positive interior
+`y_n=n/((n+1)(n+2))` has an exactly telescoping bias sum and a summable
+nonlinear `artanh` correction. Its evidence/log limit is `2`, its
+log-odds/log limit is `4`, and its log posterior-error/log limit is `-4`.
+Thus the conditional error is sharply `N^(-4+o(1))`, not `1/N`. This does not
+promote the result to arbitrary or typical growth histories: a checked positive interior
 source has summable charge, and the quantum measure is nonadditive. A derived
 common-sector factorization and an appropriate typical charge-divergence
 theorem remain outside the finite selection core.

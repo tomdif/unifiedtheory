@@ -524,10 +524,11 @@
 > `q`, so this is binary Bayesian evidence rather than emergent Lorentz
 > kinematics. For future-maximal chain growth,
 > `y_n=n/((n+1)(n+2))`; its first two values are both `1/6`. Accumulated charge
-> lies between one and four shifted harmonic tails, forcing logarithmic growth
-> and conditional posterior convergence to one. This proves a polynomial,
-> rather than exponential, confidence scale but not a sharp power; `1/N` is
-> not a checked consequence (the leading expansion instead suggests `N^-4`).
+> lies between one and four shifted harmonic tails. The sharp-rate module now
+> telescopes the bias sum and bounds the nonlinear `artanh` excess by a
+> summable cubic tail. It proves evidence/log tends to `2`, log-odds/log tends
+> to `4`, and log posterior-error/log tends to `-4`, so the conditional error
+> is `N^(-4+o(1))`, not `1/N`.
 > A checked positive geometric-
 > decay source has summable charge, however. Positivity and a transported sign
 > therefore do not prove decisiveness for arbitrary paths, much less a

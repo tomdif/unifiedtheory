@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The seventy-eight `provedFinite` entries assert only their mathematical scope.
+The seventy-nine `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -208,6 +208,8 @@ def claimLedger : List ClaimEntry := [
     scope := .conditionalBridge },
   { name := "future-maximal chain evidence is sandwiched by shifted harmonic tails",
     scope := .provedFinite },
+  { name := "conditional full-chain chirality record error has logarithmic exponent minus four",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -242,8 +244,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 90
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 78
+    claimLedger.length = 91
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 79
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by

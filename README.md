@@ -785,12 +785,13 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   exactly when the partial charge sums diverge. On the actual future-maximal
   chain path, `y_n=n/((n+1)(n+2))`; the first two values are both `1/6`, as in
   the earlier two-chain and three-chain calculations. Accumulated evidence is
-  bounded between one and four shifted harmonic tails, so the charge scale is
-  logarithmic and the conditional posterior tends to one. This certifies
-  polynomial rather than exponential record sharpening, but not the sharp
-  power: in particular, `1/N` has not been derived. The leading expansion
-  suggests `q_n~2/n`, hence error of order `N^-4`, and remains to be
-  formalized. An explicit strictly positive geometric-decay source instead
+  bounded between one and four shifted harmonic tails. The sharper
+  `KFCausalSetChiralityEvidenceSharpRate.lean` theorem telescopes the bias sum
+  exactly and proves the nonlinear `artanh` excess is summable. Consequently
+  evidence divided by `log(N+1)` tends to `2`, log-odds divided by the same
+  scale tends to `4`, and log posterior error tends with exponent `-4`:
+  the conditional error is `N^(-4+o(1))`, not `1/N`. An explicit strictly
+  positive geometric-decay source instead
   has summable charge. Therefore linkedness and sign transport alone do not
   imply decisive records, and the chain theorem is not a typical-history
   theorem for the nonadditive quantum growth law. A growth-derived common
