@@ -5157,9 +5157,9 @@ import UnifiedTheory.Audit.KFCausalSetConjugationCompleteness
 import UnifiedTheory.Audit.KFCausalSetMicroscopicResponseLaw
 -- Source magnitude remains observable in the mixed rank-two channel even
 -- though character selection uses only its sign.  The rank-three chain and
--- fork have exact normalized-coherence bases 1/3 and 2/5; under independent
--- multiplicative refinement the fork retains more coherence at every positive
--- depth and has the exact larger purity 29/50 versus 5/9.
+-- fork have exact normalized-coherence bases 1/3 and 2/5.  A named physical-
+-- channel contract now isolates their 1/3 versus 2/5 retention fingerprint:
+-- it belongs to the separate multiplicative CP map, not projective growth.
 import UnifiedTheory.Audit.KFCausalSetSourceMagnitudeDecoherence
 -- The first exact harmonic source ensemble is intrinsically nonadditive.  For
 -- the two-antichain its three source-bin quantum measures sum to 3681/2113,
@@ -5176,6 +5176,21 @@ import UnifiedTheory.Audit.KFCausalSetSourceQuantumEnsemble
 -- an additional CP/environment/record coarse graining; the conditional |2y|
 -- mixing law cannot be identified with projective causal-set refinement.
 import UnifiedTheory.Audit.KFCausalSetSourceInterferenceRefinement
+-- The canonical three-record dephasing map is CPTP and permutation-covariant,
+-- but it exposes a sharper obstruction.  Decoherence normalization is the
+-- all-entry sum, not matrix trace: the harmonic source functional has values
+-- 1 and 3681/2113 respectively.  Every trace-preserving record-diagonalizing
+-- map therefore outputs total measure 3681/2113, so no standard CPTP record
+-- trace can classicalize this ensemble while preserving normalization.
+-- Indiscriminate route-record dephasing also erases the chiral pair; a future
+-- channel needs a derived protected algebra as well as the correct notion of
+-- decoherence-functional normalization.
+-- The forced eigenbasis alternative is also exact: chirality-projector
+-- pinching is CPTP and fixes every balanced D_y, producing the normalized
+-- record profile diag(1/2-y,1/2+y).  In a named (not derived) source-times-
+-- chirality tensor extension, the chiral cells decohere exactly while the
+-- geometric D(0,2)=-784/2113 survives inside the selected pure cell.
+import UnifiedTheory.Audit.KFCausalSetSpectatorRecordChannel
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

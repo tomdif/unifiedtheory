@@ -5,18 +5,20 @@
 
   Character selection uses only the sign of the maximal-birth source, but the
   source magnitude is not inert in the balanced rank-two kernel.  Conditional
-  on the already formalized independent-refinement composition law, normalized
-  coherence multiplies at each stage.  The two rank-three benchmark births
+  on applying the separately constructed multiplicative CP mixing channel,
+  normalized coherence multiplies at each channel use.  The two rank-three
+  benchmark births
   therefore have different exact retention bases:
 
       three-chain newborn:  y = 1/6,  r = 2y = 1/3;
       fork newborn:         y = 1/5,  r = 2y = 2/5.
 
-  The fork kernel retains more coherence at every positive refinement depth,
+  The fork kernel retains more coherence after every positive channel depth,
   has greater purity, and has smaller determinant.  This is a model-internal,
   prediction-shaped distinction.  It is conditional on using the geometric
-  source as the balanced-kernel parameter and on independent multiplicative
-  refinement; no continuum time or laboratory decoherence rate is asserted.
+  source as the balanced-kernel parameter and on physically identifying the
+  multiplicative CP map with an information-losing process.  It is not
+  projective causal-set refinement, continuum time, or a laboratory rate.
 
   Zero sorry. Zero custom axioms.
 -/
@@ -70,10 +72,11 @@ theorem chainThree_source_lt_forkThree_source :
   rw [chainThreeNewbornSourceR_exact, forkThreeNewbornSourceR_exact]
   norm_num
 
-/-! ## 2. Exact independent-refinement coherence rates -/
+/-! ## 2. Exact multiplicative-channel coherence rates -/
 
-/-- Magnitude of normalized history coherence after `steps` identical
-independent refinement stages. -/
+/-- Historical identifier for the benchmark magnitude after `steps` identical
+uses of the multiplicative source-mixing channel.  This is not exhaustive
+projective continuation of cylinder histories. -/
 def independentRefinementCoherence (steps : ℕ) (source : ℝ) : ℝ :=
   |normalizedHistoryCoherence (nStageRefinement steps source)|
 
@@ -160,7 +163,8 @@ theorem finiteGeometry_coherence_tendsto_zero {n : ℕ}
   simpa only [independentRefinementCoherence_eq_abs_pow] using
     (tendsto_pow_atTop_nhds_zero_of_abs_lt_one hAbsUnit)
 
-/-- **Conditional scale separation.**  Under multiplicative refinement, every
+/-- **Conditional channel separation.**  Under repeated application of the
+multiplicative CP benchmark, every
 finite geometric orientation loses coherence with a universal rate strictly
 faster than `2^{-n}`, while both pure chiral endpoints retain unit coherence
 at every depth.  The gregarious source is erased after one stage. -/
@@ -280,8 +284,8 @@ theorem forkThree_det_lt_chainThree_det :
 
 /-! ## 4. Prediction-shaped capstone -/
 
-/-- Conditional on the repository's independent multiplicative refinement
-law, the geometry-dependent source magnitude determines an exact rank-two
+/-- Conditional on the repository's separate multiplicative mixing channel,
+the geometry-dependent source magnitude determines an exact rank-two
 mixedness and coherence-retention fingerprint.  Character selection remains
 sign-only, but magnitude controls these separate observables. -/
 theorem sourceMagnitude_controls_refinementMixedness :
@@ -306,6 +310,45 @@ theorem sourceMagnitude_controls_refinementMixedness :
     congrArg Complex.re chainThree_balancedHistoryKernel_det_exact,
     congrArg Complex.re forkThree_balancedHistoryKernel_det_exact⟩
 
+/-! ## 5. Explicit physical-identification contract -/
+
+/-- A proposed physical decoherence observable realizes the finite
+multiplicative benchmark.  Naming this contract prevents the algebraic channel
+depth from being silently identified with projective growth depth. -/
+def RealizesMultiplicativeSourceMixing
+    (physicalCoherence : ℕ → ℝ → ℝ) : Prop :=
+  ∀ steps source,
+    physicalCoherence steps source =
+      independentRefinementCoherence steps source
+
+/-- The fork/chain retention fingerprint is a physical conclusion only after
+supplying the explicit channel-identification contract.  Static source,
+purity, and determinant statements do not require this contract. -/
+theorem sourceMagnitude_fingerprint_of_assumedMixingChannel
+    (physicalCoherence : ℕ → ℝ → ℝ)
+    (hChannel : RealizesMultiplicativeSourceMixing physicalCoherence) :
+    physicalCoherence 1 chainThreeNewbornSourceR = 1 / 3
+      ∧ physicalCoherence 1 forkThreeNewbornSourceR = 2 / 5
+      ∧ (∀ steps : ℕ,
+        physicalCoherence (steps + 1) chainThreeNewbornSourceR <
+          physicalCoherence (steps + 1) forkThreeNewbornSourceR)
+      ∧ (∀ steps : ℕ, ∀ chirality : Fin 2,
+        physicalCoherence steps
+          (chiralBoundaryOrientationParameter chirality) = 1) := by
+  constructor
+  · rw [hChannel]
+    simpa using chainThree_independentRefinementCoherence 1
+  constructor
+  · rw [hChannel]
+    simpa using forkThree_independentRefinementCoherence 1
+  constructor
+  · intro steps
+    rw [hChannel, hChannel]
+    exact forkThree_retains_more_coherence steps
+  · intro steps chirality
+    rw [hChannel]
+    exact pureEndpoint_independentRefinementCoherence steps chirality
+
 #print axioms chainThreeNewbornSourceR_exact
 #print axioms forkThreeNewbornSourceR_exact
 #print axioms forkThree_retains_more_coherence
@@ -317,6 +360,7 @@ theorem sourceMagnitude_controls_refinementMixedness :
 #print axioms chainThree_orientationSpectralPurity_exact
 #print axioms forkThree_orientationSpectralPurity_exact
 #print axioms sourceMagnitude_controls_refinementMixedness
+#print axioms sourceMagnitude_fingerprint_of_assumedMixingChannel
 
 end
 

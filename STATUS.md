@@ -462,10 +462,13 @@
 > separate exact role. For the rank-three chain/fork births, source values
 > `1/6` and `1/5` give normalized-coherence retention bases `1/3` and `2/5`,
 > purities `5/9` and `29/50`, and determinants `2/9` and `21/100`. Conditional
-> on an independent multiplicative mixing channel, the fork retains more coherence
+> on a separate multiplicative CP mixing channel, the fork retains more coherence
 > at every positive depth. The general law is `r(y)=|2y|`: pure endpoints
 > persist, gregarious coherence vanishes after one stage, and every finite
-> geometric kernel decays strictly faster than `2^{-n}` to zero.
+> geometric kernel decays strictly faster than `2^{-n}` to zero. A checked
+> `RealizesMultiplicativeSourceMixing` contract now makes the required physical
+> channel identification explicit; none of these rates describe projective
+> growth without that contract.
 > `KFCausalSetSourceQuantumEnsemble.lean` then computes the first exact
 > harmonic source profile. Its bin measures sum to `3681/2113` rather than
 > one; destructive empty/full interference `-1568/2113` restores normalized
@@ -480,6 +483,25 @@
 > An actual CP/environment/record coarse graining is therefore required. The
 > same module boundary records that ancestor number is not a sufficient grain:
 > one-ancestor births have both source `1/6` and `1/8` depending on context.
+> `KFCausalSetSpectatorRecordChannel.lean` then tests canonical record tracing.
+> The channel is explicitly CPTP and permutation-covariant and kills the
+> empty/full off-diagonal, but cannot preserve decoherence normalization:
+> `sum_ij D_ij=1` while `trace D=3681/2113`. Every trace-preserving map with a
+> record-diagonal output therefore has total measure `3681/2113`; no standard
+> CPTP replacement can repair the conflict. Direct route-record dephasing also
+> erases the chiral pair. The remaining target is a growth-compatible
+> `D(Omega,Omega)`-preserving conditional expectation/instrument with a derived
+> protected chiral algebra, not an ordinary trace-preserving record channel.
+> The forced eigenbasis alternative is positive: for
+> `D_y=[[1/2,iy],[-iy,1/2]]`, chirality-projector pinching is CPTP, fixes every
+> `D_y`, and yields the exact normalized record profile
+> `diag(1/2-y,1/2+y)`. Under a separately named source-times-chirality tensor
+> ansatz, the chiral cells are exactly decoherent while the geometric
+> empty/full entry `-784/2113` persists inside the selected pure cell. This
+> conditionally realizes “chirality classical, geometry quantum”; the growth
+> theory does not yet derive the tensor factor or classify all higher-rank
+> decoherent partitions. Projectivity only transports a partition already
+> proved decoherent at its base cylinder depth.
 > `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
@@ -624,7 +646,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-884 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,638 jobs successful
+885 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,639 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

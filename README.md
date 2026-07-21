@@ -692,10 +692,11 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   magnitude is not spectator data in the mixed rank-two channel. The
   rank-three chain source `1/6` has normalized-coherence retention base `1/3`
   and purity `5/9`; the fork source `1/5` has base `2/5` and purity `29/50`.
-  Under the already formalized independent multiplicative channel benchmark, the
+  Under the separately formalized multiplicative CP channel benchmark, the
   fork retains strictly more coherence at every positive depth; the exact
   determinants are respectively `2/9` and `21/100`. This is conditional on
-  identifying refinement stages with the rank-two channel, not yet a
+  a new explicit `RealizesMultiplicativeSourceMixing` physical-channel
+  contract, not projective refinement or a
   laboratory-time decoherence prediction. More generally, the retention
   factor is exactly `|2y|`. Pure endpoints retain unit coherence at every
   depth, a gregarious `y=0` birth loses it after one stage, and the universal
@@ -724,6 +725,35 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   map compatible with the growth law. The same audit proves that ancestor count
   is too coarse for higher-rank source bins: one-ancestor births already realize
   distinct sources `1/6` and `1/8`, so full parent/precursor context is required.
+  `KFCausalSetSpectatorRecordChannel.lean` tests the most natural replacement
+  at this same finite rank. Canonical source-record dephasing has an explicit
+  complete Kraus family, is CPTP, commutes with every permutation of record
+  names, and kills the empty/full off-diagonal in one use. It nevertheless
+  fails the normalization of a decoherence functional. The input obeys
+  `sum_ij D_ij=1` but `trace(D)=3681/2113`; any trace-preserving map with a
+  record-diagonal output must make those two output quantities equal, hence
+  produces total measure `3681/2113`, not one. A universal theorem therefore
+  excludes every standard CPTP record-diagonalizing map, independently of
+  covariance. Naive route-record dephasing also maps the two pure chiral
+  projectors to the same state, failing the protection tripwire. The open
+  target is consequently narrower and harder: construct a growth-compatible
+  conditional expectation or instrument preserving `D(Omega,Omega)`, with a
+  derived protected chiral algebra. Ordinary density-matrix trace preservation
+  is the wrong normalization condition for this task.
+  The same module constructs the forced eigenbasis alternative. For the actual
+  convention `D_y=[[1/2,iy],[-iy,1/2]]`, the eigenkets are proportional to
+  `(1,+i)` and `(1,-i)`. Pinching by their chirality projectors is CPTP and
+  fixes every balanced kernel exactly; its record decoherence matrix is
+  `diag(1/2-y,1/2+y)`, so it is exactly decoherent and normalized. In an
+  explicitly named source-times-chirality tensor extension of the two-antichain
+  ensemble, the two chiral cells remain exactly decoherent while the geometric
+  empty/full entry `-784/2113` survives unchanged inside either selected pure
+  chiral cell. Thus this finite conditional model makes chirality record-like
+  while geometry remains quantum. Projective consistency transports any such
+  chosen cylinder partition once realized, but does not classify new
+  higher-rank partitions. Deriving the tensor factorization from sequential
+  growth—and proving that no other fundamental decoherent partitions exist—
+  remains open.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable

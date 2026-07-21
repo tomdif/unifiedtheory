@@ -199,6 +199,28 @@ preserves rather than damps interference. Any emergence of classical
 probability therefore needs an additional environment, record restriction, or
 non-projective CP coarse graining compatible with the growth dynamics.
 
+The first spectator/record candidate now fails two exact tripwires. Canonical
+three-record dephasing is CPTP and permutation-covariant, but a decoherence
+functional is normalized by `D(Omega,Omega)=sum_ij D_ij`, not matrix trace.
+For the harmonic source ensemble these are `1` and `3681/2113`; consequently
+every trace-preserving record-diagonalizing map outputs the wrong total measure.
+Moreover, applying record dephasing directly to the route basis identifies the
+two pure chiral projectors. Preserving handedness therefore requires a derived
+protected subalgebra or tensor factor, while preserving the growth quantum
+measure requires a channel notion adapted to `D(Omega,Omega)` rather than the
+ordinary density-matrix trace.
+
+The corresponding protected channel now exists at the finite balanced-kernel
+level. The correct eigenkets are `(1,+i)/sqrt(2)` and `(1,-i)/sqrt(2)` in the
+repository's convention. Chirality-projector pinching is CPTP, fixes every
+`D_y`, and gives exactly `diag(1/2-y,1/2+y)` as the two-record decoherence
+functional. In a clearly marked source-times-chirality tensor extension of the
+two-antichain ensemble, these two records decohere exactly and normalize to one,
+while the geometric empty/full interference `-784/2113` remains inside the
+selected pure chiral cell. This is a finite conditional realization of a
+classical handedness record with quantum geometry, not yet a factorization
+derived from causal growth.
+
 The continuum spin reconstruction is a separate open target: the finite
 chirality/Weyl space and locking projector are explicit, but the repo has not
 yet reconstructed a Lorentzian spin bundle, continuum Dirac operator, and

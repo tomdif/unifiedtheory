@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The fifty-nine `provedFinite` entries assert only their mathematical scope.
+The seventy-three `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -124,9 +124,9 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "purity and deterministic orientation select only chirality endpoints",
     scope := .provedFinite },
-  { name := "multiplicative refinement contracts every nonzero interior coherence",
+  { name := "a separate multiplicative CP benchmark contracts interior coherence",
     scope := .provedFinite },
-  { name := "four-Kraus CPTP refinement realizes and rigidly fixes coherence multiplication",
+  { name := "four-Kraus CPTP mixing realizes and rigidly fixes coherence multiplication",
     scope := .provedFinite },
   { name := "causal ordinal composition, isomorphism quotient, and unlabeled channel descent",
     scope := .provedFinite },
@@ -188,6 +188,16 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "number-volume and its unique invariant projector derive harmonic spectator growth",
     scope := .provedFinite },
+  { name := "projective growth conserves every cylinder interference entry",
+    scope := .provedFinite },
+  { name := "trace-preserving record diagonalization breaks source normalization",
+    scope := .provedFinite },
+  { name := "chirality-basis pinching fixes every balanced kernel and exactly \
+      decoheres its records",
+    scope := .provedFinite },
+  { name := "two-antichain tensor extension decoheres chirality while retaining \
+      source interference",
+    scope := .conditionalBridge },
   { name := "chamber Poincare action is non-faithful",
     scope := .provedFinite },
   { name := "structural mass-gap and Wilson flows erase parameters",
@@ -207,6 +217,8 @@ def claimLedger : List ClaimEntry := [
     scope := .openTarget },
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
+    scope := .openTarget },
+  { name := "growth-compatible D(Omega,Omega)-preserving record channel with protected chirality",
     scope := .openTarget }
 ]
 
@@ -215,11 +227,11 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 78
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 70
-    ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 1
+    claimLedger.length = 83
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 73
+    ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 2
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
-    ∧ (claimLedger.filter (hasScope .openTarget)).length = 6 := by
+    ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by
   decide
 
 /-! ## 2. Constant families are not nontrivial density flows -/
