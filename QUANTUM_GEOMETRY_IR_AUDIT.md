@@ -30,7 +30,8 @@
 `UnifiedTheory/Audit/KFCausalSetChiralityRecordCompounding.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceAsymptotics.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityChargePartitionNoGo.lean` and
-`UnifiedTheory/Audit/KFCausalSetChiralityEvidenceSharpRate.lean`
+`UnifiedTheory/Audit/KFCausalSetChiralityEvidenceSharpRate.lean` and
+`UnifiedTheory/Audit/KFCausalSetChiralityEvidenceExtrema.lean`
 
 ## Outcome
 
@@ -61,6 +62,7 @@ from being silently promoted to a stronger physical scope.
 | Chirality record basis | Pinching by the `(1,±i)/sqrt(2)` chirality projectors is CPTP, fixes every balanced `D_y`, and gives `diag(1/2-y,1/2+y)`; a source-times-chirality tensor extension has exact chiral decoherence while source interference persists | Pinching theorem proved; the extended two-antichain result is conditional on an explicit tensor ansatz not yet derived from growth; no classification of all higher-rank partitions |
 | Chirality record compounding | Geometric magnitude gives signed record bias `2y`; two independent linked-birth records preserve the `2/3` marginal, whereas common-sector conditioning gives `4/5` and `y boxplus z=(y+z)/(1+4yz)` | Bias and independence no-amplification proved; amplification and convergence are conditional on a common-transport factorization not yet derived for the varying growth sequence |
 | Chirality evidence asymptotics | `artanh(2y)` is half log-odds and additive under common-sector composition; on the future-maximal chain, evidence/log tends to `2`, log-odds/log to `4`, and log posterior-error/log to `-4`; a positive summable counterregime is explicit | Exact sharp `N^(-4+o(1))` conditional chain rate; Bayes arithmetic, not Lorentz kinematics; no typical-history or tail-event claim, and physical use remains conditional on factorization |
+| Rankwise chirality evidence extrema | At parent rank `n`, gregarious source is `0`, the exact linked minimum is `1/(n(n+1)+4)`, and the star maximum is `n/(2(2n+1))`; full-chain timid source is strictly interior for `n>=2` | Proved finite combinatorics; the exponent `4` is two arithmetic factors of `2`, not dimension; rankwise extremizers are not claimed to form a compatible trajectory |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |

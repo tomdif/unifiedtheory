@@ -23,6 +23,11 @@
   full-chain evidence model.  It does not supply the still-missing decoherent
   charge partition or a probability measure on the infinite tail event.
 
+  The exponent four is arithmetic, not dimensional: the full-chain record
+  bias is asymptotic to `2/n`, and log-odds are twice the additive half-log-odds
+  charge.  Those two factors of two multiply to four.  No spacetime or
+  Lorentzian dimension is inferred from this exponent.
+
   Zero sorry. Zero custom axioms.
 -/
 

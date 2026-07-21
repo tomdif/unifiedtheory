@@ -5224,6 +5224,13 @@ import UnifiedTheory.Audit.KFCausalSetChiralityChargePartitionNoGo
 -- log-odds/log N -> 4, and log posterior-error/log N -> -4, i.e.
 -- error=N^(-4+o(1)).  This is not a typical-history or tail-measure theorem.
 import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceSharpRate
+-- Rankwise source extrema correct a tempting overgeneralization of that chain
+-- law.  For an n-event parent, gregarious source is zero, the exact positive
+-- linked minimum is 1/(n(n+1)+4), and the star maximum is n/(2(2n+1)).
+-- The timid full-chain source lies strictly between them for n>=2.  Hence the
+-- exponent four is history-specific arithmetic, not dimension; rankwise
+-- extremizers are not asserted to assemble into one growth trajectory.
+import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceExtrema
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

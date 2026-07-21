@@ -528,12 +528,21 @@
 > telescopes the bias sum and bounds the nonlinear `artanh` excess by a
 > summable cubic tail. It proves evidence/log tends to `2`, log-odds/log tends
 > to `4`, and log posterior-error/log tends to `-4`, so the conditional error
-> is `N^(-4+o(1))`, not `1/N`.
+> is `N^(-4+o(1))`, not `1/N`. The `4` is arithmetic, not dimension: one
+> factor `2` comes from the full-chain bias and one from converting additive
+> half-log-odds to log-odds.
 > A checked positive geometric-
 > decay source has summable charge, however. Positivity and a transported sign
 > therefore do not prove decisiveness for arbitrary paths, much less a
 > quantum-measure typical-history statement. Deriving the common-sector
 > factorization and the appropriate typical divergence theorem remains open.
+> `KFCausalSetChiralityEvidenceExtrema.lean` proves the exact rankwise range.
+> For an `n`-event parent the source has gregarious minimum `0`, linked minimum
+> `1/(n(n+1)+4)` attained by the singleton-bottom precursor in a chain, and
+> star maximum `n/(2(2n+1))` attained over the full antichain. The timid
+> full-chain source lies strictly inside this range for `n>=2`; thus rankwise
+> linked charge spans `O(1/n^2)` through a nonzero limiting constant. The
+> extremizers are not asserted to form a projectively compatible history.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

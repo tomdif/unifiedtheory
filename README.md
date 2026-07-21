@@ -797,6 +797,18 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   theorem for the nonadditive quantum growth law. A growth-derived common
   sector plus a quantum-measure-appropriate typical charge-divergence result
   remain open.
+  `KFCausalSetChiralityEvidenceExtrema.lean` proves that the full chain is not
+  even the rankwise linked minimum. For an `n`-event parent the exact source
+  formula gives gregarious minimum `0`, positive linked minimum
+  `1/(n(n+1)+4)` attained by a singleton-bottom precursor in the `n`-chain,
+  and maximum `n/(2(2n+1))` attained by the full precursor over the
+  `n`-antichain (the star). The timid full-chain value
+  `n/((n+1)(n+2))` lies strictly between them for `n>=2`. Corresponding charge
+  therefore ranges rankwise from order `1/n^2` to `artanh(1/2)`, while the
+  full-chain charge is order `1/n`. These per-rank extremizers are not proved
+  compatible along one trajectory. The full-chain exponent `4` is explicitly
+  arithmetic—one factor `2` from its bias and one from converting half-log-odds
+  to log-odds—not spacetime dimension.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

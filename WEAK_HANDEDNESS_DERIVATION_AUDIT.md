@@ -214,6 +214,16 @@ source has summable charge, and the quantum measure is nonadditive. A derived
 common-sector factorization and an appropriate typical charge-divergence
 theorem remain outside the finite selection core.
 
+The exponent `4` carries no dimensional or kinematic meaning. It is the
+product of two explicit arithmetic factors: the full-chain record bias is
+asymptotic to `2/n`, and ordinary log-odds are twice the additive charge.
+Moreover, the full chain is not rankwise extremal. At parent rank `n`, the
+positive linked source ranges sharply from `1/(n(n+1)+4)` (a singleton-bottom
+precursor in the chain) to `n/(2(2n+1))` (the full antichain precursor/star),
+with gregarious source zero. The timid full-chain value is strictly interior
+for `n>=2`. These extrema are finite-rank statements, not a proof that their
+witnesses assemble into one growth trajectory.
+
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
 threshold cut is decoherent; the empty/full source entry is exactly
