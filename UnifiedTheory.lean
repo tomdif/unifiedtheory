@@ -5210,6 +5210,14 @@ import UnifiedTheory.Audit.KFCausalSetChiralityRecordCompounding
 -- gives no universal or typical-history conclusion.  The physical use still
 -- requires the separately named common-sector factorization.
 import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceAsymptotics
+-- The probability prerequisite fails at the first nontrivial geometric
+-- charge ensemble.  Above the two-antichain the three charges are distinct,
+-- yet the empty/full entry is -784/2113; both nontrivial ordered threshold
+-- cuts have nonzero cross-decoherence.  Any cylinder realization transports
+-- that obstruction unchanged through all exhaustive refinements.  Thus even
+-- finite-rank charge concentration needs the protected record factorization;
+-- projective source growth alone does not license a classical distribution.
+import UnifiedTheory.Audit.KFCausalSetChiralityChargePartitionNoGo
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

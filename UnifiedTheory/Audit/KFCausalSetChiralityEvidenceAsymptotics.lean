@@ -19,9 +19,11 @@
       y_n = n / ((n+1)(n+2)),
 
   and each charge is bounded below by `1/(n+2)`.  The accumulated evidence
-  therefore dominates a shifted harmonic number and diverges.  The associated
+  is in fact sandwiched between one and four times a shifted harmonic number.
+  It therefore grows on a logarithmic scale and diverges.  The associated
   common-sector posterior converges to one, though it remains below one at
-  every finite depth.
+  every finite depth.  The sandwich certifies polynomial rather than
+  exponential sharpening but deliberately does not claim a sharp exponent.
 
   Positivity alone is not enough: an explicit positive geometric-decay
   sequence has summable artanh charge.  Thus the chain theorem does not prove a
@@ -88,6 +90,25 @@ theorem bias_le_chiralityEvidenceCharge
     constructor <;> linarith
   rw [chiralityEvidenceCharge, Real.artanh_eq_half_log hTwoY]
   simpa using hSeries
+
+/-- On `0 ≤ r ≤ 1/2`, artanh is bounded above by `2r`. -/
+theorem chiralityEvidenceCharge_le_twice_bias
+    {r : ℝ} (hrNonneg : 0 ≤ r) (hrHalf : r ≤ 1 / 2) :
+    Real.artanh r ≤ 2 * r := by
+  have hrOne : r < 1 := lt_of_le_of_lt hrHalf (by norm_num)
+  have hUpper := Real.log_div_le_sum_range_add hrNonneg hrOne 0
+  simp only [Finset.range_zero, Finset.sum_empty, zero_add] at hUpper
+  have hUpper' :
+      1 / 2 * Real.log ((1 + r) / (1 - r)) ≤
+        r / (1 - r ^ 2) := by
+    norm_num at hUpper ⊢
+    exact hUpper
+  rw [Real.artanh_eq_half_log (by constructor <;> linarith)]
+  refine le_trans hUpper' ?_
+  have hDenPos : 0 < 1 - r ^ 2 := by nlinarith [sq_nonneg r]
+  rw [div_le_iff₀ hDenPos]
+  have hFactor : 0 ≤ 1 - 2 * r ^ 2 := by nlinarith [sq_nonneg r]
+  nlinarith [mul_nonneg hrNonneg hFactor]
 
 /-- The common-sector Bayesian composition is additive in evidence charge.
 This is binary log-odds arithmetic, not a derivation of Lorentz kinematics. -/
@@ -211,6 +232,13 @@ theorem fullChainBirthSource_eq_geometric (n : ℕ) :
   push_cast
   ring_nf
 
+/-- Cross-check against the earlier exact two-chain and three-chain newborn
+values: the first two linked full-chain births both carry source `1/6`. -/
+theorem fullChainBirthSource_first_two_exact :
+    fullChainBirthSource 1 = 1 / 6
+      ∧ fullChainBirthSource 2 = 1 / 6 := by
+  norm_num [fullChainBirthSource]
+
 theorem fullChainBirthSource_nonneg (n : ℕ) :
     0 ≤ fullChainBirthSource n := by
   unfold fullChainBirthSource
@@ -226,6 +254,28 @@ theorem fullChainBirthSource_lt_half (n : ℕ) :
   push_cast
   nlinarith [sq_nonneg (n : ℝ)]
 
+theorem fullChainBirthSource_le_quarter (n : ℕ) :
+    fullChainBirthSource n ≤ 1 / 4 := by
+  unfold fullChainBirthSource
+  have hDen :
+      0 < ((n + 1 : ℕ) : ℝ) * ((n + 2 : ℕ) : ℝ) := by
+    positivity
+  rw [div_le_iff₀ hDen]
+  push_cast
+  nlinarith [sq_nonneg ((n : ℝ) - 1 / 2)]
+
+theorem fullChainBirthSource_le_harmonicTerm (n : ℕ) :
+    fullChainBirthSource n ≤ 1 / ((n + 2 : ℕ) : ℝ) := by
+  unfold fullChainBirthSource
+  have hNOne : 0 < ((n + 1 : ℕ) : ℝ) := by positivity
+  have hNTwo : 0 < ((n + 2 : ℕ) : ℝ) := by positivity
+  have hDen :
+      0 < ((n + 1 : ℕ) : ℝ) * ((n + 2 : ℕ) : ℝ) :=
+    mul_pos hNOne hNTwo
+  rw [div_le_iff₀ hDen]
+  field_simp [hNTwo.ne']
+  exact_mod_cast (Nat.le_succ n)
+
 /-- Every linked full-chain birth charge dominates a shifted harmonic term. -/
 theorem fullChainBirth_charge_ge_harmonicTerm
     (n : ℕ) (hn : 1 ≤ n) :
@@ -240,6 +290,28 @@ theorem fullChainBirth_charge_ge_harmonicTerm
   rw [div_le_iff₀ hNTwo]
   field_simp [hNOne.ne']
   exact_mod_cast (show n + 1 ≤ 2 * n by omega)
+
+/-- A matching harmonic upper comparison, with a non-sharp constant four.
+Together with the lower comparison, this proves logarithmic rather than linear
+or exponential accumulated charge growth. -/
+theorem fullChainBirth_charge_le_four_harmonicTerm (n : ℕ) :
+    chiralityEvidenceCharge (fullChainBirthSource n) ≤
+      4 / ((n + 2 : ℕ) : ℝ) := by
+  have hSourceNonneg := fullChainBirthSource_nonneg n
+  have hSourceQuarter := fullChainBirthSource_le_quarter n
+  have hUpper := chiralityEvidenceCharge_le_twice_bias
+    (r := 2 * fullChainBirthSource n)
+    (mul_nonneg (by norm_num) hSourceNonneg)
+    (by linarith)
+  have hSourceTerm := fullChainBirthSource_le_harmonicTerm n
+  unfold chiralityEvidenceCharge at hUpper ⊢
+  calc
+    Real.artanh (2 * fullChainBirthSource n)
+        ≤ 2 * (2 * fullChainBirthSource n) := hUpper
+    _ = 4 * fullChainBirthSource n := by ring
+    _ ≤ 4 * (1 / ((n + 2 : ℕ) : ℝ)) :=
+      mul_le_mul_of_nonneg_left hSourceTerm (by norm_num)
+    _ = 4 / ((n + 2 : ℕ) : ℝ) := by ring
 
 /-- Evidence accumulated over the first `depth` linked full-chain births,
 starting at `n=1`. -/
@@ -267,6 +339,28 @@ theorem accumulatedFullChainEvidence_ge_harmonicTail (depth : ℕ) :
   apply Finset.sum_le_sum
   intro k hk
   exact fullChainBirth_charge_ge_harmonicTerm (k + 1) (by omega)
+
+theorem accumulatedFullChainEvidence_le_four_harmonicTail (depth : ℕ) :
+    accumulatedFullChainEvidence depth ≤
+      4 * ((harmonic (depth + 2) : ℝ) - (harmonic 2 : ℝ)) := by
+  rw [← shifted_harmonic_tail_sum, Finset.mul_sum]
+  unfold accumulatedFullChainEvidence
+  apply Finset.sum_le_sum
+  intro k hk
+  simpa [div_eq_mul_inv, Nat.add_assoc] using
+    fullChainBirth_charge_le_four_harmonicTerm (k + 1)
+
+/-- Finite polynomial-rate certificate: accumulated full-chain evidence is
+sandwiched between one and four shifted harmonic tails.  This proves a
+logarithmic charge scale but deliberately does not claim the sharp leading
+constant. -/
+theorem accumulatedFullChainEvidence_harmonic_sandwich (depth : ℕ) :
+    (harmonic (depth + 2) : ℝ) - (harmonic 2 : ℝ) ≤
+        accumulatedFullChainEvidence depth
+      ∧ accumulatedFullChainEvidence depth ≤
+        4 * ((harmonic (depth + 2) : ℝ) - (harmonic 2 : ℝ)) := by
+  exact ⟨accumulatedFullChainEvidence_ge_harmonicTail depth,
+    accumulatedFullChainEvidence_le_four_harmonicTail depth⟩
 
 theorem harmonic_cast_tendsto_atTop :
     Tendsto (fun n : ℕ => (harmonic n : ℝ)) atTop atTop := by
@@ -327,25 +421,6 @@ theorem summableEvidenceSource_lt_half (n : ℕ) :
     exact pow_lt_one₀ (by norm_num) (by norm_num) (by omega)
   nlinarith
 
-/-- On `0 ≤ r ≤ 1/2`, artanh is bounded above by `2r`. -/
-theorem chiralityEvidenceCharge_le_twice_bias
-    {r : ℝ} (hrNonneg : 0 ≤ r) (hrHalf : r ≤ 1 / 2) :
-    Real.artanh r ≤ 2 * r := by
-  have hrOne : r < 1 := lt_of_le_of_lt hrHalf (by norm_num)
-  have hUpper := Real.log_div_le_sum_range_add hrNonneg hrOne 0
-  simp only [Finset.range_zero, Finset.sum_empty, zero_add] at hUpper
-  have hUpper' :
-      1 / 2 * Real.log ((1 + r) / (1 - r)) ≤
-        r / (1 - r ^ 2) := by
-    norm_num at hUpper ⊢
-    exact hUpper
-  rw [Real.artanh_eq_half_log (by constructor <;> linarith)]
-  refine le_trans hUpper' ?_
-  have hDenPos : 0 < 1 - r ^ 2 := by nlinarith [sq_nonneg r]
-  rw [div_le_iff₀ hDenPos]
-  have hFactor : 0 ≤ 1 - 2 * r ^ 2 := by nlinarith [sq_nonneg r]
-  nlinarith [mul_nonneg hrNonneg hFactor]
-
 /-- Explicit counterregime: all sources are positive, but their evidence charge
 is summable.  Positivity/sign transport alone therefore cannot prove record
 decisiveness. -/
@@ -398,6 +473,7 @@ theorem chiralityEvidenceAsymptotics_firstVerdict :
 #print axioms accumulatedChiralityOdds_tendsto_atTop_iff
 #print axioms accumulatedChiralityProbability_tendsto_one
 #print axioms fullChainBirth_charge_ge_harmonicTerm
+#print axioms accumulatedFullChainEvidence_harmonic_sandwich
 #print axioms accumulatedFullChainEvidence_tendsto_atTop
 #print axioms fullChainCommonSectorProbability_tendsto_one
 #print axioms summable_chiralityEvidenceCharge_example

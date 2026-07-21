@@ -205,12 +205,23 @@ the signed record bias. Under the explicitly named common-sector transport
 contract, the additive evidence coordinate is
 `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`; this is binary log-odds addition,
 not Lorentz kinematics. The exact future-maximal chain source
-`y_n=n/((n+1)(n+2))` satisfies `q(y_n)>=1/(n+2)`, so its conditional record
-posterior tends to one by harmonic divergence. This does not promote the
+`y_n=n/((n+1)(n+2))` has accumulated charge between one and four shifted
+harmonic tails, so its conditional record posterior tends to one on a
+polynomial rather than exponential scale. The current theorem does not fix the
+sharp power; a `1/N` law is not derived. This does not promote the
 result to arbitrary or typical growth histories: a checked positive interior
 source has summable charge, and the quantum measure is nonadditive. A derived
 common-sector factorization and an appropriate typical charge-divergence
 theorem remain outside the finite selection core.
+
+There is also a prior probability gate. At the rank-two-to-rank-three source
+ensemble, the three charge values are distinct but neither nontrivial ordered
+threshold cut is decoherent; the empty/full source entry is exactly
+`-784/2113`. Any cylinder realization retains this obstruction under every
+projective refinement. Therefore even finite charge-concentration statements
+require the protected common-sector record factorization. The infinite
+charge-divergence alternative is additionally a tail event, and no extension
+of the present cylinder functional to that event is claimed.
 
 The first spectator/record candidate now fails two exact tripwires. Canonical
 three-record dephasing is CPTP and permutation-covariant, but a decoherence

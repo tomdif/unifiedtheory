@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The seventy-seven `provedFinite` entries assert only their mathematical scope.
+The seventy-eight `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -206,9 +206,11 @@ def claimLedger : List ClaimEntry := [
     scope := .conditionalBridge },
   { name := "common-sector chirality evidence is additive half-log-odds",
     scope := .conditionalBridge },
-  { name := "future-maximal chain births accumulate harmonically divergent evidence",
+  { name := "future-maximal chain evidence is sandwiched by shifted harmonic tails",
     scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
+    scope := .provedFinite },
+  { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
     scope := .provedFinite },
   { name := "chamber Poincare action is non-faithful",
     scope := .provedFinite },
@@ -230,8 +232,8 @@ def claimLedger : List ClaimEntry := [
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
     scope := .openTarget },
-  { name := "growth-derived protected record factorization, common-sector transport, \
-      and a quantum-measure typical charge-divergence theorem",
+  { name := "growth-derived protected record factorization, decoherent finite charge \
+      concentration, and an evaluable infinite charge-divergence event",
     scope := .openTarget }
 ]
 
@@ -240,8 +242,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 89
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 77
+    claimLedger.length = 90
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 78
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by

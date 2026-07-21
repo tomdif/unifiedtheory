@@ -783,14 +783,30 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   log-odds, and common-sector composition adds evidence charges. This is Bayes
   arithmetic, not a derivation of Lorentz kinematics. The odds become decisive
   exactly when the partial charge sums diverge. On the actual future-maximal
-  chain path, `y_n=n/((n+1)(n+2))` and `q(y_n)>=1/(n+2)`, so accumulated
-  evidence dominates a shifted harmonic series and the conditional posterior
-  tends to one. An explicit strictly positive geometric-decay source instead
+  chain path, `y_n=n/((n+1)(n+2))`; the first two values are both `1/6`, as in
+  the earlier two-chain and three-chain calculations. Accumulated evidence is
+  bounded between one and four shifted harmonic tails, so the charge scale is
+  logarithmic and the conditional posterior tends to one. This certifies
+  polynomial rather than exponential record sharpening, but not the sharp
+  power: in particular, `1/N` has not been derived. The leading expansion
+  suggests `q_n~2/n`, hence error of order `N^-4`, and remains to be
+  formalized. An explicit strictly positive geometric-decay source instead
   has summable charge. Therefore linkedness and sign transport alone do not
   imply decisive records, and the chain theorem is not a typical-history
   theorem for the nonadditive quantum growth law. A growth-derived common
   sector plus a quantum-measure-appropriate typical charge-divergence result
   remain open.
+  `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
+  probability statement is licensed before asking for typicality. Above the
+  two-antichain, the rank-two-to-rank-three charges are exactly
+  `0`, `artanh(1/4)`, and `artanh(2/5)`, hence distinct. Nevertheless the fine
+  charge-value partition is not decoherent, and both nontrivial ordered
+  threshold cuts have nonzero cross-decoherence because the empty/full entry
+  is `-784/2113`. Under an explicit local-to-cylinder realization, projective
+  consistency preserves either threshold obstruction at every later depth.
+  Thus even the finite-rank concentration route requires a protected record
+  factorization or another decohering construction. The infinite divergence
+  event remains a tail event beyond what this cylinder calculation evaluates.
   `KFCausalSetPostulateFootprint.lean` makes the architecture build-checked by
   traversing transitive declaration dependencies. Finite balanced/sign
   selection and abstract sign transport use neither the clock, exchangeable

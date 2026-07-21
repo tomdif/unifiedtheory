@@ -523,12 +523,24 @@
 > `q(y)=artanh(2y)=1/2 log((1/2+y)/(1/2-y))`; common-sector composition adds
 > `q`, so this is binary Bayesian evidence rather than emergent Lorentz
 > kinematics. For future-maximal chain growth,
-> `y_n=n/((n+1)(n+2))` and `q(y_n)>=1/(n+2)`, forcing harmonic divergence and
-> conditional posterior convergence to one. A checked positive geometric-
+> `y_n=n/((n+1)(n+2))`; its first two values are both `1/6`. Accumulated charge
+> lies between one and four shifted harmonic tails, forcing logarithmic growth
+> and conditional posterior convergence to one. This proves a polynomial,
+> rather than exponential, confidence scale but not a sharp power; `1/N` is
+> not a checked consequence (the leading expansion instead suggests `N^-4`).
+> A checked positive geometric-
 > decay source has summable charge, however. Positivity and a transported sign
 > therefore do not prove decisiveness for arbitrary paths, much less a
 > quantum-measure typical-history statement. Deriving the common-sector
 > factorization and the appropriate typical divergence theorem remains open.
+> `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
+> license at the first nontrivial rank and returns a no-go. The three charges
+> above the two-antichain are distinct, yet both ordered threshold cuts have
+> nonzero cross-decoherence; the exact empty/full entry is `-784/2113`.
+> Projective continuation preserves the obstruction for every cylinder
+> realization. Finite charge concentration therefore already needs the
+> protected record factorization, while the infinite divergence tail event is
+> not evaluated by the cylinder functional supplied here.
 > `KFCausalSetPostulateFootprint.lean` certifies the
 > transitive dependency partition at build time: finite selection and abstract
 > transport avoid clock, exchangeability, and volume bridges; the concrete
