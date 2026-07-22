@@ -263,9 +263,15 @@ The projective implication is also now formal and separate from the physical
 assignment. Atomic vector amplitudes satisfying the fiber-sum law with
 bijective coordinate transport induce Hermitian, normalized, strongly positive
 event kernels whose coarse entries equal their refined preimage entries
-exactly. This theorem assumes no particular causal weighting rule. The open
-physics is precisely the construction of the amplitude itself—its scalar
-history weight and its marked-sheet direction—from unlabeled causal births.
+exactly. General coarse amplitudes need not remain on a canonical sheet ray.
+`KFCubicSheetFrameRigidity.lean` proves instead that the unlabeled canonical
+object is mixed: the normalized vertex projectors average to `I/2` and rescale
+to a positive three-outcome POVM. Every fully `S_3`-symmetric linear carrier
+evolution is scalar, and a fixed-point-free monodromy loop obstructs a global
+deterministic sheet choice. These theorems assume no causal weighting rule. The
+open physics is precisely a nontrivial equivariant transfer operator between
+successive carriers; neither a marked ray nor such an operator is currently
+derived from unlabeled causal births.
 
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered

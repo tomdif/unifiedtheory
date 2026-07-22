@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The eighty-four `provedFinite` entries assert only their mathematical scope.
+The eighty-seven `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -223,6 +223,13 @@ def claimLedger : List ClaimEntry := [
   { name := "transported projective vector amplitudes induce consistent positive \
       event kernels",
     scope := .provedFinite },
+  { name := "three-sheet simplex projectors form a positive POVM and average to \
+      the maximally mixed half-identity",
+    scope := .provedFinite },
+  { name := "every fully sheet-symmetric standard-carrier endomorphism is scalar",
+    scope := .provedFinite },
+  { name := "fixed-point-free sheet monodromy obstructs a transported global marking",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -257,8 +264,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 96
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 84
+    claimLedger.length = 99
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 87
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by

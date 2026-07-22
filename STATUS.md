@@ -574,8 +574,16 @@
 > invariant under every sheet permutation is zero. A separate theorem proves
 > that projectively consistent vector amplitudes with such coordinate transport
 > induce Hermitian, normalized, strongly positive, exactly projective event
-> kernels. What remains open is not the carrier or projective implication, but
-> the causal-growth law selecting the scalar weight and sheet direction.
+> kernels. Coarse amplitudes may be arbitrary carrier superpositions rather
+> than single-sheet rays. `KFCubicSheetFrameRigidity.lean` proves that the raw
+> vertices resolve the identity, the normalized vertices average to the
+> positive maximally mixed state `I/2`, and their rescaled rank-one operators
+> form a positive three-outcome POVM. Direct `S_3` commutant rigidity makes
+> `I/2` the unique fully symmetric unit-frame-trace operator. A
+> fixed-point-free monodromy loop also obstructs every transported global
+> deterministic sheet marking. What remains open is not the carrier,
+> projective implication, state, or measurement, but a nontrivial equivariant
+> causal transfer law `K_e : W(S_h) -> W(S_h')`.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -729,6 +737,6 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 ## Lean Codebase
 
 886 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,640 jobs successful
+core mathematical content. Latest full root build: 8,648 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

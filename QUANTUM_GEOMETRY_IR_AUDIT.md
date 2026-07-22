@@ -34,7 +34,8 @@
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceExtrema.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityFactorizationNoGo.lean` and
 `UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean` and
-`UnifiedTheory/Audit/KFCubicSheetIntrinsicCarrier.lean`
+`UnifiedTheory/Audit/KFCubicSheetIntrinsicCarrier.lean` and
+`UnifiedTheory/Audit/KFCubicSheetFrameRigidity.lean`
 
 ## Outcome
 
@@ -68,7 +69,8 @@ from being silently promoted to a stronger physical scope.
 | Rankwise chirality evidence extrema | At parent rank `n`, gregarious source is `0`, the exact linked minimum is `1/(n(n+1)+4)`, and the star maximum is `n/(2(2n+1))`; full-chain timid source is strictly interior for `n>=2` | Proved finite combinatorics; the exponent `4` is two arithmetic factors of `2`, not dimension; rankwise extremizers are not claimed to form a compatible trajectory |
 | Common-sector factorization gate | Every scalar finite-depth growth kernel obeys `D(A,A)D(B,B)=D(A,B)D(B,A)`; two nonzero cells therefore cannot be exactly decoherent, and their interference persists under projective refinement | Universal no-go over arbitrary rank-dependent branch types; a conserved label does not help while amplitudes remain scalar; latent rank two is the sharp minimal exit, but no vector/operator-valued sequential law is yet constructed |
 | Marked-sheet rank-two carrier | Three marked cubic sheets split into the invariant uniform line and a zero-sum plane explicitly equivalent to `C^2`; sheet permutations preserve its Gram form, and the exact strongly positive witness `diag(2,6)` has determinant `12` | Proved finite algebraic exit from the scalar no-go; no causal-birth-to-cubic/marked-root map, resultant-one dynamics, or concrete projective causal growth law is claimed |
-| Intrinsic sheet simplex and vector projectivity | For every abstract three-sheet type, `v_s=delta_s-1/3` spans the exact complex rank-two zero-sum carrier; normalized Gram entries are `1` and `-1/2`, all sheet bijections are Gram isometries, and no nonzero vector is permutation-fixed. Atomic fiber-sum consistency with coordinate transport implies Hermitian, normalized, strongly positive, exactly projective event kernels | Proved finite representation and abstract projective theorem; it supplies no causal rule selecting a scalar weight or marked sheet for a history |
+| Intrinsic sheet simplex and vector projectivity | For every abstract three-sheet type, `v_s=delta_s-1/3` spans the exact complex rank-two zero-sum carrier; normalized Gram entries are `1` and `-1/2`, all sheet bijections are Gram isometries, and no nonzero vector is permutation-fixed. Atomic fiber-sum consistency with coordinate transport implies Hermitian, normalized, strongly positive, exactly projective event kernels | Proved finite representation and abstract projective theorem; it supplies no causal rule generating a general carrier amplitude for a history |
+| Sheet frame, invariant state, and monodromy | Raw vertices resolve `I`; normalized projectors average to the positive `I/2` and rescale to a positive three-outcome POVM. Every fully `S_3`-symmetric carrier endomorphism is scalar, so `I/2` is the unique unit-frame-trace invariant operator. A fixed-point-free loop monodromy forbids a transported deterministic global marking | Proved finite operator and abstract obstruction theorems; no nontrivial causal transfer operator or actual monodromy from sequential growth is supplied |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |
@@ -885,9 +887,24 @@ atomic fiber-sum equation with transported coordinates implies the identical
 equation for event amplitudes. The induced event kernels are Hermitian,
 strongly positive, normalized exactly when the total vector has unit Gram norm,
 and exactly invariant under exhaustive refinement. Finite biadditivity is the
-existing event-sum law. No theorem in this construction selects the scalar
-history weight or the marked sheet from causal data; that is now the isolated
-microscopic frontier.
+existing event-sum law. No theorem in this construction selects a scalar
+history weight or a carrier direction from causal data; general coarse
+amplitudes are allowed to be superpositions rather than vertex rays.
+
+`KFCubicSheetFrameRigidity.lean` identifies the canonical operator data that do
+not require such a choice. The raw vertices form a Parseval frame, normalized
+vertex projectors sum to `(3/2)I`, their uniform mixture is the positive
+maximally mixed state `I/2`, and their `2/3` rescalings are positive POVM
+effects resolving the identity. A direct coordinate proof of the standard
+`S_3` commutant theorem shows that every fully sheet-symmetric linear
+endomorphism is scalar. Consequently `I/2` is the unique invariant operator
+with unit intrinsic frame trace; full sheet symmetry alone cannot generate
+internal directional dynamics. Separately, a transported global deterministic
+marking forces every loop monodromy to fix its selected sheet, so one
+fixed-point-free loop is an exact obstruction. These results sharpen the
+microscopic frontier to an equivariant causal transfer law between carriers.
+They neither construct that law nor prove that causal growth carries a
+nontrivial sheet local system.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

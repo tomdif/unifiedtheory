@@ -846,8 +846,21 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   formally equivariance rather than invariance of a coordinate vector.
   Independently, transported projective vector amplitudes are proved to induce
   Hermitian, normalized, strongly positive event kernels with exact
-  coarse/fine consistency. The sole physical gap is now the causal rule that
-  supplies a scalar weight and marked-sheet direction to each history.
+  coarse/fine consistency. General coarse-grained amplitudes live anywhere in
+  the carrier; they are not assumed to remain on a single marked-sheet ray.
+  `KFCubicSheetFrameRigidity.lean` then proves the canonical operator layer.
+  The unnormalized vertices resolve the carrier identity, the normalized
+  projectors average to `I/2`, and their `2/3` rescalings are positive effects
+  summing to the identity. Thus a completely unlabeled three-sheet event has a
+  canonical maximally mixed state and a canonical symmetric three-outcome
+  measurement, although it has no canonical nonzero pure vector. A direct
+  commutant calculation proves every linear carrier operator commuting with all
+  sheet permutations is scalar, so `I/2` is the unique invariant unit-frame-
+  trace operator. Finally, one fixed-point-free loop monodromy forbids every
+  transported deterministic global sheet choice. The physical gap is therefore
+  a causal transfer law `K_e : W(S_h) -> W(S_h')` (or equivalent mixed-state
+  evolution) that is equivariant but obtains nontrivial direction from causal
+  data; the repository does not yet derive such a law.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

@@ -5258,6 +5258,14 @@ import UnifiedTheory.Audit.KFCubicMarkedSheetRankTwo
 -- normalized, strongly positive, exactly projective event kernels.  The
 -- causal law selecting the scalar weight and marked sheet remains open.
 import UnifiedTheory.Audit.KFCubicSheetIntrinsicCarrier
+-- The intrinsic simplex also fixes the canonical operator data.  The raw
+-- vertices form a Parseval frame; their normalized projectors average to I/2
+-- and rescale to a positive three-outcome POVM.  Direct S3 commutant rigidity
+-- proves that I/2 is the unique fully symmetric unit-trace carrier operator.
+-- A fixed-point-free sheet-monodromy loop obstructs every transported global
+-- deterministic sheet choice.  These theorems constrain, but do not construct,
+-- the still-open causal transfer law K_e between sheet carriers.
+import UnifiedTheory.Audit.KFCubicSheetFrameRigidity
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
