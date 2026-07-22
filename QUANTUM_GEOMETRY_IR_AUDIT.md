@@ -32,7 +32,8 @@
 `UnifiedTheory/Audit/KFCausalSetChiralityChargePartitionNoGo.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceSharpRate.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceExtrema.lean` and
-`UnifiedTheory/Audit/KFCausalSetChiralityFactorizationNoGo.lean`
+`UnifiedTheory/Audit/KFCausalSetChiralityFactorizationNoGo.lean` and
+`UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean`
 
 ## Outcome
 
@@ -65,6 +66,7 @@ from being silently promoted to a stronger physical scope.
 | Chirality evidence asymptotics | `artanh(2y)` is half log-odds and additive under common-sector composition; on the future-maximal chain, evidence/log tends to `2`, log-odds/log to `4`, and log posterior-error/log to `-4`; a positive summable counterregime is explicit | Exact sharp `N^(-4+o(1))` conditional chain rate; Bayes arithmetic, not Lorentz kinematics; no typical-history or tail-event claim, and physical use remains conditional on the higher-rank factorization |
 | Rankwise chirality evidence extrema | At parent rank `n`, gregarious source is `0`, the exact linked minimum is `1/(n(n+1)+4)`, and the star maximum is `n/(2(2n+1))`; full-chain timid source is strictly interior for `n>=2` | Proved finite combinatorics; the exponent `4` is two arithmetic factors of `2`, not dimension; rankwise extremizers are not claimed to form a compatible trajectory |
 | Common-sector factorization gate | Every scalar finite-depth growth kernel obeys `D(A,A)D(B,B)=D(A,B)D(B,A)`; two nonzero cells therefore cannot be exactly decoherent, and their interference persists under projective refinement | Universal no-go over arbitrary rank-dependent branch types; a conserved label does not help while amplitudes remain scalar; latent rank two is the sharp minimal exit, but no vector/operator-valued sequential law is yet constructed |
+| Marked-sheet rank-two carrier | Three marked cubic sheets split into the invariant uniform line and a zero-sum plane explicitly equivalent to `C^2`; sheet permutations preserve its Gram form, and the exact strongly positive witness `diag(2,6)` has determinant `12` | Proved finite algebraic exit from the scalar no-go; no causal-birth-to-cubic/marked-root map, resultant-one dynamics, or projectively consistent vector-valued growth law is claimed |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |
@@ -852,6 +854,18 @@ amplitude outer product. Latent rank two is therefore sufficient throughout
 the interval and necessary in its interior. Moreover, reflection fixes only
 `D_0`, so an endpoint sign cannot be chosen by a reflection-even microscopic
 law; a reflection-odd chirality datum or spontaneous sector choice is required.
+
+`KFCubicMarkedSheetRankTwo.lean` supplies a separate concrete realization of
+the minimal carrier identified by that theorem. For a three-sheet marked-root
+state, averaging and centering give an exact direct decomposition into the
+uniform line and the zero-sum standard plane. Lean constructs an explicit
+equivalence of that plane with `C^2`, proves permutation covariance and Gram
+isometry, and proves strong positivity for every history amplitude valued in
+the carrier. The binary witness has kernel `diag(2,6)` and determinant `12`, so
+it realizes two nonzero exactly decoherent cells and is formally excluded from
+the scalar-amplitude class. This is a finite representation-theoretic bridge,
+not a derived causal dynamics: the repository still lacks a covariant map from
+unlabeled births to cubic/marked-root data and its projective transport law.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

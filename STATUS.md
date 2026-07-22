@@ -558,6 +558,14 @@
 > sufficient for the balanced kernel and necessary in its strict interior.
 > The surviving construction frontier is therefore a projectively consistent
 > vector/operator-valued growth law with an orthogonal transported sector.
+> `KFCubicMarkedSheetRankTwo.lean` now constructs one concrete finite carrier
+> of exactly that minimal rank. Three marked cubic sheets decompose into the
+> invariant uniform line plus a canonical zero-sum plane equivalent to
+> `C^2`; sheet permutations act isometrically, and its Gram construction is
+> strongly positive. The exact witness `diag(2,6)` has determinant `12`, hence
+> two nonzero decoherent cells and no scalar-amplitude representation. This is
+> an algebraic higher-rank exit, not yet a causal-growth derivation of cubic
+> roots, a resultant-one slice, or projective vector-valued dynamics.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

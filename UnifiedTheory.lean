@@ -5240,6 +5240,14 @@ import UnifiedTheory.Audit.KFCausalSetChiralityEvidenceExtrema
 -- two is the sharp minimal exit, leaving vector/operator-valued sequential
 -- growth as the correctly isolated microscopic frontier.
 import UnifiedTheory.Audit.KFCausalSetChiralityFactorizationNoGo
+-- A concrete finite higher-rank exit is now available independently of any
+-- microscopic growth assignment.  Three marked cubic sheets split exactly
+-- into the forgotten uniform line and a permutation-isometric zero-sum plane,
+-- explicitly equivalent to C^2.  Gram amplitudes in that plane are strongly
+-- positive, and an exact diag(2,6) witness has two nonzero decoherent cells and
+-- nonzero determinant, so it cannot be a scalar history-amplitude kernel.
+-- Causal growth has not yet been proved to supply the cubic/marked-root data.
+import UnifiedTheory.Audit.KFCubicMarkedSheetRankTwo
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

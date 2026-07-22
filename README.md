@@ -824,6 +824,17 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   and rank one impossible. Thus the next microscopic object must be a
   vector/operator-valued growth amplitude or equivalent orthogonal record
   algebra; another scalar transition ansatz cannot work.
+  `KFCubicMarkedSheetRankTwo.lean` supplies a concrete finite algebraic exit.
+  A three-sheet marked-root state splits exactly into its uniform amplitude and
+  a zero-sum sheet defect; that defect is explicitly equivalent to two complex
+  coordinates and every permutation of the three sheets preserves its Gram
+  form. History amplitudes in this carrier therefore give strongly positive
+  kernels. An exact two-history example is `diag(2,6)`, with two nonzero
+  decoherent cells and determinant `12`, so no scalar amplitude can represent
+  it. This proves that marked cubic sheets carry precisely the latent rank
+  needed by the no-go, but it does not derive a cubic, marked root, or
+  resultant normalization from causal growth; the projectively consistent
+  microscopic assignment remains open.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

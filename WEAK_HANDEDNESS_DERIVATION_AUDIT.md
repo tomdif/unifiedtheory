@@ -236,6 +236,19 @@ exit. A vector/operator-valued sequential law or equivalent orthogonal record
 algebra remains an explicit new microscopic requirement, not a hidden
 consequence of the scalar chiral law.
 
+There is now a concrete finite model for the required higher-rank carrier.
+`KFCubicMarkedSheetRankTwo.lean` decomposes a three-component marked-sheet
+amplitude into its uniform line and zero-sum plane, proves the latter is
+equivalent to two complex coordinates, and proves that all sheet permutations
+preserve its Hermitian Gram form. Its exact binary kernel is `diag(2,6)`, so it
+is strongly positive, exactly decoherent on two nonzero cells, and has
+determinant `12`; the scalar factorization theorem therefore excludes any
+scalar representation. This closes the finite algebraic sufficiency question
+with a geometrically recognizable carrier. It does not close the microscopic
+physics question: no theorem yet assigns a cubic, a marked root, or its
+zero-sum sheet amplitude to each unlabeled causal birth, nor transports that
+assignment projectively.
+
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
 threshold cut is decoherent; the empty/full source entry is exactly
