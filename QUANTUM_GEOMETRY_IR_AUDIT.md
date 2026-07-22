@@ -42,7 +42,8 @@
 `UnifiedTheory/Audit/KFCausalSheetConnectionLaplacian.lean` and
 `UnifiedTheory/Audit/KFCausalSheetHolonomyWitness.lean`
 and `UnifiedTheory/Audit/KFCausalCSpecSheetRealization.lean` and
-`UnifiedTheory/Audit/KFCausalCSpecAtlasCocycleNoGo.lean`
+`UnifiedTheory/Audit/KFCausalCSpecAtlasCocycleNoGo.lean` and
+`UnifiedTheory/Audit/KFCausalCSpecGlobalAtlas.lean`
 
 ## Outcome
 
@@ -996,12 +997,6 @@ principal-point map is not injective, so a faithful path-comparison geometry
 must use a future-distinguishing larger causet, non-principal spectrum data,
 or an explicit connection/atlas layer.
 
-The exact remaining boundary is global generation of the atlas. Current
-native `CSpec` is a subtype of causally-prime upsets and does not itself supply
-a chart-transition graph. The four-state overlap graph and its cocycle remain
-explicit atlas data; no theorem yet extracts them from one independently
-generated global `CSpec`.
-
 `KFCausalCSpecAtlasCocycleNoGo.lean` now fixes the topology required of that
 global object. It proves that the principal CSpec-point map is injective
 exactly for future-distinguishing causal orders and defines the direction
@@ -1016,6 +1011,24 @@ transpositions, neither can be filled by a regular triple overlap. Any global
 realization must therefore produce unfilled cycles in the atlas nerve or
 groupoid completion, naturally interpreted as loops around the excluded CSpec
 defect locus.
+
+`KFCausalCSpecGlobalAtlas.lean` now closes finite global existence. It builds
+one 140-event finite causal scheme with four exact Boolean chart cores and 60
+future-distinct regular direction/overlap events. Their principal native
+`CSpec` points are injective. Every chart pair shares continuation points,
+while every three distinct charts have empty common regular intersection.
+Common-continuation incidence—equivalently, membership of the same event in
+two principal prime future sets—recovers a unique direction equivalence. The
+two unfilled cycles recover the adjacent transpositions and their six words
+exhaust `S3`.
+
+The exact remaining boundary is now **dynamical generation**, not finite
+existence. The global order was deliberately constructed to encode the needed
+continuation incidence; no independently specified sequential-growth law is
+proved to generate or select it. Current native `CSpec` is also a subtype of
+causally-prime upsets without a topology/open-cover API, so the certified
+finite chart nerve is a family of subsets and intersections rather than a
+topological open cover.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

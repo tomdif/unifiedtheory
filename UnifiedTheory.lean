@@ -5308,6 +5308,15 @@ import UnifiedTheory.Audit.KFCausalCSpecSheetRealization
 -- under future distinguishability and defines the corresponding direction-
 -- collision defect locus.
 import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
+-- One global finite causal scheme now realizes the unfilled atlas rather than
+-- merely receiving four unrelated local charts.  Its 60 regular principal
+-- CSpec points are future-distinct; every chart pair overlaps, every distinct
+-- triple intersection is empty, and common-continuation membership in native
+-- prime futures uniquely recovers the direction transport.  Two unfilled
+-- cycles generate full S3.  The stronger physical question—why sequential
+-- growth dynamically produces this deliberately constructed order—remains
+-- open, as does a topological-open formulation absent from upstream CSpec.
+import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

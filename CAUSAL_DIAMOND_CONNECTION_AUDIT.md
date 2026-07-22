@@ -169,6 +169,45 @@ proved to avoid it. Thus a global realization must be future-distinguishing on
 its regular direction fibers and must have an unfilled nerve cycle around the
 excluded defect locus.
 
+## One global finite CSpec atlas
+
+`UnifiedTheory/Audit/KFCausalCSpecGlobalAtlas.lean` constructs the required
+finite existence witness inside one causal object. Its event type contains:
+
+- four exact Boolean tangent-cube chart cores;
+- pairwise causal continuation records joining endpoint directions;
+- private future continuations that distinguish regular events but add no
+  overlap matching.
+
+The resulting 140-event relation is proved reflexive, antisymmetric, and
+transitive, and is passed to the pinned native `fromFinitePoset` and
+`causalScheme_of_poset` constructors. The 60 regular direction/overlap events
+have pairwise-distinct strict-future signatures, so their principal CSpec
+points are injective.
+
+Each chart subset consists of its three direction points and its incident
+overlap points. Lean proves:
+
+    every pair of charts has a shared regular CSpec point;
+    every three distinct charts have empty common regular intersection.
+
+Thus the two witnessed triangles are literal unfilled cycles in the finite
+regular CSpec nerve, not boundaries of hidden filled triple overlaps.
+
+Direction matching is then recovered twice. First, two atoms match when they
+lie below one common causal continuation record. Second, the equivalent native
+CSpec statement says that the continuation event belongs to both atoms'
+causally-prime strict-future sets. The unique recovered equivalence is proved
+equal to the witnessed chart transport. Consequently the two unfilled loops
+recover `(0 1)` and `(1 2)`, and six words in those loops exhaust `S3`.
+
+This closes **finite global existence**. It does not close natural or physical
+generation. The global causal order was deliberately constructed with the
+continuation incidence needed for the witness; no existing sequential-growth
+law is proved to select this order. Moreover, the pinned native `CSpec` has no
+topological-space/open-cover API, so “chart” and “nerve” here mean finite
+subsets and their intersections, not topological opens.
+
 ## Novelty and claim boundary
 
 The individual ingredients in this package are mostly classical mathematics:
@@ -192,9 +231,10 @@ A suitable current publication description is:
 > positive, projectively consistent history carrier from intrinsic
 > three-direction Boolean causal geometry.
 
-New theorem-level geometry would begin with deriving the witnessed overlap
-cocycle from one global causal/CSpec object. New physics would additionally
-require a dynamically selected state and an observable consequence.
+The new theorem-level result is the explicit one-global-object existence
+witness. New physics would begin with deriving that witness, or a family like
+it, from an independently specified causal growth law and then connecting its
+spectral state to an observable consequence.
 
 ## Exact remaining boundaries
 
@@ -202,15 +242,13 @@ Three independent claims remain open:
 
 1. **Local existence:** actual regular causal/CSpec neighborhoods have exactly
    three stable diamond-direction classes and assemble into a local cover.
-2. **Global CSpec gluing:** one independently generated global CSpec derives
-   an unfilled chart nerve with two cycles carrying the adjacent
-   transpositions. The local causal schemes, CSpec atom points, their overlap
-   action, and the filled-triangle obstruction are now realized; the overlap
-   data are not yet intrinsic to one global CSpec.
+2. **Dynamical generation:** an independently specified physical
+   sequential-growth/CSpec law generates the constructed unfilled full-`S3`
+   atlas, rather than receiving its continuation incidence by construction.
 3. **State selection:** the concrete causal connection has a distinguished
    lowest eigenline, or else its lowest-eigenspace projector is connected to
    the projective branch-amplitude construction.
 
 The finite order geometry, transport functoriality, energy identity,
-full-holonomy witness, native local CSpec realization, and trivial-kernel
-consequence are proved. The three bullets above are not.
+full-holonomy witness, native local and global CSpec realizations, and
+trivial-kernel consequence are proved. The three bullets above are not.

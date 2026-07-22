@@ -919,9 +919,18 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   events, and a direction defect is exactly a strict-future collision. It also
   proves that every filled regular triple overlap has identity boundary
   holonomy, so both witnessed transposition triangles must be unfilled nerve
-  cycles or loops around a defect. The remaining claims are separately named:
-  general regular CSpec local three-direction existence, derivation of this
-  unfilled gluing from one global CSpec, and canonical
+  cycles or loops around a defect. `KFCausalCSpecGlobalAtlas.lean` now
+  constructs one global 140-event causal scheme with four Boolean chart cores
+  and 60 distinct regular principal `CSpec` points. Pairwise continuation
+  points exist, every distinct triple intersection is empty, and membership
+  of a shared continuation event in two native prime futures uniquely recovers
+  the chart transport. The two unfilled cycles yield `(0 1)` and `(1 2)`, and
+  their six words exhaust `S3`. This closes finite global existence, but the
+  order was deliberately constructed to carry the continuations; physical
+  sequential growth does not yet generate it, and the pinned native `CSpec`
+  has no topology/open-cover API. The remaining claims are separately named:
+  general regular CSpec local three-direction existence, dynamical generation
+  of this global witness, and canonical
   selection of the lowest eigenline or ground-space projector. The standalone
   representation-theory and connection-Laplacian
   ingredients are classical; the claim is the integrated, label-free,

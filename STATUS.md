@@ -636,9 +636,19 @@
 > has identity boundary holonomy. The two witnessed transposition triangles
 > therefore cannot be filled Cech 2-simplices; a global realization must have
 > unfilled nerve cycles or wind around an excluded defect.
-> It remains qualitative and atlas-relative: one global `CSpec` has not been
-> proved to generate the four-state gluing, no numerical gap is bounded, and
-> no simple lowest eigenline or canonical ground projector is selected.
+> `KFCausalCSpecGlobalAtlas.lean` closes finite global existence. One
+> 140-event causal scheme contains four exact Boolean chart cores and 60
+> pairwise-distinct regular principal `CSpec` points. Every chart pair shares
+> continuation records, every triple of distinct charts has empty regular
+> intersection, and common-continuation membership in the native prime future
+> sets uniquely recovers the direction transport. The two unfilled loops give
+> the adjacent transpositions and six explicit words exhaust `S3`. Thus one
+> global finite causal/CSpec object now realizes the full nontrivial atlas.
+> The construction is an existence witness whose causal order was designed to
+> encode those overlap continuations; it is not derived from the repository's
+> physical sequential-growth dynamics. The pinned native `CSpec` also has no
+> topology/open-cover API, no numerical gap is bounded, and no simple lowest
+> eigenline or canonical ground projector is selected.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -791,7 +801,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-901 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,665 jobs successful
+902 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,666 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
