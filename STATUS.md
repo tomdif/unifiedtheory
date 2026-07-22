@@ -608,6 +608,18 @@
 > unlabeled three-product charts on actual causal/CSpec states, plus spectral
 > selection of a nonzero twisted eigen-section; a globally labeled fixed grid
 > gives only gauge-trivial transport.
+> `KFCausalDiamondDirectionCover.lean` now reconstructs local directions
+> without coordinates: Hasse cover edges are quotiented by opposite sides of
+> commuting diamonds. On the Boolean tangent cube this quotient is exactly
+> three-element, order isomorphisms transport it functorially, and unequal
+> same-endpoint path transports obstruct any global labeling.
+> `KFCausalSheetConnectionLaplacian.lean` proves the exact reversible
+> connection-energy identity, identifies the Laplacian kernel with parallel
+> sections, and proves that full `S3` holonomy plus positive connectivity
+> makes the kernel trivial and every nonzero field's energy positive. This is
+> qualitative: no actual CSpec direction cover or nontrivial holonomy witness
+> is constructed, no numerical gap is bounded, and no simple lowest
+> eigenline is selected.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -760,7 +772,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-896 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,650 jobs successful
+898 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,652 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

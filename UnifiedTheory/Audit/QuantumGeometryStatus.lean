@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The ninety-three `provedFinite` entries assert only their mathematical scope.
+The ninety-eight `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -245,6 +245,18 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "regular three-product chart transitions instantiate the twisted sheet transfer",
     scope := .provedFinite },
+  { name := "opposite-diamond equivalence reconstructs exactly three Hasse directions \
+      on the Boolean tangent cube",
+    scope := .provedFinite },
+  { name := "order isomorphisms transport diamond directions functorially and nontrivial \
+      path comparison obstructs global labels",
+    scope := .provedFinite },
+  { name := "reversible sheet connection obeys the exact nonnegative Dirichlet-energy identity",
+    scope := .provedFinite },
+  { name := "the sheet connection-Laplacian kernel is exactly the parallel-section space",
+    scope := .provedFinite },
+  { name := "full S3 holonomy plus positive connectivity makes the sheet Laplacian kernel trivial",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -269,8 +281,15 @@ def claimLedger : List ClaimEntry := [
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
     scope := .openTarget },
-  { name := "causally derived locally unlabeled three-product atlas, nontrivial S3 gluing, \
-      selected twisted eigen-section, protected records, and an evaluable tail event",
+  { name := "actual regular causal or CSpec neighborhoods assemble an intrinsic locally \
+      three-sheeted diamond-direction cover",
+    scope := .openTarget },
+  { name := "an actual causal configuration has nontrivial S3 path-comparison holonomy",
+    scope := .openTarget },
+  { name := "the causal sheet connection selects a simple lowest eigenline or canonical \
+      ground-space projector compatible with projective amplitudes",
+    scope := .openTarget },
+  { name := "protected records and an evaluable infinite charge-divergence tail event",
     scope := .openTarget }
 ]
 
@@ -279,11 +298,11 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 105
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 93
+    claimLedger.length = 113
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 98
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
-    ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by
+    ∧ (claimLedger.filter (hasScope .openTarget)).length = 10 := by
   decide
 
 /-! ## 2. Constant families are not nontrivial density flows -/

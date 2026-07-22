@@ -888,6 +888,24 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   neighborhoods admit locally unlabeled three-product charts with functorial,
   potentially nontrivial overlaps. A globally labeled `(m)^3` grid has only a
   gauge-trivial sheet bundle. See `CAUSAL_PRODUCT3_SHEET_BRIDGE_AUDIT.md`.
+  `KFCausalDiamondDirectionCover.lean` replaces the exact-product assumption
+  by a coordinate-free construction: local directions are Hasse cover edges
+  modulo opposite sides of commuting diamonds. On the Boolean tangent cube,
+  the quotient is proved canonically equivalent to `Fin 3`; order
+  isomorphisms transport it with exact identity/composition laws. A global
+  direction labeling forces all same-endpoint path transports to agree, so a
+  nontrivial path comparison is a certified obstruction to trivial gluing.
+  `KFCausalSheetConnectionLaplacian.lean` then proves the reversible twisted
+  Markov energy identity, nonnegativity, and
+  `ker(Delta_W) = {parallel sections}`. Full `S3` holonomy plus positive
+  connectivity kills that kernel and makes every nonzero carrier field have
+  strictly positive energy. The remaining claims are separately named:
+  actual CSpec local three-direction existence, an actual nontrivial holonomy
+  witness, and canonical selection of the lowest eigenline or ground-space
+  projector. The standalone representation-theory and connection-Laplacian
+  ingredients are classical; the claim is the integrated, label-free,
+  machine-checked causal-history architecture, not a new law of nature or
+  priority for those ingredients. See `CAUSAL_DIAMOND_CONNECTION_AUDIT.md`.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

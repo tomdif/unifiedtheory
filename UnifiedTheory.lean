@@ -5280,6 +5280,15 @@ import UnifiedTheory.Audit.KFCubicTwistedTransfer
 -- chart transitions instantiate the twisted transfer interface.  Existence
 -- and nontrivial gluing of such charts on causal/CSpec states remains open.
 import UnifiedTheory.Audit.KFCausalProduct3SheetBridge
+-- Coordinate-free direction reconstruction and spectral consequence:
+-- Hasse cover edges modulo opposite sides of commuting diamonds recover
+-- exactly three classes on the Boolean tangent cube; order isomorphisms
+-- transport those classes functorially, and path-comparison holonomy
+-- obstructs global labels.  A reversible sheet connection then satisfies the
+-- exact Dirichlet-energy identity.  Its kernel is the parallel-section space,
+-- while full S3 holonomy plus positive connectivity makes that kernel trivial.
+import UnifiedTheory.Audit.KFCausalDiamondDirectionCover
+import UnifiedTheory.Audit.KFCausalSheetConnectionLaplacian
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
