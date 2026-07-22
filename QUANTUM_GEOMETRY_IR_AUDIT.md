@@ -35,7 +35,8 @@
 `UnifiedTheory/Audit/KFCausalSetChiralityFactorizationNoGo.lean` and
 `UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean` and
 `UnifiedTheory/Audit/KFCubicSheetIntrinsicCarrier.lean` and
-`UnifiedTheory/Audit/KFCubicSheetFrameRigidity.lean`
+`UnifiedTheory/Audit/KFCubicSheetFrameRigidity.lean` and
+`UnifiedTheory/Audit/KFCubicTwistedTransfer.lean`
 
 ## Outcome
 
@@ -71,6 +72,7 @@ from being silently promoted to a stronger physical scope.
 | Marked-sheet rank-two carrier | Three marked cubic sheets split into the invariant uniform line and a zero-sum plane explicitly equivalent to `C^2`; sheet permutations preserve its Gram form, and the exact strongly positive witness `diag(2,6)` has determinant `12` | Proved finite algebraic exit from the scalar no-go; no causal-birth-to-cubic/marked-root map, resultant-one dynamics, or concrete projective causal growth law is claimed |
 | Intrinsic sheet simplex and vector projectivity | For every abstract three-sheet type, `v_s=delta_s-1/3` spans the exact complex rank-two zero-sum carrier; normalized Gram entries are `1` and `-1/2`, all sheet bijections are Gram isometries, and no nonzero vector is permutation-fixed. Atomic fiber-sum consistency with coordinate transport implies Hermitian, normalized, strongly positive, exactly projective event kernels | Proved finite representation and abstract projective theorem; it supplies no causal rule generating a general carrier amplitude for a history |
 | Sheet frame, invariant state, and monodromy | Raw vertices resolve `I`; normalized projectors average to the positive `I/2` and rescale to a positive three-outcome POVM. Every fully `S_3`-symmetric carrier endomorphism is scalar, so `I/2` is the unique unit-frame-trace invariant operator. A fixed-point-free loop monodromy forbids a transported deterministic global marking | Proved finite operator and abstract obstruction theorems; no nontrivial causal transfer operator or actual monodromy from sequential growth is supplied |
+| Twisted sheet transfer interface | Complex edge weights plus child-to-parent sheet bijections define `T_W`. A nonzero eigen-section gives exact exhaustive carrier consistency at every finite depth; unit parent norm gives a normalized Hermitian strongly positive branch functional; fiber gauges preserve eigen-sections and Gram kernels | Proved abstract finite-depth interface; the causal cubic sheet functor, `S_3` edge monodromy, weights, and nonzero eigen-section are not constructed |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |
@@ -905,6 +907,25 @@ fixed-point-free loop is an exact obstruction. These results sharpen the
 microscopic frontier to an equivariant causal transfer law between carriers.
 They neither construct that law nor prove that causal growth carries a
 nontrivial sheet local system.
+
+`KFCubicTwistedTransfer.lean` closes the next implication without claiming the
+missing input. Given finite outgoing edges, complex weights, and a sheet
+bijection from every child fiber back to its parent, it defines the
+carrier-valued twisted transfer `T_W`. If `T_W psi=lambda psi` with nonzero
+`lambda`, then the amplitudes `lambda^-1 k_e U_e psi(child)` sum exactly to
+`psi(parent)`. Recursive exhaustive sums give the same equality at every
+finite depth. Unit carrier norm produces a normalized Hermitian strongly
+positive one-step branch functional. Arbitrary local sheet relabelings
+conjugate `T_W`, carry eigen-sections to eigen-sections with unchanged
+eigenvalue, and preserve each Gram entry.
+
+The companion `CAUSAL_CUBIC_TRANSFER_BRIDGE_AUDIT.md` checks the neighboring
+causal-algebraic sources rather than relying on their README summary. The
+current growth file proves an allowed-transition relation, the computable
+transfer file proves branching counts, and the holonomy file composes diagonal
+interval projectors. None currently supplies a cubic sheet fiber, `S_3` edge
+transport, complex weighted growth operator, or twisted eigen-section. Thus
+the abstract bridge is proved, while its causal instantiation remains open.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

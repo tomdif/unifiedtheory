@@ -5266,6 +5266,13 @@ import UnifiedTheory.Audit.KFCubicSheetIntrinsicCarrier
 -- deterministic sheet choice.  These theorems constrain, but do not construct,
 -- the still-open causal transfer law K_e between sheet carriers.
 import UnifiedTheory.Audit.KFCubicSheetFrameRigidity
+-- Abstract causal/sheet junction: complex edge weights and child-to-parent
+-- sheet bijections define a twisted transfer operator.  Any nonzero
+-- eigen-section yields the transported branch fiber-sum law at one and every
+-- finite exhaustive depth, normalized strongly positive branch kernels at
+-- unit-norm parents, and gauge-independent Gram data.  The causal three-sheet
+-- functor, S3 edge monodromy, weights, and eigen-section remain inputs.
+import UnifiedTheory.Audit.KFCubicTwistedTransfer
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

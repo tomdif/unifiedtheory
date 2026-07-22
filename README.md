@@ -861,6 +861,21 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   a causal transfer law `K_e : W(S_h) -> W(S_h')` (or equivalent mixed-state
   evolution) that is equivariant but obtains nontrivial direction from causal
   data; the repository does not yet derive such a law.
+  `KFCubicTwistedTransfer.lean` now closes the abstract interface for that law.
+  A finite edge system with complex weights and child-to-parent sheet
+  bijections defines a twisted carrier transfer operator. Every nonzero
+  eigen-section gives normalized branch amplitudes whose exhaustive sum is
+  exactly the parent section, at one step and at every finite iterated depth.
+  Unit-norm parent values induce normalized Hermitian strongly positive branch
+  functionals. Fiberwise sheet relabelings conjugate the operator, preserve the
+  eigenvalue equation, and leave all branch Gram entries unchanged. This is an
+  interface theorem, not a constructed causal law. A source audit in
+  `CAUSAL_CUBIC_TRANSFER_BRIDGE_AUDIT.md` finds that the neighboring
+  `causal-algebraic-geometry-lean` files currently provide an allowed growth
+  relation, branching counts, and diagonal interval-projector composition—not
+  yet normalized/complex growth weights, a cubic sheet functor, `S_3` edge
+  monodromy, or a twisted eigen-section. Those are now the exact instantiation
+  witnesses rather than implicit README assumptions.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

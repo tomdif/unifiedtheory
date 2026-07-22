@@ -273,6 +273,15 @@ open physics is precisely a nontrivial equivariant transfer operator between
 successive carriers; neither a marked ray nor such an operator is currently
 derived from unlabeled causal births.
 
+`KFCubicTwistedTransfer.lean` now proves the exact interface theorem for that
+operator. Complex edge weights and child-to-parent sheet bijections define a
+twisted transfer `T_W`; every nonzero eigen-section supplies exhaustive
+carrier-amplitude consistency at every finite depth and normalized strongly
+positive branch functionals at unit-norm parents. Local sheet relabelings
+conjugate the operator and preserve the branch Gram kernel. This does not yet
+feed a weak-handedness theorem: the causal cubic sheet functor, its `S_3` edge
+monodromy, and the nonzero eigen-section are unconstructed physical inputs.
+
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
 threshold cut is decoherent; the empty/full source entry is exactly

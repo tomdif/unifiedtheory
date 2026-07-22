@@ -584,6 +584,18 @@
 > deterministic sheet marking. What remains open is not the carrier,
 > projective implication, state, or measurement, but a nontrivial equivariant
 > causal transfer law `K_e : W(S_h) -> W(S_h')`.
+> `KFCubicTwistedTransfer.lean` formalizes that law as an interface. Complex
+> edge weights and child-to-parent sheet bijections define `T_W`; every
+> nonzero eigen-section of `T_W` obeys the transported branch-sum identity at
+> one and all finite exhaustive depths. A unit-norm parent then carries a
+> normalized Hermitian strongly positive branch functional. Local sheet
+> gauges conjugate `T_W`, preserve the eigen-section equation, and leave its
+> Gram kernel invariant. `CAUSAL_CUBIC_TRANSFER_BRIDGE_AUDIT.md` records the
+> source-level boundary: the neighboring causal-algebraic repo currently has
+> an allowed-transition relation, branching counts, and diagonal interval
+> projectors, but no derived cubic sheet functor, `S_3` edge transport, complex
+> transfer eigenpair, or theorem identifying its spectral state with this
+> growth operator.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -736,7 +748,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-886 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,648 jobs successful
+895 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,649 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
