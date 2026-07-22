@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The ninety `provedFinite` entries assert only their mathematical scope.
+The ninety-three `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -237,6 +237,14 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "unit twisted eigen-sections induce normalized strongly positive branch functionals",
     scope := .provedFinite },
+  { name := "elementary three-cube atoms are three primitive directions and its order \
+      automorphism law is exactly S3",
+    scope := .provedFinite },
+  { name := "centered binary directional incidence gives the equivariant vertex, \
+      negative missing vertex, or zero",
+    scope := .provedFinite },
+  { name := "regular three-product chart transitions instantiate the twisted sheet transfer",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -261,8 +269,8 @@ def claimLedger : List ClaimEntry := [
   { name := "higher-rank curvature dynamics extends the reflection-odd volume residual, \
       with subexponential stability, complement symmetry, and chirality source",
     scope := .openTarget },
-  { name := "causally derived cubic sheet functor, S3 edge monodromy, nonzero twisted \
-      eigen-section, protected records, and an evaluable infinite charge-divergence event",
+  { name := "causally derived locally unlabeled three-product atlas, nontrivial S3 gluing, \
+      selected twisted eigen-section, protected records, and an evaluable tail event",
     scope := .openTarget }
 ]
 
@@ -271,8 +279,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 102
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 90
+    claimLedger.length = 105
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 93
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 7 := by

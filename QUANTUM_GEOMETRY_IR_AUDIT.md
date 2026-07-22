@@ -36,7 +36,8 @@
 `UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean` and
 `UnifiedTheory/Audit/KFCubicSheetIntrinsicCarrier.lean` and
 `UnifiedTheory/Audit/KFCubicSheetFrameRigidity.lean` and
-`UnifiedTheory/Audit/KFCubicTwistedTransfer.lean`
+`UnifiedTheory/Audit/KFCubicTwistedTransfer.lean` and
+`UnifiedTheory/Audit/KFCausalProduct3SheetBridge.lean`
 
 ## Outcome
 
@@ -73,6 +74,7 @@ from being silently promoted to a stronger physical scope.
 | Intrinsic sheet simplex and vector projectivity | For every abstract three-sheet type, `v_s=delta_s-1/3` spans the exact complex rank-two zero-sum carrier; normalized Gram entries are `1` and `-1/2`, all sheet bijections are Gram isometries, and no nonzero vector is permutation-fixed. Atomic fiber-sum consistency with coordinate transport implies Hermitian, normalized, strongly positive, exactly projective event kernels | Proved finite representation and abstract projective theorem; it supplies no causal rule generating a general carrier amplitude for a history |
 | Sheet frame, invariant state, and monodromy | Raw vertices resolve `I`; normalized projectors average to the positive `I/2` and rescale to a positive three-outcome POVM. Every fully `S_3`-symmetric carrier endomorphism is scalar, so `I/2` is the unique unit-frame-trace invariant operator. A fixed-point-free loop monodromy forbids a transported deterministic global marking | Proved finite operator and abstract obstruction theorems; no nontrivial causal transfer operator or actual monodromy from sequential growth is supplied |
 | Twisted sheet transfer interface | Complex edge weights plus child-to-parent sheet bijections define `T_W`. A nonzero eigen-section gives exact exhaustive carrier consistency at every finite depth; unit parent norm gives a normalized Hermitian strongly positive branch functional; fiber gauges preserve eigen-sections and Gram kernels | Proved abstract finite-depth interface; the causal cubic sheet functor, `S_3` edge monodromy, weights, and nonzero eigen-section are not constructed |
+| Regular three-product sheet bridge | The order atoms of the elementary Boolean tangent cube are exactly three primitive directions and `Aut_ord({0,1}^3)` is exactly `S_3`, compatibly with composition. Centered directional incidence is an equivariant carrier current with exact one/two/isotropic truth table and norm | Proved finite local geometry and chart-to-transfer instantiation; existence and nontrivial gluing of such unlabeled charts on causal/CSpec states and selection of a nonzero twisted eigen-section remain open |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |
@@ -926,6 +928,21 @@ transfer file proves branching counts, and the holonomy file composes diagonal
 interval projectors. None currently supplies a cubic sheet fiber, `S_3` edge
 transport, complex weighted growth operator, or twisted eigen-section. Thus
 the abstract bridge is proved, while its causal instantiation remains open.
+
+`KFCausalProduct3SheetBridge.lean` then closes the finite local-product portion
+of that instantiation. It defines sheets intrinsically as order atoms of the
+elementary Boolean tangent cube and proves those atoms are canonically `Fin 3`.
+Restriction of cube order automorphisms to atoms and extension of direction
+permutations by direct image are inverse, and restriction preserves
+composition. Thus the automorphism law is exactly `S3`. The same module proves
+that trace-free directional incidence is the canonical birth current: one
+active direction is `v_s`, two are `-v_missing`, and the zero/all cases vanish.
+Regular chart transitions now instantiate the twisted-transfer interface.
+
+The scope boundary has consequently moved but not disappeared. No theorem yet
+constructs an unlabeled regular three-product atlas from a causal set or CSpec
+neighborhood. A global factor labeling would trivialize the local system, so
+nontrivial holonomy additionally requires nontrivially glued local charts.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

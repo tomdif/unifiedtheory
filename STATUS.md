@@ -596,6 +596,18 @@
 > projectors, but no derived cubic sheet functor, `S_3` edge transport, complex
 > transfer eigenpair, or theorem identifying its spectral state with this
 > growth operator.
+> `KFCausalProduct3SheetBridge.lean` now supplies the exact finite candidate
+> for the sheet functor. The order atoms of the elementary Boolean tangent
+> cube are canonically three primitive directions, and restriction to atoms
+> classifies every cube order automorphism uniquely as an `S3` permutation,
+> compatibly with composition. The trace-free projection of directional birth
+> incidence is equivariant and gives `v_s` for one active direction,
+> `-v_missing` for two, and zero for isotropic zero/three-direction births.
+> These chart automorphisms instantiate the twisted-transfer interface. The
+> remaining bridge is now the existence and nontrivial gluing of locally
+> unlabeled three-product charts on actual causal/CSpec states, plus spectral
+> selection of a nonzero twisted eigen-section; a globally labeled fixed grid
+> gives only gauge-trivial transport.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -748,7 +760,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-895 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,649 jobs successful
+896 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,650 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

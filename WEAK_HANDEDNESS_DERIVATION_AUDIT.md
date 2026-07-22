@@ -282,6 +282,16 @@ conjugate the operator and preserve the branch Gram kernel. This does not yet
 feed a weak-handedness theorem: the causal cubic sheet functor, its `S_3` edge
 monodromy, and the nonzero eigen-section are unconstructed physical inputs.
 
+`KFCausalProduct3SheetBridge.lean` now removes the arbitrary finite-sheet part
+of that boundary for a regular elementary local chart. Primitive directions
+are the order atoms of `{0,1}^3`; their order-automorphism law is exactly `S3`.
+Centered directional incidence supplies an equivariant carrier source with the
+canonical vertex/negative-missing-vertex truth table, and chart automorphisms
+instantiate the twisted transfer. This still does not derive weak handedness:
+actual causal/CSpec neighborhoods must first be proved to carry a nontrivially
+glued unlabeled three-product atlas, and the standard-sector eigen-section must
+be dynamically selected.
+
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
 threshold cut is decoherent; the empty/full source entry is exactly

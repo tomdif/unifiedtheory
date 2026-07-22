@@ -63,7 +63,17 @@ The new Lean capstone then supplies automatically:
 - gauge covariance of the eigen-section;
 - gauge independence of the decoherence kernel.
 
+`KFCausalProduct3SheetBridge.lean` now constructs a concrete finite candidate
+for the first two witnesses at the tangent-cube level. The order atoms of
+`Set (Fin 3)` are exactly three primitive directions, its full order
+automorphism law is exactly `S3`, and chart automorphisms induce the required
+sheet transports functorially. Centered directional incidence also supplies a
+canonical equivariant carrier source. See
+`CAUSAL_PRODUCT3_SHEET_BRIDGE_AUDIT.md`.
+
 The decisive unresolved physics is therefore not another Hilbert-space
-identity. It is a causal-geometric construction of the cubic sheet functor and
-its edge monodromy, followed by existence or selection of a nonzero twisted
-eigen-section.
+identity or the finite automorphism calculation. It is a causal-geometric
+theorem constructing these unlabeled regular three-product charts and their
+overlaps on actual causal/CSpec states, followed by existence or selection of
+a nonzero twisted eigen-section. A globally labeled fixed grid would only
+produce a trivial sheet bundle.

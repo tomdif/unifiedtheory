@@ -876,6 +876,18 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   yet normalized/complex growth weights, a cubic sheet functor, `S_3` edge
   monodromy, or a twisted eigen-section. Those are now the exact instantiation
   witnesses rather than implicit README assumptions.
+  `KFCausalProduct3SheetBridge.lean` derives the finite geometric candidate for
+  the sheet data. In the elementary tangent cube `Set (Fin 3)`, the intrinsic
+  order atoms are exactly three primitive directions and the full order
+  automorphism law is exactly `S3`, with composition preserved. Centering a
+  directional birth-incidence profile lands equivariantly in the zero-sum
+  carrier: one active direction gives `v_s`, two give `-v_missing`, and zero
+  or three give zero; the nonzero cases have squared norm `2/3`. Chart overlap
+  automorphisms therefore instantiate the abstract twisted-transfer law. The
+  honest remaining bridge is geometric: prove that actual regular causal/CSpec
+  neighborhoods admit locally unlabeled three-product charts with functorial,
+  potentially nontrivial overlaps. A globally labeled `(m)^3` grid has only a
+  gauge-trivial sheet bundle. See `CAUSAL_PRODUCT3_SHEET_BRIDGE_AUDIT.md`.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

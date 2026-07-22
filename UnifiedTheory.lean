@@ -5273,6 +5273,13 @@ import UnifiedTheory.Audit.KFCubicSheetFrameRigidity
 -- unit-norm parents, and gauge-independent Gram data.  The causal three-sheet
 -- functor, S3 edge monodromy, weights, and eigen-section remain inputs.
 import UnifiedTheory.Audit.KFCubicTwistedTransfer
+-- Regular local 3-product bridge at the elementary tangent-cube level:
+-- order atoms give exactly three intrinsic directions,
+-- Aut_ord({0,1}^3) is exactly S3 (including composition), centered binary
+-- birth incidence gives the canonical vertices/negative missing vertex, and
+-- chart transitions instantiate the twisted transfer interface.  Existence
+-- and nontrivial gluing of such charts on causal/CSpec states remains open.
+import UnifiedTheory.Audit.KFCausalProduct3SheetBridge
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
