@@ -5289,6 +5289,18 @@ import UnifiedTheory.Audit.KFCausalProduct3SheetBridge
 -- while full S3 holonomy plus positive connectivity makes that kernel trivial.
 import UnifiedTheory.Audit.KFCausalDiamondDirectionCover
 import UnifiedTheory.Audit.KFCausalSheetConnectionLaplacian
+-- A four-state regular Boolean-chart connection realizes two adjacent
+-- transposition loops, exhausts all six S3 holonomies, and therefore has an
+-- unconditionally trivial twisted Laplacian kernel.  The next import realizes
+-- its Boolean charts and overlap action in the native causal/CSpec API.
+import UnifiedTheory.Audit.KFCausalSheetHolonomyWitness
+-- Native causal/CSpec promotion of the finite sheet atlas: the Boolean cube
+-- generates an actual causal scheme, its three atom directions embed as
+-- distinct causally-prime CSpec points, and every witnessed chart overlap
+-- acts on those points by the same S3 permutation.  The six explicit loops
+-- therefore realize full S3 holonomy on genuine CSpec points.  What remains
+-- open is derivation of the four-chart gluing from one global CSpec itself.
+import UnifiedTheory.Audit.KFCausalCSpecSheetRealization
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

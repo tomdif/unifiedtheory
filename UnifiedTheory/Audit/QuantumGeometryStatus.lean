@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The ninety-eight `provedFinite` entries assert only their mathematical scope.
+The one hundred one `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -257,6 +257,15 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "full S3 holonomy plus positive connectivity makes the sheet Laplacian kernel trivial",
     scope := .provedFinite },
+  { name := "a connected four-state Boolean-chart connection realizes full S3 holonomy \
+      and has trivial sheet-Laplacian kernel",
+    scope := .provedFinite },
+  { name := "the Boolean causal scheme has three distinct primitive-direction CSpec points \
+      on which the witnessed chart loops realize full S3 holonomy",
+    scope := .provedFinite },
+  { name := "the canonical principal-point CSpec map collapses the two middle routes \
+      of the naive four-event causal diamond",
+    scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },
   { name := "rank-two-to-three charge-value and threshold partitions are not decoherent",
@@ -284,7 +293,8 @@ def claimLedger : List ClaimEntry := [
   { name := "actual regular causal or CSpec neighborhoods assemble an intrinsic locally \
       three-sheeted diamond-direction cover",
     scope := .openTarget },
-  { name := "an actual causal configuration has nontrivial S3 path-comparison holonomy",
+  { name := "one independently generated global CSpec derives, rather than receives, \
+      the four-chart gluing with nontrivial S3 path-comparison holonomy",
     scope := .openTarget },
   { name := "the causal sheet connection selects a simple lowest eigenline or canonical \
       ground-space projector compatible with projective amplitudes",
@@ -298,8 +308,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 113
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 98
+    claimLedger.length = 116
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 101
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 10 := by

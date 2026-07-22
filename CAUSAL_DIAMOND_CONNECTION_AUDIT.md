@@ -74,6 +74,73 @@ and every nonzero carrier field has strictly positive connection energy.
 This is a qualitative finite spectral-gap statement; the module proves no
 numerical lower bound and does not prove simplicity of the lowest eigenspace.
 
+## Explicit full-`S3` witness
+
+`UnifiedTheory/Audit/KFCausalSheetHolonomyWitness.lean` removes the abstract
+holonomy hypothesis for one finite regular Boolean-chart complex. Four states
+carry a uniform reversible transition law. Every state pair is joined with
+positive weight, and every sheet transport is realized by an actual order
+automorphism of `Set (Fin 3)`.
+
+Two triangle loops based at state zero have exact transports
+
+    0 -> 1 -> 3 -> 0  :  (0 1),
+    0 -> 2 -> 3 -> 0  :  (1 2).
+
+Lean checks six explicit loop words, proves their holonomies inject into the
+six-element permutation type, and therefore proves that every element of
+`S3` occurs. The general spectral theorem then yields, without a holonomy
+hypothesis for this example,
+
+    ker(Delta_W) = {0}
+
+and strictly positive energy for every nonzero carrier field.
+
+This is a genuine finite chart-gluing witness. The next module promotes its
+local charts into the repository's independently defined causal/CSpec API;
+the gluing itself is still supplied as atlas data.
+
+## Native causal/CSpec realization
+
+`UnifiedTheory/Audit/KFCausalCSpecSheetRealization.lean` imports the pinned
+`causal-algebraic-geometry-lean` definitions rather than introducing a second
+object called CSpec. It constructs the incidence causal algebra and full
+causal-scheme package of the Boolean tangent cube. Every cube cell determines
+a genuine causally-prime CSpec point by its strict principal upset.
+
+The three atom directions remain distinct in CSpec. This point matters:
+generic strict-future recovery need not be injective on an arbitrary finite
+poset, so the module proves atom-level injectivity directly instead of
+assuming it.
+
+The same module tests the most economical global candidate and proves a
+no-go. In the naive four-event causal diamond, the two incomparable middle
+events have exactly the same strict future. Their canonical principal CSpec
+points are equal, so the principal-point map is not injective. The original
+four-state path comparison therefore cannot be promoted faithfully by merely
+calling those four events CSpec points. A faithful global construction needs
+a future-distinguishing causal base, non-principal spectrum data, or an
+additional connection/atlas structure.
+
+Every Boolean order automorphism is proved to be a causal-poset isomorphism.
+Direct image therefore induces an equivalence of native CSpec, and Lean proves
+
+    CSpecTransport(phi)(P_cell) = P_(phi(cell)).
+
+On atom points this is exactly the intrinsic sheet permutation. Consequently
+the two triangle loops act on genuine CSpec points by `(0 1)` and `(1 2)`,
+and the six explicit positive loops realize every element of `S3` on those
+three distinct points.
+
+This proves a native **local CSpec atlas realization** of the witness. It does
+not prove that one global CSpec internally generates the four-state overlap
+graph and its transition cocycle. In the current upstream API, `CSpec` is a
+subtype of causally-prime upsets; it has distinguished opens, but no intrinsic
+chart-transition graph from which this gluing could yet be extracted. The
+missing theorem is therefore smaller and more precise than before: derive the
+already-realized overlap cocycle from one independently generated global
+CSpec, rather than attach it as atlas data.
+
 ## Novelty and claim boundary
 
 The individual ingredients in this package are mostly classical mathematics:
@@ -97,10 +164,9 @@ A suitable current publication description is:
 > positive, projectively consistent history carrier from intrinsic
 > three-direction Boolean causal geometry.
 
-New theorem-level geometry would begin with deriving the direction cover or a
-nontrivial monodromy witness from independently defined causal/CSpec data. New
-physics would additionally require a dynamically selected state and an
-observable consequence.
+New theorem-level geometry would begin with deriving the witnessed overlap
+cocycle from one global causal/CSpec object. New physics would additionally
+require a dynamically selected state and an observable consequence.
 
 ## Exact remaining boundaries
 
@@ -108,12 +174,14 @@ Three independent claims remain open:
 
 1. **Local existence:** actual regular causal/CSpec neighborhoods have exactly
    three stable diamond-direction classes and assemble into a local cover.
-2. **Global nontriviality:** one actual finite configuration has two
-   same-endpoint paths with different direction transports, or equivalently a
-   nontrivial direction cocycle.
+2. **Global CSpec gluing:** one independently generated global CSpec derives
+   the explicit four-chart transition graph and nontrivial direction cocycle.
+   The local causal schemes, CSpec atom points, and their overlap action are
+   now realized; the overlap data are not yet intrinsic to one global CSpec.
 3. **State selection:** the concrete causal connection has a distinguished
    lowest eigenline, or else its lowest-eigenspace projector is connected to
    the projective branch-amplitude construction.
 
-The finite order geometry, transport functoriality, energy identity, and
-full-holonomy kernel obstruction are proved. The three bullets above are not.
+The finite order geometry, transport functoriality, energy identity,
+full-holonomy witness, native local CSpec realization, and trivial-kernel
+consequence are proved. The three bullets above are not.

@@ -616,10 +616,22 @@
 > `KFCausalSheetConnectionLaplacian.lean` proves the exact reversible
 > connection-energy identity, identifies the Laplacian kernel with parallel
 > sections, and proves that full `S3` holonomy plus positive connectivity
-> makes the kernel trivial and every nonzero field's energy positive. This is
-> qualitative: no actual CSpec direction cover or nontrivial holonomy witness
-> is constructed, no numerical gap is bounded, and no simple lowest
-> eigenline is selected.
+> makes the kernel trivial and every nonzero field's energy positive.
+> `KFCausalSheetHolonomyWitness.lean` realizes that hypothesis on a connected
+> four-state regular Boolean-chart complex: two triangle loops carry the
+> adjacent transpositions, six explicit loop words exhaust `S3`, and the
+> twisted kernel is therefore unconditionally trivial for this example.
+> `KFCausalCSpecSheetRealization.lean` now uses the pinned native
+> causal-algebraic-geometry definitions to construct the Boolean cube causal
+> scheme, prove its three atom directions are distinct genuine `CSpec` points,
+> and transport them through the witnessed overlaps and six loops with exactly
+> the expected full `S3` action. This closes local causal/CSpec realization.
+> The same module proves a sharp no-go for the naive global candidate: the two
+> middle events of a four-event causal diamond have identical strict futures,
+> so its canonical principal-point map into `CSpec` is not injective.
+> It remains qualitative and atlas-relative: one global `CSpec` has not been
+> proved to generate the four-state gluing, no numerical gap is bounded, and
+> no simple lowest eigenline or canonical ground projector is selected.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -772,7 +784,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-898 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,652 jobs successful
+900 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,664 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

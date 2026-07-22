@@ -899,10 +899,25 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   Markov energy identity, nonnegativity, and
   `ker(Delta_W) = {parallel sections}`. Full `S3` holonomy plus positive
   connectivity kills that kernel and makes every nonzero carrier field have
-  strictly positive energy. The remaining claims are separately named:
-  actual CSpec local three-direction existence, an actual nontrivial holonomy
-  witness, and canonical selection of the lowest eigenline or ground-space
-  projector. The standalone representation-theory and connection-Laplacian
+  strictly positive energy. `KFCausalSheetHolonomyWitness.lean` then realizes
+  the hypothesis on a connected four-state regular Boolean-chart complex:
+  two triangle loops give `(0 1)` and `(1 2)`, six explicit words exhaust
+  `S3`, and the twisted kernel is unconditionally zero for that example. The
+  pinned native bridge `KFCausalCSpecSheetRealization.lean` then constructs
+  the Boolean cube's actual causal algebra and causal scheme, embeds its three
+  atom directions as distinct causally-prime `CSpec` points, and proves that
+  the witnessed chart transitions and all six loop holonomies act on those
+  points by exactly the same `S3` permutations. This closes local causal/CSpec
+  realization. It also proves that the naive four-event causal diamond cannot
+  be the faithful global carrier under the canonical principal-point map: its
+  two middle routes have equal strict futures and collapse to one `CSpec`
+  point. This does not close global generation of the atlas: the four-state
+  overlap graph and cocycle are still supplied externally because current
+  native `CSpec` has no intrinsic chart-transition graph. The remaining claims are
+  separately named: general regular CSpec local three-direction existence,
+  derivation of the witnessed gluing from one global CSpec, and canonical
+  selection of the lowest eigenline or ground-space projector. The standalone
+  representation-theory and connection-Laplacian
   ingredients are classical; the claim is the integrated, label-free,
   machine-checked causal-history architecture, not a new law of nature or
   priority for those ingredients. See `CAUSAL_DIAMOND_CONNECTION_AUDIT.md`.
