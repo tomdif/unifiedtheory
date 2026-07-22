@@ -629,6 +629,13 @@
 > The same module proves a sharp no-go for the naive global candidate: the two
 > middle events of a four-event causal diamond have identical strict futures,
 > so its canonical principal-point map into `CSpec` is not injective.
+> `KFCausalCSpecAtlasCocycleNoGo.lean` upgrades this observation to an exact
+> criterion: principal CSpec points embed iff the causal order is
+> future-distinguishing, and a direction defect is exactly a collision of
+> strict-future signatures. It also proves that a filled regular triple overlap
+> has identity boundary holonomy. The two witnessed transposition triangles
+> therefore cannot be filled Cech 2-simplices; a global realization must have
+> unfilled nerve cycles or wind around an excluded defect.
 > It remains qualitative and atlas-relative: one global `CSpec` has not been
 > proved to generate the four-state gluing, no numerical gap is bounded, and
 > no simple lowest eigenline or canonical ground projector is selected.
@@ -784,7 +791,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-900 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,664 jobs successful
+901 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,665 jobs successful
 (July 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

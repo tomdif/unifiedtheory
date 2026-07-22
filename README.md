@@ -913,9 +913,15 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   two middle routes have equal strict futures and collapse to one `CSpec`
   point. This does not close global generation of the atlas: the four-state
   overlap graph and cocycle are still supplied externally because current
-  native `CSpec` has no intrinsic chart-transition graph. The remaining claims are
-  separately named: general regular CSpec local three-direction existence,
-  derivation of the witnessed gluing from one global CSpec, and canonical
+  native `CSpec` has no intrinsic chart-transition graph.
+  `KFCausalCSpecAtlasCocycleNoGo.lean` sharpens the required global geometry:
+  the principal CSpec map is injective exactly when strict futures distinguish
+  events, and a direction defect is exactly a strict-future collision. It also
+  proves that every filled regular triple overlap has identity boundary
+  holonomy, so both witnessed transposition triangles must be unfilled nerve
+  cycles or loops around a defect. The remaining claims are separately named:
+  general regular CSpec local three-direction existence, derivation of this
+  unfilled gluing from one global CSpec, and canonical
   selection of the lowest eigenline or ground-space projector. The standalone
   representation-theory and connection-Laplacian
   ingredients are classical; the claim is the integrated, label-free,

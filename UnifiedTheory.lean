@@ -5301,6 +5301,13 @@ import UnifiedTheory.Audit.KFCausalSheetHolonomyWitness
 -- therefore realize full S3 holonomy on genuine CSpec points.  What remains
 -- open is derivation of the four-chart gluing from one global CSpec itself.
 import UnifiedTheory.Audit.KFCausalCSpecSheetRealization
+-- Restriction-derived transitions on a genuine common triple overlap have
+-- identity boundary holonomy.  The two supplied transposition triangles are
+-- therefore necessarily unfilled cycles around a missing overlap or defect.
+-- The same module proves that the principal CSpec map is injective exactly
+-- under future distinguishability and defines the corresponding direction-
+-- collision defect locus.
+import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

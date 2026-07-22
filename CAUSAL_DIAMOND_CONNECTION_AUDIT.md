@@ -141,6 +141,34 @@ missing theorem is therefore smaller and more precise than before: derive the
 already-realized overlap cocycle from one independently generated global
 CSpec, rather than attach it as atlas data.
 
+## Filled-triangle and future-signature tripwires
+
+`UnifiedTheory/Audit/KFCausalCSpecAtlasCocycleNoGo.lean` certifies the shape
+that any such global atlas must have. A genuine common regular triple overlap
+has restriction-derived transitions satisfying the Cech cocycle law. Lean
+therefore proves
+
+    filledTriangleHolonomy = id.
+
+Both supplied triangle boundaries instead have transposition holonomy. The
+module proves separately that neither can be filled by a common regular triple
+overlap realizing those transitions. They must represent unfilled cycles in
+the chart nerve or groupoid completion, or wind around a missing intersection
+or CSpec defect. Nontriviality cannot be hidden inside a filled Cech
+2-simplex.
+
+The same module makes the defect exact. For every native causal algebra,
+
+    principal CSpec point map injective
+      iff strict futures distinguish events.
+
+A family of candidate directions has a CSpec defect exactly when two distinct
+directions have equal strict-future signatures. The naive causal diamond is
+proved to lie on this defect locus; the three Boolean tangent directions are
+proved to avoid it. Thus a global realization must be future-distinguishing on
+its regular direction fibers and must have an unfilled nerve cycle around the
+excluded defect locus.
+
 ## Novelty and claim boundary
 
 The individual ingredients in this package are mostly classical mathematics:
@@ -175,9 +203,10 @@ Three independent claims remain open:
 1. **Local existence:** actual regular causal/CSpec neighborhoods have exactly
    three stable diamond-direction classes and assemble into a local cover.
 2. **Global CSpec gluing:** one independently generated global CSpec derives
-   the explicit four-chart transition graph and nontrivial direction cocycle.
-   The local causal schemes, CSpec atom points, and their overlap action are
-   now realized; the overlap data are not yet intrinsic to one global CSpec.
+   an unfilled chart nerve with two cycles carrying the adjacent
+   transpositions. The local causal schemes, CSpec atom points, their overlap
+   action, and the filled-triangle obstruction are now realized; the overlap
+   data are not yet intrinsic to one global CSpec.
 3. **State selection:** the concrete causal connection has a distinguished
    lowest eigenline, or else its lowest-eigenspace projector is connected to
    the projective branch-amplitude construction.
