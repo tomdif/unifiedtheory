@@ -1022,6 +1022,15 @@ two principal prime future sets—recovers a unique direction equivalence. The
 two unfilled cycles recover the adjacent transpositions and their six words
 exhaust `S3`.
 
+The descent theorem now makes every quantifier explicit: the match is
+independent of the continuation witness, every sheet has exactly one match on
+an overlap, transport has identity and inverse laws, and it composes whenever
+one genuine regular point belongs to all three charts. Full monodromy acts
+transitively on the sheet fiber, rules out a path-independent global labeling,
+and kills every parallel section of the associated rank-two connection. The
+transitivity statement is the available algebraic substitute for connectedness;
+no topological cover is claimed without an upstream `CSpec` topology.
+
 The exact remaining boundary is now **dynamical generation**, not finite
 existence. The global order was deliberately constructed to encode the needed
 continuation incidence; no independently specified sequential-growth law is

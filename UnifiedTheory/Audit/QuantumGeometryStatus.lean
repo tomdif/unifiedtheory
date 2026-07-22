@@ -272,8 +272,8 @@ def claimLedger : List ClaimEntry := [
   { name := "filled regular triple overlaps have identity boundary holonomy, so the \
       two witnessed transposition triangles are necessarily unfilled",
     scope := .provedFinite },
-  { name := "one global finite causal CSpec has future-distinct regular points, an \
-      unfilled four-chart nerve, and full S3 path-comparison monodromy",
+  { name := "prime-future continuation incidence defines witness-independent total \
+      overlap transport with filled-point cocycle and full S3 monodromy",
     scope := .provedFinite },
   { name := "positive interior source sign alone does not force decisive records",
     scope := .provedFinite },

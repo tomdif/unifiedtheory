@@ -8,9 +8,11 @@
   poset whose genuine principal CSpec points contain four Boolean direction
   charts.  Every pair of charts has causal overlap records, no three distinct
   charts share a regular point, and the direction matching recovered from
-  those records is exactly the witnessed S3 connection.  Hence the two
-  unfilled triangle loops have adjacent-transposition holonomies and generate
-  all of S3.
+  those records is total, unique, witness-independent, and exactly the
+  witnessed S3 connection.  It composes on every genuine common regular
+  point.  Hence the two unfilled triangle loops have adjacent-transposition
+  holonomies and generate all of S3, while the associated rank-two connection
+  has neither a global sheet labeling nor a nonzero parallel section.
 
   Private future tags make the regular events future-distinguishable.  They
   retain the key of the event they distinguish but add no overlap matching;
@@ -40,6 +42,8 @@ open CausalAlgebraicGeometry.CausalPrimality
 open CausalAlgebraicGeometry.CausalScheme
 open CausalAlgebraicGeometry.BulletproofRecovery
 open UnifiedTheory.Audit.KFCausalProduct3SheetBridge
+open UnifiedTheory.Audit.KFCausalDiamondDirectionCover
+open UnifiedTheory.Audit.KFCausalSheetConnectionLaplacian
 open UnifiedTheory.Audit.KFCausalSheetHolonomyWitness
 open UnifiedTheory.Audit.KFCausalCSpecSheetRealization
 open UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
@@ -457,6 +461,23 @@ def CSpecMatchedDirection
       (.overlap key : GlobalAtlasEvent) ∈
         (globalRegularCSpecPoint (.direction second secondDirection)).1
 
+/-- One particular continuation record witnesses one particular matching. -/
+def IsCSpecContinuationWitness
+    (first second : WitnessState) (firstDirection secondDirection : Fin 3)
+    (key : GlobalOverlapKey) : Prop :=
+  key.first = first ∧ key.second = second ∧
+    (.overlap key : GlobalAtlasEvent) ∈
+      (globalRegularCSpecPoint (.direction first firstDirection)).1 ∧
+    (.overlap key : GlobalAtlasEvent) ∈
+      (globalRegularCSpecPoint (.direction second secondDirection)).1
+
+theorem CSpecMatchedDirection_iff_exists_continuationWitness
+    (first second : WitnessState) (firstDirection secondDirection : Fin 3) :
+    CSpecMatchedDirection first second firstDirection secondDirection ↔
+      ∃ key, IsCSpecContinuationWitness first second
+        firstDirection secondDirection key := by
+  rfl
+
 theorem overlap_mem_directionCSpecFuture_iff
     (chart : WitnessState) (direction : Fin 3) (key : GlobalOverlapKey) :
     (.overlap key : GlobalAtlasEvent) ∈
@@ -518,6 +539,31 @@ theorem CSpecMatchedDirection_iff
       firstDirection = witnessSheetTransport first second secondDirection := by
   rw [CSpecMatchedDirection_iff_global, globallyMatchedDirection_iff]
 
+/-- **Witness independence.** Any two valid continuation witnesses with the
+same endpoint sheet determine the same source sheet.  The matching therefore
+does not depend on which continuation record was used to observe it. -/
+theorem continuationWitness_independent
+    (first second : WitnessState)
+    (firstDirection firstDirection' secondDirection : Fin 3)
+    (firstWitness secondWitness : GlobalOverlapKey)
+    (hFirst : IsCSpecContinuationWitness first second
+      firstDirection secondDirection firstWitness)
+    (hSecond : IsCSpecContinuationWitness first second
+      firstDirection' secondDirection secondWitness) :
+    firstDirection = firstDirection' := by
+  have hFirstMatch :
+      CSpecMatchedDirection first second firstDirection secondDirection :=
+    (CSpecMatchedDirection_iff_exists_continuationWitness
+      first second firstDirection secondDirection).2 ⟨firstWitness, hFirst⟩
+  have hSecondMatch :
+      CSpecMatchedDirection first second firstDirection' secondDirection :=
+    (CSpecMatchedDirection_iff_exists_continuationWitness
+      first second firstDirection' secondDirection).2 ⟨secondWitness, hSecond⟩
+  rw [(CSpecMatchedDirection_iff first second
+      firstDirection secondDirection).1 hFirstMatch,
+    (CSpecMatchedDirection_iff first second
+      firstDirection' secondDirection).1 hSecondMatch]
+
 /-- Each direction in the second chart has a unique causally matched
 direction in the first chart. -/
 theorem existsUnique_globallyMatchedDirection
@@ -528,6 +574,19 @@ theorem existsUnique_globallyMatchedDirection
     (globallyMatchedDirection_iff first second _ secondDirection).2 rfl, ?_⟩
   intro candidate hCandidate
   exact (globallyMatchedDirection_iff first second candidate secondDirection).1
+    hCandidate
+
+/-- **Overlap totality.** Every sheet of the second chart has exactly one
+matching sheet of the first chart, witnessed inside their native prime future
+sets. -/
+theorem existsUnique_CSpecMatchedDirection
+    (first second : WitnessState) (secondDirection : Fin 3) :
+    ∃! firstDirection,
+      CSpecMatchedDirection first second firstDirection secondDirection := by
+  refine ⟨witnessSheetTransport first second secondDirection,
+    (CSpecMatchedDirection_iff first second _ secondDirection).2 rfl, ?_⟩
+  intro candidate hCandidate
+  exact (CSpecMatchedDirection_iff first second candidate secondDirection).1
     hCandidate
 
 /-- The direction selected solely by unique causal matching. -/
@@ -586,6 +645,56 @@ theorem recoveredCSpecDirectionTransport_eq_witness
   intro direction
   exact recoveredDirection_eq_witness first second direction
 
+theorem recoveredCSpecDirectionTransport_refl (chart : WitnessState) :
+    recoveredCSpecDirectionTransport chart chart = Equiv.refl (Fin 3) := by
+  rw [recoveredCSpecDirectionTransport_eq_witness,
+    witnessSheetTransport_refl]
+
+theorem recoveredCSpecDirectionTransport_reverse
+    (first second : WitnessState) :
+    recoveredCSpecDirectionTransport second first =
+      (recoveredCSpecDirectionTransport first second).symm := by
+  rw [recoveredCSpecDirectionTransport_eq_witness,
+    recoveredCSpecDirectionTransport_eq_witness,
+    witnessSheetTransport_reverse]
+
+/-- **Intrinsic filled-overlap composition.** Whenever one genuine regular
+CSpec point belongs to three charts, the continuation-recovered transports
+obey the Cech cocycle law there.  For three distinct charts the antecedent is
+impossible because their regular intersection is empty; this guard is exactly
+what permits nontrivial holonomy on the two unfilled triangles. -/
+theorem recoveredCSpecDirectionTransport_cocycle_on_commonPoint
+    (first second third : WitnessState)
+    (point : CSpec globalAtlasCausalAlgebra)
+    (hFirst : point ∈ globalRegularCSpecChart first)
+    (hSecond : point ∈ globalRegularCSpecChart second)
+    (hThird : point ∈ globalRegularCSpecChart third) :
+    (recoveredCSpecDirectionTransport second third).trans
+        (recoveredCSpecDirectionTransport first second) =
+      recoveredCSpecDirectionTransport first third := by
+  by_cases hFirstSecond : first = second
+  · subst second
+    rw [recoveredCSpecDirectionTransport_refl]
+    rfl
+  by_cases hFirstThird : first = third
+  · subst third
+    rw [recoveredCSpecDirectionTransport_refl,
+      recoveredCSpecDirectionTransport_reverse]
+    exact Equiv.symm_trans_self _
+  by_cases hSecondThird : second = third
+  · subst third
+    rw [recoveredCSpecDirectionTransport_refl]
+    rfl
+  have hEmpty := globalRegularCSpecChart_triple_intersection_empty
+    first second third hFirstSecond hFirstThird hSecondThird
+  have hPointIntersection : point ∈
+      globalRegularCSpecChart first ∩
+        globalRegularCSpecChart second ∩
+          globalRegularCSpecChart third :=
+    ⟨⟨hFirst, hSecond⟩, hThird⟩
+  rw [hEmpty] at hPointIntersection
+  simp at hPointIntersection
+
 /-! ## Full S3 monodromy of the unfilled CSpec nerve -/
 
 /-- Boundary transport recovered from the global causal scheme along one
@@ -641,6 +750,114 @@ theorem globalCSpecAtlas_hasFullS3Monodromy
     ← fullS3WitnessHolonomy_eq_word]
   exact hIndex
 
+/-- Full S3 monodromy acts transitively on the three directions.  This is the
+finite algebraic content behind connectedness of the associated three-sheet
+cover; no topological connectedness claim is made without an upstream CSpec
+topology. -/
+theorem globalCSpecMonodromy_action_transitive
+    (first second : Fin 3) :
+    ∃ index : Fin 6,
+      recoveredGlobalCSpecHolonomyWord index first = second := by
+  obtain ⟨index, hIndex⟩ :=
+    globalCSpecAtlas_hasFullS3Monodromy (Equiv.swap first second)
+  refine ⟨index, ?_⟩
+  rw [hIndex]
+  simp
+
+/-! ## The full monodromy obstructs a global sheet labeling -/
+
+/-- Regard every ordered chart pair as an edge, with its direction transport
+recovered from the global CSpec continuation relation. -/
+noncomputable def globalCSpecDirectionEdgeLaw :
+    DirectionEdgeLaw WitnessState (fun _ => Fin 3)
+      (fun _ => WitnessState) where
+  target := fun _ next => next
+  transport := fun state next =>
+    recoveredCSpecDirectionTransport next state
+
+/-- The first unfilled loop, oriented to follow the edge-law convention. -/
+noncomputable def globalCSpecNontrivialDirectionLoop :
+    DirectionPath globalCSpecDirectionEdgeLaw 0 0 :=
+  .cons 3 (.cons 1 (.cons 0 (.nil 0)))
+
+theorem globalCSpecNontrivialDirectionLoop_transport :
+    directionPathTransport globalCSpecNontrivialDirectionLoop =
+      swapZeroOne := by
+  apply Equiv.ext
+  intro direction
+  fin_cases direction <;>
+    simp [globalCSpecNontrivialDirectionLoop, directionPathTransport,
+      globalCSpecDirectionEdgeLaw,
+      recoveredCSpecDirectionTransport_eq_witness,
+      witnessSheetTransport, swapZeroOne]
+
+/-- The continuation-derived full-S3 atlas cannot be globally assigned three
+path-independent sheet labels. -/
+theorem globalCSpecAtlas_has_no_globalDirectionLabeling :
+    ¬ Nonempty (GlobalDirectionLabeling globalCSpecDirectionEdgeLaw) := by
+  apply nontrivial_path_comparison_forbids_global_labeling
+    (DirectionPath.nil 0) globalCSpecNontrivialDirectionLoop
+  intro hEqual
+  have hAtZero := DFunLike.congr_fun hEqual (0 : Fin 3)
+  rw [globalCSpecNontrivialDirectionLoop_transport] at hAtZero
+  norm_num [directionPathTransport, swapZeroOne] at hAtZero
+
+/-! ## The associated rank-two connection has no parallel mode -/
+
+/-- The uniform reversible connection whose sheet transport is recovered from
+native CSpec continuation incidence. -/
+noncomputable def globalCSpecRecoveredSheetConnection :
+    ReversibleSheetConnection WitnessState where
+  stationary := fun _ => 1
+  transition := fun _ _ => 1 / 4
+  sheetTransport := recoveredCSpecDirectionTransport
+  stationary_pos := by intro; norm_num
+  transition_nonneg := by intro; norm_num
+  row_stochastic := by
+    intro state
+    fin_cases state <;> norm_num [Fin.sum_univ_succ]
+  detailed_balance := by intro; norm_num
+  transport_refl := recoveredCSpecDirectionTransport_refl
+  transport_reverse := recoveredCSpecDirectionTransport_reverse
+
+theorem globalCSpecRecovered_connectionLaplacian_eq_witness
+    (field : WitnessState → SheetCarrier) (state : WitnessState) :
+    connectionLaplacian globalCSpecRecoveredSheetConnection field state =
+      connectionLaplacian fullS3WitnessConnection field state := by
+  unfold connectionLaplacian twistedMarkov
+  apply congrArg (fun transported => field state - transported)
+  apply Finset.sum_congr rfl
+  intro next _hNext
+  rw [show globalCSpecRecoveredSheetConnection.transition state next =
+      fullS3WitnessConnection.transition state next by rfl]
+  rw [show globalCSpecRecoveredSheetConnection.sheetTransport state next =
+      recoveredCSpecDirectionTransport state next by rfl]
+  rw [recoveredCSpecDirectionTransport_eq_witness]
+  rfl
+
+/-- The rank-two trace-zero carrier associated to the intrinsic CSpec
+transport has trivial connection-Laplacian kernel. -/
+theorem globalCSpecRecoveredSheetConnection_kernel_trivial
+    (field : WitnessState → SheetCarrier)
+    (hKernel : ∀ state,
+      connectionLaplacian globalCSpecRecoveredSheetConnection field state = 0) :
+    field = 0 := by
+  apply fullS3WitnessConnection_kernel_trivial field
+  intro state
+  rw [← globalCSpecRecovered_connectionLaplacian_eq_witness]
+  exact hKernel state
+
+/-- Equivalently, the intrinsic full-S3 carrier connection admits no nonzero
+globally parallel carrier section. -/
+theorem globalCSpecRecoveredSheetConnection_parallel_trivial
+    (field : WitnessState → SheetCarrier)
+    (hParallel : IsParallelSheetSection
+      globalCSpecRecoveredSheetConnection field) :
+    field = 0 := by
+  apply globalCSpecRecoveredSheetConnection_kernel_trivial field
+  exact (connectionLaplacian_eq_zero_iff_parallel
+    globalCSpecRecoveredSheetConnection field).2 hParallel
+
 /-- The complete finite certificate: one native causal scheme supplies
 future-distinct regular CSpec points, an unfilled pairwise-overlap nerve, and
 full S3 monodromy derived from causal overlap incidence. -/
@@ -662,6 +879,35 @@ theorem exists_global_finite_causal_CSpec_fullS3_atlas :
     globalRegularCSpecChart_triple_intersection_empty,
     globalCSpecAtlas_hasFullS3Monodromy⟩
 
+/-- **Intrinsic descent capstone.** Prime-future continuation incidence is
+total on every overlap, composes on every genuine common regular point, has
+surjective S3 monodromy, admits no global path-independent sheet labeling,
+and leaves no nonzero parallel vector in the associated rank-two carrier. -/
+theorem intrinsic_CSpec_descent_fullS3_package :
+    (∀ first second : WitnessState, ∀ secondDirection : Fin 3,
+      ∃! firstDirection,
+        CSpecMatchedDirection first second firstDirection secondDirection) ∧
+    (∀ first second third : WitnessState,
+      ∀ point : CSpec globalAtlasCausalAlgebra,
+        point ∈ globalRegularCSpecChart first →
+        point ∈ globalRegularCSpecChart second →
+        point ∈ globalRegularCSpecChart third →
+          (recoveredCSpecDirectionTransport second third).trans
+              (recoveredCSpecDirectionTransport first second) =
+            recoveredCSpecDirectionTransport first third) ∧
+    (∀ relabeling : Equiv.Perm (Fin 3),
+      ∃ index : Fin 6,
+        recoveredGlobalCSpecHolonomyWord index = relabeling) ∧
+    ¬ Nonempty (GlobalDirectionLabeling globalCSpecDirectionEdgeLaw) ∧
+    (∀ field : WitnessState → SheetCarrier,
+      IsParallelSheetSection globalCSpecRecoveredSheetConnection field →
+        field = 0) := by
+  exact ⟨existsUnique_CSpecMatchedDirection,
+    recoveredCSpecDirectionTransport_cocycle_on_commonPoint,
+    globalCSpecAtlas_hasFullS3Monodromy,
+    globalCSpecAtlas_has_no_globalDirectionLabeling,
+    globalCSpecRecoveredSheetConnection_parallel_trivial⟩
+
 #print axioms globalAtlasLE_trans
 #print axioms globalAtlasEvent_card
 #print axioms globalRegularCSpecPoint_injective
@@ -669,9 +915,16 @@ theorem exists_global_finite_causal_CSpec_fullS3_atlas :
 #print axioms globalRegularCSpecChart_triple_intersection_empty
 #print axioms globallyMatchedDirection_iff
 #print axioms CSpecMatchedDirection_iff
+#print axioms continuationWitness_independent
+#print axioms existsUnique_CSpecMatchedDirection
 #print axioms recoveredCSpecDirectionTransport_eq_witness
+#print axioms recoveredCSpecDirectionTransport_cocycle_on_commonPoint
 #print axioms globalCSpecAtlas_hasFullS3Monodromy
+#print axioms globalCSpecMonodromy_action_transitive
+#print axioms globalCSpecAtlas_has_no_globalDirectionLabeling
+#print axioms globalCSpecRecoveredSheetConnection_parallel_trivial
 #print axioms exists_global_finite_causal_CSpec_fullS3_atlas
+#print axioms intrinsic_CSpec_descent_fullS3_package
 
 end
 

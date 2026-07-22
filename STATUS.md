@@ -644,6 +644,12 @@
 > sets uniquely recovers the direction transport. The two unfilled loops give
 > the adjacent transpositions and six explicit words exhaust `S3`. Thus one
 > global finite causal/CSpec object now realizes the full nontrivial atlas.
+> The descent package separately certifies witness independence, total
+> three-sheet overlap matching, identity/reverse laws, and the Cech cocycle on
+> every genuine common regular point. Full monodromy acts transitively, forbids
+> a path-independent global sheet labeling, and makes the associated rank-two
+> connection's parallel-section space zero. “Connected cover” is used only in
+> this algebraic transitivity sense because upstream `CSpec` has no topology.
 > The construction is an existence witness whose causal order was designed to
 > encode those overlap continuations; it is not derived from the repository's
 > physical sequential-growth dynamics. The pinned native `CSpec` also has no

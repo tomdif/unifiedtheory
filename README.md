@@ -926,6 +926,12 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   of a shared continuation event in two native prime futures uniquely recovers
   the chart transport. The two unfilled cycles yield `(0 1)` and `(1 2)`, and
   their six words exhaust `S3`. This closes finite global existence, but the
+  descent theorem is sharper: matching is witness-independent and total on
+  every overlap, recovered transport has identity/inverse laws and composes on
+  every genuine common regular point, full monodromy acts transitively, no
+  path-independent global sheet labeling exists, and the associated rank-two
+  connection has no nonzero parallel section. Topological connectedness is
+  not claimed without an upstream `CSpec` topology. The
   order was deliberately constructed to carry the continuations; physical
   sequential growth does not yet generate it, and the pinned native `CSpec`
   has no topology/open-cover API. The remaining claims are separately named:

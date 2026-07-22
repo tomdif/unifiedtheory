@@ -5312,8 +5312,11 @@ import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
 -- merely receiving four unrelated local charts.  Its 60 regular principal
 -- CSpec points are future-distinct; every chart pair overlaps, every distinct
 -- triple intersection is empty, and common-continuation membership in native
--- prime futures uniquely recovers the direction transport.  Two unfilled
--- cycles generate full S3.  The stronger physical question—why sequential
+-- prime futures recovers a witness-independent, total direction transport
+-- satisfying identity/inverse laws and the cocycle on genuine common points.
+-- Two unfilled cycles generate full S3; no global sheet labeling or nonzero
+-- parallel rank-two carrier section survives.  The stronger physical
+-- question—why sequential
 -- growth dynamically produces this deliberately constructed order—remains
 -- open, as does a topological-open formulation absent from upstream CSpec.
 import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas

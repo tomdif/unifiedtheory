@@ -201,6 +201,27 @@ causally-prime strict-future sets. The unique recovered equivalence is proved
 equal to the witnessed chart transport. Consequently the two unfilled loops
 recover `(0 1)` and `(1 2)`, and six words in those loops exhaust `S3`.
 
+The descent properties are named separately rather than compressed into that
+summary:
+
+1. two valid continuation witnesses for the same endpoint direction recover
+   the same source direction;
+2. every endpoint direction has exactly one CSpec-matched source direction;
+3. recovered transport is the identity on one chart and reverses by inverse;
+4. whenever a genuine regular CSpec point belongs to three charts, the three
+   recovered transports obey the Cech cocycle there.
+
+The fourth statement is deliberately guarded by common-point membership.
+Distinct witnessed triples have empty intersection, so applying the cocycle to
+their unfilled boundary would be a type error in the physics, not a loophole in
+the theorem.
+
+Full monodromy acts transitively on the three directions. This is the finite
+algebraic analogue of connectedness, not a topological connected-cover theorem.
+The same descent package proves that no path-independent global direction
+labeling exists. Instantiating the uniform reversible rank-two connection with
+the recovered transport gives a trivial parallel-section space.
+
 This closes **finite global existence**. It does not close natural or physical
 generation. The global causal order was deliberately constructed with the
 continuation incidence needed for the witness; no existing sequential-growth
