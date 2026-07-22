@@ -249,6 +249,24 @@ physics question: no theorem yet assigns a cubic, a marked root, or its
 zero-sum sheet amplitude to each unlabeled causal birth, nor transports that
 assignment projectively.
 
+The coordinate ambiguity is now removed by
+`KFCubicSheetIntrinsicCarrier.lean`. For any abstract three-element sheet type
+`S`, the zero-sum carrier is defined without a labeling. Its canonical mark
+vectors `v_s=delta_s-1/3` span the carrier, have exact complex dimension two,
+and after normalization obey the regular-simplex Gram law `1` on equal marks
+and `-1/2` on unequal marks. Sheet bijections transport these vectors and
+preserve every Gram entry. Conversely, the only carrier vector fixed by every
+sheet permutation is zero. Thus a nonzero physical amplitude must be an
+equivariant section, not an invariant coordinate vector.
+
+The projective implication is also now formal and separate from the physical
+assignment. Atomic vector amplitudes satisfying the fiber-sum law with
+bijective coordinate transport induce Hermitian, normalized, strongly positive
+event kernels whose coarse entries equal their refined preimage entries
+exactly. This theorem assumes no particular causal weighting rule. The open
+physics is precisely the construction of the amplitude itself—its scalar
+history weight and its marked-sheet direction—from unlabeled causal births.
+
 There is also a prior probability gate. At the rank-two-to-rank-three source
 ensemble, the three charge values are distinct but neither nontrivial ordered
 threshold cut is decoherent; the empty/full source entry is exactly

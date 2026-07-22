@@ -33,7 +33,8 @@
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceSharpRate.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityEvidenceExtrema.lean` and
 `UnifiedTheory/Audit/KFCausalSetChiralityFactorizationNoGo.lean` and
-`UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean`
+`UnifiedTheory/Audit/KFCubicMarkedSheetRankTwo.lean` and
+`UnifiedTheory/Audit/KFCubicSheetIntrinsicCarrier.lean`
 
 ## Outcome
 
@@ -66,7 +67,8 @@ from being silently promoted to a stronger physical scope.
 | Chirality evidence asymptotics | `artanh(2y)` is half log-odds and additive under common-sector composition; on the future-maximal chain, evidence/log tends to `2`, log-odds/log to `4`, and log posterior-error/log to `-4`; a positive summable counterregime is explicit | Exact sharp `N^(-4+o(1))` conditional chain rate; Bayes arithmetic, not Lorentz kinematics; no typical-history or tail-event claim, and physical use remains conditional on the higher-rank factorization |
 | Rankwise chirality evidence extrema | At parent rank `n`, gregarious source is `0`, the exact linked minimum is `1/(n(n+1)+4)`, and the star maximum is `n/(2(2n+1))`; full-chain timid source is strictly interior for `n>=2` | Proved finite combinatorics; the exponent `4` is two arithmetic factors of `2`, not dimension; rankwise extremizers are not claimed to form a compatible trajectory |
 | Common-sector factorization gate | Every scalar finite-depth growth kernel obeys `D(A,A)D(B,B)=D(A,B)D(B,A)`; two nonzero cells therefore cannot be exactly decoherent, and their interference persists under projective refinement | Universal no-go over arbitrary rank-dependent branch types; a conserved label does not help while amplitudes remain scalar; latent rank two is the sharp minimal exit, but no vector/operator-valued sequential law is yet constructed |
-| Marked-sheet rank-two carrier | Three marked cubic sheets split into the invariant uniform line and a zero-sum plane explicitly equivalent to `C^2`; sheet permutations preserve its Gram form, and the exact strongly positive witness `diag(2,6)` has determinant `12` | Proved finite algebraic exit from the scalar no-go; no causal-birth-to-cubic/marked-root map, resultant-one dynamics, or projectively consistent vector-valued growth law is claimed |
+| Marked-sheet rank-two carrier | Three marked cubic sheets split into the invariant uniform line and a zero-sum plane explicitly equivalent to `C^2`; sheet permutations preserve its Gram form, and the exact strongly positive witness `diag(2,6)` has determinant `12` | Proved finite algebraic exit from the scalar no-go; no causal-birth-to-cubic/marked-root map, resultant-one dynamics, or concrete projective causal growth law is claimed |
+| Intrinsic sheet simplex and vector projectivity | For every abstract three-sheet type, `v_s=delta_s-1/3` spans the exact complex rank-two zero-sum carrier; normalized Gram entries are `1` and `-1/2`, all sheet bijections are Gram isometries, and no nonzero vector is permutation-fixed. Atomic fiber-sum consistency with coordinate transport implies Hermitian, normalized, strongly positive, exactly projective event kernels | Proved finite representation and abstract projective theorem; it supplies no causal rule selecting a scalar weight or marked sheet for a history |
 | Charge-partition probability gate | Above the two-antichain the three charges are distinct, but the fine partition and both nontrivial charge-threshold cuts have nonzero cross-decoherence; projectivity preserves any cylinder realization of the obstruction | Proved rank-two-to-rank-three no-go: closed source growth does not license finite charge-concentration probabilities; a protected record factorization is required, and no infinite tail-event measure is supplied |
 | 3D gravity | Zero local polarizations plus a flat finite-torus connection with two nontrivial global holonomies | Kinematic local/global witness; quantum dynamics still open |
 | Bare `K_F` continuum test | T11 sprinkling spectrum does not approach `J₄` | Empirical negative for the tested direct identification |
@@ -866,6 +868,26 @@ it realizes two nonzero exactly decoherent cells and is formally excluded from
 the scalar-amplitude class. This is a finite representation-theoretic bridge,
 not a derived causal dynamics: the repository still lacks a covariant map from
 unlabeled births to cubic/marked-root data and its projective transport law.
+
+`KFCubicSheetIntrinsicCarrier.lean` then makes the representation independent
+of a chosen marking. It defines the zero-sum submodule for an arbitrary finite
+sheet type, constructs the canonical vertices `v_s=delta_s-1/3`, proves they
+span, and proves exact complex dimension two whenever the sheet type has three
+elements. After the canonical real normalization their Gram matrix is positive
+semidefinite with entries `1` on the diagonal and `-1/2` off diagonal.
+Bijections carry `v_s` to `v_sigma(s)` and preserve the Gram form, whereas the
+only vector fixed by every permutation is zero. The correct covariance law is
+therefore equivariance of representatives, not invariance of a nonzero vector.
+
+The same module separates projective mathematics from causal generation. For
+finite history levels and finite coordinate carriers related by bijections, an
+atomic fiber-sum equation with transported coordinates implies the identical
+equation for event amplitudes. The induced event kernels are Hermitian,
+strongly positive, normalized exactly when the total vector has unit Gram norm,
+and exactly invariant under exhaustive refinement. Finite biadditivity is the
+existing event-sum law. No theorem in this construction selects the scalar
+history weight or the marked sheet from causal data; that is now the isolated
+microscopic frontier.
 See
 [Rideout--Sorkin's classical construction](https://arxiv.org/abs/gr-qc/9904062)
 and the recent analysis of alternative quantum Bell-causality orderings in

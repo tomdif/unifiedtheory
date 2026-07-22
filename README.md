@@ -835,6 +835,19 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   needed by the no-go, but it does not derive a cubic, marked root, or
   resultant normalization from causal growth; the projectively consistent
   microscopic assignment remains open.
+  `KFCubicSheetIntrinsicCarrier.lean` removes the remaining coordinate choice.
+  For any abstract three-element sheet type `S`, Lean defines the zero-sum
+  submodule of `S -> C`, proves its complex dimension is exactly two after any
+  marking, and constructs the canonical vertices
+  `v_s(t)=delta(s,t)-1/3`. Their normalized Gram matrix is positive
+  semidefinite with diagonal `1` and off-diagonal `-1/2`; the vertices span the
+  carrier and transport equivariantly under every sheet bijection. The only
+  vector fixed by all sheet permutations is zero, so the physical statement is
+  formally equivariance rather than invariance of a coordinate vector.
+  Independently, transported projective vector amplitudes are proved to induce
+  Hermitian, normalized, strongly positive event kernels with exact
+  coarse/fine consistency. The sole physical gap is now the causal rule that
+  supplies a scalar weight and marked-sheet direction to each history.
   `KFCausalSetChiralityChargePartitionNoGo.lean` then checks whether a finite
   probability statement is licensed before asking for typicality. Above the
   two-antichain, the rank-two-to-rank-three charges are exactly

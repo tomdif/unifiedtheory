@@ -5248,6 +5248,16 @@ import UnifiedTheory.Audit.KFCausalSetChiralityFactorizationNoGo
 -- nonzero determinant, so it cannot be a scalar history-amplitude kernel.
 -- Causal growth has not yet been proved to supply the cubic/marked-root data.
 import UnifiedTheory.Audit.KFCubicMarkedSheetRankTwo
+-- The marked-sheet carrier is now intrinsic and equivariant.  For every
+-- three-element sheet type S, the zero-sum submodule of S -> C has complex
+-- dimension two.  Its canonical normalized sheet vertices have Gram entries
+-- 1 on the diagonal and -1/2 off diagonal, span the carrier, and transform
+-- under sheet bijections; the only vector fixed by every permutation is zero.
+-- A separate abstract theorem proves that vector amplitudes satisfying atomic
+-- projective consistency with equivariant coordinate transport induce
+-- normalized, strongly positive, exactly projective event kernels.  The
+-- causal law selecting the scalar weight and marked sheet remains open.
+import UnifiedTheory.Audit.KFCubicSheetIntrinsicCarrier
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

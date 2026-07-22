@@ -566,6 +566,16 @@
 > two nonzero decoherent cells and no scalar-amplitude representation. This is
 > an algebraic higher-rank exit, not yet a causal-growth derivation of cubic
 > roots, a resultant-one slice, or projective vector-valued dynamics.
+> `KFCubicSheetIntrinsicCarrier.lean` upgrades that construction to a
+> label-free standard representation. On every abstract three-sheet type the
+> canonical vertices `delta_s-1/3` span an exact complex rank-two carrier; the
+> normalized Gram matrix is positive semidefinite with entries `1` and
+> `-1/2`. Bijections transport vertices isometrically, while the only vector
+> invariant under every sheet permutation is zero. A separate theorem proves
+> that projectively consistent vector amplitudes with such coordinate transport
+> induce Hermitian, normalized, strongly positive, exactly projective event
+> kernels. What remains open is not the carrier or projective implication, but
+> the causal-growth law selecting the scalar weight and sheet direction.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
