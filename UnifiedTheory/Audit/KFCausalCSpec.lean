@@ -44,3 +44,4 @@ import UnifiedTheory.Audit.KFCausalCSpecVolumeSector
 import UnifiedTheory.Audit.KFCausalMinkowskiShell
 import UnifiedTheory.Audit.KFCausalMinkowskiAngular2D
 import UnifiedTheory.Audit.KFCausalMinkowskiRadial
+import UnifiedTheory.Audit.KFCausalMinkowskiCorner
