@@ -16,13 +16,22 @@
 
       ∫_0^∞ f(μ) dμ   = 0!  - 2·1! + ½·2!  = 1 - 2 + 1  = 0,   (annihilates constants)
       ∫_0^∞ μ f(μ) dμ = 1!  - 2·2! + ½·3!  = 1 - 4 + 3  = 0,   (annihilates linear fields)
-      ∫_0^∞ μ² f(μ)dμ = 2!  - 2·3! + ½·4!  = 2 - 12 + 12 = 2.   (the □φ NORMALIZATION)
+      ∫_0^∞ μ² f(μ)dμ = 2!  - 2·3! + ½·4!  = 2 - 12 + 12 = 2.   (the surviving 2nd moment)
 
-  The first two zeros are the moment conditions that CANCEL the (divergent) constant and
-  linear responses; the `2` is the surviving second-order coefficient that becomes `□φ`.
-  So the 2D BDG coefficients `(1, -2, ½)` are verified, unconditionally, to satisfy the
-  moment conditions and set the `□` normalization -- the finite skeleton of the angular
-  computation.
+  These are NECESSARY cancellation conditions for locality; they do NOT yet prove the
+  `□`-normalization.  The surviving value `2` becomes the `□φ` coefficient only after the
+  null-coordinate Jacobian, the operator's exterior normalization and local counterterm,
+  compact support/decay of `φ`, cancellation of the noncompact rapidity/light-cone
+  contribution, and the justified `ρ → ∞` limit.  The two zeros are the necessary moment
+  conditions; the `2` is the surviving second moment, not (yet) the operator normalization.
+
+  MECHANISM (`f2D_kernel_second_deriv`).  The reason the two moments vanish is structural:
+
+      f(μ) = e^{-μ}(1 - 2μ + ½μ²) = ½ (μ² e^{-μ})''.
+
+  A `k=0,1` moment of a second derivative of a rapidly-decaying kernel vanishes by parts;
+  this identity is also the integration-by-parts mechanism that transfers derivatives from
+  the singular kernel onto the test field in the distributional limit.
 
   Still bundled (the informative residue): the ANGULAR divergence and its cancellation
   against a compactly-supported test field, and the passage to the ρ→∞ limit, are the
@@ -106,8 +115,33 @@ theorem f2D_moment2 : ∫ μ in Ioi (0 : ℝ), μ ^ 2 * f2D μ = 2 := by
     | exact (integrable_exp_pow 4).const_mul (1 / 2)
     | exact (integrable_exp_pow 2).sub ((integrable_exp_pow 3).const_mul 2))
 
+/-- **Kernel first derivative.**  `d/dμ (μ² e^{-μ}) = e^{-μ}(2μ - μ²)`. -/
+theorem f2D_kernel_first_deriv (μ : ℝ) :
+    HasDerivAt (fun x => x ^ 2 * Real.exp (-x)) (Real.exp (-μ) * (2 * μ - μ ^ 2)) μ := by
+  have h1 : HasDerivAt (fun x : ℝ => x ^ 2) (2 * μ) μ := by simpa using hasDerivAt_pow 2 μ
+  have h2 : HasDerivAt (fun x : ℝ => Real.exp (-x)) (-Real.exp (-μ)) μ := by
+    simpa using (Real.hasDerivAt_exp (-μ)).comp μ (hasDerivAt_neg μ)
+  convert h1.mul h2 using 1
+  ring
+
+/-- **Kernel second derivative = 2·f (the mechanism).**  `d²/dμ² (μ² e^{-μ}) = 2 f(μ)`,
+i.e. `f(μ) = ½ (μ² e^{-μ})''`.  The first slot is the first derivative `e^{-μ}(2μ - μ²)`
+from `f2D_kernel_first_deriv`, so this is genuinely the second derivative of `μ² e^{-μ}`.
+This is why the `k=0,1` moments vanish and is the integration-by-parts kernel identity for
+the distributional continuum limit. -/
+theorem f2D_kernel_second_deriv (μ : ℝ) :
+    HasDerivAt (fun x => Real.exp (-x) * (2 * x - x ^ 2)) (2 * f2D μ) μ := by
+  have h2 : HasDerivAt (fun x : ℝ => Real.exp (-x)) (-Real.exp (-μ)) μ := by
+    simpa using (Real.hasDerivAt_exp (-μ)).comp μ (hasDerivAt_neg μ)
+  have h3 : HasDerivAt (fun x : ℝ => 2 * x - x ^ 2) (2 - 2 * μ) μ := by
+    simpa using ((hasDerivAt_id μ).const_mul 2).sub (hasDerivAt_pow 2 μ)
+  convert h2.mul h3 using 1
+  unfold f2D; ring
+
 #print axioms f2D_moment0
 #print axioms f2D_moment1
 #print axioms f2D_moment2
+#print axioms f2D_kernel_first_deriv
+#print axioms f2D_kernel_second_deriv
 
 end UnifiedTheory.Audit.KFCausalMinkowskiAngular2D
