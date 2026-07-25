@@ -36,6 +36,7 @@ set_option autoImplicit false
 
 open MeasureTheory Real Set Filter Topology
 open UnifiedTheory.Audit.KFCausalMinkowskiAngular2D
+open UnifiedTheory.Audit.KFCausalCSpecLaplaceScaling
 
 namespace UnifiedTheory.Audit.KFCausalMinkowskiRadial
 
@@ -121,6 +122,94 @@ theorem radial_ibp_identity (φ φ' φ'' : ℝ → ℝ)
   intro s _; ring
 
 #print axioms radial_ibp_identity
+
+/-- **The radial limit** (the analytic core's payoff).  For `ψ ∈ C²` with `ψ, ψ', ψ''`
+compactly supported, `|ψ''| ≤ C`, and `ψ''` continuous at `0`,
+
+    λ² ∫_0^∞ f(s) ψ(s/λ) ds  →  ψ''(0)      (λ → ∞).
+
+The finite-λ identity (`radial_ibp_identity` applied to `ψ(·/λ)`) reduces it to
+`∫ s²e^{-s} (½ ψ''(s/λ))`, and dominated convergence finishes it.  CRUCIAL: the dominator
+is the FIXED Gamma kernel `(C/2) s²e^{-s}` (integrable via `gamma_monomial_integral 2`),
+NOT compact support -- the support of `ψ''(s/λ)` expands with `λ`. -/
+theorem radial_limit (ψ ψ' ψ'' : ℝ → ℝ) (C : ℝ)
+    (hψ : ∀ x, HasDerivAt ψ (ψ' x) x) (hψ' : ∀ x, HasDerivAt ψ' (ψ'' x) x)
+    (hψc : Continuous ψ) (hψ'c : Continuous ψ') (hψ''c : Continuous ψ'')
+    (hsψ : HasCompactSupport ψ) (hsψ' : HasCompactSupport ψ') (hsψ'' : HasCompactSupport ψ'')
+    (hC : ∀ x, |ψ'' x| ≤ C) (hcont : ContinuousAt ψ'' 0) :
+    Tendsto (fun l : ℝ => l ^ 2 * ∫ s in Ioi (0:ℝ), f2D s * ψ (s / l)) atTop (𝓝 (ψ'' 0)) := by
+  have hC0 : 0 ≤ C := le_trans (abs_nonneg _) (hC 0)
+  -- finite-λ identity, for l > 0
+  have key : ∀ l : ℝ, 0 < l → l ^ 2 * ∫ s in Ioi (0:ℝ), f2D s * ψ (s / l)
+      = ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' (s / l)) := by
+    intro l hl
+    have hcdiv : Continuous (fun s : ℝ => s / l) := continuous_id.div_const l
+    have hφ : ∀ x, HasDerivAt (fun s => ψ (s / l)) ((1 / l) * ψ' (x / l)) x := fun x => by
+      simpa [mul_comm, one_div] using (hψ (x / l)).comp x ((hasDerivAt_id x).div_const l)
+    have hφ' : ∀ x, HasDerivAt (fun s => (1 / l) * ψ' (s / l)) ((1 / l ^ 2) * ψ'' (x / l)) x :=
+      fun x => by
+        have h := ((hψ' (x / l)).comp x ((hasDerivAt_id x).div_const l)).const_mul (1 / l)
+        convert h using 1
+        field_simp
+    have hs0 : HasCompactSupport (fun s => ψ (s / l)) := by
+      have := hsψ.comp_smul (c := (1 / l)) (by positivity)
+      simpa [smul_eq_mul, div_eq_mul_inv, one_div, mul_comm] using this
+    have hs1 : HasCompactSupport (fun s => (1 / l) * ψ' (s / l)) := by
+      have := (hsψ'.comp_smul (c := (1 / l)) (by positivity)).mul_left (f := fun _ => (1 / l : ℝ))
+      simpa [smul_eq_mul, div_eq_mul_inv, one_div, mul_comm, Pi.mul_apply] using this
+    have hs2 : HasCompactSupport (fun s => (1 / l ^ 2) * ψ'' (s / l)) := by
+      have := (hsψ''.comp_smul (c := (1 / l)) (by positivity)).mul_left (f := fun _ => (1 / l ^ 2 : ℝ))
+      simpa [smul_eq_mul, div_eq_mul_inv, one_div, mul_comm, Pi.mul_apply] using this
+    have hc0 : Continuous (fun s => ψ (s / l)) := hψc.comp hcdiv
+    have hc1 : Continuous (fun s => (1 / l) * ψ' (s / l)) := continuous_const.mul (hψ'c.comp hcdiv)
+    have hc2 : Continuous (fun s => (1 / l ^ 2) * ψ'' (s / l)) := continuous_const.mul (hψ''c.comp hcdiv)
+    have ibp := radial_ibp_identity (fun s => ψ (s / l)) (fun s => (1 / l) * ψ' (s / l))
+      (fun s => (1 / l ^ 2) * ψ'' (s / l)) hφ hφ' hc0 hc1 hc2 hs0 hs1 hs2
+    have hl2 : l ≠ 0 := hl.ne'
+    have hF : ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / l ^ 2) * ψ'' (s / l))
+        = (1 / l ^ 2) * ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ψ'' (s / l) := by
+      rw [← integral_const_mul]; apply setIntegral_congr_fun measurableSet_Ioi; intro s _; ring
+    have hG : ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' (s / l))
+        = (1 / 2) * ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ψ'' (s / l) := by
+      rw [← integral_const_mul]; apply setIntegral_congr_fun measurableSet_Ioi; intro s _; ring
+    rw [ibp, hF, hG]
+    field_simp
+  -- dominated convergence with fixed Gamma-kernel dominator
+  have hgamma : ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 = 2 := by
+    rw [gamma_monomial_integral 2]; norm_num [Nat.factorial]
+  have hdct : Tendsto (fun l : ℝ => ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' (s / l)))
+      atTop (𝓝 (∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' 0))) := by
+    apply tendsto_integral_filter_of_dominated_convergence (fun s => (C / 2) * (Real.exp (-s) * s ^ 2))
+    · filter_upwards [eventually_gt_atTop (0:ℝ)] with l _
+      exact ((Real.continuous_exp.comp continuous_neg).mul (continuous_pow 2) |>.mul
+        (continuous_const.mul (hψ''c.comp (continuous_id.div_const l)))).aestronglyMeasurable
+    · filter_upwards [eventually_gt_atTop (0:ℝ)] with l _
+      filter_upwards with s
+      have h2 : (0:ℝ) ≤ Real.exp (-s) * s ^ 2 := by positivity
+      rw [Real.norm_eq_abs, abs_mul, abs_of_nonneg h2, abs_mul,
+        abs_of_nonneg (by norm_num : (0:ℝ) ≤ 1 / 2)]
+      calc Real.exp (-s) * s ^ 2 * ((1 / 2) * |ψ'' (s / l)|)
+          ≤ Real.exp (-s) * s ^ 2 * ((1 / 2) * C) :=
+            mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left (hC _) (by norm_num)) h2
+        _ = (C / 2) * (Real.exp (-s) * s ^ 2) := by ring
+    · exact (integrable_exp_pow 2).const_mul (C / 2)
+    · filter_upwards with s
+      have htends : Tendsto (fun l : ℝ => s / l) atTop (𝓝 0) := by
+        simpa [div_eq_mul_inv] using tendsto_inv_atTop_zero.const_mul s
+      have := (hcont.tendsto.comp htends).const_mul (Real.exp (-s) * s ^ 2 * (1 / 2))
+      simpa [mul_assoc, mul_comm, mul_left_comm] using this
+  -- assemble
+  have hval : ∫ s in Ioi (0:ℝ), Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' 0) = ψ'' 0 := by
+    rw [show (fun s => Real.exp (-s) * s ^ 2 * ((1 / 2) * ψ'' 0))
+      = fun s => ((1 / 2) * ψ'' 0) * (Real.exp (-s) * s ^ 2) from by funext s; ring,
+      integral_const_mul, hgamma]
+    ring
+  rw [hval] at hdct
+  refine hdct.congr' ?_
+  filter_upwards [eventually_gt_atTop (0:ℝ)] with l hl
+  exact (key l hl).symm
+
+#print axioms radial_limit
 
 /-! ## The mixed-kernel identity (route to the full 2D theorem) -/
 
