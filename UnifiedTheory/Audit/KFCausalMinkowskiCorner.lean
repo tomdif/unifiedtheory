@@ -86,8 +86,50 @@ theorem concentration_limit (h : ℝ → ℝ) (M : ℝ) (hcont : Continuous h) (
       integral_const_mul, hexp1, mul_one]
   rwa [hval] at hdct
 
+/-- **Scaling change of variables** (the substitution linking the two inner forms).
+For `a, w > 0`,
+
+    aw ∫_0^∞ e^{-aUw} h(U) dU  =  ∫_0^∞ e^{-t} h(t/(aw)) dt,
+
+via `t = aUw` (`integral_comp_mul_left_Ioi`).  This turns the original-variable inner
+expression into the `concentration_limit` form. -/
+theorem scaling_change_of_var (h : ℝ → ℝ) (a w : ℝ) (ha : 0 < a) (hw : 0 < w) :
+    a * w * ∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * h U
+      = ∫ t in Ioi (0:ℝ), Real.exp (-t) * h (t / (a * w)) := by
+  have hc0 : 0 < a * w := mul_pos ha hw
+  have key := integral_comp_mul_left_Ioi (fun t => Real.exp (-t) * h (t / (a * w))) 0 hc0
+  rw [mul_zero, smul_eq_mul] at key
+  have hcancel : (∫ x in Ioi (0:ℝ), (fun t => Real.exp (-t) * h (t / (a * w))) (a * w * x))
+      = ∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * h U := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro x _
+    have hxeq : a * w * x / (a * w) = x := by
+      rw [mul_comm (a * w) x, mul_div_assoc, div_self hc0.ne', mul_one]
+    show Real.exp (-(a * w * x)) * h (a * w * x / (a * w)) = Real.exp (-(a * w * x)) * h x
+    rw [hxeq]
+  rw [hcancel] at key
+  rw [key, ← mul_assoc, mul_inv_cancel₀ hc0.ne', one_mul]
+
+/-- **Inner limit for every fixed `w > 0`** (the corner-kernel gate's inner step, original
+variable).  For continuous bounded `G` (playing the role of `∂_W g(·,w)`),
+
+    aw ∫_0^∞ e^{-aUw} G(U) dU  →  G(0)      (a → ∞),
+
+by the scaling substitution followed by `concentration_limit` (with `λ = aw → ∞`). -/
+theorem inner_limit (G : ℝ → ℝ) (M : ℝ) (hcont : Continuous G) (hM : ∀ x, |G x| ≤ M)
+    (w : ℝ) (hw : 0 < w) :
+    Tendsto (fun a : ℝ => a * w * ∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U) atTop (𝓝 (G 0)) := by
+  have hcomp : Tendsto (fun a : ℝ => ∫ t in Ioi (0:ℝ), Real.exp (-t) * G (t / (a * w)))
+      atTop (𝓝 (G 0)) :=
+    (concentration_limit G M hcont hM).comp (tendsto_id.atTop_mul_const hw)
+  refine hcomp.congr' ?_
+  filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+  exact (scaling_change_of_var G a w ha hw).symm
+
 #print axioms corner_kernel_deriv
 #print axioms corner_kernel_identity
 #print axioms concentration_limit
+#print axioms scaling_change_of_var
+#print axioms inner_limit
 
 end UnifiedTheory.Audit.KFCausalMinkowskiCorner
