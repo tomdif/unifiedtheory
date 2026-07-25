@@ -151,6 +151,51 @@ theorem boundary_ftc_half (G G' : ℝ → ℝ) (B : ℝ)
     (1 / 2) * ∫ w in Ioi (0:ℝ), G' w = -(1 / 2) * G 0 := by
   rw [boundary_ftc G G' B hderiv hint hsupp]; ring
 
+/-- **Inner uniform bound (the outer DCT's dominator ingredient).**  For continuous bounded
+`G` (`|G| ≤ M`) and `a, w > 0`, `|aw ∫_0^∞ e^{-aUw} G(U) dU| ≤ M`, because the kernel has
+unit mass `aw ∫_0^∞ e^{-aUw} dU = 1`.  This is the `a`-independent dominator on the
+`w`-support box that makes the outer dominated convergence legitimate. -/
+theorem inner_bound (G : ℝ → ℝ) (M : ℝ) (hM : ∀ x, |G x| ≤ M)
+    (a w : ℝ) (ha : 0 < a) (hw : 0 < w) :
+    |a * w * ∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U| ≤ M := by
+  have hc0 : 0 < a * w := mul_pos ha hw
+  have hexpint : IntegrableOn (fun U => Real.exp (-(a * w * U))) (Ioi (0:ℝ)) := by
+    simpa only [neg_mul] using exp_neg_integrableOn_Ioi 0 hc0
+  have hexpval : ∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) = (a * w)⁻¹ := by
+    have hcov := integral_comp_mul_left_Ioi (fun u => Real.exp (-u)) 0 hc0
+    simpa only [mul_zero, smul_eq_mul, integral_exp_neg_Ioi, neg_zero, Real.exp_zero, mul_one] using hcov
+  rw [abs_mul, abs_of_pos hc0]
+  have hfg : |∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U| ≤ M * (a * w)⁻¹ := by
+    calc |∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U|
+        = ‖∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U‖ := (Real.norm_eq_abs _).symm
+      _ ≤ ∫ U in Ioi (0:ℝ), M * Real.exp (-(a * w * U)) := by
+          apply norm_integral_le_of_norm_le (hexpint.const_mul M)
+          apply ae_restrict_of_forall_mem measurableSet_Ioi
+          intro U _
+          rw [Real.norm_eq_abs, abs_mul, abs_of_pos (Real.exp_pos _)]
+          calc Real.exp (-(a * w * U)) * |G U|
+              ≤ Real.exp (-(a * w * U)) * M := mul_le_mul_of_nonneg_left (hM U) (Real.exp_pos _).le
+            _ = M * Real.exp (-(a * w * U)) := by ring
+      _ = M * (a * w)⁻¹ := by rw [integral_const_mul, hexpval]
+  calc a * w * |∫ U in Ioi (0:ℝ), Real.exp (-(a * w * U)) * G U|
+      ≤ a * w * (M * (a * w)⁻¹) := mul_le_mul_of_nonneg_left hfg hc0.le
+    _ = M := by field_simp
+
+/-- **Outer dominated convergence (the outer half of the corner gate).**  If the outer
+integrand family `Φ a` is measurable, dominated by a fixed integrable `D` on `(0,∞)`, and
+converges pointwise a.e. to `P` as `a → ∞`, then the outer integrals converge:
+`∫_0^∞ Φ a w dw → ∫_0^∞ P w dw`.  In the corner gate `Φ a w = aw ∫_U e^{-aUw} ∂_W g(U,w) dU`,
+`P w = ∂_W g(0,w)` (from `inner_limit`, a.e.), and `D = M · 1_(0,B]` (from `inner_bound` on
+the `w`-support box).  The filter is `atTop` on `ℝ`, which is countably generated. -/
+theorem outer_dct (Φ : ℝ → ℝ → ℝ) (P D : ℝ → ℝ)
+    (hmeas : ∀ a, AEStronglyMeasurable (Φ a) (volume.restrict (Ioi (0:ℝ))))
+    (hD : IntegrableOn D (Ioi (0:ℝ)))
+    (hbound : ∀ a, ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))), ‖Φ a w‖ ≤ D w)
+    (hlim : ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))), Tendsto (fun a => Φ a w) atTop (𝓝 (P w))) :
+    Tendsto (fun a => ∫ w in Ioi (0:ℝ), Φ a w) atTop (𝓝 (∫ w in Ioi (0:ℝ), P w)) :=
+  tendsto_integral_filter_of_dominated_convergence D
+    (Eventually.of_forall hmeas) (Eventually.of_forall hbound) hD hlim
+
 #print axioms corner_kernel_deriv
 #print axioms corner_kernel_identity
 #print axioms concentration_limit
@@ -158,5 +203,7 @@ theorem boundary_ftc_half (G G' : ℝ → ℝ) (B : ℝ)
 #print axioms inner_limit
 #print axioms boundary_ftc
 #print axioms boundary_ftc_half
+#print axioms inner_bound
+#print axioms outer_dct
 
 end UnifiedTheory.Audit.KFCausalMinkowskiCorner
