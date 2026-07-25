@@ -1,0 +1,43 @@
+/-
+  Audit/KFCausalCSpec.lean — aggregator for the causal-spectral (CSpec) program.
+
+  Imports every KFCausalCSpec* module so the whole program (order sector, volume
+  sector, and the goal-B/C dynamics) is covered by the default lake build root,
+  not only under manual targeting. Pure import hub; no declarations.
+-/
+import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
+import UnifiedTheory.Audit.KFCausalCSpecBDGContinuumLimit
+import UnifiedTheory.Audit.KFCausalCSpecBDGDerivation
+import UnifiedTheory.Audit.KFCausalCSpecBooleanCubeMargin
+import UnifiedTheory.Audit.KFCausalCSpecBridgePoset
+import UnifiedTheory.Audit.KFCausalCSpecCensusRecovery
+import UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
+import UnifiedTheory.Audit.KFCausalCSpecCountConcentration
+import UnifiedTheory.Audit.KFCausalCSpecCurvatureVolumeBound
+import UnifiedTheory.Audit.KFCausalCSpecDiscretenessResidue
+import UnifiedTheory.Audit.KFCausalCSpecEdgeScaleDefect
+import UnifiedTheory.Audit.KFCausalCSpecEffectiveGlobalization
+import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
+import UnifiedTheory.Audit.KFCausalCSpecGlobalization
+import UnifiedTheory.Audit.KFCausalCSpecGlobalRank
+import UnifiedTheory.Audit.KFCausalCSpecGluing
+import UnifiedTheory.Audit.KFCausalCSpecHighDensityLimit
+import UnifiedTheory.Audit.KFCausalCSpecIntrinsicDescent
+import UnifiedTheory.Audit.KFCausalCSpecLaplaceScaling
+import UnifiedTheory.Audit.KFCausalCSpecLayerMomentConditions
+import UnifiedTheory.Audit.KFCausalCSpecLoopHolonomyBand
+import UnifiedTheory.Audit.KFCausalCSpecMonodromy
+import UnifiedTheory.Audit.KFCausalCSpecOverlapScore
+import UnifiedTheory.Audit.KFCausalCSpecPoissonConcentration
+import UnifiedTheory.Audit.KFCausalCSpecPoissonFactorialMoment
+import UnifiedTheory.Audit.KFCausalCSpecPoissonLayerRpow
+import UnifiedTheory.Audit.KFCausalCSpecPoissonMoments
+import UnifiedTheory.Audit.KFCausalCSpecRelativeScaleCocycle
+import UnifiedTheory.Audit.KFCausalCSpecSheetRealization
+import UnifiedTheory.Audit.KFCausalCSpecStatisticalLoopBand
+import UnifiedTheory.Audit.KFCausalCSpecTrilateration
+import UnifiedTheory.Audit.KFCausalCSpecTwistedGap
+import UnifiedTheory.Audit.KFCausalCSpecTwoEmbeddingProperTime
+import UnifiedTheory.Audit.KFCausalCSpecUniqueMatching
+import UnifiedTheory.Audit.KFCausalCSpecVolumeGauge
+import UnifiedTheory.Audit.KFCausalCSpecVolumeSector

@@ -5326,4 +5326,5 @@ import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
 -- supplies its geometric interpretation; clock evolution and the weak map
 -- occur only in the handedness interpretation layer.
 import UnifiedTheory.Audit.KFCausalSetPostulateFootprint
+import UnifiedTheory.Audit.KFCausalCSpec
 import UnifiedTheory.LayerC.ContextualFraction
