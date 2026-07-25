@@ -58,7 +58,55 @@ theorem poissonLayer_ell_squared (ρ : ℝ) (hρ : 0 < ρ) (d k : ℕ) (hd : 1 �
   have hd0 : (0 : ℝ) < (d : ℝ) := by exact_mod_cast hd
   exact poissonLayer_rpow ρ (2 / (d : ℝ)) hρ (by positivity) k
 
+/-- Scaled Gamma-integrand integrability: `v ↦ v^{β-1} e^{-ρ v}` is integrable on `(0,∞)`.
+Derived from Mathlib's `GammaIntegral_convergent` by the change of variables `x = ρ v`. -/
+theorem integrableOn_rpow_exp (ρ β : ℝ) (hρ : 0 < ρ) (hβ : 0 < β) :
+    IntegrableOn (fun v => v ^ (β - 1) * Real.exp (-(ρ * v))) (Ioi (0 : ℝ)) := by
+  have hconv : IntegrableOn (fun x => Real.exp (-x) * x ^ (β - 1)) (Ioi (0 : ℝ)) :=
+    Real.GammaIntegral_convergent hβ
+  have hscaled : IntegrableOn (fun v => Real.exp (-(ρ * v)) * (ρ * v) ^ (β - 1)) (Ioi (0 : ℝ)) := by
+    have h := (integrableOn_Ioi_comp_mul_left_iff
+      (fun x => Real.exp (-x) * x ^ (β - 1)) 0 hρ).mpr
+    simp only [mul_zero] at h
+    exact h hconv
+  refine IntegrableOn.congr_fun (hscaled.const_mul ((ρ ^ (β - 1))⁻¹)) ?_ measurableSet_Ioi
+  intro v hv
+  rw [mem_Ioi] at hv
+  dsimp only
+  rw [Real.mul_rpow hρ.le hv.le]
+  have hρβ : ρ ^ (β - 1) ≠ 0 := (Real.rpow_pos_of_pos hρ _).ne'
+  field_simp
+
+/-- **Remainder bound (controlled asymptotic extraction).**  If a shell remainder is
+dominated by a power, `|R(v)| ≤ C · v^{β-1}` on `(0,∞)`, then its Laplace transform is
+bounded by the corresponding Gamma term: `|∫_0^∞ e^{-ρ v} R(v) dv| ≤ C · Γ(β) · (1/ρ)^β`.
+This controls the non-monomial tail of a local shell expansion `w = A v^{α-1} + …`, the
+piece beyond the exact `poissonLayer_rpow` monomials. -/
+theorem laplace_remainder_bound (ρ C β : ℝ) (hρ : 0 < ρ) (hβ : 0 < β) (R : ℝ → ℝ)
+    (hbound : ∀ v ∈ Ioi (0 : ℝ), |R v| ≤ C * v ^ (β - 1)) :
+    |∫ v in Ioi (0 : ℝ), Real.exp (-(ρ * v)) * R v| ≤ C * Real.Gamma β * (1 / ρ) ^ β := by
+  have hgint : IntegrableOn (fun v => C * (v ^ (β - 1) * Real.exp (-(ρ * v)))) (Ioi (0 : ℝ)) :=
+    (integrableOn_rpow_exp ρ β hρ hβ).const_mul C
+  have hnorm : ∀ v ∈ Ioi (0 : ℝ),
+      ‖Real.exp (-(ρ * v)) * R v‖ ≤ C * (v ^ (β - 1) * Real.exp (-(ρ * v))) := by
+    intro v hv
+    rw [Real.norm_eq_abs, abs_mul, abs_of_pos (Real.exp_pos _)]
+    calc Real.exp (-(ρ * v)) * |R v|
+        ≤ Real.exp (-(ρ * v)) * (C * v ^ (β - 1)) :=
+          mul_le_mul_of_nonneg_left (hbound v hv) (Real.exp_pos _).le
+      _ = C * (v ^ (β - 1) * Real.exp (-(ρ * v))) := by ring
+  calc |∫ v in Ioi (0 : ℝ), Real.exp (-(ρ * v)) * R v|
+      = ‖∫ v in Ioi (0 : ℝ), Real.exp (-(ρ * v)) * R v‖ := (Real.norm_eq_abs _).symm
+    _ ≤ ∫ v in Ioi (0 : ℝ), C * (v ^ (β - 1) * Real.exp (-(ρ * v))) :=
+        norm_integral_le_of_norm_le hgint
+          (ae_restrict_of_forall_mem measurableSet_Ioi hnorm)
+    _ = C * Real.Gamma β * (1 / ρ) ^ β := by
+        rw [integral_const_mul, integral_rpow_mul_exp_neg_mul_Ioi hβ hρ]
+        ring
+
 #print axioms poissonLayer_rpow
 #print axioms poissonLayer_ell_squared
+#print axioms integrableOn_rpow_exp
+#print axioms laplace_remainder_bound
 
 end UnifiedTheory.Audit.KFCausalCSpecPoissonLayerRpow
