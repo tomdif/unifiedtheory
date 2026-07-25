@@ -41,3 +41,4 @@ import UnifiedTheory.Audit.KFCausalCSpecTwoEmbeddingProperTime
 import UnifiedTheory.Audit.KFCausalCSpecUniqueMatching
 import UnifiedTheory.Audit.KFCausalCSpecVolumeGauge
 import UnifiedTheory.Audit.KFCausalCSpecVolumeSector
+import UnifiedTheory.Audit.KFCausalMinkowskiShell
