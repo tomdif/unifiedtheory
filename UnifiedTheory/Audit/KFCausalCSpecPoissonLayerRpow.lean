@@ -104,9 +104,38 @@ theorem laplace_remainder_bound (ρ C β : ℝ) (hρ : 0 < ρ) (hβ : 0 < β) (R
         rw [integral_const_mul, integral_rpow_mul_exp_neg_mul_Ioi hβ hρ]
         ring
 
+/-- **Exponential-tail cutoff bound.**  Outside the local geometric neighborhood
+`(δ, ∞)` — where the shell expansion no longer holds — a merely BOUNDED integrand
+contributes only `(M/ρ) e^{-ρδ}`, exponentially small in `ρ` (smaller than every power
+`ρ^{-n}`).  So the far region is negligible in the ρ → ∞ asymptotics: if `|g v| ≤ M` on
+`(δ, ∞)`, then `|∫_δ^∞ e^{-ρ v} g(v) dv| ≤ (M/ρ) e^{-ρδ}`. -/
+theorem laplace_tail_bound (ρ M δ : ℝ) (hρ : 0 < ρ) (g : ℝ → ℝ)
+    (hbound : ∀ v ∈ Ioi δ, |g v| ≤ M) :
+    |∫ v in Ioi δ, Real.exp (-(ρ * v)) * g v| ≤ M / ρ * Real.exp (-(ρ * δ)) := by
+  have hexpint : IntegrableOn (fun v => Real.exp (-(ρ * v))) (Ioi δ) := by
+    simpa only [neg_mul] using exp_neg_integrableOn_Ioi δ hρ
+  have hexpval : ∫ v in Ioi δ, Real.exp (-(ρ * v)) = ρ⁻¹ * Real.exp (-(ρ * δ)) := by
+    have hcov := integral_comp_mul_left_Ioi (fun u => Real.exp (-u)) δ hρ
+    simpa only [smul_eq_mul, integral_exp_neg_Ioi] using hcov
+  have hcompint : IntegrableOn (fun v => M * Real.exp (-(ρ * v))) (Ioi δ) := hexpint.const_mul M
+  have hnorm : ∀ v ∈ Ioi δ, ‖Real.exp (-(ρ * v)) * g v‖ ≤ M * Real.exp (-(ρ * v)) := by
+    intro v hv
+    rw [Real.norm_eq_abs, abs_mul, abs_of_pos (Real.exp_pos _)]
+    calc Real.exp (-(ρ * v)) * |g v|
+        ≤ Real.exp (-(ρ * v)) * M :=
+          mul_le_mul_of_nonneg_left (hbound v hv) (Real.exp_pos _).le
+      _ = M * Real.exp (-(ρ * v)) := by ring
+  calc |∫ v in Ioi δ, Real.exp (-(ρ * v)) * g v|
+      = ‖∫ v in Ioi δ, Real.exp (-(ρ * v)) * g v‖ := (Real.norm_eq_abs _).symm
+    _ ≤ ∫ v in Ioi δ, M * Real.exp (-(ρ * v)) :=
+        norm_integral_le_of_norm_le hcompint
+          (ae_restrict_of_forall_mem measurableSet_Ioi hnorm)
+    _ = M / ρ * Real.exp (-(ρ * δ)) := by rw [integral_const_mul, hexpval]; ring
+
 #print axioms poissonLayer_rpow
 #print axioms poissonLayer_ell_squared
 #print axioms integrableOn_rpow_exp
 #print axioms laplace_remainder_bound
+#print axioms laplace_tail_bound
 
 end UnifiedTheory.Audit.KFCausalCSpecPoissonLayerRpow
