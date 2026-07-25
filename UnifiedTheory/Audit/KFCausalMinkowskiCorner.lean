@@ -126,10 +126,37 @@ theorem inner_limit (G : ℝ → ℝ) (M : ℝ) (hcont : Continuous G) (hM : ∀
   filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
   exact (scaling_change_of_var G a w ha hw).symm
 
+/-- **Boundary evaluation (the FTC step of the corner gate).**  If `G` is everywhere
+differentiable with integrable derivative `G'` and vanishes past `B` (the `w`-support box),
+then `∫_0^∞ G'(w) dw = -G(0)`.  Applied to `G = g(0,·)`, `G' = ∂_W g(0,·)` this gives
+`½ ∫_0^∞ ∂_W g(0,w) dw = -½ g(0,0)` -- the sign of the corner limit, from compact support
+at infinity via the fundamental theorem of calculus. -/
+theorem boundary_ftc (G G' : ℝ → ℝ) (B : ℝ)
+    (hderiv : ∀ x, HasDerivAt G (G' x) x)
+    (hint : IntegrableOn G' (Ioi (0:ℝ)))
+    (hsupp : ∀ w, B ≤ w → G w = 0) :
+    ∫ w in Ioi (0:ℝ), G' w = - G 0 := by
+  have htend : Tendsto G atTop (𝓝 0) := by
+    apply tendsto_const_nhds.congr'
+    filter_upwards [eventually_ge_atTop B] with w hw
+    exact (hsupp w hw).symm
+  have h := integral_Ioi_of_hasDerivAt_of_tendsto' (a := (0:ℝ)) (fun x _ => hderiv x) hint htend
+  rw [h, zero_sub]
+
+/-- The corner gate's boundary value in the exact `-½ g(0,0)` form. -/
+theorem boundary_ftc_half (G G' : ℝ → ℝ) (B : ℝ)
+    (hderiv : ∀ x, HasDerivAt G (G' x) x)
+    (hint : IntegrableOn G' (Ioi (0:ℝ)))
+    (hsupp : ∀ w, B ≤ w → G w = 0) :
+    (1 / 2) * ∫ w in Ioi (0:ℝ), G' w = -(1 / 2) * G 0 := by
+  rw [boundary_ftc G G' B hderiv hint hsupp]; ring
+
 #print axioms corner_kernel_deriv
 #print axioms corner_kernel_identity
 #print axioms concentration_limit
 #print axioms scaling_change_of_var
 #print axioms inner_limit
+#print axioms boundary_ftc
+#print axioms boundary_ftc_half
 
 end UnifiedTheory.Audit.KFCausalMinkowskiCorner
