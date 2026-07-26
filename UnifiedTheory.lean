@@ -119,6 +119,15 @@ import UnifiedTheory.LayerA.ChargeConsistency
 import UnifiedTheory.LayerA.HiggsPotentialForm
 import UnifiedTheory.LayerA.HiggsMassDerived
 
+-- Adjoint (connection-sector) fermions for unification
+import UnifiedTheory.LayerA.ConnectionDefectAdjoint
+import UnifiedTheory.LayerA.ConnectionDefectMassless
+import UnifiedTheory.LayerA.AdjointCarrierSpinor
+import UnifiedTheory.LayerA.AdjointDimension
+import UnifiedTheory.LayerA.ArrowChiralityLock
+import UnifiedTheory.LayerA.ContinuumChiralityFlip
+import UnifiedTheory.LayerA.CensusIdentities
+
 -- Feynman rules from structured history sums
 import UnifiedTheory.LayerB.FeynmanRules
 import UnifiedTheory.LayerB.HiggsDoublet
