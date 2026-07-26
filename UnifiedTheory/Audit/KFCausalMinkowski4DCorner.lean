@@ -182,8 +182,45 @@ theorem frullani_concentration (g pdug : ℝ → ℝ → ℝ) (Mu A : ℝ) (hA :
       (fun x => hdu 0 x) (fun x => hMu x 0) (fun x hx => hsupp x 0 hx) w hw
   rwa [hval] at hdct
 
+/-! ## The inner substitution (K4-corner step 1) -/
+
+/-- **The inner `w = √a·u·v` substitution** (exact, per `a, u > 0`):
+
+    √a · ∫₀^∞ K4(a u²v²) g(u,v) dv  =  u⁻¹ · ∫₀^∞ K4(w²) g(u, w/(√a·u)) dw.
+
+The starting move of the K4-corner assembly: after it, the outer `u`-integral
+against `u⁻¹` is the multiplicative-Haar structure that `frullani_concentration`
+consumes. -/
+theorem K4_corner_inner_sub (g : ℝ → ℝ → ℝ) (a u : ℝ) (ha : 0 < a) (hu : 0 < u) :
+    Real.sqrt a * ∫ v in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*v^2) * g u v
+      = u⁻¹ * ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/(Real.sqrt a * u)) := by
+  set c := Real.sqrt a * u with hcdef
+  have hc : 0 < c := mul_pos (Real.sqrt_pos.mpr ha) hu
+  have hc2 : c^2 = a * u^2 := by rw [hcdef, mul_pow, Real.sq_sqrt ha.le]
+  have hcomp := integral_comp_mul_left_Ioi
+    (fun w => UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/c)) 0 hc
+  rw [mul_zero, smul_eq_mul] at hcomp
+  have hcancel : (∫ x in Ioi (0:ℝ),
+      (fun w => UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/c)) (c * x))
+      = ∫ x in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*x^2) * g u x := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro x hx
+    rw [mem_Ioi] at hx
+    show UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 ((c*x)^2) * g u ((c*x)/c)
+      = UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*x^2) * g u x
+    rw [mul_div_cancel_left₀ x hc.ne', mul_pow, hc2]
+    try ring_nf
+  rw [hcancel] at hcomp
+  dsimp only at hcomp
+  rw [hcomp, hcdef]
+  have hsa : Real.sqrt a ≠ 0 := (Real.sqrt_pos.mpr ha).ne'
+  field_simp
+  try ring
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
+#print axioms K4_corner_inner_sub
 
 end UnifiedTheory.Audit.KFCausalMinkowski4DCorner
