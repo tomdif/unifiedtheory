@@ -134,6 +134,7 @@ import UnifiedTheory.LayerA.ProtonLifetime
 import UnifiedTheory.LayerA.WeinbergAnglePrediction
 import UnifiedTheory.LayerA.VectorLikeLeptonFix
 import UnifiedTheory.LayerA.VertexMassTension
+import UnifiedTheory.LayerA.VLMassProtection
 import UnifiedTheory.LayerA.ArrowChiralityLock
 import UnifiedTheory.LayerA.ContinuumChiralityFlip
 import UnifiedTheory.LayerA.CensusIdentities
