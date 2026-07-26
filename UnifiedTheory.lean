@@ -125,6 +125,7 @@ import UnifiedTheory.LayerA.ConnectionDefectMassless
 import UnifiedTheory.LayerA.AdjointCarrierSpinor
 import UnifiedTheory.LayerA.AdjointDimension
 import UnifiedTheory.LayerA.AdjointMasslessMeasure
+import UnifiedTheory.LayerA.AdjointRunningDeterminant
 import UnifiedTheory.LayerA.ArrowChiralityLock
 import UnifiedTheory.LayerA.ContinuumChiralityFlip
 import UnifiedTheory.LayerA.CensusIdentities
