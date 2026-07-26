@@ -735,6 +735,86 @@ theorem D_bound (g pdug : ℝ → ℝ → ℝ) (Mu Cg A : ℝ) (hA : 0 < A)
           rw [hlogd, hmeq, habs]
           nlinarith [mul_nonneg (mul_nonneg hMu0 hw.le) hA.le]
 
+/-- **The K4-corner outer DCT (step 4).**  Under the standing hypotheses,
+
+    ∫₀^∞ K4(w²)·[∫₀^∞ (g(ws,(√a·s)⁻¹) − g(s,(√a·s)⁻¹))/s ds] dw
+        ⟶  −g(0,0) · ∫₀^∞ K4(w²)·ln w dw       (a → ∞):
+
+dominated convergence with the dominator `Mu·A·|K4(w²)| + Cg·|K4(w²)|·|ln w|`
+(`D_bound` + `K4_log_integrable` — fixed, `a`-independent), pointwise limit
+`frullani_concentration`. -/
+theorem K4_corner_outer_dct (g pdug : ℝ → ℝ → ℝ) (Mu Cg A : ℝ) (hA : 0 < A)
+    (hgc : Continuous (Function.uncurry g))
+    (hdu : ∀ v u, HasDerivAt (fun u' => g u' v) (pdug u v) u)
+    (hMu : ∀ u v, |pdug u v| ≤ Mu) (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsupp : ∀ u v, A ≤ u → g u v = 0) :
+    Tendsto (fun a : ℝ => ∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+        (∫ s in Ioi (0:ℝ),
+          (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s))
+      atTop (𝓝 (-(g 0 0) * ∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * Real.log w)) := by
+  have hKc : Continuous (fun w : ℝ =>
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)) := by
+    unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+    fun_prop
+  have hdct : Tendsto (fun a : ℝ => ∫ w in Ioi (0:ℝ),
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+      (∫ s in Ioi (0:ℝ),
+        (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s))
+      atTop (𝓝 (∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+        (-(g 0 0) * Real.log w))) := by
+    apply tendsto_integral_filter_of_dominated_convergence
+      (fun w => Mu * A * |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+        + Cg * (|UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |Real.log w|))
+    · filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+      have hFm : Measurable (Function.uncurry (fun w s =>
+          (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s)) := by
+        have hy : Measurable (fun p : ℝ × ℝ => (Real.sqrt a * p.2)⁻¹) :=
+          (measurable_snd.const_mul (Real.sqrt a)).inv
+        have h1 : Measurable (fun p : ℝ × ℝ => g (p.1 * p.2) ((Real.sqrt a * p.2)⁻¹)) :=
+          hgc.measurable.comp ((measurable_fst.mul measurable_snd).prodMk hy)
+        have h2 : Measurable (fun p : ℝ × ℝ => g p.2 ((Real.sqrt a * p.2)⁻¹)) :=
+          hgc.measurable.comp (measurable_snd.prodMk hy)
+        exact (h1.sub h2).div measurable_snd
+      have hmarg : StronglyMeasurable (fun w => ∫ s in Ioi (0:ℝ),
+          (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s) :=
+        hFm.stronglyMeasurable.integral_prod_right'
+      exact (hKc.measurable.mul hmarg.measurable).aestronglyMeasurable
+    · filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+      apply ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [mem_Ioi] at hw
+      rw [Real.norm_eq_abs, abs_mul]
+      calc |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| *
+          |∫ s in Ioi (0:ℝ),
+            (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s|
+          ≤ |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| *
+            (Mu * A + Cg * |Real.log w|) := by
+            apply mul_le_mul_of_nonneg_left ?_ (abs_nonneg _)
+            exact D_bound g pdug Mu Cg A hA hdu hMu hgb hsupp
+              (fun s => (Real.sqrt a * s)⁻¹) w hw
+        _ = Mu * A * |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+            + Cg * (|UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |Real.log w|) := by
+            ring
+    · exact ((K4_sq_integrable.abs.const_mul (Mu*A)).add
+        (K4_log_integrable.const_mul Cg))
+    · apply ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [mem_Ioi] at hw
+      exact (frullani_concentration g pdug Mu A hA hgc hdu hMu hsupp w hw).const_mul
+        (UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2))
+  have hval : (∫ w in Ioi (0:ℝ),
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * (-(g 0 0) * Real.log w))
+      = -(g 0 0) * ∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * Real.log w := by
+    rw [← integral_const_mul]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro w _
+    ring
+  rwa [hval] at hdct
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
