@@ -196,6 +196,51 @@ theorem outer_dct (Φ : ℝ → ℝ → ℝ) (P D : ℝ → ℝ)
   tendsto_integral_filter_of_dominated_convergence D
     (Eventually.of_forall hmeas) (Eventually.of_forall hbound) hD hlim
 
+/-! ## The finite-rectangle bridge (avoiding IBP under an improper integral) -/
+
+/-- **Step 1 — rectangle IBP (pointwise in `U`).**  On the finite `W`-interval `[0,B]`, with
+`g(U,B) = 0` (upper support) and `W=0` killing the lower term,
+
+    a ∫_0^B H(aUW) g(U,W) dW  =  (a/2) ∫_0^B W e^{-aUW} ∂_W g(U,W) dW.
+
+This is ordinary integration by parts on a compact interval (`integral_deriv_mul_eq_sub`),
+using `corner_kernel_identity`/`corner_kernel_deriv`; no differentiation under an integral. -/
+theorem corner_rectangle_ibp (g pdg : ℝ → ℝ → ℝ)
+    (hgc : Continuous (Function.uncurry g)) (hpdgc : Continuous (Function.uncurry pdg))
+    (hg : ∀ U W, HasDerivAt (fun W' => g U W') (pdg U W) W)
+    (a U B : ℝ) (hgB : g U B = 0) :
+    a * ∫ W in (0:ℝ)..B, Hkern (a * U * W) * g U W
+      = (a / 2) * ∫ W in (0:ℝ)..B, W * Real.exp (-(a * U * W)) * pdg U W := by
+  have hgU : Continuous (fun W => g U W) := hgc.comp (continuous_const.prodMk continuous_id)
+  have hpdgU : Continuous (fun W => pdg U W) := hpdgc.comp (continuous_const.prodMk continuous_id)
+  have hcu' : Continuous (fun W => Real.exp (-(a * U * W)) * (1 - a * U * W)) := by fun_prop
+  have hcu : Continuous (fun W => W * Real.exp (-(a * U * W))) := by fun_prop
+  have hu'int : IntervalIntegrable (fun W => Real.exp (-(a * U * W)) * (1 - a * U * W)) volume 0 B :=
+    hcu'.intervalIntegrable 0 B
+  have hv'int : IntervalIntegrable (fun W => pdg U W) volume 0 B := hpdgU.intervalIntegrable 0 B
+  have hibp := intervalIntegral.integral_deriv_mul_eq_sub
+    (fun W _ => corner_kernel_deriv a U W) (fun W _ => hg U W) hu'int hv'int
+  rw [hgB] at hibp
+  simp only [mul_zero, zero_mul, sub_zero] at hibp
+  have hi1 : IntervalIntegrable
+      (fun W => Real.exp (-(a * U * W)) * (1 - a * U * W) * g U W) volume 0 B :=
+    (hcu'.mul hgU).intervalIntegrable 0 B
+  have hi2 : IntervalIntegrable
+      (fun W => W * Real.exp (-(a * U * W)) * pdg U W) volume 0 B :=
+    (hcu.mul hpdgU).intervalIntegrable 0 B
+  rw [intervalIntegral.integral_add hi1 hi2] at hibp
+  have hHeq : ∫ W in (0:ℝ)..B, Hkern (a * U * W) * g U W
+      = -(1 / 2) * ∫ W in (0:ℝ)..B, Real.exp (-(a * U * W)) * (1 - a * U * W) * g U W := by
+    rw [← intervalIntegral.integral_const_mul]
+    apply intervalIntegral.integral_congr
+    intro W _
+    dsimp only
+    rw [corner_kernel_identity]; ring
+  rw [hHeq]
+  have hsplit : (∫ W in (0:ℝ)..B, Real.exp (-(a * U * W)) * (1 - a * U * W) * g U W)
+      = - ∫ W in (0:ℝ)..B, W * Real.exp (-(a * U * W)) * pdg U W := by linarith [hibp]
+  rw [hsplit]; ring
+
 #print axioms corner_kernel_deriv
 #print axioms corner_kernel_identity
 #print axioms concentration_limit
@@ -205,5 +250,6 @@ theorem outer_dct (Φ : ℝ → ℝ → ℝ) (P D : ℝ → ℝ)
 #print axioms boundary_ftc_half
 #print axioms inner_bound
 #print axioms outer_dct
+#print axioms corner_rectangle_ibp
 
 end UnifiedTheory.Audit.KFCausalMinkowskiCorner
