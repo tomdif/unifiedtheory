@@ -452,6 +452,113 @@ theorem K4_corner_fubini (g : ℝ → ℝ → ℝ) (Cg A B : ℝ) (hA : 0 < A) (
   rw [← hL, ← hR]
   exact hswap
 
+/-! ## The outer log-dominator (K4-corner step 3a) -/
+
+/-- `|ln w| ≤ w + 4·w^{−1/4}` for `w > 0`. -/
+theorem abs_log_le (w : ℝ) (hw : 0 < w) :
+    |Real.log w| ≤ w + 4 * w ^ (-(1:ℝ)/4) := by
+  have hrp : (0:ℝ) < w ^ (-(1:ℝ)/4) := Real.rpow_pos_of_pos hw _
+  rcases le_or_gt 1 w with h1 | h1
+  · rw [abs_of_nonneg (Real.log_nonneg h1)]
+    have := Real.log_le_sub_one_of_pos hw
+    linarith
+  · have hlt : Real.log w < 0 := Real.log_neg hw h1
+    rw [abs_of_neg hlt]
+    have hinv : (0:ℝ) < w⁻¹ := inv_pos.mpr hw
+    have hq : Real.log (w⁻¹ ^ ((1:ℝ)/4)) ≤ w⁻¹ ^ ((1:ℝ)/4) - 1 :=
+      Real.log_le_sub_one_of_pos (Real.rpow_pos_of_pos hinv _)
+    rw [Real.log_rpow hinv, Real.log_inv] at hq
+    have hconv : w⁻¹ ^ ((1:ℝ)/4) = w ^ (-(1:ℝ)/4) := by
+      rw [← Real.rpow_neg_one w, ← Real.rpow_mul hw.le]
+      norm_num
+    rw [hconv] at hq
+    nlinarith
+
+/-- Pointwise envelope `|K4(w²)| ≤ ⅓e^{−w²}(1 + 4w² + 4w⁴)`. -/
+theorem K4_sq_abs_le (w : ℝ) :
+    |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+      ≤ (1/3) * Real.exp (-w^2) * (1 + 4*w^2 + 4*w^4) := by
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+  rw [abs_mul, abs_mul, abs_of_nonneg (by norm_num : (0:ℝ) ≤ 1/3),
+    abs_of_pos (Real.exp_pos _)]
+  apply mul_le_mul_of_nonneg_left ?_ (by positivity)
+  rw [abs_le]
+  constructor <;> nlinarith [sq_nonneg w, sq_nonneg (w^2)]
+
+/-- **Integrability of the log dominator**: `∫₀^∞ |K4(w²)|·|ln w| dw < ∞`.
+Split at `1`: on `(0,1]` the log is beaten by `35·w^{−1/4}` with `|K4| ≤ 7`; on
+`(1,∞)` `ln w ≤ w` with the Gaussian envelope. -/
+theorem K4_log_integrable :
+    IntegrableOn (fun w => |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+      * |Real.log w|) (Ioi (0:ℝ)) := by
+  have hKm : Measurable (fun w : ℝ =>
+      |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |Real.log w|) := by
+    have hKc : Continuous (fun w : ℝ =>
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)) := by
+      unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+      fun_prop
+    exact (hKc.abs.measurable).mul Real.measurable_log.abs
+  rw [show Ioi (0:ℝ) = Ioc (0:ℝ) 1 ∪ Ioi 1 from
+    (Ioc_union_Ioi_eq_Ioi (by norm_num : (0:ℝ) ≤ 1)).symm]
+  apply IntegrableOn.union
+  · -- (0,1]: dominate by 35·w^{−1/4}
+    have hDint : IntegrableOn (fun w : ℝ => 35 * w ^ (-(1:ℝ)/4)) (Ioc (0:ℝ) 1) := by
+      have h := intervalIntegral.intervalIntegrable_rpow'
+        (a := 0) (b := 1) (by norm_num : (-1:ℝ) < -(1:ℝ)/4)
+      rw [intervalIntegrable_iff, Set.uIoc_of_le (by norm_num : (0:ℝ) ≤ 1)] at h
+      exact h.const_mul 35
+    apply Integrable.mono' hDint (hKm.aestronglyMeasurable)
+    apply ae_restrict_of_forall_mem measurableSet_Ioc
+    intro w hw
+    obtain ⟨hw0, hw1⟩ := hw
+    have hrp1 : (1:ℝ) ≤ w ^ (-(1:ℝ)/4) :=
+      Real.one_le_rpow_of_pos_of_le_one_of_nonpos hw0 hw1 (by norm_num)
+    have hlog : |Real.log w| ≤ 5 * w ^ (-(1:ℝ)/4) := by
+      have := abs_log_le w hw0
+      nlinarith
+    rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (abs_nonneg _) (abs_nonneg _))]
+    calc |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |Real.log w|
+        ≤ 7 * (5 * w ^ (-(1:ℝ)/4)) := by
+          apply mul_le_mul (UnifiedTheory.Audit.KFCausalMinkowski4DCorner.K4_abs_bound _ (sq_nonneg w)) hlog
+            (abs_nonneg _) (by norm_num)
+      _ = 35 * w ^ (-(1:ℝ)/4) := by ring
+  · -- (1,∞): dominate by the Gaussian envelope times w
+    have h1i : IntegrableOn (fun x : ℝ => x ^ (1:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+      (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (1:ℝ))).integrableOn
+    have h3i : IntegrableOn (fun x : ℝ => x ^ (3:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+      (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (3:ℝ))).integrableOn
+    have h5i : IntegrableOn (fun x : ℝ => x ^ (5:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+      (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (5:ℝ))).integrableOn
+    have hDint : IntegrableOn (fun w : ℝ =>
+        (1/3) * (w ^ (1:ℝ) * Real.exp (-(1:ℝ) * w ^ 2))
+          + (4/3) * (w ^ (3:ℝ) * Real.exp (-(1:ℝ) * w ^ 2))
+          + (4/3) * (w ^ (5:ℝ) * Real.exp (-(1:ℝ) * w ^ 2))) (Ioi 1) := by
+      apply IntegrableOn.mono_set ?_ (Ioi_subset_Ioi (by norm_num : (0:ℝ) ≤ 1))
+      exact ((h1i.const_mul (1/3)).add (h3i.const_mul (4/3))).add (h5i.const_mul (4/3))
+    apply Integrable.mono' hDint (hKm.aestronglyMeasurable)
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro w hw
+    rw [mem_Ioi] at hw
+    have hw0 : (0:ℝ) < w := lt_trans one_pos hw
+    have hlogw : |Real.log w| ≤ w := by
+      rw [abs_of_nonneg (Real.log_nonneg hw.le)]
+      have := Real.log_le_sub_one_of_pos hw0
+      linarith
+    have hK := K4_sq_abs_le w
+    rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (abs_nonneg _) (abs_nonneg _))]
+    have hrw : ∀ r : ℝ, w ^ r = w ^ r := fun _ => rfl
+    calc |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |Real.log w|
+        ≤ ((1/3) * Real.exp (-w^2) * (1 + 4*w^2 + 4*w^4)) * w := by
+          apply mul_le_mul hK hlogw (abs_nonneg _) (by positivity)
+      _ = (1/3) * (w ^ (1:ℝ) * Real.exp (-(1:ℝ) * w ^ 2))
+          + (4/3) * (w ^ (3:ℝ) * Real.exp (-(1:ℝ) * w ^ 2))
+          + (4/3) * (w ^ (5:ℝ) * Real.exp (-(1:ℝ) * w ^ 2)) := by
+          rw [show w ^ (1:ℝ) = w from Real.rpow_one w,
+            show w ^ (3:ℝ) = w ^ (3:ℕ) from by rw [← Real.rpow_natCast w 3]; norm_num,
+            show w ^ (5:ℝ) = w ^ (5:ℕ) from by rw [← Real.rpow_natCast w 5]; norm_num,
+            neg_one_mul]
+          ring
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
