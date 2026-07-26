@@ -235,6 +235,223 @@ theorem K4_corner_haar_link (g : ℝ → ℝ → ℝ) (a w : ℝ) (hw : 0 < w) :
   field_simp
   try ring
 
+/-! ## The Fubini swap (K4-corner step 2a) -/
+
+/-- `t·e^{−t} ≤ 1` for `t ≥ 0`. -/
+private lemma mul_exp_neg_le_one (t : ℝ) (ht : 0 ≤ t) : t * Real.exp (-t) ≤ 1 := by
+  have h1 : t ≤ Real.exp t := (Real.add_one_le_exp t).trans' (by linarith)
+  have h2 : Real.exp t * Real.exp (-t) = 1 := by
+    rw [← Real.exp_add]; simp
+  nlinarith [Real.exp_pos (-t), Real.exp_pos t]
+
+/-- Global bound `|K4(z)| ≤ 7` for `z ≥ 0`. -/
+theorem K4_abs_bound (z : ℝ) (hz : 0 ≤ z) :
+    |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 z| ≤ 7 := by
+  have h1 : z * Real.exp (-z) ≤ 1 := mul_exp_neg_le_one z hz
+  have h2 : z^2 * Real.exp (-z) ≤ 4 := by
+    have hh := mul_exp_neg_le_one (z/2) (by linarith)
+    have hsq : (z/2 * Real.exp (-(z/2)))^2 ≤ 1 := by nlinarith [mul_nonneg (by linarith : (0:ℝ) ≤ z/2) (Real.exp_pos (-(z/2))).le]
+    have hexp : Real.exp (-(z/2)) * Real.exp (-(z/2)) = Real.exp (-z) := by
+      rw [← Real.exp_add]; ring_nf
+    nlinarith [Real.exp_pos (-z)]
+  have h3 : Real.exp (-z) ≤ 1 := by
+    rw [Real.exp_le_one_iff]
+    linarith
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+  rw [abs_mul, abs_mul, abs_of_nonneg (by norm_num : (0:ℝ) ≤ 1/3), abs_of_pos (Real.exp_pos _)]
+  have habs : |1 + 4*z - 4*z^2| ≤ 1 + 4*z + 4*z^2 := by
+    rw [abs_le]
+    constructor <;> nlinarith [sq_nonneg z]
+  calc (1/3) * Real.exp (-z) * |1 + 4*z - 4*z^2|
+      ≤ (1/3) * Real.exp (-z) * (1 + 4*z + 4*z^2) := by
+        apply mul_le_mul_of_nonneg_left habs (by positivity)
+    _ = (1/3) * (Real.exp (-z) + 4*(z*Real.exp (-z)) + 4*(z^2*Real.exp (-z))) := by ring
+    _ ≤ (1/3) * (1 + 4*1 + 4*4) := by
+        apply mul_le_mul_of_nonneg_left ?_ (by norm_num)
+        linarith
+    _ = 7 := by norm_num
+
+/-- `w ↦ K4(w²)` is integrable on `(0,∞)` (Gaussian moments `s = 0, 2, 4`). -/
+theorem K4_sq_integrable :
+    IntegrableOn (fun w => UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)) (Ioi (0:ℝ)) := by
+  have h0 : IntegrableOn (fun x : ℝ => x ^ (0:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (0:ℝ))).integrableOn
+  have h2 : IntegrableOn (fun x : ℝ => x ^ (2:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (2:ℝ))).integrableOn
+  have h4 : IntegrableOn (fun x : ℝ => x ^ (4:ℝ) * Real.exp (-(1:ℝ) * x ^ 2)) (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos (by norm_num : (-1:ℝ) < (4:ℝ))).integrableOn
+  refine IntegrableOn.congr_fun
+    (((h0.const_mul (1/3)).add (h2.const_mul (4/3))).sub (h4.const_mul (4/3))) ?_
+    measurableSet_Ioi
+  intro w hw
+  rw [mem_Ioi] at hw
+  simp only [Pi.sub_apply, Pi.add_apply]
+  rw [show w ^ (0:ℝ) = 1 from Real.rpow_zero w,
+    show w ^ (2:ℝ) = w ^ (2:ℕ) from by rw [← Real.rpow_natCast w 2]; norm_num,
+    show w ^ (4:ℝ) = w ^ (4:ℕ) from by rw [← Real.rpow_natCast w 4]; norm_num]
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+  simp only [neg_one_mul]
+  ring
+
+/-- **The Fubini swap (K4-corner step 2a).**  For bounded continuous `g` with
+`u`-support `[0,A]` and `v`-support `[0,B]`, and `a > 0`:
+
+    ∫₀^∞ u⁻¹ ∫₀^∞ K4(w²) g(u, w/(√a·u)) dw du
+      = ∫₀^∞ K4(w²) · (∫₀^∞ g(u, w/(√a·u))/u du) dw.
+
+Product integrability: per-`u` sections are bounded×integrable; the norm marginal is
+bounded by the `√a`-uniform constant `7·Cg·B·√a` on the `u`-support box (the
+`v`-support cuts the `w`-integral at `√a·u·B`, and the `u⁻¹` cancels). -/
+theorem K4_corner_fubini (g : ℝ → ℝ → ℝ) (Cg A B : ℝ) (hA : 0 < A) (hB : 0 < B)
+    (hgc : Continuous (Function.uncurry g))
+    (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0)
+    (hsuppV : ∀ u v, B ≤ v → g u v = 0)
+    (a : ℝ) (ha : 0 < a) :
+    ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/(Real.sqrt a * u))
+      = ∫ w in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          ∫ u in Ioi (0:ℝ), g u (w/(Real.sqrt a * u)) / u := by
+  have hCg : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  have hsa : 0 < Real.sqrt a := Real.sqrt_pos.mpr ha
+  set F : ℝ → ℝ → ℝ := fun u w =>
+    u⁻¹ * (UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/(Real.sqrt a * u)))
+    with hFdef
+  have hKc : Continuous (fun w : ℝ => UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)) := by
+    unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+    fun_prop
+  have hFm : Measurable (Function.uncurry F) := by
+    apply Measurable.mul
+    · exact measurable_fst.inv
+    · apply Measurable.mul
+      · exact hKc.measurable.comp measurable_snd
+      · exact hgc.measurable.comp (measurable_fst.prodMk
+          (measurable_snd.div (measurable_fst.const_mul (Real.sqrt a))))
+  -- per-u section integrability (u > 0)
+  have hsec : ∀ u : ℝ, 0 < u → Integrable (fun w => F u w) (volume.restrict (Ioi (0:ℝ))) := by
+    intro u hu
+    have hsm : AEStronglyMeasurable (fun w => g u (w/(Real.sqrt a * u)))
+        (volume.restrict (Ioi (0:ℝ))) :=
+      (hgc.comp (continuous_const.prodMk
+        ((continuous_id.div_const (Real.sqrt a * u))))).aestronglyMeasurable
+    have hbd : ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))),
+        ‖g u (w/(Real.sqrt a * u))‖ ≤ Cg :=
+      ae_of_all _ fun w => by rw [Real.norm_eq_abs]; exact hgb _ _
+    have := (K4_sq_integrable.bdd_mul hsm hbd).const_mul (u⁻¹)
+    apply this.congr (ae_of_all _ fun w => ?_)
+    rw [hFdef]
+    dsimp only
+    ring
+  -- the norm marginal is bounded by (7·Cg·B·√a)·1_(0,A]
+  have hmarg : Integrable (fun u => ∫ w in Ioi (0:ℝ), ‖F u w‖) (volume.restrict (Ioi (0:ℝ))) := by
+    have hsm : AEStronglyMeasurable (fun u => ∫ w in Ioi (0:ℝ), ‖F u w‖)
+        (volume.restrict (Ioi (0:ℝ))) := by
+      have : StronglyMeasurable (Function.uncurry (fun u w => ‖F u w‖)) :=
+        (hFm.norm).stronglyMeasurable
+      exact this.integral_prod_right'.aestronglyMeasurable
+    have hDint : Integrable
+        (fun u => (Ioc (0:ℝ) A).indicator (fun _ => 7*Cg*B*Real.sqrt a) u)
+        (volume.restrict (Ioi (0:ℝ))) := by
+      apply Integrable.integrableOn
+      rw [integrable_indicator_iff measurableSet_Ioc]
+      exact integrableOn_const (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+    apply Integrable.mono' hDint hsm
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro u hu
+    rw [mem_Ioi] at hu
+    by_cases huA : u ≤ A
+    · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hu, huA⟩), Real.norm_eq_abs,
+        abs_of_nonneg (integral_nonneg fun w => norm_nonneg _)]
+      set c := Real.sqrt a * u * B with hcdef
+      have hc : 0 < c := by positivity
+      have hptbd : ∀ w ∈ Ioi (0:ℝ),
+          ‖F u w‖ ≤ (Ioc (0:ℝ) c).indicator (fun _ => u⁻¹ * 7 * Cg) w := by
+        intro w hw
+        rw [mem_Ioi] at hw
+        by_cases hwc : w ≤ c
+        · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hw, hwc⟩), hFdef]
+          dsimp only
+          rw [Real.norm_eq_abs, abs_mul, abs_mul, abs_inv, abs_of_pos hu]
+          calc u⁻¹ * (|UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| * |g u (w/(Real.sqrt a * u))|)
+              ≤ u⁻¹ * (7 * Cg) := by
+                apply mul_le_mul_of_nonneg_left ?_ (by positivity)
+                exact mul_le_mul (K4_abs_bound _ (sq_nonneg w)) (hgb _ _) (abs_nonneg _)
+                  (by norm_num)
+            _ = u⁻¹ * 7 * Cg := by ring
+        · push_neg at hwc
+          have hzero : g u (w/(Real.sqrt a * u)) = 0 := by
+            apply hsuppV
+            rw [le_div_iff₀ (by positivity)]
+            rw [hcdef] at hwc
+            nlinarith
+          rw [hFdef]
+          dsimp only
+          rw [hzero, mul_zero, mul_zero, norm_zero]
+          exact Set.indicator_nonneg (fun _ _ => by positivity) w
+      calc (∫ w in Ioi (0:ℝ), ‖F u w‖)
+          ≤ ∫ w in Ioi (0:ℝ), (Ioc (0:ℝ) c).indicator (fun _ => u⁻¹ * 7 * Cg) w := by
+            apply setIntegral_mono_on ((hsec u hu).norm) ?_ measurableSet_Ioi hptbd
+            apply Integrable.integrableOn
+            rw [integrable_indicator_iff measurableSet_Ioc]
+            exact integrableOn_const
+              (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+        _ ≤ 7*Cg*B*Real.sqrt a := by
+            rw [integral_indicator measurableSet_Ioc, setIntegral_const]
+            have hmeas : (volume.restrict (Ioi (0:ℝ))).real (Ioc (0:ℝ) c) = c := by
+              show ((volume.restrict (Ioi (0:ℝ))) (Ioc (0:ℝ) c)).toReal = c
+              rw [Measure.restrict_apply measurableSet_Ioc,
+                show Ioc (0:ℝ) c ∩ Ioi 0 = Ioc 0 c from by
+                  rw [Set.inter_eq_left]; exact Ioc_subset_Ioi_self,
+                Real.volume_Ioc, ENNReal.toReal_ofReal (by linarith)]
+              ring
+            rw [hmeas, smul_eq_mul, hcdef]
+            have huinv : u⁻¹ * u = 1 := inv_mul_cancel₀ hu.ne'
+            apply le_of_eq
+            calc (Real.sqrt a * u * B) * (u⁻¹ * 7 * Cg)
+                = 7*Cg*B*Real.sqrt a * (u⁻¹ * u) := by ring
+              _ = 7*Cg*B*Real.sqrt a := by rw [huinv, mul_one]
+    · push_neg at huA
+      have hzero : ∀ w, F u w = 0 := by
+        intro w
+        rw [hFdef]
+        dsimp only
+        rw [hsuppU u _ huA.le, mul_zero, mul_zero]
+      simp only [hzero, norm_zero, integral_zero]
+      exact Set.indicator_nonneg (fun _ _ => by positivity) u
+  -- product integrability and the swap
+  have hprod : Integrable (Function.uncurry F)
+      ((volume.restrict (Ioi (0:ℝ))).prod (volume.restrict (Ioi (0:ℝ)))) := by
+    rw [integrable_prod_iff (hFm.aestronglyMeasurable)]
+    constructor
+    · apply ae_restrict_of_forall_mem measurableSet_Ioi
+      intro u hu
+      rw [mem_Ioi] at hu
+      exact hsec u hu
+    · exact hmarg
+  have hswap := integral_integral_swap hprod
+  -- massage both sides
+  have hL : (∫ u in Ioi (0:ℝ), ∫ w in Ioi (0:ℝ), F u w)
+      = ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * g u (w/(Real.sqrt a * u)) := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro u _
+    dsimp only
+    rw [← integral_const_mul]
+  have hR : (∫ w in Ioi (0:ℝ), ∫ u in Ioi (0:ℝ), F u w)
+      = ∫ w in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          ∫ u in Ioi (0:ℝ), g u (w/(Real.sqrt a * u)) / u := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro w _
+    dsimp only
+    rw [← integral_const_mul]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro u _
+    rw [hFdef]
+    dsimp only
+    ring
+  rw [← hL, ← hR]
+  exact hswap
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
