@@ -48,3 +48,4 @@ import UnifiedTheory.Audit.KFCausalMinkowskiCorner
 import UnifiedTheory.Audit.KFCausalMinkowski2DOperator
 import UnifiedTheory.Audit.KFCausalMinkowski4DMoments
 import UnifiedTheory.Audit.KFCausalMinkowski4DKernel
+import UnifiedTheory.Audit.KFCausalMinkowski4DEdge
