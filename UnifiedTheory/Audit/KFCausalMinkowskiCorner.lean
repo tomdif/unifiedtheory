@@ -12,17 +12,24 @@
 
       aw ∫_0^∞ e^{-aUw} h(U) dU  →  h(0)      (w > 0 fixed),     since  aw ∫_0^∞ e^{-aUw} dU = 1.
 
-  This file closes the two analytic CORES of that gate, both axiom-clean:
+  This file CLOSES that gate: `corner_kernel_limit` proves, axiom-clean and sorry-free,
+
+      a ∫_{(0,∞)} ∫_{(0,∞)} H(aUW) g(U,W) dW dU  →  -½ g(0,0)      (a → ∞),
+
+  for `g` with continuous compactly-supported `∂_W g` and `W`-support box `B`.  The route,
+  entirely on the finite rectangle before any domination:
 
     * `corner_kernel_deriv` / `corner_kernel_identity` :  `H(aUW) = -½ ∂_W(W e^{-aUW})`.
-    * `concentration_limit` :  `∫_0^∞ e^{-t} h(t/λ) dt → h(0)` as `λ → ∞`, for continuous
-      bounded `h` -- the substituted form of the inner limit, with the fixed dominator
-      `M e^{-t}` (integrable) and `∫_0^∞ e^{-t} = 1`.
-
-  The full corner-kernel lemma additionally needs the change of variables `U = t/(aw)`
-  linking the two forms, Fubini, the `W`-IBP under the `U`-integral, the outer DCT over the
-  finite `w`-support, and the boundary/counterterm assembly.  Those are the remaining gate;
-  the analytic hearts are closed here.
+    * `concentration_limit` / `scaling_change_of_var` / `inner_limit` :  the inner limit
+      `aw ∫_0^∞ e^{-aUw} ∂_W g(U,w) dU → ∂_W g(0,w)` with the FIXED mass-one kernel.
+    * `inner_bound` + `outer_dct` :  the outer dominated convergence over the finite
+      `w`-support, dominator `M · 1_(0,B]`.
+    * `boundary_ftc` :  `½ ∫_0^∞ ∂_W g(0,w) dw = -½ g(0,0)` (the sign).
+    * `corner_rectangle_ibp` → `corner_Ioi_identity` :  the rectangle IBP (`W` first),
+      lifted to `Ioi` via the support and Fubini (`integral_integral_swap_of_hasCompactSupport`).
+    * `corner_integrand_aestronglyMeasurable` :  the parameter-integral measurability,
+      derived from continuity, not assumed.
+    * `corner_kernel_limit` :  the assembled gate.
 
   Zero sorry. Zero custom axioms.
 -/
@@ -190,11 +197,11 @@ the `w`-support box).  The filter is `atTop` on `ℝ`, which is countably genera
 theorem outer_dct (Φ : ℝ → ℝ → ℝ) (P D : ℝ → ℝ)
     (hmeas : ∀ a, AEStronglyMeasurable (Φ a) (volume.restrict (Ioi (0:ℝ))))
     (hD : IntegrableOn D (Ioi (0:ℝ)))
-    (hbound : ∀ a, ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))), ‖Φ a w‖ ≤ D w)
+    (hbound : ∀ᶠ a in atTop, ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))), ‖Φ a w‖ ≤ D w)
     (hlim : ∀ᵐ w ∂(volume.restrict (Ioi (0:ℝ))), Tendsto (fun a => Φ a w) atTop (𝓝 (P w))) :
     Tendsto (fun a => ∫ w in Ioi (0:ℝ), Φ a w) atTop (𝓝 (∫ w in Ioi (0:ℝ), P w)) :=
   tendsto_integral_filter_of_dominated_convergence D
-    (Eventually.of_forall hmeas) (Eventually.of_forall hbound) hD hlim
+    (Eventually.of_forall hmeas) hbound hD hlim
 
 /-! ## The finite-rectangle bridge (avoiding IBP under an improper integral) -/
 
@@ -240,6 +247,212 @@ theorem corner_rectangle_ibp (g pdg : ℝ → ℝ → ℝ)
   have hsplit : (∫ W in (0:ℝ)..B, Real.exp (-(a * U * W)) * (1 - a * U * W) * g U W)
       = - ∫ W in (0:ℝ)..B, W * Real.exp (-(a * U * W)) * pdg U W := by linarith [hibp]
   rw [hsplit]; ring
+
+/-- A continuous function vanishing past `B > 0` is integrable on `(0,∞)`. -/
+theorem corner_slice_integrable (f : ℝ → ℝ) (B : ℝ) (hB : 0 < B) (hfc : Continuous f)
+    (hsupp : ∀ x, B ≤ x → f x = 0) : IntegrableOn f (Ioi (0:ℝ)) := by
+  have h1 : IntegrableOn f (Ioc 0 B) :=
+    (Continuous.integrableOn_Icc hfc : IntegrableOn f (Icc 0 B)).mono_set Ioc_subset_Icc_self
+  have h2 : IntegrableOn f (Ioi B) :=
+    integrableOn_zero.congr_fun (fun x hx => (hsupp x (le_of_lt hx)).symm) measurableSet_Ioi
+  rw [← Ioc_union_Ioi_eq_Ioi hB.le]
+  exact h1.union h2
+
+/-- **Interval → `Ioi` (support conversion).**  For continuous `f` vanishing past `B > 0`,
+`∫_0^B f = ∫_{(0,∞)} f`.  Used to lift the finite-rectangle identity to `Ioi` integrals only
+after the compact-interval work is done. -/
+theorem corner_interval_to_Ioi (f : ℝ → ℝ) (B : ℝ) (hB : 0 < B) (hfc : Continuous f)
+    (hsupp : ∀ x, B ≤ x → f x = 0) :
+    ∫ x in (0:ℝ)..B, f x = ∫ x in Ioi (0:ℝ), f x := by
+  have h1 : IntegrableOn f (Ioc 0 B) :=
+    (Continuous.integrableOn_Icc hfc : IntegrableOn f (Icc 0 B)).mono_set Ioc_subset_Icc_self
+  have h2 : IntegrableOn f (Ioi B) :=
+    integrableOn_zero.congr_fun (fun x hx => (hsupp x (le_of_lt hx)).symm) measurableSet_Ioi
+  have h2z : ∫ x in Ioi B, f x = 0 := by
+    rw [setIntegral_congr_fun measurableSet_Ioi (g := fun _ => (0:ℝ))
+      (fun x hx => hsupp x (le_of_lt hx))]
+    simp
+  rw [intervalIntegral.integral_of_le hB.le, ← Ioc_union_Ioi_eq_Ioi hB.le,
+    setIntegral_union (Set.Ioc_disjoint_Ioi le_rfl) measurableSet_Ioi h1 h2, h2z, add_zero]
+
+/-- **Step 2+3 — the reduction identity on `Ioi × Ioi`.**  Integrating the rectangle IBP
+over `U`, lifting to `Ioi` via the `W`-support, then Fubini (compact support) and pulling
+`W` out of the `U`-integral gives
+
+    a ∫_{(0,∞)} ∫_{(0,∞)} H(aUW) g(U,W) dW dU
+      = ½ ∫_{(0,∞)} [ aW ∫_{(0,∞)} e^{-aUW} ∂_W g(U,W) dU ] dW.
+
+The RHS inner bracket is exactly the `inner_limit`/`inner_bound` object `Φ_a(W)`. -/
+theorem corner_Ioi_identity (g pdg : ℝ → ℝ → ℝ)
+    (hgc : Continuous (Function.uncurry g)) (hpdgc : Continuous (Function.uncurry pdg))
+    (hg : ∀ U W, HasDerivAt (fun W' => g U W') (pdg U W) W)
+    (hpdgcs : HasCompactSupport (Function.uncurry pdg))
+    (a B : ℝ) (hB : 0 < B)
+    (hgsuppW : ∀ U W, B ≤ W → g U W = 0) (hpdgsuppW : ∀ U W, B ≤ W → pdg U W = 0) :
+    a * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W
+      = (1 / 2) * ∫ W in Ioi (0:ℝ), a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W := by
+  have hgU : ∀ U, Continuous (fun W => g U W) :=
+    fun U => hgc.comp (continuous_const.prodMk continuous_id)
+  have hpdgU : ∀ U, Continuous (fun W => pdg U W) :=
+    fun U => hpdgc.comp (continuous_const.prodMk continuous_id)
+  have hHU : ∀ U, Continuous (fun W => Hkern (a * U * W)) := fun U => by unfold Hkern; fun_prop
+  -- per-U identity in Ioi form
+  have perU : ∀ U, a * ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W
+      = (a / 2) * ∫ W in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W := by
+    intro U
+    rw [← corner_interval_to_Ioi (fun W => Hkern (a * U * W) * g U W) B hB
+          ((hHU U).mul (hgU U)) (fun W hW => by simp [hgsuppW U W hW]),
+        ← corner_interval_to_Ioi (fun W => W * Real.exp (-(a * U * W)) * pdg U W) B hB
+          (((continuous_id.mul (by fun_prop : Continuous fun W => Real.exp (-(a * U * W)))).mul
+            (hpdgU U))) (fun W hW => by simp [hpdgsuppW U W hW])]
+    exact corner_rectangle_ibp g pdg hgc hpdgc hg a U B (hgsuppW U B le_rfl)
+  -- integrate over U
+  have hstep2 : a * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W
+      = (a / 2) * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W := by
+    rw [show a * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W
+          = ∫ U in Ioi (0:ℝ), a * ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W from
+        (integral_const_mul a _).symm,
+      show (a / 2) * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W
+          = ∫ U in Ioi (0:ℝ), (a / 2) * ∫ W in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W from
+        (integral_const_mul (a / 2) _).symm]
+    exact setIntegral_congr_fun measurableSet_Ioi (fun U _ => perU U)
+  rw [hstep2]
+  -- Fubini (compact support)
+  have hcontf : Continuous (Function.uncurry (fun U W => W * Real.exp (-(a * U * W)) * pdg U W)) := by
+    have h1 : Continuous (fun p : ℝ × ℝ => p.2 * Real.exp (-(a * p.1 * p.2))) := by fun_prop
+    exact h1.mul hpdgc
+  have hcsf : HasCompactSupport (Function.uncurry (fun U W => W * Real.exp (-(a * U * W)) * pdg U W)) :=
+    hpdgcs.mul_left (f := fun p : ℝ × ℝ => p.2 * Real.exp (-(a * p.1 * p.2)))
+  have hfub : ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W
+      = ∫ W in Ioi (0:ℝ), ∫ U in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W :=
+    integral_integral_swap_of_hasCompactSupport hcontf hcsf
+  rw [hfub,
+    show (a / 2) * ∫ W in Ioi (0:ℝ), ∫ U in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W
+        = ∫ W in Ioi (0:ℝ), (a / 2) * ∫ U in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W from
+      (integral_const_mul (a / 2) _).symm,
+    show (1 / 2) * ∫ W in Ioi (0:ℝ), a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W
+        = ∫ W in Ioi (0:ℝ), (1 / 2) * (a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W) from
+      (integral_const_mul (1 / 2) _).symm]
+  apply setIntegral_congr_fun measurableSet_Ioi
+  intro W _
+  dsimp only
+  have hpull : (∫ U in Ioi (0:ℝ), W * Real.exp (-(a * U * W)) * pdg U W)
+      = W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W := by
+    rw [← integral_const_mul]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro U _; ring
+  rw [hpull]; ring
+
+/-- **Step 4 — measurability of the outer integrand**, derived (not assumed): the joint
+integrand is continuous, so `StronglyMeasurable.integral_prod_right'` gives measurability of
+the parameter integral `W ↦ ∫_U e^{-aUW} ∂_W g(U,W) dU`, and multiplying by the continuous
+`aW` keeps it (a.e.) strongly measurable. -/
+theorem corner_integrand_aestronglyMeasurable (pdg : ℝ → ℝ → ℝ)
+    (hpdgc : Continuous (Function.uncurry pdg)) (a : ℝ) :
+    AEStronglyMeasurable
+      (fun W => a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+      (volume.restrict (Ioi (0:ℝ))) := by
+  have hf : Continuous (fun p : ℝ × ℝ => Real.exp (-(a * p.2 * p.1)) * pdg p.2 p.1) :=
+    (by fun_prop : Continuous (fun p : ℝ × ℝ => Real.exp (-(a * p.2 * p.1)))).mul
+      (hpdgc.comp continuous_swap)
+  have hsm : StronglyMeasurable
+      (fun W => ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W) :=
+    hf.stronglyMeasurable.integral_prod_right'
+  exact ((Continuous.stronglyMeasurable (by fun_prop : Continuous (fun W : ℝ => a * W))).mul
+    hsm).aestronglyMeasurable
+
+/-- **Step 5 — the corner-kernel gate (the full 2D analytic obstruction, closed).**
+
+    a ∫_{(0,∞)} ∫_{(0,∞)} H(aUW) g(U,W) dW dU  →  -½ g(0,0)      (a → ∞),
+
+for `g` with continuous `∂_W g = pdg`, compactly-supported `pdg`, `|pdg| ≤ M`, and the
+`W`-support box `B`.  Assembled from `corner_Ioi_identity` (reduction), `inner_bound` +
+`inner_limit` (the a.e. inner limit and its fixed dominator), `outer_dct` (outer dominated
+convergence), and `boundary_ftc` (the FTC boundary evaluation giving the sign). -/
+theorem corner_kernel_limit (g pdg : ℝ → ℝ → ℝ)
+    (hgc : Continuous (Function.uncurry g)) (hpdgc : Continuous (Function.uncurry pdg))
+    (hg : ∀ U W, HasDerivAt (fun W' => g U W') (pdg U W) W)
+    (hpdgcs : HasCompactSupport (Function.uncurry pdg))
+    (M B : ℝ) (hB : 0 < B) (hM : ∀ U W, |pdg U W| ≤ M)
+    (hgsuppW : ∀ U W, B ≤ W → g U W = 0) (hpdgsuppW : ∀ U W, B ≤ W → pdg U W = 0) :
+    Tendsto (fun a => a * ∫ U in Ioi (0:ℝ), ∫ W in Ioi (0:ℝ), Hkern (a * U * W) * g U W)
+      atTop (𝓝 (-(1 / 2) * g 0 0)) := by
+  have hM0 : (0:ℝ) ≤ M := le_trans (abs_nonneg _) (hM 0 0)
+  have hpdgUslice : ∀ W, Continuous (fun U => pdg U W) :=
+    fun W => hpdgc.comp (continuous_id.prodMk continuous_const)
+  have hpdg0slice : Continuous (fun W => pdg 0 W) :=
+    hpdgc.comp (continuous_const.prodMk continuous_id)
+  -- comm bridge  a*U*W = a*W*U  (to match inner_bound/inner_limit which use a*w*U)
+  have hcomm : ∀ (a W : ℝ), (∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+      = ∫ U in Ioi (0:ℝ), Real.exp (-(a * W * U)) * pdg U W := by
+    intro a W
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro U _; dsimp only; rw [mul_right_comm a U W]
+  -- dominator
+  have hD : IntegrableOn (fun W => (Ioc 0 B).indicator (fun _ => M) W) (Ioi (0:ℝ)) := by
+    apply Integrable.integrableOn
+    rw [integrable_indicator_iff measurableSet_Ioc]
+    exact integrableOn_const (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+  have hbound : ∀ᶠ a in atTop, ∀ᵐ W ∂(volume.restrict (Ioi (0:ℝ))),
+      ‖a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W‖
+        ≤ (Ioc 0 B).indicator (fun _ => M) W := by
+    filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro W hW
+    rw [mem_Ioi] at hW
+    rw [Real.norm_eq_abs]
+    by_cases hWB : W ≤ B
+    · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hW, hWB⟩), hcomm a W]
+      exact inner_bound (fun U => pdg U W) M (fun U => hM U W) a W ha hW
+    · push_neg at hWB
+      have hz : (∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W) = 0 := by
+        have hzero : ∀ U ∈ Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W = 0 :=
+          fun U _ => by rw [hpdgsuppW U W hWB.le, mul_zero]
+        have heq : (∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+            = ∫ _U in Ioi (0:ℝ), (0:ℝ) := setIntegral_congr_fun measurableSet_Ioi hzero
+        rw [heq, integral_zero]
+      rw [hz, mul_zero, abs_zero]
+      exact Set.indicator_nonneg (fun _ _ => hM0) W
+  have hlim : ∀ᵐ W ∂(volume.restrict (Ioi (0:ℝ))),
+      Tendsto (fun a => a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+        atTop (𝓝 (pdg 0 W)) := by
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro W hW
+    rw [mem_Ioi] at hW
+    have he : (fun a => a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+        = fun a => a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * W * U)) * pdg U W := by
+      funext a; rw [hcomm a W]
+    rw [he]
+    exact inner_limit (fun U => pdg U W) M (hpdgUslice W) (fun U => hM U W) W hW
+  have hdct := outer_dct
+    (fun a W => a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+    (fun W => pdg 0 W) (fun W => (Ioc 0 B).indicator (fun _ => M) W)
+    (fun a => corner_integrand_aestronglyMeasurable pdg hpdgc a) hD hbound hlim
+  -- boundary FTC
+  have hbdry : ∫ W in Ioi (0:ℝ), pdg 0 W = - g 0 0 :=
+    boundary_ftc (fun W => g 0 W) (fun W => pdg 0 W) B (fun W => hg 0 W)
+      (corner_slice_integrable (fun W => pdg 0 W) B hB hpdg0slice
+        (fun W hW => hpdgsuppW 0 W hW)) (fun W hW => hgsuppW 0 W hW)
+  -- assemble
+  have hfinal : Tendsto
+      (fun a => (1 / 2) * ∫ W in Ioi (0:ℝ),
+        a * W * ∫ U in Ioi (0:ℝ), Real.exp (-(a * U * W)) * pdg U W)
+      atTop (𝓝 (-(1 / 2) * g 0 0)) := by
+    have h2 := hdct.const_mul (1 / 2)
+    rw [hbdry] at h2
+    convert h2 using 2
+    ring
+  refine hfinal.congr' ?_
+  filter_upwards with a
+  exact (corner_Ioi_identity g pdg hgc hpdgc hg hpdgcs a B hB hgsuppW hpdgsuppW).symm
+
+#print axioms corner_integrand_aestronglyMeasurable
+#print axioms corner_kernel_limit
+
+#print axioms corner_Ioi_identity
+
+#print axioms corner_slice_integrable
+#print axioms corner_interval_to_Ioi
 
 #print axioms corner_kernel_deriv
 #print axioms corner_kernel_identity
