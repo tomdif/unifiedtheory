@@ -218,9 +218,27 @@ theorem K4_corner_inner_sub (g : ℝ → ℝ → ℝ) (a u : ℝ) (ha : 0 < a) (
   field_simp
   try ring
 
+/-- **The Haar link (K4-corner step 2b).**  The inner profile of the K4-corner,
+`G_a(w) = ∫₀^∞ u⁻¹ g(u, w/(√a·u)) du`, equals `∫₀^∞ s⁻¹ g(ws, (√a·s)⁻¹) ds` — the
+`u = w·s` rescaling turns the second argument `w/(√a·u)` into `(√a·s)⁻¹`, so
+`G_a(w) − G_a(1)` is EXACTLY the `frullani_concentration` integrand. -/
+theorem K4_corner_haar_link (g : ℝ → ℝ → ℝ) (a w : ℝ) (hw : 0 < w) :
+    ∫ u in Ioi (0:ℝ), g u (w/(Real.sqrt a * u)) / u
+      = ∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s := by
+  have h := haar_scale (fun u => g u (w/(Real.sqrt a * u))) w hw
+  rw [← h]
+  apply setIntegral_congr_fun measurableSet_Ioi
+  intro s hs
+  rw [mem_Ioi] at hs
+  show g (w*s) (w/(Real.sqrt a * (w*s))) / s = g (w*s) ((Real.sqrt a * s)⁻¹) / s
+  congr 2
+  field_simp
+  try ring
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
 #print axioms K4_corner_inner_sub
+#print axioms K4_corner_haar_link
 
 end UnifiedTheory.Audit.KFCausalMinkowski4DCorner
