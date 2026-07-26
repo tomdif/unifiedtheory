@@ -52,3 +52,4 @@ import UnifiedTheory.Audit.KFCausalMinkowski4DEdge
 import UnifiedTheory.Audit.KFCausalMinkowski4DGate
 import UnifiedTheory.Audit.KFCausalMinkowski4DConcentration
 import UnifiedTheory.Audit.KFCausalMinkowski4DEdgeAssembly
+import UnifiedTheory.Audit.KFCausalMinkowskiFrullani
