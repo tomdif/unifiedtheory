@@ -131,6 +131,7 @@ import UnifiedTheory.LayerA.TraceHyperchargeExile
 import UnifiedTheory.LayerA.EinsteinHilbertScaleFixing
 import UnifiedTheory.LayerA.CausalActionCoefficient
 import UnifiedTheory.LayerA.ProtonLifetime
+import UnifiedTheory.LayerA.WeinbergAnglePrediction
 import UnifiedTheory.LayerA.ArrowChiralityLock
 import UnifiedTheory.LayerA.ContinuumChiralityFlip
 import UnifiedTheory.LayerA.CensusIdentities
