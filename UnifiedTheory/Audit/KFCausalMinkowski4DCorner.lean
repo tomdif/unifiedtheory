@@ -559,6 +559,182 @@ theorem K4_log_integrable :
             neg_one_mul]
           ring
 
+/-- **The uniform hyperbola bound (K4-corner step 3b).**  For `g` with `|g| ≤ Cg`,
+`|∂_u g| ≤ Mu`, `u`-support `[0,A]`, ANY second-argument family `y`, and `w > 0`:
+
+    |∫₀^∞ (g(ws, y(s)) − g(s, y(s)))/s ds|  ≤  Mu·A + Cg·|ln w|.
+
+MVT controls `s ≤ min(A, A/w)` (both terms alive); the support-mismatch region
+`(min, max]` contributes `Cg·ln(max/min) = Cg·|ln w|`; beyond `max` both vanish.
+Uniform in `y`, hence in the boost parameter — the outer-DCT dominator. -/
+theorem D_bound (g pdug : ℝ → ℝ → ℝ) (Mu Cg A : ℝ) (hA : 0 < A)
+    (hdu : ∀ v u, HasDerivAt (fun u' => g u' v) (pdug u v) u)
+    (hMu : ∀ u v, |pdug u v| ≤ Mu) (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsupp : ∀ u v, A ≤ u → g u v = 0)
+    (y : ℝ → ℝ) (w : ℝ) (hw : 0 < w) :
+    |∫ s in Ioi (0:ℝ), (g (w*s) (y s) - g s (y s)) / s|
+      ≤ Mu * A + Cg * |Real.log w| := by
+  have hMu0 : 0 ≤ Mu := le_trans (abs_nonneg _) (hMu 0 0)
+  have hCg0 : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  set m := min A (A/w) with hmdef
+  set M := max A (A/w) with hMdef
+  have hm : 0 < m := lt_min hA (div_pos hA hw)
+  have hmM : m ≤ M := min_le_max
+  have hlipu : ∀ v x x' : ℝ, |g x v - g x' v| ≤ Mu * |x - x'| := by
+    intro v x x'
+    have h := convex_univ.norm_image_sub_le_of_norm_hasDerivWithin_le
+      (f := fun u => g u v) (f' := fun u => pdug u v)
+      (fun z _ => (hdu v z).hasDerivWithinAt)
+      (fun z _ => by simpa [Real.norm_eq_abs] using hMu z v) (mem_univ x') (mem_univ x)
+    simpa [Real.norm_eq_abs] using h
+  set φ : ℝ → ℝ := fun s => (Ioc (0:ℝ) m).indicator (fun _ => Mu * |w - 1|) s
+      + (Ioc m M).indicator (fun _ => Cg) s * s⁻¹ with hφdef
+  have hφ1int : Integrable ((Ioc (0:ℝ) m).indicator (fun _ => Mu * |w - 1|))
+      (volume.restrict (Ioi (0:ℝ))) := by
+    apply Integrable.integrableOn
+    rw [integrable_indicator_iff measurableSet_Ioc]
+    exact integrableOn_const (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+  have hφ2int : Integrable (fun s => (Ioc m M).indicator (fun _ => Cg) s * s⁻¹)
+      (volume.restrict (Ioi (0:ℝ))) := by
+    have hmeas : AEStronglyMeasurable
+        (fun s => (Ioc m M).indicator (fun _ => Cg) s * s⁻¹)
+        (volume.restrict (Ioi (0:ℝ))) :=
+      ((measurable_const.indicator measurableSet_Ioc).mul measurable_inv).aestronglyMeasurable
+    have hDint : Integrable ((Ioc m M).indicator (fun _ => Cg * m⁻¹))
+        (volume.restrict (Ioi (0:ℝ))) := by
+      apply Integrable.integrableOn
+      rw [integrable_indicator_iff measurableSet_Ioc]
+      exact integrableOn_const (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+    apply Integrable.mono' hDint hmeas
+    apply ae_of_all
+    intro s
+    by_cases hmem : s ∈ Ioc m M
+    · rw [Set.indicator_of_mem hmem, Set.indicator_of_mem hmem, Real.norm_eq_abs, abs_mul,
+        abs_of_nonneg hCg0, abs_inv, abs_of_pos (lt_trans hm hmem.1)]
+      apply mul_le_mul_of_nonneg_left ?_ hCg0
+      rw [← one_div, ← one_div]
+      exact one_div_le_one_div_of_le hm hmem.1.le
+    · rw [Set.indicator_of_notMem hmem, zero_mul, norm_zero]
+      exact Set.indicator_apply_nonneg (fun _ => by positivity)
+  have hφint : Integrable φ (volume.restrict (Ioi (0:ℝ))) := hφ1int.add hφ2int
+  have hpt : ∀ s ∈ Ioi (0:ℝ), ‖(g (w*s) (y s) - g s (y s)) / s‖ ≤ φ s := by
+    intro s hs
+    rw [mem_Ioi] at hs
+    rw [Real.norm_eq_abs, abs_div, abs_of_pos hs]
+    simp only [hφdef]
+    by_cases hsm : s ≤ m
+    · have hnot2 : s ∉ Ioc m M := by
+        intro hmem
+        exact absurd (Set.mem_Ioc.mp hmem).1 (not_lt.mpr hsm)
+      rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hs, hsm⟩),
+        Set.indicator_of_notMem hnot2, zero_mul, add_zero, div_le_iff₀ hs]
+      calc |g (w*s) (y s) - g s (y s)| ≤ Mu * |w*s - s| := hlipu _ _ _
+        _ = Mu * |w - 1| * s := by
+            rw [show w*s - s = (w-1)*s from by ring, abs_mul, abs_of_pos hs]
+            ring
+    · push_neg at hsm
+      have hnot1 : s ∉ Ioc (0:ℝ) m := by
+        intro hmem
+        exact absurd (Set.mem_Ioc.mp hmem).2 (not_le.mpr hsm)
+      rw [Set.indicator_of_notMem hnot1, zero_add]
+      by_cases hsM : s ≤ M
+      · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hsm, hsM⟩)]
+        have hone : g (w*s) (y s) = 0 ∨ g s (y s) = 0 := by
+          rcases min_lt_iff.mp (hmdef ▸ hsm) with h | h
+          · exact Or.inr (hsupp _ _ h.le)
+          · refine Or.inl (hsupp _ _ ?_)
+            rw [div_lt_iff₀ hw] at h
+            nlinarith
+        have habs : |g (w*s) (y s) - g s (y s)| ≤ Cg := by
+          rcases hone with h | h
+          · rw [h, zero_sub, abs_neg]; exact hgb _ _
+          · rw [h, sub_zero]; exact hgb _ _
+        rw [div_le_iff₀ hs]
+        calc |g (w*s) (y s) - g s (y s)| ≤ Cg := habs
+          _ = Cg * s⁻¹ * s := by field_simp
+      · push_neg at hsM
+        have hnot2 : s ∉ Ioc m M := by
+          intro hmem
+          exact absurd (Set.mem_Ioc.mp hmem).2 (not_le.mpr hsM)
+        rw [Set.indicator_of_notMem hnot2, zero_mul]
+        have h1 : g s (y s) = 0 :=
+          hsupp _ _ (le_of_lt (lt_of_le_of_lt (le_max_left _ _) (hMdef ▸ hsM)))
+        have h2 : g (w*s) (y s) = 0 := by
+          apply hsupp
+          have := lt_of_le_of_lt (le_max_right A (A/w)) (hMdef ▸ hsM)
+          rw [div_lt_iff₀ hw] at this
+          nlinarith
+        rw [h1, h2]
+        simp
+  have hφval : (∫ s in Ioi (0:ℝ), φ s) = Mu * |w - 1| * m + Cg * Real.log (M/m) := by
+    simp only [hφdef]
+    rw [integral_add hφ1int hφ2int]
+    congr 1
+    · rw [integral_indicator measurableSet_Ioc, setIntegral_const]
+      have hmeasval : (volume.restrict (Ioi (0:ℝ))).real (Ioc (0:ℝ) m) = m := by
+        show ((volume.restrict (Ioi (0:ℝ))) (Ioc (0:ℝ) m)).toReal = m
+        rw [Measure.restrict_apply measurableSet_Ioc,
+          show Ioc (0:ℝ) m ∩ Ioi 0 = Ioc 0 m from by
+            rw [Set.inter_eq_left]; exact Ioc_subset_Ioi_self,
+          Real.volume_Ioc, sub_zero, ENNReal.toReal_ofReal hm.le]
+      rw [hmeasval, smul_eq_mul]
+      ring
+    · have hpt2 : ∀ s : ℝ, (Ioc m M).indicator (fun _ => Cg) s * s⁻¹
+          = (Ioc m M).indicator (fun t => Cg * t⁻¹) s := by
+        intro s
+        by_cases hmem : s ∈ Ioc m M
+        · rw [Set.indicator_of_mem hmem, Set.indicator_of_mem hmem]
+        · rw [Set.indicator_of_notMem hmem, Set.indicator_of_notMem hmem, zero_mul]
+      simp_rw [hpt2]
+      rw [integral_indicator measurableSet_Ioc, Measure.restrict_restrict measurableSet_Ioc,
+        show Ioc m M ∩ Ioi 0 = Ioc m M from by
+          rw [Set.inter_eq_left]; exact fun x hx => lt_trans hm hx.1,
+        integral_const_mul]
+      congr 1
+      rw [← intervalIntegral.integral_of_le hmM, integral_inv (by
+        rw [Set.uIcc_of_le hmM]
+        intro hmem
+        exact absurd hmem.1 (not_le.mpr hm))]
+  calc |∫ s in Ioi (0:ℝ), (g (w*s) (y s) - g s (y s)) / s|
+      ≤ ∫ s in Ioi (0:ℝ), φ s := by
+        rw [← Real.norm_eq_abs]
+        exact norm_integral_le_of_norm_le hφint
+          (ae_restrict_of_forall_mem measurableSet_Ioi hpt)
+    _ = Mu * |w - 1| * m + Cg * Real.log (M/m) := hφval
+    _ ≤ Mu * A + Cg * |Real.log w| := by
+        rcases le_total 1 w with h1 | h1
+        · have hAw : A/w ≤ A := div_le_self hA.le h1
+          have hmeq : m = A/w := by rw [hmdef]; exact min_eq_right hAw
+          have hMeq : M = A := by rw [hMdef]; exact max_eq_left hAw
+          have hMm : M/m = w := by
+            rw [hmeq, hMeq]
+            field_simp
+          have hlogd : Real.log (M/m) = |Real.log w| := by
+            rw [hMm, abs_of_nonneg (Real.log_nonneg h1)]
+          have habs : |w - 1| = w - 1 := abs_of_nonneg (by linarith)
+          have hprod : (w-1) * (A/w) = A - A/w := by
+            field_simp
+            try ring
+          rw [hlogd, hmeq, habs]
+          have hAw0 : (0:ℝ) ≤ A/w := by positivity
+          nlinarith [mul_nonneg hMu0 hAw0]
+        · have hAw : A ≤ A/w := by
+            rw [le_div_iff₀ hw]
+            nlinarith
+          have hmeq : m = A := by rw [hmdef]; exact min_eq_left hAw
+          have hMeq : M = A/w := by rw [hMdef]; exact max_eq_right hAw
+          have hMm : M/m = 1/w := by
+            rw [hmeq, hMeq]
+            field_simp
+          have hlogd : Real.log (M/m) = |Real.log w| := by
+            rw [hMm, one_div, Real.log_inv,
+              abs_of_nonpos (Real.log_nonpos hw.le h1)]
+          have habs : |w - 1| = 1 - w := by
+            rw [abs_of_nonpos (by linarith)]
+            ring
+          rw [hlogd, hmeq, habs]
+          nlinarith [mul_nonneg (mul_nonneg hMu0 hw.le) hA.le]
+
 #print axioms haar_scale
 #print axioms frullani_pos
 #print axioms frullani_concentration
