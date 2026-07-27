@@ -253,6 +253,39 @@ theorem strip_v_axis (a δ ε A CFu Mv : ℝ) (ha : 0 ≤ a) (hδ : 0 < δ)
   · exact (Continuous.intervalIntegrable (by
       exact continuous_const.mul (hFuc.comp (continuous_id.prodMk continuous_const))) _ _)
 
+/-- **The gate kernel is bounded on boxes**: for `u, v > 0`,
+`|𝒦(u,v)| ≤ a·uv³ + a·u³v + 7/2` — with `K4_abs_bound`, the only ingredient of
+the cone/gate strip passages. -/
+theorem K_box_bound (a u v : ℝ) (ha : 0 ≤ a) (hu : 0 < u) (hv : 0 < v)
+    (hK7 : |K4 (a*u^2*v^2)| ≤ 7) :
+    |(v/u) * J4 (a*u^2*v^2) + u * v⁻¹ * J4 (a*u^2*v^2)
+      - (1/2) * K4 (a*u^2*v^2)|
+    ≤ a*u*v^3 + a*u^3*v + 7/2 := by
+  have hz : 0 ≤ a*u^2*v^2 := by positivity
+  have h1 : |(v/u) * J4 (a*u^2*v^2)| ≤ a*u*v^3 := by
+    rw [abs_mul, abs_div, abs_of_pos hv, abs_of_pos hu]
+    calc v/u * |J4 (a*u^2*v^2)| ≤ v/u * (a*u^2*v^2) := by
+          apply mul_le_mul_of_nonneg_left (J4_abs_le _ hz) (by positivity)
+      _ = a*u*v^3 := by field_simp
+  have h2 : |u * v⁻¹ * J4 (a*u^2*v^2)| ≤ a*u^3*v := by
+    rw [abs_mul, abs_mul, abs_of_pos hu, abs_of_pos (inv_pos.mpr hv)]
+    calc u * v⁻¹ * |J4 (a*u^2*v^2)| ≤ u * v⁻¹ * (a*u^2*v^2) := by
+          apply mul_le_mul_of_nonneg_left (J4_abs_le _ hz) (by positivity)
+      _ = a*u^3*v := by field_simp
+  have h3 : |(1/2 : ℝ) * K4 (a*u^2*v^2)| ≤ 7/2 := by
+    rw [abs_mul, abs_of_nonneg (by norm_num : (0:ℝ) ≤ 1/2)]
+    linarith [hK7]
+  rw [abs_le]
+  constructor
+  · linarith [h1, h2, h3, neg_abs_le ((v/u) * J4 (a*u^2*v^2)),
+      neg_abs_le (u * v⁻¹ * J4 (a*u^2*v^2)),
+      le_abs_self ((1/2 : ℝ) * K4 (a*u^2*v^2))]
+  · linarith [h1, h2, h3, le_abs_self ((v/u) * J4 (a*u^2*v^2)),
+      le_abs_self (u * v⁻¹ * J4 (a*u^2*v^2)),
+      neg_abs_le ((1/2 : ℝ) * K4 (a*u^2*v^2))]
+
+#print axioms K_box_bound
+
 #print axioms strip_u_axis
 #print axioms strip_v_axis
 
