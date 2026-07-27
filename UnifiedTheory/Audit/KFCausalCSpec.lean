@@ -59,3 +59,4 @@ import UnifiedTheory.Audit.KFCausalMinkowski4DGateTheorem
 import UnifiedTheory.Audit.KFCausalMinkowski4DSphericalMean
 import UnifiedTheory.Audit.KFCausalMinkowski4DDictionary
 import UnifiedTheory.Audit.KFCausalMinkowski4DRectangleIBP
+import UnifiedTheory.Audit.KFCausalMinkowski4DRectangleChain
