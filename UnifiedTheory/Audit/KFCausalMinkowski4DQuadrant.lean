@@ -715,6 +715,33 @@ theorem corner4_quadrant (a A B CF CFu Mv Ccone : ℝ)
   have h0 := abs_eq_zero.mp (le_antisymm hle (abs_nonneg _))
   linarith [h0]
 
+/-- Bounded, measurable, compactly supported on `(0,∞)` implies integrable —
+the extracted integrability core of `integral_Ioi_sub_interval`. -/
+theorem integrableOn_Ioi_of_bounded_support (f : ℝ → ℝ) (C A : ℝ) (hA : 0 < A)
+    (hm : MeasureTheory.AEStronglyMeasurable f
+      (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))))
+    (hbound : ∀ x, 0 < x → |f x| ≤ C) (hsupp : ∀ x, A ≤ x → f x = 0) :
+    MeasureTheory.IntegrableOn f (Set.Ioi (0:ℝ)) := by
+  have hdom : MeasureTheory.Integrable
+      ((Set.Ioc (0:ℝ) A).indicator (fun _ => C))
+      (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))) := by
+    apply MeasureTheory.Integrable.integrableOn
+    rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+    exact MeasureTheory.integrableOn_const
+      (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+  apply MeasureTheory.Integrable.mono' hdom hm
+  apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+  intro x hx
+  rw [Set.mem_Ioi] at hx
+  by_cases hxA : x ≤ A
+  · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hx, hxA⟩), Real.norm_eq_abs]
+    exact hbound x hx
+  · have hnot : x ∉ Set.Ioc (0:ℝ) A := fun hmem => hxA (Set.mem_Ioc.mp hmem).2
+    rw [Set.indicator_of_notMem hnot, hsupp x (le_of_lt (not_le.mp hxA))]
+    simp
+
+#print axioms integrableOn_Ioi_of_bounded_support
+
 #print axioms corner4_quadrant
 
 #print axioms double_tail
