@@ -14,6 +14,8 @@
 -/
 import Mathlib
 import UnifiedTheory.Audit.KFCausalMinkowski4DKernelBounds
+import UnifiedTheory.Audit.KFCausalMinkowski4DRectangleChain
+import UnifiedTheory.Audit.KFCausalMinkowski4DDictionary
 
 open Real
 open UnifiedTheory.Audit.KFCausalMinkowski4DKernel
@@ -355,7 +357,7 @@ box `[0,A]×[0,B]`, the iterated quadrant integral differs from the iterated
 `[t,A]×[t,B]`-rectangle integral by at most `C·A·t + C·t·B`. -/
 theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
     (hm : Measurable (Function.uncurry g))
-    (hbound : ∀ x y, |g x y| ≤ Cg)
+    (hbound : ∀ x y, 0 < x → 0 < y → |g x y| ≤ Cg)
     (hsuppU : ∀ x y, A ≤ x → g x y = 0) (hsuppV : ∀ x y, B ≤ y → g x y = 0)
     (ht : 0 < t) (htA : t ≤ A) (htB : t ≤ B) :
     |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
@@ -367,14 +369,14 @@ theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
       (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))) :=
     fun y => (hm.comp (measurable_id.prodMk measurable_const)).aestronglyMeasurable
   -- the inner-tail estimate, per y > 0
-  have hinner_tail : ∀ y : ℝ, ∀ s : ℝ, 0 < s → s ≤ A →
+  have hinner_tail : ∀ y : ℝ, 0 < y → ∀ s : ℝ, 0 < s → s ≤ A →
       |(∫ x in Set.Ioi (0:ℝ), g x y) - ∫ x in s..A, g x y| ≤ Cg * s :=
-    fun y s hs hsA => integral_Ioi_sub_interval (fun x => g x y) Cg A s hCg hs hsA
-      (hmy y) (fun x _ => hbound x y) (fun x hx => hsuppU x y hx)
+    fun y hy s hs hsA => integral_Ioi_sub_interval (fun x => g x y) Cg A s hCg hs hsA
+      (hmy y) (fun x hx => hbound x y hx hy) (fun x hx => hsuppU x y hx)
   -- the inner integral is bounded by Cg·A and supported in y ≤ B
-  have hinner_bound : ∀ y : ℝ, |∫ x in Set.Ioi (0:ℝ), g x y| ≤ Cg * A := by
-    intro y
-    have h := hinner_tail y A hA le_rfl
+  have hinner_bound : ∀ y : ℝ, 0 < y → |∫ x in Set.Ioi (0:ℝ), g x y| ≤ Cg * A := by
+    intro y hy
+    have h := hinner_tail y hy A hA le_rfl
     rw [intervalIntegral.integral_same, sub_zero] at h
     exact h
   have hinner_supp : ∀ y : ℝ, B ≤ y → (∫ x in Set.Ioi (0:ℝ), g x y) = 0 := by
@@ -398,9 +400,9 @@ theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
       (hmarg.mono_measure (MeasureTheory.Measure.restrict_mono
         (fun y hy => Set.mem_Ioi.mpr (lt_trans ht hy.1)) le_rfl))
     apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
-    intro y _
+    intro y hy
     rw [Real.norm_eq_abs]
-    exact hinner_bound y
+    exact hinner_bound y (lt_trans ht hy.1)
   have hIIrect : IntervalIntegrable (fun y => ∫ x in t..A, g x y)
       MeasureTheory.volume t B := by
     rw [intervalIntegrable_iff, Set.uIoc_of_le htB]
@@ -418,24 +420,28 @@ theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
         (C := Cg * A) (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top))
       hmarg2
     apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
-    intro y _
+    intro y hy
     rw [Real.norm_eq_abs, ← Real.norm_eq_abs]
     apply le_trans (intervalIntegral.norm_integral_le_of_norm_le_const
-      (C := Cg) (fun x hx => by rw [Real.norm_eq_abs]; exact hbound x y))
+      (C := Cg) (fun x hx => by
+        rw [Real.norm_eq_abs]
+        rw [Set.uIoc_of_le htA] at hx
+        exact hbound x y (lt_trans ht hx.1) (lt_trans ht hy.1)))
     rw [abs_of_nonneg (by linarith)]
     nlinarith [ht]
   -- assemble: quadrant − rectangle = outer tail + inner tails
   have hout : |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
       - ∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y| ≤ (Cg * A) * t :=
     integral_Ioi_sub_interval _ (Cg * A) B t (by positivity) ht htB hmarg
-      (fun y _ => hinner_bound y) hinner_supp
+      (fun y hy => hinner_bound y hy) hinner_supp
   have hin : |(∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y)
       - ∫ y in t..B, ∫ x in t..A, g x y| ≤ (Cg * t) * B := by
     rw [← intervalIntegral.integral_sub hIIfull hIIrect, ← Real.norm_eq_abs]
     apply le_trans (intervalIntegral.norm_integral_le_of_norm_le_const
       (C := Cg * t) (fun y hy => by
         rw [Real.norm_eq_abs]
-        exact hinner_tail y t ht htA))
+        rw [Set.uIoc_of_le htB] at hy
+        exact hinner_tail y (lt_trans ht hy.1) t ht htA))
     rw [abs_of_nonneg (by linarith)]
     nlinarith [ht, hCg, mul_nonneg (mul_nonneg hCg (le_of_lt ht)) (le_of_lt ht)]
   calc |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
