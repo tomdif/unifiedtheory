@@ -194,8 +194,103 @@ theorem J4_slice_limit (g pdvg : ℝ → ℝ → ℝ)
   exact (J4_slice_identity g pdvg hgc hd M hM a u ha hu).symm
 
 #print axioms J4_over_w_integrable
+/-- **The J4-edge outer theorem**: integrating the slice limit over `u`,
+
+    ∫₀^∞ [√a ∫₀^∞ (u/v)·J4(au²v²)·g(u,v) dv] du
+        ⟶  (−√π/24) · ∫₀^∞ ∂_v g(u,0) du       (a → ∞).
+
+Dominated convergence over `u` (`outer_dct`): the slice identity plus the MVT
+bound the slice uniformly in `a` by `M·∫|J4(w²)|dw` on the support `(0,A]`;
+the pointwise limit is `J4_slice_limit`. -/
+theorem J4_edge_outer (g pdvg : ℝ → ℝ → ℝ)
+    (hgc : Continuous (Function.uncurry g))
+    (hd : ∀ u v, HasDerivAt (fun v' => g u v') (pdvg u v) v)
+    (M : ℝ) (hM : ∀ u v, |pdvg u v| ≤ M)
+    (A : ℝ) (hA : 0 < A) (hsuppU : ∀ u v, A ≤ u → g u v = 0) :
+    Tendsto (fun a : ℝ => ∫ u in Ioi (0:ℝ),
+        Real.sqrt a * ∫ v in Ioi (0:ℝ), (u/v) * J4 (a*u^2*v^2) * g u v)
+      atTop (𝓝 (-(Real.sqrt π)/24 * ∫ u in Ioi (0:ℝ), pdvg u 0)) := by
+  set CJ := ∫ w in Ioi (0:ℝ), |J4 (w^2)| with hCJdef
+  have hCJ0 : 0 ≤ CJ :=
+    setIntegral_nonneg measurableSet_Ioi (fun w _ => abs_nonneg _)
+  have hM0 : 0 ≤ M := le_trans (abs_nonneg _) (hM 0 0)
+  have hJ4c : Continuous J4 := by
+    unfold J4
+    fun_prop
+  have h := outer_dct
+    (fun a u => Real.sqrt a * ∫ v in Ioi (0:ℝ), (u/v) * J4 (a*u^2*v^2) * g u v)
+    (fun u => -(Real.sqrt π)/24 * pdvg u 0)
+    ((Ioc (0:ℝ) A).indicator (fun _ => M * CJ))
+    ?_ ?_ ?_ ?_
+  · have hval : (∫ u in Ioi (0:ℝ), -(Real.sqrt π)/24 * pdvg u 0)
+        = -(Real.sqrt π)/24 * ∫ u in Ioi (0:ℝ), pdvg u 0 := integral_const_mul _ _
+    rwa [hval] at h
+  · -- measurability of the outer family
+    intro a
+    have hFm : Measurable (Function.uncurry (fun u v =>
+        (u/v) * J4 (a*u^2*v^2) * g u v)) := by
+      have hquad : Measurable (fun p : ℝ × ℝ => a * p.1^2 * p.2^2) :=
+        ((measurable_fst.pow_const 2).const_mul a).mul (measurable_snd.pow_const 2)
+      exact ((measurable_fst.div measurable_snd).mul
+        (hJ4c.measurable.comp hquad)).mul hgc.measurable
+    have hmarg : StronglyMeasurable (fun u => ∫ v in Ioi (0:ℝ),
+        (u/v) * J4 (a*u^2*v^2) * g u v) :=
+      hFm.stronglyMeasurable.integral_prod_right'
+    exact (measurable_const.mul hmarg.measurable).aestronglyMeasurable
+  · -- the dominator is integrable
+    apply Integrable.integrableOn
+    rw [integrable_indicator_iff measurableSet_Ioc]
+    exact integrableOn_const
+      (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+  · -- the uniform bound
+    filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro u hu
+    rw [mem_Ioi] at hu
+    rcases lt_or_ge u A with huA | huA
+    · rw [Set.indicator_of_mem (mem_Ioc.mpr ⟨hu, le_of_lt huA⟩)]
+      rw [Real.norm_eq_abs, J4_slice_identity g pdvg hgc hd M hM a u ha hu]
+      have hlip : ∀ y : ℝ, 0 ≤ y → |g u y - g u 0| ≤ M * y := by
+        intro y hy
+        have hmvt := convex_univ.norm_image_sub_le_of_norm_hasDerivWithin_le
+          (fun z _ => (hd u z).hasDerivWithinAt)
+          (fun z _ => by simpa [Real.norm_eq_abs] using hM u z)
+          (mem_univ 0) (mem_univ y)
+        rw [Real.norm_eq_abs, Real.norm_eq_abs, sub_zero, abs_of_nonneg hy] at hmvt
+        exact hmvt
+      calc |∫ w in Ioi (0:ℝ),
+            J4 (w^2) * ((g u (w/(Real.sqrt a * u)) - g u 0)/(w/(Real.sqrt a * u)))|
+          ≤ ∫ w in Ioi (0:ℝ), |J4 (w^2)| * M := by
+            rw [← Real.norm_eq_abs]
+            apply norm_integral_le_of_norm_le (J4_sq_integrable.abs.mul_const M)
+            apply ae_restrict_of_forall_mem measurableSet_Ioi
+            intro w hw
+            rw [mem_Ioi] at hw
+            have hy : 0 < w/(Real.sqrt a * u) :=
+              div_pos hw (mul_pos (Real.sqrt_pos.mpr ha) hu)
+            rw [Real.norm_eq_abs, abs_mul]
+            apply mul_le_mul_of_nonneg_left ?_ (abs_nonneg _)
+            rw [abs_div, abs_of_pos hy, div_le_iff₀ hy]
+            exact hlip _ (le_of_lt hy)
+        _ = M * CJ := by
+            rw [show (fun w => |J4 (w^2)| * M) = fun w => M * |J4 (w^2)| from by
+              funext w; ring]
+            rw [integral_const_mul, ← hCJdef]
+    · have hz : (∫ v in Ioi (0:ℝ), (u/v) * J4 (a*u^2*v^2) * g u v) = 0 := by
+        rw [setIntegral_congr_fun measurableSet_Ioi
+          (fun v _ => by rw [hsuppU u v huA, mul_zero]), integral_zero]
+      rw [hz, mul_zero, norm_zero]
+      exact Set.indicator_nonneg (fun _ _ => mul_nonneg hM0 hCJ0) u
+  · -- the pointwise limit
+    apply ae_restrict_of_forall_mem measurableSet_Ioi
+    intro u hu
+    rw [mem_Ioi] at hu
+    exact J4_slice_limit g pdvg hgc hd M hM u hu
+
 #print axioms J4_edge_mass_zero
 #print axioms J4_slice_identity
 #print axioms J4_slice_limit
+
+#print axioms J4_edge_outer
 
 end UnifiedTheory.Audit.KFCausalMinkowski4DEdgeAssembly
