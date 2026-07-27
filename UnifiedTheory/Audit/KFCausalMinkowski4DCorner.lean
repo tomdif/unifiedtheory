@@ -815,7 +815,226 @@ theorem K4_corner_outer_dct (g pdug : ℝ → ℝ → ℝ) (Mu Cg A : ℝ) (hA :
     ring
   rwa [hval] at hdct
 
+/-- Per-`(a,w)` integrability of the boost-profile integrand
+`s ↦ g(ws, (√a·s)⁻¹)/s`: the `v`-support kills it below `(√a·B)⁻¹`
+(where `(√a·s)⁻¹ ≥ B`), the `u`-support above `A/w`; in between `1/s` is
+bounded by `√a·B`. -/
+theorem G_integrable (g : ℝ → ℝ → ℝ) (Cg A B : ℝ)
+    (hgc : Continuous (Function.uncurry g)) (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0) (hsuppV : ∀ u v, B ≤ v → g u v = 0)
+    (hB : 0 < B) (a : ℝ) (ha : 0 < a) (w : ℝ) (hw : 0 < w) :
+    IntegrableOn (fun s => g (w*s) ((Real.sqrt a * s)⁻¹) / s) (Ioi (0:ℝ)) := by
+  have hCg : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  have hsa : 0 < Real.sqrt a := Real.sqrt_pos.mpr ha
+  set lo := (Real.sqrt a * B)⁻¹ with hlodef
+  have hlo : 0 < lo := by positivity
+  have hmeas : AEStronglyMeasurable (fun s => g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+      (volume.restrict (Ioi (0:ℝ))) := by
+    have hy : Measurable (fun s : ℝ => (Real.sqrt a * s)⁻¹) :=
+      (measurable_id.const_mul (Real.sqrt a)).inv
+    exact ((hgc.measurable.comp ((measurable_id.const_mul w).prodMk hy)).div
+      measurable_id).aestronglyMeasurable
+  have hDint : Integrable ((Ioc lo (A/w)).indicator (fun _ => Cg * (Real.sqrt a * B)))
+      (volume.restrict (Ioi (0:ℝ))) := by
+    apply Integrable.integrableOn
+    rw [integrable_indicator_iff measurableSet_Ioc]
+    exact integrableOn_const (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+  apply Integrable.mono' hDint hmeas
+  apply ae_restrict_of_forall_mem measurableSet_Ioi
+  intro s hs
+  rw [mem_Ioi] at hs
+  rcases lt_or_ge lo s with hlos | hslo
+  swap
+  · -- below the v-support cutoff: the integrand vanishes
+    have hz : g (w*s) ((Real.sqrt a * s)⁻¹) = 0 := by
+      apply hsuppV
+      have h1 : Real.sqrt a * s ≤ 1 / B := by
+        calc Real.sqrt a * s ≤ Real.sqrt a * lo :=
+              mul_le_mul_of_nonneg_left hslo (le_of_lt hsa)
+          _ = 1 / B := by rw [hlodef]; field_simp
+      calc B = 1 / (1/B) := by field_simp
+        _ ≤ 1 / (Real.sqrt a * s) := one_div_le_one_div_of_le (by positivity) h1
+        _ = (Real.sqrt a * s)⁻¹ := one_div _
+    rw [hz]
+    simp only [zero_div, norm_zero]
+    exact Set.indicator_nonneg (fun _ _ => mul_nonneg hCg (by positivity)) s
+  · rcases lt_or_ge (A/w) s with hsAw | hsAw
+    swap
+    · -- the live band: 1/s ≤ √a·B
+      rw [Set.indicator_of_mem (mem_Ioc.mpr ⟨hlos, hsAw⟩)]
+      have hinv : s⁻¹ ≤ Real.sqrt a * B := by
+        have h1 : 1/s ≤ 1/lo := one_div_le_one_div_of_le hlo (le_of_lt hlos)
+        rw [one_div, one_div, hlodef, inv_inv] at h1
+        exact h1
+      rw [Real.norm_eq_abs, abs_div, abs_of_pos hs, div_eq_mul_inv]
+      exact mul_le_mul (hgb _ _) hinv (inv_nonneg.mpr (le_of_lt hs)) hCg
+    · -- beyond the u-support: the integrand vanishes
+      have hz : g (w*s) ((Real.sqrt a * s)⁻¹) = 0 := by
+        apply hsuppU
+        rw [div_lt_iff₀ hw] at hsAw
+        nlinarith
+      have hnot : s ∉ Ioc lo (A/w) := by
+        intro hmem
+        exact absurd (mem_Ioc.mp hmem).2 (not_le.mpr hsAw)
+      rw [hz, Set.indicator_of_notMem hnot]
+      simp
+
+/-- **The complete K4-corner theorem.**  For `g` continuously differentiable in `u`
+with uniform bounds and compact support in both arguments,
+
+    √a · ∫₀^∞∫₀^∞ K4(a·u²v²)·g(u,v) dv du
+        ⟶  −g(0,0) · ∫₀^∞ K4(w²)·ln w dw       (a → ∞).
+
+The chain: pull `√a` inside (`inner_sub`), swap the order (`fubini`), pass to the
+multiplicative Haar profile (`haar_link`), subtract the `w = 1` profile at zero
+cost (`K4_mass_zero`), and dominate (`outer_dct`). -/
+theorem K4_corner_limit (g pdug : ℝ → ℝ → ℝ) (Mu Cg A B : ℝ) (hA : 0 < A) (hB : 0 < B)
+    (hgc : Continuous (Function.uncurry g))
+    (hdu : ∀ v u, HasDerivAt (fun u' => g u' v) (pdug u v) u)
+    (hMu : ∀ u v, |pdug u v| ≤ Mu) (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0) (hsuppV : ∀ u v, B ≤ v → g u v = 0) :
+    Tendsto (fun a : ℝ => Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*v^2) * g u v)
+      atTop (𝓝 (-(g 0 0) * ∫ w in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) * Real.log w)) := by
+  apply Filter.Tendsto.congr'
+    (f₁ := fun a : ℝ => ∫ w in Ioi (0:ℝ),
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+      (∫ s in Ioi (0:ℝ),
+        (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s))
+  swap
+  · exact K4_corner_outer_dct g pdug Mu Cg A hA hgc hdu hMu hgb hsuppU
+  filter_upwards [eventually_gt_atTop (0:ℝ)] with a ha
+  have hKc : Continuous (fun w : ℝ =>
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)) := by
+    unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+    fun_prop
+  -- the fixed `w = 1` boost profile
+  have hG1 : IntegrableOn (fun s => g s ((Real.sqrt a * s)⁻¹) / s) (Ioi (0:ℝ)) := by
+    have h := G_integrable g Cg A B hgc hgb hsuppU hsuppV hB a ha 1 one_pos
+    simpa using h
+  -- the profile difference is the difference of profiles
+  have hdiff : ∀ w : ℝ, 0 < w →
+      (∫ s in Ioi (0:ℝ),
+        (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s)
+      = (∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+        - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s := by
+    intro w hw
+    rw [← integral_sub (G_integrable g Cg A B hgc hgb hsuppU hsuppV hB a ha w hw) hG1]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro s _
+    dsimp only
+    rw [sub_div]
+  -- marginal measurability of the moving profile
+  have hy : Measurable (fun s : ℝ => (Real.sqrt a * s)⁻¹) :=
+    (measurable_id.const_mul (Real.sqrt a)).inv
+  have hm1 : StronglyMeasurable (fun w => ∫ s in Ioi (0:ℝ),
+      g (w*s) ((Real.sqrt a * s)⁻¹) / s) := by
+    have hFm : Measurable (Function.uncurry (fun w s =>
+        g (w*s) ((Real.sqrt a * s)⁻¹) / s)) := by
+      have h1 : Measurable (fun p : ℝ × ℝ => g (p.1 * p.2) ((Real.sqrt a * p.2)⁻¹)) :=
+        hgc.measurable.comp ((measurable_fst.mul measurable_snd).prodMk
+          (hy.comp measurable_snd))
+      exact h1.div measurable_snd
+    exact hFm.stronglyMeasurable.integral_prod_right'
+  -- integrability of the two pieces of the subtraction
+  have ip1 : Integrable (fun w =>
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+      ((∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+        - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s))
+      (volume.restrict (Ioi (0:ℝ))) := by
+    apply Integrable.mono' ((K4_sq_integrable.abs.const_mul (Mu*A)).add
+      (K4_log_integrable.const_mul Cg))
+    · exact (hKc.measurable.mul
+        (hm1.measurable.sub measurable_const)).aestronglyMeasurable
+    · apply ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [mem_Ioi] at hw
+      rw [Real.norm_eq_abs, abs_mul]
+      calc |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| *
+          |(∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+            - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s|
+          ≤ |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)| *
+            (Mu * A + Cg * |Real.log w|) := by
+            apply mul_le_mul_of_nonneg_left ?_ (abs_nonneg _)
+            rw [← hdiff w hw]
+            exact D_bound g pdug Mu Cg A hA hdu hMu hgb hsuppU
+              (fun s => (Real.sqrt a * s)⁻¹) w hw
+        _ = Mu * A * |UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+            + Cg * (|UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2)|
+              * |Real.log w|) := by ring
+  have ip2 : Integrable (fun w =>
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+      ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s)
+      (volume.restrict (Ioi (0:ℝ))) :=
+    K4_sq_integrable.mul_const _
+  -- the subtracted piece integrates to zero against the massless kernel
+  have hzero : (∫ w in Ioi (0:ℝ),
+      UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+      ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s) = 0 := by
+    have h := integral_smul_const (μ := volume.restrict (Ioi (0:ℝ)))
+      (f := fun w => UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2))
+      (c := ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s)
+    simp only [smul_eq_mul] at h
+    rw [h, K4_mass_zero, zero_mul]
+  -- the chain
+  symm
+  calc Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+        UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*v^2) * g u v
+      = ∫ u in Ioi (0:ℝ), Real.sqrt a * ∫ v in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (a*u^2*v^2) * g u v :=
+        (integral_const_mul _ _).symm
+    _ = ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          g u (w/(Real.sqrt a * u)) := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro u hu
+        rw [mem_Ioi] at hu
+        exact K4_corner_inner_sub g a u ha hu
+    _ = ∫ w in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          ∫ u in Ioi (0:ℝ), g u (w/(Real.sqrt a * u)) / u :=
+        K4_corner_fubini g Cg A B hA hB hgc hgb hsuppU hsuppV a ha
+    _ = ∫ w in Ioi (0:ℝ), UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          ∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro w hw
+        rw [mem_Ioi] at hw
+        dsimp only
+        rw [K4_corner_haar_link g a w hw]
+    _ = ∫ w in Ioi (0:ℝ),
+          (UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+            ((∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+              - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s)
+          + UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+            ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s) := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro w _
+        ring
+    _ = (∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+            ((∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+              - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s))
+        + ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+            ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s :=
+        integral_add ip1 ip2
+    _ = ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+            ((∫ s in Ioi (0:ℝ), g (w*s) ((Real.sqrt a * s)⁻¹) / s)
+              - ∫ s in Ioi (0:ℝ), g s ((Real.sqrt a * s)⁻¹) / s) := by
+        rw [hzero, add_zero]
+    _ = ∫ w in Ioi (0:ℝ),
+          UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4 (w^2) *
+          (∫ s in Ioi (0:ℝ),
+            (g (w*s) ((Real.sqrt a * s)⁻¹) - g s ((Real.sqrt a * s)⁻¹)) / s) := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro w hw
+        rw [mem_Ioi] at hw
+        dsimp only
+        rw [hdiff w hw]
+
 #print axioms haar_scale
+
 #print axioms frullani_pos
 #print axioms frullani_concentration
 #print axioms K4_corner_inner_sub
