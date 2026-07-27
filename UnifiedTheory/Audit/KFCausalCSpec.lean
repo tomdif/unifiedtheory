@@ -55,3 +55,5 @@ import UnifiedTheory.Audit.KFCausalMinkowski4DEdgeAssembly
 import UnifiedTheory.Audit.KFCausalMinkowskiFrullani
 import UnifiedTheory.Audit.KFCausalMinkowski4DCorner
 import UnifiedTheory.Audit.KFCausalMinkowski4DLogMoment
+import UnifiedTheory.Audit.KFCausalMinkowski4DGateTheorem
+import UnifiedTheory.Audit.KFCausalMinkowski4DSphericalMean
