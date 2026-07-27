@@ -350,6 +350,116 @@ theorem integral_Ioi_sub_interval (f : ℝ → ℝ) (C A ε : ℝ)
   show C * (MeasureTheory.volume (Set.Ioc (0:ℝ) ε)).toReal = C * ε
   rw [Real.volume_Ioc, sub_zero, ENNReal.toReal_ofReal (le_of_lt hε)]
 
+/-- **The double tail**: for a bounded measurable integrand supported in the
+box `[0,A]×[0,B]`, the iterated quadrant integral differs from the iterated
+`[t,A]×[t,B]`-rectangle integral by at most `C·A·t + C·t·B`. -/
+theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
+    (hm : Measurable (Function.uncurry g))
+    (hbound : ∀ x y, |g x y| ≤ Cg)
+    (hsuppU : ∀ x y, A ≤ x → g x y = 0) (hsuppV : ∀ x y, B ≤ y → g x y = 0)
+    (ht : 0 < t) (htA : t ≤ A) (htB : t ≤ B) :
+    |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+      - ∫ y in t..B, ∫ x in t..A, g x y|
+    ≤ Cg*A*t + Cg*t*B := by
+  have hA : 0 < A := lt_of_lt_of_le ht htA
+  have hB : 0 < B := lt_of_lt_of_le ht htB
+  have hmy : ∀ y : ℝ, MeasureTheory.AEStronglyMeasurable (fun x => g x y)
+      (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))) :=
+    fun y => (hm.comp (measurable_id.prodMk measurable_const)).aestronglyMeasurable
+  -- the inner-tail estimate, per y > 0
+  have hinner_tail : ∀ y : ℝ, ∀ s : ℝ, 0 < s → s ≤ A →
+      |(∫ x in Set.Ioi (0:ℝ), g x y) - ∫ x in s..A, g x y| ≤ Cg * s :=
+    fun y s hs hsA => integral_Ioi_sub_interval (fun x => g x y) Cg A s hCg hs hsA
+      (hmy y) (fun x _ => hbound x y) (fun x hx => hsuppU x y hx)
+  -- the inner integral is bounded by Cg·A and supported in y ≤ B
+  have hinner_bound : ∀ y : ℝ, |∫ x in Set.Ioi (0:ℝ), g x y| ≤ Cg * A := by
+    intro y
+    have h := hinner_tail y A hA le_rfl
+    rw [intervalIntegral.integral_same, sub_zero] at h
+    exact h
+  have hinner_supp : ∀ y : ℝ, B ≤ y → (∫ x in Set.Ioi (0:ℝ), g x y) = 0 := by
+    intro y hy
+    rw [MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+      (fun x _ => hsuppV x y hy), MeasureTheory.integral_zero]
+  -- marginal measurability
+  have hmarg : MeasureTheory.AEStronglyMeasurable
+      (fun y => ∫ x in Set.Ioi (0:ℝ), g x y)
+      (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))) := by
+    have hswap : Measurable (Function.uncurry (fun y x => g x y)) :=
+      hm.comp measurable_swap
+    exact (hswap.stronglyMeasurable.integral_prod_right').measurable.aestronglyMeasurable
+  -- interval integrability of both inner functions on [t,B]
+  have hIIfull : IntervalIntegrable (fun y => ∫ x in Set.Ioi (0:ℝ), g x y)
+      MeasureTheory.volume t B := by
+    rw [intervalIntegrable_iff, Set.uIoc_of_le htB]
+    apply MeasureTheory.Integrable.mono'
+      (MeasureTheory.integrableOn_const
+        (C := Cg * A) (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top))
+      (hmarg.mono_measure (MeasureTheory.Measure.restrict_mono
+        (fun y hy => Set.mem_Ioi.mpr (lt_trans ht hy.1)) le_rfl))
+    apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
+    intro y _
+    rw [Real.norm_eq_abs]
+    exact hinner_bound y
+  have hIIrect : IntervalIntegrable (fun y => ∫ x in t..A, g x y)
+      MeasureTheory.volume t B := by
+    rw [intervalIntegrable_iff, Set.uIoc_of_le htB]
+    have hmarg2 : MeasureTheory.AEStronglyMeasurable (fun y => ∫ x in t..A, g x y)
+        (MeasureTheory.volume.restrict (Set.Ioc t B)) := by
+      have he : (fun y => ∫ x in t..A, g x y)
+          = fun y => ∫ x in Set.Ioc t A, g x y :=
+        funext fun y => intervalIntegral.integral_of_le htA
+      rw [he]
+      have hswap : Measurable (Function.uncurry (fun y x => g x y)) :=
+        hm.comp measurable_swap
+      exact (hswap.stronglyMeasurable.integral_prod_right').measurable.aestronglyMeasurable
+    apply MeasureTheory.Integrable.mono'
+      (MeasureTheory.integrableOn_const
+        (C := Cg * A) (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top))
+      hmarg2
+    apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
+    intro y _
+    rw [Real.norm_eq_abs, ← Real.norm_eq_abs]
+    apply le_trans (intervalIntegral.norm_integral_le_of_norm_le_const
+      (C := Cg) (fun x hx => by rw [Real.norm_eq_abs]; exact hbound x y))
+    rw [abs_of_nonneg (by linarith)]
+    nlinarith [ht]
+  -- assemble: quadrant − rectangle = outer tail + inner tails
+  have hout : |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+      - ∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y| ≤ (Cg * A) * t :=
+    integral_Ioi_sub_interval _ (Cg * A) B t (by positivity) ht htB hmarg
+      (fun y _ => hinner_bound y) hinner_supp
+  have hin : |(∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y)
+      - ∫ y in t..B, ∫ x in t..A, g x y| ≤ (Cg * t) * B := by
+    rw [← intervalIntegral.integral_sub hIIfull hIIrect, ← Real.norm_eq_abs]
+    apply le_trans (intervalIntegral.norm_integral_le_of_norm_le_const
+      (C := Cg * t) (fun y hy => by
+        rw [Real.norm_eq_abs]
+        exact hinner_tail y t ht htA))
+    rw [abs_of_nonneg (by linarith)]
+    nlinarith [ht, hCg, mul_nonneg (mul_nonneg hCg (le_of_lt ht)) (le_of_lt ht)]
+  calc |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+      - ∫ y in t..B, ∫ x in t..A, g x y|
+      ≤ |(∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+        - ∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y|
+        + |(∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y)
+        - ∫ y in t..B, ∫ x in t..A, g x y| := by
+        have h := abs_sub_abs_le_abs_sub (0:ℝ) (0:ℝ)
+        rw [abs_le]
+        constructor
+        · linarith [neg_abs_le ((∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+            - ∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y),
+            neg_abs_le ((∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y)
+            - ∫ y in t..B, ∫ x in t..A, g x y)]
+        · linarith [le_abs_self ((∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ), g x y)
+            - ∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y),
+            le_abs_self ((∫ y in t..B, ∫ x in Set.Ioi (0:ℝ), g x y)
+            - ∫ y in t..B, ∫ x in t..A, g x y)]
+    _ ≤ (Cg * A) * t + (Cg * t) * B := by linarith [hout, hin]
+    _ = Cg*A*t + Cg*t*B := by ring
+
+#print axioms double_tail
+
 #print axioms K_box_bound
 
 #print axioms strip_u_axis
