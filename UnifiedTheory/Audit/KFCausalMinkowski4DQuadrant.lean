@@ -17,9 +17,12 @@ import UnifiedTheory.Audit.KFCausalMinkowski4DKernelBounds
 import UnifiedTheory.Audit.KFCausalMinkowski4DRectangleChain
 import UnifiedTheory.Audit.KFCausalMinkowski4DDictionary
 
-open Real
+open Real Filter Topology
 open UnifiedTheory.Audit.KFCausalMinkowski4DKernel
 open UnifiedTheory.Audit.KFCausalMinkowski4DKernelBounds
+open UnifiedTheory.Audit.KFCausalMinkowski4DMoments
+open UnifiedTheory.Audit.KFCausalMinkowski4DRectangleChain
+open UnifiedTheory.Audit.KFCausalMinkowski4DDictionary
 
 namespace UnifiedTheory.Audit.KFCausalMinkowski4DQuadrant
 
@@ -463,6 +466,256 @@ theorem double_tail (g : ℝ → ℝ → ℝ) (Cg A B t : ℝ) (hCg : 0 ≤ Cg)
             - ∫ y in t..B, ∫ x in t..A, g x y)]
     _ ≤ (Cg * A) * t + (Cg * t) * B := by linarith [hout, hin]
     _ = Cg*A*t + Cg*t*B := by ring
+
+-- The two closing `linarith` calls carry six absolute-value bounds plus the
+-- rectangle-chain equation over very large integral expressions.
+set_option maxHeartbeats 1600000 in
+/-- **THE QUADRANT IDENTITY** (fixed `a > 0`): for a profile `F` with continuous
+uncurried derivatives, uniform bounds, and support strictly inside the box
+`[0,A]×[0,B]`,
+
+    ∬_{(0,∞)²} a(v−u)²·f4D(au²v²)·F  =  (1/6)·F(0,0)  +  ∬_{(0,∞)²} 𝒦·F_uv.
+
+The BDG counterterm coefficient `1/6` is *derived*: it is the `δ → 0` limit of
+the v-axis IBP boundary.  Proof: the exact rectangle chain at `ε = δ = t`, the
+five error pieces each `O(t)` (double tails, strips, edge-FTC tail), and
+`ge_of_tendsto` along `𝓝[>]0`. -/
+theorem corner4_quadrant (a A B CF CFu Mv Ccone : ℝ)
+    (ha : 0 < a) (hA : 0 < A) (hB : 0 < B)
+    (F Fu Fuv : ℝ → ℝ → ℝ)
+    (hFC : Continuous (Function.uncurry F))
+    (hFuc : Continuous (Function.uncurry Fu))
+    (hFuvc : Continuous (Function.uncurry Fuv))
+    (hFd : ∀ v u, HasDerivAt (fun u' => F u' v) (Fu u v) u)
+    (hFud : ∀ u v, HasDerivAt (fun v' => Fu u v') (Fuv u v) v)
+    (hCF : ∀ u v, |F u v| ≤ CF) (hCFu : ∀ u v, |Fu u v| ≤ CFu)
+    (hMv : ∀ u v, |Fuv u v| ≤ Mv)
+    (hCcone : ∀ u v, |a*(v-u)^2 * f4D (a*u^2*v^2) * F u v| ≤ Ccone)
+    (hsUF : ∀ u v, A ≤ u → F u v = 0) (hsVF : ∀ u v, B ≤ v → F u v = 0)
+    (hsUFu : ∀ u v, A ≤ u → Fu u v = 0) (hsVFu : ∀ u v, B ≤ v → Fu u v = 0)
+    (hsUFuv : ∀ u v, A ≤ u → Fuv u v = 0) (hsVFuv : ∀ u v, B ≤ v → Fuv u v = 0) :
+    (∫ v in Set.Ioi (0:ℝ), ∫ u in Set.Ioi (0:ℝ),
+        a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+      = (1/6) * F 0 0
+        + ∫ u in Set.Ioi (0:ℝ), ∫ v in Set.Ioi (0:ℝ),
+            ((v/u) * J4 (a*u^2*v^2) + u * v⁻¹ * J4 (a*u^2*v^2)
+              - (1/2) * K4 (a*u^2*v^2)) * Fuv u v := by
+  have hCF0 : 0 ≤ CF := le_trans (abs_nonneg _) (hCF 0 0)
+  have hCFu0 : 0 ≤ CFu := le_trans (abs_nonneg _) (hCFu 0 0)
+  have hMv0 : 0 ≤ Mv := le_trans (abs_nonneg _) (hMv 0 0)
+  have hCcone0 : 0 ≤ Ccone := le_trans (abs_nonneg _) (hCcone 0 0)
+  have hCKF0 : (0:ℝ) ≤ (a*A*B^3 + a*A^3*B + 7/2) * Mv := by positivity
+  -- measurability of the two double-tail integrands
+  have hconeMeas : Measurable (Function.uncurry (fun u v =>
+      a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)) := by
+    have hc : Continuous (fun p : ℝ × ℝ => a*(p.2-p.1)^2 * f4D (a*p.1^2*p.2^2)) := by
+      unfold UnifiedTheory.Audit.KFCausalMinkowski4DMoments.f4D
+      fun_prop
+    exact (hc.mul hFC).measurable
+  have hJm : Measurable J4 := by
+    have : Continuous J4 := by
+      unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.J4
+      fun_prop
+    exact this.measurable
+  have hKm : Measurable K4 := by
+    have : Continuous K4 := by
+      unfold UnifiedTheory.Audit.KFCausalMinkowski4DKernel.K4
+      fun_prop
+    exact this.measurable
+  have hgateMeas : Measurable (Function.uncurry (fun x y =>
+      ((x/y) * J4 (a*y^2*x^2) + y * x⁻¹ * J4 (a*y^2*x^2)
+        - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)) := by
+    have hq : Measurable (fun p : ℝ × ℝ => a*p.2^2*p.1^2) := by fun_prop
+    exact ((((measurable_fst.div measurable_snd).mul (hJm.comp hq)).add
+      ((measurable_snd.mul measurable_fst.inv).mul (hJm.comp hq))).sub
+      (measurable_const.mul (hKm.comp hq))).mul
+      (hFuvc.measurable.comp (measurable_snd.prodMk measurable_fst))
+  -- pointwise gate bound
+  have hKFb : ∀ x y : ℝ, 0 < x → 0 < y →
+      |((x/y) * J4 (a*y^2*x^2) + y * x⁻¹ * J4 (a*y^2*x^2)
+        - (1/2) * K4 (a*y^2*x^2)) * Fuv y x|
+      ≤ (a*A*B^3 + a*A^3*B + 7/2) * Mv := by
+    intro x y hx hy
+    rcases le_or_gt A y with hyA | hyA
+    · rw [hsUFuv y x hyA, mul_zero, abs_zero]
+      exact hCKF0
+    rcases le_or_gt B x with hxB | hxB
+    · rw [hsVFuv y x hxB, mul_zero, abs_zero]
+      exact hCKF0
+    have hbox := K_box_bound a y x ha.le hy hx
+      (UnifiedTheory.Audit.KFCausalMinkowski4DCorner.K4_abs_bound _ (by positivity))
+    rw [abs_mul]
+    have hx2 : x^2 ≤ B^2 := by nlinarith
+    have hx3 : x^3 ≤ B^3 := by
+      nlinarith [mul_le_mul_of_nonneg_right hx2 (le_of_lt hx),
+        mul_le_mul_of_nonneg_left (le_of_lt hxB) (sq_nonneg B)]
+    have hy2 : y^2 ≤ A^2 := by nlinarith
+    have hy3 : y^3 ≤ A^3 := by
+      nlinarith [mul_le_mul_of_nonneg_right hy2 (le_of_lt hy),
+        mul_le_mul_of_nonneg_left (le_of_lt hyA) (sq_nonneg A)]
+    have hmono : a*y*x^3 + a*y^3*x + 7/2 ≤ a*A*B^3 + a*A^3*B + 7/2 := by
+      have p1 : y*x^3 ≤ A*B^3 := by
+        nlinarith [mul_le_mul_of_nonneg_right (le_of_lt hyA) (pow_pos hx 3).le,
+          mul_le_mul_of_nonneg_left hx3 (le_of_lt hA)]
+      have p2 : y^3*x ≤ A^3*B := by
+        nlinarith [mul_le_mul_of_nonneg_right hy3 (le_of_lt hx),
+          mul_le_mul_of_nonneg_left (le_of_lt hxB) (by positivity : (0:ℝ) ≤ A^3)]
+      nlinarith [mul_le_mul_of_nonneg_left p1 (le_of_lt ha),
+        mul_le_mul_of_nonneg_left p2 (le_of_lt ha)]
+    calc |(x/y) * J4 (a*y^2*x^2) + y * x⁻¹ * J4 (a*y^2*x^2)
+          - (1/2) * K4 (a*y^2*x^2)| * |Fuv y x|
+        ≤ (a*y*x^3 + a*y^3*x + 7/2) * Mv :=
+          mul_le_mul hbox (hMv y x) (abs_nonneg _) (by positivity)
+      _ ≤ (a*A*B^3 + a*A^3*B + 7/2) * Mv :=
+          mul_le_mul_of_nonneg_right hmono hMv0
+  -- the per-t error bound
+  have hkey : ∀ t ∈ Set.Ioo (0:ℝ) (min A B),
+      |(∫ v in Set.Ioi (0:ℝ), ∫ u in Set.Ioi (0:ℝ),
+          a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+        - ((1/6) * F 0 0
+          + ∫ u in Set.Ioi (0:ℝ), ∫ v in Set.Ioi (0:ℝ),
+              ((v/u) * J4 (a*u^2*v^2) + u * v⁻¹ * J4 (a*u^2*v^2)
+                - (1/2) * K4 (a*u^2*v^2)) * Fuv u v)|
+      ≤ (Ccone*A + Ccone*B + 7*a*B^3*CF + (7/2)*a*A^4*CFu + (1/6)*A*Mv
+          + (1/6)*CFu + (a*A*B^3 + a*A^3*B + 7/2)*Mv*B
+          + (a*A*B^3 + a*A^3*B + 7/2)*Mv*A) * t := by
+    intro t ht
+    obtain ⟨ht0, htm⟩ := ht
+    have htA : t ≤ A := le_of_lt (lt_of_lt_of_le htm (min_le_left A B))
+    have htB : t ≤ B := le_of_lt (lt_of_lt_of_le htm (min_le_right A B))
+    -- the exact rectangle chain at ε = δ = t
+    have hchain := corner4_rectangle_chain a t A t B ht0 htA ht0 htB F Fu Fuv
+      hFC hFd hFud hFuc hFuvc (fun v => hsUF A v le_rfl) (fun u => hsVFu u B le_rfl)
+    -- (1) the cone double tail
+    have hd1 := double_tail (fun u v => a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+      Ccone A B t hCcone0 hconeMeas (fun x y _ _ => hCcone x y)
+      (fun x y hx => by dsimp only; rw [hsUF x y hx, mul_zero])
+      (fun x y hy => by dsimp only; rw [hsVF x y hy, mul_zero]) ht0 htA htB
+    -- (2) the u-axis strip
+    have hs1 := strip_u_axis a t t B CF ha.le ht0 ht0 htB (fun v => F t v)
+      (fun v => hCF t v)
+    have h2fin : |∫ v in t..B, (t⁻¹ * G4 (a*t^2*v^2) + t * (v^2)⁻¹ * H4 (a*t^2*v^2)
+        - a*t^2*v * K4d (a*t^2*v^2)) * F t v| ≤ 7*a*B^3*CF*t := by
+      apply le_trans hs1
+      have hpoly : 2*B^2+2*t^2+3*t*B ≤ 7*B^2 := by nlinarith
+      calc a*(2*B^2+2*t^2+3*t*B)*t*CF*B
+          = (a*(2*B^2+2*t^2+3*t*B))*(t*CF*B) := by ring
+        _ ≤ (a*(7*B^2))*(t*CF*B) := mul_le_mul_of_nonneg_right
+            (mul_le_mul_of_nonneg_left hpoly (le_of_lt ha)) (by positivity)
+        _ = 7*a*B^3*CF*t := by ring
+    -- (3) the v-axis strip
+    have hs2 := strip_v_axis a t t A CFu Mv ha.le ht0 ht0 htA Fu Fuv hFuc hFud
+      hCFu hMv
+    have h3fin : |(∫ u in t..A, ((t/u) * J4 (a*u^2*t^2) + u * t⁻¹ * J4 (a*u^2*t^2)
+        - (1/2) * K4 (a*u^2*t^2)) * Fu u t) + (1/6) * ∫ u in t..A, Fu u 0|
+        ≤ ((7/2)*a*A^4*CFu + (1/6)*A*Mv)*t := by
+      apply le_trans hs2
+      have hpoly2 : A*t^2 + A^3 + (3/2)*A^2*t ≤ (7/2)*A^3 := by
+        have p1 : t*t ≤ A*t := mul_le_mul_of_nonneg_right htA (le_of_lt ht0)
+        have p2 : A*t ≤ A*A := mul_le_mul_of_nonneg_left htA (le_of_lt hA)
+        nlinarith [p1, p2, mul_le_mul_of_nonneg_left p1 (le_of_lt hA),
+          mul_le_mul_of_nonneg_left p2 (le_of_lt hA)]
+      calc (a*(A*t^2 + A^3 + (3/2)*A^2*t)*t*CFu + (1/6)*Mv*t)*A
+          = (a*(A*t^2 + A^3 + (3/2)*A^2*t))*(t*CFu*A) + (1/6)*Mv*A*t := by ring
+        _ ≤ (a*((7/2)*A^3))*(t*CFu*A) + (1/6)*Mv*A*t := by
+            have hmul : (a*(A*t^2 + A^3 + (3/2)*A^2*t))*(t*CFu*A)
+                ≤ (a*((7/2)*A^3))*(t*CFu*A) :=
+              mul_le_mul_of_nonneg_right
+                (mul_le_mul_of_nonneg_left hpoly2 (le_of_lt ha)) (by positivity)
+            linarith [hmul]
+        _ = ((7/2)*a*A^4*CFu + (1/6)*A*Mv)*t := by ring
+    -- (4) the edge-FTC tail
+    have hedge : (∫ u in Set.Ioi (0:ℝ), Fu u 0) = -F 0 0 :=
+      edge_ftc (fun u => F u 0) (fun u => Fu u 0) A hA (fun u => hFd 0 u)
+        (hFuc.comp (continuous_id.prodMk continuous_const))
+        (fun u hu => hsUF u 0 hu)
+    have htail4 := integral_Ioi_sub_interval (fun u => Fu u 0) CFu A t hCFu0
+      ht0 htA
+      ((hFuc.comp (continuous_id.prodMk continuous_const)).aestronglyMeasurable)
+      (fun u _ => hCFu u 0) (fun u hu => hsUFu u 0 hu)
+    have h4 : |-((1:ℝ)/6) * (∫ u in t..A, Fu u 0) - (1/6)*F 0 0|
+        ≤ (1/6)*CFu*t := by
+      have heq : -((1:ℝ)/6) * (∫ u in t..A, Fu u 0) - (1/6)*F 0 0
+          = -((1/6) * ((∫ u in t..A, Fu u 0)
+            - (∫ u in Set.Ioi (0:ℝ), Fu u 0))) := by
+        rw [hedge]
+        ring
+      rw [heq, abs_neg, abs_mul, abs_of_nonneg (by norm_num : (0:ℝ) ≤ 1/6)]
+      rw [abs_sub_comm] at htail4
+      calc (1/6) * |(∫ u in t..A, Fu u 0) - ∫ u in Set.Ioi (0:ℝ), Fu u 0|
+          ≤ (1/6) * (CFu * t) := mul_le_mul_of_nonneg_left htail4 (by norm_num)
+        _ = (1/6)*CFu*t := by ring
+    -- (5) the gate double tail
+    have hd5 := double_tail (fun x y => ((x/y) * J4 (a*y^2*x^2)
+        + y * x⁻¹ * J4 (a*y^2*x^2) - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)
+      ((a*A*B^3 + a*A^3*B + 7/2) * Mv) B A t hCKF0 hgateMeas hKFb
+      (fun x y hx => by dsimp only; rw [hsVFuv y x hx, mul_zero])
+      (fun x y hy => by dsimp only; rw [hsUFuv y x hy, mul_zero]) ht0 htB htA
+    -- assemble
+    rw [abs_le]
+    constructor
+    · linarith [hd1, h2fin, h3fin, h4, hd5, hchain,
+        neg_abs_le ((∫ v in Set.Ioi (0:ℝ), ∫ u in Set.Ioi (0:ℝ),
+          a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+          - ∫ v in t..B, ∫ u in t..A, a*(v-u)^2 * f4D (a*u^2*v^2) * F u v),
+        le_abs_self (∫ v in t..B, (t⁻¹ * G4 (a*t^2*v^2)
+          + t * (v^2)⁻¹ * H4 (a*t^2*v^2) - a*t^2*v * K4d (a*t^2*v^2)) * F t v),
+        neg_abs_le ((∫ u in t..A, ((t/u) * J4 (a*u^2*t^2)
+          + u * t⁻¹ * J4 (a*u^2*t^2) - (1/2) * K4 (a*u^2*t^2)) * Fu u t)
+          + (1/6) * ∫ u in t..A, Fu u 0),
+        neg_abs_le (-((1:ℝ)/6) * (∫ u in t..A, Fu u 0) - (1/6)*F 0 0),
+        le_abs_self ((∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ),
+          ((x/y) * J4 (a*y^2*x^2) + y * x⁻¹ * J4 (a*y^2*x^2)
+            - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)
+          - ∫ y in t..A, ∫ x in t..B, ((x/y) * J4 (a*y^2*x^2)
+            + y * x⁻¹ * J4 (a*y^2*x^2) - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)]
+    · linarith [hd1, h2fin, h3fin, h4, hd5, hchain,
+        le_abs_self ((∫ v in Set.Ioi (0:ℝ), ∫ u in Set.Ioi (0:ℝ),
+          a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+          - ∫ v in t..B, ∫ u in t..A, a*(v-u)^2 * f4D (a*u^2*v^2) * F u v),
+        neg_abs_le (∫ v in t..B, (t⁻¹ * G4 (a*t^2*v^2)
+          + t * (v^2)⁻¹ * H4 (a*t^2*v^2) - a*t^2*v * K4d (a*t^2*v^2)) * F t v),
+        le_abs_self ((∫ u in t..A, ((t/u) * J4 (a*u^2*t^2)
+          + u * t⁻¹ * J4 (a*u^2*t^2) - (1/2) * K4 (a*u^2*t^2)) * Fu u t)
+          + (1/6) * ∫ u in t..A, Fu u 0),
+        le_abs_self (-((1:ℝ)/6) * (∫ u in t..A, Fu u 0) - (1/6)*F 0 0),
+        neg_abs_le ((∫ y in Set.Ioi (0:ℝ), ∫ x in Set.Ioi (0:ℝ),
+          ((x/y) * J4 (a*y^2*x^2) + y * x⁻¹ * J4 (a*y^2*x^2)
+            - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)
+          - ∫ y in t..A, ∫ x in t..B, ((x/y) * J4 (a*y^2*x^2)
+            + y * x⁻¹ * J4 (a*y^2*x^2) - (1/2) * K4 (a*y^2*x^2)) * Fuv y x)]
+  -- squeeze along 𝓝[>]0
+  have htend : Tendsto (fun t : ℝ =>
+      (Ccone*A + Ccone*B + 7*a*B^3*CF + (7/2)*a*A^4*CFu + (1/6)*A*Mv
+        + (1/6)*CFu + (a*A*B^3 + a*A^3*B + 7/2)*Mv*B
+        + (a*A*B^3 + a*A^3*B + 7/2)*Mv*A) * t) (𝓝[>] (0:ℝ)) (𝓝 0) := by
+    have h1 : Tendsto (fun t : ℝ => t) (𝓝[>] (0:ℝ)) (𝓝 0) :=
+      tendsto_id.mono_right nhdsWithin_le_nhds
+    have h2 := h1.const_mul
+      (Ccone*A + Ccone*B + 7*a*B^3*CF + (7/2)*a*A^4*CFu + (1/6)*A*Mv
+        + (1/6)*CFu + (a*A*B^3 + a*A^3*B + 7/2)*Mv*B
+        + (a*A*B^3 + a*A^3*B + 7/2)*Mv*A)
+    rw [mul_zero] at h2
+    exact h2
+  have hev : ∀ᶠ t in 𝓝[>] (0:ℝ),
+      |(∫ v in Set.Ioi (0:ℝ), ∫ u in Set.Ioi (0:ℝ),
+          a*(v-u)^2 * f4D (a*u^2*v^2) * F u v)
+        - ((1/6) * F 0 0
+          + ∫ u in Set.Ioi (0:ℝ), ∫ v in Set.Ioi (0:ℝ),
+              ((v/u) * J4 (a*u^2*v^2) + u * v⁻¹ * J4 (a*u^2*v^2)
+                - (1/2) * K4 (a*u^2*v^2)) * Fuv u v)|
+      ≤ (Ccone*A + Ccone*B + 7*a*B^3*CF + (7/2)*a*A^4*CFu + (1/6)*A*Mv
+          + (1/6)*CFu + (a*A*B^3 + a*A^3*B + 7/2)*Mv*B
+          + (a*A*B^3 + a*A^3*B + 7/2)*Mv*A) * t := by
+    filter_upwards [Filter.inter_mem
+      (mem_nhdsWithin_of_mem_nhds (Iio_mem_nhds (lt_min hA hB)))
+      self_mem_nhdsWithin] with t ht
+    exact hkey t ⟨Set.mem_Ioi.mp ht.2, Set.mem_Iio.mp ht.1⟩
+  have hle := ge_of_tendsto htend hev
+  have h0 := abs_eq_zero.mp (le_antisymm hle (abs_nonneg _))
+  linarith [h0]
+
+#print axioms corner4_quadrant
 
 #print axioms double_tail
 
