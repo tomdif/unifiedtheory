@@ -284,6 +284,72 @@ theorem K_box_bound (a u v : ℝ) (ha : 0 ≤ a) (hu : 0 < u) (hv : 0 < v)
       le_abs_self (u * v⁻¹ * J4 (a*u^2*v^2)),
       neg_abs_le ((1/2 : ℝ) * K4 (a*u^2*v^2))]
 
+/-- **The tail reduction**: for a bounded measurable integrand supported in
+`[0,A]`, the `(0,∞)`-integral differs from the `[ε,A]`-interval integral by at
+most `C·ε` — the workhorse of the rectangle → quadrant passage. -/
+theorem integral_Ioi_sub_interval (f : ℝ → ℝ) (C A ε : ℝ)
+    (hC : 0 ≤ C) (hε : 0 < ε) (hεA : ε ≤ A)
+    (hm : MeasureTheory.AEStronglyMeasurable f
+      (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))))
+    (hbound : ∀ x, 0 < x → |f x| ≤ C) (hsupp : ∀ x, A ≤ x → f x = 0) :
+    |(∫ x in Set.Ioi (0:ℝ), f x) - ∫ x in ε..A, f x| ≤ C * ε := by
+  have hA : 0 < A := lt_of_lt_of_le hε hεA
+  have hint : MeasureTheory.IntegrableOn f (Set.Ioi (0:ℝ)) := by
+    have hdom : MeasureTheory.Integrable
+        ((Set.Ioc (0:ℝ) A).indicator (fun _ => C))
+        (MeasureTheory.volume.restrict (Set.Ioi (0:ℝ))) := by
+      apply MeasureTheory.Integrable.integrableOn
+      rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+      exact MeasureTheory.integrableOn_const
+        (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+    apply MeasureTheory.Integrable.mono' hdom hm
+    apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+    intro x hx
+    rw [Set.mem_Ioi] at hx
+    by_cases hxA : x ≤ A
+    · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hx, hxA⟩), Real.norm_eq_abs]
+      exact hbound x hx
+    · have hnot : x ∉ Set.Ioc (0:ℝ) A := fun hmem => hxA (Set.mem_Ioc.mp hmem).2
+      rw [Set.indicator_of_notMem hnot, hsupp x (le_of_lt (not_le.mp hxA))]
+      simp
+  have h1 : MeasureTheory.IntegrableOn f (Set.Ioc (0:ℝ) A) :=
+    hint.mono_set (fun x hx => hx.1)
+  have h2 : MeasureTheory.IntegrableOn f (Set.Ioi A) :=
+    hint.mono_set (fun x hx => Set.mem_Ioi.mpr (lt_trans hA hx))
+  have h3 : MeasureTheory.IntegrableOn f (Set.Ioc (0:ℝ) ε) :=
+    hint.mono_set (fun x hx => hx.1)
+  have h4 : MeasureTheory.IntegrableOn f (Set.Ioc ε A) :=
+    hint.mono_set (fun x hx => Set.mem_Ioi.mpr (lt_trans hε hx.1))
+  have hsplit1 : (∫ x in Set.Ioi (0:ℝ), f x) = ∫ x in Set.Ioc (0:ℝ) A, f x := by
+    rw [show Set.Ioi (0:ℝ) = Set.Ioc 0 A ∪ Set.Ioi A from
+      (Set.Ioc_union_Ioi_eq_Ioi (le_of_lt hA)).symm,
+      MeasureTheory.setIntegral_union (Set.Ioc_disjoint_Ioi le_rfl)
+        measurableSet_Ioi h1 h2]
+    have hz : (∫ x in Set.Ioi A, f x) = 0 := by
+      rw [MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+        (fun x hx => hsupp x (le_of_lt hx)), MeasureTheory.integral_zero]
+    rw [hz, add_zero]
+  have hsplit2 : (∫ x in Set.Ioc (0:ℝ) A, f x)
+      = (∫ x in Set.Ioc (0:ℝ) ε, f x) + ∫ x in Set.Ioc ε A, f x := by
+    rw [← Set.Ioc_union_Ioc_eq_Ioc (le_of_lt hε) hεA,
+      MeasureTheory.setIntegral_union (by
+        rw [Set.disjoint_left]
+        intro x hx1 hx2
+        exact absurd hx2.1 (not_lt.mpr hx1.2))
+        measurableSet_Ioc h3 h4]
+  have hival : (∫ x in ε..A, f x) = ∫ x in Set.Ioc ε A, f x :=
+    intervalIntegral.integral_of_le hεA
+  rw [hsplit1, hsplit2, hival,
+    show (∫ x in Set.Ioc (0:ℝ) ε, f x) + (∫ x in Set.Ioc ε A, f x)
+      - (∫ x in Set.Ioc ε A, f x) = ∫ x in Set.Ioc (0:ℝ) ε, f x from by ring,
+    ← Real.norm_eq_abs]
+  apply le_trans (MeasureTheory.norm_setIntegral_le_of_norm_le_const
+    (by rw [Real.volume_Ioc]; exact ENNReal.ofReal_lt_top)
+    (fun x hx => by rw [Real.norm_eq_abs]; exact hbound x hx.1))
+  apply le_of_eq
+  show C * (MeasureTheory.volume (Set.Ioc (0:ℝ) ε)).toReal = C * ε
+  rw [Real.volume_Ioc, sub_zero, ENNReal.toReal_ofReal (le_of_lt hε)]
+
 #print axioms K_box_bound
 
 #print axioms strip_u_axis
