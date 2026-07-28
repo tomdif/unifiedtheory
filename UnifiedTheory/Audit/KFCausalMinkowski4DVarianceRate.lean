@@ -347,6 +347,111 @@ theorem square_channel (g : ℝ → ℝ → ℝ) (Cg A B : ℝ) (hA : 0 < A) (hB
     ring
   rwa [hfinal] at hDCT
 
+/-- The quartic exponential lower bound (extends the cubic). -/
+theorem exp_quartic_lower (z : ℝ) (hz : 0 ≤ z) :
+    1 + z + z^2/2 + z^3/6 + z^4/24 ≤ Real.exp z := by
+  have h := Real.sum_le_exp_of_nonneg hz 5
+  simp [Finset.sum_range_succ] at h
+  nlinarith [h]
+
+/-- The variance kernel is bounded: `f4Dsq ≤ 300` (coefficient-wise against
+the quartic exponential). -/
+theorem f4Dsq_le (ξ : ℝ) (hξ : 0 ≤ ξ) : f4Dsq ξ ≤ 300 := by
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+  have he := exp_quartic_lower ξ hξ
+  have hep : 0 < Real.exp ξ := Real.exp_pos ξ
+  rw [Real.exp_neg]
+  rw [inv_mul_le_iff₀ hep]
+  nlinarith [he, mul_nonneg hξ hξ, mul_nonneg (mul_nonneg hξ hξ) hξ,
+    mul_nonneg (mul_nonneg (mul_nonneg hξ hξ) hξ) hξ]
+
+/-- `w·f4Dsq(w²)` is integrable on `(0,∞)`. -/
+theorem f4Dsq_w1_integrable :
+    IntegrableOn (fun w => w * f4Dsq (w^2)) (Ioi (0:ℝ)) := by
+  have h1 : IntegrableOn (fun x : ℝ => x ^ (1:ℝ) * Real.exp (-(1:ℝ) * x ^ 2))
+      (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos
+      (by norm_num : (-1:ℝ) < (1:ℝ))).integrableOn
+  have h3 : IntegrableOn (fun x : ℝ => x ^ (3:ℝ) * Real.exp (-(1:ℝ) * x ^ 2))
+      (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos
+      (by norm_num : (-1:ℝ) < (3:ℝ))).integrableOn
+  have h5 : IntegrableOn (fun x : ℝ => x ^ (5:ℝ) * Real.exp (-(1:ℝ) * x ^ 2))
+      (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos
+      (by norm_num : (-1:ℝ) < (5:ℝ))).integrableOn
+  have h7 : IntegrableOn (fun x : ℝ => x ^ (7:ℝ) * Real.exp (-(1:ℝ) * x ^ 2))
+      (Ioi 0) :=
+    (integrable_rpow_mul_exp_neg_mul_sq one_pos
+      (by norm_num : (-1:ℝ) < (7:ℝ))).integrableOn
+  have hsum := ((h1.const_mul 1).add ((h3.const_mul 81).add
+    ((h5.const_mul 128).add (h7.const_mul (32/3)))))
+  apply MeasureTheory.IntegrableOn.congr_fun hsum ?_ measurableSet_Ioi
+  intro w hw
+  rw [mem_Ioi] at hw
+  have e1 : w ^ (1:ℝ) = w := Real.rpow_one w
+  have e3 : w ^ (3:ℝ) = w ^ 3 := by
+    rw [show (3:ℝ) = ((3:ℕ):ℝ) from by norm_num, Real.rpow_natCast]
+  have e5 : w ^ (5:ℝ) = w ^ 5 := by
+    rw [show (5:ℝ) = ((5:ℕ):ℝ) from by norm_num, Real.rpow_natCast]
+  have e7 : w ^ (7:ℝ) = w ^ 7 := by
+    rw [show (7:ℝ) = ((7:ℕ):ℝ) from by norm_num, Real.rpow_natCast]
+  simp only [Pi.add_apply]
+  rw [e1, e3, e5, e7]
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+  rw [show -(w^2) = -(1:ℝ) * w^2 from by ring]
+  ring
+
+/-- **The second fluctuation mass**: `∫₀^∞ w·f4Dsq(w²) dw = 201` — half the
+`s = 1` Mellin value `402`. -/
+theorem f4Dsq_w1_mass :
+    (∫ w in Ioi (0:ℝ), w * f4Dsq (w^2)) = 201 := by
+  have hM1 : (∫ ξ in Ioi (0:ℝ), f4Dsq ξ) = 402 := by
+    have h := f4Dsq_mellin 1 one_pos
+    simp only [show (1:ℝ) - 1 = 0 from by norm_num, Real.rpow_zero,
+      one_mul] at h
+    rw [h, Real.Gamma_one,
+      show (1:ℝ) + 1 = 2 from by norm_num,
+      show (1:ℝ) + 2 = 3 from by norm_num,
+      show (1:ℝ) + 3 = 4 from by norm_num]
+    rw [show Real.Gamma 2 = 1 from by
+        rw [show (2:ℝ) = 1 + 1 from by norm_num,
+          Real.Gamma_add_one one_ne_zero, Real.Gamma_one]; ring,
+      show Real.Gamma 3 = 2 from by
+        rw [show (3:ℝ) = 2 + 1 from by norm_num,
+          Real.Gamma_add_one two_ne_zero,
+          show (2:ℝ) = 1 + 1 from by norm_num,
+          Real.Gamma_add_one one_ne_zero, Real.Gamma_one]; ring,
+      show Real.Gamma 4 = 6 from by
+        rw [show (4:ℝ) = 3 + 1 from by norm_num,
+          Real.Gamma_add_one (by norm_num : (3:ℝ) ≠ 0),
+          show (3:ℝ) = 2 + 1 from by norm_num,
+          Real.Gamma_add_one two_ne_zero,
+          show (2:ℝ) = 1 + 1 from by norm_num,
+          Real.Gamma_add_one one_ne_zero, Real.Gamma_one]; ring]
+    ring
+  have hsub := integral_comp_rpow_Ioi (fun ξ => f4Dsq ξ) (p := 2) (by norm_num)
+  rw [hM1] at hsub
+  have key : (∫ x in Ioi (0:ℝ), (|(2:ℝ)| * x ^ ((2:ℝ) - 1)) •
+      ((fun ξ => f4Dsq ξ) (x ^ (2:ℝ))))
+      = ∫ x in Ioi (0:ℝ), 2 * (x * f4Dsq (x^2)) := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro x hx
+    rw [mem_Ioi] at hx
+    dsimp only
+    rw [smul_eq_mul]
+    have h21 : x ^ ((2:ℝ)-1) = x := by
+      rw [show (2:ℝ)-1 = (1:ℝ) from by norm_num, Real.rpow_one]
+    have hx2 : x ^ (2:ℝ) = x^2 := by
+      rw [show (2:ℝ) = ((2:ℕ):ℝ) from by norm_num, Real.rpow_natCast]
+    rw [h21, hx2, abs_of_pos (by norm_num : (0:ℝ) < 2)]
+    ring
+  rw [key, integral_const_mul] at hsub
+  linarith [hsub]
+
+#print axioms f4Dsq_w1_mass
+#print axioms f4Dsq_le
+
 #print axioms square_channel
 
 #print axioms no_self_averaging_GCB
