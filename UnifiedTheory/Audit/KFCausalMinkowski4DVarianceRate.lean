@@ -13,7 +13,7 @@ import Mathlib
 import UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder
 import UnifiedTheory.Audit.KFCausalMinkowski4DLogRate
 
-open MeasureTheory Real Set
+open MeasureTheory Real Set Filter Topology
 open UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder
 open UnifiedTheory.Audit.KFCausalMinkowski4DMoments
 
@@ -214,6 +214,140 @@ theorem no_self_averaging_GCB (N : ℕ) (w : ℕ → ℝ)
   · have hg := Real.Gamma_pos_of_pos (by positivity : (0:ℝ) < (n₀:ℝ) + 1/2)
     have hfac : (0:ℝ) < (Nat.factorial n₀ : ℝ) := by positivity
     positivity
+
+/-- `f4Dsq` is nonnegative — the variance kernel has a sign. -/
+theorem f4Dsq_nonneg (ξ : ℝ) (hξ : 0 ≤ ξ) : 0 ≤ f4Dsq ξ := by
+  unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+  have := Real.exp_pos (-ξ)
+  positivity
+
+/-- **The square-channel limit** (the u²-leg of the variance rate): after the
+boost substitution, the channel converges to the fluctuation w-mass times the
+u-edge integral:
+
+    √a·∬ u²·f4Dsq(au²v²)·g  ⟶  (∫₀^∞ f4Dsq(w²)dw)·∫₀^∞ u·g(u,0) du. -/
+theorem square_channel (g : ℝ → ℝ → ℝ) (Cg A B : ℝ) (hA : 0 < A) (hB : 0 < B)
+    (hgc : Continuous (Function.uncurry g))
+    (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0) (hsuppV : ∀ u v, B ≤ v → g u v = 0) :
+    Filter.Tendsto (fun a : ℝ => ∫ u in Ioi (0:ℝ), u * ∫ w in Ioi (0:ℝ),
+        f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      Filter.atTop
+      (𝓝 ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * ∫ u in Ioi (0:ℝ), u * g u 0)) := by
+  have hCg0 : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  have hmw := f4Dsq_sq_integrable
+  -- inner limit, per u > 0
+  have hinner : ∀ u : ℝ, 0 < u → Filter.Tendsto (fun a : ℝ =>
+      ∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      Filter.atTop (𝓝 (∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u 0)) := by
+    intro u hu
+    apply MeasureTheory.tendsto_integral_filter_of_dominated_convergence
+      (fun w => f4Dsq (w^2) * Cg)
+    · filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with a ha
+      have hy : Measurable (fun w : ℝ => w/(Real.sqrt a * u)) := by fun_prop
+      have hK : Continuous (fun w : ℝ => f4Dsq (w^2)) := by
+        unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+        fun_prop
+      exact (hK.measurable.mul (hgc.measurable.comp
+        (measurable_const.prodMk hy))).aestronglyMeasurable
+    · filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with a ha
+      apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [Real.norm_eq_abs, abs_mul,
+        abs_of_nonneg (f4Dsq_nonneg _ (sq_nonneg w))]
+      exact mul_le_mul_of_nonneg_left (hgb u _) (f4Dsq_nonneg _ (sq_nonneg w))
+    · exact hmw.mul_const Cg
+    · apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      apply Filter.Tendsto.const_mul
+      have harg : Filter.Tendsto (fun a : ℝ => w/(Real.sqrt a * u))
+          Filter.atTop (𝓝 0) := by
+        apply Filter.Tendsto.div_atTop (tendsto_const_nhds)
+        exact (Real.tendsto_sqrt_atTop.atTop_mul_const hu)
+      have hcont : Continuous (fun y => g u y) :=
+        hgc.comp (continuous_const.prodMk continuous_id)
+      exact (hcont.tendsto 0).comp harg
+  -- outer DCT over u
+  have hDCT : Filter.Tendsto (fun a : ℝ => ∫ u in Ioi (0:ℝ), u *
+      ∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      Filter.atTop
+      (𝓝 (∫ u in Ioi (0:ℝ), u * ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * g u 0))) := by
+    apply MeasureTheory.tendsto_integral_filter_of_dominated_convergence
+      (fun u => (Ioc (0:ℝ) A).indicator
+        (fun _ => A * ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * Cg)) u)
+    · filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with a ha
+      have hK : Continuous (fun w : ℝ => f4Dsq (w^2)) := by
+        unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+        fun_prop
+      have hFm : Measurable (Function.uncurry (fun u w =>
+          f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))) := by
+        have hy : Measurable (fun p : ℝ × ℝ => p.2/(Real.sqrt a * p.1)) := by
+          fun_prop
+        exact ((hK.measurable.comp measurable_snd).mul
+          (hgc.measurable.comp (measurable_fst.prodMk hy)))
+      exact (measurable_id.mul
+        (hFm.stronglyMeasurable.integral_prod_right').measurable
+        ).aestronglyMeasurable
+    · filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with a ha
+      apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro u hu
+      rw [mem_Ioi] at hu
+      rcases le_or_gt u A with huA | huA
+      · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hu, huA⟩), Real.norm_eq_abs,
+          abs_mul, abs_of_pos hu]
+        have hib : |∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+            ≤ (∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * Cg := by
+          rw [← Real.norm_eq_abs, ← integral_mul_const]
+          apply norm_integral_le_of_norm_le (hmw.mul_const Cg)
+          apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+          intro w _
+          rw [Real.norm_eq_abs, abs_mul,
+            abs_of_nonneg (f4Dsq_nonneg _ (sq_nonneg w))]
+          exact mul_le_mul_of_nonneg_left (hgb u _)
+            (f4Dsq_nonneg _ (sq_nonneg w))
+        calc u * |∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+            ≤ u * ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * Cg) :=
+              mul_le_mul_of_nonneg_left hib (le_of_lt hu)
+          _ ≤ A * ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * Cg) := by
+              apply mul_le_mul_of_nonneg_right huA
+              have h1 : (0:ℝ) ≤ ∫ w in Ioi (0:ℝ), f4Dsq (w^2) :=
+                MeasureTheory.setIntegral_nonneg measurableSet_Ioi
+                  (fun w _ => f4Dsq_nonneg _ (sq_nonneg w))
+              positivity
+      · have hz : (∫ w in Ioi (0:ℝ),
+            f4Dsq (w^2) * g u (w/(Real.sqrt a * u))) = 0 := by
+          rw [MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+            (fun w _ => by rw [hsuppU u _ (le_of_lt huA), mul_zero]),
+            MeasureTheory.integral_zero]
+        rw [hz, mul_zero, norm_zero]
+        apply Set.indicator_nonneg
+        intro x _
+        have h1 : (0:ℝ) ≤ ∫ w in Ioi (0:ℝ), f4Dsq (w^2) :=
+          MeasureTheory.setIntegral_nonneg measurableSet_Ioi
+            (fun w _ => f4Dsq_nonneg _ (sq_nonneg w))
+        positivity
+    · apply MeasureTheory.Integrable.integrableOn
+      rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+      exact MeasureTheory.integrableOn_const
+        (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+    · apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro u hu
+      rw [mem_Ioi] at hu
+      have hlim := (hinner u hu).const_mul u
+      have hval : (∫ w in Ioi (0:ℝ), f4Dsq (w^2) * g u 0)
+          = (∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * g u 0 := by
+        rw [← integral_mul_const]
+      rw [hval] at hlim
+      exact hlim
+  have hfinal : (∫ u in Ioi (0:ℝ), u * ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * g u 0))
+      = (∫ w in Ioi (0:ℝ), f4Dsq (w^2)) * ∫ u in Ioi (0:ℝ), u * g u 0 := by
+    rw [← integral_const_mul]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro u _
+    ring
+  rwa [hfinal] at hDCT
+
+#print axioms square_channel
 
 #print axioms no_self_averaging_GCB
 
