@@ -110,6 +110,79 @@ theorem polar_halfplane (F : ℝ × ℝ → ℝ)
 #print axioms angle_shift
 #print axioms polar_halfplane
 
+/-- **R1 rung d — the spherical factorization**: two polar factorizations
+compose into the spherical one; the surface element `r² sin θ` emerges as
+`r · (r sin θ)` — the two polar radii. -/
+theorem spherical_factorization (h : ℝ → ℝ → ℝ → ℝ)
+    (h1 : ∀ z : ℝ, Integrable (fun p : ℝ × ℝ => h p.1 p.2 z))
+    (h2 : ∀ z : ℝ, IntegrableOn (fun p : ℝ × ℝ =>
+      p.1 * h (p.1 * Real.cos p.2) (p.1 * Real.sin p.2) z)
+      (Ioi (0:ℝ) ×ˢ Ioo (-π) π) (volume.prod volume))
+    (h3 : Integrable (fun p : ℝ × ℝ => (Ioi (0:ℝ)).indicator
+      (fun s => s * ∫ ψ in (0:ℝ)..(2*π),
+        h (s * Real.cos ψ) (s * Real.sin ψ) p.1) p.2))
+    (h4 : IntegrableOn (fun p : ℝ × ℝ =>
+      p.1 * (Ioi (0:ℝ)).indicator
+        (fun s => s * ∫ ψ in (0:ℝ)..(2*π),
+          h (s * Real.cos ψ) (s * Real.sin ψ) (p.1 * Real.cos p.2))
+        (p.1 * Real.sin p.2))
+      (Ioi (0:ℝ) ×ˢ Ioo (-π) π) (volume.prod volume)) :
+    (∫ z : ℝ, ∫ x : ℝ, ∫ y : ℝ, h x y z)
+      = ∫ r in Ioi (0:ℝ), r^2 * ∫ θ in (0:ℝ)..π,
+          (∫ ψ in (0:ℝ)..(2*π), h (r * Real.sin θ * Real.cos ψ)
+            (r * Real.sin θ * Real.sin ψ) (r * Real.cos θ)) * Real.sin θ := by
+  -- E1+E2: per z, the (x,y)-plane in polar with the angle shifted to 0..2π
+  have hE12 : ∀ z : ℝ, (∫ x : ℝ, ∫ y : ℝ, h x y z)
+      = ∫ s in Ioi (0:ℝ), s * ∫ ψ in (0:ℝ)..(2*π),
+          h (s * Real.cos ψ) (s * Real.sin ψ) z := by
+    intro z
+    rw [polar_iterated (fun p : ℝ × ℝ => h p.1 p.2 z) (h1 z) (h2 z)]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro s _
+    have hper : Function.Periodic
+        (fun ψ => s * h (s * Real.cos ψ) (s * Real.sin ψ) z) (2*π) := by
+      intro ψ
+      simp [Real.cos_add_two_pi, Real.sin_add_two_pi]
+    dsimp only
+    calc (∫ θ in Ioo (-π) π, s * h (s * Real.cos θ) (s * Real.sin θ) z)
+        = ∫ ψ in (0:ℝ)..(2*π), s * h (s * Real.cos ψ) (s * Real.sin ψ) z :=
+          angle_shift _ hper
+      _ = s * ∫ ψ in (0:ℝ)..(2*π), h (s * Real.cos ψ) (s * Real.sin ψ) z :=
+          intervalIntegral.integral_const_mul _ _
+  -- E3: the (z,s) half-plane in polar
+  have hE3 := polar_halfplane (fun p : ℝ × ℝ =>
+    p.2 * ∫ ψ in (0:ℝ)..(2*π),
+      h (p.2 * Real.cos ψ) (p.2 * Real.sin ψ) p.1) h3 h4
+  calc (∫ z : ℝ, ∫ x : ℝ, ∫ y : ℝ, h x y z)
+      = ∫ z : ℝ, ∫ s in Ioi (0:ℝ), s * ∫ ψ in (0:ℝ)..(2*π),
+          h (s * Real.cos ψ) (s * Real.sin ψ) z :=
+        congrArg _ (funext hE12)
+    _ = ∫ r in Ioi (0:ℝ), ∫ θ in Ioo (0:ℝ) π,
+          r * ((r * Real.sin θ) * ∫ ψ in (0:ℝ)..(2*π),
+            h ((r * Real.sin θ) * Real.cos ψ) ((r * Real.sin θ) * Real.sin ψ)
+              (r * Real.cos θ)) := hE3
+    _ = ∫ r in Ioi (0:ℝ), r^2 * ∫ θ in (0:ℝ)..π,
+          (∫ ψ in (0:ℝ)..(2*π), h (r * Real.sin θ * Real.cos ψ)
+            (r * Real.sin θ * Real.sin ψ) (r * Real.cos θ)) * Real.sin θ := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro r _
+        dsimp only
+        rw [show (∫ θ in (0:ℝ)..π, (∫ ψ in (0:ℝ)..(2*π),
+            h (r * Real.sin θ * Real.cos ψ) (r * Real.sin θ * Real.sin ψ)
+              (r * Real.cos θ)) * Real.sin θ)
+            = ∫ θ in Ioo (0:ℝ) π, (∫ ψ in (0:ℝ)..(2*π),
+              h (r * Real.sin θ * Real.cos ψ) (r * Real.sin θ * Real.sin ψ)
+                (r * Real.cos θ)) * Real.sin θ from by
+          rw [intervalIntegral.integral_of_le (le_of_lt Real.pi_pos),
+            integral_Ioc_eq_integral_Ioo]]
+        rw [← integral_const_mul]
+        apply setIntegral_congr_fun measurableSet_Ioo
+        intro θ _
+        dsimp only
+        ring
+
+#print axioms spherical_factorization
+
 #print axioms polar_iterated
 
 end UnifiedTheory.Audit.KFCausalMinkowski4DPolar
