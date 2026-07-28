@@ -449,6 +449,230 @@ theorem f4Dsq_w1_mass :
   rw [key, integral_const_mul] at hsub
   linarith [hsub]
 
+/-- **The cross-channel bound**: the `uv`-leg's boost profile is `O(ln a)` —
+two-piece dominator split at `u = (√a)⁻¹`: quadratic small-`u` bound from the
+support-truncated inner integral, global mass `201` above. -/
+theorem cross_channel_bound (g : ℝ → ℝ → ℝ) (Cg A B : ℝ)
+    (hA : 0 < A) (hB : 0 < B)
+    (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0) (hsuppV : ∀ u v, B ≤ v → g u v = 0)
+    (a : ℝ) (ha : 0 < a) (haA : (Real.sqrt a)⁻¹ ≤ A) :
+    |∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+        w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+      ≤ 75*Cg*B^2 + 201*Cg*(Real.log A + Real.log (Real.sqrt a)) := by
+  have hCg0 : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  have hsa : 0 < Real.sqrt a := Real.sqrt_pos.mpr ha
+  set us := (Real.sqrt a)⁻¹ with husdef
+  have hus : 0 < us := by positivity
+  -- inner-integral bounds
+  have hI1 : ∀ u : ℝ, 0 < u →
+      |∫ w in Ioi (0:ℝ), w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+      ≤ 201 * Cg := by
+    intro u hu
+    rw [← Real.norm_eq_abs]
+    have hdom : IntegrableOn (fun w => (w * f4Dsq (w^2)) * Cg) (Ioi (0:ℝ)) :=
+      f4Dsq_w1_integrable.mul_const Cg
+    apply le_trans (norm_integral_le_of_norm_le hdom ?_)
+    · rw [integral_mul_const, f4Dsq_w1_mass]
+    · apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [mem_Ioi] at hw
+      have hf0 := f4Dsq_nonneg (w^2) (sq_nonneg w)
+      rw [Real.norm_eq_abs, show w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))
+          = (w * f4Dsq (w^2)) * g u (w/(Real.sqrt a * u)) from by ring,
+        abs_mul, abs_of_nonneg (by positivity)]
+      exact mul_le_mul_of_nonneg_left (hgb u _) (by positivity)
+  have hI2 : ∀ u : ℝ, 0 < u →
+      |∫ w in Ioi (0:ℝ), w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+      ≤ 150 * Cg * B^2 * a * u^2 := by
+    intro u hu
+    have hZ : 0 < Real.sqrt a * u * B := by positivity
+    have hvan : ∀ w : ℝ, Real.sqrt a * u * B ≤ w →
+        w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u)) = 0 := by
+      intro w hw
+      rw [hsuppV u _ ?_, mul_zero]
+      rw [le_div_iff₀ (by positivity)]
+      calc B * (Real.sqrt a * u) = Real.sqrt a * u * B := by ring
+        _ ≤ w := hw
+    rw [← Real.norm_eq_abs]
+    have hdom : IntegrableOn ((Ioc (0:ℝ) (Real.sqrt a * u * B)).indicator
+        (fun w => 300 * Cg * w)) (Ioi (0:ℝ)) := by
+      apply MeasureTheory.Integrable.integrableOn
+      rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+      apply MeasureTheory.Integrable.mono'
+        (MeasureTheory.integrableOn_const
+          (C := 300 * Cg * (Real.sqrt a * u * B))
+          (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top))
+        ((by fun_prop :
+          Measurable (fun w : ℝ => 300 * Cg * w)).aestronglyMeasurable)
+      apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
+      intro w hw
+      rw [Real.norm_eq_abs, abs_mul,
+        abs_of_nonneg (by positivity : (0:ℝ) ≤ 300*Cg), abs_of_pos hw.1]
+      exact mul_le_mul_of_nonneg_left hw.2 (by positivity)
+    apply le_trans (norm_integral_le_of_norm_le hdom ?_)
+    · have heval : (∫ w in Ioi (0:ℝ),
+          (Ioc (0:ℝ) (Real.sqrt a * u * B)).indicator
+            (fun w => 300 * Cg * w) w)
+          = 150 * Cg * (Real.sqrt a * u * B)^2 := by
+        rw [MeasureTheory.integral_indicator measurableSet_Ioc,
+          Measure.restrict_restrict measurableSet_Ioc,
+          Set.inter_eq_self_of_subset_left
+            (fun x hx => Set.mem_Ioi.mpr hx.1),
+          ← intervalIntegral.integral_of_le (le_of_lt hZ),
+          intervalIntegral.integral_const_mul, integral_id]
+        ring
+      rw [heval, show 150 * Cg * (Real.sqrt a * u * B)^2
+          = 150 * Cg * B^2 * (Real.sqrt a)^2 * u^2 from by ring,
+        Real.sq_sqrt ha.le]
+    · apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+      intro w hw
+      rw [mem_Ioi] at hw
+      have hf0 := f4Dsq_nonneg (w^2) (sq_nonneg w)
+      by_cases hmem : w ∈ Ioc (0:ℝ) (Real.sqrt a * u * B)
+      · rw [Set.indicator_of_mem hmem, Real.norm_eq_abs,
+          show w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))
+            = (w * f4Dsq (w^2)) * g u (w/(Real.sqrt a * u)) from by ring,
+          abs_mul, abs_of_nonneg (by positivity)]
+        calc (w * f4Dsq (w^2)) * |g u (w/(Real.sqrt a * u))|
+            ≤ (w * 300) * Cg := by
+              apply mul_le_mul ?_ (hgb u _) (abs_nonneg _) (by positivity)
+              exact mul_le_mul_of_nonneg_left (f4Dsq_le _ (sq_nonneg w))
+                (le_of_lt hw)
+          _ = 300 * Cg * w := by ring
+      · rw [Set.indicator_of_notMem hmem, hvan w (by
+          rcases not_and_or.mp (fun h => hmem (Set.mem_Ioc.mpr h)) with h1 | h2
+          · exact absurd hw h1
+          · exact le_of_not_ge h2), norm_zero]
+  -- the two-piece dominator over u
+  have hp1int : Integrable ((Ioc (0:ℝ) us).indicator
+      (fun u' => 150*Cg*B^2*a*u')) (volume.restrict (Ioi (0:ℝ))) := by
+    apply MeasureTheory.Integrable.integrableOn
+    rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+    apply MeasureTheory.Integrable.mono'
+      (MeasureTheory.integrableOn_const (C := 150*Cg*B^2*a*us)
+        (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top))
+      ((by fun_prop :
+        Measurable (fun u : ℝ => 150*Cg*B^2*a*u)).aestronglyMeasurable)
+    apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioc
+    intro u hu
+    rw [Real.norm_eq_abs, abs_mul,
+      abs_of_nonneg (by positivity : (0:ℝ) ≤ 150*Cg*B^2*a), abs_of_pos hu.1]
+    exact mul_le_mul_of_nonneg_left hu.2 (by positivity)
+  have hp2int : Integrable (fun u =>
+      (Ioc us A).indicator (fun _ => 201*Cg) u * u⁻¹)
+      (volume.restrict (Ioi (0:ℝ))) := by
+    have hmeas : AEStronglyMeasurable
+        (fun u => (Ioc us A).indicator (fun _ => 201*Cg) u * u⁻¹)
+        (volume.restrict (Ioi (0:ℝ))) :=
+      ((measurable_const.indicator measurableSet_Ioc).mul
+        measurable_inv).aestronglyMeasurable
+    have hDint : Integrable ((Ioc us A).indicator (fun _ => 201*Cg * us⁻¹))
+        (volume.restrict (Ioi (0:ℝ))) := by
+      apply MeasureTheory.Integrable.integrableOn
+      rw [MeasureTheory.integrable_indicator_iff measurableSet_Ioc]
+      exact MeasureTheory.integrableOn_const
+        (hs := by rw [Real.volume_Ioc]; exact ENNReal.ofReal_ne_top)
+    apply MeasureTheory.Integrable.mono' hDint hmeas
+    apply Filter.Eventually.of_forall
+    intro u
+    by_cases hmem : u ∈ Ioc us A
+    · rw [Set.indicator_of_mem hmem, Set.indicator_of_mem hmem,
+        Real.norm_eq_abs, abs_mul,
+        abs_of_nonneg (by positivity : (0:ℝ) ≤ 201*Cg), abs_inv,
+        abs_of_pos (lt_trans hus hmem.1)]
+      apply mul_le_mul_of_nonneg_left ?_ (by positivity)
+      rw [← one_div, ← one_div]
+      exact one_div_le_one_div_of_le hus hmem.1.le
+    · rw [Set.indicator_of_notMem hmem, zero_mul, norm_zero]
+      exact Set.indicator_apply_nonneg (fun _ => by positivity)
+  -- the pointwise bound and the assembly
+  have hdomsum : Integrable (fun u =>
+      (Ioc (0:ℝ) us).indicator (fun u' => 150*Cg*B^2*a*u') u
+      + (Ioc us A).indicator (fun _ => (201*Cg : ℝ)) u * u⁻¹)
+      (volume.restrict (Ioi (0:ℝ))) := hp1int.add hp2int
+  rw [← Real.norm_eq_abs]
+  apply le_trans (norm_integral_le_of_norm_le hdomsum ?_)
+  · -- evaluate the dominator integral
+    have he1 : (∫ u in Ioi (0:ℝ),
+        (Ioc (0:ℝ) us).indicator (fun u' => 150*Cg*B^2*a*u') u)
+        = 75*Cg*B^2 := by
+      rw [MeasureTheory.integral_indicator measurableSet_Ioc,
+        Measure.restrict_restrict measurableSet_Ioc,
+        Set.inter_eq_self_of_subset_left (fun x hx => Set.mem_Ioi.mpr hx.1),
+        ← intervalIntegral.integral_of_le (le_of_lt hus),
+        intervalIntegral.integral_const_mul, integral_id]
+      have hus2 : us^2 = a⁻¹ := by
+        rw [husdef, show ((Real.sqrt a)⁻¹)^2 = ((Real.sqrt a)^2)⁻¹ from by
+          rw [inv_pow], Real.sq_sqrt ha.le]
+      rw [hus2]
+      field_simp
+      ring
+    have he2 : (∫ u in Ioi (0:ℝ),
+        (Ioc us A).indicator (fun _ => (201*Cg : ℝ)) u * u⁻¹)
+        = 201*Cg*(Real.log A + Real.log (Real.sqrt a)) := by
+      rw [show (fun u => (Ioc us A).indicator (fun _ => (201*Cg:ℝ)) u * u⁻¹)
+          = (Ioc us A).indicator (fun u => 201*Cg * u⁻¹) from by
+        funext u
+        by_cases hmem : u ∈ Ioc us A
+        · rw [Set.indicator_of_mem hmem, Set.indicator_of_mem hmem]
+        · rw [Set.indicator_of_notMem hmem, Set.indicator_of_notMem hmem,
+            zero_mul]]
+      rw [MeasureTheory.integral_indicator measurableSet_Ioc,
+        Measure.restrict_restrict measurableSet_Ioc,
+        Set.inter_eq_self_of_subset_left
+          (fun x hx => Set.mem_Ioi.mpr (lt_trans hus hx.1)),
+        ← intervalIntegral.integral_of_le haA,
+        intervalIntegral.integral_const_mul]
+      have h0notin : (0:ℝ) ∉ uIcc us A := by
+        rw [uIcc_of_le haA]
+        intro hmem
+        exact absurd hmem.1 (not_le.mpr hus)
+      rw [integral_inv h0notin,
+        show A / us = A * Real.sqrt a from by
+          rw [husdef]; field_simp,
+        Real.log_mul (ne_of_gt hA) (ne_of_gt hsa)]
+    rw [show (∫ u in Ioi (0:ℝ),
+        ((Ioc (0:ℝ) us).indicator (fun u' => 150*Cg*B^2*a*u') u
+          + (Ioc us A).indicator (fun _ => (201*Cg : ℝ)) u * u⁻¹))
+        = (∫ u in Ioi (0:ℝ),
+            (Ioc (0:ℝ) us).indicator (fun u' => 150*Cg*B^2*a*u') u)
+          + ∫ u in Ioi (0:ℝ),
+            (Ioc us A).indicator (fun _ => (201*Cg : ℝ)) u * u⁻¹ from
+      MeasureTheory.integral_add hp1int hp2int, he1, he2]
+  · apply MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+    intro u hu
+    rw [mem_Ioi] at hu
+    rw [Real.norm_eq_abs, abs_mul, abs_inv, abs_of_pos hu]
+    rcases le_or_gt u us with hle | hgt
+    · have hnot2 : u ∉ Ioc us A := fun hmem =>
+        absurd hmem.1 (not_lt.mpr hle)
+      rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hu, hle⟩),
+        Set.indicator_of_notMem hnot2, zero_mul, add_zero]
+      calc u⁻¹ * |∫ w in Ioi (0:ℝ),
+            w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+          ≤ u⁻¹ * (150 * Cg * B^2 * a * u^2) :=
+            mul_le_mul_of_nonneg_left (hI2 u hu) (by positivity)
+        _ = 150*Cg*B^2*a*u := by field_simp
+    · have hnot1 : u ∉ Ioc (0:ℝ) us := fun hmem =>
+        absurd hmem.2 (not_le.mpr hgt)
+      rw [Set.indicator_of_notMem hnot1, zero_add]
+      rcases le_or_gt u A with huA | huA
+      · rw [Set.indicator_of_mem (Set.mem_Ioc.mpr ⟨hgt, huA⟩)]
+        rw [mul_comm ((201:ℝ)*Cg) u⁻¹]
+        exact mul_le_mul_of_nonneg_left (hI1 u hu) (by positivity)
+      · have hz : (∫ w in Ioi (0:ℝ),
+            w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))) = 0 := by
+          rw [MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+            (fun w _ => by rw [hsuppU u _ (le_of_lt huA), mul_zero]),
+            MeasureTheory.integral_zero]
+        rw [hz, abs_zero, mul_zero]
+        have hnot2 : u ∉ Ioc us A := fun hmem =>
+          absurd hmem.2 (not_le.mpr huA)
+        rw [Set.indicator_of_notMem hnot2, zero_mul]
+
+#print axioms cross_channel_bound
+
 #print axioms f4Dsq_w1_mass
 #print axioms f4Dsq_le
 
