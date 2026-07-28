@@ -467,6 +467,64 @@ theorem wedge_symmetrization (H : ℝ → ℝ → ℝ) (M A : ℝ) (hM : 0 ≤ M
 
 #print axioms triangle_swap
 
+/-- **THE CONE-TO-QUADRANT REDUCTION** — the final geometric glue.  For a
+symmetric profile integrand `H` (as produced by the null substitution of any
+`(τ², r²)`-dependent integrand), supported in `u ≤ T` (hence `v ≤ T` by
+symmetry) and vanishing on `u + v ≤ 0` (the causal-past condition `t < 0`):
+
+    ∫_{t<0} ∫_{0<r<−t} H(−t−r, −t+r) dr dt  =  ¼ ∬_{(0,∞)²} H(u,v) du dv.
+
+Composed with `corner4_quadrant`/`bdg_4d_profile`, the physical cone integral
+reaches `□φ`. -/
+theorem cone_to_quadrant (H : ℝ → ℝ → ℝ) (M T : ℝ) (hM : 0 ≤ M) (hT : 0 < T)
+    (hHm : Measurable (Function.uncurry H)) (hsym : ∀ u v, H u v = H v u)
+    (hHb : ∀ u v, |H u v| ≤ M)
+    (hsuppU : ∀ u v, T ≤ u → H u v = 0)
+    (hHz : ∀ u v, u + v ≤ 0 → H u v = 0) :
+    (∫ t in Iio (0:ℝ), ∫ r in Ioo (0:ℝ) (-t), H (-t-r) (-t+r))
+      = (1/4) * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ), H u v := by
+  have hsuppV : ∀ u v, T ≤ v → H u v = 0 := by
+    intro u v hv
+    rw [hsym]
+    exact hsuppU v u hv
+  have hGm : Measurable (Function.uncurry (fun t r => H (-t-r) (-t+r))) :=
+    hHm.comp ((measurable_fst.neg.sub measurable_snd).prodMk
+      (measurable_fst.neg.add measurable_snd))
+  have hnull := null_reduction (fun t r => H (-t-r) (-t+r)) M T T hM hT hT hGm
+    (fun t r => hHb _ _)
+    (by
+      intro t r ht
+      dsimp only
+      rcases le_or_gt 0 r with hr | hr
+      · exact hsuppV _ _ (by linarith)
+      · exact hsuppU _ _ (by linarith))
+    (by
+      intro t r hr
+      dsimp only
+      rcases lt_or_ge t 0 with ht | ht
+      · exact hsuppV _ _ (by linarith)
+      · exact hHz _ _ (by linarith))
+  have hargs : (∫ u in Ioi (0:ℝ), ∫ v in Ioi u,
+      H (-(-(u+v)/2) - (v-u)/2) (-(-(u+v)/2) + (v-u)/2))
+      = ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro u _
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro v _
+    dsimp only
+    rw [show -(-(u+v)/2) - (v-u)/2 = u from by ring,
+      show -(-(u+v)/2) + (v-u)/2 = v from by ring]
+  have hsymm := wedge_symmetrization
+    H M T hM hT hHm hsym (fun u v _ _ => hHb u v)
+    (fun u v _ hu => hsuppU u v hu)
+  rw [hnull]
+  rw [show (∫ u in Ioi (0:ℝ), ∫ v in Ioi u,
+      (fun t r => H (-t-r) (-t+r)) (-(u+v)/2) ((v-u)/2))
+      = ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v from hargs]
+  linarith [hsymm]
+
+#print axioms cone_to_quadrant
+
 #print axioms shift_Ioi
 #print axioms scale_shift_Ioi
 #print axioms reflect_Iio
