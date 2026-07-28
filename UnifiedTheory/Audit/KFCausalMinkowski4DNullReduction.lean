@@ -259,6 +259,214 @@ theorem null_reduction (G : ℝ → ℝ → ℝ) (M T R : ℝ) (hM : 0 ≤ M)
 
 #print axioms null_reduction
 
+/-- **The triangle swap**, standalone: for bounded measurable box-supported `F`,
+
+    ∫_{w>0} ∫_{0<r<w} F(w,r) dr dw = ∫_{r>0} ∫_{w>r} F(w,r) dw dr. -/
+theorem triangle_swap (F : ℝ → ℝ → ℝ) (M T R : ℝ) (hM : 0 ≤ M)
+    (hT : 0 < T) (hR : 0 < R)
+    (hFm : Measurable (Function.uncurry F))
+    (hFb : ∀ w r, 0 < w → 0 < r → |F w r| ≤ M)
+    (hsT : ∀ w r, 0 < r → T ≤ w → F w r = 0)
+    (hsR : ∀ w r, 0 < w → R ≤ r → F w r = 0) :
+    (∫ w in Ioi (0:ℝ), ∫ r in Ioo (0:ℝ) w, F w r)
+      = ∫ r in Ioi (0:ℝ), ∫ w in Ioi r, F w r := by
+  set H : ℝ → ℝ → ℝ := fun w r => ({p : ℝ × ℝ | p.2 < p.1}.indicator
+    (Function.uncurry F)) (w, r) with hHdef
+  have hHm : Measurable (Function.uncurry H) := by
+    have : Function.uncurry H = ({p : ℝ × ℝ | p.2 < p.1}.indicator
+        (Function.uncurry F)) := by
+      funext p
+      rfl
+    rw [this]
+    exact hFm.indicator (measurableSet_lt measurable_snd measurable_fst)
+  have hHb : ∀ w r, 0 < w → 0 < r → |H w r| ≤ M := by
+    intro w r hw hr
+    simp only [hHdef]
+    by_cases hmem : ((w, r) : ℝ × ℝ) ∈ {p : ℝ × ℝ | p.2 < p.1}
+    · rw [Set.indicator_of_mem hmem]
+      exact hFb w r hw hr
+    · rw [Set.indicator_of_notMem hmem, abs_zero]
+      exact hM
+  have hHsT : ∀ w r, 0 < r → T ≤ w → H w r = 0 := by
+    intro w r hr hw
+    simp only [hHdef]
+    by_cases hmem : ((w, r) : ℝ × ℝ) ∈ {p : ℝ × ℝ | p.2 < p.1}
+    · rw [Set.indicator_of_mem hmem]
+      exact hsT w r hr hw
+    · exact Set.indicator_of_notMem hmem _
+  have hHsR : ∀ w r, 0 < w → R ≤ r → H w r = 0 := by
+    intro w r hw hr
+    simp only [hHdef]
+    by_cases hmem : ((w, r) : ℝ × ℝ) ∈ {p : ℝ × ℝ | p.2 < p.1}
+    · rw [Set.indicator_of_mem hmem]
+      exact hsR w r hw hr
+    · exact Set.indicator_of_notMem hmem _
+  have h2a : ∀ w : ℝ, (∫ r in Ioo (0:ℝ) w, F w r)
+      = ∫ r in Ioi (0:ℝ), H w r := by
+    intro w
+    rw [show (fun r => H w r) = (Iio w).indicator (fun r => F w r) from by
+      funext r
+      simp only [hHdef, Set.indicator_apply, Set.mem_setOf_eq, Set.mem_Iio,
+        Function.uncurry]]
+    rw [integral_indicator measurableSet_Iio,
+      Measure.restrict_restrict measurableSet_Iio, Set.Iio_inter_Ioi]
+  have h2b : ∀ r : ℝ, 0 < r → (∫ w in Ioi r, F w r)
+      = ∫ w in Ioi (0:ℝ), H w r := by
+    intro r hr
+    rw [show (fun w => H w r) = (Ioi r).indicator (fun w => F w r) from by
+      funext w
+      simp only [hHdef, Set.indicator_apply, Set.mem_setOf_eq, Set.mem_Ioi,
+        Function.uncurry]]
+    rw [integral_indicator measurableSet_Ioi,
+      Measure.restrict_restrict measurableSet_Ioi,
+      Set.inter_eq_self_of_subset_left
+        (fun x hx => Set.mem_Ioi.mpr (lt_trans hr (Set.mem_Ioi.mp hx)))]
+  rw [setIntegral_congr_fun measurableSet_Ioi (fun w _ => h2a w),
+    integral_integral_swap (prod_box_integrable H M T R hM hT hR hHm hHb hHsT hHsR),
+    setIntegral_congr_fun measurableSet_Ioi (fun r hr => (h2b r hr).symm)]
+
+/-- **The wedge symmetrization**: for a symmetric profile (`H(u,v) = H(v,u)`),
+the quadrant integral is twice the wedge integral —
+
+    ∬_{(0,∞)²} H  =  2 ∫_{u>0} ∫_{v>u} H(u,v) dv du. -/
+theorem wedge_symmetrization (H : ℝ → ℝ → ℝ) (M A : ℝ) (hM : 0 ≤ M) (hA : 0 < A)
+    (hHm : Measurable (Function.uncurry H))
+    (hsym : ∀ u v, H u v = H v u)
+    (hHb : ∀ u v, 0 < u → 0 < v → |H u v| ≤ M)
+    (hsupp : ∀ u v, 0 < v → A ≤ u → H u v = 0) :
+    (∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ), H u v)
+      = 2 * ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v := by
+  have hsuppV : ∀ u v, 0 < u → A ≤ v → H u v = 0 := by
+    intro u v hu hv
+    rw [hsym]
+    exact hsupp v u hu hv
+  have hslice : ∀ u : ℝ, 0 < u → IntegrableOn (fun v => H u v) (Ioi (0:ℝ)) :=
+    fun u hu => integrableOn_Ioi_of_bounded_support (fun v => H u v) M A hA
+      ((hHm.comp (measurable_const.prodMk measurable_id)).aestronglyMeasurable)
+      (fun v hv => hHb u v hu hv) (fun v hv => hsuppV u v hu hv)
+  -- split the inner integral at u
+  have hsplit : ∀ u : ℝ, 0 < u → (∫ v in Ioi (0:ℝ), H u v)
+      = (∫ v in Ioo (0:ℝ) u, H u v) + ∫ v in Ioi u, H u v := by
+    intro u hu
+    have h1 : IntegrableOn (fun v => H u v) (Ioc (0:ℝ) u) :=
+      (hslice u hu).mono_set (fun x hx => hx.1)
+    have h2 : IntegrableOn (fun v => H u v) (Ioi u) :=
+      (hslice u hu).mono_set (fun x hx => Set.mem_Ioi.mpr (lt_trans hu hx))
+    rw [show Ioi (0:ℝ) = Ioc 0 u ∪ Ioi u from
+      (Set.Ioc_union_Ioi_eq_Ioi (le_of_lt hu)).symm,
+      setIntegral_union (Set.Ioc_disjoint_Ioi le_rfl) measurableSet_Ioi h1 h2,
+      integral_Ioc_eq_integral_Ioo]
+  -- the lower wedge equals the upper wedge by symmetry + triangle swap
+  have hlower : (∫ u in Ioi (0:ℝ), ∫ v in Ioo (0:ℝ) u, H u v)
+      = ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v := by
+    rw [triangle_swap H M A A hM hA hA hHm hHb
+      (fun w r hr hw => hsupp w r hr hw) (fun w r hw hr => hsuppV w r hw hr)]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro u _
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro v _
+    exact hsym v u
+  calc (∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ), H u v)
+      = ∫ u in Ioi (0:ℝ), ((∫ v in Ioo (0:ℝ) u, H u v) + ∫ v in Ioi u, H u v) := by
+        apply setIntegral_congr_fun measurableSet_Ioi
+        intro u hu
+        exact hsplit u (Set.mem_Ioi.mp hu)
+    _ = (∫ u in Ioi (0:ℝ), ∫ v in Ioo (0:ℝ) u, H u v)
+        + ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v := by
+        -- indicator-marginal forms of the two wedge marginals
+        have hind1m : Measurable (Function.uncurry (fun u v =>
+            ({p : ℝ × ℝ | p.2 < p.1}.indicator (Function.uncurry H)) (u, v))) :=
+          hHm.indicator (measurableSet_lt measurable_snd measurable_fst)
+        have hind2m : Measurable (Function.uncurry (fun u v =>
+            ({p : ℝ × ℝ | p.1 < p.2}.indicator (Function.uncurry H)) (u, v))) :=
+          hHm.indicator (measurableSet_lt measurable_fst measurable_snd)
+        have hlo_eq : ∀ u : ℝ, (∫ v in Ioo (0:ℝ) u, H u v)
+            = ∫ v in Ioi (0:ℝ),
+              ({p : ℝ × ℝ | p.2 < p.1}.indicator (Function.uncurry H)) (u, v) := by
+          intro u
+          rw [show (fun v => ({p : ℝ × ℝ | p.2 < p.1}.indicator
+              (Function.uncurry H)) (u, v))
+              = (Iio u).indicator (fun v => H u v) from by
+            funext v
+            simp only [Set.indicator_apply, Set.mem_setOf_eq, Set.mem_Iio,
+              Function.uncurry]]
+          rw [integral_indicator measurableSet_Iio,
+            Measure.restrict_restrict measurableSet_Iio, Set.Iio_inter_Ioi]
+        have hup_eq : ∀ u : ℝ, 0 < u → (∫ v in Ioi u, H u v)
+            = ∫ v in Ioi (0:ℝ),
+              ({p : ℝ × ℝ | p.1 < p.2}.indicator (Function.uncurry H)) (u, v) := by
+          intro u hu
+          rw [show (fun v => ({p : ℝ × ℝ | p.1 < p.2}.indicator
+              (Function.uncurry H)) (u, v))
+              = (Ioi u).indicator (fun v => H u v) from by
+            funext v
+            simp only [Set.indicator_apply, Set.mem_setOf_eq, Set.mem_Ioi,
+              Function.uncurry]]
+          rw [integral_indicator measurableSet_Ioi,
+            Measure.restrict_restrict measurableSet_Ioi,
+            Set.inter_eq_self_of_subset_left
+              (fun x hx => Set.mem_Ioi.mpr (lt_trans hu (Set.mem_Ioi.mp hx)))]
+        -- generic integrability of an indicator-marginal
+        have hgen : ∀ (S : Set (ℝ × ℝ)), MeasurableSet S →
+            IntegrableOn (fun u => ∫ v in Ioi (0:ℝ),
+              (S.indicator (Function.uncurry H)) (u, v)) (Ioi (0:ℝ)) := by
+          intro S hS
+          have hSm : Measurable (Function.uncurry (fun u v =>
+              (S.indicator (Function.uncurry H)) (u, v))) :=
+            hHm.indicator hS
+          have hSb : ∀ u v, 0 < u → 0 < v →
+              |(S.indicator (Function.uncurry H)) (u, v)| ≤ M := by
+            intro u v hu hv
+            by_cases hmem : ((u, v) : ℝ × ℝ) ∈ S
+            · rw [Set.indicator_of_mem hmem]
+              exact hHb u v hu hv
+            · rw [Set.indicator_of_notMem hmem, abs_zero]
+              exact hM
+          have hSsupp : ∀ u v, 0 < u → A ≤ v →
+              (S.indicator (Function.uncurry H)) (u, v) = 0 := by
+            intro u v hu hv
+            by_cases hmem : ((u, v) : ℝ × ℝ) ∈ S
+            · rw [Set.indicator_of_mem hmem]
+              exact hsuppV u v hu hv
+            · exact Set.indicator_of_notMem hmem _
+          apply integrableOn_Ioi_of_bounded_support _ (M*A) A hA
+          · exact ((hSm.stronglyMeasurable.integral_prod_right').measurable
+              ).aestronglyMeasurable
+          · intro u hu
+            have htail := integral_Ioi_sub_interval
+              (fun v => (S.indicator (Function.uncurry H)) (u, v)) M A A hM hA
+              le_rfl
+              ((hSm.comp (measurable_const.prodMk measurable_id)).aestronglyMeasurable)
+              (fun v hv => hSb u v hu hv) (fun v hv => hSsupp u v hu hv)
+            rw [intervalIntegral.integral_same, sub_zero] at htail
+            exact htail
+          · intro u hu
+            have hz : ∀ v ∈ Ioi (0:ℝ),
+                (S.indicator (Function.uncurry H)) (u, v) = (0:ℝ) := by
+              intro v hv
+              by_cases hmem : ((u, v) : ℝ × ℝ) ∈ S
+              · rw [Set.indicator_of_mem hmem]
+                exact hsupp u v (Set.mem_Ioi.mp hv) hu
+              · exact Set.indicator_of_notMem hmem _
+            rw [setIntegral_congr_fun measurableSet_Ioi hz]
+            simp
+        -- assemble
+        have hloInt : IntegrableOn (fun u => ∫ v in Ioo (0:ℝ) u, H u v)
+            (Ioi (0:ℝ)) := by
+          apply (hgen _ (measurableSet_lt measurable_snd measurable_fst)).congr_fun
+            (fun u _ => (hlo_eq u).symm) measurableSet_Ioi
+        have hupInt : IntegrableOn (fun u => ∫ v in Ioi u, H u v)
+            (Ioi (0:ℝ)) := by
+          apply ((hgen _ (measurableSet_lt measurable_fst measurable_snd)).congr
+            (MeasureTheory.ae_restrict_of_forall_mem measurableSet_Ioi
+              (fun u hu => (hup_eq u (Set.mem_Ioi.mp hu)).symm)))
+        exact integral_add hloInt hupInt
+    _ = 2 * ∫ u in Ioi (0:ℝ), ∫ v in Ioi u, H u v := by
+        rw [hlower]
+        ring
+
+#print axioms triangle_swap
+
 #print axioms shift_Ioi
 #print axioms scale_shift_Ioi
 #print axioms reflect_Iio
