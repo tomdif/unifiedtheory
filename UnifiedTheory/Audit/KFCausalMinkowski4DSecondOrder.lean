@@ -231,6 +231,62 @@ theorem mellin_shift (s : ℝ) (hs : 0 < s) :
   rw [g4, g3, g2, g1]
   ring
 
+/-- **THE CURVED GATE MASSES.**  The correction kernel `h_c = ξ·f4D′` inherits
+all three convergence zeros of the flat gate — the boost-killer at `s = ½`, and
+the edge-killers at `s = 1, 3/2` — so the `O(τ²)` curvature channel converges
+by the SAME mechanism as the flat mean.  Only the survivor remains, doubled. -/
+theorem hc_moment_half :
+    (∫ ξ in Ioi (0:ℝ), ξ ^ ((1:ℝ)/2 - 1) *
+      (Real.exp (-ξ) * ((-10) * ξ + 25 * ξ ^ 2 - 12 * ξ ^ 3 + (4/3) * ξ ^ 4)))
+    = 0 := by
+  rw [mellin_shift (1/2) one_half_pos, f4D_moment_half]
+  ring
+
+theorem hc_moment_one :
+    (∫ ξ in Ioi (0:ℝ),
+      Real.exp (-ξ) * ((-10) * ξ + 25 * ξ ^ 2 - 12 * ξ ^ 3 + (4/3) * ξ ^ 4))
+    = 0 := by
+  have h := mellin_shift 1 one_pos
+  simp only [show (1:ℝ) - 1 = 0 from by norm_num, Real.rpow_zero, one_mul] at h
+  rw [h, f4D_moment_one]
+  ring
+
+theorem hc_moment_threehalf :
+    (∫ ξ in Ioi (0:ℝ), ξ ^ ((3:ℝ)/2 - 1) *
+      (Real.exp (-ξ) * ((-10) * ξ + 25 * ξ ^ 2 - 12 * ξ ^ 3 + (4/3) * ξ ^ 4)))
+    = 0 := by
+  rw [show ((3:ℝ)/2 - 1) = ((3:ℝ)/2) - 1 from rfl,
+    mellin_shift (3/2) (by norm_num), f4D_moment_threehalf]
+  ring
+
+/-- **THE CURVED SURVIVOR**: `M[ξf4D′](2) = +2` — the doubled `s = 2` residue
+is the sole feeder of the `−½R` term of the Benincasa–Dowker action. -/
+theorem hc_survivor :
+    (∫ ξ in Ioi (0:ℝ), ξ *
+      (Real.exp (-ξ) * ((-10) * ξ + 25 * ξ ^ 2 - 12 * ξ ^ 3 + (4/3) * ξ ^ 4)))
+    = 2 := by
+  have h := mellin_shift 2 (by norm_num)
+  simp only [show (2:ℝ) - 1 = 1 from by norm_num, Real.rpow_one] at h
+  rw [h, f4D_moment_two]
+  ring
+
+/-- **The parametrized curved-gate dictionary** (algebraic layer): with the RNC
+volume-correction jet `δV/V = (α·R₀₀ + β·R)·τ²` and the survivor mass `+2`,
+the curvature contribution to the normalized limit is `2·(α·R₀₀ + β·R)·κ·φ₀`
+for the gate-normalization constant `κ`; the Benincasa–Dowker `−½R` obtains
+exactly when the geometric inputs satisfy `2κ·(α·R₀₀ + β·R) = −R/2` — the
+instantiation with the Gibbons–Solodukhin coefficients is the remaining
+physics-dictionary input, isolated here as a single linear identity. -/
+theorem curved_gate_dictionary (α β R R00 κ φ₀ : ℝ)
+    (hGS : 2 * κ * (α * R00 + β * R) = -(1/2) * R) :
+    2 * (α * R00 + β * R) * κ * φ₀ = -(1/2) * R * φ₀ := by
+  have h : 2 * (α * R00 + β * R) * κ = -(1/2) * R := by linarith [hGS]
+  calc 2 * (α * R00 + β * R) * κ * φ₀ = (2 * κ * (α * R00 + β * R)) * φ₀ := by ring
+    _ = -(1/2) * R * φ₀ := by rw [hGS]
+
+#print axioms hc_moment_half
+#print axioms hc_survivor
+
 #print axioms f4Dsq_mass_half
 #print axioms f4Dsq_mass_half_pos
 #print axioms generic_mellin4
