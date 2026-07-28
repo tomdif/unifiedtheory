@@ -15,6 +15,7 @@ import UnifiedTheory.Audit.KFCausalMinkowski4DLogRate
 
 open MeasureTheory Real Set
 open UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder
+open UnifiedTheory.Audit.KFCausalMinkowski4DMoments
 
 namespace UnifiedTheory.Audit.KFCausalMinkowski4DVarianceRate
 
@@ -107,6 +108,39 @@ theorem f4Dsq_w_mass :
     field_simp
   rw [key, integral_const_mul] at hsub
   linarith [hsub]
+
+/-- **THE NO-SELF-AVERAGING THEOREM** (universal fluctuation no-go).  For ANY
+layer weights with nonvanishing zeroth weight — and the zeroth weight is
+forced by the mean's normalization (`layer_uniqueness`) — the variance
+kernel's Mellin mass at the critical point `s = ½` is strictly positive:
+
+    M[e^{−ξ}(w₀² + w₁²ξ + (w₂²/2)ξ² + (w₃²/6)ξ³)](½) > 0.
+
+The mean's convergence REQUIRED zeros at `s = ½, 1, 3/2`, achievable only with
+signed weights; the variance kernel's coefficients are squares, so its mass
+CANNOT vanish — for any weights, in any layer scheme.  With `log_rate`, the
+Campbell term of every layer-weighted causal-set d'Alembertian diverges
+logarithmically: an intermediate nonlocality (damping) scale is NECESSARY,
+not a modeling choice.  Positivity forbids sitting on the critical line. -/
+theorem no_self_averaging (w₀ w₁ w₂ w₃ : ℝ) (hw : w₀ ≠ 0) :
+    0 < ∫ ξ in Ioi (0:ℝ), ξ ^ ((1/2:ℝ) - 1) *
+      (Real.exp (-ξ) * (w₀^2 + w₁^2 * ξ + (w₂^2/2) * ξ^2 + (w₃^2/6) * ξ^3)) := by
+  rw [generic_mellin (1/2) one_half_pos (w₀^2) (w₁^2) (w₂^2) (w₃^2)]
+  have g0 := Real.Gamma_pos_of_pos (by norm_num : (0:ℝ) < 1/2)
+  have g1 := Real.Gamma_pos_of_pos (by norm_num : (0:ℝ) < 1/2 + 1)
+  have g2 := Real.Gamma_pos_of_pos (by norm_num : (0:ℝ) < 1/2 + 2)
+  have g3 := Real.Gamma_pos_of_pos (by norm_num : (0:ℝ) < 1/2 + 3)
+  have h0 : 0 < w₀^2 * Real.Gamma (1/2) :=
+    mul_pos (by positivity) g0
+  have h1 : 0 ≤ w₁^2 * Real.Gamma (1/2 + 1) :=
+    mul_nonneg (sq_nonneg _) (le_of_lt g1)
+  have h2 : 0 ≤ (w₂^2/2) * Real.Gamma (1/2 + 2) :=
+    mul_nonneg (by positivity) (le_of_lt g2)
+  have h3 : 0 ≤ (w₃^2/6) * Real.Gamma (1/2 + 3) :=
+    mul_nonneg (by positivity) (le_of_lt g3)
+  linarith
+
+#print axioms no_self_averaging
 
 #print axioms inner_sub_generic
 #print axioms f4Dsq_w_mass
