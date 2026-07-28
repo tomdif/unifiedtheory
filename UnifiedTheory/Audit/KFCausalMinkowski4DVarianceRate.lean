@@ -140,6 +140,83 @@ theorem no_self_averaging (w₀ w₁ w₂ w₃ : ℝ) (hw : w₀ ≠ 0) :
     mul_nonneg (by positivity) (le_of_lt g3)
   linarith
 
+/-- **THE NO-SELF-AVERAGING THEOREM, GCB CLASS** — the quantifier that matters.
+For an ARBITRARY finite family of layer weights (the class containing the
+Aslanbeigi–Saravani–Sorkin Generalized Causet Box operators), if any weight is
+nonzero then the variance kernel's Mellin mass at the critical point is
+strictly positive:
+
+    M[e^{−ξ}·Σₙ wₙ²·ξⁿ/n!](½)  =  Σₙ wₙ²·Γ(n+½)/n!  >  0.
+
+No choice of coefficients — including every GCB member — evades the
+fluctuation divergence: squares against positive Γ-values cannot vanish. -/
+theorem no_self_averaging_GCB (N : ℕ) (w : ℕ → ℝ)
+    (hw : ∃ n, n < N ∧ w n ≠ 0) :
+    0 < ∫ ξ in Ioi (0:ℝ), ξ ^ ((1/2:ℝ) - 1) *
+      (Real.exp (-ξ) * ∑ n ∈ Finset.range N,
+        (w n)^2 * ξ ^ n / (Nat.factorial n : ℝ)) := by
+  -- per-term evaluation: the (n + ½)-moment of the exponential
+  have hterm : ∀ n : ℕ, (∫ ξ in Ioi (0:ℝ), ξ ^ ((1/2:ℝ) - 1) *
+      (Real.exp (-ξ) * ((w n)^2 * ξ ^ n / (Nat.factorial n : ℝ))))
+      = (w n)^2 / (Nat.factorial n : ℝ) * Real.Gamma ((n:ℝ) + 1/2) := by
+    intro n
+    have hpos : (0:ℝ) < (n:ℝ) + 1/2 := by positivity
+    rw [Real.Gamma_eq_integral hpos, ← integral_const_mul]
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro ξ hξ
+    rw [mem_Ioi] at hξ
+    have hmerge : ξ ^ ((1/2:ℝ) - 1) * ξ ^ n = ξ ^ (((n:ℝ) + 1/2) - 1) := by
+      rw [← Real.rpow_natCast ξ n, ← Real.rpow_add hξ]
+      congr 1
+      ring
+    dsimp only
+    rw [← hmerge]
+    ring
+  -- per-term integrability
+  have hint : ∀ n : ℕ, IntegrableOn (fun ξ => ξ ^ ((1/2:ℝ) - 1) *
+      (Real.exp (-ξ) * ((w n)^2 * ξ ^ n / (Nat.factorial n : ℝ))))
+      (Ioi (0:ℝ)) := by
+    intro n
+    have hpos : (0:ℝ) < (n:ℝ) + 1/2 := by positivity
+    have hg := (Real.GammaIntegral_convergent hpos).const_mul
+      ((w n)^2 / (Nat.factorial n : ℝ))
+    apply MeasureTheory.IntegrableOn.congr_fun hg ?_ measurableSet_Ioi
+    intro ξ hξ
+    rw [mem_Ioi] at hξ
+    have hmerge : ξ ^ ((1/2:ℝ) - 1) * ξ ^ n = ξ ^ (((n:ℝ) + 1/2) - 1) := by
+      rw [← Real.rpow_natCast ξ n, ← Real.rpow_add hξ]
+      congr 1
+      ring
+    dsimp only
+    rw [← hmerge]
+    ring
+  -- expand the sum through the integral
+  have hexpand : (∫ ξ in Ioi (0:ℝ), ξ ^ ((1/2:ℝ) - 1) *
+      (Real.exp (-ξ) * ∑ n ∈ Finset.range N,
+        (w n)^2 * ξ ^ n / (Nat.factorial n : ℝ)))
+      = ∑ n ∈ Finset.range N,
+        (w n)^2 / (Nat.factorial n : ℝ) * Real.Gamma ((n:ℝ) + 1/2) := by
+    rw [show (fun ξ => ξ ^ ((1/2:ℝ) - 1) *
+        (Real.exp (-ξ) * ∑ n ∈ Finset.range N,
+          (w n)^2 * ξ ^ n / (Nat.factorial n : ℝ)))
+        = fun ξ => ∑ n ∈ Finset.range N, ξ ^ ((1/2:ℝ) - 1) *
+          (Real.exp (-ξ) * ((w n)^2 * ξ ^ n / (Nat.factorial n : ℝ))) from by
+      funext ξ
+      rw [Finset.mul_sum, Finset.mul_sum]]
+    rw [MeasureTheory.integral_finset_sum _ (fun n _ => hint n)]
+    exact Finset.sum_congr rfl (fun n _ => hterm n)
+  rw [hexpand]
+  obtain ⟨n₀, hn₀, hw₀⟩ := hw
+  apply Finset.sum_pos' ?_ ⟨n₀, Finset.mem_range.mpr hn₀, ?_⟩
+  · intro n _
+    have hg := Real.Gamma_pos_of_pos (by positivity : (0:ℝ) < (n:ℝ) + 1/2)
+    positivity
+  · have hg := Real.Gamma_pos_of_pos (by positivity : (0:ℝ) < (n₀:ℝ) + 1/2)
+    have hfac : (0:ℝ) < (Nat.factorial n₀ : ℝ) := by positivity
+    positivity
+
+#print axioms no_self_averaging_GCB
+
 #print axioms no_self_averaging
 
 #print axioms inner_sub_generic
