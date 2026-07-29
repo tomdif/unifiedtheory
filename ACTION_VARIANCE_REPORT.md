@@ -109,3 +109,60 @@ validated at 5 ε values → [PHYS] Λ ∝ 1/T law + CMB safety + thawing w + fm
 mesoscale. The next decisive steps: formalize the edge term of Var S in Lean
 (diagonal-Campbell reduction is `variance_rate`-shaped); the DESI likelihood
 run; and a sector-dependence analysis for the fm-scale tension.
+
+## LOCK-IN ADDENDUM (2026-07-29, later same day)
+
+**(i) The diamond coefficient is now DERIVED — no fitted g.** Two exact
+integrals close it: the angular average of the squared null-exit radius for a
+point at height u, offset b in the diamond is ⟨r_exit²⟩_Ω = (u²−b²)/4 (the
+1/(u+bc)² angular integral collapses), and the diamond average is
+⟨u²−b²⟩ = (2/3)T². Hence the leading law is exactly
+
+    Var S = 2·κ²·M(ε)·N·T̂²,   T̂ = T/ℓ_c,
+
+parameter-free. MC agreement 0.7–0.9 at ε = 1, 0.5 where the edge dominates
+(finite-size and the N–D cancellation account for the deficit); subleading
+floor terms visible at small ε as expected. The Λ-closure then gives the exact
+Károlyházy identity **ℓ_k = 3.9·(ℓ_p²T)^{1/3} = 12.7 fm** (coefficient now
+derived: 3.92 = [(24/π)^{1/4}√v/(8πκ√(2M̂)·Λ̂)]^{1/3}-chain, Λ̂ = Λ(cT)² = 1.89).
+
+**(iii) The trichotomy is formalized.** `KFCausalMinkowski4DCriticalLine.lean`
+(axiom-clean, root green): `critical_line_dichotomy` — the mean kernel's s = ½
+zero in both guises (Mellin moment and null-boundary w-mass) conjoined with
+the strict positivity of the intensity mass — and `intensity_zero_impossible`
+(all admissible finite layer families). One zero, two jobs, machine-checked.
+
+**(ii) The DESI DR2 BAO likelihood run — a decisive negative.** Verbatim DR2
+Table 4 (13 measurements, correlations), profiled over (Ωm, h·rd). Pipeline
+validated: ΛCDM χ² = 10.55/11 (DESI: 10.2), Ωm = 0.2970 (DESI: 0.2975), CPL
+χ² = 5.81 ≈ DESI's Δχ² = −4.7 corner. Verdicts:
+
+| model | Δχ² vs ΛCDM |
+|---|---|
+| deterministic action drift (fixed ℓ_k, Λ ∝ V^{−1/4}) | **+15.2 — excluded** |
+| stochastic action realizations (150) | best +25.5, median +1058 — excluded |
+| stochastic classic realizations (150) | best +35.8, median +1408 — excluded |
+
+The thawing w → −2/3 drift is too far from ΛCDM for DR2 BAO; typical
+stochastic realizations are far too rough across z ∈ [0, 2.3] — quantifying
+at BAO level exactly the seed-rarity DNY found for SN (16/90,000). **An O(1)
+everpresent-Λ component with this correlation structure is dead against DESI
+DR2.**
+
+**What survives is sharper than what died: a new observational bound.** If Λ
+itself is (mostly) constant, the BAO smoothness caps the action-channel noise
+at a fraction x of Λ_obs, and the derived amplitude chain inverts to
+
+    ℓ_k(gravity) ≥ (1/x)^{1/3}·3.9·(ℓ_p²T)^{1/3}  ≈ 30 fm  (x = 0.1).
+
+Combined with the LHC matter-sector bound ℓ_k ≤ 10⁻¹⁹ m, the causal-set noise
+mechanism now REQUIRES a ≥ 5-order sector split between gravitational and
+matter nonlocality — or it is falsified outright. Either way the program has
+done its job: DESI DR2 + machine-checked kernel constants = the first
+cosmological lower bound on a quantum-gravity nonlocality scale, and a
+mechanism that stuck its neck out and (in its O(1)-amplitude form) lost.
+
+Caveats: BAO-only (no SN/CMB joint), ΛCDM background V(a), flatness enforced,
+independent-increment correlation structure (ZAS Model-2-style smoother
+correlations would soften the stochastic exclusion — the deterministic drift
+exclusion is correlation-independent).
