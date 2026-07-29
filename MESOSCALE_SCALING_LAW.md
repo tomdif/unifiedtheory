@@ -1,5 +1,12 @@
 # The Mesoscale Scaling Law and the Λ-Refinement Bound
 
+> **REVISION NOTE (2026-07-29, same day):** the off-diagonal covariance
+> computation (see FIVE_TESTS_REPORT.md) showed the noise correlations are
+> short-ranged (IR-decoupling zero `f4D_w_mass_zero`), so volume averaging
+> suppresses the per-point variance used in §4. The per-point Λ reading
+> (ℓ_k ≈ 63–146 m) is SUPERSEDED by the averaged-channel identification
+> ℓ_k ≈ 5.7 ℓ_p from the fitted everpresent-Λ amplitude. §§1–3 stand.
+
 **2026-07-29.** The deliverable of the fluctuation campaign: the exact variance-rate
 channel of the 4D causal-set d'Alembertian, assembled into (i) a mesoscale
 reliability law with machine-checked constants and (ii) a quantitative refinement

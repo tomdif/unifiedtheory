@@ -340,6 +340,41 @@ theorem damped_variance_mass_pos (ε : ℝ) (hε : 0 < ε) :
   have hsε : (0:ℝ) < Real.sqrt ε := Real.sqrt_pos.mpr hε
   positivity
 
+/-- **The IR-decoupling zero**: the mean kernel's null-boundary w-mass
+vanishes, `∫₀^∞ f4D(w²)dw = ½·M[f4D](½) = 0`.  Consequence (the off-diagonal
+covariance structure): at separated points the deep-cone contribution to the
+fluctuation covariance integrates the MEAN kernel along the second null shell
+— and this zero kills it.  The covariance of the BDG noise is IR-FINITE and
+short-ranged (correlation length ≈ the mesoscale), even though the per-point
+variance diverges with the IR depth: per-point no-self-averaging coexists
+with full self-averaging of every extended observable. -/
+theorem f4D_w_mass_zero :
+    (∫ w in Ioi (0:ℝ), f4D (w^2)) = 0 := by
+  have hsub := integral_comp_rpow_Ioi
+    (fun ξ => ξ ^ ((1:ℝ)/2 - 1) * f4D ξ) (p := 2) (by norm_num)
+  rw [f4D_moment_half] at hsub
+  have key : (∫ x in Ioi (0:ℝ), (|(2:ℝ)| * x ^ ((2:ℝ) - 1)) •
+      ((fun ξ => ξ ^ ((1:ℝ)/2 - 1) * f4D ξ) (x ^ (2:ℝ))))
+      = ∫ x in Ioi (0:ℝ), 2 * f4D (x^2) := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro x hx
+    rw [mem_Ioi] at hx
+    dsimp only
+    rw [smul_eq_mul]
+    have h21 : x ^ ((2:ℝ)-1) = x := by
+      rw [show (2:ℝ)-1 = (1:ℝ) from by norm_num, Real.rpow_one]
+    have hpow : (x ^ (2:ℝ)) ^ ((1:ℝ)/2 - 1) = x⁻¹ := by
+      rw [← Real.rpow_mul (le_of_lt hx),
+        show (2:ℝ) * ((1:ℝ)/2 - 1) = -1 from by norm_num, Real.rpow_neg_one]
+    have hx2 : x ^ (2:ℝ) = x^2 := by
+      rw [show (2:ℝ) = ((2:ℕ):ℝ) from by norm_num, Real.rpow_natCast]
+    rw [h21, hpow, hx2, abs_of_pos (by norm_num : (0:ℝ) < 2)]
+    field_simp
+  rw [key, integral_const_mul] at hsub
+  linarith [hsub]
+
+#print axioms f4D_w_mass_zero
+
 #print axioms g4sq_mass_half
 #print axioms mellin_scale
 #print axioms damped_moment_half
