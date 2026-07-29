@@ -12,10 +12,14 @@
 import Mathlib
 import UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder
 import UnifiedTheory.Audit.KFCausalMinkowski4DLogRate
+import UnifiedTheory.Audit.KFCausalMinkowski4DQuadrant
+import UnifiedTheory.Audit.KFCausalMinkowski4DNullReduction
 
 open MeasureTheory Real Set Filter Topology
 open UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder
 open UnifiedTheory.Audit.KFCausalMinkowski4DMoments
+open UnifiedTheory.Audit.KFCausalMinkowski4DQuadrant
+open UnifiedTheory.Audit.KFCausalMinkowski4DNullReduction
 
 namespace UnifiedTheory.Audit.KFCausalMinkowski4DVarianceRate
 
@@ -684,5 +688,367 @@ theorem cross_channel_bound (g : ℝ → ℝ → ℝ) (Cg A B : ℝ)
 
 #print axioms inner_sub_generic
 #print axioms f4Dsq_w_mass
+
+/-- **THE DIAGONAL VARIANCE RATE.**  For a bounded continuous box-supported
+profile `g`,
+
+    √a · ∬_{(0,∞)²} (v−u)²·f4Dsq(au²v²)·g(u,v)
+      ⟶  (∫₀^∞ f4Dsq(w²)dw) · ( ∫₀^∞ u·g(u,0) du + ∫₀^∞ v·g(0,v) dv )
+
+as `a → ∞`, with `∫₀^∞ f4Dsq(w²)dw = (315/4)√π` (`f4Dsq_w_mass`).  Split
+`(v−u)² = u² + v² − 2uv`: the `u²`-channel converges by `square_channel`, the
+`v²`-channel by Fubini transposition and `square_channel` on the swapped
+profile, and the cross channel is `O(ln a/√a)` by `cross_channel_bound`.
+The diagonal variance of the causal-set d'Alembertian therefore GROWS as
+`√a` times computable edge constants — no self-averaging, with the rate. -/
+theorem variance_rate (g : ℝ → ℝ → ℝ) (Cg A B : ℝ) (hA : 0 < A) (hB : 0 < B)
+    (hgc : Continuous (Function.uncurry g))
+    (hgb : ∀ u v, |g u v| ≤ Cg)
+    (hsuppU : ∀ u v, A ≤ u → g u v = 0) (hsuppV : ∀ u v, B ≤ v → g u v = 0) :
+    Filter.Tendsto (fun a : ℝ => Real.sqrt a * ∫ u in Ioi (0:ℝ),
+        ∫ v in Ioi (0:ℝ), (v-u)^2 * f4Dsq (a*u^2*v^2) * g u v)
+      Filter.atTop
+      (𝓝 ((∫ w in Ioi (0:ℝ), f4Dsq (w^2)) *
+        ((∫ u in Ioi (0:ℝ), u * g u 0) + ∫ v in Ioi (0:ℝ), v * g 0 v))) := by
+  have hCg0 : 0 ≤ Cg := le_trans (abs_nonneg _) (hgb 0 0)
+  -- the two square-channel limits
+  have hchA := square_channel g Cg A B hA hB hgc hgb hsuppU hsuppV
+  have hchB := square_channel (fun u v => g v u) Cg B A hB hA
+    (hgc.comp continuous_swap) (fun u v => hgb v u)
+    (fun u v hu => hsuppV v u hu) (fun u v hv => hsuppU v u hv)
+  -- the cross channel dies like ln a/√a
+  have hchC : Filter.Tendsto (fun a : ℝ => (Real.sqrt a)⁻¹ *
+      ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+        w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      Filter.atTop (𝓝 0) := by
+    have hmaj : ∀ᶠ a in Filter.atTop,
+        ‖(Real.sqrt a)⁻¹ * ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+          w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))‖
+        ≤ (75*Cg*B^2 + 201*Cg*(Real.log A + Real.log (Real.sqrt a)))
+            / Real.sqrt a := by
+      filter_upwards [Filter.eventually_ge_atTop (max 1 (A⁻¹^2))] with a ha
+      have ha1 : (1:ℝ) ≤ a := le_trans (le_max_left _ _) ha
+      have ha0 : (0:ℝ) < a := lt_of_lt_of_le one_pos ha1
+      have haA : (Real.sqrt a)⁻¹ ≤ A := by
+        have h1 : A⁻¹^2 ≤ a := le_trans (le_max_right _ _) ha
+        have h2 : A⁻¹ ≤ Real.sqrt a := by
+          rw [show A⁻¹ = Real.sqrt (A⁻¹^2) from
+            (Real.sqrt_sq (by positivity)).symm]
+          exact Real.sqrt_le_sqrt h1
+        calc (Real.sqrt a)⁻¹ ≤ (A⁻¹)⁻¹ := by
+              rw [← one_div, ← one_div]
+              exact one_div_le_one_div_of_le (by positivity) h2
+          _ = A := inv_inv A
+      rw [Real.norm_eq_abs, abs_mul, abs_inv,
+        abs_of_pos (Real.sqrt_pos.mpr ha0)]
+      calc (Real.sqrt a)⁻¹ * |∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+            w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u))|
+          ≤ (Real.sqrt a)⁻¹ *
+            (75*Cg*B^2 + 201*Cg*(Real.log A + Real.log (Real.sqrt a))) :=
+            mul_le_mul_of_nonneg_left
+              (cross_channel_bound g Cg A B hA hB hgb hsuppU hsuppV a ha0 haA)
+              (by positivity)
+        _ = (75*Cg*B^2 + 201*Cg*(Real.log A + Real.log (Real.sqrt a)))
+            / Real.sqrt a := by
+            rw [div_eq_mul_inv, mul_comm]
+    have hglim : Filter.Tendsto (fun a : ℝ =>
+        (75*Cg*B^2 + 201*Cg*(Real.log A + Real.log (Real.sqrt a)))
+          / Real.sqrt a) Filter.atTop (𝓝 0) := by
+      have h1 : Filter.Tendsto
+          (fun t : ℝ => (75*Cg*B^2 + 201*Cg*Real.log A) / t)
+          Filter.atTop (𝓝 0) :=
+        tendsto_const_nhds.div_atTop Filter.tendsto_id
+      have h2 : Filter.Tendsto (fun t : ℝ => 201*Cg*(Real.log t / t))
+          Filter.atTop (𝓝 (201*Cg*0)) :=
+        (Real.isLittleO_log_id_atTop.tendsto_div_nhds_zero).const_mul _
+      rw [mul_zero] at h2
+      have h12 := h1.add h2
+      rw [add_zero] at h12
+      have hlim : Filter.Tendsto (fun t : ℝ =>
+          (75*Cg*B^2 + 201*Cg*(Real.log A + Real.log t)) / t)
+          Filter.atTop (𝓝 0) := by
+        apply h12.congr'
+        filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with t ht
+        rw [← mul_div_assoc, div_add_div_same]
+        congr 1
+        ring
+      have hcomp := hlim.comp Real.tendsto_sqrt_atTop
+      simpa [Function.comp] using hcomp
+    exact squeeze_zero_norm' hmaj hglim
+  -- combine the three limits
+  have hcomb := (hchA.add hchB).sub (hchC.const_mul 2)
+  rw [mul_zero, sub_zero, ← mul_add] at hcomb
+  apply hcomb.congr'
+  filter_upwards [Filter.eventually_gt_atTop (0:ℝ)] with a ha
+  show ((∫ u in Ioi (0:ℝ), u * ∫ w in Ioi (0:ℝ),
+        f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      + ∫ u in Ioi (0:ℝ), u * ∫ w in Ioi (0:ℝ),
+        f4Dsq (w^2) * g (w/(Real.sqrt a * u)) u)
+      - 2 * ((Real.sqrt a)⁻¹ * ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+        w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u)))
+      = Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+        (v-u)^2 * f4Dsq (a*u^2*v^2) * g u v
+  have hsa : 0 < Real.sqrt a := Real.sqrt_pos.mpr ha
+  -- continuity/measurability of the pieces
+  have hK : Continuous (fun ξ : ℝ => f4Dsq ξ) := by
+    unfold UnifiedTheory.Audit.KFCausalMinkowski4DSecondOrder.f4Dsq
+    fun_prop
+  have hkerc : Continuous (fun p : ℝ × ℝ => f4Dsq (a*p.1^2*p.2^2)) :=
+    hK.comp (by fun_prop)
+  have hm1 : Measurable (Function.uncurry (fun u v : ℝ =>
+      u^2 * f4Dsq (a*u^2*v^2) * g u v)) :=
+    (((continuous_fst.pow 2).mul hkerc).mul hgc).measurable
+  have hm2 : Measurable (Function.uncurry (fun u v : ℝ =>
+      v^2 * f4Dsq (a*u^2*v^2) * g u v)) :=
+    (((continuous_snd.pow 2).mul hkerc).mul hgc).measurable
+  have hm3 : Measurable (Function.uncurry (fun u v : ℝ =>
+      u*v * f4Dsq (a*u^2*v^2) * g u v)) :=
+    (((continuous_fst.mul continuous_snd).mul hkerc).mul hgc).measurable
+  -- pointwise bounds
+  have hb1 : ∀ u v : ℝ, 0 < u → 0 < v →
+      |u^2 * f4Dsq (a*u^2*v^2) * g u v| ≤ A^2*(300*Cg) := by
+    intro u v hu hv
+    rcases le_or_gt A u with huA | huA
+    · rw [hsuppU u v huA, mul_zero, abs_zero]
+      positivity
+    · have hz : (0:ℝ) ≤ a*u^2*v^2 := by positivity
+      rw [abs_mul, abs_mul, abs_of_nonneg (sq_nonneg u),
+        abs_of_nonneg (f4Dsq_nonneg _ hz)]
+      have hu2 : u^2 ≤ A^2 := by nlinarith
+      calc u^2 * f4Dsq (a*u^2*v^2) * |g u v|
+          ≤ (A^2 * 300) * Cg := by
+            apply mul_le_mul _ (hgb u v) (abs_nonneg _) (by positivity)
+            exact mul_le_mul hu2 (f4Dsq_le _ hz) (f4Dsq_nonneg _ hz)
+              (by positivity)
+        _ = A^2*(300*Cg) := by ring
+  have hb2 : ∀ u v : ℝ, 0 < u → 0 < v →
+      |v^2 * f4Dsq (a*u^2*v^2) * g u v| ≤ B^2*(300*Cg) := by
+    intro u v hu hv
+    rcases le_or_gt B v with hvB | hvB
+    · rw [hsuppV u v hvB, mul_zero, abs_zero]
+      positivity
+    · have hz : (0:ℝ) ≤ a*u^2*v^2 := by positivity
+      rw [abs_mul, abs_mul, abs_of_nonneg (sq_nonneg v),
+        abs_of_nonneg (f4Dsq_nonneg _ hz)]
+      have hv2 : v^2 ≤ B^2 := by nlinarith
+      calc v^2 * f4Dsq (a*u^2*v^2) * |g u v|
+          ≤ (B^2 * 300) * Cg := by
+            apply mul_le_mul _ (hgb u v) (abs_nonneg _) (by positivity)
+            exact mul_le_mul hv2 (f4Dsq_le _ hz) (f4Dsq_nonneg _ hz)
+              (by positivity)
+        _ = B^2*(300*Cg) := by ring
+  have hb3 : ∀ u v : ℝ, 0 < u → 0 < v →
+      |u*v * f4Dsq (a*u^2*v^2) * g u v| ≤ A*B*(300*Cg) := by
+    intro u v hu hv
+    rcases le_or_gt A u with huA | huA
+    · rw [hsuppU u v huA, mul_zero, abs_zero]
+      positivity
+    rcases le_or_gt B v with hvB | hvB
+    · rw [hsuppV u v hvB, mul_zero, abs_zero]
+      positivity
+    have hz : (0:ℝ) ≤ a*u^2*v^2 := by positivity
+    rw [abs_mul, abs_mul, abs_of_nonneg (by positivity : (0:ℝ) ≤ u*v),
+      abs_of_nonneg (f4Dsq_nonneg _ hz)]
+    have huv : u*v ≤ A*B := by nlinarith
+    calc u*v * f4Dsq (a*u^2*v^2) * |g u v|
+        ≤ (A*B * 300) * Cg := by
+          apply mul_le_mul _ (hgb u v) (abs_nonneg _) (by positivity)
+          exact mul_le_mul huv (f4Dsq_le _ hz) (f4Dsq_nonneg _ hz)
+            (by positivity)
+      _ = A*B*(300*Cg) := by ring
+  -- supports
+  have hs1U : ∀ u v : ℝ, 0 < v → A ≤ u →
+      u^2 * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hu => by rw [hsuppU u v hu, mul_zero]
+  have hs1V : ∀ u v : ℝ, 0 < u → B ≤ v →
+      u^2 * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hv => by rw [hsuppV u v hv, mul_zero]
+  have hs2U : ∀ u v : ℝ, 0 < v → A ≤ u →
+      v^2 * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hu => by rw [hsuppU u v hu, mul_zero]
+  have hs2V : ∀ u v : ℝ, 0 < u → B ≤ v →
+      v^2 * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hv => by rw [hsuppV u v hv, mul_zero]
+  have hs3U : ∀ u v : ℝ, 0 < v → A ≤ u →
+      u*v * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hu => by rw [hsuppU u v hu, mul_zero]
+  have hs3V : ∀ u v : ℝ, 0 < u → B ≤ v →
+      u*v * f4Dsq (a*u^2*v^2) * g u v = 0 :=
+    fun u v _ hv => by rw [hsuppV u v hv, mul_zero]
+  -- slice integrability, generic
+  have hsl : ∀ (h : ℝ → ℝ → ℝ) (C : ℝ), Measurable (Function.uncurry h) →
+      (∀ u v, 0 < u → 0 < v → |h u v| ≤ C) →
+      (∀ u v, 0 < u → B ≤ v → h u v = 0) →
+      ∀ u : ℝ, 0 < u → IntegrableOn (fun v => h u v) (Ioi (0:ℝ)) := by
+    intro h C hm hb hs u hu
+    exact integrableOn_Ioi_of_bounded_support (fun v => h u v) C B hB
+      ((hm.comp (measurable_const.prodMk measurable_id)).aestronglyMeasurable)
+      (fun v hv => hb u v hu hv) (fun v hv => hs u v hu hv)
+  have hsl1 := hsl _ (A^2*(300*Cg)) hm1 hb1 hs1V
+  have hsl2 := hsl _ (B^2*(300*Cg)) hm2 hb2 hs2V
+  have hsl3 := hsl _ (A*B*(300*Cg)) hm3 hb3 hs3V
+  -- marginal integrability, generic
+  have hmarg : ∀ (h : ℝ → ℝ → ℝ) (C : ℝ), 0 ≤ C →
+      Measurable (Function.uncurry h) →
+      (∀ u v, 0 < u → 0 < v → |h u v| ≤ C) →
+      (∀ u v, 0 < v → A ≤ u → h u v = 0) →
+      (∀ u v, 0 < u → B ≤ v → h u v = 0) →
+      MeasureTheory.IntegrableOn (fun u => ∫ v in Ioi (0:ℝ), h u v)
+        (Ioi (0:ℝ)) := by
+    intro h C hC hm hb hsu hsv
+    apply integrableOn_Ioi_of_bounded_support _ (C*B) A hA
+    · exact ((hm.stronglyMeasurable.integral_prod_right').measurable
+        ).aestronglyMeasurable
+    · intro u hu
+      have htail := integral_Ioi_sub_interval (fun v => h u v) C B B hC hB
+        le_rfl
+        ((hm.comp (measurable_const.prodMk measurable_id)).aestronglyMeasurable)
+        (fun v hv => hb u v hu hv) (fun v hv => hsv u v hu hv)
+      rw [intervalIntegral.integral_same, sub_zero] at htail
+      exact htail
+    · intro u hu
+      rw [MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+        (fun v hv => hsu u v (Set.mem_Ioi.mp hv) hu),
+        MeasureTheory.integral_zero]
+  have hM1 := hmarg _ (A^2*(300*Cg)) (by positivity) hm1 hb1 hs1U hs1V
+  have hM2 := hmarg _ (B^2*(300*Cg)) (by positivity) hm2 hb2 hs2U hs2V
+  have hM3 := hmarg _ (A*B*(300*Cg)) (by positivity) hm3 hb3 hs3U hs3V
+  -- inner split, per u > 0
+  have hinner : ∀ u : ℝ, 0 < u →
+      (∫ v in Ioi (0:ℝ), (v-u)^2 * f4Dsq (a*u^2*v^2) * g u v)
+      = ((∫ v in Ioi (0:ℝ), u^2 * f4Dsq (a*u^2*v^2) * g u v)
+          + ∫ v in Ioi (0:ℝ), v^2 * f4Dsq (a*u^2*v^2) * g u v)
+        - 2 * ∫ v in Ioi (0:ℝ), u*v * f4Dsq (a*u^2*v^2) * g u v := by
+    intro u hu
+    have h12 : MeasureTheory.Integrable (fun v =>
+        u^2 * f4Dsq (a*u^2*v^2) * g u v + v^2 * f4Dsq (a*u^2*v^2) * g u v)
+        (MeasureTheory.volume.restrict (Ioi (0:ℝ))) :=
+      (hsl1 u hu).add (hsl2 u hu)
+    have h3 : MeasureTheory.Integrable (fun v =>
+        2 * (u*v * f4Dsq (a*u^2*v^2) * g u v))
+        (MeasureTheory.volume.restrict (Ioi (0:ℝ))) :=
+      MeasureTheory.Integrable.const_mul (hsl3 u hu) 2
+    rw [← MeasureTheory.integral_const_mul,
+      ← MeasureTheory.integral_add (hsl1 u hu) (hsl2 u hu),
+      ← MeasureTheory.integral_sub h12 h3]
+    apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+    intro v _
+    ring
+  -- outer split
+  have houter : (∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+      (v-u)^2 * f4Dsq (a*u^2*v^2) * g u v)
+      = ((∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+            u^2 * f4Dsq (a*u^2*v^2) * g u v)
+          + ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+            v^2 * f4Dsq (a*u^2*v^2) * g u v)
+        - 2 * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+            u*v * f4Dsq (a*u^2*v^2) * g u v := by
+    have h12 : MeasureTheory.Integrable (fun u =>
+        (∫ v in Ioi (0:ℝ), u^2 * f4Dsq (a*u^2*v^2) * g u v)
+          + ∫ v in Ioi (0:ℝ), v^2 * f4Dsq (a*u^2*v^2) * g u v)
+        (MeasureTheory.volume.restrict (Ioi (0:ℝ))) := hM1.add hM2
+    have h3 : MeasureTheory.Integrable (fun u =>
+        2 * ∫ v in Ioi (0:ℝ), u*v * f4Dsq (a*u^2*v^2) * g u v)
+        (MeasureTheory.volume.restrict (Ioi (0:ℝ))) :=
+      MeasureTheory.Integrable.const_mul hM3 2
+    rw [← MeasureTheory.integral_const_mul,
+      ← MeasureTheory.integral_add hM1 hM2,
+      ← MeasureTheory.integral_sub h12 h3]
+    apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+    intro u hu
+    exact hinner u (Set.mem_Ioi.mp hu)
+  -- channel A conversion
+  have hT1 : Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+      u^2 * f4Dsq (a*u^2*v^2) * g u v
+      = ∫ u in Ioi (0:ℝ), u * ∫ w in Ioi (0:ℝ),
+          f4Dsq (w^2) * g u (w/(Real.sqrt a * u)) := by
+    rw [← MeasureTheory.integral_const_mul]
+    apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+    intro u hu
+    rw [Set.mem_Ioi] at hu
+    dsimp only
+    have hpull : (∫ v in Ioi (0:ℝ), u^2 * f4Dsq (a*u^2*v^2) * g u v)
+        = u^2 * ∫ v in Ioi (0:ℝ), f4Dsq (a*u^2*v^2) * g u v := by
+      rw [← MeasureTheory.integral_const_mul]
+      apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+      intro v _
+      ring
+    rw [hpull, show Real.sqrt a * (u^2 * ∫ v in Ioi (0:ℝ),
+        f4Dsq (a*u^2*v^2) * g u v)
+        = u^2 * (Real.sqrt a * ∫ v in Ioi (0:ℝ),
+          f4Dsq (a*u^2*v^2) * g u v) from by ring,
+      inner_sub_generic f4Dsq (fun v => g u v) a u ha hu,
+      ← mul_assoc, show u^2 * u⁻¹ = u from by
+        rw [pow_two, mul_assoc, mul_inv_cancel₀ (ne_of_gt hu), mul_one]]
+  -- channel B conversion: Fubini transpose, then the substitution
+  have hswap : (∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+      v^2 * f4Dsq (a*u^2*v^2) * g u v)
+      = ∫ v in Ioi (0:ℝ), ∫ u in Ioi (0:ℝ),
+        v^2 * f4Dsq (a*u^2*v^2) * g u v :=
+    MeasureTheory.integral_integral_swap (prod_box_integrable
+      (fun u v => v^2 * f4Dsq (a*u^2*v^2) * g u v) (B^2*(300*Cg)) A B
+      (by positivity) hA hB hm2 hb2 hs2U hs2V)
+  have hT2 : Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+      v^2 * f4Dsq (a*u^2*v^2) * g u v
+      = ∫ u in Ioi (0:ℝ), u * ∫ w in Ioi (0:ℝ),
+          f4Dsq (w^2) * g (w/(Real.sqrt a * u)) u := by
+    rw [hswap, ← MeasureTheory.integral_const_mul]
+    apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+    intro x hx
+    rw [Set.mem_Ioi] at hx
+    dsimp only
+    have hpull : (∫ y in Ioi (0:ℝ), x^2 * f4Dsq (a*y^2*x^2) * g y x)
+        = x^2 * ∫ y in Ioi (0:ℝ), f4Dsq (a*x^2*y^2) * g y x := by
+      rw [← MeasureTheory.integral_const_mul]
+      apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+      intro y _
+      dsimp only
+      rw [show a*y^2*x^2 = a*x^2*y^2 from by ring]
+      ring
+    rw [hpull, show Real.sqrt a * (x^2 * ∫ y in Ioi (0:ℝ),
+        f4Dsq (a*x^2*y^2) * g y x)
+        = x^2 * (Real.sqrt a * ∫ y in Ioi (0:ℝ),
+          f4Dsq (a*x^2*y^2) * g y x) from by ring,
+      inner_sub_generic f4Dsq (fun y => g y x) a x ha hx,
+      ← mul_assoc, show x^2 * x⁻¹ = x from by
+        rw [pow_two, mul_assoc, mul_inv_cancel₀ (ne_of_gt hx), mul_one]]
+  -- channel C conversion
+  have hT3 : Real.sqrt a * ∫ u in Ioi (0:ℝ), ∫ v in Ioi (0:ℝ),
+      u*v * f4Dsq (a*u^2*v^2) * g u v
+      = (Real.sqrt a)⁻¹ * ∫ u in Ioi (0:ℝ), u⁻¹ * ∫ w in Ioi (0:ℝ),
+          w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u)) := by
+    rw [← MeasureTheory.integral_const_mul, ← MeasureTheory.integral_const_mul]
+    apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+    intro u hu
+    rw [Set.mem_Ioi] at hu
+    dsimp only
+    have hpull : (∫ v in Ioi (0:ℝ), u*v * f4Dsq (a*u^2*v^2) * g u v)
+        = u * ∫ v in Ioi (0:ℝ), f4Dsq (a*u^2*v^2) * (v * g u v) := by
+      rw [← MeasureTheory.integral_const_mul]
+      apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+      intro v _
+      dsimp only
+      ring
+    rw [hpull, show Real.sqrt a * (u * ∫ v in Ioi (0:ℝ),
+        f4Dsq (a*u^2*v^2) * (v * g u v))
+        = u * (Real.sqrt a * ∫ v in Ioi (0:ℝ),
+          f4Dsq (a*u^2*v^2) * (v * g u v)) from by ring,
+      inner_sub_generic f4Dsq (fun v => v * g u v) a u ha hu]
+    have hw : (∫ w in Ioi (0:ℝ), f4Dsq (w^2) *
+        (w/(Real.sqrt a * u) * g u (w/(Real.sqrt a * u))))
+        = (Real.sqrt a * u)⁻¹ * ∫ w in Ioi (0:ℝ),
+          w * f4Dsq (w^2) * g u (w/(Real.sqrt a * u)) := by
+      rw [← MeasureTheory.integral_const_mul]
+      apply MeasureTheory.setIntegral_congr_fun measurableSet_Ioi
+      intro w _
+      dsimp only
+      rw [div_eq_mul_inv]
+      ring
+    rw [hw, mul_inv]
+    field_simp
+  -- assemble
+  rw [houter, mul_sub, mul_add, mul_left_comm (Real.sqrt a) 2, hT1, hT2, hT3]
+
+#print axioms variance_rate
 
 end UnifiedTheory.Audit.KFCausalMinkowski4DVarianceRate
