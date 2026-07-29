@@ -136,6 +136,31 @@ What would make it stick (the neck-out list):
    contours, is an open, publishable test that could fail.
 3. The correlated-layer correction and the 4D time-extent of Ĉ₄ (tightening A).
 
+## Addendum — the DESI landscape [LIT, agent-verified]
+
+DESI DR2 (arXiv:2503.14738): evolving dark energy preferred at 2.8–4.2σ
+depending on SN sample (DESI+CMB+DESY5: w₀ = −0.752 ± 0.057, wₐ = −0.86,
+4.2σ), with phantom crossing at z ≈ 0.4–0.5. Confirmed: **no everpresent-Λ
+vs DESI confrontation exists in the literature** (nothing post-July-2024 on
+everpresent Λ at all). Three sharpenings for our program:
+
+1. **Independent convergence on the mesoscale.** DNY's amplitude convention is
+   α := ½(ℓ_p/ℓ_cs)² ("natural" α = ½ at ℓ_cs = ℓ_p), so their fitted
+   α = 0.0085 ± 0.0017 already implies ℓ_cs ≈ 7–8 ℓ_p by their own reading.
+   Our channel computes the prefactor they set by convention: α = (𝒜/8π)·
+   (ℓ_p/ℓ_k)² with 𝒜/8π ≈ 0.28, giving ℓ_k = 5.7 ± 0.6 ℓ_p. Two routes —
+   their per-element action convention, our computed covariance integral —
+   land within a factor 1.4 on a few-Planck-lengths nonlocality scale.
+2. **Deterministic tracking is dead; stochastic is open.** Λ(t) ∝ Hⁿ fits to
+   DESI DR2 give n = 0.30 ± 0.14 (arXiv:2604.16564) — deterministic H²
+   tracking excluded — but this does NOT transfer to the mean-zero stochastic
+   model; the realization-marginalized DESI analysis remains unpublished.
+3. **Phantom crossing discriminates models.** ZAS Model 2 (tanh-compressed)
+   cannot cross w = −1 by construction; DESI's best fit crosses at z ≈ 0.4.
+   Model 1 (unimodular, non-conserved) can. The open test is therefore:
+   Model 1 with OUR amplitude (not a scanned α) against DESI DR2 contours —
+   parameter-free up to the seed marginalization, and it could fail.
+
 ## Test 5 — the methodological claim [stands]
 
 Every kernel constant in the chain above traces to a named, axiom-clean Lean
