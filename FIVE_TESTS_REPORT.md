@@ -56,7 +56,7 @@ second moment in closed form, and the critical mass evaluates exactly:
 Two-sided validation: ε→0 gives ε^{3/2}·(315/512)√2√π — exactly the [LEAN]
 `mesoscale_suppression` constant; **ε=1 gives exactly (315/2)√π — the [LEAN]
 sharp mass `f4Dsq_mass_half`**. The formula interpolates the entire family.
-Correction to the ε^{3/2} law: factor (1 + (47/6)ε + O(ε²)) — 4% at ε = 10⁻²,
+Correction to the ε^{3/2} law: factor (1 + (47/12)ε + O(ε²)) — 4% at ε = 10⁻²,
 negligible at physical ε. The mean identity E[(1−ε)^N Q(N)] = f4D(εξ) was
 verified symbolically (the smeared mean kernel is EXACTLY ε·f4D(εξ) — no
 approximation anywhere in the mean sector).
