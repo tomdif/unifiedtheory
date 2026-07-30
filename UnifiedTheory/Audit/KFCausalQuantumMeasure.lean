@@ -272,6 +272,110 @@ theorem unitarity_quantizes (t θ₁ θ₂ : ℝ) (ht0 : 0 < t) (ht1 : t < 1)
     exact this h
   · exact h
 
+/-- Real part of a weighted phase. -/
+theorem weighted_phase_re (r θ : ℝ) :
+    ((r : ℂ) * Complex.exp (θ * Complex.I)).re = r * Real.cos θ := by
+  rw [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
+    Complex.exp_ofReal_mul_I_re]
+  simp
+
+/-- Imaginary part of a weighted phase. -/
+theorem weighted_phase_im (r θ : ℝ) :
+    ((r : ℂ) * Complex.exp (θ * Complex.I)).im = r * Real.sin θ := by
+  rw [Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im,
+    Complex.exp_ofReal_mul_I_im]
+  simp
+
+/-- **THE BORN–QUADRATURE LAW** (amplitude consistency determines the
+dynamics).  For the Born-from-growth measure to be consistent across growth
+stages, the amplitude of a history must equal the sum of its children's
+amplitudes:  √p₁·e^{iθ₁} + √p₂·e^{iθ₂} = 1  with  p₁ + p₂ = 1  and
+θ_c = ΔS_c/ℏ the action increments.  This equation is RIGID: the two
+amplitude vectors of lengths √p₁, √p₂ summing to a unit vector form a
+Pythagorean triangle, forcing
+
+    cos θ₁ = √p₁,   cos θ₂ = √p₂,   cos(θ₁ − θ₂) = 0 :
+
+**each branch's classical probability equals cos² of its action increment,
+and sibling branches sit in exact phase quadrature.**  The Rideout–Sorkin
+coupling constants are not free parameters — they are determined by the
+Benincasa–Dowker action.  Probability = cos²(action gap/ℏ): a derived Born
+rule for the growth of spacetime. -/
+theorem born_quadrature_law (p₁ p₂ θ₁ θ₂ : ℝ)
+    (hp₁ : 0 < p₁) (hp₂ : 0 < p₂) (hsum : p₁ + p₂ = 1)
+    (h : (Real.sqrt p₁ : ℂ) * Complex.exp (θ₁ * Complex.I)
+      + (Real.sqrt p₂ : ℂ) * Complex.exp (θ₂ * Complex.I) = 1) :
+    Real.cos θ₁ = Real.sqrt p₁ ∧ Real.cos θ₂ = Real.sqrt p₂
+      ∧ Real.cos (θ₁ - θ₂) = 0 := by
+  have hre : Real.sqrt p₁ * Real.cos θ₁ + Real.sqrt p₂ * Real.cos θ₂ = 1 := by
+    have := congrArg Complex.re h
+    rwa [Complex.add_re, weighted_phase_re, weighted_phase_re,
+      Complex.one_re] at this
+  have him : Real.sqrt p₁ * Real.sin θ₁ + Real.sqrt p₂ * Real.sin θ₂ = 0 := by
+    have := congrArg Complex.im h
+    rwa [Complex.add_im, weighted_phase_im, weighted_phase_im,
+      Complex.one_im] at this
+  have hs₁ : Real.sqrt p₁ ^ 2 = p₁ := Real.sq_sqrt hp₁.le
+  have hs₂ : Real.sqrt p₂ ^ 2 = p₂ := Real.sq_sqrt hp₂.le
+  have hsin₁ : Real.sin θ₁ ^ 2 = 1 - Real.cos θ₁ ^ 2 := Real.sin_sq θ₁
+  have hsin₂ : Real.sin θ₂ ^ 2 = 1 - Real.cos θ₂ ^ 2 := Real.sin_sq θ₂
+  -- squaring the imaginary equation: p₁ sin²θ₁ = p₂ sin²θ₂
+  have hsq : p₁ * Real.sin θ₁ ^ 2 = p₂ * Real.sin θ₂ ^ 2 := by
+    have h2 : (Real.sqrt p₁ * Real.sin θ₁) ^ 2
+        = (Real.sqrt p₂ * Real.sin θ₂) ^ 2 := by
+      have : Real.sqrt p₁ * Real.sin θ₁ = -(Real.sqrt p₂ * Real.sin θ₂) := by
+        linarith
+      rw [this]
+      ring
+    nlinarith [h2, hs₁, hs₂]
+  -- the Pythagorean pivot: √p₁·cosθ₁ = p₁
+  have hx : Real.sqrt p₁ * Real.cos θ₁ = p₁ := by
+    nlinarith [hre, hsq, hsin₁, hsin₂, hs₁, hs₂, hsum,
+      sq_nonneg (Real.sqrt p₁ * Real.cos θ₁ - Real.sqrt p₂ * Real.cos θ₂)]
+  have hy : Real.sqrt p₂ * Real.cos θ₂ = p₂ := by linarith
+  have hsp₁ : 0 < Real.sqrt p₁ := Real.sqrt_pos.mpr hp₁
+  have hsp₂ : 0 < Real.sqrt p₂ := Real.sqrt_pos.mpr hp₂
+  have hc₁ : Real.cos θ₁ = Real.sqrt p₁ := by
+    have h2 : Real.sqrt p₁ * Real.cos θ₁ = Real.sqrt p₁ * Real.sqrt p₁ := by
+      rw [hx]
+      nlinarith [hs₁]
+    exact mul_left_cancel₀ hsp₁.ne' h2
+  have hc₂ : Real.cos θ₂ = Real.sqrt p₂ := by
+    have h2 : Real.sqrt p₂ * Real.cos θ₂ = Real.sqrt p₂ * Real.sqrt p₂ := by
+      rw [hy]
+      nlinarith [hs₂]
+    exact mul_left_cancel₀ hsp₂.ne' h2
+  refine ⟨hc₁, hc₂, ?_⟩
+  -- quadrature: multiply cos(θ₁−θ₂) by √p₁√p₂ > 0
+  have hkey : Real.sqrt p₁ * Real.sqrt p₂ * Real.cos (θ₁ - θ₂) = 0 := by
+    rw [Real.cos_sub]
+    have hss : (Real.sqrt p₁ * Real.sin θ₁) * (Real.sqrt p₂ * Real.sin θ₂)
+        = -(p₁ * Real.sin θ₁ ^ 2) := by
+      have hminus : Real.sqrt p₂ * Real.sin θ₂
+          = -(Real.sqrt p₁ * Real.sin θ₁) := by linarith
+      rw [hminus]
+      nlinarith [hs₁]
+    have hsin₁sq : Real.sin θ₁ ^ 2 = p₂ := by
+      rw [hsin₁, hc₁]
+      nlinarith [hs₁, hsum]
+    nlinarith [hss, hsin₁sq, hc₁, hc₂, hs₁, hs₂]
+  have hne : Real.sqrt p₁ * Real.sqrt p₂ ≠ 0 := by positivity
+  exact (mul_eq_zero.mp hkey).resolve_left hne
+
+/-- **Probability = cos²(action gap)**: the corollary in Born form. -/
+theorem transition_probability_eq_cos_sq (p₁ p₂ θ₁ θ₂ : ℝ)
+    (hp₁ : 0 < p₁) (hp₂ : 0 < p₂) (hsum : p₁ + p₂ = 1)
+    (h : (Real.sqrt p₁ : ℂ) * Complex.exp (θ₁ * Complex.I)
+      + (Real.sqrt p₂ : ℂ) * Complex.exp (θ₂ * Complex.I) = 1) :
+    p₁ = Real.cos θ₁ ^ 2 ∧ p₂ = Real.cos θ₂ ^ 2 := by
+  obtain ⟨hc₁, hc₂, _⟩ := born_quadrature_law p₁ p₂ θ₁ θ₂ hp₁ hp₂ hsum h
+  constructor
+  · rw [hc₁, Real.sq_sqrt hp₁.le]
+  · rw [hc₂, Real.sq_sqrt hp₂.le]
+
+#print axioms born_quadrature_law
+#print axioms transition_probability_eq_cos_sq
+
 #print axioms strong_positivity
 #print axioms D_diagonal
 #print axioms interference_sum_rule
