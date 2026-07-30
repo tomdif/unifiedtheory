@@ -1,180 +1,193 @@
-# Probability-from-action is incompatible with classical sequential-growth covariance
+# The Benincasa–Dowker action is not a function of the growth signature: a two-gate no-go for probability-from-action
 
-**Draft 2026-07-30.**  Machine-checked artifacts:
+**Draft 2, 2026-07-30.**  Machine-checked artifacts:
 `UnifiedTheory/Audit/KFCausalQuantumMeasure.lean`,
 `UnifiedTheory/Audit/KFCausalSetActionNeutralExtension.lean` (Lean 4 +
-Mathlib, axiom-clean); mechanical verification `vr_era_gate.py`,
-`neutral_extension_n6.py`.
+Mathlib, axiom-clean, 14 theorems); mechanical verification
+`vr_era_gate.py`, `quantum_gate_b9.py`, `era_boundary_sweep.py`,
+`resonant_exit_pricing.py`, `neutral_extension_n6.py`.
 
 ## Abstract
 
-We consider the ansatz that assigns each causal-set growth history the
-amplitude √P·e^{iS/ℏ}, with S the discrete Benincasa–Dowker (BD) action,
-and ask whether the induced transition law p = cos²(ΔS/ℏ) — forced at
-binary nodes by the consistency sum rule — can coexist with the classical
-sequential-growth axioms of Rideout–Sorkin in the Varadarajan–Rideout (VR)
-completion that admits vanishing transition probabilities.  The answer is
-no, in a strong form: the intersection contains no stochastic dynamics at
-all.  Every surviving dynamics is a single deterministic history, and every
-survivor is a broom or a decorated broom — an unbounded antichain of covers
-over a point — so the intersection contains no manifoldlike dynamics
-either.  The no-go has two independent teeth: no interference, and no
-geometry.  The mechanism is integer arithmetic of the 4D BD weights
-(1, −9, 16, −8): a zero-gap child always exists (every finite causet
-admits an action-neutral extension — cover a minimal element), forcing
-laziness inside every VR era; era exits are doubly pinned by gap pairs
-whose gcd always divides 9, so the phase is confined to odd roots of
-unity, where a parity obstruction (4kΔ = b(1+2j), even = odd) forbids
-branching.  The key steps are formalized in Lean 4.  The result sharpens,
-rather than kills, the probability-from-action program: it proves the
-covariance condition must be imposed at the level of the quantum measure
-(decoherence functional), and it computes the exact phase windows
-(ℏ = 9σ/2πk) any such quantum extension must use.
+The transition amplitude of a covariant, Bell-causal sequential-growth
+dynamics for causal sets — classical (Rideout–Sorkin/Varadarajan–Rideout)
+or complex — depends on a birth's precursor set only through its
+*signature*: cardinality and number of maximal elements.  The discrete
+Benincasa–Dowker (BD) action does not: from three-element pasts on, the
+action distinguishes precursor posets the signature cannot (the 3-chain
+and Λ precursors share signature (3,1) but their births carry gaps 1 and
+26, incongruent mod 9 — machine-checked).  **The BD action is not a
+function of the growth signature.**  We show this single arithmetic fact
+closes both gates on the ansatz A = √P·e^{iS_BD/ℏ}, which links
+probability to action via p = cos²(ΔS/ℏ) at binary nodes.  Classically,
+the intersection with the Varadarajan–Rideout classification contains
+only deterministic single histories, all of broom class — no
+stochasticity, no manifoldlike geometry.  Quantum-mechanically, at the
+phase windows ℏ = 9σ/2πk the classical gate forces, interference does
+exactly what a quantum escape requires — at depth 2 it reopens the
+transition the classical gate closed — and the structure it thereby
+creates kills it at depth 3; to the checked depth only the quantum broom
+and a phase-free real remnant survive, and an exhaustive sweep of era
+seeds shows the death is seed-stable.  The quantum kill uses only the sum
+rule, signature-factoring, and the ansatz — grade-2 additivity, strong
+positivity, and the measure-extension problem are never needed.  Every
+load-bearing integer is certified in Lean 4.  The constructive residue is
+a sharp open problem: whether covariance in the quantum-measure sense
+forces signature-factoring at all — the one door this no-go leaves open,
+and the only place a Born-from-growth dynamics can still live.
 
 ## 1. Setup
 
 Sequential growth builds a causal set one element at a time; a dynamics
-assigns transition probabilities on the poset of finite causets.
-Rideout–Sorkin (RS) classified the generic dynamics obeying discrete
-general covariance and Bell causality; Varadarajan–Rideout (VR) removed
-the non-vanishing assumption and showed the general solution is a "tower
-of turtles": RS eras with fresh couplings (t₀ = 1, t_k ≥ 0), separated by
-imposed timid moments (q_n = 0: every real parent takes the child born
-above its entirety, with probability 1), each seeding growth confined to
-the future of its seed.
+assigns transition data on the poset of finite causets.  Rideout–Sorkin
+(RS) proved that discrete general covariance and Bell causality force the
+transition probability of a birth to depend only on the precursor
+signature (ϖ, m), giving the coupling family λ(ϖ,m; t)/λ(n,0; t);
+Varadarajan–Rideout (VR) extended the classification to vanishing
+probabilities ("tower of turtles": RS eras separated by imposed timid
+moments, each seeding growth confined above its seed).
 
-Separately, we take the quantum-measure ansatz A(γ) = √P(γ)·e^{iS_BD(γ)/ℏ}
-on growth histories, with the decoherence functional D = A·Ā.  Strong
-positivity is automatic (Gram form), the diagonal is the classical
-measure, and the grade-2 sum rule holds.  Consistency of the amplitude
-normalization at a node with children of integer action gaps g_c (in units
-of σ = 4/√6; the 4D BD gaps are integers) reads
-
-    Σ_c √p_c e^{i g_c φ} = 1,   Σ_c p_c = 1,   φ = σ/ℏ.
-
-At a two-child node with both probabilities positive this forces the
-quadrature law [Lean: born_quadrature_law]: cos θ_c = √p_c and
-θ₁ − θ₂ ≡ π/2 (mod π), i.e. **p = cos²(ΔS/ℏ)** — probability from action.
-We emphasize the honest reading: |A|² = p is an input of the ansatz; what
-is derived is the *link* between probabilities and action gaps.  The
-question of this paper: does this link survive contact with classical
+The ansatz under test assigns growth histories the amplitude
+A(γ) = √P(γ)·e^{iS_BD(γ)/ℏ}, decoherence functional D = A·Ā.  Strong
+positivity is automatic; the diagonal is the classical measure; the
+grade-2 sum rule holds.  Consistency of amplitude normalization at a node
+with children of integer action gaps g_c (units σ = 4/√6) reads
+Σ_c √p_c·e^{ig_cφ} = 1 with φ = σ/ℏ, and at a genuinely two-branch node
+forces the quadrature law p = cos²(ΔS/ℏ) [Lean: born_quadrature_law] —
+probability from action.  Honest reading: |A|² = p is an input; the
+derived content is the *link*.  The question: does the link survive
 covariance?
 
-## 2. Two structural theorems
+## 2. Structural theorems
 
-**Theorem 1 (action-neutral extension; Lean: actionUnits_coverExtension,
-exists_action_neutral_extension).**  Every finite nonempty causet admits a
-one-element extension of identical BD action: birth an event whose past is
-exactly one minimal element.  The only new interval is a 2-interval and
-ΔS = σ(1 − W(0)) = 0.
-*Verified mechanically for all 405 causets with n ≤ 6; from n = 5 the
-minimal cover is not the unique neutral extension (4 others at n = 5, 67
-at n = 6).  The census c(n) of distinct unlabeled action-neutral children
-summed over n-element causets is 1, 2, 6, 22, 105, 634 — a sequence with
-no OEIS match (the super-Catalan numbers 1, 2, 6, 22, 90, 394 depart at
-n = 5), a candidate new OEIS entry.*  Iterating the cover of one point
-produces the **broom** — a maximally non-manifoldlike causet.
+**Theorem 1 (action-neutral extension) [Lean].**  Every finite nonempty
+causet admits a one-element extension of identical BD action: cover a
+minimal element (past = {x}; the only new interval is a 2-interval;
+ΔS = σ(1 − W(0)) = 0).  Verified against enumeration on all 405 causets
+with n ≤ 6; the census of distinct neutral children, 1, 2, 6, 22, 105,
+634, has no OEIS match (super-Catalan departs at n = 5) — a candidate new
+entry.  Iterating the cover produces the **broom**, a maximally
+non-manifoldlike causet.
 
-**Theorem 2 (root determinism; Lean: root_step_deterministic).**  For
-every φ with cos φ ≠ 1, consistency at the root (gaps 0, 1) forces
-p(2-antichain) = 0.  Since RS eras with finite couplings have all
-gregarious probabilities positive, era 1 must end at stage 1 with a VR
-timid moment: **every real causet acquires a minimum element** — a
-combinatorial Big-Bang atom.  (φ ∈ 2πℤ carries no phase information and is
-excluded by fiat.)
+**Theorem 2 (root determinism) [Lean].**  For every φ with cos φ ≠ 1,
+consistency at the root forces p(2-antichain) = 0; era 1 must end at
+stage 1 and every real causet acquires a minimum element.
 
-## 3. The gate
+**Theorem 3 (gap locality) [MECH].**  The BD gap of a birth depends only
+on its precursor poset.  Hence the collision table:
 
-Within an era with seed C, define the invariant I(j): the reachable
-relative causet at stage j is the j-antichain over C, with couplings
-s₁ = … = s_{j−1} = 0.  I(1) is structural (the first era birth is forced).
-Given I(j), all intermediate children are virtual — a proper nonempty
-subset of an antichain is an antichain of maximal elements [Lean:
-antichain_subset_all_maximal], so its weight is the already-killed
-coupling s_{|D|} — leaving exactly two non-virtual children: gregarious
-(weight 1) and timid (weight s_j).  The consistency condition then kills
-s_j > 0:
+    sig (1,1): {0}        (2,1): {2}        (2,2): {1}       [mod 9]
+    sig (3,1): {1, 8}     (3,2): {0, 7}     (3,3): {6}
+    sig (4,1): {0,1,2,4,8}  (4,2): {0,1,3,7,8}  (4,3): {0,6,7}  (4,4): {6}
 
-- in era 2 the gregarious gap is 0 (Theorem 1: the relative-gregarious
-  birth covers the seed minimum), and a gap pair containing 0 is
-  degenerate for every φ [Lean: two_support_zero_gap_deterministic];
-- in later eras the phase is already pinned (below) to φ = 2πk/b with
-  b ∈ {3, 9} odd, and any two distinct integer gaps are degenerate there:
-  quadrature demands 4kΔ = b(1+2j), even = odd [Lean:
-  two_support_pinned_odd_deterministic, quadrature_parity_obstruction].
+The (3,1) entry — 4-chain precursor gap 1 vs diamond precursor gap 26,
+same signature, 25 ≢ 0 mod 9 — is certified in Lean
+(collision_signatures_agree, collision_gap_chain, collision_gap_diamond,
+collision_forces_closure).
 
-So each era is a broom over its seed, and the only events are era exits:
-a timid moment at height m needs g_m·φ ≡ 0 (2π), and the next era's first
-birth is forced with gap h_m, needing h_m·φ ≡ 0 (2π).  Closed forms
-(verified mechanically to m = 12, elementary beyond):
+## 3. The classical gate
 
-    g_m = 9, −17, 6, 1−m (m ≥ 4);    h_m = −7, 26, 9m (m ≥ 3),
+Within a VR era the invariant I(j) (reachable relative causet = the
+j-antichain; earlier couplings dead) holds inductively: intermediate
+children carry the single already-killed coupling
+[antichain_subset_all_maximal], and the two-child node arithmetic is
+degenerate for every gap pair — era 2 by the zero gregarious gap
+[two_support_zero_gap_deterministic], later eras by parity at the pinned
+odd phases [two_support_pinned_odd_deterministic,
+quadrature_parity_obstruction].  Degeneracy has a direction: the
+gregarious weight is identically s₀ = 1, so the surviving singleton is
+gregarious [singleton_support_is_gregarious]; probability-1 timid steps
+are era ends, priced by the double sieve (g_m, h_m) with
+gcd(m−1, 9m) ∣ 9, whence φ = 2πk/b, b ∈ {3, 9}.  The chain tower dies by
+gcd(9,7) = 1 [chain_tower_incommensurable]; rapid exits die in all
+checked branches and the exit gaps are seed-independent from height 3 on,
+so the sieve repeats in every era.
 
-whence gcd(|g_m|, |h_m|) = gcd(m−1, 9) ∣ 9.  The pure chain tower (m = 1)
-dies by gcd(9, 7) = 1 [Lean: chain_tower_incommensurable]; m = 2 by
-gcd(17, 26) = 1; survivors have m ≡ 1 (mod 3) or m ∈ {3, 4}, with b = 9
-first available at broom height 10 (n = 12).  The multi-support solutions
-that do exist at b = 9 (e.g. supports {0, 1, 8} mod 9) require ≥ 3
-non-virtual children and are never reachable.
+**Classical verdict.**  Only deterministic single histories survive:
+the eternal broom (φ free) and stacks of brooms of height ≥ 3 joined by
+single caps (φ = 2πk/3 or 2πk/9).  p = cos²(ΔS/ℏ) never lands in (0,1);
+nothing manifoldlike survives.  Two independent teeth: no interference,
+no geometry.
 
-## 4. The no-go
+## 4. The quantum gate at the forced windows
 
-**Theorem 3.**  The intersection of the consistency condition for
-A = √P·e^{iS_BD/ℏ} with the VR classification of covariant, Bell-causal
-sequential growth contains only deterministic single histories: the
-eternal broom (φ free) and hierarchical broom towers with 3-sieved era
-exits (φ = 2πk/3 or 2πk/9).  In particular p = cos²(ΔS/ℏ) never takes a
-value in (0, 1) on any reachable transition.
+At the b = 9 windows the classical verdict leaves, we test the complex
+completion: amplitudes a = ρ·e^{igφ}, ρ ≥ 0, against complex-RS
+(signature-factored) dynamics.  The sum rule Σa_c = 1 is the RS binomial
+identity — automatic; the path phase telescopes to the endpoint action,
+so amplitude path-independence holds by construction.  Two of our own
+theorems make the gate finite: gap locality (constraints act per
+signature) and the zero gregarious gap (all reachable denominators are
+forced real positive).  Interference contributes the one genuinely
+quantum move: closing a transition class by cancellation (λ = 0).  The
+gate is a search over zero-patterns with a linear feasibility problem
+each (1024 patterns × 4 windows) [quantum_gate_b9.py].
 
-One seam deserves explicit closure: the kill lemmas prove singleton
-support, not which singleton, and at resonance (Gφ ∈ 2πℤ) the degenerate
-solution on the nonzero-gap child exists.  In-era this direction is
-unavailable — the gregarious weight is identically s₀ = 1, so
-p_greg > 0 for every finite coupling and the surviving singleton must be
-the gregarious child [Lean: singleton_support_is_gregarious]; a
-probability-1 timid step is definitionally a VR era end.  The resonant
-solutions are therefore exactly the era exits, priced by the sieve — and
-the pricing has been pushed one era deeper mechanically: in all four
-first survivor branches the seed-dependent rapid exits (relative heights
-j ≤ 2) are dead, while for j ≥ 3 the exit gap pair is seed-independent
-(W annihilates the seed contribution once a_c + j ≥ 4; every reachable
-seed has a unique maximal element), so the era-2 sieve repeats verbatim
-in every era.
+**The escape route fires, and fails.**  This is the sharpest finding of
+the arc, and it is not a search coming up empty.  At depth 2 the quantum
+theory does exactly what a Born-from-growth rescue requires: with s₁
+free, interference reopens the 3-chain transition the classical gate had
+closed.  At depth 3, the relative 2-chain which that reopening created
+imposes the (2,1) constraint — signature class 2 against s₁'s forced real
+phase — and kills it.  The theory was caught trying the escape route and
+failing one level down.  Above depth 3 the collision table forces the
+(3,·)/(4,·) closures, and denominator reality annihilates every coupling
+with a non-real forced phase.
 
-The two teeth are then: **(i)** no survivor branches — airtight,
-universal in the gaps; **(ii)** every survivor is a stack of brooms of
-height ≥ 3 joined by single caps — established for all checked branches,
-with the sole uncharted residue being seed-dependent rapid exits at eras
-beyond the four checked, none of which could branch in any case.  Even
-granting the deterministic sector, classical covariance leaves the ansatz
-no manifoldlike dynamics.  The integers doing the killing — the 9s, 7s,
-17s — are the 4D BD weights (1, −9, 16, −8) speaking.
+**Results.**  k = 1, 2, 4 (and conjugates): only the quantum broom.
+k = 3: a remnant with s₃, s₄ ≥ 0 — but every live amplitude is real
+positive, with no relative phase anywhere: a classical stochastic process
+wearing notation.  Its survival confirms rather than qualifies the
+verdict.  An exhaustive sweep over all unique-maximum era seeds |C| ≤ 5
+[era_boundary_sweep.py] shows the death is seed-stable: at every b = 9
+window, every entry-admissible seed (9 ∣ h(C)) is broom-only; at k = 3
+every admissible seed carries only the real remnant.  The era-boundary
+caveat is closed to the checked scope.
 
-## 5. Discussion: the quantum gate
+**Fewer axioms than pre-registered.**  The kill used only: the sum rule,
+signature-factoring, and the ansatz phases.  Grade-2 additivity, strong
+positivity, and the extension to the covariant σ-algebra — the
+pre-registered heavy machinery — were never invoked.  A no-go that never
+needs its strongest assumptions is a stronger no-go.
 
-The result does not touch probability-from-action itself; it proves the
-link cannot be married to *classical* growth covariance.  The natural
-continuation imposes covariance on the decoherence functional (quantum
-sequential growth).  There the ansatz must be restated before computing:
-there is no classical p to match — only amplitudes, the grade-2 sum rule,
-and covariance in the Surya–Zalel sense (extension of the quantum measure
-to the covariant σ-algebra, which is exactly where the known pathologies
-live).  Probability-from-action becomes the statement that on decohering
-stem events the diagonal of D equals cos² of the action gaps, with the
-b = 9 windows ℏ = 9σ/2πk as the forced carrier — and whether that is a
-constraint imposed or a consequence derived from grade-2 + covariance +
-strong positivity is precisely the input/output distinction separating
-conditional structure from a derived Born rule.  The committed quantum
-measure already satisfies strong positivity and I₃ = 0; the extension
-criteria are measure theory with Mathlib substrate.  The classical no-go
-also hands the quantum gate a sharp null hypothesis: a quantum extension
-that decoheres onto anything other than broom geometry must exploit
-interference to reopen transitions the classical gate closed — a concrete
-mechanism to look for, whose absence would be a much stronger no-go than
-the present one: not "this ansatz has no classical realization" but "even
-quantum-mechanically, probability-from-action grows no spacetime."  Both
-papers are worth having; only one of them can be true.  That gate has
-never been run mechanically.  It is next.
+## 5. The boundary of the claim, and the open problem
+
+Signature-factoring — couplings depending only on (ϖ, m) — is not an
+axiom of quantum growth.  Classically it is a *theorem*: the output of
+discrete general covariance plus Bell causality in the RS derivation.  No
+quantum analogue of that theorem exists.  Amplitude path-independence
+holds here by construction (the phase is a coboundary of the action), but
+covariance in the quantum-measure sense — extension of the decoherence
+functional to the covariant σ-algebra (Surya–Zalel) — is a logically
+independent condition, and nothing yet shows it forces factoring.
+
+The honest scope of the quantum verdict is therefore: **no dynamics whose
+couplings factor through the RS signature can carry
+probability-from-action, to the checked depth.**  Read constructively,
+the collision table proves that any surviving Born-from-growth dynamics
+must have precursor-poset-dependent couplings — it must break the
+classical sufficient statistic, which classical Bell causality forbids
+and quantum theory has not been shown to.  We pose as the paper's open
+problem:
+
+> **Does quantum-measure covariance (Surya–Zalel extension) together with
+> strong positivity force transition amplitudes to factor through the
+> precursor signature?**
+
+If yes, the no-go is unconditional.  If no, the non-factoring window is
+the only place a Born-from-growth dynamics can live, and the collision
+table says exactly which precursor pairs its couplings must split.
+
+## 6. Conclusion
+
+The mechanism sentence of both gates: the Benincasa–Dowker action
+distinguishes precursor posets that covariance and Bell causality cannot.
+The 9s, 7s, 17s, and 25s doing the killing are the 4D BD weights
+(1, −9, 16, −8) speaking — to probabilities and to amplitudes alike.
+This is not the derivation of the Born rule; it is the decisive negative
+that tells the field where such a derivation cannot live, with every
+load-bearing integer machine-checked, and a well-posed question marking
+the one door left open.
 
 ## Status ledger
 
@@ -182,11 +195,15 @@ never been run mechanically.  It is next.
 exists_action_neutral_extension; root_step_deterministic;
 two_support_zero_gap_deterministic; two_support_pinned_odd_deterministic;
 quadrature_parity_obstruction; chain_tower_incommensurable;
-antichain_subset_all_maximal — all axiom-clean.
-[MECH] gap closed forms (m ≤ 12); survivor table; two-child enumeration
-(j ≤ 4); root-of-unity solution sets (b = 3, 6, 8, 9); neutral-extension
-census (n ≤ 6, OEIS-novel); era-3 exit pricing for the four first
-survivor branches (rapid exits dead; j ≥ 3 gaps seed-independent).
-[LIT] VR classification (gr-qc/0504066); RS dynamics (gr-qc/9904062).
-[PHYS] the ansatz itself, and the identification of consistency with the
-physical normalization of the growth amplitude.
+antichain_subset_all_maximal; singleton_support_is_gregarious;
+collision_signatures_agree; collision_gap_chain; collision_gap_diamond;
+collision_forces_closure — all axiom-clean (propext, Classical.choice,
+Quot.sound).
+[MECH] gap locality (all hosts r ≤ 4); collision table (ϖ ≤ 4); classical
+gate closed forms and survivor sieve (m ≤ 12; era-3 pricing, 4 branches);
+quantum gate (1024 patterns × 4 windows, depth 5); era-boundary sweep
+(25 seeds, depth 3); neutral-extension census (n ≤ 6, OEIS-novel).
+[LIT] RS (gr-qc/9904062); VR (gr-qc/0504066); Surya–Zalel covariance
+criterion.
+[PHYS] the ansatz; consistency = amplitude normalization; quantum era
+boundaries as amplitude analogs of VR timid moments.

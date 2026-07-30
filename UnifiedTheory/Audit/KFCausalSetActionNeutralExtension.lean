@@ -514,4 +514,96 @@ theorem singleton_support_is_gregarious (pg pt : ℝ) (hpg : 0 < pg)
 #print axioms antichain_subset_all_maximal
 #print axioms singleton_support_is_gregarious
 
+/-! ## 8. The collision integers (the load-bearing arithmetic of both gates)
+
+The Rideout–Sorkin transition signature records only (cardinality,
+number of maximal elements) of the birth's precursor set; the BD action
+sees its full interval structure.  The first disagreement is at
+three-element pasts: the 3-chain and the Λ poset both have signature
+(3, 1), but the births over their closures (the 4-chain and the diamond)
+have gaps 1 and 26 — incongruent mod 9.  Any dynamics whose couplings
+factor through the signature therefore cannot carry the phases e^{i g φ}
+at φ = 2πk/9 (9 ∤ k) on both transitions: the shared amplitude must
+vanish.  This is the mechanism of both the classical and the quantum
+gate, certified here on the concrete posets. -/
+
+/-- The `n`-chain as a causal order. -/
+def chainPoset (n : ℕ) : CardinalCausalOrder n where
+  rel i j := decide (i ≤ j)
+  refl i := by simp
+  antisymm i j hij hji := by
+    rw [decide_eq_true_eq] at hij hji
+    exact le_antisymm hij hji
+  trans i j k hij hjk := by
+    rw [decide_eq_true_eq] at hij hjk
+    exact decide_eq_true (le_trans hij hjk)
+
+/-- The diamond `0 < {1,2} < 3` — the closure of the Λ precursor. -/
+def diamond4 : CardinalCausalOrder 4 where
+  rel i j := i == j || i == 0 || j == 3
+  refl := by decide +kernel
+  antisymm := by decide +kernel
+  trans := by decide +kernel
+
+/-- The topped diamond: the diamond with a fifth event born above all. -/
+def diamondTop5 : CardinalCausalOrder 5 where
+  rel i j := i == j || i == 0 || j == 4 || (j == 3 && (i == 1 || i == 2))
+  refl := by decide +kernel
+  antisymm := by decide +kernel
+  trans := by decide +kernel
+
+/-- The Λ poset `{0, 1} < 2` — the second (3,1) precursor. -/
+def lambda3 : CardinalCausalOrder 3 where
+  rel i j := i == j || j == 2
+  refl := by decide +kernel
+  antisymm := by decide +kernel
+  trans := by decide +kernel
+
+/-- Number of maximal elements. -/
+def maxCount {n : ℕ} (P : CardinalCausalOrder n) : ℕ :=
+  (Finset.univ.filter fun i => ∀ j, P.rel i j = true → j = i).card
+
+/-- Both (3,1) precursors really have the same RS signature: three
+elements, one maximal. -/
+theorem collision_signatures_agree :
+    maxCount (chainPoset 3) = 1 ∧ maxCount lambda3 = 1 := by
+  decide +kernel
+
+/-- Birth over the 4-chain precursor: gap 1. -/
+theorem collision_gap_chain :
+    actionUnits (chainPoset 5) - actionUnits (chainPoset 4) = 1 := by
+  decide +kernel
+
+/-- Birth over the diamond precursor: gap 26. -/
+theorem collision_gap_diamond :
+    actionUnits diamondTop5 - actionUnits diamond4 = 26 := by
+  decide +kernel
+
+/-- **The collision forces closure.**  At every b = 9 window (9 ∤ k) the
+two gaps demand phases differing by `25φ ∉ 2πℤ`; a shared
+signature-factored amplitude cannot carry both, so it must vanish.
+gcd(25, 9) = 1 is the whole proof. -/
+theorem collision_forces_closure (k : ℤ) (hk : ¬ (9 : ℤ) ∣ k) :
+    ¬ ∃ m : ℤ, (26 - 1 : ℤ) * (2 * Real.pi * k / 9) = 2 * Real.pi * m := by
+  rintro ⟨m, hm⟩
+  have h25 : (25 : ℤ) * k = 9 * m := by
+    have h9 : ((25 : ℤ) * k : ℝ) * (2 * Real.pi) = ((9 : ℤ) * m : ℝ)
+        * (2 * Real.pi) := by
+      have h2 : ((26 - 1 : ℤ) : ℝ) * (2 * Real.pi * k / 9) * 9
+          = (2 * Real.pi * m) * 9 := by rw [hm]
+      push_cast at h2 ⊢
+      field_simp at h2
+      nlinarith [h2]
+    have := mul_right_cancel₀
+      (by positivity : (2 * Real.pi : ℝ) ≠ 0) h9
+    exact_mod_cast this
+  have hdvd : (9 : ℤ) ∣ 25 * k := ⟨m, h25⟩
+  have hcop : IsCoprime (9 : ℤ) 25 := ⟨-11, 4, by norm_num⟩
+  exact hk (hcop.dvd_of_dvd_mul_left hdvd)
+
+#print axioms collision_signatures_agree
+#print axioms collision_gap_chain
+#print axioms collision_gap_diamond
+#print axioms collision_forces_closure
+
 end UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
