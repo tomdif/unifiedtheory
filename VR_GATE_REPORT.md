@@ -112,6 +112,31 @@ subsets D:
 The ≥3-support solutions that exist at b = 9 never apply: they need ≥3
 non-virtual children, and the invariant caps reachable nodes at two.
 
+**The direction seam (resonant wrong-way determinism), resolved.**  The
+kill lemmas prove singleton support, not which singleton: at resonance
+(G·φ ∈ 2πℤ) the consistency equation also admits p = 1 on the nonzero-gap
+child.  Resolution: (a) IN-ERA this is impossible — the gregarious weight
+is identically s₀ = 1, so p_greg = 1/(1+s_j) > 0 for every finite
+coupling, and singleton support with p_greg > 0 must be the gregarious
+child (`singleton_support_is_gregarious` [LEAN]; the weight positivity is
+RS-form [LIT]).  A probability-1 timid step is definitionally a VR era
+end.  So the resonant solutions ARE the era exits, and the (g, h) sieve is
+exactly the resonance condition — option (a) of the dichotomy holds
+always, and I(j)'s coupling-forcing needs no re-check.  (b) The era exits
+are then priced mechanically one level deeper (`resonant_exit_pricing.py`):
+for all four first survivor branches (era-2 heights m = 3, 4, 7 at b = 3;
+m = 10 at b = 9), the seed-dependent rapid exits (relative heights
+j = 1, 2) are DEAD, and for j ≥ 3 the exit gap pair is SEED-INDEPENDENT —
+identical to the era-2 closed forms (6,27), (−3,36), (−4,45), … — because
+W kills every seed contribution once a_c + j ≥ 4 and every reachable seed
+has a unique maximal element (each seed is a previous causet plus its
+cap).  Hence the era-2 sieve repeats verbatim in every era at heights
+≥ 3: exits alive at m ∈ {3} ∪ {m ≡ 1 mod 3} (b = 3), m ≡ 1 mod 9
+(b = 9).  Every checked survivor is a stack of brooms of height ≥ 3
+joined by single caps — no chain-like tails.  Unchecked residue: rapid
+exits (j ≤ 2, seed-dependent gaps) at eras beyond the four checked
+branches.
+
 **Per-step status.**  Node arithmetic: [LEAN] (universal).  Antichain
 maximality: [LEAN].  Zero gregarious gap in era 2: [LEAN].  Weight formula
 λ(d,d) = s_d and the era framework (VR classification, forced first birth,

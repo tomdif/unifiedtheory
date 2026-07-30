@@ -69,8 +69,11 @@ exactly one minimal element.  The only new interval is a 2-interval and
 ΔS = σ(1 − W(0)) = 0.
 *Verified mechanically for all 405 causets with n ≤ 6; from n = 5 the
 minimal cover is not the unique neutral extension (4 others at n = 5, 67
-at n = 6).*  Iterating the cover of one point produces the **broom** — a
-maximally non-manifoldlike causet.
+at n = 6).  The census c(n) of distinct unlabeled action-neutral children
+summed over n-element causets is 1, 2, 6, 22, 105, 634 — a sequence with
+no OEIS match (the super-Catalan numbers 1, 2, 6, 22, 90, 394 depart at
+n = 5), a candidate new OEIS entry.*  Iterating the cover of one point
+produces the **broom** — a maximally non-manifoldlike causet.
 
 **Theorem 2 (root determinism; Lean: root_step_deterministic).**  For
 every φ with cos φ ≠ 1, consistency at the root (gaps 0, 1) forces
@@ -121,14 +124,31 @@ A = √P·e^{iS_BD/ℏ} with the VR classification of covariant, Bell-causal
 sequential growth contains only deterministic single histories: the
 eternal broom (φ free) and hierarchical broom towers with 3-sieved era
 exits (φ = 2πk/3 or 2πk/9).  In particular p = cos²(ΔS/ℏ) never takes a
-value in (0, 1) on any reachable transition, and no survivor is
-manifoldlike.
+value in (0, 1) on any reachable transition.
 
-The two teeth are independent: even granting the deterministic sector,
-every survivor is a broom or decorated broom — an unbounded antichain of
-covers — so classical covariance leaves the ansatz no physical dynamics at
-all.  The integers doing the killing — the 9s, 7s, 17s — are the 4D BD
-weights (1, −9, 16, −8) speaking.
+One seam deserves explicit closure: the kill lemmas prove singleton
+support, not which singleton, and at resonance (Gφ ∈ 2πℤ) the degenerate
+solution on the nonzero-gap child exists.  In-era this direction is
+unavailable — the gregarious weight is identically s₀ = 1, so
+p_greg > 0 for every finite coupling and the surviving singleton must be
+the gregarious child [Lean: singleton_support_is_gregarious]; a
+probability-1 timid step is definitionally a VR era end.  The resonant
+solutions are therefore exactly the era exits, priced by the sieve — and
+the pricing has been pushed one era deeper mechanically: in all four
+first survivor branches the seed-dependent rapid exits (relative heights
+j ≤ 2) are dead, while for j ≥ 3 the exit gap pair is seed-independent
+(W annihilates the seed contribution once a_c + j ≥ 4; every reachable
+seed has a unique maximal element), so the era-2 sieve repeats verbatim
+in every era.
+
+The two teeth are then: **(i)** no survivor branches — airtight,
+universal in the gaps; **(ii)** every survivor is a stack of brooms of
+height ≥ 3 joined by single caps — established for all checked branches,
+with the sole uncharted residue being seed-dependent rapid exits at eras
+beyond the four checked, none of which could branch in any case.  Even
+granting the deterministic sector, classical covariance leaves the ansatz
+no manifoldlike dynamics.  The integers doing the killing — the 9s, 7s,
+17s — are the 4D BD weights (1, −9, 16, −8) speaking.
 
 ## 5. Discussion: the quantum gate
 
@@ -146,8 +166,15 @@ constraint imposed or a consequence derived from grade-2 + covariance +
 strong positivity is precisely the input/output distinction separating
 conditional structure from a derived Born rule.  The committed quantum
 measure already satisfies strong positivity and I₃ = 0; the extension
-criteria are measure theory with Mathlib substrate.  That gate has never
-been run mechanically.  It is next.
+criteria are measure theory with Mathlib substrate.  The classical no-go
+also hands the quantum gate a sharp null hypothesis: a quantum extension
+that decoheres onto anything other than broom geometry must exploit
+interference to reopen transitions the classical gate closed — a concrete
+mechanism to look for, whose absence would be a much stronger no-go than
+the present one: not "this ansatz has no classical realization" but "even
+quantum-mechanically, probability-from-action grows no spacetime."  Both
+papers are worth having; only one of them can be true.  That gate has
+never been run mechanically.  It is next.
 
 ## Status ledger
 
@@ -158,7 +185,8 @@ quadrature_parity_obstruction; chain_tower_incommensurable;
 antichain_subset_all_maximal — all axiom-clean.
 [MECH] gap closed forms (m ≤ 12); survivor table; two-child enumeration
 (j ≤ 4); root-of-unity solution sets (b = 3, 6, 8, 9); neutral-extension
-census (n ≤ 6).
+census (n ≤ 6, OEIS-novel); era-3 exit pricing for the four first
+survivor branches (rapid exits dead; j ≥ 3 gaps seed-independent).
 [LIT] VR classification (gr-qc/0504066); RS dynamics (gr-qc/9904062).
 [PHYS] the ansatz itself, and the identification of consistency with the
 physical normalization of the growth amplitude.

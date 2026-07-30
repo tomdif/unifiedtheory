@@ -494,8 +494,24 @@ theorem antichain_subset_all_maximal {n : ℕ} (P : CardinalCausalOrder n)
   intro d _ e _ hrel
   exact h d e hrel
 
+/-- **Degeneracy has a direction.**  The kill lemmas produce a singleton
+support but do not by themselves say which child survives.  This closes
+that seam: the RS-form gregarious weight is identically `s₀ = 1`, so
+`p_greg = 1/(1+s_j) > 0` for every finite coupling — and a singleton
+support with `p_greg > 0` must BE the gregarious child.  A probability-1
+timid step is therefore never an in-era option: it is definitionally a
+Varadarajan–Rideout era end, and era ends are priced by the (g, h) sieve.
+The resonant "wrong-way" solutions the kill lemmas leave open are exactly
+the era exits — there is no third route. -/
+theorem singleton_support_is_gregarious (pg pt : ℝ) (hpg : 0 < pg)
+    (hsum : pg + pt = 1) (hdeg : pg = 0 ∨ pt = 0) : pg = 1 ∧ pt = 0 := by
+  rcases hdeg with h | h
+  · exact absurd h hpg.ne'
+  · exact ⟨by linarith, h⟩
+
 #print axioms two_support_zero_gap_deterministic
 #print axioms two_support_pinned_odd_deterministic
 #print axioms antichain_subset_all_maximal
+#print axioms singleton_support_is_gregarious
 
 end UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
