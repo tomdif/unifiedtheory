@@ -72,6 +72,55 @@ t₀ = 0 boundary and is superseded — the era-2 couplings are free.)
   they are never populated.  (b = 6 would branch with p = (1/9,4/9,4/9)
   and b = 8 with p = (1/2,1/2) — both arithmetically unreachable.)
 
+## 4b. The two-child induction, stated precisely (the load-bearing step)
+
+The quantifier is the **strong** one: *no consistency solution puts support
+on more than one child at any reachable node, for any admissible φ.*  It is
+NOT the weak claim "the lazy solution exists"; intermediate children are
+not assumed virtual — their virtuality is derived stage by stage, and the
+per-node arithmetic is universal over all integer gap pairs, so no
+unnoticed gap window can reopen the sector.
+
+**Invariant.**  For an era E with seed C and couplings s, at relative stage
+j ≥ 1:  I(j) := "the unique reachable relative causet is the j-antichain
+over C, and s₁ = … = s_{j−1} = 0."
+
+**Base I(1)** — structural, trivial: the empty relative causet has one
+downset (∅); the first era birth is forced.  (No coupling assumed zero.)
+
+**Step I(j) → I(j+1).**  Children of the j-antichain node are indexed by
+subsets D:
+  - proper nonempty D: an antichain with every element maximal
+    (`antichain_subset_all_maximal` [LEAN]), so weight λ(|D|,|D|) = s_{|D|}
+    = 0 by I(j) — virtual.  The coupling s_d was killed at stage d BEFORE
+    it could appear in any intermediate weight (at stage d there are no
+    intermediate children at all when d = 1, and inductively none later).
+  - gregarious (weight s₀ = 1 > 0): gap 0 in era 2
+    (`actionUnits_coverExtension` [LEAN] — the era-2 relative-gregarious
+    birth covers the seed minimum, past = {bottom}); gap h(C) in later
+    eras, with h(C)·φ ≡ 0 (2π) already imposed at era entry.
+  - timid (weight s_j): gap G_j.
+  Consistency at the two non-virtual children, p_greg = 1/(1+s_j) > 0:
+  - s_j > 0 (both positive) is killed for EVERY φ in era 2
+    (`two_support_zero_gap_deterministic` [LEAN]) and for every pinned
+    φ = 2πk/b, b ∈ {3,9} odd, in later eras
+    (`two_support_pinned_odd_deterministic` [LEAN], universal over g₁ ≠ g₂);
+  - s_j = 0 advances the invariant;
+  - an imposed era end (q_j = 0, VR timid moment) is deterministic and
+    requires G_j·φ ≡ 0 (2π) — the sieve.  ∎
+
+The ≥3-support solutions that exist at b = 9 never apply: they need ≥3
+non-virtual children, and the invariant caps reachable nodes at two.
+
+**Per-step status.**  Node arithmetic: [LEAN] (universal).  Antichain
+maximality: [LEAN].  Zero gregarious gap in era 2: [LEAN].  Weight formula
+λ(d,d) = s_d and the era framework (VR classification, forced first birth,
+exit double-pinning): [LIT] + [MECH].  Gap closed forms g_m, h_m: [MECH]
+m ≤ 12, elementary induction beyond.  gcd(m−1, 9m) = gcd(m−1, 9) ∣ 9:
+elementary.  Remaining [MECH]→[LEAN] candidates, none load-bearing alone:
+the closed forms and the era bookkeeping; the VR classification itself is
+[LIT] and would be a formalization program of its own.
+
 ## 5. Verdict  [PHYS]
 
 **The intersection of the Born-from-growth tower with classical covariance

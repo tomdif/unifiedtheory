@@ -42,12 +42,14 @@
 -/
 import Mathlib
 import UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+import UnifiedTheory.Audit.KFCausalQuantumMeasure
 
 set_option autoImplicit false
 
 namespace UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
 
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalQuantumMeasure
 
 /-! ## 1. The Benincasa–Dowker action on finite causal orders -/
 
@@ -401,5 +403,99 @@ theorem quadrature_parity_obstruction (b k d j : ℤ) (hb : Odd b) :
 #print axioms root_step_deterministic
 #print axioms chain_tower_incommensurable
 #print axioms quadrature_parity_obstruction
+
+/-! ## 7. The per-node determinism theorems (the [MECH] → [LEAN] promotion)
+
+The two-child induction of the gate has two ingredients per node.  This
+section proves the ARITHMETIC ingredient in universal form — quantified
+over ALL integer gap pairs, so no unnoticed gap window can reopen the
+stochastic sector — and the trivial combinatorial anchor that intermediate
+births from an antichain carry a single-coupling weight. -/
+
+/-- **Era-2 node kill (unpinned phase).**  Any consistency solution on a
+gap pair containing the zero gap is degenerate, for EVERY phase θ: the
+zero-gap amplitude has `cos 0 = 1 = √p₁`, so the partner probability
+vanishes.  This is the node arithmetic that turns era 2 into the broom. -/
+theorem two_support_zero_gap_deterministic (θ p₁ p₂ : ℝ)
+    (hp₁ : 0 ≤ p₁) (hp₂ : 0 ≤ p₂) (hsum : p₁ + p₂ = 1)
+    (hcons : (Real.sqrt p₁ : ℂ)
+      + (Real.sqrt p₂ : ℂ) * Complex.exp (θ * Complex.I) = 1) :
+    p₁ = 0 ∨ p₂ = 0 := by
+  by_contra hcon
+  push_neg at hcon
+  obtain ⟨h1, h2⟩ := hcon
+  have hp₁' : 0 < p₁ := lt_of_le_of_ne hp₁ (Ne.symm h1)
+  have hp₂' : 0 < p₂ := lt_of_le_of_ne hp₂ (Ne.symm h2)
+  have hzero : (Real.sqrt p₁ : ℂ)
+      * Complex.exp (((0:ℝ) : ℂ) * Complex.I) = (Real.sqrt p₁ : ℂ) := by
+    simp
+  have hcons' : (Real.sqrt p₁ : ℂ) * Complex.exp (((0:ℝ) : ℂ) * Complex.I)
+      + (Real.sqrt p₂ : ℂ) * Complex.exp (θ * Complex.I) = 1 := by
+    rw [hzero]
+    exact hcons
+  obtain ⟨hc₁, -, -⟩ :=
+    born_quadrature_law p₁ p₂ 0 θ hp₁' hp₂' hsum hcons'
+  rw [Real.cos_zero] at hc₁
+  have hp₁1 : p₁ = 1 := Real.sqrt_eq_one.mp hc₁.symm
+  linarith
+
+/-- **Pinned-phase node kill (all later eras), universal in the gaps.**
+At `φ = 2πk/b` with `b` odd, any consistency solution on ANY two distinct
+integer gaps is degenerate.  Proof: positivity of both branches forces
+quadrature (`born_quadrature_law`), quadrature forces
+`4k(g₁−g₂) = b(2n+1)`, and parity forbids it.  Together with the
+two-child structure of reachable in-era nodes this empties the
+stochastic sector of every surviving tower. -/
+theorem two_support_pinned_odd_deterministic
+    (b k g₁ g₂ : ℤ) (hb : Odd b) (hbne : b ≠ 0)
+    (p₁ p₂ : ℝ) (hp₁ : 0 ≤ p₁) (hp₂ : 0 ≤ p₂) (hsum : p₁ + p₂ = 1)
+    (φ : ℝ) (hφ : φ = 2 * Real.pi * k / b)
+    (hcons : (Real.sqrt p₁ : ℂ)
+        * Complex.exp (((g₁ : ℝ) * φ : ℝ) * Complex.I)
+      + (Real.sqrt p₂ : ℂ)
+        * Complex.exp (((g₂ : ℝ) * φ : ℝ) * Complex.I) = 1) :
+    p₁ = 0 ∨ p₂ = 0 := by
+  by_contra hcon
+  push_neg at hcon
+  obtain ⟨h1, h2⟩ := hcon
+  have hp₁' : 0 < p₁ := lt_of_le_of_ne hp₁ (Ne.symm h1)
+  have hp₂' : 0 < p₂ := lt_of_le_of_ne hp₂ (Ne.symm h2)
+  obtain ⟨-, -, hquad⟩ :=
+    born_quadrature_law p₁ p₂ ((g₁ : ℝ) * φ) ((g₂ : ℝ) * φ)
+      hp₁' hp₂' hsum hcons
+  have hquad' : Real.cos (((g₁ - g₂ : ℤ) : ℝ) * φ) = 0 := by
+    rw [show ((g₁ - g₂ : ℤ) : ℝ) * φ = (g₁ : ℝ) * φ - (g₂ : ℝ) * φ from by
+      push_cast; ring]
+    exact hquad
+  obtain ⟨n, hn⟩ := Real.cos_eq_zero_iff.mp hquad'
+  have hbR : (b : ℝ) ≠ 0 := Int.cast_ne_zero.mpr hbne
+  have hZ : (4 * k * (g₁ - g₂) : ℤ) = b * (2 * n + 1) := by
+    have h4 : ((g₁ - g₂ : ℤ) : ℝ) * φ * (2 * (b : ℝ))
+        = ((2 * n + 1 : ℤ) : ℝ) * Real.pi / 2 * (2 * (b : ℝ)) := by
+      rw [hn]
+      push_cast
+      ring
+    rw [hφ] at h4
+    field_simp at h4
+    have h5 : ((g₁ - g₂) * 2 ^ 2 * k : ℤ) = b * (2 * n + 1) := by
+      exact_mod_cast h4
+    linear_combination h5
+  exact quadrature_parity_obstruction b k (g₁ - g₂) n hb
+    (by rw [hZ]; ring)
+
+/-- **The structural anchor**: in an antichain every element of every
+subset is maximal within it, so an intermediate birth above `d` elements
+of the relative antichain has RS signature `(d, d)` and weight the single
+coupling `s_d` — the coupling the lazy induction has already killed. -/
+theorem antichain_subset_all_maximal {n : ℕ} (P : CardinalCausalOrder n)
+    (h : ∀ i j, P.rel i j = true → i = j) (D : Finset (Fin n)) :
+    (D.filter fun d => ∀ e ∈ D, P.rel d e = true → d = e).card = D.card := by
+  rw [Finset.filter_true_of_mem]
+  intro d _ e _ hrel
+  exact h d e hrel
+
+#print axioms two_support_zero_gap_deterministic
+#print axioms two_support_pinned_odd_deterministic
+#print axioms antichain_subset_all_maximal
 
 end UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
