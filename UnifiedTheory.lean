@@ -5034,6 +5034,7 @@ import UnifiedTheory.Audit.KFOrientationInfiniteCylinderDecoherence
 -- an exactly projective, strongly positive functional on infinite unlabeled
 -- cylinder histories.  General supported complex weights inherit the theorem.
 import UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+import UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
 -- Complete Rideout--Sorkin transition kinematics retains every distinct
 -- downward-closed precursor slot above an unlabeled link.  Relabeling acts
 -- bijectively on slots, link multiplicity is representative-independent, and
