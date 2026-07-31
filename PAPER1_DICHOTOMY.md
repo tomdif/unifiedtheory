@@ -166,8 +166,22 @@ coverage is stated here rather than discovered by a reader.  Within the
 true windows every node retains both a gregarious (phase-upper) and a
 minimal-cover (phase-lower) channel, so per-node cone conditions are
 satisfiable and the observed deaths are a global consistency
-obstruction — localized by the margin analysis (margin_probe.py) and
-the target of the open moment-criterion question below.
+obstruction.  The margin analysis (margin_probe.py) locates and grades
+it: the L1 distance-to-feasibility GROWS with depth (0.0617, 0.0678,
+0.0715 at n = 5, 6, 7), and its dominant component is the root
+equation's imaginary part at every depth — the root's Im-cancellation
+is unfundable by the tree, with each added level contributing further
+irreducible slack rather than relief.  One scope bound on the word
+"depth-robust": at φ = 2πj + δ the level-n stem phases (S−1)φ wrap
+around the circle only once n·j·ε ~ 1, so the entire enumerable range
+is pre-wrap; the wrap scale ~1/(jε) ≈ 22 coincides with the
+resonance-visibility scale, meaning all of the physical band's
+nontrivial structure lives at depths enumeration cannot reach.  The
+sharpened open theorem is therefore the PRE-WRAP NO-GO — infeasibility
+for all n < c/(jε) by a root-seeded funding/telescoping induction, of
+which the growing margin is the numerical shadow — together with the
+general moment-criterion question: when does a gap menu's phase image
+admit globally consistent positive cancellation?
 
 **Closing scope.**  Within this ansatz class, at every depth we can
 enumerate (n ≤ 7) and at every smearing value tested across the
