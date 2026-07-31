@@ -1,0 +1,14 @@
+levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+confined support: 2358
+========================================================================
+S2 sub-sampling self-similarity gate (confined family, depth 7):
+  n=6 only: FEASIBLE; dim 925 (wave-only confined: 1553)
+  n=5,6: INFEASIBLE
+  n=4,5,6: INFEASIBLE
+========================================================================
+sampling random 2-orders at n=7...
+  distinct 2-order classes sampled: 1956
+========================================================================
+O: Minkowski-statistics fit (psi ~ sqrt(p_2o)):
+  [wave-only confined] hard-constraint residual 1.86e-02; relative fit to sqrt(p_2o): 0.773; |Psi|^2-weighted mean r = 0.4424 (target 0.5)
+  [self-similar (n=6 only)] hard-constraint residual 1.02e+01; relative fit to sqrt(p_2o): 8.884; |Psi|^2-weighted mean r = 0.3207 (target 0.5)
