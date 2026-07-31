@@ -1,0 +1,30 @@
+  level 7: 400/2045 parents
+  level 7: 800/2045 parents
+  level 7: 1200/2045 parents
+  level 7: 1600/2045 parents
+  level 7: 2000/2045 parents
+levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+children built
+parent graph built
+n=1: dim>=3: 0/1
+n=2: dim>=3: 0/2
+n=3: dim>=3: 0/5
+n=4: dim>=3: 0/16
+n=5: dim>=3: 0/63
+n=6: dim>=3: 3/318
+n=7: dim>=3: 89/2045
+n=8: dim>=3: 2205/16999
+========================================================================
+CONFINED gate (kill dim>=3, equations through n = 7):
+    round 0: support 17152, zeros 798, forced dead 0 
+  FEASIBLE; support n=1: 1/1  n=2: 2/2  n=3: 5/5  n=4: 16/16  n=5: 63/63  n=6: 315/318  n=7: 1956/2045  n=8: 14794/16999
+  freedom: 17152 vars, rank 4717 -> dim 12435
+========================================================================
+UNRESTRICTED gate at depth 8 (for the dimension curve):
+    round 0: support 19449, zeros 848, forced dead 0 
+  support 19449; freedom dim 14548
+========================================================================
+Consumed-dimension curve: depth 6: 234 vs ?; depth 7: 1639 vs 1553;
+depth 8: see above.
+canonical member, n=7 stems: |sum Psi|^2 = 1.0000; |Psi|^2-weighted mean ordering fraction = 0.3377
+  (uniform over 2-order support: 0.5335; 2D continuum benchmark: 0.5)
