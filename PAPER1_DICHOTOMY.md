@@ -131,10 +131,22 @@ The physically motivated regime (Dowker–Glaser: l/ξ ≈ 0.4–0.5, i.e.
 branching windows shrink to width ~kπε/(1−ε) and the resonance set
 ε = 1/m (exact zero modes from m-antichain covers) accumulates with
 spacing ~ε² — natural parameter choices land on or beside islands
-(l/ξ = 0.5 is ε = 1/16 exactly).  Whether the quantum windows survive
-in the physical band, and how island width compares with island
-spacing, are the decisive open computations
-(smeared_physical_probe.py).  What stands independent of their outcome:
+(l/ξ = 0.5 is ε = 1/16 exactly).  The decisive computations have now run
+(smeared_physical_probe.py): at depth n ≤ 6 the physical band is DEAD —
+every window phase (k = 1, 2, 3, three offsets each) at four ε values
+across [0.026, 0.063] returns empty support, with large min|gap|
+(0.69–0.85), so the deaths are structural, not resonance kills.  The
+irrational discriminator settles the archipelago's nature: ε = 0.45 and
+its irrational neighbors (±(√2−1)/100, and 1/e) all die at the same
+phase — geography, not resonance proximity.  Two structural facts
+emerged: (i) the 1/m resonances are invisible to a depth-n gate unless
+the tree contains m-antichain covers, so island width is a
+depth-coupled quantity and the physical band has no gate-visible
+islands at n ≤ 6; (ii) the 2D/4D contrast at small ε localizes in the
+root gap signs — 2D's (−1, +1) permit cancellation at every phase,
+smeared-4D's (1−ε, 1) only in the shrinking sliver.  Depth dependence
+of the physical-band verdict and the deterministic-root special phases
+φ = 2πj/(1−ε) remain untested.  What stands independent of their outcome:
 the sharp-4D collapse is not robust to weak smearing, the resonance set
 of a fixed-depth gate is finite and algebraic (gaps are
 integer-coefficient polynomials in ε), and the deeper invariant of the
