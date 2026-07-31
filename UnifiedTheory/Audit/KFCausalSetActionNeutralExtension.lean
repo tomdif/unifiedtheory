@@ -606,4 +606,132 @@ theorem collision_forces_closure (k : ℤ) (hk : ¬ (9 : ℤ) ∣ k) :
 #print axioms collision_gap_diamond
 #print axioms collision_forces_closure
 
+/-! ## 9. Weight-generic action and the 2D parity theorem
+
+The dimensional dichotomy runs on one arithmetic fact: the 2D BD weights
+(2, −4, 2) are all even, so every one-element birth changes the 2D action
+by an odd amount — no zero-gap children, no lazy tower, no broom, no null
+web.  The 4D enabler of the whole degeneracy structure is the single odd
+weight W₄(0) = 1.  Proved here for ARBITRARY labeled one-element
+extensions via a weight-generic decomposition. -/
+
+/-- The layer action for arbitrary weights. -/
+def actionUnitsW {n : ℕ} (W : ℕ → ℤ) (P : CardinalCausalOrder n) : ℤ :=
+  (n : ℤ) - ∑ i : Fin n, ∑ j : Fin n,
+    if strictRel P i j then W (betweenCount P i j) else 0
+
+theorem actionUnits_eq_actionUnitsW {n : ℕ} (P : CardinalCausalOrder n) :
+    actionUnits P = actionUnitsW bdWeight P := rfl
+
+/-- 2D BD weights (layer kernel (1, −2, 1), prefactor 2): all even. -/
+def bdWeight2 : ℕ → ℤ
+  | 0 => 2
+  | 1 => -4
+  | 2 => 2
+  | _ + 3 => 0
+
+theorem bdWeight2_even (k : ℕ) : (2 : ℤ) ∣ bdWeight2 k := by
+  rcases k with _ | _ | _ | k <;> simp [bdWeight2] <;> decide
+
+section GeneralExtension
+
+variable {n : ℕ} {P : CardinalCausalOrder n} {Q : CardinalCausalOrder (n + 1)}
+
+theorem ext_strictRel_castSucc (hext : IsLabeledOneElementExtension P Q)
+    (i j : Fin n) :
+    strictRel Q i.castSucc j.castSucc ↔ strictRel P i j := by
+  unfold strictRel
+  rw [hext.1]
+  simp only [ne_eq, Fin.castSucc_inj]
+
+theorem ext_not_strictRel_last (hext : IsLabeledOneElementExtension P Q)
+    (j : Fin (n + 1)) : ¬ strictRel Q (Fin.last n) j := by
+  rintro ⟨hrel, hne⟩
+  by_cases hj : j = Fin.last n
+  · exact hne hj.symm
+  · have hjw : j = (j.castPred hj).castSucc := (Fin.castSucc_castPred j hj).symm
+    rw [hjw, hext.2] at hrel
+    simp at hrel
+
+theorem ext_betweenCount_castSucc (hext : IsLabeledOneElementExtension P Q)
+    (i j : Fin n) :
+    betweenCount Q i.castSucc j.castSucc = betweenCount P i j := by
+  unfold betweenCount
+  rw [Finset.card_filter, Finset.card_filter, Fin.sum_univ_castSucc]
+  rw [if_neg (fun h => ext_not_strictRel_last hext _ h.2), add_zero]
+  refine Finset.sum_congr rfl fun z _ => ?_
+  simp only [ext_strictRel_castSucc hext]
+
+/-- **Weight-generic extension decomposition**: any one-element birth
+changes the layer action by `1 − Σ (new-pair weights)`. -/
+theorem actionUnitsW_oneElementExtension
+    (hext : IsLabeledOneElementExtension P Q) (W : ℕ → ℤ) :
+    actionUnitsW W Q = actionUnitsW W P + 1
+      - ∑ a : Fin n, (if strictRel Q a.castSucc (Fin.last n)
+          then W (betweenCount Q a.castSucc (Fin.last n)) else 0) := by
+  unfold actionUnitsW
+  have hrow : ∀ i : Fin n, (∑ j : Fin (n + 1),
+      if strictRel Q i.castSucc j then W (betweenCount Q i.castSucc j) else 0)
+      = (∑ j : Fin n, if strictRel P i j then W (betweenCount P i j) else 0)
+        + (if strictRel Q i.castSucc (Fin.last n)
+            then W (betweenCount Q i.castSucc (Fin.last n)) else 0) := by
+    intro i
+    rw [Fin.sum_univ_castSucc]
+    congr 1
+    refine Finset.sum_congr rfl fun j _ => ?_
+    by_cases hij : strictRel P i j
+    · rw [if_pos ((ext_strictRel_castSucc hext i j).mpr hij), if_pos hij,
+        ext_betweenCount_castSucc hext]
+    · rw [if_neg (fun h => hij ((ext_strictRel_castSucc hext i j).mp h)),
+        if_neg hij]
+  have hsum : (∑ i : Fin (n + 1), ∑ j : Fin (n + 1),
+      if strictRel Q i j then W (betweenCount Q i j) else 0)
+      = (∑ i : Fin n, ∑ j : Fin n,
+          if strictRel P i j then W (betweenCount P i j) else 0)
+        + ∑ a : Fin n, (if strictRel Q a.castSucc (Fin.last n)
+            then W (betweenCount Q a.castSucc (Fin.last n)) else 0) := by
+    rw [Fin.sum_univ_castSucc]
+    have hlastrow : (∑ j : Fin (n + 1),
+        if strictRel Q (Fin.last n) j then W (betweenCount Q (Fin.last n) j)
+        else 0) = 0 :=
+      Finset.sum_eq_zero fun j _ => if_neg (ext_not_strictRel_last hext j)
+    rw [hlastrow, add_zero]
+    simp only [hrow]
+    rw [Finset.sum_add_distrib]
+  rw [hsum]
+  push_cast
+  ring
+
+/-- **THE 2D PARITY THEOREM**: every one-element birth changes the 2D
+action by an odd amount.  Zero-gap children do not exist in 2D. -/
+theorem gap_parity_2D (hext : IsLabeledOneElementExtension P Q) :
+    Odd (actionUnitsW bdWeight2 Q - actionUnitsW bdWeight2 P) := by
+  rw [actionUnitsW_oneElementExtension hext bdWeight2]
+  have heven : (2 : ℤ) ∣ ∑ a : Fin n,
+      (if strictRel Q a.castSucc (Fin.last n)
+        then bdWeight2 (betweenCount Q a.castSucc (Fin.last n)) else 0) := by
+    refine Finset.dvd_sum fun a _ => ?_
+    by_cases h : strictRel Q a.castSucc (Fin.last n)
+    · rw [if_pos h]
+      exact bdWeight2_even _
+    · rw [if_neg h]
+      exact dvd_zero 2
+  obtain ⟨m, hm⟩ := heven
+  exact ⟨-m, by omega⟩
+
+/-- No action-neutral extension exists in 2D — the broom, the lazy tower
+and the null web are four-dimensional phenomena. -/
+theorem no_neutral_extension_2D (hext : IsLabeledOneElementExtension P Q) :
+    actionUnitsW bdWeight2 Q ≠ actionUnitsW bdWeight2 P := by
+  intro h
+  obtain ⟨k, hk⟩ := gap_parity_2D hext
+  rw [h] at hk
+  omega
+
+end GeneralExtension
+
+#print axioms actionUnitsW_oneElementExtension
+#print axioms gap_parity_2D
+#print axioms no_neutral_extension_2D
+
 end UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
