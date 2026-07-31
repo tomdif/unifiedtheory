@@ -115,7 +115,26 @@ classical sector exists and swallows everything.  2D: zero modes do not
 exist ⇒ no classical sector, quantum forced.  Dimension enters only
 through (1, −9, 16, −8) versus (2, −4, 2).
 
-## 5. Status ledger
+## 5. Scope note: the sharp action, and what smearing changes
+
+All 4D results above concern the sharp integer-weight action.  The
+fluctuation-taming smeared action of Sorkin and Dowker–Glaser
+(f₄(n, ε), non-integer weights, infinite layer support) destroys the
+exact zero modes for generic ε — the minimal-cover gap becomes 1 − ε —
+and a first computation (smeared_4d_gate.py) shows that smeared 4D
+growth then supports covariant, everywhere-branching, forced-quantum
+dynamics with full support at suitable phases: e.g. ε = 0.8,
+φ ∈ {4.71, 5.50, 12.0}, support 405/405 with 87 branching nodes.  The
+existence region is an intricate island structure in the (ε, φ) plane
+(single-phase probes at other ε died; a systematic map is future work),
+and exact zero modes resurface on the resonant set ε = 1/m (m-antichain
+covers).  The dichotomy of this paper is therefore a statement about
+the sharp action — physically read: the classical character of sharp-4D
+growth is not robust to the smearing the theory independently requires,
+and the deeper invariant is the zero-mode structure itself, which the
+nonlocality scale controls.
+
+## 5′. Status ledger
 
 [LEAN] 18 theorems (list in the repository file header), axiom-clean.
 [MECH] all gates exit 0; enumerations validated against A000112;

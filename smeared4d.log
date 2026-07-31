@@ -1,0 +1,31 @@
+4D tree: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318}
+eps = 0.5: min |gap| = 0.0000 (zero mode destroyed); predicted root window phi in (3.142, 6.283)
+  phi = 0.900 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 2.513 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 4.712 (in window): support 0 [EMPTY] branching nodes 0
+  phi = 6.597 (outside): support 0 [EMPTY] branching nodes 0
+eps = 0.2: min |gap| = 0.0000 (zero mode destroyed); predicted root window phi in (3.142, 3.927)
+  phi = 0.900 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 2.513 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 3.534 (in window): support 0 [EMPTY] branching nodes 0
+  phi = 4.123 (outside): support 0 [EMPTY] branching nodes 0
+eps = 0.8: min |gap| = 0.0816 (zero mode destroyed); predicted root window phi in (3.142, 15.708)
+  phi = 0.900 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 2.513 (outside): support 0 [EMPTY] branching nodes 0
+  phi = 4.712 (in window): support 405 [n=1:1  n=2:2  n=3:5  n=4:16  n=5:63  n=6:318] branching nodes 87
+  phi = 6.597 (in window): support 0 [EMPTY] branching nodes 0
+4D tree: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318}
+============================================================
+resonance check: near-resonant eps (expect revival off-resonance):
+  eps = 0.45: min|gap| = 0.0120; phi = 4.427: support 0, branching 0
+  eps = 0.55: min|gap| = 0.0862; phi = 4.712: support 0, branching 0
+  eps = 0.25: min|gap| = 0.0000; phi = 3.665: support 0, branching 0
+  eps = 0.65: min|gap| = 0.2867; phi = 4.712: support 0, branching 0
+phi-scan at eps = 0.8 (mapping the alive set):
+  phi = 3.500: support 0, branching 0
+  phi = 4.000: support 0, branching 0
+  phi = 4.712: support 405, branching 87
+  phi = 5.500: support 405, branching 87
+  phi = 7.000: support 0, branching 0
+  phi = 9.000: support 0, branching 0
+  phi = 12.000: support 405, branching 87
