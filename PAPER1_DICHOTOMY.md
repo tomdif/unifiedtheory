@@ -121,18 +121,25 @@ All 4D results above concern the sharp integer-weight action.  The
 fluctuation-taming smeared action of Sorkin and Dowker–Glaser
 (f₄(n, ε), non-integer weights, infinite layer support) destroys the
 exact zero modes for generic ε — the minimal-cover gap becomes 1 − ε —
-and a first computation (smeared_4d_gate.py) shows that smeared 4D
-growth then supports covariant, everywhere-branching, forced-quantum
-dynamics with full support at suitable phases: e.g. ε = 0.8,
-φ ∈ {4.71, 5.50, 12.0}, support 405/405 with 87 branching nodes.  The
-existence region is an intricate island structure in the (ε, φ) plane
-(single-phase probes at other ε died; a systematic map is future work),
-and exact zero modes resurface on the resonant set ε = 1/m (m-antichain
-covers).  The dichotomy of this paper is therefore a statement about
-the sharp action — physically read: the classical character of sharp-4D
-growth is not robust to the smearing the theory independently requires,
-and the deeper invariant is the zero-mode structure itself, which the
-nonlocality scale controls.
+and a first computation (smeared_4d_gate.py) shows that 4D growth then
+supports covariant, everywhere-branching, forced-quantum dynamics with
+full support — but so far only in the barely-smeared regime: the
+exhibit is ε = 0.8, which in four dimensions means l/ξ = 0.8^{1/4} ≈
+0.946, a nonlocality scale six percent above the discreteness scale.
+The physically motivated regime (Dowker–Glaser: l/ξ ≈ 0.4–0.5, i.e.
+ε ≈ 0.026–0.063) is an order of magnitude below, where the root
+branching windows shrink to width ~kπε/(1−ε) and the resonance set
+ε = 1/m (exact zero modes from m-antichain covers) accumulates with
+spacing ~ε² — natural parameter choices land on or beside islands
+(l/ξ = 0.5 is ε = 1/16 exactly).  Whether the quantum windows survive
+in the physical band, and how island width compares with island
+spacing, are the decisive open computations
+(smeared_physical_probe.py).  What stands independent of their outcome:
+the sharp-4D collapse is not robust to weak smearing, the resonance set
+of a fixed-depth gate is finite and algebraic (gaps are
+integer-coefficient polynomials in ε), and the deeper invariant of the
+dichotomy is the zero-mode structure, which the nonlocality scale
+controls.
 
 ## 5′. Status ledger
 
