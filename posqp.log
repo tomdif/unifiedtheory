@@ -1,0 +1,12 @@
+confined support 2358
+systems built
+========================================================================
+1. Rigorous pinned range (LP + tau-bisection, positivity exact):
+  [plain confined] psi-weighted mean r range under positivity: [0.1241, 0.7687]
+  [self-similar (one-step)] psi-weighted mean r range under positivity: [0.2533, 0.4639]
+========================================================================
+2. sqrt(p_2o) fit, rho-continuation, positivity native:
+  hard residual 9.45e+00; min amplitude 5.78e-06; relative fit 8.324; psi-weighted r = 0.4016; psi^2-weighted r = 0.3209
+========================================================================
+3. Coherence check: Bombelli defect of the canonical member vs random vertices:
+  canonical-member defect: 2.5086; random-vertex defects: ['2.3675', '3.0238', '3.2035', '2.6638', '2.7502', '2.8272']

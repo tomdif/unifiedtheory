@@ -1,0 +1,9 @@
+confined support 2358
+systems built
+========================================================================
+psi^2-weighted r at psi-extremal members (self-similar polytope):
+  [near sup] psi-r = 0.4638, psi^2-r = 0.4520
+  [near inf] psi-r = 0.2533, psi^2-r = 0.1808
+Frank-Wolfe ascent on psi^2-weighted r (self-similar polytope):
+  best-found psi^2-r max = 0.4611; min = 0.1567
+  (lower/upper bounds on the true psi^2 range; exact sup open)
