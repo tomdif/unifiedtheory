@@ -144,9 +144,38 @@ the tree contains m-antichain covers, so island width is a
 depth-coupled quantity and the physical band has no gate-visible
 islands at n ≤ 6; (ii) the 2D/4D contrast at small ε localizes in the
 root gap signs — 2D's (−1, +1) permit cancellation at every phase,
-smeared-4D's (1−ε, 1) only in the shrinking sliver.  Depth dependence
-of the physical-band verdict and the deterministic-root special phases
-φ = 2πj/(1−ε) remain untested.  What stands independent of their outcome:
+smeared-4D's (1−ε, 1) only in the shrinking sliver.  A depth-7 probe
+(physband_n7.py) leaves every window phase empty at both tested ε — and
+finds the deterministic-root phases φ = 2πj/(1−ε) alive, with support
+identified exactly: the broom spine (plus one capped variant), i.e. the
+same survivor class the sharp-action VR gate produced by exact zero
+modes.  Two computations with different mechanisms — degeneracy there,
+phase winding here (the smeared cover gap 1−ε winds to unity) —
+converge on the same survivor set: evidence that the two gates describe
+one object.  The classical channel thus survives on a quantized phase
+set, with ℏ and ε tied by ℏ = σ′(1−ε)/2πj — a countable family
+constraining the combination of two parameters, holding precisely on
+the channel where the dynamics is deterministic; it is a consistency
+condition on the classical sector, not a prediction of either constant.
+A disclosure on coverage: the original window derivation used only the
+imaginary part of the root equation; adding the real part, the true
+root-feasible regions are slivers just above multiples of 2π of width
+~2πjε, so of the probed phases only the k = 2 set genuinely tested the
+band (three phases per ε per depth) — those died, and the corrected
+coverage is stated here rather than discovered by a reader.  Within the
+true windows every node retains both a gregarious (phase-upper) and a
+minimal-cover (phase-lower) channel, so per-node cone conditions are
+satisfiable and the observed deaths are a global consistency
+obstruction — localized by the margin analysis (margin_probe.py) and
+the target of the open moment-criterion question below.
+
+**Closing scope.**  Within this ansatz class, at every depth we can
+enumerate (n ≤ 7) and at every smearing value tested across the
+physical band, 4D action-phase growth yields only broom-class dynamics,
+with the classical channel restored on a quantized phase set.  Whether
+a quantum sector exists at greater depth or in the continuum
+formulation is open.  To date, 2D is the only place this framework has
+produced one.  What stands independent of their outcome:
 the sharp-4D collapse is not robust to weak smearing, the resonance set
 of a fixed-depth gate is finite and algebraic (gaps are
 integer-coefficient polynomials in ε), and the deeper invariant of the
