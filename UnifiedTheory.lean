@@ -5035,6 +5035,7 @@ import UnifiedTheory.Audit.KFOrientationInfiniteCylinderDecoherence
 -- cylinder histories.  General supported complex weights inherit the theorem.
 import UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 import UnifiedTheory.Audit.KFCausalSetActionNeutralExtension
+import UnifiedTheory.Audit.KFCausalSmearedNoGo
 -- Complete Rideout--Sorkin transition kinematics retains every distinct
 -- downward-closed precursor slot above an unlabeled link.  Relabeling acts
 -- bijectively on slots, link multiplicity is representative-independent, and
