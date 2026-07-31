@@ -1,0 +1,27 @@
+4D tree: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+eps = 0.045: min|gap| = 0.73000
+  [w1] phi = 3.1786: support 0, branching 0
+  [w1] phi = 3.2156: support 0, branching 0
+  [w1] phi = 3.2600: support 0, branching 0
+  [w2] phi = 6.3572: support 0, branching 0
+  [w2] phi = 6.4312: support 0, branching 0
+  [w2] phi = 6.5200: support 0, branching 0
+  [w3] phi = 9.5358: support 0, branching 0
+  [w3] phi = 9.6468: support 0, branching 0
+  [w3] phi = 9.7801: support 0, branching 0
+  [det1] phi = 6.5793: support 8, branching 1
+  [det2] phi = 13.1585: support 8, branching 1
+  [ctrl] phi = 2.0000: support 0, branching 0
+eps = 0.03: min|gap| = 0.82000
+  [w1] phi = 3.1659: support 0, branching 0
+  [w1] phi = 3.1902: support 0, branching 0
+  [w1] phi = 3.2193: support 0, branching 0
+  [w2] phi = 6.3318: support 0, branching 0
+  [w2] phi = 6.3803: support 0, branching 0
+  [w2] phi = 6.4386: support 0, branching 0
+  [w3] phi = 9.4976: support 0, branching 0
+  [w3] phi = 9.5705: support 0, branching 0
+  [w3] phi = 9.6580: support 0, branching 0
+  [det1] phi = 6.4775: support 8, branching 1
+  [det2] phi = 12.9550: support 8, branching 1
+  [ctrl] phi = 2.0000: support 0, branching 0
