@@ -24,8 +24,11 @@
     v·sinβ·sin(δ+β) + t·(2sinγ·sin(δ+β) − sinβ·sin(δ+γ))
                     + λ·sinδ·sin(δ+η) = 0,
 
-  and in the first quadrant all three coefficients are strictly positive
-  (the middle one equals sinδ·(sinγcosβ + sin(γ−β)) + cosδ·sinβ·sinγ),
+  and — USING β < γ, which is equivalent to W_ε(1) = ε(1 − 10ε) > 0,
+  i.e. ε < 1/10 — all three coefficients are strictly positive (the
+  middle one equals sinδ·(sinγcosβ + sin(γ−β)) + cosδ·sinβ·sinγ, whose
+  positivity is exactly sin(γ−β) > 0; first-quadrant membership alone
+  does NOT suffice),
   forcing v = t = λ = 0, hence L = x₁ = x₂ = 0, contradicting the root
   normalization.  Hypotheses 0 < δ, 0 < β < γ, 0 < η, γ + δ < π/2,
   η + δ < π/2 cover the physical band (all angles are O(jε) there) with

@@ -12,7 +12,21 @@ We study sequential-growth dynamics for causal sets whose transition
 amplitudes carry the phases of the discrete Benincasa–Dowker (BD)
 action, a(C→C′) = ρ·e^{iΔS/ℏ} with ρ ≥ 0, under the Markov sum rule and
 discrete general covariance.  Whether such a theory is classical or
-quantum is decided by the integer arithmetic of the action's weights.
+quantum is decided by the arithmetic of the action's weight system.
+For the physically smeared four-dimensional action we prove the
+verdict: the truncation-2 subsystem of the in-window growth equations
+is infeasible (the funding theorem, Lean-verified, valid for smearing
+ε < 1/10 where W_ε(1) = ε(1 − 10ε) > 0 orders the cover and timid
+channels), and by the closure lemma these equations recur verbatim at
+every depth, so physically-smeared 4D action-phase growth admits no
+covariant quantum sector at any depth and any generic phase; the
+surviving dynamics are two measure-zero classical spines at the
+resonant phases.  The theorem's validity boundary ε = 1/10 is itself
+physical: every phase window observed alive in computation lies at
+ε > 1/10, where the funding coefficient can change sign.  Within this
+ansatz class dimension enters only through the weights, placing the
+classical/quantum divide in the arithmetic of the weight system rather
+than in the geometry.
 In four dimensions (weights 1, −9, 16, −8) the action has exact zero
 modes under growth — every finite causet admits an action-neutral
 one-element extension (cover a minimal element; Lean-verified) — and
@@ -103,6 +117,29 @@ is the unique dead phase, by a two-line certificate (the shared child
 L = 2-chain⊔point is demanded at 1/2 and 1/4 by the two root-children's
 equations; the μ = 2 multiplicity kill).  (Scripts: collision_2d.py,
 wave_gate_2d.py, deep_2d.py; PI4_CERTIFICATE.md.)
+
+## 3′. The closure lemma and the funding theorem
+
+**Closure Lemma.**  The wave equation at a causet C references only the
+amplitudes of C and of its one-element extensions.  Hence the equations
+at the root, the 2-chain and the 2-antichain involve exactly eight
+amplitudes (levels 1–3) with coefficients independent of the system's
+depth, and the truncation-2 subsystem is common to every depth-N
+system, N ≥ 3.  Infeasibility of the subsystem is therefore inherited
+by all depths.  (Proof: immediate from the definition of the sum rule;
+the Lean theorem is stated over the eight amplitudes precisely so that
+any depth-N solution instantiates it.)
+
+**Funding Theorem** [Lean: smeared_truncation2_infeasible].  For
+0 < δ, 0 < β < γ, 0 < η, γ + δ < π/2, η + δ < π/2, no nonnegative
+amplitudes satisfy the truncation-2 equations.  The named hypothesis
+β < γ is equivalent to W_ε(1) > 0, i.e. ε(1 − 10ε) > 0, i.e. ε < 1/10:
+it holds across the physical band (ε ≤ 0.0625) and fails precisely in
+the barely-smeared regime — every computationally observed live window
+(ε ∈ {0.2, 0.45, 0.55, 0.65, 0.8}) lies at ε > 1/10, outside the
+theorem, where the middle funding coefficient can change sign.  The
+theorem and the phenomenology tile the ε-axis.  The factor 10 is
+1 + |C₂|: the BD weight −9 once more.
 
 ## 4. The mechanism, stated once
 
