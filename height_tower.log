@@ -1,0 +1,6 @@
+hand solution h=6 (w2,w3)=(15,1): jumps integral = True
+constructed causet: n = 22, height = 6, hereditary-real (independent per-element check) = True
+h = 6: minimal fan widths {2: 15, 3: 1, 4: 0, 5: 0}, total width 16, n = 22, jumps integral = True
+        machine check: height = 6, hereditary-real = True
+h = 7: minimal fan widths {2: 31, 3: 15, 4: 0, 5: 0, 6: 0}, total width 46, n = 53, jumps integral = True
+        machine check: height = 7, hereditary-real = True

@@ -17,13 +17,19 @@ PARITY THEOREM:
      even_dim_coeff_integral]  This discharges madic_law's
     integer-coefficient hypothesis for EVERY even dimension.
   odd d = 2n+1: even-a terms reduce to the same identity (integers);
-    odd-a terms have all n+1 factors odd, and an arithmetic
-    progression with step 2 meets odd-prime-power residues as evenly
-    as consecutive integers, so v_ell(prod) >= v_ell((n+1)!) for
-    every odd prime ell: denominators are PURE 2-POWERS, bounded by
-    2^(n+1+v2((n+1)!)) — which equals 8, 16, 128 for d = 3, 5, 7
-    (Table 1's exact denominators) and predicts 256 for 9D, 1024
-    for 11D.
+    odd-a terms have all n+1 factors odd.  TWO CLAIMS, split per
+    referee: (BOUND — provable, Lean-ready) j -> ad + 2j is a
+    bijection mod p^e for every odd prime power (2 invertible), so
+    #{j <= k : p^e | ad+2j} >= floor(k/p^e) and Legendre's formula
+    transfers verbatim: v_p(prod) >= v_p((n+1)!) for every odd p,
+    hence denominators are pure 2-powers bounded by
+    2^(n+1+v2((n+1)!)).  This is the same size of argument as the
+    even case and awaits formalization alongside it.
+    (TIGHTNESS — genuinely empirical) the bound is attained exactly:
+    the common denominator EQUALS 2^(n+1+v2((n+1)!)) at every odd
+    d <= 21 checked below — 8, 16, 128 for d = 3, 5, 7 (Table 1) and
+    256, 1024, 2048 predicted for 9D, 11D, 13D.  The grid supports
+    tightness, not the bound.
 
 CONSEQUENCE: parity of dimension is imprinted in the prime content
 of every resonant congruence web — even-dimensional webs are purely

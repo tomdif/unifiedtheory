@@ -15,10 +15,13 @@
   set-equality verified) is the N₃ = 0 branch: every downset has even
   N₂ and no link has interval ≥ 3.  SCOPE: the branches N₃ ≡ 4 with N₂
   odd and N₃ ≡ 0 mod 8 with N₂ even are combinatorially unreachable at
-  n ≤ 7, so the n ≤ 7 iff does not by itself decide them; whether every
-  hereditary path into N₃ ≥ 4 passes through a congruence-violating
-  downset (which would make the N₃ = 0 branch exact at all n, and the
-  height ≤ 4 cap a theorem) is the open blocking lemma.  The kill
+  n ≤ 7, so the n ≤ 7 iff does not by itself decide them.  RESOLVED
+  2026-08-01: the blocking lemma is FALSE — the N₃ = 4 branch is
+  populated at n = 8 by the fan-chain (4 bottoms < 3-chain < apex),
+  which survives the depth-8 gate; multi-fan towers realize heights
+  6, 7, 8 at n = 22, 53, 177 (escape_n8.py, height_tower.py).  The
+  height ≤ 4 cap is an n ≤ 7 phenomenon; temporal depth is
+  exponentially expensive, not arrested.  The kill
   mechanism at N₃ ∈ {1, 2, 3} is arithmetic (n3_small_violates below);
   the per-equation engine is the LONE IMAGINARY CHANNEL: a sum-rule
   equation in which exactly one surviving channel carries a non-real
