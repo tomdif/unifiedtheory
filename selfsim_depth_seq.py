@@ -255,7 +255,7 @@ def r_range(A, b, label, iters=18):
         else: lo = c
         print(f"    [{label}] {'sup' if sense > 0 else 'inf'} pass done",
               flush=True)
-    print(f"  [{label}] r_psi range at depth %d" % NMAX + ": [{lo:.4f}, {hi:.4f}]",
+    print(f"  [{label}] r_psi range at depth {NMAX}: [{lo:.4f}, {hi:.4f}]",
           flush=True)
     return lo, hi
 

@@ -1,0 +1,14 @@
+tree validated (A000112 through 16999)
+children built
+confined support 2358 {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 315, 7: 1956}
+wave rows (805, 2358)
+self-similar rows added: 630
+plain confined range:
+    [plain confined d7] sup pass done
+    [plain confined d7] inf pass done
+  [plain confined d7] r_psi range at depth 7: [0.1241, 0.7687]
+one-step self-similar range (THE NUMBER):
+    [self-similar d7] sup pass done
+    [self-similar d7] inf pass done
+  [self-similar d7] r_psi range at depth 7: [0.2533, 0.4639]
+DONE

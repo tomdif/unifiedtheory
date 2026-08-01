@@ -63,6 +63,29 @@ The LOWER direction — no height-h causet below some n(h), i.e. that
 escapes are necessarily wide in every family, not just fans — is
 open; the single-fan incompatibility (referee) is the template, and
 without it "logarithmic time at resonance" remains half a claim.
+First entry in the lower ledger (referee's scaffold, one line): any
+height-h hereditarily-real causet contains a height-(h−1)
+hereditarily-real downset (↓z_{h−1} of a maximal chain, height
+exactly h−1 else the causet exceeds height h), so n_min is strictly
+monotone: **n_min(h) ≥ 177 + (h − 8)** unconditionally.  Linear
+against a conjectured ~4^h — weak, but a true lower bound.  The
+fan-column inversion (274 < 345) does not contradict this: fan
+membership is not downset-closed, so n_fan need not be monotone;
+only n_min carries the monotonicity.
+
+## The bit ledger (bit_ledger.log — the even-case soft spot, tabled)
+
+One row per level: fresh bits pinned per knob by that level's
+congruence.  After the setup levels the total is EXACTLY +6 fresh
+bits per level, distributed across the knobs (e.g. h = 12: +1, +3,
++2; h = 13: +2, +1, +3), and pin depths never retreat: **no bit is
+spent twice in the solved range h ≤ 16** — the double-spending
+failure mode is empirically absent, and the constant +6 information
+rate is itself a datum the stabilization lemma should explain (one
+congruence per level, modulus deepening 2 bits per level, yet 6 bits
+of pinning — the elimination distributes the constraint across all
+three knobs).  The lemma's even case is now bookkeeping against this
+table.
 
 ## Scope
 
