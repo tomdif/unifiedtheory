@@ -36,22 +36,28 @@ case (k ≡ 2, 3 mod 4) solvability must be routed through w₃/w₄'s
 shallower terms — this alternation is visible in the data (the pin
 depth of w₂ advances unevenly: 6, 8, 8, 10, 14, 16, 17, 19, 22, 24
 bits at h = 6..15).  Proving the even-case step closes the theorem
-and retires the height question permanently.
+and retires the height question permanently.  WRITEUP DEMAND
+(referee): the even case "routes through w₃/w₄" means it spends their
+remaining free bits — the induction must carry an explicit accounting
+that consecutive even levels do not spend the same bits twice; that
+ledger is the one place an induction of this shape quietly fails, and
+it is not yet written.
 
 ## The scaling law, stated from the mechanism
 
 w₂'s pinned residue deepens ~2 bits per level asymptotically, so the
 minimal fan witness has n(h) ~ w₂ ~ 2^{2h−O(1)}: **h ≤ ½·log₂ n + O(1)
-in the achieved direction.**  DATASET CAVEAT (referee): the minimal
-representatives 22, 53, 177, 274, 4371, 53268, 98325, … have noisy
-consecutive ratios (2.4, 3.3, 1.5, 16, 12, 1.8, …) because the pin
-depth advances unevenly (see above) and because "minimal
-representative" at h = 8 is the true lattice minimum (residue sweep)
-while h ≥ 9 minima are smallest-representative choices — the law
-rests on the bit-deepening mechanism, not on fitting these points.
-The h = 9 entry resolves the apparent anomaly: n = 274 = 9 + (63 +
-175 + 27 + 9·0) is the smallest-representative total, consistent with
-the pinned residues, not a cheaper construction.
+in the achieved direction.**  ONE-COLUMN RULE (referee): fan-additive
+smallest-representative totals and true lattice minima are different
+functions of h and are published as separate columns, never
+interleaved:
+    n_fan(h),  h = 6..16 (complete):  22, 53, 345, 274, 4371, 53268,
+        98325, 327702, 1179671, 13631512, 16777241
+        [h = 9's 274 < h = 8's 345 is real within this column: the
+         smallest representatives happen to be small at h = 9]
+    n_min(h),  true minimization, reaches h = 8 only:  22, 53, 177.
+The law rests on the bit-deepening mechanism, not on fitting either
+column.
 
 The LOWER direction — no height-h causet below some n(h), i.e. that
 escapes are necessarily wide in every family, not just fans — is

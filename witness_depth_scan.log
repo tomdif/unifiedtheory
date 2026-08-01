@@ -2,4 +2,14 @@ depth 5: web 68, exact min amplitude ~ 6.897e-10, max ~ 1.000e+00
 depth 6: web 247, exact min amplitude ~ 6.543e-11, max ~ 1.000e+00
 depth 7: web 1081, exact min amplitude ~ 4.411e-12, max ~ 1.000e+00
 (depth 8 from exact_certificate3.log: min ~ 2.030e-13)
+CORRECTION (referee, on the record): the in-session reading 'geometric,
+c ~ 2.5' is refuted by these same four numbers.  Log-minima -9.16,
+-10.19, -11.36, -12.70 (log10): first differences 1.03, 1.17, 1.34;
+second differences 0.14, 0.17 - FLAT: the signature of exp(-c h^2),
+not exp(-c h).  The contraction rate itself deepens each level,
+matching the bit-pinning mechanism.  The conclusion that matters
+survives (never dies at finite depth; interior statement holds; no
+closure weakening forced), but the honest presentation is the
+log-differences with no fitted constant, or 'quadratic-exponential on
+three ratios of evidence.'
 DONE
