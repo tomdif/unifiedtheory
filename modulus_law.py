@@ -30,6 +30,20 @@ the W1 = 0 sign boundary (c_1 = 0), which is also the funding
 theorem's validity boundary; two structures coincide there, so m = 3
 should not be counted as a generic data point for the law.
 
+TWO SCOPE NOTES (referee).  (1) The law states where the moduli
+LIVE, not that the web is nonempty — a p/m whose only survivor is
+dust satisfies it vacuously; each gate run is a separate
+nonemptiness data point (six as of 2026-08-01: mod 8, mod 3, mod 5,
+mod 16 in 2D/4D, plus the {2,5}-adic 3D web below).  (2) Dimensions
+with non-integer C carry the primes of the common denominator D at
+EVERY m — and Dowker-Glaser Table 1 shows every odd dimension has
+2-power D (8 in 3D, 16 in 5D, 128 in 7D), so ODD-dimensional webs
+are 2-adic at every m.  Confirmed (layer_tower_and_3d.py): 3D
+(C = 1, -27/8, 9/4; pref 1) at eps = 1/5, phi = 10pi has per-link
+denominators 4, 10, 125, 625 — mixed {2,5} where 2D at the same m is
+purely 5-adic; 267 survivors == hereditary-real; the 3-chain dies by
+the 2-ADIC channel (c1 = 7/4) where 2D killed it mod 5.
+
 NEW PREDICTION (pre-registered before the gate below runs): the FINER
 resonance at eps = 1/4 uses minimal q = 2 (phi = 4pi), missed earlier
 by taking q = m instead of q = m/2.  There c_1 = 1/2, c_2 = -1/4,

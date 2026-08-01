@@ -1,0 +1,15 @@
+tree validated (A000112)
+A. Layer tower at 2D eps=1/4, phi=8pi:
+   layers<=3: sum a_k N_k = 0 (mod 16), a = {1: 8, 2: 4, 3: 9}  -> N_3 = 0 (mod 4)
+   layers<=4: sum a_k N_k = 0 (mod 128), a = {1: 64, 2: 32, 3: 72, 4: 81}  -> N_4 = 0 (mod 8)
+   layers<=5: sum a_k N_k = 0 (mod 512), a = {1: 256, 2: 128, 3: 288, 4: 324, 5: 297}  -> N_5 = 0 (mod 4)
+   reachability at n=7: max N4 = 2, max N5 = 1 (vs N4 = 8 required for the escape branch)
+
+B. 3D gate at eps=1/5, phi=10pi (C3 = 1, -27/8, 9/4; pref 1):
+   per-link c_k (pi units): k=0: 0 (den 1), k=1: 7/4 (den 4), k=2: 7/10 (den 10), k=3: 142/125 (den 125), k=4: 784/625 (den 625)
+   gate survivors: 267  [n=1:1/1  n=2:2/2  n=3:4/5  n=4:9/16  n=5:21/63  n=6:57/318  n=7:173/2045]
+   hereditary-real predicate: 267; EQUAL: True
+   3-chain (N1=1) alive: False   [c1 = 7/4 -> 2-adic kill, vs mod-5 kill in 2D at m=5]
+   height profile: h=1:7/7  h=2:250/250  h=3:10/1140  h=4:0/829  h=5:0/201  h=6:0/22  h=7:0/1
+   surviving equations with complex coefficients: 0
+DONE
