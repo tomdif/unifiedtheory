@@ -1,0 +1,6 @@
+causets per level: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+children built
+max |signed path count|: 2384.0
+LP success: True t* = 9999968.0
+EXACT verification (rational back-substitution, all signs strict): False
+DONE

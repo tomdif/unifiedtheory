@@ -1,0 +1,24 @@
+Fan-tower 2-adic elimination, h = 6..16:
+  h = 6: solvable (mod 2^6); minimal rep {2: 15, 3: 1, 4: 0}, total width 16, n = 22, verified = True
+        pinned residues: {3: '1 mod 2^1', 2: '15 mod 2^6'}
+  h = 7: solvable (mod 2^8); minimal rep {2: 31, 3: 15, 4: 0, 5: 0}, total width 46, n = 53, verified = True
+        pinned residues: {3: '15 mod 2^4', 2: '31 mod 2^8'}
+  h = 8: solvable (mod 2^10); minimal rep {2: 191, 3: 143, 4: 3, 5: 0, 6: 0}, total width 337, n = 345, verified = True
+        pinned residues: {4: '3 mod 2^2', 3: '143 mod 2^8', 2: '191 mod 2^8'}
+  h = 9: solvable (mod 2^12); minimal rep {2: 63, 3: 175, 4: 27, 5: 0, 6: 0, 7: 0}, total width 265, n = 274, verified = True
+        pinned residues: {4: '27 mod 2^6', 3: '175 mod 2^8', 2: '63 mod 2^10'}
+  h = 10: solvable (mod 2^14); minimal rep {2: 4159, 3: 175, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0}, total width 4361, n = 4371, verified = True
+        pinned residues: {4: '27 mod 2^8', 3: '175 mod 2^8', 2: '4159 mod 2^14'}
+  h = 11: solvable (mod 2^16); minimal rep {2: 49215, 3: 4015, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}, total width 53257, n = 53268, verified = True
+        pinned residues: {4: '27 mod 2^8', 3: '4015 mod 2^12', 2: '49215 mod 2^16'}
+  h = 12: solvable (mod 2^18); minimal rep {2: 65599, 3: 32687, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0}, total width 98313, n = 98325, verified = True
+        pinned residues: {4: '27 mod 2^10', 3: '32687 mod 2^15', 2: '65599 mod 2^17'}
+  h = 13: solvable (mod 2^20); minimal rep {2: 262207, 3: 65455, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0}, total width 327689, n = 327702, verified = True
+        pinned residues: {4: '27 mod 2^13', 3: '65455 mod 2^16', 2: '262207 mod 2^19'}
+  h = 14: solvable (mod 2^22); minimal rep {2: 1048639, 3: 130991, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0}, total width 1179657, n = 1179671, verified = True
+        pinned residues: {4: '27 mod 2^15', 3: '130991 mod 2^17', 2: '1048639 mod 2^22'}
+  h = 15: solvable (mod 2^24); minimal rep {2: 12582975, 3: 1048495, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0}, total width 13631497, n = 13631512, verified = True
+        pinned residues: {4: '27 mod 2^16', 3: '1048495 mod 2^20', 2: '12582975 mod 2^24'}
+  h = 16: solvable (mod 2^26); minimal rep {2: 63, 3: 16777135, 4: 27, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0}, total width 16777225, n = 16777241, verified = True
+        pinned residues: {4: '27 mod 2^18', 3: '16777135 mod 2^24', 2: '63 mod 2^24'}
+DONE

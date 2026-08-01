@@ -1,0 +1,7 @@
+causets per level: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+children built
+children ready
+uniform boundary: sign mismatches 2378, zeros 90
+uniform fails; falling back to LP over boundary weights
+LP: True -22.0
+DONE
