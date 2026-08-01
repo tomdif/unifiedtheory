@@ -28,7 +28,9 @@ classical spines.  Numerically, the first-winding feasibility region
 is exactly the band W₀φ ∈ (π/2, π) — boundaries bisected to 10⁻⁹,
 independent of the ratio and the offset — and full wave-hierarchy
 computations confirm the band is genuinely quantum: full support to
-depth 7 (2450/2450 causets, every node branching) in 2D at ε = 0.16
+depth 7 (2450/2450 causets cumulative over n ≤ 7; 2045 at n = 7
+alone, A000112 — both denominators appear in this paper and differ
+by exactly this bookkeeping) in 2D at ε = 0.16
 (winding j = 1) and, reversing our own earlier no-go — which, we
 disclose, had only probed windings j ≤ 3 — in 4D at physical-band
 ε = 0.045–0.0625 with winding j = 4–6.  The winding-band consequence
@@ -170,8 +172,12 @@ posed in the previous draft (the boundary surface in (W₀φ, W₁φ, δ))
 has this one-parameter answer, plus narrow slivers near A ≳ 2.2π at
 offset extremes whose in-window pullback is open (probes land on
 δ-aliased resonances; at 2D ε = 0.25, φ = 8π exactly, the full gate
-finds a partial-support survivor, 1081/2450 — a new object, on a
-measure-zero phase).  In window j the band reads
+finds a partial-support survivor, 1081/2450 cumulative — a new
+object, on a measure-zero phase).  A seam to keep visible: every
+resonance sits at a rational ε and a measure-zero phase, and the
+physical-band verdict at generic in-window phases is untouched by
+them — the resonance program is arithmetic structure in the theory,
+not a claim about where the theory lives.  In window j the band reads
 j ∈ (1/(4W₀), 1/(2W₀)): every prior scan is reproduced
 integer-for-integer (4D ε = 0.045/0.055/0.0625 → j = 6–11/5–9/4–7),
 and the law predicted in advance — pre-registered, then run — 3D
