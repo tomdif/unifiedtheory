@@ -18,7 +18,11 @@ This is the one-line proof of the referee's conjecture (refined from
 "modulus = denominator of eps": the modulus is the m-part, e.g. mod 3
 at m = 6 after the 2-part cancels).  Verified numerically below for
 m = 3..12, k = 1..6; observed moduli at the three run points (mod 8
-at 1/4 with q=4, mod 5/25 at 1/5, mod 3 at 1/6) recovered.
+at 1/4 with q=4, mod 5/25 at 1/5, mod 3 at 1/6) recovered.  CAVEAT
+(referee): m = 3 is a DEGENERATE confirmation — eps = 1/3 is exactly
+the W1 = 0 sign boundary (c_1 = 0), which is also the funding
+theorem's validity boundary; two structures coincide there, so m = 3
+should not be counted as a generic data point for the law.
 
 NEW PREDICTION (pre-registered before the gate below runs): the FINER
 resonance at eps = 1/4 uses minimal q = 2 (phi = 4pi), missed earlier

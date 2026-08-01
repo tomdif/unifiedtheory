@@ -123,8 +123,12 @@ combinatorially unreachable at n ≤ 7.) -/
 theorem n3_small_violates (N₂ N₃ : ℕ) (h : N₃ = 1 ∨ N₃ = 2 ∨ N₃ = 3) :
     (4 * N₂ + N₃) % 8 ≠ 0 := by omega
 
-/-- **The dust telescope** (arithmetic heart of the composability
-no-go).  At any resonance (W₀φ ∈ 2πℤ, φ ∈ 2πℤ) every channel from the
+/-- **The dust telescope, orbit-factorizing hypotheses** (arithmetic
+heart of the composability no-go).  QUANTIFIER SCOPE: this is a
+statement about ORBIT-FACTORIZING, CLOSURE-RESPECTING members only —
+the resonant web itself (1081 causets, 247 branching nodes, an
+833-dimensional non-factorizing family at phi = 8pi) is untouched by
+it.  "Dust is forced" always means "forced within that slice".  At any resonance (W₀φ ∈ 2πℤ, φ ∈ 2πℤ) every channel from the
 n-antichain to a claw_d ⊔ points child carries phase +1, so the
 n-antichain's sum rule under orbit-factorization (antichains forced to
 amplitude 1) reads 1 = 1 + Σ_d C(n, d+1)·a(d+1) with a(d) = the claw_d
@@ -133,7 +137,7 @@ amplitude: every claw dies.  Combined with support downward-closure
 downset is a claw), this forces the pure dust spine: composability is
 incompatible with branching in the resonant sector (orbit convention;
 DUST_THEOREM.md). -/
-theorem dust_telescope (n : ℕ) (a : ℕ → ℝ) (hpos : ∀ d, 0 ≤ a d)
+theorem dust_telescope_orbit_factorizing (n : ℕ) (a : ℕ → ℝ) (hpos : ∀ d, 0 ≤ a d)
     (heq : (1 : ℝ) = 1 + ∑ d ∈ Finset.range n,
       (n.choose (d + 1) : ℝ) * a (d + 1)) :
     ∀ d ∈ Finset.range n, a (d + 1) = 0 := by
@@ -159,6 +163,6 @@ theorem dust_telescope (n : ℕ) (a : ℕ → ℝ) (hpos : ∀ d, 0 ≤ a d)
 #print axioms lone_imaginary_channel
 #print axioms four_chain_dies_at_8pi
 #print axioms n3_small_violates
-#print axioms dust_telescope
+#print axioms dust_telescope_orbit_factorizing
 
 end UnifiedTheory.Audit.KFCausalResonantSector

@@ -9,12 +9,19 @@ gate's root obstruction is cos φ = 1 (Paper 3 ledger), which is
 *satisfied* at the resonances — the third sector is exactly where that
 obstruction vanishes, so the event-form question is live and untested.
 
-## Statement
+## Statement (hypotheses in the name)
 
-At every resonant phase (φ = 2πq with W₀φ ∈ 2πℤ, i.e. 2εq ∈ ℤ), the
-only member of the covariant smeared-2D growth family satisfying
-orbit-factorization and support downward-closure is the pure dust
+**Dust theorem for orbit-factorizing members.**  At every resonant phase (φ = 2πq with W₀φ ∈ 2πℤ, i.e. 2εq ∈ ℤ), the
+only member of the covariant smeared-2D growth family satisfying BOTH
+orbit-factorization AND support downward-closure is the pure dust
 spine: Ã = 1 on antichains, 0 elsewhere.  Depth-independent.
+
+NOT a statement about the resonant family as a whole: the phi = 8pi
+web has 247 branching nodes and an 833-dimensional solution space —
+all of it non-factorizing.  The theorem quantifies over the
+factorizing slice only; that quantifier IS the content (composability
+is what costs you the branching), and it stays attached to the name:
+dust_telescope_orbit_factorizing [LEAN].
 
 ## Proof (three steps, each hand-checkable)
 
@@ -22,7 +29,7 @@ spine: Ã = 1 on antichains, 0 elsewhere.  Depth-independent.
     of n points and Ã(point) = 1 (root normalization), so
     factorization forces Ã(nA) = 1 for every n.
 
-2.  **The claw telescope** [LEAN: dust_telescope, axiom-clean].  The
+2.  **The claw telescope** [LEAN: dust_telescope_orbit_factorizing, axiom-clean].  The
     children of the n-antichain are: the (n+1)-antichain (gap 1) and,
     for each nonempty D ⊆ points with |D| = d, the causet
     claw_d ⊔ (n−d) points, with multiplicity C(n,d) and gap 1 − dW₀
