@@ -1,0 +1,123 @@
+tree validated (A000112)
+
+survivors: 1081 (rounds 4)
+  per level: n=1:1/1  n=2:2/2  n=3:5/5  n=4:14/16  n=5:46/63  n=6:179/318  n=7:834/2045
+
+1. Channel-phase census (angle in units of pi, over ALL channels):
+   angle        0*pi : 2266 channels   [REAL +1]
+   angle     1/64*pi : 1 channels
+   angle     1/32*pi : 2 channels
+   angle   13/256*pi : 1 channels
+   angle      1/8*pi : 123 channels
+   angle     5/32*pi : 1 channels
+   angle   41/256*pi : 7 channels
+   angle      1/4*pi : 24 channels
+   angle    17/64*pi : 37 channels
+   angle   73/256*pi : 5 channels
+   angle      3/8*pi : 1 channels
+   angle    25/64*pi : 24 channels
+   angle  105/256*pi : 1 channels
+   angle  109/256*pi : 4 channels
+   angle      1/2*pi : 378 channels
+   angle    33/64*pi : 1 channels
+   angle    17/32*pi : 4 channels
+   angle  141/256*pi : 1 channels
+   angle      5/8*pi : 94 channels
+   angle    21/32*pi : 1 channels
+   angle  169/256*pi : 5 channels
+   angle      3/4*pi : 13 channels
+   angle    49/64*pi : 30 channels
+   angle  201/256*pi : 4 channels
+   angle      7/8*pi : 1 channels
+   angle    57/64*pi : 15 channels
+   angle  233/256*pi : 1 channels
+   angle  237/256*pi : 2 channels
+   angle        1*pi : 1027 channels   [REAL -1]
+   angle    65/64*pi : 1 channels
+   angle    33/32*pi : 2 channels
+   angle  269/256*pi : 1 channels
+   angle      9/8*pi : 147 channels
+   angle    37/32*pi : 1 channels
+   angle  297/256*pi : 7 channels
+   angle      5/4*pi : 17 channels
+   angle    81/64*pi : 44 channels
+   angle  329/256*pi : 4 channels
+   angle     11/8*pi : 2 channels
+   angle    89/64*pi : 17 channels
+   angle  361/256*pi : 2 channels
+   angle  365/256*pi : 3 channels
+   angle      3/2*pi : 370 channels
+   angle    97/64*pi : 2 channels
+   angle    49/32*pi : 3 channels
+   angle  397/256*pi : 2 channels
+   angle     13/8*pi : 95 channels
+   angle    53/32*pi : 2 channels
+   angle  425/256*pi : 6 channels
+   angle      7/4*pi : 13 channels
+   angle   113/64*pi : 31 channels
+   angle  457/256*pi : 4 channels
+   angle     15/8*pi : 1 channels
+   angle   121/64*pi : 15 channels
+   angle  489/256*pi : 1 channels
+   angle  493/256*pi : 2 channels
+
+2. Survivor predicate tests:
+   dim<=2: survive 1021, die 1337; dim>=3: survive 60, die 32
+   e^(iS*phi) real: survive 1081, die 134; complex: survive 0, die 1235
+   height x survival:
+     height 1: 7/7
+     height 2: 250/250
+     height 3: 741/1140
+     height 4: 83/829
+     height 5: 0/201
+     height 6: 0/22
+     height 7: 0/1
+   width x survival:
+     width 1: 3/7
+     width 2: 56/336
+     width 3: 470/1265
+     width 4: 437/707
+     width 5: 102/122
+     width 6: 12/12
+     width 7: 1/1
+   max interval size k x survival:
+     (recomputed)
+     max-k 0: 257/257
+     max-k 1: 669/669
+     max-k 2: 155/729
+     max-k 3: 0/498
+     max-k 4: 0/234
+     max-k 5: 0/63
+
+3. Structure of the surviving web:
+   surviving equations with complex coefficients: 0; all-real: 247
+   branching nodes among survivors: 247
+   equations 495 x vars 1081, rank 248, solution dim 833
+   level 2: sum A*e^(i(S-1)phi) = +1.000000+0.000000i  (ext-weights omitted)
+   level 3: sum A*e^(i(S-1)phi) = +1.000000+0.000000i  (ext-weights omitted)
+   level 4: sum A*e^(i(S-1)phi) = +223.222222+0.000000i  (ext-weights omitted)
+   level 5: sum A*e^(i(S-1)phi) = +3056.555556+0.000000i  (ext-weights omitted)
+   level 6: sum A*e^(i(S-1)phi) = +11705.912764+0.000000i  (ext-weights omitted)
+   level 7: sum A*e^(i(S-1)phi) = +34285.207128+0.000000i  (ext-weights omitted)
+
+4. Smallest DEAD causets (the kill seeds):
+   n=4: rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2))  height=4 width=1 intervals={0: 3, 1: 2, 2: 1} S_angle=1/2pi
+   n=4: rel=((1, 0), (2, 0), (3, 0), (3, 1), (3, 2))  height=3 width=2 intervals={0: 4, 2: 1} S_angle=1/2pi
+   n=5: rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=5 width=1 intervals={0: 4, 1: 3, 2: 2, 3: 1} S_angle=9/8pi
+   n=5: rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 5, 1: 2, 3: 1, 2: 1} S_angle=13/8pi
+   n=5: rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (4, 3))  height=4 width=2 intervals={0: 4, 1: 3, 2: 1} S_angle=3/2pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 5, 2: 1, 3: 1, 1: 2} S_angle=13/8pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (3, 2), (4, 0), (4, 1), (4, 2))  height=3 width=2 intervals={0: 5, 1: 1, 2: 1} S_angle=3/2pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 5, 1: 2, 3: 1} S_angle=9/8pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (3, 2), (4, 0), (4, 2), (4, 3))  height=4 width=2 intervals={0: 4, 1: 2, 2: 1} S_angle=1/2pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3))  height=3 width=3 intervals={0: 6, 3: 1} S_angle=9/8pi
+   n=5: rel=((1, 0), (2, 0), (3, 0), (4, 0), (4, 2), (4, 3))  height=3 width=3 intervals={0: 5, 2: 1} S_angle=1/2pi
+   n=5: rel=((2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 4, 1: 3, 2: 2} S_angle=0pi
+   n=5: rel=((2, 0), (2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (4, 2), (4, 3))  height=3 width=2 intervals={0: 6, 2: 2} S_angle=1pi
+   n=5: rel=((2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 4, 1: 3, 2: 1} S_angle=3/2pi
+   n=5: rel=((2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (4, 2), (4, 3))  height=3 width=2 intervals={0: 5, 1: 1, 2: 1} S_angle=3/2pi
+   n=5: rel=((2, 1), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 4, 1: 2, 2: 1} S_angle=1/2pi
+   n=5: rel=((2, 1), (3, 1), (3, 2), (4, 1), (4, 2), (4, 3))  height=4 width=2 intervals={0: 3, 1: 2, 2: 1} S_angle=1/2pi
+   n=5: rel=((2, 1), (3, 1), (4, 0), (4, 1), (4, 2), (4, 3))  height=3 width=3 intervals={0: 5, 2: 1} S_angle=1/2pi
+   n=5: rel=((2, 1), (3, 1), (4, 1), (4, 2), (4, 3))  height=3 width=3 intervals={0: 4, 2: 1} S_angle=1/2pi
+DONE
