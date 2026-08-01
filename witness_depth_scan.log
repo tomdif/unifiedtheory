@@ -1,0 +1,5 @@
+depth 5: web 68, exact min amplitude ~ 6.897e-10, max ~ 1.000e+00
+depth 6: web 247, exact min amplitude ~ 6.543e-11, max ~ 1.000e+00
+depth 7: web 1081, exact min amplitude ~ 4.411e-12, max ~ 1.000e+00
+(depth 8 from exact_certificate3.log: min ~ 2.030e-13)
+DONE
