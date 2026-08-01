@@ -21,9 +21,9 @@ channels), and by the closure lemma these equations recur verbatim at
 every depth, so physically-smeared 4D action-phase growth admits no
 covariant quantum sector at any depth and any generic phase; the
 surviving dynamics are two measure-zero classical spines at the
-resonant phases.  The theorem's validity boundary ε = 1/10 is itself
-physical: every phase window observed alive in computation lies at
-ε > 1/10, where the funding coefficient can change sign.  Within this
+resonant phases.  The theorem's validity boundary sits at ε = 1/10; the
+physical band lies strictly inside it, the one observed quantum window
+(ε = 0.8) lies outside it, and the theorem is silent above.  Within this
 ansatz class dimension enters only through the weights, placing the
 classical/quantum divide in the arithmetic of the weight system rather
 than in the geometry.
@@ -137,9 +137,35 @@ amplitudes satisfy the truncation-2 equations.  The named hypothesis
 it holds across the physical band (ε ≤ 0.0625) and fails precisely in
 the barely-smeared regime — every computationally observed live window
 (ε ∈ {0.2, 0.45, 0.55, 0.65, 0.8}) lies at ε > 1/10, outside the
-theorem, where the middle funding coefficient can change sign.  The
-theorem and the phenomenology tile the ε-axis.  The factor 10 is
-1 + |C₂|: the BD weight −9 once more.
+theorem, where the middle funding coefficient can change sign.  Below the
+boundary no live window was found — a genuine consistency check —
+while above it the theorem is silent: the deaths observed at
+ε ∈ {0.45, 0.55, 0.65, 1/e} are unexplained by this result, and of the
+tested values only ε = 0.8 ever showed a live window (ε = 0.2 was a
+resonance island — classicality returning, not a window opening).
+The factor 10 is 1 + |C₂|: the BD weight −9 once more.
+
+**Dimension generality, and what actually decides.**  The truncation-2
+system is dimension-blind: its channels have smeared sizes
+{0, W₀, W₀+W₁, 2W₀}, so dimension enters only through (W₀, W₁) and the
+normalization prefactor p_d = β_d/|α_d| (2 in 2D; 1 in 3D, 4D).  The
+sign boundary generalizes to ε < 1/(1 + |C₂^{(d)}|): 1/3 (2D), 8/35
+(3D), 1/10 (4D), 16/231 (5D), 1/35 (6D), and every physical band
+ε = (l/ξ)^d, l/ξ ∈ [0.4, 0.5], sits below its boundary (since
+1 + |C₂^{(d)}| < 2^d for d ≤ 7).  But the sign is a validity condition
+on the certificate, not the mechanism: direct computation
+(truncation-2 LP over the bands) shows smeared-2D ALIVE across most of
+its band (ε = 0.16, 0.20; dead at 0.25), smeared-3D mostly dead (0.064,
+0.100) with a live sliver at its band top (0.125, second window), and
+4D dead — all with W₁ > 0.  The separator is the quadrant hypothesis:
+2D's prefactor p₂ = 2 and larger band-ε put its channel angles
+β ≈ 2εφ ≈ 2–3 rad outside the certificate's validity, where the
+funding coefficient changes sign.  Caveat on the live 2D values:
+truncation-2 feasibility is survival of the first gate, not existence
+of a dynamics — the full smeared-2D wave hierarchy is untested.  The
+sharpened open problem is the exact feasibility boundary of the
+truncation-2 system in the three parameters (W₀φ, W₁φ, δ) — a question
+now fully decoupled from causet combinatorics.
 
 ## 4. The mechanism, stated once
 
