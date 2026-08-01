@@ -10,9 +10,15 @@ interval-k link contributes  c_k = 2*q*W(k)  (pi units) with
 so  c_k = 4q * (m-1)^(k-2) * P_k(m) / m^(k+1).  Since gcd(m-1, m) = 1
 and P_k is an integer, the denominator of c_k DIVIDES m^(k+1):
 
-  M-ADIC LAW: every congruence modulus of the resonant web at
-  eps = 1/m has prime support contained in the primes of m, with
-  2-adic/3-adic/5-adic depth growing in k unless P_k(m) = 0 mod m.
+  M-ADIC LAW [LEAN: KFCausalMAdicLaw.lean, madic_numerator +
+  madic_law, axiom-clean, DIMENSION-BLIND — arbitrary integer
+  coefficient system C, so 2D/4D/6D at once; rational-C dimensions
+  (3D, C2 = -35/8) extend via the common denominator D with support
+  primes(m) U primes(D)]: every congruence modulus of the resonant
+  web at eps = p/m has prime support contained in the primes of m,
+  with depth growing in k unless P_k(m) = 0 mod m.  The Lean identity:
+  m^(k+1) * W(k) = pref * sum_i C_i binom(k,i) p^(i+1) (m-p)^(k-i),
+  an integer.
 
 This is the one-line proof of the referee's conjecture (refined from
 "modulus = denominator of eps": the modulus is the m-part, e.g. mod 3
