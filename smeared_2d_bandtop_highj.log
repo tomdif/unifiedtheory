@@ -1,0 +1,8 @@
+tree validated
+2D eps=0.25 j=3 frac=0.25 phi=21.5423 W0phi=10.7712 t2=dead full=EMPTY (rnds 0)
+2D eps=0.25 j=3 frac=0.5 phi=25.1327 W0phi=12.5664 t2=alive full=partial:1081 (rnds 4)
+2D eps=0.25 j=3 frac=0.75 phi=30.1593 W0phi=15.0796 t2=dead full=EMPTY (rnds 0)
+2D eps=0.25 j=4 frac=0.5 phi=33.5103 W0phi=16.7552 t2=dead full=EMPTY (rnds 0)
+2D eps=0.24 j=2 frac=0.5 phi=16.5347 W0phi=7.9367 t2=dead full=EMPTY (rnds 0)
+2D eps=0.2 j=2 frac=0.5 phi=15.7080 W0phi=6.2832 t2=dead full=EMPTY (rnds 0)
+DONE

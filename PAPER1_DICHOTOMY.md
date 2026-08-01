@@ -1,9 +1,10 @@
 # Paper 1 — Weight parity and the quantum character of discrete gravity: a dimensional dichotomy for action-coupled sequential growth
 
-**Draft 1, 2026-08-01.**  Machine-checked artifacts:
+**Draft 2, 2026-08-01.**  Machine-checked artifacts:
 `UnifiedTheory/Audit/KFCausalQuantumMeasure.lean`,
-`UnifiedTheory/Audit/KFCausalSetActionNeutralExtension.lean` (Lean 4 +
-Mathlib, 18 theorems, axiom-clean).  Verification scripts cited inline.
+`UnifiedTheory/Audit/KFCausalSetActionNeutralExtension.lean`,
+`UnifiedTheory/Audit/KFCausalSmearedNoGo.lean` (Lean 4 + Mathlib, 19
+theorems, axiom-clean).  Verification scripts cited inline.
 Vocabulary: DEFINITIONS.md.
 
 ## Abstract
@@ -11,22 +12,38 @@ Vocabulary: DEFINITIONS.md.
 We study sequential-growth dynamics for causal sets whose transition
 amplitudes carry the phases of the discrete Benincasa–Dowker (BD)
 action, a(C→C′) = ρ·e^{iΔS/ℏ} with ρ ≥ 0, under the Markov sum rule and
-discrete general covariance.  Whether such a theory is classical or
-quantum is decided by the arithmetic of the action's weight system.
-For the physically smeared four-dimensional action we prove the
-verdict: the truncation-2 subsystem of the in-window growth equations
-is infeasible (the funding theorem, Lean-verified, valid for smearing
-ε < 1/10 where W_ε(1) = ε(1 − 10ε) > 0 orders the cover and timid
-channels), and by the closure lemma these equations recur verbatim at
-every depth, so physically-smeared 4D action-phase growth admits no
-covariant quantum sector at any depth and any generic phase; the
-surviving dynamics are two measure-zero classical spines at the
-resonant phases.  The theorem's validity boundary sits at ε = 1/10; the
-physical band lies strictly inside it, the one observed quantum window
-(ε = 0.8) lies outside it, and the theorem is silent above.  Within this
-ansatz class dimension enters only through the weights, placing the
-classical/quantum divide in the arithmetic of the weight system rather
-than in the geometry.
+discrete general covariance.  For the sharp integer-weight action,
+whether such a theory is classical or quantum is decided by the
+arithmetic of the action's weight system.  For the physically smeared
+action the verdict is instead an ℏ-window law, uniform across
+dimensions.  The truncation-2 subsystem of the in-window growth
+equations depends only on the cover-channel winding W₀φ, the weight
+ratio W₁/W₀, and the window offset; it is infeasible for every winding
+W₀φ < π/2 (the funding theorem, Lean-verified, whose hypotheses cover
+exactly this region because W₁/W₀ = 1 − (1+|C₂|)ε < 1 in every
+dimension), and by the closure lemma these equations recur verbatim at
+every depth, so low-winding smeared growth admits no covariant quantum
+sector at any depth; the survivors there are two measure-zero
+classical spines.  Numerically, the first-winding feasibility region
+is exactly the band W₀φ ∈ (π/2, π) — boundaries bisected to 10⁻⁹,
+independent of the ratio and the offset — and full wave-hierarchy
+computations confirm the band is genuinely quantum: full support to
+depth 7 (2450/2450 causets, every node branching) in 2D at ε = 0.16
+(winding j = 1) and, reversing our own earlier no-go — which, we
+disclose, had only probed windings j ≤ 3 — in 4D at physical-band
+ε = 0.045–0.0625 with winding j = 4–6.  The winding-band consequence
+j ∈ (1/(4W₀), 1/(2W₀)) reproduces every scan integer-for-integer and
+predicted in advance the 3D result (ε = 0.100 alive at j ∈ {3, 4};
+confirmed).  Dimension therefore does not decide whether a smeared
+quantum sector exists — every dimension has one; it decides where in ℏ
+the sector sits, through W₀ = p_d(l/ξ)^d — the geometry of the
+nonlocality scale.  The sharp action remains the arithmetic story
+(4D collapses classically; 2D is forced quantum, below); smearing
+replaces arithmetic with geometry, and the two stories meet in the
+sharp limit.  All claims above the Lean-verified core are scoped to
+weight ratio W₁/W₀ ∈ (0, 1), i.e. smearing below ε = 1/(1+|C₂|); the
+barely-smeared regime (the one prior observed window, ε = 0.8 in 4D)
+lies outside this scope and its structure is unexplained.
 In four dimensions (weights 1, −9, 16, −8) the action has exact zero
 modes under growth — every finite causet admits an action-neutral
 one-element extension (cover a minimal element; Lean-verified) — and
@@ -130,42 +147,63 @@ by all depths.  (Proof: immediate from the definition of the sum rule;
 the Lean theorem is stated over the eight amplitudes precisely so that
 any depth-N solution instantiates it.)
 
-**Funding Theorem** [Lean: smeared_truncation2_infeasible].  For
-0 < δ, 0 < β < γ, 0 < η, γ + δ < π/2, η + δ < π/2, no nonnegative
-amplitudes satisfy the truncation-2 equations.  The named hypothesis
-β < γ is equivalent to W_ε(1) > 0, i.e. ε(1 − 10ε) > 0, i.e. ε < 1/10:
-it holds across the physical band (ε ≤ 0.0625) and fails precisely in
-the barely-smeared regime — every computationally observed live window
-(ε ∈ {0.2, 0.45, 0.55, 0.65, 0.8}) lies at ε > 1/10, outside the
-theorem, where the middle funding coefficient can change sign.  Below the
-boundary no live window was found — a genuine consistency check —
-while above it the theorem is silent: the deaths observed at
-ε ∈ {0.45, 0.55, 0.65, 1/e} are unexplained by this result, and of the
-tested values only ε = 0.8 ever showed a live window (ε = 0.2 was a
-resonance island — classicality returning, not a window opening).
-The factor 10 is 1 + |C₂|: the BD weight −9 once more.
+**Funding Theorem** [Lean: smeared_truncation2_infeasible,
+strengthened].  For 0 < δ < π/2, 0 < β < π/2, β < γ, 0 < η,
+γ + δ < π, η + δ < π, no nonnegative amplitudes satisfy the
+truncation-2 equations.  The hypothesis β < γ is W_ε(1) > 0, i.e.
+ε < 1/(1+|C₂|) (1/10 in 4D): the physically-smeared regime, every
+dimension.  The strengthening (the original statement demanded
+γ + δ < π/2, η + δ < π/2; inspection of the proof showed the cosine
+positivity is needed only for δ and β) matters because it makes the
+theorem's reach exact: for in-window phases with W₁/W₀ < 1 — always
+true — the hypotheses hold for ALL cover windings W₀φ < π/2, so the
+theorem kills the entire sub-quadrant winding region, meeting the
+numerical feasibility boundary at W₀φ = π/2 from below.
 
-**Dimension generality, and what actually decides.**  The truncation-2
-system is dimension-blind: its channels have smeared sizes
-{0, W₀, W₀+W₁, 2W₀}, so dimension enters only through (W₀, W₁) and the
-normalization prefactor p_d = β_d/|α_d| (2 in 2D; 1 in 3D, 4D).  The
-sign boundary generalizes to ε < 1/(1 + |C₂^{(d)}|): 1/3 (2D), 8/35
-(3D), 1/10 (4D), 16/231 (5D), 1/35 (6D), and every physical band
-ε = (l/ξ)^d, l/ξ ∈ [0.4, 0.5], sits below its boundary (since
-1 + |C₂^{(d)}| < 2^d for d ≤ 7).  But the sign is a validity condition
-on the certificate, not the mechanism: direct computation
-(truncation-2 LP over the bands) shows smeared-2D ALIVE across most of
-its band (ε = 0.16, 0.20; dead at 0.25), smeared-3D mostly dead (0.064,
-0.100) with a live sliver at its band top (0.125, second window), and
-4D dead — all with W₁ > 0.  The separator is the quadrant hypothesis:
-2D's prefactor p₂ = 2 and larger band-ε put its channel angles
-β ≈ 2εφ ≈ 2–3 rad outside the certificate's validity, where the
-funding coefficient changes sign.  Caveat on the live 2D values:
-truncation-2 feasibility is survival of the first gate, not existence
-of a dynamics — the full smeared-2D wave hierarchy is untested.  The
-sharpened open problem is the exact feasibility boundary of the
-truncation-2 system in the three parameters (W₀φ, W₁φ, δ) — a question
-now fully decoupled from causet combinatorics.
+**The ℏ-window law** [MECH: trunc2_hbar_window.py].  The truncation-2
+system is dimension-blind (channels {0, W₀, W₀+W₁, 2W₀}) and depends
+only on the cover winding A = W₀φ, the ratio r = W₁/W₀ ∈ (0, 1), and
+the offset δ.  Its feasibility region at first winding is exactly the
+band A ∈ (π/2, π): both boundaries bisected to 10⁻⁹, independent of r
+across [0.3, 0.75] and of the offset fraction — the open problem
+posed in the previous draft (the boundary surface in (W₀φ, W₁φ, δ))
+has this one-parameter answer, plus narrow slivers near A ≳ 2.2π at
+offset extremes whose in-window pullback is open (probes land on
+δ-aliased resonances; at 2D ε = 0.25, φ = 8π exactly, the full gate
+finds a partial-support survivor, 1081/2450 — a new object, on a
+measure-zero phase).  In window j the band reads
+j ∈ (1/(4W₀), 1/(2W₀)): every prior scan is reproduced
+integer-for-integer (4D ε = 0.045/0.055/0.0625 → j = 6–11/5–9/4–7),
+and the law predicted in advance — pre-registered, then run — 3D
+ε = 0.100 alive at j ∈ {3, 4} (it had been reported dead from a j ≤ 2
+scan) and 4D ε = 0.045 alive at j ∈ {10, 11}.  One prediction failed
+informatively: "2D ε = 0.25 dead at all j" (its window (0.5, 1.0)
+contains no integer) returned t2-alive hits at j = 3–6, which
+inspection shows are δ-aliasing artifacts of the window
+parametrization landing on resonant phases, not genuine windows.
+Dimension enters the law only through W₀ = p_d·ε = p_d(l/ξ)^d — the
+prefactor and the geometry of the nonlocality scale decide *where in
+ℏ* the quantum band sits, not whether it exists: 2D's band-bottom
+sits inside the window at j = 1; 4D's physical band requires j = 4–9;
+3D crosses within its band (t2 crossing at ε* = 0.1114, j = 2, i.e.
+l/ξ = 0.481 — the one place the boundary is directly observable
+inside a recommended band, so "3D is alive" is well-posed only once
+l/ξ is fixed).
+
+**Full-hierarchy confirmation** [MECH: smeared_2d_wave_gate.py,
+smeared_crossing_and_4d_winding.py].  Truncation-2 feasibility is
+necessary, not sufficient; the full wave gate (tree n ≤ 7, equations
+n ≤ 6, exact LP with proven-death removal) confirms the band is
+genuinely quantum at depth: 2D ε = 0.16, j = 1 — full support
+2450/2450, every node branching, zero forced deaths, at all window
+offsets tested; 4D ε = 0.055 (j = 5) and 0.0625 (j = 4) — full
+support 2450/2450 at depth 7.  Near the upper boundary the hierarchy
+bites: the 2D full-gate crossing at offset fraction 1/2 is
+ε* ∈ (0.19375, 0.19406), i.e. A ≈ 0.96π, strictly inside the
+truncation-2 crossing at A = π — the first observed case of
+truncation-2 feasible but full-gate dead (also at ε = 0.18, offset
+0.75).  The full-gate band is a hair narrower than the truncation-2
+band; whether the gap grows with depth is open.
 
 ## 4. The mechanism, stated once
 
@@ -194,11 +232,15 @@ The physically motivated regime (Dowker–Glaser: l/ξ ≈ 0.4–0.5, i.e.
 branching windows shrink to width ~kπε/(1−ε) and the resonance set
 ε = 1/m (exact zero modes from m-antichain covers) accumulates with
 spacing ~ε² — natural parameter choices land on or beside islands
-(l/ξ = 0.5 is ε = 1/16 exactly).  The decisive computations have now run
-(smeared_physical_probe.py): at depth n ≤ 6 the physical band is DEAD —
-every window phase (k = 1, 2, 3, three offsets each) at four ε values
-across [0.026, 0.063] returns empty support, with large min|gap|
-(0.69–0.85), so the deaths are structural, not resonance kills.  The
+(l/ξ = 0.5 is ε = 1/16 exactly).  The low-winding computations
+(smeared_physical_probe.py): at depth n ≤ 6 the physical band is DEAD
+at windings j ≤ 3 — every window phase (k = 1, 2, 3, three offsets
+each) at four ε values across [0.026, 0.063] returns empty support,
+with large min|gap| (0.69–0.85), so the deaths are structural, not
+resonance kills.  A scope disclosure that section 3′ resolves: those
+probes never tested windings above j = 3, and the band is ALIVE at
+j = 4–9 (the ℏ-window law); every "physical band is dead" statement
+in this section is a W₀φ < π/2 statement.  The
 irrational discriminator settles the archipelago's nature: ε = 0.45 and
 its irrational neighbors (±(√2−1)/100, and 1/e) all die at the same
 phase — geography, not resonance proximity.  Two structural facts
@@ -247,17 +289,21 @@ general moment-criterion question: when does a gap menu's phase image
 admit globally consistent positive cancellation?
 
 **Closing scope.**  Within this ansatz class, at every depth we can
-enumerate (n ≤ 7) and at every smearing value tested across the
-physical band, 4D action-phase growth yields only broom-class dynamics,
-with the classical channel restored on a quantized phase set.  Whether
-a quantum sector exists at greater depth or in the continuum
-formulation is open.  To date, 2D is the only place this framework has
-produced one.  What stands independent of their outcome:
-the sharp-4D collapse is not robust to weak smearing, the resonance set
-of a fixed-depth gate is finite and algebraic (gaps are
-integer-coefficient polynomials in ε), and the deeper invariant of the
-dichotomy is the zero-mode structure, which the nonlocality scale
-controls.
+enumerate (n ≤ 7): below the winding π/2, 4D action-phase growth
+yields only broom-class dynamics, with the classical channel restored
+on a quantized phase set (Lean-verified via the strengthened funding
+theorem); inside the winding band (π/2, π), every dimension tested —
+2D at j = 1, 4D at j = 4–6, 3D at j = 2–4 — supports covariant,
+everywhere-branching, forced-quantum dynamics with full support, in
+the physical smearing band.  The earlier draft's claim that the
+physical 4D band is dead was a low-winding artifact of our probe
+range, and is corrected here on the record.  What decides is not
+dimension but the winding W₀φ = a·p_d(l/ξ)^d/ℏ: the quantum sector
+exists in every dimension, in an ℏ-window set by the nonlocality
+scale.  Whether the full-gate band edge (0.96π at depth 7 in 2D)
+recedes further with depth, and whether the high-winding sliver
+structure supports genuine dynamics beyond the resonant
+partial-support survivor at φ = 8π, are open.
 
 ## 5′. Status ledger
 

@@ -30,10 +30,20 @@
   positivity is exactly sin(γ−β) > 0; first-quadrant membership alone
   does NOT suffice),
   forcing v = t = λ = 0, hence L = x₁ = x₂ = 0, contradicting the root
-  normalization.  Hypotheses 0 < δ, 0 < β < γ, 0 < η, γ + δ < π/2,
-  η + δ < π/2 cover the physical band (all angles are O(jε) there) with
-  room to spare.  The boundary phases δ = 0 and β = 0 are excluded —
-  exactly where the dust and broom spines survive.
+  normalization.
+
+  HYPOTHESIS SCOPE (strengthened 2026-08-01): the coefficient
+  positivity needs cos only of δ and β; the angles γ and δ+η may leave
+  the first quadrant.  The hypotheses are therefore 0 < δ < π/2,
+  0 < β < π/2, β < γ, 0 < η, γ + δ < π, η + δ < π.  For in-window
+  phases (δ < W₀φ, β = W₀φ − δ, γ = (W₀+W₁)φ − δ, η = 2W₀φ − δ) with
+  W₁/W₀ < 1 — which holds for every smeared dimension, since
+  W₁/W₀ = 1 − (1+|C₂|)ε — these hypotheses hold for ALL cover windings
+  W₀φ < π/2.  The theorem thus kills the entire sub-quadrant winding
+  region, matching the numerically exact feasibility boundary at
+  W₀φ = π/2 from below (trunc2_hbar_window.py): the lower edge of the
+  ℏ-window is theorem-exact.  The boundary phases δ = 0 and β = 0
+  are excluded — exactly where the dust and broom spines survive.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -52,8 +62,9 @@ infeasible: no nonnegative amplitudes satisfy the root, 2-chain and
 2-antichain equations. -/
 theorem smeared_truncation2_infeasible
     (δ β γ η x₁ x₂ v t L a lam : ℝ)
-    (hδ : 0 < δ) (hβ : 0 < β) (hβγ : β < γ) (hη : 0 < η)
-    (hq1 : γ + δ < π / 2) (hq2 : η + δ < π / 2)
+    (hδ : 0 < δ) (hδq : δ < π / 2) (hβ : 0 < β) (hβq : β < π / 2)
+    (hβγ : β < γ) (hη : 0 < η)
+    (hq1 : γ + δ < π) (hq2 : η + δ < π)
     (hx₁ : 0 ≤ x₁) (hx₂ : 0 ≤ x₂) (hv : 0 ≤ v) (ht : 0 ≤ t)
     (hL : 0 ≤ L) (ha : 0 ≤ a) (hlam : 0 ≤ lam)
     (Rre : x₁ * Real.cos β + x₂ * Real.cos δ = 1)
@@ -64,36 +75,24 @@ theorem smeared_truncation2_infeasible
     (Aim : a * Real.sin δ = 2 * L * Real.sin β + lam * Real.sin η) :
     False := by
   have hπ : (0:ℝ) < π / 2 := by positivity
-  have hδq : δ < π / 2 := by linarith
-  have hβq : β < π / 2 := by linarith
-  have hγq : γ < π / 2 := by linarith
-  have hηq : η < π / 2 := by linarith
   have sδ : 0 < Real.sin δ :=
     Real.sin_pos_of_pos_of_lt_pi hδ (by linarith [Real.pi_pos])
   have sβ : 0 < Real.sin β :=
     Real.sin_pos_of_pos_of_lt_pi hβ (by linarith [Real.pi_pos])
   have sγ : 0 < Real.sin γ :=
-    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith [Real.pi_pos])
-  have sη : 0 < Real.sin η :=
-    Real.sin_pos_of_pos_of_lt_pi hη (by linarith [Real.pi_pos])
+    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith)
   have cδ : 0 < Real.cos δ :=
-    Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], by linarith⟩
+    Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], hδq⟩
   have cβ : 0 < Real.cos β :=
-    Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], by linarith⟩
-  have cγ : 0 < Real.cos γ :=
-    Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], by linarith⟩
+    Real.cos_pos_of_mem_Ioo ⟨by linarith [Real.pi_pos], hβq⟩
   have sδβ : 0 < Real.sin (δ + β) :=
-    Real.sin_pos_of_pos_of_lt_pi (by linarith)
-      (by linarith [Real.pi_pos])
+    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith)
   have sδγ : 0 < Real.sin (δ + γ) :=
-    Real.sin_pos_of_pos_of_lt_pi (by linarith)
-      (by linarith [Real.pi_pos])
+    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith)
   have sδη : 0 < Real.sin (δ + η) :=
-    Real.sin_pos_of_pos_of_lt_pi (by linarith)
-      (by linarith [Real.pi_pos])
+    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith)
   have sγβ : 0 < Real.sin (γ - β) :=
-    Real.sin_pos_of_pos_of_lt_pi (by linarith)
-      (by linarith [Real.pi_pos])
+    Real.sin_pos_of_pos_of_lt_pi (by linarith) (by linarith)
   -- (C*): x₁ sin δ = v sin(δ+β) + t sin(δ+γ)
   have e1 := Real.sin_add δ β
   have e2 := Real.sin_add δ γ
