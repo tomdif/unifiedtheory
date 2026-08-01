@@ -123,8 +123,42 @@ combinatorially unreachable at n ≤ 7.) -/
 theorem n3_small_violates (N₂ N₃ : ℕ) (h : N₃ = 1 ∨ N₃ = 2 ∨ N₃ = 3) :
     (4 * N₂ + N₃) % 8 ≠ 0 := by omega
 
+/-- **The dust telescope** (arithmetic heart of the composability
+no-go).  At any resonance (W₀φ ∈ 2πℤ, φ ∈ 2πℤ) every channel from the
+n-antichain to a claw_d ⊔ points child carries phase +1, so the
+n-antichain's sum rule under orbit-factorization (antichains forced to
+amplitude 1) reads 1 = 1 + Σ_d C(n, d+1)·a(d+1) with a(d) = the claw_d
+amplitude: every claw dies.  Combined with support downward-closure
+(every non-antichain causet has a height-2 element whose principal
+downset is a claw), this forces the pure dust spine: composability is
+incompatible with branching in the resonant sector (orbit convention;
+DUST_THEOREM.md). -/
+theorem dust_telescope (n : ℕ) (a : ℕ → ℝ) (hpos : ∀ d, 0 ≤ a d)
+    (heq : (1 : ℝ) = 1 + ∑ d ∈ Finset.range n,
+      (n.choose (d + 1) : ℝ) * a (d + 1)) :
+    ∀ d ∈ Finset.range n, a (d + 1) = 0 := by
+  have hsum : ∑ d ∈ Finset.range n,
+      (n.choose (d + 1) : ℝ) * a (d + 1) = 0 := by linarith
+  have hterm : ∀ d ∈ Finset.range n,
+      (n.choose (d + 1) : ℝ) * a (d + 1) = 0 := by
+    intro d hd
+    have := (Finset.sum_eq_zero_iff_of_nonneg
+      (fun i _ => mul_nonneg (by positivity) (hpos (i + 1)))).mp hsum
+    exact this d hd
+  intro d hd
+  have h := hterm d hd
+  have hdn : d < n := Finset.mem_range.mp hd
+  have hc : (0 : ℝ) < (n.choose (d + 1) : ℝ) := by
+    have : 0 < n.choose (d + 1) :=
+      Nat.choose_pos (by omega : d + 1 ≤ n)
+    exact_mod_cast this
+  rcases mul_eq_zero.mp h with h' | h'
+  · exact absurd h' (ne_of_gt hc)
+  · exact h'
+
 #print axioms lone_imaginary_channel
 #print axioms four_chain_dies_at_8pi
 #print axioms n3_small_violates
+#print axioms dust_telescope
 
 end UnifiedTheory.Audit.KFCausalResonantSector

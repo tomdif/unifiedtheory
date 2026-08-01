@@ -1,0 +1,33 @@
+tree validated (A000112)
+survivor web rebuilt: 1081
+connected survivors per level: {1: 1, 2: 1, 3: 3, 4: 8, 5: 29, 6: 118, 7: 599}
+  round 0: 318 closure violations -> forced-zero now 1940
+closure fixed point after 2 round(s); forced-zero set 1940
+
+EXACT FACTORIZING MEMBER FOUND: support 7, branching nodes 0
+sample values (n <= 4):
+  n=1 conn (): 1
+  n=2 disc (): 1
+  n=2 conn ((1, 0),): 0
+  n=3 disc (): 1
+  n=3 conn ((1, 0), (2, 0)): 0
+  n=3 conn ((1, 0), (2, 0), (2, 1)): 0
+  n=3 conn ((2, 0), (2, 1)): 0
+  n=3 disc ((2, 1),): 0
+  n=4 disc (): 1
+  n=4 conn ((1, 0), (2, 0), (2, 1), (3, 0), (3, 1)): 0
+  n=4 conn ((1, 0), (2, 0), (3, 0)): 0
+  n=4 conn ((1, 0), (2, 0), (3, 0), (3, 2)): 0
+  n=4 conn ((2, 0), (2, 1), (3, 0), (3, 1)): 0
+  n=4 conn ((2, 0), (2, 1), (3, 0), (3, 1), (3, 2)): 0
+  n=4 disc ((2, 0), (3, 1)): 0
+  n=4 conn ((2, 1), (3, 0), (3, 1)): 0
+  n=4 conn ((2, 1), (3, 0), (3, 1), (3, 2)): 0
+  n=4 disc ((2, 1), (3, 1)): 0
+  n=4 disc ((2, 1), (3, 1), (3, 2)): 0
+  n=4 conn ((3, 0), (3, 1), (3, 2)): 0
+  n=4 disc ((3, 1), (3, 2)): 0
+  n=4 disc ((3, 2),): 0
+
+READING: factorizing member exists but is branch-free (deterministic) — composability incompatible with branching along this greedy path; not yet a theorem.
+DONE
