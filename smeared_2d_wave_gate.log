@@ -1,0 +1,18 @@
+causets per level: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+canon_fast validated against A000112
+eps=0.16 j=1 frac=0.25 phi=6.8295 [t2-ALIVE]:
+  support 2450 rounds 0 branching 405
+  [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318  n=7:2045/2045]
+eps=0.16 j=1 frac=0.5 phi=7.4800 [t2-ALIVE]:
+  support 2450 rounds 0 branching 405
+  [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318  n=7:2045/2045]
+eps=0.16 j=1 frac=0.75 phi=8.2673 [t2-ALIVE]:
+  support 2450 rounds 0 branching 405
+  [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318  n=7:2045/2045]
+eps=0.2 j=1 frac=0.5 phi=7.8540 [t2-ALIVE]:
+  support 0 rounds 0 branching 0
+  [EMPTY]
+eps=0.25 j=1 frac=0.5 phi=8.3776 [t2-DEAD (control: must be EMPTY)]:
+  support 0 rounds 0 branching 0
+  [EMPTY]
+DONE

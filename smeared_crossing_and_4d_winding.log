@@ -1,0 +1,39 @@
+tree validated (A000112)
+A1. 2D frac scan at eps=0.18, 0.20 (j=1):
+  2D eps=0.1800 j=1 frac=0.10 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1800 j=1 frac=0.25 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1800 j=1 frac=0.50 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1800 j=1 frac=0.75 t2=alive full-gate=EMPTY (rnds 0)
+  2D eps=0.1800 j=1 frac=0.90 t2=dead full-gate=EMPTY (rnds 0)
+  2D eps=0.2000 j=1 frac=0.10 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.2000 j=1 frac=0.25 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.2000 j=1 frac=0.50 t2=dead full-gate=EMPTY (rnds 0)
+  2D eps=0.2000 j=1 frac=0.75 t2=dead full-gate=EMPTY (rnds 0)
+  2D eps=0.2000 j=1 frac=0.90 t2=dead full-gate=EMPTY (rnds 0)
+A2. 2D crossing bisection at frac=0.5, j=1:
+  2D eps=0.1800 j=1 frac=0.50 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1900 j=1 frac=0.50 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1950 j=1 frac=0.50 t2=alive full-gate=EMPTY (rnds 0)
+  2D eps=0.1925 j=1 frac=0.50 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1938 j=1 frac=0.50 t2=alive full-gate=FULL (rnds 0)
+  2D eps=0.1944 j=1 frac=0.50 t2=alive full-gate=EMPTY (rnds 0)
+  2D eps=0.1941 j=1 frac=0.50 t2=alive full-gate=EMPTY (rnds 0)
+  2D full-gate crossing: eps* in (0.19375, 0.19406)
+B. 4D high-winding full gate at NMAX=6:
+  4D eps=0.0550 j=1 frac=0.50 phi=6.4609 t2=dead full-gate=EMPTY (rnds 0)
+    [EMPTY]
+  4D eps=0.0550 j=5 frac=0.10 phi=31.5897 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0550 j=5 frac=0.25 phi=31.8539 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0550 j=5 frac=0.50 phi=32.3043 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0550 j=5 frac=0.75 phi=32.7676 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0550 j=5 frac=0.90 phi=33.0520 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0450 j=6 frac=0.50 phi=38.5669 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+  4D eps=0.0625 j=4 frac=0.50 phi=25.9435 t2=alive full-gate=FULL (rnds 0)
+    [n=1:1/1  n=2:2/2  n=3:5/5  n=4:16/16  n=5:63/63  n=6:318/318]
+DONE
