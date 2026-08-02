@@ -1,0 +1,16 @@
+tree validated (A000112 through 16999)
+children built
+confined support 17152 {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 315, 7: 1956, 8: 14794}
+wave rows (4717, 17152)
+self-similar rows added: 3912
+sup rerun = 0.5352513327144708 (status 0)
+classical sample: 14794 classes hit; 14794/14794 confined stems covered
+classical mean ordering fraction at n=8 (confined mass): 0.5000
+argmax vs classical: L1 = 1.3117 (max 2), corr = 0.0075
+   argmax top stem: psi=0.0018 pcl=0.00004 r=0.536
+   argmax top stem: psi=0.0017 pcl=0.00005 r=0.679
+   argmax top stem: psi=0.0017 pcl=0.00006 r=0.500
+   argmax top stem: psi=0.0016 pcl=0.00005 r=0.464
+   argmax top stem: psi=0.0016 pcl=0.00002 r=0.500
+min-L1 distance from self-similar polytope to classical profile: None (status 2) [depth-7 plain-family failure was 77% relative]
+DONE
