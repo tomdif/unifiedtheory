@@ -141,14 +141,31 @@ fingerprint claimed in the abstract does not survive its first depth
 extension.
 
 What remains true: the depth-7 binding (628 dims consumed, the
-interval [0.2533, 0.4639]) is exact; the constraint's bite weakens
-as depth grows beyond its onset; and the trend now reads as
-CONVERGENCE TOWARD classical statistics with depth rather than
-permanent exclusion — the opposite physical moral from the one this
-paper's abstract drew.  The abstract's exclusion claim is hereby
-scoped to depth 7 and the falsification programme is closed with a
-negative outcome at its first test.  This section supersedes the
-abstract's framing pending redraft.
+interval [0.2533, 0.4639]) is exact, and the constraint's bite
+weakens as depth grows beyond its onset.  What is NOT yet in
+evidence (referee): a mechanism.  Two feasible depths and one
+monotone step are equally consistent with (a) the sup converging to
+the classical value, (b) the sup sailing past it (another 0.07 step
+lands at 0.60), or (c) the polytope dilating with depth as the
+unconstrained control does.  "Crossed the classical value" is the
+finding; "converging to it" is not a claim this data supports.
+
+THE DECIDING NUMBER (pre-registered before it lands): the depth-8
+infimum.  (i) inf rises toward the classical value as the sup
+crossed it -> the interval is NARROWING ONTO the classical point,
+and the result is not a dissolution but a CORRESPONDENCE CANDIDATE:
+self-similar quantum growth forced toward continuum sprinkling
+statistics in depth — a classical limit obtained rather than
+assumed, and a stronger claim than the one that died.  (ii) inf
+falls in step with the control's — the polytope is dilating, the
+constraint is empty of content in depth, and this section's negative
+closing stands as written.  (iii) intermediate — more depths needed,
+no reading.  The abstract redraft WAITS on this number.
+
+The abstract's exclusion claim is hereby scoped to depth 7 and the
+falsification programme's first test is closed negative on the
+exclusion reading.  This section supersedes the abstract's framing
+pending the inf-resolved redraft.
 
 ## 4. Honest scope
 
