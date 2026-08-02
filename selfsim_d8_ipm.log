@@ -4,3 +4,5 @@ confined support 17152 {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 315, 7: 1956, 8: 1479
 wave rows (4717, 17152)
 self-similar rows added: 3912
   [selfsim d8 IPM] sup = 0.5352513327144708  (status 0)
+  [selfsim d8 IPM] inf = 0.19625741911367697  (status 0)
+DONE

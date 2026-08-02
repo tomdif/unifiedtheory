@@ -35,11 +35,12 @@ unconstrained covariant family reaches [0.124, 0.769] and so permits
 continuum-mimicking statistics.  The Born-proxy (ψ²-weighted) statistic
 conforms empirically: multi-start ascent over the polytope finds no
 member above 0.461 (exact supremum open).  The one binding principle
-forbids what the unconstrained theory allows.  The falsification target is
-one-sided: if the supremum stays bounded away from 1/2 as depth grows,
-the principle permanently excludes classical-sprinkling statistics; if
-it drifts upward, the exclusion dissolves visibly, one number per
-depth.
+forbids what the unconstrained theory allows.  The falsification target was
+one-sided and has now been TESTED: at depth 8 the supremum crossed
+1/2 (0.5353) and the exclusion dissolved, exactly as the dissolution
+branch of this programme anticipated (§3′).  The programme is closed
+negative at its first depth extension; what it delivered is the
+onset structure and one completed falsification cycle.
 
 ## 1. The selection ledger (all certificates hand-checkable)
 
