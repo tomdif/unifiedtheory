@@ -117,6 +117,15 @@ theorem four_chain_dies_at_8pi
     sin_eight_pi sin_four_pi sin_three_pi
     (by rw [sin_seven_pi_div_two]; norm_num) im
 
+/-- **The lone non-real channel** (kernel of the Necessity Theorem,
+NECESSITY_THEOREM.md): if the imaginary part of a parent equation
+reduces to a single non-real channel, that channel's amplitude
+vanishes.  Combined with projection and jump-locality/closure this
+gives gate ⊆ hereditary-real at every depth and resonance. -/
+theorem lone_nonreal_channel (a θ : ℝ) (hs : Real.sin θ ≠ 0)
+    (him : a * Real.sin θ = 0) : a = 0 :=
+  (mul_eq_zero.mp him).resolve_right hs
+
 /-- **Small-N₃ arithmetic kill.**  The reality congruence
 4 N₂ + N₃ ≡ 0 (mod 8) has no solution with N₃ ∈ {1, 2, 3}: a growth
 stage carrying one, two or three interval-3 links is never
@@ -167,5 +176,6 @@ theorem dust_telescope_orbit_factorizing (n : ℕ) (a : ℕ → ℝ) (hpos : ∀
 #print axioms four_chain_dies_at_8pi
 #print axioms n3_small_violates
 #print axioms dust_telescope_orbit_factorizing
+#print axioms lone_nonreal_channel
 
 end UnifiedTheory.Audit.KFCausalResonantSector
