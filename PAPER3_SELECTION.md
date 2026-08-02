@@ -116,6 +116,40 @@ family cannot impersonate the classical ensemble even when asked to,
 which also disarms the concern that the optimization target was
 trivially achievable.
 
+## 3′. The depth-8 test: the exclusion dissolves (2026-08-02)
+
+The falsification programme of Section 3 ran its first depth test,
+with readings pre-registered (selfsim_depth8.py, selfsim_d8_ipm.log;
+pipeline gated on exact reproduction of the depth-7 intervals, which
+passed).  Two structural facts and one verdict:
+
+(i) FEASIBILITY ONSET.  The one-step self-similar polytope is
+genuinely empty at depths 5 and 6 (direct feasibility LPs, not a
+scan artifact): one-step Bombelli self-similarity is first
+satisfiable at depth 7.  The depth-7 interval was therefore the
+constraint's onset point — where it binds tightest — not a generic
+sample.
+
+(ii) THE DEPTH-8 NUMBER.  sup r_psi(8) = 0.5353 (interior point,
+converged; plain-confined control at depth 8: [0.1050, 0.8041],
+straddling both targets as the control must).  The upper endpoint
+moved 0.4639 -> 0.5353 in one level, crossing both 1/2 and the
+classical sprinkling value: THE EXCLUSION WAS A DEPTH-ONSET
+ARTIFACT.  At depth 8 the one-step self-similar family permits
+continuum-mimicking ordering statistics, and the falsifiable
+fingerprint claimed in the abstract does not survive its first depth
+extension.
+
+What remains true: the depth-7 binding (628 dims consumed, the
+interval [0.2533, 0.4639]) is exact; the constraint's bite weakens
+as depth grows beyond its onset; and the trend now reads as
+CONVERGENCE TOWARD classical statistics with depth rather than
+permanent exclusion — the opposite physical moral from the one this
+paper's abstract drew.  The abstract's exclusion claim is hereby
+scoped to depth 7 and the falsification programme is closed with a
+negative outcome at its first test.  This section supersedes the
+abstract's framing pending redraft.
+
 ## 4. Honest scope
 
 All results are at depth ≤ 8, in 2D, for the literal ansatz (nonneg

@@ -1,0 +1,9 @@
+tree validated (A000112 through 16999)
+children built
+confined support 17152 {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 315, 7: 1956, 8: 14794}
+wave rows (4717, 17152)
+self-similar rows added: 3912
+plain confined (validation against [0.1050, 0.8041]):
+  [plain d8 CC] sup = 0.8061477751289997
+  [plain d8 CC] inf = 0.10500767795288016
+self-similar (THE NUMBER):
