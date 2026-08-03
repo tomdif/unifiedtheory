@@ -5352,6 +5352,17 @@ import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
 -- plus equal Born weights rigidly leaves only the conjugate phases +/-i.
 import UnifiedTheory.Audit.KFCausalHolonomyInterferenceLaw
 import UnifiedTheory.Audit.KFCausalHolonomyBornProjectiveGrowth
+-- The holonomy instrument is now coupled to the repo's actual harmonic
+-- unlabeled-birth amplitudes.  At rank one the two causal transitions are
+-- exactly the scalar specialization of the matrix split and lift to a CPTP
+-- law.  At the first three-bin parent, blind product coupling is coherently
+-- exhaustive but has Born mass 3681/2113; no global complex rescaling can
+-- repair both normalizations.  The unique radial correction on the zero-sum
+-- S3 component has scale sqrt(2113/4465) and yields an explicit six-outcome
+-- CPTP, normalized, strongly positive process satisfying matched and full
+-- cylinder projectivity at every record depth.  This is a finite local
+-- candidate coupling law, not yet a single all-rank causal-set dynamics.
+import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
