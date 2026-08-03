@@ -1,0 +1,11 @@
+tree validated
+orbit children (sharp) built
+
+B1. sharp-2D ORBIT-counting gate (labeled record: full 2450; pi/4 unique dead phase):
+  phi = 0.90: FULL  
+  phi = pi/3: FULL  
+  phi = pi/4 [THE TEST]: partial:653  {1: 1, 2: 2, 3: 5, 4: 11, 5: 32, 6: 109, 7: 493}
+
+B2. resonance eps=1/4 phi=8pi under ORBIT counting (labeled record: 1081-web; necessity proof mu-blind -> predict unchanged):
+  support 1081 (labeled: 1081); == hereditary-real: True
+DONE
