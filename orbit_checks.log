@@ -1,0 +1,20 @@
+(a) phi=pi/8: support 216, downward closed: True
+(a) phi=pi/6: support 231, downward closed: True
+(a) phi=0.5: support 231, downward closed: True
+(a) phi=pi/4: support 162, downward closed: True
+
+(b) set relations:
+  pi/6 vs 0.5: equal=True  pi/6-only=0  0.5-only=0
+  pi/8 vs pi/6: equal=False  pi/8-only=0  pi/6-only=15
+  pi/4 vs pi/8: equal=False  pi/4-only=61  pi/8-only=115
+  pi/4 vs pi/6: equal=False  pi/4-only=54  pi/6-only=123
+
+(c) dip refinement (depth 6):
+  phi=0.7000: support 95
+  phi=0.7500: support 90
+  phi=0.7854: support 405
+  phi=0.8200: support 405
+  phi=0.8700: support 405
+  phi=0.9500: support 405
+  phi=1.0000: support 405
+DONE
