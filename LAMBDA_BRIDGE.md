@@ -78,7 +78,21 @@ Measured, n = 2..7, all three phases, both members, both weightings:
 
 CONSEQUENCE, per the registered conditionals: the DESI-facing
 amplitude statement (step 6) was conditional on reading (i) and is
-NOT licensed.  The bridge's first contact stands as: at depths
+NOT licensed.  THE TWO-SENTENCE DISTINCTION (referee), explicit:
+the claim is "comparison unlicensed" - the theory as computed does
+not produce the statistics the everpresent framework feeds to data,
+so no fit may be run.  The claim is NOT "everpresent-Lambda
+falsified in this class": alpha is measured on six points in the
+deep-UV (n = 2..7) while everpresent-Lambda is an asymptotic
+statement ~10^120 elements away, and the onset lesson cuts
+symmetrically - a scaling exponent measured at depth 7 has no more
+right to extrapolate than the constraint that dissolved at depth 8
+had.  "At accessible depth" is the entire claim.
+
+EXPONENT WIDTH (referee): alpha ~ 0.8-1 brackets two different
+stories - diffusive-with-correlations versus ballistic - and six
+points cannot split them.  The note says so; the n = 8 extension
+may narrow it.  The bridge's first contact stands as: at depths
 n <= 7, in this observable, the covariant family's intrinsic drift
 class is NOT everpresent-shaped.  The one honest escape route is
 depth (small-n transients; the linear envelope may reflect
@@ -87,3 +101,33 @@ argument: the n = 8 extension is the registered next step of this
 thread, with the same three readings.  Until it runs, the program's
 data-facing thread reports: shape measured, sign measured, bridge
 not established.
+
+## The self-tuning follow-up, pre-registered BEFORE any deeper run
+
+The unpromoted observation - <S>/n declining toward ~0 - is what a
+dynamically relaxing effective Lambda looks like, and unlike
+everpresent-Lambda it would be THIS THEORY'S OWN drift law rather
+than an imported ansatz.  Registered now (referee):
+  SURVIVES if: the limit of <S>/n - 1 is exactly -1 (i.e. <S>/n -> 0)
+  under the n = 8 extension and beyond, with a convergence rate
+  distinguishable from finite-size boundary transients (the rate
+  must stabilize as a function of n, not track the boundary-layer
+  fraction of the ensemble).
+  DIES if: the limit sits elsewhere than -1, or the rate is
+  consistent with boundary effects (tracks the fraction of
+  near-boundary elements).
+If it survives, the bridge's negative result acquires a positive
+successor: the theory replacing the phenomenology it declined to
+license with a drift law of its own.
+
+## Window-edge uniformity (referee): measured (lambda_edges.log)
+
+At phi = 0.15, 0.30 (lower edge) and 1.40, 1.50 (approaching pi/2):
+the near-linear fluctuation envelope holds everywhere (deltaS/sqrt(n)
+rises monotonically to 2.0-3.0 at n = 7, slightly STEEPER at the low
+edge), and the negative Lambda_eff drift holds everywhere (to
+~ -0.9..-1.1, one n=7 fluctuation blip at phi = 0.3).  Readings
+(ii)+(iii) are WINDOW-WIDE, not a mid-window artifact.  One edge
+datum recorded: the max-min member's t* collapses at the low edge
+(4e-6, 3e-5) while sitting at 1.0 near pi/2 - the interior thins
+toward the lower window edge.
