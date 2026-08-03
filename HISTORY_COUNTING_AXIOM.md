@@ -105,15 +105,19 @@ pi/4-family is set-DISTINCT (54-61 members in neither neighbor):
 at least two lineages - a nested plateau family and a separate
 quadrature family.
 
-(c) ISOLATION: phi = 0.7854 (four decimals from pi/4, but not pi/4)
-gives FULL support 405, as do 0.82, 0.87, 0.95, 1.00.  Exact pi/4
-gives 162.  THE ORBIT-QUADRATURE FAMILY IS AN ISOLATED-POINT
-PHENOMENON inside a locally-full neighborhood - structurally a
-resonance (the referee's conjecture vindicated at the level of
-phase-topology, even though mod-8 congruences do not carve it).
-The dip framing is dead: it is not a minimum of a continuous
-profile but an isolated special point, like every other exactly
-solved object in this program.
+(c) ISOLATION [QUARANTINED WITH THE PAIR, referee 2026-08-03]:
+phi = 0.7854 gives FULL 405 while exact pi/4 gives 162 - but this
+asserts a discontinuity across two millionths of a radian, resolved
+by the same float solver whose 0.70/0.75 output is quarantined
+below, and isolated-point-at-the-special-value is simultaneously
+the resonance signature AND the exact shape of numerical knife-edge
+trouble.  At pi/4 every channel phase is an 8th root of unity, so
+the gate can be run in EXACT Z[zeta_8] arithmetic with no tolerance
+anywhere; the isolation claim and the 162 itself carry no reading
+until that certificate exists (queued behind the Lambda bridge,
+with the (1-zeta_8)-valuation extraction - the ramified prime above
+2 - as the carving candidate the rational mod-8 projection could
+not see, and the algebraic-threshold derivation for the band).
 
 UNVERIFIED AND QUARANTINED: phi = 0.70 and 0.75 returned supports
 95 and 90 - non-monotone against the 231-plateau and the full
