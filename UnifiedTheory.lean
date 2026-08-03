@@ -5342,6 +5342,16 @@ import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
 -- growth dynamically produces this deliberately constructed order—remains
 -- open, as does a topological-open formulation absent from upstream CSpec.
 import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
+-- Native continuation geometry fixes the normalized S3 visibility character.
+-- A relative three-cycle in quadrature gives the exact finite rank-two kernel
+-- with coherence i/4.  The operator promotion uses K0=(I-iC)/2 and
+-- K1=(I+iC)/2 on the trace-zero sheet carrier: the pair is simultaneously
+-- Born complete and coherently exhaustive, so arbitrary finite depths are
+-- CPTP, strongly positive, and projective under both partial-trace and full
+-- double-cylinder refinement.  In the symmetric phase family, completeness
+-- plus equal Born weights rigidly leaves only the conjugate phases +/-i.
+import UnifiedTheory.Audit.KFCausalHolonomyInterferenceLaw
+import UnifiedTheory.Audit.KFCausalHolonomyBornProjectiveGrowth
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
