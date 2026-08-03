@@ -5367,11 +5367,15 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- the canonical invariant-line plus zero-sum decomposition.  The Born
 -- equation fixes the radial norm uniquely off the uniform boundary.  For
 -- actual causal-set growth the construction centers only on physical
--- successors, hence never creates forbidden births; a compatible all-rank
--- scale profile yields one law that is coherently normalized, locally Born
--- normalized, exactly cylinder-projective, and strongly positive.  Uniform
--- multi-successor parents obey a proved scalar no-go, so a global physical
--- law must supply anisotropy or use a mixed/operator-valued completion.
+-- successors, hence never creates forbidden births.  The actual harmonic law
+-- is now proved to have that physical support.  Every nonuniform branch has
+-- an explicit positive-excess square-root scale, and an all-rank harmonic
+-- scale profile exists iff every genuinely branching harmonic transition is
+-- nonuniform.  Such a profile yields one coherently and Born normalized,
+-- exactly cylinder-projective, strongly positive law.  Proving that final
+-- all-parent nonuniformity condition, or finding its first counterexample, is
+-- now the precise scalar frontier; uniform branching requires an operator or
+-- mixed completion.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;

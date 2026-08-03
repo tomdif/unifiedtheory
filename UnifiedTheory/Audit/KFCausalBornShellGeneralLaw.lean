@@ -33,6 +33,10 @@ open UnifiedTheory.Audit.KFOrientationGrowthDecoherence
 open UnifiedTheory.Audit.KFCausalHolonomyBornProjectiveGrowth
 open UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetTransitionEdges
+open UnifiedTheory.Audit.KFCausalSetBellCausality
+open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
+open UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
 
 universe u
 
@@ -399,6 +403,51 @@ theorem no_support_Born_scale_of_uniform_branching
   have hLt := supportUniformAmplitude_re_lt_one support hMultiple
   linarith
 
+/-- Canonical nonnegative radial scale determined by a positive support Born
+excess. -/
+def supportBornShellScale {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (excess : ℝ) : ℂ :=
+  (Real.sqrt
+    ((1 - (support.card : ℝ)⁻¹) / excess) : ℝ)
+
+/-- Strict excess above the uniform Cauchy floor is sufficient to solve the
+Born-shell equation, with an explicit nonnegative real scale. -/
+theorem supportBornShellScale_solves_of_strict_excess
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hMultiple : 1 < support.card)
+    (amplitude : Branch → ℂ) (excess : ℝ) (hExcessPositive : 0 < excess)
+    (hExcess :
+      supportComplexBornMass support amplitude -
+          supportUniformAmplitude support = (excess : ℂ)) :
+    star (supportBornShellScale support excess) *
+        supportBornShellScale support excess *
+        (supportComplexBornMass support amplitude -
+          supportUniformAmplitude support) =
+      1 - supportUniformAmplitude support := by
+  have hCardPositive : (0 : ℝ) < support.card := by
+    exact_mod_cast (Nat.zero_lt_of_lt hMultiple)
+  have hCardOne : (1 : ℝ) < support.card := by exact_mod_cast hMultiple
+  have hInvLt : (support.card : ℝ)⁻¹ < 1 := by
+    exact inv_lt_one_of_one_lt₀ hCardOne
+  have hGapNonnegative :
+      0 ≤ 1 - (support.card : ℝ)⁻¹ := le_of_lt (sub_pos.mpr hInvLt)
+  have hRatioNonnegative :
+      0 ≤ (1 - (support.card : ℝ)⁻¹) / excess :=
+    div_nonneg hGapNonnegative (le_of_lt hExcessPositive)
+  rw [hExcess]
+  unfold supportBornShellScale supportUniformAmplitude
+  rw [show star ((Real.sqrt
+      ((1 - (support.card : ℝ)⁻¹) / excess) : ℝ) : ℂ) =
+      ((Real.sqrt
+        ((1 - (support.card : ℝ)⁻¹) / excess) : ℝ) : ℂ) by simp]
+  rw [← Complex.ofReal_mul, ← Complex.ofReal_mul]
+  rw [show Real.sqrt ((1 - (support.card : ℝ)⁻¹) / excess) *
+      Real.sqrt ((1 - (support.card : ℝ)⁻¹) / excess) =
+        (1 - (support.card : ℝ)⁻¹) / excess by
+    simpa [pow_two] using Real.sq_sqrt hRatioNonnegative]
+  rw [div_mul_cancel₀ _ (ne_of_gt hExcessPositive)]
+  simp
+
 theorem supportCenteredAmplitude_sum_zero
     {Branch : Type u} [Fintype Branch]
     (support : Finset Branch) (hSupport : support.Nonempty)
@@ -477,6 +526,65 @@ theorem supportCenteredAmplitude_bornMass
         rw [hStarSum, hCoherent, hUniformNorm]
         ring
     _ = _ := by rfl
+
+/-- The real squared norm of the support-relative zero-sum component. -/
+def supportBornExcess {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ) : ℝ :=
+  ∑ branch ∈ support,
+    Complex.normSq (supportCenteredAmplitude support amplitude branch)
+
+theorem supportBornExcess_eq_complex_difference
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hSupport : support.Nonempty)
+    (amplitude : Branch → ℂ)
+    (hCoherent : ∑ branch ∈ support, amplitude branch = 1) :
+    (supportBornExcess support amplitude : ℂ) =
+      supportComplexBornMass support amplitude -
+        supportUniformAmplitude support := by
+  rw [← supportCenteredAmplitude_bornMass support hSupport amplitude hCoherent]
+  unfold supportBornExcess supportComplexBornMass
+  rw [Complex.ofReal_sum]
+  apply Finset.sum_congr rfl
+  intro branch _hBranch
+  rw [Complex.normSq_eq_conj_mul_self]
+  rfl
+
+theorem supportBornExcess_pos_of_nonuniform
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ)
+    (hNonuniform : ∃ branch ∈ support,
+      amplitude branch ≠ supportUniformAmplitude support) :
+    0 < supportBornExcess support amplitude := by
+  obtain ⟨branch, hBranch, hDifferent⟩ := hNonuniform
+  unfold supportBornExcess
+  apply Finset.sum_pos'
+  · intro other _hOther
+    exact Complex.normSq_nonneg _
+  · refine ⟨branch, hBranch, Complex.normSq_pos.mpr ?_⟩
+    simpa [supportCenteredAmplitude, sub_ne_zero] using hDifferent
+
+/-- Every coherent nonuniform amplitude on a multi-element support admits an
+explicit nonnegative radial Born-shell scale. -/
+theorem exists_support_Born_scale_of_nonuniform
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hSupport : support.Nonempty)
+    (hMultiple : 1 < support.card) (amplitude : Branch → ℂ)
+    (hCoherent : ∑ branch ∈ support, amplitude branch = 1)
+    (hNonuniform : ∃ branch ∈ support,
+      amplitude branch ≠ supportUniformAmplitude support) :
+    ∃ scale : ℂ,
+      star scale * scale *
+          (supportComplexBornMass support amplitude -
+            supportUniformAmplitude support) =
+        1 - supportUniformAmplitude support := by
+  let excess := supportBornExcess support amplitude
+  have hExcessPositive : 0 < excess :=
+    supportBornExcess_pos_of_nonuniform support amplitude hNonuniform
+  refine ⟨supportBornShellScale support excess, ?_⟩
+  apply supportBornShellScale_solves_of_strict_excess support hMultiple
+    amplitude excess hExcessPositive
+  exact (supportBornExcess_eq_complex_difference
+    support hSupport amplitude hCoherent).symm
 
 theorem finiteSupportBornShellCorrection_bornMass_one
     {Branch : Type u} [Fintype Branch]
@@ -569,6 +677,58 @@ theorem finiteSupportBornShellCorrection_bornMass_one
 
 /-! ## 6. All-rank physical causal completion -/
 
+/-- Coherent aggregation over raw precursor slots has exact physical support
+for every covariant edge law, independently of its weights. -/
+theorem unlabeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+    (edgeLaw : CovariantComplexCausalEdgeAmplitude) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hNotPhysical : ¬ IsUnlabeledOneElementExtension parent child) :
+    unlabeledAggregatedCausalEdgeAmplitude edgeLaw parent child = 0 := by
+  revert hNotPhysical
+  refine Quotient.inductionOn parent ?_
+  intro parentRepresentative hNotPhysicalRepresentative
+  have hCard : Fintype.card
+      (LabeledCausalTransitionFiber parentRepresentative child) = 0 := by
+    change labeledCausalTransitionMultiplicity parentRepresentative child = 0
+    exact causalTransitionMultiplicity_eq_zero_of_not_physical
+      (Quotient.mk _ parentRepresentative) child hNotPhysicalRepresentative
+  letI : IsEmpty (LabeledCausalTransitionFiber parentRepresentative child) :=
+    Fintype.card_eq_zero_iff.mp hCard
+  simp [unlabeledAggregatedCausalEdgeAmplitude,
+    labeledAggregatedCausalEdgeAmplitude]
+
+/-- The actual harmonic critical transition is supported exactly on genuine
+one-element unlabeled causal extensions. -/
+theorem harmonicCriticalTransition_eq_zero_of_not_physical
+    (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hNotPhysical : ¬ IsUnlabeledOneElementExtension parent child) :
+    harmonicCriticalTransition chirality parent child = 0 := by
+  unfold harmonicCriticalTransition
+  rw [unlabeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+    (interactingChiralCausalEdgeAmplitude
+      (harmonicCriticalPairCoupling n) chirality)
+    parent child hNotPhysical]
+  simp
+
+theorem harmonicCriticalTransition_sum_on_physical_support
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n) :
+    ∑ child ∈ physicalCausalSuccessors n pathPrefix,
+        (harmonicCriticalCausalSetGrowthLaw chirality).transition
+          n pathPrefix child = 1 := by
+  change ∑ child ∈ physicalCausalSuccessors n pathPrefix,
+      harmonicCriticalTransition chirality
+        (currentUnlabeledCausalOrder n pathPrefix) child = 1
+  rw [Finset.sum_subset (Finset.subset_univ _) (fun child _hAll hNotMem =>
+    harmonicCriticalTransition_eq_zero_of_not_physical chirality
+      (currentUnlabeledCausalOrder n pathPrefix) child (by
+        simpa [physicalCausalSuccessors] using hNotMem))]
+  exact harmonicCriticalTransition_sum_one chirality
+    (currentUnlabeledCausalOrder n pathPrefix)
+
 /-- The exact data needed to promote a normalized causal growth law to the
 intersection of its coherent-normalization hyperplane and Born unit sphere.
 The support field is not optional: it prevents the correction from creating
@@ -588,6 +748,127 @@ structure PhysicalBornShellProfile
             (law.transition n pathPrefix) -
           supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)) =
       1 - supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)
+
+/-- For the actual harmonic law, physical support is now a theorem.  Its only
+remaining scalar completion datum is therefore a radial scale solving the
+local Born equation at every parent. -/
+structure HarmonicCriticalBornShellScale (chirality : Fin 2) where
+  scale : ∀ n : ℕ, RankedGrowthPath CausalSetGrowthBranch n → ℂ
+  compatible : ∀ (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+    star (scale n pathPrefix) * scale n pathPrefix *
+        (supportComplexBornMass (physicalCausalSuccessors n pathPrefix)
+            ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+              n pathPrefix) -
+          supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)) =
+      1 - supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)
+
+/-- The one remaining all-parent condition after support has been derived:
+every genuinely branching harmonic transition must have a nonzero zero-sum
+component. -/
+def HarmonicCriticalNonuniformOnBranching (chirality : Fin 2) : Prop :=
+  ∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+    1 < (physicalCausalSuccessors n pathPrefix).card →
+      ∃ child ∈ physicalCausalSuccessors n pathPrefix,
+        (harmonicCriticalCausalSetGrowthLaw chirality).transition
+            n pathPrefix child ≠
+          supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)
+
+theorem harmonicCritical_local_Born_scale_exists
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (hNonuniform : 1 < (physicalCausalSuccessors n pathPrefix).card →
+      ∃ child ∈ physicalCausalSuccessors n pathPrefix,
+        (harmonicCriticalCausalSetGrowthLaw chirality).transition
+            n pathPrefix child ≠
+          supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)) :
+    ∃ scale : ℂ,
+      star scale * scale *
+          (supportComplexBornMass (physicalCausalSuccessors n pathPrefix)
+              ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+                n pathPrefix) -
+            supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)) =
+        1 - supportUniformAmplitude
+          (physicalCausalSuccessors n pathPrefix) := by
+  let support := physicalCausalSuccessors n pathPrefix
+  have hSupport : support.Nonempty :=
+    physicalCausalSuccessors_nonempty n pathPrefix
+  by_cases hSingleton : support.card = 1
+  · refine ⟨0, ?_⟩
+    simp [supportUniformAmplitude, support, hSingleton]
+  · have hMultiple : 1 < support.card := by
+      have hPositive := physicalCausalSuccessors_card_pos n pathPrefix
+      change 0 < support.card at hPositive
+      omega
+    apply exists_support_Born_scale_of_nonuniform support hSupport hMultiple
+      ((harmonicCriticalCausalSetGrowthLaw chirality).transition n pathPrefix)
+    · exact harmonicCriticalTransition_sum_on_physical_support
+        chirality n pathPrefix
+    · exact hNonuniform hMultiple
+
+/-- Choice of the canonical normalization class at every parent.  The choice
+is only of a phase representative; `finiteBornShell_scale_normSq_unique`
+already proves that the squared modulus is forced. -/
+noncomputable def harmonicCriticalBornShellScaleOfNonuniform
+    (chirality : Fin 2)
+    (hNonuniform : HarmonicCriticalNonuniformOnBranching chirality) :
+    HarmonicCriticalBornShellScale chirality where
+  scale := fun n pathPrefix => Classical.choose
+    (harmonicCritical_local_Born_scale_exists chirality n pathPrefix
+      (hNonuniform n pathPrefix))
+  compatible := fun n pathPrefix => Classical.choose_spec
+    (harmonicCritical_local_Born_scale_exists chirality n pathPrefix
+      (hNonuniform n pathPrefix))
+
+/-- Exact frontier theorem: a scalar all-rank harmonic Born-shell completion
+exists if and only if the actual harmonic transition avoids the uniform
+multi-successor boundary at every parent. -/
+theorem harmonicCriticalBornShellScale_nonempty_iff_nonuniform
+    (chirality : Fin 2) :
+    Nonempty (HarmonicCriticalBornShellScale chirality) ↔
+      HarmonicCriticalNonuniformOnBranching chirality := by
+  classical
+  constructor
+  · rintro ⟨radial⟩ n pathPrefix hMultiple
+    let support := physicalCausalSuccessors n pathPrefix
+    by_contra hExists
+    push_neg at hExists
+    have hSupport : support.Nonempty :=
+      physicalCausalSuccessors_nonempty n pathPrefix
+    have hMass :
+        supportComplexBornMass support
+            ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+              n pathPrefix) =
+          supportComplexBornMass support
+            (fun _ : CausalSetGrowthBranch n =>
+              supportUniformAmplitude support) := by
+      unfold supportComplexBornMass
+      apply Finset.sum_congr rfl
+      intro child hChild
+      rw [hExists child hChild]
+    have hCompatible := radial.compatible n pathPrefix
+    change 1 < support.card at hMultiple
+    change star (radial.scale n pathPrefix) * radial.scale n pathPrefix *
+        (supportComplexBornMass support
+            ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+              n pathPrefix) - supportUniformAmplitude support) =
+      1 - supportUniformAmplitude support at hCompatible
+    rw [hMass] at hCompatible
+    exact (no_support_Born_scale_of_uniform_branching
+      support hSupport hMultiple (radial.scale n pathPrefix)) hCompatible
+  · intro hNonuniform
+    exact ⟨harmonicCriticalBornShellScaleOfNonuniform
+      chirality hNonuniform⟩
+
+def harmonicCriticalPhysicalBornShellProfile (chirality : Fin 2)
+    (radial : HarmonicCriticalBornShellScale chirality) :
+    PhysicalBornShellProfile (harmonicCriticalCausalSetGrowthLaw chirality) where
+  scale := radial.scale
+  supported := by
+    intro n pathPrefix child hNotPhysical
+    exact harmonicCriticalTransition_eq_zero_of_not_physical chirality
+      (currentUnlabeledCausalOrder n pathPrefix) child hNotPhysical
+  compatible := radial.compatible
 
 theorem physical_transition_sum_on_support
     (law : RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch)
@@ -706,16 +987,76 @@ theorem physicalBornShell_infiniteCylinder_promotion
     infiniteRankedCylinderDecoherence_stronglyPositive _,
     infiniteRankedCylinderDecoherence_normalized _⟩
 
+def harmonicCriticalBornShellGrowthLaw (chirality : Fin 2)
+    (radial : HarmonicCriticalBornShellScale chirality) :
+    RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch :=
+  physicalBornShellGrowthLaw (harmonicCriticalCausalSetGrowthLaw chirality)
+    (harmonicCriticalPhysicalBornShellProfile chirality radial)
+
+/-- The harmonic specialization is physical and doubly normalized at every
+parent once its radial equations are solved. -/
+theorem harmonicCriticalBornShell_all_rank (chirality : Fin 2)
+    (radial : HarmonicCriticalBornShellScale chirality) :
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+      ∑ child, (harmonicCriticalBornShellGrowthLaw chirality radial).transition
+        n pathPrefix child = 1) ∧
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+      finiteComplexBornMass
+        ((harmonicCriticalBornShellGrowthLaw chirality radial).transition
+          n pathPrefix) = 1) ∧
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+      (child : CausalSetGrowthBranch n),
+      ¬ IsPhysicalCausalGrowthStep n pathPrefix child →
+        (harmonicCriticalBornShellGrowthLaw chirality radial).transition
+          n pathPrefix child = 0) := by
+  exact physicalBornShell_all_rank_capstone _ _
+
+/-- Actual-law cylinder promotion.  Once the harmonic radial equations are
+solved, no additional support, projectivity, positivity, or infinite-cylinder
+axiom is needed. -/
+theorem harmonicCriticalBornShell_promotion (chirality : Fin 2)
+    (radial : HarmonicCriticalBornShellScale chirality) :
+    (∀ n, IsNormalizedGrowthFunctional
+        (finiteRankedDepthDecoherence
+          (harmonicCriticalBornShellGrowthLaw chirality radial) n))
+      ∧ (∀ (n) (event₁ event₂ :
+            Finset (RankedGrowthPath CausalSetGrowthBranch n)),
+          ∀ steps,
+            growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  (harmonicCriticalBornShellGrowthLaw chirality radial)
+                  (n + steps))
+                (refineRankedGrowthEventBy event₁ steps)
+                (refineRankedGrowthEventBy event₂ steps) =
+              growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  (harmonicCriticalBornShellGrowthLaw chirality radial) n)
+                event₁ event₂)
+      ∧ IsStronglyPositiveGrowthFunctional
+          (infiniteRankedCylinderDecoherence
+            (harmonicCriticalBornShellGrowthLaw chirality radial))
+      ∧ infiniteRankedCylinderDecoherence
+          (harmonicCriticalBornShellGrowthLaw chirality radial)
+          (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch)
+          (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1 := by
+  exact physicalBornShell_infiniteCylinder_promotion _ _
+
 #print axioms finiteCenteredAmplitude_bornMass
 #print axioms finiteBornShellCorrection_bornMass_one
 #print axioms finiteBornShell_scale_normSq_unique
 #print axioms no_radial_Born_repair_of_uniform_branching
 #print axioms finiteBornShellCorrection_equivariant
 #print axioms finiteBornShell_general_capstone
+#print axioms supportBornShellScale_solves_of_strict_excess
+#print axioms exists_support_Born_scale_of_nonuniform
 #print axioms supportCenteredAmplitude_bornMass
 #print axioms finiteSupportBornShellCorrection_bornMass_one
+#print axioms harmonicCriticalTransition_eq_zero_of_not_physical
+#print axioms harmonicCriticalBornShellScale_nonempty_iff_nonuniform
 #print axioms physicalBornShell_all_rank_capstone
 #print axioms physicalBornShell_infiniteCylinder_promotion
+#print axioms harmonicCriticalBornShell_all_rank
+#print axioms harmonicCriticalBornShell_promotion
 
 end
 

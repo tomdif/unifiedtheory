@@ -666,10 +666,15 @@
 > all-rank scale profile gives a law that vanishes on forbidden births, has
 > coherent sum and Born mass both one at every parent, and inherits normalized,
 > strongly positive, exactly projective infinite-cylinder semantics. The
-> squared radial modulus is unique off the uniform boundary. A uniform parent
-> with multiple successors has no scalar radial repair, so existence of a
-> global profile remains a precise dynamical condition rather than a theorem
-> about the present harmonic law.
+> squared radial modulus is unique off the uniform boundary. The actual
+> harmonic transition is now proved to vanish on every non-extension child.
+> Its centered squared norm is an explicit real Born excess; strict positivity
+> constructs a square-root scale. Consequently an all-rank harmonic scale
+> profile exists iff the harmonic law is nonuniform at every parent with more
+> than one physical successor. A uniform branching parent has no scalar radial
+> repair. Proving this remaining all-parent nonuniformity—or finding a first
+> counterexample—is the exact scalar frontier; the latter outcome would force
+> a mixed/operator completion there.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
