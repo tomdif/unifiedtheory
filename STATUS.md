@@ -669,12 +669,18 @@
 > squared radial modulus is unique off the uniform boundary. The actual
 > harmonic transition is now proved to vanish on every non-extension child.
 > Its centered squared norm is an explicit real Born excess; strict positivity
-> constructs a square-root scale. Consequently an all-rank harmonic scale
-> profile exists iff the harmonic law is nonuniform at every parent with more
-> than one physical successor. A uniform branching parent has no scalar radial
-> repair. Proving this remaining all-parent nonuniformity—or finding a first
-> counterexample—is the exact scalar frontier; the latter outcome would force
-> a mixed/operator completion there.
+> constructs a square-root scale. A new quotient-safe true-relation count
+> proves that isomorphic child fibers preserve precursor cardinality. The
+> empty and full precursor fibers are therefore singletons, and their harmonic
+> transitions are distinct at every positive rank (phase at rank one,
+> magnitude thereafter). This proves all-parent nonuniformity and closes the
+> exact frontier theorem: the canonical support-preserving harmonic scale and
+> its coherently/Born normalized, projective, strongly positive cylinder law
+> now exist unconditionally for both chiralities. The companion exact-`Q(i)`
+> audit exhausts all 406 unlabeled parents through rank 6 with no counterexample.
+> A uniform branching parent still has no scalar radial repair in general, and
+> the ray-preservation rule remains a proposed microscopic selection law rather
+> than a derived continuum or experimental principle.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

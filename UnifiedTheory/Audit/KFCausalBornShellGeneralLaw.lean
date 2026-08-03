@@ -40,6 +40,286 @@ open UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
 
 universe u
 
+/-! ## 0. A quotient-safe transition-fiber invariant -/
+
+/-- Number of true ordered pairs in a finite causal order, including the
+reflexive diagonal.  It is used only as a quotient-safe way to recover the
+precursor cardinality from an unlabeled child. -/
+def causalTrueRelationCount {n : ℕ} (parent : CardinalCausalOrder n) : ℕ :=
+  ∑ pair : Fin n × Fin n,
+    if parent.rel pair.1 pair.2 = true then 1 else 0
+
+theorem causalTrueRelationCount_eq_of_isomorphic {n : ℕ}
+    {first second : CardinalCausalOrder n}
+    (hIso : CardinalCausalOrderIsomorphic first second) :
+    causalTrueRelationCount first = causalTrueRelationCount second := by
+  classical
+  obtain ⟨relabeling, hRel⟩ := hIso
+  let pairEquiv : (Fin n × Fin n) ≃ (Fin n × Fin n) :=
+    Equiv.prodCongr relabeling relabeling
+  unfold causalTrueRelationCount
+  calc
+    (∑ pair : Fin n × Fin n,
+        if first.rel pair.1 pair.2 = true then 1 else 0) =
+      ∑ pair : Fin n × Fin n,
+        if second.rel (relabeling pair.1) (relabeling pair.2) = true
+          then 1 else 0 := by
+        apply Finset.sum_congr rfl
+        intro pair _
+        rw [hRel]
+    _ = ∑ pair : Fin n × Fin n,
+        if second.rel pair.1 pair.2 = true then 1 else 0 := by
+      have hSum := pairEquiv.sum_comp (fun pair : Fin n × Fin n =>
+        if second.rel pair.1 pair.2 = true then 1 else 0)
+      exact hSum
+
+/-- Number of active events in a precursor, written as a finite sum so that
+the one-element-extension count splits definitionally. -/
+def causalPastMembershipCount {n : ℕ} {parent : CardinalCausalOrder n}
+    (past : CausalPastSet parent) : ℕ :=
+  ∑ event : Fin n, if past.mem event = true then 1 else 0
+
+theorem causalPastMembershipCount_eq_ancestorCount {n : ℕ}
+    {parent : CardinalCausalOrder n} (past : CausalPastSet parent) :
+    causalPastMembershipCount past = past.ancestorCount := by
+  classical
+  unfold causalPastMembershipCount CausalPastSet.ancestorCount
+  rw [Nat.card_eq_fintype_card]
+  simp
+
+theorem causalTrueRelationCount_precursorOneElementExtension {n : ℕ}
+    (parent : CardinalCausalOrder n) (past : CausalPastSet parent) :
+    causalTrueRelationCount (precursorOneElementExtension parent past) =
+      causalTrueRelationCount parent + causalPastMembershipCount past + 1 := by
+  classical
+  let pairEquiv :
+      ((Fin n ⊕ Fin 1) × (Fin n ⊕ Fin 1)) ≃
+        (Fin (n + 1) × Fin (n + 1)) :=
+    Equiv.prodCongr finSumFinEquiv finSumFinEquiv
+  unfold causalTrueRelationCount
+  rw [← pairEquiv.sum_comp]
+  simp [pairEquiv, precursorOneElementExtension, precursorExtensionRel,
+    causalPastMembershipCount]
+
+/-- Isomorphic unlabeled children have equal precursor cardinality.  The
+child relation count is the parent count plus that cardinality and the new
+reflexive pair, so coherent fibers never mix different `omega` sectors. -/
+theorem ancestorCount_eq_of_causalTransitionTarget_eq {n : ℕ}
+    (parent : CardinalCausalOrder n) (first second : CausalPastSet parent)
+    (hTarget : causalTransitionTarget parent first =
+      causalTransitionTarget parent second) :
+    first.ancestorCount = second.ancestorCount := by
+  have hIso : CardinalCausalOrderIsomorphic
+      (precursorOneElementExtension parent first)
+      (precursorOneElementExtension parent second) := Quotient.exact hTarget
+  have hCount := causalTrueRelationCount_eq_of_isomorphic hIso
+  rw [causalTrueRelationCount_precursorOneElementExtension,
+    causalTrueRelationCount_precursorOneElementExtension,
+    causalPastMembershipCount_eq_ancestorCount,
+    causalPastMembershipCount_eq_ancestorCount] at hCount
+  omega
+
+theorem ancestorCount_eq_card_iff_full {n : ℕ}
+    {parent : CardinalCausalOrder n} (past : CausalPastSet parent) :
+    past.ancestorCount = n ↔ past = fullCausalPastSet parent := by
+  classical
+  constructor
+  · intro hCard
+    have hSubtypeCard :
+        Fintype.card {i : Fin n // past.mem i = true} =
+          Fintype.card (Fin n) := by
+      simpa [CausalPastSet.ancestorCount, Nat.card_eq_fintype_card] using hCard
+    have hBijective : Function.Bijective
+        (fun selected : {i : Fin n // past.mem i = true} => selected.val) :=
+      (Fintype.bijective_iff_injective_and_card _).2
+        ⟨Subtype.val_injective, hSubtypeCard⟩
+    apply CausalPastSet.ext
+    funext event
+    obtain ⟨selected, hSelected⟩ := hBijective.2 event
+    have hMem : past.mem event = true := by
+      rw [← hSelected]
+      exact selected.property
+    simp [fullCausalPastSet, hMem]
+  · rintro rfl
+    exact fullCausalPastSet_ancestorCount parent
+
+theorem transitionFiber_over_empty_unique {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (past : LabeledCausalTransitionFiber parent
+      (causalTransitionTarget parent (emptyCausalPastSet parent))) :
+    past.val = emptyCausalPastSet parent := by
+  apply (ancestorCount_eq_zero_iff_empty past.val).mp
+  rw [← emptyCausalPastSet_ancestorCount parent]
+  exact ancestorCount_eq_of_causalTransitionTarget_eq parent past.val
+    (emptyCausalPastSet parent) past.property
+
+theorem transitionFiber_over_full_unique {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (past : LabeledCausalTransitionFiber parent
+      (causalTransitionTarget parent (fullCausalPastSet parent))) :
+    past.val = fullCausalPastSet parent := by
+  apply (ancestorCount_eq_card_iff_full past.val).mp
+  rw [← fullCausalPastSet_ancestorCount parent]
+  exact ancestorCount_eq_of_causalTransitionTarget_eq parent past.val
+    (fullCausalPastSet parent) past.property
+
+/-- The two extreme unlabeled child fibers are singletons.  Coherent quotient
+aggregation therefore leaves their microscopic amplitudes unchanged. -/
+theorem labeledAggregatedCausalEdgeAmplitude_at_empty_target
+    (edgeLaw : CovariantComplexCausalEdgeAmplitude) {n : ℕ}
+    (parent : CardinalCausalOrder n) :
+    labeledAggregatedCausalEdgeAmplitude edgeLaw parent
+        (causalTransitionTarget parent (emptyCausalPastSet parent)) =
+      edgeLaw.amplitude parent (emptyCausalPastSet parent) := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  let emptyFiber : LabeledCausalTransitionFiber parent
+      (causalTransitionTarget parent (emptyCausalPastSet parent)) :=
+    ⟨emptyCausalPastSet parent, rfl⟩
+  apply Fintype.sum_eq_single emptyFiber
+  intro other hOther
+  exact (hOther (Subtype.ext
+    (transitionFiber_over_empty_unique parent other))).elim
+
+theorem labeledAggregatedCausalEdgeAmplitude_at_full_target
+    (edgeLaw : CovariantComplexCausalEdgeAmplitude) {n : ℕ}
+    (parent : CardinalCausalOrder n) :
+    labeledAggregatedCausalEdgeAmplitude edgeLaw parent
+        (causalTransitionTarget parent (fullCausalPastSet parent)) =
+      edgeLaw.amplitude parent (fullCausalPastSet parent) := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  let fullFiber : LabeledCausalTransitionFiber parent
+      (causalTransitionTarget parent (fullCausalPastSet parent)) :=
+    ⟨fullCausalPastSet parent, rfl⟩
+  apply Fintype.sum_eq_single fullFiber
+  intro other hOther
+  exact (hOther (Subtype.ext
+    (transitionFiber_over_full_unique parent other))).elim
+
+theorem harmonicCritical_empty_aggregate_eq_one
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n) :
+    labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude
+          (harmonicCriticalPairCoupling n) chirality)
+        parent (causalTransitionTarget parent (emptyCausalPastSet parent)) =
+      1 := by
+  rw [labeledAggregatedCausalEdgeAmplitude_at_empty_target]
+  simp [interactingChiralCausalEdgeAmplitude,
+    rideoutSorkinSignatureAmplitude,
+    interactingChiralSignatureWeight, ancestorPairExponent,
+    chiralGaussianPower_eq_phase_pow]
+
+theorem harmonicCritical_full_aggregate_eq_raw
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n) :
+    labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude
+          (harmonicCriticalPairCoupling n) chirality)
+        parent (causalTransitionTarget parent (fullCausalPastSet parent)) =
+      interactingChiralSignatureWeight (harmonicCriticalPairCoupling n)
+        chirality n (fullCausalPastSet parent).maximalCount := by
+  rw [labeledAggregatedCausalEdgeAmplitude_at_full_target]
+  simp [interactingChiralCausalEdgeAmplitude,
+    rideoutSorkinSignatureAmplitude, fullCausalPastSet_ancestorCount]
+
+theorem chiralGaussianPower_star_mul_self
+    (chirality : Fin 2) (maximal : ℕ) :
+    star (chiralGaussianPower chirality maximal) *
+        chiralGaussianPower chirality maximal = 1 := by
+  rw [chiralGaussianPower_eq_phase_pow, star_pow, ← mul_pow]
+  fin_cases chirality <;>
+    simp [chiralMaximalEventPhase]
+
+theorem interactingChiralSignatureWeight_star_mul_self
+    (lambda : ℝ) (chirality : Fin 2) (omega maximal : ℕ) :
+    star (interactingChiralSignatureWeight lambda chirality omega maximal) *
+        interactingChiralSignatureWeight lambda chirality omega maximal =
+      ((lambda ^ 2 : ℝ) : ℂ) ^ ancestorPairExponent omega := by
+  unfold interactingChiralSignatureWeight
+  rw [map_mul, map_pow, Complex.conj_ofReal, mul_assoc]
+  rw [mul_left_comm (chiralGaussianPower chirality maximal)]
+  rw [chiralGaussianPower_star_mul_self]
+  simp [← pow_mul]
+
+theorem harmonicCritical_full_raw_ne_one_of_pos
+    (chirality : Fin 2) {n : ℕ} (hn : 0 < n)
+    (parent : CardinalCausalOrder n) :
+    interactingChiralSignatureWeight (harmonicCriticalPairCoupling n)
+        chirality n (fullCausalPastSet parent).maximalCount ≠ 1 := by
+  by_cases hOne : n = 1
+  · subst n
+    have hAncestor : (fullCausalPastSet parent).ancestorCount = 1 :=
+      fullCausalPastSet_ancestorCount parent
+    have hMaximal : (fullCausalPastSet parent).maximalCount = 1 :=
+      maximalCount_eq_one_of_ancestorCount_eq_one _ hAncestor
+    rw [hMaximal]
+    fin_cases chirality <;>
+      norm_num [interactingChiralSignatureWeight,
+        harmonicCriticalPairCoupling, harmonicCriticalPairCouplingQ,
+        ancestorPairExponent, chiralGaussianPower,
+        gaussianToComplex_gaussianIPow, chiralMaximalEventPhase]
+  · intro hEqual
+    have hStar := congrArg (fun value : ℂ => star value * value) hEqual
+    rw [interactingChiralSignatureWeight_star_mul_self] at hStar
+    simp only [map_one, mul_one] at hStar
+    have hLambda : 1 < harmonicCriticalPairCoupling n :=
+      harmonicCriticalPairCoupling_gt_one n
+    have hSquare : 1 < harmonicCriticalPairCoupling n ^ 2 := by
+      nlinarith
+    have hExponent : ancestorPairExponent n ≠ 0 := by
+      unfold ancestorPairExponent
+      omega
+    have hPow :
+        1 < (harmonicCriticalPairCoupling n ^ 2) ^ ancestorPairExponent n :=
+      one_lt_pow₀ hSquare hExponent
+    have hReal :
+        (harmonicCriticalPairCoupling n ^ 2) ^ ancestorPairExponent n = 1 := by
+      exact_mod_cast hStar
+    exact (ne_of_gt hPow) hReal
+
+theorem empty_and_full_causalTransitionTargets_ne_of_pos {n : ℕ}
+    (hn : 0 < n) (parent : CardinalCausalOrder n) :
+    causalTransitionTarget parent (emptyCausalPastSet parent) ≠
+      causalTransitionTarget parent (fullCausalPastSet parent) := by
+  intro hEqual
+  have hAncestor := ancestorCount_eq_of_causalTransitionTarget_eq parent
+    (emptyCausalPastSet parent) (fullCausalPastSet parent) hEqual
+  rw [emptyCausalPastSet_ancestorCount,
+    fullCausalPastSet_ancestorCount] at hAncestor
+  omega
+
+theorem harmonicCritical_extreme_aggregates_ne_of_pos
+    (chirality : Fin 2) {n : ℕ} (hn : 0 < n)
+    (parent : CardinalCausalOrder n) :
+    labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude
+          (harmonicCriticalPairCoupling n) chirality)
+        parent (causalTransitionTarget parent (emptyCausalPastSet parent)) ≠
+      labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude
+          (harmonicCriticalPairCoupling n) chirality)
+        parent (causalTransitionTarget parent (fullCausalPastSet parent)) := by
+  rw [harmonicCritical_empty_aggregate_eq_one,
+    harmonicCritical_full_aggregate_eq_raw]
+  exact (harmonicCritical_full_raw_ne_one_of_pos
+    chirality hn parent).symm
+
+theorem harmonicCritical_extreme_transitions_ne_of_pos
+    (chirality : Fin 2) {n : ℕ} (hn : 0 < n)
+    (parent : CardinalCausalOrder n) :
+    harmonicCriticalTransition chirality (Quotient.mk _ parent)
+        (causalTransitionTarget parent (emptyCausalPastSet parent)) ≠
+      harmonicCriticalTransition chirality (Quotient.mk _ parent)
+        (causalTransitionTarget parent (fullCausalPastSet parent)) := by
+  unfold harmonicCriticalTransition
+  simp only [unlabeledAggregatedCausalEdgeAmplitude_mk,
+    unlabeledCausalEdgeAmplitudePartition_mk]
+  intro hEqual
+  apply harmonicCritical_extreme_aggregates_ne_of_pos chirality hn parent
+  exact (div_left_inj'
+    (harmonicCritical_interactingChiral_partition_ne_zero
+      chirality parent)).mp hEqual
+
 /-! ## 1. Uniform plus zero-sum decomposition at arbitrary finite rank -/
 
 /-- The invariant amplitude carried by one member of a nonempty finite branch
@@ -774,6 +1054,67 @@ def HarmonicCriticalNonuniformOnBranching (chirality : Fin 2) : Prop :=
             n pathPrefix child ≠
           supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)
 
+/-- **The harmonic law never hits the uniform multi-child obstruction.**
+At every positive rank the gregarious and timid unlabeled child fibers are
+singletons and carry distinct normalized amplitudes.  Rank zero has only one
+unlabeled child, so the branching premise is impossible there. -/
+theorem harmonicCriticalNonuniformOnBranching
+    (chirality : Fin 2) :
+    HarmonicCriticalNonuniformOnBranching chirality := by
+  classical
+  intro n pathPrefix hMultiple
+  have hn : 0 < n := by
+    by_contra hNotPositive
+    have hZero : n = 0 := Nat.eq_zero_of_not_pos hNotPositive
+    subst n
+    have hAtMostOne :
+        (physicalCausalSuccessors 0 pathPrefix).card ≤ 1 :=
+      (Finset.card_le_one).2 (by
+        intro first _hFirst second _hSecond
+        exact (unlabeledCardinalCausalOrder_one_unique first).trans
+          (unlabeledCardinalCausalOrder_one_unique second).symm)
+    omega
+  generalize hParent :
+    currentUnlabeledCausalOrder n pathPrefix = parentQuotient
+  obtain ⟨parent, rfl⟩ := Quotient.exists_rep parentQuotient
+  let emptyChild :=
+    causalTransitionTarget parent (emptyCausalPastSet parent)
+  let fullChild :=
+    causalTransitionTarget parent (fullCausalPastSet parent)
+  have hEmptyPhysical : IsUnlabeledOneElementExtension
+      (Quotient.mk _ parent) emptyChild := by
+    exact isUnlabeledOneElementExtension_mk
+      (precursor_is_oneElementExtension parent (emptyCausalPastSet parent))
+  have hFullPhysical : IsUnlabeledOneElementExtension
+      (Quotient.mk _ parent) fullChild := by
+    exact isUnlabeledOneElementExtension_mk
+      (precursor_is_oneElementExtension parent (fullCausalPastSet parent))
+  have hEmptyMem :
+      emptyChild ∈ physicalCausalSuccessors n pathPrefix := by
+    simpa [physicalCausalSuccessors, IsPhysicalCausalGrowthStep,
+      hParent] using hEmptyPhysical
+  have hFullMem :
+      fullChild ∈ physicalCausalSuccessors n pathPrefix := by
+    simpa [physicalCausalSuccessors, IsPhysicalCausalGrowthStep,
+      hParent] using hFullPhysical
+  have hExtreme :
+      (harmonicCriticalCausalSetGrowthLaw chirality).transition
+          n pathPrefix emptyChild ≠
+        (harmonicCriticalCausalSetGrowthLaw chirality).transition
+          n pathPrefix fullChild := by
+    simpa [harmonicCriticalCausalSetGrowthLaw, emptyChild, fullChild,
+      hParent] using
+      harmonicCritical_extreme_transitions_ne_of_pos chirality hn parent
+  by_cases hEmpty :
+      (harmonicCriticalCausalSetGrowthLaw chirality).transition
+          n pathPrefix emptyChild ≠
+        supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)
+  · exact ⟨emptyChild, hEmptyMem, hEmpty⟩
+  · refine ⟨fullChild, hFullMem, ?_⟩
+    intro hFull
+    apply hExtreme
+    exact (not_ne_iff.mp hEmpty).trans hFull.symm
+
 theorem harmonicCritical_local_Born_scale_exists
     (chirality : Fin 2) (n : ℕ)
     (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
@@ -859,6 +1200,21 @@ theorem harmonicCriticalBornShellScale_nonempty_iff_nonuniform
   · intro hNonuniform
     exact ⟨harmonicCriticalBornShellScaleOfNonuniform
       chirality hNonuniform⟩
+
+/-- The actual harmonic causal law satisfies the exact frontier condition,
+so its support-preserving Born-shell scale exists at every parent without a
+new dynamical assumption. -/
+theorem harmonicCriticalBornShellScale_nonempty (chirality : Fin 2) :
+    Nonempty (HarmonicCriticalBornShellScale chirality) :=
+  (harmonicCriticalBornShellScale_nonempty_iff_nonuniform chirality).2
+    (harmonicCriticalNonuniformOnBranching chirality)
+
+/-- Canonical positive-radial representative selected by the explicit real
+square root construction in `supportBornShellScale`. -/
+noncomputable def canonicalHarmonicCriticalBornShellScale
+    (chirality : Fin 2) : HarmonicCriticalBornShellScale chirality :=
+  harmonicCriticalBornShellScaleOfNonuniform chirality
+    (harmonicCriticalNonuniformOnBranching chirality)
 
 def harmonicCriticalPhysicalBornShellProfile (chirality : Fin 2)
     (radial : HarmonicCriticalBornShellScale chirality) :
@@ -993,6 +1349,14 @@ def harmonicCriticalBornShellGrowthLaw (chirality : Fin 2)
   physicalBornShellGrowthLaw (harmonicCriticalCausalSetGrowthLaw chirality)
     (harmonicCriticalPhysicalBornShellProfile chirality radial)
 
+/-- The unconditional all-rank harmonic law with both coherent and Born
+normalization and no unphysical causal transitions. -/
+noncomputable def canonicalHarmonicCriticalBornShellGrowthLaw
+    (chirality : Fin 2) :
+    RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch :=
+  harmonicCriticalBornShellGrowthLaw chirality
+    (canonicalHarmonicCriticalBornShellScale chirality)
+
 /-- The harmonic specialization is physical and doubly normalized at every
 parent once its radial equations are solved. -/
 theorem harmonicCriticalBornShell_all_rank (chirality : Fin 2)
@@ -1041,6 +1405,54 @@ theorem harmonicCriticalBornShell_promotion (chirality : Fin 2)
           (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1 := by
   exact physicalBornShell_infiniteCylinder_promotion _ _
 
+/-- **Unconditional finite-rank capstone for the actual harmonic law.** -/
+theorem canonicalHarmonicCriticalBornShell_all_rank (chirality : Fin 2) :
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+      ∑ child,
+        (canonicalHarmonicCriticalBornShellGrowthLaw chirality).transition
+          n pathPrefix child = 1) ∧
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
+      finiteComplexBornMass
+        ((canonicalHarmonicCriticalBornShellGrowthLaw chirality).transition
+          n pathPrefix) = 1) ∧
+    (∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+      (child : CausalSetGrowthBranch n),
+      ¬ IsPhysicalCausalGrowthStep n pathPrefix child →
+        (canonicalHarmonicCriticalBornShellGrowthLaw chirality).transition
+          n pathPrefix child = 0) := by
+  exact harmonicCriticalBornShell_all_rank chirality
+    (canonicalHarmonicCriticalBornShellScale chirality)
+
+/-- **Unconditional infinite-cylinder capstone.**  The actual harmonic law
+now has a physical, coherently normalized, Born-normalized, projectively
+consistent, normalized, strongly positive history functional. -/
+theorem canonicalHarmonicCriticalBornShell_promotion (chirality : Fin 2) :
+    (∀ n, IsNormalizedGrowthFunctional
+        (finiteRankedDepthDecoherence
+          (canonicalHarmonicCriticalBornShellGrowthLaw chirality) n))
+      ∧ (∀ (n) (event₁ event₂ :
+            Finset (RankedGrowthPath CausalSetGrowthBranch n)),
+          ∀ steps,
+            growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  (canonicalHarmonicCriticalBornShellGrowthLaw chirality)
+                  (n + steps))
+                (refineRankedGrowthEventBy event₁ steps)
+                (refineRankedGrowthEventBy event₂ steps) =
+              growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  (canonicalHarmonicCriticalBornShellGrowthLaw chirality) n)
+                event₁ event₂)
+      ∧ IsStronglyPositiveGrowthFunctional
+          (infiniteRankedCylinderDecoherence
+            (canonicalHarmonicCriticalBornShellGrowthLaw chirality))
+      ∧ infiniteRankedCylinderDecoherence
+          (canonicalHarmonicCriticalBornShellGrowthLaw chirality)
+          (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch)
+          (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1 := by
+  exact harmonicCriticalBornShell_promotion chirality
+    (canonicalHarmonicCriticalBornShellScale chirality)
+
 #print axioms finiteCenteredAmplitude_bornMass
 #print axioms finiteBornShellCorrection_bornMass_one
 #print axioms finiteBornShell_scale_normSq_unique
@@ -1052,11 +1464,15 @@ theorem harmonicCriticalBornShell_promotion (chirality : Fin 2)
 #print axioms supportCenteredAmplitude_bornMass
 #print axioms finiteSupportBornShellCorrection_bornMass_one
 #print axioms harmonicCriticalTransition_eq_zero_of_not_physical
+#print axioms ancestorCount_eq_of_causalTransitionTarget_eq
+#print axioms harmonicCriticalNonuniformOnBranching
 #print axioms harmonicCriticalBornShellScale_nonempty_iff_nonuniform
+#print axioms harmonicCriticalBornShellScale_nonempty
 #print axioms physicalBornShell_all_rank_capstone
 #print axioms physicalBornShell_infiniteCylinder_promotion
 #print axioms harmonicCriticalBornShell_all_rank
 #print axioms harmonicCriticalBornShell_promotion
+#print axioms canonicalHarmonicCriticalBornShell_promotion
 
 end
 

@@ -5368,14 +5368,17 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- equation fixes the radial norm uniquely off the uniform boundary.  For
 -- actual causal-set growth the construction centers only on physical
 -- successors, hence never creates forbidden births.  The actual harmonic law
--- is now proved to have that physical support.  Every nonuniform branch has
--- an explicit positive-excess square-root scale, and an all-rank harmonic
--- scale profile exists iff every genuinely branching harmonic transition is
--- nonuniform.  Such a profile yields one coherently and Born normalized,
--- exactly cylinder-projective, strongly positive law.  Proving that final
--- all-parent nonuniformity condition, or finding its first counterexample, is
--- now the precise scalar frontier; uniform branching requires an operator or
--- mixed completion.
+-- is proved to have that physical support.  A quotient-safe relation-count
+-- invariant shows that coherent child fibers cannot mix precursor
+-- cardinalities; in particular the empty and full fibers are singletons.
+-- Their harmonic amplitudes are distinct at every positive rank, proving the
+-- law is nonuniform at every genuinely branching parent.  Hence the explicit
+-- positive-excess square-root scale exists unconditionally at all ranks and
+-- yields one physical, coherently and Born normalized, exactly
+-- cylinder-projective, strongly positive law.  Uniform branching remains a
+-- general scalar no-go, but the harmonic law provably never hits it.  The
+-- radial ray-preservation rule is still a proposed microscopic law, not a
+-- derivation of continuum or laboratory physics.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
