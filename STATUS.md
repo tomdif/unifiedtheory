@@ -655,6 +655,21 @@
 > physical sequential-growth dynamics. The pinned native `CSpec` also has no
 > topology/open-cover API, no numerical gap is bounded, and no simple lowest
 > eigenline or canonical ground projector is selected.
+> `KFCausalHolonomyBirthCouplingLaw.lean` couples the finite holonomy
+> instrument to the actual harmonic birth amplitudes. The rank-one law matches
+> exactly; at the first three-bin parent the blind product has Born mass
+> `3681/2113`, and no scalar rescaling preserves both normalizations. Its
+> zero-sum Born-shell correction has exact scale `sqrt(2113/4465)` and yields a
+> six-outcome CPTP projective process. `KFCausalBornShellGeneralLaw.lean` now
+> proves the arbitrary finite-rank version and, crucially, centers over the
+> physical successor support rather than all causets of that rank. A compatible
+> all-rank scale profile gives a law that vanishes on forbidden births, has
+> coherent sum and Born mass both one at every parent, and inherits normalized,
+> strongly positive, exactly projective infinite-cylinder semantics. The
+> squared radial modulus is unique off the uniform boundary. A uniform parent
+> with multiple successors has no scalar radial repair, so existence of a
+> global profile remains a precise dynamical condition rather than a theorem
+> about the present harmonic law.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

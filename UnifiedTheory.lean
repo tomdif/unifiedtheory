@@ -5363,6 +5363,16 @@ import UnifiedTheory.Audit.KFCausalHolonomyBornProjectiveGrowth
 -- cylinder projectivity at every record depth.  This is a finite local
 -- candidate coupling law, not yet a single all-rank causal-set dynamics.
 import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
+-- The finite three-bin repair extends to arbitrary finite branching through
+-- the canonical invariant-line plus zero-sum decomposition.  The Born
+-- equation fixes the radial norm uniquely off the uniform boundary.  For
+-- actual causal-set growth the construction centers only on physical
+-- successors, hence never creates forbidden births; a compatible all-rank
+-- scale profile yields one law that is coherently normalized, locally Born
+-- normalized, exactly cylinder-projective, and strongly positive.  Uniform
+-- multi-successor parents obey a proved scalar no-go, so a global physical
+-- law must supply anisotropy or use a mixed/operator-valued completion.
+import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
