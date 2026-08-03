@@ -678,6 +678,11 @@
 > its coherently/Born normalized, projective, strongly positive cylinder law
 > now exist unconditionally for both chiralities. The companion exact-`Q(i)`
 > audit exhausts all 406 unlabeled parents through rank 6 with no counterexample.
+> The canonical profile is now definitionally the explicit nonnegative real
+> square-root scale rather than an arbitrary `Classical.choose` witness. Its
+> value is reflection invariant, and the completed transitions for the two
+> chiralities are exact complex conjugates, so the repair introduces no hidden
+> absolute-handedness choice.
 > A uniform branching parent still has no scalar radial repair in general, and
 > the ray-preservation rule remains a proposed microscopic selection law rather
 > than a derived continuum or experimental principle.

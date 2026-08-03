@@ -5377,8 +5377,12 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- yields one physical, coherently and Born normalized, exactly
 -- cylinder-projective, strongly positive law.  Uniform branching remains a
 -- general scalar no-go, but the harmonic law provably never hits it.  The
--- radial ray-preservation rule is still a proposed microscopic law, not a
--- derivation of continuum or laboratory physics.
+-- canonical profile is definitionally the nonnegative real square-root
+-- scale, not an arbitrary choice witness; it is reflection invariant and the
+-- two corrected chiral laws remain exact complex conjugates.  Thus the repair
+-- does not select an absolute handedness.  The radial ray-preservation rule is
+-- still a proposed microscopic law, not a derivation of continuum or
+-- laboratory physics.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;

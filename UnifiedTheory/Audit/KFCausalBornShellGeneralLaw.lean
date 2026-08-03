@@ -37,6 +37,8 @@ open UnifiedTheory.Audit.KFCausalSetTransitionEdges
 open UnifiedTheory.Audit.KFCausalSetBellCausality
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 open UnifiedTheory.Audit.KFCausalSetMultiplicityCorrectedRunning
+open UnifiedTheory.Audit.KFCausalSetChiralDynamics
+open UnifiedTheory.Audit.KFCausalSetChiralGrowth
 
 universe u
 
@@ -85,7 +87,15 @@ theorem causalPastMembershipCount_eq_ancestorCount {n : ℕ}
   classical
   unfold causalPastMembershipCount CausalPastSet.ancestorCount
   rw [Nat.card_eq_fintype_card]
-  simp
+  calc
+    (∑ event : Fin n, if past.mem event = true then 1 else 0) =
+        (Finset.univ.filter fun event : Fin n =>
+          past.mem event = true).card := by
+      simpa using (Finset.sum_boole
+        (fun event : Fin n => past.mem event = true) Finset.univ)
+    _ = Fintype.card {i : Fin n // past.mem i = true} := by
+      rw [← Finset.card_subtype]
+      simp
 
 theorem causalTrueRelationCount_precursorOneElementExtension {n : ℕ}
     (parent : CardinalCausalOrder n) (past : CausalPastSet parent) :
@@ -98,8 +108,11 @@ theorem causalTrueRelationCount_precursorOneElementExtension {n : ℕ}
     Equiv.prodCongr finSumFinEquiv finSumFinEquiv
   unfold causalTrueRelationCount
   rw [← pairEquiv.sum_comp]
+  simp only [Fintype.sum_prod_type, Fintype.sum_sum_type]
   simp [pairEquiv, precursorOneElementExtension, precursorExtensionRel,
-    causalPastMembershipCount]
+    causalPastMembershipCount, add_assoc]
+  rw [Finset.sum_add_distrib]
+  simp [causalPastMembershipCount, add_assoc]
 
 /-- Isomorphic unlabeled children have equal precursor cardinality.  The
 child relation count is the parent count plus that cardinality and the new
@@ -159,9 +172,9 @@ theorem transitionFiber_over_full_unique {n : ℕ}
       (causalTransitionTarget parent (fullCausalPastSet parent))) :
     past.val = fullCausalPastSet parent := by
   apply (ancestorCount_eq_card_iff_full past.val).mp
-  rw [← fullCausalPastSet_ancestorCount parent]
-  exact ancestorCount_eq_of_causalTransitionTarget_eq parent past.val
+  have hCount := ancestorCount_eq_of_causalTransitionTarget_eq parent past.val
     (fullCausalPastSet parent) past.property
+  exact hCount.trans (fullCausalPastSet_ancestorCount parent)
 
 /-- The two extreme unlabeled child fibers are singletons.  Coherent quotient
 aggregation therefore leaves their microscopic amplitudes unchanged. -/
@@ -236,10 +249,122 @@ theorem interactingChiralSignatureWeight_star_mul_self
         interactingChiralSignatureWeight lambda chirality omega maximal =
       ((lambda ^ 2 : ℝ) : ℂ) ^ ancestorPairExponent omega := by
   unfold interactingChiralSignatureWeight
-  rw [map_mul, map_pow, Complex.conj_ofReal, mul_assoc]
-  rw [mul_left_comm (chiralGaussianPower chirality maximal)]
-  rw [chiralGaussianPower_star_mul_self]
-  simp [← pow_mul]
+  calc
+    star ((lambda : ℂ) ^ ancestorPairExponent omega *
+        chiralGaussianPower chirality maximal) *
+        ((lambda : ℂ) ^ ancestorPairExponent omega *
+          chiralGaussianPower chirality maximal) =
+      (((lambda : ℂ) ^ ancestorPairExponent omega) *
+        ((lambda : ℂ) ^ ancestorPairExponent omega)) *
+        (star (chiralGaussianPower chirality maximal) *
+          chiralGaussianPower chirality maximal) := by
+      have hLambda : star (lambda : ℂ) = (lambda : ℂ) :=
+        Complex.conj_ofReal lambda
+      rw [StarMul.star_mul, star_pow, hLambda]
+      ring
+    _ = ((lambda : ℂ) ^ ancestorPairExponent omega) *
+        ((lambda : ℂ) ^ ancestorPairExponent omega) := by
+      rw [chiralGaussianPower_star_mul_self, mul_one]
+    _ = ((lambda ^ 2 : ℝ) : ℂ) ^ ancestorPairExponent omega := by
+      rw [← mul_pow]
+      norm_cast
+      ring
+
+/-- Reflection is complex conjugation of the complete interacting signature
+law; the real pair coupling is unchanged. -/
+theorem star_interactingChiralSignatureWeight
+    (lambda : ℝ) (chirality : Fin 2) (omega maximal : ℕ) :
+    star (interactingChiralSignatureWeight lambda chirality omega maximal) =
+      interactingChiralSignatureWeight lambda
+        (reflectedMicroscopicChirality chirality) omega maximal := by
+  fin_cases chirality <;>
+    simp [interactingChiralSignatureWeight, chiralGaussianPower,
+      reflectedMicroscopicChirality, gaussianToComplex_gaussianIPow,
+      map_mul, map_pow]
+
+theorem star_interactingChiralCausalEdgeAmplitude
+    (lambda : ℝ) (chirality : Fin 2) {n : ℕ}
+    (parent : CardinalCausalOrder n) (past : CausalPastSet parent) :
+    star ((interactingChiralCausalEdgeAmplitude lambda chirality).amplitude
+        parent past) =
+      (interactingChiralCausalEdgeAmplitude lambda
+        (reflectedMicroscopicChirality chirality)).amplitude parent past := by
+  exact star_interactingChiralSignatureWeight lambda chirality
+    past.ancestorCount past.maximalCount
+
+theorem star_labeledAggregatedInteractingChiralAmplitude
+    (lambda : ℝ) (chirality : Fin 2) {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    star (labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda chirality)
+        parent child) =
+      labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda
+          (reflectedMicroscopicChirality chirality)) parent child := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  rw [star_sum]
+  apply Finset.sum_congr rfl
+  intro past _
+  exact star_interactingChiralCausalEdgeAmplitude
+    lambda chirality parent past.val
+
+theorem star_interactingChiralPartition
+    (lambda : ℝ) (chirality : Fin 2) {n : ℕ}
+    (parent : CardinalCausalOrder n) :
+    star (causalEdgeAmplitudePartition
+        (interactingChiralCausalEdgeAmplitude lambda chirality) parent) =
+      causalEdgeAmplitudePartition
+        (interactingChiralCausalEdgeAmplitude lambda
+          (reflectedMicroscopicChirality chirality)) parent := by
+  classical
+  unfold causalEdgeAmplitudePartition
+  rw [star_sum]
+  apply Finset.sum_congr rfl
+  intro past _
+  exact star_interactingChiralCausalEdgeAmplitude
+    lambda chirality parent past
+
+theorem star_unlabeledAggregatedInteractingChiralAmplitude
+    (lambda : ℝ) (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    star (unlabeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda chirality)
+        parent child) =
+      unlabeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda
+          (reflectedMicroscopicChirality chirality)) parent child := by
+  refine Quotient.inductionOn parent ?_
+  intro parentRepresentative
+  exact star_labeledAggregatedInteractingChiralAmplitude
+    lambda chirality parentRepresentative child
+
+theorem star_unlabeledInteractingChiralPartition
+    (lambda : ℝ) (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n) :
+    star (unlabeledCausalEdgeAmplitudePartition
+        (interactingChiralCausalEdgeAmplitude lambda chirality) parent) =
+      unlabeledCausalEdgeAmplitudePartition
+        (interactingChiralCausalEdgeAmplitude lambda
+          (reflectedMicroscopicChirality chirality)) parent := by
+  refine Quotient.inductionOn parent ?_
+  intro parentRepresentative
+  exact star_interactingChiralPartition
+    lambda chirality parentRepresentative
+
+theorem star_harmonicCriticalTransition
+    (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    star (harmonicCriticalTransition chirality parent child) =
+      harmonicCriticalTransition
+        (reflectedMicroscopicChirality chirality) parent child := by
+  unfold harmonicCriticalTransition
+  rw [star_div₀,
+    star_unlabeledAggregatedInteractingChiralAmplitude,
+    star_unlabeledInteractingChiralPartition]
 
 theorem harmonicCritical_full_raw_ne_one_of_pos
     (chirality : Fin 2) {n : ℕ} (hn : 0 < n)
@@ -254,12 +379,21 @@ theorem harmonicCritical_full_raw_ne_one_of_pos
       maximalCount_eq_one_of_ancestorCount_eq_one _ hAncestor
     rw [hMaximal]
     fin_cases chirality <;>
-      norm_num [interactingChiralSignatureWeight,
+      simp [interactingChiralSignatureWeight,
         harmonicCriticalPairCoupling, harmonicCriticalPairCouplingQ,
         ancestorPairExponent, chiralGaussianPower,
-        gaussianToComplex_gaussianIPow, chiralMaximalEventPhase]
+        gaussianToComplex_gaussianIPow, chiralMaximalEventPhase] <;>
+      intro hPhase <;>
+      have hImaginary := congrArg Complex.im hPhase <;>
+      norm_num at hImaginary
   · intro hEqual
     have hStar := congrArg (fun value : ℂ => star value * value) hEqual
+    change star (interactingChiralSignatureWeight
+        (harmonicCriticalPairCoupling n) chirality n
+          (fullCausalPastSet parent).maximalCount) *
+        interactingChiralSignatureWeight
+          (harmonicCriticalPairCoupling n) chirality n
+            (fullCausalPastSet parent).maximalCount = star 1 * 1 at hStar
     rw [interactingChiralSignatureWeight_star_mul_self] at hStar
     simp only [map_one, mul_one] at hStar
     have hLambda : 1 < harmonicCriticalPairCoupling n :=
@@ -268,7 +402,7 @@ theorem harmonicCritical_full_raw_ne_one_of_pos
       nlinarith
     have hExponent : ancestorPairExponent n ≠ 0 := by
       unfold ancestorPairExponent
-      omega
+      exact Nat.mul_ne_zero (Nat.ne_of_gt hn) (by omega)
     have hPow :
         1 < (harmonicCriticalPairCoupling n ^ 2) ^ ancestorPairExponent n :=
       one_lt_pow₀ hSquare hExponent
@@ -631,6 +765,20 @@ def finiteSupportBornShellCorrection {Branch : Type u} [Fintype Branch]
         scale * supportCenteredAmplitude support amplitude branch
     else 0
 
+theorem star_finiteSupportBornShellCorrection
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (scale : ℂ) (amplitude : Branch → ℂ)
+    (branch : Branch) (hScale : star scale = scale) :
+    star (finiteSupportBornShellCorrection
+        support scale amplitude branch) =
+      finiteSupportBornShellCorrection support scale
+        (fun other => star (amplitude other)) branch := by
+  classical
+  by_cases hBranch : branch ∈ support
+  · simp [finiteSupportBornShellCorrection, hBranch,
+      supportCenteredAmplitude, supportUniformAmplitude, hScale]
+  · simp [finiteSupportBornShellCorrection, hBranch]
+
 theorem supportUniformAmplitude_sum_one
     {Branch : Type u} [Fintype Branch]
     (support : Finset Branch) (hSupport : support.Nonempty) :
@@ -812,6 +960,33 @@ def supportBornExcess {Branch : Type u} [Fintype Branch]
     (support : Finset Branch) (amplitude : Branch → ℂ) : ℝ :=
   ∑ branch ∈ support,
     Complex.normSq (supportCenteredAmplitude support amplitude branch)
+
+theorem supportBornExcess_star
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ) :
+    supportBornExcess support (fun branch => star (amplitude branch)) =
+      supportBornExcess support amplitude := by
+  classical
+  unfold supportBornExcess
+  apply Finset.sum_congr rfl
+  intro branch _hBranch
+  have hUniform : star (supportUniformAmplitude support) =
+      supportUniformAmplitude support := by
+    simp [supportUniformAmplitude]
+  unfold supportCenteredAmplitude
+  calc
+    Complex.normSq
+        (star (amplitude branch) - supportUniformAmplitude support) =
+      Complex.normSq
+        (star (amplitude branch) - star (supportUniformAmplitude support)) := by
+        rw [hUniform]
+    _ = Complex.normSq
+        (amplitude branch - supportUniformAmplitude support) := by
+      rw [← star_sub]
+      have hStar :
+          star (amplitude branch - supportUniformAmplitude support) =
+            conj (amplitude branch - supportUniformAmplitude support) := rfl
+      rw [hStar, Complex.normSq_conj]
 
 theorem supportBornExcess_eq_complex_difference
     {Branch : Type u} [Fintype Branch]
@@ -1209,12 +1384,108 @@ theorem harmonicCriticalBornShellScale_nonempty (chirality : Fin 2) :
   (harmonicCriticalBornShellScale_nonempty_iff_nonuniform chirality).2
     (harmonicCriticalNonuniformOnBranching chirality)
 
-/-- Canonical positive-radial representative selected by the explicit real
-square root construction in `supportBornShellScale`. -/
+/-- Explicit nonnegative real radial representative at every parent.  The
+singleton root needs no correction; every genuinely branching parent uses
+the positive Born excess proved above. -/
+noncomputable def explicitHarmonicCriticalBornShellScale
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n) : ℂ :=
+  let support := physicalCausalSuccessors n pathPrefix
+  if support.card = 1 then 0
+  else supportBornShellScale support
+    (supportBornExcess support
+      ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+        n pathPrefix))
+
+theorem explicitHarmonicCriticalBornShellScale_reflection
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n) :
+    explicitHarmonicCriticalBornShellScale
+        (reflectedMicroscopicChirality chirality) n pathPrefix =
+      explicitHarmonicCriticalBornShellScale chirality n pathPrefix := by
+  let support := physicalCausalSuccessors n pathPrefix
+  have hAmplitude :
+      (harmonicCriticalCausalSetGrowthLaw
+          (reflectedMicroscopicChirality chirality)).transition
+          n pathPrefix =
+        fun child => star
+          ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+            n pathPrefix child) := by
+    funext child
+    exact (star_harmonicCriticalTransition chirality
+      (currentUnlabeledCausalOrder n pathPrefix) child).symm
+  change (if support.card = 1 then 0 else
+      supportBornShellScale support
+        (supportBornExcess support
+          ((harmonicCriticalCausalSetGrowthLaw
+            (reflectedMicroscopicChirality chirality)).transition
+              n pathPrefix))) =
+    (if support.card = 1 then 0 else
+      supportBornShellScale support
+        (supportBornExcess support
+          ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+            n pathPrefix)))
+  rw [hAmplitude, supportBornExcess_star]
+
+theorem star_explicitHarmonicCriticalBornShellScale
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n) :
+    star (explicitHarmonicCriticalBornShellScale
+        chirality n pathPrefix) =
+      explicitHarmonicCriticalBornShellScale chirality n pathPrefix := by
+  let support := physicalCausalSuccessors n pathPrefix
+  let excess := supportBornExcess support
+    ((harmonicCriticalCausalSetGrowthLaw chirality).transition n pathPrefix)
+  change star (if support.card = 1 then 0 else
+      supportBornShellScale support excess) =
+    (if support.card = 1 then 0 else supportBornShellScale support excess)
+  by_cases hSingleton : support.card = 1 <;>
+    simp [hSingleton, supportBornShellScale]
+
+theorem explicitHarmonicCriticalBornShellScale_compatible
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n) :
+    star (explicitHarmonicCriticalBornShellScale chirality n pathPrefix) *
+        explicitHarmonicCriticalBornShellScale chirality n pathPrefix *
+        (supportComplexBornMass (physicalCausalSuccessors n pathPrefix)
+            ((harmonicCriticalCausalSetGrowthLaw chirality).transition
+              n pathPrefix) -
+          supportUniformAmplitude (physicalCausalSuccessors n pathPrefix)) =
+      1 - supportUniformAmplitude
+        (physicalCausalSuccessors n pathPrefix) := by
+  let support := physicalCausalSuccessors n pathPrefix
+  let amplitude :=
+    (harmonicCriticalCausalSetGrowthLaw chirality).transition n pathPrefix
+  have hSupport : support.Nonempty :=
+    physicalCausalSuccessors_nonempty n pathPrefix
+  by_cases hSingleton : support.card = 1
+  · simp [explicitHarmonicCriticalBornShellScale, support, hSingleton,
+      supportUniformAmplitude]
+  · have hMultiple : 1 < support.card := by
+      have hPositive := physicalCausalSuccessors_card_pos n pathPrefix
+      change 0 < support.card at hPositive
+      omega
+    have hNonuniform : ∃ child ∈ support,
+        amplitude child ≠ supportUniformAmplitude support :=
+      harmonicCriticalNonuniformOnBranching chirality n pathPrefix hMultiple
+    have hExcessPositive : 0 < supportBornExcess support amplitude :=
+      supportBornExcess_pos_of_nonuniform support amplitude hNonuniform
+    have hScale := supportBornShellScale_solves_of_strict_excess
+      support hMultiple amplitude (supportBornExcess support amplitude)
+      hExcessPositive
+      (supportBornExcess_eq_complex_difference
+        support hSupport amplitude
+          (harmonicCriticalTransition_sum_on_physical_support
+            chirality n pathPrefix)).symm
+    simpa [explicitHarmonicCriticalBornShellScale, support, amplitude,
+      hSingleton] using hScale
+
+/-- Canonical positive-radial profile selected definitionally by the explicit
+real square-root construction, with no `Classical.choose` ambiguity. -/
 noncomputable def canonicalHarmonicCriticalBornShellScale
     (chirality : Fin 2) : HarmonicCriticalBornShellScale chirality :=
-  harmonicCriticalBornShellScaleOfNonuniform chirality
-    (harmonicCriticalNonuniformOnBranching chirality)
+  { scale := explicitHarmonicCriticalBornShellScale chirality
+    compatible := explicitHarmonicCriticalBornShellScale_compatible chirality }
 
 def harmonicCriticalPhysicalBornShellProfile (chirality : Fin 2)
     (radial : HarmonicCriticalBornShellScale chirality) :
@@ -1357,6 +1628,38 @@ noncomputable def canonicalHarmonicCriticalBornShellGrowthLaw
   harmonicCriticalBornShellGrowthLaw chirality
     (canonicalHarmonicCriticalBornShellScale chirality)
 
+/-- The nonlinear Born-shell completion preserves the conjugation gauge:
+reflection changes only the chiral label and complex-conjugates every
+transition.  The positive radial scale itself is reflection invariant. -/
+theorem star_canonicalHarmonicCriticalBornShellTransition
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n) :
+    star ((canonicalHarmonicCriticalBornShellGrowthLaw chirality).transition
+        n pathPrefix child) =
+      (canonicalHarmonicCriticalBornShellGrowthLaw
+        (reflectedMicroscopicChirality chirality)).transition
+          n pathPrefix child := by
+  change star (finiteSupportBornShellCorrection
+      (physicalCausalSuccessors n pathPrefix)
+      (explicitHarmonicCriticalBornShellScale chirality n pathPrefix)
+      ((harmonicCriticalCausalSetGrowthLaw chirality).transition n pathPrefix)
+      child) =
+    finiteSupportBornShellCorrection
+      (physicalCausalSuccessors n pathPrefix)
+      (explicitHarmonicCriticalBornShellScale
+        (reflectedMicroscopicChirality chirality) n pathPrefix)
+      ((harmonicCriticalCausalSetGrowthLaw
+        (reflectedMicroscopicChirality chirality)).transition n pathPrefix)
+      child
+  rw [star_finiteSupportBornShellCorrection _ _ _ _
+    (star_explicitHarmonicCriticalBornShellScale chirality n pathPrefix)]
+  rw [explicitHarmonicCriticalBornShellScale_reflection]
+  congr 1
+  funext other
+  exact star_harmonicCriticalTransition chirality
+    (currentUnlabeledCausalOrder n pathPrefix) other
+
 /-- The harmonic specialization is physical and doubly normalized at every
 parent once its radial equations are solved. -/
 theorem harmonicCriticalBornShell_all_rank (chirality : Fin 2)
@@ -1472,6 +1775,8 @@ theorem canonicalHarmonicCriticalBornShell_promotion (chirality : Fin 2) :
 #print axioms physicalBornShell_infiniteCylinder_promotion
 #print axioms harmonicCriticalBornShell_all_rank
 #print axioms harmonicCriticalBornShell_promotion
+#print axioms explicitHarmonicCriticalBornShellScale_compatible
+#print axioms star_canonicalHarmonicCriticalBornShellTransition
 #print axioms canonicalHarmonicCriticalBornShell_promotion
 
 end
