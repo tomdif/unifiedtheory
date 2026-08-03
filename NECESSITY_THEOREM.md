@@ -17,8 +17,21 @@ non-integral jump.  The depth-N gate: wave equations at levels
 
 ## Theorem
 
-For every depth N, every solution's support contains only
-hereditarily real causets.
+For every depth N, every solution WITH DOWNWARD-CLOSED SUPPORT
+assigns zero amplitude to every non-hereditarily-real causet.
+
+The closure hypothesis is load-bearing, not decorative: solutions
+violating it exist and violate the conclusion (the composability
+probe's sign-cancellation member had a zero-amplitude 2-chain with
+positive descendants).  Closure is definitional for the dynamics
+(transition amplitudes are ratios along paths), but it is a
+hypothesis of this theorem and is stated as such.
+
+COROLLARY (convention invariance): Move 3 uses only mu > 0, so the
+resonant support is identical under ANY positive history-counting
+convention (labeled, orbit, or intermediate weightings) - confirmed
+mechanically by the orbit-counting gate (1081 reproduced,
+counting-axiom-2026-08-03).
 
 ## Proof (three moves, induction on N)
 

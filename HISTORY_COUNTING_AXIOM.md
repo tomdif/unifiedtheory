@@ -23,29 +23,56 @@ All prior gates ran the L dynamics (selection PRINCIPLES were tested
 in L/O/E forms on top of it; the dynamics itself had never been run
 in O until now).
 
-## Results (depth 7, sharp 2D and the eps=1/4 resonance)
+## Results (depth 6-7, sharp 2D; both spectra measured)
 
-  generic phases (0.90, pi/3):  FULL support under O, as under L -
-      quantum abundance is convention-robust.
-  resonance eps=1/4, phi=8pi:  support 1081 == hereditary-real,
-      IDENTICAL to L.  Explained, not observed: the Necessity
-      Theorem's three moves use only mu > 0, so the resonant sector
-      is invariant under ANY positive multiplicity convention.  The
-      exactly solved sector is axiom-independent.
-  phi = pi/4 (Born quadrature):  DEAD under L (the mu=2 certificate);
-      ALIVE under O with partial support 653/2450
-      (1,2,5,11,32,109,493 by level) - a new object, neither dead nor
-      full, existing only in the orbit theory.
+Same 15-phase grid, both conventions (orbit_counting_gate.log,
+orbit_pi4_extraction.log, labeled_grid.log):
+
+    phi:        pi/8   pi/6   0.5    pi/4   pi/3  3pi/8 5pi/12  0.9   1.2   >=pi/2
+    LABELED:    FULL   FULL   FULL   EMPTY  FULL  FULL  FULL    FULL  FULL  EMPTY
+    ORBIT:      p:216  p:231  p:231  p:162  FULL  FULL  FULL    FULL  FULL  EMPTY
+
+  - phi >= pi/2: BOTH empty, convention-independently (the root
+    forces A(2ch) = A(2A) = 1/(2cos phi) under any positive counting
+    - hand-checkable, mu-blind).  The honest map's "pi/4 is the
+    unique dead phase" was always implicitly scoped to phi < pi/2.
+  - mid-band (~pi/3 .. ~1.4): both FULL - the conventions agree.
+  - SMALL phi: the conventions diverge on a BAND, not a point:
+    labeled full, orbit PARTIAL (216/231/231 of 405 at depth 6).
+    The earlier "generic-phase robustness" claim was a sampling
+    artifact of two phases inside the agreement window - corrected.
+  - pi/4: labeled EMPTY, orbit partial:162 - the labeled anomaly
+    embeds in the orbit partial band as its MINIMUM (162 < 216, 231,
+    231): a quadrature dip persists in the orbit theory, but as
+    suppression, not death.
+  - resonance eps=1/4 phi=8pi: IDENTICAL under both conventions
+    (1081 == hereditary-real), explained by the Necessity Theorem's
+    mu-blindness (see its convention-invariance corollary).
+  - EXTRACTION (the taxonomy question): the 653-family (depth-7
+    orbit-pi/4) is NOT carved by mod-8 congruences - element-jump
+    residues span all odd classes (parity theorem) and downset-S
+    residues span all of Z/8, so both candidate hereditary
+    predicates are vacuous.  Partial support without (simple)
+    congruence structure: a provisional FOURTH SECTOR, pending
+    richer arithmetic.
 
 ## What this establishes
 
-1. L and O are PHYSICALLY INEQUIVALENT theories, distinguishable
-   within the framework by their dead-phase spectra.  The axiom is
-   not bookkeeping.
-2. The axiom's content is LOCALIZED at exactly the anomalous phases -
-   the quadrature point where the probability-from-action reading is
-   most literal - and vanishes at resonances.  The textbook-quantum
-   phases are the convention-sensitive ones.
+1. L and O are STRUCTURALLY INEQUIVALENT theories: they differ at
+   pi/4 (referee deflations adopted: "spectra" requires both dead
+   sets and only the labeled one is measured - the orbit dead-phase
+   scan is running; and nothing connects a dead phase to an
+   observation - Paper 1's seam sentence applies verbatim).  The
+   axiom is not bookkeeping.
+2. LOCALIZATION IS DEAD (both-spectra measurement): the conventions
+   diverge on the whole small-phi band, not at the quadrature point.
+   THE BORING CHECK resolves partially: the labeled pi/4 DEATH was a
+   counting artifact (alive under O), but a quadrature DIP survives
+   in the orbit theory (162, the band minimum) - the two-anomaly
+   question is now "one death artifact + one robust suppression."
+   The entanglement framing is replaced by: the counting convention
+   reshapes the small-phi phase diagram globally, and quadrature
+   remains distinguished (as suppression) in both theories.
 3. Convention-tagged ledger: Necessity Theorem, dust telescope
    (positivity-only), and the resonant webs: robust under any
    positive counting.  The pi/4 anomaly: an L-artifact.  The funding

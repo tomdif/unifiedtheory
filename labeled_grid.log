@@ -1,0 +1,17 @@
+LABELED gate, depth 6, same grid:
+  phi = pi/8: FULL
+  phi = pi/6: FULL
+  phi = pi/4: EMPTY
+  phi = pi/3: FULL
+  phi = 3pi/8: FULL
+  phi = 5pi/12: FULL
+  phi = pi/2: EMPTY
+  phi = 7pi/12: EMPTY
+  phi = 5pi/8: EMPTY
+  phi = 2pi/3: EMPTY
+  phi = 3pi/4: EMPTY
+  phi = 7pi/8: EMPTY
+  phi = 0.5: FULL
+  phi = 0.9: FULL
+  phi = 1.2: FULL
+DONE
