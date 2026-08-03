@@ -1,0 +1,22 @@
+tree validated
+
+=== eps = 1/4, resonance phi0 = 8pi (web 1081) ===
+  delta = 0: support 1081 (in-web 1081, out-web 0) rounds 4
+  delta = 0.001: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.01: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.05: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.1: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.2: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.4: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.8: support 0 (in-web 0, out-web 0) rounds 0
+
+=== eps = 1/6, resonance phi0 = 6pi (web 949) ===
+  delta = 0: support 949 (in-web 949, out-web 0) rounds 4
+  delta = 0.001: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.01: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.05: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.1: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.2: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.4: support 0 (in-web 0, out-web 0) rounds 0
+  delta = 0.8: support 0 (in-web 0, out-web 0) rounds 0
+DONE
