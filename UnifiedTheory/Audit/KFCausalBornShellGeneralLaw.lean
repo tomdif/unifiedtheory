@@ -8,6 +8,8 @@
   file proves in arbitrary finite branching rank that rescaling only the
   zero-sum component preserves the coherent total.  The Born equation fixes
   the squared radial modulus uniquely whenever that component is nonzero.
+  A strictly-convex-shell theorem further proves that the nonnegative radial
+  point is the unique globally least-changing completion at fixed Born norm.
 
   The uniform boundary is a real obstruction: its zero-sum direction
   vanishes, so no radial rule can turn a nondeterministic uniform scalar law
@@ -646,6 +648,83 @@ theorem finiteBornShell_scale_normSq_unique
         1 - finiteUniformAmplitude Branch) :
     star first * first = star second * second := by
   exact mul_right_cancel₀ hNonuniform (hFirst.trans hSecond.symm)
+
+/-! ## 2a. Least-change characterization of the radial rule -/
+
+/-- The point on a norm shell obtained by following the nonzero input ray.
+This definition is independent of the causal application and isolates the
+geometry behind the Born-shell correction. -/
+def canonicalRadialShellPoint
+    {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (radius : ℝ) (centered : E) : E :=
+  (radius / ‖centered‖) • centered
+
+theorem canonicalRadialShellPoint_norm
+    {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (radius : ℝ) (centered : E) (hRadius : 0 ≤ radius)
+    (hCentered : centered ≠ 0) :
+    ‖canonicalRadialShellPoint radius centered‖ = radius := by
+  unfold canonicalRadialShellPoint
+  rw [norm_smul, Real.norm_eq_abs,
+    abs_of_nonneg (div_nonneg hRadius (norm_nonneg centered))]
+  exact div_mul_cancel₀ radius (norm_ne_zero_iff.mpr hCentered)
+
+theorem canonicalRadialShellPoint_distance
+    {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (radius : ℝ) (centered : E) (hRadius : 0 ≤ radius)
+    (hCentered : centered ≠ 0) :
+    ‖canonicalRadialShellPoint radius centered - centered‖ =
+      |radius - ‖centered‖| := by
+  have hScale : 0 ≤ radius / ‖centered‖ :=
+    div_nonneg hRadius (norm_nonneg centered)
+  have hRay : SameRay ℝ
+      (canonicalRadialShellPoint radius centered) centered :=
+    (SameRay.sameRay_nonneg_smul_right centered hScale).symm
+  rw [hRay.norm_sub,
+    canonicalRadialShellPoint_norm radius centered hRadius hCentered]
+
+/-- **Global least-change theorem.**  In every strictly convex real normed
+space, positive radial rescaling is the unique closest point on a prescribed
+norm shell.  Thus if microscopic completion is required to change the
+zero-sum amplitude by the least Hilbert distance, ray preservation and the
+nonnegative phase are consequences rather than separate choices. -/
+theorem canonicalRadialShellPoint_unique_nearest
+    {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [StrictConvexSpace ℝ E]
+    (radius : ℝ) (centered competitor : E) (hRadius : 0 ≤ radius)
+    (hCentered : centered ≠ 0) (hCompetitorNorm : ‖competitor‖ = radius)
+    (hAtMost :
+      ‖competitor - centered‖ ≤
+        ‖canonicalRadialShellPoint radius centered - centered‖) :
+    competitor = canonicalRadialShellPoint radius centered := by
+  have hRadialNorm :
+      ‖canonicalRadialShellPoint radius centered‖ = radius :=
+    canonicalRadialShellPoint_norm radius centered hRadius hCentered
+  have hLower :
+      ‖canonicalRadialShellPoint radius centered - centered‖ ≤
+        ‖competitor - centered‖ := by
+    rw [canonicalRadialShellPoint_distance radius centered hRadius hCentered,
+      ← hCompetitorNorm]
+    exact abs_norm_sub_norm_le competitor centered
+  have hCompetitorDistance :
+      ‖competitor - centered‖ = |radius - ‖centered‖| := by
+    calc
+      ‖competitor - centered‖ =
+          ‖canonicalRadialShellPoint radius centered - centered‖ :=
+        le_antisymm hAtMost hLower
+      _ = |radius - ‖centered‖| :=
+        canonicalRadialShellPoint_distance radius centered
+          hRadius hCentered
+  have hCompetitorRay : SameRay ℝ competitor centered :=
+    sameRay_iff_norm_sub.mpr (by
+      simpa [hCompetitorNorm] using hCompetitorDistance)
+  have hScale : 0 ≤ radius / ‖centered‖ :=
+    div_nonneg hRadius (norm_nonneg centered)
+  have hRadialRay : SameRay ℝ
+      (canonicalRadialShellPoint radius centered) centered :=
+    (SameRay.sameRay_nonneg_smul_right centered hScale).symm
+  exact norm_injOn_ray_right hCentered hCompetitorRay hRadialRay
+    (hCompetitorNorm.trans hRadialNorm.symm)
 
 /-! ## 3. The symmetric boundary obstruction -/
 
@@ -1759,6 +1838,7 @@ theorem canonicalHarmonicCriticalBornShell_promotion (chirality : Fin 2) :
 #print axioms finiteCenteredAmplitude_bornMass
 #print axioms finiteBornShellCorrection_bornMass_one
 #print axioms finiteBornShell_scale_normSq_unique
+#print axioms canonicalRadialShellPoint_unique_nearest
 #print axioms no_radial_Born_repair_of_uniform_branching
 #print axioms finiteBornShellCorrection_equivariant
 #print axioms finiteBornShell_general_capstone

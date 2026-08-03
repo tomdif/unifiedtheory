@@ -683,9 +683,14 @@
 > value is reflection invariant, and the completed transitions for the two
 > chiralities are exact complex conjugates, so the repair introduces no hidden
 > absolute-handedness choice.
+> Independently of the causal specialization, a strictly convex norm-shell
+> theorem proves that the nonnegative radial completion is the unique closest
+> fixed-norm point to the raw zero-sum amplitude. Thus ray preservation is
+> forced by a least-Hilbert-disturbance principle; adopting that principle as
+> microscopic dynamics remains an explicit physical postulate.
 > A uniform branching parent still has no scalar radial repair in general, and
-> the ray-preservation rule remains a proposed microscopic selection law rather
-> than a derived continuum or experimental principle.
+> the least-disturbance rule remains a proposed microscopic selection law
+> rather than a derived continuum or experimental principle.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

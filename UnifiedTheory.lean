@@ -5379,10 +5379,12 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- general scalar no-go, but the harmonic law provably never hits it.  The
 -- canonical profile is definitionally the nonnegative real square-root
 -- scale, not an arbitrary choice witness; it is reflection invariant and the
--- two corrected chiral laws remain exact complex conjugates.  Thus the repair
--- does not select an absolute handedness.  The radial ray-preservation rule is
--- still a proposed microscopic law, not a derivation of continuum or
--- laboratory physics.
+-- two corrected chiral laws remain exact complex conjugates.  A general
+-- strictly-convex-shell theorem now characterizes this positive radial point
+-- as the unique globally least-changing completion at fixed Born norm.  Thus
+-- ray preservation follows if microscopic completion obeys least Hilbert
+-- disturbance, but that variational principle is still proposed rather than
+-- derived from continuum or laboratory physics.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
