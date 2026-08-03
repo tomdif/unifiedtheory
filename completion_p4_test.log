@@ -1,0 +1,19 @@
+P4 member-churn scan (X = total stem-measure churn T=5..7):
+  deep: X = 1.2203
+  rand0: X = 1.2099
+  rand1: X = 1.3715
+  rand2: X = 1.2636
+  rand3: X = 1.2078
+  rand4: X = 1.2727
+  rand5: X = 1.3154
+  rand6: X = 1.2296
+  rand7: X = 1.4646
+  rand8: X = 1.2466
+  rand9: X = 1.3002
+  rand10: X = 1.2322
+  rand11: X = 1.1744
+
+min = 1.1744, median = 1.2466, max = 1.4646, spread max/min = 1.25
+(records-test maxmin member churn, for reference, computed same way: rerun below)
+  maxmin: X = 3.0367
+DONE
