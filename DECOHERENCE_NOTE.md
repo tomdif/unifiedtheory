@@ -53,3 +53,50 @@ horizon steps) is the finding; extrapolation is not.
    nothing in the theory - the first genuinely discovery-shaped
    negative of the arc: the missing ingredient is real, and naming
    it is the program's forward problem.
+
+(Ledger-safe closing form, referee: everything else the program has
+either PROVEN or REDUCED TO STATED LEMMAS - open inside "everything
+else": the Z2 stabilization bit-ledger even case, sufficiency at
+general depth, the odd-a Lean step.)
+
+## Convention-robustness decision (before the orbit run, referee)
+
+The structure theorem is SIGN-PURE in the positivity-principle
+sense: termwise nonnegativity needs only the coboundary property
+(covariance - holds under any positive multiplicity convention) and
+final-class identification on iso classes (the same object in both
+conventions; orbit counting changes which sequences are distinct
+histories and their weights, not which classes are identified).
+DECIDED: superadditivity and exact-decoherence-requires-
+orthogonality transfer verbatim to the orbit functional; the orbit
+measurement can move ONLY the trend.  RE-REGISTERED FORK:
+  (i)  monotone growth persists -> convention-robust
+       anti-classicality (empirical robustness, not principle-forced);
+  (ii) trend reverses -> asymptotic decoherence available in the
+       orbit theory; exact decoherence still excluded in both;
+  (iii) termwise nonnegativity violated in the computation -> the
+       decision above is wrong and the two core questions are
+       entangled (sanity check rides along).
+
+
+## Orbit-counted result (orbit_decoherence.log, 2026-08-03)
+
+Re-registered fork resolves to (i): mean off-diagonals under orbit
+counting grow 0.0796 -> 0.1497 -> 0.1875 across T = 5..7 - monotone,
+slightly STEEPER than labeled (0.084 -> 0.121 -> 0.153).  Termwise
+nonnegativity held per-term (the entanglement sanity check passes;
+the pre-run sign-purity decision confirmed).
+
+CLOSURE OF THE THREAD: anti-decoherence is CONVENTION-ROBUST - in
+principle (sign-purity: superadditivity and the orthogonality
+requirement transfer) and now in trend (measured in both
+conventions).  The fourth trail thereby DETACHES from the counting
+axiom: unlike selection, quadrature, and the Lambda drift class, the
+decoherence verdict is the one conclusion every counting convention
+shares.  Final form of the two-question core:
+  1. What counts as a history? - controls selection, quadrature, and
+     the drift law (three genuinely dependent trails).
+  2. What makes histories decohere? - NOTHING in the theory, in ANY
+     counting: the missing ingredient is convention-independent, and
+     naming it is the program's forward problem in every version of
+     the theory at once.
