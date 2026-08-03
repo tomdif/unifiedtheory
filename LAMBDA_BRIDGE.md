@@ -131,3 +131,46 @@ edge), and the negative Lambda_eff drift holds everywhere (to
 datum recorded: the max-min member's t* collapses at the low edge
 (4e-6, 3e-5) while sitting at 1.0 near pi/2 - the interior thins
 toward the lower window edge.
+
+
+## The unknown-physics probe (2026-08-03, unknown_physics_probe.log)
+
+Four candidate mechanisms for the measured class were named with
+discriminators; the two cheap ones ran (pre-registered readings):
+
+C (SPACETIME PHASE COEXISTENCE) - DIES at accessible depth: the
+psi-weighted S-distribution at n = 7 is broad, smooth, UNIMODAL
+(monotone rise to S = 1 at 12.8%, monotone fall; the n = 6 bumps
+read as small-n discreteness, smoothing at 7).  Single-phase
+ballistic spread, not coexistence.
+
+D (COUNTING-ENTROPY DOMINANCE) - WINS the discrimination:
+ext-only weighting (the pure count of birth orderings, NO quantum
+dynamics at all) reproduces the drift class in shape AND magnitude:
+<S>/n - 1: -0.500 -> -1.013 across n = 2..7 (crossing -1 at n = 7),
+deltaS/n -> 0.803, against the full dynamics' -0.949 / 0.899.
+A-only (amplitudes without ext) OVERSHOOTS (-1.23, 1.37): the
+dynamics does not oppose the entropy, it adds to it.
+
+CONSEQUENCES, stated at width:
+1. The drift class - including the self-tuning - is, at accessible
+   depth, a property of the LABELED-HISTORY COUNT MEASURE, present
+   with no dynamics.  The "dynamically relaxing Lambda" reading of
+   candidate B is demoted: the relaxation is ENTROPIC, not
+   dynamical, as far as n = 7 can see.
+2. The physical drift law therefore inherits the history-counting
+   axiom's convention-dependence: ext is a multiplicity object, and
+   under orbit counting the class must be re-measured (registered).
+   Every trail this week - selection, quadrature, now Lambda - ends
+   at the same axiom.
+3. The self-tuning fork (limit -1, rate) becomes an ANALYTIC
+   question: the ext-weighted ensemble is the uniform measure on
+   labeled growth histories, a known-adjacent random-order model
+   whose interval-count asymptotics may be derivable in closed form
+   - better than any scan, and the registered route for settling
+   the pre-registered fork.
+4. The remaining home for genuinely unknown physics in this thread
+   is candidate A: whether pure covariant growth decoheres action
+   sectors AT ALL (off-diagonals of the decoherence functional,
+   open problem 3) - if not, classicality requires an ingredient
+   the theory does not currently contain.
