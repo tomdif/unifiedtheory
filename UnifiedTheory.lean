@@ -5476,6 +5476,14 @@ import UnifiedTheory.Audit.KFCausalBornFreshModeCompatibility
 -- its partially dephased measure remains normalized and projective at every
 -- dephasing strength.
 import UnifiedTheory.Audit.KFCausalBornNormalizationTransfer
+-- Local preservation of every incoming coherent amplitude and every incoming
+-- Born quadratic form is equivalent, not merely sufficient, to the paired law
+--   sum K_e = I,  sum K_e^dagger K_e = I.
+-- The scalar and operator iff theorems require no tensor factor or partial
+-- trace, and the all-rank harmonic law plus both concrete causal-holonomy
+-- realizations inhabit the rigid class.  The conservation demands themselves
+-- and the microscopic operator selection remain physical inputs.
+import UnifiedTheory.Audit.KFCausalDoubleConservationLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

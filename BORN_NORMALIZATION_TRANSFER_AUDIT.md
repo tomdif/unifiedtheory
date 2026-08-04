@@ -53,6 +53,55 @@ dephasing value other than one retains it by the exact factor
 This is not yet a tail-event convergence theorem, a laboratory-time collapse
 law, or a derivation of a CPTP record instrument.
 
+## Double-conservation rigidity
+
+The follow-up module `KFCausalDoubleConservationLaw.lean` proves that the
+intersection is not merely a convenient sufficient condition.  For any finite
+successor fiber, require one unresolved birth to preserve every incoming
+complex amplitude and every resolved Born mass:
+
+\[
+\sum_e z a_e=z,
+\qquad
+\sum_e |z a_e|^2=|z|^2
+\quad\text{for every }z\in\mathbb C.
+\]
+
+These two operational requirements hold if and only if
+
+\[
+\sum_e a_e=1,
+\qquad
+\sum_e|a_e|^2=1.
+\]
+
+The carrier-valued theorem is equally exact.  Requiring, for every incoming
+carrier amplitude `X`,
+
+\[
+\sum_e K_eX=X,
+\qquad
+\sum_e(K_eX)^\dagger(K_eX)=X^\dagger X
+\]
+
+is equivalent to
+
+\[
+\boxed{\sum_eK_e=I,
+\qquad
+\sum_eK_e^\dagger K_e=I.}
+\]
+
+This is the repo's **double-conservation law**: coherent quantum data and Born
+record weight survive the same local causal refinement exactly when the birth
+operators are bi-normalized.  It is basis-free and needs no tensor-product
+environment, partial trace, or record algebra.  The all-rank harmonic scalar
+law and both concrete causal-holonomy operator laws satisfy it.
+
+The rigidity is conditional on the two universal conservation demands.  It
+does not prove that causal order imposes them or select the microscopic
+operators.  Those are now the sharply isolated physics questions.
+
 ## The exact local law
 
 For a finite successor fiber, simultaneous normalization implies

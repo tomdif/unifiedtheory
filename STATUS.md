@@ -831,6 +831,19 @@
 > `1-lambda`. This closes the finite-cylinder normalization question, not the
 > tail-event, record-instrument, or microscopic-selection problems; see
 > `BORN_NORMALIZATION_TRANSFER_AUDIT.md`.
+> `KFCausalDoubleConservationLaw.lean` upgrades the bi-normalized intersection
+> from a sufficient construction to a local rigidity theorem. For every finite
+> successor fiber, preservation of every incoming coherent amplitude and every
+> incoming Born mass is equivalent to `sum a_e=1` and `sum |a_e|^2=1`. On an
+> arbitrary finite carrier, preservation of every incoming operator amplitude
+> and its full quadratic form is equivalent to `sum K_e=I` and
+> `sum K_e^dagger K_e=I`. The theorem assumes neither a tensor-product
+> environment nor a partial trace. The canonical all-rank harmonic scalar law,
+> the first causal-birth holonomy pair, and the corrected six-outcome process
+> all satisfy this double-conservation criterion. This establishes a precise
+> candidate microscopic conservation law, conditional on demanding both forms
+> of local information preservation; causal order still has to select the
+> operators and explain why nature imposes both demands.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
