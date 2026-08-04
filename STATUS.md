@@ -721,7 +721,8 @@
 > The same module proves that the radial mass is exactly—not merely a proxy
 > for—the existing complex Born mass of every finite supported causal profile.
 > The observable mass converges to one without crossing the Born shell, and
-> its absolute error contracts by at least `3/4` per microscopic tick. The
+> its absolute error falls to at most `3/4` of its previous value per
+> microscopic tick. The
 > sharper `1/4` contraction applies to the squared radial Lyapunov defect.
 > A uniform branching parent still has no scalar radial repair in general, and
 > the remaining physical postulate is now narrower: why microscopic causal

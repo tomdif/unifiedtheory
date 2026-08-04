@@ -26,8 +26,8 @@
   The second half translates the radial dynamics back to the observable Born
   mass of the full supported causal amplitude.  It proves that the actual mass
   equals the uniform mass plus the squared carrier radius, converges to one,
-  never crosses the Born shell, and contracts its absolute error by at least a
-  factor `3/4` per microscopic tick.  These statements concern the full causal
+  never crosses the Born shell, and reduces its absolute error to at most
+  `3/4` of its previous value per microscopic tick.  These statements concern the full causal
   profile, not only an auxiliary carrier norm.
 
   The local action is still an effective dissipative input.  This module does
@@ -278,8 +278,8 @@ theorem radialBornMass_error_factor
   unfold radialBornMass
   nlinarith
 
-/-- For nonnegative radii the physical mass error contracts by at least a
-factor `3/4` at every tick. -/
+/-- For nonnegative radii the physical mass error contracts to at most
+`3/4` of its previous value at every tick. -/
 theorem radialBornMass_abs_error_succ_le
     (uniform target initial : ℝ) (step : ℕ)
     (hShell : uniform + target ^ 2 = 1)
@@ -496,8 +496,9 @@ theorem supportBornRelaxedMass_tendsto_one
   exact (supportBornRelaxedMass_eq_radialBornMass
     support amplitude hNonuniform step).symm
 
-/-- The actual Born-mass error contracts by at least `3/4` per microscopic
-tick.  The sharper `1/4` law belongs to the squared radial Lyapunov defect. -/
+/-- The actual Born-mass error contracts to at most `3/4` of its previous
+value per microscopic tick.  The sharper `1/4` law belongs to the squared
+radial Lyapunov defect. -/
 theorem supportBornRelaxedMass_abs_error_succ_le
     {Branch : Type u} [Fintype Branch]
     (support : Finset Branch) (hSupport : support.Nonempty)

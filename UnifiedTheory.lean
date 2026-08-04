@@ -5410,7 +5410,7 @@ import UnifiedTheory.Audit.KFCausalBornShellRelaxationDynamics
 -- weights change the clock but not the Born attractor.  At the observable
 -- level the radial expression is exactly the existing complex Born mass of
 -- the full supported causal profile; it approaches one without crossing and
--- its absolute error contracts by at least 3/4 per tick.  The action remains
+-- its absolute error falls to at most 3/4 of its previous value per tick.  The action remains
 -- an effective open-dynamics principle, not a claimed unitary derivation.
 import UnifiedTheory.Audit.KFCausalBornShellProximalDynamics
 -- Build-time transitive dependency assertions certify the architecture:
