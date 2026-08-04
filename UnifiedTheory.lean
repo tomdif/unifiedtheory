@@ -5381,8 +5381,10 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- scale, not an arbitrary choice witness; it is reflection invariant and the
 -- two corrected chiral laws remain exact complex conjugates.  A general
 -- strictly-convex-shell theorem now characterizes this positive radial point
--- as the unique globally least-changing completion at fixed Born norm.  Thus
--- ray preservation follows if microscopic completion obeys least Hilbert
+-- as the unique globally least-changing completion at fixed Born norm.  Its
+-- support-relative specialization proves this for the actual physical
+-- successor `L2` carrier against every coherent Born-one competitor.  Thus ray
+-- preservation follows if microscopic completion obeys least Hilbert
 -- disturbance, but that variational principle is still proposed rather than
 -- derived from continuum or laboratory physics.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw

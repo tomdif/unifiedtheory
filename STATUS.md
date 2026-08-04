@@ -688,6 +688,10 @@
 > fixed-norm point to the raw zero-sum amplitude. Thus ray preservation is
 > forced by a least-Hilbert-disturbance principle; adopting that principle as
 > microscopic dynamics remains an explicit physical postulate.
+> The support-relative specialization now constructs the physical-successor
+> Euclidean carrier, proves its squared norm is exactly the Born excess, and
+> proves the implemented square-root correction uniquely `L2`-closest among
+> every supported coherent Born-one competitor.
 > A uniform branching parent still has no scalar radial repair in general, and
 > the least-disturbance rule remains a proposed microscopic selection law
 > rather than a derived continuum or experimental principle.

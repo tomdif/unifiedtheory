@@ -1097,6 +1097,216 @@ theorem supportBornExcess_pos_of_nonuniform
   · refine ⟨branch, hBranch, Complex.normSq_pos.mpr ?_⟩
     simpa [supportCenteredAmplitude, sub_ne_zero] using hDifferent
 
+/-! ## 5a. The physical successor shell as a Euclidean variational problem -/
+
+/-- Restrict a branch amplitude to its physical support and equip it with the
+canonical finite-dimensional `L2` geometry. -/
+def supportAmplitudeVector {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ) :
+    EuclideanSpace ℂ {branch : Branch // branch ∈ support} :=
+  (EuclideanSpace.equiv {branch : Branch // branch ∈ support} ℂ).symm
+    (fun branch => amplitude branch.val)
+
+@[simp]
+theorem supportAmplitudeVector_apply {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ)
+    (branch : {branch : Branch // branch ∈ support}) :
+    supportAmplitudeVector support amplitude branch = amplitude branch.val := by
+  rfl
+
+/-- Euclidean realization of the physical zero-sum amplitude. -/
+def supportCenteredVector {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ) :
+    EuclideanSpace ℂ {branch : Branch // branch ∈ support} :=
+  supportAmplitudeVector support
+    (supportCenteredAmplitude support amplitude)
+
+theorem supportCenteredVector_norm_sq {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ) :
+    ‖supportCenteredVector support amplitude‖ ^ 2 =
+      supportBornExcess support amplitude := by
+  rw [EuclideanSpace.norm_sq_eq]
+  unfold supportBornExcess supportCenteredVector
+  simp only [supportAmplitudeVector_apply, Complex.sq_norm]
+  exact (Finset.sum_subtype support (fun _ => Iff.rfl)
+    (fun branch => Complex.normSq
+      (supportCenteredAmplitude support amplitude branch))).symm
+
+/-- Radius of the Born-one sphere inside the zero-sum successor carrier. -/
+def supportBornTargetRadius {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) : ℝ :=
+  Real.sqrt (1 - (support.card : ℝ)⁻¹)
+
+theorem supportBornTargetRadius_nonneg {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) :
+    0 ≤ supportBornTargetRadius support := by
+  exact Real.sqrt_nonneg _
+
+/-- Coherent Born-one profiles lie exactly on the target Euclidean sphere. -/
+theorem supportCenteredVector_norm_of_born_one
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hSupport : support.Nonempty)
+    (amplitude : Branch → ℂ)
+    (hCoherent : ∑ branch ∈ support, amplitude branch = 1)
+    (hBorn : supportComplexBornMass support amplitude = 1) :
+    ‖supportCenteredVector support amplitude‖ =
+      supportBornTargetRadius support := by
+  have hCardPositive : (0 : ℝ) < support.card := by
+    exact_mod_cast (Finset.card_pos.mpr hSupport)
+  have hCardOne : (1 : ℝ) ≤ support.card := by
+    exact_mod_cast (Finset.one_le_card.mpr hSupport)
+  have hGapNonnegative : 0 ≤ 1 - (support.card : ℝ)⁻¹ := by
+    exact sub_nonneg.mpr ((inv_le_one₀ hCardPositive).mpr hCardOne)
+  have hExcess : supportBornExcess support amplitude =
+      1 - (support.card : ℝ)⁻¹ := by
+    have hComplex := supportBornExcess_eq_complex_difference
+      support hSupport amplitude hCoherent
+    rw [hBorn] at hComplex
+    have hReal := congrArg Complex.re hComplex
+    simpa [supportUniformAmplitude] using hReal
+  apply (sq_eq_sq₀ (norm_nonneg _)
+    (supportBornTargetRadius_nonneg support)).mp
+  rw [supportCenteredVector_norm_sq, hExcess]
+  exact (Real.sq_sqrt hGapNonnegative).symm
+
+theorem supportCenteredVector_ne_zero_of_nonuniform
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (amplitude : Branch → ℂ)
+    (hNonuniform : ∃ branch ∈ support,
+      amplitude branch ≠ supportUniformAmplitude support) :
+    supportCenteredVector support amplitude ≠ 0 := by
+  have hExcessPositive :=
+    supportBornExcess_pos_of_nonuniform support amplitude hNonuniform
+  intro hZero
+  have hNormSq := supportCenteredVector_norm_sq support amplitude
+  rw [hZero, norm_zero] at hNormSq
+  norm_num at hNormSq
+  linarith
+
+/-- The explicit square-root scale is exactly target radius divided by raw
+zero-sum norm. -/
+theorem supportBornShellScale_eq_targetRadius_div_norm
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hMultiple : 1 < support.card)
+    (amplitude : Branch → ℂ) (excess : ℝ) (hExcessPositive : 0 < excess)
+    (hExcess : supportBornExcess support amplitude = excess) :
+    supportBornShellScale support excess =
+      ((supportBornTargetRadius support /
+          ‖supportCenteredVector support amplitude‖ : ℝ) : ℂ) := by
+  have hNorm : ‖supportCenteredVector support amplitude‖ =
+      Real.sqrt excess := by
+    apply (sq_eq_sq₀ (norm_nonneg _) (Real.sqrt_nonneg _)).mp
+    rw [supportCenteredVector_norm_sq, hExcess]
+    exact (Real.sq_sqrt (le_of_lt hExcessPositive)).symm
+  rw [hNorm]
+  unfold supportBornShellScale supportBornTargetRadius
+  norm_cast
+  have hCardPositive : (0 : ℝ) < support.card := by
+    exact_mod_cast (Nat.zero_lt_of_lt hMultiple)
+  have hCardOne : (1 : ℝ) < support.card := by
+    exact_mod_cast hMultiple
+  have hGapNonnegative : 0 ≤ 1 - (support.card : ℝ)⁻¹ := by
+    exact sub_nonneg.mpr (le_of_lt
+      ((inv_lt_one₀ hCardPositive).mpr hCardOne))
+  rw [Real.sqrt_div hGapNonnegative]
+
+theorem supportCenteredVector_finiteSupportBornShellCorrection
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (scale : ℝ) (amplitude : Branch → ℂ) :
+    supportCenteredVector support
+        (finiteSupportBornShellCorrection support (scale : ℂ) amplitude) =
+      scale • supportCenteredVector support amplitude := by
+  ext branch
+  simp [supportCenteredVector, supportAmplitudeVector,
+    supportCenteredAmplitude, finiteSupportBornShellCorrection,
+    Algebra.smul_def]
+
+/-- The implemented support correction is the canonical radial point of the
+physical successor Born sphere. -/
+theorem supportBornShellCorrection_centered_eq_canonicalRadial
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hMultiple : 1 < support.card)
+    (amplitude : Branch → ℂ)
+    (hNonuniform : ∃ branch ∈ support,
+      amplitude branch ≠ supportUniformAmplitude support) :
+    supportCenteredVector support
+        (finiteSupportBornShellCorrection support
+          (supportBornShellScale support
+            (supportBornExcess support amplitude)) amplitude) =
+      canonicalRadialShellPoint (supportBornTargetRadius support)
+        (supportCenteredVector support amplitude) := by
+  have hExcessPositive :=
+    supportBornExcess_pos_of_nonuniform support amplitude hNonuniform
+  have hScale := supportBornShellScale_eq_targetRadius_div_norm
+    support hMultiple amplitude (supportBornExcess support amplitude)
+    hExcessPositive rfl
+  have hScaleReal : supportBornShellScale support
+      (supportBornExcess support amplitude) =
+      (((supportBornTargetRadius support /
+        ‖supportCenteredVector support amplitude‖) : ℝ) : ℂ) := hScale
+  ext branch
+  simp [supportCenteredVector, supportAmplitudeVector,
+    supportCenteredAmplitude, finiteSupportBornShellCorrection,
+    canonicalRadialShellPoint, Algebra.smul_def, hScaleReal]
+
+/-- **Physical least-disturbance theorem.**  The actual support-relative
+square-root correction is uniquely closest, in the physical-successor `L2`
+metric, among every coherent Born-normalized competitor. -/
+theorem finiteSupportBornShellCorrection_unique_nearest
+    {Branch : Type u} [Fintype Branch]
+    (support : Finset Branch) (hSupport : support.Nonempty)
+    (hMultiple : 1 < support.card)
+    (amplitude competitor : Branch → ℂ)
+    (hNonuniform : ∃ branch ∈ support,
+      amplitude branch ≠ supportUniformAmplitude support)
+    (hCompetitorCoherent : ∑ branch ∈ support, competitor branch = 1)
+    (hCompetitorBorn : supportComplexBornMass support competitor = 1)
+    (hAtMost :
+      ‖supportCenteredVector support competitor -
+          supportCenteredVector support amplitude‖ ≤
+        ‖supportCenteredVector support
+            (finiteSupportBornShellCorrection support
+              (supportBornShellScale support
+                (supportBornExcess support amplitude)) amplitude) -
+          supportCenteredVector support amplitude‖) :
+    ∀ branch ∈ support,
+      competitor branch =
+        finiteSupportBornShellCorrection support
+          (supportBornShellScale support
+            (supportBornExcess support amplitude)) amplitude branch := by
+  have hRawNe := supportCenteredVector_ne_zero_of_nonuniform
+    support amplitude hNonuniform
+  have hCompetitorNorm := supportCenteredVector_norm_of_born_one
+    support hSupport competitor hCompetitorCoherent hCompetitorBorn
+  have hCorrectionRadial :=
+    supportBornShellCorrection_centered_eq_canonicalRadial
+      support hMultiple amplitude hNonuniform
+  have hUnique : supportCenteredVector support competitor =
+      canonicalRadialShellPoint (supportBornTargetRadius support)
+        (supportCenteredVector support amplitude) := by
+    apply canonicalRadialShellPoint_unique_nearest
+      (supportBornTargetRadius support)
+      (supportCenteredVector support amplitude)
+      (supportCenteredVector support competitor)
+      (supportBornTargetRadius_nonneg support) hRawNe hCompetitorNorm
+    simpa [hCorrectionRadial] using hAtMost
+  have hVectorEquality : supportCenteredVector support competitor =
+      supportCenteredVector support
+        (finiteSupportBornShellCorrection support
+          (supportBornShellScale support
+            (supportBornExcess support amplitude)) amplitude) :=
+    hUnique.trans hCorrectionRadial.symm
+  intro branch hBranch
+  have hApply := congrArg
+    (fun vector : EuclideanSpace ℂ {other : Branch // other ∈ support} =>
+      vector ⟨branch, hBranch⟩) hVectorEquality
+  change competitor branch - supportUniformAmplitude support =
+    finiteSupportBornShellCorrection support
+        (supportBornShellScale support
+          (supportBornExcess support amplitude)) amplitude branch -
+      supportUniformAmplitude support at hApply
+  exact sub_left_injective hApply
+
 /-- Every coherent nonuniform amplitude on a multi-element support admits an
 explicit nonnegative radial Born-shell scale. -/
 theorem exists_support_Born_scale_of_nonuniform
@@ -1845,6 +2055,7 @@ theorem canonicalHarmonicCriticalBornShell_promotion (chirality : Fin 2) :
 #print axioms supportBornShellScale_solves_of_strict_excess
 #print axioms exists_support_Born_scale_of_nonuniform
 #print axioms supportCenteredAmplitude_bornMass
+#print axioms finiteSupportBornShellCorrection_unique_nearest
 #print axioms finiteSupportBornShellCorrection_bornMass_one
 #print axioms harmonicCriticalTransition_eq_zero_of_not_physical
 #print axioms ancestorCount_eq_of_causalTransitionTarget_eq
