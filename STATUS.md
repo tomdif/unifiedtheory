@@ -746,6 +746,27 @@
 > derived from continuum experiment here. This is therefore a candidate
 > effective natural law, not a microscopic unitary law or an established law
 > of nature.
+> `KFCausalBornRateAndDilation.lean` closes the two finite-level parameters of
+> that effective law. Equal local action weights already force a half-defect
+> per causal birth. Requiring the continuous flow to be the exact semigroup
+> sampled after a birth of proper duration `tau_birth` then uniquely forces
+> `gamma * tau_birth = log 2`; in birth-count units, `gamma = log 2`.
+> The four-dimensional interval-counting clock supplies `tau_birth` from one
+> counted event and the sprinkling density, yielding the positive physical
+> rate `gamma = log 2 / tau_birth`. This is not convention-free: the same
+> midpoint read as an implicit-Euler approximation instead forces
+> `gamma * tau_birth = 1`, and Lean proves `log 2 != 1`. Thus the discrete
+> growth law fixes its retention exactly, while choosing exact-flow versus
+> numerical-step clock semantics remains a physical calibration decision.
+> The same module constructs an explicit reversible system-bath dilation.
+> A two-mode rotation with system coefficient `exp(-gamma*t)` conserves total
+> radial-defect energy, is exactly invertible, and projects to the continuous
+> equilibration law; the apparently lost defect is stored in the bath.
+> Repetition with one fresh vacuum mode per birth reproduces the discrete
+> half-defect semigroup exactly. This supplies a finite collision-model origin
+> for the open dynamics, but does not derive a unique Hamiltonian, the fresh-
+> bath/reset assumption, an infinite reservoir, or the absolute sprinkling
+> density.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -898,7 +919,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,006 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,757 jobs successful
+1,007 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,758 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

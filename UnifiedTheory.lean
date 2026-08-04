@@ -5426,6 +5426,19 @@ import UnifiedTheory.Audit.KFCausalBornShellProximalDynamics
 -- crossing the shell.  This is an effective dissipative law.  The microscopic
 -- environment/dilation and the magnitude of gamma remain open.
 import UnifiedTheory.Audit.KFCausalBornEquilibrationLaw
+-- Equal microscopic penalties halve the radial defect per causal birth.  If
+-- the continuous law is the exact semigroup sampled after a birth duration
+-- tau, this forces gamma*tau = log 2 uniquely; causal interval counting then
+-- supplies tau from the sprinkling density.  A separate theorem exposes the
+-- discretization boundary: reading the same midpoint as implicit Euler gives
+-- gamma*tau = 1, so the physical generator requires a named clock convention.
+-- The apparent dissipation has an exact reversible two-mode dilation: a plane
+-- rotation transfers radial-defect energy into a vacuum bath coordinate,
+-- system projection recovers the continuous law, and fresh bath modes recover
+-- sequential half-defect growth.  This identifies a finite collision-model
+-- origin without claiming a unique Hamiltonian, an infinite bath, or a
+-- density calibration from first principles.
+import UnifiedTheory.Audit.KFCausalBornRateAndDilation
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
