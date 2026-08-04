@@ -5484,6 +5484,14 @@ import UnifiedTheory.Audit.KFCausalBornNormalizationTransfer
 -- realizations inhabit the rigid class.  The conservation demands themselves
 -- and the microscopic operator selection remain physical inputs.
 import UnifiedTheory.Audit.KFCausalDoubleConservationLaw
+-- The paired identities have a deeper recorded-refinement realization.  Stack
+-- each birth operator into V : H -> H x Outcome.  Then V^dagger V = I is
+-- equivalent to Born completeness, while the canonical coherent codiagonal E
+-- satisfies E V = I iff the operators sum to I.  The two demands are proved
+-- independent by exact binary witnesses, and both concrete causal-holonomy
+-- laws instantiate their conjunction.  Causal derivation of the record factor
+-- and counit remains open.
+import UnifiedTheory.Audit.KFCausalRecordedRefinementDilation
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

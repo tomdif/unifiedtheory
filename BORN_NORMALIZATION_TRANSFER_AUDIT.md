@@ -102,6 +102,54 @@ The rigidity is conditional on the two universal conservation demands.  It
 does not prove that causal order imposes them or select the microscopic
 operators.  Those are now the sharply isolated physics questions.
 
+## Recorded-refinement origin
+
+`KFCausalRecordedRefinementDilation.lean` gives the paired equations a common
+finite microscopic carrier. Stack the birth operators into
+
+\[
+V:H\longrightarrow H\times\mathrm{Outcome},
+\qquad
+V_{(i,e),j}=(K_e)_{ij}.
+\]
+
+The formalization proves the converse as well as the standard forward
+Stinespring calculation:
+
+\[
+V^\dagger V=I
+\quad\Longleftrightarrow\quad
+\sum_eK_e^\dagger K_e=I.
+\]
+
+Thus Born completeness is exactly reversibility of recorded refinement on its
+image. Define the coherent record codiagonal by
+
+\[
+E_{i,(j,e)}=\delta_{ij}.
+\]
+
+Then
+
+\[
+EV=\sum_eK_e,
+\]
+
+so exact unresolved recovery `EV=I` is equivalent to coherent exhaustivity.
+Every double-conservation law therefore has both an adjoint recovery and a
+counital recovery for every incoming carrier amplitude.
+
+The two requirements remain independent. The formal module lifts the exact
+binary counterexamples into one-dimensional recorded dilations: an isometric
+recording can fail counital recovery, and counital recovery can fail
+isometric recording. Consequently the candidate natural principle must
+demand both, or derive both from a still-stronger microscopic axiom.
+
+This construction uses a finite outcome-indexed record carrier. It does not
+derive that factor from causal order. Moreover, `E` is a coherent amplitude
+recombination map, not a normalized CPTP record-erasure operation. These are
+the remaining interpretation boundaries.
+
 ## The exact local law
 
 For a finite successor fiber, simultaneous normalization implies

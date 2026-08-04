@@ -844,6 +844,20 @@
 > candidate microscopic conservation law, conditional on demanding both forms
 > of local information preservation; causal order still has to select the
 > operators and explain why nature imposes both demands.
+> `KFCausalRecordedRefinementDilation.lean` resolves the next structural layer.
+> The birth operators stack canonically into a finite recorded dilation
+> `V : H -> H x Outcome`. The theorem `V^dagger V=I` iff
+> `sum K_e^dagger K_e=I` makes Born completeness exactly reversible record
+> creation on the image. A canonical coherent record codiagonal `E` obeys
+> `E V=sum K_e`, so `E V=I` iff coherent exhaustivity. Their conjunction is
+> therefore equivalent to double conservation, and supplies two exact recovery
+> maps for every incoming carrier amplitude. Exact one-dimensional binary
+> witnesses prove that isometry does not imply counital recovery and counital
+> recovery does not imply isometry. The existing rank-one and six-outcome
+> causal-holonomy laws instantiate both without new fitted coefficients. This
+> is a finite outcome-indexed record architecture, not a derivation that causal
+> order must supply a protected physical record factor; the codiagonal is an
+> amplitude recombination map, not a claimed CPTP erasure channel.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
