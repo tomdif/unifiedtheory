@@ -785,9 +785,25 @@
 > equilibrium depends on the initial ray, so this is a ray-conditioned
 > repeated-interaction model, not a universal state-independent CPTP
 > instrument. The existing linear-homogeneity no-go is re-exported as a
-> capstone. Causal growth still has to derive the fresh orthogonal modes, the
-> protected product factorization, and a `D(Omega,Omega)`-preserving
-> conditional instrument.
+> capstone. At this stage causal growth still has to derive the fresh
+> orthogonal modes, the protected product factorization, and a
+> `D(Omega,Omega)`-preserving conditional instrument.
+> `KFCausalBornGrowthFreshModes.lean` closes the first item at its honest
+> kinematic scope. Ranked histories factor each next step as old prefix times
+> one birth, and labeled one-element extension reserves `Fin.last n` for the
+> newborn while old birth slots embed through `Fin.castSucc`. The final slot is
+> proved to be the unique complement of all old slots. Their standard Hilbert
+> kets are orthonormal, so every physical causal step canonically grows the
+> minimal record bath from `Fin n -> E` to `Fin (n+1) -> E` by one orthogonal
+> carrier mode, independent of causal shape and event labels. The collision
+> leaves every old record unchanged, writes `-s*c^k` times the initial defect
+> permanently in birth slot `k`, is reversible on its image, and conserves the
+> exact system-plus-full-record norm. Its system reduction is exactly the
+> existing supported causal Born trajectory. Thus the fresh-mode/reset
+> assumption is replaced by causal memory growth. What remains dynamical is
+> why the Born defect couples to this canonical record tower with the selected
+> rotation, plus derivation of the protected product factor and normalized
+> conditional quantum instrument.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -940,7 +956,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,009 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,760 jobs successful
+1,010 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,761 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

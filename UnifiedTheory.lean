@@ -5454,6 +5454,16 @@ import UnifiedTheory.Audit.KFCausalBornAutonomousDilationNoGo
 -- supplied protected label unchanged.  It is not a universal state-independent
 -- CPTP instrument; the existing homogeneity no-go remains in force.
 import UnifiedTheory.Audit.KFCausalBornCarrierRepeatedInteraction
+-- Sequential-growth rank now supplies the fresh modes themselves.  At depth
+-- n the record bath has slots `Fin n`; the next one-element birth creates the
+-- unique complementary slot `Fin.last n`, orthogonal to all embedded old
+-- modes.  The resulting growing carrier-valued bath never reuses a record,
+-- has a left inverse on every collision image, stores the exact leaked vector
+-- in each birth slot, conserves full system-plus-record energy, and reproduces
+-- the supported causal Born trajectory.  The mode kinematics is derived; the
+-- decision to couple the Born defect to it and a protected tensor factor are
+-- still dynamical inputs.
+import UnifiedTheory.Audit.KFCausalBornGrowthFreshModes
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
