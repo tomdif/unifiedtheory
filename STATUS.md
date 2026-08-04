@@ -686,15 +686,34 @@
 > Independently of the causal specialization, a strictly convex norm-shell
 > theorem proves that the nonnegative radial completion is the unique closest
 > fixed-norm point to the raw zero-sum amplitude. Thus ray preservation is
-> forced by a least-Hilbert-disturbance principle; adopting that principle as
-> microscopic dynamics remains an explicit physical postulate.
+> forced by a least-Hilbert-disturbance principle.
 > The support-relative specialization now constructs the physical-successor
 > Euclidean carrier, proves its squared norm is exactly the Born excess, and
 > proves the implemented square-root correction uniquely `L2`-closest among
 > every supported coherent Born-one competitor.
+> `KFCausalBornShellRelaxationDynamics.lean` replaces the interpretation of
+> that minimizer as a bare postulate with an explicit local restoring law on
+> the zero-sum carrier. The radius satisfies
+> `r_(n+1) = r_n + (R-r_n)/2`, the radial defect is halved per tick, and its
+> squared Lyapunov defect contracts by exactly `1/4`. The lift preserves the
+> carrier ray, commutes with every real linear isometry, and converges in norm
+> to the implemented physical Born correction. A rigidity theorem proves
+> more generally that every time-homogeneous fixed-retention linear response
+> is the affine semigroup `R + a^n(r_0-R)`; every `0 <= a < 1` has the same
+> Born-shell attractor, so `a` changes only the relaxation clock. The endpoint,
+> positive ray, and least-change completion are therefore consequences of
+> this deeper dynamics rather than independent assumptions.
+> A companion no-go proves that no linear operator on the same amplitude
+> carrier can realize even one universal nonzero-target relaxation tick: the
+> map necessarily breaks scalar homogeneity. It therefore cannot be presented
+> as closed unitary/Schrodinger evolution. Its honest physical address is an
+> effective dissipative or conditional dynamics of unnormalized causal
+> amplitudes, or a reduced law induced by a larger environmental dilation.
 > A uniform branching parent still has no scalar radial repair in general, and
-> the least-disturbance rule remains a proposed microscopic selection law
-> rather than a derived continuum or experimental principle.
+> the remaining physical postulate is now narrower: why microscopic causal
+> growth has an isotropic dissipative response to the radial Born defect.
+> Neither that dissipative coupling nor its laboratory-time scale is derived
+> from continuum experiment here.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

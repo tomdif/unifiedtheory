@@ -5385,9 +5385,23 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- support-relative specialization proves this for the actual physical
 -- successor `L2` carrier against every coherent Born-one competitor.  Thus ray
 -- preservation follows if microscopic completion obeys least Hilbert
--- disturbance, but that variational principle is still proposed rather than
--- derived from continuum or laboratory physics.
+-- disturbance.  The next module replaces that standalone variational input
+-- with a local relaxation dynamics while keeping its microscopic origin open.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
+-- The support-relative Born correction is now the attractor of an explicit
+-- local dissipative carrier dynamics rather than only a variational choice.
+-- The radial defect obeys a time-homogeneous affine semigroup, its squared
+-- Lyapunov defect contracts by exactly 1/4 per tick, and the carrier direction
+-- is preserved equivariantly under every linear isometry.  A rigidity theorem
+-- proves that any fixed-retention local linear response has this affine form;
+-- all contractive retention rates converge to the same physical Born shell.
+-- Hence the endpoint, ray preservation, and least-disturbance completion are
+-- dynamically derived conditional on one remaining physical input: isotropic
+-- dissipative response of the zero-sum carrier to its radial Born defect.
+-- A homogeneity no-go proves that this response cannot be a closed linear or
+-- unitary evolution on the same amplitude carrier; it must be effective,
+-- conditional, or induced by an enlarged environmental dynamics.
+import UnifiedTheory.Audit.KFCausalBornShellRelaxationDynamics
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
