@@ -724,12 +724,28 @@
 > its absolute error falls to at most `3/4` of its previous value per
 > microscopic tick. The
 > sharper `1/4` contraction applies to the squared radial Lyapunov defect.
+> `KFCausalBornEquilibrationLaw.lean` supplies the unique continuous-time
+> semigroup behind those updates. Its effective equation is
+> `dr/dt = gamma * (R-r)`, with exact solution
+> `r(t)=R+exp(-gamma*t)(r(0)-R)`. It is the negative gradient flow of the
+> quadratic Born-shell potential, and its Lyapunov identity is exactly
+> `dL/dt=-2*gamma*L`. Thus stability fixes the sign: positive `gamma` makes
+> the Born shell globally attracting, zero is neutral, and negative `gamma`
+> makes it repelling. Uniqueness is proved among all differentiable solutions.
+> A logarithmic tick calibration embeds every discrete retention semigroup
+> exactly, while implicit Euler recovers the weighted proximal update.
+> On the actual finite causal amplitude, the flow preserves physical support,
+> coherent normalization, and carrier-coordinate covariance; the existing
+> full complex Born mass is exactly its radial mass and converges to one
+> without crossing the shell.
 > A uniform branching parent still has no scalar radial repair in general, and
 > the remaining physical postulate is now narrower: why microscopic causal
-> growth minimizes this isotropic local displacement-plus-defect action, or
-> which environment/record interaction induces it. Neither that dissipative
-> coupling nor its laboratory-time scale is derived from continuum experiment
-> here.
+> growth generates this isotropic dissipative gradient flow, or which
+> environment/record interaction induces it. The sign of the rate is selected
+> by stability, but its magnitude and laboratory-time calibration are not
+> derived from continuum experiment here. This is therefore a candidate
+> effective natural law, not a microscopic unitary law or an established law
+> of nature.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -882,7 +898,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-902 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,666 jobs successful
-(July 2026).
+1,006 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,757 jobs successful
+(August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

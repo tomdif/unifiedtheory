@@ -5413,6 +5413,19 @@ import UnifiedTheory.Audit.KFCausalBornShellRelaxationDynamics
 -- its absolute error falls to at most 3/4 of its previous value per tick.  The action remains
 -- an effective open-dynamics principle, not a claimed unitary derivation.
 import UnifiedTheory.Audit.KFCausalBornShellProximalDynamics
+-- The discrete proximal response has a unique continuous semigroup embedding:
+--   dr/dt = gamma * (R - r),
+-- with exact solution `R + exp (-gamma*t) * (r_0-R)`.  This is negative
+-- gradient flow of the quadratic Born-shell potential.  Its Lyapunov energy
+-- obeys `dL/dt = -2*gamma*L`, so positive gamma is the stable time orientation
+-- and negative gamma makes the shell repelling.  The flow is unique among
+-- differentiable solutions, exactly reproduces every discrete retention law
+-- at calibrated ticks, and implicit Euler recovers the weighted proximal
+-- update.  The lift preserves causal support, coherent normalization, and
+-- carrier equivariance; its actual complex Born mass converges to one without
+-- crossing the shell.  This is an effective dissipative law.  The microscopic
+-- environment/dilation and the magnitude of gamma remain open.
+import UnifiedTheory.Audit.KFCausalBornEquilibrationLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
