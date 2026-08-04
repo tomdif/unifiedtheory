@@ -283,6 +283,11 @@ def claimLedger : List ClaimEntry := [
     scope := .provedFinite },
   { name := "structural mass-gap and Wilson flows erase parameters",
     scope := .provedFinite },
+  { name := "one finite Born bath mode cannot compose as the exact reduced semigroup",
+    scope := .provedFinite },
+  { name := "fresh carrier-valued bath collisions conserve total defect energy and \
+      reproduce the full fixed-ray causal Born trajectory",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -309,6 +314,9 @@ def claimLedger : List ClaimEntry := [
       ground-space projector compatible with projective amplitudes",
     scope := .openTarget },
   { name := "protected records and an evaluable infinite charge-divergence tail event",
+    scope := .openTarget },
+  { name := "causal growth derives fresh orthogonal bath modes and a protected \
+      D(Omega,Omega)-preserving conditional Born instrument",
     scope := .openTarget }
 ]
 
@@ -317,11 +325,11 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 119
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 104
+    claimLedger.length = 122
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 106
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
-    ∧ (claimLedger.filter (hasScope .openTarget)).length = 10 := by
+    ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by
   decide
 
 /-! ## 2. Constant families are not nontrivial density flows -/

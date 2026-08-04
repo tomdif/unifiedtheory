@@ -5423,8 +5423,10 @@ import UnifiedTheory.Audit.KFCausalBornShellProximalDynamics
 -- at calibrated ticks, and implicit Euler recovers the weighted proximal
 -- update.  The lift preserves causal support, coherent normalization, and
 -- carrier equivariance; its actual complex Born mass converges to one without
--- crossing the shell.  This is an effective dissipative law.  The microscopic
--- environment/dilation and the magnitude of gamma remain open.
+-- crossing the shell.  This is an effective dissipative law.  At this layer
+-- the microscopic environment/dilation and the magnitude of gamma remain open;
+-- the following modules close their finite collision-model versions and then
+-- isolate the stronger autonomy obstruction.
 import UnifiedTheory.Audit.KFCausalBornEquilibrationLaw
 -- Equal microscopic penalties halve the radial defect per causal birth.  If
 -- the continuous law is the exact semigroup sampled after a birth duration
@@ -5439,6 +5441,19 @@ import UnifiedTheory.Audit.KFCausalBornEquilibrationLaw
 -- origin without claiming a unique Hamiltonian, an infinite bath, or a
 -- density calibration from first principles.
 import UnifiedTheory.Audit.KFCausalBornRateAndDilation
+-- Reusing the same finite bath mode is now proved not to compose as the
+-- exponential reduced semigroup: its second rotation feeds leaked defect back
+-- into the system.  For positive rate and time, the time-indexed reversible
+-- rotations therefore fail the one-parameter-group law.  Reset, fresh modes,
+-- or an infinite environment are mathematically necessary for this dilation.
+import UnifiedTheory.Audit.KFCausalBornAutonomousDilationNoGo
+-- The collision law is lifted from one scalar defect to the complete real
+-- zero-sum successor carrier.  Fresh modes reproduce the exact causal Born
+-- trajectory and conserve system plus accumulated bath defect energy.  The
+-- lift is explicitly ray-conditioned, coordinate-equivariant, and may carry a
+-- supplied protected label unchanged.  It is not a universal state-independent
+-- CPTP instrument; the existing homogeneity no-go remains in force.
+import UnifiedTheory.Audit.KFCausalBornCarrierRepeatedInteraction
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

@@ -767,6 +767,27 @@
 > for the open dynamics, but does not derive a unique Hamiltonian, the fresh-
 > bath/reset assumption, an infinite reservoir, or the absolute sprinkling
 > density.
+> `KFCausalBornAutonomousDilationNoGo.lean` proves that the fresh-bath clause is
+> necessary for this finite dilation, not optional wording. Reusing one bath
+> mode twice gives system coefficient `c^2-s^2`, while two vacuum collisions
+> give `c^2`. For every strict contraction and nonzero defect these differ. In
+> continuous time the individually reversible rotations with
+> `c(t)=exp(-gamma*t)` therefore fail the time-addition law whenever
+> `gamma,t>0`; they are not one autonomous two-mode Hamiltonian group.
+> `KFCausalBornCarrierRepeatedInteraction.lean` lifts the construction to every
+> real carrier. The carrier rotation is invertible, fresh vacuum collisions
+> give `c^n` times the full defect vector, and system energy plus accumulated
+> bath-mode defect energy is exactly conserved. On the actual physical
+> successor zero-sum carrier, the reduced trajectory equals the centered vector
+> of `finiteSupportBornRelaxedAmplitude` at every tick. The construction is
+> coordinate-equivariant and can leave a separately supplied protected label
+> untouched. Its honest boundary is sharper than before: the Born-shell
+> equilibrium depends on the initial ray, so this is a ray-conditioned
+> repeated-interaction model, not a universal state-independent CPTP
+> instrument. The existing linear-homogeneity no-go is re-exported as a
+> capstone. Causal growth still has to derive the fresh orthogonal modes, the
+> protected product factorization, and a `D(Omega,Omega)`-preserving
+> conditional instrument.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -919,7 +940,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,007 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,758 jobs successful
+1,009 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,760 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
