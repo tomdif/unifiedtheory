@@ -709,11 +709,26 @@
 > as closed unitary/Schrodinger evolution. Its honest physical address is an
 > effective dissipative or conditional dynamics of unnormalized causal
 > amplitudes, or a reduced law induced by a larger environmental dilation.
+> `KFCausalBornShellProximalDynamics.lean` derives the relaxation update one
+> layer deeper. The midpoint is the unique global minimizer of the local action
+> `(next-current)^2 + (next-target)^2`, equivalently the unique implicit-Euler
+> solution whose displacement equals its remaining Born defect. For positive
+> inertia and restoring weights, completing the square gives the unique update
+> and proves that its retention is
+> `inertia / (inertia + restoring)`, strictly between zero and one. Thus the
+> full stable affine family follows from weighted proximal response, and equal
+> microscopic penalties select the displayed half-defect clock.
+> The same module proves that the radial mass is exactly—not merely a proxy
+> for—the existing complex Born mass of every finite supported causal profile.
+> The observable mass converges to one without crossing the Born shell, and
+> its absolute error contracts by at least `3/4` per microscopic tick. The
+> sharper `1/4` contraction applies to the squared radial Lyapunov defect.
 > A uniform branching parent still has no scalar radial repair in general, and
 > the remaining physical postulate is now narrower: why microscopic causal
-> growth has an isotropic dissipative response to the radial Born defect.
-> Neither that dissipative coupling nor its laboratory-time scale is derived
-> from continuum experiment here.
+> growth minimizes this isotropic local displacement-plus-defect action, or
+> which environment/record interaction induces it. Neither that dissipative
+> coupling nor its laboratory-time scale is derived from continuum experiment
+> here.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

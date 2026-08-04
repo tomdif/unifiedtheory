@@ -5402,6 +5402,17 @@ import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 -- unitary evolution on the same amplitude carrier; it must be effective,
 -- conditional, or induced by an enlarged environmental dynamics.
 import UnifiedTheory.Audit.KFCausalBornShellRelaxationDynamics
+-- The half-defect update is itself the unique minimizer of a one-tick local
+-- action: squared displacement plus squared residual Born defect.  Equivalently
+-- it is the implicit-Euler balance in which the motion made equals the defect
+-- left behind.  Positive weighted versions recover the entire affine family,
+-- with retention = inertia / (inertia + restoring strength), proving that the
+-- weights change the clock but not the Born attractor.  At the observable
+-- level the radial expression is exactly the existing complex Born mass of
+-- the full supported causal profile; it approaches one without crossing and
+-- its absolute error contracts by at least 3/4 per tick.  The action remains
+-- an effective open-dynamics principle, not a claimed unitary derivation.
+import UnifiedTheory.Audit.KFCausalBornShellProximalDynamics
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
