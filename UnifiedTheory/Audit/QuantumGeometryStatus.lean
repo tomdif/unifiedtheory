@@ -291,6 +291,12 @@ def claimLedger : List ClaimEntry := [
   { name := "sequential-growth rank canonically creates orthogonal fresh record modes \
       that store the exact leaked Born defect",
     scope := .provedFinite },
+  { name := "rank-dependent lossless fresh-mode schedules preserve exact total defect \
+      energy, while constant local collisions still grow the global record carrier",
+    scope := .provedFinite },
+  { name := "Born-normalized path weights form an exact diagonal cylinder martingale; \
+      the harmonic bi-normalized law also retains coherent projectivity",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -319,17 +325,19 @@ def claimLedger : List ClaimEntry := [
   { name := "protected records and an evaluable infinite charge-divergence tail event",
     scope := .openTarget },
   { name := "causal growth derives the Born-defect coupling, protected factor, and \
-      D(Omega,Omega)-preserving conditional quantum instrument",
+      D(Omega,Omega)-preserving conditional quantum instrument, and licenses \
+      record/tail convergence beyond finite cylinder projectivity",
     scope := .openTarget }
 ]
 
 private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
   decide (entry.scope = scope)
 
+set_option maxRecDepth 2048 in
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 123
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 107
+    claimLedger.length = 125
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 109
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by

@@ -5464,6 +5464,18 @@ import UnifiedTheory.Audit.KFCausalBornCarrierRepeatedInteraction
 -- decision to couple the Born defect to it and a protected tensor factor are
 -- still dynamical inputs.
 import UnifiedTheory.Audit.KFCausalBornGrowthFreshModes
+-- Fresh-mode collisions admit arbitrary rank-dependent lossless schedules;
+-- even a constant local block acts between carriers whose record dimension
+-- grows with causal rank.  This separates the record coefficient from the
+-- Paper-3 stationary per-precursor coupling and records the direct-sum versus
+-- tensor/CPTP boundary explicitly.
+import UnifiedTheory.Audit.KFCausalBornFreshModeCompatibility
+-- Born normalization defines a second growth law.  It gives an exact
+-- diagonal cylinder martingale but does not imply coherent ket/bra
+-- projectivity.  The canonical harmonic Born-shell law satisfies both, and
+-- its partially dephased measure remains normalized and projective at every
+-- dephasing strength.
+import UnifiedTheory.Audit.KFCausalBornNormalizationTransfer
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

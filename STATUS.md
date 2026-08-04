@@ -804,6 +804,33 @@
 > why the Born defect couples to this canonical record tower with the selected
 > rotation, plus derivation of the protected product factor and normalized
 > conditional quantum instrument.
+> `KFCausalBornFreshModeCompatibility.lean` separates two previously conflated
+> stationarity questions. An arbitrary rank-dependent retention/leakage
+> schedule has exact product-form system decay, permanent per-birth records,
+> and exact total-energy conservation whenever every local block is lossless.
+> The constant collision is only one specialization, and even it maps
+> `E × (Fin n → E)` to a strictly larger rank-`n+1` carrier. Paper 3's aging
+> theorem instead constrains stationary per-precursor amplitudes in the
+> microscopic coherent Markov/action-phase law. Thus there is no formal
+> contradiction and no derivation of microscopic aging: identifying the two
+> coefficients would require a rank-dependent schedule. The carrier here is a
+> finite direct product/direct-sum construction, not a system-environment
+> tensor factor, partial trace, or state-independent CPTP instrument.
+> `KFCausalBornNormalizationTransfer.lean` audits the newly registered
+> Born-normalized theory. Local `sum |a|^2 = 1` makes path Born weights an exact
+> cylinder martingale and kills normalization-flow churn pointwise. Exact
+> binary witnesses prove that coherent and Born normalization imply neither
+> one another; the funding, hbar-window, aging, necessity, dust, and selection
+> results therefore require re-derivation because their complex wave equation
+> is absent in the Born-only theory. The canonical harmonic Born-shell law is
+> already an unconditional all-rank inhabitant of their intersection. It has
+> both a diagonal Born martingale and the prior normalized strongly positive
+> coherent cylinder functional. The convex measure-level interpolation between
+> them is normalized and projective at every dephasing strength, nonnegative
+> on `[0,1]`, and retains residual interference by the exact factor
+> `1-lambda`. This closes the finite-cylinder normalization question, not the
+> tail-event, record-instrument, or microscopic-selection problems; see
+> `BORN_NORMALIZATION_TRANSFER_AUDIT.md`.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -956,7 +983,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,010 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,761 jobs successful
+1,012 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,763 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.
