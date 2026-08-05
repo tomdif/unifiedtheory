@@ -177,8 +177,20 @@ every parent and every rank. Its resolved child operation has trace weight
 channel is exactly the identity and is independent of parent, rank, and
 chirality. Thus the causal information is operationally located in the record,
 not in the reduced scalar carrier. A nontrivial reduced observable still needs
-a higher-rank child-operator law; uniqueness of such a law and its laboratory
-interpretation remain dynamical questions.
+a higher-rank child-operator law.
+
+`KFCausalNativeResolutionLaw.lean` supplies and classifies the minimal sharp
+candidate. Use the actual physical children as the carrier basis and impose
+outcome locality: the operator for one child has support only on that child's
+ray. Coherent conservation uniquely forces `K_c=|c><c|`, after which Born
+completeness is automatic. The resulting channel is native-record dephasing:
+it is CPTP, idempotent, preserves all child probabilities, erases all
+cross-child coherence, commutes with arbitrary relabelings, and is nontrivial
+whenever two physical children exist. Thus uniqueness is closed within this
+explicit ansatz. What remains open is whether causal microphysics enforces
+outcome locality and whether this record algebra is protected and physically
+observable; the law would erase chirality if chirality occupied the same
+off-diagonal record coherences.
 
 ## The exact local law
 

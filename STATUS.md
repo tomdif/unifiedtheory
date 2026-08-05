@@ -886,6 +886,23 @@
 > erasure. Thus a finite native instrument now exists without external labels,
 > while nontrivial reduced dynamics still requires a higher-rank operator law;
 > uniqueness of that law and a laboratory interpretation are not derived.
+> `KFCausalNativeResolutionLaw.lean` closes the smallest sharp higher-rank
+> ansatz and names the resulting candidate microscopic law. At each causal
+> parent, the carrier basis is the finite set of genuine unlabeled children.
+> Requiring the operator for child `c` to have support only on the `c` ray,
+> together with universal coherent conservation, uniquely forces
+> `K_c = |c><c|`. Born completeness then follows rather than being imposed.
+> The induced native causal resolution channel is CPTP, preserves every
+> diagonal successor weight, erases every cross-successor coherence, is
+> idempotent, and commutes with every relabeling. Two distinct physical
+> children provide an exact witness that it is not the identity. This derives
+> a nontrivial all-rank local operator law without a transition coefficient.
+> The scope is deliberately narrower than a discovered law of nature:
+> outcome locality is the new microscopic principle, and identifying the
+> native record carrier with a protected laboratory record remains open. If
+> chirality is stored as off-diagonal coherence in this same carrier, the law
+> erases it; protection therefore requires a separate/diagonal chiral record
+> or a derived embedding into the full observable algebra.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -1038,7 +1055,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,012 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,763 jobs successful
+1,017 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,768 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

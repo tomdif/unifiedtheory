@@ -5507,6 +5507,13 @@ import UnifiedTheory.Audit.KFCausalNativeSuccessorRecord
 -- leaves exactly the identity channel: causal and chiral data survive only in
 -- the resolved history record, not in the reduced rank-one carrier.
 import UnifiedTheory.Audit.KFCausalNativeSuccessorInstrument
+-- The smallest nontrivial higher-rank law is now selected within a sharp
+-- native-record ansatz.  One outcome-local operator per physical successor,
+-- together with coherent conservation, uniquely forces the projectors
+-- `K_c = |c><c|`; Born completeness follows.  The resulting all-rank local
+-- channel is CPTP, idempotent, relabeling-covariant native-record dephasing,
+-- and is non-identity whenever the parent genuinely branches.
+import UnifiedTheory.Audit.KFCausalNativeResolutionLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The one hundred thirteen `provedFinite` entries assert only their mathematical scope.
+The one hundred fourteen `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -310,6 +310,10 @@ def claimLedger : List ClaimEntry := [
       the state-independent record erasure, while the harmonic reduced scalar channel \
       is exactly causal-data blind",
     scope := .provedFinite },
+  { name := "within the sharp native-record ansatz, outcome locality plus coherent \
+      conservation uniquely forces one projector per physical successor; the resulting \
+      all-rank local channel is CPTP, idempotent, covariant, and nontrivial on branching",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -349,8 +353,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 set_option maxRecDepth 2048 in
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 129
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 113
+    claimLedger.length = 130
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 114
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by
