@@ -936,6 +936,22 @@
 > facts after they occur. It does not install mutually exclusive future-child
 > projectors before a birth, identify the cylinder algebra with a laboratory
 > record, or protect same-carrier chirality.
+> `KFCausalBundleProtectedChirality.lean` proves the finite direct-sum escape.
+> Adding the intrinsic rank-two sheet fiber to each history block preserves
+> the sequential-growth cylinder equation at every rank. The ordinary
+> full-`S_3` commutant is scalar, but the sign-twisted commutant is exactly one
+> dimensional: every operator reversing under both adjacent transpositions is
+> proportional to `J=[[1,-2],[2,-1]]`. The observable `iJ` is Hermitian for the
+> intrinsic Gram metric and squares to `3I`. When the causal orientation `Xi`
+> flips on each odd transport, `Xi iJ` intertwines exactly with bundle growth.
+> History-block pinching is idempotent and trace-preserving and fixes this
+> internal observable, so causal records and relational chirality are
+> mathematically compatible without assuming a global tensor-product
+> factorization. The cylinder support law is derived from growth; assigning
+> the two odd holonomies to actual physical causal/CSpec edges, deriving the
+> orientation flip there, and promoting the pinching to a physical CPTP
+> laboratory instrument remain explicit bridges. No Standard-Model or
+> continuum chirality claim follows from this finite theorem.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

@@ -5532,6 +5532,17 @@ import UnifiedTheory.Audit.KFCausalNativeRecordDynamics
 -- child from the rank after its birth; it does not predetermine an unborn
 -- child or identify the cylinder algebra with a laboratory apparatus.
 import UnifiedTheory.Audit.KFCausalCylinderRecordTransport
+-- The cylinder intertwiner survives passage to a direct-sum history carrier
+-- with the intrinsic rank-two sheet fiber.  Full-S3 covariance forbids an
+-- ordinary non-scalar protected observable, but uniquely permits a parity-odd
+-- operator J up to scale.  The Gram-Hermitian observable iJ anticommutes with
+-- both adjacent transpositions; multiplying it by the growth orientation Xi,
+-- which flips on those edges, gives an exactly transported relational
+-- chirality at every rank.  History-block pinching erases cross-history
+-- coherence while preserving the internal operator.  Realizing the chosen
+-- generator on every physical causal/CSpec edge and deriving a laboratory
+-- instrument remain explicit bridges.
+import UnifiedTheory.Audit.KFCausalBundleProtectedChirality
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

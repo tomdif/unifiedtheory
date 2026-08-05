@@ -97,17 +97,47 @@ normalization makes `V_n` isometric and therefore derives the exact pullback
 effect `V_n† Q_c V_n = P_c`.  Every physical child is transported this way
 from the first rank after its birth onward.
 
-The remaining input is narrower and has moved.  Growth does not assign a
+The chirality obstruction is now resolved at the finite carrier level, but
+not yet at the laboratory level.  `KFCausalBundleProtectedChirality.lean`
+replaces same-carrier dephasing by a direct-sum carrier whose blocks are
+history records and whose internal fibers are the intrinsic rank-two sheet
+carrier.  Prefix retention again derives `Q_c V = V P_c`, now with the
+internal fiber carried along.  Block pinching in the history label erases
+cross-history entries but fixes every within-history operator.
+
+Full `S_3` holonomy makes the ordinary commutant scalar, so a nontrivial
+globally invariant chirality operator is impossible.  The formal escape is
+unique up to scale: in the standard sheet carrier the parity-odd generator
+
+```text
+J = [[1,-2],[2,-1]]
+```
+
+anticommutes with both adjacent transpositions.  Relative to the intrinsic
+Gram form, `iJ` is Hermitian and `(iJ)^2=3I`.  If the causal orientation label
+`Xi` reverses on an odd sheet edge, then the two signs cancel and the
+relational observable `Xi iJ` is transported exactly through sequential
+growth at every rank.  History-record formation can therefore preserve
+chirality because chirality is internal to each record block, not an
+off-diagonal entry between different records.
+
+The remaining input is narrower and explicit.  Growth does not assign a
 future-child projector before that child is born, and it does not by itself
-prove that a laboratory apparatus couples to this intrinsic cylinder algebra.
-The Pauli-Y witness still proves that an arbitrary supplied dilation need not
-have native alignment.  Thus sequential growth derives nondemolition
-transport of realized causal facts, while pre-birth outcome selection,
-laboratory embedding, and compatible chirality protection remain separate
-physical problems.
+prove that a laboratory apparatus couples to the intrinsic cylinder algebra.
+The bundle theorem also requires actual causal/CSpec edges to realize the
+already formalized odd sheet transports and their orientation reversal.  Its
+generic block pinching is proved idempotent and trace-preserving, but is not
+yet promoted in this module to a dynamically derived state-independent CPTP
+instrument.  Thus sequential growth derives nondemolition transport of
+realized causal facts and the exact operator consequence of sign-twisted
+holonomy, while physical edge realization, laboratory embedding, and
+continuum weak-current interpretation remain separate bridge theorems.
 
 The machine-checked implementation is
 `UnifiedTheory/Audit/KFCausalNativeRecordDynamics.lean`.
 
 The sequential-growth derivation is documented in
 `CAUSAL_CYLINDER_RECORD_TRANSPORT.md`.
+
+The protected bundle extension is documented in
+`CAUSAL_BUNDLE_PROTECTED_CHIRALITY.md`.

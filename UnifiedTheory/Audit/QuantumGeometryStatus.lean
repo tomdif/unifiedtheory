@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The one hundred fourteen `provedFinite` entries assert only their mathematical scope.
+The one hundred seventeen `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -325,6 +325,11 @@ def claimLedger : List ClaimEntry := [
       finite cylinder; Born normalization makes V isometric and derives the exact \
       sharp pullback effect V^dagger Q_c V=P_c for every realized history fact",
     scope := .provedFinite },
+  { name := "on the direct-sum history-sheet carrier, cylinder transport persists; \
+      the unique parity-odd full-S3 operator is Gram-Hermitian after multiplication \
+      by i, and an arrow-flipping orientation label protects it exactly while \
+      history-block pinching preserves every internal fiber observable",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -353,8 +358,9 @@ def claimLedger : List ClaimEntry := [
   { name := "protected records and an evaluable infinite charge-divergence tail event",
     scope := .openTarget },
   { name := "causal growth derives the Born-defect coupling, protected factor, and \
-      D(Omega,Omega)-preserving conditional quantum instrument, and licenses \
-      record/tail convergence beyond finite cylinder projectivity",
+      D(Omega,Omega)-preserving physical block instrument, realizes the intrinsic \
+      odd sheet transports on its edges, and licenses record/tail convergence \
+      beyond finite cylinder projectivity",
     scope := .openTarget }
 ]
 
@@ -364,8 +370,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 set_option maxRecDepth 2048 in
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 132
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 116
+    claimLedger.length = 133
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 117
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by
