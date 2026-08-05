@@ -145,10 +145,26 @@ recording can fail counital recovery, and counital recovery can fail
 isometric recording. Consequently the candidate natural principle must
 demand both, or derive both from a still-stronger microscopic axiom.
 
-This construction uses a finite outcome-indexed record carrier. It does not
-derive that factor from causal order. Moreover, `E` is a coherent amplitude
-recombination map, not a normalized CPTP record-erasure operation. These are
-the remaining interpretation boundaries.
+This first construction uses an abstract finite outcome-indexed record
+carrier. `KFCausalNativeSuccessorRecord.lean` closes that finite kinematic gap:
+at a parent `(n,h)`, the outcome type is definitionally
+
+\[
+\{c:c\in\mathrm{physicalCausalSuccessors}(n,h)\}.
+\]
+
+It is finite and nonempty directly from the unlabeled one-element-extension
+theory. Forgetting the child is the unique map to the terminal one-point type;
+retaining the parent carrier coordinate gives the unique record projection,
+whose unit-weight complex linearization is the native codiagonal. No outcome
+enumeration or external record labels remain. The canonical harmonic law,
+restricted to this exact physical subtype, retains both normalization sums and
+therefore realizes the isometric and counital dilation at every causal parent.
+
+The remaining input is dynamical rather than kinematic: causal order has not
+uniquely selected the child-indexed operators or proved that the coherent
+codiagonal is a normalized CPTP record-erasure operation or a laboratory
+instrument.
 
 ## The exact local law
 

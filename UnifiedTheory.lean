@@ -5489,9 +5489,16 @@ import UnifiedTheory.Audit.KFCausalDoubleConservationLaw
 -- equivalent to Born completeness, while the canonical coherent codiagonal E
 -- satisfies E V = I iff the operators sum to I.  The two demands are proved
 -- independent by exact binary witnesses, and both concrete causal-holonomy
--- laws instantiate their conjunction.  Causal derivation of the record factor
--- and counit remains open.
+-- laws instantiate their conjunction.  This first theorem is abstract in its
+-- supplied finite outcome type.
 import UnifiedTheory.Audit.KFCausalRecordedRefinementDilation
+-- Sequential growth removes that abstract outcome input: the record basis is
+-- exactly the finite subtype of physical unlabeled one-element children.  The
+-- unique terminal map forgetting which child occurred induces the coherent
+-- codiagonal.  The canonical harmonic causal law realizes the resulting
+-- isometric and counital dilation on this native fiber at every parent.  Child
+-- operator selection and physical use of the coherent counit remain dynamical.
+import UnifiedTheory.Audit.KFCausalNativeSuccessorRecord
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

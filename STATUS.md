@@ -855,9 +855,21 @@
 > witnesses prove that isometry does not imply counital recovery and counital
 > recovery does not imply isometry. The existing rank-one and six-outcome
 > causal-holonomy laws instantiate both without new fitted coefficients. This
-> is a finite outcome-indexed record architecture, not a derivation that causal
-> order must supply a protected physical record factor; the codiagonal is an
-> amplitude recombination map, not a claimed CPTP erasure channel.
+> is initially an abstract finite outcome-indexed record architecture.
+> `KFCausalNativeSuccessorRecord.lean` removes that particular abstraction at
+> one-step causal-growth scope. At every parent the record labels are exactly
+> the nonempty subtype of genuine unlabeled one-element children in
+> `physicalCausalSuccessors`; no `Fin k` enumeration is supplied. Forgetting
+> the child is the unique map to the terminal one-point type, retaining the
+> parent coordinate gives the unique record projection, and its unit-weight
+> complex linearization gives the unique native codiagonal. The corresponding
+> dilation is isometric and counital exactly under double conservation, with
+> exact recovery maps for arbitrary incoming carrier amplitudes. Restricting
+> the canonical harmonic causal law to the native physical-successor subtype
+> preserves both coherent and Born normalization and realizes the construction
+> at every rank. Causal order has therefore supplied the finite record carrier
+> and recombination map; it has not selected the child operators or established
+> that coherent recombination is a CPTP erasure or laboratory instrument.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
