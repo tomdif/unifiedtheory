@@ -161,10 +161,24 @@ enumeration or external record labels remain. The canonical harmonic law,
 restricted to this exact physical subtype, retains both normalization sums and
 therefore realizes the isometric and counital dilation at every causal parent.
 
-The remaining input is dynamical rather than kinematic: causal order has not
-uniquely selected the child-indexed operators or proved that the coherent
-codiagonal is a normalized CPTP record-erasure operation or a laboratory
-instrument.
+`KFCausalNativeSuccessorInstrument.lean` then closes the finite channel
+question while proving that the coherent codiagonal is the wrong candidate for
+physical erasure. Every Born-complete child-operator family produces a genuine
+CPTP `KrausRepresentation`; its enumerated implementation is proved equal to
+the intrinsic sum over physical children. The state-independent operation
+forgetting the record is the partial trace, which exactly recovers this channel
+from the recorded Stinespring state and preserves trace, Hermiticity, and
+positivity. With two distinct records, the coherent codiagonal fails the
+single-Kraus completeness equation and therefore cannot be trace-preserving.
+
+For the canonical harmonic scalar lift, the native CPTP instrument exists at
+every parent and every rank. Its resolved child operation has trace weight
+`|a_c|^2` times the incoming trace, but its unconditioned one-dimensional
+channel is exactly the identity and is independent of parent, rank, and
+chirality. Thus the causal information is operationally located in the record,
+not in the reduced scalar carrier. A nontrivial reduced observable still needs
+a higher-rank child-operator law; uniqueness of such a law and its laboratory
+interpretation remain dynamical questions.
 
 ## The exact local law
 

@@ -5499,6 +5499,14 @@ import UnifiedTheory.Audit.KFCausalRecordedRefinementDilation
 -- isometric and counital dilation on this native fiber at every parent.  Child
 -- operator selection and physical use of the coherent counit remain dynamical.
 import UnifiedTheory.Audit.KFCausalNativeSuccessorRecord
+-- The finite channel boundary is now exact.  Reindexing the intrinsic child
+-- subtype only internally gives a genuine CPTP Kraus instrument, while the
+-- state-independent operation forgetting a child record is the partial trace.
+-- A branching coherent codiagonal is proved not trace-preserving as a single
+-- Kraus operation.  For the canonical harmonic scalar law, record erasure
+-- leaves exactly the identity channel: causal and chiral data survive only in
+-- the resolved history record, not in the reduced rank-one carrier.
+import UnifiedTheory.Audit.KFCausalNativeSuccessorInstrument
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

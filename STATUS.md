@@ -868,8 +868,24 @@
 > the canonical harmonic causal law to the native physical-successor subtype
 > preserves both coherent and Born normalization and realizes the construction
 > at every rank. Causal order has therefore supplied the finite record carrier
-> and recombination map; it has not selected the child operators or established
-> that coherent recombination is a CPTP erasure or laboratory instrument.
+> and recombination map.
+> `KFCausalNativeSuccessorInstrument.lean` closes the finite channel question
+> and corrects the meaning of “forgetting.” Any Born-complete operator family
+> on the intrinsic physical-child subtype canonically defines a
+> `KrausRepresentation` after an internal `Fintype.equivFin` reindexing; its
+> induced map is proved equal to the enumeration-free native sum and is CPTP.
+> Tracing the native record out of the recorded Stinespring state recovers that
+> channel exactly and preserves trace, Hermiticity, and positivity. By contrast,
+> whenever two distinct records exist, the coherent codiagonal fails the
+> single-Kraus completeness equation, so it cannot be a trace-preserving record
+> erasure. It remains the amplitude-level map implementing exhaustive cylinder
+> recombination. The canonical harmonic child operators give an all-rank CPTP
+> native instrument, but their reduced rank-one channel is exactly the identity
+> for every parent, rank, and chirality. The exact child Born weights survive in
+> the resolved operations; no causal or chiral discriminator survives record
+> erasure. Thus a finite native instrument now exists without external labels,
+> while nontrivial reduced dynamics still requires a higher-rank operator law;
+> uniqueness of that law and a laboratory interpretation are not derived.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
