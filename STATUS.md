@@ -979,7 +979,25 @@
 > zero. Exact block decoherence is sufficient. The existing two-antichain
 > theorem shows why the condition is substantive: no trace-preserving
 > record-diagonalizing channel can preserve its total-event normalization.
-> The continuum weak-current identification remains open.
+> `KFCausalRegularPhaseEntry.lean` then proves physical onset rather than
+> postulating it. The eight Boolean cells are enumerated by three-bit masks;
+> every prefix inclusion is a genuine maximal-element birth, and the rank-eight
+> endpoint is order-isomorphic to the Boolean tangent cube. Cardinality proves
+> that eight is the unique exact-cube rank. A ninth birth cannot leave the
+> *whole* causet equal to the cube, but every legal birth preserves the cube as
+> an embedded suborder because sequential growth never changes old relations.
+> Thus the regular structure has a proved onset and an all-future protected
+> causal memory, without claiming that every later event is locally regular.
+> `KFCausalDeterminantWeakCurrent.lean` closes the finite algebraic current
+> identification. Since the derived complex determinant orientation squares
+> to one, it is exactly `+1` or `-1`; its real part is therefore a nonzero weak
+> projector sign. Every CSpec atlas history gives either the standard
+> nontrivial purely left charged-current vertex or its nontrivial right mirror.
+> The trivial/even sector is left in the fixed convention and the witnessed odd
+> loop is the right mirror. No independent `Xi` input remains in this finite
+> map. A continuum Lorentzian Dirac-field limit, coupling normalization, the
+> identification of the physical prefix path with a nontrivial atlas loop, and
+> absolute vacuum-sector selection remain open.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

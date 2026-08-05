@@ -5560,6 +5560,19 @@ import UnifiedTheory.Audit.KFCausalCSpecDeterminantChirality
 -- is a sufficient condition.  This separates the derived local law from both
 -- an impossible universal atlas and an unjustified normalization claim.
 import UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
+-- Physical maximal-element growth can nevertheless enter the regular phase:
+-- binary/topological enumeration gives eight genuine births ending in the
+-- Boolean 3-cube, and rank eight is forced for an exact cube.  The whole
+-- universe ceases to be that cube after the next birth, but every later birth
+-- preserves it as an embedded causal suborder because old relations cannot
+-- change.
+import UnifiedTheory.Audit.KFCausalRegularPhaseEntry
+-- The CSpec determinant is exactly +/-1, so its real part supplies the weak
+-- projector sign without a separate Xi field.  Every finite atlas history
+-- therefore yields either the nontrivial purely left charged-current vertex
+-- or its right mirror.  This is a finite algebraic identification, not a
+-- continuum Lorentzian-field or absolute-vacuum-selection theorem.
+import UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

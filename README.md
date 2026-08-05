@@ -750,6 +750,21 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   cross-history interference erased by the channel vanishes. Exact block
   decoherence therefore licenses record pinching, while trace preservation
   alone does not.
+  `KFCausalRegularPhaseEntry.lean` proves that physical sequential growth can
+  enter this locus. Binary masks topologically enumerate all eight Boolean
+  cells, giving eight legal maximal births whose endpoint is exactly the
+  three-cube; cardinality makes rank eight the unique exact onset rank. The
+  next birth necessarily makes the complete causet larger than the cube, but
+  every later physical birth preserves the cube as an embedded causal seed,
+  since old causal relations are immutable.
+  `KFCausalDeterminantWeakCurrent.lean` then removes a separate weak-sector
+  sign input: the derived complex determinant is exactly `+1` or `-1`, and its
+  real part drives the gamma-five projector. Every finite atlas history thus
+  yields either the standard nontrivial purely left charged-current vertex or
+  its right-handed mirror. This is a finite algebraic bridge; it does not yet
+  derive a continuum Dirac field, the weak coupling, an absolute sector, or a
+  physical identification between the eight-birth prefix and a nontrivial
+  atlas loop.
   The same module constructs the forced eigenbasis alternative. For the actual
   convention `D_y=[[1/2,iy],[-iy,1/2]]`, the eigenkets are proportional to
   `(1,+i)` and `(1,-i)`. Pinching by their chirality projectors is CPTP and
