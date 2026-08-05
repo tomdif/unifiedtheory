@@ -116,22 +116,23 @@ Derived:
 
 Not derived:
 
-- that every physical causal/CSpec birth carries one of these two odd
-  generator transports;
-- that the physical orientation source reverses on precisely those edges;
-- a state-independent CPTP laboratory instrument realizing the generic
-  block pinching;
+- that arbitrary physical causal-set growth universally generates the
+  repository's finite continuation-derived CSpec atlas;
+- that the finite CPTP history-block map is the physical laboratory
+  instrument or preserves event-level `D(Omega,Omega)` normalization;
 - a continuum limit or identification with the Standard Model weak current.
 
-The theorem therefore closes the finite compatibility problem.  The next
-breakthrough target is a microscopic CSpec edge law deriving the paired data
+The theorem therefore closes the finite compatibility problem.  The paired
+microscopic CSpec edge law is now derived in
+`KFCausalCSpecDeterminantChirality.lean` as
 
 ```text
-(sheet holonomy U_e, orientation transport Xi_e)
+(sheet holonomy U_e, orientation transport Xi_e=sign(U_e)).
 ```
 
-and proving that its physical edges satisfy the sign-twisted covariance used
-above.
+The remaining breakthrough target is to derive the finite atlas and its
+record instrument universally from physical causal births, then construct
+the event-algebra and continuum/laboratory bridge.
 
 ## Verification
 

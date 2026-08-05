@@ -952,6 +952,21 @@
 > orientation flip there, and promoting the pinching to a physical CPTP
 > laboratory instrument remain explicit bridges. No Standard-Model or
 > continuum chirality claim follows from this finite theorem.
+> `KFCausalCSpecDeterminantChirality.lean` closes the finite microscopic edge
+> law that the abstract bundle theorem left conditional. The orientation
+> `Xi` is the determinant/sign representation of the same continuation-
+> recovered three-sheet CSpec permutation that transports the rank-two
+> carrier; it is therefore generated recursively rather than supplied as an
+> independent field. Every history has `Xi^2=1`, the first witnessed unfilled
+> loop computes `Xi=-1`, and the paired representations derive the exact
+> relational-chirality intertwiner at every rank. The history-fiber
+> projectors form a complete Kraus family, so record pinching is a genuine
+> finite CPTP channel: it erases exactly cross-history coherences and fixes
+> all within-history observables, including the derived chirality block. The
+> result applies to the constructed finite global CSpec atlas. It does not
+> prove that arbitrary physical causal-set growth generates that atlas,
+> promote trace preservation to event-level `D(Omega,Omega)` preservation,
+> or identify the finite chirality observable with a continuum weak current.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

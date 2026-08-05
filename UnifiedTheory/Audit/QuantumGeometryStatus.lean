@@ -50,7 +50,7 @@ structure ClaimEntry where
 /--
 The current honest boundary of the program.
 
-The one hundred seventeen `provedFinite` entries assert only their mathematical scope.
+The one hundred eighteen `provedFinite` entries assert only their mathematical scope.
 In particular, this ledger does not promote an algebraic identity to a
 physical observable without a dynamics and infrared bridge.
 -/
@@ -330,6 +330,12 @@ def claimLedger : List ClaimEntry := [
       by i, and an arrow-flipping orientation label protects it exactly while \
       history-block pinching preserves every internal fiber observable",
     scope := .provedFinite },
+  { name := "the continuation-recovered CSpec sheet permutation canonically generates \
+      a nonzero determinant orientation on every atlas history; the witnessed odd \
+      loop computes orientation -1, the resulting relational chirality transports \
+      at every rank, and complete history-block projectors give a CPTP channel that \
+      erases cross-history coherence while fixing the derived chirality block",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -358,9 +364,9 @@ def claimLedger : List ClaimEntry := [
   { name := "protected records and an evaluable infinite charge-divergence tail event",
     scope := .openTarget },
   { name := "causal growth derives the Born-defect coupling, protected factor, and \
-      D(Omega,Omega)-preserving physical block instrument, realizes the intrinsic \
-      odd sheet transports on its edges, and licenses record/tail convergence \
-      beyond finite cylinder projectivity",
+      D(Omega,Omega)-preserving physical block instrument, universally generates \
+      the finite determinant-sheet atlas from physical births, and licenses \
+      record/tail convergence beyond finite cylinder projectivity",
     scope := .openTarget }
 ]
 
@@ -370,8 +376,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 set_option maxRecDepth 2048 in
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 133
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 117
+    claimLedger.length = 134
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 118
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by

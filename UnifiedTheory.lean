@@ -5543,6 +5543,16 @@ import UnifiedTheory.Audit.KFCausalCylinderRecordTransport
 -- generator on every physical causal/CSpec edge and deriving a laboratory
 -- instrument remain explicit bridges.
 import UnifiedTheory.Audit.KFCausalBundleProtectedChirality
+-- The orientation Xi is now derived as the determinant/sign line of the
+-- continuation-recovered three-sheet CSpec transport.  Every sequential
+-- atlas history carries a nonzero generated sign, the witnessed unfilled
+-- loop computes Xi=-1, and the paired sign/carrier representations give the
+-- exact all-rank chirality intertwiner.  Orthogonal history-block projectors
+-- form a genuine finite CPTP pinching channel which erases cross-history
+-- coherence and fixes the derived internal chirality block.  This closes the
+-- finite microscopic CSpec edge law; a universal physical-growth and
+-- laboratory/continuum realization remains open.
+import UnifiedTheory.Audit.KFCausalCSpecDeterminantChirality
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
