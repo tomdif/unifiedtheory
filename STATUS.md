@@ -925,6 +925,17 @@
 > embedded. The remaining bridge is therefore singular and precise: derive
 > the record-identity intertwiner in the laboratory-relevant observable
 > algebra.
+> `KFCausalCylinderRecordTransport.lean` derives that intertwiner from actual
+> sequential growth for every realized finite cylinder. The canonical map
+> sends `|h>` only to amplitude-weighted children `|h,b>`, so prefix retention
+> forces `Q_c V=V P_c` independently of phases and normalization. With local
+> Born normalization the same map is an isometry and the refined record pulls
+> back sharply: `V^dagger Q_c V=P_c`. Matching singleton histories have weight
+> one and distinct histories weight zero; the canonical harmonic causal law
+> realizes the construction at every rank. This closes native alignment for
+> facts after they occur. It does not install mutually exclusive future-child
+> projectors before a birth, identify the cylinder algebra with a laboratory
+> record, or protect same-carrier chirality.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
@@ -1077,7 +1088,7 @@ Connects CKM, PMNS, masses, gauge couplings, dark matter, inflation. Catalogued 
 
 ## Lean Codebase
 
-1,017 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
-core mathematical content. Latest full root build: 8,768 jobs successful
+1,019 Lean files in `UnifiedTheory/`, **zero sorry and zero custom axioms** in
+core mathematical content. Latest full root build: 8,770 jobs successful
 (August 2026).
 Foundational axioms only: `propext`, `Classical.choice`, `Quot.sound`.

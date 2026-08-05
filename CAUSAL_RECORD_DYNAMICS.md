@@ -83,13 +83,31 @@ of a derivation.
 
 ## Honest physical boundary
 
-The remaining input is narrower than before but not empty.  Causal order
-supplies the child set and its carrier; reversible refinement supplies Born
-completeness.  A physical theory must still explain why the created record
-tracks the *same child observable*, i.e. why `Q_c V = V P_c` holds in the
-laboratory-relevant algebra.  The formal result identifies this as the sole
-alignment bridge and proves that the existing conservation and covariance
-principles cannot replace it.
+The canonical history representation now closes the alignment bridge for
+every already-realized finite cylinder.  In
+`KFCausalCylinderRecordTransport.lean`, sequential growth itself defines
+
+```text
+V_n |h> = sum_b a(h,b)|h,b>,
+```
+
+and prefix retention proves `Q_c V_n = V_n P_c` for the projector onto any
+cylinder `c` and the projector onto all of its continuations.  Local Born
+normalization makes `V_n` isometric and therefore derives the exact pullback
+effect `V_n† Q_c V_n = P_c`.  Every physical child is transported this way
+from the first rank after its birth onward.
+
+The remaining input is narrower and has moved.  Growth does not assign a
+future-child projector before that child is born, and it does not by itself
+prove that a laboratory apparatus couples to this intrinsic cylinder algebra.
+The Pauli-Y witness still proves that an arbitrary supplied dilation need not
+have native alignment.  Thus sequential growth derives nondemolition
+transport of realized causal facts, while pre-birth outcome selection,
+laboratory embedding, and compatible chirality protection remain separate
+physical problems.
 
 The machine-checked implementation is
 `UnifiedTheory/Audit/KFCausalNativeRecordDynamics.lean`.
+
+The sequential-growth derivation is documented in
+`CAUSAL_CYLINDER_RECORD_TRANSPORT.md`.

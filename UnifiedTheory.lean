@@ -5523,6 +5523,15 @@ import UnifiedTheory.Audit.KFCausalNativeResolutionLaw
 -- witness proves conservation and relabeling covariance cannot themselves
 -- select the native alignment, and same-carrier resolution erases chirality.
 import UnifiedTheory.Audit.KFCausalNativeRecordDynamics
+-- The native alignment equation is no longer merely supplied for realized
+-- history facts.  Sequential growth canonically maps each prefix only to its
+-- children, so the projector onto any finite cylinder intertwines exactly
+-- with the projector onto all of its continuations: `Q_c V = V P_c`.
+-- Born normalization makes this growth map isometric and derives the sharp
+-- pullback effect `V^dagger Q_c V=P_c`.  The result transports every physical
+-- child from the rank after its birth; it does not predetermine an unborn
+-- child or identify the cylinder algebra with a laboratory apparatus.
+import UnifiedTheory.Audit.KFCausalCylinderRecordTransport
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

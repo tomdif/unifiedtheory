@@ -321,6 +321,10 @@ def claimLedger : List ClaimEntry := [
       record-diagonal protected algebra, while a covariant Pauli-Y witness proves \
       native alignment independent of conservation and relabeling symmetry",
     scope := .provedFinite },
+  { name := "sequential-growth prefix retention derives Q_c V = V P_c for every \
+      finite cylinder; Born normalization makes V isometric and derives the exact \
+      sharp pullback effect V^dagger Q_c V=P_c for every realized history fact",
+    scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },
   { name := "bare Poisson-sprinkling K_F spectrum converges to J_4",
@@ -360,8 +364,8 @@ private def hasScope (scope : ClaimScope) (entry : ClaimEntry) : Bool :=
 set_option maxRecDepth 2048 in
 /-- Regression check: the ledger contains exactly the intended scope split. -/
 theorem claim_ledger_counts :
-    claimLedger.length = 131
-    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 115
+    claimLedger.length = 132
+    ∧ (claimLedger.filter (hasScope .provedFinite)).length = 116
     ∧ (claimLedger.filter (hasScope .conditionalBridge)).length = 4
     ∧ (claimLedger.filter (hasScope .empiricalNegative)).length = 1
     ∧ (claimLedger.filter (hasScope .openTarget)).length = 11 := by
