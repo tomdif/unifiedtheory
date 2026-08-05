@@ -907,6 +907,24 @@
 > chirality is stored as off-diagonal coherence in this same carrier, the law
 > erases it; protection therefore requires a separate/diagonal chiral record
 > or a derived embedding into the full observable algebra.
+> `KFCausalNativeRecordDynamics.lean` moves the probability postulate one
+> layer deeper. Let `V` be the recorded refinement, `P_c` the incoming native
+> child projector, and `Q_c` the corresponding projector on the created
+> record. Losslessness `V^dagger V=I` plus causal identity transport
+> `Q_c V=V P_c` derives `K_c^dagger K_c=P_c`; adding coherent recovery
+> `E V=I` uniquely forces `K_c=P_c`. The resulting dynamics is repeatable and
+> gives the exact quantum outcome rule
+> `Pr(c|rho)=Re Tr(rho K_c^dagger K_c)=Re rho[c,c]`; prepared native children
+> therefore resolve deterministically. Its fixed points are exactly the
+> record-diagonal algebra. A fully explicit
+> Pauli-Y rotated binary instrument obeys Born completeness, coherent
+> conservation, and relabeling covariance but is not native-sharp, proving
+> that the transport/alignment law is independent of all three. Native
+> resolution also merges the two same-carrier orientation projectors, so a
+> physical chirality sector must be separately protected or compatibly
+> embedded. The remaining bridge is therefore singular and precise: derive
+> the record-identity intertwiner in the laboratory-relevant observable
+> algebra.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

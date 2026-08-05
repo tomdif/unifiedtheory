@@ -104,13 +104,19 @@ quantum mathematics; the distinctive synthesis is that causal successors
 intrinsically provide both its Hilbert carrier and its pointer basis, while
 the repo's conservation principle fixes the operators.
 
-The remaining bridge is precise: causal microphysics must enforce the sharp
-native Born effects and embed `H_C` as a protected observable record. This is
-an operational probability principle rather than a hidden matrix-support
-assumption, but it remains physical input. If the chiral datum is stored in
-off-diagonal coherence of this same carrier, the law erases it. Thus a viable
-physical realization must put chirality in a diagonal sector, a separate
-protected carrier, or a derived larger observable algebra.
+The probability-level bridge has now been reduced further in
+`KFCausalNativeRecordDynamics.lean`. Isometric recorded refinement together
+with exact causal-record transport `Q_c V = V P_c` derives the sharp effects.
+Adding coherent recovery `E V = I` then forces the full projector law. The
+remaining physical input is the alignment statement that the created record
+tracks the same native child observable; an explicit rotated measurement
+proves that conservation and relabeling covariance alone cannot force it.
+
+The resulting protected algebra is exact: its fixed points are precisely the
+record-diagonal matrices. If the chiral datum is stored in off-diagonal
+coherence of this same carrier, the law erases it. Thus a viable physical
+realization must put chirality in a diagonal sector, a separate protected
+carrier, or a derived larger observable algebra.
 
 ## Falsifiable form
 

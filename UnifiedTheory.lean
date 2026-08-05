@@ -5516,6 +5516,13 @@ import UnifiedTheory.Audit.KFCausalNativeSuccessorInstrument
 -- all-rank channel is CPTP, idempotent, relabeling-covariant native-record
 -- dephasing, and is non-identity whenever the parent genuinely branches.
 import UnifiedTheory.Audit.KFCausalNativeResolutionLaw
+-- The sharp Born effects are now derived from deeper recorded dynamics.
+-- Isometry plus the causal-record intertwiner `Q_c V = V P_c` forces
+-- `K_c^dagger K_c = P_c`; counital coherent recovery then forces `K_c=P_c`.
+-- The fixed algebra is exactly native-record diagonal.  A rotated Pauli-Y
+-- witness proves conservation and relabeling covariance cannot themselves
+-- select the native alignment, and same-carrier resolution erases chirality.
+import UnifiedTheory.Audit.KFCausalNativeRecordDynamics
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
