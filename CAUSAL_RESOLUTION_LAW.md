@@ -29,15 +29,18 @@ external outcome labels, phase, rate, or normalization coefficient enters.
 
 ## Derivation
 
-The formal theorem uses two microscopic principles.
+The strengthened formal theorem uses two microscopic principles.
 
-1. **Outcome locality.** The operator belonging to child `c` has support only
-   on the carrier ray labelled by `c`.
+1. **Exclusive response.** A system prepared in a definite child record can
+   never trigger a different child outcome. This constrains only the input
+   response; it does not assume nondemolition or output-ray locality.
 2. **Coherent conservation.** An unresolved birth preserves every incoming
    carrier amplitude, equivalently `Σ_c K_c = I`.
 
-Outcome locality reduces each operator to one unknown diagonal coefficient.
-Coherent conservation fixes every coefficient to one. Hence
+Exclusive response kills every false-outcome input column. Coherent
+conservation then forces the remaining column of `K_c` to be exactly the
+`c`-th basis vector. Thus output nondemolition and full two-sided outcome
+locality are consequences, not postulates. Hence
 
 ```text
 K_c = |c><c|
@@ -53,6 +56,21 @@ projectors resolving the identity,
 follows automatically. The law therefore also preserves every Born
 quadratic form and defines a genuine CPTP instrument.
 
+There is a second, independent channel-level characterization. If a
+state-independent operation:
+
+1. depends only on the registered diagonal successor data; and
+2. fixes every already-resolved successor record,
+
+then it is uniquely `R_C`. This uniqueness does not assume linearity,
+positivity, complete positivity, or a Kraus representation. Those properties
+are subsequently supplied by the forced projector realization.
+
+Lean also contains an explicit two-outcome counterexample satisfying
+exclusive response but violating output locality. This certifies that the new
+derivation genuinely weakens the former hypothesis; it is not a verbal
+repackaging of the same condition.
+
 ## Exact consequences
 
 Lean proves that the law is:
@@ -65,8 +83,10 @@ Lean proves that the law is:
 - nondemolition on every classical child weight;
 - exactly destructive on coherence between different child records;
 - non-identity whenever a parent has two distinct physical children;
-- the unique state-independent map preserving all record weights while
-  exactly separating distinct records.
+- the unique operation satisfying record sufficiency and record
+  nondemolition;
+- full output locality as a derived consequence of exclusive response and
+  coherent conservation.
 
 The capstone theorem is `causalNativeResolutionLaw_capstone` in
 `UnifiedTheory/Audit/KFCausalNativeResolutionLaw.lean`.
@@ -79,11 +99,13 @@ quantum mathematics; the distinctive synthesis is that causal successors
 intrinsically provide both its Hilbert carrier and its pointer basis, while
 the repo's conservation principle fixes the operators.
 
-The remaining bridge is precise: causal microphysics must enforce outcome
-locality and embed `H_C` as a protected observable record. If the chiral datum
-is stored in off-diagonal coherence of this same carrier, the law erases it.
-Thus a viable physical realization must put chirality in a diagonal sector,
-a separate protected carrier, or a derived larger observable algebra.
+The remaining bridge is precise: causal microphysics must enforce exclusive
+response and embed `H_C` as a protected observable record. This is weaker
+than assuming full outcome locality, but it remains a physical principle. If
+the chiral datum is stored in off-diagonal coherence of this same carrier,
+the law erases it. Thus a viable physical realization must put chirality in a
+diagonal sector, a separate protected carrier, or a derived larger observable
+algebra.
 
 ## Falsifiable form
 

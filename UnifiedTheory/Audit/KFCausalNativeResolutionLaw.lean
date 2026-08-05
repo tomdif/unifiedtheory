@@ -10,9 +10,9 @@
 
   At a causal parent, let `c` range over its genuine unlabeled one-element
   successors.  Use those same successors as an orthonormal record carrier and
-  require the operator for outcome `c` to be outcome-local: it has matrix
-  support only on the ray labelled by `c`.  Universal coherent conservation
-  then uniquely forces
+  require only exclusive response: a definite child can never trigger a
+  different child outcome.  Universal coherent conservation then derives
+  nondemolition, derives full two-sided outcome locality, and uniquely forces
 
       K_c = |c><c|.
 
@@ -65,6 +65,45 @@ def IsOutcomeLocal {outcomes : ℕ}
     row ≠ outcome ∨ column ≠ outcome →
       operator outcome row column = 0
 
+/-- An operator family has exclusive response when a definite successor
+record can never trigger a different successor outcome.  Unlike
+`IsOutcomeLocal`, this constrains only the input column: it does not assume
+that a detected outcome is left on its own output ray. -/
+def IsOutcomeExclusive {outcomes : ℕ}
+    (operator : Fin outcomes → SquareMatrix outcomes) : Prop :=
+  ∀ observed prepared row, observed ≠ prepared →
+    operator observed row prepared = 0
+
+/-- Two-sided outcome locality implies the weaker, operational no-false-child
+response condition. -/
+theorem outcomeLocal_implies_exclusive {outcomes : ℕ}
+    {operator : Fin outcomes → SquareMatrix outcomes}
+    (hLocal : IsOutcomeLocal operator) :
+    IsOutcomeExclusive operator := by
+  intro observed prepared row hDistinct
+  exact hLocal observed row prepared (Or.inr hDistinct.symm)
+
+/-- A two-outcome witness showing that exclusive response alone is genuinely
+weaker than full outcome locality: outcome zero accepts only input zero but
+sends it to output ray one. -/
+def exclusiveNotLocalWitness : Fin 2 → SquareMatrix 2 :=
+  fun observed row prepared =>
+    if observed = 0 ∧ row = 1 ∧ prepared = 0 then 1 else 0
+
+theorem exclusiveNotLocalWitness_isExclusive :
+    IsOutcomeExclusive exclusiveNotLocalWitness := by
+  intro observed prepared row hDistinct
+  rw [exclusiveNotLocalWitness, if_neg]
+  intro hSupport
+  exact hDistinct (hSupport.1.trans hSupport.2.2.symm)
+
+theorem exclusiveNotLocalWitness_not_local :
+    ¬ IsOutcomeLocal exclusiveNotLocalWitness := by
+  intro hLocal
+  have hEntry := hLocal (0 : Fin 2) (1 : Fin 2) (0 : Fin 2)
+    (Or.inl (by decide))
+  norm_num [exclusiveNotLocalWitness] at hEntry
+
 /-- The canonical sharp projector associated with one resolved outcome. -/
 def causalOutcomeProjector (outcomes : ℕ) (outcome : Fin outcomes) :
     SquareMatrix outcomes :=
@@ -94,6 +133,49 @@ theorem causalOutcomeProjector_born_complete (outcomes : ℕ) :
       (1 : SquareMatrix outcomes) := by
   exact computationalProj_kraus_complete outcomes
 
+/-- **Operational rigidity.**  It is enough to prohibit false child
+responses.  If a definite successor never triggers a different outcome and
+unresolved amplitudes recombine coherently to the identity, then the output
+nondemolition property is derived: every operator is the sharp projector onto
+its successor ray. -/
+theorem outcomeExclusive_coherent_unique {outcomes : ℕ}
+    (operator : Fin outcomes → SquareMatrix outcomes)
+    (hExclusive : IsOutcomeExclusive operator)
+    (hCoherent : ∑ outcome, operator outcome =
+      (1 : SquareMatrix outcomes)) :
+    operator = causalOutcomeProjector outcomes := by
+  funext outcome
+  ext row column
+  by_cases hColumn : column = outcome
+  · subst column
+    have hEntry :
+        (∑ other, operator other row outcome) =
+          (1 : SquareMatrix outcomes) row outcome := by
+      simpa [Matrix.sum_apply] using
+        congr_fun (congr_fun hCoherent row) outcome
+    have hCollapse :
+        (∑ other, operator other row outcome) =
+          operator outcome row outcome := by
+      rw [Finset.sum_eq_single outcome]
+      · intro other _ hOther
+        exact hExclusive other outcome row hOther
+      · simp
+    rw [hCollapse] at hEntry
+    simpa [causalOutcomeProjector, computationalProj] using hEntry
+  · rw [hExclusive outcome column row (fun h => hColumn h.symm)]
+    simp [causalOutcomeProjector, computationalProj, hColumn]
+
+/-- Exclusive response plus coherent conservation derives the original
+two-sided locality postulate rather than requiring it independently. -/
+theorem outcomeExclusive_coherent_implies_local {outcomes : ℕ}
+    (operator : Fin outcomes → SquareMatrix outcomes)
+    (hExclusive : IsOutcomeExclusive operator)
+    (hCoherent : ∑ outcome, operator outcome =
+      (1 : SquareMatrix outcomes)) :
+    IsOutcomeLocal operator := by
+  rw [outcomeExclusive_coherent_unique operator hExclusive hCoherent]
+  exact causalOutcomeProjector_local outcomes
+
 /-- **Locality rigidity.**  Outcome locality and coherent conservation
 uniquely force the sharp causal projectors.  Born completeness is therefore
 a consequence rather than an independent fit in this ansatz. -/
@@ -102,31 +184,9 @@ theorem outcomeLocal_coherent_unique {outcomes : ℕ}
     (hLocal : IsOutcomeLocal operator)
     (hCoherent : ∑ outcome, operator outcome =
       (1 : SquareMatrix outcomes)) :
-    operator = causalOutcomeProjector outcomes := by
-  funext outcome
-  ext row column
-  by_cases hRow : row = outcome
-  · subst row
-    by_cases hColumn : column = outcome
-    · subst column
-      have hEntry :
-          (∑ other, operator other outcome outcome) = 1 := by
-        simpa [Matrix.sum_apply] using
-          congr_fun (congr_fun hCoherent outcome) outcome
-      have hCollapse :
-          (∑ other, operator other outcome outcome) =
-            operator outcome outcome outcome := by
-        rw [Finset.sum_eq_single outcome]
-        · intro other _ hOther
-          exact hLocal other outcome outcome
-            (Or.inl (fun hEqual => hOther hEqual.symm))
-        · simp
-      rw [hCollapse] at hEntry
-      simpa [causalOutcomeProjector, computationalProj] using hEntry
-    · rw [hLocal outcome outcome column (Or.inr hColumn)]
-      simp [causalOutcomeProjector, computationalProj, hColumn]
-  · rw [hLocal outcome row column (Or.inl hRow)]
-    simp [causalOutcomeProjector, computationalProj, hRow]
+    operator = causalOutcomeProjector outcomes :=
+  outcomeExclusive_coherent_unique operator
+    (outcomeLocal_implies_exclusive hLocal) hCoherent
 
 /-- The sharp resolution operators form a projective Born operator law. -/
 def causalResolutionProjectiveBornLaw (outcomes : ℕ) :
@@ -288,6 +348,57 @@ theorem causalResolutionMap_unique {outcomes : ℕ}
   · rw [hSeparate density row column hEqual,
       causalResolution_erases_cross_record density row column hEqual]
 
+/-- A resolved channel is record-sufficient when its output depends only on
+the diagonal successor record, not on any unregistered relative coherence. -/
+def IsCausalRecordSufficient {outcomes : ℕ}
+    (channel : SquareMatrix outcomes → SquareMatrix outcomes) : Prop :=
+  ∀ first second, dephase first = dephase second →
+    channel first = channel second
+
+/-- A resolved channel is record-nondemolishing when it fixes every matrix
+that already belongs to the classical successor-record algebra. -/
+def IsCausalRecordNondemolition {outcomes : ℕ}
+    (channel : SquareMatrix outcomes → SquareMatrix outcomes) : Prop :=
+  ∀ density, IsIncoherent density → channel density = density
+
+/-- The native resolution channel discards no information beyond relative
+cross-successor coherence. -/
+theorem causalResolution_recordSufficient (outcomes : ℕ) :
+    IsCausalRecordSufficient (fun density =>
+      (causalResolutionInstrument outcomes).apply density) := by
+  intro first second hRecord
+  simpa only [causalResolutionInstrument_apply_eq_dephase] using hRecord
+
+/-- Once a successor record is classical, native resolution does not disturb
+it. -/
+theorem causalResolution_recordNondemolition (outcomes : ℕ) :
+    IsCausalRecordNondemolition (fun density =>
+      (causalResolutionInstrument outcomes).apply density) := by
+  intro density hClassical
+  change (causalResolutionInstrument outcomes).apply density = density
+  rw [causalResolutionInstrument_apply_eq_dephase]
+  exact hClassical
+
+/-- **Conditional-expectation rigidity.**  Any state-independent operation
+whose output depends only on the successor record and which fixes every
+already-resolved record is exactly native causal resolution.  No linearity,
+positivity, or Kraus presentation is needed for this uniqueness theorem. -/
+theorem causalResolution_unique_of_recordPrinciples {outcomes : ℕ}
+    (channel : SquareMatrix outcomes → SquareMatrix outcomes)
+    (hSufficient : IsCausalRecordSufficient channel)
+    (hNondemolition : IsCausalRecordNondemolition channel) :
+    channel = fun density =>
+      (causalResolutionInstrument outcomes).apply density := by
+  funext density
+  calc
+    channel density = channel (dephase density) :=
+      hSufficient density (dephase density)
+        (dephase_idempotent density).symm
+    _ = dephase density :=
+      hNondemolition (dephase density) (dephase_isIncoherent density)
+    _ = (causalResolutionInstrument outcomes).apply density :=
+      (causalResolutionInstrument_apply_eq_dephase density).symm
+
 /-! ## 4. Instantiation on actual unlabeled causal successors -/
 
 /-- Number of genuine one-element causal children of this parent. -/
@@ -421,17 +532,22 @@ theorem nativeCausalResolution_nontrivial_of_branching (n : ℕ)
 
 /-! ## 5. Capstone and axiom audit -/
 
-/-- The new candidate law in one statement: outcome locality and coherent
-conservation force sharp successor projectors; they automatically define an
-all-rank CPTP, double-conserving, relabeling-covariant resolution channel;
-and genuine causal branching makes that channel observably nontrivial on
-coherent record data. -/
+/-- The strengthened candidate law in one statement: exclusive response and
+coherent conservation force sharp successor projectors; record sufficiency
+and nondemolition independently force their channel; the resulting all-rank
+law is CPTP and exact native-record dephasing. -/
 theorem causalNativeResolutionLaw_capstone :
     (∀ (outcomes : ℕ)
       (operator : Fin outcomes → SquareMatrix outcomes),
-      IsOutcomeLocal operator →
+      IsOutcomeExclusive operator →
       (∑ outcome, operator outcome) = (1 : SquareMatrix outcomes) →
       operator = causalOutcomeProjector outcomes) ∧
+    (∀ (outcomes : ℕ)
+      (channel : SquareMatrix outcomes → SquareMatrix outcomes),
+      IsCausalRecordSufficient channel →
+      IsCausalRecordNondemolition channel →
+      channel = fun density =>
+        (causalResolutionInstrument outcomes).apply density) ∧
     (∀ (n : ℕ)
       (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n),
       IsCPTP
@@ -442,10 +558,13 @@ theorem causalNativeResolutionLaw_capstone :
         (NativeCausalResolutionDimension n pathPrefix)),
       (nativeCausalResolutionInstrument n pathPrefix).apply density =
         dephase density) := by
-  exact ⟨fun _ _ => outcomeLocal_coherent_unique _,
+  exact ⟨fun _ _ => outcomeExclusive_coherent_unique _,
+    fun _ _ => causalResolution_unique_of_recordPrinciples _,
     nativeCausalResolutionInstrument_isCPTP,
     nativeCausalResolutionInstrument_apply_eq_dephase⟩
 
+#print axioms outcomeExclusive_coherent_unique
+#print axioms outcomeExclusive_coherent_implies_local
 #print axioms outcomeLocal_coherent_unique
 #print axioms causalResolution_preserves_both
 #print axioms causalResolutionInstrument_isCPTP
@@ -453,6 +572,7 @@ theorem causalNativeResolutionLaw_capstone :
 #print axioms causalResolutionInstrument_idempotent
 #print axioms causalResolution_relabel_covariant
 #print axioms causalResolutionMap_unique
+#print axioms causalResolution_unique_of_recordPrinciples
 #print axioms nativeCausalResolutionOperator_sum_eq_one
 #print axioms nativeCausalResolutionOperator_born_complete
 #print axioms nativeCausalResolutionInstrument_isCPTP

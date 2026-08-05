@@ -5508,11 +5508,12 @@ import UnifiedTheory.Audit.KFCausalNativeSuccessorRecord
 -- the resolved history record, not in the reduced rank-one carrier.
 import UnifiedTheory.Audit.KFCausalNativeSuccessorInstrument
 -- The smallest nontrivial higher-rank law is now selected within a sharp
--- native-record ansatz.  One outcome-local operator per physical successor,
--- together with coherent conservation, uniquely forces the projectors
--- `K_c = |c><c|`; Born completeness follows.  The resulting all-rank local
--- channel is CPTP, idempotent, relabeling-covariant native-record dephasing,
--- and is non-identity whenever the parent genuinely branches.
+-- native-record ansatz.  No-false-child response plus coherent conservation
+-- derives nondemolition and full outcome locality and uniquely forces the
+-- projectors `K_c = |c><c|`; Born completeness follows.  Record sufficiency
+-- plus nondemolition independently characterizes the same channel.  The
+-- all-rank channel is CPTP, idempotent, relabeling-covariant native-record
+-- dephasing, and is non-identity whenever the parent genuinely branches.
 import UnifiedTheory.Audit.KFCausalNativeResolutionLaw
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;

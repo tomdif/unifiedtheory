@@ -889,16 +889,20 @@
 > `KFCausalNativeResolutionLaw.lean` closes the smallest sharp higher-rank
 > ansatz and names the resulting candidate microscopic law. At each causal
 > parent, the carrier basis is the finite set of genuine unlabeled children.
-> Requiring the operator for child `c` to have support only on the `c` ray,
-> together with universal coherent conservation, uniquely forces
-> `K_c = |c><c|`. Born completeness then follows rather than being imposed.
+> Requiring only exclusive response (a definite child cannot trigger a
+> different child outcome), together with universal coherent conservation,
+> uniquely forces `K_c = |c><c|`. Thus nondemolition and full two-sided
+> outcome locality are derived rather than assumed, and Born completeness
+> follows rather than being imposed. Independently, record sufficiency plus
+> nondemolition uniquely forces the same channel without assuming linearity,
+> positivity, or a Kraus representation.
 > The induced native causal resolution channel is CPTP, preserves every
 > diagonal successor weight, erases every cross-successor coherence, is
 > idempotent, and commutes with every relabeling. Two distinct physical
 > children provide an exact witness that it is not the identity. This derives
 > a nontrivial all-rank local operator law without a transition coefficient.
 > The scope is deliberately narrower than a discovered law of nature:
-> outcome locality is the new microscopic principle, and identifying the
+> exclusive response is the new microscopic principle, and identifying the
 > native record carrier with a protected laboratory record remains open. If
 > chirality is stored as off-diagonal coherence in this same carrier, the law
 > erases it; protection therefore requires a separate/diagonal chiral record
