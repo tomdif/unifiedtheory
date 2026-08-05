@@ -740,6 +740,16 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   conditional expectation or instrument preserving `D(Omega,Omega)`, with a
   derived protected chiral algebra. Ordinary density-matrix trace preservation
   is the wrong normalization condition for this task.
+  `KFCausalDeterminantPhysicalBoundary.lean` makes this boundary exact for the
+  determinant-sheet channel. The first physically realized singleton causet
+  has no Hasse cover edges and therefore no intrinsic diamond-direction
+  sheets, so the three-sheet determinant construction cannot be a universal
+  fiber over every stage of sequential growth; it is a law of the regular
+  Boolean three-direction locus. For the finite history-block CPTP channel,
+  total-event normalization is preserved if and only if the summed
+  cross-history interference erased by the channel vanishes. Exact block
+  decoherence therefore licenses record pinching, while trace preservation
+  alone does not.
   The same module constructs the forced eigenbasis alternative. For the actual
   convention `D_y=[[1/2,iy],[-iy,1/2]]`, the eigenkets are proportional to
   `(1,+i)` and `(1,-i)`. Pinching by their chirality projectors is CPTP and

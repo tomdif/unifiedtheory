@@ -18,9 +18,10 @@
   genuine CPTP channel on the flattened direct-sum carrier and proves that it
   fixes the relational chirality block exactly.
 
-  The remaining physical boundary is still explicit: the finite global CSpec
-  atlas is constructed inside the repository, but a universal law forcing
-  arbitrary physical causal-set growth to generate that atlas is not proved.
+  The physical scope is the constructed finite regular CSpec atlas.  The
+  following `KFCausalDeterminantPhysicalBoundary` audit proves that arbitrary
+  physical causal-set growth cannot be three-sheeted at every stage: its
+  singleton first child has no intrinsic diamond direction at all.
 
   Zero sorry. Zero custom axioms.
 -/

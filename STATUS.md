@@ -967,6 +967,19 @@
 > prove that arbitrary physical causal-set growth generates that atlas,
 > promote trace preservation to event-level `D(Omega,Omega)` preservation,
 > or identify the finite chirality observable with a continuum weak current.
+> `KFCausalDeterminantPhysicalBoundary.lean` resolves the first two caveats,
+> but not by promoting the universal claim. The first physical child of the
+> empty causet is a singleton; its actual causal order has no Hasse cover edge,
+> so its intrinsic diamond-direction quotient is empty. Therefore physical
+> sequential growth is **not** three-sheeted at every stage, and determinant
+> chirality is necessarily a law of a regular three-direction locus rather
+> than a universal fiber over all causets. The same audit proves the exact
+> normalization criterion for the finite CPTP history-block channel:
+> `D(Omega,Omega)` is preserved iff the sum of erased cross-history entries is
+> zero. Exact block decoherence is sufficient. The existing two-antichain
+> theorem shows why the condition is substantive: no trace-preserving
+> record-diagonalizing channel can preserve its total-event normalization.
+> The continuum weak-current identification remains open.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have

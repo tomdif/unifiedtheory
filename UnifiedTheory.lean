@@ -5550,9 +5550,16 @@ import UnifiedTheory.Audit.KFCausalBundleProtectedChirality
 -- exact all-rank chirality intertwiner.  Orthogonal history-block projectors
 -- form a genuine finite CPTP pinching channel which erases cross-history
 -- coherence and fixes the derived internal chirality block.  This closes the
--- finite microscopic CSpec edge law; a universal physical-growth and
--- laboratory/continuum realization remains open.
+-- finite microscopic CSpec edge law on the regular three-direction locus.
 import UnifiedTheory.Audit.KFCausalCSpecDeterminantChirality
+-- The hoped-for universal extension to every physical causal-growth state is
+-- false: the realized singleton first child has no Hasse edge and hence no
+-- intrinsic direction sheet.  On the regular locus, history-block pinching
+-- preserves the decoherence-functional total-event value exactly iff the
+-- erased cross-history interference has zero total; exact block decoherence
+-- is a sufficient condition.  This separates the derived local law from both
+-- an impossible universal atlas and an unjustified normalization claim.
+import UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
