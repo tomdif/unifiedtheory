@@ -310,10 +310,11 @@ def claimLedger : List ClaimEntry := [
       the state-independent record erasure, while the harmonic reduced scalar channel \
       is exactly causal-data blind",
     scope := .provedFinite },
-  { name := "within the sharp native-record ansatz, exclusive response plus coherent \
-      conservation derives nondemolition and uniquely forces one projector per physical \
-      successor; record sufficiency plus nondemolition independently forces the same \
-      all-rank CPTP, idempotent, covariant channel, nontrivial on branching",
+  { name := "within the sharp native-record ansatz, childwise Born effects derive \
+      exclusive response and Born completeness; coherent conservation then derives \
+      nondemolition and uniquely forces one projector per physical successor, while \
+      record sufficiency plus nondemolition independently forces the same all-rank \
+      CPTP, idempotent, covariant channel, nontrivial on branching",
     scope := .provedFinite },
   { name := "actual sprinkling links recover the null cone",
     scope := .conditionalBridge },

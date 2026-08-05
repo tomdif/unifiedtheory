@@ -181,17 +181,18 @@ a higher-rank child-operator law.
 
 `KFCausalNativeResolutionLaw.lean` supplies and classifies the minimal sharp
 candidate. Use the actual physical children as the carrier basis and impose
-only exclusive response: a definite child cannot trigger a different child
-outcome. Coherent conservation then derives nondemolition and full two-sided
-locality and uniquely forces `K_c=|c><c|`, after which Born completeness is
-automatic. Independently, record sufficiency plus nondemolition uniquely
+only the sharp native effects `K_c^dagger K_c=|c><c|`. Positivity derives
+exclusive response and the sharp effects already imply aggregate Born
+completeness. Coherent conservation then derives nondemolition and full
+two-sided locality and uniquely forces `K_c=|c><c|`. Independently, record
+sufficiency plus nondemolition uniquely
 forces the same channel without assuming linearity, positivity, or a Kraus
 form. The resulting channel is native-record dephasing:
 it is CPTP, idempotent, preserves all child probabilities, erases all
 cross-child coherence, commutes with arbitrary relabelings, and is nontrivial
 whenever two physical children exist. Thus uniqueness is closed within this
-explicit ansatz. What remains open is whether causal microphysics enforces
-exclusive response and whether this record algebra is protected and physically
+explicit ansatz. What remains open is whether causal microphysics enforces the
+sharp native effects and whether this record algebra is protected and physically
 observable; the law would erase chirality if chirality occupied the same
 off-diagonal record coherences.
 

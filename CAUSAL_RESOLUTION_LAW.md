@@ -31,16 +31,19 @@ external outcome labels, phase, rate, or normalization coefficient enters.
 
 The strengthened formal theorem uses two microscopic principles.
 
-1. **Exclusive response.** A system prepared in a definite child record can
-   never trigger a different child outcome. This constrains only the input
-   response; it does not assume nondemolition or output-ray locality.
+1. **Sharp native Born effects.** The observable effect of child `c` is its
+   native record projector: `K_c†K_c=|c><c|`. This specifies probabilities,
+   not the post-measurement output direction.
 2. **Coherent conservation.** An unresolved birth preserves every incoming
    carrier amplitude, equivalently `Σ_c K_c = I`.
 
-Exclusive response kills every false-outcome input column. Coherent
-conservation then forces the remaining column of `K_c` to be exactly the
-`c`-th basis vector. Thus output nondemolition and full two-sided outcome
-locality are consequences, not postulates. Hence
+Sharp effects imply exclusive response by positivity: every false-child
+probability is a sum of squared complex amplitudes, so probability zero
+forces each false amplitude to vanish. Sharp effects alone also imply
+aggregate Born completeness. Coherent conservation then forces the remaining
+column of `K_c` to be exactly the `c`-th basis vector. Thus exclusive
+response, output nondemolition, full two-sided outcome locality, and Born
+completeness are consequences rather than support assumptions. Hence
 
 ```text
 K_c = |c><c|
@@ -67,9 +70,9 @@ positivity, complete positivity, or a Kraus representation. Those properties
 are subsequently supplied by the forced projector realization.
 
 Lean also contains an explicit two-outcome counterexample satisfying
-exclusive response but violating output locality. This certifies that the new
-derivation genuinely weakens the former hypothesis; it is not a verbal
-repackaging of the same condition.
+exclusive response but violating output locality. This certifies that the
+intermediate implication genuinely weakens the former hypothesis; it is not
+a verbal repackaging of the same condition.
 
 ## Exact consequences
 
@@ -86,7 +89,9 @@ Lean proves that the law is:
 - the unique operation satisfying record sufficiency and record
   nondemolition;
 - full output locality as a derived consequence of exclusive response and
-  coherent conservation.
+  coherent conservation;
+- exclusive response and aggregate Born completeness as consequences of the
+  child-by-child sharp Born effects.
 
 The capstone theorem is `causalNativeResolutionLaw_capstone` in
 `UnifiedTheory/Audit/KFCausalNativeResolutionLaw.lean`.
@@ -99,13 +104,13 @@ quantum mathematics; the distinctive synthesis is that causal successors
 intrinsically provide both its Hilbert carrier and its pointer basis, while
 the repo's conservation principle fixes the operators.
 
-The remaining bridge is precise: causal microphysics must enforce exclusive
-response and embed `H_C` as a protected observable record. This is weaker
-than assuming full outcome locality, but it remains a physical principle. If
-the chiral datum is stored in off-diagonal coherence of this same carrier,
-the law erases it. Thus a viable physical realization must put chirality in a
-diagonal sector, a separate protected carrier, or a derived larger observable
-algebra.
+The remaining bridge is precise: causal microphysics must enforce the sharp
+native Born effects and embed `H_C` as a protected observable record. This is
+an operational probability principle rather than a hidden matrix-support
+assumption, but it remains physical input. If the chiral datum is stored in
+off-diagonal coherence of this same carrier, the law erases it. Thus a viable
+physical realization must put chirality in a diagonal sector, a separate
+protected carrier, or a derived larger observable algebra.
 
 ## Falsifiable form
 

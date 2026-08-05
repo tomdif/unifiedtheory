@@ -10,9 +10,10 @@
 
   At a causal parent, let `c` range over its genuine unlabeled one-element
   successors.  Use those same successors as an orthonormal record carrier and
-  require only exclusive response: a definite child can never trigger a
-  different child outcome.  Universal coherent conservation then derives
-  nondemolition, derives full two-sided outcome locality, and uniquely forces
+  require the observable sharp effects `K_c† K_c = |c><c|`.  Positivity then
+  derives exclusive response: a definite child can never trigger a different
+  child outcome.  Universal coherent conservation derives nondemolition,
+  derives full two-sided outcome locality, and uniquely forces
 
       K_c = |c><c|.
 
@@ -133,6 +134,67 @@ theorem causalOutcomeProjector_born_complete (outcomes : ℕ) :
       (1 : SquareMatrix outcomes) := by
   exact computationalProj_kraus_complete outcomes
 
+/-- Each child has the sharp Born effect belonging to its own native record.
+This is a statement about observable outcome probabilities, not matrix
+support: `K_c† K_c = |c><c|`. -/
+def HasSharpOutcomeEffect {outcomes : ℕ}
+    (operator : Fin outcomes → SquareMatrix outcomes) : Prop :=
+  ∀ outcome,
+    (operator outcome)ᴴ * operator outcome =
+      causalOutcomeProjector outcomes outcome
+
+/-- The canonical successor projectors have exactly the sharp native Born
+effects. -/
+theorem causalOutcomeProjector_hasSharpEffect (outcomes : ℕ) :
+    HasSharpOutcomeEffect (causalOutcomeProjector outcomes) := by
+  intro outcome
+  rw [causalOutcomeProjector, computationalProj_conjTranspose,
+    computationalProj_idem]
+
+/-- Sharp child-by-child effects already imply aggregate Born completeness;
+coherent conservation is not needed for this quadratic consequence. -/
+theorem sharpOutcomeEffect_bornComplete {outcomes : ℕ}
+    {operator : Fin outcomes → SquareMatrix outcomes}
+    (hSharp : HasSharpOutcomeEffect operator) :
+    (∑ outcome, (operator outcome)ᴴ * operator outcome) =
+      (1 : SquareMatrix outcomes) := by
+  calc
+    (∑ outcome, (operator outcome)ᴴ * operator outcome) =
+        ∑ outcome, causalOutcomeProjector outcomes outcome := by
+      apply Finset.sum_congr rfl
+      intro outcome _
+      exact hSharp outcome
+    _ = (1 : SquareMatrix outcomes) :=
+      causalOutcomeProjector_sum_eq_one outcomes
+
+/-- Sharp child-by-child Born effects prohibit false successor responses.
+The proof extracts one matrix coordinate from a vanishing sum of squared
+complex norms. -/
+theorem sharpOutcomeEffect_implies_exclusive {outcomes : ℕ}
+    {operator : Fin outcomes → SquareMatrix outcomes}
+    (hSharp : HasSharpOutcomeEffect operator) :
+    IsOutcomeExclusive operator := by
+  intro observed prepared row hDistinct
+  have hDiagonal := congr_fun
+    (congr_fun (hSharp observed) prepared) prepared
+  have hComplexSum :
+      (∑ index, star (operator observed index prepared) *
+        operator observed index prepared) = 0 := by
+    simpa [Matrix.mul_apply, Matrix.conjTranspose_apply,
+      causalOutcomeProjector, computationalProj, hDistinct,
+      hDistinct.symm] using hDiagonal
+  have hRealSum :
+      (∑ index, Complex.normSq (operator observed index prepared)) = 0 := by
+    have hReal := congrArg Complex.re hComplexSum
+    simpa [map_sum, Complex.mul_re, Complex.normSq] using hReal
+  have hCoordinate :
+      Complex.normSq (operator observed row prepared) = 0 :=
+    (Finset.sum_eq_zero_iff_of_nonneg
+      (fun index _ => Complex.normSq_nonneg
+        (operator observed index prepared))).mp hRealSum row
+      (Finset.mem_univ row)
+  exact Complex.normSq_eq_zero.mp hCoordinate
+
 /-- **Operational rigidity.**  It is enough to prohibit false child
 responses.  If a definite successor never triggers a different outcome and
 unresolved amplitudes recombine coherently to the identity, then the output
@@ -164,6 +226,18 @@ theorem outcomeExclusive_coherent_unique {outcomes : ℕ}
     simpa [causalOutcomeProjector, computationalProj] using hEntry
   · rw [hExclusive outcome column row (fun h => hColumn h.symm)]
     simp [causalOutcomeProjector, computationalProj, hColumn]
+
+/-- **Born/coherence rigidity.**  Exact native Born effects and coherent
+conservation alone force the sharp resolution operators.  The support and
+nondemolition properties are both consequences. -/
+theorem sharpOutcomeEffect_coherent_unique {outcomes : ℕ}
+    (operator : Fin outcomes → SquareMatrix outcomes)
+    (hSharp : HasSharpOutcomeEffect operator)
+    (hCoherent : ∑ outcome, operator outcome =
+      (1 : SquareMatrix outcomes)) :
+    operator = causalOutcomeProjector outcomes :=
+  outcomeExclusive_coherent_unique operator
+    (sharpOutcomeEffect_implies_exclusive hSharp) hCoherent
 
 /-- Exclusive response plus coherent conservation derives the original
 two-sided locality postulate rather than requiring it independently. -/
@@ -532,14 +606,24 @@ theorem nativeCausalResolution_nontrivial_of_branching (n : ℕ)
 
 /-! ## 5. Capstone and axiom audit -/
 
-/-- The strengthened candidate law in one statement: exclusive response and
-coherent conservation force sharp successor projectors; record sufficiency
-and nondemolition independently force their channel; the resulting all-rank
-law is CPTP and exact native-record dephasing. -/
+/-- The strengthened candidate law in one statement: exact child Born effects
+derive exclusive response and, with coherent conservation, force sharp
+successor projectors; record sufficiency and nondemolition independently
+force their channel; the resulting all-rank law is CPTP and exact
+native-record dephasing. -/
 theorem causalNativeResolutionLaw_capstone :
     (∀ (outcomes : ℕ)
       (operator : Fin outcomes → SquareMatrix outcomes),
-      IsOutcomeExclusive operator →
+      HasSharpOutcomeEffect operator →
+      IsOutcomeExclusive operator) ∧
+    (∀ (outcomes : ℕ)
+      (operator : Fin outcomes → SquareMatrix outcomes),
+      HasSharpOutcomeEffect operator →
+      (∑ outcome, (operator outcome)ᴴ * operator outcome) =
+        (1 : SquareMatrix outcomes)) ∧
+    (∀ (outcomes : ℕ)
+      (operator : Fin outcomes → SquareMatrix outcomes),
+      HasSharpOutcomeEffect operator →
       (∑ outcome, operator outcome) = (1 : SquareMatrix outcomes) →
       operator = causalOutcomeProjector outcomes) ∧
     (∀ (outcomes : ℕ)
@@ -558,11 +642,16 @@ theorem causalNativeResolutionLaw_capstone :
         (NativeCausalResolutionDimension n pathPrefix)),
       (nativeCausalResolutionInstrument n pathPrefix).apply density =
         dephase density) := by
-  exact ⟨fun _ _ => outcomeExclusive_coherent_unique _,
+  exact ⟨fun _ _ => sharpOutcomeEffect_implies_exclusive,
+    fun _ _ => sharpOutcomeEffect_bornComplete,
+    fun _ _ => sharpOutcomeEffect_coherent_unique _,
     fun _ _ => causalResolution_unique_of_recordPrinciples _,
     nativeCausalResolutionInstrument_isCPTP,
     nativeCausalResolutionInstrument_apply_eq_dephase⟩
 
+#print axioms sharpOutcomeEffect_implies_exclusive
+#print axioms sharpOutcomeEffect_bornComplete
+#print axioms sharpOutcomeEffect_coherent_unique
 #print axioms outcomeExclusive_coherent_unique
 #print axioms outcomeExclusive_coherent_implies_local
 #print axioms outcomeLocal_coherent_unique
