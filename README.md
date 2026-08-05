@@ -762,9 +762,26 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
   real part drives the gamma-five projector. Every finite atlas history thus
   yields either the standard nontrivial purely left charged-current vertex or
   its right-handed mirror. This is a finite algebraic bridge; it does not yet
-  derive a continuum Dirac field, the weak coupling, an absolute sector, or a
-  physical identification between the eight-birth prefix and a nontrivial
-  atlas loop.
+  derive a continuum Dirac field, the weak coupling, or an absolute sector.
+  `KFCausalCSpecPhysicalGrowthRealization.lean` closes the finite existence
+  bridge by proving the general theorem that every finite causal order admits
+  a topological sequence of legal maximal births. Applied to the native
+  140-event global CSpec atlas, this constructs a physical unlabeled growth
+  history with nonzero amplitude under the uniform growth law whose endpoint
+  has the witnessed full-`S_3` holonomy and contains a native Boolean-cube
+  seed. This proves that sequential growth supports the determinant sector;
+  it does not prove that the earlier rank-eight cube path uniquely determines
+  this atlas, or that physical dynamics selects or dominates this history.
+  `KFCausalCSpecContinuumChiralityQualification.lean` then gives the strongest
+  currently justified continuum statement: the determinant-selected vertex
+  lifts pointwise to a nontrivial chiral field on any nonempty base, any
+  order-faithful embedding intertwines causal reversal, and an
+  orientation-odd continuum functional flips sign in 3+1 dimensions. The
+  module also constructs an orientation-even constant functional, proving
+  that orientation oddness is an additional continuum datum rather than a
+  consequence of the finite causet. A Lorentzian spin bundle, Dirac dynamics,
+  continuum limit, coupling normalization, and physical weak-current
+  observable therefore remain open.
   The same module constructs the forced eigenbasis alternative. For the actual
   convention `D_y=[[1/2,iy],[-iy,1/2]]`, the eigenkets are proportional to
   `(1,+i)` and `(1,-i)`. Pinching by their chirality projectors is CPTP and

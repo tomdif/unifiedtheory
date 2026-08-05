@@ -5573,6 +5573,20 @@ import UnifiedTheory.Audit.KFCausalRegularPhaseEntry
 -- or its right mirror.  This is a finite algebraic identification, not a
 -- continuum Lorentzian-field or absolute-vacuum-selection theorem.
 import UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
+-- Every finite causal poset is reachable by a topological sequence of maximal
+-- births.  Instantiating that theorem on the native 140-event global CSpec
+-- atlas gives a physical unlabeled history with nonzero amplitude under the
+-- uniform growth law; its endpoint therefore realizes the full-S3 determinant
+-- sector inside sequential growth.  This is existence, not dynamical
+-- dominance or a claim that the rank-eight seed alone determines the atlas.
+import UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
+-- The finite determinant-selected weak vertex lifts pointwise to a chiral
+-- field on any nonempty target base, and order reversal is respected by any
+-- order embedding.  A 3+1-dimensional continuum sign flip additionally
+-- requires an orientation-odd integral; an explicit constant functional
+-- proves that this datum is not automatic.  Thus this is a qualified bridge,
+-- not a derived Lorentzian Dirac continuum limit.
+import UnifiedTheory.Audit.KFCausalCSpecContinuumChiralityQualification
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

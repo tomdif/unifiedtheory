@@ -995,9 +995,26 @@
 > nontrivial purely left charged-current vertex or its nontrivial right mirror.
 > The trivial/even sector is left in the fixed convention and the witnessed odd
 > loop is the right mirror. No independent `Xi` input remains in this finite
-> map. A continuum Lorentzian Dirac-field limit, coupling normalization, the
-> identification of the physical prefix path with a nontrivial atlas loop, and
-> absolute vacuum-sector selection remain open.
+> map. `KFCausalCSpecPhysicalGrowthRealization.lean` proves a stronger and more
+> honest finite bridge than identifying the earlier eight-event path by fiat:
+> every finite causal order has a linear extension whose initial segments are
+> legal maximal-element births. The native 140-event global CSpec atlas is
+> therefore the endpoint of an actual physical unlabeled growth history, that
+> history has nonzero uniform-law amplitude, and the endpoint contains a native
+> Boolean-cube seed while retaining the witnessed full-`S_3` determinant
+> sector. This is an existence/support theorem. It does not show that the
+> rank-eight path alone determines the atlas, nor that the uniform or harmonic
+> dynamics preferentially selects this endpoint.
+> `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
+> continuum assumptions. The finite weak vertex has an exact pointwise lift to
+> a nontrivial chiral field on any nonempty base, and every order embedding
+> transports order reversal. In 3+1 dimensions the existing continuum term
+> flips under time reversal only when its integral is supplied as
+> orientation-odd. An explicit constant functional is orientation-even, so
+> orientation oddness is not derivable from an arbitrary continuum functional.
+> A Lorentzian spin bundle, Dirac equation and action, continuum convergence,
+> weak-coupling normalization, and absolute vacuum-sector selection remain
+> open.
 > `KFCausalSetChiralityChargePartitionNoGo.lean` checks the missing probability
 > license at the first nontrivial rank and returns a no-go. The three charges
 > above the two-antichain are distinct, yet both ordered threshold cuts have
