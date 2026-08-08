@@ -1,0 +1,11 @@
+{
+  "date": "2026-08-08",
+  "status": "pass",
+  "model": "facebook/dinov2-base",
+  "device": "NVIDIA GeForce RTX 4090",
+  "input_images": 5,
+  "output_shape": [5, 1536],
+  "output_dtype": "torch.float32",
+  "mean_l2_norm": 63.10221481323242,
+  "hf_cache": "/workspace/hf_cache"
+}

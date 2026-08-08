@@ -1,0 +1,35 @@
+{
+  "date": "2026-08-08",
+  "device": "NVIDIA GeForce RTX 4090",
+  "shape": {
+    "batch": 8,
+    "series": 8,
+    "slices": 64,
+    "feature_dim": 1536
+  },
+  "iterations": 30,
+  "results": [
+    {
+      "aggregator": "mean",
+      "parameters": 2052620,
+      "milliseconds_per_batch": 2.242200573285421,
+      "studies_per_second": 3567.9234477573386,
+      "peak_allocated_gib": 0.07802677154541016
+    },
+    {
+      "aggregator": "index_alibi",
+      "parameters": 3565836,
+      "milliseconds_per_batch": 3.478171986838182,
+      "studies_per_second": 2300.058775205181,
+      "peak_allocated_gib": 0.08648061752319336
+    },
+    {
+      "aggregator": "physical_alibi",
+      "parameters": 3565836,
+      "milliseconds_per_batch": 4.653775629897912,
+      "studies_per_second": 1719.0343145476252,
+      "peak_allocated_gib": 0.08648061752319336
+    }
+  ],
+  "scope": "Synthetic cached-feature inference only; excludes DINO encoding and DICOM I/O."
+}
