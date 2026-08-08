@@ -1,0 +1,184 @@
+{
+  "status": "ALiBi relative-position control",
+  "dataset": {
+    "train": {
+      "url": "https://raw.githubusercontent.com/pytorch/examples/main/word_language_model/data/wikitext-2/train.txt",
+      "bytes": 10797148,
+      "sha256": "9e9fa1ad55b1c2c95b08e37dd8e653f638fac2c6de904b79e813611eefbc985f"
+    },
+    "valid": {
+      "url": "https://raw.githubusercontent.com/pytorch/examples/main/word_language_model/data/wikitext-2/valid.txt",
+      "bytes": 1121681,
+      "sha256": "f0737ed31fc1329026e95cb8b98e19c2a182c39c240ab909dc31abf2f8af58e8"
+    },
+    "test": {
+      "url": "https://raw.githubusercontent.com/pytorch/examples/main/word_language_model/data/wikitext-2/test.txt",
+      "bytes": 1256449,
+      "sha256": "d790b833ef8cf03a90db7bf1271b7520b83c45ce07ba3c1a9699df81e239eca0"
+    }
+  },
+  "protocol": {
+    "seeds": 2,
+    "steps": 3000,
+    "batch": 64,
+    "eval_batch": 16,
+    "eval_bytes": 524288,
+    "smoke": false
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "model": "alibi_transformer",
+      "parameters": 133568,
+      "training": {
+        "seconds": 45.91654831729829,
+        "tokens": 24576000,
+        "tokens_per_second": 535231.8695685016,
+        "peak_mib": 206.31982421875,
+        "trace": [
+          {
+            "step": 1,
+            "loss_nats": 5.7217559814453125,
+            "bpc": 8.254748979607916
+          },
+          {
+            "step": 751,
+            "loss_nats": 1.7703739404678345,
+            "bpc": 2.554109704431998
+          },
+          {
+            "step": 1501,
+            "loss_nats": 1.6678532361984253,
+            "bpc": 2.406203592794077
+          },
+          {
+            "step": 2251,
+            "loss_nats": 1.551352858543396,
+            "bpc": 2.238129075689475
+          },
+          {
+            "step": 3000,
+            "loss_nats": 1.560116171836853,
+            "bpc": 2.250771864319702
+          }
+        ]
+      },
+      "evaluation": {
+        "valid": {
+          "context_128": {
+            "nats_per_byte": 1.4721565661020577,
+            "bits_per_byte": 2.123872977327564,
+            "bytes": 524288
+          },
+          "context_256": {
+            "nats_per_byte": 1.4621843416243792,
+            "bits_per_byte": 2.1094860985269857,
+            "bytes": 524288
+          },
+          "context_512": {
+            "nats_per_byte": 1.5017914604395628,
+            "bits_per_byte": 2.1666270924255513,
+            "bytes": 524288
+          }
+        },
+        "test": {
+          "context_128": {
+            "nats_per_byte": 1.463420262094587,
+            "bits_per_byte": 2.1112691548602878,
+            "bytes": 524288
+          },
+          "context_256": {
+            "nats_per_byte": 1.4530285224318504,
+            "bits_per_byte": 2.0962770435826488,
+            "bytes": 524288
+          },
+          "context_512": {
+            "nats_per_byte": 1.4923181049525738,
+            "bits_per_byte": 2.152959929443894,
+            "bytes": 524288
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "model": "alibi_transformer",
+      "parameters": 133568,
+      "training": {
+        "seconds": 45.359378976747394,
+        "tokens": 24576000,
+        "tokens_per_second": 541806.3596637513,
+        "peak_mib": 205.31982421875,
+        "trace": [
+          {
+            "step": 1,
+            "loss_nats": 5.757238388061523,
+            "bpc": 8.30593927167193
+          },
+          {
+            "step": 751,
+            "loss_nats": 1.8020226955413818,
+            "bpc": 2.599769206426914
+          },
+          {
+            "step": 1501,
+            "loss_nats": 1.6416999101638794,
+            "bpc": 2.3684723190212855
+          },
+          {
+            "step": 2251,
+            "loss_nats": 1.5680047273635864,
+            "bpc": 2.262152644257897
+          },
+          {
+            "step": 3000,
+            "loss_nats": 1.5399036407470703,
+            "bpc": 2.2216113459526583
+          }
+        ]
+      },
+      "evaluation": {
+        "valid": {
+          "context_128": {
+            "nats_per_byte": 1.4748786613345146,
+            "bits_per_byte": 2.1278001306202574,
+            "bytes": 524288
+          },
+          "context_256": {
+            "nats_per_byte": 1.4647107310593128,
+            "bits_per_byte": 2.1131309080361187,
+            "bytes": 524288
+          },
+          "context_512": {
+            "nats_per_byte": 1.5025457553565502,
+            "bits_per_byte": 2.1677153099616566,
+            "bytes": 524288
+          }
+        },
+        "test": {
+          "context_128": {
+            "nats_per_byte": 1.465431556571275,
+            "bits_per_byte": 2.114170839427573,
+            "bytes": 524288
+          },
+          "context_256": {
+            "nats_per_byte": 1.4554361887276173,
+            "bits_per_byte": 2.0997505718076668,
+            "bytes": 524288
+          },
+          "context_512": {
+            "nats_per_byte": 1.4930224996060133,
+            "bits_per_byte": 2.1539761561172397,
+            "bytes": 524288
+          }
+        }
+      }
+    }
+  ],
+  "means": {
+    "test_bpc_128": 2.1127199971439303,
+    "test_bpc_256": 2.0980138076951578,
+    "test_bpc_512": 2.153468042780567,
+    "tokens_per_second": 538519.1146161265
+  }
+}
