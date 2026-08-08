@@ -46,6 +46,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--max-slices", type=int, default=64)
+    parser.add_argument(
+        "--patch-grid",
+        type=int,
+        default=0,
+        help="also cache an NxN grid of DINO patch tokens per slice; 4 is a practical stage-two value",
+    )
     parser.add_argument("--crop-mm", type=float, default=160.0)
     parser.add_argument("--limit-studies", type=int, default=0)
     parser.add_argument("--overwrite", action="store_true")
@@ -217,7 +223,24 @@ class DinoFeatureExtractor:
 
     @torch.inference_mode()
     def encode(self, images: Sequence[np.ndarray]) -> torch.Tensor:
+        summary, _ = self._encode(images, patch_grid=0)
+        return summary
+
+    @torch.inference_mode()
+    def encode_with_patches(
+        self, images: Sequence[np.ndarray], patch_grid: int
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        if patch_grid < 1:
+            raise ValueError("patch_grid must be positive")
+        summary, patches = self._encode(images, patch_grid=patch_grid)
+        assert patches is not None
+        return summary, patches
+
+    def _encode(
+        self, images: Sequence[np.ndarray], patch_grid: int
+    ) -> tuple[torch.Tensor, torch.Tensor | None]:
         features: list[torch.Tensor] = []
+        patch_features: list[torch.Tensor] = []
         amp = self.device.type == "cuda"
         for start in range(0, len(images), self.batch_size):
             batch_images = images[start : start + self.batch_size]
@@ -230,7 +253,23 @@ class DinoFeatureExtractor:
             patches = hidden[:, patch_start:]
             pooled = patches.mean(dim=1) if patches.shape[1] else hidden[:, 1:].mean(dim=1)
             features.append(torch.cat([cls, pooled], dim=-1).float().cpu())
-        return torch.cat(features, dim=0)
+            if patch_grid:
+                side = int(round(math.sqrt(patches.shape[1])))
+                if side * side != patches.shape[1]:
+                    raise ValueError(
+                        f"cannot form a square DINO patch grid from {patches.shape[1]} tokens"
+                    )
+                spatial = patches.transpose(1, 2).reshape(
+                    patches.shape[0], patches.shape[2], side, side
+                )
+                compact = torch.nn.functional.adaptive_avg_pool2d(
+                    spatial.float(), (patch_grid, patch_grid)
+                )
+                compact = compact.flatten(2).transpose(1, 2).cpu()
+                patch_features.append(compact)
+        return torch.cat(features, dim=0), (
+            torch.cat(patch_features, dim=0) if patch_features else None
+        )
 
 
 def _series_paths(root: Path, split: str, study_uid: str, series_uid: str) -> list[Path]:
@@ -255,9 +294,11 @@ def extract_study(
     extractor: DinoFeatureExtractor,
     max_slices: int,
     crop_mm: float,
+    patch_grid: int,
 ) -> tuple[dict[str, torch.Tensor], dict[str, Any]]:
     series_features: list[torch.Tensor] = []
     series_positions: list[torch.Tensor] = []
+    series_patch_features: list[torch.Tensor] = []
     planes: list[int] = []
     fluids: list[int] = []
     fatsats: list[int] = []
@@ -277,7 +318,12 @@ def extract_study(
         images, selected_positions = prepare_25d_images(
             datasets, positions, plane, max_slices, crop_mm
         )
-        series_features.append(extractor.encode(images))
+        if patch_grid:
+            summary, patches = extractor.encode_with_patches(images, patch_grid)
+            series_features.append(summary)
+            series_patch_features.append(patches)
+        else:
+            series_features.append(extractor.encode(images))
         series_positions.append(torch.from_numpy(selected_positions))
         planes.append(plane)
         fluids.append(_tristate(row.get("Fluid_Sensitive")))
@@ -306,12 +352,35 @@ def extract_study(
         "fluid": torch.tensor(fluids, dtype=torch.long),
         "fatsat": torch.tensor(fatsats, dtype=torch.long),
     }
+    patch_dim = 0
+    patches_per_slice = 0
+    if series_patch_features:
+        patches_per_slice = int(series_patch_features[0].shape[1])
+        patch_dim = int(series_patch_features[0].shape[2])
+        patch_features = torch.zeros(
+            n_series,
+            max_length,
+            patches_per_slice,
+            patch_dim,
+            dtype=torch.float16,
+        )
+        patch_mask = torch.zeros(
+            n_series, max_length, patches_per_slice, dtype=torch.bool
+        )
+        for index, patch in enumerate(series_patch_features):
+            length = patch.shape[0]
+            patch_features[index, :length] = patch.half()
+            patch_mask[index, :length] = True
+        payload["patch_features"] = patch_features
+        payload["patch_mask"] = patch_mask
     manufacturer = _safe_text(getattr(header0, "Manufacturer", "unknown"), "unknown")
     model = _safe_text(getattr(header0, "ManufacturerModelName", "unknown"), "unknown")
     field = _safe_text(getattr(header0, "MagneticFieldStrength", "unknown"), "unknown")
     metadata = {
         "n_series": n_series,
         "feature_dim": int(feature_dim),
+        "patch_dim": patch_dim,
+        "patches_per_slice": patches_per_slice,
         "manufacturer": manufacturer,
         "scanner_model": model,
         "field_strength": field,
@@ -345,6 +414,10 @@ def main() -> None:
             metadata = {
                 "n_series": int(payload["series_mask"].sum()),
                 "feature_dim": int(payload["features"].shape[-1]),
+                "patch_dim": int(payload.get("patch_features", torch.empty(0, 0, 0, 0)).shape[-1]),
+                "patches_per_slice": int(
+                    payload.get("patch_features", torch.empty(0, 0, 0, 0)).shape[-2]
+                ),
                 "manufacturer": "cached",
                 "scanner_model": "cached",
                 "field_strength": "cached",
@@ -358,6 +431,7 @@ def main() -> None:
                 extractor,
                 args.max_slices,
                 args.crop_mm,
+                args.patch_grid,
             )
             torch.save(payload, cache_path)
         records.append(

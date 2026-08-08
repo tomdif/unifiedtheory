@@ -33,6 +33,7 @@ def main() -> None:
             uid = f"1.2.840.synthetic.{study}"
             n_series = 2 + study % 2
             features = torch.randn(n_series, 5, 8, generator=generator)
+            patch_features = torch.randn(n_series, 5, 4, 4, generator=generator)
             # Install a simple image signal so the training path is not purely
             # random while retaining all 12 independent output heads.
             features[..., 0] += 1.5 * (study % 2)
@@ -41,6 +42,8 @@ def main() -> None:
                 {
                     "schema_version": torch.tensor(CACHE_SCHEMA_VERSION),
                     "features": features.half(),
+                    "patch_features": patch_features.half(),
+                    "patch_mask": torch.ones(n_series, 5, 4, dtype=torch.bool),
                     "positions_mm": torch.arange(5).float()[None, :].expand(n_series, -1),
                     "slice_mask": torch.ones(n_series, 5, dtype=torch.bool),
                     "series_mask": torch.ones(n_series, dtype=torch.bool),
@@ -114,6 +117,19 @@ def main() -> None:
         checkpoint = run_dir / "physical_alibi_fold0.pt"
         if not checkpoint.exists():
             raise AssertionError("training did not produce a checkpoint")
+        patch_train_command = [
+            *train_command,
+            "--model-type",
+            "patch",
+            "--series-dropout",
+            "0",
+            "--token-adapter-bottleneck",
+            "4",
+        ]
+        subprocess.run(patch_train_command, check=True, capture_output=True, text=True)
+        patch_checkpoint = run_dir / "patch_physical_alibi_fold0.pt"
+        if not patch_checkpoint.exists():
+            raise AssertionError("patch training did not produce a checkpoint")
 
         submission = root / "submission.csv"
         infer_command = [
@@ -125,6 +141,7 @@ def main() -> None:
             str(sample_path),
             "--checkpoints",
             str(checkpoint),
+            str(patch_checkpoint),
             "--output",
             str(submission),
             "--batch-size",
@@ -140,6 +157,46 @@ def main() -> None:
             raise AssertionError("submission schema or row count is wrong")
         if result[TARGETS].isna().any().any():
             raise AssertionError("inference emitted missing predictions")
+        blend_path = root / "blend.json"
+        blend_path.write_text(
+            json.dumps(
+                {
+                    "members": ["summary", "patch"],
+                    "weights": {target: [0.5, 0.5] for target in TARGETS},
+                }
+            )
+        )
+        blended_submission = root / "blended_submission.csv"
+        subprocess.run(
+            [
+                sys.executable,
+                str(here / "ensemble_infer.py"),
+                "--cache-index",
+                str(index_path),
+                "--sample-submission",
+                str(sample_path),
+                "--blend",
+                str(blend_path),
+                "--member",
+                f"summary={checkpoint}",
+                "--member",
+                f"patch={patch_checkpoint}",
+                "--output",
+                str(blended_submission),
+                "--batch-size",
+                "6",
+                "--workers",
+                "0",
+                "--device",
+                "cpu",
+            ],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        blended = pd.read_csv(blended_submission)
+        if blended.shape != result.shape or blended[TARGETS].isna().any().any():
+            raise AssertionError("OOF-fitted ensemble inference failed")
         print(
             json.dumps(
                 {
@@ -147,7 +204,9 @@ def main() -> None:
                     "studies": 18,
                     "targets": len(TARGETS),
                     "checkpoint_bytes": checkpoint.stat().st_size,
+                    "patch_checkpoint_bytes": patch_checkpoint.stat().st_size,
                     "submission_shape": list(result.shape),
+                    "blended_submission_shape": list(blended.shape),
                 },
                 indent=2,
             )

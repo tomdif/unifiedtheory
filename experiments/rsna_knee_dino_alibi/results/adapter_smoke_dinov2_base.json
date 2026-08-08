@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "model": "facebook/dinov2-base",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "logit_shape": [1, 3],
+  "seed": 2026,
+  "loss": 0.6619268655776978,
+  "adapter_gradient_tensors": 6,
+  "parameter_report": {
+    "backbone_trainable": 0,
+    "adapter_trainable": 51488,
+    "hierarchy_trainable": 104739,
+    "total_trainable": 156227
+  }
+}

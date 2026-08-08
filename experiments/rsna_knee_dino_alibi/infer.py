@@ -14,12 +14,20 @@ from torch.utils.data import DataLoader
 
 try:
     from .constants import TARGETS
-    from .data import FeatureStudyDataset, collate_studies, model_inputs, move_batch
+    from .data import (
+        FeatureStudyDataset,
+        collate_studies,
+        model_inputs,
+        move_batch,
+        patch_model_inputs,
+    )
     from .model import KneeAlibiModel, KneeModelConfig
+    from .patch_model import PatchKneeAlibiModel, PatchKneeModelConfig
 except ImportError:
     from constants import TARGETS
-    from data import FeatureStudyDataset, collate_studies, model_inputs, move_batch
+    from data import FeatureStudyDataset, collate_studies, model_inputs, move_batch, patch_model_inputs
     from model import KneeAlibiModel, KneeModelConfig
+    from patch_model import PatchKneeAlibiModel, PatchKneeModelConfig
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,7 +61,11 @@ def predict_checkpoint(
         checkpoint = torch.load(checkpoint_path, map_location="cpu")
     if checkpoint.get("targets") != TARGETS:
         raise ValueError(f"target order mismatch in {checkpoint_path}")
-    model = KneeAlibiModel(KneeModelConfig(**checkpoint["model_config"]))
+    model_type = checkpoint.get("model_type", "summary")
+    if model_type == "patch":
+        model = PatchKneeAlibiModel(PatchKneeModelConfig(**checkpoint["model_config"]))
+    else:
+        model = KneeAlibiModel(KneeModelConfig(**checkpoint["model_config"]))
     model.load_state_dict(checkpoint["model"])
     model.to(device).eval()
     probabilities: list[np.ndarray] = []
@@ -61,7 +73,8 @@ def predict_checkpoint(
     for batch in loader:
         uids.extend(batch["uid"])
         batch = move_batch(batch, device)
-        logits = model(**model_inputs(batch))
+        inputs = patch_model_inputs(batch) if model_type == "patch" else model_inputs(batch)
+        logits = model(**inputs)
         probabilities.append(torch.sigmoid(logits).float().cpu().numpy())
     return uids, np.concatenate(probabilities)
 

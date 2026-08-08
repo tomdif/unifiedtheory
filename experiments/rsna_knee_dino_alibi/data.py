@@ -77,6 +77,7 @@ class FeatureStudyDataset(Dataset[Dict[str, Any]]):
         labels = []
         confidence = []
         label_mask = []
+        gold_mask = []
         for target in self.targets:
             value = row.get(target, np.nan)
             valid = not pd.isna(value)
@@ -84,9 +85,12 @@ class FeatureStudyDataset(Dataset[Dict[str, Any]]):
             label_mask.append(valid)
             conf_value = row.get(f"{target}__conf", 1.0)
             confidence.append(float(conf_value) if valid and not pd.isna(conf_value) else 0.0)
+            gold_value = row.get(f"{target}__gold", 1.0 if valid else 0.0)
+            gold_mask.append(bool(gold_value) if not pd.isna(gold_value) else False)
         item["labels"] = torch.tensor(labels, dtype=torch.float32)
         item["confidence"] = torch.tensor(confidence, dtype=torch.float32)
         item["label_mask"] = torch.tensor(label_mask, dtype=torch.bool)
+        item["gold_mask"] = torch.tensor(gold_mask, dtype=torch.bool)
 
         if self.report_embedding_dir is not None:
             report_path = self.report_embedding_dir / f"{uid}.pt"
@@ -123,6 +127,30 @@ def collate_studies(items: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     plane = torch.zeros(batch, max_series, dtype=torch.long)
     fluid = torch.zeros(batch, max_series, dtype=torch.long)
     fatsat = torch.zeros(batch, max_series, dtype=torch.long)
+    has_patches = ["patch_features" in item for item in items]
+    if any(has_patches) and not all(has_patches):
+        raise ValueError("cannot mix summary-only and patch-token caches in one batch")
+    patch_features = None
+    patch_mask = None
+    if all(has_patches):
+        patches_per_slice = int(items[0]["patch_features"].shape[2])
+        patch_dim = int(items[0]["patch_features"].shape[3])
+        if any(
+            item["patch_features"].shape[2:] != (patches_per_slice, patch_dim)
+            for item in items
+        ):
+            raise ValueError("mixed patch grid or feature dimensions")
+        patch_features = torch.zeros(
+            batch,
+            max_series,
+            max_slices,
+            patches_per_slice,
+            patch_dim,
+            dtype=torch.float32,
+        )
+        patch_mask = torch.zeros(
+            batch, max_series, max_slices, patches_per_slice, dtype=torch.bool
+        )
 
     for b, item in enumerate(items):
         r, s, _ = item["features"].shape
@@ -133,6 +161,9 @@ def collate_studies(items: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         plane[b, :r] = item["plane"].long()
         fluid[b, :r] = item["fluid"].long()
         fatsat[b, :r] = item["fatsat"].long()
+        if patch_features is not None and patch_mask is not None:
+            patch_features[b, :r, :s] = item["patch_features"].float()
+            patch_mask[b, :r, :s] = item["patch_mask"].bool()
 
     out: Dict[str, Any] = {
         "features": features,
@@ -145,8 +176,12 @@ def collate_studies(items: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "labels": torch.stack([item["labels"] for item in items]),
         "confidence": torch.stack([item["confidence"] for item in items]),
         "label_mask": torch.stack([item["label_mask"] for item in items]),
+        "gold_mask": torch.stack([item["gold_mask"] for item in items]),
         "uid": [item["uid"] for item in items],
     }
+    if patch_features is not None and patch_mask is not None:
+        out["patch_features"] = patch_features
+        out["patch_mask"] = patch_mask
     if any("report_mask" in item for item in items):
         present = [bool(item.get("report_mask", False)) for item in items]
         if any(present):
@@ -182,6 +217,13 @@ def model_inputs(batch: Mapping[str, Any]) -> Dict[str, Tensor]:
         "fatsat",
     )
     return {key: batch[key] for key in keys}
+
+
+def patch_model_inputs(batch: Mapping[str, Any]) -> Dict[str, Tensor]:
+    values = model_inputs(batch)
+    values["patch_features"] = batch["patch_features"]
+    values["patch_mask"] = batch["patch_mask"]
+    return values
 
 
 def merge_cache_and_labels(

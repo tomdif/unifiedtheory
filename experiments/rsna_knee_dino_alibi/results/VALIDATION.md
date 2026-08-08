@@ -39,6 +39,39 @@ at 0.0865 GiB allocated. This excludes DINO and DICOM I/O. See
 ALiBi fold over all 12 targets, reloaded the 45,451-byte checkpoint, ran rank
 ensemble inference, and emitted a complete 18 x 13 submission table.
 
+The expanded integration also trained and reloaded the target-specific patch
+hierarchy with a zero-initialized cached token adapter (52,053-byte smoke
+checkpoint), and exercised OOF-fitted rank-ensemble inference.
+
+## Weak supervision and fold audit
+
+`python stage2_smoke.py` passed the following structural checks:
+
+| Check | Result |
+|---|---:|
+| report positive / uncertain / negative | 0.93 / 0.55 / 0.06 |
+| scanner groups split across folds | 0 |
+| patch permutation max error | 4.47e-8 |
+| physical slice permutation max error | 2.98e-8 |
+| patch+adapter tiny overfit loss | 0.6975 -> 0.0041 |
+
+Checkpoint selection now uses gold validation masks rather than scoring the
+weak report teacher against itself.
+
+## OOF ensemble audit
+
+`python ensemble_smoke.py` used three held-out folds and two synthetic model
+families whose usefulness alternated by target. Target-wise convex rank
+stacking selected the correct member for all 12 targets and achieved 0.9022
+nested OOF macro AUC. `pipeline_smoke.py` separately exercised the fitted-blend
+submission path.
+
+## Real adapter test
+
+On the RTX 4090, the end-to-end `facebook/dinov2-base` adapter completed a CUDA
+forward/backward pass. All frozen backbone parameters remained gradient-free;
+six adapter tensors received gradients. See `adapter_smoke_dinov2_base.json`.
+
 ## Unexecuted boundary
 
 No competition data were present on the RunPod volume. Therefore no real

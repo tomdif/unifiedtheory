@@ -25,8 +25,10 @@ try:
         merge_cache_and_labels,
         model_inputs,
         move_batch,
+        patch_model_inputs,
     )
     from .model import KneeAlibiModel, KneeModelConfig
+    from .patch_model import PatchKneeAlibiModel, PatchKneeModelConfig
 except ImportError:
     from constants import TARGETS
     from data import (
@@ -36,8 +38,10 @@ except ImportError:
         merge_cache_and_labels,
         model_inputs,
         move_batch,
+        patch_model_inputs,
     )
     from model import KneeAlibiModel, KneeModelConfig
+    from patch_model import PatchKneeAlibiModel, PatchKneeModelConfig
 
 
 def parse_args() -> argparse.Namespace:
@@ -48,6 +52,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--aggregator", choices=("mean", "index_alibi", "physical_alibi"), default="physical_alibi"
     )
+    parser.add_argument("--model-type", choices=("summary", "patch"), default="summary")
     parser.add_argument("--fold", type=int, default=0)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--fold-column", default="fold")
@@ -64,6 +69,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--weight-decay", type=float, default=1e-3)
     parser.add_argument("--rank-weight", type=float, default=0.1)
+    parser.add_argument("--gold-weight", type=float, default=8.0)
+    parser.add_argument("--series-dropout", type=float, default=0.15)
+    parser.add_argument(
+        "--token-adapter-bottleneck",
+        type=int,
+        default=0,
+        help="cached DINO token-space adapter; 64 is the stage-two default experiment",
+    )
     parser.add_argument("--report-weight", type=float, default=0.0)
     parser.add_argument("--report-embeddings", type=Path)
     parser.add_argument("--workers", type=int, default=4)
@@ -202,25 +215,44 @@ def make_loader(
     )
 
 
+def inputs_for_model(batch: Dict[str, Any], model_type: str) -> Dict[str, Tensor]:
+    return patch_model_inputs(batch) if model_type == "patch" else model_inputs(batch)
+
+
 @torch.inference_mode()
-def evaluate(model: KneeAlibiModel, loader: DataLoader, device: torch.device) -> Dict[str, Any]:
+def evaluate(
+    model: KneeAlibiModel | PatchKneeAlibiModel,
+    loader: DataLoader,
+    device: torch.device,
+    model_type: str,
+) -> Dict[str, Any]:
     model.eval()
     logits_all: list[np.ndarray] = []
     labels_all: list[np.ndarray] = []
     masks_all: list[np.ndarray] = []
+    gold_masks_all: list[np.ndarray] = []
     uids: list[str] = []
     for batch in loader:
         uids.extend(batch["uid"])
         batch = move_batch(batch, device)
-        logits = model(**model_inputs(batch))
+        logits = model(**inputs_for_model(batch, model_type))
         logits_all.append(logits.float().cpu().numpy())
         labels_all.append(batch["labels"].cpu().numpy())
         masks_all.append(batch["label_mask"].cpu().numpy())
+        gold_masks_all.append(batch["gold_mask"].cpu().numpy())
     logits = np.concatenate(logits_all)
     labels = np.concatenate(labels_all)
     masks = np.concatenate(masks_all)
+    gold_masks = np.concatenate(gold_masks_all)
     probabilities = 1 / (1 + np.exp(-np.clip(logits, -30, 30)))
-    score, per_target = macro_auc(labels, probabilities, masks)
+    # Weak report targets are useful training supervision but cannot be used to
+    # select checkpoints. If weak labels are present anywhere, every target is
+    # scored only on its expert subset; a one-class gold fold becomes NaN and is
+    # omitted from the macro average rather than falling back to its teacher.
+    evaluation_mask = masks.copy()
+    if np.any(masks.astype(bool) & ~gold_masks.astype(bool)):
+        evaluation_mask = masks.astype(bool) & gold_masks.astype(bool)
+    score, per_target = macro_auc(labels, probabilities, evaluation_mask)
     return {
         "macro_auc": score,
         "per_target_auc": dict(zip(TARGETS, per_target)),
@@ -229,6 +261,7 @@ def evaluate(model: KneeAlibiModel, loader: DataLoader, device: torch.device) ->
         "probabilities": probabilities,
         "labels": labels,
         "masks": masks,
+        "evaluation_masks": evaluation_mask,
     }
 
 
@@ -267,19 +300,42 @@ def main() -> None:
             report = report["embedding"]
         report_dim = int(torch.as_tensor(report).numel())
 
-    config = KneeModelConfig(
-        feature_dim=feature_dim,
-        hidden_dim=args.hidden_dim,
-        n_heads=args.heads,
-        series_depth=args.series_depth,
-        study_depth=args.study_depth,
-        dropout=args.dropout,
-        aggregator=args.aggregator,
-        num_targets=len(TARGETS),
-        report_dim=report_dim,
-    )
+    if args.model_type == "patch":
+        if "patch_features" not in example:
+            raise ValueError("--model-type patch requires caches extracted with --patch-grid")
+        if args.aggregator == "mean":
+            raise ValueError("patch model does not implement the mean-pooling control")
+        if args.report_weight:
+            raise ValueError("report embedding contrastive loss is currently summary-model only")
+        config = PatchKneeModelConfig(
+            feature_dim=feature_dim,
+            patch_dim=int(example["patch_features"].shape[-1]),
+            hidden_dim=args.hidden_dim,
+            n_heads=args.heads,
+            series_depth=args.series_depth,
+            study_depth=args.study_depth,
+            dropout=args.dropout,
+            aggregator=args.aggregator,
+            num_targets=len(TARGETS),
+            series_dropout=args.series_dropout,
+            token_adapter_bottleneck=args.token_adapter_bottleneck,
+        )
+        model = PatchKneeAlibiModel(config)
+    else:
+        config = KneeModelConfig(
+            feature_dim=feature_dim,
+            hidden_dim=args.hidden_dim,
+            n_heads=args.heads,
+            series_depth=args.series_depth,
+            study_depth=args.study_depth,
+            dropout=args.dropout,
+            aggregator=args.aggregator,
+            num_targets=len(TARGETS),
+            report_dim=report_dim,
+        )
+        model = KneeAlibiModel(config)
     device = torch.device(args.device)
-    model = KneeAlibiModel(config).to(device)
+    model = model.to(device)
     train_loader = make_loader(
         train_frame, args.batch_size, args.workers, True, args.report_embeddings
     )
@@ -294,7 +350,8 @@ def main() -> None:
     best_auc = -float("inf")
     stale = 0
     history: list[dict[str, Any]] = []
-    checkpoint_path = args.output / f"{args.aggregator}_fold{args.fold}.pt"
+    run_name = args.aggregator if args.model_type == "summary" else f"patch_{args.aggregator}"
+    checkpoint_path = args.output / f"{run_name}_fold{args.fold}.pt"
     for epoch in range(1, args.epochs + 1):
         model.train()
         running = 0.0
@@ -302,18 +359,26 @@ def main() -> None:
             batch = move_batch(batch, device)
             optimizer.zero_grad(set_to_none=True)
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=amp_enabled):
-                output = model(**model_inputs(batch), return_aux=args.report_weight > 0)
+                output = model(
+                    **inputs_for_model(batch, args.model_type),
+                    return_aux=args.report_weight > 0,
+                )
                 logits = output["logits"] if isinstance(output, dict) else output
+                confidence = batch["confidence"] * torch.where(
+                    batch["gold_mask"],
+                    torch.full_like(batch["confidence"], args.gold_weight),
+                    torch.ones_like(batch["confidence"]),
+                )
                 loss = masked_bce(
                     logits,
                     batch["labels"],
                     batch["label_mask"],
-                    batch["confidence"],
+                    confidence,
                     pos_weight,
                 )
                 if args.rank_weight:
                     loss = loss + args.rank_weight * pairwise_auc_loss(
-                        logits, batch["labels"], batch["label_mask"], batch["confidence"]
+                        logits, batch["labels"], batch["label_mask"], confidence
                     )
                 if args.report_weight and "report_embedding" in batch:
                     loss = loss + args.report_weight * report_contrastive_loss(
@@ -329,7 +394,7 @@ def main() -> None:
             scheduler.step()
             running += float(loss.detach())
 
-        metrics = evaluate(model, val_loader, device)
+        metrics = evaluate(model, val_loader, device, args.model_type)
         record = {
             "epoch": epoch,
             "train_loss": running / max(1, len(train_loader)),
@@ -346,6 +411,7 @@ def main() -> None:
                 {
                     "model": model.state_dict(),
                     "model_config": config.to_dict(),
+                    "model_type": args.model_type,
                     "targets": TARGETS,
                     "fold": args.fold,
                     "score": score,
@@ -356,13 +422,13 @@ def main() -> None:
             oof = pd.DataFrame({"StudyInstanceUID": metrics["uids"]})
             for index, target in enumerate(TARGETS):
                 oof[target] = metrics["probabilities"][:, index]
-            oof.to_csv(args.output / f"{args.aggregator}_fold{args.fold}_oof.csv", index=False)
+            oof.to_csv(args.output / f"{run_name}_fold{args.fold}_oof.csv", index=False)
         else:
             stale += 1
         if stale >= args.patience:
             break
 
-    (args.output / f"{args.aggregator}_fold{args.fold}_history.json").write_text(
+    (args.output / f"{run_name}_fold{args.fold}_history.json").write_text(
         json.dumps(history, indent=2, allow_nan=True) + "\n"
     )
     frame[["StudyInstanceUID", "_fold"]].to_csv(
