@@ -201,8 +201,14 @@ def make_loader(
     workers: int,
     shuffle: bool,
     report_embeddings: Path | None,
+    include_patch_features: bool,
 ) -> DataLoader:
-    dataset = FeatureStudyDataset(frame, TARGETS, report_embeddings)
+    dataset = FeatureStudyDataset(
+        frame,
+        TARGETS,
+        report_embeddings,
+        include_patch_features=include_patch_features,
+    )
     return DataLoader(
         dataset,
         batch_size=batch_size,
@@ -337,9 +343,21 @@ def main() -> None:
     device = torch.device(args.device)
     model = model.to(device)
     train_loader = make_loader(
-        train_frame, args.batch_size, args.workers, True, args.report_embeddings
+        train_frame,
+        args.batch_size,
+        args.workers,
+        True,
+        args.report_embeddings,
+        include_patch_features=args.model_type == "patch",
     )
-    val_loader = make_loader(val_frame, args.batch_size, args.workers, False, None)
+    val_loader = make_loader(
+        val_frame,
+        args.batch_size,
+        args.workers,
+        False,
+        None,
+        include_patch_features=args.model_type == "patch",
+    )
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     total_steps = max(1, args.epochs * len(train_loader))
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)

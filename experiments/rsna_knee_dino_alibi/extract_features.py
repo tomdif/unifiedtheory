@@ -287,6 +287,49 @@ def _cache_name(uid: str) -> str:
     return f"{uid.replace('/', '_')}__{digest}.pt"
 
 
+def cached_metadata(
+    rows: pd.DataFrame,
+    root: Path,
+    split: str,
+    payload: dict[str, torch.Tensor],
+) -> dict[str, Any]:
+    """Recover scanner grouping when resuming from tensor-only cache files.
+
+    Scanner grouping must never silently collapse to a generic ``cached``
+    value after an interrupted extraction.  Reading one header per study is
+    cheap compared with re-encoding its images and makes restart behavior
+    equivalent to an uninterrupted run.
+    """
+
+    import pydicom
+
+    header0: Any = None
+    for _, row in rows.iterrows():
+        paths = _series_paths(
+            root,
+            split,
+            str(row["StudyInstanceUID"]),
+            str(row["SeriesInstanceUID"]),
+        )
+        if paths:
+            header0 = pydicom.dcmread(str(paths[0]), stop_before_pixels=True, force=True)
+            break
+    manufacturer = _safe_text(getattr(header0, "Manufacturer", "unknown"), "unknown")
+    model = _safe_text(getattr(header0, "ManufacturerModelName", "unknown"), "unknown")
+    field = _safe_text(getattr(header0, "MagneticFieldStrength", "unknown"), "unknown")
+    patch = payload.get("patch_features")
+    return {
+        "n_series": int(payload["series_mask"].sum()),
+        "feature_dim": int(payload["features"].shape[-1]),
+        "patch_dim": int(patch.shape[-1]) if patch is not None else 0,
+        "patches_per_slice": int(patch.shape[-2]) if patch is not None else 0,
+        "manufacturer": manufacturer,
+        "scanner_model": model,
+        "field_strength": field,
+        "scanner_group": f"{manufacturer}|{model}|{field}",
+    }
+
+
 def extract_study(
     rows: pd.DataFrame,
     root: Path,
@@ -411,18 +454,7 @@ def main() -> None:
         cache_path = args.output / _cache_name(str(uid))
         if cache_path.exists() and not args.overwrite:
             payload = torch.load(cache_path, map_location="cpu", weights_only=True)
-            metadata = {
-                "n_series": int(payload["series_mask"].sum()),
-                "feature_dim": int(payload["features"].shape[-1]),
-                "patch_dim": int(payload.get("patch_features", torch.empty(0, 0, 0, 0)).shape[-1]),
-                "patches_per_slice": int(
-                    payload.get("patch_features", torch.empty(0, 0, 0, 0)).shape[-2]
-                ),
-                "manufacturer": "cached",
-                "scanner_model": "cached",
-                "field_strength": "cached",
-                "scanner_group": "cached",
-            }
+            metadata = cached_metadata(rows, args.data_root, args.split, payload)
         else:
             payload, metadata = extract_study(
                 rows,

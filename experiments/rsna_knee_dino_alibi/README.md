@@ -76,6 +76,7 @@ python dicom_smoke.py
 python stage2_smoke.py
 python ensemble_smoke.py
 python pipeline_smoke.py
+python compliance_smoke.py
 ```
 
 The smoke test is CPU-only and checks:
@@ -157,8 +158,12 @@ python folds.py \
   --cache-index /workspace/cache/dinov2-base/train/train_cache_index.csv \
   --labels-csv /workspace/labels/raw_targets.csv \
   --output /workspace/labels/folded_targets.csv \
-  --group-column scanner_group --folds 5
+  --group-column scanner_group --folds 5 --candidate-seeds 64
 ```
+
+The candidate search never sees model predictions. It selects among complete
+scanner-group assignments using only expert-label class coverage and label/fold
+balance, making sparse gold macro-AUC validation less likely to be undefined.
 
 Reports are train-only privileged information. The inspectable multilingual
 rule teacher produces soft targets, optional NLI scores provide an independent
@@ -181,6 +186,18 @@ both classes are available. Weak labels can increase training coverage but can
 never make their own teacher look good in validation.
 
 ## Preregistered ablation
+
+The restartable end-to-end training driver waits for a complete feature cache,
+derives a compact summary-only cache, creates audited folds and out-of-fold
+report targets, then executes the complete three-aggregator/three-seed matrix:
+
+```bash
+python run_compliant_pipeline.py
+```
+
+The compact derived cache is important: a combined patch-grid `.pt` file must
+be fully deserialized even for a summary model, so deriving it once avoids
+re-reading the much larger spatial tensor throughout the stage-one ablation.
 
 Use scanner/vendor/model/field-strength groups from the generated cache index,
 or supply externally audited fold assignments in the labels file. Random folds
@@ -240,6 +257,22 @@ python infer.py \
 ```
 
 Rank averaging is the default because the competition metric is macro AUC.
+
+For the final internet-disabled Kaggle notebook, attach a local copy of the
+public DINO model and the selected checkpoints, then use the time-budgeted
+wrapper. It extracts hidden-test features inside the notebook, writes only the
+required submission, and records runtime provenance:
+
+```bash
+python kaggle_offline_infer.py \
+  --data-root /kaggle/input/rsna-knee-abnormality-detection \
+  --dino-model /kaggle/input/dinov2-base-offline/dinov2-base \
+  --checkpoint-glob '/kaggle/input/rsna-knee-checkpoints/*.pt' \
+  --output /kaggle/working/submission.csv
+```
+
+See `KAGGLE_COMPLIANCE.md` and `external_assets.json` before publishing or
+submitting any artifact.
 
 For a heterogeneous ensemble, fit convex weights separately for each target
 using OOF predictions, and report the nested-fold score (not the optimistic

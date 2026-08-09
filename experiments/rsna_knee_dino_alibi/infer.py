@@ -82,7 +82,18 @@ def predict_checkpoint(
 def main() -> None:
     args = parse_args()
     index = pd.read_csv(args.cache_index)
-    dataset = FeatureStudyDataset(index, TARGETS)
+    checkpoint_types = []
+    for path in args.checkpoints:
+        try:
+            checkpoint = torch.load(path, map_location="cpu", weights_only=True)
+        except TypeError:
+            checkpoint = torch.load(path, map_location="cpu")
+        checkpoint_types.append(checkpoint.get("model_type", "summary"))
+    dataset = FeatureStudyDataset(
+        index,
+        TARGETS,
+        include_patch_features="patch" in checkpoint_types,
+    )
     loader = DataLoader(
         dataset,
         batch_size=args.batch_size,

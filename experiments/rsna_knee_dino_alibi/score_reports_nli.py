@@ -70,6 +70,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--neutral-baseline", type=float, default=0.22)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--local-files-only", action="store_true")
+    parser.add_argument(
+        "--amp",
+        action="store_true",
+        help="enable CUDA float16 autocast only for models explicitly validated in fp16",
+    )
     return parser.parse_args()
 
 
@@ -93,7 +98,11 @@ def main() -> None:
     neutral = _label_index(model.config, "neutral", args.neutral_index)
     reports = frame["Report"].map(normalize_report).tolist()
     output = pd.DataFrame({"StudyInstanceUID": frame["StudyInstanceUID"].astype(str)})
-    amp = device.type == "cuda"
+    # mDeBERTa's own model card warns that its disentangled attention is not a
+    # generally supported fp16 path.  Keep the public default in fp32; AMP is
+    # an explicit, model-specific optimization rather than a silent accuracy
+    # and stability change.
+    amp = device.type == "cuda" and args.amp
     for target in TARGETS:
         probabilities: list[np.ndarray] = []
         hypothesis = HYPOTHESES[target]

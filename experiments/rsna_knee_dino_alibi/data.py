@@ -57,6 +57,7 @@ class FeatureStudyDataset(Dataset[Dict[str, Any]]):
         frame: pd.DataFrame,
         targets: Sequence[str] = TARGETS,
         report_embedding_dir: Optional[str | Path] = None,
+        include_patch_features: bool = True,
     ) -> None:
         if "StudyInstanceUID" not in frame or "cache_file" not in frame:
             raise ValueError("frame must contain StudyInstanceUID and cache_file")
@@ -65,6 +66,7 @@ class FeatureStudyDataset(Dataset[Dict[str, Any]]):
         self.report_embedding_dir = (
             Path(report_embedding_dir) if report_embedding_dir is not None else None
         )
+        self.include_patch_features = include_patch_features
 
     def __len__(self) -> int:
         return len(self.frame)
@@ -72,6 +74,14 @@ class FeatureStudyDataset(Dataset[Dict[str, Any]]):
     def __getitem__(self, index: int) -> Dict[str, Any]:
         row = self.frame.iloc[index]
         item: Dict[str, Any] = dict(load_feature_cache(row["cache_file"]))
+        if not self.include_patch_features:
+            # Summary-model ablations share the same stage-two cache files but
+            # should not pay the collation, retained host-RAM, or PCIe cost of
+            # the optional spatial patch grid.  torch.load still deserializes
+            # a combined cache; the full pipeline derives a compact summary
+            # cache once to remove that disk-I/O cost as well.
+            item.pop("patch_features", None)
+            item.pop("patch_mask", None)
         uid = str(row["StudyInstanceUID"])
         item["uid"] = uid
         labels = []

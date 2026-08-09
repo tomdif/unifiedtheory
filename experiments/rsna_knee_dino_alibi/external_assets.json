@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "name": "DINOv2 base",
+      "identifier": "facebook/dinov2-base",
+      "url": "https://huggingface.co/facebook/dinov2-base",
+      "license": "Apache-2.0",
+      "role": "public pretrained image feature extractor; packaged locally for offline inference"
+    },
+    {
+      "name": "mDeBERTa v3 base MNLI/XNLI",
+      "identifier": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+      "url": "https://huggingface.co/MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+      "license": "MIT",
+      "role": "optional training-only multilingual report weak-supervision channel"
+    }
+  ]
+}
