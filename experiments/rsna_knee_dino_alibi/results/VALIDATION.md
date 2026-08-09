@@ -1,6 +1,6 @@
 # Validation record
 
-Date: 2026-08-08
+Date: 2026-08-09
 
 ## Structural CPU test
 
@@ -72,9 +72,57 @@ On the RTX 4090, the end-to-end `facebook/dinov2-base` adapter completed a CUDA
 forward/backward pass. All frozen backbone parameters remained gradient-free;
 six adapter tensors received gradients. See `adapter_smoke_dinov2_base.json`.
 
-## Unexecuted boundary
+## Real competition-data ablation
 
-No competition data were present on the RunPod volume. Therefore no real
-cross-validation or leaderboard score is claimed. The preregistered ablation
-begins only after the user mounts data obtained under the competition rules and
-provides an auditable 12-target label table.
+The rules-authorized RunPod execution extracted all 4,407 training studies.
+Two malformed pixel frames were skipped while retaining the remaining valid
+slices and series in their studies. The restart-safe index retained scanner
+metadata for every cached study.
+
+The fold optimizer produced five complete scanner-group folds with both expert
+classes available in all 60 fold/target cells. All 45 preregistered fits
+(three aggregators x five folds x three seeds) completed:
+
+| Aggregator | Mean gold OOF macro AUC |
+|---|---:|
+| mean pooling | **0.66910** |
+| index ALiBi | 0.65869 |
+| physical ALiBi | 0.65682 |
+
+Physical ALiBi missed its predeclared +0.010 promotion threshold and instead
+lost 0.01228 to mean pooling. It is therefore not promoted.
+
+## Fixed mean-pooling ensemble audit
+
+`audit_mean_ensemble.py` retained every mean checkpoint for every target, with
+no target-wise model selection. Fold-local rank averaging reached **0.67897**
+macro AUC across the same 60 expert fold/target cells: +0.00987 over the average
+single-seed cell AUC and +0.00243 over the best single seed. It improved 36
+cells, tied 5, and worsened 19.
+
+| Target | Fold-mean gold AUC |
+|---|---:|
+| ACL | 0.62994 |
+| MCL | 0.65222 |
+| Medial Meniscus | 0.64667 |
+| Lateral Meniscus | 0.67249 |
+| Medial OA | 0.75238 |
+| Lateral OA | 0.67667 |
+| PF OA | 0.72521 |
+| Effusion | **0.47545** |
+| Synovitis | 0.70079 |
+| Baker's | 0.76889 |
+| Contusion | 0.69278 |
+| Fracture | 0.75417 |
+
+Effusion is the clear failure channel. The rank ensemble is a valid promoted
+baseline but not a plausible top-leaderboard endpoint.
+
+## Offline inference execution
+
+The complete `kaggle_offline_infer.py` path ran with local DINO weights,
+offline Hugging Face flags, all 15 mean checkpoints, fresh image extraction,
+and exact submission validation. It took 19.58 seconds on the three-study
+public placeholder test and reproduced the direct inference CSV byte-for-byte.
+This runtime is a wiring check, not an estimate for the hidden test and not a
+leaderboard score.

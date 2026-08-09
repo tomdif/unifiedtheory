@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-09",
+  "studies": 4407,
+  "expert_studies": 58,
+  "fold_target_cells": 60,
+  "ensemble_contract": "all 15 mean-pooling checkpoints; fold-local rank averaging; no target-wise selection",
+  "single_seed_macro_auc": {
+    "2026": 0.6765437610229276,
+    "2027": 0.6691870590828923,
+    "2028": 0.6615702160493825
+  },
+  "probability_mean_macro_auc": 0.6775143298059965,
+  "rank_mean_macro_auc": 0.6789710097001763,
+  "rank_mean_target_auc": {
+    "ACL": 0.6299404761904762,
+    "MCL": 0.6522222222222223,
+    "Medial Meniscus": 0.6466666666666667,
+    "Lateral Meniscus": 0.6724867724867725,
+    "Medial OA": 0.7523809523809524,
+    "Lateral OA": 0.6766666666666667,
+    "PF OA": 0.7252116402116402,
+    "Effusion": 0.4754497354497354,
+    "Synovitis": 0.7007936507936507,
+    "Baker's": 0.768888888888889,
+    "Contusion": 0.6927777777777779,
+    "Fracture": 0.7541666666666667
+  },
+  "gain_over_mean_single_seed_cell_auc": 0.00987066431510877,
+  "better_equal_worse_cells": [36, 5, 19]
+}

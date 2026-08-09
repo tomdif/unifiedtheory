@@ -1,0 +1,13 @@
+{
+  "date": "2026-08-09",
+  "public_placeholder_studies": 3,
+  "checkpoints": 15,
+  "ensemble": "rank",
+  "patch_grid": 0,
+  "elapsed_seconds": 19.584935676306486,
+  "internet_required": false,
+  "reports_used": false,
+  "exact_schema_validated": true,
+  "matched_direct_inference_byte_for_byte": true,
+  "boundary": "wiring check only; not hidden-test runtime and not a leaderboard score"
+}

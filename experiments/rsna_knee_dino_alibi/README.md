@@ -221,6 +221,20 @@ physical ALiBi over the stronger of mean pooling and ordinal ALiBi, averaged
 over complete paired fold/seed runs. Anything smaller is treated as negative or
 inconclusive, not re-described as a win.
 
+If mean pooling wins that comparison, audit its fixed all-seed OOF ensemble
+without target-wise member selection:
+
+```bash
+python audit_mean_ensemble.py \
+  --labels-csv /workspace/labels/train_targets.csv \
+  --cache-index /workspace/cache/dinov2-base/train/train_cache_index.csv \
+  --runs-dir /workspace/runs/dinov2_alibi \
+  --output /workspace/runs/mean_ensemble_audit
+```
+
+The primary ensemble ranks each seed inside its held-out fold before averaging.
+This respects the AUC objective while avoiding cross-fold logit-scale leakage.
+
 The sequence of escalation is:
 
 1. frozen DINOv2-base, three aggregation controls;
