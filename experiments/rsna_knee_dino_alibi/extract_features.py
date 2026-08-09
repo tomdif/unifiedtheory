@@ -175,7 +175,29 @@ def prepare_25d_images(
     indices = _select_indices(len(datasets), max_slices)
     selected = [datasets[int(i)] for i in indices]
     selected_positions = positions[indices]
-    arrays = [_crop_physical(_pixel_array(ds), ds, crop_mm) for ds in selected]
+    decoded: list[tuple[Any, float, np.ndarray]] = []
+    for ds, position in zip(selected, selected_positions):
+        try:
+            decoded.append((ds, float(position), _crop_physical(_pixel_array(ds), ds, crop_mm)))
+        except Exception as error:
+            # Public medical-imaging corpora occasionally contain a truncated
+            # frame or inconsistent pixel metadata.  One bad slice must not
+            # discard an otherwise usable series, but an entirely unreadable
+            # selected series remains a hard failure below.
+            identity = _safe_text(
+                getattr(ds, "SOPInstanceUID", getattr(ds, "InstanceNumber", "unknown")),
+                "unknown",
+            )
+            print(
+                f"warning: skipping unreadable DICOM slice {identity}: "
+                f"{type(error).__name__}: {error}",
+                flush=True,
+            )
+    if not decoded:
+        raise RuntimeError("all selected DICOM slices in a series were unreadable")
+    selected = [row[0] for row in decoded]
+    selected_positions = np.asarray([row[1] for row in decoded], dtype=np.float32)
+    arrays = [row[2] for row in decoded]
     lows = np.asarray([np.percentile(a, 1) for a in arrays], dtype=np.float32)
     highs = np.asarray([np.percentile(a, 99) for a in arrays], dtype=np.float32)
     low = float(np.median(lows))

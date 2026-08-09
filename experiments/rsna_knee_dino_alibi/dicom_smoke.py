@@ -19,7 +19,13 @@ except ImportError:
     from extract_features import _read_series, prepare_25d_images
 
 
-def write_slice(path: Path, position: float, value: int, instance: int) -> None:
+def write_slice(
+    path: Path,
+    position: float,
+    value: int,
+    instance: int,
+    corrupt: bool = False,
+) -> None:
     meta = FileMetaDataset()
     meta.MediaStorageSOPClassUID = MRImageStorage
     meta.MediaStorageSOPInstanceUID = generate_uid()
@@ -43,7 +49,8 @@ def write_slice(path: Path, position: float, value: int, instance: int) -> None:
     ds.ImageLaterality = "L"
     yy, xx = np.mgrid[:32, :40]
     pixels = (value + yy + 2 * xx).astype(np.uint16)
-    ds.PixelData = pixels.tobytes()
+    pixel_bytes = pixels.tobytes()
+    ds.PixelData = pixel_bytes[: len(pixel_bytes) // 2] if corrupt else pixel_bytes
     ds.save_as(path, enforce_file_format=True)
 
 
@@ -59,16 +66,20 @@ def main() -> None:
         ]
         for filename, z, value, instance in specifications:
             write_slice(root / filename, z, value, instance)
+        # A malformed frame is retained by header parsing but must be skipped
+        # during pixel decoding without discarding the four valid neighbors.
+        write_slice(root / "slice_04_corrupt.dcm", 6.0, 300, 22, corrupt=True)
         paths = sorted(root.glob("*.dcm"))
         datasets, positions = _read_series(paths)
+        expected_with_corrupt = np.asarray([0.0, 4.0, 6.0, 8.0, 12.0], dtype=np.float32)
         expected = np.asarray([0.0, 4.0, 8.0, 12.0], dtype=np.float32)
-        if not np.array_equal(positions, expected):
+        if not np.array_equal(positions, expected_with_corrupt):
             raise AssertionError(f"physical order failed: {positions.tolist()}")
         images, selected = prepare_25d_images(
             datasets,
             positions,
             plane=PLANE_TO_ID["sagittal"],
-            max_slices=4,
+            max_slices=5,
             crop_mm=24.0,
         )
         if len(images) != 4 or images[0].shape != (24, 24, 3):
