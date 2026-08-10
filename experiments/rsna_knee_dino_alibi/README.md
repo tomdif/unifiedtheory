@@ -399,6 +399,30 @@ weights are fitted on the expert labels from the other folds and evaluated on
 the untouched expert labels in the held-out fold; no held-out expert outcome
 crosses the nested boundary.
 
+The competitive routed variant keeps up to two series per plane and learns a
+separate plane/fluid/fat-suppression bias for every target. Target-wise top-k
+MIL then averages only the strongest few slice findings instead of forcing one
+global slice or diluting a small lesion across an entire volume:
+
+```bash
+python embed_reports.py \
+  --train-csv /workspace/rsna-knee/train.csv \
+  --output /workspace/labels/report_distillation/multilingual_minilm.npz
+
+python train_raw_mil.py \
+  --data-root /workspace/rsna-knee \
+  --labels-csv /workspace/labels/train_targets_llm_consensus.csv \
+  --output /workspace/runs/routed --backbone efficientnet_b3 --fold 0 \
+  --image-size 336 --train-slices 4 --val-slices 8 \
+  --max-series-per-plane 2 --pool topk --topk 3 \
+  --report-embeddings /workspace/labels/report_distillation/multilingual_minilm.npz \
+  --report-weight 0.1
+```
+
+The report objective is image-to-text distillation, not test-time report use:
+the model learns to predict a frozen multilingual clinical-report embedding
+during training, while raw-image inference remains entirely report-free.
+
 ## RunPod handoff
 
 Copy this directory to the pod, install dependencies in its persistent volume,

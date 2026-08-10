@@ -80,8 +80,19 @@ def build_model(
         len(TARGETS),
         pool=str(saved.get("pool", "max")),
         encoder_batch_size=encoder_batch_size,
+        topk=int(saved.get("topk", 3)),
+        report_dim=int(saved.get("report_dim", 0)),
     )
-    model.load_state_dict(checkpoint["model"], strict=True)
+    missing, unexpected = model.load_state_dict(checkpoint["model"], strict=False)
+    allowed_missing = {
+        "plane_target_bias.weight",
+        "fluid_target_bias.weight",
+        "fatsat_target_bias.weight",
+    }
+    if set(missing).difference(allowed_missing) or unexpected:
+        raise ValueError(
+            f"checkpoint/model mismatch: missing={missing}, unexpected={unexpected}"
+        )
     return model
 
 
@@ -119,6 +130,7 @@ def main() -> None:
         args.slices_per_plane,
         float(checkpoints[0]["args"].get("crop_mm", 160.0)),
         False,
+        int(checkpoints[0]["args"].get("max_series_per_plane", 1)),
     )
     loader = DataLoader(
         dataset,
@@ -147,7 +159,12 @@ def main() -> None:
                     device_type=device.type, dtype=torch.float16, enabled=device.type == "cuda"
                 ):
                     logits = model(
-                        pixels, plane, study_index, batch["num_studies"]
+                        pixels,
+                        plane,
+                        batch["fluid"].to(device, non_blocking=True),
+                        batch["fatsat"].to(device, non_blocking=True),
+                        study_index,
+                        batch["num_studies"],
                     )
                 member_predictions[index].append(torch.sigmoid(logits).float().cpu().numpy())
     members = np.stack([np.concatenate(rows) for rows in member_predictions])

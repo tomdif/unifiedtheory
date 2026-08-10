@@ -217,6 +217,8 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
         slices_per_plane: int,
         crop_mm: float,
         training: bool,
+        max_series_per_plane: int = 1,
+        report_embeddings: dict[str, Tensor] | None = None,
     ) -> None:
         self.frame = frame.reset_index(drop=True).copy()
         self.manifest = manifest
@@ -225,6 +227,10 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
         self.slices_per_plane = slices_per_plane
         self.crop_mm = crop_mm
         self.training = training
+        if max_series_per_plane < 1:
+            raise ValueError("max_series_per_plane must be positive")
+        self.max_series_per_plane = max_series_per_plane
+        self.report_embeddings = report_embeddings
         missing = [uid for uid in self.frame["StudyInstanceUID"].astype(str) if uid not in manifest]
         if missing:
             raise ValueError(f"{len(missing)} labeled studies have no readable series manifest")
@@ -247,10 +253,14 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
                 ),
                 reverse=True,
             )
-            if self.training and len(candidates) > 1 and torch.rand(1).item() < 0.35:
-                selected.append(candidates[int(torch.randint(0, len(candidates), (1,)).item())])
+            count = min(self.max_series_per_plane, len(candidates))
+            if self.training and len(candidates) > count:
+                extra = torch.randperm(len(candidates) - 1)[: count - 1].tolist()
+                selected.extend(
+                    [candidates[0], *[candidates[1 + index] for index in extra]]
+                )
             else:
-                selected.append(candidates[0])
+                selected.extend(candidates[:count])
         return selected
 
     def __getitem__(self, index: int) -> dict[str, Any]:
@@ -258,6 +268,8 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
         uid = str(row["StudyInstanceUID"])
         pixels: list[Tensor] = []
         planes: list[Tensor] = []
+        fluids: list[Tensor] = []
+        fatsats: list[Tensor] = []
         for record in self._choose_series(uid):
             images, _ = load_series_tensor(
                 record,
@@ -268,6 +280,8 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
             )
             pixels.append(images)
             planes.append(torch.full((images.shape[0],), record.plane, dtype=torch.long))
+            fluids.append(torch.full((images.shape[0],), record.fluid, dtype=torch.long))
+            fatsats.append(torch.full((images.shape[0],), record.fatsat, dtype=torch.long))
         labels = torch.tensor(
             [float(row[target]) if pd.notna(row[target]) else 0.0 for target in self.targets],
             dtype=torch.float32,
@@ -280,25 +294,35 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
             [bool(row.get(f"{target}__gold", pd.notna(row[target]))) for target in self.targets],
             dtype=torch.bool,
         )
-        return {
+        item = {
             "uid": uid,
             "pixels": torch.cat(pixels),
             "plane": torch.cat(planes),
+            "fluid": torch.cat(fluids),
+            "fatsat": torch.cat(fatsats),
             "labels": labels,
             "label_mask": mask,
             "confidence": confidence,
             "gold_mask": gold,
         }
+        if self.report_embeddings is not None:
+            embedding = self.report_embeddings.get(uid)
+            if embedding is None:
+                raise ValueError(f"missing report embedding for {uid}")
+            item["report_embedding"] = embedding.float()
+        return item
 
 
 def collate_raw_studies(items: Sequence[dict[str, Any]]) -> dict[str, Any]:
     study_index = []
     for index, item in enumerate(items):
         study_index.append(torch.full((item["pixels"].shape[0],), index, dtype=torch.long))
-    return {
+    batch = {
         "uid": [item["uid"] for item in items],
         "pixels": torch.cat([item["pixels"] for item in items]),
         "plane": torch.cat([item["plane"] for item in items]),
+        "fluid": torch.cat([item["fluid"] for item in items]),
+        "fatsat": torch.cat([item["fatsat"] for item in items]),
         "study_index": torch.cat(study_index),
         "num_studies": len(items),
         "labels": torch.stack([item["labels"] for item in items]),
@@ -306,6 +330,11 @@ def collate_raw_studies(items: Sequence[dict[str, Any]]) -> dict[str, Any]:
         "confidence": torch.stack([item["confidence"] for item in items]),
         "gold_mask": torch.stack([item["gold_mask"] for item in items]),
     }
+    if all("report_embedding" in item for item in items):
+        batch["report_embedding"] = torch.stack(
+            [item["report_embedding"] for item in items]
+        )
+    return batch
 
 
 def _load_external_state(module: nn.Module, path: Path) -> dict[str, Any]:
@@ -419,14 +448,26 @@ class RawStudyMILModel(nn.Module):
         dropout: float = 0.2,
         pool: str = "max",
         encoder_batch_size: int = 12,
+        topk: int = 3,
+        report_dim: int = 0,
     ) -> None:
         super().__init__()
-        if pool not in {"max", "logmeanexp"}:
-            raise ValueError("pool must be max or logmeanexp")
+        if pool not in {"max", "topk", "logmeanexp"}:
+            raise ValueError("pool must be max, topk, or logmeanexp")
+        if topk < 1:
+            raise ValueError("topk must be positive")
         self.backbone = backbone
         self.pool = pool
+        self.topk = topk
+        self.report_dim = report_dim
         self.encoder_batch_size = encoder_batch_size
         self.plane_embedding = nn.Embedding(len(PLANE_TO_ID), 16)
+        self.plane_target_bias = nn.Embedding(len(PLANE_TO_ID), num_targets)
+        self.fluid_target_bias = nn.Embedding(3, num_targets)
+        self.fatsat_target_bias = nn.Embedding(3, num_targets)
+        nn.init.zeros_(self.plane_target_bias.weight)
+        nn.init.zeros_(self.fluid_target_bias.weight)
+        nn.init.zeros_(self.fatsat_target_bias.weight)
         self.head = nn.Sequential(
             nn.LayerNorm(backbone.output_dim + 16),
             nn.Linear(backbone.output_dim + 16, hidden_dim),
@@ -434,15 +475,38 @@ class RawStudyMILModel(nn.Module):
             nn.Dropout(dropout),
             nn.Linear(hidden_dim, num_targets),
         )
+        self.report_projection = (
+            nn.Sequential(
+                nn.LayerNorm(backbone.output_dim),
+                nn.Linear(backbone.output_dim, report_dim),
+            )
+            if report_dim > 0
+            else None
+        )
 
     def forward(
-        self, pixels: Tensor, plane: Tensor, study_index: Tensor, num_studies: int
-    ) -> Tensor:
+        self,
+        pixels: Tensor,
+        plane: Tensor,
+        fluid: Tensor,
+        fatsat: Tensor,
+        study_index: Tensor,
+        num_studies: int,
+        return_aux: bool = False,
+    ) -> Tensor | dict[str, Tensor]:
         features = []
         for start in range(0, pixels.shape[0], self.encoder_batch_size):
             features.append(self.backbone(pixels[start : start + self.encoder_batch_size]))
         features_all = torch.cat(features)
-        slice_logits = self.head(torch.cat([features_all, self.plane_embedding(plane)], dim=-1))
+        slice_logits = self.head(
+            torch.cat([features_all, self.plane_embedding(plane)], dim=-1)
+        )
+        slice_logits = (
+            slice_logits
+            + self.plane_target_bias(plane)
+            + self.fluid_target_bias(fluid)
+            + self.fatsat_target_bias(fatsat)
+        )
         studies = []
         for index in range(num_studies):
             values = slice_logits[study_index == index]
@@ -450,9 +514,23 @@ class RawStudyMILModel(nn.Module):
                 raise ValueError("every study must contain at least one decoded slice")
             if self.pool == "max":
                 studies.append(values.max(dim=0).values)
+            elif self.pool == "topk":
+                count = min(self.topk, values.shape[0])
+                studies.append(values.topk(count, dim=0).values.mean(dim=0))
             else:
                 studies.append(torch.logsumexp(values, dim=0) - np.log(values.shape[0]))
-        return torch.stack(studies)
+        logits = torch.stack(studies)
+        if not return_aux:
+            return logits
+        if self.report_projection is None:
+            raise ValueError("return_aux requires a positive report_dim")
+        study_features = torch.stack(
+            [features_all[study_index == index].mean(dim=0) for index in range(num_studies)]
+        )
+        return {
+            "logits": logits,
+            "report_embedding": self.report_projection(study_features),
+        }
 
     def parameter_groups(self, backbone_lr: float, head_lr: float) -> list[dict[str, Any]]:
         backbone = [parameter for parameter in self.backbone.parameters() if parameter.requires_grad]

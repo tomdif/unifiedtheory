@@ -12,6 +12,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import torch
+import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 try:
@@ -85,7 +86,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--weight-decay", type=float, default=1e-3)
     parser.add_argument("--gold-weight", type=float, default=8.0)
     parser.add_argument("--rank-weight", type=float, default=0.0)
-    parser.add_argument("--pool", choices=("max", "logmeanexp"), default="max")
+    parser.add_argument("--pool", choices=("max", "topk", "logmeanexp"), default="max")
+    parser.add_argument("--topk", type=int, default=3)
+    parser.add_argument("--max-series-per-plane", type=int, default=1)
+    parser.add_argument("--report-embeddings", type=Path)
+    parser.add_argument("--report-weight", type=float, default=0.0)
     parser.add_argument("--limit-studies", type=int, default=0)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
@@ -98,13 +103,33 @@ def move(batch: dict[str, Any], device: torch.device) -> dict[str, Any]:
     }
 
 
-def model_forward(model: RawStudyMILModel, batch: dict[str, Any]) -> torch.Tensor:
+def model_forward(
+    model: RawStudyMILModel, batch: dict[str, Any], return_aux: bool = False
+) -> torch.Tensor | dict[str, torch.Tensor]:
     return model(
         normalize_pixels(batch["pixels"]),
         batch["plane"],
+        batch["fluid"],
+        batch["fatsat"],
         batch["study_index"],
         batch["num_studies"],
+        return_aux=return_aux,
     )
+
+
+def load_report_embeddings(path: Path | None) -> tuple[dict[str, torch.Tensor] | None, int]:
+    if path is None:
+        return None, 0
+    payload = np.load(path, allow_pickle=False)
+    uids = payload["uids"].astype(str)
+    values = payload["embeddings"].astype(np.float32)
+    if values.ndim != 2 or len(uids) != len(values):
+        raise ValueError("report embedding archive has incompatible arrays")
+    if len(set(uids)) != len(uids):
+        raise ValueError("report embedding archive contains duplicate studies")
+    return {
+        uid: torch.from_numpy(value) for uid, value in zip(uids.tolist(), values)
+    }, int(values.shape[1])
 
 
 @torch.inference_mode()
@@ -114,7 +139,9 @@ def evaluate(model: RawStudyMILModel, loader: DataLoader, device: torch.device) 
     for batch in loader:
         uids.extend(batch["uid"])
         batch = move(batch, device)
-        logits.append(model_forward(model, batch).float().cpu().numpy())
+        output = model_forward(model, batch)
+        assert torch.is_tensor(output)
+        logits.append(output.float().cpu().numpy())
         labels.append(batch["labels"].cpu().numpy())
         masks.append(batch["label_mask"].cpu().numpy())
         gold_masks.append(batch["gold_mask"].cpu().numpy())
@@ -138,6 +165,7 @@ def make_loader(
     manifest: dict[str, Any],
     args: argparse.Namespace,
     training: bool,
+    report_embeddings: dict[str, torch.Tensor] | None,
 ) -> DataLoader:
     dataset = RawStudyDataset(
         frame,
@@ -147,6 +175,8 @@ def make_loader(
         args.train_slices if training else args.val_slices,
         args.crop_mm,
         training,
+        args.max_series_per_plane,
+        report_embeddings,
     )
     return DataLoader(
         dataset,
@@ -174,9 +204,12 @@ def main() -> None:
         labels = labels.groupby("_fold", group_keys=False).head(args.limit_studies)
     train_frame = labels[labels["_fold"] != args.fold].copy()
     val_frame = labels[labels["_fold"] == args.fold].copy()
+    report_embeddings, report_dim = load_report_embeddings(args.report_embeddings)
+    if args.report_weight > 0 and report_embeddings is None:
+        raise ValueError("--report-weight requires --report-embeddings")
     manifest = build_study_manifest(args.data_root / "train_series.csv", args.data_root, "train")
-    train_loader = make_loader(train_frame, manifest, args, True)
-    val_loader = make_loader(val_frame, manifest, args, False)
+    train_loader = make_loader(train_frame, manifest, args, True, report_embeddings)
+    val_loader = make_loader(val_frame, manifest, args, False, report_embeddings)
 
     backbone = SliceFeatureBackbone(
         args.backbone,
@@ -191,6 +224,8 @@ def main() -> None:
         len(TARGETS),
         pool=args.pool,
         encoder_batch_size=args.encoder_batch_size,
+        topk=args.topk,
+        report_dim=report_dim,
     )
     device = torch.device(args.device)
     model.to(device)
@@ -217,7 +252,8 @@ def main() -> None:
         for step, batch in enumerate(train_loader, start=1):
             batch = move(batch, device)
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=amp):
-                prediction = model_forward(model, batch)
+                output = model_forward(model, batch, return_aux=args.report_weight > 0)
+                prediction = output["logits"] if isinstance(output, dict) else output
                 confidence = batch["confidence"] * torch.where(
                     batch["gold_mask"],
                     torch.full_like(batch["confidence"], args.gold_weight),
@@ -237,6 +273,13 @@ def main() -> None:
                         batch["label_mask"],
                         confidence,
                     )
+                if args.report_weight:
+                    assert isinstance(output, dict)
+                    predicted_report = F.normalize(output["report_embedding"], dim=-1)
+                    target_report = F.normalize(batch["report_embedding"], dim=-1)
+                    loss = loss + args.report_weight * (
+                        1 - (predicted_report * target_report).sum(dim=-1)
+                    ).mean()
                 scaled_loss = loss / args.accumulate
             scaler.scale(scaled_loss).backward()
             running += float(loss.detach())
@@ -273,7 +316,8 @@ def main() -> None:
                     "args": {
                         key: str(value) if isinstance(value, Path) else value
                         for key, value in vars(args).items()
-                    },
+                    }
+                    | {"report_dim": report_dim},
                     "targets": TARGETS,
                     "fold": args.fold,
                     "score": score,

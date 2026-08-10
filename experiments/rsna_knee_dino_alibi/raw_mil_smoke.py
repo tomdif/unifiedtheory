@@ -25,6 +25,8 @@ def item(uid: str, slices: int) -> dict[str, object]:
         "uid": uid,
         "pixels": torch.rand(slices, 3, 16, 16),
         "plane": torch.arange(slices) % 3,
+        "fluid": torch.arange(slices) % 3,
+        "fatsat": (torch.arange(slices) + 1) % 3,
         "labels": torch.zeros(12),
         "label_mask": torch.ones(12, dtype=torch.bool),
         "confidence": torch.ones(12),
@@ -34,15 +36,27 @@ def item(uid: str, slices: int) -> dict[str, object]:
 
 def main() -> None:
     batch = collate_raw_studies([item("a", 4), item("b", 7)])
-    model = RawStudyMILModel(TinyBackbone(), 12, hidden_dim=16, encoder_batch_size=3)
+    model = RawStudyMILModel(
+        TinyBackbone(),
+        12,
+        hidden_dim=16,
+        encoder_batch_size=3,
+        pool="topk",
+        topk=2,
+        report_dim=10,
+    )
     output = model(
         batch["pixels"],
         batch["plane"],
+        batch["fluid"],
+        batch["fatsat"],
         batch["study_index"],
         batch["num_studies"],
+        return_aux=True,
     )
-    assert output.shape == (2, 12)
-    output.sum().backward()
+    assert output["logits"].shape == (2, 12)
+    assert output["report_embedding"].shape == (2, 10)
+    (output["logits"].sum() + output["report_embedding"].sum()).backward()
     assert all(parameter.grad is not None for parameter in model.head.parameters())
     print("raw MIL smoke test passed")
 
