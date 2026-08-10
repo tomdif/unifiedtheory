@@ -372,6 +372,33 @@ go/no-go evidence is five-fold scanner-grouped gold OOF AUC, target-level
 stability, and ensemble diversity. No architectural claim substitutes for
 those measurements.
 
+## High-resolution raw-DICOM specialists
+
+`train_raw_mil.py` is the expensive, deliberately diverse model family. It
+decodes stratified physical slices directly from the mounted DICOMs, uses 24
+slices per plane for training and 32 for validation by default, fine-tunes the
+last image-backbone blocks, and pools target-specific slice logits with
+max-MIL. DINOv2, EfficientNet-B3, and an official-architecture RadImageNet
+ResNet-50 are supported. The medical checkpoint is supplied with
+`--backbone-checkpoint`; loading is rejected unless at least half of the model
+state matches. Check its source license and competition eligibility before
+promotion. No derived pixel cache is created.
+
+```bash
+python run_raw_mil_cv.py \
+  --output /workspace/runs/raw_dino336 \
+  --data-root /workspace/rsna-knee \
+  --labels-csv /workspace/labels/train_targets_llm_consensus.csv \
+  --backbone dinov2 \
+  --model-name /workspace/hf_cache/hub/models--facebook--dinov2-base/snapshots/REV \
+  --local-files-only --image-size 336 --train-slices 24 --val-slices 32
+```
+
+The fold OOF files use the schema consumed by `fit_oof_ensemble.py`. Blend
+weights are fitted on the expert labels from the other folds and evaluated on
+the untouched expert labels in the held-out fold; no held-out expert outcome
+crosses the nested boundary.
+
 ## RunPod handoff
 
 Copy this directory to the pod, install dependencies in its persistent volume,

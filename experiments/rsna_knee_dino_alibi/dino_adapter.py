@@ -100,7 +100,9 @@ class DinoSliceAdapter(nn.Module):
         )
 
     def forward(self, pixel_values: Tensor) -> tuple[Tensor, Tensor]:
-        hidden = self.backbone(pixel_values=pixel_values).last_hidden_state
+        hidden = self.backbone(
+            pixel_values=pixel_values, interpolate_pos_encoding=True
+        ).last_hidden_state
         hidden = self.adapter(hidden)
         cls = hidden[:, 0]
         patches = hidden[:, 1 + self.num_register_tokens :]

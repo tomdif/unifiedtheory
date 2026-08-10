@@ -1,0 +1,449 @@
+"""Raw-DICOM, high-resolution multiple-instance models for knee MRI.
+
+The cached-feature experiments establish a cheap baseline. This module is the
+deliberately different family used for the expensive stage: one selected
+series per anatomical plane, stratified physical slices, trainable image
+features, and target-wise pooling over slices.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
+from typing import Any, Sequence
+
+import numpy as np
+import pandas as pd
+import torch
+from torch import Tensor, nn
+import torch.nn.functional as F
+from torch.utils.data import Dataset
+
+try:
+    from .constants import PLANE_TO_ID
+    from .dino_adapter import freeze_except_last_blocks
+    from .extract_features import (
+        _crop_physical,
+        _laterality,
+        _normal_and_position,
+        _pixel_array,
+        _plane_id,
+        _tristate,
+    )
+except ImportError:
+    from constants import PLANE_TO_ID
+    from dino_adapter import freeze_except_last_blocks
+    from extract_features import (
+        _crop_physical,
+        _laterality,
+        _normal_and_position,
+        _pixel_array,
+        _plane_id,
+        _tristate,
+    )
+
+
+@dataclass(frozen=True)
+class SeriesRecord:
+    uid: str
+    plane: int
+    fluid: int
+    fatsat: int
+    directory: str
+
+
+@lru_cache(maxsize=16384)
+def _directory_paths(directory: str) -> tuple[str, ...]:
+    paths = tuple(str(path) for path in sorted(Path(directory).glob("*.dcm")))
+    if not paths:
+        raise FileNotFoundError(f"series directory contains no DICOMs: {directory}")
+    return paths
+
+
+def build_study_manifest(
+    series_csv: Path, data_root: Path, split: str = "train"
+) -> dict[str, tuple[SeriesRecord, ...]]:
+    table = pd.read_csv(series_csv)
+    required = {"StudyInstanceUID", "SeriesInstanceUID", "Anatomical_Plane"}
+    if missing := required.difference(table.columns):
+        raise ValueError(f"series table is missing columns: {sorted(missing)}")
+    studies: dict[str, tuple[SeriesRecord, ...]] = {}
+    for study_uid, rows in table.groupby("StudyInstanceUID", sort=True):
+        records: list[SeriesRecord] = []
+        for _, row in rows.iterrows():
+            series_uid = str(row["SeriesInstanceUID"])
+            directory = data_root / f"{split}_series" / str(study_uid) / series_uid
+            records.append(
+                SeriesRecord(
+                    uid=series_uid,
+                    plane=_plane_id(row.get("Anatomical_Plane")),
+                    fluid=_tristate(row.get("Fluid_Sensitive")),
+                    fatsat=_tristate(row.get("Fat_Suppression")),
+                    directory=str(directory),
+                )
+            )
+        if records:
+            studies[str(study_uid)] = tuple(records)
+    return studies
+
+
+@lru_cache(maxsize=8192)
+def _ordered_headers(directory: str) -> tuple[tuple[str, float], ...]:
+    import pydicom
+
+    rows: list[tuple[float, int, str]] = []
+    physical = True
+    for ordinal, path in enumerate(_directory_paths(directory)):
+        ds = pydicom.dcmread(path, stop_before_pixels=True, force=True)
+        _, position = _normal_and_position(ds)
+        if position is None:
+            physical = False
+            try:
+                position = float(ds.InstanceNumber)
+            except (AttributeError, TypeError, ValueError):
+                position = float(ordinal)
+        rows.append((float(position), ordinal, path))
+    rows.sort(key=lambda row: (row[0], row[1]))
+    if not physical:
+        return tuple((path, float(index)) for index, (_, _, path) in enumerate(rows))
+    return tuple((path, position) for position, _, path in rows)
+
+
+def _stratified_indices(length: int, count: int, training: bool) -> np.ndarray:
+    if length <= count:
+        return np.arange(length, dtype=np.int64)
+    if not training:
+        return np.unique(np.rint(np.linspace(0, length - 1, count)).astype(np.int64))
+    edges = np.linspace(0, length, count + 1)
+    indices = []
+    for left, right in zip(edges[:-1], edges[1:]):
+        lo = int(np.floor(left))
+        hi = max(lo + 1, int(np.ceil(right)))
+        indices.append(int(torch.randint(lo, min(hi, length), (1,)).item()))
+    return np.asarray(indices, dtype=np.int64)
+
+
+def _resize(array: np.ndarray, image_size: int) -> Tensor:
+    tensor = torch.from_numpy(np.ascontiguousarray(array)).float()[None, None]
+    return F.interpolate(
+        tensor, size=(image_size, image_size), mode="bilinear", align_corners=False
+    )[0, 0]
+
+
+def load_series_tensor(
+    record: SeriesRecord,
+    slices: int,
+    crop_mm: float,
+    image_size: int,
+    training: bool,
+) -> tuple[Tensor, Tensor]:
+    import pydicom
+
+    ordered = _ordered_headers(record.directory)
+    centers = _stratified_indices(len(ordered), slices, training)
+    needed = sorted(
+        {
+            max(0, min(len(ordered) - 1, int(index) + offset))
+            for index in centers
+            for offset in (-1, 0, 1)
+        }
+    )
+    decoded: dict[int, tuple[Any, np.ndarray]] = {}
+    for index in needed:
+        ds = pydicom.dcmread(ordered[index][0], force=True)
+        decoded[index] = (ds, _crop_physical(_pixel_array(ds), ds, crop_mm))
+    arrays = [value[1] for value in decoded.values()]
+    low = float(np.median([np.percentile(array, 1) for array in arrays]))
+    high = float(np.median([np.percentile(array, 99) for array in arrays]))
+    if not np.isfinite(high - low) or high - low < 1e-6:
+        low = float(min(array.min() for array in arrays))
+        high = float(max(array.max() for array in arrays))
+    scale = max(high - low, 1e-6)
+
+    def normalized(index: int) -> Tensor:
+        array = np.clip((decoded[index][1] - low) / scale, 0.0, 1.0)
+        return _resize(array, image_size)
+
+    images = []
+    for center in centers:
+        triplet = [
+            normalized(max(0, int(center) - 1)),
+            normalized(int(center)),
+            normalized(min(len(ordered) - 1, int(center) + 1)),
+        ]
+        images.append(torch.stack(triplet))
+    pixels = torch.stack(images)
+    positions = torch.tensor([ordered[int(index)][1] for index in centers], dtype=torch.float32)
+
+    first_ds = decoded[int(centers[0])][0]
+    if _laterality(first_ds) == "R":
+        if record.plane in {PLANE_TO_ID["coronal"], PLANE_TO_ID["axial"]}:
+            pixels = pixels.flip(-1)
+        elif record.plane == PLANE_TO_ID["sagittal"]:
+            pixels = pixels.flip(0)
+            positions = positions.flip(0)
+    if training:
+        gain = 0.9 + 0.2 * torch.rand(1)
+        bias = 0.04 * (2 * torch.rand(1) - 1)
+        pixels = (pixels * gain + bias).clamp(0, 1)
+    return pixels, positions
+
+
+class RawStudyDataset(Dataset[dict[str, Any]]):
+    """Decode one series per available plane without creating a pixel cache."""
+
+    def __init__(
+        self,
+        frame: pd.DataFrame,
+        manifest: dict[str, tuple[SeriesRecord, ...]],
+        targets: Sequence[str],
+        image_size: int,
+        slices_per_plane: int,
+        crop_mm: float,
+        training: bool,
+    ) -> None:
+        self.frame = frame.reset_index(drop=True).copy()
+        self.manifest = manifest
+        self.targets = list(targets)
+        self.image_size = image_size
+        self.slices_per_plane = slices_per_plane
+        self.crop_mm = crop_mm
+        self.training = training
+        missing = [uid for uid in self.frame["StudyInstanceUID"].astype(str) if uid not in manifest]
+        if missing:
+            raise ValueError(f"{len(missing)} labeled studies have no readable series manifest")
+
+    def __len__(self) -> int:
+        return len(self.frame)
+
+    def _choose_series(self, uid: str) -> list[SeriesRecord]:
+        by_plane: dict[int, list[SeriesRecord]] = {}
+        for record in self.manifest[uid]:
+            by_plane.setdefault(record.plane, []).append(record)
+        selected = []
+        for plane in sorted(by_plane):
+            candidates = sorted(
+                by_plane[plane],
+                key=lambda record: (
+                    record.fluid + record.fatsat,
+                    len(_directory_paths(record.directory)),
+                    record.uid,
+                ),
+                reverse=True,
+            )
+            if self.training and len(candidates) > 1 and torch.rand(1).item() < 0.35:
+                selected.append(candidates[int(torch.randint(0, len(candidates), (1,)).item())])
+            else:
+                selected.append(candidates[0])
+        return selected
+
+    def __getitem__(self, index: int) -> dict[str, Any]:
+        row = self.frame.iloc[index]
+        uid = str(row["StudyInstanceUID"])
+        pixels: list[Tensor] = []
+        planes: list[Tensor] = []
+        for record in self._choose_series(uid):
+            images, _ = load_series_tensor(
+                record,
+                self.slices_per_plane,
+                self.crop_mm,
+                self.image_size,
+                self.training,
+            )
+            pixels.append(images)
+            planes.append(torch.full((images.shape[0],), record.plane, dtype=torch.long))
+        labels = torch.tensor(
+            [float(row[target]) if pd.notna(row[target]) else 0.0 for target in self.targets],
+            dtype=torch.float32,
+        )
+        mask = torch.tensor([pd.notna(row[target]) for target in self.targets], dtype=torch.bool)
+        confidence = torch.tensor(
+            [float(row.get(f"{target}__conf", 1.0)) for target in self.targets], dtype=torch.float32
+        )
+        gold = torch.tensor(
+            [bool(row.get(f"{target}__gold", pd.notna(row[target]))) for target in self.targets],
+            dtype=torch.bool,
+        )
+        return {
+            "uid": uid,
+            "pixels": torch.cat(pixels),
+            "plane": torch.cat(planes),
+            "labels": labels,
+            "label_mask": mask,
+            "confidence": confidence,
+            "gold_mask": gold,
+        }
+
+
+def collate_raw_studies(items: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    study_index = []
+    for index, item in enumerate(items):
+        study_index.append(torch.full((item["pixels"].shape[0],), index, dtype=torch.long))
+    return {
+        "uid": [item["uid"] for item in items],
+        "pixels": torch.cat([item["pixels"] for item in items]),
+        "plane": torch.cat([item["plane"] for item in items]),
+        "study_index": torch.cat(study_index),
+        "num_studies": len(items),
+        "labels": torch.stack([item["labels"] for item in items]),
+        "label_mask": torch.stack([item["label_mask"] for item in items]),
+        "confidence": torch.stack([item["confidence"] for item in items]),
+        "gold_mask": torch.stack([item["gold_mask"] for item in items]),
+    }
+
+
+def _load_external_state(module: nn.Module, path: Path) -> dict[str, Any]:
+    try:
+        payload = torch.load(path, map_location="cpu", weights_only=True)
+    except TypeError:
+        payload = torch.load(path, map_location="cpu")
+    state = payload.get("state_dict", payload.get("model", payload)) if isinstance(payload, dict) else payload
+    cleaned = {
+        str(key).removeprefix("module.").removeprefix("backbone."): value
+        for key, value in state.items()
+    }
+    result = module.load_state_dict(cleaned, strict=False)
+    loaded = len(cleaned) - len(result.unexpected_keys)
+    fraction = loaded / max(1, len(module.state_dict()))
+    if fraction < 0.5:
+        raise ValueError(f"external backbone checkpoint matched only {fraction:.1%} of parameters")
+    return {
+        "loaded_fraction": fraction,
+        "missing": result.missing_keys,
+        "unexpected": result.unexpected_keys,
+    }
+
+
+class SliceFeatureBackbone(nn.Module):
+    def __init__(
+        self,
+        name: str,
+        model_name: str | None,
+        trainable_blocks: int,
+        local_files_only: bool,
+        pretrained: bool,
+        checkpoint: Path | None,
+    ) -> None:
+        super().__init__()
+        self.name = name
+        self.load_report: dict[str, Any] | None = None
+        if name == "dinov2":
+            from transformers import AutoModel
+
+            if not model_name:
+                raise ValueError("dinov2 requires --model-name")
+            self.model = AutoModel.from_pretrained(model_name, local_files_only=local_files_only)
+            hidden = int(self.model.config.hidden_size)
+            self.output_dim = 2 * hidden
+            freeze_except_last_blocks(self.model, trainable_blocks)
+            self.num_register_tokens = int(getattr(self.model.config, "num_register_tokens", 0) or 0)
+        elif name == "efficientnet_b3":
+            from torchvision.models import EfficientNet_B3_Weights, efficientnet_b3
+
+            weights = EfficientNet_B3_Weights.DEFAULT if pretrained and checkpoint is None else None
+            model = efficientnet_b3(weights=weights)
+            self.output_dim = int(model.classifier[1].in_features)
+            model.classifier = nn.Identity()
+            self.model = model
+            self.num_register_tokens = 0
+            for parameter in self.model.parameters():
+                parameter.requires_grad = False
+            stages = list(self.model.features)
+            if trainable_blocks > len(stages):
+                raise ValueError(f"EfficientNet exposes only {len(stages)} feature stages")
+            for stage in stages[-trainable_blocks:] if trainable_blocks else []:
+                for parameter in stage.parameters():
+                    parameter.requires_grad = True
+        elif name == "radimagenet_resnet50":
+            from torchvision.models import resnet50
+
+            if checkpoint is None:
+                raise ValueError("radimagenet_resnet50 requires --backbone-checkpoint")
+            resnet = resnet50(weights=None)
+            self.model = nn.Sequential(*list(resnet.children())[:-1])
+            self.output_dim = int(resnet.fc.in_features)
+            self.num_register_tokens = 0
+            self.load_report = _load_external_state(self.model, checkpoint)
+            for parameter in self.model.parameters():
+                parameter.requires_grad = False
+            stages = [stage for stage in self.model if any(True for _ in stage.parameters())]
+            if trainable_blocks > len(stages):
+                raise ValueError(f"RadImageNet ResNet exposes only {len(stages)} parameter stages")
+            for stage in stages[-trainable_blocks:] if trainable_blocks else []:
+                for parameter in stage.parameters():
+                    parameter.requires_grad = True
+        else:
+            raise ValueError(f"unsupported backbone {name}")
+        if checkpoint is not None and name != "radimagenet_resnet50":
+            self.load_report = _load_external_state(self.model, checkpoint)
+
+    def forward(self, pixels: Tensor) -> Tensor:
+        if self.name == "dinov2":
+            hidden = self.model(
+                pixel_values=pixels, interpolate_pos_encoding=True
+            ).last_hidden_state
+            patches = hidden[:, 1 + self.num_register_tokens :]
+            return torch.cat([hidden[:, 0], patches.mean(dim=1)], dim=-1)
+        return self.model(pixels).flatten(1)
+
+
+class RawStudyMILModel(nn.Module):
+    def __init__(
+        self,
+        backbone: SliceFeatureBackbone,
+        num_targets: int,
+        hidden_dim: int = 512,
+        dropout: float = 0.2,
+        pool: str = "max",
+        encoder_batch_size: int = 12,
+    ) -> None:
+        super().__init__()
+        if pool not in {"max", "logmeanexp"}:
+            raise ValueError("pool must be max or logmeanexp")
+        self.backbone = backbone
+        self.pool = pool
+        self.encoder_batch_size = encoder_batch_size
+        self.plane_embedding = nn.Embedding(len(PLANE_TO_ID), 16)
+        self.head = nn.Sequential(
+            nn.LayerNorm(backbone.output_dim + 16),
+            nn.Linear(backbone.output_dim + 16, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, num_targets),
+        )
+
+    def forward(
+        self, pixels: Tensor, plane: Tensor, study_index: Tensor, num_studies: int
+    ) -> Tensor:
+        features = []
+        for start in range(0, pixels.shape[0], self.encoder_batch_size):
+            features.append(self.backbone(pixels[start : start + self.encoder_batch_size]))
+        features_all = torch.cat(features)
+        slice_logits = self.head(torch.cat([features_all, self.plane_embedding(plane)], dim=-1))
+        studies = []
+        for index in range(num_studies):
+            values = slice_logits[study_index == index]
+            if values.numel() == 0:
+                raise ValueError("every study must contain at least one decoded slice")
+            if self.pool == "max":
+                studies.append(values.max(dim=0).values)
+            else:
+                studies.append(torch.logsumexp(values, dim=0) - np.log(values.shape[0]))
+        return torch.stack(studies)
+
+    def parameter_groups(self, backbone_lr: float, head_lr: float) -> list[dict[str, Any]]:
+        backbone = [parameter for parameter in self.backbone.parameters() if parameter.requires_grad]
+        backbone_ids = {id(parameter) for parameter in backbone}
+        head = [
+            parameter
+            for parameter in self.parameters()
+            if parameter.requires_grad and id(parameter) not in backbone_ids
+        ]
+        return [{"params": backbone, "lr": backbone_lr}, {"params": head, "lr": head_lr}]
+
+
+def normalize_pixels(pixels: Tensor) -> Tensor:
+    mean = pixels.new_tensor([0.485, 0.456, 0.406])[None, :, None, None]
+    std = pixels.new_tensor([0.229, 0.224, 0.225])[None, :, None, None]
+    return (pixels - mean) / std
