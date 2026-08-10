@@ -25,6 +25,8 @@ def main() -> None:
             raise AssertionError("kernel is not offline GPU inference")
         if metadata["is_private"]:
             raise AssertionError("competition code must be public")
+        if len(metadata["dataset_sources"]) != 2:
+            raise AssertionError("kernel must attach both code and checkpoint datasets")
         if "len(checkpoints) != 15" not in code or "submission.csv" not in code:
             raise AssertionError("kernel does not enforce checkpoint and output contracts")
     print("Kaggle kernel smoke test passed")

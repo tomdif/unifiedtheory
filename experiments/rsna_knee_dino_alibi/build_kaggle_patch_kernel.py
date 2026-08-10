@@ -61,6 +61,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--owner", default="tomdif")
     parser.add_argument("--slug", default="rsna-knee-fixed-patch-rank")
+    parser.add_argument("--code-dataset", default="tomdif/rsna-knee-unifiedtheory-code")
     parser.add_argument("--checkpoint-dataset", default="tomdif/rsna-knee-fixed-patch-checkpoints")
     parser.add_argument("--dino-model-source", default="metaresearch/dinov2/pyTorch/base/1")
     return parser.parse_args()
@@ -95,7 +96,7 @@ def main() -> None:
         "language": "python", "kernel_type": "notebook",
         "is_private": False, "enable_gpu": True, "enable_internet": False,
         "competition_sources": ["rsna-knee-abnormality-detection"],
-        "dataset_sources": [args.checkpoint_dataset],
+        "dataset_sources": [args.code_dataset, args.checkpoint_dataset],
         "model_sources": [args.dino_model_source],
     }
     (args.output / "kernel-metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
