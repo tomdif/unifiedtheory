@@ -3,6 +3,7 @@
   "families": {
     "rad_baseline": {
       "output": "/workspace/runs/raw_radimagenet320_pilot",
+      "inference_slices": 24,
       "checkpoint_pattern": "radimagenet_resnet50_max_320_fold{fold}.pt",
       "oof_pattern": "radimagenet_resnet50_max_320_fold{fold}_oof.csv",
       "train_args": [
@@ -26,6 +27,7 @@
     },
     "rad_routed": {
       "output": "/workspace/runs/raw_radimagenet320_routed_pilot",
+      "inference_slices": 16,
       "checkpoint_pattern": "radimagenet_resnet50_topk_320_fold{fold}.pt",
       "oof_pattern": "radimagenet_resnet50_topk_320_fold{fold}_oof.csv",
       "train_args": [
@@ -54,6 +56,7 @@
     },
     "efficientnet_routed": {
       "output": "/workspace/runs/raw_efficientnet336_pilot",
+      "inference_slices": 16,
       "checkpoint_pattern": "efficientnet_b3_topk_336_fold{fold}.pt",
       "oof_pattern": "efficientnet_b3_topk_336_fold{fold}_oof.csv",
       "train_args": [
@@ -81,6 +84,7 @@
     },
     "dino_routed": {
       "output": "/workspace/runs/raw_dino336_pilot",
+      "inference_slices": 12,
       "checkpoint_pattern": "dinov2_topk_336_fold{fold}.pt",
       "oof_pattern": "dinov2_topk_336_fold{fold}_oof.csv",
       "train_args": [
