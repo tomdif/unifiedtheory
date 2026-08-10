@@ -18,6 +18,9 @@ This pipeline is designed around the following hard constraints:
   `external_assets.json`;
 - `kaggle_offline_infer.py` validates the exact sample-submission schema,
   study order, finite probabilities, and the nine-hour notebook boundary;
+- `build_kaggle_patch_kernel.py` stages a public, internet-disabled GPU kernel
+  and fails unless all 15 fixed patch checkpoints are attached; building it
+  does not publish or submit anything;
 - competition data and derived private artifacts must not be committed or
   shared outside a team whose members have accepted the competition rules.
 
