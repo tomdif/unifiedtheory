@@ -256,6 +256,22 @@ python run_stage2.py \
   --extra --series-dropout 0.15
 ```
 
+When the summary ablation promotes mean pooling, retain that winning slice
+aggregation while adding only target-specific spatial patch evidence:
+
+```bash
+python run_stage2.py \
+  --cache-index /workspace/cache/dinov2-base/train/train_cache_index.csv \
+  --labels-csv /workspace/labels/train_targets.csv \
+  --output /workspace/runs/dinov2_patch_mean \
+  --aggregator mean --token-adapter-bottleneck 0 \
+  --seeds 2026 --folds 5 --batch-size 8
+```
+
+The zero-bottleneck first pass isolates spatial target pooling. Cached-token
+adaptation is a separate escalation only after the spatial model improves the
+same gold folds.
+
 Repeat folds 0 through 4 for each promoted backbone. Do not tune on the public
 leaderboard; grouped OOF validation is the model-selection surface.
 

@@ -85,12 +85,12 @@ class CachedTokenAdapter(nn.Module):
 
 
 class PatchKneeAlibiModel(nn.Module):
-    """Target-conditioned spatial evidence with physical series aggregation."""
+    """Target-conditioned spatial evidence with controlled slice aggregation."""
 
     def __init__(self, config: PatchKneeModelConfig) -> None:
         super().__init__()
-        if config.aggregator not in {"index_alibi", "physical_alibi"}:
-            raise ValueError("patch hierarchy requires index_alibi or physical_alibi")
+        if config.aggregator not in {"mean", "index_alibi", "physical_alibi"}:
+            raise ValueError("unknown patch-hierarchy aggregator")
         self.config = config
         h, t = config.hidden_dim, config.num_targets
         if config.feature_dim != 2 * config.patch_dim:
@@ -109,18 +109,27 @@ class PatchKneeAlibiModel(nn.Module):
         for parameter in (self.target_embedding, self.series_cls, self.study_cls):
             nn.init.trunc_normal_(parameter, std=0.02)
 
-        self.series_blocks = nn.ModuleList(
-            [
-                AlibiBlock(
-                    h,
-                    config.n_heads,
-                    mlp_ratio=4.0,
-                    dropout=config.dropout,
-                    distance_mode=config.aggregator,
-                )
-                for _ in range(config.series_depth)
-            ]
-        )
+        if config.aggregator == "mean":
+            self.series_blocks = nn.ModuleList()
+            self.series_mean_post = nn.Sequential(
+                nn.LayerNorm(h),
+                nn.Linear(h, h),
+                nn.GELU(),
+            )
+        else:
+            self.series_blocks = nn.ModuleList(
+                [
+                    AlibiBlock(
+                        h,
+                        config.n_heads,
+                        mlp_ratio=4.0,
+                        dropout=config.dropout,
+                        distance_mode=config.aggregator,
+                    )
+                    for _ in range(config.series_depth)
+                ]
+            )
+            self.series_mean_post = nn.Identity()
         self.series_norm = nn.LayerNorm(h)
         self.plane_embedding = nn.Embedding(4, h)
         self.fluid_embedding = nn.Embedding(3, h)
@@ -192,13 +201,19 @@ class PatchKneeAlibiModel(nn.Module):
         masks = effective_slices[:, :, None, :].expand(-1, -1, targets, -1).reshape(
             batch * n_series * targets, n_slices
         )
-        cls = self.series_cls[None, None, :, :].expand(
-            batch, n_series, -1, -1
-        ).reshape(batch * n_series * targets, 1, self.config.hidden_dim)
-        encoded = torch.cat([cls, flat], dim=1)
-        for block in self.series_blocks:
-            encoded = block(encoded, positions, masks)
-        series_tokens = self.series_norm(encoded[:, 0]).reshape(
+        if self.config.aggregator == "mean":
+            denominator = masks.sum(dim=1, keepdim=True).clamp_min(1).to(flat.dtype)
+            encoded_series = (flat * masks[..., None].to(flat.dtype)).sum(dim=1)
+            encoded_series = self.series_mean_post(encoded_series / denominator)
+        else:
+            cls = self.series_cls[None, None, :, :].expand(
+                batch, n_series, -1, -1
+            ).reshape(batch * n_series * targets, 1, self.config.hidden_dim)
+            encoded = torch.cat([cls, flat], dim=1)
+            for block in self.series_blocks:
+                encoded = block(encoded, positions, masks)
+            encoded_series = encoded[:, 0]
+        series_tokens = self.series_norm(encoded_series).reshape(
             batch, n_series, targets, self.config.hidden_dim
         )
         series_tokens = series_tokens * effective_series[..., None, None].to(series_tokens.dtype)

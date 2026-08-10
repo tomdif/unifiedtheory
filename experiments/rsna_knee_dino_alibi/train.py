@@ -309,8 +309,6 @@ def main() -> None:
     if args.model_type == "patch":
         if "patch_features" not in example:
             raise ValueError("--model-type patch requires caches extracted with --patch-grid")
-        if args.aggregator == "mean":
-            raise ValueError("patch model does not implement the mean-pooling control")
         if args.report_weight:
             raise ValueError("report embedding contrastive loss is currently summary-model only")
         config = PatchKneeModelConfig(

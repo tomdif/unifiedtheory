@@ -113,6 +113,34 @@ def main() -> None:
     if slice_error > 3e-5:
         raise AssertionError(f"slice permutation changed logits by {slice_error}")
 
+    mean_config = PatchKneeModelConfig(
+        feature_dim=12,
+        patch_dim=6,
+        hidden_dim=16,
+        n_heads=4,
+        series_depth=1,
+        study_depth=1,
+        dropout=0.0,
+        aggregator="mean",
+        num_targets=3,
+        series_dropout=0.0,
+        token_adapter_bottleneck=0,
+    )
+    mean_model = PatchKneeAlibiModel(mean_config).eval()
+    with torch.no_grad():
+        mean_reference = mean_model(**batch)
+        mean_slice_output = mean_model(**permuted_slice)
+    mean_slice_error = float((mean_reference - mean_slice_output).abs().max())
+    if mean_slice_error > 3e-5:
+        raise AssertionError(f"patch mean changed under slice permutation by {mean_slice_error}")
+    shifted_positions = dict(batch)
+    shifted_positions["positions_mm"] = batch["positions_mm"] * 11.0 + 37.0
+    with torch.no_grad():
+        mean_position_output = mean_model(**shifted_positions)
+    mean_position_error = float((mean_reference - mean_position_output).abs().max())
+    if mean_position_error > 1e-6:
+        raise AssertionError(f"patch mean used physical positions by {mean_position_error}")
+
     train_model = PatchKneeAlibiModel(config).train()
     labels = torch.tensor(
         [[0.0, 1.0, 0.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
@@ -139,6 +167,8 @@ def main() -> None:
                 },
                 "patch_permutation_error": patch_error,
                 "slice_permutation_error": slice_error,
+                "mean_slice_permutation_error": mean_slice_error,
+                "mean_position_invariance_error": mean_position_error,
                 "overfit_initial": losses[0],
                 "overfit_final": losses[-1],
             },

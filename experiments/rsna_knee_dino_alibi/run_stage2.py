@@ -16,7 +16,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--seeds", type=int, nargs="+", default=[2026])
-    parser.add_argument("--aggregator", choices=("index_alibi", "physical_alibi"), default="physical_alibi")
+    parser.add_argument(
+        "--aggregator",
+        choices=("mean", "index_alibi", "physical_alibi"),
+        default="mean",
+    )
     parser.add_argument("--token-adapter-bottleneck", type=int, default=64)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--epochs", type=int, default=30)
