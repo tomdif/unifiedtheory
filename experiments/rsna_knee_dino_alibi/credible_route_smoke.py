@@ -90,8 +90,19 @@ def main() -> None:
         sample = labels[["StudyInstanceUID", *TARGETS]].copy()
         sample_path = root / "sample.csv"
         anchor_submission = root / "anchor_submission.csv"
+        anchor_runtime = root / "anchor_runtime.json"
         sample.to_csv(sample_path, index=False)
         sample.to_csv(anchor_submission, index=False)
+        anchor_runtime.write_text(
+            json.dumps(
+                {
+                    "studies": len(sample),
+                    "checkpoints": [
+                        str(root / f"anchor_fold{fold}.pt") for fold in range(4)
+                    ],
+                }
+            )
+        )
         subprocess.run(
             [
                 sys.executable,
@@ -101,6 +112,8 @@ def main() -> None:
                 "--data-root", str(root),
                 "--sample-submission", str(sample_path),
                 "--existing-member", f"anchor={anchor_submission}",
+                "--existing-runtime", f"anchor={anchor_runtime}",
+                "--require-existing-runtime",
                 "--work-dir", str(root / "inference"),
                 "--output", str(root / "submission.csv"),
                 "--dry-run",

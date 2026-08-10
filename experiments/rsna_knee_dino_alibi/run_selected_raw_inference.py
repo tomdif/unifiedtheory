@@ -26,6 +26,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--sample-submission", type=Path, required=True)
     parser.add_argument("--existing-member", action="append", default=[], help="NAME=CSV")
+    parser.add_argument(
+        "--existing-runtime",
+        action="append",
+        default=[],
+        help="NAME=RUNTIME_JSON produced alongside an existing member",
+    )
+    parser.add_argument(
+        "--require-existing-runtime",
+        action="store_true",
+        help="fail unless every existing member has matching checkpoint provenance",
+    )
     parser.add_argument("--work-dir", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=4)
@@ -33,16 +44,50 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def parse_existing(values: list[str]) -> dict[str, Path]:
+def parse_named_paths(values: list[str], kind: str) -> dict[str, Path]:
     result = {}
     for value in values:
         if "=" not in value:
-            raise ValueError("existing member must be NAME=CSV")
+            raise ValueError(f"{kind} must be NAME=PATH")
         name, path = value.split("=", 1)
         if name in result:
-            raise ValueError(f"duplicate existing member {name!r}")
+            raise ValueError(f"duplicate {kind} {name!r}")
         result[name] = Path(path)
     return result
+
+
+def expected_checkpoints(blend: dict[str, Any], name: str) -> set[str]:
+    sources = blend.get("source_files", {}).get(name)
+    if not isinstance(sources, list) or not sources:
+        raise ValueError(f"blend has no OOF provenance for existing member {name!r}")
+    expected = set()
+    for value in sources:
+        path = Path(value)
+        if not path.name.endswith("_oof.csv"):
+            raise ValueError(f"cannot derive checkpoint from OOF source {path}")
+        expected.add(str(path.with_name(path.name.removesuffix("_oof.csv") + ".pt")))
+    return expected
+
+
+def validate_existing_runtime(
+    blend: dict[str, Any], name: str, csv_path: Path, runtime_path: Path
+) -> dict[str, Any]:
+    if not runtime_path.is_file():
+        raise FileNotFoundError(runtime_path)
+    runtime = json.loads(runtime_path.read_text())
+    observed = runtime.get("checkpoints")
+    if not isinstance(observed, list) or not all(isinstance(path, str) for path in observed):
+        raise ValueError(f"runtime for {name!r} has no checkpoint list")
+    expected = expected_checkpoints(blend, name)
+    if set(observed) != expected:
+        raise ValueError(
+            f"existing member {name!r} checkpoint family differs from its OOF family: "
+            f"expected={sorted(expected)}, observed={sorted(observed)}"
+        )
+    rows = len(pd.read_csv(csv_path, usecols=["StudyInstanceUID"]))
+    if int(runtime.get("studies", -1)) != rows:
+        raise ValueError(f"existing member {name!r} runtime row count disagrees with its CSV")
+    return runtime
 
 
 def main() -> None:
@@ -51,7 +96,17 @@ def main() -> None:
     registry: dict[str, Any] = json.loads(args.registry.read_text())
     selected = list(blend["members"])
     families = registry["families"]
-    paths = parse_existing(args.existing_member)
+    paths = parse_named_paths(args.existing_member, "existing member")
+    runtimes = parse_named_paths(args.existing_runtime, "existing runtime")
+    if set(runtimes).difference(paths):
+        raise ValueError("runtime provenance was provided for a non-existing member")
+    if args.require_existing_runtime and set(paths) != set(runtimes):
+        raise ValueError("every existing member requires a runtime provenance file")
+    existing_provenance = {
+        name: validate_existing_runtime(blend, name, path, runtimes[name])
+        for name, path in paths.items()
+        if name in runtimes
+    }
     args.work_dir.mkdir(parents=True, exist_ok=True)
     commands = []
     here = Path(__file__).resolve().parent
@@ -93,6 +148,13 @@ def main() -> None:
         "selected": selected,
         "inference_commands": commands,
         "blend_command": blend_command,
+        "existing_provenance": {
+            name: {
+                "runtime": str(runtimes[name]),
+                "checkpoints": value["checkpoints"],
+            }
+            for name, value in existing_provenance.items()
+        },
         "uploaded": False,
         "submitted": False,
         "state": "dry_run" if args.dry_run else "running",
