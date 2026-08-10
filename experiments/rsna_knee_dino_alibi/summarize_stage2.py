@@ -75,6 +75,16 @@ def main() -> None:
             y = pd.to_numeric(joined[target], errors="coerce").where(marker > 0)
             baseline_auc = auc(y, joined[f"{target}__baseline"])
             candidate_auc = auc(y, joined[f"{target}__candidate"])
+            # This is a fixed diversity test, not a fitted stack: both members
+            # receive equal weight after ranking over the complete held-out
+            # fold.  Expert labels are used only below for evaluation.
+            baseline_rank = joined[f"{target}__baseline"].rank(
+                method="average", pct=True
+            )
+            candidate_rank = joined[f"{target}__candidate"].rank(
+                method="average", pct=True
+            )
+            blend_auc = auc(y, (baseline_rank + candidate_rank) / 2)
             rows.append(
                 {
                     "fold": fold,
@@ -82,6 +92,8 @@ def main() -> None:
                     "baseline_auc": baseline_auc,
                     "candidate_auc": candidate_auc,
                     "gain": candidate_auc - baseline_auc,
+                    "fixed_rank_blend_auc": blend_auc,
+                    "fixed_rank_blend_gain": blend_auc - baseline_auc,
                 }
             )
     cells = pd.DataFrame(rows)
@@ -90,6 +102,8 @@ def main() -> None:
     baseline_macro = float(cells["baseline_auc"].mean())
     candidate_macro = float(cells["candidate_auc"].mean())
     gain = candidate_macro - baseline_macro
+    blend_macro = float(cells["fixed_rank_blend_auc"].mean())
+    blend_gain = blend_macro - baseline_macro
     result = {
         "paired_fold_target_cells": int(cells["gain"].notna().sum()),
         "baseline_macro_auc": baseline_macro,
@@ -102,11 +116,21 @@ def main() -> None:
             int((cells["gain"] == 0).sum()),
             int((cells["gain"] < 0).sum()),
         ],
+        "fixed_rank_blend_macro_auc": blend_macro,
+        "fixed_rank_blend_gain": blend_gain,
+        "promote_fixed_rank_blend": bool(blend_gain >= args.minimum_gain),
+        "fixed_rank_blend_better_equal_worse_cells": [
+            int((cells["fixed_rank_blend_gain"] > 0).sum()),
+            int((cells["fixed_rank_blend_gain"] == 0).sum()),
+            int((cells["fixed_rank_blend_gain"] < 0).sum()),
+        ],
         "target_auc": {
             target: {
                 "baseline": float(group["baseline_auc"].mean()),
                 "candidate": float(group["candidate_auc"].mean()),
                 "gain": float(group["gain"].mean()),
+                "fixed_rank_blend": float(group["fixed_rank_blend_auc"].mean()),
+                "fixed_rank_blend_gain": float(group["fixed_rank_blend_gain"].mean()),
             }
             for target, group in cells.groupby("target", sort=False)
         },
