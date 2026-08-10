@@ -13,9 +13,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--skip-existing", action="store_true")
     args, extra = parser.parse_known_args()
     here = Path(__file__).resolve().parent
     for fold in range(args.folds):
+        existing = sorted(args.output.glob(f"*_fold{fold}.pt"))
+        if args.skip_existing and existing:
+            print(f"skip fold {fold}: {existing}", flush=True)
+            continue
         command = [
             sys.executable,
             str(here / "train_raw_mil.py"),
