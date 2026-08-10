@@ -272,6 +272,34 @@ The zero-bottleneck first pass isolates spatial target pooling. Cached-token
 adaptation is a separate escalation only after the spatial model improves the
 same gold folds.
 
+After all three patch seeds finish, audit the fixed family ensemble. Every
+summary and patch checkpoint has equal rank weight; the audit fits neither
+target-wise weights nor a model selector:
+
+```bash
+python audit_fixed_family_ensemble.py \
+  --labels-csv /workspace/labels/train_targets.csv \
+  --summary-runs /workspace/runs/dinov2_alibi \
+  --patch-runs /workspace/runs/dinov2_patch_mean \
+  --output /workspace/runs/fixed_family_ensemble
+```
+
+The promotion runner is fail-closed. It requires the exact preregistered
+contract, all 60 fold-target cells, and the complete 30-checkpoint mean/patch
+matrix before performing offline inference. It creates and validates a local
+submission file but never uploads it to Kaggle:
+
+```bash
+python run_promoted_family_inference.py \
+  --audit-summary /workspace/runs/fixed_family_ensemble/audit_summary.json \
+  --summary-runs /workspace/runs/dinov2_alibi \
+  --patch-runs /workspace/runs/dinov2_patch_mean \
+  --data-root /workspace/rsna-knee \
+  --dino-model /kaggle/input/dinov2-base-offline/dinov2-base \
+  --work-dir /kaggle/working/fixed-family-cache \
+  --output /kaggle/working/submission.csv
+```
+
 Repeat folds 0 through 4 for each promoted backbone. Do not tune on the public
 leaderboard; grouped OOF validation is the model-selection surface.
 
