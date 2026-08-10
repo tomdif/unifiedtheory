@@ -181,6 +181,21 @@ python report_teacher.py \
   --output /workspace/labels/train_targets.csv
 ```
 
+For the public-label escalation, combine independently published CC0 report
+readers with one fixed equal-source rule. No source or target weight is fitted
+on the 58 official labels; those labels are used only as exact overrides and
+as an audit surface:
+
+```bash
+python consensus_labels.py \
+  --train-csv /workspace/rsna-knee/train.csv \
+  --folds-csv /workspace/labels/train_targets.csv \
+  --source /workspace/labels/public_llm/pilkwang/report_labels_v2.csv \
+  --source /workspace/labels/public_llm/steven/llm_labels_v2.csv \
+  --source /workspace/labels/public_llm/lixin/labels_llm_gpt56sol.csv \
+  --output /workspace/labels/train_targets_llm_consensus.csv
+```
+
 Checkpoint selection uses only expert (`__gold`) validation entries whenever
 both classes are available. Weak labels can increase training coverage but can
 never make their own teacher look good in validation.
