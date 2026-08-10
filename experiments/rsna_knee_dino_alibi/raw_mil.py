@@ -329,11 +329,19 @@ class SliceFeatureBackbone(nn.Module):
         self.name = name
         self.load_report: dict[str, Any] | None = None
         if name == "dinov2":
-            from transformers import AutoModel
+            from transformers import AutoConfig, AutoModel
 
             if not model_name:
                 raise ValueError("dinov2 requires --model-name")
-            self.model = AutoModel.from_pretrained(model_name, local_files_only=local_files_only)
+            if pretrained:
+                self.model = AutoModel.from_pretrained(
+                    model_name, local_files_only=local_files_only
+                )
+            else:
+                config = AutoConfig.from_pretrained(
+                    model_name, local_files_only=local_files_only
+                )
+                self.model = AutoModel.from_config(config)
             hidden = int(self.model.config.hidden_size)
             self.output_dim = 2 * hidden
             freeze_except_last_blocks(self.model, trainable_blocks)
@@ -358,13 +366,12 @@ class SliceFeatureBackbone(nn.Module):
         elif name == "radimagenet_resnet50":
             from torchvision.models import resnet50
 
-            if checkpoint is None:
-                raise ValueError("radimagenet_resnet50 requires --backbone-checkpoint")
             resnet = resnet50(weights=None)
             self.model = nn.Sequential(*list(resnet.children())[:-1])
             self.output_dim = int(resnet.fc.in_features)
             self.num_register_tokens = 0
-            self.load_report = _load_external_state(self.model, checkpoint)
+            if checkpoint is not None:
+                self.load_report = _load_external_state(self.model, checkpoint)
             for parameter in self.model.parameters():
                 parameter.requires_grad = False
             stages = [stage for stage in self.model if any(True for _ in stage.parameters())]

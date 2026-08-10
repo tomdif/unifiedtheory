@@ -163,6 +163,8 @@ def main() -> None:
     args = parse_args()
     if args.accumulate < 1:
         raise ValueError("--accumulate must be positive")
+    if args.backbone == "radimagenet_resnet50" and args.backbone_checkpoint is None:
+        raise ValueError("radimagenet_resnet50 training requires --backbone-checkpoint")
     seed_everything(args.seed)
     torch.set_float32_matmul_precision("high")
     args.output.mkdir(parents=True, exist_ok=True)
@@ -268,7 +270,10 @@ def main() -> None:
             torch.save(
                 {
                     "model": model.state_dict(),
-                    "args": vars(args),
+                    "args": {
+                        key: str(value) if isinstance(value, Path) else value
+                        for key, value in vars(args).items()
+                    },
                     "targets": TARGETS,
                     "fold": args.fold,
                     "score": score,
