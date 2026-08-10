@@ -1,0 +1,107 @@
+{
+  "paired_fold_target_cells": 60,
+  "baseline_macro_auc": 0.6763403880070549,
+  "candidate_macro_auc": 0.7516628086419753,
+  "candidate_gain": 0.07532242063492045,
+  "minimum_preregistered_gain": 0.01,
+  "promote_candidate": true,
+  "better_equal_worse_cells": [
+    37,
+    4,
+    19
+  ],
+  "fixed_rank_blend_macro_auc": 0.7258735670194003,
+  "fixed_rank_blend_gain": 0.04953317901234544,
+  "promote_fixed_rank_blend": true,
+  "fixed_rank_blend_better_equal_worse_cells": [
+    36,
+    6,
+    18
+  ],
+  "target_auc": {
+    "ACL": {
+      "baseline": 0.5232142857142857,
+      "candidate": 0.7618452380952381,
+      "gain": 0.23863095238095236,
+      "fixed_rank_blend": 0.6724404761904761,
+      "fixed_rank_blend_gain": 0.14922619047619048
+    },
+    "MCL": {
+      "baseline": 0.6977777777777778,
+      "candidate": 0.6377777777777778,
+      "gain": -0.059999999999999984,
+      "fixed_rank_blend": 0.6611111111111112,
+      "fixed_rank_blend_gain": -0.036666666666666646
+    },
+    "Medial Meniscus": {
+      "baseline": 0.7317460317460317,
+      "candidate": 0.6644444444444445,
+      "gain": -0.06730158730158728,
+      "fixed_rank_blend": 0.7101587301587302,
+      "fixed_rank_blend_gain": -0.021587301587301554
+    },
+    "Lateral Meniscus": {
+      "baseline": 0.5502645502645502,
+      "candidate": 0.7227513227513228,
+      "gain": 0.17248677248677252,
+      "fixed_rank_blend": 0.6695767195767196,
+      "fixed_rank_blend_gain": 0.11931216931216933
+    },
+    "Medial OA": {
+      "baseline": 0.7415343915343915,
+      "candidate": 0.8703703703703702,
+      "gain": 0.1288359788359788,
+      "fixed_rank_blend": 0.8185185185185185,
+      "fixed_rank_blend_gain": 0.07698412698412702
+    },
+    "Lateral OA": {
+      "baseline": 0.6733333333333332,
+      "candidate": 0.75,
+      "gain": 0.07666666666666669,
+      "fixed_rank_blend": 0.7166666666666667,
+      "fixed_rank_blend_gain": 0.043333333333333356
+    },
+    "PF OA": {
+      "baseline": 0.6641468253968255,
+      "candidate": 0.7048280423280423,
+      "gain": 0.040681216931216936,
+      "fixed_rank_blend": 0.7191071428571428,
+      "fixed_rank_blend_gain": 0.05496031746031742
+    },
+    "Effusion": {
+      "baseline": 0.5393121693121694,
+      "candidate": 0.8123280423280423,
+      "gain": 0.27301587301587305,
+      "fixed_rank_blend": 0.6513492063492065,
+      "fixed_rank_blend_gain": 0.11203703703703705
+    },
+    "Synovitis": {
+      "baseline": 0.7953968253968254,
+      "candidate": 0.7838095238095238,
+      "gain": -0.011587301587301545,
+      "fixed_rank_blend": 0.812857142857143,
+      "fixed_rank_blend_gain": 0.01746031746031749
+    },
+    "Baker's": {
+      "baseline": 0.7711111111111111,
+      "candidate": 0.8466666666666667,
+      "gain": 0.07555555555555556,
+      "fixed_rank_blend": 0.8059259259259258,
+      "fixed_rank_blend_gain": 0.034814814814814854
+    },
+    "Contusion": {
+      "baseline": 0.71505291005291,
+      "candidate": 0.7179100529100528,
+      "gain": 0.002857142857142847,
+      "fixed_rank_blend": 0.7373544973544973,
+      "fixed_rank_blend_gain": 0.022301587301587288
+    },
+    "Fracture": {
+      "baseline": 0.7131944444444445,
+      "candidate": 0.7472222222222222,
+      "gain": 0.03402777777777775,
+      "fixed_rank_blend": 0.7354166666666667,
+      "fixed_rank_blend_gain": 0.0222222222222222
+    }
+  }
+}

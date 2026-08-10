@@ -118,6 +118,21 @@ cells, tied 5, and worsened 19.
 Effusion is the clear failure channel. The rank ensemble is a valid promoted
 baseline but not a plausible top-leaderboard endpoint.
 
+## Three-source public-label transfer
+
+A fixed equal arithmetic mean of three independently published LLM report
+label tables replaced the original local report teacher. The architecture,
+seed, scanner-group folds, and checkpoint-selection rule were held fixed. On
+all 60 expert fold-target cells, macro OOF AUC increased from **0.67634** to
+**0.75166** (+0.07532); 37 cells improved, 4 tied, and 19 worsened. The largest
+gains were Effusion (+0.2730) and ACL (+0.2386). MCL and Medial Meniscus
+regressed, so final target-wise family choice remains nested rather than
+assuming uniform transfer. See `llm_consensus_teacher_transfer.json` and CSV.
+
+An early nested rank blend of the old and consensus-supervised patch members
+scored 0.72622, below the consensus member alone. It is not promoted; the
+blend audit will be repeated after the raw DINO/CNN specialists finish.
+
 ## Offline inference execution
 
 The complete `kaggle_offline_infer.py` path ran with local DINO weights,
