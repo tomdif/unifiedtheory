@@ -14,9 +14,11 @@ from pydicom.uid import ExplicitVRLittleEndian, MRImageStorage, generate_uid
 try:
     from .constants import PLANE_TO_ID
     from .extract_features import _read_series, prepare_25d_images
+    from .raw_mil import SeriesRecord, load_series_tensor
 except ImportError:
     from constants import PLANE_TO_ID
     from extract_features import _read_series, prepare_25d_images
+    from raw_mil import SeriesRecord, load_series_tensor
 
 
 def write_slice(
@@ -86,6 +88,23 @@ def main() -> None:
             raise AssertionError(f"unexpected 2.5-D output shape: {images[0].shape}")
         if not np.array_equal(selected, expected):
             raise AssertionError("selected physical positions changed unexpectedly")
+        raw_pixels, raw_positions = load_series_tensor(
+            SeriesRecord(
+                uid="synthetic",
+                plane=PLANE_TO_ID["sagittal"],
+                fluid=0,
+                fatsat=0,
+                directory=str(root),
+            ),
+            slices=5,
+            crop_mm=24.0,
+            image_size=32,
+            training=False,
+        )
+        if raw_pixels.shape != (5, 3, 32, 32) or not raw_pixels.isfinite().all():
+            raise AssertionError(f"raw loader did not recover from corrupt frame: {raw_pixels.shape}")
+        if raw_positions.shape != (5,):
+            raise AssertionError("raw loader returned invalid physical positions")
         print(
             json.dumps(
                 {

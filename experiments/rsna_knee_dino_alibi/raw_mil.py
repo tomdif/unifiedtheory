@@ -151,8 +151,23 @@ def load_series_tensor(
     )
     decoded: dict[int, tuple[Any, np.ndarray]] = {}
     for index in needed:
-        ds = pydicom.dcmread(ordered[index][0], force=True)
-        decoded[index] = (ds, _crop_physical(_pixel_array(ds), ds, crop_mm))
+        try:
+            ds = pydicom.dcmread(ordered[index][0], force=True)
+            decoded[index] = (ds, _crop_physical(_pixel_array(ds), ds, crop_mm))
+        except Exception as error:
+            print(
+                f"warning: skipping unreadable DICOM {ordered[index][0]}: "
+                f"{type(error).__name__}: {error}",
+                flush=True,
+            )
+    if not decoded:
+        raise RuntimeError(f"all selected frames are unreadable in {record.directory}")
+    readable = np.asarray(sorted(decoded), dtype=np.int64)
+
+    def nearest(index: int) -> int:
+        return int(readable[np.abs(readable - index).argmin()])
+
+    centers = np.asarray([nearest(int(index)) for index in centers], dtype=np.int64)
     arrays = [value[1] for value in decoded.values()]
     low = float(np.median([np.percentile(array, 1) for array in arrays]))
     high = float(np.median([np.percentile(array, 99) for array in arrays]))
@@ -168,9 +183,9 @@ def load_series_tensor(
     images = []
     for center in centers:
         triplet = [
-            normalized(max(0, int(center) - 1)),
+            normalized(nearest(max(0, int(center) - 1))),
             normalized(int(center)),
-            normalized(min(len(ordered) - 1, int(center) + 1)),
+            normalized(nearest(min(len(ordered) - 1, int(center) + 1))),
         ]
         images.append(torch.stack(triplet))
     pixels = torch.stack(images)
