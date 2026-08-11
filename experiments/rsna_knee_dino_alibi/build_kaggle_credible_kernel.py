@@ -41,12 +41,16 @@ def sha256(path: Path) -> str:
 def selected_checkpoint_contract(blend: dict[str, Any]) -> dict[str, list[dict[str, str]]]:
     contract = {}
     for name in blend["members"]:
-        sources = blend.get("source_files", {}).get(name)
-        if not isinstance(sources, list) or not sources:
-            raise ValueError(f"blend has no source files for {name!r}")
+        checkpoints = blend.get("checkpoint_source_files", {}).get(name)
+        if isinstance(checkpoints, list) and checkpoints:
+            sources = [Path(source) for source in checkpoints]
+        else:
+            oof_sources = blend.get("source_files", {}).get(name)
+            if not isinstance(oof_sources, list) or not oof_sources:
+                raise ValueError(f"blend has no source files for {name!r}")
+            sources = [checkpoint_from_oof(source) for source in oof_sources]
         rows = []
-        for source in sources:
-            checkpoint = checkpoint_from_oof(source)
+        for checkpoint in sources:
             if not checkpoint.is_file():
                 raise FileNotFoundError(checkpoint)
             rows.append({"name": checkpoint.name, "sha256": sha256(checkpoint)})

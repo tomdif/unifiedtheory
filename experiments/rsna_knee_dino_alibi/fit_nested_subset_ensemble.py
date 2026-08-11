@@ -33,6 +33,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--audit", type=Path, required=True)
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--anchor", required=True, help="required NAME=OOF_GLOB")
+    parser.add_argument(
+        "--anchor-checkpoint-glob",
+        action="append",
+        default=[],
+        help="checkpoint glob(s) implementing the anchor OOF member",
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--minimum-nested-gain", type=float, default=0.005)
     parser.add_argument("--fold-column", default="fold")
@@ -83,6 +89,12 @@ def promoted_paths(
         folds = sorted(output.glob(pattern.replace("{fold}", "*")))
         loaded.append((name, folds))
     return loaded
+
+
+def checkpoint_from_oof(path: Path) -> Path:
+    if not path.name.endswith("_oof.csv"):
+        raise ValueError(f"cannot derive checkpoint from OOF source {path}")
+    return path.with_name(path.name.removesuffix("_oof.csv") + ".pt")
 
 
 def auc(y: np.ndarray, score: np.ndarray) -> float:
@@ -202,6 +214,24 @@ def main() -> None:
     final_subset = full_subset if promote else (0,)
     final_names = [names[index] for index in final_subset]
     weight = 1.0 / len(final_names)
+    anchor_checkpoints = [
+        Path(path)
+        for pattern in args.anchor_checkpoint_glob
+        for path in sorted(glob.glob(pattern))
+    ]
+    if args.anchor_checkpoint_glob and not anchor_checkpoints:
+        raise ValueError("anchor checkpoint globs resolved to no files")
+    checkpoint_source_files = {
+        name: [
+            str(path)
+            for path in (
+                anchor_checkpoints
+                if name == anchor_name and anchor_checkpoints
+                else [checkpoint_from_oof(source) for source in paths]
+            )
+        ]
+        for name, _, paths in members
+    }
     artifact = {
         "schema_version": 1,
         "method": "nested globally-selected equal-rank subset",
@@ -217,6 +247,7 @@ def main() -> None:
         "minimum_nested_gain": args.minimum_nested_gain,
         "raw_extension_promoted": promote,
         "source_files": {name: [str(path) for path in paths] for name, _, paths in members},
+        "checkpoint_source_files": checkpoint_source_files,
         "fold_results": nested_rows,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

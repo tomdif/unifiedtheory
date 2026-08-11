@@ -57,6 +57,11 @@ def parse_named_paths(values: list[str], kind: str) -> dict[str, Path]:
 
 
 def expected_checkpoints(blend: dict[str, Any], name: str) -> set[str]:
+    checkpoints = blend.get("checkpoint_source_files", {}).get(name)
+    if isinstance(checkpoints, list) and checkpoints:
+        if not all(isinstance(path, str) for path in checkpoints):
+            raise ValueError(f"blend has invalid checkpoint provenance for {name!r}")
+        return set(checkpoints)
     sources = blend.get("source_files", {}).get(name)
     if not isinstance(sources, list) or not sources:
         raise ValueError(f"blend has no OOF provenance for existing member {name!r}")
