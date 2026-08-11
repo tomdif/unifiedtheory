@@ -5587,6 +5587,13 @@ import UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
 -- proves that this datum is not automatic.  Thus this is a qualified bridge,
 -- not a derived Lorentzian Dirac continuum limit.
 import UnifiedTheory.Audit.KFCausalCSpecContinuumChiralityQualification
+-- Fact stability: records are martingale-stable under Born completeness
+-- (transport, accretion, convergence), and the coherent sum rule has an
+-- explicit two-stage regression witness (a monotone record falling
+-- 4/5 -> 4/9): the record churn measured on 2026-08-03 is exactly the
+-- Born defect of the coherent rule, closing the finite-depth record half
+-- of the Born-normalization transfer audit's open item 3.
+import UnifiedTheory.Audit.KFCausalBornRecordMartingale
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

@@ -43,6 +43,26 @@ is hereby reframed: facts fail in this theory primarily because the
 quantum measure is not a martingale under horizon extension - not
 primarily because of interference.
 
+## Referee additions (filed)
+
+THE FORK REFUTED ITS PREMISE: all three registered readings were
+conditioned on "churn is what dephasing moves"; the run showed churn
+was never coherence-dominated.  The fork was well-formed against the
+wrong decomposition; the response - decompose, reframe, re-register -
+is the correct one, and the outcome fits no branch because the
+branches shared a false presupposition.
+
+CLASS-LEVEL EXCLUSION (corollary of the decomposition): any
+completion whose sole action is damping off-diagonals - in ANY basis,
+at ANY rate schedule lambda_n - leaves normalization flow untouched
+and cannot reduce churn below ~86% of its quantum value.
+Collapse-style mechanisms attack coherence; the obstruction is
+consistency.  This retires the entire modification strategy the
+lambda-family exemplified, and explains why three days of
+decoherence instruments pointed at the wrong invariant: decoherence
+theory assumes the measure is a martingale and interference spoils
+the diagonal; here the diagonal spoils itself.
+
 ## Verdict and the identified next theory
 
 Reading (ii)+: dephasing alone cannot complete the theory at any
