@@ -1,0 +1,29 @@
+== point identities ==
+BD 4D prefactor 4/sqrt6           = 1.632993
+gamma(c=0)                        = 1.632993
+sqrt(8/3)                         = 1.632993
+Watabiki d_H(c=0)                 = 4.000000  (Le Gall theorem: 4)
+SLE kappa = gamma^2 at c=0        = 2.666667  (= 8/3, SAW)
+Starobinsky exponent sqrt(2/3)    = 0.816497 = (4/sqrt6)/2 = 0.816497
+
+== family-map tests (structure would need these to pass) ==
+Dowker-Glaser beta_3              = 0.906659
+  c with gamma(c) = beta_3        = -17.429   (nothing distinguished)
+  gamma with Watabiki d_H = 3     = 1.095445  vs beta_3 = 0.906659  (mismatch 20.8%)
+  sqrt(2d/3) at d=2               = 1.154701  vs 2D constants 2 and 4 (fails)
+
+== mating-of-trees dictionary (exploratory) ==
+pure gravity c=0       gamma = 1.6330  rho = +0.5000  target r = 0.6667
+spanning trees c=-2    gamma = 1.4142  rho = +0.0000  target r = 0.5000
+c=1 barrier            gamma = 2.0000  rho = +1.0000  target r = 1.0000
+
+pi/4 law r(8)          r = 0.4136  rho_eff = -0.2681  gamma_eff = 1.2862  c_eff = -3.99
+pi/4 law r(7)          r = 0.3942  rho_eff = -0.3263  gamma_eff = 1.2557  c_eff = -4.59
+4/sqrt6 4D law r(7)    r = 0.3905  rho_eff = -0.3373  gamma_eff = 1.2498  c_eff = -4.71
+uniform growth r(8)    r = 0.5080  rho_eff = +0.0251  gamma_eff = 1.4255  c_eff = -1.86
+2D sprinkling          r = 0.4997  rho_eff = -0.0009  gamma_eff = 1.4138  c_eff = -2.01
+
+sharp asymptotic discriminators: r -> 1/2 <=> independent walks
+(c = -2 class); r -> 2/3 <=> pure gravity/Brownian map (c = 0).
+current pi/4 trend: 0.30 -> 0.41 rising, target undetermined,
+pointing at ~1/2 rather than 2/3 at accessible depth.
