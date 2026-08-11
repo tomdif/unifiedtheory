@@ -475,6 +475,11 @@ unknown or blocked external asset. In particular, the public
 repository currently declares no license; the code does not treat public
 downloadability as permission.
 
+`adaptive_review_gate.py` joins the preregistered Stage-2 audit to the limited
+systems-pilot runtime evidence. Its output always sets
+`full_cv_authorized: false` and stops at `manual_review_required`; a limited
+pilot can validate execution but cannot promote itself into five-fold CV.
+
 ## RunPod handoff
 
 Copy this directory to the pod, install dependencies in its persistent volume,

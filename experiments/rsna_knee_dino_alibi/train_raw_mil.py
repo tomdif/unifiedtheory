@@ -449,6 +449,30 @@ def main() -> None:
     (args.output / f"{run_name}_fold{args.fold}_history.json").write_text(
         json.dumps(history, indent=2, allow_nan=True, default=str) + "\n"
     )
+    if args.limit_studies and not checkpoint.is_file():
+        # A systems pilot may have too few expert-positive/negative examples
+        # for a finite AUC. Preserve its runtime/model contract for review, but
+        # mark it explicitly unscored so it cannot masquerade as promotion
+        # evidence.
+        torch.save(
+            {
+                "model": model.state_dict(),
+                "args": {
+                    key: str(value) if isinstance(value, Path) else value
+                    for key, value in vars(args).items()
+                }
+                | {"report_dim": report_dim},
+                "targets": TARGETS,
+                "fold": args.fold,
+                "score": None,
+                "system_pilot_unscored": True,
+                "backbone_load_report": backbone.load_report,
+                "backbone_lora_modules": list(backbone.lora_modules),
+                "trainable_parameters": trainable_parameters,
+                "total_parameters": total_parameters,
+            },
+            checkpoint,
+        )
     print(f"best macro AUC={best:.6f}; checkpoint={checkpoint}")
 
 
