@@ -98,20 +98,27 @@ if len(code_hits) != 1:
     raise RuntimeError(f"expected exactly one code entry point, found {code_hits}")
 code_dir = code_hits[0].parent
 
+digest_cache = {}
+
 def digest(path):
+    key = str(path)
+    if key in digest_cache:
+        return digest_cache[key]
     value = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(8 << 20), b""):
             value.update(chunk)
-    return value.hexdigest()
+    digest_cache[key] = value.hexdigest()
+    return digest_cache[key]
 
 def locate_checkpoint(row):
-    hits = list(INPUT.rglob(row["name"]))
-    hits = [path for path in hits if path.is_file()]
+    named_hits = [path for path in INPUT.rglob(row["name"]) if path.is_file()]
+    hits = [path for path in named_hits if digest(path) == row["sha256"]]
     if len(hits) != 1:
-        raise RuntimeError(f"expected one attached {row['name']}, found {hits}")
-    if digest(hits[0]) != row["sha256"]:
-        raise RuntimeError(f"checkpoint hash mismatch for {hits[0]}")
+        raise RuntimeError(
+            f"expected one hash-matching attached {row['name']}, "
+            f"found {hits} among {named_hits}"
+        )
     return hits[0]
 
 resolved = {
