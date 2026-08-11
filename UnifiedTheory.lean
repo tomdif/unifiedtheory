@@ -5594,6 +5594,13 @@ import UnifiedTheory.Audit.KFCausalCSpecContinuumChiralityQualification
 -- Born defect of the coherent rule, closing the finite-depth record half
 -- of the Born-normalization transfer audit's open item 3.
 import UnifiedTheory.Audit.KFCausalBornRecordMartingale
+-- Gate theorems for the bi-normalized theory: the action-phased root
+-- forces cos phi = sqrt2/2 (phase quantized at the Born-quadrature point
+-- pi/4; the conjugate branch is the orientation mirror), and monotone
+-- records regress by at most (1-lambda) times their own interference —
+-- the lambda-observable separating the partially coherent theory from
+-- decoherence-based quantum mechanics (which predicts zero regression).
+import UnifiedTheory.Audit.KFCausalBornQuadraturePhase
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge

@@ -1,0 +1,46 @@
+[    0.2s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+[    0.4s] parents: 405
+[    0.4s] === STAGE A: per-parent feasibility scan over phi ===
+[   74.3s] phi=0.7854: feasible 405/405 root=Y per-level {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318}
+[   74.3s] phis with ALL parents feasible: ['0.7854']
+[   74.3s] phis with ROOT feasible: ['0.7854']
+[   74.3s] === STAGE B: closure + explicit law at phi = pi/4 ===
+[   74.7s] closure converged after 0 rounds; forbidden parents 0
+[   74.8s] pi/4 law support per level: {7: 68, 6: 30, 5: 15, 3: 4, 4: 7, 1: 1, 2: 2}
+[   74.8s] law checks: worst |coherent-1| = 2.18e-15, worst |Born-1| = 3.33e-16
+[   74.8s] === STAGE C: records test on the action-phased pi/4 law ===
+[   79.1s]   P(Omega) T=1: 1.000000000000   Q_classid(Omega): 1.0000
+[   79.1s]   P(Omega) T=2: 1.000000000000   Q_classid(Omega): 1.0000
+[   79.1s]   P(Omega) T=3: 1.000000000000   Q_classid(Omega): 1.6250
+[   79.1s]   P(Omega) T=4: 1.000000000000   Q_classid(Omega): 3.0486
+[   79.1s]   P(Omega) T=5: 1.000000000000   Q_classid(Omega): 5.0675
+[   79.1s]   P(Omega) T=6: 1.000000000000   Q_classid(Omega): 6.4369
+[   79.1s]   P(Omega) T=7: 1.000000000000   Q_classid(Omega): 8.4941
+[   79.1s] --- stems under Q (pi/4 action-phased law, T=4..7) ---
+[   79.1s]   s0   0.5882  0.6788  0.7473  0.7755
+[   79.1s]   s1   0.0103  0.0195  0.0235  0.0299
+[   79.1s]   s2   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s3   0.4100  0.4681  0.7541  0.7307
+[   79.1s]   s4   0.8591  0.9155  0.9359  0.8986
+[   79.1s]   s5   0.0871  0.5245  0.6851  0.7498
+[   79.1s]   s6   0.0018  0.0060  0.0181  0.0144
+[   79.1s]   s7   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s8   0.0026  0.0282  0.0222  0.0308
+[   79.1s]   s9   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s10  0.0000  0.0000  0.0000  0.0000
+[   79.1s]   Q: X = 0.7300  X_minus = 0.0704  X_plus = 0.6595
+[   79.1s] --- stems under P (pi/4 action-phased law, T=4..7) ---
+[   79.1s]   s0   0.5571  0.5598  0.5612  0.5618
+[   79.1s]   s1   0.0133  0.0170  0.0170  0.0231
+[   79.1s]   s2   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s3   0.4375  0.5755  0.7000  0.7074
+[   79.1s]   s4   0.5885  0.7621  0.7757  0.8022
+[   79.1s]   s5   0.2654  0.4126  0.4862  0.5214
+[   79.1s]   s6   0.0054  0.0093  0.0132  0.0132
+[   79.1s]   s7   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s8   0.0078  0.0296  0.0296  0.0361
+[   79.1s]   s9   0.0000  0.0000  0.0000  0.0000
+[   79.1s]   s10  0.0000  0.0000  0.0000  0.0000
+[   79.1s]   P: X = 0.2991  X_minus = 0.0000  X_plus = 0.2991
+[   79.1s] interference on stems: max|Q-P| = 0.2706
+[   79.1s] DONE
