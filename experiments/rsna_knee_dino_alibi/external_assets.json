@@ -6,42 +6,56 @@
       "identifier": "facebook/dinov2-base",
       "url": "https://huggingface.co/facebook/dinov2-base",
       "license": "Apache-2.0",
-      "role": "public pretrained image feature extractor; packaged locally for offline inference"
+      "role": "public pretrained image feature extractor; packaged locally for offline inference",
+      "competition_eligible": true
+    },
+    {
+      "name": "Torchvision EfficientNet-B3 weights",
+      "identifier": "torchvision/efficientnet_b3",
+      "url": "https://pytorch.org/vision/stable/models/generated/torchvision.models.efficientnet_b3.html",
+      "license": "BSD-3-Clause",
+      "role": "public ImageNet-pretrained image backbone; packaged locally for offline inference",
+      "competition_eligible": true
     },
     {
       "name": "mDeBERTa v3 base MNLI/XNLI",
       "identifier": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
       "url": "https://huggingface.co/MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
       "license": "MIT",
-      "role": "optional training-only multilingual report weak-supervision channel"
+      "role": "optional training-only multilingual report weak-supervision channel",
+      "competition_eligible": true
     },
     {
       "name": "Multilingual MiniLM report encoder",
       "identifier": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
       "url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
       "license": "Apache-2.0",
-      "role": "training-only frozen report embedding teacher; no report text is used at inference"
+      "role": "training-only frozen report embedding teacher; no report text is used at inference",
+      "competition_eligible": true
     },
     {
       "name": "Pilkwang public report labels",
       "identifier": "pilkwang/rsna-knee-llm-labels",
       "url": "https://www.kaggle.com/datasets/pilkwang/rsna-knee-llm-labels",
       "license": "CC0-1.0",
-      "role": "one equally weighted source in the fixed report-label consensus"
+      "role": "one equally weighted source in the fixed report-label consensus",
+      "competition_eligible": true
     },
     {
       "name": "Steven Lee Hans public report labels",
       "identifier": "stevenleehans/rsna-knee-llm-report-labels",
       "url": "https://www.kaggle.com/datasets/stevenleehans/rsna-knee-llm-report-labels",
       "license": "CC0-1.0",
-      "role": "one equally weighted source in the fixed report-label consensus"
+      "role": "one equally weighted source in the fixed report-label consensus",
+      "competition_eligible": true
     },
     {
       "name": "Lixin public GPT-5.6-Sol report labels",
       "identifier": "lixin73/rsna-knee-llm-report-labels-sol56",
       "url": "https://www.kaggle.com/datasets/lixin73/rsna-knee-llm-report-labels-sol56",
       "license": "CC0-1.0",
-      "role": "one equally weighted source in the fixed report-label consensus"
+      "role": "one equally weighted source in the fixed report-label consensus",
+      "competition_eligible": true
     },
     {
       "name": "RadImageNet ResNet-50 weights",
@@ -49,7 +63,40 @@
       "url": "https://www.kaggle.com/datasets/marwanmath/resnet-50-radimagenet-marwan",
       "upstream_url": "https://github.com/BMEII-AI/RadImageNet",
       "license": "CC-BY-NC-SA-4.0 (Kaggle mirror); upstream repository code MIT",
-      "role": "public external radiology-pretrained image backbone; disclosed under the competition-specific pretrained-model exception"
+      "role": "public external radiology-pretrained image backbone; disclosed under the competition-specific pretrained-model exception",
+      "competition_eligible": true
+    },
+    {
+      "name": "CoPAS reference implementation",
+      "identifier": "zqiuak/CoPAS",
+      "url": "https://github.com/zqiuak/CoPAS",
+      "license": "Apache-2.0",
+      "role": "architecture reference only; no competition labels or predictions are imported",
+      "competition_eligible": true
+    },
+    {
+      "name": "MRI-CORE pretrained model",
+      "identifier": "mri-core",
+      "url": "https://huggingface.co/collections/microsoft/mri-core",
+      "license": "Apache-2.0",
+      "role": "optional public MRI pretrained model; not enabled by the current training entrypoint",
+      "competition_eligible": true
+    },
+    {
+      "name": "OrthoDiffusion pretrained encoders",
+      "identifier": "pfriedri/ortho-diffusion",
+      "url": "https://github.com/pfriedri/ortho-diffusion",
+      "license": "MIT",
+      "role": "optional public knee MRI pretrained encoders; not enabled by the current training entrypoint",
+      "competition_eligible": true
+    },
+    {
+      "name": "OrthoFoundation DINOv3-L checkpoint",
+      "identifier": "ytrsk/OrthoFoundation",
+      "url": "https://github.com/ytrsk/OrthoFoundation",
+      "license": "NO LICENSE DECLARED",
+      "role": "research reference only; mechanically blocked from competition training and inference",
+      "competition_eligible": false
     }
   ]
 }

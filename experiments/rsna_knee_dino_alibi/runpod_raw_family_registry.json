@@ -111,6 +111,40 @@
         "--backbone-lr", "5e-6",
         "--head-lr", "2e-4"
       ]
+    },
+    "dino_adaptive_copas_lora": {
+      "output": "/workspace/runs/raw_dino336_copas_lora_pilot",
+      "inference_slices": 16,
+      "checkpoint_pattern": "dinov2_copas_lora8_336_fold{fold}.pt",
+      "oof_pattern": "dinov2_copas_lora8_336_fold{fold}_oof.csv",
+      "train_args": [
+        "--data-root", "/workspace/rsna-knee",
+        "--labels-csv", "/workspace/labels/train_targets_llm_consensus.csv",
+        "--backbone", "dinov2",
+        "--model-name", "/workspace/hf_cache/hub/models--facebook--dinov2-base/snapshots/f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+        "--external-asset-identifier", "facebook/dinov2-base",
+        "--local-files-only",
+        "--architecture", "copas",
+        "--image-size", "336",
+        "--train-slices", "6",
+        "--val-slices", "16",
+        "--max-series-per-plane", "2",
+        "--trainable-blocks", "0",
+        "--lora-rank", "8",
+        "--lora-alpha", "16",
+        "--lora-dropout", "0.05",
+        "--hidden-dim", "384",
+        "--alibi-heads", "6",
+        "--branch-loss-weight", "0.25",
+        "--encoder-batch-size", "12",
+        "--batch-size", "1",
+        "--accumulate", "4",
+        "--workers", "4",
+        "--epochs", "3",
+        "--patience", "2",
+        "--backbone-lr", "2e-5",
+        "--head-lr", "2e-4"
+      ]
     }
   }
 }

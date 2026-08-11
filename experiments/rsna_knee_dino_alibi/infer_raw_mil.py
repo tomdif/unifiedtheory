@@ -11,11 +11,13 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import torch
+from torch import nn
 from torch.utils.data import DataLoader
 
 try:
     from .constants import TARGETS
     from .raw_mil import (
+        AdaptiveCoPlaneMILModel,
         RawStudyDataset,
         RawStudyMILModel,
         SliceFeatureBackbone,
@@ -23,9 +25,11 @@ try:
         collate_raw_studies,
         normalize_pixels,
     )
+    from .external_asset_compliance import require_competition_asset
 except ImportError:
     from constants import TARGETS
     from raw_mil import (
+        AdaptiveCoPlaneMILModel,
         RawStudyDataset,
         RawStudyMILModel,
         SliceFeatureBackbone,
@@ -33,6 +37,7 @@ except ImportError:
         collate_raw_studies,
         normalize_pixels,
     )
+    from external_asset_compliance import require_competition_asset
 
 
 def parse_args() -> argparse.Namespace:
@@ -63,9 +68,18 @@ def load_checkpoint(path: Path) -> dict[str, Any]:
 
 def build_model(
     checkpoint: dict[str, Any], model_name: str | None, encoder_batch_size: int
-) -> RawStudyMILModel:
+) -> nn.Module:
     saved = checkpoint["args"]
     backbone_name = str(saved["backbone"])
+    if not bool(saved.get("no_pretrained", False)) or saved.get("backbone_checkpoint"):
+        default_assets = {
+            "dinov2": "facebook/dinov2-base",
+            "efficientnet_b3": "torchvision/efficientnet_b3",
+            "radimagenet_resnet50": "marwanmath/resnet-50-radimagenet-marwan",
+        }
+        require_competition_asset(
+            str(saved.get("external_asset_identifier") or default_assets[backbone_name])
+        )
     configured_name = model_name or saved.get("model_name")
     backbone = SliceFeatureBackbone(
         backbone_name,
@@ -74,22 +88,39 @@ def build_model(
         True,
         False,
         None,
+        int(saved.get("lora_rank", 0)),
+        float(saved.get("lora_alpha", 16.0)),
+        float(saved.get("lora_dropout", 0.05)),
     )
-    model = RawStudyMILModel(
-        backbone,
-        len(TARGETS),
-        pool=str(saved.get("pool", "max")),
-        encoder_batch_size=encoder_batch_size,
-        topk=int(saved.get("topk", 3)),
-        report_dim=int(saved.get("report_dim", 0)),
-    )
+    if str(saved.get("architecture", "mil")) == "copas":
+        model: nn.Module = AdaptiveCoPlaneMILModel(
+            backbone,
+            len(TARGETS),
+            hidden_dim=int(saved.get("hidden_dim", 384)),
+            encoder_batch_size=encoder_batch_size,
+            report_dim=int(saved.get("report_dim", 0)),
+            alibi_heads=int(saved.get("alibi_heads", 6)),
+        )
+    else:
+        model = RawStudyMILModel(
+            backbone,
+            len(TARGETS),
+            hidden_dim=int(saved.get("hidden_dim", 512)),
+            pool=str(saved.get("pool", "max")),
+            encoder_batch_size=encoder_batch_size,
+            topk=int(saved.get("topk", 3)),
+            report_dim=int(saved.get("report_dim", 0)),
+        )
     missing, unexpected = model.load_state_dict(checkpoint["model"], strict=False)
     allowed_missing = {
         "plane_target_bias.weight",
         "fluid_target_bias.weight",
         "fatsat_target_bias.weight",
     }
-    if set(missing).difference(allowed_missing) or unexpected:
+    permitted_missing = (
+        allowed_missing if str(saved.get("architecture", "mil")) == "mil" else set()
+    )
+    if set(missing).difference(permitted_missing) or unexpected:
         raise ValueError(
             f"checkpoint/model mismatch: missing={missing}, unexpected={unexpected}"
         )
@@ -158,14 +189,29 @@ def main() -> None:
                 with torch.autocast(
                     device_type=device.type, dtype=torch.float16, enabled=device.type == "cuda"
                 ):
-                    logits = model(
-                        pixels,
-                        plane,
-                        batch["fluid"].to(device, non_blocking=True),
-                        batch["fatsat"].to(device, non_blocking=True),
-                        study_index,
-                        batch["num_studies"],
-                    )
+                    fluid = batch["fluid"].to(device, non_blocking=True)
+                    fatsat = batch["fatsat"].to(device, non_blocking=True)
+                    if isinstance(model, AdaptiveCoPlaneMILModel):
+                        logits = model(
+                            pixels,
+                            plane,
+                            fluid,
+                            fatsat,
+                            batch["position"].to(device, non_blocking=True),
+                            study_index,
+                            batch["series_index"].to(device, non_blocking=True),
+                            batch["num_studies"],
+                            batch["num_series"],
+                        )
+                    else:
+                        logits = model(
+                            pixels,
+                            plane,
+                            fluid,
+                            fatsat,
+                            study_index,
+                            batch["num_studies"],
+                        )
                 member_predictions[index].append(torch.sigmoid(logits).float().cpu().numpy())
     members = np.stack([np.concatenate(rows) for rows in member_predictions])
     if args.ensemble == "rank":

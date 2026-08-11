@@ -17,6 +17,9 @@ This pipeline is designed around the following hard constraints:
   expert validation masks only;
 - external pretrained assets are public and listed with licenses in
   `external_assets.json`;
+- `external_asset_compliance.py` requires every external asset to declare a
+  public URL, license, and eligibility decision; training and inference reject
+  unknown or blocked checkpoints before reading competition images;
 - the metric is macro ROC AUC over twelve targets, so the final selection and
   submission blend operate on ranks; probability calibration is not used as a
   leaderboard optimization surrogate;
@@ -40,6 +43,19 @@ allows input data or pretrained models with an incompatible license, but the
 asset must remain disclosed and independently obtainable. The source and
 license distinction is recorded in `external_assets.json`; it must not be
 represented as code authored by this project.
+
+The adaptive co-plane model uses only the competition images and disclosed
+pretrained weights. Its report embeddings remain a training-only teacher and
+cannot enter hidden-test inference. The OrthoFoundation checkpoint is not used:
+its repository is publicly downloadable but exposes no license, so the asset
+manifest marks it `competition_eligible: false`. This is deliberately stricter
+than treating public availability as sufficient.
+
+On 2026-08-11 the implementation was rechecked against the 2026-08-10 official
+rules audit above. Kaggle's dynamic live rules page was unavailable through
+both the public API and the authenticated browser during this check, so no new
+permission was inferred and every previously recorded restriction remains in
+force. The official live page remains authoritative if it later differs.
 
 The repository is public. Competition-specific code must not be pushed as a
 private competitive advantage: if published, the applicable rules require it

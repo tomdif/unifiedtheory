@@ -50,6 +50,8 @@ def main() -> None:
     batch = collate_raw_studies(items)
     assert batch["num_studies"] == len(items)
     assert batch["pixels"].shape[0] == batch["study_index"].shape[0]
+    assert batch["pixels"].shape[0] == batch["position"].shape[0]
+    assert batch["num_series"] >= len(items)
     print("raw DICOM smoke test passed", flush=True)
 
 

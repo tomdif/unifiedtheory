@@ -17,12 +17,14 @@ try:
     from .constants import CACHE_SCHEMA_VERSION, TARGETS
     from .data import FeatureStudyDataset, load_feature_cache
     from .folds import gold_fold_quality, select_grouped_multilabel_folds
+    from .external_asset_compliance import load_asset_manifest, require_competition_asset
     from .kaggle_offline_infer import validate_submission
     from .prepare_folded_reports import attach_folds
 except ImportError:
     from constants import CACHE_SCHEMA_VERSION, TARGETS
     from data import FeatureStudyDataset, load_feature_cache
     from folds import gold_fold_quality, select_grouped_multilabel_folds
+    from external_asset_compliance import load_asset_manifest, require_competition_asset
     from kaggle_offline_infer import validate_submission
     from prepare_folded_reports import attach_folds
 
@@ -61,6 +63,14 @@ def cache_payload() -> dict[str, torch.Tensor]:
 
 def main() -> None:
     here = Path(__file__).resolve().parent
+    assets = load_asset_manifest()
+    require_competition_asset("facebook/dinov2-base")
+    try:
+        require_competition_asset("ytrsk/OrthoFoundation")
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("an unlicensed external checkpoint was accepted")
     frame = synthetic_fold_frame()
     folds, seed, quality = select_grouped_multilabel_folds(
         frame, "scanner_group", n_folds=5, seed=2026, candidate_seeds=8
@@ -163,6 +173,7 @@ def main() -> None:
                 "scanner_groups": int(frame["scanner_group"].nunique()),
                 "summary_cache": "patch tensors removed",
                 "submission_contract": "exact schema, identifiers, and probabilities",
+                "external_assets": f"{len(assets)} disclosed; blocked assets rejected",
             },
             indent=2,
         )

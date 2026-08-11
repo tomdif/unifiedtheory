@@ -442,6 +442,39 @@ The report objective is image-to-text distillation, not test-time report use:
 the model learns to predict a frozen multilingual clinical-report embedding
 during training, while raw-image inference remains entirely report-free.
 
+### Adaptive co-plane DINO pilot
+
+The higher-capacity raw model preserves series identity and performs three
+levels of target-specific aggregation: slices within a series, sequences
+within an anatomical plane, and the available planes within a study. Plane
+branches receive an auxiliary classification loss, and a zero-initialized
+label-fusion layer can learn cross-plane/cross-diagnosis corrections without
+perturbing the initial predictor. DINO adaptation uses rank-8 LoRA only in the
+patch embedding and attention projections; the pretrained base stays frozen.
+
+```bash
+python train_raw_mil.py \
+  --data-root /workspace/rsna-knee \
+  --labels-csv /workspace/labels/train_targets_llm_consensus.csv \
+  --output /workspace/runs/raw_dino336_copas_lora_pilot \
+  --backbone dinov2 \
+  --model-name /workspace/hf_cache/hub/models--facebook--dinov2-base/snapshots/REV \
+  --external-asset-identifier facebook/dinov2-base \
+  --local-files-only --architecture copas --fold 0 \
+  --image-size 336 --train-slices 6 --val-slices 16 \
+  --max-series-per-plane 2 --trainable-blocks 0 \
+  --lora-rank 8 --lora-alpha 16 --hidden-dim 384 \
+  --alibi-heads 6 --branch-loss-weight 0.25
+```
+
+This is an experimental family, not a promoted model. It must beat the fixed
+scanner-grouped OOF gate and add complementary residual signal before it may
+enter a submission blend. `external_asset_compliance.py` fails closed on an
+unknown or blocked external asset. In particular, the public
+`ytrsk/OrthoFoundation` checkpoint is recorded but blocked because its public
+repository currently declares no license; the code does not treat public
+downloadability as permission.
+
 ## RunPod handoff
 
 Copy this directory to the pod, install dependencies in its persistent volume,

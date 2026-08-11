@@ -131,6 +131,17 @@ def _resize(array: np.ndarray, image_size: int) -> Tensor:
     )[0, 0]
 
 
+def _position_quanta(positions: Tensor) -> Tensor:
+    """Center physical positions and express distances in slice spacings."""
+
+    if positions.numel() < 2:
+        return torch.zeros_like(positions)
+    differences = (positions[1:] - positions[:-1]).abs()
+    usable = differences[torch.isfinite(differences) & (differences > 1e-6)]
+    spacing = usable.median() if usable.numel() else positions.new_tensor(1.0)
+    return (positions - positions.median()) / spacing.clamp_min(1e-6)
+
+
 def load_series_tensor(
     record: SeriesRecord,
     slices: int,
@@ -270,8 +281,10 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
         planes: list[Tensor] = []
         fluids: list[Tensor] = []
         fatsats: list[Tensor] = []
-        for record in self._choose_series(uid):
-            images, _ = load_series_tensor(
+        positions: list[Tensor] = []
+        series_indices: list[Tensor] = []
+        for series_index, record in enumerate(self._choose_series(uid)):
+            images, physical_positions = load_series_tensor(
                 record,
                 self.slices_per_plane,
                 self.crop_mm,
@@ -282,6 +295,10 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
             planes.append(torch.full((images.shape[0],), record.plane, dtype=torch.long))
             fluids.append(torch.full((images.shape[0],), record.fluid, dtype=torch.long))
             fatsats.append(torch.full((images.shape[0],), record.fatsat, dtype=torch.long))
+            positions.append(_position_quanta(physical_positions))
+            series_indices.append(
+                torch.full((images.shape[0],), series_index, dtype=torch.long)
+            )
         labels = torch.tensor(
             [float(row[target]) if pd.notna(row[target]) else 0.0 for target in self.targets],
             dtype=torch.float32,
@@ -300,6 +317,8 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
             "plane": torch.cat(planes),
             "fluid": torch.cat(fluids),
             "fatsat": torch.cat(fatsats),
+            "position": torch.cat(positions),
+            "series_index": torch.cat(series_indices),
             "labels": labels,
             "label_mask": mask,
             "confidence": confidence,
@@ -315,15 +334,40 @@ class RawStudyDataset(Dataset[dict[str, Any]]):
 
 def collate_raw_studies(items: Sequence[dict[str, Any]]) -> dict[str, Any]:
     study_index = []
+    series_index = []
+    series_study_index = []
+    series_offset = 0
     for index, item in enumerate(items):
         study_index.append(torch.full((item["pixels"].shape[0],), index, dtype=torch.long))
+        local_series = item.get("series_index")
+        if local_series is None:
+            local_series = torch.zeros(item["pixels"].shape[0], dtype=torch.long)
+        local_series = torch.as_tensor(local_series, dtype=torch.long)
+        if local_series.numel() != item["pixels"].shape[0]:
+            raise ValueError("series_index must contain one entry per slice")
+        count = int(local_series.max().item()) + 1 if local_series.numel() else 0
+        series_index.append(local_series + series_offset)
+        series_study_index.extend([index] * count)
+        series_offset += count
     batch = {
         "uid": [item["uid"] for item in items],
         "pixels": torch.cat([item["pixels"] for item in items]),
         "plane": torch.cat([item["plane"] for item in items]),
         "fluid": torch.cat([item["fluid"] for item in items]),
         "fatsat": torch.cat([item["fatsat"] for item in items]),
+        "position": torch.cat(
+            [
+                torch.as_tensor(
+                    item.get("position", torch.zeros(item["pixels"].shape[0])),
+                    dtype=torch.float32,
+                )
+                for item in items
+            ]
+        ),
         "study_index": torch.cat(study_index),
+        "series_index": torch.cat(series_index),
+        "series_study_index": torch.tensor(series_study_index, dtype=torch.long),
+        "num_series": series_offset,
         "num_studies": len(items),
         "labels": torch.stack([item["labels"] for item in items]),
         "label_mask": torch.stack([item["label_mask"] for item in items]),
@@ -335,6 +379,106 @@ def collate_raw_studies(items: Sequence[dict[str, Any]]) -> dict[str, Any]:
             [item["report_embedding"] for item in items]
         )
     return batch
+
+
+class LoRALinear(nn.Module):
+    """A frozen linear layer with a trainable low-rank residual."""
+
+    def __init__(
+        self, base: nn.Linear, rank: int, alpha: float, dropout: float = 0.0
+    ) -> None:
+        super().__init__()
+        if rank < 1:
+            raise ValueError("LoRA rank must be positive")
+        self.base = base
+        for parameter in self.base.parameters():
+            parameter.requires_grad = False
+        self.down = nn.Linear(base.in_features, rank, bias=False)
+        self.up = nn.Linear(rank, base.out_features, bias=False)
+        self.dropout = nn.Dropout(dropout)
+        self.scale = float(alpha) / rank
+        nn.init.kaiming_uniform_(self.down.weight, a=np.sqrt(5))
+        nn.init.zeros_(self.up.weight)
+
+    def forward(self, inputs: Tensor) -> Tensor:
+        return self.base(inputs) + self.up(self.down(self.dropout(inputs))) * self.scale
+
+
+class LoRAConv2d(nn.Module):
+    """Low-rank residual for a frozen 2-D patch-embedding convolution."""
+
+    def __init__(
+        self, base: nn.Conv2d, rank: int, alpha: float, dropout: float = 0.0
+    ) -> None:
+        super().__init__()
+        if rank < 1:
+            raise ValueError("LoRA rank must be positive")
+        self.base = base
+        for parameter in self.base.parameters():
+            parameter.requires_grad = False
+        self.down = nn.Conv2d(
+            base.in_channels,
+            rank,
+            kernel_size=base.kernel_size,
+            stride=base.stride,
+            padding=base.padding,
+            dilation=base.dilation,
+            groups=1,
+            bias=False,
+        )
+        self.up = nn.Conv2d(rank, base.out_channels, kernel_size=1, bias=False)
+        self.dropout = nn.Dropout2d(dropout)
+        self.scale = float(alpha) / rank
+        nn.init.kaiming_uniform_(self.down.weight, a=np.sqrt(5))
+        nn.init.zeros_(self.up.weight)
+
+    def forward(self, inputs: Tensor) -> Tensor:
+        return self.base(inputs) + self.up(self.down(self.dropout(inputs))) * self.scale
+
+
+def inject_dino_lora(
+    module: nn.Module, rank: int, alpha: float, dropout: float = 0.0
+) -> tuple[str, ...]:
+    """Inject LoRA into DINO attention projections and patch embedding.
+
+    Matching is deliberately allow-listed. If a future Transformers model
+    changes its module names, training fails instead of silently adapting the
+    wrong layers.
+    """
+
+    replacements: list[tuple[str, nn.Module]] = []
+    attention_suffixes = (
+        ".attention.attention.query",
+        ".attention.attention.key",
+        ".attention.attention.value",
+        ".attention.output.dense",
+        ".attn.qkv",
+        ".attn.proj",
+    )
+    patch_suffixes = (
+        ".embeddings.patch_embeddings.projection",
+        ".patch_embed.proj",
+    )
+    for name, child in list(module.named_modules()):
+        if isinstance(child, nn.Linear) and any(
+            name == value.removeprefix(".") or name.endswith(value)
+            for value in attention_suffixes
+        ):
+            replacements.append((name, LoRALinear(child, rank, alpha, dropout)))
+        elif isinstance(child, nn.Conv2d) and any(
+            name == value.removeprefix(".") or name.endswith(value)
+            for value in patch_suffixes
+        ):
+            replacements.append((name, LoRAConv2d(child, rank, alpha, dropout)))
+    if not replacements:
+        raise ValueError("no allow-listed DINO attention or patch modules were found for LoRA")
+    for name, replacement in replacements:
+        parent = module
+        pieces = name.split(".")
+        for piece in pieces[:-1]:
+            parent = getattr(parent, piece)
+        setattr(parent, pieces[-1], replacement)
+    return tuple(name for name, _ in replacements)
 
 
 def _load_external_state(module: nn.Module, path: Path) -> dict[str, Any]:
@@ -368,10 +512,20 @@ class SliceFeatureBackbone(nn.Module):
         local_files_only: bool,
         pretrained: bool,
         checkpoint: Path | None,
+        lora_rank: int = 0,
+        lora_alpha: float = 16.0,
+        lora_dropout: float = 0.05,
     ) -> None:
         super().__init__()
         self.name = name
         self.load_report: dict[str, Any] | None = None
+        self.lora_modules: tuple[str, ...] = ()
+        if lora_rank < 0:
+            raise ValueError("LoRA rank cannot be negative")
+        if lora_rank and trainable_blocks:
+            raise ValueError("choose either LoRA or fully trainable backbone blocks, not both")
+        if lora_rank and name != "dinov2":
+            raise ValueError("LoRA is currently implemented only for the DINO backbone")
         if name == "dinov2":
             from transformers import AutoConfig, AutoModel
 
@@ -389,6 +543,10 @@ class SliceFeatureBackbone(nn.Module):
             hidden = int(self.model.config.hidden_size)
             self.output_dim = 2 * hidden
             freeze_except_last_blocks(self.model, trainable_blocks)
+            if lora_rank:
+                self.lora_modules = inject_dino_lora(
+                    self.model, lora_rank, lora_alpha, lora_dropout
+                )
             self.num_register_tokens = int(getattr(self.model.config, "num_register_tokens", 0) or 0)
         elif name == "efficientnet_b3":
             from torchvision.models import EfficientNet_B3_Weights, efficientnet_b3
@@ -522,15 +680,13 @@ class RawStudyMILModel(nn.Module):
         logits = torch.stack(studies)
         if not return_aux:
             return logits
-        if self.report_projection is None:
-            raise ValueError("return_aux requires a positive report_dim")
-        study_features = torch.stack(
-            [features_all[study_index == index].mean(dim=0) for index in range(num_studies)]
-        )
-        return {
-            "logits": logits,
-            "report_embedding": self.report_projection(study_features),
-        }
+        output = {"logits": logits}
+        if self.report_projection is not None:
+            study_features = torch.stack(
+                [features_all[study_index == index].mean(dim=0) for index in range(num_studies)]
+            )
+            output["report_embedding"] = self.report_projection(study_features)
+        return output
 
     def parameter_groups(self, backbone_lr: float, head_lr: float) -> list[dict[str, Any]]:
         backbone = [parameter for parameter in self.backbone.parameters() if parameter.requires_grad]
@@ -541,6 +697,259 @@ class RawStudyMILModel(nn.Module):
             if parameter.requires_grad and id(parameter) not in backbone_ids
         ]
         return [{"params": backbone, "lr": backbone_lr}, {"params": head, "lr": head_lr}]
+
+
+def _alibi_slopes(heads: int) -> Tensor:
+    if heads < 1:
+        raise ValueError("ALiBi requires at least one attention head")
+    return torch.pow(2.0, -torch.linspace(1.0, 8.0, heads))
+
+
+class PhysicalAlibiEncoder(nn.Module):
+    """One self-attention block biased by physical inter-slice distance."""
+
+    def __init__(self, hidden_dim: int, heads: int, dropout: float) -> None:
+        super().__init__()
+        if hidden_dim % heads:
+            raise ValueError("hidden_dim must be divisible by alibi_heads")
+        self.heads = heads
+        self.head_dim = hidden_dim // heads
+        self.normalization = nn.LayerNorm(hidden_dim)
+        self.qkv = nn.Linear(hidden_dim, 3 * hidden_dim, bias=False)
+        self.output = nn.Linear(hidden_dim, hidden_dim, bias=False)
+        self.feed_forward_norm = nn.LayerNorm(hidden_dim)
+        self.feed_forward = nn.Sequential(
+            nn.Linear(hidden_dim, 4 * hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(4 * hidden_dim, hidden_dim),
+        )
+        self.dropout = nn.Dropout(dropout)
+        self.register_buffer("slopes", _alibi_slopes(heads), persistent=True)
+
+    def forward(self, hidden: Tensor, positions: Tensor) -> Tensor:
+        count, width = hidden.shape
+        normalized = self.normalization(hidden)
+        qkv = self.qkv(normalized).reshape(count, 3, self.heads, self.head_dim)
+        query, key, value = qkv.unbind(dim=1)
+        query = query.transpose(0, 1)
+        key = key.transpose(0, 1)
+        value = value.transpose(0, 1)
+        scores = torch.matmul(query, key.transpose(-1, -2)) * self.head_dim**-0.5
+        distance = (positions[:, None] - positions[None, :]).abs()
+        scores = scores - self.slopes[:, None, None].to(scores) * distance[None]
+        attention = torch.softmax(scores, dim=-1)
+        context = torch.matmul(attention, value).transpose(0, 1).reshape(count, width)
+        hidden = hidden + self.dropout(self.output(context))
+        return hidden + self.dropout(self.feed_forward(self.feed_forward_norm(hidden)))
+
+
+class AdaptiveCoPlaneMILModel(nn.Module):
+    """Target-query, series-aware, co-plane multiple-instance model.
+
+    The model is invariant to slice order within a series and to series order
+    within a plane. It retains the three acquisition planes as supervised
+    branches before a learned, target-specific cross-plane fusion. An explicit
+    unknown-plane branch keeps malformed metadata from being silently mapped
+    to one of the three anatomical planes.
+    """
+
+    def __init__(
+        self,
+        backbone: SliceFeatureBackbone,
+        num_targets: int,
+        hidden_dim: int = 384,
+        dropout: float = 0.2,
+        encoder_batch_size: int = 12,
+        report_dim: int = 0,
+        alibi_heads: int = 6,
+    ) -> None:
+        super().__init__()
+        if hidden_dim < 8:
+            raise ValueError("hidden_dim must be at least 8")
+        self.backbone = backbone
+        self.num_targets = num_targets
+        self.num_planes = len(PLANE_TO_ID)
+        self.encoder_batch_size = encoder_batch_size
+        self.report_dim = report_dim
+        self.plane_embedding = nn.Embedding(self.num_planes, 16)
+        self.fluid_embedding = nn.Embedding(3, 4)
+        self.fatsat_embedding = nn.Embedding(3, 4)
+        input_dim = backbone.output_dim + 24
+        self.slice_projection = nn.Sequential(
+            nn.LayerNorm(input_dim),
+            nn.Linear(input_dim, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+        )
+        self.slice_key = nn.Linear(hidden_dim, hidden_dim, bias=False)
+        self.slice_value = nn.Linear(hidden_dim, hidden_dim, bias=False)
+        self.physical_alibi = PhysicalAlibiEncoder(hidden_dim, alibi_heads, dropout)
+        self.target_query = nn.Parameter(torch.empty(num_targets, hidden_dim))
+        self.series_gate_query = nn.Parameter(torch.empty(num_targets, hidden_dim))
+        self.plane_gate_query = nn.Parameter(torch.empty(num_targets, hidden_dim))
+        self.branch_weight = nn.Parameter(torch.empty(num_targets, hidden_dim))
+        self.final_weight = nn.Parameter(torch.empty(num_targets, hidden_dim))
+        self.branch_bias = nn.Parameter(torch.zeros(num_targets))
+        self.final_bias = nn.Parameter(torch.zeros(num_targets))
+        self.plane_target_bias = nn.Parameter(torch.zeros(self.num_planes, num_targets))
+        self.label_fusion = nn.Linear(
+            self.num_planes * num_targets * 2, num_targets, bias=False
+        )
+        nn.init.zeros_(self.label_fusion.weight)
+        for value in (
+            self.target_query,
+            self.series_gate_query,
+            self.plane_gate_query,
+            self.branch_weight,
+            self.final_weight,
+        ):
+            nn.init.normal_(value, std=hidden_dim**-0.5)
+        self.dropout = nn.Dropout(dropout)
+        self.report_projection = (
+            nn.Sequential(nn.LayerNorm(hidden_dim), nn.Linear(hidden_dim, report_dim))
+            if report_dim > 0
+            else None
+        )
+
+    def _encode(self, pixels: Tensor, plane: Tensor, fluid: Tensor, fatsat: Tensor) -> Tensor:
+        features = []
+        for start in range(0, pixels.shape[0], self.encoder_batch_size):
+            features.append(self.backbone(pixels[start : start + self.encoder_batch_size]))
+        image = torch.cat(features)
+        metadata = torch.cat(
+            [
+                self.plane_embedding(plane),
+                self.fluid_embedding(fluid),
+                self.fatsat_embedding(fatsat),
+            ],
+            dim=-1,
+        )
+        return self.slice_projection(torch.cat([image, metadata], dim=-1))
+
+    def forward(
+        self,
+        pixels: Tensor,
+        plane: Tensor,
+        fluid: Tensor,
+        fatsat: Tensor,
+        position: Tensor,
+        study_index: Tensor,
+        series_index: Tensor,
+        num_studies: int,
+        num_series: int,
+        return_aux: bool = False,
+    ) -> Tensor | dict[str, Tensor]:
+        hidden = self._encode(pixels, plane, fluid, fatsat)
+        scale = hidden.shape[-1] ** -0.5
+        series_tokens: list[Tensor] = []
+        series_planes: list[int] = []
+        series_studies: list[int] = []
+        for index in range(num_series):
+            selected = series_index == index
+            if not bool(selected.any()):
+                raise ValueError("every packed series must contain at least one slice")
+            contextual = self.physical_alibi(hidden[selected], position[selected])
+            keys = self.slice_key(contextual)
+            values = self.slice_value(contextual)
+            attention = torch.softmax(
+                self.target_query @ keys.transpose(0, 1) * scale, dim=-1
+            )
+            series_tokens.append(attention @ values)
+            plane_values = plane[selected]
+            study_values = study_index[selected]
+            if not bool((plane_values == plane_values[0]).all()):
+                raise ValueError("one series cannot span multiple planes")
+            if not bool((study_values == study_values[0]).all()):
+                raise ValueError("one series cannot span multiple studies")
+            series_planes.append(int(plane_values[0].item()))
+            series_studies.append(int(study_values[0].item()))
+        stacked_series = torch.stack(series_tokens)
+        series_plane = torch.tensor(series_planes, device=plane.device)
+        series_study = torch.tensor(series_studies, device=study_index.device)
+
+        all_logits: list[Tensor] = []
+        all_branches: list[Tensor] = []
+        all_branch_masks: list[Tensor] = []
+        report_features: list[Tensor] = []
+        for study in range(num_studies):
+            branch_tokens = hidden.new_zeros(
+                (self.num_planes, self.num_targets, hidden.shape[-1])
+            )
+            branch_logits = hidden.new_zeros((self.num_planes, self.num_targets))
+            branch_mask = torch.zeros(self.num_planes, dtype=torch.bool, device=hidden.device)
+            for plane_id in range(self.num_planes):
+                selected = (series_study == study) & (series_plane == plane_id)
+                if not bool(selected.any()):
+                    continue
+                candidates = stacked_series[selected]  # series x target x hidden
+                gates = torch.einsum(
+                    "th,nth->nt", self.series_gate_query, candidates
+                ) * scale
+                weights = torch.softmax(gates, dim=0)
+                token = torch.einsum("nt,nth->th", weights, candidates)
+                branch_tokens[plane_id] = token
+                branch_logits[plane_id] = (
+                    torch.einsum("th,th->t", self.branch_weight, self.dropout(token))
+                    + self.branch_bias
+                    + self.plane_target_bias[plane_id]
+                )
+                branch_mask[plane_id] = True
+            if not bool(branch_mask.any()):
+                raise ValueError("every study must contain at least one decoded plane")
+            present_tokens = branch_tokens[branch_mask]
+            present_logits = branch_logits[branch_mask]
+            present_planes = torch.arange(self.num_planes, device=hidden.device)[branch_mask]
+            gates = (
+                torch.einsum("th,pth->pt", self.plane_gate_query, present_tokens) * scale
+                + self.plane_target_bias[present_planes]
+            )
+            weights = torch.softmax(gates, dim=0)
+            study_token = torch.einsum("pt,pth->th", weights, present_tokens)
+            base_logits = (
+                torch.einsum("pt,pt->t", weights, present_logits)
+                + torch.einsum("th,th->t", self.final_weight, self.dropout(study_token))
+                + self.final_bias
+            )
+            fusion_input = torch.cat(
+                [
+                    branch_logits.flatten(),
+                    branch_mask[:, None]
+                    .expand(self.num_planes, self.num_targets)
+                    .to(branch_logits.dtype)
+                    .flatten(),
+                ]
+            )
+            all_logits.append(base_logits + self.label_fusion(fusion_input))
+            all_branches.append(branch_logits)
+            all_branch_masks.append(branch_mask)
+            report_features.append(study_token.mean(dim=0))
+        logits = torch.stack(all_logits)
+        if not return_aux:
+            return logits
+        output = {
+            "logits": logits,
+            "branch_logits": torch.stack(all_branches),
+            "branch_mask": torch.stack(all_branch_masks),
+        }
+        if self.report_projection is not None:
+            output["report_embedding"] = self.report_projection(torch.stack(report_features))
+        return output
+
+    def parameter_groups(self, backbone_lr: float, head_lr: float) -> list[dict[str, Any]]:
+        backbone = [parameter for parameter in self.backbone.parameters() if parameter.requires_grad]
+        backbone_ids = {id(parameter) for parameter in backbone}
+        head = [
+            parameter
+            for parameter in self.parameters()
+            if parameter.requires_grad and id(parameter) not in backbone_ids
+        ]
+        groups = []
+        if backbone:
+            groups.append({"params": backbone, "lr": backbone_lr})
+        if head:
+            groups.append({"params": head, "lr": head_lr})
+        return groups
 
 
 def normalize_pixels(pixels: Tensor) -> Tensor:

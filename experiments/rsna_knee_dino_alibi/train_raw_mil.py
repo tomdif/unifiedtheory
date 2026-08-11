@@ -13,11 +13,13 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn.functional as F
+from torch import nn
 from torch.utils.data import DataLoader
 
 try:
     from .constants import TARGETS
     from .raw_mil import (
+        AdaptiveCoPlaneMILModel,
         RawStudyDataset,
         RawStudyMILModel,
         SliceFeatureBackbone,
@@ -25,6 +27,7 @@ try:
         collate_raw_studies,
         normalize_pixels,
     )
+    from .external_asset_compliance import DEFAULT_MANIFEST, require_competition_asset
     from .train import (
         assign_folds,
         compute_pos_weight,
@@ -36,6 +39,7 @@ try:
 except ImportError:
     from constants import TARGETS
     from raw_mil import (
+        AdaptiveCoPlaneMILModel,
         RawStudyDataset,
         RawStudyMILModel,
         SliceFeatureBackbone,
@@ -43,6 +47,7 @@ except ImportError:
         collate_raw_studies,
         normalize_pixels,
     )
+    from external_asset_compliance import DEFAULT_MANIFEST, require_competition_asset
     from train import (
         assign_folds,
         compute_pos_weight,
@@ -65,6 +70,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--model-name")
     parser.add_argument("--backbone-checkpoint", type=Path)
+    parser.add_argument("--external-asset-identifier")
+    parser.add_argument("--external-assets-manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--no-pretrained", action="store_true")
     parser.add_argument("--local-files-only", action="store_true")
     parser.add_argument("--fold", type=int, default=0)
@@ -75,6 +82,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--val-slices", type=int, default=32)
     parser.add_argument("--crop-mm", type=float, default=160.0)
     parser.add_argument("--trainable-blocks", type=int, default=2)
+    parser.add_argument("--lora-rank", type=int, default=0)
+    parser.add_argument("--lora-alpha", type=float, default=16.0)
+    parser.add_argument("--lora-dropout", type=float, default=0.05)
     parser.add_argument("--encoder-batch-size", type=int, default=8)
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--accumulate", type=int, default=4)
@@ -89,6 +99,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pool", choices=("max", "topk", "logmeanexp"), default="max")
     parser.add_argument("--topk", type=int, default=3)
     parser.add_argument("--max-series-per-plane", type=int, default=1)
+    parser.add_argument("--architecture", choices=("mil", "copas"), default="mil")
+    parser.add_argument(
+        "--hidden-dim",
+        type=int,
+        default=0,
+        help="0 selects 512 for legacy MIL and 384 for adaptive co-plane MIL",
+    )
+    parser.add_argument("--branch-loss-weight", type=float, default=0.25)
+    parser.add_argument("--alibi-heads", type=int, default=6)
     parser.add_argument("--report-embeddings", type=Path)
     parser.add_argument("--report-weight", type=float, default=0.0)
     parser.add_argument("--limit-studies", type=int, default=0)
@@ -104,8 +123,21 @@ def move(batch: dict[str, Any], device: torch.device) -> dict[str, Any]:
 
 
 def model_forward(
-    model: RawStudyMILModel, batch: dict[str, Any], return_aux: bool = False
+    model: nn.Module, batch: dict[str, Any], return_aux: bool = False
 ) -> torch.Tensor | dict[str, torch.Tensor]:
+    if isinstance(model, AdaptiveCoPlaneMILModel):
+        return model(
+            normalize_pixels(batch["pixels"]),
+            batch["plane"],
+            batch["fluid"],
+            batch["fatsat"],
+            batch["position"],
+            batch["study_index"],
+            batch["series_index"],
+            batch["num_studies"],
+            batch["num_series"],
+            return_aux=return_aux,
+        )
     return model(
         normalize_pixels(batch["pixels"]),
         batch["plane"],
@@ -133,7 +165,7 @@ def load_report_embeddings(path: Path | None) -> tuple[dict[str, torch.Tensor] |
 
 
 @torch.inference_mode()
-def evaluate(model: RawStudyMILModel, loader: DataLoader, device: torch.device) -> dict[str, Any]:
+def evaluate(model: nn.Module, loader: DataLoader, device: torch.device) -> dict[str, Any]:
     model.eval()
     logits, labels, masks, gold_masks, uids = [], [], [], [], []
     for batch in loader:
@@ -195,6 +227,24 @@ def main() -> None:
         raise ValueError("--accumulate must be positive")
     if args.backbone == "radimagenet_resnet50" and args.backbone_checkpoint is None:
         raise ValueError("radimagenet_resnet50 training requires --backbone-checkpoint")
+    if args.lora_rank and args.trainable_blocks:
+        raise ValueError("--lora-rank requires --trainable-blocks 0")
+    if args.architecture == "copas" and args.pool != "max":
+        raise ValueError("--pool applies only to the legacy mil architecture; use --pool max")
+    if args.branch_loss_weight < 0:
+        raise ValueError("--branch-loss-weight cannot be negative")
+    if args.hidden_dim < 0:
+        raise ValueError("--hidden-dim cannot be negative")
+    if args.hidden_dim == 0:
+        args.hidden_dim = 384 if args.architecture == "copas" else 512
+    if not args.no_pretrained or args.backbone_checkpoint is not None:
+        default_assets = {
+            "dinov2": "facebook/dinov2-base",
+            "efficientnet_b3": "torchvision/efficientnet_b3",
+            "radimagenet_resnet50": "marwanmath/resnet-50-radimagenet-marwan",
+        }
+        asset_identifier = args.external_asset_identifier or default_assets[args.backbone]
+        require_competition_asset(asset_identifier, args.external_assets_manifest)
     seed_everything(args.seed)
     torch.set_float32_matmul_precision("high")
     args.output.mkdir(parents=True, exist_ok=True)
@@ -218,19 +268,54 @@ def main() -> None:
         args.local_files_only,
         not args.no_pretrained,
         args.backbone_checkpoint,
+        args.lora_rank,
+        args.lora_alpha,
+        args.lora_dropout,
     )
-    model = RawStudyMILModel(
-        backbone,
-        len(TARGETS),
-        pool=args.pool,
-        encoder_batch_size=args.encoder_batch_size,
-        topk=args.topk,
-        report_dim=report_dim,
-    )
+    if args.architecture == "copas":
+        model: nn.Module = AdaptiveCoPlaneMILModel(
+            backbone,
+            len(TARGETS),
+            hidden_dim=args.hidden_dim,
+            encoder_batch_size=args.encoder_batch_size,
+            report_dim=report_dim,
+            alibi_heads=args.alibi_heads,
+        )
+    else:
+        model = RawStudyMILModel(
+            backbone,
+            len(TARGETS),
+            hidden_dim=args.hidden_dim,
+            pool=args.pool,
+            encoder_batch_size=args.encoder_batch_size,
+            topk=args.topk,
+            report_dim=report_dim,
+        )
     device = torch.device(args.device)
     model.to(device)
+    trainable_parameters = sum(
+        parameter.numel() for parameter in model.parameters() if parameter.requires_grad
+    )
+    total_parameters = sum(parameter.numel() for parameter in model.parameters())
+    print(
+        json.dumps(
+            {
+                "architecture": args.architecture,
+                "trainable_parameters": trainable_parameters,
+                "total_parameters": total_parameters,
+                "lora_modules": list(backbone.lora_modules),
+                "external_asset": args.external_asset_identifier
+                or {
+                    "dinov2": "facebook/dinov2-base",
+                    "efficientnet_b3": "torchvision/efficientnet_b3",
+                    "radimagenet_resnet50": "marwanmath/resnet-50-radimagenet-marwan",
+                }[args.backbone],
+            }
+        ),
+        flush=True,
+    )
     optimizer = torch.optim.AdamW(
-        model.parameter_groups(args.backbone_lr, args.head_lr),
+        model.parameter_groups(args.backbone_lr, args.head_lr),  # type: ignore[attr-defined]
         weight_decay=args.weight_decay,
     )
     updates_per_epoch = max(1, int(np.ceil(len(train_loader) / args.accumulate)))
@@ -241,7 +326,12 @@ def main() -> None:
     scaler = torch.amp.GradScaler("cuda", enabled=amp)
     pos_weight = compute_pos_weight(train_frame, TARGETS).to(device)
     best, stale, history = -float("inf"), 0, []
-    run_name = f"{args.backbone}_{args.pool}_{args.image_size}"
+    adaptation = f"lora{args.lora_rank}" if args.lora_rank else f"blocks{args.trainable_blocks}"
+    run_name = (
+        f"{args.backbone}_{args.pool}_{args.image_size}"
+        if args.architecture == "mil"
+        else f"{args.backbone}_copas_{adaptation}_{args.image_size}"
+    )
     checkpoint = args.output / f"{run_name}_fold{args.fold}.pt"
 
     for epoch in range(1, args.epochs + 1):
@@ -252,7 +342,13 @@ def main() -> None:
         for step, batch in enumerate(train_loader, start=1):
             batch = move(batch, device)
             with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=amp):
-                output = model_forward(model, batch, return_aux=args.report_weight > 0)
+                output = model_forward(
+                    model,
+                    batch,
+                    return_aux=args.report_weight > 0 or (
+                        args.architecture == "copas" and args.branch_loss_weight > 0
+                    ),
+                )
                 prediction = output["logits"] if isinstance(output, dict) else output
                 confidence = batch["confidence"] * torch.where(
                     batch["gold_mask"],
@@ -272,6 +368,20 @@ def main() -> None:
                         batch["labels"],
                         batch["label_mask"],
                         confidence,
+                    )
+                if args.architecture == "copas" and args.branch_loss_weight:
+                    assert isinstance(output, dict)
+                    branch_logits = output["branch_logits"]
+                    branch_mask = output["branch_mask"][:, :, None]
+                    labels_expanded = batch["labels"][:, None, :].expand_as(branch_logits)
+                    label_mask = batch["label_mask"][:, None, :].expand_as(branch_logits)
+                    branch_confidence = confidence[:, None, :].expand_as(branch_logits)
+                    loss = loss + args.branch_loss_weight * masked_bce(
+                        branch_logits,
+                        labels_expanded,
+                        label_mask & branch_mask,
+                        branch_confidence,
+                        pos_weight,
                     )
                 if args.report_weight:
                     assert isinstance(output, dict)
@@ -322,6 +432,9 @@ def main() -> None:
                     "fold": args.fold,
                     "score": score,
                     "backbone_load_report": backbone.load_report,
+                    "backbone_lora_modules": list(backbone.lora_modules),
+                    "trainable_parameters": trainable_parameters,
+                    "total_parameters": total_parameters,
                 },
                 checkpoint,
             )
