@@ -1,0 +1,83 @@
+[    2.5s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    5.9s] parents: 2450
+[    5.9s] === pi/4 feasibility at all parents (incl. n=7) ===
+[   54.4s] infeasible parents: 0 per level {}
+[   54.4s] parents with generic residual freedom (K>3): 2447/2450; forced-or-discrete (K<=3): 3
+[  104.2s] final forbidden: 0
+[  104.2s] === LAW 1: max-entropy selection ===
+[  141.9s] support per level: {8: 13958, 7: 1610, 6: 240, 4: 12, 5: 46, 3: 4, 2: 2, 1: 1}
+[  142.1s] [pi/4 max-entropy] r(n), mass, effN:
+[  142.1s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  142.1s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  142.1s]    n=4: r = 0.3004   mass = 1.000000   effN = 6.3
+[  142.1s]    n=5: r = 0.3337   mass = 1.000000   effN = 18.1
+[  142.1s]    n=6: r = 0.3680   mass = 1.000000   effN = 68.3
+[  142.1s]    n=7: r = 0.3942   mass = 1.000000   effN = 318.2
+[  142.1s]    n=8: r = 0.4136   mass = 1.000000   effN = 1700.3
+[  309.9s]    T=4: record interference max = 0.2356 mean = 0.0461
+[  309.9s]    T=5: record interference max = 0.1578 mean = 0.0458
+[  309.9s]    T=6: record interference max = 0.1806 mean = 0.0536
+[  309.9s]    T=7: record interference max = 0.2018 mean = 0.0648
+[  309.9s]    T=8: record interference max = 0.2136 mean = 0.0714
+[  309.9s]    X_minus(Q) over T=5..8: 0.0000
+[  309.9s] === LAWS 2-6: random selections (sensitivity) ===
+[  320.0s] [pi/4 random 0] r(n), mass, effN:
+[  320.0s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  320.0s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  320.0s]    n=4: r = 0.2237   mass = 1.000000   effN = 4.7
+[  320.0s]    n=5: r = 0.2930   mass = 1.000000   effN = 11.8
+[  320.0s]    n=6: r = 0.3460   mass = 1.000000   effN = 40.7
+[  320.0s]    n=7: r = 0.3732   mass = 1.000000   effN = 142.5
+[  320.0s]    n=8: r = 0.3972   mass = 1.000000   effN = 656.3
+[  329.1s] [pi/4 random 1] r(n), mass, effN:
+[  329.1s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  329.1s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  329.1s]    n=4: r = 0.2237   mass = 1.000000   effN = 3.8
+[  329.1s]    n=5: r = 0.2978   mass = 1.000000   effN = 11.0
+[  329.1s]    n=6: r = 0.3315   mass = 1.000000   effN = 28.1
+[  329.1s]    n=7: r = 0.3605   mass = 1.000000   effN = 132.9
+[  329.1s]    n=8: r = 0.3881   mass = 1.000000   effN = 658.8
+[  338.9s] [pi/4 random 2] r(n), mass, effN:
+[  338.9s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  338.9s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  338.9s]    n=4: r = 0.3174   mass = 1.000000   effN = 4.4
+[  338.9s]    n=5: r = 0.3523   mass = 1.000000   effN = 11.4
+[  338.9s]    n=6: r = 0.3633   mass = 1.000000   effN = 29.5
+[  338.9s]    n=7: r = 0.3825   mass = 1.000000   effN = 105.2
+[  338.9s]    n=8: r = 0.4028   mass = 1.000000   effN = 444.3
+[  348.0s] [pi/4 random 3] r(n), mass, effN:
+[  348.0s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  348.0s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  348.0s]    n=4: r = 0.2237   mass = 1.000000   effN = 4.7
+[  348.0s]    n=5: r = 0.2918   mass = 1.000000   effN = 11.8
+[  348.0s]    n=6: r = 0.3460   mass = 1.000000   effN = 37.5
+[  348.0s]    n=7: r = 0.3712   mass = 1.000000   effN = 131.4
+[  348.0s]    n=8: r = 0.3946   mass = 1.000000   effN = 574.8
+[  354.5s] [pi/4 random 4] r(n), mass, effN:
+[  354.5s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  354.5s]    n=3: r = 0.2988   mass = 1.000000   effN = 3.0
+[  354.5s]    n=4: r = 0.2237   mass = 1.000000   effN = 4.7
+[  354.5s]    n=5: r = 0.3026   mass = 1.000000   effN = 12.0
+[  354.5s]    n=6: r = 0.3611   mass = 1.000000   effN = 40.7
+[  354.5s]    n=7: r = 0.3867   mass = 1.000000   effN = 141.1
+[  354.5s]    n=8: r = 0.4043   mass = 1.000000   effN = 577.6
+[  354.5s] r(8) across random selections: 0.3972 0.3881 0.4028 0.3946 0.4043
+[  354.5s] r(8) selection spread: 0.0162 (max-ent value 0.4136)
+[  354.5s] === BASELINE: uniform labeled growth (counting) ===
+[  354.7s] [uniform growth] r(n), mass, effN:
+[  354.7s]    n=2: r = 0.5000   mass = 1.000000   effN = 2.0
+[  354.7s]    n=3: r = 0.5000   mass = 1.000000   effN = 3.8
+[  354.7s]    n=4: r = 0.5007   mass = 1.000000   effN = 11.8
+[  354.7s]    n=5: r = 0.5020   mass = 1.000000   effN = 44.0
+[  354.7s]    n=6: r = 0.5037   mass = 1.000000   effN = 211.5
+[  354.7s]    n=7: r = 0.5057   mass = 1.000000   effN = 1312.6
+[  354.7s]    n=8: r = 0.5080   mass = 1.000000   effN = 10344.4
+[  354.7s] === BASELINE: 2D causal diamond sprinkling (MC, n=8) ===
+[  363.8s] sprinkling r(n): n=2: 0.5003  n=3: 0.4999  n=4: 0.4999  n=5: 0.4997  n=6: 0.4995  n=7: 0.4996  n=8: 0.4997
+[  363.8s] === VERDICT TABLE (n=8) ===
+[  363.8s]   pi/4 (max-ent):    r(8) = 0.4136  [random-selection band 0.3881..0.4043]
+[  363.8s]   uniform growth:    r(8) = 0.5080
+[  363.8s]   2D sprinkling:     r(8) = 0.4997
+[  363.8s]   wave family:       r(8) in [0.105, 0.804] (logged; nothing-selects)
+[  363.8s]   |pi/4 - sprinkling| = 0.0861   |pi/4 - uniform| = 0.0944
+[  363.8s] DONE
