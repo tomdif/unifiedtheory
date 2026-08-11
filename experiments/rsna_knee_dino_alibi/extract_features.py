@@ -60,6 +60,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--crop-mm", type=float, default=160.0)
     parser.add_argument("--limit-studies", type=int, default=0)
+    parser.add_argument("--shard-count", type=int, default=1)
+    parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--local-files-only", action="store_true")
     return parser.parse_args()
@@ -487,6 +489,10 @@ def extract_study(
 
 def main() -> None:
     args = parse_args()
+    if args.shard_count < 1:
+        raise ValueError("shard_count must be positive")
+    if not 0 <= args.shard_index < args.shard_count:
+        raise ValueError("shard_index must satisfy 0 <= index < shard_count")
     series_csv = args.data_root / f"{args.split}_series.csv"
     if not series_csv.exists():
         raise FileNotFoundError(f"missing {series_csv}")
@@ -506,6 +512,11 @@ def main() -> None:
     grouped = list(table.groupby("StudyInstanceUID", sort=True))
     if args.limit_studies:
         grouped = grouped[: args.limit_studies]
+    grouped = [
+        item
+        for ordinal, item in enumerate(grouped)
+        if ordinal % args.shard_count == args.shard_index
+    ]
     records: list[dict[str, Any]] = []
     for number, (uid, rows) in enumerate(grouped, start=1):
         cache_path = args.output / _cache_name(str(uid))
@@ -536,7 +547,12 @@ def main() -> None:
             }
         )
         print(f"[{number}/{len(grouped)}] {uid}: {metadata['n_series']} series", flush=True)
-    index_path = args.output / f"{args.split}_cache_index.csv"
+    suffix = (
+        ""
+        if args.shard_count == 1
+        else f"_shard{args.shard_index:02d}-of-{args.shard_count:02d}"
+    )
+    index_path = args.output / f"{args.split}_cache_index{suffix}.csv"
     pd.DataFrame(records).to_csv(index_path, index=False)
     print(f"wrote {index_path}")
 
