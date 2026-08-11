@@ -81,25 +81,41 @@ CELL_TEMPLATE = r'''
 from pathlib import Path
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import time
 
 INPUT = Path("/kaggle/input")
 WORKING = Path("/kaggle/working")
-COMPETITION_INPUT = INPUT / "rsna-knee-abnormality-detection"
-CODE_INPUT = INPUT / "rsna-knee-unifiedtheory-code"
-CHECKPOINT_INPUT = INPUT / "rsna-knee-credible-checkpoints"
 STARTED = time.monotonic()
 BUDGET_SECONDS = 8.75 * 3600
 BLEND = __BLEND__
 CHECKPOINTS = __CHECKPOINTS__
 RAW_FAMILIES = __RAW_FAMILIES__
 
-code_hits = list(CODE_INPUT.rglob("run_selected_raw_inference.py"))
+wanted_names = {
+    "run_selected_raw_inference.py", "sample_submission.csv", "config.json",
+    *(row["name"] for rows in CHECKPOINTS.values() for row in rows),
+}
+file_index = {name: [] for name in wanted_names}
+pruned_directories = {
+    "train_series", "test_series", "train_images", "test_images",
+    "train", "test",
+}
+for root, directories, files in os.walk(INPUT):
+    directories[:] = [name for name in directories if name not in pruned_directories]
+    for name in wanted_names.intersection(files):
+        file_index[name].append(Path(root) / name)
+
+code_hits = file_index["run_selected_raw_inference.py"]
 if len(code_hits) != 1:
     raise RuntimeError(f"expected exactly one code entry point, found {code_hits}")
 code_dir = code_hits[0].parent
+sample_hits = file_index["sample_submission.csv"]
+if len(sample_hits) != 1:
+    raise RuntimeError(f"expected exactly one sample submission, found {sample_hits}")
+COMPETITION_INPUT = sample_hits[0].parent
 
 digest_cache = {}
 
@@ -115,7 +131,7 @@ def digest(path):
     return digest_cache[key]
 
 def locate_checkpoint(row):
-    named_hits = [path for path in CHECKPOINT_INPUT.rglob(row["name"]) if path.is_file()]
+    named_hits = file_index[row["name"]]
     hits = [path for path in named_hits if digest(path) == row["sha256"]]
     if len(hits) != 1:
         raise RuntimeError(
@@ -130,17 +146,13 @@ resolved = {
 }
 
 model_candidates = []
-excluded_roots = {COMPETITION_INPUT, CODE_INPUT, CHECKPOINT_INPUT}
-for source_root in INPUT.iterdir():
-    if source_root in excluded_roots:
+for config in file_index["config.json"]:
+    try:
+        payload = json.loads(config.read_text())
+    except Exception:
         continue
-    for config in source_root.rglob("config.json"):
-        try:
-            payload = json.loads(config.read_text())
-        except Exception:
-            continue
-        if payload.get("model_type") == "dinov2" and int(payload.get("hidden_size", 0)) == 768:
-            model_candidates.append(config.parent)
+    if payload.get("model_type") == "dinov2" and int(payload.get("hidden_size", 0)) == 768:
+        model_candidates.append(config.parent)
 needs_dino = True  # the consensus patch anchor always uses DINOv2-base
 if needs_dino and len(model_candidates) != 1:
     raise RuntimeError(f"expected one local DINOv2-base config, found {model_candidates}")
@@ -230,14 +242,15 @@ def main() -> None:
     notebook = {
         "cells": [
             {
-                "cell_type": "markdown", "metadata": {},
+                "cell_type": "markdown", "id": "route-description", "metadata": {},
                 "source": [
                     "# RSNA knee credible heterogeneous route\n",
                     "Audited consensus DINO anchor plus only nested-OOF-promoted raw specialists.\n",
                 ],
             },
             {
-                "cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [],
+                "cell_type": "code", "id": "credible-inference", "execution_count": None,
+                "metadata": {}, "outputs": [],
                 "source": [line + "\n" for line in cell.splitlines()],
             },
         ],
