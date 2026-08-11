@@ -87,13 +87,16 @@ import time
 
 INPUT = Path("/kaggle/input")
 WORKING = Path("/kaggle/working")
+COMPETITION_INPUT = INPUT / "rsna-knee-abnormality-detection"
+CODE_INPUT = INPUT / "rsna-knee-unifiedtheory-code"
+CHECKPOINT_INPUT = INPUT / "rsna-knee-credible-checkpoints"
 STARTED = time.monotonic()
 BUDGET_SECONDS = 8.75 * 3600
 BLEND = __BLEND__
 CHECKPOINTS = __CHECKPOINTS__
 RAW_FAMILIES = __RAW_FAMILIES__
 
-code_hits = list(INPUT.rglob("run_selected_raw_inference.py"))
+code_hits = list(CODE_INPUT.rglob("run_selected_raw_inference.py"))
 if len(code_hits) != 1:
     raise RuntimeError(f"expected exactly one code entry point, found {code_hits}")
 code_dir = code_hits[0].parent
@@ -112,7 +115,7 @@ def digest(path):
     return digest_cache[key]
 
 def locate_checkpoint(row):
-    named_hits = [path for path in INPUT.rglob(row["name"]) if path.is_file()]
+    named_hits = [path for path in CHECKPOINT_INPUT.rglob(row["name"]) if path.is_file()]
     hits = [path for path in named_hits if digest(path) == row["sha256"]]
     if len(hits) != 1:
         raise RuntimeError(
@@ -127,13 +130,17 @@ resolved = {
 }
 
 model_candidates = []
-for config in INPUT.rglob("config.json"):
-    try:
-        payload = json.loads(config.read_text())
-    except Exception:
+excluded_roots = {COMPETITION_INPUT, CODE_INPUT, CHECKPOINT_INPUT}
+for source_root in INPUT.iterdir():
+    if source_root in excluded_roots:
         continue
-    if payload.get("model_type") == "dinov2" and int(payload.get("hidden_size", 0)) == 768:
-        model_candidates.append(config.parent)
+    for config in source_root.rglob("config.json"):
+        try:
+            payload = json.loads(config.read_text())
+        except Exception:
+            continue
+        if payload.get("model_type") == "dinov2" and int(payload.get("hidden_size", 0)) == 768:
+            model_candidates.append(config.parent)
 needs_dino = True  # the consensus patch anchor always uses DINOv2-base
 if needs_dino and len(model_candidates) != 1:
     raise RuntimeError(f"expected one local DINOv2-base config, found {model_candidates}")
@@ -146,7 +153,7 @@ anchor = BLEND["anchor"]
 anchor_csv = WORKING / f"{anchor}.csv"
 patch_command = [
     sys.executable, str(code_dir / "kaggle_offline_infer.py"),
-    "--data-root", str(INPUT / "rsna-knee-abnormality-detection"),
+    "--data-root", str(COMPETITION_INPUT),
     "--dino-model", str(dino_model),
     "--work-dir", str(WORKING / "patch_cache"),
     "--output", str(anchor_csv),
@@ -165,8 +172,8 @@ for name, family in RAW_FAMILIES.items():
     destination = WORKING / f"{name}.csv"
     command = [
         sys.executable, str(code_dir / "infer_raw_mil.py"),
-        "--data-root", str(INPUT / "rsna-knee-abnormality-detection"),
-        "--sample-submission", str(INPUT / "rsna-knee-abnormality-detection" / "sample_submission.csv"),
+        "--data-root", str(COMPETITION_INPUT),
+        "--sample-submission", str(COMPETITION_INPUT / "sample_submission.csv"),
         "--output", str(destination),
         "--slices-per-plane", str(family["inference_slices"]),
         "--workers", "4",
@@ -183,7 +190,7 @@ if time.monotonic() - STARTED >= BUDGET_SECONDS:
 blend_command = [
     sys.executable, str(code_dir / "blend_submission_files.py"),
     "--blend", str(blend_path),
-    "--sample-submission", str(INPUT / "rsna-knee-abnormality-detection" / "sample_submission.csv"),
+    "--sample-submission", str(COMPETITION_INPUT / "sample_submission.csv"),
     "--output", str(WORKING / "submission.csv"),
 ]
 for name in BLEND["members"]:

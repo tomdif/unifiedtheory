@@ -80,6 +80,10 @@ def main() -> None:
         assert "BUDGET_SECONDS = 8.75 * 3600" in code
         assert 'if digest(path) == row["sha256"]' in code
         assert "hash-matching attached" in code
+        assert 'CODE_INPUT.rglob("run_selected_raw_inference.py")' in code
+        assert 'CHECKPOINT_INPUT.rglob(row["name"])' in code
+        assert 'for source_root in INPUT.iterdir()' in code
+        assert 'INPUT.rglob("config.json")' not in code
         assert 'WORKING / "submission.csv"' in code
     print("credible Kaggle kernel smoke passed")
 
