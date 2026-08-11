@@ -1,0 +1,33 @@
+== A. variance structure from action_variance_mc.json ==
+  eps= 1.0: intercept c_N = -1773.251   slope =   194.437   g = slope/((pi/4)M) =  0.887   (M = 279.2)
+  eps= 0.5: intercept c_N =   11.770   slope =     3.423   g = slope/((pi/4)M) =  0.870   (M = 5.011)
+  eps= 0.2: intercept c_N =  -13.360   slope =     0.774   g = slope/((pi/4)M) =  3.142   (M = 0.3137)
+  eps= 0.1: intercept c_N =   -2.559   slope =     0.184   g = slope/((pi/4)M) =  3.223   (M = 0.07283)
+  eps=0.05: intercept c_N =   -0.284   slope =     0.038   g = slope/((pi/4)M) =  2.305   (M = 0.02102)
+  NOTE: intercepts at strong damping bound the Poisson floor;
+  negative/small values reflect the N-D covariance cancellation.
+  adopted c_N band for the floor: [0.05, 2.0]
+== B. LCDM past-lightcone 4-volume ==
+  T0 = 0.9510/H0   V_lc = 0.1231/H0^4   kappa_V = V/T0^4 = 0.1505
+== C. floor channel (Sorkin 1/T^2), NO free amplitude ==
+  c_N =  0.05:  dLambda = 1.0408 H0^2   Omega_fluct = 0.3469
+  c_N =  0.50:  dLambda = 3.2914 H0^2   Omega_fluct = 1.0971
+  c_N =  1.00:  dLambda = 4.6547 H0^2   Omega_fluct = 1.5516
+  c_N =  2.00:  dLambda = 6.5827 H0^2   Omega_fluct = 2.1942
+  (Lambda_obs = 3*0.685 = 2.055 H0^2, i.e. Omega = 0.685)
+  c_N reproducing Lambda_obs exactly: c_N* = 0.1949
+  CMB early-DE limit Omega ~ 0.03 -> c_N <= 3.74e-04
+  => the N-D covariance cancellation must suppress the Poisson
+     floor by >= 3 orders below its naive O(1) value - a sharp,
+     computable internal prediction (the MC noise floor ~0.3
+     cannot resolve it; an exact deep-damping variance
+     computation decides, and c_N > 4e-4 kills the theory).
+== D. edge channel fixes the gravitational nonlocality scale ==
+  required M(eps) = 1.366e-121  ->  eps* = 1.987e-81
+  l_k = l_disc eps*^-1/4 = 1.214e-14 m = 12.14 fm
+    g = 0.5: l_k = 11.47 fm
+    g = 1.0: l_k = 12.88 fm
+== E. single nonlocality scale is excluded by MAGNITUDE ==
+  l_k = 1e-19 m (LHC matter bound): eps = 4.31e-61, Lambda_edge/Lambda_obs = 1.79e+15
+  -> single-scale nonlocality OVERPRODUCES Lambda by ~1e15: the gravity/matter split is forced.
+DONE
