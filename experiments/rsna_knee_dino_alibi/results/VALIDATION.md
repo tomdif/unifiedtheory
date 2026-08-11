@@ -141,3 +141,27 @@ and exact submission validation. It took 19.58 seconds on the three-study
 public placeholder test and reproduced the direct inference CSV byte-for-byte.
 This runtime is a wiring check, not an estimate for the hidden test and not a
 leaderboard score.
+
+## Post-submission improvement scouts
+
+Four warm-started fold-0 controls used the promoted consensus checkpoint
+(`0.76312` macro AUC) as their fixed anchor. None cleared the predeclared
+`+0.005` promotion margin, so none is included in a submission:
+
+| Scout | Best fold-0 macro AUC | Gain | Decision |
+|---|---:|---:|---|
+| residual target-conditioned slice attention | 0.76399 | +0.00086 | reject |
+| multilingual report-embedding distillation | 0.75437 | -0.00875 | reject |
+| 64x expert-label weight | 0.75821 | -0.00491 | reject |
+| v4 fixed equal-source teacher refresh | 0.75486 | -0.00826 | reject |
+
+The v4 report consensus itself improved gold macro AUC from `0.89187` to
+`0.89481`, but that small teacher gain did not transfer in the image-model
+scout. The audits therefore point to representation resolution rather than
+loss weighting or another teacher blend as the next credible bottleneck.
+
+A higher-resolution extractor was consequently added with a controlled
+compute trade: `336x336` DINOv2 inputs, an `8x8` retained token grid, and at
+most 24 slices per series. A real-study smoke produced five valid series with
+64 patch tokens per slice. Full extraction is an experiment in progress, not
+yet a promoted model or score.

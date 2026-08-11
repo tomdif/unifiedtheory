@@ -50,7 +50,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--labels-csv", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
-        "--aggregator", choices=("mean", "index_alibi", "physical_alibi"), default="physical_alibi"
+        "--aggregator",
+        choices=("mean", "gated_attention", "index_alibi", "physical_alibi"),
+        default="physical_alibi",
     )
     parser.add_argument("--model-type", choices=("summary", "patch"), default="summary")
     parser.add_argument("--fold", type=int, default=0)
@@ -80,6 +82,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--report-weight", type=float, default=0.0)
     parser.add_argument("--report-embeddings", type=Path)
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument(
+        "--init-checkpoint",
+        type=Path,
+        help="warm start from a compatible checkpoint (used for residual controls)",
+    )
+    parser.add_argument(
+        "--freeze-loaded-base",
+        action="store_true",
+        help="with --init-checkpoint, train only the new slice-attention branch",
+    )
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 
@@ -309,8 +321,6 @@ def main() -> None:
     if args.model_type == "patch":
         if "patch_features" not in example:
             raise ValueError("--model-type patch requires caches extracted with --patch-grid")
-        if args.report_weight:
-            raise ValueError("report embedding contrastive loss is currently summary-model only")
         config = PatchKneeModelConfig(
             feature_dim=feature_dim,
             patch_dim=int(example["patch_features"].shape[-1]),
@@ -323,9 +333,12 @@ def main() -> None:
             num_targets=len(TARGETS),
             series_dropout=args.series_dropout,
             token_adapter_bottleneck=args.token_adapter_bottleneck,
+            report_dim=report_dim,
         )
         model = PatchKneeAlibiModel(config)
     else:
+        if args.aggregator == "gated_attention":
+            raise ValueError("gated_attention is available only for --model-type patch")
         config = KneeModelConfig(
             feature_dim=feature_dim,
             hidden_dim=args.hidden_dim,
@@ -338,6 +351,35 @@ def main() -> None:
             report_dim=report_dim,
         )
         model = KneeAlibiModel(config)
+    if args.init_checkpoint is not None:
+        try:
+            initial = torch.load(args.init_checkpoint, map_location="cpu", weights_only=True)
+        except TypeError:
+            initial = torch.load(args.init_checkpoint, map_location="cpu")
+        missing, unexpected = model.load_state_dict(initial["model"], strict=False)
+        allowed_missing = {
+            name
+            for name in model.state_dict()
+            if name.startswith("slice_attention_score.")
+            or name.startswith("slice_attention_residual.")
+            or name.startswith("report_projection.")
+        }
+        if set(missing) - allowed_missing or unexpected:
+            raise ValueError(
+                "incompatible warm start: "
+                f"missing={sorted(set(missing) - allowed_missing)}, "
+                f"unexpected={sorted(unexpected)}"
+            )
+        if args.freeze_loaded_base:
+            for name, parameter in model.named_parameters():
+                parameter.requires_grad_(
+                    name.startswith("slice_attention_score.")
+                    or name.startswith("slice_attention_residual.")
+                    or name.startswith("report_projection.")
+                )
+            if not any(parameter.requires_grad for parameter in model.parameters()):
+                raise ValueError("--freeze-loaded-base found no new trainable branch")
+
     device = torch.device(args.device)
     model = model.to(device)
     train_loader = make_loader(
@@ -356,7 +398,10 @@ def main() -> None:
         None,
         include_patch_features=args.model_type == "patch",
     )
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    trainable_parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
+    optimizer = torch.optim.AdamW(
+        trainable_parameters, lr=args.lr, weight_decay=args.weight_decay
+    )
     total_steps = max(1, args.epochs * len(train_loader))
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
     amp_enabled = device.type == "cuda"
@@ -404,7 +449,7 @@ def main() -> None:
                     )
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(trainable_parameters, 1.0)
             scaler.step(optimizer)
             scaler.update()
             scheduler.step()

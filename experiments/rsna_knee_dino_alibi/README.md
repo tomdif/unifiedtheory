@@ -26,8 +26,8 @@ The pipeline is hierarchical:
    compact spatial patch grid per slice.
 4. Each pathology has its own spatial patch query, so ACL, meniscus, marrow,
    and fluid targets need not attend to the same anatomy.
-5. Each series is summarized by masked mean, ordinal ALiBi, or bidirectional
-   physical-distance ALiBi.
+5. Each series is summarized by masked mean, residual target-conditioned
+   slice attention, ordinal ALiBi, or bidirectional physical-distance ALiBi.
 6. A study transformer fuses all series with plane/fluid/fat-suppression
    metadata. Twelve learned target queries produce the competition logits.
 
@@ -147,6 +147,25 @@ python extract_features.py \
 
 On an internet-disabled Kaggle inference notebook, mount the pretrained model
 as a dataset and pass its local path with `--local-files-only`.
+
+The controlled higher-resolution route trades fewer slices for more spatial
+evidence, keeping backbone work near the baseline while retaining four times
+as many compact patch tokens:
+
+```bash
+python extract_features.py \
+  --data-root /workspace/rsna-knee \
+  --split train \
+  --output /workspace/cache/dinov2-base-336-grid8-train \
+  --model-name facebook/dinov2-base \
+  --image-size 336 \
+  --patch-grid 8 \
+  --max-slices 24 \
+  --batch-size 24
+```
+
+This is an ablation candidate, not a promoted default. Promotion still
+requires a complete leakage-safe OOF comparison against the 224/4x4 model.
 
 ## Leakage-safe labels and folds
 

@@ -45,6 +45,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-name", default="facebook/dinov2-base")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument(
+        "--image-size",
+        type=int,
+        default=0,
+        help="square backbone input size; zero preserves the model processor default",
+    )
     parser.add_argument("--max-slices", type=int, default=64)
     parser.add_argument(
         "--patch-grid",
@@ -231,6 +237,7 @@ class DinoFeatureExtractor:
         device: str,
         batch_size: int,
         local_files_only: bool,
+        image_size: int = 0,
     ) -> None:
         from transformers import AutoImageProcessor, AutoModel
 
@@ -240,6 +247,9 @@ class DinoFeatureExtractor:
         self.model = AutoModel.from_pretrained(model_name, local_files_only=local_files_only)
         self.device = torch.device(device)
         self.batch_size = batch_size
+        self.image_size = int(image_size)
+        if self.image_size < 0:
+            raise ValueError("image_size cannot be negative")
         self.model.to(self.device).eval()
         self.num_register_tokens = int(getattr(self.model.config, "num_register_tokens", 0) or 0)
 
@@ -266,7 +276,28 @@ class DinoFeatureExtractor:
         amp = self.device.type == "cuda"
         for start in range(0, len(images), self.batch_size):
             batch_images = images[start : start + self.batch_size]
-            inputs = self.processor(images=list(batch_images), return_tensors="pt")
+            if self.image_size:
+                # The default DINO processor first resizes and then center
+                # crops to its pretraining resolution. Upsampling its output
+                # would add no information, so high-resolution experiments
+                # resize the already physical-cropped source pixels directly.
+                tensors = []
+                for image in batch_images:
+                    tensor = torch.from_numpy(np.ascontiguousarray(image)).permute(2, 0, 1)
+                    tensor = tensor.float().div_(255.0)[None]
+                    tensor = torch.nn.functional.interpolate(
+                        tensor,
+                        size=(self.image_size, self.image_size),
+                        mode="bilinear",
+                        align_corners=False,
+                    )[0]
+                    tensors.append(tensor)
+                pixels = torch.stack(tensors)
+                mean = torch.tensor(self.processor.image_mean).view(1, -1, 1, 1)
+                std = torch.tensor(self.processor.image_std).view(1, -1, 1, 1)
+                inputs = {"pixel_values": (pixels - mean) / std}
+            else:
+                inputs = self.processor(images=list(batch_images), return_tensors="pt")
             inputs = {key: value.to(self.device) for key, value in inputs.items()}
             with torch.autocast(device_type=self.device.type, dtype=torch.float16, enabled=amp):
                 hidden = self.model(**inputs).last_hidden_state
@@ -466,7 +497,11 @@ def main() -> None:
         raise ValueError(f"series table is missing columns: {sorted(missing)}")
     args.output.mkdir(parents=True, exist_ok=True)
     extractor = DinoFeatureExtractor(
-        args.model_name, args.device, args.batch_size, args.local_files_only
+        args.model_name,
+        args.device,
+        args.batch_size,
+        args.local_files_only,
+        args.image_size,
     )
     grouped = list(table.groupby("StudyInstanceUID", sort=True))
     if args.limit_studies:
@@ -492,6 +527,11 @@ def main() -> None:
             {
                 "StudyInstanceUID": str(uid),
                 "cache_file": str(cache_path.resolve()),
+                "backbone": args.model_name,
+                "image_size": args.image_size,
+                "max_slices": args.max_slices,
+                "crop_mm": args.crop_mm,
+                "patch_grid": args.patch_grid,
                 **metadata,
             }
         )

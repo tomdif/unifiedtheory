@@ -18,13 +18,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seeds", type=int, nargs="+", default=[2026])
     parser.add_argument(
         "--aggregator",
-        choices=("mean", "index_alibi", "physical_alibi"),
+        choices=("mean", "gated_attention", "index_alibi", "physical_alibi"),
         default="mean",
     )
     parser.add_argument("--token-adapter-bottleneck", type=int, default=64)
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument(
+        "--init-root",
+        type=Path,
+        help="optional seed/fold checkpoint tree used to warm-start each run",
+    )
+    parser.add_argument("--freeze-loaded-base", action="store_true")
     parser.add_argument("--extra", nargs=argparse.REMAINDER, default=[])
     return parser.parse_args()
 
@@ -54,8 +60,19 @@ def main() -> None:
                 "--batch-size", str(args.batch_size),
                 "--epochs", str(args.epochs),
                 "--workers", str(args.workers),
-                *args.extra,
             ]
+            if args.init_root is not None:
+                initial = (
+                    args.init_root
+                    / f"seed{seed}"
+                    / f"patch_mean_fold{fold}.pt"
+                )
+                if not initial.exists():
+                    raise FileNotFoundError(initial)
+                command.extend(["--init-checkpoint", str(initial)])
+            if args.freeze_loaded_base:
+                command.append("--freeze-loaded-base")
+            command.extend(args.extra)
             print(" ".join(command), flush=True)
             subprocess.run(command, check=True)
 

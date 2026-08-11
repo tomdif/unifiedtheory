@@ -141,6 +141,48 @@ def main() -> None:
     if mean_position_error > 1e-6:
         raise AssertionError(f"patch mean used physical positions by {mean_position_error}")
 
+    gated_config = PatchKneeModelConfig(
+        **{**mean_config.to_dict(), "aggregator": "gated_attention"}
+    )
+    gated_model = PatchKneeAlibiModel(gated_config).eval()
+    missing, unexpected = gated_model.load_state_dict(mean_model.state_dict(), strict=False)
+    expected_missing = {
+        name
+        for name in gated_model.state_dict()
+        if name.startswith("slice_attention_score.")
+        or name.startswith("slice_attention_residual.")
+    }
+    if set(missing) != expected_missing or unexpected:
+        raise AssertionError(
+            f"unexpected residual warm-start keys: missing={missing}, unexpected={unexpected}"
+        )
+    with torch.no_grad():
+        gated_reference = gated_model(**batch)
+        gated_slice_output = gated_model(**permuted_slice)
+    gated_baseline_error = float((gated_reference - mean_reference).abs().max())
+    gated_slice_error = float((gated_reference - gated_slice_output).abs().max())
+    if gated_baseline_error > 1e-7:
+        raise AssertionError(
+            f"zero-initialized gated residual changed the mean model by {gated_baseline_error}"
+        )
+    if gated_slice_error > 3e-5:
+        raise AssertionError(f"gated attention changed under slice permutation by {gated_slice_error}")
+
+    report_config = PatchKneeModelConfig(
+        **{**mean_config.to_dict(), "report_dim": 7}
+    )
+    report_model = PatchKneeAlibiModel(report_config).eval()
+    report_model.load_state_dict(mean_model.state_dict(), strict=False)
+    with torch.no_grad():
+        report_output = report_model(**batch, return_aux=True)
+    if report_output["report_embedding"].shape != (batch["features"].shape[0], 7):
+        raise AssertionError("patch hierarchy emitted an invalid report embedding")
+    report_logit_error = float((report_output["logits"] - mean_reference).abs().max())
+    if report_logit_error > 1e-7:
+        raise AssertionError(
+            f"adding an auxiliary report projection changed logits by {report_logit_error}"
+        )
+
     train_model = PatchKneeAlibiModel(config).train()
     labels = torch.tensor(
         [[0.0, 1.0, 0.0], [1.0, 0.0, 1.0], [1.0, 1.0, 0.0], [0.0, 0.0, 1.0]]
@@ -169,6 +211,9 @@ def main() -> None:
                 "slice_permutation_error": slice_error,
                 "mean_slice_permutation_error": mean_slice_error,
                 "mean_position_invariance_error": mean_position_error,
+                "gated_exact_baseline_error": gated_baseline_error,
+                "gated_slice_permutation_error": gated_slice_error,
+                "report_auxiliary_logit_error": report_logit_error,
                 "overfit_initial": losses[0],
                 "overfit_final": losses[-1],
             },

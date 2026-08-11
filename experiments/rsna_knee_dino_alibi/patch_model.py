@@ -27,6 +27,7 @@ class PatchKneeModelConfig:
     num_targets: int = 12
     series_dropout: float = 0.15
     token_adapter_bottleneck: int = 0
+    report_dim: int = 0
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -89,7 +90,12 @@ class PatchKneeAlibiModel(nn.Module):
 
     def __init__(self, config: PatchKneeModelConfig) -> None:
         super().__init__()
-        if config.aggregator not in {"mean", "index_alibi", "physical_alibi"}:
+        if config.aggregator not in {
+            "mean",
+            "gated_attention",
+            "index_alibi",
+            "physical_alibi",
+        }:
             raise ValueError("unknown patch-hierarchy aggregator")
         self.config = config
         h, t = config.hidden_dim, config.num_targets
@@ -109,7 +115,7 @@ class PatchKneeAlibiModel(nn.Module):
         for parameter in (self.target_embedding, self.series_cls, self.study_cls):
             nn.init.trunc_normal_(parameter, std=0.02)
 
-        if config.aggregator == "mean":
+        if config.aggregator in {"mean", "gated_attention"}:
             self.series_blocks = nn.ModuleList()
             self.series_mean_post = nn.Sequential(
                 nn.LayerNorm(h),
@@ -130,6 +136,26 @@ class PatchKneeAlibiModel(nn.Module):
                 ]
             )
             self.series_mean_post = nn.Identity()
+        if config.aggregator == "gated_attention":
+            # A target-conditioned MIL residual for focal findings.  ``flat``
+            # already contains the target embedding, so one shared scoring
+            # network can learn a different slice distribution per target.
+            # The residual projection is zero-initialized: a warm-started
+            # gated model is exactly the established mean model before any
+            # optimization, rather than an uncontrolled replacement.
+            gate_hidden = max(16, h // 2)
+            self.slice_attention_score = nn.Sequential(
+                nn.LayerNorm(h),
+                nn.Linear(h, gate_hidden),
+                nn.Tanh(),
+                nn.Linear(gate_hidden, 1),
+            )
+            self.slice_attention_residual = nn.Sequential(
+                nn.LayerNorm(h),
+                nn.Linear(h, h),
+            )
+            nn.init.zeros_(self.slice_attention_residual[-1].weight)
+            nn.init.zeros_(self.slice_attention_residual[-1].bias)
         self.series_norm = nn.LayerNorm(h)
         self.plane_embedding = nn.Embedding(4, h)
         self.fluid_embedding = nn.Embedding(3, h)
@@ -151,6 +177,9 @@ class PatchKneeAlibiModel(nn.Module):
         self.target_weights = nn.Parameter(torch.empty(t, h))
         self.target_bias = nn.Parameter(torch.zeros(t))
         nn.init.trunc_normal_(self.target_weights, std=0.02)
+        self.report_projection = (
+            nn.Linear(h, config.report_dim) if config.report_dim > 0 else None
+        )
 
     def _drop_series(self, mask: Tensor) -> Tensor:
         if not self.training or self.config.series_dropout <= 0:
@@ -201,10 +230,21 @@ class PatchKneeAlibiModel(nn.Module):
         masks = effective_slices[:, :, None, :].expand(-1, -1, targets, -1).reshape(
             batch * n_series * targets, n_slices
         )
-        if self.config.aggregator == "mean":
+        if self.config.aggregator in {"mean", "gated_attention"}:
             denominator = masks.sum(dim=1, keepdim=True).clamp_min(1).to(flat.dtype)
-            encoded_series = (flat * masks[..., None].to(flat.dtype)).sum(dim=1)
-            encoded_series = self.series_mean_post(encoded_series / denominator)
+            mean_series = (flat * masks[..., None].to(flat.dtype)).sum(dim=1) / denominator
+            encoded_series = self.series_mean_post(mean_series)
+            if self.config.aggregator == "gated_attention":
+                scores = self.slice_attention_score(flat).squeeze(-1)
+                scores = scores.masked_fill(~masks, -torch.inf)
+                empty = ~masks.any(dim=1)
+                scores = torch.where(empty[:, None], torch.zeros_like(scores), scores)
+                weights = torch.softmax(scores, dim=1) * masks.to(flat.dtype)
+                weights = weights / weights.sum(dim=1, keepdim=True).clamp_min(1e-8)
+                attended = (flat * weights[..., None]).sum(dim=1)
+                encoded_series = encoded_series + self.slice_attention_residual(
+                    attended - mean_series
+                )
         else:
             cls = self.series_cls[None, None, :, :].expand(
                 batch, n_series, -1, -1
@@ -249,9 +289,17 @@ class PatchKneeAlibiModel(nn.Module):
         logits = logits + self.target_bias
         if not return_aux:
             return logits
-        return {
+        output = {
             "logits": logits,
             "target_study_embedding": target_study,
             "patch_attention": patch_attention,
             "effective_series_mask": effective_series,
         }
+        if self.report_projection is not None:
+            # Reports describe the whole examination. Averaging the twelve
+            # target-conditioned views retains a single study representation
+            # while allowing the diagnostic heads to stay specialized.
+            output["report_embedding"] = self.report_projection(
+                target_study.mean(dim=1)
+            )
+        return output
