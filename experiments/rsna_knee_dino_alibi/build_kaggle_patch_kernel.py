@@ -59,10 +59,10 @@ if not (WORKING / "submission.csv").is_file():
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--owner", default="tomdif")
+    parser.add_argument("--owner", default="tomdifiore")
     parser.add_argument("--slug", default="rsna-knee-fixed-patch-rank")
-    parser.add_argument("--code-dataset", default="tomdif/rsna-knee-unifiedtheory-code")
-    parser.add_argument("--checkpoint-dataset", default="tomdif/rsna-knee-fixed-patch-checkpoints")
+    parser.add_argument("--code-dataset", default="tomdifiore/rsna-knee-unifiedtheory-code")
+    parser.add_argument("--checkpoint-dataset", default="tomdifiore/rsna-knee-fixed-patch-checkpoints")
     parser.add_argument("--dino-model-source", default="metaresearch/dinov2/pyTorch/base/1")
     return parser.parse_args()
 

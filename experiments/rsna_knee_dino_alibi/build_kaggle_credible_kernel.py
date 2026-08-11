@@ -15,10 +15,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--blend", type=Path, required=True)
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--owner", default="tomdif")
+    parser.add_argument("--owner", default="tomdifiore")
     parser.add_argument("--slug", default="rsna-knee-credible-heterogeneous-route")
-    parser.add_argument("--code-dataset", default="tomdif/rsna-knee-unifiedtheory-code")
-    parser.add_argument("--checkpoint-dataset", default="tomdif/rsna-knee-credible-checkpoints")
+    parser.add_argument("--code-dataset", default="tomdifiore/rsna-knee-unifiedtheory-code")
+    parser.add_argument("--checkpoint-dataset", default="tomdifiore/rsna-knee-credible-checkpoints")
     parser.add_argument("--dino-model-source", default="metaresearch/dinov2/pyTorch/base/1")
     return parser.parse_args()
 
