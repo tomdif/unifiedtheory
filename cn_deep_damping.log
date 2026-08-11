@@ -1,0 +1,77 @@
+[    0.0s] box: T = 14.75, L = 9.0, <N> = 10751, window t >= 10.55, bands = 4, realizations = 180
+[   76.0s]   4/180 realizations
+[  142.2s]   8/180 realizations
+[  216.0s]   13/180 realizations
+[  279.5s]   17/180 realizations
+[  354.8s]   21/180 realizations
+[  416.3s]   25/180 realizations
+[  484.9s]   29/180 realizations
+[  549.3s]   33/180 realizations
+[  625.8s]   37/180 realizations
+[  694.0s]   42/180 realizations
+[  756.5s]   46/180 realizations
+[  819.8s]   50/180 realizations
+[  881.6s]   54/180 realizations
+[  950.1s]   58/180 realizations
+[ 1012.5s]   62/180 realizations
+[ 1087.9s]   66/180 realizations
+[ 1152.4s]   70/180 realizations
+[ 1228.4s]   75/180 realizations
+[ 1298.6s]   80/180 realizations
+[ 1370.3s]   85/180 realizations
+[ 1440.7s]   90/180 realizations
+[ 1510.3s]   95/180 realizations
+[ 1579.5s]   100/180 realizations
+[ 1652.2s]   105/180 realizations
+[ 1719.6s]   110/180 realizations
+[ 1787.8s]   115/180 realizations
+[ 1860.4s]   120/180 realizations
+[ 1930.2s]   125/180 realizations
+[ 2001.8s]   130/180 realizations
+[ 2062.3s]   134/180 realizations
+[ 2129.7s]   139/180 realizations
+[ 2197.5s]   144/180 realizations
+[ 2257.9s]   148/180 realizations
+[ 2328.1s]   153/180 realizations
+[ 2398.4s]   158/180 realizations
+[ 2459.1s]   162/180 realizations
+[ 2526.3s]   167/180 realizations
+[ 2587.7s]   171/180 realizations
+[ 2657.6s]   176/180 realizations
+[ 2713.9s] sampling done
+[ 2713.9s] == per-eps, per-band variance table ==
+[ 2713.9s]   eps=  0.5: band t~11.05  Var(S/k)/N = 1031.28645   [VarN/N  0.801  VarD/N 1028.239  2Cov/N   -2.246]  <S/k>/N = -0.0228
+[ 2713.9s]   eps=  0.5: band t~12.05  Var(S/k)/N = 1010.22936   [VarN/N  0.888  VarD/N 1009.741  2Cov/N    0.400]  <S/k>/N = +0.0673
+[ 2713.9s]   eps=  0.5: band t~13.05  Var(S/k)/N = 1013.28913   [VarN/N  0.990  VarD/N 1011.913  2Cov/N   -0.386]  <S/k>/N = +0.0466
+[ 2713.9s]   eps=  0.5: band t~14.05  Var(S/k)/N = 1258.44420   [VarN/N  0.989  VarD/N 1263.038  2Cov/N    5.582]  <S/k>/N = +0.0936
+[ 2713.9s]   eps=  0.5: intercept c_N = 632.59807   t^2-slope = 2.808773
+[ 2713.9s]   eps=  0.4: band t~11.05  Var(S/k)/N = 450.47639   [VarN/N  0.801  VarD/N  447.683  2Cov/N   -1.992]  <S/k>/N = -0.0402
+[ 2713.9s]   eps=  0.4: band t~12.05  Var(S/k)/N = 480.55582   [VarN/N  0.888  VarD/N  479.722  2Cov/N    0.055]  <S/k>/N = +0.0374
+[ 2713.9s]   eps=  0.4: band t~13.05  Var(S/k)/N = 484.49884   [VarN/N  0.990  VarD/N  485.307  2Cov/N    1.798]  <S/k>/N = +0.0342
+[ 2713.9s]   eps=  0.4: band t~14.05  Var(S/k)/N = 621.40142   [VarN/N  0.989  VarD/N  625.540  2Cov/N    5.128]  <S/k>/N = +0.1021
+[ 2713.9s]   eps=  0.4: intercept c_N = 177.52449   t^2-slope = 2.090340
+[ 2713.9s]   eps=  0.3: band t~11.05  Var(S/k)/N = 192.29751   [VarN/N  0.801  VarD/N  191.295  2Cov/N   -0.201]  <S/k>/N = -0.0332
+[ 2713.9s]   eps=  0.3: band t~12.05  Var(S/k)/N = 234.97682   [VarN/N  0.888  VarD/N  234.196  2Cov/N    0.107]  <S/k>/N = +0.0160
+[ 2713.9s]   eps=  0.3: band t~13.05  Var(S/k)/N = 207.72509   [VarN/N  0.990  VarD/N  209.288  2Cov/N    2.553]  <S/k>/N = +0.0498
+[ 2713.9s]   eps=  0.3: band t~14.05  Var(S/k)/N = 270.30828   [VarN/N  0.989  VarD/N  273.196  2Cov/N    3.877]  <S/k>/N = +0.0958
+[ 2713.9s]   eps=  0.3: intercept c_N = 94.73339   t^2-slope = 0.829268
+[ 2713.9s]   eps=  0.2: band t~11.05  Var(S/k)/N = 87.56943   [VarN/N  0.801  VarD/N   88.548  2Cov/N    1.780]  <S/k>/N = +0.0041
+[ 2713.9s]   eps=  0.2: band t~12.05  Var(S/k)/N = 111.01843   [VarN/N  0.888  VarD/N  110.778  2Cov/N    0.648]  <S/k>/N = +0.0119
+[ 2713.9s]   eps=  0.2: band t~13.05  Var(S/k)/N = 79.70188   [VarN/N  0.990  VarD/N   80.489  2Cov/N    1.777]  <S/k>/N = +0.0636
+[ 2713.9s]   eps=  0.2: band t~14.05  Var(S/k)/N = 103.79098   [VarN/N  0.989  VarD/N  105.159  2Cov/N    2.357]  <S/k>/N = +0.0826
+[ 2713.9s]   eps=  0.2: intercept c_N = 84.53182   t^2-slope = 0.069246
+[ 2713.9s]   eps=  0.1: band t~11.05  Var(S/k)/N = 25.45519   [VarN/N  0.801  VarD/N   26.535  2Cov/N    1.881]  <S/k>/N = +0.0522
+[ 2713.9s]   eps=  0.1: band t~12.05  Var(S/k)/N = 36.42114   [VarN/N  0.888  VarD/N   36.171  2Cov/N    0.638]  <S/k>/N = +0.0457
+[ 2713.9s]   eps=  0.1: band t~13.05  Var(S/k)/N = 26.37816   [VarN/N  0.990  VarD/N   26.207  2Cov/N    0.819]  <S/k>/N = +0.0637
+[ 2713.9s]   eps=  0.1: band t~14.05  Var(S/k)/N = 27.80249   [VarN/N  0.989  VarD/N   28.149  2Cov/N    1.336]  <S/k>/N = +0.0681
+[ 2713.9s]   eps=  0.1: intercept c_N = 31.38983   t^2-slope = -0.014970
+[ 2713.9s]   eps= 0.05: band t~11.05  Var(S/k)/N = 16.23884   [VarN/N  0.801  VarD/N   16.526  2Cov/N    1.088]  <S/k>/N = +0.0690
+[ 2713.9s]   eps= 0.05: band t~12.05  Var(S/k)/N = 16.97012   [VarN/N  0.888  VarD/N   16.860  2Cov/N    0.779]  <S/k>/N = +0.0681
+[ 2713.9s]   eps= 0.05: band t~13.05  Var(S/k)/N = 15.13898   [VarN/N  0.990  VarD/N   16.072  2Cov/N    1.923]  <S/k>/N = +0.0704
+[ 2713.9s]   eps= 0.05: band t~14.05  Var(S/k)/N = 15.88933   [VarN/N  0.989  VarD/N   16.120  2Cov/N    1.219]  <S/k>/N = +0.0762
+[ 2713.9s]   eps= 0.05: intercept c_N = 17.87700   t^2-slope = -0.011455
+[ 2713.9s] == c_N(eps) scaling law ==
+[ 2713.9s]   fit c_N = 795.9236 * eps^1.351  (over 6 positive intercepts)
+[ 2713.9s]   extrapolated c_N(eps* = 2e-81) = 7.963e-107
+[ 2713.9s]   CMB bound 3.7e-4: CLEARS by many orders (reading i)
+[ 2713.9s] DONE
