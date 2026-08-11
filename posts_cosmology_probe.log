@@ -1,0 +1,21 @@
+[quantum pi/4] 4000 paths
+  n= 4: P(post now) = 0.2652   P(ever post, stages<=n) = 0.5827
+  n= 5: P(post now) = 0.1865   P(ever post, stages<=n) = 0.6550
+  n= 6: P(post now) = 0.1092   P(ever post, stages<=n) = 0.6725
+  n= 7: P(post now) = 0.0998   P(ever post, stages<=n) = 0.6913
+  n= 8: P(post now) = 0.0798   P(ever post, stages<=n) = 0.7037
+  n= 9: P(post now) = 0.0690   P(ever post, stages<=n) = 0.7143
+  n=10: P(post now) = 0.0517   P(ever post, stages<=n) = 0.7238
+  n=11: P(post now) = 0.0445   P(ever post, stages<=n) = 0.7290
+  n=12: P(post now) = 0.0357   P(ever post, stages<=n) = 0.7318
+[classical uniform] 12000 paths
+  n= 4: P(post now) = 0.3678   P(ever post, stages<=n) = 0.6768
+  n= 5: P(post now) = 0.3088   P(ever post, stages<=n) = 0.7115
+  n= 6: P(post now) = 0.2625   P(ever post, stages<=n) = 0.7309
+  n= 7: P(post now) = 0.2335   P(ever post, stages<=n) = 0.7462
+  n= 8: P(post now) = 0.2083   P(ever post, stages<=n) = 0.7552
+  n= 9: P(post now) = 0.1901   P(ever post, stages<=n) = 0.7618
+  n=10: P(post now) = 0.1788   P(ever post, stages<=n) = 0.7663
+  n=11: P(post now) = 0.1703   P(ever post, stages<=n) = 0.7702
+  n=12: P(post now) = 0.1652   P(ever post, stages<=n) = 0.7734
+DONE
