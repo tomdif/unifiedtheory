@@ -235,7 +235,7 @@ class DinoFeatureExtractor:
         from transformers import AutoImageProcessor, AutoModel
 
         self.processor = AutoImageProcessor.from_pretrained(
-            model_name, local_files_only=local_files_only
+            model_name, local_files_only=local_files_only, use_fast=False
         )
         self.model = AutoModel.from_pretrained(model_name, local_files_only=local_files_only)
         self.device = torch.device(device)

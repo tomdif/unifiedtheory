@@ -93,6 +93,9 @@ BUDGET_SECONDS = 8.75 * 3600
 BLEND = __BLEND__
 CHECKPOINTS = __CHECKPOINTS__
 RAW_FAMILIES = __RAW_FAMILIES__
+os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+os.environ["TRANSFORMERS_VERBOSITY"] = "error"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 wanted_names = {
     "run_selected_raw_inference.py", "sample_submission.csv", "config.json",
@@ -170,7 +173,7 @@ patch_command = [
     "--work-dir", str(WORKING / "patch_cache"),
     "--output", str(anchor_csv),
     "--runtime-json", str(WORKING / "patch_runtime.json"),
-    "--batch-size", "64", "--inference-batch-size", "3",
+    "--batch-size", "16", "--inference-batch-size", "3",
     "--workers", "4", "--max-slices", "64", "--time-budget-hours", "8.5",
 ]
 for checkpoint in resolved[anchor]:

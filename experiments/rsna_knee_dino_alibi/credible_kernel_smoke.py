@@ -85,6 +85,8 @@ def main() -> None:
         assert 'named_hits = file_index[row["name"]]' in code
         assert 'COMPETITION_INPUT = sample_hits[0].parent' in code
         assert 'INPUT.rglob("config.json")' not in code
+        assert 'os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"' in code
+        assert '"--batch-size", "16"' in code
         assert 'WORKING / "submission.csv"' in code
     print("credible Kaggle kernel smoke passed")
 
