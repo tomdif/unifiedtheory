@@ -182,3 +182,24 @@ regression witness).  The infinite-tail/DJS-boundary half remains open.
    equations (does a phase window survive?).
 4. Tail events / DJS boundary: promote finite-horizon martingale
    stability to a sigma-additive extension statement.
+
+## Addendum: the double-norm question resolved (same session)
+
+The dangling double_norm_probe.log (08-03, one line, script lost,
+"rms 9.167e-04, support 65/87") asked whether the wave family CONTAINS
+a bi-normalized member — i.e., whether completion #3 is secretly a
+SELECTION principle inside the old theory.  Resolved NEGATIVE with a
+sharp formulation (double_norm_resolve.py): parameterize the EXACTLY
+coherent nonnegative family (null space of the 49-rank linear system,
+38 dims) and minimize the normalized Born defect
+(sum_c mu A_c^2 - A_p^2)/(A_p^2 + 1e-4) over it, penalty-escalated
+multistart (LP members, zero, 3 scales of random; every start converges
+to the same basin).  MINIMUM = 2.146 (raw 2.547), worst parent defect
+10.05, optimal support 66-67/87 at levels {1,2,4:12,5:~48}.  The
+defect floor is ORDER UNITY, not a near-miss: no bi-normalized member
+exists in the depth-5 wave family; the phases must move (as Born-shell
+completion moves them).  The bi-normalized law is structurally a SECOND
+theory — the transfer audit's "defines a second theory" is now a
+quantified geometric separation, and the old probe's 9.2e-4 (whatever
+residual it measured; its script is lost) cannot be this object.  Its
+support pattern 65/87, however, matches the optimum found here.

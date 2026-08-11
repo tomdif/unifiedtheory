@@ -1,0 +1,6 @@
+causets 87 (expect 87), parents 24
+coherent system rank 49, null-space dim 38, |C A0 - b| = 3.95e-15
+start 0: NEW BEST born-rms = 2.146e+00 (minA = -9.80e-07)
+start 2: NEW BEST born-rms = 2.146e+00 (minA = -9.80e-07)
+start 3: NEW BEST born-rms = 2.146e+00 (minA = -9.00e-07)
+start 6: NEW BEST born-rms = 2.146e+00 (minA = -8.99e-07)
