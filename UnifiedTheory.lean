@@ -5601,6 +5601,15 @@ import UnifiedTheory.Audit.KFCausalBornRecordMartingale
 -- the lambda-observable separating the partially coherent theory from
 -- decoherence-based quantum mechanics (which predicts zero regression).
 import UnifiedTheory.Audit.KFCausalBornQuadraturePhase
+-- The fact-stability mechanism: action phases telescope (every path to a
+-- class carries the same phase e^{i phi Delta-S}, so the class-identified
+-- coherent measure is phase-free), and under labeled Born completeness
+-- hereditary events never lose unnormalized coherent square-mass
+-- (aggregation of same-phase nonnegative amplitudes is
+-- square-superadditive).  Proves the exact half of the registered
+-- max-entropy fact-stability conjecture; the normalized-ratio half is a
+-- measured finite-margin fact (min margin 1.0648 at depth 8).
+import UnifiedTheory.Audit.KFCausalCoherentRecordAccretion
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
