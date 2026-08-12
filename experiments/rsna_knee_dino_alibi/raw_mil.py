@@ -432,6 +432,44 @@ class LoRAConv2d(nn.Module):
         nn.init.kaiming_uniform_(self.down.weight, a=np.sqrt(5))
         nn.init.zeros_(self.up.weight)
 
+    @property
+    def weight(self) -> nn.Parameter:
+        """Expose the frozen base weight for transparent Conv2d consumers."""
+
+        return self.base.weight
+
+    @property
+    def bias(self) -> nn.Parameter | None:
+        return self.base.bias
+
+    @property
+    def in_channels(self) -> int:
+        return self.base.in_channels
+
+    @property
+    def out_channels(self) -> int:
+        return self.base.out_channels
+
+    @property
+    def kernel_size(self) -> tuple[int, int]:
+        return self.base.kernel_size
+
+    @property
+    def stride(self) -> tuple[int, int]:
+        return self.base.stride
+
+    @property
+    def padding(self) -> tuple[int, int]:
+        return self.base.padding
+
+    @property
+    def dilation(self) -> tuple[int, int]:
+        return self.base.dilation
+
+    @property
+    def groups(self) -> int:
+        return self.base.groups
+
     def forward(self, inputs: Tensor) -> Tensor:
         return self.base(inputs) + self.up(self.down(self.dropout(inputs))) * self.scale
 

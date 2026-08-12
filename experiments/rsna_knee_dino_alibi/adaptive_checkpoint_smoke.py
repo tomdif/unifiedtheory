@@ -6,6 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+import torch
 from transformers import Dinov2Config, Dinov2Model
 
 try:
@@ -64,6 +65,21 @@ def main() -> None:
         for key, value in original.state_dict().items():
             if not value.equal(restored.state_dict()[key]):
                 raise AssertionError(f"checkpoint reconstruction changed {key}")
+        restored.eval()
+        with torch.inference_mode():
+            logits = restored(
+                torch.rand(2, 3, 32, 32),
+                torch.ones(2, dtype=torch.long),
+                torch.ones(2, dtype=torch.long),
+                torch.ones(2, dtype=torch.long),
+                torch.tensor([-0.5, 0.5]),
+                torch.zeros(2, dtype=torch.long),
+                torch.zeros(2, dtype=torch.long),
+                1,
+                1,
+            )
+        if logits.shape != (1, 12) or not torch.isfinite(logits).all():
+            raise AssertionError("restored adaptive DINO checkpoint failed a real forward pass")
     print("adaptive checkpoint reconstruction passed")
 
 
