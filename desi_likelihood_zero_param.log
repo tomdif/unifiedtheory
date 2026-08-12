@@ -1,0 +1,28 @@
+/Users/thomasdifiore/unifiedtheory/desi_likelihood_zero_param.py:112: RuntimeWarning: invalid value encountered in divide
+  F[r] = (B / np.sqrt(W)) / V ** 0.25
+realizations: 400; std f(1) = 0.685; f(1)>0: 0.50
+LCDM: chi2 = 18.20 at Om = 0.305, h = 0.682
+w0waCDM: chi2 = 7.74 at (Om, w0, wa, h) = (0.335, -0.6, -1.2, 0.653)
+
+everpresent action law (103 realizations with f(1)>0 and viable background):
+  chi2: min = 59.28  16% = 4063.88  median = 20777.01  84% = 104419.63
+  Delta-chi2 vs LCDM: min = +41.08  median = +20758.81  best quartile <= +6074.84
+  fraction of realizations beating LCDM: 0.000
+  (w0waCDM beats LCDM by 10.46 on this data)
+  best realization: idx 63, chi2 = 59.28, h = 0.563, f(1) = 0.562, Om = 0.438
+  ensemble-marginal factor <exp(-dchi2/2)> = 3.004e-12 (includes wrong-sign/wrong-size realizations; anthropic caveat)
+
+deterministic drift law rho_DE = 0.685 rho_c0 (t0/t):
+  chi2 = 989.44 at h = 0.6080000000000001, Delta vs LCDM = +971.24, vs w0waCDM = +981.70
+  effective (w0, wa) over z<1: (-0.651, +0.229)
+
+bound scan: subdominant envelope atop constant Lambda:
+  A = 0.000: chi2 = 27.78 (Delta = +0.00)
+  A = 0.020: chi2 = 28.41 (Delta = +0.62)
+  A = 0.040: chi2 = 28.12 (Delta = +0.34)
+  A = 0.060: chi2 = 30.87 (Delta = +3.09)
+  A = 0.080: chi2 = 36.69 (Delta = +8.91)
+  A = 0.100: chi2 = 45.27 (Delta = +17.49)
+  A = 0.120: chi2 = 56.25 (Delta = +28.46)
+  A_2sigma = 0.0613  ->  l_k >= 27.1 fm (gravitational nonlocality, DESI-derived)
+DONE
