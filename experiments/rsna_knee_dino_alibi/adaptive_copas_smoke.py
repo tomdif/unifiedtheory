@@ -160,6 +160,27 @@ def main() -> None:
     (trained["logits"].sum() + trained["branch_logits"].sum()).backward()
     assert model.target_query.grad is not None
     assert model.label_fusion.weight.grad is not None
+
+    specialist = AdaptiveCoPlaneMILModel(
+        TinyBackbone(),
+        12,
+        hidden_dim=24,
+        dropout=0.0,
+        encoder_batch_size=3,
+        report_dim=10,
+        specialist_bottleneck=8,
+    ).eval()
+    missing, unexpected = specialist.load_state_dict(model.state_dict(), strict=False)
+    if unexpected or not missing or not all(name.startswith("specialists.") for name in missing):
+        raise AssertionError(f"invalid specialist warm start: {missing=}, {unexpected=}")
+    with torch.no_grad():
+        baseline = model(*arguments)
+        specialized = specialist(*arguments)
+    torch.testing.assert_close(baseline, specialized, atol=1e-7, rtol=0)
+    with torch.no_grad(), torch.autocast(device_type="cpu", dtype=torch.bfloat16):
+        mixed_precision = specialist(*arguments)
+    if mixed_precision.dtype != baseline.dtype or not torch.isfinite(mixed_precision).all():
+        raise AssertionError("specialist mixed-precision boundary is invalid")
     check_lora()
     print("adaptive co-plane and LoRA smoke tests passed")
 

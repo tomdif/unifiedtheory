@@ -480,6 +480,47 @@ systems-pilot runtime evidence. Its output always sets
 `full_cv_authorized: false` and stops at `manual_review_required`; a limited
 pilot can validate execution but cannot promote itself into five-fold CV.
 
+### Knee-native representation experiment
+
+The next registered experiment changes the representation rather than fitting
+another post-hoc blend. `pretrain_knee_native.py` adapts the declared DINOv2
+backbone using competition training images only. Its fixed objectives are:
+
+- two-view VICReg intensity invariance without negative-pair mining;
+- masked reconstruction from physically ordered neighboring slices;
+- cross-series agreement between acquisitions of the same knee;
+- plane, fluid-sensitivity, and fat-suppression retention.
+
+For score-bearing OOF experiments, `--study-list-csv` and `--exclude-fold`
+remove the supervised held-out fold from pretraining as well. The validation
+image distribution is therefore not used even without labels.
+
+The checkpoint is a normal `SliceFeatureBackbone` state dictionary, so
+supervised raw-DICOM training can load it with `--backbone-checkpoint`. The
+adaptive model also exposes two opt-in controls:
+
+- `--clinical-branch-mask` restricts auxiliary branch supervision to fixed,
+  clinically supported target/plane pairs. It never masks final cross-plane
+  fusion.
+- `--specialist-bottleneck 64` adds zero-initialized tissue-family residuals.
+  Before optimization, this model exactly matches the established adaptive
+  model.
+
+The resolution router is audited separately by
+`fit_nested_target_router.py`. On the completed baseline/high-resolution OOF
+artifacts, the apparent target-wise gains failed nested selection: nested
+macro AUC was `0.74001` against anchor `0.74847` (`-0.00846`). The router
+therefore retained the baseline for all twelve targets.
+
+The first GPU systems pilot passed: all SSL terms were finite, cross-series
+learning was active, peak memory was `5.51 GiB`, and the LoRA-DINO checkpoint
+reloaded into the diagnostic model with complete key coverage. A limited
+supervised adaptive run with clinical masking and specialists then completed
+at finite loss `1.16836` and `5.27 GiB`. These are wiring results, not score
+promotion evidence. The next comparison is one complete paired fold; promotion
+requires `+0.02` macro expert AUC and no more than four materially worsened
+targets before any five-fold run.
+
 ## RunPod handoff
 
 Copy this directory to the pod, install dependencies in its persistent volume,

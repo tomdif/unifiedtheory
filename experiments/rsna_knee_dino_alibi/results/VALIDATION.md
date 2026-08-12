@@ -165,3 +165,25 @@ compute trade: `336x336` DINOv2 inputs, an `8x8` retained token grid, and at
 most 24 slices per series. A real-study smoke produced five valid series with
 64 patch tokens per slice. Full extraction is an experiment in progress, not
 yet a promoted model or score.
+
+## Knee-native SSL and conservative routing
+
+Target-wise routing of the completed 224/336 OOF members was tested with a
+nested, expert-only router. Each held-out fold used model choices made on the
+other four folds, with a paired stratified-bootstrap support requirement.
+Nested macro AUC fell from `0.74847` to `0.74001` (`-0.00846`), so the router
+reverted every target to the anchor. The non-nested target oracle is therefore
+not a defensible estimate of deployable gain.
+
+A competition-only knee-native DINO-LoRA pretrainer passed its systems
+contract. A four-study, batch-two GPU run produced finite invariance, variance,
+covariance, masked-reconstruction, cross-series, and metadata losses; used
+`5.51 GiB`; and emitted a backbone checkpoint with complete diagnostic-model
+key coverage. A limited 32-study supervised compatibility run then completed
+with clinical plane masking and zero-initialized pathology specialists at
+finite loss `1.16836` and `5.27 GiB` peak memory. The limited expert split has
+undefined AUC by design, so neither run is promotion evidence.
+
+The next score-bearing gate is one complete paired fold. Knee-native
+pretraining must improve macro expert AUC by at least `0.02`, with no more than
+four materially worsened targets, before full cross-validation.

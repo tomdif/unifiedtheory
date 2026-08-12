@@ -17,7 +17,7 @@ from torch import nn
 from torch.utils.data import DataLoader
 
 try:
-    from .constants import TARGETS
+    from .constants import PLANE_TO_ID, TARGETS, TARGET_PLANE_SUPPORT
     from .raw_mil import (
         AdaptiveCoPlaneMILModel,
         RawStudyDataset,
@@ -37,7 +37,7 @@ try:
         seed_everything,
     )
 except ImportError:
-    from constants import TARGETS
+    from constants import PLANE_TO_ID, TARGETS, TARGET_PLANE_SUPPORT
     from raw_mil import (
         AdaptiveCoPlaneMILModel,
         RawStudyDataset,
@@ -108,6 +108,17 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--branch-loss-weight", type=float, default=0.25)
     parser.add_argument("--alibi-heads", type=int, default=6)
+    parser.add_argument(
+        "--specialist-bottleneck",
+        type=int,
+        default=0,
+        help="zero-initialized pathology-family residual width; 0 disables it",
+    )
+    parser.add_argument(
+        "--clinical-branch-mask",
+        action="store_true",
+        help="apply branch supervision only on clinically supported target/plane pairs",
+    )
     parser.add_argument("--report-embeddings", type=Path)
     parser.add_argument("--report-weight", type=float, default=0.0)
     parser.add_argument("--limit-studies", type=int, default=0)
@@ -162,6 +173,16 @@ def load_report_embeddings(path: Path | None) -> tuple[dict[str, torch.Tensor] |
     return {
         uid: torch.from_numpy(value) for uid, value in zip(uids.tolist(), values)
     }, int(values.shape[1])
+
+
+def clinical_branch_support(device: torch.device) -> torch.Tensor:
+    """Return the fixed plane-by-target auxiliary-supervision contract."""
+
+    support = torch.zeros(len(PLANE_TO_ID), len(TARGETS), dtype=torch.bool, device=device)
+    for target_index, target in enumerate(TARGETS):
+        for plane in TARGET_PLANE_SUPPORT[target]:
+            support[PLANE_TO_ID[plane], target_index] = True
+    return support
 
 
 @torch.inference_mode()
@@ -280,6 +301,7 @@ def main() -> None:
             encoder_batch_size=args.encoder_batch_size,
             report_dim=report_dim,
             alibi_heads=args.alibi_heads,
+            specialist_bottleneck=args.specialist_bottleneck,
         )
     else:
         model = RawStudyMILModel(
@@ -376,10 +398,15 @@ def main() -> None:
                     labels_expanded = batch["labels"][:, None, :].expand_as(branch_logits)
                     label_mask = batch["label_mask"][:, None, :].expand_as(branch_logits)
                     branch_confidence = confidence[:, None, :].expand_as(branch_logits)
+                    auxiliary_mask = label_mask & branch_mask
+                    if args.clinical_branch_mask:
+                        auxiliary_mask = auxiliary_mask & clinical_branch_support(
+                            prediction.device
+                        )[None, :, :]
                     loss = loss + args.branch_loss_weight * masked_bce(
                         branch_logits,
                         labels_expanded,
-                        label_mask & branch_mask,
+                        auxiliary_mask,
                         branch_confidence,
                         pos_weight,
                     )

@@ -21,7 +21,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset
 
 try:
-    from .constants import PLANE_TO_ID
+    from .constants import PLANE_TO_ID, TARGETS, TARGET_FAMILIES
     from .dino_adapter import freeze_except_last_blocks
     from .extract_features import (
         _crop_physical,
@@ -32,7 +32,7 @@ try:
         _tristate,
     )
 except ImportError:
-    from constants import PLANE_TO_ID
+    from constants import PLANE_TO_ID, TARGETS, TARGET_FAMILIES
     from dino_adapter import freeze_except_last_blocks
     from extract_features import (
         _crop_physical,
@@ -801,6 +801,7 @@ class AdaptiveCoPlaneMILModel(nn.Module):
         encoder_batch_size: int = 12,
         report_dim: int = 0,
         alibi_heads: int = 6,
+        specialist_bottleneck: int = 0,
     ) -> None:
         super().__init__()
         if hidden_dim < 8:
@@ -835,6 +836,31 @@ class AdaptiveCoPlaneMILModel(nn.Module):
             self.num_planes * num_targets * 2, num_targets, bias=False
         )
         nn.init.zeros_(self.label_fusion.weight)
+        if specialist_bottleneck < 0:
+            raise ValueError("specialist_bottleneck cannot be negative")
+        if num_targets != len(TARGETS) and specialist_bottleneck:
+            raise ValueError("pathology specialists require the canonical target list")
+        self.specialist_bottleneck = specialist_bottleneck
+        self.specialists = nn.ModuleDict()
+        if specialist_bottleneck:
+            target_index: list[int] = []
+            for family, members in TARGET_FAMILIES.items():
+                indices = [TARGETS.index(target) for target in members]
+                target_index.extend(indices)
+                head = nn.Sequential(
+                    nn.LayerNorm(hidden_dim),
+                    nn.Linear(hidden_dim, specialist_bottleneck),
+                    nn.GELU(),
+                    nn.Dropout(dropout),
+                    nn.Linear(specialist_bottleneck, len(indices)),
+                )
+                # A warm-started specialist model is exactly the established
+                # co-plane model before optimization.
+                nn.init.zeros_(head[-1].weight)
+                nn.init.zeros_(head[-1].bias)
+                self.specialists[family] = head
+            if sorted(target_index) != list(range(num_targets)):
+                raise ValueError("target families must partition every target exactly once")
         for value in (
             self.target_query,
             self.series_gate_query,
@@ -959,6 +985,22 @@ class AdaptiveCoPlaneMILModel(nn.Module):
                 ]
             )
             all_logits.append(base_logits + self.label_fusion(fusion_input))
+            if self.specialists:
+                specialist_delta = base_logits.new_zeros(self.num_targets)
+                for family, members in TARGET_FAMILIES.items():
+                    indices = torch.tensor(
+                        [TARGETS.index(target) for target in members],
+                        device=study_token.device,
+                    )
+                    family_token = study_token.index_select(0, indices)
+                    values = self.specialists[family](family_token)
+                    # Each row is target-conditioned.  Use only the matching
+                    # diagonal output so one family's findings cannot leak
+                    # into another member through a shared scalar token.
+                    specialist_delta = specialist_delta.index_add(
+                        0, indices, values.diagonal().to(specialist_delta.dtype)
+                    )
+                all_logits[-1] = all_logits[-1] + specialist_delta
             all_branches.append(branch_logits)
             all_branch_masks.append(branch_mask)
             report_features.append(study_token.mean(dim=0))
