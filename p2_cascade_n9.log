@@ -1,0 +1,35 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.5s] parents: 2450
+[    0.0s] building level 9...
+[    4.6s]   2000/16999 parents expanded
+[    8.0s]   4000/16999 parents expanded
+[   10.6s]   6000/16999 parents expanded
+[   13.1s]   8000/16999 parents expanded
+[   16.0s]   10000/16999 parents expanded
+[   18.5s]   12000/16999 parents expanded
+[   20.7s]   14000/16999 parents expanded
+[   23.5s]   16000/16999 parents expanded
+[   24.5s] level 9: 183231 classes (expect 183231)
+[   25.4s] building level-8 children maps...
+[   59.0s] children maps done
+[   90.2s]   2000 parents solved
+[  164.1s]   4000 parents solved
+[  227.2s]   6000 parents solved
+[  271.6s]   8000 parents solved
+[  312.5s]   10000 parents solved
+[  352.3s]   12000 parents solved
+[  382.8s]   14000 parents solved
+[  412.1s] law built through level 8: 389725 edges, 15869 parents
+[  413.8s] R computed; support sizes: n=4:12 n=5:46 n=6:240 n=7:1609 n=8:13955 n=9:156446
+[  413.9s] sigma^2(n): n=4:1.366  n=5:1.709  n=6:1.938  n=7:2.204  n=8:2.520  n=9:2.823
+[  413.9s] V1: sigma(9) predicted = 1.640  measured = 1.680  err = 2.4%
+[  414.4s] V2: transition 8->9 constants: g = 0.909  v = 0.219  2cov = +0.312  (committed fit: 0.864 / 0.289 / +0.224)
+[  414.4s] V3: overlap c(A, n) through n = 9 (has_post + stems)
+[  415.1s]   has_post  c(5..9) =   3.60    4.05    5.40    7.05    9.79   dln-c increments: +0.117 +0.287 +0.267 +0.328
+[  508.5s]   stem0     c(5..9) =   2.21    1.85    1.58    1.41    1.30   dln-c increments: -0.175 -0.161 -0.114 -0.082
+[  603.0s]   stem1     c(5..9) =   2.60    2.25    1.96    1.82    1.70   dln-c increments: -0.145 -0.137 -0.079 -0.068
+[  697.8s]   stem2     c(5..9) =   4.42    3.47    2.86    2.53    2.35   dln-c increments: -0.243 -0.191 -0.126 -0.073
+[  791.7s]   stem3     c(5..9) =   3.32    2.86    2.55    2.32    2.14   dln-c increments: -0.147 -0.117 -0.093 -0.081
+[  882.9s]   stem4     c(5..9) =   1.24    1.14    1.10    1.07    1.05   dln-c increments: -0.084 -0.040 -0.024 -0.016
+[  882.9s] total time 883s
+[  882.9s] DONE

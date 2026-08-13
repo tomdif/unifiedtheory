@@ -1,0 +1,15 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.5s] parents: 2450
+[    4.9s] 4D law built: 42 edges, infeasible parents: 0
+[    5.0s] == 4D engine: T2 residuals and c*f_count ==
+[    5.0s]    has_post     a_cnt  -0.703  a_R  -0.498  a_Q  -0.234  resid  +0.059  c*fc(8) =  1.08
+[    5.0s]    stem3        a_cnt  +0.000  a_R  +0.000  a_Q  +0.000  resid  +0.000  c*fc(8) =  1.00
+[    5.0s]   T2 residual: mean +0.029  max|.| 0.059  (2D engine was mean +0.074)
+[    5.0s] == 4D engine: ln R Gaussianity / sigma(n) ==
+/Users/thomasdifiore/unifiedtheory/p2_tilt_4d.py:135: RuntimeWarning: invalid value encountered in scalar divide
+  sk = float(((x - x.mean()) ** 3).mean() / x.std() ** 3)
+[    5.0s]    n=5: sigma = 0.000  skew = +nan  classes = 1
+[    5.0s]    n=6: sigma = 0.000  skew = +nan  classes = 1
+[    5.0s]    n=7: sigma = 0.352  skew = +0.00  classes = 4
+[    5.0s]    n=8: sigma = 0.752  skew = +0.36  classes = 28
+[    5.0s] DONE

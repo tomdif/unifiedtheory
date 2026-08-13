@@ -1,0 +1,11 @@
+<string>:112: RuntimeWarning: invalid value encountered in divide
+realizations: 400; std f(1) = 0.685; f(1)>0: 0.50
+== R1: baseline, Om AND h profiled ==
+  [R1 full] base chi2 = 19.21  A_2sigma = 0.0286  l_k >= 35.0 fm
+== R2: BAO-only (no CMB priors) ==
+  [R2 BAO-only] no 2-sigma crossing up to A = 0.30 (base chi2 = 10.40)
+== R3: no-Lya ==
+  [R3 no-Lya] base chi2 = 19.19  A_2sigma = 0.0293  l_k >= 34.7 fm
+== R4: h-grid halved spacing ==
+  [R4 fine-h] base chi2 = 18.51  A_2sigma = 0.0249  l_k >= 36.7 fm
+DONE
