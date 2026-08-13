@@ -1,0 +1,15 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.5s] parents: 2450
+[   32.3s] == cascade decomposition per transition ==
+[   32.3s]    n->n+1  Var_par  Var_chd    Var(m)   g_n    v_n=V(d)  2Cov   E[dlnR]  E[delta]  s_loc^2
+[   32.3s]    3->4     0.719    1.366     0.784  1.091    0.392  +0.207   -0.587   -0.678    0.144
+[   32.3s]    4->5     1.366    1.709     1.242  0.909    0.294  +0.176   -0.519   -0.670    0.131
+[   32.3s]    5->6     1.709    1.938     1.426  0.834    0.304  +0.209   -0.540   -0.754    0.115
+[   32.3s]    6->7     1.938    2.204     1.647  0.850    0.269  +0.288   -0.592   -0.820    0.101
+[   32.4s]    7->8     2.204    2.520     1.959  0.889    0.243  +0.318   -0.646   -0.900    0.089
+[   32.4s] == holdout: fit constants on 4->5..6->7, predict sigma(8) ==
+[   32.4s]    constants: g = 0.864  v = 0.289  2cov = +0.224
+[   32.4s]    sigma^2(8): predicted = 2.419  measured = 2.520  (sigma: 1.555 vs 1.587, err 2.0%)
+[   32.4s] == asymptotic cascade fixed line ==
+[   32.4s]    with g < 1 the cascade tends to sigma^2* = (v + 2cov)/(1-g) = 3.79 if constants persist (sigma* = 1.95) - a SATURATING lognormal spread, not runaway multifractality
+[   32.4s] DONE
