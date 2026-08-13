@@ -1,0 +1,27 @@
+[    2.0s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.7s] parents: 2450
+[   33.3s] == L1 at 5->6 ==
+[   33.3s]   sigma^2 = 1.709  g_measured = 0.834  g_identity = 0.834  (exactness check)
+[   33.3s]   D/s2 = 0.697  (E[1/nu] = 0.729)   O/s2 = 0.164   B/s2 = 0.0270
+[   33.3s]   rho_sib measured = 0.605   tree-model predicted = 0.387
+[   33.3s] == L2 at 5->6 ==
+[   33.3s]   v = Var(delta) = 0.304   Var(delta_hat) = 0.345   corr(delta, delta_hat) = 0.972
+[   33.3s]   regression delta ~ delta_hat: slope = 0.913  R^2 = 0.944  residual var = 0.017
+[   33.3s]   two-predictor (delta_hat, ln nu): coeffs = (0.891, 0.047)  R^2 = 0.944
+[   33.3s] == L1 at 6->7 ==
+[   33.3s]   sigma^2 = 1.938  g_measured = 0.850  g_identity = 0.850  (exactness check)
+[   33.3s]   D/s2 = 0.639  (E[1/nu] = 0.668)   O/s2 = 0.237   B/s2 = 0.0267
+[   33.3s]   rho_sib measured = 0.715   tree-model predicted = 0.548
+[   33.3s] == L2 at 6->7 ==
+[   33.3s]   v = Var(delta) = 0.269   Var(delta_hat) = 0.300   corr(delta, delta_hat) = 0.963
+[   33.3s]   regression delta ~ delta_hat: slope = 0.912  R^2 = 0.927  residual var = 0.020
+[   33.3s]   two-predictor (delta_hat, ln nu): coeffs = (0.850, 0.120)  R^2 = 0.930
+[   33.4s] == L1 at 7->8 ==
+[   33.4s]   sigma^2 = 2.204  g_measured = 0.889  g_identity = 0.889  (exactness check)
+[   33.4s]   D/s2 = 0.623  (E[1/nu] = 0.617)   O/s2 = 0.295   B/s2 = 0.0293
+[   33.4s]   rho_sib measured = 0.771   tree-model predicted = 0.709
+[   33.5s] == L2 at 7->8 ==
+[   33.5s]   v = Var(delta) = 0.243   Var(delta_hat) = 0.267   corr(delta, delta_hat) = 0.956
+[   33.5s]   regression delta ~ delta_hat: slope = 0.912  R^2 = 0.915  residual var = 0.021
+[   33.5s]   two-predictor (delta_hat, ln nu): coeffs = (0.804, 0.188)  R^2 = 0.922
+[   33.5s] DONE
