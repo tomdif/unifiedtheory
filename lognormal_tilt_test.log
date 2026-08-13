@@ -1,0 +1,40 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.4s] parents: 2450
+[   32.1s] == T1/T2: tilt identities per event ==
+[   32.1s]    event         a_cnt    a_R      a_Q     resid(T2)  c*f_cnt: n=4 ... n=8
+[   32.2s]    has_post      -1.422  -2.531  -3.586    +0.053     0.80    0.94    0.83    0.86    0.87
+[   32.2s]    is_antichain -10.058 -12.321 -15.485    -0.901     0.60    0.51    0.42    0.36    0.33
+[   32.2s]    3+_minima     +0.741  +0.942  +0.754    -0.389     1.04    0.86    0.80    0.79    0.79
+[   36.4s]    stem0         +0.741  +0.942  +0.754    -0.389     1.04    0.86    0.80    0.79    0.79
+[   40.8s]    stem1         +0.567  +2.045  +3.223    -0.298     1.10    1.02    0.96    0.91    0.91
+[   45.1s]    stem2         +2.044  +2.064  +2.639    +0.555     0.60    0.77    0.87    0.88    0.88
+[   49.4s]    stem3         +1.209  +0.806  +0.773    +0.370     0.69    0.65    0.76    0.82    0.86
+[   53.5s]    stem4         +0.829  +0.341  +0.150    +0.296     0.78    0.84    0.90    0.93    0.95
+[   58.2s]    stem5         +1.070  +1.933  +2.888    +0.092     0.60    0.77    0.71    0.68    0.67
+[   63.0s]    stem6         +0.448  +2.071  +4.419    +0.726     0.60    0.78    0.91    0.96    0.99
+[   67.7s]    stem8         +0.781  +2.155  +3.800    +0.270     0.60    1.05    0.85    0.82    0.82
+[   72.4s]    stem10        +1.879  +1.997  +2.618    +0.502     0.60    0.77    0.83    0.84    0.86
+[   72.4s]   T2 residual a_Q + a_cnt - 2 a_R: mean +0.074  max|.| 0.901
+[   72.4s]   k = a_cnt/a_R: mean 0.852 +- 0.584  (the '0.7')
+[   72.4s] == T3: participation density N_part(A)/|A| across events (n=8) ==
+[   72.4s]    Omega: N_part = 4539.2  |Omega| = 13955  density = 0.3253
+[   72.4s]    has_post     N_part =    644.0  |A| =  1722  density = 0.3740  ratio-to-Omega =  1.15
+[   72.4s]    is_antichain N_part =      1.0  |A| =     1  density = 1.0000  ratio-to-Omega =  3.07
+[   72.4s]    3+_minima    N_part =   3220.8  |A| =  7833  density = 0.4112  ratio-to-Omega =  1.26
+[   76.4s]    stem0        N_part =   3220.8  |A| =  7833  density = 0.4112  ratio-to-Omega =  1.26
+[   80.5s]    stem1        N_part =   2500.4  |A| =  6959  density = 0.3593  ratio-to-Omega =  1.10
+[   84.6s]    stem2        N_part =   1796.4  |A| =  4875  density = 0.3685  ratio-to-Omega =  1.13
+[   89.0s]    stem3        N_part =   1957.3  |A| =  5171  density = 0.3785  ratio-to-Omega =  1.16
+[   93.0s]    stem4        N_part =   4244.8  |A| = 12444  density = 0.3411  ratio-to-Omega =  1.05
+[   97.5s]    stem5        N_part =   1219.8  |A| =  2522  density = 0.4836  ratio-to-Omega =  1.49
+[  102.0s]    stem6        N_part =    537.9  |A| =  1637  density = 0.3286  ratio-to-Omega =  1.01
+[  106.5s]    stem7        N_part =    401.5  |A| =   960  density = 0.4182  ratio-to-Omega =  1.29
+[  111.0s]    stem8        N_part =    830.7  |A| =  2083  density = 0.3988  ratio-to-Omega =  1.23
+[  115.7s]    stem9        N_part =    400.9  |A| =  1053  density = 0.3807  ratio-to-Omega =  1.17
+[  120.1s]    stem10       N_part =   1626.4  |A| =  4309  density = 0.3774  ratio-to-Omega =  1.16
+[  120.1s] == Gaussianity check: ln R distribution per level ==
+[  120.1s]    n=5: mean  -1.973  sigma 1.307  skew -0.60  ex-kurt -0.40  classes 46
+[  120.1s]    n=6: mean  -2.512  sigma 1.392  skew -0.46  ex-kurt -0.47  classes 240
+[  120.1s]    n=7: mean  -3.105  sigma 1.485  skew -0.37  ex-kurt -0.45  classes 1609
+[  120.1s]    n=8: mean  -3.751  sigma 1.587  skew -0.41  ex-kurt -0.34  classes 13955
+[  120.1s] DONE
