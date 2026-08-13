@@ -1,0 +1,27 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.5s] parents: 2450
+[   33.6s] == D1: theta-linearity a_0 (paths), a_1 (R), a_2 (P) ==
+[   33.6s]    event         a_0      a_1      a_2     (a2-a1)-(a1-a0)
+[   33.6s]    has_post      -2.463   -2.531   -1.593    +1.005
+[   33.6s]    is_antichain -15.489  -12.321   -9.663    -0.509
+[   33.7s]    3+_minima     +1.404   +0.942   +0.507    +0.027
+[   38.1s]    stem0         +1.404   +0.942   +0.507    +0.027
+[   42.5s]    stem1         +0.919   +2.045   +3.086    -0.084
+[   46.9s]    stem2         +1.508   +2.064   +2.716    +0.096
+[   51.3s]    stem3         +1.319   +0.806   +0.717    +0.423
+[   55.5s]    stem4         +0.260   +0.341   +0.469    +0.046
+[   60.4s]    stem5         +3.300   +1.933   +0.828    +0.262
+[   65.2s]    stem6         +0.910   +2.071   +3.970    +0.739
+[   70.0s]    stem8         +2.609   +2.155   +1.933    +0.232
+[   74.9s]    stem10        +1.887   +1.997   +2.230    +0.123
+[   74.9s]   curvature: mean +0.199  max|.| 1.005  (0 = perfect theta-linearity)
+[   74.9s] == D2: N_eff vs N_paths (spread uniformity) ==
+[   74.9s]   n=6: slope = 0.926 (predict 1)  intercept = -0.064  resid-std = 0.166  s^2_impl mean = 0.220 std = 0.183  corr = +0.985
+[   74.9s]   n=7: slope = 0.950 (predict 1)  intercept = -0.118  resid-std = 0.187  s^2_impl mean = 0.268 std = 0.196  corr = +0.986
+[   75.0s]   n=8: slope = 0.966 (predict 1)  intercept = -0.177  resid-std = 0.198  s^2_impl mean = 0.311 std = 0.202  corr = +0.988
+[   75.0s] == D3: cascade constants semi-analytics ==
+[   75.0s]   6->7: E[1/nu_eff] = 0.668  (measured g ~ 0.83-0.91)  E[nu] = 1.69  Var(ln nu) = 0.124  (v ~ 0.24-0.30)
+[   75.1s]   7->8: E[1/nu_eff] = 0.617  (measured g ~ 0.83-0.91)  E[nu] = 1.85  Var(ln nu) = 0.135  (v ~ 0.24-0.30)
+[   75.1s]   g >> E[1/nu] would mean parent log-weights are strongly
+[   75.1s]   correlated across a child's parent set (sibling correlation).
+[   75.1s] DONE
