@@ -1,0 +1,32 @@
+[    2.0s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.8s] parents: 2450
+[   34.4s] == M1: identity checks ==
+[   34.5s]   I2 bounds 1 <= R^2/W <= #paths: violations = NONE
+[   34.6s]   I1 at n=5 (has_post): c = 3.602384  Npart-ratio = 3.602384  match True
+[   34.6s]   I1 at n=8 (has_post): c = 7.048046  Npart-ratio = 7.048046  match True
+[   34.6s] == M2: overlap exponent gamma_A vs rarity exponent a_R(A) ==
+[   34.6s]   has_post     a_R =  -2.531   gamma_A = +1.475   c(8) =    7.05
+[   34.6s]   is_antichain a_R = -12.321   gamma_A = +9.157   c(8) = 4539.20
+[   34.7s]   3+_minima    a_R =  +0.942   gamma_A = -1.130   c(8) =    1.41
+[   40.1s]   stem0        a_R =  +0.942   gamma_A = -1.130   c(8) =    1.41
+[   45.6s]   stem1        a_R =  +2.045   gamma_A = -0.866   c(8) =    1.82
+[   51.0s]   stem2        a_R =  +2.064   gamma_A = -1.489   c(8) =    2.53
+[   56.4s]   stem3        a_R =  +0.806   gamma_A = -0.840   c(8) =    2.32
+[   61.5s]   stem4        a_R =  +0.341   gamma_A = -0.533   c(8) =    1.07
+[   67.4s]   stem5        a_R =  +1.933   gamma_A = -0.978   c(8) =    3.72
+[   73.3s]   stem6        a_R =  +2.071   gamma_A = +0.278   c(8) =    8.44
+/Users/thomasdifiore/unifiedtheory/replica_overlap_deep.py:138: RuntimeWarning: invalid value encountered in scalar divide
+  fRs.append(fR); cs.append(fQ / fR ** 2)
+[   85.4s]   stem8        a_R =  +2.155   gamma_A = -0.510   c(8) =    5.46
+[   97.2s]   stem10       a_R =  +1.997   gamma_A = -1.377   c(8) =    2.79
+[   97.2s]   corr(a_R, gamma_A) over all 12 events = -0.974
+[   97.2s] == M3: effective history multiplicity N_eff = R^2/W per level ==
+[   97.2s]   n=3: E_P[N_eff] =     1.62  Q(Omega)/P(Omega) =     1.62  spread(ln N_eff) =  0.42  corr(ln N_eff, ln P) = +0.388
+[   97.2s]   n=4: E_P[N_eff] =     2.85  Q(Omega)/P(Omega) =     2.85  spread(ln N_eff) =  0.61  corr(ln N_eff, ln P) = +0.470
+[   97.2s]   n=5: E_P[N_eff] =     6.22  Q(Omega)/P(Omega) =     6.22  spread(ln N_eff) =  0.79  corr(ln N_eff, ln P) = +0.608
+[   97.2s]   n=6: E_P[N_eff] =    16.72  Q(Omega)/P(Omega) =    16.72  spread(ln N_eff) =  0.95  corr(ln N_eff, ln P) = +0.646
+[   97.2s]   n=7: E_P[N_eff] =    50.58  Q(Omega)/P(Omega) =    50.58  spread(ln N_eff) =  1.12  corr(ln N_eff, ln P) = +0.677
+[   97.3s]   n=8: E_P[N_eff] =   165.21  Q(Omega)/P(Omega) =   165.21  spread(ln N_eff) =  1.28  corr(ln N_eff, ln P) = +0.696
+[   97.3s]   (Q(Omega)/P(Omega) = E_P[N_eff] is I2 aggregated: the
+[   97.3s]    anti-decoherence rate IS the mean effective history count)
+[   97.3s] DONE

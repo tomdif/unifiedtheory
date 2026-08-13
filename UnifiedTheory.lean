@@ -5610,6 +5610,14 @@ import UnifiedTheory.Audit.KFCausalBornQuadraturePhase
 -- max-entropy fact-stability conjecture; the normalized-ratio half is a
 -- measured finite-margin fact (min margin 1.0648 at depth 8).
 import UnifiedTheory.Audit.KFCausalCoherentRecordAccretion
+-- Replica-overlap structure of the coherent measure: the event-level
+-- replica overlap equals a ratio of participation numbers (effective
+-- geometry counts), pinched between N(Omega)/|A| and N(Omega); and the
+-- coherent measure is the Born measure times a dynamically computed
+-- effective history multiplicity 1 <= R^2/W <= #paths - the
+-- history-counting axiom made dynamical, with the anti-decoherence rate
+-- identified as the mean effective history count.
+import UnifiedTheory.Audit.KFCausalReplicaOverlap
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
