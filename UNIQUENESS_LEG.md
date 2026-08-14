@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 27 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 33 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -289,6 +289,52 @@ note the infinite shift has NO m-th roots in Sym(Z), so divisibility
 constrains infinite permutations too — open); the Wigner
 classification seam; the Orlicz-Lamperti seam; and 0 < p < 1 for
 the Mazur-Ulam step.
+
+## THE ZERO-STRUCTURE CAPSTONE (2026-08-14, second pass):
+## the Born exponent from a bare set-map of states
+
+`born_from_time_alone` (machine-checked, axiom-clean; file now 33
+theorems).  Hypotheses — and this is the entire list:
+
+  * a number p >= 1, fixing the measure sum ||.||^p;
+  * for every m, a SET-MAP G of the state space with G^[m] = F,
+    surjective, preserving the state measure and pairwise
+    distinguishability (time has no smallest step; sub-steps lose
+    nothing);
+  * some measure changes under F (something happens).
+
+Conclusion: p = 2.  NOTHING ELSE IS ASSUMED.  Not linearity, not
+additivity, not complex structure, not even that F itself is
+lossless (it is a composite of lossless roots — derived).  The
+dynamics enters as a bare function on states.
+
+The internal chain: Mazur-Ulam turns each root into a REAL-linear
+map; a new real block-structure theorem
+(`real_lossless_frozen_measure`) shows that an R-linear lossless
+step at p != 2 moves measures by a fixed permutation — the
+complex-linearity of the earlier structure theorems was never
+essential, because the Lamperti probes are all real combinations of
+the 2n real basis directions e_j, i*e_j, and the within-block pair
+(e_j, i*e_j) is exactly the one the probes cannot couple
+(||1+i||^p != 2): the block structure is FORCED by what the probes
+cannot say.  Then the group-exponent root plus Lagrange freezes
+every measure, contradicting change.
+
+What structure remains in the hypotheses, exhaustively: the measure
+family Sum ||.||^p itself (the last structural plank; section 15's
+monotone-Cauchy theorem shows how it dissolves given Pythagorean
+additivity — the Orlicz-Lamperti seam); p >= 1 (Mazur-Ulam's
+metric band); finite n; the preferred branching basis.  And the
+conclusion is the Born EXPONENT: upgrading p = 2 to full unitarity
+requires complex structure on the dynamics (an O(2n)-vs-U(n) gauge
+seam — measure-losslessness alone at p = 2 permits all real-
+orthogonal maps; unitarity additionally needs phase covariance or
+Wigner's transition-probability hypothesis).
+
+In Lean terms this is now literally a zero-axiom theorem: every
+hypothesis is a plain mathematical statement about a function and
+a number, and the proof closes over propext / Classical.choice /
+Quot.sound alone.
 
 ## The theorem chain, with Lean witnesses per arrow
 

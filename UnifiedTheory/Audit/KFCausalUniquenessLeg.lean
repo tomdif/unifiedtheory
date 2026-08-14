@@ -82,6 +82,18 @@
      classifies the measure GIVEN Pythagorean additivity is now a
      theorem; deriving that additivity from a mixing lossless step
      (Orlicz-Lamperti) is the registered open seam.
+  16. `born_from_time_alone` - THE ZERO-STRUCTURE CAPSTONE: a bare
+     SET-MAP of states (no linearity, no complex structure, no
+     losslessness of F itself assumed) whose steps subdivide into
+     surjective measure- and distinguishability-preserving
+     sub-steps, and under which anything changes, is forced onto
+     p = 2.  Chain: Mazur-Ulam makes each root real-linear; the
+     REAL block-structure theorem `real_lossless_frozen_measure`
+     (the Lamperti probes never needed complex-linearity - the
+     within-block pair is exactly the one the probes cannot
+     couple) freezes measures at p != 2; the group-exponent root +
+     Lagrange makes F measure-static.  Remaining structure: the
+     measure family itself, p >= 1, finite n.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -1535,6 +1547,314 @@ theorem born_function_unique (f : ℝ → ℝ)
   exact h
 
 
+/-! ## 16. THE ZERO-STRUCTURE CAPSTONE: the Born exponent from a
+bare set-map of states
+
+Everything assembled.  `born_from_time_alone` assumes NO algebraic
+structure of the dynamics whatsoever — not linearity, not
+additivity, not complex-linearity, not even that F itself is
+lossless.  The hypotheses are:
+
+  * a number p ≥ 1 specifying the measure Σ‖·‖^p;
+  * for every m, a SET-MAP root G with G^[m] = F that is surjective
+    and preserves the state measure and pairwise distinguishability
+    (time has no smallest step, and each sub-step loses nothing);
+  * some measure changes under F (something happens).
+
+Conclusion: p = 2.  The chain, entirely internal: Mazur–Ulam turns
+any root into a real-linear map (§14); the REAL block-structure
+theorem below (`real_lossless_frozen_measure`) shows an ℝ-linear
+lossless step at p ≠ 2 moves measures by a fixed permutation — the
+ℂ-linearity of §8-§10 was never essential, because the Lamperti
+probes are all real combinations of the 2n real basis directions
+e_j, i·e_j, and pairs within one complex block are exactly the ones
+the probes cannot couple (‖1+i‖^p ≠ 2), which is the block
+structure; iterating and taking the root at the group exponent of
+Sₙ (Lagrange) freezes every measure, contradicting change.
+
+F's own losslessness is DERIVED (F is a composite of lossless
+roots).  Honest scope: the measure family Σ‖·‖^p is the one
+remaining structural assumption (§15 points at its dissolution via
+monotone Cauchy — the Orlicz–Lamperti seam); p ≥ 1 for Mazur–Ulam;
+the conclusion is the Born EXPONENT — upgrading "p = 2" to "unitary"
+needs complex structure on the dynamics (an O(2n)-vs-U(n) gauge
+seam: measure-losslessness alone at p = 2 allows all real-orthogonal
+maps; unitarity additionally requires phase covariance or
+transition-probability preservation à la Wigner). -/
+
+/-- `x ^ p` is injective on nonnegatives for `p > 0`. -/
+theorem rpow_left_inj_nonneg {x y p : ℝ} (hx : 0 ≤ x) (hy : 0 ≤ y)
+    (hp : 0 < p) (h : x ^ p = y ^ p) : x = y := by
+  rcases lt_trichotomy x y with hlt | heq | hgt
+  · have := Real.rpow_lt_rpow hx hlt hp
+    linarith
+  · exact heq
+  · have := Real.rpow_lt_rpow hy hgt hp
+    linarith
+
+/-- Measure of a single-coordinate state. -/
+theorem single_sum_eq {p : ℝ} (hp0' : p ≠ 0) {n : ℕ} (j : Fin n)
+    (c : ℂ) :
+    ∑ i, ‖(Pi.single j c : Fin n → ℂ) i‖ ^ p = ‖c‖ ^ p := by
+  rw [Finset.sum_eq_single j]
+  · rw [Pi.single_eq_same]
+  · intro i _ hne
+    rw [Pi.single_eq_of_ne hne, norm_zero, Real.zero_rpow hp0']
+  · intro hmem
+    exact absurd (Finset.mem_univ j) hmem
+
+/-- Measure of a unit single-coordinate state is 1. -/
+theorem single_probe_sum_unit {p : ℝ} (hp0' : p ≠ 0) {n : ℕ}
+    (j : Fin n) (c : ℂ) (hc : ‖c‖ = 1) :
+    ∑ i, ‖(Pi.single j c : Fin n → ℂ) i‖ ^ p = 1 := by
+  rw [single_sum_eq hp0' j c, hc, Real.one_rpow]
+
+/-- Measure of a two-coordinate unit-pair state is 2. -/
+theorem pair_probe_sum_unit {p : ℝ} (hp0' : p ≠ 0) {n : ℕ}
+    {j₁ j₂ : Fin n} (hj : j₁ ≠ j₂) (c d : ℂ)
+    (hc : ‖c‖ = 1) (hd : ‖d‖ = 1) :
+    ∑ i, ‖(Pi.single j₁ c + Pi.single j₂ d : Fin n → ℂ) i‖ ^ p = 2 := by
+  have hsplit : ∀ i : Fin n,
+      ‖(Pi.single j₁ c + Pi.single j₂ d : Fin n → ℂ) i‖ ^ p
+      = ‖(Pi.single j₁ c : Fin n → ℂ) i‖ ^ p
+        + ‖(Pi.single j₂ d : Fin n → ℂ) i‖ ^ p := by
+    intro i
+    by_cases h1 : i = j₁
+    · subst h1
+      simp [Pi.single_eq_same, Pi.single_eq_of_ne hj,
+        Real.zero_rpow hp0']
+    · by_cases h2 : i = j₂
+      · subst h2
+        simp [Pi.single_eq_same, Pi.single_eq_of_ne h1,
+          Real.zero_rpow hp0']
+      · simp [Pi.single_eq_of_ne h1, Pi.single_eq_of_ne h2,
+          Real.zero_rpow hp0']
+  rw [Finset.sum_congr rfl fun i _ => hsplit i, Finset.sum_add_distrib,
+    single_sum_eq hp0' j₁ c, single_sum_eq hp0' j₂ d, hc, hd,
+    Real.one_rpow]
+  norm_num
+
+/-- REAL block-structure / frozen measure: an ℝ-linear lossless step
+at p ≠ 2 moves measures by a fixed permutation.  No complex-linearity
+assumed: the probes are all real combinations of the 2n real basis
+directions e_j, i·e_j, and pairs across different complex coordinates
+are killed by the Lamperti obstruction; block counting pins one
+complex coordinate per block. -/
+theorem real_lossless_frozen_measure {p : ℝ} (hp0 : 0 < p)
+    (hp2 : p ≠ 2) {n : ℕ}
+    (L : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, ‖L x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∃ σ : Equiv.Perm (Fin n), ∀ (x : Fin n → ℂ) (j : Fin n),
+      ‖L x (σ j)‖ = ‖x j‖ := by
+  classical
+  have hp0' : p ≠ 0 := ne_of_gt hp0
+  have colu : ∀ j : Fin n, ∑ i, ‖L (Pi.single j 1) i‖ ^ p = 1 :=
+    fun j => (hiso _).trans (single_probe_sum hp0' j)
+  -- cross-block obstruction, uniform in the unit phases c, d
+  have hpair_sub : ∀ {j₁ j₂ : Fin n}, j₁ ≠ j₂ → ∀ (c d : ℂ),
+      ‖c‖ = 1 → ‖d‖ = 1 →
+      ∑ i, ‖(Pi.single j₁ c - Pi.single j₂ d : Fin n → ℂ) i‖ ^ p = 2 := by
+    intro j₁ j₂ hj c d hc hd
+    have hrw : (Pi.single j₁ c - Pi.single j₂ d : Fin n → ℂ)
+        = Pi.single j₁ c + Pi.single j₂ (-d) := by
+      funext i
+      simp only [Pi.sub_apply, Pi.add_apply, Pi.single_apply]
+      split_ifs <;> ring
+    rw [hrw]
+    exact pair_probe_sum_unit hp0' hj c (-d) hc (by rw [norm_neg]; exact hd)
+  have hdisjcase : ∀ {j₁ j₂ : Fin n}, j₁ ≠ j₂ → ∀ (c d : ℂ),
+      ‖c‖ = 1 → ‖d‖ = 1 → ∀ k : Fin n,
+      L (Pi.single j₁ c) k ≠ 0 → L (Pi.single j₂ d) k ≠ 0 → False := by
+    intro j₁ j₂ hj c d hc hd k h1 h2
+    refine lamperti_columns_ne_two hp0 hp2
+      (L (Pi.single j₁ c)) (L (Pi.single j₂ d)) k h1 h2
+      ((hiso _).trans (single_probe_sum_unit hp0' j₁ c hc))
+      ((hiso _).trans (single_probe_sum_unit hp0' j₂ d hd))
+      ?_ ?_
+    · have hLab : ∀ i : Fin n,
+          L (Pi.single j₁ c) i + L (Pi.single j₂ d) i
+          = L (Pi.single j₁ c + Pi.single j₂ d) i := by
+        intro i
+        rw [map_add]
+        rfl
+      rw [Finset.sum_congr rfl fun i _ => by rw [hLab i]]
+      exact (hiso _).trans (pair_probe_sum_unit hp0' hj c d hc hd)
+    · have hLab : ∀ i : Fin n,
+          L (Pi.single j₁ c) i - L (Pi.single j₂ d) i
+          = L (Pi.single j₁ c - Pi.single j₂ d) i := by
+        intro i
+        rw [map_sub]
+        rfl
+      rw [Finset.sum_congr rfl fun i _ => by rw [hLab i]]
+      exact (hiso _).trans (hpair_sub hj c d hc hd)
+  -- block supports
+  set S : Fin n → Finset (Fin n) := fun j =>
+    Finset.univ.filter (fun i =>
+      L (Pi.single j 1) i ≠ 0 ∨ L (Pi.single j Complex.I) i ≠ 0)
+    with hSdef
+  have hne : ∀ j, (S j).Nonempty := by
+    intro j
+    have hex : ∃ i, L (Pi.single j 1) i ≠ 0 := by
+      by_contra hall
+      push_neg at hall
+      have hz : ∑ i, ‖L (Pi.single j 1) i‖ ^ p = 0 :=
+        Finset.sum_eq_zero fun i _ => by
+          rw [hall i, norm_zero, Real.zero_rpow hp0']
+      rw [colu j] at hz
+      norm_num at hz
+    obtain ⟨i, hi⟩ := hex
+    exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, Or.inl hi⟩⟩
+  have hdisj : ∀ j₁ j₂, j₁ ≠ j₂ → Disjoint (S j₁) (S j₂) := by
+    intro j₁ j₂ hj
+    rw [Finset.disjoint_left]
+    intro k hk1 hk2
+    obtain ⟨-, h1⟩ := Finset.mem_filter.mp hk1
+    obtain ⟨-, h2⟩ := Finset.mem_filter.mp hk2
+    rcases h1 with h1 | h1 <;> rcases h2 with h2 | h2
+    · exact hdisjcase hj 1 1 (by simp) (by simp) k h1 h2
+    · exact hdisjcase hj 1 Complex.I (by simp) (by simp) k h1 h2
+    · exact hdisjcase hj Complex.I 1 (by simp) (by simp) k h1 h2
+    · exact hdisjcase hj Complex.I Complex.I (by simp) (by simp) k h1 h2
+  -- counting: n disjoint nonempty supports are singletons
+  have hcard1 : ∀ j, (S j).card = 1 := by
+    have hsumle : ∑ j, (S j).card ≤ n := by
+      rw [← Finset.card_biUnion (fun j₁ _ j₂ _ hj => hdisj j₁ j₂ hj)]
+      calc ((Finset.univ : Finset (Fin n)).biUnion S).card
+          ≤ (Finset.univ : Finset (Fin n)).card :=
+            Finset.card_le_card (Finset.subset_univ _)
+        _ = n := by rw [Finset.card_univ, Fintype.card_fin]
+    have hge : ∀ j ∈ (Finset.univ : Finset (Fin n)), 1 ≤ (S j).card :=
+      fun j _ => Finset.card_pos.mpr (hne j)
+    have hone : ∑ _j : Fin n, (1:ℕ) = n := by
+      rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+        smul_eq_mul, mul_one]
+    have htot : ∑ _j : Fin n, (1:ℕ) ≤ ∑ j, (S j).card :=
+      Finset.sum_le_sum hge
+    have heq : ∑ _j : Fin n, (1:ℕ) = ∑ j, (S j).card := by omega
+    intro j
+    exact ((Finset.sum_eq_sum_iff_of_le hge).mp heq j
+      (Finset.mem_univ j)).symm
+  have hloc : ∀ j, ∃ k, S j = {k} :=
+    fun j => Finset.card_eq_one.mp (hcard1 j)
+  choose loc hlocS using hloc
+  have hoff : ∀ j i, i ≠ loc j →
+      L (Pi.single j 1) i = 0 ∧ L (Pi.single j Complex.I) i = 0 := by
+    intro j i hne'
+    by_contra hcon
+    have hmem : i ∈ S j :=
+      Finset.mem_filter.mpr ⟨Finset.mem_univ i, not_and_or.mp hcon⟩
+    rw [hlocS j] at hmem
+    exact hne' (Finset.mem_singleton.mp hmem)
+  have hinj : Function.Injective loc := by
+    intro j₁ j₂ h
+    by_contra hj
+    have h1 : loc j₁ ∈ S j₁ := by
+      rw [hlocS j₁]; exact Finset.mem_singleton_self _
+    have h2 : loc j₁ ∈ S j₂ := by
+      rw [hlocS j₂, ← h]; exact Finset.mem_singleton_self _
+    exact (Finset.disjoint_left.mp (hdisj j₁ j₂ hj)) h1 h2
+  -- the block decomposition of a single-coordinate state
+  have hblock : ∀ (j : Fin n) (z : ℂ),
+      L (Pi.single j z) = Pi.single (loc j)
+        (z.re • L (Pi.single j 1) (loc j)
+          + z.im • L (Pi.single j Complex.I) (loc j)) := by
+    intro j z
+    have hdecomp : (Pi.single j z : Fin n → ℂ)
+        = z.re • (Pi.single j 1 : Fin n → ℂ)
+          + z.im • (Pi.single j Complex.I : Fin n → ℂ) := by
+      funext i
+      simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply]
+      split_ifs
+      · rw [Complex.real_smul, Complex.real_smul, mul_one]
+        exact (Complex.re_add_im z).symm
+      · simp
+    rw [hdecomp, map_add, map_smul, map_smul]
+    funext i
+    by_cases h : i = loc j
+    · subst h
+      rw [Pi.add_apply, Pi.smul_apply, Pi.smul_apply, Pi.single_eq_same]
+    · obtain ⟨h1, h2⟩ := hoff j i h
+      rw [Pi.add_apply, Pi.smul_apply, Pi.smul_apply, h1, h2,
+        Pi.single_eq_of_ne h, smul_zero, smul_zero, add_zero]
+  -- block norm preservation
+  have hbnorm : ∀ (j : Fin n) (z : ℂ),
+      ‖z.re • L (Pi.single j 1) (loc j)
+        + z.im • L (Pi.single j Complex.I) (loc j)‖ = ‖z‖ := by
+    intro j z
+    have hmz := hiso (Pi.single j z)
+    rw [hblock j z, single_sum_eq hp0' (loc j) _,
+      single_sum_eq hp0' j z] at hmz
+    exact rpow_left_inj_nonneg (norm_nonneg _) (norm_nonneg _) hp0 hmz
+  refine ⟨Equiv.ofBijective loc (Finite.injective_iff_bijective.mp hinj),
+    ?_⟩
+  intro x j
+  simp only [Equiv.ofBijective_apply]
+  have hTx : L x (loc j) = (x j).re • L (Pi.single j 1) (loc j)
+      + (x j).im • L (Pi.single j Complex.I) (loc j) := by
+    conv_lhs => rw [show x = ∑ j', Pi.single j' (x j') from
+      (Finset.univ_sum_single x).symm]
+    rw [map_sum, Finset.sum_apply, Finset.sum_eq_single j]
+    · rw [hblock j (x j), Pi.single_eq_same]
+    · intro j' _ hne'
+      rw [hblock j' (x j')]
+      exact Pi.single_eq_of_ne (fun h => hne' ((hinj h).symm)) _
+    · intro hmem
+      exact absurd (Finset.mem_univ _) hmem
+  rw [hTx]
+  exact hbnorm j (x j)
+
+/-- THE ZERO-STRUCTURE CAPSTONE: a bare set-map of states whose
+steps subdivide into surjective measure- and distinguishability-
+preserving sub-steps, and under which anything at all changes, is
+forced onto the Born exponent p = 2.  No linearity, no complex
+structure, no losslessness of F itself is assumed — all of it is
+derived. -/
+theorem born_from_time_alone {p : ℝ} (hp : 1 ≤ p) {n : ℕ}
+    (F : (Fin n → ℂ) → (Fin n → ℂ))
+    (hdiv : ∀ m : ℕ, 0 < m →
+      ∃ G : (Fin n → ℂ) → (Fin n → ℂ),
+        Function.Surjective G ∧
+        (∀ x : Fin n → ℂ, ∑ i, ‖G x i‖ ^ p = ∑ i, ‖x i‖ ^ p) ∧
+        (∀ x y : Fin n → ℂ,
+          ∑ i, ‖G x i - G y i‖ ^ p = ∑ i, ‖x i - y i‖ ^ p) ∧
+        G^[m] = F)
+    (hchange : ∃ (x : Fin n → ℂ) (j : Fin n), ‖F x j‖ ≠ ‖x j‖) :
+    p = 2 := by
+  by_contra hp2
+  have hp0 : (0:ℝ) < p := lt_of_lt_of_le zero_lt_one hp
+  have hMpos : 0 < Monoid.exponent (Equiv.Perm (Fin n)) :=
+    Monoid.exponent_pos.mpr Monoid.ExponentExists.of_finite
+  obtain ⟨G, hsurj, hmeas, hdist, hpow⟩ :=
+    hdiv (Monoid.exponent (Equiv.Perm (Fin n))) hMpos
+  obtain ⟨hadd, hsmul⟩ :=
+    lossless_bijection_is_real_linear hp G hsurj hmeas hdist
+  let L : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ) :=
+    { toFun := G
+      map_add' := hadd
+      map_smul' := fun c x => hsmul c x }
+  have hisoL : ∀ x : Fin n → ℂ, ∑ i, ‖L x i‖ ^ p = ∑ i, ‖x i‖ ^ p :=
+    hmeas
+  obtain ⟨σ, hσ⟩ := real_lossless_frozen_measure hp0 hp2 L hisoL
+  have hσG : ∀ (x : Fin n → ℂ) (j : Fin n), ‖G x (σ j)‖ = ‖x j‖ :=
+    fun x j => hσ x j
+  have hiter : ∀ (k : ℕ) (x : Fin n → ℂ) (j : Fin n),
+      ‖G^[k] x ((σ ^ k) j)‖ = ‖x j‖ := by
+    intro k
+    induction k with
+    | zero =>
+      intro x j
+      rw [Function.iterate_zero_apply, pow_zero, Equiv.Perm.one_apply]
+    | succ k ih =>
+      intro x j
+      rw [Function.iterate_succ_apply, pow_succ, Equiv.Perm.mul_apply,
+        ih (G x) (σ j)]
+      exact hσG x j
+  obtain ⟨x, j, hx⟩ := hchange
+  have h := hiter (Monoid.exponent (Equiv.Perm (Fin n))) x j
+  rw [hpow, show σ ^ Monoid.exponent (Equiv.Perm (Fin n)) = 1 from
+    Monoid.pow_exponent_eq_one σ, Equiv.Perm.one_apply] at h
+  exact hx h
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -1562,5 +1882,11 @@ theorem born_function_unique (f : ℝ → ℝ)
 #print axioms lossless_bijection_is_real_linear
 #print axioms monotone_additive_on_cone_is_linear
 #print axioms born_function_unique
+#print axioms rpow_left_inj_nonneg
+#print axioms single_sum_eq
+#print axioms single_probe_sum_unit
+#print axioms pair_probe_sum_unit
+#print axioms real_lossless_frozen_measure
+#print axioms born_from_time_alone
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
