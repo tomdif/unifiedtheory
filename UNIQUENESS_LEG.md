@@ -152,6 +152,45 @@ Also machine-checked, new consequences:
   rule everywhere.  This is why the classical world does not get its
   own probability calculus.
 
+## The classification layer (2026-08-13, second pass)
+
+The obstruction is now upgraded to a CLASSIFICATION, all
+machine-checked in the same file:
+
+- `lossless_ne_two_is_weighted_permutation` (POSITIVE Lamperti):
+  for 0 < p, p != 2, a lossless step on C^n IS a weighted
+  permutation - each column has exactly one nonzero entry, of unit
+  modulus, and the entry locations form a permutation.  Proof: the
+  no-hybrid theorem makes column supports pairwise disjoint; n
+  disjoint nonempty supports in n coordinates are singletons
+  (counting); the probe normalization pins each entry to modulus 1.
+- `l2_lossless_columns_orthogonal`: general-n unitarity - an
+  l^2-lossless step has orthonormal columns.  The p = 2 sector is
+  exactly U(n), at every dimension.
+- `lossless_dichotomy` (THE GRAND DICHOTOMY): every lossless linear
+  dynamics on any measure system |.|^p is EITHER a weighted
+  permutation OR lives at p = 2 with unitary structure.  There is no
+  third kind of lossless time evolution.  Classical relabeling and
+  quantum rotation exhaust what can exist.
+- `frozen_measure_ne_two` (THE FROZEN WORLD, discrete core): for
+  p != 2 there is a FIXED permutation sigma with
+  ||(Tx)(sigma j)|| = ||x j|| for every state x - the action on
+  measures is sigma regardless of the phase data.  Probabilities can
+  only be relabeled, never continuously transported.
+
+FROZEN-WORLD COROLLARY (continuous version; discrete core in Lean,
+topological glue analytic): the lossless group at p != 2 is the
+generalized permutation group S_n x T^n, whose identity component is
+the phase torus T^n - and the theorem above says the torus acts
+trivially on measures.  So ANY continuous path of lossless maps
+starting at the identity leaves every measure fixed for all time:
+in a p != 2 world, nothing observable can ever change continuously.
+Only at p = 2 does the lossless group (U(n)) have continuous
+directions that transport probability - Hamiltonian flow exists
+only in the Born world.  "Why is time evolution unitary?"  Because
+unitary evolution is the only continuous lossless motion that
+exists at all.
+
 ## The theorem chain, with Lean witnesses per arrow
 
   A3 + A5 (lossless + some step mixes)

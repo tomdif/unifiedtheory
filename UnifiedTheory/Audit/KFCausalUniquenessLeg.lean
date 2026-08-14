@@ -38,6 +38,18 @@
      lossless linear step that superposes two basis directions
      anywhere forces p = 2 for the WHOLE space.  No lossless world
      mixes a quantum sector with any other measure exponent.
+  8. `lossless_ne_two_is_weighted_permutation` - the POSITIVE
+     Lamperti theorem: for p != 2 a lossless step IS a weighted
+     permutation (each column one unit-modulus entry, locations a
+     permutation).  Classical dynamics is all that exists off p = 2.
+  9. `l2_lossless_columns_orthogonal` - general-n unitarity: an
+     l^2-lossless step has orthonormal columns.  p = 2 = U(n).
+  10. `lossless_dichotomy` + `frozen_measure_ne_two` - THE GRAND
+     DICHOTOMY: every lossless dynamics is a weighted permutation or
+     unitary, nothing else; and for p != 2 the action on MEASURES is
+     a fixed permutation independent of phases - probabilities can
+     be relabeled but never continuously transported.  Continuous
+     evolution of the observable world is uniquely quantum.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -731,6 +743,341 @@ theorem mixing_lossless_forces_p_eq_two {p : ℝ} (hp0 : 0 < p)
       _ = 2 := (hiso _).trans pair_sub
 
 
+
+
+/-! ## 8. The POSITIVE Lamperti theorem: p ≠ 2 lossless = weighted permutation
+
+The obstruction (section 5) says overlapping columns are impossible.
+Counting turns this into a classification: n columns with pairwise
+disjoint nonempty supports inside n coordinates have exactly one
+nonzero entry each, of unit modulus, at locations forming a
+permutation.  For p ≠ 2 the lossless maps are EXACTLY the
+generalized permutations: relabel the classical facts, attach
+phases that never interfere. -/
+
+/-- The l^p mass of a standard basis vector is 1. -/
+theorem single_probe_sum {p : ℝ} (hp0' : p ≠ 0) {n : ℕ} (j : Fin n) :
+    ∑ i, ‖(Pi.single j 1 : Fin n → ℂ) i‖ ^ p = 1 := by
+  rw [Finset.sum_eq_single j]
+  · rw [Pi.single_eq_same, norm_one, Real.one_rpow]
+  · intro i _ hne
+    rw [Pi.single_eq_of_ne hne, norm_zero, Real.zero_rpow hp0']
+  · intro hmem
+    exact absurd (Finset.mem_univ j) hmem
+
+/-- `x ^ p = 1` with `x ≥ 0`, `p > 0` forces `x = 1`. -/
+theorem norm_eq_one_of_rpow_eq_one {x p : ℝ} (hx : 0 ≤ x) (hp : 0 < p)
+    (h : x ^ p = 1) : x = 1 := by
+  rcases lt_trichotomy x 1 with hlt | heq | hgt
+  · have hcon := Real.rpow_lt_rpow hx hlt hp
+    rw [Real.one_rpow] at hcon
+    linarith
+  · exact heq
+  · have hcon := Real.rpow_lt_rpow (by norm_num : (0:ℝ) ≤ 1) hgt hp
+    rw [Real.one_rpow] at hcon
+    linarith
+
+/-- STRUCTURE THEOREM: for 0 < p, p ≠ 2, a lossless linear step on
+ℂ^n is a weighted permutation - every column is a single unit-modulus
+entry, and the entry locations form a permutation of the coordinates.
+Classical dynamics is the ONLY thing that exists away from p = 2. -/
+theorem lossless_ne_two_is_weighted_permutation {p : ℝ}
+    (hp0 : 0 < p) (hp2 : p ≠ 2) {n : ℕ}
+    (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, ‖T x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∃ σ : Equiv.Perm (Fin n), ∀ j : Fin n, ∃ c : ℂ,
+      ‖c‖ = 1 ∧ T (Pi.single j 1) = Pi.single (σ j) c := by
+  classical
+  have hp0' : p ≠ 0 := ne_of_gt hp0
+  have colsum : ∀ j : Fin n, ∑ i, ‖T (Pi.single j 1) i‖ ^ p = 1 :=
+    fun j => (hiso _).trans (single_probe_sum hp0' j)
+  set S : Fin n → Finset (Fin n) :=
+    fun j => Finset.univ.filter (fun i => T (Pi.single j 1) i ≠ 0)
+    with hS
+  have hmemS : ∀ j i, i ∈ S j ↔ T (Pi.single j 1) i ≠ 0 := by
+    intro j i
+    rw [hS]
+    simp [Finset.mem_filter]
+  have hne : ∀ j, (S j).Nonempty := by
+    intro j
+    by_contra hemp
+    rw [Finset.not_nonempty_iff_eq_empty] at hemp
+    have hzero : ∀ i, T (Pi.single j 1) i = 0 := by
+      intro i
+      by_contra hnz
+      have hmem : i ∈ S j := (hmemS j i).mpr hnz
+      rw [hemp] at hmem
+      exact absurd hmem (Finset.notMem_empty i)
+    have hz : ∑ i, ‖T (Pi.single j 1) i‖ ^ p = 0 :=
+      Finset.sum_eq_zero fun i _ => by
+        rw [hzero i, norm_zero, Real.zero_rpow hp0']
+    rw [colsum j] at hz
+    norm_num at hz
+  have hdisj : ∀ j₁ j₂, j₁ ≠ j₂ → Disjoint (S j₁) (S j₂) := by
+    intro j₁ j₂ hj
+    rw [Finset.disjoint_left]
+    intro k hk1 hk2
+    exact hp2 (mixing_lossless_forces_p_eq_two hp0 T hiso j₁ j₂ hj k
+      ((hmemS j₁ k).mp hk1) ((hmemS j₂ k).mp hk2))
+  have hcard1 : ∀ j, (S j).card = 1 := by
+    have hsumle : ∑ j, (S j).card ≤ n := by
+      rw [← Finset.card_biUnion
+        (fun j₁ _ j₂ _ hj => hdisj j₁ j₂ hj)]
+      calc ((Finset.univ : Finset (Fin n)).biUnion S).card
+          ≤ (Finset.univ : Finset (Fin n)).card :=
+            Finset.card_le_card (Finset.subset_univ _)
+        _ = n := by rw [Finset.card_univ, Fintype.card_fin]
+    have hge : ∀ j ∈ (Finset.univ : Finset (Fin n)), 1 ≤ (S j).card :=
+      fun j _ => Finset.card_pos.mpr (hne j)
+    have hone : ∑ _j : Fin n, (1:ℕ) = n := by
+      rw [Finset.sum_const, Finset.card_univ, Fintype.card_fin,
+        smul_eq_mul, mul_one]
+    have htot : ∑ _j : Fin n, (1:ℕ) ≤ ∑ j, (S j).card := by
+      exact Finset.sum_le_sum hge
+    have heq : ∑ _j : Fin n, (1:ℕ) = ∑ j, (S j).card := by
+      omega
+    intro j
+    exact ((Finset.sum_eq_sum_iff_of_le hge).mp heq j
+      (Finset.mem_univ j)).symm
+  have hloc : ∀ j, ∃ k, S j = {k} :=
+    fun j => Finset.card_eq_one.mp (hcard1 j)
+  choose loc hlocS using hloc
+  have hmem : ∀ j i, T (Pi.single j 1) i ≠ 0 ↔ i = loc j := by
+    intro j i
+    constructor
+    · intro hnz
+      have : i ∈ S j := (hmemS j i).mpr hnz
+      rw [hlocS j] at this
+      exact Finset.mem_singleton.mp this
+    · intro h
+      subst h
+      have : loc j ∈ S j := by
+        rw [hlocS j]
+        exact Finset.mem_singleton_self _
+      exact (hmemS j (loc j)).mp this
+  have hinj : Function.Injective loc := by
+    intro j₁ j₂ h
+    by_contra hj
+    exact hp2 (mixing_lossless_forces_p_eq_two hp0 T hiso j₁ j₂ hj
+      (loc j₁) ((hmem j₁ (loc j₁)).mpr rfl) ((hmem j₂ (loc j₁)).mpr h))
+  have hbij : Function.Bijective loc :=
+    Finite.injective_iff_bijective.mp hinj
+  refine ⟨Equiv.ofBijective loc hbij, ?_⟩
+  intro j
+  refine ⟨T (Pi.single j 1) (loc j), ?_, ?_⟩
+  · have hsum1 : ∑ i, ‖T (Pi.single j 1) i‖ ^ p
+        = ‖T (Pi.single j 1) (loc j)‖ ^ p := by
+      rw [Finset.sum_eq_single (loc j)]
+      · intro i _ hne'
+        have hz : T (Pi.single j 1) i = 0 := by
+          by_contra hnz
+          exact hne' ((hmem j i).mp hnz)
+        rw [hz, norm_zero, Real.zero_rpow hp0']
+      · intro hmem'
+        exact absurd (Finset.mem_univ _) hmem'
+    rw [colsum j] at hsum1
+    exact norm_eq_one_of_rpow_eq_one (norm_nonneg _) hp0 hsum1.symm
+  · funext i
+    simp only [Equiv.ofBijective_apply]
+    by_cases h : i = loc j
+    · subst h
+      rw [Pi.single_eq_same]
+    · rw [Pi.single_eq_of_ne h]
+      by_contra hnz
+      exact h ((hmem j i).mp hnz)
+
+/-! ## 9. General-n unitarity at p = 2 -/
+
+/-- The l^2 mass (mul-self form) of a scaled basis vector. -/
+theorem single_probe_sum_sq {n : ℕ} (j : Fin n) (α : ℂ)
+    (hα : ‖α‖ = 1) :
+    ∑ i, ‖(Pi.single j α : Fin n → ℂ) i‖
+      * ‖(Pi.single j α : Fin n → ℂ) i‖ = 1 := by
+  rw [Finset.sum_eq_single j]
+  · rw [Pi.single_eq_same, hα, mul_one]
+  · intro i _ hne
+    rw [Pi.single_eq_of_ne hne, norm_zero, mul_zero]
+  · intro hmem
+    exact absurd (Finset.mem_univ j) hmem
+
+/-- The l^2 mass of a two-site unit-modulus probe is 2. -/
+theorem pair_probe_sum_sq {n : ℕ} {j₁ j₂ : Fin n} (hj : j₁ ≠ j₂)
+    (α β : ℂ) (hα : ‖α‖ = 1) (hβ : ‖β‖ = 1) :
+    ∑ i, ‖(Pi.single j₁ α + Pi.single j₂ β : Fin n → ℂ) i‖
+      * ‖(Pi.single j₁ α + Pi.single j₂ β : Fin n → ℂ) i‖ = 2 := by
+  classical
+  have hzero : ∀ i ∈ Finset.univ,
+      i ∉ ({j₁, j₂} : Finset (Fin n)) →
+      ‖(Pi.single j₁ α + Pi.single j₂ β : Fin n → ℂ) i‖
+        * ‖(Pi.single j₁ α + Pi.single j₂ β : Fin n → ℂ) i‖ = 0 := by
+    intro i _ hi
+    simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+    rw [Pi.add_apply, Pi.single_eq_of_ne hi.1, Pi.single_eq_of_ne hi.2,
+      add_zero, norm_zero, mul_zero]
+  rw [← Finset.sum_subset (Finset.subset_univ _) hzero,
+    Finset.sum_insert (by simpa using hj), Finset.sum_singleton]
+  simp only [Pi.add_apply, Pi.single_eq_same,
+    Pi.single_eq_of_ne hj, Pi.single_eq_of_ne hj.symm,
+    add_zero, zero_add, hα, hβ]
+  norm_num
+
+/-- GENERAL-n UNITARITY: an l^2-lossless linear step has orthogonal
+columns - in every dimension, losslessness at the Born exponent
+forces the full complex inner product of any two columns to vanish.
+With `single_probe_sum_sq` (columns are unit vectors) this says T is
+unitary: the p = 2 sector is exactly U(n). -/
+theorem l2_lossless_columns_orthogonal {n : ℕ}
+    (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ,
+      ∑ i, ‖T x i‖ * ‖T x i‖ = ∑ i, ‖x i‖ * ‖x i‖)
+    (j₁ j₂ : Fin n) (hj : j₁ ≠ j₂) :
+    ∑ i, (starRingEnd ℂ) (T (Pi.single j₁ 1) i)
+      * T (Pi.single j₂ 1) i = 0 := by
+  have n1 : ∑ i, ‖T (Pi.single j₁ 1) i‖ * ‖T (Pi.single j₁ 1) i‖
+      = 1 := (hiso _).trans (single_probe_sum_sq j₁ 1 (by simp))
+  have n2 : ∑ i, ‖T (Pi.single j₂ 1) i‖ * ‖T (Pi.single j₂ 1) i‖
+      = 1 := (hiso _).trans (single_probe_sum_sq j₂ 1 (by simp))
+  have probe : ∀ β : ℂ, ‖β‖ = 1 →
+      ∑ i, ‖T (Pi.single j₁ 1) i + β * T (Pi.single j₂ 1) i‖
+        * ‖T (Pi.single j₁ 1) i + β * T (Pi.single j₂ 1) i‖ = 2 := by
+    intro β hβ
+    have hxT : ∀ i : Fin n,
+        T (Pi.single j₁ 1) i + β * T (Pi.single j₂ 1) i
+        = T (Pi.single j₁ 1 + Pi.single j₂ β) i := by
+      intro i
+      have hsingle : (Pi.single j₂ β : Fin n → ℂ)
+          = β • (Pi.single j₂ 1 : Fin n → ℂ) := by
+        rw [← Pi.single_smul, smul_eq_mul, mul_one]
+      rw [map_add, hsingle, map_smul, Pi.add_apply, Pi.smul_apply,
+        smul_eq_mul]
+    have h2 : ∑ i, ‖T (Pi.single j₁ 1 + Pi.single j₂ β) i‖
+        * ‖T (Pi.single j₁ 1 + Pi.single j₂ β) i‖ = 2 := by
+      rw [hiso]
+      exact pair_probe_sum_sq hj 1 β (by simp) hβ
+    rw [Finset.sum_congr rfl fun i _ => by rw [hxT i]]
+    exact h2
+  have expand : ∀ β : ℂ, ‖β‖ = 1 →
+      ∑ i, ((β * T (Pi.single j₂ 1) i)
+        * (starRingEnd ℂ) (T (Pi.single j₁ 1) i)).re = 0 := by
+    intro β hβ
+    have hper : ∀ i : Fin n,
+        ‖T (Pi.single j₁ 1) i + β * T (Pi.single j₂ 1) i‖
+          * ‖T (Pi.single j₁ 1) i + β * T (Pi.single j₂ 1) i‖
+        = ‖T (Pi.single j₁ 1) i‖ * ‖T (Pi.single j₁ 1) i‖
+          + 2 * ((β * T (Pi.single j₂ 1) i)
+              * (starRingEnd ℂ) (T (Pi.single j₁ 1) i)).re
+          + ‖T (Pi.single j₂ 1) i‖ * ‖T (Pi.single j₂ 1) i‖ := by
+      intro i
+      have h := norm_add_mul_self (𝕜 := ℂ)
+        (T (Pi.single j₁ 1) i) (β * T (Pi.single j₂ 1) i)
+      rw [RCLike.inner_apply, RCLike.re_to_complex] at h
+      rw [h, norm_mul, hβ, one_mul]
+    have hsum := probe β hβ
+    rw [Finset.sum_congr rfl fun i _ => hper i,
+      Finset.sum_add_distrib, Finset.sum_add_distrib,
+      n1, n2, ← Finset.mul_sum] at hsum
+    linarith
+  have hre := expand 1 (by simp)
+  have him := expand Complex.I (by simp)
+  apply Complex.ext
+  · rw [Complex.re_sum, Complex.zero_re]
+    have hconv : ∀ i : Fin n,
+        ((starRingEnd ℂ) (T (Pi.single j₁ 1) i)
+          * T (Pi.single j₂ 1) i).re
+        = ((1 * T (Pi.single j₂ 1) i)
+            * (starRingEnd ℂ) (T (Pi.single j₁ 1) i)).re := by
+      intro i
+      congr 1
+      ring
+    rw [Finset.sum_congr rfl fun i _ => hconv i]
+    exact hre
+  · rw [Complex.im_sum, Complex.zero_im]
+    have hconv : ∀ i : Fin n,
+        ((Complex.I * T (Pi.single j₂ 1) i)
+          * (starRingEnd ℂ) (T (Pi.single j₁ 1) i)).re
+        = -((starRingEnd ℂ) (T (Pi.single j₁ 1) i)
+            * T (Pi.single j₂ 1) i).im := by
+      intro i
+      rw [mul_assoc, Complex.I_mul_re,
+        mul_comm (T (Pi.single j₂ 1) i)
+          ((starRingEnd ℂ) (T (Pi.single j₁ 1) i))]
+    rw [Finset.sum_congr rfl fun i _ => hconv i,
+      Finset.sum_neg_distrib] at him
+    linarith
+
+/-! ## 10. The grand dichotomy and the frozen world -/
+
+/-- THE GRAND DICHOTOMY: every lossless linear dynamics on any
+measure system |·|^p is EITHER a weighted permutation (classical
+relabeling with inert phases) OR lives at p = 2 with orthogonal
+columns (quantum unitarity).  There is no third kind of lossless
+time evolution. -/
+theorem lossless_dichotomy {p : ℝ} (hp0 : 0 < p) {n : ℕ}
+    (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, ‖T x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    (∃ σ : Equiv.Perm (Fin n), ∀ j : Fin n, ∃ c : ℂ,
+      ‖c‖ = 1 ∧ T (Pi.single j 1) = Pi.single (σ j) c)
+    ∨ (p = 2 ∧ ∀ j₁ j₂ : Fin n, j₁ ≠ j₂ →
+        ∑ i, (starRingEnd ℂ) (T (Pi.single j₁ 1) i)
+          * T (Pi.single j₂ 1) i = 0) := by
+  by_cases hp2 : p = 2
+  · right
+    refine ⟨hp2, ?_⟩
+    intro j₁ j₂ hj
+    have conv2 : ∀ z : ℂ, ‖z‖ ^ (2:ℝ) = ‖z‖ * ‖z‖ := by
+      intro z
+      rw [show (2:ℝ) = ((2:ℕ):ℝ) by norm_num, Real.rpow_natCast]
+      ring
+    refine l2_lossless_columns_orthogonal T ?_ j₁ j₂ hj
+    intro x
+    have h := hiso x
+    rw [hp2] at h
+    calc ∑ i, ‖T x i‖ * ‖T x i‖
+        = ∑ i, ‖T x i‖ ^ (2:ℝ) :=
+          Finset.sum_congr rfl fun i _ => (conv2 _).symm
+      _ = ∑ i, ‖x i‖ ^ (2:ℝ) := h
+      _ = ∑ i, ‖x i‖ * ‖x i‖ :=
+          Finset.sum_congr rfl fun i _ => conv2 _
+  · left
+    exact lossless_ne_two_is_weighted_permutation hp0 hp2 T hiso
+
+/-- THE FROZEN WORLD (discrete core): for p ≠ 2, the induced action
+on MEASURES is a fixed permutation, independent of the phase data -
+‖(Tx)(σ j)‖ = ‖x j‖ for every state x.  Probabilities can only be
+relabeled, never continuously transported: in any measure system
+other than Born's, nothing can ever happen to the observable world.
+Continuous evolution of probability is uniquely quantum. -/
+theorem frozen_measure_ne_two {p : ℝ} (hp0 : 0 < p) (hp2 : p ≠ 2)
+    {n : ℕ} (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, ‖T x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∃ σ : Equiv.Perm (Fin n), ∀ (x : Fin n → ℂ) (j : Fin n),
+      ‖T x (σ j)‖ = ‖x j‖ := by
+  obtain ⟨σ, hσ⟩ :=
+    lossless_ne_two_is_weighted_permutation hp0 hp2 T hiso
+  refine ⟨σ, ?_⟩
+  intro x j
+  have hsingle : ∀ (j' : Fin n) (a : ℂ),
+      (Pi.single j' a : Fin n → ℂ)
+        = a • (Pi.single j' 1 : Fin n → ℂ) := by
+    intro j' a
+    rw [← Pi.single_smul, smul_eq_mul, mul_one]
+  have hTx : T x (σ j) = x j * T (Pi.single j 1) (σ j) := by
+    conv_lhs => rw [show x = ∑ j', Pi.single j' (x j') from
+      (Finset.univ_sum_single x).symm]
+    rw [map_sum, Finset.sum_apply]
+    rw [Finset.sum_eq_single j]
+    · rw [hsingle j (x j), map_smul, Pi.smul_apply, smul_eq_mul]
+    · intro j' _ hne
+      obtain ⟨c, _, hcol⟩ := hσ j'
+      have hne2 : σ j ≠ σ j' := fun h => hne (σ.injective h.symm)
+      rw [hsingle j' (x j'), map_smul, Pi.smul_apply, hcol,
+        smul_eq_mul, Pi.single_eq_of_ne hne2, mul_zero]
+    · intro hmem
+      exact absurd (Finset.mem_univ _) hmem
+  obtain ⟨c, hc1, hcol⟩ := hσ j
+  rw [hTx, hcol, Pi.single_eq_same, norm_mul, hc1, mul_one]
+
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -744,5 +1091,9 @@ theorem mixing_lossless_forces_p_eq_two {p : ℝ} (hp0 : 0 < p)
 #print axioms lamperti_columns_ne_two
 #print axioms p_two_probes_force_unitary
 #print axioms mixing_lossless_forces_p_eq_two
+#print axioms lossless_ne_two_is_weighted_permutation
+#print axioms l2_lossless_columns_orthogonal
+#print axioms lossless_dichotomy
+#print axioms frozen_measure_ne_two
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
