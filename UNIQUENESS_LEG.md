@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 38 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 43 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -375,6 +375,47 @@ FOR EXACTLY ONE MEASURE CALCULUS.  A world with a monotone measure,
 losslessness, and one balanced interference event is already Born.
 What remains of Orlicz-Lamperti: arbitrary mixing matrices (not
 just the canonical splitter) for general monotone f — the last
+stretch of the wall.
+
+## DENSE SPLITTING RIGIDITY (2026-08-14, fourth pass):
+## generic interference forces Born over ALL monotone measures
+
+The beam-splitter breach needed one fine-tuned 50/50 event.  The
+fine-tuning is now removed (file at 43 theorems):
+
+`dense_splitting_forces_linear` / `splitter_family_forces_born` /
+`lossless_splitter_family_forces_born`: a monotone measure
+Sum f(||.||) lossless across two-way splitters of a DENSE set of
+transmittances lambda in (0,1) is exactly f(x) = x^2 f(1).  Only
+ONE column per splitter is consumed.
+
+The mathematical heart, and the new tool of the pass, is
+`dense_splitting_no_jump`: CONTINUITY IS DERIVED, NOT ASSUMED.  If
+the measure had a jump of size J at some y, the split identity
+g(lam*x) + g((1-lam)*x) = g(x) transports increments, so EVERY
+available ratio copies the jump in full onto the pair
+{lam*y, (1-lam)*y}; N distinct ratios give N disjoint copies below
+y, but a monotone function has only finite total variation there —
+contradiction for N large.  Order kills the jump.  Continuity then
+extends the split identity from dense ratios to all ratios, giving
+exact Pythagorean additivity, and monotone Cauchy finishes.  The
+only inputs anywhere are ORDER and LOSSLESSNESS.
+
+Physics: a dense transmittance family is what ONE GENERIC
+interference device supplies — iterating a single lossless rotation
+of angle theta with theta/pi irrational produces splitters of
+transmittance cos^2(k*theta), dense in (0,1) (orbit density of
+irrational rotations; classical — its Lean formalization via
+AddSubgroup.dense_or_cyclic is the one remaining glue step of this
+pass, cited not formalized).  So: A WORLD WITH A MONOTONE MEASURE,
+LOSSLESSNESS, AND ONE GENERIC INTERFERENCE DEVICE ITERATED IN TIME
+IS ALREADY BORN.  Fine-tuning is not required; genericity suffices.
+
+Orlicz-Lamperti status after this pass: the measure family is
+forced to Born by (i) one exact 50/50 splitter [section 18], or
+(ii) any dense family of splitters [this section].  What remains is
+the single-arbitrary-matrix case (one fixed mixing step with no
+special structure and only its own powers available) — the last
 stretch of the wall.
 
 ## The theorem chain, with Lean witnesses per arrow

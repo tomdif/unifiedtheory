@@ -109,6 +109,16 @@
      the Jordan-von Neumann quadratic functional equation with
      monotone solutions (`monotone_quadratic_functional_eq`).
      Dynamical wrapper: `lossless_beam_splitter_step_forces_born`.
+  19. `dense_splitting_forces_linear` + `splitter_family_forces_born`
+     - DENSE SPLITTING RIGIDITY: splitters of a DENSE set of
+     transmittances (what iterating ONE generic lossless rotation
+     supplies) force the Born function over all monotone measures.
+     The heart is `dense_splitting_no_jump`: continuity is DERIVED
+     - a jump would be copied in full by every available ratio,
+     and finitely many disjoint copies exceed the total variation.
+     Order kills the jump; dense ratios then give exact Pythagorean
+     additivity; monotone Cauchy finishes.  Generic interference,
+     not fine-tuned interference, is enough for Born.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -2254,6 +2264,544 @@ theorem lossless_beam_splitter_step_forces_born {n : ℕ}
     abs_div, abs_of_pos hs2] at h
   exact h
 
+/-! ## 19. DENSE SPLITTING RIGIDITY: generic interference forces
+Born over ALL monotone measures
+
+Section 18 needed one fine-tuned 50/50 splitter.  This section
+removes the fine-tuning: a monotone measure lossless across two-way
+splitters of a DENSE set of transmittances λ ∈ (0,1) is exactly the
+Born function.  Physically, a dense transmittance family is what a
+single GENERIC interference device supplies: iterating one lossless
+rotation of irrational angle θ/π produces splitters of transmittance
+cos²(kθ), dense in (0,1) (orbit density of irrational rotations —
+classical; its formalization via `AddSubgroup.dense_or_cyclic` is
+the one remaining glue step, cited not formalized).  One generic
+beam splitter, iterated, forces the Born rule.
+
+The mathematical heart is `dense_splitting_no_jump`: CONTINUITY IS
+DERIVED, NOT ASSUMED.  If the measure had a jump of size J at some
+y, every available ratio λ would copy that jump in full onto the
+pair {λy, (1−λ)y} (the split identity transports increments), and
+N distinct ratios produce N disjoint copies below y — but a
+monotone function has only g(2y) of total variation to spend, so N
+copies of J exceed it for large N.  Order kills the jump.  With
+continuity derived, dense ratios extend the split identity to
+exact Pythagorean additivity, and monotone Cauchy (§15) finishes.
+No topology is assumed anywhere in the chain; the only inputs are
+order and losslessness. -/
+
+/-- Increments of a monotone function over a sorted family of
+disjoint intervals in `[0, B]` sum to at most `g B - g 0`. -/
+theorem sum_sorted_increments_le (g : ℝ → ℝ)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b) :
+    ∀ (N : ℕ) (a b : ℕ → ℝ) (B : ℝ),
+      (∀ i, i < N → 0 ≤ a i) → (∀ i, i < N → a i ≤ b i) →
+      (∀ i j, i < j → j < N → b i ≤ a j) →
+      (∀ i, i < N → b i ≤ B) → 0 ≤ B →
+      ∑ i ∈ Finset.range N, (g (b i) - g (a i)) ≤ g B - g 0 := by
+  intro N
+  induction N with
+  | zero =>
+    intro a b B _ _ _ _ hB0
+    simpa using sub_nonneg.mpr (hmono 0 B le_rfl hB0)
+  | succ N ih =>
+    intro a b B h0 hab hsort hB hB0
+    rw [Finset.sum_range_succ]
+    have hprefix := ih a b (a N) (fun i hi => h0 i (by omega))
+      (fun i hi => hab i (by omega))
+      (fun i j hij hj => hsort i j hij (by omega))
+      (fun i hi => hsort i N hi (by omega))
+      (h0 N (by omega))
+    have hmid : g (a N) ≤ g (b N) :=
+      hmono _ _ (h0 N (by omega)) (hab N (by omega))
+    have hlast : g (b N) ≤ g B :=
+      hmono _ _ (le_trans (h0 N (by omega)) (hab N (by omega)))
+        (hB N (by omega))
+    linarith
+
+set_option maxHeartbeats 1000000 in
+/-- NO JUMPS: dense splitting forbids discontinuities.  A jump at y
+would be copied in full below y by every available ratio, and
+finitely many disjoint copies already exceed the total variation.
+Continuity of the measure is DERIVED, not assumed. -/
+theorem dense_splitting_no_jump (g : ℝ → ℝ)
+    (hg0 : g 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b)
+    (D : Set ℝ)
+    (hD : ∀ u v : ℝ, 0 < u → u < v → v < 1 →
+      ∃ lam, lam ∈ D ∧ u < lam ∧ lam < v)
+    (hsplit : ∀ lam, lam ∈ D → 0 < lam → lam < 1 →
+      ∀ x : ℝ, 0 ≤ x → g (lam * x) + g ((1 - lam) * x) = g x) :
+    ∀ y : ℝ, 0 < y → ∀ ε : ℝ, 0 < ε →
+      ∃ a' b' : ℝ, 0 ≤ a' ∧ a' < y ∧ y < b' ∧ g b' - g a' < ε := by
+    intro y hy ε hε
+    by_contra hcon
+    push_neg at hcon
+    -- hcon : ∀ a' b', 0 ≤ a' → a' < y → y < b' → ε ≤ g b' - g a'
+    obtain ⟨N₀, hN₀⟩ := exists_nat_gt (2 * g (2*y) / ε)
+    set N : ℕ := N₀ + 1 with hNdef
+    have hNgt : 2 * g (2*y) / ε < (N:ℝ) := by
+      have : (N₀ : ℝ) ≤ (N : ℝ) := by exact_mod_cast Nat.le_succ N₀
+      linarith
+    set W : ℝ := (N:ℝ) + 1 with hWdef
+    have hWpos : (0:ℝ) < W := by positivity
+    have hW1 : (1:ℝ) ≤ W := by
+      have : (0:ℝ) ≤ (N:ℝ) := Nat.cast_nonneg N
+      linarith
+    set δ : ℝ := 1/(8*W) with hδdef
+    set γ : ℝ := 1/(4*W) with hγdef
+    have hδpos : 0 < δ := by positivity
+    have hγpos : 0 < γ := by positivity
+    have hγ1 : γ ≤ 1 := by
+      rw [hγdef]
+      rw [div_le_one (by positivity)]
+      linarith
+    -- the target midpoints, clamped so `choose` is unconditional
+    have hcastN : ∀ i : ℕ, i < N → ((min i (N-1) : ℕ) : ℝ) = (i : ℝ) := by
+      intro i hi
+      congr 1
+      omega
+    have hμbounds : ∀ i : ℕ,
+        (1:ℝ)/2 + 1/(2*W) ≤ 1/2 + ((min i (N-1) : ℕ) + 1 : ℝ)/(2*W) ∧
+        1/2 + ((min i (N-1) : ℕ) + 1 : ℝ)/(2*W) ≤ 1/2 + (N:ℝ)/(2*W) := by
+      intro i
+      constructor
+      · have h1 : (0:ℝ) ≤ ((min i (N-1) : ℕ) : ℝ) := Nat.cast_nonneg _
+        have := div_le_div_of_nonneg_right (c := 2*W) (by linarith : (1:ℝ) ≤ ((min i (N-1) : ℕ) : ℝ) + 1) (by positivity)
+        linarith [this]
+      · have h1 : ((min i (N-1) : ℕ) : ℝ) ≤ ((N-1 : ℕ) : ℝ) := by
+          exact_mod_cast Nat.min_le_right i (N-1)
+        have h2 : ((N-1 : ℕ) : ℝ) + 1 ≤ (N:ℝ) := by
+          have : ((N-1 : ℕ) : ℝ) = (N:ℝ) - 1 := by
+            have : (1:ℕ) ≤ N := by omega
+            push_cast [Nat.cast_sub this]
+            ring
+          linarith [this.le]
+        have := div_le_div_of_nonneg_right (c := 2*W)
+          (by linarith : ((min i (N-1) : ℕ) : ℝ) + 1 ≤ (N:ℝ)) (by positivity)
+        linarith [this]
+    have hpick : ∀ i : ℕ, ∃ lam, lam ∈ D ∧
+        1/2 + ((min i (N-1) : ℕ) + 1 : ℝ)/(2*W) - δ < lam ∧
+        lam < 1/2 + ((min i (N-1) : ℕ) + 1 : ℝ)/(2*W) + δ := by
+      intro i
+      obtain ⟨hlo, hhi⟩ := hμbounds i
+      apply hD
+      · -- 0 < μ - δ
+        have : δ < 1/(2*W) := by
+          rw [hδdef]
+          apply div_lt_div_of_pos_left one_pos (by positivity)
+          linarith
+        linarith
+      · linarith
+      · -- μ + δ < 1
+        have hN2W : (N:ℝ)/(2*W) = 1/2 - 1/(2*W) := by
+          rw [hWdef]
+          field_simp
+          ring
+        have : δ < 1/(2*W) := by
+          rw [hδdef]
+          apply div_lt_div_of_pos_left one_pos (by positivity)
+          linarith
+        rw [hN2W] at hhi
+        linarith
+    choose lam hlamD hlam1 hlam2 using hpick
+    -- bounds and separation
+    have hlam_half : ∀ i, i < N → 1/2 < lam i := by
+      intro i hi
+      have := (hμbounds i).1
+      have hδlt : δ < 1/(2*W) := by
+        rw [hδdef]
+        apply div_lt_div_of_pos_left one_pos (by positivity)
+        linarith
+      linarith [hlam1 i]
+    have hlam_lt1 : ∀ i, i < N → lam i < 1 := by
+      intro i hi
+      have := (hμbounds i).2
+      have hN2W : (N:ℝ)/(2*W) = 1/2 - 1/(2*W) := by
+        rw [hWdef]
+        field_simp
+        ring
+      have hδlt : δ < 1/(2*W) := by
+        rw [hδdef]
+        apply div_lt_div_of_pos_left one_pos (by positivity)
+        linarith
+      rw [hN2W] at this
+      linarith [hlam2 i]
+    have hsep : ∀ i j, i < j → j < N → lam i + γ ≤ lam j := by
+      intro i j hij hj
+      have hi : i < N := lt_trans hij hj
+      have hci := hcastN i hi
+      have hcj := hcastN j hj
+      have h1 := hlam2 i
+      have h2 := hlam1 j
+      rw [hci] at h1
+      rw [hcj] at h2
+      have hij' : (i:ℝ) + 1 ≤ (j:ℝ) := by exact_mod_cast hij
+      have hgap : ((i:ℝ)+1)/(2*W) + 1/(2*W) ≤ ((j:ℝ)+1)/(2*W) := by
+        rw [div_add_div_same]
+        apply div_le_div_of_nonneg_right (by linarith) (by positivity)
+      have hδγ : 2*δ + γ ≤ 1/(2*W) := by
+        rw [hδdef, hγdef]
+        rw [show (8:ℝ)*W = 8*W from rfl]
+        have : (1:ℝ)/(8*W) + 1/(8*W) + 1/(4*W) = 1/(2*W) := by
+          field_simp
+          ring
+        linarith [this]
+      linarith
+    -- the bracket
+    set η : ℝ := γ/8 with hηdef
+    have hηpos : 0 < η := by positivity
+    have hη1 : η < 1 := by
+      rw [hηdef]
+      linarith
+    set a₀ : ℝ := y*(1-η) with ha₀def
+    set b₀ : ℝ := y*(1+η) with hb₀def
+    have ha₀0 : 0 ≤ a₀ := by
+      rw [ha₀def]
+      apply mul_nonneg (le_of_lt hy)
+      linarith
+    have ha₀y : a₀ < y := by
+      rw [ha₀def]
+      nlinarith
+    have hyb₀ : y < b₀ := by
+      rw [hb₀def]
+      nlinarith
+    have hb₀2y : b₀ ≤ 2*y := by
+      rw [hb₀def]
+      nlinarith
+    have hb₀0 : 0 ≤ b₀ := le_trans ha₀0 (le_of_lt (lt_trans ha₀y hyb₀))
+    -- each ratio copies the full jump
+    have hrel : ∀ i, i < N →
+        (g (lam i * b₀) - g (lam i * a₀))
+        + (g ((1 - lam i) * b₀) - g ((1 - lam i) * a₀))
+        = g b₀ - g a₀ := by
+      intro i hi
+      have hb := hsplit (lam i) (hlamD i) (by linarith [hlam_half i hi])
+        (hlam_lt1 i hi) b₀ hb₀0
+      have ha := hsplit (lam i) (hlamD i) (by linarith [hlam_half i hi])
+        (hlam_lt1 i hi) a₀ ha₀0
+      linarith
+    have hjump : ε ≤ g b₀ - g a₀ := hcon a₀ b₀ ha₀0 ha₀y hyb₀
+    have hsum_lo : (N:ℝ) * ε ≤
+        ∑ i ∈ Finset.range N,
+          ((g (lam i * b₀) - g (lam i * a₀))
+            + (g ((1 - lam i) * b₀) - g ((1 - lam i) * a₀))) := by
+      calc (N:ℝ) * ε = ∑ _i ∈ Finset.range N, ε := by
+            rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+        _ ≤ _ := by
+            apply Finset.sum_le_sum
+            intro i hi
+            rw [hrel i (Finset.mem_range.mp hi)]
+            exact hjump
+    -- upper family
+    have hupper : ∑ i ∈ Finset.range N,
+        (g (lam i * b₀) - g (lam i * a₀)) ≤ g b₀ - g 0 := by
+      apply sum_sorted_increments_le g hmono N _ _ b₀
+      · intro i hi
+        exact mul_nonneg (by linarith [hlam_half i hi]) ha₀0
+      · intro i hi
+        apply mul_le_mul_of_nonneg_left (by linarith) (by linarith [hlam_half i hi])
+      · intro i j hij hj
+        have hi : i < N := lt_trans hij hj
+        have hs := hsep i j hij hj
+        have hli := hlam_lt1 i hi
+        have hlhi := hlam_half i hi
+        have hlhj := hlam_half j hj
+        rw [ha₀def, hb₀def]
+        have key : lam i * (1+η) ≤ lam j * (1-η) := by
+          have h1 : lam i * (1+η) ≤ lam i + η := by nlinarith
+          have h2 : lam j - lam j * η ≥ lam j - η := by nlinarith [hlam_lt1 j hj]
+          have h3 : lam i + η ≤ lam j - η := by
+            have hηγ : 2*η ≤ γ := by rw [hηdef]; linarith
+            linarith
+          nlinarith [hlam_lt1 j hj]
+        calc lam i * (y*(1+η)) = (lam i * (1+η)) * y := by ring
+          _ ≤ (lam j * (1-η)) * y := by
+              apply mul_le_mul_of_nonneg_right key (le_of_lt hy)
+          _ = lam j * (y*(1-η)) := by ring
+      · intro i hi
+        calc lam i * b₀ ≤ 1 * b₀ := by
+              apply mul_le_mul_of_nonneg_right
+                (le_of_lt (hlam_lt1 i hi)) hb₀0
+          _ = b₀ := one_mul _
+      · exact hb₀0
+    -- lower family (reflected index so it is increasing)
+    have hlower : ∑ i ∈ Finset.range N,
+        (g ((1 - lam i) * b₀) - g ((1 - lam i) * a₀)) ≤ g b₀ - g 0 := by
+      rw [← Finset.sum_range_reflect]
+      apply sum_sorted_increments_le g hmono N
+        (fun i => (1 - lam (N - 1 - i)) * a₀)
+        (fun i => (1 - lam (N - 1 - i)) * b₀) b₀
+      · intro i hi
+        exact mul_nonneg (by linarith [hlam_lt1 (N-1-i) (by omega)]) ha₀0
+      · intro i hi
+        apply mul_le_mul_of_nonneg_left (by linarith)
+          (by linarith [hlam_lt1 (N-1-i) (by omega)])
+      · intro i j hij hj
+        have hp : N - 1 - j < N - 1 - i := by omega
+        have hqN : N - 1 - i < N := by omega
+        have hs := hsep (N-1-j) (N-1-i) hp hqN
+        set p := N - 1 - j
+        set q := N - 1 - i
+        have hlq1 : lam q < 1 := hlam_lt1 q hqN
+        have hlp_half : 1/2 < lam p := hlam_half p (by omega)
+        have hlq_half : 1/2 < lam q := hlam_half q hqN
+        rw [ha₀def, hb₀def]
+        have key : (1 - lam q) * (1+η) ≤ (1 - lam p) * (1-η) := by
+          have hq2 : 1 - lam q ≤ 1/2 := by linarith
+          have hp2 : 1 - lam p ≤ 1/2 := by linarith
+          have hlam_pq : 1 - lam q ≤ 1 - lam p - γ := by linarith
+          have hηγ : 2*η ≤ γ := by rw [hηdef]; linarith
+          nlinarith [hlam_lt1 p (by omega)]
+        calc (1 - lam q) * (y*(1+η)) = ((1 - lam q) * (1+η)) * y := by ring
+          _ ≤ ((1 - lam p) * (1-η)) * y := by
+              apply mul_le_mul_of_nonneg_right key (le_of_lt hy)
+          _ = (1 - lam p) * (y*(1-η)) := by ring
+      · intro i hi
+        have h1 : 1 - lam (N-1-i) ≤ 1 := by
+          linarith [hlam_half (N-1-i) (by omega)]
+        calc (1 - lam (N-1-i)) * b₀ ≤ 1 * b₀ := by
+              apply mul_le_mul_of_nonneg_right h1 hb₀0
+          _ = b₀ := one_mul _
+      · exact hb₀0
+    -- assemble the contradiction
+    have hsum_split : ∑ i ∈ Finset.range N,
+        ((g (lam i * b₀) - g (lam i * a₀))
+          + (g ((1 - lam i) * b₀) - g ((1 - lam i) * a₀)))
+        = (∑ i ∈ Finset.range N, (g (lam i * b₀) - g (lam i * a₀)))
+          + ∑ i ∈ Finset.range N,
+              (g ((1 - lam i) * b₀) - g ((1 - lam i) * a₀)) :=
+      Finset.sum_add_distrib
+    have hgb₀ : g b₀ ≤ g (2*y) := hmono _ _ hb₀0 hb₀2y
+    have hfinal : (N:ℝ) * ε ≤ 2 * g (2*y) := by
+      rw [hsum_split] at hsum_lo
+      rw [hg0] at hupper hlower
+      linarith
+    have : 2 * g (2*y) < (N:ℝ) * ε := by
+      rw [div_lt_iff₀ hε] at hNgt
+      linarith
+    linarith
+
+set_option maxHeartbeats 1000000 in
+/-- DENSE SPLITTING RIGIDITY: a monotone g with
+g(λx) + g((1-λ)x) = g(x) for a dense set of ratios λ is linear.
+No continuity assumed — it is derived (`dense_splitting_no_jump`),
+then dense ratios extend the split to exact additivity, and
+monotone Cauchy finishes. -/
+theorem dense_splitting_forces_linear (g : ℝ → ℝ)
+    (hg0 : g 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b)
+    (D : Set ℝ)
+    (hD : ∀ u v : ℝ, 0 < u → u < v → v < 1 →
+      ∃ lam, lam ∈ D ∧ u < lam ∧ lam < v)
+    (hsplit : ∀ lam, lam ∈ D → 0 < lam → lam < 1 →
+      ∀ x : ℝ, 0 ≤ x → g (lam * x) + g ((1 - lam) * x) = g x) :
+    ∀ x : ℝ, 0 ≤ x → g x = x * g 1 := by
+  have hcont := dense_splitting_no_jump g hg0 hmono D hD hsplit
+  -- additivity from derived continuity + dense ratios
+  have hadd : ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g (a + b) = g a + g b := by
+    intro a b ha hb
+    rcases eq_or_lt_of_le ha with ha0 | hapos
+    · rw [← ha0, hg0]
+      ring_nf
+    rcases eq_or_lt_of_le hb with hb0 | hbpos
+    · rw [← hb0, hg0]
+      ring_nf
+    have hx : 0 < a + b := by linarith
+    set x : ℝ := a + b with hxdef
+    have key : ∀ ε : ℝ, 0 < ε → |g x - (g a + g b)| ≤ 2*ε := by
+      intro ε hε
+      obtain ⟨a₁, a₂, ha₁0, ha₁a, haa₂, haincr⟩ := hcont a hapos ε hε
+      obtain ⟨b₁, b₂, hb₁0, hb₁b, hbb₂, hbincr⟩ := hcont b hbpos ε hε
+      set u' : ℝ := max (max (a₁/x) ((x - b₂)/x)) (a/(2*x)) with hu'def
+      set v' : ℝ := min (min (a₂/x) ((x - b₁)/x)) ((a/x + 1)/2) with hv'def
+      have hu'pos : 0 < u' := lt_max_of_lt_right (by positivity)
+      have hu'lt : u' < a/x := by
+        apply max_lt (max_lt ?_ ?_) ?_
+        · exact div_lt_div_of_pos_right ha₁a hx
+        · rw [div_lt_div_iff_of_pos_right hx]
+          linarith
+        · exact div_lt_div_of_pos_left hapos hx (by linarith)
+      have hv'gt : a/x < v' := by
+        apply lt_min (lt_min ?_ ?_) ?_
+        · exact div_lt_div_of_pos_right haa₂ hx
+        · rw [div_lt_div_iff_of_pos_right hx]
+          linarith
+        · have hax1 : a/x < 1 := by
+            rw [div_lt_one hx]
+            linarith
+          linarith
+      have hv'lt1 : v' < 1 := by
+        apply min_lt_of_right_lt
+        have hax1 : a/x < 1 := by
+          rw [div_lt_one hx]
+          linarith
+        linarith
+      obtain ⟨lam, hlamD, hlamu, hlamv⟩ := hD u' v' hu'pos
+        (lt_trans hu'lt hv'gt) hv'lt1
+      have hlam0 : 0 < lam := lt_trans hu'pos hlamu
+      have hlam1 : lam < 1 := lt_trans hlamv hv'lt1
+      have hs := hsplit lam hlamD hlam0 hlam1 x (le_of_lt hx)
+      -- λx ∈ (a₁, a₂)
+      have hlxa₁ : a₁ < lam * x := by
+        have h1 : a₁/x < lam := lt_of_le_of_lt (le_trans (le_max_left _ _) (le_max_left _ _)) hlamu
+        rw [div_lt_iff₀ hx] at h1
+        linarith
+      have hlxa₂ : lam * x < a₂ := by
+        have h1 : lam < a₂/x := lt_of_lt_of_le hlamv (le_trans (min_le_left _ _) (min_le_left _ _))
+        rw [lt_div_iff₀ hx] at h1
+        linarith
+      -- (1-λ)x ∈ (b₁, b₂)
+      have hlxb₁ : b₁ < (1 - lam) * x := by
+        have h1 : lam < (x - b₁)/x := lt_of_lt_of_le hlamv (le_trans (min_le_left _ _) (min_le_right _ _))
+        rw [lt_div_iff₀ hx] at h1
+        nlinarith
+      have hlxb₂ : (1 - lam) * x < b₂ := by
+        have h1 : (x - b₂)/x < lam := lt_of_le_of_lt (le_trans (le_max_right _ _) (le_max_left _ _)) hlamu
+        rw [div_lt_iff₀ hx] at h1
+        nlinarith
+      -- estimate the two displacements
+      have hga : |g (lam * x) - g a| ≤ g a₂ - g a₁ := by
+        rw [abs_sub_le_iff]
+        constructor
+        · have h1 : g (lam*x) ≤ g a₂ :=
+            hmono _ _ (mul_nonneg (le_of_lt hlam0) (le_of_lt hx)) (le_of_lt hlxa₂)
+          have h2 : g a₁ ≤ g a := hmono _ _ ha₁0 (le_of_lt ha₁a)
+          linarith
+        · have h1 : g a ≤ g a₂ := hmono _ _ (le_of_lt hapos) (le_of_lt haa₂)
+          have h2 : g a₁ ≤ g (lam*x) := hmono _ _ ha₁0 (le_of_lt hlxa₁)
+          linarith
+      have hgb : |g ((1 - lam) * x) - g b| ≤ g b₂ - g b₁ := by
+        rw [abs_sub_le_iff]
+        constructor
+        · have h1 : g ((1-lam)*x) ≤ g b₂ :=
+            hmono _ _ (mul_nonneg (by linarith) (le_of_lt hx)) (le_of_lt hlxb₂)
+          have h2 : g b₁ ≤ g b := hmono _ _ hb₁0 (le_of_lt hb₁b)
+          linarith
+        · have h1 : g b ≤ g b₂ := hmono _ _ (le_of_lt hbpos) (le_of_lt hbb₂)
+          have h2 : g b₁ ≤ g ((1-lam)*x) := hmono _ _ hb₁0 (le_of_lt hlxb₁)
+          linarith
+      calc |g x - (g a + g b)|
+          = |(g (lam*x) - g a) + (g ((1-lam)*x) - g b)| := by
+            rw [← hs]
+            ring_nf
+        _ ≤ |g (lam*x) - g a| + |g ((1-lam)*x) - g b| := abs_add_le _ _
+        _ ≤ (g a₂ - g a₁) + (g b₂ - g b₁) := add_le_add hga hgb
+        _ ≤ 2*ε := by linarith
+    have hzero : g x - (g a + g b) = 0 := by
+      by_contra hne
+      have habs : 0 < |g x - (g a + g b)| := abs_pos.mpr hne
+      have h4 := key (|g x - (g a + g b)|/4) (by positivity)
+      linarith
+    linarith
+  exact monotone_additive_on_cone_is_linear g hadd hmono
+
+/-- A DENSE FAMILY OF SPLITTERS FORCES THE BORN FUNCTION: a monotone
+measure lossless across two-way splitters of a dense set of
+transmittances is exactly f(x) = x² f(1). -/
+theorem splitter_family_forces_born (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (D : Set ℝ)
+    (hD : ∀ u v : ℝ, 0 < u → u < v → v < 1 →
+      ∃ lam, lam ∈ D ∧ u < lam ∧ lam < v)
+    (hsplit : ∀ lam, lam ∈ D → 0 < lam → lam < 1 → ∀ s : ℝ, 0 ≤ s →
+      f (Real.sqrt lam * s) + f (Real.sqrt (1 - lam) * s) = f s) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  set g : ℝ → ℝ := fun t => f (Real.sqrt t) with hgdef
+  have hg0 : g 0 = 0 := by
+    rw [hgdef]
+    simp [Real.sqrt_zero, hf0]
+  have hmonog : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b := by
+    intro a b _ hab
+    exact hmono _ _ (Real.sqrt_nonneg a) (Real.sqrt_le_sqrt hab)
+  have hsplitg : ∀ lam, lam ∈ D → 0 < lam → lam < 1 →
+      ∀ x : ℝ, 0 ≤ x → g (lam * x) + g ((1 - lam) * x) = g x := by
+    intro lam hlamD hlam0 hlam1 x hx
+    rw [hgdef]
+    simp only []
+    rw [Real.sqrt_mul (le_of_lt hlam0) x, Real.sqrt_mul (by linarith) x]
+    exact hsplit lam hlamD hlam0 hlam1 (Real.sqrt x) (Real.sqrt_nonneg x)
+  have hlin := dense_splitting_forces_linear g hg0 hmonog D hD hsplitg
+  intro x hx
+  have h := hlin (x ^ 2) (sq_nonneg x)
+  rw [hgdef] at h
+  simp only [] at h
+  rw [Real.sqrt_sq hx, Real.sqrt_one] at h
+  exact h
+
+/-- Dynamical wrapper: lossless real-linear steps realizing a dense
+family of splitter transmittances force the Born function.  Only ONE
+column per step is consumed. -/
+theorem lossless_splitter_family_forces_born (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (D : Set ℝ)
+    (hD : ∀ u v : ℝ, 0 < u → u < v → v < 1 →
+      ∃ lam, lam ∈ D ∧ u < lam ∧ lam < v)
+    (hstep : ∀ lam, lam ∈ D → 0 < lam → lam < 1 →
+      ∃ (n : ℕ) (B : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+        (j k₁ k₂ : Fin n), k₁ ≠ k₂ ∧
+        (∀ x : Fin n → ℂ, ∑ i, f ‖B x i‖ = ∑ i, f ‖x i‖) ∧
+        B (Pi.single j 1)
+          = Pi.single k₁ ((Real.sqrt lam : ℝ) : ℂ)
+            + Pi.single k₂ ((Real.sqrt (1 - lam) : ℝ) : ℂ)) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  apply splitter_family_forces_born f hf0 hmono D hD
+  intro lam hlamD hlam0 hlam1 s hs
+  obtain ⟨n, B, j, k₁, k₂, hk, hiso, hcol⟩ := hstep lam hlamD hlam0 hlam1
+  -- measure of a single- and two-coordinate state
+  have hsing : ∀ (e : Fin n) (z : ℂ),
+      ∑ i, f ‖(Pi.single e z : Fin n → ℂ) i‖ = f ‖z‖ := by
+    intro e z
+    rw [Finset.sum_eq_single e]
+    · rw [Pi.single_eq_same]
+    · intro i _ hne
+      rw [Pi.single_eq_of_ne hne, norm_zero, hf0]
+    · intro hmem
+      exact absurd (Finset.mem_univ e) hmem
+  have hpairf : ∀ c d : ℂ,
+      ∑ i, f ‖(Pi.single k₁ c + Pi.single k₂ d : Fin n → ℂ) i‖
+        = f ‖c‖ + f ‖d‖ := by
+    intro c d
+    have hsplit' : ∀ i : Fin n,
+        f ‖(Pi.single k₁ c + Pi.single k₂ d : Fin n → ℂ) i‖
+        = f ‖(Pi.single k₁ c : Fin n → ℂ) i‖
+          + f ‖(Pi.single k₂ d : Fin n → ℂ) i‖ := by
+      intro i
+      by_cases h1 : i = k₁
+      · subst h1
+        simp [Pi.single_eq_same, Pi.single_eq_of_ne hk, hf0]
+      · by_cases h2 : i = k₂
+        · subst h2
+          simp [Pi.single_eq_same, Pi.single_eq_of_ne h1, hf0]
+        · simp [Pi.single_eq_of_ne h1, Pi.single_eq_of_ne h2, hf0]
+    rw [Finset.sum_congr rfl fun i _ => hsplit' i, Finset.sum_add_distrib,
+      hsing k₁ c, hsing k₂ d]
+  have hin : (s • (Pi.single j 1 : Fin n → ℂ))
+      = Pi.single j ((s:ℝ) : ℂ) := by
+    funext i
+    simp only [Pi.smul_apply, Pi.single_apply, Complex.real_smul]
+    split_ifs <;> simp
+  have hout : B (s • (Pi.single j 1 : Fin n → ℂ))
+      = Pi.single k₁ ((Real.sqrt lam * s : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.sqrt (1 - lam) * s : ℝ) : ℂ) := by
+    rw [map_smul, hcol]
+    funext i
+    simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+      Complex.real_smul, Complex.ofReal_mul]
+    split_ifs <;> ring
+  have h := hiso (s • (Pi.single j 1 : Fin n → ℂ))
+  rw [hout] at h
+  rw [hin] at h
+  rw [hpairf, hsing] at h
+  rw [Complex.norm_real, Complex.norm_real, Complex.norm_real] at h
+  rw [Real.norm_eq_abs, Real.norm_eq_abs, Real.norm_eq_abs] at h
+  rw [abs_of_nonneg hs,
+    abs_of_nonneg (mul_nonneg (Real.sqrt_nonneg _) hs),
+    abs_of_nonneg (mul_nonneg (Real.sqrt_nonneg _) hs)] at h
+  exact h
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -2292,5 +2840,10 @@ theorem lossless_beam_splitter_step_forces_born {n : ℕ}
 #print axioms monotone_quadratic_functional_eq
 #print axioms balanced_beam_splitter_forces_born
 #print axioms lossless_beam_splitter_step_forces_born
+#print axioms sum_sorted_increments_le
+#print axioms dense_splitting_no_jump
+#print axioms dense_splitting_forces_linear
+#print axioms splitter_family_forces_born
+#print axioms lossless_splitter_family_forces_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
