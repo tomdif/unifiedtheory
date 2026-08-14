@@ -1,0 +1,37 @@
+interference table I_d(E_k) = Q_d - P_d (line-walk family):
+  (P_d validates against hardware marginals; Q_d is the
+   class-coherent measure of the same event)
+  k=0 d=1:  P=0.8917  Q=0.8917  I=+0.0000
+  k=0 d=2:  P=0.8917  Q=0.4275  I=-0.4642
+  k=0 d=3:  P=0.8917  Q=0.8800  I=-0.0116
+  k=0 d=4:  P=0.8917  Q=1.7513  I=+0.8596
+  k=0 d=5:  P=0.8917  Q=1.6022  I=+0.7105
+  k=1 d=2:  P=0.6048  Q=0.8806  I=+0.2758
+  k=1 d=3:  P=0.6048  Q=0.4124  I=-0.1924
+  k=1 d=4:  P=0.6048  Q=0.8847  I=+0.2799
+  k=1 d=5:  P=0.6048  Q=1.5470  I=+0.9423
+  k=2 d=3:  P=0.5801  Q=0.6208  I=+0.0407
+  k=2 d=4:  P=0.5801  Q=0.4203  I=-0.1598
+  k=2 d=5:  P=0.5801  Q=0.7741  I=+0.1939
+  k=3 d=4:  P=0.5363  Q=0.3202  I=-0.2162
+  k=3 d=5:  P=0.5363  Q=0.2132  I=-0.3231
+  k=4 d=5:  P=0.5319  Q=0.4849  I=-0.0470
+
+envelope sums S_k = sum_(d=k+1)^(T-1) (|I_d| + |I_(d+1)|):
+  S_0 = 3.3814
+  S_1 = 2.1627
+  S_2 = 0.5542
+  S_3 = 0.5393
+
+combining with ibm_marrakesh v5 deltas (job d9vo68gb1g9c73a8uh3g):
+  record 0: delta95 = +0.0138, S = 3.3814  -> (1-lambda) <= 0.0041  [f=1]
+  record 1: delta95 = +0.0101, S = 2.1627  -> (1-lambda) <= 0.0046  [f=1]
+  record 2: delta95 = +0.0107, S = 0.5542  -> (1-lambda) <= 0.0193  [f=1]
+  record 3: delta95 = +0.0213, S = 0.5393  -> (1-lambda) <= 0.0395  [f=1]
+
+--- VERDICT (registered readings) ---
+  reading (a): headline conditional bound from record 0:
+    (1 - lambda) <= 0.0041   [envelope-saturation fraction f = 1.0]
+    (1 - lambda) <= 0.0049   [envelope-saturation fraction f = 0.83]
+    (1 - lambda) <= 0.0081   [envelope-saturation fraction f = 0.5]
+  assumption: the lambda-dynamics achieves fraction f of its envelope on this family; f is NOT derived here.

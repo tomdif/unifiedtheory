@@ -1,0 +1,28 @@
+[    0.0s] connecting to IBM Quantum Platform
+[    2.7s] backend: ibm_marrakesh, pending: 1
+[    3.4s] 2q-gate counts: {1: 16, 2: 17, 3: 18, 4: 19, 5: 20}
+[    3.4s] submitting batch: 30 pubs x 20000 shots (seeded-shuffled interleaving)
+[    5.0s] job id: d9vo96n2sl0c73bm6qog
+[  183.0s] results received
+[  183.2s] --- pooled record probabilities ---
+[  183.2s]   ancilla 0: d=1: 0.8228  d=2: 0.8201  d=3: 0.8152  d=4: 0.8138  d=5: 0.8110
+[  183.2s]   ancilla 1: d=2: 0.5673  d=3: 0.5631  d=4: 0.5627  d=5: 0.5682
+[  183.2s]   ancilla 2: d=3: 0.5493  d=4: 0.5466  d=5: 0.5495
+[  183.2s]   ancilla 3: d=4: 0.5213  d=5: 0.5210
+[  183.2s]   ancilla 4: d=5: 0.5104
+[  183.2s] --- pooled regression estimators + drift chi^2 ---
+[  183.2s]   record 0: delta = +0.0118 ± 0.0016 (+7.5 sigma)   chi2(5) = 4.8
+[  183.2s]   record 1: delta = -0.0009 ± 0.0020 (-0.5 sigma)   chi2(5) = 2.2
+[  183.2s]   record 2: delta = -0.0003 ± 0.0020 (-0.1 sigma)   chi2(5) = 5.2
+[  183.2s]   record 3: delta = +0.0003 ± 0.0020 (+0.1 sigma)   chi2(5) = 2.5
+[  183.2s] --- VERDICT (registered readings, v6 pooled) ---
+[  183.2s]   reading (ii) REPRODUCIBLE ONE-SIGNED EXCESS at [0]: flagged for cross-backend replication.
+[  183.2s]   bound if systematic: 0.0144
+[  183.2s] --- conditional (1-lambda) conversion (envelope sums from lambda_theory_I.py; assumption f = envelope fraction) ---
+[  183.2s]   record 0: (1-lambda) <= 0.0043  [f=1]
+[  183.2s]   record 1: (1-lambda) <= 0.0011  [f=1]
+[  183.2s]   record 2: (1-lambda) <= 0.0055  [f=1]
+[  183.2s]   record 3: (1-lambda) <= 0.0068  [f=1]
+[  183.2s]   HEADLINE: (1-lambda) <= 0.0011 [f=1]   <= 0.0013 [f=0.83]   <= 0.0022 [f=0.5]
+[  183.2s] raw counts + analysis saved to logs_lambda_hw_v6_ibm_marrakesh_2026-08-14T211453.json
+[  183.2s] DONE
