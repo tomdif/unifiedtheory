@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 33 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 38 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -335,6 +335,47 @@ In Lean terms this is now literally a zero-axiom theorem: every
 hypothesis is a plain mathematical statement about a function and
 a number, and the proof closes over propext / Classical.choice /
 Quot.sound alone.
+
+## THE FULL PACKAGE + THE FIRST BREACH (2026-08-14, third pass)
+
+Two further machine-checked summits (file now 38 theorems):
+
+`quantum_mechanics_from_time_alone` — the gauge seam is CLOSED.
+The zero-structure capstone concluded only p = 2, because
+measure-losslessness at p = 2 permits all of O(2n).  Adding the one
+physically-forced covariance — the global phase is unobservable, so
+each sub-step commutes with it (only the quarter-turn x -> i*x is
+used) — upgrades Mazur-Ulam's real-linearity to complex-linearity
+(`phase_covariant_real_linear_is_complex_linear`), and with p = 2
+the general-n unitarity theorem delivers orthonormal columns.
+Final form: for p >= 1, if every m admits a surjective set-map
+root of F preserving measure, distinguishability, and phase, and
+anything changes, then p = 2 AND F is complex-linear with
+orthonormal columns.  UNITARY QUANTUM MECHANICS, WHOLE, from three
+named physical inputs: time (divisible, lossless), gauge (phase
+unobservable), change.
+
+`balanced_beam_splitter_forces_born` — the Orlicz-Lamperti wall is
+BREACHED at the canonical mixing step.  For an ARBITRARY monotone
+measure Sum f(||.||) (no power family, no continuity, f(0) = 0):
+losslessness across one balanced two-way interference step — a
+50/50 beam splitter, columns (e1 +- e2)/sqrt(2) — forces
+f(x) = x^2 f(1) exactly.  Probing the splitter gives
+f((s+t)/sqrt2) + f(|s-t|/sqrt2) = f(s) + f(t); t = 0 yields the
+halving law f(s/sqrt2) = f(s)/2; together they produce the
+Jordan-von Neumann quadratic functional equation
+f(s+t) + f(s-t) = 2f(s) + 2f(t), whose monotone solutions are
+exactly x^2 f(1) (`monotone_quadratic_functional_eq` — naturals by
+two-step induction, rationals by scaling, irrationals by order
+squeeze; no topology anywhere).  Dynamical wrapper from an actual
+lossless real-linear step: `lossless_beam_splitter_step_forces_born`.
+
+Physics reading: INTERFERENCE AND PROBABILITY-ADDITIVITY COEXIST
+FOR EXACTLY ONE MEASURE CALCULUS.  A world with a monotone measure,
+losslessness, and one balanced interference event is already Born.
+What remains of Orlicz-Lamperti: arbitrary mixing matrices (not
+just the canonical splitter) for general monotone f — the last
+stretch of the wall.
 
 ## The theorem chain, with Lean witnesses per arrow
 

@@ -94,6 +94,21 @@
      couple) freezes measures at p != 2; the group-exponent root +
      Lagrange makes F measure-static.  Remaining structure: the
      measure family itself, p >= 1, finite n.
+  17. `quantum_mechanics_from_time_alone` - THE FULL PACKAGE:
+     divisible lossless PHASE-COVARIANT set-map roots + change give
+     p = 2 AND F complex-linear with orthonormal columns - unitary
+     quantum mechanics, whole.  Gauge (the global phase is
+     unobservable; only the quarter-turn is used) closes the
+     O(2n)-vs-U(n) Wigner gap:
+     `phase_covariant_real_linear_is_complex_linear`.
+  18. `balanced_beam_splitter_forces_born` - FIRST BREACH OF THE
+     ORLICZ-LAMPERTI WALL: a monotone measure Σ f(‖·‖) lossless
+     across ONE balanced two-way interference step is exactly
+     f(x) = x² f(1) - the Born function from the full monotone
+     class, no continuity, no power family.  Via the halving law +
+     the Jordan-von Neumann quadratic functional equation with
+     monotone solutions (`monotone_quadratic_functional_eq`).
+     Dynamical wrapper: `lossless_beam_splitter_step_forces_born`.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -1855,6 +1870,390 @@ theorem born_from_time_alone {p : ℝ} (hp : 1 ≤ p) {n : ℕ}
     Monoid.pow_exponent_eq_one σ, Equiv.Perm.one_apply] at h
   exact hx h
 
+/-! ## 17. Gauge closes the Wigner gap: unitarity, not just p = 2
+
+The zero-structure capstone concluded the Born exponent but not
+unitarity: measure-losslessness alone at p = 2 permits all of
+O(2n).  ONE physically-forced covariance closes the gap: the global
+phase is unobservable (gauge), so each sub-step commutes with it —
+and commuting with the single quarter-turn x ↦ i·x already upgrades
+Mazur–Ulam's real-linearity to complex-linearity
+(`phase_covariant_real_linear_is_complex_linear`: z = re + im·i and
+ℝ-linearity do the rest).  Then p = 2 (capstone) plus the general-n
+unitarity theorem give orthonormal columns.
+
+`quantum_mechanics_from_time_alone` — THE FULL PACKAGE.
+Hypotheses: p ≥ 1; for every m a surjective set-map root of F
+preserving measure, distinguishability, and the global phase; and
+something happens.  Conclusion: p = 2 AND F is a complex-linear map
+with orthonormal columns — unitary quantum mechanics, whole.  The
+axioms name: time (divisible, lossless), gauge (phase is
+unobservable), and change. -/
+
+/-- A real-linear map commuting with the quarter-turn of global
+phase is complex-linear. -/
+theorem phase_covariant_real_linear_is_complex_linear {n : ℕ}
+    (L : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hphase : ∀ x : Fin n → ℂ, L (Complex.I • x) = Complex.I • L x) :
+    ∀ (z : ℂ) (x : Fin n → ℂ), L (z • x) = z • L x := by
+  intro z x
+  have hzdecomp : ∀ y : Fin n → ℂ,
+      z • y = z.re • y + z.im • (Complex.I • y) := by
+    intro y
+    funext i
+    simp only [Pi.add_apply, Pi.smul_apply, Complex.real_smul,
+      smul_eq_mul]
+    have hz : (z.re : ℂ) + z.im * Complex.I = z := Complex.re_add_im z
+    linear_combination (y i) * hz.symm
+  rw [hzdecomp x, map_add, map_smul, map_smul, hphase, ← hzdecomp (L x)]
+
+/-- THE FULL PACKAGE: complex quantum mechanics from time alone. -/
+theorem quantum_mechanics_from_time_alone {p : ℝ} (hp : 1 ≤ p) {n : ℕ}
+    (F : (Fin n → ℂ) → (Fin n → ℂ))
+    (hdiv : ∀ m : ℕ, 0 < m →
+      ∃ G : (Fin n → ℂ) → (Fin n → ℂ),
+        Function.Surjective G ∧
+        (∀ x : Fin n → ℂ, ∑ i, ‖G x i‖ ^ p = ∑ i, ‖x i‖ ^ p) ∧
+        (∀ x y : Fin n → ℂ,
+          ∑ i, ‖G x i - G y i‖ ^ p = ∑ i, ‖x i - y i‖ ^ p) ∧
+        (∀ x : Fin n → ℂ, G (Complex.I • x) = Complex.I • G x) ∧
+        G^[m] = F)
+    (hchange : ∃ (x : Fin n → ℂ) (j : Fin n), ‖F x j‖ ≠ ‖x j‖) :
+    p = 2 ∧
+    ∃ U : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ),
+      (∀ x : Fin n → ℂ, U x = F x) ∧
+      ∀ j₁ j₂ : Fin n,
+        ∑ i, (starRingEnd ℂ) (U (Pi.single j₁ 1) i)
+          * U (Pi.single j₂ 1) i
+        = if j₁ = j₂ then 1 else 0 := by
+  have hp2 : p = 2 :=
+    born_from_time_alone hp F
+      (fun m hm => by
+        obtain ⟨G, h1, h2, h3, _, h5⟩ := hdiv m hm
+        exact ⟨G, h1, h2, h3, h5⟩)
+      hchange
+  refine ⟨hp2, ?_⟩
+  -- F itself is a root at m = 1
+  obtain ⟨G, hsurj, hmeas, hdist, hphase, hpow⟩ := hdiv 1 one_pos
+  have hGF : G = F := by
+    rw [← hpow]
+    exact (Function.iterate_one G).symm
+  subst hGF
+  obtain ⟨hadd, hsmulR⟩ :=
+    lossless_bijection_is_real_linear hp G hsurj hmeas hdist
+  let L : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ) :=
+    { toFun := G
+      map_add' := hadd
+      map_smul' := fun c x => hsmulR c x }
+  have hphaseL : ∀ x : Fin n → ℂ, L (Complex.I • x) = Complex.I • L x :=
+    hphase
+  have hsmulC := phase_covariant_real_linear_is_complex_linear L hphaseL
+  let U : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ) :=
+    { toFun := G
+      map_add' := hadd
+      map_smul' := fun z x => hsmulC z x }
+  -- the p = 2 measure in mul-self form
+  have hsq : ∀ z : ℂ, ‖z‖ ^ (2:ℝ) = ‖z‖ * ‖z‖ := by
+    intro z
+    rw [show (2:ℝ) = ((2:ℕ):ℝ) by norm_num, Real.rpow_natCast]
+    ring
+  have hms : ∀ x : Fin n → ℂ,
+      ∑ i, ‖U x i‖ * ‖U x i‖ = ∑ i, ‖x i‖ * ‖x i‖ := by
+    intro x
+    have h := hmeas x
+    rw [hp2] at h
+    calc ∑ i, ‖U x i‖ * ‖U x i‖
+        = ∑ i, ‖G x i‖ ^ (2:ℝ) :=
+          Finset.sum_congr rfl fun i _ => (hsq _).symm
+      _ = ∑ i, ‖x i‖ ^ (2:ℝ) := h
+      _ = ∑ i, ‖x i‖ * ‖x i‖ :=
+          Finset.sum_congr rfl fun i _ => hsq _
+  refine ⟨U, fun x => rfl, ?_⟩
+  intro j₁ j₂
+  by_cases hj : j₁ = j₂
+  · subst hj
+    rw [if_pos rfl]
+    have hcol : ∑ i, ‖U (Pi.single j₁ 1) i‖ * ‖U (Pi.single j₁ 1) i‖
+        = 1 := (hms _).trans (single_probe_sum_sq j₁ 1 (by simp))
+    calc ∑ i, (starRingEnd ℂ) (U (Pi.single j₁ 1) i)
+          * U (Pi.single j₁ 1) i
+        = ∑ i, ((‖U (Pi.single j₁ 1) i‖ * ‖U (Pi.single j₁ 1) i‖ : ℝ)
+            : ℂ) := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [mul_comm ((starRingEnd ℂ) _), Complex.mul_conj]
+          norm_cast
+          rw [Complex.normSq_eq_norm_sq]
+          ring
+      _ = ((∑ i, ‖U (Pi.single j₁ 1) i‖ * ‖U (Pi.single j₁ 1) i‖ : ℝ)
+            : ℂ) := by
+          rw [Complex.ofReal_sum]
+      _ = 1 := by rw [hcol]; norm_num
+  · rw [if_neg hj]
+    exact l2_lossless_columns_orthogonal U hms j₁ j₂ hj
+
+/-! ## 18. A beam splitter forces the Born function: first breach of
+the Orlicz–Lamperti wall
+
+Section 15 left one seam in dissolving the measure family: deriving
+Pythagorean additivity from the EXISTENCE of a mixing lossless step,
+for an arbitrary monotone measure Σ f(‖·‖).  This section breaches
+it at the physically canonical mixing step: if the measure is
+lossless across ONE balanced two-way interference step (a 50/50
+beam splitter — the columns (e₁±e₂)/√2), then f is EXACTLY the Born
+function x² f(1).  Not the exponent within a power family — the
+function itself, from the full class of monotone measures, with no
+continuity assumed.
+
+Mechanism: probing the splitter with (s, t) gives
+f((s+t)/√2) + f(|s−t|/√2) = f(s) + f(t); the t = 0 probe gives the
+halving law f(s/√2) = f(s)/2; together they yield the
+Jordan–von Neumann quadratic functional equation
+f(s+t) + f(s−t) = 2f(s) + 2f(t) on the cone, whose monotone
+solutions are exactly x² f(1)
+(`monotone_quadratic_functional_eq`: naturals by two-step
+induction, rationals by scaling, irrationals by order squeeze —
+Hamel pathologies again die by monotonicity, not topology).
+
+Physics reading: interference and probability-additivity coexist
+for exactly one measure calculus.  Any world with a monotone
+measure, losslessness, and one balanced interference event is
+already Born.  Remaining Orlicz–Lamperti generality (arbitrary
+mixing matrices rather than the canonical one) stays open. -/
+
+/-- Monotone solutions of the Jordan–von Neumann quadratic
+functional equation on the cone are exactly x² f(1).  No continuity
+assumed. -/
+theorem monotone_quadratic_functional_eq (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (hquad : ∀ s t : ℝ, 0 ≤ t → t ≤ s →
+      f (s + t) + f (s - t) = 2 * f s + 2 * f t) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  have hnat : ∀ (k : ℕ) (x : ℝ), 0 ≤ x → f (k * x) = (k:ℝ)^2 * f x := by
+    intro k
+    induction k using Nat.strong_induction_on with
+    | _ k ih =>
+      match k with
+      | 0 => intro x _; simpa using hf0
+      | 1 => intro x _; norm_num
+      | (m+2) =>
+        intro x hx
+        have h1 := ih (m+1) (by omega) x hx
+        have h0 := ih m (by omega) x hx
+        have hle : x ≤ ((m+1 : ℕ) : ℝ) * x := by
+          have : (1:ℝ) ≤ ((m+1 : ℕ) : ℝ) := by exact_mod_cast Nat.one_le_iff_ne_zero.mpr (by omega)
+          nlinarith
+        have hq := hquad (((m+1 : ℕ) : ℝ) * x) x hx hle
+        have e1 : ((m+1 : ℕ) : ℝ) * x + x = ((m+2 : ℕ) : ℝ) * x := by
+          push_cast; ring
+        have e2 : ((m+1 : ℕ) : ℝ) * x - x = (m : ℝ) * x := by
+          push_cast; ring
+        rw [e1, e2, h1] at hq
+        have h0' : f ((m : ℕ) * x) = ((m : ℕ) : ℝ)^2 * f x := h0
+        push_cast at h0' hq ⊢
+        nlinarith [hq, h0']
+  have hratsq : ∀ (a b : ℕ), 0 < b → f ((a : ℝ) / b) = ((a:ℝ)/b)^2 * f 1 := by
+    intro a b hb
+    have hbR : (0:ℝ) < b := by exact_mod_cast hb
+    have hab : (0:ℝ) ≤ (a:ℝ) / b := div_nonneg (Nat.cast_nonneg a) (le_of_lt hbR)
+    have h1 : f ((b:ℝ) * ((a:ℝ)/b)) = ((b:ℝ))^2 * f ((a:ℝ)/b) := hnat b _ hab
+    have h2 : (b:ℝ) * ((a:ℝ)/b) = a := by field_simp
+    have h3 : f (a:ℝ) = ((a:ℝ))^2 * f 1 := by
+      have := hnat a 1 zero_le_one
+      simpa using this
+    rw [h2, h3] at h1
+    have hb2 : ((b:ℝ))^2 ≠ 0 := by positivity
+    field_simp at h1 ⊢
+    linarith
+  have hrat : ∀ q : ℚ, 0 ≤ q → f (q : ℝ) = ((q:ℝ))^2 * f 1 := by
+    intro q hq
+    have hnum : 0 ≤ q.num := Rat.num_nonneg.mpr hq
+    have hcast : ((q.num.toNat : ℕ) : ℝ) = (q.num : ℝ) := by
+      exact_mod_cast Int.toNat_of_nonneg hnum
+    have hqR : (q : ℝ) = (q.num.toNat : ℝ) / (q.den : ℝ) := by
+      rw [hcast, Rat.cast_def]
+    rw [hqR]
+    exact hratsq q.num.toNat q.den q.pos
+  have hf1 : 0 ≤ f 1 := by
+    have := hmono 0 1 le_rfl zero_le_one
+    linarith
+  intro x hx
+  rcases eq_or_lt_of_le hf1 with hf1e | hf1pos
+  · obtain ⟨q, hq⟩ := exists_rat_gt x
+    have hq0 : (0:ℚ) ≤ q := by exact_mod_cast le_of_lt (lt_of_le_of_lt hx hq)
+    have hup : f x ≤ f q := hmono _ _ hx (le_of_lt hq)
+    have hlo : f 0 ≤ f x := hmono _ _ le_rfl hx
+    rw [hrat q hq0, ← hf1e] at hup
+    rw [hf0] at hlo
+    have : f x = 0 := le_antisymm (by simpa using hup) hlo
+    rw [this, ← hf1e]
+    ring
+  · apply le_antisymm
+    · apply le_of_forall_pos_le_add
+      intro ε hε
+      have hden : 0 < (2 * x + 1) * f 1 := by nlinarith
+      set δ : ℝ := min 1 (ε / ((2 * x + 1) * f 1)) with hδdef
+      have hδpos : 0 < δ := lt_min one_pos (div_pos hε hden)
+      obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn (lt_add_of_pos_right x hδpos)
+      have hq0 : (0:ℚ) ≤ q := by
+        exact_mod_cast le_of_lt (lt_of_le_of_lt hx hq1)
+      have hδ1 : δ ≤ 1 := min_le_left _ _
+      have hδ2 : δ ≤ ε / ((2 * x + 1) * f 1) := min_le_right _ _
+      have hkey : ((q:ℝ))^2 * f 1 ≤ x^2 * f 1 + ε := by
+        have hqx : (q:ℝ) < x + δ := hq2
+        have hq2' : ((q:ℝ))^2 < (x + δ)^2 := by
+          have : (0:ℝ) ≤ (q:ℝ) := by exact_mod_cast hq0
+          nlinarith
+        have hexp : (x + δ)^2 ≤ x^2 + δ * (2*x + 1) := by nlinarith
+        have hδε : δ * ((2*x+1) * f 1) ≤ ε := by
+          calc δ * ((2*x+1) * f 1)
+              ≤ (ε / ((2*x+1) * f 1)) * ((2*x+1) * f 1) := by
+                exact mul_le_mul_of_nonneg_right hδ2 (le_of_lt hden)
+            _ = ε := by field_simp
+        nlinarith
+      calc f x ≤ f q := hmono _ _ hx (le_of_lt hq1)
+        _ = ((q:ℝ))^2 * f 1 := hrat q hq0
+        _ ≤ x^2 * f 1 + ε := hkey
+    · apply le_of_forall_pos_le_add
+      intro ε hε
+      have hden : 0 < (2 * x + 1) * f 1 := by nlinarith
+      set δ : ℝ := min 1 (ε / ((2 * x + 1) * f 1)) with hδdef
+      have hδpos : 0 < δ := lt_min one_pos (div_pos hε hden)
+      have hδ2 : δ ≤ ε / ((2 * x + 1) * f 1) := min_le_right _ _
+      have hδε : δ * ((2*x+1) * f 1) ≤ ε := by
+        calc δ * ((2*x+1) * f 1)
+            ≤ (ε / ((2*x+1) * f 1)) * ((2*x+1) * f 1) := by
+              exact mul_le_mul_of_nonneg_right hδ2 (le_of_lt hden)
+          _ = ε := by field_simp
+      by_cases hxs : x ≤ δ
+      · have h1 : x^2 * f 1 ≤ ε := by
+          have hδ1 : δ ≤ 1 := min_le_left _ _
+          nlinarith
+        have h2 : 0 ≤ f x := by
+          have := hmono 0 x le_rfl hx
+          linarith
+        linarith
+      · push_neg at hxs
+        obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn (sub_lt_self x hδpos)
+        have hq0 : (0:ℚ) ≤ q := by
+          have : (0:ℝ) < x - δ := by linarith
+          exact_mod_cast le_of_lt (lt_trans this hq1)
+        have hkey : x^2 * f 1 ≤ ((q:ℝ))^2 * f 1 + ε := by
+          have hqx : x - δ < (q:ℝ) := hq1
+          have hq2' : (x - δ)^2 ≤ ((q:ℝ))^2 := by
+            have h0q : (0:ℝ) ≤ (q:ℝ) := by exact_mod_cast hq0
+            have hxδ : (0:ℝ) ≤ x - δ := by linarith
+            nlinarith
+          have hexp : x^2 - δ * (2*x+1) ≤ (x - δ)^2 := by nlinarith
+          nlinarith
+        calc x^2 * f 1 ≤ ((q:ℝ))^2 * f 1 + ε := hkey
+          _ = f q + ε := by rw [hrat q hq0]
+          _ ≤ f x + ε := by
+              have := hmono q x (by exact_mod_cast hq0) (le_of_lt hq2)
+              linarith
+
+/-- A BALANCED BEAM SPLITTER FORCES THE BORN FUNCTION: if a monotone
+measure is lossless across one balanced two-way interference step,
+it is exactly f(x) = x² f(1).  No continuity, no power-family
+assumption. -/
+theorem balanced_beam_splitter_forces_born (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (hsplit : ∀ s t : ℝ, 0 ≤ s → 0 ≤ t →
+      f ((s + t) / Real.sqrt 2) + f (|s - t| / Real.sqrt 2)
+        = f s + f t) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  have hs2 : (0:ℝ) < Real.sqrt 2 := Real.sqrt_pos.mpr (by norm_num)
+  have hhalf : ∀ s : ℝ, 0 ≤ s → f (s / Real.sqrt 2) = f s / 2 := by
+    intro s hs
+    have h := hsplit s 0 hs le_rfl
+    rw [add_zero, sub_zero, abs_of_nonneg hs, hf0, add_zero] at h
+    linarith
+  apply monotone_quadratic_functional_eq f hf0 hmono
+  intro s t ht hts
+  have hs : 0 ≤ s := le_trans ht hts
+  have h := hsplit s t hs ht
+  rw [abs_of_nonneg (by linarith : (0:ℝ) ≤ s - t)] at h
+  rw [hhalf (s + t) (by linarith), hhalf (s - t) (by linarith)] at h
+  linarith
+
+/-- The dynamical wrapper: a real-linear step, lossless for the
+measure Σ f(‖·‖), one of whose column pairs is a balanced beam
+splitter, forces f(x) = x² f(1). -/
+theorem lossless_beam_splitter_step_forces_born {n : ℕ}
+    (f : ℝ → ℝ) (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (B : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, f ‖B x i‖ = ∑ i, f ‖x i‖)
+    {j₁ j₂ k₁ k₂ : Fin n} (hj : j₁ ≠ j₂) (hk : k₁ ≠ k₂)
+    (hcol1 : B (Pi.single j₁ 1)
+      = (Real.sqrt 2)⁻¹ • (Pi.single k₁ 1 + Pi.single k₂ 1))
+    (hcol2 : B (Pi.single j₂ 1)
+      = (Real.sqrt 2)⁻¹ • (Pi.single k₁ 1 - Pi.single k₂ 1)) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  have hs2 : (0:ℝ) < Real.sqrt 2 := Real.sqrt_pos.mpr (by norm_num)
+  -- measure of a two-coordinate state
+  have hpairf : ∀ {a b : Fin n}, a ≠ b → ∀ c d : ℂ,
+      ∑ i, f ‖(Pi.single a c + Pi.single b d : Fin n → ℂ) i‖
+        = f ‖c‖ + f ‖d‖ := by
+    intro a b hab c d
+    have hsplit' : ∀ i : Fin n,
+        f ‖(Pi.single a c + Pi.single b d : Fin n → ℂ) i‖
+        = f ‖(Pi.single a c : Fin n → ℂ) i‖
+          + f ‖(Pi.single b d : Fin n → ℂ) i‖ := by
+      intro i
+      by_cases h1 : i = a
+      · subst h1
+        simp [Pi.single_eq_same, Pi.single_eq_of_ne hab, hf0]
+      · by_cases h2 : i = b
+        · subst h2
+          simp [Pi.single_eq_same, Pi.single_eq_of_ne h1, hf0]
+        · simp [Pi.single_eq_of_ne h1, Pi.single_eq_of_ne h2, hf0]
+    rw [Finset.sum_congr rfl fun i _ => hsplit' i, Finset.sum_add_distrib]
+    have hsing : ∀ (e : Fin n) (z : ℂ),
+        ∑ i, f ‖(Pi.single e z : Fin n → ℂ) i‖ = f ‖z‖ := by
+      intro e z
+      rw [Finset.sum_eq_single e]
+      · rw [Pi.single_eq_same]
+      · intro i _ hne
+        rw [Pi.single_eq_of_ne hne, norm_zero, hf0]
+      · intro hmem
+        exact absurd (Finset.mem_univ e) hmem
+    rw [hsing a c, hsing b d]
+  apply balanced_beam_splitter_forces_born f hf0 hmono
+  intro s t hs ht
+  have hin : (s • (Pi.single j₁ 1 : Fin n → ℂ)
+      + t • (Pi.single j₂ 1 : Fin n → ℂ))
+      = Pi.single j₁ (s : ℂ) + Pi.single j₂ (t : ℂ) := by
+    funext i
+    simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+      Complex.real_smul]
+    split_ifs <;> ring
+  have hout : B (s • (Pi.single j₁ 1 : Fin n → ℂ)
+      + t • (Pi.single j₂ 1 : Fin n → ℂ))
+      = Pi.single k₁ (((s + t) / Real.sqrt 2 : ℝ) : ℂ)
+        + Pi.single k₂ (((s - t) / Real.sqrt 2 : ℝ) : ℂ) := by
+    rw [map_add, map_smul, map_smul, hcol1, hcol2]
+    funext i
+    simp only [Pi.add_apply, Pi.sub_apply, Pi.smul_apply,
+      Pi.single_apply, Complex.real_smul, Complex.ofReal_div,
+      Complex.ofReal_add, Complex.ofReal_sub, Complex.ofReal_inv]
+    have h2 : ((Real.sqrt 2 : ℝ) : ℂ) ≠ 0 := by
+      exact_mod_cast ne_of_gt hs2
+    split_ifs <;> field_simp <;> ring
+  have h := hiso (s • (Pi.single j₁ 1 : Fin n → ℂ)
+    + t • (Pi.single j₂ 1 : Fin n → ℂ))
+  rw [hout, hin] at h
+  rw [hpairf hk _ _, hpairf hj _ _] at h
+  rw [Complex.norm_real, Complex.norm_real, Complex.norm_real,
+    Complex.norm_real] at h
+  rw [Real.norm_eq_abs, Real.norm_eq_abs, Real.norm_eq_abs,
+    Real.norm_eq_abs] at h
+  rw [abs_of_nonneg hs, abs_of_nonneg ht,
+    abs_of_nonneg (by positivity : (0:ℝ) ≤ (s + t) / Real.sqrt 2),
+    abs_div, abs_of_pos hs2] at h
+  exact h
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -1888,5 +2287,10 @@ theorem born_from_time_alone {p : ℝ} (hp : 1 ≤ p) {n : ℕ}
 #print axioms pair_probe_sum_unit
 #print axioms real_lossless_frozen_measure
 #print axioms born_from_time_alone
+#print axioms phase_covariant_real_linear_is_complex_linear
+#print axioms quantum_mechanics_from_time_alone
+#print axioms monotone_quadratic_functional_eq
+#print axioms balanced_beam_splitter_forces_born
+#print axioms lossless_beam_splitter_step_forces_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
