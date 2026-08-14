@@ -111,9 +111,25 @@ supports globally (the Lamperti structure).
 
 Lean (KFCausalUniquenessLeg.lean, axiom-clean): real-binary
 determinism; the p = 1 Lamperti instance (discrete witness vectors,
-full proof); quaternion path-order witness.  The general-p analytic
-core is the rigorous calculus proof above; its Lean formalization
-(rpow Taylor expansions) is registered debt, not claimed.
+full proof); quaternion path-order witness; AND the general p > 2
+Lamperti obstruction (`lamperti_two_by_two_gt_two`) - for EVERY real
+p > 2 simultaneously, machine-checked.  The p > 2 case needed no
+calculus: with q = p/2 > 1 and squared-norm variables, the
+parallelogram law gives A_i + B_i = 2(P_i + Q_i) per coordinate; the
+four probes plus two-term Minkowski (Real.Lp_add_le) bound
+S = sum (A_i+B_i)^q <= 2^q * 2 from above, while STRICT
+superadditivity of x^q (proved from x^q < x on (0,1), i.e.
+Real.rpow_lt_rpow_of_exponent_gt) forces S > 2^q * 2 from below
+whenever both mixing entries are nonzero.  Contradiction, no Taylor
+expansion.
+
+Remaining Lean debt: exactly the band 1 < p < 2, where the same four
+probes are provably SLACK (both global inequalities point the same
+way), so any formalization must use either the full isometry
+hypothesis (t-expansion, as in the analytic proof above) or duality
+p -> p/(p-1) > 2 with the adjoint operator.  This band remains
+covered by the rigorous analytic proof above; the Lean gap is
+registered, not claimed.
 
 ## Scope
 
