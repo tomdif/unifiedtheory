@@ -50,6 +50,18 @@
      a fixed permutation independent of phases - probabilities can
      be relabeled but never continuously transported.  Continuous
      evolution of the observable world is uniquely quantum.
+  11. `change_and_divisibility_force_born` - THE DIVISIBLE-TIME
+     THEOREM: a lossless dynamics whose step has a lossless m-th
+     root for every m (time has no smallest step), and under which
+     anything at all changes, is forced onto p = 2 - hence unitary
+     quantum mechanics.  Eliminates the nonclassicality axiom A5:
+     no axiom mentions superposition.  Mechanism: off p = 2 every
+     root is a weighted permutation (structure theorem), measure
+     actions iterate as powers of its permutation
+     (`frozen_measure_pow`), and at m = |Perm(Fin n)| Lagrange
+     gives sigma^m = 1 (`root_at_symmetric_order_forces_static`):
+     the dynamics is measure-static, nothing ever happens
+     (`divisible_time_forces_static`).
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -61,6 +73,8 @@ import Mathlib.Tactic.NormNum
 import Mathlib.Analysis.MeanInequalities
 import Mathlib.Analysis.MeanInequalitiesPow
 import Mathlib.Analysis.InnerProductSpace.Basic
+import Mathlib.GroupTheory.OrderOfElement
+import Mathlib.Data.Fintype.Perm
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -1078,6 +1092,101 @@ theorem frozen_measure_ne_two {p : ℝ} (hp0 : 0 < p) (hp2 : p ≠ 2)
   rw [hTx, hcol, Pi.single_eq_same, norm_mul, hc1, mul_one]
 
 
+
+
+/-! ## 11. THE DIVISIBLE-TIME THEOREM: quantum mechanics from time alone
+
+The classification still uses the nonclassicality axiom A5 ("some
+step mixes") - a quantumness assumption invoked to derive quantum
+mechanics.  This section eliminates it.
+
+Suppose the step T of a lossless dynamics can be SUBDIVIDED: for
+every m there is a lossless S with S^m = T (time has no smallest
+step).  If p ≠ 2, every such S is a weighted permutation (structure
+theorem), its measure action is its permutation part σ (frozen-world
+theorem), and permutation parts compose.  Taking m = |S_n|! - the
+order of the full symmetric group - Lagrange's theorem gives
+σ^m = 1 for EVERY σ.  So T's measure action is the identity:
+pointwise, on every state, nothing ever happens.
+
+Contrapositive: if time is infinitely divisible and anything at all
+changes, then p = 2 - hence unitarity, hence complex quantum
+mechanics.  The axioms are now: (1) losslessness, (2) time has no
+smallest step, (3) something happens.  All three are statements
+about TIME, none about superposition. -/
+
+/-- Iterating the frozen-world theorem: the k-th power of a lossless
+step moves measures by the k-th power of its permutation. -/
+theorem frozen_measure_pow {p : ℝ} (hp0 : 0 < p) (hp2 : p ≠ 2)
+    {n : ℕ} (S : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hS : ∀ x : Fin n → ℂ, ∑ i, ‖S x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∃ σ : Equiv.Perm (Fin n), ∀ (k : ℕ) (x : Fin n → ℂ) (j : Fin n),
+      ‖(S ^ k) x ((σ ^ k) j)‖ = ‖x j‖ := by
+  obtain ⟨σ, hσ⟩ := frozen_measure_ne_two hp0 hp2 S hS
+  refine ⟨σ, ?_⟩
+  intro k
+  induction k with
+  | zero =>
+    intro x j
+    rw [pow_zero, pow_zero, Module.End.one_apply, Equiv.Perm.one_apply]
+  | succ k ih =>
+    intro x j
+    rw [pow_succ, pow_succ, Module.End.mul_apply, Equiv.Perm.mul_apply,
+      ih (S x) (σ j)]
+    exact hσ x j
+
+/-- A lossless step (p ≠ 2) raised to the order of the symmetric
+group is measure-static: Lagrange kills the permutation part. -/
+theorem root_at_symmetric_order_forces_static {p : ℝ} (hp0 : 0 < p)
+    (hp2 : p ≠ 2) {n : ℕ}
+    (S : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hS : ∀ x : Fin n → ℂ, ∑ i, ‖S x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∀ (x : Fin n → ℂ) (j : Fin n),
+      ‖(S ^ Fintype.card (Equiv.Perm (Fin n))) x j‖ = ‖x j‖ := by
+  obtain ⟨σ, hσ⟩ := frozen_measure_pow hp0 hp2 S hS
+  intro x j
+  have h := hσ (Fintype.card (Equiv.Perm (Fin n))) x j
+  rw [show σ ^ Fintype.card (Equiv.Perm (Fin n)) = 1 from
+    pow_card_eq_one, Equiv.Perm.one_apply] at h
+  exact h
+
+/-- THE DIVISIBLE-TIME THEOREM (static form): if the step T of a
+lossless p ≠ 2 dynamics admits a lossless m-th root for every m
+(time has no smallest step), then T is measure-static - pointwise,
+on every state, ‖T x j‖ = ‖x j‖.  In a p ≠ 2 world with divisible
+time, nothing ever happens. -/
+theorem divisible_time_forces_static {p : ℝ} (hp0 : 0 < p)
+    (hp2 : p ≠ 2) {n : ℕ}
+    (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hdiv : ∀ m : ℕ, 0 < m →
+      ∃ S : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ),
+        (∀ x : Fin n → ℂ, ∑ i, ‖S x i‖ ^ p = ∑ i, ‖x i‖ ^ p)
+        ∧ S ^ m = T) :
+    ∀ (x : Fin n → ℂ) (j : Fin n), ‖T x j‖ = ‖x j‖ := by
+  obtain ⟨S, hS, hpow⟩ := hdiv (Fintype.card (Equiv.Perm (Fin n)))
+    (Fintype.card_pos_iff.mpr ⟨1⟩)
+  intro x j
+  rw [← hpow]
+  exact root_at_symmetric_order_forces_static hp0 hp2 S hS x j
+
+/-- THE DIVISIBLE-TIME THEOREM (headline form): a lossless dynamics
+whose steps subdivide indefinitely, and under which ANYTHING at all
+changes, is forced onto the Born exponent p = 2 - hence, by the
+dichotomy, unitary quantum mechanics.  Losslessness + divisible time
++ something happens ⟹ quantum.  No axiom mentions superposition. -/
+theorem change_and_divisibility_force_born {p : ℝ} (hp0 : 0 < p)
+    {n : ℕ} (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hdiv : ∀ m : ℕ, 0 < m →
+      ∃ S : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ),
+        (∀ x : Fin n → ℂ, ∑ i, ‖S x i‖ ^ p = ∑ i, ‖x i‖ ^ p)
+        ∧ S ^ m = T)
+    (hchange : ∃ (x : Fin n → ℂ) (j : Fin n), ‖T x j‖ ≠ ‖x j‖) :
+    p = 2 := by
+  by_contra hp2
+  obtain ⟨x, j, hx⟩ := hchange
+  exact hx (divisible_time_forces_static hp0 hp2 T hdiv x j)
+
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -1095,5 +1204,9 @@ theorem frozen_measure_ne_two {p : ℝ} (hp0 : 0 < p) (hp2 : p ≠ 2)
 #print axioms l2_lossless_columns_orthogonal
 #print axioms lossless_dichotomy
 #print axioms frozen_measure_ne_two
+#print axioms frozen_measure_pow
+#print axioms root_at_symmetric_order_forces_static
+#print axioms divisible_time_forces_static
+#print axioms change_and_divisibility_force_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

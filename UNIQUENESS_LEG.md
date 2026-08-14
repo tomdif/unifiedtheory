@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 13 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 21 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -191,10 +191,49 @@ only in the Born world.  "Why is time evolution unitary?"  Because
 unitary evolution is the only continuous lossless motion that
 exists at all.
 
+## The divisible-time theorem (2026-08-14): A5 eliminated
+
+The classification above still consumed the nonclassicality axiom
+A5 ("some step mixes") - a quantumness assumption invoked to derive
+quantum mechanics.  It is now REPLACED by a statement about time,
+machine-checked in the same file:
+
+- `frozen_measure_pow`: iterating the frozen world - the k-th power
+  of a lossless p != 2 step moves measures by the k-th power of its
+  permutation: ||(S^k x)(sigma^k j)|| = ||x j||.
+- `root_at_symmetric_order_forces_static`: a lossless p != 2 step
+  raised to the power m = |Perm(Fin n)| = n! is measure-static -
+  Lagrange's theorem (pow_card_eq_one) kills the permutation part.
+- `divisible_time_forces_static` (static form): if the step T of a
+  lossless p != 2 dynamics has a lossless m-th root for EVERY m
+  (time has no smallest step), then ||T x j|| = ||x j|| for every
+  state and coordinate.  In a p != 2 world with divisible time,
+  nothing ever happens.  (Proof: take the root at m = n! and apply
+  the previous theorem.  No topology - the n! trick replaces the
+  continuity argument entirely.)
+- `change_and_divisibility_force_born` (headline form): LOSSLESSNESS
+  + TIME HAS NO SMALLEST STEP + SOMETHING HAPPENS  =>  p = 2, hence
+  (by the dichotomy) unitary quantum mechanics.  All three axioms
+  are statements about time; none mentions superposition,
+  interference, or any quantum concept.
+
+Honest scope: "divisible time" is formalized as exact m-th roots in
+the lossless semigroup for every m >= 1 - the discrete surrogate for
+continuity (a continuous lossless one-parameter flow through T
+supplies such roots by S = flow(t/m)).  The hypothesis asks the
+roots to be lossless for the SAME exponent p, which is the physical
+meaning of sub-steps of a lossless evolution.  Note the theorem
+needs only ONE root order, m = n!; full divisibility is assumed
+because that is the physical axiom, and the proof then chooses its
+weapon.
+
 ## The theorem chain, with Lean witnesses per arrow
 
   A3 + A5 (lossless + some step mixes)
     => p = 2                    [mixing_lossless_forces_p_eq_two]
+  or, WITHOUT A5:
+  A3 + divisible time + something happens
+    => p = 2                    [change_and_divisibility_force_born]
     => step is unitary          [p_two_probes_force_unitary]
     => amplitudes not real      [real_binary_bi_normalized_deterministic]
     => phases commute (not H)   [phase_order_matters_in_quaternions]
