@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 43 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 48 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -417,6 +417,43 @@ forced to Born by (i) one exact 50/50 splitter [section 18], or
 the single-arbitrary-matrix case (one fixed mixing step with no
 special structure and only its own powers available) — the last
 stretch of the wall.
+
+## THE DENSITY GLUE FORMALIZED (2026-08-14, fifth pass):
+## one generic rotation forces Born, citation-free
+
+The fourth pass cited one classical fact (orbit density of
+irrational rotations).  That citation is now a theorem (file at 48):
+
+- `cos_sq_orbit_dense`: for theta/pi irrational, the squared
+  cosines {cos^2(k*theta) : k in N} are dense in (0,1).  Proof:
+  AddSubgroup.dense_or_cyclic applied to Z*theta + Z*pi — the
+  cyclic branch would make theta/pi = m/n rational — plus
+  continuity of cos^2 and the pi-periodicity
+  cos^2(x + n*pi) = cos^2(x).
+- `rotation_block_iterate`: iterating a lossless step whose
+  (k1,k2)-block is rotation by theta yields rotation by k*theta on
+  the same block (angle addition, induction; the `module` tactic
+  closes the vector identity).
+- `generic_rotation_forces_born` — END-TO-END, NO CITATIONS
+  ANYWHERE IN THE PROOF TREE: a monotone measure Sum f(||.||)
+  (f monotone, f(0) = 0, NOTHING else — no continuity, no power
+  family, no convexity) lossless under a single real-linear step
+  containing one rotation block of irrational angle satisfies
+  f(x) = x^2 f(1).
+
+Physics: ALMOST EVERY INTERFERENCE DEVICE — all but a measure-zero
+set of angles — FORCES THE BORN RULE BY ITSELF, through its own
+iterates.  A world with any monotone notion of probability, one
+lossless generic beam splitter, and time to iterate it, has no
+choice about how to weigh alternatives.
+
+What now remains of Orlicz-Lamperti, exactly: (a) rational-angle
+rotations other than the 50/50 splitter of the third pass (their
+iterates close into a finite family, so density fails; only the
+two-parameter probe equations remain), and (b) a single mixing step
+of arbitrary non-rotation form.  Both are functional-equation
+problems with only finitely many splitting relations plus the full
+two-parameter family — open, and precisely delimited.
 
 ## The theorem chain, with Lean witnesses per arrow
 

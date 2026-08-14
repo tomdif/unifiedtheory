@@ -119,6 +119,15 @@
      Order kills the jump; dense ratios then give exact Pythagorean
      additivity; monotone Cauchy finishes.  Generic interference,
      not fine-tuned interference, is enough for Born.
+  20. `generic_rotation_forces_born` - THE DENSITY GLUE FORMALIZED:
+     for θ/π irrational, {cos²(kθ)} is dense in (0,1)
+     (`cos_sq_orbit_dense`, via AddSubgroup.dense_or_cyclic on
+     ℤθ + ℤπ), and iterating one lossless rotation block realizes
+     that dense splitter family (`rotation_block_iterate`).
+     End-to-end, citation-free: ONE lossless irrational-angle
+     rotation step forces f(x) = x² f(1) for every monotone
+     measure.  Almost every interference device forces Born by
+     itself.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -135,6 +144,10 @@ import Mathlib.Data.Fintype.Perm
 import Mathlib.GroupTheory.Exponent
 import Mathlib.Analysis.Normed.Affine.MazurUlam
 import Mathlib.Analysis.Normed.Lp.PiLp
+import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.Topology.Algebra.Order.Archimedean
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -2802,6 +2815,273 @@ theorem lossless_splitter_family_forces_born (f : ℝ → ℝ)
     abs_of_nonneg (mul_nonneg (Real.sqrt_nonneg _) hs)] at h
   exact h
 
+/-! ## 20. ONE GENERIC ROTATION FORCES BORN: the density glue is
+formalized — no cited facts remain in this chain
+
+Pass 4 (§19) proved that a dense family of splitter transmittances
+forces the Born function, and cited as classical the fact that ONE
+irrational-angle rotation supplies such a family.  That citation is
+now a theorem.  `cos_sq_orbit_dense`: for θ/π irrational, the
+squared cosines {cos²(kθ) : k ∈ ℕ} are dense in (0,1) — via
+`AddSubgroup.dense_or_cyclic` applied to ℤθ + ℤπ (cyclic would make
+θ/π rational), continuity of cos², and the π-periodicity identity
+cos²(x + nπ) = cos²(x).  `rotation_block_iterate`: iterating a
+lossless step whose (k₁,k₂)-block is rotation by θ gives rotation
+by kθ on the same block (angle-addition, by induction; the `module`
+tactic closes the vector identity).
+
+`generic_rotation_forces_born` — the assembled end-to-end theorem,
+with NO citation anywhere in its proof tree: if a monotone measure
+Σ f(‖·‖) (f monotone, f(0) = 0 — nothing else) is lossless under a
+single real-linear step containing one rotation block of angle θ
+with θ/π irrational, then f(x) = x² f(1).
+
+Physics: ALMOST EVERY interference device — all but a measure-zero
+set of angles — forces the Born rule by itself, through its own
+iterates.  The rational-angle exceptions are exactly the devices
+whose iterates close into a finite family.  Remaining wall (the
+honest residue of Orlicz–Lamperti): a single mixing step of
+arbitrary non-rotation form, and the rational-angle rotations other
+than the 50/50 case of §18 — for these only the two-parameter probe
+equations are available, and their functional-equation analysis is
+open. -/
+
+/-- The f-measure of a single-coordinate state. -/
+theorem measure_single_sum (f : ℝ → ℝ) (hf0 : f 0 = 0) {n : ℕ}
+    (e : Fin n) (z : ℂ) :
+    ∑ i, f ‖(Pi.single e z : Fin n → ℂ) i‖ = f ‖z‖ := by
+  rw [Finset.sum_eq_single e]
+  · rw [Pi.single_eq_same]
+  · intro i _ hne
+    rw [Pi.single_eq_of_ne hne, norm_zero, hf0]
+  · intro hmem
+    exact absurd (Finset.mem_univ e) hmem
+
+/-- The f-measure of a two-coordinate state. -/
+theorem measure_pair_sum (f : ℝ → ℝ) (hf0 : f 0 = 0) {n : ℕ}
+    {k₁ k₂ : Fin n} (hk : k₁ ≠ k₂) (c d : ℂ) :
+    ∑ i, f ‖(Pi.single k₁ c + Pi.single k₂ d : Fin n → ℂ) i‖
+      = f ‖c‖ + f ‖d‖ := by
+  have hsplit' : ∀ i : Fin n,
+      f ‖(Pi.single k₁ c + Pi.single k₂ d : Fin n → ℂ) i‖
+      = f ‖(Pi.single k₁ c : Fin n → ℂ) i‖
+        + f ‖(Pi.single k₂ d : Fin n → ℂ) i‖ := by
+    intro i
+    by_cases h1 : i = k₁
+    · subst h1
+      simp [Pi.single_eq_same, Pi.single_eq_of_ne hk, hf0]
+    · by_cases h2 : i = k₂
+      · subst h2
+        simp [Pi.single_eq_same, Pi.single_eq_of_ne h1, hf0]
+      · simp [Pi.single_eq_of_ne h1, Pi.single_eq_of_ne h2, hf0]
+  rw [Finset.sum_congr rfl fun i _ => hsplit' i, Finset.sum_add_distrib,
+    measure_single_sum f hf0 k₁ c, measure_single_sum f hf0 k₂ d]
+
+/-- The subgroup ℤθ + ℤπ of ℝ. -/
+def thetaPiSubgroup (θ : ℝ) : AddSubgroup ℝ where
+  carrier := {x : ℝ | ∃ m k : ℤ, x = m * θ + k * Real.pi}
+  zero_mem' := ⟨0, 0, by push_cast; ring⟩
+  add_mem' := by
+    intro a b ha hb
+    obtain ⟨m1, k1, rfl⟩ := ha
+    obtain ⟨m2, k2, rfl⟩ := hb
+    exact ⟨m1 + m2, k1 + k2, by push_cast; ring⟩
+  neg_mem' := by
+    intro a ha
+    obtain ⟨m, k, rfl⟩ := ha
+    exact ⟨-m, -k, by push_cast; ring⟩
+
+/-- ORBIT DENSITY: for θ/π irrational, the squared cosines of the
+rotation orbit {cos²(kθ) : k ∈ ℕ} are dense in (0,1). -/
+theorem cos_sq_orbit_dense (θ : ℝ) (hirr : Irrational (θ / Real.pi)) :
+    ∀ u v : ℝ, 0 < u → u < v → v < 1 →
+      ∃ lam, lam ∈ {l : ℝ | ∃ k : ℕ, l = Real.cos ((k:ℝ) * θ) ^ 2}
+        ∧ u < lam ∧ lam < v := by
+  intro u v hu huv hv
+  -- the subgroup ℤθ + ℤπ is dense (not cyclic, by irrationality)
+  have hdense : Dense ((thetaPiSubgroup θ : AddSubgroup ℝ) : Set ℝ) := by
+    rcases (thetaPiSubgroup θ).dense_or_cyclic with h | ⟨a, ha⟩
+    · exact h
+    · exfalso
+      have hθS : θ ∈ thetaPiSubgroup θ := ⟨1, 0, by push_cast; ring⟩
+      have hπS : Real.pi ∈ thetaPiSubgroup θ := ⟨0, 1, by push_cast; ring⟩
+      rw [ha, AddSubgroup.mem_closure_singleton] at hθS hπS
+      obtain ⟨m, hm⟩ := hθS
+      obtain ⟨n, hn⟩ := hπS
+      rw [zsmul_eq_mul] at hm hn
+      have hπ0 : Real.pi ≠ 0 := Real.pi_ne_zero
+      have hn0 : (n:ℝ) ≠ 0 := by
+        intro h
+        rw [h, zero_mul] at hn
+        exact hπ0 hn.symm
+      have ha0 : a ≠ 0 := by
+        intro h
+        rw [h, mul_zero] at hn
+        exact hπ0 hn.symm
+      apply hirr
+      refine ⟨(m : ℚ)/(n : ℚ), ?_⟩
+      rw [← hm, ← hn]
+      push_cast
+      rw [mul_div_mul_right _ _ ha0]
+  -- the target set of angles is open and nonempty
+  have hcont : Continuous (fun w : ℝ => Real.cos w ^ 2) :=
+    Real.continuous_cos.pow 2
+  have hUopen : IsOpen ((fun w : ℝ => Real.cos w ^ 2) ⁻¹' Set.Ioo u v) :=
+    hcont.isOpen_preimage _ isOpen_Ioo
+  have hUne : ((fun w : ℝ => Real.cos w ^ 2) ⁻¹' Set.Ioo u v).Nonempty := by
+    refine ⟨Real.arccos (Real.sqrt ((u+v)/2)), ?_⟩
+    have hmid0 : (0:ℝ) ≤ (u+v)/2 := by linarith
+    have hmid1 : (u+v)/2 ≤ 1 := by linarith
+    have hs0 : (-1:ℝ) ≤ Real.sqrt ((u+v)/2) :=
+      le_trans (by norm_num) (Real.sqrt_nonneg _)
+    have hs1 : Real.sqrt ((u+v)/2) ≤ 1 := Real.sqrt_le_one.mpr hmid1
+    show Real.cos (Real.arccos (Real.sqrt ((u+v)/2))) ^ 2 ∈ Set.Ioo u v
+    rw [Real.cos_arccos hs0 hs1, Real.sq_sqrt hmid0]
+    constructor <;> [linarith; linarith]
+  obtain ⟨x, hxS, hxU⟩ := hdense.exists_mem_open hUopen hUne
+  obtain ⟨m, nn, rfl⟩ := hxS
+  have hxU' : Real.cos ((m:ℝ)*θ + (nn:ℝ)*Real.pi) ^ 2 ∈ Set.Ioo u v := hxU
+  -- π-periodicity of cos²
+  have hper : Real.cos ((m:ℝ)*θ + (nn:ℝ)*Real.pi) ^ 2
+      = Real.cos ((m:ℝ)*θ) ^ 2 := by
+    rw [Real.cos_add]
+    have hsin : Real.sin ((nn:ℝ)*Real.pi) = 0 := Real.sin_int_mul_pi nn
+    have hcos2 : Real.cos ((nn:ℝ)*Real.pi) ^ 2 = 1 := by
+      have h := Real.sin_sq_add_cos_sq ((nn:ℝ)*Real.pi)
+      rw [hsin] at h
+      nlinarith [h]
+    rw [hsin, mul_zero, sub_zero, mul_pow, hcos2, mul_one]
+  rw [hper] at hxU'
+  refine ⟨Real.cos ((m:ℝ)*θ) ^ 2, ⟨m.natAbs, ?_⟩, hxU'.1, hxU'.2⟩
+  have hcast : ((m.natAbs : ℕ) : ℝ) = |(m:ℝ)| := by
+    rw [Int.cast_natAbs, Int.cast_abs]
+  rw [hcast]
+  rcases abs_cases ((m:ℝ)) with ⟨heq, _⟩ | ⟨heq, _⟩
+  · rw [heq]
+  · rw [heq, neg_mul, Real.cos_neg]
+
+/-- Iterating a lossless step whose block at (k₁, k₂) is rotation by
+θ produces the rotation by kθ on the same block. -/
+theorem rotation_block_iterate {n : ℕ} (θ : ℝ)
+    (B : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ)) {k₁ k₂ : Fin n} (_hk : k₁ ≠ k₂)
+    (hcol1 : B (Pi.single k₁ 1)
+      = Pi.single k₁ ((Real.cos θ : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.sin θ : ℝ) : ℂ))
+    (hcol2 : B (Pi.single k₂ 1)
+      = Pi.single k₁ ((-Real.sin θ : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.cos θ : ℝ) : ℂ)) :
+    ∀ k : ℕ, (⇑B)^[k] (Pi.single k₁ 1)
+      = Pi.single k₁ ((Real.cos ((k:ℝ)*θ) : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.sin ((k:ℝ)*θ) : ℝ) : ℂ) := by
+  have hreal : ∀ (e : Fin n) (r : ℝ),
+      (Pi.single e ((r : ℝ) : ℂ) : Fin n → ℂ)
+        = r • (Pi.single e 1 : Fin n → ℂ) := by
+    intro e r
+    funext i
+    simp only [Pi.smul_apply, Pi.single_apply, Complex.real_smul]
+    split_ifs <;> simp
+  intro k
+  induction k with
+  | zero =>
+    simp only [Function.iterate_zero_apply, Nat.cast_zero, zero_mul,
+      Real.cos_zero, Real.sin_zero, Complex.ofReal_one,
+      Complex.ofReal_zero]
+    rw [Pi.single_zero, add_zero]
+  | succ k ih =>
+    rw [Function.iterate_succ_apply', ih]
+    have hcos : Real.cos (((k + 1 : ℕ) : ℝ) * θ)
+        = Real.cos ((k:ℝ)*θ) * Real.cos θ
+          - Real.sin ((k:ℝ)*θ) * Real.sin θ := by
+      push_cast
+      rw [show ((k:ℝ)+1)*θ = (k:ℝ)*θ + θ by ring, Real.cos_add]
+    have hsin : Real.sin (((k + 1 : ℕ) : ℝ) * θ)
+        = Real.sin ((k:ℝ)*θ) * Real.cos θ
+          + Real.cos ((k:ℝ)*θ) * Real.sin θ := by
+      push_cast
+      rw [show ((k:ℝ)+1)*θ = (k:ℝ)*θ + θ by ring, Real.sin_add]
+    rw [hreal k₁ (Real.cos ((k:ℝ)*θ)), hreal k₂ (Real.sin ((k:ℝ)*θ))]
+    rw [map_add, map_smul, map_smul, hcol1, hcol2]
+    rw [hreal k₁ (Real.cos θ), hreal k₂ (Real.sin θ),
+      hreal k₁ (-Real.sin θ), hreal k₂ (Real.cos θ)]
+    rw [hreal k₁ (Real.cos (((k + 1 : ℕ) : ℝ) * θ)),
+      hreal k₂ (Real.sin (((k + 1 : ℕ) : ℝ) * θ))]
+    rw [hcos, hsin]
+    module
+
+/-- ONE GENERIC ROTATION FORCES BORN. -/
+theorem generic_rotation_forces_born {n : ℕ} (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (θ : ℝ) (hirr : Irrational (θ / Real.pi))
+    (B : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, f ‖B x i‖ = ∑ i, f ‖x i‖)
+    {k₁ k₂ : Fin n} (hk : k₁ ≠ k₂)
+    (hcol1 : B (Pi.single k₁ 1)
+      = Pi.single k₁ ((Real.cos θ : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.sin θ : ℝ) : ℂ))
+    (hcol2 : B (Pi.single k₂ 1)
+      = Pi.single k₁ ((-Real.sin θ : ℝ) : ℂ)
+        + Pi.single k₂ ((Real.cos θ : ℝ) : ℂ)) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  have hiso_iter : ∀ (k : ℕ) (x : Fin n → ℂ),
+      ∑ i, f ‖(⇑B)^[k] x i‖ = ∑ i, f ‖x i‖ := by
+    intro k
+    induction k with
+    | zero =>
+      intro x
+      rw [Function.iterate_zero_apply]
+    | succ k ih =>
+      intro x
+      rw [Function.iterate_succ_apply', hiso, ih]
+  have hsmul_iter : ∀ (k : ℕ) (c : ℝ) (x : Fin n → ℂ),
+      (⇑B)^[k] (c • x) = c • (⇑B)^[k] x := by
+    intro k
+    induction k with
+    | zero =>
+      intro c x
+      rw [Function.iterate_zero_apply, Function.iterate_zero_apply]
+    | succ k ih =>
+      intro c x
+      rw [Function.iterate_succ_apply', Function.iterate_succ_apply',
+        ih, map_smul]
+  have hcolk := rotation_block_iterate θ B hk hcol1 hcol2
+  apply splitter_family_forces_born f hf0 hmono
+    {l : ℝ | ∃ k : ℕ, l = Real.cos ((k:ℝ) * θ) ^ 2}
+    (cos_sq_orbit_dense θ hirr)
+  intro lam hlam _ _ s hs
+  obtain ⟨k, rfl⟩ := hlam
+  have h := hiso_iter k (s • (Pi.single k₁ 1 : Fin n → ℂ))
+  rw [hsmul_iter k s _, hcolk k] at h
+  have hvec : s • ((Pi.single k₁ ((Real.cos ((k:ℝ)*θ) : ℝ) : ℂ) : Fin n → ℂ)
+      + Pi.single k₂ ((Real.sin ((k:ℝ)*θ) : ℝ) : ℂ))
+      = Pi.single k₁ ((s * Real.cos ((k:ℝ)*θ) : ℝ) : ℂ)
+        + Pi.single k₂ ((s * Real.sin ((k:ℝ)*θ) : ℝ) : ℂ) := by
+    funext i
+    simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+      Complex.real_smul]
+    split_ifs <;> push_cast <;> ring
+  have hin : (s • (Pi.single k₁ 1 : Fin n → ℂ))
+      = Pi.single k₁ ((s : ℝ) : ℂ) := by
+    funext i
+    simp only [Pi.smul_apply, Pi.single_apply, Complex.real_smul]
+    split_ifs <;> simp
+  rw [hvec] at h
+  rw [hin] at h
+  rw [measure_pair_sum f hf0 hk, measure_single_sum f hf0] at h
+  rw [Complex.norm_real, Complex.norm_real, Complex.norm_real] at h
+  rw [Real.norm_eq_abs, Real.norm_eq_abs, Real.norm_eq_abs] at h
+  rw [abs_of_nonneg hs] at h
+  -- convert |s·cos|, |s·sin| into √λ·s, √(1−λ)·s
+  have hsin_sq : 1 - Real.cos ((k:ℝ)*θ) ^ 2 = Real.sin ((k:ℝ)*θ) ^ 2 := by
+    have := Real.sin_sq_add_cos_sq ((k:ℝ)*θ)
+    linarith
+  rw [Real.sqrt_sq_eq_abs, hsin_sq, Real.sqrt_sq_eq_abs]
+  calc f (|Real.cos ((k:ℝ)*θ)| * s) + f (|Real.sin ((k:ℝ)*θ)| * s)
+      = f |s * Real.cos ((k:ℝ)*θ)| + f |s * Real.sin ((k:ℝ)*θ)| := by
+        rw [abs_mul, abs_mul, abs_of_nonneg hs]
+        ring_nf
+    _ = f s := h
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -2845,5 +3125,10 @@ theorem lossless_splitter_family_forces_born (f : ℝ → ℝ)
 #print axioms dense_splitting_forces_linear
 #print axioms splitter_family_forces_born
 #print axioms lossless_splitter_family_forces_born
+#print axioms measure_single_sum
+#print axioms measure_pair_sum
+#print axioms cos_sq_orbit_dense
+#print axioms rotation_block_iterate
+#print axioms generic_rotation_forces_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
