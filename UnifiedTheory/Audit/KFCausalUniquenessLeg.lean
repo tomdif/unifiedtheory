@@ -128,6 +128,17 @@
      rotation step forces f(x) = x² f(1) for every monotone
      measure.  Almost every interference device forces Born by
      itself.
+  21. `mixing_block_forces_measure_continuity` - EXCHANGE
+     TRANSPORT: subtracting the (s,t)/(s,-t) probes of ONE mixing
+     block yields an exchange identity that copies any jump of the
+     measure, in full, to κ²·w (κ = σ/c); for lopsided blocks
+     (c² ≠ σ²) the copies descend a geometric ladder and finitely
+     many exceed the total variation.  EVERY mixing block - any
+     angle, rational or irrational, unnormalized - forces the
+     monotone measure to be continuous.  No iteration of the
+     dynamics is used.  Residue: continuous g under the finite
+     per-scale constraints of a rational-angle block (registered
+     Mellin attack in the section header).
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -3082,6 +3093,346 @@ theorem generic_rotation_forces_born {n : ℕ} (f : ℝ → ℝ)
         ring_nf
     _ = f s := h
 
+/-! ## 21. EXCHANGE TRANSPORT: every lopsided mixing block forces
+continuity — the rational-angle residue is breached
+
+The remaining wall after §20 was rational-angle rotations (iterates
+close into a finite family, so density fails).  This section
+attacks them with a new mechanism that needs NO iteration at all:
+the two-parameter probes of a single mixing block.
+
+Subtracting the (s,t) and (s,−t) probes cancels the input measure
+and leaves the EXCHANGE IDENTITY
+  g((u+v)²) − g((u−v)²) = g((κu+v/κ)²) − g((κu−v/κ)²),  κ = σ/c:
+the measure's increment over the interval [(u−v)², (u+v)²] equals
+its increment over a mirror interval near κ²·(u²).  Taking v → 0
+brackets (finite, explicit — no limits), this TRANSPORTS JUMPS: a
+jump of size J at w is copied, in full, to κ²w (`jump_transport`).
+When the block is lopsided (c² ≠ σ²), κ² < 1 in one of the two
+directions, and iterating the transport lays infinitely many
+full-size copies of the jump along the geometric ladder κ²ᵏw —
+finitely many of which already exceed the total variation of a
+monotone function (`exchange_descent_no_jump`, reusing the sorted-
+increments bound).  Order kills the jump, again.
+
+`mixing_block_forces_measure_continuity`: a monotone measure
+lossless under ONE real-linear step containing a rotation-form
+block with cσ ≠ 0, c² ≠ σ² — ANY angle, rational or irrational, no
+normalization of the block required — has no jumps anywhere.
+
+Status of the wall after this section: balanced blocks force Born
+(§18); irrational-angle blocks force Born (§20); EVERY other
+mixing block forces continuity (this section).  The remaining
+residue is exactly: continuous monotone g under the finite
+per-scale constraint family of one rational-angle block.  In angle
+variables the full constraint says K_y(φ) := g(y cos²φ)+g(y sin²φ)
+is θ-periodic for every scale y; the registered attack is harmonic:
+the Mellin symbols Ψ_s(φ) = cos²ˢφ + sin²ˢφ have Fourier
+coefficients with Γ-function closed forms that vanish jointly only
+at s ∈ {0, 1}, which would pin g linear — the coefficient
+nonvanishing is the open lemma. -/
+
+/-- JUMP TRANSPORT: the exchange identity copies a jump at w, in
+full, to κ²·w. -/
+theorem jump_transport (g : ℝ → ℝ)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b)
+    (κ : ℝ) (hκ : κ ≠ 0)
+    (hexch : ∀ u v : ℝ, g ((u + v)^2) - g ((u - v)^2)
+      = g ((κ*u + v/κ)^2) - g ((κ*u - v/κ)^2))
+    (w J : ℝ) (hw : 0 < w) (hJ : 0 < J)
+    (hjump : ∀ p q : ℝ, 0 ≤ p → p < w → w < q → J ≤ g q - g p) :
+    ∀ p q : ℝ, 0 ≤ p → p < κ^2 * w → κ^2 * w < q → J ≤ g q - g p := by
+  intro a b ha haw hwb
+  have hκ2 : 0 < κ^2 := by positivity
+  set W : ℝ := Real.sqrt w with hWdef
+  have hWpos : 0 < W := Real.sqrt_pos.mpr hw
+  have hW2 : W^2 = w := Real.sq_sqrt (le_of_lt hw)
+  -- the probe width
+  set v : ℝ := min (min (W/2) 1)
+    (min ((b - κ^2*w)/(1/κ^2 + 2*W)) ((κ^2*w - a)/(2*W))) with hvdef
+  have hden1 : 0 < 1/κ^2 + 2*W := by positivity
+  have hvpos : 0 < v := by
+    apply lt_min (lt_min (by positivity) one_pos)
+    apply lt_min
+    · apply div_pos (by linarith) hden1
+    · apply div_pos (by linarith) (by positivity)
+  have hvW : v ≤ W/2 := le_trans (min_le_left _ _) (min_le_left _ _)
+  have hv1 : v ≤ 1 := le_trans (min_le_left _ _) (min_le_right _ _)
+  have hvb : v ≤ (b - κ^2*w)/(1/κ^2 + 2*W) :=
+    le_trans (min_le_right _ _) (min_le_left _ _)
+  have hva : v ≤ (κ^2*w - a)/(2*W) :=
+    le_trans (min_le_right _ _) (min_le_right _ _)
+  -- source bracket around w
+  have hsrc1 : (W - v)^2 < w := by nlinarith
+  have hsrc2 : w < (W + v)^2 := by nlinarith
+  have hsrc := hjump ((W - v)^2) ((W + v)^2) (sq_nonneg _) hsrc1 hsrc2
+  -- the exchange
+  have hex := hexch W v
+  -- expand the mirror endpoints
+  have hq_exp : (κ*W + v/κ)^2 = κ^2*w + v^2/κ^2 + 2*v*W := by
+    have h1 : (κ*W + v/κ)^2 = κ^2*W^2 + 2*W*v*(κ/κ) + v^2/κ^2 := by
+      field_simp
+      ring
+    rw [h1, hW2, div_self hκ]
+    ring
+  have hp_exp : (κ*W - v/κ)^2 = κ^2*w + v^2/κ^2 - 2*v*W := by
+    have h1 : (κ*W - v/κ)^2 = κ^2*W^2 - 2*W*v*(κ/κ) + v^2/κ^2 := by
+      field_simp
+      ring
+    rw [h1, hW2, div_self hκ]
+    ring
+  -- mirror lies inside (a, b)
+  have hqb : (κ*W + v/κ)^2 ≤ b := by
+    rw [hq_exp]
+    have hv2 : v^2/κ^2 ≤ v * (1/κ^2) := by
+      have hvv : v^2 ≤ v := by nlinarith
+      rw [div_le_iff₀ hκ2]
+      calc v^2 ≤ v := hvv
+        _ = v * (1/κ^2) * κ^2 := by field_simp
+    have hkey : v * (1/κ^2 + 2*W) ≤ b - κ^2*w := by
+      calc v * (1/κ^2 + 2*W)
+          ≤ ((b - κ^2*w)/(1/κ^2 + 2*W)) * (1/κ^2 + 2*W) :=
+            mul_le_mul_of_nonneg_right hvb (le_of_lt hden1)
+        _ = b - κ^2*w := by field_simp
+    nlinarith
+  have hap : a ≤ (κ*W - v/κ)^2 := by
+    rw [hp_exp]
+    have hkey : v * (2*W) ≤ κ^2*w - a := by
+      calc v * (2*W)
+          ≤ ((κ^2*w - a)/(2*W)) * (2*W) :=
+            mul_le_mul_of_nonneg_right hva (by positivity)
+        _ = κ^2*w - a := by field_simp
+    nlinarith [sq_nonneg v, hκ2, div_nonneg (sq_nonneg v) (le_of_lt hκ2)]
+  -- assemble
+  have h1 : g a ≤ g ((κ*W - v/κ)^2) := hmono _ _ ha hap
+  have h2 : g ((κ*W + v/κ)^2) ≤ g b :=
+    hmono _ _ (sq_nonneg _) hqb
+  linarith
+
+/-- EXCHANGE DESCENT: an exchange identity with contraction ratio
+κ² < 1 forbids jumps — each ratio application copies a jump one
+contraction step down, and finitely many disjoint copies exceed the
+total variation. -/
+theorem exchange_descent_no_jump (g : ℝ → ℝ)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b)
+    (κ : ℝ) (hκ0 : κ ≠ 0) (hκ1 : κ^2 < 1)
+    (hexch : ∀ u v : ℝ, g ((u + v)^2) - g ((u - v)^2)
+      = g ((κ*u + v/κ)^2) - g ((κ*u - v/κ)^2)) :
+    ∀ y : ℝ, 0 < y → ∀ ε : ℝ, 0 < ε →
+      ∃ p q : ℝ, 0 ≤ p ∧ p < y ∧ y < q ∧ g q - g p < ε := by
+  intro y hy ε hε
+  by_contra hcon
+  push_neg at hcon
+  -- hcon : ∀ p q, 0 ≤ p → p < y → y < q → ε ≤ g q - g p
+  have hκ2 : 0 < κ^2 := by positivity
+  -- transport the jump down the geometric ladder
+  have htrans : ∀ N : ℕ, ∀ p q : ℝ,
+      0 ≤ p → p < (κ^2)^N * y → (κ^2)^N * y < q → ε ≤ g q - g p := by
+    intro N
+    induction N with
+    | zero =>
+      intro p q hp h1 h2
+      rw [pow_zero, one_mul] at h1 h2
+      exact hcon p q hp h1 h2
+    | succ N ih =>
+      intro p q hp h1 h2
+      have hw : 0 < (κ^2)^N * y := by positivity
+      have hpow : (κ^2)^(N+1) * y = κ^2 * ((κ^2)^N * y) := by ring
+      rw [hpow] at h1 h2
+      exact jump_transport g hmono κ hκ0 hexch ((κ^2)^N * y) ε hw hε
+        ih p q hp h1 h2
+  -- the counting contradiction
+  set τ : ℝ := κ^2 with hτdef
+  have hτ0 : 0 < τ := hκ2
+  have hτ1 : τ < 1 := hκ1
+  set m : ℝ := (1 + τ)/2 with hmdef
+  set M : ℝ := (1 + 1/τ)/2 with hMdef
+  have hm0 : 0 < m := by rw [hmdef]; linarith
+  have hm1 : m < 1 := by rw [hmdef]; linarith
+  have hM1 : 1 < M := by
+    rw [hMdef]
+    have : 1 < 1/τ := by
+      rw [lt_div_iff₀ hτ0]
+      linarith
+    linarith
+  have hMτ : M * τ = m := by
+    rw [hMdef, hmdef]
+    field_simp
+    ring
+  obtain ⟨N, hN⟩ := exists_nat_gt ((g (M*y) - g 0)/ε)
+  have hNε : g (M*y) - g 0 < (N:ℝ) * ε := by
+    rw [div_lt_iff₀ hε] at hN
+    linarith
+  have hsum_lo : (N:ℝ) * ε ≤
+      ∑ i ∈ Finset.range N,
+        (g (M * τ^(N-1-i) * y) - g (m * τ^(N-1-i) * y)) := by
+    calc (N:ℝ) * ε = ∑ _i ∈ Finset.range N, ε := by
+          rw [Finset.sum_const, Finset.card_range, nsmul_eq_mul]
+      _ ≤ _ := by
+          apply Finset.sum_le_sum
+          intro i hi
+          have hx : 0 < τ^(N-1-i) * y := by positivity
+          have h1 : m * τ^(N-1-i) * y < τ^(N-1-i) * y := by nlinarith
+          have h2 : τ^(N-1-i) * y < M * τ^(N-1-i) * y := by nlinarith
+          have h := htrans (N-1-i) (m * τ^(N-1-i) * y)
+            (M * τ^(N-1-i) * y) (by positivity)
+            (by rw [show (κ^2)^(N-1-i) * y = τ^(N-1-i) * y from rfl]; exact h1)
+            (by rw [show (κ^2)^(N-1-i) * y = τ^(N-1-i) * y from rfl]; exact h2)
+          exact h
+  have hsum_hi : ∑ i ∈ Finset.range N,
+      (g (M * τ^(N-1-i) * y) - g (m * τ^(N-1-i) * y)) ≤ g (M*y) - g 0 := by
+    apply sum_sorted_increments_le g hmono N
+      (fun i => m * τ^(N-1-i) * y) (fun i => M * τ^(N-1-i) * y) (M*y)
+    · intro i _
+      positivity
+    · intro i _
+      have : 0 < τ^(N-1-i) * y := by positivity
+      nlinarith
+    · intro i j hij hj
+      have hττ : τ^((N-1-i)-(N-1-j)) ≤ τ :=
+        pow_le_of_le_one (le_of_lt hτ0) (le_of_lt hτ1) (by omega)
+      have hpow2 : τ^(N-1-i) = τ^(N-1-j) * τ^((N-1-i)-(N-1-j)) := by
+        rw [← pow_add]
+        congr 1
+        omega
+      have hM0 : (0:ℝ) < M := lt_trans one_pos hM1
+      have hMle : M * τ^(N-1-i) ≤ m * τ^(N-1-j) := by
+        rw [hpow2]
+        calc M * (τ^(N-1-j) * τ^((N-1-i)-(N-1-j)))
+            ≤ M * (τ^(N-1-j) * τ) := by
+              apply mul_le_mul_of_nonneg_left _ (le_of_lt hM0)
+              exact mul_le_mul_of_nonneg_left hττ
+                (le_of_lt (pow_pos hτ0 _))
+          _ = (M * τ) * τ^(N-1-j) := by ring
+          _ = m * τ^(N-1-j) := by rw [hMτ]
+      have : M * τ^(N-1-i) * y ≤ m * τ^(N-1-j) * y :=
+        mul_le_mul_of_nonneg_right hMle (le_of_lt hy)
+      linarith
+    · intro i _
+      have hτpow : τ^(N-1-i) ≤ 1 :=
+        pow_le_one₀ (le_of_lt hτ0) (le_of_lt hτ1)
+      have : M * τ^(N-1-i) ≤ M * 1 := by
+        apply mul_le_mul_of_nonneg_left hτpow
+        linarith
+      nlinarith
+    · positivity
+  linarith
+
+/-- ANY LOPSIDED MIXING BLOCK FORCES CONTINUITY: a monotone measure
+lossless under one real-linear step containing a rotation-form block
+with c·σ ≠ 0 and c² ≠ σ² has no jumps.  Any angle — rational or
+irrational, balanced excluded only because tan²θ = 1 gives no
+contraction (and the balanced case is fully solved separately). -/
+theorem mixing_block_forces_measure_continuity {n : ℕ} (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (B : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, f ‖B x i‖ = ∑ i, f ‖x i‖)
+    {k₁ k₂ : Fin n} (hk : k₁ ≠ k₂) (c σ : ℝ)
+    (hc : c ≠ 0) (hσ : σ ≠ 0) (hcσ : c^2 ≠ σ^2)
+    (hcol1 : B (Pi.single k₁ 1)
+      = Pi.single k₁ ((c : ℝ) : ℂ) + Pi.single k₂ ((σ : ℝ) : ℂ))
+    (hcol2 : B (Pi.single k₂ 1)
+      = Pi.single k₁ ((-σ : ℝ) : ℂ) + Pi.single k₂ ((c : ℝ) : ℂ)) :
+    ∀ y : ℝ, 0 < y → ∀ ε : ℝ, 0 < ε →
+      ∃ a b : ℝ, 0 ≤ a ∧ a < y ∧ y < b ∧ f b - f a < ε := by
+  set g : ℝ → ℝ := fun x => f (Real.sqrt x) with hgdef
+  have hmonog : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b := by
+    intro a b _ hab
+    exact hmono _ _ (Real.sqrt_nonneg a) (Real.sqrt_le_sqrt hab)
+  -- the probe identity in g-form
+  have hreal : ∀ (e : Fin n) (r : ℝ),
+      (Pi.single e ((r : ℝ) : ℂ) : Fin n → ℂ)
+        = r • (Pi.single e 1 : Fin n → ℂ) := by
+    intro e r
+    funext i
+    simp only [Pi.smul_apply, Pi.single_apply, Complex.real_smul]
+    split_ifs <;> simp
+  have hgz : ∀ z : ℝ, g (z^2) = f |z| := by
+    intro z
+    show f (Real.sqrt (z^2)) = f |z|
+    rw [Real.sqrt_sq_eq_abs]
+  have hE : ∀ s t : ℝ,
+      g ((c*s - σ*t)^2) + g ((σ*s + c*t)^2) = g (s^2) + g (t^2) := by
+    intro s t
+    have hBx : B (Pi.single k₁ ((s : ℝ) : ℂ) + Pi.single k₂ ((t : ℝ) : ℂ))
+        = Pi.single k₁ ((c*s - σ*t : ℝ) : ℂ)
+          + Pi.single k₂ ((σ*s + c*t : ℝ) : ℂ) := by
+      rw [hreal k₁ s, hreal k₂ t, map_add, map_smul, map_smul,
+        hcol1, hcol2]
+      funext i
+      simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+        Complex.real_smul]
+      split_ifs <;> push_cast <;> ring
+    have h := hiso (Pi.single k₁ ((s : ℝ) : ℂ) + Pi.single k₂ ((t : ℝ) : ℂ))
+    rw [hBx, measure_pair_sum f hf0 hk, measure_pair_sum f hf0 hk] at h
+    rw [Complex.norm_real, Complex.norm_real, Complex.norm_real,
+      Complex.norm_real] at h
+    rw [Real.norm_eq_abs, Real.norm_eq_abs, Real.norm_eq_abs,
+      Real.norm_eq_abs] at h
+    rw [hgz, hgz, hgz, hgz]
+    exact h
+  -- the exchange identity, for a general column pair (c', σ')
+  have hexch_gen : ∀ c' σ' : ℝ, c' ≠ 0 → σ' ≠ 0 →
+      (∀ s t : ℝ, g ((c'*s - σ'*t)^2) + g ((σ'*s + c'*t)^2)
+        = g (s^2) + g (t^2)) →
+      ∀ u v : ℝ, g ((u + v)^2) - g ((u - v)^2)
+        = g (((σ'/c')*u + v/(σ'/c'))^2)
+          - g (((σ'/c')*u - v/(σ'/c'))^2) := by
+    intro c' σ' hc' hσ' hE' u v
+    have h1 := hE' (u/c') (-(v/σ'))
+    have h2 := hE' (u/c') (v/σ')
+    have e1 : c'*(u/c') - σ'*(-(v/σ')) = u + v := by
+      field_simp <;> ring
+    have e2 : σ'*(u/c') + c'*(-(v/σ')) = (σ'/c')*u - v/(σ'/c') := by
+      field_simp <;> ring
+    have e3 : c'*(u/c') - σ'*(v/σ') = u - v := by
+      field_simp <;> ring
+    have e4 : σ'*(u/c') + c'*(v/σ') = (σ'/c')*u + v/(σ'/c') := by
+      field_simp <;> ring
+    rw [e1, e2] at h1
+    rw [e3, e4] at h2
+    have e5 : (-(v/σ'))^2 = (v/σ')^2 := by ring
+    rw [e5] at h1
+    linarith
+  -- the swapped probe identity
+  have hE' : ∀ s t : ℝ,
+      g ((σ*s - c*t)^2) + g ((c*s + σ*t)^2) = g (s^2) + g (t^2) := by
+    intro s t
+    have h := hE s (-t)
+    have e1 : (c*s - σ*(-t))^2 = (c*s + σ*t)^2 := by ring
+    have e2 : (σ*s + c*(-t))^2 = (σ*s - c*t)^2 := by ring
+    have e3 : (-t)^2 = t^2 := by ring
+    rw [e1, e2, e3] at h
+    linarith
+  -- no-jump in g, choosing the contracting direction
+  have hgcont : ∀ y : ℝ, 0 < y → ∀ ε : ℝ, 0 < ε →
+      ∃ p q : ℝ, 0 ≤ p ∧ p < y ∧ y < q ∧ g q - g p < ε := by
+    rcases lt_or_gt_of_ne hcσ with hlt | hgt
+    · -- c² < σ²: contract with κ = c/σ
+      have hκ0 : c/σ ≠ 0 := div_ne_zero hc hσ
+      have hκ1 : (c/σ)^2 < 1 := by
+        rw [div_pow, div_lt_one (by positivity)]
+        exact hlt
+      exact exchange_descent_no_jump g hmonog (c/σ) hκ0 hκ1
+        (hexch_gen σ c hσ hc hE')
+    · -- σ² < c²: contract with κ = σ/c
+      have hκ0 : σ/c ≠ 0 := div_ne_zero hσ hc
+      have hκ1 : (σ/c)^2 < 1 := by
+        rw [div_pow, div_lt_one (by positivity)]
+        exact hgt
+      exact exchange_descent_no_jump g hmonog (σ/c) hκ0 hκ1
+        (hexch_gen c σ hc hσ hE)
+  -- convert back to f
+  intro y hy ε hε
+  obtain ⟨p, q, hp0, hpy, hyq, hpq⟩ := hgcont (y^2) (by positivity) ε hε
+  refine ⟨Real.sqrt p, Real.sqrt q, Real.sqrt_nonneg p, ?_, ?_, ?_⟩
+  · have := Real.sqrt_lt_sqrt hp0 hpy
+    rwa [Real.sqrt_sq (le_of_lt hy)] at this
+  · have := Real.sqrt_lt_sqrt (sq_nonneg y) hyq
+    rwa [Real.sqrt_sq (le_of_lt hy)] at this
+  · exact hpq
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -3130,5 +3481,8 @@ theorem generic_rotation_forces_born {n : ℕ} (f : ℝ → ℝ)
 #print axioms cos_sq_orbit_dense
 #print axioms rotation_block_iterate
 #print axioms generic_rotation_forces_born
+#print axioms jump_transport
+#print axioms exchange_descent_no_jump
+#print axioms mixing_block_forces_measure_continuity
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

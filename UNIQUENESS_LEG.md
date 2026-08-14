@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 48 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 51 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -454,6 +454,54 @@ two-parameter probe equations remain), and (b) a single mixing step
 of arbitrary non-rotation form.  Both are functional-equation
 problems with only finitely many splitting relations plus the full
 two-parameter family — open, and precisely delimited.
+
+## EXCHANGE TRANSPORT (2026-08-14, sixth pass): every mixing block
+## forces continuity — the rational-angle residue breached
+
+The wall's remaining piece was rational-angle rotations, whose
+iterates close into a finite family (density fails).  New mechanism,
+needing NO iteration (file at 51 theorems):
+
+Subtracting the (s,t) and (s,-t) probes of ONE mixing block cancels
+the input measure and leaves the EXCHANGE IDENTITY
+
+  g((u+v)^2) - g((u-v)^2) = g((ku + v/k)^2) - g((ku - v/k)^2),
+
+k = sigma/c: the measure's increment over an interval around u^2
+equals its increment over a mirror interval around k^2 u^2.  With
+explicit finite brackets (no limits anywhere), this TRANSPORTS
+JUMPS: a jump of size J at w is copied IN FULL to k^2 w
+(`jump_transport`).  For a lopsided block (c^2 != sigma^2), k^2 < 1
+in one of the two directions, and iterated transport lays
+infinitely many full-size copies of the jump down the geometric
+ladder k^(2N) w; finitely many disjoint copies already exceed the
+total variation of a monotone function
+(`exchange_descent_no_jump`).  Order kills the jump — third
+distinct jump-killing mechanism of the arc (after dense splitting
+and the balanced quadratic equation).
+
+`mixing_block_forces_measure_continuity`: a monotone measure
+lossless under ONE real-linear step containing a rotation-form
+block with c*sigma != 0 and c^2 != sigma^2 — ANY angle, rational or
+irrational, and NO normalization of the block required — has no
+jumps anywhere.
+
+STATE OF THE WALL after six passes:
+  - balanced blocks (c^2 = sigma^2): full Born  [section 18]
+  - irrational-angle blocks: full Born          [section 20]
+  - every other mixing block: continuity        [this section]
+The residue is exactly: CONTINUOUS monotone g under the finite
+per-scale constraint family of one rational-angle block.  In angle
+variables the constraint reads: K_y(phi) := g(y cos^2 phi)
++ g(y sin^2 phi) is theta-periodic at every scale y.  REGISTERED
+ATTACK (harmonic-analytic, not yet formal): the Mellin symbols
+Psi_s(phi) = cos^(2s) phi + sin^(2s) phi have Fourier coefficients
+with Gamma-function closed forms; for non-integer s no coefficient
+vanishes (Gamma poles), and for integer s >= 2 the binomial
+coefficients are positive — so joint vanishing of the forbidden
+modes happens only at s in {0,1}, which would pin g linear.  The
+open lemma is exactly this coefficient nonvanishing plus a Mellin
+representation argument for monotone g.
 
 ## The theorem chain, with Lean witnesses per arrow
 
