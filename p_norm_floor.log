@@ -1,0 +1,11 @@
+p     min-max deviation of mixing 2x2 p-norm isometry
+1.00   0.133333
+1.25   0.071186
+1.50   0.038623
+1.75   0.015772
+2.00   0.000000
+2.50   0.023532
+3.00   0.040197
+4.00   0.070688
+(0 achievable only at p = 2: rotations; elsewhere a strictly
+ positive floor = the Lamperti obstruction, numerically)

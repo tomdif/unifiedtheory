@@ -5618,6 +5618,14 @@ import UnifiedTheory.Audit.KFCausalCoherentRecordAccretion
 -- history-counting axiom made dynamical, with the anti-decoherence rate
 -- identified as the mean effective history count.
 import UnifiedTheory.Audit.KFCausalReplicaOverlap
+-- The uniqueness leg's machine-checked corners: real binary
+-- bi-normalized branching is deterministic (complex phases necessary
+-- for nontrivial branching); the p = 1 Lamperti instance (linear
+-- lossless l^1 dynamics cannot mix branches - p = 2 is the unique
+-- mixing-compatible measure exponent, general-p proof in
+-- UNIQUENESS_LEG.md); noncommuting quaternionic phases break
+-- path-order covariance (the phase group must be abelian).
+import UnifiedTheory.Audit.KFCausalUniquenessLeg
 -- Build-time transitive dependency assertions certify the architecture:
 -- finite sign selection and abstract transport avoid clock and volume bridges;
 -- the harmonic spectator realization uses exchangeability; the volume bridge
