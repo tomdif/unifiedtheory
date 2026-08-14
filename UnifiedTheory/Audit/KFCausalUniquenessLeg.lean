@@ -139,6 +139,14 @@
      dynamics is used.  Residue: continuous g under the finite
      per-scale constraints of a rational-angle block (registered
      Mellin attack in the section header).
+  22. `approximate_beam_splitter_near_born` - STABILITY: if the
+     balanced-splitter losslessness holds only to precision δ, the
+     monotone measure is uniformly within (4/3)·δ of an exact Born
+     function (`monotone_quadratic_stability`: Hyers' geometric
+     sequence + §18 monotone rigidity classifying the limit).
+     Finite-precision interference data quantitatively bounds
+     Born-rule deviations - the reconstruction as an experimental
+     inequality.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -159,6 +167,7 @@ import Mathlib.NumberTheory.Real.Irrational
 import Mathlib.Topology.Algebra.Order.Archimedean
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Inverse
+import Mathlib.Analysis.SpecificLimits.Basic
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -3433,6 +3442,240 @@ theorem mixing_block_forces_measure_continuity {n : ℕ} (f : ℝ → ℝ)
     rwa [Real.sqrt_sq (le_of_lt hy)] at this
   · exact hpq
 
+/-! ## 22. STABILITY: approximate losslessness quantitatively bounds
+Born deviation — the reconstruction becomes an experimental inequality
+
+Every theorem so far assumed EXACT losslessness — an idealization no
+laboratory meets.  This section makes the reconstruction robust:
+if the balanced-splitter losslessness holds only to precision δ
+(each probe's measure balance off by at most δ), the monotone
+measure is uniformly within (4/3)·δ of an EXACT Born function.
+
+Mechanism: Hyers' geometric sequence f(2ⁿx)/4ⁿ is Cauchy with
+geometric increments controlled by the approximate doubling law;
+its limit L satisfies the EXACT quadratic functional equation and
+inherits monotonicity — and then §18's monotone rigidity (not
+regularity, which we never have) classifies L as x²·L(1).  The
+telescoping distance bound gives |f − L| ≤ δ'/3.
+
+Physics: FINITE-PRECISION INTERFERENCE DATA BOUNDS BORN-RULE
+DEVIATIONS.  A laboratory that certifies measure balance to δ
+across one balanced interferometer's probe family certifies the
+Born weighting itself to (4/3)·δ — in the same spirit as the
+Sinha-type triple-slit bounds on the Sorkin parameter, but for the
+measure exponent/function rather than third-order interference.
+This is the experimentally usable form of the no-deformation no-go:
+Born has no monotone deformation, and near-Born requires
+near-losslessness, quantitatively. -/
+
+open Filter Topology
+
+/-- STABILITY OF THE BORN FUNCTION: a monotone approximate solution
+of the quadratic functional equation is uniformly δ/3-close to an
+exact Born function.  Hyers' geometric sequence provides the limit;
+monotone rigidity (§18) classifies it — no regularity assumed. -/
+theorem monotone_quadratic_stability (f : ℝ → ℝ) (δ : ℝ) (hδ : 0 ≤ δ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (hquad : ∀ s t : ℝ, 0 ≤ t → t ≤ s →
+      |f (s + t) + f (s - t) - 2 * f s - 2 * f t| ≤ δ) :
+    ∃ c : ℝ, 0 ≤ c ∧ ∀ x : ℝ, 0 ≤ x → |f x - c * x^2| ≤ δ / 3 := by
+  have hdouble : ∀ s : ℝ, 0 ≤ s → |f (2*s) - 4 * f s| ≤ δ := by
+    intro s hs
+    have h := hquad s s hs le_rfl
+    rw [show s + s = 2*s by ring, sub_self, hf0] at h
+    rw [show f (2*s) - 4*f s = f (2*s) + 0 - 2*f s - 2*f s by ring]
+    exact h
+  set q : ℝ → ℕ → ℝ := fun x n => f (2^n * max x 0) / 4^n with hqdef
+  have hq_eq : ∀ x : ℝ, 0 ≤ x → ∀ n : ℕ, q x n = f (2^n * x) / 4^n := by
+    intro x hx n
+    rw [hqdef]
+    simp [max_eq_left hx]
+  have hstep : ∀ x : ℝ, ∀ n : ℕ,
+      dist (q x n) (q x (n+1)) ≤ (δ/4) * (1/4)^n := by
+    intro x n
+    have hy : (0:ℝ) ≤ max x 0 := le_max_right x 0
+    have hyn : (0:ℝ) ≤ 2^n * max x 0 := by positivity
+    have hd := hdouble (2^n * max x 0) hyn
+    rw [Real.dist_eq]
+    have hval : q x n - q x (n+1)
+        = -(f (2*(2^n * max x 0)) - 4 * f (2^n * max x 0)) / 4^(n+1) := by
+      rw [hqdef]
+      simp only []
+      rw [show (2:ℝ)^(n+1) * max x 0 = 2*(2^n * max x 0) by ring]
+      field_simp <;> ring
+    rw [hval, abs_div, abs_neg]
+    have h4 : |(4:ℝ)^(n+1)| = 4^(n+1) := abs_of_pos (by positivity)
+    rw [h4]
+    have hle : |f (2*(2^n * max x 0)) - 4 * f (2^n * max x 0)| / 4^(n+1)
+        ≤ δ / 4^(n+1) :=
+      div_le_div_of_nonneg_right hd (by positivity)
+    calc |f (2*(2^n * max x 0)) - 4 * f (2^n * max x 0)| / 4^(n+1)
+        ≤ δ / 4^(n+1) := hle
+      _ = (δ/4) * (1/4)^n := by
+          rw [pow_succ, one_div_pow]
+          field_simp <;> ring
+  have hcauchy : ∀ x : ℝ, CauchySeq (q x) := fun x =>
+    cauchySeq_of_le_geometric (1/4) (δ/4) (by norm_num) (hstep x)
+  choose L hL using fun x : ℝ => cauchySeq_tendsto_of_complete (hcauchy x)
+  -- distance to the limit
+  have hdist : ∀ x : ℝ, 0 ≤ x → |f x - L x| ≤ δ / 3 := by
+    intro x hx
+    have h := dist_le_of_le_geometric_of_tendsto₀ (1/4) (δ/4)
+      (by norm_num) (hstep x) (hL x)
+    have hq0 : q x 0 = f x := by
+      rw [hq_eq x hx 0]
+      simp
+    rw [hq0, Real.dist_eq] at h
+    calc |f x - L x| ≤ (δ/4) / (1 - 1/4) := h
+      _ = δ / 3 := by ring
+  -- limit is monotone on the cone
+  have hLmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → L a ≤ L b := by
+    intro a b ha hab
+    apply le_of_tendsto_of_tendsto' (hL a) (hL b)
+    intro n
+    rw [hq_eq a ha n, hq_eq b (le_trans ha hab) n]
+    apply div_le_div_of_nonneg_right _ (by positivity)
+    apply hmono _ _ (by positivity)
+    have : (0:ℝ) < 2^n := by positivity
+    nlinarith
+  -- limit vanishes at 0
+  have hL0 : L 0 = 0 := by
+    have h0 : ∀ n : ℕ, q 0 n = 0 := by
+      intro n
+      rw [hq_eq 0 le_rfl n, mul_zero, hf0, zero_div]
+    have : Tendsto (q 0) atTop (𝓝 0) := by
+      have hfun : q 0 = fun _ => (0:ℝ) := funext h0
+      rw [hfun]
+      exact tendsto_const_nhds
+    exact tendsto_nhds_unique (hL 0) this
+  -- limit satisfies the exact quadratic equation on the cone
+  have hLquad : ∀ s t : ℝ, 0 ≤ t → t ≤ s →
+      L (s + t) + L (s - t) = 2 * L s + 2 * L t := by
+    intro s t ht hts
+    have hs : 0 ≤ s := le_trans ht hts
+    have hcombo : Tendsto
+        (fun n => q (s+t) n + q (s-t) n - 2 * q s n - 2 * q t n)
+        atTop (𝓝 (L (s+t) + L (s-t) - 2 * L s - 2 * L t)) := by
+      exact (((hL (s+t)).add (hL (s-t))).sub
+        ((hL s).const_mul 2)).sub ((hL t).const_mul 2)
+    have hbound : ∀ n : ℕ,
+        |q (s+t) n + q (s-t) n - 2 * q s n - 2 * q t n| ≤ δ * (1/4)^n := by
+      intro n
+      rw [hq_eq (s+t) (by linarith) n, hq_eq (s-t) (by linarith) n,
+        hq_eq s hs n, hq_eq t ht n]
+      have h2n : (0:ℝ) < 2^n := by positivity
+      have hq' := hquad (2^n * s) (2^n * t) (by positivity)
+        (by nlinarith)
+      rw [show (2:ℝ)^n * s + 2^n * t = 2^n * (s+t) by ring,
+        show (2:ℝ)^n * s - 2^n * t = 2^n * (s-t) by ring] at hq'
+      have hval : f (2^n*(s+t))/4^n + f (2^n*(s-t))/4^n
+          - 2*(f (2^n*s)/4^n) - 2*(f (2^n*t)/4^n)
+          = (f (2^n*(s+t)) + f (2^n*(s-t)) - 2*f (2^n*s) - 2*f (2^n*t))
+            / 4^n := by
+        field_simp
+      rw [hval, abs_div, abs_of_pos (show (0:ℝ) < 4^n by positivity)]
+      rw [one_div_pow]
+      calc |f (2^n*(s+t)) + f (2^n*(s-t)) - 2*f (2^n*s) - 2*f (2^n*t)|
+            / 4^n ≤ δ / 4^n :=
+            div_le_div_of_nonneg_right hq' (by positivity)
+        _ = δ * (1/4^n) := by ring
+    have hzero : Tendsto
+        (fun n => q (s+t) n + q (s-t) n - 2 * q s n - 2 * q t n)
+        atTop (𝓝 0) := by
+      apply squeeze_zero_norm hbound
+      have : Tendsto (fun n : ℕ => (1/4:ℝ)^n) atTop (𝓝 0) :=
+        tendsto_pow_atTop_nhds_zero_of_lt_one (by norm_num) (by norm_num)
+      simpa using this.const_mul δ
+    have := tendsto_nhds_unique hcombo hzero
+    linarith
+  -- classify the limit by monotone rigidity (§18)
+  have hLborn := monotone_quadratic_functional_eq L hL0 hLmono hLquad
+  -- c := L 1 is nonnegative
+  have hc0 : 0 ≤ L 1 := by
+    apply ge_of_tendsto' (hL 1)
+    intro n
+    rw [hq_eq 1 zero_le_one n]
+    apply div_nonneg _ (by positivity)
+    have := hmono 0 (2^n * 1) le_rfl (by positivity)
+    rw [hf0] at this
+    exact this
+  refine ⟨L 1, hc0, ?_⟩
+  intro x hx
+  have h := hLborn x hx
+  rw [show L 1 * x^2 = x^2 * L 1 by ring, ← h]
+  exact hdist x hx
+
+/-- AN APPROXIMATELY LOSSLESS BEAM SPLITTER PINS THE MEASURE NEAR
+BORN: if the balanced-splitter losslessness holds only to precision
+δ, the monotone measure is within (4/3)·δ of an exact Born function,
+uniformly.  Finite-precision interference data quantitatively bounds
+Born-rule deviations. -/
+theorem approximate_beam_splitter_near_born (f : ℝ → ℝ) (δ : ℝ)
+    (hδ : 0 ≤ δ) (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (hsplit : ∀ s t : ℝ, 0 ≤ s → 0 ≤ t →
+      |f ((s + t)/Real.sqrt 2) + f (|s - t|/Real.sqrt 2) - f s - f t|
+        ≤ δ) :
+    ∃ c : ℝ, 0 ≤ c ∧ ∀ x : ℝ, 0 ≤ x → |f x - c * x^2| ≤ (4/3) * δ := by
+  have hhalf : ∀ s : ℝ, 0 ≤ s → |2 * f (s/Real.sqrt 2) - f s| ≤ δ := by
+    intro s hs
+    have h := hsplit s 0 hs le_rfl
+    rw [add_zero, sub_zero, abs_of_nonneg hs, hf0] at h
+    rw [show 2 * f (s/Real.sqrt 2) - f s
+        = f (s/Real.sqrt 2) + f (s/Real.sqrt 2) - f s - 0 by ring]
+    exact h
+  have hquad4 : ∀ s t : ℝ, 0 ≤ t → t ≤ s →
+      |f (s + t) + f (s - t) - 2 * f s - 2 * f t| ≤ 4 * δ := by
+    intro s t ht hts
+    have hs : 0 ≤ s := le_trans ht hts
+    have h1 := hsplit s t hs ht
+    rw [abs_of_nonneg (by linarith : (0:ℝ) ≤ s - t)] at h1
+    have h2 := hhalf (s + t) (by linarith)
+    have h3 := hhalf (s - t) (by linarith)
+    have hkey : f (s + t) + f (s - t) - 2 * f s - 2 * f t
+        = 2 * (f ((s+t)/Real.sqrt 2) + f ((s-t)/Real.sqrt 2)
+            - f s - f t)
+          - (2 * f ((s+t)/Real.sqrt 2) - f (s+t))
+          - (2 * f ((s-t)/Real.sqrt 2) - f (s-t)) := by
+      ring
+    rw [hkey]
+    calc |2 * (f ((s+t)/Real.sqrt 2) + f ((s-t)/Real.sqrt 2)
+            - f s - f t)
+          - (2 * f ((s+t)/Real.sqrt 2) - f (s+t))
+          - (2 * f ((s-t)/Real.sqrt 2) - f (s-t))|
+        ≤ |2 * (f ((s+t)/Real.sqrt 2) + f ((s-t)/Real.sqrt 2)
+            - f s - f t)
+          - (2 * f ((s+t)/Real.sqrt 2) - f (s+t))|
+          + |2 * f ((s-t)/Real.sqrt 2) - f (s-t)| := abs_sub _ _
+      _ ≤ (|2 * (f ((s+t)/Real.sqrt 2) + f ((s-t)/Real.sqrt 2)
+            - f s - f t)|
+          + |2 * f ((s+t)/Real.sqrt 2) - f (s+t)|)
+          + |2 * f ((s-t)/Real.sqrt 2) - f (s-t)| := by
+          have := abs_sub
+            (2 * (f ((s+t)/Real.sqrt 2) + f ((s-t)/Real.sqrt 2)
+              - f s - f t))
+            (2 * f ((s+t)/Real.sqrt 2) - f (s+t))
+          linarith
+      _ ≤ (2 * δ + δ) + δ := by
+          have ha : |2 * (f ((s+t)/Real.sqrt 2)
+              + f ((s-t)/Real.sqrt 2) - f s - f t)| ≤ 2 * δ := by
+            rw [abs_mul]
+            calc |(2:ℝ)| * |f ((s+t)/Real.sqrt 2)
+                + f ((s-t)/Real.sqrt 2) - f s - f t|
+                = 2 * |f ((s+t)/Real.sqrt 2)
+                    + f ((s-t)/Real.sqrt 2) - f s - f t| := by
+                  norm_num
+              _ ≤ 2 * δ := by linarith
+          linarith
+      _ = 4 * δ := by ring
+  obtain ⟨c, hc0, hc⟩ := monotone_quadratic_stability f (4*δ)
+    (by linarith) hf0 hmono hquad4
+  refine ⟨c, hc0, ?_⟩
+  intro x hx
+  calc |f x - c * x^2| ≤ (4*δ)/3 := hc x hx
+    _ = (4/3) * δ := by ring
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -3484,5 +3727,7 @@ theorem mixing_block_forces_measure_continuity {n : ℕ} (f : ℝ → ℝ)
 #print axioms jump_transport
 #print axioms exchange_descent_no_jump
 #print axioms mixing_block_forces_measure_continuity
+#print axioms monotone_quadratic_stability
+#print axioms approximate_beam_splitter_near_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

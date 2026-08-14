@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 51 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 53 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -502,6 +502,37 @@ coefficients are positive — so joint vanishing of the forbidden
 modes happens only at s in {0,1}, which would pin g linear.  The
 open lemma is exactly this coefficient nonvanishing plus a Mellin
 representation argument for monotone g.
+
+## STABILITY (2026-08-14, seventh pass): the reconstruction becomes
+## an experimental inequality
+
+All prior theorems assumed EXACT losslessness — an idealization no
+laboratory meets.  Now (file at 53 theorems):
+
+`monotone_quadratic_stability`: a monotone approximate solution of
+the quadratic functional equation (defect <= delta) is uniformly
+delta/3-close to an exact Born function.  Hyers' geometric sequence
+f(2^n x)/4^n provides the limit; crucially its classification uses
+OUR monotone rigidity (section 18) rather than the regularity
+assumptions of the classical Hyers-Ulam literature — the limit is
+monotone because f is, and monotone exact solutions are exactly
+x^2 c.
+
+`approximate_beam_splitter_near_born`: if the balanced-splitter
+losslessness holds only to precision delta (each probe's measure
+balance off by at most delta), the monotone measure is uniformly
+within (4/3)*delta of an exact Born function f(x) = c x^2.
+
+PHYSICS: FINITE-PRECISION INTERFERENCE DATA QUANTITATIVELY BOUNDS
+BORN-RULE DEVIATIONS.  A laboratory certifying measure balance to
+delta across one balanced interferometer's probe family certifies
+the Born weighting itself to (4/3)*delta — the measure-calculus
+analogue of the Sinha triple-slit bounds on the Sorkin parameter
+(those bound third-order interference; this bounds deviations of
+the measure function itself, over the entire monotone class, with
+no parametric deformation family assumed).  It converts the
+no-deformation no-go into an inequality an experiment can consume:
+near-losslessness forces near-Born, with an explicit constant.
 
 ## The theorem chain, with Lean witnesses per arrow
 
