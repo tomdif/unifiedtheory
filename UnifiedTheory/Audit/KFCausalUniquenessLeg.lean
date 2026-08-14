@@ -62,6 +62,26 @@
      gives sigma^m = 1 (`root_at_symmetric_order_forces_static`):
      the dynamics is measure-static, nothing ever happens
      (`divisible_time_forces_static`).
+  12. `root_at_group_exponent_forces_static` - the consumed root
+     order sharpened from n! to the group EXPONENT of S_n
+     (= lcm(1,...,n)): one lossless root at that order suffices.
+  13. `antiunitary_has_no_half_step` - the square of any semilinear
+     map is complex-linear, so a nonzero conjugate-linear
+     (antiunitary-type) step has NO square root among semilinear
+     maps: divisibility at m = 2 eliminates antiunitary evolution.
+     Purely algebraic - no norm needed.
+  14. `lossless_bijection_is_real_linear` - LINEARITY IS DERIVED
+     (Mazur-Ulam): for p >= 1, any surjective map preserving the
+     state measure and pairwise distinguishability is real-linear.
+     The linearity axiom A1 reduces to losslessness-of-information.
+  15. `born_function_unique` - THE BORN FUNCTION FROM MONOTONE
+     CAUCHY: a monotone measure additive over perpendicular
+     decompositions is exactly f(x) = x^2 f(1).  No continuity
+     assumed (monotone solutions of Cauchy's equation are linear:
+     `monotone_additive_on_cone_is_linear`).  The half of A6 that
+     classifies the measure GIVEN Pythagorean additivity is now a
+     theorem; deriving that additivity from a mixing lossless step
+     (Orlicz-Lamperti) is the registered open seam.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -75,6 +95,9 @@ import Mathlib.Analysis.MeanInequalitiesPow
 import Mathlib.Analysis.InnerProductSpace.Basic
 import Mathlib.GroupTheory.OrderOfElement
 import Mathlib.Data.Fintype.Perm
+import Mathlib.GroupTheory.Exponent
+import Mathlib.Analysis.Normed.Affine.MazurUlam
+import Mathlib.Analysis.Normed.Lp.PiLp
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -1187,6 +1210,331 @@ theorem change_and_divisibility_force_born {p : ℝ} (hp0 : 0 < p)
   exact hx (divisible_time_forces_static hp0 hp2 T hdiv x j)
 
 
+/-! ## 12. Sharpening the consumed root order: n! → exponent(Sₙ)
+
+The divisible-time theorem consumed a root at m = n!.  Lagrange only
+needs σ^m = 1 for every σ, i.e. m a multiple of the EXPONENT of the
+symmetric group — which is lcm(1,…,n), far below n! (e.g. n = 10:
+lcm = 2520 vs 10! = 3628800).  One lossless root at that single
+order already forces staticity. -/
+
+/-- Sharpened root order: a single lossless root at the exponent of
+`Equiv.Perm (Fin n)` (= lcm(1,…,n)) forces measure-staticity at
+p ≠ 2. -/
+theorem root_at_group_exponent_forces_static {p : ℝ} (hp0 : 0 < p)
+    (hp2 : p ≠ 2) {n : ℕ}
+    (S : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hS : ∀ x : Fin n → ℂ, ∑ i, ‖S x i‖ ^ p = ∑ i, ‖x i‖ ^ p) :
+    ∀ (x : Fin n → ℂ) (j : Fin n),
+      ‖(S ^ Monoid.exponent (Equiv.Perm (Fin n))) x j‖ = ‖x j‖ := by
+  obtain ⟨σ, hσ⟩ := frozen_measure_pow hp0 hp2 S hS
+  intro x j
+  have h := hσ (Monoid.exponent (Equiv.Perm (Fin n))) x j
+  rw [show σ ^ Monoid.exponent (Equiv.Perm (Fin n)) = 1 from
+    Monoid.pow_exponent_eq_one σ, Equiv.Perm.one_apply] at h
+  exact h
+
+/-! ## 13. Antiunitaries have no half-step
+
+Deriving only REAL-linearity (section 14) opens the Wigner gap: at
+p = 2 the real-linear lossless group contains antiunitaries
+(conjugate-linear isometries).  The divisibility axiom closes it at
+m = 2 already: the square of ANY semilinear map — linear or
+conjugate-linear — is complex-LINEAR, so a nonzero conjugate-linear
+step has no semilinear square root at all.  Time evolution is
+unitary rather than antiunitary because half-steps exist.  (That
+every real-linear lossless map at p = 2 is unitary or antiunitary
+is Wigner's classification, not formalized here; the semilinearity
+hypothesis records that seam.)  Purely algebraic: no norm appears. -/
+
+/-- The square of a semilinear map (complex-linear OR
+conjugate-linear) is always complex-linear. -/
+theorem square_of_semilinear_is_linear {n : ℕ}
+    (S : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hS : (∀ (z : ℂ) (x : Fin n → ℂ), S (z • x) = z • S x) ∨
+          (∀ (z : ℂ) (x : Fin n → ℂ),
+            S (z • x) = (starRingEnd ℂ) z • S x)) :
+    ∀ (z : ℂ) (x : Fin n → ℂ), (S * S) (z • x) = z • (S * S) x := by
+  intro z x
+  rcases hS with hlin | hconj
+  · rw [Module.End.mul_apply, hlin, hlin, Module.End.mul_apply]
+  · rw [Module.End.mul_apply, hconj, hconj, Complex.conj_conj,
+      Module.End.mul_apply]
+
+/-- A nonzero conjugate-linear (antiunitary-type) map has NO square
+root among semilinear maps: divisibility eliminates antiunitary
+evolution. -/
+theorem antiunitary_has_no_half_step {n : ℕ}
+    (T S : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ))
+    (hroot : S * S = T)
+    (hS : (∀ (z : ℂ) (x : Fin n → ℂ), S (z • x) = z • S x) ∨
+          (∀ (z : ℂ) (x : Fin n → ℂ),
+            S (z • x) = (starRingEnd ℂ) z • S x))
+    (hanti : ∀ (z : ℂ) (x : Fin n → ℂ),
+      T (z • x) = (starRingEnd ℂ) z • T x)
+    (hmove : ∃ x : Fin n → ℂ, T x ≠ 0) : False := by
+  obtain ⟨x, hx⟩ := hmove
+  have hlin := square_of_semilinear_is_linear S hS
+  rw [hroot] at hlin
+  have h1 := hlin Complex.I x
+  have h2 := hanti Complex.I x
+  rw [Complex.conj_I] at h2
+  rw [h2] at h1
+  have key : Complex.I • T x = -(Complex.I • T x) := by
+    rw [← neg_smul]
+    exact h1.symm
+  have h2a : Complex.I • T x + Complex.I • T x = 0 :=
+    add_eq_zero_iff_eq_neg.mpr key
+  have h2b : (2 : ℂ) • (Complex.I • T x) = 0 := by
+    rw [two_smul]
+    exact h2a
+  have h2c : Complex.I • T x = 0 := by
+    rcases smul_eq_zero.mp h2b with h | h
+    · norm_num at h
+    · exact h
+  rcases smul_eq_zero.mp h2c with h | h
+  · exact Complex.I_ne_zero h
+  · exact hx h
+
+/-! ## 14. Linearity is DERIVED: Mazur–Ulam
+
+The linearity axiom A1 reduces to losslessness.  Read losslessness
+as preservation of DISTINGUISHABILITY — the measure-distance between
+any two states, not merely the weight of each state.  Then for
+p ≥ 1 the measure-distance is a genuine metric (the ℓᵖ metric), a
+surjective distance-preserving map is affine by Mazur–Ulam, and the
+state-measure pins the base point: real-linearity is forced.  No
+linear structure is assumed of the dynamics — only that it is a
+surjection of the state space preserving weight and distance.
+
+Honest boundary: this yields REAL-linearity; complex-linearity vs
+conjugate-linearity is the Wigner gap, addressed at p = 2 by
+section 13.  For 0 < p < 1 the measure-distance is a quasi-metric
+and Mazur–Ulam does not apply — that band keeps linearity as an
+assumption. -/
+
+/-- LINEARITY DERIVED (Mazur–Ulam): for p ≥ 1, a surjective map of
+state space preserving the state measure and pairwise
+distinguishability is real-linear. -/
+theorem lossless_bijection_is_real_linear
+    {p : ℝ} (hp : 1 ≤ p) {n : ℕ}
+    (F : (Fin n → ℂ) → (Fin n → ℂ))
+    (hsurj : Function.Surjective F)
+    (hmeas : ∀ x : Fin n → ℂ, ∑ i, ‖F x i‖ ^ p = ∑ i, ‖x i‖ ^ p)
+    (hdist : ∀ x y : Fin n → ℂ,
+      ∑ i, ‖F x i - F y i‖ ^ p = ∑ i, ‖x i - y i‖ ^ p) :
+    (∀ x y : Fin n → ℂ, F (x + y) = F x + F y) ∧
+    (∀ (c : ℝ) (x : Fin n → ℂ), F (c • x) = c • F x) := by
+  classical
+  have hp0 : (0 : ℝ) < p := lt_of_lt_of_le zero_lt_one hp
+  have hzero : ∀ z : Fin n → ℂ, (∑ i, ‖z i‖ ^ p) = 0 → z = 0 := by
+    intro z hz
+    funext i
+    by_contra hne
+    have hpos : 0 < ‖z i‖ ^ p :=
+      Real.rpow_pos_of_pos (norm_pos_iff.mpr hne) p
+    have hle : ‖z i‖ ^ p ≤ ∑ k, ‖z k‖ ^ p :=
+      Finset.single_le_sum
+        (fun k _ => Real.rpow_nonneg (norm_nonneg _) p)
+        (Finset.mem_univ i)
+    rw [hz] at hle
+    linarith
+  have hinj : Function.Injective F := by
+    intro x y hxy
+    have h := hdist x y
+    rw [hxy] at h
+    have h0 : (∑ i, ‖x i - y i‖ ^ p) = 0 := by
+      rw [← h]
+      simp [Real.zero_rpow (ne_of_gt hp0)]
+    have := hzero _ h0
+    funext i
+    have := congrFun this i
+    simpa [sub_eq_zero] using this
+  have hF0 : F 0 = 0 := by
+    apply hzero
+    rw [hmeas]
+    simp [Real.zero_rpow (ne_of_gt hp0)]
+  set P : ENNReal := ENNReal.ofReal p with hP
+  have hPtoReal : P.toReal = p := ENNReal.toReal_ofReal (le_of_lt hp0)
+  have hPpos : 0 < P.toReal := by rw [hPtoReal]; exact hp0
+  haveI : Fact (1 ≤ P) := ⟨by
+    rw [hP]
+    exact_mod_cast ENNReal.one_le_ofReal.mpr hp⟩
+  let e0 : (Fin n → ℂ) ≃ (Fin n → ℂ) := Equiv.ofBijective F ⟨hinj, hsurj⟩
+  let e : PiLp P (fun _ : Fin n => ℂ) ≃ PiLp P (fun _ : Fin n => ℂ) :=
+    ((WithLp.equiv P _).trans e0).trans (WithLp.equiv P _).symm
+  have he_apply : ∀ x : PiLp P (fun _ : Fin n => ℂ),
+      e x = WithLp.toLp P (F (WithLp.ofLp x)) := fun _ => rfl
+  have hisom : Isometry e := by
+    apply Isometry.of_dist_eq
+    intro a b
+    rw [PiLp.dist_eq_sum hPpos, PiLp.dist_eq_sum hPpos]
+    congr 1
+    simp only [dist_eq_norm]
+    rw [hPtoReal]
+    exact hdist (WithLp.ofLp a) (WithLp.ofLp b)
+  let isom : PiLp P (fun _ : Fin n => ℂ) ≃ᵢ PiLp P (fun _ : Fin n => ℂ) :=
+    ⟨e, hisom⟩
+  have h0 : isom 0 = 0 := by
+    show e 0 = 0
+    rw [he_apply]
+    simp [hF0]
+  let L := isom.toRealLinearIsometryEquivOfMapZero h0
+  have hL : ∀ x : PiLp P (fun _ : Fin n => ℂ), L x = e x := by
+    intro x
+    show (isom.toRealLinearIsometryEquivOfMapZero h0) x = e x
+    rw [IsometryEquiv.coe_toRealLinearIsometryEquivOfMapZero]
+    rfl
+  constructor
+  · intro x y
+    have h := L.map_add (WithLp.toLp P x) (WithLp.toLp P y)
+    rw [hL, hL, hL] at h
+    rw [he_apply, he_apply, he_apply] at h
+    have h' := congrArg (WithLp.ofLp) h
+    simpa using h'
+  · intro c x
+    have h := L.map_smul c (WithLp.toLp P x)
+    rw [hL, hL] at h
+    rw [he_apply, he_apply] at h
+    have h' := congrArg (WithLp.ofLp) h
+    simpa using h'
+
+/-! ## 15. The Born FUNCTION from monotone Cauchy
+
+The last analytic plank A6 assumed the measure is |·|^p for some p,
+and the theorems above then picked p = 2.  This section removes the
+power-family assumption for the classification half: a measure
+additive over PERPENDICULAR decompositions and monotone in amplitude
+is exactly f(x) = x² f(1) — the Born function itself, not just its
+exponent.  No continuity is assumed anywhere: monotone solutions of
+Cauchy's functional equation are already linear (rationals pin the
+values, monotonicity squeezes the irrationals — Hamel-basis
+pathologies are killed by order, not topology).
+
+Registered open seam (the other half): deriving Pythagorean
+additivity of the measure from the EXISTENCE of a mixing lossless
+step — the Orlicz–Lamperti generalization of the structure theorem.
+With that, A6 dissolves entirely. -/
+
+/-- Monotone + additive on the nonnegative cone forces linearity.
+No continuity assumed. -/
+theorem monotone_additive_on_cone_is_linear (g : ℝ → ℝ)
+    (hadd : ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g (a + b) = g a + g b)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b) :
+    ∀ x : ℝ, 0 ≤ x → g x = x * g 1 := by
+  have g0 : g 0 = 0 := by
+    have h := hadd 0 0 le_rfl le_rfl
+    norm_num at h
+    linarith
+  have hnat : ∀ (k : ℕ) (x : ℝ), 0 ≤ x → g (k * x) = k * g x := by
+    intro k
+    induction k with
+    | zero => intro x _; simpa using g0
+    | succ k ih =>
+      intro x hx
+      have hkx : (0 : ℝ) ≤ k * x := mul_nonneg (Nat.cast_nonneg k) hx
+      have : ((k + 1 : ℕ) : ℝ) * x = k * x + x := by push_cast; ring
+      rw [this, hadd _ _ hkx hx, ih x hx]
+      push_cast
+      ring
+  have hratNN : ∀ (a b : ℕ), 0 < b → g (a / b) = (a / b) * g 1 := by
+    intro a b hb
+    have hbR : (0 : ℝ) < b := by exact_mod_cast hb
+    have hab : (0 : ℝ) ≤ a / b := div_nonneg (Nat.cast_nonneg a) (le_of_lt hbR)
+    have h1 : g ((b : ℝ) * (a / b)) = b * g (a / b) := hnat b _ hab
+    have h2 : (b : ℝ) * (a / b) = a := by field_simp
+    have h3 : g (a : ℝ) = a * g 1 := by
+      have := hnat a 1 zero_le_one
+      simpa using this
+    rw [h2, h3] at h1
+    field_simp at h1 ⊢
+    linarith
+  have hrat : ∀ q : ℚ, 0 ≤ q → g (q : ℝ) = (q : ℝ) * g 1 := by
+    intro q hq
+    have hnum : 0 ≤ q.num := Rat.num_nonneg.mpr hq
+    have hcast : ((q.num.toNat : ℕ) : ℝ) = (q.num : ℝ) := by
+      exact_mod_cast Int.toNat_of_nonneg hnum
+    have hden : 0 < q.den := q.pos
+    have hqR : (q : ℝ) = (q.num.toNat : ℝ) / (q.den : ℝ) := by
+      rw [hcast, Rat.cast_def]
+    rw [hqR]
+    exact hratNN q.num.toNat q.den hden
+  have hg1 : 0 ≤ g 1 := by
+    have := hmono 0 1 le_rfl zero_le_one
+    linarith [g0]
+  intro x hx
+  rcases eq_or_lt_of_le hg1 with hg1e | hg1pos
+  · obtain ⟨q, hq⟩ := exists_rat_gt x
+    have hq0 : (0 : ℚ) ≤ q := by exact_mod_cast le_of_lt (lt_of_le_of_lt hx hq)
+    have hup : g x ≤ g q := hmono _ _ hx (le_of_lt hq)
+    have hlo : g 0 ≤ g x := hmono _ _ le_rfl hx
+    rw [hrat q hq0, ← hg1e] at hup
+    rw [g0] at hlo
+    have : g x = 0 := le_antisymm (by simpa using hup) hlo
+    rw [this, ← hg1e]
+    ring
+  · apply le_antisymm
+    · apply le_of_forall_pos_le_add
+      intro ε hε
+      have hδ : 0 < ε / g 1 := div_pos hε hg1pos
+      obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn (lt_add_of_pos_right x hδ)
+      have hq0 : (0 : ℚ) ≤ q := by
+        exact_mod_cast le_of_lt (lt_of_le_of_lt hx hq1)
+      calc g x ≤ g q := hmono _ _ hx (le_of_lt hq1)
+        _ = q * g 1 := hrat q hq0
+        _ ≤ (x + ε / g 1) * g 1 :=
+            mul_le_mul_of_nonneg_right (le_of_lt hq2) hg1
+        _ = x * g 1 + ε := by field_simp
+    · apply le_of_forall_pos_le_add
+      intro ε hε
+      have hδ : 0 < ε / g 1 := div_pos hε hg1pos
+      by_cases hxs : x ≤ ε / g 1
+      · have h1 : x * g 1 ≤ ε := by
+          have := mul_le_mul_of_nonneg_right hxs hg1
+          calc x * g 1 ≤ (ε / g 1) * g 1 := this
+            _ = ε := by field_simp
+        have h2 : 0 ≤ g x := by
+          have := hmono 0 x le_rfl hx
+          linarith [g0]
+        linarith
+      · push_neg at hxs
+        obtain ⟨q, hq1, hq2⟩ := exists_rat_btwn (sub_lt_self x hδ)
+        have hq0 : (0 : ℚ) ≤ q := by
+          have : (0 : ℝ) < x - ε / g 1 := by linarith
+          exact_mod_cast le_of_lt (lt_trans this hq1)
+        calc x * g 1 = (x - ε / g 1) * g 1 + ε := by field_simp; ring
+          _ ≤ q * g 1 + ε := by
+              have := mul_le_mul_of_nonneg_right (le_of_lt hq1) hg1
+              linarith
+          _ = g q + ε := by rw [hrat q hq0]
+          _ ≤ g x + ε := by
+              have := hmono q x (by exact_mod_cast hq0) (le_of_lt hq2)
+              linarith
+
+/-- THE BORN FUNCTION IS UNIQUE: a monotone measure additive over
+perpendicular decompositions is exactly f(x) = x² f(1).  No
+continuity assumed. -/
+theorem born_function_unique (f : ℝ → ℝ)
+    (hpyth : ∀ s t : ℝ, 0 ≤ s → 0 ≤ t →
+      f (Real.sqrt (s + t)) = f (Real.sqrt s) + f (Real.sqrt t))
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  set g : ℝ → ℝ := fun t => f (Real.sqrt t) with hg
+  have hadd : ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g (a + b) = g a + g b := by
+    intro a b ha hb
+    exact hpyth a b ha hb
+  have hmonog : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b := by
+    intro a b ha hab
+    exact hmono _ _ (Real.sqrt_nonneg a) (Real.sqrt_le_sqrt hab)
+  have hlin := monotone_additive_on_cone_is_linear g hadd hmonog
+  intro x hx
+  have h := hlin (x ^ 2) (sq_nonneg x)
+  rw [hg] at h
+  simp only [] at h
+  rw [Real.sqrt_sq hx, Real.sqrt_one] at h
+  exact h
+
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -1208,5 +1556,11 @@ theorem change_and_divisibility_force_born {p : ℝ} (hp0 : 0 < p)
 #print axioms root_at_symmetric_order_forces_static
 #print axioms divisible_time_forces_static
 #print axioms change_and_divisibility_force_born
+#print axioms root_at_group_exponent_forces_static
+#print axioms square_of_semilinear_is_linear
+#print axioms antiunitary_has_no_half_step
+#print axioms lossless_bijection_is_real_linear
+#print axioms monotone_additive_on_cone_is_linear
+#print axioms born_function_unique
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 21 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 27 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -226,6 +226,69 @@ meaning of sub-steps of a lossless evolution.  Note the theorem
 needs only ONE root order, m = n!; full divisibility is assumed
 because that is the physical axiom, and the proof then chooses its
 weapon.
+
+## The purity pass (2026-08-14): reducing the axioms themselves
+
+Four further machine-checked reductions (same file, now 27 theorems):
+
+- `root_at_group_exponent_forces_static`: the consumed root order
+  sharpened from n! to the group exponent of S_n = lcm(1,...,n)
+  (n = 10: 2520 vs 3628800).  One lossless root at that single
+  order forces staticity.
+- `antiunitary_has_no_half_step` (+ `square_of_semilinear_is_linear`):
+  the square of ANY semilinear map — linear or conjugate-linear —
+  is complex-LINEAR, so a nonzero conjugate-linear (antiunitary)
+  step has no semilinear square root at all.  The divisibility
+  axiom, applied at m = 2, eliminates antiunitary evolution: time
+  evolution is unitary rather than antiunitary BECAUSE HALF-STEPS
+  EXIST.  Purely algebraic; no norm appears.  (That real-linear
+  lossless maps at p = 2 are unitary-or-antiunitary is Wigner's
+  classification — the recorded seam.)
+- `lossless_bijection_is_real_linear` (LINEARITY DERIVED,
+  Mazur-Ulam): for p >= 1, ANY surjective map of state space
+  preserving the state measure and pairwise distinguishability
+  (the measure-distance between any two states) is real-linear.
+  The linearity axiom A1 reduces to losslessness-of-information:
+  no linear structure is assumed of the dynamics.  Boundary:
+  0 < p < 1 is a quasi-metric band where Mazur-Ulam does not
+  apply; complex-vs-conjugate linearity is the Wigner gap, closed
+  at p = 2 by the half-step theorem above.
+- `born_function_unique` (+ `monotone_additive_on_cone_is_linear`,
+  THE BORN FUNCTION FROM MONOTONE CAUCHY): a measure additive over
+  perpendicular decompositions and monotone in amplitude is
+  EXACTLY f(x) = x^2 f(1) — the Born function itself, not merely
+  the exponent.  NO CONTINUITY ASSUMED: monotone solutions of
+  Cauchy's functional equation are linear (rationals pin the
+  values, order squeezes the irrationals; Hamel pathologies are
+  killed by monotonicity, not topology).  This makes the
+  classification half of A6 a theorem.  Registered open seam: the
+  existence half — deriving Pythagorean additivity of the measure
+  from a mixing lossless step (the Orlicz-Lamperti generalization
+  of the structure theorem).  With that, A6 dissolves entirely.
+
+The axiom set this pass targets, in its purest currently-motivated
+form:
+
+  * probability is additive over the alternatives time creates,
+    and monotone in amplitude          [born_function_unique makes
+                                        the quadratic form a THEOREM
+                                        given Pythagorean additivity]
+  * time passes without information loss
+                                       [now includes linearity via
+                                        Mazur-Ulam — A1 no longer
+                                        independent for p >= 1]
+  * time has no smallest step          [kills the permutation part
+                                        (n!/lcm root + Lagrange) AND
+                                        the antiunitary branch (m=2)]
+  * something happens                  [the nontriviality trigger]
+
+What remains genuinely assumed: the preferred branching basis (the
+additive decomposition the causal order supplies — physical bedrock,
+named, not hidden); finite dimension n (the lcm trick is finitary;
+note the infinite shift has NO m-th roots in Sym(Z), so divisibility
+constrains infinite permutations too — open); the Wigner
+classification seam; the Orlicz-Lamperti seam; and 0 < p < 1 for
+the Mazur-Ulam step.
 
 ## The theorem chain, with Lean witnesses per arrow
 
