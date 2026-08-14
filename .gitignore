@@ -8,3 +8,4 @@ lake-packages/
 .claude/
 .DS_Store
 **/.DS_Store
+.venv-ibmq/

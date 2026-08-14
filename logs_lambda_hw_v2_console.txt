@@ -1,0 +1,22 @@
+[    0.0s] connecting to IBM Quantum Platform
+[    3.2s] backend: ibm_marrakesh (156q), pending jobs: 0
+[    3.2s] transpiled 5 circuits; 2q-gate counts: [1, 2, 3, 10, 11]
+[    3.2s] submitting batch (20000 shots per circuit)
+[    4.3s] job id: d9vnvnob1g9c73a8u9fg
+[   55.5s] results received
+[   55.5s] --- record probabilities P_k(depth), T1-matched ---
+[   55.5s]   ancilla 0: d=1: 0.8829  d=2: 0.8679  d=3: 0.8765  d=4: 0.8642  d=5: 0.8468
+[   55.5s]   ancilla 1: d=2: 0.6080  d=3: 0.6011  d=4: 0.6083  d=5: 0.5798
+[   55.5s]   ancilla 2: d=3: 0.5716  d=4: 0.5698  d=5: 0.5658
+[   55.5s]   ancilla 3: d=4: 0.5242  d=5: 0.5299
+[   55.5s]   ancilla 4: d=5: 0.5234
+[   55.5s] --- regression estimators delta_k = P_k(k+1) - P_k(T) ---
+[   55.5s]   record 0: delta = +0.0361 ± 0.0034 (+10.6 sigma)
+[   55.5s]   record 1: delta = +0.0282 ± 0.0049 (+5.8 sigma)
+[   55.5s]   record 2: delta = +0.0059 ± 0.0050 (+1.2 sigma)
+[   55.5s]   record 3: delta = -0.0057 ± 0.0050 (-1.1 sigma)
+[   55.5s] --- VERDICT (registered readings, v2 matched) ---
+[   55.5s]   reading (ii) ONE-SIGNED EXCESS at records [0, 1]: FLAGGED FOR REPLICATION - no claim.
+[   55.5s]   bound if systematic: 0.0417
+[   55.5s] raw counts + analysis saved to logs_lambda_hw_v2_ibm_marrakesh_2026-08-14T205234.json
+[   55.5s] DONE
