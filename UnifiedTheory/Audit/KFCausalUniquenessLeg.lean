@@ -20,14 +20,24 @@
      telescoping) forces an abelian phase group, excluding
      quaternionic amplitudes.  Witness: i * j = -(j * i) != j * i in
      the quaternions.
-  4. `lamperti_two_by_two_gt_two` - the GENERAL p > 2 Lamperti
-     obstruction, for ALL real p > 2 at once: no 2x2 complex matrix
-     with nonzero mixing entries preserves the l^p norm of the four
-     probes e1, e2, (1,1), (1,-1).  Calculus-free proof:
-     parallelogram law + two-term Minkowski + strict superadditivity
-     of x^(p/2).  With p = 1 (item 2) machine-checked and 1 < p < 2
-     by the analytic t-expansion (UNIQUENESS_LEG.md, registered
-     debt), p = 2 is the unique mixing-compatible measure exponent.
+  4. `lamperti_two_by_two_gt_two` - the p > 2 Lamperti obstruction
+     at 2x2 (four probes e1, e2, (1,1), (1,-1); parallelogram +
+     Minkowski + strict superadditivity of x^(p/2)).
+  5. `lamperti_columns_ne_two` - THE COMPLETE LAMPERTI OBSTRUCTION:
+     every real p with 0 < p, p != 2, every dimension n, two columns
+     sharing one support coordinate.  Above p = 2: midpoint
+     convexity vs strict superadditivity of x^(p/2).  Below p = 2
+     everything mirrors: midpoint concavity vs strict subadditivity.
+     Same four probes decide the whole line.  Abstract cores:
+     `quadrature_probes_gt_one_impossible` / `_lt_one_impossible`.
+  6. `p_two_probes_force_unitary` - the p = 2 escape is EXACTLY
+     unitarity: probes e1, e2, (1,1), (1,i) force
+     conj a * b + conj c * d = 0.  The interference sector allowed
+     at p = 2 is precisely the unitary group.
+  7. `mixing_lossless_forces_p_eq_two` - NO-HYBRID THEOREM: a
+     lossless linear step that superposes two basis directions
+     anywhere forces p = 2 for the WHOLE space.  No lossless world
+     mixes a quantum sector with any other measure exponent.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -37,6 +47,7 @@ import Mathlib.Algebra.Quaternion
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
 import Mathlib.Analysis.MeanInequalities
+import Mathlib.Analysis.MeanInequalitiesPow
 import Mathlib.Analysis.InnerProductSpace.Basic
 
 set_option autoImplicit false
@@ -311,10 +322,427 @@ theorem lamperti_two_by_two_gt_two {p : ℝ} (hp : 2 < p)
   rw [final] at raise
   linarith
 
+
+
+/-! ## 5. The COMPLETE Lamperti obstruction: every p ≠ 2, every arity
+
+The 2x2 / p > 2 result above generalizes in two directions at once,
+with NO new analytic input:
+
+  (a) ARBITRARY ARITY: the proof never used dimension 2 - the
+      parallelogram law holds per coordinate and midpoint convexity /
+      superadditivity sum over any `Fin n`.
+  (b) THE WHOLE RANGE 0 < p < 2 AS WELL: for q = p/2 < 1 every
+      inequality REVERSES - x ^ q is midpoint-CONCAVE and strictly
+      SUBadditive - so the same four probes yield the mirror-image
+      contradiction.  (This corrects an earlier informal claim that
+      the four probes were slack below p = 2: they are not.  The
+      correct pairing is convexity-with-superadditivity above 2 and
+      concavity-with-subadditivity below 2.)
+
+Consequence: for EVERY real p with 0 < p, p ≠ 2, two columns of a
+lossless step that overlap at even ONE coordinate are impossible -
+column supports are pairwise disjoint and the dynamics is a weighted
+permutation (relabeled classical determinism).  Superposition at any
+branching of any arity forces p = 2 exactly. -/
+
+/-- Midpoint convexity of `x ^ q` for `q ≥ 1`. -/
+theorem rpow_midpoint_convex {q A B : ℝ} (hq : 1 ≤ q)
+    (hA : 0 ≤ A) (hB : 0 ≤ B) :
+    (A + B) ^ q ≤ 2 ^ (q - 1) * (A ^ q + B ^ q) := by
+  have hz : ∀ i ∈ (Finset.univ : Finset (Fin 2)), (0:ℝ) ≤ ![A, B] i := by
+    intro i _
+    fin_cases i
+    · exact hA
+    · exact hB
+  have h := Real.rpow_arith_mean_le_arith_mean_rpow
+    (Finset.univ : Finset (Fin 2)) (fun _ => (1:ℝ)/2) ![A, B]
+    (fun i _ => by norm_num) (by rw [Fin.sum_univ_two]; norm_num) hz hq
+  rw [Fin.sum_univ_two, Fin.sum_univ_two] at h
+  simp only [Matrix.cons_val_zero, Matrix.cons_val_one] at h
+  have hmul : (A + B) ^ q = 2 ^ q * ((1:ℝ)/2 * A + 1/2 * B) ^ q := by
+    rw [← Real.mul_rpow (by norm_num : (0:ℝ) ≤ 2)
+      (by linarith : (0:ℝ) ≤ 1/2 * A + 1/2 * B)]
+    congr 1
+    ring
+  have h2q : (0:ℝ) < 2 ^ q := Real.rpow_pos_of_pos two_pos q
+  calc (A + B) ^ q
+      = 2 ^ q * ((1:ℝ)/2 * A + 1/2 * B) ^ q := hmul
+    _ ≤ 2 ^ q * ((1:ℝ)/2 * A ^ q + 1/2 * B ^ q) :=
+        mul_le_mul_of_nonneg_left h h2q.le
+    _ = 2 ^ (q - 1) * (A ^ q + B ^ q) := by
+        rw [Real.rpow_sub two_pos, Real.rpow_one]
+        ring
+
+/-- Midpoint concavity of `x ^ q` for `0 < q ≤ 1`: obtained by
+applying midpoint convexity at exponent `1/q ≥ 1` to `A^q, B^q`. -/
+theorem rpow_midpoint_concave {q A B : ℝ} (hq0 : 0 < q) (hq1 : q ≤ 1)
+    (hA : 0 ≤ A) (hB : 0 ≤ B) :
+    2 ^ (q - 1) * (A ^ q + B ^ q) ≤ (A + B) ^ q := by
+  have hqinv : 1 ≤ 1 / q := by
+    rw [le_div_iff₀ hq0]; linarith
+  have h := rpow_midpoint_convex (q := 1 / q) (A := A ^ q) (B := B ^ q)
+    hqinv (Real.rpow_nonneg hA q) (Real.rpow_nonneg hB q)
+  have hAid : (A ^ q) ^ ((1:ℝ)/q) = A := by
+    rw [← Real.rpow_mul hA, mul_one_div, div_self (ne_of_gt hq0),
+      Real.rpow_one]
+  have hBid : (B ^ q) ^ ((1:ℝ)/q) = B := by
+    rw [← Real.rpow_mul hB, mul_one_div, div_self (ne_of_gt hq0),
+      Real.rpow_one]
+  rw [hAid, hBid] at h
+  -- h : (A^q + B^q) ^ (1/q) ≤ 2 ^ (1/q - 1) * (A + B)
+  have hsum0 : (0:ℝ) ≤ A ^ q + B ^ q := by
+    have := Real.rpow_nonneg hA q
+    have := Real.rpow_nonneg hB q
+    linarith
+  have h2 := Real.rpow_le_rpow (Real.rpow_nonneg hsum0 _) h hq0.le
+  rw [← Real.rpow_mul hsum0, show (1:ℝ)/q * q = 1 by field_simp,
+    Real.rpow_one] at h2
+  rw [Real.mul_rpow (Real.rpow_nonneg (by norm_num) _) (by linarith),
+    ← Real.rpow_mul (by norm_num : (0:ℝ) ≤ 2)] at h2
+  have hexp : ((1:ℝ)/q - 1) * q = 1 - q := by
+    field_simp
+  rw [hexp] at h2
+  -- h2 : A^q + B^q ≤ 2 ^ (1 - q) * (A + B) ^ q
+  have hq1pos : (0:ℝ) < 2 ^ (q - 1) := Real.rpow_pos_of_pos two_pos _
+  have hprod : (2:ℝ) ^ (q - 1) * 2 ^ ((1:ℝ) - q) = 1 := by
+    rw [← Real.rpow_add two_pos]
+    norm_num
+  calc 2 ^ (q - 1) * (A ^ q + B ^ q)
+      ≤ 2 ^ (q - 1) * (2 ^ ((1:ℝ) - q) * (A + B) ^ q) :=
+        mul_le_mul_of_nonneg_left h2 hq1pos.le
+    _ = (2 ^ (q - 1) * 2 ^ ((1:ℝ) - q)) * (A + B) ^ q := by ring
+    _ = (A + B) ^ q := by rw [hprod, one_mul]
+
+/-- Strict SUBadditivity of `x ^ q` for `0 < q < 1` on positives
+(mirror of `rpow_superadd_strict`). -/
+theorem rpow_subadd_strict {q A B : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
+    (hA : 0 < A) (hB : 0 < B) : (A + B) ^ q < A ^ q + B ^ q := by
+  have hAB : 0 < A + B := by linarith
+  have hs : A / (A + B) < 1 := by
+    rw [div_lt_one hAB]; linarith
+  have ht : B / (A + B) < 1 := by
+    rw [div_lt_one hAB]; linarith
+  have hs0 : 0 < A / (A + B) := div_pos hA hAB
+  have ht0 : 0 < B / (A + B) := div_pos hB hAB
+  have key1 : A / (A + B) < (A / (A + B)) ^ q := by
+    have h := Real.rpow_lt_rpow_of_exponent_gt hs0 hs hq1
+    rwa [Real.rpow_one] at h
+  have key2 : B / (A + B) < (B / (A + B)) ^ q := by
+    have h := Real.rpow_lt_rpow_of_exponent_gt ht0 ht hq1
+    rwa [Real.rpow_one] at h
+  have hApos : (0:ℝ) < (A + B) ^ q := Real.rpow_pos_of_pos hAB q
+  have eA : A = (A + B) * (A / (A + B)) := by field_simp
+  have eB : B = (A + B) * (B / (A + B)) := by field_simp
+  have hA' : A ^ q = (A + B) ^ q * (A / (A + B)) ^ q := by
+    conv_lhs => rw [eA]
+    rw [Real.mul_rpow hAB.le hs0.le]
+  have hB' : B ^ q = (A + B) ^ q * (B / (A + B)) ^ q := by
+    conv_lhs => rw [eB]
+    rw [Real.mul_rpow hAB.le ht0.le]
+  have hsum : A / (A + B) + B / (A + B) = 1 := by field_simp
+  calc (A + B) ^ q
+      = (A + B) ^ q * (A / (A + B) + B / (A + B)) := by
+        rw [hsum, mul_one]
+    _ < (A + B) ^ q * ((A / (A + B)) ^ q + (B / (A + B)) ^ q) :=
+        mul_lt_mul_of_pos_left (add_lt_add key1 key2) hApos
+    _ = A ^ q + B ^ q := by rw [hA', hB']; ring
+
+/-- Nonstrict subadditivity (allows zero arguments). -/
+theorem rpow_subadd {q A B : ℝ} (hq0 : 0 < q) (hq1 : q < 1)
+    (hA : 0 ≤ A) (hB : 0 ≤ B) : (A + B) ^ q ≤ A ^ q + B ^ q := by
+  rcases eq_or_lt_of_le hA with h | h
+  · rw [← h, Real.zero_rpow (ne_of_gt hq0)]; simp
+  rcases eq_or_lt_of_le hB with h2 | h2
+  · rw [← h2, Real.zero_rpow (ne_of_gt hq0)]; simp
+  exact (rpow_subadd_strict hq0 hq1 h h2).le
+
+/-- Abstract quadrature rigidity, q > 1: nonnegative sequences
+coupled by the parallelogram identity cannot satisfy the four probe
+sums (1,1,2,2) if any coordinate has both parents strictly positive.
+Upper bound by midpoint convexity, lower by strict superadditivity. -/
+theorem quadrature_probes_gt_one_impossible {q : ℝ} (hq : 1 < q)
+    {n : ℕ} (P Q A B : Fin n → ℝ)
+    (hP : ∀ i, 0 ≤ P i) (hQ : ∀ i, 0 ≤ Q i)
+    (hA : ∀ i, 0 ≤ A i) (hB : ∀ i, 0 ≤ B i)
+    (hpar : ∀ i, A i + B i = 2 * (P i + Q i))
+    (k : Fin n) (hPk : 0 < P k) (hQk : 0 < Q k)
+    (s1 : ∑ i, P i ^ q = 1) (s2 : ∑ i, Q i ^ q = 1)
+    (s3 : ∑ i, A i ^ q = 2) (s4 : ∑ i, B i ^ q = 2) : False := by
+  have h2q : (2:ℝ) ^ (q - 1) = 2 ^ q / 2 := by
+    rw [Real.rpow_sub two_pos, Real.rpow_one]
+  have upper : ∑ i, (A i + B i) ^ q ≤ 2 ^ q * 2 := by
+    calc ∑ i, (A i + B i) ^ q
+        ≤ ∑ i, 2 ^ (q - 1) * (A i ^ q + B i ^ q) :=
+          Finset.sum_le_sum fun i _ =>
+            rpow_midpoint_convex hq.le (hA i) (hB i)
+      _ = 2 ^ (q - 1) * ((∑ i, A i ^ q) + (∑ i, B i ^ q)) := by
+          rw [← Finset.mul_sum, Finset.sum_add_distrib]
+      _ = 2 ^ q * 2 := by rw [s3, s4, h2q]; ring
+  have lower : 2 ^ q * 2 < ∑ i, (A i + B i) ^ q := by
+    have hle : ∀ i ∈ (Finset.univ : Finset (Fin n)),
+        (2 * P i) ^ q + (2 * Q i) ^ q ≤ (A i + B i) ^ q := by
+      intro i _
+      rw [hpar i, show (2:ℝ) * (P i + Q i) = 2 * P i + 2 * Q i by ring]
+      exact rpow_superadd hq (by have := hP i; linarith)
+        (by have := hQ i; linarith)
+    have hlt : ∃ i ∈ (Finset.univ : Finset (Fin n)),
+        (2 * P i) ^ q + (2 * Q i) ^ q < (A i + B i) ^ q := by
+      refine ⟨k, Finset.mem_univ k, ?_⟩
+      rw [hpar k, show (2:ℝ) * (P k + Q k) = 2 * P k + 2 * Q k by ring]
+      exact rpow_superadd_strict hq (by linarith) (by linarith)
+    have hsum := Finset.sum_lt_sum hle hlt
+    have heval : ∑ i, ((2 * P i) ^ q + (2 * Q i) ^ q) = 2 ^ q * 2 := by
+      rw [Finset.sum_add_distrib]
+      have e1 : ∑ i, (2 * P i) ^ q = 2 ^ q * ∑ i, P i ^ q := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun i _ =>
+          Real.mul_rpow (by norm_num) (hP i)
+      have e2 : ∑ i, (2 * Q i) ^ q = 2 ^ q * ∑ i, Q i ^ q := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun i _ =>
+          Real.mul_rpow (by norm_num) (hQ i)
+      rw [e1, e2, s1, s2]; ring
+    rwa [heval] at hsum
+  linarith
+
+/-- Abstract quadrature rigidity, 0 < q < 1: the mirror image -
+lower bound by midpoint concavity, upper by strict subadditivity. -/
+theorem quadrature_probes_lt_one_impossible {q : ℝ} (hq0 : 0 < q)
+    (hq1 : q < 1) {n : ℕ} (P Q A B : Fin n → ℝ)
+    (hP : ∀ i, 0 ≤ P i) (hQ : ∀ i, 0 ≤ Q i)
+    (hA : ∀ i, 0 ≤ A i) (hB : ∀ i, 0 ≤ B i)
+    (hpar : ∀ i, A i + B i = 2 * (P i + Q i))
+    (k : Fin n) (hPk : 0 < P k) (hQk : 0 < Q k)
+    (s1 : ∑ i, P i ^ q = 1) (s2 : ∑ i, Q i ^ q = 1)
+    (s3 : ∑ i, A i ^ q = 2) (s4 : ∑ i, B i ^ q = 2) : False := by
+  have h2q : (2:ℝ) ^ (q - 1) = 2 ^ q / 2 := by
+    rw [Real.rpow_sub two_pos, Real.rpow_one]
+  have lower : 2 ^ q * 2 ≤ ∑ i, (A i + B i) ^ q := by
+    calc 2 ^ q * 2
+        = 2 ^ (q - 1) * ((∑ i, A i ^ q) + (∑ i, B i ^ q)) := by
+          rw [s3, s4, h2q]; ring
+      _ = ∑ i, 2 ^ (q - 1) * (A i ^ q + B i ^ q) := by
+          rw [← Finset.sum_add_distrib, Finset.mul_sum]
+      _ ≤ ∑ i, (A i + B i) ^ q :=
+          Finset.sum_le_sum fun i _ =>
+            rpow_midpoint_concave hq0 hq1.le (hA i) (hB i)
+  have upper : ∑ i, (A i + B i) ^ q < 2 ^ q * 2 := by
+    have hle : ∀ i ∈ (Finset.univ : Finset (Fin n)),
+        (A i + B i) ^ q ≤ (2 * P i) ^ q + (2 * Q i) ^ q := by
+      intro i _
+      rw [hpar i, show (2:ℝ) * (P i + Q i) = 2 * P i + 2 * Q i by ring]
+      exact rpow_subadd hq0 hq1 (by have := hP i; linarith)
+        (by have := hQ i; linarith)
+    have hlt : ∃ i ∈ (Finset.univ : Finset (Fin n)),
+        (A i + B i) ^ q < (2 * P i) ^ q + (2 * Q i) ^ q := by
+      refine ⟨k, Finset.mem_univ k, ?_⟩
+      rw [hpar k, show (2:ℝ) * (P k + Q k) = 2 * P k + 2 * Q k by ring]
+      exact rpow_subadd_strict hq0 hq1 (by linarith) (by linarith)
+    have hsum := Finset.sum_lt_sum hle hlt
+    have heval : ∑ i, ((2 * P i) ^ q + (2 * Q i) ^ q) = 2 ^ q * 2 := by
+      rw [Finset.sum_add_distrib]
+      have e1 : ∑ i, (2 * P i) ^ q = 2 ^ q * ∑ i, P i ^ q := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun i _ =>
+          Real.mul_rpow (by norm_num) (hP i)
+      have e2 : ∑ i, (2 * Q i) ^ q = 2 ^ q * ∑ i, Q i ^ q := by
+        rw [Finset.mul_sum]
+        exact Finset.sum_congr rfl fun i _ =>
+          Real.mul_rpow (by norm_num) (hQ i)
+      rw [e1, e2, s1, s2]; ring
+    rwa [heval] at hsum
+  linarith
+
+/-- THE COMPLETE LAMPERTI OBSTRUCTION, machine-checked: for every
+real p with 0 < p and p ≠ 2, in every dimension n, two columns
+u, v of a lossless step that satisfy the four l^p probes and share
+even one support coordinate are impossible.  Column supports of a
+p-isometric step are pairwise disjoint: the dynamics is a weighted
+permutation, and superposition at ANY branching arity forces
+p = 2 exactly. -/
+theorem lamperti_columns_ne_two {p : ℝ} (hp0 : 0 < p) (hp2 : p ≠ 2)
+    {n : ℕ} (u v : Fin n → ℂ) (k : Fin n)
+    (hu : u k ≠ 0) (hv : v k ≠ 0)
+    (he1 : ∑ i, ‖u i‖ ^ p = 1) (he2 : ∑ i, ‖v i‖ ^ p = 1)
+    (hplus : ∑ i, ‖u i + v i‖ ^ p = 2)
+    (hminus : ∑ i, ‖u i - v i‖ ^ p = 2) : False := by
+  set q : ℝ := p / 2 with hqdef
+  have hq0 : 0 < q := by rw [hqdef]; linarith
+  have conv : ∀ z : ℂ, ‖z‖ ^ p = (‖z‖ * ‖z‖) ^ q := by
+    intro z
+    have h2q : p = 2 * q := by rw [hqdef]; ring
+    have hsq : ‖z‖ * ‖z‖ = ‖z‖ ^ (2:ℝ) := by
+      rw [show (2:ℝ) = ((2:ℕ):ℝ) by norm_num, Real.rpow_natCast]
+      ring
+    rw [h2q, hsq, ← Real.rpow_mul (norm_nonneg z)]
+  have c1 : ∑ i, (‖u i‖ * ‖u i‖) ^ q = 1 :=
+    (Finset.sum_congr rfl fun i _ => (conv (u i)).symm).trans he1
+  have c2 : ∑ i, (‖v i‖ * ‖v i‖) ^ q = 1 :=
+    (Finset.sum_congr rfl fun i _ => (conv (v i)).symm).trans he2
+  have c3 : ∑ i, (‖u i + v i‖ * ‖u i + v i‖) ^ q = 2 :=
+    (Finset.sum_congr rfl fun i _ => (conv (u i + v i)).symm).trans hplus
+  have c4 : ∑ i, (‖u i - v i‖ * ‖u i - v i‖) ^ q = 2 :=
+    (Finset.sum_congr rfl fun i _ => (conv (u i - v i)).symm).trans hminus
+  have hpar : ∀ i : Fin n,
+      ‖u i + v i‖ * ‖u i + v i‖ + ‖u i - v i‖ * ‖u i - v i‖
+      = 2 * (‖u i‖ * ‖u i‖ + ‖v i‖ * ‖v i‖) :=
+    fun i => parallelogram_law_with_norm ℂ (u i) (v i)
+  have hPk : 0 < ‖u k‖ * ‖u k‖ :=
+    mul_pos (norm_pos_iff.mpr hu) (norm_pos_iff.mpr hu)
+  have hQk : 0 < ‖v k‖ * ‖v k‖ :=
+    mul_pos (norm_pos_iff.mpr hv) (norm_pos_iff.mpr hv)
+  rcases lt_or_gt_of_ne hp2 with h | h
+  · have hq1 : q < 1 := by rw [hqdef]; linarith
+    exact quadrature_probes_lt_one_impossible hq0 hq1
+      (fun i => ‖u i‖ * ‖u i‖) (fun i => ‖v i‖ * ‖v i‖)
+      (fun i => ‖u i + v i‖ * ‖u i + v i‖)
+      (fun i => ‖u i - v i‖ * ‖u i - v i‖)
+      (fun i => by positivity) (fun i => by positivity)
+      (fun i => by positivity) (fun i => by positivity)
+      hpar k hPk hQk c1 c2 c3 c4
+  · have hq1 : 1 < q := by rw [hqdef]; linarith
+    exact quadrature_probes_gt_one_impossible hq1
+      (fun i => ‖u i‖ * ‖u i‖) (fun i => ‖v i‖ * ‖v i‖)
+      (fun i => ‖u i + v i‖ * ‖u i + v i‖)
+      (fun i => ‖u i - v i‖ * ‖u i - v i‖)
+      (fun i => by positivity) (fun i => by positivity)
+      (fun i => by positivity) (fun i => by positivity)
+      hpar k hPk hQk c1 c2 c3 c4
+
+/-! ## 6. The p = 2 escape is EXACTLY unitarity -/
+
+/-- At p = 2 the probes do not merely fail to forbid mixing - they
+force column orthogonality.  Four probes (e₁, e₂, (1,1), (1,i))
+pin the full complex inner product: conj a · b + conj c · d = 0.
+With the normalization probes this says the matrix is unitary: the
+interference sector allowed at p = 2 is exactly the unitary group. -/
+theorem p_two_probes_force_unitary (a b c d : ℂ)
+    (he1 : ‖a‖ * ‖a‖ + ‖c‖ * ‖c‖ = 1)
+    (he2 : ‖b‖ * ‖b‖ + ‖d‖ * ‖d‖ = 1)
+    (hplus : ‖a + b‖ * ‖a + b‖ + ‖c + d‖ * ‖c + d‖ = 2)
+    (hplusI : ‖a + Complex.I * b‖ * ‖a + Complex.I * b‖
+      + ‖c + Complex.I * d‖ * ‖c + Complex.I * d‖ = 2) :
+    (starRingEnd ℂ) a * b + (starRingEnd ℂ) c * d = 0 := by
+  have exp1 := norm_add_mul_self (𝕜 := ℂ) a b
+  have exp2 := norm_add_mul_self (𝕜 := ℂ) c d
+  have exp3 := norm_add_mul_self (𝕜 := ℂ) a (Complex.I * b)
+  have exp4 := norm_add_mul_self (𝕜 := ℂ) c (Complex.I * d)
+  rw [RCLike.inner_apply, RCLike.re_to_complex] at exp1 exp2 exp3 exp4
+  have hIb : ‖Complex.I * b‖ * ‖Complex.I * b‖ = ‖b‖ * ‖b‖ := by
+    rw [norm_mul, Complex.norm_I, one_mul]
+  have hId : ‖Complex.I * d‖ * ‖Complex.I * d‖ = ‖d‖ * ‖d‖ := by
+    rw [norm_mul, Complex.norm_I, one_mul]
+  rw [hIb] at exp3
+  rw [hId] at exp4
+  have hre : (b * (starRingEnd ℂ) a).re + (d * (starRingEnd ℂ) c).re
+      = 0 := by
+    have hp := hplus
+    rw [exp1, exp2] at hp
+    linarith
+  have him : (b * (starRingEnd ℂ) a).im + (d * (starRingEnd ℂ) c).im
+      = 0 := by
+    have h3 : (Complex.I * b * (starRingEnd ℂ) a).re
+        = -(b * (starRingEnd ℂ) a).im := by
+      rw [mul_assoc, Complex.I_mul_re]
+    have h4 : (Complex.I * d * (starRingEnd ℂ) c).re
+        = -(d * (starRingEnd ℂ) c).im := by
+      rw [mul_assoc, Complex.I_mul_re]
+    have hp := hplusI
+    rw [exp3, exp4, h3, h4] at hp
+    linarith
+  have hzero : b * (starRingEnd ℂ) a + d * (starRingEnd ℂ) c = 0 := by
+    apply Complex.ext
+    · rw [Complex.add_re, Complex.zero_re]; exact hre
+    · rw [Complex.add_im, Complex.zero_im]; exact him
+  calc (starRingEnd ℂ) a * b + (starRingEnd ℂ) c * d
+      = b * (starRingEnd ℂ) a + d * (starRingEnd ℂ) c := by ring
+    _ = 0 := hzero
+
+/-! ## 7. No hybrid worlds: the measure exponent is GLOBAL -/
+
+/-- NO-HYBRID THEOREM: a linear step that preserves the total
+|·|^p measure on all states and superposes ANY two basis directions
+anywhere (both columns nonzero at one common coordinate) forces
+p = 2 - for the WHOLE space at once.  There is no lossless dynamics
+in which a mixing (quantum) sector coexists with a sector governed
+by any other measure exponent: one interference event anywhere
+forces the Born exponent everywhere. -/
+theorem mixing_lossless_forces_p_eq_two {p : ℝ} (hp0 : 0 < p)
+    {n : ℕ} (T : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, ‖T x i‖ ^ p = ∑ i, ‖x i‖ ^ p)
+    (j₁ j₂ : Fin n) (hj : j₁ ≠ j₂) (k : Fin n)
+    (h1 : T (Pi.single j₁ 1) k ≠ 0) (h2 : T (Pi.single j₂ 1) k ≠ 0) :
+    p = 2 := by
+  by_contra hp2
+  have hp0' : p ≠ 0 := ne_of_gt hp0
+  have single_sum : ∀ j : Fin n,
+      ∑ i, ‖(Pi.single j 1 : Fin n → ℂ) i‖ ^ p = 1 := by
+    intro j
+    rw [Finset.sum_eq_single j]
+    · rw [Pi.single_eq_same, norm_one, Real.one_rpow]
+    · intro i _ hne
+      rw [Pi.single_eq_of_ne hne, norm_zero, Real.zero_rpow hp0']
+    · intro hmem
+      exact absurd (Finset.mem_univ j) hmem
+  have pair_add : ∑ i,
+      ‖((Pi.single j₁ 1 + Pi.single j₂ 1 : Fin n → ℂ)) i‖ ^ p = 2 := by
+    have hzero : ∀ i ∈ Finset.univ,
+        i ∉ ({j₁, j₂} : Finset (Fin n)) →
+        ‖((Pi.single j₁ 1 + Pi.single j₂ 1 : Fin n → ℂ)) i‖ ^ p = 0 := by
+      intro i _ hi
+      simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+      rw [Pi.add_apply, Pi.single_eq_of_ne hi.1, Pi.single_eq_of_ne hi.2,
+        add_zero, norm_zero, Real.zero_rpow hp0']
+    rw [← Finset.sum_subset (Finset.subset_univ _) hzero,
+      Finset.sum_insert (by simpa using hj), Finset.sum_singleton]
+    simp only [Pi.add_apply, Pi.single_eq_same,
+      Pi.single_eq_of_ne hj, Pi.single_eq_of_ne hj.symm,
+      add_zero, zero_add, norm_one, Real.one_rpow]
+    norm_num
+  have pair_sub : ∑ i,
+      ‖((Pi.single j₁ 1 - Pi.single j₂ 1 : Fin n → ℂ)) i‖ ^ p = 2 := by
+    have hzero : ∀ i ∈ Finset.univ,
+        i ∉ ({j₁, j₂} : Finset (Fin n)) →
+        ‖((Pi.single j₁ 1 - Pi.single j₂ 1 : Fin n → ℂ)) i‖ ^ p = 0 := by
+      intro i _ hi
+      simp only [Finset.mem_insert, Finset.mem_singleton, not_or] at hi
+      rw [Pi.sub_apply, Pi.single_eq_of_ne hi.1, Pi.single_eq_of_ne hi.2,
+        sub_zero, norm_zero, Real.zero_rpow hp0']
+    rw [← Finset.sum_subset (Finset.subset_univ _) hzero,
+      Finset.sum_insert (by simpa using hj), Finset.sum_singleton]
+    simp only [Pi.sub_apply, Pi.single_eq_same,
+      Pi.single_eq_of_ne hj, Pi.single_eq_of_ne hj.symm,
+      sub_zero, zero_sub, norm_neg, norm_one, Real.one_rpow]
+    norm_num
+  refine lamperti_columns_ne_two hp0 hp2
+    (T (Pi.single j₁ 1)) (T (Pi.single j₂ 1)) k h1 h2 ?_ ?_ ?_ ?_
+  · exact (hiso _).trans (single_sum j₁)
+  · exact (hiso _).trans (single_sum j₂)
+  · calc ∑ i, ‖T (Pi.single j₁ 1) i + T (Pi.single j₂ 1) i‖ ^ p
+        = ∑ i, ‖T (Pi.single j₁ 1 + Pi.single j₂ 1) i‖ ^ p := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [map_add, Pi.add_apply]
+      _ = 2 := (hiso _).trans pair_add
+  · calc ∑ i, ‖T (Pi.single j₁ 1) i - T (Pi.single j₂ 1) i‖ ^ p
+        = ∑ i, ‖T (Pi.single j₁ 1 - Pi.single j₂ 1) i‖ ^ p := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [map_sub, Pi.sub_apply]
+      _ = 2 := (hiso _).trans pair_sub
+
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
 #print axioms rpow_superadd_strict
 #print axioms lamperti_two_by_two_gt_two
+#print axioms rpow_midpoint_convex
+#print axioms rpow_midpoint_concave
+#print axioms rpow_subadd_strict
+#print axioms quadrature_probes_gt_one_impossible
+#print axioms quadrature_probes_lt_one_impossible
+#print axioms lamperti_columns_ne_two
+#print axioms p_two_probes_force_unitary
+#print axioms mixing_lossless_forces_p_eq_two
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

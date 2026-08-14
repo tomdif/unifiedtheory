@@ -107,29 +107,67 @@ supports globally (the Lamperti structure).
 - Octonions fail associativity before commutativity; excluded a
   fortiori by A2.
 
-## Formalization status
+## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean): real-binary
-determinism; the p = 1 Lamperti instance (discrete witness vectors,
-full proof); quaternion path-order witness; AND the general p > 2
-Lamperti obstruction (`lamperti_two_by_two_gt_two`) - for EVERY real
-p > 2 simultaneously, machine-checked.  The p > 2 case needed no
-calculus: with q = p/2 > 1 and squared-norm variables, the
-parallelogram law gives A_i + B_i = 2(P_i + Q_i) per coordinate; the
-four probes plus two-term Minkowski (Real.Lp_add_le) bound
-S = sum (A_i+B_i)^q <= 2^q * 2 from above, while STRICT
-superadditivity of x^q (proved from x^q < x on (0,1), i.e.
-Real.rpow_lt_rpow_of_exponent_gt) forces S > 2^q * 2 from below
-whenever both mixing entries are nonzero.  Contradiction, no Taylor
-expansion.
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 13 theorems):
+real-binary determinism; the p = 1 discrete instance; quaternion
+path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
+Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
+dimension n, from the same four probes e1, e2, (1,1), (1,-1).
 
-Remaining Lean debt: exactly the band 1 < p < 2, where the same four
-probes are provably SLACK (both global inequalities point the same
-way), so any formalization must use either the full isometry
-hypothesis (t-expansion, as in the analytic proof above) or duality
-p -> p/(p-1) > 2 with the adjoint operator.  This band remains
-covered by the rigorous analytic proof above; the Lean gap is
-registered, not claimed.
+The proof needs no calculus and no duality.  With q = p/2 and
+squared-norm variables, the parallelogram law couples the probe
+coordinates: A_i + B_i = 2(P_i + Q_i).  Then:
+
+  p > 2 (q > 1):  midpoint CONVEXITY of x^q bounds
+    S = sum (A_i+B_i)^q <= 2^q * 2 from above, while STRICT
+    SUPERadditivity (from x^q < x on (0,1)) forces S > 2^q * 2 at
+    any coordinate where both columns are nonzero.
+  0 < p < 2 (q < 1):  everything mirrors.  Midpoint CONCAVITY
+    bounds S >= 2^q * 2 from below, while STRICT SUBadditivity
+    forces S < 2^q * 2.  Same probes, inequalities reversed.
+
+CORRECTION (2026-08-13): an earlier version of this note claimed the
+four probes were provably slack for 1 < p < 2, so that band would
+need the t-expansion or duality.  That claim was WRONG - it paired
+the inequalities the wrong way (forward Minkowski is simply invalid
+for q < 1; the valid tools at q < 1 are concavity and subadditivity,
+and they point in exactly the directions needed).  The t-expansion
+in the section above remains a correct alternative proof, but it is
+no longer load-bearing: there is no remaining analytic debt in the
+Lamperti leg.
+
+Also machine-checked, new consequences:
+
+- `p_two_probes_force_unitary`: at p = 2 the probes e1, e2, (1,1),
+  (1,i) force conj(a)b + conj(c)d = 0 - the escape hatch at p = 2 is
+  EXACTLY the unitary group.  "Lossless + mixing => unitary" is now
+  a theorem, completing the dichotomy from both sides.
+- `mixing_lossless_forces_p_eq_two` (NO-HYBRID THEOREM): a linear
+  step preserving the total |.|^p measure that superposes any two
+  basis directions anywhere forces p = 2 for the whole space.  There
+  is no lossless world in which a quantum sector coexists with a
+  measurement apparatus (or any sector) running on a different
+  measure exponent: one interference event anywhere forces the Born
+  rule everywhere.  This is why the classical world does not get its
+  own probability calculus.
+
+## The theorem chain, with Lean witnesses per arrow
+
+  A3 + A5 (lossless + some step mixes)
+    => p = 2                    [mixing_lossless_forces_p_eq_two]
+    => step is unitary          [p_two_probes_force_unitary]
+    => amplitudes not real      [real_binary_bi_normalized_deterministic]
+    => phases commute (not H)   [phase_order_matters_in_quaternions]
+    => complex Born structure, root phase pi/4
+                                [root_phase_is_pi_div_four, in
+                                 KFCausalBornQuadraturePhase.lean]
+
+The only analytic (non-Lean) input remaining in the uniqueness
+theorem is axiom A6's classification step (continuous multiplicative
+measure => |.|^p), which is classical real analysis, and the
+identification of physical losslessness with linear measure-norm
+preservation (A3), which is the physical content, not mathematics.
 
 ## Scope
 
