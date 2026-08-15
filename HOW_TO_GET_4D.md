@@ -1,77 +1,59 @@
-# How to get emergent 4D — the mechanistic answer (2026-08-15)
+# How to get emergent 4D — CORRECTED (2026-08-15)
 
-## The finding: the growth class is LOCALLY 2-DIMENSIONAL at every
-## phase — you do not get 4D by tuning phi.
+## RETRACTION of the same-day "locked at d_int = 2" claim
 
-`emergent_4d_search.py` measures the MANIFOLD-FAITHFUL dimension:
-the interval (Alexandrov) dimension d_int of order-intervals
-I(x,y) = {z : x<z<y}, binned by interval size, inverted from the
-internal ordering fraction via the exact Myrheim-Meyer continuum
-table.  Unlike the global ordering fraction (which mixes scales and
-is dominated by large-scale hyper-ordering), d_int is meaningful
-because each interval IS a causal diamond by construction.
+The earlier version of this note reported d_int = 2.00 EXACTLY at
+every phase and every interval size, and concluded the growth class
+is locally 2-dimensional with phase-independence.  That result was
+an ESTIMATOR ARTIFACT, caught when asked to promote it to a theorem:
+the Myrheim-Meyer inverter passed a NON-MONOTONIC xp array to
+np.interp, which silently clamps every ordering fraction f <= 0.5 to
+d = 2.00.  Every "2.00" in that table was the clamp, not physics.
+The claim "free-downset sequential growth is locked at d_int = 2" is
+therefore REFUTED as stated - it was never supported by the data.
 
-Scan over seven action phases including both physically-selected
-values (n=30, thousands of intervals per size-bin):
+Diagnostic fingerprint for the future: a measured dimension landing
+on an exact integer, identically across all conditions and bin
+sizes, is an estimator pathology until proven otherwise.  (Same
+family as the calibrate-before-hash and diagnostic-vs-name rules.)
 
-  phi        global d   interval dimension (all sizes)
-  pi/4        1.72       2.00
-  4/sqrt6     1.82       2.00   <- the gravitational 4D phase
-  pi/6        1.84       2.00
-  pi/3        1.90       2.00
-  1.0         1.81       2.00
-  2.0         1.83       2.00
-  2.5         1.86       2.00
+## The corrected measurement (monotone inverter, raw f reported)
 
-d_int = 2.00 EXACTLY, at every phase, every interval size.  The
-global ~1.7 is NOT a fractional local dimension - it is locally-2D
-manifold structure with a mild large-scale EXCESS ordering (chains/
-defects) that drags the global estimator below 2.
+pi/4 law, n = 24 quick pass (corrected table below from the n = 40
+seven-phase rerun, logs_emergent_4d_search_corrected.txt):
 
-## Why: this is structural, not tunable
+  interval size k~4:  f = 0.306  ->  d_int = 2.63
+  interval size k~8:  f = 0.384  ->  d_int = 2.34
 
-Sequential growth by "add one maximal element with a chosen past
-downset" produces 2D-order (2D-diamond) intervals - this is the
-Rideout-Sorkin classical-sequential-growth universality: the local
-causal structure of generic sequential growth is 2-dimensional.  The
-action phase reweights WHICH downset is chosen (changing the global
-relation density and hence the global estimator by ~0.2) but does
-NOT change the local interval geometry, which stays 2D.  The pi/4
-Born-quadrature and the 4/sqrt6 gravitational phase are NOT special
-in the dimension landscape - the whole family is locally 2D.
+d_int is NOT 2, NOT phase-independent a priori, and DECREASES with
+interval size toward the global (hyper-ordered) figure ~1.8.  Small
+intervals are the LEAST ordered structures in the causet - the local
+dimension at the discreteness scale sits ABOVE 2 and falls as the
+window grows.  The scale profile d_int(k), per phase, is the real
+dimension landscape; the corrected 7-phase scan measures it.
 
-## So: how DO you get emergent 4D?
+## What survives, what changes
 
-Not by phase.  The lever that sets local dimension is the GROWTH
-RULE ITSELF - specifically the distribution of chosen-past sizes /
-the branching (antichain) rate:
+SURVIVES: the global/spectral negatives (bare d_eff declines to
+~1.67 at n=80; spectral d_s falls monotonically; MM coarse-graining
+is thinning-invariant) - none of those used the broken inverter.
+Large-scale dimension does not flow up at accessible size.
 
-  1. MULTI-PARENT / thicker-antichain growth: a rule where each new
-     element's past is a THICKENED ANTICHAIN of controlled width w
-     (not a generic downset) tunes local dimension - d grows with the
-     antichain thickness.  This is a DIFFERENT growth class (the past
-     is not a free downset); it needs its own double-conservation
-     formulation.  REGISTERED as the concrete 4D route.
-  2. HIGHER-ARITY conservation: the current law conserves two moments
-     (coherent sum, Born sum) over child ACTION GAPS.  A law
-     conserving additional structure (a genuine d-dimensional
-     volume/boundary relation) could select 4D-diamond intervals -
-     this is the "4D double-conservation" the program has not yet
-     written.
-  3. It may be a THEOREM that free-downset sequential growth is
-     locally 2D for ANY gap-based weighting - in which case emergent
-     4D is provably outside this entire class, and the causal-set
-     dimension of this program is honestly 2, full stop.  Testing
-     (3) analytically (the interval-abundance recursion under a
-     generic gap law) is the decisive next step: prove d_int = 2 or
-     find the weighting that breaks it.
+CHANGES: the local story.  With d_int(k~4) ~ 2.6 > 2 and falling in
+k, the correct question is no longer "why is it locked at 2" but:
+  (a) how HIGH does small-interval d_int go across the phase family
+      (does any phase push the discreteness-scale dimension toward
+      4)?  - measured by the corrected scan;
+  (b) WHY does d_int fall with scale (the hyper-ordering sets in at
+      a characteristic interval size - is that size phase-dependent?);
+  (c) the "different growth rule" routes (thicker-antichain /
+      higher-arity conservation) remain live but are no longer the
+      only options - the phase family has genuine local-dimension
+      variation to map first.
 
-## Bottom line
+## Status
 
-Emergent 4D is NOT reachable by tuning the phase of the current law:
-the growth class is locally 2-dimensional everywhere.  "How to get
-4D" reduces to a GROWTH-RULE question - thicker-antichain / multi-
-parent growth or a higher-arity conservation law - and the sharpest
-open question is whether free-downset sequential growth is provably
-locked at d_int = 2.  The honest current dimension of the program's
-causal sets is 2 (locally), with mild large-scale excess ordering.
+Corrected 7-phase n=40 scan: logs_emergent_4d_search_corrected.txt
+(readings re-registered on the corrected estimator: (i) local 4D at
+some phase; (ii) landscape max below 4 but phase-dependent - report
+the profile; (iii) profile phase-independent within errors).

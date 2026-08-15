@@ -65,14 +65,17 @@ def popcount(a): return POP16[a & 0xFFFF] + POP16[(a >> 16) & 0xFFFF]
 LIMB = 60; LOWM = (1 << LIMB) - 1
 
 # MM continuum ordering-fraction -> dimension table
-MM_D = np.array([2, 3, 4, 5, 6, 8, 10], float)
-MM_F = np.array([0.5000, 0.2296, 0.0994, 0.0417, 0.0170, 0.00287, 0.000496])
+# CORRECTED 2026-08-15: the previous version passed a non-monotonic
+# xp to np.interp, which SILENTLY CLAMPED every f <= 0.5 to d = 2.00
+# - a broken estimator that produced the spurious "d_int = 2 at all
+# phases" result (retracted; see HOW_TO_GET_4D.md correction).
+MM_D = np.array([1.5, 2, 3, 4, 5, 6, 8], float)
+MM_F = np.array([0.75, 0.5000, 0.2296, 0.0994, 0.0417, 0.0170, 0.00287])
+_ORD = np.argsort(-np.log(MM_F))          # ascending in -log f
+_XP = (-np.log(MM_F))[_ORD]; _FP = MM_D[_ORD]
 def d_from_f(f):
     if f is None or f <= 0: return float("nan")
-    if f >= MM_F[0]: return 2.0 + (0.5 - f) / 0.5  # extrapolate below 2
-    if f <= MM_F[-1]: return 10.0
-    # interpolate in log f (monotone decreasing)
-    return float(np.interp(-math.log(f), -np.log(MM_F[::-1]), MM_D[::-1]))
+    return float(np.interp(-math.log(f), _XP, _FP))
 
 def make_law(PHI):
     C8 = [math.cos(k * PHI) for k in range(64)]
