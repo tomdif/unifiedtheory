@@ -166,6 +166,13 @@
      the measure function, linearity, complex structure, and
      unitarity all DERIVED.  (Born first via the phase continuum;
      the derived l^2 metric then powers Mazur-Ulam retroactively.)
+  25. `master_chaining` - MEASURE HOMOGENIZATION: two functions
+     g1, g2 tied by the interference exchange (P + Q = 1) are forced
+     equal and jointly linear - a common Born function.  One
+     interference event between two sectors forces them onto the
+     SAME probability calculus (the same FUNCTION, not just the same
+     exponent), from arbitrary monotone pairs.  Engine of the
+     two-overlap Born-or-trivial result.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -4414,6 +4421,254 @@ theorem quantum_mechanics_from_a_beam_splitter {n : ℕ} (f : ℝ → ℝ)
   · rw [if_neg hii]
     exact l2_lossless_columns_orthogonal U hms i₁ i₂ hii
 
+/-! ## 25. MASTER CHAINING: measure homogenization — one interference
+event forces two sectors to share ONE probability calculus
+
+`phase_interval_additivity` (§23) chained a single function against
+itself.  A general additive measure is Σ fᵢ(‖xᵢ‖): each branch
+alternative may carry its OWN weighting function.  `master_chaining`
+removes the single-function restriction: two functions g₁, g₂ tied
+by the interference exchange (the two input ports weighted by g₁, g₂
+and the two output ports the same, with the physical normalization
+P + Q = 1) are forced EQUAL and jointly linear — hence a common
+Born function.  The ladder gives the increment law
+g₂(s+m) = g₂(s) + g₁(m) (m ≤ s); the x = 0 probe then pins g₂ to
+g₁'s slope with no residual constant.
+
+Physics: ONE interference event between two sectors forces them onto
+the SAME probability calculus — not merely the same exponent (the
+old no-hybrid), the same measure FUNCTION, starting from arbitrary
+monotone pairs.  A dualism in which gravity and matter carried
+different probability weightings cannot survive a single
+interference event between them: observing gravitationally-induced
+interference (BMV-type experiments) would force gravity into
+matter's Born calculus.  This is also the engine of the general
+two-overlap Born-or-trivial result (arbitrary complex column pairs,
+UNIQUENESS_LEG.md). -/
+
+set_option maxHeartbeats 1600000 in
+/-- MASTER CHAINING: two functions g₁, g₂ tied by a level-line
+exchange with a nonneg amplitude force them EQUAL and jointly
+additive.  Generalizes phase_interval_additivity (g₁ = g₂) and
+covers the two-overlap and homogenization cases: for every level
+Z and every phase w ∈ [-1,1],
+  g₁(P x + Q y - 2√(PQ x y) w) + g₂(Q x + P y + 2√(PQ x y) w)
+    = g₁-value + g₂-value  is w-independent, so both g's chain. -/
+theorem master_chaining (g₁ g₂ : ℝ → ℝ)
+    (hg10 : g₁ 0 = 0) (hg20 : g₂ 0 = 0)
+    (hmono₁ : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g₁ a ≤ g₁ b)
+    (P Q : ℝ) (hP : 0 < P) (hQ : 0 < Q) (hPQ : P + Q = 1)
+    (hE : ∀ x y w : ℝ, 0 ≤ x → 0 ≤ y → -1 ≤ w → w ≤ 1 →
+      g₁ (P*x + Q*y - 2*Real.sqrt (P*Q*x*y) * w)
+        + g₂ (Q*x + P*y + 2*Real.sqrt (P*Q*x*y) * w)
+      = g₁ x + g₂ y) :
+    (∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g₁ (a + b) = g₁ a + g₂ b) ∧
+    (∀ t : ℝ, 0 ≤ t → g₁ t = g₂ t) := by
+  -- the w=1 vs w=-1 comparison at (x,y) and (y,x) will pin g₁=g₂.
+  -- First: the interval-constancy step, identical structure to §23.
+  have key : ∀ Z : ℝ, 0 < Z → ∀ μ ν : ℝ,
+      0 < μ → μ < 1 → 0 ≤ ν → ν ≤ 1 →
+      |(P - Q) * (μ - ν)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) →
+      g₁ (Z*μ) + g₂ (Z*(1-μ)) = g₁ (Z*ν) + g₂ (Z*(1-ν)) := by
+    intro Z hZ μ ν hμ0 hμ1 hν0 hν1 hcond
+    have h1μ : (0:ℝ) < 1 - μ := by linarith
+    have hZμ : (0:ℝ) ≤ Z*μ := by positivity
+    have hZμ' : (0:ℝ) ≤ Z*(1-μ) := by positivity
+    have hZν : (0:ℝ) ≤ Z*ν := by positivity
+    have hZν' : (0:ℝ) ≤ Z*(1-ν) := by nlinarith
+    have hs_pos : 0 < Real.sqrt (P*Q*μ*(1-μ)) := by
+      apply Real.sqrt_pos.mpr; positivity
+    have h1 := hE (Z*ν) (Z*(1-ν)) 0 hZν hZν' (by norm_num) (by norm_num)
+    rw [mul_zero, sub_zero, add_zero] at h1
+    set w : ℝ := (P - Q) * (μ - ν) / (2 * Real.sqrt (P*Q*μ*(1-μ)))
+      with hwdef
+    have hw1 : |w| ≤ 1 := by
+      rw [hwdef, abs_div, div_le_one (by positivity)]
+      calc |(P - Q) * (μ - ν)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := hcond
+        _ = |2 * Real.sqrt (P*Q*μ*(1-μ))| := by
+            rw [abs_of_pos (by positivity)]
+    have h2 := hE (Z*μ) (Z*(1-μ)) w hZμ hZμ'
+      (neg_le_of_abs_le hw1) (le_of_abs_le hw1)
+    have hsq : Real.sqrt (P*Q*(Z*μ)*(Z*(1-μ)))
+        = Z * Real.sqrt (P*Q*μ*(1-μ)) := by
+      rw [show P*Q*(Z*μ)*(Z*(1-μ)) = Z^2 * (P*Q*μ*(1-μ)) by ring,
+        Real.sqrt_mul (sq_nonneg Z), Real.sqrt_sq (le_of_lt hZ)]
+    rw [hsq] at h2
+    have hws : w * (2 * Real.sqrt (P*Q*μ*(1-μ))) = (P - Q) * (μ - ν) := by
+      rw [hwdef]; exact div_mul_cancel₀ _ (by positivity)
+    have hprod : 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w = Z*((P-Q)*(μ-ν)) := by
+      calc 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+          = Z*(w * (2*Real.sqrt (P*Q*μ*(1-μ)))) := by ring
+        _ = Z*((P-Q)*(μ-ν)) := by rw [hws]
+    have harg1 : P*(Z*μ) + Q*(Z*(1-μ)) - 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+        = P*(Z*ν) + Q*(Z*(1-ν)) := by rw [hprod]; ring
+    have harg2 : Q*(Z*μ) + P*(Z*(1-μ)) + 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+        = Q*(Z*ν) + P*(Z*(1-ν)) := by rw [hprod]; ring
+    rw [harg1, harg2] at h2
+    linarith
+  -- reuse the exact ladder from §23 by noting g := fun t => the pair
+  -- structure.  We prove the joint additive law first.
+  set mustar : ℝ := 4*P*Q/(P+Q)^2 with hmustar
+  have hmu0 : 0 < mustar := by positivity
+  have hmu1 : mustar ≤ 1 := by
+    rw [hmustar, div_le_one (by positivity)]; nlinarith [sq_nonneg (P - Q)]
+  have hkey_id : (P-Q)^2 * mustar = 4*P*Q*(1-mustar) := by
+    rw [hmustar]; field_simp; ring
+  have hstep_cond : ∀ μ : ℝ, mustar ≤ μ → μ ≤ 1/2 →
+      |P - Q| * mustar ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+    intro μ hμl hμr
+    have hμ0 : 0 < μ := lt_of_lt_of_le hmu0 hμl
+    have h1μ : (0:ℝ) ≤ 1 - μ := by linarith
+    have hmono : mustar * (1 - mustar) ≤ μ * (1 - μ) := by
+      nlinarith [mul_nonneg (sub_nonneg.mpr hμl)
+        (by linarith : (0:ℝ) ≤ 1 - μ - mustar)]
+    apply le_of_sq_le_sq'' (by positivity) (by positivity)
+    have hs := Real.sq_sqrt (show (0:ℝ) ≤ P*Q*μ*(1-μ) by positivity)
+    calc (|P-Q| * mustar)^2 = (P-Q)^2 * mustar * mustar := by
+          rw [mul_pow, sq_abs]; ring
+      _ = 4*P*Q*(1-mustar) * mustar := by rw [hkey_id]
+      _ ≤ 4*(P*Q*μ*(1-μ)) := by
+          nlinarith [mul_le_mul_of_nonneg_left hmono
+            (show (0:ℝ) ≤ 4*(P*Q) by positivity)]
+      _ = (2 * Real.sqrt (P*Q*μ*(1-μ)))^2 := by rw [mul_pow, hs]; ring
+  have hladder : ∀ Z : ℝ, 0 < Z → ∀ (k : ℕ) (μ : ℝ),
+      0 ≤ μ → μ ≤ 1/2 → μ ≤ (k+1 : ℝ) * mustar →
+      g₁ (Z*μ) + g₂ (Z*(1-μ)) = g₁ 0 + g₂ Z := by
+    intro Z hZ k
+    induction k with
+    | zero =>
+      intro μ hμ0 hμh hμk
+      rcases eq_or_lt_of_le hμ0 with h0 | hpos
+      · rw [← h0]; norm_num
+      have hμ1 : μ < 1 := by linarith
+      have hμle : μ ≤ mustar := by
+        have : ((0:ℕ)+1 : ℝ) = 1 := by norm_num
+        rw [this, one_mul] at hμk; exact hμk
+      have hcond : |(P - Q) * (μ - 0)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+        rw [sub_zero, abs_mul, abs_of_nonneg hμ0]
+        have h1μ : (0:ℝ) ≤ 1 - μ := by linarith
+        have hchain : (P-Q)^2 * μ ≤ 4*P*Q*(1-μ) := by
+          calc (P-Q)^2 * μ ≤ (P-Q)^2 * mustar :=
+                mul_le_mul_of_nonneg_left hμle (sq_nonneg _)
+            _ = 4*P*Q*(1-mustar) := hkey_id
+            _ ≤ 4*P*Q*(1-μ) := by
+                apply mul_le_mul_of_nonneg_left (by linarith); positivity
+        apply le_of_sq_le_sq'' (by positivity) (by positivity)
+        have hs := Real.sq_sqrt (show (0:ℝ) ≤ P*Q*μ*(1-μ) by positivity)
+        calc (|P-Q| * μ)^2 = (P-Q)^2 * μ * μ := by rw [mul_pow, sq_abs]; ring
+          _ ≤ 4*P*Q*(1-μ) * μ := by
+              nlinarith [mul_le_mul_of_nonneg_right hchain hμ0]
+          _ = (2 * Real.sqrt (P*Q*μ*(1-μ)))^2 := by rw [mul_pow, hs]; ring
+      have h := key Z hZ μ 0 hpos hμ1 le_rfl (by norm_num) hcond
+      rw [mul_zero, sub_zero, mul_one] at h; exact h
+    | succ k ih =>
+      intro μ hμ0 hμh hμk
+      by_cases hcase : μ ≤ (k+1 : ℝ) * mustar
+      · exact ih μ hμ0 hμh hcase
+      push_neg at hcase
+      have hμstar : mustar ≤ μ := by
+        have hk1 : (1:ℝ) ≤ (k:ℝ)+1 := by
+          have : (0:ℝ) ≤ (k:ℝ) := Nat.cast_nonneg k; linarith
+        calc mustar = 1 * mustar := (one_mul _).symm
+          _ ≤ ((k:ℝ)+1) * mustar :=
+              mul_le_mul_of_nonneg_right hk1 (le_of_lt hmu0)
+          _ ≤ μ := le_of_lt hcase
+      have hμpos : 0 < μ := lt_of_lt_of_le hmu0 hμstar
+      have hμ1 : μ < 1 := by linarith
+      set ν : ℝ := μ - mustar with hνdef
+      have hν0 : 0 ≤ ν := by rw [hνdef]; linarith
+      have hν1 : ν ≤ 1 := by rw [hνdef]; linarith
+      have hνh : ν ≤ 1/2 := by rw [hνdef]; linarith
+      have hνk : ν ≤ (k+1 : ℝ) * mustar := by
+        rw [hνdef]
+        have : μ ≤ ((k:ℝ)+1+1) * mustar := by
+          convert hμk using 2; push_cast; ring
+        nlinarith
+      have hcond : |(P - Q) * (μ - ν)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+        rw [hνdef, show μ - (μ - mustar) = mustar by ring, abs_mul,
+          abs_of_pos hmu0]
+        exact hstep_cond μ hμstar hμh
+      have h1 := key Z hZ μ ν hμpos hμ1 hν0 hν1 hcond
+      have h2 := ih ν hν0 hνh hνk
+      linarith
+  -- ---------- (INC): g₂(s+m) = g₂ s + g₁ m for s ≥ m ≥ 0 ----------
+  have hINC : ∀ s m : ℝ, 0 ≤ m → m ≤ s → g₂ (s + m) = g₂ s + g₁ m := by
+    intro s m hm hms
+    have hspos : 0 < s + m ∨ s + m = 0 := by
+      rcases eq_or_lt_of_le (by linarith : (0:ℝ) ≤ s + m) with h | h
+      · exact Or.inr h.symm
+      · exact Or.inl h
+    rcases hspos with hZ | hZ0
+    · -- ladder on Z = s+m at μ = m/(s+m) ≤ 1/2
+      set Z : ℝ := s + m with hZdef
+      set μ : ℝ := m / Z with hμdef
+      have hμ0 : 0 ≤ μ := by rw [hμdef]; positivity
+      have hμh : μ ≤ 1/2 := by
+        rw [hμdef, div_le_iff₀ hZ]; linarith
+      obtain ⟨k, hk⟩ := exists_nat_gt (μ / mustar)
+      have hμk : μ ≤ (k+1 : ℝ) * mustar := by
+        rw [div_lt_iff₀ hmu0] at hk; nlinarith [hmu0]
+      have h := hladder Z hZ k μ hμ0 hμh hμk
+      rw [hg10, zero_add] at h
+      have e1 : Z * μ = m := by rw [hμdef]; field_simp
+      have e2 : Z * (1 - μ) = s := by rw [hμdef]; field_simp; ring
+      rw [e1, e2] at h
+      -- h : g₁ m + g₂ s = g₂ Z
+      rw [hZdef] at h ⊢
+      linarith
+    · have hm0 : m = 0 := by linarith
+      have hs0 : s = 0 := by linarith
+      rw [hm0, hs0, hg10]; simp [hg20]
+  -- ---------- g₁ is additive on the cone ----------
+  have hg1add : ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g₁ (a + b) = g₁ a + g₁ b := by
+    intro a b ha hb
+    -- pick x large: x = a + b works (x ≥ a+b, x ≥ a, x ≥ b)
+    set x : ℝ := a + b with hxdef
+    have hxa : a ≤ x := by rw [hxdef]; linarith
+    have hxb : b ≤ x := by rw [hxdef]; linarith
+    have hxab : a + b ≤ x := le_of_eq hxdef.symm
+    have hxpos : 0 ≤ x := by rw [hxdef]; linarith
+    -- g₂(x + (a+b)) via one step of size (a+b)
+    have h1 := hINC x (a + b) (by linarith) hxab
+    -- via two steps of size a then b
+    have h2 := hINC x b hb hxb            -- g₂(x+b) = g₂ x + g₁ b
+    have h3 := hINC (x + b) a ha (by linarith)  -- g₂(x+b+a) = g₂(x+b) + g₁ a
+    have hcomm : x + b + a = x + (a + b) := by ring
+    rw [hcomm, h2] at h3
+    -- h3 : g₂(x+(a+b)) = (g₂ x + g₁ b) + g₁ a
+    -- h1 : g₂(x+(a+b)) = g₂ x + g₁ (a+b)
+    linarith
+  -- ---------- g₁ linear; g₂ linear equal; conclusions ----------
+  have hg1lin := monotone_additive_on_cone_is_linear g₁ hg1add hmono₁
+  -- ---------- g₂ linear via the x=0 probe (needs P+Q=1) ----------
+  have hA : ∀ x : ℝ, 0 ≤ x → g₁ (P*x) + g₂ (Q*x) = g₁ x := by
+    intro x hx
+    have h := hE x 0 0 hx le_rfl (by norm_num) (by norm_num)
+    simp only [mul_zero, add_zero, sub_zero, Real.sqrt_zero, hg20] at h
+    exact h
+  have hg2lin : ∀ t : ℝ, 0 ≤ t → g₂ t = t * g₁ 1 := by
+    intro t ht
+    have hx : 0 ≤ t / Q := by positivity
+    have h := hA (t / Q) hx
+    have hPt : P * (t / Q) = (P / Q) * t := by ring
+    have hQt : Q * (t / Q) = t := by field_simp
+    rw [hPt, hQt] at h
+    -- g₁(P/Q t) + g₂ t = g₁(t/Q); use g₁ linear
+    have e1 : g₁ ((P / Q) * t) = (P / Q) * t * g₁ 1 :=
+      hg1lin _ (by positivity)
+    have e2 : g₁ (t / Q) = (t / Q) * g₁ 1 := hg1lin _ hx
+    rw [e1, e2] at h
+    -- (P/Q) t g₁1 + g₂ t = (t/Q) g₁1  ⇒ g₂ t = ((1-P)/Q) t g₁1 = t g₁1
+    have hQ0 : Q ≠ 0 := ne_of_gt hQ
+    have hval : g₂ t = (t / Q) * g₁ 1 - (P / Q) * t * g₁ 1 := by linarith
+    have hPeq : P = 1 - Q := by linarith
+    rw [hval, hPeq]
+    field_simp
+    ring
+  refine ⟨fun a b ha hb => ?_, fun t ht => ?_⟩
+  · rw [hg1lin (a + b) (by linarith), hg1lin a ha, hg2lin b hb]; ring
+  · rw [hg1lin t ht, hg2lin t ht]
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -4471,5 +4726,6 @@ theorem quantum_mechanics_from_a_beam_splitter {n : ℕ} (f : ℝ → ℝ)
 #print axioms phase_interval_additivity
 #print axioms complex_mixing_block_forces_born
 #print axioms quantum_mechanics_from_a_beam_splitter
+#print axioms master_chaining
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

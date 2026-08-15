@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 57 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 58 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -677,6 +677,66 @@ and the law's weighting at fixed causet is irrelevant.  The
 analytic remainder is a single question: the asymptotics of the
 fraction of ideals containing a maximal-above element, for the two
 causet ensembles.
+
+## THE DERIVATION SWEEP (2026-08-15, tenth pass): six consequences
+## of the terminal theorem
+
+1. MEASURE HOMOGENIZATION [Lean: `master_chaining`, §25].  Two
+   sectors carrying arbitrary monotone measure functions g1, g2,
+   tied by one interference exchange (physical normalization
+   P+Q=1), are forced EQUAL and jointly linear - a common Born
+   function.  Not just the same exponent (old no-hybrid) - the same
+   FUNCTION, from arbitrary monotone pairs.  Proof: the ladder gives
+   the increment law g2(s+m)=g2(s)+g1(m) (m<=s), so g1 is additive
+   hence linear; the x=0 probe g1(Px)+g2(Qx)=g1(x) then pins g2 to
+   g1's slope with no residual constant (this is where P+Q=1 is
+   used).  Physics: a single gravitationally-induced interference
+   event (BMV) would force gravity into matter's Born calculus -
+   measure-dualism cannot survive one interference event.
+
+2. MASTER CHAINING THEOREM [Lean: `master_chaining`].  The single
+   parameterized statement of which section-23 (g1=g2), the two-
+   overlap case, and homogenization are all instances.
+
+3. INTERFERENCE EXISTS FROM TIME ALONE [proof on paper].  The
+   structure/frozen-measure argument is measure-agnostic: for any
+   nontrivial monotone f, a lossless step with pairwise-disjoint
+   column supports is a permutation IN MEASURE, hence frozen, hence
+   measure-static under divisibility (the n!-Lagrange argument of
+   §11-12 uses only the permutation structure, not p=2).
+   Contrapositive: monotone measure + divisible lossless time +
+   change  ==>  some step has overlapping columns, i.e. INTERFERENCE
+   IS DERIVED TO EXIST, not assumed.  Chained with the two-overlap
+   Born-or-trivial result: if that mixing overlaps in two
+   coordinates (generic), Born follows - the monotone-measure
+   divisible-time capstone, with >=3-overlap the sole delimiter.
+   (Formalization registered: needs the monotone-f frozen-measure
+   theorem, a monotone twin of `real_lossless_frozen_measure`.)
+
+4. ANY-ANGLE STABILITY [proof on paper].  Section 22's approximate-
+   Born bound covered only the balanced splitter.  The section-23
+   ladder propagates a delta-lossless defect additively over its
+   ~1/mu* steps, so a delta-lossless splitter of ANY angle pins f
+   within C(c,sigma)*delta of Born, with C = O(1/mu*) =
+   O((c^2+sigma^2)^2/(c^2 sigma^2)) - the experimental inequality
+   for arbitrary interferometers.  (Formalization registered: a
+   Hyers-style version of `phase_interval_additivity`.)
+
+5. THE POSTS FORMULA [numerical, posts_formula.py]: reading (ii).
+   The tested factorization s_count = N_below/N_total FAILS; instead
+   per-post survival tracks s_naive = (n-1-depth)/(n-1), the
+   fraction of strictly-later elements - to ~1% for BOTH chains.  So
+   survival is GEOMETRIC IN DEPTH, not an ideal-count ratio: the
+   bounce-suppression pair reduces to the DEPTH DISTRIBUTION of
+   posts (quantum posts sit deeper -> smaller survival), not to
+   ideal combinatorics.  Honest revision of front-5's hypothesis;
+   the analytic remainder is now the mean post-depth asymptotics of
+   the two ensembles.
+
+6. PAPER P1 SPINE [PAPER_P1_SPINE.md]: the terminal theorem as the
+   paper's centerpiece; theorem-to-section map fixed; two assembly
+   routes (beam-splitter §24 and divisible-time §11-17) both
+   reported; prior-art sweep and honest-scope sections drafted.
 
 ## The theorem chain, with Lean witnesses per arrow
 
