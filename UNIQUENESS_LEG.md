@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 56 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 57 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -595,6 +595,88 @@ law properties.  (Also: the r(n) crossover of the seventh pass is
 LAW-VARIANT-DEPENDENT - the min-norm band member shows g(20) =
 +0.035 with no crossing - so it is demoted from breakthrough
 candidacy; the selection band dominates bulk r at accessible n.)
+
+## THE TERMINAL THEOREM (2026-08-15, ninth pass): quantum mechanics
+## from probability + lossless time + gauge + one beam splitter
+
+`quantum_mechanics_from_a_beam_splitter` (machine-checked,
+axiom-clean; file at 57 theorems).  Hypotheses, complete:
+
+  * f monotone, f(0) = 0, f not identically zero;
+  * F a bare SET-MAP of states: surjective, preserving total
+    f-measure and pairwise f-distinguishability, commuting with the
+    global quarter-turn phase;
+  * one lossless beam-splitter event: a set-map S, lossless for the
+    same measure, acting on two-coordinate states as a rotation-form
+    gate with dialable input phase (c*sigma != 0, unnormalized).
+
+Conclusion: f(x) = x^2 f(1) with f(1) > 0 - THE BORN RULE - and F
+is complex-linear with orthonormal columns - UNITARY QUANTUM
+MECHANICS.  Absent from the hypotheses: Hilbert space, amplitudes,
+the power family, linearity, complex structure, continuity,
+divisibility.  The assembly order matters: the splitter's phase
+continuum forces the Born function FIRST (pass eight); the derived
+measure is then l^2, so Mazur-Ulam yields linearity RETROACTIVELY;
+gauge upgrades to C-linearity; the p = 2 machinery gives
+orthonormal columns.  Everything the textbook assumes is here a
+theorem.  This is the statement the uniqueness leg set out to earn.
+
+## GENERAL TWO-OVERLAP COLUMNS (same pass, proof on paper - Lean
+## formalization registered): Born-or-trivial beyond rotation form
+
+Setting: a lossless C-linear step for monotone f with two columns
+u, v of ARBITRARY complex entries sharing support.  Phase probes
+give  sum_i g(A_i(psi)) = g(s^2) + g(t^2)  with
+A_i = s^2 a_i + t^2 b_i + 2 s t sqrt(a_i b_i) cos(psi + theta_i)
+(the amplitude sqrt(a_i b_i) is automatic).  Coordinates supporting
+only one column contribute psi-independent terms absorbed by the
+column normalizations.  For exactly TWO shared coordinates:
+
+  (1) PHASE DICHOTOMY.  If theta_2 - theta_1 is not exactly pi,
+      there is an arc of psi on which both cosines strictly
+      decrease (co-phase included), so both g-arguments move down
+      while the sum stays constant: monotonicity forces g constant
+      on the swept intervals; scaling (s,t) sweeps scaled copies,
+      overlap-chaining makes g constant on (0,infinity); the column
+      normalization then forces g == 0 - excluded by
+      nontriviality.  Hence ANTI-PHASE is forced.
+  (2) ANTI-PHASE CASE.  With lambda := sqrt(a_2 b_2 / a_1 b_1),
+      the combination lambda*A + B = (lambda a_1 + a_2) x
+      + (lambda b_1 + b_2) y =: m is psi-independent.  On each
+      level line m = const, the A-intervals overlap-chain exactly
+      as in the rotation case, so g(x) + g(y) is constant along
+      the line and equals its endpoint value: for all p, q >= 0,
+          g(p) + g(q) = g(p + kappa*q),
+      kappa = (lambda b_1 + b_2)/(lambda a_1 + a_2).  Setting
+      p = 0: g(q) = g(kappa q) for all q, which for kappa != 1
+      forces constancy on geometric ladders (trivial again); hence
+      kappa = 1 and g is ADDITIVE: Born by monotone Cauchy.
+
+So: any lossless step whose columns overlap in exactly two
+coordinates forces Born or triviality - rotation form is NOT
+needed.  Registered open: three or more shared coordinates with
+phases outside a two-value (anti-phased) set - the multi-term
+exchange F(u) = sum g(alpha_i + beta_i u) + sum g(gamma_i -
+delta_i u) constant in u - and the Lean formalization of (1)-(2)
+(a parameterized variant of `phase_interval_additivity`).
+
+## THE POSTS PAIR IS ENTROPIC ALL THE WAY DOWN (same day)
+
+posts_survival v2 instrumentation: (a) downset counts D_n are
+essentially LAW-INDEPENDENT (both chains ~420 at n = 19, growth
+~n^2.8-3.1); (b) top-creation is entropic for BOTH laws:
+tau_n * D_n ~ const (1.17 classical - exactly uniform up to path
+covariance; 1.7-1.9 quantum - the full downset gets ~1.8x the
+uniform share); (c) SURVIVAL IS ENTROPIC TOO: the law-weighted
+survival s_n matches the count fraction s_count (quantum 0.675 vs
+0.666 at n = 19; classical identical by uniformity).  Hence the
+entire bounce-suppression pair (~0.02 vs ~0.16) reduces to pure
+IDEAL COMBINATORICS of the grown causets: quantum causets simply
+have ~3x more post-avoiding ideals (their persistent ~3.1 minima),
+and the law's weighting at fixed causet is irrelevant.  The
+analytic remainder is a single question: the asymptotics of the
+fraction of ideals containing a maximal-above element, for the two
+causet ensembles.
 
 ## The theorem chain, with Lean witnesses per arrow
 

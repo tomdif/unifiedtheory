@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""POSTS SURVIVAL MODEL: deriving the bounce-suppression exponent
+"""POSTS SURVIVAL MODEL v2 (entropic-reduction instrumentation:
+records the downset count D_n, the entropy diagnostic tau_n*D_n --
+constant means the full-downset suppression is ENTROPIC, reducing
+the posts pair to downset-count asymptotics -- and the COUNT-measure
+survival s_count vs the law-weighted s_n): deriving the bounce-suppression exponent
 from one-step quantities (registered attack on the persistent
 quantum-classical separation; theta-chart showed path counting
 carries the post suppression - here we decompose it mechanistically).
@@ -162,13 +166,18 @@ def sample_path(quantum, acc):
         full = (1 << n) - 1
         # tau: probability mass of the full downset
         tau = float(probs[dlist == full].sum())
+        Dn = int(dlist.shape[0])
         posts = current_posts(n, below, above)
         # s: measure-weighted mean survival over current posts
         surv = []
+        csurv = []
         for p in posts:
-            surv.append(float(probs[((dlist >> p) & 1) == 1].sum()))
+            sel = ((dlist >> p) & 1) == 1
+            surv.append(float(probs[sel].sum()))
+            csurv.append(float(sel.sum()) / Dn)
         acc.setdefault(n, []).append(
-            (tau, np.mean(surv) if surv else np.nan, len(posts)))
+            (tau, np.mean(surv) if surv else np.nan, len(posts),
+             Dn, np.mean(csurv) if csurv else np.nan))
         D = int(dlist[rng.choice(dlist.shape[0], p=probs)])
         below.append(D); above.append(0)
         m = D
@@ -195,19 +204,22 @@ for tag, quantum, npaths in (("quantum", True, NQ),
     acc = run(quantum, npaths, tag)
     log(f"--- {tag}: one-step quantities and survival model ---")
     model = 0.0
-    log("   n   tau_n      s_n      posts_direct  posts_model")
+    log("   n   tau_n      s_n      posts_dir  model    D_n     tau*D_n  s_count")
     for n in sorted(acc):
         rows = acc[n]
         tau = float(np.mean([r[0] for r in rows]))
         svals = [r[1] for r in rows if not math.isnan(r[1])]
         s = float(np.mean(svals)) if svals else float("nan")
         direct = float(np.mean([r[2] for r in rows]))
-        # model recursion uses stats at n to advance to n+1
+        Dn = float(np.mean([r[3] for r in rows]))
+        cs = [r[4] for r in rows if not math.isnan(r[4])]
+        scount = float(np.mean(cs)) if cs else float("nan")
         if not math.isnan(s):
             model = model * s + tau
         else:
             model = model + tau
-        log(f"  {n:2d}  {tau:.5f}  {s:.5f}  {direct:9.4f}    {model:9.4f}")
+        log(f"  {n:2d}  {tau:.5f}  {s:.5f}  {direct:8.4f} {model:8.4f} "
+            f"{Dn:8.1f}  {tau*Dn:.4f}  {scount:.5f}")
     # local exponents of tau and (1-s)
     ns = sorted(acc)[NS//2:]
     taus = [float(np.mean([r[0] for r in acc[n]])) for n in ns]

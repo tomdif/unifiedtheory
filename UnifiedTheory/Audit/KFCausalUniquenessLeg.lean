@@ -157,6 +157,15 @@
      forces the Born function on ALL monotone measures - any angle,
      unnormalized.  Supersedes the SS18-21 case analysis for the
      Born conclusion.
+  24. `quantum_mechanics_from_a_beam_splitter` - THE TERMINAL
+     THEOREM: monotone nontrivial measure + lossless surjective
+     distinguishability-preserving gauge-covariant SET-MAP dynamics
+     + one lossless beam-splitter event  ==>  f(x) = x^2 f(1) with
+     f(1) > 0 AND the dynamics is complex-linear with orthonormal
+     columns.  The Born rule and unitary quantum mechanics, with
+     the measure function, linearity, complex structure, and
+     unitarity all DERIVED.  (Born first via the phase continuum;
+     the derived l^2 metric then powers Mazur-Ulam retroactively.)
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -4117,6 +4126,294 @@ theorem complex_mixing_block_forces_born {n : ℕ} (f : ℝ → ℝ)
   rw [Real.sqrt_sq hx, Real.sqrt_one] at h
   exact h
 
+/-! ## 24. THE TERMINAL THEOREM: quantum mechanics from a monotone
+notion of probability, lossless time, gauge, and one beam splitter
+
+The endgame assembly of the entire uniqueness leg.  Hypotheses, in
+full — and note what is ABSENT: no Hilbert space, no amplitudes, no
+power family, no linearity, no complex structure of the dynamics,
+no continuity, no divisibility:
+
+  * a monotone measure-function f with f(0) = 0, not identically
+    zero (probability is monotone in amplitude, nothing has weight
+    before it exists, and something has weight);
+  * a dynamics F that is a bare SET-MAP of states — surjective,
+    preserving the total measure and pairwise distinguishability
+    (lossless time), and commuting with the global quarter-turn
+    phase (gauge);
+  * ONE lossless beam-splitter event: some set-map S, lossless for
+    the same measure, acting on two-coordinate states as a
+    rotation-form gate with a dialable input phase (cσ ≠ 0, no
+    normalization).
+
+Conclusion: f(x) = x² f(1) with f(1) > 0 — THE BORN RULE — and F
+is complex-linear with orthonormal columns — UNITARY QUANTUM
+MECHANICS.  Chain: the splitter's phase continuum forces g-additivity
+(§23) hence f Born; nontriviality pins f(1) > 0; the derived measure
+is ℓ², so Mazur–Ulam (§14) yields real-linearity RETROACTIVELY;
+gauge upgrades it to ℂ-linearity (§17); the p = 2 probe machinery
+(§9) delivers orthonormal columns.  Everything the textbook assumes
+is here a theorem. -/
+
+set_option maxHeartbeats 1600000 in
+/-- THE TERMINAL THEOREM: a monotone notion of probability, a
+lossless surjective distinguishability-preserving gauge-covariant
+dynamics, and ONE lossless beam-splitter event force the Born
+measure AND unitary dynamics — measure function, linearity, complex
+structure, and unitarity all derived, none assumed. -/
+theorem quantum_mechanics_from_a_beam_splitter {n : ℕ} (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (hnontriv : ∃ x : ℝ, 0 ≤ x ∧ f x ≠ 0)
+    (F : (Fin n → ℂ) → (Fin n → ℂ))
+    (hsurj : Function.Surjective F)
+    (hmeas : ∀ x : Fin n → ℂ, ∑ i, f ‖F x i‖ = ∑ i, f ‖x i‖)
+    (hdist : ∀ x y : Fin n → ℂ,
+      ∑ i, f ‖F x i - F y i‖ = ∑ i, f ‖x i - y i‖)
+    (hphase : ∀ x : Fin n → ℂ, F (Complex.I • x) = Complex.I • F x)
+    (S : (Fin n → ℂ) → (Fin n → ℂ))
+    (hSiso : ∀ x : Fin n → ℂ, ∑ i, f ‖S x i‖ = ∑ i, f ‖x i‖)
+    {j₁ j₂ k₁ k₂ : Fin n} (hj : j₁ ≠ j₂) (hk : k₁ ≠ k₂)
+    (c σ : ℝ) (hc : c ≠ 0) (hσ : σ ≠ 0)
+    (hact : ∀ a b : ℂ, S (Pi.single j₁ a + Pi.single j₂ b)
+      = Pi.single k₁ ((c:ℂ)*a - (σ:ℂ)*b)
+        + Pi.single k₂ ((σ:ℂ)*a + (c:ℂ)*b)) :
+    (∀ x : ℝ, 0 ≤ x → f x = x^2 * f 1) ∧ 0 < f 1 ∧
+    ∃ U : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ),
+      (∀ x : Fin n → ℂ, U x = F x) ∧
+      ∀ i₁ i₂ : Fin n,
+        ∑ i, (starRingEnd ℂ) (U (Pi.single i₁ 1) i)
+          * U (Pi.single i₂ 1) i
+        = if i₁ = i₂ then 1 else 0 := by
+  -- ---------- step 1: the Born function from the splitter ----------
+  set g : ℝ → ℝ := fun t => f (Real.sqrt t) with hgdef
+  have hg0 : g 0 = 0 := by
+    rw [hgdef]
+    simp [Real.sqrt_zero, hf0]
+  have hgz : ∀ z : ℂ, g (‖z‖^2) = f ‖z‖ := by
+    intro z
+    rw [hgdef]
+    simp only []
+    rw [Real.sqrt_sq (norm_nonneg z)]
+  have hmonog : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b := by
+    intro a b _ hab
+    exact hmono _ _ (Real.sqrt_nonneg a) (Real.sqrt_le_sqrt hab)
+  have hE : ∀ x y w : ℝ, 0 ≤ x → 0 ≤ y → -1 ≤ w → w ≤ 1 →
+      g (c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w)
+        + g (σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w)
+      = g x + g y := by
+    intro x y w hx hy hw1 hw2
+    set e : ℝ := if 0 ≤ c*σ then w else -w with hedef
+    have hesq : (0:ℝ) ≤ 1 - e^2 := by
+      rw [hedef]
+      split_ifs <;> nlinarith
+    set z : ℂ := ⟨e, Real.sqrt (1 - e^2)⟩ with hzdef
+    have hz_normsq : Complex.normSq z = 1 := by
+      rw [hzdef, Complex.normSq_mk]
+      rw [show Real.sqrt (1-e^2) * Real.sqrt (1-e^2)
+          = Real.sqrt (1-e^2) ^ 2 by ring]
+      rw [Real.sq_sqrt hesq]
+      ring
+    have hz_norm : ‖z‖ = 1 := by
+      have := Complex.normSq_eq_norm_sq z
+      rw [hz_normsq] at this
+      nlinarith [norm_nonneg z]
+    set s : ℝ := Real.sqrt x with hsdef
+    set t : ℝ := Real.sqrt y with htdef
+    have hs2 : s^2 = x := Real.sq_sqrt hx
+    have ht2 : t^2 = y := Real.sq_sqrt hy
+    have hs0 : 0 ≤ s := Real.sqrt_nonneg x
+    have ht0 : 0 ≤ t := Real.sqrt_nonneg y
+    have h := hSiso (Pi.single j₁ ((s:ℝ):ℂ)
+      + Pi.single j₂ (((t:ℝ):ℂ) * z))
+    rw [hact ((s:ℝ):ℂ) (((t:ℝ):ℂ) * z),
+      measure_pair_sum f hf0 hk, measure_pair_sum f hf0 hj] at h
+    have hz_re : z.re = e := rfl
+    have hzz : z.re^2 + z.im^2 = 1 := by
+      have := hz_normsq
+      rw [Complex.normSq_apply] at this
+      nlinarith [this]
+    have hsqrt : Real.sqrt (c^2*σ^2*x*y) = |c*σ| * (s*t) := by
+      rw [show c^2*σ^2*x*y = (c*σ)^2 * (s*t)^2 by
+            rw [← hs2, ← ht2]; ring,
+        Real.sqrt_mul (sq_nonneg _), Real.sqrt_sq_eq_abs,
+        Real.sqrt_sq_eq_abs, abs_of_nonneg (mul_nonneg hs0 ht0)]
+    have hnorm1 : ‖(c:ℂ)*((s:ℝ):ℂ) - (σ:ℂ)*(((t:ℝ):ℂ)*z)‖^2
+        = c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w := by
+      rw [← Complex.normSq_eq_norm_sq]
+      have hre : ((c:ℂ)*((s:ℝ):ℂ) - (σ:ℂ)*(((t:ℝ):ℂ)*z)).re
+          = c*s - σ*(t*z.re) := by
+        simp [Complex.sub_re, Complex.mul_re, Complex.mul_im]
+      have him : ((c:ℂ)*((s:ℝ):ℂ) - (σ:ℂ)*(((t:ℝ):ℂ)*z)).im
+          = -(σ*(t*z.im)) := by
+        simp [Complex.sub_im, Complex.mul_re, Complex.mul_im]
+      rw [Complex.normSq_apply, hre, him, hsqrt, hz_re]
+      by_cases hcs : 0 ≤ c*σ
+      · have habs : |c*σ| = c*σ := abs_of_nonneg hcs
+        have hee : e = w := by rw [hedef, if_pos hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h' := hzz
+          rw [hz_re, hee] at h'
+          exact h'
+        rw [habs, hee]
+        linear_combination c^2 * hs2 + σ^2 * ht2 + σ^2*t^2 * hwim
+      · have habs : |c*σ| = -(c*σ) := abs_of_neg (not_le.mp hcs)
+        have hee : e = -w := by rw [hedef, if_neg hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h' := hzz
+          rw [hz_re, hee] at h'
+          linear_combination h'
+        rw [habs, hee]
+        linear_combination c^2 * hs2 + σ^2 * ht2 + σ^2*t^2 * hwim
+    have hnorm2 : ‖(σ:ℂ)*((s:ℝ):ℂ) + (c:ℂ)*(((t:ℝ):ℂ)*z)‖^2
+        = σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w := by
+      rw [← Complex.normSq_eq_norm_sq]
+      have hre : ((σ:ℂ)*((s:ℝ):ℂ) + (c:ℂ)*(((t:ℝ):ℂ)*z)).re
+          = σ*s + c*(t*z.re) := by
+        simp [Complex.add_re, Complex.mul_re, Complex.mul_im]
+      have him : ((σ:ℂ)*((s:ℝ):ℂ) + (c:ℂ)*(((t:ℝ):ℂ)*z)).im
+          = c*(t*z.im) := by
+        simp [Complex.add_im, Complex.mul_re, Complex.mul_im]
+      rw [Complex.normSq_apply, hre, him, hsqrt, hz_re]
+      by_cases hcs : 0 ≤ c*σ
+      · have habs : |c*σ| = c*σ := abs_of_nonneg hcs
+        have hee : e = w := by rw [hedef, if_pos hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h' := hzz
+          rw [hz_re, hee] at h'
+          exact h'
+        rw [habs, hee]
+        linear_combination σ^2 * hs2 + c^2 * ht2 + c^2*t^2 * hwim
+      · have habs : |c*σ| = -(c*σ) := abs_of_neg (not_le.mp hcs)
+        have hee : e = -w := by rw [hedef, if_neg hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h' := hzz
+          rw [hz_re, hee] at h'
+          linear_combination h'
+        rw [habs, hee]
+        linear_combination σ^2 * hs2 + c^2 * ht2 + c^2*t^2 * hwim
+    have e1 : f ‖(c:ℂ)*((s:ℝ):ℂ) - (σ:ℂ)*(((t:ℝ):ℂ)*z)‖
+        = g (c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w) := by
+      rw [← hnorm1, hgz]
+    have e2 : f ‖(σ:ℂ)*((s:ℝ):ℂ) + (c:ℂ)*(((t:ℝ):ℂ)*z)‖
+        = g (σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w) := by
+      rw [← hnorm2, hgz]
+    have e3 : f ‖((s:ℝ):ℂ)‖ = g x := by
+      rw [← hgz]
+      congr 1
+      rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hs0, hs2]
+    have e4 : f ‖((t:ℝ):ℂ) * z‖ = g y := by
+      rw [← hgz]
+      congr 1
+      rw [norm_mul, hz_norm, mul_one, Complex.norm_real,
+        Real.norm_eq_abs, abs_of_nonneg ht0, ht2]
+    rw [e1, e2, e3, e4] at h
+    exact h
+  have hadd := phase_interval_additivity g hg0 (c^2) (σ^2)
+    (by positivity) (by positivity) hE
+  have hglin := monotone_additive_on_cone_is_linear g hadd hmonog
+  have hBorn : ∀ x : ℝ, 0 ≤ x → f x = x^2 * f 1 := by
+    intro x hx
+    have h := hglin (x^2) (sq_nonneg x)
+    rw [hgdef] at h
+    simp only [] at h
+    rw [Real.sqrt_sq hx, Real.sqrt_one] at h
+    exact h
+  -- ---------- step 2: nontriviality pins f 1 > 0 ----------
+  have hf1 : 0 < f 1 := by
+    obtain ⟨x₀, hx₀, hfx₀⟩ := hnontriv
+    have h := hBorn x₀ hx₀
+    have hne : f 1 ≠ 0 := by
+      intro h0
+      rw [h0, mul_zero] at h
+      exact hfx₀ h
+    have hge : 0 ≤ f 1 := by
+      have := hmono 0 1 le_rfl zero_le_one
+      linarith [hf0]
+    exact lt_of_le_of_ne hge (Ne.symm hne)
+  -- ---------- step 3: the derived measure is ℓ² ----------
+  have hsq2 : ∀ z : ℂ, ‖z‖ ^ (2:ℝ) = ‖z‖^2 := by
+    intro z
+    rw [show (2:ℝ) = ((2:ℕ):ℝ) by norm_num, Real.rpow_natCast]
+  have hmeas2 : ∀ x : Fin n → ℂ,
+      ∑ i, ‖F x i‖ ^ (2:ℝ) = ∑ i, ‖x i‖ ^ (2:ℝ) := by
+    intro x
+    have h := hmeas x
+    have hL : ∀ v : Fin n → ℂ, ∑ i, f ‖v i‖
+        = (∑ i, ‖v i‖ ^ (2:ℝ)) * f 1 := by
+      intro v
+      rw [Finset.sum_mul]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      rw [hBorn ‖v i‖ (norm_nonneg _), hsq2]
+    rw [hL, hL] at h
+    exact mul_right_cancel₀ (ne_of_gt hf1) h
+  have hdist2 : ∀ x y : Fin n → ℂ,
+      ∑ i, ‖F x i - F y i‖ ^ (2:ℝ) = ∑ i, ‖x i - y i‖ ^ (2:ℝ) := by
+    intro x y
+    have h := hdist x y
+    have hL : ∀ v : Fin n → ℂ, ∑ i, f ‖v i‖
+        = (∑ i, ‖v i‖ ^ (2:ℝ)) * f 1 := by
+      intro v
+      rw [Finset.sum_mul]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      rw [hBorn ‖v i‖ (norm_nonneg _), hsq2]
+    have h' : (∑ i, ‖F x i - F y i‖ ^ (2:ℝ)) * f 1
+        = (∑ i, ‖x i - y i‖ ^ (2:ℝ)) * f 1 := by
+      rw [← hL, ← hL]
+      exact h
+    exact mul_right_cancel₀ (ne_of_gt hf1) h'
+  -- ---------- step 4: linearity (Mazur–Ulam), then gauge ----------
+  obtain ⟨haddF, hsmulR⟩ := lossless_bijection_is_real_linear
+    (by norm_num : (1:ℝ) ≤ 2) F hsurj hmeas2 hdist2
+  let L : (Fin n → ℂ) →ₗ[ℝ] (Fin n → ℂ) :=
+    { toFun := F
+      map_add' := haddF
+      map_smul' := fun r x => hsmulR r x }
+  have hphaseL : ∀ x : Fin n → ℂ, L (Complex.I • x) = Complex.I • L x :=
+    hphase
+  have hsmulC := phase_covariant_real_linear_is_complex_linear L hphaseL
+  let U : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ) :=
+    { toFun := F
+      map_add' := haddF
+      map_smul' := fun z x => hsmulC z x }
+  -- ---------- step 5: unitarity ----------
+  have hsqm : ∀ z : ℂ, ‖z‖ ^ (2:ℝ) = ‖z‖ * ‖z‖ := by
+    intro z
+    rw [hsq2]
+    ring
+  have hms : ∀ x : Fin n → ℂ,
+      ∑ i, ‖U x i‖ * ‖U x i‖ = ∑ i, ‖x i‖ * ‖x i‖ := by
+    intro x
+    have h := hmeas2 x
+    calc ∑ i, ‖U x i‖ * ‖U x i‖
+        = ∑ i, ‖F x i‖ ^ (2:ℝ) :=
+          Finset.sum_congr rfl fun i _ => (hsqm _).symm
+      _ = ∑ i, ‖x i‖ ^ (2:ℝ) := h
+      _ = ∑ i, ‖x i‖ * ‖x i‖ :=
+          Finset.sum_congr rfl fun i _ => hsqm _
+  refine ⟨hBorn, hf1, U, fun x => rfl, ?_⟩
+  intro i₁ i₂
+  by_cases hii : i₁ = i₂
+  · subst hii
+    rw [if_pos rfl]
+    have hcol : ∑ i, ‖U (Pi.single i₁ 1) i‖ * ‖U (Pi.single i₁ 1) i‖
+        = 1 := (hms _).trans (single_probe_sum_sq i₁ 1 (by simp))
+    calc ∑ i, (starRingEnd ℂ) (U (Pi.single i₁ 1) i)
+          * U (Pi.single i₁ 1) i
+        = ∑ i, ((‖U (Pi.single i₁ 1) i‖ * ‖U (Pi.single i₁ 1) i‖ : ℝ)
+            : ℂ) := by
+          refine Finset.sum_congr rfl fun i _ => ?_
+          rw [mul_comm ((starRingEnd ℂ) _), Complex.mul_conj]
+          norm_cast
+          rw [Complex.normSq_eq_norm_sq]
+          ring
+      _ = ((∑ i, ‖U (Pi.single i₁ 1) i‖ * ‖U (Pi.single i₁ 1) i‖ : ℝ)
+            : ℂ) := by
+          rw [Complex.ofReal_sum]
+      _ = 1 := by rw [hcol]; norm_num
+  · rw [if_neg hii]
+    exact l2_lossless_columns_orthogonal U hms i₁ i₂ hii
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -4173,5 +4470,6 @@ theorem complex_mixing_block_forces_born {n : ℕ} (f : ℝ → ℝ)
 #print axioms le_of_sq_le_sq''
 #print axioms phase_interval_additivity
 #print axioms complex_mixing_block_forces_born
+#print axioms quantum_mechanics_from_a_beam_splitter
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

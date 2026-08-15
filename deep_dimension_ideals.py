@@ -38,10 +38,10 @@ from scipy.optimize import linprog, minimize
 T0 = time.time()
 def log(*a): print(f"[{time.time()-T0:7.1f}s]", *a, flush=True)
 
-NS = 60
+NS = int(sys.argv[2]) if len(sys.argv) > 2 else 60
 PHI = 4.0 / math.sqrt(6.0)
 NPATH = int(sys.argv[1]) if len(sys.argv) > 1 else 40
-IDEAL_CAP = 2_000_000
+IDEAL_CAP = int(sys.argv[3]) if len(sys.argv) > 3 else 2_000_000
 rng = np.random.default_rng(20260812)
 
 POP16 = np.array([bin(i).count("1") for i in range(1 << 16)],
@@ -133,17 +133,27 @@ def hasse_links(n, below, above):
             m &= m - 1
     return links
 
+LIMB = 60
+LOWM = (1 << LIMB) - 1
+
 def sample_path():
+    """two-limb ideal masks: limb0 = bits 0..59, limb1 = bits 60..119
+    (NS <= 120)."""
     below = [0]; above = [0]
-    ids = np.array([0, 1], dtype=np.int64)      # ideals of the 1-causet
+    ids0 = np.array([0, 1], dtype=np.int64)
+    ids1 = np.array([0, 0], dtype=np.int64)
     recs = {}; counts = {}
     for n in range(1, NS):
-        # gaps for every candidate downset (ideal)
-        gaps = np.ones(len(ids), dtype=np.int64)
+        gaps = np.ones(len(ids0), dtype=np.int64)
         for y in range(n):
-            iy = ((ids >> y) & 1) == 1
+            if y < LIMB:
+                iy = ((ids0 >> y) & 1) == 1
+            else:
+                iy = ((ids1 >> (y - LIMB)) & 1) == 1
             if not iy.any(): continue
-            k = popcount(ids & np.int64(above[y]))
+            A0 = np.int64(above[y] & LOWM)
+            A1 = np.int64(above[y] >> LIMB)
+            k = popcount(ids0 & A0) + popcount(ids1 & A1)
             k = np.minimum(k, 4)
             gaps += np.where(iy, CGAP[k], 0)
         gu, inv, mult = np.unique(gaps, return_inverse=True,
@@ -153,11 +163,17 @@ def sample_path():
         probs = np.maximum(x[inv] ** 2, 0)
         s = probs.sum()
         if s <= 0: return recs, counts, (below, above)
-        D = int(ids[rng.choice(len(ids), p=probs / s)])
-        newbit = np.int64(1) << np.int64(n)
-        keep = (ids & np.int64(D)) == np.int64(D)
-        ids = np.concatenate([ids, ids[keep] | newbit])
-        if len(ids) > IDEAL_CAP: return recs, counts, (below, above)
+        j = rng.choice(len(ids0), p=probs / s)
+        D = int(ids0[j]) | (int(ids1[j]) << LIMB)
+        D0 = np.int64(D & LOWM); D1 = np.int64(D >> LIMB)
+        keep = ((ids0 & D0) == D0) & ((ids1 & D1) == D1)
+        if n < LIMB:
+            nb0 = np.int64(1 << n); nb1 = np.int64(0)
+        else:
+            nb0 = np.int64(0); nb1 = np.int64(1 << (n - LIMB))
+        ids0 = np.concatenate([ids0, ids0[keep] | nb0])
+        ids1 = np.concatenate([ids1, ids1[keep] | nb1])
+        if len(ids0) > IDEAL_CAP: return recs, counts, (below, above)
         below.append(D); above.append(0)
         m = D
         while m:
@@ -165,7 +181,7 @@ def sample_path():
             above[d] |= 1 << n
             m &= m - 1
         nn = n + 1
-        counts[nn] = len(ids)
+        counts[nn] = len(ids0)
         if nn % 5 == 0 or nn == NS:
             recs[nn] = observables(nn, below, above)
     return recs, counts, (below, above)
