@@ -1,0 +1,6 @@
+[    0.0s] config: backend=ibm_fez reverse=False R=3
+[    3.0s] backend: ibm_fez, pending: 24669
+[    3.1s] physical path: [0, 1, 2, 3, 4, 5]
+[    3.6s] 2q-gate counts: {1: 16, 2: 17, 3: 18, 4: 19, 5: 20}
+[    3.6s] submitting batch: 15 pubs x 20000 shots
+[    5.2s] job id: d9voce0b1g9c73a8uteg

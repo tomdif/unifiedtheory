@@ -1,0 +1,22 @@
+[    0.0s] config: backend=ibm_marrakesh reverse=True R=3
+[    3.3s] backend: ibm_marrakesh, pending: 0
+[    3.4s] physical path: [5, 4, 3, 2, 1, 0]
+[    4.0s] 2q-gate counts: {1: 16, 2: 17, 3: 18, 4: 19, 5: 20}
+[    4.0s] submitting batch: 15 pubs x 20000 shots
+[    5.4s] job id: d9vobkt0vrcc73bpii60
+[   99.3s] results received
+[   99.4s] --- pooled record probabilities ---
+[   99.4s]   ancilla 0: d=1: 0.7919  d=2: 0.7750  d=3: 0.7615  d=4: 0.7502  d=5: 0.7328
+[   99.4s]   ancilla 1: d=2: 0.5986  d=3: 0.5945  d=4: 0.5962  d=5: 0.5971
+[   99.4s]   ancilla 2: d=3: 0.5817  d=4: 0.5769  d=5: 0.5769
+[   99.4s]   ancilla 3: d=4: 0.5267  d=5: 0.5286
+[   99.4s]   ancilla 4: d=5: 0.5148
+[   99.4s] --- pooled regression estimators ---
+[   99.4s]   record 0: delta = +0.0591 ± 0.0025 (+24.1 sigma)
+[   99.4s]   record 1: delta = +0.0016 ± 0.0028 (+0.5 sigma)
+[   99.4s]   record 2: delta = +0.0048 ± 0.0029 (+1.7 sigma)
+[   99.4s]   record 3: delta = -0.0019 ± 0.0029 (-0.6 sigma)
+[   99.4s] --- record-0 discriminator verdict ---
+[   99.4s]   record-0 excess PERSISTS here: +0.0591 (+24.1 sigma)
+[   99.4s] saved logs_lambda_hw_v7_ibm_marrakesh_rev_2026-08-14T211841.json
+[   99.4s] DONE

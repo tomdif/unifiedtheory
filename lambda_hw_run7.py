@@ -39,6 +39,7 @@ def log(*a): print(f"[{time.time()-T0:7.1f}s]", *a, flush=True)
 BACKEND = sys.argv[1] if len(sys.argv) > 1 else "ibm_marrakesh"
 REVERSE = bool(int(sys.argv[2])) if len(sys.argv) > 2 else False
 R = int(sys.argv[3]) if len(sys.argv) > 3 else 3
+AVOID = set(int(x) for x in sys.argv[4].split(",")) if len(sys.argv) > 4 else set()
 T = 5
 SHOTS = 20000
 THETAS = [0.9, 1.3, 0.7, 1.1, 0.5]
@@ -60,6 +61,8 @@ def circuit_line(d):
 def find_path(cmap, length):
     adj = {}
     for a, b in cmap:
+        if a in AVOID or b in AVOID:
+            continue
         adj.setdefault(a, set()).add(b)
         adj.setdefault(b, set()).add(a)
     def dfs(path):
@@ -150,7 +153,7 @@ else:
 
 meta = {
     "utc": datetime.now(timezone.utc).isoformat(),
-    "protocol": f"v7-{'reversed' if REVERSE else 'forward'}",
+    "protocol": f"v7-{'reversed' if REVERSE else 'forward'}-avoid{sorted(AVOID)}",
     "backend": backend.name,
     "physical_path": path,
     "repeats": R,

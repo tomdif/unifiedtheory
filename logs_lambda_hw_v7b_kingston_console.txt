@@ -1,0 +1,5 @@
+[    0.0s] config: backend=ibm_kingston reverse=False R=3
+[    2.7s] backend: ibm_kingston, pending: 22
+[    2.7s] physical path: [0, 1, 2, 3, 4, 5]
+[    3.4s] 2q-gate counts: {1: 16, 2: 17, 3: 18, 4: 19, 5: 20}
+[    3.4s] submitting batch: 15 pubs x 20000 shots
