@@ -147,6 +147,16 @@
      Finite-precision interference data quantitatively bounds
      Born-rule deviations - the reconstruction as an experimental
      inequality.
+  23. `complex_mixing_block_forces_born` - THE WALL FALLS: probing
+     one mixing block with a COMPLEX phase sweeps the output
+     argument over a continuous interval at fixed input measure;
+     overlapping intervals chain across each level
+     (`phase_interval_additivity`, explicit finite ladder, no
+     continuity/monotonicity/density) and force exact Pythagorean
+     additivity.  ONE interference device plus a dialable phase
+     forces the Born function on ALL monotone measures - any angle,
+     unnormalized.  Supersedes the SS18-21 case analysis for the
+     Born conclusion.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -3676,6 +3686,437 @@ theorem approximate_beam_splitter_near_born (f : ℝ → ℝ) (δ : ℝ)
   calc |f x - c * x^2| ≤ (4*δ)/3 := hc x hx
     _ = (4/3) * δ := by ring
 
+/-! ## 23. THE WALL FALLS: phase probes force additivity — one
+mixing block, any angle, forces Born on all monotone measures
+
+Sections 18–21 fought the Orlicz–Lamperti wall case by case:
+balanced blocks (quadratic functional equation), dense transmittance
+families (splitting rigidity), irrational angles (orbit density),
+lopsided blocks (exchange-transport continuity) — leaving the
+rational-angle residue open, with a Mellin attack registered.
+
+The residue never needed any of it.  Every previous section probed
+with REAL amplitudes only.  Probing the block with s·e₁ + t·e^{iψ}·e₂
+leaves the input measure fixed while the output argument sweeps the
+CONTINUOUS interval [(cs−σt)², (cs+σt)²] as ψ varies — so the
+pair-sum g(u) + g(S−u) is constant on a continuum of overlapping
+intervals whose union chains across the whole level.  The ladder
+(explicit steps of size μ* = 4PQ/(P+Q)², finitely many, no limits)
+gives EXACT Pythagorean additivity (`phase_interval_additivity`):
+no continuity, no monotonicity, no density, no jump-killing.
+
+`complex_mixing_block_forces_born`: a monotone measure Σ f(‖·‖)
+(f(0) = 0, nothing else) lossless under one ℂ-linear step containing
+a rotation-form mixing block — ANY angle, balanced or lopsided,
+rational or irrational, unnormalized — is exactly f(x) = x² f(1).
+Monotone Cauchy (§15) is the only place monotonicity enters.
+
+This supersedes the case analysis of §§18–21 for the Born
+conclusion (those sections retain independent content: they use
+only REAL probes, and their derived-continuity theorems stand
+alone).  The physical reading sharpens to its final form: ONE
+INTERFERENCE DEVICE PLUS THE FREEDOM TO DIAL A PHASE forces the
+Born rule over the entire monotone class.  What remains beyond:
+blocks not of rotation form (two arbitrary complex columns). -/
+
+/-- `a ≤ b` from `a² ≤ b²` on nonnegatives. -/
+theorem le_of_sq_le_sq'' {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b)
+    (h : a^2 ≤ b^2) : a ≤ b := by
+  nlinarith [sq_nonneg (a - b), sq_nonneg (a + b)]
+
+set_option maxHeartbeats 1600000 in
+/-- PHASE-INTERVAL ADDITIVITY: the complex-phase probe relation of a
+single mixing block forces exact Pythagorean additivity of g.  No
+continuity, no monotonicity, no density — pure interval chaining. -/
+theorem phase_interval_additivity (g : ℝ → ℝ) (hg0 : g 0 = 0)
+    (P Q : ℝ) (hP : 0 < P) (hQ : 0 < Q)
+    (hE : ∀ x y w : ℝ, 0 ≤ x → 0 ≤ y → -1 ≤ w → w ≤ 1 →
+      g (P*x + Q*y - 2*Real.sqrt (P*Q*x*y) * w)
+        + g (Q*x + P*y + 2*Real.sqrt (P*Q*x*y) * w)
+      = g x + g y) :
+    ∀ a b : ℝ, 0 ≤ a → 0 ≤ b → g (a + b) = g a + g b := by
+  -- overlapping-interval step: G Z μ = G Z ν when the centers are
+  -- within the μ-interval's half-width
+  have key : ∀ Z : ℝ, 0 < Z → ∀ μ ν : ℝ,
+      0 < μ → μ < 1 → 0 ≤ ν → ν ≤ 1 →
+      |(P - Q) * (μ - ν)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) →
+      g (Z*μ) + g (Z*(1-μ)) = g (Z*ν) + g (Z*(1-ν)) := by
+    intro Z hZ μ ν hμ0 hμ1 hν0 hν1 hcond
+    have h1μ : (0:ℝ) < 1 - μ := by linarith
+    have hZμ : (0:ℝ) ≤ Z*μ := by positivity
+    have hZμ' : (0:ℝ) ≤ Z*(1-μ) := by positivity
+    have hZν : (0:ℝ) ≤ Z*ν := by positivity
+    have hZν' : (0:ℝ) ≤ Z*(1-ν) := by nlinarith
+    have hs_pos : 0 < Real.sqrt (P*Q*μ*(1-μ)) := by
+      apply Real.sqrt_pos.mpr
+      positivity
+    -- instance at (ν, w = 0)
+    have h1 := hE (Z*ν) (Z*(1-ν)) 0 hZν hZν' (by norm_num) (by norm_num)
+    rw [mul_zero, sub_zero, add_zero] at h1
+    -- instance at (μ, w*) hitting the same point
+    set w : ℝ := (P - Q) * (μ - ν) / (2 * Real.sqrt (P*Q*μ*(1-μ)))
+      with hwdef
+    have hw1 : |w| ≤ 1 := by
+      rw [hwdef, abs_div]
+      rw [div_le_one (by positivity)]
+      calc |(P - Q) * (μ - ν)|
+          ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := hcond
+        _ = |2 * Real.sqrt (P*Q*μ*(1-μ))| := by
+            rw [abs_of_pos (by positivity)]
+    have h2 := hE (Z*μ) (Z*(1-μ)) w hZμ hZμ'
+      (neg_le_of_abs_le hw1) (le_of_abs_le hw1)
+    have hsq : Real.sqrt (P*Q*(Z*μ)*(Z*(1-μ)))
+        = Z * Real.sqrt (P*Q*μ*(1-μ)) := by
+      rw [show P*Q*(Z*μ)*(Z*(1-μ)) = Z^2 * (P*Q*μ*(1-μ)) by ring,
+        Real.sqrt_mul (sq_nonneg Z), Real.sqrt_sq (le_of_lt hZ)]
+    rw [hsq] at h2
+    -- cancel the sqrt against w
+    have hws : w * (2 * Real.sqrt (P*Q*μ*(1-μ))) = (P - Q) * (μ - ν) := by
+      rw [hwdef]
+      exact div_mul_cancel₀ _ (by positivity)
+    have hprod : 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w = Z*((P-Q)*(μ-ν)) := by
+      calc 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+          = Z*(w * (2*Real.sqrt (P*Q*μ*(1-μ)))) := by ring
+        _ = Z*((P-Q)*(μ-ν)) := by rw [hws]
+    have harg1 : P*(Z*μ) + Q*(Z*(1-μ)) - 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+        = P*(Z*ν) + Q*(Z*(1-ν)) := by
+      rw [hprod]
+      ring
+    have harg2 : Q*(Z*μ) + P*(Z*(1-μ)) + 2*(Z*Real.sqrt (P*Q*μ*(1-μ)))*w
+        = Q*(Z*ν) + P*(Z*(1-ν)) := by
+      rw [hprod]
+      ring
+    rw [harg1, harg2] at h2
+    linarith
+  -- the threshold ratio and its algebraic identity
+  set mustar : ℝ := 4*P*Q/(P+Q)^2 with hmustar
+  have hmu0 : 0 < mustar := by positivity
+  have hmu1 : mustar ≤ 1 := by
+    rw [hmustar, div_le_one (by positivity)]
+    nlinarith [sq_nonneg (P - Q)]
+  have hkey_id : (P-Q)^2 * mustar = 4*P*Q*(1-mustar) := by
+    rw [hmustar]
+    field_simp
+    ring
+  -- one-step condition for steps of size μ*, valid on [μ*, 1/2]
+  have hstep_cond : ∀ μ : ℝ, mustar ≤ μ → μ ≤ 1/2 →
+      |P - Q| * mustar ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+    intro μ hμl hμr
+    have hμ0 : 0 < μ := lt_of_lt_of_le hmu0 hμl
+    have h1μ : (0:ℝ) ≤ 1 - μ := by linarith
+    have hmono : mustar * (1 - mustar) ≤ μ * (1 - μ) := by
+      nlinarith [mul_nonneg (sub_nonneg.mpr hμl)
+        (by linarith : (0:ℝ) ≤ 1 - μ - mustar)]
+    apply le_of_sq_le_sq'' (by positivity) (by positivity)
+    have hs := Real.sq_sqrt (show (0:ℝ) ≤ P*Q*μ*(1-μ) by positivity)
+    calc (|P-Q| * mustar)^2 = (P-Q)^2 * mustar * mustar := by
+          rw [mul_pow, sq_abs]
+          ring
+      _ = 4*P*Q*(1-mustar) * mustar := by rw [hkey_id]
+      _ ≤ 4*(P*Q*μ*(1-μ)) := by
+          nlinarith [mul_le_mul_of_nonneg_left hmono
+            (show (0:ℝ) ≤ 4*(P*Q) by positivity)]
+      _ = (2 * Real.sqrt (P*Q*μ*(1-μ)))^2 := by
+          rw [mul_pow, hs]
+          ring
+  -- the ladder: every μ ≤ 1/2 connects to 0
+  have hladder : ∀ Z : ℝ, 0 < Z → ∀ (k : ℕ) (μ : ℝ),
+      0 ≤ μ → μ ≤ 1/2 → μ ≤ (k+1 : ℝ) * mustar →
+      g (Z*μ) + g (Z*(1-μ)) = g 0 + g Z := by
+    intro Z hZ k
+    induction k with
+    | zero =>
+      intro μ hμ0 hμh hμk
+      rcases eq_or_lt_of_le hμ0 with h0 | hpos
+      · rw [← h0]
+        norm_num
+      have hμ1 : μ < 1 := by linarith
+      have hμle : μ ≤ mustar := by
+        have : ((0:ℕ)+1 : ℝ) = 1 := by norm_num
+        rw [this, one_mul] at hμk
+        exact hμk
+      have hcond : |(P - Q) * (μ - 0)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+        rw [sub_zero, abs_mul, abs_of_nonneg hμ0]
+        have h1μ : (0:ℝ) ≤ 1 - μ := by linarith
+        -- (P-Q)² μ ≤ (P-Q)² μ* = 4PQ(1-μ*) ≤ 4PQ(1-μ)
+        have hchain : (P-Q)^2 * μ ≤ 4*P*Q*(1-μ) := by
+          calc (P-Q)^2 * μ ≤ (P-Q)^2 * mustar :=
+                mul_le_mul_of_nonneg_left hμle (sq_nonneg _)
+            _ = 4*P*Q*(1-mustar) := hkey_id
+            _ ≤ 4*P*Q*(1-μ) := by
+                apply mul_le_mul_of_nonneg_left (by linarith)
+                positivity
+        apply le_of_sq_le_sq'' (by positivity) (by positivity)
+        have hs := Real.sq_sqrt (show (0:ℝ) ≤ P*Q*μ*(1-μ) by positivity)
+        calc (|P-Q| * μ)^2 = (P-Q)^2 * μ * μ := by
+              rw [mul_pow, sq_abs]
+              ring
+          _ ≤ 4*P*Q*(1-μ) * μ := by
+              nlinarith [mul_le_mul_of_nonneg_right hchain hμ0]
+          _ = (2 * Real.sqrt (P*Q*μ*(1-μ)))^2 := by
+              rw [mul_pow, hs]
+              ring
+      have h := key Z hZ μ 0 hpos hμ1 le_rfl (by norm_num) hcond
+      rw [mul_zero, sub_zero, mul_one] at h
+      exact h
+    | succ k ih =>
+      intro μ hμ0 hμh hμk
+      by_cases hcase : μ ≤ (k+1 : ℝ) * mustar
+      · exact ih μ hμ0 hμh hcase
+      push_neg at hcase
+      have hμstar : mustar ≤ μ := by
+        have hk1 : (1:ℝ) ≤ (k:ℝ)+1 := by
+          have : (0:ℝ) ≤ (k:ℝ) := Nat.cast_nonneg k
+          linarith
+        calc mustar = 1 * mustar := (one_mul _).symm
+          _ ≤ ((k:ℝ)+1) * mustar :=
+              mul_le_mul_of_nonneg_right hk1 (le_of_lt hmu0)
+          _ ≤ μ := le_of_lt hcase
+      have hμpos : 0 < μ := lt_of_lt_of_le hmu0 hμstar
+      have hμ1 : μ < 1 := by linarith
+      set ν : ℝ := μ - mustar with hνdef
+      have hν0 : 0 ≤ ν := by rw [hνdef]; linarith
+      have hν1 : ν ≤ 1 := by rw [hνdef]; linarith
+      have hνh : ν ≤ 1/2 := by rw [hνdef]; linarith
+      have hνk : ν ≤ (k+1 : ℝ) * mustar := by
+        rw [hνdef]
+        have : μ ≤ ((k:ℝ)+1+1) * mustar := by
+          convert hμk using 2
+          push_cast
+          ring
+        nlinarith
+      have hcond : |(P - Q) * (μ - ν)| ≤ 2 * Real.sqrt (P*Q*μ*(1-μ)) := by
+        rw [hνdef, show μ - (μ - mustar) = mustar by ring, abs_mul,
+          abs_of_pos hmu0]
+        exact hstep_cond μ hμstar hμh
+      have h1 := key Z hZ μ ν hμpos hμ1 hν0 hν1 hcond
+      have h2 := ih ν hν0 hνh hνk
+      linarith
+  -- conclusion
+  have main : ∀ a b : ℝ, 0 < a → 0 < b → a ≤ b →
+      g (a + b) = g a + g b := by
+    intro a b hapos hbpos hab
+    have hZ : 0 < a + b := by linarith
+    set μ : ℝ := a / (a + b) with hμdef
+    have hμ0 : 0 ≤ μ := by positivity
+    have hμh : μ ≤ 1/2 := by
+      rw [hμdef, div_le_iff₀ hZ]
+      linarith
+    obtain ⟨k, hk⟩ := exists_nat_gt (μ / mustar)
+    have hμk : μ ≤ (k+1 : ℝ) * mustar := by
+      rw [div_lt_iff₀ hmu0] at hk
+      nlinarith [hmu0]
+    have h := hladder (a+b) hZ k μ hμ0 hμh hμk
+    rw [hg0, zero_add] at h
+    have e1 : (a+b) * μ = a := by
+      rw [hμdef]
+      field_simp
+    have e2 : (a+b) * (1-μ) = b := by
+      rw [hμdef]
+      field_simp
+      ring
+    rw [e1, e2] at h
+    linarith
+  intro a b ha hb
+  rcases eq_or_lt_of_le ha with h0 | hapos
+  · rw [← h0, zero_add, hg0, zero_add]
+  rcases eq_or_lt_of_le hb with h0 | hbpos
+  · rw [← h0, add_zero, hg0, add_zero]
+  rcases le_total a b with hab | hab
+  · exact main a b hapos hbpos hab
+  · rw [show a + b = b + a by ring, main b a hbpos hapos hab]
+    ring
+
+
+set_option maxHeartbeats 1600000 in
+/-- ANY MIXING BLOCK FORCES BORN: a monotone measure Σ f(‖·‖)
+lossless under one ℂ-linear step containing a rotation-form mixing
+block — ANY angle, balanced or lopsided, rational or irrational, no
+normalization — is exactly f(x) = x² f(1).  The complex-phase probe
+continuum feeds `phase_interval_additivity`; monotone Cauchy
+finishes.  Supersedes the case analysis of §§18–21. -/
+theorem complex_mixing_block_forces_born {n : ℕ} (f : ℝ → ℝ)
+    (hf0 : f 0 = 0)
+    (hmono : ∀ a b : ℝ, 0 ≤ a → a ≤ b → f a ≤ f b)
+    (B : (Fin n → ℂ) →ₗ[ℂ] (Fin n → ℂ))
+    (hiso : ∀ x : Fin n → ℂ, ∑ i, f ‖B x i‖ = ∑ i, f ‖x i‖)
+    {j₁ j₂ k₁ k₂ : Fin n} (hj : j₁ ≠ j₂) (hk : k₁ ≠ k₂)
+    (c σ : ℝ) (hc : c ≠ 0) (hσ : σ ≠ 0)
+    (hcol1 : B (Pi.single j₁ 1)
+      = Pi.single k₁ ((c : ℝ) : ℂ) + Pi.single k₂ ((σ : ℝ) : ℂ))
+    (hcol2 : B (Pi.single j₂ 1)
+      = Pi.single k₁ ((-σ : ℝ) : ℂ) + Pi.single k₂ ((c : ℝ) : ℂ)) :
+    ∀ x : ℝ, 0 ≤ x → f x = x ^ 2 * f 1 := by
+  set g : ℝ → ℝ := fun t => f (Real.sqrt t) with hgdef
+  have hg0 : g 0 = 0 := by
+    rw [hgdef]
+    simp [Real.sqrt_zero, hf0]
+  have hgz : ∀ z : ℂ, g (‖z‖^2) = f ‖z‖ := by
+    intro z
+    rw [hgdef]
+    simp only []
+    rw [Real.sqrt_sq (norm_nonneg z)]
+  have hmonog : ∀ a b : ℝ, 0 ≤ a → a ≤ b → g a ≤ g b := by
+    intro a b _ hab
+    exact hmono _ _ (Real.sqrt_nonneg a) (Real.sqrt_le_sqrt hab)
+  -- the probe relation in g-form
+  have hE : ∀ x y w : ℝ, 0 ≤ x → 0 ≤ y → -1 ≤ w → w ≤ 1 →
+      g (c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w)
+        + g (σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w)
+      = g x + g y := by
+    intro x y w hx hy hw1 hw2
+    -- absorb the sign of c*σ into the phase
+    set e : ℝ := if 0 ≤ c*σ then w else -w with hedef
+    have he1 : -1 ≤ e := by
+      rw [hedef]
+      split_ifs <;> linarith
+    have he2 : e ≤ 1 := by
+      rw [hedef]
+      split_ifs <;> linarith
+    have hesq : (0:ℝ) ≤ 1 - e^2 := by nlinarith
+    set z : ℂ := ⟨e, Real.sqrt (1 - e^2)⟩ with hzdef
+    have hz_normsq : Complex.normSq z = 1 := by
+      rw [hzdef, Complex.normSq_mk]
+      rw [show Real.sqrt (1-e^2) * Real.sqrt (1-e^2)
+          = Real.sqrt (1-e^2) ^ 2 by ring]
+      rw [Real.sq_sqrt hesq]
+      ring
+    have hz_norm : ‖z‖ = 1 := by
+      have := Complex.normSq_eq_norm_sq z
+      rw [hz_normsq] at this
+      nlinarith [norm_nonneg z]
+    set s : ℝ := Real.sqrt x with hsdef
+    set t : ℝ := Real.sqrt y with htdef
+    have hs2 : s^2 = x := Real.sq_sqrt hx
+    have ht2 : t^2 = y := Real.sq_sqrt hy
+    have hs0 : 0 ≤ s := Real.sqrt_nonneg x
+    have ht0 : 0 ≤ t := Real.sqrt_nonneg y
+    -- the probe state and its image
+    have hstate : (Pi.single j₁ ((s:ℝ):ℂ)
+        + Pi.single j₂ (((t:ℝ):ℂ) * z) : Fin n → ℂ)
+        = (s:ℂ) • (Pi.single j₁ 1 : Fin n → ℂ)
+          + ((t:ℂ) * z) • (Pi.single j₂ 1 : Fin n → ℂ) := by
+      funext i
+      simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+        smul_eq_mul]
+      split_ifs <;> ring
+    have hBx : B (Pi.single j₁ ((s:ℝ):ℂ)
+        + Pi.single j₂ (((t:ℝ):ℂ) * z))
+        = Pi.single k₁ ((s:ℂ)*(c:ℂ) - ((t:ℂ)*z)*(σ:ℂ))
+          + Pi.single k₂ ((s:ℂ)*(σ:ℂ) + ((t:ℂ)*z)*(c:ℂ)) := by
+      rw [hstate, map_add, map_smul, map_smul, hcol1, hcol2]
+      funext i
+      simp only [Pi.add_apply, Pi.smul_apply, Pi.single_apply,
+        smul_eq_mul]
+      split_ifs <;> push_cast <;> ring
+    have h := hiso (Pi.single j₁ ((s:ℝ):ℂ)
+      + Pi.single j₂ (((t:ℝ):ℂ) * z))
+    rw [hBx, measure_pair_sum f hf0 hk, measure_pair_sum f hf0 hj] at h
+    -- norms of the four entries
+    have hz_re : z.re = e := rfl
+    have hnorm1 : ‖(s:ℂ)*(c:ℂ) - ((t:ℂ)*z)*(σ:ℂ)‖^2
+        = c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w := by
+      rw [← Complex.normSq_eq_norm_sq]
+      have hre : ((s:ℂ)*(c:ℂ) - ((t:ℂ)*z)*(σ:ℂ)).re
+          = s*c - t*z.re*σ := by
+        simp [Complex.sub_re, Complex.mul_re, Complex.mul_im]
+      have him : ((s:ℂ)*(c:ℂ) - ((t:ℂ)*z)*(σ:ℂ)).im
+          = -(t*z.im*σ) := by
+        simp [Complex.sub_im, Complex.mul_re, Complex.mul_im]
+      rw [Complex.normSq_apply, hre, him]
+      have hzz : z.re^2 + z.im^2 = 1 := by
+        have := hz_normsq
+        rw [Complex.normSq_apply] at this
+        nlinarith [this]
+      have hsqrt : Real.sqrt (c^2*σ^2*x*y) = |c*σ| * (s*t) := by
+        rw [show c^2*σ^2*x*y = (c*σ)^2 * (s*t)^2 by
+              rw [← hs2, ← ht2]; ring,
+          Real.sqrt_mul (sq_nonneg _), Real.sqrt_sq_eq_abs,
+          Real.sqrt_sq_eq_abs, abs_of_nonneg (mul_nonneg hs0 ht0)]
+      rw [hsqrt, hz_re]
+      by_cases hcs : 0 ≤ c*σ
+      · have habs : |c*σ| = c*σ := abs_of_nonneg hcs
+        have hee : e = w := by rw [hedef, if_pos hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h := hzz
+          rw [hz_re, hee] at h
+          exact h
+        rw [habs, hee]
+        linear_combination c^2 * hs2 + σ^2 * ht2 + σ^2*t^2 * hwim
+      · have habs : |c*σ| = -(c*σ) := abs_of_neg (not_le.mp hcs)
+        have hee : e = -w := by rw [hedef, if_neg hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h := hzz
+          rw [hz_re, hee] at h
+          linear_combination h
+        rw [habs, hee]
+        linear_combination c^2 * hs2 + σ^2 * ht2 + σ^2*t^2 * hwim
+    have hnorm2 : ‖(s:ℂ)*(σ:ℂ) + ((t:ℂ)*z)*(c:ℂ)‖^2
+        = σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w := by
+      rw [← Complex.normSq_eq_norm_sq]
+      have hre : ((s:ℂ)*(σ:ℂ) + ((t:ℂ)*z)*(c:ℂ)).re
+          = s*σ + t*z.re*c := by
+        simp [Complex.add_re, Complex.mul_re, Complex.mul_im]
+      have him : ((s:ℂ)*(σ:ℂ) + ((t:ℂ)*z)*(c:ℂ)).im
+          = t*z.im*c := by
+        simp [Complex.add_im, Complex.mul_re, Complex.mul_im]
+      rw [Complex.normSq_apply, hre, him]
+      have hzz : z.re^2 + z.im^2 = 1 := by
+        have := hz_normsq
+        rw [Complex.normSq_apply] at this
+        nlinarith [this]
+      have hsqrt : Real.sqrt (c^2*σ^2*x*y) = |c*σ| * (s*t) := by
+        rw [show c^2*σ^2*x*y = (c*σ)^2 * (s*t)^2 by
+              rw [← hs2, ← ht2]; ring,
+          Real.sqrt_mul (sq_nonneg _), Real.sqrt_sq_eq_abs,
+          Real.sqrt_sq_eq_abs, abs_of_nonneg (mul_nonneg hs0 ht0)]
+      rw [hsqrt, hz_re]
+      by_cases hcs : 0 ≤ c*σ
+      · have habs : |c*σ| = c*σ := abs_of_nonneg hcs
+        have hee : e = w := by rw [hedef, if_pos hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h := hzz
+          rw [hz_re, hee] at h
+          exact h
+        rw [habs, hee]
+        linear_combination σ^2 * hs2 + c^2 * ht2 + c^2*t^2 * hwim
+      · have habs : |c*σ| = -(c*σ) := abs_of_neg (not_le.mp hcs)
+        have hee : e = -w := by rw [hedef, if_neg hcs]
+        have hwim : w^2 + z.im^2 = 1 := by
+          have h := hzz
+          rw [hz_re, hee] at h
+          linear_combination h
+        rw [habs, hee]
+        linear_combination σ^2 * hs2 + c^2 * ht2 + c^2*t^2 * hwim
+    -- convert to g and finish
+    have h1 : f ‖(s:ℂ)*(c:ℂ) - ((t:ℂ)*z)*(σ:ℂ)‖
+        = g (c^2*x + σ^2*y - 2*Real.sqrt (c^2*σ^2*x*y) * w) := by
+      rw [← hnorm1, hgz]
+    have h2 : f ‖(s:ℂ)*(σ:ℂ) + ((t:ℂ)*z)*(c:ℂ)‖
+        = g (σ^2*x + c^2*y + 2*Real.sqrt (c^2*σ^2*x*y) * w) := by
+      rw [← hnorm2, hgz]
+    have h3 : f ‖((s:ℝ):ℂ)‖ = g x := by
+      rw [← hgz]
+      congr 1
+      rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hs0, hs2]
+    have h4 : f ‖((t:ℝ):ℂ) * z‖ = g y := by
+      rw [← hgz]
+      congr 1
+      rw [norm_mul, hz_norm, mul_one, Complex.norm_real,
+        Real.norm_eq_abs, abs_of_nonneg ht0, ht2]
+    rw [h1, h2, h3, h4] at h
+    exact h
+  -- additivity from the phase intervals, then monotone Cauchy
+  have hadd := phase_interval_additivity g hg0 (c^2) (σ^2)
+    (by positivity) (by positivity) hE
+  have hlin := monotone_additive_on_cone_is_linear g hadd hmonog
+  intro x hx
+  have h := hlin (x^2) (sq_nonneg x)
+  rw [hgdef] at h
+  simp only [] at h
+  rw [Real.sqrt_sq hx, Real.sqrt_one] at h
+  exact h
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -3729,5 +4170,8 @@ theorem approximate_beam_splitter_near_born (f : ℝ → ℝ) (δ : ℝ)
 #print axioms mixing_block_forces_measure_continuity
 #print axioms monotone_quadratic_stability
 #print axioms approximate_beam_splitter_near_born
+#print axioms le_of_sq_le_sq''
+#print axioms phase_interval_additivity
+#print axioms complex_mixing_block_forces_born
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

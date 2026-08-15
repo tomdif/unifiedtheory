@@ -109,7 +109,7 @@ supports globally (the Lamperti structure).
 
 ## Formalization status: the Lamperti leg is now FULLY machine-checked
 
-Lean (KFCausalUniquenessLeg.lean, axiom-clean, 53 theorems):
+Lean (KFCausalUniquenessLeg.lean, axiom-clean, 56 theorems):
 real-binary determinism; the p = 1 discrete instance; quaternion
 path-order witness; and `lamperti_columns_ne_two` - the COMPLETE
 Lamperti obstruction, for EVERY real p with 0 < p, p != 2, in EVERY
@@ -533,6 +533,68 @@ the measure function itself, over the entire monotone class, with
 no parametric deformation family assumed).  It converts the
 no-deformation no-go into an inequality an experiment can consume:
 near-losslessness forces near-Born, with an explicit constant.
+
+## THE WALL FALLS (2026-08-15, eighth pass): one mixing block plus a
+## dialable phase forces Born on all monotone measures
+
+The Orlicz-Lamperti wall - fought case by case through passes three
+to six (balanced / dense-family / irrational-angle / continuity for
+the rest) - is DOWN, by an argument simpler than any of the partial
+ones (file at 56 theorems):
+
+Every earlier pass probed with REAL amplitudes.  Probing the block
+with s*e1 + t*e^(i psi)*e2 leaves the input measure f(s)+f(t)
+UNCHANGED while the output argument sweeps the continuous interval
+[(cs - sigma t)^2, (cs + sigma t)^2] as the phase psi turns.  So
+the level pair-sum g(u) + g(S-u) is constant on a continuum of
+overlapping intervals, and chaining them across the level (explicit
+ladder with steps mu* = 4PQ/(P+Q)^2, finitely many, no limits)
+forces EXACT Pythagorean additivity: `phase_interval_additivity`.
+No continuity, no monotonicity, no density, no jump-killing - the
+constancy chains by pure logic (two constants agreeing on an
+overlap point are equal).
+
+`complex_mixing_block_forces_born`: a monotone measure Sum f(||.||)
+(f(0)=0, NOTHING else) lossless under one C-linear step containing
+a rotation-form mixing block - ANY angle, balanced or lopsided,
+rational or irrational, unnormalized - satisfies f(x) = x^2 f(1).
+Monotonicity enters exactly once, at the final monotone-Cauchy
+classification.
+
+PHYSICS (final form of the statement this program set out to earn):
+ONE INTERFERENCE DEVICE PLUS THE FREEDOM TO DIAL A PHASE forces the
+Born rule over the entire monotone measure class.  The rational-
+angle residue and its registered Mellin attack are moot - the
+missing ingredient was never harmonic analysis, it was the phase
+knob every interferometer already has.
+
+Honest scope: sections 18-21 retain independent content (real-probe-
+only results; derived-continuity theorems).  Remaining beyond the
+theorem: blocks not of rotation form (two arbitrary complex
+columns) - and the monotone-measure grand capstone (divisible time
++ phase covariance + change => Born function + unitarity, with the
+measure family fully dissolved), now within reach by combining S23
+with S16-17.
+
+## THE POSTS LIMIT (same day): bounce suppression is a derived
+## number pair, not an exponent
+
+posts_survival.py (registered readings): the survival model
+posts(n+1) = posts(n)*s_n + tau_n built from measured one-step
+quantities CLOSES for both chains (reading (i)): classical tracks
+within ~1% in the tail, quantum within ~10%.  Structure: top
+creation tau_n is summable for BOTH laws (classical n^-3.1, quantum
+n^-2.7); the separation lives in SURVIVAL: classical posts become
+immortal ((1-s_n) ~ n^-3.2), quantum posts keep being killed
+((1-s_n) ~ n^-1.5).  Consequence: posts(n) tends to POSITIVE
+LIMITS, not power-law zero - classical ~ 0.16, quantum ~ 0.02.
+The earlier 'posts exponent' table was a window transient; the
+zero-parameter statement is the asymptotic bounce-probability pair
+(~0.02 vs ~0.16, a 7-10x suppression), now DERIVED from one-step
+law properties.  (Also: the r(n) crossover of the seventh pass is
+LAW-VARIANT-DEPENDENT - the min-norm band member shows g(20) =
++0.035 with no crossing - so it is demoted from breakthrough
+candidacy; the selection band dominates bulk r at accessible n.)
 
 ## The theorem chain, with Lean witnesses per arrow
 

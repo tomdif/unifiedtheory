@@ -39,9 +39,11 @@ parents are counted (pi/4 feasibility has never failed through
 depth 11; depth 19 is new territory - a nonzero count is itself
 reportable).
 """
-import math, sys, time
+import math, os, sys, time
 import numpy as np
 from scipy.optimize import linprog, minimize
+
+LAW = os.environ.get("LAW", "maxent")   # maxent | minnorm (selection-band variants)
 
 T0 = time.time()
 def log(*a): print(f"[{time.time()-T0:8.1f}s]", *a, flush=True)
@@ -118,6 +120,10 @@ def maxent_gap_law(gapcounts):
         if f(mid) <= 0: lo = mid
         else: hi = mid
     xfe = np.maximum((1 - lo) * xm + lo * xhi, 0.0)
+    if LAW == "minnorm":
+        out = {g: xfe[i] ** 2 for i, g in enumerate(gaps)}
+        LAW_CACHE[key] = out
+        return out
     def negH(x):
         q = mu * x * x
         return float(np.sum(q * np.log(q + 1e-300)))
@@ -246,7 +252,7 @@ def run(quantum, npaths, tag):
         out[n] = (mean, se)
     return out, got
 
-log(f"NS={NS} NQ={NQ} NC={NC}")
+log(f"NS={NS} NQ={NQ} NC={NC} LAW={LAW}")
 log("sampling QUANTUM pi/4 gap-max-entropy chain")
 Q, gotQ = run(True, NQ, "quantum")
 log(f"quantum done ({gotQ} paths, {QP_FAIL} infeasible kills, "
