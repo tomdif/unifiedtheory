@@ -1,0 +1,23 @@
+normalizations Q_d(Omega): {1: 1.5725, 2: 0.4712, 3: 0.4735, 4: 1.5952, 5: 1.9995}
+
+fingerprint F_k (delta_k^pred = (1-lambda) * F_k):
+  F_0 = -0.3298
+  F_1 = +0.2578
+  F_2 = +0.7320
+  F_3 = +0.3238
+
+per-dataset contributions:
+  ibm_kingston v7b record 0: (1-lam) = +0.00667 ± 0.00625
+  ibm_kingston v7b record 1: (1-lam) = -0.01435 ± 0.01106
+  ibm_kingston v7b record 2: (1-lam) = +0.00009 ± 0.00392
+  ibm_kingston v7b record 3: (1-lam) = -0.00479 ± 0.00890
+  marrakesh v6 (rec 1-3; rec 0 excluded: hardware artifact) record 1: (1-lam) = -0.00365 ± 0.00784
+  marrakesh v6 (rec 1-3; rec 0 excluded: hardware artifact) record 2: (1-lam) = -0.00041 ± 0.00277
+  marrakesh v6 (rec 1-3; rec 0 excluded: hardware artifact) record 3: (1-lam) = +0.00093 ± 0.00630
+
+combined fit: (1-lambda) = -0.00032 ± 0.00188   chi2/dof = 3.3/6
+--- VERDICT (registered readings) ---
+  reading (i): consistent with lambda = 1.
+  (1 - lambda) <= 0.00278  (95% CL, one-sided, matched-filter, mapping assumption stated)
+
+SUPERSEDES the envelope-based conversion of 2026-08-14 (which assumed saturation the theory does not provide); see docstring.
