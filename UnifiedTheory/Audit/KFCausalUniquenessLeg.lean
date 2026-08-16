@@ -223,6 +223,14 @@
      n = 3 (W = 1/2 vs 1/4). Phases are exactly covariant (sec.
      27); the obstruction is purely magnitudes. Covariance for
      bi-normalized growth must live at the class-amplitude level.
+  33. THE BELL-CAUSALITY NO-GO: `bell_causality_no_go` -
+     classical-form / fixed-slot-quantum Bell causality is ALSO
+     incompatible with action-phased double conservation, failing
+     at the 2-antichain parent (Bell ratios force equal +-1
+     magnitudes; the imaginary part forces v3 = -v1; Born then
+     fails at 4v1^2 = 1/2). No sign assumption needed. Both RS
+     conditions are magnitude-sector no-gos; every phase-level
+     condition holds exactly.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5367,6 +5375,33 @@ theorem covariance_no_go :
   rintro ⟨A3, P21, Lam, V, C3, h1, h2, h3, h4⟩
   linarith
 
+/-! ## 33. The Bell-causality no-go -/
+
+/-- THE BELL-CAUSALITY NO-GO: at the 2-antichain parent, classical-
+form Bell causality (spectator-independent amplitude ratios, which
+via the single-point parent force the three ±1-gap magnitudes
+equal: v₂ = v₂' = v₁) is incompatible with double conservation.
+The coherent imaginary part forces v₃ = −v₁, the real part then
+gives 4v₁ = √2, and Born normalization demands 4v₁² = 1 — but
+16v₁² = 2 gives 4v₁² = 1/2.  No sign or positivity assumption is
+needed.  Together with `covariance_no_go`: NEITHER Rideout–Sorkin
+condition can be satisfied by action-phased double conservation —
+the obstruction in both cases lives purely in the magnitude sector
+(all phase-level conditions hold exactly). -/
+theorem bell_causality_no_go :
+    ¬ ∃ (v1 v2 v2' v3 : ℝ),
+      v2 = v1 ∧ v2' = v1 ∧
+      v1 - v2 - v2' - v3 = 0 ∧
+      v1 + v2 + v2' - v3 = Real.sqrt 2 ∧
+      v1^2 + v2^2 + v2'^2 + v3^2 = 1 := by
+  rintro ⟨v1, v2, v2', v3, h2, h2', him, hre, hb⟩
+  have hv3 : v3 = -v1 := by linarith
+  have hv1 : 4 * v1 = Real.sqrt 2 := by linarith
+  have hs : Real.sqrt 2 ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+  have h16 : (4 * v1)^2 = 2 := by rw [hv1]; exact hs
+  rw [h2, h2', hv3] at hb
+  nlinarith [h16, hb]
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5440,5 +5475,6 @@ theorem covariance_no_go :
 #print axioms clifford_anticommutation
 #print axioms jw_exchange
 #print axioms covariance_no_go
+#print axioms bell_causality_no_go
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

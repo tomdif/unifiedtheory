@@ -66,3 +66,54 @@ record structure are the natural objects for that test.
   - Open gate for a positive claim: formulate the class-level
     (decoherence-functional) covariance + quantum Bell causality
     conditions and test the pi/4 class measure against them.
+
+## PART 2 (same day): class-level covariance PASSES; quantum Bell
+## causality is a SECOND magnitude-sector no-go (Lean sec. 33)
+
+CLASS-LEVEL COVARIANCE - the positive half, verified exactly:
+  (1) Within-class phase alignment: all labeled representatives of
+      each unlabeled class carry the same phase (63/63 classes at
+      depth 5; engine = growthAction_iso_invariant): the class
+      amplitude is well-defined and relabeling interference is
+      never destructive.
+  (2) Coherent propagation: the total stem amplitude is exactly
+      conserved (sum of class amplitudes = 1 at depths 4 and 5) -
+      the Gudder-2.5-style consistency of the class decoherence
+      functional, inherited from per-parent coherent sums.
+  The class quantum measure mu(C) = |A(C)|^2 is well-defined,
+  label-invariant, and consistent.  (Between-class interference is
+  large and constructive: total mu = 6.44 at depth 5 - quantum
+  measures are not additive; noted, not a defect.)
+
+QUANTUM BELL CAUSALITY (fixed-slot form: D(., S) obeys the
+classical ratio condition; with the rank-1 level decoherence
+functional this reduces to spectator-independence of complex
+amplitude ratios):
+  - PHASE PARTS: hold EXACTLY (gap differences are spectator-
+    independent - a disjoint spectator changes no k_y in either
+    past).
+  - MAGNITUDE PARTS: NO-GO (Lean, `bell_causality_no_go`).  At the
+    2-antichain parent, the Bell ratios (via the 1-point parent)
+    force the three +-1-gap magnitudes equal; the coherent
+    imaginary part then forces v3 = -v1; nonnegativity kills it
+    immediately, and even with signs free Born normalization fails
+    (4 v1^2 = 1/2 != 1).  The chain parent, by contrast, is
+    exactly Bell-causal at (sqrt2/2, sqrt2/2, 0) - the maxent
+    member's own values.
+
+## FINAL AUDIT VERDICT
+
+Action-phased double conservation:
+  - satisfies EVERY phase-level covariance and causality condition
+    exactly (class phases label-invariant; phase ratios spectator-
+    independent; class measure well-defined and consistent);
+  - PROVABLY cannot satisfy either RS-form condition in the
+    magnitude sector (two machine-checked no-gos, sections 32-33).
+The quantum-CSG problem in Rideout-Sorkin form is UNSOLVABLE in
+this class.  The audit's positive content: the phase/interference
+sector of the pi/4 dynamics is fully covariant and causal; all
+obstructions are classical-probability-sector artifacts of
+transplanting RS conditions to amplitudes.  A correctly-stated
+quantum problem should impose its conditions where the physics
+lives - on the class decoherence functional - and there the pi/4
+measure passes every test we can currently formulate.
