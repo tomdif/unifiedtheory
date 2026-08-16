@@ -216,6 +216,13 @@
      CONSTRUCTION inside the Z8 meter algebra of the growth
      record. (Dynamical transport of the string under U = V o U+
      is the registered remaining half.)
+  32. THE COVARIANCE NO-GO: `covariance_no_go` - strict
+     Rideout-Sorkin covariance (per-path amplitude equality) is
+     IMPOSSIBLE for action-phased double conservation: the
+     node-weight system it forces contradicts itself linearly at
+     n = 3 (W = 1/2 vs 1/4). Phases are exactly covariant (sec.
+     27); the obstruction is purely magnitudes. Covariance for
+     bi-normalized growth must live at the class-amplitude level.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5337,6 +5344,29 @@ theorem jw_exchange {n : ℕ} (i j : Fin n) (hij : i ≠ j)
     rw [key (x j)]
     ring
 
+/-! ## 32. The covariance no-go -/
+
+/-- THE COVARIANCE NO-GO: strict (Rideout–Sorkin form) covariance
+demands amplitudes of node-weight-ratio form, turning the coherent
+constraint into a global linear system on unlabeled causets.  At
+the first nontrivial level (n = 3, 2D weights, φ = π/4) the system
+already has NO real solution: the two parents of size 2 impose,
+after dividing out the common factor √2/2 of the quadrature phases,
+  chain parent:      W₂₁ + W_Λ − W_C3 = 1  and  W₂₁ − W_Λ + W_C3 = 0
+  antichain parent:  W_A3 + 2W₂₁ − W_V = 1  and  W_A3 − 2W₂₁ − W_V = 0,
+whence W₂₁ = 1/2 and W₂₁ = 1/4.  No Born constraint and no
+positivity is even needed: action-phased double conservation CANNOT
+be strictly covariant.  (Phases ARE exactly covariant —
+`growthAction_iso_invariant` — the obstruction is purely in the
+magnitudes; covariance for bi-normalized growth must therefore live
+at the path-sum / class-amplitude level.) -/
+theorem covariance_no_go :
+    ¬ ∃ (A3 P21 Lam V C3 : ℝ),
+      P21 + Lam - C3 = 1 ∧ P21 - Lam + C3 = 0 ∧
+      A3 + 2*P21 - V = 1 ∧ A3 - 2*P21 - V = 0 := by
+  rintro ⟨A3, P21, Lam, V, C3, h1, h2, h3, h4⟩
+  linarith
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5409,5 +5439,6 @@ theorem jw_exchange {n : ℕ} (i j : Fin n) (hij : i ≠ j)
 #print axioms octant_formula
 #print axioms clifford_anticommutation
 #print axioms jw_exchange
+#print axioms covariance_no_go
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
