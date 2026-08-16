@@ -5477,6 +5477,52 @@ theorem product_bi_normalized {ι κ : Type*} [Fintype ι] [Fintype κ]
       _ = ∑ i, ‖a i‖^2 * 1 := by rw [hb2]
       _ = 1 := by simp [ha2]
 
+/-! ## 36. Two fermion species on the composite -/
+
+noncomputable def jwOp1 {n m : ℕ} (i : Fin n) :
+    ((Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ)
+    → ((Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ) :=
+  fun F x y => Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (2 * (x i).val)
+    * F (fun j => if j < i then x j + 2 else x j) y
+
+noncomputable def jwOp2 {n m : ℕ} (j : Fin m) :
+    ((Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ)
+    → ((Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ) :=
+  fun F x y => Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (2 * (y j).val)
+    * F x (fun k => if k < j then y k + 2 else y k)
+
+/-- Same-species exchange is FERMIONIC: factor-1 JW operators at
+distinct ranks anticommute (pointwise reduction to `jw_exchange`). -/
+theorem species1_anticommute {n m : ℕ} (i i' : Fin n) (hij : i ≠ i')
+    (F : (Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ)
+    (x : Fin n → ZMod 8) (y : Fin m → ZMod 8) :
+    jwOp1 i (jwOp1 i' F) x y = - jwOp1 i' (jwOp1 i F) x y := by
+  have h := jw_exchange i i' hij (fun x' => F x' y) x
+  simpa [jwOp1, jwOp] using h
+
+/-- Cross-species exchange is TRIVIAL: factor-1 and factor-2 JW
+operators COMMUTE — the two fermionic families are independent
+species with no mutual statistics phase. -/
+theorem species_cross_commute {n m : ℕ} (i : Fin n) (j : Fin m)
+    (F : (Fin n → ZMod 8) → (Fin m → ZMod 8) → ℂ)
+    (x : Fin n → ZMod 8) (y : Fin m → ZMod 8) :
+    jwOp1 i (jwOp2 j F) x y = jwOp2 j (jwOp1 i F) x y := by
+  simp only [jwOp1, jwOp2]
+  ring
+
+/-- ℤ₂ × ℤ₂ SUPERSELECTION: on the composite, EACH factor's action
+parity is separately conserved (A₁ ≡ n₁ and A₂ ≡ n₂ mod 2, for
+even weights in both factors) — a conserved PAIR of parities finer
+than the total parity: TWO FERMION SPECIES LABELS.  With the
+product theorem (§35: composite action = A₁ + A₂), the composite
+carries two independent structural fermion-parity charges. -/
+theorem composite_parity_pair {n₁ n₂ : ℕ}
+    (below₁ : Fin n₁ → Finset (Fin n₁)) (below₂ : Fin n₂ → Finset (Fin n₂))
+    (w₁ w₂ : ℕ → ℤ)
+    (h₁ : ∀ j, Even (w₁ j)) (h₂ : ∀ j, Even (w₂ j)) :
+    Even (growthAction below₁ w₁ - n₁) ∧ Even (growthAction below₂ w₂ - n₂) :=
+  ⟨action_parity below₁ w₁ h₁, action_parity below₂ w₂ h₂⟩
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5554,5 +5600,8 @@ theorem product_bi_normalized {ι κ : Type*} [Fintype ι] [Fintype κ]
 #print axioms gap_odd_of_even_weights
 #print axioms action_parity
 #print axioms product_bi_normalized
+#print axioms species1_anticommute
+#print axioms species_cross_commute
+#print axioms composite_parity_pair
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

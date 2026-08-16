@@ -96,3 +96,29 @@ coupled factor frames arise from the growth itself (the m
 orientations as a dynamical ensemble rather than a construction);
 (b) matter on the composite: each factor carries its own fermion
 parity => the composite has Z2 x Z2 - two fermion species?
+
+## BOTH REGISTERED QUESTIONS ATTACKED (same day)
+
+Q1 - ROUNDING BY DYNAMICS (partial positive, quantified): the
+quantum ensemble's effective causal structure - the comparability
+probability P(related | rank displacement) over coupled
+joint-maxent growth histories - has cone anisotropy 0.100 on the
+di+dj = 12 shell, vs 0.299 +- 0.010 for individual histories:
+THE ENSEMBLE CONE IS 3.0x ROUNDER THAN ANY SINGLE HISTORY.  The
+superposition over growth histories dynamically softens the
+polyhedral cone with no by-hand rotations.  Honest scope: this is
+softening within a fixed factorization; full frame-rotation
+(orthant-mixing across factorizations, the mechanism that would
+complete Lorentz isotropy) remains the registered deeper step.
+
+Q2 - TWO FERMION SPECIES (machine-checked, Lean sec. 36):
+  - species1_anticommute: same-factor JW operators anticommute
+    (fermionic exchange within each species);
+  - species_cross_commute: cross-factor JW operators COMMUTE -
+    independent species, trivial mutual statistics;
+  - composite_parity_pair: each factor's action parity is
+    separately conserved - a Z2 x Z2 superselection FINER than
+    total parity: two structural species labels.
+THE COMPOSITE CARRIES TWO FERMION SPECIES: matter content scales
+with the number of 2D factors (k factors => k species, Z2^k) -
+the first species-multiplicity mechanism in the program.
