@@ -72,3 +72,31 @@ ratio), not a brick wall - and the decohered ensembles measured
 all along were never the theory's true measure.  Registered:
 balance-point scan in (phi, weights); larger-n coherent
 enumeration; collision-free canonicalization.
+
+## THE BALANCE-POINT SCAN (2026-08-16): the balance EXISTS
+
+Coherent-measure evaluation (exact n=7 enumeration, ~200k labeled
+causets/system) across the feasible weight catalog + rational
+interpolations + phase grids:
+
+  - THE r-BALANCE POINT EXISTS AND IS ACHIEVED: (1,-3,2) at
+    phi = 0.750 pi gives <r>_mu = 0.5060 vs sprinkling 0.5014
+    (Delta = 0.005).  Multiple (W, phi) systems cross the manifold
+    value within 0.02.  The two coherent forces (flattening vs
+    extension enhancement) can be tuned to equilibrium at the
+    sprinkling point - the w0 = 1 family tames the extension force
+    (multiplicity enhancement ~2x vs BD's runaway), letting
+    flattening compete.
+  - TEXTURE PROGRESS: best tex_mu = 0.249 at (1,-3,2),
+    phi = 0.625 pi - down 30% from the BD coherent value (0.315)
+    and the decohered values (~0.35) - but still ~8x from the
+    sprinkling level (~0.03) at n = 7.
+
+STATUS OF GATE 1 AFTER THE CAMPAIGN: mechanism identified (two
+coherent forces), balance point found (first moment matched to
+0.005), residual isolated (the N_k texture gap, ~8x at n=7).
+The decisive registered question: does the texture gap SHRINK
+with n for balanced systems under the coherent measure (finite-
+size) or persist (structural)?  Requires larger-n coherent
+enumeration (n = 9-10: 15-100M labeled causets - aggregation
+methods needed).
