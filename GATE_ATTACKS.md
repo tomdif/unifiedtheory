@@ -100,3 +100,35 @@ with n for balanced systems under the coherent measure (finite-
 size) or persist (structural)?  Requires larger-n coherent
 enumeration (n = 9-10: 15-100M labeled causets - aggregation
 methods needed).
+
+## THE DECISIVE COMPUTATION (n=10 coherent enumeration, class-
+## aggregated DP - 1.59M / 1.60M exact classes per system)
+
+Aggregation validity: the dynamics factors through iso classes
+(magnitudes from iso-invariant spectra; gaps = action differences,
+sec. 27; unique parent per labeled causet) - the class-level DP
+computes the EXACT coherent and incoherent measures.
+
+texture_mu(n), n = 7 / 8 / 9 / 10:
+  BALANCED (1,-3,2) 0.625pi: 0.2498  0.2637  0.2757  0.2857
+     increments +0.0139, +0.0120, +0.0100 - DECELERATING
+  BD (2,-4,2) 0.250pi:       0.3117  0.3208  0.3375  0.3544
+     increments +0.009, +0.017, +0.017 - steady/accelerating
+  (sprinkling level ~ 0.03-0.05; coherence beats decoherence at
+   n=10 by 0.02 in both systems and the margin grows with n)
+
+VERDICT on the registered question: through n = 10 the texture gap
+does NOT shrink - it grows in both systems.  The finite-size
+hypothesis is DISFAVORED in the accessible window; the structural
+reading leads: the entropy problem survives the coherent measure
+at the tested weights.  GATE 1 REMAINS CLOSED.
+
+What survives: (a) the balanced system's deceleration (second
+difference -0.002/level; naive extrapolation plateaus ~0.30-0.31
+by n~15 vs BD's unbounded growth) leaves a narrow technical
+opening - a turnover cannot be excluded, needs n = 11-12;
+(b) coherence consistently outperforms decoherence on texture;
+(c) the aggregation method scales (1.6M exact classes computed;
+n = 11-12 reachable with memory care);
+(d) registered: texture-TARGETED weight selection (the balance
+scan optimized r, not N_k - the N_k-optimal weights are unexplored).
