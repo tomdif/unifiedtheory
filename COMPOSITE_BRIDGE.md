@@ -122,3 +122,26 @@ Q2 - TWO FERMION SPECIES (machine-checked, Lean sec. 36):
 THE COMPOSITE CARRIES TWO FERMION SPECIES: matter content scales
 with the number of 2D factors (k factors => k species, Z2^k) -
 the first species-multiplicity mechanism in the program.
+
+
+## THE LIST ATTACKED (same day): stability, confinement, symmetry
+
+1. 4D-PHASE STABILITY (frame-mixing dynamics): free growth from a
+   product seed ERODES the pure product phase - r climbs 0.10 ->
+   0.36 over 11 steps, decelerating toward an intermediate regime -
+   while 89% of new pasts are NON-PRODUCT: frame-mixing arises
+   dynamically and generically, but sustained 4D requires the
+   factored (coupled) dynamics.  The coupling rule is not
+   decoration - it is the 4D-sustaining structure.
+2. CONFINEMENT REFUTED: neutral defect pairs decay at the same
+   rate as single defects (0.032 vs 0.034/step, ratio 1.1x) -
+   scrambling is geometric back-reaction, not charge-string
+   tension.  No free modes at this level; excitations thermalize
+   (strong-coupling-like).  Dressed-mode search remains open.
+3. CONJUGATION SYMMETRY IS EMERGENT: Im m2(n) = a + b/n with
+   a = -0.0007 +- 0.0046 (zero) and b = -0.197 +- 0.070 - the
+   quadrature imbalance is pure finite-size and vanishes
+   asymptotically.  No intrinsic CP-flavored breaking: the
+   stationary state's symmetry (parity exact + conjugation
+   emergent) is the first dynamically-restored symmetry of the
+   theory.

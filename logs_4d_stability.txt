@@ -1,0 +1,23 @@
+r(n) after product seed (mean over paths); seed r ~ 0.12-0.14:
+  n=17: r = 0.0974 ± 0.0084
+  n=18: r = 0.1351 ± 0.0074
+  n=19: r = 0.1745 ± 0.0090
+  n=20: r = 0.2048 ± 0.0113
+  n=21: r = 0.2417 ± 0.0112
+  n=22: r = 0.2727 ± 0.0118
+  n=23: r = 0.3027 ± 0.0095
+  n=24: r = 0.3182 ± 0.0091
+  n=25: r = 0.3275 ± 0.0093
+  n=26: r = 0.3410 ± 0.0089
+  n=27: r = 0.3564 ± 0.0094
+non-product past fraction (new elements, seed-restricted): 0.89
+baseline: free 2D-grown r(26) ~ 0.55-0.60; product seed r = 0.125
+DONE-4DS
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002677 /   0.0002677 (  perturbed bounds)
+1 /   0.0002678 /   0.0002678 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002146 /   0.0002146 (  perturbed bounds)
+1 /   0.0002147 /   0.0002147 (unperturbed bounds)
