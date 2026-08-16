@@ -202,6 +202,12 @@
      coefficients do, a downset's octant is 1 - m0 + m1 (mod 8):
      width and subtop count alone. The collapse wall reduces to
      the value-set of m1 - m0 narrowing below cone coverage.
+  30. THE CLIFFORD PAIR INSIDE THE METER:
+     `clifford_anticommutation` - the SQUARES of the width shift
+     and curvature clock ANTICOMMUTE, S^2 C^2 = -C^2 S^2
+     (zeta^4 = e^{-i pi} = -1): two width units against a quarter
+     turn form a Clifford pair - the fermionic minus sign arises
+     from the width-curvature bookkeeping itself.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5193,6 +5199,45 @@ theorem octant_formula {α : Type*} [DecidableEq α]
   rw [hsum]
   ring
 
+/-! ## 30. The Clifford pair inside the meter -/
+
+/-- THE FERMIONIC MINUS SIGN: the SQUARES of the width shift and the
+curvature clock ANTICOMMUTE, (S∘S)∘(C∘C) = −(C∘C)∘(S∘S): two units
+of causal width against a quarter turn of curvature phase form a
+Clifford (anticommuting) pair inside the ℤ₈ meter algebra — the
+characteristic minus sign of fermionic exchange arises from the
+width–curvature bookkeeping itself, via ζ⁴ = e^{−iπ} = −1. -/
+theorem clifford_anticommutation (f : ZMod 8 → ℂ) (k : ZMod 8) :
+    widthShift (widthShift (octantClock (octantClock f))) k
+      = - octantClock (octantClock (widthShift (widthShift f))) k := by
+  simp only [octantClock, widthShift]
+  have hmod : ∀ a : ℕ,
+      Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ a
+        = Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (a % 8) := by
+    intro a
+    conv_lhs => rw [← Nat.div_add_mod a 8]
+    rw [pow_add, pow_mul, octant_period, one_pow, one_mul]
+  have hval : (k + 1 + 1 : ZMod 8).val = (k.val + 2) % 8 := by
+    rw [ZMod.val_add, ZMod.val_add]
+    norm_num [ZMod.val_one_eq_one_mod]
+  have hz4 : Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ 4 = -1 := by
+    rw [← Complex.exp_nat_mul]
+    have h : ((4:ℕ):ℂ) * -((Real.pi/4 : ℝ) * Complex.I)
+        = -((Real.pi:ℂ) * Complex.I) := by push_cast; ring
+    rw [h]
+    rw [Complex.exp_neg]
+    rw [show (Real.pi:ℂ) * Complex.I = (Real.pi:ℝ) * Complex.I from by norm_num]
+    rw [Complex.exp_pi_mul_I]
+    norm_num
+  -- LHS = z^{(k+2).val} * z^{(k+2).val} * f(k+2)
+  -- RHS = -(z^{k.val} * z^{k.val} * f(k+2))
+  rw [hval, ← mul_assoc, ← mul_assoc, ← pow_add, ← pow_add,
+    hmod ((k.val + 2) % 8 + (k.val + 2) % 8), hmod (k.val + k.val)]
+  have harith : ((k.val + 2) % 8 + (k.val + 2) % 8) % 8
+      = ((k.val + k.val) % 8 + 4) % 8 := by omega
+  rw [harith, ← hmod ((k.val + k.val) % 8 + 4), pow_add, hz4, ← hmod (k.val + k.val)]
+  ring
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5263,5 +5308,6 @@ theorem octant_formula {α : Type*} [DecidableEq α]
 #print axioms clock_period_wraps
 #print axioms phaseCharge_iso_invariant
 #print axioms octant_formula
+#print axioms clifford_anticommutation
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
