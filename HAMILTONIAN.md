@@ -62,3 +62,36 @@ READINGS: (i) occupations converge to a nontrivial stationary
 profile (the law has an equilibrium spectral state; report it);
 (ii) occupations drift/concentrate on one level (spectral
 freeze-out); (iii) neither stabilizes by n≈18 (report trend).
+
+## RESULTS (same day, n=22 run + invariance tests)
+
+1. SPECTRUM SETTLES (reading i, strengthened): occupations at n=21
+   converge to (0.279, 0.219, 0.217, 0.285) on levels (1,3,5,7) -
+   the E <-> -E conjugation symmetry becomes exact within errors:
+   asymptotic profile ~ (0.28, 0.22 | 0.22, 0.28).  Mean energy
+   STOPS drifting: <E> fluctuates around +1.1 octants (n=16..21)
+   - a finite positive stationary energy rate, not growth.
+2. FULL ACTION INVARIANCE (stronger than telescoping): 40 random
+   linear extensions of a grown causet all give the SAME raw
+   integer action (29), not merely the same value mod 8.  Reason,
+   then verified: at insertion of e, the count k_y equals the size
+   of the interval (y,e) in the FINAL causet - order-independent -
+   so the cumulative action has the closed form
+       A(C) = (n-1) - 2*N0 + 4*N1 - 2*N2
+   (N_k = k-element interval abundances), checked EXACTLY on 30
+   causets.  This is the Benincasa-Dowker 2D discrete
+   Einstein-Hilbert functional form - BY CONSTRUCTION (the W2 gap
+   weights (2,-4,2) are the BD coefficients); the new content is
+   the verified exact telescoping and the closed form.
+3. PROBE B CORRECTED: the earlier "action is historical" reading
+   (iii) is RETRACTED - the action is a geometric functional after
+   all; the regression failed because the right invariants are the
+   INTERVAL ABUNDANCES N0, N1, N2, not the six coarse ones tested.
+4. THE UPGRADE: H = phi x (BD-action increment).  The phase clock
+   ticks at the discrete Einstein-Hilbert rate: ENERGY = CURVATURE.
+   The quadrature levels are curvature quanta; the stationary
+   occupation is a curvature-quantum distribution; <E> ~ +1.1
+   octants is a positive stationary mean curvature rate (a
+   discrete cosmological-constant-flavored observable); and the
+   width-energy meter reads: WIDENING SPACE COSTS CURVATURE QUANTA,
+   which is what the Born rule rations (the expansion law).

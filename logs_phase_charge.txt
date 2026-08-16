@@ -1,0 +1,21 @@
+paths 600, distinct hash-classes 600, classes with >=2 paths 0
+WITHIN-CLASS mod-8 VIOLATIONS: 0/0
+phase-charge distribution (A mod 8, path-weighted):
+  Phi=0: 0.230
+  Phi=2: 0.253
+  Phi=4: 0.270
+  Phi=6: 0.247
+mean ordering fraction r by charge:
+  Phi=0: r = 0.494  (n=138 classes)
+  Phi=2: r = 0.497  (n=152 classes)
+  Phi=4: r = 0.509  (n=162 classes)
+  Phi=6: r = 0.500  (n=148 classes)
+DONE-PHI
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /    0.000276 /    0.000276 (  perturbed bounds)
+1 /   0.0002762 /   0.0002762 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /     0.00023 /     0.00023 (  perturbed bounds)
+1 /   0.0002302 /   0.0002302 (unperturbed bounds)
