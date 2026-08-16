@@ -37,6 +37,16 @@ development is machine-checked in Lean 4.
 - Honest antecedent: the p=2-among-ℓᵖ folklore (Aaronson, "Island
   in Theoryspace"; Lamperti isometry theory) — we generalize it out
   of the power family entirely and machine-check it.
+- REQUIRED ATTRIBUTION (2026-08-15 deep-read, PRIOR_ART_GUDDER.md):
+  the double-conservation pair (coherent + Born per branching) is
+  Gudder's "unitary transition amplitude" (arXiv:1409.3770, 2014),
+  stated on binary c-causets where it is always satisfiable with a
+  free phase continuum; our π/4 root solution is the SYMMETRIC
+  POINT of his Theorem 2.1 continuum, selected by the action-phase
+  ansatz.  The program's novel core relative to Gudder: the
+  selection principle, the feasibility geometry on the full downset
+  tree (walls, expansion law, octant meter), the uniqueness leg,
+  and the falsifiable λ-observable.  P2/P3 must lead with this.
 
 ## 2. Setup and the four physical postulates
 
