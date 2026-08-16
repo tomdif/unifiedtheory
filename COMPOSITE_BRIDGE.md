@@ -145,3 +145,25 @@ the first species-multiplicity mechanism in the program.
    stationary state's symmetry (parity exact + conjugation
    emergent) is the first dynamically-restored symmetry of the
    theory.
+
+## SOLIDIFIED (2026-08-16, while the turnover computation runs)
+
+1. IR = 4, NOW WITH REAL STATISTICS (32x32 = 1024-element
+   composites, 4 pairs): interval profile 6.19 / 5.37 / 4.76 /
+   4.38 / 4.24 / 4.14 / 3.98 at k ~ 4..256, decelerating smoothly
+   ONTO the 4D value; at k~256, f = 0.1008 vs the exact 4D
+   Minkowski benchmark 0.0994 - WITHIN 1.4% - with hundreds of
+   intervals through the approach (782/488/201 at k~32/64/128).
+   The composite's infrared is four-dimensional to measurement
+   precision.  Global r = 0.1707 (d ~ 3.35).
+
+2. RELATIVISTIC MODES (gate-2 upgrade): SJ dispersion validated on
+   sprinklings (harmonic k-ladder 2.29, 4.58, 6.86, ...; 1/lambda
+   linear in k with ~zero intercept: massless dispersion) and
+   measured on the grown composite in intrinsic product
+   coordinates (t = h1+h2, x = h1-h2): harmonic k-steps with
+   approximately linear 1/lambda(k), relative intercept 0.19 -
+   CONSISTENT WITH MASSLESS-LIKE LINEAR DISPERSION ON GROWN
+   GEOMETRY (noisy at higher modes; coordinates crude).  SJ
+   spectral exponents: sprinkled 2D alpha = 0.88 (~1 predicted);
+   composite 0.75 (between 2D's 1 and 4D's 1/3; small-size).
