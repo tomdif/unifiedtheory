@@ -60,3 +60,39 @@ four-dimensional geometry.  Matter structure at d = 2, spacetime
 dimension 4 = 2 (x) 2: the two facts the program kept proving
 separately were never in conflict - they were the two halves of
 the architecture.
+
+## SIGNATURE AND COUPLING ATTACKED (same day)
+
+SIGNATURE - identified, then rounded:
+1. What the composite IS: for iid points, dominance comparability
+   in 4 coordinates is 2^{-3} = 0.125; measured 0.117-0.143.  The
+   composite is a 4-DIMENSIONAL WINKLER (box/dominance) ORDER - a
+   polyhedral-cone spacetime, not the round Lorentz cone.  Exact
+   Lorentzian is PROVABLY out of reach of any finite product
+   (strictly convex cones have infinite order dimension).
+2. The rounding mechanism: intersecting m copies of the composite
+   order rotated about the diagonal time axis converges to a
+   genuinely ROUND cone: opening angle -> 30.38 deg (the exact
+   inscribed-cone value of the 4-orthant is 30 deg) and azimuthal
+   anisotropy falls 0.166 -> 0.013 (12x) from m = 1 to 32,
+   roughly ~ 1/m.  LORENTZ INVARIANCE IS EMERGENT ISOTROPY in the
+   many-orientation limit of intersected composite orders -
+   physically: many coupled factor-pair FRAMES.  Residual Lorentz
+   violation ~ 1/#orientations: a falsifiable handle against real
+   Lorentz-invariance bounds (which are tight => m must be large).
+
+COUPLING - 4D-ness is robust:
+   Joint-maxent growth (the law acts on the sumset spectrum,
+   correlating the factor choices - the natural selection-induced
+   interaction): step-gap correlation +0.615 (STRONG coupling),
+   yet factor r = 0.590 and product r = 0.1528 - still in the
+   4D box class (independent baseline: 0.515 / 0.1172,
+   correlation -0.009).  The composite's dimensional class
+   SURVIVES strong coupling; interaction does not collapse
+   4 = 2 x 2 back to two dimensions.
+
+Registered next: (a) the rounding-by-DYNAMICS question - do
+coupled factor frames arise from the growth itself (the m
+orientations as a dynamical ensemble rather than a construction);
+(b) matter on the composite: each factor carries its own fermion
+parity => the composite has Z2 x Z2 - two fermion species?
