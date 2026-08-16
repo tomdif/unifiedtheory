@@ -1,0 +1,12 @@
+estimator fixed
+[  247.1s]   phi=pi/4    : global r=0.625 d=1.72 | intervals: [k~4] d=2.45(n3031)  [k~8] d=2.34(n3548)  [k~16] d=2.04(n1415)  [k~32] d=1.70(n6)
+[  520.4s]   phi=4/sqrt6 : global r=0.619 d=1.74 | intervals: [k~4] d=2.60(n3534)  [k~8] d=2.37(n3104)  [k~16] d=2.11(n1348)  [k~32] d=1.80(n14)
+[  848.7s]   phi=pi/6    : global r=0.601 d=1.77 | intervals: [k~4] d=2.65(n3488)  [k~8] d=2.48(n3270)  [k~16] d=2.21(n1238)  [k~32] d=1.91(n4)
+[ 1118.3s]   phi=pi/3    : global r=0.598 d=1.78 | intervals: [k~4] d=2.49(n3455)  [k~8] d=2.38(n3378)  [k~16] d=2.13(n1165)  [k~32] d=1.82(n2)
+[ 1434.9s]   phi=1.0     : global r=0.584 d=1.81 | intervals: [k~4] d=2.52(n3630)  [k~8] d=2.35(n3328)  [k~16] d=2.16(n1038)  [k~32] d=1.82(n4)
+1 /   0.0001814 /  [ 1700.5s]   phi=2.0     : global r=0.599 d=1.78 | intervals: [k~4] d=2.52(n3422)  [k~8] d=2.37(n3390)  [k~16] d=2.09(n1181)  [k~32] d=1.78(n7)
+[ 1962.9s]   phi=2.5     : global r=0.609 d=1.76 | intervals: [k~4] d=2.50(n3462)  [k~8] d=2.38(n3367)  [k~16] d=2.09(n1162)  [k~32] d=1.80(n9)
+[ 1962.9s] == VERDICT (registered readings) ==
+[ 1962.9s]   reading (iii) LOCKED LOW: max interval dimension over all phases = 2.65 < manifold-4D; emergent 4D is NOT in this growth class - a different growth rule / measure is required.
+
+[exited with code 0]

@@ -198,9 +198,14 @@ def interval_dims(below, above, N, samples=400):
         got += 1
     return bins
 
-PHASES = [("pi/4", math.pi/4), ("4/sqrt6", 4/math.sqrt(6)),
-          ("pi/6", math.pi/6), ("pi/3", math.pi/3),
-          ("1.0", 1.0), ("2.0", 2.0), ("2.5", 2.5)]
+import os
+if os.environ.get("PHASES"):
+    PHASES = [(p, float(eval(p, {"pi": math.pi, "sqrt": math.sqrt})))
+              for p in os.environ["PHASES"].split(",")]
+else:
+    PHASES = [("pi/4", math.pi/4), ("4/sqrt6", 4/math.sqrt(6)),
+              ("pi/6", math.pi/6), ("pi/3", math.pi/3),
+              ("1.0", 1.0), ("2.0", 2.0), ("2.5", 2.5)]
 
 log(f"NBIG={NBIG} NPATH={NPATH}; scanning {len(PHASES)} phases")
 results = []

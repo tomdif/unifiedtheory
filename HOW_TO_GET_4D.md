@@ -51,9 +51,39 @@ k, the correct question is no longer "why is it locked at 2" but:
       only options - the phase family has genuine local-dimension
       variation to map first.
 
-## Status
+## RESULT (corrected scans, 2026-08-15): the ceiling is ~2.6.
+## No phase pushes toward 4.  Reading (iii) at both depths.
 
-Corrected 7-phase n=40 scan: logs_emergent_4d_search_corrected.txt
-(readings re-registered on the corrected estimator: (i) local 4D at
-some phase; (ii) landscape max below 4 but phase-dependent - report
-the profile; (iii) profile phase-independent within errors).
+Dense scan, 12 phases phi in [0.3, 3.1] (n=24, 30 paths/phase,
+logs_d_int_phase_scan_n24.txt) and 7-phase confirmation at n=40
+(logs_emergent_4d_search_corrected_n40.txt):
+
+  d_int(k~4):  2.19 - 2.65  across the entire phase family
+  d_int(k~8):  2.07 - 2.48
+  d_int(k~16): 1.83 - 2.21
+  d_int(k~32): ~1.7 - 1.9   (n=40, low stats)
+  global:      ~1.7 - 1.85
+
+1. CEILING ~2.6: the discreteness-scale interval dimension tops out
+   at 2.55 (n=24) / 2.65 (n=40, at pi/6), far below manifold-4D.
+   No phase in the family reaches toward 4.
+2. WEAK PHASE DEPENDENCE: the whole family lives in a narrow band
+   (~0.2-0.4 wide).  The phase reweights the measure but cannot
+   change the dimension class.  (pi/4 shows the lowest small-interval
+   d_int and the highest global ordering - the Born-selected point is
+   the most-ordered member - but the band is too narrow and
+   n-dependent to over-read.)
+3. UNIVERSAL INVERTED-FLOW PROFILE: at EVERY phase, d_int falls
+   with scale: ~2.5 (k~4) -> ~2.35 (k~8) -> ~2.1 (k~16) -> ~1.8
+   (k~32) -> ~1.7 (global).  The family is ~2.5-dimensional at the
+   discreteness scale and flows DOWN to ~1.7 in the IR - the
+   OPPOSITE profile to CDT-style dimensional reduction (UV 2, IR 4).
+
+CONCLUSION: emergent 4D is definitively not in the free-downset
+gap-phase family - established on the corrected estimator, densely
+in phase, at two depths.  The mechanistic routes stand: to get 4D
+requires changing the GROWTH CLASS (thickened-antichain / multi-
+parent past selection, or a higher-arity conservation law), not the
+phase.  The registered open question is now whether a thickened-
+antichain growth rule admits a double-conservation (coherent+Born)
+formulation at all.
