@@ -1,0 +1,32 @@
+[   11.3s] PROBE A: phase nondegeneracy scan, n=16, 25 paths/phi
+[   11.4s]    phi      feas   supp_frac   norm_entropy
+/Users/thomasdifiore/Library/Python/3.9/lib/python/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/thomasdifiore/Library/Python/3.9/lib/python/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[   12.3s]   0.20      0/25   nan      nan
+[   12.3s]   0.40      0/25   nan      nan
+[   12.3s]   0.60      0/25   nan      nan
+[   14.0s]   pi/4     25/25   0.8974      0.8386
+[   14.0s]   0.90      0/25   nan      nan
+[   14.0s]   1.10      0/25   nan      nan
+[   14.0s]   1.30      0/25   nan      nan
+[   14.0s]   pi/2      0/25   nan      nan
+[   14.0s]   1.80      0/25   nan      nan
+[   14.0s]   2.10      0/25   nan      nan
+[   14.0s]   3pi/4     0/25   nan      nan
+[   14.0s]   2.60      0/25   nan      nan
+[   14.0s]   2.90      0/25   nan      nan
+[   14.0s] DONE-A
+[    8.9s] PROBE B: action telescoping at pi/4, n=18, 150 paths
+[   20.7s]   action A vs invariants: coefficients
+[   20.7s]     n      : +9.0608
+[   20.7s]     R      : +0.6400
+[   20.7s]     L      : -5.9695
+[   20.7s]     minima : +0.6599
+[   20.7s]     height : -3.9352
+[   20.7s]     width  : +3.2201
+[   20.7s]     const  : +0.5034
+[   20.7s]   R^2 = 0.568001, max|resid| = 57.1646, A range [-75, 85]
+[   20.7s]   no exact integer (n,R,L) relation; see lstsq above
+[   20.7s] DONE-B
