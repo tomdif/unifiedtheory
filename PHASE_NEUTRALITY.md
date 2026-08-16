@@ -66,3 +66,26 @@ characteristic minus sign of fermionic exchange is present in the
 width-curvature bookkeeping itself.  (Whether meter-defects
 therefore obey fermionic statistics requires an exchange
 construction - registered, not claimed.)
+
+## SUMMIT, ALGEBRAIC HALF TAKEN (same day, Lean sec. 31)
+
+`jw_exchange` (axiom-clean): the Jordan-Wigner meter operators
+chi_i = (string of width double-shifts below rank i) x (local
+quarter clock at i), acting on the growth level record, satisfy
+    chi_i chi_j = - chi_j chi_i   for all i != j.
+The minus sign is exactly the section-30 mechanism: the later
+operator's string shifts the earlier site by two width units
+before its clock reads it (zeta^{2(v+2)} = -zeta^{2v}).
+Sequential growth supplies the canonical ordering the JW string
+requires - the structure Jordan-Wigner needs is not imposed, it
+is the growth order itself.  FERMIONIC EXCHANGE STATISTICS IS NOW
+A MACHINE-CHECKED CONSTRUCTION inside the Z8 meter algebra.
+Honest scope: chi_i^2 = (central parity/shift-4 cocycle), not 1 -
+these are fermions up to a central Z2 x Z2 twist per site
+(standard generalized-JW situation); and the operators act on the
+KINEMATIC level record.  THE REMAINING (dynamical) HALF,
+registered: whether growth transports the string - concretely,
+the sibling-swap experiment: replace the rank-i choice by a
+level-shifted sibling (guaranteed to exist generically by octant
+coverage), continue growth, and measure the fidelity of
+string-commutation with the step isometry U = V o U_+.

@@ -208,6 +208,14 @@
      (zeta^4 = e^{-i pi} = -1): two width units against a quarter
      turn form a Clifford pair - the fermionic minus sign arises
      from the width-curvature bookkeeping itself.
+  31. JORDAN-WIGNER FERMIONS FROM THE METER: `jw_exchange` - the
+     JW meter operators (width-double-shift string below rank i,
+     times the local quarter clock) at distinct growth ranks
+     ANTICOMMUTE. Sequential growth supplies the canonical order
+     the string needs; fermionic exchange statistics is a
+     CONSTRUCTION inside the Z8 meter algebra of the growth
+     record. (Dynamical transport of the string under U = V o U+
+     is the registered remaining half.)
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5244,6 +5252,91 @@ theorem clifford_anticommutation (f : ZMod 8 → ℂ) (k : ZMod 8) :
   rw [harith, ← hmod ((k.val + k.val) % 8 + 4), pow_add, hz4, ← hmod (k.val + k.val)]
   ring
 
+/-! ## 31. Jordan–Wigner fermions from the meter -/
+
+/-- The Jordan–Wigner meter operator at growth rank i: the string of
+width double-shifts at all ranks below i, times the local quarter
+clock at i.  (The string ∏_{j<i} S_j² is collapsed into a single
+shift-below-i map.) -/
+noncomputable def jwOp {n : ℕ} (i : Fin n) :
+    ((Fin n → ZMod 8) → ℂ) → ((Fin n → ZMod 8) → ℂ) :=
+  fun f x => Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (2 * (x i).val)
+    * f (fun j => if j < i then x j + 2 else x j)
+
+/-- FERMIONIC EXCHANGE FROM THE METER: the Jordan–Wigner meter
+operators at distinct growth ranks ANTICOMMUTE, χᵢχⱼ = −χⱼχᵢ.
+Sequential growth supplies the canonical ordering the string needs;
+the minus sign arises because the string of the later operator
+shifts the earlier site by two width units before its clock is
+read — ζ^{2·(v+2)} = −ζ^{2v}.  Fermionic exchange statistics is a
+CONSTRUCTION inside the ℤ₈ meter algebra of the growth record. -/
+theorem jw_exchange {n : ℕ} (i j : Fin n) (hij : i ≠ j)
+    (f : (Fin n → ZMod 8) → ℂ) (x : Fin n → ZMod 8) :
+    jwOp i (jwOp j f) x = - jwOp j (jwOp i f) x := by
+  have hmod : ∀ a : ℕ,
+      Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ a
+        = Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (a % 8) := by
+    intro a
+    conv_lhs => rw [← Nat.div_add_mod a 8]
+    rw [pow_add, pow_mul, octant_period, one_pow, one_mul]
+  have hz4 : Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ 4 = -1 := by
+    rw [← Complex.exp_nat_mul]
+    have h : ((4:ℕ):ℂ) * -((Real.pi/4 : ℝ) * Complex.I)
+        = -((Real.pi:ℂ) * Complex.I) := by push_cast; ring
+    rw [h, Complex.exp_neg,
+      show (Real.pi:ℂ) * Complex.I = (Real.pi:ℝ) * Complex.I from by norm_num,
+      Complex.exp_pi_mul_I]
+    norm_num
+  have key : ∀ v : ZMod 8,
+      Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (2 * (v + 2).val)
+        = - Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (2 * v.val) := by
+    intro v
+    have hv : (v + 2 : ZMod 8).val = (v.val + 2) % 8 := by
+      rw [ZMod.val_add]
+      norm_num [ZMod.val_two_eq_two_mod]
+    rw [hv, hmod (2 * ((v.val + 2) % 8)), hmod (2 * v.val)]
+    have harith : (2 * ((v.val + 2) % 8)) % 8 = ((2 * v.val) % 8 + 4) % 8 := by
+      omega
+    rw [harith, ← hmod ((2 * v.val) % 8 + 4), pow_add, hz4, ← hmod (2 * v.val)]
+    ring
+  rcases lt_or_gt_of_ne hij with h | h
+  · -- i < j: χⱼ's string shifts site i; χᵢ's string leaves site j alone
+    simp only [jwOp]
+    have hxj : (if i < j then x i + 2 else x i) = x i + 2 := if_pos h
+    have hxi : (if j < i then x j + 2 else x j) = x j := if_neg (not_lt.mpr h.le)
+    have hargs : (fun k => if k < j then (if k < i then x k + 2 else x k) + 2
+          else (if k < i then x k + 2 else x k))
+        = (fun k => if k < i then (if k < j then x k + 2 else x k) + 2
+          else (if k < j then x k + 2 else x k)) := by
+      funext k
+      by_cases hki : k < i
+      · have hkj : k < j := hki.trans h
+        simp [hki, hkj]
+      · by_cases hkj : k < j
+        · simp [hki, hkj]
+        · simp [hki, hkj]
+    simp only [hxj, hxi, hargs]
+    rw [key (x i)]
+    ring
+  · -- j < i: symmetric, sign lands on the other side
+    simp only [jwOp]
+    have hxi : (if j < i then x j + 2 else x j) = x j + 2 := if_pos h
+    have hxj : (if i < j then x i + 2 else x i) = x i := if_neg (not_lt.mpr h.le)
+    have hargs : (fun k => if k < j then (if k < i then x k + 2 else x k) + 2
+          else (if k < i then x k + 2 else x k))
+        = (fun k => if k < i then (if k < j then x k + 2 else x k) + 2
+          else (if k < j then x k + 2 else x k)) := by
+      funext k
+      by_cases hkj : k < j
+      · have hki : k < i := hkj.trans h
+        simp [hki, hkj]
+      · by_cases hki : k < i
+        · simp [hki, hkj]
+        · simp [hki, hkj]
+    simp only [hxi, hxj, hargs]
+    rw [key (x j)]
+    ring
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5315,5 +5408,6 @@ theorem clifford_anticommutation (f : ZMod 8 → ℂ) (k : ZMod 8) :
 #print axioms phaseCharge_iso_invariant
 #print axioms octant_formula
 #print axioms clifford_anticommutation
+#print axioms jw_exchange
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
