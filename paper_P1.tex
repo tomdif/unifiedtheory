@@ -1,0 +1,283 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1.1in}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\title{Quantum mechanics from a monotone probability, lossless time,
+gauge, and one interference event:\\ a machine-checked reconstruction}
+\author{T.~DiFiore\thanks{With machine-checked proofs developed in
+Lean~4/Mathlib; the complete formalization (80 theorems, axiom base
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound} only)
+accompanies this paper.}}
+\date{August 2026 --- draft}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove a reconstruction of quantum mechanics whose hypotheses contain
+no Hilbert space, no amplitudes, no power-law measure, no linearity, no
+complex structure, and no continuity assumption.  From (i) a monotone
+notion of probability, (ii) a dynamics that is a bare surjective map of
+states preserving total measure and pairwise distinguishability and
+commuting with a global phase, and (iii) a single lossless two-port
+interference event with a tunable phase, we derive that the measure is
+the Born rule $f(x)=x^2$ and that the dynamics is unitary.  The measure
+function, linearity, complex-linearity, and unitarity are all
+conclusions.  The central mechanism is new: probing one interference
+block with a complex phase sweeps the measured output over a continuous
+interval while the input measure stays fixed; overlapping intervals
+chain into exact Pythagorean additivity with no regularity assumptions.
+A companion theorem shows that one interference event forces two
+sectors carrying \emph{a priori different} monotone measures onto a
+single common Born calculus.  An independent second route derives the
+same conclusion from the divisibility of time, with no interference
+axiom.  Every theorem in this paper is machine-checked in Lean~4.
+\end{abstract}
+
+\section{Introduction}
+
+The reconstruction programme asks which physical principles force the
+quantum formalism.  Existing derivations (Hardy; Chiribella--D'Ariano--
+Perinotti; Masanes--M\"uller; Gleason; Busch) start from operational
+axioms that already contain substantial structure: convex state spaces,
+probability simplices, frames or effects, continuity or local
+tomography.  The folklore result that $p=2$ is an ``island in theory
+space'' (Aaronson; ultimately Lamperti's classification of
+$\ell^p$-isometries) presupposes the power family
+$\sum_i \lvert x_i\rvert^p$.
+
+This paper takes the weakest measured input we know of.  Probability
+enters only as a \emph{monotone} function of amplitude magnitude ---
+not a norm, not a power, not even continuous.  Dynamics enters as a
+\emph{set map} --- no linearity.  The quantum formalism is then forced
+by three physical demands: losslessness of time, covariance under a
+global phase, and the existence of somewhere, once, an interference
+event whose relative phase can be dialled.
+
+Three features distinguish the result.  First, the \emph{phase-continuum
+mechanism} (\S\ref{sec:engine}): all previous partial routes probed
+interference with real amplitudes; a complex probe turns one algebraic
+identity into a continuum of overlapping constraints, and chaining them
+yields exact additivity with no continuity, monotonicity, or density
+input.  Second, \emph{homogenization} (\S\ref{sec:hom}): the same
+mechanism forces two sectors with independent monotone measures onto
+one common calculus --- measure dualism cannot survive a single
+interference event between sectors.  Third, the entire development is
+\emph{machine-checked}: each theorem below carries the name of a
+Lean~4 theorem whose proof depends only on the standard axioms of the
+Lean kernel and classical choice.
+
+\section{Postulates}\label{sec:setup}
+
+Fix $n\in\mathbb{N}$ and let the state space be $\C^n$ (states are
+tuples of ``amplitudes''; no inner product or norm on $\C^n$ is
+assumed beyond the modulus on each coordinate).
+
+\begin{definition}[Monotone measure]
+A \emph{measure function} is $f:\R_{\ge0}\to\R$ with $f(0)=0$,
+$f$ nondecreasing, and $f\not\equiv 0$.  The measure of a state $x$ is
+$\mu_f(x)=\sum_{i=1}^n f(\norm{x_i})$.
+\end{definition}
+
+\begin{definition}[Lossless dynamics]\label{def:dyn}
+A dynamics is a map $F:\C^n\to\C^n$ (a bare set map) that is
+surjective, preserves total measure
+($\mu_f(Fx)=\mu_f(x)$ for all $x$), preserves pairwise
+distinguishability ($\mu_f(Fx-Fy)=\mu_f(x-y)$ for all $x,y$), and
+commutes with the global quarter turn ($F(ix)=iF(x)$).
+\end{definition}
+
+\begin{definition}[One interference event]\label{def:split}
+There exists a map $S:\C^n\to\C^n$, lossless for the same measure
+($\mu_f(Sx)=\mu_f(x)$), together with indices $j_1\ne j_2$,
+$k_1\ne k_2$ and reals $c,\sigma\ne 0$, such that for all
+$a,b\in\C$,
+\[
+S\bigl(a\,e_{j_1}+b\,e_{j_2}\bigr)
+=(ca-\sigma b)\,e_{k_1}+(\sigma a+c b)\,e_{k_2}.
+\]
+\end{definition}
+No normalization of $(c,\sigma)$ is assumed; the block may be lopsided
+and its angle arbitrary.  Physically, Definition~\ref{def:split} says
+that a two-port interferometer exists and that the experimenter may
+choose the relative phase of its two inputs.
+
+\section{The engine: additivity from a phase continuum}
+\label{sec:engine}
+
+For $g(t)=f(\sqrt{t}\,)$ the splitter constraint becomes: for all
+$x,y\ge0$ and all $w\in[-1,1]$,
+\begin{equation}\label{eq:hE}
+g\!\left(Px+Qy-2\sqrt{PQxy}\,w\right)
++g\!\left(Qx+Py+2\sqrt{PQxy}\,w\right)=g(x)+g(y),
+\end{equation}
+with $P=c^2$, $Q=\sigma^2$: probing with
+$\sqrt{x}\,e_{j_1}+\sqrt{y}\,e^{i\psi}e_{j_2}$ leaves the input
+measure fixed while $w=\cos\psi$ sweeps $[-1,1]$.  The left side is
+therefore constant along a \emph{continuum} of argument pairs.
+
+\begin{theorem}[Phase-interval additivity;
+\texttt{phase\_interval\_additivity}]\label{thm:additivity}
+Let $g:\R\to\R$ satisfy $g(0)=0$ and \eqref{eq:hE} for some $P,Q>0$.
+Then $g(a+b)=g(a)+g(b)$ for all $a,b\ge0$.
+\end{theorem}
+
+\emph{Proof idea.}  Fix a level $Z=x+y>0$ and write points of the
+level as $Z\mu$, $Z(1-\mu)$.  Equation \eqref{eq:hE} makes
+$\mu\mapsto g(Z\mu)+g(Z(1-\mu))$ constant on every interval of the
+form $[\nu,\mu]$ with
+$\lvert(P-Q)(\mu-\nu)\rvert\le2\sqrt{PQ\mu(1-\mu)}$.  These intervals
+overlap along an explicit finite ladder with step
+$\mu^*=4PQ/(P+Q)^2$, governed by the identity
+$(P-Q)^2\mu^*=4PQ(1-\mu^*)$; finitely many steps connect any $\mu$ to
+$0$.  Two constants that agree at a point are equal; no limit is
+taken. \hfill$\square$
+
+Monotone solutions of Cauchy's equation on a ray are linear
+(\texttt{monotone\_additive\_on\_cone\_is\_linear}); hence:
+
+\begin{theorem}[Born rule from one block;
+\texttt{complex\_mixing\_block\_forces\_born}]\label{thm:born}
+Let $f$ be a measure function and let some lossless $\C$-linear step
+contain a mixing block as in Definition~\ref{def:split}.  Then
+$f(x)=x^2 f(1)$ for all $x\ge0$, and $f(1)>0$.
+\end{theorem}
+
+Earlier partial routes --- the balanced splitter via the
+Jordan--von~Neumann functional equation, dense splitter families with
+\emph{derived} continuity, irrational-angle orbit density, and
+exchange-transport arguments --- are superseded by
+Theorem~\ref{thm:born} but retain independent interest as
+real-probe-only results; they are formalized alongside it.
+
+\section{Homogenization: one calculus per world}\label{sec:hom}
+
+The proof of Theorem~\ref{thm:additivity} barely uses that the two
+output ports carry the \emph{same} measure function.
+
+\begin{theorem}[Master chaining; \texttt{master\_chaining}]
+Let $g_1,g_2:\R\to\R$ vanish at $0$, let $g_1$ be nondecreasing, and
+let $P,Q>0$ with $P+Q=1$ satisfy the two-function version of
+\eqref{eq:hE}.  Then $g_1=g_2$ on $\R_{\ge0}$ and both are linear.
+\end{theorem}
+
+Physically: if two sectors of the world carry independent monotone
+probability calculi and a single lossless interference event couples
+them, both sectors are forced onto one common Born rule --- not merely
+the same exponent but the same \emph{function}.  In particular, if
+gravitationally induced entanglement experiments
+(Bose--Marletto--Vedral type) observe interference, gravity cannot run
+on a probability calculus different from matter's.
+
+\section{Linearity, complex structure, unitarity}\label{sec:lin}
+
+Once $f(x)=x^2f(1)$, the measure induces the $\ell^2$ metric, and
+structure that was never assumed can be \emph{derived}:
+
+\begin{theorem}[Mazur--Ulam step;
+\texttt{lossless\_bijection\_is\_real\_linear}]
+For $p\ge1$, a surjection of $\C^n$ preserving total $p$-measure and
+pairwise $p$-distinguishability is real-linear.
+\end{theorem}
+
+\begin{theorem}[Gauge upgrade;
+\texttt{phase\_covariant\_real\_linear\_is\_complex\_linear}]
+A real-linear map commuting with multiplication by $i$ is
+$\C$-linear.
+\end{theorem}
+
+\begin{theorem}[Unitarity; \texttt{l2\_lossless\_columns\_orthogonal}]
+A $\C$-linear map preserving $\sum_i\norm{x_i}^2$ has orthonormal
+columns.
+\end{theorem}
+
+\section{The terminal theorem}\label{sec:terminal}
+
+\begin{theorem}[\texttt{quantum\_mechanics\_from\_a\_beam\_splitter}]
+\label{thm:terminal}
+Let $f$ be a measure function, let $F$ be a dynamics as in
+Definition~\ref{def:dyn} for $f$, and let one interference event as in
+Definition~\ref{def:split} exist for $f$.  Then
+\[
+f(x)=x^2f(1)\ \ (x\ge0),\qquad f(1)>0,
+\]
+and $F$ is $\C$-linear with orthonormal columns: $F$ is unitary up to
+the derived inner product.
+\end{theorem}
+
+The assembly order is the content: the Born function comes
+\emph{first} (Theorem~\ref{thm:born}, using only the set-map $S$); the
+derived $\ell^2$ metric then powers Mazur--Ulam \emph{retroactively};
+gauge lifts real-linearity to $\C$-linearity; the $p=2$ probe algebra
+yields orthonormality.  Nothing the textbook assumes appears among the
+hypotheses.
+
+\section{A second, interference-free route}\label{sec:routeB}
+
+A companion chain replaces Definition~\ref{def:split} by divisibility
+of time.  If every step of a lossless dynamics admits a lossless
+$m$-th root for every $m$, and something changes, then within the
+power family the exponent is forced to $2$
+(\texttt{change\_and\_divisibility\_force\_born}); adding gauge yields
+full unitary quantum mechanics
+(\texttt{quantum\_mechanics\_from\_time\_alone}).  The two routes have
+incomparable hypotheses --- route A has the weaker interference input,
+route B has none --- and reach the same formalism.
+
+\section{Scope and prior art}\label{sec:scope}
+
+We do not claim these postulates are the unique route to quantum
+theory, nor that the growth-dynamical setting that motivated them is
+required: the postulates are substrate-free.  Within the power family,
+the $p=2$ selection refines Lamperti-type isometry classifications; we
+leave the power family entirely.  Gleason-type derivations assume
+frames or effect algebras; here no probabilistic structure beyond
+monotonicity is assumed.  Wigner's theorem obtains (anti)unitarity
+from symmetry; here antiunitary evolution is excluded by the existence
+of half-steps (\texttt{antiunitary\_has\_no\_half\_step}), and
+unitarity itself is a conclusion.  Registered open problems: the
+two-overlap generalization of Theorem~\ref{thm:born} beyond
+rotation-form blocks is proved on paper and partially formalized
+(\texttt{master\_chaining}); blocks with three or more shared
+coordinates remain open.
+
+\section{Formalization}\label{sec:lean}
+
+Every theorem above is machine-checked in Lean~4 against Mathlib.  The
+formalization comprises 80 theorems; \texttt{\#print axioms} certifies
+each to depend only on \texttt{propext}, \texttt{Classical.choice},
+and \texttt{Quot.sound}.  No \texttt{sorry} appears.  The file also
+contains the numbered partial routes of \S\ref{sec:engine} and a
+family of no-go theorems delimiting the growth-dynamical setting (the
+strict-covariance and Bell-causality no-gos), which will be treated in
+a companion paper.
+
+\begin{thebibliography}{9}
+\bibitem{hardy} L.~Hardy, \emph{Quantum theory from five reasonable
+axioms}, arXiv:quant-ph/0101012.
+\bibitem{cdp} G.~Chiribella, G.M.~D'Ariano, P.~Perinotti,
+\emph{Informational derivation of quantum theory}, Phys. Rev. A 84,
+012311 (2011).
+\bibitem{mm} L.~Masanes, M.~M\"uller, \emph{A derivation of quantum
+theory from physical requirements}, New J. Phys. 13, 063001 (2011).
+\bibitem{gleason} A.M.~Gleason, \emph{Measures on the closed subspaces
+of a Hilbert space}, J. Math. Mech. 6, 885 (1957).
+\bibitem{lamperti} J.~Lamperti, \emph{On the isometries of certain
+function-spaces}, Pacific J. Math. 8, 459 (1958).
+\bibitem{aaronson} S.~Aaronson, \emph{Is quantum mechanics an island
+in theoryspace?}, arXiv:quant-ph/0401062.
+\bibitem{gudder} S.~Gudder, \emph{An isometric dynamics for a causal
+set approach to discrete quantum gravity}, arXiv:1409.3770.
+\bibitem{bmv} S.~Bose et al., \emph{Spin entanglement witness for
+quantum gravity}, Phys. Rev. Lett. 119, 240401 (2017); C.~Marletto,
+V.~Vedral, Phys. Rev. Lett. 119, 240402 (2017).
+\bibitem{mazur} S.~Mazur, S.~Ulam, \emph{Sur les transformations
+isom\'etriques d'espaces vectoriels norm\'es}, C. R. Acad. Sci. Paris
+194, 946 (1932).
+\end{thebibliography}
+\end{document}
