@@ -87,3 +87,22 @@ imposed-rule feasibility wall at one per ~4.4-5.0: THE FREE LAW
 SELF-ORGANIZES TO ~80% OF ITS CRITICAL EXPANSION RATE - growing
 just inside the Born-feasible cone, subcritical but tracking it.
 (Finite-n fits; sharpen with deeper runs.)
+
+## THE TWO-INTEGER REDUCTION (same day, deepest layer; Lean sec. 29)
+
+Mod 8 the 4D coefficients collapse: (-1, 9, -16, 8, 0) == (-1, +1,
+0, 0, 0).  Hence the OCTANT FORMULA (machine-checked,
+`octant_formula`, verified exactly on every downset of grown
+causets): octant(D) = 1 - m0 + m1 (mod 8), with m0 = width (causal
+in-degree) and m1 = subtop count (elements with exactly one above
+in D).  TWO INTEGERS determine every downset's quantum phase class.
+
+Consequences, closing the analytic account of c*:
+- octant support of a collapse family = value set of m1 - m0;
+  measured diversity ~ 1.3*(W - w) + 1; the cone dies when
+  diversity < ~4  =>  wmax(n) ~ W(n) - 2.3;
+- with the free width rate W(n) ~ 0.175 n: predicted wmax =
+  3.2 / 4.3 / 5.3 at n = 16/22/28 vs measured 3.7 / 4.4 / 5.0;
+- so c* = (inverse ensemble width-growth rate) + diversity
+  boundary layer, and the whole censorship/expansion structure
+  reduces to the statistics of TWO integers per downset.

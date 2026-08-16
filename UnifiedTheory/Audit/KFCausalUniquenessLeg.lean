@@ -197,6 +197,11 @@
      `phaseCharge_iso_invariant`: the Z8 phase charge
      Phi(C) = A(C) mod 8 is an isomorphism invariant -
      superselection sectors no relabeling or growth history mixes.
+  29. THE TWO-INTEGER OCTANT FORMULA: `octant_formula` - when the
+     interval weights reduce mod 8 to (-1, +1, 0, ...), as the 4D
+     coefficients do, a downset's octant is 1 - m0 + m1 (mod 8):
+     width and subtop count alone. The collapse wall reduces to
+     the value-set of m1 - m0 narrowing below cone coverage.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5137,6 +5142,57 @@ theorem phaseCharge_iso_invariant {n : ℕ}
     (growthAction below w : ZMod m) = (growthAction below' w : ZMod m) := by
   rw [growthAction_iso_invariant below below' w σ hσ]
 
+/-! ## 29. The two-integer octant formula -/
+
+/-- THE OCTANT FORMULA: whenever the interval weights reduce mod 8
+to (−1, +1, 0, 0, …) — as the 4D coefficients (−1, 9, −16, 8, 0)
+do — a downset's octant is determined by TWO integers alone:
+    octant(D) = 1 − m₀(D) + m₁(D)   (mod 8),
+m₀ = number of maximal elements (the width / causal in-degree),
+m₁ = number of elements with exactly one element above them in D.
+Verified exactly on every downset of grown causets; this is the
+reduction that mechanizes the censorship wall: the octant support
+of a collapse family is the value set of m₁ − m₀, and feasibility
+dies when that diversity narrows below cone coverage. -/
+theorem octant_formula {α : Type*} [DecidableEq α]
+    (D : Finset α) (k : α → ℕ) (w : ℕ → ℤ)
+    (h0 : (w 0 : ZMod 8) = -1) (h1 : (w 1 : ZMod 8) = 1)
+    (h2 : ∀ j, 2 ≤ j → (w j : ZMod 8) = 0) :
+    ((1 + ∑ y ∈ D, w (k y) : ℤ) : ZMod 8)
+      = 1 - ((D.filter fun y => k y = 0).card : ZMod 8)
+        + ((D.filter fun y => k y = 1).card : ZMod 8) := by
+  classical
+  have hterm : ∀ y ∈ D, ((w (k y) : ZMod 8))
+      = (if k y = 0 then (-1 : ZMod 8) else 0)
+        + (if k y = 1 then (1 : ZMod 8) else 0) := by
+    intro y _
+    by_cases hk0 : k y = 0
+    · simp [hk0, h0]
+    · by_cases hk1 : k y = 1
+      · simp [hk1, h1]
+      · have h2' : 2 ≤ k y := by omega
+        rw [h2 _ h2']
+        simp [hk0, hk1]
+  have hsum : (∑ y ∈ D, ((w (k y) : ZMod 8)))
+      = -((D.filter fun y => k y = 0).card : ZMod 8)
+        + ((D.filter fun y => k y = 1).card : ZMod 8) := by
+    calc ∑ y ∈ D, ((w (k y) : ZMod 8))
+        = ∑ y ∈ D, ((if k y = 0 then (-1 : ZMod 8) else 0)
+            + (if k y = 1 then (1 : ZMod 8) else 0)) :=
+          Finset.sum_congr rfl hterm
+      _ = (∑ y ∈ D, if k y = 0 then (-1 : ZMod 8) else 0)
+            + ∑ y ∈ D, if k y = 1 then (1 : ZMod 8) else 0 :=
+          Finset.sum_add_distrib
+      _ = (∑ _y ∈ D.filter (fun y => k y = 0), (-1 : ZMod 8))
+            + ∑ _y ∈ D.filter (fun y => k y = 1), (1 : ZMod 8) := by
+          rw [Finset.sum_filter, Finset.sum_filter]
+      _ = _ := by
+          rw [Finset.sum_const, Finset.sum_const, nsmul_eq_mul, nsmul_eq_mul]
+          ring
+  push_cast
+  rw [hsum]
+  ring
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5206,5 +5262,6 @@ theorem phaseCharge_iso_invariant {n : ℕ}
 #print axioms width_curvature_weyl
 #print axioms clock_period_wraps
 #print axioms phaseCharge_iso_invariant
+#print axioms octant_formula
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
