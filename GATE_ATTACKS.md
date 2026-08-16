@@ -38,3 +38,37 @@ second moment.  The bi-normalized family as scanned does NOT
 contain a manifoldlike phase.  Registered: wider weight windows
 (k <= 3, 4), non-integer weights, coupled/product-law abundance
 profiles, and abundance-targeted selection principles.
+
+## GATE 1, NOVEL ATTACK: THE COHERENT MEASURE (2026-08-16)
+
+Discovery: every ensemble in this program was built by sampling
+per-step Born probabilities - the fully DECOHERED measure.  The
+theory's actual quantum measure on a class is COHERENT:
+mu(C) = |sum_paths a|^2 = (sum of magnitudes)^2 (within-class
+phases equal, sec. 27).  Exact test: full enumeration of all
+1,727,760 labeled causets at n = 8 (11,655 classes; 3% hash-
+collision contamination noted).
+
+TWO COHERENT FORCES, BOTH CONFIRMED:
+  - STATIONARY-PHASE FLATTENING: <|action|> falls 7.85 -> 5.15
+    (34%) under the coherent measure - the path-integral flatness
+    mechanism operates in this theory;
+  - EXTENSION ENHANCEMENT: <class multiplicity> rises 327 -> 931
+    (2.8x) - coherence quadratically rewards many-extension
+    (wide) causets.
+
+THE HONEST BALANCE: at pi/4, n=8, the two forces land at
+<r> = 0.367 - OVERSHOOTING the manifold value 0.497 downward
+(extension enhancement rewards exactly the KR-type wide orders,
+the entropy problem's classic winners); texture distance improves
+only 0.348 -> 0.326 vs sprinkling ~0.03.
+
+VERDICT: gate 1 remains closed, but its physics changed shape.
+The coherent measure fights the entropy problem with two opposing
+forces (flattening vs widening); manifoldlikeness = the balance
+point sitting at sprinkling texture.  The manifold question is now
+a TUNING question (phase steepness / weights control the force
+ratio), not a brick wall - and the decohered ensembles measured
+all along were never the theory's true measure.  Registered:
+balance-point scan in (phi, weights); larger-n coherent
+enumeration; collision-free canonicalization.

@@ -1,0 +1,10 @@
+labeled causets at n=8: 1727760
+classes: 11655; phase-misaligned classes (hash collisions): 375
+sprinkling benchmark n=8: r = 0.4973, abundances [1.054 0.397 0.17 ]
+
+                       INCOHERENT (sampled)   COHERENT (quantum)   sprinkling
+  <r>                      0.4412               0.3670          0.4973
+  texture distance         0.3481               0.3257          ~0.03
+  <|action|>               7.851                5.150
+  <class multiplicity>     327.5                 931.0
+DONE-CM
