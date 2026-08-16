@@ -1,0 +1,9 @@
+[    0.0s] CENSORSHIP: grow wide (w=n/5), probe collapse family feasibility
+[   69.6s] == censorship curve: max Born-feasible simultaneous convergence ==
+[   69.6s]    n    width_W    wmax_feasible   censored fraction (1 - wmax/W)   n/wmax
+[   69.6s]   16     5.7        3.8          +0.33                  4.2
+[   69.6s]   22     6.4        4.4          +0.31                  5.0
+[   69.6s]   28     7.2        5.2          +0.28                  5.4
+[   69.6s]   34     9.6        8.8          +0.08                  3.8
+[   69.6s]   40    14.5       12.0          +0.17                  3.3
+[   69.6s] DONE-CENS

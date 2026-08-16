@@ -1,0 +1,59 @@
+[    0.0s] KAPPA DEEP (2D W2 convention): n=40, 60 paths
+[    3.9s]   10/60 (caps 0)
+[    8.0s]   20/60 (caps 0)
+[   12.2s]   30/60 (caps 0)
+[   16.4s]   40/60 (caps 0)
+[   20.5s]   50/60 (caps 0)
+[   24.4s]   60/60 (caps 0)
+[   24.4s] complete 60, cap-aborts 0
+[   24.4s]    n   kappa +- se        (5-step bins)
+[   24.4s]   10-14  +0.0219 +- 0.0810
+[   24.4s]   15-19  +0.0365 +- 0.0777
+[   24.4s]   20-24  +0.2637 +- 0.0784
+[   24.4s]   25-29  +0.5520 +- 0.0770
+[   24.4s]   30-34  +0.6826 +- 0.1007
+[   24.4s]   35-39  +1.3742 +- 0.1035
+[   24.4s] == Lambda fluctuations: Var[A(n)] across paths ==
+[   24.4s]   n=10: <A>=-0.50  sd=14.17  sd/sqrt(n)=4.482
+[   24.4s]   n=15: <A>=+3.70  sd=23.33  sd/sqrt(n)=6.023
+[   24.4s]   n=20: <A>=+9.90  sd=32.08  sd/sqrt(n)=7.174
+[   24.4s]   n=25: <A>=+15.00  sd=43.04  sd/sqrt(n)=8.609
+[   24.4s]   n=30: <A>=+23.97  sd=59.51  sd/sqrt(n)=10.865
+[   24.4s]   n=35: <A>=+36.10  sd=60.86  sd/sqrt(n)=10.286
+[   24.4s] DONE-KD
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001381 /   0.0001381 (  perturbed bounds)
+1 /   0.0001381 /   0.0001381 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001042 /   0.0001042 (  perturbed bounds)
+1 /   0.0001042 /   0.0001042 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0003112 /   0.0003112 (  perturbed bounds)
+1 /   0.0003112 /   0.0003112 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001105 /   0.0001105 (  perturbed bounds)
+1 /   0.0001105 /   0.0001105 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002569 /   0.0002569 (  perturbed bounds)
+1 /   0.0002569 /   0.0002569 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002294 /   0.0002294 (  perturbed bounds)
+1 /   0.0002296 /   0.0002296 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   5.577e-05 /   5.577e-05 (  perturbed bounds)
+1 /    5.58e-05 /    5.58e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002265 /   0.0002265 (  perturbed bounds)
+1 /   0.0002266 /   0.0002266 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002964 /   0.0002964 (  perturbed bounds)
+1 /   0.0002966 /   0.0002966 (unperturbed bounds)
