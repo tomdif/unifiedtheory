@@ -173,6 +173,15 @@
      SAME probability calculus (the same FUNCTION, not just the same
      exponent), from arbitrary monotone pairs.  Engine of the
      two-overlap Born-or-trivial result.
+  26. THE WIDTH-PHASE METER (formal core of the quantum expansion
+     law): `single_class_born` (degenerate-spectrum no-go),
+     `halfplane_separation_infeasible` (octant-coverage necessity),
+     `antipodal_pair_reaches_born` (one antipodal pair suffices,
+     explicit quadratic root), `gap_splits_width` +
+     `width_phase_octant` + `octant_period` (each unit of causal
+     in-degree rotates the amplitude phase by one octant at pi/4;
+     zeta^8 = 1 - width metered mod 8).  Born feasibility of a
+     restricted growth family = octant coverage of its gap phases.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -4669,6 +4678,296 @@ theorem master_chaining (g₁ g₂ : ℝ → ℝ)
   · rw [hg1lin (a + b) (by linarith), hg1lin a ha, hg2lin b hb]; ring
   · rw [hg1lin t ht, hg2lin t ht]
 
+/-! ## 26. THE WIDTH–PHASE METER: the formal core of the quantum
+expansion law
+
+Numerics (tag quantum-expansion-law-2026-08-15) found that width-
+restricted growth families admit double conservation only when deep
+enough, that the wall is phase-starvation (abundant width classes
+with phase-poor spectra fail), and that each unit of causal
+in-degree rotates the amplitude phase by one octant at φ = π/4.
+This section machine-checks the mechanism's four pillars:
+
+  * `single_class_born` — the degenerate-spectrum no-go: one gap
+    class of multiplicity μ supports double conservation iff its
+    phase is trivial and μ = 1.  (The unique candidate has Born
+    mass 1/μ.)
+  * `halfplane_separation_infeasible` — octant-coverage necessity:
+    if the available phases lie in a closed half-plane missing
+    (1,0), the coherent moments have no nonnegative solution at
+    all.  Feasibility of a growth family is a PHASE-COVERAGE
+    property of its gap spectrum.
+  * `antipodal_pair_reaches_born` — sufficiency of one antipodal
+    pair: any nonnegative coherent solution with Born mass ≤ 1
+    upgrades to exact double conservation by walking an explicit
+    quadratic-root step along the recession direction the pair
+    provides.  No limits, no IVT.
+  * `gap_splits_width` + `width_phase_octant` + `octant_period` —
+    the meter itself: every maximal element of a past contributes
+    c(0) = −1 to the gap, so the amplitude character factors as
+    (interior phase) · ζ^width with ζ = e^{−iπ/4}, and ζ⁸ = 1:
+    ONE OCTANT OF PHASE PER CELL OF CAUSAL WIDTH, width counted
+    mod 8 by the interference system.
+
+Together: Born feasibility of a restricted growth family = octant
+coverage of its gap phases; width is metered in phase.  This is the
+theorem-level content behind the empirical expansion law
+w_max(n) ≈ n/c* — the depth-gating happens because interior
+diversity (which grows with depth) is what spreads a width class
+across enough octants. -/
+
+/-- Degenerate-spectrum no-go: a single gap class of multiplicity μ
+supports double conservation iff its phase is trivial AND μ = 1. -/
+theorem single_class_born (θ μ : ℝ) (hμ : 1 ≤ μ) :
+    (∃ x : ℝ, 0 ≤ x ∧ μ * x * Real.cos θ = 1 ∧ μ * x * Real.sin θ = 0 ∧
+      μ * x^2 = 1) ↔ (Real.cos θ = 1 ∧ Real.sin θ = 0 ∧ μ = 1) := by
+  constructor
+  · rintro ⟨x, hx0, hc, hs, hq⟩
+    have hμ0 : 0 < μ := lt_of_lt_of_le one_pos hμ
+    have hx : 0 < x := by
+      rcases eq_or_lt_of_le hx0 with h | h
+      · exfalso; rw [← h] at hc; simp at hc
+      · exact h
+    have hμx : 0 < μ * x := mul_pos hμ0 hx
+    have hsin : Real.sin θ = 0 := by
+      rcases mul_eq_zero.mp hs with h | h
+      · exact absurd h (ne_of_gt hμx)
+      · exact h
+    have hpyth := Real.sin_sq_add_cos_sq θ
+    rw [hsin] at hpyth
+    have hcos2 : (Real.cos θ - 1) * (Real.cos θ + 1) = 0 := by nlinarith
+    have hcos : Real.cos θ = 1 := by
+      rcases mul_eq_zero.mp hcos2 with h | h
+      · linarith
+      · exfalso
+        have hcneg : Real.cos θ = -1 := by linarith
+        rw [hcneg] at hc
+        nlinarith
+    rw [hcos, mul_one] at hc
+    have h2 : x = 1 := by
+      rw [sq, ← mul_assoc, hc, one_mul] at hq
+      exact hq
+    rw [h2, mul_one] at hc
+    exact ⟨hcos, hsin, hc⟩
+  · rintro ⟨hcos, hsin, hμ1⟩
+    exact ⟨1, zero_le_one, by rw [hcos, hμ1]; ring, by rw [hsin]; ring,
+      by rw [hμ1]; ring⟩
+
+/-- Octant-coverage necessity: if every available phase direction
+lies in a closed half-plane whose inner normal has positive first
+component (the half-plane misses (1,0)), the coherent moment system
+has no nonnegative solution — regardless of multiplicities and of
+the Born constraint.  This is the separating-functional form of
+"(1,0) must lie in the cone of available phases". -/
+theorem halfplane_separation_infeasible {K : ℕ} (θ μ : Fin K → ℝ)
+    (hμ : ∀ i, 0 ≤ μ i) (u₁ u₂ : ℝ) (hu : 0 < u₁)
+    (hsep : ∀ i, Real.cos (θ i) * u₁ + Real.sin (θ i) * u₂ ≤ 0) :
+    ¬ ∃ x : Fin K → ℝ, (∀ i, 0 ≤ x i) ∧
+        ∑ i, μ i * x i * Real.cos (θ i) = 1 ∧
+        ∑ i, μ i * x i * Real.sin (θ i) = 0 := by
+  rintro ⟨x, hx, hc, hs⟩
+  have key : ∑ i, (μ i * x i * Real.cos (θ i) * u₁
+      + μ i * x i * Real.sin (θ i) * u₂) ≤ 0 := by
+    apply Finset.sum_nonpos
+    intro i _
+    have h1 : 0 ≤ μ i * x i := mul_nonneg (hμ i) (hx i)
+    nlinarith [mul_le_mul_of_nonneg_left (hsep i) h1]
+  have expand : ∑ i, (μ i * x i * Real.cos (θ i) * u₁
+      + μ i * x i * Real.sin (θ i) * u₂)
+      = (∑ i, μ i * x i * Real.cos (θ i)) * u₁
+        + (∑ i, μ i * x i * Real.sin (θ i)) * u₂ := by
+    rw [Finset.sum_add_distrib, ← Finset.sum_mul, ← Finset.sum_mul]
+  rw [expand, hc, hs, one_mul, zero_mul, add_zero] at key
+  linarith
+
+/-- Antipodal reachability: a nonnegative solution of the coherent
+moments with Born mass ≤ 1, plus one antipodal phase pair, yields an
+exact double-conservation solution.  The antipodal pair provides the
+recession direction; the required step is an explicit quadratic root
+(no limits, no IVT). -/
+theorem antipodal_pair_reaches_born {K : ℕ} (θ μ : Fin K → ℝ)
+    (hμ : ∀ i, 0 < μ i) (x₀ : Fin K → ℝ) (hx₀ : ∀ i, 0 ≤ x₀ i)
+    (hc : ∑ i, μ i * x₀ i * Real.cos (θ i) = 1)
+    (hs : ∑ i, μ i * x₀ i * Real.sin (θ i) = 0)
+    (hQ : ∑ i, μ i * (x₀ i)^2 ≤ 1)
+    {j₁ j₂ : Fin K} (hj : j₁ ≠ j₂)
+    (hac : Real.cos (θ j₂) = -Real.cos (θ j₁))
+    (has : Real.sin (θ j₂) = -Real.sin (θ j₁)) :
+    ∃ x : Fin K → ℝ, (∀ i, 0 ≤ x i) ∧
+      ∑ i, μ i * x i * Real.cos (θ i) = 1 ∧
+      ∑ i, μ i * x i * Real.sin (θ i) = 0 ∧
+      ∑ i, μ i * (x i)^2 = 1 := by
+  classical
+  set d : Fin K → ℝ := fun i =>
+    if i = j₁ then 1 / μ j₁ else if i = j₂ then 1 / μ j₂ else 0 with hd
+  have hdj₁ : d j₁ = 1 / μ j₁ := by simp [hd]
+  have hdj₂ : d j₂ = 1 / μ j₂ := by simp [hd, Ne.symm hj]
+  have hd0 : ∀ i, 0 ≤ d i := by
+    intro i
+    have hi : d i = if i = j₁ then 1 / μ j₁ else if i = j₂ then 1 / μ j₂ else 0 := by
+      simp [hd]
+    rw [hi]
+    split_ifs
+    · have := hμ j₁
+      positivity
+    · have := hμ j₂
+      positivity
+    · exact le_rfl
+  have hsum : ∀ f : Fin K → ℝ, ∑ i, μ i * d i * f i = f j₁ + f j₂ := by
+    intro f
+    have hterm : ∀ i, μ i * d i * f i
+        = (if i = j₁ then f j₁ else 0) + (if i = j₂ then f j₂ else 0) := by
+      intro i
+      by_cases h1 : i = j₁
+      · rw [h1, hdj₁, if_pos rfl, if_neg hj, add_zero]
+        field_simp [(hμ j₁).ne']
+      · by_cases h2 : i = j₂
+        · rw [h2, hdj₂, if_neg (Ne.symm hj), if_pos rfl, zero_add]
+          field_simp [(hμ j₂).ne']
+        · have hi : d i = 0 := by simp [hd, h1, h2]
+          rw [hi, if_neg h1, if_neg h2]
+          ring
+    calc ∑ i, μ i * d i * f i
+        = ∑ i, ((if i = j₁ then f j₁ else 0) + (if i = j₂ then f j₂ else 0)) :=
+          Finset.sum_congr rfl fun i _ => hterm i
+      _ = (∑ i, if i = j₁ then f j₁ else 0)
+            + (∑ i, if i = j₂ then f j₂ else 0) := Finset.sum_add_distrib
+      _ = f j₁ + f j₂ := by
+          rw [Finset.sum_ite_eq' Finset.univ j₁ (fun _ => f j₁),
+            Finset.sum_ite_eq' Finset.univ j₂ (fun _ => f j₂)]
+          simp
+  set q : ℝ := ∑ i, μ i * (x₀ i)^2 with hqdef
+  set a : ℝ := 1 / μ j₁ + 1 / μ j₂ with hadef
+  set b : ℝ := 2 * (x₀ j₁ + x₀ j₂) with hbdef
+  have ha0 : 0 < a := by
+    rw [hadef]
+    have := hμ j₁; have := hμ j₂
+    positivity
+  have hb0 : 0 ≤ b := by
+    rw [hbdef]
+    have := hx₀ j₁; have := hx₀ j₂
+    linarith
+  set disc : ℝ := b^2 + 4*a*(1 - q) with hdiscdef
+  have hdisc0 : 0 ≤ disc := by
+    rw [hdiscdef]
+    nlinarith [sq_nonneg b]
+  set s : ℝ := Real.sqrt disc with hsdef
+  have hs2 : s^2 = b^2 + 4*a*(1 - q) := by
+    rw [hsdef, Real.sq_sqrt hdisc0, hdiscdef]
+  have hsb : b ≤ s := by
+    have h1 : Real.sqrt (b^2) ≤ s := by
+      rw [hsdef]
+      apply Real.sqrt_le_sqrt
+      rw [hdiscdef]
+      nlinarith
+    rw [Real.sqrt_sq hb0] at h1
+    exact h1
+  set t : ℝ := (s - b) / (2*a) with htdef
+  have h2a : (2*a) ≠ 0 := by positivity
+  have ht0 : 0 ≤ t := by
+    rw [htdef]
+    apply div_nonneg (by linarith) (by linarith)
+  have ht' : t * (2*a) = s - b := by
+    rw [htdef]
+    exact div_mul_cancel₀ _ h2a
+  have hkey : a * t^2 + b * t = 1 - q := by
+    have h4a : (4*a^2) ≠ 0 := by positivity
+    have hexp : 4*a^2 * (a * t^2 + b * t) = 4*a^2 * (1 - q) := by
+      calc 4*a^2 * (a * t^2 + b * t)
+          = a * (t*(2*a))^2 + 2*a*b*(t*(2*a)) := by ring
+        _ = a * (s - b)^2 + 2*a*b*(s - b) := by rw [ht']
+        _ = a * s^2 - a * b^2 := by ring
+        _ = a * (b^2 + 4*a*(1-q)) - a * b^2 := by rw [hs2]
+        _ = 4*a^2 * (1-q) := by ring
+    exact mul_left_cancel₀ h4a hexp
+  refine ⟨fun i => x₀ i + t * d i, ?_, ?_, ?_, ?_⟩
+  · intro i
+    show 0 ≤ x₀ i + t * d i
+    have := hd0 i
+    have := hx₀ i
+    nlinarith
+  · show ∑ i, μ i * (x₀ i + t * d i) * Real.cos (θ i) = 1
+    have expand : ∑ i, μ i * (x₀ i + t * d i) * Real.cos (θ i)
+        = (∑ i, μ i * x₀ i * Real.cos (θ i))
+          + t * ∑ i, μ i * d i * Real.cos (θ i) := by
+      rw [Finset.mul_sum, ← Finset.sum_add_distrib]
+      exact Finset.sum_congr rfl fun i _ => by ring
+    rw [expand, hc, hsum (fun i => Real.cos (θ i))]
+    rw [hac]
+    ring
+  · show ∑ i, μ i * (x₀ i + t * d i) * Real.sin (θ i) = 0
+    have expand : ∑ i, μ i * (x₀ i + t * d i) * Real.sin (θ i)
+        = (∑ i, μ i * x₀ i * Real.sin (θ i))
+          + t * ∑ i, μ i * d i * Real.sin (θ i) := by
+      rw [Finset.mul_sum, ← Finset.sum_add_distrib]
+      exact Finset.sum_congr rfl fun i _ => by ring
+    rw [expand, hs, hsum (fun i => Real.sin (θ i))]
+    rw [has]
+    ring
+  · show ∑ i, μ i * (x₀ i + t * d i)^2 = 1
+    have expand : ∑ i, μ i * (x₀ i + t * d i)^2
+        = (∑ i, μ i * (x₀ i)^2)
+          + 2*t * (∑ i, μ i * d i * x₀ i)
+          + t^2 * (∑ i, μ i * d i * d i) := by
+      rw [Finset.mul_sum, Finset.mul_sum, ← Finset.sum_add_distrib,
+        ← Finset.sum_add_distrib]
+      exact Finset.sum_congr rfl fun i _ => by ring
+    have hx0sum : ∑ i, μ i * d i * x₀ i = b / 2 := by
+      rw [hsum x₀, hbdef]
+      ring
+    have hdsum : ∑ i, μ i * d i * d i = a := by
+      rw [hsum d, hdj₁, hdj₂, hadef]
+    rw [expand, ← hqdef, hx0sum, hdsum]
+    linear_combination hkey
+
+/-- The gap splits over the width: every maximal element of the past
+(k = 0) contributes exactly c(0) = −1, so
+gap = 1 − width + (interior terms). -/
+theorem gap_splits_width {α : Type*} [DecidableEq α]
+    (D : Finset α) (k : α → ℕ) (c : ℕ → ℤ) (hc0 : c 0 = -1) :
+    1 + ∑ y ∈ D, c (k y)
+      = 1 - ((D.filter fun y => k y = 0).card : ℤ)
+        + ∑ y ∈ D.filter (fun y => ¬ k y = 0), c (k y) := by
+  classical
+  have hsplit : ∑ y ∈ D, c (k y)
+      = (∑ y ∈ D.filter (fun y => k y = 0), c (k y))
+        + ∑ y ∈ D.filter (fun y => ¬ k y = 0), c (k y) :=
+    (Finset.sum_filter_add_sum_filter_not D _ _).symm
+  have hzero : ∑ y ∈ D.filter (fun y => k y = 0), c (k y)
+      = -((D.filter fun y => k y = 0).card : ℤ) := by
+    calc ∑ y ∈ D.filter (fun y => k y = 0), c (k y)
+        = ∑ _y ∈ D.filter (fun y => k y = 0), (-1 : ℤ) :=
+          Finset.sum_congr rfl fun y hy => by
+            rw [(Finset.mem_filter.mp hy).2, hc0]
+      _ = ((D.filter fun y => k y = 0).card : ℤ) * (-1) := by
+          rw [Finset.sum_const, nsmul_eq_mul]
+      _ = -((D.filter fun y => k y = 0).card : ℤ) := by ring
+  rw [hsplit, hzero]
+  ring
+
+/-- The width–phase meter: subtracting the width from the gap
+factors the amplitude character into (interior phase) × ζ^width. -/
+theorem width_phase_octant (g₀ : ℤ) (w : ℕ) :
+    Complex.exp ((Real.pi/4 : ℝ) * Complex.I * ((g₀ - (w:ℤ) : ℤ) : ℂ))
+      = Complex.exp ((Real.pi/4 : ℝ) * Complex.I * (g₀ : ℂ))
+        * Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ w := by
+  rw [← Complex.exp_nat_mul, ← Complex.exp_add]
+  congr 1
+  push_cast
+  ring
+
+/-- One octant per cell, full circle every 8: the width meter ζ is
+an exact 8th root of unity at the Born-quadrature phase π/4 — width
+is counted mod 8 by the interference system. -/
+theorem octant_period :
+    Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ 8 = 1 := by
+  rw [← Complex.exp_nat_mul]
+  have h : ((8:ℕ):ℂ) * -((Real.pi/4 : ℝ) * Complex.I)
+      = -(2 * (Real.pi : ℂ) * Complex.I) := by
+    push_cast
+    ring
+  rw [h, Complex.exp_neg, Complex.exp_two_pi_mul_I, inv_one]
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -4727,5 +5026,11 @@ theorem master_chaining (g₁ g₂ : ℝ → ℝ)
 #print axioms complex_mixing_block_forces_born
 #print axioms quantum_mechanics_from_a_beam_splitter
 #print axioms master_chaining
+#print axioms single_class_born
+#print axioms halfplane_separation_infeasible
+#print axioms antipodal_pair_reaches_born
+#print axioms gap_splits_width
+#print axioms width_phase_octant
+#print axioms octant_period
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg

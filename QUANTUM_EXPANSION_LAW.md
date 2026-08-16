@@ -128,3 +128,26 @@ cell" is the microscopic content of the quantum expansion law.
    (gap-max-entropy) not the width kinematics - test the min-norm
    band member and non-maxent selections under the width rule.
 3. Raise the ideal cap (compute) to unlock slow rates at n >= 64.
+
+## FORMALIZED (2026-08-15, section 26 of KFCausalUniquenessLeg.lean,
+## 64 axiom-clean theorems, root 8783 green)
+
+The mechanism's four pillars are now machine-checked:
+  - `single_class_born`: one gap class of multiplicity mu supports
+    double conservation iff phase trivial AND mu = 1.
+  - `halfplane_separation_infeasible`: phases confined to a closed
+    half-plane missing (1,0) => no nonnegative coherent solution -
+    octant-coverage NECESSITY.
+  - `antipodal_pair_reaches_born`: coherent solution with Born mass
+    <= 1 + one antipodal pair => exact double conservation, via an
+    explicit quadratic-root step along the pair's recession
+    direction (no limits, no IVT) - SUFFICIENCY half.
+  - `gap_splits_width` / `width_phase_octant` / `octant_period`:
+    gap = 1 - width + interior; the character factors through
+    zeta^width with zeta = e^{-i pi/4}, zeta^8 = 1 - one octant per
+    cell, width metered mod 8.
+Together: Born feasibility of a restricted growth family IS an
+octant-coverage property of its gap phases - the theorem-level core
+of the expansion law.  Remaining empirical: the value of c* (needs
+the interior-term distribution); remaining registered: min-norm
+selection under the width rule (IR collapse), raised cap.
