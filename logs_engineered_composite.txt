@@ -1,0 +1,15 @@
+  pair 1: r=0.1741
+  pair 2: r=0.1828
+  pair 3: r=0.1512
+  pair 4: r=0.1800
+ENGINEERED COMPOSITE (48x48 = 2304 elements, width-rule factors): r = 0.1720, global d_MM = 3.34
+interval profile:
+   k~   4: d_int=6.92  (f=0.0075, n=450)
+   k~   8: d_int=6.16  (f=0.0147, n=664)
+   k~  16: d_int=5.64  (f=0.0236, n=654)
+   k~  32: d_int=5.17  (f=0.0358, n=540)
+   k~  64: d_int=4.82  (f=0.0487, n=416)
+   k~ 128: d_int=4.62  (f=0.0578, n=302)
+   k~ 256: d_int=4.41  (f=0.0694, n=141)
+   k~ 512: d_int=4.08  (f=0.0924, n=33)
+DONE-EC
