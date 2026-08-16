@@ -5206,7 +5206,13 @@ curvature clock ANTICOMMUTE, (S∘S)∘(C∘C) = −(C∘C)∘(S∘S): two units
 of causal width against a quarter turn of curvature phase form a
 Clifford (anticommuting) pair inside the ℤ₈ meter algebra — the
 characteristic minus sign of fermionic exchange arises from the
-width–curvature bookkeeping itself, via ζ⁴ = e^{−iπ} = −1. -/
+width–curvature bookkeeping itself, via ζ⁴ = e^{−iπ} = −1.
+(Operative hypothesis: ζ⁴ = −1, i.e. ζ primitive of order 8 —
+ζ⁸ = 1 alone does not suffice (ζ = i commutes); this statement is
+concrete in ζ = e^{−iπ/4} and derives ζ⁴ = −1 internally.  S⁴ and
+C⁴ are central in ⟨S², C²⟩, so the pair generates a genuine
+generalized Clifford / clock-shift even-subalgebra, whose ℤ₂ case
+is σₓ, σ_z.) -/
 theorem clifford_anticommutation (f : ZMod 8 → ℂ) (k : ZMod 8) :
     widthShift (widthShift (octantClock (octantClock f))) k
       = - octantClock (octantClock (widthShift (widthShift f))) k := by

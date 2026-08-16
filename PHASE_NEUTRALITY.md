@@ -20,16 +20,40 @@ Verified: N = 50..3200, five densities, all within 1 sigma of
 length ~ sqrt(N)" (GHY-term) reading is REFUTED - m0 and m1 both
 grow ~ ln N and cancel to exactly 1.
 
-PHYSICS: FLAT PASTS ARE PHASE-NEUTRAL IN EXPECTATION.  The
-two-integer phase charge detects deviation from flatness, not
-boundary size: manifold-like caps carry (mean) zero phase
-exponent, hence cos ~ +1, hence they feed the coherent constraint
-(sum a = 1) maximally.  The Markov sum rule structurally FAVORS
-manifoldlike growth options over crumpled ones (whose q scatters
-across octants) - a candidate MECHANISM FOR EMERGENT FLATNESS
-inside the double-conservation law.  In d dimensions
-E[m0] ~ (ln N)^{d-1} gives E[q] ~ (d-1)(ln N)^{d-2}: near-neutral
-at all d, exactly neutral-to-one in 2D.
+CLASSICAL ANCHOR (external cross-check, exact): in lightcone
+coordinates the 2D diamond order is dominance order, so E[m0] is
+the classical Poisson-maxima integral E[m0] = int_0^N (1-e^{-s})/s
+ds (record statistics); differentiating in ln N gives 1 - e^{-N} -
+the identity drops out of a sixty-year-old computation,
+independently of our derivation route.  It also gives
+E[m0] -> ln N + gamma, the growth that killed the GH reading.
+
+MECHANISM RETRACTED (same day, concentration test): the coherence
+reading ("flat pasts feed sum a = 1") required CONCENTRATION of
+q mod 8 near 1.  Measured: Var(q) grows ~ 2 ln N and the q mod 8
+histograms are UNIFORM at every density N = 50..3200 - flat
+regions are phase-RANDOM, not phase-aligned; the mean-1 identity
+is exact but the mod-8 distribution carries no alignment.  The
+emergent-flatness-by-coherence mechanism is DEAD as stated.
+
+THE CORRECTED STATEMENT (stronger, and unifying): uniform q mod 8
+means flat regions provide MAXIMAL OCTANT COVERAGE - and by the
+166/166 feasibility closure, octant coverage IS Born feasibility.
+Hence: FLAT ENSEMBLES ARE UNCONDITIONALLY BORN-FEASIBLE; the
+feasibility walls (expansion bound, collapse censorship) are
+CURVATURE PHENOMENA - they can only occur in non-flat ensembles
+whose phase distributions are skewed.  This unifies with the
+parallel-chain (rotation-cancelling, uncensored) result: quantum
+obstruction requires curvature.
+
+DIMENSION SCOPING (4D sprinkling test, run): in d = 4 flat
+diamonds E[m0] ~ N^alpha with measured alpha = 0.53-0.64 and
+q/m0 = 0.55-0.59 ~ alpha - the identity's power-law prediction
+E[q] ~ alpha E[m0] CONFIRMS in a second regime, the charge is
+boundary-sized in d > 2, and exact neutrality is a 2D-marginal
+(alpha = 0) fact.  One more structure singling out d = 2 - the
+only dimension where the framework has produced its quantum
+sector.
 
 ## 2. THE FERMIONIC MINUS SIGN (Lean, section 30)
 
