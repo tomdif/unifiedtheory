@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1.1in}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\title{Quantum sequential growth on the full causal tree:\\
+selection, feasibility geometry, and the composite route to four
+dimensions}
+\author{T.~DiFiore}
+\date{August 2026 --- draft}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study bi-normalized quantum sequential growth of causal sets: at
+each branching, complex amplitudes satisfy both the coherent sum rule
+$\sum_c a_c=1$ and Born completeness $\sum_c\lvert a_c\rvert^2=1$ ---
+Gudder's stochastic--unitary pair, lifted from binary c-causets to the
+full Rideout--Sorkin downset tree with action phases
+$a\propto e^{i\varphi\,\Delta S}$.  Three groups of results.
+\emph{Selection}: the full tree collapses Gudder's solution continuum
+--- $\varphi=\pi/4$ is the unique feasible phase, and across 89 weight
+systems the pinned phase is determined by the root gap structure.
+\emph{Feasibility geometry}: a downset's phase class is determined by
+two integers (width and subtop count, mod 8); feasibility of a
+restricted family is exactly cone coverage plus Born reachability of
+its octant spectrum (predicting every measured wall, 166/166); this
+yields an expansion law and its time-reverse, a collapse-censorship
+law, with one constant, while strict Rideout--Sorkin covariance and
+Bell causality are machine-checked no-gos whose obstruction lies
+purely in the magnitude sector --- every phase-level condition holds
+exactly.  The growth Hamiltonian is $\varphi$ times the
+Benincasa--Dowker action rate; the accumulated action is a causet
+invariant; the width shift and curvature clock form a $\Z_8$ Weyl
+pair whose squares anticommute, supporting a Jordan--Wigner fermionic
+exchange algebra with an exact parity superselection rule ---
+structures that exist only for the two-dimensional action, whose
+weights are the unique all-even Benincasa--Dowker member.
+\emph{Dimension}: the bi-normalized class is monoidal --- the tensor
+of two quantum growths is a quantum growth --- and the causal product
+of two grown two-dimensional factors measures four-dimensional in the
+infrared, with interval statistics converging onto the exact 4D
+Minkowski benchmark ($f=0.1008$ vs $0.0994$); rotational isotropy of
+the light cone emerges in the many-frame limit; field quanta
+(Sorkin--Johnston modes) on the composite are delocalized with
+near-linear dispersion.  All structural theorems are machine-checked
+in Lean~4 (80 theorems, axiom-clean); every refuted conjecture and
+failed mechanism encountered en route is reported.
+\end{abstract}
+
+\section{The kernel and its arena}
+
+\subsection{Gudder's pair, and what fixes it}
+Gudder's quantum sequential growth on c-causets \cite{gudder} imposes,
+per parent, $\sum_k a_k=1$ and $\sum_k\lvert a_k\rvert^2=1$; his
+Theorem~2.1 exhibits the full binary solution continuum
+$a=\cos\theta\,e^{i\theta}$, $b=-i\sin\theta\,e^{i\theta}$ with
+$\theta$ a free coupling per node.  We adopt the pair on the full
+downset tree with the action-phase ansatz
+$a_D=x_{g(D)}e^{i\varphi g(D)}$, $x\ge0$, where the gap $g(D)$ is the
+Benincasa--Dowker action increment of the transition.
+
+\begin{theorem}[Continuum collapse]
+On the two-dimensional weight system, the root branching (gaps
+$\pm1$) forces $\cos\varphi=\tfrac{\sqrt2}{2}$, i.e.
+$\varphi=\pi/4$, and a thirteen-phase scan finds no other phase
+feasible at any depth.  Gudder's continuum is collapsed to its
+symmetric point by the first step of the full tree.  Across the
+surviving weight systems of a $140$-system scan, the pinned phase is a
+function of the root gap structure alone.
+\end{theorem}
+
+\subsection{The two-integer octant formula}
+Mod 8, the four-dimensional Benincasa--Dowker coefficients
+$(-1,9,-16,8)$ reduce to $(-1,+1,0,0)$:
+
+\begin{theorem}[\texttt{octant\_formula}]
+If the interval weights reduce mod 8 to $(-1,+1,0,\dots)$, then for
+every downset $D$,
+$g(D)\equiv 1-m_0(D)+m_1(D)\pmod 8$, where $m_0$ is the number of
+maximal elements of $D$ (the causal in-degree) and $m_1$ the number of
+elements with exactly one element of $D$ above them.
+\end{theorem}
+
+Two integers determine every quantum phase class.  For Poisson
+sprinklings the charge $q=m_0-m_1$ obeys the exact identity
+$\mathbb{E}[q]=d\,\mathbb{E}[m_0]/d\ln N$ (in 2D:
+$1-e^{-N}\to1$, anchored by classical record statistics), while its
+mod-8 distribution is uniform: flat ensembles cover all octants.
+
+\section{Feasibility geometry}
+
+\begin{theorem}[Feasibility criteria;
+\texttt{single\_class\_born},
+\texttt{halfplane\_separation\_infeasible},
+\texttt{antipodal\_pair\_reaches\_born}]
+A single gap class of multiplicity $\mu$ supports the pair iff its
+phase is trivial and $\mu=1$.  If the available phases lie in a closed
+half-plane missing $(1,0)$, no nonnegative solution exists.  A
+nonnegative coherent solution with Born mass $\le1$ plus one antipodal
+phase pair upgrades to an exact solution by an explicit quadratic
+root.
+\end{theorem}
+
+These criteria predict every empirically measured wall (166/166
+collapse-family tests).  Consequences: (i)~an \emph{expansion law} ---
+the width a new event may cap is bounded by
+$w_{\max}(n)\approx n/c^*$, $c^*\approx4.5$; (ii)~its time-reverse, a
+\emph{collapse censorship} law with the same constant; (iii)~geometry
+selectivity --- flat (octant-covering) ensembles are unobstructed,
+walls are curvature phenomena; parallel-chain regions collapse freely
+at any width (solved exactly); (iv)~free growth runs at
+$\sim0.8$ of its critical expansion rate.
+
+\begin{theorem}[No-gos; \texttt{covariance\_no\_go},
+\texttt{bell\_causality\_no\_go}]
+Strict Rideout--Sorkin covariance (per-path amplitude equality across
+isomorphic labelled causets) and classical-form (equivalently
+fixed-slot quantum) Bell causality are each inconsistent with
+action-phased bi-normalization --- the former by a linear
+contradiction at $n=3$, the latter at the two-antichain.  Both
+obstructions lie in the magnitude sector; the phases satisfy every
+covariance and causality condition exactly, and the class measure is
+well-defined and consistent (verified exactly to depth 5).
+\end{theorem}
+
+The no-gos explain both Gudder's restriction to uniquely-labellable
+causets (necessary, not convenient) and the long resistance of the
+quantum sequential growth problem: the Rideout--Sorkin template
+imposes classical-probability conditions on amplitudes, which no
+bi-normalized dynamics can satisfy; the conditions must live at the
+class/decoherence-functional level, where this dynamics complies.
+
+\section{Operator structure}
+
+\begin{theorem}[Action invariance;
+\texttt{growthAction\_closed\_form},
+\texttt{growthAction\_iso\_invariant}]
+The cumulative growth action equals
+$n-\sum_{\text{related pairs}}w(\lvert I(y,x)\rvert)$ --- a pure
+interval-abundance functional --- and is invariant under every order
+isomorphism, for any weight system.
+\end{theorem}
+
+The Hamiltonian is $H=\varphi\,\hat G$ (the action-rate operator):
+energy is curvature.  Its Born-weighted stationary state occupies the
+four quadrature levels with an emergent conjugation symmetry (the
+imbalance decays as $-0.20/n$).  The width shift $S$ and curvature
+clock $C$ satisfy the Weyl relation $SC=\zeta CS$,
+$\zeta=e^{-i\pi/4}$ (\texttt{width\_curvature\_weyl}); their squares
+anticommute (\texttt{clifford\_anticommutation}); string operators
+$\chi_i$ built on the growth order anticommute at distinct ranks
+(\texttt{jw\_exchange}) --- Jordan--Wigner fermions whose required
+ordering is supplied by growth itself.  Action parity is conserved
+identically (\texttt{action\_parity}), and dynamically the $\Z_8$
+charge decays exactly onto this $\Z_2$: the superselection rule
+physical fermions retain.
+
+\begin{theorem}[The 2D selection; \texttt{gap\_odd\_of\_even\_weights}]
+Even weights make every gap odd.  Among Benincasa--Dowker families
+only $d=2$ has all-even weights ($d=4$ is mixed-parity with a
+degenerate root; $d=3$ is non-integer): the quadrature clock, Weyl
+pair, Clifford sign, fermionic algebra and parity superselection
+exist for the two-dimensional action alone --- a candidate mechanism
+for the universal ultraviolet dimensional reduction to two.
+\end{theorem}
+
+\section{The composite route to four dimensions}
+
+\begin{theorem}[Monoidality; \texttt{product\_bi\_normalized}]
+The tensor of two bi-normalized branchings is bi-normalized; gaps
+add, so the product carries the same $\pi/4$ action phase.
+\end{theorem}
+
+The causal product of two grown 2D factors is a four-dimensional
+dominance (Winkler) order: at $1024$ elements its interval dimension
+profile decelerates smoothly onto four
+($4.38,4.24,4.14,3.98$ at $k\sim32..256$), with
+$f(k{\sim}256)=0.1008$ against the exact 4D Minkowski benchmark
+$0.0994$.  Dimensional additivity
+$d_{\otimes}(k)=2\,d_{2D}(\sqrt k)$ holds at every checkable scale.
+The polyhedral cone rounds under intersection of rotated frames
+(opening angle $\to30^\circ$, the exact inscribed value; anisotropy
+$\sim1/m$), the quantum ensemble is measurably rounder than any
+single history ($3.0\times$), and the four-dimensional class survives
+strong selection-induced coupling.  Each factor contributes an
+independent fermionic species
+(\texttt{species1\_anticommute}, \texttt{species\_cross\_commute},
+\texttt{composite\_parity\_pair}): $k$ factors carry $\Z_2^k$.
+Sorkin--Johnston field modes on the composite are delocalized over
+$\sim36\%$ of the volume with a harmonic low-$k$ spectrum and
+near-linear dispersion.
+
+\section{Honest limits}
+
+Quantum consistency does \emph{not} select the gravitational action
+(deep feasibility is a broad basin over weight space; continuum
+locality selects it).  The cosmological action density is
+selection-band dependent.  Manifoldlikeness is not achieved: under the
+theory's coherent measure two competing forces (stationary-phase
+flattening, confirmed at $34\%$; extension enhancement, $2.8\times$)
+admit a balance point at the sprinkling ordering fraction
+($\Delta r=0.005$), and texture-targeted weights halve the interval-
+texture gap, but exact class-aggregated enumeration to $n=10$
+($1.6\times10^6$ classes) shows the residual texture gap growing,
+not shrinking --- the entropy problem survives the coherent measure
+at all tested weights.  Growth defects thermalize (no free
+quasiparticles; charge-neutral pairs decay at the single-defect
+rate); free excitations exist only as field modes.  Exact Lorentzian
+structure is unreachable by any finite product (round cones have
+infinite order dimension) and must emerge, as isotropy does, in a
+many-frame limit.  No measured constant of nature is yet reproduced.
+
+\begin{thebibliography}{9}
+\bibitem{rs} D.~Rideout, R.~Sorkin, \emph{A classical sequential
+growth dynamics for causal sets}, Phys. Rev. D 61, 024002 (2000).
+\bibitem{gudder} S.~Gudder, \emph{An isometric dynamics for a causal
+set approach to discrete quantum gravity}, arXiv:1409.3770.
+\bibitem{bd} D.~Benincasa, F.~Dowker, \emph{The scalar curvature of a
+causal set}, Phys. Rev. Lett. 104, 181301 (2010).
+\bibitem{surya} S.~Surya, \emph{The causal set approach to quantum
+gravity}, Living Rev. Relativ. 22, 5 (2019).
+\bibitem{zalel} S.~Zalel, S.~Surya, \emph{A criterion for covariance
+in complex sequential growth models}, Class. Quantum Grav. 37, 195002
+(2020).
+\bibitem{carlip} S.~Carlip, \emph{Dimensional reduction in quantum
+gravity}, Class. Quantum Grav. 34, 193001 (2017).
+\bibitem{sj} R.~Sorkin, \emph{Scalar field theory on a causal set in
+histories form}; S.~Johnston, \emph{Feynman propagator for a free
+scalar field on a causal set}, Phys. Rev. Lett. 103, 180401 (2009).
+\bibitem{winkler} P.~Winkler, \emph{Random orders}, Order 1, 317
+(1985).
+\bibitem{p1} T.~DiFiore, \emph{Quantum mechanics from a monotone
+probability, lossless time, gauge, and one interference event},
+companion paper.
+\end{thebibliography}
+\end{document}
