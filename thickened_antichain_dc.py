@@ -122,15 +122,21 @@ def maxent_gap_law(gapcounts):
     cons = [{"type": "eq", "fun": lambda x: A @ x - b, "jac": lambda x: A},
             {"type": "eq", "fun": lambda x: float(np.dot(mu, x * x)) - 1.0,
              "jac": lambda x: 2 * mu * x}]
-    best = (negH(xfe), xfe)
-    r2m = minimize(negH, xfe, constraints=cons, bounds=[(0, None)] * K,
-                   method="SLSQP", options={"maxiter": 200, "ftol": 1e-11})
-    if r2m.success:
-        x2 = np.maximum(r2m.x, 0.0)
-        if (abs(float(np.dot(mu, x2 * x2)) - 1) < 1e-6
-                and np.max(np.abs(A @ x2 - b)) < 1e-6 and negH(x2) < best[0]):
-            best = (negH(x2), x2)
-    x = best[1]
+    MEMBER = os.environ.get("MEMBER", "maxent")
+    if MEMBER == "xfe":
+        x = xfe
+    else:
+        sign = 1.0 if MEMBER == "maxent" else -1.0
+        obj = lambda x: sign * negH(x)
+        best = (obj(xfe), xfe)
+        r2m = minimize(obj, xfe, constraints=cons, bounds=[(0, None)] * K,
+                       method="SLSQP", options={"maxiter": 200, "ftol": 1e-11})
+        if r2m.success:
+            x2 = np.maximum(r2m.x, 0.0)
+            if (abs(float(np.dot(mu, x2 * x2)) - 1) < 1e-6
+                    and np.max(np.abs(A @ x2 - b)) < 1e-6 and obj(x2) < best[0]):
+                best = (obj(x2), x2)
+        x = best[1]
     out = {g: x[i] ** 2 for i, g in enumerate(gaps)}
     LAW_CACHE[key] = out; return out
 
