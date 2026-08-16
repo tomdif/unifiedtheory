@@ -1,0 +1,6 @@
+[    0.0s] NBIG=40 NPATH=25 PHI=0.7854
+[   17.4s]   w=5  : feasible 25/25 (100%), fallback steps 0; r=0.666 d_glob=1.65 | [k~4] d=2.72(n3959)  [k~8] d=2.33(n4145)  [k~16] d=1.92(n1894)  [k~32] d=1.63(n2)
+[   27.0s]   w=6  : feasible 13/25 (52%), aborts med depth 20 {'law': 12}, fallback steps 0; r=0.646 d_glob=1.68 | [k~4] d=3.06(n2200)  [k~8] d=2.53(n2136)  [k~16] d=2.03(n860)  [k~32] d=1.70(n4)
+[   30.9s]   w=7  : feasible 2/25 (8%), aborts med depth 20 {'law': 23}, fallback steps 3; r=0.657 d_glob=1.66 | [k~4] d=2.95(n276)  [k~8] d=2.68(n360)  [k~16] d=1.99(n163)  [k~32] d=1.71(n1)
+[   33.7s]   w=8  : ALL 25 paths ABORTED (median depth 20); causes {'law': 25}
+[   33.7s] DONE

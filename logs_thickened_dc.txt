@@ -1,0 +1,8 @@
+[    0.0s] NBIG=26 NPATH=25 PHI=0.7854
+[    9.4s]   free : feasible 25/25 (100%), fallback steps 0; r=0.599 d_glob=1.78 | [k~4] d=2.29(n5912)  [k~8] d=2.13(n3906)  [k~16] d=1.90(n182)
+[   29.9s]   w=1  : ALL 25 paths ABORTED (median depth 22); abort profile [22]
+[   29.9s]   w=2  : ALL 25 paths ABORTED (median depth 3); abort profile [3]
+[   29.9s]   w=3  : ALL 25 paths ABORTED (median depth 3); abort profile [3]
+[   29.9s]   w=4  : ALL 25 paths ABORTED (median depth 3); abort profile [3]
+[   29.9s]   w=5  : ALL 25 paths ABORTED (median depth 3); abort profile [3]
+[   29.9s] DONE

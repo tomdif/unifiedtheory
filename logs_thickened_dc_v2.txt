@@ -1,0 +1,8 @@
+[    0.0s] NBIG=26 NPATH=25 PHI=0.7854
+[    8.8s]   free : feasible 25/25 (100%), fallback steps 0; r=0.599 d_glob=1.78 | [k~4] d=2.29(n5912)  [k~8] d=2.13(n3906)  [k~16] d=1.90(n182)
+[   11.2s]   w=1  : feasible 25/25 (100%), fallback steps 0; r=0.415 d_glob=2.24 | [k~4] d=1.73(n7188)  [k~8] d=1.68(n1725)  [k~16] d=1.68(n14)
+[   14.8s]   w=2  : feasible 25/25 (100%), fallback steps 0; r=0.533 d_glob=1.92 | [k~4] d=2.02(n7046)  [k~8] d=2.01(n2843)  [k~16] d=1.84(n111)
+[   19.1s]   w=3  : feasible 25/25 (100%), fallback steps 0; r=0.615 d_glob=1.75 | [k~4] d=2.26(n6079)  [k~8] d=2.02(n3638)  [k~16] d=1.67(n283)
+[   21.4s]   w=4  : feasible 22/25 (88%), aborts med depth 12 {'law': 3}, fallback steps 0; r=0.643 d_glob=1.69 | [k~4] d=2.53(n5287)  [k~8] d=2.12(n3261)  [k~16] d=1.83(n252)
+[   22.0s]   w=5  : feasible 5/25 (20%), aborts med depth 12 {'law': 20}, fallback steps 5; r=0.582 d_glob=1.81 | [k~4] d=3.06(n1527)  [k~8] d=2.19(n473)
+[   22.0s] DONE
