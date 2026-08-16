@@ -89,3 +89,33 @@ the sibling-swap experiment: replace the rank-i choice by a
 level-shifted sibling (guaranteed to exist generically by octant
 coverage), continue growth, and measure the fidelity of
 string-commutation with the step isometry U = V o U_+.
+
+## SUMMIT COMPLETED: the dynamical half (defect transport, run)
+
+Defect-transport experiment (logs_defect_transport.txt): insert a
+meter defect at rank 6 (swap the chosen child for a gap+2 sibling,
+generically available - 300 trials, 137 no-sibling skips), evolve
+original and defected causets to rank 13 with maximally-coupled
+randomness.  Results per post-defect step:
+  overlap (Bhattacharyya): 0.817 -> 0.630, steady decay ~0.037/step
+    - NO HEALING: the defect back-reacts and delocalizes;
+  coupling fraction: 0.62 -> 0.10 (geometric, ~0.65x/step);
+  charge P(dA = 2 mod 8): 0.68 -> 0.26, decaying toward uniform on
+    the EVEN classes {0,2,4,6}.
+VERDICT: reading (ii)+(iii) - the JW string does NOT transport as a
+free quasiparticle; the octant (Z8) charge dissipates with a ~3-4
+step time constant.  BUT: dA is EVEN in every trial at every step -
+FERMION PARITY (the Z2 subgroup of the octant charge) IS CONSERVED
+IDENTICALLY, by structure (all gaps odd).  The dynamics breaks
+Z8 -> Z2: exactly the superselection rule that physical fermionic
+systems retain.
+
+FINAL FERMION LEDGER:
+  - kinematic half: PASSES, machine-checked (jw_exchange, sec. 31);
+  - dynamical half: free transport FAILS (defects dressed/confined;
+    octant charge decays); fermion parity survives exactly.
+  Honest summary: the growth law supports fermionic EXCHANGE
+  ALGEBRA and an exact fermion-parity superselection rule, but its
+  meter defects are confined, not free particles.  A free-fermion
+  claim would require identifying the dressed (parity-carrying)
+  collective excitation - registered, unclaimed.

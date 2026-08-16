@@ -1,0 +1,17 @@
+trials 300 (no-sibling skips 137) defect at rank 6, evolve to 13
+ t   overlap   still-coupled   P(dA=2 mod 8)   <dA mod 8 dist>
+  1   0.8172     0.617          0.683         [(2, 205), (4, 36), (0, 30)]
+  2   0.7717     0.417          0.493         [(2, 148), (4, 54), (0, 53)]
+  3   0.7351     0.277          0.373         [(2, 112), (4, 69), (0, 62)]
+  4   0.7003     0.183          0.317         [(2, 95), (0, 72), (4, 68)]
+  5   0.6674     0.133          0.307         [(2, 92), (0, 71), (4, 69)]
+  6   0.6301     0.103          0.260         [(2, 78), (0, 77), (4, 76)]
+DONE-DT
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0003067 /   0.0003067 (  perturbed bounds)
+1 /   0.0003069 /   0.0003069 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0003067 /   0.0003067 (  perturbed bounds)
+1 /   0.0003069 /   0.0003069 (unperturbed bounds)
