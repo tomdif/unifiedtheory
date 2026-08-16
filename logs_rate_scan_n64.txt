@@ -1,0 +1,5 @@
+[    2.7s]   rate=n/4  : feasible 1/20 (5%), aborts med depth 24 {'law': 19}, fallback steps 0; r=0.680 d_glob=1.62 | [k~4] d=2.97(n116)  [k~8] d=2.46(n132)  [k~16] d=2.04(n144)  [k~32] d=1.97(n8)
+[   67.6s]   rate=n/5  : feasible 16/20 (80%), aborts med depth 48 {'law': 2, 'cap': 2}, fallback steps 0; r=0.667 d_glob=1.64 | [k~4] d=2.83(n1700)  [k~8] d=2.54(n2194)  [k~16] d=2.09(n2181)  [k~32] d=1.74(n325)
+[  211.3s]   rate=n/6  : feasible 10/20 (50%), aborts med depth 60 {'cap': 10}, fallback steps 0; r=0.618 d_glob=1.74 | [k~4] d=2.64(n1232)  [k~8] d=2.47(n1400)  [k~16] d=2.13(n1245)  [k~32] d=1.87(n123)
+[  251.1s]   rate=n/7  : feasible 5/20 (25%), aborts med depth 60 {'cap': 15}, fallback steps 0; r=0.603 d_glob=1.77 | [k~4] d=2.63(n634)  [k~8] d=2.48(n683)  [k~16] d=2.15(n632)  [k~32] d=1.86(n51)
+[  195.3s]   rate=n/8  : ALL 20 paths ABORTED (median depth 56); causes {'cap': 20}
