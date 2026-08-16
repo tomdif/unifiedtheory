@@ -189,6 +189,14 @@
      abundance (discrete Einstein-Hilbert) functional, independent
      of growth path and labeling, for ANY weight function.
      Energy = curvature, machine-checked.
+  28. THE WIDTH-CURVATURE WEYL PAIR: `width_curvature_weyl` - the
+     width shift and the curvature clock on Z8 satisfy
+     shift o clock = zeta * clock o shift (one octant commutator,
+     wrap governed by zeta^8 = 1): width and curvature phase are
+     canonically conjugate discrete variables.
+     `phaseCharge_iso_invariant`: the Z8 phase charge
+     Phi(C) = A(C) mod 8 is an isomorphism invariant -
+     superselection sectors no relabeling or growth history mixes.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -5077,6 +5085,58 @@ theorem growthAction_closed_form {n : ℕ}
   rw [Finset.sum_sub_distrib]
   simp
 
+/-! ## 28. The width–curvature Weyl pair -/
+
+noncomputable def octantClock : (ZMod 8 → ℂ) → (ZMod 8 → ℂ) :=
+  fun f k => Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (k.val) * f k
+
+def widthShift : (ZMod 8 → ℂ) → (ZMod 8 → ℂ) :=
+  fun f k => f (k + 1)
+
+/-- THE WEYL RELATION (global, wrap-safe): the width shift and the
+curvature clock commute up to exactly one octant,
+shift ∘ clock = ζ · clock ∘ shift with ζ = e^{−iπ/4} — width and
+curvature phase are canonically conjugate ℤ₈ variables.  (Adding a
+unit of causal width lowers the gap by one — `gap_splits_width` —
+i.e. shifts the energy level; the Hamiltonian is diagonal in
+levels; their commutator is one octant, and the wrap-around is
+exactly ζ⁸ = 1.) -/
+theorem width_curvature_weyl (f : ZMod 8 → ℂ) (k : ZMod 8) :
+    widthShift (octantClock f) k
+      = Complex.exp (-((Real.pi/4 : ℝ) * Complex.I))
+        * octantClock (widthShift f) k := by
+  simp only [octantClock, widthShift]
+  have hmod : ∀ a : ℕ,
+      Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ a
+        = Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ (a % 8) := by
+    intro a
+    conv_lhs => rw [← Nat.div_add_mod a 8]
+    rw [pow_add, pow_mul, octant_period, one_pow, one_mul]
+  have hval : (k + 1 : ZMod 8).val = (k.val + 1) % 8 := by
+    rw [ZMod.val_add]
+    norm_num [ZMod.val_one_eq_one_mod]
+  rw [hval, ← hmod (k.val + 1), pow_succ]
+  ring
+
+/-- The wrap-around is governed by ζ⁸ = 1 (`octant_period`): the
+clock is well-defined on ℤ₈ precisely because eight octants close
+the circle. -/
+theorem clock_period_wraps :
+    Complex.exp (-((Real.pi/4 : ℝ) * Complex.I)) ^ 8 = 1 :=
+  octant_period
+
+/-- PHASE-CHARGE SUPERSELECTION: the growth action reduced mod any
+m is an isomorphism invariant of the causet — in particular the
+ℤ₈ phase charge Φ(C) = A(C) mod 8 labels superselection sectors
+that no relabeling or alternative growth history can mix. -/
+theorem phaseCharge_iso_invariant {n : ℕ}
+    (below below' : Fin n → Finset (Fin n)) (w : ℕ → ℤ)
+    (σ : Equiv.Perm (Fin n))
+    (hσ : ∀ x y : Fin n, y ∈ below x ↔ σ y ∈ below' (σ x))
+    (m : ℕ) :
+    (growthAction below w : ZMod m) = (growthAction below' w : ZMod m) := by
+  rw [growthAction_iso_invariant below below' w σ hσ]
+
 #print axioms real_binary_bi_normalized_deterministic
 #print axioms l1_mixing_impossible
 #print axioms phase_order_matters_in_quaternions
@@ -5143,5 +5203,8 @@ theorem growthAction_closed_form {n : ℕ}
 #print axioms octant_period
 #print axioms growthAction_iso_invariant
 #print axioms growthAction_closed_form
+#print axioms width_curvature_weyl
+#print axioms clock_period_wraps
+#print axioms phaseCharge_iso_invariant
 
 end UnifiedTheory.Audit.KFCausalUniquenessLeg
