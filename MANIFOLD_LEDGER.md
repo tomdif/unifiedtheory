@@ -80,3 +80,29 @@ NOTE: the deep-sampler data (d_eff 1.666 falling, inverted flow)
 predicts reading (ii) for free growth - which would sharpen the
 program's claim: MANIFOLD-LIKENESS IS BOUGHT BY STRUCTURE
 (composition/coupling), NOT BY THE FLAT LAW.
+
+## THE BIRTH-FROZEN WINDOW (2026-08-17, corrected synthesis)
+
+Window scaling (n=32..96): k_x = 4.5*sqrt(n) (ratios 4.2-4.8, no
+trend); every fixed-k dimension RISES with n (d16: 2.17->2.58;
+d45: 1.89->1.96).  Frontier test REFUTED the naive frontier
+reading: bulk(age)-restricted sampling moves the crossing IN
+(43.5 -> 30.2, -31%) and lowers d at every k.
+MECHANISM (exact structural fact): INTERVALS FREEZE AT BIRTH -
+I(x,y) is a function of past(y) only, fixed at y's birth.  The
+ensemble profile is an age mixture of frozen snapshots:
+  - each element's past is manifold-like up to k ~ 4.5*sqrt(birth
+    time), over-ordered beyond (permanent, never heals);
+  - fixed-k ensemble d rises with n as young tops dominate;
+  - the crossing tracks the youngest tops: k_x ~ 4.5*sqrt(n);
+  - age cuts rewind the ensemble (hence the negative shift).
+PHYSICAL READING: an observer at cosmic time n inherits a past
+manifold-like out to scale ~4.5*sqrt(n); the non-manifold residue
+is confined to the deepest (horizon-tail) scales and diverges away
+as the universe grows.  Via the verified transfer law the same
+statement holds for composites with 4D in place of 2D.
+OPEN EDGE (honest): whether the young-top limit profile descends
+exactly to 2 (clean manifold bulk) or plateaus slightly above
+(2.0-2.2) needs n >> 96.  UV elevation ~2.8-2.9 at k~4-8 is stable.
+Trivially provable sub-statement for the Lean file: interval
+abundances of (x,y) depend only on the downset of y.
