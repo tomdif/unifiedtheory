@@ -1,0 +1,158 @@
+[   12.1s] sprinkling n=8: ab=[1.059 0.398 0.176]
+[   12.1s] sprinkling n=9: ab=[1.141 0.457 0.217]
+[   12.1s] sprinkling n=10: ab=[1.223 0.517 0.26 ]
+[   12.1s] sprinkling n=11: ab=[1.298 0.568 0.298]
+[   13.4s] level 2: 1 classes  (solved 1 new gc; 1s)  rss=22.3GB
+[   13.8s] level 3: 3 classes  (solved 1 new gc; 0s)  rss=22.3GB
+[   14.3s] level 4: 9 classes  (solved 3 new gc; 0s)  rss=22.3GB
+[   14.9s] level 5: 37 classes  (solved 9 new gc; 1s)  rss=22.3GB
+[   16.0s] level 6: 193 classes  (solved 36 new gc; 1s)  rss=22.3GB
+[   19.6s] level 7: 1314 classes  (solved 176 new gc; 4s)  rss=22.3GB
+[   43.7s] level 8: 11303 classes  (solved 1109 new gc; 24s)  rss=22.3GB
+[   43.7s]   n=8: tex_mu=0.2656  tex_P=0.2872  r_mu=0.4816
+[  254.7s] level 9: 120615 classes  (solved 8558 new gc; 211s)  rss=22.3GB
+[  254.7s]   n=9: tex_mu=0.2777  tex_P=0.3133  r_mu=0.4734
+[  775.9s]     ...solved 20000/80362
+[ 1310.7s]     ...solved 40000/80362
+[ 1883.1s]     ...solved 60000/80362
+[ 2568.5s]     ...solved 80000/80362
+[ 2600.1s] level 10: 1597477 classes  (solved 80362 new gc; 2345s)  rss=22.3GB
+[ 2603.6s]   n=10: tex_mu=0.2927  tex_P=0.3337  r_mu=0.4674
+[ 2603.8s] final level: scanning 1597477 parents in 42 slices
+[ 3438.3s]     ...solved 20000/931368
+[ 4144.7s]     ...solved 40000/931368
+[ 4792.3s]     ...solved 60000/931368
+[ 5433.6s]     ...solved 80000/931368
+[ 5898.0s]     ...solved 100000/931368
+[ 6257.5s]     ...solved 120000/931368
+[ 6604.4s]     ...solved 140000/931368
+[ 6960.0s]     ...solved 160000/931368
+[ 7307.0s]     ...solved 180000/931368
+[ 7656.2s]     ...solved 200000/931368
+[ 8009.8s]     ...solved 220000/931368
+[ 8357.2s]     ...solved 240000/931368
+[ 8684.6s]     ...solved 260000/931368
+[ 9036.9s]     ...solved 280000/931368
+[ 9393.1s]     ...solved 300000/931368
+[ 9757.4s]     ...solved 320000/931368
+[10112.1s]     ...solved 340000/931368
+[10472.0s]     ...solved 360000/931368
+[10752.9s]     ...solved 380000/931368
+[11031.3s]     ...solved 400000/931368
+[11312.3s]     ...solved 420000/931368
+[11590.9s]     ...solved 440000/931368
+[11870.8s]     ...solved 460000/931368
+[12154.2s]     ...solved 480000/931368
+[12435.5s]     ...solved 500000/931368
+[12714.2s]     ...solved 520000/931368
+[12990.2s]     ...solved 540000/931368
+[13265.8s]     ...solved 560000/931368
+[13542.4s]     ...solved 580000/931368
+[13820.3s]     ...solved 600000/931368
+[14098.1s]     ...solved 620000/931368
+[14375.1s]     ...solved 640000/931368
+[14653.0s]     ...solved 660000/931368
+[14931.8s]     ...solved 680000/931368
+[15212.1s]     ...solved 700000/931368
+[15489.8s]     ...solved 720000/931368
+[15772.2s]     ...solved 740000/931368
+[16055.6s]     ...solved 760000/931368
+[16336.0s]     ...solved 780000/931368
+[16620.7s]     ...solved 800000/931368
+[16903.5s]     ...solved 820000/931368
+[17188.0s]     ...solved 840000/931368
+[17475.4s]     ...solved 860000/931368
+[17754.3s]     ...solved 880000/931368
+[18032.5s]     ...solved 900000/931368
+[18339.6s]     ...solved 920000/931368
+[18554.2s] final level: solved 931368 new gc systems  (15951s)  rss=22.3GB
+[18563.5s]   shard 6: 2394126 rows (total 2394126)
+[18563.7s]   shard 5: 2637766 rows (total 5031892)
+[18563.9s]   shard 3: 2764501 rows (total 7796393)
+[18563.9s]   shard 4: 2482750 rows (total 10279143)
+[18564.1s]   shard 1: 3551582 rows (total 13830725)
+[18564.1s]   shard 2: 3374986 rows (total 17205711)
+[18564.9s]   shard 0: 4569158 rows (total 21774869)
+[18573.9s]   shard 7: 2005549 rows (total 23780418)
+[18574.6s]   shard 10: 2555796 rows (total 26336214)
+[18574.7s]   shard 8: 2728520 rows (total 29064734)
+[18574.7s]   shard 12: 2215806 rows (total 31280540)
+[18574.8s]   shard 11: 2369487 rows (total 33650027)
+[18574.8s]   shard 9: 2900446 rows (total 36550473)
+[18575.2s]   shard 13: 2002131 rows (total 38552604)
+[18583.9s]   shard 14: 2266523 rows (total 40819127)
+[18584.4s]   shard 15: 2012907 rows (total 42832034)
+[18584.4s]   shard 17: 1637679 rows (total 44469713)
+[18584.5s]   shard 16: 1932212 rows (total 46401925)
+[18584.8s]   shard 18: 2128340 rows (total 48530265)
+[18584.8s]   shard 20: 1703186 rows (total 50233451)
+[18584.9s]   shard 19: 2041947 rows (total 52275398)
+[18597.9s]   shard 21: 1767170 rows (total 54042568)
+[18598.8s]   shard 22: 1666733 rows (total 55709301)
+[18599.6s]   shard 24: 2235642 rows (total 57944943)
+[18600.1s]   shard 27: 1965524 rows (total 59910467)
+[18600.2s]   shard 25: 2193543 rows (total 62104010)
+[18600.4s]   shard 26: 2121900 rows (total 64225910)
+[18600.4s]   shard 23: 2985538 rows (total 67211448)
+[18616.5s]   shard 28: 1874658 rows (total 69086106)
+[18616.9s]   shard 29: 1669937 rows (total 70756043)
+[18617.6s]   shard 30: 1636648 rows (total 72392691)
+[18617.8s]   shard 33: 1691672 rows (total 74084363)
+[18617.8s]   shard 34: 1611782 rows (total 75696145)
+[18618.0s]   shard 31: 1938532 rows (total 77634677)
+[18618.1s]   shard 32: 1749949 rows (total 79384626)
+[18628.4s]   shard 35: 1645965 rows (total 81030591)
+[18628.8s]   shard 36: 1327934 rows (total 82358525)
+[18630.1s]   shard 37: 1640719 rows (total 83999244)
+[18630.6s]   shard 39: 1850158 rows (total 85849402)
+[18631.0s]   shard 41: 1249086 rows (total 87098488)
+[18631.1s]   shard 38: 1994278 rows (total 89092766)
+[18631.4s]   shard 40: 1507051 rows (total 90599817)
+[18636.3s]   reduce 1/42: master 922767 classes  rss=22.3GB
+[18641.4s]   reduce 2/42: master 1730672 classes  rss=22.3GB
+[18645.5s]   reduce 3/42: master 2598177 classes  rss=22.3GB
+[18648.0s]   reduce 4/42: master 3335770 classes  rss=22.3GB
+[18650.4s]   reduce 5/42: master 4060160 classes  rss=22.3GB
+[18652.6s]   reduce 6/42: master 4774233 classes  rss=22.3GB
+[18654.8s]   reduce 7/42: master 5490115 classes  rss=22.3GB
+[18656.7s]   reduce 8/42: master 6049062 classes  rss=22.3GB
+[18659.0s]   reduce 9/42: master 6748866 classes  rss=22.3GB
+[18661.6s]   reduce 10/42: master 7500511 classes  rss=22.3GB
+[18663.9s]   reduce 11/42: master 8351831 classes  rss=22.3GB
+[18666.5s]   reduce 12/42: master 9048600 classes  rss=22.3GB
+[18671.9s]   reduce 13/42: master 9743020 classes  rss=22.3GB
+[18697.6s]   reduce 14/42: master 10326854 classes  rss=22.3GB
+[18707.2s]   reduce 15/42: master 11059634 classes  rss=22.3GB
+[18714.2s]   reduce 16/42: master 11751241 classes  rss=22.3GB
+[18720.0s]   reduce 17/42: master 12388037 classes  rss=22.3GB
+[18724.7s]   reduce 18/42: master 12894613 classes  rss=22.3GB
+[18728.5s]   reduce 19/42: master 13526009 classes  rss=22.3GB
+[18733.1s]   reduce 20/42: master 14155128 classes  rss=22.3GB
+[18737.0s]   reduce 21/42: master 14710762 classes  rss=22.3GB
+[18741.4s]   reduce 22/42: master 15250335 classes  rss=22.3GB
+[18745.2s]   reduce 23/42: master 15733556 classes  rss=22.3GB
+[18750.9s]   reduce 24/42: master 16482366 classes  rss=22.3GB
+[18755.0s]   reduce 25/42: master 17164944 classes  rss=22.3GB
+[18759.0s]   reduce 26/42: master 17749117 classes  rss=22.3GB
+[18765.6s]   reduce 27/42: master 18362910 classes  rss=22.3GB
+[18773.7s]   reduce 28/42: master 18985570 classes  rss=22.3GB
+[18782.0s]   reduce 29/42: master 19624624 classes  rss=22.3GB
+[18792.9s]   reduce 30/42: master 20149642 classes  rss=22.3GB
+[18803.6s]   reduce 31/42: master 20660642 classes  rss=22.3GB
+[18810.3s]   reduce 32/42: master 21233140 classes  rss=22.3GB
+[18815.3s]   reduce 33/42: master 21748971 classes  rss=22.3GB
+[18820.5s]   reduce 34/42: master 22225153 classes  rss=22.3GB
+[18825.0s]   reduce 35/42: master 22752657 classes  rss=22.3GB
+[18829.7s]   reduce 36/42: master 23275876 classes  rss=22.3GB
+[18835.5s]   reduce 37/42: master 23715571 classes  rss=22.3GB
+[18839.7s]   reduce 38/42: master 24177555 classes  rss=22.3GB
+[18843.4s]   reduce 39/42: master 24703772 classes  rss=22.3GB
+[18846.7s]   reduce 40/42: master 25246041 classes  rss=22.3GB
+[18850.0s]   reduce 41/42: master 25706345 classes  rss=22.3GB
+[18853.1s]   reduce 42/42: master 26127748 classes  rss=22.3GB
+[18853.1s] level 11: 26127748 classes  (16249s)
+[18853.6s]   n=11: tex_mu=0.3063  tex_P=0.3489  r_mu=0.4620
+[18855.6s]   mass concentration: 95% in 2849089 classes, 99.9% in 12893097
+[18855.6s]   CORRECTED LADDER tex_mu(8..11) = ['0.2656', '0.2777', '0.2927', '0.3063']
+[18855.6s]   increments: ['+0.0121', '+0.0151', '+0.0136']
+[18855.6s] DONE-TURN-PAR

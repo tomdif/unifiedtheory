@@ -132,3 +132,30 @@ opening - a turnover cannot be excluded, needs n = 11-12;
 n = 11-12 reachable with memory care);
 (d) registered: texture-TARGETED weight selection (the balance
 scan optimized r, not N_k - the N_k-optimal weights are unexplored).
+
+## GATE 1 FINAL VERDICT (2026-08-17, exact n=11, converged law)
+
+turnover_par.py (parallel exact class-DP, 26,127,748 classes at
+n=11, converged deterministic ellipsoid maxent, BLAS-pinned,
+solve cache persisted):
+    tex_mu(8..11) = 0.2656, 0.2777, 0.2927, 0.3063
+    increments    = +0.0121, +0.0151, +0.0136
+The n=11 increment is 1.7x the pre-registered deceleration
+threshold (+0.008).  NO TURNOVER.  The texture gap grows linearly;
+the prior "deceleration" was solver artifact (JITTER_AUDIT).
+GATE 1 IS CLOSED at the balanced weights: the coherent measure
+does not concentrate toward sprinkling texture.  Persistent
+quantum effect: coherent advantage over decohered measure widens
+(0.022 -> 0.043) but never wins.  tex_P ladder: 0.2872, 0.3133,
+0.3337, 0.3489 (decelerating, converging toward ~0.36-0.38).
+
+RE-SCOPING (per MANIFOLD_LEDGER "birth-frozen window"): the gate-1
+criterion is a pure-UV statistic (N0,N1,N2 = 0/1/2-element
+intervals), and the theory PREDICTS stable UV structure distinct
+from sprinklings (UV dimensional elevation ~2.8, the discreteness-
+scale quantum signature).  The honest final position: gate 1
+closed as registered AND the criterion was aimed at the one regime
+where a discrete quantum law should never match a sprinkling.
+Manifold-likeness lives at window scales k <~ 4.5*sqrt(n) and is
+established there by the interval-profile results, not by UV
+abundances.
