@@ -1,0 +1,18 @@
+  triple 1: r=0.0235
+  triple 2: r=0.0180
+  triple 3: r=0.0259
+  triple 4: r=0.0214
+k=3 COMPOSITE (2744 elements): r = 0.0222
+  dominance-6 iid value 2^-5 = 0.03125; 6D benchmark f6 = 0.0170
+  global d_MM = 5.70
+interval profile (3x 2D-profile predicted ~7.5 UV -> ~5.4 IR):
+   k~    4: d_int=nan  (f=0.00000, n=199)
+   k~    8: d_int=nan  (f=0.00000, n=114)
+   k~   16: d_int=9.48  (f=0.00078, n=57)
+   k~   32: d_int=7.69  (f=0.00377, n=16)
+   k~   64: d_int=6.94  (f=0.00738, n=10)
+DONE-K3
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002253 /   0.0002253 (  perturbed bounds)
+1 /   0.0002255 /   0.0002255 (unperturbed bounds)

@@ -167,3 +167,49 @@ the first species-multiplicity mechanism in the program.
    GEOMETRY (noisy at higher modes; coordinates crude).  SJ
    spectral exponents: sprinkled 2D alpha = 0.88 (~1 predicted);
    composite 0.75 (between 2D's 1 and 4D's 1/3; small-size).
+
+## k=3 test: additivity extends, k is NOT selected (2026-08-16)
+
+Registered question: does anything in the dynamics single out k=2
+factors (hence 4D)?  Test: triple causal product of three grown 2D
+factors (14^3 = 2744 elements, 4 trials, logs_k3_composite.txt).
+
+READINGS (pre-registered): (i) triple product degenerates (some
+obstruction at k=3) -> k=2 dynamically selected; (ii) triple product
+is a healthy ~6D object -> k is a free parameter and 4D is an input.
+
+RESULT: reading (ii).  Global r = 0.0222 (6D benchmark f6 = 0.0170,
+iid dominance-6 = 0.03125), global d_MM = 5.70; interval profile
+descends 9.48 (k~16) -> 7.69 (k~32) -> 6.94 (k~64) toward 6, the
+same UV->IR descent shape the 2x2 composite showed at matched size.
+Monoidality (§35) composes: product_bi_normalized applies k-1 times;
+gaps add; species group = Z2^k (§36 argument iterates).
+
+CONSEQUENCE (honest): the theory is a k-parameter family with
+d_IR = 2k and 2^k fermion-parity sectors.  Choosing 4D = choosing
+k=2 remains a postulate on par with choosing the 2D BD weights.
+Any future selection principle must operate ABOVE the growth law
+(e.g. stability, coupling turn-on at r>0, or an entropic criterion)
+- the flat dynamics itself is k-blind.  This is now a measured
+statement, not a conjecture.
+
+## Quantified Lorentz-violation prediction (2026-08-16)
+
+The cone-rounding data (opening-angle anisotropy vs frame count m)
+fits a power law:
+
+    eps(m) = 0.187 / m^0.72
+
+(fit over m = 1..32, engineered-composite runs).  If the observed
+universe is a composite with m dynamical frames per factor, current
+LV bounds imply:
+    eps < 1e-15  (conservative, SME photon-sector scale) -> m > 5e19
+    eps < 1e-20  (strong gravitational-sector bounds)    -> m > 4e26
+Reading: the mechanism is falsifiable in principle - a composite
+with too few frames is EXCLUDED by existing experiments; the theory
+survives only in the large-m limit, where the rounding law says the
+cone becomes exactly isotropic.  This converts "discreteness must
+hide" from a hope into a quantitative floor on m.  (Caveat: eps is
+measured on the discrete cone of ~1024-element composites; the
+exponent 0.72 is a small-size fit, and the m->infinity limit exact
+30 deg result (§ rounding) is the anchor.)
