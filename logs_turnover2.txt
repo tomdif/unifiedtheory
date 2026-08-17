@@ -1,0 +1,10 @@
+[    8.7s] sprinkling n=10: ab=[1.22  0.512 0.261]
+[    8.7s] sprinkling n=11: ab=[1.295 0.569 0.29 ]
+[    8.7s] level 2: 1 classes  (0s)  rss=19.3GB
+[    8.7s] level 3: 3 classes  (0s)  rss=19.3GB
+[    8.7s] level 4: 9 classes  (0s)  rss=19.3GB
+[    8.7s] level 5: 34 classes  (0s)  rss=19.3GB
+[    8.8s] level 6: 171 classes  (0s)  rss=19.3GB
+[    9.5s] level 7: 1200 classes  (1s)  rss=19.3GB
+[   14.5s] level 8: 10592 classes  (5s)  rss=19.3GB
+[   60.7s] level 9: 115317 classes  (46s)  rss=19.3GB

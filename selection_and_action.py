@@ -68,36 +68,48 @@ def make_law(PHI):
                        bounds=[(0, None)] * K, method="SLSQP", options={"maxiter": 200, "ftol": 1e-12})
         xm = res.x if res.success else r.x
         if float(np.dot(mu, xm * xm)) > 1 + 1e-7: cache[key] = None; return None
-        xhi = None
-        for t in range(8):
-            c = -np.ones(K) if t == 0 else rng.normal(size=K)
+        # DETERMINISM FIX (2026-08-16): restart directions from a per-key
+        # seeded generator (was: global rng -> member depended on process
+        # history; measured tex-observable jitter ~0.004-0.011 across runs,
+        # comparable to decision thresholds).  Plus multi-start best-of on
+        # the max-entropy stage (single SLSQP start on a nonconvex sphere
+        # slice landed in different near-optima).
+        import zlib as _zlib
+        rk = np.random.default_rng(_zlib.crc32(repr(key).encode()) ^ 0x5A17)
+        xhis = []
+        for t in range(12):
+            c = -np.ones(K) if t == 0 else rk.normal(size=K)
             v = linprog(c, A_eq=A, b_eq=b, bounds=[(0, None)] * K, method="highs")
-            if v.success and float(np.dot(mu, v.x * v.x)) >= 1 - 1e-9: xhi = v.x; break
-        if xhi is None:
+            if v.success and float(np.dot(mu, v.x * v.x)) >= 1 - 1e-9:
+                xhis.append(v.x)
+                if len(xhis) >= 4: break
+        if not xhis:
             rc = linprog(-np.ones(K), A_eq=A, b_eq=np.zeros(2), bounds=[(0, 1)] * K, method="highs")
             if rc.success and (-rc.fun) > 1e-9:
                 dvec = rc.x / np.linalg.norm(rc.x); t = 1.0
                 while float(np.dot(mu, (xm + t * dvec) ** 2)) < 1: t *= 2
-                xhi = xm + t * dvec
+                xhis = [xm + t * dvec]
             else: cache[key] = None; return None
-        f = lambda t: float(np.dot(mu, ((1 - t) * xm + t * xhi) ** 2)) - 1.0
-        lo, hi = 0.0, 1.0
-        for _ in range(80):
-            mid = 0.5 * (lo + hi)
-            if f(mid) <= 0: lo = mid
-            else: hi = mid
-        xfe = np.maximum((1 - lo) * xm + lo * xhi, 0.0)
         def negH(x):
             qq = mu * x * x
             return float(np.sum(qq * np.log(qq + 1e-300)))
         cons = [{"type": "eq", "fun": lambda x: A @ x - b, "jac": lambda x: A},
                 {"type": "eq", "fun": lambda x: float(np.dot(mu, x * x)) - 1.0, "jac": lambda x: 2 * mu * x}]
-        best = (negH(xfe), xfe)
-        r2 = minimize(negH, xfe, constraints=cons, bounds=[(0, None)] * K, method="SLSQP", options={"maxiter": 200, "ftol": 1e-11})
-        if r2.success:
-            x2 = np.maximum(r2.x, 0.0)
-            if abs(float(np.dot(mu, x2 * x2)) - 1) < 1e-6 and np.max(np.abs(A @ x2 - b)) < 1e-6 and negH(x2) < best[0]:
-                best = (negH(x2), x2)
+        best = None
+        for xhi in xhis:
+            f = lambda t: float(np.dot(mu, ((1 - t) * xm + t * xhi) ** 2)) - 1.0
+            lo, hi = 0.0, 1.0
+            for _ in range(80):
+                mid = 0.5 * (lo + hi)
+                if f(mid) <= 0: lo = mid
+                else: hi = mid
+            xfe = np.maximum((1 - lo) * xm + lo * xhi, 0.0)
+            if best is None or negH(xfe) < best[0]: best = (negH(xfe), xfe)
+            r2 = minimize(negH, xfe, constraints=cons, bounds=[(0, None)] * K, method="SLSQP", options={"maxiter": 500, "ftol": 1e-13})
+            if r2.success:
+                x2 = np.maximum(r2.x, 0.0)
+                if abs(float(np.dot(mu, x2 * x2)) - 1) < 1e-6 and np.max(np.abs(A @ x2 - b)) < 1e-6 and negH(x2) < best[0]:
+                    best = (negH(x2), x2)
         x = best[1]; out = {g: x[i] ** 2 for i, g in enumerate(gaps)}
         cache[key] = out; return out
     return law
