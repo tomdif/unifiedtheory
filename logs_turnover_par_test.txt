@@ -1,0 +1,88 @@
+[   10.9s] sprinkling n=8: ab=[1.059 0.398 0.176]
+[   10.9s] sprinkling n=9: ab=[1.141 0.457 0.217]
+[   11.1s] level 2: 1 classes  (solved 1 new gc; 0s)  rss=10.1GB
+[   11.3s] level 3: 3 classes  (solved 1 new gc; 0s)  rss=10.1GB
+[   11.5s] level 4: 9 classes  (solved 3 new gc; 0s)  rss=10.1GB
+[   12.1s] level 5: 37 classes  (solved 9 new gc; 1s)  rss=10.1GB
+[   13.6s] level 6: 193 classes  (solved 36 new gc; 2s)  rss=10.1GB
+[   21.3s] level 7: 1314 classes  (solved 176 new gc; 8s)  rss=10.1GB
+[   87.1s] level 8: 11303 classes  (solved 1109 new gc; 66s)  rss=10.1GB
+[   87.1s]   n=8: tex_mu=0.2656  tex_P=0.2872  r_mu=0.4816
+[   87.1s] final level: scanning 11303 parents in 36 slices
+[  784.8s] final level: solved 8558 new gc systems  (698s)  rss=10.1GB
+[  784.9s]   shard 0: 22338 rows (total 22338)
+[  785.0s]   shard 1: 14837 rows (total 37175)
+[  785.0s]   shard 3: 11730 rows (total 48905)
+[  785.0s]   shard 5: 13002 rows (total 61907)
+[  785.0s]   shard 2: 14617 rows (total 76524)
+[  785.0s]   shard 4: 12329 rows (total 88853)
+[  785.0s]   shard 6: 11361 rows (total 100214)
+[  785.0s]   shard 7: 9953 rows (total 110167)
+[  785.0s]   shard 9: 9398 rows (total 119565)
+[  785.0s]   shard 8: 10388 rows (total 129953)
+[  785.0s]   shard 10: 8941 rows (total 138894)
+[  785.1s]   shard 11: 10118 rows (total 149012)
+[  785.1s]   shard 12: 8709 rows (total 157721)
+[  785.1s]   shard 13: 8427 rows (total 166148)
+[  785.1s]   shard 14: 7319 rows (total 173467)
+[  785.1s]   shard 16: 11501 rows (total 184968)
+[  785.1s]   shard 15: 12109 rows (total 197077)
+[  785.1s]   shard 17: 10215 rows (total 207292)
+[  785.1s]   shard 18: 10578 rows (total 217870)
+[  785.1s]   shard 19: 9113 rows (total 226983)
+[  785.2s]   shard 20: 8145 rows (total 235128)
+[  785.2s]   shard 23: 8590 rows (total 243718)
+[  785.2s]   shard 21: 8384 rows (total 252102)
+[  785.2s]   shard 22: 9113 rows (total 261215)
+[  785.2s]   shard 27: 7259 rows (total 268474)
+[  785.2s]   shard 24: 7991 rows (total 276465)
+[  785.2s]   shard 25: 7939 rows (total 284404)
+[  785.3s]   shard 26: 7325 rows (total 291729)
+[  785.3s]   shard 28: 5690 rows (total 297419)
+[  785.3s]   shard 30: 6746 rows (total 304165)
+[  785.3s]   shard 29: 8323 rows (total 312488)
+[  785.3s]   shard 32: 8739 rows (total 321227)
+[  785.3s]   shard 31: 11146 rows (total 332373)
+[  785.3s]   shard 33: 7047 rows (total 339420)
+[  785.3s]   shard 34: 6218 rows (total 345638)
+[  785.4s]   shard 35: 5132 rows (total 350770)
+[  786.0s]   reduce 1/36: master 5558 classes  rss=10.1GB
+[  786.9s]   reduce 2/36: master 10149 classes  rss=10.1GB
+[  787.3s]   reduce 3/36: master 14758 classes  rss=10.1GB
+[  788.0s]   reduce 4/36: master 18206 classes  rss=10.1GB
+[  788.5s]   reduce 5/36: master 21751 classes  rss=10.1GB
+[  789.0s]   reduce 6/36: master 26518 classes  rss=10.1GB
+[  789.4s]   reduce 7/36: master 30592 classes  rss=10.1GB
+[  789.5s]   reduce 8/36: master 34057 classes  rss=10.1GB
+[  789.8s]   reduce 9/36: master 38324 classes  rss=10.1GB
+[  789.9s]   reduce 10/36: master 42051 classes  rss=10.1GB
+[  790.8s]   reduce 11/36: master 45157 classes  rss=10.1GB
+[  791.1s]   reduce 12/36: master 48730 classes  rss=10.1GB
+[  791.4s]   reduce 13/36: master 52166 classes  rss=10.1GB
+[  791.5s]   reduce 14/36: master 55256 classes  rss=10.1GB
+[  791.8s]   reduce 15/36: master 57910 classes  rss=10.1GB
+[  792.6s]   reduce 16/36: master 61552 classes  rss=10.1GB
+[  792.6s]   reduce 17/36: master 65528 classes  rss=10.1GB
+[  793.2s]   reduce 18/36: master 68642 classes  rss=10.1GB
+[  793.4s]   reduce 19/36: master 73046 classes  rss=10.1GB
+[  794.0s]   reduce 20/36: master 76786 classes  rss=10.1GB
+[  794.2s]   reduce 21/36: master 79644 classes  rss=10.1GB
+[  794.2s]   reduce 22/36: master 82841 classes  rss=10.1GB
+[  794.6s]   reduce 23/36: master 86106 classes  rss=10.1GB
+[  794.7s]   reduce 24/36: master 89038 classes  rss=10.1GB
+[  795.0s]   reduce 25/36: master 91465 classes  rss=10.1GB
+[  796.0s]   reduce 26/36: master 94626 classes  rss=10.1GB
+[  796.7s]   reduce 27/36: master 97480 classes  rss=10.1GB
+[  797.3s]   reduce 28/36: master 100259 classes  rss=10.1GB
+[  797.9s]   reduce 29/36: master 102420 classes  rss=10.1GB
+[  798.1s]   reduce 30/36: master 105135 classes  rss=10.1GB
+[  798.4s]   reduce 31/36: master 107496 classes  rss=10.1GB
+[  798.5s]   reduce 32/36: master 110577 classes  rss=10.1GB
+[  798.9s]   reduce 33/36: master 113721 classes  rss=10.1GB
+[  799.8s]   reduce 34/36: master 116056 classes  rss=10.1GB
+[  800.3s]   reduce 35/36: master 118717 classes  rss=10.1GB
+[  800.5s]   reduce 36/36: master 120617 classes  rss=10.1GB
+[  800.5s] level 9: 120617 classes  (713s)
+[  800.5s]   n=9: tex_mu=0.2777  tex_P=0.3133  r_mu=0.4734
+[  800.5s]   mass concentration: 95% in 23715 classes, 99.9% in 74865
+[  800.5s] DONE-TURN-PAR

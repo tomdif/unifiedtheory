@@ -1,0 +1,24 @@
+[   15.5s] sprinkling n=8: ab=[1.055 0.398 0.173]
+[   15.5s] sprinkling n=9: ab=[1.141 0.458 0.215]
+[   15.5s] sprinkling n=10: ab=[1.221 0.513 0.256]
+[   15.5s] sprinkling n=11: ab=[1.292 0.569 0.3  ]
+[   15.5s] level 2: 1 classes  (0s)  rss=5.8GB
+[   15.5s] level 3: 3 classes  (0s)  rss=5.8GB
+[   15.6s] level 4: 9 classes  (0s)  rss=5.8GB
+[   16.3s] level 5: 37 classes  (1s)  rss=5.8GB
+[   19.8s] level 6: 193 classes  (4s)  rss=5.8GB
+[   42.2s] level 7: 1314 classes  (22s)  rss=5.8GB
+[  208.1s] level 8: 11303 classes  (166s)  rss=5.8GB
+[  208.2s]   n=8: tex_mu=0.2650  tex_P=0.2881  r_mu=0.4816
+[ 1114.2s] level 9: 120617 classes  (906s)  rss=5.8GB
+[ 1114.7s]   n=9: tex_mu=0.2773  tex_P=0.3130  r_mu=0.4734
+[ 9677.9s] level 10: 1597491 classes  (8563s)  rss=5.8GB
+[ 9682.8s]   n=10: tex_mu=0.2913  tex_P=0.3349  r_mu=0.4674
+[12021.3s]   merge at 22844/1597491 parents: master 565965 classes  rss=5.8GB
+[15445.9s]   merge at 55575/1597491 parents: master 1243318 classes  rss=5.8GB
+[17770.6s]   merge at 85817/1597491 parents: master 1947625 classes  rss=5.8GB
+[20521.3s]   merge at 121264/1597491 parents: master 2725064 classes  rss=5.8GB
+[24098.5s]   merge at 162058/1597491 parents: master 3570716 classes  rss=5.8GB
+[27493.4s]   level 10->11: 200000/1597491 parents  rss=5.8GB
+[28314.3s]   merge at 208235/1597491 parents: master 4400024 classes  rss=5.8GB
+[32352.2s]   merge at 253039/1597491 parents: master 5259553 classes  rss=5.8GB
