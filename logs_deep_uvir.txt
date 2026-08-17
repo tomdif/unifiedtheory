@@ -1,0 +1,71 @@
+[   22.1s] growing 30 causets to n=64 (ideal-lattice)
+[  771.3s]   5/30 grown
+[ 1493.2s]   10/30 grown
+[ 2157.7s]   15/30 grown
+[ 2384.9s]   20/30 grown
+[ 2598.5s]   25/30 grown
+[ 2832.1s]   30/30 grown
+[ 2832.3s] 30 causets grown; measuring; sprinkling column
+
+=== EXPERIMENT A: UV/IR SPLIT (free growth, n=64) ===
+UV abundances/N: grown=[3.802 2.893 1.358]  sprinkling=[2.843 1.89  1.412]  |diff|=1.3891
+ordering fraction: grown r=0.6498  sprinkling r=0.4938  (2D manifold 0.5)
+IR profile d_int(k)   [sprinkling column = estimator calibration]:
+   k~    4: grown= 2.72  sprink= 2.00   (n=5224/6902)
+   k~    8: grown= 2.64  sprink= 2.03   (n=5877/6657)
+   k~   16: grown= 2.30  sprink= 2.02   (n=5626/3807)
+   k~   32: grown= 1.97  sprink= 2.04   (n=1273/634)
+
+=== EXPERIMENT B: COMPOSITE WINDOW STRESS (4 composites, 4096 elements) ===
+composite r=0.2003  (4D benchmark 0.0994, iid dominance-4 0.125)
+product profile vs transfer law 2*d_2D(sqrt k):
+   k~    4: d_prod= 8.29  transfer-pred= 5.44  (f=0.00222, n=615)
+   k~    8: d_prod= 7.36  transfer-pred= 5.44  (f=0.00505, n=875)
+   k~   16: d_prod= 6.60  transfer-pred= 5.44  (f=0.00995, n=1049)
+   k~   32: d_prod= 5.77  transfer-pred= 5.35  (f=0.02090, n=953)
+   k~   64: d_prod= 5.23  transfer-pred= 5.27  (f=0.03379, n=930)
+   k~  128: d_prod= 5.00  transfer-pred= 4.94  (f=0.04159, n=766)
+   k~  256: d_prod= 4.68  transfer-pred= 4.61  (f=0.05512, n=540)
+   k~  512: d_prod= 4.27  transfer-pred= 4.27  (f=0.07872, n=224)
+   k~ 1024: d_prod= 3.89  transfer-pred= 3.94  (f=0.10939, n=48)
+DONE-DEEP-UVIR
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001719 /   0.0001719 (  perturbed bounds)
+1 /    0.000172 /    0.000172 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001678 /   0.0001678 (  perturbed bounds)
+1 /    0.000168 /    0.000168 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002062 /   0.0002062 (  perturbed bounds)
+1 /   0.0002063 /   0.0002063 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001392 /   0.0001392 (  perturbed bounds)
+1 /   0.0001392 /   0.0001392 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   6.206e-05 /   6.206e-05 (  perturbed bounds)
+1 /   6.209e-05 /   6.209e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   2.538e-05 /   2.538e-05 (  perturbed bounds)
+1 /   2.558e-05 /   2.558e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001862 /   0.0001862 (  perturbed bounds)
+1 /   0.0001864 /   0.0001864 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   4.481e-05 /   4.481e-05 (  perturbed bounds)
+1 /     4.5e-05 /     4.5e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001166 /   0.0001166 (  perturbed bounds)
+1 /   0.0001166 /   0.0001166 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001328 /   0.0001328 (  perturbed bounds)
+1 /    0.000133 /    0.000133 (unperturbed bounds)

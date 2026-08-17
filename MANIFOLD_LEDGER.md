@@ -55,7 +55,19 @@ value (7 -> 4.0, landing on the benchmark).  The gate-1 texture
 criterion is maximally UV (0/1/2-element intervals) and fails for
 every measure - but UV failure is what discreteness predicts.
 
-## THE CRUX (open, probe running)
+## THE CRUX - ANSWERED (2026-08-17, deep_uvir_stress.py)
+
+The gate-1 UV failure and the composite IR success ARE the same
+object at two scales, and both are WINDOWS, not asymptotes:
+free growth crosses d=2 at k~32 (n=64) then keeps falling; the
+composite crosses d=4 at the SQUARE of the factor crossing scale
+(transfer law d_prod(k)=2*d_2D(sqrt k) verified to <=0.07 for
+k>=64, exact at k~512).  The flagship "IR=4D to 1.4%" was the
+crossing point at 32-element factors.  See COMPOSITE_BRIDGE.md
+"THE WINDOW LAW".  Constructive follow-up registered: sqrt-width
+factors pinned at d=2 would make the 4D window an asymptote.
+
+## THE CRUX AS ORIGINALLY REGISTERED (superseded)
 
 Are the gate-1 UV failure and the composite IR success the same
 object at two scales?  uv_ir_split.py (registered 2026-08-17,

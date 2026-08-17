@@ -213,3 +213,51 @@ hide" from a hope into a quantitative floor on m.  (Caveat: eps is
 measured on the discrete cone of ~1024-element composites; the
 exponent 0.72 is a small-size fit, and the m->infinity limit exact
 30 deg result (§ rounding) is the anchor.)
+
+## SCALE-WINDOW STRESS TEST: flagship 4D claim RESCOPED (2026-08-17)
+
+Registered test (deep_uvir_stress.py, logs_deep_uvir.txt): n=64
+ideal-lattice factors (largest yet), four 4096-element composites,
+profile to k~1024, against the transfer law d_prod(k)=2*d_2D(sqrt k)
+measured on the same factors.
+
+RESULT: reading (i) WINDOW - and the transfer law is quantitative.
+
+  k~      32     64    128    256    512    1024
+  d_prod  5.77   5.23   5.00   4.68   4.27   3.89
+  pred    5.35   5.27   4.94   4.61   4.27   3.94
+
+Agreement <= 0.07 for all k >= 64 (exact at k~512).  The composite
+crosses d=4 between k~512 and k~1024 and KEEPS FLOWING DOWN.  The
+earlier "IR = 4D to 1.4% at k~256" (32x32 factors) was the CROSSING
+POINT at that factor size, not an asymptote: the crossing scale is
+the SQUARE of the factor's own crossing scale (factor n=32 crosses
+d=2 at k~16 -> product crosses 4 at k~256; factor n=64 crosses at
+k~32 -> product crosses at k~700).  UV (k<=16): transfer law fails
+(d_prod 6.6-8.3 vs 5.4) - product UV structure is not factor-mid
+inheritance.
+
+FREE-GROWTH WINDOW (same run, Experiment A): the factor itself has
+the same structure - d_int(k) = 2.72 / 2.64 / 2.30 / 1.97 at
+k=4/8/16/32 against a flat sprinkling calibration column (2.00-2.04),
+with UV abundances far off (|dN|=1.39) and global r=0.6498 (d~1.67).
+Free growth crosses ITS manifold value d=2 at k~32 and keeps falling.
+
+## THE WINDOW LAW (synthesis)
+
+Manifold-likeness in this program is a SCALE WINDOW, in both
+sectors, related by squaring:
+    free 2D growth:   d_int crosses 2 at k_x(n)   (k_x ~ 16 at n=32,
+                      ~32 at n=64 - crossing scale grows with n)
+    composite:        d_prod crosses 4 at k_x(n)^2  (verified 1%)
+Neither is an asymptote: the deep IR of the free law sits below 2
+(r -> 0.66, d -> 1.67) and drags the composite below 4.
+
+CONSTRUCTIVE COROLLARY (next experiment): the product turns the
+factor's d=2 crossing into the 4D window.  A factor family whose
+profile is PINNED AT 2 asymptotically would give a TRUE 4D
+asymptote.  The linear width rules explored earlier are the wrong
+shape (2D diamond geometry has width ~ sqrt(n), not ~n); the
+flattest known profile (w=n/8, d_int ~ 2.2-2.3 flat to k~16) is
+suggestive.  REGISTERED: sqrt-width-rule growth w(n) = a*sqrt(n) -
+if its profile holds ~2.0 flat, its products hold ~4.0 flat.

@@ -4,13 +4,27 @@ LP-vertex multi-start in make_law: parametrize the feasible set
 (an ellipsoid section of dim K-2), sample it densely with a
 per-key deterministic generator, polish each start with SLSQP,
 return the best-entropy member.  NSTART controls density."""
-import numpy as np, math, zlib
+import numpy as np, math, zlib, pickle, os
 from scipy.optimize import minimize, linprog
 
-def make_law_ell(PHI, NSTART=16):
+def make_law_ell(PHI, NSTART=16, disk_cache=None):
+    """disk_cache: optional path; solved members are loaded at start
+    and appended on the fly (results are per-key deterministic, so
+    sharing across processes/scripts is exact)."""
     C = [math.cos(k * PHI) for k in range(256)]
     S = [math.sin(k * PHI) for k in range(256)]
     cache = {}
+    if disk_cache and os.path.exists(disk_cache):
+        with open(disk_cache, "rb") as fh:
+            stored = pickle.load(fh)
+            if stored.get("meta") == (round(PHI, 12), NSTART):
+                cache.update(stored["cache"])
+    def _persist():
+        if not disk_cache: return
+        tmp = disk_cache + ".tmp"
+        with open(tmp, "wb") as fh:
+            pickle.dump({"meta": (round(PHI, 12), NSTART), "cache": cache}, fh)
+        os.replace(tmp, disk_cache)
     def law(gc):
         key = tuple(sorted(gc.items()))
         if key in cache: return cache[key]
@@ -98,8 +112,14 @@ def make_law_ell(PHI, NSTART=16):
                     if fb(mid) <= 0: lo = mid
                     else: hi = mid
                 best = polish_and_score(np.maximum((1 - lo) * xm + lo * xhi, 0.0), best)
-        if best is None: cache[key] = None; return None
+        if best is None:
+            cache[key] = None
+            if len(cache) % 500 == 0: _persist()
+            return None
         x = best[1]; out = {g: x[i] ** 2 for i, g in enumerate(gaps)}
-        cache[key] = out; return out
+        cache[key] = out
+        if len(cache) % 500 == 0: _persist()
+        return out
     law.cache = cache
+    law.persist = _persist
     return law

@@ -10,7 +10,7 @@ noise (sprinkling refs here are seeded rng(999), so internal
 consistency is exact and cross-run agreement is ~1e-3).
 Workers inherit state via fork + copy-on-write; only slice indices
 are passed."""
-import numpy as np, math, sys, time, resource, struct, os
+import numpy as np, math, sys, time, resource, struct, os, pickle
 import multiprocessing as mp
 T0 = time.time()
 def log(*a): print(f"[{time.time()-T0:7.1f}s]", *a, flush=True)
@@ -110,6 +110,10 @@ def child_invariants(bel, n, above, dlist, bits, g, h0, R):
 STATE_VALS = None   # list of value-lists at the current level
 CUR_N = None
 CACHE = {}          # gc key tuple -> weights dict or None
+GC_CACHE_PATH = "turnover_gc_cache.pkl"
+if os.path.exists(GC_CACHE_PATH):
+    with open(GC_CACHE_PATH, "rb") as fh:
+        CACHE.update(pickle.load(fh))
 
 def gckey(gc): return tuple(sorted(gc.items()))
 
@@ -205,9 +209,21 @@ def solve_missing(pool, keysets):
     allk = set().union(*keysets) if isinstance(keysets, list) else keysets
     missing = [k for k in allk if k not in CACHE]
     if missing:
+        done_ct = 0
         for key, out in pool.imap_unordered(solve_worker, missing, chunksize=4):
             CACHE[key] = out
+            done_ct += 1
+            if done_ct % 20000 == 0:
+                _dump_cache()
+                log(f"    ...solved {done_ct}/{len(missing)}")
+        _dump_cache()
     return len(missing)
+
+def _dump_cache():
+    tmp = GC_CACHE_PATH + ".tmp"
+    with open(tmp, "wb") as fh:
+        pickle.dump(CACHE, fh)
+    os.replace(tmp, GC_CACHE_PATH)
 
 def observables(nn, mu_w, P_w, N0a, N1a, N2a, Ra):
     r_s, ab_s = SPR[nn]
