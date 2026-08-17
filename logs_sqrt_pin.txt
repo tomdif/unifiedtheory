@@ -1,0 +1,37 @@
+[  187.6s] a=1.0: r=0.7123 fallbacks/path=0.0 profile=k4:3.56 k8:2.88 k16:2.24 k32:1.84  RMS_from_2=0.908
+[  189.3s] a=1.5: causet 0 FAILED
+[  191.9s] a=1.5: causet 1 FAILED
+[  196.8s] a=1.5: causet 2 FAILED
+[  198.5s] a=1.5: causet 3 FAILED
+[  199.0s] a=1.5: causet 4 FAILED
+[  200.0s] a=1.5: causet 5 FAILED
+[  212.6s] a=1.5: causet 6 FAILED
+[  213.2s] a=1.5: causet 7 FAILED
+[  213.4s] a=1.5: too few causets (0)
+[  213.4s] a=2.0: causet 0 FAILED
+[  213.5s] a=2.0: causet 1 FAILED
+[  219.8s] a=2.0: causet 2 FAILED
+[  219.8s] a=2.0: causet 3 FAILED
+[  220.1s] a=2.0: causet 4 FAILED
+[  220.3s] a=2.0: causet 5 FAILED
+[  220.3s] a=2.0: causet 6 FAILED
+[  220.8s] a=2.0: causet 7 FAILED
+[  221.1s] a=2.0: too few causets (0)
+[  222.9s] a=3.0: causet 0 FAILED
+[  222.9s] a=3.0: causet 1 FAILED
+[  222.9s] a=3.0: causet 2 FAILED
+[  222.9s] a=3.0: causet 3 FAILED
+[  223.1s] a=3.0: causet 4 FAILED
+[  223.2s] a=3.0: causet 5 FAILED
+[  223.2s] a=3.0: causet 6 FAILED
+[  223.2s] a=3.0: causet 7 FAILED
+[  223.4s] a=3.0: too few causets (0)
+
+BEST PIN: a=1.0 (RMS from 2 = 0.908)
+factor r=0.7123; profile: k~4:3.56(n=1563) k~8:2.88(n=1885) k~16:2.24(n=2264) k~32:1.84(n=688)
+pin not achieved (reading ii/iii) - composite step skipped
+DONE-SQRTPIN
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   6.541e-05 /   6.541e-05 (  perturbed bounds)
+1 /   6.545e-05 /   6.545e-05 (unperturbed bounds)

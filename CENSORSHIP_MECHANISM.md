@@ -106,3 +106,21 @@ Consequences, closing the analytic account of c*:
 - so c* = (inverse ensemble width-growth rate) + diversity
   boundary layer, and the whole censorship/expansion structure
   reduces to the statistics of TWO integers per downset.
+
+## Transient censorship of geometry families (2026-08-17)
+
+sqrt-width pinning attempt (sqrt_width_pin.py): forcing w(n)=a*sqrt(n)
+with a >= 1.5 FAILS at the Born wall in 8/8 attempts per a - the
+early transient has dw/dn = a/(2 sqrt n) above the critical widening
+rate 1/c* ~ 0.23 (a=1.5 at n=6: 0.31).  The manifold-matched
+constant (2D diamond width ~ 2 sqrt n) sits squarely in the
+forbidden transient.  COROLLARY: the quantum walls constrain
+geometry families ONLY through their widening RATE - any
+decelerating rule (dw/dn -> 0) is asymptotically PERMITTED; the
+obstruction is purely transient and can be routed around by
+engaging the rule after n > (a/0.46)^2 (~19 for a=2).  The theory
+does not forbid diamond geometry; it forbids reaching it fast.
+a=1.0 (rate-feasible everywhere, 0 fallbacks): grows but does NOT
+pin - profile 3.56/2.88/2.24/1.84 still flows through 2; r=0.712.
+Wall-respecting rerun (RAMP=24, BAND=2, n=96, a=1.5/2.0/2.5):
+sqrt_width_pin2.py, running.
