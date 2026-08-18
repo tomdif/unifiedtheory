@@ -21,10 +21,13 @@ def make_law_ell(PHI, NSTART=16, disk_cache=None):
                 cache.update(stored["cache"])
     def _persist():
         if not disk_cache: return
-        tmp = disk_cache + ".tmp"
-        with open(tmp, "wb") as fh:
-            pickle.dump({"meta": (round(PHI, 12), NSTART), "cache": cache}, fh)
-        os.replace(tmp, disk_cache)
+        try:
+            tmp = f"{disk_cache}.tmp.{os.getpid()}"
+            with open(tmp, "wb") as fh:
+                pickle.dump({"meta": (round(PHI, 12), NSTART), "cache": cache}, fh)
+            os.replace(tmp, disk_cache)
+        except OSError:
+            pass  # best-effort: concurrent writers may race; cache loss is only a speed cost
     def law(gc):
         key = tuple(sorted(gc.items()))
         if key in cache: return cache[key]

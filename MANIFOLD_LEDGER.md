@@ -106,3 +106,22 @@ exactly to 2 (clean manifold bulk) or plateaus slightly above
 (2.0-2.2) needs n >> 96.  UV elevation ~2.8-2.9 at k~4-8 is stable.
 Trivially provable sub-statement for the Lean file: interval
 abundances of (x,y) depend only on the downset of y.
+
+## FIXED-SCALE HEALING (2026-08-18, n=112 quartile run — limit_profile_120.py)
+
+Fifth point on the window law: all-tops k_x = 46.1 at n=112 vs
+4.5*sqrt(112) = 47.6 (law holds over 3.5x in n, ratio 4.2-4.8).
+Birth-frozen model QUANTITATIVELY CONFIRMED by quartile split:
+crossings 25.4 / 38.1 / 50.6 (Q2/Q3/Q4) vs mean-birth predictions
+29 / 38 / 44 (+-15%; Q3 exact).
+DECISIVE: FIXED-SCALE HEALING - d(45) = 1.89 (n=64) -> 1.96 (96)
+-> 2.01 (112): a fixed scale that was sub-manifold has risen
+THROUGH 2.  d(16), d(32) still climbing; d(4), d(6) converged
+(2.73, 2.83).  Bulk limit profile: discreteness dip at k~4, UV
+peak ~3.0 at k~8-11, smooth descent toward 2 at large k.
+STATEMENT EARNED: for the free law, manifold-likeness at any fixed
+scale is asymptotic in cosmic time - over-ordering at fixed k is a
+transient, permanently visible only at the receding 4.5*sqrt(n)
+edge.  Same for composites at 4D via the transfer law.  New open
+characterization: the UV peak (~3.0, a +1 discreteness-scale
+dimensional elevation - a falsifiable signature).

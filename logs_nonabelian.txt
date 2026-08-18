@@ -1,0 +1,36 @@
+[    0.5s] control: uncoupled (must be ~0)
+
+UNCOUPLED (control):
+  total size  8: mean delta = 0.00e+00  max = 0.00e+00  (n=77)
+  total size  9: mean delta = 0.00e+00  max = 0.00e+00  (n=82)
+  total size 10: mean delta = 0.00e+00  max = 0.00e+00  (n=90)
+  total size 11: mean delta = 0.00e+00  max = 0.00e+00  (n=85)
+  total size 12: mean delta = 0.00e+00  max = 0.00e+00  (n=86)
+  total size 13: mean delta = 0.00e+00  max = 0.00e+00  (n=77)
+  total size 14: mean delta = 0.00e+00  max = 0.00e+00  (n=94)
+  total size 15: mean delta = 0.00e+00  max = 0.00e+00  (n=96)
+  total size 16: mean delta = 0.00e+00  max = 0.00e+00  (n=99)
+  total size 17: mean delta = 0.00e+00  max = 0.00e+00  (n=102)
+  total size 18: mean delta = 0.00e+00  max = 0.00e+00  (n=103)
+  total size 19: mean delta = 0.00e+00  max = 0.00e+00  (n=106)
+  OVERALL: mean = 0.00e+00  max = 0.00e+00  frac>1e-6 = 0.000
+[    2.8s] coupled merged-spectrum law
+
+COUPLED:
+  total size  8: mean delta = 2.35e-01  max = 1.00e+00  (n=85)
+  total size  9: mean delta = 2.52e-01  max = 1.00e+00  (n=94)
+  total size 10: mean delta = 2.50e-01  max = 1.00e+00  (n=111)
+  total size 11: mean delta = 1.66e-01  max = 1.00e+00  (n=99)
+  total size 12: mean delta = 1.62e-01  max = 1.00e+00  (n=100)
+  total size 13: mean delta = 1.53e-01  max = 5.63e-01  (n=105)
+  total size 14: mean delta = 1.47e-01  max = 1.00e+00  (n=111)
+  total size 15: mean delta = 1.87e-01  max = 1.00e+00  (n=117)
+  total size 16: mean delta = 1.67e-01  max = 1.00e+00  (n=115)
+  total size 17: mean delta = 1.47e-01  max = 1.00e+00  (n=114)
+  total size 18: mean delta = 1.26e-01  max = 1.00e+00  (n=116)
+  total size 19: mean delta = 1.07e-01  max = 4.67e-01  (n=119)
+  OVERALL: mean = 1.72e-01  max = 1.00e+00  frac>1e-6 = 0.997
+
+VERDICT: uncoupled 0.00e+00 vs coupled 1.72e-01
+reading (i) if coupled >> uncoupled ~ 0; (ii) if both ~0
+DONE-NONABELIAN
