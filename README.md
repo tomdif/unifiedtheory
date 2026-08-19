@@ -3,7 +3,7 @@
 **Core algebraic proposal: one postulate, two identifications, zero fitted
 parameters. Machine-checked in Lean 4.**
 
-> **Current scope note (July 2026).** The finite-poset and matrix results are
+> **Current scope note (August 2026).** The finite-poset and matrix results are
 > machine-checked mathematics. The repository now constructs projective quantum
 > causal-set cylinder kinematics and a zero-free, normalized chiral
 > ancestor-pair law. At the exact cylinder-event scope, the apparent Z2 sign
@@ -36,6 +36,31 @@ The repository formally verifies a proposed chain from a locally finite partial 
 to Standard Model structures and numerical identifications. The finite algebraic steps
 are Lean-checked; calling the full chain a physical derivation still requires the open
 quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
+
+## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-19)
+
+The latest audit work is summarized in
+[`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md)
+and [`HORIZON_ENTROPY_PROBE.md`](HORIZON_ENTROPY_PROBE.md).
+
+Machine-checked additions now cover:
+
+- finite causal-set entropy focusing:
+  `d/dlambda KL_lambda = -lambda * d/dlambda E_lambda[c - J]`;
+- finite causal-growth birth-law normalization and source tilting;
+- the Dorau--Much/Jacobson scalar horizon chain fixing the `8*pi` null-balance
+  once the analytic horizon inputs are supplied;
+- finite horizon-cell error control implying convergence to continuum
+  null/Araki flux when per-cell errors vanish;
+- a physical-growth certificate interface for the quantitative Hauptvermutung;
+- quotient construction of label/diffeomorphism-invariant observables.
+
+These results narrow the open problem. They do **not** constitute an
+unconditional proof of full continuum quantum gravity. The remaining work is to
+derive the required physical certificates from the actual causal-growth
+dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
+physical Hauptvermutung certificates, separating invariant observables, and
+infrared GR/QFT recovery.
 
 **Paper:** [`paper/time_is_a_partial_order.pdf`](paper/time_is_a_partial_order.pdf)
 

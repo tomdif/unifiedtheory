@@ -1,4 +1,16 @@
-# Framework Status (May 2026)
+# Framework Status (August 2026)
+
+> **Quantum-gravity/Hauptvermutung bridge update (2026-08-19):** The current
+> capstone is documented in
+> [`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md).
+> New Lean audit modules formalize the Dorau--Much/Jacobson horizon constant
+> chain, exact finite entropy focusing, finite causal-growth birth-law
+> normalization, finite-to-continuum horizon flux error control, the physical
+> certificate interface for applying the quantitative Hauptvermutung, and the
+> quotient construction of label/diffeomorphism-invariant observables. These
+> are checked bridge interfaces, not a completed proof of full continuum quantum
+> gravity. The remaining work is to derive the physical certificates and
+> infrared GR/QFT recovery from the actual causal-growth dynamics.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

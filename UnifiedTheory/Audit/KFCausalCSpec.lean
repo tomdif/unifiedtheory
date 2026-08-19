@@ -5,6 +5,7 @@
   sector, and the goal-B/C dynamics) is covered by the default lake build root,
   not only under manual targeting. Pure import hub; no declarations.
 -/
+import UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
 import UnifiedTheory.Audit.KFCausalCSpecAtlasCocycleNoGo
 import UnifiedTheory.Audit.KFCausalCSpecBDGContinuumLimit
 import UnifiedTheory.Audit.KFCausalCSpecBDGDerivation
@@ -17,11 +18,15 @@ import UnifiedTheory.Audit.KFCausalCSpecCurvatureVolumeBound
 import UnifiedTheory.Audit.KFCausalCSpecDiscretenessResidue
 import UnifiedTheory.Audit.KFCausalCSpecEdgeScaleDefect
 import UnifiedTheory.Audit.KFCausalCSpecEffectiveGlobalization
+import UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
+import UnifiedTheory.Audit.KFCausalCSpecFiniteHorizonSource
 import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
 import UnifiedTheory.Audit.KFCausalCSpecGlobalization
 import UnifiedTheory.Audit.KFCausalCSpecGlobalRank
 import UnifiedTheory.Audit.KFCausalCSpecGluing
+import UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
 import UnifiedTheory.Audit.KFCausalCSpecHighDensityLimit
+import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecIntrinsicDescent
 import UnifiedTheory.Audit.KFCausalCSpecLaplaceScaling
 import UnifiedTheory.Audit.KFCausalCSpecLayerMomentConditions
@@ -32,6 +37,7 @@ import UnifiedTheory.Audit.KFCausalCSpecPoissonConcentration
 import UnifiedTheory.Audit.KFCausalCSpecPoissonFactorialMoment
 import UnifiedTheory.Audit.KFCausalCSpecPoissonLayerRpow
 import UnifiedTheory.Audit.KFCausalCSpecPoissonMoments
+import UnifiedTheory.Audit.KFCausalCSpecQuantumGravityHauptvermutungCapstone
 import UnifiedTheory.Audit.KFCausalCSpecRelativeScaleCocycle
 import UnifiedTheory.Audit.KFCausalCSpecSheetRealization
 import UnifiedTheory.Audit.KFCausalCSpecStatisticalLoopBand
