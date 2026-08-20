@@ -133,6 +133,8 @@ physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
 centeredSource_floor_of_weighted_anti_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
+weighted_floor_of_uniform_weight_alignment
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -248,6 +250,13 @@ local physical pieces: nonnegative sampling weights, a weighted rate floor
 `alignment_{n,i} <= -centered(S_n)_i`.  Lean proves these imply the centered
 source floor and therefore the same protected convergence theorem.
 
+The newest uniform weighted-alignment gate reduces the weighted rate floor to
+uniform lower bounds: `weightFloor <= w_{n,i}`,
+`alignmentFloor <= alignment_{n,i}`, and
+`rateFloor_n <= weightFloor*alignmentFloor`, with nonnegative floors.  This is
+now the most concrete finite target for the source-amplitude part of the
+causal-growth proof.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -274,6 +283,8 @@ or prove the stronger centered-source floor
 rateFloor_n <= -w_{n,i}*centered(S_n)_i,
 or prove weighted anti-alignment plus
 rateFloor_n <= w_{n,i}*alignment_{n,i},
+or prove uniform lower bounds
+weightFloor <= w_{n,i} and alignmentFloor <= alignment_{n,i},
 from the physical causal-growth law
 ```
 

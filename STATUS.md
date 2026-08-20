@@ -110,7 +110,9 @@
 > centered-source floor gate derives those cellwise bounds from
 > `rateFloor_n <= -w_{n,i}*centered(S_n)_i`; the newest weighted
 > anti-alignment gate splits that into nonnegative weights, a weighted rate
-> floor, and `alignment_{n,i} <= -centered(S_n)_i`.
+> floor, and `alignment_{n,i} <= -centered(S_n)_i`; the newest uniform
+> weighted-alignment gate derives the weighted rate floor from uniform lower
+> bounds on sampling weight and anti-alignment amplitude.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

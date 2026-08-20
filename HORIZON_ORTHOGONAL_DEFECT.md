@@ -160,7 +160,9 @@ contributions and proves they sum to `-linearResponse(S_n, D_n)`.  The newest
 centered-source floor gate derives those cellwise bounds from
 `rateFloor_n <= -w_{n,i}*centered(S_n)_i`.  The newest weighted anti-alignment
 gate splits that into nonnegative weights, a weighted rate floor, and
-`alignment_{n,i} <= -centered(S_n)_i`.
+`alignment_{n,i} <= -centered(S_n)_i`.  The newest uniform weighted-alignment
+gate derives the weighted rate floor from uniform lower bounds on sampling
+weight and anti-alignment amplitude.
 
 ## Lean Names
 
@@ -270,6 +272,8 @@ physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
 centeredSource_floor_of_weighted_anti_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
+weighted_floor_of_uniform_weight_alignment
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable
