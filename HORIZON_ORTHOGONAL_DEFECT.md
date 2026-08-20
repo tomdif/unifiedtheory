@@ -153,6 +153,10 @@ distortion_geometric_majorant_tendsto_zero
 ProtectedHauptvermutungDistortionDescent.step_decreases
 ProtectedHauptvermutungDistortionDescent.step_strictly_decreases
 ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
+ProtectedHauptvermutungDistortionDescent.step_preserves_horizon_through_secondOrder
+ProtectedHauptvermutungDistortionDescent.first_area_response_zero
+ProtectedHauptvermutungDistortionDescent.quadratic_area_response_tendsto_zero
+ProtectedHauptvermutungDistortionDescent.horizon_protection_and_distortion_tendsto_zero
 ```
 
 ## Why This Matters
@@ -595,6 +599,26 @@ This does not prove that the actual causal-growth dynamics has such a
 uniform contraction.  It proves the exact finite checklist: construct the
 protected source, prove the half-remainder bound, and prove a geometric
 majorant or another convergence estimate for the displayed distortion.
+
+The sequence-level theorem now combines the two sides:
+
+```text
+ProtectedHauptvermutungDistortionDescent
+  .horizon_protection_and_distortion_tendsto_zero
+```
+
+Under the same geometric distortion majorant, Lean proves both:
+
+```text
+linearResponse(S_n, c_n - J_n) = 0       for every n
+quadraticResponse(S_n, c_n - J_n) = 0    for every n
+D_n -> 0
+```
+
+So the finite endpoint is no longer just a local descent rule.  It is a checked
+refinement template: every certified step leaves the Dorau--Much horizon
+channel protected through second order, while the displayed Hauptvermutung
+distortion tends to zero.
 
 The file also defines `ProtectedCertificateErrorRefinement`.  In this
 refinement version, first-order horizon contamination vanishes at every finite

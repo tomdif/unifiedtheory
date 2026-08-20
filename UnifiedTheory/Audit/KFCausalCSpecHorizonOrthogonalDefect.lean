@@ -1343,6 +1343,85 @@ theorem distortion_tendsto_zero_of_geometric_bound
   distortion_geometric_majorant_tendsto_zero D.distortion initial q hq0 hq1
     hnonneg hbound
 
+/-- Every source in a protected distortion descent sequence preserves the
+finite horizon channel through second order. -/
+theorem step_preserves_horizon_through_secondOrder
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) (n : ℕ) :
+    linearResponse (D.source n).weight (D.source n).defectSource
+        (finiteAreaChange (D.source n).newMaximalContribution
+          (D.source n).horizonSource) = 0 ∧
+      quadraticResponse (D.source n).weight (D.source n).defectSource
+        (finiteAreaChange (D.source n).newMaximalContribution
+          (D.source n).horizonSource) = 0 := by
+  exact (D.source n).preserves_horizon_and_descends_distortion.1
+
+/-- First-order horizon-area response vanishes at every protected descent
+stage. -/
+theorem first_area_response_zero
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) (n : ℕ) :
+    linearResponse (D.source n).weight (D.source n).defectSource
+        (finiteAreaChange (D.source n).newMaximalContribution
+          (D.source n).horizonSource) = 0 :=
+  (D.step_preserves_horizon_through_secondOrder n).1
+
+/-- Second central horizon-area response vanishes at every protected descent
+stage. -/
+theorem quadratic_area_response_zero
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) (n : ℕ) :
+    quadraticResponse (D.source n).weight (D.source n).defectSource
+        (finiteAreaChange (D.source n).newMaximalContribution
+          (D.source n).horizonSource) = 0 :=
+  (D.step_preserves_horizon_through_secondOrder n).2
+
+/-- Since every finite stage has zero second central horizon-area response, the
+sequence of those responses tends to zero. -/
+theorem quadratic_area_response_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) :
+    Tendsto
+      (fun n =>
+        quadraticResponse (D.source n).weight (D.source n).defectSource
+          (finiteAreaChange (D.source n).newMaximalContribution
+            (D.source n).horizonSource))
+      atTop (nhds 0) := by
+  have hzero :
+      (fun n =>
+        quadraticResponse (D.source n).weight (D.source n).defectSource
+          (finiteAreaChange (D.source n).newMaximalContribution
+            (D.source n).horizonSource)) =
+        fun _ : ℕ => 0 := by
+    funext n
+    exact D.quadratic_area_response_zero n
+  rw [hzero]
+  exact tendsto_const_nhds
+
+/-- Final finite refinement bridge: under the geometric distortion majorant,
+the protected descent sequence preserves the horizon channel at every finite
+stage and drives the displayed Hauptvermutung distortion error to zero. -/
+theorem horizon_protection_and_distortion_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι)
+    (initial q : ℝ)
+    (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hnonneg : ∀ n, 0 ≤ D.distortion n)
+    (hbound : ∀ n, D.distortion n ≤ initial * q ^ n) :
+    (∀ n,
+      linearResponse (D.source n).weight (D.source n).defectSource
+          (finiteAreaChange (D.source n).newMaximalContribution
+            (D.source n).horizonSource) = 0 ∧
+        quadraticResponse (D.source n).weight (D.source n).defectSource
+          (finiteAreaChange (D.source n).newMaximalContribution
+            (D.source n).horizonSource) = 0) ∧
+      Tendsto D.distortion atTop (nhds 0) := by
+  constructor
+  · intro n
+    exact D.step_preserves_horizon_through_secondOrder n
+  · exact D.distortion_tendsto_zero_of_geometric_bound initial q hq0 hq1
+      hnonneg hbound
+
 end ProtectedHauptvermutungDistortionDescent
 
 #print axioms covariance_comm
@@ -1390,5 +1469,9 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms ProtectedHauptvermutungDistortionDescent.step_decreases
 #print axioms ProtectedHauptvermutungDistortionDescent.step_strictly_decreases
 #print axioms ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
+#print axioms ProtectedHauptvermutungDistortionDescent.step_preserves_horizon_through_secondOrder
+#print axioms ProtectedHauptvermutungDistortionDescent.first_area_response_zero
+#print axioms ProtectedHauptvermutungDistortionDescent.quadratic_area_response_tendsto_zero
+#print axioms ProtectedHauptvermutungDistortionDescent.horizon_protection_and_distortion_tendsto_zero
 
 end UnifiedTheory.Audit.KFCausalCSpecHorizonOrthogonalDefect

@@ -475,6 +475,10 @@ distortion strictly decreases when the finite remainder is below half the
 protected descent margin, and
 `ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound`
 records the geometric-contraction route to zero distortion.
+The combined sequence theorem
+`ProtectedHauptvermutungDistortionDescent.horizon_protection_and_distortion_tendsto_zero`
+adds that the same descent sequence keeps the horizon response zero through
+second order at every finite stage.
 
 The original finite horizon-entropy theorem is stronger than a fit to the probe
 output: for any normalized nonnegative finite birth law, the full

@@ -368,6 +368,11 @@ Lean proves `D_next <= D_old - step*descentRate/2`, with strict decrease when
 scale, and a geometric-majorant theorem proves `D_n -> 0` from
 `D_n <= D_0*q^n` with `0 <= q < 1`.
 
+The sequence-level bridge combines this with horizon protection: under the
+same geometric distortion majorant, Lean proves every finite step has zero
+first-order and zero second central horizon-area response, while the displayed
+Hauptvermutung distortion tends to zero.
+
 Key theorem names:
 
 ```text
@@ -397,6 +402,9 @@ protected_distortion_step_decreases_with_remainder
 protected_distortion_step_strictly_decreases
 ProtectedHauptvermutungDistortionDescent.step_decreases
 ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
+ProtectedHauptvermutungDistortionDescent.step_preserves_horizon_through_secondOrder
+ProtectedHauptvermutungDistortionDescent.quadratic_area_response_tendsto_zero
+ProtectedHauptvermutungDistortionDescent.horizon_protection_and_distortion_tendsto_zero
 ```
 
 This is a finite control theorem, not a continuum completion.  Its role is to
