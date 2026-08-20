@@ -154,7 +154,11 @@ Machine-checked additions now cover:
   weighted-alignment gate derives the weighted rate floor from uniform lower
   bounds on sampling weight and anti-alignment amplitude; the newest
   rate-floor-free gate replaces `rateFloor_n` with the direct uniform bound
-  `gamma <= weightFloor*alignmentFloor`.
+  `gamma <= weightFloor*alignmentFloor`; the newest direct centered-source
+  floor gate removes the auxiliary alignment observable and proves the same
+  theorem from `gamma <= weightFloor*sourceFloor`,
+  `weightFloor <= w_{n,i}`, and
+  `sourceFloor <= -centered(S_n)_i`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -164,7 +168,8 @@ physical Hauptvermutung certificates, the physical-total identity and gain
 window, summed local descent certificates, uniform rate and step floors,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
-rate-floor-free gamma alignment, and infrared GR/QFT recovery.
+rate-floor-free gamma alignment, direct centered-source floors, and infrared
+GR/QFT recovery.
 The new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected

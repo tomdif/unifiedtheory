@@ -136,9 +136,11 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weig
 weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 centeredSource_gamma_floor_of_uniform_weighted_alignment
+centeredSource_gamma_floor_of_uniform_centered_source_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -266,6 +268,12 @@ from this branch: `gamma <= weightFloor*alignmentFloor` is enough, together
 with the same uniform weight/alignment floors and anti-alignment, to prove the
 uniform protected convergence theorem directly.
 
+The newest direct centered-source floor gate removes the auxiliary `alignment`
+observable too: `gamma <= weightFloor*sourceFloor`,
+`weightFloor <= w_{n,i}`, and
+`sourceFloor <= -centered(S_n)_i`, with nonnegative floors, prove the same
+uniform protected convergence theorem directly.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -295,6 +303,8 @@ rateFloor_n <= w_{n,i}*alignment_{n,i},
 or prove uniform lower bounds
 weightFloor <= w_{n,i} and alignmentFloor <= alignment_{n,i},
 or prove the rate-floor-free bound gamma <= weightFloor*alignmentFloor,
+or prove the direct centered-source floor
+gamma <= weightFloor*sourceFloor and sourceFloor <= -centered(S_n)_i,
 from the physical causal-growth law
 ```
 

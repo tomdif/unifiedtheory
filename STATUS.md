@@ -114,7 +114,11 @@
 > weighted-alignment gate derives the weighted rate floor from uniform lower
 > bounds on sampling weight and anti-alignment amplitude; the newest
 > rate-floor-free gate replaces `rateFloor_n` with the direct uniform bound
-> `gamma <= weightFloor*alignmentFloor`.
+> `gamma <= weightFloor*alignmentFloor`; the newest direct centered-source
+> floor gate removes the auxiliary alignment observable and proves the same
+> theorem from `gamma <= weightFloor*sourceFloor`,
+> `weightFloor <= w_{n,i}`, and
+> `sourceFloor <= -centered(S_n)_i`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

@@ -508,7 +508,11 @@ gate splits that into nonnegative weights, a weighted rate floor, and
 gate derives the weighted rate floor from uniform lower bounds on sampling
 weight and anti-alignment amplitude.  The newest rate-floor-free gate replaces
 `rateFloor_n` with the direct uniform bound
-`gamma <= weightFloor*alignmentFloor`.
+`gamma <= weightFloor*alignmentFloor`.  The newest direct centered-source
+floor gate removes the auxiliary alignment observable and proves the same
+theorem from `gamma <= weightFloor*sourceFloor`,
+`weightFloor <= w_{n,i}`, and
+`sourceFloor <= -centered(S_n)_i`.
 
 Key theorem names:
 
@@ -630,9 +634,11 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weig
 weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 centeredSource_gamma_floor_of_uniform_weighted_alignment
+centeredSource_gamma_floor_of_uniform_centered_source_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
