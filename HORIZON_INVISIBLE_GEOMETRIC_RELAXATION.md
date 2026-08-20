@@ -211,7 +211,9 @@ centered-source floor gate derives those cellwise bounds from
 gate splits that into nonnegative weights, a weighted rate floor, and
 `alignment_{n,i} <= -centered(S_n)_i`.  The newest uniform weighted-alignment
 gate derives the weighted rate floor from uniform lower bounds on sampling
-weight and anti-alignment amplitude.
+weight and anti-alignment amplitude.  The newest rate-floor-free gate replaces
+`rateFloor_n` with the direct uniform bound
+`gamma <= weightFloor*alignmentFloor`.
 
 Key names:
 
@@ -281,6 +283,10 @@ centeredSource_floor_of_weighted_anti_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
 weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
+centeredSource_gamma_floor_of_uniform_weighted_alignment
+physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
+physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 ```
 
 ## Numerical Evidence

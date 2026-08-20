@@ -1158,6 +1158,37 @@ theorem weighted_floor_of_uniform_weight_alignment
       halignment_nonneg hw_nonneg
   exact le_trans (hrate_floor n) hprod
 
+theorem centeredSource_gamma_floor_of_uniform_weighted_alignment
+    {ι : Type*} [Fintype ι]
+    {w source : ℕ → ι → ℝ}
+    {alignment : ℕ → ι → ℝ}
+    {gamma weightFloor alignmentFloor : ℝ}
+    (hweight_nonneg : 0 ≤ weightFloor)
+    (halignment_nonneg : 0 ≤ alignmentFloor)
+    (hweight_floor : ∀ n i, weightFloor ≤ w n i)
+    (halignment_floor : ∀ n i, alignmentFloor ≤ alignment n i)
+    (hgamma_floor : gamma ≤ weightFloor * alignmentFloor)
+    (halignment :
+      ∀ n i, alignment n i ≤ -centeredSource (w n) (source n) i) :
+    ∀ n i,
+      gamma ≤ -(w n i * centeredSource (w n) (source n) i) := by
+  intro n i
+  have hw_nonneg : 0 ≤ w n i :=
+    le_trans hweight_nonneg (hweight_floor n i)
+  have hweighted :
+      weightFloor * alignmentFloor ≤ w n i * alignment n i :=
+    mul_le_mul (hweight_floor n i) (halignment_floor n i)
+      halignment_nonneg hw_nonneg
+  have hanti :
+      w n i * alignment n i ≤
+        w n i * (-centeredSource (w n) (source n) i) :=
+    mul_le_mul_of_nonneg_left (halignment n i) hw_nonneg
+  calc
+    gamma ≤ weightFloor * alignmentFloor := hgamma_floor
+    _ ≤ w n i * alignment n i := hweighted
+    _ ≤ w n i * (-centeredSource (w n) (source n) i) := hanti
+    _ = -(w n i * centeredSource (w n) (source n) i) := by ring
+
 theorem physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
     {ι : Type*} [Fintype ι]
     {w source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1208,6 +1239,84 @@ theorem physicalHauptvermutungDistortion_source_local_response_of_centered_sourc
             (scale n) (edge n) (candidate n)) i := by
       unfold localLinearDescentContribution D
       ring
+
+theorem physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
+    {ι : Type*} [Fintype ι]
+    {w source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale total descentRate : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {gamma : ℝ}
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hsource_local :
+      ∀ n i,
+        gamma *
+          physicalHauptvermutungDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n) i ≤
+          localLinearDescentContribution (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n))) :
+    ∀ n, gamma * total n ≤ descentRate n := by
+  refine
+    physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_local_descent
+      (rateFloor := fun _ => gamma)
+      hcount hcurv hspectral htotal_eq ?_ hsource_local ?_
+  · intro n
+    rfl
+  · intro n
+    rw [hdescent_eq n,
+      sum_localLinearDescentContribution_eq_neg_linearResponse]
+
+theorem physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
+    {ι : Type*} [Fintype ι]
+    {w source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale total descentRate : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {gamma : ℝ}
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hsource_floor :
+      ∀ n i,
+        gamma ≤ -(w n i * centeredSource (w n) (source n) i))
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n))) :
+    ∀ n, gamma * total n ≤ descentRate n := by
+  exact
+    physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
+      hcount hcurv hspectral htotal_eq
+      (physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
+        hcount hcurv hspectral hsource_floor)
+      hdescent_eq
 
 theorem physicalHauptvermutungTotalDistortion_eq_zero_iff
     {ι : Type*} [Fintype ι]
@@ -2592,6 +2701,63 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
         halignment_nonneg hweight_floor halignment_floor hrate_floor)
       halignment hdescent_eq hstep_floor
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {alignment : ℕ → ι → ℝ}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (gamma stepFloor weightFloor alignmentFloor : ℝ)
+    (hprod_pos : 0 < stepFloor * gamma)
+    (hprod_le_two : stepFloor * gamma ≤ 2)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hgamma_nonneg : 0 ≤ gamma)
+    (hweight_nonneg : 0 ≤ weightFloor)
+    (halignment_nonneg : 0 ≤ alignmentFloor)
+    (hweight_floor : ∀ n i, weightFloor ≤ w n i)
+    (halignment_floor : ∀ n i, alignmentFloor ≤ alignment n i)
+    (hgamma_floor : gamma ≤ weightFloor * alignmentFloor)
+    (halignment :
+      ∀ n i, alignment n i ≤ -centeredSource (w n) (source n) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)))
+    (hstep_floor : ∀ n, stepFloor ≤ step n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+      R gamma stepFloor hprod_pos hprod_le_two
+      (physicalHauptvermutungTotalDistortion_sequence_nonneg
+        hcount hcurv hspectral htotal_eq)
+      hgamma_nonneg
+      (physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
+        hcount hcurv hspectral htotal_eq
+        (centeredSource_gamma_floor_of_uniform_weighted_alignment
+          hweight_nonneg halignment_nonneg hweight_floor halignment_floor
+          hgamma_floor halignment)
+        hdescent_eq)
+      hstep_floor
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -2630,5 +2796,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

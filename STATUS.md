@@ -112,7 +112,9 @@
 > anti-alignment gate splits that into nonnegative weights, a weighted rate
 > floor, and `alignment_{n,i} <= -centered(S_n)_i`; the newest uniform
 > weighted-alignment gate derives the weighted rate floor from uniform lower
-> bounds on sampling weight and anti-alignment amplitude.
+> bounds on sampling weight and anti-alignment amplitude; the newest
+> rate-floor-free gate replaces `rateFloor_n` with the direct uniform bound
+> `gamma <= weightFloor*alignmentFloor`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

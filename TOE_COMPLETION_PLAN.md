@@ -135,6 +135,10 @@ centeredSource_floor_of_weighted_anti_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
 weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
+centeredSource_gamma_floor_of_uniform_weighted_alignment
+physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
+physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -257,6 +261,11 @@ uniform lower bounds: `weightFloor <= w_{n,i}`,
 now the most concrete finite target for the source-amplitude part of the
 causal-growth proof.
 
+The newest rate-floor-free gate removes the auxiliary `rateFloor_n` sequence
+from this branch: `gamma <= weightFloor*alignmentFloor` is enough, together
+with the same uniform weight/alignment floors and anti-alignment, to prove the
+uniform protected convergence theorem directly.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -285,6 +294,7 @@ or prove weighted anti-alignment plus
 rateFloor_n <= w_{n,i}*alignment_{n,i},
 or prove uniform lower bounds
 weightFloor <= w_{n,i} and alignmentFloor <= alignment_{n,i},
+or prove the rate-floor-free bound gamma <= weightFloor*alignmentFloor,
 from the physical causal-growth law
 ```
 
