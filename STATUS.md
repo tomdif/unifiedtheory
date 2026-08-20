@@ -60,7 +60,7 @@
 > shows the effective `-gap` correction is the interior BDG channel after the
 > horizon-boundary component is projected away; Lean now proves that this
 > corrector-gauge quotient preserves first-order response and second-order
-> horizon leakage.
+> horizon leakage, and preserves roots of the leakage null-cone quadratic.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

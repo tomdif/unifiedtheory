@@ -689,8 +689,10 @@ mean `|t| = 3.61231`, mean absolute leakage `3.15e-3`, and pass rate `0.985714`
 at step `0.050`.  Lean now proves the quotient behind this observation:
 constants and horizon-parallel terms leave the centered residual's first-order
 response and second-order horizon leakage unchanged, and the corrected
-canonical source inherits that same corrector-gauge invariance.  The `size`
-corrector passes the gate but has worse leakage.
+canonical source inherits that same corrector-gauge invariance.  The stronger
+polynomial theorem preserves zeros of the leakage null cone itself, so the
+estimated coefficient root is independent of the chosen constant/horizon
+representative.  The `size` corrector passes the gate but has worse leakage.
 
 ## Descent Dynamics
 

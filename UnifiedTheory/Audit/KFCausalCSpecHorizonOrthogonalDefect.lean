@@ -87,6 +87,15 @@ noncomputable def horizonSecondOrderCrossLeakage {ι : Type*} [Fintype ι]
     (w J A B : ι → ℝ) : ℝ :=
   covariance w J (fun i => centeredSource w A i * centeredSource w B i)
 
+/-- The two-channel quadratic leakage polynomial.  Its zero set is the finite
+second-order horizon-protection null cone for coefficients `(a,b)`. -/
+noncomputable def horizonSecondOrderLeakageQuadratic
+    {ι : Type*} [Fintype ι]
+    (w J A B : ι → ℝ) (a b : ℝ) : ℝ :=
+  a ^ 2 * horizonSecondOrderCrossLeakage w J A A +
+    2 * a * b * horizonSecondOrderCrossLeakage w J A B +
+      b ^ 2 * horizonSecondOrderCrossLeakage w J B B
+
 theorem expectation_add {ι : Type*} [Fintype ι]
     (w X Y : ι → ℝ) :
     expectation w (fun i => X i + Y i) =
@@ -462,6 +471,15 @@ theorem horizonSecondOrderLeakage_linear_combination
     covariance_const_mul_right]
   ring
 
+theorem horizonSecondOrderLeakage_eq_quadratic
+    {ι : Type*} [Fintype ι]
+    (w J A B : ι → ℝ) (a b : ℝ) :
+    horizonSecondOrderLeakage w J (fun i => a * A i + b * B i) =
+      horizonSecondOrderLeakageQuadratic w J A B a b := by
+  rw [horizonSecondOrderLeakage_linear_combination]
+  unfold horizonSecondOrderLeakageQuadratic
+  rfl
+
 /-- If two sources are first-order horizon-orthogonal, then any linear
 combination is first-order horizon-orthogonal. -/
 theorem covariance_linear_combination_left_zero
@@ -673,6 +691,85 @@ theorem centeredSource_horizonOrthogonalResidual_add_const_horizon
       centeredSource w (horizonOrthogonalResidual w J G) := by
   rw [horizonOrthogonalResidual_add_const_horizon w J G a b hw hvar]
   exact centeredSource_const_add w (horizonOrthogonalResidual w J G) a hw
+
+theorem horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_left
+    {ι : Type*} [Fintype ι]
+    (w J G B : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderCrossLeakage w J
+        (horizonOrthogonalResidual w J (fun i => G i + a + b * J i)) B =
+      horizonSecondOrderCrossLeakage w J
+        (horizonOrthogonalResidual w J G) B := by
+  unfold horizonSecondOrderCrossLeakage
+  rw [centeredSource_horizonOrthogonalResidual_add_const_horizon
+    w J G a b hw hvar]
+
+theorem horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_right
+    {ι : Type*} [Fintype ι]
+    (w J A H : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderCrossLeakage w J A
+        (horizonOrthogonalResidual w J (fun i => H i + a + b * J i)) =
+      horizonSecondOrderCrossLeakage w J A
+        (horizonOrthogonalResidual w J H) := by
+  unfold horizonSecondOrderCrossLeakage
+  rw [centeredSource_horizonOrthogonalResidual_add_const_horizon
+    w J H a b hw hvar]
+
+theorem horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (aG bG aH bH : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderCrossLeakage w J
+        (horizonOrthogonalResidual w J (fun i => G i + aG + bG * J i))
+        (horizonOrthogonalResidual w J (fun i => H i + aH + bH * J i)) =
+      horizonSecondOrderCrossLeakage w J
+        (horizonOrthogonalResidual w J G)
+        (horizonOrthogonalResidual w J H) := by
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_left
+    w J G
+      (horizonOrthogonalResidual w J (fun i => H i + aH + bH * J i))
+      aG bG hw hvar]
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_right
+    w J (horizonOrthogonalResidual w J G) H aH bH hw hvar]
+
+theorem horizonSecondOrderLeakageQuadratic_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b u v : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderLeakageQuadratic w J
+        (horizonOrthogonalResidual w J G)
+        (horizonOrthogonalResidual w J (fun i => H i + a + b * J i))
+        u v =
+      horizonSecondOrderLeakageQuadratic w J
+        (horizonOrthogonalResidual w J G)
+        (horizonOrthogonalResidual w J H) u v := by
+  unfold horizonSecondOrderLeakageQuadratic
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_right
+    w J (horizonOrthogonalResidual w J G) H a b hw hvar]
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge
+    w J H H a b a b hw hvar]
+
+theorem horizonSecondOrderLeakageQuadratic_correctorGauge_zero
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b u v : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hzero :
+      horizonSecondOrderLeakageQuadratic w J
+        (horizonOrthogonalResidual w J G)
+        (horizonOrthogonalResidual w J H) u v = 0) :
+    horizonSecondOrderLeakageQuadratic w J
+        (horizonOrthogonalResidual w J G)
+        (horizonOrthogonalResidual w J (fun i => H i + a + b * J i))
+        u v = 0 := by
+  rw [horizonSecondOrderLeakageQuadratic_correctorGauge
+    w J G H a b u v hw hvar]
+  exact hzero
 
 theorem linearResponse_horizonOrthogonalResidual_add_const_horizon
     {ι : Type*} [Fintype ι]
@@ -2123,6 +2220,11 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms horizonOrthogonalResidual_add_const
 #print axioms horizonOrthogonalResidual_add_const_horizon
 #print axioms centeredSource_horizonOrthogonalResidual_add_const_horizon
+#print axioms horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_left
+#print axioms horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_right
+#print axioms horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge
+#print axioms horizonSecondOrderLeakageQuadratic_correctorGauge
+#print axioms horizonSecondOrderLeakageQuadratic_correctorGauge_zero
 #print axioms linearResponse_horizonOrthogonalResidual_add_const_horizon
 #print axioms horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon
 #print axioms orthogonal_source_area_response_zero
@@ -2130,6 +2232,7 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms orthogonal_source_secondOrder_area_obstruction
 #print axioms orthogonal_source_firstAndSecondOrder_area_zero
 #print axioms horizonSecondOrderLeakage_linear_combination
+#print axioms horizonSecondOrderLeakage_eq_quadratic
 #print axioms covariance_linear_combination_left_zero
 #print axioms twoChannel_firstAndSecondOrder_area_zero
 #print axioms twoChannel_protected_certificate_error_source_bridge

@@ -241,7 +241,11 @@ the centered residual's first response and second horizon leakage unchanged.
 The named corrected source records the same quotient through
 `correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge` and
 `correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge`.
-Thus the useful corrector is the interior BDG channel, not a second copy of the
+The coefficient-level version is now also proved:
+`horizonSecondOrderLeakageQuadratic_correctorGauge_zero` says that a root of
+the two-channel leakage null-cone polynomial remains a root after replacing
+the corrector by any constant-plus-horizon equivalent representative.  Thus
+the useful corrector is the interior BDG channel, not a second copy of the
 horizon entropy source.
 
 The empirical target is now sharper: prove that the coefficient correcting

@@ -99,7 +99,8 @@ Machine-checked additions now cover:
   target; corrector comparison shows the effective `-gap` correction is the
   interior BDG channel after the horizon-boundary component is projected away;
   Lean now proves the underlying corrector-gauge quotient for first-order
-  response and second-order horizon leakage.
+  response and second-order horizon leakage, plus invariance of the leakage
+  null-cone coefficient root under the same quotient.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

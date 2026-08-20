@@ -432,7 +432,10 @@ interior action channel with the horizon boundary part projected out.  The
 finite Lean file now proves the algebra behind this quotient: adding constants
 and horizon-parallel terms to a corrector does not change the centered
 residual's first-order response or second-order horizon leakage, and the
-corrected canonical source inherits the same invariance.
+corrected canonical source inherits the same invariance.  It now also proves
+that zeros of the leakage null-cone quadratic survive the same replacement, so
+the coefficient root is a quotient-level object rather than a representative
+artifact.
 
 Key theorem names:
 
@@ -443,6 +446,9 @@ horizonProjectionCoeff_unique
 horizonProjectionCoeff_add_horizon
 horizonProjectionCoeff_add_const
 horizonOrthogonalResidual_add_const_horizon
+horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge
+horizonSecondOrderLeakageQuadratic_correctorGauge
+horizonSecondOrderLeakageQuadratic_correctorGauge_zero
 linearResponse_horizonOrthogonalResidual_add_const_horizon
 horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon
 orthogonal_source_area_response_zero
