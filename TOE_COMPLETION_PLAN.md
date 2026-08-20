@@ -141,6 +141,7 @@ physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -274,6 +275,11 @@ observable too: `gamma <= weightFloor*sourceFloor`,
 `sourceFloor <= -centered(S_n)_i`, with nonnegative floors, prove the same
 uniform protected convergence theorem directly.
 
+The newest gamma-free product gate sets `gamma = weightFloor*sourceFloor`.
+Thus the finite target becomes the directly physical product window
+`0 < stepFloor*(weightFloor*sourceFloor) <= 2`, plus the same uniform weight
+and centered-source floors.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -305,6 +311,8 @@ weightFloor <= w_{n,i} and alignmentFloor <= alignment_{n,i},
 or prove the rate-floor-free bound gamma <= weightFloor*alignmentFloor,
 or prove the direct centered-source floor
 gamma <= weightFloor*sourceFloor and sourceFloor <= -centered(S_n)_i,
+or prove the gamma-free product window
+0 < stepFloor*(weightFloor*sourceFloor) <= 2,
 from the physical causal-growth law
 ```
 

@@ -118,7 +118,9 @@
 > floor gate removes the auxiliary alignment observable and proves the same
 > theorem from `gamma <= weightFloor*sourceFloor`,
 > `weightFloor <= w_{n,i}`, and
-> `sourceFloor <= -centered(S_n)_i`.
+> `sourceFloor <= -centered(S_n)_i`; the newest gamma-free product gate sets
+> the rate constant to `weightFloor*sourceFloor` itself and only requires
+> `0 < stepFloor*(weightFloor*sourceFloor) <= 2`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

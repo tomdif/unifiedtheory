@@ -168,7 +168,9 @@ weight and anti-alignment amplitude.  The newest rate-floor-free gate replaces
 floor gate removes the auxiliary alignment observable and proves the same
 theorem from `gamma <= weightFloor*sourceFloor`,
 `weightFloor <= w_{n,i}`, and
-`sourceFloor <= -centered(S_n)_i`.
+`sourceFloor <= -centered(S_n)_i`.  The newest gamma-free product gate sets
+the rate constant to `weightFloor*sourceFloor` itself and only requires
+`0 < stepFloor*(weightFloor*sourceFloor) <= 2`.
 
 ## Lean Names
 
@@ -286,6 +288,7 @@ physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable
