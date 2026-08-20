@@ -97,13 +97,21 @@ physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_descent_budget_of_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
+physicalGrowthRepairRefinement_product_bound_of_step_factors
+physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
+physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -152,6 +160,19 @@ then Lean proves convergence with the explicit contraction factor
 step lower bound from the actual causal-growth law, or replace them with a
 summable-rate physical analogue.
 
+The summable-rate analogue is now formal too.  For variable factors `q_n`,
+Lean proves that
+
+```text
+D_{n+1} <= q_n*D_n
+Product_{k<n} q_k -> 0
+```
+
+implies `D_n -> 0` while preserving the horizon channel.  The explicit
+variable-rate-floor version uses
+`q_n = 1 - step_n*rateFloor_n/2`, so a nonuniform causal-growth proof may aim
+at product decay rather than a uniform contraction constant.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -166,6 +187,7 @@ Definition of done:
 ```text
 derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
 0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
+or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
 from the physical causal-growth law
 ```
 

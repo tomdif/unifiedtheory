@@ -191,7 +191,9 @@ newest rate-floor gate derives that budget from
 `2*(1 - q) <= step_n*rateFloor_n`.  The newest uniform gate derives convergence
 with `q = 1 - stepFloor*gamma/2` from `gamma*D_n <= descentRate_n`,
 `stepFloor <= step_n`, and `0 < stepFloor*gamma <= 2`.  The physical target is
-now this uniform rate-floor package from causal growth.
+now this uniform rate-floor package from causal growth, or the nonuniform
+product-decay replacement `Product_{k<n} q_k -> 0` for variable factors
+`q_n = 1 - step_n*rateFloor_n/2`.
 
 Key names:
 
@@ -223,13 +225,21 @@ physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_descent_budget_of_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
+physicalGrowthRepairRefinement_product_bound_of_step_factors
+physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
+physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 ```
 
 ## Numerical Evidence

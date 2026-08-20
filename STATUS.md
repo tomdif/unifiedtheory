@@ -90,7 +90,9 @@
 > convergence with `q = 1 - stepFloor*gamma/2` from
 > `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
 > `0 < stepFloor*gamma <= 2`, making those uniform bounds the next theorem
-> target.
+> target. The newest variable-product gate also proves convergence from
+> `D_{n+1} <= q_n*D_n` and `Product_{k<n} q_k -> 0`, with an explicit
+> variable-rate-floor specialization `q_n = 1 - step_n*rateFloor_n/2`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

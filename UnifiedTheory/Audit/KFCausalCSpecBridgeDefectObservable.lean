@@ -1321,6 +1321,42 @@ theorem physicalGrowthRepairRefinement_step_factor_of_rate_floor
     (R.certified_step n) (le_of_lt (R.step_pos n))
     (htotal_nonneg n) (hrate n) (hstep_budget n)
 
+theorem physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hstep_budget : ∀ n, 2 * (1 - q n) ≤ step n * rateFloor n) :
+    ∀ n, total (n + 1) ≤ q n * total n := by
+  intro n
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_rate_floor
+    (R.certified_step n) (le_of_lt (R.step_pos n))
+    (htotal_nonneg n) (hrate n) (hstep_budget n)
+
+theorem physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n) :
+    ∀ n, total (n + 1) ≤
+      (1 - step n * rateFloor n / 2) * total n := by
+  refine physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
+    R htotal_nonneg hrate ?_
+  intro n
+  nlinarith
+
 theorem physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1418,6 +1454,36 @@ theorem physicalGrowthRepairRefinement_geometric_bound_of_step_factor
             rw [pow_succ]
             ring
 
+theorem physicalGrowthRepairRefinement_product_bound_of_step_factors
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (_R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (hq_nonneg : ∀ n, 0 ≤ q n)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q n * total n) :
+    ∀ n, total n ≤ total 0 * Finset.prod (Finset.range n) q := by
+  intro n
+  induction n with
+  | zero =>
+      simp
+  | succ n ih =>
+      change total (n + 1) ≤
+        total 0 * Finset.prod (Finset.range (n + 1)) q
+      have hmul :
+          q n * total n ≤
+            q n * (total 0 * Finset.prod (Finset.range n) q) :=
+        mul_le_mul_of_nonneg_left ih (hq_nonneg n)
+      calc
+        total (n + 1) ≤ q n * total n := hstep_factor n
+        _ ≤ q n * (total 0 * Finset.prod (Finset.range n) q) := hmul
+        _ = total 0 * Finset.prod (Finset.range (n + 1)) q := by
+            rw [Finset.prod_range_succ]
+            ring
+
 theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1439,6 +1505,24 @@ theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
     simpa using hpow.const_mul initial
   exact squeeze_zero htotal_nonneg hbound hmajor
 
+theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (_R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hbound :
+      ∀ n, total n ≤ total 0 * Finset.prod (Finset.range n) q)
+    (hproduct :
+      Tendsto (fun n : ℕ => total 0 * Finset.prod (Finset.range n) q)
+        atTop (nhds 0)) :
+    Tendsto total atTop (nhds 0) := by
+  exact squeeze_zero htotal_nonneg hbound hproduct
+
 theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1458,6 +1542,28 @@ theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
     R (total 0) q hq0 hq1 htotal_nonneg
       (physicalGrowthRepairRefinement_geometric_bound_of_step_factor
         R q hq0 hstep_factor)
+
+theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hq_nonneg : ∀ n, 0 ≤ q n)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q n * total n)
+    (hproduct :
+      Tendsto (fun n : ℕ => total 0 * Finset.prod (Finset.range n) q)
+        atTop (nhds 0)) :
+    Tendsto total atTop (nhds 0) :=
+  physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
+    R htotal_nonneg
+      (physicalGrowthRepairRefinement_product_bound_of_step_factors
+        R hq_nonneg hstep_factor)
+      hproduct
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     {ι : Type*} [Fintype ι]
@@ -1504,6 +1610,30 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
   exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
     physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
       R q hq0 hq1 htotal_nonneg hstep_factor⟩
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hq_nonneg : ∀ n, 0 ≤ q n)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q n * total n)
+    (hproduct :
+      Tendsto (fun n : ℕ => total 0 * Finset.prod (Finset.range n) q)
+        atTop (nhds 0)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
+    physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
+      R htotal_nonneg hq_nonneg hstep_factor hproduct⟩
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
     {ι : Type*} [Fintype ι]
@@ -1643,6 +1773,64 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       R (1 - stepFloor * gamma / 2) gamma stepFloor hq0 hq1
       htotal_nonneg hgamma_nonneg hrate hstep_floor hfloor_budget
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor q : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hq_nonneg : ∀ n, 0 ≤ q n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hstep_budget : ∀ n, 2 * (1 - q n) ≤ step n * rateFloor n)
+    (hproduct :
+      Tendsto (fun n : ℕ => total 0 * Finset.prod (Finset.range n) q)
+        atTop (nhds 0)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
+      R htotal_nonneg hq_nonneg
+      (physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
+        R htotal_nonneg hrate hstep_budget)
+      hproduct
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hq_nonneg : ∀ n, 0 ≤ 1 - step n * rateFloor n / 2)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hproduct :
+      Tendsto
+        (fun n : ℕ =>
+          total 0 * Finset.prod (Finset.range n)
+            (fun k => 1 - step k * rateFloor k / 2))
+        atTop (nhds 0)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
+      R htotal_nonneg hq_nonneg
+      (physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
+        R htotal_nonneg hrate)
+      hproduct
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1668,5 +1856,8 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
