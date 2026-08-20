@@ -78,7 +78,8 @@
 > for physical repair sources with controlled finite remainders. The new
 > `PhysicalGrowthRepairRefinement` wrapper records that gate at every finite
 > refinement stage and proves stepwise horizon protection together with
-> `D_{n+1} < D_n`.
+> `D_{n+1} < D_n`; under a geometric majorant `D_n <= D_0*q^n`,
+> `0 <= q < 1`, Lean now proves aggregate convergence `D_n -> 0`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

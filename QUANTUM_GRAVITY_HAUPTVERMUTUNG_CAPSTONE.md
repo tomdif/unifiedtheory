@@ -473,8 +473,10 @@ source with aggregate descent and a half-remainder bound strictly contracts
 the aggregate distortion.  The refinement wrapper
 `PhysicalGrowthRepairRefinement` records this source certificate at every
 finite stage and proves stepwise horizon protection together with
-`D_{n+1} < D_n`.  The next proof target is no longer just one-step descent; it
-is a geometric or summable-rate convergence theorem for the physical aggregate.
+`D_{n+1} < D_n`.  With an additional geometric majorant
+`D_n <= D_0*q^n`, `0 <= q < 1`, the same wrapper proves aggregate convergence
+`D_n -> 0`.  The next proof target is to derive that majorant, or a
+summable-rate replacement, from the physical causal-growth law.
 
 Key theorem names:
 
@@ -545,6 +547,8 @@ physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthRepairRefinement_step_contracts
 physicalGrowthRepairRefinement_step_strictly_contracts
 physicalGrowthRepairRefinement_protected_and_contracts
+physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

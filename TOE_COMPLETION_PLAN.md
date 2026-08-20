@@ -88,6 +88,7 @@ physicalGrowthSuppliesRepairSource_strictly_contracts
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 PhysicalGrowthRepairRefinement
 physicalGrowthRepairRefinement_protected_and_contracts
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -105,10 +106,18 @@ quadraticResponse(S_n, c_n - J_n) = 0
 D_{n+1} < D_n
 ```
 
+Under an additional geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean
+now proves aggregate convergence:
+
+```text
+D_n -> 0
+```
+
 Definition of done:
 
 ```text
-D_{n+1} <= q_n D_n, eventually with q_n <= q < 1
+derive D_n <= D_0*q^n, eventually with 0 <= q < 1,
+from the physical causal-growth law
 ```
 
 while first-order and second central horizon-area responses remain protected.
@@ -166,5 +175,5 @@ Open work:
    component.
 4. Instantiate `PhysicalGrowthSuppliesRepairSource` from the actual
    causal-growth law instead of assuming it.
-5. Upgrade stepwise strict contraction to a geometric or summable-rate
-   convergence theorem.
+5. Derive the geometric or summable-rate convergence bound from the actual
+   physical causal-growth law.

@@ -27,6 +27,7 @@ set_option autoImplicit false
 namespace UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 
 open scoped BigOperators
+open Filter
 open UnifiedTheory.Audit.KFCausalCSpecBridgePoset
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecOverlapScore
@@ -1216,6 +1217,50 @@ theorem physicalGrowthRepairRefinement_protected_and_contracts
   exact ⟨physicalGrowthRepairRefinement_step_protected R n,
     physicalGrowthRepairRefinement_step_strictly_contracts R n⟩
 
+theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (_R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (initial q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hbound : ∀ n, total n ≤ initial * q ^ n) :
+    Tendsto total atTop (nhds 0) := by
+  have hpow : Tendsto (fun n : ℕ => q ^ n) atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one hq0 hq1
+  have hmajor : Tendsto (fun n : ℕ => initial * q ^ n) atTop (nhds 0) := by
+    simpa using hpow.const_mul initial
+  exact squeeze_zero htotal_nonneg hbound hmajor
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (initial q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hbound : ∀ n, total n ≤ initial * q ^ n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
+    physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
+      R initial q hq0 hq1 htotal_nonneg hbound⟩
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1234,5 +1279,6 @@ theorem physicalGrowthRepairRefinement_protected_and_contracts
 #print axioms physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
 #print axioms physicalGrowthSuppliesRepairSource_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_protected_and_contracts
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

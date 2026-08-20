@@ -118,7 +118,9 @@ Machine-checked additions now cover:
   horizon-protected physical repair source with a half-remainder bound strictly
   contracts the aggregate distortion; the new `PhysicalGrowthRepairRefinement`
   wrapper records this certificate at every finite refinement step and proves
-  stepwise horizon protection together with `D_{n+1} < D_n`.
+  stepwise horizon protection together with `D_{n+1} < D_n`; under a
+  geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean now proves aggregate
+  convergence `D_n -> 0`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

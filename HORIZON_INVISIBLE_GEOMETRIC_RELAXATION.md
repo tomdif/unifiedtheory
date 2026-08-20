@@ -180,7 +180,8 @@ target: derive a horizon-protected repair source whose aggregate descent and
 finite half-remainder bound imply strict contraction.  The
 `PhysicalGrowthRepairRefinement` wrapper records such a certificate at every
 finite refinement step and proves horizon protection plus strict stepwise
-aggregate decrease.
+aggregate decrease.  With a geometric majorant `D_n <= D_0*q^n`,
+`0 <= q < 1`, the same wrapper now proves `D_n -> 0`.
 
 Key names:
 
@@ -203,6 +204,7 @@ physicalHauptvermutungTotalDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthRepairRefinement_protected_and_contracts
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 ```
 
 ## Numerical Evidence
