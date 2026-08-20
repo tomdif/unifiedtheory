@@ -101,10 +101,14 @@ physicalGrowthRepairRefinement_step_factor_of_variable_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
 physicalGrowthRepairRefinement_product_bound_of_step_factors
+physicalGrowthRepairRefinement_product_bound_of_factor_le
 physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
+physicalGrowthRepairRefinement_product_majorant_tendsto_zero_of_factor_le
 physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
+physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_uniform_bound
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
@@ -112,6 +116,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -173,6 +178,15 @@ variable-rate-floor version uses
 `q_n = 1 - step_n*rateFloor_n/2`, so a nonuniform causal-growth proof may aim
 at product decay rather than a uniform contraction constant.
 
+Lean also derives product decay from a uniform factor majorant:
+
+```text
+0 <= q_n <= qBound < 1
+```
+
+so the nonuniform target can be sharpened to bounding the explicit factors
+`1 - step_n*rateFloor_n/2` below one.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -188,6 +202,7 @@ Definition of done:
 derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
 0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
 or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
+or prove 0 <= q_n <= qBound < 1 for those variable factors,
 from the physical causal-growth law
 ```
 

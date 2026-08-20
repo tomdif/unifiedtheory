@@ -133,7 +133,8 @@ Machine-checked additions now cover:
   causal growth; the newest variable-product gate also proves convergence
   from `D_{n+1} <= q_n*D_n` and `Product_{k<n} q_k -> 0`, with an explicit
   variable-rate-floor specialization
-  `q_n = 1 - step_n*rateFloor_n/2`.
+  `q_n = 1 - step_n*rateFloor_n/2`; the newest uniform-bound bridge derives
+  that product decay from `0 <= q_n <= qBound < 1`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

@@ -1484,6 +1484,27 @@ theorem physicalGrowthRepairRefinement_product_bound_of_step_factors
             rw [Finset.prod_range_succ]
             ring
 
+theorem physicalGrowthRepairRefinement_product_bound_of_factor_le
+    (qSeq : ℕ → ℝ) (qBound : ℝ)
+    (hqBound_nonneg : 0 ≤ qBound)
+    (hqSeq_nonneg : ∀ n, 0 ≤ qSeq n)
+    (hqSeq_le : ∀ n, qSeq n ≤ qBound) :
+    ∀ n, Finset.prod (Finset.range n) qSeq ≤ qBound ^ n := by
+  intro n
+  induction n with
+  | zero =>
+      simp
+  | succ n ih =>
+      calc
+        Finset.prod (Finset.range (n + 1)) qSeq =
+            Finset.prod (Finset.range n) qSeq * qSeq n := by
+              rw [Finset.prod_range_succ]
+        _ ≤ qBound ^ n * qBound :=
+            mul_le_mul ih (hqSeq_le n) (hqSeq_nonneg n)
+              (pow_nonneg hqBound_nonneg n)
+        _ = qBound ^ (n + 1) := by
+            rw [pow_succ]
+
 theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1522,6 +1543,38 @@ theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_product_bound
         atTop (nhds 0)) :
     Tendsto total atTop (nhds 0) := by
   exact squeeze_zero htotal_nonneg hbound hproduct
+
+theorem physicalGrowthRepairRefinement_product_majorant_tendsto_zero_of_factor_le
+    (initial : ℝ) (qSeq : ℕ → ℝ) (qBound : ℝ)
+    (hinitial_nonneg : 0 ≤ initial)
+    (hqBound_nonneg : 0 ≤ qBound)
+    (hqBound_lt_one : qBound < 1)
+    (hqSeq_nonneg : ∀ n, 0 ≤ qSeq n)
+    (hqSeq_le : ∀ n, qSeq n ≤ qBound) :
+    Tendsto (fun n : ℕ => initial * Finset.prod (Finset.range n) qSeq)
+      atTop (nhds 0) := by
+  have hpow : Tendsto (fun n : ℕ => qBound ^ n) atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one hqBound_nonneg hqBound_lt_one
+  have hmajor : Tendsto (fun n : ℕ => initial * qBound ^ n)
+      atTop (nhds 0) := by
+    simpa using hpow.const_mul initial
+  have hnonneg :
+      ∀ n, 0 ≤ initial * Finset.prod (Finset.range n) qSeq := by
+    intro n
+    exact mul_nonneg hinitial_nonneg
+      (Finset.prod_nonneg (by
+        intro k _hk
+        exact hqSeq_nonneg k))
+  have hbound :
+      ∀ n,
+        initial * Finset.prod (Finset.range n) qSeq ≤
+          initial * qBound ^ n := by
+    intro n
+    exact mul_le_mul_of_nonneg_left
+      (physicalGrowthRepairRefinement_product_bound_of_factor_le
+        qSeq qBound hqBound_nonneg hqSeq_nonneg hqSeq_le n)
+      hinitial_nonneg
+  exact squeeze_zero hnonneg hbound hmajor
 
 theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
     {ι : Type*} [Fintype ι]
@@ -1564,6 +1617,29 @@ theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_facto
       (physicalGrowthRepairRefinement_product_bound_of_step_factors
         R hq_nonneg hstep_factor)
       hproduct
+
+theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_uniform_bound
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total qSeq : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (qBound : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hqBound_nonneg : 0 ≤ qBound)
+    (hqBound_lt_one : qBound < 1)
+    (hqSeq_nonneg : ∀ n, 0 ≤ qSeq n)
+    (hqSeq_le : ∀ n, qSeq n ≤ qBound)
+    (hstep_factor : ∀ n, total (n + 1) ≤ qSeq n * total n) :
+    Tendsto total atTop (nhds 0) :=
+  physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
+    R htotal_nonneg hqSeq_nonneg hstep_factor
+      (physicalGrowthRepairRefinement_product_majorant_tendsto_zero_of_factor_le
+        (total 0) qSeq qBound (htotal_nonneg 0) hqBound_nonneg
+        hqBound_lt_one hqSeq_nonneg hqSeq_le)
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     {ι : Type*} [Fintype ι]
@@ -1634,6 +1710,32 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
   exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
     physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_product
       R htotal_nonneg hq_nonneg hstep_factor hproduct⟩
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total qSeq : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (qBound : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hqBound_nonneg : 0 ≤ qBound)
+    (hqBound_lt_one : qBound < 1)
+    (hqSeq_nonneg : ∀ n, 0 ≤ qSeq n)
+    (hqSeq_le : ∀ n, qSeq n ≤ qBound)
+    (hstep_factor : ∀ n, total (n + 1) ≤ qSeq n * total n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
+    physicalGrowthRepairRefinement_total_tendsto_zero_of_variable_step_factor_uniform_bound
+      R qBound htotal_nonneg hqBound_nonneg hqBound_lt_one
+      hqSeq_nonneg hqSeq_le hstep_factor⟩
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
     {ι : Type*} [Fintype ι]
@@ -1831,6 +1933,34 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
         R htotal_nonneg hrate)
       hproduct
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (qBound : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hqBound_nonneg : 0 ≤ qBound)
+    (hqBound_lt_one : qBound < 1)
+    (hqSeq_nonneg : ∀ n, 0 ≤ 1 - step n * rateFloor n / 2)
+    (hqSeq_le : ∀ n, 1 - step n * rateFloor n / 2 ≤ qBound)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
+      R qBound htotal_nonneg hqBound_nonneg hqBound_lt_one
+      hqSeq_nonneg hqSeq_le
+      (physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
+        R htotal_nonneg hrate)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1859,5 +1989,7 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
