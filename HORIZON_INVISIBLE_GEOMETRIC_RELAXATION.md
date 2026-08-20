@@ -78,6 +78,41 @@ leakage-clean, the parent-local sign choice makes it descend the named
 Hauptvermutung distortion observable, while the finite horizon-area response
 still vanishes through second order.
 
+## Direct Attack: Canonical Residual Gradient
+
+The new attack is to stop guessing the repair direction.  Given any certificate
+observable `G`, project `G` off the horizon source and move down the residual:
+
+```text
+S_can = -horizonOrthogonalResidual(w,J,G).
+```
+
+This is canonical, parent-local, and invariant under relabeling of the birth
+options.  Lean now proves:
+
+```text
+horizonOrthogonalResidual_linearResponse_rawDefect
+canonicalHorizonInvisibleDescentSource_orthogonal
+canonicalHorizonInvisibleDescentSource_response_rawDefect
+canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
+canonicalHorizonInvisibleDescentSource_area_response_zero
+canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+```
+
+The central identity is:
+
+```text
+linearResponse(S_can, G)
+  = -variance(horizonOrthogonalResidual(w,J,G)).
+```
+
+So, whenever the residual variance is positive, `S_can` strictly descends `G`
+and has zero first-order horizon-area response.  Lean also isolates the
+remaining obstruction exactly: the second central horizon-area term is the
+negative leakage of the same residual gradient.  If that leakage vanishes, the
+canonical source is already a protected finite certificate descent source.
+
 ## Numerical Evidence
 
 The current gate probe uses the certificate-basis direction
@@ -96,6 +131,44 @@ at steps `0.005` and `0.010`.
 That is not a uniform refinement proof.  It is evidence that the finite theorem
 is pointing at the correct physical shape: the source should be allowed to
 depend on the parent state.
+
+The canonical residual-gradient attack is stronger on the same sample.  Using
+
+```text
+source = residual(cert_scaledDistortionBound)
+target = cert_scaledDistortionBound
+```
+
+with global negative orientation gives zero first-order horizon response,
+target descent on 35/35 parents, and gate pass on 35/35 parents at steps
+`0.005`, `0.010`, `0.020`, and `0.050`.  The mean target response is
+`-2.918796`, but the mean second-order leakage is still `0.477156`, so this is
+not yet second-order protected.
+
+The null-cone correction fixes the next obstruction empirically.  The source
+
+```text
+residual(cert_scaledDistortionBound) + 3.5 residual(-gap)
+```
+
+has near-zero sample-mean leakage on the seed-53 scan:
+
+```text
+first_area     = -1.74e-17
+quadratic_area =  7.41e-04
+leakage        = -7.41e-04
+quad_plus_leak =  3.97e-18
+```
+
+With local orientation it still descends the target on 35/35 parents and
+passes the half-remainder gate on all sampled parents through step `0.050`.
+On an independent seed-157 sample it again descends 33/33 parents and passes
+the gate through step `0.050`, with leakage `5.98e-02 +/- 5.7e-02`.
+
+The empirical target is now sharper: prove that the coefficient correcting
+`S_can` by the `-gap` residual, or its invariant replacement, converges to a
+leakage-null value along refinement while preserving the residual-gradient
+descent.
 
 ## Physical Interpretation
 

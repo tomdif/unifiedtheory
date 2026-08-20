@@ -86,7 +86,11 @@ Machine-checked additions now cover:
   packaged as `orientedProtectedHauptvermutungDistortionSource_bridge`, a
   finite theorem showing that a state-dependent geometry-repair channel can
   descend the displayed Hauptvermutung distortion observable without changing
-  the Dorau--Much horizon area response through second order.
+  the Dorau--Much horizon area response through second order; the current
+  attack defines `canonicalHorizonInvisibleDescentSource`, proves it descends
+  its defining observable at residual-variance rate with zero first-order
+  horizon response, and numerically finds that adding `3.5 residual(-gap)`
+  nearly cancels second-order leakage while preserving local descent.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

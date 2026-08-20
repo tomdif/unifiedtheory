@@ -399,6 +399,18 @@ observable while leaving the Dorau--Much horizon-area response zero through
 second order.  It remains a finite mechanism until the source and uniform
 remainder bound are derived from the physical causal-growth dynamics.
 
+The latest attack identifies a canonical source instead of an ad hoc one:
+take the displayed distortion observable itself, project it off the horizon
+source, and move down the residual.  Lean proves this canonical
+`canonicalHorizonInvisibleDescentSource` has zero first-order horizon response
+and descends its defining observable with response
+`-variance(horizonOrthogonalResidual(w,J,G))`.  The second-order obstruction is
+also isolated exactly as the residual gradient's horizon leakage.  Numerically,
+the pure canonical source descends 35/35 seed-53 parents, and the null-cone
+corrected source `residual(cert_scaledDistortionBound) + 3.5 residual(-gap)`
+passes the local half-remainder gate through step `0.050` on both seed-53
+and seed-157 samples.
+
 Key theorem names:
 
 ```text
@@ -423,6 +435,11 @@ ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 linearResponse_orientTowardObservable_eq_neg_abs
 horizonSecondOrderLeakage_orientTowardObservable
 oriented_response_negative_of_nonzero
+horizonOrthogonalResidual_linearResponse_rawDefect
+canonicalHorizonInvisibleDescentSource_response_rawDefect
+canonicalHorizonInvisibleDescentSource_area_response_zero
+canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

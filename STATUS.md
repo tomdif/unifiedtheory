@@ -45,7 +45,12 @@
 > a horizon-invisible geometric relaxation channel, packaged by
 > `orientedProtectedHauptvermutungDistortionSource_bridge`, can descend the
 > displayed Hauptvermutung distortion observable while leaving the Dorau--Much
-> horizon area response zero through second order.
+> horizon area response zero through second order. The latest attack adds
+> `canonicalHorizonInvisibleDescentSource`: projecting the certificate
+> observable itself off the horizon source gives a parent-local gradient that
+> Lean proves descends at residual-variance rate with zero first-order horizon
+> response; the empirical null-cone correction `+ 3.5 residual(-gap)` nearly
+> cancels second-order leakage while preserving the local descent gate.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

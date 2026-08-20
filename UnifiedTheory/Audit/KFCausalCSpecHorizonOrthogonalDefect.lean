@@ -1054,12 +1054,145 @@ theorem horizonSecondOrderLeakage_neg_source
     ring
   have hsq :
       (fun i => centeredSource w (fun j => -S j) i ^ 2) =
-        fun i => centeredSource w S i ^ 2 := by
+      fun i => centeredSource w S i ^ 2 := by
     funext i
     unfold centeredSource
     rw [hnegExp]
     ring
   rw [hsq]
+
+/-! ## 7a. Canonical horizon-invisible gradient source -/
+
+/-- The canonical parent-local repair source for an observable `G`: project
+`G` off the horizon source and move down that residual gradient. -/
+noncomputable def canonicalHorizonInvisibleDescentSource
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) : ι → ℝ :=
+  fun i => -horizonOrthogonalResidual w J G i
+
+/-- The horizon residual of `G` has response equal to its own variance against
+the raw observable `G`. -/
+theorem horizonOrthogonalResidual_linearResponse_rawDefect
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w (horizonOrthogonalResidual w J G) G =
+      variance w (horizonOrthogonalResidual w J G) := by
+  let R : ι → ℝ := horizonOrthogonalResidual w J G
+  have horth : covariance w R J = 0 := by
+    simpa [R] using covariance_horizonOrthogonalResidual_self w J G hvar
+  have hsplit :
+      G = fun i => horizonProjectionCoeff w J G * J i + R i := by
+    symm
+    simpa [R] using rawDefect_eq_projection_plus_residual w J G
+  rw [linearResponse_eq_covariance]
+  change covariance w G R = variance w R
+  rw [hsplit]
+  calc
+    covariance w (fun i => horizonProjectionCoeff w J G * J i + R i) R
+        =
+          horizonProjectionCoeff w J G * covariance w J R +
+            covariance w R R := by
+          rw [covariance_add_left]
+          rw [covariance_const_mul_left]
+    _ = variance w R := by
+          have horth' : covariance w J R = 0 := by
+            rw [covariance_comm]
+            exact horth
+          rw [horth']
+          unfold variance
+          ring
+
+/-- The canonical source is first-order horizon-invisible. -/
+theorem canonicalHorizonInvisibleDescentSource_orthogonal
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ)
+    (hvar : variance w J ≠ 0) :
+    covariance w (canonicalHorizonInvisibleDescentSource w J G) J = 0 := by
+  unfold canonicalHorizonInvisibleDescentSource
+  rw [covariance_neg_left]
+  rw [covariance_horizonOrthogonalResidual_self w J G hvar]
+  ring
+
+/-- The canonical source descends its defining observable at rate equal to the
+negative residual variance. -/
+theorem canonicalHorizonInvisibleDescentSource_response_rawDefect
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w (canonicalHorizonInvisibleDescentSource w J G) G =
+      -variance w (horizonOrthogonalResidual w J G) := by
+  unfold canonicalHorizonInvisibleDescentSource
+  rw [linearResponse_neg_source]
+  rw [horizonOrthogonalResidual_linearResponse_rawDefect w J G hvar]
+
+/-- If the horizon-orthogonal residual has positive variance, the canonical
+source strictly descends the raw observable. -/
+theorem canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ)
+    (hvar : variance w J ≠ 0)
+    (hres : 0 < variance w (horizonOrthogonalResidual w J G)) :
+    linearResponse w (canonicalHorizonInvisibleDescentSource w J G) G < 0 := by
+  rw [canonicalHorizonInvisibleDescentSource_response_rawDefect w J G hvar]
+  linarith
+
+/-- The canonical source preserves first-order horizon area. -/
+theorem canonicalHorizonInvisibleDescentSource_area_response_zero
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (c : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w (canonicalHorizonInvisibleDescentSource w J G)
+        (finiteAreaChange c J) = 0 := by
+  exact orthogonal_source_area_response_zero w J
+    (canonicalHorizonInvisibleDescentSource w J G) c hw
+    (canonicalHorizonInvisibleDescentSource_orthogonal w J G hvar)
+
+/-- The remaining obstruction for the canonical source is exactly the
+second-order horizon leakage of the residual gradient. -/
+theorem canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (c : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w (canonicalHorizonInvisibleDescentSource w J G)
+        (finiteAreaChange c J) = 0 ∧
+      quadraticResponse w (canonicalHorizonInvisibleDescentSource w J G)
+        (finiteAreaChange c J) =
+          -horizonSecondOrderLeakage w J (horizonOrthogonalResidual w J G) := by
+  constructor
+  · exact canonicalHorizonInvisibleDescentSource_area_response_zero
+      w J G c hw hvar
+  · rw [quadraticResponse_finiteAreaChange_eq_neg_leakage w J
+      (canonicalHorizonInvisibleDescentSource w J G) c hw]
+    unfold canonicalHorizonInvisibleDescentSource
+    rw [horizonSecondOrderLeakage_neg_source]
+
+/-- If the canonical residual's second-order leakage vanishes, then the
+canonical gradient is a fully protected finite certificate descent source for
+the raw observable. -/
+theorem canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (c : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hleak :
+      horizonSecondOrderLeakage w J (horizonOrthogonalResidual w J G) = 0) :
+    (linearResponse w (canonicalHorizonInvisibleDescentSource w J G)
+        (finiteAreaChange c J) = 0 ∧
+      quadraticResponse w (canonicalHorizonInvisibleDescentSource w J G)
+        (finiteAreaChange c J) = 0) ∧
+      linearResponse w (canonicalHorizonInvisibleDescentSource w J G) G ≤
+        -variance w (horizonOrthogonalResidual w J G) := by
+  constructor
+  · refine orthogonal_source_firstAndSecondOrder_area_zero w J
+      (canonicalHorizonInvisibleDescentSource w J G) c hw
+      (canonicalHorizonInvisibleDescentSource_orthogonal w J G hvar) ?_
+    unfold canonicalHorizonInvisibleDescentSource
+    rw [horizonSecondOrderLeakage_neg_source]
+    exact hleak
+  · rw [canonicalHorizonInvisibleDescentSource_response_rawDefect w J G hvar]
 
 /-- The response of the Hauptvermutung distortion observable splits into the
 responses of the count-window, curvature-bias, mixed count-curvature, and
@@ -1665,6 +1798,13 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms linearResponse_const_mul_source
 #print axioms linearResponse_neg_source
 #print axioms horizonSecondOrderLeakage_neg_source
+#print axioms horizonOrthogonalResidual_linearResponse_rawDefect
+#print axioms canonicalHorizonInvisibleDescentSource_orthogonal
+#print axioms canonicalHorizonInvisibleDescentSource_response_rawDefect
+#print axioms canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
+#print axioms canonicalHorizonInvisibleDescentSource_area_response_zero
+#print axioms canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+#print axioms canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
 #print axioms linearResponse_hauptvermutungDistortionObservable
 #print axioms componentResponses_descend_hauptvermutungDistortionObservable
 #print axioms linearResponse_orientTowardObservable_eq_neg_abs

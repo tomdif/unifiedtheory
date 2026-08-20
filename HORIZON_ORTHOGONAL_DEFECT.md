@@ -143,6 +143,13 @@ ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 ProtectedCertificateErrorRefinement.certificate_error_response_negative
 linearResponse_neg_source
 horizonSecondOrderLeakage_neg_source
+horizonOrthogonalResidual_linearResponse_rawDefect
+canonicalHorizonInvisibleDescentSource_orthogonal
+canonicalHorizonInvisibleDescentSource_response_rawDefect
+canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
+canonicalHorizonInvisibleDescentSource_area_response_zero
+canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable
@@ -612,6 +619,46 @@ It is the finite theorem behind the current new-physics lead in
 a state-dependent geometry-repair channel can descend the displayed
 Hauptvermutung distortion observable while staying invisible to the
 Dorau--Much horizon-area response through second order.
+
+## Canonical Residual Attack
+
+The current attack removes one arbitrary choice.  For a certificate observable
+`G`, define the canonical repair direction
+
+```text
+S_can = -horizonOrthogonalResidual(w,J,G).
+```
+
+Lean proves:
+
+```text
+linearResponse(S_can,G)
+  = -variance(horizonOrthogonalResidual(w,J,G)).
+```
+
+Thus, when the residual variance is positive, the canonical source strictly
+descends `G` and has zero first-order horizon-area response.  Lean also proves
+that its remaining second central area response is exactly the residual
+gradient's second-order horizon leakage.  If that leakage vanishes, the
+canonical source is a fully protected finite certificate descent source.
+
+Key theorem names:
+
+```text
+canonicalHorizonInvisibleDescentSource_response_rawDefect
+canonicalHorizonInvisibleDescentSource_area_response_zero
+canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
+canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+```
+
+Numerically, the pure canonical source
+`residual(cert_scaledDistortionBound)` descends
+`cert_scaledDistortionBound` on 35/35 sampled seed-53 parents and passes the
+half-remainder gate through step `0.050`, but has nonzero mean leakage
+`4.77e-01`.  Adding the null-cone correction
+`3.5 residual(-gap)` reduces sample-mean leakage to `-7.41e-04`; with local
+orientation the corrected source descends 35/35 seed-53 parents and 33/33
+seed-157 parents, passing the gate through step `0.050` on both samples.
 
 ## Descent Dynamics
 
