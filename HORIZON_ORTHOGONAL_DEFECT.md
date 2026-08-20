@@ -149,7 +149,9 @@ gain-window gate derives this bound from `0 < beta`,
 `beta <= step_n*rateFloor_n`, and `step_n*rateFloor_n <= 2`.  The newest
 physical-total version discharges the external `D_n >= 0` side condition when
 `D_n` is exactly the displayed physical aggregate with nonnegative component
-observables.
+observables.  The newest local-descent version replaces the global
+`rateFloor_n*D_n <= descentRate_n` assumption with finite per-cell descent
+certificates whose sum is `descentRate_n`.
 
 ## Lean Names
 
@@ -247,6 +249,8 @@ physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 physicalHauptvermutungTotalDistortion_sequence_nonneg
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
+physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

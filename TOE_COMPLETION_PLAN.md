@@ -121,6 +121,8 @@ physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 physicalHauptvermutungTotalDistortion_sequence_nonneg
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
+physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -207,6 +209,12 @@ hypothesis when the tracked total is exactly
 `physicalHauptvermutungTotalDistortion` and the count-window, curvature-bias,
 and spectral-locality components are nonnegative at every stage.
 
+The newest local-descent version removes the global
+`rateFloor_n*D_n <= descentRate_n` assumption when each finite local component
+satisfies
+`rateFloor_n*localDistortion_{n,i} <= localDescent_{n,i}` and
+`descentRate_n` is the sum of those local descent certificates.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -225,6 +233,7 @@ or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
 or prove 0 <= q_n <= qBound < 1 for those variable factors,
 or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
 and prove D_n is the displayed physical aggregate with nonnegative components,
+and prove summed local descent certificates for the physical aggregate,
 from the physical causal-growth law
 ```
 

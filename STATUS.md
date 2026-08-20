@@ -99,7 +99,9 @@
 > `step_n*rateFloor_n <= 2`; the newest physical-total version discharges the
 > external `D_n >= 0` side condition when `D_n` is exactly
 > `physicalHauptvermutungTotalDistortion` with nonnegative component
-> observables.
+> observables; the newest local-descent version replaces the global
+> `rateFloor_n*D_n <= descentRate_n` assumption with finite per-cell descent
+> certificates whose sum is `descentRate_n`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

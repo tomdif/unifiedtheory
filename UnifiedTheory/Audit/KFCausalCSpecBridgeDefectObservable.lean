@@ -981,6 +981,33 @@ theorem physicalHauptvermutungTotalDistortion_sequence_nonneg
       (scale n) (edge n) (candidate n)
       (hcount n) (hcurv n) (hlocal n)
 
+theorem physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
+    {ι : Type*} [Fintype ι]
+    {countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale total rateFloor descentRate : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {localDescent : ℕ → ι → ℝ}
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hlocal_descent :
+      ∀ n i,
+        rateFloor n *
+          physicalHauptvermutungDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n) i ≤ localDescent n i)
+    (hdescent_eq : ∀ n, descentRate n = ∑ i, localDescent n i) :
+    ∀ n, rateFloor n * total n ≤ descentRate n := by
+  intro n
+  rw [htotal_eq n, hdescent_eq n]
+  unfold physicalHauptvermutungTotalDistortion
+  rw [Finset.mul_sum]
+  exact Finset.sum_le_sum (fun i _ => hlocal_descent n i)
+
 theorem physicalHauptvermutungTotalDistortion_eq_zero_iff
     {ι : Type*} [Fintype ι]
     (countWindow curvatureBias spectralLocality : ι → ℝ)
@@ -2066,6 +2093,48 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
         hcount hcurv hlocal htotal_eq)
       hrate hgain_lower hgain_upper
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {localDescent : ℕ → ι → ℝ}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta : ℝ)
+    (hbeta_pos : 0 < beta)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hlocal : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hlocal_descent :
+      ∀ n i,
+        rateFloor n *
+          physicalHauptvermutungDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n) i ≤ localDescent n i)
+    (hdescent_eq : ∀ n, descentRate n = ∑ i, localDescent n i)
+    (hgain_lower : ∀ n, beta ≤ step n * rateFloor n)
+    (hgain_upper : ∀ n, step n * rateFloor n ≤ 2) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
+      R beta hbeta_pos hcount hcurv hlocal htotal_eq
+      (physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
+        htotal_eq hlocal_descent hdescent_eq)
+      hgain_lower hgain_upper
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -2098,5 +2167,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
