@@ -1136,6 +1136,55 @@ theorem physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
   exact physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
     C hstep (by nlinarith)
 
+theorem physicalGrowthSuppliesRepairSource_descent_budget_of_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal q rateFloor : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (_C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 ≤ step)
+    (htotal : 0 ≤ currentTotal)
+    (hrate : rateFloor * currentTotal ≤ descentRate)
+    (hstep_budget : 2 * (1 - q) ≤ step * rateFloor) :
+    2 * (1 - q) * currentTotal ≤ step * descentRate := by
+  have hbudgetMul :
+      (2 * (1 - q)) * currentTotal ≤
+        (step * rateFloor) * currentTotal :=
+    mul_le_mul_of_nonneg_right hstep_budget htotal
+  have hrateMul :
+      step * (rateFloor * currentTotal) ≤ step * descentRate :=
+    mul_le_mul_of_nonneg_left hrate hstep
+  calc
+    2 * (1 - q) * currentTotal =
+        (2 * (1 - q)) * currentTotal := by ring
+    _ ≤ (step * rateFloor) * currentTotal := hbudgetMul
+    _ = step * (rateFloor * currentTotal) := by ring
+    _ ≤ step * descentRate := hrateMul
+
+theorem physicalGrowthSuppliesRepairSource_step_factor_of_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal q rateFloor : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 ≤ step)
+    (htotal : 0 ≤ currentTotal)
+    (hrate : rateFloor * currentTotal ≤ descentRate)
+    (hstep_budget : 2 * (1 - q) ≤ step * rateFloor) :
+    nextTotal ≤ q * currentTotal := by
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
+    C hstep
+    (physicalGrowthSuppliesRepairSource_descent_budget_of_rate_floor
+      C hstep htotal hrate hstep_budget)
+
 theorem physicalGrowthSuppliesRepairSource_strictly_contracts
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
@@ -1233,6 +1282,44 @@ theorem physicalGrowthRepairRefinement_step_factor_of_descent_budget
   intro n
   exact physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
     (R.certified_step n) (le_of_lt (R.step_pos n)) (hbudget n)
+
+theorem physicalGrowthRepairRefinement_descent_budget_of_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hstep_budget : ∀ n, 2 * (1 - q) ≤ step n * rateFloor n) :
+    ∀ n, 2 * (1 - q) * total n ≤ step n * descentRate n := by
+  intro n
+  exact physicalGrowthSuppliesRepairSource_descent_budget_of_rate_floor
+    (R.certified_step n) (le_of_lt (R.step_pos n))
+    (htotal_nonneg n) (hrate n) (hstep_budget n)
+
+theorem physicalGrowthRepairRefinement_step_factor_of_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hstep_budget : ∀ n, 2 * (1 - q) ≤ step n * rateFloor n) :
+    ∀ n, total (n + 1) ≤ q * total n := by
+  intro n
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_rate_floor
+    (R.certified_step n) (le_of_lt (R.step_pos n))
+    (htotal_nonneg n) (hrate n) (hstep_budget n)
 
 theorem physicalGrowthRepairRefinement_step_strictly_contracts
     {ι : Type*} [Fintype ι]
@@ -1446,6 +1533,32 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       (physicalGrowthRepairRefinement_step_factor_of_descent_budget
         R q hbudget)
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hstep_budget : ∀ n, 2 * (1 - q) ≤ step n * rateFloor n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
+      R q hq0 hq1 htotal_nonneg
+      (physicalGrowthRepairRefinement_descent_budget_of_rate_floor
+        R q htotal_nonneg hrate hstep_budget)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1468,5 +1581,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

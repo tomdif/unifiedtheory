@@ -479,9 +479,11 @@ finite stage and proves stepwise horizon protection together with
 `D_{n+1} <= q * D_n`, and the newest relative-margin version derives that
 factor from `(1 - q)*D_n <= step_n*descentRate_n/2`.  The newest
 descent-budget version packages the same condition as
-`2*(1 - q)*D_n <= step_n*descentRate_n`.  The next proof target is to derive
-this budget, or a summable-rate replacement, from the physical causal-growth
-law.
+`2*(1 - q)*D_n <= step_n*descentRate_n`.  The newest rate-floor version derives
+that budget from `rateFloor_n*D_n <= descentRate_n` and
+`2*(1 - q) <= step_n*rateFloor_n`.  The next proof target is to derive this
+rate-floor package, or a summable-rate replacement, from the physical
+causal-growth law.
 
 Key theorem names:
 
@@ -550,6 +552,8 @@ physicalGrowthSuppliesRepairSource_contracts
 physicalGrowthSuppliesRepairSource_strictly_contracts
 physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
 physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
+physicalGrowthSuppliesRepairSource_descent_budget_of_rate_floor
+physicalGrowthSuppliesRepairSource_step_factor_of_rate_floor
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthRepairRefinement_step_contracts
 physicalGrowthRepairRefinement_step_strictly_contracts
@@ -558,11 +562,14 @@ physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
+physicalGrowthRepairRefinement_descent_budget_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_rate_floor
 physicalGrowthRepairRefinement_geometric_bound_of_step_factor
 physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

@@ -124,8 +124,10 @@ Machine-checked additions now cover:
   from `D_{n+1} <= q * D_n`; the newest relative-margin gate derives that
   factor from `(1 - q)*D_n <= step_n*descentRate_n/2`; the newest
   descent-budget gate packages the same requirement as
-  `2*(1 - q)*D_n <= step_n*descentRate_n`, making that physical budget the
-  next target from causal growth.
+  `2*(1 - q)*D_n <= step_n*descentRate_n`; the newest rate-floor gate derives
+  that budget from `rateFloor_n*D_n <= descentRate_n` and
+  `2*(1 - q) <= step_n*rateFloor_n`, making those two inequalities the next
+  target from causal growth.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

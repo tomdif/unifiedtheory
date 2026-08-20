@@ -87,15 +87,20 @@ physicalGrowthSuppliesRepairSource_contracts
 physicalGrowthSuppliesRepairSource_strictly_contracts
 physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
 physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
+physicalGrowthSuppliesRepairSource_descent_budget_of_rate_floor
+physicalGrowthSuppliesRepairSource_step_factor_of_rate_floor
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 PhysicalGrowthRepairRefinement
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
+physicalGrowthRepairRefinement_descent_budget_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -115,16 +120,23 @@ D_{n+1} < D_n
 
 Under an additional geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean
 proves aggregate convergence.  The current strongest gate derives the needed
-one-step factor from the descent budget
-`2*(1 - q)*D_n <= step_n*descentRate_n`, equivalently from the relative
-descent margin `(1 - q)*D_n <= step_n*descentRate_n/2`, so Lean now proves:
+one-step factor from a rate-floor package:
+
+```text
+rateFloor_n*D_n <= descentRate_n
+2*(1 - q) <= step_n*rateFloor_n
+```
+
+These two inequalities imply the descent budget
+`2*(1 - q)*D_n <= step_n*descentRate_n`, equivalently the relative descent
+margin `(1 - q)*D_n <= step_n*descentRate_n/2`, so Lean now proves:
 
 ```text
 D_n -> 0
 ```
 
-Next target: derive this descent budget from the actual causal-growth law, or
-replace it with a summable-rate physical analogue.
+Next target: derive the rate floor and step-size coverage from the actual
+causal-growth law, or replace them with a summable-rate physical analogue.
 
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
@@ -138,7 +150,8 @@ D_{n+1} <= q * D_n,    0 <= q < 1
 Definition of done:
 
 ```text
-derive D_{n+1} <= q * D_n, eventually with 0 <= q < 1,
+derive rateFloor_n*D_n <= descentRate_n and
+2*(1 - q) <= step_n*rateFloor_n, eventually with 0 <= q < 1,
 from the physical causal-growth law
 ```
 

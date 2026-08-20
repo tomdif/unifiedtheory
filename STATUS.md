@@ -84,7 +84,10 @@
 > newest relative-margin gate derives the step factor from
 > `(1 - q)*D_n <= step_n*descentRate_n/2`; the newest descent-budget gate
 > packages the same requirement as `2*(1 - q)*D_n <= step_n*descentRate_n`,
-> making that physical budget the next theorem target.
+> and the newest rate-floor gate derives that budget from
+> `rateFloor_n*D_n <= descentRate_n` and
+> `2*(1 - q) <= step_n*rateFloor_n`, making those inequalities the next
+> theorem target.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
