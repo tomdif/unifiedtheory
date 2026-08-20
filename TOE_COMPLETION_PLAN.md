@@ -143,6 +143,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -286,6 +287,13 @@ from `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`; the only
 remaining product-size side condition is the stability upper bound
 `stepFloor*(weightFloor*sourceFloor) <= 2`.
 
+The newest clipped-rate gate removes that stability upper-bound side condition:
+with positive step, weight, and centered-source floors, Lean chooses the
+effective uniform rate
+`min (weightFloor*sourceFloor) (1/stepFloor)`.  This rate is still positive,
+is bounded by the physical source product, and satisfies
+`stepFloor*gamma <= 1`, so the geometric contraction proof applies directly.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -322,6 +330,8 @@ or prove the gamma-free product window
 or prove positive floors
 0 < stepFloor, 0 < weightFloor, 0 < sourceFloor and
 stepFloor*(weightFloor*sourceFloor) <= 2,
+or use the clipped effective rate
+min (weightFloor*sourceFloor) (1/stepFloor) from positive floors alone,
 from the physical causal-growth law
 ```
 

@@ -122,7 +122,11 @@
 > the rate constant to `weightFloor*sourceFloor` itself and only requires
 > `0 < stepFloor*(weightFloor*sourceFloor) <= 2`; the newest positive-floor
 > gate derives that strict positivity from
-> `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.
+> `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`; the newest
+> clipped-rate gate removes the product upper-bound side condition by using
+> the effective rate
+> `min (weightFloor*sourceFloor) (1/stepFloor)`, so the stability product is
+> automatically at most `1`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

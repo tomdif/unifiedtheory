@@ -221,7 +221,10 @@ theorem from `gamma <= weightFloor*sourceFloor`,
 the rate constant to `weightFloor*sourceFloor` itself and only requires
 `0 < stepFloor*(weightFloor*sourceFloor) <= 2`.  The newest positive-floor
 gate derives that strict positivity from
-`0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.
+`0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.  The newest
+clipped-rate gate removes the product upper-bound side condition by using the
+effective rate `min (weightFloor*sourceFloor) (1/stepFloor)`, so the stability
+product is automatically at most `1`.
 
 Key names:
 
@@ -299,6 +302,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 ```
 
 ## Numerical Evidence

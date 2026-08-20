@@ -2936,6 +2936,77 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       hweight_floor hsource_floor
       hdescent_eq hstep_floor
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (stepFloor weightFloor sourceFloor : ℝ)
+    (hstep_pos : 0 < stepFloor)
+    (hweight_pos : 0 < weightFloor)
+    (hsource_pos : 0 < sourceFloor)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hweight_floor : ∀ n i, weightFloor ≤ w n i)
+    (hsource_floor :
+      ∀ n i, sourceFloor ≤ -centeredSource (w n) (source n) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)))
+    (hstep_floor : ∀ n, stepFloor ≤ step n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  let gamma : ℝ := min (weightFloor * sourceFloor) (1 / stepFloor)
+  have hsource_product_pos : 0 < weightFloor * sourceFloor :=
+    mul_pos hweight_pos hsource_pos
+  have hstep_inv_pos : 0 < 1 / stepFloor := by positivity
+  have hgamma_pos : 0 < gamma := by
+    dsimp [gamma]
+    exact lt_min hsource_product_pos hstep_inv_pos
+  have hgamma_nonneg : 0 ≤ gamma := le_of_lt hgamma_pos
+  have hprod_pos : 0 < stepFloor * gamma :=
+    mul_pos hstep_pos hgamma_pos
+  have hgamma_floor : gamma ≤ weightFloor * sourceFloor := by
+    dsimp [gamma]
+    exact min_le_left _ _
+  have hgamma_step : gamma ≤ 1 / stepFloor := by
+    dsimp [gamma]
+    exact min_le_right _ _
+  have hprod_le_one : stepFloor * gamma ≤ 1 := by
+    calc
+      stepFloor * gamma ≤ stepFloor * (1 / stepFloor) :=
+        mul_le_mul_of_nonneg_left hgamma_step (le_of_lt hstep_pos)
+      _ = 1 := by
+        field_simp [ne_of_gt hstep_pos]
+  have hprod_le_two : stepFloor * gamma ≤ 2 :=
+    le_trans hprod_le_one (by norm_num)
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
+      R gamma stepFloor weightFloor sourceFloor
+      hprod_pos hprod_le_two
+      hcount hcurv hspectral htotal_eq
+      hgamma_nonneg (le_of_lt hweight_pos) (le_of_lt hsource_pos)
+      hweight_floor hsource_floor hgamma_floor
+      hdescent_eq hstep_floor
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -2978,5 +3049,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
