@@ -514,7 +514,9 @@ theorem from `gamma <= weightFloor*sourceFloor`,
 `weightFloor <= w_{n,i}`, and
 `sourceFloor <= -centered(S_n)_i`.  The newest gamma-free product gate sets
 the rate constant to `weightFloor*sourceFloor` itself and only requires
-`0 < stepFloor*(weightFloor*sourceFloor) <= 2`.
+`0 < stepFloor*(weightFloor*sourceFloor) <= 2`.  The newest positive-floor
+gate derives that strict positivity from
+`0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.
 
 Key theorem names:
 
@@ -642,6 +644,7 @@ physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

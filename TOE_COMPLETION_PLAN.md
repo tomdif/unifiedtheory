@@ -142,6 +142,7 @@ physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -280,6 +281,11 @@ Thus the finite target becomes the directly physical product window
 `0 < stepFloor*(weightFloor*sourceFloor) <= 2`, plus the same uniform weight
 and centered-source floors.
 
+The newest positive-floor gate derives the strict side of that product window
+from `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`; the only
+remaining product-size side condition is the stability upper bound
+`stepFloor*(weightFloor*sourceFloor) <= 2`.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -313,6 +319,9 @@ or prove the direct centered-source floor
 gamma <= weightFloor*sourceFloor and sourceFloor <= -centered(S_n)_i,
 or prove the gamma-free product window
 0 < stepFloor*(weightFloor*sourceFloor) <= 2,
+or prove positive floors
+0 < stepFloor, 0 < weightFloor, 0 < sourceFloor and
+stepFloor*(weightFloor*sourceFloor) <= 2,
 from the physical causal-growth law
 ```
 

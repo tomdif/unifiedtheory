@@ -120,7 +120,9 @@
 > `weightFloor <= w_{n,i}`, and
 > `sourceFloor <= -centered(S_n)_i`; the newest gamma-free product gate sets
 > the rate constant to `weightFloor*sourceFloor` itself and only requires
-> `0 < stepFloor*(weightFloor*sourceFloor) <= 2`.
+> `0 < stepFloor*(weightFloor*sourceFloor) <= 2`; the newest positive-floor
+> gate derives that strict positivity from
+> `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

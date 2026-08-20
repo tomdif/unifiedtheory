@@ -160,7 +160,9 @@ Machine-checked additions now cover:
   `weightFloor <= w_{n,i}`, and
   `sourceFloor <= -centered(S_n)_i`; the newest gamma-free product gate sets
   the rate constant to `weightFloor*sourceFloor` itself and only requires
-  `0 < stepFloor*(weightFloor*sourceFloor) <= 2`.
+  `0 < stepFloor*(weightFloor*sourceFloor) <= 2`; the newest positive-floor
+  gate derives that strict positivity from
+  `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -171,7 +173,7 @@ window, summed local descent certificates, uniform rate and step floors,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free
-product bounds, and infrared GR/QFT recovery.
+product bounds, positive floor witnesses, and infrared GR/QFT recovery.
 The new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected
