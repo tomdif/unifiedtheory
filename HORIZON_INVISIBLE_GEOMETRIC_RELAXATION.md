@@ -164,13 +164,25 @@ Hauptvermutung distortion proxy by the pair-consistency component and proves
 that the canonical and corrected horizon-invisible source theorems descend
 this concrete order-derived target.
 
+The follow-up exactness theorem sums this target over any finite population of
+candidate edge transports.  The total bridge-census distortion is nonnegative,
+the canonical candidate family is a minimizer with value zero, and total
+distortion is zero iff every candidate permutation is the order-recovered
+transport.  Thus this CSpec component is now an exact finite certificate for
+the transport part of the displayed Hauptvermutung distortion proxy.
+
 Key names:
 
 ```text
 bridgeCensusDefect_canonical_zero
 bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_eq_zero_iff
 bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridgeHauptvermutungDistortion_zero_iff
+cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge

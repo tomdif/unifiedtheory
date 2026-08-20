@@ -106,7 +106,9 @@ Machine-checked additions now cover:
   proves its canonical transport defect is zero and every noncanonical
   transport has positive defect, identifies the pair-consistency distortion
   with that defect, and applies the horizon-orthogonal corrected-source bridge
-  directly to this order-derived target.
+  directly to this order-derived target; Lean also proves the summed finite
+  bridge distortion is nonnegative and vanishes exactly when every candidate
+  transport is the order-recovered one.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

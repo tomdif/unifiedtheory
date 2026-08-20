@@ -67,7 +67,9 @@
 > every noncanonical transport has positive defect, identifies the
 > pair-consistency distortion with this defect, and applies the
 > horizon-orthogonal corrected-source bridge directly to that order-derived
-> target.
+> target. Lean also proves the summed finite bridge distortion is nonnegative
+> and vanishes exactly when every candidate transport is the order-recovered
+> one.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

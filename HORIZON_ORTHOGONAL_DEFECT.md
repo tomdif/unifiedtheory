@@ -120,6 +120,9 @@ relation identifies the transported atom.  The pair-consistency-only displayed
 Hauptvermutung distortion proxy is then proved equal to this defect, so the
 canonical residual-gradient and corrected-source bridge now descend an
 order-derived CSpec target rather than only an abstract certificate error.
+A finite population version proves the summed bridge-census distortion is
+nonnegative and vanishes exactly when every candidate transport is the
+order-recovered one.
 
 ## Lean Names
 
@@ -167,8 +170,13 @@ correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 bridgeCensusDefect_canonical_zero
 bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_eq_zero_iff
 bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridgeHauptvermutungDistortion_zero_iff
+cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge

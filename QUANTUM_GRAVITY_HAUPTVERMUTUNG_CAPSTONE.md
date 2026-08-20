@@ -454,7 +454,10 @@ transport has positive defect, and the order incidence recovers the transported
 atom.  It then identifies the pair-consistency part of the displayed
 Hauptvermutung distortion proxy with this defect and specializes the
 canonical/corrected horizon-invisible source bridge to that concrete CSpec
-observable.
+observable.  The finite population version proves the total bridge-census
+distortion is nonnegative, that the canonical order-recovered candidate family
+is a zero minimizer, and that total zero forces every candidate transport to
+be the order-recovered one.
 
 Key theorem names:
 
@@ -504,8 +507,13 @@ correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge_correctorGauge
 bridgeCensusDefect_canonical_zero
 bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_eq_zero_iff
 bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridgeHauptvermutungDistortion_zero_iff
+cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge

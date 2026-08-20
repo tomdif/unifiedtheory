@@ -531,6 +531,31 @@ theorem bridgeCensusDefect_pos_of_ne
     rw [gram_permScore_one bprof bgram]
   linarith
 
+theorem bridgeCensusDefect_nonneg
+    (e : E4) (τ : Equiv.Perm Direction) :
+    0 ≤ bridgeCensusDefect e τ := by
+  by_cases hτ : τ = fourState.perm e
+  · rw [hτ, bridgeCensusDefect_canonical_zero]
+  · exact le_of_lt (bridgeCensusDefect_pos_of_ne e τ hτ)
+
+theorem bridgeCensusDefect_eq_zero_iff
+    (e : E4) (τ : Equiv.Perm Direction) :
+    bridgeCensusDefect e τ = 0 ↔ τ = fourState.perm e := by
+  constructor
+  · intro hzero
+    by_contra hτ
+    have hpos := bridgeCensusDefect_pos_of_ne e τ hτ
+    linarith
+  · intro hτ
+    rw [hτ]
+    exact bridgeCensusDefect_canonical_zero e
+
+theorem bridgeCensusDefect_canonical_min
+    (e : E4) (τ : Equiv.Perm Direction) :
+    bridgeCensusDefect e (fourState.perm e) ≤ bridgeCensusDefect e τ := by
+  rw [bridgeCensusDefect_canonical_zero]
+  exact bridgeCensusDefect_nonneg e τ
+
 theorem bridgeCensusDefect_zero_and_orderRecovered (e : E4) :
     bridgeCensusDefect e (fourState.perm e) = 0 ∧
       ∀ a b : Fin 3,
@@ -549,6 +574,10 @@ noncomputable def cSpecBridgeDefectObservable
     {ι : Type*} (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
     ι → ℝ :=
   fun i => bridgeCensusDefect (edge i) (candidate i)
+
+noncomputable def canonicalCSpecBridgeCandidate
+    {ι : Type*} (edge : ι → E4) : ι → Equiv.Perm Direction :=
+  fun i => fourState.perm (edge i)
 
 noncomputable def cSpecBridgePairConsistencyObservable
     {ι : Type*} (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
@@ -569,6 +598,86 @@ theorem cSpecBridgeHauptvermutungDistortion_eq_defect
   unfold cSpecBridgeHauptvermutungDistortion
     cSpecBridgePairConsistencyObservable
   ring
+
+theorem cSpecBridgeHauptvermutungDistortion_apply
+    {ι : Type*} (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) (i : ι) :
+    cSpecBridgeHauptvermutungDistortion scale edge candidate i =
+      bridgeCensusDefect (edge i) (candidate i) := by
+  have h :=
+    congrFun (cSpecBridgeHauptvermutungDistortion_eq_defect scale edge candidate) i
+  simpa [cSpecBridgeDefectObservable] using h
+
+theorem cSpecBridgeHauptvermutungDistortion_nonneg
+    {ι : Type*} (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) (i : ι) :
+    0 ≤ cSpecBridgeHauptvermutungDistortion scale edge candidate i := by
+  rw [cSpecBridgeHauptvermutungDistortion_apply]
+  exact bridgeCensusDefect_nonneg (edge i) (candidate i)
+
+theorem cSpecBridgeHauptvermutungDistortion_zero_iff
+    {ι : Type*} (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) (i : ι) :
+    cSpecBridgeHauptvermutungDistortion scale edge candidate i = 0 ↔
+      candidate i = fourState.perm (edge i) := by
+  rw [cSpecBridgeHauptvermutungDistortion_apply]
+  exact bridgeCensusDefect_eq_zero_iff (edge i) (candidate i)
+
+noncomputable def cSpecBridgeTotalDistortion
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) : ℝ :=
+  ∑ i, cSpecBridgeHauptvermutungDistortion scale edge candidate i
+
+theorem cSpecBridgeTotalDistortion_nonneg
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
+    0 ≤ cSpecBridgeTotalDistortion scale edge candidate := by
+  unfold cSpecBridgeTotalDistortion
+  exact Finset.sum_nonneg
+    (fun i _ => cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i)
+
+theorem cSpecBridgeTotalDistortion_eq_zero_iff
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
+    cSpecBridgeTotalDistortion scale edge candidate = 0 ↔
+      ∀ i, candidate i = fourState.perm (edge i) := by
+  unfold cSpecBridgeTotalDistortion
+  rw [Finset.sum_eq_zero_iff_of_nonneg
+    (fun i _ => cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i)]
+  simp [cSpecBridgeHauptvermutungDistortion_zero_iff]
+
+theorem cSpecBridgeTotalDistortion_canonical_zero
+    {ι : Type*} [Fintype ι] (scale : ℝ) (edge : ι → E4) :
+    cSpecBridgeTotalDistortion scale edge
+      (canonicalCSpecBridgeCandidate edge) = 0 := by
+  rw [cSpecBridgeTotalDistortion_eq_zero_iff]
+  intro i
+  rfl
+
+theorem cSpecBridgeTotalDistortion_canonical_min
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
+    cSpecBridgeTotalDistortion scale edge
+      (canonicalCSpecBridgeCandidate edge) ≤
+        cSpecBridgeTotalDistortion scale edge candidate := by
+  rw [cSpecBridgeTotalDistortion_canonical_zero]
+  exact cSpecBridgeTotalDistortion_nonneg scale edge candidate
+
+theorem cSpecBridgeTotalDistortion_zero_orderRecovered
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction)
+    (hzero : cSpecBridgeTotalDistortion scale edge candidate = 0) :
+    ∀ i a b,
+      Cov fourState (GPoint.atom (fourState.dst (edge i)) b)
+          (GPoint.bridge (edge i) a) →
+        b = candidate i a := by
+  have hcandidate :
+      ∀ i, candidate i = fourState.perm (edge i) :=
+    (cSpecBridgeTotalDistortion_eq_zero_iff scale edge candidate).1 hzero
+  intro i a b h
+  rw [hcandidate i]
+  exact bridge_incidence_recovers_transport fourState (edge i) a b h
+    (fourState_src_ne_dst (edge i))
 
 /-! ## 4. Horizon-orthogonal descent specialization -/
 
@@ -637,8 +746,11 @@ theorem cSpecBridge_correctedSource_protected_bridge
 
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
+#print axioms bridgeCensusDefect_eq_zero_iff
 #print axioms bridgeCensusDefect_zero_and_orderRecovered
 #print axioms cSpecBridgeHauptvermutungDistortion_eq_defect
+#print axioms cSpecBridgeTotalDistortion_eq_zero_iff
+#print axioms cSpecBridgeTotalDistortion_zero_orderRecovered
 #print axioms cSpecBridge_canonicalSource_descends_distortion
 #print axioms cSpecBridge_canonicalSource_area_response_zero
 #print axioms cSpecBridge_correctedSource_protected_bridge
