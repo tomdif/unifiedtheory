@@ -89,6 +89,7 @@ physicalGrowthSuppliesRepairSource_protected_and_contracts
 PhysicalGrowthRepairRefinement
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -113,10 +114,19 @@ now proves aggregate convergence:
 D_n -> 0
 ```
 
+The current strongest interface derives that majorant from a one-step
+multiplicative factor:
+
+```text
+D_{n+1} <= q * D_n,    0 <= q < 1
+  -> D_n <= D_0*q^n
+  -> D_n -> 0
+```
+
 Definition of done:
 
 ```text
-derive D_n <= D_0*q^n, eventually with 0 <= q < 1,
+derive D_{n+1} <= q * D_n, eventually with 0 <= q < 1,
 from the physical causal-growth law
 ```
 
@@ -175,5 +185,5 @@ Open work:
    component.
 4. Instantiate `PhysicalGrowthSuppliesRepairSource` from the actual
    causal-growth law instead of assuming it.
-5. Derive the geometric or summable-rate convergence bound from the actual
-   physical causal-growth law.
+5. Derive the one-step factor `D_{n+1} <= q * D_n` from the actual physical
+   causal-growth law.

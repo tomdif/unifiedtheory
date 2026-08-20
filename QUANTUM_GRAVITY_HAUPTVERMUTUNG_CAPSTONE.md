@@ -475,8 +475,10 @@ the aggregate distortion.  The refinement wrapper
 finite stage and proves stepwise horizon protection together with
 `D_{n+1} < D_n`.  With an additional geometric majorant
 `D_n <= D_0*q^n`, `0 <= q < 1`, the same wrapper proves aggregate convergence
-`D_n -> 0`.  The next proof target is to derive that majorant, or a
-summable-rate replacement, from the physical causal-growth law.
+`D_n -> 0`.  The newest step-factor version derives that majorant from
+`D_{n+1} <= q * D_n`, so the next proof target is to derive a multiplicative
+contraction factor, or a summable-rate replacement, from the physical
+causal-growth law.
 
 Key theorem names:
 
@@ -549,6 +551,9 @@ physicalGrowthRepairRefinement_step_strictly_contracts
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+physicalGrowthRepairRefinement_geometric_bound_of_step_factor
+physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

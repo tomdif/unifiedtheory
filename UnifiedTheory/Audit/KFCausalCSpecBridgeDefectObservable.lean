@@ -1217,6 +1217,34 @@ theorem physicalGrowthRepairRefinement_protected_and_contracts
   exact ⟨physicalGrowthRepairRefinement_step_protected R n,
     physicalGrowthRepairRefinement_step_strictly_contracts R n⟩
 
+theorem physicalGrowthRepairRefinement_geometric_bound_of_step_factor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (_R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q * total n) :
+    ∀ n, total n ≤ total 0 * q ^ n := by
+  intro n
+  induction n with
+  | zero =>
+      simp
+  | succ n ih =>
+      change total (n + 1) ≤ total 0 * q ^ (n + 1)
+      have hmul : q * total n ≤ q * (total 0 * q ^ n) :=
+        mul_le_mul_of_nonneg_left ih hq0
+      calc
+        total (n + 1) ≤ q * total n := hstep_factor n
+        _ ≤ q * (total 0 * q ^ n) := hmul
+        _ = total 0 * q ^ (n + 1) := by
+            rw [pow_succ]
+            ring
+
 theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1237,6 +1265,26 @@ theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
   have hmajor : Tendsto (fun n : ℕ => initial * q ^ n) atTop (nhds 0) := by
     simpa using hpow.const_mul initial
   exact squeeze_zero htotal_nonneg hbound hmajor
+
+theorem physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q * total n) :
+    Tendsto total atTop (nhds 0) :=
+  physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
+    R (total 0) q hq0 hq1 htotal_nonneg
+      (physicalGrowthRepairRefinement_geometric_bound_of_step_factor
+        R q hq0 hstep_factor)
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     {ι : Type*} [Fintype ι]
@@ -1261,6 +1309,29 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     physicalGrowthRepairRefinement_total_tendsto_zero_of_geometric_bound
       R initial q hq0 hq1 htotal_nonneg hbound⟩
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hstep_factor : ∀ n, total (n + 1) ≤ q * total n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact ⟨fun n => physicalGrowthRepairRefinement_step_protected R n,
+    physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
+      R q hq0 hq1 htotal_nonneg hstep_factor⟩
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1280,5 +1351,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthSuppliesRepairSource_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

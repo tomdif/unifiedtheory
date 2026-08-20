@@ -132,7 +132,9 @@ physical growth law must instantiate.  `PhysicalGrowthRepairRefinement` records
 that gate across a refinement sequence and proves every certified finite step
 has zero first-order and second central horizon-area response while satisfying
 `D_{n+1} < D_n`.  Under a geometric majorant `D_n <= D_0*q^n`,
-`0 <= q < 1`, it also proves `D_n -> 0`.
+`0 <= q < 1`, it also proves `D_n -> 0`.  The step-factor version derives
+that majorant from `D_{n+1} <= q * D_n`, reducing the next physical target to
+a multiplicative contraction bound for the actual growth law.
 
 ## Lean Names
 
@@ -198,6 +200,7 @@ physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

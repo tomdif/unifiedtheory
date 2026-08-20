@@ -181,7 +181,9 @@ finite half-remainder bound imply strict contraction.  The
 `PhysicalGrowthRepairRefinement` wrapper records such a certificate at every
 finite refinement step and proves horizon protection plus strict stepwise
 aggregate decrease.  With a geometric majorant `D_n <= D_0*q^n`,
-`0 <= q < 1`, the same wrapper now proves `D_n -> 0`.
+`0 <= q < 1`, the same wrapper now proves `D_n -> 0`.  The newest factor gate
+derives that majorant from `D_{n+1} <= q * D_n`, so the physical target is a
+one-step multiplicative contraction bound from causal growth.
 
 Key names:
 
@@ -205,6 +207,7 @@ physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 ```
 
 ## Numerical Evidence

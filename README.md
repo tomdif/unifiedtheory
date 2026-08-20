@@ -120,7 +120,9 @@ Machine-checked additions now cover:
   wrapper records this certificate at every finite refinement step and proves
   stepwise horizon protection together with `D_{n+1} < D_n`; under a
   geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean now proves aggregate
-  convergence `D_n -> 0`.
+  convergence `D_n -> 0`; a further step-factor gate derives that majorant
+  from `D_{n+1} <= q * D_n`, making the next physical target the derivation of
+  this multiplicative contraction from causal growth.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
