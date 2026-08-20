@@ -500,7 +500,9 @@ uniform local-rate version derives convergence from those local certificates
 together with `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
 `0 < stepFloor*gamma <= 2`.  The newest source-local version identifies those
 certificates with the actual source's per-cell negative first-order response
-contributions and proves they sum to `-linearResponse(S_n, D_n)`.
+contributions and proves they sum to `-linearResponse(S_n, D_n)`.  The newest
+centered-source floor gate derives those cellwise bounds from
+`rateFloor_n <= -w_{n,i}*centered(S_n)_i`.
 
 Key theorem names:
 
@@ -615,6 +617,8 @@ localLinearDescentContribution
 sum_localLinearDescentContribution_eq_neg_linearResponse
 physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_response
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
+physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

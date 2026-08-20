@@ -106,7 +106,9 @@
 > `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
 > `0 < stepFloor*gamma <= 2`; the newest source-local version identifies those
 > certificates with the actual source's per-cell negative first-order response
-> contributions and proves they sum to `-linearResponse(S_n, D_n)`.
+> contributions and proves they sum to `-linearResponse(S_n, D_n)`; the newest
+> centered-source floor gate derives those cellwise bounds from
+> `rateFloor_n <= -w_{n,i}*centered(S_n)_i`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

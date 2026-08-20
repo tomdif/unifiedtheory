@@ -146,7 +146,9 @@ Machine-checked additions now cover:
   together with `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
   `0 < stepFloor*gamma <= 2`; the newest source-local version identifies those
   certificates with the actual source's per-cell negative first-order response
-  contributions and proves they sum to `-linearResponse(S_n, D_n)`.
+  contributions and proves they sum to `-linearResponse(S_n, D_n)`; the newest
+  centered-source floor gate derives those cellwise bounds from
+  `rateFloor_n <= -w_{n,i}*centered(S_n)_i`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -154,8 +156,9 @@ derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
 physical Hauptvermutung certificates, the physical-total identity and gain
 window, summed local descent certificates, uniform rate and step floors,
-source-local response lower bounds, separating invariant observables, and
-infrared GR/QFT recovery.  The new least-defect target is to derive the actual
+source-local response lower bounds, centered-source anti-alignment, separating
+invariant observables, and infrared GR/QFT recovery.  The new least-defect
+target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected
 certificate-source hypotheses from the dynamics.

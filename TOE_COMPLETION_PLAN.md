@@ -129,6 +129,8 @@ localLinearDescentContribution
 sum_localLinearDescentContribution_eq_neg_linearResponse
 physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_response
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
+physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -232,6 +234,12 @@ actual source's per-cell negative first-order response contribution,
 `-linearResponse(S_n, D_n)`, and derives the same uniform convergence gate from
 cellwise lower bounds on that source-local response.
 
+The newest centered-source floor gate reduces those cellwise response bounds to
+a pointwise anti-alignment condition on the actual source:
+`rateFloor_n <= -w_{n,i}*centered(S_n)_i`.  With nonnegative local distortion,
+Lean proves this implies the source-local descent inequality cell by cell and
+therefore the same protected convergence theorem.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -254,6 +262,8 @@ and prove summed local descent certificates for the physical aggregate,
 and prove uniform lower bounds gamma <= rateFloor_n and stepFloor <= step_n,
 and prove the source-local response dominates rateFloor_n times each local
 distortion,
+or prove the stronger centered-source floor
+rateFloor_n <= -w_{n,i}*centered(S_n)_i,
 from the physical causal-growth law
 ```
 
