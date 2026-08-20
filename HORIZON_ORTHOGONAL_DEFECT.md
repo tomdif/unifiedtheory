@@ -141,11 +141,18 @@ ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
 ProtectedCertificateErrorRefinement.first_area_response_zero
 ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 ProtectedCertificateErrorRefinement.certificate_error_response_negative
+linearResponse_neg_source
+horizonSecondOrderLeakage_neg_source
+linearResponse_orientTowardObservable_eq_neg_abs
+covariance_orientTowardObservable_horizon
+horizonSecondOrderLeakage_orientTowardObservable
+oriented_response_negative_of_nonzero
 linearResponse_hauptvermutungDistortionObservable
 componentResponses_descend_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_negative
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
+orientedProtectedHauptvermutungDistortionSource_descentRate_positive
 componentResponses_protected_distortion_bridge
 protected_distortion_step_decreases_with_remainder
 protected_distortion_step_strictly_decreases
@@ -561,6 +568,37 @@ descends this whole distortion observable, then it preserves the Dorau--Much
 horizon channel through second order while improving the actual displayed
 Hauptvermutung distortion bound.  This is stronger than the previous generic
 interface because the certificate error is no longer abstract.
+
+## Local Orientation
+
+The descent-gate probe showed that the useful source should be allowed to
+choose a sign at each parent state.  Lean now proves that this local sign
+choice is algebraically safe.  Define
+
+```text
+orientTowardObservable(w,S,X) =
+  if linearResponse(w,S,X) <= 0 then S else -S.
+```
+
+Then Lean proves:
+
+```text
+linearResponse(orientTowardObservable(w,S,X), X)
+  = -abs(linearResponse(w,S,X)).
+```
+
+So any nonzero raw response becomes a strict descent direction.  The same sign
+orientation preserves horizon orthogonality and second-order leakage:
+
+```text
+Cov(orient(S), J) = 0         if Cov(S,J) = 0
+Leak(J, orient(S)) = Leak(J,S)
+```
+
+Consequently an oriented raw source whose leakage is zero becomes a
+`ProtectedHauptvermutungDistortionSource` with descent rate equal to the
+absolute raw distortion response.  This is the formal version of the
+`--local-sign` gate probe.
 
 ## Descent Dynamics
 

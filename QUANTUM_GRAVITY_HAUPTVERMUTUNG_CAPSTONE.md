@@ -384,6 +384,13 @@ parents at steps `0.005` and `0.010`.  This supports the state-dependent source
 form of the Lean descent package, but it is still empirical, not a uniform
 refinement certificate.
 
+Lean now formalizes that local orientation rule.  `orientTowardObservable`
+flips a source exactly when its first-order distortion response is positive,
+and proves the oriented response is `-|response|`.  The sign flip preserves
+horizon orthogonality and second-order leakage, so a nonzero response gives a
+positive protected descent rate without damaging the Dorau--Much horizon
+channel.
+
 Key theorem names:
 
 ```text
@@ -405,9 +412,13 @@ HorizonOrthogonalDefectCertificate.leastDefectSource_secondOrder_area_obstructio
 ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
 ProtectedCertificateErrorSource.certificate_error_response_negative
 ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
+linearResponse_orientTowardObservable_eq_neg_abs
+horizonSecondOrderLeakage_orientTowardObservable
+oriented_response_negative_of_nonzero
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
+orientedProtectedHauptvermutungDistortionSource_descentRate_positive
 componentResponses_protected_distortion_bridge
 protected_distortion_step_decreases_with_remainder
 protected_distortion_step_strictly_decreases

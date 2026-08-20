@@ -484,6 +484,10 @@ half-remainder condition.  On the small certificate-basis sample, the global
 fixed direction descends on 28/35 parents, while local per-parent orientation
 descends on 35/35 and passes the half-remainder gate for all parents at steps
 `0.005` and `0.010`.
+Lean now proves that this local orientation is valid finite algebra:
+`orientTowardObservable` sends the response to `-|response|` while preserving
+horizon orthogonality and second-order leakage.  Thus the local sign rule does
+not introduce hidden horizon contamination.
 
 The original finite horizon-entropy theorem is stronger than a fit to the probe
 output: for any normalized nonnegative finite birth law, the full

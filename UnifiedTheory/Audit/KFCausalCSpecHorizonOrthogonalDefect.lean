@@ -1006,6 +1006,61 @@ theorem linearResponse_const_mul_observable
   rw [linearResponse_eq_covariance, linearResponse_eq_covariance]
   exact covariance_const_mul_left w X S a
 
+/-- First-order response is homogeneous in the source slot. -/
+theorem linearResponse_const_mul_source
+    {ι : Type*} [Fintype ι]
+    (w S X : ι → ℝ) (a : ℝ) :
+    linearResponse w (fun i => a * S i) X =
+      a * linearResponse w S X := by
+  rw [linearResponse_eq_covariance, linearResponse_eq_covariance]
+  exact covariance_const_mul_right w X S a
+
+/-- Flipping a source flips every first-order response. -/
+theorem linearResponse_neg_source
+    {ι : Type*} [Fintype ι]
+    (w S X : ι → ℝ) :
+    linearResponse w (fun i => -S i) X =
+      -linearResponse w S X := by
+  have hfun : (fun i => -S i) = fun i => (-1 : ℝ) * S i := by
+    funext i
+    ring
+  rw [hfun, linearResponse_const_mul_source]
+  ring
+
+/-- Flipping the left covariance observable flips covariance. -/
+theorem covariance_neg_left
+    {ι : Type*} [Fintype ι]
+    (w S X : ι → ℝ) :
+    covariance w (fun i => -S i) X = -covariance w S X := by
+  have hfun : (fun i => -S i) = fun i => (-1 : ℝ) * S i := by
+    funext i
+    ring
+  rw [hfun, covariance_const_mul_left]
+  ring
+
+/-- Second-order horizon leakage is unchanged by flipping source sign. -/
+theorem horizonSecondOrderLeakage_neg_source
+    {ι : Type*} [Fintype ι]
+    (w J S : ι → ℝ) :
+    horizonSecondOrderLeakage w J (fun i => -S i) =
+      horizonSecondOrderLeakage w J S := by
+  unfold horizonSecondOrderLeakage
+  have hnegExp :
+      expectation w (fun i => -S i) = -expectation w S := by
+    have hfun : (fun i => -S i) = fun i => (-1 : ℝ) * S i := by
+      funext i
+      ring
+    rw [hfun, expectation_const_mul]
+    ring
+  have hsq :
+      (fun i => centeredSource w (fun j => -S j) i ^ 2) =
+        fun i => centeredSource w S i ^ 2 := by
+    funext i
+    unfold centeredSource
+    rw [hnegExp]
+    ring
+  rw [hsq]
+
 /-- The response of the Hauptvermutung distortion observable splits into the
 responses of the count-window, curvature-bias, mixed count-curvature, and
 pair-consistency channels. -/
@@ -1061,6 +1116,68 @@ theorem componentResponses_descend_hauptvermutungDistortionObservable
           countWindow curvatureBias pairConsistency) ≤ -descentRate := by
   rw [linearResponse_hauptvermutungDistortionObservable]
   exact hdesc
+
+/-- Orient a source toward descent of an observable by flipping its sign only
+when the first-order response is positive. -/
+noncomputable def orientTowardObservable
+    {ι : Type*} [Fintype ι]
+    (w source observable : ι → ℝ) : ι → ℝ :=
+  if linearResponse w source observable ≤ 0 then source else fun i => -source i
+
+/-- The oriented source has first-order response exactly `-|response|`. -/
+theorem linearResponse_orientTowardObservable_eq_neg_abs
+    {ι : Type*} [Fintype ι]
+    (w source observable : ι → ℝ) :
+    linearResponse w (orientTowardObservable w source observable) observable =
+      -|linearResponse w source observable| := by
+  unfold orientTowardObservable
+  by_cases h : linearResponse w source observable ≤ 0
+  · rw [if_pos h]
+    rw [abs_of_nonpos h]
+    ring
+  · have hpos : 0 < linearResponse w source observable := lt_of_not_ge h
+    rw [if_neg h]
+    rw [linearResponse_neg_source]
+    rw [abs_of_pos hpos]
+
+/-- Orienting a horizon-orthogonal source preserves horizon orthogonality. -/
+theorem covariance_orientTowardObservable_horizon
+    {ι : Type*} [Fintype ι]
+    (w source observable horizonSource : ι → ℝ)
+    (horth : covariance w source horizonSource = 0) :
+    covariance w (orientTowardObservable w source observable)
+      horizonSource = 0 := by
+  unfold orientTowardObservable
+  by_cases h : linearResponse w source observable ≤ 0
+  · rw [if_pos h]
+    exact horth
+  · rw [if_neg h]
+    rw [covariance_neg_left, horth]
+    ring
+
+/-- Orienting a source does not change second-order horizon leakage. -/
+theorem horizonSecondOrderLeakage_orientTowardObservable
+    {ι : Type*} [Fintype ι]
+    (w horizonSource source observable : ι → ℝ) :
+    horizonSecondOrderLeakage w horizonSource
+        (orientTowardObservable w source observable) =
+      horizonSecondOrderLeakage w horizonSource source := by
+  unfold orientTowardObservable
+  by_cases h : linearResponse w source observable ≤ 0
+  · rw [if_pos h]
+  · rw [if_neg h]
+    exact horizonSecondOrderLeakage_neg_source w horizonSource source
+
+/-- Local sign orientation turns any nonzero response into strict descent. -/
+theorem oriented_response_negative_of_nonzero
+    {ι : Type*} [Fintype ι]
+    (w source observable : ι → ℝ)
+    (hne : linearResponse w source observable ≠ 0) :
+    linearResponse w (orientTowardObservable w source observable)
+        observable < 0 := by
+  rw [linearResponse_orientTowardObservable_eq_neg_abs]
+  have hpos : 0 < |linearResponse w source observable| := abs_pos.mpr hne
+  linarith
 
 /-- A finite source that is horizon-protected and descends the actual
 quantitative-Hauptvermutung distortion observable. -/
@@ -1157,6 +1274,66 @@ theorem distortion_response_expands
     C.pairConsistencyError C.scale
 
 end ProtectedHauptvermutungDistortionSource
+
+/-- An oriented raw source that is horizon-clean and second-order leakage-clean
+is a protected Hauptvermutung distortion source with descent rate equal to the
+absolute raw distortion response. -/
+noncomputable def orientedProtectedHauptvermutungDistortionSource
+    {ι : Type*} [Fintype ι]
+    (w horizonSource rawSource countWindow curvatureBias
+      pairConsistency : ι → ℝ)
+    (scale newMaximalContribution : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (horth : covariance w rawSource horizonSource = 0)
+    (hleak : horizonSecondOrderLeakage w horizonSource rawSource = 0) :
+    ProtectedHauptvermutungDistortionSource ι where
+  weight := w
+  horizonSource := horizonSource
+  defectSource :=
+    orientTowardObservable w rawSource
+      (hauptvermutungDistortionObservable scale
+        countWindow curvatureBias pairConsistency)
+  countWindowError := countWindow
+  curvatureBiasError := curvatureBias
+  pairConsistencyError := pairConsistency
+  scale := scale
+  newMaximalContribution := newMaximalContribution
+  descentRate :=
+    |linearResponse w rawSource
+      (hauptvermutungDistortionObservable scale
+        countWindow curvatureBias pairConsistency)|
+  weight_sum := hw
+  source_horizon_orthogonal :=
+    covariance_orientTowardObservable_horizon w rawSource
+      (hauptvermutungDistortionObservable scale
+        countWindow curvatureBias pairConsistency)
+      horizonSource horth
+  source_second_leakage_zero := by
+    rw [horizonSecondOrderLeakage_orientTowardObservable]
+    exact hleak
+  distortion_descent := by
+    rw [linearResponse_orientTowardObservable_eq_neg_abs]
+
+/-- If the raw response is nonzero, the oriented protected source has positive
+descent rate. -/
+theorem orientedProtectedHauptvermutungDistortionSource_descentRate_positive
+    {ι : Type*} [Fintype ι]
+    (w horizonSource rawSource countWindow curvatureBias
+      pairConsistency : ι → ℝ)
+    (scale newMaximalContribution : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (horth : covariance w rawSource horizonSource = 0)
+    (hleak : horizonSecondOrderLeakage w horizonSource rawSource = 0)
+    (hne :
+      linearResponse w rawSource
+        (hauptvermutungDistortionObservable scale
+          countWindow curvatureBias pairConsistency) ≠ 0) :
+    0 <
+      (orientedProtectedHauptvermutungDistortionSource w horizonSource
+        rawSource countWindow curvatureBias pairConsistency scale
+        newMaximalContribution hw horth hleak).descentRate := by
+  dsimp [orientedProtectedHauptvermutungDistortionSource]
+  exact abs_pos.mpr hne
 
 /-- Component response bounds, horizon orthogonality, and second-order leakage
 cancellation imply the full protected distortion bridge. -/
@@ -1457,11 +1634,19 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms ProtectedCertificateErrorRefinement.first_area_response_zero
 #print axioms ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 #print axioms ProtectedCertificateErrorRefinement.certificate_error_response_negative
+#print axioms linearResponse_const_mul_source
+#print axioms linearResponse_neg_source
+#print axioms horizonSecondOrderLeakage_neg_source
 #print axioms linearResponse_hauptvermutungDistortionObservable
 #print axioms componentResponses_descend_hauptvermutungDistortionObservable
+#print axioms linearResponse_orientTowardObservable_eq_neg_abs
+#print axioms covariance_orientTowardObservable_horizon
+#print axioms horizonSecondOrderLeakage_orientTowardObservable
+#print axioms oriented_response_negative_of_nonzero
 #print axioms ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_negative
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_expands
+#print axioms orientedProtectedHauptvermutungDistortionSource_descentRate_positive
 #print axioms componentResponses_protected_distortion_bridge
 #print axioms protected_distortion_step_decreases_with_remainder
 #print axioms protected_distortion_step_strictly_decreases

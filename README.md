@@ -77,7 +77,9 @@ Machine-checked additions now cover:
   the sequence-level bridge proves this same descent keeps first-order and
   second central horizon-area response zero at every finite stage; the current
   gate probe shows the certificate-basis direction passes the half-remainder
-  gate on all sampled parents at small steps when oriented locally by parent.
+  gate on all sampled parents at small steps when oriented locally by parent,
+  and Lean proves this local sign orientation preserves horizon protection
+  while turning any nonzero distortion response into strict descent.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

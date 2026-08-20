@@ -37,7 +37,9 @@
 > bridge proves this same descent keeps first-order and second central
 > horizon-area response zero at every finite stage. The current gate probe
 > shows the certificate-basis candidate passes the half-remainder gate on all
-> sampled parents at small steps once the source is oriented locally by parent.
+> sampled parents at small steps once the source is oriented locally by parent;
+> Lean now proves this sign orientation preserves horizon protection and makes
+> every nonzero distortion response strictly descending.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
