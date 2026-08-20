@@ -188,8 +188,10 @@ gate derives that one-step factor from
 packages the same condition as `2*(1 - q)*D_n <= step_n*descentRate_n`.  The
 newest rate-floor gate derives that budget from
 `rateFloor_n*D_n <= descentRate_n` and
-`2*(1 - q) <= step_n*rateFloor_n`.  The physical target is now this rate-floor
-package from causal growth.
+`2*(1 - q) <= step_n*rateFloor_n`.  The newest uniform gate derives convergence
+with `q = 1 - stepFloor*gamma/2` from `gamma*D_n <= descentRate_n`,
+`stepFloor <= step_n`, and `0 < stepFloor*gamma <= 2`.  The physical target is
+now this uniform rate-floor package from causal growth.
 
 Key names:
 
@@ -221,10 +223,13 @@ physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_descent_budget_of_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 ```
 
 ## Numerical Evidence

@@ -97,10 +97,13 @@ physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_descent_budget_of_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -135,8 +138,19 @@ margin `(1 - q)*D_n <= step_n*descentRate_n/2`, so Lean now proves:
 D_n -> 0
 ```
 
-Next target: derive the rate floor and step-size coverage from the actual
-causal-growth law, or replace them with a summable-rate physical analogue.
+The newest uniform gate uses one constant `gamma` and one lower step bound
+`stepFloor`.  If
+
+```text
+gamma*D_n <= descentRate_n
+stepFloor <= step_n
+0 < stepFloor*gamma <= 2
+```
+
+then Lean proves convergence with the explicit contraction factor
+`q = 1 - stepFloor*gamma/2`.  Next target: derive this uniform rate floor and
+step lower bound from the actual causal-growth law, or replace them with a
+summable-rate physical analogue.
 
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
@@ -150,8 +164,8 @@ D_{n+1} <= q * D_n,    0 <= q < 1
 Definition of done:
 
 ```text
-derive rateFloor_n*D_n <= descentRate_n and
-2*(1 - q) <= step_n*rateFloor_n, eventually with 0 <= q < 1,
+derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
+0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
 from the physical causal-growth law
 ```
 

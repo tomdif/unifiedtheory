@@ -86,8 +86,11 @@
 > packages the same requirement as `2*(1 - q)*D_n <= step_n*descentRate_n`,
 > and the newest rate-floor gate derives that budget from
 > `rateFloor_n*D_n <= descentRate_n` and
-> `2*(1 - q) <= step_n*rateFloor_n`, making those inequalities the next
-> theorem target.
+> `2*(1 - q) <= step_n*rateFloor_n`. The newest uniform gate derives
+> convergence with `q = 1 - stepFloor*gamma/2` from
+> `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
+> `0 < stepFloor*gamma <= 2`, making those uniform bounds the next theorem
+> target.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

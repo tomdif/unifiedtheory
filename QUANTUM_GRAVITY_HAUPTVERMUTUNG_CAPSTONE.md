@@ -481,9 +481,11 @@ factor from `(1 - q)*D_n <= step_n*descentRate_n/2`.  The newest
 descent-budget version packages the same condition as
 `2*(1 - q)*D_n <= step_n*descentRate_n`.  The newest rate-floor version derives
 that budget from `rateFloor_n*D_n <= descentRate_n` and
-`2*(1 - q) <= step_n*rateFloor_n`.  The next proof target is to derive this
-rate-floor package, or a summable-rate replacement, from the physical
-causal-growth law.
+`2*(1 - q) <= step_n*rateFloor_n`.  The newest uniform version derives
+convergence with `q = 1 - stepFloor*gamma/2` from
+`gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
+`0 < stepFloor*gamma <= 2`.  The next proof target is to derive this uniform
+package, or a summable-rate replacement, from the physical causal-growth law.
 
 Key theorem names:
 
@@ -564,12 +566,15 @@ physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_descent_budget_of_rate_floor
 physicalGrowthRepairRefinement_step_factor_of_rate_floor
+physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
 physicalGrowthRepairRefinement_geometric_bound_of_step_factor
 physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

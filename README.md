@@ -126,8 +126,11 @@ Machine-checked additions now cover:
   descent-budget gate packages the same requirement as
   `2*(1 - q)*D_n <= step_n*descentRate_n`; the newest rate-floor gate derives
   that budget from `rateFloor_n*D_n <= descentRate_n` and
-  `2*(1 - q) <= step_n*rateFloor_n`, making those two inequalities the next
-  target from causal growth.
+  `2*(1 - q) <= step_n*rateFloor_n`; the newest uniform gate derives
+  convergence with `q = 1 - stepFloor*gamma/2` from
+  `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
+  `0 < stepFloor*gamma <= 2`, making those uniform bounds the next target from
+  causal growth.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

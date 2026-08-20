@@ -1321,6 +1321,28 @@ theorem physicalGrowthRepairRefinement_step_factor_of_rate_floor
     (R.certified_step n) (le_of_lt (R.step_pos n))
     (htotal_nonneg n) (hrate n) (hstep_budget n)
 
+theorem physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q gamma stepFloor : ℝ)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hgamma_nonneg : 0 ≤ gamma)
+    (hrate : ∀ n, gamma * total n ≤ descentRate n)
+    (hstep_floor : ∀ n, stepFloor ≤ step n)
+    (hfloor_budget : 2 * (1 - q) ≤ stepFloor * gamma) :
+    ∀ n, total (n + 1) ≤ q * total n := by
+  refine physicalGrowthRepairRefinement_step_factor_of_rate_floor
+    R q htotal_nonneg hrate ?_
+  intro n
+  exact le_trans hfloor_budget
+    (mul_le_mul_of_nonneg_right (hstep_floor n) hgamma_nonneg)
+
 theorem physicalGrowthRepairRefinement_step_strictly_contracts
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -1559,6 +1581,68 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       (physicalGrowthRepairRefinement_descent_budget_of_rate_floor
         R q htotal_nonneg hrate hstep_budget)
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q gamma stepFloor : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hgamma_nonneg : 0 ≤ gamma)
+    (hrate : ∀ n, gamma * total n ≤ descentRate n)
+    (hstep_floor : ∀ n, stepFloor ≤ step n)
+    (hfloor_budget : 2 * (1 - q) ≤ stepFloor * gamma) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+      R q hq0 hq1 htotal_nonneg
+      (physicalGrowthRepairRefinement_step_factor_of_uniform_rate_floor
+        R q gamma stepFloor htotal_nonneg hgamma_nonneg hrate
+        hstep_floor hfloor_budget)
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (gamma stepFloor : ℝ)
+    (hprod_pos : 0 < stepFloor * gamma)
+    (hprod_le_two : stepFloor * gamma ≤ 2)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hgamma_nonneg : 0 ≤ gamma)
+    (hrate : ∀ n, gamma * total n ≤ descentRate n)
+    (hstep_floor : ∀ n, stepFloor ≤ step n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  have hq0 : 0 ≤ 1 - stepFloor * gamma / 2 := by
+    nlinarith
+  have hq1 : 1 - stepFloor * gamma / 2 < 1 := by
+    nlinarith
+  have hfloor_budget :
+      2 * (1 - (1 - stepFloor * gamma / 2)) ≤ stepFloor * gamma := by
+    nlinarith
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+      R (1 - stepFloor * gamma / 2) gamma stepFloor hq0 hq1
+      htotal_nonneg hgamma_nonneg hrate hstep_floor hfloor_budget
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1582,5 +1666,7 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
