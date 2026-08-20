@@ -123,6 +123,8 @@ physicalHauptvermutungTotalDistortion_sequence_nonneg
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
 physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
+physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_local_descent
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_uniform_rate_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -215,6 +217,11 @@ satisfies
 `rateFloor_n*localDistortion_{n,i} <= localDescent_{n,i}` and
 `descentRate_n` is the sum of those local descent certificates.
 
+The newest uniform local-rate version proves the roadmap's uniform gate from
+local data: if `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
+`0 < stepFloor*gamma <= 2`, then the same summed local descent certificates
+give horizon-protected convergence with `q = 1 - stepFloor*gamma/2`.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -234,6 +241,7 @@ or prove 0 <= q_n <= qBound < 1 for those variable factors,
 or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
 and prove D_n is the displayed physical aggregate with nonnegative components,
 and prove summed local descent certificates for the physical aggregate,
+and prove uniform lower bounds gamma <= rateFloor_n and stepFloor <= step_n,
 from the physical causal-growth law
 ```
 

@@ -495,7 +495,10 @@ derives this bound from `0 < beta`, `beta <= step_n*rateFloor_n`, and
 external `D_n >= 0` side condition when `D_n` is exactly the displayed physical
 aggregate with nonnegative component observables.  The newest local-descent
 version replaces the global `rateFloor_n*D_n <= descentRate_n` assumption with
-finite per-cell descent certificates whose sum is `descentRate_n`.
+finite per-cell descent certificates whose sum is `descentRate_n`.  The newest
+uniform local-rate version derives convergence from those local certificates
+together with `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
+`0 < stepFloor*gamma <= 2`.
 
 Key theorem names:
 
@@ -604,6 +607,8 @@ physicalHauptvermutungTotalDistortion_sequence_nonneg
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
 physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
+physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_local_descent
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_uniform_rate_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

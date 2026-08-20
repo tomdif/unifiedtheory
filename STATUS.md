@@ -101,7 +101,10 @@
 > `physicalHauptvermutungTotalDistortion` with nonnegative component
 > observables; the newest local-descent version replaces the global
 > `rateFloor_n*D_n <= descentRate_n` assumption with finite per-cell descent
-> certificates whose sum is `descentRate_n`.
+> certificates whose sum is `descentRate_n`; the newest uniform local-rate
+> version derives convergence from those local certificates together with
+> `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
+> `0 < stepFloor*gamma <= 2`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
