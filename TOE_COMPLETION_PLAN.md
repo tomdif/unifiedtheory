@@ -125,6 +125,10 @@ physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_uniform_rate_floor
+localLinearDescentContribution
+sum_localLinearDescentContribution_eq_neg_linearResponse
+physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_response
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -222,6 +226,12 @@ local data: if `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
 `0 < stepFloor*gamma <= 2`, then the same summed local descent certificates
 give horizon-protected convergence with `q = 1 - stepFloor*gamma/2`.
 
+The newest source-local version identifies those local certificates with the
+actual source's per-cell negative first-order response contribution,
+`-w_{n,i}*D_{n,i}*centered(S_n)_i`, proves these contributions sum to
+`-linearResponse(S_n, D_n)`, and derives the same uniform convergence gate from
+cellwise lower bounds on that source-local response.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -242,6 +252,8 @@ or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
 and prove D_n is the displayed physical aggregate with nonnegative components,
 and prove summed local descent certificates for the physical aggregate,
 and prove uniform lower bounds gamma <= rateFloor_n and stepFloor <= step_n,
+and prove the source-local response dominates rateFloor_n times each local
+distortion,
 from the physical causal-growth law
 ```
 

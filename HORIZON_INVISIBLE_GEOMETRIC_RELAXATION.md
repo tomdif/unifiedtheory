@@ -203,7 +203,9 @@ version replaces the global `rateFloor_n*D_n <= descentRate_n` assumption with
 finite per-cell descent certificates whose sum is `descentRate_n`.  The newest
 uniform local-rate version derives convergence from those local certificates
 together with `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
-`0 < stepFloor*gamma <= 2`.
+`0 < stepFloor*gamma <= 2`.  The newest source-local version identifies those
+certificates with the actual source's per-cell negative first-order response
+contributions and proves they sum to `-linearResponse(S_n, D_n)`.
 
 Key names:
 
@@ -263,6 +265,10 @@ physicalHauptvermutungTotalDistortion_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_variable_gain_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_local_descent
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_local_physical_uniform_rate_floor
+localLinearDescentContribution
+sum_localLinearDescentContribution_eq_neg_linearResponse
+physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_response
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
 ```
 
 ## Numerical Evidence
