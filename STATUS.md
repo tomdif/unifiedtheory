@@ -69,7 +69,13 @@
 > horizon-orthogonal corrected-source bridge directly to that order-derived
 > target. Lean also proves the summed finite bridge distortion is nonnegative
 > and vanishes exactly when every candidate transport is the order-recovered
-> one.
+> one. The TOE gap-closing roadmap is now tracked in
+> [`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md). Its first Lean interface
+> defines `physicalHauptvermutungDistortion`, proves the aggregate zero set
+> under nonnegative component hypotheses, proves the bridge-census component is
+> a strict transport minimizer inside that aggregate, and packages
+> `PhysicalGrowthSuppliesRepairSource`, a horizon-protected contraction gate
+> for physical repair sources with controlled finite remainders.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

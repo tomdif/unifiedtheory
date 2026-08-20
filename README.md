@@ -45,6 +45,8 @@ The latest audit work is summarized in
 [`HORIZON_ORTHOGONAL_DEFECT.md`](HORIZON_ORTHOGONAL_DEFECT.md).  The current
 new-physics lead is documented in
 [`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md).
+The gap-closing roadmap is tracked in
+[`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md).
 
 Machine-checked additions now cover:
 
@@ -108,7 +110,13 @@ Machine-checked additions now cover:
   with that defect, and applies the horizon-orthogonal corrected-source bridge
   directly to this order-derived target; Lean also proves the summed finite
   bridge distortion is nonnegative and vanishes exactly when every candidate
-  transport is the order-recovered one.
+  transport is the order-recovered one; the plan-start module now defines the
+  aggregate `physicalHauptvermutungDistortion`, proves its zero set under
+  nonnegative component hypotheses, proves the bridge-census component is a
+  strict transport minimizer inside the aggregate, and packages
+  `PhysicalGrowthSuppliesRepairSource`, an interface showing that a
+  horizon-protected physical repair source with a half-remainder bound strictly
+  contracts the aggregate distortion.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

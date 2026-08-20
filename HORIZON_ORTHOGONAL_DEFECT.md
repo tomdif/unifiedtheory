@@ -122,7 +122,13 @@ canonical residual-gradient and corrected-source bridge now descend an
 order-derived CSpec target rather than only an abstract certificate error.
 A finite population version proves the summed bridge-census distortion is
 nonnegative and vanishes exactly when every candidate transport is the
-order-recovered one.
+order-recovered one.  The aggregate `physicalHauptvermutungDistortion` then
+adds count-window, curvature-bias, and spectral-locality defects; under
+nonnegative component hypotheses, total zero forces every component to vanish
+and the transport candidate family to be canonical.  The bridge component is a
+strict minimizer inside that aggregate, and `PhysicalGrowthSuppliesRepairSource`
+packages the horizon-protected half-remainder contraction gate that the actual
+physical growth law must instantiate.
 
 ## Lean Names
 
@@ -175,11 +181,17 @@ bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
 cSpecBridgeHauptvermutungDistortion_zero_iff
 cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
 cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_strict_min_of_ne
 cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge
+physicalHauptvermutungTotalDistortion_eq_zero_iff
+physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
+physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
+physicalGrowthSuppliesRepairSource_protected_and_contracts
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

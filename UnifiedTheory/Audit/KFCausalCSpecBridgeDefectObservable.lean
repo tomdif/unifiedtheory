@@ -623,6 +623,33 @@ theorem cSpecBridgeHauptvermutungDistortion_zero_iff
   rw [cSpecBridgeHauptvermutungDistortion_apply]
   exact bridgeCensusDefect_eq_zero_iff (edge i) (candidate i)
 
+theorem cSpecBridgeHauptvermutungDistortion_pos_iff
+    {ι : Type*} (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) (i : ι) :
+    0 < cSpecBridgeHauptvermutungDistortion scale edge candidate i ↔
+      candidate i ≠ fourState.perm (edge i) := by
+  constructor
+  · intro hpos hcandidate
+    have hzero :
+        cSpecBridgeHauptvermutungDistortion scale edge candidate i = 0 :=
+      (cSpecBridgeHauptvermutungDistortion_zero_iff scale edge candidate i).2
+        hcandidate
+    rw [hzero] at hpos
+    linarith
+  · intro hcandidate
+    by_contra hnot
+    have hle :
+        cSpecBridgeHauptvermutungDistortion scale edge candidate i ≤ 0 :=
+      le_of_not_gt hnot
+    have hnonneg :=
+      cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i
+    have hzero :
+        cSpecBridgeHauptvermutungDistortion scale edge candidate i = 0 :=
+      le_antisymm hle hnonneg
+    exact hcandidate
+      ((cSpecBridgeHauptvermutungDistortion_zero_iff scale edge candidate i).1
+        hzero)
+
 noncomputable def cSpecBridgeTotalDistortion
     {ι : Type*} [Fintype ι] (scale : ℝ)
     (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) : ℝ :=
@@ -646,6 +673,22 @@ theorem cSpecBridgeTotalDistortion_eq_zero_iff
     (fun i _ => cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i)]
   simp [cSpecBridgeHauptvermutungDistortion_zero_iff]
 
+theorem cSpecBridgeTotalDistortion_eq_zero_iff_candidate_eq_canonical
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
+    cSpecBridgeTotalDistortion scale edge candidate = 0 ↔
+      candidate = canonicalCSpecBridgeCandidate edge := by
+  constructor
+  · intro hzero
+    funext i
+    exact (cSpecBridgeTotalDistortion_eq_zero_iff scale edge candidate).1
+      hzero i
+  · intro hcandidate
+    rw [hcandidate]
+    rw [cSpecBridgeTotalDistortion_eq_zero_iff]
+    intro i
+    rfl
+
 theorem cSpecBridgeTotalDistortion_canonical_zero
     {ι : Type*} [Fintype ι] (scale : ℝ) (edge : ι → E4) :
     cSpecBridgeTotalDistortion scale edge
@@ -662,6 +705,63 @@ theorem cSpecBridgeTotalDistortion_canonical_min
         cSpecBridgeTotalDistortion scale edge candidate := by
   rw [cSpecBridgeTotalDistortion_canonical_zero]
   exact cSpecBridgeTotalDistortion_nonneg scale edge candidate
+
+theorem cSpecBridgeCandidate_ne_canonical_iff_exists_wrong
+    {ι : Type*} (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) :
+    candidate ≠ canonicalCSpecBridgeCandidate edge ↔
+      ∃ i, candidate i ≠ fourState.perm (edge i) := by
+  constructor
+  · intro hcandidate
+    by_contra hnone
+    apply hcandidate
+    funext i
+    by_contra hwrong
+    exact hnone ⟨i, hwrong⟩
+  · intro hwrong hcandidate
+    rcases hwrong with ⟨i, hi⟩
+    exact hi (congrFun hcandidate i)
+
+theorem cSpecBridgeTotalDistortion_pos_of_exists_wrong
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction)
+    (hwrong : ∃ i, candidate i ≠ fourState.perm (edge i)) :
+    0 < cSpecBridgeTotalDistortion scale edge candidate := by
+  by_contra hnot
+  have hle :
+      cSpecBridgeTotalDistortion scale edge candidate ≤ 0 :=
+    le_of_not_gt hnot
+  have hnonneg := cSpecBridgeTotalDistortion_nonneg scale edge candidate
+  have hzero : cSpecBridgeTotalDistortion scale edge candidate = 0 :=
+    le_antisymm hle hnonneg
+  rcases hwrong with ⟨i, hi⟩
+  exact hi ((cSpecBridgeTotalDistortion_eq_zero_iff scale edge candidate).1
+    hzero i)
+
+theorem cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction) :
+    0 < cSpecBridgeTotalDistortion scale edge candidate ↔
+      candidate ≠ canonicalCSpecBridgeCandidate edge := by
+  constructor
+  · intro hpos hcandidate
+    rw [hcandidate, cSpecBridgeTotalDistortion_canonical_zero] at hpos
+    linarith
+  · intro hcandidate
+    exact cSpecBridgeTotalDistortion_pos_of_exists_wrong scale edge candidate
+      ((cSpecBridgeCandidate_ne_canonical_iff_exists_wrong edge candidate).1
+        hcandidate)
+
+theorem cSpecBridgeTotalDistortion_strict_min_of_ne
+    {ι : Type*} [Fintype ι] (scale : ℝ)
+    (edge : ι → E4) (candidate : ι → Equiv.Perm Direction)
+    (hcandidate : candidate ≠ canonicalCSpecBridgeCandidate edge) :
+    cSpecBridgeTotalDistortion scale edge
+      (canonicalCSpecBridgeCandidate edge) <
+        cSpecBridgeTotalDistortion scale edge candidate := by
+  rw [cSpecBridgeTotalDistortion_canonical_zero]
+  exact (cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
+    scale edge candidate).2 hcandidate
 
 theorem cSpecBridgeTotalDistortion_zero_orderRecovered
     {ι : Type*} [Fintype ι] (scale : ℝ)
@@ -744,15 +844,318 @@ theorem cSpecBridge_correctedSource_protected_bridge
     w J (cSpecBridgeHauptvermutungDistortion scale edge candidate) H
     c t descentRate hw hvar hcone hmargin
 
+/-! ## 5. Aggregate physical-Hauptvermutung distortion interface -/
+
+noncomputable def physicalHauptvermutungDistortion
+    {ι : Type*}
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) : ι → ℝ :=
+  fun i => (countWindow i + curvatureBias i + spectralLocality i) +
+    cSpecBridgeHauptvermutungDistortion scale edge candidate i
+
+noncomputable def physicalHauptvermutungBaseDistortion
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ) : ℝ :=
+  ∑ i, (countWindow i + curvatureBias i + spectralLocality i)
+
+noncomputable def physicalHauptvermutungTotalDistortion
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) : ℝ :=
+  ∑ i, physicalHauptvermutungDistortion
+    countWindow curvatureBias spectralLocality scale edge candidate i
+
+theorem physicalHauptvermutungDistortion_nonneg
+    {ι : Type*}
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) (i : ι)
+    (hcount : 0 ≤ countWindow i)
+    (hcurv : 0 ≤ curvatureBias i)
+    (hlocal : 0 ≤ spectralLocality i) :
+    0 ≤ physicalHauptvermutungDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate i := by
+  have hbridge :=
+    cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i
+  unfold physicalHauptvermutungDistortion
+  linarith
+
+theorem physicalHauptvermutungDistortion_zero_iff
+    {ι : Type*}
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) (i : ι)
+    (hcount : 0 ≤ countWindow i)
+    (hcurv : 0 ≤ curvatureBias i)
+    (hlocal : 0 ≤ spectralLocality i) :
+    physicalHauptvermutungDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate i = 0 ↔
+      countWindow i = 0 ∧ curvatureBias i = 0 ∧
+        spectralLocality i = 0 ∧
+          candidate i = fourState.perm (edge i) := by
+  constructor
+  · intro hzero
+    have hbridgeNonneg :=
+      cSpecBridgeHauptvermutungDistortion_nonneg scale edge candidate i
+    have hcountZero : countWindow i = 0 := by
+      unfold physicalHauptvermutungDistortion at hzero
+      linarith
+    have hcurvZero : curvatureBias i = 0 := by
+      unfold physicalHauptvermutungDistortion at hzero
+      linarith
+    have hlocalZero : spectralLocality i = 0 := by
+      unfold physicalHauptvermutungDistortion at hzero
+      linarith
+    have hbridgeZero :
+        cSpecBridgeHauptvermutungDistortion scale edge candidate i = 0 := by
+      unfold physicalHauptvermutungDistortion at hzero
+      linarith
+    exact ⟨hcountZero, hcurvZero, hlocalZero,
+      (cSpecBridgeHauptvermutungDistortion_zero_iff
+        scale edge candidate i).1 hbridgeZero⟩
+  · rintro ⟨hcountZero, hcurvZero, hlocalZero, hcandidate⟩
+    have hbridgeZero :
+        cSpecBridgeHauptvermutungDistortion scale edge candidate i = 0 :=
+      (cSpecBridgeHauptvermutungDistortion_zero_iff
+        scale edge candidate i).2 hcandidate
+    unfold physicalHauptvermutungDistortion
+    rw [hcountZero, hcurvZero, hlocalZero, hbridgeZero]
+    ring
+
+theorem physicalHauptvermutungTotalDistortion_eq_base_plus_bridge
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) :
+    physicalHauptvermutungTotalDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate =
+      physicalHauptvermutungBaseDistortion
+        countWindow curvatureBias spectralLocality +
+        cSpecBridgeTotalDistortion scale edge candidate := by
+  unfold physicalHauptvermutungTotalDistortion
+    physicalHauptvermutungDistortion
+    physicalHauptvermutungBaseDistortion
+    cSpecBridgeTotalDistortion
+  rw [Finset.sum_add_distrib]
+
+theorem physicalHauptvermutungTotalDistortion_nonneg
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurv : ∀ i, 0 ≤ curvatureBias i)
+    (hlocal : ∀ i, 0 ≤ spectralLocality i) :
+    0 ≤ physicalHauptvermutungTotalDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate := by
+  unfold physicalHauptvermutungTotalDistortion
+  exact Finset.sum_nonneg
+    (fun i _ => physicalHauptvermutungDistortion_nonneg
+      countWindow curvatureBias spectralLocality scale edge candidate i
+        (hcount i) (hcurv i) (hlocal i))
+
+theorem physicalHauptvermutungTotalDistortion_eq_zero_iff
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurv : ∀ i, 0 ≤ curvatureBias i)
+    (hlocal : ∀ i, 0 ≤ spectralLocality i) :
+    physicalHauptvermutungTotalDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate = 0 ↔
+      (∀ i, countWindow i = 0) ∧
+        (∀ i, curvatureBias i = 0) ∧
+          (∀ i, spectralLocality i = 0) ∧
+            candidate = canonicalCSpecBridgeCandidate edge := by
+  constructor
+  · intro hzero
+    have hpoint :
+        ∀ i,
+          physicalHauptvermutungDistortion
+            countWindow curvatureBias spectralLocality
+            scale edge candidate i = 0 := by
+      intro i
+      exact (Finset.sum_eq_zero_iff_of_nonneg
+        (fun j _ => physicalHauptvermutungDistortion_nonneg
+          countWindow curvatureBias spectralLocality scale edge candidate j
+            (hcount j) (hcurv j) (hlocal j))).1 hzero i (Finset.mem_univ i)
+    refine ⟨?_, ?_, ?_, ?_⟩
+    · intro i
+      exact ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+          (hcount i) (hcurv i) (hlocal i)).1 (hpoint i)).1
+    · intro i
+      exact ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+          (hcount i) (hcurv i) (hlocal i)).1 (hpoint i)).2.1
+    · intro i
+      exact ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+          (hcount i) (hcurv i) (hlocal i)).1 (hpoint i)).2.2.1
+    · funext i
+      exact ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+          (hcount i) (hcurv i) (hlocal i)).1 (hpoint i)).2.2.2
+  · rintro ⟨hcountZero, hcurvZero, hlocalZero, hcandidate⟩
+    unfold physicalHauptvermutungTotalDistortion
+    apply Finset.sum_eq_zero
+    intro i _
+    exact (physicalHauptvermutungDistortion_zero_iff
+      countWindow curvatureBias spectralLocality scale edge candidate i
+        (hcount i) (hcurv i) (hlocal i)).2
+      ⟨hcountZero i, hcurvZero i, hlocalZero i, by
+        rw [hcandidate]
+        rfl⟩
+
+theorem physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction)
+    (hcandidate : candidate ≠ canonicalCSpecBridgeCandidate edge) :
+    physicalHauptvermutungTotalDistortion countWindow curvatureBias
+      spectralLocality scale edge (canonicalCSpecBridgeCandidate edge) <
+        physicalHauptvermutungTotalDistortion countWindow curvatureBias
+          spectralLocality scale edge candidate := by
+  rw [physicalHauptvermutungTotalDistortion_eq_base_plus_bridge
+    countWindow curvatureBias spectralLocality scale edge
+      (canonicalCSpecBridgeCandidate edge)]
+  rw [physicalHauptvermutungTotalDistortion_eq_base_plus_bridge
+    countWindow curvatureBias spectralLocality scale edge candidate]
+  have hbridge :=
+    cSpecBridgeTotalDistortion_strict_min_of_ne scale edge candidate hcandidate
+  linarith
+
+theorem physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurv : ∀ i, 0 ≤ curvatureBias i)
+    (hlocal : ∀ i, 0 ≤ spectralLocality i)
+    (hcandidate : candidate ≠ canonicalCSpecBridgeCandidate edge) :
+    0 < physicalHauptvermutungTotalDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate := by
+  by_contra hnot
+  have hle :
+      physicalHauptvermutungTotalDistortion
+        countWindow curvatureBias spectralLocality scale edge candidate ≤ 0 :=
+    le_of_not_gt hnot
+  have hnonneg := physicalHauptvermutungTotalDistortion_nonneg
+    countWindow curvatureBias spectralLocality scale edge candidate
+      hcount hcurv hlocal
+  have hzero :
+      physicalHauptvermutungTotalDistortion
+        countWindow curvatureBias spectralLocality scale edge candidate = 0 :=
+    le_antisymm hle hnonneg
+  exact hcandidate
+    ((physicalHauptvermutungTotalDistortion_eq_zero_iff
+      countWindow curvatureBias spectralLocality scale edge candidate
+        hcount hcurv hlocal).1 hzero).2.2.2
+
+/-! ## 6. Physical growth repair-source contraction interface -/
+
+structure PhysicalGrowthSuppliesRepairSource
+    {ι : Type*} [Fintype ι]
+    (w J source countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale c step descentRate remainder currentTotal nextTotal : ℝ)
+    (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) : Prop where
+  first_horizon_area_zero :
+    linearResponse w source (finiteAreaChange c J) = 0
+  second_horizon_area_zero :
+    quadraticResponse w source (finiteAreaChange c J) = 0
+  descends_aggregate :
+    linearResponse w source
+      (physicalHauptvermutungDistortion
+        countWindow curvatureBias spectralLocality scale edge candidate) ≤
+      -descentRate
+  update_bound :
+    nextTotal ≤ currentTotal +
+      step * linearResponse w source
+        (physicalHauptvermutungDistortion
+          countWindow curvatureBias spectralLocality scale edge candidate) +
+        remainder
+  remainder_bound :
+    remainder ≤ step * descentRate / 2
+
+theorem physicalGrowthSuppliesRepairSource_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 ≤ step) :
+    nextTotal ≤ currentTotal - step * descentRate / 2 := by
+  have hmul :
+      step * linearResponse w source
+        (physicalHauptvermutungDistortion
+          countWindow curvatureBias spectralLocality scale edge candidate) ≤
+        step * (-descentRate) := by
+    exact mul_le_mul_of_nonneg_left C.descends_aggregate hstep
+  linarith [C.update_bound, C.remainder_bound, hmul]
+
+theorem physicalGrowthSuppliesRepairSource_strictly_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 < step)
+    (hdescent : 0 < descentRate) :
+    nextTotal < currentTotal := by
+  have hcontract :=
+    physicalGrowthSuppliesRepairSource_contracts C (le_of_lt hstep)
+  have hgap : 0 < step * descentRate / 2 := by
+    nlinarith [mul_pos hstep hdescent]
+  linarith
+
+theorem physicalGrowthSuppliesRepairSource_protected_and_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 < step)
+    (hdescent : 0 < descentRate) :
+    (linearResponse w source (finiteAreaChange c J) = 0 ∧
+      quadraticResponse w source (finiteAreaChange c J) = 0) ∧
+      nextTotal < currentTotal := by
+  exact ⟨⟨C.first_horizon_area_zero, C.second_horizon_area_zero⟩,
+    physicalGrowthSuppliesRepairSource_strictly_contracts C hstep hdescent⟩
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
 #print axioms bridgeCensusDefect_zero_and_orderRecovered
 #print axioms cSpecBridgeHauptvermutungDistortion_eq_defect
+#print axioms cSpecBridgeHauptvermutungDistortion_pos_iff
 #print axioms cSpecBridgeTotalDistortion_eq_zero_iff
+#print axioms cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
+#print axioms cSpecBridgeTotalDistortion_strict_min_of_ne
 #print axioms cSpecBridgeTotalDistortion_zero_orderRecovered
 #print axioms cSpecBridge_canonicalSource_descends_distortion
 #print axioms cSpecBridge_canonicalSource_area_response_zero
 #print axioms cSpecBridge_correctedSource_protected_bridge
+#print axioms physicalHauptvermutungTotalDistortion_eq_zero_iff
+#print axioms physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
+#print axioms physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
+#print axioms physicalGrowthSuppliesRepairSource_protected_and_contracts
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

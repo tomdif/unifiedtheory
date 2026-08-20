@@ -459,6 +459,19 @@ distortion is nonnegative, that the canonical order-recovered candidate family
 is a zero minimizer, and that total zero forces every candidate transport to
 be the order-recovered one.
 
+The first explicit gap-closing interface is now recorded in
+[`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md).  In Lean, the aggregate
+`physicalHauptvermutungDistortion` combines count-window, curvature-bias,
+spectral-locality, and bridge-census transport defects.  Under nonnegative
+component hypotheses, total zero means every component is zero and the
+transport candidate family is canonical.  The bridge component is also a
+strict minimizer inside this aggregate: changing only the transport candidate
+away from the order-recovered family strictly increases total aggregate
+distortion.  The companion interface `PhysicalGrowthSuppliesRepairSource`
+packages the next required physical theorem shape: a horizon-protected repair
+source with aggregate descent and a half-remainder bound strictly contracts
+the aggregate distortion.
+
 Key theorem names:
 
 ```text
@@ -512,11 +525,19 @@ bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
 cSpecBridgeHauptvermutungDistortion_zero_iff
 cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
 cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_strict_min_of_ne
 cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge
+physicalHauptvermutungTotalDistortion_eq_zero_iff
+physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
+physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
+physicalGrowthSuppliesRepairSource_contracts
+physicalGrowthSuppliesRepairSource_strictly_contracts
+physicalGrowthSuppliesRepairSource_protected_and_contracts
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

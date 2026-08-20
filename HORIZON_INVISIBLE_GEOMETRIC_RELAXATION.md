@@ -171,6 +171,14 @@ distortion is zero iff every candidate permutation is the order-recovered
 transport.  Thus this CSpec component is now an exact finite certificate for
 the transport part of the displayed Hauptvermutung distortion proxy.
 
+The plan-start interface then embeds this exact component in the aggregate
+`physicalHauptvermutungDistortion`, alongside count-window, curvature-bias,
+and spectral-locality defects.  Under nonnegative component hypotheses, total
+zero forces every component to vanish and the transport candidate family to be
+canonical.  `PhysicalGrowthSuppliesRepairSource` records the next physical
+target: derive a horizon-protected repair source whose aggregate descent and
+finite half-remainder bound imply strict contraction.
+
 Key names:
 
 ```text
@@ -181,11 +189,16 @@ bridgeCensusDefect_zero_and_orderRecovered
 cSpecBridgeHauptvermutungDistortion_eq_defect
 cSpecBridgeHauptvermutungDistortion_zero_iff
 cSpecBridgeTotalDistortion_eq_zero_iff
+cSpecBridgeTotalDistortion_pos_iff_candidate_ne_canonical
 cSpecBridgeTotalDistortion_canonical_min
+cSpecBridgeTotalDistortion_strict_min_of_ne
 cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge
+physicalHauptvermutungTotalDistortion_eq_zero_iff
+physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
+physicalGrowthSuppliesRepairSource_protected_and_contracts
 ```
 
 ## Numerical Evidence
