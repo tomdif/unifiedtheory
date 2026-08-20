@@ -681,6 +681,13 @@ passes all small-step rows.  The next mathematical target is coefficient
 stability: prove that the null-cone correction magnitude converges, or replace
 `-gap` with an invariant corrector whose root is stable by construction.
 
+Corrector comparison adds an important simplification.  Under the scan's
+standardize-and-residualize convention, `-gap` and `interior_bdg` give
+identical statistics: both are just the interior BDG corrector after constants
+and horizon-boundary terms are projected away.  On `n=18`, `paths=4`, both have
+mean `|t| = 3.61231`, mean absolute leakage `3.15e-3`, and pass rate `0.985714`
+at step `0.050`.  The `size` corrector passes the gate but has worse leakage.
+
 ## Descent Dynamics
 
 The file now also formalizes the finite dynamical step needed to turn

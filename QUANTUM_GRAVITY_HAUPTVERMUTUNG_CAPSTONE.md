@@ -424,6 +424,12 @@ the local descent gate mostly remains open.  The next finite target is
 coefficient-magnitude stability under refinement, or an invariant replacement
 for the current `-gap` corrector.
 
+Corrector comparison shows that the apparent `-gap` corrector is really the
+interior BDG channel after residualization: `-gap` and `interior_bdg` have
+identical `n=18`, `paths=4` statistics, while `size` has worse leakage.  This
+narrows the physical source target from a whole action-gap proxy to the
+interior action channel with the horizon boundary part projected out.
+
 Key theorem names:
 
 ```text

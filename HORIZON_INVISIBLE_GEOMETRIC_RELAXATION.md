@@ -18,16 +18,15 @@ semiclassical Einstein equations.  The finite repo work asks a sharper causal
 set question: can a growth law also repair order-to-geometry defects without
 renormalizing that same local horizon channel?
 
-## Program-Level Target
+## Refinement Target
 
-The public causal-set program would be decisively advanced by a theorem of
-this shape:
+A useful theorem shape for this repo is:
 
 ```text
 label-invariant causal growth
   -> stable manifoldlike causal sets under refinement
   -> quantitative Hauptvermutung uniqueness
-  -> Benincasa-Dowker/entropy flux limit gives semiclassical Einstein gravity
+  -> finite curvature/entropy-flux limit gives semiclassical Einstein gravity
 ```
 
 In repo terms, the current bottleneck is the middle arrow.  The horizon entropy
@@ -218,6 +217,26 @@ still passes all but one large-step row.  This points to a precise next
 target: prove coefficient-magnitude stability under refinement/sampling, or
 replace the proxy `-gap` channel by an invariant corrector with a sharper
 null-cone root.
+
+The same scanner now has a corrector-comparison mode.  On `n=18`, `paths=2`,
+certificate-error correctors did not produce bounded real leakage-null roots
+on the tested samples.  The surviving correctors were `-gap`, `interior_bdg`,
+and `size`.  At `n=18`, `paths=4`, `-gap` and `interior_bdg` give identical
+statistics:
+
+```text
+mean |t|       = 3.61231
+sd |t|         = 0.08553
+mean |leakage| = 3.15e-3
+mean response  = -0.658897
+pass@0.05      = 0.985714
+```
+
+The equality is expected from the scan convention: `-gap` differs from
+`interior_bdg` by a constant plus the horizon-boundary term, and the
+standardize/residualize step removes those directions from the effective
+source.  The useful corrector is therefore the interior BDG channel, not a
+second copy of the horizon entropy source.
 
 The empirical target is now sharper: prove that the coefficient correcting
 `S_can` by the `-gap` residual, or its invariant replacement, converges to a

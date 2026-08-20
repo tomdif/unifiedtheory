@@ -15,7 +15,9 @@ the raw scan convention
 and then applies parent-local sign orientation before checking the finite
 descent gate.  Since sign does not change second-order leakage, this is the
 empirical counterpart of the Lean corrected-source theorem up to the final
-orientation convention.
+orientation convention.  The comparison mode tests several corrector channels;
+in the current BDG decomposition, `-gap` and `interior_bdg` become the same
+effective channel after standardizing and projecting away the horizon source.
 """
 
 import argparse
@@ -36,12 +38,24 @@ def parse_floats(text):
     return [float(x) for x in text.split(",") if x.strip()]
 
 
+def parse_strings(text):
+    return [x.strip() for x in text.split(",") if x.strip()]
+
+
 def summarize(values):
     x = np.array(list(values), dtype=float)
     x = x[np.isfinite(x)]
     if len(x) == 0:
         return float("nan")
     return float(np.mean(x))
+
+
+def spread(values):
+    x = np.array(list(values), dtype=float)
+    x = x[np.isfinite(x)]
+    if len(x) <= 1:
+        return 0.0 if len(x) == 1 else float("nan")
+    return float(np.std(x, ddof=1))
 
 
 def leakage_args(args, n, seed):
@@ -191,11 +205,72 @@ def run(args):
     print("DONE-CORRECTED-CANONICAL-COEFFICIENT-SCAN")
 
 
+def with_corrector(args, corrector):
+    data = vars(args).copy()
+    data["corrector"] = corrector
+    return SimpleNamespace(**data)
+
+
+def compare_correctors(args):
+    correctors = parse_strings(args.correctors)
+    depths = parse_ints(args.depths)
+    seeds = parse_ints(args.seeds)
+    steps = parse_floats(args.steps)
+    last_step = steps[-1] if steps else float("nan")
+    print("\nCORRECTED CANONICAL CORRECTOR COMPARISON")
+    print(f"basis={args.basis}, target={args.target}, paths={args.paths}, "
+          f"depths={args.depths}, seeds={args.seeds}, target_t={args.target_t}")
+    print()
+    head = [
+        "corrector", "samples", "mean|t|", "sd|t|", "mean|leak|",
+        "mean_resp", f"minpass@{last_step:g}",
+    ]
+    print("  ".join(f"{h:>18}" for h in head))
+    print("  ".join("-" * 18 for _ in head))
+    for corrector in correctors:
+        cargs = with_corrector(args, corrector)
+        abs_t = []
+        abs_leak = []
+        target_resp = []
+        pass_fracs = []
+        samples = 0
+        for n in depths:
+            for seed in seeds:
+                coeff = scan_coeff(cargs, n, seed)
+                t = coeff["t"]
+                if not math.isfinite(t):
+                    continue
+                samples += 1
+                abs_t.append(abs(t))
+                abs_leak.append(abs(coeff["leakage"]))
+                gate_stats = scan_gate(cargs, n, seed, t)
+                target_resp.append(gate_stats["target_response"])
+                if steps:
+                    pass_fracs.append(
+                        gate_stats["step_stats"].get(last_step, {}).get(
+                            "pass", float("nan")
+                        )
+                    )
+        row = [
+            corrector,
+            str(samples),
+            fmt(summarize(abs_t)),
+            fmt(spread(abs_t)),
+            fmt(summarize(abs_leak)),
+            fmt(summarize(target_resp)),
+            fmt(summarize(pass_fracs)),
+        ]
+        print("  ".join(f"{x:>18}" for x in row))
+    print("DONE-CORRECTED-CANONICAL-CORRECTOR-COMPARISON")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--basis", choices=["shell", "hv", "cert"], default="cert")
     ap.add_argument("--target", default="cert_scaledDistortionBound")
     ap.add_argument("--corrector", default="-gap")
+    ap.add_argument("--correctors", default=None,
+                    help="Comma-separated correctors to compare instead of a single detailed scan.")
     ap.add_argument("--depths", default="18,20")
     ap.add_argument("--seeds", default="53,157")
     ap.add_argument("--paths", type=int, default=2)
@@ -204,7 +279,11 @@ def main():
     ap.add_argument("--steps", default="0.005,0.01,0.02,0.05")
     ap.add_argument("--root-bound", type=float, default=8.0)
     ap.add_argument("--target-t", type=float, default=3.5)
-    run(ap.parse_args())
+    args = ap.parse_args()
+    if args.correctors:
+        compare_correctors(args)
+    else:
+        run(args)
 
 
 if __name__ == "__main__":
