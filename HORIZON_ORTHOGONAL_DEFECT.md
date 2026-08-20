@@ -620,6 +620,69 @@ refinement template: every certified step leaves the Dorau--Much horizon
 channel protected through second order, while the displayed Hauptvermutung
 distortion tends to zero.
 
+## Descent Gate Probe
+
+The script
+
+```text
+horizon_distortion_descent_gate.py
+```
+
+tests the finite half-remainder gate on the certificate-basis candidate
+
+```text
+residual(cert_pairConsistency) + 3.5035 residual(-gap)
+```
+
+against the displayed distortion target `cert_scaledDistortionBound`.
+
+Global orientation command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_distortion_descent_gate.py --n 18 --paths 4 --burn 5 --starts 8 --seed 53 --steps 0.005,0.01,0.02,0.05
+```
+
+Global result:
+
+```text
+parents = 35
+descent_positive_frac = 28/35 = 0.800
+mean target_response  = -6.35e-01
+step 0.005: pass=0.800, strict=0.800, mean_gate_ratio=0.016
+step 0.010: pass=0.800, strict=0.800, mean_gate_ratio=0.033
+step 0.020: pass=0.771, strict=0.800, mean_gate_ratio=0.066
+step 0.050: pass=0.743, strict=0.771, mean_gate_ratio=0.163
+```
+
+The global fixed direction has the right average sign and a small mean
+remainder, but it is not yet a uniform certificate because 7 of 35 sampled
+parents point the wrong way for the distortion target.
+
+Local orientation command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_distortion_descent_gate.py --n 18 --paths 4 --burn 5 --starts 8 --seed 53 --steps 0.005,0.01,0.02,0.05 --local-sign
+```
+
+Local result:
+
+```text
+parents = 35
+descent_positive_frac = 35/35 = 1.000
+mean target_response  = -8.00e-01
+step 0.005: pass=1.000, strict=1.000, mean_gate_ratio=0.015
+step 0.010: pass=1.000, strict=1.000, mean_gate_ratio=0.030
+step 0.020: pass=0.971, strict=1.000, mean_gate_ratio=0.060
+step 0.050: pass=0.943, strict=0.971, mean_gate_ratio=0.150
+```
+
+This is much closer to the formal theorem.  The protected descent package
+allows the source to vary with the finite parent state, so local orientation is
+the right finite model for the next physical certificate.  The remaining
+empirical target is now precise: find an invariant rule for choosing that
+state-dependent sign/coefficient, then prove its half-remainder gate uniformly
+under refinement.
+
 The file also defines `ProtectedCertificateErrorRefinement`.  In this
 refinement version, first-order horizon contamination vanishes at every finite
 stage, while the second-order leakage only has to tend to zero:

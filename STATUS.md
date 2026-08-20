@@ -35,7 +35,9 @@
 > displayed distortion strictly decreases; a geometric-majorant wrapper gives
 > convergence to zero from `D_n <= D_0*q^n`, `0 <= q < 1`. The sequence-level
 > bridge proves this same descent keeps first-order and second central
-> horizon-area response zero at every finite stage.
+> horizon-area response zero at every finite stage. The current gate probe
+> shows the certificate-basis candidate passes the half-remainder gate on all
+> sampled parents at small steps once the source is oriented locally by parent.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

@@ -373,6 +373,17 @@ same geometric distortion majorant, Lean proves every finite step has zero
 first-order and zero second central horizon-area response, while the displayed
 Hauptvermutung distortion tends to zero.
 
+`horizon_distortion_descent_gate.py` now tests the finite half-remainder gate
+on the certificate-basis candidate
+`residual(cert_pairConsistency) + 3.5035 residual(-gap)`.  On the small
+`n=18`, `paths=4`, seed-53 sample, the global fixed orientation descends the
+displayed distortion target on 28/35 parents and passes the half-remainder gate
+for 80% of parents at steps `0.005` and `0.010`.  With local per-parent
+orientation, descent is positive on 35/35 parents and the gate passes on all
+parents at steps `0.005` and `0.010`.  This supports the state-dependent source
+form of the Lean descent package, but it is still empirical, not a uniform
+refinement certificate.
+
 Key theorem names:
 
 ```text

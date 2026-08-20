@@ -75,7 +75,9 @@ Machine-checked additions now cover:
   Hauptvermutung distortion strictly decreases, and a geometric-majorant
   theorem gives convergence to zero from `D_n <= D_0*q^n`, `0 <= q < 1`;
   the sequence-level bridge proves this same descent keeps first-order and
-  second central horizon-area response zero at every finite stage.
+  second central horizon-area response zero at every finite stage; the current
+  gate probe shows the certificate-basis direction passes the half-remainder
+  gate on all sampled parents at small steps when oriented locally by parent.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

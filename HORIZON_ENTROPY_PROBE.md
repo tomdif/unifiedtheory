@@ -479,6 +479,11 @@ The combined sequence theorem
 `ProtectedHauptvermutungDistortionDescent.horizon_protection_and_distortion_tendsto_zero`
 adds that the same descent sequence keeps the horizon response zero through
 second order at every finite stage.
+The new `horizon_distortion_descent_gate.py` probe tests the theorem's
+half-remainder condition.  On the small certificate-basis sample, the global
+fixed direction descends on 28/35 parents, while local per-parent orientation
+descends on 35/35 and passes the half-remainder gate for all parents at steps
+`0.005` and `0.010`.
 
 The original finite horizon-entropy theorem is stronger than a fit to the probe
 output: for any normalized nonnegative finite birth law, the full
