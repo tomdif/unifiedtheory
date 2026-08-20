@@ -1120,6 +1120,22 @@ theorem physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
   have hcontract := physicalGrowthSuppliesRepairSource_contracts C hstep
   nlinarith
 
+theorem physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal q : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 ≤ step)
+    (hbudget : 2 * (1 - q) * currentTotal ≤ step * descentRate) :
+    nextTotal ≤ q * currentTotal := by
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
+    C hstep (by nlinarith)
+
 theorem physicalGrowthSuppliesRepairSource_strictly_contracts
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
@@ -1201,6 +1217,22 @@ theorem physicalGrowthRepairRefinement_step_factor_of_relative_margin
   intro n
   exact physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
     (R.certified_step n) (le_of_lt (R.step_pos n)) (hrelative n)
+
+theorem physicalGrowthRepairRefinement_step_factor_of_descent_budget
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hbudget : ∀ n, 2 * (1 - q) * total n ≤ step n * descentRate n) :
+    ∀ n, total (n + 1) ≤ q * total n := by
+  intro n
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
+    (R.certified_step n) (le_of_lt (R.step_pos n)) (hbudget n)
 
 theorem physicalGrowthRepairRefinement_step_strictly_contracts
     {ι : Type*} [Fintype ι]
@@ -1389,6 +1421,31 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       (physicalGrowthRepairRefinement_step_factor_of_relative_margin
         R q hrelative)
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hbudget : ∀ n, 2 * (1 - q) * total n ≤ step n * descentRate n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+      R q hq0 hq1 htotal_nonneg
+      (physicalGrowthRepairRefinement_step_factor_of_descent_budget
+        R q hbudget)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1410,5 +1467,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

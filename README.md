@@ -122,8 +122,10 @@ Machine-checked additions now cover:
   geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean now proves aggregate
   convergence `D_n -> 0`; a further step-factor gate derives that majorant
   from `D_{n+1} <= q * D_n`; the newest relative-margin gate derives that
-  factor from `(1 - q)*D_n <= step_n*descentRate_n/2`, making the next
-  physical target the derivation of this margin from causal growth.
+  factor from `(1 - q)*D_n <= step_n*descentRate_n/2`; the newest
+  descent-budget gate packages the same requirement as
+  `2*(1 - q)*D_n <= step_n*descentRate_n`, making that physical budget the
+  next target from causal growth.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

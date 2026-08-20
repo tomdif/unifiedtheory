@@ -184,8 +184,9 @@ aggregate decrease.  With a geometric majorant `D_n <= D_0*q^n`,
 `0 <= q < 1`, the same wrapper now proves `D_n -> 0`.  The newest factor gate
 derives that majorant from `D_{n+1} <= q * D_n`, and the newest relative-margin
 gate derives that one-step factor from
-`(1 - q)*D_n <= step_n*descentRate_n/2`.  The physical target is now this
-relative descent margin from causal growth.
+`(1 - q)*D_n <= step_n*descentRate_n/2`.  The newest descent-budget gate
+packages the same condition as `2*(1 - q)*D_n <= step_n*descentRate_n`.  The
+physical target is now this descent budget from causal growth.
 
 Key names:
 
@@ -208,11 +209,14 @@ physicalHauptvermutungTotalDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
+physicalGrowthSuppliesRepairSource_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 physicalGrowthRepairRefinement_step_factor_of_relative_margin
+physicalGrowthRepairRefinement_step_factor_of_descent_budget
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_descent_budget
 ```
 
 ## Numerical Evidence
