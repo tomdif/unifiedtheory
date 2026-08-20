@@ -58,7 +58,9 @@
 > `paths=4`, the two seed magnitudes are `3.67279` and `3.55183`, making
 > coefficient stability the next finite proof target. Corrector comparison
 > shows the effective `-gap` correction is the interior BDG channel after the
-> horizon-boundary component is projected away.
+> horizon-boundary component is projected away; Lean now proves that this
+> corrector-gauge quotient preserves first-order response and second-order
+> horizon leakage.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

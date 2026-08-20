@@ -97,7 +97,9 @@ Machine-checked additions now cover:
   coefficient scan finds `|t| ≈ 3.61` on the higher-statistics `n=18`,
   `paths=4` check and identifies coefficient stability as the next proof
   target; corrector comparison shows the effective `-gap` correction is the
-  interior BDG channel after the horizon-boundary component is projected away.
+  interior BDG channel after the horizon-boundary component is projected away;
+  Lean now proves the underlying corrector-gauge quotient for first-order
+  response and second-order horizon leakage.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

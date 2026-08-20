@@ -428,7 +428,11 @@ Corrector comparison shows that the apparent `-gap` corrector is really the
 interior BDG channel after residualization: `-gap` and `interior_bdg` have
 identical `n=18`, `paths=4` statistics, while `size` has worse leakage.  This
 narrows the physical source target from a whole action-gap proxy to the
-interior action channel with the horizon boundary part projected out.
+interior action channel with the horizon boundary part projected out.  The
+finite Lean file now proves the algebra behind this quotient: adding constants
+and horizon-parallel terms to a corrector does not change the centered
+residual's first-order response or second-order horizon leakage, and the
+corrected canonical source inherits the same invariance.
 
 Key theorem names:
 
@@ -436,6 +440,11 @@ Key theorem names:
 rawDefect_eq_projection_plus_residual
 covariance_horizonOrthogonalResidual_self
 horizonProjectionCoeff_unique
+horizonProjectionCoeff_add_horizon
+horizonProjectionCoeff_add_const
+horizonOrthogonalResidual_add_const_horizon
+linearResponse_horizonOrthogonalResidual_add_const_horizon
+horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon
 orthogonal_source_area_response_zero
 quadraticResponse_finiteAreaChange_eq_neg_leakage
 orthogonal_source_secondOrder_area_obstruction
@@ -459,6 +468,8 @@ canonicalHorizonInvisibleDescentSource_response_rawDefect
 canonicalHorizonInvisibleDescentSource_area_response_zero
 canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge
+correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge
 correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge

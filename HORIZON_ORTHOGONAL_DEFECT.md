@@ -686,7 +686,11 @@ standardize-and-residualize convention, `-gap` and `interior_bdg` give
 identical statistics: both are just the interior BDG corrector after constants
 and horizon-boundary terms are projected away.  On `n=18`, `paths=4`, both have
 mean `|t| = 3.61231`, mean absolute leakage `3.15e-3`, and pass rate `0.985714`
-at step `0.050`.  The `size` corrector passes the gate but has worse leakage.
+at step `0.050`.  Lean now proves the quotient behind this observation:
+constants and horizon-parallel terms leave the centered residual's first-order
+response and second-order horizon leakage unchanged, and the corrected
+canonical source inherits that same corrector-gauge invariance.  The `size`
+corrector passes the gate but has worse leakage.
 
 ## Descent Dynamics
 

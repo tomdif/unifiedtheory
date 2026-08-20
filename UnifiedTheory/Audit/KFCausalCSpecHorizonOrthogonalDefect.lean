@@ -129,6 +129,22 @@ theorem expectation_const_mul {ι : Type*} [Fintype ι]
     _ = a * ∑ i, w i * X i := by
             rw [Finset.mul_sum]
 
+theorem expectation_const {ι : Type*} [Fintype ι]
+    (w : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    expectation w (fun _ => a) = a := by
+  unfold expectation
+  calc
+    (∑ i, w i * a) = ∑ i, a * w i := by
+      apply Finset.sum_congr rfl
+      intro i _
+      ring
+    _ = a * ∑ i, w i := by
+      rw [Finset.mul_sum]
+    _ = a := by
+      rw [hw]
+      ring
+
 theorem expectation_linear_combination {ι : Type*} [Fintype ι]
     (w A B : ι → ℝ) (a b : ℝ) :
     expectation w (fun i => a * A i + b * B i) =
@@ -143,6 +159,16 @@ theorem centeredSource_linear_combination {ι : Type*} [Fintype ι]
   funext i
   unfold centeredSource
   rw [expectation_linear_combination]
+  ring
+
+theorem centeredSource_const_add {ι : Type*} [Fintype ι]
+    (w S : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    centeredSource w (fun i => S i + a) = centeredSource w S := by
+  funext i
+  unfold centeredSource
+  rw [expectation_add]
+  rw [expectation_const w a hw]
   ring
 
 /-- Covariance is symmetric over real-valued observables. -/
@@ -220,6 +246,24 @@ theorem covariance_const_mul_left {ι : Type*} [Fintype ι]
   rw [hprod, expectation_const_mul]
   ring
 
+theorem covariance_const_left {ι : Type*} [Fintype ι]
+    (w X : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    covariance w (fun _ => a) X = 0 := by
+  unfold covariance
+  change expectation w (fun i => a * X i) -
+    expectation w (fun _ : ι => a) * expectation w X = 0
+  rw [expectation_const_mul]
+  rw [expectation_const w a hw]
+  ring
+
+theorem covariance_const_right {ι : Type*} [Fintype ι]
+    (w X : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    covariance w X (fun _ => a) = 0 := by
+  rw [covariance_comm]
+  exact covariance_const_left w X a hw
+
 theorem covariance_add_right {ι : Type*} [Fintype ι]
     (w X Y Z : ι → ℝ) :
     covariance w X (fun i => Y i + Z i) =
@@ -267,6 +311,24 @@ theorem linearResponse_eq_covariance {ι : Type*} [Fintype ι]
     _ = (∑ i, w i * (X i * S i)) -
           (∑ i, w i * X i) * (∑ i, w i * S i) := by
             ring
+
+theorem linearResponse_const_add_source
+    {ι : Type*} [Fintype ι]
+    (w S X : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    linearResponse w (fun i => S i + a) X =
+      linearResponse w S X := by
+  unfold linearResponse
+  rw [centeredSource_const_add w S a hw]
+
+theorem horizonSecondOrderLeakage_const_add_source
+    {ι : Type*} [Fintype ι]
+    (w J S : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    horizonSecondOrderLeakage w J (fun i => S i + a) =
+      horizonSecondOrderLeakage w J S := by
+  unfold horizonSecondOrderLeakage
+  rw [centeredSource_const_add w S a hw]
 
 /-- Covariance of area change `c-J` against any source is the negative
 covariance of `J` against that source. -/
@@ -537,6 +599,106 @@ theorem horizonProjectionCoeff_unique
           field_simp [hvar]
     _ = covariance w G J / variance w J := by
           rw [hmul]
+
+/-- Adding a horizon-parallel observable shifts the projection coefficient by
+the same scalar. -/
+theorem horizonProjectionCoeff_add_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a : ℝ)
+    (hvar : variance w J ≠ 0) :
+    horizonProjectionCoeff w J (fun i => G i + a * J i) =
+      horizonProjectionCoeff w J G + a := by
+  unfold horizonProjectionCoeff
+  rw [covariance_add_left]
+  rw [covariance_const_mul_left]
+  unfold variance at hvar ⊢
+  field_simp [hvar]
+
+/-- Horizon-parallel additions vanish exactly from the projected residual. -/
+theorem horizonOrthogonalResidual_add_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a : ℝ)
+    (hvar : variance w J ≠ 0) :
+    horizonOrthogonalResidual w J (fun i => G i + a * J i) =
+      horizonOrthogonalResidual w J G := by
+  funext i
+  unfold horizonOrthogonalResidual
+  rw [horizonProjectionCoeff_add_horizon w J G a hvar]
+  ring
+
+/-- Constant observable offsets do not change the projection coefficient. -/
+theorem horizonProjectionCoeff_add_const
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    horizonProjectionCoeff w J (fun i => G i + a) =
+      horizonProjectionCoeff w J G := by
+  unfold horizonProjectionCoeff
+  rw [covariance_add_left]
+  rw [covariance_const_left w J a hw]
+  ring
+
+/-- Constant observable offsets shift the residual only by that constant. -/
+theorem horizonOrthogonalResidual_add_const
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a : ℝ)
+    (hw : (∑ i, w i) = 1) :
+    horizonOrthogonalResidual w J (fun i => G i + a) =
+      fun i => horizonOrthogonalResidual w J G i + a := by
+  funext i
+  unfold horizonOrthogonalResidual
+  rw [horizonProjectionCoeff_add_const w J G a hw]
+  ring
+
+/-- Up to the centered response geometry, adding constants and horizon-parallel
+terms to the raw observable gives the same residual source. -/
+theorem horizonOrthogonalResidual_add_const_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonOrthogonalResidual w J (fun i => G i + a + b * J i) =
+      fun i => horizonOrthogonalResidual w J G i + a := by
+  rw [horizonOrthogonalResidual_add_horizon w J
+    (fun i => G i + a) b hvar]
+  exact horizonOrthogonalResidual_add_const w J G a hw
+
+theorem centeredSource_horizonOrthogonalResidual_add_const_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    centeredSource w
+        (horizonOrthogonalResidual w J (fun i => G i + a + b * J i)) =
+      centeredSource w (horizonOrthogonalResidual w J G) := by
+  rw [horizonOrthogonalResidual_add_const_horizon w J G a b hw hvar]
+  exact centeredSource_const_add w (horizonOrthogonalResidual w J G) a hw
+
+theorem linearResponse_horizonOrthogonalResidual_add_const_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G X : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w
+        (horizonOrthogonalResidual w J (fun i => G i + a + b * J i))
+        X =
+      linearResponse w (horizonOrthogonalResidual w J G) X := by
+  unfold linearResponse
+  rw [centeredSource_horizonOrthogonalResidual_add_const_horizon
+    w J G a b hw hvar]
+
+theorem horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon
+    {ι : Type*} [Fintype ι]
+    (w J G : ι → ℝ) (a b : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderLeakage w J
+        (horizonOrthogonalResidual w J (fun i => G i + a + b * J i)) =
+      horizonSecondOrderLeakage w J
+        (horizonOrthogonalResidual w J G) := by
+  unfold horizonSecondOrderLeakage
+  rw [centeredSource_horizonOrthogonalResidual_add_const_horizon
+    w J G a b hw hvar]
 
 /-- Any source covariance-orthogonal to the horizon source has no first-order
 horizon-area response. -/
@@ -1214,6 +1376,69 @@ noncomputable def correctedCanonicalHorizonInvisibleDescentSource
     -horizonOrthogonalResidual w J G i +
       t * horizonOrthogonalResidual w J H i
 
+/-- The corrected source only depends on the correcting observable modulo
+constant offsets and horizon-parallel terms, as seen by centered responses. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b t : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    centeredSource w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t) =
+      centeredSource w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t) := by
+  unfold correctedCanonicalHorizonInvisibleDescentSource
+  rw [horizonOrthogonalResidual_add_const_horizon w J H a b hw hvar]
+  have hsource :
+      (fun i =>
+          -horizonOrthogonalResidual w J G i +
+            t * (horizonOrthogonalResidual w J H i + a)) =
+        fun i =>
+          (-horizonOrthogonalResidual w J G i +
+            t * horizonOrthogonalResidual w J H i) + t * a := by
+    funext i
+    ring
+  rw [hsource]
+  exact centeredSource_const_add w
+    (fun i =>
+      -horizonOrthogonalResidual w J G i +
+        t * horizonOrthogonalResidual w J H i) (t * a) hw
+
+/-- Corrector gauge changes do not alter any first-order response of the
+corrected canonical source. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H X : ι → ℝ) (a b t : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t)
+        X =
+      linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        X := by
+  unfold linearResponse
+  rw [correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
+    w J G H a b t hw hvar]
+
+/-- Corrector gauge changes do not alter the second-order horizon leakage of
+the corrected canonical source. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b t : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    horizonSecondOrderLeakage w J
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t) =
+      horizonSecondOrderLeakage w J
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t) := by
+  unfold horizonSecondOrderLeakage
+  rw [correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
+    w J G H a b t hw hvar]
+
 /-- The corrected canonical source remains first-order horizon-invisible. -/
 theorem correctedCanonicalHorizonInvisibleDescentSource_orthogonal
     {ι : Type*} [Fintype ι]
@@ -1883,11 +2108,23 @@ end ProtectedHauptvermutungDistortionDescent
 
 #print axioms covariance_comm
 #print axioms centeredSource_linear_combination
+#print axioms expectation_const
+#print axioms centeredSource_const_add
+#print axioms covariance_const_left
+#print axioms covariance_const_right
 #print axioms covariance_add_right
 #print axioms covariance_const_mul_right
 #print axioms rawDefect_eq_projection_plus_residual
 #print axioms covariance_horizonOrthogonalResidual_self
 #print axioms horizonProjectionCoeff_unique
+#print axioms horizonProjectionCoeff_add_horizon
+#print axioms horizonOrthogonalResidual_add_horizon
+#print axioms horizonProjectionCoeff_add_const
+#print axioms horizonOrthogonalResidual_add_const
+#print axioms horizonOrthogonalResidual_add_const_horizon
+#print axioms centeredSource_horizonOrthogonalResidual_add_const_horizon
+#print axioms linearResponse_horizonOrthogonalResidual_add_const_horizon
+#print axioms horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon
 #print axioms orthogonal_source_area_response_zero
 #print axioms quadraticResponse_finiteAreaChange_eq_neg_leakage
 #print axioms orthogonal_source_secondOrder_area_obstruction
@@ -1914,6 +2151,8 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms ProtectedCertificateErrorRefinement.first_area_response_zero
 #print axioms ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 #print axioms ProtectedCertificateErrorRefinement.certificate_error_response_negative
+#print axioms linearResponse_const_add_source
+#print axioms horizonSecondOrderLeakage_const_add_source
 #print axioms linearResponse_const_mul_source
 #print axioms linearResponse_add_source
 #print axioms linearResponse_neg_source
@@ -1925,6 +2164,9 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms canonicalHorizonInvisibleDescentSource_area_response_zero
 #print axioms canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 #print axioms canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_orthogonal
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect

@@ -232,11 +232,17 @@ mean response  = -0.658897
 pass@0.05      = 0.985714
 ```
 
-The equality is expected from the scan convention: `-gap` differs from
-`interior_bdg` by a constant plus the horizon-boundary term, and the
-standardize/residualize step removes those directions from the effective
-source.  The useful corrector is therefore the interior BDG channel, not a
-second copy of the horizon entropy source.
+The equality is now formalized in the finite response geometry:
+`horizonOrthogonalResidual_add_const_horizon`,
+`linearResponse_horizonOrthogonalResidual_add_const_horizon`, and
+`horizonSecondOrderLeakage_horizonOrthogonalResidual_add_const_horizon` prove
+that adding a constant plus a horizon-parallel term to a raw corrector leaves
+the centered residual's first response and second horizon leakage unchanged.
+The named corrected source records the same quotient through
+`correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge` and
+`correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge`.
+Thus the useful corrector is the interior BDG channel, not a second copy of the
+horizon entropy source.
 
 The empirical target is now sharper: prove that the coefficient correcting
 `S_can` by the `-gap` residual, or its invariant replacement, converges to a
