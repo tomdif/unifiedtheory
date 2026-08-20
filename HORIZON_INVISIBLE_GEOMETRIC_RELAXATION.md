@@ -177,7 +177,10 @@ and spectral-locality defects.  Under nonnegative component hypotheses, total
 zero forces every component to vanish and the transport candidate family to be
 canonical.  `PhysicalGrowthSuppliesRepairSource` records the next physical
 target: derive a horizon-protected repair source whose aggregate descent and
-finite half-remainder bound imply strict contraction.
+finite half-remainder bound imply strict contraction.  The
+`PhysicalGrowthRepairRefinement` wrapper records such a certificate at every
+finite refinement step and proves horizon protection plus strict stepwise
+aggregate decrease.
 
 Key names:
 
@@ -199,6 +202,7 @@ cSpecBridge_correctedSource_protected_bridge
 physicalHauptvermutungTotalDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalGrowthSuppliesRepairSource_protected_and_contracts
+physicalGrowthRepairRefinement_protected_and_contracts
 ```
 
 ## Numerical Evidence

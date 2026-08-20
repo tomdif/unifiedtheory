@@ -1140,6 +1140,82 @@ theorem physicalGrowthSuppliesRepairSource_protected_and_contracts
   exact ⟨⟨C.first_horizon_area_zero, C.second_horizon_area_zero⟩,
     physicalGrowthSuppliesRepairSource_strictly_contracts C hstep hdescent⟩
 
+structure PhysicalGrowthRepairRefinement
+    {ι : Type*} [Fintype ι]
+    (w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ)
+    (scale c step descentRate remainder total : ℕ → ℝ)
+    (edge : ℕ → ι → E4)
+    (candidate : ℕ → ι → Equiv.Perm Direction) : Prop where
+  certified_step :
+    ∀ n,
+      PhysicalGrowthSuppliesRepairSource (w n) (J n) (source n)
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (c n) (step n) (descentRate n) (remainder n)
+        (total n) (total (n + 1)) (edge n) (candidate n)
+  step_pos : ∀ n, 0 < step n
+  descent_pos : ∀ n, 0 < descentRate n
+
+theorem physicalGrowthRepairRefinement_step_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (n : ℕ) :
+    total (n + 1) ≤ total n - step n * descentRate n / 2 := by
+  exact physicalGrowthSuppliesRepairSource_contracts
+    (R.certified_step n) (le_of_lt (R.step_pos n))
+
+theorem physicalGrowthRepairRefinement_step_strictly_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (n : ℕ) :
+    total (n + 1) < total n := by
+  exact physicalGrowthSuppliesRepairSource_strictly_contracts
+    (R.certified_step n) (R.step_pos n) (R.descent_pos n)
+
+theorem physicalGrowthRepairRefinement_step_protected
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (n : ℕ) :
+    linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+      quadraticResponse (w n) (source n)
+        (finiteAreaChange (c n) (J n)) = 0 := by
+  exact ⟨(R.certified_step n).first_horizon_area_zero,
+    (R.certified_step n).second_horizon_area_zero⟩
+
+theorem physicalGrowthRepairRefinement_protected_and_contracts
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (n : ℕ) :
+    (linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+      quadraticResponse (w n) (source n)
+        (finiteAreaChange (c n) (J n)) = 0) ∧
+      total (n + 1) < total n := by
+  exact ⟨physicalGrowthRepairRefinement_step_protected R n,
+    physicalGrowthRepairRefinement_step_strictly_contracts R n⟩
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1157,5 +1233,6 @@ theorem physicalGrowthSuppliesRepairSource_protected_and_contracts
 #print axioms physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 #print axioms physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
 #print axioms physicalGrowthSuppliesRepairSource_protected_and_contracts
+#print axioms physicalGrowthRepairRefinement_protected_and_contracts
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

@@ -470,7 +470,11 @@ away from the order-recovered family strictly increases total aggregate
 distortion.  The companion interface `PhysicalGrowthSuppliesRepairSource`
 packages the next required physical theorem shape: a horizon-protected repair
 source with aggregate descent and a half-remainder bound strictly contracts
-the aggregate distortion.
+the aggregate distortion.  The refinement wrapper
+`PhysicalGrowthRepairRefinement` records this source certificate at every
+finite stage and proves stepwise horizon protection together with
+`D_{n+1} < D_n`.  The next proof target is no longer just one-step descent; it
+is a geometric or summable-rate convergence theorem for the physical aggregate.
 
 Key theorem names:
 
@@ -538,6 +542,9 @@ physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
 physicalGrowthSuppliesRepairSource_contracts
 physicalGrowthSuppliesRepairSource_strictly_contracts
 physicalGrowthSuppliesRepairSource_protected_and_contracts
+physicalGrowthRepairRefinement_step_contracts
+physicalGrowthRepairRefinement_step_strictly_contracts
+physicalGrowthRepairRefinement_protected_and_contracts
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

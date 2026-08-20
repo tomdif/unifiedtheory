@@ -128,7 +128,10 @@ nonnegative component hypotheses, total zero forces every component to vanish
 and the transport candidate family to be canonical.  The bridge component is a
 strict minimizer inside that aggregate, and `PhysicalGrowthSuppliesRepairSource`
 packages the horizon-protected half-remainder contraction gate that the actual
-physical growth law must instantiate.
+physical growth law must instantiate.  `PhysicalGrowthRepairRefinement` records
+that gate across a refinement sequence and proves every certified finite step
+has zero first-order and second central horizon-area response while satisfying
+`D_{n+1} < D_n`.
 
 ## Lean Names
 
@@ -192,6 +195,7 @@ physicalHauptvermutungTotalDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
 physicalGrowthSuppliesRepairSource_protected_and_contracts
+physicalGrowthRepairRefinement_protected_and_contracts
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

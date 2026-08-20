@@ -86,12 +86,24 @@ PhysicalGrowthSuppliesRepairSource
 physicalGrowthSuppliesRepairSource_contracts
 physicalGrowthSuppliesRepairSource_strictly_contracts
 physicalGrowthSuppliesRepairSource_protected_and_contracts
+PhysicalGrowthRepairRefinement
+physicalGrowthRepairRefinement_protected_and_contracts
 ```
 
 This interface says: if physical growth supplies a source that protects the
 horizon channel, descends the aggregate distortion, and has a controlled
 finite update remainder, then the next aggregate distortion is strictly
 smaller.
+
+The refinement wrapper records this certificate at every finite stage and
+proves each step preserves the horizon channel while strictly contracting the
+tracked aggregate total:
+
+```text
+linearResponse(S_n, c_n - J_n) = 0
+quadraticResponse(S_n, c_n - J_n) = 0
+D_{n+1} < D_n
+```
 
 Definition of done:
 
@@ -154,4 +166,5 @@ Open work:
    component.
 4. Instantiate `PhysicalGrowthSuppliesRepairSource` from the actual
    causal-growth law instead of assuming it.
-5. Upgrade one-step strict contraction to a refinement-sequence theorem.
+5. Upgrade stepwise strict contraction to a geometric or summable-rate
+   convergence theorem.

@@ -75,7 +75,10 @@
 > under nonnegative component hypotheses, proves the bridge-census component is
 > a strict transport minimizer inside that aggregate, and packages
 > `PhysicalGrowthSuppliesRepairSource`, a horizon-protected contraction gate
-> for physical repair sources with controlled finite remainders.
+> for physical repair sources with controlled finite remainders. The new
+> `PhysicalGrowthRepairRefinement` wrapper records that gate at every finite
+> refinement stage and proves stepwise horizon protection together with
+> `D_{n+1} < D_n`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

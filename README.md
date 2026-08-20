@@ -116,7 +116,9 @@ Machine-checked additions now cover:
   strict transport minimizer inside the aggregate, and packages
   `PhysicalGrowthSuppliesRepairSource`, an interface showing that a
   horizon-protected physical repair source with a half-remainder bound strictly
-  contracts the aggregate distortion.
+  contracts the aggregate distortion; the new `PhysicalGrowthRepairRefinement`
+  wrapper records this certificate at every finite refinement step and proves
+  stepwise horizon protection together with `D_{n+1} < D_n`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
