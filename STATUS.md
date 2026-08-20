@@ -30,7 +30,10 @@
 > the abstract certificate error is now specialized to the actual displayed
 > Hauptvermutung distortion observable
 > `(countWindow + curvatureBias + countWindow*curvatureBias)*scale
-> + pairConsistency/2`.
+> + pairConsistency/2`. The newest descent gate proves that if the finite
+> Taylor remainder is at most half of the protected descent margin, the
+> displayed distortion strictly decreases; a geometric-majorant wrapper gives
+> convergence to zero from `D_n <= D_0*q^n`, `0 <= q < 1`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

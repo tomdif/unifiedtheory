@@ -469,6 +469,12 @@ specializes the certificate error further to the actual displayed
 Hauptvermutung distortion observable
 `(countWindow + curvatureBias + countWindow*curvatureBias)*scale
   + pairConsistency/2`.
+The latest descent theorem adds the finite update gate:
+`protected_distortion_step_decreases_with_remainder` proves the displayed
+distortion strictly decreases when the finite remainder is below half the
+protected descent margin, and
+`ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound`
+records the geometric-contraction route to zero distortion.
 
 The original finite horizon-entropy theorem is stronger than a fit to the probe
 output: for any normalized nonnegative finite birth law, the full

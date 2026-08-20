@@ -69,7 +69,11 @@ Machine-checked additions now cover:
   residualized two-channel theorem covers the null-cone scans directly; the
   interface is now specialized to the displayed Hauptvermutung distortion
   observable `(countWindow + curvatureBias + countWindow*curvatureBias)*scale
-  + pairConsistency/2`.
+  + pairConsistency/2`;
+- a protected distortion descent gate: if the finite update remainder is at
+  most half of the protected descent margin, Lean proves the displayed
+  Hauptvermutung distortion strictly decreases, and a geometric-majorant
+  theorem gives convergence to zero from `D_n <= D_0*q^n`, `0 <= q < 1`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

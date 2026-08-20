@@ -1203,6 +1203,148 @@ theorem componentResponses_protected_distortion_bridge
           descentRate hdesc }
   exact C.preserves_horizon_and_descends_distortion
 
+/-! ## 8. Protected descent dynamics -/
+
+/-- A protected distortion source gives a certified one-step decrease whenever
+the finite update remainder is at most half of the first-order descent. -/
+theorem protected_distortion_step_decreases_with_remainder
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι)
+    (oldDistortion newDistortion stepSize remainder : ℝ)
+    (hstep : 0 ≤ stepSize)
+    (hupdate :
+      newDistortion ≤
+        oldDistortion +
+          stepSize *
+            linearResponse C.weight C.defectSource C.distortionObservable +
+          remainder)
+    (hremainder : remainder ≤ stepSize * C.descentRate / 2) :
+    newDistortion ≤
+      oldDistortion - stepSize * C.descentRate / 2 := by
+  have hresp : linearResponse C.weight C.defectSource
+      C.distortionObservable ≤ -C.descentRate :=
+    C.distortion_descent
+  have hmul :
+      stepSize *
+          linearResponse C.weight C.defectSource C.distortionObservable ≤
+        stepSize * (-C.descentRate) :=
+    mul_le_mul_of_nonneg_left hresp hstep
+  calc
+    newDistortion
+        ≤ oldDistortion +
+            stepSize *
+              linearResponse C.weight C.defectSource C.distortionObservable +
+            remainder := hupdate
+    _ ≤ oldDistortion + stepSize * (-C.descentRate) + remainder := by
+          linarith
+    _ ≤ oldDistortion + stepSize * (-C.descentRate) +
+          stepSize * C.descentRate / 2 := by
+          linarith
+    _ = oldDistortion - stepSize * C.descentRate / 2 := by
+          ring
+
+/-- With positive step size and positive descent rate, the same remainder
+condition gives strict decrease of the displayed distortion error. -/
+theorem protected_distortion_step_strictly_decreases
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι)
+    (oldDistortion newDistortion stepSize remainder : ℝ)
+    (hstep : 0 < stepSize)
+    (hrate : 0 < C.descentRate)
+    (hupdate :
+      newDistortion ≤
+        oldDistortion +
+          stepSize *
+            linearResponse C.weight C.defectSource C.distortionObservable +
+          remainder)
+    (hremainder : remainder ≤ stepSize * C.descentRate / 2) :
+    newDistortion < oldDistortion := by
+  have hle := protected_distortion_step_decreases_with_remainder C
+    oldDistortion newDistortion stepSize remainder (le_of_lt hstep)
+    hupdate hremainder
+  have hdrop : 0 < stepSize * C.descentRate / 2 := by
+    nlinarith [mul_pos hstep hrate]
+  have hlt : oldDistortion - stepSize * C.descentRate / 2 <
+      oldDistortion := by
+    linarith
+  exact lt_of_le_of_lt hle hlt
+
+/-- A sequence of nonnegative distortion errors tends to zero when it is
+bounded by a geometric majorant with contraction factor `< 1`. -/
+theorem distortion_geometric_majorant_tendsto_zero
+    (distortion : ℕ → ℝ) (initial q : ℝ)
+    (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hnonneg : ∀ n, 0 ≤ distortion n)
+    (hbound : ∀ n, distortion n ≤ initial * q ^ n) :
+    Tendsto distortion atTop (nhds 0) := by
+  have hpow : Tendsto (fun n : ℕ => q ^ n) atTop (nhds 0) :=
+    tendsto_pow_atTop_nhds_zero_of_lt_one hq0 hq1
+  have hmajor : Tendsto (fun n : ℕ => initial * q ^ n) atTop (nhds 0) := by
+    simpa using hpow.const_mul initial
+  exact squeeze_zero hnonneg hbound hmajor
+
+/-- A refinement-level package for repeatedly applying protected distortion
+sources with finite Taylor remainders. -/
+structure ProtectedHauptvermutungDistortionDescent
+    (ι : Type*) [Fintype ι] where
+  source : ℕ → ProtectedHauptvermutungDistortionSource ι
+  distortion : ℕ → ℝ
+  stepSize : ℕ → ℝ
+  remainder : ℕ → ℝ
+  step_nonneg : ∀ n, 0 ≤ stepSize n
+  update_bound : ∀ n,
+    distortion (n + 1) ≤
+      distortion n +
+        stepSize n *
+          linearResponse (source n).weight (source n).defectSource
+            (source n).distortionObservable +
+        remainder n
+  remainder_half_descent : ∀ n,
+    remainder n ≤ stepSize n * (source n).descentRate / 2
+
+namespace ProtectedHauptvermutungDistortionDescent
+
+/-- Every step of a protected distortion descent package decreases by the
+displayed first-order margin after the half-remainder reserve. -/
+theorem step_decreases
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) (n : ℕ) :
+    D.distortion (n + 1) ≤
+      D.distortion n - D.stepSize n * (D.source n).descentRate / 2 := by
+  exact protected_distortion_step_decreases_with_remainder (D.source n)
+    (D.distortion n) (D.distortion (n + 1)) (D.stepSize n)
+    (D.remainder n) (D.step_nonneg n) (D.update_bound n)
+    (D.remainder_half_descent n)
+
+/-- Positive step size and positive source descent rate make each certified
+step strictly decrease the displayed distortion error. -/
+theorem step_strictly_decreases
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι) (n : ℕ)
+    (hstep : 0 < D.stepSize n)
+    (hrate : 0 < (D.source n).descentRate) :
+    D.distortion (n + 1) < D.distortion n := by
+  exact protected_distortion_step_strictly_decreases (D.source n)
+    (D.distortion n) (D.distortion (n + 1)) (D.stepSize n)
+    (D.remainder n) hstep hrate (D.update_bound n)
+    (D.remainder_half_descent n)
+
+/-- If the certified descent dynamics is bounded by a geometric contraction
+majorant, then the displayed Hauptvermutung distortion error vanishes in the
+refinement limit. -/
+theorem distortion_tendsto_zero_of_geometric_bound
+    {ι : Type*} [Fintype ι]
+    (D : ProtectedHauptvermutungDistortionDescent ι)
+    (initial q : ℝ)
+    (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hnonneg : ∀ n, 0 ≤ D.distortion n)
+    (hbound : ∀ n, D.distortion n ≤ initial * q ^ n) :
+    Tendsto D.distortion atTop (nhds 0) :=
+  distortion_geometric_majorant_tendsto_zero D.distortion initial q hq0 hq1
+    hnonneg hbound
+
+end ProtectedHauptvermutungDistortionDescent
+
 #print axioms covariance_comm
 #print axioms centeredSource_linear_combination
 #print axioms covariance_add_right
@@ -1242,5 +1384,11 @@ theorem componentResponses_protected_distortion_bridge
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_negative
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_expands
 #print axioms componentResponses_protected_distortion_bridge
+#print axioms protected_distortion_step_decreases_with_remainder
+#print axioms protected_distortion_step_strictly_decreases
+#print axioms distortion_geometric_majorant_tendsto_zero
+#print axioms ProtectedHauptvermutungDistortionDescent.step_decreases
+#print axioms ProtectedHauptvermutungDistortionDescent.step_strictly_decreases
+#print axioms ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
 
 end UnifiedTheory.Audit.KFCausalCSpecHorizonOrthogonalDefect

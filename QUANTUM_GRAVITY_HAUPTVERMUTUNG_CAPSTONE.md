@@ -350,6 +350,24 @@ packages a `ProtectedHauptvermutungDistortionSource`: horizon-protected descent
 of this aggregate distortion observable implies simultaneous horizon
 protection and improvement of the displayed Hauptvermutung distortion bound.
 
+The latest finite descent layer adds the Taylor-remainder gate.  If a protected
+source updates the displayed distortion by
+
+```text
+D_next <= D_old + step * linearResponse(S, Dist) + remainder
+```
+
+and the finite remainder is at most half the descent margin,
+
+```text
+remainder <= step * descentRate / 2,
+```
+
+Lean proves `D_next <= D_old - step*descentRate/2`, with strict decrease when
+`step > 0` and `descentRate > 0`.  A refinement package records this at every
+scale, and a geometric-majorant theorem proves `D_n -> 0` from
+`D_n <= D_0*q^n` with `0 <= q < 1`.
+
 Key theorem names:
 
 ```text
@@ -375,6 +393,10 @@ linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
 componentResponses_protected_distortion_bridge
+protected_distortion_step_decreases_with_remainder
+protected_distortion_step_strictly_decreases
+ProtectedHauptvermutungDistortionDescent.step_decreases
+ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
 ```
 
 This is a finite control theorem, not a continuum completion.  Its role is to

@@ -147,6 +147,12 @@ ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortio
 ProtectedHauptvermutungDistortionSource.distortion_response_negative
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
 componentResponses_protected_distortion_bridge
+protected_distortion_step_decreases_with_remainder
+protected_distortion_step_strictly_decreases
+distortion_geometric_majorant_tendsto_zero
+ProtectedHauptvermutungDistortionDescent.step_decreases
+ProtectedHauptvermutungDistortionDescent.step_strictly_decreases
+ProtectedHauptvermutungDistortionDescent.distortion_tendsto_zero_of_geometric_bound
 ```
 
 ## Why This Matters
@@ -551,6 +557,44 @@ descends this whole distortion observable, then it preserves the Dorau--Much
 horizon channel through second order while improving the actual displayed
 Hauptvermutung distortion bound.  This is stronger than the previous generic
 interface because the certificate error is no longer abstract.
+
+## Descent Dynamics
+
+The file now also formalizes the finite dynamical step needed to turn
+one-step descent into a refinement program.  Suppose a protected source updates
+the displayed distortion error by a first-order term plus a finite remainder:
+
+```text
+D_next <= D_old + step * linearResponse(S, Dist) + remainder.
+```
+
+If the remainder is controlled by half of the protected descent margin,
+
+```text
+remainder <= step * descentRate / 2,
+```
+
+Lean proves:
+
+```text
+D_next <= D_old - step * descentRate / 2.
+```
+
+With `step > 0` and `descentRate > 0`, this is a strict decrease.  The
+refinement package `ProtectedHauptvermutungDistortionDescent` records such a
+step at every scale.  A separate geometric-majorant theorem proves that if the
+nonnegative displayed distortion errors are bounded by
+
+```text
+D_n <= D_0 * q^n,    0 <= q < 1,
+```
+
+then `D_n -> 0`.
+
+This does not prove that the actual causal-growth dynamics has such a
+uniform contraction.  It proves the exact finite checklist: construct the
+protected source, prove the half-remainder bound, and prove a geometric
+majorant or another convergence estimate for the displayed distortion.
 
 The file also defines `ProtectedCertificateErrorRefinement`.  In this
 refinement version, first-order horizon contamination vanishes at every finite
