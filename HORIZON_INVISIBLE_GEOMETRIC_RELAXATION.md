@@ -244,9 +244,12 @@ The named corrected source records the same quotient through
 The coefficient-level version is now also proved:
 `horizonSecondOrderLeakageQuadratic_correctorGauge_zero` says that a root of
 the two-channel leakage null-cone polynomial remains a root after replacing
-the corrector by any constant-plus-horizon equivalent representative.  Thus
-the useful corrector is the interior BDG channel, not a second copy of the
-horizon entropy source.
+the corrector by any constant-plus-horizon equivalent representative.  The
+full protected-bridge package is now quotient-stable too:
+`correctedCanonicalHorizonInvisibleDescentSource_protected_bridge_correctorGauge`
+transports the leakage-null cone, descent margin, horizon protection, and raw
+defect descent to every equivalent corrector.  Thus the useful corrector is the
+interior BDG channel, not a second copy of the horizon entropy source.
 
 The empirical target is now sharper: prove that the coefficient correcting
 `S_can` by the `-gap` residual, or its invariant replacement, converges to a

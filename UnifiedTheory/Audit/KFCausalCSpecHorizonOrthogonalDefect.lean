@@ -1536,6 +1536,24 @@ theorem correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge
   rw [correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
     w J G H a b t hw hvar]
 
+/-- Corrector gauge changes do not alter any second central response of the
+corrected canonical source. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_quadraticResponse_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H X : ι → ℝ) (a b t : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0) :
+    quadraticResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t)
+        X =
+      quadraticResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        X := by
+  unfold quadraticResponse
+  rw [correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
+    w J G H a b t hw hvar]
+
 /-- The corrected canonical source remains first-order horizon-invisible. -/
 theorem correctedCanonicalHorizonInvisibleDescentSource_orthogonal
     {ι : Type*} [Fintype ι]
@@ -1581,6 +1599,62 @@ theorem correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
   rw [correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
     w J G H t hvar]
   linarith
+
+/-- The leakage-null cone hypothesis for the corrected canonical source is
+independent of constant and horizon-parallel changes of the corrector. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_cone_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b t : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hcone :
+      (-1 : ℝ) ^ 2 *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J G) +
+        2 * (-1 : ℝ) * t *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J H) +
+          t ^ 2 *
+            horizonSecondOrderCrossLeakage w J
+              (horizonOrthogonalResidual w J H)
+              (horizonOrthogonalResidual w J H) = 0) :
+      (-1 : ℝ) ^ 2 *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J G) +
+        2 * (-1 : ℝ) * t *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J (fun i => H i + a + b * J i)) +
+          t ^ 2 *
+            horizonSecondOrderCrossLeakage w J
+              (horizonOrthogonalResidual w J (fun i => H i + a + b * J i))
+              (horizonOrthogonalResidual w J (fun i => H i + a + b * J i))
+        = 0 := by
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge_right
+    w J (horizonOrthogonalResidual w J G) H a b hw hvar]
+  rw [horizonSecondOrderCrossLeakage_horizonOrthogonalResidual_gauge
+    w J H H a b a b hw hvar]
+  exact hcone
+
+/-- The descent-margin hypothesis for the corrected canonical source is
+independent of constant and horizon-parallel changes of the corrector. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_margin_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b t descentRate : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hmargin :
+      t * linearResponse w (horizonOrthogonalResidual w J H) G ≤
+        variance w (horizonOrthogonalResidual w J G) - descentRate) :
+      t * linearResponse w
+          (horizonOrthogonalResidual w J (fun i => H i + a + b * J i)) G ≤
+        variance w (horizonOrthogonalResidual w J G) - descentRate := by
+  rw [linearResponse_horizonOrthogonalResidual_add_const_horizon
+    w J H G a b hw hvar]
+  exact hmargin
 
 /-- If the corrected canonical source lies on the second-order leakage null
 cone and its correcting channel preserves enough descent margin, then it is a
@@ -1634,6 +1708,50 @@ theorem correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
     twoResidualChannel_protected_certificate_error_source_bridge w J
       G H G c (-1) t descentRate hw hvar hcone hdesc
   simpa [sourceFun, hsource] using hbridge
+
+/-- The full corrected canonical protected bridge is invariant under replacing
+the correcting observable by a constant-plus-horizon equivalent representative.
+Thus a certified leakage-null, descending correction belongs to the quotient
+class of the corrector, not to a particular raw representative. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_protected_bridge_correctorGauge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (a b c t descentRate : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hcone :
+      (-1 : ℝ) ^ 2 *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J G) +
+        2 * (-1 : ℝ) * t *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J H) +
+          t ^ 2 *
+            horizonSecondOrderCrossLeakage w J
+              (horizonOrthogonalResidual w J H)
+              (horizonOrthogonalResidual w J H) = 0)
+    (hmargin :
+      t * linearResponse w (horizonOrthogonalResidual w J H) G ≤
+        variance w (horizonOrthogonalResidual w J G) - descentRate) :
+    (linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t)
+        (finiteAreaChange c J) = 0 ∧
+      quadraticResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t)
+        (finiteAreaChange c J) = 0) ∧
+      linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G
+          (fun i => H i + a + b * J i) t)
+        G ≤ -descentRate := by
+  exact correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
+    w J G (fun i => H i + a + b * J i) c t descentRate hw hvar
+    (correctedCanonicalHorizonInvisibleDescentSource_cone_correctorGauge
+      w J G H a b t hw hvar hcone)
+    (correctedCanonicalHorizonInvisibleDescentSource_margin_correctorGauge
+      w J G H a b t descentRate hw hvar hmargin)
 
 /-- The response of the Hauptvermutung distortion observable splits into the
 responses of the count-window, curvature-bias, mixed count-curvature, and
@@ -2270,10 +2388,14 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_centered_correctorGauge
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_response_correctorGauge
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_leakage_correctorGauge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_quadraticResponse_correctorGauge
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_orthogonal
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_cone_correctorGauge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_margin_correctorGauge
 #print axioms correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_protected_bridge_correctorGauge
 #print axioms linearResponse_hauptvermutungDistortionObservable
 #print axioms componentResponses_descend_hauptvermutungDistortionObservable
 #print axioms linearResponse_orientTowardObservable_eq_neg_abs

@@ -692,7 +692,10 @@ response and second-order horizon leakage unchanged, and the corrected
 canonical source inherits that same corrector-gauge invariance.  The stronger
 polynomial theorem preserves zeros of the leakage null cone itself, so the
 estimated coefficient root is independent of the chosen constant/horizon
-representative.  The `size` corrector passes the gate but has worse leakage.
+representative.  The full protected bridge now transfers across that quotient:
+the cone condition, descent margin, horizon protection, and raw-defect descent
+hold for every equivalent corrector representative.  The `size` corrector
+passes the gate but has worse leakage.
 
 ## Descent Dynamics
 
