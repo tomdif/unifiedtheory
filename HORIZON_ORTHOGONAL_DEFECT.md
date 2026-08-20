@@ -1,0 +1,540 @@
+# Horizon-Orthogonal Least-Defect Growth
+
+Date: 2026-08-19
+
+Lean file:
+
+```text
+UnifiedTheory/Audit/KFCausalCSpecHorizonOrthogonalDefect.lean
+```
+
+Context paper:
+
+Philipp Dorau and Albert Much, "From Quantum Relative Entropy to the
+Semiclassical Einstein Equations," arXiv:2510.24491v3 [hep-th],
+Phys. Rev. Lett. 136, 091602 (2026), DOI: 10.1103/lmq8-nsty,
+arXiv DOI: 10.48550/arXiv.2510.24491.
+
+## New Idea
+
+The horizon-hit source `J` is the exact finite focusing channel.  A generic
+geometry or Hauptvermutung-defect source `G` can accidentally contain a
+horizon component, so mixing `G` into the growth law can double-count the same
+entropy channel.
+
+The new rule is:
+
+```text
+G_perp = G - Cov(G,J)/Var(J) * J
+S(thetaH,thetaD) = thetaH * J + thetaD * G_perp
+```
+
+Use `J` only for horizon entropy focusing, and use `G_perp` for independent
+defect repair.
+
+## What Is Proved
+
+For any finite normalized birth law with `Var(J) != 0`, Lean proves:
+
+```text
+Cov(G_perp,J) = 0
+```
+
+and therefore:
+
+```text
+linearResponse(S(thetaH,thetaD), c - J) = -thetaH * Var(J).
+```
+
+The defect-repair coefficient `thetaD` drops out exactly at first order.
+This is not a fitted numerical fact; it is finite covariance algebra.
+
+The formal theorem also proves uniqueness of the projection coefficient:
+`Cov(G - aJ,J) = 0` forces
+
+```text
+a = Cov(G,J)/Var(J).
+```
+
+So the residual used above is the unique covariance projection that removes
+first-order horizon contamination.
+
+## Deeper Result: Second-Order Leakage
+
+Looking one order deeper, first-order orthogonality is not the end of the
+story.  Lean now defines the finite second central response numerator
+
+```text
+quadraticResponse(S, X) = Cov(X, centered(S)^2)
+```
+
+and proves the exact horizon-area formula
+
+```text
+quadraticResponse(S, c - J) = -Cov(J, centered(S)^2).
+```
+
+For an already horizon-orthogonal source `S`, the first-order area response is
+zero, and the remaining second-order obstruction is precisely
+
+```text
+horizonSecondOrderLeakage(J,S) = Cov(J, centered(S)^2).
+```
+
+Therefore a stronger protected defect source must satisfy two conditions:
+
+```text
+Cov(S,J) = 0
+Cov(J, centered(S)^2) = 0
+```
+
+The first condition removes linear horizon contamination.  The second removes
+quadratic horizon leakage.
+
+The theorem also polarizes this leakage into a quadratic form.  For two
+first-order-clean defect channels `A` and `B`,
+
+```text
+Leak(aA + bB)
+  = a^2 Leak(A,A) + 2ab Leak(A,B) + b^2 Leak(B,B).
+```
+
+So the second-order breakthrough target is a leakage null cone: find two or
+more Hauptvermutung-repair directions that are individually orthogonal to `J`
+and choose coefficients that make this quadratic form vanish.  Lean proves
+that any such mixture has zero first-order area response and zero finite
+second central area response.
+
+The file also proves a certificate version of this null-cone statement: if the
+mixture descends a named certificate-error observable, then horizon protection
+and certificate descent hold simultaneously.  A residual-channel specialization
+applies after projecting two raw defect observables off the horizon source.
+
+## Lean Names
+
+```text
+rawDefect_eq_projection_plus_residual
+covariance_horizonOrthogonalResidual_self
+horizonProjectionCoeff_unique
+orthogonal_source_area_response_zero
+quadraticResponse_finiteAreaChange_eq_neg_leakage
+orthogonal_source_secondOrder_area_obstruction
+orthogonal_source_firstAndSecondOrder_area_zero
+horizonSecondOrderLeakage_linear_combination
+twoChannel_firstAndSecondOrder_area_zero
+twoChannel_protected_certificate_error_source_bridge
+twoChannel_certificate_error_response_negative
+twoResidualChannel_protected_certificate_error_source_bridge
+horizonOrthogonalResidual_area_response_zero
+horizonOrthogonalResidual_secondOrder_area_obstruction
+horizonOrthogonalResidual_firstAndSecondOrder_area_zero
+combined_orthogonal_area_response
+combined_horizonOrthogonal_area_response
+HorizonOrthogonalDefectCertificate.residual_orthogonal
+HorizonOrthogonalDefectCertificate.residual_secondOrder_area_obstruction
+HorizonOrthogonalDefectCertificate.residual_firstAndSecondOrder_area_zero
+HorizonOrthogonalDefectCertificate.leastDefectSource_preserves_horizon_focusing
+HorizonOrthogonalDefectCertificate.leastDefectSource_secondOrder_area_obstruction
+ProtectedCertificateErrorSource.preserves_horizon_through_secondOrder
+ProtectedCertificateErrorSource.certificate_error_response_negative
+ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
+ProtectedCertificateErrorRefinement.first_area_response_zero
+ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
+ProtectedCertificateErrorRefinement.certificate_error_response_negative
+```
+
+## Why This Matters
+
+The previous horizon probe found that an orthogonalized bulk/action channel
+keeps nearly all of the horizon-focusing slope while adding a much stronger
+gap/action response.  This file proves the exact first-order mechanism behind
+that observation.
+
+In physics terms: the growth law can have a protected entropy/focusing knob
+and an independent geometry-repair knob.  If the second knob is projected
+orthogonally to the horizon source, it does not renormalize the Dorau--Much
+entropy-to-area channel at first order.
+
+This does not prove full continuum quantum gravity.  It gives a sharper target
+for the remaining physical dynamics: construct the actual causal-growth defect
+source `G`, project it to `G_perp`, and prove that the resulting tilted growth
+law improves the Hauptvermutung/continuum certificate while preserving the
+horizon flux bridge.
+
+## Next Experiment
+
+Replace the current proxy `std(-gap)` in the horizon-mix scan by a direct
+Hauptvermutung-defect observable:
+
+```text
+G = local chart distortion gradient
+  + curvature-volume bias gradient
+  + pairwise chart-consistency gradient
+```
+
+Then use the proved projection:
+
+```text
+G_perp = G - Cov(G,J)/Var(J) * J
+```
+
+and scan the finite growth tilt
+
+```text
+S = thetaH * J + thetaD * G_perp.
+```
+
+The success criterion is now clean:
+
+```text
+horizon area response stays fixed by thetaH
+Hauptvermutung distortion decreases with thetaD
+```
+
+That is the concrete path from the Dorau--Much horizon entropy bridge toward a
+causal-growth law that repairs continuum geometry without spoiling the
+first-order horizon focusing channel.
+
+## Leakage Probe
+
+Script:
+
+```bash
+python3 horizon_second_order_leakage.py --n 18 --paths 8 --burn 5 --starts 8 --coeffs 0.20,0.30,0.45
+```
+
+Sample result:
+
+```text
+source        first_area        quad_area        leakage       quad+leak   gap_slope  focus_ret
+residual       2.23e-17         -6.11e-02        6.11e-02      4.97e-18   -6.808     -0.0000
+J+aR a=0.20   -8.25e-01         -6.57e-01        6.57e-01      9.07e-18   -1.354      0.9806
+J+aR a=0.30   -8.06e-01         -6.46e-01        6.46e-01      7.57e-18   -1.975      0.9578
+J+aR a=0.45   -7.67e-01         -6.13e-01        6.13e-01      9.47e-18   -2.812      0.9119
+```
+
+The `quad+leak` column is the numerical check of the Lean identity
+`quadraticResponse(S,c-J) = -horizonSecondOrderLeakage(J,S)`.  On this sample,
+the projected residual has no first-order area response but a small negative
+second central area response.  That suggests a stronger search target: among
+Hauptvermutung-repair sources, minimize or tune the leakage term while keeping
+the gap/distortion response large.
+
+## Null-Cone Scan
+
+Script:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_leakage_nullcone_scan.py --n 20 --paths 12 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.05 --top 8
+```
+
+This scans residualized channels
+
+```text
+-gap, interior_bdg, h0, h1, h2, size
+```
+
+where each channel is first projected off `J`.  For each pair it estimates the
+mean leakage quadratic form and evaluates both grid coefficients and the
+quadratic roots.
+
+Sample result:
+
+```text
+Top by score:
+
+pair             t       first_area    quad_area    leakage      quad+leak   gap_slope
+-gap+h2          0.003   1.01e-17      6.54e-05    -6.54e-05     4.75e-18   -7.459
+-gap+h1         -0.750   6.88e-18     -1.89e-04     1.89e-04    -4.17e-18   -7.191
+h0+h2            1.000   1.18e-17     -3.48e-04     3.48e-04     3.61e-18   -5.825
+```
+
+Interpretation:
+
+* the first-order area response is still numerically zero;
+* the identity `quad_area + leakage = 0` holds to floating precision;
+* sample-mean leakage can be tuned close to zero while retaining a large
+  defect/gap response;
+* the best compensating channel is sample-dependent at this size, so this is a
+  search lead, not a physical certificate.
+
+The concrete next target is now narrower: find a stable physical
+Hauptvermutung-defect basis whose leakage quadratic form has a robust null
+direction in the refinement limit, not just on finite sampled parents.
+
+## Stability And Multi-Channel Checks
+
+Stability command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_nullcone_stability.py --depths 18,20 --seeds 53,157 --paths 8 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10
+```
+
+Result:
+
+```text
+Tracked pair stability:
+pair       mean|leak|   mean|gap|   mean t   std t
+-gap+h2     1.33e-03    5.55e+00   -0.480   0.488
+-gap+h1     5.08e-03    6.63e+00    1.623   1.973
+-gap+h0     2.30e-03    6.82e+00    0.311   0.307
+h0+h2       1.01e-03    4.55e+00    0.679   0.812
+h1+size     5.66e-03    6.66e+00   -0.079   0.191
+```
+
+Interpretation: the existence of low-leakage directions is stable, but the
+best pair and coefficient are not stable at this sample size.
+
+Multi-channel command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_multichannel_nullcone_search.py --n 20 --paths 8 --burn 5 --starts 8 --directions 600 --top 8
+```
+
+Best score on that run:
+
+```text
++0.993 residual(-gap) + 0.120 residual(h2):
+  leakage  = -1.67e-03
+  gap_slope = -7.388
+```
+
+The multi-channel random search did not reveal a clearly better stable
+high-dimensional direction.  Its best high-gap results were still effectively
+pair-like.  That suggests the next serious basis should be physical rather
+than broad: use channels tied directly to Hauptvermutung certificate defects
+instead of generic shell-count proxies.
+
+## Hauptvermutung-Basis Probe
+
+The next scan replaces generic shell proxies with finite one-birth proxies for
+the physical-growth certificate fields:
+
+```text
+hv_dim4_err            local interval-dimension error against d=4
+hv_dim2_err            local interval-dimension error against d=2
+hv_rel4_abs            relation-fraction bias against the 4D calibration
+hv_rel2_abs            relation-fraction bias against the 2D calibration
+hv_dim_spread          local interval-profile spread
+hv_logk_spread         count-window / scale-window irregularity
+hv_interval_mass       number of resolved local intervals
+hv_big_interval_count  number of k>=8 local intervals
+```
+
+Implementation:
+
+```text
+horizon_hauptvermutung_channels.py
+```
+
+Small HV-basis scan:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_leakage_nullcone_scan.py --basis hv --n 18 --paths 4 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10 --top 8
+```
+
+Representative high-score candidates:
+
+```text
+hv_dim_spread + 4.467 residual(-gap):
+  leakage  = -1.44e-03
+  gap_slope = -7.759
+
+hv_logk_spread - 4.705 residual(-gap):
+  leakage  = -2.81e-03
+  gap_slope =  7.776
+
+hv_big_interval_count - 5.247 residual(-gap):
+  leakage  = -4.35e-03
+  gap_slope =  8.297
+```
+
+HV stability command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_nullcone_stability.py --basis hv --depths 18,20 --seeds 53,157 --paths 4 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10 --track hv_dim_spread:-gap,hv_logk_spread:-gap,hv_big_interval_count:-gap,hv_dim2_err:-gap,hv_rel2_abs:-gap
+```
+
+Tracked HV-pair averages:
+
+```text
+hv_dim_spread + -gap:           mean|leak|=2.41e-03, mean|gap|=7.81, std(t)=4.07
+hv_logk_spread + -gap:          mean|leak|=3.76e-03, mean|gap|=7.95, std(t)=1.28
+hv_dim2_err + -gap:             mean|leak|=4.51e-03, mean|gap|=7.23, std(t)=2.64
+hv_rel2_abs + -gap:             mean|leak|=1.52e-03, mean|gap|=6.96, std(t)=2.52
+```
+
+HV multi-channel command:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_multichannel_nullcone_search.py --basis hv --n 20 --paths 4 --burn 5 --starts 8 --directions 600 --top 8
+```
+
+Best high-score output:
+
+```text
+0.924 residual(-gap) + 0.381 residual(hv_big_interval_count):
+  leakage  = -1.94e-03
+  gap_slope = -7.875
+```
+
+Interpretation: the null-cone mechanism survives when the defect basis is
+moved closer to the Hauptvermutung certificate fields.  However, the
+coefficient still moves substantially across seeds and depths.  The likely
+missing ingredient is not more random directions; it is a better invariant
+physical basis, probably built from the actual certificate errors
+`countWindow`, `curvatureBias`, and `pairConsistency` rather than these
+one-birth interval proxies.
+
+## Certificate-Error Basis
+
+The next pass implements one-birth proxy estimators named after the actual
+certificate errors:
+
+```text
+horizon_certificate_channels.py
+
+cert_countWindow
+cert_curvatureBias
+cert_pairConsistency
+cert_distortionBound
+cert_scaledDistortionBound
+cert_target4Distortion
+cert_target2Distortion
+```
+
+The finite proxy bound is modeled on the Lean certificate formula:
+
+```text
+distortion ~= countWindow + curvatureBias + countWindow*curvatureBias
+              + pairConsistency/2.
+```
+
+Small certificate-basis scan:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_leakage_nullcone_scan.py --basis cert --n 18 --paths 4 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10 --top 8
+```
+
+Best sample lead:
+
+```text
+cert_pairConsistency + 3.5035 residual(-gap):
+  first_area =  1.77e-17
+  leakage    =  2.98e-05
+  gap_slope  = -7.652
+```
+
+This is the strongest single-run null-cone candidate so far: it uses a named
+certificate proxy, keeps first-order horizon response zero, almost cancels the
+second central leakage, and retains a large gap/action response.
+
+Certificate-basis stability:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_nullcone_stability.py --basis cert --depths 18,20 --seeds 53,157 --paths 4 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10
+```
+
+Tracked averages:
+
+```text
+cert_target4Distortion + -gap:
+  mean|leak| = 4.90e-04
+  mean|gap|  = 7.66
+  std(t)     = 3.29
+
+cert_pairConsistency + -gap:
+  mean|leak| = 1.46e-03
+  mean|gap|  = 7.71
+  std(t)     = 3.27
+
+cert_curvatureBias + -gap:
+  mean|leak| = 2.08e-03
+  mean|gap|  = 7.50
+  std(t)     = 2.77
+```
+
+Certificate multi-channel search:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_multichannel_nullcone_search.py --basis cert --n 20 --paths 4 --burn 5 --starts 8 --directions 600 --top 8
+```
+
+Representative output:
+
+```text
+0.885 residual(-gap) + 0.466 residual(cert_target2Distortion):
+  leakage  = -8.88e-04
+  gap_slope = -7.612
+
+-0.862 residual(-gap) + 0.507 residual(cert_target4Distortion):
+  leakage  =  7.03e-04
+  gap_slope =  7.049
+
+mixed certificate/action direction:
+  leakage  =  4.90e-04
+  gap_slope =  7.311
+```
+
+Interpretation: moving from shell proxies to named certificate-error proxies
+improves the conceptual match and gives the best low-leak/high-gap candidates
+so far.  The coefficient drift remains; this is evidence for the shape of the
+certificate source, not a finished physical-growth certificate.
+
+## Formal Certificate-Source Interface
+
+The formal target suggested by the certificate-basis scan is now stated in
+Lean.  A `ProtectedCertificateErrorSource` packages one finite parent-state
+source with:
+
+```text
+Cov(S,J) = 0
+Cov(J, centered(S)^2) = 0
+linearResponse(S, certificateError) <= -descentRate
+```
+
+Lean proves that those three hypotheses imply the combined bridge statement:
+
+```text
+linearResponse(S, c - J) = 0
+quadraticResponse(S, c - J) = 0
+linearResponse(S, certificateError) <= -descentRate
+```
+
+If `descentRate > 0`, the certificate-error response is strictly negative.
+This is the clean finite formulation of the breakthrough target: a growth
+source can repair a Hauptvermutung certificate while preserving the
+Dorau--Much horizon channel through the finite second central response.
+
+The residualized two-channel scan has its own checked bridge theorem:
+
+```text
+twoResidualChannel_protected_certificate_error_source_bridge
+```
+
+It says that two raw defect observables can first be projected to residuals;
+if their residual mixture lies on the leakage null cone and descends the named
+certificate error, then the same finite horizon/certificate bridge follows.
+This is the theorem-level version of scanning mixtures like
+`cert_pairConsistency + residual(-gap)`.
+
+The file also defines `ProtectedCertificateErrorRefinement`.  In this
+refinement version, first-order horizon contamination vanishes at every finite
+stage, while the second-order leakage only has to tend to zero:
+
+```text
+Cov(S_n,J_n) = 0
+Cov(J_n, centered(S_n)^2) -> 0
+```
+
+Lean proves:
+
+```text
+linearResponse(S_n, c_n - J_n) = 0       for every n
+quadraticResponse(S_n, c_n - J_n) -> 0   as n -> infinity
+```
+
+This is now the exact theorem template the numerics must fill.  The remaining
+unproved physical step is to derive such an `S_n` from the actual causal-growth
+dynamics and prove stable descent of the named certificate errors
+`countWindow`, `curvatureBias`, and `pairConsistency`.

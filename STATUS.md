@@ -9,8 +9,26 @@
 > certificate interface for applying the quantitative Hauptvermutung, and the
 > quotient construction of label/diffeomorphism-invariant observables. These
 > are checked bridge interfaces, not a completed proof of full continuum quantum
-> gravity. The remaining work is to derive the physical certificates and
-> infrared GR/QFT recovery from the actual causal-growth dynamics.
+> gravity. The latest finite control theorem adds horizon-orthogonal
+> least-defect growth: a raw defect source has a unique covariance residual
+> that does not change first-order horizon focusing. The next obstruction is
+> also identified exactly: the finite second central area response is
+> `-Cov(J, centered(S)^2)`. A null-cone scan now finds sample-mean
+> two-channel defect mixtures with near-zero second-order leakage and large
+> gap response. A follow-up Hauptvermutung-basis scan replaces shell proxies
+> with interval-dimension, relation-bias, and count-window proxy channels; the
+> low-leakage mechanism survives, but not yet as a stable physical certificate.
+> The newest certificate-error basis uses named `countWindow`, `curvatureBias`,
+> and `pairConsistency` proxy channels and gives the current best low-leakage
+> candidate, but coefficient drift remains. Lean now also states the exact
+> protected certificate-error source interface: a source with zero first
+> horizon covariance, zero second-order horizon leakage, and negative
+> certificate-error response preserves horizon area through the finite second
+> central response while descending that certificate. A refinement version
+> proves second central area response tends to zero when leakage tends to zero.
+> A residualized two-channel bridge covers the null-cone scans directly.
+> The remaining work is to derive the physical certificates and infrared GR/QFT
+> recovery from the actual causal-growth dynamics.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

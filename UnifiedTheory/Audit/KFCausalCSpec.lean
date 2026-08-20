@@ -25,6 +25,7 @@ import UnifiedTheory.Audit.KFCausalCSpecGlobalization
 import UnifiedTheory.Audit.KFCausalCSpecGlobalRank
 import UnifiedTheory.Audit.KFCausalCSpecGluing
 import UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
+import UnifiedTheory.Audit.KFCausalCSpecHorizonOrthogonalDefect
 import UnifiedTheory.Audit.KFCausalCSpecHighDensityLimit
 import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecIntrinsicDescent

@@ -40,8 +40,9 @@ quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
 ## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-19)
 
 The latest audit work is summarized in
-[`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md)
-and [`HORIZON_ENTROPY_PROBE.md`](HORIZON_ENTROPY_PROBE.md).
+[`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md),
+[`HORIZON_ENTROPY_PROBE.md`](HORIZON_ENTROPY_PROBE.md), and
+[`HORIZON_ORTHOGONAL_DEFECT.md`](HORIZON_ORTHOGONAL_DEFECT.md).
 
 Machine-checked additions now cover:
 
@@ -53,14 +54,28 @@ Machine-checked additions now cover:
 - finite horizon-cell error control implying convergence to continuum
   null/Araki flux when per-cell errors vanish;
 - a physical-growth certificate interface for the quantitative Hauptvermutung;
-- quotient construction of label/diffeomorphism-invariant observables.
+- quotient construction of label/diffeomorphism-invariant observables;
+- horizon-orthogonal defect growth: every raw defect source has a unique
+  covariance residual that preserves the first-order horizon focusing law, with
+  the second central leakage identified as `-Cov(J, centered(S)^2)` and a
+  two-channel null-cone criterion for cancelling that leakage; exploratory
+  scans now include Hauptvermutung-oriented interval-defect channels and named
+  certificate-error proxy channels;
+- a protected certificate-error source interface: if a finite defect source is
+  horizon-orthogonal, has zero second-order horizon leakage, and descends a
+  named certificate error, Lean proves it preserves the horizon channel through
+  second order while improving that certificate; a refinement version proves
+  second central area response tends to zero when leakage tends to zero, and a
+  residualized two-channel theorem covers the null-cone scans directly.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
 derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
 physical Hauptvermutung certificates, separating invariant observables, and
-infrared GR/QFT recovery.
+infrared GR/QFT recovery.  The new least-defect target is to build the actual
+Hauptvermutung-defect source, project it off the horizon channel, and prove the
+new protected certificate-source hypotheses from the physical dynamics.
 
 **Paper:** [`paper/time_is_a_partial_order.pdf`](paper/time_is_a_partial_order.pdf)
 

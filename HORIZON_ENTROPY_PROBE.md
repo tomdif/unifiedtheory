@@ -317,13 +317,160 @@ d/dlambda KL_lambda = -lambda d/dlambda E_lambda[c-J]
 So the observed depth-stability of `a = 0.20` is not a numerical accident.  It
 is the exact geometry of a normalized orthogonal two-channel source.
 
-The new proved finite statement is stronger than a fit to the probe output and
-stronger than the earlier first-order covariance result: for any normalized
-nonnegative finite birth law, the full exponential-family KL derivative is
-exactly `-lambda` times the derivative of expected one-birth horizon area.  This
-is the discrete algebraic core of the Dorau-Much/Jacobson focusing step.  What
-remains outside the proof is the analytic AQFT theorem identifying continuum
-Araki relative entropy with the weighted null-energy flux.
+The follow-up finite control theorem is now in
+`UnifiedTheory/Audit/KFCausalCSpecHorizonOrthogonalDefect.lean`, with the
+research note
+[`HORIZON_ORTHOGONAL_DEFECT.md`](HORIZON_ORTHOGONAL_DEFECT.md).  It proves the
+general covariance projection
+
+```text
+G_perp = G - Cov(G,J)/Var(J) * J
+```
+
+is the unique residual with `Cov(G_perp,J) = 0`, and that any combined source
+
+```text
+thetaH * J + thetaD * G_perp
+```
+
+has first-order horizon-area response exactly `-thetaH * Var(J)`, independent
+of `thetaD`.  This upgrades the orthogonal bulk-channel scan from a numerical
+source-angle observation to a reusable finite theorem.
+
+The deeper follow-up is the second central response.  The same Lean file proves
+
+```text
+quadraticResponse(S, c - J) = -Cov(J, centered(S)^2).
+```
+
+So a projected residual has zero linear area response, but it can still leak
+through `Cov(J, centered(S)^2)`.  The new script
+`horizon_second_order_leakage.py` measures this obstruction.  On a modest
+sample:
+
+```text
+python3 horizon_second_order_leakage.py --n 18 --paths 8 --burn 5 --starts 8 --coeffs 0.20,0.30,0.45
+
+residual first_area = 2.23e-17
+residual quad_area  = -6.11e-02
+residual leakage    =  6.11e-02
+quad+leak           =  4.97e-18
+```
+
+The residual is first-order clean, but not automatically second-order clean.
+On this sample its second central area response has the focusing sign.  The
+next optimization target is therefore sharper: keep `Cov(S,J)=0`, control or
+tune `Cov(J,centered(S)^2)`, and maximize the Hauptvermutung-defect response.
+
+The null-cone scan then tests two-channel defect mixtures:
+
+```text
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_leakage_nullcone_scan.py --n 20 --paths 12 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.05 --top 8
+```
+
+Representative low-leakage candidates:
+
+```text
+residual(-gap) + 0.003 residual(h2):  leakage = -6.54e-05, gap_slope = -7.459
+residual(-gap) - 0.750 residual(h1): leakage =  1.89e-04, gap_slope = -7.191
+```
+
+This supports the null-cone idea at the sample-mean level.  It does not yet
+select a stable physical channel; the best compensator changes with sample and
+depth, so the next test is a refinement-stability scan.
+
+Refinement-stability check:
+
+```text
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_nullcone_stability.py --depths 18,20 --seeds 53,157 --paths 8 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.10
+```
+
+Tracked pairs keep small leakage and large gap response, but the coefficient
+drifts:
+
+```text
+-gap+h2:   mean|leak| = 1.33e-03, mean|gap| = 5.55, std(t) = 0.49
+-gap+h0:   mean|leak| = 2.30e-03, mean|gap| = 6.82, std(t) = 0.31
+h1+size:   mean|leak| = 5.66e-03, mean|gap| = 6.66, std(t) = 0.19
+```
+
+A broad multi-channel search did not improve this decisively:
+
+```text
+PYTHONDONTWRITEBYTECODE=1 python3 horizon_multichannel_nullcone_search.py --n 20 --paths 8 --burn 5 --starts 8 --directions 600 --top 8
+```
+
+Its best high-score directions were still almost pair-like.  The working
+lesson is that the theorem is useful, but the proxy channels are not yet the
+right invariant physical basis.
+
+The next pass adds
+`horizon_hauptvermutung_channels.py`, which computes one-birth proxies for the
+certificate fields directly: local interval-dimension errors, relation-fraction
+bias, interval-profile spread, count-window irregularity, and resolved-interval
+mass.  Running the same null-cone machinery with `--basis hv` gives stronger
+physical evidence but the same caveat:
+
+```text
+0.924 residual(-gap) + 0.381 residual(hv_big_interval_count):
+  leakage  = -1.94e-03
+  gap_slope = -7.875
+```
+
+Across the small `n=18,20`, two-seed check, HV channels keep large gap response
+with leakage around `1e-3` to `5e-3`, but the coefficient still drifts.  The
+correct next target is therefore a basis built from actual certificate errors
+`countWindow`, `curvatureBias`, and `pairConsistency`, not just local interval
+proxies.
+
+That target is now implemented by `horizon_certificate_channels.py`.  With
+`--basis cert`, the strongest small-sample lead is:
+
+```text
+cert_pairConsistency + 3.5035 residual(-gap):
+  leakage  =  2.98e-05
+  gap_slope = -7.652
+```
+
+The certificate-basis stability check then picks out
+`cert_target4Distortion + residual(-gap)` as the best tracked low-leakage
+candidate:
+
+```text
+mean|leak| = 4.90e-04
+mean|gap|  = 7.66
+```
+
+The coefficient still drifts, so this is not yet a growth certificate.  It is,
+however, the first search result expressed directly in the same error-channel
+language as the quantitative Hauptvermutung bridge.
+
+The Lean follow-up now turns that empirical target into a precise finite
+interface.  A `ProtectedCertificateErrorSource` supplies a finite source `S`
+with:
+
+```text
+Cov(S,J) = 0
+Cov(J, centered(S)^2) = 0
+linearResponse(S, certificateError) <= -descentRate
+```
+
+Lean proves that such a source has zero first-order horizon-area response,
+zero finite second central horizon-area response, and negative
+certificate-error response when `descentRate > 0`.  The refinement interface
+allows the second-order leakage to tend to zero instead of vanishing at each
+finite stage, and proves the second central area response tends to zero.
+The theorem
+`twoResidualChannel_protected_certificate_error_source_bridge` specializes this
+to the residualized two-channel mixtures used by the null-cone scans.
+
+The original finite horizon-entropy theorem is stronger than a fit to the probe
+output: for any normalized nonnegative finite birth law, the full
+exponential-family KL derivative is exactly `-lambda` times the derivative of
+expected one-birth horizon area.  This is the discrete algebraic core of the
+Dorau-Much/Jacobson focusing step.  What remains outside the proof is the
+analytic AQFT theorem identifying continuum Araki relative entropy with the
+weighted null-energy flux.
 
 Lean theorem names:
 
