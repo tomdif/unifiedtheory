@@ -1,6 +1,6 @@
 # Framework Status (August 2026)
 
-> **Quantum-gravity/Hauptvermutung bridge update (2026-08-19):** The current
+> **Quantum-gravity/Hauptvermutung bridge update (2026-08-20):** The current
 > capstone is documented in
 > [`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md).
 > New Lean audit modules formalize the Dorau--Much/Jacobson horizon constant
@@ -39,7 +39,13 @@
 > shows the certificate-basis candidate passes the half-remainder gate on all
 > sampled parents at small steps once the source is oriented locally by parent;
 > Lean now proves this sign orientation preserves horizon protection and makes
-> every nonzero distortion response strictly descending.
+> every nonzero distortion response strictly descending. The new physics lead
+> is documented in
+> [`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md):
+> a horizon-invisible geometric relaxation channel, packaged by
+> `orientedProtectedHauptvermutungDistortionSource_bridge`, can descend the
+> displayed Hauptvermutung distortion observable while leaving the Dorau--Much
+> horizon area response zero through second order.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

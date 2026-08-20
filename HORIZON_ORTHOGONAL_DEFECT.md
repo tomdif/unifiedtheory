@@ -153,6 +153,7 @@ ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortio
 ProtectedHauptvermutungDistortionSource.distortion_response_negative
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
 orientedProtectedHauptvermutungDistortionSource_descentRate_positive
+orientedProtectedHauptvermutungDistortionSource_bridge
 componentResponses_protected_distortion_bridge
 protected_distortion_step_decreases_with_remainder
 protected_distortion_step_strictly_decreases
@@ -599,6 +600,18 @@ Consequently an oriented raw source whose leakage is zero becomes a
 `ProtectedHauptvermutungDistortionSource` with descent rate equal to the
 absolute raw distortion response.  This is the formal version of the
 `--local-sign` gate probe.
+
+The latest corollary packages the locally oriented source directly:
+
+```text
+orientedProtectedHauptvermutungDistortionSource_bridge
+```
+
+It is the finite theorem behind the current new-physics lead in
+[`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md):
+a state-dependent geometry-repair channel can descend the displayed
+Hauptvermutung distortion observable while staying invisible to the
+Dorau--Much horizon-area response through second order.
 
 ## Descent Dynamics
 

@@ -37,12 +37,14 @@ to Standard Model structures and numerical identifications. The finite algebraic
 are Lean-checked; calling the full chain a physical derivation still requires the open
 quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
 
-## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-19)
+## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-20)
 
 The latest audit work is summarized in
 [`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md),
 [`HORIZON_ENTROPY_PROBE.md`](HORIZON_ENTROPY_PROBE.md), and
-[`HORIZON_ORTHOGONAL_DEFECT.md`](HORIZON_ORTHOGONAL_DEFECT.md).
+[`HORIZON_ORTHOGONAL_DEFECT.md`](HORIZON_ORTHOGONAL_DEFECT.md).  The current
+new-physics lead is documented in
+[`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md).
 
 Machine-checked additions now cover:
 
@@ -79,16 +81,22 @@ Machine-checked additions now cover:
   gate probe shows the certificate-basis direction passes the half-remainder
   gate on all sampled parents at small steps when oriented locally by parent,
   and Lean proves this local sign orientation preserves horizon protection
-  while turning any nonzero distortion response into strict descent.
+  while turning any nonzero distortion response into strict descent;
+- horizon-invisible geometric relaxation: the oriented protected source is now
+  packaged as `orientedProtectedHauptvermutungDistortionSource_bridge`, a
+  finite theorem showing that a state-dependent geometry-repair channel can
+  descend the displayed Hauptvermutung distortion observable without changing
+  the Dorau--Much horizon area response through second order.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
 derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
 physical Hauptvermutung certificates, separating invariant observables, and
-infrared GR/QFT recovery.  The new least-defect target is to build the actual
-Hauptvermutung-defect source, project it off the horizon channel, and prove the
-new protected certificate-source hypotheses from the physical dynamics.
+infrared GR/QFT recovery.  The new least-defect target is to derive the actual
+parent-local Hauptvermutung-defect relaxation source from physical causal
+growth, project it off the horizon channel, and prove the protected
+certificate-source hypotheses from the dynamics.
 
 **Paper:** [`paper/time_is_a_partial_order.pdf`](paper/time_is_a_partial_order.pdf)
 

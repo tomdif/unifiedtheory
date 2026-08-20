@@ -391,6 +391,14 @@ horizon orthogonality and second-order leakage, so a nonzero response gives a
 positive protected descent rate without damaging the Dorau--Much horizon
 channel.
 
+This is now recorded as the current new-physics lead:
+[`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md).
+The finite mechanism is a horizon-invisible geometric relaxation channel: a
+parent-local defect source can descend the displayed Hauptvermutung distortion
+observable while leaving the Dorau--Much horizon-area response zero through
+second order.  It remains a finite mechanism until the source and uniform
+remainder bound are derived from the physical causal-growth dynamics.
+
 Key theorem names:
 
 ```text
@@ -419,6 +427,7 @@ linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
 orientedProtectedHauptvermutungDistortionSource_descentRate_positive
+orientedProtectedHauptvermutungDistortionSource_bridge
 componentResponses_protected_distortion_bridge
 protected_distortion_step_decreases_with_remainder
 protected_distortion_step_strictly_decreases

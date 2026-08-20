@@ -1335,6 +1335,34 @@ theorem orientedProtectedHauptvermutungDistortionSource_descentRate_positive
   dsimp [orientedProtectedHauptvermutungDistortionSource]
   exact abs_pos.mpr hne
 
+/-- The locally oriented protected source is immediately a finite bridge:
+it preserves the Dorau--Much horizon channel through second order and descends
+the displayed Hauptvermutung distortion observable. -/
+theorem orientedProtectedHauptvermutungDistortionSource_bridge
+    {ι : Type*} [Fintype ι]
+    (w horizonSource rawSource countWindow curvatureBias
+      pairConsistency : ι → ℝ)
+    (scale newMaximalContribution : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (horth : covariance w rawSource horizonSource = 0)
+    (hleak : horizonSecondOrderLeakage w horizonSource rawSource = 0) :
+    let C : ProtectedHauptvermutungDistortionSource ι :=
+      orientedProtectedHauptvermutungDistortionSource w horizonSource
+        rawSource countWindow curvatureBias pairConsistency scale
+        newMaximalContribution hw horth hleak
+    (linearResponse C.weight C.defectSource
+        (finiteAreaChange C.newMaximalContribution C.horizonSource) = 0 ∧
+      quadraticResponse C.weight C.defectSource
+        (finiteAreaChange C.newMaximalContribution C.horizonSource) = 0) ∧
+      linearResponse C.weight C.defectSource C.distortionObservable ≤
+        -C.descentRate := by
+  dsimp
+  exact
+    ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
+      (orientedProtectedHauptvermutungDistortionSource w horizonSource
+        rawSource countWindow curvatureBias pairConsistency scale
+        newMaximalContribution hw horth hleak)
+
 /-- Component response bounds, horizon orthogonality, and second-order leakage
 cancellation imply the full protected distortion bridge. -/
 theorem componentResponses_protected_distortion_bridge
@@ -1647,6 +1675,7 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_negative
 #print axioms ProtectedHauptvermutungDistortionSource.distortion_response_expands
 #print axioms orientedProtectedHauptvermutungDistortionSource_descentRate_positive
+#print axioms orientedProtectedHauptvermutungDistortionSource_bridge
 #print axioms componentResponses_protected_distortion_bridge
 #print axioms protected_distortion_step_decreases_with_remainder
 #print axioms protected_distortion_step_strictly_decreases
