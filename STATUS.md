@@ -54,6 +54,9 @@
 > now packages the corrected source in
 > `correctedCanonicalHorizonInvisibleDescentSource_protected_bridge`, and the
 > same `t=3.5` correction passes deeper `n=20` local gate checks on two seeds.
+> A new coefficient scan estimates the leakage-null root directly; at `n=18`,
+> `paths=4`, the two seed magnitudes are `3.67279` and `3.55183`, making
+> coefficient stability the next finite proof target.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

@@ -416,6 +416,14 @@ residual-gradient margin, it is a protected finite certificate bridge.  The
 same `t=3.5` correction also passes a deeper `n=20`, `paths=2` gate check on
 both seed 53 and seed 157.
 
+`horizon_corrected_canonical_scan.py` now estimates the leakage-null
+coefficient directly.  On the `n=18`, `paths=4` check, the two seed roots have
+stable magnitude (`3.67279`, `3.55183`) and mean absolute leakage `3.15e-3`.
+At lower `paths=2` statistics across depths `18,20`, the root is noisier, but
+the local descent gate mostly remains open.  The next finite target is
+coefficient-magnitude stability under refinement, or an invariant replacement
+for the current `-gap` corrector.
+
 Key theorem names:
 
 ```text

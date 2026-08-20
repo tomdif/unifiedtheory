@@ -18,6 +18,23 @@ semiclassical Einstein equations.  The finite repo work asks a sharper causal
 set question: can a growth law also repair order-to-geometry defects without
 renormalizing that same local horizon channel?
 
+## Program-Level Target
+
+The public causal-set program would be decisively advanced by a theorem of
+this shape:
+
+```text
+label-invariant causal growth
+  -> stable manifoldlike causal sets under refinement
+  -> quantitative Hauptvermutung uniqueness
+  -> Benincasa-Dowker/entropy flux limit gives semiclassical Einstein gravity
+```
+
+In repo terms, the current bottleneck is the middle arrow.  The horizon entropy
+channel can be kept separate from the geometry-repair channel; what remains is
+to prove that the physical growth law actually supplies the repair channel and
+that its corrected coefficient stabilizes under refinement.
+
 ## New Physics Lead
 
 The candidate principle is:
@@ -185,6 +202,22 @@ A slightly deeper `n=20`, `paths=2` check keeps the same pattern.  With
 `t=3.5` and local orientation, seed 53 descends 20/20 parents and passes the
 gate through step `0.050`; seed 157 also descends 20/20 parents and passes the
 gate through step `0.050`.
+
+The new script
+
+```text
+horizon_corrected_canonical_scan.py
+```
+
+estimates the leakage-null coefficient instead of taking `t=3.5` as fixed.
+At `n=18`, `paths=4`, seeds 53 and 157 give roots with magnitudes `3.67279`
+and `3.55183`, mean `|t| = 3.61231`, and mean absolute leakage `3.15e-3`.
+At lower statistics (`depths=18,20`, `paths=2`) the estimated root is noisier:
+mean `|t| = 2.40785`, mean absolute leakage `1.41e-2`, while the local gate
+still passes all but one large-step row.  This points to a precise next
+target: prove coefficient-magnitude stability under refinement/sampling, or
+replace the proxy `-gap` channel by an invariant corrector with a sharper
+null-cone root.
 
 The empirical target is now sharper: prove that the coefficient correcting
 `S_can` by the `-gap` residual, or its invariant replacement, converges to a

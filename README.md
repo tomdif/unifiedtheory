@@ -93,7 +93,10 @@ Machine-checked additions now cover:
   nearly cancels second-order leakage while preserving local descent; Lean now
   packages that correction as
   `correctedCanonicalHorizonInvisibleDescentSource_protected_bridge`, and the
-  same corrected source passes `n=20` local gate checks on two seeds.
+  same corrected source passes `n=20` local gate checks on two seeds; the new
+  coefficient scan finds `|t| ≈ 3.61` on the higher-statistics `n=18`,
+  `paths=4` check and identifies coefficient stability as the next proof
+  target.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

@@ -667,6 +667,20 @@ seed-157 parents, passing the gate through step `0.050` on both samples.
 The same corrected source also passes a deeper `n=20`, `paths=2` check on
 both seed 53 and seed 157, descending 20/20 parents in each sample.
 
+The follow-up script
+
+```text
+horizon_corrected_canonical_scan.py
+```
+
+estimates the leakage-null coefficient directly.  On the higher-statistics
+`n=18`, `paths=4` check, seeds 53 and 157 give coefficient magnitudes
+`3.67279` and `3.55183`, with mean absolute leakage `3.15e-3`.  On the lower
+`paths=2`, `depths=18,20` scan the root is noisier, but the local gate still
+passes all small-step rows.  The next mathematical target is coefficient
+stability: prove that the null-cone correction magnitude converges, or replace
+`-gap` with an invariant corrector whose root is stable by construction.
+
 ## Descent Dynamics
 
 The file now also formalizes the finite dynamical step needed to turn
