@@ -80,8 +80,10 @@
 > refinement stage and proves stepwise horizon protection together with
 > `D_{n+1} < D_n`; under a geometric majorant `D_n <= D_0*q^n`,
 > `0 <= q < 1`, Lean now proves aggregate convergence `D_n -> 0`. A further
-> step-factor gate derives that majorant from `D_{n+1} <= q * D_n`, making
-> this multiplicative contraction the next physical theorem target.
+> step-factor gate derives that majorant from `D_{n+1} <= q * D_n`; the
+> newest relative-margin gate derives the step factor from
+> `(1 - q)*D_n <= step_n*descentRate_n/2`, making that physical margin the
+> next theorem target.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

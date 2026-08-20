@@ -1104,6 +1104,22 @@ theorem physicalGrowthSuppliesRepairSource_contracts
     exact mul_le_mul_of_nonneg_left C.descends_aggregate hstep
   linarith [C.update_bound, C.remainder_bound, hmul]
 
+theorem physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale c step descentRate remainder currentTotal nextTotal q : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (C : PhysicalGrowthSuppliesRepairSource w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder currentTotal nextTotal
+      edge candidate)
+    (hstep : 0 ≤ step)
+    (hrelative : (1 - q) * currentTotal ≤ step * descentRate / 2) :
+    nextTotal ≤ q * currentTotal := by
+  have hcontract := physicalGrowthSuppliesRepairSource_contracts C hstep
+  nlinarith
+
 theorem physicalGrowthSuppliesRepairSource_strictly_contracts
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ι → ℝ}
@@ -1169,6 +1185,22 @@ theorem physicalGrowthRepairRefinement_step_contracts
     total (n + 1) ≤ total n - step n * descentRate n / 2 := by
   exact physicalGrowthSuppliesRepairSource_contracts
     (R.certified_step n) (le_of_lt (R.step_pos n))
+
+theorem physicalGrowthRepairRefinement_step_factor_of_relative_margin
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hrelative : ∀ n, (1 - q) * total n ≤ step n * descentRate n / 2) :
+    ∀ n, total (n + 1) ≤ q * total n := by
+  intro n
+  exact physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
+    (R.certified_step n) (le_of_lt (R.step_pos n)) (hrelative n)
 
 theorem physicalGrowthRepairRefinement_step_strictly_contracts
     {ι : Type*} [Fintype ι]
@@ -1332,6 +1364,31 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     physicalGrowthRepairRefinement_total_tendsto_zero_of_step_factor
       R q hq0 hq1 htotal_nonneg hstep_factor⟩
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (q : ℝ)
+    (hq0 : 0 ≤ q)
+    (hq1 : q < 1)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrelative : ∀ n, (1 - q) * total n ≤ step n * descentRate n / 2) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+      R q hq0 hq1 htotal_nonneg
+      (physicalGrowthRepairRefinement_step_factor_of_relative_margin
+        R q hrelative)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1352,5 +1409,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

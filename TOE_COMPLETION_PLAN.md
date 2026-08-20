@@ -85,11 +85,14 @@ Implemented start:
 PhysicalGrowthSuppliesRepairSource
 physicalGrowthSuppliesRepairSource_contracts
 physicalGrowthSuppliesRepairSource_strictly_contracts
+physicalGrowthSuppliesRepairSource_step_factor_of_relative_margin
 physicalGrowthSuppliesRepairSource_protected_and_contracts
 PhysicalGrowthRepairRefinement
 physicalGrowthRepairRefinement_protected_and_contracts
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
+physicalGrowthRepairRefinement_step_factor_of_relative_margin
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_step_factor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_relative_margin
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -108,11 +111,16 @@ D_{n+1} < D_n
 ```
 
 Under an additional geometric majorant `D_n <= D_0*q^n`, `0 <= q < 1`, Lean
-now proves aggregate convergence:
+proves aggregate convergence.  The current strongest gate derives the needed
+one-step factor from the relative descent margin
+`(1 - q)*D_n <= step_n*descentRate_n/2`, so Lean now proves:
 
 ```text
 D_n -> 0
 ```
+
+Next target: derive this relative descent margin from the actual
+causal-growth law, or replace it with a summable-rate physical analogue.
 
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
