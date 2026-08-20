@@ -108,7 +108,9 @@
 > certificates with the actual source's per-cell negative first-order response
 > contributions and proves they sum to `-linearResponse(S_n, D_n)`; the newest
 > centered-source floor gate derives those cellwise bounds from
-> `rateFloor_n <= -w_{n,i}*centered(S_n)_i`.
+> `rateFloor_n <= -w_{n,i}*centered(S_n)_i`; the newest weighted
+> anti-alignment gate splits that into nonnegative weights, a weighted rate
+> floor, and `alignment_{n,i} <= -centered(S_n)_i`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

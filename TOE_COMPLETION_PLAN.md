@@ -131,6 +131,8 @@ physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_respons
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
 physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
+centeredSource_floor_of_weighted_anti_alignment
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -240,6 +242,12 @@ a pointwise anti-alignment condition on the actual source:
 Lean proves this implies the source-local descent inequality cell by cell and
 therefore the same protected convergence theorem.
 
+The newest weighted anti-alignment gate splits that product condition into
+local physical pieces: nonnegative sampling weights, a weighted rate floor
+`rateFloor_n <= w_{n,i}*alignment_{n,i}`, and source anti-alignment
+`alignment_{n,i} <= -centered(S_n)_i`.  Lean proves these imply the centered
+source floor and therefore the same protected convergence theorem.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -264,6 +272,8 @@ and prove the source-local response dominates rateFloor_n times each local
 distortion,
 or prove the stronger centered-source floor
 rateFloor_n <= -w_{n,i}*centered(S_n)_i,
+or prove weighted anti-alignment plus
+rateFloor_n <= w_{n,i}*alignment_{n,i},
 from the physical causal-growth law
 ```
 

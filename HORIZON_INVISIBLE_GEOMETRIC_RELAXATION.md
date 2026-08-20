@@ -207,7 +207,9 @@ together with `gamma <= rateFloor_n`, `stepFloor <= step_n`, and
 certificates with the actual source's per-cell negative first-order response
 contributions and proves they sum to `-linearResponse(S_n, D_n)`.  The newest
 centered-source floor gate derives those cellwise bounds from
-`rateFloor_n <= -w_{n,i}*centered(S_n)_i`.
+`rateFloor_n <= -w_{n,i}*centered(S_n)_i`.  The newest weighted anti-alignment
+gate splits that into nonnegative weights, a weighted rate floor, and
+`alignment_{n,i} <= -centered(S_n)_i`.
 
 Key names:
 
@@ -273,6 +275,8 @@ physicalHauptvermutungTotalDistortion_uniform_rate_floor_of_source_local_respons
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_source_local_physical_uniform_rate_floor
 physicalHauptvermutungDistortion_source_local_response_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_centered_source_floor
+centeredSource_floor_of_weighted_anti_alignment
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_weighted_anti_alignment
 ```
 
 ## Numerical Evidence
