@@ -409,7 +409,12 @@ also isolated exactly as the residual gradient's horizon leakage.  Numerically,
 the pure canonical source descends 35/35 seed-53 parents, and the null-cone
 corrected source `residual(cert_scaledDistortionBound) + 3.5 residual(-gap)`
 passes the local half-remainder gate through step `0.050` on both seed-53
-and seed-157 samples.
+and seed-157 samples.  Lean now packages this correction as
+`correctedCanonicalHorizonInvisibleDescentSource_protected_bridge`: if the
+corrected source lies on the leakage null cone and retains enough
+residual-gradient margin, it is a protected finite certificate bridge.  The
+same `t=3.5` correction also passes a deeper `n=20`, `paths=2` gate check on
+both seed 53 and seed 157.
 
 Key theorem names:
 
@@ -440,6 +445,9 @@ canonicalHorizonInvisibleDescentSource_response_rawDefect
 canonicalHorizonInvisibleDescentSource_area_response_zero
 canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

@@ -98,6 +98,10 @@ canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
 canonicalHorizonInvisibleDescentSource_area_response_zero
 canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+correctedCanonicalHorizonInvisibleDescentSource_orthogonal
+correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 ```
 
 The central identity is:
@@ -112,6 +116,18 @@ and has zero first-order horizon-area response.  Lean also isolates the
 remaining obstruction exactly: the second central horizon-area term is the
 negative leakage of the same residual gradient.  If that leakage vanishes, the
 canonical source is already a protected finite certificate descent source.
+
+The correction theorem formalizes the next empirical move:
+
+```text
+S_corr = -horizonOrthogonalResidual(w,J,G)
+       + t*horizonOrthogonalResidual(w,J,H).
+```
+
+If `S_corr` lies on the two-channel leakage null cone and the correcting
+channel does not erase the residual-gradient descent margin, Lean proves
+`S_corr` is a protected certificate bridge.  This is the exact finite theorem
+template for the observed `+ 3.5 residual(-gap)` correction.
 
 ## Numerical Evidence
 
@@ -164,6 +180,11 @@ With local orientation it still descends the target on 35/35 parents and
 passes the half-remainder gate on all sampled parents through step `0.050`.
 On an independent seed-157 sample it again descends 33/33 parents and passes
 the gate through step `0.050`, with leakage `5.98e-02 +/- 5.7e-02`.
+
+A slightly deeper `n=20`, `paths=2` check keeps the same pattern.  With
+`t=3.5` and local orientation, seed 53 descends 20/20 parents and passes the
+gate through step `0.050`; seed 157 also descends 20/20 parents and passes the
+gate through step `0.050`.
 
 The empirical target is now sharper: prove that the coefficient correcting
 `S_can` by the `-gap` residual, or its invariant replacement, converges to a

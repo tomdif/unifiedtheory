@@ -150,6 +150,10 @@ canonicalHorizonInvisibleDescentSource_strictly_descends_rawDefect
 canonicalHorizonInvisibleDescentSource_area_response_zero
 canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+correctedCanonicalHorizonInvisibleDescentSource_orthogonal
+correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable
@@ -649,6 +653,7 @@ canonicalHorizonInvisibleDescentSource_response_rawDefect
 canonicalHorizonInvisibleDescentSource_area_response_zero
 canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 ```
 
 Numerically, the pure canonical source
@@ -659,6 +664,8 @@ half-remainder gate through step `0.050`, but has nonzero mean leakage
 `3.5 residual(-gap)` reduces sample-mean leakage to `-7.41e-04`; with local
 orientation the corrected source descends 35/35 seed-53 parents and 33/33
 seed-157 parents, passing the gate through step `0.050` on both samples.
+The same corrected source also passes a deeper `n=20`, `paths=2` check on
+both seed 53 and seed 157, descending 20/20 parents in each sample.
 
 ## Descent Dynamics
 

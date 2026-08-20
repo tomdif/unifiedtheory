@@ -50,7 +50,10 @@
 > observable itself off the horizon source gives a parent-local gradient that
 > Lean proves descends at residual-variance rate with zero first-order horizon
 > response; the empirical null-cone correction `+ 3.5 residual(-gap)` nearly
-> cancels second-order leakage while preserving the local descent gate.
+> cancels second-order leakage while preserving the local descent gate. Lean
+> now packages the corrected source in
+> `correctedCanonicalHorizonInvisibleDescentSource_protected_bridge`, and the
+> same `t=3.5` correction passes deeper `n=20` local gate checks on two seeds.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

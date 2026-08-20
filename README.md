@@ -90,7 +90,10 @@ Machine-checked additions now cover:
   attack defines `canonicalHorizonInvisibleDescentSource`, proves it descends
   its defining observable at residual-variance rate with zero first-order
   horizon response, and numerically finds that adding `3.5 residual(-gap)`
-  nearly cancels second-order leakage while preserving local descent.
+  nearly cancels second-order leakage while preserving local descent; Lean now
+  packages that correction as
+  `correctedCanonicalHorizonInvisibleDescentSource_protected_bridge`, and the
+  same corrected source passes `n=20` local gate checks on two seeds.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

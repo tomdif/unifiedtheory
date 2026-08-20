@@ -1015,6 +1015,16 @@ theorem linearResponse_const_mul_source
   rw [linearResponse_eq_covariance, linearResponse_eq_covariance]
   exact covariance_const_mul_right w X S a
 
+/-- First-order response is additive in the source slot. -/
+theorem linearResponse_add_source
+    {ι : Type*} [Fintype ι]
+    (w S T X : ι → ℝ) :
+    linearResponse w (fun i => S i + T i) X =
+      linearResponse w S X + linearResponse w T X := by
+  rw [linearResponse_eq_covariance, linearResponse_eq_covariance,
+    linearResponse_eq_covariance]
+  exact covariance_add_right w X S T
+
 /-- Flipping a source flips every first-order response. -/
 theorem linearResponse_neg_source
     {ι : Type*} [Fintype ι]
@@ -1193,6 +1203,115 @@ theorem canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
     rw [horizonSecondOrderLeakage_neg_source]
     exact hleak
   · rw [canonicalHorizonInvisibleDescentSource_response_rawDefect w J G hvar]
+
+/-- Correct the canonical residual gradient by a second horizon-orthogonal
+residual channel.  The intended use is `G = distortion observable` and `H` a
+candidate leakage-cancelling channel such as the gap residual. -/
+noncomputable def correctedCanonicalHorizonInvisibleDescentSource
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (t : ℝ) : ι → ℝ :=
+  fun i =>
+    -horizonOrthogonalResidual w J G i +
+      t * horizonOrthogonalResidual w J H i
+
+/-- The corrected canonical source remains first-order horizon-invisible. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_orthogonal
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (t : ℝ)
+    (hvar : variance w J ≠ 0) :
+    covariance w (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+      J = 0 := by
+  unfold correctedCanonicalHorizonInvisibleDescentSource
+  rw [covariance_add_left]
+  rw [covariance_neg_left]
+  rw [covariance_const_mul_left]
+  rw [covariance_horizonOrthogonalResidual_self w J G hvar]
+  rw [covariance_horizonOrthogonalResidual_self w J H hvar]
+  ring
+
+/-- The corrected source response is the canonical residual descent margin
+plus the response contributed by the correcting residual channel. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (t : ℝ)
+    (hvar : variance w J ≠ 0) :
+    linearResponse w (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        G =
+      -variance w (horizonOrthogonalResidual w J G) +
+        t * linearResponse w (horizonOrthogonalResidual w J H) G := by
+  unfold correctedCanonicalHorizonInvisibleDescentSource
+  rw [linearResponse_add_source]
+  rw [linearResponse_neg_source]
+  rw [linearResponse_const_mul_source]
+  rw [horizonOrthogonalResidual_linearResponse_rawDefect w J G hvar]
+
+/-- A simple margin condition guarantees that the leakage-corrected source
+still descends the raw observable. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (t descentRate : ℝ)
+    (hvar : variance w J ≠ 0)
+    (hmargin :
+      t * linearResponse w (horizonOrthogonalResidual w J H) G ≤
+        variance w (horizonOrthogonalResidual w J G) - descentRate) :
+    linearResponse w (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        G ≤ -descentRate := by
+  rw [correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+    w J G H t hvar]
+  linarith
+
+/-- If the corrected canonical source lies on the second-order leakage null
+cone and its correcting channel preserves enough descent margin, then it is a
+finite protected certificate bridge. -/
+theorem correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
+    {ι : Type*} [Fintype ι]
+    (w J G H : ι → ℝ) (c t descentRate : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (hvar : variance w J ≠ 0)
+    (hcone :
+      (-1 : ℝ) ^ 2 *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J G) +
+        2 * (-1 : ℝ) * t *
+          horizonSecondOrderCrossLeakage w J
+            (horizonOrthogonalResidual w J G)
+            (horizonOrthogonalResidual w J H) +
+          t ^ 2 *
+            horizonSecondOrderCrossLeakage w J
+              (horizonOrthogonalResidual w J H)
+              (horizonOrthogonalResidual w J H) = 0)
+    (hmargin :
+      t * linearResponse w (horizonOrthogonalResidual w J H) G ≤
+        variance w (horizonOrthogonalResidual w J G) - descentRate) :
+    (linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        (finiteAreaChange c J) = 0 ∧
+      quadraticResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        (finiteAreaChange c J) = 0) ∧
+      linearResponse w
+        (correctedCanonicalHorizonInvisibleDescentSource w J G H t)
+        G ≤ -descentRate := by
+  let sourceFun : ι → ℝ :=
+    fun i =>
+      (-1 : ℝ) * horizonOrthogonalResidual w J G i +
+        t * horizonOrthogonalResidual w J H i
+  have hsource :
+      sourceFun =
+        correctedCanonicalHorizonInvisibleDescentSource w J G H t := by
+    funext i
+    unfold sourceFun correctedCanonicalHorizonInvisibleDescentSource
+    ring
+  have hdesc :
+      linearResponse w sourceFun G ≤ -descentRate := by
+    rw [hsource]
+    exact correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+      w J G H t descentRate hvar hmargin
+  have hbridge :=
+    twoResidualChannel_protected_certificate_error_source_bridge w J
+      G H G c (-1) t descentRate hw hvar hcone hdesc
+  simpa [sourceFun, hsource] using hbridge
 
 /-- The response of the Hauptvermutung distortion observable splits into the
 responses of the count-window, curvature-bias, mixed count-curvature, and
@@ -1796,6 +1915,7 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 #print axioms ProtectedCertificateErrorRefinement.certificate_error_response_negative
 #print axioms linearResponse_const_mul_source
+#print axioms linearResponse_add_source
 #print axioms linearResponse_neg_source
 #print axioms horizonSecondOrderLeakage_neg_source
 #print axioms horizonOrthogonalResidual_linearResponse_rawDefect
@@ -1805,6 +1925,10 @@ end ProtectedHauptvermutungDistortionDescent
 #print axioms canonicalHorizonInvisibleDescentSource_area_response_zero
 #print axioms canonicalHorizonInvisibleDescentSource_secondOrder_area_obstruction
 #print axioms canonicalHorizonInvisibleDescentSource_protected_certificate_bridge
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_orthogonal
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
+#print axioms correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 #print axioms linearResponse_hauptvermutungDistortionObservable
 #print axioms componentResponses_descend_hauptvermutungDistortionObservable
 #print axioms linearResponse_orientTowardObservable_eq_neg_abs
