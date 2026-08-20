@@ -224,7 +224,10 @@ gate derives that strict positivity from
 `0 < stepFloor`, `0 < weightFloor`, and `0 < sourceFloor`.  The newest
 clipped-rate gate removes the product upper-bound side condition by using the
 effective rate `min (weightFloor*sourceFloor) (1/stepFloor)`, so the stability
-product is automatically at most `1`.
+product is automatically at most `1`.  The newest stagewise clipped-rate gate
+removes global uniformity at this layer and proves convergence from positive
+stage-dependent weight/source floors plus decay of the corresponding clipped
+contraction-factor product.
 
 Key names:
 
@@ -296,6 +299,8 @@ weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 centeredSource_gamma_floor_of_uniform_weighted_alignment
 centeredSource_gamma_floor_of_uniform_centered_source_floor
+centeredSource_rate_floor_of_stagewise_centered_source_floor
+physicalHauptvermutungTotalDistortion_rate_floor_of_centered_source_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
@@ -303,6 +308,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 ```
 
 ## Numerical Evidence

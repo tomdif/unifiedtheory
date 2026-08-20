@@ -137,6 +137,8 @@ weighted_floor_of_uniform_weight_alignment
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weighted_anti_alignment
 centeredSource_gamma_floor_of_uniform_weighted_alignment
 centeredSource_gamma_floor_of_uniform_centered_source_floor
+centeredSource_rate_floor_of_stagewise_centered_source_floor
+physicalHauptvermutungTotalDistortion_rate_floor_of_centered_source_floor
 physicalHauptvermutungTotalDistortion_uniform_rate_of_source_local_response
 physicalHauptvermutungTotalDistortion_uniform_rate_of_centered_source_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_weight_alignment_floor
@@ -144,6 +146,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -294,6 +297,13 @@ effective uniform rate
 is bounded by the physical source product, and satisfies
 `stepFloor*gamma <= 1`, so the geometric contraction proof applies directly.
 
+The newest stagewise clipped-rate gate removes global uniformity at this layer:
+for stage-dependent positive floors `weightFloor_n` and `sourceFloor_n`, Lean
+uses
+`rateFloor_n = min (weightFloor_n*sourceFloor_n) (1/step_n)` and proves
+horizon-protected convergence from decay of the product of the corresponding
+factors `1 - step_n*rateFloor_n/2`.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -332,6 +342,8 @@ or prove positive floors
 stepFloor*(weightFloor*sourceFloor) <= 2,
 or use the clipped effective rate
 min (weightFloor*sourceFloor) (1/stepFloor) from positive floors alone,
+or prove decay of the stagewise clipped product with
+rateFloor_n = min (weightFloor_n*sourceFloor_n) (1/step_n),
 from the physical causal-growth law
 ```
 

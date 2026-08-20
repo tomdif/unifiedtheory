@@ -126,7 +126,10 @@
 > clipped-rate gate removes the product upper-bound side condition by using
 > the effective rate
 > `min (weightFloor*sourceFloor) (1/stepFloor)`, so the stability product is
-> automatically at most `1`.
+> automatically at most `1`; the newest stagewise clipped-rate gate removes
+> global uniformity at this layer and proves convergence from positive
+> stage-dependent weight/source floors plus decay of the corresponding clipped
+> contraction-factor product.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
