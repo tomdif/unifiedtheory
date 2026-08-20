@@ -117,6 +117,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_expl
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
+physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -187,6 +189,17 @@ Lean also derives product decay from a uniform factor majorant:
 so the nonuniform target can be sharpened to bounding the explicit factors
 `1 - step_n*rateFloor_n/2` below one.
 
+The newest gain-window gate packages that factor bound in physical variables:
+
+```text
+0 < beta
+beta <= step_n*rateFloor_n
+step_n*rateFloor_n <= 2
+```
+
+Together with `rateFloor_n*D_n <= descentRate_n`, this proves horizon-protected
+convergence with contraction ceiling `1 - beta/2`.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -203,6 +216,7 @@ derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
 0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
 or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
 or prove 0 <= q_n <= qBound < 1 for those variable factors,
+or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
 from the physical causal-growth law
 ```
 

@@ -1961,6 +1961,52 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       (physicalGrowthRepairRefinement_step_factor_of_explicit_variable_rate_floor
         R htotal_nonneg hrate)
 
+theorem physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
+    {step rateFloor : ℕ → ℝ} {beta : ℝ}
+    (hgain_lower : ∀ n, beta ≤ step n * rateFloor n)
+    (hgain_upper : ∀ n, step n * rateFloor n ≤ 2) :
+    ∀ n,
+      0 ≤ 1 - step n * rateFloor n / 2 ∧
+        1 - step n * rateFloor n / 2 ≤ 1 - beta / 2 := by
+  intro n
+  constructor <;> linarith [hgain_lower n, hgain_upper n]
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta : ℝ)
+    (hbeta_pos : 0 < beta)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hgain_lower : ∀ n, beta ≤ step n * rateFloor n)
+    (hgain_upper : ∀ n, step n * rateFloor n ≤ 2) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  have hbeta_le_two : beta ≤ 2 := le_trans (hgain_lower 0) (hgain_upper 0)
+  have hqBound_nonneg : 0 ≤ 1 - beta / 2 := by
+    linarith
+  have hqBound_lt_one : 1 - beta / 2 < 1 := by
+    linarith
+  have hfactors :
+      ∀ n,
+        0 ≤ 1 - step n * rateFloor n / 2 ∧
+          1 - step n * rateFloor n / 2 ≤ 1 - beta / 2 :=
+    physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
+      hgain_lower hgain_upper
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
+      R (1 - beta / 2) htotal_nonneg hqBound_nonneg hqBound_lt_one
+      (fun n => (hfactors n).1) (fun n => (hfactors n).2) hrate
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -1991,5 +2037,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

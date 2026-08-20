@@ -489,7 +489,9 @@ package, or the now-formal product-decay replacement
 `Product_{k<n} q_k -> 0`, from the physical causal-growth law.  The explicit
 variable-rate-floor specialization uses
 `q_n = 1 - step_n*rateFloor_n/2`; the newest uniform-bound bridge derives
-product decay from `0 <= q_n <= qBound < 1`.
+product decay from `0 <= q_n <= qBound < 1`.  The newest gain-window gate
+derives this bound from `0 < beta`, `beta <= step_n*rateFloor_n`, and
+`step_n*rateFloor_n <= 2`.
 
 Key theorem names:
 
@@ -592,6 +594,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_expl
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
+physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
