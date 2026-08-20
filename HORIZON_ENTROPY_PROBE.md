@@ -463,6 +463,12 @@ finite stage, and proves the second central area response tends to zero.
 The theorem
 `twoResidualChannel_protected_certificate_error_source_bridge` specializes this
 to the residualized two-channel mixtures used by the null-cone scans.
+The newer
+`ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion`
+specializes the certificate error further to the actual displayed
+Hauptvermutung distortion observable
+`(countWindow + curvatureBias + countWindow*curvatureBias)*scale
+  + pairConsistency/2`.
 
 The original finite horizon-entropy theorem is stronger than a fit to the probe
 output: for any normalized nonnegative finite birth law, the full

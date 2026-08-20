@@ -336,6 +336,20 @@ after two raw defect observables are projected off the horizon source, a
 leakage-null mixture that descends a named certificate error satisfies the same
 finite horizon/certificate bridge.
 
+The same Lean file now specializes the abstract certificate error to the actual
+quantitative-Hauptvermutung distortion observable:
+
+```text
+Dist = (countWindow + curvatureBias + countWindow*curvatureBias) * scale
+       + pairConsistency/2.
+```
+
+It proves the first-order response decomposition into the count-window,
+curvature-bias, mixed count-curvature, and pair-consistency channels, and then
+packages a `ProtectedHauptvermutungDistortionSource`: horizon-protected descent
+of this aggregate distortion observable implies simultaneous horizon
+protection and improvement of the displayed Hauptvermutung distortion bound.
+
 Key theorem names:
 
 ```text
@@ -357,6 +371,10 @@ HorizonOrthogonalDefectCertificate.leastDefectSource_secondOrder_area_obstructio
 ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
 ProtectedCertificateErrorSource.certificate_error_response_negative
 ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
+linearResponse_hauptvermutungDistortionObservable
+ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
+ProtectedHauptvermutungDistortionSource.distortion_response_expands
+componentResponses_protected_distortion_bridge
 ```
 
 This is a finite control theorem, not a continuum completion.  Its role is to

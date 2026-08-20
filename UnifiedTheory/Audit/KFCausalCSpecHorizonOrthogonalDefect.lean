@@ -969,6 +969,240 @@ theorem certificate_error_response_negative
 
 end ProtectedCertificateErrorRefinement
 
+/-! ## 7. Hauptvermutung distortion-observable specialization -/
+
+/-- The one-birth observable corresponding to the quantitative-Hauptvermutung
+distortion bound
+`(countWindow + curvatureBias + countWindow*curvatureBias)*scale
+  + pairConsistency/2`.
+
+This mirrors the scalar bound used in
+`KFCausalCSpecHauptvermutungPhysicalBridge.lean`, but stays self-contained so
+this file can be checked directly without building local `.olean` artifacts. -/
+noncomputable def hauptvermutungDistortionObservable
+    {ι : Type*} (scale : ℝ)
+    (countWindow curvatureBias pairConsistency : ι → ℝ) : ι → ℝ :=
+  fun i =>
+    (countWindow i + curvatureBias i +
+        countWindow i * curvatureBias i) * scale +
+      pairConsistency i / 2
+
+/-- First-order response is additive in the observable slot. -/
+theorem linearResponse_add_observable
+    {ι : Type*} [Fintype ι]
+    (w S X Y : ι → ℝ) :
+    linearResponse w S (fun i => X i + Y i) =
+      linearResponse w S X + linearResponse w S Y := by
+  rw [linearResponse_eq_covariance, linearResponse_eq_covariance,
+    linearResponse_eq_covariance]
+  exact covariance_add_left w X Y S
+
+/-- First-order response is homogeneous in the observable slot. -/
+theorem linearResponse_const_mul_observable
+    {ι : Type*} [Fintype ι]
+    (w S X : ι → ℝ) (a : ℝ) :
+    linearResponse w S (fun i => a * X i) =
+      a * linearResponse w S X := by
+  rw [linearResponse_eq_covariance, linearResponse_eq_covariance]
+  exact covariance_const_mul_left w X S a
+
+/-- The response of the Hauptvermutung distortion observable splits into the
+responses of the count-window, curvature-bias, mixed count-curvature, and
+pair-consistency channels. -/
+theorem linearResponse_hauptvermutungDistortionObservable
+    {ι : Type*} [Fintype ι]
+    (w source countWindow curvatureBias pairConsistency : ι → ℝ)
+    (scale : ℝ) :
+    linearResponse w source
+        (hauptvermutungDistortionObservable scale
+          countWindow curvatureBias pairConsistency)
+      =
+        scale *
+          (linearResponse w source countWindow +
+            linearResponse w source curvatureBias +
+              linearResponse w source
+                (fun i => countWindow i * curvatureBias i)) +
+          linearResponse w source pairConsistency / 2 := by
+  have hobs :
+      hauptvermutungDistortionObservable scale
+          countWindow curvatureBias pairConsistency
+        =
+        fun i =>
+          scale *
+              (countWindow i + curvatureBias i +
+                countWindow i * curvatureBias i) +
+            (1 / 2 : ℝ) * pairConsistency i := by
+    funext i
+    unfold hauptvermutungDistortionObservable
+    ring
+  rw [hobs]
+  rw [linearResponse_add_observable]
+  rw [linearResponse_const_mul_observable]
+  rw [linearResponse_const_mul_observable]
+  rw [linearResponse_add_observable]
+  rw [linearResponse_add_observable]
+  ring
+
+/-- Component response bounds imply descent of the full
+Hauptvermutung distortion observable. -/
+theorem componentResponses_descend_hauptvermutungDistortionObservable
+    {ι : Type*} [Fintype ι]
+    (w source countWindow curvatureBias pairConsistency : ι → ℝ)
+    (scale descentRate : ℝ)
+    (hdesc :
+      scale *
+          (linearResponse w source countWindow +
+            linearResponse w source curvatureBias +
+              linearResponse w source
+                (fun i => countWindow i * curvatureBias i)) +
+          linearResponse w source pairConsistency / 2 ≤ -descentRate) :
+    linearResponse w source
+        (hauptvermutungDistortionObservable scale
+          countWindow curvatureBias pairConsistency) ≤ -descentRate := by
+  rw [linearResponse_hauptvermutungDistortionObservable]
+  exact hdesc
+
+/-- A finite source that is horizon-protected and descends the actual
+quantitative-Hauptvermutung distortion observable. -/
+structure ProtectedHauptvermutungDistortionSource
+    (ι : Type*) [Fintype ι] where
+  weight : ι → ℝ
+  horizonSource : ι → ℝ
+  defectSource : ι → ℝ
+  countWindowError : ι → ℝ
+  curvatureBiasError : ι → ℝ
+  pairConsistencyError : ι → ℝ
+  scale : ℝ
+  newMaximalContribution : ℝ
+  descentRate : ℝ
+  weight_sum : (∑ i, weight i) = 1
+  source_horizon_orthogonal :
+    covariance weight defectSource horizonSource = 0
+  source_second_leakage_zero :
+    horizonSecondOrderLeakage weight horizonSource defectSource = 0
+  distortion_descent :
+    linearResponse weight defectSource
+      (hauptvermutungDistortionObservable scale
+        countWindowError curvatureBiasError pairConsistencyError) ≤
+        -descentRate
+
+namespace ProtectedHauptvermutungDistortionSource
+
+/-- The distortion observable supplied by the source. -/
+noncomputable def distortionObservable
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι) : ι → ℝ :=
+  hauptvermutungDistortionObservable C.scale
+    C.countWindowError C.curvatureBiasError C.pairConsistencyError
+
+/-- The protected distortion source is an instance of the generic protected
+certificate-error source, with the certificate error specialized to the
+Hauptvermutung distortion observable. -/
+noncomputable def toProtectedCertificateErrorSource
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι) :
+    ProtectedCertificateErrorSource ι where
+  weight := C.weight
+  horizonSource := C.horizonSource
+  defectSource := C.defectSource
+  certificateError := C.distortionObservable
+  newMaximalContribution := C.newMaximalContribution
+  descentRate := C.descentRate
+  weight_sum := C.weight_sum
+  source_horizon_orthogonal := C.source_horizon_orthogonal
+  source_second_leakage_zero := C.source_second_leakage_zero
+  certificate_error_descent := C.distortion_descent
+
+/-- The source preserves the finite horizon channel through second order and
+descends the quantitative-Hauptvermutung distortion observable. -/
+theorem preserves_horizon_and_descends_distortion
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι) :
+    (linearResponse C.weight C.defectSource
+        (finiteAreaChange C.newMaximalContribution C.horizonSource) = 0 ∧
+      quadraticResponse C.weight C.defectSource
+        (finiteAreaChange C.newMaximalContribution C.horizonSource) = 0) ∧
+      linearResponse C.weight C.defectSource C.distortionObservable ≤
+        -C.descentRate := by
+  exact ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
+    C.toProtectedCertificateErrorSource
+
+/-- Positive descent rate gives a strictly negative distortion-observable
+response. -/
+theorem distortion_response_negative
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι)
+    (hpos : 0 < C.descentRate) :
+    linearResponse C.weight C.defectSource C.distortionObservable < 0 := by
+  exact ProtectedCertificateErrorSource.certificate_error_response_negative
+    C.toProtectedCertificateErrorSource hpos
+
+/-- The distortion response of the protected source expands into the three
+named Hauptvermutung certificate-error channels plus their mixed term. -/
+theorem distortion_response_expands
+    {ι : Type*} [Fintype ι]
+    (C : ProtectedHauptvermutungDistortionSource ι) :
+    linearResponse C.weight C.defectSource C.distortionObservable
+      =
+        C.scale *
+          (linearResponse C.weight C.defectSource C.countWindowError +
+            linearResponse C.weight C.defectSource C.curvatureBiasError +
+              linearResponse C.weight C.defectSource
+                (fun i =>
+                  C.countWindowError i * C.curvatureBiasError i)) +
+          linearResponse C.weight C.defectSource C.pairConsistencyError /
+            2 := by
+  exact linearResponse_hauptvermutungDistortionObservable
+    C.weight C.defectSource C.countWindowError C.curvatureBiasError
+    C.pairConsistencyError C.scale
+
+end ProtectedHauptvermutungDistortionSource
+
+/-- Component response bounds, horizon orthogonality, and second-order leakage
+cancellation imply the full protected distortion bridge. -/
+theorem componentResponses_protected_distortion_bridge
+    {ι : Type*} [Fintype ι]
+    (w horizonSource defectSource countWindow curvatureBias
+      pairConsistency : ι → ℝ)
+    (scale newMaximalContribution descentRate : ℝ)
+    (hw : (∑ i, w i) = 1)
+    (horth : covariance w defectSource horizonSource = 0)
+    (hleak : horizonSecondOrderLeakage w horizonSource defectSource = 0)
+    (hdesc :
+      scale *
+          (linearResponse w defectSource countWindow +
+            linearResponse w defectSource curvatureBias +
+              linearResponse w defectSource
+                (fun i => countWindow i * curvatureBias i)) +
+          linearResponse w defectSource pairConsistency / 2 ≤
+            -descentRate) :
+    (linearResponse w defectSource
+        (finiteAreaChange newMaximalContribution horizonSource) = 0 ∧
+      quadraticResponse w defectSource
+        (finiteAreaChange newMaximalContribution horizonSource) = 0) ∧
+      linearResponse w defectSource
+        (hauptvermutungDistortionObservable scale
+          countWindow curvatureBias pairConsistency) ≤
+        -descentRate := by
+  let C : ProtectedHauptvermutungDistortionSource ι :=
+    { weight := w
+      horizonSource := horizonSource
+      defectSource := defectSource
+      countWindowError := countWindow
+      curvatureBiasError := curvatureBias
+      pairConsistencyError := pairConsistency
+      scale := scale
+      newMaximalContribution := newMaximalContribution
+      descentRate := descentRate
+      weight_sum := hw
+      source_horizon_orthogonal := horth
+      source_second_leakage_zero := hleak
+      distortion_descent :=
+        componentResponses_descend_hauptvermutungDistortionObservable w
+          defectSource countWindow curvatureBias pairConsistency scale
+          descentRate hdesc }
+  exact C.preserves_horizon_and_descends_distortion
+
 #print axioms covariance_comm
 #print axioms centeredSource_linear_combination
 #print axioms covariance_add_right
@@ -1002,5 +1236,11 @@ end ProtectedCertificateErrorRefinement
 #print axioms ProtectedCertificateErrorRefinement.first_area_response_zero
 #print axioms ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 #print axioms ProtectedCertificateErrorRefinement.certificate_error_response_negative
+#print axioms linearResponse_hauptvermutungDistortionObservable
+#print axioms componentResponses_descend_hauptvermutungDistortionObservable
+#print axioms ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
+#print axioms ProtectedHauptvermutungDistortionSource.distortion_response_negative
+#print axioms ProtectedHauptvermutungDistortionSource.distortion_response_expands
+#print axioms componentResponses_protected_distortion_bridge
 
 end UnifiedTheory.Audit.KFCausalCSpecHorizonOrthogonalDefect

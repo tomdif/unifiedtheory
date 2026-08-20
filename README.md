@@ -66,7 +66,10 @@ Machine-checked additions now cover:
   named certificate error, Lean proves it preserves the horizon channel through
   second order while improving that certificate; a refinement version proves
   second central area response tends to zero when leakage tends to zero, and a
-  residualized two-channel theorem covers the null-cone scans directly.
+  residualized two-channel theorem covers the null-cone scans directly; the
+  interface is now specialized to the displayed Hauptvermutung distortion
+  observable `(countWindow + curvatureBias + countWindow*curvatureBias)*scale
+  + pairConsistency/2`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

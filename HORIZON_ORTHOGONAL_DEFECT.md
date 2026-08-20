@@ -141,6 +141,12 @@ ProtectedCertificateErrorSource.protected_certificate_error_source_bridge
 ProtectedCertificateErrorRefinement.first_area_response_zero
 ProtectedCertificateErrorRefinement.quadratic_area_response_tendsto_zero
 ProtectedCertificateErrorRefinement.certificate_error_response_negative
+linearResponse_hauptvermutungDistortionObservable
+componentResponses_descend_hauptvermutungDistortionObservable
+ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
+ProtectedHauptvermutungDistortionSource.distortion_response_negative
+ProtectedHauptvermutungDistortionSource.distortion_response_expands
+componentResponses_protected_distortion_bridge
 ```
 
 ## Why This Matters
@@ -517,6 +523,34 @@ if their residual mixture lies on the leakage null cone and descends the named
 certificate error, then the same finite horizon/certificate bridge follows.
 This is the theorem-level version of scanning mixtures like
 `cert_pairConsistency + residual(-gap)`.
+
+## Hauptvermutung Distortion Observable
+
+The generic certificate-error interface is now specialized to the actual
+quantitative-Hauptvermutung distortion formula used by the physical bridge:
+
+```text
+Dist = (countWindow + curvatureBias + countWindow*curvatureBias) * scale
+       + pairConsistency/2.
+```
+
+Lean defines the corresponding one-birth observable and proves its response
+decomposition:
+
+```text
+linearResponse(S, Dist)
+  = scale * (linearResponse(S, countWindow)
+             + linearResponse(S, curvatureBias)
+             + linearResponse(S, countWindow*curvatureBias))
+    + linearResponse(S, pairConsistency)/2.
+```
+
+The new `ProtectedHauptvermutungDistortionSource` theorem says: if a source is
+first-order horizon-orthogonal, has zero second-order horizon leakage, and
+descends this whole distortion observable, then it preserves the Dorau--Much
+horizon channel through second order while improving the actual displayed
+Hauptvermutung distortion bound.  This is stronger than the previous generic
+interface because the certificate error is no longer abstract.
 
 The file also defines `ProtectedCertificateErrorRefinement`.  In this
 refinement version, first-order horizon contamination vanishes at every finite

@@ -26,7 +26,11 @@
 > certificate-error response preserves horizon area through the finite second
 > central response while descending that certificate. A refinement version
 > proves second central area response tends to zero when leakage tends to zero.
-> A residualized two-channel bridge covers the null-cone scans directly.
+> A residualized two-channel bridge covers the null-cone scans directly, and
+> the abstract certificate error is now specialized to the actual displayed
+> Hauptvermutung distortion observable
+> `(countWindow + curvatureBias + countWindow*curvatureBias)*scale
+> + pairConsistency/2`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
