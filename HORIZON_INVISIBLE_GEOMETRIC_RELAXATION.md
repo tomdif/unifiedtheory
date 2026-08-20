@@ -145,6 +145,37 @@ channel does not erase the residual-gradient descent margin, Lean proves
 `S_corr` is a protected certificate bridge.  This is the exact finite theorem
 template for the observed `+ 3.5 residual(-gap)` correction.
 
+## Concrete Order-Derived Target
+
+`UnifiedTheory/Audit/KFCausalCSpecBridgeDefectObservable.lean` specializes the
+canonical residual-gradient bridge to the private-marker CSpec globalization.
+The bridge poset makes the edge transport recoverable from order incidence, so
+the observable is not an external label comparison:
+
+```text
+bridgeCensusDefect(e,tau)
+  = 18 - permScore(bridgeProfile(e), shiftedBridgeProfile(e), tau).
+```
+
+Lean proves the canonical transport has zero defect, every noncanonical
+transport has positive defect, and the recovered incidence relation identifies
+the unique transported atom.  The file then defines the bridge-census
+Hauptvermutung distortion proxy by the pair-consistency component and proves
+that the canonical and corrected horizon-invisible source theorems descend
+this concrete order-derived target.
+
+Key names:
+
+```text
+bridgeCensusDefect_canonical_zero
+bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_zero_and_orderRecovered
+cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridge_canonicalSource_descends_distortion
+cSpecBridge_canonicalSource_area_response_zero
+cSpecBridge_correctedSource_protected_bridge
+```
+
 ## Numerical Evidence
 
 The current gate probe uses the certificate-basis direction

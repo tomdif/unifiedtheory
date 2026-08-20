@@ -439,6 +439,23 @@ artifact.  The full protected corrected-source bridge now transfers across
 that quotient, including the cone hypothesis, descent margin, horizon
 protection, and raw-defect descent.
 
+The newest concrete target is now order-derived.
+`KFCausalCSpecBridgeDefectObservable.lean` uses the private-marker bridge
+poset and the CSpec census recovery theorem to define a bridge-census defect
+from global order incidence:
+
+```text
+bridgeCensusDefect(e,tau)
+  = 18 - permScore(bridgeProfile(e), shiftedBridgeProfile(e), tau).
+```
+
+Lean proves the canonical transport has zero defect, every noncanonical
+transport has positive defect, and the order incidence recovers the transported
+atom.  It then identifies the pair-consistency part of the displayed
+Hauptvermutung distortion proxy with this defect and specializes the
+canonical/corrected horizon-invisible source bridge to that concrete CSpec
+observable.
+
 Key theorem names:
 
 ```text
@@ -485,6 +502,13 @@ correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge_correctorGauge
+bridgeCensusDefect_canonical_zero
+bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_zero_and_orderRecovered
+cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridge_canonicalSource_descends_distortion
+cSpecBridge_canonicalSource_area_response_zero
+cSpecBridge_correctedSource_protected_bridge
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
@@ -516,6 +540,7 @@ lake env lean UnifiedTheory/Audit/KFCausalCSpecFiniteHorizonSource.lean
 lake env lean UnifiedTheory/Audit/KFCausalCSpecHauptvermutungPhysicalBridge.lean
 lake env lean UnifiedTheory/Audit/KFCausalCSpecDiffeomorphismInvariantObservables.lean
 lake env lean UnifiedTheory/Audit/KFCausalCSpecHorizonOrthogonalDefect.lean
+lake env lean UnifiedTheory/Audit/KFCausalCSpecBridgeDefectObservable.lean
 python3 -m py_compile horizon_second_order_leakage.py
 python3 horizon_second_order_leakage.py --n 18 --paths 8 --burn 5 --starts 8 --coeffs 0.20,0.30,0.45
 PYTHONDONTWRITEBYTECODE=1 python3 horizon_leakage_nullcone_scan.py --n 20 --paths 12 --burn 5 --starts 8 --tmin -2 --tmax 2 --step 0.05 --top 8

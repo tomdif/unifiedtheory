@@ -1,11 +1,12 @@
 # Horizon-Orthogonal Least-Defect Growth
 
-Date: 2026-08-19
+Date: 2026-08-20
 
-Lean file:
+Lean files:
 
 ```text
 UnifiedTheory/Audit/KFCausalCSpecHorizonOrthogonalDefect.lean
+UnifiedTheory/Audit/KFCausalCSpecBridgeDefectObservable.lean
 ```
 
 Context paper:
@@ -110,6 +111,16 @@ mixture descends a named certificate-error observable, then horizon protection
 and certificate descent hold simultaneously.  A residual-channel specialization
 applies after projecting two raw defect observables off the horizon source.
 
+The newest concrete specialization applies this same finite control layer to
+the private-marker bridge poset.  The global order incidence recovers edge
+transport, which lets Lean define a bridge-census defect directly from the
+shifted continuation profile.  The canonical transport has defect zero, every
+noncanonical transport has positive defect, and the recovered incidence
+relation identifies the transported atom.  The pair-consistency-only displayed
+Hauptvermutung distortion proxy is then proved equal to this defect, so the
+canonical residual-gradient and corrected-source bridge now descend an
+order-derived CSpec target rather than only an abstract certificate error.
+
 ## Lean Names
 
 ```text
@@ -154,6 +165,13 @@ correctedCanonicalHorizonInvisibleDescentSource_orthogonal
 correctedCanonicalHorizonInvisibleDescentSource_response_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_descends_rawDefect
 correctedCanonicalHorizonInvisibleDescentSource_protected_bridge
+bridgeCensusDefect_canonical_zero
+bridgeCensusDefect_pos_of_ne
+bridgeCensusDefect_zero_and_orderRecovered
+cSpecBridgeHauptvermutungDistortion_eq_defect
+cSpecBridge_canonicalSource_descends_distortion
+cSpecBridge_canonicalSource_area_response_zero
+cSpecBridge_correctedSource_protected_bridge
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

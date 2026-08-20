@@ -101,7 +101,12 @@ Machine-checked additions now cover:
   Lean now proves the underlying corrector-gauge quotient for first-order
   response and second-order horizon leakage, plus invariance of the leakage
   null-cone coefficient root and the full protected corrected-source bridge
-  under the same quotient.
+  under the same quotient; the newest concrete specialization defines the
+  private-marker bridge-census defect recovered from global order incidence,
+  proves its canonical transport defect is zero and every noncanonical
+  transport has positive defect, identifies the pair-consistency distortion
+  with that defect, and applies the horizon-orthogonal corrected-source bridge
+  directly to this order-derived target.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

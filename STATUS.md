@@ -61,7 +61,13 @@
 > horizon-boundary component is projected away; Lean now proves that this
 > corrector-gauge quotient preserves first-order response and second-order
 > horizon leakage, preserves roots of the leakage null-cone quadratic, and
-> transports the full protected corrected-source bridge.
+> transports the full protected corrected-source bridge. The newest concrete
+> specialization defines the private-marker bridge-census defect recovered from
+> global order incidence, proves the canonical transport has zero defect while
+> every noncanonical transport has positive defect, identifies the
+> pair-consistency distortion with this defect, and applies the
+> horizon-orthogonal corrected-source bridge directly to that order-derived
+> target.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

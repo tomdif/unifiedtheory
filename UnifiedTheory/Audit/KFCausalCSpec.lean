@@ -12,6 +12,7 @@ import UnifiedTheory.Audit.KFCausalCSpecBDGDerivation
 import UnifiedTheory.Audit.KFCausalCSpecBooleanCubeMargin
 import UnifiedTheory.Audit.KFCausalCSpecBridgePoset
 import UnifiedTheory.Audit.KFCausalCSpecCensusRecovery
+import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 import UnifiedTheory.Audit.KFCausalCSpecCountConcentration
 import UnifiedTheory.Audit.KFCausalCSpecCurvatureVolumeBound
