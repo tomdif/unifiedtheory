@@ -119,6 +119,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_expl
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+physicalHauptvermutungTotalDistortion_sequence_nonneg
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -200,6 +202,11 @@ step_n*rateFloor_n <= 2
 Together with `rateFloor_n*D_n <= descentRate_n`, this proves horizon-protected
 convergence with contraction ceiling `1 - beta/2`.
 
+The newest physical-total version removes the external `D_n >= 0` bookkeeping
+hypothesis when the tracked total is exactly
+`physicalHauptvermutungTotalDistortion` and the count-window, curvature-bias,
+and spectral-locality components are nonnegative at every stage.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -217,6 +224,7 @@ derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
 or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
 or prove 0 <= q_n <= qBound < 1 for those variable factors,
 or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
+and prove D_n is the displayed physical aggregate with nonnegative components,
 from the physical causal-growth law
 ```
 

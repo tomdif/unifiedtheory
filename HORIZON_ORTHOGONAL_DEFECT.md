@@ -146,7 +146,10 @@ nonuniform product-decay replacement `Product_{k<n} q_k -> 0` for variable
 factors `q_n = 1 - step_n*rateFloor_n/2`.  The newest uniform-bound bridge
 derives that product decay from `0 <= q_n <= qBound < 1`.  The newest
 gain-window gate derives this bound from `0 < beta`,
-`beta <= step_n*rateFloor_n`, and `step_n*rateFloor_n <= 2`.
+`beta <= step_n*rateFloor_n`, and `step_n*rateFloor_n <= 2`.  The newest
+physical-total version discharges the external `D_n >= 0` side condition when
+`D_n` is exactly the displayed physical aggregate with nonnegative component
+observables.
 
 ## Lean Names
 
@@ -242,6 +245,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_expl
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 physicalGrowthRepairRefinement_explicit_factor_bounds_of_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+physicalHauptvermutungTotalDistortion_sequence_nonneg
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

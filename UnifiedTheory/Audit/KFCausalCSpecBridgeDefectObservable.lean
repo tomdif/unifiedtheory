@@ -957,6 +957,30 @@ theorem physicalHauptvermutungTotalDistortion_nonneg
       countWindow curvatureBias spectralLocality scale edge candidate i
         (hcount i) (hcurv i) (hlocal i))
 
+theorem physicalHauptvermutungTotalDistortion_sequence_nonneg
+    {ι : Type*} [Fintype ι]
+    {countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hlocal : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n)) :
+    ∀ n, 0 ≤ total n := by
+  intro n
+  rw [htotal_eq n]
+  exact
+    physicalHauptvermutungTotalDistortion_nonneg
+      (countWindow n) (curvatureBias n) (spectralLocality n)
+      (scale n) (edge n) (candidate n)
+      (hcount n) (hcurv n) (hlocal n)
+
 theorem physicalHauptvermutungTotalDistortion_eq_zero_iff
     {ι : Type*} [Fintype ι]
     (countWindow curvatureBias spectralLocality : ι → ℝ)
@@ -2007,6 +2031,41 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       R (1 - beta / 2) htotal_nonneg hqBound_nonneg hqBound_lt_one
       (fun n => (hfactors n).1) (fun n => (hfactors n).2) hrate
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total rateFloor : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta : ℝ)
+    (hbeta_pos : 0 < beta)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hlocal : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hrate : ∀ n, rateFloor n * total n ≤ descentRate n)
+    (hgain_lower : ∀ n, beta ≤ step n * rateFloor n)
+    (hgain_upper : ∀ n, step n * rateFloor n ≤ 2) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+      R beta hbeta_pos
+      (physicalHauptvermutungTotalDistortion_sequence_nonneg
+        hcount hcurv hlocal htotal_eq)
+      hrate hgain_lower hgain_upper
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -2038,5 +2097,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_uniform_bound
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_physical_total_variable_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

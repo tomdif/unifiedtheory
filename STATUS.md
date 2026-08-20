@@ -96,7 +96,10 @@
 > newest uniform-bound bridge derives that product decay from
 > `0 <= q_n <= qBound < 1`; the newest gain-window gate derives this bound
 > from `0 < beta`, `beta <= step_n*rateFloor_n`, and
-> `step_n*rateFloor_n <= 2`.
+> `step_n*rateFloor_n <= 2`; the newest physical-total version discharges the
+> external `D_n >= 0` side condition when `D_n` is exactly
+> `physicalHauptvermutungTotalDistortion` with nonnegative component
+> observables.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

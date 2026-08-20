@@ -136,14 +136,18 @@ Machine-checked additions now cover:
   `q_n = 1 - step_n*rateFloor_n/2`; the newest uniform-bound bridge derives
   that product decay from `0 <= q_n <= qBound < 1`; the newest gain-window
   gate derives this bound from `0 < beta`,
-  `beta <= step_n*rateFloor_n`, and `step_n*rateFloor_n <= 2`.
+  `beta <= step_n*rateFloor_n`, and `step_n*rateFloor_n <= 2`; the newest
+  physical-total version discharges the external `D_n >= 0` side condition
+  when `D_n` is exactly `physicalHauptvermutungTotalDistortion` with
+  nonnegative component observables.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
 derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
-physical Hauptvermutung certificates, separating invariant observables, and
-infrared GR/QFT recovery.  The new least-defect target is to derive the actual
+physical Hauptvermutung certificates, the physical-total identity and gain
+window, separating invariant observables, and infrared GR/QFT recovery.  The
+new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected
 certificate-source hypotheses from the dynamics.
