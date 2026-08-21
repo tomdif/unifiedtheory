@@ -159,6 +159,8 @@ bridgeCensusDefect_wrong_floor
 physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical
+physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
+physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -408,6 +410,15 @@ PhysicalHauptvermutungConvergenceCertificate
 ```
 
 with no external exact-recovery gap hypothesis.
+
+The newest operational recovery corollaries turn that candidate statement into
+the bridge observables themselves:
+
+```text
+PhysicalHauptvermutungConvergenceCertificate
+  -> eventually cSpecBridgeTotalDistortion_n = 0
+  -> eventually every bridge incidence recovers candidate_n
+```
 
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:

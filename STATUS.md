@@ -154,7 +154,9 @@
 > `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
 > local transport; the newest parameter-free recovery theorem proves the
 > bridge census has fixed wrong-transport floor `18`, so the convergence
-> certificate alone forces eventual canonical CSpec bridge recovery.
+> certificate alone forces eventual canonical CSpec bridge recovery; the
+> newest operational recovery corollaries then prove eventual zero bridge
+> total and eventual order-incidence recovery of the candidate transport.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

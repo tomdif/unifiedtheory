@@ -251,7 +251,9 @@ penalty itself:
 `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
 local transport.  The newest parameter-free recovery theorem proves the bridge
 census has fixed wrong-transport floor `18`, so the convergence certificate
-alone forces eventual canonical CSpec bridge recovery.
+alone forces eventual canonical CSpec bridge recovery.  The newest operational
+recovery corollaries then prove eventual zero bridge total and eventual
+order-incidence recovery of the candidate transport.
 
 Key names:
 
@@ -345,6 +347,8 @@ bridgeCensusDefect_wrong_floor
 physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical
+physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
+physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
 ```
 
 ## Numerical Evidence

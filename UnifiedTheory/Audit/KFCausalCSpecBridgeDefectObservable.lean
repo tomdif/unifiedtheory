@@ -3692,6 +3692,56 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical
       (epsilon := 18) C (by norm_num)
       (fun n i hi => bridgeCensusDefect_wrong_floor (edge n i) (candidate n i) hi)
 
+theorem physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    ∀ᶠ n in atTop,
+      cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0 := by
+  have hcanonical :
+      ∀ᶠ n in atTop,
+        candidate n = canonicalCSpecBridgeCandidate (edge n) :=
+    physicalHauptvermutungConvergenceCertificate_eventually_canonical C
+  filter_upwards [hcanonical] with n hn
+  exact
+    (cSpecBridgeTotalDistortion_eq_zero_iff_candidate_eq_canonical
+      (scale n) (edge n) (candidate n)).2 hn
+
+theorem physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    ∀ᶠ n in atTop,
+      ∀ i a b,
+        Cov fourState (GPoint.atom (fourState.dst (edge n i)) b)
+            (GPoint.bridge (edge n i) a) →
+          b = candidate n i a := by
+  have hcanonical :
+      ∀ᶠ n in atTop,
+        candidate n = canonicalCSpecBridgeCandidate (edge n) :=
+    physicalHauptvermutungConvergenceCertificate_eventually_canonical C
+  filter_upwards [hcanonical] with n hn
+  intro i a b hcov
+  have hcandidate_i : candidate n i = fourState.perm (edge n i) :=
+    congrFun hn i
+  rw [hcandidate_i]
+  exact bridge_incidence_recovers_transport fourState (edge n i) a b hcov
+    (fourState_src_ne_dst (edge n i))
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_wrong_floor
@@ -3747,5 +3797,7 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
