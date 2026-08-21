@@ -748,6 +748,12 @@ BDG4DOperatorProfileData.tendsto
 BDG4DOperatorProfileData.sampled_tendsto
 BDG4DOperatorProfileData.sequenceAsymptotics
 BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
+RecoveredStageBDG4DOperatorInterface
+RecoveredStageBDG4DOperatorInterface.toProfileSequenceInterface
+RecoveredStageBDG4DOperatorInterface.eventually_recoveredStage
+RecoveredStageBDG4DOperatorInterface.operator_tendsto
+RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
+RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 linearResponse_hauptvermutungDistortionObservable
@@ -782,6 +788,9 @@ sampled along the recovered-stage sequence.
 The concrete 4D operator wrapper now supplies that real profile source from the
 already-proved reduced 4D BDG operator theorem, leaving the physical-law task of
 constructing its support, regularity, and cone-bound data from recovered charts.
+The recovered 4D operator interface then combines that data with exact finite
+recovery to obtain zero finite horizon error and the sampled 4D operator limit
+in one theorem.
 
 ## Verification
 

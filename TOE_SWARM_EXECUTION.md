@@ -142,7 +142,8 @@ derivation of the aggregate rate rather than the only logical gate.
   concrete reduced 4D operator theorem is now packaged by
   `KFCausalCSpecRecoveredStageBDG4DOperator`.  The remaining work is to derive
   `BDG4DOperatorProfileData` from the physical causal-growth law and recovered
-  local charts.
+  local charts; once supplied, `KFCausalCSpecRecoveredStageBDG4DRecovered`
+  proves the combined zero-error and sampled-operator-limit result.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.

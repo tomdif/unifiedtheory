@@ -217,6 +217,10 @@
 > along any density sequence tending to infinity, and turns it into a
 > one-channel `BDGProfileSequenceAsymptotics` object.  Gate 4 now needs the
 > physical CSpec growth law and recovered charts to supply that data bundle.
+> `KFCausalCSpecRecoveredStageBDG4DRecovered.lean` now combines that data bundle
+> with exact finite recovery.  `RecoveredStageBDG4DOperatorInterface` proves
+> eventual recovered stages, convergence of the sampled reduced 4D operator,
+> and the combined zero RSS/Poisson error plus operator-limit theorem.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

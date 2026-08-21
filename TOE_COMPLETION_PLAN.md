@@ -588,6 +588,9 @@ KFCausalCSpecRecoveredStageBDG4DOperator
 BDG4DOperatorProfileData.tendsto
 BDG4DOperatorProfileData.sampled_tendsto
 BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
+KFCausalCSpecRecoveredStageBDG4DRecovered
+RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
+RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -603,6 +606,10 @@ sampled along `density n -> atTop` into the sequence-level per-layer
 asymptotics consumed by that interface.
 The concrete 4D operator bridge packages the existing reduced 4D BDG operator
 theorem as a one-channel profile source for recovered stages.
+The recovered 4D operator bridge now combines exact finite recovery with that
+concrete profile source: supplied 4D operator data gives both zero finite
+horizon-flux error and convergence of the sampled reduced 4D BDG operator
+profile.
 
 Open work:
 

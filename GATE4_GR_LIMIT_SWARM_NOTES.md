@@ -187,6 +187,37 @@ the existing reduced 4D BDG operator theorem is now packaged as a one-channel
 derive the `BDG4DOperatorProfileData` hypothesis stack from the physical CSpec
 growth law and the recovered local charts.
 
+## Concrete Recovered 4D Operator Bridge
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DRecovered.lean`
+
+The file defines:
+
+```lean
+structure RecoveredStageBDG4DOperatorInterface
+```
+
+and proves:
+
+```lean
+theorem RecoveredStageBDG4DOperatorInterface.toProfileSequenceInterface
+
+theorem RecoveredStageBDG4DOperatorInterface.eventually_recoveredStage
+
+theorem RecoveredStageBDG4DOperatorInterface.operator_tendsto
+
+theorem RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
+
+theorem RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
+```
+
+This closes the finite-to-concrete-4D-operator handoff: exact recovered CSpec
+stages plus a supplied `BDG4DOperatorProfileData` bundle imply both zero
+RSS/Poisson horizon-flux error and convergence of the sampled reduced 4D BDG
+operator profile to its point-jet target.
+
 ## Previous Target
 
 Imports:
