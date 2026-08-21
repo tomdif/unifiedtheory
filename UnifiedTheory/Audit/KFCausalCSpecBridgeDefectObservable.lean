@@ -3539,6 +3539,35 @@ theorem physicalHauptvermutungConvergenceCertificate_horizon_protection_and_tota
       C.count_nonneg C.curvature_nonneg C.spectral_nonneg C.total_eq
       C.step_floor C.weight_floor C.centered_source_floor C.descent_eq
 
+theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase epsilon : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (hepsilon : 0 < epsilon)
+    (hgap :
+      ∀ n,
+        candidate n ≠ canonicalCSpecBridgeCandidate (edge n) →
+          epsilon ≤ total n) :
+    ∀ᶠ n in atTop,
+      candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  have htotal_tendsto :
+      Tendsto total atTop (nhds 0) :=
+    (physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+      C).2
+  have htotal_lt : ∀ᶠ n in atTop, total n < epsilon := by
+    have hIio : Set.Iio epsilon ∈ nhds (0 : ℝ) := Iio_mem_nhds hepsilon
+    exact htotal_tendsto hIio
+  filter_upwards [htotal_lt] with n hn
+  by_contra hne
+  exact (not_le_of_gt hn) (hgap n hne)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3589,5 +3618,6 @@ theorem physicalHauptvermutungConvergenceCertificate_horizon_protection_and_tota
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 #print axioms physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

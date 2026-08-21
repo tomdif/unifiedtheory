@@ -145,7 +145,10 @@
 > `-centered(S_n)_i`; the newest certificate theorem packages those floors
 > with the physical-total identity, nonnegative components, descent identity,
 > and refinement data as `PhysicalHauptvermutungConvergenceCertificate`, then
-> proves protected convergence from that single certificate.
+> proves protected convergence from that single certificate; the newest
+> exact-recovery theorem shows that if every noncanonical bridge candidate
+> stays at least `epsilon > 0` above zero distortion, then the certificate
+> forces eventual equality with the canonical CSpec bridge candidate.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

@@ -154,6 +154,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -359,6 +360,21 @@ This is the current machine-checked "prove it" layer.  It does not construct
 the physical certificate from microscopic dynamics; it proves that such a
 certificate is sufficient.
 
+The newest exact-recovery theorem adds the finite-spectrum gap needed to turn
+convergence into eventual recovery.  If every noncanonical bridge candidate has
+uniform positive cost,
+
+```text
+0 < epsilon
+candidate_n != canonical(edge_n) -> epsilon <= D_n
+```
+
+then the convergence certificate forces
+
+```text
+eventually candidate_n = canonical(edge_n)
+```
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -417,6 +433,8 @@ stepFloor <= step_n, weightBase <= w_{n,i},
 sourceBase <= -centered(S_n)_i,
 or construct a PhysicalHauptvermutungConvergenceCertificate
 for the actual causal-growth law,
+and prove a uniform noncanonical distortion gap
+0 < epsilon and candidate_n != canonical(edge_n) -> epsilon <= D_n,
 from the physical causal-growth law
 ```
 

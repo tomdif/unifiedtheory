@@ -537,7 +537,10 @@ and asks only for positive uniform lower bounds on `step_n`, `w_{n,i}`, and
 `-centered(S_n)_i`.  The newest certificate theorem packages those floors
 with the physical-total identity, nonnegative components, descent identity,
 and refinement data as `PhysicalHauptvermutungConvergenceCertificate`, then
-proves protected convergence from that single certificate.
+proves protected convergence from that single certificate.  The newest
+exact-recovery theorem shows that if every noncanonical bridge candidate stays
+at least `epsilon > 0` above zero distortion, then the certificate forces
+eventual equality with the canonical CSpec bridge candidate.
 
 Key theorem names:
 
@@ -677,6 +680,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
