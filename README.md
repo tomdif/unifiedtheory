@@ -287,14 +287,23 @@ v = M_P exp(-c/g²)), and **one scale** (M_P):
 | Big Bang | Poset minimum | `BigBangIsPosetMinimum.lean` |
 | Anti-gravity | Impossible (3 routes) | `AntiGravityImpossible.lean` |
 
-### Four Falsifiable Predictions
+### Pre-Registration Ledger
 
-| Prediction | Test | Key File |
-|-----------|------|----------|
-| No axion at any mass | ADMX, CAST, ALPS II | `FalsifiablePredictions.lean` |
-| P-sector DM at ~126 GeV | HL-LHC invisible Higgs | `FalsifiablePredictions.lean` |
-| BH remnants at 6 M_P | Hawking evaporation endpoint | `FalsifiablePredictions.lean` |
-| Normal ν ordering, m₁ ≈ 5 μeV | JUNO, CMB-S4, Euclid | `FalsifiablePredictions.lean` |
+The canonical forward-facing prediction list is the five-entry formal ledger in
+`UnifiedTheory/LayerB/PreRegistrationLedger.lean`, mirrored for downstream
+checks in `PREDICTIONS_PREREGISTRATION_LEDGER.json`.
+
+| Prediction | Closed Form | Test |
+|-----------|-------------|------|
+| Higgs trilinear | `kappa_lambda = 1.00 +/- 0.04` | HL-LHC / FCC |
+| CKM `|V_ub|` | `sqrt(21)/1200` | Belle II |
+| Baryon/dark ratio | `Omega_b/Omega_DM = 4/21` | Planck reanalysis / CMB-S4 |
+| Proton decay | `tau_p` scaling with `P_alpha = 1024*pi^2/9` | Hyper-Kamiokande / DUNE |
+| Muon `g-2` | `a_mu = 116592000 x 10^-11` | Fermilab final + HVP reconciliation |
+
+The older four entries in `FalsifiablePredictions.lean` are conditional
+proposal targets until they are either promoted into the canonical ledger with
+assumption tags and frozen data protocols, or explicitly demoted.
 
 ## Three Layers, Three Risk Profiles
 

@@ -214,6 +214,14 @@ protection plus eventual full operational recovery and gives a finite threshold
 after which `PhysicalHauptvermutungRecoveredStage` holds.  The newest
 observable-zero corollary expands that threshold into total, physical-total,
 base, bridge, residual, canonical-transport, and incidence recovery facts.
+The newest base zero-set theorem proves that zero base distortion is equivalent
+to vanishing count-window, curvature-bias, and spectral-locality components
+under their nonnegativity hypotheses.  The newest direct aggregate-rate theorem
+also proves the same protected convergence from a positive aggregate rate floor
+`rateBase*total_n <= descentRate_n` and positive step floor, using an internal
+clipped rate `min rateBase (1/stepFloor)`.  Thus pointwise centered-source
+floors are now a derivation route for the aggregate rate, not a logical
+precondition of the convergence gate.
 
 ## Lean Names
 
@@ -273,6 +281,7 @@ cSpecBridgeTotalDistortion_zero_orderRecovered
 cSpecBridge_canonicalSource_descends_distortion
 cSpecBridge_canonicalSource_area_response_zero
 cSpecBridge_correctedSource_protected_bridge
+physicalHauptvermutungBaseDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
@@ -304,6 +313,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_desc
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound

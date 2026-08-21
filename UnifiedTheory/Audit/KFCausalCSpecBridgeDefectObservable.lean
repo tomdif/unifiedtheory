@@ -906,6 +906,41 @@ noncomputable def physicalHauptvermutungBaseDistortion
     (countWindow curvatureBias spectralLocality : ι → ℝ) : ℝ :=
   ∑ i, (countWindow i + curvatureBias i + spectralLocality i)
 
+theorem physicalHauptvermutungBaseDistortion_eq_zero_iff
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurv : ∀ i, 0 ≤ curvatureBias i)
+    (hlocal : ∀ i, 0 ≤ spectralLocality i) :
+    physicalHauptvermutungBaseDistortion
+      countWindow curvatureBias spectralLocality = 0 ↔
+      (∀ i, countWindow i = 0) ∧
+        (∀ i, curvatureBias i = 0) ∧
+          (∀ i, spectralLocality i = 0) := by
+  constructor
+  · intro hzero
+    have hpoint :
+        ∀ i, countWindow i + curvatureBias i + spectralLocality i = 0 := by
+      intro i
+      exact
+        (Finset.sum_eq_zero_iff_of_nonneg
+          (fun j _ => by
+            linarith [hcount j, hcurv j, hlocal j])).1 hzero
+          i (Finset.mem_univ i)
+    refine ⟨?_, ?_, ?_⟩
+    · intro i
+      linarith [hpoint i, hcount i, hcurv i, hlocal i]
+    · intro i
+      linarith [hpoint i, hcount i, hcurv i, hlocal i]
+    · intro i
+      linarith [hpoint i, hcount i, hcurv i, hlocal i]
+  · rintro ⟨hcount_zero, hcurv_zero, hlocal_zero⟩
+    unfold physicalHauptvermutungBaseDistortion
+    apply Finset.sum_eq_zero
+    intro i _
+    rw [hcount_zero i, hcurv_zero i, hlocal_zero i]
+    ring
+
 noncomputable def physicalHauptvermutungTotalDistortion
     {ι : Type*} [Fintype ι]
     (countWindow curvatureBias spectralLocality : ι → ℝ)
@@ -2398,6 +2433,59 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
     physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
       R (1 - stepFloor * gamma / 2) gamma stepFloor hq0 hq1
       htotal_nonneg hgamma_nonneg hrate hstep_floor hfloor_budget
+
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (rateBase stepFloor : ℝ)
+    (hrate_pos : 0 < rateBase)
+    (hstep_pos : 0 < stepFloor)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateBase * total n ≤ descentRate n)
+    (hstep_floor : ∀ n, stepFloor ≤ step n) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  let gamma : ℝ := min rateBase (1 / stepFloor)
+  have hstep_inv_pos : 0 < 1 / stepFloor := by positivity
+  have hgamma_pos : 0 < gamma := by
+    dsimp [gamma]
+    exact lt_min hrate_pos hstep_inv_pos
+  have hgamma_nonneg : 0 ≤ gamma := le_of_lt hgamma_pos
+  have hprod_pos : 0 < stepFloor * gamma :=
+    mul_pos hstep_pos hgamma_pos
+  have hgamma_rate : gamma ≤ rateBase := by
+    dsimp [gamma]
+    exact min_le_left _ _
+  have hgamma_step : gamma ≤ 1 / stepFloor := by
+    dsimp [gamma]
+    exact min_le_right _ _
+  have hprod_le_one : stepFloor * gamma ≤ 1 := by
+    calc
+      stepFloor * gamma ≤ stepFloor * (1 / stepFloor) :=
+        mul_le_mul_of_nonneg_left hgamma_step (le_of_lt hstep_pos)
+      _ = 1 := by
+        field_simp [ne_of_gt hstep_pos]
+  have hprod_le_two : stepFloor * gamma ≤ 2 :=
+    le_trans hprod_le_one (by norm_num)
+  have hrate_clipped : ∀ n, gamma * total n ≤ descentRate n := by
+    intro n
+    have hclip :
+        gamma * total n ≤ rateBase * total n :=
+      mul_le_mul_of_nonneg_right hgamma_rate (htotal_nonneg n)
+    exact le_trans hclip (hrate n)
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+      R gamma stepFloor hprod_pos hprod_le_two
+      htotal_nonneg hgamma_nonneg hrate_clipped hstep_floor
 
 theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
     {ι : Type*} [Fintype ι]
@@ -4435,6 +4523,7 @@ theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_re
 #print axioms cSpecBridge_canonicalSource_descends_distortion
 #print axioms cSpecBridge_canonicalSource_area_response_zero
 #print axioms cSpecBridge_correctedSource_protected_bridge
+#print axioms physicalHauptvermutungBaseDistortion_eq_zero_iff
 #print axioms physicalHauptvermutungTotalDistortion_eq_zero_iff
 #print axioms physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 #print axioms physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
@@ -4448,6 +4537,7 @@ theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_re
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_step_factor_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product

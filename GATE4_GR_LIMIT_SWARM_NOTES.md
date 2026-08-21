@@ -1,0 +1,124 @@
+# Gate4 GR Limit Swarm Notes
+
+Agent: Gate4-GRLimit
+
+Scope: analysis only. No `lake build`, no `.lake` modifications, no commit or
+push.
+
+## Existing Proved Substrate
+
+Finite recovery side:
+
+- `PhysicalHauptvermutungExactRecoveryCertificate`
+- `physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero`
+- `physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage`
+- `physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after`
+- `physicalHauptvermutungExactRecoveryCertificate_exists_observable_zero_after`
+- `PhysicalHauptvermutungRecoveredStage.candidate_eq_canonical`
+- `PhysicalHauptvermutungRecoveredStage.candidate_transport`
+- `PhysicalHauptvermutungRecoveredStage.physical_total_distortion_zero`
+- `PhysicalHauptvermutungRecoveredStage.residuals_zero`
+- `PhysicalHauptvermutungRecoveredStage.base_distortion_zero`
+
+Continuum/BDG/GR side:
+
+- `HorizonHitSourceEstimator.finiteScaledFlux_converges_to_continuumFlux`
+- `HorizonHitSourceEstimator.closes_ArakiFlux_bridge`
+- `entropyFluxLimitBridge_closes_first_field`
+- `bdg_dalembertian_continuum_limit`
+- `bdg_action_continuum_limit`
+- `bdg_dalembertian_from_layers`
+- `bdg_dalembertian_standard`
+- `bdg_4d_corner_gate`
+- `bdg_4d_capstone`
+- `curved_gate_dictionary`
+- `ricci_null_balance_supplies_hequil`
+- `dorau_much_semiclassical_einstein_equation`
+- `null_polarization`
+- `einstein_equation`
+- `conditional_einstein_branch`
+
+## Gap Map
+
+1. Finite recovered stages do not yet instantiate a continuum chart or
+   sprinkling interface. The theorem proves exact finite order/candidate
+   recovery, not a 4D Lorentzian manifold chart family with density, volume,
+   and smooth field data.
+
+2. The zero residuals `countWindow = 0`, `curvatureBias = 0`, and
+   `spectralLocality = 0` are not yet connected to the error fields consumed by
+   the horizon-flux or BDG continuum-limit modules.
+
+3. The BDG files prove the algebraic/asymptotic assemblers once per-layer
+   asymptotics are supplied. The missing input is a bridge from recovered
+   CSpec stages to the layer limits `S_i -> a_i phi + b_i (box phi + kappa R
+   phi)`.
+
+4. The Minkowski/null-cone files isolate the flat 4D gate, normalization, and
+   curvature survivor, but the recovered finite geometry is not yet mapped into
+   the profile hypotheses of `bdg_4d_corner_gate` or the RNC coefficients used
+   by `curved_gate_dictionary`.
+
+5. The Dorau-Much/Araki file plugs null Ricci balance into the Einstein
+   theorem, but the pointwise continuum balance remains an input. The finite
+   estimator module proves convergence only once per-cell errors and Araki
+   flux identification are supplied.
+
+6. The Einstein endpoint still needs differentiability/conservation
+   hypotheses (`hdiff`, `hcons`) from the continuum limit. These are not
+   consequences of finite exact recovery yet.
+
+7. Diffeomorphism-invariant observables are available generically, but the
+   actual GR state quotient and observable family for the recovered stages have
+   not been selected.
+
+## Smallest Next Bridge
+
+Add a new file:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageGRLimit.lean`
+
+Imports:
+
+- `UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable`
+- `UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit`
+
+First theorem to add:
+
+```lean
+theorem PhysicalHauptvermutungRecoveredStage.rssPoissonError_zero
+    {iota : Type*} [Fintype iota]
+    {countWindow curvatureBias spectralLocality : iota -> Real}
+    {scale total S : Real}
+    {edge : iota -> E4}
+    {candidate : iota -> Equiv.Perm Direction}
+    (Rstage : PhysicalHauptvermutungRecoveredStage
+      countWindow curvatureBias spectralLocality scale total edge candidate)
+    (hcount : forall i, 0 <= countWindow i)
+    (hcurvature : forall i, 0 <= curvatureBias i)
+    (hspectral : forall i, 0 <= spectralLocality i)
+    (i : iota) :
+    rssPoissonError (countWindow i) (curvatureBias i) S = 0
+```
+
+Expected proof shape:
+
+- use `Rstage.residuals_zero hcount hcurvature hspectral`;
+- rewrite `countWindow i = 0` and `curvatureBias i = 0`;
+- unfold `rssPoissonError`;
+- `ring`.
+
+Then add the sequence version:
+
+```lean
+theorem physicalHauptvermutungExactRecoveryCertificate_eventually_rssPoissonError_zero
+    ... :
+    forall_eventually_atTop n,
+      forall i, rssPoissonError (countWindow n i) (curvatureBias n i) S = 0
+```
+
+This is the smallest nontrivial Gate 4 move because it connects the exact
+finite recovered-stage theorem to the concrete RSS/Poisson error budget already
+used by the finite-to-continuum horizon source bridge. After that, the next
+larger bridge is a `RecoveredStageBDGAsymptoticInterface` record tying these
+zero residuals to the per-layer BDG hypotheses.

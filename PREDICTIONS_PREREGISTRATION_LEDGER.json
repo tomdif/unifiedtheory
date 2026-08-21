@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "snapshot_date": "2026-08-21",
+  "formal_source": "UnifiedTheory/LayerB/PreRegistrationLedger.lean",
+  "master_theorem": "pre_registered_master",
+  "entries": [
+    {
+      "id": "PR1",
+      "name": "kappa_lambda",
+      "category": "forward_prediction",
+      "closed_form": "kappa_lambda = 1.00 +/- 0.04",
+      "dependencies": [
+        "lambda_H = gamma_4^2/2",
+        "SM tree-level plus one-loop-band interpretation"
+      ],
+      "assumption_tags": [
+        "conditional bridge",
+        "external collider analysis protocol"
+      ],
+      "frozen_date": "2026-08-21",
+      "data_release": "HL-LHC 2030; FCC post-2040",
+      "observable_definition": "Higgs trilinear self-coupling modifier kappa_lambda",
+      "estimator": "collider combination reported for kappa_lambda",
+      "uncertainty_model": "HL-LHC about +/-50%; FCC about +/-5%; compare to framework band +/-0.04",
+      "survival_window": "survives if the locked value 1.00 lies within the preregistered experimental interval at the stated confidence level",
+      "falsification_rule": "fails if the final preregistered combination excludes 1.00 by the committed sigma rule",
+      "status": "pre_registered",
+      "source_theorem": "PR1_kappa_lambda_locked",
+      "citations": [
+        "UnifiedTheory/LayerB/HiggsTrilinearPrediction.lean",
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ]
+    },
+    {
+      "id": "PR2",
+      "name": "V_ub_eq_sqrt21_over_1200",
+      "category": "forward_prediction",
+      "closed_form": "|V_ub| = sqrt(21)/1200; equivalently |V_ub|^2 = 7/480000",
+      "dependencies": [
+        "closed form locked before Belle II full-dataset comparison"
+      ],
+      "assumption_tags": [
+        "pre-registered closed form",
+        "external CKM data protocol"
+      ],
+      "frozen_date": "2026-05-11",
+      "data_release": "Belle II full dataset, approximately 2027",
+      "observable_definition": "CKM matrix element magnitude |V_ub|",
+      "estimator": "Belle II locked central-value rule, with inclusive/exclusive treatment fixed before comparison",
+      "uncertainty_model": "Belle II target uncertainty about +/-0.00012; formal Lean envelope 0.00358 < |V_ub| < 0.00406",
+      "survival_window": "0.00358 < |V_ub| < 0.00406",
+      "falsification_rule": "fails if the preregistered Belle II estimator falls outside the locked two-sigma envelope",
+      "status": "pre_registered",
+      "source_theorem": "PR2_Vub_closed",
+      "citations": [
+        "UnifiedTheory/LayerB/CKMPreRegistration.lean",
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ]
+    },
+    {
+      "id": "PR3",
+      "name": "Omega_b_over_Omega_DM_eq_four_over_21",
+      "category": "forward_prediction",
+      "closed_form": "Omega_b/Omega_DM = 4/21",
+      "dependencies": [
+        "KPGAC dark-sector identity",
+        "cosmology parameter-definition protocol"
+      ],
+      "assumption_tags": [
+        "conditional bridge",
+        "external cosmology data protocol"
+      ],
+      "frozen_date": "2026-08-21",
+      "data_release": "Planck reanalysis; CMB-S4; Simons Observatory",
+      "observable_definition": "ratio of baryonic to dark-matter density parameters",
+      "estimator": "version-locked cosmology pipeline with priors, covariance, and model class fixed before comparison",
+      "uncertainty_model": "target uncertainty about +/-0.001",
+      "survival_window": "survives if the preregistered estimator is statistically compatible with 4/21 under the locked covariance",
+      "falsification_rule": "fails if the locked cosmology pipeline excludes 4/21 at the committed two-sigma rule",
+      "status": "pre_registered",
+      "source_theorem": "PR3_omega_b_over_DM",
+      "citations": [
+        "UnifiedTheory/LayerB/UniversalPrincipleSearch.lean",
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ]
+    },
+    {
+      "id": "PR4",
+      "name": "tau_proton_with_MX_dependence",
+      "category": "forward_prediction",
+      "closed_form": "tau_p proportional to M_X^4/alpha_GUT^2; P_alpha = 1024*pi^2/9",
+      "dependencies": [
+        "framework alpha_GUT = 3/(32*pi)",
+        "external M_X or exclusion-map convention",
+        "hadronic matrix element convention"
+      ],
+      "assumption_tags": [
+        "conditional bridge",
+        "external nuclear matrix element input",
+        "external detector limit"
+      ],
+      "frozen_date": "2026-08-21",
+      "data_release": "Hyper-Kamiokande; DUNE atmospheric",
+      "observable_definition": "proton lifetime or exclusion contour in the selected decay channel",
+      "estimator": "published lifetime lower bound or event-rate likelihood under the locked channel and exposure convention",
+      "uncertainty_model": "structural scaling row; lifetime band requires named M_X, matrix element, and prefactor convention",
+      "survival_window": "survives when the locked M_X-dependent exclusion map is not ruled out",
+      "falsification_rule": "fails only after a named M_X and matrix-element convention are locked and excluded by the preregistered experiment",
+      "status": "pre_registered_structural_scaling",
+      "source_theorem": "PR4_P_alpha_atomic",
+      "citations": [
+        "UnifiedTheory/LayerB/ProtonDecayPrediction.lean",
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ]
+    },
+    {
+      "id": "PR5",
+      "name": "aMu_eq_aMu_SM_BMW",
+      "category": "forward_prediction",
+      "closed_form": "a_mu = 116592000 x 10^-11",
+      "dependencies": [
+        "BMW/lattice HVP arbitration rule",
+        "framework-derived SM inputs"
+      ],
+      "assumption_tags": [
+        "external SM/QCD input",
+        "external HVP arbitration protocol"
+      ],
+      "frozen_date": "2026-08-21",
+      "data_release": "Fermilab final plus lattice/dispersion HVP reconciliation",
+      "observable_definition": "muon anomalous magnetic moment a_mu in 10^-11 units",
+      "estimator": "BMW/lattice-aligned SM prediction and final experimental average under locked arbitration",
+      "uncertainty_model": "confirmation window |exp - pred| < 100 x 10^-11; five-sigma exclusion about 295 x 10^-11",
+      "survival_window": "|exp - 116592000| < 100 in 10^-11 units for confirmation; no five-sigma exclusion",
+      "falsification_rule": "fails if the locked final comparison gives a five-sigma pull above the committed threshold",
+      "status": "pre_registered",
+      "source_theorem": "PR5_aMu_eq_BMW",
+      "citations": [
+        "UnifiedTheory/LayerB/MuonG2Prediction.lean",
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ]
+    }
+  ],
+  "superseded_or_conditional_public_predictions": [
+    {
+      "source": "UnifiedTheory/LayerB/FalsifiablePredictions.lean",
+      "status": "conditional_proposals",
+      "note": "The older four-entry public table is not the canonical forward preregistration set. It must be promoted with assumption tags and protocols or kept as conditional interpretation work."
+    }
+  ]
+}

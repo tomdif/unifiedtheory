@@ -170,6 +170,20 @@
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 
+> **TOE swarm integration update (2026-08-21):** Six bounded agents reviewed
+> the remaining TOE gates.  Two results were integrated into
+> `KFCausalCSpecBridgeDefectObservable.lean`: the base zero-set theorem
+> `physicalHauptvermutungBaseDistortion_eq_zero_iff`, and the direct aggregate
+> rate theorem
+> `physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor`.
+> The latter proves protected convergence from a positive aggregate rate floor
+> and positive step floor, clipping the effective rate internally; it therefore
+> separates the logical convergence gate from the stronger pointwise
+> centered-source floor.  The prediction ledger is now mirrored in
+> `PREDICTIONS_PREREGISTRATION_LEDGER.json`; the README points to that five-row
+> preregistration set instead of treating older conditional proposals as the
+> canonical forward list.
+
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
 > combines zero local TT modes with nontrivial global torus holonomies; its physical

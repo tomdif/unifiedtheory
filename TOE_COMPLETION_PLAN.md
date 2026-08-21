@@ -3,7 +3,7 @@
 Status: working plan for closing the repo's remaining theory-of-everything
 gaps.  This is not a claim that the gaps are closed.
 
-Date: 2026-08-20
+Date: 2026-08-21
 
 ## Scope Rule
 
@@ -47,6 +47,7 @@ Implemented start:
 
 ```text
 physicalHauptvermutungDistortion
+physicalHauptvermutungBaseDistortion_eq_zero_iff
 physicalHauptvermutungTotalDistortion
 physicalHauptvermutungTotalDistortion_eq_zero_iff
 ```
@@ -114,6 +115,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_desc
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
@@ -387,6 +389,21 @@ This is the current machine-checked "prove it" layer.  It does not construct
 the physical certificate from microscopic dynamics; it proves that such a
 certificate is sufficient.
 
+The newest direct aggregate-rate theorem records the weakest current Gate 3
+route.  If a positive aggregate rate `rateBase` and positive step floor
+`stepFloor` satisfy
+
+```text
+rateBase*total_n <= descentRate_n
+stepFloor <= step_n
+```
+
+with `total_n >= 0`, Lean clips the rate to
+`min rateBase (1/stepFloor)` and proves the same horizon-protected
+convergence theorem.  This bypasses the pointwise centered-source floor as a
+logical requirement; that floor remains one possible way to derive the
+aggregate rate from microscopic causal growth.
+
 The newest exact-recovery theorem adds the finite-spectrum gap needed to turn
 convergence into eventual recovery.  If every noncanonical bridge candidate has
 uniform positive cost,
@@ -465,6 +482,18 @@ PhysicalHauptvermutungExactRecoveryCertificate
   -> exists N, every n >= N has all observable defects zero/canonical
 ```
 
+The base zero-set theorem now isolates the non-bridge part algebraically:
+under nonnegative count-window, curvature-bias, and spectral-locality channels,
+
+```text
+physicalHauptvermutungBaseDistortion = 0
+  <-> every countWindow, curvatureBias, and spectralLocality component is 0
+```
+
+The remaining Gate 2 work is semantic rather than arithmetic: prove that those
+three zero component functions are exactly the intended finite order-to-geometry
+conditions.
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -477,7 +506,9 @@ D_{n+1} <= q * D_n,    0 <= q < 1
 Definition of done:
 
 ```text
-derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
+derive a positive direct aggregate rate
+rateBase*D_n <= descentRate_n and stepFloor <= step_n,
+or derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
 0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
 or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
 or prove 0 <= q_n <= qBound < 1 for those variable factors,
@@ -582,3 +613,27 @@ Open work:
    causal-growth law instead of assuming it.
 5. Derive the one-step factor `D_{n+1} <= q * D_n` from the actual physical
    causal-growth law.
+
+## Swarm Round 1 Integration
+
+Six bounded agents reviewed the remaining gates without running `lake build`.
+The integrated Lean results are:
+
+```text
+physicalHauptvermutungBaseDistortion_eq_zero_iff
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+```
+
+The next high-value theorem targets are:
+
+1. Gate 1: prove physical-support zero outside admissible transitions for
+   `completeChiralCausalSetGrowthLaw`.
+2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
+   and `spectralLocality`, starting with the pair-consistency bridge.
+3. Gate 3: derive the direct aggregate rate from the microscopic law.
+4. Gate 4: bridge `PhysicalHauptvermutungRecoveredStage` to the RSS/Poisson
+   horizon-flux error budget.
+5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
+   recovered CSpec stage before making continuum QFT claims.
+6. Gate 7: use the canonical JSON preregistration ledger for future empirical
+   comparisons.
