@@ -148,6 +148,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -310,6 +311,11 @@ bound: if `0 < beta` and
 `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)` at every stage,
 then Lean proves the same horizon-protected convergence theorem directly.
 
+The newest unclipped-gain gate replaces that clipped lower bound by two simpler
+conditions: `beta <= 1` and
+`beta <= step_n*(weightFloor_n*sourceFloor_n)`.  The first condition is the
+clipping cap; the second is the physical step times source-product gain.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -352,6 +358,8 @@ or prove decay of the stagewise clipped product with
 rateFloor_n = min (weightFloor_n*sourceFloor_n) (1/step_n),
 or prove a clipped-gain floor
 0 < beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n),
+or prove an unclipped gain floor
+0 < beta <= 1 and beta <= step_n*(weightFloor_n*sourceFloor_n),
 from the physical causal-growth law
 ```
 

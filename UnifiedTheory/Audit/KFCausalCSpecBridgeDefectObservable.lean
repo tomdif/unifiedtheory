@@ -3244,6 +3244,68 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
         hcount hcurv hspectral htotal_eq)
       hrate hgain_lower_clipped hgain_upper
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {weightFloor sourceFloor : ℕ → ℝ}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta : ℝ)
+    (hbeta_pos : 0 < beta)
+    (hbeta_le_one : beta ≤ 1)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hweight_pos : ∀ n, 0 < weightFloor n)
+    (hsource_pos : ∀ n, 0 < sourceFloor n)
+    (hweight_floor : ∀ n i, weightFloor n ≤ w n i)
+    (hsource_floor :
+      ∀ n i, sourceFloor n ≤ -centeredSource (w n) (source n) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)))
+    (hgain_lower :
+      ∀ n, beta ≤ step n * (weightFloor n * sourceFloor n)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  refine
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
+      R beta hbeta_pos hcount hcurv hspectral htotal_eq
+      hweight_pos hsource_pos hweight_floor hsource_floor hdescent_eq ?_
+  intro n
+  by_cases hle : weightFloor n * sourceFloor n ≤ (step n)⁻¹
+  · have hmin :
+        min (weightFloor n * sourceFloor n) (step n)⁻¹ =
+          weightFloor n * sourceFloor n :=
+      min_eq_left hle
+    simpa [hmin] using hgain_lower n
+  · have hmin :
+        min (weightFloor n * sourceFloor n) (step n)⁻¹ =
+          (step n)⁻¹ :=
+      min_eq_right (le_of_lt (lt_of_not_ge hle))
+    have hright : beta ≤ step n * (step n)⁻¹ := by
+      have hcancel : step n * (step n)⁻¹ = 1 := by
+        field_simp [ne_of_gt (R.step_pos n)]
+      simpa [hcancel] using hbeta_le_one
+    simpa [hmin] using hright
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3289,5 +3351,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

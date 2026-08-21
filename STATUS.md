@@ -131,7 +131,10 @@
 > stage-dependent weight/source floors plus decay of the corresponding clipped
 > contraction-factor product; the newest clipped-gain gate derives that decay
 > from a uniform positive lower bound
-> `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.
+> `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`; the newest
+> unclipped-gain gate derives that clipped bound from
+> `beta <= 1` and
+> `beta <= step_n*(weightFloor_n*sourceFloor_n)`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

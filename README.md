@@ -171,7 +171,10 @@ Machine-checked additions now cover:
   stage-dependent weight/source floors plus decay of the corresponding clipped
   contraction-factor product; the newest clipped-gain gate derives that decay
   from a uniform positive lower bound
-  `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.
+  `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`; the newest
+  unclipped-gain gate derives that clipped bound from
+  `beta <= 1` and
+  `beta <= step_n*(weightFloor_n*sourceFloor_n)`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -183,8 +186,8 @@ source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free
 product bounds, positive floor witnesses, clipped effective-rate selection,
-stagewise clipped product decay, clipped-gain lower bounds, and infrared
-GR/QFT recovery.
+stagewise clipped product decay, clipped-gain lower bounds, unclipped gain
+lower bounds, and infrared GR/QFT recovery.
 The new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected

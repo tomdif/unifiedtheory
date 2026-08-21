@@ -524,7 +524,9 @@ removes global uniformity at this layer and proves convergence from positive
 stage-dependent weight/source floors plus decay of the corresponding clipped
 contraction-factor product.  The newest clipped-gain gate derives that decay
 from a uniform positive lower bound
-`beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.
+`beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.  The newest
+unclipped-gain gate derives that clipped bound from `beta <= 1` and
+`beta <= step_n*(weightFloor_n*sourceFloor_n)`.
 
 Key theorem names:
 
@@ -658,6 +660,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands
