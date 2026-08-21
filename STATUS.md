@@ -196,6 +196,14 @@
 > `completeChiralCausalSetGrowthLaw_gate1_projective`, and
 > `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`.
 
+> **Gate 4 recovered-stage update (2026-08-21):**
+> `KFCausalCSpecRecoveredStageGRLimit.lean` now connects exact recovered CSpec
+> stages to the entropy-flux RSS/Poisson error budget.  It proves
+> `PhysicalHauptvermutungRecoveredStage.rssPoissonError_zero` and the eventual
+> and threshold versions for `PhysicalHauptvermutungExactRecoveryCertificate`.
+> This does not prove a continuum GR limit; it closes the finite plumbing from
+> zero count-window/curvature residuals to zero cellwise horizon-flux error.
+
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
 > combines zero local TT modes with nontrivial global torus holonomies; its physical

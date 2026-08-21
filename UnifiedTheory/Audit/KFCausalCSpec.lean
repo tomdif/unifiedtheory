@@ -21,6 +21,7 @@ import UnifiedTheory.Audit.KFCausalCSpecEdgeScaleDefect
 import UnifiedTheory.Audit.KFCausalCSpecEffectiveGlobalization
 import UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 import UnifiedTheory.Audit.KFCausalCSpecFiniteHorizonSource
+import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageGRLimit
 import UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
 import UnifiedTheory.Audit.KFCausalCSpecGlobalization
 import UnifiedTheory.Audit.KFCausalCSpecGlobalRank

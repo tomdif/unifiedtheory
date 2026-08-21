@@ -134,8 +134,9 @@ derivation of the aggregate rate rather than the only logical gate.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source
   floor; normalized weights can make a uniform negative centered-source floor
   too strong.  Prefer deriving the direct aggregate rate when possible.
-- Gate 4: recovered finite stages still need a bridge into the RSS/Poisson and
-  BDG continuum error hypotheses.
+- Gate 4: recovered finite stages now bridge into the RSS/Poisson horizon-flux
+  error budget through `KFCausalCSpecRecoveredStageGRLimit`; the remaining
+  bridge is from recovered stages to the BDG/RNC layer-asymptotic hypotheses.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -175,7 +176,7 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  PhysicalHauptvermutungRecoveredStage.rssPoissonError_zero
+  RecoveredStageBDGAsymptoticInterface
 
 Gate 5:
   RecoveredCSpecHilbertFiber

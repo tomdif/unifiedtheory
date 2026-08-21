@@ -74,9 +74,25 @@ Continuum/BDG/GR side:
 
 ## Smallest Next Bridge
 
-Add a new file:
+Integrated in:
 
 `UnifiedTheory/Audit/KFCausalCSpecRecoveredStageGRLimit.lean`
+
+The file proves:
+
+```lean
+theorem PhysicalHauptvermutungRecoveredStage.rssPoissonError_zero
+
+theorem physicalHauptvermutungExactRecoveryCertificate_eventually_rssPoissonError_zero
+
+theorem physicalHauptvermutungExactRecoveryCertificate_exists_rssPoissonError_zero_after
+```
+
+This closes the first finite recovered-stage to RSS/Poisson error-budget
+bridge.  The direct proof uses `PhysicalHauptvermutungRecoveredStage.residuals_zero`
+to rewrite the count-window and curvature-bias residuals to zero.
+
+## Previous Target
 
 Imports:
 
@@ -117,7 +133,7 @@ theorem physicalHauptvermutungExactRecoveryCertificate_eventually_rssPoissonErro
       forall i, rssPoissonError (countWindow n i) (curvatureBias n i) S = 0
 ```
 
-This is the smallest nontrivial Gate 4 move because it connects the exact
+This was the smallest nontrivial Gate 4 move because it connects the exact
 finite recovered-stage theorem to the concrete RSS/Poisson error budget already
 used by the finite-to-continuum horizon source bridge. After that, the next
 larger bridge is a `RecoveredStageBDGAsymptoticInterface` record tying these
