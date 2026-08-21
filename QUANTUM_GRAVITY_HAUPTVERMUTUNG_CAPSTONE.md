@@ -760,6 +760,11 @@ RecoveredStageExactCSpecSequence.exists_rssPoissonError_zero_after
 RecoveredStageBDG4DChartInterface.toOperatorInterface
 RecoveredStageBDG4DChartInterface.rssPoissonError_zero_and_chart_operator_tendsto
 RecoveredStageBDG4DChartInterface.recoveredStage_and_chart_operator_tendsto
+RecoveredStageBDG4DPhysicalChartInterface.toChartInterface
+RecoveredStageBDG4DPhysicalChartInterface.applies_quantitative_hauptvermutung_at
+RecoveredStageBDG4DPhysicalChartInterface.distortionBound_tendsto_zero
+RecoveredStageBDG4DPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+RecoveredStageBDG4DPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 linearResponse_hauptvermutungDistortionObservable
@@ -804,6 +809,11 @@ density sequence, sampled point-field values, curvature value, and
 `BDG4DOperatorProfileData`.  Lean proves that this chart package constructs
 the concrete recovered-stage 4D operator interface and yields the same
 zero-error/operator-limit conclusion.
+The physical-chart supplier interface now connects that chart package to the
+existing physical Hauptvermutung certificate sequence: the certificates supply
+chart density and coordinates, their displayed distortion bound tends to zero,
+and the recovered-stage theorem now packages zero finite horizon error,
+sampled 4D operator convergence, and chart-distortion collapse together.
 
 ## Verification
 

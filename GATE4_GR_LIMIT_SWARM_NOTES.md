@@ -183,9 +183,11 @@ theorem BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
 
 This is the first concrete profile source for the recovered-stage BDG bridge:
 the existing reduced 4D BDG operator theorem is now packaged as a one-channel
-`BDGProfileSequenceAsymptotics Unit` object.  The remaining Gate 4 task is to
-derive the `BDG4DOperatorProfileData` hypothesis stack from the physical CSpec
-growth law and the recovered local charts.
+`BDGProfileSequenceAsymptotics Unit` object.  Later chart-supplier modules
+sharpen the remaining Gate 4 task to constructing
+`RecoveredStageBDG4DPhysicalChartInterface` from the physical CSpec growth law,
+including the `BDG4DOperatorProfileData` support, regularity, and cone-bound
+fields.
 
 ## Concrete Recovered 4D Operator Bridge
 
@@ -250,6 +252,40 @@ supplying a density sequence and the `BDG4DOperatorProfileData` support,
 regularity, and cone-bound bundle.  Once those chart fields are supplied, Lean
 constructs the concrete recovered-stage 4D operator interface and proves the
 zero finite horizon error plus sampled operator limit.
+
+## Physical Hauptvermutung Chart Supplier
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DPhysicalChart.lean`
+
+The file defines:
+
+```lean
+structure PhysicalGrowthStagePoint
+
+structure RecoveredStageBDG4DPhysicalChartInterface
+```
+
+and proves:
+
+```lean
+theorem RecoveredStageBDG4DPhysicalChartInterface.applies_quantitative_hauptvermutung_at
+
+theorem RecoveredStageBDG4DPhysicalChartInterface.distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+```
+
+This connects the recovered BDG chart bridge to the existing
+`PhysicalGrowthHauptvermutungCertificate` sequence.  The certificate sequence
+now supplies the chart density and coordinates, each finite stage applies the
+checked quantitative-Hauptvermutung bridge, and the displayed chart distortion
+bound tends to zero when its count, curvature, and pair-consistency channels
+vanish.  The remaining analytic load is the reduced 4D operator profile data:
+support, regularity, and cone-bound estimates for `BDG4DOperatorProfileData`.
 
 ## Previous Target
 

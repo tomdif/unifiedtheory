@@ -226,6 +226,13 @@
 > `RecoveredStageBDG4DChartInterface` builds the concrete recovered-stage
 > operator interface from chart-supplied density and `BDG4DOperatorProfileData`
 > and proves the combined zero RSS/Poisson error plus chart-operator limit.
+> `KFCausalCSpecRecoveredStageBDG4DPhysicalChart.lean` now feeds that chart
+> interface from a sequence of `PhysicalGrowthHauptvermutungCertificate`s.  The
+> new `RecoveredStageBDG4DPhysicalChartInterface` proves each finite certificate
+> applies the quantitative Hauptvermutung bridge, the displayed chart
+> distortion bound tends to zero, and exact finite recovery plus supplied 4D
+> operator profile data gives zero finite horizon error, sampled operator
+> convergence, and chart distortion collapse together.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

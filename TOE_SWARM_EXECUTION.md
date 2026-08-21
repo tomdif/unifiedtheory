@@ -142,9 +142,13 @@ derivation of the aggregate rate rather than the only logical gate.
   concrete reduced 4D operator theorem is now packaged by
   `KFCausalCSpecRecoveredStageBDG4DOperator`, and
   `KFCausalCSpecRecoveredStageBDG4DChart` now names the recovered local chart
-  supplier interface.  The remaining work is to prove the physical
-  causal-growth law supplies `RecoveredStageBDG4DChartData`, especially the
-  `BDG4DOperatorProfileData` support, regularity, and cone-bound fields.
+  supplier interface.  `KFCausalCSpecRecoveredStageBDG4DPhysicalChart` now
+  feeds that interface from a sequence of
+  `PhysicalGrowthHauptvermutungCertificate`s and proves chart distortion-bound
+  collapse alongside zero finite horizon error and sampled 4D operator
+  convergence.  The remaining work is to prove the physical causal-growth law
+  supplies that physical-chart interface, especially the `BDG4DOperatorProfileData`
+  support, regularity, and cone-bound fields.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -184,7 +188,7 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  RecoveredStageBDG4DChartData
+  RecoveredStageBDG4DPhysicalChartInterface
   BDG4DOperatorProfileData support/regularity/cone-bound fields
 
 Gate 5:
