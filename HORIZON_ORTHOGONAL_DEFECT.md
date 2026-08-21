@@ -178,7 +178,9 @@ effective rate `min (weightFloor*sourceFloor) (1/stepFloor)`, so the stability
 product is automatically at most `1`.  The newest stagewise clipped-rate gate
 removes global uniformity at this layer and proves convergence from positive
 stage-dependent weight/source floors plus decay of the corresponding clipped
-contraction-factor product.
+contraction-factor product.  The newest clipped-gain gate derives that decay
+from a uniform positive lower bound
+`beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.
 
 ## Lean Names
 
@@ -302,6 +304,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable

@@ -147,6 +147,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_unif
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -304,6 +305,11 @@ uses
 horizon-protected convergence from decay of the product of the corresponding
 factors `1 - step_n*rateFloor_n/2`.
 
+The newest clipped-gain gate derives that product decay from a concrete lower
+bound: if `0 < beta` and
+`beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)` at every stage,
+then Lean proves the same horizon-protected convergence theorem directly.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -344,6 +350,8 @@ or use the clipped effective rate
 min (weightFloor*sourceFloor) (1/stepFloor) from positive floors alone,
 or prove decay of the stagewise clipped product with
 rateFloor_n = min (weightFloor_n*sourceFloor_n) (1/step_n),
+or prove a clipped-gain floor
+0 < beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n),
 from the physical causal-growth law
 ```
 

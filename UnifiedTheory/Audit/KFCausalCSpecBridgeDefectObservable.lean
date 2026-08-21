@@ -3160,6 +3160,90 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
         hcount hcurv hspectral htotal_eq)
       hq_nonneg hrate hproduct_clipped
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {weightFloor sourceFloor : ℕ → ℝ}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta : ℝ)
+    (hbeta_pos : 0 < beta)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hweight_pos : ∀ n, 0 < weightFloor n)
+    (hsource_pos : ∀ n, 0 < sourceFloor n)
+    (hweight_floor : ∀ n i, weightFloor n ≤ w n i)
+    (hsource_floor :
+      ∀ n i, sourceFloor n ≤ -centeredSource (w n) (source n) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)))
+    (hgain_lower :
+      ∀ n,
+        beta ≤
+          step n * min (weightFloor n * sourceFloor n) (1 / step n)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  let clippedRate : ℕ → ℝ :=
+    fun n => min (weightFloor n * sourceFloor n) (1 / step n)
+  have hsource_rate :
+      ∀ n i,
+        clippedRate n ≤
+          -(w n i * centeredSource (w n) (source n) i) :=
+    centeredSource_rate_floor_of_stagewise_centered_source_floor
+      (rateFloor := clippedRate)
+      (fun n => le_of_lt (hweight_pos n))
+      (fun n => le_of_lt (hsource_pos n))
+      hweight_floor hsource_floor
+      (fun n => by
+        dsimp [clippedRate]
+        exact min_le_left _ _)
+  have hrate : ∀ n, clippedRate n * total n ≤ descentRate n :=
+    physicalHauptvermutungTotalDistortion_rate_floor_of_centered_source_floor
+      hcount hcurv hspectral htotal_eq hsource_rate hdescent_eq
+  have hgain_lower_clipped :
+      ∀ n, beta ≤ step n * clippedRate n := by
+    intro n
+    simpa [clippedRate] using hgain_lower n
+  have hgain_upper : ∀ n, step n * clippedRate n ≤ 2 := by
+    intro n
+    have hstep_pos_n : 0 < step n := R.step_pos n
+    have hclipped_step : clippedRate n ≤ 1 / step n := by
+      dsimp [clippedRate]
+      exact min_le_right _ _
+    have hprod_le_one : step n * clippedRate n ≤ 1 := by
+      calc
+        step n * clippedRate n ≤ step n * (1 / step n) :=
+          mul_le_mul_of_nonneg_left hclipped_step (le_of_lt hstep_pos_n)
+        _ = 1 := by
+          field_simp [ne_of_gt hstep_pos_n]
+    exact le_trans hprod_le_one (by norm_num)
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_gain_floor
+      (rateFloor := clippedRate)
+      R beta hbeta_pos
+      (physicalHauptvermutungTotalDistortion_sequence_nonneg
+        hcount hcurv hspectral htotal_eq)
+      hrate hgain_lower_clipped hgain_upper
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3204,5 +3288,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_product_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_clipped_rate_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
