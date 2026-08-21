@@ -135,8 +135,10 @@ derivation of the aggregate rate rather than the only logical gate.
   floor; normalized weights can make a uniform negative centered-source floor
   too strong.  Prefer deriving the direct aggregate rate when possible.
 - Gate 4: recovered finite stages now bridge into the RSS/Poisson horizon-flux
-  error budget through `KFCausalCSpecRecoveredStageGRLimit`; the remaining
-  bridge is from recovered stages to the BDG/RNC layer-asymptotic hypotheses.
+  error budget through `KFCausalCSpecRecoveredStageGRLimit`; they also feed a
+  bundled BDG assembler through `KFCausalCSpecRecoveredStageBDGInterface`.
+  The remaining work is to instantiate the interface's per-layer BDG/RNC
+  asymptotic hypotheses from the physical causal-growth law.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -176,7 +178,7 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  RecoveredStageBDGAsymptoticInterface
+  RecoveredStageBDGAsymptoticInterface.layer_asymptotics
 
 Gate 5:
   RecoveredCSpecHilbertFiber

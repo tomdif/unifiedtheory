@@ -576,6 +576,10 @@ KFCausalCSpecRecoveredStageGRLimit
 PhysicalHauptvermutungRecoveredStage.rssPoissonError_zero
 physicalHauptvermutungExactRecoveryCertificate_eventually_rssPoissonError_zero
 physicalHauptvermutungExactRecoveryCertificate_exists_rssPoissonError_zero_after
+KFCausalCSpecRecoveredStageBDGInterface
+RecoveredStageBDGAsymptoticInterface
+RecoveredStageBDGAsymptoticInterface.rssPoissonError_zero_and_bdg_dalembertian_tendsto
+RecoveredStageBDGAsymptoticInterface.rssPoissonError_zero_and_standard_bdg_dalembertian_tendsto
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -583,10 +587,15 @@ RSS/Poisson error budget consumed by the entropy-flux limit module: recovered
 zero count-window and curvature-bias residuals force the cellwise error
 `(epsilon + b + epsilon*b) S` to be zero.
 
+The BDG interface bridge now bundles exact finite recovery with the named
+per-layer BDG/RNC asymptotic hypotheses and proves that this package yields
+both zero finite horizon-flux error and the BDG d'Alembertian continuum limit.
+
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
-- connect recovered stages to the BDG/RNC layer-asymptotic hypotheses;
+- instantiate the BDG/RNC layer-asymptotic hypotheses from the physical
+  causal-growth law;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
@@ -653,8 +662,8 @@ The next high-value theorem targets are:
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
-4. Gate 4: build a `RecoveredStageBDGAsymptoticInterface` tying recovered
-   zero residuals to the per-layer BDG continuum hypotheses.
+4. Gate 4: instantiate `RecoveredStageBDGAsymptoticInterface.layer_asymptotics`
+   from interval-volume/RNC estimates for the physical causal-growth law.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 7: use the canonical JSON preregistration ledger for future empirical

@@ -203,6 +203,11 @@
 > and threshold versions for `PhysicalHauptvermutungExactRecoveryCertificate`.
 > This does not prove a continuum GR limit; it closes the finite plumbing from
 > zero count-window/curvature residuals to zero cellwise horizon-flux error.
+> `KFCausalCSpecRecoveredStageBDGInterface.lean` now adds
+> `RecoveredStageBDGAsymptoticInterface`, bundling exact finite recovery with
+> the named per-layer BDG/RNC asymptotic hypotheses.  Its combined theorems
+> prove zero RSS/Poisson error together with the BDG d'Alembertian limit once
+> those analytic layer hypotheses are supplied.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
