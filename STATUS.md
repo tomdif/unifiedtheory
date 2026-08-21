@@ -208,6 +208,10 @@
 > the named per-layer BDG/RNC asymptotic hypotheses.  Its combined theorems
 > prove zero RSS/Poisson error together with the BDG d'Alembertian limit once
 > those analytic layer hypotheses are supplied.
+> `KFCausalCSpecRecoveredStageBDGProfile.lean` now converts real high-density
+> profile limits sampled along a recovered-stage density sequence into the
+> sequence-level `layer_asymptotics` field.  The next Gate 4 target is therefore
+> the physical-law proof of those real BDG/RNC profile limits.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

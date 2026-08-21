@@ -137,8 +137,10 @@ derivation of the aggregate rate rather than the only logical gate.
 - Gate 4: recovered finite stages now bridge into the RSS/Poisson horizon-flux
   error budget through `KFCausalCSpecRecoveredStageGRLimit`; they also feed a
   bundled BDG assembler through `KFCausalCSpecRecoveredStageBDGInterface`.
-  The remaining work is to instantiate the interface's per-layer BDG/RNC
-  asymptotic hypotheses from the physical causal-growth law.
+  `KFCausalCSpecRecoveredStageBDGProfile` converts real high-density profile
+  limits into the interface's sequence-level per-layer asymptotics.  The
+  remaining work is to prove those real BDG/RNC profile limits from the
+  physical causal-growth law.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -178,7 +180,7 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  RecoveredStageBDGAsymptoticInterface.layer_asymptotics
+  BDGProfileSequenceAsymptotics.profile_tendsto
 
 Gate 5:
   RecoveredCSpecHilbertFiber
