@@ -218,6 +218,39 @@ stages plus a supplied `BDG4DOperatorProfileData` bundle imply both zero
 RSS/Poisson horizon-flux error and convergence of the sampled reduced 4D BDG
 operator profile to its point-jet target.
 
+## Local Chart Supplier Bridge
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DChart.lean`
+
+The file defines:
+
+```lean
+structure RecoveredStageExactCSpecSequence
+
+structure RecoveredStageBDG4DChartData
+
+structure RecoveredStageBDG4DChartInterface
+```
+
+and proves:
+
+```lean
+theorem RecoveredStageBDG4DChartInterface.toOperatorInterface
+
+theorem RecoveredStageBDG4DChartInterface.rssPoissonError_zero_and_chart_operator_tendsto
+
+theorem RecoveredStageBDG4DChartInterface.recoveredStage_and_chart_operator_tendsto
+```
+
+This splits the Gate 4 obligation cleanly.  The finite side is an exact
+recovered CSpec sequence; the analytic side is recovered local 4D chart data
+supplying a density sequence and the `BDG4DOperatorProfileData` support,
+regularity, and cone-bound bundle.  Once those chart fields are supplied, Lean
+constructs the concrete recovered-stage 4D operator interface and proves the
+zero finite horizon error plus sampled operator limit.
+
 ## Previous Target
 
 Imports:

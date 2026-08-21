@@ -221,6 +221,11 @@
 > with exact finite recovery.  `RecoveredStageBDG4DOperatorInterface` proves
 > eventual recovered stages, convergence of the sampled reduced 4D operator,
 > and the combined zero RSS/Poisson error plus operator-limit theorem.
+> `KFCausalCSpecRecoveredStageBDG4DChart.lean` now separates the exact finite
+> CSpec sequence from the recovered local chart profile data.  The new
+> `RecoveredStageBDG4DChartInterface` builds the concrete recovered-stage
+> operator interface from chart-supplied density and `BDG4DOperatorProfileData`
+> and proves the combined zero RSS/Poisson error plus chart-operator limit.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

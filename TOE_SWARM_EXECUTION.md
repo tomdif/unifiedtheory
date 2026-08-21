@@ -140,10 +140,11 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFCausalCSpecRecoveredStageBDGProfile` converts real high-density profile
   limits into the interface's sequence-level per-layer asymptotics.  The
   concrete reduced 4D operator theorem is now packaged by
-  `KFCausalCSpecRecoveredStageBDG4DOperator`.  The remaining work is to derive
-  `BDG4DOperatorProfileData` from the physical causal-growth law and recovered
-  local charts; once supplied, `KFCausalCSpecRecoveredStageBDG4DRecovered`
-  proves the combined zero-error and sampled-operator-limit result.
+  `KFCausalCSpecRecoveredStageBDG4DOperator`, and
+  `KFCausalCSpecRecoveredStageBDG4DChart` now names the recovered local chart
+  supplier interface.  The remaining work is to prove the physical
+  causal-growth law supplies `RecoveredStageBDG4DChartData`, especially the
+  `BDG4DOperatorProfileData` support, regularity, and cone-bound fields.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -183,7 +184,8 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  BDG4DOperatorProfileData
+  RecoveredStageBDG4DChartData
+  BDG4DOperatorProfileData support/regularity/cone-bound fields
 
 Gate 5:
   RecoveredCSpecHilbertFiber

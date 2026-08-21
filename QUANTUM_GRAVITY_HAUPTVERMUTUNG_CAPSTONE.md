@@ -754,6 +754,12 @@ RecoveredStageBDG4DOperatorInterface.eventually_recoveredStage
 RecoveredStageBDG4DOperatorInterface.operator_tendsto
 RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
 RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
+RecoveredStageExactCSpecSequence.eventually_recoveredStage
+RecoveredStageExactCSpecSequence.eventually_rssPoissonError_zero
+RecoveredStageExactCSpecSequence.exists_rssPoissonError_zero_after
+RecoveredStageBDG4DChartInterface.toOperatorInterface
+RecoveredStageBDG4DChartInterface.rssPoissonError_zero_and_chart_operator_tendsto
+RecoveredStageBDG4DChartInterface.recoveredStage_and_chart_operator_tendsto
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 linearResponse_hauptvermutungDistortionObservable
@@ -791,6 +797,13 @@ constructing its support, regularity, and cone-bound data from recovered charts.
 The recovered 4D operator interface then combines that data with exact finite
 recovery to obtain zero finite horizon error and the sampled 4D operator limit
 in one theorem.
+The local-chart supplier interface now sharpens the remaining physical task:
+`RecoveredStageBDG4DChartInterface` separates exact finite CSpec recovery from
+`RecoveredStageBDG4DChartData`, whose fields are the recovered local chart map,
+density sequence, sampled point-field values, curvature value, and
+`BDG4DOperatorProfileData`.  Lean proves that this chart package constructs
+the concrete recovered-stage 4D operator interface and yields the same
+zero-error/operator-limit conclusion.
 
 ## Verification
 

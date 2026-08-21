@@ -591,6 +591,10 @@ BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
 KFCausalCSpecRecoveredStageBDG4DRecovered
 RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
 RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
+KFCausalCSpecRecoveredStageBDG4DChart
+RecoveredStageBDG4DChartInterface.toOperatorInterface
+RecoveredStageBDG4DChartInterface.rssPoissonError_zero_and_chart_operator_tendsto
+RecoveredStageBDG4DChartInterface.recoveredStage_and_chart_operator_tendsto
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -610,12 +614,18 @@ The recovered 4D operator bridge now combines exact finite recovery with that
 concrete profile source: supplied 4D operator data gives both zero finite
 horizon-flux error and convergence of the sampled reduced 4D BDG operator
 profile.
+The local-chart supplier bridge splits the exact finite CSpec sequence from
+the analytic chart profile data.  It proves that recovered local 4D charts
+supplying density, point-field, curvature, and `BDG4DOperatorProfileData`
+produce the concrete recovered-stage operator interface and the same combined
+zero-error/operator-limit theorem.
 
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
-- derive `BDG4DOperatorProfileData` from the physical causal-growth law,
-  recovered local charts, and the CSpec density sequence;
+- prove the physical causal-growth law supplies the
+  `RecoveredStageBDG4DChartData` fields, especially the support, regularity,
+  and cone-bound stack inside `BDG4DOperatorProfileData`;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
