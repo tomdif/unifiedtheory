@@ -257,7 +257,9 @@ order-incidence recovery of the candidate transport.  The newest residual-split
 theorems then prove that the post-recovery aggregate is exactly the
 count/curvature/spectral base distortion, that this base and each finite local
 component tend to zero, and that a fixed positive residual gap forces eventual
-exact zero total.
+exact zero total.  Those hypotheses are now packaged as
+`PhysicalHauptvermutungExactRecoveryCertificate`, which proves horizon
+protection plus eventual full operational recovery.
 
 Key names:
 
@@ -359,6 +361,11 @@ physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
+PhysicalHauptvermutungExactRecoveryCertificate
+physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero
+physicalHauptvermutungExactRecoveryCertificate_eventually_local_distortion_zero
+physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
+physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 ```
 
 ## Numerical Evidence

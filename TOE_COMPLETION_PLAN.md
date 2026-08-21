@@ -167,6 +167,11 @@ physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
+PhysicalHauptvermutungExactRecoveryCertificate
+physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero
+physicalHauptvermutungExactRecoveryCertificate_eventually_local_distortion_zero
+physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
+physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -435,6 +440,17 @@ PhysicalHauptvermutungConvergenceCertificate
   -> baseDistortion_n -> 0
   -> each finite count/curvature/spectral residual -> 0
   -> fixed positive residual gaps imply eventually total_n = 0
+```
+
+The exact-recovery package records those residual gaps as one reusable
+certificate:
+
+```text
+PhysicalHauptvermutungExactRecoveryCertificate
+  -> horizon protected at every stage
+  -> eventually total_n = 0
+  -> eventually each local physical distortion is 0
+  -> eventually bridge total is 0 and bridge incidences recover transport
 ```
 
 The underlying convergence interface derives the required majorant from a

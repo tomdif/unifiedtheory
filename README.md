@@ -200,7 +200,9 @@ Machine-checked additions now cover:
   newest residual-split theorems prove that the post-recovery aggregate is
   exactly the count/curvature/spectral base distortion, that this base and
   each of its finite local components tend to zero, and that a fixed positive
-  residual gap forces eventual exact zero total.
+  residual gap forces eventual exact zero total; those hypotheses are now
+  packaged as `PhysicalHauptvermutungExactRecoveryCertificate`, which proves
+  horizon protection plus eventual full operational recovery.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
