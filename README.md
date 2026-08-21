@@ -182,7 +182,10 @@ Machine-checked additions now cover:
   floors themselves imply the protected convergence theorem; the newest direct
   uniform component-floor gate removes the auxiliary stagewise floor sequences
   and asks only for positive uniform lower bounds on `step_n`, `w_{n,i}`, and
-  `-centered(S_n)_i`.
+  `-centered(S_n)_i`; the newest certificate theorem packages those floors
+  with the physical-total identity, nonnegative components, descent identity,
+  and refinement data as `PhysicalHauptvermutungConvergenceCertificate`, then
+  proves protected convergence from that single certificate.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -190,7 +193,8 @@ derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
 physical Hauptvermutung certificates, the physical-total identity, summed
 local descent certificates, and positive step, weight, and centered-source
-uniform component floors,
+uniform component floors sufficient to construct the named convergence
+certificate,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free

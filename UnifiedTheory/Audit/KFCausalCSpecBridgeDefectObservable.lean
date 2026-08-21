@@ -3481,6 +3481,64 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       hstep_floor (fun _ => le_rfl) (fun _ => le_rfl)
       hweight_floor hsource_floor hdescent_eq
 
+structure PhysicalHauptvermutungConvergenceCertificate
+    {ι : Type*} [Fintype ι]
+    (w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ)
+    (scale c step descentRate remainder total : ℕ → ℝ)
+    (edge : ℕ → ι → E4)
+    (candidate : ℕ → ι → Equiv.Perm Direction)
+    (stepFloor weightBase sourceBase : ℝ) : Prop where
+  refinement :
+    PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+  stepFloor_pos : 0 < stepFloor
+  weightBase_pos : 0 < weightBase
+  sourceBase_pos : 0 < sourceBase
+  count_nonneg : ∀ n i, 0 ≤ countWindow n i
+  curvature_nonneg : ∀ n i, 0 ≤ curvatureBias n i
+  spectral_nonneg : ∀ n i, 0 ≤ spectralLocality n i
+  total_eq :
+    ∀ n,
+      total n =
+        physicalHauptvermutungTotalDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n)
+          (scale n) (edge n) (candidate n)
+  step_floor : ∀ n, stepFloor ≤ step n
+  weight_floor : ∀ n i, weightBase ≤ w n i
+  centered_source_floor :
+    ∀ n i, sourceBase ≤ -centeredSource (w n) (source n) i
+  descent_eq :
+    ∀ n,
+      descentRate n =
+        -linearResponse (w n) (source n)
+          (physicalHauptvermutungDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+
+theorem physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  exact
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
+      C.refinement stepFloor weightBase sourceBase
+      C.stepFloor_pos C.weightBase_pos C.sourceBase_pos
+      C.count_nonneg C.curvature_nonneg C.spectral_nonneg C.total_eq
+      C.step_floor C.weight_floor C.centered_source_floor C.descent_eq
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3530,5 +3588,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
+#print axioms physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

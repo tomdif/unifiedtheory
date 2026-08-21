@@ -152,6 +152,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stag
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
+PhysicalHauptvermutungConvergenceCertificate
+physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -343,6 +345,20 @@ weightBase <= w_{n,i}
 sourceBase <= -centered(S_n)_i
 ```
 
+The newest certificate theorem packages this direct finite target with the
+physical-total identity, nonnegative component hypotheses, the descent
+identity, and the `PhysicalGrowthRepairRefinement` data:
+
+```text
+PhysicalHauptvermutungConvergenceCertificate
+  -> horizon protection at every finite stage
+  -> D_n -> 0
+```
+
+This is the current machine-checked "prove it" layer.  It does not construct
+the physical certificate from microscopic dynamics; it proves that such a
+certificate is sufficient.
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -399,6 +415,8 @@ or prove direct positive uniform component floors
 0 < stepFloor, 0 < weightBase, 0 < sourceBase,
 stepFloor <= step_n, weightBase <= w_{n,i},
 sourceBase <= -centered(S_n)_i,
+or construct a PhysicalHauptvermutungConvergenceCertificate
+for the actual causal-growth law,
 from the physical causal-growth law
 ```
 
