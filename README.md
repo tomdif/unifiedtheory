@@ -203,7 +203,10 @@ Machine-checked additions now cover:
   residual gap forces eventual exact zero total; those hypotheses are now
   packaged as `PhysicalHauptvermutungExactRecoveryCertificate`, which proves
   horizon protection plus eventual full operational recovery and gives a
-  finite threshold after which `PhysicalHauptvermutungRecoveredStage` holds.
+  finite threshold after which `PhysicalHauptvermutungRecoveredStage` holds;
+  the newest observable-zero corollary expands that threshold into total,
+  physical-total, base, bridge, residual, canonical-transport, and incidence
+  recovery facts.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
