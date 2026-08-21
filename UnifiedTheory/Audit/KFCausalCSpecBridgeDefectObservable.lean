@@ -3306,6 +3306,72 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
       simpa [hcancel] using hbeta_le_one
     simpa [hmin] using hright
 
+theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {weightFloor sourceFloor : ℕ → ℝ}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (beta stepFloor weightBase sourceBase : ℝ)
+    (hbeta_pos : 0 < beta)
+    (hbeta_le_one : beta ≤ 1)
+    (hweight_pos : 0 < weightBase)
+    (hsource_pos : 0 < sourceBase)
+    (hcount : ∀ n i, 0 ≤ countWindow n i)
+    (hcurv : ∀ n i, 0 ≤ curvatureBias n i)
+    (hspectral : ∀ n i, 0 ≤ spectralLocality n i)
+    (htotal_eq :
+      ∀ n,
+        total n =
+          physicalHauptvermutungTotalDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n))
+    (hstep_floor : ∀ n, stepFloor ≤ step n)
+    (hweight_component_floor : ∀ n, weightBase ≤ weightFloor n)
+    (hsource_component_floor : ∀ n, sourceBase ≤ sourceFloor n)
+    (hweight_floor : ∀ n i, weightFloor n ≤ w n i)
+    (hsource_floor :
+      ∀ n i, sourceFloor n ≤ -centeredSource (w n) (source n) i)
+    (hdescent_eq :
+      ∀ n,
+        descentRate n =
+          -linearResponse (w n) (source n)
+            (physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n)))
+    (hgain_lower : beta ≤ stepFloor * (weightBase * sourceBase)) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      Tendsto total atTop (nhds 0) := by
+  refine
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
+      R beta hbeta_pos hbeta_le_one hcount hcurv hspectral htotal_eq
+      ?_ ?_ hweight_floor hsource_floor hdescent_eq ?_
+  · intro n
+    exact lt_of_lt_of_le hweight_pos (hweight_component_floor n)
+  · intro n
+    exact lt_of_lt_of_le hsource_pos (hsource_component_floor n)
+  · intro n
+    have hweightFloor_pos : 0 < weightFloor n :=
+      lt_of_lt_of_le hweight_pos (hweight_component_floor n)
+    have hproduct_floor :
+        weightBase * sourceBase ≤ weightFloor n * sourceFloor n :=
+      mul_le_mul (hweight_component_floor n) (hsource_component_floor n)
+        (le_of_lt hsource_pos) (le_of_lt hweightFloor_pos)
+    have hgain_floor :
+        stepFloor * (weightBase * sourceBase) ≤
+          step n * (weightFloor n * sourceFloor n) :=
+      mul_le_mul (hstep_floor n) hproduct_floor
+        (mul_nonneg (le_of_lt hweight_pos) (le_of_lt hsource_pos))
+        (le_of_lt (R.step_pos n))
+    exact le_trans hgain_lower hgain_floor
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3352,5 +3418,6 @@ theorem physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
+#print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

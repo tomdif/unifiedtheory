@@ -134,7 +134,9 @@
 > `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`; the newest
 > unclipped-gain gate derives that clipped bound from
 > `beta <= 1` and
-> `beta <= step_n*(weightFloor_n*sourceFloor_n)`.
+> `beta <= step_n*(weightFloor_n*sourceFloor_n)`; the newest component-gain
+> gate derives that ordinary gain floor from separate lower bounds on step
+> size, weight-floor amplitude, and centered-source-floor amplitude.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

@@ -149,6 +149,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -316,6 +317,12 @@ conditions: `beta <= 1` and
 `beta <= step_n*(weightFloor_n*sourceFloor_n)`.  The first condition is the
 clipping cap; the second is the physical step times source-product gain.
 
+The newest component-gain gate derives the ordinary gain floor from separate
+component floors: a lower step floor, a lower weight-floor amplitude, and a
+lower centered-source-floor amplitude.  Thus the finite proof target can be
+split into three physical floor estimates plus
+`beta <= stepFloor*(weightBase*sourceBase)`.
+
 The current strongest interface derives that majorant from a one-step
 multiplicative factor:
 
@@ -360,6 +367,10 @@ or prove a clipped-gain floor
 0 < beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n),
 or prove an unclipped gain floor
 0 < beta <= 1 and beta <= step_n*(weightFloor_n*sourceFloor_n),
+or prove component floors
+stepFloor <= step_n, weightBase <= weightFloor_n,
+sourceBase <= sourceFloor_n, and
+beta <= stepFloor*(weightBase*sourceBase),
 from the physical causal-growth law
 ```
 

@@ -182,7 +182,9 @@ contraction-factor product.  The newest clipped-gain gate derives that decay
 from a uniform positive lower bound
 `beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n)`.  The newest
 unclipped-gain gate derives that clipped bound from `beta <= 1` and
-`beta <= step_n*(weightFloor_n*sourceFloor_n)`.
+`beta <= step_n*(weightFloor_n*sourceFloor_n)`.  The newest component-gain
+gate derives that ordinary gain floor from separate lower bounds on step size,
+weight-floor amplitude, and centered-source-floor amplitude.
 
 ## Lean Names
 
@@ -308,6 +310,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_rate_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 linearResponse_orientTowardObservable_eq_neg_abs
 covariance_orientTowardObservable_horizon
 horizonSecondOrderLeakage_orientTowardObservable
