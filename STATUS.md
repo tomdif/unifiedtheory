@@ -152,7 +152,9 @@
 > newest bridge-defect-floor theorem derives that uniform gap from the local
 > bridge penalty itself:
 > `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
-> local transport.
+> local transport; the newest parameter-free recovery theorem proves the
+> bridge census has fixed wrong-transport floor `18`, so the convergence
+> certificate alone forces eventual canonical CSpec bridge recovery.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

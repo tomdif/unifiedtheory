@@ -192,7 +192,9 @@ Machine-checked additions now cover:
   newest bridge-defect-floor theorem derives that uniform gap from the local
   bridge penalty itself:
   `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
-  local transport.
+  local transport; the newest parameter-free recovery theorem proves the
+  bridge census has fixed wrong-transport floor `18`, so the convergence
+  certificate alone forces eventual canonical CSpec bridge recovery.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -201,9 +203,7 @@ dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
 physical Hauptvermutung certificates, the physical-total identity, summed
 local descent certificates, and positive step, weight, and centered-source
 uniform component floors sufficient to construct the named convergence
-certificate, a uniform noncanonical distortion gap for exact eventual
-canonical recovery, or the stronger local bridge-defect floor that implies
-that gap,
+certificate and trigger exact eventual canonical recovery,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free

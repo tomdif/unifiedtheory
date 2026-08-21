@@ -249,7 +249,9 @@ eventual equality with the canonical CSpec bridge candidate.  The newest
 bridge-defect-floor theorem derives that uniform gap from the local bridge
 penalty itself:
 `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
-local transport.
+local transport.  The newest parameter-free recovery theorem proves the bridge
+census has fixed wrong-transport floor `18`, so the convergence certificate
+alone forces eventual canonical CSpec bridge recovery.
 
 Key names:
 
@@ -339,8 +341,10 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+bridgeCensusDefect_wrong_floor
 physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
+physicalHauptvermutungConvergenceCertificate_eventually_canonical
 ```
 
 ## Numerical Evidence

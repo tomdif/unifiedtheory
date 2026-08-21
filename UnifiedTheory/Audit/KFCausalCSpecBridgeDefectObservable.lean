@@ -545,6 +545,39 @@ theorem bridgeCensusDefect_pos_of_ne
     rw [gram_permScore_one bprof bgram]
   linarith
 
+theorem gram_permScore_le_zero_of_ne_one
+    {H : Type*} [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (ci : Direction → H)
+    (hg : ∀ a b, (inner ℝ (ci a) (ci b) : ℝ) = if b = a then 6 else -3)
+    (σ : Equiv.Perm Direction)
+    (hσ : σ ≠ 1) :
+    permScore ci ci σ ≤ 0 := by
+  rw [gram_permScore_closed ci hg]
+  fin_cases σ <;>
+    first
+      | contradiction
+      | simp [Equiv.swap_apply_def, Equiv.Perm.mul_apply]
+        norm_num
+
+theorem bridgeCensusDefect_wrong_floor
+    (e : E4) (τ : Equiv.Perm Direction)
+    (hτ : τ ≠ fourState.perm e) :
+    (18 : ℝ) ≤ bridgeCensusDefect e τ := by
+  unfold bridgeCensusDefect
+  rw [permScore_shift bprof (fourState.perm e) τ]
+  have hne :
+      (fourState.perm e)⁻¹ * τ ≠ 1 := by
+    intro h
+    apply hτ
+    calc
+      τ = fourState.perm e * ((fourState.perm e)⁻¹ * τ) := by group
+      _ = fourState.perm e := by rw [h]; simp
+  have hscore :
+      permScore bprof bprof ((fourState.perm e)⁻¹ * τ) ≤ 0 :=
+    gram_permScore_le_zero_of_ne_one bprof bgram
+      ((fourState.perm e)⁻¹ * τ) hne
+  linarith
+
 theorem bridgeCensusDefect_nonneg
     (e : E4) (τ : Equiv.Perm Direction) :
     0 ≤ bridgeCensusDefect e τ := by
@@ -3641,8 +3674,27 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bri
       (C.count_nonneg n) (C.curvature_nonneg n) (C.spectral_nonneg n)
       (hbridge_gap n) hcandidate
 
+theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    ∀ᶠ n in atTop,
+      candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  exact
+    physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
+      (epsilon := 18) C (by norm_num)
+      (fun n i hi => bridgeCensusDefect_wrong_floor (edge n i) (candidate n i) hi)
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
+#print axioms bridgeCensusDefect_wrong_floor
 #print axioms bridgeCensusDefect_eq_zero_iff
 #print axioms bridgeCensusDefect_zero_and_orderRecovered
 #print axioms cSpecBridgeHauptvermutungDistortion_eq_defect
@@ -3694,5 +3746,6 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bri
 #print axioms physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

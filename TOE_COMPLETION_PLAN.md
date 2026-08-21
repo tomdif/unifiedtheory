@@ -155,8 +155,10 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+bridgeCensusDefect_wrong_floor
 physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
+physicalHauptvermutungConvergenceCertificate_eventually_canonical
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -390,6 +392,23 @@ for every stage and cell.  Nonnegative count, curvature, and spectral-locality
 components then lift the local bridge penalty to the total physical distortion,
 and the certificate gives eventual canonical recovery.
 
+The newest parameter-free recovery theorem discharges the bridge-defect floor
+too.  Lean proves
+
+```text
+candidate_{n,i} != fourState.perm(edge_{n,i})
+  -> 18 <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})
+```
+
+from the fixed `18, 0, -9` census Gram pattern.  Therefore
+
+```text
+PhysicalHauptvermutungConvergenceCertificate
+  -> eventually candidate_n = canonical(edge_n)
+```
+
+with no external exact-recovery gap hypothesis.
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -447,12 +466,6 @@ or prove direct positive uniform component floors
 stepFloor <= step_n, weightBase <= w_{n,i},
 sourceBase <= -centered(S_n)_i,
 or construct a PhysicalHauptvermutungConvergenceCertificate
-for the actual causal-growth law,
-and prove a uniform noncanonical distortion gap
-0 < epsilon and candidate_n != canonical(edge_n) -> epsilon <= D_n,
-or prove the local bridge-defect floor
-candidate_{n,i} != fourState.perm(edge_{n,i})
-  -> epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i}),
 from the physical causal-growth law
 ```
 
