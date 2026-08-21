@@ -188,7 +188,11 @@ Machine-checked additions now cover:
   proves protected convergence from that single certificate; the newest
   exact-recovery theorem shows that if every noncanonical bridge candidate
   stays at least `epsilon > 0` above zero distortion, then the certificate
-  forces eventual equality with the canonical CSpec bridge candidate.
+  forces eventual equality with the canonical CSpec bridge candidate; the
+  newest bridge-defect-floor theorem derives that uniform gap from the local
+  bridge penalty itself:
+  `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
+  local transport.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -198,7 +202,8 @@ physical Hauptvermutung certificates, the physical-total identity, summed
 local descent certificates, and positive step, weight, and centered-source
 uniform component floors sufficient to construct the named convergence
 certificate, a uniform noncanonical distortion gap for exact eventual
-canonical recovery,
+canonical recovery, or the stronger local bridge-defect floor that implies
+that gap,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free

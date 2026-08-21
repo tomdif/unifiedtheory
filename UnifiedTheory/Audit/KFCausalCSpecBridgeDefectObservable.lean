@@ -1506,6 +1506,49 @@ theorem physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
       countWindow curvatureBias spectralLocality scale edge candidate
         hcount hcurv hlocal).1 hzero).2.2.2
 
+theorem physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale : ℝ) (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction)
+    (epsilon : ℝ)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurv : ∀ i, 0 ≤ curvatureBias i)
+    (hlocal : ∀ i, 0 ≤ spectralLocality i)
+    (hbridge_gap :
+      ∀ i,
+        candidate i ≠ fourState.perm (edge i) →
+          epsilon ≤ bridgeCensusDefect (edge i) (candidate i))
+    (hcandidate : candidate ≠ canonicalCSpecBridgeCandidate edge) :
+    epsilon ≤ physicalHauptvermutungTotalDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate := by
+  classical
+  rcases
+    (cSpecBridgeCandidate_ne_canonical_iff_exists_wrong edge candidate).1
+      hcandidate with
+    ⟨i, hi⟩
+  let D : ι → ℝ :=
+    physicalHauptvermutungDistortion
+      countWindow curvatureBias spectralLocality scale edge candidate
+  have hbridge_i :
+      epsilon ≤ cSpecBridgeHauptvermutungDistortion scale edge candidate i := by
+    rw [cSpecBridgeHauptvermutungDistortion_apply]
+    exact hbridge_gap i hi
+  have hterm_lower : epsilon ≤ D i := by
+    dsimp [D]
+    unfold physicalHauptvermutungDistortion
+    linarith [hcount i, hcurv i, hlocal i, hbridge_i]
+  have hsingle : D i ≤ ∑ j, D j :=
+    Finset.single_le_sum
+      (fun j _ => by
+        dsimp [D]
+        exact physicalHauptvermutungDistortion_nonneg
+          countWindow curvatureBias spectralLocality scale edge candidate j
+            (hcount j) (hcurv j) (hlocal j))
+      (Finset.mem_univ i)
+  change epsilon ≤ ∑ j, D j
+  exact le_trans hterm_lower hsingle
+
 /-! ## 6. Physical growth repair-source contraction interface -/
 
 structure PhysicalGrowthSuppliesRepairSource
@@ -3568,6 +3611,36 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uni
   by_contra hne
   exact (not_le_of_gt hn) (hgap n hne)
 
+theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase epsilon : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (hepsilon : 0 < epsilon)
+    (hbridge_gap :
+      ∀ n i,
+        candidate n i ≠ fourState.perm (edge n i) →
+          epsilon ≤ bridgeCensusDefect (edge n i) (candidate n i)) :
+    ∀ᶠ n in atTop,
+      candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  refine
+    physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+      C hepsilon ?_
+  intro n hcandidate
+  rw [C.total_eq n]
+  exact
+    physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
+      (countWindow n) (curvatureBias n) (spectralLocality n)
+      (scale n) (edge n) (candidate n) epsilon
+      (C.count_nonneg n) (C.curvature_nonneg n) (C.spectral_nonneg n)
+      (hbridge_gap n) hcandidate
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_eq_zero_iff
@@ -3584,6 +3657,7 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uni
 #print axioms physicalHauptvermutungTotalDistortion_eq_zero_iff
 #print axioms physicalHauptvermutungTotalDistortion_strict_transport_min_of_ne
 #print axioms physicalHauptvermutungTotalDistortion_pos_of_transport_ne_canonical
+#print axioms physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
 #print axioms physicalGrowthSuppliesRepairSource_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_protected_and_contracts
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero
@@ -3619,5 +3693,6 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uni
 #print axioms physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 #print axioms physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

@@ -148,7 +148,11 @@
 > proves protected convergence from that single certificate; the newest
 > exact-recovery theorem shows that if every noncanonical bridge candidate
 > stays at least `epsilon > 0` above zero distortion, then the certificate
-> forces eventual equality with the canonical CSpec bridge candidate.
+> forces eventual equality with the canonical CSpec bridge candidate; the
+> newest bridge-defect-floor theorem derives that uniform gap from the local
+> bridge penalty itself:
+> `epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
+> local transport.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

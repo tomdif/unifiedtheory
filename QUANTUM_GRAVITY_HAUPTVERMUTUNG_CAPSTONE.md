@@ -540,7 +540,11 @@ and refinement data as `PhysicalHauptvermutungConvergenceCertificate`, then
 proves protected convergence from that single certificate.  The newest
 exact-recovery theorem shows that if every noncanonical bridge candidate stays
 at least `epsilon > 0` above zero distortion, then the certificate forces
-eventual equality with the canonical CSpec bridge candidate.
+eventual equality with the canonical CSpec bridge candidate.  The newest
+bridge-defect-floor theorem derives that uniform gap from the local bridge
+penalty itself:
+`epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})` at every wrong
+local transport.
 
 Key theorem names:
 
@@ -681,6 +685,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
+physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 linearResponse_hauptvermutungDistortionObservable
 ProtectedHauptvermutungDistortionSource.preserves_horizon_and_descends_distortion
 ProtectedHauptvermutungDistortionSource.distortion_response_expands

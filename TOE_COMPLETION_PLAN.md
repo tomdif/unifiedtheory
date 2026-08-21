@@ -155,6 +155,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 PhysicalHauptvermutungConvergenceCertificate
 physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_uniform_gap
+physicalHauptvermutungTotalDistortion_gap_of_bridge_defect_floor
+physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defect_floor
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -375,6 +377,19 @@ then the convergence certificate forces
 eventually candidate_n = canonical(edge_n)
 ```
 
+The newest bridge-defect-floor theorem discharges that uniform gap from the
+actual local bridge penalty.  It is enough to prove
+
+```text
+0 < epsilon
+candidate_{n,i} != fourState.perm(edge_{n,i})
+  -> epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i})
+```
+
+for every stage and cell.  Nonnegative count, curvature, and spectral-locality
+components then lift the local bridge penalty to the total physical distortion,
+and the certificate gives eventual canonical recovery.
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -435,6 +450,9 @@ or construct a PhysicalHauptvermutungConvergenceCertificate
 for the actual causal-growth law,
 and prove a uniform noncanonical distortion gap
 0 < epsilon and candidate_n != canonical(edge_n) -> epsilon <= D_n,
+or prove the local bridge-defect floor
+candidate_{n,i} != fourState.perm(edge_{n,i})
+  -> epsilon <= bridgeCensusDefect(edge_{n,i}, candidate_{n,i}),
 from the physical causal-growth law
 ```
 
