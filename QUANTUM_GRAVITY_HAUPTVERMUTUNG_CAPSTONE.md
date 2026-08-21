@@ -743,6 +743,11 @@ RecoveredStageBDGProfileSequenceInterface.eventually_recoveredStage
 RecoveredStageBDGProfileSequenceInterface.profile_bdg_dalembertian_tendsto
 RecoveredStageBDGProfileSequenceInterface.rssPoissonError_zero_and_profile_bdg_dalembertian_tendsto
 RecoveredStageBDGProfileSequenceInterface.rssPoissonError_zero_and_standard_profile_bdg_dalembertian_tendsto
+BDG4DOperatorProfileData
+BDG4DOperatorProfileData.tendsto
+BDG4DOperatorProfileData.sampled_tendsto
+BDG4DOperatorProfileData.sequenceAsymptotics
+BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 linearResponse_hauptvermutungDistortionObservable
@@ -774,6 +779,9 @@ per-layer interval-volume/RNC asymptotics.
 The profile-sequence adapter removes a technical mismatch there: the existing
 4D BDG profile limits may be proved over a real density parameter and then
 sampled along the recovered-stage sequence.
+The concrete 4D operator wrapper now supplies that real profile source from the
+already-proved reduced 4D BDG operator theorem, leaving the physical-law task of
+constructing its support, regularity, and cone-bound data from recovered charts.
 
 ## Verification
 

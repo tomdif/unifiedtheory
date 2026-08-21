@@ -157,6 +157,36 @@ CSpec refinement sequence indexed by `n : Nat`.  If `density n -> atTop` and
 the real profile limits hold, the per-layer sequence asymptotics required by
 `RecoveredStageBDGAsymptoticInterface` follow.
 
+## Concrete 4D Operator Profile Bridge
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DOperator.lean`
+
+The file defines:
+
+```lean
+structure BDG4DOperatorProfileData
+```
+
+and proves:
+
+```lean
+theorem BDG4DOperatorProfileData.tendsto
+
+theorem BDG4DOperatorProfileData.sampled_tendsto
+
+theorem BDG4DOperatorProfileData.sequenceAsymptotics
+
+theorem BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
+```
+
+This is the first concrete profile source for the recovered-stage BDG bridge:
+the existing reduced 4D BDG operator theorem is now packaged as a one-channel
+`BDGProfileSequenceAsymptotics Unit` object.  The remaining Gate 4 task is to
+derive the `BDG4DOperatorProfileData` hypothesis stack from the physical CSpec
+growth law and the recovered local charts.
+
 ## Previous Target
 
 Imports:

@@ -212,6 +212,11 @@
 > profile limits sampled along a recovered-stage density sequence into the
 > sequence-level `layer_asymptotics` field.  The next Gate 4 target is therefore
 > the physical-law proof of those real BDG/RNC profile limits.
+> `KFCausalCSpecRecoveredStageBDG4DOperator.lean` now packages the existing
+> reduced 4D BDG operator theorem as `BDG4DOperatorProfileData`, samples it
+> along any density sequence tending to infinity, and turns it into a
+> one-channel `BDGProfileSequenceAsymptotics` object.  Gate 4 now needs the
+> physical CSpec growth law and recovered charts to supply that data bundle.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
