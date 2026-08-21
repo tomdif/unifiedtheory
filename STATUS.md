@@ -139,7 +139,10 @@
 > size, weight-floor amplitude, and centered-source-floor amplitude; the
 > newest positive component-floor gate removes the auxiliary `beta` by setting
 > `beta = min 1 (stepFloor*(weightBase*sourceBase))`, so positive component
-> floors themselves imply the protected convergence theorem.
+> floors themselves imply the protected convergence theorem; the newest direct
+> uniform component-floor gate removes the auxiliary stagewise floor sequences
+> and asks only for positive uniform lower bounds on `step_n`, `w_{n,i}`, and
+> `-centered(S_n)_i`.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

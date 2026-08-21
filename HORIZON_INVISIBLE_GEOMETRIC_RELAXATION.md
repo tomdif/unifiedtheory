@@ -236,7 +236,10 @@ gate derives that ordinary gain floor from separate lower bounds on step size,
 weight-floor amplitude, and centered-source-floor amplitude.  The newest
 positive component-floor gate removes the auxiliary `beta` by setting
 `beta = min 1 (stepFloor*(weightBase*sourceBase))`, so positive component
-floors themselves imply the protected convergence theorem.
+floors themselves imply the protected convergence theorem.  The newest direct
+uniform component-floor gate removes the auxiliary stagewise floor sequences
+and asks only for positive uniform lower bounds on `step_n`, `w_{n,i}`, and
+`-centered(S_n)_i`.
 
 Key names:
 
@@ -322,6 +325,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stag
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 ```
 
 ## Numerical Evidence

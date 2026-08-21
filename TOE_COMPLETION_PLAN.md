@@ -151,6 +151,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stag
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_centered_source_component_floors
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -330,6 +331,18 @@ centered-source-floor amplitude are all positive, Lean chooses
 `beta = min 1 (stepFloor*(weightBase*sourceBase))` and proves the same
 horizon-protected convergence theorem.
 
+The newest direct uniform component-floor gate removes the auxiliary
+stagewise floor sequences.  The finite proof target is now just positive
+uniform lower bounds on the physical update step, the actual sampling weights,
+and the actual centered source:
+
+```text
+0 < stepFloor, 0 < weightBase, 0 < sourceBase
+stepFloor <= step_n
+weightBase <= w_{n,i}
+sourceBase <= -centered(S_n)_i
+```
+
 The underlying convergence interface derives the required majorant from a
 one-step multiplicative factor:
 
@@ -382,6 +395,10 @@ or prove positive component floors
 0 < stepFloor, 0 < weightBase, 0 < sourceBase,
 stepFloor <= step_n, weightBase <= weightFloor_n,
 sourceBase <= sourceFloor_n,
+or prove direct positive uniform component floors
+0 < stepFloor, 0 < weightBase, 0 < sourceBase,
+stepFloor <= step_n, weightBase <= w_{n,i},
+sourceBase <= -centered(S_n)_i,
 from the physical causal-growth law
 ```
 
