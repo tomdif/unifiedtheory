@@ -136,7 +136,10 @@
 > `beta <= 1` and
 > `beta <= step_n*(weightFloor_n*sourceFloor_n)`; the newest component-gain
 > gate derives that ordinary gain floor from separate lower bounds on step
-> size, weight-floor amplitude, and centered-source-floor amplitude.
+> size, weight-floor amplitude, and centered-source-floor amplitude; the
+> newest positive component-floor gate removes the auxiliary `beta` by setting
+> `beta = min 1 (stepFloor*(weightBase*sourceBase))`, so positive component
+> floors themselves imply the protected convergence theorem.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

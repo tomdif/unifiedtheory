@@ -176,14 +176,18 @@ Machine-checked additions now cover:
   `beta <= 1` and
   `beta <= step_n*(weightFloor_n*sourceFloor_n)`; the newest component-gain
   gate derives that ordinary gain floor from separate lower bounds on step
-  size, weight-floor amplitude, and centered-source-floor amplitude.
+  size, weight-floor amplitude, and centered-source-floor amplitude; the
+  newest positive component-floor gate removes the auxiliary `beta` by setting
+  `beta = min 1 (stepFloor*(weightBase*sourceBase))`, so positive component
+  floors themselves imply the protected convergence theorem.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
 derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
-physical Hauptvermutung certificates, the physical-total identity and gain
-window, summed local descent certificates, uniform rate and step floors,
+physical Hauptvermutung certificates, the physical-total identity, summed
+local descent certificates, and positive step, weight, and centered-source
+component floors,
 source-local response lower bounds, centered-source anti-alignment, separating
 invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free

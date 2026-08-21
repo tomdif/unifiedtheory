@@ -150,6 +150,7 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stag
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_clipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_unclipped_gain_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_stagewise_centered_source_component_gain_floor
+physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_stagewise_centered_source_component_floors
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -323,8 +324,14 @@ lower centered-source-floor amplitude.  Thus the finite proof target can be
 split into three physical floor estimates plus
 `beta <= stepFloor*(weightBase*sourceBase)`.
 
-The current strongest interface derives that majorant from a one-step
-multiplicative factor:
+The newest positive component-floor gate removes the auxiliary `beta`
+condition from that target.  If the step floor, weight-floor amplitude, and
+centered-source-floor amplitude are all positive, Lean chooses
+`beta = min 1 (stepFloor*(weightBase*sourceBase))` and proves the same
+horizon-protected convergence theorem.
+
+The underlying convergence interface derives the required majorant from a
+one-step multiplicative factor:
 
 ```text
 D_{n+1} <= q * D_n,    0 <= q < 1
@@ -371,6 +378,10 @@ or prove component floors
 stepFloor <= step_n, weightBase <= weightFloor_n,
 sourceBase <= sourceFloor_n, and
 beta <= stepFloor*(weightBase*sourceBase),
+or prove positive component floors
+0 < stepFloor, 0 < weightBase, 0 < sourceBase,
+stepFloor <= step_n, weightBase <= weightFloor_n,
+sourceBase <= sourceFloor_n,
 from the physical causal-growth law
 ```
 
