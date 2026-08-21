@@ -57,6 +57,10 @@ one smallest next theorem. No build, commit, or push was performed.
    - `canonicalInteractingChiralTransition`
    - `completeChiralCausalSetGrowthLaw`
    - `completeChiralLaw_projective_stronglyPositive`
+   - `completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`
+   - `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`
+   - `completeChiralCausalSetGrowthLaw_gate1_projective`
+   - `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`
    - `completeChiral_inducedOrientationKernel_exact`
    - `completeChiralLaw_recovers_endpoint_without_totalization`
    - `fullSupport_endpoint_consistency_does_not_select_pairCoupling`
@@ -89,9 +93,36 @@ one smallest next theorem. No build, commit, or push was performed.
    - `nativeCausalResolutionOperator_born_complete`
    - `causalNativeResolutionLaw_capstone`
 
+## Integrated Since Swarm Round 1
+
+The following local Gate 1 interfaces are now proved in
+`UnifiedTheory/Audit/KFCausalSetCompleteChiralLaw.lean`:
+
+```lean
+theorem completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+    (chirality : Fin 2) (n : Nat)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n)
+    (hNotPhysical : ¬ IsPhysicalCausalGrowthStep n pathPrefix child) :
+    (completeChiralCausalSetGrowthLaw chirality).transition
+        n pathPrefix child = 0
+
+theorem completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic
+
+theorem completeChiralCausalSetGrowthLaw_gate1_projective
+
+theorem completeChiralCausalSetGrowthLaw_gate1_quantum_consistent
+```
+
+The support proof factors through two numerator-zero lemmas for labeled and
+unlabeled coherent edge aggregation.  Off the physical one-birth graph, the
+transition fiber is empty, so the canonical normalized transition has zero
+numerator.  The projective and quantum-consistency wrappers package the
+existing generic cylinder theorem under the concrete candidate-law name.
+
 ## Missing Gate 1 Theorem Interfaces
 
-Label invariance / covariance:
+Label invariance / covariance: integrated.
 
 ```lean
 theorem completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic
@@ -110,7 +141,7 @@ theorem completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic
         n pathPrefix' child
 ```
 
-Support / physical graph:
+Support / physical graph: integrated.
 
 ```lean
 theorem completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
@@ -123,6 +154,7 @@ theorem completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
 ```
 
 Normalization and projective consistency, packaged for the concrete law:
+integrated.
 
 ```lean
 theorem completeChiralCausalSetGrowthLaw_gate1_projective
@@ -145,7 +177,7 @@ theorem completeChiralCausalSetGrowthLaw_gate1_projective
         e1 e2)
 ```
 
-Quantum consistency / strong positivity:
+Quantum consistency / strong positivity: integrated.
 
 ```lean
 theorem completeChiralCausalSetGrowthLaw_gate1_quantum_consistent
@@ -197,31 +229,11 @@ This final theorem is not currently close: it requires deriving the
 `stepFloor`, `weightBase`, `sourceBase`, centered-source floor, residual gaps,
 and `total_eq` identity from the actual microscopic law.
 
-## Smallest Next Theorem Likely Provable Now
+## Next Theorem Targets
 
-Target file:
-`UnifiedTheory/Audit/KFCausalSetCompleteChiralLaw.lean`
-
-Theorem:
-
-```lean
-theorem completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
-    (chirality : Fin 2) (n : Nat)
-    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
-    (child : CausalSetGrowthBranch n)
-    (hNotPhysical : ¬ IsPhysicalCausalGrowthStep n pathPrefix child) :
-    (completeChiralCausalSetGrowthLaw chirality).transition
-        n pathPrefix child = 0
-```
-
-Dependencies already present:
-`completeChiralCausalSetGrowthLaw`, `canonicalInteractingChiralTransition`,
-`unlabeledAggregatedCausalEdgeAmplitude`, `labeledAggregatedCausalEdgeAmplitude`,
-`causalTransitionMultiplicity_eq_zero_of_not_physical`, and
-`canonical_unlabeled_interactingChiral_partition_ne_zero`.
-
-Reason it is smallest:
-the law is already normalized and strongly positive by existing generic
-machinery. The missing operational support statement is local, does not touch
-the Hauptvermutung file, and closes an obvious interface gap: the canonical
-candidate law gives zero transition amplitude off the physical one-birth graph.
+1. Build the downstream certificate interface only after the physical
+   aggregate-rate and residual-gap hypotheses are derived from the microscopic
+   dynamics.
+2. Identify or formalize the extra microscopic selection principle needed to
+   pick `canonicalPairCoupling`; current all-rank support and endpoint
+   consistency still do not select it.

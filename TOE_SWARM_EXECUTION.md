@@ -121,8 +121,14 @@ derivation of the aggregate rate rather than the only logical gate.
 ## Round 1 Gate Findings
 
 - Gate 1: the strongest scalar candidate remains
-  `completeChiralCausalSetGrowthLaw`; the smallest next proof target is support
-  zero outside physical transitions.
+  `completeChiralCausalSetGrowthLaw`; support zero outside physical transitions
+  is now integrated as
+  `completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`.
+  Parent-isomorphism covariance, concrete projectivity, and concrete quantum
+  consistency are now integrated as
+  `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`,
+  `completeChiralCausalSetGrowthLaw_gate1_projective`, and
+  `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`.
 - Gate 2: the bridge zero set is strong; the semantic gap is now the meaning of
   zero `countWindow`, `curvatureBias`, and `spectralLocality` residuals.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source
@@ -155,7 +161,9 @@ For each agent result:
 
 ```text
 Gate 1:
-  completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+  derive physical aggregate-rate and residual-gap hypotheses from
+  completeChiralCausalSetGrowthLaw
+  identify the microscopic selection principle for canonicalPairCoupling
 
 Gate 2:
   finitePairConsistencyResidual_eq_zero_iff

@@ -874,6 +874,51 @@ theorem canonicalInteractingChiralTransition_sum_one
     div_self (canonical_unlabeled_interactingChiral_partition_ne_zero
       chirality parent)]
 
+theorem labeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+    (law : CovariantComplexCausalEdgeAmplitude) {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hNotPhysical :
+      ¬ IsUnlabeledOneElementExtension (Quotient.mk _ parent) child) :
+    labeledAggregatedCausalEdgeAmplitude law parent child = 0 := by
+  classical
+  have hEmpty : IsEmpty (LabeledCausalTransitionFiber parent child) := by
+    refine ⟨?_⟩
+    intro past
+    exact hNotPhysical (by
+      rw [← past.property]
+      exact isUnlabeledOneElementExtension_mk
+        (precursor_is_oneElementExtension parent past.val))
+  unfold labeledAggregatedCausalEdgeAmplitude
+  apply Finset.sum_eq_zero
+  intro past _
+  exact (hEmpty.false past).elim
+
+theorem unlabeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+    (law : CovariantComplexCausalEdgeAmplitude) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hNotPhysical : ¬ IsUnlabeledOneElementExtension parent child) :
+    unlabeledAggregatedCausalEdgeAmplitude law parent child = 0 := by
+  revert hNotPhysical
+  refine Quotient.inductionOn parent ?_
+  intro parentRep hNotPhysical
+  rw [unlabeledAggregatedCausalEdgeAmplitude_mk]
+  exact
+    labeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+      law parentRep child hNotPhysical
+
+theorem canonicalInteractingChiralTransition_eq_zero_of_not_physical
+    (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hNotPhysical : ¬ IsUnlabeledOneElementExtension parent child) :
+    canonicalInteractingChiralTransition chirality parent child = 0 := by
+  unfold canonicalInteractingChiralTransition
+  rw [unlabeledAggregatedCausalEdgeAmplitude_eq_zero_of_not_physical
+    _ parent child hNotPhysical]
+  simp
+
 /-- The complete normalized causal growth law selected by one chirality. -/
 def completeChiralCausalSetGrowthLaw (chirality : Fin 2) :
     RankedNormalizedComplexGrowthLaw CausalSetGrowthBranch where
@@ -883,6 +928,38 @@ def completeChiralCausalSetGrowthLaw (chirality : Fin 2) :
   normalized := fun _n pathPrefix =>
     canonicalInteractingChiralTransition_sum_one chirality
       (currentUnlabeledCausalOrder _ pathPrefix)
+
+theorem completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n)
+    (hNotPhysical : ¬ IsPhysicalCausalGrowthStep n pathPrefix child) :
+    (completeChiralCausalSetGrowthLaw chirality).transition
+        n pathPrefix child = 0 := by
+  exact canonicalInteractingChiralTransition_eq_zero_of_not_physical
+    chirality (currentUnlabeledCausalOrder n pathPrefix) child hNotPhysical
+
+theorem completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic
+    (chirality : Fin 2) {n : ℕ}
+    {parent parent' : CardinalCausalOrder n}
+    (hIso : CardinalCausalOrderIsomorphic parent parent')
+    (pathPrefix pathPrefix' : RankedGrowthPath CausalSetGrowthBranch n)
+    (hCurrent :
+      currentUnlabeledCausalOrder n pathPrefix = Quotient.mk _ parent)
+    (hCurrent' :
+      currentUnlabeledCausalOrder n pathPrefix' = Quotient.mk _ parent')
+    (child : CausalSetGrowthBranch n) :
+    (completeChiralCausalSetGrowthLaw chirality).transition
+        n pathPrefix child =
+      (completeChiralCausalSetGrowthLaw chirality).transition
+        n pathPrefix' child := by
+  unfold completeChiralCausalSetGrowthLaw
+  change canonicalInteractingChiralTransition chirality
+      (currentUnlabeledCausalOrder n pathPrefix) child =
+    canonicalInteractingChiralTransition chirality
+      (currentUnlabeledCausalOrder n pathPrefix') child
+  rw [hCurrent, hCurrent',
+    unlabeledCardinalOrder_eq_of_isomorphic hIso]
 
 /-- The universal sequential-growth machinery now supplies normalized,
 projectively consistent, strongly positive decoherence functionals on all
@@ -915,6 +992,50 @@ theorem completeChiralLaw_projective_stronglyPositive
           (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1 :=
   normalized_stronglyPositive_infiniteRankedCylinder_family
     (completeChiralCausalSetGrowthLaw chirality)
+
+theorem completeChiralCausalSetGrowthLaw_gate1_projective
+    (chirality : Fin 2) :
+    (∀ n,
+      IsNormalizedGrowthFunctional
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) n))
+      ∧
+    (∀ (n) (event₁ event₂ :
+        Finset (RankedGrowthPath CausalSetGrowthBranch n)) (steps : ℕ),
+      growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) (n + steps))
+        (refineRankedGrowthEventBy event₁ steps)
+        (refineRankedGrowthEventBy event₂ steps) =
+      growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) n)
+        event₁ event₂) := by
+  constructor
+  · intro n
+    exact finiteRankedDepthDecoherence_normalized
+      (completeChiralCausalSetGrowthLaw chirality) n
+  · intro n event₁ event₂ steps
+    exact finiteRankedDepthDecoherence_projective_by
+      (completeChiralCausalSetGrowthLaw chirality) n event₁ event₂ steps
+
+theorem completeChiralCausalSetGrowthLaw_gate1_quantum_consistent
+    (chirality : Fin 2) :
+    IsHermitianGrowthFunctional
+      (infiniteRankedCylinderDecoherence
+        (completeChiralCausalSetGrowthLaw chirality))
+      ∧
+    IsStronglyPositiveGrowthFunctional
+      (infiniteRankedCylinderDecoherence
+        (completeChiralCausalSetGrowthLaw chirality))
+      ∧
+    infiniteRankedCylinderDecoherence
+      (completeChiralCausalSetGrowthLaw chirality)
+      (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch)
+      (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1 := by
+  rcases completeChiralLaw_projective_stronglyPositive chirality with
+    ⟨_, _, hHermitian, hStronglyPositive, hTotal⟩
+  exact ⟨hHermitian, hStronglyPositive, hTotal⟩
 
 /-! ## 5. Recovery of the finite orientation endpoint -/
 
@@ -1228,6 +1349,10 @@ theorem completeChiralLaw_recovers_endpoint_without_totalization
 #print axioms sparseChiral_inducedOrientationKernel_exact
 #print axioms fullSupport_endpoint_consistency_does_not_select_pairCoupling
 #print axioms completeChiralLaw_projective_stronglyPositive
+#print axioms completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+#print axioms completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic
+#print axioms completeChiralCausalSetGrowthLaw_gate1_projective
+#print axioms completeChiralCausalSetGrowthLaw_gate1_quantum_consistent
 #print axioms completeChiral_inducedOrientationKernel_exact
 #print axioms completeChiralLaw_recovers_endpoint_without_totalization
 

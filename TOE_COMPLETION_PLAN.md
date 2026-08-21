@@ -35,8 +35,15 @@ whose source terms are computed from parent order data
 
 Open work:
 
-- prove normalization/projective consistency for the physical law;
-- prove strong positivity or the intended quantum-measure replacement;
+- integrated support theorem:
+  `completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`;
+- integrated parent-isomorphism covariance:
+  `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`;
+- integrated concrete projective/quantum-consistency wrappers:
+  `completeChiralCausalSetGrowthLaw_gate1_projective` and
+  `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`;
+- derive the physical aggregate-rate and residual-gap hypotheses from the
+  microscopic law;
 - remove external geometric or embedding oracles from source selection.
 
 ### Gate 2: Physical Hauptvermutung Distortion
@@ -626,8 +633,9 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 
 The next high-value theorem targets are:
 
-1. Gate 1: prove physical-support zero outside admissible transitions for
-   `completeChiralCausalSetGrowthLaw`.
+1. Gate 1: derive the physical aggregate-rate and residual-gap hypotheses from
+   `completeChiralCausalSetGrowthLaw`, or identify the additional microscopic
+   selection principle needed for the canonical pair coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.

@@ -184,6 +184,18 @@
 > preregistration set instead of treating older conditional proposals as the
 > canonical forward list.
 
+> **Gate 1 support update (2026-08-21):**
+> `KFCausalSetCompleteChiralLaw.lean` now proves
+> `completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`.  The
+> canonical chiral causal-growth law therefore has zero transition amplitude
+> outside the physical one-element birth graph; the proof reduces the numerator
+> to an empty labeled transition fiber before normalization.  The same module
+> now also packages parent-isomorphism covariance, finite projectivity, and
+> infinite-cylinder quantum consistency for the concrete law as
+> `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`,
+> `completeChiralCausalSetGrowthLaw_gate1_projective`, and
+> `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`.
+
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
 > combines zero local TT modes with nontrivial global torus holonomies; its physical
