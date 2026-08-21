@@ -600,6 +600,13 @@ RecoveredStageBDG4DPhysicalChartInterface.applies_quantitative_hauptvermutung_at
 RecoveredStageBDG4DPhysicalChartInterface.distortionBound_tendsto_zero
 RecoveredStageBDG4DPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+KFCausalCSpecRecoveredStageBDG4DMatchedChart
+RecoveredStageExactCSpecSequence.countWindow_sum_tendsto_zero
+RecoveredStageExactCSpecSequence.curvatureBias_sum_tendsto_zero
+RecoveredStageExactCSpecSequence.spectralLocality_sum_tendsto_zero
+RecoveredStageBDG4DMatchedPhysicalChartInterface.toPhysicalChartInterface
+RecoveredStageBDG4DMatchedPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+RecoveredStageBDG4DMatchedPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -632,14 +639,22 @@ distortion bound tends to zero when count, curvature, and pair-consistency
 channels vanish, and that exact finite recovery plus the chart/operator package
 gives zero finite horizon error, sampled 4D operator convergence, and chart
 distortion collapse together.
+The matched-channel bridge removes the separate chart-channel convergence
+assumptions when the physical chart certificate uses the recovered residual
+sums:
+`chart.countWindow = sum recovered.countWindow`,
+`chart.curvatureBias = sum recovered.curvatureBias`, and
+`chart.pairConsistency = sum recovered.spectralLocality`.  Exact recovery
+proves those three sums tend to zero, then instantiates the physical-chart
+interface.
 
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
 - prove the physical causal-growth law supplies a
-  `RecoveredStageBDG4DPhysicalChartInterface`, especially the vanishing
-  physical chart-certificate channels and the support, regularity, and
-  cone-bound stack inside `BDG4DOperatorProfileData`;
+  `RecoveredStageBDG4DMatchedPhysicalChartInterface`, especially the matched
+  residual identities and the support, regularity, and cone-bound stack inside
+  `BDG4DOperatorProfileData`;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
@@ -706,9 +721,9 @@ The next high-value theorem targets are:
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
-4. Gate 4: instantiate `RecoveredStageBDG4DPhysicalChartInterface` from the
-   physical causal-growth law, including the `BDG4DOperatorProfileData`
-   support/regularity/cone-bound fields.
+4. Gate 4: instantiate `RecoveredStageBDG4DMatchedPhysicalChartInterface` from
+   the physical causal-growth law, including matched residual identities and the
+   `BDG4DOperatorProfileData` support/regularity/cone-bound fields.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 7: use the canonical JSON preregistration ledger for future empirical

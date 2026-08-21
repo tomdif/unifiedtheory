@@ -233,6 +233,11 @@
 > distortion bound tends to zero, and exact finite recovery plus supplied 4D
 > operator profile data gives zero finite horizon error, sampled operator
 > convergence, and chart distortion collapse together.
+> `KFCausalCSpecRecoveredStageBDG4DMatchedChart.lean` now removes the separate
+> chart-channel convergence assumptions when the physical chart certificate's
+> scalar channels are matched to exact recovered residual sums.  The recovered
+> count, curvature, and spectral/locality sums tend to zero, so a matched chart
+> certificate instantiates the physical-chart bridge directly.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

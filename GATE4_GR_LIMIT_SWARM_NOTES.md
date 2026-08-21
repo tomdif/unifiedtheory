@@ -287,6 +287,42 @@ bound tends to zero when its count, curvature, and pair-consistency channels
 vanish.  The remaining analytic load is the reduced 4D operator profile data:
 support, regularity, and cone-bound estimates for `BDG4DOperatorProfileData`.
 
+## Matched Residual Physical Chart Bridge
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DMatchedChart.lean`
+
+The file defines:
+
+```lean
+structure RecoveredStageBDG4DMatchedPhysicalChartInterface
+```
+
+and proves:
+
+```lean
+theorem RecoveredStageExactCSpecSequence.countWindow_sum_tendsto_zero
+
+theorem RecoveredStageExactCSpecSequence.curvatureBias_sum_tendsto_zero
+
+theorem RecoveredStageExactCSpecSequence.spectralLocality_sum_tendsto_zero
+
+theorem RecoveredStageBDG4DMatchedPhysicalChartInterface.toPhysicalChartInterface
+
+theorem RecoveredStageBDG4DMatchedPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DMatchedPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+```
+
+This removes the separate chart-channel convergence hypotheses from the
+physical-chart bridge when the chart certificate's scalar channels are matched
+to the exact recovered residual sums.  Count-window and curvature-bias chart
+channels are matched to the finite sums of recovered count/curvature residuals;
+pair consistency is matched to the finite sum of recovered spectral/locality
+residuals.  Exact recovery proves all three sums tend to zero, so the matched
+interface instantiates the physical-chart bridge automatically.
+
 ## Previous Target
 
 Imports:
