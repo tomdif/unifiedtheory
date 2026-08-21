@@ -156,7 +156,11 @@
 > bridge census has fixed wrong-transport floor `18`, so the convergence
 > certificate alone forces eventual canonical CSpec bridge recovery; the
 > newest operational recovery corollaries then prove eventual zero bridge
-> total and eventual order-incidence recovery of the candidate transport.
+> total and eventual order-incidence recovery of the candidate transport; the
+> newest residual-split theorems prove that the post-recovery aggregate is
+> exactly the count/curvature/spectral base distortion, that this base and
+> each of its finite local components tend to zero, and that a fixed positive
+> residual gap forces eventual exact zero total.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

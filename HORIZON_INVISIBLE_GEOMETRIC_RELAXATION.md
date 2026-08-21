@@ -253,7 +253,11 @@ local transport.  The newest parameter-free recovery theorem proves the bridge
 census has fixed wrong-transport floor `18`, so the convergence certificate
 alone forces eventual canonical CSpec bridge recovery.  The newest operational
 recovery corollaries then prove eventual zero bridge total and eventual
-order-incidence recovery of the candidate transport.
+order-incidence recovery of the candidate transport.  The newest residual-split
+theorems then prove that the post-recovery aggregate is exactly the
+count/curvature/spectral base distortion, that this base and each finite local
+component tend to zero, and that a fixed positive residual gap forces eventual
+exact zero total.
 
 Key names:
 
@@ -349,6 +353,12 @@ physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defe
 physicalHauptvermutungConvergenceCertificate_eventually_canonical
 physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
 physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
+physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base
+physicalHauptvermutungConvergenceCertificate_base_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
 ```
 
 ## Numerical Evidence

@@ -161,6 +161,12 @@ physicalHauptvermutungConvergenceCertificate_eventually_canonical_of_bridge_defe
 physicalHauptvermutungConvergenceCertificate_eventually_canonical
 physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
 physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
+physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base
+physicalHauptvermutungConvergenceCertificate_base_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
+physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -418,6 +424,17 @@ the bridge observables themselves:
 PhysicalHauptvermutungConvergenceCertificate
   -> eventually cSpecBridgeTotalDistortion_n = 0
   -> eventually every bridge incidence recovers candidate_n
+```
+
+The newest residual-split theorems isolate exactly what remains after bridge
+recovery:
+
+```text
+PhysicalHauptvermutungConvergenceCertificate
+  -> eventually total_n = baseDistortion_n
+  -> baseDistortion_n -> 0
+  -> each finite count/curvature/spectral residual -> 0
+  -> fixed positive residual gaps imply eventually total_n = 0
 ```
 
 The underlying convergence interface derives the required majorant from a

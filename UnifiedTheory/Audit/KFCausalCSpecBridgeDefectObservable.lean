@@ -3742,6 +3742,265 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
   exact bridge_incidence_recovers_transport fourState (edge n i) a b hcov
     (fourState_src_ne_dst (edge n i))
 
+theorem physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    ∀ᶠ n in atTop,
+      total n =
+        physicalHauptvermutungBaseDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n) := by
+  have hbridge :
+      ∀ᶠ n in atTop,
+        cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0 :=
+    physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero C
+  filter_upwards [hbridge] with n hn
+  rw [C.total_eq n,
+    physicalHauptvermutungTotalDistortion_eq_base_plus_bridge
+      (countWindow n) (curvatureBias n) (spectralLocality n)
+      (scale n) (edge n) (candidate n),
+    hn, add_zero]
+
+theorem physicalHauptvermutungConvergenceCertificate_base_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    Tendsto
+      (fun n =>
+        physicalHauptvermutungBaseDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n))
+      atTop (nhds 0) := by
+  have htotal :
+      Tendsto total atTop (nhds 0) :=
+    (physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+      C).2
+  have htotal_eq_base :
+      total =ᶠ[atTop]
+        fun n =>
+          physicalHauptvermutungBaseDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n) :=
+    physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base C
+  exact htotal.congr' htotal_eq_base
+
+theorem physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (i : ι) :
+    Tendsto (fun n => countWindow n i) atTop (nhds 0) := by
+  have hbase :
+      Tendsto
+        (fun n =>
+          physicalHauptvermutungBaseDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n))
+        atTop (nhds 0) :=
+    physicalHauptvermutungConvergenceCertificate_base_tendsto_zero C
+  refine squeeze_zero (fun n => C.count_nonneg n i) ?_ hbase
+  intro n
+  unfold physicalHauptvermutungBaseDistortion
+  have hterm :
+      countWindow n i ≤
+        countWindow n i + curvatureBias n i + spectralLocality n i := by
+    linarith [C.curvature_nonneg n i, C.spectral_nonneg n i]
+  have hsingle :
+      countWindow n i + curvatureBias n i + spectralLocality n i ≤
+        ∑ j, (countWindow n j + curvatureBias n j + spectralLocality n j) :=
+    Finset.single_le_sum
+      (s := Finset.univ)
+      (f := fun j =>
+        countWindow n j + curvatureBias n j + spectralLocality n j)
+      (fun j _ => by
+        linarith [C.count_nonneg n j, C.curvature_nonneg n j,
+          C.spectral_nonneg n j])
+      (Finset.mem_univ i)
+  exact le_trans hterm hsingle
+
+theorem physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (i : ι) :
+    Tendsto (fun n => curvatureBias n i) atTop (nhds 0) := by
+  have hbase :
+      Tendsto
+        (fun n =>
+          physicalHauptvermutungBaseDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n))
+        atTop (nhds 0) :=
+    physicalHauptvermutungConvergenceCertificate_base_tendsto_zero C
+  refine squeeze_zero (fun n => C.curvature_nonneg n i) ?_ hbase
+  intro n
+  unfold physicalHauptvermutungBaseDistortion
+  have hterm :
+      curvatureBias n i ≤
+        countWindow n i + curvatureBias n i + spectralLocality n i := by
+    linarith [C.count_nonneg n i, C.spectral_nonneg n i]
+  have hsingle :
+      countWindow n i + curvatureBias n i + spectralLocality n i ≤
+        ∑ j, (countWindow n j + curvatureBias n j + spectralLocality n j) :=
+    Finset.single_le_sum
+      (s := Finset.univ)
+      (f := fun j =>
+        countWindow n j + curvatureBias n j + spectralLocality n j)
+      (fun j _ => by
+        linarith [C.count_nonneg n j, C.curvature_nonneg n j,
+          C.spectral_nonneg n j])
+      (Finset.mem_univ i)
+  exact le_trans hterm hsingle
+
+theorem physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (i : ι) :
+    Tendsto (fun n => spectralLocality n i) atTop (nhds 0) := by
+  have hbase :
+      Tendsto
+        (fun n =>
+          physicalHauptvermutungBaseDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n))
+        atTop (nhds 0) :=
+    physicalHauptvermutungConvergenceCertificate_base_tendsto_zero C
+  refine squeeze_zero (fun n => C.spectral_nonneg n i) ?_ hbase
+  intro n
+  unfold physicalHauptvermutungBaseDistortion
+  have hterm :
+      spectralLocality n i ≤
+        countWindow n i + curvatureBias n i + spectralLocality n i := by
+    linarith [C.count_nonneg n i, C.curvature_nonneg n i]
+  have hsingle :
+      countWindow n i + curvatureBias n i + spectralLocality n i ≤
+        ∑ j, (countWindow n j + curvatureBias n j + spectralLocality n j) :=
+    Finset.single_le_sum
+      (s := Finset.univ)
+      (f := fun j =>
+        countWindow n j + curvatureBias n j + spectralLocality n j)
+      (fun j _ => by
+        linarith [C.count_nonneg n j, C.curvature_nonneg n j,
+          C.spectral_nonneg n j])
+      (Finset.mem_univ i)
+  exact le_trans hterm hsingle
+
+theorem physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase epsilon : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (hepsilon : 0 < epsilon)
+    (hcount_gap :
+      ∀ n i, countWindow n i ≠ 0 → epsilon ≤ countWindow n i)
+    (hcurvature_gap :
+      ∀ n i, curvatureBias n i ≠ 0 → epsilon ≤ curvatureBias n i)
+    (hspectral_gap :
+      ∀ n i, spectralLocality n i ≠ 0 → epsilon ≤ spectralLocality n i) :
+    ∀ᶠ n in atTop,
+      total n = 0 ∧
+        (∀ i, countWindow n i = 0) ∧
+          (∀ i, curvatureBias n i = 0) ∧
+            (∀ i, spectralLocality n i = 0) ∧
+              candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  have hcount_zero_i :
+      ∀ i, ∀ᶠ n in atTop, countWindow n i = 0 := by
+    intro i
+    have hlt : ∀ᶠ n in atTop, countWindow n i < epsilon := by
+      have hIio : Set.Iio epsilon ∈ nhds (0 : ℝ) :=
+        Iio_mem_nhds hepsilon
+      exact
+        (physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
+          C i) hIio
+    filter_upwards [hlt] with n hn
+    by_contra hne
+    exact (not_le_of_gt hn) (hcount_gap n i hne)
+  have hcurvature_zero_i :
+      ∀ i, ∀ᶠ n in atTop, curvatureBias n i = 0 := by
+    intro i
+    have hlt : ∀ᶠ n in atTop, curvatureBias n i < epsilon := by
+      have hIio : Set.Iio epsilon ∈ nhds (0 : ℝ) :=
+        Iio_mem_nhds hepsilon
+      exact
+        (physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
+          C i) hIio
+    filter_upwards [hlt] with n hn
+    by_contra hne
+    exact (not_le_of_gt hn) (hcurvature_gap n i hne)
+  have hspectral_zero_i :
+      ∀ i, ∀ᶠ n in atTop, spectralLocality n i = 0 := by
+    intro i
+    have hlt : ∀ᶠ n in atTop, spectralLocality n i < epsilon := by
+      have hIio : Set.Iio epsilon ∈ nhds (0 : ℝ) :=
+        Iio_mem_nhds hepsilon
+      exact
+        (physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
+          C i) hIio
+    filter_upwards [hlt] with n hn
+    by_contra hne
+    exact (not_le_of_gt hn) (hspectral_gap n i hne)
+  have hcount_zero :
+      ∀ᶠ n in atTop, ∀ i, countWindow n i = 0 :=
+    eventually_all.mpr hcount_zero_i
+  have hcurvature_zero :
+      ∀ᶠ n in atTop, ∀ i, curvatureBias n i = 0 :=
+    eventually_all.mpr hcurvature_zero_i
+  have hspectral_zero :
+      ∀ᶠ n in atTop, ∀ i, spectralLocality n i = 0 :=
+    eventually_all.mpr hspectral_zero_i
+  have hcanonical :
+      ∀ᶠ n in atTop,
+        candidate n = canonicalCSpecBridgeCandidate (edge n) :=
+    physicalHauptvermutungConvergenceCertificate_eventually_canonical C
+  filter_upwards [hcount_zero, hcurvature_zero, hspectral_zero, hcanonical]
+    with n hcount hcurvature hspectral hcandidate
+  have htotal : total n = 0 := by
+    rw [C.total_eq n]
+    exact
+      (physicalHauptvermutungTotalDistortion_eq_zero_iff
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (edge n) (candidate n)
+        (C.count_nonneg n) (C.curvature_nonneg n) (C.spectral_nonneg n)).2
+        ⟨hcount, hcurvature, hspectral, hcandidate⟩
+  exact ⟨htotal, hcount, hcurvature, hspectral, hcandidate⟩
+
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
 #print axioms bridgeCensusDefect_wrong_floor
@@ -3799,5 +4058,11 @@ theorem physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_canonical
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base
+#print axioms physicalHauptvermutungConvergenceCertificate_base_tendsto_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
+#print axioms physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
