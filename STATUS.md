@@ -162,7 +162,8 @@
 > each of its finite local components tend to zero, and that a fixed positive
 > residual gap forces eventual exact zero total; those hypotheses are now
 > packaged as `PhysicalHauptvermutungExactRecoveryCertificate`, which proves
-> horizon protection plus eventual full operational recovery.
+> horizon protection plus eventual full operational recovery and gives a
+> finite threshold after which `PhysicalHauptvermutungRecoveredStage` holds.
 > The remaining work is to derive the physical certificates and infrared GR/QFT
 > recovery from the actual causal-growth dynamics.
 

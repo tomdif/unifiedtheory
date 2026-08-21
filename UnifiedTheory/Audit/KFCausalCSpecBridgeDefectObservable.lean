@@ -4021,6 +4021,72 @@ structure PhysicalHauptvermutungExactRecoveryCertificate
   spectral_gap :
     ∀ n i, spectralLocality n i ≠ 0 → residualGap ≤ spectralLocality n i
 
+structure PhysicalHauptvermutungRecoveredStage
+    {ι : Type*} [Fintype ι]
+    (countWindow curvatureBias spectralLocality : ι → ℝ)
+    (scale total : ℝ)
+    (edge : ι → E4)
+    (candidate : ι → Equiv.Perm Direction) : Prop where
+  total_zero : total = 0
+  local_distortion_zero :
+    ∀ i,
+      physicalHauptvermutungDistortion
+        countWindow curvatureBias spectralLocality scale edge candidate i = 0
+  bridge_total_zero :
+    cSpecBridgeTotalDistortion scale edge candidate = 0
+  order_recovered :
+    ∀ i a b,
+      Cov fourState (GPoint.atom (fourState.dst (edge i)) b)
+          (GPoint.bridge (edge i) a) →
+        b = candidate i a
+
+theorem PhysicalHauptvermutungRecoveredStage.candidate_eq_canonical
+    {ι : Type*} [Fintype ι]
+    {countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale total : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (R : PhysicalHauptvermutungRecoveredStage
+      countWindow curvatureBias spectralLocality scale total edge candidate) :
+    candidate = canonicalCSpecBridgeCandidate edge := by
+  exact
+    (cSpecBridgeTotalDistortion_eq_zero_iff_candidate_eq_canonical
+      scale edge candidate).1 R.bridge_total_zero
+
+theorem PhysicalHauptvermutungRecoveredStage.residuals_zero
+    {ι : Type*} [Fintype ι]
+    {countWindow curvatureBias spectralLocality : ι → ℝ}
+    {scale total : ℝ}
+    {edge : ι → E4}
+    {candidate : ι → Equiv.Perm Direction}
+    (R : PhysicalHauptvermutungRecoveredStage
+      countWindow curvatureBias spectralLocality scale total edge candidate)
+    (hcount : ∀ i, 0 ≤ countWindow i)
+    (hcurvature : ∀ i, 0 ≤ curvatureBias i)
+    (hspectral : ∀ i, 0 ≤ spectralLocality i) :
+    (∀ i, countWindow i = 0) ∧
+      (∀ i, curvatureBias i = 0) ∧
+        (∀ i, spectralLocality i = 0) := by
+  refine ⟨?_, ?_, ?_⟩
+  · intro i
+    exact
+      ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+        (hcount i) (hcurvature i) (hspectral i)).1
+        (R.local_distortion_zero i)).1
+  · intro i
+    exact
+      ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+        (hcount i) (hcurvature i) (hspectral i)).1
+        (R.local_distortion_zero i)).2.1
+  · intro i
+    exact
+      ((physicalHauptvermutungDistortion_zero_iff
+        countWindow curvatureBias spectralLocality scale edge candidate i
+        (hcount i) (hcurvature i) (hspectral i)).1
+        (R.local_distortion_zero i)).2.2.1
+
 theorem physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -4135,6 +4201,66 @@ theorem physicalHauptvermutungExactRecoveryCertificate_eventually_full_operation
     with n hn hlocal_n hbridge_n horder_n
   exact ⟨hn.1, hlocal_n, hbridge_n, horder_n⟩
 
+theorem physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap) :
+    ∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n) := by
+  have hfull :
+      ∀ᶠ n in atTop,
+        total n = 0 ∧
+          (∀ i,
+            physicalHauptvermutungDistortion
+              (countWindow n) (curvatureBias n) (spectralLocality n)
+              (scale n) (edge n) (candidate n) i = 0) ∧
+            cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0 ∧
+              (∀ i a b,
+                Cov fourState (GPoint.atom (fourState.dst (edge n i)) b)
+                    (GPoint.bridge (edge n i) a) →
+                  b = candidate n i a) :=
+    physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
+      C
+  filter_upwards [hfull] with n hn
+  exact
+    { total_zero := hn.1
+      local_distortion_zero := hn.2.1
+      bridge_total_zero := hn.2.2.1
+      order_recovered := hn.2.2.2 }
+
+theorem physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap) :
+    ∃ N, ∀ n, N ≤ n →
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n) := by
+  have hrecovered :
+      ∀ᶠ n in atTop,
+        PhysicalHauptvermutungRecoveredStage
+          (countWindow n) (curvatureBias n) (spectralLocality n)
+          (scale n) (total n) (edge n) (candidate n) :=
+    physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage C
+  rw [eventually_atTop] at hrecovered
+  exact hrecovered
+
 theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
     {ι : Type*} [Fintype ι]
     {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
@@ -4166,6 +4292,30 @@ theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_ev
       C.convergence).1,
       physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
         C⟩
+
+theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap) :
+    (∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0) ∧
+      ∃ N, ∀ n, N ≤ n →
+        PhysicalHauptvermutungRecoveredStage
+          (countWindow n) (curvatureBias n) (spectralLocality n)
+          (scale n) (total n) (edge n) (candidate n) := by
+  exact
+    ⟨(physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+      C.convergence).1,
+      physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after C⟩
 
 #print axioms bridgeCensusDefect_canonical_zero
 #print axioms bridgeCensusDefect_pos_of_ne
@@ -4230,9 +4380,14 @@ theorem physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_ev
 #print axioms physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
 #print axioms physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
 #print axioms physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
+#print axioms PhysicalHauptvermutungRecoveredStage.candidate_eq_canonical
+#print axioms PhysicalHauptvermutungRecoveredStage.residuals_zero
 #print axioms physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero
 #print axioms physicalHauptvermutungExactRecoveryCertificate_eventually_local_distortion_zero
 #print axioms physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
+#print axioms physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage
+#print axioms physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after
 #print axioms physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
+#print axioms physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 
 end UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable

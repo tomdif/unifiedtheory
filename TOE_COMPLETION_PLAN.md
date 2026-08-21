@@ -168,10 +168,16 @@ physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero
 physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
 PhysicalHauptvermutungExactRecoveryCertificate
+PhysicalHauptvermutungRecoveredStage
+PhysicalHauptvermutungRecoveredStage.candidate_eq_canonical
+PhysicalHauptvermutungRecoveredStage.residuals_zero
 physicalHauptvermutungExactRecoveryCertificate_eventually_exact_zero
 physicalHauptvermutungExactRecoveryCertificate_eventually_local_distortion_zero
 physicalHauptvermutungExactRecoveryCertificate_eventually_full_operational_recovery
+physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage
+physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after
 physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
+physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_recovered_after
 ```
 
 This interface says: if physical growth supplies a source that protects the
@@ -451,6 +457,7 @@ PhysicalHauptvermutungExactRecoveryCertificate
   -> eventually total_n = 0
   -> eventually each local physical distortion is 0
   -> eventually bridge total is 0 and bridge incidences recover transport
+  -> exists N, every n >= N satisfies PhysicalHauptvermutungRecoveredStage
 ```
 
 The underlying convergence interface derives the required majorant from a
