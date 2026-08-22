@@ -754,6 +754,10 @@ Completed algebraic groundwork:
   stage/site phase classes with that projective-qubit state API and proves
   matching local Bloch/Born observables, state reconstruction, gauge invariance,
   and Born-data separation.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrier` bundles recovered local
+  projective states, Bloch points, and Born families into a compact carrier and
+  proves reconstruction, gauge invariance, and Pauli/all-axis Born separation of
+  carrier equality.
 
 Open work:
 

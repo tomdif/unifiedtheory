@@ -322,6 +322,10 @@
 > stage/site phase class with that state API and proves matching Bloch/Born
 > observables, local projective-state reconstruction, local `U(1)` gauge
 > invariance, and Born-data equivalence to recovered projective-state equality.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrier.lean` then bundles each recovered
+> local projective state, Bloch point, and Born family as a compact carrier and
+> proves carrier reconstruction, local gauge invariance, and Pauli/all-axis Born
+> separation of carrier equality.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

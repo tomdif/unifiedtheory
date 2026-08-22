@@ -5049,6 +5049,10 @@ import UnifiedTheory.Audit.KFHopfProjectiveQubitState
 -- state-level qubits with matching Bloch/Born data, reconstruction, and gauge
 -- invariance.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitState
+-- Recovered-stage projective-qubit carrier: state, Bloch, and Born data are
+-- bundled as a compact carrier with reconstruction, separation, and gauge
+-- invariance.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

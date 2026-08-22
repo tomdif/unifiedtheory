@@ -97,6 +97,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassReconstruction.lean`
 - `UnifiedTheory/Audit/KFHopfProjectiveQubitState.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitState.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrier.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -146,6 +147,9 @@ Unconditional pieces:
 - recovered-stage projective-qubit state bridge: every local stage/site phase
   class is identified with the state API, with matching local Bloch/Born data,
   projective-state reconstruction, gauge invariance, and Born-data separation;
+- recovered-stage projective-qubit carrier: local state, Bloch point, and Born
+  family are bundled as one carrier with reconstruction, gauge invariance, and
+  carrier equality separated by Pauli/all-axis Born data;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

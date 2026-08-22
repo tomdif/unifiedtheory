@@ -210,6 +210,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfProjectiveQubitState` identifies recovered stage/site
   phase classes with that state API and proves matching local Bloch/Born data,
   projective-state reconstruction, gauge invariance, and Born-data separation.
+  `KFRecoveredCSpecHopfProjectiveQubitCarrier` bundles the recovered local
+  projective state, Bloch point, and Born family as one carrier with
+  reconstruction, gauge invariance, and carrier-level Born separation.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -269,6 +272,7 @@ Gate 5:
   KFRecoveredCSpecHopfBornPhaseClassReconstruction
   KFHopfProjectiveQubitState
   KFRecoveredCSpecHopfProjectiveQubitState
+  KFRecoveredCSpecHopfProjectiveQubitCarrier
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target
