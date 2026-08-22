@@ -5021,6 +5021,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornObservable
 -- Arbitrary-axis local Born observables: any unit Bloch measurement axis
 -- gives valid plus-minus probabilities, with Pauli X/Y/Z recovered as cases.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
+-- Local Born tomography: Born-pair expectations reconstruct the recovered
+-- quotient Bloch observable and arbitrary-axis expectations are dot products.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornTomography
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

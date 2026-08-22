@@ -287,6 +287,11 @@
 > expectation lies in `[-1,1]`, the resulting plus/minus pair is a valid
 > probability pair, it is locally `U(1)` gauge-invariant, and the coordinate
 > axes recover the Pauli-X/Y/Z pairs.
+> `KFRecoveredCSpecHopfBornTomography.lean` now proves local finite qubit
+> tomography: binary Born expectations recover the Pauli X/Y/Z Bloch
+> coordinates, arbitrary-axis expectations are `a · B`, and the reconstructed
+> local Bloch observable is invariant under local stagewise `U(1)` gauge
+> rotation.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

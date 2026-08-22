@@ -184,6 +184,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfBornAxisObservable` now extends this measurement
   interface to arbitrary unit Bloch axes and proves the Pauli axes are exactly
   the previous X/Y/Z cases.
+  `KFRecoveredCSpecHopfBornTomography` now proves the local tomography
+  closure: Pauli Born expectations reconstruct the quotient Bloch observable
+  and arbitrary-axis expectations are dot products.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -234,6 +237,7 @@ Gate 5:
   KFRecoveredCSpecHopfQuotientFiber
   KFRecoveredCSpecHopfBornObservable
   KFRecoveredCSpecHopfBornAxisObservable
+  KFRecoveredCSpecHopfBornTomography
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

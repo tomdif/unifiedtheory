@@ -725,6 +725,9 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfBornAxisObservable` extends the local Born interface to
   arbitrary unit Bloch measurement axes, proves the dot expectation is bounded
   in `[-1,1]`, and recovers Pauli-X/Y/Z as coordinate-axis cases.
+- `KFRecoveredCSpecHopfBornTomography` proves local finite qubit tomography:
+  Pauli Born expectations reconstruct the recovered quotient Bloch observable,
+  and arbitrary-axis expectations are exactly dot products.
 
 Open work:
 

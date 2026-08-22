@@ -233,7 +233,9 @@ Machine-checked additions now cover:
   into valid Pauli-X/Y/Z plus-minus probability pairs, again invariant under
   local stagewise `U(1)` gauge choices; the arbitrary-axis Born bridge now
   extends this to every unit Bloch measurement axis and proves the coordinate
-  axes recover the Pauli-X/Y/Z cases.
+  axes recover the Pauli-X/Y/Z cases; the local Born tomography bridge now
+  proves Born-pair expectations reconstruct the recovered quotient Bloch
+  observable and arbitrary-axis expectations are exactly dot products.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
