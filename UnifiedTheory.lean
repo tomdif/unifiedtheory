@@ -5012,6 +5012,9 @@ import UnifiedTheory.Audit.KFHopfUnitSphereQuotient
 -- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
 -- invariant under local stagewise U(1) phase choices.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
+-- Recovered-stage projective Hopf fibers: local normalized spinors determine
+-- phase classes and gauge-invariant unit Bloch-sphere quotient observables.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfQuotientFiber
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

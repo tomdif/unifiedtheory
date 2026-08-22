@@ -274,6 +274,10 @@
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,
 > and remains physically unchanged under local stagewise `U(1)` phase choices.
 > This closes the finite local fiber attachment, not the continuum QFT dynamics.
+> `KFRecoveredCSpecHopfQuotientFiber.lean` now connects that local fiber data
+> to the normalized phase quotient: each recovered stage/site determines a
+> phase class and a unit Bloch-sphere quotient observable, and local stagewise
+> `U(1)` rotations leave both unchanged.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

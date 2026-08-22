@@ -85,6 +85,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfPhaseQuotient.lean`
 - `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -104,6 +105,9 @@ Unconditional pieces:
 - local recovered-stage Hopf fiber interface: normalized stage/site spinors
   have unit Bloch observables and local `U(1)` phase choices are invisible to
   the repo Bloch vector;
+- recovered-stage projective Hopf fiber interface: local fields determine
+  normalized phase classes and gauge-invariant unit Bloch-sphere quotient
+  observables;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

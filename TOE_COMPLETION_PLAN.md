@@ -716,6 +716,9 @@ Completed algebraic groundwork:
   fiber data: each stage/site normalized spinor has a unit Bloch observable,
   agrees with the repo Bloch vector, and is invariant under local stagewise
   `U(1)` phase choices.
+- `KFRecoveredCSpecHopfQuotientFiber` upgrades those local fields to
+  normalized phase classes and proves the associated unit Bloch-sphere
+  quotient observable is unchanged by local stagewise `U(1)` gauge rotation.
 
 Open work:
 

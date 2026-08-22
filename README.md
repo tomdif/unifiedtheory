@@ -226,7 +226,9 @@ Machine-checked additions now cover:
   module proves that unit spinor phase classes carry a well-defined point on
   the unit Bloch sphere; the recovered-stage Hopf fiber interface now lifts
   this to sitewise stage data, proving unit local Bloch observables and
-  invariance under local stagewise `U(1)` phase choices.
+  invariance under local stagewise `U(1)` phase choices; the recovered-stage
+  quotient-fiber bridge now proves those local fields determine normalized
+  phase classes and gauge-invariant unit Bloch-sphere quotient observables.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

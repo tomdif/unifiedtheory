@@ -175,6 +175,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
   fiber data and proves local Bloch normalization plus invariance under
   stagewise local `U(1)` phase choices.
+  `KFRecoveredCSpecHopfQuotientFiber` now upgrades the local fields to
+  normalized phase classes and gauge-invariant unit Bloch-sphere quotient
+  observables.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -222,6 +225,7 @@ Gate 5:
   KFHopfPhaseQuotient
   KFHopfUnitSphereQuotient
   KFRecoveredCSpecHopfFiber
+  KFRecoveredCSpecHopfQuotientFiber
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target
