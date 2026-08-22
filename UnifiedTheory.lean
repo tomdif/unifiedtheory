@@ -5024,6 +5024,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 -- Local Born tomography: Born-pair expectations reconstruct the recovered
 -- quotient Bloch observable and arbitrary-axis expectations are dot products.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornTomography
+-- Born observational completeness: Pauli and all-axis Born data separate
+-- exactly the recovered quotient Bloch observable.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornSeparation
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

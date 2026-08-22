@@ -235,7 +235,10 @@ Machine-checked additions now cover:
   extends this to every unit Bloch measurement axis and proves the coordinate
   axes recover the Pauli-X/Y/Z cases; the local Born tomography bridge now
   proves Born-pair expectations reconstruct the recovered quotient Bloch
-  observable and arbitrary-axis expectations are exactly dot products.
+  observable and arbitrary-axis expectations are exactly dot products; the
+  observational-completeness bridge proves equality of Pauli Born data,
+  equality of all-axis Born data, and equality of the recovered quotient
+  Bloch observable are equivalent locally.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

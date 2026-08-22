@@ -728,6 +728,9 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfBornTomography` proves local finite qubit tomography:
   Pauli Born expectations reconstruct the recovered quotient Bloch observable,
   and arbitrary-axis expectations are exactly dot products.
+- `KFRecoveredCSpecHopfBornSeparation` proves local finite observational
+  completeness: equality of Pauli Born data, equality of all-axis Born data,
+  and equality of the recovered quotient Bloch observable are equivalent.
 
 Open work:
 

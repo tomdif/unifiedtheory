@@ -89,6 +89,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornAxisObservable.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornTomography.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornSeparation.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -119,6 +120,8 @@ Unconditional pieces:
   reducing to the Pauli-X/Y/Z cases;
 - local Born tomography: Pauli Born expectations reconstruct the local quotient
   Bloch observable and arbitrary-axis expectations are dot products;
+- local Born observational completeness: Pauli Born data, all-axis Born data,
+  and the recovered quotient Bloch observable are equivalent local data;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

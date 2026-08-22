@@ -292,6 +292,10 @@
 > coordinates, arbitrary-axis expectations are `a · B`, and the reconstructed
 > local Bloch observable is invariant under local stagewise `U(1)` gauge
 > rotation.
+> `KFRecoveredCSpecHopfBornSeparation.lean` closes the finite local
+> observational-completeness statement: equality of Pauli Born pairs, equality
+> of all arbitrary-axis Born pairs, and equality of the recovered quotient
+> Bloch observable are equivalent at any two local recovered-stage sites.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
