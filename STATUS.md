@@ -262,6 +262,10 @@
 > multiplication.  It also proves those coordinates agree with the repo's
 > existing `WignerHardQubit.blochVector`.  This is the algebraic Hopf core,
 > not yet the full topological fibration or Chern-class story.
+> `KFHopfPhaseQuotient.lean` now names the algebraic common-phase quotient:
+> common unit-phase related real-coordinate spinors form a Lean `Setoid`,
+> spinor norm is preserved on equivalence classes, and all three Bloch
+> coordinates descend to the quotient.
 > `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
 > recovered-stage fiber data: for every stage and site, a normalized local
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,

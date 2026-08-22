@@ -168,6 +168,8 @@ derivation of the aggregate rate rather than the only logical gate.
   connector from normalized two-component spinors to Bloch/projective qubit
   geometry, with direct agreement to `WignerHardQubit.blochVector`; quotient
   topology and principal-bundle characteristic classes remain open.
+  `KFHopfPhaseQuotient` now proves the algebraic common-phase relation is a
+  setoid and the Bloch coordinates descend to that quotient.
   `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
   fiber data and proves local Bloch normalization plus invariance under
   stagewise local `U(1)` phase choices.
@@ -215,6 +217,7 @@ Gate 5:
   RecoveredCSpecHilbertFiber
   RecoveredCSpecHilbertFiber.transport_and_born
   KFHopfSpinorBlochBridge
+  KFHopfPhaseQuotient
   KFRecoveredCSpecHopfFiber
 
 Gate 7:

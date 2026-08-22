@@ -706,6 +706,9 @@ Completed algebraic groundwork:
   coordinates are proved to agree with the existing
   `WignerHardQubit.blochVector`, giving Gate 5 a concrete
   upstairs-state/phase-fiber/downstairs-observable architecture.
+- `KFHopfPhaseQuotient` proves the algebraic common-phase quotient: unit-phase
+  related spinors form a Lean `Setoid`, spinor norm is preserved, and the
+  three Bloch coordinates are well-defined on quotient classes.
 - `KFRecoveredCSpecHopfFiber` lifts that algebra to local recovered-stage
   fiber data: each stage/site normalized spinor has a unit Bloch observable,
   agrees with the repo Bloch vector, and is invariant under local stagewise

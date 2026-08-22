@@ -5002,6 +5002,9 @@ import UnifiedTheory.Audit.KFOrientationPathQuantum
 -- unchanged. This connects the finite spinor/qubit side to projective
 -- Bloch-sphere geometry without claiming a full quotient-topology fibration.
 import UnifiedTheory.Audit.KFHopfSpinorBlochBridge
+-- Algebraic common-phase quotient: the U(1)-phase relation is a setoid on
+-- real-coordinate spinors, and all three Bloch coordinates descend to it.
+import UnifiedTheory.Audit.KFHopfPhaseQuotient
 -- Local recovered-stage Hopf fibers: normalized sitewise spinors give unit
 -- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
 -- invariant under local stagewise U(1) phase choices.
