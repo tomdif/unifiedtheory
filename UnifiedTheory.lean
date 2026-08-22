@@ -4997,6 +4997,11 @@ import UnifiedTheory.Audit.KFOrientationCPChannelTower
 -- dephasing, full M₂(C) and su(2) closure, spin-half 2π/4π periodicity,
 -- curvature-generated unitary transport, and an explicit chirality-label bridge.
 import UnifiedTheory.Audit.KFOrientationPathQuantum
+-- Algebraic Hopf bridge: a normalized two-component spinor maps to a unit
+-- Bloch vector, and common unit-phase multiplication leaves the Bloch vector
+-- unchanged. This connects the finite spinor/qubit side to projective
+-- Bloch-sphere geometry without claiming a full quotient-topology fibration.
+import UnifiedTheory.Audit.KFHopfSpinorBlochBridge
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

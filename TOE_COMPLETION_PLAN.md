@@ -698,10 +698,21 @@ Open work:
 
 Goal: recover known low-energy physics from the same dynamics.
 
+Completed algebraic groundwork:
+
+- `KFHopfSpinorBlochBridge` proves the Hopf spinor/Bloch algebraic core:
+  normalized two-component spinors map to unit Bloch vectors, and common unit
+  `U(1)` phase multiplication is invisible to the Bloch coordinates.  The
+  coordinates are proved to agree with the existing
+  `WignerHardQubit.blochVector`, giving Gate 5 a concrete
+  upstairs-state/phase-fiber/downstairs-observable architecture.
+
 Open work:
 
 - construct the effective Hilbert space and local QFT limit;
 - recover propagators, spin/statistics, gauge fields, and renormalization;
+- lift the algebraic Hopf bridge to a topological/principal-bundle statement
+  with quotient topology, local trivializations, and characteristic classes;
 - connect finite Standard Model algebra to the same infrared limit;
 - derive the parameter-identification chain instead of assuming it.
 

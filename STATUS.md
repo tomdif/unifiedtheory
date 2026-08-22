@@ -255,6 +255,13 @@
 > cone-scale calibration inequality.  Lean proves this active kernel/profile
 > package assembles into the split operator data and feeds the
 > scheduled-density recovered chart bridge.
+> `KFHopfSpinorBlochBridge.lean` now connects the finite spinor/qubit side to
+> the Bloch/projective side: Lean proves the real-coordinate Hopf identity
+> `|Bloch(psi)|^2 = |psi|^4`, the unit-spinor-to-unit-Bloch corollary, and
+> invariance of all Bloch coordinates under common unit `U(1)` phase
+> multiplication.  It also proves those coordinates agree with the repo's
+> existing `WignerHardQubit.blochVector`.  This is the algebraic Hopf core,
+> not yet the full topological fibration or Chern-class story.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

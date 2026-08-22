@@ -164,7 +164,10 @@ derivation of the aggregate rate rather than the only logical gate.
   combined cone estimate.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
-  QFT claim.
+  QFT claim.  `KFHopfSpinorBlochBridge` now supplies the algebraic Hopf
+  connector from normalized two-component spinors to Bloch/projective qubit
+  geometry, with direct agreement to `WignerHardQubit.blochVector`; quotient
+  topology and principal-bundle characteristic classes remain open.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -208,6 +211,7 @@ Gate 4:
 Gate 5:
   RecoveredCSpecHilbertFiber
   RecoveredCSpecHilbertFiber.transport_and_born
+  KFHopfSpinorBlochBridge
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

@@ -216,7 +216,11 @@ Machine-checked additions now cover:
   certificates before being assembled back into `BDG4DOperatorProfileData`;
   the cone-bound certificate is now further reduced to lower lightcone support,
   an active-region weighted `f4D` kernel estimate, and the existing
-  chart-profile sup bound.
+  chart-profile sup bound; the new Hopf spinor/Bloch bridge proves the
+  algebraic core of the Hopf map in real coordinates: normalized
+  two-component spinors map to unit Bloch vectors, and common unit-phase
+  multiplication leaves the Bloch vector unchanged; its coordinates are proved
+  to agree with the repo's existing `WignerHardQubit.blochVector`.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

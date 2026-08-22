@@ -81,6 +81,7 @@ Files:
 
 - `UnifiedTheory/Audit/KFCausalQuantumMeasure.lean`
 - `UnifiedTheory/Audit/KFOrientationPathQuantum.lean`
+- `UnifiedTheory/Audit/KFHopfSpinorBlochBridge.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -90,6 +91,9 @@ Unconditional pieces:
 - Born-from-growth amplitude and decoherence functional;
 - hermiticity, strong positivity, Sorkin level-2 sum rule;
 - diagonal classical measure plus interference decomposition;
+- algebraic Hopf bridge from normalized two-component spinors to unit Bloch
+  vectors, with common unit-phase invariance and direct agreement with
+  `WignerHardQubit.blochVector`;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

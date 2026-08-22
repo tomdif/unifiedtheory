@@ -111,6 +111,14 @@ between `2*pi` periodic observables and `4*pi` periodic state vectors. This is a
 novel structural connection inside the repository. It is not yet evidence that an
 observed fermion or continuum spin structure has been derived.
 
+The Hopf connection is now explicit at the algebraic level in
+`UnifiedTheory/Audit/KFHopfSpinorBlochBridge.lean`: a normalized two-component
+spinor maps to a unit Bloch vector, and a common unit `U(1)` phase leaves that
+Bloch vector unchanged.  Lean also proves the coordinates agree with the repo's
+existing `WignerHardQubit.blochVector`.  This connects the path-spinor sector
+to the repo's Bloch/projective qubit geometry, while leaving quotient topology
+and continuum spin bundles open.
+
 ## Why a classical growth law is insufficient
 
 A classical stochastic process retains diagonal history probabilities. Here both
