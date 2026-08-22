@@ -206,7 +206,11 @@ Machine-checked additions now cover:
   finite threshold after which `PhysicalHauptvermutungRecoveredStage` holds;
   the newest observable-zero corollary expands that threshold into total,
   physical-total, base, bridge, residual, canonical-transport, and incidence
-  recovery facts.
+  recovery facts; the recovered-stage Gate 4 bridge now also routes exact
+  finite recovery into the reduced 4D BDG operator stack through recovered
+  chart certificates, derives chart-channel convergence from matched recovered
+  residual sums, and removes the standalone density-convergence assumption
+  when chart density follows a positive affine refinement schedule.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
@@ -221,7 +225,9 @@ invariant observables, weighted anti-alignment, uniform weight/alignment floors,
 rate-floor-free gamma alignment, direct centered-source floors, gamma-free
 product bounds, positive floor witnesses, clipped effective-rate selection,
 stagewise clipped product decay, clipped-gain lower bounds, unclipped gain
-lower bounds, component gain floors, and infrared GR/QFT recovery.
+lower bounds, component gain floors, the affine physical chart-density law,
+matched chart residual identities, the 4D BDG operator-profile
+support/regularity/cone-bound package, and infrared GR/QFT recovery.
 The new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
 growth, project it off the horizon channel, and prove the protected

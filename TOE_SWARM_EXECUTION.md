@@ -149,9 +149,12 @@ derivation of the aggregate rate rather than the only logical gate.
   convergence.  `KFCausalCSpecRecoveredStageBDG4DMatchedChart` now derives the
   chart certificate channel limits from exact recovered residual sums when the
   chart certificate uses matched count, curvature, and spectral/pair channels.
-  The remaining work is to prove the physical causal-growth law supplies that
-  matched physical-chart interface, especially the `BDG4DOperatorProfileData`
-  support, regularity, and cone-bound fields.
+  `KFCausalCSpecRecoveredStageBDG4DScheduledDensity` now removes the separate
+  density-convergence input when the chart certificate density follows a
+  positive affine refinement schedule.  The remaining work is to prove the
+  physical causal-growth law supplies that scheduled matched physical-chart
+  interface, especially the affine density law and the
+  `BDG4DOperatorProfileData` support, regularity, and cone-bound fields.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -191,7 +194,8 @@ Gate 3:
   derive rateBase*total_n <= descentRate_n from the microscopic law
 
 Gate 4:
-  RecoveredStageBDG4DMatchedPhysicalChartInterface
+  RecoveredStageBDG4DScheduledDensityInterface
+  affine physical density schedule
   BDG4DOperatorProfileData support/regularity/cone-bound fields
 
 Gate 5:

@@ -323,6 +323,39 @@ pair consistency is matched to the finite sum of recovered spectral/locality
 residuals.  Exact recovery proves all three sums tend to zero, so the matched
 interface instantiates the physical-chart bridge automatically.
 
+## Scheduled Density Physical Chart Bridge
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DScheduledDensity.lean`
+
+The file defines:
+
+```lean
+structure RecoveredStageBDG4DScheduledDensityInterface
+```
+
+and proves:
+
+```lean
+theorem affineDensity_tendsto_atTop
+
+theorem RecoveredStageBDG4DScheduledDensityInterface.density_tendsto_atTop
+
+theorem RecoveredStageBDG4DScheduledDensityInterface.toMatchedPhysicalChartInterface
+
+theorem RecoveredStageBDG4DScheduledDensityInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DScheduledDensityInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+```
+
+This removes the standalone density-convergence hypothesis from the matched
+physical-chart bridge when the physical chart certificate has a positive
+affine refinement schedule
+`density_n = densityBase + densityStep*n`.  Lean proves this schedule tends to
+infinite sprinkling density, then feeds the scheduled supplier through the
+matched residual bridge.
+
 ## Previous Target
 
 Imports:

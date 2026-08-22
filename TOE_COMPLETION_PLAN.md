@@ -607,6 +607,12 @@ RecoveredStageExactCSpecSequence.spectralLocality_sum_tendsto_zero
 RecoveredStageBDG4DMatchedPhysicalChartInterface.toPhysicalChartInterface
 RecoveredStageBDG4DMatchedPhysicalChartInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DMatchedPhysicalChartInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+KFCausalCSpecRecoveredStageBDG4DScheduledDensity
+affineDensity_tendsto_atTop
+RecoveredStageBDG4DScheduledDensityInterface.density_tendsto_atTop
+RecoveredStageBDG4DScheduledDensityInterface.toMatchedPhysicalChartInterface
+RecoveredStageBDG4DScheduledDensityInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+RecoveredStageBDG4DScheduledDensityInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -647,14 +653,18 @@ sums:
 `chart.pairConsistency = sum recovered.spectralLocality`.  Exact recovery
 proves those three sums tend to zero, then instantiates the physical-chart
 interface.
+The scheduled-density bridge removes one more free convergence input: if the
+chart certificate density is affine in the refinement index,
+`density_n = densityBase + densityStep*n`, and `densityStep > 0`, Lean proves
+`density_n -> atTop` and instantiates the matched physical-chart interface.
 
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
 - prove the physical causal-growth law supplies a
-  `RecoveredStageBDG4DMatchedPhysicalChartInterface`, especially the matched
-  residual identities and the support, regularity, and cone-bound stack inside
-  `BDG4DOperatorProfileData`;
+  `RecoveredStageBDG4DScheduledDensityInterface`, especially the affine density
+  law, matched residual identities, and the support, regularity, and cone-bound
+  stack inside `BDG4DOperatorProfileData`;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
@@ -721,9 +731,10 @@ The next high-value theorem targets are:
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
-4. Gate 4: instantiate `RecoveredStageBDG4DMatchedPhysicalChartInterface` from
-   the physical causal-growth law, including matched residual identities and the
-   `BDG4DOperatorProfileData` support/regularity/cone-bound fields.
+4. Gate 4: instantiate `RecoveredStageBDG4DScheduledDensityInterface` from the
+   physical causal-growth law, including the affine density law, matched
+   residual identities, and the `BDG4DOperatorProfileData`
+   support/regularity/cone-bound fields.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 7: use the canonical JSON preregistration ledger for future empirical

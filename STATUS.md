@@ -238,6 +238,12 @@
 > scalar channels are matched to exact recovered residual sums.  The recovered
 > count, curvature, and spectral/locality sums tend to zero, so a matched chart
 > certificate instantiates the physical-chart bridge directly.
+> `KFCausalCSpecRecoveredStageBDG4DScheduledDensity.lean` now removes the
+> separate density-convergence assumption when the chart certificate density is
+> an affine positive-step refinement schedule.  Lean proves
+> `affineDensity_tendsto_atTop`, instantiates the matched physical-chart
+> interface, and preserves the combined zero finite horizon error, sampled 4D
+> operator convergence, and chart-distortion collapse theorem.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
