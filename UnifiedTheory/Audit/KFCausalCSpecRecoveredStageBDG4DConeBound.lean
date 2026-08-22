@@ -1,13 +1,19 @@
 /-
   Audit/KFCausalCSpecRecoveredStageBDG4DConeBound.lean
 
-  Kernel/profile split for the reduced 4D BDG cone-bound certificate.
+  Active-region kernel/profile split for the reduced 4D BDG cone-bound
+  certificate.
 
   The split operator profile package still contained one combined cone estimate
   over the product of the 4D BDG kernel profile and the supplied chart profile.
-  This file factors that estimate into:
+  A global profile-independent bound for the kernel factor alone is false on
+  all real `u,v`; for example, along `u = 0` the factor grows like `v^2`.
+  This file therefore factors the estimate over the profile's active lightcone
+  support into:
 
-  * a kernel-only weighted bound for `(v - u)^2 * f4D (a*u^2*v^2)`;
+  * lower lightcone support for the chart profile;
+  * a kernel-only weighted bound for `(v - u)^2 * f4D (a*u^2*v^2)` on the
+    active rectangle `0 <= u < uSupport`, `0 <= v < vSupport`;
   * the existing uniform bound for the chart profile;
   * one scale calibration inequality saying the chosen cone constant dominates
     the product of those two bounds.
@@ -30,36 +36,79 @@ open UnifiedTheory.Audit.KFCausalMinkowski4DMoments
 open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
 
-/-- A profile-independent weighted bound for the 4D BDG kernel factor that
-appears in the reduced cone estimate. -/
-structure BDG4DWeightedKernelBound where
-  weightedConeBound : ℝ
-  weightedConeBound_nonneg : 0 ≤ weightedConeBound
+/-- Lower lightcone support certificates for the chart profile.  Together with
+`BDG4DOperatorProfileSupport`, this confines the nonzero profile to
+`0 <= u < uSupport` and `0 <= v < vSupport`. -/
+structure BDG4DOperatorProfileLightconeSupport
+    (F : BDG4DOperatorProfileFunctions) where
+  profile_support_u_neg : ∀ u v, u < 0 → F.profile u v = 0
+  profile_support_v_neg : ∀ u v, v < 0 → F.profile u v = 0
+
+/-- A profile-independent weighted bound for the 4D BDG kernel factor on the
+active lightcone rectangle where the supplied chart profile can be nonzero. -/
+structure BDG4DWeightedKernelActiveBound
+    (S : BDG4DOperatorProfileScales) where
+  activeWeightedConeBound : ℝ
+  activeWeightedConeBound_nonneg : 0 ≤ activeWeightedConeBound
   weighted_f4D_bound : ∀ (a : ℝ), 0 < a → ∀ u v,
-    |(v - u)^2 * f4D (a * u^2 * v^2)| ≤ weightedConeBound
+    0 ≤ u → 0 ≤ v → u < S.uSupport → v < S.vSupport →
+    |(v - u)^2 * f4D (a * u^2 * v^2)| ≤ activeWeightedConeBound
 
 namespace BDG4DOperatorProfileConeBound
 
-/-- A weighted kernel bound and a uniform chart-profile bound imply the combined
-cone estimate, provided the chosen cone scale dominates the product of the two
+/-- An active-region weighted kernel bound and a uniform chart-profile bound
+imply the combined cone estimate, provided the profile vanishes off the active
+lightcone rectangle and the chosen cone scale dominates the product of the two
 component bounds. -/
-theorem of_weightedKernelBound
+theorem of_activeKernelBound
     {S : BDG4DOperatorProfileScales}
     {F : BDG4DOperatorProfileFunctions}
     (U : BDG4DOperatorProfileUniformBounds S F)
-    (K : BDG4DWeightedKernelBound)
-    (hcone : K.weightedConeBound * S.profileBound ≤ S.coneBound) :
+    (A : BDG4DOperatorProfileSupport S F)
+    (L : BDG4DOperatorProfileLightconeSupport F)
+    (K : BDG4DWeightedKernelActiveBound S)
+    (hcone : K.activeWeightedConeBound * S.profileBound ≤ S.coneBound) :
     BDG4DOperatorProfileConeBound S F where
   hCcone := by
     intro a ha u v
+    have hprofileBound_nonneg : 0 ≤ S.profileBound :=
+      le_trans (abs_nonneg (F.profile 0 0)) (U.profile_bound 0 0)
+    have hcone_nonneg : 0 ≤ S.coneBound :=
+      le_trans
+        (mul_nonneg K.activeWeightedConeBound_nonneg hprofileBound_nonneg)
+        hcone
+    have hcone_scaled_nonneg : 0 ≤ S.coneBound * a :=
+      mul_nonneg hcone_nonneg ha.le
+    by_cases hu_neg : u < 0
+    · have hzero : F.profile u v = 0 :=
+        L.profile_support_u_neg u v hu_neg
+      simpa [hzero] using hcone_scaled_nonneg
+    by_cases hv_neg : v < 0
+    · have hzero : F.profile u v = 0 :=
+        L.profile_support_v_neg u v hv_neg
+      simpa [hzero] using hcone_scaled_nonneg
+    by_cases hu_hi : S.uSupport ≤ u
+    · have hzero : F.profile u v = 0 :=
+        A.profile_support_u u v hu_hi
+      simpa [hzero] using hcone_scaled_nonneg
+    by_cases hv_hi : S.vSupport ≤ v
+    · have hzero : F.profile u v = 0 :=
+        A.profile_support_v u v hv_hi
+      simpa [hzero] using hcone_scaled_nonneg
+    have hu_nonneg : 0 ≤ u := le_of_not_gt hu_neg
+    have hv_nonneg : 0 ≤ v := le_of_not_gt hv_neg
+    have hu_lt : u < S.uSupport := lt_of_not_ge hu_hi
+    have hv_lt : v < S.vSupport := lt_of_not_ge hv_hi
     set z : ℝ := a * u^2 * v^2
     set k : ℝ := (v - u)^2 * f4D z
-    have hk : |k| ≤ K.weightedConeBound := by
-      simpa [k, z] using K.weighted_f4D_bound a ha u v
+    have hk : |k| ≤ K.activeWeightedConeBound := by
+      simpa [k, z] using
+        K.weighted_f4D_bound a ha u v hu_nonneg hv_nonneg hu_lt hv_lt
     have hp : |F.profile u v| ≤ S.profileBound := U.profile_bound u v
     have hprod :
-        |k| * |F.profile u v| ≤ K.weightedConeBound * S.profileBound :=
-      mul_le_mul hk hp (abs_nonneg _) K.weightedConeBound_nonneg
+        |k| * |F.profile u v| ≤
+          K.activeWeightedConeBound * S.profileBound :=
+      mul_le_mul hk hp (abs_nonneg _) K.activeWeightedConeBound_nonneg
     calc
       |a * (v - u)^2 * f4D (a * u^2 * v^2) * F.profile u v|
           = |a * k * F.profile u v| := by
@@ -67,7 +116,7 @@ theorem of_weightedKernelBound
       _ = a * (|k| * |F.profile u v|) := by
               rw [abs_mul, abs_mul, abs_of_pos ha]
               ring
-      _ ≤ a * (K.weightedConeBound * S.profileBound) :=
+      _ ≤ a * (K.activeWeightedConeBound * S.profileBound) :=
               mul_le_mul_of_nonneg_left hprod ha.le
       _ ≤ a * S.coneBound :=
               mul_le_mul_of_nonneg_left hcone ha.le
@@ -76,27 +125,29 @@ theorem of_weightedKernelBound
 
 end BDG4DOperatorProfileConeBound
 
-/-- Split analytic supplier where the cone-bound certificate is replaced by a
-kernel-only weighted estimate plus the profile sup bound. -/
+/-- Split analytic supplier where the cone-bound certificate is replaced by
+active lightcone support, a kernel-only active-region weighted estimate, and
+the profile sup bound. -/
 structure BDG4DOperatorProfileKernelSplitData where
   scales : BDG4DOperatorProfileScales
   functions : BDG4DOperatorProfileFunctions
   regularity : BDG4DOperatorProfileRegularity functions
   uniformBounds : BDG4DOperatorProfileUniformBounds scales functions
   support : BDG4DOperatorProfileSupport scales functions
-  kernelBound : BDG4DWeightedKernelBound
+  lightconeSupport : BDG4DOperatorProfileLightconeSupport functions
+  kernelBound : BDG4DWeightedKernelActiveBound scales
   coneBound_ge :
-    kernelBound.weightedConeBound * scales.profileBound ≤ scales.coneBound
+    kernelBound.activeWeightedConeBound * scales.profileBound ≤ scales.coneBound
 
 namespace BDG4DOperatorProfileKernelSplitData
 
 /-- The kernel/profile split supplies the cone certificate required by the
 previous operator split. -/
 noncomputable def coneBound
-    (D : BDG4DOperatorProfileKernelSplitData) :
+  (D : BDG4DOperatorProfileKernelSplitData) :
     BDG4DOperatorProfileConeBound D.scales D.functions :=
-  BDG4DOperatorProfileConeBound.of_weightedKernelBound
-    D.uniformBounds D.kernelBound D.coneBound_ge
+  BDG4DOperatorProfileConeBound.of_activeKernelBound
+    D.uniformBounds D.support D.lightconeSupport D.kernelBound D.coneBound_ge
 
 /-- Assemble the kernel/profile split into the prior split profile package. -/
 noncomputable def toSplitData
@@ -279,7 +330,7 @@ theorem recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
     RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
       I.toSplitOperatorInterface
 
-#print axioms BDG4DOperatorProfileConeBound.of_weightedKernelBound
+#print axioms BDG4DOperatorProfileConeBound.of_activeKernelBound
 #print axioms BDG4DOperatorProfileKernelSplitData.coneBound
 #print axioms BDG4DOperatorProfileKernelSplitData.toSplitData
 #print axioms BDG4DOperatorProfileKernelSplitData.toProfileData

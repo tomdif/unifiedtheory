@@ -620,7 +620,7 @@ RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.toScheduledDensityInte
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 KFCausalCSpecRecoveredStageBDG4DConeBound
-BDG4DOperatorProfileConeBound.of_weightedKernelBound
+BDG4DOperatorProfileConeBound.of_activeKernelBound
 BDG4DOperatorProfileKernelSplitData.toSplitData
 BDG4DOperatorProfileKernelSplitData.sampled_tendsto
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.toSplitOperatorInterface
@@ -677,9 +677,9 @@ certificates assemble back into the 4D operator profile package, then feeds
 the assembled package through the scheduled-density chart bridge.
 The cone-bound bridge narrows the hardest remaining analytic certificate:
 instead of assuming the full product estimate directly, the chart side supplies
-the existing uniform profile bound, the kernel side supplies a weighted `f4D`
-bound independent of the profile, and one cone-scale calibration inequality
-assembles the combined estimate.
+lower lightcone support and the existing uniform profile bound, the kernel side
+supplies an active-region weighted `f4D` bound, and one cone-scale calibration
+inequality assembles the combined estimate.
 
 Open work:
 
@@ -689,8 +689,8 @@ Open work:
   law and matched residual identities;
 - prove the physical recovered chart supplies `BDG4DOperatorProfileKernelSplitData`:
   the profile functions, positive support scales, continuity and derivative
-  regularity, uniform bounds, compact support, weighted kernel estimate, and
-  cone-scale calibration;
+  regularity, uniform bounds, compact support, lower lightcone support,
+  active-region weighted kernel estimate, and cone-scale calibration;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
@@ -760,7 +760,7 @@ The next high-value theorem targets are:
 4. Gate 4: instantiate `RecoveredStageBDG4DScheduledDensityInterface` from the
    physical causal-growth law, including the affine density law, matched
    residual identities, and the split `BDG4DOperatorProfileKernelSplitData`
-   support/regularity/kernel-bound components.
+   support/regularity/lightcone-kernel components.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 7: use the canonical JSON preregistration ledger for future empirical

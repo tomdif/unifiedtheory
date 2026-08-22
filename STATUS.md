@@ -250,10 +250,11 @@
 > the split package assembles back into the operator profile data and feeds the
 > scheduled-density recovered chart bridge.
 > `KFCausalCSpecRecoveredStageBDG4DConeBound.lean` now reduces the combined
-> cone-bound certificate to a profile-independent weighted `f4D` kernel bound,
-> the existing uniform chart-profile bound, and one cone-scale calibration
-> inequality.  Lean proves this kernel/profile package assembles into the
-> split operator data and feeds the scheduled-density recovered chart bridge.
+> cone-bound certificate to lower lightcone support, an active-region weighted
+> `f4D` kernel bound, the existing uniform chart-profile bound, and one
+> cone-scale calibration inequality.  Lean proves this active kernel/profile
+> package assembles into the split operator data and feeds the
+> scheduled-density recovered chart bridge.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

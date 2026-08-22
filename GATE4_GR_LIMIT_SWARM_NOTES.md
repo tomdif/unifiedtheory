@@ -409,7 +409,9 @@ Integrated in:
 The file defines:
 
 ```lean
-structure BDG4DWeightedKernelBound
+structure BDG4DOperatorProfileLightconeSupport
+
+structure BDG4DWeightedKernelActiveBound
 
 structure BDG4DOperatorProfileKernelSplitData
 
@@ -419,7 +421,7 @@ structure RecoveredStageBDG4DScheduledDensityKernelOperatorInterface
 and proves:
 
 ```lean
-theorem BDG4DOperatorProfileConeBound.of_weightedKernelBound
+theorem BDG4DOperatorProfileConeBound.of_activeKernelBound
 
 def BDG4DOperatorProfileKernelSplitData.toSplitData
 
@@ -432,10 +434,10 @@ theorem RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.rssPoissonErr
 theorem RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 ```
 
-This reduces the combined cone-bound obligation to a kernel-only weighted
-`f4D` estimate, the existing uniform chart-profile bound, and one scale
-calibration inequality.  The resulting kernel/profile split package then feeds
-the scheduled-density chart bridge.
+This reduces the combined cone-bound obligation to lower lightcone support, an
+active-region weighted `f4D` estimate, the existing uniform chart-profile
+bound, and one scale calibration inequality.  The resulting active
+kernel/profile split package then feeds the scheduled-density chart bridge.
 
 ## Previous Target
 

@@ -781,7 +781,7 @@ BDG4DOperatorProfileSplitData.sampled_tendsto
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.toScheduledDensityInterface
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
-BDG4DOperatorProfileConeBound.of_weightedKernelBound
+BDG4DOperatorProfileConeBound.of_activeKernelBound
 BDG4DOperatorProfileKernelSplitData.toSplitData
 BDG4DOperatorProfileKernelSplitData.sampled_tendsto
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.toSplitOperatorInterface
@@ -850,11 +850,11 @@ function, scale, regularity, uniform-bound, support, and cone-bound
 certificates.  Lean assembles these split certificates into
 `BDG4DOperatorProfileData` and feeds them through the scheduled-density chart
 bridge.
-The cone-bound interface further separates that last analytic estimate into a
-profile-independent weighted `f4D` kernel bound, the chart-profile sup bound,
-and a cone-scale calibration inequality.  This gives the remaining analytic
-work a sharper kernel target while preserving the recovered chart/operator
-convergence theorem.
+The cone-bound interface further separates that last analytic estimate into
+lower lightcone support, an active-region weighted `f4D` kernel bound, the
+chart-profile sup bound, and a cone-scale calibration inequality.  This gives
+the remaining analytic work a sharper kernel target while preserving the
+recovered chart/operator convergence theorem.
 
 ## Verification
 

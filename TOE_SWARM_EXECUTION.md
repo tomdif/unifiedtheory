@@ -158,9 +158,10 @@ derivation of the aggregate rate rather than the only logical gate.
   `BDG4DOperatorProfileData` target into function, scale, regularity,
   uniform-bound, support, and cone-bound certificates.
   `KFCausalCSpecRecoveredStageBDG4DConeBound` now factors the cone-bound
-  certificate again: the chart side supplies a uniform profile bound, the
-  kernel side supplies a profile-independent weighted `f4D` estimate, and a
-  single calibration inequality turns those into the combined cone estimate.
+  certificate again: the chart side supplies lower lightcone support and a
+  uniform profile bound, the kernel side supplies an active-region weighted
+  `f4D` estimate, and a single calibration inequality turns those into the
+  combined cone estimate.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -202,7 +203,7 @@ Gate 3:
 Gate 4:
   RecoveredStageBDG4DScheduledDensityInterface
   affine physical density schedule
-  BDG4DOperatorProfileKernelSplitData support/regularity/kernel-bound components
+  BDG4DOperatorProfileKernelSplitData support/regularity/lightcone-kernel components
 
 Gate 5:
   RecoveredCSpecHilbertFiber
