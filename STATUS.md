@@ -278,6 +278,10 @@
 > to the normalized phase quotient: each recovered stage/site determines a
 > phase class and a unit Bloch-sphere quotient observable, and local stagewise
 > `U(1)` rotations leave both unchanged.
+> `KFRecoveredCSpecHopfBornObservable.lean` now derives local Pauli-X/Y/Z Born
+> probability pairs from those quotient Bloch observables; Lean proves each
+> plus/minus pair is nonnegative, bounded by one, sums to one, and is invariant
+> under local stagewise `U(1)` gauge rotation.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

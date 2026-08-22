@@ -719,6 +719,9 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfQuotientFiber` upgrades those local fields to
   normalized phase classes and proves the associated unit Bloch-sphere
   quotient observable is unchanged by local stagewise `U(1)` gauge rotation.
+- `KFRecoveredCSpecHopfBornObservable` derives local Pauli-X/Y/Z Born
+  probability pairs from the quotient Bloch observable and proves each pair is
+  valid and invariant under local stagewise `U(1)` gauge rotation.
 
 Open work:
 

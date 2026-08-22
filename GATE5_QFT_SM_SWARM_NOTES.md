@@ -86,6 +86,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -108,6 +109,9 @@ Unconditional pieces:
 - recovered-stage projective Hopf fiber interface: local fields determine
   normalized phase classes and gauge-invariant unit Bloch-sphere quotient
   observables;
+- recovered-stage local Pauli Born interface: quotient Bloch observables
+  determine valid X/Y/Z plus-minus probability pairs, invariant under local
+  `U(1)` gauge rotation;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

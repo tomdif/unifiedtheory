@@ -5015,6 +5015,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
 -- Recovered-stage projective Hopf fibers: local normalized spinors determine
 -- phase classes and gauge-invariant unit Bloch-sphere quotient observables.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfQuotientFiber
+-- Local Pauli Born observables from recovered-stage Hopf quotient fibers:
+-- X/Y/Z plus-minus probabilities are valid and local U(1)-gauge invariant.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornObservable
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

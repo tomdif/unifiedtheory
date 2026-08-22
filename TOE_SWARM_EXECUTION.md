@@ -178,6 +178,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfQuotientFiber` now upgrades the local fields to
   normalized phase classes and gauge-invariant unit Bloch-sphere quotient
   observables.
+  `KFRecoveredCSpecHopfBornObservable` now derives valid local Pauli-X/Y/Z
+  plus-minus Born probability pairs from those quotient observables and proves
+  their stagewise local `U(1)` gauge invariance.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -226,6 +229,7 @@ Gate 5:
   KFHopfUnitSphereQuotient
   KFRecoveredCSpecHopfFiber
   KFRecoveredCSpecHopfQuotientFiber
+  KFRecoveredCSpecHopfBornObservable
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

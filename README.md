@@ -228,7 +228,10 @@ Machine-checked additions now cover:
   this to sitewise stage data, proving unit local Bloch observables and
   invariance under local stagewise `U(1)` phase choices; the recovered-stage
   quotient-fiber bridge now proves those local fields determine normalized
-  phase classes and gauge-invariant unit Bloch-sphere quotient observables.
+  phase classes and gauge-invariant unit Bloch-sphere quotient observables;
+  the local Hopf Born-observable bridge now turns those quotient observables
+  into valid Pauli-X/Y/Z plus-minus probability pairs, again invariant under
+  local stagewise `U(1)` gauge choices.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
