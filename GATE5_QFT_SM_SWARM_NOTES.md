@@ -92,6 +92,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornAxisObservable.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornTomography.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornSeparation.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassSeparation.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -129,6 +130,8 @@ Unconditional pieces:
   Bloch observable and arbitrary-axis expectations are dot products;
 - local Born observational completeness: Pauli Born data, all-axis Born data,
   and the recovered quotient Bloch observable are equivalent local data;
+- projective local Born completeness: the same Born data separates the
+  recovered normalized Hopf phase class itself;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

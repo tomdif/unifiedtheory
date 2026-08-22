@@ -244,7 +244,9 @@ Machine-checked additions now cover:
   observable and arbitrary-axis expectations are exactly dot products; the
   observational-completeness bridge proves equality of Pauli Born data,
   equality of all-axis Born data, and equality of the recovered quotient
-  Bloch observable are equivalent locally.
+  Bloch observable are equivalent locally; the projective-completeness bridge
+  composes this with Hopf quotient injectivity so the same Born data separates
+  the recovered normalized phase class itself.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

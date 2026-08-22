@@ -304,6 +304,10 @@
 > observational-completeness statement: equality of Pauli Born pairs, equality
 > of all arbitrary-axis Born pairs, and equality of the recovered quotient
 > Bloch observable are equivalent at any two local recovered-stage sites.
+> `KFRecoveredCSpecHopfBornPhaseClassSeparation.lean` upgrades that statement
+> through the algebraic Hopf quotient: equality of Pauli Born data, equality of
+> all-axis Born data, equality of quotient Bloch observables, and equality of
+> recovered normalized phase classes are equivalent locally.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

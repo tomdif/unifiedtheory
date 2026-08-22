@@ -737,6 +737,10 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfBornSeparation` proves local finite observational
   completeness: equality of Pauli Born data, equality of all-axis Born data,
   and equality of the recovered quotient Bloch observable are equivalent.
+- `KFRecoveredCSpecHopfBornPhaseClassSeparation` composes Born separation with
+  Hopf quotient injectivity: Pauli Born data, all-axis Born data, quotient
+  Bloch observables, and recovered normalized phase classes are locally
+  equivalent data.
 
 Open work:
 

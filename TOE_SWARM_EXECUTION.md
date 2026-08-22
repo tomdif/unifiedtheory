@@ -196,6 +196,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfBornSeparation` now proves the corresponding finite
   observational-completeness closure: Pauli data, all-axis Born data, and the
   recovered quotient Bloch observable are locally equivalent descriptions.
+  `KFRecoveredCSpecHopfBornPhaseClassSeparation` upgrades this to the
+  projective Hopf layer: the same Born data separates the recovered normalized
+  phase class itself.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -250,6 +253,7 @@ Gate 5:
   KFRecoveredCSpecHopfBornAxisObservable
   KFRecoveredCSpecHopfBornTomography
   KFRecoveredCSpecHopfBornSeparation
+  KFRecoveredCSpecHopfBornPhaseClassSeparation
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

@@ -5033,6 +5033,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornTomography
 -- Born observational completeness: Pauli and all-axis Born data separate
 -- exactly the recovered quotient Bloch observable.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornSeparation
+-- Projective Born observational completeness: Pauli and all-axis Born data
+-- separate exactly the recovered Hopf phase class.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassSeparation
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected
