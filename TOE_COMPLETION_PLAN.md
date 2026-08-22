@@ -761,6 +761,10 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfProjectiveQubitCarrierField` lifts those carriers to a
   recovered stagewise field and proves pointwise Born-data separation,
   whole-stage reconstruction, and local `U(1)` gauge invariance.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel` proves finite
+  site-relabel covariance for carrier fields: reconstruction, Pauli/all-axis
+  Born data, and recovered-stage gauge invisibility are preserved and reflected
+  by site bijections.
 
 Open work:
 

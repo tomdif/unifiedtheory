@@ -5057,6 +5057,10 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
 -- pointwise Born-data separation, reconstruction, and gauge invariance across
 -- a whole recovered stage.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
+-- Carrier-field relabel covariance: finite site bijections preserve and reflect
+-- reconstruction, Pauli/all-axis Born data, and recovered-stage gauge
+-- invisibility.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

@@ -258,7 +258,9 @@ Machine-checked additions now cover:
   projections into one compact local carrier whose Pauli/all-axis Born data
   separate carrier equality; the carrier-field bridge lifts this to a whole
   recovered stage as one carrier per site, with pointwise reconstruction, gauge
-  invariance, and Born-data separation of field equality.
+  invariance, and Born-data separation of field equality; the relabel-covariance
+  bridge proves finite site bijections preserve and reflect carrier-field
+  reconstruction, Born data, and recovered-stage gauge invisibility.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

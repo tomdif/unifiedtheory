@@ -330,6 +330,10 @@
 > recovered stagewise field, proving pointwise Pauli/all-axis Born data are
 > equivalent to field equality, with whole-stage reconstruction and local
 > `U(1)` gauge invariance.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel.lean` proves finite
+> site-relabel covariance: carrier-field reconstruction and Pauli/all-axis Born
+> data commute with site bijections, relabeling is injective on fields, and
+> recovered-stage gauge invisibility survives relabeling.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
