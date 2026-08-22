@@ -96,6 +96,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassSeparation.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassReconstruction.lean`
 - `UnifiedTheory/Audit/KFHopfProjectiveQubitState.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitState.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -142,6 +143,9 @@ Unconditional pieces:
 - finite projective-qubit state API: normalized Hopf phase classes have
   Bloch/Born observables, Pauli Born expectations reconstruct the state, and
   Pauli/all-axis Born data are equivalent to state equality;
+- recovered-stage projective-qubit state bridge: every local stage/site phase
+  class is identified with the state API, with matching local Bloch/Born data,
+  projective-state reconstruction, gauge invariance, and Born-data separation;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

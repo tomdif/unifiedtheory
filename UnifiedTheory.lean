@@ -5045,6 +5045,10 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassReconstruction
 -- Stable projective-qubit state API: states, Bloch points, Born data, and
 -- Pauli/all-axis extensionality are packaged over the Hopf quotient.
 import UnifiedTheory.Audit.KFHopfProjectiveQubitState
+-- Recovered-stage projective-qubit states: local phase classes are named as
+-- state-level qubits with matching Bloch/Born data, reconstruction, and gauge
+-- invariance.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitState
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

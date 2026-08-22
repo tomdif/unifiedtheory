@@ -251,7 +251,10 @@ Machine-checked additions now cover:
   bridge reconstructs that phase class from the three Pauli Born expectations;
   the projective-qubit state API packages the normalized Hopf phase quotient as
   a finite state type and proves Pauli Born expectations reconstruct the state,
-  with Pauli/all-axis Born data equivalent to state equality.
+  with Pauli/all-axis Born data equivalent to state equality; the recovered-stage
+  projective-state bridge identifies every local stage/site phase class with
+  that API, with matching Bloch/Born data, local reconstruction, and `U(1)`
+  gauge invariance.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

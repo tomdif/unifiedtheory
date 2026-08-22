@@ -207,6 +207,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFHopfProjectiveQubitState` packages the normalized Hopf phase quotient as a
   finite projective-qubit state API with Bloch/Born observables, Pauli
   reconstruction, and Pauli/all-axis extensionality.
+  `KFRecoveredCSpecHopfProjectiveQubitState` identifies recovered stage/site
+  phase classes with that state API and proves matching local Bloch/Born data,
+  projective-state reconstruction, gauge invariance, and Born-data separation.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -265,6 +268,7 @@ Gate 5:
   KFRecoveredCSpecHopfBornPhaseClassSeparation
   KFRecoveredCSpecHopfBornPhaseClassReconstruction
   KFHopfProjectiveQubitState
+  KFRecoveredCSpecHopfProjectiveQubitState
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

@@ -318,6 +318,10 @@
 > as a finite projective-qubit state API: each state has Bloch and Born
 > observables, Pauli Born expectations reconstruct the state, and Pauli/all-axis
 > Born data are equivalent to state equality.
+> `KFRecoveredCSpecHopfProjectiveQubitState.lean` identifies each recovered
+> stage/site phase class with that state API and proves matching Bloch/Born
+> observables, local projective-state reconstruction, local `U(1)` gauge
+> invariance, and Born-data equivalence to recovered projective-state equality.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

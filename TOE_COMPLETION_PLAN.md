@@ -750,6 +750,10 @@ Completed algebraic groundwork:
 - `KFHopfProjectiveQubitState` packages the normalized Hopf phase quotient as a
   finite projective-qubit state API with Bloch/Born observables, Pauli
   reconstruction of the state, and Pauli/all-axis extensionality.
+- `KFRecoveredCSpecHopfProjectiveQubitState` identifies recovered local
+  stage/site phase classes with that projective-qubit state API and proves
+  matching local Bloch/Born observables, state reconstruction, gauge invariance,
+  and Born-data separation.
 
 Open work:
 
