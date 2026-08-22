@@ -613,6 +613,12 @@ RecoveredStageBDG4DScheduledDensityInterface.density_tendsto_atTop
 RecoveredStageBDG4DScheduledDensityInterface.toMatchedPhysicalChartInterface
 RecoveredStageBDG4DScheduledDensityInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DScheduledDensityInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+KFCausalCSpecRecoveredStageBDG4DOperatorSplit
+BDG4DOperatorProfileSplitData.toProfileData
+BDG4DOperatorProfileSplitData.sampled_tendsto
+RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.toScheduledDensityInterface
+RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -657,14 +663,21 @@ The scheduled-density bridge removes one more free convergence input: if the
 chart certificate density is affine in the refinement index,
 `density_n = densityBase + densityStep*n`, and `densityStep > 0`, Lean proves
 `density_n -> atTop` and instantiates the matched physical-chart interface.
+The operator-split bridge factors the remaining monolithic
+`BDG4DOperatorProfileData` package into function, scale, regularity,
+uniform-bound, support, and cone-bound certificates.  Lean proves those split
+certificates assemble back into the 4D operator profile package, then feeds
+the assembled package through the scheduled-density chart bridge.
 
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
 - prove the physical causal-growth law supplies a
   `RecoveredStageBDG4DScheduledDensityInterface`, especially the affine density
-  law, matched residual identities, and the support, regularity, and cone-bound
-  stack inside `BDG4DOperatorProfileData`;
+  law and matched residual identities;
+- prove the physical recovered chart supplies `BDG4DOperatorProfileSplitData`:
+  the profile functions, positive support scales, continuity and derivative
+  regularity, uniform bounds, compact support, and cone-bound estimate;
 - derive the null-balance hypotheses from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
@@ -733,8 +746,8 @@ The next high-value theorem targets are:
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
 4. Gate 4: instantiate `RecoveredStageBDG4DScheduledDensityInterface` from the
    physical causal-growth law, including the affine density law, matched
-   residual identities, and the `BDG4DOperatorProfileData`
-   support/regularity/cone-bound fields.
+   residual identities, and the split `BDG4DOperatorProfileSplitData`
+   support/regularity/cone-bound components.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 7: use the canonical JSON preregistration ledger for future empirical

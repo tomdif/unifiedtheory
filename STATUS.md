@@ -244,6 +244,11 @@
 > `affineDensity_tendsto_atTop`, instantiates the matched physical-chart
 > interface, and preserves the combined zero finite horizon error, sampled 4D
 > operator convergence, and chart-distortion collapse theorem.
+> `KFCausalCSpecRecoveredStageBDG4DOperatorSplit.lean` now factors the
+> monolithic `BDG4DOperatorProfileData` target into profile-function, scale,
+> regularity, uniform-bound, support, and cone-bound certificates.  Lean proves
+> the split package assembles back into the operator profile data and feeds the
+> scheduled-density recovered chart bridge.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

@@ -356,6 +356,52 @@ affine refinement schedule
 infinite sprinkling density, then feeds the scheduled supplier through the
 matched residual bridge.
 
+## Split 4D Operator Profile Supplier
+
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DOperatorSplit.lean`
+
+The file defines:
+
+```lean
+structure BDG4DOperatorProfileFunctions
+
+structure BDG4DOperatorProfileScales
+
+structure BDG4DOperatorProfileRegularity
+
+structure BDG4DOperatorProfileUniformBounds
+
+structure BDG4DOperatorProfileSupport
+
+structure BDG4DOperatorProfileConeBound
+
+structure BDG4DOperatorProfileSplitData
+
+structure RecoveredStageBDG4DScheduledDensitySplitOperatorInterface
+```
+
+and proves:
+
+```lean
+def BDG4DOperatorProfileSplitData.toProfileData
+
+theorem BDG4DOperatorProfileSplitData.sampled_tendsto
+
+def RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.toScheduledDensityInterface
+
+theorem RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+```
+
+This factors the monolithic `BDG4DOperatorProfileData` target into separate
+function, scale, regularity, uniform-bound, support, and cone-bound
+certificates.  The assembled split package then feeds the scheduled-density
+chart bridge, so the remaining analytic work can be attacked component by
+component.
+
 ## Previous Target
 
 Imports:

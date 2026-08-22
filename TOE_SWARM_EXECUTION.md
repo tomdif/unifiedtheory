@@ -153,8 +153,10 @@ derivation of the aggregate rate rather than the only logical gate.
   density-convergence input when the chart certificate density follows a
   positive affine refinement schedule.  The remaining work is to prove the
   physical causal-growth law supplies that scheduled matched physical-chart
-  interface, especially the affine density law and the
-  `BDG4DOperatorProfileData` support, regularity, and cone-bound fields.
+  interface, especially the affine density law.
+  `KFCausalCSpecRecoveredStageBDG4DOperatorSplit` now factors the remaining
+  `BDG4DOperatorProfileData` target into function, scale, regularity,
+  uniform-bound, support, and cone-bound certificates.
 - Gate 5: exact recovered CSpec stages should next carry finite Hilbert fibers,
   local Born normalization, and local observable algebras before any continuum
   QFT claim.
@@ -196,7 +198,7 @@ Gate 3:
 Gate 4:
   RecoveredStageBDG4DScheduledDensityInterface
   affine physical density schedule
-  BDG4DOperatorProfileData support/regularity/cone-bound fields
+  BDG4DOperatorProfileSplitData support/regularity/cone-bound components
 
 Gate 5:
   RecoveredCSpecHilbertFiber
