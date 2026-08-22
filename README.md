@@ -222,9 +222,11 @@ Machine-checked additions now cover:
   multiplication leaves the Bloch vector unchanged; its coordinates are proved
   to agree with the repo's existing `WignerHardQubit.blochVector`; the
   algebraic phase-quotient module proves the common-`U(1)` relation is a
-  setoid and the Bloch coordinates descend to it; the recovered-stage Hopf
-  fiber interface now lifts this to sitewise stage data, proving unit local
-  Bloch observables and invariance under local stagewise `U(1)` phase choices.
+  setoid and the Bloch coordinates descend to it; the normalized quotient
+  module proves that unit spinor phase classes carry a well-defined point on
+  the unit Bloch sphere; the recovered-stage Hopf fiber interface now lifts
+  this to sitewise stage data, proving unit local Bloch observables and
+  invariance under local stagewise `U(1)` phase choices.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

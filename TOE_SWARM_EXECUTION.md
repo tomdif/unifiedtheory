@@ -170,6 +170,8 @@ derivation of the aggregate rate rather than the only logical gate.
   topology and principal-bundle characteristic classes remain open.
   `KFHopfPhaseQuotient` now proves the algebraic common-phase relation is a
   setoid and the Bloch coordinates descend to that quotient.
+  `KFHopfUnitSphereQuotient` now restricts the quotient to normalized spinors
+  and proves the quotient observable lands on the unit Bloch sphere.
   `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
   fiber data and proves local Bloch normalization plus invariance under
   stagewise local `U(1)` phase choices.
@@ -218,6 +220,7 @@ Gate 5:
   RecoveredCSpecHilbertFiber.transport_and_born
   KFHopfSpinorBlochBridge
   KFHopfPhaseQuotient
+  KFHopfUnitSphereQuotient
   KFRecoveredCSpecHopfFiber
 
 Gate 7:

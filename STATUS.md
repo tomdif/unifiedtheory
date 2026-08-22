@@ -266,6 +266,9 @@
 > common unit-phase related real-coordinate spinors form a Lean `Setoid`,
 > spinor norm is preserved on equivalence classes, and all three Bloch
 > coordinates descend to the quotient.
+> `KFHopfUnitSphereQuotient.lean` restricts this to normalized spinors and
+> proves the set-level algebraic Hopf statement `S^3 / U(1) -> S^2`: every
+> normalized phase class carries a well-defined unit Bloch-sphere observable.
 > `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
 > recovered-stage fiber data: for every stage and site, a normalized local
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,

@@ -83,6 +83,7 @@ Files:
 - `UnifiedTheory/Audit/KFOrientationPathQuantum.lean`
 - `UnifiedTheory/Audit/KFHopfSpinorBlochBridge.lean`
 - `UnifiedTheory/Audit/KFHopfPhaseQuotient.lean`
+- `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
@@ -98,6 +99,8 @@ Unconditional pieces:
   `WignerHardQubit.blochVector`;
 - algebraic common-phase quotient: unit-phase related spinors form a setoid,
   spinor norm is preserved, and Bloch coordinates descend to quotient classes;
+- normalized unit-sphere quotient: normalized phase classes carry a
+  well-defined unit Bloch-sphere observable;
 - local recovered-stage Hopf fiber interface: normalized stage/site spinors
   have unit Bloch observables and local `U(1)` phase choices are invisible to
   the repo Bloch vector;

@@ -5005,6 +5005,9 @@ import UnifiedTheory.Audit.KFHopfSpinorBlochBridge
 -- Algebraic common-phase quotient: the U(1)-phase relation is a setoid on
 -- real-coordinate spinors, and all three Bloch coordinates descend to it.
 import UnifiedTheory.Audit.KFHopfPhaseQuotient
+-- Normalized Hopf quotient: unit spinors modulo common U(1) phase carry a
+-- well-defined unit Bloch-sphere observable.
+import UnifiedTheory.Audit.KFHopfUnitSphereQuotient
 -- Local recovered-stage Hopf fibers: normalized sitewise spinors give unit
 -- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
 -- invariant under local stagewise U(1) phase choices.

@@ -709,6 +709,9 @@ Completed algebraic groundwork:
 - `KFHopfPhaseQuotient` proves the algebraic common-phase quotient: unit-phase
   related spinors form a Lean `Setoid`, spinor norm is preserved, and the
   three Bloch coordinates are well-defined on quotient classes.
+- `KFHopfUnitSphereQuotient` restricts the quotient to normalized spinors and
+  proves the algebraic `S^3 / U(1) -> S^2` core: normalized phase classes
+  carry a well-defined unit Bloch-sphere observable.
 - `KFRecoveredCSpecHopfFiber` lifts that algebra to local recovered-stage
   fiber data: each stage/site normalized spinor has a unit Bloch observable,
   agrees with the repo Bloch vector, and is invariant under local stagewise

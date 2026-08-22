@@ -132,7 +132,7 @@ from being silently promoted to a stronger physical scope.
 | Two-scale CP composition | `D_(Psi∘Phi)=Psi(D_Phi)+D_Psi(Phi·,Phi·)`; the orientation Hamiltonian changes from zero first-stage defect to a one-noise-mode composed defect | Proved two-step finite witness; no RG semigroup or continuum flow |
 | Finite CP towers and path holonomy | Total defect recursively telescopes over arbitrary heterogeneous finite paths; all-scale protection is successive multiplicative-domain membership; the rational two-path curvature Hermitianizes to Pauli Y with two trace-one projectors | Proved finite channel calculus plus separate quotient witness; no physical channel selection or continuum holonomy |
 | Quantum path-holonomy sector | Route and holonomy bases are mutually unbiased; the sign is an imaginary off-diagonal history phase erased by dephasing; Pauli closure gives exact spin-half algebra and `2*pi/4*pi` spinor periodicity; reflected cubic chirality swaps the projectors | Proved finite Hilbert/operator algebra conditional on coherent quotient paths; no derived causal-history amplitudes, fermion identification, or continuum observable |
-| Hopf spinor/Bloch bridge | In real coordinates, a two-component spinor `(a+ib,c+id)` maps to the Bloch vector `(2(ac+bd),2(ad-bc),a^2+b^2-c^2-d^2)`; Lean proves these coordinates agree with `WignerHardQubit.blochVector`, `|Bloch(psi)|^2=|psi|^4`, unit spinors map to the unit Bloch sphere, and common unit `U(1)` phase multiplication leaves all Bloch coordinates unchanged; the algebraic phase quotient is a setoid and the Bloch coordinates descend to it; the local recovered-stage Hopf fiber interface packages this as stage/site spinor data with unit local Bloch observables and local phase-gauge invariance | Proved algebraic Hopf core in `KFHopfSpinorBlochBridge.lean`, quotient descent in `KFHopfPhaseQuotient.lean`, and local stage/site fiber attachment in `KFRecoveredCSpecHopfFiber.lean`; no quotient topology, local trivialization, Chern class, Hopf invariant, or physical spin-bundle realization is claimed |
+| Hopf spinor/Bloch bridge | In real coordinates, a two-component spinor `(a+ib,c+id)` maps to the Bloch vector `(2(ac+bd),2(ad-bc),a^2+b^2-c^2-d^2)`; Lean proves these coordinates agree with `WignerHardQubit.blochVector`, `|Bloch(psi)|^2=|psi|^4`, unit spinors map to the unit Bloch sphere, and common unit `U(1)` phase multiplication leaves all Bloch coordinates unchanged; the algebraic phase quotient is a setoid and the Bloch coordinates descend to it; the normalized quotient carries a well-defined unit Bloch-sphere observable; the local recovered-stage Hopf fiber interface packages this as stage/site spinor data with unit local Bloch observables and local phase-gauge invariance | Proved algebraic Hopf core in `KFHopfSpinorBlochBridge.lean`, quotient descent in `KFHopfPhaseQuotient.lean`, normalized quotient-to-sphere map in `KFHopfUnitSphereQuotient.lean`, and local stage/site fiber attachment in `KFRecoveredCSpecHopfFiber.lean`; no quotient topology, local trivialization, Chern class, Hopf invariant, or physical spin-bundle realization is claimed |
 | Balanced history-kernel rigidity | Every strongly positive balanced normalized kernel is uniquely `D_y=[[1/2,iy],[-iy,1/2]]`, `|y|<=1/2`; relation-complement symmetry forces balanced birth; a nonzero reflection-odd source selects an endpoint | Proved finite classification and conditional selector; the microscopic origin of the symmetry/source remains open |
 | CPTP orientation refinement | A four-Kraus measure-and-prepare channel proves `Phi(D_y ⊗ D_z)=D_(2yz)`; it is associative, input-symmetric and reflection-equivariant on balanced kernels, and its four pure-endpoint outputs uniquely fix its whole balanced-sector action | Proved finite quantum channel and rigidity theorem |
 | Unlabeled refinement frontier | The serial causal ordinal sum is a finite partial order, is covariant under order isomorphism, and is associative after label quotienting; its orientation sign is a multiplicative `Z_2` character and descends to the endpoint channel; a rectangular Stinespring isometry derives all four endpoint amplitudes | Proved causal semigroup, quotient descent, finite orientation character, and microscopic dilation |
@@ -566,11 +566,13 @@ has a unit Bloch observable, agrees with the repo Bloch vector, and is invariant
 under local stagewise `U(1)` phase rotation.
 `UnifiedTheory/Audit/KFHopfPhaseQuotient.lean` also names the algebraic
 common-phase quotient: unit-phase related spinors form a setoid, spinor norm is
-preserved, and the Bloch coordinates descend to quotient classes.  This is a
-strong fit with the existing `SU(2)`/Bloch material, but it is deliberately only
-the algebraic quotient and local fiber core: no quotient topology, principal
-`U(1)` bundle, Chern class, or continuum spin-bundle realization is formalized
-yet.
+preserved, and the Bloch coordinates descend to quotient classes.
+`UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean` restricts this to normalized
+spinors and proves that every normalized phase class carries a well-defined unit
+Bloch-sphere observable.  This is a strong fit with the existing `SU(2)`/Bloch
+material, but it is deliberately only the algebraic quotient and local fiber
+core: no quotient topology, principal `U(1)` bundle, Chern class, or continuum
+spin-bundle realization is formalized yet.
 
 `UnifiedTheory/Audit/KFOrientationHistoryRigidity.lean` resolves the finite
 uniqueness question. Strong positivity, equal singleton route weights, and total
