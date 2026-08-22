@@ -344,6 +344,11 @@
 > equality and Pauli/all-axis Born-data equality on every pulled-back probe are
 > equivalent to equality and Born-data equality of the whole carrier field, with
 > recovered-stage gauge invisibility still pointwise visible on every probe.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverRefinement.lean` proves
+> the reindex-refinement companion: surjective reindexings of a probe cover
+> preserve and reflect joint surjectivity, carrier-field equality tests, and
+> Pauli/all-axis Born-data tests, while recovered-stage gauge invisibility
+> remains true on all refined probes.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

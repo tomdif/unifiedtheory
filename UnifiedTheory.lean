@@ -5069,6 +5069,10 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestri
 -- field equality and Pauli/all-axis Born-data equality from all local
 -- pullbacks back to the whole recovered stage.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover
+-- Carrier-field cover refinement: surjective reindexings of a probe cover
+-- preserve joint surjectivity, equality tests, Born-data tests, and
+-- recovered-stage gauge invisibility on all refined probes.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverRefinement
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

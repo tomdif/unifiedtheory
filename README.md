@@ -266,7 +266,9 @@ Machine-checked additions now cover:
   equality and Born data reflected by surjective probes; the cover/descent
   bridge proves jointly-surjective probe families reflect field equality and
   Pauli/all-axis Born-data equality from all local pullbacks back to the whole
-  recovered stage.
+  recovered stage; the cover-refinement bridge proves surjective reindexings
+  of a probe cover preserve joint surjectivity, equality tests, Born-data tests,
+  and recovered-stage gauge invisibility on the refined probes.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

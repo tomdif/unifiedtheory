@@ -102,6 +102,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverRefinement.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -166,6 +167,9 @@ Unconditional pieces:
 - carrier-field cover/descent covariance: jointly-surjective probe families
   reflect field equality and Pauli/all-axis Born-data equality from all local
   pullbacks back to the whole recovered stage;
+- carrier-field cover-refinement covariance: surjective cover reindexings
+  preserve joint surjectivity, equality tests, Born-data tests, and
+  recovered-stage gauge invisibility;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

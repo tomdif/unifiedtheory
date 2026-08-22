@@ -773,6 +773,10 @@ Completed algebraic groundwork:
   cover/descent covariance for carrier fields: a jointly-surjective family of
   probes reflects field equality and Pauli/all-axis Born-data equality from all
   local pullbacks back to the whole recovered stage.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverRefinement` proves
+  finite cover-refinement covariance: surjective reindexings preserve joint
+  surjectivity, equality tests, Born-data tests, and recovered-stage gauge
+  invisibility on the refined probes.
 
 Open work:
 
