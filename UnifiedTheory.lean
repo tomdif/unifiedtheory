@@ -5018,6 +5018,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfQuotientFiber
 -- Local Pauli Born observables from recovered-stage Hopf quotient fibers:
 -- X/Y/Z plus-minus probabilities are valid and local U(1)-gauge invariant.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornObservable
+-- Arbitrary-axis local Born observables: any unit Bloch measurement axis
+-- gives valid plus-minus probabilities, with Pauli X/Y/Z recovered as cases.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

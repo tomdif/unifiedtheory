@@ -181,6 +181,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfBornObservable` now derives valid local Pauli-X/Y/Z
   plus-minus Born probability pairs from those quotient observables and proves
   their stagewise local `U(1)` gauge invariance.
+  `KFRecoveredCSpecHopfBornAxisObservable` now extends this measurement
+  interface to arbitrary unit Bloch axes and proves the Pauli axes are exactly
+  the previous X/Y/Z cases.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -230,6 +233,7 @@ Gate 5:
   KFRecoveredCSpecHopfFiber
   KFRecoveredCSpecHopfQuotientFiber
   KFRecoveredCSpecHopfBornObservable
+  KFRecoveredCSpecHopfBornAxisObservable
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

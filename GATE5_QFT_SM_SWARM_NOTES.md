@@ -87,6 +87,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornAxisObservable.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -112,6 +113,9 @@ Unconditional pieces:
 - recovered-stage local Pauli Born interface: quotient Bloch observables
   determine valid X/Y/Z plus-minus probability pairs, invariant under local
   `U(1)` gauge rotation;
+- arbitrary-axis local Born interface: every unit Bloch measurement axis gives
+  a valid gauge-invariant plus-minus probability pair, with coordinate axes
+  reducing to the Pauli-X/Y/Z cases;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

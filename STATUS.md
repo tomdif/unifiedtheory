@@ -282,6 +282,11 @@
 > probability pairs from those quotient Bloch observables; Lean proves each
 > plus/minus pair is nonnegative, bounded by one, sums to one, and is invariant
 > under local stagewise `U(1)` gauge rotation.
+> `KFRecoveredCSpecHopfBornAxisObservable.lean` now extends the local Born
+> interface to arbitrary unit Bloch measurement axes: Lean proves the dot
+> expectation lies in `[-1,1]`, the resulting plus/minus pair is a valid
+> probability pair, it is locally `U(1)` gauge-invariant, and the coordinate
+> axes recover the Pauli-X/Y/Z pairs.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

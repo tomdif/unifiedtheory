@@ -722,6 +722,9 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfBornObservable` derives local Pauli-X/Y/Z Born
   probability pairs from the quotient Bloch observable and proves each pair is
   valid and invariant under local stagewise `U(1)` gauge rotation.
+- `KFRecoveredCSpecHopfBornAxisObservable` extends the local Born interface to
+  arbitrary unit Bloch measurement axes, proves the dot expectation is bounded
+  in `[-1,1]`, and recovers Pauli-X/Y/Z as coordinate-axis cases.
 
 Open work:
 
