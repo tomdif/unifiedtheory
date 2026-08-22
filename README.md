@@ -213,7 +213,9 @@ Machine-checked additions now cover:
   when chart density follows a positive affine refinement schedule; the
   remaining 4D operator-profile package is now factored into separate
   profile-function, scale, regularity, uniform-bound, support, and cone-bound
-  certificates before being assembled back into `BDG4DOperatorProfileData`.
+  certificates before being assembled back into `BDG4DOperatorProfileData`;
+  the cone-bound certificate is now further reduced to a profile-independent
+  weighted `f4D` kernel estimate plus the existing chart-profile sup bound.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

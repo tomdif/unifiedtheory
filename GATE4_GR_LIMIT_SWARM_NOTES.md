@@ -402,6 +402,41 @@ certificates.  The assembled split package then feeds the scheduled-density
 chart bridge, so the remaining analytic work can be attacked component by
 component.
 
+Integrated in:
+
+`UnifiedTheory/Audit/KFCausalCSpecRecoveredStageBDG4DConeBound.lean`
+
+The file defines:
+
+```lean
+structure BDG4DWeightedKernelBound
+
+structure BDG4DOperatorProfileKernelSplitData
+
+structure RecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+```
+
+and proves:
+
+```lean
+theorem BDG4DOperatorProfileConeBound.of_weightedKernelBound
+
+def BDG4DOperatorProfileKernelSplitData.toSplitData
+
+theorem BDG4DOperatorProfileKernelSplitData.sampled_tendsto
+
+def RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.toSplitOperatorInterface
+
+theorem RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+
+theorem RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+```
+
+This reduces the combined cone-bound obligation to a kernel-only weighted
+`f4D` estimate, the existing uniform chart-profile bound, and one scale
+calibration inequality.  The resulting kernel/profile split package then feeds
+the scheduled-density chart bridge.
+
 ## Previous Target
 
 Imports:
