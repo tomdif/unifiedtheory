@@ -5014,6 +5014,9 @@ import UnifiedTheory.Audit.KFHopfFiberExactness
 -- Hopf surjectivity: every unit Bloch point has a normalized spinor
 -- representative, so the algebraic normalized phase quotient is bijective.
 import UnifiedTheory.Audit.KFHopfSurjectivity
+-- Hopf quotient inverse: the algebraic bijection is packaged as an inverse
+-- from unit Bloch coordinates back to normalized phase classes.
+import UnifiedTheory.Audit.KFHopfQuotientInverse
 -- Local recovered-stage Hopf fibers: normalized sitewise spinors give unit
 -- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
 -- invariant under local stagewise U(1) phase choices.
@@ -5036,6 +5039,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornSeparation
 -- Projective Born observational completeness: Pauli and all-axis Born data
 -- separate exactly the recovered Hopf phase class.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassSeparation
+-- Projective Born tomography: Pauli Born expectations reconstruct the recovered
+-- Hopf phase class itself via the algebraic Hopf quotient inverse.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassReconstruction
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

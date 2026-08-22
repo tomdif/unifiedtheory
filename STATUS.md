@@ -277,6 +277,9 @@
 > Bloch point has a normalized spinor representative, and the normalized
 > phase-quotient-to-Bloch map is bijective.  Topology, local trivializations,
 > Chern classes, and continuum spin bundles remain outside this theorem.
+> `KFHopfQuotientInverse.lean` packages that bijection as a noncomputable
+> inverse from unit Bloch points to normalized phase classes, with both inverse
+> laws proved.
 > `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
 > recovered-stage fiber data: for every stage and site, a normalized local
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,
@@ -308,6 +311,9 @@
 > through the algebraic Hopf quotient: equality of Pauli Born data, equality of
 > all-axis Born data, equality of quotient Bloch observables, and equality of
 > recovered normalized phase classes are equivalent locally.
+> `KFRecoveredCSpecHopfBornPhaseClassReconstruction.lean` then reconstructs the
+> recovered normalized phase class from the three Pauli Born expectations and
+> proves the reconstruction is invariant under local stagewise `U(1)` rotation.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

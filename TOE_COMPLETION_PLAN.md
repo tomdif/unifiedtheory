@@ -718,6 +718,9 @@ Completed algebraic groundwork:
 - `KFHopfSurjectivity` proves every unit Bloch point has a normalized spinor
   representative, making the normalized algebraic phase quotient bijective
   onto the unit Bloch sphere at set level.
+- `KFHopfQuotientInverse` packages the set-level algebraic bijection as an
+  inverse from unit Bloch coordinates to normalized phase classes and proves
+  the two inverse laws.
 - `KFRecoveredCSpecHopfFiber` lifts that algebra to local recovered-stage
   fiber data: each stage/site normalized spinor has a unit Bloch observable,
   agrees with the repo Bloch vector, and is invariant under local stagewise
@@ -741,6 +744,9 @@ Completed algebraic groundwork:
   Hopf quotient injectivity: Pauli Born data, all-axis Born data, quotient
   Bloch observables, and recovered normalized phase classes are locally
   equivalent data.
+- `KFRecoveredCSpecHopfBornPhaseClassReconstruction` reconstructs the recovered
+  normalized phase class from Pauli Born expectations and proves local
+  `U(1)` gauge invariance of that reconstruction.
 
 Open work:
 

@@ -178,6 +178,8 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFHopfSurjectivity` now proves every unit Bloch point has a normalized
   spinor representative, hence the normalized algebraic Hopf quotient is a
   set-level bijection onto the unit Bloch sphere.
+  `KFHopfQuotientInverse` packages that bijection as an inverse from unit
+  Bloch coordinates back to normalized phase classes.
   `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
   fiber data and proves local Bloch normalization plus invariance under
   stagewise local `U(1)` phase choices.
@@ -199,6 +201,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfBornPhaseClassSeparation` upgrades this to the
   projective Hopf layer: the same Born data separates the recovered normalized
   phase class itself.
+  `KFRecoveredCSpecHopfBornPhaseClassReconstruction` proves Pauli Born
+  expectations reconstruct that recovered phase class and the reconstruction is
+  locally `U(1)` gauge-invariant.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -247,6 +252,7 @@ Gate 5:
   KFHopfUnitSphereQuotient
   KFHopfFiberExactness
   KFHopfSurjectivity
+  KFHopfQuotientInverse
   KFRecoveredCSpecHopfFiber
   KFRecoveredCSpecHopfQuotientFiber
   KFRecoveredCSpecHopfBornObservable
@@ -254,6 +260,7 @@ Gate 5:
   KFRecoveredCSpecHopfBornTomography
   KFRecoveredCSpecHopfBornSeparation
   KFRecoveredCSpecHopfBornPhaseClassSeparation
+  KFRecoveredCSpecHopfBornPhaseClassReconstruction
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

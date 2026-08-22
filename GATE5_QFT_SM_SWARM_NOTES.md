@@ -86,6 +86,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
 - `UnifiedTheory/Audit/KFHopfFiberExactness.lean`
 - `UnifiedTheory/Audit/KFHopfSurjectivity.lean`
+- `UnifiedTheory/Audit/KFHopfQuotientInverse.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
@@ -93,6 +94,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornTomography.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornSeparation.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassSeparation.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornPhaseClassReconstruction.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -114,6 +116,8 @@ Unconditional pieces:
   has no extra identifications;
 - Hopf surjectivity: every unit Bloch point has a normalized spinor
   representative, so the normalized algebraic phase quotient is bijective;
+- Hopf quotient inverse: unit Bloch coordinates determine a chosen normalized
+  phase class with both inverse laws proved;
 - local recovered-stage Hopf fiber interface: normalized stage/site spinors
   have unit Bloch observables and local `U(1)` phase choices are invisible to
   the repo Bloch vector;
@@ -132,6 +136,8 @@ Unconditional pieces:
   and the recovered quotient Bloch observable are equivalent local data;
 - projective local Born completeness: the same Born data separates the
   recovered normalized Hopf phase class itself;
+- projective local Born tomography: Pauli Born expectations reconstruct the
+  recovered normalized phase class, invariant under local `U(1)` rotation;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;
