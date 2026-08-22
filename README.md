@@ -220,7 +220,10 @@ Machine-checked additions now cover:
   algebraic core of the Hopf map in real coordinates: normalized
   two-component spinors map to unit Bloch vectors, and common unit-phase
   multiplication leaves the Bloch vector unchanged; its coordinates are proved
-  to agree with the repo's existing `WignerHardQubit.blochVector`.
+  to agree with the repo's existing `WignerHardQubit.blochVector`; the
+  recovered-stage Hopf fiber interface now lifts this to sitewise stage data,
+  proving unit local Bloch observables and invariance under local stagewise
+  `U(1)` phase choices.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

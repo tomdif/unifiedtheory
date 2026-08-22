@@ -168,6 +168,9 @@ derivation of the aggregate rate rather than the only logical gate.
   connector from normalized two-component spinors to Bloch/projective qubit
   geometry, with direct agreement to `WignerHardQubit.blochVector`; quotient
   topology and principal-bundle characteristic classes remain open.
+  `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
+  fiber data and proves local Bloch normalization plus invariance under
+  stagewise local `U(1)` phase choices.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -212,6 +215,7 @@ Gate 5:
   RecoveredCSpecHilbertFiber
   RecoveredCSpecHilbertFiber.transport_and_born
   KFHopfSpinorBlochBridge
+  KFRecoveredCSpecHopfFiber
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

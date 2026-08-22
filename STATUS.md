@@ -262,6 +262,11 @@
 > multiplication.  It also proves those coordinates agree with the repo's
 > existing `WignerHardQubit.blochVector`.  This is the algebraic Hopf core,
 > not yet the full topological fibration or Chern-class story.
+> `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
+> recovered-stage fiber data: for every stage and site, a normalized local
+> Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,
+> and remains physically unchanged under local stagewise `U(1)` phase choices.
+> This closes the finite local fiber attachment, not the continuum QFT dynamics.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

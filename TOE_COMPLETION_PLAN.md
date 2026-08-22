@@ -706,6 +706,10 @@ Completed algebraic groundwork:
   coordinates are proved to agree with the existing
   `WignerHardQubit.blochVector`, giving Gate 5 a concrete
   upstairs-state/phase-fiber/downstairs-observable architecture.
+- `KFRecoveredCSpecHopfFiber` lifts that algebra to local recovered-stage
+  fiber data: each stage/site normalized spinor has a unit Bloch observable,
+  agrees with the repo Bloch vector, and is invariant under local stagewise
+  `U(1)` phase choices.
 
 Open work:
 

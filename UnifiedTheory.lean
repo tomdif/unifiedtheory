@@ -5002,6 +5002,10 @@ import UnifiedTheory.Audit.KFOrientationPathQuantum
 -- unchanged. This connects the finite spinor/qubit side to projective
 -- Bloch-sphere geometry without claiming a full quotient-topology fibration.
 import UnifiedTheory.Audit.KFHopfSpinorBlochBridge
+-- Local recovered-stage Hopf fibers: normalized sitewise spinors give unit
+-- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
+-- invariant under local stagewise U(1) phase choices.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected
