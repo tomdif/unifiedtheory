@@ -227,12 +227,14 @@ Machine-checked additions now cover:
   the unit Bloch sphere; the fiber-exactness module proves the converse
   identification, namely equal unit Bloch observables are exactly common
   `U(1)`-phase related normalized spinors, so no extra algebraic
-  identifications are introduced by the quotient map; the recovered-stage Hopf
-  fiber interface now lifts this to sitewise stage data, proving unit local
-  Bloch observables and invariance under local stagewise `U(1)` phase choices;
-  the recovered-stage quotient-fiber bridge now proves those local fields
-  determine normalized phase classes and gauge-invariant unit Bloch-sphere
-  quotient observables;
+  identifications are introduced by the quotient map; the surjectivity module
+  proves every unit Bloch point has a normalized spinor representative, so the
+  algebraic normalized phase quotient is bijective at set level; the
+  recovered-stage Hopf fiber interface now lifts this to sitewise stage data,
+  proving unit local Bloch observables and invariance under local stagewise
+  `U(1)` phase choices; the recovered-stage quotient-fiber bridge now proves
+  those local fields determine normalized phase classes and gauge-invariant
+  unit Bloch-sphere quotient observables;
   the local Hopf Born-observable bridge now turns those quotient observables
   into valid Pauli-X/Y/Z plus-minus probability pairs, again invariant under
   local stagewise `U(1)` gauge choices; the arbitrary-axis Born bridge now

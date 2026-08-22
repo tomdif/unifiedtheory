@@ -85,6 +85,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfPhaseQuotient.lean`
 - `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
 - `UnifiedTheory/Audit/KFHopfFiberExactness.lean`
+- `UnifiedTheory/Audit/KFHopfSurjectivity.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
@@ -110,6 +111,8 @@ Unconditional pieces:
 - Hopf fiber exactness: equal unit Bloch observables are exactly
   common-`U(1)` phase related normalized spinors, so the algebraic quotient map
   has no extra identifications;
+- Hopf surjectivity: every unit Bloch point has a normalized spinor
+  representative, so the normalized algebraic phase quotient is bijective;
 - local recovered-stage Hopf fiber interface: normalized stage/site spinors
   have unit Bloch observables and local `U(1)` phase choices are invisible to
   the repo Bloch vector;

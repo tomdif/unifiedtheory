@@ -273,6 +273,10 @@
 > algebraic scope: equal unit Bloch observables are exactly common-`U(1)`
 > phase related normalized spinors, and the normalized quotient-to-Bloch map is
 > injective.  Surjectivity and the topological fibration remain separate.
+> `KFHopfSurjectivity.lean` closes the set-level algebraic quotient: every unit
+> Bloch point has a normalized spinor representative, and the normalized
+> phase-quotient-to-Bloch map is bijective.  Topology, local trivializations,
+> Chern classes, and continuum spin bundles remain outside this theorem.
 > `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
 > recovered-stage fiber data: for every stage and site, a normalized local
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,
