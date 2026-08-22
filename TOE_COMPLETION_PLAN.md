@@ -758,6 +758,9 @@ Completed algebraic groundwork:
   projective states, Bloch points, and Born families into a compact carrier and
   proves reconstruction, gauge invariance, and Pauli/all-axis Born separation of
   carrier equality.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierField` lifts those carriers to a
+  recovered stagewise field and proves pointwise Born-data separation,
+  whole-stage reconstruction, and local `U(1)` gauge invariance.
 
 Open work:
 

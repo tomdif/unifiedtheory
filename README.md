@@ -256,7 +256,9 @@ Machine-checked additions now cover:
   that API, with matching Bloch/Born data, local reconstruction, and `U(1)`
   gauge invariance; the projective-carrier bridge bundles state, Bloch, and Born
   projections into one compact local carrier whose Pauli/all-axis Born data
-  separate carrier equality.
+  separate carrier equality; the carrier-field bridge lifts this to a whole
+  recovered stage as one carrier per site, with pointwise reconstruction, gauge
+  invariance, and Born-data separation of field equality.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

@@ -98,6 +98,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfProjectiveQubitState.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitState.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrier.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierField.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -150,6 +151,9 @@ Unconditional pieces:
 - recovered-stage projective-qubit carrier: local state, Bloch point, and Born
   family are bundled as one carrier with reconstruction, gauge invariance, and
   carrier equality separated by Pauli/all-axis Born data;
+- recovered-stage projective-qubit carrier field: a whole stage is one carrier
+  per site, with pointwise Pauli/all-axis Born data equivalent to field equality
+  and local `U(1)` gauge invariance across the stage;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

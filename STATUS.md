@@ -326,6 +326,10 @@
 > local projective state, Bloch point, and Born family as a compact carrier and
 > proves carrier reconstruction, local gauge invariance, and Pauli/all-axis Born
 > separation of carrier equality.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierField.lean` lifts that carrier to a
+> recovered stagewise field, proving pointwise Pauli/all-axis Born data are
+> equivalent to field equality, with whole-stage reconstruction and local
+> `U(1)` gauge invariance.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
