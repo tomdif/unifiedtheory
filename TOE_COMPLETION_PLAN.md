@@ -769,6 +769,10 @@ Completed algebraic groundwork:
   probe/restriction covariance for carrier fields: arbitrary pullbacks preserve
   reconstruction, Pauli/all-axis Born data, and recovered-stage gauge
   invisibility, while surjective probes reflect equality and Born-data equality.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover` proves finite
+  cover/descent covariance for carrier fields: a jointly-surjective family of
+  probes reflects field equality and Pauli/all-axis Born-data equality from all
+  local pullbacks back to the whole recovered stage.
 
 Open work:
 

@@ -223,6 +223,10 @@ derivation of the aggregate rate rather than the only logical gate.
   corresponding probe/restriction covariance: arbitrary pullbacks preserve
   reconstruction, Born data, and gauge invisibility, while surjective probes
   reflect equality and Born-data equality.
+  `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover` proves finite
+  cover/descent: jointly-surjective probe families reflect field equality and
+  Pauli/all-axis Born-data equality from all local pullbacks back to the whole
+  recovered stage.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -286,6 +290,7 @@ Gate 5:
   KFRecoveredCSpecHopfProjectiveQubitCarrierField
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction
+  KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

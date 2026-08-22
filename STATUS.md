@@ -339,6 +339,11 @@
 > probes, reconstruction and Pauli/all-axis Born data commute with pullback,
 > recovered-stage gauge invisibility survives restriction, and surjective probes
 > reflect carrier-field equality plus Born-data equality.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover.lean` then adds the
+> finite cover/descent theorem: for any jointly-surjective family of probe maps,
+> equality and Pauli/all-axis Born-data equality on every pulled-back probe are
+> equivalent to equality and Born-data equality of the whole carrier field, with
+> recovered-stage gauge invisibility still pointwise visible on every probe.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

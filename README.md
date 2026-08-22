@@ -263,7 +263,10 @@ Machine-checked additions now cover:
   reconstruction, Born data, and recovered-stage gauge invisibility; the
   restriction/pullback bridge proves arbitrary probe maps preserve
   reconstruction, Born data, and recovered-stage gauge invisibility, with
-  equality and Born data reflected by surjective probes.
+  equality and Born data reflected by surjective probes; the cover/descent
+  bridge proves jointly-surjective probe families reflect field equality and
+  Pauli/all-axis Born-data equality from all local pullbacks back to the whole
+  recovered stage.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
