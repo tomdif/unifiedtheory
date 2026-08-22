@@ -334,6 +334,11 @@
 > site-relabel covariance: carrier-field reconstruction and Pauli/all-axis Born
 > data commute with site bijections, relabeling is injective on fields, and
 > recovered-stage gauge invisibility survives relabeling.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction.lean` adds the
+> non-bijective probe-map companion: carrier fields pull back along arbitrary
+> probes, reconstruction and Pauli/all-axis Born data commute with pullback,
+> recovered-stage gauge invisibility survives restriction, and surjective probes
+> reflect carrier-field equality plus Born-data equality.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

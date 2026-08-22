@@ -100,6 +100,7 @@ Files:
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrier.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierField.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel.lean`
+- `UnifiedTheory/Audit/KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction.lean`
 - `UnifiedTheory/Audit/KFCausalBundleProtectedChirality.lean`
 - `UnifiedTheory/Audit/KFCausalCSpecDeterminantChirality.lean`
 - `UnifiedTheory/Audit/KFCausalSetSourceQuantumEnsemble.lean`
@@ -158,6 +159,9 @@ Unconditional pieces:
 - carrier-field site-relabel covariance: finite site bijections preserve and
   reflect reconstruction, Pauli/all-axis Born data, and recovered-stage gauge
   invisibility;
+- carrier-field restriction covariance: arbitrary probe-map pullbacks preserve
+  reconstruction, Pauli/all-axis Born data, and recovered-stage gauge
+  invisibility, while surjective probes reflect equality and Born-data equality;
 - exact finite spin-half/path Pauli algebra and unitary holonomy evolution;
 - protected finite relational chirality under record pinching;
 - determinant-line CSpec chirality transport;

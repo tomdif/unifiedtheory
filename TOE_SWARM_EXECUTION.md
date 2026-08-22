@@ -219,6 +219,10 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel` proves finite
   site-relabel covariance for those carrier fields, preserving and reflecting
   reconstruction, Born data, and recovered-stage gauge invisibility.
+  `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction` proves the
+  corresponding probe/restriction covariance: arbitrary pullbacks preserve
+  reconstruction, Born data, and gauge invisibility, while surjective probes
+  reflect equality and Born-data equality.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -281,6 +285,7 @@ Gate 5:
   KFRecoveredCSpecHopfProjectiveQubitCarrier
   KFRecoveredCSpecHopfProjectiveQubitCarrierField
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRelabel
+  KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

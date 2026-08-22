@@ -765,6 +765,10 @@ Completed algebraic groundwork:
   site-relabel covariance for carrier fields: reconstruction, Pauli/all-axis
   Born data, and recovered-stage gauge invisibility are preserved and reflected
   by site bijections.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldRestriction` proves
+  probe/restriction covariance for carrier fields: arbitrary pullbacks preserve
+  reconstruction, Pauli/all-axis Born data, and recovered-stage gauge
+  invisibility, while surjective probes reflect equality and Born-data equality.
 
 Open work:
 
