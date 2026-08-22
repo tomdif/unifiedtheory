@@ -747,6 +747,9 @@ Completed algebraic groundwork:
 - `KFRecoveredCSpecHopfBornPhaseClassReconstruction` reconstructs the recovered
   normalized phase class from Pauli Born expectations and proves local
   `U(1)` gauge invariance of that reconstruction.
+- `KFHopfProjectiveQubitState` packages the normalized Hopf phase quotient as a
+  finite projective-qubit state API with Bloch/Born observables, Pauli
+  reconstruction of the state, and Pauli/all-axis extensionality.
 
 Open work:
 

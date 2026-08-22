@@ -248,7 +248,10 @@ Machine-checked additions now cover:
   Bloch observable are equivalent locally; the projective-completeness bridge
   composes this with Hopf quotient injectivity so the same Born data separates
   the recovered normalized phase class itself; the projective-tomography
-  bridge reconstructs that phase class from the three Pauli Born expectations.
+  bridge reconstructs that phase class from the three Pauli Born expectations;
+  the projective-qubit state API packages the normalized Hopf phase quotient as
+  a finite state type and proves Pauli Born expectations reconstruct the state,
+  with Pauli/all-axis Born data equivalent to state equality.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

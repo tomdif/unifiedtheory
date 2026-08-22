@@ -204,6 +204,9 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfBornPhaseClassReconstruction` proves Pauli Born
   expectations reconstruct that recovered phase class and the reconstruction is
   locally `U(1)` gauge-invariant.
+  `KFHopfProjectiveQubitState` packages the normalized Hopf phase quotient as a
+  finite projective-qubit state API with Bloch/Born observables, Pauli
+  reconstruction, and Pauli/all-axis extensionality.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -261,6 +264,7 @@ Gate 5:
   KFRecoveredCSpecHopfBornSeparation
   KFRecoveredCSpecHopfBornPhaseClassSeparation
   KFRecoveredCSpecHopfBornPhaseClassReconstruction
+  KFHopfProjectiveQubitState
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target

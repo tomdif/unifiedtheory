@@ -5042,6 +5042,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassSeparation
 -- Projective Born tomography: Pauli Born expectations reconstruct the recovered
 -- Hopf phase class itself via the algebraic Hopf quotient inverse.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornPhaseClassReconstruction
+-- Stable projective-qubit state API: states, Bloch points, Born data, and
+-- Pauli/all-axis extensionality are packaged over the Hopf quotient.
+import UnifiedTheory.Audit.KFHopfProjectiveQubitState
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

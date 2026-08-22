@@ -314,6 +314,10 @@
 > `KFRecoveredCSpecHopfBornPhaseClassReconstruction.lean` then reconstructs the
 > recovered normalized phase class from the three Pauli Born expectations and
 > proves the reconstruction is invariant under local stagewise `U(1)` rotation.
+> `KFHopfProjectiveQubitState.lean` packages the normalized Hopf phase quotient
+> as a finite projective-qubit state API: each state has Bloch and Born
+> observables, Pauli Born expectations reconstruct the state, and Pauli/all-axis
+> Born data are equivalent to state equality.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now
