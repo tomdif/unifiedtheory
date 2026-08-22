@@ -269,6 +269,10 @@
 > `KFHopfUnitSphereQuotient.lean` restricts this to normalized spinors and
 > proves the set-level algebraic Hopf statement `S^3 / U(1) -> S^2`: every
 > normalized phase class carries a well-defined unit Bloch-sphere observable.
+> `KFHopfFiberExactness.lean` proves the exact fiber converse at the same
+> algebraic scope: equal unit Bloch observables are exactly common-`U(1)`
+> phase related normalized spinors, and the normalized quotient-to-Bloch map is
+> injective.  Surjectivity and the topological fibration remain separate.
 > `KFRecoveredCSpecHopfFiber.lean` now lifts the Hopf bridge to local
 > recovered-stage fiber data: for every stage and site, a normalized local
 > Hopf spinor has a unit Bloch observable, agrees with the repo Bloch vector,

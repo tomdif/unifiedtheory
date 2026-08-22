@@ -712,6 +712,9 @@ Completed algebraic groundwork:
 - `KFHopfUnitSphereQuotient` restricts the quotient to normalized spinors and
   proves the algebraic `S^3 / U(1) -> S^2` core: normalized phase classes
   carry a well-defined unit Bloch-sphere observable.
+- `KFHopfFiberExactness` proves exact Hopf fibers at the algebraic level:
+  equal unit Bloch observables are exactly common-`U(1)` phase related
+  normalized spinors, and the quotient-to-Bloch map is injective.
 - `KFRecoveredCSpecHopfFiber` lifts that algebra to local recovered-stage
   fiber data: each stage/site normalized spinor has a unit Bloch observable,
   agrees with the repo Bloch vector, and is invariant under local stagewise
@@ -738,6 +741,8 @@ Open work:
 - recover propagators, spin/statistics, gauge fields, and renormalization;
 - lift the algebraic Hopf bridge to a topological/principal-bundle statement
   with quotient topology, local trivializations, and characteristic classes;
+- add the remaining set-level surjectivity chart showing every unit Bloch
+  point has a normalized spinor representative;
 - connect finite Standard Model algebra to the same infrared limit;
 - derive the parameter-identification chain instead of assuming it.
 

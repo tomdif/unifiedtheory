@@ -5008,6 +5008,9 @@ import UnifiedTheory.Audit.KFHopfPhaseQuotient
 -- Normalized Hopf quotient: unit spinors modulo common U(1) phase carry a
 -- well-defined unit Bloch-sphere observable.
 import UnifiedTheory.Audit.KFHopfUnitSphereQuotient
+-- Hopf fiber exactness: equal unit Bloch observables are exactly common
+-- U(1)-phase related normalized spinors, so the quotient map is injective.
+import UnifiedTheory.Audit.KFHopfFiberExactness
 -- Local recovered-stage Hopf fibers: normalized sitewise spinors give unit
 -- Bloch observables, agree with `WignerHardQubit.blochVector`, and remain
 -- invariant under local stagewise U(1) phase choices.

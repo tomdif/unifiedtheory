@@ -84,6 +84,7 @@ Files:
 - `UnifiedTheory/Audit/KFHopfSpinorBlochBridge.lean`
 - `UnifiedTheory/Audit/KFHopfPhaseQuotient.lean`
 - `UnifiedTheory/Audit/KFHopfUnitSphereQuotient.lean`
+- `UnifiedTheory/Audit/KFHopfFiberExactness.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfQuotientFiber.lean`
 - `UnifiedTheory/Audit/KFRecoveredCSpecHopfBornObservable.lean`
@@ -106,6 +107,9 @@ Unconditional pieces:
   spinor norm is preserved, and Bloch coordinates descend to quotient classes;
 - normalized unit-sphere quotient: normalized phase classes carry a
   well-defined unit Bloch-sphere observable;
+- Hopf fiber exactness: equal unit Bloch observables are exactly
+  common-`U(1)` phase related normalized spinors, so the algebraic quotient map
+  has no extra identifications;
 - local recovered-stage Hopf fiber interface: normalized stage/site spinors
   have unit Bloch observables and local `U(1)` phase choices are invisible to
   the repo Bloch vector;

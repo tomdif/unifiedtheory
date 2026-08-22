@@ -172,6 +172,9 @@ derivation of the aggregate rate rather than the only logical gate.
   setoid and the Bloch coordinates descend to that quotient.
   `KFHopfUnitSphereQuotient` now restricts the quotient to normalized spinors
   and proves the quotient observable lands on the unit Bloch sphere.
+  `KFHopfFiberExactness` now proves exact algebraic fibers: equal unit Bloch
+  observables are exactly common-`U(1)` phase related normalized spinors, so
+  the normalized quotient-to-Bloch map is injective.
   `KFRecoveredCSpecHopfFiber` now packages that connector as local stage/site
   fiber data and proves local Bloch normalization plus invariance under
   stagewise local `U(1)` phase choices.
@@ -236,6 +239,7 @@ Gate 5:
   KFHopfSpinorBlochBridge
   KFHopfPhaseQuotient
   KFHopfUnitSphereQuotient
+  KFHopfFiberExactness
   KFRecoveredCSpecHopfFiber
   KFRecoveredCSpecHopfQuotientFiber
   KFRecoveredCSpecHopfBornObservable
