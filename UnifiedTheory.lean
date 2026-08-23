@@ -5663,6 +5663,10 @@ import UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
 -- sector inside sequential growth.  This is existence, not dynamical
 -- dominance or a claim that the rank-eight seed alone determines the atlas.
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
+-- Conditional complete-chiral CSpec realization: the same physical atlas path
+-- realizes the determinant sector under the complete chiral law once the 140
+-- concrete normalized transition aggregates are proved nonzero.
+import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 -- The finite determinant-selected weak vertex lifts pointwise to a chiral
 -- field on any nonempty target base, and order reversal is respected by any
 -- order embedding.  A 3+1-dimensional continuum sign flip additionally

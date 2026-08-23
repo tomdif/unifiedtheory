@@ -129,6 +129,11 @@ derivation of the aggregate rate rather than the only logical gate.
   `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`,
   `completeChiralCausalSetGrowthLaw_gate1_projective`, and
   `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`.
+  `KFCausalCSpecPhysicalChiralGrowthRealization` now proves the conditional
+  complete-chiral CSpec realization theorem: if the 140 concrete atlas-birth
+  transition aggregates do not cancel, the actual complete chiral law assigns
+  nonzero amplitude to the physical atlas path and realizes the determinant
+  weak sector.
 - Gate 2: the bridge zero set is strong; the semantic gap is now the meaning of
   zero `countWindow`, `curvatureBias`, and `spectralLocality` residuals.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source
@@ -259,6 +264,7 @@ For each agent result:
 
 ```text
 Gate 1:
+  prove CompleteChiralAtlasTransitionNonzero for the physical CSpec atlas path
   derive physical aggregate-rate and residual-gap hypotheses from
   completeChiralCausalSetGrowthLaw
   identify the microscopic selection principle for canonicalPairCoupling

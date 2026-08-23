@@ -1365,6 +1365,12 @@
 > sector. This is an existence/support theorem. It does not show that the
 > rank-eight path alone determines the atlas, nor that the uniform or harmonic
 > dynamics preferentially selects this endpoint.
+> `KFCausalCSpecPhysicalChiralGrowthRealization.lean` now isolates the complete
+> chiral upgrade: if the 140 atlas-birth transition aggregates are nonzero
+> under `completeChiralCausalSetGrowthLaw`, then the same physical atlas path
+> has nonzero complete-chiral path amplitude and realizes the determinant weak
+> sector. Lean also proves each atlas birth is already physical and that
+> nonphysical births are killed by the complete chiral support gate.
 > `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
 > continuum assumptions. The finite weak vertex has an exact pointwise lift to
 > a nontrivial chiral field on any nonempty base, and every order embedding

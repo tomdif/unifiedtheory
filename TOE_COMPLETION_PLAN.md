@@ -42,6 +42,10 @@ Open work:
 - integrated concrete projective/quantum-consistency wrappers:
   `completeChiralCausalSetGrowthLaw_gate1_projective` and
   `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`;
+- integrated conditional CSpec realization bridge:
+  `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_transition_nonzero`;
+  the next finite Gate 1 check is nonzero complete-chiral aggregate amplitude
+  on the 140 concrete atlas births;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
@@ -841,9 +845,11 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 
 The next high-value theorem targets are:
 
-1. Gate 1: derive the physical aggregate-rate and residual-gap hypotheses from
-   `completeChiralCausalSetGrowthLaw`, or identify the additional microscopic
-   selection principle needed for the canonical pair coupling.
+1. Gate 1: prove `CompleteChiralAtlasTransitionNonzero` for the physical
+   CSpec atlas path, then derive the physical aggregate-rate and residual-gap
+   hypotheses from `completeChiralCausalSetGrowthLaw`, or identify the
+   additional microscopic selection principle needed for the canonical pair
+   coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.

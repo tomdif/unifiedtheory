@@ -827,6 +827,12 @@ normalized unlabeled law has no fallback, inherits the normalized projective
 strongly-positive infinite-cylinder functional, repairs `C_8 ⊕ A_6`, and has
 exactly the old `±i` endpoint restriction at depth two. The surviving physical
 questions are now more precisely separated by a coupling-quotient theorem.
+`KFCausalCSpecPhysicalChiralGrowthRealization.lean` then isolates the direct
+complete-chiral physical-growth bridge: the already physical 140-event CSpec
+atlas path realizes the determinant sector under `completeChiralCausalSetGrowthLaw`
+if its 140 normalized transition aggregates are nonzero. The remaining
+obstruction is finite coherent noncancellation, not one-element-growth
+admissibility.
 Because `omega(omega-1)=2*choose(omega,2)`, only the effective unordered-pair
 coupling `g=lambda^2` enters; changing the sign of `lambda` changes nothing,
 while `g` is identifiable from the two-ancestor raw signature. Normalizability

@@ -1042,6 +1042,12 @@ assumption tags and frozen data protocols, or explicitly demoted.
   seed. This proves that sequential growth supports the determinant sector;
   it does not prove that the earlier rank-eight cube path uniquely determines
   this atlas, or that physical dynamics selects or dominates this history.
+  `KFCausalCSpecPhysicalChiralGrowthRealization.lean` sharpens the next gate:
+  the same physical atlas path realizes the determinant sector under the
+  complete chiral law once the 140 concrete normalized transition aggregates
+  are proved nonzero. Thus the remaining obstruction is finite coherent
+  noncancellation for actual chiral transitions, not physical admissibility of
+  the atlas births.
   `KFCausalCSpecContinuumChiralityQualification.lean` then gives the strongest
   currently justified continuum statement: the determinant-selected vertex
   lifts pointwise to a nontrivial chiral field on any nonempty base, any
