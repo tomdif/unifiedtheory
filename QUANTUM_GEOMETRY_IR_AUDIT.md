@@ -844,7 +844,8 @@ noncancellation, not one-element-growth admissibility or normalization.
 `KFTOESevenGateAttack.lean` now lifts this and the Hauptvermutung convergence
 machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
 checked theorem hooks, with Gate 1 now packaging complete-chiral
-support/consistency and conditional atlas realization and Gate 3 now packaging bridge/residual-split
+support/consistency and conditional atlas realization, Gate 2 packaging
+quotient invariant-observable semantics, and Gate 3 now packaging bridge/residual-split
 recovery from the convergence certificate and exact recovery once uniform
 positive residual gaps are supplied; Gate 4 has an explicit kernel/profile
 analytic supplier certificate, an explicit recovered-stage 4D BDG operator

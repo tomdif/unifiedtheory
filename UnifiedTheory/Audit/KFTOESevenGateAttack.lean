@@ -12,6 +12,7 @@
 -/
 
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
+import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
@@ -41,6 +42,7 @@ open UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
 open UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
 open UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 open UnifiedTheory.Audit.KFCausalRegularPhaseEntry
+open UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
@@ -223,6 +225,28 @@ theorem gate2_baseDistortion_zero_iff_components_zero
   exact physicalHauptvermutungBaseDistortion_eq_zero_iff
     countWindow curvatureBias spectralLocality
     hcount hcurvature hspectral
+
+/-- Gate 2's invariant-observable semantic sublayer: once a finite observable
+family is invariant under the chosen physical equivalence relation, it
+descends to the quotient of physical states and its finite diagnostic
+signature is itself invariant.  This does not prove that the specific
+count/curvature/spectral residuals have their intended continuum semantics; it
+packages the label/diffeomorphism-invariance mechanism those semantics must
+pass through. -/
+structure Gate2DiffeomorphismInvariantObservableFamilyClosed
+    (State Index : Type*) [Setoid State]
+    (F : InvariantObservableFamily State Index) : Prop where
+  quotientObservablesConstructed :
+    InvariantObservableFamily.DiffeomorphismInvariantObservablesConstructed F
+  finiteSignatureInvariant : RelInvariant (finiteSignature F.value)
+
+theorem gate2_diffeomorphismInvariantObservableFamily_closed
+    (State Index : Type*) [Setoid State]
+    (F : InvariantObservableFamily State Index) :
+    Gate2DiffeomorphismInvariantObservableFamilyClosed State Index F := by
+  exact
+    ⟨InvariantObservableFamily.constructs_diffeomorphismInvariantObservables F,
+      InvariantObservableFamily.finiteSignature_constructs F⟩
 
 /-! ## Gate 3: dynamical contraction -/
 
@@ -1127,6 +1151,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_completeChiralLawSupportAndConsistency_closed
 #print axioms gate1_completeChiralAtlasRealization_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
+#print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
 #print axioms gate3_convergenceBridgeResidualSplit_closed
 #print axioms gate3_exactRecoveryCertificate_closed

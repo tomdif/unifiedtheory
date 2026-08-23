@@ -189,9 +189,10 @@
 > complete chiral law has projective finite consistency, infinite
 > Hermitian/strong-positive/normalized cylinder consistency, zero leakage off
 > non-physical one-element extensions, and signed fiber sums conditionally
-> realize the physical full-S3 CSpec determinant sector.  The base
+> realize the physical full-S3 CSpec determinant sector.  The Gate 2 base
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
-> components under nonnegativity, and a
+> components under nonnegativity, and invariant observable families descend to
+> quotient observables with invariant finite diagnostic signatures.  A
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
 > total-distortion convergence.  It now also packages the Gate 3 bridge and
 > residual split: convergence alone gives eventual canonical bridge transport,

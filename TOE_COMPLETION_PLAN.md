@@ -24,8 +24,9 @@ dataset, or explicitly named assumption.
 Lean-facing attack ledger.  It records explicit closure targets for all seven
 gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, packages Gate 1 complete-chiral
-support/consistency and conditional atlas-realization certificates, restates the Gate 2 base zero-set
-theorem, restates the Gate 3 convergence-certificate theorem, packages the
+support/consistency and conditional atlas-realization certificates, restates
+the Gate 2 base zero-set theorem and quotient invariant-observable
+construction, restates the Gate 3 convergence-certificate theorem, packages the
 Gate 3 convergence bridge/residual split and exact-recovery certificate as
 explicit partial-closure certificates, packages Gate 4's kernel/profile
 analytic supplier and recovered-stage 4D BDG operator bridge as explicit
