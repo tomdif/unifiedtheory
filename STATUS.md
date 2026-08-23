@@ -189,7 +189,10 @@
 > complete chiral law has projective finite consistency, infinite
 > Hermitian/strong-positive/normalized cylinder consistency, zero leakage off
 > non-physical one-element extensions, and signed fiber sums conditionally
-> realize the physical full-S3 CSpec determinant sector.  The Gate 2 base
+> realize the physical full-S3 CSpec determinant sector.  Gate 1 also records
+> the branch-aligned positive-frequency handedness theorem and its
+> reflection-doublet boundary, so it does not overclaim absolute vacuum
+> chirality selection.  The Gate 2 base
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and invariant observable families descend to
 > quotient observables with invariant finite diagnostic signatures.  A

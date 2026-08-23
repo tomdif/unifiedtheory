@@ -12,6 +12,7 @@
 -/
 
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
+import UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
@@ -34,6 +35,7 @@ universe u v w z t
 open Filter Topology
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
+open UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
@@ -191,6 +193,84 @@ theorem gate1_completeChiralAtlasRealization_closed
       completeChiral_atlasStep_support_gate chirality,
       completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
         chirality hSum⟩
+
+/-- The Gate 1 positive-frequency handedness sublayer: after choosing the
+positive orientation branch, the finite causal clock birth saturates the
+Margolus-Levitin quarter-turn, selects the unique `-i` chiral phase, extends to
+a normalized strongly-positive projective sequential-growth tower, transports
+the nonzero `Xi=+1` cylinder sign through all finite refinements, and selects
+the nontrivial left-handed weak vertex.  The reflection-doublet field records
+the formal boundary: the reflected branch is equally projective and transports
+the opposite sign, so this is branch-aligned handedness, not an absolute vacuum
+selection theorem. -/
+structure Gate1PositiveFrequencyHandednessClosed : Prop where
+  finitePositiveBranch :
+    causalPositiveOrientationHamiltonian.PosSemidef
+      ∧ ketInner path13Ket path22Ket = 0
+      ∧ causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+          (-Complex.I) • path22Ket
+      ∧ (Real.pi / 2) *
+          causalOrientationEnergySpectrum.energyExpectation = Real.pi / 2
+      ∧ (∃! chirality : Fin 2,
+          chiralMaximalEventPhase chirality = -Complex.I)
+      ∧ IsNontrivialPurelyLeftHanded
+          (causalWeakVertex
+            (-2 * chiralBoundaryOrientationParameter (1 : Fin 2))
+            weakRaising)
+  projectivePositiveBranch :
+    causalPositiveOrientationHamiltonian.PosSemidef
+      ∧ (∀ time : ℝ,
+        (causalPositiveOrientationEvolution time)ᴴ *
+            causalPositiveOrientationEvolution time = 1)
+      ∧ causalPositiveOrientationEvolution (Real.pi / 2) * path13Ket =
+          (-Complex.I) • path22Ket
+      ∧ chiralMultiplicativeSignatureWeight 1 0 1 = -Complex.I
+      ∧ (∀ depth : ℕ,
+          IsNormalizedGrowthFunctional
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw depth)
+            ∧ IsStronglyPositiveGrowthFunctional
+              (growthEventDecoherence
+                (finiteRankedDepthDecoherence
+                  causalPositiveOrientationGrowthLaw depth)))
+      ∧ (∀ (depth : ℕ)
+          (first second : Finset
+            (RankedGrowthPath CausalSetGrowthBranch depth)),
+          growthEventDecoherence
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw (depth + 1))
+              (refineRankedGrowthEvent first)
+              (refineRankedGrowthEvent second) =
+            growthEventDecoherence
+              (finiteRankedDepthDecoherence
+                causalPositiveOrientationGrowthLaw depth) first second)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = 1)
+      ∧ IsNontrivialPurelyLeftHanded
+          (causalWeakVertex
+            (-2 * chiralBoundaryOrientationParameter (1 : Fin 2))
+            weakRaising)
+  reflectionDoublet :
+    SatisfiesClockBirthIdentification
+        (causalPositiveOrientationEvolution (Real.pi / 2))
+        (chiralMultiplicativeSignatureWeight 1)
+      ∧ SatisfiesClockBirthIdentification
+        (causalReflectedOrientationEvolution (Real.pi / 2))
+        (chiralMultiplicativeSignatureWeight 0)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalPositiveOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = 1)
+      ∧ (∀ steps : ℕ,
+          inducedCylinderChiralitySign causalReflectedOrientationGrowthLaw
+            (chiralRankTwoCoarseGraining.refineBy steps) = -1)
+
+theorem gate1_positiveFrequencyHandedness_closed :
+    Gate1PositiveFrequencyHandednessClosed := by
+  exact
+    ⟨finite_causal_positive_energy_derives_left_handed_weak_interaction,
+      causal_positive_energy_sequential_growth_derives_left_handedness,
+      projective_clock_birth_reflection_doublet⟩
 
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
@@ -1150,6 +1230,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate1_completeChiralLawSupportAndConsistency_closed
 #print axioms gate1_completeChiralAtlasRealization_closed
+#print axioms gate1_positiveFrequencyHandedness_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
