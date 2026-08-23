@@ -143,7 +143,8 @@ derivation of the aggregate rate rather than the only logical gate.
   finite signed count over the labeled transition fiber.
 - Seven-gate ledger: `KFTOESevenGateAttack.lean` now records closure targets
   for all seven TOE gates and exposes the current checked hooks for Gate 1
-  signed-fiber noncancellation, Gate 2 base zero sets, and Gate 3 convergence,
+  signed-fiber noncancellation plus complete-chiral support/consistency and
+  conditional atlas realization, Gate 2 base zero sets, and Gate 3 convergence,
   bridge/residual-split, and exact-recovery certificates, plus explicit partial-closure certificates
   for the Gate 4 kernel/profile analytic supplier, recovered-stage 4D BDG
   operator convergence, and the strongest scheduled kernel/operator bridge,

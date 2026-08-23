@@ -185,7 +185,11 @@
 > canonical forward list.
 > `KFTOESevenGateAttack.lean` now mirrors the seven TOE gates as formal closure
 > records and exposes the checked Gate 1, Gate 2, and Gate 3 theorem hooks:
-> signed atlas fiber sums imply raw complete-chiral noncancellation, base
+> signed atlas fiber sums imply raw complete-chiral noncancellation, the
+> complete chiral law has projective finite consistency, infinite
+> Hermitian/strong-positive/normalized cylinder consistency, zero leakage off
+> non-physical one-element extensions, and signed fiber sums conditionally
+> realize the physical full-S3 CSpec determinant sector.  The base
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and a
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus

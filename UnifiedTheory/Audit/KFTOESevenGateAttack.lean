@@ -31,7 +31,16 @@ namespace UnifiedTheory.Audit.KFTOESevenGateAttack
 universe u v w z t
 
 open Filter Topology
+open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
+open UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
+open UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
+open UnifiedTheory.Audit.KFCausalCSpecDeterminantChirality
+open UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
+open UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
+open UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
+open UnifiedTheory.Audit.KFCausalRegularPhaseEntry
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
@@ -75,6 +84,111 @@ theorem gate1_rawAggregateNonzero_of_closed
     CompleteChiralAtlasRawAggregateNonzero chirality := by
   exact completeChiralAtlasRawAggregateNonzero_of_signedFiberSum_nonzero
     chirality G.signedFiberSums
+
+/-- The unconditional Gate 1 support/quantum-consistency sublayer of the
+complete chiral causal-set growth law: every finite depth is normalized,
+refinement is projectively consistent, the infinite cylinder functional is
+Hermitian/strongly positive/normalized, and every non-physical one-element
+extension has zero transition amplitude. -/
+structure Gate1CompleteChiralLawSupportAndConsistencyClosed
+    (chirality : Fin 2) : Prop where
+  finiteProjectiveConsistency :
+    (∀ n,
+      IsNormalizedGrowthFunctional
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) n))
+      ∧
+    (∀ (n) (event₁ event₂ :
+        Finset (RankedGrowthPath CausalSetGrowthBranch n)) (steps : ℕ),
+      growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) (n + steps))
+        (refineRankedGrowthEventBy event₁ steps)
+        (refineRankedGrowthEventBy event₂ steps) =
+      growthEventDecoherence
+        (finiteRankedDepthDecoherence
+          (completeChiralCausalSetGrowthLaw chirality) n)
+        event₁ event₂)
+  infiniteQuantumConsistency :
+    IsHermitianGrowthFunctional
+      (infiniteRankedCylinderDecoherence
+        (completeChiralCausalSetGrowthLaw chirality))
+      ∧
+    IsStronglyPositiveGrowthFunctional
+      (infiniteRankedCylinderDecoherence
+        (completeChiralCausalSetGrowthLaw chirality))
+      ∧
+    infiniteRankedCylinderDecoherence
+      (completeChiralCausalSetGrowthLaw chirality)
+      (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch)
+      (totalInfiniteRankedCylinderEvent CausalSetGrowthBranch) = 1
+  nonPhysicalTransitionZero :
+    ∀ (n : ℕ) (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+      (child : CausalSetGrowthBranch n),
+      ¬ IsPhysicalCausalGrowthStep n pathPrefix child →
+        (completeChiralCausalSetGrowthLaw chirality).transition
+          n pathPrefix child = 0
+
+theorem gate1_completeChiralLawSupportAndConsistency_closed
+    (chirality : Fin 2) :
+    Gate1CompleteChiralLawSupportAndConsistencyClosed chirality := by
+  exact
+    ⟨completeChiralCausalSetGrowthLaw_gate1_projective chirality,
+      completeChiralCausalSetGrowthLaw_gate1_quantum_consistent chirality,
+      fun n pathPrefix child hNotPhysical =>
+        completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+          chirality n pathPrefix child hNotPhysical⟩
+
+/-- The conditional Gate 1 atlas-realization sublayer: if the finite signed
+transition-fiber sums are nonzero on the 140 atlas births, then the raw
+complete-chiral aggregates and normalized transitions are nonzero, every atlas
+step is physically admissible with zero leakage off the physical extension
+graph, and the complete chiral law realizes the full-S3 CSpec determinant
+sector with nonzero path amplitude. -/
+structure Gate1CompleteChiralAtlasRealizationClosed
+    (chirality : Fin 2) : Prop where
+  signedFiberSums :
+    CompleteChiralAtlasRealAggregateSignedFiberSumNonzero
+  rawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero chirality
+  transitionNonzero :
+    CompleteChiralAtlasTransitionNonzero chirality
+  atlasSupportGate :
+    ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+      IsPhysicalCausalGrowthStep n
+        (atlasStepPrefix n hnext) (atlasStepChild n hnext) ∧
+      (¬ IsPhysicalCausalGrowthStep n
+          (atlasStepPrefix n hnext) (atlasStepChild n hnext) →
+        atlasCompleteChiralTransition chirality n hnext = 0)
+  determinantSector :
+    IsPhysicalCausalGrowthPath 140
+        (globalAtlasPhysicalGrowthPath 140 le_rfl)
+      ∧ finiteRankedPathAmplitude
+          (completeChiralCausalSetGrowthLaw chirality) 140
+          (globalAtlasPhysicalGrowthPath 140 le_rfl) ≠ 0
+      ∧ Nonempty
+          (CausalOrderPoint (globalAtlasPhysicalPrefix 140 le_rfl) ≃o
+            GlobalAtlasEvent)
+      ∧ ContainsBooleanCubeSeed (globalAtlasPhysicalPrefix 140 le_rfl)
+      ∧ cSpecAtlasOrientation 3 cSpecOddLoopHistory = -1
+      ∧ IsNontrivialPurelyRightHanded
+          (cSpecAtlasWeakVertex 3 cSpecOddLoopHistory)
+
+theorem gate1_completeChiralAtlasRealization_closed
+    (chirality : Fin 2)
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero) :
+    Gate1CompleteChiralAtlasRealizationClosed chirality := by
+  have hRaw : CompleteChiralAtlasRawAggregateNonzero chirality :=
+    completeChiralAtlasRawAggregateNonzero_of_signedFiberSum_nonzero
+      chirality hSum
+  have hTransition : CompleteChiralAtlasTransitionNonzero chirality :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      chirality hRaw
+  exact
+    ⟨hSum, hRaw, hTransition,
+      completeChiral_atlasStep_support_gate chirality,
+      completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
+        chirality hSum⟩
 
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
@@ -1010,6 +1124,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
         (by intro h; cases h), (by intro h; cases h), (by intro h; cases h)⟩
 
 #print axioms gate1_rawAggregateNonzero_of_closed
+#print axioms gate1_completeChiralLawSupportAndConsistency_closed
+#print axioms gate1_completeChiralAtlasRealization_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
 #print axioms gate3_convergenceBridgeResidualSplit_closed

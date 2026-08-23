@@ -49,7 +49,8 @@ The gap-closing roadmap is tracked in
 [`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md).
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` mirrors that roadmap as a
 Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
-atlas-fiber noncancellation, Gate 2 base zero sets, and Gate 3 protected
+atlas-fiber noncancellation plus complete-chiral support/consistency and
+conditional atlas-realization certificates, Gate 2 base zero sets, and Gate 3 protected
 convergence, bridge/residual-split, and exact-recovery certificates.  It now
 also packages explicit partial-closure certificates for Gate 4's
 kernel/profile analytic supplier, recovered-stage 4D BDG operator bridge, and

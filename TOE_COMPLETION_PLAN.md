@@ -23,7 +23,8 @@ dataset, or explicitly named assumption.
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` now mirrors this plan as a
 Lean-facing attack ledger.  It records explicit closure targets for all seven
 gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
-complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
+complete-chiral atlas noncancellation, packages Gate 1 complete-chiral
+support/consistency and conditional atlas-realization certificates, restates the Gate 2 base zero-set
 theorem, restates the Gate 3 convergence-certificate theorem, packages the
 Gate 3 convergence bridge/residual split and exact-recovery certificate as
 explicit partial-closure certificates, packages Gate 4's kernel/profile
