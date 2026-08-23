@@ -849,8 +849,8 @@ positive residual gaps are supplied; Gate 4 has an explicit kernel/profile
 analytic supplier certificate, an explicit recovered-stage 4D BDG operator
 partial-closure certificate, and an explicit scheduled kernel/operator
 partial-closure certificate; Gate 5 has explicit local Born/projective
-completeness and finite Hopf carrier cover-independence partial-closure
-certificates; Gate 6 has explicit dark-density and
+completeness, finite Hopf carrier cover-independence, and recovered
+common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
 cosmological-constant/graviton-mode partial-closure certificates; and Gate 7
 has a
 preregistration-protocol closure theorem. Full Gates 4 through 6 remain

@@ -30,8 +30,9 @@ explicit partial-closure certificates, packages Gate 4's kernel/profile
 analytic supplier and recovered-stage 4D BDG operator bridge as explicit
 partial-closure certificates, packages the strongest scheduled kernel/operator Gate 4 bridge as
 an explicit partial-closure certificate, packages Gate 5's local
-Born/projective completeness and finite Hopf carrier cover-independence layers
-as explicit partial-closure certificates, packages Gate 6's dark-density and
+Born/projective completeness, finite Hopf carrier cover-independence, and
+recovered common-refinement layers as explicit partial-closure certificates,
+packages Gate 6's dark-density and
 cosmological-constant/graviton-mode audits as explicit partial-closure
 certificates, and proves the Gate 7 protocol layer from the
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their

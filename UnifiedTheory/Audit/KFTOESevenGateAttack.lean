@@ -638,6 +638,68 @@ theorem gate5_finiteCarrierCover_closed
     ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
   exact ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
 
+/-- The recovered-stage Gate 5 common-refinement sublayer: two jointly
+surjective finite probe covers have a jointly-surjective common refinement;
+local stagewise `U(1)` gauge rotations remain invisible on that refinement;
+and equality, Pauli Born data, and all-axis Born data on the common refinement
+are equivalent to the corresponding global recovered carrier-field tests. -/
+structure Gate5RecoveredCarrierCommonRefinementClosed
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (I J : RecoveredStageHopfFiberInterface site)
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (n m : ℕ) : Prop where
+  commonRefinementJointlySurjective :
+    JointlySurjective
+      (commonRefinementProbe probeA probeB fA fB)
+      (commonRefinementMap fA fB)
+  commonRefinementGaugeInvariant :
+    ∀ P : ℕ → UnitPhaseField site,
+      ∀ ij : CommonRefinementIndex coverA coverB,
+        pullback
+            (commonRefinementMap fA fB ij)
+            ((I.phaseRotate P).projectiveCarrierFieldAt n) =
+          pullback
+            (commonRefinementMap fA fB ij)
+            (I.projectiveCarrierFieldAt n)
+  equalOnCommonRefinementGlobal :
+    EqualOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB)
+        (I.projectiveCarrierFieldAt n) (J.projectiveCarrierFieldAt m) ↔
+      I.projectiveCarrierFieldAt n = J.projectiveCarrierFieldAt m
+  pauliBornOnCommonRefinementGlobal :
+    SamePauliBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB)
+        (I.projectiveCarrierFieldAt n) (J.projectiveCarrierFieldAt m) ↔
+      SamePauliBornData
+        (I.projectiveCarrierFieldAt n) (J.projectiveCarrierFieldAt m)
+  allAxisBornOnCommonRefinementGlobal :
+    SameAllAxisBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB)
+        (I.projectiveCarrierFieldAt n) (J.projectiveCarrierFieldAt m) ↔
+      SameAllAxisBornData
+        (I.projectiveCarrierFieldAt n) (J.projectiveCarrierFieldAt m)
+
+theorem gate5_recoveredCarrierCommonRefinement_closed
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (I J : RecoveredStageHopfFiberInterface site)
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (n m : ℕ) :
+    Gate5RecoveredCarrierCommonRefinementClosed I J fA fB n m := by
+  rcases
+    RecoveredStageHopfFiberInterface.recoveredStage_projective_qubit_carrier_field_commonRefinement_interface
+      I J fA fB hA hB n m with
+    ⟨hcommon, hgauge, heq, hpauli, hall⟩
+  exact ⟨hcommon, hgauge, heq, hpauli, hall⟩
+
 /-! ## Gate 6: cosmology and black holes -/
 
 /-- Physical sectors a complete theory cannot skip. -/
@@ -858,6 +920,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_localBornProjectiveCompleteness_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed
+#print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
