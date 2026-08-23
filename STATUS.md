@@ -1375,8 +1375,11 @@
 > The next obstruction is now reduced to a finite integer-polynomial
 > certificate: `CompleteChiralAtlasRealAggregatePolynomialNonzero` implies the
 > raw aggregate gate, so proving 140 concrete real-part aggregate polynomials
-> nonzero closes this branch unless one of them is purely imaginary and needs
-> the analogous imaginary-part certificate.
+> nonzero closes this branch. Lean now sharpens that again through
+> `CompleteChiralAtlasRealAggregateCoeffNonzero`: it is enough to exhibit one
+> nonzero signed real coefficient in each of the 140 polynomials, unless one
+> aggregate is purely imaginary and needs the analogous imaginary-part
+> certificate.
 > `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
 > continuum assumptions. The finite weak vertex has an exact pointwise lift to
 > a nontrivial chiral field on any nonempty base, and every order embedding

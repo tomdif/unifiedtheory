@@ -330,6 +330,28 @@ def interactingChiralRealAggregatePolynomial {n : ℕ}
     C (gaussianIPow past.val.maximalCount).1 *
       X ^ ancestorPairExponent past.val.ancestorCount
 
+/-- The signed real coefficient attached to one exponent in a coherent
+parent-child transition aggregate. -/
+def interactingChiralRealAggregateCoeff {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
+  (interactingChiralRealAggregatePolynomial parent child).coeff k
+
+/-- A single nonzero coefficient certifies that the real aggregate polynomial
+does not vanish.  This turns the finite aggregate gate into a coefficient
+witness search. -/
+theorem interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ)
+    (hCoeff :
+      interactingChiralRealAggregateCoeff parent child k ≠ 0) :
+    interactingChiralRealAggregatePolynomial parent child ≠ 0 := by
+  intro hZero
+  apply hCoeff
+  unfold interactingChiralRealAggregateCoeff
+  rw [hZero]
+  simp
+
 @[simp]
 theorem emptyCausalPastSet_ancestorCount {n : ℕ}
     (parent : CardinalCausalOrder n) :
@@ -1442,6 +1464,7 @@ theorem completeChiralLaw_recovers_endpoint_without_totalization
 #print axioms subcritical_interactingChiral_partition_ne_zero
 #print axioms interactingChiral_labeledAggregate_re_eq_polynomial_eval
 #print axioms interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
 #print axioms canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne_zero
 #print axioms effectivePairChiralSignatureWeight_append_singleton
 #print axioms interactingChiralSignatureWeight_eq_iff

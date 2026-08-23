@@ -1049,9 +1049,11 @@ assumption tags and frozen data protocols, or explicitly demoted.
   raw numerator gate because the complete-chiral denominator is already
   zero-free at every atlas parent. The next attack reduces that raw gate again:
   each atlas birth now has an explicit integer real-part aggregate polynomial,
-  and nonzero status of all 140 such polynomials implies the complete-chiral
-  realization theorem. Thus the remaining obstruction is finite polynomial
-  noncancellation, not physical admissibility or normalization.
+  and Lean also packages a coefficient witness gate: one nonzero signed real
+  coefficient for each of the 140 aggregate polynomials implies the
+  complete-chiral realization theorem. Thus the remaining obstruction is
+  finite coefficient noncancellation, not physical admissibility or
+  normalization.
   `KFCausalCSpecContinuumChiralityQualification.lean` then gives the strongest
   currently justified continuum statement: the determinant-selected vertex
   lifts pointwise to a nontrivial chiral field on any nonempty base, any

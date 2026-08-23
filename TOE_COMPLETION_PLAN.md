@@ -47,9 +47,10 @@ Open work:
   Lean proves `CompleteChiralAtlasRawAggregateNonzero` is equivalent to
   `CompleteChiralAtlasTransitionNonzero`, and
   `CompleteChiralAtlasRealAggregatePolynomialNonzero` implies that raw gate.
-  The next finite Gate 1 check is therefore nonzero status of the 140 concrete
-  integer real-part aggregate polynomials, with an imaginary-polynomial route
-  needed only if a real certificate vanishes;
+  `CompleteChiralAtlasRealAggregateCoeffNonzero` now strengthens the usable
+  certificate: one nonzero signed real coefficient in each of the 140 concrete
+  integer real-part aggregate polynomials suffices, with an
+  imaginary-polynomial route needed only if a real certificate vanishes;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.

@@ -137,7 +137,8 @@ derivation of the aggregate rate rather than the only logical gate.
   normalized-transition condition is equivalent to raw numerator nonzero on the
   atlas births. The newest reduction attaches an integer real-part aggregate
   polynomial to each atlas birth and proves that nonzero status of all 140 of
-  those polynomials implies the raw gate.
+  those polynomials implies the raw gate. The newest coefficient gate further
+  reduces this to one nonzero signed real coefficient witness per atlas birth.
 - Gate 2: the bridge zero set is strong; the semantic gap is now the meaning of
   zero `countWindow`, `curvatureBias`, and `spectralLocality` residuals.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source

@@ -835,8 +835,11 @@ numerator gate is equivalent to the normalized-transition nonzero gate, because
 the complete-chiral parent partition denominator is already zero-free. The next
 reduction assigns an explicit integer real-part aggregate polynomial to each
 atlas birth and proves that nonzero status of all 140 polynomials implies the
-raw aggregate gate. The remaining obstruction is finite polynomial
-noncancellation, not one-element-growth admissibility or normalization.
+raw aggregate gate. Lean now packages the sharper coefficient certificate:
+one nonzero signed real coefficient in each atlas-birth polynomial implies the
+same complete-chiral realization theorem. The remaining obstruction is finite
+coefficient noncancellation, not one-element-growth admissibility or
+normalization.
 Because `omega(omega-1)=2*choose(omega,2)`, only the effective unordered-pair
 coupling `g=lambda^2` enters; changing the sign of `lambda` changes nothing,
 while `g` is identifiable from the two-ancestor raw signature. Normalizability
