@@ -47,6 +47,10 @@ new-physics lead is documented in
 [`HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md`](HORIZON_INVISIBLE_GEOMETRIC_RELAXATION.md).
 The gap-closing roadmap is tracked in
 [`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md).
+`UnifiedTheory/Audit/KFTOESevenGateAttack.lean` mirrors that roadmap as a
+Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
+atlas-fiber noncancellation, Gate 2 base zero sets, and Gate 3 protected
+convergence certificates, while Gates 4-7 remain explicit closure records.
 
 Machine-checked additions now cover:
 

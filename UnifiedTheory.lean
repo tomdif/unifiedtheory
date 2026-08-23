@@ -5720,4 +5720,8 @@ import UnifiedTheory.Audit.KFCausalUniquenessLeg
 -- occur only in the handedness interpretation layer.
 import UnifiedTheory.Audit.KFCausalSetPostulateFootprint
 import UnifiedTheory.Audit.KFCausalCSpec
+-- Seven-gate TOE attack ledger: records each remaining closure target and
+-- exposes the current Lean hooks for Gate 1 signed-fiber noncancellation,
+-- Gate 2 base zero sets, and Gate 3 protected convergence certificates.
+import UnifiedTheory.Audit.KFTOESevenGateAttack
 import UnifiedTheory.LayerC.ContextualFraction

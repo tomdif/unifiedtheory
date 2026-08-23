@@ -141,6 +141,11 @@ derivation of the aggregate rate rather than the only logical gate.
   reduces this to one nonzero signed real coefficient witness per atlas birth;
   the signed-fiber-sum version rewrites each coefficient as an explicit
   finite signed count over the labeled transition fiber.
+- Seven-gate ledger: `KFTOESevenGateAttack.lean` now records closure targets
+  for all seven TOE gates and exposes the current checked hooks for Gate 1
+  signed-fiber noncancellation, Gate 2 base zero sets, and Gate 3 convergence
+  certificates. Gates 4-7 are deliberately represented as closure records
+  until their physical, analytic, cosmological, and testing inputs are supplied.
 - Gate 2: the bridge zero set is strong; the semantic gap is now the meaning of
   zero `countWindow`, `curvatureBias`, and `spectralLocality` residuals.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source

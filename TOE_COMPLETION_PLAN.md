@@ -20,6 +20,14 @@ falsifiable prediction
 The repo is strongest when each public claim points to a theorem, script,
 dataset, or explicitly named assumption.
 
+`UnifiedTheory/Audit/KFTOESevenGateAttack.lean` now mirrors this plan as a
+Lean-facing attack ledger.  It records explicit closure targets for all seven
+gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
+complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
+theorem, and restates the Gate 3 convergence-certificate theorem.  Gates 4-7
+remain closure records until their physical/analytic/testing inputs are
+actually supplied.
+
 ## Gates
 
 ### Gate 1: Physical Causal-Growth Law
@@ -852,8 +860,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 
 The next high-value theorem targets are:
 
-1. Gate 1: prove `CompleteChiralAtlasRealAggregatePolynomialNonzero` for the
-   physical CSpec atlas path, then derive the physical aggregate-rate and
+1. Gate 1: prove `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` for
+   the physical CSpec atlas path, then derive the physical aggregate-rate and
    residual-gap hypotheses from `completeChiralCausalSetGrowthLaw`, or identify
    the additional microscopic selection principle needed for the canonical pair
    coupling.
@@ -866,5 +874,7 @@ The next high-value theorem targets are:
    support/regularity/lightcone-kernel components.
 5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
    recovered CSpec stage before making continuum QFT claims.
-6. Gate 7: use the canonical JSON preregistration ledger for future empirical
+6. Gate 6: connect the same dynamics to cosmological measure, dark sector,
+   black-hole thermodynamics, and CMB/structure/gravitational-wave constraints.
+7. Gate 7: use the canonical JSON preregistration ledger for future empirical
    comparisons.

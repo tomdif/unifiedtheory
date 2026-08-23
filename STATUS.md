@@ -183,6 +183,14 @@
 > `PREDICTIONS_PREREGISTRATION_LEDGER.json`; the README points to that five-row
 > preregistration set instead of treating older conditional proposals as the
 > canonical forward list.
+> `KFTOESevenGateAttack.lean` now mirrors the seven TOE gates as formal closure
+> records and exposes the checked Gate 1, Gate 2, and Gate 3 theorem hooks:
+> signed atlas fiber sums imply raw complete-chiral noncancellation, base
+> Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
+> components under nonnegativity, and a
+> `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
+> total-distortion convergence.  Gates 4-7 remain explicit closure records, not
+> solved sectors.
 
 > **Gate 1 support update (2026-08-21):**
 > `KFCausalSetCompleteChiralLaw.lean` now proves

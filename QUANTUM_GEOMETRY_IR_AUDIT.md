@@ -841,6 +841,11 @@ same complete-chiral realization theorem. The newest refinement expands each
 coefficient as an explicit signed sum over the corresponding labeled
 transition fiber. The remaining obstruction is finite signed-count
 noncancellation, not one-element-growth admissibility or normalization.
+`KFTOESevenGateAttack.lean` now lifts this and the Hauptvermutung convergence
+machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
+checked theorem hooks, while Gate 4 through Gate 7 are explicit closure records
+for the still-open analytic, QFT/SM, cosmology/black-hole, and external-test
+inputs.
 Because `omega(omega-1)=2*choose(omega,2)`, only the effective unordered-pair
 coupling `g=lambda^2` enters; changing the sign of `lambda` changes nothing,
 while `g` is identifiable from the two-ancestor raw signature. Normalizability
