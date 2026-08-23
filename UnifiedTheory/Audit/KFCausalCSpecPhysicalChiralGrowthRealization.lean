@@ -71,6 +71,34 @@ def atlasCompleteChiralRawAggregate
     (currentUnlabeledCausalOrder n (atlasStepPrefix n hnext))
     (atlasStepChild n hnext)
 
+/-- The integer real-part polynomial whose value at the canonical pair
+coupling is the real part of the raw coherent aggregate for the `n`th atlas
+birth. -/
+def atlasCompleteChiralRawAggregateRealPolynomial
+    (n : ℕ) (hnext : n + 1 ≤ 140) : Polynomial ℤ :=
+  interactingChiralRealAggregatePolynomial
+    (globalAtlasPhysicalPrefix n
+      (Nat.le_trans (Nat.le_succ n) hnext))
+    (atlasStepChild n hnext)
+
+/-- The raw atlas aggregate real part is exactly evaluation of its integer
+transition-fiber polynomial at the canonical pair coupling. -/
+theorem atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140) :
+    (atlasCompleteChiralRawAggregate chirality n hnext).re =
+      (atlasCompleteChiralRawAggregateRealPolynomial n hnext).eval₂
+        (Int.castRingHom ℝ) canonicalPairCoupling := by
+  unfold atlasCompleteChiralRawAggregate
+  unfold atlasCompleteChiralRawAggregateRealPolynomial
+  unfold atlasStepPrefix
+  rw [globalAtlasPhysicalGrowthPath_currentOrder,
+    unlabeledAggregatedCausalEdgeAmplitude_mk]
+  exact interactingChiral_labeledAggregate_re_eq_polynomial_eval
+    canonicalPairCoupling chirality
+    (globalAtlasPhysicalPrefix n
+      (Nat.le_trans (Nat.le_succ n) hnext))
+    (atlasStepChild n hnext)
+
 /-- The already zero-free complete-chiral parent partition for the `n`th
 atlas birth. -/
 def atlasCompleteChiralPartition
@@ -101,6 +129,40 @@ zero-freeness is already theorem-proved. -/
 def CompleteChiralAtlasRawAggregateNonzero (chirality : Fin 2) : Prop :=
   ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
     atlasCompleteChiralRawAggregate chirality n hnext ≠ 0
+
+/-- A finite real-polynomial certificate for the complete-chiral atlas path.
+It is sufficient, not definitionally necessary: a purely imaginary nonzero
+aggregate would require the analogous imaginary-polynomial certificate. -/
+def CompleteChiralAtlasRealAggregatePolynomialNonzero : Prop :=
+  ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+    atlasCompleteChiralRawAggregateRealPolynomial n hnext ≠ 0
+
+/-- Nonzero real-part polynomial certificate implies nonzero raw coherent
+aggregate on one concrete atlas birth. -/
+theorem atlasCompleteChiralRawAggregate_ne_zero_of_realPolynomial_ne_zero
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140)
+    (hPolynomial :
+      atlasCompleteChiralRawAggregateRealPolynomial n hnext ≠ 0) :
+    atlasCompleteChiralRawAggregate chirality n hnext ≠ 0 := by
+  intro hZero
+  have hRealZero := congrArg Complex.re hZero
+  rw [atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval] at hRealZero
+  have hPolynomialZero :
+      atlasCompleteChiralRawAggregateRealPolynomial n hnext = 0 :=
+    (transcendental_iff.mp canonicalPairCoupling_transcendental)
+      (atlasCompleteChiralRawAggregateRealPolynomial n hnext) (by
+        simpa [Polynomial.aeval_def] using hRealZero)
+  exact hPolynomial hPolynomialZero
+
+/-- The current finite obstruction can be attacked by proving 140 concrete
+integer polynomials nonzero. -/
+theorem completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
+    (chirality : Fin 2)
+    (hPolynomial : CompleteChiralAtlasRealAggregatePolynomialNonzero) :
+    CompleteChiralAtlasRawAggregateNonzero chirality := by
+  intro n hnext
+  exact atlasCompleteChiralRawAggregate_ne_zero_of_realPolynomial_ne_zero
+    chirality n hnext (hPolynomial n hnext)
 
 /-- The finite noncancellation gate needed to promote the already-physical
 atlas path from the uniform law to the complete chiral law. -/
@@ -240,7 +302,34 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
       (completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
         chirality hRaw)
 
+/-- Real-polynomial certificate version of the complete-chiral physical CSpec
+realization theorem.  This reduces the next obstruction to proving nonzero
+status of 140 explicit integer transition-fiber polynomials. -/
+theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realPolynomial_nonzero
+    (chirality : Fin 2)
+    (hPolynomial : CompleteChiralAtlasRealAggregatePolynomialNonzero) :
+    IsPhysicalCausalGrowthPath 140
+        (globalAtlasPhysicalGrowthPath 140 le_rfl)
+      ∧ finiteRankedPathAmplitude
+          (completeChiralCausalSetGrowthLaw chirality) 140
+          (globalAtlasPhysicalGrowthPath 140 le_rfl) ≠ 0
+      ∧ Nonempty
+          (CausalOrderPoint (globalAtlasPhysicalPrefix 140 le_rfl) ≃o
+            GlobalAtlasEvent)
+      ∧ ContainsBooleanCubeSeed (globalAtlasPhysicalPrefix 140 le_rfl)
+      ∧ cSpecAtlasOrientation 3 cSpecOddLoopHistory = -1
+      ∧ IsNontrivialPurelyRightHanded
+          (cSpecAtlasWeakVertex 3 cSpecOddLoopHistory) := by
+  exact
+    completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero
+      chirality
+      (completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
+        chirality hPolynomial)
+
 #print axioms atlasCompleteChiralTransition_eq_rawAggregate_div_partition
+#print axioms atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
+#print axioms atlasCompleteChiralRawAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
 #print axioms atlasCompleteChiralPartition_ne_zero
 #print axioms completeChiralAtlasRawAggregateNonzero_iff_transition_nonzero
 #print axioms completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
@@ -249,6 +338,7 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
 #print axioms globalAtlasPhysicalGrowthPath_completeChiralAmplitude_ne_zero_of_transition_nonzero
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_transition_nonzero
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero
+#print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realPolynomial_nonzero
 
 end
 

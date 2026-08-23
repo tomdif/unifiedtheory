@@ -321,6 +321,15 @@ def interactingChiralRealPartitionPolynomial {n : ℕ}
     C (gaussianIPow past.maximalCount).1 *
       X ^ ancestorPairExponent past.ancestorCount
 
+/-- The real part of one coherently aggregated parent-child transition fiber,
+before evaluating the pair coupling. -/
+def interactingChiralRealAggregatePolynomial {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) : ℤ[X] :=
+  ∑ past : LabeledCausalTransitionFiber parent child,
+    C (gaussianIPow past.val.maximalCount).1 *
+      X ^ ancestorPairExponent past.val.ancestorCount
+
 @[simp]
 theorem emptyCausalPastSet_ancestorCount {n : ℕ}
     (parent : CardinalCausalOrder n) :
@@ -501,6 +510,84 @@ theorem interactingChiral_partition_re_eq_polynomial_eval {n : ℕ}
       lambda ^ ancestorPairExponent past.ancestorCount
   ring
 
+/-- The real part of a coherent parent-child aggregate is evaluation of the
+integer polynomial attached to that transition fiber. -/
+theorem interactingChiral_labeledAggregate_re_eq_polynomial_eval {n : ℕ}
+    (lambda : ℝ) (chirality : Fin 2) (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    (labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude lambda chirality)
+      parent child).re =
+      (interactingChiralRealAggregatePolynomial parent child).eval₂
+        (Int.castRingHom ℝ) lambda := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  change Complex.reAddGroupHom
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        (interactingChiralCausalEdgeAmplitude lambda chirality).amplitude
+          parent past.val) = _
+  rw [map_sum]
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+    ((interactingChiralCausalEdgeAmplitude lambda chirality).amplitude
+      parent past.val).re) = _
+  simp only [
+    interactingChiralCausalEdgeAmplitude, rideoutSorkinSignatureAmplitude,
+    interactingChiralSignatureWeight_re]
+  unfold interactingChiralRealAggregatePolynomial
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+      lambda ^ ancestorPairExponent past.val.ancestorCount *
+        ((gaussianIPow past.val.maximalCount).1 : ℝ)) =
+    (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        C (gaussianIPow past.val.maximalCount).1 *
+          X ^ ancestorPairExponent past.val.ancestorCount)
+  rw [map_sum]
+  apply Finset.sum_congr rfl
+  intro past _hPast
+  simp only [map_mul]
+  have hCoefficient :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (C (gaussianIPow past.val.maximalCount).1) =
+        ((gaussianIPow past.val.maximalCount).1 : ℝ) := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (C (gaussianIPow past.val.maximalCount).1) = _
+    rw [eval₂_C]
+    rfl
+  have hPower :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (X ^ ancestorPairExponent past.val.ancestorCount) =
+        lambda ^ ancestorPairExponent past.val.ancestorCount := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (X ^ ancestorPairExponent past.val.ancestorCount) = _
+    simp
+  rw [hCoefficient, hPower]
+  change lambda ^ ancestorPairExponent past.val.ancestorCount *
+      ((gaussianIPow past.val.maximalCount).1 : ℝ) =
+    ((gaussianIPow past.val.maximalCount).1 : ℝ) *
+      lambda ^ ancestorPairExponent past.val.ancestorCount
+  ring
+
+/-- A nonzero real aggregate polynomial is enough to rule out coherent
+cancellation at any transcendental pair coupling. -/
+theorem interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+    {lambda : ℝ} (hTranscendental : Transcendental ℤ lambda)
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hPolynomial :
+      interactingChiralRealAggregatePolynomial parent child ≠ 0) :
+    labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude lambda chirality)
+      parent child ≠ 0 := by
+  intro hZero
+  have hRealZero := congrArg Complex.re hZero
+  rw [interactingChiral_labeledAggregate_re_eq_polynomial_eval] at hRealZero
+  have hPolynomialZero :
+      interactingChiralRealAggregatePolynomial parent child = 0 :=
+    (transcendental_iff.mp hTranscendental)
+      (interactingChiralRealAggregatePolynomial parent child) (by
+        simpa [Polynomial.aeval_def] using hRealZero)
+  exact hPolynomial hPolynomialZero
+
 /-- Transcendence is sufficient but not necessary for all-rank
 normalizability.  At zero coupling every multi-ancestor transition is
 removed, while the empty precursor contributes real part one and every
@@ -538,6 +625,18 @@ theorem canonicalPairCoupling_ne_zero : canonicalPairCoupling ≠ 0 := by
   apply canonicalPairCoupling_transcendental
   rw [hZero]
   exact isAlgebraic_zero
+
+/-- Canonical-coupling form of the real-polynomial aggregate certificate. -/
+theorem canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne_zero
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hPolynomial :
+      interactingChiralRealAggregatePolynomial parent child ≠ 0) :
+    labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
+      parent child ≠ 0 :=
+  interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+    canonicalPairCoupling_transcendental chirality parent child hPolynomial
 
 theorem canonicalPairCoupling_pos : 0 < canonicalPairCoupling := by
   rw [canonicalPairCoupling,
@@ -1341,6 +1440,9 @@ theorem completeChiralLaw_recovers_endpoint_without_totalization
 
 #print axioms canonical_interactingChiral_partition_ne_zero
 #print axioms subcritical_interactingChiral_partition_ne_zero
+#print axioms interactingChiral_labeledAggregate_re_eq_polynomial_eval
+#print axioms interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne_zero
 #print axioms effectivePairChiralSignatureWeight_append_singleton
 #print axioms interactingChiralSignatureWeight_eq_iff
 #print axioms interactingChiralSignatureWeight_fullSupport_iff

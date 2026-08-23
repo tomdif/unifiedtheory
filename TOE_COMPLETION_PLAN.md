@@ -43,10 +43,13 @@ Open work:
   `completeChiralCausalSetGrowthLaw_gate1_projective` and
   `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`;
 - integrated conditional CSpec realization bridge:
-  `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero`;
+  `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realPolynomial_nonzero`;
   Lean proves `CompleteChiralAtlasRawAggregateNonzero` is equivalent to
-  `CompleteChiralAtlasTransitionNonzero`, so the next finite Gate 1 check is
-  raw coherent numerator noncancellation on the 140 concrete atlas births;
+  `CompleteChiralAtlasTransitionNonzero`, and
+  `CompleteChiralAtlasRealAggregatePolynomialNonzero` implies that raw gate.
+  The next finite Gate 1 check is therefore nonzero status of the 140 concrete
+  integer real-part aggregate polynomials, with an imaginary-polynomial route
+  needed only if a real certificate vanishes;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
@@ -846,10 +849,10 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_posi
 
 The next high-value theorem targets are:
 
-1. Gate 1: prove `CompleteChiralAtlasRawAggregateNonzero` for the physical
-   CSpec atlas path, then derive the physical aggregate-rate and residual-gap
-   hypotheses from `completeChiralCausalSetGrowthLaw`, or identify the
-   additional microscopic selection principle needed for the canonical pair
+1. Gate 1: prove `CompleteChiralAtlasRealAggregatePolynomialNonzero` for the
+   physical CSpec atlas path, then derive the physical aggregate-rate and
+   residual-gap hypotheses from `completeChiralCausalSetGrowthLaw`, or identify
+   the additional microscopic selection principle needed for the canonical pair
    coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
