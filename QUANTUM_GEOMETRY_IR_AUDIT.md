@@ -845,9 +845,9 @@ noncancellation, not one-element-growth admissibility or normalization.
 machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
 checked theorem hooks, with Gate 3 now also packaging bridge/residual-split
 recovery from the convergence certificate and exact recovery once uniform
-positive residual gaps are supplied; Gate 4 has an
-explicit recovered-stage 4D BDG operator partial-closure certificate and an
-explicit scheduled kernel/operator
+positive residual gaps are supplied; Gate 4 has an explicit kernel/profile
+analytic supplier certificate, an explicit recovered-stage 4D BDG operator
+partial-closure certificate, and an explicit scheduled kernel/operator
 partial-closure certificate; Gate 5 has explicit local Born/projective
 completeness and finite Hopf carrier cover-independence partial-closure
 certificates; Gate 6 has explicit dark-density and

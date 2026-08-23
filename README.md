@@ -51,10 +51,11 @@ The gap-closing roadmap is tracked in
 Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
 atlas-fiber noncancellation, Gate 2 base zero sets, and Gate 3 protected
 convergence, bridge/residual-split, and exact-recovery certificates.  It now
-also packages explicit partial-closure certificates for Gate 4's recovered-stage 4D BDG operator bridge and strongest
-scheduled kernel/operator bridge, Gate 5's local Born/projective completeness
-and finite Hopf carrier cover-independence layers, and Gate 6's dark-density
-and cosmological-constant/graviton-mode audits, and proves Gate 7 protocol
+also packages explicit partial-closure certificates for Gate 4's
+kernel/profile analytic supplier, recovered-stage 4D BDG operator bridge, and
+strongest scheduled kernel/operator bridge, Gate 5's local Born/projective
+completeness and finite Hopf carrier cover-independence layers, and Gate 6's
+dark-density and cosmological-constant/graviton-mode audits, and proves Gate 7 protocol
 closure from the preregistration ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are derived;
 Gate 7 still awaits future empirical comparisons against the frozen

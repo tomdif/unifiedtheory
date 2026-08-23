@@ -359,6 +359,63 @@ theorem gate4_recoveredBDGOperatorBridge_closed
     ⟨hrecovered, hoperator⟩
   exact ⟨hrecovered, hoperator, I.density_tendsto_atTop⟩
 
+/-- The Gate 4 analytic supplier sublayer that is already closed once the
+kernel/profile split data are supplied: active lightcone support plus the
+active weighted 4D kernel bound assemble the cone certificate, the reduced 4D
+operator profile tends to its target, every divergent density sampling tends
+to the same target, and the layer asymptotics are inherited from the assembled
+operator profile.  This isolates the remaining hard analytic input to the
+active-region kernel estimate and its chart/support supplier. -/
+structure Gate4KernelProfileSplitSupplierClosed
+    (D : BDG4DOperatorProfileKernelSplitData) : Prop where
+  coneBound : BDG4DOperatorProfileConeBound D.scales D.functions
+  operatorProfileTendsto :
+    Tendsto
+      (BDG4DOperatorProfileData.mean D.toProfileData)
+      atTop
+      (𝓝 (BDG4DOperatorProfileData.target D.toProfileData))
+  sampledOperatorTendsto :
+    ∀ density : ℕ → ℝ,
+      Tendsto density atTop atTop →
+        Tendsto
+          (fun n => BDG4DOperatorProfileData.mean D.toProfileData (density n))
+          atTop
+          (𝓝 (BDG4DOperatorProfileData.target D.toProfileData))
+  layerAsymptotics :
+    ∀ (density : ℕ → ℝ) (hdensity : Tendsto density atTop atTop)
+      (phiAtPoint curvaturePhi : ℝ),
+      ∀ i ∈
+        (D.toProfileData.sequenceAsymptotics
+          density hdensity phiAtPoint curvaturePhi).layers,
+        Tendsto
+          ((D.toProfileData.sequenceAsymptotics
+            density hdensity phiAtPoint curvaturePhi).layerMean i)
+          atTop
+          (𝓝
+            ((D.toProfileData.sequenceAsymptotics
+              density hdensity phiAtPoint curvaturePhi).layerConstant i *
+                (D.toProfileData.sequenceAsymptotics
+                  density hdensity phiAtPoint curvaturePhi).phiAtPoint +
+              (D.toProfileData.sequenceAsymptotics
+                density hdensity phiAtPoint curvaturePhi).layerSecond i *
+                ((D.toProfileData.sequenceAsymptotics
+                  density hdensity phiAtPoint curvaturePhi).boxPhi +
+                  (D.toProfileData.sequenceAsymptotics
+                    density hdensity phiAtPoint curvaturePhi).curvatureCoeff *
+                    (D.toProfileData.sequenceAsymptotics
+                      density hdensity phiAtPoint curvaturePhi).curvaturePhi)))
+
+theorem gate4_kernelProfileSplitSupplier_closed
+    (D : BDG4DOperatorProfileKernelSplitData) :
+    Gate4KernelProfileSplitSupplierClosed D := by
+  exact
+    ⟨D.coneBound,
+      D.tendsto,
+      fun density hdensity => D.sampled_tendsto density hdensity,
+      fun density hdensity phiAtPoint curvaturePhi =>
+        D.sequenceAsymptotics_layer_asymptotics
+          density hdensity phiAtPoint curvaturePhi⟩
+
 /-- The strongest current Gate 4 sublayer: a scheduled-density recovered chart
 whose operator package is reduced to kernel/profile support, regularity,
 uniform bounds, lower-lightcone support, an active-region weighted kernel
@@ -796,6 +853,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate3_exactRecoveryCertificate_closed
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
+#print axioms gate4_kernelProfileSplitSupplier_closed
 #print axioms gate4_scheduledKernelOperatorBridge_closed
 #print axioms gate5_localBornProjectiveCompleteness_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective

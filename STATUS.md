@@ -199,8 +199,9 @@
 > eventual full operational recovery, a recovered-stage threshold, and all
 > observable Hauptvermutung/bridge defects zero and canonical after some
 > threshold.  The ledger now also packages explicit
-> partial-closure certificates for Gate 4's recovered-stage 4D BDG operator
-> bridge and strongest scheduled kernel/operator bridge, Gate 5's local
+> partial-closure certificates for Gate 4's kernel/profile analytic supplier,
+> recovered-stage 4D BDG operator bridge, and strongest scheduled
+> kernel/operator bridge, Gate 5's local
 > Born/projective completeness and finite Hopf carrier cover-independence
 > layers, and Gate 6's dark-density and cosmological-constant/graviton-mode
 > audits. It proves Gate 7 protocol closure from the existing

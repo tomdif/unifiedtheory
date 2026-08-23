@@ -26,9 +26,9 @@ gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
 theorem, restates the Gate 3 convergence-certificate theorem, packages the
 Gate 3 convergence bridge/residual split and exact-recovery certificate as
-explicit partial-closure certificates, exposes Gate 4's
-recovered-stage 4D BDG operator bridge as an explicit partial-closure
-certificate, packages the strongest scheduled kernel/operator Gate 4 bridge as
+explicit partial-closure certificates, packages Gate 4's kernel/profile
+analytic supplier and recovered-stage 4D BDG operator bridge as explicit
+partial-closure certificates, packages the strongest scheduled kernel/operator Gate 4 bridge as
 an explicit partial-closure certificate, packages Gate 5's local
 Born/projective completeness and finite Hopf carrier cover-independence layers
 as explicit partial-closure certificates, packages Gate 6's dark-density and

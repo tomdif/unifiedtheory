@@ -145,8 +145,9 @@ derivation of the aggregate rate rather than the only logical gate.
   for all seven TOE gates and exposes the current checked hooks for Gate 1
   signed-fiber noncancellation, Gate 2 base zero sets, and Gate 3 convergence,
   bridge/residual-split, and exact-recovery certificates, plus explicit partial-closure certificates
-  for Gate 4 recovered-stage 4D BDG operator convergence and the strongest
-  scheduled kernel/operator bridge, Gate 5 local Born/projective completeness and finite
+  for the Gate 4 kernel/profile analytic supplier, recovered-stage 4D BDG
+  operator convergence, and the strongest scheduled kernel/operator bridge,
+  Gate 5 local Born/projective completeness and finite
   Hopf carrier cover-independence, and Gate 6 dark-density plus
   cosmological-constant/graviton-mode audits. It also
   proves the Gate 7
