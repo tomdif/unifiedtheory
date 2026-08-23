@@ -28,7 +28,8 @@ support/consistency, conditional atlas-realization, and branch-aligned
 positive-frequency handedness certificates, restates
 the Gate 2 base zero-set theorem and quotient invariant-observable
 construction, restates the Gate 3 convergence-certificate theorem, packages the
-Gate 3 convergence bridge/residual split and exact-recovery certificate as
+Gate 3 direct aggregate-rate contraction route, convergence bridge/residual
+split, and exact-recovery certificate as
 explicit partial-closure certificates, packages Gate 4's kernel/profile
 analytic supplier and recovered-stage 4D BDG operator bridge as explicit
 partial-closure certificates, packages the strongest scheduled kernel/operator Gate 4 bridge as
@@ -157,6 +158,8 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_rate
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_uniform_rate_floor
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+Gate3AggregateRateContractionClosed
+gate3_aggregateRateContraction_closed
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
@@ -444,6 +447,11 @@ with `total_n >= 0`, Lean clips the rate to
 convergence theorem.  This bypasses the pointwise centered-source floor as a
 logical requirement; that floor remains one possible way to derive the
 aggregate rate from microscopic causal growth.
+
+`KFTOESevenGateAttack.lean` now exposes this direct aggregate-rate route as
+`Gate3AggregateRateContractionClosed` and
+`gate3_aggregateRateContraction_closed`, making it an explicit seven-gate
+ledger subcertificate rather than only a lower-level theorem.
 
 The newest exact-recovery theorem adds the finite-spectrum gap needed to turn
 convergence into eventual recovery.  If every noncanonical bridge candidate has
@@ -871,6 +879,8 @@ The integrated Lean results are:
 ```text
 physicalHauptvermutungBaseDistortion_eq_zero_iff
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+Gate3AggregateRateContractionClosed
+gate3_aggregateRateContraction_closed
 ```
 
 The next high-value theorem targets are:

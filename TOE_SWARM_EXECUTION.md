@@ -100,6 +100,8 @@ Integrated proved finite theorems:
 ```text
 physicalHauptvermutungBaseDistortion_eq_zero_iff
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+Gate3AggregateRateContractionClosed
+gate3_aggregateRateContraction_closed
 ```
 
 The first theorem closes the algebraic zero set of the non-bridge base
@@ -117,6 +119,8 @@ plus a positive update-step floor is enough for horizon-protected convergence.
 Lean clips the effective rate by `1/stepFloor`, so no separate upper product
 condition is needed.  This makes the pointwise centered-source floor a possible
 derivation of the aggregate rate rather than the only logical gate.
+`KFTOESevenGateAttack.lean` now exposes the same route as a Gate 3
+partial-closure certificate.
 
 ## Round 1 Gate Findings
 

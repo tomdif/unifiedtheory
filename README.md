@@ -53,7 +53,8 @@ atlas-fiber noncancellation plus complete-chiral support/consistency and
 conditional atlas-realization certificates plus branch-aligned
 positive-frequency handedness with its reflection boundary, Gate 2 base zero
 sets and invariant-observable quotient semantics, and Gate 3 protected
-convergence, bridge/residual-split, and exact-recovery certificates.  It now
+aggregate-rate contraction, convergence, bridge/residual-split, and
+exact-recovery certificates.  It now
 also packages explicit partial-closure certificates for Gate 4's
 kernel/profile analytic supplier, recovered-stage 4D BDG operator bridge, and
 strongest scheduled kernel/operator bridge, Gate 5's local Born/projective
@@ -149,7 +150,10 @@ Machine-checked additions now cover:
   convergence with `q = 1 - stepFloor*gamma/2` from
   `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
   `0 < stepFloor*gamma <= 2`, making those uniform bounds the next target from
-  causal growth; the newest variable-product gate also proves convergence
+  causal growth; the seven-gate ledger now exposes the direct aggregate-rate
+  route as `Gate3AggregateRateContractionClosed` and
+  `gate3_aggregateRateContraction_closed`; the newest variable-product gate
+  also proves convergence
   from `D_{n+1} <= q_n*D_n` and `Product_{k<n} q_k -> 0`, with an explicit
   variable-rate-floor specialization
   `q_n = 1 - step_n*rateFloor_n/2`; the newest uniform-bound bridge derives

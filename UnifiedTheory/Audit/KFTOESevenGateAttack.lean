@@ -353,6 +353,53 @@ theorem gate3_horizonProtection_and_total_tendsto_zero_of_certificate
     physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
       C
 
+/-- Gate 3's direct aggregate-rate contraction sublayer.  A physical growth
+repair refinement together with a positive uniform aggregate descent rate,
+nonnegative tracked distortion, and a positive step floor already gives the
+two dynamical outputs needed by the convergence certificate: horizon
+protection at every finite stage and convergence of total distortion to zero.
+The remaining physical task is deriving the aggregate-rate inequality from the
+microscopic causal growth law. -/
+structure Gate3AggregateRateContractionClosed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    (rateBase stepFloor : ℝ) : Prop where
+  horizonProtection :
+    ∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0
+  totalTendsToZero : Tendsto total atTop (nhds 0)
+
+theorem gate3_aggregateRateContraction_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    (R : PhysicalGrowthRepairRefinement w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate)
+    {rateBase stepFloor : ℝ}
+    (hrate_pos : 0 < rateBase)
+    (hstep_pos : 0 < stepFloor)
+    (htotal_nonneg : ∀ n, 0 ≤ total n)
+    (hrate : ∀ n, rateBase * total n ≤ descentRate n)
+    (hstep_floor : ∀ n, stepFloor ≤ step n) :
+    Gate3AggregateRateContractionClosed R rateBase stepFloor := by
+  rcases
+    physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
+      R rateBase stepFloor hrate_pos hstep_pos
+      htotal_nonneg hrate hstep_floor with
+    ⟨hhorizon, htotal⟩
+  exact ⟨hhorizon, htotal⟩
+
 /-- The Gate 3 convergence-certificate sublayer that is already closed without
 any residual-gap hypothesis: horizon protection and total-distortion
 convergence hold, bridge recovery becomes canonical after a finite threshold,
@@ -1234,6 +1281,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
+#print axioms gate3_aggregateRateContraction_closed
 #print axioms gate3_convergenceBridgeResidualSplit_closed
 #print axioms gate3_exactRecoveryCertificate_closed
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface

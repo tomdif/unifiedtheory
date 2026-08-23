@@ -179,7 +179,9 @@
 > The latter proves protected convergence from a positive aggregate rate floor
 > and positive step floor, clipping the effective rate internally; it therefore
 > separates the logical convergence gate from the stronger pointwise
-> centered-source floor.  The prediction ledger is now mirrored in
+> centered-source floor.  `KFTOESevenGateAttack.lean` now exposes this route as
+> `Gate3AggregateRateContractionClosed` and
+> `gate3_aggregateRateContraction_closed`.  The prediction ledger is now mirrored in
 > `PREDICTIONS_PREREGISTRATION_LEDGER.json`; the README points to that five-row
 > preregistration set instead of treating older conditional proposals as the
 > canonical forward list.
@@ -196,8 +198,10 @@
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and invariant observable families descend to
 > quotient observables with invariant finite diagnostic signatures.  A
-> `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
-> total-distortion convergence.  It now also packages the Gate 3 bridge and
+> `gate3_aggregateRateContraction_closed` packages the direct aggregate-rate
+> route to horizon protection plus total-distortion convergence, while a
+> `PhysicalHauptvermutungConvergenceCertificate` gives the stronger
+> certificate interface.  It now also packages the Gate 3 bridge and
 > residual split: convergence alone gives eventual canonical bridge transport,
 > eventual zero bridge distortion, eventual equality of total and base
 > residual distortion, and convergence of every finite count/curvature/spectral

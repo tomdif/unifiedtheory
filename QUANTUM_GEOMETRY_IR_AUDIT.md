@@ -847,8 +847,9 @@ checked theorem hooks, with Gate 1 now packaging complete-chiral
 support/consistency, conditional atlas realization, and branch-aligned
 positive-frequency handedness, Gate 2 packaging
 quotient invariant-observable semantics, and Gate 3 now packaging bridge/residual-split
-recovery from the convergence certificate and exact recovery once uniform
-positive residual gaps are supplied; Gate 4 has an explicit kernel/profile
+recovery from the convergence certificate, the direct aggregate-rate
+contraction route, and exact recovery once uniform positive residual gaps are
+supplied; Gate 4 has an explicit kernel/profile
 analytic supplier certificate, an explicit recovered-stage 4D BDG operator
 partial-closure certificate, and an explicit scheduled kernel/operator
 partial-closure certificate; Gate 5 has explicit local Born/projective
