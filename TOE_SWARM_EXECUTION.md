@@ -149,7 +149,8 @@ derivation of the aggregate rate rather than the only logical gate.
   operator convergence, and the strongest scheduled kernel/operator bridge,
   Gate 5 local Born/projective completeness, finite Hopf carrier
   cover-independence, and recovered common-refinement layers, and Gate 6 dark-density plus
-  cosmological-constant/graviton-mode audits plus finite information-preservation audit. It also
+  cosmological-constant/graviton-mode audits, finite information-preservation
+  audit, and conditional QQG cosmology bridge. It also
   proves the Gate 7
   preregistration-protocol closure theorem. Full Gates 4-6 are still
   deliberately represented as closure records until their physical, infrared,

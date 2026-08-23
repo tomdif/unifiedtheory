@@ -21,6 +21,7 @@ import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
 import UnifiedTheory.LayerB.InformationParadox
+import UnifiedTheory.Cosmology.QQG.Bridge
 
 set_option autoImplicit false
 
@@ -40,6 +41,7 @@ open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.Project
 open UnifiedTheory.LayerB.PreRegistrationLedger
 open UnifiedTheory.LayerB.DarkMatterAudit
 open UnifiedTheory.LayerB.InformationParadox
+open UnifiedTheory.Cosmology.QQG
 
 /-! ## Gate 1: microscopic physical growth law -/
 
@@ -881,6 +883,31 @@ theorem gate6_finiteInformationPreservationAudit_closed :
       fun f hinj => no_information_loss f hinj,
       fun f => unitarity_is_a_theorem f⟩
 
+/-- The Gate 6 QQG cosmology bridge sublayer: for any QQG scenario, Lean proves
+the UV fixed-point, large-N running, small-`ξ` running, monotone plateau
+potential, and sharp `r >= 0.01` algebraic bound ledger.  If the explicit
+emergence hypotheses are supplied, the same package enters the conditional
+Einstein branch.  This is a conditional cosmology bridge, not an unconditional
+derivation of the emergence hypotheses, initial state, reheating, or CMB
+phenomenology. -/
+structure Gate6QQGCosmologyBridgeAuditClosed
+    (S : QQGScenario) : Prop where
+  provenConclusions : QQGProvenConclusions S
+  conditionalEinsteinBranch :
+    ∀ hyp : QQGEmergenceHypotheses, QQGConditionalEinsteinBranch S
+  bridgeProvenPart :
+    ∀ hyp : QQGEmergenceHypotheses,
+      (qqg_cosmology_implies_conditional_einstein S hyp).1 =
+        qqg_proven_conclusions S
+
+theorem gate6_qqgCosmologyBridgeAudit_closed
+    (S : QQGScenario) :
+    Gate6QQGCosmologyBridgeAuditClosed S := by
+  exact
+    ⟨qqg_proven_conclusions S,
+      fun hyp => qqg_cosmology_implies_conditional_einstein S hyp,
+      fun hyp => qqg_bridge_proven_part S hyp⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -962,6 +989,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_darkDensityAudit_closed
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
 #print axioms gate6_finiteInformationPreservationAudit_closed
+#print axioms gate6_qqgCosmologyBridgeAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack
