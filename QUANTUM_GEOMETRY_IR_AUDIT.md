@@ -854,8 +854,8 @@ kernel/profile analytic supplier certificate, recovered-stage 4D BDG
 RSS/Poisson operator partial-closure certificate, and scheduled
 kernel/operator partial-closure certificate; Gate 5 has explicit arbitrary-axis
 Born-observable, local Born/projective completeness, finite Hopf carrier cover-independence, and recovered
-common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
-cosmological-constant/graviton-mode plus finite information-preservation
+common-refinement partial-closure certificates; Gate 6 has explicit dark-density
+Planck-window and cosmological-constant/graviton-mode plus finite information-preservation
 inverse/preimage partial-closure certificates, discrete holography and
 Page-curve finite entropy audits, conditional Araki/Dorau-Much
 horizon-to-Einstein bridges, a conditional QQG cosmology bridge, and a

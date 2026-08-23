@@ -156,8 +156,8 @@ partial-closure certificate.
   supplier, recovered-stage 4D BDG RSS/Poisson operator convergence, and the
   strongest scheduled kernel/operator bridge,
   Gate 5 arbitrary-axis Born observables, local Born/projective completeness, finite Hopf carrier
-  cover-independence, and recovered common-refinement layers, and Gate 6 dark-density plus
-  cosmological-constant/graviton-mode audits, finite information-preservation
+  cover-independence, and recovered common-refinement layers, and Gate 6 dark-density
+  Planck-window plus cosmological-constant/graviton-mode audits, finite information-preservation
   inverse/preimage audit, discrete holography and Page-curve finite entropy
   audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges, conditional QQG cosmology bridge, and physical-information-limits audit. It also
   proves the Gate 7

@@ -1247,6 +1247,44 @@ theorem gate6_darkDensityAudit_closed :
     ⟨hDMAtomic, hDMCentral, hMAtomic, hBAtomic, hthree, hcold,
       hdisc, hsimpler, hbaryon, hthermal, hnotProduct⟩
 
+/-- The stronger Gate 6 dark-density Planck-window audit: the atomic dark,
+matter, and baryon identities are bundled with the exact Planck-centre hit for
+`Ω_DM h²`, the one-sigma Planck-window checks for dark and total matter, the
+cold-dark-matter fraction, and the honest negative clauses that `1/9` is a
+simpler but wrong low-window competitor and the baryon candidate overshoots its
+one-sigma window. -/
+structure Gate6DarkMatterPlanckWindowAuditClosed : Prop where
+  omegaDMAtomic :
+    OmegaDM_framework = (Nc : ℚ) / ((Nt : ℚ) * (Nt : ℚ))
+  omegaDMCentral : OmegaDM_framework = OmegaDM_central
+  omegaDMInOneSigma :
+    OmegaDM_lo_1sigma < OmegaDM_framework ∧
+      OmegaDM_framework < OmegaDM_hi_1sigma
+  omegaMAtomic : OmegaM_framework = 1 / (discN : ℚ)
+  omegaMInOneSigma :
+    OmegaM_lo_1sigma < OmegaM_framework ∧
+      OmegaM_framework < OmegaM_hi_1sigma
+  omegaBAtomic :
+    Omegab_framework =
+      (NWsq : ℚ) / ((discN : ℚ) * (Nt : ℚ) * (Nt : ℚ))
+  threeDensityIdentity :
+    OmegaM_framework = OmegaDM_framework + Omegab_framework
+  coldDarkMatterFraction :
+    OmegaDM_framework * (discN : ℚ) = OmegaDM_over_M_obs
+  simplerCompetitorExists : C_one_ninth < C_three_twenty_fifths
+  simplerCompetitorMissesLowWindow :
+    OmegaDM_one_ninth < OmegaDM_lo_1sigma
+  baryonAboveOneSigma : Omegab_hi_1sigma < Omegab_framework
+
+theorem gate6_darkMatterPlanckWindowAudit_closed :
+    Gate6DarkMatterPlanckWindowAuditClosed := by
+  rcases dark_matter_audit_VERDICT with
+    ⟨hDM, hDMCentral, hDMWindow, hM, hMWindow, hB, hthree,
+      hfraction, hsimpler, hlow, hbaryon⟩
+  exact
+    ⟨hDM, hDMCentral, hDMWindow, hM, hMWindow, hB, hthree,
+      hfraction, hsimpler, hlow, hbaryon⟩
+
 /-- The Gate 6 cosmological-constant/gravitational-mode sublayer that is
 currently closed: the Sorkin `Λ² * N = 1` relation is packaged with its
 self-consistency/fluctuation refinements, the audit's honest negative clauses
@@ -1685,6 +1723,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
+#print axioms gate6_darkMatterPlanckWindowAudit_closed
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
 #print axioms gate6_finiteInformationPreservationAudit_closed
 #print axioms gate6_discreteHolographyAudit_closed

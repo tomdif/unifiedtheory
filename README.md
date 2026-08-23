@@ -60,7 +60,7 @@ active-kernel cone-bound supplier, kernel/profile analytic supplier,
 recovered-stage 4D BDG RSS/Poisson operator bridge, and strongest scheduled
 kernel/operator bridge, Gate 5's arbitrary-axis Born observables, local
 Born/projective completeness, finite Hopf carrier cover-independence, and recovered common-refinement
-layers, and Gate 6's dark-density and cosmological-constant/graviton-mode
+layers, and Gate 6's dark-density Planck-window and cosmological-constant/graviton-mode
 audits, finite information-preservation inverse/preimage audit, discrete
 holography and Page-curve finite entropy audits, conditional Araki/Dorau-Much
 horizon-to-Einstein bridges, and conditional QQG cosmology

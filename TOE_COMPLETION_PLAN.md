@@ -37,7 +37,7 @@ packages the strongest scheduled kernel/operator Gate 4 bridge as
 an explicit partial-closure certificate, packages Gate 5's arbitrary-axis Born
 observables, local Born/projective completeness, finite Hopf carrier cover-independence, and
 recovered common-refinement layers as explicit partial-closure certificates,
-packages Gate 6's dark-density and
+packages Gate 6's dark-density Planck-window and
 cosmological-constant/graviton-mode audits plus finite information-preservation
 inverse/preimage audit, discrete holography and Page-curve finite entropy
 audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges, conditional QQG cosmology bridge, and physical-information-limits audit
@@ -855,6 +855,17 @@ Open work:
 ### Gate 6: Cosmology And Black Holes
 
 Goal: cover sectors a complete theory cannot skip.
+
+Current dark-sector hook:
+
+`gate6_darkMatterPlanckWindowAudit_closed` packages the stronger dark-density
+audit verdict: `Ω_DM h² = 3/25` is both the framework atom and the Planck
+central value, lies in the one-sigma dark-matter window, pairs with
+`Ω_M h² = 1/7` inside its one-sigma window, satisfies the three-density
+identity with the baryon candidate, and gives the cold-DM fraction `21/25`.
+It also records the honest negatives: `1/9` is a simpler but low-window-missing
+competitor, and the baryon candidate overshoots its one-sigma window.  This is
+not yet a cosmological production theorem.
 
 Current finite information-preservation hook:
 
