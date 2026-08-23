@@ -843,8 +843,9 @@ transition fiber. The remaining obstruction is finite signed-count
 noncancellation, not one-element-growth admissibility or normalization.
 `KFTOESevenGateAttack.lean` now lifts this and the Hauptvermutung convergence
 machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
-checked theorem hooks, with Gate 3 now also packaging exact recovery from the
-convergence certificate plus uniform positive residual gaps; Gate 4 has an
+checked theorem hooks, with Gate 3 now also packaging bridge/residual-split
+recovery from the convergence certificate and exact recovery once uniform
+positive residual gaps are supplied; Gate 4 has an
 explicit recovered-stage 4D BDG operator partial-closure certificate and an
 explicit scheduled kernel/operator
 partial-closure certificate; Gate 5 has explicit local Born/projective

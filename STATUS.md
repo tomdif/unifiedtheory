@@ -189,7 +189,11 @@
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and a
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
-> total-distortion convergence.  It now also packages the Gate 3
+> total-distortion convergence.  It now also packages the Gate 3 bridge and
+> residual split: convergence alone gives eventual canonical bridge transport,
+> eventual zero bridge distortion, eventual equality of total and base
+> residual distortion, and convergence of every finite count/curvature/spectral
+> residual component to zero.  It also packages the Gate 3
 > exact-recovery certificate as a partial closure: once the convergence
 > certificate and uniform positive residual gaps are supplied, Lean gets
 > eventual full operational recovery, a recovered-stage threshold, and all

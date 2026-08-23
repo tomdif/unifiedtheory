@@ -25,8 +25,8 @@ Lean-facing attack ledger.  It records explicit closure targets for all seven
 gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
 theorem, restates the Gate 3 convergence-certificate theorem, packages the
-Gate 3 exact-recovery certificate as an explicit partial-closure certificate,
-exposes Gate 4's
+Gate 3 convergence bridge/residual split and exact-recovery certificate as
+explicit partial-closure certificates, exposes Gate 4's
 recovered-stage 4D BDG operator bridge as an explicit partial-closure
 certificate, packages the strongest scheduled kernel/operator Gate 4 bridge as
 an explicit partial-closure certificate, packages Gate 5's local

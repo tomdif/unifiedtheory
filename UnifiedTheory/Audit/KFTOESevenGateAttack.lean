@@ -126,6 +126,87 @@ theorem gate3_horizonProtection_and_total_tendsto_zero_of_certificate
     physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
       C
 
+/-- The Gate 3 convergence-certificate sublayer that is already closed without
+any residual-gap hypothesis: horizon protection and total-distortion
+convergence hold, bridge recovery becomes canonical after a finite threshold,
+bridge distortion vanishes eventually, the total distortion eventually equals
+the base residual distortion, and each finite count/curvature/spectral
+residual component tends to zero.  The remaining exact-zero step is precisely
+the positive residual-gap input packaged below. -/
+structure Gate3ConvergenceBridgeResidualSplitClosed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) : Prop where
+  horizonProtection :
+    ∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0
+  totalTendsToZero : Tendsto total atTop (nhds 0)
+  eventualCanonical :
+    ∀ᶠ n in atTop,
+      candidate n = canonicalCSpecBridgeCandidate (edge n)
+  eventualBridgeTotalZero :
+    ∀ᶠ n in atTop,
+      cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0
+  eventualOrderRecovered :
+    ∀ᶠ n in atTop,
+      ∀ i a b,
+        Cov fourState (GPoint.atom (fourState.dst (edge n i)) b)
+            (GPoint.bridge (edge n i) a) →
+          b = candidate n i a
+  eventualTotalEqBase :
+    ∀ᶠ n in atTop,
+      total n =
+        physicalHauptvermutungBaseDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n)
+  baseTendsToZero :
+    Tendsto
+      (fun n =>
+        physicalHauptvermutungBaseDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n))
+      atTop (nhds 0)
+  countWindowTendsToZero :
+    ∀ i, Tendsto (fun n => countWindow n i) atTop (nhds 0)
+  curvatureBiasTendsToZero :
+    ∀ i, Tendsto (fun n => curvatureBias n i) atTop (nhds 0)
+  spectralLocalityTendsToZero :
+    ∀ i, Tendsto (fun n => spectralLocality n i) atTop (nhds 0)
+
+theorem gate3_convergenceBridgeResidualSplit_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase) :
+    Gate3ConvergenceBridgeResidualSplitClosed C := by
+  rcases
+    physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
+      C with
+    ⟨hhorizon, htotal⟩
+  exact
+    ⟨hhorizon, htotal,
+      physicalHauptvermutungConvergenceCertificate_eventually_canonical C,
+      physicalHauptvermutungConvergenceCertificate_eventually_bridge_total_zero C,
+      physicalHauptvermutungConvergenceCertificate_eventually_orderRecovered C,
+      physicalHauptvermutungConvergenceCertificate_eventually_total_eq_base C,
+      physicalHauptvermutungConvergenceCertificate_base_tendsto_zero C,
+      fun i => physicalHauptvermutungConvergenceCertificate_countWindow_tendsto_zero C i,
+      fun i => physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero C i,
+      fun i => physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero C i⟩
+
 /-- The Gate 3 exact-recovery sublayer that is already closed by the reusable
 exact-recovery certificate: horizon protection holds at every finite stage,
 full operational recovery holds eventually, recovered stages hold eventually
@@ -711,6 +792,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
+#print axioms gate3_convergenceBridgeResidualSplit_closed
 #print axioms gate3_exactRecoveryCertificate_closed
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
