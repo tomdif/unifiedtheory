@@ -160,6 +160,34 @@ theorem gate4_recoveredStage_bdg4d_operator_limit_of_interface
   exact
     RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto I
 
+/-- The Gate 4 sublayer that is actually closed by a supplied recovered-stage
+4D operator interface: exact recovered stages eventually hold, the concrete 4D
+operator profile converges, and the supplied density schedule tends to
+infinity.  The remaining full Gate 4 work is deriving such an interface from
+the microscopic law and upgrading through the physical chart/kernel inputs. -/
+structure Gate4RecoveredBDGOperatorBridgeClosed
+    {cell : Type*} [Fintype cell]
+    (I : RecoveredStageBDG4DOperatorInterface cell) : Prop where
+  eventualRecoveredStage :
+    ∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (I.countWindow n) (I.curvatureBias n) (I.spectralLocality n)
+        (I.scale n) (I.total n) (I.edge n) (I.candidate n)
+  operatorLimit :
+    Tendsto
+      (fun n => BDG4DOperatorProfileData.mean I.operatorData (I.density n))
+      atTop
+      (𝓝 (BDG4DOperatorProfileData.target I.operatorData))
+  densityTendsToInfinity : Tendsto I.density atTop atTop
+
+theorem gate4_recoveredBDGOperatorBridge_closed
+    {cell : Type*} [Fintype cell]
+    (I : RecoveredStageBDG4DOperatorInterface cell) :
+    Gate4RecoveredBDGOperatorBridgeClosed I := by
+  rcases gate4_recoveredStage_bdg4d_operator_limit_of_interface I with
+    ⟨hrecovered, hoperator⟩
+  exact ⟨hrecovered, hoperator, I.density_tendsto_atTop⟩
+
 /-! ## Gate 5: QFT and Standard Model infrared limit -/
 
 /-- IR targets beyond the finite Hopf/projective-qubit carrier algebra. -/
@@ -214,6 +242,55 @@ theorem gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
     coverIndependence_projective_qubit_carrier_field_interface
       fA fB hA hB F G
 
+/-- The Gate 5 finite-carrier sublayer that is already closed: any two
+jointly-surjective finite probe covers give equivalent carrier-field equality
+tests and equivalent Pauli/all-axis Born-data tests, including after passing to
+their common refinement.  The remaining full Gate 5 work is the effective
+Hilbert/QFT, spin-statistics, gauge, and Standard-Model infrared limit. -/
+structure Gate5FiniteCarrierCoverClosed
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F G : ProjectiveQubitCarrierField site) : Prop where
+  equalOnCoverIndependent :
+    EqualOnCover probeA fA F G ↔ EqualOnCover probeB fB F G
+  pauliBornCoverIndependent :
+    SamePauliBornDataOnCover probeA fA F G ↔
+      SamePauliBornDataOnCover probeB fB F G
+  allAxisBornCoverIndependent :
+    SameAllAxisBornDataOnCover probeA fA F G ↔
+      SameAllAxisBornDataOnCover probeB fB F G
+  equalOnCommonRefinement :
+    EqualOnCover probeA fA F G ↔
+      EqualOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G
+  pauliBornOnCommonRefinement :
+    SamePauliBornDataOnCover probeA fA F G ↔
+      SamePauliBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G
+  allAxisBornOnCommonRefinement :
+    SameAllAxisBornDataOnCover probeA fA F G ↔
+      SameAllAxisBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G
+
+theorem gate5_finiteCarrierCover_closed
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site) :
+    Gate5FiniteCarrierCoverClosed fA fB F G := by
+  rcases gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
+      fA fB hA hB F G with
+    ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
+  exact ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
+
 /-! ## Gate 6: cosmology and black holes -/
 
 /-- Physical sectors a complete theory cannot skip. -/
@@ -258,6 +335,38 @@ theorem gate6_darkDensity_atomic_audit_hook :
     ∧ ((1 : ℚ) / 20 < OmegaDM_framework)
     ∧ ((7 / 3 : ℚ) * (1 / 20 : ℚ) ≠ OmegaDM_framework) := by
   exact honest_scope_DarkMatterAudit
+
+/-- The Gate 6 dark-density audit sublayer that is actually closed: the
+framework-atomic dark, matter, and baryon density identities are bundled with
+the honest negative clauses showing this is not yet a full cosmology/black-hole
+derivation. -/
+structure Gate6DarkDensityAuditClosed : Prop where
+  omegaDMAtomic :
+    OmegaDM_framework = (Nc : ℚ) / ((Nt : ℚ) * (Nt : ℚ))
+  omegaDMCentral : OmegaDM_framework = OmegaDM_central
+  omegaMAtomic : OmegaM_framework = 1 / (discN : ℚ)
+  omegaBAtomic :
+    Omegab_framework =
+      (NWsq : ℚ) / ((discN : ℚ) * (Nt : ℚ) * (Nt : ℚ))
+  threeDensityConsistent :
+    OmegaM_framework = OmegaDM_framework + Omegab_framework
+  coldDMFractionExact :
+    OmegaDM_framework * (discN : ℚ) = OmegaDM_over_M_obs
+  matterDiscIdentity : (discN : ℚ) * OmegaM_framework = 1
+  simplerCompetitorExists : C_one_ninth < C_three_twenty_fifths
+  baryonAboveOneSigma : Omegab_hi_1sigma < Omegab_framework
+  thermalPortalUnderpredicts : (1 : ℚ) / 20 < OmegaDM_framework
+  notCorrectedAtomProduct :
+    (7 / 3 : ℚ) * (1 / 20 : ℚ) ≠ OmegaDM_framework
+
+theorem gate6_darkDensityAudit_closed :
+    Gate6DarkDensityAuditClosed := by
+  rcases gate6_darkDensity_atomic_audit_hook with
+    ⟨hDMAtomic, hDMCentral, hMAtomic, hBAtomic, hthree, hcold,
+      hdisc, hsimpler, hbaryon, hthermal, hnotProduct⟩
+  exact
+    ⟨hDMAtomic, hDMCentral, hMAtomic, hBAtomic, hthree, hcold,
+      hdisc, hsimpler, hbaryon, hthermal, hnotProduct⟩
 
 /-! ## Gate 7: external tests -/
 
@@ -327,8 +436,11 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
+#print axioms gate4_recoveredBDGOperatorBridge_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
+#print axioms gate5_finiteCarrierCover_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
+#print axioms gate6_darkDensityAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack

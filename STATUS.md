@@ -189,10 +189,11 @@
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and a
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
-> total-distortion convergence.  The ledger now also exposes Gate 4's
-> recovered-stage 4D BDG operator hook, Gate 5's finite Hopf carrier
-> cover-independence hook, and Gate 6's dark-density audit hook. It proves Gate
-> 7 protocol closure from the existing preregistration/falsifiability ledger:
+> total-distortion convergence.  The ledger now also packages explicit
+> partial-closure certificates for Gate 4's recovered-stage 4D BDG operator
+> bridge, Gate 5's finite Hopf carrier cover-independence layer, and Gate 6's
+> dark-density audit. It proves Gate 7 protocol closure from the existing
+> preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
 > horizons, and a failure ledger are all recorded. Full Gates 4-6 remain open
 > until their missing physical, infrared, cosmological, and black-hole inputs
