@@ -1379,7 +1379,9 @@
 > `CompleteChiralAtlasRealAggregateCoeffNonzero`: it is enough to exhibit one
 > nonzero signed real coefficient in each of the 140 polynomials, unless one
 > aggregate is purely imaginary and needs the analogous imaginary-part
-> certificate.
+> certificate. The newest signed-fiber theorem expands those coefficients as
+> explicit signed sums over the labeled transition fibers, turning the finite
+> gate into a direct signed-count noncancellation target.
 > `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
 > continuum assumptions. The finite weak vertex has an exact pointwise lift to
 > a nontrivial chiral field on any nonempty base, and every order embedding

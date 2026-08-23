@@ -87,6 +87,30 @@ def atlasCompleteChiralRawAggregateRealCoeff
     (n : ℕ) (hnext : n + 1 ≤ 140) (k : ℕ) : ℤ :=
   (atlasCompleteChiralRawAggregateRealPolynomial n hnext).coeff k
 
+/-- The same atlas-birth coefficient as a signed count over the labeled
+transition fiber at one exponent. -/
+def atlasCompleteChiralRawAggregateSignedFiberSum
+    (n : ℕ) (hnext : n + 1 ≤ 140) (k : ℕ) : ℤ :=
+  interactingChiralRealAggregateSignedFiberSum
+    (globalAtlasPhysicalPrefix n
+      (Nat.le_trans (Nat.le_succ n) hnext))
+    (atlasStepChild n hnext) k
+
+/-- The polynomial coefficient at one atlas birth is exactly the corresponding
+signed transition-fiber sum. -/
+theorem atlasCompleteChiralRawAggregateRealCoeff_eq_signedFiberSum
+    (n : ℕ) (hnext : n + 1 ≤ 140) (k : ℕ) :
+    atlasCompleteChiralRawAggregateRealCoeff n hnext k =
+      atlasCompleteChiralRawAggregateSignedFiberSum n hnext k := by
+  simpa [atlasCompleteChiralRawAggregateRealCoeff,
+    atlasCompleteChiralRawAggregateRealPolynomial,
+    atlasCompleteChiralRawAggregateSignedFiberSum,
+    interactingChiralRealAggregateCoeff] using
+    interactingChiralRealAggregateCoeff_eq_signedFiberSum
+      (globalAtlasPhysicalPrefix n
+        (Nat.le_trans (Nat.le_succ n) hnext))
+      (atlasStepChild n hnext) k
+
 /-- The raw atlas aggregate real part is exactly evaluation of its integer
 transition-fiber polynomial at the canonical pair coupling. -/
 theorem atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
@@ -150,6 +174,12 @@ def CompleteChiralAtlasRealAggregateCoeffNonzero : Prop :=
   ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
     ∃ k : ℕ, atlasCompleteChiralRawAggregateRealCoeff n hnext k ≠ 0
 
+/-- A finite signed-fiber-sum certificate for the complete-chiral atlas path.
+This is the directly countable form of the coefficient gate. -/
+def CompleteChiralAtlasRealAggregateSignedFiberSumNonzero : Prop :=
+  ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+    ∃ k : ℕ, atlasCompleteChiralRawAggregateSignedFiberSum n hnext k ≠ 0
+
 /-- A single nonzero coefficient proves nonzero status of one concrete atlas
 real aggregate polynomial. -/
 theorem atlasCompleteChiralRawAggregateRealPolynomial_ne_zero_of_coeff_ne_zero
@@ -172,6 +202,16 @@ theorem completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
   exact
     atlasCompleteChiralRawAggregateRealPolynomial_ne_zero_of_coeff_ne_zero
       n hnext k hk
+
+/-- Signed transition-fiber witnesses imply the coefficient gate. -/
+theorem completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero) :
+    CompleteChiralAtlasRealAggregateCoeffNonzero := by
+  intro n hnext
+  rcases hSum n hnext with ⟨k, hk⟩
+  refine ⟨k, ?_⟩
+  rw [atlasCompleteChiralRawAggregateRealCoeff_eq_signedFiberSum]
+  exact hk
 
 /-- Nonzero real-part polynomial certificate implies nonzero raw coherent
 aggregate on one concrete atlas birth. -/
@@ -209,6 +249,16 @@ theorem completeChiralAtlasRawAggregateNonzero_of_realCoeff_nonzero
     completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero chirality
       (completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
         hCoeff)
+
+/-- Signed transition-fiber witnesses imply the raw coherent noncancellation
+gate. -/
+theorem completeChiralAtlasRawAggregateNonzero_of_signedFiberSum_nonzero
+    (chirality : Fin 2)
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero) :
+    CompleteChiralAtlasRawAggregateNonzero chirality := by
+  exact completeChiralAtlasRawAggregateNonzero_of_realCoeff_nonzero chirality
+    (completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero
+      hSum)
 
 /-- The finite noncancellation gate needed to promote the already-physical
 atlas path from the uniform law to the complete chiral law. -/
@@ -396,13 +446,40 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
       (completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
         hCoeff)
 
+/-- Signed-fiber-sum version of the complete-chiral physical CSpec realization
+theorem.  The remaining finite input is now an explicit nonzero signed count
+over the labeled transition fiber for each atlas birth. -/
+theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
+    (chirality : Fin 2)
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero) :
+    IsPhysicalCausalGrowthPath 140
+        (globalAtlasPhysicalGrowthPath 140 le_rfl)
+      ∧ finiteRankedPathAmplitude
+          (completeChiralCausalSetGrowthLaw chirality) 140
+          (globalAtlasPhysicalGrowthPath 140 le_rfl) ≠ 0
+      ∧ Nonempty
+          (CausalOrderPoint (globalAtlasPhysicalPrefix 140 le_rfl) ≃o
+            GlobalAtlasEvent)
+      ∧ ContainsBooleanCubeSeed (globalAtlasPhysicalPrefix 140 le_rfl)
+      ∧ cSpecAtlasOrientation 3 cSpecOddLoopHistory = -1
+      ∧ IsNontrivialPurelyRightHanded
+          (cSpecAtlasWeakVertex 3 cSpecOddLoopHistory) := by
+  exact
+    completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realCoeff_nonzero
+      chirality
+      (completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero
+        hSum)
+
 #print axioms atlasCompleteChiralTransition_eq_rawAggregate_div_partition
 #print axioms atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
+#print axioms atlasCompleteChiralRawAggregateRealCoeff_eq_signedFiberSum
 #print axioms atlasCompleteChiralRawAggregateRealPolynomial_ne_zero_of_coeff_ne_zero
 #print axioms completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
+#print axioms completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero
 #print axioms atlasCompleteChiralRawAggregate_ne_zero_of_realPolynomial_ne_zero
 #print axioms completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
 #print axioms completeChiralAtlasRawAggregateNonzero_of_realCoeff_nonzero
+#print axioms completeChiralAtlasRawAggregateNonzero_of_signedFiberSum_nonzero
 #print axioms atlasCompleteChiralPartition_ne_zero
 #print axioms completeChiralAtlasRawAggregateNonzero_iff_transition_nonzero
 #print axioms completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
@@ -413,6 +490,7 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realPolynomial_nonzero
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realCoeff_nonzero
+#print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
 
 end
 

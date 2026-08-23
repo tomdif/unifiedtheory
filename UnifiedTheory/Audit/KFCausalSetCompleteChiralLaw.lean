@@ -337,6 +337,45 @@ def interactingChiralRealAggregateCoeff {n : ℕ}
     (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
   (interactingChiralRealAggregatePolynomial parent child).coeff k
 
+/-- The same coefficient written as a signed count over the transition fiber:
+only precursors with exponent `k` contribute, and their signs are the real
+Gaussian quarter-turn signs. -/
+def interactingChiralRealAggregateSignedFiberSum {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
+  ∑ past : LabeledCausalTransitionFiber parent child,
+    if k = ancestorPairExponent past.val.ancestorCount then
+      (gaussianIPow past.val.maximalCount).1
+    else 0
+
+/-- The coefficient witness is exactly the signed fiber sum at that exponent. -/
+theorem interactingChiralRealAggregateCoeff_eq_signedFiberSum
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) :
+    interactingChiralRealAggregateCoeff parent child k =
+      interactingChiralRealAggregateSignedFiberSum parent child k := by
+  classical
+  unfold interactingChiralRealAggregateCoeff
+  unfold interactingChiralRealAggregatePolynomial
+  unfold interactingChiralRealAggregateSignedFiberSum
+  change (Polynomial.lcoeff ℤ k)
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        C (gaussianIPow past.val.maximalCount).1 *
+          X ^ ancestorPairExponent past.val.ancestorCount) =
+    ∑ past : LabeledCausalTransitionFiber parent child,
+      if k = ancestorPairExponent past.val.ancestorCount then
+        (gaussianIPow past.val.maximalCount).1
+      else 0
+  rw [map_sum]
+  apply Finset.sum_congr rfl
+  intro past _hPast
+  change (C (gaussianIPow past.val.maximalCount).1 *
+      X ^ ancestorPairExponent past.val.ancestorCount).coeff k =
+    if k = ancestorPairExponent past.val.ancestorCount then
+      (gaussianIPow past.val.maximalCount).1
+    else 0
+  rw [coeff_C_mul_X_pow]
+
 /-- A single nonzero coefficient certifies that the real aggregate polynomial
 does not vanish.  This turns the finite aggregate gate into a coefficient
 witness search. -/
@@ -351,6 +390,19 @@ theorem interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
   unfold interactingChiralRealAggregateCoeff
   rw [hZero]
   simp
+
+/-- A nonzero signed fiber sum at one exponent certifies nonzero real aggregate
+polynomial status. -/
+theorem interactingChiralRealAggregatePolynomial_ne_zero_of_signedFiberSum_ne_zero
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ)
+    (hSum :
+      interactingChiralRealAggregateSignedFiberSum parent child k ≠ 0) :
+    interactingChiralRealAggregatePolynomial parent child ≠ 0 := by
+  apply interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
+    parent child k
+  rw [interactingChiralRealAggregateCoeff_eq_signedFiberSum]
+  exact hSum
 
 @[simp]
 theorem emptyCausalPastSet_ancestorCount {n : ℕ}
@@ -1464,7 +1516,9 @@ theorem completeChiralLaw_recovers_endpoint_without_totalization
 #print axioms subcritical_interactingChiral_partition_ne_zero
 #print axioms interactingChiral_labeledAggregate_re_eq_polynomial_eval
 #print axioms interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms interactingChiralRealAggregateCoeff_eq_signedFiberSum
 #print axioms interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
+#print axioms interactingChiralRealAggregatePolynomial_ne_zero_of_signedFiberSum_ne_zero
 #print axioms canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne_zero
 #print axioms effectivePairChiralSignatureWeight_append_singleton
 #print axioms interactingChiralSignatureWeight_eq_iff

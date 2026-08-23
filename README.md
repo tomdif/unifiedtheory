@@ -1051,9 +1051,10 @@ assumption tags and frozen data protocols, or explicitly demoted.
   each atlas birth now has an explicit integer real-part aggregate polynomial,
   and Lean also packages a coefficient witness gate: one nonzero signed real
   coefficient for each of the 140 aggregate polynomials implies the
-  complete-chiral realization theorem. Thus the remaining obstruction is
-  finite coefficient noncancellation, not physical admissibility or
-  normalization.
+  complete-chiral realization theorem. The newest theorem expands each such
+  coefficient into a signed transition-fiber sum, so the remaining obstruction
+  is a finite signed-count noncancellation problem, not physical admissibility
+  or normalization.
   `KFCausalCSpecContinuumChiralityQualification.lean` then gives the strongest
   currently justified continuum statement: the determinant-selected vertex
   lifts pointwise to a nontrivial chiral field on any nonempty base, any

@@ -50,7 +50,9 @@ Open work:
   `CompleteChiralAtlasRealAggregateCoeffNonzero` now strengthens the usable
   certificate: one nonzero signed real coefficient in each of the 140 concrete
   integer real-part aggregate polynomials suffices, with an
-  imaginary-polynomial route needed only if a real certificate vanishes;
+  imaginary-polynomial route needed only if a real certificate vanishes.
+  `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` now expands that
+  coefficient gate into explicit signed transition-fiber sums;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
