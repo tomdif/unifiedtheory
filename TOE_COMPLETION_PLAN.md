@@ -39,7 +39,8 @@ observables, local Born/projective completeness, finite Hopf carrier cover-indep
 recovered common-refinement layers as explicit partial-closure certificates,
 packages Gate 6's dark-density and
 cosmological-constant/graviton-mode audits plus finite information-preservation
-inverse/preimage audit, conditional QQG cosmology bridge, and physical-information-limits audit
+inverse/preimage audit, discrete holography and Page-curve finite entropy
+audits, conditional QQG cosmology bridge, and physical-information-limits audit
 as explicit partial-closure certificates, and proves the Gate 7 protocol layer from the
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are actually
@@ -865,6 +866,18 @@ preimage, and the `information_preserved`/`no_information_loss` theorems are
 available as ledger fields.  This closes finite no-loss algebra only; it does
 not derive black-hole entropy, evaporation dynamics, or a semiclassical Page
 curve from the microscopic law.
+
+Current entropy/holography hooks:
+
+`gate6_discreteHolographyAudit_closed` packages the discrete causal
+holography theorem: the entropy bound factors as boundary area times a
+logarithmic factor, is sub-volume for large regions, has the explicit 4D
+form, and is compatible with Bekenstein-Hawking scaling.  `gate6_structuralPageCurveAudit_closed`
+packages the deterministic finite Schmidt-spectrum Page ceiling, and
+`gate6_pageFormulaAudit_closed` packages the symmetric early/late Page-formula
+shape with the Page-time value, upper bound, and diagonal monotonicity.  These
+close finite/formula entropy audits; they do not yet derive a microscopic
+black-hole evaporation process or the Haar/random-matrix Page theorem.
 
 Open work:
 

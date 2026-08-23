@@ -19,12 +19,15 @@ import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
+import UnifiedTheory.LayerA.DiscreteHolography
 import UnifiedTheory.LayerA.GravitonTTModes
 import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
 import UnifiedTheory.LayerB.InformationParadox
+import UnifiedTheory.LayerB.PageCurve
 import UnifiedTheory.LayerC.PhysicalInformationLimits
+import UnifiedTheory.LayerC.PageCurve
 import UnifiedTheory.Cosmology.QQG.Bridge
 
 set_option autoImplicit false
@@ -1357,6 +1360,103 @@ theorem gate6_finiteInformationPreservationAudit_closed :
       fun f hinj => no_information_loss f hinj,
       fun f => unitarity_is_a_theorem f⟩
 
+/-- The Gate 6 discrete-holography audit: the causal-discrete entropy bound
+factorizes as boundary area times a logarithmic factor, is sub-volume for
+large regions, has the advertised 4D form, and remains compatible with
+Bekenstein-Hawking scaling.  This is a finite causal counting bound, not a
+derived black-hole thermodynamics model. -/
+structure Gate6DiscreteHolographyAuditClosed : Prop where
+  areaLaw :
+    ∀ d m : ℕ, 2 ≤ d →
+      ∃ (area logFactor : ℕ),
+        area = m ^ (d - 1) ∧
+          logFactor = 2 * (Nat.log 2 (m + 1) + 1) ∧
+            UnifiedTheory.LayerA.DiscreteHolography.entropy_bound d m =
+              area * logFactor
+  subVolume :
+    ∀ d m : ℕ, 2 ≤ d → 2 ≤ m →
+      2 * (Nat.log 2 (m + 1) + 1) < m →
+        UnifiedTheory.LayerA.DiscreteHolography.entropy_bound d m < m ^ d
+  fourDimensionalForm :
+    ∀ m : ℕ, 2 ≤ m →
+      UnifiedTheory.LayerA.DiscreteHolography.entropy_bound 4 m =
+        2 * m ^ 3 * (Nat.log 2 (m + 1) + 1)
+  bekensteinHawkingCompatible :
+    ∀ C m : ℕ, 0 < C → C + 1 ≤ m → C * m ^ 2 < m ^ 3
+
+theorem gate6_discreteHolographyAudit_closed :
+    Gate6DiscreteHolographyAuditClosed := by
+  rcases UnifiedTheory.LayerA.DiscreteHolography.discrete_holographic_principle
+    with ⟨harea, hsub, h4d, hbh⟩
+  exact ⟨harea, hsub, h4d, hbh⟩
+
+/-- The Gate 6 structural Page-curve audit: finite Schmidt spectra have
+nonnegative entropy, obey the deterministic `log(min d_A d_B)` ceiling, attain
+that ceiling on the maximally entangled spectrum, and have a symmetric Page
+ceiling.  This is the deterministic entropy skeleton, not the Haar-average
+random-matrix Page theorem. -/
+structure Gate6StructuralPageCurveAuditClosed : Prop where
+  entropyNonnegative :
+    ∀ {d_A d_B : ℕ}
+      (σ : UnifiedTheory.LayerB.PageCurve.SchmidtSpectrum d_A d_B),
+      0 ≤ UnifiedTheory.LayerB.PageCurve.pageEntropy σ
+  deterministicUpperBound :
+    ∀ {d_A d_B : ℕ}, 0 < d_A → 0 < d_B →
+      ∀ (σ : UnifiedTheory.LayerB.PageCurve.SchmidtSpectrum d_A d_B),
+        UnifiedTheory.LayerB.PageCurve.pageEntropy σ ≤
+          Real.log (((min d_A d_B : ℕ) : ℝ))
+  maxEntangledSaturates :
+    ∀ {d_A d_B : ℕ} (hdA : 0 < d_A) (hdB : 0 < d_B),
+      UnifiedTheory.LayerB.PageCurve.pageEntropy
+          (UnifiedTheory.LayerB.PageCurve.maxEntangled d_A d_B hdA hdB) =
+        Real.log (((min d_A d_B : ℕ) : ℝ))
+  ceilingSymmetric :
+    ∀ d_A d_B : ℕ,
+      UnifiedTheory.LayerB.PageCurve.pageCeiling d_A d_B =
+        UnifiedTheory.LayerB.PageCurve.pageCeiling d_B d_A
+
+theorem gate6_structuralPageCurveAudit_closed :
+    Gate6StructuralPageCurveAuditClosed := by
+  rcases UnifiedTheory.LayerB.PageCurve.pageCurve_master with
+    ⟨hnonneg, hupper, hmax, hsymm⟩
+  exact ⟨hnonneg, hupper, hmax, hsymm⟩
+
+/-- The Gate 6 Page-formula audit: the formal Page curve is symmetric, has the
+displayed Page-time value, has early/late evaporation formulae, stays below
+the `log(min m n)` ceiling, and grows monotonically along the diagonal slice.
+This packages the formula shape; it does not derive the formula from an
+evaporation dynamics or Haar/random-matrix ensemble. -/
+structure Gate6PageFormulaAuditClosed : Prop where
+  symmetric :
+    ∀ m n : ℕ,
+      UnifiedTheory.LayerC.PageCurve.pageEntropy m n =
+        UnifiedTheory.LayerC.PageCurve.pageEntropy n m
+  pageTimeValue :
+    ∀ n : ℕ, 0 < n →
+      UnifiedTheory.LayerC.PageCurve.pageEntropy n n = Real.log n - 1 / 2
+  earlyFormula :
+    ∀ m n : ℕ, m ≤ n →
+      UnifiedTheory.LayerC.PageCurve.pageEntropy m n =
+        Real.log m - (m : ℝ) / (2 * n)
+  lateFormula :
+    ∀ m n : ℕ, n ≤ m →
+      UnifiedTheory.LayerC.PageCurve.pageEntropy m n =
+        Real.log n - (n : ℝ) / (2 * m)
+  upperBound :
+    ∀ m n : ℕ, 0 < m → 0 < n →
+      UnifiedTheory.LayerC.PageCurve.pageEntropy m n ≤
+        Real.log (((min m n : ℕ) : ℝ))
+  diagonalMonotone :
+    ∀ n₁ n₂ : ℕ, 0 < n₁ → n₁ ≤ n₂ →
+      UnifiedTheory.LayerC.PageCurve.pageEntropy n₁ n₁ ≤
+        UnifiedTheory.LayerC.PageCurve.pageEntropy n₂ n₂
+
+theorem gate6_pageFormulaAudit_closed :
+    Gate6PageFormulaAuditClosed := by
+  rcases UnifiedTheory.LayerC.PageCurve.pageCurve_master with
+    ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
+  exact ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
+
 /-- The Gate 6 QQG cosmology bridge sublayer: for any QQG scenario, Lean proves
 the UV fixed-point, large-N running, small-`ξ` running, monotone plateau
 potential, and sharp `r >= 0.01` algebraic bound ledger.  If the explicit
@@ -1505,6 +1605,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_darkDensityAudit_closed
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
 #print axioms gate6_finiteInformationPreservationAudit_closed
+#print axioms gate6_discreteHolographyAudit_closed
+#print axioms gate6_structuralPageCurveAudit_closed
+#print axioms gate6_pageFormulaAudit_closed
 #print axioms gate6_qqgCosmologyBridgeAudit_closed
 #print axioms gate6_physicalInformationLimitsAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger

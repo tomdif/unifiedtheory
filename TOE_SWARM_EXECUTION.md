@@ -158,7 +158,8 @@ partial-closure certificate.
   Gate 5 arbitrary-axis Born observables, local Born/projective completeness, finite Hopf carrier
   cover-independence, and recovered common-refinement layers, and Gate 6 dark-density plus
   cosmological-constant/graviton-mode audits, finite information-preservation
-  inverse/preimage audit, conditional QQG cosmology bridge, and physical-information-limits audit. It also
+  inverse/preimage audit, discrete holography and Page-curve finite entropy
+  audits, conditional QQG cosmology bridge, and physical-information-limits audit. It also
   proves the Gate 7
   preregistration-protocol closure theorem. Full Gates 4-6 are still
   deliberately represented as closure records until their physical, infrared,

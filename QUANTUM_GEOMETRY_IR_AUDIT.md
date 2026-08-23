@@ -856,7 +856,8 @@ kernel/operator partial-closure certificate; Gate 5 has explicit arbitrary-axis
 Born-observable, local Born/projective completeness, finite Hopf carrier cover-independence, and recovered
 common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
 cosmological-constant/graviton-mode plus finite information-preservation
-inverse/preimage partial-closure certificates, a conditional QQG cosmology bridge, and a
+inverse/preimage partial-closure certificates, discrete holography and
+Page-curve finite entropy audits, a conditional QQG cosmology bridge, and a
 physical-information-limits audit; and Gate 7
 has a
 preregistration-protocol closure theorem. Full Gates 4 through 6 remain
