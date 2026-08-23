@@ -777,6 +777,10 @@ Completed algebraic groundwork:
   finite cover-refinement covariance: surjective reindexings preserve joint
   surjectivity, equality tests, Born-data tests, and recovered-stage gauge
   invisibility on the refined probes.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCommonRefinement` proves
+  finite common-refinement covariance: any two jointly-surjective probe covers
+  admit a fiber-product cover that again separates field equality and
+  Pauli/all-axis Born-data equality.
 
 Open work:
 
