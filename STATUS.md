@@ -204,13 +204,13 @@
 > kernel/operator bridge, Gate 5's local
 > Born/projective completeness, finite Hopf carrier cover-independence, and
 > recovered common-refinement layers, and Gate 6's dark-density and
-> cosmological-constant/graviton-mode
-> audits. It proves Gate 7 protocol closure from the existing
+> cosmological-constant/graviton-mode audits plus finite
+> information-preservation audit. It proves Gate 7 protocol closure from the existing
 > preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
 > horizons, and a failure ledger are all recorded. Full Gates 4-6 remain open
-> until their missing physical, infrared, cosmological, and black-hole inputs
-> are derived, and Gate 7 still awaits the future empirical comparisons
+> until their missing physical, infrared, cosmological, evaporation, and
+> black-hole entropy inputs are derived, and Gate 7 still awaits the future empirical comparisons
 > themselves.
 
 > **Gate 1 support update (2026-08-21):**

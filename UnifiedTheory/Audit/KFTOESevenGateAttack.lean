@@ -20,6 +20,7 @@ import UnifiedTheory.LayerA.GravitonTTModes
 import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
+import UnifiedTheory.LayerB.InformationParadox
 
 set_option autoImplicit false
 
@@ -38,6 +39,7 @@ open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
 open UnifiedTheory.LayerB.PreRegistrationLedger
 open UnifiedTheory.LayerB.DarkMatterAudit
+open UnifiedTheory.LayerB.InformationParadox
 
 /-! ## Gate 1: microscopic physical growth law -/
 
@@ -844,6 +846,41 @@ theorem gate6_cosmologicalConstantGravitonAudit_closed :
     ⟨hlambdaN, hself, hfluctuation, hsharp, hL2Simple, hL2Miss,
       hL1L4, hL4Miss, hsplit, hage, hfloor, hclosedForm, hD4, hD3⟩
 
+/-- The finite information-preservation sublayer relevant to the black-hole
+information side of Gate 6: on a finite state space, injective deterministic
+evolution is automatically surjective/bijective, every output has a unique
+preimage, and injectivity is equivalent to surjectivity.  This is not a full
+black-hole entropy, evaporation, or semiclassical Page-curve derivation; it
+closes the finite-state no-information-loss algebra used by that sector. -/
+structure Gate6FiniteInformationPreservationAuditClosed : Prop where
+  finiteInjectiveSurjective :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f → Function.Surjective f
+  finiteInjectiveBijective :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f → Function.Bijective f
+  everyStateUniquePreimage :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f → ∀ y : α, ∃! x : α, f x = y
+  noInformationLoss :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f →
+        Function.Surjective f ∧
+          Function.Bijective f ∧
+            (∀ y, ∃! x, f x = y)
+  unitarityIff :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f ↔ Function.Surjective f
+
+theorem gate6_finiteInformationPreservationAudit_closed :
+    Gate6FiniteInformationPreservationAuditClosed := by
+  exact
+    ⟨fun f hinj => finite_injective_is_surjective f hinj,
+      fun f hinj => finite_injective_is_bijective f hinj,
+      fun f hinj => every_state_has_unique_preimage f hinj,
+      fun f hinj => no_information_loss f hinj,
+      fun f => unitarity_is_a_theorem f⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -924,6 +961,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
+#print axioms gate6_finiteInformationPreservationAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack
