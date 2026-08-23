@@ -15,6 +15,8 @@ import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 import UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+import UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
+import UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
@@ -52,6 +54,8 @@ open UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
+open UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
@@ -1457,6 +1461,84 @@ theorem gate6_pageFormulaAudit_closed :
     ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
   exact ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
 
+/-- The Gate 6 entropy-flux limit bridge: a supplied finite error-control
+source and exact finite focusing derivative family give convergence of the
+finite scaled source to Araki/null flux and convergence of the finite
+KL-derivative law to the corresponding continuum derivative target. -/
+structure Gate6EntropyFluxLimitBridgeClosed
+    (B : EntropyFluxLimitBridge) : Prop where
+  sourceConvergesToArakiFlux :
+    FiniteEntropySourceConvergesToArakiFlux
+      B.source.finiteScaledFlux B.arakiFlux
+  focusingDerivativeLimit :
+    Tendsto B.focusing.klDeriv atTop
+      (𝓝 (-B.focusing.lambda * B.continuumAreaDeriv))
+
+theorem gate6_entropyFluxLimitBridge_closed
+    (B : EntropyFluxLimitBridge) :
+    Gate6EntropyFluxLimitBridgeClosed B := by
+  rcases entropyFluxLimitBridge_closes_first_field B with
+    ⟨hsource, hfocusing⟩
+  exact ⟨hsource, hfocusing⟩
+
+/-- The Gate 6 Araki/Bekenstein-Hawking horizon-balance sublayer: Araki flux,
+Dorau-Much area variation, Raychaudhuri focusing, and Bekenstein-Hawking
+normalization fix the nonzero-excitation null balance to the `8*pi` coupling. -/
+structure Gate6ArakiBHEightPiBalanceClosed
+    {H : HorizonAQFTModel} {alpha : ℝ}
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target H)
+    (hArea : RelativeEntropyAreaVariation_Target H alpha)
+    (hRay : RaychaudhuriAreaVariation_Target H)
+    (hBH : BekensteinHawkingEntropyArea_Target H)
+    {phi : H.Excitation} (hS : H.Srel phi ≠ 0) : Prop where
+  eightPiNullBalance :
+    H.ricciWeightedFlux phi =
+      (8 * Real.pi) * H.weightedNullEnergy phi
+
+theorem gate6_arakiBHEightPiBalance_closed
+    {H : HorizonAQFTModel} {alpha : ℝ}
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target H)
+    (hArea : RelativeEntropyAreaVariation_Target H alpha)
+    (hRay : RaychaudhuriAreaVariation_Target H)
+    (hBH : BekensteinHawkingEntropyArea_Target H)
+    {phi : H.Excitation} (hS : H.Srel phi ≠ 0) :
+    Gate6ArakiBHEightPiBalanceClosed hFlux hArea hRay hBH hS := by
+  exact
+    ⟨bekensteinHawking_raychaudhuri_flux_balance_eight_pi
+      hFlux hArea hRay hBH hS⟩
+
+/-- The Gate 6 Dorau-Much Einstein bridge: once the pointwise null Ricci
+balance, symmetry, differentiability, and conservation inputs are supplied, the
+repository's null-polarization theorem yields the semiclassical Einstein
+equation with an integration-constant cosmological term. -/
+structure Gate6DorauMuchEinsteinBridgeClosed
+    (kappa : ℝ)
+    (Ricci T : ℝ → Matrix (Fin 4) (Fin 4) ℝ)
+    (Rscalar : ℝ → ℝ) : Prop where
+  semiclassicalEinsteinEquation :
+    ∃ Lambda : ℝ, ∀ x,
+      (Ricci x - (Rscalar x / 2) • eta) + Lambda • eta =
+        kappa • T x
+
+theorem gate6_dorauMuchEinsteinBridge_closed
+    (kappa : ℝ)
+    (Ricci T : ℝ → Matrix (Fin 4) (Fin 4) ℝ)
+    (Rscalar : ℝ → ℝ)
+    (hRicciSymm : ∀ x i j, Ricci x i j = Ricci x j i)
+    (hTsymm : ∀ x i j, T x i j = T x j i)
+    (hRicciNull : ∀ x (v : Fin 4 → ℝ), quad eta v = 0 →
+      quad (Ricci x) v = kappa * quad (T x) v)
+    (hdiff : Differentiable ℝ
+      (fun x => (Ricci x - (Rscalar x / 2) • eta) 0 0
+        - kappa * T x 0 0))
+    (hcons : ∀ x, deriv
+      (fun y => (Ricci y - (Rscalar y / 2) • eta) 0 0
+        - kappa * T y 0 0) x = 0) :
+    Gate6DorauMuchEinsteinBridgeClosed kappa Ricci T Rscalar := by
+  exact
+    ⟨dorau_much_semiclassical_einstein_equation
+      kappa Ricci T Rscalar hRicciSymm hTsymm hRicciNull hdiff hcons⟩
+
 /-- The Gate 6 QQG cosmology bridge sublayer: for any QQG scenario, Lean proves
 the UV fixed-point, large-N running, small-`ξ` running, monotone plateau
 potential, and sharp `r >= 0.01` algebraic bound ledger.  If the explicit
@@ -1608,6 +1690,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_discreteHolographyAudit_closed
 #print axioms gate6_structuralPageCurveAudit_closed
 #print axioms gate6_pageFormulaAudit_closed
+#print axioms gate6_entropyFluxLimitBridge_closed
+#print axioms gate6_arakiBHEightPiBalance_closed
+#print axioms gate6_dorauMuchEinsteinBridge_closed
 #print axioms gate6_qqgCosmologyBridgeAudit_closed
 #print axioms gate6_physicalInformationLimitsAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger

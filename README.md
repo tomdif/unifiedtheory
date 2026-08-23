@@ -62,7 +62,8 @@ kernel/operator bridge, Gate 5's arbitrary-axis Born observables, local
 Born/projective completeness, finite Hopf carrier cover-independence, and recovered common-refinement
 layers, and Gate 6's dark-density and cosmological-constant/graviton-mode
 audits, finite information-preservation inverse/preimage audit, discrete
-holography and Page-curve finite entropy audits, and conditional QQG cosmology
+holography and Page-curve finite entropy audits, conditional Araki/Dorau-Much
+horizon-to-Einstein bridges, and conditional QQG cosmology
 bridge plus physical-information-limits audit, and proves Gate 7 protocol
 closure from the preregistration ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological-emergence, evaporation, and black-hole

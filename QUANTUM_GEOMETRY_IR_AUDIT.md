@@ -857,7 +857,8 @@ Born-observable, local Born/projective completeness, finite Hopf carrier cover-i
 common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
 cosmological-constant/graviton-mode plus finite information-preservation
 inverse/preimage partial-closure certificates, discrete holography and
-Page-curve finite entropy audits, a conditional QQG cosmology bridge, and a
+Page-curve finite entropy audits, conditional Araki/Dorau-Much
+horizon-to-Einstein bridges, a conditional QQG cosmology bridge, and a
 physical-information-limits audit; and Gate 7
 has a
 preregistration-protocol closure theorem. Full Gates 4 through 6 remain

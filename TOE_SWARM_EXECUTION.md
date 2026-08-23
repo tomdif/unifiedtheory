@@ -159,7 +159,7 @@ partial-closure certificate.
   cover-independence, and recovered common-refinement layers, and Gate 6 dark-density plus
   cosmological-constant/graviton-mode audits, finite information-preservation
   inverse/preimage audit, discrete holography and Page-curve finite entropy
-  audits, conditional QQG cosmology bridge, and physical-information-limits audit. It also
+  audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges, conditional QQG cosmology bridge, and physical-information-limits audit. It also
   proves the Gate 7
   preregistration-protocol closure theorem. Full Gates 4-6 are still
   deliberately represented as closure records until their physical, infrared,

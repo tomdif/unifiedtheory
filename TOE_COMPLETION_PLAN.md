@@ -40,7 +40,7 @@ recovered common-refinement layers as explicit partial-closure certificates,
 packages Gate 6's dark-density and
 cosmological-constant/graviton-mode audits plus finite information-preservation
 inverse/preimage audit, discrete holography and Page-curve finite entropy
-audits, conditional QQG cosmology bridge, and physical-information-limits audit
+audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges, conditional QQG cosmology bridge, and physical-information-limits audit
 as explicit partial-closure certificates, and proves the Gate 7 protocol layer from the
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are actually
@@ -878,6 +878,19 @@ packages the deterministic finite Schmidt-spectrum Page ceiling, and
 shape with the Page-time value, upper bound, and diagonal monotonicity.  These
 close finite/formula entropy audits; they do not yet derive a microscopic
 black-hole evaporation process or the Haar/random-matrix Page theorem.
+
+Current horizon-to-Einstein entropy bridges:
+
+`gate6_entropyFluxLimitBridge_closed` packages the finite-source-to-Araki-flux
+limit slot together with convergence of the exact finite KL/focusing
+derivative law.  `gate6_arakiBHEightPiBalance_closed` packages the conditional
+Araki flux + Dorau-Much area + Raychaudhuri + Bekenstein-Hawking normalization
+route to the `8*pi` null balance for nonzero excitations.
+`gate6_dorauMuchEinsteinBridge_closed` packages the conditional bridge from
+pointwise null Ricci balance, symmetry, differentiability, and conservation to
+the semiclassical Einstein equation with an integration-constant cosmological
+term.  These are conditional analytic/AQFT plumbing results; the physical law
+still has to supply the hypotheses.
 
 Open work:
 

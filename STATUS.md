@@ -219,7 +219,8 @@
 > recovered common-refinement layers, and Gate 6's dark-density and
 > cosmological-constant/graviton-mode audits, finite information-preservation
 > inverse/preimage audit, discrete holography and Page-curve finite entropy
-> audits, conditional QQG cosmology bridge, and physical-information-limits
+> audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges,
+> conditional QQG cosmology bridge, and physical-information-limits
 > audit. It proves Gate 7 protocol closure from the existing
 > preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
