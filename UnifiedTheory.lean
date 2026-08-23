@@ -5077,6 +5077,9 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverR
 -- fiber-product common refinement that again reflects field equality and
 -- Pauli/all-axis Born-data equality.
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCommonRefinement
+-- Carrier-field cover independence: any two jointly-surjective probe covers
+-- give equivalent field-equality and Pauli/all-axis Born-data tests.
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 -- Strong positivity and balanced normalization classify every two-history
 -- kernel by one imaginary-coherence parameter |y|≤1/2. Kinematics does not
 -- select y; purity/deterministic orientation select exactly the reflected

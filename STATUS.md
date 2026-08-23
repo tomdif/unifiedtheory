@@ -354,6 +354,11 @@
 > a fiber-product common refinement that is jointly-surjective and still
 > separates whole-field equality and Pauli/all-axis Born-data equality, with
 > recovered-stage gauge invisibility on every common-refinement probe.
+> `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence.lean`
+> packages cover-choice independence: any two jointly-surjective probe covers
+> give equivalent carrier-field equality and Pauli/all-axis Born-data tests,
+> and both are equivalent to the common-refinement tests.  Recovered-stage
+> local `U(1)` gauge invisibility remains true on both covers.
 
 > **Quantum-geometry scope update (2026-07-15):** The finite algebraic results below
 > remain valid at their stated mathematical scope. A finite 2+1D kinematic witness now

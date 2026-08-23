@@ -781,6 +781,10 @@ Completed algebraic groundwork:
   finite common-refinement covariance: any two jointly-surjective probe covers
   admit a fiber-product cover that again separates field equality and
   Pauli/all-axis Born-data equality.
+- `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence` proves
+  finite cover-choice independence: any two jointly-surjective probe covers
+  give equivalent carrier-field equality and Pauli/all-axis Born-data tests,
+  and both are equivalent to their common-refinement tests.
 
 Open work:
 

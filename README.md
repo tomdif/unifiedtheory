@@ -271,7 +271,10 @@ Machine-checked additions now cover:
   and recovered-stage gauge invisibility on the refined probes; the
   common-refinement bridge proves two jointly-surjective probe covers have a
   fiber-product cover that again reflects field equality and Pauli/all-axis
-  Born-data equality.
+  Born-data equality; the cover-independence bridge proves any two
+  jointly-surjective probe covers give equivalent field-equality and
+  Pauli/all-axis Born-data tests, with the common-refinement test as a
+  mediator.
 
 These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to

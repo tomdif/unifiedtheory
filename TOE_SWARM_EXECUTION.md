@@ -233,6 +233,10 @@ derivation of the aggregate rate rather than the only logical gate.
   `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCommonRefinement` proves that
   two jointly-surjective probe covers admit a fiber-product common refinement
   that again separates field equality and Pauli/all-axis Born-data equality.
+  `KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence` proves
+  cover-choice independence: any two jointly-surjective probe covers give
+  equivalent field-equality and Pauli/all-axis Born-data tests, with the
+  common-refinement test as mediator.
 - Predictions: the five-row formal preregistration ledger is canonical.  Older
   prediction-shaped claims need promotion with assumption tags or demotion.
 
@@ -299,6 +303,7 @@ Gate 5:
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCover
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverRefinement
   KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCommonRefinement
+  KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 
 Gate 7:
   keep PREDICTIONS_PREREGISTRATION_LEDGER.json as the public comparison target
