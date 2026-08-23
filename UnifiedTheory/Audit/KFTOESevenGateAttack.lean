@@ -30,6 +30,8 @@ open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
 open UnifiedTheory.LayerB.PreRegistrationLedger
@@ -266,6 +268,68 @@ structure Gate5QFTStandardModelIRClosed
   gaugeFieldsAndRenormalization : T.gaugeFieldsAndRenormalization
   standardModelParameterChain : T.standardModelParameterChain
 
+/-- The finite local Gate 5 sublayer already closed by the recovered Hopf
+projective-qubit stack: Pauli Born data, all-axis Born data, quotient Bloch
+data, recovered normalized phase classes, and projective carriers are mutually
+determining at each pair of recovered stage/site points, and local stagewise
+`U(1)` gauge rotations leave the carrier invisible.  The remaining full Gate 5
+work is the effective Hilbert/QFT limit, spin-statistics, gauge dynamics, and
+Standard-Model infrared chain. -/
+structure Gate5LocalBornProjectiveCompletenessClosed
+    {site site' : Type*}
+    (I : RecoveredStageHopfFiberInterface site)
+    (J : RecoveredStageHopfFiberInterface site')
+    (n m : ℕ) (x : site) (y : site') : Prop where
+  pauliBornDeterminesPhase :
+    RecoveredStageHopfFiberInterface.SamePauliBornData I J n m x y ↔
+      I.phaseClassAt n x = J.phaseClassAt m y
+  allAxisBornDeterminesPhase :
+    RecoveredStageHopfFiberInterface.SameAllAxisBornData I J n m x y ↔
+      I.phaseClassAt n x = J.phaseClassAt m y
+  quotientBlochDeterminesPhase :
+    I.quotientBlochAt n x = J.quotientBlochAt m y ↔
+      I.phaseClassAt n x = J.phaseClassAt m y
+  reconstructedCarrier :
+    (I.projectiveCarrierAt n x).reconstructed = I.projectiveCarrierAt n x
+  pauliBornDeterminesCarrier :
+    RecoveredStageHopfFiberInterface.SamePauliBornData I J n m x y ↔
+      I.projectiveCarrierAt n x = J.projectiveCarrierAt m y
+  allAxisBornDeterminesCarrier :
+    RecoveredStageHopfFiberInterface.SameAllAxisBornData I J n m x y ↔
+      I.projectiveCarrierAt n x = J.projectiveCarrierAt m y
+  carrierPauliBornMatchesLocal :
+    ProjectiveQubitCarrier.SamePauliBornData
+        (I.projectiveCarrierAt n x) (J.projectiveCarrierAt m y) ↔
+      RecoveredStageHopfFiberInterface.SamePauliBornData I J n m x y
+  carrierAllAxisBornMatchesLocal :
+    ProjectiveQubitCarrier.SameAllAxisBornData
+        (I.projectiveCarrierAt n x) (J.projectiveCarrierAt m y) ↔
+      RecoveredStageHopfFiberInterface.SameAllAxisBornData I J n m x y
+  carrierGaugeInvariant :
+    ∀ P : ℕ → UnitPhaseField site,
+      (I.phaseRotate P).projectiveCarrierAt n x = I.projectiveCarrierAt n x
+
+theorem gate5_localBornProjectiveCompleteness_closed
+    {site site' : Type*}
+    (I : RecoveredStageHopfFiberInterface site)
+    (J : RecoveredStageHopfFiberInterface site')
+    (n m : ℕ) (x : site) (y : site') :
+    Gate5LocalBornProjectiveCompletenessClosed I J n m x y := by
+  rcases
+    RecoveredStageHopfFiberInterface.recoveredStage_local_born_projective_observational_completeness
+      I J n m x y with
+    ⟨hpauliPhase, hallPhase, hblochPhase⟩
+  rcases
+    RecoveredStageHopfFiberInterface.recoveredStage_projective_qubit_carrier_interface
+      I J n m x y with
+    ⟨hreconstructed, hpauliCarrier, hallCarrier, hcarrierPauli, hgauge⟩
+  exact
+    ⟨hpauliPhase, hallPhase, hblochPhase, hreconstructed,
+      hpauliCarrier, hallCarrier, hcarrierPauli,
+      RecoveredStageHopfFiberInterface.carrierSameAllAxisBornData_iff_sameAllAxisBornData
+        I J n m x y,
+      hgauge⟩
+
 /-- Current Gate 5 theorem hook: finite recovered projective-qubit carrier
 tests are independent of the jointly-surjective probe cover.  This closes the
 finite cover-choice ambiguity for carrier-field equality and Pauli/all-axis
@@ -496,6 +560,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
 #print axioms gate4_scheduledKernelOperatorBridge_closed
+#print axioms gate5_localBornProjectiveCompleteness_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed
 #print axioms gate6_darkDensity_atomic_audit_hook

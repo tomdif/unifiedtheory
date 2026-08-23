@@ -191,9 +191,10 @@
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
 > total-distortion convergence.  The ledger now also packages explicit
 > partial-closure certificates for Gate 4's recovered-stage 4D BDG operator
-> bridge and strongest scheduled kernel/operator bridge, Gate 5's finite Hopf
-> carrier cover-independence layer, and Gate 6's dark-density audit. It proves
-> Gate 7 protocol closure from the existing
+> bridge and strongest scheduled kernel/operator bridge, Gate 5's local
+> Born/projective completeness and finite Hopf carrier cover-independence
+> layers, and Gate 6's dark-density audit. It proves Gate 7 protocol closure
+> from the existing
 > preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
 > horizons, and a failure ledger are all recorded. Full Gates 4-6 remain open

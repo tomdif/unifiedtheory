@@ -146,8 +146,9 @@ derivation of the aggregate rate rather than the only logical gate.
   signed-fiber noncancellation, Gate 2 base zero sets, and Gate 3 convergence
   certificates, plus explicit partial-closure certificates for Gate 4
   recovered-stage 4D BDG operator convergence and the strongest scheduled
-  kernel/operator bridge, Gate 5 finite Hopf carrier cover-independence, and
-  Gate 6 dark-density audit. It also proves the Gate 7
+  kernel/operator bridge, Gate 5 local Born/projective completeness and finite
+  Hopf carrier cover-independence, and Gate 6 dark-density audit. It also
+  proves the Gate 7
   preregistration-protocol closure theorem. Full Gates 4-6 are still
   deliberately represented as closure records until their physical, infrared,
   cosmological, and black-hole inputs are supplied; Gate 7 still awaits the
