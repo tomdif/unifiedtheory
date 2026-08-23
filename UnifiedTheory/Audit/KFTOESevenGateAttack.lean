@@ -126,6 +126,91 @@ theorem gate3_horizonProtection_and_total_tendsto_zero_of_certificate
     physicalHauptvermutungConvergenceCertificate_horizon_protection_and_total_tendsto_zero
       C
 
+/-- The Gate 3 exact-recovery sublayer that is already closed by the reusable
+exact-recovery certificate: horizon protection holds at every finite stage,
+full operational recovery holds eventually, recovered stages hold eventually
+and after some threshold, and all observable Hauptvermutung/bridge defects are
+zero after some threshold.  This is still conditional on supplying the
+convergence certificate plus uniform positive residual gaps from the
+microscopic law. -/
+structure Gate3ExactRecoveryCertificateClosed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap) : Prop where
+  horizonProtection :
+    ∀ n,
+      linearResponse (w n) (source n) (finiteAreaChange (c n) (J n)) = 0 ∧
+        quadraticResponse (w n) (source n)
+          (finiteAreaChange (c n) (J n)) = 0
+  eventualFullOperationalRecovery :
+    ∀ᶠ n in atTop,
+      total n = 0 ∧
+        (∀ i,
+          physicalHauptvermutungDistortion
+            (countWindow n) (curvatureBias n) (spectralLocality n)
+            (scale n) (edge n) (candidate n) i = 0) ∧
+          cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0 ∧
+            (∀ i a b,
+              Cov fourState (GPoint.atom (fourState.dst (edge n i)) b)
+                  (GPoint.bridge (edge n i) a) →
+                b = candidate n i a)
+  eventualRecoveredStage :
+    ∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)
+  recoveredAfter :
+    ∃ N, ∀ n, N ≤ n →
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)
+  observableZeroAfter :
+    ∃ N, ∀ n, N ≤ n →
+      total n = 0 ∧
+        physicalHauptvermutungTotalDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n)
+          (scale n) (edge n) (candidate n) = 0 ∧
+        physicalHauptvermutungBaseDistortion
+          (countWindow n) (curvatureBias n) (spectralLocality n) = 0 ∧
+        cSpecBridgeTotalDistortion (scale n) (edge n) (candidate n) = 0 ∧
+        candidate n = canonicalCSpecBridgeCandidate (edge n) ∧
+        (∀ i, countWindow n i = 0) ∧
+        (∀ i, curvatureBias n i = 0) ∧
+        (∀ i, spectralLocality n i = 0) ∧
+        (∀ i a b,
+          Cov fourState (GPoint.atom (fourState.dst (edge n i)) b)
+              (GPoint.bridge (edge n i) a) →
+            b = candidate n i a)
+
+theorem gate3_exactRecoveryCertificate_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap) :
+    Gate3ExactRecoveryCertificateClosed C := by
+  rcases
+    physicalHauptvermutungExactRecoveryCertificate_horizon_protection_and_eventually_full_recovery
+      C with
+    ⟨hhorizon, hfull⟩
+  exact
+    ⟨hhorizon, hfull,
+      physicalHauptvermutungExactRecoveryCertificate_eventually_recoveredStage C,
+      physicalHauptvermutungExactRecoveryCertificate_exists_recovered_after C,
+      physicalHauptvermutungExactRecoveryCertificate_exists_observable_zero_after C⟩
+
 /-! ## Gate 4: horizon-to-Einstein analytic limit -/
 
 /-- Analytic targets still needed by the recovered-stage BDG/GR bridge. -/
@@ -626,6 +711,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
+#print axioms gate3_exactRecoveryCertificate_closed
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
 #print axioms gate4_scheduledKernelOperatorBridge_closed

@@ -189,7 +189,12 @@
 > Hauptvermutung distortion zero is equivalent to zero count/curvature/spectral
 > components under nonnegativity, and a
 > `PhysicalHauptvermutungConvergenceCertificate` gives horizon protection plus
-> total-distortion convergence.  The ledger now also packages explicit
+> total-distortion convergence.  It now also packages the Gate 3
+> exact-recovery certificate as a partial closure: once the convergence
+> certificate and uniform positive residual gaps are supplied, Lean gets
+> eventual full operational recovery, a recovered-stage threshold, and all
+> observable Hauptvermutung/bridge defects zero and canonical after some
+> threshold.  The ledger now also packages explicit
 > partial-closure certificates for Gate 4's recovered-stage 4D BDG operator
 > bridge and strongest scheduled kernel/operator bridge, Gate 5's local
 > Born/projective completeness and finite Hopf carrier cover-independence
