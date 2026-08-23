@@ -24,10 +24,13 @@ dataset, or explicitly named assumption.
 Lean-facing attack ledger.  It records explicit closure targets for all seven
 gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
-theorem, restates the Gate 3 convergence-certificate theorem, and proves the
-Gate 7 protocol layer from the preregistration/falsifiability ledger. Gates 4-6
-remain closure records until their physical/analytic inputs are actually
-supplied; Gate 7 still requires the future empirical comparisons themselves.
+theorem, restates the Gate 3 convergence-certificate theorem, exposes Gate 4's
+recovered-stage 4D BDG operator hook, Gate 5's finite Hopf carrier
+cover-independence hook, Gate 6's dark-density audit hook, and proves the Gate
+7 protocol layer from the preregistration/falsifiability ledger. Full Gates 4-6
+remain open until their missing physical, infrared, cosmological, and
+black-hole inputs are actually supplied; Gate 7 still requires the future
+empirical comparisons themselves.
 
 ## Gates
 
@@ -869,13 +872,14 @@ The next high-value theorem targets are:
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
-4. Gate 4: instantiate `RecoveredStageBDG4DScheduledDensityInterface` from the
-   physical causal-growth law, including the affine density law, matched
-   residual identities, and the split `BDG4DOperatorProfileKernelSplitData`
+4. Gate 4: instantiate `RecoveredStageBDG4DOperatorInterface` from the physical
+   causal-growth law, then climb to the scheduled-density/chart/kernel split
+   interfaces with the affine density law, matched residual identities, and
    support/regularity/lightcone-kernel components.
-5. Gate 5: attach finite Hilbert fibers and local Born normalization to each
-   recovered CSpec stage before making continuum QFT claims.
-6. Gate 6: connect the same dynamics to cosmological measure, dark sector,
-   black-hole thermodynamics, and CMB/structure/gravitational-wave constraints.
+5. Gate 5: build the effective Hilbert/QFT limit beyond the now-checked finite
+   Hopf carrier cover-independence layer.
+6. Gate 6: derive cosmological measure, dark-energy mechanism, black-hole
+   thermodynamics, and CMB/structure/gravitational-wave constraints beyond the
+   now-exposed dark-density audit hook.
 7. Gate 7: keep the closed preregistration protocol live by updating the
    failure ledger and comparison table when the frozen future tests report.

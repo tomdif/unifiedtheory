@@ -13,18 +13,26 @@
 
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 import UnifiedTheory.LayerB.PreRegistrationLedger
+import UnifiedTheory.LayerB.DarkMatterAudit
 
 set_option autoImplicit false
 
 namespace UnifiedTheory.Audit.KFTOESevenGateAttack
+
+universe u v w z t
 
 open Filter Topology
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
 open UnifiedTheory.LayerB.PreRegistrationLedger
+open UnifiedTheory.LayerB.DarkMatterAudit
 
 /-! ## Gate 1: microscopic physical growth law -/
 
@@ -133,6 +141,25 @@ structure Gate4HorizonEinsteinAnalyticClosed
   nullBalanceFromDynamics : T.nullBalanceFromDynamics
   recoveredBDGInterfaceSupplied : T.recoveredBDGInterfaceSupplied
 
+/-- Current Gate 4 theorem hook: exact recovered CSpec data plus the concrete
+reduced 4D BDG operator profile imply eventual recovered stages and convergence
+of the sampled operator to its 4D target.  This is still conditional on the
+operator-profile data and density sequence, so it is a recovered-stage/analytic
+bridge hook, not the full Einstein limit from microscopic dynamics. -/
+theorem gate4_recoveredStage_bdg4d_operator_limit_of_interface
+    {cell : Type*} [Fintype cell]
+    (I : RecoveredStageBDG4DOperatorInterface cell) :
+    (∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (I.countWindow n) (I.curvatureBias n) (I.spectralLocality n)
+        (I.scale n) (I.total n) (I.edge n) (I.candidate n)) ∧
+      Tendsto
+        (fun n => BDG4DOperatorProfileData.mean I.operatorData (I.density n))
+        atTop
+        (𝓝 (BDG4DOperatorProfileData.target I.operatorData)) := by
+  exact
+    RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto I
+
 /-! ## Gate 5: QFT and Standard Model infrared limit -/
 
 /-- IR targets beyond the finite Hopf/projective-qubit carrier algebra. -/
@@ -152,6 +179,40 @@ structure Gate5QFTStandardModelIRClosed
   propagatorsAndSpinStatistics : T.propagatorsAndSpinStatistics
   gaugeFieldsAndRenormalization : T.gaugeFieldsAndRenormalization
   standardModelParameterChain : T.standardModelParameterChain
+
+/-- Current Gate 5 theorem hook: finite recovered projective-qubit carrier
+tests are independent of the jointly-surjective probe cover.  This closes the
+finite cover-choice ambiguity for carrier-field equality and Pauli/all-axis
+Born data, but it is not yet continuum QFT, spin-statistics, gauge dynamics,
+or Standard-Model renormalization. -/
+theorem gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site) :
+    (EqualOnCover probeA fA F G ↔ EqualOnCover probeB fB F G) ∧
+    (SamePauliBornDataOnCover probeA fA F G ↔
+      SamePauliBornDataOnCover probeB fB F G) ∧
+    (SameAllAxisBornDataOnCover probeA fA F G ↔
+      SameAllAxisBornDataOnCover probeB fB F G) ∧
+    (EqualOnCover probeA fA F G ↔
+      EqualOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G) ∧
+    (SamePauliBornDataOnCover probeA fA F G ↔
+      SamePauliBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G) ∧
+    (SameAllAxisBornDataOnCover probeA fA F G ↔
+      SameAllAxisBornDataOnCover
+        (commonRefinementProbe probeA probeB fA fB)
+        (commonRefinementMap fA fB) F G) := by
+  exact
+    coverIndependence_projective_qubit_carrier_field_interface
+      fA fB hA hB F G
 
 /-! ## Gate 6: cosmology and black holes -/
 
@@ -177,6 +238,26 @@ structure Gate6CosmologyBlackHoleClosed
     T.blackHoleEntropyEvaporationInformation
   cmbStructureGravitationalWaveCompatibility :
     T.cmbStructureGravitationalWaveCompatibility
+
+/-- Current Gate 6 theorem hook: the formal dark-density audit proves the
+atomic three-density package and its honest negative clauses.  This is useful
+cosmology-sector evidence, but it does not supply the missing cosmological
+measure, dark-energy mechanism, black-hole thermodynamics, or CMB/structure/GW
+dynamics required for full Gate 6 closure. -/
+theorem gate6_darkDensity_atomic_audit_hook :
+    (OmegaDM_framework = (Nc : ℚ) / ((Nt : ℚ) * (Nt : ℚ)))
+    ∧ (OmegaDM_framework = OmegaDM_central)
+    ∧ (OmegaM_framework = 1 / (discN : ℚ))
+    ∧ (Omegab_framework =
+      (NWsq : ℚ) / ((discN : ℚ) * (Nt : ℚ) * (Nt : ℚ)))
+    ∧ (OmegaM_framework = OmegaDM_framework + Omegab_framework)
+    ∧ (OmegaDM_framework * (discN : ℚ) = OmegaDM_over_M_obs)
+    ∧ ((discN : ℚ) * OmegaM_framework = 1)
+    ∧ (C_one_ninth < C_three_twenty_fifths)
+    ∧ (Omegab_hi_1sigma < Omegab_framework)
+    ∧ ((1 : ℚ) / 20 < OmegaDM_framework)
+    ∧ ((7 / 3 : ℚ) * (1 / 20 : ℚ) ≠ OmegaDM_framework) := by
+  exact honest_scope_DarkMatterAudit
 
 /-! ## Gate 7: external tests -/
 
@@ -245,6 +326,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
+#print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
+#print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
+#print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack

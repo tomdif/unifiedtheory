@@ -144,10 +144,12 @@ derivation of the aggregate rate rather than the only logical gate.
 - Seven-gate ledger: `KFTOESevenGateAttack.lean` now records closure targets
   for all seven TOE gates and exposes the current checked hooks for Gate 1
   signed-fiber noncancellation, Gate 2 base zero sets, and Gate 3 convergence
-  certificates, plus the Gate 7 preregistration-protocol closure theorem.
-  Gates 4-6 are deliberately represented as closure records until their
-  physical, analytic, and cosmological inputs are supplied; Gate 7 still awaits
-  the future empirical comparisons themselves.
+  certificates, plus Gate 4 recovered-stage 4D BDG operator convergence, Gate
+  5 finite Hopf carrier cover-independence, Gate 6 dark-density audit, and the
+  Gate 7 preregistration-protocol closure theorem. Full Gates 4-6 are still
+  deliberately represented as closure records until their physical, infrared,
+  cosmological, and black-hole inputs are supplied; Gate 7 still awaits the
+  future empirical comparisons themselves.
 - Gate 2: the bridge zero set is strong; the semantic gap is now the meaning of
   zero `countWindow`, `curvatureBias`, and `spectralLocality` residuals.
 - Gate 3: avoid depending exclusively on a positive pointwise centered-source

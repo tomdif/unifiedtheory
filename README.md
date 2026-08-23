@@ -50,8 +50,11 @@ The gap-closing roadmap is tracked in
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` mirrors that roadmap as a
 Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
 atlas-fiber noncancellation, Gate 2 base zero sets, and Gate 3 protected
-convergence certificates, plus a Gate 7 protocol-closure proof from the
-preregistration ledger. Gates 4-6 remain explicit closure records, and Gate 7
+convergence certificates.  It now also exposes Gate 4's recovered-stage 4D BDG
+operator hook, Gate 5's finite Hopf carrier cover-independence hook, Gate 6's
+dark-density audit hook, and a Gate 7 protocol-closure proof from the
+preregistration ledger. Full Gates 4-6 remain open until their missing
+physical, infrared, cosmological, and black-hole inputs are derived; Gate 7
 still awaits future empirical comparisons against the frozen predictions.
 
 Machine-checked additions now cover:
