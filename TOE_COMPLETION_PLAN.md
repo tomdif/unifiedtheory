@@ -26,13 +26,14 @@ gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
 theorem, restates the Gate 3 convergence-certificate theorem, exposes Gate 4's
 recovered-stage 4D BDG operator bridge as an explicit partial-closure
-certificate, packages Gate 5's finite Hopf carrier cover-independence layer as
-an explicit partial-closure certificate, packages Gate 6's dark-density audit
-as an explicit partial-closure certificate, and proves the Gate 7 protocol
-layer from the preregistration/falsifiability ledger. Full Gates 4-6 remain
-open until their missing physical, infrared, cosmological, and black-hole
-inputs are actually supplied; Gate 7 still requires the future empirical
-comparisons themselves.
+certificate, packages the strongest scheduled kernel/operator Gate 4 bridge as
+an explicit partial-closure certificate, packages Gate 5's finite Hopf carrier
+cover-independence layer as an explicit partial-closure certificate, packages
+Gate 6's dark-density audit as an explicit partial-closure certificate, and
+proves the Gate 7 protocol layer from the preregistration/falsifiability
+ledger. Full Gates 4-6 remain open until their missing physical, infrared,
+cosmological, and black-hole inputs are actually supplied; Gate 7 still
+requires the future empirical comparisons themselves.
 
 ## Gates
 

@@ -844,6 +844,7 @@ noncancellation, not one-element-growth admissibility or normalization.
 `KFTOESevenGateAttack.lean` now lifts this and the Hauptvermutung convergence
 machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
 checked theorem hooks; Gate 4 has an explicit recovered-stage 4D BDG operator
+partial-closure certificate and an explicit scheduled kernel/operator
 partial-closure certificate; Gate 5 has an explicit finite Hopf carrier
 cover-independence partial-closure certificate; Gate 6 has an explicit
 dark-density audit partial-closure certificate; and Gate 7 has a

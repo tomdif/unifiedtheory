@@ -14,6 +14,7 @@
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
+import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
@@ -187,6 +188,63 @@ theorem gate4_recoveredBDGOperatorBridge_closed
   rcases gate4_recoveredStage_bdg4d_operator_limit_of_interface I with
     ⟨hrecovered, hoperator⟩
   exact ⟨hrecovered, hoperator, I.density_tendsto_atTop⟩
+
+/-- The strongest current Gate 4 sublayer: a scheduled-density recovered chart
+whose operator package is reduced to kernel/profile support, regularity,
+uniform bounds, lower-lightcone support, an active-region weighted kernel
+estimate, and one cone-scale calibration.  This closes the formal plumbing from
+that supplier to recovered stages, zero RSS/Poisson horizon error, sampled
+reduced 4D operator convergence, chart-distortion collapse, and affine density
+divergence.  It still does not derive the supplier from microscopic dynamics. -/
+structure Gate4ScheduledKernelOperatorBridgeClosed
+    {cell X Y chart : Type*} [Fintype cell]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    (I : RecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+      cell X Y chart)
+    (errorScale : ℝ) : Prop where
+  eventualRecoveredStage :
+    ∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (I.recovered.countWindow n) (I.recovered.curvatureBias n)
+        (I.recovered.spectralLocality n)
+        (I.recovered.scale n) (I.recovered.total n)
+        (I.recovered.edge n) (I.recovered.candidate n)
+  rssPoissonErrorZero :
+    ∀ᶠ n in atTop,
+      ∀ i,
+        rssPoissonError
+          (I.recovered.countWindow n i)
+          (I.recovered.curvatureBias n i) errorScale = 0
+  chartOperatorLimit :
+    Tendsto
+      (fun n =>
+        BDG4DOperatorProfileData.mean
+          I.operatorKernelData.toProfileData ((I.chartCertificate n).density))
+      atTop
+      (𝓝 (BDG4DOperatorProfileData.target I.operatorKernelData.toProfileData))
+  chartDistortionTendsToZero :
+    Tendsto (fun n => (I.chartCertificate n).distortionBound) atTop (𝓝 0)
+  scheduledDensityTendsToInfinity :
+    Tendsto (fun n => (I.chartCertificate n).density) atTop atTop
+
+theorem gate4_scheduledKernelOperatorBridge_closed
+    {cell X Y chart : Type*} [Fintype cell]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    (I : RecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+      cell X Y chart)
+    (errorScale : ℝ) :
+    Gate4ScheduledKernelOperatorBridgeClosed I errorScale := by
+  rcases
+    RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+      I with
+    ⟨hrecovered, hoperator, hdistortion⟩
+  rcases
+    RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+      I errorScale with
+    ⟨hrss, _, _⟩
+  exact
+    ⟨hrecovered, hrss, hoperator, hdistortion,
+      I.density_tendsto_atTop⟩
 
 /-! ## Gate 5: QFT and Standard Model infrared limit -/
 
@@ -437,6 +495,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
+#print axioms gate4_scheduledKernelOperatorBridge_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
