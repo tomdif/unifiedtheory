@@ -1044,10 +1044,12 @@ assumption tags and frozen data protocols, or explicitly demoted.
   this atlas, or that physical dynamics selects or dominates this history.
   `KFCausalCSpecPhysicalChiralGrowthRealization.lean` sharpens the next gate:
   the same physical atlas path realizes the determinant sector under the
-  complete chiral law once the 140 concrete normalized transition aggregates
-  are proved nonzero. Thus the remaining obstruction is finite coherent
-  noncancellation for actual chiral transitions, not physical admissibility of
-  the atlas births.
+  complete chiral law once the 140 concrete raw coherent aggregates are proved
+  nonzero. Lean now proves the normalized-transition gate is equivalent to this
+  raw numerator gate because the complete-chiral denominator is already
+  zero-free at every atlas parent. Thus the remaining obstruction is finite
+  coherent numerator noncancellation, not physical admissibility or
+  normalization.
   `KFCausalCSpecContinuumChiralityQualification.lean` then gives the strongest
   currently justified continuum statement: the determinant-selected vertex
   lifts pointwise to a nontrivial chiral field on any nonempty base, any

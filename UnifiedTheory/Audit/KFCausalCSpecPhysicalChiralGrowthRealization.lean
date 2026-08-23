@@ -9,13 +9,13 @@
   amplitude.  `KFCausalSetCompleteChiralLaw` supplies the stronger zero-free
   complete chiral dynamics.
 
-  This file isolates the exact remaining bridge between those two facts:
-  if the complete chiral law has no coherent aggregate cancellation on the 140
-  concrete atlas births, then the same atlas path has nonzero complete-chiral
-  path amplitude and realizes the determinant weak sector under the actual
-  complete chiral law.
+  This file isolates the exact remaining bridge between those two facts.  The
+  denominator of the complete chiral transition is already proved zero-free in
+  `KFCausalSetCompleteChiralLaw`; the only surviving atlas-path obstruction is
+  finite numerator noncancellation in the raw coherent aggregate over the
+  unlabeled transition fiber.
 
-  The new hypothesis is finite and explicit: one nonzero normalized transition
+  The new hypothesis is finite and explicit: one nonzero raw aggregate
   condition for each atlas birth.  This is not yet a proof that the microscopic
   dynamics supplies the Hauptvermutung convergence certificate.
 
@@ -33,6 +33,7 @@ namespace UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 noncomputable section
 
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetBellCausality
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecGlobalAtlas
@@ -61,11 +62,80 @@ def atlasCompleteChiralTransition
   (completeChiralCausalSetGrowthLaw chirality).transition n
     (atlasStepPrefix n hnext) (atlasStepChild n hnext)
 
+/-- The raw coherent numerator of the complete-chiral transition assigned to
+the `n`th atlas birth, before division by the parent partition. -/
+def atlasCompleteChiralRawAggregate
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140) : ℂ :=
+  unlabeledAggregatedCausalEdgeAmplitude
+    (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
+    (currentUnlabeledCausalOrder n (atlasStepPrefix n hnext))
+    (atlasStepChild n hnext)
+
+/-- The already zero-free complete-chiral parent partition for the `n`th
+atlas birth. -/
+def atlasCompleteChiralPartition
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140) : ℂ :=
+  unlabeledCausalEdgeAmplitudePartition
+    (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
+    (currentUnlabeledCausalOrder n (atlasStepPrefix n hnext))
+
+/-- The atlas transition is exactly its raw coherent aggregate divided by the
+complete-chiral parent partition. -/
+theorem atlasCompleteChiralTransition_eq_rawAggregate_div_partition
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140) :
+    atlasCompleteChiralTransition chirality n hnext =
+      atlasCompleteChiralRawAggregate chirality n hnext /
+        atlasCompleteChiralPartition chirality n hnext := rfl
+
+/-- The denominator of every complete-chiral atlas transition is nonzero. -/
+theorem atlasCompleteChiralPartition_ne_zero
+    (chirality : Fin 2) (n : ℕ) (hnext : n + 1 ≤ 140) :
+    atlasCompleteChiralPartition chirality n hnext ≠ 0 := by
+  unfold atlasCompleteChiralPartition
+  exact canonical_unlabeled_interactingChiral_partition_ne_zero
+    chirality _
+
+/-- The finite raw noncancellation gate for the complete-chiral atlas path.
+This is smaller than the normalized transition gate because denominator
+zero-freeness is already theorem-proved. -/
+def CompleteChiralAtlasRawAggregateNonzero (chirality : Fin 2) : Prop :=
+  ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+    atlasCompleteChiralRawAggregate chirality n hnext ≠ 0
+
 /-- The finite noncancellation gate needed to promote the already-physical
 atlas path from the uniform law to the complete chiral law. -/
 def CompleteChiralAtlasTransitionNonzero (chirality : Fin 2) : Prop :=
   ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
     atlasCompleteChiralTransition chirality n hnext ≠ 0
+
+/-- Raw coherent noncancellation is equivalent to normalized transition
+noncancellation for the atlas path, because the complete-chiral denominator is
+already proved nonzero at every parent. -/
+theorem completeChiralAtlasRawAggregateNonzero_iff_transition_nonzero
+    (chirality : Fin 2) :
+    CompleteChiralAtlasRawAggregateNonzero chirality ↔
+      CompleteChiralAtlasTransitionNonzero chirality := by
+  constructor
+  · intro hRaw n hnext
+    rw [atlasCompleteChiralTransition_eq_rawAggregate_div_partition]
+    exact div_ne_zero (hRaw n hnext)
+      (atlasCompleteChiralPartition_ne_zero chirality n hnext)
+  · intro hTransition n hnext
+    by_contra hRawZero
+    have hTransitionZero :
+        atlasCompleteChiralTransition chirality n hnext = 0 := by
+      rw [atlasCompleteChiralTransition_eq_rawAggregate_div_partition,
+        hRawZero]
+      simp
+    exact hTransition n hnext hTransitionZero
+
+/-- A direct one-way form for applying the raw finite noncancellation gate. -/
+theorem completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+    (chirality : Fin 2)
+    (hRaw : CompleteChiralAtlasRawAggregateNonzero chirality) :
+    CompleteChiralAtlasTransitionNonzero chirality :=
+  (completeChiralAtlasRawAggregateNonzero_iff_transition_nonzero
+    chirality).mp hRaw
 
 /-- Every atlas birth used in the noncancellation gate is already physically
 admissible as a one-element causal growth step. -/
@@ -145,10 +215,40 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
       cSpecOddLoopHistory_orientation,
       cSpecOddLoop_derives_rightWeakMirror⟩
 
+/-- Final raw-gate version of the complete-chiral physical CSpec realization
+theorem.  All normalization denominators are discharged by the zero-free
+complete chiral law; the only remaining finite input is raw coherent
+noncancellation on the 140 atlas births. -/
+theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero
+    (chirality : Fin 2)
+    (hRaw : CompleteChiralAtlasRawAggregateNonzero chirality) :
+    IsPhysicalCausalGrowthPath 140
+        (globalAtlasPhysicalGrowthPath 140 le_rfl)
+      ∧ finiteRankedPathAmplitude
+          (completeChiralCausalSetGrowthLaw chirality) 140
+          (globalAtlasPhysicalGrowthPath 140 le_rfl) ≠ 0
+      ∧ Nonempty
+          (CausalOrderPoint (globalAtlasPhysicalPrefix 140 le_rfl) ≃o
+            GlobalAtlasEvent)
+      ∧ ContainsBooleanCubeSeed (globalAtlasPhysicalPrefix 140 le_rfl)
+      ∧ cSpecAtlasOrientation 3 cSpecOddLoopHistory = -1
+      ∧ IsNontrivialPurelyRightHanded
+          (cSpecAtlasWeakVertex 3 cSpecOddLoopHistory) := by
+  exact
+    completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_transition_nonzero
+      chirality
+      (completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+        chirality hRaw)
+
+#print axioms atlasCompleteChiralTransition_eq_rawAggregate_div_partition
+#print axioms atlasCompleteChiralPartition_ne_zero
+#print axioms completeChiralAtlasRawAggregateNonzero_iff_transition_nonzero
+#print axioms completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
 #print axioms atlasStep_isPhysical
 #print axioms completeChiral_atlasStep_support_gate
 #print axioms globalAtlasPhysicalGrowthPath_completeChiralAmplitude_ne_zero_of_transition_nonzero
 #print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_transition_nonzero
+#print axioms completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_rawAggregate_nonzero
 
 end
 

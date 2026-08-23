@@ -1366,11 +1366,12 @@
 > rank-eight path alone determines the atlas, nor that the uniform or harmonic
 > dynamics preferentially selects this endpoint.
 > `KFCausalCSpecPhysicalChiralGrowthRealization.lean` now isolates the complete
-> chiral upgrade: if the 140 atlas-birth transition aggregates are nonzero
-> under `completeChiralCausalSetGrowthLaw`, then the same physical atlas path
-> has nonzero complete-chiral path amplitude and realizes the determinant weak
-> sector. Lean also proves each atlas birth is already physical and that
-> nonphysical births are killed by the complete chiral support gate.
+> chiral upgrade: if the 140 atlas-birth raw coherent aggregates are nonzero,
+> then the same physical atlas path has nonzero complete-chiral path amplitude
+> and realizes the determinant weak sector. Lean also proves each atlas birth is
+> already physical, nonphysical births are killed by the complete chiral support
+> gate, and the normalized-transition nonzero gate is equivalent to the raw
+> numerator gate because the complete-chiral parent partitions are zero-free.
 > `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
 > continuum assumptions. The finite weak vertex has an exact pointwise lift to
 > a nontrivial chiral field on any nonempty base, and every order embedding
