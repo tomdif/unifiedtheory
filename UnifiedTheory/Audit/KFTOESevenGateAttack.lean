@@ -16,6 +16,8 @@ import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
+import UnifiedTheory.LayerA.GravitonTTModes
+import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
 
@@ -490,6 +492,73 @@ theorem gate6_darkDensityAudit_closed :
     ⟨hDMAtomic, hDMCentral, hMAtomic, hBAtomic, hthree, hcold,
       hdisc, hsimpler, hbaryon, hthermal, hnotProduct⟩
 
+/-- The Gate 6 cosmological-constant/gravitational-mode sublayer that is
+currently closed: the Sorkin `Λ² * N = 1` relation is packaged with its
+self-consistency/fluctuation refinements, the audit's honest negative clauses
+about minimum complexity and missing cosmic-age derivation, and the finite
+transverse-traceless graviton mode count.  This is still not a derivation of
+initial conditions, CMB/structure formation, black-hole thermodynamics, or
+information recovery. -/
+structure Gate6CosmologicalConstantGravitonAuditClosed : Prop where
+  lambdaSquaredTimesN :
+    ∀ ρ V : ℝ, 0 < ρ → 0 < V →
+      UnifiedTheory.LayerA.CosmologicalConstant.sorkinLambda ρ V ^ 2 *
+          (ρ * V) = 1
+  lambdaSelfConsistency :
+    ∀ ρ c Λ : ℝ, 0 < ρ → 0 < Λ → 0 < c →
+      Λ ^ 2 =
+          1 / (ρ *
+            UnifiedTheory.LayerA.CosmologicalConstant.causalPastVolume c Λ) →
+      ρ * c = 1
+  lambdaRelativeFluctuation :
+    ∀ ρ V : ℝ, 0 < ρ → 0 < V →
+      UnifiedTheory.LayerA.CosmologicalConstant.relativeLambdaFluctuation
+          (ρ * V) =
+        UnifiedTheory.LayerA.CosmologicalConstant.sorkinLambda ρ V / 2
+  lambdaAuditSharp :
+    ∀ Λ : ℝ, Λ ≠ 0 → Λ ^ 2 * (1 / Λ ^ 2) = 1
+  linearLawSimplerThanSorkin :
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.L2_complexity <
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.L1_complexity
+  linearLawMissesObservedTarget :
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.L2_N_target ≠
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.N_obs_target
+  sorkinLawSimplerThanQuartic :
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.L1_complexity <
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.L4_complexity
+  quarticLawMissesObservedTarget :
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.L4_N_target ≠
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.N_obs_target
+  cosmicExponentSplit :
+    (244 : ℕ) =
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.d_eff * 61
+  cosmicAgeExponentNotAtomic :
+    (10 : ℕ) < 61
+  lambdaBelowFrameworkFloor :
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.Lambda_P_upper <
+      UnifiedTheory.LayerB.CosmologicalConstantAudit.smallest_framework_rational
+  gravitonTTClosedForm :
+    ∀ d : ℕ, 3 ≤ d →
+      UnifiedTheory.LayerA.GravitonTTModes.gravitonTTModes d =
+        d * (d - 3) / 2
+  fourDimensionalGravitonModes :
+    UnifiedTheory.LayerA.GravitonTTModes.gravitonTTModes 4 = 2
+  threeDimensionalNoPropagatingGravitons :
+    UnifiedTheory.LayerA.GravitonTTModes.gravitonTTModes 3 = 0
+
+theorem gate6_cosmologicalConstantGravitonAudit_closed :
+    Gate6CosmologicalConstantGravitonAuditClosed := by
+  rcases UnifiedTheory.LayerA.CosmologicalConstant.refined_prediction with
+    ⟨hlambdaN, hself, hfluctuation⟩
+  rcases
+    UnifiedTheory.LayerB.CosmologicalConstantAudit.cosmological_constant_audit_VERDICT with
+    ⟨hsharp, hL2Simple, hL2Miss, hL1L4, hL4Miss, hsplit, hage, hfloor⟩
+  rcases UnifiedTheory.LayerA.GravitonTTModes.gravitonTTModes_master with
+    ⟨hclosedForm, hD3, hD4, _, _, _, _⟩
+  exact
+    ⟨hlambdaN, hself, hfluctuation, hsharp, hL2Simple, hL2Miss,
+      hL1L4, hL4Miss, hsplit, hage, hfloor, hclosedForm, hD4, hD3⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -565,6 +634,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_finiteCarrierCover_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
+#print axioms gate6_cosmologicalConstantGravitonAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack

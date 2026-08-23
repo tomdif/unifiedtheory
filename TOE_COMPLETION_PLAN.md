@@ -29,12 +29,12 @@ recovered-stage 4D BDG operator bridge as an explicit partial-closure
 certificate, packages the strongest scheduled kernel/operator Gate 4 bridge as
 an explicit partial-closure certificate, packages Gate 5's local
 Born/projective completeness and finite Hopf carrier cover-independence layers
-as explicit partial-closure certificates, packages Gate 6's dark-density audit
-as an explicit partial-closure certificate, and proves the Gate 7 protocol
-layer from the preregistration/falsifiability ledger. Full Gates 4-6 remain
-open until their missing physical, infrared, cosmological, and black-hole
-inputs are actually supplied; Gate 7 still requires the future empirical
-comparisons themselves.
+as explicit partial-closure certificates, packages Gate 6's dark-density and
+cosmological-constant/graviton-mode audits as explicit partial-closure
+certificates, and proves the Gate 7 protocol layer from the
+preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
+missing physical, infrared, cosmological, and black-hole inputs are actually
+supplied; Gate 7 still requires the future empirical comparisons themselves.
 
 ## Gates
 
@@ -885,6 +885,7 @@ The next high-value theorem targets are:
    partial-closure certificates.
 6. Gate 6: derive cosmological measure, dark-energy mechanism, black-hole
    thermodynamics, and CMB/structure/gravitational-wave constraints beyond the
-   now-checked dark-density audit partial-closure certificate.
+   now-checked dark-density and cosmological-constant/graviton-mode
+   partial-closure certificates.
 7. Gate 7: keep the closed preregistration protocol live by updating the
    failure ledger and comparison table when the frozen future tests report.
