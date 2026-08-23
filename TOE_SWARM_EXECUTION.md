@@ -152,12 +152,13 @@ partial-closure certificate.
   handedness, Gate 2 base zero sets and quotient invariant
   observables, and Gate 3 convergence, bridge/residual-split, and
   exact-recovery certificates, plus explicit partial-closure certificates
-  for the Gate 4 kernel/profile analytic supplier, recovered-stage 4D BDG
-  operator convergence, and the strongest scheduled kernel/operator bridge,
-  Gate 5 local Born/projective completeness, finite Hopf carrier
+  for the Gate 4 active-kernel cone-bound supplier, kernel/profile analytic
+  supplier, recovered-stage 4D BDG RSS/Poisson operator convergence, and the
+  strongest scheduled kernel/operator bridge,
+  Gate 5 arbitrary-axis Born observables, local Born/projective completeness, finite Hopf carrier
   cover-independence, and recovered common-refinement layers, and Gate 6 dark-density plus
   cosmological-constant/graviton-mode audits, finite information-preservation
-  audit, conditional QQG cosmology bridge, and physical-information-limits audit. It also
+  inverse/preimage audit, conditional QQG cosmology bridge, and physical-information-limits audit. It also
   proves the Gate 7
   preregistration-protocol closure theorem. Full Gates 4-6 are still
   deliberately represented as closure records until their physical, infrared,

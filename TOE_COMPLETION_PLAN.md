@@ -30,15 +30,16 @@ the Gate 2 base zero-set theorem and quotient invariant-observable
 construction, restates the Gate 3 convergence-certificate theorem, packages the
 Gate 3 direct aggregate-rate contraction route, convergence bridge/residual
 split, and exact-recovery certificate as
-explicit partial-closure certificates, packages Gate 4's kernel/profile
-analytic supplier and recovered-stage 4D BDG operator bridge as explicit
-partial-closure certificates, packages the strongest scheduled kernel/operator Gate 4 bridge as
-an explicit partial-closure certificate, packages Gate 5's local
-Born/projective completeness, finite Hopf carrier cover-independence, and
+explicit partial-closure certificates, packages Gate 4's active-kernel
+cone-bound supplier, kernel/profile analytic supplier, and recovered-stage 4D
+BDG RSS/Poisson operator bridge as explicit partial-closure certificates,
+packages the strongest scheduled kernel/operator Gate 4 bridge as
+an explicit partial-closure certificate, packages Gate 5's arbitrary-axis Born
+observables, local Born/projective completeness, finite Hopf carrier cover-independence, and
 recovered common-refinement layers as explicit partial-closure certificates,
 packages Gate 6's dark-density and
 cosmological-constant/graviton-mode audits plus finite information-preservation
-audit, conditional QQG cosmology bridge, and physical-information-limits audit
+inverse/preimage audit, conditional QQG cosmology bridge, and physical-information-limits audit
 as explicit partial-closure certificates, and proves the Gate 7 protocol layer from the
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are actually
@@ -633,6 +634,8 @@ BDG4DOperatorProfileData.sequenceAsymptotics_layer_asymptotics
 KFCausalCSpecRecoveredStageBDG4DRecovered
 RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
 RecoveredStageBDG4DOperatorInterface.recoveredStage_and_operator_tendsto
+Gate4RecoveredBDGPoissonOperatorBridgeClosed
+gate4_recoveredBDGPoissonOperatorBridge_closed
 KFCausalCSpecRecoveredStageBDG4DChart
 RecoveredStageBDG4DChartInterface.toOperatorInterface
 RecoveredStageBDG4DChartInterface.rssPoissonError_zero_and_chart_operator_tendsto
@@ -663,6 +666,8 @@ RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.rssPoissonError_zero_c
 RecoveredStageBDG4DScheduledDensitySplitOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 KFCausalCSpecRecoveredStageBDG4DConeBound
 BDG4DOperatorProfileConeBound.of_activeKernelBound
+Gate4ActiveKernelConeBoundClosed
+gate4_activeKernelConeBound_closed
 BDG4DOperatorProfileKernelSplitData.toSplitData
 BDG4DOperatorProfileKernelSplitData.sampled_tendsto
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.toSplitOperatorInterface
@@ -687,6 +692,9 @@ The recovered 4D operator bridge now combines exact finite recovery with that
 concrete profile source: supplied 4D operator data gives both zero finite
 horizon-flux error and convergence of the sampled reduced 4D BDG operator
 profile.
+`KFTOESevenGateAttack.lean` now exposes this as
+`Gate4RecoveredBDGPoissonOperatorBridgeClosed` and
+`gate4_recoveredBDGPoissonOperatorBridge_closed`.
 The local-chart supplier bridge splits the exact finite CSpec sequence from
 the analytic chart profile data.  It proves that recovered local 4D charts
 supplying density, point-field, curvature, and `BDG4DOperatorProfileData`
@@ -722,6 +730,9 @@ instead of assuming the full product estimate directly, the chart side supplies
 lower lightcone support and the existing uniform profile bound, the kernel side
 supplies an active-region weighted `f4D` bound, and one cone-scale calibration
 inequality assembles the combined estimate.
+`KFTOESevenGateAttack.lean` now exposes this assembly as
+`Gate4ActiveKernelConeBoundClosed` and
+`gate4_activeKernelConeBound_closed`.
 
 Open work:
 
@@ -775,7 +786,10 @@ Completed algebraic groundwork:
   valid and invariant under local stagewise `U(1)` gauge rotation.
 - `KFRecoveredCSpecHopfBornAxisObservable` extends the local Born interface to
   arbitrary unit Bloch measurement axes, proves the dot expectation is bounded
-  in `[-1,1]`, and recovers Pauli-X/Y/Z as coordinate-axis cases.
+  in `[-1,1]`, and recovers Pauli-X/Y/Z as coordinate-axis cases.  The
+  seven-gate ledger exposes the bundled validity/gauge-invariance statement as
+  `Gate5ArbitraryAxisBornObservableClosed` and
+  `gate5_arbitraryAxisBornObservable_closed`.
 - `KFRecoveredCSpecHopfBornTomography` proves local finite qubit tomography:
   Pauli Born expectations reconstruct the recovered quotient Bloch observable,
   and arbitrary-axis expectations are exactly dot products.
@@ -840,6 +854,17 @@ Open work:
 ### Gate 6: Cosmology And Black Holes
 
 Goal: cover sectors a complete theory cannot skip.
+
+Current finite information-preservation hook:
+
+`KFTOESevenGateAttack.lean` packages the imported finite-state information
+theorems as `Gate6FiniteInformationPreservationAuditClosed`: finite injective
+self-evolution is surjective and bijective, finite surjective self-evolution
+is injective, the induced inverse is two-sided, every output has a unique
+preimage, and the `information_preserved`/`no_information_loss` theorems are
+available as ledger fields.  This closes finite no-loss algebra only; it does
+not derive black-hole entropy, evaporation dynamics, or a semiclassical Page
+curve from the microscopic law.
 
 Open work:
 

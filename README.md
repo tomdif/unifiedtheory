@@ -56,11 +56,12 @@ sets and invariant-observable quotient semantics, and Gate 3 protected
 aggregate-rate contraction, convergence, bridge/residual-split, and
 exact-recovery certificates.  It now
 also packages explicit partial-closure certificates for Gate 4's
-kernel/profile analytic supplier, recovered-stage 4D BDG operator bridge, and
-strongest scheduled kernel/operator bridge, Gate 5's local Born/projective
-completeness, finite Hopf carrier cover-independence, and recovered common-refinement
+active-kernel cone-bound supplier, kernel/profile analytic supplier,
+recovered-stage 4D BDG RSS/Poisson operator bridge, and strongest scheduled
+kernel/operator bridge, Gate 5's arbitrary-axis Born observables, local
+Born/projective completeness, finite Hopf carrier cover-independence, and recovered common-refinement
 layers, and Gate 6's dark-density and cosmological-constant/graviton-mode
-audits, finite information-preservation audit, and conditional QQG cosmology
+audits, finite information-preservation inverse/preimage audit, and conditional QQG cosmology
 bridge plus physical-information-limits audit, and proves Gate 7 protocol
 closure from the preregistration ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological-emergence, evaporation, and black-hole
@@ -231,13 +232,16 @@ Machine-checked additions now cover:
   physical-total, base, bridge, residual, canonical-transport, and incidence
   recovery facts; the recovered-stage Gate 4 bridge now also routes exact
   finite recovery into the reduced 4D BDG operator stack through recovered
-  chart certificates, derives chart-channel convergence from matched recovered
-  residual sums, and removes the standalone density-convergence assumption
-  when chart density follows a positive affine refinement schedule; the
+  chart certificates, exposes recovered-stage RSS/Poisson zero together with
+  sampled 4D operator convergence in the seven-gate ledger, derives
+  chart-channel convergence from matched recovered residual sums, and removes
+  the standalone density-convergence assumption when chart density follows a
+  positive affine refinement schedule; the
   remaining 4D operator-profile package is now factored into separate
   profile-function, scale, regularity, uniform-bound, support, and cone-bound
   certificates before being assembled back into `BDG4DOperatorProfileData`;
-  the cone-bound certificate is now further reduced to lower lightcone support,
+  the cone-bound certificate is now further reduced, and exposed in the
+  seven-gate ledger, to lower lightcone support,
   an active-region weighted `f4D` kernel estimate, and the existing
   chart-profile sup bound; the new Hopf spinor/Bloch bridge proves the
   algebraic core of the Hopf map in real coordinates: normalized
@@ -263,7 +267,8 @@ Machine-checked additions now cover:
   into valid Pauli-X/Y/Z plus-minus probability pairs, again invariant under
   local stagewise `U(1)` gauge choices; the arbitrary-axis Born bridge now
   extends this to every unit Bloch measurement axis and proves the coordinate
-  axes recover the Pauli-X/Y/Z cases; the local Born tomography bridge now
+  axes recover the Pauli-X/Y/Z cases; the seven-gate ledger exposes this as
+  `Gate5ArbitraryAxisBornObservableClosed`; the local Born tomography bridge now
   proves Born-pair expectations reconstruct the recovered quotient Bloch
   observable and arbitrary-axis expectations are exactly dot products; the
   observational-completeness bridge proves equality of Pauli Born data,

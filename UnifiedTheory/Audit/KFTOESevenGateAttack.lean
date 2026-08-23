@@ -17,6 +17,7 @@ import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
+import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 import UnifiedTheory.LayerA.GravitonTTModes
 import UnifiedTheory.LayerB.CosmologicalConstantAudit
@@ -49,6 +50,7 @@ open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
@@ -481,6 +483,53 @@ theorem gate3_convergenceBridgeResidualSplit_closed
       fun i => physicalHauptvermutungConvergenceCertificate_curvatureBias_tendsto_zero C i,
       fun i => physicalHauptvermutungConvergenceCertificate_spectralLocality_tendsto_zero C i⟩
 
+/-- Gate 3's residual-gap exact-zero sublayer.  The convergence certificate
+already gives eventual canonical bridge recovery and componentwise residual
+convergence; adding a positive fixed gap for each nonzero count, curvature,
+and spectral/locality residual upgrades convergence to eventual exact zero. -/
+structure Gate3ResidualGapExactZeroClosed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (residualGap : ℝ) : Prop where
+  eventualExactZero :
+    ∀ᶠ n in atTop,
+      total n = 0 ∧
+        (∀ i, countWindow n i = 0) ∧
+          (∀ i, curvatureBias n i = 0) ∧
+            (∀ i, spectralLocality n i = 0) ∧
+              candidate n = canonicalCSpecBridgeCandidate (edge n)
+
+theorem gate3_residualGapExactZero_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungConvergenceCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase)
+    (hgap_pos : 0 < residualGap)
+    (hcount_gap :
+      ∀ n i, countWindow n i ≠ 0 → residualGap ≤ countWindow n i)
+    (hcurvature_gap :
+      ∀ n i, curvatureBias n i ≠ 0 → residualGap ≤ curvatureBias n i)
+    (hspectral_gap :
+      ∀ n i, spectralLocality n i ≠ 0 → residualGap ≤ spectralLocality n i) :
+    Gate3ResidualGapExactZeroClosed C residualGap := by
+  exact
+    ⟨physicalHauptvermutungConvergenceCertificate_eventually_exact_zero_of_residual_gap
+      C hgap_pos hcount_gap hcurvature_gap hspectral_gap⟩
+
 /-- The Gate 3 exact-recovery sublayer that is already closed by the reusable
 exact-recovery certificate: horizon protection holds at every finite stage,
 full operational recovery holds eventually, recovered stages hold eventually
@@ -633,6 +682,113 @@ theorem gate4_recoveredBDGOperatorBridge_closed
     ⟨hrecovered, hoperator⟩
   exact ⟨hrecovered, hoperator, I.density_tendsto_atTop⟩
 
+/-- Direct Gate 3-to-Gate 4 handoff: an exact-recovery certificate kills the
+finite RSS/Poisson horizon-error channel eventually and after a finite
+threshold, before any BDG operator-profile analytic input is needed. -/
+structure Gate4ExactRecoveryRSSPoissonClosed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap)
+    (errorScale : ℝ) : Prop where
+  eventuallyRSSPoissonErrorZero :
+    ∀ᶠ n in atTop,
+      ∀ i, rssPoissonError (countWindow n i) (curvatureBias n i) errorScale = 0
+  rssPoissonErrorZeroAfter :
+    ∃ N, ∀ n, N ≤ n →
+      ∀ i, rssPoissonError (countWindow n i) (curvatureBias n i) errorScale = 0
+
+theorem gate4_exactRecoveryRSSPoisson_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {stepFloor weightBase sourceBase residualGap : ℝ}
+    (C : PhysicalHauptvermutungExactRecoveryCertificate w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      stepFloor weightBase sourceBase residualGap)
+    (errorScale : ℝ) :
+    Gate4ExactRecoveryRSSPoissonClosed C errorScale := by
+  exact
+    ⟨physicalHauptvermutungExactRecoveryCertificate_eventually_rssPoissonError_zero
+      C,
+      physicalHauptvermutungExactRecoveryCertificate_exists_rssPoissonError_zero_after
+        C⟩
+
+/-- Recovered 4D BDG operator interfaces also kill the finite
+RSS/Poisson-horizon error channel eventually, for any chosen error scale, while
+preserving the same sampled-operator limit and density divergence. -/
+structure Gate4RecoveredBDGPoissonOperatorBridgeClosed
+    {cell : Type*} [Fintype cell]
+    (I : RecoveredStageBDG4DOperatorInterface cell)
+    (errorScale : ℝ) : Prop where
+  eventualRecoveredStage :
+    ∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (I.countWindow n) (I.curvatureBias n) (I.spectralLocality n)
+        (I.scale n) (I.total n) (I.edge n) (I.candidate n)
+  rssPoissonErrorZero :
+    ∀ᶠ n in atTop,
+      ∀ i,
+        rssPoissonError
+          (I.countWindow n i) (I.curvatureBias n i) errorScale = 0
+  operatorLimit :
+    Tendsto
+      (fun n => BDG4DOperatorProfileData.mean I.operatorData (I.density n))
+      atTop
+      (𝓝 (BDG4DOperatorProfileData.target I.operatorData))
+  densityTendsToInfinity : Tendsto I.density atTop atTop
+
+theorem gate4_recoveredBDGPoissonOperatorBridge_closed
+    {cell : Type*} [Fintype cell]
+    (I : RecoveredStageBDG4DOperatorInterface cell)
+    (errorScale : ℝ) :
+    Gate4RecoveredBDGPoissonOperatorBridgeClosed I errorScale := by
+  rcases
+    RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
+      I errorScale with
+    ⟨hrss, hoperator⟩
+  exact
+    ⟨I.eventually_recoveredStage, hrss, hoperator,
+      I.density_tendsto_atTop⟩
+
+/-- Gate 4's active-kernel cone-bound sublayer: uniform chart bounds, upper and
+lower active-lightcone support, a kernel-only weighted active-region estimate,
+and a single scale-calibration inequality assemble the full 4D BDG cone
+certificate.  This isolates the analytic obligation to proving the active
+kernel estimate on the physically supported lightcone rectangle. -/
+structure Gate4ActiveKernelConeBoundClosed
+    {S : BDG4DOperatorProfileScales}
+    {F : BDG4DOperatorProfileFunctions}
+    (U : BDG4DOperatorProfileUniformBounds S F)
+    (A : BDG4DOperatorProfileSupport S F)
+    (L : BDG4DOperatorProfileLightconeSupport F)
+    (K : BDG4DWeightedKernelActiveBound S)
+    (hcone : K.activeWeightedConeBound * S.profileBound ≤ S.coneBound) :
+    Prop where
+  coneBound : BDG4DOperatorProfileConeBound S F
+
+theorem gate4_activeKernelConeBound_closed
+    {S : BDG4DOperatorProfileScales}
+    {F : BDG4DOperatorProfileFunctions}
+    (U : BDG4DOperatorProfileUniformBounds S F)
+    (A : BDG4DOperatorProfileSupport S F)
+    (L : BDG4DOperatorProfileLightconeSupport F)
+    (K : BDG4DWeightedKernelActiveBound S)
+    (hcone : K.activeWeightedConeBound * S.profileBound ≤ S.coneBound) :
+    Gate4ActiveKernelConeBoundClosed U A L K hcone := by
+  exact
+    ⟨BDG4DOperatorProfileConeBound.of_activeKernelBound
+      U A L K hcone⟩
+
 /-- The Gate 4 analytic supplier sublayer that is already closed once the
 kernel/profile split data are supplied: active lightcone support plus the
 active weighted 4D kernel bound assemble the cone certificate, the reduced 4D
@@ -766,6 +922,39 @@ structure Gate5QFTStandardModelIRClosed
   propagatorsAndSpinStatistics : T.propagatorsAndSpinStatistics
   gaugeFieldsAndRenormalization : T.gaugeFieldsAndRenormalization
   standardModelParameterChain : T.standardModelParameterChain
+
+/-- The finite arbitrary-axis Born-observable sublayer: every recovered
+stage/site Hopf quotient fiber supplies a valid binary Born pair along any unit
+Bloch measurement axis, and local stagewise `U(1)` gauge rotations leave that
+axis observable unchanged.  This is finite measurement kinematics, not detector
+dynamics or an infrared QFT limit. -/
+structure Gate5ArbitraryAxisBornObservableClosed
+    {site : Type*}
+    (I : RecoveredStageHopfFiberInterface site)
+    (A : UnitBlochAxis)
+    (n : ℕ) (x : site) : Prop where
+  bornAlongValid :
+    0 ≤ (I.bornAlongAt A n x).plus ∧
+      (I.bornAlongAt A n x).plus ≤ 1 ∧
+        0 ≤ (I.bornAlongAt A n x).minus ∧
+          (I.bornAlongAt A n x).minus ≤ 1 ∧
+            (I.bornAlongAt A n x).plus +
+              (I.bornAlongAt A n x).minus = 1
+  axisBornGaugeInvariant :
+    ∀ P : ℕ → UnitPhaseField site,
+      (I.phaseRotate P).bornAlongAt A n x = I.bornAlongAt A n x
+
+theorem gate5_arbitraryAxisBornObservable_closed
+    {site : Type*}
+    (I : RecoveredStageHopfFiberInterface site)
+    (A : UnitBlochAxis)
+    (n : ℕ) (x : site) :
+    Gate5ArbitraryAxisBornObservableClosed I A n x := by
+  rcases
+    RecoveredStageHopfFiberInterface.recoveredStage_local_axis_born_interface
+      I A n x with
+    ⟨hvalid, hgauge⟩
+  exact ⟨hvalid, hgauge⟩
 
 /-- The finite local Gate 5 sublayer already closed by the recovered Hopf
 projective-qubit stack: Pauli Born data, all-axis Born data, quotient Bloch
@@ -1128,12 +1317,24 @@ structure Gate6FiniteInformationPreservationAuditClosed : Prop where
   finiteInjectiveSurjective :
     ∀ {α : Type*} [Finite α] (f : α → α),
       Function.Injective f → Function.Surjective f
+  finiteSurjectiveInjective :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Surjective f → Function.Injective f
   finiteInjectiveBijective :
     ∀ {α : Type*} [Finite α] (f : α → α),
       Function.Injective f → Function.Bijective f
+  finiteEvolutionInverseSpec :
+    ∀ {α : Type*} [Finite α] (f : α → α)
+      (hinj : Function.Injective f),
+      let e := finite_evolution_invertible f hinj
+      (∀ x, e.symm (f x) = x) ∧ (∀ y, f (e.symm y) = y)
   everyStateUniquePreimage :
     ∀ {α : Type*} [Finite α] (f : α → α),
       Function.Injective f → ∀ y : α, ∃! x : α, f x = y
+  informationPreserved :
+    ∀ {α : Type*} [Finite α] (f : α → α),
+      Function.Injective f →
+        Function.Bijective f ∧ (∀ y, ∃! x, f x = y)
   noInformationLoss :
     ∀ {α : Type*} [Finite α] (f : α → α),
       Function.Injective f →
@@ -1148,8 +1349,11 @@ theorem gate6_finiteInformationPreservationAudit_closed :
     Gate6FiniteInformationPreservationAuditClosed := by
   exact
     ⟨fun f hinj => finite_injective_is_surjective f hinj,
+      fun f hsurj => finite_surjective_is_injective f hsurj,
       fun f hinj => finite_injective_is_bijective f hinj,
+      fun f hinj => finite_evolution_inverse_spec f hinj,
       fun f hinj => every_state_has_unique_preimage f hinj,
+      fun f hinj => information_preserved f hinj,
       fun f hinj => no_information_loss f hinj,
       fun f => unitarity_is_a_theorem f⟩
 
@@ -1283,11 +1487,16 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
 #print axioms gate3_aggregateRateContraction_closed
 #print axioms gate3_convergenceBridgeResidualSplit_closed
+#print axioms gate3_residualGapExactZero_closed
 #print axioms gate3_exactRecoveryCertificate_closed
 #print axioms gate4_recoveredStage_bdg4d_operator_limit_of_interface
 #print axioms gate4_recoveredBDGOperatorBridge_closed
+#print axioms gate4_exactRecoveryRSSPoisson_closed
+#print axioms gate4_recoveredBDGPoissonOperatorBridge_closed
+#print axioms gate4_activeKernelConeBound_closed
 #print axioms gate4_kernelProfileSplitSupplier_closed
 #print axioms gate4_scheduledKernelOperatorBridge_closed
+#print axioms gate5_arbitraryAxisBornObservable_closed
 #print axioms gate5_localBornProjectiveCompleteness_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed

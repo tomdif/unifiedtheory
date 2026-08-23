@@ -211,13 +211,14 @@
 > eventual full operational recovery, a recovered-stage threshold, and all
 > observable Hauptvermutung/bridge defects zero and canonical after some
 > threshold.  The ledger now also packages explicit
-> partial-closure certificates for Gate 4's kernel/profile analytic supplier,
-> recovered-stage 4D BDG operator bridge, and strongest scheduled
-> kernel/operator bridge, Gate 5's local
-> Born/projective completeness, finite Hopf carrier cover-independence, and
+> partial-closure certificates for Gate 4's active-kernel cone-bound supplier,
+> kernel/profile analytic supplier, recovered-stage 4D BDG RSS/Poisson
+> operator bridge, and strongest scheduled kernel/operator bridge, Gate 5's
+> arbitrary-axis Born observables, local Born/projective completeness, finite
+> Hopf carrier cover-independence, and
 > recovered common-refinement layers, and Gate 6's dark-density and
 > cosmological-constant/graviton-mode audits, finite information-preservation
-> audit, conditional QQG cosmology bridge, and physical-information-limits
+> inverse/preimage audit, conditional QQG cosmology bridge, and physical-information-limits
 > audit. It proves Gate 7 protocol closure from the existing
 > preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
@@ -263,6 +264,9 @@
 > with exact finite recovery.  `RecoveredStageBDG4DOperatorInterface` proves
 > eventual recovered stages, convergence of the sampled reduced 4D operator,
 > and the combined zero RSS/Poisson error plus operator-limit theorem.
+> `KFTOESevenGateAttack.lean` exposes this as
+> `Gate4RecoveredBDGPoissonOperatorBridgeClosed` and
+> `gate4_recoveredBDGPoissonOperatorBridge_closed`.
 > `KFCausalCSpecRecoveredStageBDG4DChart.lean` now separates the exact finite
 > CSpec sequence from the recovered local chart profile data.  The new
 > `RecoveredStageBDG4DChartInterface` builds the concrete recovered-stage
@@ -297,6 +301,9 @@
 > cone-scale calibration inequality.  Lean proves this active kernel/profile
 > package assembles into the split operator data and feeds the
 > scheduled-density recovered chart bridge.
+> `KFTOESevenGateAttack.lean` also exposes the active-kernel assembly as
+> `Gate4ActiveKernelConeBoundClosed` and
+> `gate4_activeKernelConeBound_closed`.
 > `KFHopfSpinorBlochBridge.lean` now connects the finite spinor/qubit side to
 > the Bloch/projective side: Lean proves the real-coordinate Hopf identity
 > `|Bloch(psi)|^2 = |psi|^4`, the unit-spinor-to-unit-Bloch corollary, and
@@ -340,6 +347,9 @@
 > expectation lies in `[-1,1]`, the resulting plus/minus pair is a valid
 > probability pair, it is locally `U(1)` gauge-invariant, and the coordinate
 > axes recover the Pauli-X/Y/Z pairs.
+> `KFTOESevenGateAttack.lean` exposes this as
+> `Gate5ArbitraryAxisBornObservableClosed` and
+> `gate5_arbitraryAxisBornObservable_closed`.
 > `KFRecoveredCSpecHopfBornTomography.lean` now proves local finite qubit
 > tomography: binary Born expectations recover the Pauli X/Y/Z Bloch
 > coordinates, arbitrary-axis expectations are `a · B`, and the reconstructed

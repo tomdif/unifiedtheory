@@ -849,14 +849,14 @@ positive-frequency handedness, Gate 2 packaging
 quotient invariant-observable semantics, and Gate 3 now packaging bridge/residual-split
 recovery from the convergence certificate, the direct aggregate-rate
 contraction route, and exact recovery once uniform positive residual gaps are
-supplied; Gate 4 has an explicit kernel/profile
-analytic supplier certificate, an explicit recovered-stage 4D BDG operator
-partial-closure certificate, and an explicit scheduled kernel/operator
-partial-closure certificate; Gate 5 has explicit local Born/projective
-completeness, finite Hopf carrier cover-independence, and recovered
+supplied; Gate 4 has an explicit active-kernel cone-bound supplier,
+kernel/profile analytic supplier certificate, recovered-stage 4D BDG
+RSS/Poisson operator partial-closure certificate, and scheduled
+kernel/operator partial-closure certificate; Gate 5 has explicit arbitrary-axis
+Born-observable, local Born/projective completeness, finite Hopf carrier cover-independence, and recovered
 common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
 cosmological-constant/graviton-mode plus finite information-preservation
-partial-closure certificates, a conditional QQG cosmology bridge, and a
+inverse/preimage partial-closure certificates, a conditional QQG cosmology bridge, and a
 physical-information-limits audit; and Gate 7
 has a
 preregistration-protocol closure theorem. Full Gates 4 through 6 remain
