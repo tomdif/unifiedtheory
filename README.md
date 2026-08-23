@@ -57,7 +57,7 @@ strongest scheduled kernel/operator bridge, Gate 5's local Born/projective
 completeness, finite Hopf carrier cover-independence, and recovered common-refinement
 layers, and Gate 6's dark-density and cosmological-constant/graviton-mode
 audits, finite information-preservation audit, and conditional QQG cosmology
-bridge, and proves Gate 7 protocol
+bridge plus physical-information-limits audit, and proves Gate 7 protocol
 closure from the preregistration ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological-emergence, evaporation, and black-hole
 entropy inputs are derived;

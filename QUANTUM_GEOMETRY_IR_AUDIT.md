@@ -852,7 +852,8 @@ partial-closure certificate; Gate 5 has explicit local Born/projective
 completeness, finite Hopf carrier cover-independence, and recovered
 common-refinement partial-closure certificates; Gate 6 has explicit dark-density and
 cosmological-constant/graviton-mode plus finite information-preservation
-partial-closure certificates and a conditional QQG cosmology bridge; and Gate 7
+partial-closure certificates, a conditional QQG cosmology bridge, and a
+physical-information-limits audit; and Gate 7
 has a
 preregistration-protocol closure theorem. Full Gates 4 through 6 remain
 explicit closure records for the still-open analytic, QFT/SM, cosmology, and

@@ -21,6 +21,7 @@ import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
 import UnifiedTheory.LayerB.InformationParadox
+import UnifiedTheory.LayerC.PhysicalInformationLimits
 import UnifiedTheory.Cosmology.QQG.Bridge
 
 set_option autoImplicit false
@@ -41,6 +42,10 @@ open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.Project
 open UnifiedTheory.LayerB.PreRegistrationLedger
 open UnifiedTheory.LayerB.DarkMatterAudit
 open UnifiedTheory.LayerB.InformationParadox
+open UnifiedTheory.LayerB.LiebRobinson
+open UnifiedTheory.LayerB.MargolusLevitinTight
+open UnifiedTheory.LayerC.BekensteinBound
+open UnifiedTheory.LayerC.PhysicalInformationLimits
 open UnifiedTheory.Cosmology.QQG
 
 /-! ## Gate 1: microscopic physical growth law -/
@@ -908,6 +913,38 @@ theorem gate6_qqgCosmologyBridgeAudit_closed
       fun hyp => qqg_cosmology_implies_conditional_einstein S hyp,
       fun hyp => qqg_bridge_proven_part S hyp⟩
 
+/-- The Gate 6 physical-information-limits audit: the temporal
+Margolus-Levitin/Mandelstam-Tamm/Lloyd axis unifies, while Bekenstein capacity
+and Lieb-Robinson spatial propagation are independent axes, and the temporal
+plus capacity axes compose into Lloyd's ultimate-computer bound.  The theorem
+also records the negative result that these limits do not collapse to one
+monotone master inequality. -/
+structure Gate6PhysicalInformationLimitsAuditClosed : Prop where
+  master :
+    ∀ R : ℝ, 0 < R →
+      (∀ T E : ℝ, 0 < E → 0 < T →
+         (T ≥ mlBound E ↔ T * E ≥ Real.pi / 2) ∧
+         (T ≥ mlBound E ↔ 1 / T ≤ lloydRate E) ∧
+         (mlBound E * lloydRate E = 1)) ∧
+      (∃ E₁ E₂ : ℝ, 0 < E₁ ∧ E₁ < E₂ ∧
+          mlBound E₂ < mlBound E₁ ∧
+          bekensteinBound R E₁ < bekensteinBound R E₂) ∧
+      (¬ ∃ f : ℝ → ℝ, Monotone f ∧
+          ∀ E : ℝ, 0 < E → bekensteinBound R E = f (mlBound E)) ∧
+      (∀ C v ξ d t : ℝ,
+          mlBound 1 ≠ mlBound 2 ∧ lrBound C v ξ d t = lrBound C v ξ d t) ∧
+      (∀ E C ξ d t v₁ v₂ : ℝ, 0 < C → 0 < ξ → t ≠ 0 → v₁ < v₂ →
+          lrBound C v₁ ξ d t ≠ lrBound C v₂ ξ d t ∧ mlBound E = mlBound E) ∧
+      (∀ ops memory t E : ℝ, 0 < E → 0 < t →
+          ops ≤ lloydUltimateOps t E → memory ≤ bekensteinBound R E →
+          (ops ≤ lloydUltimateOps t E) ∧ (memory ≤ bekensteinBound R E) ∧
+          (0 < lloydUltimateOps t E) ∧ (0 < bekensteinBound R E) ∧
+          (lloydUltimateOps t E = lloydRate E * t))
+
+theorem gate6_physicalInformationLimitsAudit_closed :
+    Gate6PhysicalInformationLimitsAuditClosed := by
+  exact ⟨fun R hR => physical_information_limits_master R hR⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -990,6 +1027,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_cosmologicalConstantGravitonAudit_closed
 #print axioms gate6_finiteInformationPreservationAudit_closed
 #print axioms gate6_qqgCosmologyBridgeAudit_closed
+#print axioms gate6_physicalInformationLimitsAudit_closed
 #print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack

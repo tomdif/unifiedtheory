@@ -34,8 +34,8 @@ Born/projective completeness, finite Hopf carrier cover-independence, and
 recovered common-refinement layers as explicit partial-closure certificates,
 packages Gate 6's dark-density and
 cosmological-constant/graviton-mode audits plus finite information-preservation
-audit and conditional QQG cosmology bridge as explicit partial-closure
-certificates, and proves the Gate 7 protocol layer from the
+audit, conditional QQG cosmology bridge, and physical-information-limits audit
+as explicit partial-closure certificates, and proves the Gate 7 protocol layer from the
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are actually
 supplied; Gate 7 still requires the future empirical comparisons themselves.

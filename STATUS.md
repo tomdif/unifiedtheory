@@ -205,7 +205,8 @@
 > Born/projective completeness, finite Hopf carrier cover-independence, and
 > recovered common-refinement layers, and Gate 6's dark-density and
 > cosmological-constant/graviton-mode audits, finite information-preservation
-> audit, and conditional QQG cosmology bridge. It proves Gate 7 protocol closure from the existing
+> audit, conditional QQG cosmology bridge, and physical-information-limits
+> audit. It proves Gate 7 protocol closure from the existing
 > preregistration/falsifiability ledger:
 > frozen forward predictions, uncertainty/falsification rows, future-test
 > horizons, and a failure ledger are all recorded. Full Gates 4-6 remain open
