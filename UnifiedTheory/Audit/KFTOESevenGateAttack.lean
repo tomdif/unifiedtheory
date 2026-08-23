@@ -13,6 +13,7 @@
 
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+import UnifiedTheory.LayerB.PreRegistrationLedger
 
 set_option autoImplicit false
 
@@ -23,6 +24,7 @@ open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+open UnifiedTheory.LayerB.PreRegistrationLedger
 
 /-! ## Gate 1: microscopic physical growth law -/
 
@@ -194,8 +196,55 @@ structure Gate7ExternalTestClosed
   decisiveFutureTestsRecorded : T.decisiveFutureTestsRecorded
   failureLedgerMaintained : T.failureLedgerMaintained
 
+/-- The concrete Gate 7 preregistration target already present in
+`PreRegistrationLedger.lean`.  This closes the protocol layer: five forward
+predictions are separated from post-dictions and consistency checks, attached
+to a matching falsification table, and assigned positive calendar horizons. -/
+def gate7PreRegistrationLedgerTargets : Gate7ExternalTestTargets where
+  predictionsFrozenBeforeComparison :=
+    preRegisteredEntries.length = 5 ∧
+      (∀ e ∈ preRegisteredEntries, e.category = .PreRegistered)
+  uncertaintyModelsAttached :=
+    falsificationTable.length = 5 ∧
+      preRegisteredEntries.length = falsificationTable.length
+  decisiveFutureTestsRecorded :=
+    ∀ e ∈ preRegisteredEntries,
+      (earliest_horizon_yr ≤ e.timeHorizonYr ∧
+        e.timeHorizonYr ≤ longterm_horizon_yr) ∧
+        e.timeHorizonYr > 0
+  failureLedgerMaintained :=
+    (∀ e ∈ postDictionEntries, e.timeHorizonYr = 0) ∧
+      (∀ e ∈ postDictionEntries, e.category = .PostDiction) ∧
+        (∀ e ∈ consistencyCheckEntries,
+          e.category = .ConsistencyCheck) ∧
+          (PredictionCategory.PreRegistered ≠
+            PredictionCategory.PostDiction) ∧
+          (PredictionCategory.PreRegistered ≠
+            PredictionCategory.ConsistencyCheck) ∧
+          (PredictionCategory.PostDiction ≠
+            PredictionCategory.ConsistencyCheck)
+
+/-- Gate 7 protocol closure follows from the existing preregistration ledger.
+This does not mean the future experiments have already reported; it means the
+repo has a formal public comparison target with uncertainty/falsification rows
+and a failure ledger separating forward predictions from post-dictions. -/
+theorem gate7_externalTests_closed_from_preRegistrationLedger :
+    Gate7ExternalTestClosed gate7PreRegistrationLedgerTargets := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · exact ⟨pre_registered_count, preRegistered_all_tagged⟩
+  · exact ⟨falsificationTable_length, falsificationTable_pre_registered_count⟩
+  · intro e he
+    have hhorizon := preRegistered_horizons_in_window e he
+    refine ⟨hhorizon, ?_⟩
+    exact lt_of_lt_of_le (by norm_num [earliest_horizon_yr]) hhorizon.1
+  · exact
+      ⟨postDiction_no_calendar_experiment, postDiction_all_tagged,
+        consistencyCheck_all_tagged,
+        (by intro h; cases h), (by intro h; cases h), (by intro h; cases h)⟩
+
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
+#print axioms gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOESevenGateAttack

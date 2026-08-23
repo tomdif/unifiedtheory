@@ -24,9 +24,10 @@ dataset, or explicitly named assumption.
 Lean-facing attack ledger.  It records explicit closure targets for all seven
 gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
 complete-chiral atlas noncancellation, restates the Gate 2 base zero-set
-theorem, and restates the Gate 3 convergence-certificate theorem.  Gates 4-7
-remain closure records until their physical/analytic/testing inputs are
-actually supplied.
+theorem, restates the Gate 3 convergence-certificate theorem, and proves the
+Gate 7 protocol layer from the preregistration/falsifiability ledger. Gates 4-6
+remain closure records until their physical/analytic inputs are actually
+supplied; Gate 7 still requires the future empirical comparisons themselves.
 
 ## Gates
 
@@ -876,5 +877,5 @@ The next high-value theorem targets are:
    recovered CSpec stage before making continuum QFT claims.
 6. Gate 6: connect the same dynamics to cosmological measure, dark sector,
    black-hole thermodynamics, and CMB/structure/gravitational-wave constraints.
-7. Gate 7: use the canonical JSON preregistration ledger for future empirical
-   comparisons.
+7. Gate 7: keep the closed preregistration protocol live by updating the
+   failure ledger and comparison table when the frozen future tests report.

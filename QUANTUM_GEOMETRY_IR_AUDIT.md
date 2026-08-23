@@ -843,9 +843,10 @@ transition fiber. The remaining obstruction is finite signed-count
 noncancellation, not one-element-growth admissibility or normalization.
 `KFTOESevenGateAttack.lean` now lifts this and the Hauptvermutung convergence
 machinery into a seven-gate attack ledger: Gate 1, Gate 2, and Gate 3 have
-checked theorem hooks, while Gate 4 through Gate 7 are explicit closure records
-for the still-open analytic, QFT/SM, cosmology/black-hole, and external-test
-inputs.
+checked theorem hooks, Gate 7 has a preregistration-protocol closure theorem,
+and Gate 4 through Gate 6 are explicit closure records for the still-open
+analytic, QFT/SM, and cosmology/black-hole inputs. Gate 7 still awaits the
+future empirical comparisons themselves.
 Because `omega(omega-1)=2*choose(omega,2)`, only the effective unordered-pair
 coupling `g=lambda^2` enters; changing the sign of `lambda` changes nothing,
 while `g` is identifiable from the two-ancestor raw signature. Normalizability
