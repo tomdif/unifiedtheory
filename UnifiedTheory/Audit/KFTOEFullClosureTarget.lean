@@ -102,6 +102,49 @@ noncomputable def microscopicTOEClosureTargets
   gate6Targets := gate6Targets
   gate7Targets := gate7Targets
 
+/-- Full TOE target specialized to the finite-spectrum Gate 2 semantics
+already supplied by the quantized residual counters inside the microscopic
+Gate 4 supplier. -/
+noncomputable def microscopicTOEClosureTargetsWithQuantizedGate2
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (gate1Targets : Gate1MicroscopicLawTargets)
+    (gate5Targets : Gate5QFTStandardModelIRTargets)
+    (gate6Targets : Gate6CosmologyBlackHoleTargets)
+    (gate7Targets : Gate7ExternalTestTargets)
+    (horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop) :
+    TOEClosureTargets :=
+  microscopicTOEClosureTargets G gate1Targets
+    (gate2QuantizedResidualSemanticTargets
+      countWindow curvatureBias spectralLocality
+      countQuantum curvatureQuantum spectralQuantum)
+    gate5Targets gate6Targets gate7Targets
+    horizonEstimatorConvergence physicalScheduledDensity
+    bdgKernelProfileCertificate nullBalanceFromDynamics
+
 /-- Top-level closure theorem: after the microscopic Gate 4 scheduled-kernel
 supplier is provided, the full TOE ledger reduces exactly to Gate 1, Gate 2,
 the four remaining Gate 4 analytic/physical inputs, Gate 5, Gate 6, and Gate 7
@@ -161,6 +204,61 @@ theorem microscopicTOEClosureTargets_closed
         G hhorizon hscheduled hkernel hnull,
       hgate5, hgate6, hgate7⟩
 
+/-- Full-closure theorem specialized to the quantized-residual Gate 2 semantic
+target.  Compared with `microscopicTOEClosureTargets_closed`, this removes the
+separate Gate 2 closure hypothesis: the named microscopic supplier provides it
+by projection. -/
+theorem microscopicTOEClosureTargetsWithQuantizedGate2_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {gate1Targets : Gate1MicroscopicLawTargets}
+    {gate5Targets : Gate5QFTStandardModelIRTargets}
+    {gate6Targets : Gate6CosmologyBlackHoleTargets}
+    {gate7Targets : Gate7ExternalTestTargets}
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    (hgate1 : Gate1MicroscopicLawClosed gate1Targets)
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics)
+    (hgate5 : Gate5QFTStandardModelIRClosed gate5Targets)
+    (hgate6 : Gate6CosmologyBlackHoleClosed gate6Targets)
+    (hgate7 : Gate7ExternalTestClosed gate7Targets) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithQuantizedGate2
+        G gate1Targets gate5Targets gate6Targets gate7Targets
+        horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics) := by
+  simpa [microscopicTOEClosureTargetsWithQuantizedGate2] using
+    microscopicTOEClosureTargets_closed
+      G hgate1
+      (microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed
+        G)
+      hhorizon hscheduled hkernel hnull hgate5 hgate6 hgate7
+
 /-- Same full-closure theorem with the current preregistration ledger used for
 Gate 7.  The future empirical outcomes are still not asserted here; this only
 uses the repository's closed protocol layer. -/
@@ -211,6 +309,57 @@ theorem microscopicTOEClosureTargets_closed_with_preRegistrationLedger
   exact
     microscopicTOEClosureTargets_closed
       G hgate1 hgate2 hhorizon hscheduled hkernel hnull hgate5 hgate6
+      gate7_externalTests_closed_from_preRegistrationLedger
+
+/-- Quantized-residual Gate 2 plus the current preregistration ledger: the
+remaining full-TOE closure hypotheses are now Gate 1, the four Gate 4
+analytic/physical assumptions, Gate 5, and Gate 6. -/
+theorem microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {gate1Targets : Gate1MicroscopicLawTargets}
+    {gate5Targets : Gate5QFTStandardModelIRTargets}
+    {gate6Targets : Gate6CosmologyBlackHoleTargets}
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    (hgate1 : Gate1MicroscopicLawClosed gate1Targets)
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics)
+    (hgate5 : Gate5QFTStandardModelIRClosed gate5Targets)
+    (hgate6 : Gate6CosmologyBlackHoleClosed gate6Targets) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithQuantizedGate2
+        G gate1Targets gate5Targets gate6Targets
+        gate7PreRegistrationLedgerTargets
+        horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics) := by
+  exact
+    microscopicTOEClosureTargetsWithQuantizedGate2_closed
+      G hgate1 hhorizon hscheduled hkernel hnull hgate5 hgate6
       gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

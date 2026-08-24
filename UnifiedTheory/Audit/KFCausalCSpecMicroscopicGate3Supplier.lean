@@ -495,6 +495,42 @@ theorem quantizedGate3Residuals_totalDistortion_eq_zero_iff_quantum_zero_and_can
       ⟨hcount, hcurvature, hspectral⟩
     exact htotal.2 ⟨hcount, hcurvature, hspectral, hcandidate⟩
 
+/-- Gate 2 semantic target induced by quantized residual observables: each
+tracked real residual is zero exactly when its natural occupation counter is
+zero.  This is the finite-spectrum zero-set semantics used by the Gate 3
+exact-recovery supplier. -/
+def gate2QuantizedResidualSemanticTargets
+    {ι : Type*}
+    (countWindow curvatureBias spectralLocality : ℕ → ι → ℝ)
+    (countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ) :
+    Gate2HauptvermutungSemanticTargets where
+  countWindowZeroSemantic :=
+    ∀ n i, countWindow n i = 0 ↔ countQuantum n i = 0
+  curvatureBiasZeroSemantic :=
+    ∀ n i, curvatureBias n i = 0 ↔ curvatureQuantum n i = 0
+  spectralLocalityZeroSemantic :=
+    ∀ n i, spectralLocality n i = 0 ↔ spectralQuantum n i = 0
+
+/-- Quantized residuals close Gate 2's finite-spectrum semantic zero-set
+target. -/
+theorem quantizedGate3Residuals_gate2HauptvermutungSemantic_closed
+    {ι : Type*}
+    {countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {countGap curvatureGap spectralGap : ℝ}
+    (Q : QuantizedGate3Residuals
+      countWindow curvatureBias spectralLocality
+      countQuantum curvatureQuantum spectralQuantum
+      countGap curvatureGap spectralGap) :
+    Gate2HauptvermutungSemanticClosed
+      (gate2QuantizedResidualSemanticTargets
+        countWindow curvatureBias spectralLocality
+        countQuantum curvatureQuantum spectralQuantum) := by
+  exact
+    ⟨quantizedGate3Residuals_count_zero_iff_quantum_zero Q,
+      quantizedGate3Residuals_curvature_zero_iff_quantum_zero Q,
+      quantizedGate3Residuals_spectral_zero_iff_quantum_zero Q⟩
+
 /-- Raw repair/floor/descent data plus quantized residual observables build the
 strong convergence certificate.  This removes the separate nonnegativity
 obligations from the microscopic Gate 3 target. -/
@@ -876,6 +912,29 @@ theorem microscopicGate3QuantizedConvergenceData_totalDistortion_eq_zero_iff_qua
   exact
     quantizedGate3Residuals_totalDistortion_eq_zero_iff_quantum_zero_and_canonical
       D.quantizedResiduals scale edge candidate n
+
+/-- The named quantized Gate 3 target closes Gate 2's finite-spectrum semantic
+zero-set target for count, curvature, and spectral/locality residuals. -/
+theorem microscopicGate3QuantizedConvergenceData_gate2HauptvermutungSemantic_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap) :
+    Gate2HauptvermutungSemanticClosed
+      (gate2QuantizedResidualSemanticTargets
+        countWindow curvatureBias spectralLocality
+        countQuantum curvatureQuantum spectralQuantum) := by
+  exact
+    quantizedGate3Residuals_gate2HauptvermutungSemantic_closed
+      D.quantizedResiduals
 
 /-- The scalar `total` used by the convergence proof is a complete detector
 for quantized residual vacuum plus canonical bridge transport. -/
@@ -3243,5 +3302,41 @@ theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
   exact
     ⟨hhorizon, hscheduled, hkernel, hnull,
       microscopicGate4ScheduledKernelData_bridge_closed G⟩
+
+/-- The named Gate 4 scheduled-kernel supplier also closes Gate 2's
+finite-spectrum semantic zero-set target, because it contains the named
+quantized Gate 3 supplier. -/
+theorem microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale) :
+    Gate2HauptvermutungSemanticClosed
+      (gate2QuantizedResidualSemanticTargets
+        countWindow curvatureBias spectralLocality
+        countQuantum curvatureQuantum spectralQuantum) := by
+  exact
+    microscopicGate3QuantizedConvergenceData_gate2HauptvermutungSemantic_closed
+      G.gate3
 
 end UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier

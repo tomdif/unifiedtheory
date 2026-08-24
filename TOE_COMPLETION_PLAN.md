@@ -53,6 +53,11 @@ theorems `microscopicTOEClosureTargets_closed` and
 `microscopicTOEClosureTargets_closed_with_preRegistrationLedger` state the
 exact remaining inputs needed to close the seven-gate ledger without upgrading
 any open physics assumption into a proved theorem.
+The quantized residual package now also supplies a concrete Gate 2
+finite-spectrum semantic closure, and
+`microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger`
+removes Gate 2 and the Gate 7 protocol layer from the remaining assumption
+list.
 
 ## Gates
 
@@ -688,6 +693,7 @@ microscopicGate4ScheduledKernelData_bridge_closed
 microscopicGate4ScheduledKernelData_outputs
 microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
 microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
+microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -958,6 +964,10 @@ Open work:
 6. Instantiate the new full closure target
    `microscopicTOEClosureTargets_closed` by supplying the Gate 1, Gate 2,
    Gate 5, Gate 6, and four residual Gate 4 analytic/physical certificates.
+7. Instantiate the sharpened target
+   `microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger`,
+   whose remaining inputs are Gate 1, the four residual Gate 4
+   analytic/physical certificates, Gate 5, and Gate 6.
 
 ## Swarm Round 1 Integration
 
@@ -975,11 +985,14 @@ QuantizedGate3Residuals
 quantizedGate3Residuals_componentResidualGaps
 quantizedGate3Residuals_baseDistortion_eq_zero_iff_quantum_zero
 quantizedGate3Residuals_totalDistortion_eq_zero_iff_quantum_zero_and_canonical
+gate2QuantizedResidualSemanticTargets
+quantizedGate3Residuals_gate2HauptvermutungSemantic_closed
 physicalHauptvermutungConvergenceCertificate_of_quantizedResiduals
 MicroscopicGate3QuantizedConvergenceData
 microscopicGate3QuantizedConvergenceData_convergenceCertificate
 microscopicGate3QuantizedConvergenceData_baseDistortion_eq_zero_iff_quantum_zero
 microscopicGate3QuantizedConvergenceData_totalDistortion_eq_zero_iff_quantum_zero_and_canonical
+microscopicGate3QuantizedConvergenceData_gate2HauptvermutungSemantic_closed
 microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
 microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
 microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero
@@ -1045,6 +1058,9 @@ TOEClosureClosed
 microscopicTOEClosureTargets
 microscopicTOEClosureTargets_closed
 microscopicTOEClosureTargets_closed_with_preRegistrationLedger
+microscopicTOEClosureTargetsWithQuantizedGate2
+microscopicTOEClosureTargetsWithQuantizedGate2_closed
+microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger
 ```
 
 The next high-value theorem targets are:
