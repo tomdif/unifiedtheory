@@ -103,6 +103,8 @@ capstone consuming named Gate 4, Gate 5, and Gate 6 bridges is
 `microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 The latest named-bridge capstone also consumes the named Gate 1 bridge:
 `microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
+The Gate 1 witness table now has a direct top-level route as well:
+`microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
 finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
 finite group-level gauge structure, hypercharge uniqueness, quark/lepton
@@ -1407,6 +1409,7 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bri
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 ```
 
 The next high-value theorem targets are:
