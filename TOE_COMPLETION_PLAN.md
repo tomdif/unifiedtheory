@@ -58,6 +58,12 @@ finite-spectrum semantic closure, and
 `microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger`
 removes Gate 2 and the Gate 7 protocol layer from the remaining assumption
 list.
+Gate 5 now has the analogous finite-carrier reduction:
+`gate5_qftStandardModelIR_closed_of_finiteCarrierCover` supplies recovered
+carrier cover-independence from jointly-surjective finite probe covers, and
+`microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger`
+leaves only Gate 1, the four Gate 4 assumptions, the four genuine Gate 5
+IR/QFT assumptions, and Gate 6.
 
 ## Gates
 
@@ -694,6 +700,8 @@ microscopicGate4ScheduledKernelData_outputs
 microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
 microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
 microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed
+gate5QFTStandardModelIRTargetsOfFiniteCarrierCover
+gate5_qftStandardModelIR_closed_of_finiteCarrierCover
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -968,6 +976,11 @@ Open work:
    `microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger`,
    whose remaining inputs are Gate 1, the four residual Gate 4
    analytic/physical certificates, Gate 5, and Gate 6.
+8. Instantiate
+   `microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger`,
+   whose Gate 5 input is reduced to effective Hilbert/QFT limit,
+   propagators/spin-statistics, gauge/renormalization, and the Standard-Model
+   parameter chain.
 
 ## Swarm Round 1 Integration
 
@@ -1061,6 +1074,9 @@ microscopicTOEClosureTargets_closed_with_preRegistrationLedger
 microscopicTOEClosureTargetsWithQuantizedGate2
 microscopicTOEClosureTargetsWithQuantizedGate2_closed
 microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger
+microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5
+microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed
+microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger
 ```
 
 The next high-value theorem targets are:

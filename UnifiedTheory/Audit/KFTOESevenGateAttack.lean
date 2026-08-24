@@ -1108,6 +1108,53 @@ theorem gate5_finiteCarrierCover_closed
     ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
   exact ⟨heq, hpauli, hall, hcommonEq, hcommonPauli, hcommonAll⟩
 
+/-- Gate 5 QFT/Standard-Model IR target with the finite recovered carrier
+cover-independence subfield supplied by the already-closed Hopf/projective
+carrier cover theorem.  The remaining four fields are the genuine infrared
+QFT, spin-statistics, gauge/renormalization, and Standard-Model parameter-chain
+obligations. -/
+def gate5QFTStandardModelIRTargetsOfFiniteCarrierCover
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F G : ProjectiveQubitCarrierField site)
+    (effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop) :
+    Gate5QFTStandardModelIRTargets where
+  recoveredCarrierCoverIndependence :=
+    Gate5FiniteCarrierCoverClosed fA fB F G
+  effectiveHilbertSpaceLimit := effectiveHilbertSpaceLimit
+  propagatorsAndSpinStatistics := propagatorsAndSpinStatistics
+  gaugeFieldsAndRenormalization := gaugeFieldsAndRenormalization
+  standardModelParameterChain := standardModelParameterChain
+
+/-- Once finite jointly-surjective recovered-carrier probe covers are supplied,
+full Gate 5 closure reduces to the four genuine IR/QFT/Standard-Model
+obligations. -/
+theorem gate5_qftStandardModelIR_closed_of_finiteCarrierCover
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site)
+    {effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop}
+    (heffective : effectiveHilbertSpaceLimit)
+    (hpropagators : propagatorsAndSpinStatistics)
+    (hgauge : gaugeFieldsAndRenormalization)
+    (hparameters : standardModelParameterChain) :
+    Gate5QFTStandardModelIRClosed
+      (gate5QFTStandardModelIRTargetsOfFiniteCarrierCover
+        fA fB F G effectiveHilbertSpaceLimit
+        propagatorsAndSpinStatistics gaugeFieldsAndRenormalization
+        standardModelParameterChain) := by
+  exact
+    ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
+      heffective, hpropagators, hgauge, hparameters⟩
+
 /-- The recovered-stage Gate 5 common-refinement sublayer: two jointly
 surjective finite probe covers have a jointly-surjective common refinement;
 local stagewise `U(1)` gauge rotations remain invisible on that refinement;
@@ -1720,6 +1767,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_localBornProjectiveCompleteness_closed
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed
+#print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierCover
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed

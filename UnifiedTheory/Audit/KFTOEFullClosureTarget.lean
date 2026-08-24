@@ -24,6 +24,8 @@ open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
 open UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
+open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 
 /-- The seven-gate TOE target record after the microscopic Gate 3/4 handoff is
@@ -145,6 +147,54 @@ noncomputable def microscopicTOEClosureTargetsWithQuantizedGate2
     horizonEstimatorConvergence physicalScheduledDensity
     bdgKernelProfileCertificate nullBalanceFromDynamics
 
+/-- Full TOE target specialized to both quantized-residual Gate 2 semantics
+and the finite recovered-carrier cover-independence part of Gate 5. -/
+noncomputable def microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F H : ProjectiveQubitCarrierField site)
+    (gate1Targets : Gate1MicroscopicLawTargets)
+    (gate6Targets : Gate6CosmologyBlackHoleTargets)
+    (gate7Targets : Gate7ExternalTestTargets)
+    (horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop)
+    (effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop) :
+    TOEClosureTargets :=
+  microscopicTOEClosureTargetsWithQuantizedGate2 G gate1Targets
+    (gate5QFTStandardModelIRTargetsOfFiniteCarrierCover
+      fA fB F H effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain)
+    gate6Targets gate7Targets
+    horizonEstimatorConvergence physicalScheduledDensity
+    bdgKernelProfileCertificate nullBalanceFromDynamics
+
 /-- Top-level closure theorem: after the microscopic Gate 4 scheduled-kernel
 supplier is provided, the full TOE ledger reduces exactly to Gate 1, Gate 2,
 the four remaining Gate 4 analytic/physical inputs, Gate 5, Gate 6, and Gate 7
@@ -259,6 +309,74 @@ theorem microscopicTOEClosureTargetsWithQuantizedGate2_closed
         G)
       hhorizon hscheduled hkernel hnull hgate5 hgate6 hgate7
 
+/-- Full-closure theorem with quantized-residual Gate 2 and finite
+recovered-carrier Gate 5 cover-independence supplied.  The remaining Gate 5
+inputs are exactly the effective Hilbert/QFT limit, propagators and
+spin-statistics, gauge/renormalization, and Standard-Model parameter chain. -/
+theorem microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F H : ProjectiveQubitCarrierField site)
+    {gate1Targets : Gate1MicroscopicLawTargets}
+    {gate6Targets : Gate6CosmologyBlackHoleTargets}
+    {gate7Targets : Gate7ExternalTestTargets}
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    {effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop}
+    (hgate1 : Gate1MicroscopicLawClosed gate1Targets)
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics)
+    (heffective : effectiveHilbertSpaceLimit)
+    (hpropagators : propagatorsAndSpinStatistics)
+    (hgauge : gaugeFieldsAndRenormalization)
+    (hparameters : standardModelParameterChain)
+    (hgate6 : Gate6CosmologyBlackHoleClosed gate6Targets)
+    (hgate7 : Gate7ExternalTestClosed gate7Targets) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5
+        G fA fB F H gate1Targets gate6Targets gate7Targets
+        horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics
+        effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+        gaugeFieldsAndRenormalization standardModelParameterChain) := by
+  exact
+    microscopicTOEClosureTargetsWithQuantizedGate2_closed
+      G hgate1 hhorizon hscheduled hkernel hnull
+      (gate5_qftStandardModelIR_closed_of_finiteCarrierCover
+        fA fB hA hB F H heffective hpropagators hgauge hparameters)
+      hgate6 hgate7
+
 /-- Same full-closure theorem with the current preregistration ledger used for
 Gate 7.  The future empirical outcomes are still not asserted here; this only
 uses the repository's closed protocol layer. -/
@@ -360,6 +478,72 @@ theorem microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrati
   exact
     microscopicTOEClosureTargetsWithQuantizedGate2_closed
       G hgate1 hhorizon hscheduled hkernel hnull hgate5 hgate6
+      gate7_externalTests_closed_from_preRegistrationLedger
+
+/-- Quantized Gate 2, finite recovered-carrier Gate 5 cover-independence, and
+the current preregistration ledger: the remaining full-TOE closure hypotheses
+are Gate 1, the four Gate 4 analytic/physical assumptions, four genuine Gate 5
+IR/QFT assumptions, and Gate 6. -/
+theorem microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F H : ProjectiveQubitCarrierField site)
+    {gate1Targets : Gate1MicroscopicLawTargets}
+    {gate6Targets : Gate6CosmologyBlackHoleTargets}
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    {effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop}
+    (hgate1 : Gate1MicroscopicLawClosed gate1Targets)
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics)
+    (heffective : effectiveHilbertSpaceLimit)
+    (hpropagators : propagatorsAndSpinStatistics)
+    (hgauge : gaugeFieldsAndRenormalization)
+    (hparameters : standardModelParameterChain)
+    (hgate6 : Gate6CosmologyBlackHoleClosed gate6Targets) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5
+        G fA fB F H gate1Targets gate6Targets
+        gate7PreRegistrationLedgerTargets
+        horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics
+        effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+        gaugeFieldsAndRenormalization standardModelParameterChain) := by
+  exact
+    microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed
+      G fA fB hA hB F H hgate1 hhorizon hscheduled hkernel hnull
+      heffective hpropagators hgauge hparameters hgate6
       gate7_externalTests_closed_from_preRegistrationLedger
 
 end UnifiedTheory.Audit.KFTOEFullClosureTarget
