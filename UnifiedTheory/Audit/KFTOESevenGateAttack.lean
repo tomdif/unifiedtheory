@@ -35,6 +35,8 @@ import UnifiedTheory.LayerC.AnomalyCancellation
 import UnifiedTheory.LayerC.PhysicalInformationLimits
 import UnifiedTheory.LayerC.PageCurve
 import UnifiedTheory.LayerC.GUTEmbedding
+import UnifiedTheory.LayerC.AMPSFirewall
+import UnifiedTheory.LayerC.HaydenPreskill
 import UnifiedTheory.LayerC.IsOperationalQuantum
 import UnifiedTheory.LayerC.QuarkLeptonUnification
 import UnifiedTheory.LayerC.SMGaugeDynamics
@@ -76,6 +78,8 @@ open UnifiedTheory.LayerB.InformationParadox
 open UnifiedTheory.LayerB.LiebRobinson
 open UnifiedTheory.LayerB.MargolusLevitinTight
 open UnifiedTheory.LayerC.BekensteinBound
+open UnifiedTheory.LayerC.AMPSFirewall
+open UnifiedTheory.LayerC.HaydenPreskill
 open UnifiedTheory.LayerC.PhysicalInformationLimits
 open UnifiedTheory.Cosmology.QQG
 
@@ -1977,13 +1981,85 @@ theorem gate6_physicalInformationLimitsAudit_closed :
     Gate6PhysicalInformationLimitsAuditClosed := by
   exact ⟨fun R hR => physical_information_limits_master R hR⟩
 
+/-- The Gate 6 Hayden-Preskill evaporation audit: the repository proves the
+finite-dimensional Page-compatible evaporation skeleton, the Hayden recovery
+bound, its strict gap form, and the conditional recovery-error bound once the
+remaining scrambling/decoupling/recovery targets are supplied. -/
+structure Gate6HaydenPreskillEvaporationAuditClosed : Prop where
+  recoveryBoundNonnegative :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      0 ≤ UnifiedTheory.LayerC.HaydenPreskill.HPRecoveryBound s
+  haydenGapBound :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.HaydenGap s →
+        UnifiedTheory.LayerC.HaydenPreskill.HPRecoveryBound s ≤ 1
+  strictHaydenGapBound :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      s.k < s.r * s.N →
+        UnifiedTheory.LayerC.HaydenPreskill.HPRecoveryBound s < 1
+  pageCurveCompatibility :
+    ∀ (s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup)
+      (_h_resid_pos : 0 < s.residualBH)
+      (σ : UnifiedTheory.LayerB.PageCurve.SchmidtSpectrum
+        (s.k * s.residualBH) s.r),
+        UnifiedTheory.LayerB.PageCurve.pageEntropy σ ≤
+          Real.log (((min (s.k * s.residualBH) s.r : ℕ) : ℝ))
+  recoveryErrorBounded :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Recovery_Target s →
+        UnifiedTheory.LayerC.HaydenPreskill.HaydenGap s →
+          ∃ err : ℝ, 0 ≤ err ∧ err ≤ 2
+
+theorem gate6_haydenPreskillEvaporationAudit_closed :
+    Gate6HaydenPreskillEvaporationAuditClosed := by
+  let h := UnifiedTheory.LayerC.HaydenPreskill.haydenPreskill_master
+  exact ⟨h.1, h.2.1, h.2.2.1, h.2.2.2.1, h.2.2.2.2⟩
+
+/-- The Gate 6 AMPS audit: the repository proves the monogamy no-go, the
+postulate-level fork, firewall/complementarity branches, the quantitative CKW
+weak form, and exclusivity of the Page-time/equivalence-principle targets. -/
+structure Gate6AMPSFirewallAuditClosed : Prop where
+  directContradiction :
+    ∀ le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement,
+      le.ent_with_E → le.ent_with_bTilde → False
+  eitherOr :
+    ∀ le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement,
+      (le.ent_with_E → ¬ le.ent_with_bTilde) ∧
+        (le.ent_with_bTilde → ¬ le.ent_with_E)
+  postulateFork :
+    ∀ (p : UnifiedTheory.LayerC.AMPSFirewall.AMPSPostulates)
+      (le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement),
+      (p.unitarity → le.ent_with_E) →
+        (p.equiv_principle → le.ent_with_bTilde) →
+          ¬ (p.unitarity ∧ p.equiv_principle)
+  firewallResolution :
+    ∀ le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement,
+      le.ent_with_E → ¬ le.ent_with_bTilde
+  complementarityResolution :
+    ∀ le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement,
+      le.ent_with_bTilde → ¬ le.ent_with_E
+  quantitativeCKW :
+    ∀ q : UnifiedTheory.LayerC.AMPSFirewall.QuantitativeLateMode,
+      q.bE = 1 → q.bBT = 0
+  targetsExclusive :
+    ∀ le : UnifiedTheory.LayerC.AMPSFirewall.LateModeEntanglement,
+      ¬ (UnifiedTheory.LayerC.AMPSFirewall.AMPS_PageTime_Target le ∧
+        UnifiedTheory.LayerC.AMPSFirewall.AMPS_EquivPrinciple_Target le)
+
+theorem gate6_ampsFirewallAudit_closed :
+    Gate6AMPSFirewallAuditClosed := by
+  let h := UnifiedTheory.LayerC.AMPSFirewall.amps_master
+  exact
+    ⟨h.1, h.2.1, h.2.2.1, h.2.2.2.1, h.2.2.2.2.1,
+      h.2.2.2.2.2.1, h.2.2.2.2.2.2⟩
+
 /-- Gate 6 full audit envelope: in addition to the finite dark-sector,
 cosmological-constant/graviton, information-preservation, holography, Page,
-and inflation audits, this packages the QQG conditional cosmology bridge and
-the physical information-limit audit.  Unlike the lighter finite-audit target,
-it leaves microscopic black-hole evaporation dynamics explicit as a remaining
-physical input rather than treating finite no-loss/Page formula audits as a
-complete evaporation model. -/
+inflation, Hayden-Preskill, and AMPS audits, this packages the QQG conditional
+cosmology bridge and the physical information-limit audit.  Unlike the lighter
+finite-audit target, it leaves the remaining scrambling/decoupling/recovery
+evaporation dynamics explicit as a physical input rather than treating finite
+no-loss/Page formula audits as a complete evaporation model. -/
 def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
     (S : QQGScenario)
     (initialConditionOrCosmologicalMeasure
@@ -2002,8 +2078,10 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelo
       Gate6DiscreteHolographyAuditClosed ∧
         Gate6StructuralPageCurveAuditClosed ∧
           Gate6PageFormulaAuditClosed ∧
-            Gate6PhysicalInformationLimitsAuditClosed ∧
-              microscopicBlackHoleEvaporationDynamics
+            Gate6HaydenPreskillEvaporationAuditClosed ∧
+              Gate6AMPSFirewallAuditClosed ∧
+                Gate6PhysicalInformationLimitsAuditClosed ∧
+                  microscopicBlackHoleEvaporationDynamics
   cmbStructureGravitationalWaveCompatibility :=
     Gate6InflationCMBTensorAuditClosed ∧
       Gate6QQGCosmologyBridgeAuditClosed S ∧
@@ -2036,6 +2114,8 @@ theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformatio
         gate6_discreteHolographyAudit_closed,
         gate6_structuralPageCurveAudit_closed,
         gate6_pageFormulaAudit_closed,
+        gate6_haydenPreskillEvaporationAudit_closed,
+        gate6_ampsFirewallAudit_closed,
         gate6_physicalInformationLimitsAudit_closed,
         hevap⟩,
       ⟨gate6_inflationCMBTensorAudit_closed,
@@ -2148,6 +2228,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_inflationCMBTensorAudit_closed
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+#print axioms gate6_haydenPreskillEvaporationAudit_closed
+#print axioms gate6_ampsFirewallAudit_closed
 #print axioms gate6_entropyFluxLimitBridge_closed
 #print axioms gate6_arakiBHEightPiBalance_closed
 #print axioms gate6_dorauMuchEinsteinBridge_closed

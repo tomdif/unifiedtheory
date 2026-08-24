@@ -89,9 +89,10 @@ finite group-level gauge structure, hypercharge uniqueness, quark/lepton
 anomaly forcing, and SO(10) anomaly safety.  Gate 6 now harvests the
 inflation/CMB tensor audit.  The sharpest current full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
-The stricter current Gate 6 audit envelope additionally harvests the QQG
-conditional cosmology bridge and physical-information-limit audit, while
-making microscopic black-hole evaporation dynamics an explicit remaining
+The stricter current Gate 6 audit envelope additionally harvests the
+Hayden-Preskill evaporation skeleton, AMPS monogamy fork, QQG conditional
+cosmology bridge, and physical-information-limit audit, while making the
+remaining scrambling/decoupling/recovery evaporation dynamics an explicit
 input.  The corresponding strict full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
 
@@ -992,21 +993,30 @@ structure/GW bridge beyond the inflation-sector observable checks.
 
 Current full Gate 6 audit envelope:
 
+`gate6_haydenPreskillEvaporationAudit_closed` packages the
+Hayden-Preskill/Page-compatible black-hole information skeleton: nonnegative
+recovery bound, Hayden-gap and strict-gap bounds, Page-curve compatibility, and
+the conditional recovery-error bound once the recovery target is supplied.
+`gate6_ampsFirewallAudit_closed` packages the AMPS monogamy no-go, the
+postulate-level fork, firewall/complementarity branches, CKW weak form, and
+exclusive Page-time/equivalence-principle targets.
 `gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope`
-adds the QQG conditional cosmology bridge and the physical-information-limit
-audit to the finite dark-sector, cosmological-constant/graviton,
-information-preservation, holography, Page, and inflation audits.  This stricter
-target deliberately keeps `microscopicBlackHoleEvaporationDynamics` as an
-external input, because finite no-loss algebra and Page-shape audits are not
-yet a microscopic evaporation model.
+adds those two black-hole information audits, the QQG conditional cosmology
+bridge, and the physical-information-limit audit to the finite dark-sector,
+cosmological-constant/graviton, information-preservation, holography, Page, and
+inflation audits.  This stricter target deliberately keeps
+`microscopicBlackHoleEvaporationDynamics` as an external input, because the
+Haar scrambling/decoupling and Uhlmann recovery-channel content is still not
+derived from the microscopic law.
 
 Open work:
 
 - initial condition or cosmological measure;
 - late-time structure-formation and gravitational-wave compatibility beyond
   the inflation-sector observable audit;
-- microscopic black-hole evaporation dynamics beyond the finite entropy/Page
-  and finite information-preservation audits.
+- microscopic black-hole scrambling/decoupling/recovery dynamics beyond the
+  finite entropy/Page, Hayden-Preskill skeleton, AMPS, and finite
+  information-preservation audits.
 
 ### Gate 7: External Tests
 
@@ -1075,8 +1085,9 @@ Open work:
     order-data coupling selection, estimator-to-Araki flux identification,
     the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
     plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts,
-    cosmological measure/initial condition, microscopic black-hole evaporation
-    dynamics, and late-time structure/GW compatibility.
+    cosmological measure/initial condition, microscopic black-hole
+    scrambling/decoupling/recovery dynamics, and late-time structure/GW
+    compatibility.
 
 ## Swarm Round 1 Integration
 
@@ -1193,6 +1204,8 @@ gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+gate6_haydenPreskillEvaporationAudit_closed
+gate6_ampsFirewallAudit_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope

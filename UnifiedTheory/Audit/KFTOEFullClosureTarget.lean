@@ -1218,9 +1218,10 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 /-- Full-TOE target using the stricter Gate 6 audit envelope.  It harvests the
-finite Gate 6 audits, the inflation audit, the QQG conditional cosmology
-bridge, and the physical-information-limit audit, while leaving microscopic
-black-hole evaporation dynamics explicit as a genuine remaining physics input. -/
+finite Gate 6 audits, inflation, Hayden-Preskill, AMPS, QQG conditional
+cosmology, and physical-information-limit audits, while leaving the remaining
+microscopic scrambling/decoupling/recovery evaporation dynamics explicit as a
+genuine physics input. -/
 noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1287,8 +1288,9 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
   gate7Targets := gate7PreRegistrationLedgerTargets
 
 /-- Current strict full-closure theorem.  Compared with the lighter inflation
-Gate 6 theorem, this also harvests QQG and physical-information-limit audits
-and keeps microscopic evaporation dynamics as an explicit remaining input. -/
+Gate 6 theorem, this also harvests Hayden-Preskill, AMPS, QQG, and
+physical-information-limit audits and keeps microscopic evaporation dynamics as
+an explicit remaining input. -/
 theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
