@@ -28,6 +28,7 @@ open UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFTOESevenGateAttack
+open UnifiedTheory.Cosmology.QQG
 
 /-- The seven-gate TOE target record after the microscopic Gate 3/4 handoff is
 made explicit.  Gate 3 is represented by the exact-recovery certificate
@@ -1214,6 +1215,155 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
         fA fB hA hB F K hHilbert hSpinStatistics hGaugeRenorm,
       gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
         hinitial hlate,
+      gate7_externalTests_closed_from_preRegistrationLedger⟩
+
+/-- Full-TOE target using the stricter Gate 6 audit envelope.  It harvests the
+finite Gate 6 audits, the inflation audit, the QQG conditional cosmology
+bridge, and the physical-information-limit audit, while leaving microscopic
+black-hole evaporation dynamics explicit as a genuine remaining physics input. -/
+noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    {AQFT : HorizonAQFTModel} (phi : AQFT.Excitation)
+    (couplingSelectedFromOrderData : Prop)
+    (constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop)
+    (initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility : Prop) :
+    TOEClosureTargets where
+  gate1Targets :=
+    gate1MicroscopicLawTargetsOfFiniteBranch
+      couplingSelectedFromOrderData
+  gate2Targets :=
+    gate2QuantizedResidualSemanticTargets
+      countWindow curvatureBias spectralLocality
+      countQuantum curvatureQuantum spectralQuantum
+  gate3ExactRecovery :=
+    Gate3ExactRecoveryCertificateClosed
+      (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+        G.gate3)
+  gate4Targets :=
+    microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+      G Hest arakiFlux phi
+  gate5Targets :=
+    gate5QFTStandardModelIRTargetsOfFiniteCarrierAndSMAudits
+      fA fB F K constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift
+  gate6Targets :=
+    gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
+      S initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility
+  gate7Targets := gate7PreRegistrationLedgerTargets
+
+/-- Current strict full-closure theorem.  Compared with the lighter inflation
+Gate 6 theorem, this also harvests QQG and physical-information-limit audits
+and keeps microscopic evaporation dynamics as an explicit remaining input. -/
+theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData : Prop}
+    {constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop}
+    {initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility : Prop}
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData)
+    (hAraki : arakiFlux = Hest.continuumFlux)
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target AQFT)
+    (hArea : RelativeEntropyAreaVariation_Target AQFT alpha)
+    (hRay : RaychaudhuriAreaVariation_Target AQFT)
+    (hBH : BekensteinHawkingEntropyArea_Target AQFT)
+    (hS : AQFT.Srel phi ≠ 0)
+    (hHilbert : constructiveHilbertQFTLimit)
+    (hSpinStatistics : qftSpinStatisticsLift)
+    (hGaugeRenorm : qftGaugeRenormalizationLift)
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hevap : microscopicBlackHoleEvaporationDynamics)
+    (hlate : lateStructureGravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        constructiveHilbertQFTLimit qftSpinStatisticsLift
+        qftGaugeRenormalizationLift initialConditionOrCosmologicalMeasure
+        microscopicBlackHoleEvaporationDynamics
+        lateStructureGravitationalWaveCompatibility) := by
+  exact
+    ⟨gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+        hSum hcoupling,
+      microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed G,
+      gate3_exactRecoveryCertificate_closed
+        (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+          G.gate3),
+      microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
+        G Hest arakiFlux hAraki hFlux hArea hRay hBH hS,
+      gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+        fA fB hA hB F K hHilbert hSpinStatistics hGaugeRenorm,
+      gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+        S hinitial hevap hlate,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

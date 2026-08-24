@@ -1977,6 +1977,71 @@ theorem gate6_physicalInformationLimitsAudit_closed :
     Gate6PhysicalInformationLimitsAuditClosed := by
   exact ⟨fun R hR => physical_information_limits_master R hR⟩
 
+/-- Gate 6 full audit envelope: in addition to the finite dark-sector,
+cosmological-constant/graviton, information-preservation, holography, Page,
+and inflation audits, this packages the QQG conditional cosmology bridge and
+the physical information-limit audit.  Unlike the lighter finite-audit target,
+it leaves microscopic black-hole evaporation dynamics explicit as a remaining
+physical input rather than treating finite no-loss/Page formula audits as a
+complete evaporation model. -/
+def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
+    (S : QQGScenario)
+    (initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility : Prop) :
+    Gate6CosmologyBlackHoleTargets where
+  initialConditionOrCosmologicalMeasure :=
+    initialConditionOrCosmologicalMeasure
+  darkEnergyOrCosmologicalConstantMechanism :=
+    Gate6CosmologicalConstantGravitonAuditClosed ∧
+      Gate6QQGCosmologyBridgeAuditClosed S
+  darkMatterPredictionOrExclusion :=
+    Gate6DarkMatterPlanckWindowAuditClosed
+  blackHoleEntropyEvaporationInformation :=
+    Gate6FiniteInformationPreservationAuditClosed ∧
+      Gate6DiscreteHolographyAuditClosed ∧
+        Gate6StructuralPageCurveAuditClosed ∧
+          Gate6PageFormulaAuditClosed ∧
+            Gate6PhysicalInformationLimitsAuditClosed ∧
+              microscopicBlackHoleEvaporationDynamics
+  cmbStructureGravitationalWaveCompatibility :=
+    Gate6InflationCMBTensorAuditClosed ∧
+      Gate6QQGCosmologyBridgeAuditClosed S ∧
+        lateStructureGravitationalWaveCompatibility
+
+/-- With the full Gate 6 audit envelope harvested, the genuinely remaining
+Gate 6 physics inputs are now explicit: a cosmological
+measure/initial-condition principle, microscopic black-hole evaporation
+dynamics, and a late-time structure/GW bridge beyond the inflation and QQG
+audits. -/
+theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+    (S : QQGScenario)
+    {initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility : Prop}
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hevap : microscopicBlackHoleEvaporationDynamics)
+    (hlate : lateStructureGravitationalWaveCompatibility) :
+    Gate6CosmologyBlackHoleClosed
+      (gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
+        S initialConditionOrCosmologicalMeasure
+        microscopicBlackHoleEvaporationDynamics
+        lateStructureGravitationalWaveCompatibility) := by
+  exact
+    ⟨hinitial,
+      ⟨gate6_cosmologicalConstantGravitonAudit_closed,
+        gate6_qqgCosmologyBridgeAudit_closed S⟩,
+      gate6_darkMatterPlanckWindowAudit_closed,
+      ⟨gate6_finiteInformationPreservationAudit_closed,
+        gate6_discreteHolographyAudit_closed,
+        gate6_structuralPageCurveAudit_closed,
+        gate6_pageFormulaAudit_closed,
+        gate6_physicalInformationLimitsAudit_closed,
+        hevap⟩,
+      ⟨gate6_inflationCMBTensorAudit_closed,
+        gate6_qqgCosmologyBridgeAudit_closed S,
+        hlate⟩⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -2082,6 +2147,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAudits
 #print axioms gate6_inflationCMBTensorAudit_closed
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
+#print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
 #print axioms gate6_entropyFluxLimitBridge_closed
 #print axioms gate6_arakiBHEightPiBalance_closed
 #print axioms gate6_dorauMuchEinsteinBridge_closed

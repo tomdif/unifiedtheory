@@ -89,6 +89,11 @@ finite group-level gauge structure, hypercharge uniqueness, quark/lepton
 anomaly forcing, and SO(10) anomaly safety.  Gate 6 now harvests the
 inflation/CMB tensor audit.  The sharpest current full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
+The stricter current Gate 6 audit envelope additionally harvests the QQG
+conditional cosmology bridge and physical-information-limit audit, while
+making microscopic black-hole evaporation dynamics an explicit remaining
+input.  The corresponding strict full-closure theorem is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
 
 ## Gates
 
@@ -985,6 +990,16 @@ one-sigma window, atomic `r`, and `r` below the Planck/BICEP upper bound.
 uses this to reduce the Gate 6 compatibility field to the late-time
 structure/GW bridge beyond the inflation-sector observable checks.
 
+Current full Gate 6 audit envelope:
+
+`gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope`
+adds the QQG conditional cosmology bridge and the physical-information-limit
+audit to the finite dark-sector, cosmological-constant/graviton,
+information-preservation, holography, Page, and inflation audits.  This stricter
+target deliberately keeps `microscopicBlackHoleEvaporationDynamics` as an
+external input, because finite no-loss algebra and Page-shape audits are not
+yet a microscopic evaporation model.
+
 Open work:
 
 - initial condition or cosmological measure;
@@ -1054,6 +1069,14 @@ Open work:
     (continuum Hilbert/QFT limit, spin-statistics, gauge renormalization),
     cosmological measure/initial condition, and late-time structure/GW
     compatibility.
+13. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
+    The remaining assumptions are signed atlas fiber-sum noncancellation,
+    order-data coupling selection, estimator-to-Araki flux identification,
+    the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
+    plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts,
+    cosmological measure/initial condition, microscopic black-hole evaporation
+    dynamics, and late-time structure/GW compatibility.
 
 ## Swarm Round 1 Integration
 
@@ -1169,8 +1192,11 @@ gate5_standardModelParameterAudit_closed
 gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
+gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
 ```
 
 The next high-value theorem targets are:
