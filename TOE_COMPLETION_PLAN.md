@@ -1006,6 +1006,14 @@ microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator
 microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DMatchedPhysicalChartInterface
 microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityInterface
+microscopicGate3QuantizedConvergenceData_scheduledDensity_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+microscopicGate3QuantizedConvergenceData_scheduledDensity_recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensitySplitOperatorInterface
+microscopicGate3QuantizedConvergenceData_scheduledSplitOperator_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_closed
+microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_outputs
 ```
 
 The next high-value theorem targets are:
@@ -1076,8 +1084,15 @@ The next high-value theorem targets are:
    The matched-chart theorem
    `microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero`
    then gives RSS/Poisson zero, sampled 4D operator convergence, and physical
-   chart-distortion collapse in one statement.  If this fails, identify the
-   additional microscopic selection principle needed for the canonical pair
+   chart-distortion collapse in one statement.  The scheduled-density and
+   kernel/profile endpoints
+   `microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface`,
+   `microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_closed`,
+   and
+   `microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_outputs`
+   now feed the strongest current Gate 4 closure once an affine density law and
+   the active kernel/profile split data are supplied.  If this fails, identify
+   the additional microscopic selection principle needed for the canonical pair
    coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
