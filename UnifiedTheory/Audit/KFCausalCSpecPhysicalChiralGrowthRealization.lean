@@ -180,6 +180,23 @@ def CompleteChiralAtlasRealAggregateSignedFiberSumNonzero : Prop :=
   ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
     ∃ k : ℕ, atlasCompleteChiralRawAggregateSignedFiberSum n hnext k ≠ 0
 
+/-- Constructive output schema for the finite signed-fiber search.  A table
+chooses one exponent for each of the 140 atlas births and proves that the
+corresponding signed transition-fiber count is nonzero. -/
+structure CompleteChiralAtlasSignedFiberWitnessTable : Type where
+  exponent :
+    (n : ℕ) → n + 1 ≤ 140 → ℕ
+  signedFiberSum_ne_zero :
+    ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+      atlasCompleteChiralRawAggregateSignedFiberSum
+        n hnext (exponent n hnext) ≠ 0
+
+theorem completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable
+    (W : CompleteChiralAtlasSignedFiberWitnessTable) :
+    CompleteChiralAtlasRealAggregateSignedFiberSumNonzero := by
+  intro n hnext
+  exact ⟨W.exponent n hnext, W.signedFiberSum_ne_zero n hnext⟩
+
 /-- A single nonzero coefficient proves nonzero status of one concrete atlas
 real aggregate polynomial. -/
 theorem atlasCompleteChiralRawAggregateRealPolynomial_ne_zero_of_coeff_ne_zero
@@ -473,6 +490,7 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
 #print axioms atlasCompleteChiralTransition_eq_rawAggregate_div_partition
 #print axioms atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
 #print axioms atlasCompleteChiralRawAggregateRealCoeff_eq_signedFiberSum
+#print axioms completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable
 #print axioms atlasCompleteChiralRawAggregateRealPolynomial_ne_zero_of_coeff_ne_zero
 #print axioms completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
 #print axioms completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero

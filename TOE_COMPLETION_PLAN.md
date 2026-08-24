@@ -86,7 +86,9 @@ It now also carries the named
 `Gate1SignedFiberAtlasCertificateClosed` package, exposing the checked ladder
 from signed transition-fiber sums through coefficient and real-polynomial
 nonzero certificates to raw/normalized transition noncancellation and
-two-chirality atlas realization.
+two-chirality atlas realization.  The finite search endpoint is now an
+explicit `CompleteChiralAtlasSignedFiberWitnessTable`: one exponent per atlas
+birth, with a nonzero signed transition-fiber count at that exponent.
 The newest Gate 4 specialization wires those two remaining Gate 4 fields to
 existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
@@ -188,6 +190,8 @@ Open work:
   imaginary-polynomial route needed only if a real certificate vanishes.
   `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` now expands that
   coefficient gate into explicit signed transition-fiber sums;
+  `CompleteChiralAtlasSignedFiberWitnessTable` is the concrete finite output
+  schema that implies this signed-fiber noncancellation gate;
   `Gate1PhysicalSelectionBridgeClosed` packages this signed-fiber certificate
   with order-data coupling selection, carries
   `Gate1SignedFiberAtlasCertificateClosed`, and records the resulting
@@ -1251,11 +1255,15 @@ The integrated Lean results are:
 
 ```text
 physicalHauptvermutungBaseDistortion_eq_zero_iff
+CompleteChiralAtlasSignedFiberWitnessTable
+completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable
 gate1MicroscopicLawTargetsOfFiniteBranch
 gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
 Gate1SignedFiberAtlasCertificateClosed
 gate1_signedFiberAtlasCertificate_closed
+gate1_signedFiberAtlasCertificate_closed_of_witnessTable
 gate1_physicalSelectionBridge_closed
+gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 gate1_microscopicLaw_closed_of_physicalSelectionBridge
 gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
@@ -1387,8 +1395,12 @@ gate6_namedCosmologyBlackHoleBridge_closed
 gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
 gate6_haydenPreskillMicroscopicEvaporationBridge_closed
 gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
+CompleteChiralAtlasSignedFiberWitnessTable
+completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable
 Gate1SignedFiberAtlasCertificateClosed
 gate1_signedFiberAtlasCertificate_closed
+gate1_signedFiberAtlasCertificate_closed_of_witnessTable
+gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
@@ -1400,9 +1412,12 @@ microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6Hayden
 The next high-value theorem targets are:
 
 1. Gate 1: prove `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` for
-   the physical CSpec atlas path; Lean then packages the coefficient,
-   polynomial, raw/transition, and two-chirality atlas-realization consequences
-   as `Gate1SignedFiberAtlasCertificateClosed`.  After that, instantiate
+   the physical CSpec atlas path by constructing
+   `CompleteChiralAtlasSignedFiberWitnessTable`, an explicit exponent table
+   with one nonzero signed transition-fiber count for each atlas birth.  Lean
+   then packages the coefficient, polynomial, raw/transition, and
+   two-chirality atlas-realization consequences as
+   `Gate1SignedFiberAtlasCertificateClosed`.  After that, instantiate
    `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
    constructing a `PhysicalHauptvermutungConvergenceCertificate` and
    finite-spectrum count/curvature/spectral residual gaps.  The narrowest

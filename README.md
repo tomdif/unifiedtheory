@@ -53,7 +53,9 @@ atlas-fiber noncancellation and order-data coupling selection as a named
 physical-selection bridge; that bridge now carries the named
 `Gate1SignedFiberAtlasCertificateClosed` package, exposing the coefficient,
 real-polynomial, raw-aggregate, transition-noncancellation, and two-chirality
-atlas-realization consequences of the signed-fiber certificate; plus
+atlas-realization consequences of the signed-fiber certificate, and the finite
+search endpoint is the explicit exponent table
+`CompleteChiralAtlasSignedFiberWitnessTable`; plus
 complete-chiral support/consistency and branch-aligned
 positive-frequency handedness with its reflection boundary; Gate 2 base zero
 sets and invariant-observable quotient semantics; and Gate 3 protected

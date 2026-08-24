@@ -275,6 +275,13 @@ theorem gate1_signedFiberAtlasCertificate_closed
       gate1_completeChiralAtlasRealization_closed (0 : Fin 2) hSum,
       gate1_completeChiralAtlasRealization_closed (1 : Fin 2) hSum⟩
 
+theorem gate1_signedFiberAtlasCertificate_closed_of_witnessTable
+    (W : CompleteChiralAtlasSignedFiberWitnessTable) :
+    Gate1SignedFiberAtlasCertificateClosed := by
+  exact
+    gate1_signedFiberAtlasCertificate_closed
+      (completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable W)
+
 /-- The Gate 1 positive-frequency handedness sublayer: after choosing the
 positive orientation branch, the finite causal clock birth saturates the
 Margolus-Levitin quarter-turn, selects the unique `-i` chiral phase, extends to
@@ -418,6 +425,16 @@ theorem gate1_physicalSelectionBridge_closed
       gate1_positiveFrequencyHandedness_closed,
       gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
         hSum hcoupling⟩
+
+theorem gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
+    {couplingSelectedFromOrderData : Prop}
+    (W : CompleteChiralAtlasSignedFiberWitnessTable)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
+  exact
+    gate1_physicalSelectionBridge_closed
+      (completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable W)
+      hcoupling
 
 theorem gate1_microscopicLaw_closed_of_physicalSelectionBridge
     {couplingSelectedFromOrderData : Prop}
@@ -2772,7 +2789,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_positiveFrequencyHandedness_closed
 #print axioms gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
 #print axioms gate1_signedFiberAtlasCertificate_closed
+#print axioms gate1_signedFiberAtlasCertificate_closed_of_witnessTable
 #print axioms gate1_physicalSelectionBridge_closed
+#print axioms gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 #print axioms gate1_microscopicLaw_closed_of_physicalSelectionBridge
 #print axioms gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 #print axioms gate2_baseDistortion_zero_iff_components_zero
