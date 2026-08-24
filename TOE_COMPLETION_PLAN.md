@@ -113,6 +113,8 @@ decoupling, microscopic recovery-channel, late-structure-formation, and
 gravitational-wave compatibility obligations, and combines that with the named
 Gate 5 Hilbert/QFT, spin-statistics, and gauge-renormalization bridge records.
 The current sharpest formal target is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges`;
+its closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed`.
 
 External octonion/S6 watchpoint: Levent Alpoge's primary PDF
@@ -1335,6 +1337,7 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6Bri
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed
 gate6_namedCosmologyBlackHoleBridge_closed
 gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 ```
 

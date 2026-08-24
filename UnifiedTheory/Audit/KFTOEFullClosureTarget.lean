@@ -1523,6 +1523,71 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
       hGaugeBridge.qftGaugeRenormalizationLift
       hinitial hevap hlate
 
+/-- Full-TOE target whose Gate 5 and Gate 6 tails are both represented by named
+bridge records.  Compared with the raw strict envelope, the Gate 6 component
+is the named cosmology/black-hole target instead of a triple of anonymous
+propositions. -/
+noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    {AQFT : HorizonAQFTModel} (phi : AQFT.Excitation)
+    (couplingSelectedFromOrderData : Prop)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    (TGate6 : Gate6NamedCosmologyBlackHoleBridgeTargets) :
+    TOEClosureTargets where
+  gate1Targets :=
+    gate1MicroscopicLawTargetsOfFiniteBranch
+      couplingSelectedFromOrderData
+  gate2Targets :=
+    gate2QuantizedResidualSemanticTargets
+      countWindow curvatureBias spectralLocality
+      countQuantum curvatureQuantum spectralQuantum
+  gate3ExactRecovery :=
+    Gate3ExactRecoveryCertificateClosed
+      (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+        G.gate3)
+  gate4Targets :=
+    microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+      G Hest arakiFlux phi
+  gate5Targets :=
+    gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
+      fA fB F K THilbert.complexGeometryFeedsConstructiveQFTLimit
+      TSpin.qftSpinStatisticsLift TGauge.qftGaugeRenormalizationLift
+  gate6Targets :=
+    gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S TGate6
+  gate7Targets := gate7PreRegistrationLedgerTargets
+
 /-- Strict full-closure specialization in which every remaining Gate 5 lift
 and every remaining Gate 6 cosmology/black-hole lift is carried by a named
 bridge record.  This is the current sharpest formal TOE target: the remaining
@@ -1585,26 +1650,23 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hGate6Bridge : Gate6NamedCosmologyBlackHoleBridgeClosed S TGate6) :
     TOEClosureClosed
-      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
         G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
-        THilbert.complexGeometryFeedsConstructiveQFTLimit
-        TSpin.qftSpinStatisticsLift TGauge.qftGaugeRenormalizationLift
-        TGate6.cosmologicalMeasureOrInitialState
-        (TGate6.microscopicScramblingDynamics ∧
-          TGate6.microscopicDecouplingDynamics ∧
-            TGate6.microscopicRecoveryChannelDynamics)
-        (TGate6.lateStructureFormation ∧
-          TGate6.gravitationalWaveCompatibility)) := by
+        THilbert TSpin TGauge TGate6) := by
   exact
-    microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
-      hSum hcoupling hAraki hFlux hArea hRay hBH hS
-      hHilbertBridge hSpinBridge hGaugeBridge
-      hGate6Bridge.cosmologicalMeasureOrInitialState
-      ⟨hGate6Bridge.microscopicScramblingDynamics,
-        hGate6Bridge.microscopicDecouplingDynamics,
-        hGate6Bridge.microscopicRecoveryChannelDynamics⟩
-      ⟨hGate6Bridge.lateStructureFormation,
-        hGate6Bridge.gravitationalWaveCompatibility⟩
+    ⟨gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+        hSum hcoupling,
+      microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed G,
+      gate3_exactRecoveryCertificate_closed
+        (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+          G.gate3),
+      microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
+        G Hest arakiFlux hAraki hFlux hArea hRay hBH hS,
+      gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits
+        fA fB hA hB F K Scat THilbert TSpin TGauge
+        hHilbertBridge hSpinBridge hGaugeBridge,
+      gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+        S TGate6 hGate6Bridge,
+      gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 end UnifiedTheory.Audit.KFTOEFullClosureTarget
