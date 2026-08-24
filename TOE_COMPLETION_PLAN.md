@@ -994,11 +994,18 @@ microscopicGate3QuantizedConvergenceData_horizonProtection_and_recovered_after
 microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
 microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero
 microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after
+microscopicGate3QuantizedConvergenceData_toRecoveredStageExactCSpecSequence
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DChartInterface
+microscopicGate3QuantizedConvergenceData_recoveredStage_and_chart_operator_tendsto
+microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_chart_operator_tendsto
 microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
 microscopicGate3QuantizedConvergenceData_recoveredBDGOperatorBridge_closed
 microscopicGate3QuantizedConvergenceData_recoveredStage_and_bdg4d_operator_tendsto
 microscopicGate3QuantizedConvergenceData_recoveredBDGPoissonOperatorBridge_closed
 microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator_tendsto
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DMatchedPhysicalChartInterface
+microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
+microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
 ```
 
 The next high-value theorem targets are:
@@ -1058,8 +1065,20 @@ The next high-value theorem targets are:
    builds the recovered-stage 4D BDG operator interface, and
    `microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator_tendsto`
    packages the finite RSS/Poisson error-zero tail together with sampled 4D
-   operator convergence.  If this fails, identify the additional microscopic
-   selection principle needed for the canonical pair coupling.
+   operator convergence.  The chart-level constructors
+   `microscopicGate3QuantizedConvergenceData_toRecoveredStageExactCSpecSequence`,
+   `microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DChartInterface`,
+   and
+   `microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DMatchedPhysicalChartInterface`
+   show the remaining physical Gate 4 work in its narrowest form: provide
+   physical chart certificates, matched residual-sum identities, a divergent
+   chart density, coordinates, and the reduced 4D operator profile package.
+   The matched-chart theorem
+   `microscopicGate3QuantizedConvergenceData_matchedPhysicalChart_rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero`
+   then gives RSS/Poisson zero, sampled 4D operator convergence, and physical
+   chart-distortion collapse in one statement.  If this fails, identify the
+   additional microscopic selection principle needed for the canonical pair
+   coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.
