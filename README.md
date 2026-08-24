@@ -66,10 +66,12 @@ cosmological-constant/graviton-mode
 audits, finite information-preservation inverse/preimage audit, discrete
 holography and Page-curve finite entropy audits, conditional Araki/Dorau-Much
 horizon-to-Einstein bridges, and conditional QQG cosmology
-bridge plus physical-information-limits audit, and proves Gate 7 protocol
-closure from the preregistration ledger. Full Gates 4-6 remain open until their
-missing physical, infrared, cosmological-emergence, evaporation, and black-hole
-entropy inputs are derived;
+bridge plus physical-information-limits audit, with the remaining Gate 6 tail
+now split into named cosmological-measure, scrambling, decoupling, recovery,
+late-structure, and gravitational-wave bridge obligations, and proves Gate 7
+protocol closure from the preregistration ledger. Full Gates 4-6 remain open
+until their missing physical, infrared, cosmological-emergence, evaporation,
+and black-hole entropy inputs are derived;
 Gate 7 still awaits future empirical comparisons against the frozen
 predictions.
 

@@ -107,6 +107,13 @@ cosmology bridge, and physical-information-limit audit, while making the
 remaining scrambling/decoupling/recovery evaporation dynamics an explicit
 input.  The corresponding strict full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
+The newest named-bridge endpoint splits the remaining Gate 6 input into
+cosmological-measure/initial-state, microscopic scrambling, microscopic
+decoupling, microscopic recovery-channel, late-structure-formation, and
+gravitational-wave compatibility obligations, and combines that with the named
+Gate 5 Hilbert/QFT, spin-statistics, and gauge-renormalization bridge records.
+The current sharpest formal target is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed`.
 
 External octonion/S6 watchpoint: Levent Alpoge's primary PDF
 `https://alpo.ge/s6.pdf`, titled on its first page as
@@ -1092,14 +1099,20 @@ inflation audits.  This stricter target deliberately keeps
 `microscopicBlackHoleEvaporationDynamics` as an external input, because the
 Haar scrambling/decoupling and Uhlmann recovery-channel content is still not
 derived from the microscopic law.
+`gate6_namedCosmologyBlackHoleBridge_closed` and
+`gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge` now refine
+that external Gate 6 tail into named sub-obligations: cosmological measure or
+initial state, microscopic scrambling, microscopic decoupling, microscopic
+recovery channel, late-time structure formation, and gravitational-wave
+compatibility.
 
 Open work:
 
 - initial condition or cosmological measure;
 - late-time structure-formation and gravitational-wave compatibility beyond
   the inflation-sector observable audit;
-- microscopic black-hole scrambling/decoupling/recovery dynamics beyond the
-  finite entropy/Page, Hayden-Preskill skeleton, AMPS, and finite
+- microscopic black-hole scrambling, decoupling, and recovery-channel dynamics
+  beyond the finite entropy/Page, Hayden-Preskill skeleton, AMPS, and finite
   information-preservation audits.
 
 ### Gate 7: External Tests
@@ -1320,6 +1333,9 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6BridgeGate6QQGInformationEnvelope_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed
+gate6_namedCosmologyBlackHoleBridge_closed
+gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 ```
 
 The next high-value theorem targets are:

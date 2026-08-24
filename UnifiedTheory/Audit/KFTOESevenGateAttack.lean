@@ -2405,6 +2405,114 @@ theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformatio
         gate6_qqgCosmologyBridgeAudit_closed S,
         hlate⟩⟩
 
+/-- Named remaining Gate 6 bridge obligations.  This refines the three loose
+physical inputs in the strict Gate 6 envelope into attackable subtargets:
+cosmological initial data/measure, black-hole scrambling, decoupling, recovery
+channels, late-time structure formation, and gravitational-wave compatibility. -/
+structure Gate6NamedCosmologyBlackHoleBridgeTargets : Type where
+  cosmologicalMeasureOrInitialState : Prop
+  microscopicScramblingDynamics : Prop
+  microscopicDecouplingDynamics : Prop
+  microscopicRecoveryChannelDynamics : Prop
+  lateStructureFormation : Prop
+  gravitationalWaveCompatibility : Prop
+
+/-- Gate 6 named bridge closure bundles all finite/audit layers already proved
+in the repo with the remaining physical cosmology, evaporation, and late-time
+compatibility obligations. -/
+structure Gate6NamedCosmologyBlackHoleBridgeClosed
+    (S : QQGScenario)
+    (T : Gate6NamedCosmologyBlackHoleBridgeTargets) : Prop where
+  cosmologicalMeasureOrInitialState :
+    T.cosmologicalMeasureOrInitialState
+  cosmologicalConstantGravitonAudit :
+    Gate6CosmologicalConstantGravitonAuditClosed
+  qqgCosmologyBridgeAudit :
+    Gate6QQGCosmologyBridgeAuditClosed S
+  darkMatterPlanckWindowAudit :
+    Gate6DarkMatterPlanckWindowAuditClosed
+  inflationCMBTensorAudit :
+    Gate6InflationCMBTensorAuditClosed
+  finiteInformationPreservationAudit :
+    Gate6FiniteInformationPreservationAuditClosed
+  discreteHolographyAudit :
+    Gate6DiscreteHolographyAuditClosed
+  structuralPageCurveAudit :
+    Gate6StructuralPageCurveAuditClosed
+  pageFormulaAudit :
+    Gate6PageFormulaAuditClosed
+  haydenPreskillEvaporationAudit :
+    Gate6HaydenPreskillEvaporationAuditClosed
+  ampsFirewallAudit :
+    Gate6AMPSFirewallAuditClosed
+  physicalInformationLimitsAudit :
+    Gate6PhysicalInformationLimitsAuditClosed
+  microscopicScramblingDynamics :
+    T.microscopicScramblingDynamics
+  microscopicDecouplingDynamics :
+    T.microscopicDecouplingDynamics
+  microscopicRecoveryChannelDynamics :
+    T.microscopicRecoveryChannelDynamics
+  lateStructureFormation :
+    T.lateStructureFormation
+  gravitationalWaveCompatibility :
+    T.gravitationalWaveCompatibility
+
+theorem gate6_namedCosmologyBlackHoleBridge_closed
+    (S : QQGScenario)
+    (T : Gate6NamedCosmologyBlackHoleBridgeTargets)
+    (hinitial : T.cosmologicalMeasureOrInitialState)
+    (hscrambling : T.microscopicScramblingDynamics)
+    (hdecoupling : T.microscopicDecouplingDynamics)
+    (hrecovery : T.microscopicRecoveryChannelDynamics)
+    (hlate : T.lateStructureFormation)
+    (hgw : T.gravitationalWaveCompatibility) :
+    Gate6NamedCosmologyBlackHoleBridgeClosed S T := by
+  exact
+    ⟨hinitial,
+      gate6_cosmologicalConstantGravitonAudit_closed,
+      gate6_qqgCosmologyBridgeAudit_closed S,
+      gate6_darkMatterPlanckWindowAudit_closed,
+      gate6_inflationCMBTensorAudit_closed,
+      gate6_finiteInformationPreservationAudit_closed,
+      gate6_discreteHolographyAudit_closed,
+      gate6_structuralPageCurveAudit_closed,
+      gate6_pageFormulaAudit_closed,
+      gate6_haydenPreskillEvaporationAudit_closed,
+      gate6_ampsFirewallAudit_closed,
+      gate6_physicalInformationLimitsAudit_closed,
+      hscrambling, hdecoupling, hrecovery, hlate, hgw⟩
+
+/-- The strict Gate 6 target induced by the named cosmology/black-hole bridge.
+The three older loose inputs are now a named initial-state slot, a three-part
+scrambling/decoupling/recovery evaporation slot, and a two-part
+structure-formation/GW slot. -/
+def gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge
+    (S : QQGScenario)
+    (T : Gate6NamedCosmologyBlackHoleBridgeTargets) :
+    Gate6CosmologyBlackHoleTargets :=
+  gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
+    S T.cosmologicalMeasureOrInitialState
+    (T.microscopicScramblingDynamics ∧
+      T.microscopicDecouplingDynamics ∧
+        T.microscopicRecoveryChannelDynamics)
+    (T.lateStructureFormation ∧ T.gravitationalWaveCompatibility)
+
+theorem gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+    (S : QQGScenario)
+    (T : Gate6NamedCosmologyBlackHoleBridgeTargets)
+    (hBridge : Gate6NamedCosmologyBlackHoleBridgeClosed S T) :
+    Gate6CosmologyBlackHoleClosed
+      (gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S T) := by
+  exact
+    gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+      S hBridge.cosmologicalMeasureOrInitialState
+      ⟨hBridge.microscopicScramblingDynamics,
+        hBridge.microscopicDecouplingDynamics,
+        hBridge.microscopicRecoveryChannelDynamics⟩
+      ⟨hBridge.lateStructureFormation,
+        hBridge.gravitationalWaveCompatibility⟩
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -2519,6 +2627,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_inflationCMBTensorAudit_closed
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+#print axioms gate6_namedCosmologyBlackHoleBridge_closed
+#print axioms gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
 #print axioms gate6_haydenPreskillEvaporationAudit_closed
 #print axioms gate6_ampsFirewallAudit_closed
 #print axioms gate6_entropyFluxLimitBridge_closed
