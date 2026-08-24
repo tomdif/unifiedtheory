@@ -21,6 +21,7 @@ import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
+import UnifiedTheory.Audit.KFGate5OctonionS6ComplexBridge
 import UnifiedTheory.LayerA.DiscreteHolography
 import UnifiedTheory.LayerA.GravitonTTModes
 import UnifiedTheory.LayerB.InflationAudit
@@ -74,6 +75,7 @@ open UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.ProjectiveQubitCarrierField
+open UnifiedTheory.Audit.KFGate5OctonionS6ComplexBridge
 open UnifiedTheory.LayerB.PreRegistrationLedger
 open UnifiedTheory.LayerB.DarkMatterAudit
 open UnifiedTheory.LayerB.InformationParadox
@@ -1401,9 +1403,10 @@ theorem gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
       gate5_standardModelParameterAudit_closed⟩
 
 /-- Stronger Gate 5 QFT/Standard-Model IR target with the finite SM/QM audits,
-Lorentzian-direct Wightman status audit, and chamber mass-gap/exponential-decay
-audit supplied.  The remaining Gate 5 inputs are the continuum Hilbert/QFT
-limit, the Haag-Ruelle/spin-statistics lift, and gauge-field renormalization. -/
+Lorentzian-direct Wightman status audit, chamber mass-gap/exponential-decay
+audit, and finite Hopf/octonion complex-geometry skeleton supplied.  The
+remaining Gate 5 inputs are the continuum Hilbert/QFT limit, the
+Haag-Ruelle/spin-statistics lift, and gauge-field renormalization. -/
 def gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
     {coverA : Type u} {coverB : Type v} {site : Type w}
     {probeA : coverA → Type z} {probeB : coverB → Type t}
@@ -1418,7 +1421,8 @@ def gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
   effectiveHilbertSpaceLimit :=
     Gate5EffectiveHilbertAuditClosed ∧
       Gate5LorentzianWightmanStatusAuditClosed ∧
-        constructiveHilbertQFTLimit
+        Gate5HopfOctonionComplexGeometryFiniteAuditClosed ∧
+          constructiveHilbertQFTLimit
   propagatorsAndSpinStatistics :=
     Gate5PropagatorKinematicAuditClosed ∧
       Gate5ChamberMassGapDecayAuditClosed ∧
@@ -1428,9 +1432,10 @@ def gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
   standardModelParameterChain :=
     Gate5StandardModelParameterAuditClosed
 
-/-- After harvesting the Wightman-status and chamber mass-gap/decay audits,
-Gate 5 closure is reduced to the continuum Hilbert/QFT limit, the
-Haag-Ruelle/spin-statistics lift, and gauge-field renormalization. -/
+/-- After harvesting the Wightman-status, chamber mass-gap/decay, and finite
+Hopf/octonion complex-geometry audits, Gate 5 closure is reduced to the
+continuum Hilbert/QFT limit, the Haag-Ruelle/spin-statistics lift, and
+gauge-field renormalization. -/
 theorem gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
     {coverA : Type u} {coverB : Type v} {site : Type w}
     {probeA : coverA → Type z} {probeB : coverB → Type t}
@@ -1451,7 +1456,8 @@ theorem gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassG
   exact
     ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
       ⟨gate5_effectiveHilbertAudit_closed,
-        gate5_lorentzianWightmanStatusAudit_closed, hHilbert⟩,
+        gate5_lorentzianWightmanStatusAudit_closed,
+        gate5_hopfOctonionComplexGeometryFiniteAudit_closed, hHilbert⟩,
       ⟨gate5_propagatorKinematicAudit_closed,
         gate5_chamberMassGapDecayAudit_closed, hSpinStatistics⟩,
       ⟨gate5_finiteGaugeAudit_closed, hGaugeRenorm⟩,
@@ -2341,6 +2347,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
 #print axioms gate5_lorentzianWightmanStatusAudit_closed
 #print axioms gate5_chamberMassGapDecayAudit_closed
+#print axioms gate5_hopfOctonionComplexGeometryFiniteAudit_closed
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook

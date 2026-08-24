@@ -91,7 +91,11 @@ Lorentzian-direct Wightman status audit and the chamber mass-gap/exponential
 decay audit: OS reconstruction is recorded as blocked/problematic, the
 Lorentzian-native Wightman route has all seven ledger entries with W7 still a
 Haag-Ruelle research lift, and the chamber vacuum-orthogonal decay rate is
-positive with closed form `sqrt 7 / 15`.  Gate 6 now harvests the
+positive with closed form `sqrt 7 / 15`.  Gate 5 also now packages the finite
+Hopf/octonion complex-geometry skeleton: normalized Hopf phase classes map to
+the unit Bloch sphere, Spin(7)->Spin(6) is rank-preserving with adjoint split
+`21 = 15 + 6`, and the Cayley-Dickson tower sum `1+2+4+8` matches the
+Spin(6)/SU(4) dimension shadow.  Gate 6 now harvests the
 inflation/CMB tensor audit.  The sharpest current inflation-envelope
 full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
@@ -109,8 +113,11 @@ points, is a complex structure on S6", claims a compact complex threefold
 diffeomorphic to the six-sphere.  This is not imported as a repo theorem.  If
 the result stabilizes, its TOE relevance is a Gate 5 research target: use it
 as a possible bridge from octonionic almost-complex/Hopf geometry to ordinary
-complex analytic geometry.  It does not by itself close the continuum QFT,
-Haag-Ruelle/spin-statistics, gauge-renormalization, or cosmology gates.
+complex analytic geometry.  The Lean target
+`gate5_octonionS6ComplexGeometryBridge_closed_of_externalCompatibilities`
+records exactly what would still be needed.  It does not by itself close the
+continuum QFT, Haag-Ruelle/spin-statistics, gauge-renormalization, or
+cosmology gates.
 
 ## Gates
 
@@ -949,6 +956,19 @@ Current Wightman/mass-gap hook:
   limit, the Haag-Ruelle/spin-statistics lift, and gauge-field
   renormalization.
 
+Current Hopf/octonion complex-geometry hook:
+
+- `gate5_hopfOctonionComplexGeometryFiniteAudit_closed` packages the finite
+  skeleton behind the S6/octonion lead: the normalized Hopf phase quotient has
+  a well-defined unit Bloch observable, Spin(7)->Spin(6) is rank-preserving,
+  the Spin(7) adjoint decomposes as `dim Spin(6) + 6`, and the
+  Cayley-Dickson tower sum matches both `dim Spin(6)` and `dim SU(4)`.
+- `gate5_octonionS6ComplexGeometryBridge_closed_of_externalCompatibilities`
+  is intentionally conditional.  It requires a stable external S6 complex
+  structure result, compatibility with the octonionic almost-complex structure,
+  compatibility with recovered Hopf carriers, and a bridge into the
+  constructive-QFT limit.
+
 Conditional octonion/S6 research hook:
 
 - Alpoge's S6 complex-structure PDF should be treated as an external
@@ -970,7 +990,8 @@ Open work:
   with quotient topology, local trivializations, and characteristic classes;
 - connect the finite Standard Model algebra to the same infrared limit.  The
   finite hypercharge, anomaly, quark/lepton, SO(10), SM/QM parameter,
-  Lorentzian-Wightman, and chamber mass-gap audits are now harvested by
+  Lorentzian-Wightman, chamber mass-gap, and Hopf/octonion geometry audits are
+  now harvested by
   `gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap`.
 
 ### Gate 6: Cosmology And Black Holes
@@ -1246,6 +1267,8 @@ gate5_standardModelParameterAudit_closed
 gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
 gate5_lorentzianWightmanStatusAudit_closed
 gate5_chamberMassGapDecayAudit_closed
+gate5_hopfOctonionComplexGeometryFiniteAudit_closed
+gate5_octonionS6ComplexGeometryBridge_closed_of_externalCompatibilities
 gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility

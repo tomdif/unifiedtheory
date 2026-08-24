@@ -59,8 +59,10 @@ also packages explicit partial-closure certificates for Gate 4's
 active-kernel cone-bound supplier, kernel/profile analytic supplier,
 recovered-stage 4D BDG RSS/Poisson operator bridge, and strongest scheduled
 kernel/operator bridge, Gate 5's arbitrary-axis Born observables, local
-Born/projective completeness, finite Hopf carrier cover-independence, and recovered common-refinement
-layers, and Gate 6's dark-density Planck-window and cosmological-constant/graviton-mode
+Born/projective completeness, finite Hopf carrier cover-independence and
+recovered common-refinement layers, plus the finite Hopf/octonion
+complex-geometry skeleton; and Gate 6's dark-density Planck-window and
+cosmological-constant/graviton-mode
 audits, finite information-preservation inverse/preimage audit, discrete
 holography and Page-curve finite entropy audits, conditional Araki/Dorau-Much
 horizon-to-Einstein bridges, and conditional QQG cosmology
@@ -291,6 +293,13 @@ Machine-checked additions now cover:
   invariance, and Born-data separation of field equality; the relabel-covariance
   bridge proves finite site bijections preserve and reflect carrier-field
   reconstruction, Born data, and recovered-stage gauge invisibility; the
+  new octonion/S6 complex-geometry bridge packages the finite skeleton behind
+  that lead: normalized Hopf phase classes map to unit Bloch observables,
+  Spin(7)->Spin(6) is rank-preserving with adjoint split `21 = 15 + 6`, and
+  `1+2+4+8` matches the Spin(6)/SU(4) dimension shadow; its S6
+  complex-structure use is explicitly conditional on external stability and
+  compatibility with octonionic almost-complex geometry, recovered Hopf
+  carriers, and the constructive-QFT limit; the
   restriction/pullback bridge proves arbitrary probe maps preserve
   reconstruction, Born data, and recovered-stage gauge invisibility, with
   equality and Born data reflected by surjective probes; the cover/descent
