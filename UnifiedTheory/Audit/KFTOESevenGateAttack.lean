@@ -281,6 +281,35 @@ theorem gate1_positiveFrequencyHandedness_closed :
       causal_positive_energy_sequential_growth_derives_left_handedness,
       projective_clock_birth_reflection_doublet⟩
 
+/-- Gate 1 microscopic-law target with the finite complement/reflection branch
+fields supplied by the already-closed complete-chiral support and
+positive-frequency handedness sublayers.  The remaining hard inputs are the
+signed atlas fiber-sum noncancellation certificate and the selection of the
+coupling from order data. -/
+def gate1MicroscopicLawTargetsOfFiniteBranch
+    (couplingSelectedFromOrderData : Prop) :
+    Gate1MicroscopicLawTargets where
+  couplingSelectedFromOrderData := couplingSelectedFromOrderData
+  complementSymmetryDerived :=
+    Gate1CompleteChiralLawSupportAndConsistencyClosed (0 : Fin 2) ∧
+      Gate1CompleteChiralLawSupportAndConsistencyClosed (1 : Fin 2)
+  reflectionOddSourceDerived := Gate1PositiveFrequencyHandednessClosed
+
+/-- The current finite Gate 1 branch package reduces microscopic-law closure
+to signed atlas fiber-sum noncancellation plus order-data coupling selection. -/
+theorem gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+    {couplingSelectedFromOrderData : Prop}
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData) := by
+  exact
+    ⟨hSum, hcoupling,
+      ⟨gate1_completeChiralLawSupportAndConsistency_closed (0 : Fin 2),
+        gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2)⟩,
+      gate1_positiveFrequencyHandedness_closed⟩
+
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
 /-- Semantic targets for interpreting the finite Hauptvermutung distortion
@@ -1793,6 +1822,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_completeChiralLawSupportAndConsistency_closed
 #print axioms gate1_completeChiralAtlasRealization_closed
 #print axioms gate1_positiveFrequencyHandedness_closed
+#print axioms gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate

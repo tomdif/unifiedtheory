@@ -71,6 +71,18 @@ and Page-curve audit components while leaving initial-condition/cosmological
 measure and CMB/structure/GW compatibility explicit.  The strongest current
 full-closure theorem is
 `microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits_closed`.
+Gate 4's scheduled-kernel supplier now also fills its own physical
+scheduled-density and kernel/profile-certificate fields, leaving only
+horizon-estimator convergence and null-balance dynamics for Gate 4.  Gate 1's
+finite branch package fills complement/reflection subfields, leaving signed
+atlas fiber-sum noncancellation and order-data coupling selection.  The
+strongest full-closure theorem at that stage is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed`.
+The newest Gate 4 specialization wires those two remaining Gate 4 fields to
+existing finite/audit machinery: finite horizon-hit estimator convergence to
+Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
+certificate.  The sharpest current full-closure theorem is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed`.
 
 ## Gates
 
@@ -706,6 +718,8 @@ microscopicGate4ScheduledKernelData_bridge_closed
 microscopicGate4ScheduledKernelData_outputs
 microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
 microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
+microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfSuppliedData
+microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_suppliedData
 microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed
 gate5QFTStandardModelIRTargetsOfFiniteCarrierCover
 gate5_qftStandardModelIR_closed_of_finiteCarrierCover
@@ -996,6 +1010,19 @@ Open work:
    genuine Gate 5 IR/QFT assumptions, and Gate 6's
    initial-condition/cosmological-measure plus CMB/structure/GW compatibility
    inputs.
+10. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed`.
+    The remaining assumptions are signed atlas fiber-sum noncancellation,
+    order-data coupling selection, Gate 4 horizon estimator convergence,
+    Gate 4 null-balance dynamics, four genuine Gate 5 IR/QFT inputs, and the
+    two Gate 6 cosmology inputs.
+11. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed`.
+    The remaining assumptions are signed atlas fiber-sum noncancellation,
+    order-data coupling selection, estimator-to-Araki flux identification,
+    the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
+    plus a nonzero excitation, four genuine Gate 5 IR/QFT inputs, and the two
+    Gate 6 cosmology inputs.
 
 ## Swarm Round 1 Integration
 
@@ -1004,6 +1031,8 @@ The integrated Lean results are:
 
 ```text
 physicalHauptvermutungBaseDistortion_eq_zero_iff
+gate1MicroscopicLawTargetsOfFiniteBranch
+gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
@@ -1094,6 +1123,14 @@ microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed
 microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger
 microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits
 microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits_closed
+microscopicTOEClosureTargetsWithGate4DataFiniteGate5Gate6Audits
+microscopicTOEClosureTargetsWithGate4DataFiniteGate5Gate6Audits_closed
+microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits
+microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed
+microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed
 ```
 
 The next high-value theorem targets are:
@@ -1170,10 +1207,11 @@ The next high-value theorem targets are:
    `microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_closed`,
    and
    `microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_outputs`
-   now feed the strongest current Gate 4 closure once an affine density law and
-   the active kernel/profile split data are supplied.  If this fails, identify
-   the additional microscopic selection principle needed for the canonical pair
-   coupling.
+  now feed the strongest current Gate 4 closure once an affine density law,
+  the active kernel/profile split data, estimator-to-Araki flux matching, and
+  the Dorau-Much horizon inputs are supplied.  If this fails, identify the
+  additional microscopic selection principle needed for the canonical pair
+  coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.

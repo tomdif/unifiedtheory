@@ -20,6 +20,7 @@ set_option relaxedAutoImplicit false
 namespace UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
 
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
+open UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
@@ -3301,6 +3302,195 @@ theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
         bdgKernelProfileCertificate nullBalanceFromDynamics) := by
   exact
     ⟨hhorizon, hscheduled, hkernel, hnull,
+      microscopicGate4ScheduledKernelData_bridge_closed G⟩
+
+/-- Convert the named scheduled-kernel supplier into the abstract Gate 4
+analytic target while using the supplier itself for the physical
+scheduled-density input and the supplied kernel/profile split data for the
+kernel-profile certificate.  The only remaining Gate 4 assumptions are then
+horizon-estimator convergence and null-balance dynamics. -/
+noncomputable def microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfSuppliedData
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (horizonEstimatorConvergence nullBalanceFromDynamics : Prop) :
+    Gate4HorizonEinsteinAnalyticTargets where
+  horizonEstimatorConvergence := horizonEstimatorConvergence
+  physicalScheduledDensity :=
+    MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale
+  bdgKernelProfileCertificate :=
+    Gate4KernelProfileSplitSupplierClosed operatorKernelData
+  nullBalanceFromDynamics := nullBalanceFromDynamics
+  recoveredBDGInterfaceSupplied :=
+    Gate4ScheduledKernelOperatorBridgeClosed
+      (microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+        G)
+      errorScale
+
+/-- The named scheduled-kernel supplier closes Gate 4's physical
+scheduled-density field, kernel/profile certificate field, and recovered-BDG
+interface field.  The only remaining assumptions are horizon-estimator
+convergence and null-balance dynamics. -/
+theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_suppliedData
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {horizonEstimatorConvergence nullBalanceFromDynamics : Prop}
+    (hhorizon : horizonEstimatorConvergence)
+    (hnull : nullBalanceFromDynamics) :
+    Gate4HorizonEinsteinAnalyticClosed
+      (microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfSuppliedData
+        G horizonEstimatorConvergence nullBalanceFromDynamics) := by
+  exact
+    ⟨hhorizon, G, gate4_kernelProfileSplitSupplier_closed operatorKernelData,
+      hnull, microscopicGate4ScheduledKernelData_bridge_closed G⟩
+
+/-- Scheduled-kernel Gate 4 target with both remaining analytic fields tied to
+existing finite/audit interfaces: the horizon-estimator convergence field is
+the finite horizon-hit estimator's Araki-flux convergence target, and the null
+balance field is the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` balance. -/
+noncomputable def microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    {AQFT : HorizonAQFTModel} (phi : AQFT.Excitation) :
+    Gate4HorizonEinsteinAnalyticTargets where
+  horizonEstimatorConvergence :=
+    FiniteEntropySourceConvergesToArakiFlux Hest.finiteScaledFlux arakiFlux
+  physicalScheduledDensity :=
+    MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale
+  bdgKernelProfileCertificate :=
+    Gate4KernelProfileSplitSupplierClosed operatorKernelData
+  nullBalanceFromDynamics :=
+    AQFT.ricciWeightedFlux phi =
+      (8 * Real.pi) * AQFT.weightedNullEnergy phi
+  recoveredBDGInterfaceSupplied :=
+    Gate4ScheduledKernelOperatorBridgeClosed
+      (microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+        G)
+      errorScale
+
+/-- The finite horizon-hit estimator plus the Dorau-Much/Araki/BH audit close
+the two remaining Gate 4 analytic slots for the scheduled-kernel supplier.
+What remains explicit is the estimator-to-Araki flux identification and the
+AQFT/Raychaudhuri/Bekenstein-Hawking hypotheses needed by the eight-pi balance
+theorem. -/
+theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    (hAraki : arakiFlux = Hest.continuumFlux)
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target AQFT)
+    (hArea : RelativeEntropyAreaVariation_Target AQFT alpha)
+    (hRay : RaychaudhuriAreaVariation_Target AQFT)
+    (hBH : BekensteinHawkingEntropyArea_Target AQFT)
+    (hS : AQFT.Srel phi ≠ 0) :
+    Gate4HorizonEinsteinAnalyticClosed
+      (microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+        G Hest arakiFlux phi) := by
+  exact
+    ⟨HorizonHitSourceEstimator.closes_ArakiFlux_bridge Hest arakiFlux hAraki,
+      G, gate4_kernelProfileSplitSupplier_closed operatorKernelData,
+      (gate6_arakiBHEightPiBalance_closed hFlux hArea hRay hBH hS).eightPiNullBalance,
       microscopicGate4ScheduledKernelData_bridge_closed G⟩
 
 /-- The named Gate 4 scheduled-kernel supplier also closes Gate 2's
