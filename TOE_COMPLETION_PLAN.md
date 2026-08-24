@@ -961,6 +961,9 @@ microscopicGate3QuantizedConvergenceData_eventually_total_zero_iff_quantum_zero_
 microscopicGate3QuantizedConvergenceData_eventually_recoveredStage_iff_total_zero
 microscopicGate3QuantizedConvergenceData_exists_total_zero_after_iff_quantum_zero_and_canonical_after
 microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_total_zero_after
+microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_of_total_zero
+microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero_of_eventually_total_zero
+microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after_of_exists_total_zero_after
 commonResidualGap
 microscopicGate3RatesGaps_of_convergenceCertificate
 microscopicGate3RatesGaps_of_convergenceCertificate_componentGaps
@@ -989,6 +992,8 @@ microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_exact_
 microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_full_recovery
 microscopicGate3QuantizedConvergenceData_horizonProtection_and_recovered_after
 microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
+microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero
+microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after
 ```
 
 The next high-value theorem targets are:
@@ -1031,11 +1036,20 @@ The next high-value theorem targets are:
    and
    `microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_total_zero_after`
    mean downstream gates can consume a scalar-zero tail directly as a recovered
-   CSpec stage tail.
+   CSpec stage tail.  The direct RSS/Poisson lemmas
+   `microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero_of_eventually_total_zero`
+   and
+   `microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after_of_exists_total_zero_after`
+   additionally hand Gate 4's finite horizon-error channel the same scalar-zero
+   tail without routing through a separate exact-recovery certificate projection.
    `microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed`
-   hands the exact-recovery certificate directly to Gate 4's finite
-   RSS/Poisson error-zero channel.  If this fails, identify the additional
-   microscopic selection principle needed for the canonical pair coupling.
+   and its projection theorems
+   `microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero`
+   and
+   `microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after`
+   hand the exact-recovery certificate directly to Gate 4's finite RSS/Poisson
+   error-zero channel.  If this fails, identify the additional microscopic
+   selection principle needed for the canonical pair coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.

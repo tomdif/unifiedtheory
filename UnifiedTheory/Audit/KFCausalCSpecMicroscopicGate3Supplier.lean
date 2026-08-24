@@ -21,6 +21,7 @@ namespace UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
 
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
+open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 open Filter
@@ -1105,6 +1106,88 @@ theorem microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_tota
         microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
           D (hN n hn)⟩
 
+/-- In the named quantized Gate 3 target, scalar zero at a stage also kills
+the finite RSS/Poisson horizon-error budget at that same stage. -/
+theorem microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_of_total_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    {n : ℕ}
+    (htotal : total n = 0)
+    (errorScale : ℝ) :
+    ∀ i,
+      rssPoissonError (countWindow n i) (curvatureBias n i) errorScale = 0 := by
+  intro i
+  exact
+    (microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
+      D htotal).rssPoissonError_zero
+      (quantizedGate3Residuals_count_nonneg D.quantizedResiduals n)
+      (quantizedGate3Residuals_curvature_nonneg D.quantizedResiduals n)
+      (quantizedGate3Residuals_spectral_nonneg D.quantizedResiduals n)
+      i
+
+/-- Eventual scalar zero directly kills the finite RSS/Poisson horizon-error
+budget, without unpacking the exact-recovery certificate. -/
+theorem microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero_of_eventually_total_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (errorScale : ℝ)
+    (htotal : ∀ᶠ n in atTop, total n = 0) :
+    ∀ᶠ n in atTop,
+      ∀ i,
+        rssPoissonError
+          (countWindow n i) (curvatureBias n i) errorScale = 0 := by
+  filter_upwards [htotal] with n hzero
+  exact
+    microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_of_total_zero
+      D hzero errorScale
+
+/-- A finite scalar-zero tail directly kills the finite RSS/Poisson
+horizon-error budget after the same threshold. -/
+theorem microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after_of_exists_total_zero_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (errorScale : ℝ)
+    (htotal : ∃ N, ∀ n, N ≤ n → total n = 0) :
+    ∃ N, ∀ n, N ≤ n →
+      ∀ i,
+        rssPoissonError
+          (countWindow n i) (curvatureBias n i) errorScale = 0 := by
+  rcases htotal with ⟨N, hN⟩
+  exact
+    ⟨N, fun n hn =>
+      microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_of_total_zero
+        D (hN n hn) errorScale⟩
+
 /-- Full microscopic Gate 3 supplier: the direct rate/gap package together
 with the stronger convergence certificate needed by the existing exact-recovery
 API.  In future instantiations, the same microscopic causal growth law should
@@ -1875,5 +1958,53 @@ theorem microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_cl
     gate4_exactRecoveryRSSPoisson_closed
       (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate D)
       errorScale
+
+/-- Direct eventual Gate 4 RSS/Poisson zero from the named raw quantized Gate
+3 target. -/
+theorem microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (errorScale : ℝ) :
+    ∀ᶠ n in atTop,
+      ∀ i,
+        rssPoissonError
+          (countWindow n i) (curvatureBias n i) errorScale = 0 := by
+  exact
+    (microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
+      D errorScale).eventuallyRSSPoissonErrorZero
+
+/-- Direct finite-threshold Gate 4 RSS/Poisson zero from the named raw
+quantized Gate 3 target. -/
+theorem microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (errorScale : ℝ) :
+    ∃ N, ∀ n, N ≤ n →
+      ∀ i,
+        rssPoissonError
+          (countWindow n i) (curvatureBias n i) errorScale = 0 := by
+  exact
+    (microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
+      D errorScale).rssPoissonErrorZeroAfter
 
 end UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
