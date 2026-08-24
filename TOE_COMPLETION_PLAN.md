@@ -994,6 +994,11 @@ microscopicGate3QuantizedConvergenceData_horizonProtection_and_recovered_after
 microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
 microscopicGate3QuantizedConvergenceData_eventually_rssPoissonError_zero
 microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after
+microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+microscopicGate3QuantizedConvergenceData_recoveredBDGOperatorBridge_closed
+microscopicGate3QuantizedConvergenceData_recoveredStage_and_bdg4d_operator_tendsto
+microscopicGate3QuantizedConvergenceData_recoveredBDGPoissonOperatorBridge_closed
+microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator_tendsto
 ```
 
 The next high-value theorem targets are:
@@ -1048,7 +1053,12 @@ The next high-value theorem targets are:
    and
    `microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_after`
    hand the exact-recovery certificate directly to Gate 4's finite RSS/Poisson
-   error-zero channel.  If this fails, identify the additional microscopic
+   error-zero channel.  With analytic density/operator-profile data supplied,
+   `microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface`
+   builds the recovered-stage 4D BDG operator interface, and
+   `microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator_tendsto`
+   packages the finite RSS/Poisson error-zero tail together with sampled 4D
+   operator convergence.  If this fails, identify the additional microscopic
    selection principle needed for the canonical pair coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.

@@ -24,7 +24,7 @@ open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFTOESevenGateAttack
-open Filter
+open Filter Topology
 
 /-- The direct microscopic Gate 3 rate/gap package.
 
@@ -2006,5 +2006,181 @@ theorem microscopicGate3QuantizedConvergenceData_exists_rssPoissonError_zero_aft
   exact
     (microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
       D errorScale).rssPoissonErrorZeroAfter
+
+/-- Package a named quantized Gate 3 target together with analytic 4D BDG
+operator-profile data into the recovered-stage BDG operator interface consumed
+by Gate 4.  The microscopic contribution is exactly the induced exact-recovery
+certificate; the remaining inputs are the analytic density and operator profile
+data. -/
+def microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (density : ℕ → ℝ)
+    (hdensity : Tendsto density atTop atTop)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorData : BDG4DOperatorProfileData) :
+    RecoveredStageBDG4DOperatorInterface ι where
+  cSpecWeight := w
+  horizonSource := J
+  repairSource := source
+  countWindow := countWindow
+  curvatureBias := curvatureBias
+  spectralLocality := spectralLocality
+  scale := scale
+  areaCoeff := c
+  step := step
+  descentRate := descentRate
+  remainder := remainder
+  total := total
+  edge := edge
+  candidate := candidate
+  stepFloor := stepFloor
+  weightBase := weightBase
+  sourceBase := sourceBase
+  residualGap := commonResidualGap countGap curvatureGap spectralGap
+  density := density
+  density_tendsto_atTop := hdensity
+  phiAtPoint := phiAtPoint
+  curvaturePhi := curvaturePhi
+  operatorData := operatorData
+  exact_recovery :=
+    microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate D
+
+/-- The quantized Gate 3 target plus analytic 4D operator-profile data closes
+the recovered-stage BDG operator bridge sublayer. -/
+theorem microscopicGate3QuantizedConvergenceData_recoveredBDGOperatorBridge_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (density : ℕ → ℝ)
+    (hdensity : Tendsto density atTop atTop)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorData : BDG4DOperatorProfileData) :
+    Gate4RecoveredBDGOperatorBridgeClosed
+      (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+        D density hdensity phiAtPoint curvaturePhi operatorData) := by
+  exact
+    gate4_recoveredBDGOperatorBridge_closed
+      (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+        D density hdensity phiAtPoint curvaturePhi operatorData)
+
+/-- Direct Gate 3-to-Gate 4 recovered-stage and sampled 4D operator-limit
+output from quantized microscopic data plus analytic operator-profile data. -/
+theorem microscopicGate3QuantizedConvergenceData_recoveredStage_and_bdg4d_operator_tendsto
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (density : ℕ → ℝ)
+    (hdensity : Tendsto density atTop atTop)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorData : BDG4DOperatorProfileData) :
+    (∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)) ∧
+      Tendsto
+        (fun n => BDG4DOperatorProfileData.mean operatorData (density n))
+        atTop
+        (𝓝 (BDG4DOperatorProfileData.target operatorData)) := by
+  simpa
+    [microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface]
+    using
+      gate4_recoveredStage_bdg4d_operator_limit_of_interface
+        (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+          D density hdensity phiAtPoint curvaturePhi operatorData)
+
+/-- The quantized Gate 3 target plus analytic 4D operator-profile data also
+closes Gate 4's recovered-stage/RSS-Poisson/operator bridge sublayer. -/
+theorem microscopicGate3QuantizedConvergenceData_recoveredBDGPoissonOperatorBridge_closed
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (density : ℕ → ℝ)
+    (hdensity : Tendsto density atTop atTop)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorData : BDG4DOperatorProfileData)
+    (errorScale : ℝ) :
+    Gate4RecoveredBDGPoissonOperatorBridgeClosed
+      (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+        D density hdensity phiAtPoint curvaturePhi operatorData)
+      errorScale := by
+  exact
+    gate4_recoveredBDGPoissonOperatorBridge_closed
+      (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+        D density hdensity phiAtPoint curvaturePhi operatorData)
+      errorScale
+
+/-- Direct Gate 3-to-Gate 4 RSS/Poisson zero and sampled 4D operator-limit
+output from quantized microscopic data plus analytic operator-profile data. -/
+theorem microscopicGate3QuantizedConvergenceData_rssPoissonError_zero_and_bdg4d_operator_tendsto
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap)
+    (density : ℕ → ℝ)
+    (hdensity : Tendsto density atTop atTop)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorData : BDG4DOperatorProfileData)
+    (errorScale : ℝ) :
+    (∀ᶠ n in atTop,
+      ∀ i,
+        rssPoissonError
+          (countWindow n i) (curvatureBias n i) errorScale = 0) ∧
+      Tendsto
+        (fun n => BDG4DOperatorProfileData.mean operatorData (density n))
+        atTop
+        (𝓝 (BDG4DOperatorProfileData.target operatorData)) := by
+  simpa
+    [microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface]
+    using
+      RecoveredStageBDG4DOperatorInterface.rssPoissonError_zero_and_operator_tendsto
+        (microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DOperatorInterface
+          D density hdensity phiAtPoint curvaturePhi operatorData)
+        errorScale
 
 end UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
