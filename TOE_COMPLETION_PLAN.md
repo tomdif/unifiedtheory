@@ -943,15 +943,89 @@ physicalHauptvermutungBaseDistortion_eq_zero_iff
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
+MicroscopicGate3RatesGaps
+MicroscopicGate3ComponentResidualGaps
+QuantizedGate3Residuals
+quantizedGate3Residuals_componentResidualGaps
+quantizedGate3Residuals_baseDistortion_eq_zero_iff_quantum_zero
+quantizedGate3Residuals_totalDistortion_eq_zero_iff_quantum_zero_and_canonical
+physicalHauptvermutungConvergenceCertificate_of_quantizedResiduals
+MicroscopicGate3QuantizedConvergenceData
+microscopicGate3QuantizedConvergenceData_convergenceCertificate
+microscopicGate3QuantizedConvergenceData_baseDistortion_eq_zero_iff_quantum_zero
+microscopicGate3QuantizedConvergenceData_totalDistortion_eq_zero_iff_quantum_zero_and_canonical
+microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
+microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
+microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero
+commonResidualGap
+microscopicGate3RatesGaps_of_convergenceCertificate
+microscopicGate3RatesGaps_of_convergenceCertificate_componentGaps
+microscopicGate3RatesGaps_of_convergenceCertificate_quantizedResiduals
+microscopicGate3RatesGaps_of_quantizedConvergenceData
+MicroscopicGate3ExactRecoverySupplier
+microscopicGate3ExactRecoverySupplier_of_convergenceCertificate
+microscopicGate3ExactRecoverySupplier_of_convergenceCertificate_componentGaps
+microscopicGate3ExactRecoverySupplier_of_convergenceCertificate_quantizedResiduals
+microscopicGate3ExactRecoverySupplier_of_quantizedConvergenceData
+microscopicGate3ExactRecoverySupplier_closed_outputs
+microscopicGate3QuantizedConvergenceData_exactRecoverySupplier
+microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+microscopicGate3QuantizedConvergenceData_closed_outputs
+microscopicGate3QuantizedConvergenceData_eventually_exact_zero
+microscopicGate3QuantizedConvergenceData_eventually_recoveredStage
+microscopicGate3QuantizedConvergenceData_eventually_full_operational_recovery
+microscopicGate3QuantizedConvergenceData_exists_exact_zero_after
+microscopicGate3QuantizedConvergenceData_eventually_quantum_zero
+microscopicGate3QuantizedConvergenceData_exists_quantum_zero_after
+microscopicGate3QuantizedConvergenceData_eventually_exact_and_quantum_zero
+microscopicGate3QuantizedConvergenceData_exists_exact_and_quantum_zero_after
+microscopicGate3QuantizedConvergenceData_exists_recovered_after
+microscopicGate3QuantizedConvergenceData_exists_observable_zero_after
+microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_exact_zero
+microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_full_recovery
+microscopicGate3QuantizedConvergenceData_horizonProtection_and_recovered_after
+microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed
 ```
 
 The next high-value theorem targets are:
 
 1. Gate 1: prove `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` for
-   the physical CSpec atlas path, then derive the physical aggregate-rate and
-   residual-gap hypotheses from `completeChiralCausalSetGrowthLaw`, or identify
-   the additional microscopic selection principle needed for the canonical pair
-   coupling.
+   the physical CSpec atlas path, then instantiate
+   `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
+   constructing a `PhysicalHauptvermutungConvergenceCertificate` and
+   finite-spectrum count/curvature/spectral residual gaps.  The narrowest
+   current endpoint is the named structure
+   `MicroscopicGate3QuantizedConvergenceData`, closed by
+   `microscopicGate3QuantizedConvergenceData_closed_outputs`:
+   supply the raw `PhysicalGrowthRepairRefinement`, quantized residual
+   equations, total-distortion identity, step/weight/source floors, and descent
+   identity.  Lean then builds the convergence certificate, derives
+   nonnegativity from quantization, chooses
+   `commonResidualGap = min countGap (min curvatureGap spectralGap)`, and
+   derives the explicit aggregate rate `weightBase*sourceBase` from the
+   centered-source floors.  The direct projection theorems
+   `microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_exact_zero`
+   and
+   `microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_full_recovery`
+   expose the payoff without unpacking intermediate certificates; the
+   quantized-occupation projections
+   `microscopicGate3QuantizedConvergenceData_eventually_quantum_zero` and
+   `microscopicGate3QuantizedConvergenceData_exists_quantum_zero_after`
+   additionally kill the natural count/curvature/spectral occupation counters;
+   the combined theorem
+   `microscopicGate3QuantizedConvergenceData_eventually_exact_and_quantum_zero`
+   synchronizes real residual zero, canonical transport, and occupation-zero
+   in a single eventual statement; the pointwise detector theorem
+   `microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical`
+   reduces the scalar Lyapunov target `total n = 0` exactly to vanishing
+   count/curvature/spectral occupation counters plus canonical CSpec bridge
+   transport; and
+   `microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero`
+   makes recovered-stage status pointwise equivalent to that same scalar zero.
+   `microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed`
+   hands the exact-recovery certificate directly to Gate 4's finite
+   RSS/Poisson error-zero channel.  If this fails, identify the additional
+   microscopic selection principle needed for the canonical pair coupling.
 2. Gate 2: give semantic zero-set theorems for `countWindow`, `curvatureBias`,
    and `spectralLocality`, starting with the pair-consistency bridge.
 3. Gate 3: derive the direct aggregate rate from the microscopic law.

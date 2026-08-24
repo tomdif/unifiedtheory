@@ -5724,4 +5724,7 @@ import UnifiedTheory.Audit.KFCausalCSpec
 -- exposes the current Lean hooks for Gate 1 signed-fiber noncancellation,
 -- Gate 2 base zero sets, and Gate 3 protected convergence certificates.
 import UnifiedTheory.Audit.KFTOESevenGateAttack
+-- Microscopic Gate 3 supplier interface: packages the exact aggregate-rate
+-- and residual-gap obligations that causal growth must supply.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
 import UnifiedTheory.LayerC.ContextualFraction
