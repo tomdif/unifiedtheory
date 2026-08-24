@@ -1130,7 +1130,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
     microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
       G Hest arakiFlux phi
   gate5Targets :=
-    gate5QFTStandardModelIRTargetsOfFiniteCarrierAndSMAudits
+    gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
       fA fB F K constructiveHilbertQFTLimit qftSpinStatisticsLift
       qftGaugeRenormalizationLift
   gate6Targets :=
@@ -1142,8 +1142,8 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
 /-- Current sharpest full-closure theorem.  It closes every finite/audit layer
 currently present in the repo and leaves only the remaining nontrivial physics
 lifts explicit: Gate 1 signed-fiber and coupling selection, Gate 4
-estimator/AQFT horizon inputs, three constructive-QFT Gate 5 lifts, and two
-Gate 6 cosmology/structure inputs. -/
+estimator/AQFT horizon inputs, the continuum/Haag-Ruelle/renormalization Gate
+5 lifts, and two Gate 6 cosmology/structure inputs. -/
 theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1211,7 +1211,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
           G.gate3),
       microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
         G Hest arakiFlux hAraki hFlux hArea hRay hBH hS,
-      gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+      gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
         fA fB hA hB F K hHilbert hSpinStatistics hGaugeRenorm,
       gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
         hinitial hlate,
@@ -1277,7 +1277,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
     microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
       G Hest arakiFlux phi
   gate5Targets :=
-    gate5QFTStandardModelIRTargetsOfFiniteCarrierAndSMAudits
+    gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
       fA fB F K constructiveHilbertQFTLimit qftSpinStatisticsLift
       qftGaugeRenormalizationLift
   gate6Targets :=
@@ -1288,9 +1288,10 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
   gate7Targets := gate7PreRegistrationLedgerTargets
 
 /-- Current strict full-closure theorem.  Compared with the lighter inflation
-Gate 6 theorem, this also harvests Hayden-Preskill, AMPS, QQG, and
-physical-information-limit audits and keeps microscopic evaporation dynamics as
-an explicit remaining input. -/
+Gate 6 theorem, this also harvests the Gate 5 Lorentzian-Wightman/chamber
+mass-gap audits plus Hayden-Preskill, AMPS, QQG, and physical-information-limit
+audits, and keeps microscopic evaporation dynamics as an explicit remaining
+input. -/
 theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1362,7 +1363,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
           G.gate3),
       microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
         G Hest arakiFlux hAraki hFlux hArea hRay hBH hS,
-      gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+      gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
         fA fB hA hB F K hHilbert hSpinStatistics hGaugeRenorm,
       gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
         S hinitial hevap hlate,

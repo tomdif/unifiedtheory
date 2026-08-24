@@ -26,6 +26,8 @@ import UnifiedTheory.LayerA.GravitonTTModes
 import UnifiedTheory.LayerB.InflationAudit
 import UnifiedTheory.LayerB.VirtualParticles
 import UnifiedTheory.LayerB.WightmanAxioms
+import UnifiedTheory.LayerB.Clay_OS1_BypassVerification
+import UnifiedTheory.LayerB.R3_MassGapExponentialDecay
 import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
@@ -75,8 +77,11 @@ open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierField.Project
 open UnifiedTheory.LayerB.PreRegistrationLedger
 open UnifiedTheory.LayerB.DarkMatterAudit
 open UnifiedTheory.LayerB.InformationParadox
+open UnifiedTheory.LayerB.Clay_OS1_BypassVerification
+open UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect
 open UnifiedTheory.LayerB.LiebRobinson
 open UnifiedTheory.LayerB.MargolusLevitinTight
+open UnifiedTheory.LayerB.R3_MassGapExponentialDecay
 open UnifiedTheory.LayerC.BekensteinBound
 open UnifiedTheory.LayerC.AMPSFirewall
 open UnifiedTheory.LayerC.HaydenPreskill
@@ -1282,6 +1287,68 @@ theorem gate5_standardModelParameterAudit_closed :
       UnifiedTheory.LayerC.QuarkLeptonUnification.unification_master,
       UnifiedTheory.LayerC.GUTEmbedding.so10_anomaly_safe⟩
 
+/-- Lorentzian-direct Wightman audit available to Gate 5.  This records that
+the OS route is blocked but does not block the Lorentzian-native Wightman
+route: the ledger has all seven entries, with five proved/free chamber or
+causal-set entries and two explicit conditional/research entries. -/
+structure Gate5LorentzianWightmanStatusAuditClosed : Prop where
+  os1Problematic :
+    UnifiedTheory.LayerB.CL3_SchwingerFunctions.os1_classification.status =
+      UnifiedTheory.LayerB.CL3_SchwingerFunctions.OSAxiomStatus.PROBLEMATIC_LORENTZIAN
+  allWightmanEntries :
+    UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.all_wightman_lorentz.length = 7
+  lorentzianStatuses :
+    UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W1_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.PARTIAL_FREE ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W2_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.FREE_FROM_CHAMBER_GAP ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W3_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.PROVED_DIRECT_CHAMBER ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W4_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.PROVED_DIRECT_CHAMBER ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W5_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.FREE_FROM_CAUSAL_SET ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W6_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.PROVED_DIRECT_CHAMBER ∧
+      UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W7_lorentz.status =
+        UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.WightmanStatusLorentz.RESEARCH_HAAG_RUELLE
+
+theorem gate5_lorentzianWightmanStatusAudit_closed :
+    Gate5LorentzianWightmanStatusAuditClosed := by
+  let h := UnifiedTheory.LayerB.Clay_OS1_BypassVerification.Clay_R2_not_blocked_by_OS1
+  exact ⟨h.1, h.2.1, h.2.2⟩
+
+/-- Chamber mass-gap/exponential-decay audit available to Gate 5.  This closes
+the finite/chamber Hamiltonian decay side: positive closed-form rate,
+exponential contraction on the vacuum-orthogonal chamber, and the honest
+constructive-measure status split.  The continuum Wightman/Haag-Ruelle lift is
+still not claimed here. -/
+structure Gate5ChamberMassGapDecayAuditClosed : Prop where
+  decayRatePositiveClosedForm :
+    0 < UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber ∧
+      UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber =
+        Real.sqrt 7 / 15
+  spectralGapExponentialDecay :
+    ∀ t : ℝ, 0 ≤ t →
+       ∀ ψ : UnifiedTheory.LayerB.R3_MassGapExponentialDecay.ChamberState,
+        UnifiedTheory.LayerB.R3_MassGapExponentialDecay.ChamberState.InOrthVac ψ →
+          (UnifiedTheory.LayerB.R3_MassGapExponentialDecay.heatSemigroupShifted t ψ).normSq
+            ≤ Real.exp
+                (-2 * t *
+                  UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber) *
+              ψ.normSq
+  chamberMeasureStatus :
+    UnifiedTheory.LayerB.R3_MassGapExponentialDecay.cl3_M6_chamber_operator_norm.status =
+      UnifiedTheory.LayerB.CL3_ConstructiveMeasure.MeasureStatus.DiscreteOnly
+  fullMeasureStatus :
+    UnifiedTheory.LayerB.CL3_ClusterDecomposition.cl3_M6_full.status =
+      UnifiedTheory.LayerB.CL3_ConstructiveMeasure.MeasureStatus.NeedsClusterExp
+
+theorem gate5_chamberMassGapDecayAudit_closed :
+    Gate5ChamberMassGapDecayAuditClosed := by
+  let h := UnifiedTheory.LayerB.R3_MassGapExponentialDecay.R3_chamber_exponential_decay_master
+  exact ⟨h.1, h.2.1, h.2.2.2.2.2.1, h.2.2.2.2.2.2⟩
+
 /-- Gate 5 QFT/Standard-Model IR target with finite carrier cover-independence
 and all currently available finite SM/QM audits supplied.  The remaining Gate
 5 inputs are now the genuine constructive-QFT lifts: continuum Hilbert/QFT
@@ -1330,6 +1397,63 @@ theorem gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
     ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
       ⟨gate5_effectiveHilbertAudit_closed, hHilbert⟩,
       ⟨gate5_propagatorKinematicAudit_closed, hSpinStatistics⟩,
+      ⟨gate5_finiteGaugeAudit_closed, hGaugeRenorm⟩,
+      gate5_standardModelParameterAudit_closed⟩
+
+/-- Stronger Gate 5 QFT/Standard-Model IR target with the finite SM/QM audits,
+Lorentzian-direct Wightman status audit, and chamber mass-gap/exponential-decay
+audit supplied.  The remaining Gate 5 inputs are the continuum Hilbert/QFT
+limit, the Haag-Ruelle/spin-statistics lift, and gauge-field renormalization. -/
+def gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F G : ProjectiveQubitCarrierField site)
+    (constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop) :
+    Gate5QFTStandardModelIRTargets where
+  recoveredCarrierCoverIndependence :=
+    Gate5FiniteCarrierCoverClosed fA fB F G
+  effectiveHilbertSpaceLimit :=
+    Gate5EffectiveHilbertAuditClosed ∧
+      Gate5LorentzianWightmanStatusAuditClosed ∧
+        constructiveHilbertQFTLimit
+  propagatorsAndSpinStatistics :=
+    Gate5PropagatorKinematicAuditClosed ∧
+      Gate5ChamberMassGapDecayAuditClosed ∧
+        qftSpinStatisticsLift
+  gaugeFieldsAndRenormalization :=
+    Gate5FiniteGaugeAuditClosed ∧ qftGaugeRenormalizationLift
+  standardModelParameterChain :=
+    Gate5StandardModelParameterAuditClosed
+
+/-- After harvesting the Wightman-status and chamber mass-gap/decay audits,
+Gate 5 closure is reduced to the continuum Hilbert/QFT limit, the
+Haag-Ruelle/spin-statistics lift, and gauge-field renormalization. -/
+theorem gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site)
+    {constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop}
+    (hHilbert : constructiveHilbertQFTLimit)
+    (hSpinStatistics : qftSpinStatisticsLift)
+    (hGaugeRenorm : qftGaugeRenormalizationLift) :
+    Gate5QFTStandardModelIRClosed
+      (gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
+        fA fB F G constructiveHilbertQFTLimit
+        qftSpinStatisticsLift qftGaugeRenormalizationLift) := by
+  exact
+    ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
+      ⟨gate5_effectiveHilbertAudit_closed,
+        gate5_lorentzianWightmanStatusAudit_closed, hHilbert⟩,
+      ⟨gate5_propagatorKinematicAudit_closed,
+        gate5_chamberMassGapDecayAudit_closed, hSpinStatistics⟩,
       ⟨gate5_finiteGaugeAudit_closed, hGaugeRenorm⟩,
       gate5_standardModelParameterAudit_closed⟩
 
@@ -2215,6 +2339,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_finiteGaugeAudit_closed
 #print axioms gate5_standardModelParameterAudit_closed
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+#print axioms gate5_lorentzianWightmanStatusAudit_closed
+#print axioms gate5_chamberMassGapDecayAudit_closed
+#print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed

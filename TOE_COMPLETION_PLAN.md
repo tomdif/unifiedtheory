@@ -86,8 +86,14 @@ certificate.  The sharpest current full-closure theorem is
 Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
 finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
 finite group-level gauge structure, hypercharge uniqueness, quark/lepton
-anomaly forcing, and SO(10) anomaly safety.  Gate 6 now harvests the
-inflation/CMB tensor audit.  The sharpest current full-closure theorem is
+anomaly forcing, and SO(10) anomaly safety.  Gate 5 further harvests the
+Lorentzian-direct Wightman status audit and the chamber mass-gap/exponential
+decay audit: OS reconstruction is recorded as blocked/problematic, the
+Lorentzian-native Wightman route has all seven ledger entries with W7 still a
+Haag-Ruelle research lift, and the chamber vacuum-orthogonal decay rate is
+positive with closed form `sqrt 7 / 15`.  Gate 6 now harvests the
+inflation/CMB tensor audit.  The sharpest current inflation-envelope
+full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
 The stricter current Gate 6 audit envelope additionally harvests the
 Hayden-Preskill evaporation skeleton, AMPS monogamy fork, QQG conditional
@@ -95,6 +101,16 @@ cosmology bridge, and physical-information-limit audit, while making the
 remaining scrambling/decoupling/recovery evaporation dynamics an explicit
 input.  The corresponding strict full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
+
+External octonion/S6 watchpoint: Levent Alpoge's primary PDF
+`https://alpo.ge/s6.pdf`, titled on its first page as
+"The (3, 4, infinity) modular family of 2-tori, completed at its three special
+points, is a complex structure on S6", claims a compact complex threefold
+diffeomorphic to the six-sphere.  This is not imported as a repo theorem.  If
+the result stabilizes, its TOE relevance is a Gate 5 research target: use it
+as a possible bridge from octonionic almost-complex/Hopf geometry to ordinary
+complex analytic geometry.  It does not by itself close the continuum QFT,
+Haag-Ruelle/spin-statistics, gauge-renormalization, or cosmology gates.
 
 ## Gates
 
@@ -917,19 +933,45 @@ Completed algebraic groundwork:
   give equivalent carrier-field equality and Pauli/all-axis Born-data tests,
   and both are equivalent to their common-refinement tests.
 
+Current Wightman/mass-gap hook:
+
+- `gate5_lorentzianWightmanStatusAudit_closed` packages the Clay OS1 bypass
+  status: the OS route is recorded as problematic for Lorentzian QFT, the
+  Lorentzian-direct Wightman ledger has all seven entries, and W7 is kept as
+  the explicit Haag-Ruelle research lift rather than silently claimed.
+- `gate5_chamberMassGapDecayAudit_closed` packages the chamber mass-gap side:
+  `gamma_vac_chamber` is positive with closed form `sqrt 7 / 15`, the shifted
+  heat semigroup contracts exponentially on the vacuum-orthogonal chamber, the
+  chamber operator-norm measure audit is discrete-only, and the full CL3
+  measure remains marked as needing cluster expansion.
+- `gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap`
+  reduces Gate 5 to three explicit remaining lifts: the continuum Hilbert/QFT
+  limit, the Haag-Ruelle/spin-statistics lift, and gauge-field
+  renormalization.
+
+Conditional octonion/S6 research hook:
+
+- Alpoge's S6 complex-structure PDF should be treated as an external
+  watchpoint until it has a stable bibliographic record and independent
+  checking.  If usable, it suggests a Gate 5 theorem target connecting
+  octonionic almost-complex geometry to ordinary complex-analytic geometry.
+  That would strengthen the Hopf/octonion side of the infrared geometry
+  bridge, but it would still need separate QFT, spin-statistics, and
+  renormalization proofs.
+
 Open work:
 
 - construct the effective Hilbert space and local QFT limit;
 - lift the finite propagator kinematics to constructive-QFT propagators and
-  prove the continuum spin-statistics theorem;
+  prove the Haag-Ruelle/spin-statistics theorem;
 - lift the finite group-level gauge structure to Yang-Mills/Higgs field
   dynamics and renormalization flow;
 - lift the algebraic Hopf bridge to a topological/principal-bundle statement
   with quotient topology, local trivializations, and characteristic classes;
 - connect the finite Standard Model algebra to the same infrared limit.  The
-  finite hypercharge, anomaly, quark/lepton, SO(10), and SM/QM parameter
-  audits are now harvested by
-  `gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits`.
+  finite hypercharge, anomaly, quark/lepton, SO(10), SM/QM parameter,
+  Lorentzian-Wightman, and chamber mass-gap audits are now harvested by
+  `gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap`.
 
 ### Gate 6: Cosmology And Black Holes
 
@@ -1076,16 +1118,17 @@ Open work:
     order-data coupling selection, estimator-to-Araki flux identification,
     the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
     plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts
-    (continuum Hilbert/QFT limit, spin-statistics, gauge renormalization),
-    cosmological measure/initial condition, and late-time structure/GW
-    compatibility.
+    (continuum Hilbert/QFT limit, Haag-Ruelle/spin-statistics lift, gauge
+    renormalization), cosmological measure/initial condition, and late-time
+    structure/GW compatibility.
 13. Instantiate
     `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed`.
     The remaining assumptions are signed atlas fiber-sum noncancellation,
     order-data coupling selection, estimator-to-Araki flux identification,
     the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
-    plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts,
-    cosmological measure/initial condition, microscopic black-hole
+    plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts
+    (continuum Hilbert/QFT limit, Haag-Ruelle/spin-statistics lift, gauge
+    renormalization), cosmological measure/initial condition, microscopic black-hole
     scrambling/decoupling/recovery dynamics, and late-time structure/GW
     compatibility.
 
@@ -1201,6 +1244,9 @@ gate5_propagatorKinematicAudit_closed
 gate5_finiteGaugeAudit_closed
 gate5_standardModelParameterAudit_closed
 gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+gate5_lorentzianWightmanStatusAudit_closed
+gate5_chamberMassGapDecayAudit_closed
+gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
