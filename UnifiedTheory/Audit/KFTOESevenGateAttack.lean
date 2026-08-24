@@ -2513,6 +2513,91 @@ theorem gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
       ⟨hBridge.lateStructureFormation,
         hBridge.gravitationalWaveCompatibility⟩
 
+/-- Hayden-Preskill-native refinement of the black-hole evaporation bridge.
+Instead of a generic microscopic-evaporation proposition, this exposes the
+three analytic inputs already named in `LayerC.HaydenPreskill`: scrambling,
+decoupling, and recovery with the Hayden gap. -/
+structure Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed : Prop where
+  scramblingTarget :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Scrambling_Target s
+  decouplingTarget :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Decoupling_Target s
+  recoveryTargetAndHaydenGap :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Recovery_Target s ∧
+        UnifiedTheory.LayerC.HaydenPreskill.HaydenGap s
+  recoveryBoundWellBehaved :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      0 ≤ UnifiedTheory.LayerC.HaydenPreskill.HPRecoveryBound s ∧
+        UnifiedTheory.LayerC.HaydenPreskill.HPRecoveryBound s ≤ 1
+  recoveryErrorBounded :
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      ∃ err : ℝ, 0 ≤ err ∧ err ≤ 2
+
+theorem gate6_haydenPreskillMicroscopicEvaporationBridge_closed
+    (hscrambling :
+      ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+        UnifiedTheory.LayerC.HaydenPreskill.Scrambling_Target s)
+    (hdecoupling :
+      ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+        UnifiedTheory.LayerC.HaydenPreskill.Decoupling_Target s)
+    (hrecoveryGap :
+      ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+        UnifiedTheory.LayerC.HaydenPreskill.Recovery_Target s ∧
+          UnifiedTheory.LayerC.HaydenPreskill.HaydenGap s) :
+    Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed := by
+  exact
+    ⟨hscrambling, hdecoupling, hrecoveryGap,
+      fun s =>
+        UnifiedTheory.LayerC.HaydenPreskill.haydenPreskill_recovery
+          hscrambling hdecoupling s (hrecoveryGap s).2,
+      fun s =>
+        UnifiedTheory.LayerC.HaydenPreskill.haydenPreskill_recovery_error_bounded
+          s (hrecoveryGap s).1 (hrecoveryGap s).2⟩
+
+/-- Gate 6 named target whose evaporation fields are specialized to the
+Hayden-Preskill-native scrambling/decoupling/recovery obligations. -/
+def gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+    (cosmologicalMeasureOrInitialState
+      lateStructureFormation gravitationalWaveCompatibility : Prop) :
+    Gate6NamedCosmologyBlackHoleBridgeTargets where
+  cosmologicalMeasureOrInitialState :=
+    cosmologicalMeasureOrInitialState
+  microscopicScramblingDynamics :=
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Scrambling_Target s
+  microscopicDecouplingDynamics :=
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Decoupling_Target s
+  microscopicRecoveryChannelDynamics :=
+    ∀ s : UnifiedTheory.LayerC.HaydenPreskill.HPSetup,
+      UnifiedTheory.LayerC.HaydenPreskill.Recovery_Target s ∧
+        UnifiedTheory.LayerC.HaydenPreskill.HaydenGap s
+  lateStructureFormation := lateStructureFormation
+  gravitationalWaveCompatibility := gravitationalWaveCompatibility
+
+theorem gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
+    (S : QQGScenario)
+    {cosmologicalMeasureOrInitialState
+      lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (hinitial : cosmologicalMeasureOrInitialState)
+    (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
+    (hlate : lateStructureFormation)
+    (hgw : gravitationalWaveCompatibility) :
+    Gate6NamedCosmologyBlackHoleBridgeClosed S
+      (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+        cosmologicalMeasureOrInitialState
+        lateStructureFormation gravitationalWaveCompatibility) := by
+  exact
+    gate6_namedCosmologyBlackHoleBridge_closed S
+      (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+        cosmologicalMeasureOrInitialState
+        lateStructureFormation gravitationalWaveCompatibility)
+      hinitial hHP.scramblingTarget hHP.decouplingTarget
+      hHP.recoveryTargetAndHaydenGap hlate hgw
+
 /-! ## Gate 7: external tests -/
 
 /-- External-test protocol obligations for keeping the framework falsifiable. -/
@@ -2629,6 +2714,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
 #print axioms gate6_namedCosmologyBlackHoleBridge_closed
 #print axioms gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+#print axioms gate6_haydenPreskillMicroscopicEvaporationBridge_closed
+#print axioms gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
 #print axioms gate6_haydenPreskillEvaporationAudit_closed
 #print axioms gate6_ampsFirewallAudit_closed
 #print axioms gate6_entropyFluxLimitBridge_closed

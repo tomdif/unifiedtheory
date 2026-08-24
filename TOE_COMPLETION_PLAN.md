@@ -116,6 +116,13 @@ The current sharpest formal target is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges`;
 its closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed`.
+The black-hole part is now further refinable through the Hayden-Preskill-native
+bridge
+`gate6_haydenPreskillMicroscopicEvaporationBridge_closed`, which reduces
+evaporation dynamics to the existing `Scrambling_Target`,
+`Decoupling_Target`, and `Recovery_Target ∧ HaydenGap` obligations.  The
+corresponding HP-specialized full-closure theorem is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed`.
 
 External octonion/S6 watchpoint: Levent Alpoge's primary PDF
 `https://alpo.ge/s6.pdf`, titled on its first page as
@@ -1107,15 +1114,21 @@ that external Gate 6 tail into named sub-obligations: cosmological measure or
 initial state, microscopic scrambling, microscopic decoupling, microscopic
 recovery channel, late-time structure formation, and gravitational-wave
 compatibility.
+`gate6_haydenPreskillMicroscopicEvaporationBridge_closed` specializes the
+three black-hole evaporation obligations to the repo's Hayden-Preskill-native
+targets: scrambling, decoupling, and recovery with a Hayden gap.  Its proof
+then reuses `haydenPreskill_recovery` and
+`haydenPreskill_recovery_error_bounded` to derive the `[0,1]` recovery-bound
+package and the `[0,2]` recovery-error package.
 
 Open work:
 
 - initial condition or cosmological measure;
 - late-time structure-formation and gravitational-wave compatibility beyond
   the inflation-sector observable audit;
-- microscopic black-hole scrambling, decoupling, and recovery-channel dynamics
-  beyond the finite entropy/Page, Hayden-Preskill skeleton, AMPS, and finite
-  information-preservation audits.
+- microscopic black-hole scrambling, decoupling, and Uhlmann-style recovery
+  channel dynamics beyond the finite entropy/Page, Hayden-Preskill skeleton,
+  AMPS, and finite information-preservation audits.
 
 ### Gate 7: External Tests
 
@@ -1337,8 +1350,11 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6Bri
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed
 gate6_namedCosmologyBlackHoleBridge_closed
 gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+gate6_haydenPreskillMicroscopicEvaporationBridge_closed
+gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
 ```
 
 The next high-value theorem targets are:
