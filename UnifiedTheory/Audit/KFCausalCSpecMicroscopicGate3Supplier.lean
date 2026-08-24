@@ -2986,4 +2986,262 @@ theorem microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_o
         H.chartOperatorLimit, H.chartDistortionTendsToZero,
         H.scheduledDensityTendsToInfinity⟩
 
+/-- Named Gate 4 supplier target over the raw quantized Gate 3 data.
+
+This is the strongest current microscopic-to-Gate-4 input package: quantized
+Gate 3 convergence data, physical chart certificates with matched residual
+sums, an affine density law, chart/coordinate sampling data, and the active
+kernel/profile split supplier.  It deliberately leaves the full
+horizon-to-Einstein analytic target separate. -/
+structure MicroscopicGate4ScheduledKernelData
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    (w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ)
+    (scale c step descentRate remainder total : ℕ → ℝ)
+    (edge : ℕ → ι → E4)
+    (candidate : ℕ → ι → Equiv.Perm Direction)
+    (countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ)
+    (stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ)
+    (chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart)
+    (fixedScale densityBase densityStep : ℝ)
+    (coord : Y → Fin 4 → ℝ)
+    (chartOfCell : ι → chart)
+    (sampleEvent : ℕ → ι → X)
+    (phiAtPoint curvaturePhi : ℝ)
+    (operatorKernelData : BDG4DOperatorProfileKernelSplitData)
+    (errorScale : ℝ) : Prop where
+  gate3 :
+    MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+  scale_eq : ∀ n, (chartCertificate n).scale = fixedScale
+  countWindow_eq_sum :
+    ∀ n, (chartCertificate n).countWindow = ∑ i, countWindow n i
+  curvatureBias_eq_sum :
+    ∀ n, (chartCertificate n).curvatureBias = ∑ i, curvatureBias n i
+  pairConsistency_eq_spectral_sum :
+    ∀ n, (chartCertificate n).pairConsistency =
+      ∑ i, spectralLocality n i
+  densityStep_pos : 0 < densityStep
+  density_eq_affine :
+    ∀ n, (chartCertificate n).density =
+      densityBase + densityStep * (n : ℝ)
+
+/-- The named Gate 4 scheduled-kernel supplier builds the concrete interface
+consumed by the Gate 4 bridge ledger. -/
+noncomputable def microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale) :
+    RecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+      ι X Y chart :=
+  microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+    G.gate3 chartCertificate fixedScale G.scale_eq
+    G.countWindow_eq_sum G.curvatureBias_eq_sum
+    G.pairConsistency_eq_spectral_sum densityBase densityStep
+    G.densityStep_pos G.density_eq_affine coord chartOfCell sampleEvent
+    phiAtPoint curvaturePhi operatorKernelData
+
+/-- The named Gate 4 scheduled-kernel supplier closes the strongest current
+Gate 4 scheduled-kernel/operator bridge. -/
+theorem microscopicGate4ScheduledKernelData_bridge_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale) :
+    Gate4ScheduledKernelOperatorBridgeClosed
+      (microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+        G)
+      errorScale := by
+  simpa
+    [microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface]
+    using
+      microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_closed
+        G.gate3 chartCertificate fixedScale G.scale_eq
+        G.countWindow_eq_sum G.curvatureBias_eq_sum
+        G.pairConsistency_eq_spectral_sum densityBase densityStep
+        G.densityStep_pos G.density_eq_affine coord chartOfCell sampleEvent
+        phiAtPoint curvaturePhi operatorKernelData errorScale
+
+/-- Direct output projections from the named Gate 4 scheduled-kernel supplier:
+eventual recovered stages, zero RSS/Poisson horizon error, sampled 4D operator
+convergence, chart-distortion collapse, and density divergence. -/
+theorem microscopicGate4ScheduledKernelData_outputs
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale) :
+    (∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)) ∧
+      (∀ᶠ n in atTop,
+        ∀ i,
+          rssPoissonError
+            (countWindow n i) (curvatureBias n i) errorScale = 0) ∧
+        Tendsto
+          (fun n =>
+            BDG4DOperatorProfileData.mean
+              operatorKernelData.toProfileData ((chartCertificate n).density))
+          atTop
+          (𝓝 (BDG4DOperatorProfileData.target operatorKernelData.toProfileData)) ∧
+          Tendsto (fun n => (chartCertificate n).distortionBound)
+            atTop (𝓝 0) ∧
+            Tendsto (fun n => (chartCertificate n).density) atTop atTop := by
+  exact
+    microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_outputs
+      G.gate3 chartCertificate fixedScale G.scale_eq
+      G.countWindow_eq_sum G.curvatureBias_eq_sum
+      G.pairConsistency_eq_spectral_sum densityBase densityStep
+      G.densityStep_pos G.density_eq_affine coord chartOfCell sampleEvent
+      phiAtPoint curvaturePhi operatorKernelData errorScale
+
+/-- Convert the named scheduled-kernel supplier into the abstract Gate 4
+analytic target record, leaving exactly the still-external horizon estimator,
+scheduled-density physics, kernel-profile certificate, and null-balance
+dynamics as named assumptions. -/
+noncomputable def microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop) :
+    Gate4HorizonEinsteinAnalyticTargets where
+  horizonEstimatorConvergence := horizonEstimatorConvergence
+  physicalScheduledDensity := physicalScheduledDensity
+  bdgKernelProfileCertificate := bdgKernelProfileCertificate
+  nullBalanceFromDynamics := nullBalanceFromDynamics
+  recoveredBDGInterfaceSupplied :=
+    Gate4ScheduledKernelOperatorBridgeClosed
+      (microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+        G)
+      errorScale
+
+/-- Closing the abstract Gate 4 analytic target now reduces to the four
+explicit analytic/physical assumptions plus the named scheduled-kernel
+microscopic supplier. -/
+theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics) :
+    Gate4HorizonEinsteinAnalyticClosed
+      (microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
+        G horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics) := by
+  exact
+    ⟨hhorizon, hscheduled, hkernel, hnull,
+      microscopicGate4ScheduledKernelData_bridge_closed G⟩
+
 end UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier

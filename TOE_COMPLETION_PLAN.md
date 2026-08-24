@@ -34,8 +34,10 @@ explicit partial-closure certificates, packages Gate 4's active-kernel
 cone-bound supplier, kernel/profile analytic supplier, and recovered-stage 4D
 BDG RSS/Poisson operator bridge as explicit partial-closure certificates,
 packages the strongest scheduled kernel/operator Gate 4 bridge as
-an explicit partial-closure certificate, packages Gate 5's arbitrary-axis Born
-observables, local Born/projective completeness, finite Hopf carrier cover-independence, and
+an explicit partial-closure certificate, packages the matching named
+microscopic Gate 4 scheduled-kernel supplier target, packages Gate 5's
+arbitrary-axis Born observables, local Born/projective completeness, finite
+Hopf carrier cover-independence, and
 recovered common-refinement layers as explicit partial-closure certificates,
 packages Gate 6's dark-density Planck-window and
 cosmological-constant/graviton-mode audits plus finite information-preservation
@@ -674,6 +676,12 @@ BDG4DOperatorProfileKernelSplitData.sampled_tendsto
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.toSplitOperatorInterface
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.rssPoissonError_zero_chart_operator_tendsto_and_distortionBound_tendsto_zero
 RecoveredStageBDG4DScheduledDensityKernelOperatorInterface.recoveredStage_chart_operator_tendsto_and_distortionBound_tendsto_zero
+MicroscopicGate4ScheduledKernelData
+microscopicGate4ScheduledKernelData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
+microscopicGate4ScheduledKernelData_bridge_closed
+microscopicGate4ScheduledKernelData_outputs
+microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargets
+microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed
 ```
 
 This first finite bridge connects exact recovered CSpec stages to the concrete
@@ -734,13 +742,22 @@ inequality assembles the combined estimate.
 `KFTOESevenGateAttack.lean` now exposes this assembly as
 `Gate4ActiveKernelConeBoundClosed` and
 `gate4_activeKernelConeBound_closed`.
+The microscopic supplier module now wraps the strongest scheduled-kernel
+handoff in `MicroscopicGate4ScheduledKernelData`.  Its closure theorem
+`microscopicGate4ScheduledKernelData_bridge_closed` proves the current
+`Gate4ScheduledKernelOperatorBridgeClosed` target from one named package, while
+`microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed` shows that
+the full abstract Gate 4 record now reduces to four explicitly named remaining
+assumptions: horizon-estimator convergence, physical scheduled-density input,
+the kernel/profile certificate, and null-balance dynamics.
 
 Open work:
 
 - prove finite horizon-hit estimators converge to Araki/null flux;
-- prove the physical causal-growth law supplies a
-  `RecoveredStageBDG4DScheduledDensityInterface`, especially the affine density
-  law and matched residual identities;
+- prove the physical causal-growth law supplies
+  `MicroscopicGate4ScheduledKernelData`, especially the physical chart
+  certificates, affine density law, matched residual identities, coordinates,
+  sample map, and finite RSS/Poisson error scale;
 - prove the physical recovered chart supplies `BDG4DOperatorProfileKernelSplitData`:
   the profile functions, positive support scales, continuity and derivative
   regularity, uniform bounds, compact support, lower lightcone support,
