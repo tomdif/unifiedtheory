@@ -3493,6 +3493,95 @@ theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_es
       (gate6_arakiBHEightPiBalance_closed hFlux hArea hRay hBH hS).eightPiNullBalance,
       microscopicGate4ScheduledKernelData_bridge_closed G⟩
 
+/-- Named Gate 4 Araki-horizon bridge.  This packages the remaining horizon
+analytic inputs behind the scheduled-kernel Gate 4 handoff and records the two
+derived facts that Gate 4 actually consumes: finite estimator convergence to
+Araki flux and the `8*pi` null balance. -/
+structure Gate4EstimatorArakiHorizonBridgeClosed
+    {η : Type*} [Fintype η]
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (AQFT : HorizonAQFTModel) (alpha : ℝ)
+    (phi : AQFT.Excitation) : Prop where
+  estimatorArakiFluxIdentification :
+    arakiFlux = Hest.continuumFlux
+  arakiRelativeEntropyFlux :
+    HorizonArakiRelativeEntropyFlux_Target AQFT
+  relativeEntropyAreaVariation :
+    RelativeEntropyAreaVariation_Target AQFT alpha
+  raychaudhuriAreaVariation :
+    RaychaudhuriAreaVariation_Target AQFT
+  bekensteinHawkingEntropyArea :
+    BekensteinHawkingEntropyArea_Target AQFT
+  nonzeroExcitation :
+    AQFT.Srel phi ≠ 0
+  finiteEstimatorConvergesToAraki :
+    FiniteEntropySourceConvergesToArakiFlux
+      Hest.finiteScaledFlux arakiFlux
+  eightPiNullBalance :
+    AQFT.ricciWeightedFlux phi =
+      (8 * Real.pi) * AQFT.weightedNullEnergy phi
+
+theorem gate4_estimatorArakiHorizonBridge_closed
+    {η : Type*} [Fintype η]
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (AQFT : HorizonAQFTModel) (alpha : ℝ)
+    (phi : AQFT.Excitation)
+    (hAraki : arakiFlux = Hest.continuumFlux)
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target AQFT)
+    (hArea : RelativeEntropyAreaVariation_Target AQFT alpha)
+    (hRay : RaychaudhuriAreaVariation_Target AQFT)
+    (hBH : BekensteinHawkingEntropyArea_Target AQFT)
+    (hS : AQFT.Srel phi ≠ 0) :
+    Gate4EstimatorArakiHorizonBridgeClosed
+      Hest arakiFlux AQFT alpha phi := by
+  exact
+    ⟨hAraki, hFlux, hArea, hRay, hBH, hS,
+      HorizonHitSourceEstimator.closes_ArakiFlux_bridge Hest arakiFlux hAraki,
+      bekensteinHawking_raychaudhuri_flux_balance_eight_pi
+        hFlux hArea hRay hBH hS⟩
+
+/-- Gate 4 scheduled-kernel closure using the named Araki-horizon bridge
+instead of six separate horizon assumptions. -/
+theorem microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiHorizonBridge
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (AQFT : HorizonAQFTModel) (alpha : ℝ)
+    (phi : AQFT.Excitation)
+    (hBridge :
+      Gate4EstimatorArakiHorizonBridgeClosed
+        Hest arakiFlux AQFT alpha phi) :
+    Gate4HorizonEinsteinAnalyticClosed
+      (microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
+        G Hest arakiFlux phi) := by
+  exact
+    ⟨hBridge.finiteEstimatorConvergesToAraki,
+      G, gate4_kernelProfileSplitSupplier_closed operatorKernelData,
+      hBridge.eightPiNullBalance,
+      microscopicGate4ScheduledKernelData_bridge_closed G⟩
+
 /-- The named Gate 4 scheduled-kernel supplier also closes Gate 2's
 finite-spectrum semantic zero-set target, because it contains the named
 quantized Gate 3 supplier. -/

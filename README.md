@@ -65,15 +65,17 @@ complex-geometry skeleton; and Gate 6's dark-density Planck-window and
 cosmological-constant/graviton-mode
 audits, finite information-preservation inverse/preimage audit, discrete
 holography and Page-curve finite entropy audits, conditional Araki/Dorau-Much
-horizon-to-Einstein bridges, and conditional QQG cosmology
-bridge plus physical-information-limits audit, with the remaining Gate 6 tail
-now split into named cosmological-measure, scrambling, decoupling, recovery,
-late-structure, and gravitational-wave bridge obligations; the black-hole
-evaporation tail now has a Hayden-Preskill-native refinement in terms of
-scrambling, decoupling, and recovery-with-Hayden-gap targets. It also proves
-Gate 7 protocol closure from the preregistration ledger. Full Gates 4-6 remain
-open until their missing physical, infrared, cosmological-emergence,
-evaporation, and black-hole entropy inputs are derived;
+horizon-to-Einstein bridges, including a named Gate 4 Araki-horizon bridge
+that packages estimator/Araki matching, relative entropy, area variation,
+Raychaudhuri focusing, Bekenstein-Hawking normalization, and nonzero excitation,
+and conditional QQG cosmology bridge plus physical-information-limits audit,
+with the remaining Gate 6 tail now split into named cosmological-measure,
+scrambling, decoupling, recovery, late-structure, and gravitational-wave bridge
+obligations; the black-hole evaporation tail now has a Hayden-Preskill-native
+refinement in terms of scrambling, decoupling, and recovery-with-Hayden-gap
+targets. It also proves Gate 7 protocol closure from the preregistration
+ledger. Full Gates 4-6 remain open until their missing physical, infrared,
+cosmological-emergence, evaporation, and black-hole entropy inputs are derived;
 Gate 7 still awaits future empirical comparisons against the frozen
 predictions.
 

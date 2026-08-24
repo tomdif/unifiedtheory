@@ -83,6 +83,13 @@ existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
 certificate.  The sharpest current full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed`.
+Gate 4's horizon tail is now also represented by the named bridge
+`Gate4EstimatorArakiHorizonBridgeClosed`, whose closure theorem packages the
+estimator-to-Araki identification, Araki relative entropy, Dorau-Much area
+law, Raychaudhuri focusing, Bekenstein-Hawking normalization, and nonzero
+excitation sector while deriving the two facts Gate 4 consumes.  The latest
+capstone consuming named Gate 4, Gate 5, and Gate 6 bridges is
+`microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
 finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
 finite group-level gauge structure, hypercharge uniqueness, quark/lepton
@@ -846,11 +853,17 @@ handoff in `MicroscopicGate4ScheduledKernelData`.  Its closure theorem
 the full abstract Gate 4 record now reduces to four explicitly named remaining
 assumptions: horizon-estimator convergence, physical scheduled-density input,
 the kernel/profile certificate, and null-balance dynamics.
+`Gate4EstimatorArakiHorizonBridgeClosed` now packages the final horizon
+analytic tail: estimator-to-Araki flux identification, Araki relative entropy,
+relative-entropy/area variation, Raychaudhuri focusing, Bekenstein-Hawking
+normalization, and a nonzero-excitation sector.  Its closure theorem
+`gate4_estimatorArakiHorizonBridge_closed` derives both finite estimator
+convergence to Araki flux and the `8*pi` null balance, and
+`microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiHorizonBridge`
+uses that named bridge to close Gate 4's scheduled-kernel analytic target.
 
 Open work:
 
-- identify the finite horizon-hit estimator's continuum flux with the Araki
-  flux of the AQFT horizon model;
 - prove the physical causal-growth law supplies
   `MicroscopicGate4ScheduledKernelData`, especially the physical chart
   certificates, affine density law, matched residual identities, coordinates,
@@ -859,8 +872,8 @@ Open work:
   the profile functions, positive support scales, continuity and derivative
   regularity, uniform bounds, compact support, lower lightcone support,
   active-region weighted kernel estimate, and cone-scale calibration;
-- derive the Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
-  and nonzero-excitation sector from the physical law;
+- derive the named `Gate4EstimatorArakiHorizonBridgeClosed` package from the
+  physical horizon AQFT law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
 ### Gate 5: QFT And Standard Model IR Limit
@@ -1321,6 +1334,8 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits
 microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed
 microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstimatorArakiBalance
 microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
+gate4_estimatorArakiHorizonBridge_closed
+microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiHorizonBridge
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed
 gate5_effectiveHilbertAudit_closed
@@ -1355,6 +1370,7 @@ gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporati
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 ```
 
 The next high-value theorem targets are:
