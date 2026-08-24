@@ -1463,6 +1463,32 @@ theorem gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassG
       ⟨gate5_finiteGaugeAudit_closed, hGaugeRenorm⟩,
       gate5_standardModelParameterAudit_closed⟩
 
+/-- If the conditional octonion/S6 bridge is supplied, its
+`complexGeometryFeedsConstructiveQFTLimit` field can serve as the remaining
+Gate 5 continuum Hilbert/QFT input.  The external S6 claim and compatibility
+bridges remain hypotheses inside the bridge record. -/
+theorem gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site)
+    (T : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    {qftSpinStatisticsLift qftGaugeRenormalizationLift : Prop}
+    (hBridge : Gate5OctonionS6ComplexGeometryBridgeClosed T)
+    (hSpinStatistics : qftSpinStatisticsLift)
+    (hGaugeRenorm : qftGaugeRenormalizationLift) :
+    Gate5QFTStandardModelIRClosed
+      (gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
+        fA fB F G T.complexGeometryFeedsConstructiveQFTLimit
+        qftSpinStatisticsLift qftGaugeRenormalizationLift) := by
+  exact
+    gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
+      fA fB hA hB F G hBridge.complexGeometryFeedsConstructiveQFTLimit
+      hSpinStatistics hGaugeRenorm
+
 /-- The recovered-stage Gate 5 common-refinement sublayer: two jointly
 surjective finite probe covers have a jointly-surjective common refinement;
 local stagewise `U(1)` gauge rotations remain invisible on that refinement;
@@ -2349,6 +2375,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_chamberMassGapDecayAudit_closed
 #print axioms gate5_hopfOctonionComplexGeometryFiniteAudit_closed
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
+#print axioms gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed

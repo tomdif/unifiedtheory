@@ -968,6 +968,11 @@ Current Hopf/octonion complex-geometry hook:
   structure result, compatibility with the octonionic almost-complex structure,
   compatibility with recovered Hopf carriers, and a bridge into the
   constructive-QFT limit.
+- `gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits` uses
+  that closed bridge record as the supplier for Gate 5's remaining continuum
+  Hilbert/QFT input.  The residual Gate 5 assumptions in this specialization
+  are therefore the S6 bridge's explicit external/compatibility obligations,
+  the Haag-Ruelle/spin-statistics lift, and gauge-field renormalization.
 
 Conditional octonion/S6 research hook:
 
@@ -1152,6 +1157,14 @@ Open work:
     renormalization), cosmological measure/initial condition, microscopic black-hole
     scrambling/decoupling/recovery dynamics, and late-time structure/GW
     compatibility.
+14. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6BridgeGate6QQGInformationEnvelope_closed`.
+    This specializes item 13 by replacing the anonymous continuum Hilbert/QFT
+    input with the named conditional octonion/S6 bridge record.  The remaining
+    Gate 5 Hilbert-side work is now: stabilize the external S6 complex
+    structure claim, prove compatibility with the octonionic almost-complex
+    structure, prove compatibility with recovered Hopf carriers, and prove that
+    this complex-geometry bridge feeds the constructive-QFT limit.
 
 ## Swarm Round 1 Integration
 
@@ -1270,6 +1283,7 @@ gate5_chamberMassGapDecayAudit_closed
 gate5_hopfOctonionComplexGeometryFiniteAudit_closed
 gate5_octonionS6ComplexGeometryBridge_closed_of_externalCompatibilities
 gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
+gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
@@ -1279,6 +1293,7 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6BridgeGate6QQGInformationEnvelope_closed
 ```
 
 The next high-value theorem targets are:

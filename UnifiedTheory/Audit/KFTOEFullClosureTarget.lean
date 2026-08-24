@@ -1369,4 +1369,78 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
         S hinitial hevap hlate,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
+/-- Strict full-closure specialization in which the Gate 5 continuum
+Hilbert/QFT input is supplied by the named conditional octonion/S6 complex
+geometry bridge.  This replaces the anonymous `constructiveHilbertQFTLimit`
+assumption with the bridge record's explicit external-stability and
+compatibility obligations. -/
+theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6BridgeGate6QQGInformationEnvelope_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    (T : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData : Prop}
+    {qftSpinStatisticsLift qftGaugeRenormalizationLift : Prop}
+    {initialConditionOrCosmologicalMeasure
+      microscopicBlackHoleEvaporationDynamics
+      lateStructureGravitationalWaveCompatibility : Prop}
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData)
+    (hAraki : arakiFlux = Hest.continuumFlux)
+    (hFlux : HorizonArakiRelativeEntropyFlux_Target AQFT)
+    (hArea : RelativeEntropyAreaVariation_Target AQFT alpha)
+    (hRay : RaychaudhuriAreaVariation_Target AQFT)
+    (hBH : BekensteinHawkingEntropyArea_Target AQFT)
+    (hS : AQFT.Srel phi ≠ 0)
+    (hGate5Bridge : Gate5OctonionS6ComplexGeometryBridgeClosed T)
+    (hSpinStatistics : qftSpinStatisticsLift)
+    (hGaugeRenorm : qftGaugeRenormalizationLift)
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hevap : microscopicBlackHoleEvaporationDynamics)
+    (hlate : lateStructureGravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        T.complexGeometryFeedsConstructiveQFTLimit qftSpinStatisticsLift
+        qftGaugeRenormalizationLift initialConditionOrCosmologicalMeasure
+        microscopicBlackHoleEvaporationDynamics
+        lateStructureGravitationalWaveCompatibility) := by
+  exact
+    microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
+      G fA fB hA hB F K Hest arakiFlux S
+      hSum hcoupling hAraki hFlux hArea hRay hBH hS
+      hGate5Bridge.complexGeometryFeedsConstructiveQFTLimit
+      hSpinStatistics hGaugeRenorm hinitial hevap hlate
+
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

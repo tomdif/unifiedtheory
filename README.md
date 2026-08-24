@@ -299,7 +299,9 @@ Machine-checked additions now cover:
   `1+2+4+8` matches the Spin(6)/SU(4) dimension shadow; its S6
   complex-structure use is explicitly conditional on external stability and
   compatibility with octonionic almost-complex geometry, recovered Hopf
-  carriers, and the constructive-QFT limit; the
+  carriers, and the constructive-QFT limit, and the strict full-closure ledger
+  now has a specialization that uses this bridge record for the Gate 5
+  continuum Hilbert/QFT slot; the
   restriction/pullback bridge proves arbitrary probe maps preserve
   reconstruction, Born data, and recovered-stage gauge invisibility, with
   equality and Born data reflected by surjective probes; the cover/descent
