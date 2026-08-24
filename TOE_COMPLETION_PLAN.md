@@ -957,6 +957,10 @@ microscopicGate3QuantizedConvergenceData_totalDistortion_eq_zero_iff_quantum_zer
 microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
 microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
 microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero
+microscopicGate3QuantizedConvergenceData_eventually_total_zero_iff_quantum_zero_and_canonical
+microscopicGate3QuantizedConvergenceData_eventually_recoveredStage_iff_total_zero
+microscopicGate3QuantizedConvergenceData_exists_total_zero_after_iff_quantum_zero_and_canonical_after
+microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_total_zero_after
 commonResidualGap
 microscopicGate3RatesGaps_of_convergenceCertificate
 microscopicGate3RatesGaps_of_convergenceCertificate_componentGaps
@@ -1022,6 +1026,12 @@ The next high-value theorem targets are:
    transport; and
    `microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero`
    makes recovered-stage status pointwise equivalent to that same scalar zero.
+   The eventual and finite-tail forms
+   `microscopicGate3QuantizedConvergenceData_eventually_recoveredStage_iff_total_zero`
+   and
+   `microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_total_zero_after`
+   mean downstream gates can consume a scalar-zero tail directly as a recovered
+   CSpec stage tail.
    `microscopicGate3QuantizedConvergenceData_gate4ExactRecoveryRSSPoisson_closed`
    hands the exact-recovery certificate directly to Gate 4's finite
    RSS/Poisson error-zero channel.  If this fails, identify the additional

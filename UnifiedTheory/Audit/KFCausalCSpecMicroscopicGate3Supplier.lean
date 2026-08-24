@@ -982,6 +982,129 @@ theorem microscopicGate3QuantizedConvergenceData_recoveredStage_iff_total_zero
       microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
         D htotal
 
+/-- Eventual scalar zero is exactly eventual quantized residual vacuum plus
+canonical bridge transport. -/
+theorem microscopicGate3QuantizedConvergenceData_eventually_total_zero_iff_quantum_zero_and_canonical
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap) :
+    (∀ᶠ n in atTop, total n = 0) ↔
+      ∀ᶠ n in atTop,
+        (∀ i, countQuantum n i = 0) ∧
+          (∀ i, curvatureQuantum n i = 0) ∧
+            (∀ i, spectralQuantum n i = 0) ∧
+              candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  constructor
+  · intro htotal
+    filter_upwards [htotal] with n hzero
+    exact
+      (microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
+        D n).1 hzero
+  · intro hquantum
+    filter_upwards [hquantum] with n hn
+    exact
+      (microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
+        D n).2 hn
+
+/-- Eventual recovered-stage status is exactly eventual scalar zero. -/
+theorem microscopicGate3QuantizedConvergenceData_eventually_recoveredStage_iff_total_zero
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap) :
+    (∀ᶠ n in atTop,
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)) ↔
+      ∀ᶠ n in atTop, total n = 0 := by
+  constructor
+  · intro hstage
+    filter_upwards [hstage] with n R
+    exact R.total_zero
+  · intro htotal
+    filter_upwards [htotal] with n hzero
+    exact
+      microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
+        D hzero
+
+/-- A finite scalar-zero tail is exactly a finite tail of quantized residual
+vacuum plus canonical bridge transport. -/
+theorem microscopicGate3QuantizedConvergenceData_exists_total_zero_after_iff_quantum_zero_and_canonical_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap) :
+    (∃ N, ∀ n, N ≤ n → total n = 0) ↔
+      ∃ N, ∀ n, N ≤ n →
+        (∀ i, countQuantum n i = 0) ∧
+          (∀ i, curvatureQuantum n i = 0) ∧
+            (∀ i, spectralQuantum n i = 0) ∧
+              candidate n = canonicalCSpecBridgeCandidate (edge n) := by
+  constructor
+  · rintro ⟨N, hN⟩
+    exact
+      ⟨N, fun n hn =>
+        (microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
+          D n).1 (hN n hn)⟩
+  · rintro ⟨N, hN⟩
+    exact
+      ⟨N, fun n hn =>
+        (microscopicGate3QuantizedConvergenceData_total_eq_zero_iff_quantum_zero_and_canonical
+          D n).2 (hN n hn)⟩
+
+/-- A finite recovered-stage tail is exactly a finite scalar-zero tail. -/
+theorem microscopicGate3QuantizedConvergenceData_exists_recovered_after_iff_total_zero_after
+    {ι : Type*} [Fintype ι]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    (D : MicroscopicGate3QuantizedConvergenceData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap) :
+    (∃ N, ∀ n, N ≤ n →
+      PhysicalHauptvermutungRecoveredStage
+        (countWindow n) (curvatureBias n) (spectralLocality n)
+        (scale n) (total n) (edge n) (candidate n)) ↔
+      ∃ N, ∀ n, N ≤ n → total n = 0 := by
+  constructor
+  · rintro ⟨N, hN⟩
+    exact ⟨N, fun n hn => (hN n hn).total_zero⟩
+  · rintro ⟨N, hN⟩
+    exact
+      ⟨N, fun n hn =>
+        microscopicGate3QuantizedConvergenceData_recoveredStage_of_total_zero
+          D (hN n hn)⟩
+
 /-- Full microscopic Gate 3 supplier: the direct rate/gap package together
 with the stronger convergence certificate needed by the existing exact-recovery
 API.  In future instantiations, the same microscopic causal growth law should
