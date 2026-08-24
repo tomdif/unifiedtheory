@@ -78,6 +78,10 @@ finite branch package fills complement/reflection subfields, leaving signed
 atlas fiber-sum noncancellation and order-data coupling selection.  The
 strongest full-closure theorem at that stage is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed`.
+Gate 1's selection tail is now represented by
+`Gate1PhysicalSelectionBridgeClosed`, which packages signed atlas fiber-sum
+noncancellation and order-data coupling selection together with the already
+closed complete-chiral support and positive-frequency handedness sublayers.
 The newest Gate 4 specialization wires those two remaining Gate 4 fields to
 existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
@@ -90,6 +94,8 @@ law, Raychaudhuri focusing, Bekenstein-Hawking normalization, and nonzero
 excitation sector while deriving the two facts Gate 4 consumes.  The latest
 capstone consuming named Gate 4, Gate 5, and Gate 6 bridges is
 `microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
+The latest named-bridge capstone also consumes the named Gate 1 bridge:
+`microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
 finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
 finite group-level gauge structure, hypercharge uniqueness, quark/lepton
@@ -177,6 +183,9 @@ Open work:
   imaginary-polynomial route needed only if a real certificate vanishes.
   `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` now expands that
   coefficient gate into explicit signed transition-fiber sums;
+  `Gate1PhysicalSelectionBridgeClosed` packages this signed-fiber certificate
+  with order-data coupling selection and records the resulting finite-branch
+  Gate 1 closure;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
@@ -1238,6 +1247,8 @@ The integrated Lean results are:
 physicalHauptvermutungBaseDistortion_eq_zero_iff
 gate1MicroscopicLawTargetsOfFiniteBranch
 gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+gate1_physicalSelectionBridge_closed
+gate1_microscopicLaw_closed_of_physicalSelectionBridge
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
@@ -1371,6 +1382,7 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bri
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 ```
 
 The next high-value theorem targets are:

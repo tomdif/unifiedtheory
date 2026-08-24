@@ -331,6 +331,49 @@ theorem gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
         gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2)⟩,
       gate1_positiveFrequencyHandedness_closed⟩
 
+/-- Named Gate 1 physical-selection bridge.  This packages the two genuinely
+remaining Gate 1 inputs, signed atlas fiber-sum noncancellation and
+order-data coupling selection, together with the finite complement/reflection
+branch already proved in the repo. -/
+structure Gate1PhysicalSelectionBridgeClosed
+    (couplingSelectedFromOrderData : Prop) : Prop where
+  signedFiberSums :
+    CompleteChiralAtlasRealAggregateSignedFiberSumNonzero
+  couplingSelected :
+    couplingSelectedFromOrderData
+  supportZeroChirality :
+    Gate1CompleteChiralLawSupportAndConsistencyClosed (0 : Fin 2)
+  supportOneChirality :
+    Gate1CompleteChiralLawSupportAndConsistencyClosed (1 : Fin 2)
+  positiveFrequencyHandedness :
+    Gate1PositiveFrequencyHandednessClosed
+  finiteBranchClosed :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData)
+
+theorem gate1_physicalSelectionBridge_closed
+    {couplingSelectedFromOrderData : Prop}
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
+  exact
+    ⟨hSum, hcoupling,
+      gate1_completeChiralLawSupportAndConsistency_closed (0 : Fin 2),
+      gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2),
+      gate1_positiveFrequencyHandedness_closed,
+      gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+        hSum hcoupling⟩
+
+theorem gate1_microscopicLaw_closed_of_physicalSelectionBridge
+    {couplingSelectedFromOrderData : Prop}
+    (hGate1 :
+      Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData) :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData) := by
+  exact hGate1.finiteBranchClosed
+
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
 /-- Semantic targets for interpreting the finite Hauptvermutung distortion
@@ -2667,6 +2710,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_completeChiralAtlasRealization_closed
 #print axioms gate1_positiveFrequencyHandedness_closed
 #print axioms gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+#print axioms gate1_physicalSelectionBridge_closed
+#print axioms gate1_microscopicLaw_closed_of_physicalSelectionBridge
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate
