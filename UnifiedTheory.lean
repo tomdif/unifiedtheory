@@ -5727,4 +5727,7 @@ import UnifiedTheory.Audit.KFTOESevenGateAttack
 -- Microscopic Gate 3 supplier interface: packages the exact aggregate-rate
 -- and residual-gap obligations that causal growth must supply.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
+-- Full TOE closure target: assembles the seven-gate ledger around the named
+-- microscopic Gate 3/4 supplier without asserting the missing physical inputs.
+import UnifiedTheory.Audit.KFTOEFullClosureTarget
 import UnifiedTheory.LayerC.ContextualFraction

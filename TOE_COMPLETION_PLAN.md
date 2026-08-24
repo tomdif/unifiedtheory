@@ -3,7 +3,7 @@
 Status: working plan for closing the repo's remaining theory-of-everything
 gaps.  This is not a claim that the gaps are closed.
 
-Date: 2026-08-23
+Date: 2026-08-24
 
 ## Scope Rule
 
@@ -47,6 +47,12 @@ as explicit partial-closure certificates, and proves the Gate 7 protocol layer f
 preregistration/falsifiability ledger. Full Gates 4-6 remain open until their
 missing physical, infrared, cosmological, and black-hole inputs are actually
 supplied; Gate 7 still requires the future empirical comparisons themselves.
+`UnifiedTheory/Audit/KFTOEFullClosureTarget.lean` now assembles the current
+full-TOE target record around the named microscopic Gate 3/4 supplier.  The
+theorems `microscopicTOEClosureTargets_closed` and
+`microscopicTOEClosureTargets_closed_with_preRegistrationLedger` state the
+exact remaining inputs needed to close the seven-gate ledger without upgrading
+any open physics assumption into a proved theorem.
 
 ## Gates
 
@@ -949,6 +955,9 @@ Open work:
    causal-growth law instead of assuming it.
 5. Derive the one-step factor `D_{n+1} <= q * D_n` from the actual physical
    causal-growth law.
+6. Instantiate the new full closure target
+   `microscopicTOEClosureTargets_closed` by supplying the Gate 1, Gate 2,
+   Gate 5, Gate 6, and four residual Gate 4 analytic/physical certificates.
 
 ## Swarm Round 1 Integration
 
@@ -1031,6 +1040,11 @@ microscopicGate3QuantizedConvergenceData_scheduledSplitOperator_rssPoissonError_
 microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface
 microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_closed
 microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_outputs
+TOEClosureTargets
+TOEClosureClosed
+microscopicTOEClosureTargets
+microscopicTOEClosureTargets_closed
+microscopicTOEClosureTargets_closed_with_preRegistrationLedger
 ```
 
 The next high-value theorem targets are:
