@@ -301,7 +301,10 @@ Machine-checked additions now cover:
   compatibility with octonionic almost-complex geometry, recovered Hopf
   carriers, and the constructive-QFT limit, and the strict full-closure ledger
   now has a specialization that uses this bridge record for the Gate 5
-  continuum Hilbert/QFT slot; the
+  continuum Hilbert/QFT slot; the newest Gate 5 specialization also replaces
+  the spin-statistics and gauge-renormalization slots with named
+  Haag-Ruelle/scattering and Yang-Mills/Higgs/renormalization bridge records;
+  the
   restriction/pullback bridge proves arbitrary probe maps preserve
   reconstruction, Born data, and recovered-stage gauge invisibility, with
   equality and Born data reflected by surjective probes; the cover/descent

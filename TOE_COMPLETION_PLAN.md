@@ -95,7 +95,9 @@ positive with closed form `sqrt 7 / 15`.  Gate 5 also now packages the finite
 Hopf/octonion complex-geometry skeleton: normalized Hopf phase classes map to
 the unit Bloch sphere, Spin(7)->Spin(6) is rank-preserving with adjoint split
 `21 = 15 + 6`, and the Cayley-Dickson tower sum `1+2+4+8` matches the
-Spin(6)/SU(4) dimension shadow.  Gate 6 now harvests the
+Spin(6)/SU(4) dimension shadow.  The Gate 5 gauge audit now also harvests the
+finite gauge-invariant star-subalgebra witnesses and the
+Gell-Mann-Nishijima unbroken-charge direction.  Gate 6 now harvests the
 inflation/CMB tensor audit.  The sharpest current inflation-envelope
 full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
@@ -974,6 +976,20 @@ Current Hopf/octonion complex-geometry hook:
   are therefore the S6 bridge's explicit external/compatibility obligations,
   the Haag-Ruelle/spin-statistics lift, and gauge-field renormalization.
 
+Current Haag-Ruelle/spin-statistics and gauge-renormalization hooks:
+
+- `gate5_haagRuelleSpinStatisticsBridge_closed` packages the existing
+  conditional Haag-Ruelle theorem: given a concrete `ScatteringConstruction`,
+  chamber asymptotic completeness follows.  The continuum spin-statistics lift
+  remains an explicit field of the bridge target.
+- `gate5_yangMillsHiggsRenormalizationBridge_closed` packages the finite gauge
+  audit together with named continuum inputs for the SM Lagrangian dynamics,
+  Higgs mechanism dynamics, nontrivial renormalization flow, and the final
+  gauge/renormalization lift.
+- `gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits`
+  closes the Gate 5 target from three named bridge records: octonion/S6,
+  Haag-Ruelle/spin-statistics, and Yang-Mills/Higgs/renormalization.
+
 Conditional octonion/S6 research hook:
 
 - Alpoge's S6 complex-structure PDF should be treated as an external
@@ -1165,6 +1181,12 @@ Open work:
     structure claim, prove compatibility with the octonionic almost-complex
     structure, prove compatibility with recovered Hopf carriers, and prove that
     this complex-geometry bridge feeds the constructive-QFT limit.
+15. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed`.
+    This specializes item 14 by replacing all three abstract Gate 5 lifts with
+    named bridge records.  Gate 5 is then reduced to: the octonion/S6 bridge
+    obligations, a concrete Haag-Ruelle scattering construction plus
+    spin-statistics lift, and Yang-Mills/Higgs/renormalization dynamics.
 
 ## Swarm Round 1 Integration
 
@@ -1284,6 +1306,9 @@ gate5_hopfOctonionComplexGeometryFiniteAudit_closed
 gate5_octonionS6ComplexGeometryBridge_closed_of_externalCompatibilities
 gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
+gate5_haagRuelleSpinStatisticsBridge_closed
+gate5_yangMillsHiggsRenormalizationBridge_closed
+gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits
 gate6_inflationCMBTensorAudit_closed
 gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
@@ -1294,6 +1319,7 @@ microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5OctonionS6BridgeGate6QQGInformationEnvelope_closed
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5BridgesGate6QQGInformationEnvelope_closed
 ```
 
 The next high-value theorem targets are:

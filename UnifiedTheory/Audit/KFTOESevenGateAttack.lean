@@ -88,6 +88,7 @@ open UnifiedTheory.LayerC.BekensteinBound
 open UnifiedTheory.LayerC.AMPSFirewall
 open UnifiedTheory.LayerC.HaydenPreskill
 open UnifiedTheory.LayerC.PhysicalInformationLimits
+open UnifiedTheory.LayerC.SMGaugeDynamics
 open UnifiedTheory.Cosmology.QQG
 
 /-! ## Gate 1: microscopic physical growth law -/
@@ -1252,6 +1253,21 @@ records the checked finite gauge-breaking pattern and finite subgroup chain.
 The Yang-Mills/Higgs Lagrangian and renormalization flow are still not derived
 here. -/
 structure Gate5FiniteGaugeAuditClosed : Prop where
+  gaugeInvariantFiniteSubalgebras :
+    (UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+        UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep
+        (1 : Matrix (Fin 2) (Fin 2) ℂ) ∧
+      (∀ A, UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+          UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep A →
+        UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+          UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep Aᴴ)) ∧
+    (UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+        UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep
+        (1 : Matrix (Fin 3) (Fin 3) ℂ) ∧
+      (∀ A, UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+          UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep A →
+        UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
+          UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep Aᴴ))
   electroweakBreakingCount :
     UnifiedTheory.LayerC.SMGaugeDynamics.ewGroupDim =
         UnifiedTheory.LayerC.SMGaugeDynamics.brokenGeneratorCount +
@@ -1264,11 +1280,22 @@ structure Gate5FiniteGaugeAuditClosed : Prop where
         UnifiedTheory.LayerC.SMGaugeDynamics.U1Phases ∧
       UnifiedTheory.LayerC.SMGaugeDynamics.U1Phases ⊆
         UnifiedTheory.LayerC.SMGaugeDynamics.EWPhases
+  gellMannNishijimaUnbrokenCharge :
+    (∀ a b : ℚ,
+        a * UnifiedTheory.LayerC.SMGaugeDynamics.higgsLowerT3 +
+            b * UnifiedTheory.LayerC.SMGaugeDynamics.higgsHypercharge = 0 →
+        a * UnifiedTheory.LayerC.SMGaugeDynamics.higgsUpperT3 +
+            b * UnifiedTheory.LayerC.SMGaugeDynamics.higgsHypercharge = 1 →
+        a = 1 ∧ b = 1) ∧
+      UnifiedTheory.LayerC.SMGaugeDynamics.electricCharge (1/2)
+          (UnifiedTheory.LayerC.AnomalyCancellation.Q).Y = 2/3 ∧
+      UnifiedTheory.LayerC.SMGaugeDynamics.electricCharge (-1/2)
+          (UnifiedTheory.LayerC.AnomalyCancellation.L).Y = -1
 
 theorem gate5_finiteGaugeAudit_closed :
     Gate5FiniteGaugeAuditClosed := by
   let h := UnifiedTheory.LayerC.SMGaugeDynamics.sm_gauge_dynamics_S4
-  exact ⟨h.2.2.1, h.2.2.2.1⟩
+  exact ⟨⟨h.1, h.2.1⟩, h.2.2.1, h.2.2.2.1, h.2.2.2.2⟩
 
 /-- Finite Standard-Model parameter-chain audit available to Gate 5.  This
 bundles hypercharge uniqueness, quark/lepton anomaly-forcing, and SO(10)
@@ -1488,6 +1515,106 @@ theorem gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
     gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
       fA fB hA hB F G hBridge.complexGeometryFeedsConstructiveQFTLimit
       hSpinStatistics hGaugeRenorm
+
+/-- Named target for the Haag-Ruelle/spin-statistics side of Gate 5.  The
+Haag-Ruelle chamber statement already has a conditional theorem; the remaining
+spin-statistics lift is still an explicit constructive-QFT input. -/
+structure Gate5HaagRuelleSpinStatisticsBridgeTargets : Type where
+  qftSpinStatisticsLift : Prop
+
+/-- Closed conditional bridge for Gate 5's propagator/spin-statistics slot. -/
+structure Gate5HaagRuelleSpinStatisticsBridgeClosed
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (S : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (T : Gate5HaagRuelleSpinStatisticsBridgeTargets) : Prop where
+  haagRuelleAsymptoticCompleteness :
+    (∀ ψ : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ChamberState,
+        ∃ t : ℝ, S.inWavePacket t = ψ) ∧
+      (∀ ψ : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ChamberState,
+        ∃ t : ℝ, S.outWavePacket t = ψ) ∧
+      (∃ t : ℝ,
+        S.inWavePacket t =
+          UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.Ω_chamber) ∧
+      (∃ t : ℝ,
+        S.outWavePacket t =
+          UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.Ω_chamber)
+  qftSpinStatisticsLift :
+    T.qftSpinStatisticsLift
+
+theorem gate5_haagRuelleSpinStatisticsBridge_closed
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (S : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (T : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (hSpinStatistics : T.qftSpinStatisticsLift) :
+    Gate5HaagRuelleSpinStatisticsBridgeClosed S T := by
+  exact
+    ⟨UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.W7_asymptotic_completeness_via_Haag_Ruelle S,
+      hSpinStatistics⟩
+
+/-- Named target for the Yang-Mills/Higgs/renormalization side of Gate 5.  The
+finite group/representation gauge audit is closed separately; these fields are
+the remaining continuum field-theory inputs. -/
+structure Gate5YangMillsHiggsRenormalizationBridgeTargets : Type where
+  smLagrangianDynamics : Prop
+  higgsMechanismDynamics : Prop
+  nontrivialRenormalizationFlow : Prop
+  qftGaugeRenormalizationLift : Prop
+
+/-- Closed conditional bridge for Gate 5's gauge/renormalization slot. -/
+structure Gate5YangMillsHiggsRenormalizationBridgeClosed
+    (T : Gate5YangMillsHiggsRenormalizationBridgeTargets) : Prop where
+  finiteGaugeAudit :
+    Gate5FiniteGaugeAuditClosed
+  smLagrangianDynamics :
+    T.smLagrangianDynamics
+  higgsMechanismDynamics :
+    T.higgsMechanismDynamics
+  nontrivialRenormalizationFlow :
+    T.nontrivialRenormalizationFlow
+  qftGaugeRenormalizationLift :
+    T.qftGaugeRenormalizationLift
+
+theorem gate5_yangMillsHiggsRenormalizationBridge_closed
+    (T : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    (hLagrangian : T.smLagrangianDynamics)
+    (hHiggs : T.higgsMechanismDynamics)
+    (hRG : T.nontrivialRenormalizationFlow)
+    (hGaugeRenorm : T.qftGaugeRenormalizationLift) :
+    Gate5YangMillsHiggsRenormalizationBridgeClosed T := by
+  exact
+    ⟨gate5_finiteGaugeAudit_closed, hLagrangian, hHiggs, hRG, hGaugeRenorm⟩
+
+/-- Gate 5 closure with all three currently named continuum bridge records:
+octonion/S6 for the Hilbert/QFT slot, Haag-Ruelle/spin-statistics for the
+propagator slot, and Yang-Mills/Higgs/renormalization for the gauge slot. -/
+theorem gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site)
+    (S : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
+    (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed S TSpin)
+    (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge) :
+    Gate5QFTStandardModelIRClosed
+      (gate5QFTStandardModelIRTargetsOfFiniteCarrierSMAuditsWightmanAndMassGap
+        fA fB F G THilbert.complexGeometryFeedsConstructiveQFTLimit
+        TSpin.qftSpinStatisticsLift TGauge.qftGaugeRenormalizationLift) := by
+  exact
+    gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
+      fA fB hA hB F G hHilbertBridge.complexGeometryFeedsConstructiveQFTLimit
+      hSpinBridge.qftSpinStatisticsLift
+      hGaugeBridge.qftGaugeRenormalizationLift
 
 /-- The recovered-stage Gate 5 common-refinement sublayer: two jointly
 surjective finite probe covers have a jointly-surjective common refinement;
@@ -2376,6 +2503,9 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_hopfOctonionComplexGeometryFiniteAudit_closed
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
 #print axioms gate5_qftStandardModelIR_closed_of_octonionS6BridgeAndFiniteAudits
+#print axioms gate5_haagRuelleSpinStatisticsBridge_closed
+#print axioms gate5_yangMillsHiggsRenormalizationBridge_closed
+#print axioms gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
