@@ -23,13 +23,22 @@ import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrierFieldCoverIndependence
 import UnifiedTheory.LayerA.DiscreteHolography
 import UnifiedTheory.LayerA.GravitonTTModes
+import UnifiedTheory.LayerB.InflationAudit
+import UnifiedTheory.LayerB.VirtualParticles
+import UnifiedTheory.LayerB.WightmanAxioms
 import UnifiedTheory.LayerB.CosmologicalConstantAudit
 import UnifiedTheory.LayerB.PreRegistrationLedger
 import UnifiedTheory.LayerB.DarkMatterAudit
 import UnifiedTheory.LayerB.InformationParadox
 import UnifiedTheory.LayerB.PageCurve
+import UnifiedTheory.LayerC.AnomalyCancellation
 import UnifiedTheory.LayerC.PhysicalInformationLimits
 import UnifiedTheory.LayerC.PageCurve
+import UnifiedTheory.LayerC.GUTEmbedding
+import UnifiedTheory.LayerC.IsOperationalQuantum
+import UnifiedTheory.LayerC.QuarkLeptonUnification
+import UnifiedTheory.LayerC.SMGaugeDynamics
+import UnifiedTheory.LayerC.SMQGLink
 import UnifiedTheory.Cosmology.QQG.Bridge
 
 set_option autoImplicit false
@@ -1184,6 +1193,142 @@ theorem gate5_qftStandardModelIR_closed_of_finiteCarrierCover
     ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
       heffective, hpropagators, hgauge, hparameters⟩
 
+/-- Finite Hilbert/operational-QM audit available to Gate 5.  This closes the
+finite SM Hilbert dimensions, the existence of an operational-quantum
+no-signalling witness, and the holographic dimension-bound side.  It is not a
+constructive continuum-QFT Hilbert-space limit. -/
+structure Gate5EffectiveHilbertAuditClosed : Prop where
+  singleGenerationDimension :
+    UnifiedTheory.LayerC.SMHilbertInstantiation.singleGenDim = 16
+  seesawDimension :
+    UnifiedTheory.LayerC.SMSeeSawSubspace.seesawDim = 126
+  operationalQuantumWitness :
+    ∃ T : UnifiedTheory.LayerC.LocalRealisticAxioms.NoSignallingTheory,
+      UnifiedTheory.LayerC.OperationalQuantumBridge.IsOperationalQuantum T
+  holographicDimensionPositive :
+    ∀ R E : ℝ,
+      0 < UnifiedTheory.LayerC.SMQGLink.holographicDimBound R E
+
+theorem gate5_effectiveHilbertAudit_closed :
+    Gate5EffectiveHilbertAuditClosed := by
+  exact
+    ⟨UnifiedTheory.LayerC.SMHilbertInstantiation.singleGenDim_eq_sixteen,
+      UnifiedTheory.LayerC.SMSeeSawSubspace.seesawDim_eq_126,
+      UnifiedTheory.LayerC.OperationalQuantumBridge.operational_quantum_witness_exists,
+      UnifiedTheory.LayerC.SMQGLink.holographicDimBound_pos⟩
+
+/-- Finite propagator/kinematic audit available to Gate 5.  This packages the
+Wightman kinematic consistency and the framework's finite virtual-line /
+Feshbach propagator residue.  Full spin-statistics for a continuum field theory
+remains a separate constructive-QFT lift. -/
+structure Gate5PropagatorKinematicAuditClosed : Prop where
+  wightmanKinematics :
+    UnifiedTheory.LayerB.WightmanAxioms.BisognanoWichmann_Target
+  virtualResidue :
+    UnifiedTheory.LayerA.FeshbachJ4.C_int =
+      UnifiedTheory.LayerA.FeshbachJ4.b₁_sq /
+        (UnifiedTheory.LayerA.FeshbachJ4.lambda_star -
+          UnifiedTheory.LayerA.FeshbachJ4.a₁)
+
+theorem gate5_propagatorKinematicAudit_closed :
+    Gate5PropagatorKinematicAuditClosed := by
+  exact
+    ⟨UnifiedTheory.LayerB.WightmanAxioms.bisognano_wichmann_temperature_positive,
+      UnifiedTheory.LayerB.VirtualParticles.C_int_is_virtual_residue⟩
+
+/-- Finite group/representation-level gauge audit available to Gate 5.  This
+records the checked finite gauge-breaking pattern and finite subgroup chain.
+The Yang-Mills/Higgs Lagrangian and renormalization flow are still not derived
+here. -/
+structure Gate5FiniteGaugeAuditClosed : Prop where
+  electroweakBreakingCount :
+    UnifiedTheory.LayerC.SMGaugeDynamics.ewGroupDim =
+        UnifiedTheory.LayerC.SMGaugeDynamics.brokenGeneratorCount +
+          UnifiedTheory.LayerC.SMGaugeDynamics.emGroupDim ∧
+      UnifiedTheory.LayerC.SMGaugeDynamics.brokenGeneratorCount = 3 ∧
+      Fintype.card UnifiedTheory.LayerC.SMGaugeDynamics.MassiveVectorBoson = 3 ∧
+      Fintype.card UnifiedTheory.LayerC.SMGaugeDynamics.MasslessGaugeBoson = 1
+  finiteBreakingChain :
+    UnifiedTheory.LayerC.SMGaugeDynamics.ZnPhases 2 ⊆
+        UnifiedTheory.LayerC.SMGaugeDynamics.U1Phases ∧
+      UnifiedTheory.LayerC.SMGaugeDynamics.U1Phases ⊆
+        UnifiedTheory.LayerC.SMGaugeDynamics.EWPhases
+
+theorem gate5_finiteGaugeAudit_closed :
+    Gate5FiniteGaugeAuditClosed := by
+  let h := UnifiedTheory.LayerC.SMGaugeDynamics.sm_gauge_dynamics_S4
+  exact ⟨h.2.2.1, h.2.2.2.1⟩
+
+/-- Finite Standard-Model parameter-chain audit available to Gate 5.  This
+bundles hypercharge uniqueness, quark/lepton anomaly-forcing, and SO(10)
+anomaly safety.  It is the finite representation/anomaly chain, not a
+derivation of the full infrared Standard Model from constructive QFT. -/
+structure Gate5StandardModelParameterAuditClosed : Prop where
+  hyperchargeUniqueness :
+    UnifiedTheory.LayerC.AnomalyCancellation.Hypercharge_Uniqueness_Target
+  quarkLeptonUnification :
+    UnifiedTheory.LayerC.QuarkLeptonUnification.Unification_Forced_Target
+  so10AnomalySafety :
+    UnifiedTheory.LayerC.GUTEmbedding.SO10_AnomalySafe_Target
+
+theorem gate5_standardModelParameterAudit_closed :
+    Gate5StandardModelParameterAuditClosed := by
+  exact
+    ⟨UnifiedTheory.LayerC.AnomalyCancellation.anomaly_master,
+      UnifiedTheory.LayerC.QuarkLeptonUnification.unification_master,
+      UnifiedTheory.LayerC.GUTEmbedding.so10_anomaly_safe⟩
+
+/-- Gate 5 QFT/Standard-Model IR target with finite carrier cover-independence
+and all currently available finite SM/QM audits supplied.  The remaining Gate
+5 inputs are now the genuine constructive-QFT lifts: continuum Hilbert/QFT
+limit, spin-statistics, and gauge-field renormalization. -/
+def gate5QFTStandardModelIRTargetsOfFiniteCarrierAndSMAudits
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F G : ProjectiveQubitCarrierField site)
+    (constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop) :
+    Gate5QFTStandardModelIRTargets where
+  recoveredCarrierCoverIndependence :=
+    Gate5FiniteCarrierCoverClosed fA fB F G
+  effectiveHilbertSpaceLimit :=
+    Gate5EffectiveHilbertAuditClosed ∧ constructiveHilbertQFTLimit
+  propagatorsAndSpinStatistics :=
+    Gate5PropagatorKinematicAuditClosed ∧ qftSpinStatisticsLift
+  gaugeFieldsAndRenormalization :=
+    Gate5FiniteGaugeAuditClosed ∧ qftGaugeRenormalizationLift
+  standardModelParameterChain :=
+    Gate5StandardModelParameterAuditClosed
+
+/-- After harvesting the finite SM/QM audits, Gate 5 closure is reduced to the
+three genuine constructive-QFT lifts: continuum Hilbert/QFT limit,
+spin-statistics, and gauge-field renormalization. -/
+theorem gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+    {coverA : Type u} {coverB : Type v} {site : Type w}
+    {probeA : coverA → Type z} {probeB : coverB → Type t}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F G : ProjectiveQubitCarrierField site)
+    {constructiveHilbertQFTLimit qftSpinStatisticsLift
+      qftGaugeRenormalizationLift : Prop}
+    (hHilbert : constructiveHilbertQFTLimit)
+    (hSpinStatistics : qftSpinStatisticsLift)
+    (hGaugeRenorm : qftGaugeRenormalizationLift) :
+    Gate5QFTStandardModelIRClosed
+      (gate5QFTStandardModelIRTargetsOfFiniteCarrierAndSMAudits
+        fA fB F G constructiveHilbertQFTLimit
+        qftSpinStatisticsLift qftGaugeRenormalizationLift) := by
+  exact
+    ⟨gate5_finiteCarrierCover_closed fA fB hA hB F G,
+      ⟨gate5_effectiveHilbertAudit_closed, hHilbert⟩,
+      ⟨gate5_propagatorKinematicAudit_closed, hSpinStatistics⟩,
+      ⟨gate5_finiteGaugeAudit_closed, hGaugeRenorm⟩,
+      gate5_standardModelParameterAudit_closed⟩
+
 /-- The recovered-stage Gate 5 common-refinement sublayer: two jointly
 surjective finite probe covers have a jointly-surjective common refinement;
 local stagewise `U(1)` gauge rotations remain invisible on that refinement;
@@ -1619,6 +1764,84 @@ theorem gate6_cosmologyBlackHole_closed_of_finiteAudits
         gate6_pageFormulaAudit_closed⟩,
       hcmb⟩
 
+/-- Inflation/CMB tensor audit available to Gate 6.  This packages the
+framework's atomic Starobinsky-sector `n_s` and `r` checks against Planck/BICEP
+windows.  It is not a full late-time structure-formation or stochastic
+gravitational-wave compatibility theorem. -/
+structure Gate6InflationCMBTensorAuditClosed : Prop where
+  nsAtomic :
+    UnifiedTheory.LayerB.InflationAudit.ns_framework =
+      1 -
+        1 /
+          ((UnifiedTheory.LayerB.InflationAudit.NW : ℚ) *
+            (UnifiedTheory.LayerB.InflationAudit.Nc : ℚ) *
+              (UnifiedTheory.LayerB.InflationAudit.Nt : ℚ))
+  nsPlanckWindow :
+    UnifiedTheory.LayerB.InflationAudit.ns_lo_1sigma <
+        UnifiedTheory.LayerB.InflationAudit.ns_framework ∧
+      UnifiedTheory.LayerB.InflationAudit.ns_framework <
+        UnifiedTheory.LayerB.InflationAudit.ns_hi_1sigma
+  rAtomic :
+    UnifiedTheory.LayerB.InflationAudit.r_framework =
+      1 /
+        ((UnifiedTheory.LayerB.InflationAudit.NWsq : ℚ) *
+          (UnifiedTheory.LayerB.InflationAudit.Nc : ℚ) *
+            ((UnifiedTheory.LayerB.InflationAudit.Nt : ℚ) *
+              (UnifiedTheory.LayerB.InflationAudit.Nt : ℚ)))
+  rBelowUpperBound :
+    UnifiedTheory.LayerB.InflationAudit.r_framework <
+      UnifiedTheory.LayerB.InflationAudit.r_upper_bound
+
+theorem gate6_inflationCMBTensorAudit_closed :
+    Gate6InflationCMBTensorAuditClosed := by
+  let h := UnifiedTheory.LayerB.InflationAudit.inflation_audit_short
+  exact ⟨h.2.1, h.2.2.1, h.2.2.2.1, h.2.2.2.2.1⟩
+
+/-- Gate 6 cosmology/black-hole target with all finite audits and the
+inflation/CMB tensor audit supplied.  The remaining compatibility input is the
+late-time structure/gravitational-wave bridge beyond the inflation-sector
+observable checks. -/
+def gate6CosmologyBlackHoleTargetsOfFiniteAuditsAndInflationCompatibility
+    (initialConditionOrCosmologicalMeasure
+      lateStructureGravitationalWaveCompatibility : Prop) :
+    Gate6CosmologyBlackHoleTargets where
+  initialConditionOrCosmologicalMeasure :=
+    initialConditionOrCosmologicalMeasure
+  darkEnergyOrCosmologicalConstantMechanism :=
+    Gate6CosmologicalConstantGravitonAuditClosed
+  darkMatterPredictionOrExclusion :=
+    Gate6DarkMatterPlanckWindowAuditClosed
+  blackHoleEntropyEvaporationInformation :=
+    Gate6FiniteInformationPreservationAuditClosed ∧
+      Gate6DiscreteHolographyAuditClosed ∧
+        Gate6StructuralPageCurveAuditClosed ∧
+          Gate6PageFormulaAuditClosed
+  cmbStructureGravitationalWaveCompatibility :=
+    Gate6InflationCMBTensorAuditClosed ∧
+      lateStructureGravitationalWaveCompatibility
+
+/-- With the inflation/CMB tensor audit harvested, Gate 6 closure is reduced
+to the cosmological-measure/initial-condition input and the late-time
+structure/GW bridge. -/
+theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
+    {initialConditionOrCosmologicalMeasure
+      lateStructureGravitationalWaveCompatibility : Prop}
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hlate : lateStructureGravitationalWaveCompatibility) :
+    Gate6CosmologyBlackHoleClosed
+      (gate6CosmologyBlackHoleTargetsOfFiniteAuditsAndInflationCompatibility
+        initialConditionOrCosmologicalMeasure
+        lateStructureGravitationalWaveCompatibility) := by
+  exact
+    ⟨hinitial,
+      gate6_cosmologicalConstantGravitonAudit_closed,
+      gate6_darkMatterPlanckWindowAudit_closed,
+      ⟨gate6_finiteInformationPreservationAudit_closed,
+        gate6_discreteHolographyAudit_closed,
+        gate6_structuralPageCurveAudit_closed,
+        gate6_pageFormulaAudit_closed⟩,
+      ⟨gate6_inflationCMBTensorAudit_closed, hlate⟩⟩
+
 /-- The Gate 6 entropy-flux limit bridge: a supplied finite error-control
 source and exact finite focusing derivative family give convergence of the
 finite scaled source to Araki/null flux and convergence of the finite
@@ -1842,6 +2065,11 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate5_recoveredCarrier_coverIndependence_of_jointlySurjective
 #print axioms gate5_finiteCarrierCover_closed
 #print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierCover
+#print axioms gate5_effectiveHilbertAudit_closed
+#print axioms gate5_propagatorKinematicAudit_closed
+#print axioms gate5_finiteGaugeAudit_closed
+#print axioms gate5_standardModelParameterAudit_closed
+#print axioms gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
 #print axioms gate5_recoveredCarrierCommonRefinement_closed
 #print axioms gate6_darkDensity_atomic_audit_hook
 #print axioms gate6_darkDensityAudit_closed
@@ -1852,6 +2080,8 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_structuralPageCurveAudit_closed
 #print axioms gate6_pageFormulaAudit_closed
 #print axioms gate6_cosmologyBlackHole_closed_of_finiteAudits
+#print axioms gate6_inflationCMBTensorAudit_closed
+#print axioms gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
 #print axioms gate6_entropyFluxLimitBridge_closed
 #print axioms gate6_arakiBHEightPiBalance_closed
 #print axioms gate6_dorauMuchEinsteinBridge_closed

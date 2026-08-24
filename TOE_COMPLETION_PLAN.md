@@ -83,6 +83,12 @@ existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
 certificate.  The sharpest current full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed`.
+Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
+finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
+finite group-level gauge structure, hypercharge uniqueness, quark/lepton
+anomaly forcing, and SO(10) anomaly safety.  Gate 6 now harvests the
+inflation/CMB tensor audit.  The sharpest current full-closure theorem is
+`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
 
 ## Gates
 
@@ -796,7 +802,8 @@ the kernel/profile certificate, and null-balance dynamics.
 
 Open work:
 
-- prove finite horizon-hit estimators converge to Araki/null flux;
+- identify the finite horizon-hit estimator's continuum flux with the Araki
+  flux of the AQFT horizon model;
 - prove the physical causal-growth law supplies
   `MicroscopicGate4ScheduledKernelData`, especially the physical chart
   certificates, affine density law, matched residual identities, coordinates,
@@ -805,7 +812,8 @@ Open work:
   the profile functions, positive support scales, continuity and derivative
   regularity, uniform bounds, compact support, lower lightcone support,
   active-region weighted kernel estimate, and cone-scale calibration;
-- derive the null-balance hypotheses from the physical law;
+- derive the Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
+  and nonzero-excitation sector from the physical law;
 - recover the semiclassical Einstein equation in the continuum limit.
 
 ### Gate 5: QFT And Standard Model IR Limit
@@ -906,11 +914,16 @@ Completed algebraic groundwork:
 Open work:
 
 - construct the effective Hilbert space and local QFT limit;
-- recover propagators, spin/statistics, gauge fields, and renormalization;
+- lift the finite propagator kinematics to constructive-QFT propagators and
+  prove the continuum spin-statistics theorem;
+- lift the finite group-level gauge structure to Yang-Mills/Higgs field
+  dynamics and renormalization flow;
 - lift the algebraic Hopf bridge to a topological/principal-bundle statement
   with quotient topology, local trivializations, and characteristic classes;
-- connect finite Standard Model algebra to the same infrared limit;
-- derive the parameter-identification chain instead of assuming it.
+- connect the finite Standard Model algebra to the same infrared limit.  The
+  finite hypercharge, anomaly, quark/lepton, SO(10), and SM/QM parameter
+  audits are now harvested by
+  `gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits`.
 
 ### Gate 6: Cosmology And Black Holes
 
@@ -963,13 +976,22 @@ the semiclassical Einstein equation with an integration-constant cosmological
 term.  These are conditional analytic/AQFT plumbing results; the physical law
 still has to supply the hypotheses.
 
+Current inflation/CMB tensor hook:
+
+`gate6_inflationCMBTensorAudit_closed` packages the inflation audit's
+Starobinsky-sector observable checks: atomic `n_s`, `n_s` inside the Planck
+one-sigma window, atomic `r`, and `r` below the Planck/BICEP upper bound.
+`gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility`
+uses this to reduce the Gate 6 compatibility field to the late-time
+structure/GW bridge beyond the inflation-sector observable checks.
+
 Open work:
 
 - initial condition or cosmological measure;
-- cosmological constant/dark-energy mechanism;
-- dark matter prediction or exclusion;
-- black-hole entropy, evaporation, and information recovery;
-- compatibility with CMB, structure formation, and gravitational waves.
+- late-time structure-formation and gravitational-wave compatibility beyond
+  the inflation-sector observable audit;
+- microscopic black-hole evaporation dynamics beyond the finite entropy/Page
+  and finite information-preservation audits.
 
 ### Gate 7: External Tests
 
@@ -1023,6 +1045,15 @@ Open work:
     the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
     plus a nonzero excitation, four genuine Gate 5 IR/QFT inputs, and the two
     Gate 6 cosmology inputs.
+12. Instantiate
+    `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed`.
+    The remaining assumptions are signed atlas fiber-sum noncancellation,
+    order-data coupling selection, estimator-to-Araki flux identification,
+    the four Dorau-Much/Araki/Raychaudhuri/Bekenstein-Hawking horizon inputs
+    plus a nonzero excitation, three genuine constructive-QFT Gate 5 lifts
+    (continuum Hilbert/QFT limit, spin-statistics, gauge renormalization),
+    cosmological measure/initial condition, and late-time structure/GW
+    compatibility.
 
 ## Swarm Round 1 Integration
 
@@ -1131,6 +1162,15 @@ microscopicGate4ScheduledKernelData_toGate4HorizonEinsteinAnalyticTargetsOfEstim
 microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiBalance
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed
+gate5_effectiveHilbertAudit_closed
+gate5_propagatorKinematicAudit_closed
+gate5_finiteGaugeAudit_closed
+gate5_standardModelParameterAudit_closed
+gate5_qftStandardModelIR_closed_of_finiteCarrierAndSMAudits
+gate6_inflationCMBTensorAudit_closed
+gate6_cosmologyBlackHole_closed_of_finiteAuditsAndInflationCompatibility
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits
+microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6InflationAudits_closed
 ```
 
 The next high-value theorem targets are:
