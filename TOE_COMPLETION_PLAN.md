@@ -22,8 +22,9 @@ dataset, or explicitly named assumption.
 
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` now mirrors this plan as a
 Lean-facing attack ledger.  It records explicit closure targets for all seven
-gates, proves the current Gate 1 hook from signed transition-fiber sums to raw
-complete-chiral atlas noncancellation, packages Gate 1 complete-chiral
+gates, proves the current Gate 1 hook from mixed real/imaginary signed
+transition-fiber sums to raw complete-chiral atlas noncancellation, packages
+Gate 1 complete-chiral
 support/consistency, conditional atlas-realization, and branch-aligned
 positive-frequency handedness certificates, restates
 the Gate 2 base zero-set theorem and quotient invariant-observable
@@ -74,21 +75,26 @@ full-closure theorem is
 Gate 4's scheduled-kernel supplier now also fills its own physical
 scheduled-density and kernel/profile-certificate fields, leaving only
 horizon-estimator convergence and null-balance dynamics for Gate 4.  Gate 1's
-finite branch package fills complement/reflection subfields, leaving signed
-atlas fiber-sum noncancellation and order-data coupling selection.  The
+finite branch package fills complement/reflection subfields, leaving mixed
+real/imaginary signed atlas fiber-sum noncancellation and order-data coupling
+selection.  The
 strongest full-closure theorem at that stage is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4DataFiniteGate5Gate6Audits_closed`.
-Gate 1's selection tail is now represented by
-`Gate1PhysicalSelectionBridgeClosed`, which packages signed atlas fiber-sum
-noncancellation and order-data coupling selection together with the already
-closed complete-chiral support and positive-frequency handedness sublayers.
-It now also carries the named
-`Gate1SignedFiberAtlasCertificateClosed` package, exposing the checked ladder
-from signed transition-fiber sums through coefficient and real-polynomial
-nonzero certificates to raw/normalized transition noncancellation and
-two-chirality atlas realization.  The finite search endpoint is now an
-explicit `CompleteChiralAtlasSignedFiberWitnessTable`: one exponent per atlas
-birth, with a nonzero signed transition-fiber count at that exponent.
+Gate 1's corrected selection tail is now represented by
+`Gate1ComplexPhysicalSelectionBridgeClosed`, which packages mixed real/imaginary
+signed atlas fiber-sum noncancellation and order-data coupling selection
+together with the already closed complete-chiral support and
+positive-frequency handedness sublayers.  It carries the named
+`Gate1ComplexSignedFiberAtlasCertificateClosed` package, exposing the checked
+ladder from signed transition-fiber sums to raw/normalized transition
+noncancellation and two-chirality atlas realization.  The finite search
+endpoint is now an
+explicit `CompleteChiralAtlasComplexSignedFiberWitnessTable`: one component
+and one exponent per atlas birth, with a nonzero signed transition-fiber count
+in the selected component.  The older
+`CompleteChiralAtlasSignedFiberWitnessTable` and
+`Gate1PhysicalSelectionBridgeClosed` route remains a sufficient real-only
+special case.
 The newest Gate 4 specialization wires those two remaining Gate 4 fields to
 existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
@@ -105,6 +111,9 @@ The latest named-bridge capstone also consumes the named Gate 1 bridge:
 `microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 The Gate 1 witness table now has a direct top-level route as well:
 `microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
+The corrected mixed real/imaginary Gate 1 endpoint is now exposed by
+`microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`,
+with named-bridge and finite-sum variants immediately below it.
 Gate 5 now also harvests the finite SM/QM audits already proved in the repo:
 finite Hilbert/operational-QM data, finite virtual-propagator kinematics,
 finite group-level gauge structure, hypercharge uniqueness, quark/lepton
@@ -182,21 +191,18 @@ Open work:
   `completeChiralCausalSetGrowthLaw_gate1_projective` and
   `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`;
 - integrated conditional CSpec realization bridge:
-  `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_realPolynomial_nonzero`;
+  `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_complexSignedFiberSum_nonzero`;
   Lean proves `CompleteChiralAtlasRawAggregateNonzero` is equivalent to
   `CompleteChiralAtlasTransitionNonzero`, and
-  `CompleteChiralAtlasRealAggregatePolynomialNonzero` implies that raw gate.
-  `CompleteChiralAtlasRealAggregateCoeffNonzero` now strengthens the usable
-  certificate: one nonzero signed real coefficient in each of the 140 concrete
-  integer real-part aggregate polynomials suffices, with an
-  imaginary-polynomial route needed only if a real certificate vanishes.
-  `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` now expands that
-  coefficient gate into explicit signed transition-fiber sums;
-  `CompleteChiralAtlasSignedFiberWitnessTable` is the concrete finite output
-  schema that implies this signed-fiber noncancellation gate;
-  `Gate1PhysicalSelectionBridgeClosed` packages this signed-fiber certificate
-  with order-data coupling selection, carries
-  `Gate1SignedFiberAtlasCertificateClosed`, and records the resulting
+  real or imaginary aggregate-polynomial nonzero implies that raw gate.
+  `CompleteChiralAtlasComplexSignedFiberSumNonzero` is the usable mixed
+  certificate: each of the 140 concrete atlas births may be certified by a
+  nonzero signed real coefficient or a nonzero signed imaginary coefficient.
+  `CompleteChiralAtlasComplexSignedFiberWitnessTable` is the concrete finite
+  output schema that implies this signed-fiber noncancellation gate;
+  `Gate1ComplexPhysicalSelectionBridgeClosed` packages this signed-fiber
+  certificate with order-data coupling selection, carries
+  `Gate1ComplexSignedFiberAtlasCertificateClosed`, and records the resulting
   finite-branch Gate 1 closure;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
@@ -1268,6 +1274,17 @@ gate1_physicalSelectionBridge_closed
 gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 gate1_microscopicLaw_closed_of_physicalSelectionBridge
 gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
+CompleteChiralAtlasComplexSignedFiberWitnessTable
+completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable
+gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
+Gate1ComplexSignedFiberAtlasCertificateClosed
+gate1_complexSignedFiberAtlasCertificate_closed
+gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
+Gate1ComplexPhysicalSelectionBridgeClosed
+gate1_complexPhysicalSelectionBridge_closed
+gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+gate1_microscopicLaw_closed_of_complexPhysicalSelectionBridge
+gate1_complexSignedFiberAtlasCertificate_closed_of_complexPhysicalSelectionBridge
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
@@ -1404,23 +1421,34 @@ gate1_signedFiberAtlasCertificate_closed
 gate1_signedFiberAtlasCertificate_closed_of_witnessTable
 gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
+CompleteChiralAtlasComplexSignedFiberWitnessTable
+completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable
+Gate1ComplexSignedFiberAtlasCertificateClosed
+gate1_complexSignedFiberAtlasCertificate_closed
+gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
+gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+gate1_complexSignedFiberAtlasCertificate_closed_of_complexPhysicalSelectionBridge
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
+microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
 ```
 
 The next high-value theorem targets are:
 
-1. Gate 1: prove `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` for
+1. Gate 1: prove `CompleteChiralAtlasComplexSignedFiberSumNonzero` for
    the physical CSpec atlas path by constructing
-   `CompleteChiralAtlasSignedFiberWitnessTable`, an explicit exponent table
-   with one nonzero signed transition-fiber count for each atlas birth.  Lean
-   then packages the coefficient, polynomial, raw/transition, and
+   `CompleteChiralAtlasComplexSignedFiberWitnessTable`, an explicit
+   component/exponent table with one nonzero signed transition-fiber count for
+   each atlas birth.  Lean then packages the raw/transition and
    two-chirality atlas-realization consequences as
-   `Gate1SignedFiberAtlasCertificateClosed`.  After that, instantiate
+   `Gate1ComplexSignedFiberAtlasCertificateClosed`.  After that, instantiate
    `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
    constructing a `PhysicalHauptvermutungConvergenceCertificate` and
    finite-spectrum count/curvature/spectral residual gaps.  The narrowest

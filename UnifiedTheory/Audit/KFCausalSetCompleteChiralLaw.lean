@@ -330,12 +330,28 @@ def interactingChiralRealAggregatePolynomial {n : ℕ}
     C (gaussianIPow past.val.maximalCount).1 *
       X ^ ancestorPairExponent past.val.ancestorCount
 
+/-- The imaginary part of one coherently aggregated parent-child transition
+fiber, before evaluating the pair coupling. -/
+def interactingChiralImagAggregatePolynomial {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) : ℤ[X] :=
+  ∑ past : LabeledCausalTransitionFiber parent child,
+    C (gaussianIPow past.val.maximalCount).2 *
+      X ^ ancestorPairExponent past.val.ancestorCount
+
 /-- The signed real coefficient attached to one exponent in a coherent
 parent-child transition aggregate. -/
 def interactingChiralRealAggregateCoeff {n : ℕ}
     (parent : CardinalCausalOrder n)
     (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
   (interactingChiralRealAggregatePolynomial parent child).coeff k
+
+/-- The signed imaginary coefficient attached to one exponent in a coherent
+parent-child transition aggregate. -/
+def interactingChiralImagAggregateCoeff {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
+  (interactingChiralImagAggregatePolynomial parent child).coeff k
 
 /-- The same coefficient written as a signed count over the transition fiber:
 only precursors with exponent `k` contribute, and their signs are the real
@@ -346,6 +362,15 @@ def interactingChiralRealAggregateSignedFiberSum {n : ℕ}
   ∑ past : LabeledCausalTransitionFiber parent child,
     if k = ancestorPairExponent past.val.ancestorCount then
       (gaussianIPow past.val.maximalCount).1
+    else 0
+
+/-- Imaginary companion to `interactingChiralRealAggregateSignedFiberSum`. -/
+def interactingChiralImagAggregateSignedFiberSum {n : ℕ}
+    (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) : ℤ :=
+  ∑ past : LabeledCausalTransitionFiber parent child,
+    if k = ancestorPairExponent past.val.ancestorCount then
+      (gaussianIPow past.val.maximalCount).2
     else 0
 
 /-- The coefficient witness is exactly the signed fiber sum at that exponent. -/
@@ -376,6 +401,35 @@ theorem interactingChiralRealAggregateCoeff_eq_signedFiberSum
     else 0
   rw [coeff_C_mul_X_pow]
 
+/-- The imaginary coefficient witness is exactly the imaginary signed fiber
+sum at that exponent. -/
+theorem interactingChiralImagAggregateCoeff_eq_signedFiberSum
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ) :
+    interactingChiralImagAggregateCoeff parent child k =
+      interactingChiralImagAggregateSignedFiberSum parent child k := by
+  classical
+  unfold interactingChiralImagAggregateCoeff
+  unfold interactingChiralImagAggregatePolynomial
+  unfold interactingChiralImagAggregateSignedFiberSum
+  change (Polynomial.lcoeff ℤ k)
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        C (gaussianIPow past.val.maximalCount).2 *
+          X ^ ancestorPairExponent past.val.ancestorCount) =
+    ∑ past : LabeledCausalTransitionFiber parent child,
+      if k = ancestorPairExponent past.val.ancestorCount then
+        (gaussianIPow past.val.maximalCount).2
+      else 0
+  rw [map_sum]
+  apply Finset.sum_congr rfl
+  intro past _hPast
+  change (C (gaussianIPow past.val.maximalCount).2 *
+      X ^ ancestorPairExponent past.val.ancestorCount).coeff k =
+    if k = ancestorPairExponent past.val.ancestorCount then
+      (gaussianIPow past.val.maximalCount).2
+    else 0
+  rw [coeff_C_mul_X_pow]
+
 /-- A single nonzero coefficient certifies that the real aggregate polynomial
 does not vanish.  This turns the finite aggregate gate into a coefficient
 witness search. -/
@@ -402,6 +456,33 @@ theorem interactingChiralRealAggregatePolynomial_ne_zero_of_signedFiberSum_ne_ze
   apply interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
     parent child k
   rw [interactingChiralRealAggregateCoeff_eq_signedFiberSum]
+  exact hSum
+
+/-- A single nonzero imaginary coefficient certifies that the imaginary
+aggregate polynomial does not vanish. -/
+theorem interactingChiralImagAggregatePolynomial_ne_zero_of_coeff_ne_zero
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ)
+    (hCoeff :
+      interactingChiralImagAggregateCoeff parent child k ≠ 0) :
+    interactingChiralImagAggregatePolynomial parent child ≠ 0 := by
+  intro hZero
+  apply hCoeff
+  unfold interactingChiralImagAggregateCoeff
+  rw [hZero]
+  simp
+
+/-- A nonzero imaginary signed fiber sum at one exponent certifies nonzero
+imaginary aggregate polynomial status. -/
+theorem interactingChiralImagAggregatePolynomial_ne_zero_of_signedFiberSum_ne_zero
+    {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) (k : ℕ)
+    (hSum :
+      interactingChiralImagAggregateSignedFiberSum parent child k ≠ 0) :
+    interactingChiralImagAggregatePolynomial parent child ≠ 0 := by
+  apply interactingChiralImagAggregatePolynomial_ne_zero_of_coeff_ne_zero
+    parent child k
+  rw [interactingChiralImagAggregateCoeff_eq_signedFiberSum]
   exact hSum
 
 @[simp]
@@ -641,6 +722,150 @@ theorem interactingChiral_labeledAggregate_re_eq_polynomial_eval {n : ℕ}
       lambda ^ ancestorPairExponent past.val.ancestorCount
   ring
 
+/-- For the positive chiral branch, the imaginary part of a coherent
+parent-child aggregate is evaluation of the imaginary aggregate polynomial. -/
+theorem interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirality
+    {n : ℕ} (lambda : ℝ) (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    (labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude lambda (0 : Fin 2))
+      parent child).im =
+      (interactingChiralImagAggregatePolynomial parent child).eval₂
+        (Int.castRingHom ℝ) lambda := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  change Complex.imAddGroupHom
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        (interactingChiralCausalEdgeAmplitude lambda (0 : Fin 2)).amplitude
+          parent past.val) = _
+  rw [map_sum]
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+    ((interactingChiralCausalEdgeAmplitude lambda (0 : Fin 2)).amplitude
+      parent past.val).im) = _
+  have hZeroChirality : ((0 : Fin 2) = 0) := rfl
+  simp only [
+    interactingChiralCausalEdgeAmplitude, rideoutSorkinSignatureAmplitude,
+    interactingChiralSignatureWeight, chiralGaussianPower,
+    hZeroChirality, if_true]
+  unfold interactingChiralImagAggregatePolynomial
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+      (((lambda : ℂ) ^ ancestorPairExponent past.val.ancestorCount *
+        gaussianToComplex (gaussianIPow past.val.maximalCount)).im)) =
+    (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        C (gaussianIPow past.val.maximalCount).2 *
+          X ^ ancestorPairExponent past.val.ancestorCount)
+  rw [map_sum]
+  apply Finset.sum_congr rfl
+  intro past _hPast
+  simp only [map_mul]
+  have hRealPow : ((lambda : ℂ) ^
+      ancestorPairExponent past.val.ancestorCount).re =
+      lambda ^ ancestorPairExponent past.val.ancestorCount := by
+    rw [← Complex.ofReal_pow, Complex.ofReal_re]
+  have hImagPow : ((lambda : ℂ) ^
+      ancestorPairExponent past.val.ancestorCount).im = 0 := by
+    rw [← Complex.ofReal_pow, Complex.ofReal_im]
+  have hGaussianRe :
+      (gaussianToComplex (gaussianIPow past.val.maximalCount)).re =
+        ((gaussianIPow past.val.maximalCount).1 : ℝ) := by
+    simp [gaussianToComplex, Complex.mul_re]
+  have hGaussianIm :
+      (gaussianToComplex (gaussianIPow past.val.maximalCount)).im =
+        ((gaussianIPow past.val.maximalCount).2 : ℝ) := by
+    simp [gaussianToComplex, Complex.mul_im]
+  have hCoefficient :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (C (gaussianIPow past.val.maximalCount).2) =
+        ((gaussianIPow past.val.maximalCount).2 : ℝ) := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (C (gaussianIPow past.val.maximalCount).2) = _
+    rw [eval₂_C]
+    rfl
+  have hPower :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (X ^ ancestorPairExponent past.val.ancestorCount) =
+        lambda ^ ancestorPairExponent past.val.ancestorCount := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (X ^ ancestorPairExponent past.val.ancestorCount) = _
+    simp
+  rw [hCoefficient, hPower]
+  rw [Complex.mul_im, hRealPow, hImagPow, hGaussianRe, hGaussianIm]
+  ring
+
+/-- For the reflected chiral branch, the imaginary aggregate polynomial is
+conjugated, so its value appears with a minus sign. -/
+theorem interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChirality
+    {n : ℕ} (lambda : ℝ) (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1)) :
+    (labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude lambda (1 : Fin 2))
+      parent child).im =
+      - (interactingChiralImagAggregatePolynomial parent child).eval₂
+          (Int.castRingHom ℝ) lambda := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  change Complex.imAddGroupHom
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        (interactingChiralCausalEdgeAmplitude lambda (1 : Fin 2)).amplitude
+          parent past.val) = _
+  rw [map_sum]
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+    ((interactingChiralCausalEdgeAmplitude lambda (1 : Fin 2)).amplitude
+      parent past.val).im) = _
+  have hOneChirality : ¬ ((1 : Fin 2) = 0) := by decide
+  simp only [
+    interactingChiralCausalEdgeAmplitude, rideoutSorkinSignatureAmplitude,
+    interactingChiralSignatureWeight, chiralGaussianPower,
+    hOneChirality, if_false]
+  unfold interactingChiralImagAggregatePolynomial
+  change (∑ past : LabeledCausalTransitionFiber parent child,
+      (((lambda : ℂ) ^ ancestorPairExponent past.val.ancestorCount *
+        conj (gaussianToComplex (gaussianIPow past.val.maximalCount))).im)) =
+    - (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+      (∑ past : LabeledCausalTransitionFiber parent child,
+        C (gaussianIPow past.val.maximalCount).2 *
+          X ^ ancestorPairExponent past.val.ancestorCount)
+  rw [map_sum]
+  rw [Finset.sum_neg_distrib]
+  apply Finset.sum_congr rfl
+  intro past _hPast
+  simp only [map_mul]
+  have hRealPow : ((lambda : ℂ) ^
+      ancestorPairExponent past.val.ancestorCount).re =
+      lambda ^ ancestorPairExponent past.val.ancestorCount := by
+    rw [← Complex.ofReal_pow, Complex.ofReal_re]
+  have hImagPow : ((lambda : ℂ) ^
+      ancestorPairExponent past.val.ancestorCount).im = 0 := by
+    rw [← Complex.ofReal_pow, Complex.ofReal_im]
+  have hGaussianRe :
+      (gaussianToComplex (gaussianIPow past.val.maximalCount)).re =
+        ((gaussianIPow past.val.maximalCount).1 : ℝ) := by
+    simp [gaussianToComplex, Complex.mul_re]
+  have hGaussianIm :
+      (gaussianToComplex (gaussianIPow past.val.maximalCount)).im =
+        ((gaussianIPow past.val.maximalCount).2 : ℝ) := by
+    simp [gaussianToComplex, Complex.mul_im]
+  have hCoefficient :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (C (gaussianIPow past.val.maximalCount).2) =
+        ((gaussianIPow past.val.maximalCount).2 : ℝ) := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (C (gaussianIPow past.val.maximalCount).2) = _
+    rw [eval₂_C]
+    rfl
+  have hPower :
+      (Polynomial.eval₂RingHom (Int.castRingHom ℝ) lambda)
+          (X ^ ancestorPairExponent past.val.ancestorCount) =
+        lambda ^ ancestorPairExponent past.val.ancestorCount := by
+    change Polynomial.eval₂ (Int.castRingHom ℝ) lambda
+      (X ^ ancestorPairExponent past.val.ancestorCount) = _
+    simp
+  rw [hCoefficient, hPower]
+  rw [Complex.mul_im, Complex.conj_re, Complex.conj_im,
+    hRealPow, hImagPow, hGaussianRe, hGaussianIm]
+  ring
+
 /-- A nonzero real aggregate polynomial is enough to rule out coherent
 cancellation at any transcendental pair coupling. -/
 theorem interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
@@ -661,6 +886,43 @@ theorem interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
       (interactingChiralRealAggregatePolynomial parent child) (by
         simpa [Polynomial.aeval_def] using hRealZero)
   exact hPolynomial hPolynomialZero
+
+/-- A nonzero imaginary aggregate polynomial is also enough to rule out
+coherent cancellation at any transcendental pair coupling.  The reflected
+chirality conjugates the imaginary part, but the minus sign preserves
+nonzero status. -/
+theorem interactingChiral_labeledAggregate_ne_zero_of_imagPolynomial_ne_zero
+    {lambda : ℝ} (hTranscendental : Transcendental ℤ lambda)
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hPolynomial :
+      interactingChiralImagAggregatePolynomial parent child ≠ 0) :
+    labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude lambda chirality)
+      parent child ≠ 0 := by
+  intro hZero
+  have hImagZero := congrArg Complex.im hZero
+  fin_cases chirality
+  · rw [interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirality]
+      at hImagZero
+    have hPolynomialZero :
+        interactingChiralImagAggregatePolynomial parent child = 0 :=
+      (transcendental_iff.mp hTranscendental)
+        (interactingChiralImagAggregatePolynomial parent child) (by
+          simpa [Polynomial.aeval_def] using hImagZero)
+    exact hPolynomial hPolynomialZero
+  · rw [interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChirality]
+      at hImagZero
+    have hEvalZero :
+        (interactingChiralImagAggregatePolynomial parent child).eval₂
+          (Int.castRingHom ℝ) lambda = 0 := by
+      exact neg_eq_zero.mp hImagZero
+    have hPolynomialZero :
+        interactingChiralImagAggregatePolynomial parent child = 0 :=
+      (transcendental_iff.mp hTranscendental)
+        (interactingChiralImagAggregatePolynomial parent child) (by
+          simpa [Polynomial.aeval_def] using hEvalZero)
+    exact hPolynomial hPolynomialZero
 
 /-- Transcendence is sufficient but not necessary for all-rank
 normalizability.  At zero coupling every multi-ancestor transition is
@@ -710,6 +972,19 @@ theorem canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne
       (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
       parent child ≠ 0 :=
   interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+    canonicalPairCoupling_transcendental chirality parent child hPolynomial
+
+/-- Canonical-coupling form of the imaginary-polynomial aggregate
+certificate. -/
+theorem canonical_labeledInteractingChiralAggregate_ne_zero_of_imagPolynomial_ne_zero
+    (chirality : Fin 2) {n : ℕ} (parent : CardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hPolynomial :
+      interactingChiralImagAggregatePolynomial parent child ≠ 0) :
+    labeledAggregatedCausalEdgeAmplitude
+      (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
+      parent child ≠ 0 :=
+  interactingChiral_labeledAggregate_ne_zero_of_imagPolynomial_ne_zero
     canonicalPairCoupling_transcendental chirality parent child hPolynomial
 
 theorem canonicalPairCoupling_pos : 0 < canonicalPairCoupling := by
@@ -1515,11 +1790,18 @@ theorem completeChiralLaw_recovers_endpoint_without_totalization
 #print axioms canonical_interactingChiral_partition_ne_zero
 #print axioms subcritical_interactingChiral_partition_ne_zero
 #print axioms interactingChiral_labeledAggregate_re_eq_polynomial_eval
+#print axioms interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirality
+#print axioms interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChirality
 #print axioms interactingChiral_labeledAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms interactingChiral_labeledAggregate_ne_zero_of_imagPolynomial_ne_zero
 #print axioms interactingChiralRealAggregateCoeff_eq_signedFiberSum
+#print axioms interactingChiralImagAggregateCoeff_eq_signedFiberSum
 #print axioms interactingChiralRealAggregatePolynomial_ne_zero_of_coeff_ne_zero
 #print axioms interactingChiralRealAggregatePolynomial_ne_zero_of_signedFiberSum_ne_zero
+#print axioms interactingChiralImagAggregatePolynomial_ne_zero_of_coeff_ne_zero
+#print axioms interactingChiralImagAggregatePolynomial_ne_zero_of_signedFiberSum_ne_zero
 #print axioms canonical_labeledInteractingChiralAggregate_ne_zero_of_realPolynomial_ne_zero
+#print axioms canonical_labeledInteractingChiralAggregate_ne_zero_of_imagPolynomial_ne_zero
 #print axioms effectivePairChiralSignatureWeight_append_singleton
 #print axioms interactingChiralSignatureWeight_eq_iff
 #print axioms interactingChiralSignatureWeight_fullSupport_iff

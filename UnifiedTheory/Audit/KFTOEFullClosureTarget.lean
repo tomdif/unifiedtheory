@@ -1979,4 +1979,296 @@ theorem microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedG
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
       hinitial hHP hlate hgw
 
+/-- Corrected mixed Gate-1 capstone: the finite chiral-atlas input may use
+either real or imaginary signed transition-fiber noncancellation at each
+atlas birth.  This is the route exposed by the current finite witness search;
+the real-only capstones above remain sufficient special cases. -/
+theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    (TGate6 : Gate6NamedCosmologyBlackHoleBridgeTargets)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData : Prop}
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData)
+    (hGate4Bridge :
+      Gate4EstimatorArakiHorizonBridgeClosed Hest arakiFlux AQFT alpha phi)
+    (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
+    (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
+    (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
+    (hGate6Bridge : Gate6NamedCosmologyBlackHoleBridgeClosed S TGate6) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        THilbert TSpin TGauge TGate6) := by
+  exact
+    ⟨gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
+        hSum hcoupling,
+      microscopicGate4ScheduledKernelData_gate2HauptvermutungSemantic_closed G,
+      gate3_exactRecoveryCertificate_closed
+        (microscopicGate3QuantizedConvergenceData_exactRecoveryCertificate
+          G.gate3),
+      microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiHorizonBridge
+        G Hest arakiFlux AQFT alpha phi hGate4Bridge,
+      gate5_qftStandardModelIR_closed_of_namedContinuumBridgesAndFiniteAudits
+        fA fB hA hB F K Scat THilbert TSpin TGauge
+        hHilbertBridge hSpinBridge hGaugeBridge,
+      gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+        S TGate6 hGate6Bridge,
+      gate7_externalTests_closed_from_preRegistrationLedger⟩
+
+/-- Hayden-Preskill-specialized version of the corrected mixed Gate-1
+capstone. -/
+theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData
+      cosmologicalMeasureOrInitialState
+      lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData)
+    (hGate4Bridge :
+      Gate4EstimatorArakiHorizonBridgeClosed Hest arakiFlux AQFT alpha phi)
+    (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
+    (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
+    (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
+    (hinitial : cosmologicalMeasureOrInitialState)
+    (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
+    (hlate : lateStructureFormation)
+    (hgw : gravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        THilbert TSpin TGauge
+        (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+          cosmologicalMeasureOrInitialState
+          lateStructureFormation gravitationalWaveCompatibility)) := by
+  exact
+    microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
+      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+        cosmologicalMeasureOrInitialState
+        lateStructureFormation gravitationalWaveCompatibility)
+      hSum hcoupling hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
+      (gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
+        S hinitial hHP hlate hgw)
+
+/-- Named-bridge version of the corrected mixed Gate-1 capstone. -/
+theorem microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData
+      cosmologicalMeasureOrInitialState
+      lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (hGate1 :
+      Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData)
+    (hGate4Bridge :
+      Gate4EstimatorArakiHorizonBridgeClosed Hest arakiFlux AQFT alpha phi)
+    (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
+    (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
+    (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
+    (hinitial : cosmologicalMeasureOrInitialState)
+    (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
+    (hlate : lateStructureFormation)
+    (hgw : gravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        THilbert TSpin TGauge
+        (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+          cosmologicalMeasureOrInitialState
+          lateStructureFormation gravitationalWaveCompatibility)) := by
+  exact
+    microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
+      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      hGate1.complexSignedFiberSums hGate1.couplingSelected
+      hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
+      hinitial hHP hlate hgw
+
+/-- Explicit corrected Gate-1-witness-table capstone.  This is the finite
+endpoint matched to the current search result: every complete-chiral atlas
+birth is certified by a concrete real or imaginary signed-fiber coefficient. -/
+theorem microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+    {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    {C : UnifiedTheory.LayerA.CausalFoundation.CausalSet}
+    [Fintype C.Event]
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F K : ProjectiveQubitCarrierField site)
+    (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
+    (S : QQGScenario)
+    (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
+    (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
+    (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
+    (TGauge : Gate5YangMillsHiggsRenormalizationBridgeTargets)
+    {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
+    {couplingSelectedFromOrderData
+      cosmologicalMeasureOrInitialState
+      lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (W : CompleteChiralAtlasComplexSignedFiberWitnessTable)
+    (hcoupling : couplingSelectedFromOrderData)
+    (hGate4Bridge :
+      Gate4EstimatorArakiHorizonBridgeClosed Hest arakiFlux AQFT alpha phi)
+    (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
+    (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
+    (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
+    (hinitial : cosmologicalMeasureOrInitialState)
+    (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
+    (hlate : lateStructureFormation)
+    (hgw : gravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
+        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        THilbert TSpin TGauge
+        (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
+          cosmologicalMeasureOrInitialState
+          lateStructureFormation gravitationalWaveCompatibility)) := by
+  exact
+    microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
+      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      (gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+        W hcoupling)
+      hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
+      hinitial hHP hlate hgw
+
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

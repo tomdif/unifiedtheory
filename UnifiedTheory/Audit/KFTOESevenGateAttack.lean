@@ -104,20 +104,21 @@ structure Gate1MicroscopicLawTargets : Type where
 and the remaining physical-selection inputs are supplied. -/
 structure Gate1MicroscopicLawClosed
     (T : Gate1MicroscopicLawTargets) : Prop where
-  signedFiberSums :
-    CompleteChiralAtlasRealAggregateSignedFiberSumNonzero
+  complexSignedFiberSums :
+    CompleteChiralAtlasComplexSignedFiberSumNonzero
   couplingSelected : T.couplingSelectedFromOrderData
   complementSymmetry : T.complementSymmetryDerived
   reflectionOddSource : T.reflectionOddSourceDerived
 
-/-- Current Gate 1 theorem hook: signed atlas transition-fiber sums imply the
-raw complete-chiral atlas noncancellation gate. -/
+/-- Current Gate 1 theorem hook: mixed real/imaginary signed atlas
+transition-fiber sums imply the raw complete-chiral atlas noncancellation
+gate. -/
 theorem gate1_rawAggregateNonzero_of_closed
     {T : Gate1MicroscopicLawTargets}
     (G : Gate1MicroscopicLawClosed T) (chirality : Fin 2) :
     CompleteChiralAtlasRawAggregateNonzero chirality := by
-  exact completeChiralAtlasRawAggregateNonzero_of_signedFiberSum_nonzero
-    chirality G.signedFiberSums
+  exact completeChiralAtlasRawAggregateNonzero_of_complexSignedFiberSum_nonzero
+    chirality G.complexSignedFiberSums
 
 /-- The unconditional Gate 1 support/quantum-consistency sublayer of the
 complete chiral causal-set growth law: every finite depth is normalized,
@@ -224,6 +225,53 @@ theorem gate1_completeChiralAtlasRealization_closed
       completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
         chirality hSum⟩
 
+/-- Corrected conditional Gate 1 atlas-realization sublayer: each atlas birth
+may be certified in the real or imaginary signed-fiber channel. -/
+structure Gate1CompleteChiralComplexAtlasRealizationClosed
+    (chirality : Fin 2) : Prop where
+  complexSignedFiberSums :
+    CompleteChiralAtlasComplexSignedFiberSumNonzero
+  rawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero chirality
+  transitionNonzero :
+    CompleteChiralAtlasTransitionNonzero chirality
+  atlasSupportGate :
+    ∀ (n : ℕ) (hnext : n + 1 ≤ 140),
+      IsPhysicalCausalGrowthStep n
+        (atlasStepPrefix n hnext) (atlasStepChild n hnext) ∧
+      (¬ IsPhysicalCausalGrowthStep n
+          (atlasStepPrefix n hnext) (atlasStepChild n hnext) →
+        atlasCompleteChiralTransition chirality n hnext = 0)
+  determinantSector :
+    IsPhysicalCausalGrowthPath 140
+        (globalAtlasPhysicalGrowthPath 140 le_rfl)
+      ∧ finiteRankedPathAmplitude
+          (completeChiralCausalSetGrowthLaw chirality) 140
+          (globalAtlasPhysicalGrowthPath 140 le_rfl) ≠ 0
+      ∧ Nonempty
+          (CausalOrderPoint (globalAtlasPhysicalPrefix 140 le_rfl) ≃o
+            GlobalAtlasEvent)
+      ∧ ContainsBooleanCubeSeed (globalAtlasPhysicalPrefix 140 le_rfl)
+      ∧ cSpecAtlasOrientation 3 cSpecOddLoopHistory = -1
+      ∧ IsNontrivialPurelyRightHanded
+          (cSpecAtlasWeakVertex 3 cSpecOddLoopHistory)
+
+theorem gate1_completeChiralComplexAtlasRealization_closed
+    (chirality : Fin 2)
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero) :
+    Gate1CompleteChiralComplexAtlasRealizationClosed chirality := by
+  have hRaw : CompleteChiralAtlasRawAggregateNonzero chirality :=
+    completeChiralAtlasRawAggregateNonzero_of_complexSignedFiberSum_nonzero
+      chirality hSum
+  have hTransition : CompleteChiralAtlasTransitionNonzero chirality :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      chirality hRaw
+  exact
+    ⟨hSum, hRaw, hTransition,
+      completeChiral_atlasStep_support_gate chirality,
+      completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_complexSignedFiberSum_nonzero
+        chirality hSum⟩
+
 /-- Named finite signed-fiber atlas certificate.  This records the whole
 checked ladder from explicit signed transition-fiber sums to coefficient
 witnesses, real-polynomial nonzero status, raw and normalized transition
@@ -281,6 +329,52 @@ theorem gate1_signedFiberAtlasCertificate_closed_of_witnessTable
   exact
     gate1_signedFiberAtlasCertificate_closed
       (completeChiralAtlasRealAggregateSignedFiberSumNonzero_of_witnessTable W)
+
+/-- Named corrected finite atlas certificate.  Unlike the real-only package,
+this allows each atlas birth to use either a real or imaginary signed
+transition-fiber count. -/
+structure Gate1ComplexSignedFiberAtlasCertificateClosed : Prop where
+  complexSignedFiberSums :
+    CompleteChiralAtlasComplexSignedFiberSumNonzero
+  zeroChiralityRawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero (0 : Fin 2)
+  oneChiralityRawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero (1 : Fin 2)
+  zeroChiralityTransitionNonzero :
+    CompleteChiralAtlasTransitionNonzero (0 : Fin 2)
+  oneChiralityTransitionNonzero :
+    CompleteChiralAtlasTransitionNonzero (1 : Fin 2)
+  zeroChiralityAtlasRealization :
+    Gate1CompleteChiralComplexAtlasRealizationClosed (0 : Fin 2)
+  oneChiralityAtlasRealization :
+    Gate1CompleteChiralComplexAtlasRealizationClosed (1 : Fin 2)
+
+theorem gate1_complexSignedFiberAtlasCertificate_closed
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero) :
+    Gate1ComplexSignedFiberAtlasCertificateClosed := by
+  have hRaw0 : CompleteChiralAtlasRawAggregateNonzero (0 : Fin 2) :=
+    completeChiralAtlasRawAggregateNonzero_of_complexSignedFiberSum_nonzero
+      (0 : Fin 2) hSum
+  have hRaw1 : CompleteChiralAtlasRawAggregateNonzero (1 : Fin 2) :=
+    completeChiralAtlasRawAggregateNonzero_of_complexSignedFiberSum_nonzero
+      (1 : Fin 2) hSum
+  have hTransition0 : CompleteChiralAtlasTransitionNonzero (0 : Fin 2) :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      (0 : Fin 2) hRaw0
+  have hTransition1 : CompleteChiralAtlasTransitionNonzero (1 : Fin 2) :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      (1 : Fin 2) hRaw1
+  exact
+    ⟨hSum, hRaw0, hRaw1, hTransition0, hTransition1,
+      gate1_completeChiralComplexAtlasRealization_closed (0 : Fin 2) hSum,
+      gate1_completeChiralComplexAtlasRealization_closed (1 : Fin 2) hSum⟩
+
+theorem gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
+    (W : CompleteChiralAtlasComplexSignedFiberWitnessTable) :
+    Gate1ComplexSignedFiberAtlasCertificateClosed := by
+  exact
+    gate1_complexSignedFiberAtlasCertificate_closed
+      (completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable W)
 
 /-- The Gate 1 positive-frequency handedness sublayer: after choosing the
 positive orientation branch, the finite causal clock birth saturates the
@@ -374,11 +468,12 @@ def gate1MicroscopicLawTargetsOfFiniteBranch
       Gate1CompleteChiralLawSupportAndConsistencyClosed (1 : Fin 2)
   reflectionOddSourceDerived := Gate1PositiveFrequencyHandednessClosed
 
-/-- The current finite Gate 1 branch package reduces microscopic-law closure
-to signed atlas fiber-sum noncancellation plus order-data coupling selection. -/
-theorem gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+/-- The corrected finite Gate 1 branch package reduces microscopic-law
+closure to mixed real/imaginary signed atlas fiber-sum noncancellation plus
+order-data coupling selection. -/
+theorem gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
     {couplingSelectedFromOrderData : Prop}
-    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero)
     (hcoupling : couplingSelectedFromOrderData) :
     Gate1MicroscopicLawClosed
       (gate1MicroscopicLawTargetsOfFiniteBranch
@@ -388,6 +483,21 @@ theorem gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
       ⟨gate1_completeChiralLawSupportAndConsistency_closed (0 : Fin 2),
         gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2)⟩,
       gate1_positiveFrequencyHandedness_closed⟩
+
+/-- Real signed-fiber noncancellation remains a sufficient special case of
+the corrected mixed Gate 1 branch package. -/
+theorem gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+    {couplingSelectedFromOrderData : Prop}
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData) := by
+  exact
+    gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
+      (completeChiralAtlasComplexSignedFiberSumNonzero_of_realSignedFiberSum_nonzero
+        hSum)
+      hcoupling
 
 /-- Named Gate 1 physical-selection bridge.  This packages the two genuinely
 remaining Gate 1 inputs, signed atlas fiber-sum noncancellation and
@@ -451,6 +561,69 @@ theorem gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
       Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData) :
     Gate1SignedFiberAtlasCertificateClosed := by
   exact hGate1.signedAtlasCertificate
+
+/-- Corrected named Gate 1 physical-selection bridge.  This replaces the
+real-only signed-fiber input by the mixed real/imaginary signed-fiber
+certificate while keeping order-data coupling selection and the already
+closed finite complement/reflection branch. -/
+structure Gate1ComplexPhysicalSelectionBridgeClosed
+    (couplingSelectedFromOrderData : Prop) : Prop where
+  complexSignedFiberSums :
+    CompleteChiralAtlasComplexSignedFiberSumNonzero
+  couplingSelected :
+    couplingSelectedFromOrderData
+  complexSignedAtlasCertificate :
+    Gate1ComplexSignedFiberAtlasCertificateClosed
+  supportZeroChirality :
+    Gate1CompleteChiralLawSupportAndConsistencyClosed (0 : Fin 2)
+  supportOneChirality :
+    Gate1CompleteChiralLawSupportAndConsistencyClosed (1 : Fin 2)
+  positiveFrequencyHandedness :
+    Gate1PositiveFrequencyHandednessClosed
+  finiteBranchClosed :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData)
+
+theorem gate1_complexPhysicalSelectionBridge_closed
+    {couplingSelectedFromOrderData : Prop}
+    (hSum : CompleteChiralAtlasComplexSignedFiberSumNonzero)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
+  exact
+    ⟨hSum, hcoupling,
+      gate1_complexSignedFiberAtlasCertificate_closed hSum,
+      gate1_completeChiralLawSupportAndConsistency_closed (0 : Fin 2),
+      gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2),
+      gate1_positiveFrequencyHandedness_closed,
+      gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
+        hSum hcoupling⟩
+
+theorem gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+    {couplingSelectedFromOrderData : Prop}
+    (W : CompleteChiralAtlasComplexSignedFiberWitnessTable)
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
+  exact
+    gate1_complexPhysicalSelectionBridge_closed
+      (completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable W)
+      hcoupling
+
+theorem gate1_microscopicLaw_closed_of_complexPhysicalSelectionBridge
+    {couplingSelectedFromOrderData : Prop}
+    (hGate1 :
+      Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData) :
+    Gate1MicroscopicLawClosed
+      (gate1MicroscopicLawTargetsOfFiniteBranch
+        couplingSelectedFromOrderData) := by
+  exact hGate1.finiteBranchClosed
+
+theorem gate1_complexSignedFiberAtlasCertificate_closed_of_complexPhysicalSelectionBridge
+    {couplingSelectedFromOrderData : Prop}
+    (hGate1 :
+      Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData) :
+    Gate1ComplexSignedFiberAtlasCertificateClosed := by
+  exact hGate1.complexSignedAtlasCertificate
 
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
@@ -2786,14 +2959,22 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_rawAggregateNonzero_of_closed
 #print axioms gate1_completeChiralLawSupportAndConsistency_closed
 #print axioms gate1_completeChiralAtlasRealization_closed
+#print axioms gate1_completeChiralComplexAtlasRealization_closed
 #print axioms gate1_positiveFrequencyHandedness_closed
+#print axioms gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
 #print axioms gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
 #print axioms gate1_signedFiberAtlasCertificate_closed
 #print axioms gate1_signedFiberAtlasCertificate_closed_of_witnessTable
+#print axioms gate1_complexSignedFiberAtlasCertificate_closed
+#print axioms gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
 #print axioms gate1_physicalSelectionBridge_closed
 #print axioms gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
 #print axioms gate1_microscopicLaw_closed_of_physicalSelectionBridge
 #print axioms gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
+#print axioms gate1_complexPhysicalSelectionBridge_closed
+#print axioms gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+#print axioms gate1_microscopicLaw_closed_of_complexPhysicalSelectionBridge
+#print axioms gate1_complexSignedFiberAtlasCertificate_closed_of_complexPhysicalSelectionBridge
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate

@@ -48,15 +48,16 @@ new-physics lead is documented in
 The gap-closing roadmap is tracked in
 [`TOE_COMPLETION_PLAN.md`](TOE_COMPLETION_PLAN.md).
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` mirrors that roadmap as a
-Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
-atlas-fiber noncancellation and order-data coupling selection as a named
-physical-selection bridge; that bridge now carries the named
-`Gate1SignedFiberAtlasCertificateClosed` package, exposing the coefficient,
-real-polynomial, raw-aggregate, transition-noncancellation, and two-chirality
-atlas-realization consequences of the signed-fiber certificate, and the finite
-search endpoint is the explicit exponent table
-`CompleteChiralAtlasSignedFiberWitnessTable`, which now has a direct
-full-closure capstone route; plus
+Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 mixed
+real/imaginary signed atlas-fiber noncancellation and order-data coupling
+selection as a named physical-selection bridge; that bridge now carries the
+named `Gate1ComplexSignedFiberAtlasCertificateClosed` package, exposing the
+signed-fiber, raw-aggregate, transition-noncancellation, and two-chirality
+atlas-realization consequences of the mixed certificate.
+The current finite search endpoint is the explicit component/exponent table
+`CompleteChiralAtlasComplexSignedFiberWitnessTable`, which now has a direct
+full-closure capstone route; the older real-only table remains a sufficient
+special case.  The ledger also covers
 complete-chiral support/consistency and branch-aligned
 positive-frequency handedness with its reflection boundary; Gate 2 base zero
 sets and invariant-observable quotient semantics; and Gate 3 protected
