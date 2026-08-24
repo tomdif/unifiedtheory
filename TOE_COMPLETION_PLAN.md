@@ -82,6 +82,11 @@ Gate 1's selection tail is now represented by
 `Gate1PhysicalSelectionBridgeClosed`, which packages signed atlas fiber-sum
 noncancellation and order-data coupling selection together with the already
 closed complete-chiral support and positive-frequency handedness sublayers.
+It now also carries the named
+`Gate1SignedFiberAtlasCertificateClosed` package, exposing the checked ladder
+from signed transition-fiber sums through coefficient and real-polynomial
+nonzero certificates to raw/normalized transition noncancellation and
+two-chirality atlas realization.
 The newest Gate 4 specialization wires those two remaining Gate 4 fields to
 existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
@@ -184,8 +189,9 @@ Open work:
   `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` now expands that
   coefficient gate into explicit signed transition-fiber sums;
   `Gate1PhysicalSelectionBridgeClosed` packages this signed-fiber certificate
-  with order-data coupling selection and records the resulting finite-branch
-  Gate 1 closure;
+  with order-data coupling selection, carries
+  `Gate1SignedFiberAtlasCertificateClosed`, and records the resulting
+  finite-branch Gate 1 closure;
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
@@ -1247,8 +1253,11 @@ The integrated Lean results are:
 physicalHauptvermutungBaseDistortion_eq_zero_iff
 gate1MicroscopicLawTargetsOfFiniteBranch
 gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+Gate1SignedFiberAtlasCertificateClosed
+gate1_signedFiberAtlasCertificate_closed
 gate1_physicalSelectionBridge_closed
 gate1_microscopicLaw_closed_of_physicalSelectionBridge
+gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
@@ -1378,6 +1387,9 @@ gate6_namedCosmologyBlackHoleBridge_closed
 gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
 gate6_haydenPreskillMicroscopicEvaporationBridge_closed
 gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
+Gate1SignedFiberAtlasCertificateClosed
+gate1_signedFiberAtlasCertificate_closed
+gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
 microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
@@ -1388,7 +1400,9 @@ microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6Hayden
 The next high-value theorem targets are:
 
 1. Gate 1: prove `CompleteChiralAtlasRealAggregateSignedFiberSumNonzero` for
-   the physical CSpec atlas path, then instantiate
+   the physical CSpec atlas path; Lean then packages the coefficient,
+   polynomial, raw/transition, and two-chirality atlas-realization consequences
+   as `Gate1SignedFiberAtlasCertificateClosed`.  After that, instantiate
    `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
    constructing a `PhysicalHauptvermutungConvergenceCertificate` and
    finite-spectrum count/curvature/spectral residual gaps.  The narrowest

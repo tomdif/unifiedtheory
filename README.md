@@ -50,8 +50,11 @@ The gap-closing roadmap is tracked in
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` mirrors that roadmap as a
 Lean-facing seven-gate ledger: it has checked theorem hooks for Gate 1 signed
 atlas-fiber noncancellation and order-data coupling selection as a named
-physical-selection bridge, plus complete-chiral support/consistency and
-conditional atlas-realization certificates plus branch-aligned
+physical-selection bridge; that bridge now carries the named
+`Gate1SignedFiberAtlasCertificateClosed` package, exposing the coefficient,
+real-polynomial, raw-aggregate, transition-noncancellation, and two-chirality
+atlas-realization consequences of the signed-fiber certificate; plus
+complete-chiral support/consistency and branch-aligned
 positive-frequency handedness with its reflection boundary; Gate 2 base zero
 sets and invariant-observable quotient semantics; and Gate 3 protected
 aggregate-rate contraction, convergence, bridge/residual-split, and

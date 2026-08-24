@@ -224,6 +224,57 @@ theorem gate1_completeChiralAtlasRealization_closed
       completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_signedFiberSum_nonzero
         chirality hSum⟩
 
+/-- Named finite signed-fiber atlas certificate.  This records the whole
+checked ladder from explicit signed transition-fiber sums to coefficient
+witnesses, real-polynomial nonzero status, raw and normalized transition
+noncancellation for both chiralities, and the conditional atlas-realization
+theorem for both complete-chiral branches. -/
+structure Gate1SignedFiberAtlasCertificateClosed : Prop where
+  signedFiberSums :
+    CompleteChiralAtlasRealAggregateSignedFiberSumNonzero
+  coeffNonzero :
+    CompleteChiralAtlasRealAggregateCoeffNonzero
+  polynomialNonzero :
+    CompleteChiralAtlasRealAggregatePolynomialNonzero
+  zeroChiralityRawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero (0 : Fin 2)
+  oneChiralityRawAggregateNonzero :
+    CompleteChiralAtlasRawAggregateNonzero (1 : Fin 2)
+  zeroChiralityTransitionNonzero :
+    CompleteChiralAtlasTransitionNonzero (0 : Fin 2)
+  oneChiralityTransitionNonzero :
+    CompleteChiralAtlasTransitionNonzero (1 : Fin 2)
+  zeroChiralityAtlasRealization :
+    Gate1CompleteChiralAtlasRealizationClosed (0 : Fin 2)
+  oneChiralityAtlasRealization :
+    Gate1CompleteChiralAtlasRealizationClosed (1 : Fin 2)
+
+theorem gate1_signedFiberAtlasCertificate_closed
+    (hSum : CompleteChiralAtlasRealAggregateSignedFiberSumNonzero) :
+    Gate1SignedFiberAtlasCertificateClosed := by
+  have hCoeff : CompleteChiralAtlasRealAggregateCoeffNonzero :=
+    completeChiralAtlasRealAggregateCoeffNonzero_of_signedFiberSum_nonzero
+      hSum
+  have hPolynomial : CompleteChiralAtlasRealAggregatePolynomialNonzero :=
+    completeChiralAtlasRealAggregatePolynomialNonzero_of_coeff_nonzero
+      hCoeff
+  have hRaw0 : CompleteChiralAtlasRawAggregateNonzero (0 : Fin 2) :=
+    completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
+      (0 : Fin 2) hPolynomial
+  have hRaw1 : CompleteChiralAtlasRawAggregateNonzero (1 : Fin 2) :=
+    completeChiralAtlasRawAggregateNonzero_of_realPolynomial_nonzero
+      (1 : Fin 2) hPolynomial
+  have hTransition0 : CompleteChiralAtlasTransitionNonzero (0 : Fin 2) :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      (0 : Fin 2) hRaw0
+  have hTransition1 : CompleteChiralAtlasTransitionNonzero (1 : Fin 2) :=
+    completeChiralAtlasTransition_nonzero_of_rawAggregate_nonzero
+      (1 : Fin 2) hRaw1
+  exact
+    ⟨hSum, hCoeff, hPolynomial, hRaw0, hRaw1, hTransition0, hTransition1,
+      gate1_completeChiralAtlasRealization_closed (0 : Fin 2) hSum,
+      gate1_completeChiralAtlasRealization_closed (1 : Fin 2) hSum⟩
+
 /-- The Gate 1 positive-frequency handedness sublayer: after choosing the
 positive orientation branch, the finite causal clock birth saturates the
 Margolus-Levitin quarter-turn, selects the unique `-i` chiral phase, extends to
@@ -341,6 +392,8 @@ structure Gate1PhysicalSelectionBridgeClosed
     CompleteChiralAtlasRealAggregateSignedFiberSumNonzero
   couplingSelected :
     couplingSelectedFromOrderData
+  signedAtlasCertificate :
+    Gate1SignedFiberAtlasCertificateClosed
   supportZeroChirality :
     Gate1CompleteChiralLawSupportAndConsistencyClosed (0 : Fin 2)
   supportOneChirality :
@@ -359,6 +412,7 @@ theorem gate1_physicalSelectionBridge_closed
     Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
   exact
     ⟨hSum, hcoupling,
+      gate1_signedFiberAtlasCertificate_closed hSum,
       gate1_completeChiralLawSupportAndConsistency_closed (0 : Fin 2),
       gate1_completeChiralLawSupportAndConsistency_closed (1 : Fin 2),
       gate1_positiveFrequencyHandedness_closed,
@@ -373,6 +427,13 @@ theorem gate1_microscopicLaw_closed_of_physicalSelectionBridge
       (gate1MicroscopicLawTargetsOfFiniteBranch
         couplingSelectedFromOrderData) := by
   exact hGate1.finiteBranchClosed
+
+theorem gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
+    {couplingSelectedFromOrderData : Prop}
+    (hGate1 :
+      Gate1PhysicalSelectionBridgeClosed couplingSelectedFromOrderData) :
+    Gate1SignedFiberAtlasCertificateClosed := by
+  exact hGate1.signedAtlasCertificate
 
 /-! ## Gate 2: Hauptvermutung semantic zero sets -/
 
@@ -2710,8 +2771,10 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate1_completeChiralAtlasRealization_closed
 #print axioms gate1_positiveFrequencyHandedness_closed
 #print axioms gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
+#print axioms gate1_signedFiberAtlasCertificate_closed
 #print axioms gate1_physicalSelectionBridge_closed
 #print axioms gate1_microscopicLaw_closed_of_physicalSelectionBridge
+#print axioms gate1_signedFiberAtlasCertificate_closed_of_physicalSelectionBridge
 #print axioms gate2_baseDistortion_zero_iff_components_zero
 #print axioms gate2_diffeomorphismInvariantObservableFamily_closed
 #print axioms gate3_horizonProtection_and_total_tendsto_zero_of_certificate

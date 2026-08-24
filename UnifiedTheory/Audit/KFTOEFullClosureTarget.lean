@@ -1900,7 +1900,7 @@ theorem microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gat
   exact
     microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
       G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
-      hGate1.signedFiberSums hGate1.couplingSelected
+      hGate1.signedAtlasCertificate.signedFiberSums hGate1.couplingSelected
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
       hinitial hHP hlate hgw
 
