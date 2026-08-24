@@ -546,4 +546,128 @@ theorem microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_pr
       heffective hpropagators hgauge hparameters hgate6
       gate7_externalTests_closed_from_preRegistrationLedger
 
+/-- Strongest current full-TOE target specialization: quantized-residual Gate
+2 semantics, finite recovered-carrier Gate 5 cover-independence, the finite
+Gate 6 audit package, and the existing Gate 7 preregistration ledger. -/
+noncomputable def microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (F H : ProjectiveQubitCarrierField site)
+    (gate1Targets : Gate1MicroscopicLawTargets)
+    (horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop)
+    (effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop)
+    (initialConditionOrCosmologicalMeasure
+      cmbStructureGravitationalWaveCompatibility : Prop) :
+    TOEClosureTargets :=
+  microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5
+    G fA fB F H gate1Targets
+    (gate6CosmologyBlackHoleTargetsOfFiniteAudits
+      initialConditionOrCosmologicalMeasure
+      cmbStructureGravitationalWaveCompatibility)
+    gate7PreRegistrationLedgerTargets
+    horizonEstimatorConvergence physicalScheduledDensity
+    bdgKernelProfileCertificate nullBalanceFromDynamics
+    effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+    gaugeFieldsAndRenormalization standardModelParameterChain
+
+/-- Strongest current full-closure theorem.  After supplying the named
+microscopic Gate 4 package, finite recovered-carrier covers, and the existing
+finite Gate 6 audits, the remaining assumptions are exactly Gate 1; the four
+Gate 4 analytic/physical assumptions; four genuine Gate 5 IR/QFT assumptions;
+and the two still-external Gate 6 cosmology inputs. -/
+theorem microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits_closed
+    {ι X Y chart : Type*} [Fintype ι]
+    [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
+    {w J source countWindow curvatureBias spectralLocality : ℕ → ι → ℝ}
+    {scale c step descentRate remainder total : ℕ → ℝ}
+    {edge : ℕ → ι → E4}
+    {candidate : ℕ → ι → Equiv.Perm Direction}
+    {countQuantum curvatureQuantum spectralQuantum : ℕ → ι → ℕ}
+    {stepFloor weightBase sourceBase countGap curvatureGap spectralGap : ℝ}
+    {chartCertificate :
+      ℕ → PhysicalGrowthHauptvermutungCertificate X Y chart}
+    {fixedScale densityBase densityStep : ℝ}
+    {coord : Y → Fin 4 → ℝ}
+    {chartOfCell : ι → chart}
+    {sampleEvent : ℕ → ι → X}
+    {phiAtPoint curvaturePhi : ℝ}
+    {operatorKernelData : BDG4DOperatorProfileKernelSplitData}
+    {errorScale : ℝ}
+    (G : MicroscopicGate4ScheduledKernelData w J source
+      countWindow curvatureBias spectralLocality
+      scale c step descentRate remainder total edge candidate
+      countQuantum curvatureQuantum spectralQuantum
+      stepFloor weightBase sourceBase countGap curvatureGap spectralGap
+      chartCertificate fixedScale densityBase densityStep coord chartOfCell
+      sampleEvent phiAtPoint curvaturePhi operatorKernelData errorScale)
+    {coverA coverB site : Type*}
+    {probeA : coverA → Type*} {probeB : coverB → Type*}
+    (fA : (i : coverA) → probeA i → site)
+    (fB : (j : coverB) → probeB j → site)
+    (hA : JointlySurjective probeA fA)
+    (hB : JointlySurjective probeB fB)
+    (F H : ProjectiveQubitCarrierField site)
+    {gate1Targets : Gate1MicroscopicLawTargets}
+    {horizonEstimatorConvergence physicalScheduledDensity
+      bdgKernelProfileCertificate nullBalanceFromDynamics : Prop}
+    {effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+      gaugeFieldsAndRenormalization standardModelParameterChain : Prop}
+    {initialConditionOrCosmologicalMeasure
+      cmbStructureGravitationalWaveCompatibility : Prop}
+    (hgate1 : Gate1MicroscopicLawClosed gate1Targets)
+    (hhorizon : horizonEstimatorConvergence)
+    (hscheduled : physicalScheduledDensity)
+    (hkernel : bdgKernelProfileCertificate)
+    (hnull : nullBalanceFromDynamics)
+    (heffective : effectiveHilbertSpaceLimit)
+    (hpropagators : propagatorsAndSpinStatistics)
+    (hgauge : gaugeFieldsAndRenormalization)
+    (hparameters : standardModelParameterChain)
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hcmb : cmbStructureGravitationalWaveCompatibility) :
+    TOEClosureClosed
+      (microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits
+        G fA fB F H gate1Targets
+        horizonEstimatorConvergence physicalScheduledDensity
+        bdgKernelProfileCertificate nullBalanceFromDynamics
+        effectiveHilbertSpaceLimit propagatorsAndSpinStatistics
+        gaugeFieldsAndRenormalization standardModelParameterChain
+        initialConditionOrCosmologicalMeasure
+        cmbStructureGravitationalWaveCompatibility) := by
+  simpa
+    [microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits]
+    using
+      microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5_closed_with_preRegistrationLedger
+        G fA fB hA hB F H hgate1 hhorizon hscheduled hkernel hnull
+        heffective hpropagators hgauge hparameters
+        (gate6_cosmologyBlackHole_closed_of_finiteAudits hinitial hcmb)
+
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

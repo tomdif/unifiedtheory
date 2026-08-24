@@ -1546,6 +1546,50 @@ theorem gate6_pageFormulaAudit_closed :
     ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
   exact ⟨hsymm, hpage, hearly, hlate, hupper, hmono⟩
 
+/-- Gate 6 cosmology/black-hole target specialized to the finite audit layers
+already closed in the repo.  This is an audit target, not a claim that the
+remaining physical derivations are complete: the cosmological measure/initial
+condition and CMB/structure/GW compatibility fields remain external. -/
+def gate6CosmologyBlackHoleTargetsOfFiniteAudits
+    (initialConditionOrCosmologicalMeasure
+      cmbStructureGravitationalWaveCompatibility : Prop) :
+    Gate6CosmologyBlackHoleTargets where
+  initialConditionOrCosmologicalMeasure :=
+    initialConditionOrCosmologicalMeasure
+  darkEnergyOrCosmologicalConstantMechanism :=
+    Gate6CosmologicalConstantGravitonAuditClosed
+  darkMatterPredictionOrExclusion :=
+    Gate6DarkMatterPlanckWindowAuditClosed
+  blackHoleEntropyEvaporationInformation :=
+    Gate6FiniteInformationPreservationAuditClosed ∧
+      Gate6DiscreteHolographyAuditClosed ∧
+        Gate6StructuralPageCurveAuditClosed ∧
+          Gate6PageFormulaAuditClosed
+  cmbStructureGravitationalWaveCompatibility :=
+    cmbStructureGravitationalWaveCompatibility
+
+/-- The current finite/audit Gate 6 package reduces Gate 6 closure to the
+still-external cosmological-measure/initial-condition and CMB/structure/GW
+compatibility inputs. -/
+theorem gate6_cosmologyBlackHole_closed_of_finiteAudits
+    {initialConditionOrCosmologicalMeasure
+      cmbStructureGravitationalWaveCompatibility : Prop}
+    (hinitial : initialConditionOrCosmologicalMeasure)
+    (hcmb : cmbStructureGravitationalWaveCompatibility) :
+    Gate6CosmologyBlackHoleClosed
+      (gate6CosmologyBlackHoleTargetsOfFiniteAudits
+        initialConditionOrCosmologicalMeasure
+        cmbStructureGravitationalWaveCompatibility) := by
+  exact
+    ⟨hinitial,
+      gate6_cosmologicalConstantGravitonAudit_closed,
+      gate6_darkMatterPlanckWindowAudit_closed,
+      ⟨gate6_finiteInformationPreservationAudit_closed,
+        gate6_discreteHolographyAudit_closed,
+        gate6_structuralPageCurveAudit_closed,
+        gate6_pageFormulaAudit_closed⟩,
+      hcmb⟩
+
 /-- The Gate 6 entropy-flux limit bridge: a supplied finite error-control
 source and exact finite focusing derivative family give convergence of the
 finite scaled source to Araki/null flux and convergence of the finite
@@ -1777,6 +1821,7 @@ theorem gate7_externalTests_closed_from_preRegistrationLedger :
 #print axioms gate6_discreteHolographyAudit_closed
 #print axioms gate6_structuralPageCurveAudit_closed
 #print axioms gate6_pageFormulaAudit_closed
+#print axioms gate6_cosmologyBlackHole_closed_of_finiteAudits
 #print axioms gate6_entropyFluxLimitBridge_closed
 #print axioms gate6_arakiBHEightPiBalance_closed
 #print axioms gate6_dorauMuchEinsteinBridge_closed
