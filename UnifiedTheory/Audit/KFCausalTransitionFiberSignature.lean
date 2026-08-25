@@ -13,6 +13,7 @@
   Zero sorry. Zero custom axioms.
 -/
 
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 
 set_option autoImplicit false
@@ -38,7 +39,7 @@ def IsCausalCover {n : ℕ} (P : CardinalCausalOrder n)
 
 noncomputable instance isCausalCoverDecidable {n : ℕ}
     (P : CardinalCausalOrder n) (i j : Fin n) :
-    Decidable (IsCausalCover P i j) := Classical.decEq _
+    Decidable (IsCausalCover P i j) := Classical.propDecidable _
 
 /-- Number of Hasse covers in a fixed-cardinality causal order. -/
 def causalCoverCount {n : ℕ} (P : CardinalCausalOrder n) : ℕ :=
@@ -61,8 +62,8 @@ theorem causalCoverCount_eq_of_isomorphic {n : ℕ}
       refine ⟨by simpa [hRel i j] using hij, fun h => hne (e.injective h), ?_⟩
       intro k hik hkj
       obtain hki | hkj' := hbetween (e.symm k)
-        (by simpa using (hRel i (e.symm k)).trans hik)
-        (by simpa using (hRel (e.symm k) j).trans hkj)
+        (by rw [hRel]; simpa using hik)
+        (by rw [hRel]; simpa using hkj)
       · exact Or.inl (by simpa using congrArg e hki)
       · exact Or.inr (by simpa using congrArg e hkj')
     · rintro ⟨hij, hne, hbetween⟩
@@ -81,7 +82,13 @@ theorem causalCoverCount_eq_of_isomorphic {n : ℕ}
         if IsCausalCover second (e pair.1) (e pair.2) then 1 else 0 := by
           apply Finset.sum_congr rfl
           intro pair _
-          rw [hCover]
+          by_cases hFirst : IsCausalCover first pair.1 pair.2
+          · have hSecond := (hCover pair.1 pair.2).mp hFirst
+            simp [hFirst, hSecond]
+          · have hSecond :
+                ¬ IsCausalCover second (e pair.1) (e pair.2) :=
+              fun h => hFirst ((hCover pair.1 pair.2).mpr h)
+            simp [hFirst, hSecond]
     _ = ∑ pair : Fin n × Fin n,
         if IsCausalCover second pair.1 pair.2 then 1 else 0 := by
       exact pairEquiv.sum_comp
@@ -138,10 +145,12 @@ theorem precursorExtension_cover_old_new {n : ℕ}
       (by simpa [precursorOneElementExtension, precursorExtensionRel] using hj)
     rcases h with h | h
     · exact Sum.inl_injective (finSumFinEquiv.injective h)
-    · cases Sum.noConfusion (finSumFinEquiv.injective h)
+    · exact (Sum.inl_ne_inr (finSumFinEquiv.injective h)).elim
   · rintro ⟨hi, hmax⟩
     refine ⟨by simpa [precursorOneElementExtension, precursorExtensionRel] using hi,
-      by simp, ?_⟩
+      ?_, ?_⟩
+    · intro h
+      exact Sum.inl_ne_inr (finSumFinEquiv.injective h)
     intro k hik hkn
     cases hk : finSumFinEquiv.symm k with
     | inl old =>
@@ -173,7 +182,8 @@ theorem precursorExtension_not_cover_new_new {n : ℕ}
         (finSumFinEquiv (Sum.inr first)) (finSumFinEquiv (Sum.inr second)) := by
   intro h
   apply h.2.1
-  congr
+  exact congrArg (fun newborn => finSumFinEquiv (Sum.inr newborn))
+    (Subsingleton.elim first second)
 
 def causalPastMaximalCount {n : ℕ} {parent : CardinalCausalOrder n}
     (past : CausalPastSet parent) : ℕ :=
@@ -205,11 +215,14 @@ theorem causalCoverCount_precursorOneElementExtension {n : ℕ}
   unfold causalCoverCount
   rw [← pairEquiv.sum_comp]
   simp only [Fintype.sum_prod_type, Fintype.sum_sum_type]
-  simp only [precursorExtension_cover_old_old,
+  simp only [pairEquiv, Equiv.prodCongr_apply, Prod.map_apply,
+    precursorExtension_cover_old_old,
     precursorExtension_cover_old_new,
     precursorExtension_not_cover_new_old,
     precursorExtension_not_cover_new_new, if_false, Finset.sum_const_zero,
-    add_zero]
+    add_zero, Fintype.sum_unique]
+  rw [Finset.sum_add_distrib]
+  change _ + causalPastMaximalCount past = _ + past.maximalCount
   rw [causalPastMaximalCount_eq]
 
 /-- Equal unlabeled children have equal numbers of maximal precursor events. -/
@@ -327,8 +340,120 @@ theorem exists_nonzero_complex_signedFiberSum_at_target {n : ℕ}
     rw [interactingChiralImagAggregateSignedFiberSum_at_target]
     exact mul_ne_zero hCardInt hImag
 
+/-- Exact factorization of a coherently aggregated signature-local child:
+fiber multiplicity times its common microscopic signature amplitude. -/
+theorem labeledAggregatedInteractingChiralAmplitude_at_target {n : ℕ}
+    (lambda : ℝ) (chirality : Fin 2)
+    (parent : CardinalCausalOrder n) (base : CausalPastSet parent) :
+    labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda chirality)
+        parent (causalTransitionTarget parent base) =
+      (Fintype.card
+          (LabeledCausalTransitionFiber parent
+            (causalTransitionTarget parent base)) : ℂ) *
+        interactingChiralSignatureWeight lambda chirality
+          base.ancestorCount base.maximalCount := by
+  classical
+  unfold labeledAggregatedCausalEdgeAmplitude
+  calc
+    (∑ past : LabeledCausalTransitionFiber parent
+          (causalTransitionTarget parent base),
+        (interactingChiralCausalEdgeAmplitude lambda chirality).amplitude
+          parent past.val) =
+      ∑ _past : LabeledCausalTransitionFiber parent
+          (causalTransitionTarget parent base),
+        interactingChiralSignatureWeight lambda chirality
+          base.ancestorCount base.maximalCount := by
+            apply Finset.sum_congr rfl
+            intro past _
+            have hAncestor := ancestorCount_eq_of_causalTransitionTarget_eq
+              parent past.val base past.property
+            have hMaximal := maximalCount_eq_of_causalTransitionTarget_eq
+              parent past.val base past.property
+            simp [interactingChiralCausalEdgeAmplitude,
+              rideoutSorkinSignatureAmplitude, hAncestor, hMaximal]
+    _ = _ := by simp
+
+/-- Coherent quotient aggregation preserves full raw support: every represented
+child has nonzero aggregate whenever the pair coupling is nonzero. -/
+theorem labeledAggregatedInteractingChiralAmplitude_at_target_ne_zero {n : ℕ}
+    {lambda : ℝ} (hLambda : lambda ≠ 0) (chirality : Fin 2)
+    (parent : CardinalCausalOrder n) (base : CausalPastSet parent) :
+    labeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude lambda chirality)
+        parent (causalTransitionTarget parent base) ≠ 0 := by
+  rw [labeledAggregatedInteractingChiralAmplitude_at_target]
+  apply mul_ne_zero
+  · have hCardNat : 0 < Fintype.card
+        (LabeledCausalTransitionFiber parent
+          (causalTransitionTarget parent base)) :=
+      Fintype.card_pos_iff.mpr ⟨⟨base, rfl⟩⟩
+    exact_mod_cast Nat.ne_of_gt hCardNat
+  · exact
+      (interactingChiralSignatureWeight_fullSupport_iff
+        lambda chirality).mpr hLambda base.ancestorCount base.maximalCount
+
+/-- The canonical complete-chiral law has nonzero raw amplitude on every
+physical unlabeled one-element extension, not merely on the chosen atlas. -/
+theorem canonical_unlabeledAggregatedInteractingChiralAmplitude_ne_zero_of_physical
+    (chirality : Fin 2) {n : ℕ}
+    (parent : UnlabeledCardinalCausalOrder n)
+    (child : UnlabeledCardinalCausalOrder (n + 1))
+    (hPhysical : IsUnlabeledOneElementExtension parent child) :
+    unlabeledAggregatedCausalEdgeAmplitude
+        (interactingChiralCausalEdgeAmplitude canonicalPairCoupling chirality)
+        parent child ≠ 0 := by
+  refine Quotient.inductionOn parent ?_ hPhysical
+  intro parentRep hPhysicalRep
+  rw [unlabeledAggregatedCausalEdgeAmplitude_mk]
+  have hMultiplicity :
+      0 < labeledCausalTransitionMultiplicity parentRep child :=
+    (labeledCausalTransitionMultiplicity_pos_iff parentRep child).2
+      hPhysicalRep
+  obtain ⟨base⟩ := Fintype.card_pos_iff.mp hMultiplicity
+  rw [← base.property]
+  exact labeledAggregatedInteractingChiralAmplitude_at_target_ne_zero
+    canonicalPairCoupling_ne_zero chirality parentRep base
+
+/-- Full support of the normalized complete law on the physical birth graph. -/
+theorem completeChiralCausalSetGrowthLaw_transition_ne_zero_of_physical
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n)
+    (hPhysical : IsPhysicalCausalGrowthStep n pathPrefix child) :
+    (completeChiralCausalSetGrowthLaw chirality).transition
+        n pathPrefix child ≠ 0 := by
+  unfold completeChiralCausalSetGrowthLaw
+  change canonicalInteractingChiralTransition chirality
+      (currentUnlabeledCausalOrder n pathPrefix) child ≠ 0
+  unfold canonicalInteractingChiralTransition
+  exact div_ne_zero
+    (canonical_unlabeledAggregatedInteractingChiralAmplitude_ne_zero_of_physical
+      chirality (currentUnlabeledCausalOrder n pathPrefix) child hPhysical)
+    (canonical_unlabeled_interactingChiral_partition_ne_zero
+      chirality (currentUnlabeledCausalOrder n pathPrefix))
+
+/-- Exact support classification of the complete chiral transition law. -/
+theorem completeChiralCausalSetGrowthLaw_transition_ne_zero_iff_physical
+    (chirality : Fin 2) (n : ℕ)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n) :
+    (completeChiralCausalSetGrowthLaw chirality).transition
+          n pathPrefix child ≠ 0 ↔
+      IsPhysicalCausalGrowthStep n pathPrefix child := by
+  constructor
+  · intro hNonzero
+    by_contra hNotPhysical
+    exact hNonzero
+      (completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical
+        chirality n pathPrefix child hNotPhysical)
+  · exact completeChiralCausalSetGrowthLaw_transition_ne_zero_of_physical
+      chirality n pathPrefix child
+
 #print axioms maximalCount_eq_of_causalTransitionTarget_eq
 #print axioms exists_nonzero_complex_signedFiberSum_at_target
+#print axioms completeChiralCausalSetGrowthLaw_transition_ne_zero_of_physical
+#print axioms completeChiralCausalSetGrowthLaw_transition_ne_zero_iff_physical
 
 end
 

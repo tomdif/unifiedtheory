@@ -742,11 +742,10 @@ theorem interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirali
   change (∑ past : LabeledCausalTransitionFiber parent child,
     ((interactingChiralCausalEdgeAmplitude lambda (0 : Fin 2)).amplitude
       parent past.val).im) = _
-  have hZeroChirality : ((0 : Fin 2) = 0) := rfl
   simp only [
     interactingChiralCausalEdgeAmplitude, rideoutSorkinSignatureAmplitude,
     interactingChiralSignatureWeight, chiralGaussianPower,
-    hZeroChirality, if_true]
+    if_true]
   unfold interactingChiralImagAggregatePolynomial
   change (∑ past : LabeledCausalTransitionFiber parent child,
       (((lambda : ℂ) ^ ancestorPairExponent past.val.ancestorCount *
@@ -827,7 +826,7 @@ theorem interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChir
         C (gaussianIPow past.val.maximalCount).2 *
           X ^ ancestorPairExponent past.val.ancestorCount)
   rw [map_sum]
-  rw [Finset.sum_neg_distrib]
+  rw [← Finset.sum_neg_distrib]
   apply Finset.sum_congr rfl
   intro past _hPast
   simp only [map_mul]
@@ -903,20 +902,30 @@ theorem interactingChiral_labeledAggregate_ne_zero_of_imagPolynomial_ne_zero
   intro hZero
   have hImagZero := congrArg Complex.im hZero
   fin_cases chirality
-  · rw [interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirality]
-      at hImagZero
+  · have hImagZero' :
+        (labeledAggregatedCausalEdgeAmplitude
+          (interactingChiralCausalEdgeAmplitude lambda (0 : Fin 2))
+          parent child).im = 0 := by
+      simpa using hImagZero
+    rw [interactingChiral_labeledAggregate_im_eq_imagPolynomial_eval_zeroChirality]
+      at hImagZero'
     have hPolynomialZero :
         interactingChiralImagAggregatePolynomial parent child = 0 :=
       (transcendental_iff.mp hTranscendental)
         (interactingChiralImagAggregatePolynomial parent child) (by
-          simpa [Polynomial.aeval_def] using hImagZero)
+          simpa [Polynomial.aeval_def] using hImagZero')
     exact hPolynomial hPolynomialZero
-  · rw [interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChirality]
-      at hImagZero
+  · have hImagZero' :
+        (labeledAggregatedCausalEdgeAmplitude
+          (interactingChiralCausalEdgeAmplitude lambda (1 : Fin 2))
+          parent child).im = 0 := by
+      simpa using hImagZero
+    rw [interactingChiral_labeledAggregate_im_eq_neg_imagPolynomial_eval_oneChirality]
+      at hImagZero'
     have hEvalZero :
         (interactingChiralImagAggregatePolynomial parent child).eval₂
           (Int.castRingHom ℝ) lambda = 0 := by
-      exact neg_eq_zero.mp hImagZero
+      exact neg_eq_zero.mp hImagZero'
     have hPolynomialZero :
         interactingChiralImagAggregatePolynomial parent child = 0 :=
       (transcendental_iff.mp hTranscendental)

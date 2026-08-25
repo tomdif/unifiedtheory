@@ -3,7 +3,7 @@
 Status: working plan for closing the repo's remaining theory-of-everything
 gaps.  This is not a claim that the gaps are closed.
 
-Date: 2026-08-24
+Date: 2026-08-25
 
 ## Scope Rule
 
@@ -28,9 +28,9 @@ Gate 1 complete-chiral
 support/consistency, conditional atlas-realization, and branch-aligned
 positive-frequency handedness certificates, restates
 the Gate 2 base zero-set theorem and quotient invariant-observable
-construction, restates the Gate 3 convergence-certificate theorem, packages the
-Gate 3 direct aggregate-rate contraction route, convergence bridge/residual
-split, and exact-recovery certificate as
+construction, restates the conditional Gate 3 convergence-certificate theorem,
+and packages the aggregate-rate contraction route, convergence bridge/residual
+split, and legacy exact-recovery certificate as
 explicit partial-closure certificates, packages Gate 4's active-kernel
 cone-bound supplier, kernel/profile analytic supplier, and recovered-stage 4D
 BDG RSS/Poisson operator bridge as explicit partial-closure certificates,
@@ -54,6 +54,20 @@ theorems `microscopicTOEClosureTargets_closed` and
 `microscopicTOEClosureTargets_closed_with_preRegistrationLedger` state the
 exact remaining inputs needed to close the seven-gate ledger without upgrading
 any open physics assumption into a proved theorem.
+The normalization/stopping audits subsequently showed that this historical
+supplier cannot be the normalized physical endpoint: its component-floor path
+is ruled out, and a stronger theorem proves the legacy supplier itself
+uninhabited even without normalization because its eventual zero contradicts
+strict contraction forever.  The first direct-rate exact-recovery replacement
+is uninhabited for the same stopping reason.
+`UnifiedTheory/Audit/KFTOEStoppableFullClosureTarget.lean` is therefore the
+current corrected capstone.  It uses
+`MicroscopicGate3StoppableDirectRateQuantizedData`, records rate stopping and
+zero absorption, obtains Gate 2 plus the density/operator/recovery part of Gate
+4 from the corrected handoff, and leaves Gate 1, the horizon-estimator and
+null-balance tail of Gate 4, and Gates 5-6 as explicit physical hypotheses.
+The older full-closure specializations remain an audit trail for conditional
+algebra, not viable normalized supplier claims.
 The quantized residual package now also supplies a concrete Gate 2
 finite-spectrum semantic closure, and
 `microscopicTOEClosureTargetsWithQuantizedGate2_closed_with_preRegistrationLedger`
@@ -287,6 +301,19 @@ physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_expl
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
+normalized_centeredSource_expectation_eq_zero
+normalizedWeights_forbid_positive_uniform_centeredSourceFloor
+physicalHauptvermutungConvergenceCertificate_not_of_normalizedWeights
+not_microscopicGate3QuantizedConvergenceData
+not_microscopicGate4ScheduledKernelData
+MicroscopicGate3DirectRateQuantizedData
+not_microscopicGate3DirectRateQuantizedData
+StoppablePhysicalGrowthRepairRefinement
+MicroscopicGate3StoppableDirectRateQuantizedData
+MicroscopicGate3StoppableDirectRateQuantizedData.horizonProtection_and_total_tendsto_zero
+MicroscopicGate3StoppableDirectRateQuantizedData.descentRate_eq_zero_of_total_eq_zero
+MicroscopicGate3StoppableDirectRateQuantizedData.total_next_eq_zero_of_total_eq_zero
+MicroscopicGate3StoppableDirectRateQuantizedData.eventually_exact_zero
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_product
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_explicit_variable_rate_floor_uniform_bound
@@ -474,8 +501,9 @@ The newest uniform weighted-alignment gate reduces the weighted rate floor to
 uniform lower bounds: `weightFloor <= w_{n,i}`,
 `alignmentFloor <= alignment_{n,i}`, and
 `rateFloor_n <= weightFloor*alignmentFloor`, with nonnegative floors.  This is
-now the most concrete finite target for the source-amplitude part of the
-causal-growth proof.
+a concrete conditional decomposition for the source-amplitude branch; the
+normalization audit below removes its universal positive centered-source
+specialization from the physical critical path.
 
 The newest rate-floor-free gate removes the auxiliary `rateFloor_n` sequence
 from this branch: `gamma <= weightFloor*alignmentFloor` is enough, together
@@ -535,9 +563,9 @@ centered-source-floor amplitude are all positive, Lean chooses
 horizon-protected convergence theorem.
 
 The newest direct uniform component-floor gate removes the auxiliary
-stagewise floor sequences.  The finite proof target is now just positive
-uniform lower bounds on the physical update step, the actual sampling weights,
-and the actual centered source:
+stagewise floor sequences.  Its conditional hypotheses are positive uniform
+lower bounds on the physical update step, the actual sampling weights, and the
+actual centered source:
 
 ```text
 0 < stepFloor, 0 < weightBase, 0 < sourceBase
@@ -556,9 +584,10 @@ PhysicalHauptvermutungConvergenceCertificate
   -> D_n -> 0
 ```
 
-This is the current machine-checked "prove it" layer.  It does not construct
-the physical certificate from microscopic dynamics; it proves that such a
-certificate is sufficient.
+This remains a machine-checked conditional layer.  It does not construct the
+physical certificate from microscopic dynamics, and the normalization audit
+below shows that this particular component-floor certificate cannot be the
+normalized physical supplier.
 
 The newest direct aggregate-rate theorem records the weakest current Gate 3
 route.  If a positive aggregate rate `rateBase` and positive step floor
@@ -572,8 +601,68 @@ stepFloor <= step_n
 with `total_n >= 0`, Lean clips the rate to
 `min rateBase (1/stepFloor)` and proves the same horizon-protected
 convergence theorem.  This bypasses the pointwise centered-source floor as a
-logical requirement; that floor remains one possible way to derive the
-aggregate rate from microscopic causal growth.
+logical requirement.
+
+The normalization audit makes that bypass mandatory for normalized physical
+weights.  It proves
+
+```text
+sum_i w_i = 1
+0 <= w_i
+0 < sourceBase
+sourceBase <= -centeredSource(w, source)_i for every i
+  -> False
+```
+
+because the weighted expectation of a centered source is zero.  Hence
+`PhysicalHauptvermutungConvergenceCertificate` and its
+`MicroscopicGate3QuantizedConvergenceData` supplier cannot be instantiated with
+nonnegative normalized weights.  Those theorems remain valid for inputs
+satisfying their stated hypotheses, but they are not the
+nonnegative-normalized physical critical path.
+
+The first proposed aggregate replacement,
+`MicroscopicGate3DirectRateQuantizedData`, was not consistent either.  It
+embedded `PhysicalGrowthRepairRefinement.descent_pos : 0 < descentRate n` for
+every `n`, but its other fields imply a nonnegative exact-zero stage.  Strict
+contraction at that stage makes the next total negative.  The theorem
+`not_microscopicGate3DirectRateQuantizedData` formalizes this no-go.
+
+The historical `MicroscopicGate3QuantizedConvergenceData` has the same stronger
+stopping contradiction independently of the normalization audit: it derives
+eventual exact zero and nonnegative total distortion while its embedded
+`PhysicalGrowthRepairRefinement` strictly contracts at every step.  Theorems
+`not_microscopicGate3QuantizedConvergenceData` and
+`not_microscopicGate4ScheduledKernelData` prove the legacy Gate 3 record and
+its scheduled-kernel Gate 4 wrapper uninhabited without any normalization
+hypothesis.
+
+The corrected normalized-compatible replacement is
+`MicroscopicGate3StoppableDirectRateQuantizedData`.  Its
+`StoppablePhysicalGrowthRepairRefinement` keeps the certified protected update
+and nonnegative step but does not demand positive descent after recovery.  The
+relative aggregate inequality, physical-total identity, positive quantized
+residual gaps, and positive step floor imply horizon protection,
+`total_n -> 0`, and finite exact recovery.  Lean additionally derives
+`total_n = 0 -> descentRate_n = 0` and `total_(n+1) = 0`, so the recovered state
+is absorbing rather than contradictory.
+
+`KFCausalSetCompleteChiralBornWeights.lean` now closes the complex-law to
+normalized-real-weight step: normalized squared-modulus weights are
+nonnegative, have exact physical support, and remain normalized after a finite
+observation pushforward.  This does not derive the observation map or claim
+the original coherent transitions were already Born-normalized.  What remains
+is the physical derivation of the fixed-cell observation, distortion and
+corrector observables, leakage-null/descent-margin conditions, update and
+remainder bounds, quantization gaps, step floor, and aggregate rate.
+
+`KFCausalSetCompleteChiralBornPathLaw.lean` now multiplies those stage weights
+recursively along finite ranked paths.  Lean proves nonnegativity, unit mass at
+every finite depth, exact event refinement/projectivity, and strictly positive
+weight exactly for physical causal-growth paths.  A recursively chosen
+prefix-coherent physical parent schedule removes the need to postulate
+unrelated parents at successive ranks.  This remains a finite path law: no
+infinite/continuum measure extension or Gate 3 observation map is claimed.
 
 `KFTOESevenGateAttack.lean` now exposes this direct aggregate-rate route as
 `Gate3AggregateRateContractionClosed` and
@@ -679,60 +768,24 @@ D_{n+1} <= q * D_n,    0 <= q < 1
   -> D_n -> 0
 ```
 
-Definition of done:
+Definition of done for normalized physical weights:
 
 ```text
 derive a positive direct aggregate rate
 rateBase*D_n <= descentRate_n and stepFloor <= step_n,
-or derive gamma*D_n <= descentRate_n, stepFloor <= step_n, and
-0 < stepFloor*gamma <= 2 for uniform constants gamma and stepFloor,
-or prove variable product decay for q_n = 1 - step_n*rateFloor_n/2,
-or prove 0 <= q_n <= qBound < 1 for those variable factors,
-or prove beta <= step_n*rateFloor_n <= 2 for a beta > 0,
-and prove D_n is the displayed physical aggregate with nonnegative components,
-and prove summed local descent certificates for the physical aggregate,
-and prove uniform lower bounds gamma <= rateFloor_n and stepFloor <= step_n,
-and prove the source-local response dominates rateFloor_n times each local
-distortion,
-or prove the stronger centered-source floor
-rateFloor_n <= -w_{n,i}*centered(S_n)_i,
-or prove weighted anti-alignment plus
-rateFloor_n <= w_{n,i}*alignment_{n,i},
-or prove uniform lower bounds
-weightFloor <= w_{n,i} and alignmentFloor <= alignment_{n,i},
-or prove the rate-floor-free bound gamma <= weightFloor*alignmentFloor,
-or prove the direct centered-source floor
-gamma <= weightFloor*sourceFloor and sourceFloor <= -centered(S_n)_i,
-or prove the gamma-free product window
-0 < stepFloor*(weightFloor*sourceFloor) <= 2,
-or prove positive floors
-0 < stepFloor, 0 < weightFloor, 0 < sourceFloor and
-stepFloor*(weightFloor*sourceFloor) <= 2,
-or use the clipped effective rate
-min (weightFloor*sourceFloor) (1/stepFloor) from positive floors alone,
-or prove decay of the stagewise clipped product with
-rateFloor_n = min (weightFloor_n*sourceFloor_n) (1/step_n),
-or prove a clipped-gain floor
-0 < beta <= step_n*min(weightFloor_n*sourceFloor_n, 1/step_n),
-or prove an unclipped gain floor
-0 < beta <= 1 and beta <= step_n*(weightFloor_n*sourceFloor_n),
-or prove component floors
-stepFloor <= step_n, weightBase <= weightFloor_n,
-sourceBase <= sourceFloor_n, and
-beta <= stepFloor*(weightBase*sourceBase),
-or prove positive component floors
-0 < stepFloor, 0 < weightBase, 0 < sourceBase,
-stepFloor <= step_n, weightBase <= weightFloor_n,
-sourceBase <= sourceFloor_n,
-or prove direct positive uniform component floors
-0 < stepFloor, 0 < weightBase, 0 < sourceBase,
-stepFloor <= step_n, weightBase <= w_{n,i},
-sourceBase <= -centered(S_n)_i,
-or construct a PhysicalHauptvermutungConvergenceCertificate
-from the physical causal-growth law
+prove D_n is the displayed physical aggregate with nonnegative quantized
+count/curvature/spectral components and positive residual gaps,
+construct the StoppablePhysicalGrowthRepairRefinement from causal growth,
+with descent forced to vanish at exact recovery,
+and connect completeChiralCausalSetGrowthLaw to the observation map, source,
+observables, step, descent rate, and remainder.  The normalized stage weights
+themselves are now derived.
 ```
 
-while first-order and second central horizon-area responses remain protected.
+These data must preserve the first-order and second central horizon-area
+responses.  A variable aggregate-rate/product-decay version would also be a
+valid normalized replacement.  A universal strictly positive floor on
+`-centeredSource` is not: normalized nonnegative weights formally rule it out.
 
 ### Gate 4: Horizon-To-Einstein Limit
 
@@ -1288,6 +1341,17 @@ gate1_complexSignedFiberAtlasCertificate_closed_of_complexPhysicalSelectionBridg
 physicalGrowthRepairRefinement_horizon_protection_and_total_tendsto_zero_of_positive_uniform_direct_rate_floor
 Gate3AggregateRateContractionClosed
 gate3_aggregateRateContraction_closed
+normalized_centeredSource_expectation_eq_zero
+normalizedWeights_forbid_positive_uniform_centeredSourceFloor
+physicalHauptvermutungConvergenceCertificate_not_of_normalizedWeights
+not_microscopicGate3QuantizedConvergenceData
+not_microscopicGate4ScheduledKernelData
+MicroscopicGate3DirectRateQuantizedData
+not_microscopicGate3DirectRateQuantizedData
+StoppablePhysicalGrowthRepairRefinement
+MicroscopicGate3StoppableDirectRateQuantizedData
+MicroscopicGate3StoppableDirectRateQuantizedData.horizonProtection_and_total_tendsto_zero
+MicroscopicGate3StoppableDirectRateQuantizedData.eventually_exact_zero
 MicroscopicGate3RatesGaps
 MicroscopicGate3ComponentResidualGaps
 QuantizedGate3Residuals
@@ -1447,20 +1511,26 @@ The next high-value theorem targets are:
    signature rigidity constructs the 140-birth
    `CompleteChiralAtlasComplexSignedFiberWitnessTable`, and Lean packages the
    raw/transition and two-chirality atlas-realization consequences as
-   `Gate1ComplexSignedFiberAtlasCertificateClosed`.  Then instantiate
-   `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
-   constructing a `PhysicalHauptvermutungConvergenceCertificate` and
-   finite-spectrum count/curvature/spectral residual gaps.  The narrowest
-   current endpoint is the named structure
-   `MicroscopicGate3QuantizedConvergenceData`, closed by
-   `microscopicGate3QuantizedConvergenceData_closed_outputs`:
-   supply the raw `PhysicalGrowthRepairRefinement`, quantized residual
-   equations, total-distortion identity, step/weight/source floors, and descent
-   identity.  Lean then builds the convergence certificate, derives
-   nonnegativity from quantization, chooses
-   `commonResidualGap = min countGap (min curvatureGap spectralGap)`, and
-   derives the explicit aggregate rate `weightBase*sourceBase` from the
-   centered-source floors.  The direct projection theorems
+   `Gate1ComplexSignedFiberAtlasCertificateClosed`.  In parallel, instantiate
+   the normalized-compatible
+   `MicroscopicGate3StoppableDirectRateQuantizedData` from
+   `completeChiralCausalSetGrowthLaw`.  The normalized finite weights and their
+   physical support are now derived; supply the physical observation map,
+   distortion/corrector observables, protected stoppable update, quantized
+   residual equations and positive gaps, total-distortion identity, positive
+   step floor, and `rateBase*total_n <= descentRate_n`.  Lean then derives
+   nonnegativity, horizon protection, `total_n -> 0`, finite exact recovery,
+   zero descent at zero, and an absorbing recovered state.
+   The normalization no-go proves that the older
+   `MicroscopicGate3QuantizedConvergenceData` endpoint, which constructs a
+   `PhysicalHauptvermutungConvergenceCertificate` from positive uniform
+   centered-source floors, cannot be instantiated with nonnegative normalized
+   weights.  Its downstream projection theorems remain checked conditional
+   algebra and are listed here for compatibility, but they are not the
+   normalized physical supplier target.  The strict-direct no-go likewise
+   rules out `MicroscopicGate3DirectRateQuantizedData`, whose unconditional
+   positive descent conflicts with its eventual exact zero.  Those legacy
+   projection theorems
    `microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_exact_zero`
    and
    `microscopicGate3QuantizedConvergenceData_horizonProtection_and_eventually_full_recovery`

@@ -34,6 +34,7 @@ namespace UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 noncomputable section
 
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetTransitionEdges
 open UnifiedTheory.Audit.KFCausalSetBellCausality
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization

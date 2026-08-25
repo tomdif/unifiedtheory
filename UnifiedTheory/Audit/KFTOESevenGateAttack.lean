@@ -17,6 +17,7 @@ import UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
 import UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 import UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 import UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
+import UnifiedTheory.Audit.KFCausalCSpecEinsteinEquations
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DRecovered
 import UnifiedTheory.Audit.KFCausalCSpecRecoveredStageBDG4DConeBound
 import UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
@@ -52,8 +53,16 @@ namespace UnifiedTheory.Audit.KFTOESevenGateAttack
 
 universe u v w z t
 
-open Filter Topology
+open scoped BigOperators ComplexConjugate ComplexOrder
+
+open Filter Topology Matrix
+open UnifiedTheory.Audit.KFOrientationGrowthDecoherence
+open UnifiedTheory.Audit.KFOrientationHigherRankDecoherence
+open UnifiedTheory.Audit.KFOrientationPathQuantum
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
+open UnifiedTheory.Audit.KFCausalSetBellCausality
+open UnifiedTheory.Audit.KFCausalSetChiralGrowth
+open UnifiedTheory.Audit.KFCausalSetChiralityGenerationNoGo
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 open UnifiedTheory.Audit.KFCausalSetFutureFrequencyHandedness
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
@@ -65,11 +74,13 @@ open UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
 open UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 open UnifiedTheory.Audit.KFCausalRegularPhaseEntry
 open UnifiedTheory.Audit.KFCausalCSpecDiffeomorphismInvariantObservables
+open UnifiedTheory.Audit.KFCausalCSpecBridgePoset
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecArakiHorizonRelativeEntropy
+open UnifiedTheory.Audit.KFCausalCSpecEinsteinEquations
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfFiber
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfBornAxisObservable
 open UnifiedTheory.Audit.KFRecoveredCSpecHopfProjectiveQubitCarrier
@@ -1566,19 +1577,19 @@ here. -/
 structure Gate5FiniteGaugeAuditClosed : Prop where
   gaugeInvariantFiniteSubalgebras :
     (UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-        UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep
+        UnifiedTheory.LayerC.SMGaugeFiniteRep.z2PhaseFlipRep
         (1 : Matrix (Fin 2) (Fin 2) ℂ) ∧
       (∀ A, UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-          UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep A →
+          UnifiedTheory.LayerC.SMGaugeFiniteRep.z2PhaseFlipRep A →
         UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-          UnifiedTheory.LayerC.SMGaugeDynamics.z2PhaseFlipRep Aᴴ)) ∧
+          UnifiedTheory.LayerC.SMGaugeFiniteRep.z2PhaseFlipRep Aᴴ)) ∧
     (UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-        UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep
+        UnifiedTheory.LayerC.SMGaugeFiniteRep.z3CyclicRep
         (1 : Matrix (Fin 3) (Fin 3) ℂ) ∧
       (∀ A, UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-          UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep A →
+          UnifiedTheory.LayerC.SMGaugeFiniteRep.z3CyclicRep A →
         UnifiedTheory.LayerC.SMGaugeDynamics.GaugeInvariant
-          UnifiedTheory.LayerC.SMGaugeDynamics.z3CyclicRep Aᴴ))
+          UnifiedTheory.LayerC.SMGaugeFiniteRep.z3CyclicRep Aᴴ))
   electroweakBreakingCount :
     UnifiedTheory.LayerC.SMGaugeDynamics.ewGroupDim =
         UnifiedTheory.LayerC.SMGaugeDynamics.brokenGeneratorCount +
@@ -1665,8 +1676,8 @@ constructive-measure status split.  The continuum Wightman/Haag-Ruelle lift is
 still not claimed here. -/
 structure Gate5ChamberMassGapDecayAuditClosed : Prop where
   decayRatePositiveClosedForm :
-    0 < UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber ∧
-      UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber =
+    0 < UnifiedTheory.LayerB.CL1_BathSector.γ_vac_chamber ∧
+      UnifiedTheory.LayerB.CL1_BathSector.γ_vac_chamber =
         Real.sqrt 7 / 15
   spectralGapExponentialDecay :
     ∀ t : ℝ, 0 ≤ t →
@@ -1675,7 +1686,7 @@ structure Gate5ChamberMassGapDecayAuditClosed : Prop where
           (UnifiedTheory.LayerB.R3_MassGapExponentialDecay.heatSemigroupShifted t ψ).normSq
             ≤ Real.exp
                 (-2 * t *
-                  UnifiedTheory.LayerB.R3_MassGapExponentialDecay.γ_vac_chamber) *
+                  UnifiedTheory.LayerB.CL1_BathSector.γ_vac_chamber) *
               ψ.normSq
   chamberMeasureStatus :
     UnifiedTheory.LayerB.R3_MassGapExponentialDecay.cl3_M6_chamber_operator_norm.status =
@@ -2221,6 +2232,13 @@ theorem gate6_finiteInformationPreservationAudit_closed :
       fun f hinj => no_information_loss f hinj,
       fun f => unitarity_is_a_theorem f⟩
 
+/-- The small-type specialization used by the concrete Gate 6 target records.
+The generic audit theorem above remains universe-polymorphic; fixing its eight
+independent field universes here prevents inaccessible universe metavariables
+inside a `Prop`-valued target field. -/
+abbrev Gate6FiniteInformationPreservationAuditClosedType0 : Prop :=
+  Gate6FiniteInformationPreservationAuditClosed.{0, 0, 0, 0, 0, 0, 0, 0}
+
 /-- The Gate 6 discrete-holography audit: the causal-discrete entropy bound
 factorizes as boundary area times a logarithmic factor, is sub-volume for
 large regions, has the advertised 4D form, and remains compatible with
@@ -2333,7 +2351,7 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAudits
   darkMatterPredictionOrExclusion :=
     Gate6DarkMatterPlanckWindowAuditClosed
   blackHoleEntropyEvaporationInformation :=
-    Gate6FiniteInformationPreservationAuditClosed ∧
+    Gate6FiniteInformationPreservationAuditClosedType0 ∧
       Gate6DiscreteHolographyAuditClosed ∧
         Gate6StructuralPageCurveAuditClosed ∧
           Gate6PageFormulaAuditClosed
@@ -2410,7 +2428,7 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAuditsAndInflationCompatibility
   darkMatterPredictionOrExclusion :=
     Gate6DarkMatterPlanckWindowAuditClosed
   blackHoleEntropyEvaporationInformation :=
-    Gate6FiniteInformationPreservationAuditClosed ∧
+    Gate6FiniteInformationPreservationAuditClosedType0 ∧
       Gate6DiscreteHolographyAuditClosed ∧
         Gate6StructuralPageCurveAuditClosed ∧
           Gate6PageFormulaAuditClosed
@@ -2668,7 +2686,7 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelo
   darkMatterPredictionOrExclusion :=
     Gate6DarkMatterPlanckWindowAuditClosed
   blackHoleEntropyEvaporationInformation :=
-    Gate6FiniteInformationPreservationAuditClosed ∧
+    Gate6FiniteInformationPreservationAuditClosedType0 ∧
       Gate6DiscreteHolographyAuditClosed ∧
         Gate6StructuralPageCurveAuditClosed ∧
           Gate6PageFormulaAuditClosed ∧
@@ -2745,7 +2763,7 @@ structure Gate6NamedCosmologyBlackHoleBridgeClosed
   inflationCMBTensorAudit :
     Gate6InflationCMBTensorAuditClosed
   finiteInformationPreservationAudit :
-    Gate6FiniteInformationPreservationAuditClosed
+    Gate6FiniteInformationPreservationAuditClosedType0
   discreteHolographyAudit :
     Gate6DiscreteHolographyAuditClosed
   structuralPageCurveAudit :

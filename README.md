@@ -37,7 +37,7 @@ to Standard Model structures and numerical identifications. The finite algebraic
 are Lean-checked; calling the full chain a physical derivation still requires the open
 quantum-dynamics, order-to-geometry, and infrared-recovery bridges named above.
 
-## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-20)
+## Quantum Gravity / Hauptvermutung Bridge Status (2026-08-25)
 
 The latest audit work is summarized in
 [`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md),
@@ -60,7 +60,14 @@ counts, so their nonzero signature-local amplitudes cannot cancel.  Lean uses
 this to construct the 140-birth
 `CompleteChiralAtlasComplexSignedFiberWitnessTable` and prove mixed
 signed-fiber noncancellation unconditionally; the older real-only table
-remains a sufficient special case.  The ledger also covers
+remains a sufficient special case.  The squared-modulus complete-chiral law
+now also supplies nonnegative normalized weights at every parent.  Their
+recursive finite-path product has total mass one, exact one-step
+refinement/projectivity, and positive probability exactly on physical growth
+paths; a recursively chosen prefix-coherent physical schedule is included.
+This is a finite causal-growth probability law, not an infinite/continuum
+measure construction, and the Gate 3 observation map remains external.  The
+ledger also covers
 complete-chiral support/consistency and branch-aligned
 positive-frequency handedness with its reflection boundary; Gate 2 base zero
 sets and invariant-observable quotient semantics; and Gate 3 protected
@@ -89,6 +96,31 @@ ledger. Full Gates 4-6 remain open until their missing physical, infrared,
 cosmological-emergence, evaporation, and black-hole entropy inputs are derived;
 Gate 7 still awaits future empirical comparisons against the frozen
 predictions.
+
+The historical `KFTOEFullClosureTarget.lean` still records the older
+component-floor supplier chain for audit compatibility.  The normalization
+audit identifies its impossible centered-source floor, and the stronger
+stopping audit proves the legacy Gate 3 record itself uninhabited even without
+normalization: eventual exact zero contradicts strict contraction forever.
+`KFTOEStoppableFullClosureTarget.lean` is the corrected
+conditional capstone: it uses stoppable Gate 3 exact recovery and the direct
+Gate 3-to-4 output handoff, while keeping the genuinely unproved Gate 1,
+remaining Gate 4, Gate 5, and Gate 6 physics as hypotheses.
+The Gate 4 outputs are themselves relative to a supplied sequence of physical
+chart certificates, residual-sum matching identities, a positive affine
+density law, and a BDG kernel/profile package; they are not derived from the
+microscopic growth law here.
+Its Gate 2 slot is the proved finite quantized-counter zero equivalence, not a
+completed continuum/order-to-geometry Hauptvermutung theorem.
+
+`KFCausalCSpecCompleteChiralStoppableRepairAdapter.lean` connects that corrected
+Gate 3 interface to the complete-chiral Born weights and defines the repair
+source from the displayed physical distortion plus a supplied corrector. Its
+remaining repair-step premises are explicit: nonzero horizon variance,
+second-order leakage cancellation, a descent margin, the physical update
+bound, the remainder bound, and nonnegative step size. Exact recovery also
+needs the quantization identities and gaps, a positive step floor, the
+physical-total identity, and the aggregate-rate bound.
 
 Machine-checked additions now cover:
 
@@ -171,8 +203,8 @@ Machine-checked additions now cover:
   `2*(1 - q) <= step_n*rateFloor_n`; the newest uniform gate derives
   convergence with `q = 1 - stepFloor*gamma/2` from
   `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
-  `0 < stepFloor*gamma <= 2`, making those uniform bounds the next target from
-  causal growth; the seven-gate ledger now exposes the direct aggregate-rate
+  `0 < stepFloor*gamma <= 2`, making those uniform bounds one sufficient
+  aggregate target; the seven-gate ledger now exposes the direct aggregate-rate
   route as `Gate3AggregateRateContractionClosed` and
   `gate3_aggregateRateContraction_closed`; the newest variable-product gate
   also proves convergence
@@ -341,23 +373,66 @@ These results narrow the open problem. They do **not** constitute an
 unconditional proof of full continuum quantum gravity. The remaining work is to
 derive the required physical certificates from the actual causal-growth
 dynamics: per-cell horizon flux convergence, admissible precursor dynamics,
-physical Hauptvermutung certificates, the physical-total identity, summed
-local descent certificates, and positive step, weight, and centered-source
-uniform component floors sufficient to construct the named convergence
-certificate and trigger exact eventual canonical recovery,
-source-local response lower bounds, centered-source anti-alignment, separating
-invariant observables, weighted anti-alignment, uniform weight/alignment floors,
-rate-floor-free gamma alignment, direct centered-source floors, gamma-free
-product bounds, positive floor witnesses, clipped effective-rate selection,
-stagewise clipped product decay, clipped-gain lower bounds, unclipped gain
-lower bounds, component gain floors, the affine physical chart-density law,
-matched chart residual identities, the split 4D BDG operator-profile
-function/scale/regularity/support/cone certificates, and infrared GR/QFT
-recovery.
+the physical-total identity, a positive step floor, and the direct aggregate
+descent inequality needed to instantiate
+`MicroscopicGate3StoppableDirectRateQuantizedData` and trigger exact eventual
+recovery; a physically derived observation map from causal children to the
+fixed repair cells; nondegenerate horizon variance, a leakage-null corrector
+with sufficient descent margin, and the certified update/remainder estimates;
+the count/curvature/spectral quantization identities and positive residual gaps;
+separating invariant observables; the affine physical chart-density law;
+matched chart residual identities; the split 4D BDG operator-profile
+function/scale/regularity/support/cone certificates; and infrared GR/QFT
+recovery.  In particular, the actual growth law still has to be connected to
+the real Gate 3 weights, source, distortion observables, and refinement data.
 The new least-defect target is to derive the actual
 parent-local Hauptvermutung-defect relaxation source from physical causal
-growth, project it off the horizon channel, and prove the protected
-certificate-source hypotheses from the dynamics.
+growth, project it off the horizon channel, and prove that it supplies the
+aggregate descent and refinement hypotheses from the dynamics.
+
+### Gate 3 Normalization Audit
+
+`KFCausalCSpecMicroscopicGate3NormalizedWeightNoGo.lean` proves that a centered
+source has weighted expectation zero when the finite weights sum to one.  With
+nonnegative normalized weights, no strictly positive constant can therefore
+lie below `-centeredSource w source i` at every outcome.  Consequently the
+strong component-floor interface
+`PhysicalHauptvermutungConvergenceCertificate`, and hence the old
+`MicroscopicGate3QuantizedConvergenceData` route through that interface, cannot
+be instantiated by normalized physical weights.  The component-floor theorems
+remain correct conditional algebra for inputs satisfying their stated
+hypotheses; they are not the nonnegative-normalized physical closure target.
+
+`KFCausalCSpecMicroscopicGate3LegacyStrictNoGo.lean` proves a stronger,
+normalization-independent failure: the old quantized Gate 3 record derives an
+eventual nonnegative zero while demanding strict contraction forever.  Thus
+the legacy Gate 3 record and its scheduled-kernel Gate 4 wrapper have no
+instances at all.
+
+The first aggregate-rate replacement in
+`KFCausalCSpecMicroscopicGate3DirectRate.lean` still embedded an unconditional
+strict-descent refinement.  Because it also proved eventual exact zero while
+keeping the total nonnegative, it was inconsistent: at a zero stage the next
+strict step would make the total negative.
+`KFCausalCSpecMicroscopicGate3DirectRateStrictNoGo.lean` proves that no instance
+of this record exists.
+
+`KFCausalCSpecMicroscopicGate3StoppableDirectRate.lean` is the corrected route.
+Its refinement permits descent to stop at zero while retaining the protected
+per-step update and aggregate inequality.  With positive gaps and a positive
+step floor, Lean proves geometric convergence, finite exact recovery, zero
+descent at zero, and an absorbing zero state.  The corrected Gate 3-to-4
+handoff then proves eventual recovered stages, zero RSS/Poisson error, the
+scheduled operator limit, chart-distortion collapse, and density divergence.
+
+`KFCausalSetCompleteChiralBornWeights.lean` derives nonnegative normalized
+stage weights by normalizing the complete-chiral squared moduli, proves exact
+physical support, and preserves normalization under any finite observation
+pushforward.  This is a nonlinear per-parent Born normalization; it does not
+claim the original coherently normalized complex amplitudes were already Born
+normalized or derive the observation/coarse-graining map.  The remaining Gate
+3 physics is the observable/update/cone/rate supplier, not weight
+normalization itself.
 
 **Paper:** [`paper/time_is_a_partial_order.pdf`](paper/time_is_a_partial_order.pdf)
 

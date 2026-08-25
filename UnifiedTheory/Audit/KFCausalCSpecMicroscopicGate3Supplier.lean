@@ -25,6 +25,7 @@ open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecEntropyFluxLimit
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
+open UnifiedTheory.Audit.KFCausalCSpecBridgePoset
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 open Filter Topology
 open scoped BigOperators
@@ -3037,12 +3038,16 @@ theorem microscopicGate3QuantizedConvergenceData_scheduledKernelOperatorBridge_o
       densityBase densityStep densityStep_pos density_eq_affine coord
       chartOfCell sampleEvent phiAtPoint curvaturePhi operatorKernelData
       errorScale
+  have hrecovered := H.eventualRecoveredStage
+  rw [eventually_atTop] at hrecovered
+  have hrss := H.rssPoissonErrorZero
+  rw [eventually_atTop] at hrss
   simpa
     [I,
       microscopicGate3QuantizedConvergenceData_toRecoveredStageBDG4DScheduledDensityKernelOperatorInterface,
       microscopicGate3QuantizedConvergenceData_toRecoveredStageExactCSpecSequence]
     using
-      ⟨H.eventualRecoveredStage, H.rssPoissonErrorZero,
+      ⟨hrecovered, hrss,
         H.chartOperatorLimit, H.chartDistortionTendsToZero,
         H.scheduledDensityTendsToInfinity⟩
 

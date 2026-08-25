@@ -5472,6 +5472,11 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- with a local relaxation dynamics while keeping its microscopic origin open.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
 import UnifiedTheory.Audit.KFCausalTransitionFiberSignature
+-- A concrete, realizable coupling-identifiability test: the full precursor of
+-- the two-antichain reads off the effective pair coupling from one raw
+-- amplitude.  This reduces selection to a scalar order-amplitude datum; it
+-- does not derive that datum from order covariance alone.
+import UnifiedTheory.Audit.KFCausalSetOrderCouplingIdentifiability
 -- The support-relative Born correction is now the attractor of an explicit
 -- local dissipative carrier dynamics rather than only a variational choice.
 -- The radial defect obeys a time-homogeneous affine semigroup, its squared
@@ -5725,10 +5730,54 @@ import UnifiedTheory.Audit.KFCausalCSpec
 -- exposes the current Lean hooks for Gate 1 signed-fiber noncancellation,
 -- Gate 2 base zero sets, and Gate 3 protected convergence certificates.
 import UnifiedTheory.Audit.KFTOESevenGateAttack
+-- Replace Gate 1's opaque coupling-selection proposition by the concrete
+-- two-antichain amplitude-matching condition and expose its exact coupling
+-- equality content.
+import UnifiedTheory.Audit.KFTOEGate1OrderCouplingSelection
+-- The complete chiral complex law canonically supplies nonnegative,
+-- normalized squared-modulus weights, including pushforward weights on any
+-- fixed finite observation family.
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornWeights
+-- Recursive finite Born path probabilities are nonnegative, projectively
+-- consistent, normalized, and supported exactly on physical growth paths;
+-- a recursively chosen physical parent schedule is prefix-coherent.
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornPathLaw
 -- Microscopic Gate 3 supplier interface: packages the exact aggregate-rate
 -- and residual-gap obligations that causal growth must supply.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
--- Full TOE closure target: assembles the seven-gate ledger around the named
--- microscopic Gate 3/4 supplier without asserting the missing physical inputs.
+-- Stronger legacy stopping audit: the old named Gate 3 supplier (and the
+-- Gate 4 wrapper containing it) is uninhabited even without normalization,
+-- because eventual zero contradicts strict-forever contraction.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3LegacyStrictNoGo
+-- Normalized-weight audit: the legacy positive componentwise floor on every
+-- centered repair-source component is inconsistent with normalization.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3NormalizedWeightNoGo
+-- First aggregate-rate attempt retained unconditional strict descent after
+-- zero and is therefore inconsistent with nonnegative exact recovery.  Keep
+-- the record and its no-go theorem imported for audit provenance.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3DirectRate
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3DirectRateStrictNoGo
+-- Corrected Gate 3: descent may stop at zero; a relative aggregate-rate floor,
+-- quantized residual gaps, and a positive step floor yield finite recovery.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3StoppableDirectRate
+-- Concrete normalized one-cell inhabitant of the stoppable record, ruling out
+-- the hidden inconsistency found in the strict direct-rate attempt.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3StoppableDirectRateConsistency
+-- Corrected Gate 3-to-4 handoff, proved without constructing the impossible
+-- legacy component-floor exact-recovery certificate.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3DirectRateGate4Handoff
+-- Complete-chiral Born weights plus a canonical horizon-invisible corrected
+-- source reduce the stoppable refinement to explicit physical update, cone,
+-- margin, quantization, step-floor, and aggregate-rate assumptions.
+import UnifiedTheory.Audit.KFCausalCSpecCompleteChiralStoppableRepairAdapter
+-- Lift the normalization contradiction to the legacy named Gate 3 target and
+-- its scheduled-kernel Gate 4 wrapper.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3SupplierNormalizedNoGo
+-- Historical conditional full-closure ledger.  Its legacy microscopic
+-- supplier is retained as audited conditional algebra, not as the corrected
+-- normalized physical route.
 import UnifiedTheory.Audit.KFTOEFullClosureTarget
+-- Corrected conditional seven-gate capstone based on the stoppable Gate 3/4
+-- route; it keeps the remaining Gate 1 and Gates 4-6 physics named.
+import UnifiedTheory.Audit.KFTOEStoppableFullClosureTarget
 import UnifiedTheory.LayerC.ContextualFraction

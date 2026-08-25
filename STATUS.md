@@ -1,5 +1,54 @@
 # Framework Status (August 2026)
 
+> **Gate 3 normalization and stopping correction (2026-08-25):**
+> `KFCausalCSpecMicroscopicGate3NormalizedWeightNoGo.lean` proves that the
+> weighted expectation of `centeredSource` is zero for normalized finite
+> weights, and therefore nonnegative normalized weights cannot satisfy a
+> strictly positive lower bound on `-centeredSource` at every outcome.  Thus
+> `PhysicalHauptvermutungConvergenceCertificate` and the old
+> `MicroscopicGate3QuantizedConvergenceData` component-floor route are not
+> normalized physical supplier targets.  A stronger stopping audit proves
+> `MicroscopicGate3QuantizedConvergenceData` itself uninhabited even without
+> normalization: its derived eventual exact zero contradicts its embedded
+> strict-forever refinement and nonnegative physical total.  Its conditional
+> algebraic implications remain valid, but the record has no model.  A second
+> strict-stopping audit likewise proves
+> `MicroscopicGate3DirectRateQuantizedData` itself uninhabited: it retained an
+> unconditional positive descent rate after its own eventual nonnegative exact
+> zero, forcing the next total negative.  The corrected
+> `MicroscopicGate3StoppableDirectRateQuantizedData` removes that strict-forever
+> field.  It derives convergence and finite exact recovery from the relative
+> aggregate bound `rateBase * total n <= descentRate n`, proves descent is zero
+> at a zero stage, and proves zero is absorbing.  The corrected Gate 3-to-4
+> handoff also gives recovered stages, vanishing RSS/Poisson error, operator and
+> chart limits, and density divergence without the legacy certificate.  Those
+> Gate 4 conclusions remain relative to supplied physical-chart certificates,
+> residual matching, a positive affine density schedule, and the full BDG
+> kernel/profile analytic package.
+> The capstone's Gate 2 field is the finite quantized residual/counter-zero
+> equivalence; full physical Hauptvermutung semantics remain open.
+>
+> `KFCausalSetCompleteChiralBornWeights.lean` now derives nonnegative normalized
+> squared-modulus weights with exact physical support and normalized finite
+> observation pushforwards.  This is per-parent nonlinear Born normalization,
+> not a claim that coherent normalization already implied Born normalization.
+> `KFCausalSetCompleteChiralBornPathLaw.lean` recursively multiplies those
+> weights along finite ranked paths and proves nonnegativity, unit total mass,
+> exact one-step event refinement/projectivity, and positivity exactly for
+> physical causal-growth paths.  It also constructs a prefix-coherent physical
+> parent schedule from the proved nonempty successor fibers.  This does not yet
+> construct an infinite/continuum path measure or choose the Gate 3 observation
+> map.
+> `KFCausalCSpecCompleteChiralStoppableRepairAdapter.lean` then fixes the Gate 3
+> weights and corrected horizon-invisible source. Its six remaining step-level
+> premises are nonzero horizon variance, leakage-null correction, descent
+> margin, physical update bound, remainder bound, and step nonnegativity; the
+> quantized recovery wrapper separately exposes the gaps, total identity, step
+> floor, and aggregate-rate assumptions.
+> Gate 3 remains physically open at the observation map, concrete distortion
+> observables, horizon-variance/leakage-corrector conditions, update/remainder
+> law, quantization gaps, step floor, and aggregate-rate bound.
+>
 > **Quantum-gravity/Hauptvermutung bridge update (2026-08-20):** The current
 > capstone is documented in
 > [`QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md`](QUANTUM_GRAVITY_HAUPTVERMUTUNG_CAPSTONE.md).
@@ -89,8 +138,8 @@
 > `2*(1 - q) <= step_n*rateFloor_n`. The newest uniform gate derives
 > convergence with `q = 1 - stepFloor*gamma/2` from
 > `gamma*D_n <= descentRate_n`, `stepFloor <= step_n`, and
-> `0 < stepFloor*gamma <= 2`, making those uniform bounds the next theorem
-> target. The newest variable-product gate also proves convergence from
+> `0 < stepFloor*gamma <= 2`, making those uniform bounds one sufficient
+> aggregate target. The newest variable-product gate also proves convergence from
 > `D_{n+1} <= q_n*D_n` and `Product_{k<n} q_k -> 0`, with an explicit
 > variable-rate-floor specialization `q_n = 1 - step_n*rateFloor_n/2`. The
 > newest uniform-bound bridge derives that product decay from
@@ -167,8 +216,9 @@
 > the newest observable-zero corollary expands that threshold into total,
 > physical-total, base, bridge, residual, canonical-transport, and incidence
 > recovery facts.
-> The remaining work is to derive the physical certificates and infrared GR/QFT
-> recovery from the actual causal-growth dynamics.
+> The remaining work is to derive the corrected stoppable supplier's physical
+> observation, observable, leakage-correction, update, quantization, and rate
+> inputs—and infrared GR/QFT recovery—from the actual causal-growth dynamics.
 
 > **TOE swarm integration update (2026-08-21):** Six bounded agents reviewed
 > the remaining TOE gates.  Two results were integrated into
@@ -200,8 +250,9 @@
 > quotient observables with invariant finite diagnostic signatures.  A
 > `gate3_aggregateRateContraction_closed` packages the direct aggregate-rate
 > route to horizon protection plus total-distortion convergence, while a
-> `PhysicalHauptvermutungConvergenceCertificate` gives the stronger
-> certificate interface.  It now also packages the Gate 3 bridge and
+> `PhysicalHauptvermutungConvergenceCertificate` gives a stronger conditional
+> interface that the normalization audit rules out for nonnegative normalized
+> weights.  It now also packages the Gate 3 bridge and
 > residual split: convergence alone gives eventual canonical bridge transport,
 > eventual zero bridge distortion, eventual equality of total and base
 > residual distortion, and convergence of every finite count/curvature/spectral
