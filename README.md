@@ -54,10 +54,13 @@ selection as a named physical-selection bridge; that bridge now carries the
 named `Gate1ComplexSignedFiberAtlasCertificateClosed` package, exposing the
 signed-fiber, raw-aggregate, transition-noncancellation, and two-chirality
 atlas-realization consequences of the mixed certificate.
-The current finite search endpoint is the explicit component/exponent table
-`CompleteChiralAtlasComplexSignedFiberWitnessTable`, which now has a direct
-full-closure capstone route; the older real-only table remains a sufficient
-special case.  The ledger also covers
+Transition-fiber signature rigidity now proves that all precursor slots
+landing at one unlabeled child have the same ancestor and maximal-ancestor
+counts, so their nonzero signature-local amplitudes cannot cancel.  Lean uses
+this to construct the 140-birth
+`CompleteChiralAtlasComplexSignedFiberWitnessTable` and prove mixed
+signed-fiber noncancellation unconditionally; the older real-only table
+remains a sufficient special case.  The ledger also covers
 complete-chiral support/consistency and branch-aligned
 positive-frequency handedness with its reflection boundary; Gate 2 base zero
 sets and invariant-observable quotient semantics; and Gate 3 protected

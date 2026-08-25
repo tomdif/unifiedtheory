@@ -1433,9 +1433,11 @@
 > `CompleteChiralAtlasRealAggregateCoeffNonzero`: it is enough to exhibit one
 > nonzero signed real coefficient in each of the 140 polynomials, unless one
 > aggregate is purely imaginary and needs the analogous imaginary-part
-> certificate. The newest signed-fiber theorem expands those coefficients as
-> explicit signed sums over the labeled transition fibers, turning the finite
-> gate into a direct signed-count noncancellation target.
+> certificate. Transition-fiber signature rigidity now proves that all slots
+> landing at one unlabeled child have the same ancestor/maximal-ancestor
+> signature. Their Gaussian contributions therefore cannot cancel. Lean
+> constructs the mixed real/imaginary witness table and closes all 140 atlas
+> signed-count noncancellation targets unconditionally.
 > `KFCausalCSpecContinuumChiralityQualification.lean` isolates the remaining
 > continuum assumptions. The finite weak vertex has an exact pointwise lift to
 > a nontrivial chiral field on any nonempty base, and every order embedding

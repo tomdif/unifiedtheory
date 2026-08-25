@@ -5471,6 +5471,7 @@ import UnifiedTheory.Audit.KFCausalHolonomyBirthCouplingLaw
 -- disturbance.  The next module replaces that standalone variational input
 -- with a local relaxation dynamics while keeping its microscopic origin open.
 import UnifiedTheory.Audit.KFCausalBornShellGeneralLaw
+import UnifiedTheory.Audit.KFCausalTransitionFiberSignature
 -- The support-relative Born correction is now the attractor of an explicit
 -- local dissipative carrier dynamics rather than only a variational choice.
 -- The radial defect obeys a time-homogeneous affine semigroup, its squared

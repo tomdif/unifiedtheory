@@ -376,6 +376,13 @@ theorem gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
     gate1_complexSignedFiberAtlasCertificate_closed
       (completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable W)
 
+/-- Gate 1's finite atlas noncancellation certificate is unconditional: the
+transition-fiber signature theorem constructs the required 140-birth table. -/
+theorem gate1_complexSignedFiberAtlasCertificate_closed_unconditional :
+    Gate1ComplexSignedFiberAtlasCertificateClosed := by
+  exact gate1_complexSignedFiberAtlasCertificate_closed_of_witnessTable
+    completeChiralAtlasComplexSignedFiberWitnessTable
+
 /-- The Gate 1 positive-frequency handedness sublayer: after choosing the
 positive orientation branch, the finite causal clock birth saturates the
 Margolus-Levitin quarter-turn, selects the unique `-i` chiral phase, extends to
@@ -608,6 +615,16 @@ theorem gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_o
     gate1_complexPhysicalSelectionBridge_closed
       (completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable W)
       hcoupling
+
+/-- After signature rigidity, order-data selection of the pair coupling is
+the only remaining Gate 1 physical-selection input. -/
+theorem gate1_complexPhysicalSelectionBridge_closed_of_orderCoupling
+    {couplingSelectedFromOrderData : Prop}
+    (hcoupling : couplingSelectedFromOrderData) :
+    Gate1ComplexPhysicalSelectionBridgeClosed couplingSelectedFromOrderData := by
+  exact
+    gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
+      completeChiralAtlasComplexSignedFiberWitnessTable hcoupling
 
 theorem gate1_microscopicLaw_closed_of_complexPhysicalSelectionBridge
     {couplingSelectedFromOrderData : Prop}

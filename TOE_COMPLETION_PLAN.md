@@ -87,11 +87,11 @@ together with the already closed complete-chiral support and
 positive-frequency handedness sublayers.  It carries the named
 `Gate1ComplexSignedFiberAtlasCertificateClosed` package, exposing the checked
 ladder from signed transition-fiber sums to raw/normalized transition
-noncancellation and two-chirality atlas realization.  The finite search
-endpoint is now an
-explicit `CompleteChiralAtlasComplexSignedFiberWitnessTable`: one component
-and one exponent per atlas birth, with a nonzero signed transition-fiber count
-in the selected component.  The older
+noncancellation and two-chirality atlas realization.  Transition-fiber
+signature rigidity now closes the finite search without enumeration: it
+constructs an explicit `CompleteChiralAtlasComplexSignedFiberWitnessTable`
+and proves a nonzero real-or-imaginary signed coefficient at every atlas
+birth.  The older
 `CompleteChiralAtlasSignedFiberWitnessTable` and
 `Gate1PhysicalSelectionBridgeClosed` route remains a sufficient real-only
 special case.
@@ -1442,13 +1442,12 @@ microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizonNamedGa
 
 The next high-value theorem targets are:
 
-1. Gate 1: prove `CompleteChiralAtlasComplexSignedFiberSumNonzero` for
-   the physical CSpec atlas path by constructing
-   `CompleteChiralAtlasComplexSignedFiberWitnessTable`, an explicit
-   component/exponent table with one nonzero signed transition-fiber count for
-   each atlas birth.  Lean then packages the raw/transition and
-   two-chirality atlas-realization consequences as
-   `Gate1ComplexSignedFiberAtlasCertificateClosed`.  After that, instantiate
+1. Gate 1: derive selection of the canonical effective pair coupling from
+   order data.  Mixed signed-fiber noncancellation is now unconditional:
+   signature rigidity constructs the 140-birth
+   `CompleteChiralAtlasComplexSignedFiberWitnessTable`, and Lean packages the
+   raw/transition and two-chirality atlas-realization consequences as
+   `Gate1ComplexSignedFiberAtlasCertificateClosed`.  Then instantiate
    `MicroscopicGate3RatesGaps` from `completeChiralCausalSetGrowthLaw` by
    constructing a `PhysicalHauptvermutungConvergenceCertificate` and
    finite-spectrum count/curvature/spectral residual gaps.  The narrowest

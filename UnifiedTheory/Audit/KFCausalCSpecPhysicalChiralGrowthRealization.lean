@@ -24,6 +24,7 @@
 
 import UnifiedTheory.Audit.KFCausalSetCompleteChiralLaw
 import UnifiedTheory.Audit.KFCausalCSpecPhysicalGrowthRealization
+import UnifiedTheory.Audit.KFCausalTransitionFiberSignature
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
@@ -42,6 +43,7 @@ open UnifiedTheory.Audit.KFCausalDeterminantWeakCurrent
 open UnifiedTheory.Audit.KFCausalSetWeakHandednessBridge
 open UnifiedTheory.Audit.KFCausalDeterminantPhysicalBoundary
 open UnifiedTheory.Audit.KFCausalRegularPhaseEntry
+open UnifiedTheory.Audit.KFCausalTransitionFiberSignature
 
 /-- Prefix of the physical atlas path immediately before the `n -> n+1`
 birth. -/
@@ -313,6 +315,74 @@ structure CompleteChiralAtlasComplexSignedFiberWitnessTable : Type where
           atlasCompleteChiralRawAggregateImagSignedFiberSum
             n hnext (exponent n hnext) ≠ 0
 
+/-- The concrete precursor used by the displayed labeled atlas birth. -/
+def atlasStepPast (n : ℕ) (hnext : n + 1 ≤ 140) :
+    CausalPastSet
+      (globalAtlasPhysicalPrefix n
+        (Nat.le_trans (Nat.le_succ n) hnext)) :=
+  causalPastSetOfLabeledExtension
+    (globalAtlasPhysicalPrefix n
+      (Nat.le_trans (Nat.le_succ n) hnext))
+    (globalAtlasPhysicalPrefix (n + 1) hnext)
+    (globalAtlasPhysicalPrefix_oneElementExtension n (by omega))
+
+/-- The concrete atlas precursor lands at exactly the displayed unlabeled
+atlas child. -/
+theorem causalTransitionTarget_atlasStepPast
+    (n : ℕ) (hnext : n + 1 ≤ 140) :
+    causalTransitionTarget
+        (globalAtlasPhysicalPrefix n
+          (Nat.le_trans (Nat.le_succ n) hnext))
+        (atlasStepPast n hnext) =
+      atlasStepChild n hnext := by
+  unfold causalTransitionTarget atlasStepPast atlasStepChild
+  apply Quotient.sound
+  rw [precursorOneElementExtension_recovers]
+
+/-- Common signature exponent of the concrete `n -> n+1` atlas birth. -/
+def atlasStepSignatureExponent (n : ℕ) (hnext : n + 1 ≤ 140) : ℕ :=
+  ancestorPairExponent (atlasStepPast n hnext).ancestorCount
+
+/-- Select the nonzero Gaussian coordinate of the common transition-fiber
+signature. -/
+noncomputable def atlasStepCoefficientComponent
+    (n : ℕ) (hnext : n + 1 ≤ 140) :
+    CompleteChiralAtlasCoefficientComponent :=
+  if atlasCompleteChiralRawAggregateSignedFiberSum n hnext
+      (atlasStepSignatureExponent n hnext) ≠ 0 then .real else .imag
+
+theorem atlasStep_selected_signedFiberSum_ne_zero
+    (n : ℕ) (hnext : n + 1 ≤ 140) :
+    match atlasStepCoefficientComponent n hnext with
+    | .real =>
+        atlasCompleteChiralRawAggregateSignedFiberSum n hnext
+          (atlasStepSignatureExponent n hnext) ≠ 0
+    | .imag =>
+        atlasCompleteChiralRawAggregateImagSignedFiberSum n hnext
+          (atlasStepSignatureExponent n hnext) ≠ 0 := by
+  have hGeneral := exists_nonzero_complex_signedFiberSum_at_target
+    (globalAtlasPhysicalPrefix n
+      (Nat.le_trans (Nat.le_succ n) hnext))
+    (atlasStepPast n hnext)
+  rw [causalTransitionTarget_atlasStepPast] at hGeneral
+  change
+    atlasCompleteChiralRawAggregateSignedFiberSum n hnext
+        (atlasStepSignatureExponent n hnext) ≠ 0 ∨
+      atlasCompleteChiralRawAggregateImagSignedFiberSum n hnext
+        (atlasStepSignatureExponent n hnext) ≠ 0 at hGeneral
+  unfold atlasStepCoefficientComponent
+  split_ifs with hReal
+  · exact hReal
+  · exact hGeneral.resolve_left hReal
+
+/-- Unconditional 140-birth mixed signed-fiber witness table.  Fiber signature
+rigidity replaces the former finite search assumption. -/
+noncomputable def completeChiralAtlasComplexSignedFiberWitnessTable :
+    CompleteChiralAtlasComplexSignedFiberWitnessTable where
+  component := atlasStepCoefficientComponent
+  exponent := atlasStepSignatureExponent
+  signedFiberSum_ne_zero := atlasStep_selected_signedFiberSum_ne_zero
+
 theorem completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable
     (W : CompleteChiralAtlasComplexSignedFiberWitnessTable) :
     CompleteChiralAtlasComplexSignedFiberSumNonzero := by
@@ -326,6 +396,12 @@ theorem completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable
       exact Or.inr
         ⟨W.exponent n hnext, by
           simpa [hComponent] using W.signedFiberSum_ne_zero n hnext⟩
+
+/-- Unconditional mixed signed-fiber noncancellation on all 140 atlas births. -/
+theorem completeChiralAtlasComplexSignedFiberSumNonzero :
+    CompleteChiralAtlasComplexSignedFiberSumNonzero := by
+  exact completeChiralAtlasComplexSignedFiberSumNonzero_of_witnessTable
+    completeChiralAtlasComplexSignedFiberWitnessTable
 
 /-- The old real-only signed-fiber certificate is a special case of the
 corrected complex signed-fiber certificate. -/
@@ -740,6 +816,7 @@ theorem completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of
         chirality hSum)
 
 #print axioms atlasCompleteChiralTransition_eq_rawAggregate_div_partition
+#print axioms completeChiralAtlasComplexSignedFiberSumNonzero
 #print axioms atlasCompleteChiralRawAggregate_re_eq_realPolynomial_eval
 #print axioms atlasCompleteChiralRawAggregateRealCoeff_eq_signedFiberSum
 #print axioms atlasCompleteChiralRawAggregateImagCoeff_eq_signedFiberSum
