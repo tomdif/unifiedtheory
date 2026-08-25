@@ -36,18 +36,99 @@
 > weights along finite ranked paths and proves nonnegativity, unit total mass,
 > exact one-step event refinement/projectivity, and positivity exactly for
 > physical causal-growth paths.  It also constructs a prefix-coherent physical
-> parent schedule from the proved nonempty successor fibers.  This does not yet
-> construct an infinite/continuum path measure or choose the Gate 3 observation
-> map.
+> parent schedule from the proved nonempty successor fibers. It does not choose
+> the Gate 3 observation map.
+> `KFCausalSetCompleteChiralBornTrajectoryMeasure.lean` now closes the separate
+> infinite probability-extension step: the history-dependent Born weights are
+> Markov kernels, Ionescu--Tulcea gives a probability measure on complete
+> rank-dependent trajectories, and the next branch conditioned on the complete
+> finite history has exactly that Born kernel. Its positive singleton support
+> is exactly the physical one-element extension graph. This is an infinite
+> causal-growth measure, not yet a continuum spacetime measure.
+> `KFCausalSetCompleteChiralBornTrajectoryExtension.lean` strengthens the
+> cylinder statement to the exact finite singleton marginal and proves that
+> the measurable all-depth physical-trajectory set has measure one.
+> `KFCausalSetCompleteChiralBornChiralityBlindness.lean` proves the associated
+> identifiability boundary. Chirality reflection complex-conjugates each
+> complete interacting transition, leaving its squared modulus and stage
+> normalizer unchanged. Consequently the stage PMFs, full-history kernels, and
+> infinite trajectory measures for labels `0` and `1` are exactly equal.
+> Chirality is therefore phase/interference data, not an observable of the
+> classical Born path distribution by itself.
+> The action-selected alternative is now explicit. The vacuum-spectator action
+> selects the running harmonic pair schedule rather than the old fixed
+> Liouville zero-freeness witness.
+> `KFTOEGate1HarmonicBornShellSelection.lean` applies the separately defined
+> canonical positive-radial Born completion to that schedule and closes its
+> law-level package (coherent/Born normalization, physical zero leakage,
+> projectivity, strong positivity, and reflection), and
+> `KFCausalSetHarmonicBornTrajectoryMeasure.lean` gives its exact infinite
+> measure and almost-sure physical support. The first genuine branch has exact
+> PMF `(1/2, 1/2)`. That positive-radial completion's 140-edge atlas remains a
+> finite real-radical noncancellation target, not an assumed theorem.
+> `KFCausalSetPhaseSafeHarmonicBornShell.lean` gives an unconditional
+> alternative: fixed Born modulus leaves a phase circle, while finite support
+> excludes only finitely many phases. A reflection-paired noncomputable choice
+> has exact physical support and a nonzero 140-edge atlas amplitude. This extra
+> phase rule can change the PMF and is not uniquely selected by the vacuum
+> action, so it does not erase the positive-radial frontier.
 > `KFCausalCSpecCompleteChiralStoppableRepairAdapter.lean` then fixes the Gate 3
-> weights and corrected horizon-invisible source. Its six remaining step-level
-> premises are nonzero horizon variance, leakage-null correction, descent
-> margin, physical update bound, remainder bound, and step nonnegativity; the
-> quantized recovery wrapper separately exposes the gaps, total identity, step
-> floor, and aggregate-rate assumptions.
-> Gate 3 remains physically open at the observation map, concrete distortion
-> observables, horizon-variance/leakage-corrector conditions, update/remainder
-> law, quantization gaps, step floor, and aggregate-rate bound.
+> weights and corrected horizon-invisible source. The new
+> `KFCausalCSpecCompleteChiralRankZeroVarianceNoGo.lean` proves that its
+> all-stage assumption package is uninhabited: the unique rank-zero causal
+> branch pushes forward to a Dirac law under every observation map, forcing
+> horizon variance to zero and contradicting its nonzero-variance field.
+> `KFCausalCSpecVarianceSafeHorizonProjection.lean` removes that singularity in
+> the viable route: at zero variance, nonnegative unit weights force every
+> covariance and the relevant quadratic horizon leakage to vanish, so the
+> totalized projection is orthogonal without division. A root shift is no
+> longer logically required by the projection itself.
+> `KFCausalCSpecCompleteChiralPositiveRankObservation.lean` then closes the
+> observation/nondegeneracy issue at every positive rank: the causal-order
+> distinction between the gregarious empty-precursor child and the remaining
+> children defines a fixed binary observation; the distinct timid child puts
+> positive Born mass in the complementary cell; hence the binary horizon
+> observable has strictly positive variance for all `n > 0`.
+> `KFCausalCSpecMicroscopicGate3WellFoundedRank.lean` supplies a viable
+> replacement theorem boundary: the natural sum of three occupation counters
+> and a bridge-mismatch bit reaches permanent exact recovery by the explicit
+> initial-rank bound from one strict-descent/zero-absorption premise. Gate 3's
+> remaining physical input is now sharply identifiable as construction of an
+> update satisfying that discrete rank-step law, rather than the inconsistent
+> root-stage covariance package.
+> `KFCausalCSpecHarmonicBornProtectedWellFoundedGate3.lean` derives normalized
+> harmonic weights, variance-safe first/second-order horizon protection, and
+> bounded exact recovery from that rank law. It does not derive the rank law
+> from its displayed source; that source-driven update is the remaining Gate 3
+> physics.
+> `KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff.lean` now transports
+> that finite theorem into Gate 4 with the explicit deadline `defectRank 0`,
+> and proves the scheduled-density, BDG operator, chart-distortion, and
+> recovered-stage outputs. `KFTOEWellFoundedFullClosureTarget.lean` makes this
+> the viable ledger route. The harmonic handoff additionally remains
+> conditional on residual-to-chart matching, an affine density schedule, and a
+> BDG analytic kernel package not yet derived from harmonic histories. The
+> unresolved inputs are now stated without the stale Gate 3 convergence
+> package: the source-driven rank update; Gate 1's positive-radial atlas
+> noncancellation (if that displayed realization is required); the Gate 4
+> continuum chart/kernel/horizon bridges; the Gate 5 continuum QFT lifts; and
+> the Gate 6 cosmological readout, dynamics, and observational bridges.
+> The harmonic specialization now uses a separate top-level target, so the
+> legacy fixed-law atlas certificate cannot be reused for the harmonic law.
+> The vacuum action selects its raw coupling schedule; a separately defined
+> canonical positive-radial Born completion supplies the law-level fields.
+> Exact noncancellation of its displayed 140-edge atlas remains explicit in
+> one chirality; reflection conjugacy supplies the other. The capstone now uses
+> the actual harmonic protected-source Gate 3/4 handoff rather than the generic
+> well-founded analogue. Gate 6's bare causal-trajectory-measure hypothesis is
+> removed by the proved infinite physical trajectory measure, but no
+> trajectory-to-cosmology readout or dynamical bridge follows from that fact.
+> Nor is there yet a shared-model theorem identifying the Gate 4 continuum,
+> Gate 5 QFT, and Gate 6 scenario as outputs of one microscopic dynamics.
+> `KFGate5ChamberScatteringPremiseRemoval.lean` removes only a redundant finite
+> chamber witness. `KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter.lean`
+> removes the bare causal-history measure premise and exposes the missing
+> measurable trajectory-to-cosmology readout and admissibility theorem.
 >
 > **Quantum-gravity/Hauptvermutung bridge update (2026-08-20):** The current
 > capstone is documented in

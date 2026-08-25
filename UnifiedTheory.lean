@@ -5734,6 +5734,20 @@ import UnifiedTheory.Audit.KFTOESevenGateAttack
 -- two-antichain amplitude-matching condition and expose its exact coupling
 -- equality content.
 import UnifiedTheory.Audit.KFTOEGate1OrderCouplingSelection
+-- The fixed Liouville coupling is a zero-freeness witness, while the normalized
+-- exchangeable vacuum action selects a parameter-free harmonic running pair
+-- schedule.  The corresponding law-level Gate 1 package is coherently and
+-- Born normalized, projective, strongly positive, and reflection conjugate.
+import UnifiedTheory.Audit.KFCausalSetIntrinsicPairCouplingSelection
+import UnifiedTheory.Audit.KFTOEGate1HarmonicBornShellSelection
+-- Alternative full-support phase convention: Born compatibility fixes the
+-- scale modulus, and finite phase avoidance selects a reflection-paired phase
+-- that preserves every physical transition and the 140-edge atlas.  This is
+-- noncomputable and not claimed to be the unique action-selected phase.
+import UnifiedTheory.Audit.KFCausalSetPhaseSafeHarmonicBornShell
+-- Exact first nontrivial harmonic branch: two physical successors, unchanged
+-- by the radial Born shell, with probability one half each.
+import UnifiedTheory.Audit.KFCausalSetHarmonicBornRankOneAudit
 -- The complete chiral complex law canonically supplies nonnegative,
 -- normalized squared-modulus weights, including pushforward weights on any
 -- fixed finite observation family.
@@ -5742,6 +5756,25 @@ import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornWeights
 -- consistent, normalized, and supported exactly on physical growth paths;
 -- a recursively chosen physical parent schedule is prefix-coherent.
 import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornPathLaw
+-- Ionescu--Tulcea promotion of the finite projective Born law to a genuine
+-- probability measure on complete causal-growth trajectories.  The next-step
+-- regular conditional distribution is exactly the complete-chiral Born kernel,
+-- whose positive support is precisely the physical extension graph.
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornTrajectoryMeasure
+-- Exact singleton finite-cylinder marginals and probability-one support on
+-- trajectories whose every finite prefix is physical.
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornTrajectoryExtension
+-- Ionescu--Tulcea trajectory measure for the action-selected harmonic law,
+-- with exact finite Born marginals and almost-sure physical histories.
+import UnifiedTheory.Audit.KFCausalSetHarmonicBornTrajectoryMeasure
+-- The two reflected chiral amplitude laws are complex conjugates, so their
+-- normalized squared-modulus PMFs, history kernels, and full infinite Born
+-- trajectory measures are exactly equal.  Classical path statistics alone
+-- therefore cannot observe the chirality stored in phase/interference data.
+import UnifiedTheory.Audit.KFCausalSetCompleteChiralBornChiralityBlindness
+-- Generic finite-observation pushforward weights for any Born-normalized law,
+-- specialized to the selected harmonic dynamics.
+import UnifiedTheory.Audit.KFCausalBornObservedWeight
 -- Microscopic Gate 3 supplier interface: packages the exact aggregate-rate
 -- and residual-gap obligations that causal growth must supply.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3Supplier
@@ -5760,6 +5793,15 @@ import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3DirectRateStrictNoGo
 -- Corrected Gate 3: descent may stop at zero; a relative aggregate-rate floor,
 -- quantized residual gaps, and a positive step floor yield finite recovery.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3StoppableDirectRate
+-- A finite natural-valued defect rank gives an alternative exact-recovery
+-- route: strict descent away from zero reaches permanent recovery by the
+-- explicit initial-rank bound, without asymptotic contraction premises.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3WellFoundedRank
+-- The well-founded route feeds Gate 4 and the seven-gate ledger without
+-- restoring an asymptotic convergence certificate.
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff
+import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3WellFoundedRankGate4Handoff
+import UnifiedTheory.Audit.KFTOEWellFoundedFullClosureTarget
 -- Concrete normalized one-cell inhabitant of the stoppable record, ruling out
 -- the hidden inconsistency found in the strict direct-rate attempt.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3StoppableDirectRateConsistency
@@ -5770,6 +5812,24 @@ import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3DirectRateGate4Handoff
 -- source reduce the stoppable refinement to explicit physical update, cone,
 -- margin, quantization, step-floor, and aggregate-rate assumptions.
 import UnifiedTheory.Audit.KFCausalCSpecCompleteChiralStoppableRepairAdapter
+-- The all-stage complete-chiral adapter above cannot be instantiated as
+-- written: rank zero has one causal child, so every observed Born law is
+-- Dirac and its horizon variance is exactly zero.  Any viable adapter must
+-- treat rank zero as initialization or shift the dynamical time index.
+import UnifiedTheory.Audit.KFCausalCSpecCompleteChiralRankZeroVarianceNoGo
+-- After the deterministic root, causal order itself supplies a fixed binary
+-- observation (gregarious versus non-gregarious).  Both cells have positive
+-- complete-chiral Born mass, so its binary horizon observable has strictly
+-- positive variance at every rank n > 0.
+import UnifiedTheory.Audit.KFCausalCSpecCompleteChiralPositiveRankObservation
+-- Totalized horizon projection: zero variance itself forces covariance and
+-- second-order leakage to vanish, so no all-stage nondegeneracy premise is
+-- needed.  The harmonic Gate 3 route then derives protected finite-rank
+-- recovery from the explicit source, conditional only on its rank-step/cone
+-- dynamics; its Gate 4 handoff keeps independent chart/kernel bridges visible.
+import UnifiedTheory.Audit.KFCausalCSpecVarianceSafeHorizonProjection
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 -- Lift the normalization contradiction to the legacy named Gate 3 target and
 -- its scheduled-kernel Gate 4 wrapper.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3SupplierNormalizedNoGo
@@ -5780,4 +5840,10 @@ import UnifiedTheory.Audit.KFTOEFullClosureTarget
 -- Corrected conditional seven-gate capstone based on the stoppable Gate 3/4
 -- route; it keeps the remaining Gate 1 and Gates 4-6 physics named.
 import UnifiedTheory.Audit.KFTOEStoppableFullClosureTarget
+-- Narrow honest premise reductions: the finite chamber scattering witness is
+-- already constructed, and the harmonic causal-history probability measure
+-- already fills Gate 6's bare measure slot.  Continuum scattering and the
+-- typed cosmological readout/dynamics remain explicit physical bridges.
+import UnifiedTheory.Audit.KFGate5ChamberScatteringPremiseRemoval
+import UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 import UnifiedTheory.LayerC.ContextualFraction
