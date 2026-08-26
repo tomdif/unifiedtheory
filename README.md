@@ -211,16 +211,28 @@ reintroducing the obsolete real-convergence premise.
 harmonic handoff. It remains conditional on supplied residual-to-chart
 identities, an affine density schedule, and an independent analytic BDG kernel
 package; the continuum operator is not yet derived from harmonic histories.
-`KFTOEWellFoundedFullClosureTarget.lean` installs it as the viable seven-gate
-route: Gates 2 and 3, plus Gate 4 density/operator/recovery, are derived from
-the displayed supplier data. Its harmonic alternative uses a distinct target
+`KFCausalCSpecHauptvermutungDiagonalNoGo.lean` exposed and now guards against a
+Gate 4 chart defect: the former count-concentration field quantified over
+`x = x'`, where chart matching forces count zero and hence
+`countWindow >= 1`. The physical certificate has been repaired so its interval
+laws range over `x != x'`, while `G x x = 0` is recorded separately.
+`global_hauptvermutung_mean_distinct` upgrades the off-diagonal estimate plus
+the exact diagonal to the same total `HasDistortion` conclusion, so downstream
+semantics are preserved without inventing diagonal count data. The audit file
+retains the old all-pairs obstruction as a regression theorem and constructs a
+two-event, one-chart certificate with all three windows and total distortion
+exactly zero. This removes the interface contradiction; it does not derive the
+scheduled chart/kernel data from harmonic histories.
+`KFTOEWellFoundedFullClosureTarget.lean` records the corresponding conditional
+seven-gate ledger: Gates 2 and 3 are derived from the displayed supplier data,
+while its Gate 4 chart/kernel fields remain conditional despite the repaired
+interface above. Its harmonic alternative uses a distinct target
 type so it cannot borrow the legacy fixed-law Gate 1 atlas certificate. The
 exact-atlas capstone theorem removes that finite Gate 1 premise entirely;
 reflection conjugacy supplies the second chirality. Its Gate 3/4 supplier is
 the harmonic protected-source handoff, and the explicit zero-horizon source
 sector can instantiate its rank dynamics while leaving the chart/kernel data
-visible. Gate 6's
-bare causal-trajectory-measure slot is supplied by
+visible. Gate 6's bare causal-trajectory-measure slot is supplied by
 the canonical probability measure on infinite physical causal-growth
 trajectories, not by a cosmological readout theorem. Remaining inputs include
 the Gate 4 chart/kernel and horizon-dynamics bridges, physical derivation or
@@ -232,6 +244,12 @@ The ledger also does not yet prove that its Gate 4 continuum, Gate 5 QFT, and
 Gate 6 scenario are limits or readouts of one shared microscopic model.
 
 Gate 5 and Gate 6 also have narrower honest reductions.
+`KFCausalCSpecQFTSMInterface.lean` adds a finite packaging seam: a nonempty
+recovered CSpec stage equipped with independently supplied local
+single-generation states has canonical incidence transport alongside exact
+computational-basis Born weights and normalized probabilities in dimension
+`16`. The local states are not derived from recovery or the causal quantum
+measure, and their compatibility with incidence transport remains open.
 `KFGate5ChamberScatteringPremiseRemoval.lean` removes a redundant finite-chamber
 `ScatteringConstruction` input, but the resulting noncomputable chamber witness
 is not continuum Haag--Ruelle dynamics; the Hilbert/QFT, spin-statistics, and
@@ -249,6 +267,17 @@ constant-map loophole; it does not prove that the binary map is the physical
 cosmological coarse graining or that its records satisfy the QQG emergence and
 observational conditions. Hayden--Preskill dynamics, late structure, and
 gravitational-wave compatibility remain independent physical obligations.
+The QQG emergence ledger now exposes rather than erases its assumptions: its
+six physical claims are externally specified predicates, explicit evidence is
+required for a selected ledger, and all six occur in the conditional Einstein
+branch. The former definitions returning `True` and their built-in
+`trivialWitness` have been removed; an impossible claim ledger is formally
+proved not to admit emergence evidence. A caller can still choose vacuous
+predicate meanings, so physical content requires a fixed, independently
+defined claim ledger and empirical/theoretical justification for its evidence.
+The strict Gate 6 QQG audit and its downstream capstones now take that fixed
+ledger and evidence explicitly; a bare conditional bridge implication no
+longer fills the cosmology-mechanism slot.
 
 Machine-checked additions now cover:
 

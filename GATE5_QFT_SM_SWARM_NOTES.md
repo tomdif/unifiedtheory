@@ -219,9 +219,9 @@ The main assumptions/gaps are not hidden:
 - `SMBornRuleGeneralN.lean` is currently a real-amplitude bridge; the complex
   phase channel is not the full finite causal-growth phase dynamics.
 
-## Missing Bridge
+## Finite Packaging Interface Added
 
-The missing Gate 5 bridge is:
+The Gate 5 bridge decomposes as:
 
 ```text
 exact recovered CSpec stage
@@ -233,16 +233,21 @@ exact recovered CSpec stage
   -> continuum AQFT/Dirac/Yang-Mills/SM limit
 ```
 
-The repo already has the left side and several right-side finite algebra
-pieces. What is absent is a formal interface saying that a recovered finite
-geometry carries the finite Hilbert fibers on which the SM/QM algebra acts.
+`KFCausalCSpecQFTSMInterface.lean` now packages two finite ingredients in one
+nonempty object: an exactly recovered finite geometry and independently
+supplied normalized local states.  It proves canonical incidence transport
+from the first ingredient and exact pointwise Born weights and normalization
+from the second in the framework-selected dimension `singleGenDim = 16`.
+It does not yet construct the states from the recovered geometry or prove that
+transport acts compatibly on them, so the arrows above remain open.
 
 ## Concrete Path
 
-1. Add a finite interface from recovered CSpec stages to Hilbert fibers.
-   This should be finite and unconditional: no continuum claims.
+1. **Partially closed:** add a finite packaging interface for recovered CSpec
+   stages equipped with supplied Hilbert-fiber states, with no continuum claim.
+   Constructing those states from recovery remains open.
 
-2. Prove local Born normalization on every recovered fiber using
+2. **Closed:** prove local Born normalization on every recovered fiber using
    `SMBornRuleGeneralN.sm_born_rule_general_n_bridge`.
 
 3. Add local finite observable algebras:
@@ -253,10 +258,11 @@ geometry carries the finite Hilbert fibers on which the SM/QM algebra acts.
    use `z2PhaseFlipRep_isUnitaryRep` and `z3CyclicRep_isUnitaryRep` on the
    corresponding qubit/qutrit factors. Do not claim continuous gauge fields.
 
-5. Add transport compatibility:
-   use `PhysicalHauptvermutungRecoveredStage.candidate_transport` to prove the
-   recovered incidence transport is canonical before transporting local fiber
-   labels.
+5. **Partially closed:**
+   `PhysicalHauptvermutungRecoveredStage.candidate_transport` proves the
+   recovered incidence transport is canonical.  A law transporting the local
+   state/fiber labels equivariantly along that incidence transport is still
+   required.
 
 6. Add a finite net interface:
    define local regions as `Finset site`, local algebras as finite products or
@@ -266,9 +272,9 @@ geometry carries the finite Hilbert fibers on which the SM/QM algebra acts.
    continuum target: Wightman/Hadamard or AQFT local net, Dirac operator,
    Yang-Mills connection, renormalization.
 
-## Smallest Next Formal Target
+## Completed Formal Target
 
-Proposed file:
+Implemented file:
 
 `UnifiedTheory/Audit/KFCausalCSpecQFTSMInterface.lean`
 
@@ -276,7 +282,7 @@ Smallest useful structure:
 
 ```lean
 structure RecoveredCSpecHilbertFiber
-    {site : Type*} [Fintype site]
+    {site : Type*} [Fintype site] [Nonempty site]
     {countWindow curvatureBias spectralLocality : site -> R}
     {scale total : R}
     {edge : site -> E4}
@@ -307,8 +313,8 @@ Why this is the right smallest step:
 
 - It consumes the new exact-recovery object instead of bypassing it.
 - It consumes the existing finite Hilbert/Born bridge instead of restating it.
-- It creates the missing formal object: a recovered finite geometry carrying
-  local quantum fibers.
+- It creates a formal packaging object: recovered finite geometry alongside
+  independently supplied local quantum states.
 - It does not overclaim continuum QFT or the full Standard Model.
 - It gives the next agents a concrete place to attach finite local algebras,
   gauge reps, chirality projectors, and later AQFT scaling targets.

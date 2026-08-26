@@ -40,6 +40,7 @@ open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 open UnifiedTheory.Audit.KFTOEGate1HarmonicBornShellSelection
 open UnifiedTheory.Audit.KFCausalSetHarmonicBornAtlasExactAudit
 open UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
+open UnifiedTheory.Cosmology.QQG
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 open UnifiedTheory.Audit.KFTOEFullClosureTarget
 
@@ -309,9 +310,11 @@ causal-history Gate 6 components all use the harmonic Born construction.  Gate
 6's measure slot is an infinite causal-growth measure, not yet a cosmological
 readout.  This remains a conditional aggregate ledger: no theorem here yet
 identifies the Gate 4 continuum, Gate 5 QFT, and scenario `S` as limits of one
-shared microscopic model. -/
+shared microscopic model, and evidence for the fixed QQG claims ledger remains
+an explicit closure hypothesis. -/
 noncomputable def actionSelectedHarmonicWellFoundedTOEClosureTargets
     (gate5Targets : Gate5QFTStandardModelIRTargets)
+    (claims : QQGEmergenceClaims)
     (S : UnifiedTheory.Cosmology.QQG.QQGScenario)
     (lateStructureFormation gravitationalWaveCompatibility : Prop)
     (errorScale : ℝ)
@@ -327,7 +330,7 @@ noncomputable def actionSelectedHarmonicWellFoundedTOEClosureTargets
       horizonEstimatorConvergence nullBalanceFromDynamics
   gate5Targets := gate5Targets
   gate6Targets :=
-    gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S
+    gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge claims S
       (gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
         lateStructureFormation gravitationalWaveCompatibility)
   gate7Targets := gate7PreRegistrationLedgerTargets
@@ -342,9 +345,10 @@ ties Gate 3 to the harmonic Born weights and protected source, but itself
 supplies the unresolved rank update, chart matching, density schedule, and
 analytic kernel.  Gate 6's bare causal-measure hypothesis is removed by the
 infinite trajectory measure, while its physical cosmological readout remains
-outside this ledger. -/
+outside this ledger and its QQG emergence evidence remains explicit. -/
 theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed
     {gate5Targets : Gate5QFTStandardModelIRTargets}
+    (claims : QQGEmergenceClaims)
     {S : UnifiedTheory.Cosmology.QQG.QQGScenario}
     {lateStructureFormation gravitationalWaveCompatibility : Prop}
     {errorScale : ℝ}
@@ -353,11 +357,12 @@ theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed
     (hhorizon : horizonEstimatorConvergence)
     (hnull : nullBalanceFromDynamics)
     (hgate5 : Gate5QFTStandardModelIRClosed gate5Targets)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     ActionSelectedHarmonicTOEClosureClosed
-      (actionSelectedHarmonicWellFoundedTOEClosureTargets H gate5Targets S
+      (actionSelectedHarmonicWellFoundedTOEClosureTargets H gate5Targets claims S
         lateStructureFormation gravitationalWaveCompatibility errorScale
         horizonEstimatorConvergence nullBalanceFromDynamics) := by
   exact
@@ -372,7 +377,7 @@ theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed
       harmonicWellFoundedGate4HorizonEinsteinAnalytic_closed H hhorizon hnull,
       hgate5,
       gate6_cosmologyBlackHole_closed_of_actionSelectedHarmonicBornCausalGrowthMeasure
-        S hHP hlate hgw,
+        claims S hQQGEmergence hHP hlate hgw,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 /-- The exact rational-root atlas audit removes the last finite Gate 1 premise
@@ -382,6 +387,7 @@ the theorem; `H` still contains the separately supplied Gate 4 chart/kernel
 data and, unless instantiated by the source-driven sector, its Gate 3 update. -/
 theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed_exactAtlas
     {gate5Targets : Gate5QFTStandardModelIRTargets}
+    (claims : QQGEmergenceClaims)
     {S : UnifiedTheory.Cosmology.QQG.QQGScenario}
     {lateStructureFormation gravitationalWaveCompatibility : Prop}
     {errorScale : ℝ}
@@ -389,16 +395,17 @@ theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed_exactAtlas
     (hhorizon : horizonEstimatorConvergence)
     (hnull : nullBalanceFromDynamics)
     (hgate5 : Gate5QFTStandardModelIRClosed gate5Targets)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     ActionSelectedHarmonicTOEClosureClosed
-      (actionSelectedHarmonicWellFoundedTOEClosureTargets H gate5Targets S
+      (actionSelectedHarmonicWellFoundedTOEClosureTargets H gate5Targets claims S
         lateStructureFormation gravitationalWaveCompatibility errorScale
         horizonEstimatorConvergence nullBalanceFromDynamics) := by
-  exact actionSelectedHarmonicWellFoundedTOEClosureTargets_closed H
+  exact actionSelectedHarmonicWellFoundedTOEClosureTargets_closed H claims
     harmonicBornShellAtlasTransitionNonzero_zero
-    hhorizon hnull hgate5 hHP hlate hgw
+    hhorizon hnull hgate5 hQQGEmergence hHP hlate hgw
 
 #print axioms gate3_wellFoundedExactRecovery_closed
 #print axioms wellFoundedGate4HorizonEinsteinAnalytic_closed

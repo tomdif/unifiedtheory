@@ -42,6 +42,26 @@ target interval `F`) if every pair's interval is preserved to within `δ`. -/
 def HasDistortion (G : X → X → ℝ) (F : Y → Y → ℝ) (g : X → Y) (δ : ℝ) : Prop :=
   ∀ x x', |F (g x) (g x') - G x x'| ≤ δ
 
+/-- A relation-restricted distortion estimate.  This is the honest target when
+interval data are available only on a specified family of pairs. -/
+def HasDistortionOn (R : X → X → Prop) (G : X → X → ℝ)
+    (F : Y → Y → ℝ) (g : X → Y) (δ : ℝ) : Prop :=
+  ∀ x x', R x x' → |F (g x) (g x') - G x x'| ≤ δ
+
+/-- Off-diagonal control upgrades to total distortion when the diagonal is
+exact and the displayed bound is nonnegative.  This is a result-level wrapper:
+it does not manufacture interval-count hypotheses on the forbidden diagonal. -/
+theorem hasDistortion_of_distinct
+    (G : X → X → ℝ) (F : Y → Y → ℝ) (g : X → Y) (δ : ℝ)
+    (hoff : HasDistortionOn (fun x x' => x ≠ x') G F g δ)
+    (hdiag : ∀ x, F (g x) (g x) = G x x) (hδ : 0 ≤ δ) :
+    HasDistortion G F g δ := by
+  intro x x'
+  by_cases h : x = x'
+  · subst x'
+    simp [hdiag x, hδ]
+  · exact hoff x x' h
+
 /-- **Distortion is subadditive under composition.**  A `δ`-approximate isometry followed
 by an `ε`-approximate isometry is an `(ε + δ)`-approximate isometry. -/
 theorem hasDistortion_comp
@@ -93,6 +113,7 @@ theorem glue_isometry_of_exact
 
 #print axioms hasDistortion_comp
 #print axioms hasDistortion_zero_iff
+#print axioms hasDistortion_of_distinct
 #print axioms glue_distortion
 #print axioms glue_isometry_of_exact
 

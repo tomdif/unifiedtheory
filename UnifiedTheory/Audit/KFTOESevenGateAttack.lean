@@ -2536,30 +2536,29 @@ theorem gate6_dorauMuchEinsteinBridge_closed
     ⟨dorau_much_semiclassical_einstein_equation
       kappa Ricci T Rscalar hRicciSymm hTsymm hRicciNull hdiff hcons⟩
 
-/-- The Gate 6 QQG cosmology bridge sublayer: for any QQG scenario, Lean proves
-the UV fixed-point, large-N running, small-`ξ` running, monotone plateau
-potential, and sharp `r >= 0.01` algebraic bound ledger.  If the explicit
-emergence hypotheses are supplied, the same package enters the conditional
-Einstein branch.  This is a conditional cosmology bridge, not an unconditional
-derivation of the emergence hypotheses, initial state, reheating, or CMB
-phenomenology. -/
+/-- The Gate 6 QQG cosmology bridge sublayer for one fixed physical-claim
+ledger.  In addition to the proved QQG calculations, a closed audit stores
+actual evidence for that ledger and the resulting conditional Einstein branch.
+It is therefore not constructible from the formal bridge implication alone. -/
 structure Gate6QQGCosmologyBridgeAuditClosed
-    (S : QQGScenario) : Prop where
+    (claims : QQGEmergenceClaims) (S : QQGScenario) : Prop where
   provenConclusions : QQGProvenConclusions S
-  conditionalEinsteinBranch :
-    ∀ hyp : QQGEmergenceHypotheses, QQGConditionalEinsteinBranch S
+  emergenceEvidence : QQGEmergenceHypotheses claims
+  conditionalEinsteinBranch : QQGConditionalEinsteinBranch claims S
   bridgeProvenPart :
-    ∀ hyp : QQGEmergenceHypotheses,
-      (qqg_cosmology_implies_conditional_einstein S hyp).1 =
-        qqg_proven_conclusions S
+    (qqg_cosmology_implies_conditional_einstein
+      claims S emergenceEvidence).1 = qqg_proven_conclusions S
 
 theorem gate6_qqgCosmologyBridgeAudit_closed
-    (S : QQGScenario) :
-    Gate6QQGCosmologyBridgeAuditClosed S := by
+    (claims : QQGEmergenceClaims)
+    (S : QQGScenario)
+    (hyp : QQGEmergenceHypotheses claims) :
+    Gate6QQGCosmologyBridgeAuditClosed claims S := by
   exact
     ⟨qqg_proven_conclusions S,
-      fun hyp => qqg_cosmology_implies_conditional_einstein S hyp,
-      fun hyp => qqg_bridge_proven_part S hyp⟩
+      hyp,
+      qqg_cosmology_implies_conditional_einstein claims S hyp,
+      qqg_bridge_proven_part claims S hyp⟩
 
 /-- The Gate 6 physical-information-limits audit: the temporal
 Margolus-Levitin/Mandelstam-Tamm/Lloyd axis unifies, while Bekenstein capacity
@@ -2673,6 +2672,7 @@ finite-audit target, it leaves the remaining scrambling/decoupling/recovery
 evaporation dynamics explicit as a physical input rather than treating finite
 no-loss/Page formula audits as a complete evaporation model. -/
 def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     (initialConditionOrCosmologicalMeasure
       microscopicBlackHoleEvaporationDynamics
@@ -2682,7 +2682,7 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelo
     initialConditionOrCosmologicalMeasure
   darkEnergyOrCosmologicalConstantMechanism :=
     Gate6CosmologicalConstantGravitonAuditClosed ∧
-      Gate6QQGCosmologyBridgeAuditClosed S
+      Gate6QQGCosmologyBridgeAuditClosed claims S
   darkMatterPredictionOrExclusion :=
     Gate6DarkMatterPlanckWindowAuditClosed
   blackHoleEntropyEvaporationInformation :=
@@ -2696,31 +2696,33 @@ def gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelo
                   microscopicBlackHoleEvaporationDynamics
   cmbStructureGravitationalWaveCompatibility :=
     Gate6InflationCMBTensorAuditClosed ∧
-      Gate6QQGCosmologyBridgeAuditClosed S ∧
+      Gate6QQGCosmologyBridgeAuditClosed claims S ∧
         lateStructureGravitationalWaveCompatibility
 
 /-- With the full Gate 6 audit envelope harvested, the genuinely remaining
-Gate 6 physics inputs are now explicit: a cosmological
-measure/initial-condition principle, microscopic black-hole evaporation
-dynamics, and a late-time structure/GW bridge beyond the inflation and QQG
-audits. -/
+Gate 6 physics inputs are now explicit: evidence for one fixed QQG claims
+ledger, a cosmological measure/initial-condition principle, microscopic
+black-hole evaporation dynamics, and a late-time structure/GW bridge beyond
+the inflation and proved QQG calculations. -/
 theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     {initialConditionOrCosmologicalMeasure
       microscopicBlackHoleEvaporationDynamics
       lateStructureGravitationalWaveCompatibility : Prop}
     (hinitial : initialConditionOrCosmologicalMeasure)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hevap : microscopicBlackHoleEvaporationDynamics)
     (hlate : lateStructureGravitationalWaveCompatibility) :
     Gate6CosmologyBlackHoleClosed
       (gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
-        S initialConditionOrCosmologicalMeasure
+        claims S initialConditionOrCosmologicalMeasure
         microscopicBlackHoleEvaporationDynamics
         lateStructureGravitationalWaveCompatibility) := by
   exact
     ⟨hinitial,
       ⟨gate6_cosmologicalConstantGravitonAudit_closed,
-        gate6_qqgCosmologyBridgeAudit_closed S⟩,
+        gate6_qqgCosmologyBridgeAudit_closed claims S hQQGEmergence⟩,
       gate6_darkMatterPlanckWindowAudit_closed,
       ⟨gate6_finiteInformationPreservationAudit_closed,
         gate6_discreteHolographyAudit_closed,
@@ -2731,13 +2733,15 @@ theorem gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformatio
         gate6_physicalInformationLimitsAudit_closed,
         hevap⟩,
       ⟨gate6_inflationCMBTensorAudit_closed,
-        gate6_qqgCosmologyBridgeAudit_closed S,
+        gate6_qqgCosmologyBridgeAudit_closed claims S hQQGEmergence,
         hlate⟩⟩
 
 /-- Named remaining Gate 6 bridge obligations.  This refines the three loose
 physical inputs in the strict Gate 6 envelope into attackable subtargets:
 cosmological initial data/measure, black-hole scrambling, decoupling, recovery
-channels, late-time structure formation, and gravitational-wave compatibility. -/
+channels, late-time structure formation, and gravitational-wave compatibility.
+The fixed QQG claims ledger and its evidence are parameters of the closure
+record rather than fields of this physical-target record. -/
 structure Gate6NamedCosmologyBlackHoleBridgeTargets : Type where
   cosmologicalMeasureOrInitialState : Prop
   microscopicScramblingDynamics : Prop
@@ -2747,9 +2751,11 @@ structure Gate6NamedCosmologyBlackHoleBridgeTargets : Type where
   gravitationalWaveCompatibility : Prop
 
 /-- Gate 6 named bridge closure bundles all finite/audit layers already proved
-in the repo with the remaining physical cosmology, evaporation, and late-time
-compatibility obligations. -/
+in the repo with explicit evidence for the fixed QQG claims ledger and the
+remaining physical cosmology, evaporation, and late-time compatibility
+obligations. -/
 structure Gate6NamedCosmologyBlackHoleBridgeClosed
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     (T : Gate6NamedCosmologyBlackHoleBridgeTargets) : Prop where
   cosmologicalMeasureOrInitialState :
@@ -2757,7 +2763,7 @@ structure Gate6NamedCosmologyBlackHoleBridgeClosed
   cosmologicalConstantGravitonAudit :
     Gate6CosmologicalConstantGravitonAuditClosed
   qqgCosmologyBridgeAudit :
-    Gate6QQGCosmologyBridgeAuditClosed S
+    Gate6QQGCosmologyBridgeAuditClosed claims S
   darkMatterPlanckWindowAudit :
     Gate6DarkMatterPlanckWindowAuditClosed
   inflationCMBTensorAudit :
@@ -2788,19 +2794,21 @@ structure Gate6NamedCosmologyBlackHoleBridgeClosed
     T.gravitationalWaveCompatibility
 
 theorem gate6_namedCosmologyBlackHoleBridge_closed
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     (T : Gate6NamedCosmologyBlackHoleBridgeTargets)
     (hinitial : T.cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hscrambling : T.microscopicScramblingDynamics)
     (hdecoupling : T.microscopicDecouplingDynamics)
     (hrecovery : T.microscopicRecoveryChannelDynamics)
     (hlate : T.lateStructureFormation)
     (hgw : T.gravitationalWaveCompatibility) :
-    Gate6NamedCosmologyBlackHoleBridgeClosed S T := by
+    Gate6NamedCosmologyBlackHoleBridgeClosed claims S T := by
   exact
     ⟨hinitial,
       gate6_cosmologicalConstantGravitonAudit_closed,
-      gate6_qqgCosmologyBridgeAudit_closed S,
+      gate6_qqgCosmologyBridgeAudit_closed claims S hQQGEmergence,
       gate6_darkMatterPlanckWindowAudit_closed,
       gate6_inflationCMBTensorAudit_closed,
       gate6_finiteInformationPreservationAudit_closed,
@@ -2817,25 +2825,29 @@ The three older loose inputs are now a named initial-state slot, a three-part
 scrambling/decoupling/recovery evaporation slot, and a two-part
 structure-formation/GW slot. -/
 def gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     (T : Gate6NamedCosmologyBlackHoleBridgeTargets) :
     Gate6CosmologyBlackHoleTargets :=
   gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
-    S T.cosmologicalMeasureOrInitialState
+    claims S T.cosmologicalMeasureOrInitialState
     (T.microscopicScramblingDynamics ∧
       T.microscopicDecouplingDynamics ∧
         T.microscopicRecoveryChannelDynamics)
     (T.lateStructureFormation ∧ T.gravitationalWaveCompatibility)
 
 theorem gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     (T : Gate6NamedCosmologyBlackHoleBridgeTargets)
-    (hBridge : Gate6NamedCosmologyBlackHoleBridgeClosed S T) :
+    (hBridge : Gate6NamedCosmologyBlackHoleBridgeClosed claims S T) :
     Gate6CosmologyBlackHoleClosed
-      (gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S T) := by
+      (gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge
+        claims S T) := by
   exact
     gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
-      S hBridge.cosmologicalMeasureOrInitialState
+      claims S hBridge.cosmologicalMeasureOrInitialState
+      hBridge.qqgCosmologyBridgeAudit.emergenceEvidence
       ⟨hBridge.microscopicScramblingDynamics,
         hBridge.microscopicDecouplingDynamics,
         hBridge.microscopicRecoveryChannelDynamics⟩
@@ -2908,23 +2920,25 @@ def gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporat
   gravitationalWaveCompatibility := gravitationalWaveCompatibility
 
 theorem gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
     {cosmologicalMeasureOrInitialState
       lateStructureFormation gravitationalWaveCompatibility : Prop}
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
-    Gate6NamedCosmologyBlackHoleBridgeClosed S
+    Gate6NamedCosmologyBlackHoleBridgeClosed claims S
       (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
         cosmologicalMeasureOrInitialState
         lateStructureFormation gravitationalWaveCompatibility) := by
   exact
-    gate6_namedCosmologyBlackHoleBridge_closed S
+    gate6_namedCosmologyBlackHoleBridge_closed claims S
       (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
         cosmologicalMeasureOrInitialState
         lateStructureFormation gravitationalWaveCompatibility)
-      hinitial hHP.scramblingTarget hHP.decouplingTarget
+      hinitial hQQGEmergence hHP.scramblingTarget hHP.decouplingTarget
       hHP.recoveryTargetAndHaydenGap hlate hgw
 
 /-! ## Gate 7: external tests -/

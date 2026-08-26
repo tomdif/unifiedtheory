@@ -157,15 +157,21 @@ theorem qqg_proven_conclusions (S : QQGScenario) :
 
 /-! ## 3. Conditional Einstein-EFT branch -/
 
-/-- The conditional conclusion of the QQG bridge: an Einstein-EFT
-    cosmological branch.  This is an *opaque* Prop that the bridge
-    delivers iff the emergence hypotheses are assumed.  It is the
-    QQG-cosmology analogue of `ConditionalEinstein.lean`. -/
-def QQGConditionalEinsteinBranch (S : QQGScenario) : Prop :=
-  -- the conjunction of proven + hypothesis-guarded conclusions
+/-- The conditional conclusion of the QQG bridge.  All six external physical
+claims are retained at explicit evaluation points: scenario parameters for
+ghost/Weyl/no-boundary/coincidence, the canonical coupling-space origin for
+the beta-scheme claim, and `S.mu0` as this interface's proposed GR matching
+reference scale.  No predicate is fixed here to be `True`, and none is silently
+dropped from the conclusion. -/
+def QQGConditionalEinsteinBranch
+    (claims : QQGEmergenceClaims) (S : QQGScenario) : Prop :=
   QQGProvenConclusions S
-    ∧ EmergentGRHypothesis
-    ∧ StrongCouplingCoincidenceHypothesis
+    ∧ claims.ghostResolution S.lam₀ S.N
+    ∧ claims.weylPerturbationConsistency S.lam_tH S.N_e
+    ∧ claims.physicalBetaScheme QQGCouplings.origin
+    ∧ claims.noBoundaryInitialState S.lam₀ S.N
+    ∧ claims.strongCouplingCoincidence S.lam_tH
+    ∧ claims.emergentGR S.μ₀
 
 /-! ## 4. The bridge theorem -/
 
@@ -174,29 +180,38 @@ def QQGConditionalEinsteinBranch (S : QQGScenario) : Prop :=
     branch holds.
 
     The proven part `QQGProvenConclusions S` is delivered unconditionally
-    by `qqg_proven_conclusions`.  The hypothesis parts (`emergent_gr`,
-    `strong_coupling_coincidence`) are passed through transparently —
-    that is the load-bearing role of the explicit hypothesis bundle.
+    by `qqg_proven_conclusions`.  All six externally defined physical
+    predicates are instantiated at the displayed scenario and passed through
+    transparently; that is the load-bearing role of the explicit claim and
+    evidence bundles.
 
     No `axiom` is invoked.  No `sorry` is used.  The conditional nature
     of the conclusion is encoded in the hypothesis ledger
     `QQGEmergenceHypotheses`. -/
 theorem qqg_cosmology_implies_conditional_einstein
+    (claims : QQGEmergenceClaims)
     (S : QQGScenario)
-    (hyp : QQGEmergenceHypotheses) :
-    QQGConditionalEinsteinBranch S := by
-  refine ⟨qqg_proven_conclusions S, hyp.emergent_gr,
-          hyp.strong_coupling_coincidence⟩
+    (hyp : QQGEmergenceHypotheses claims) :
+    QQGConditionalEinsteinBranch claims S := by
+  exact
+    ⟨qqg_proven_conclusions S,
+      hyp.ghost_resolved S.lam₀ S.N,
+      hyp.weyl_perturbations_ok S.lam_tH S.N_e,
+      hyp.physical_beta_scheme QQGCouplings.origin,
+      hyp.no_boundary_initial_state S.lam₀ S.N,
+      hyp.strong_coupling_coincidence S.lam_tH,
+      hyp.emergent_gr S.μ₀⟩
 
 /-! ## 5. Sanity check: the bridge is non-trivial w.r.t. PROVEN ledger -/
 
 /-- The bridge produces the proven ledger.  This is what we mean by
     "the bridge is not vacuous": even ignoring the hypothesis parts,
-    a value of `QQGConditionalEinsteinBranch S` contains a value of
+    a value of `QQGConditionalEinsteinBranch claims S` contains a value of
     `QQGProvenConclusions S`, which IS proved unconditionally. -/
 theorem qqg_bridge_proven_part
-    (S : QQGScenario) (hyp : QQGEmergenceHypotheses) :
-    (qqg_cosmology_implies_conditional_einstein S hyp).1
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
+    (hyp : QQGEmergenceHypotheses claims) :
+    (qqg_cosmology_implies_conditional_einstein claims S hyp).1
       = qqg_proven_conclusions S := rfl
 
 end UnifiedTheory.Cosmology.QQG

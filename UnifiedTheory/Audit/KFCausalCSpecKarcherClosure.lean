@@ -158,7 +158,98 @@ theorem global_hauptvermutung_mean
   rw [hmean]
   exact hstab
 
+/-- Relation-restricted form of the quantitative Hauptvermutung.  Every
+interval-specific hypothesis is consumed only on a pair satisfying `R`, and
+the conclusion records exactly that restricted scope. -/
+theorem global_hauptvermutung_mean_on
+    {X Y : Type*} [AddCommGroup Y] [Module ℝ Y]
+    {ι : Type*} [Fintype ι] [Nonempty ι]
+    (R : X → X → Prop)
+    (B : Y →ₗ[ℝ] Y →ₗ[ℝ] ℝ) (hsymm : ∀ x y, B x y = B y x)
+    (G : X → X → ℝ) (κd ε b S rho : ℝ)
+    (hρ : 0 < rho) (hε : 0 ≤ ε) (hb : 0 ≤ b)
+    (g : ι → X → Y) (n : ι → X → X → ℝ) (Vol : ι → X → X → ℝ)
+    (hG : ∀ x x', R x x' → 0 < G x x')
+    (hGS : ∀ x x', R x x' → G x x' ≤ S)
+    (hchart : ∀ i x x', R x x' →
+      B (g i x - g i x') (g i x - g i x') =
+        Real.sqrt (24 * n i x x' / (Real.pi * rho)))
+    (hn : ∀ i x x', 0 ≤ n i x x')
+    (hV : ∀ i x x', R x x' → 0 < Vol i x x')
+    (hconc : ∀ i x x', R x x' →
+      |n i x x' / (rho * Vol i x x') - 1| ≤ ε)
+    (hbias : ∀ i x x', R x x' →
+      |Vol i x x' / ((Real.pi/24) * (G x x')^2) - 1| ≤ b)
+    (hpair : ∀ i j x x', R x x' →
+      |B ((g i x - g i x') - (g j x - g j x'))
+         ((g i x - g i x') - (g j x - g j x'))| ≤ κd) :
+    HasDistortionOn R G (fun y y' => B (y - y') (y - y'))
+      (fun x => (Fintype.card ι : ℝ)⁻¹ • ∑ i, g i x)
+      ((ε + b + ε * b) * S + κd / 2) := by
+  intro x x' hx
+  have hebb : 0 ≤ ε + b + ε * b := by positivity
+  have hmean : ((Fintype.card ι : ℝ)⁻¹ • ∑ i, g i x)
+      - ((Fintype.card ι : ℝ)⁻¹ • ∑ i, g i x')
+      = (Fintype.card ι : ℝ)⁻¹ • ∑ i, (g i x - g i x') := by
+    rw [Finset.sum_sub_distrib, smul_sub]
+  have hdiag : ∀ i, |B (g i x - g i x') (g i x - g i x') - G x x'|
+      ≤ (ε + b + ε * b) * S := by
+    intro i
+    rw [hchart i x x' hx]
+    exact le_trans
+      (count_estimator_error_curved rho (G x x') (n i x x') (Vol i x x')
+        ε b hρ (hG x x' hx) (hn i x x') (hV i x x' hx) hε hb
+        (hconc i x x' hx) (hbias i x x' hx))
+      (mul_le_mul_of_nonneg_left (hGS x x' hx) hebb)
+  have hstab := karcher_mean_stability B hsymm
+    (fun i => g i x - g i x') (G x x') ((ε + b + ε * b) * S) κd
+    hdiag (fun i j => hpair i j x x' hx)
+  show |B (_ - _) (_ - _) - G x x'| ≤ _
+  rw [hmean]
+  exact hstab
+
+/-- Distinct-pair interval laws, together with a zero source diagonal, give the
+same total distortion statement as the legacy all-pairs theorem.  The upgrade
+uses `hasDistortion_of_distinct`; no diagonal count or volume law is invented. -/
+theorem global_hauptvermutung_mean_distinct
+    {X Y : Type*} [AddCommGroup Y] [Module ℝ Y]
+    {ι : Type*} [Fintype ι] [Nonempty ι]
+    (B : Y →ₗ[ℝ] Y →ₗ[ℝ] ℝ) (hsymm : ∀ x y, B x y = B y x)
+    (G : X → X → ℝ) (κd ε b S rho : ℝ)
+    (hρ : 0 < rho) (hε : 0 ≤ ε) (hb : 0 ≤ b)
+    (hS : 0 ≤ S) (hκd : 0 ≤ κd) (hGself : ∀ x, G x x = 0)
+    (g : ι → X → Y) (n : ι → X → X → ℝ) (Vol : ι → X → X → ℝ)
+    (hG : ∀ x x', x ≠ x' → 0 < G x x')
+    (hGS : ∀ x x', G x x' ≤ S)
+    (hchart : ∀ i x x', x ≠ x' →
+      B (g i x - g i x') (g i x - g i x') =
+        Real.sqrt (24 * n i x x' / (Real.pi * rho)))
+    (hn : ∀ i x x', 0 ≤ n i x x')
+    (hV : ∀ i x x', x ≠ x' → 0 < Vol i x x')
+    (hconc : ∀ i x x', x ≠ x' →
+      |n i x x' / (rho * Vol i x x') - 1| ≤ ε)
+    (hbias : ∀ i x x', x ≠ x' →
+      |Vol i x x' / ((Real.pi/24) * (G x x')^2) - 1| ≤ b)
+    (hpair : ∀ i j x x', x ≠ x' →
+      |B ((g i x - g i x') - (g j x - g j x'))
+         ((g i x - g i x') - (g j x - g j x'))| ≤ κd) :
+    HasDistortion G (fun y y' => B (y - y') (y - y'))
+      (fun x => (Fintype.card ι : ℝ)⁻¹ • ∑ i, g i x)
+      ((ε + b + ε * b) * S + κd / 2) := by
+  apply hasDistortion_of_distinct G
+    (fun y y' => B (y - y') (y - y'))
+    (fun x => (Fintype.card ι : ℝ)⁻¹ • ∑ i, g i x)
+    ((ε + b + ε * b) * S + κd / 2)
+  · exact global_hauptvermutung_mean_on
+      (fun x x' => x ≠ x') B hsymm G κd ε b S rho hρ hε hb g n Vol
+      hG (fun x x' _ => hGS x x') hchart hn hV hconc hbias hpair
+  · intro x
+    simp [hGself x]
+  · positivity
+
 #print axioms karcher_mean_stability
 #print axioms global_hauptvermutung_mean
+#print axioms global_hauptvermutung_mean_on
+#print axioms global_hauptvermutung_mean_distinct
 
 end UnifiedTheory.Audit.KFCausalCSpecKarcherClosure

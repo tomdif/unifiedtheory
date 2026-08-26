@@ -6,10 +6,12 @@
   proved in the paper itself, and therefore cannot be proved in Lean
   without going beyond the paper's content.
 
-  Each is encoded as a `Prop`-valued field on a single bundling
-  structure, `QQGEmergenceHypotheses`, so that downstream theorems
-  can be quantified over them transparently.  No `axiom` is declared;
-  no result here is unconditional.
+  Each is encoded as an externally supplied predicate in
+  `QQGEmergenceClaims`.  A value of `QQGEmergenceHypotheses claims` must
+  then provide evidence for those predicates.  This separation is important:
+  the predicates are not fixed definitions returning `True`, so the formal
+  interface itself supplies no emergence witness.  Callers remain responsible
+  for choosing non-vacuous physical meanings and justifying their evidence.
 
   This file mirrors the "scope caveat" lists in the other Cosmology/QQG
   modules and is the load-bearing IOU of the QQG-cosmology bridge.
@@ -22,65 +24,48 @@ set_option relaxedAutoImplicit false
 
 namespace UnifiedTheory.Cosmology.QQG
 
-/-! ## 1. Physical-content hypotheses -/
+/-! ## 1. External physical-content predicates -/
 
-/-- The spin-2 ghost arising from the C² term is contained at the
-    quantum level.  Paper §1 surveys refs [13–32] of approaches.
-    UNPROVED in paper. -/
-def GhostResolutionHypothesis : Prop :=
-  ∀ (_lam₀ _N : ℝ), True  -- placeholder Prop; load is in the type signature
-
-/-- The Weyl-perturbation analysis (C² affects perturbations even though
-    C² ≡ 0 on FRW) is consistent and matches CMB constraints.
-    Paper flags this as "an important next step" — UNPROVED. -/
-def WeylPerturbationConsistencyHypothesis : Prop :=
-  ∀ (_lam_tH _N_e : ℝ), True
-
-/-- The "physical" β-functions of eq (2) (from ref [50]) are the correct
-    formulation.  Paper notes refs [51–54] for ongoing debate.  Encoded
-    as the choice of β-function scheme. -/
-def PhysicalBetaFunctionScheme : Prop :=
-  ∀ (_c : QQGCouplings), True
-
-/-- The cosmological trajectory originates from a no-boundary Euclidean
-    half-sphere (Hartle–Hawking type).  Paper §3 calls this "a natural
-    possibility" — UNPROVED. -/
-def NoBoundaryInitialStateHypothesis : Prop :=
-  ∀ (_lam₀ _N : ℝ), True
-
-/-- The RG trajectory crosses the tachyon divide ξ = 0 at the same
-    scale at which λ_tH ≳ 1 (strong coupling).  Paper §6: "current
-    observations suggest that crossing the tachyon divide appears to
-    be nearly coincident with entering the strong-coupling regime,
-    λ_tH ≳ 1, as well as with the onset of reheating".  UNPROVED. -/
-def StrongCouplingCoincidenceHypothesis : Prop :=
-  ∀ (_lam_tH : ℝ), True
-
-/-- GR emerges as an effective field theory at the strong-coupling
-    UV/IR matching surface.  Paper argues this by QCD-confinement
-    analogy (refs [47, 48]) — UNPROVED. -/
-def EmergentGRHypothesis : Prop :=
-  ∀ (_matching_scale : ℝ), True
+/-- The six physical claims required by the QQG emergence story.  The fields
+are predicates, not theorem values.  A concrete physical model must define
+what each predicate means before evidence can be supplied. -/
+structure QQGEmergenceClaims where
+  /-- Quantum containment of the spin-2 ghost, indexed by bare coupling and
+  matter weight. -/
+  ghostResolution : ℝ → ℝ → Prop
+  /-- Consistency of Weyl perturbations with the intended cosmological
+  constraints, indexed by 't Hooft coupling and e-fold count. -/
+  weylPerturbationConsistency : ℝ → ℝ → Prop
+  /-- Correctness of the selected physical beta-function scheme. -/
+  physicalBetaScheme : QQGCouplings → Prop
+  /-- Realization of the proposed no-boundary initial state. -/
+  noBoundaryInitialState : ℝ → ℝ → Prop
+  /-- Coincidence of the tachyon crossing, strong coupling, and reheating. -/
+  strongCouplingCoincidence : ℝ → Prop
+  /-- Emergence of general relativity at a matching scale. -/
+  emergentGR : ℝ → Prop
 
 /-! ## 2. The bundled hypothesis structure -/
 
-/-- A `QQGEmergenceHypotheses` value is a bundle of all the unproved
-    physical assumptions the paper depends on.  Each downstream theorem
-    that depends on the QQG → GR-EFT story should take a value of this
-    type as an explicit hypothesis. -/
-structure QQGEmergenceHypotheses where
+/-- Evidence for a specified QQG emergence claim ledger.  Each downstream
+theorem that depends on the QQG-to-GR-EFT story must quantify over an explicit
+`claims` value and take this evidence as a hypothesis. -/
+structure QQGEmergenceHypotheses (claims : QQGEmergenceClaims) : Prop where
   /-- The spin-2 ghost is contained. -/
-  ghost_resolved : GhostResolutionHypothesis
+  ghost_resolved : ∀ lam₀ N, claims.ghostResolution lam₀ N
   /-- Weyl-perturbation analysis works out. -/
-  weyl_perturbations_ok : WeylPerturbationConsistencyHypothesis
+  weyl_perturbations_ok :
+    ∀ lam_tH N_e, claims.weylPerturbationConsistency lam_tH N_e
   /-- We are using the "physical" β-functions of ref [50]. -/
-  physical_beta_scheme : PhysicalBetaFunctionScheme
+  physical_beta_scheme : ∀ c, claims.physicalBetaScheme c
   /-- Initial state is no-boundary. -/
-  no_boundary_initial_state : NoBoundaryInitialStateHypothesis
+  no_boundary_initial_state :
+    ∀ lam₀ N, claims.noBoundaryInitialState lam₀ N
   /-- Tachyon-divide crossing coincides with strong coupling / reheating. -/
-  strong_coupling_coincidence : StrongCouplingCoincidenceHypothesis
+  strong_coupling_coincidence :
+    ∀ lam_tH, claims.strongCouplingCoincidence lam_tH
   /-- GR emerges as IR EFT below the matching surface. -/
-  emergent_gr : EmergentGRHypothesis
+  emergent_gr : ∀ matchingScale, claims.emergentGR matchingScale
 
 /-! ## 3. The "viability" constraints (paper §5) -/
 
@@ -97,19 +82,24 @@ structure QQGViableParameters where
   N_matter_lower : 100000 ≤ N_matter
   N_matter_upper : N_matter ≤ 1000000
 
-/-! ## 4. A trivial witness, for downstream tests -/
+/-! ## 4. No-built-in-witness sanity check -/
 
-/-- A trivial witness: every QQGEmergenceHypotheses field is `True` here,
-    so the structure is inhabited.  Downstream proofs must NOT
-    automatically discharge with this — it is provided only so
-    `#check` / examples and the bridge theorem can be type-checked
-    without circularity. -/
-def QQGEmergenceHypotheses.trivialWitness : QQGEmergenceHypotheses where
-  ghost_resolved := fun _ _ => True.intro
-  weyl_perturbations_ok := fun _ _ => True.intro
-  physical_beta_scheme := fun _ => True.intro
-  no_boundary_initial_state := fun _ _ => True.intro
-  strong_coupling_coincidence := fun _ => True.intro
-  emergent_gr := fun _ => True.intro
+/-- A deliberately impossible claim ledger.  It witnesses that the interface
+does not make every emergence ledger automatically inhabitable. -/
+def QQGEmergenceClaims.impossible : QQGEmergenceClaims where
+  ghostResolution := fun _ _ => False
+  weylPerturbationConsistency := fun _ _ => False
+  physicalBetaScheme := fun _ => False
+  noBoundaryInitialState := fun _ _ => False
+  strongCouplingCoincidence := fun _ => False
+  emergentGR := fun _ => False
+
+/-- Unlike the former fixed `True`-valued placeholder encoding, this API does
+not supply evidence for every ledger.  This theorem does not prevent a caller
+from defining a different ledger whose predicates themselves are vacuous. -/
+theorem impossible_emergence_claims_not_satisfied :
+    ¬ QQGEmergenceHypotheses QQGEmergenceClaims.impossible := by
+  intro hyp
+  exact hyp.ghost_resolved 1 1
 
 end UnifiedTheory.Cosmology.QQG

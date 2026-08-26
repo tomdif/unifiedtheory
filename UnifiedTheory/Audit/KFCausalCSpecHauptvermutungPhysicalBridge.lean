@@ -45,21 +45,24 @@ structure PhysicalGrowthHauptvermutungCertificate
   density_pos : 0 < density
   countWindow_nonneg : 0 ≤ countWindow
   curvatureBias_nonneg : 0 ≤ curvatureBias
+  scale_nonneg : 0 ≤ scale
+  pairConsistency_nonneg : 0 ≤ pairConsistency
   chart : ι → X → Y
   count : ι → X → X → ℝ
   volume : ι → X → X → ℝ
-  G_pos : ∀ x x', 0 < G x x'
+  G_self : ∀ x, G x x = 0
+  G_pos : ∀ x x', x ≠ x' → 0 < G x x'
   G_le_scale : ∀ x x', G x x' ≤ scale
-  chart_count_eq : ∀ i x x',
+  chart_count_eq : ∀ i x x', x ≠ x' →
     B (chart i x - chart i x') (chart i x - chart i x') =
       Real.sqrt (24 * count i x x' / (Real.pi * density))
   count_nonneg : ∀ i x x', 0 ≤ count i x x'
-  volume_pos : ∀ i x x', 0 < volume i x x'
-  count_concentration : ∀ i x x',
+  volume_pos : ∀ i x x', x ≠ x' → 0 < volume i x x'
+  count_concentration : ∀ i x x', x ≠ x' →
     |count i x x' / (density * volume i x x') - 1| ≤ countWindow
-  curvature_bias_bound : ∀ i x x',
+  curvature_bias_bound : ∀ i x x', x ≠ x' →
     |volume i x x' / ((Real.pi / 24) * (G x x') ^ 2) - 1| ≤ curvatureBias
-  chart_pair_consistency : ∀ i j x x',
+  chart_pair_consistency : ∀ i j x x', x ≠ x' →
     |B ((chart i x - chart i x') - (chart j x - chart j x'))
        ((chart i x - chart i x') - (chart j x - chart j x'))|
       ≤ pairConsistency
@@ -80,6 +83,21 @@ noncomputable def distortionBound
   (C.countWindow + C.curvatureBias + C.countWindow * C.curvatureBias) *
     C.scale + C.pairConsistency / 2
 
+/-- The repaired certificate records enough scalar sign data for its displayed
+distortion bound to control the exact diagonal as well as distinct pairs. -/
+theorem distortionBound_nonneg
+    {X Y ι : Type*} [AddCommGroup Y] [Module ℝ Y] [Fintype ι] [Nonempty ι]
+    (C : PhysicalGrowthHauptvermutungCertificate X Y ι) :
+    0 ≤ C.distortionBound := by
+  unfold distortionBound
+  apply add_nonneg
+  · apply mul_nonneg
+    · exact add_nonneg
+        (add_nonneg C.countWindow_nonneg C.curvatureBias_nonneg)
+        (mul_nonneg C.countWindow_nonneg C.curvatureBias_nonneg)
+    · exact C.scale_nonneg
+  · exact div_nonneg C.pairConsistency_nonneg (by norm_num)
+
 /-- Target proposition for the bridge field
 `quantitativeHauptvermutungAppliesToPhysicalGrowth`. -/
 def QuantitativeHauptvermutungAppliesToPhysicalGrowth
@@ -97,10 +115,11 @@ theorem applies_quantitative_hauptvermutung
     (C : PhysicalGrowthHauptvermutungCertificate X Y ι) :
     C.QuantitativeHauptvermutungAppliesToPhysicalGrowth := by
   unfold QuantitativeHauptvermutungAppliesToPhysicalGrowth globalGlue distortionBound
-  exact global_hauptvermutung_mean
+  exact global_hauptvermutung_mean_distinct
     C.B C.B_symm C.G C.pairConsistency C.countWindow C.curvatureBias
     C.scale C.density C.density_pos C.countWindow_nonneg
-    C.curvatureBias_nonneg C.chart C.count C.volume C.G_pos C.G_le_scale
+    C.curvatureBias_nonneg C.scale_nonneg C.pairConsistency_nonneg C.G_self
+    C.chart C.count C.volume C.G_pos C.G_le_scale
     C.chart_count_eq C.count_nonneg C.volume_pos C.count_concentration
     C.curvature_bias_bound C.chart_pair_consistency
 
@@ -154,6 +173,7 @@ theorem certificate_distortionBound_tendsto_zero
   simp [distortionBound, hS n]
 
 #print axioms PhysicalGrowthHauptvermutungCertificate.applies_quantitative_hauptvermutung
+#print axioms PhysicalGrowthHauptvermutungCertificate.distortionBound_nonneg
 #print axioms PhysicalGrowthHauptvermutungCertificate.hasDistortion_mono
 #print axioms PhysicalGrowthHauptvermutungCertificate.distortionBound_tendsto_zero
 #print axioms PhysicalGrowthHauptvermutungCertificate.certificate_distortionBound_tendsto_zero

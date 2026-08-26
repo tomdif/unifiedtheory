@@ -60,8 +60,8 @@ is ruled out, and a stronger theorem proves the legacy supplier itself
 uninhabited even without normalization because its eventual zero contradicts
 strict contraction forever.  The first direct-rate exact-recovery replacement
 is uninhabited for the same stopping reason.
-`UnifiedTheory/Audit/KFTOEStoppableFullClosureTarget.lean` is therefore the
-current corrected capstone.  It uses
+`UnifiedTheory/Audit/KFTOEStoppableFullClosureTarget.lean` was the next
+corrected capstone in the audit sequence.  It uses
 `MicroscopicGate3StoppableDirectRateQuantizedData`, records rate stopping and
 zero absorption, obtains Gate 2 plus the density/operator/recovery part of Gate
 4 from the corrected handoff, and leaves Gate 1, the horizon-estimator and
@@ -83,8 +83,8 @@ Gate 6 now has a finite/audit specialization:
 `gate6_cosmologyBlackHole_closed_of_finiteAudits` fills the dark matter,
 cosmological-constant/graviton, finite information-preservation, holography,
 and Page-curve audit components while leaving initial-condition/cosmological
-measure and CMB/structure/GW compatibility explicit.  The strongest current
-full-closure theorem is
+measure and CMB/structure/GW compatibility explicit.  The strongest
+full-closure theorem at that stage was
 `microscopicTOEClosureTargetsWithQuantizedGate2FiniteGate5Gate6Audits_closed`.
 Gate 4's scheduled-kernel supplier now also fills its own physical
 scheduled-density and kernel/profile-certificate fields, leaving only
@@ -750,15 +750,30 @@ causes descent; the source-to-update/rank connection remains physical input.
 `KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff.lean` proves that this
 single rank-step law is also sufficient for the existing scheduled-chart and
 BDG operator handoff, with recovery permanently established from the explicit
-bound `defectRank 0`. `KFTOEWellFoundedFullClosureTarget.lean` replaces the
-stale capstone route by this finite one. Along that route, Gate 2, Gate 3, and
-Gate 4's density/operator/recovery subpackage are derived; the remaining
+bound `defectRank 0`. `KFTOEWellFoundedFullClosureTarget.lean` records this
+finite conditional audit route. Along that route, Gate 2 and Gate 3 are
+derived, while Gate 4's density/operator/recovery consequences remain
+conditional on separately supplied chart, density, and kernel data. The former
+all-pairs chart interface was ruled out and has been repaired as described
+below; the remaining
 independent targets are physical selection/generalization of the constructed
 repair update, Gate 4's microscopic-to-chart/kernel and horizon bridges, the
 Gate 5 continuum/QFT bridges, and the Gate 6 physical cosmology/evaporation
 bridges. The harmonic Gate 4 theorem remains explicitly
 conditional on residual matching, affine density, and independent BDG kernel
 data.
+`KFCausalCSpecHauptvermutungDiagonalNoGo.lean` found that the former conditional
+Gate 4 interface was not inhabitable on a nonempty event domain: all-pairs count
+concentration included the diagonal, where chart matching gives a unit relative
+error and hence `1 <= countWindow`. The interface is now repaired. Its interval
+laws require `x != x'`, it records `G x x = 0` separately, and
+`global_hauptvermutung_mean_distinct` combines off-diagonal control with the
+exact diagonal to recover the original total distortion theorem. The legacy
+all-pairs no-go remains as a regression, while an explicit two-event/one-chart
+certificate has zero windows and zero distortion. The next Gate 4 step is now
+to construct the scheduled certificate sequence, density law, and analytic
+kernel from the harmonic histories. The independent Gate 2/3 finite-recovery
+theorem is unchanged.
 The harmonic specialization in `KFTOEWellFoundedFullClosureTarget.lean` uses a
 separate target type rather than pretending that the legacy fixed-law Gate 1
 certificate applies to the harmonic law. The vacuum action selects the raw
@@ -775,6 +790,15 @@ parameter records. This closes mathematical existence, not physical emergence
 or observational adequacy. The remaining frontier includes Gate 4 continuum/
 horizon dynamics, Gate 5 constructive QFT, and Gate 6's physically derived
 readout, Hayden--Preskill/late-structure/GW dynamics.
+The QQG conditional-emergence API no longer has built-in `True`-valued
+physical placeholders or a built-in trivial witness. It now separates an
+external six-predicate claim ledger from its evidence, preserves all six
+predicates in the branch conclusion, and proves an impossible ledger cannot be
+satisfied. This repairs assumption accounting; callers can still define
+vacuous predicates, so a physically meaningful fixed ledger and the missing
+evidence must be supplied independently. The strict Gate 6 QQG audit and its
+downstream capstones now carry that fixed ledger and require its evidence; the
+formal implication alone is no longer accepted as closure.
 It also remains to prove that the Gate 4 continuum, Gate 5 QFT, and Gate 6
 scenario are mutually compatible outputs of one shared microscopic model;
 the present theorem is an aggregate conditional ledger, not that unification
@@ -1367,15 +1391,18 @@ target inventory below):
    beyond its proved zero-horizon, fixed-edge, whole-site sector. The sector's
    `rank_step` and finite termination are now theorems; uniqueness and origin
    from the microscopic action are not.
-2. Derive the physical-chart residual identities, density scaling, and BDG
-   analytic kernel from the same harmonic histories. The current Gate 4
-   handoff proves consequences of those inputs; it does not identify the
-   independent kernel package with microscopic growth.
+2. **Interface repair closed:** interval concentration and related estimates
+   now range over distinct pairs, with an exact separately handled diagonal and
+   a concrete two-event zero-distortion witness. Next derive the scheduled
+   certificate sequence, residual identities, density scaling, and BDG analytic
+   kernel from harmonic histories.
 3. Strengthen the finite Gate 1 result into a physical derivation that connects
    the selected microscopic law to the same shared continuum model used by
    Gates 4--6. The positive-radial 140-edge atlas itself is now closed.
-4. Construct the continuum Hilbert/local-QFT limit, genuine Haag--Ruelle and
-   spin-statistics dynamics, and Yang--Mills/Higgs/renormalization lift. The
+4. Derive the new recovered-stage local Hilbert states from the causal quantum
+   measure, then construct the continuum Hilbert/local-QFT limit, genuine
+   Haag--Ruelle and spin-statistics dynamics, and
+   Yang--Mills/Higgs/renormalization lift. The
    finite chamber `ScatteringConstruction` premise is now redundant, but that
    does not supply continuum scattering.
 5. Derive a physically justified causal-history-to-cosmology readout and its

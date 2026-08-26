@@ -806,8 +806,10 @@ import UnifiedTheory.LayerB.PreRegistrationLedger
 -- state, Weyl-perturbation consistency, physical-β-scheme choice,
 -- strong-coupling/reheating coincidence, emergent-GR EFT handoff).
 -- Bridge theorem qqg_cosmology_implies_conditional_einstein delivers
--- QQGProvenConclusions unconditionally and the emergence parts only
--- under explicit QQGEmergenceHypotheses. Zero sorry, zero custom axioms.
+-- QQGProvenConclusions unconditionally and all six externally specified
+-- emergence predicates only under explicit QQGEmergenceHypotheses evidence;
+-- none is fixed by this API to be definitionally True. Predicate semantics and
+-- evidence for a selected ledger remain external. Zero sorry/custom axioms.
 import UnifiedTheory.Cosmology.QQG.Couplings
 import UnifiedTheory.Cosmology.QQG.LargeNSolution
 import UnifiedTheory.Cosmology.QQG.InflatonPotential
@@ -5838,6 +5840,17 @@ import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
 -- explicit site-repair trajectory whose natural Gate 3 rank terminates.
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornSourceDrivenRank
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
+-- Gate 4 diagonal regression and repair: the legacy all-pairs concentration
+-- law forces countWindow >= 1, while the current certificate restricts interval
+-- laws to distinct pairs and handles G x x = 0 separately.  A restricted
+-- Karcher theorem preserves total distortion, and an explicit Fin 2 certificate
+-- has zero windows and zero distortion.
+import UnifiedTheory.Audit.KFCausalCSpecHauptvermutungDiagonalNoGo
+-- Finite Gate 5 packaging seam: a nonempty recovered CSpec stage equipped
+-- with independently supplied local 16-dimensional states has canonical
+-- incidence transport alongside pointwise Born equality and normalized
+-- computational-basis probabilities; state-transport compatibility is open.
+import UnifiedTheory.Audit.KFCausalCSpecQFTSMInterface
 -- Lift the normalization contradiction to the legacy named Gate 3 target and
 -- its scheduled-kernel Gate 4 wrapper.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3SupplierNormalizedNoGo

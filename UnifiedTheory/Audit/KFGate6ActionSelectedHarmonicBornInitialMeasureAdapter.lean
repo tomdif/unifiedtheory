@@ -39,6 +39,7 @@ open UnifiedTheory.Audit.KFCausalSetIntrinsicPairCouplingSelection
 open UnifiedTheory.Audit.KFCausalSetCompleteChiralBornTrajectoryMeasure
 open UnifiedTheory.Audit.KFCausalSetHarmonicBornTrajectoryMeasure
 open UnifiedTheory.Audit.KFTOESevenGateAttack
+open UnifiedTheory.Cosmology.QQG
 
 /-! ## 1. The exact measure-theoretic certificate that is now redundant -/
 
@@ -87,7 +88,8 @@ theorem gate6_actionSelectedHarmonicBornCausalGrowthMeasureCertificate_closed :
 
 /-- The strongest named Gate-6 target specialized so that its initial-measure
 slot means exactly the causal-growth certificate above.  The physical
-Hayden--Preskill and late-cosmology obligations remain unchanged. -/
+Hayden--Preskill and late-cosmology obligations remain unchanged, and evidence
+for a fixed QQG claims ledger remains an explicit closure hypothesis. -/
 def gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
     (lateStructureFormation gravitationalWaveCompatibility : Prop) :
     Gate6NamedCosmologyBlackHoleBridgeTargets :=
@@ -96,40 +98,46 @@ def gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
     lateStructureFormation gravitationalWaveCompatibility
 
 /-- In the narrowly specialized target, callers no longer need to supply a
-bare measure-existence premise. -/
+bare measure-existence premise.  They must still supply evidence for the fixed
+QQG claims ledger. -/
 theorem gate6_namedBridge_closed_of_actionSelectedHarmonicBornCausalGrowthMeasure
+    (claims : QQGEmergenceClaims)
     (S : UnifiedTheory.Cosmology.QQG.QQGScenario)
     {lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
-    Gate6NamedCosmologyBlackHoleBridgeClosed S
+    Gate6NamedCosmologyBlackHoleBridgeClosed claims S
       (gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
         lateStructureFormation gravitationalWaveCompatibility) := by
   exact
     gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
-      S
+      claims S
       gate6_actionSelectedHarmonicBornCausalGrowthMeasureCertificate_closed
-      hHP hlate hgw
+      hQQGEmergence hHP hlate hgw
 
 /-- The corresponding strict Gate-6 closure theorem.  Only the now-proved
-causal-growth measure certificate has disappeared from the hypotheses. -/
+causal-growth measure certificate has disappeared from the hypotheses; QQG
+emergence evidence remains explicit. -/
 theorem gate6_cosmologyBlackHole_closed_of_actionSelectedHarmonicBornCausalGrowthMeasure
+    (claims : QQGEmergenceClaims)
     (S : UnifiedTheory.Cosmology.QQG.QQGScenario)
     {lateStructureFormation gravitationalWaveCompatibility : Prop}
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     Gate6CosmologyBlackHoleClosed
-      (gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S
+      (gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge claims S
         (gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
-    gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge S
+    gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge claims S
       (gate6NamedTargetsOfActionSelectedHarmonicBornCausalGrowthMeasure
         lateStructureFormation gravitationalWaveCompatibility)
       (gate6_namedBridge_closed_of_actionSelectedHarmonicBornCausalGrowthMeasure
-        S hHP hlate hgw)
+        claims S hQQGEmergence hHP hlate hgw)
 
 /-! ## 3. The remaining physical type bridge -/
 

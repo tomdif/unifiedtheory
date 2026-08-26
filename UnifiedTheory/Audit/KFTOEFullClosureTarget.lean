@@ -1222,8 +1222,8 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
 /-- Full-TOE target using the stricter Gate 6 audit envelope.  It harvests the
 finite Gate 6 audits, inflation, Hayden-Preskill, AMPS, QQG conditional
 cosmology, and physical-information-limit audits, while leaving the remaining
-microscopic scrambling/decoupling/recovery evaporation dynamics explicit as a
-genuine physics input. -/
+QQG emergence evidence and microscopic scrambling/decoupling/recovery
+evaporation dynamics explicit as genuine physics inputs. -/
 noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1255,7 +1255,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
     (fB : (j : coverB) → probeB j → site)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     {AQFT : HorizonAQFTModel} (phi : AQFT.Excitation)
     (couplingSelectedFromOrderData : Prop)
     (constructiveHilbertQFTLimit qftSpinStatisticsLift
@@ -1284,7 +1284,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
       qftGaugeRenormalizationLift
   gate6Targets :=
     gate6CosmologyBlackHoleTargetsOfFiniteAuditsInflationQQGAndInformationEnvelope
-      S initialConditionOrCosmologicalMeasure
+      claims S initialConditionOrCosmologicalMeasure
       microscopicBlackHoleEvaporationDynamics
       lateStructureGravitationalWaveCompatibility
   gate7Targets := gate7PreRegistrationLedgerTargets
@@ -1293,7 +1293,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
 Gate 6 theorem, this also harvests the Gate 5 Lorentzian-Wightman/chamber
 mass-gap audits plus Hayden-Preskill, AMPS, QQG, and physical-information-limit
 audits, and keeps microscopic evaporation dynamics as an explicit remaining
-input. -/
+input alongside evidence for the fixed QQG claims ledger. -/
 theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1327,7 +1327,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
     {couplingSelectedFromOrderData : Prop}
     {constructiveHilbertQFTLimit qftSpinStatisticsLift
@@ -1347,11 +1347,12 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
     (hSpinStatistics : qftSpinStatisticsLift)
     (hGaugeRenorm : qftGaugeRenormalizationLift)
     (hinitial : initialConditionOrCosmologicalMeasure)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hevap : microscopicBlackHoleEvaporationDynamics)
     (hlate : lateStructureGravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         constructiveHilbertQFTLimit qftSpinStatisticsLift
         qftGaugeRenormalizationLift initialConditionOrCosmologicalMeasure
         microscopicBlackHoleEvaporationDynamics
@@ -1368,7 +1369,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAud
       gate5_qftStandardModelIR_closed_of_finiteCarrierSMAuditsWightmanAndMassGap
         fA fB hA hB F K hHilbert hSpinStatistics hGaugeRenorm,
       gate6_cosmologyBlackHole_closed_of_finiteAuditsInflationQQGAndInformationEnvelope
-        S hinitial hevap hlate,
+        claims S hinitial hQQGEmergence hevap hlate,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 /-- Strict full-closure specialization in which the Gate 5 continuum
@@ -1409,7 +1410,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5Octon
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (T : Gate5OctonionS6ComplexGeometryBridgeTargets)
     {AQFT : HorizonAQFTModel} {alpha : ℝ} {phi : AQFT.Excitation}
     {couplingSelectedFromOrderData : Prop}
@@ -1429,21 +1430,22 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5Octon
     (hSpinStatistics : qftSpinStatisticsLift)
     (hGaugeRenorm : qftGaugeRenormalizationLift)
     (hinitial : initialConditionOrCosmologicalMeasure)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hevap : microscopicBlackHoleEvaporationDynamics)
     (hlate : lateStructureGravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         T.complexGeometryFeedsConstructiveQFTLimit qftSpinStatisticsLift
         qftGaugeRenormalizationLift initialConditionOrCosmologicalMeasure
         microscopicBlackHoleEvaporationDynamics
         lateStructureGravitationalWaveCompatibility) := by
   exact
     microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
-      G fA fB hA hB F K Hest arakiFlux S
+      G fA fB hA hB F K Hest arakiFlux claims S
       hSum hcoupling hAraki hFlux hArea hRay hBH hS
       hGate5Bridge.complexGeometryFeedsConstructiveQFTLimit
-      hSpinStatistics hGaugeRenorm hinitial hevap hlate
+      hSpinStatistics hGaugeRenorm hinitial hQQGEmergence hevap hlate
 
 /-- Strict full-closure specialization in which every remaining Gate 5 lift is
 carried by a named bridge record: octonion/S6 for the Hilbert/QFT slot,
@@ -1484,7 +1486,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1506,11 +1508,12 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : initialConditionOrCosmologicalMeasure)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hevap : microscopicBlackHoleEvaporationDynamics)
     (hlate : lateStructureGravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert.complexGeometryFeedsConstructiveQFTLimit
         TSpin.qftSpinStatisticsLift
         TGauge.qftGaugeRenormalizationLift initialConditionOrCosmologicalMeasure
@@ -1518,12 +1521,12 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
         lateStructureGravitationalWaveCompatibility) := by
   exact
     microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiGate5SMAuditsGate6QQGInformationEnvelope_closed
-      G fA fB hA hB F K Hest arakiFlux S
+      G fA fB hA hB F K Hest arakiFlux claims S
       hSum hcoupling hAraki hFlux hArea hRay hBH hS
       hHilbertBridge.complexGeometryFeedsConstructiveQFTLimit
       hSpinBridge.qftSpinStatisticsLift
       hGaugeBridge.qftGaugeRenormalizationLift
-      hinitial hevap hlate
+      hinitial hQQGEmergence hevap hlate
 
 /-- Full-TOE target whose Gate 5 and Gate 6 tails are both represented by named
 bridge records.  Compared with the raw strict envelope, the Gate 6 component
@@ -1560,7 +1563,7 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
     (fB : (j : coverB) → probeB j → site)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     {AQFT : HorizonAQFTModel} (phi : AQFT.Excitation)
     (couplingSelectedFromOrderData : Prop)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
@@ -1587,15 +1590,16 @@ noncomputable def microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorAraki
       fA fB F K THilbert.complexGeometryFeedsConstructiveQFTLimit
       TSpin.qftSpinStatisticsLift TGauge.qftGaugeRenormalizationLift
   gate6Targets :=
-    gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge S TGate6
+    gate6CosmologyBlackHoleTargetsOfNamedCosmologyBlackHoleBridge
+      claims S TGate6
   gate7Targets := gate7PreRegistrationLedgerTargets
 
 /-- Strict full-closure specialization in which every remaining Gate 5 lift
 and every remaining Gate 6 cosmology/black-hole lift is carried by a named
 bridge record.  This is the current sharpest formal TOE target: the remaining
 work is now divided into named Hilbert/QFT, spin-statistics, gauge
-renormalization, cosmological-measure, evaporation, and late-structure/GW
-bridge obligations. -/
+renormalization, QQG-emergence, cosmological-measure, evaporation, and
+late-structure/GW bridge obligations. -/
 theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
     {η ι X Y chart : Type*} [Fintype η] [Fintype ι]
     [AddCommGroup Y] [Module ℝ Y] [Fintype chart] [Nonempty chart]
@@ -1631,7 +1635,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1650,10 +1654,11 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
-    (hGate6Bridge : Gate6NamedCosmologyBlackHoleBridgeClosed S TGate6) :
+    (hGate6Bridge :
+      Gate6NamedCosmologyBlackHoleBridgeClosed claims S TGate6) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge TGate6) := by
   exact
     ⟨gate1_microscopicLaw_closed_of_signedFiberSums_and_orderCoupling
@@ -1668,7 +1673,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
         fA fB hA hB F K Scat THilbert TSpin TGauge
         hHilbertBridge hSpinBridge hGaugeBridge,
       gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
-        S TGate6 hGate6Bridge,
+        claims S TGate6 hGate6Bridge,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 /-- Strict full-closure specialization whose Gate 6 evaporation tail is
@@ -1711,7 +1716,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1732,26 +1737,27 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
         cosmologicalMeasureOrInitialState
         lateStructureFormation gravitationalWaveCompatibility)
       hSum hcoupling hAraki hFlux hArea hRay hBH hS
       hHilbertBridge hSpinBridge hGaugeBridge
       (gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
-        S hinitial hHP hlate hgw)
+        claims S hinitial hQQGEmergence hHP hlate hgw)
 
 /-- Latest Gate-by-gate capstone: Gate 4's remaining Araki/Raychaudhuri/BH
 horizon assumptions are now supplied by one named Gate 4 bridge, Gate 5's
@@ -1792,7 +1798,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGa
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1809,19 +1815,20 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGa
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       hSum hcoupling
       hGate4Bridge.estimatorArakiFluxIdentification
       hGate4Bridge.arakiRelativeEntropyFlux
@@ -1830,7 +1837,7 @@ theorem microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGa
       hGate4Bridge.bekensteinHawkingEntropyArea
       hGate4Bridge.nonzeroExcitation
       hHilbertBridge hSpinBridge hGaugeBridge
-      hinitial hHP hlate hgw
+      hinitial hQQGEmergence hHP hlate hgw
 
 /-- Named-bridge capstone for every currently reduced gate: Gate 1 is supplied
 by the named physical-selection bridge, Gate 4 by the named Araki-horizon
@@ -1872,7 +1879,7 @@ theorem microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gat
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1889,22 +1896,23 @@ theorem microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gat
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       hGate1.signedAtlasCertificate.signedFiberSums hGate1.couplingSelected
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
-      hinitial hHP hlate hgw
+      hinitial hQQGEmergence hHP hlate hgw
 
 /-- Explicit Gate-1-witness-table capstone.  This is the current strongest
 top-level route with Gate 1 reduced to a concrete finite output schema: a
@@ -1946,7 +1954,7 @@ theorem microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedG
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -1963,23 +1971,24 @@ theorem microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedG
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       (gate1_physicalSelectionBridge_closed_of_signedFiberWitnessTable_and_orderCoupling
         W hcoupling)
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
-      hinitial hHP hlate hgw
+      hinitial hQQGEmergence hHP hlate hgw
 
 /-- Corrected mixed Gate-1 capstone: the finite chiral-atlas input may use
 either real or imaginary signed transition-fiber noncancellation at each
@@ -2020,7 +2029,7 @@ theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNam
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -2035,10 +2044,11 @@ theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNam
     (hHilbertBridge : Gate5OctonionS6ComplexGeometryBridgeClosed THilbert)
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
-    (hGate6Bridge : Gate6NamedCosmologyBlackHoleBridgeClosed S TGate6) :
+    (hGate6Bridge :
+      Gate6NamedCosmologyBlackHoleBridgeClosed claims S TGate6) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge TGate6) := by
   exact
     ⟨gate1_microscopicLaw_closed_of_complexSignedFiberSums_and_orderCoupling
@@ -2053,7 +2063,7 @@ theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNam
         fA fB hA hB F K Scat THilbert TSpin TGauge
         hHilbertBridge hSpinBridge hGaugeBridge,
       gate6_cosmologyBlackHole_closed_of_namedCosmologyBlackHoleBridge
-        S TGate6 hGate6Bridge,
+        claims S TGate6 hGate6Bridge,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
 
 /-- Hayden-Preskill-specialized version of the corrected mixed Gate-1
@@ -2093,7 +2103,7 @@ theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNam
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -2110,25 +2120,26 @@ theorem microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNam
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
         cosmologicalMeasureOrInitialState
         lateStructureFormation gravitationalWaveCompatibility)
       hSum hcoupling hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
       (gate6_namedCosmologyBlackHoleBridge_closed_of_haydenPreskillMicroscopicEvaporation
-        S hinitial hHP hlate hgw)
+        claims S hinitial hQQGEmergence hHP hlate hgw)
 
 /-- Named-bridge version of the corrected mixed Gate-1 capstone. -/
 theorem microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
@@ -2166,7 +2177,7 @@ theorem microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedG
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -2183,22 +2194,23 @@ theorem microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedG
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithComplexFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       hGate1.complexSignedFiberSums hGate1.couplingSelected
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
-      hinitial hHP hlate hgw
+      hinitial hQQGEmergence hHP hlate hgw
 
 /-- Explicit corrected Gate-1-witness-table capstone.  This is the finite
 endpoint matched to the current search result: every complete-chiral atlas
@@ -2238,7 +2250,7 @@ theorem microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizo
     (hB : JointlySurjective probeB fB)
     (F K : ProjectiveQubitCarrierField site)
     (Hest : HorizonHitSourceEstimator η) (arakiFlux : ℝ)
-    (S : QQGScenario)
+    (claims : QQGEmergenceClaims) (S : QQGScenario)
     (Scat : UnifiedTheory.LayerB.CL2_LorentzianWightmanDirect.ScatteringConstruction C)
     (THilbert : Gate5OctonionS6ComplexGeometryBridgeTargets)
     (TSpin : Gate5HaagRuelleSpinStatisticsBridgeTargets)
@@ -2255,22 +2267,23 @@ theorem microscopicTOEClosureTargetsWithComplexGate1WitnessTableGate4ArakiHorizo
     (hSpinBridge : Gate5HaagRuelleSpinStatisticsBridgeClosed Scat TSpin)
     (hGaugeBridge : Gate5YangMillsHiggsRenormalizationBridgeClosed TGauge)
     (hinitial : cosmologicalMeasureOrInitialState)
+    (hQQGEmergence : QQGEmergenceHypotheses claims)
     (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
     (hlate : lateStructureFormation)
     (hgw : gravitationalWaveCompatibility) :
     TOEClosureClosed
       (microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges
-        G fA fB F K Hest arakiFlux S phi couplingSelectedFromOrderData
+        G fA fB F K Hest arakiFlux claims S phi couplingSelectedFromOrderData
         THilbert TSpin TGauge
         (gate6NamedCosmologyBlackHoleBridgeTargetsOfHaydenPreskillMicroscopicEvaporation
           cosmologicalMeasureOrInitialState
           lateStructureFormation gravitationalWaveCompatibility)) := by
   exact
     microscopicTOEClosureTargetsWithComplexNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed
-      G fA fB hA hB F K Hest arakiFlux S Scat THilbert TSpin TGauge
+      G fA fB hA hB F K Hest arakiFlux claims S Scat THilbert TSpin TGauge
       (gate1_complexPhysicalSelectionBridge_closed_of_complexWitnessTable_and_orderCoupling
         W hcoupling)
       hGate4Bridge hHilbertBridge hSpinBridge hGaugeBridge
-      hinitial hHP hlate hgw
+      hinitial hQQGEmergence hHP hlate hgw
 
 end UnifiedTheory.Audit.KFTOEFullClosureTarget

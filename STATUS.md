@@ -24,7 +24,13 @@
 > chart limits, and density divergence without the legacy certificate.  Those
 > Gate 4 conclusions remain relative to supplied physical-chart certificates,
 > residual matching, a positive affine density schedule, and the full BDG
-> kernel/profile analytic package.
+> kernel/profile analytic package. The diagonal audit found that the former
+> all-pairs chart certificate could not have a vanishing count window on a
+> nonempty event domain. That API is now repaired: interval laws require
+> distinct pairs, the diagonal geometry is exact separately, and the same
+> total distortion conclusion follows. A concrete two-event zero-distortion
+> certificate proves the repaired interface is inhabited; physical derivation
+> of the scheduled certificate sequence remains open.
 > The capstone's Gate 2 field is the finite quantized residual/counter-zero
 > equivalence; full physical Hauptvermutung semantics remain open.
 >
@@ -115,12 +121,22 @@
 > needs transversality or another dynamical condition.
 > `KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff.lean` now transports
 > that finite theorem into Gate 4 with the explicit deadline `defectRank 0`,
-> and proves the scheduled-density, BDG operator, chart-distortion, and
-> recovered-stage outputs. `KFTOEWellFoundedFullClosureTarget.lean` makes this
-> the viable ledger route. The harmonic handoff additionally remains
+> and proves conditional scheduled-density, BDG operator, chart-distortion,
+> and recovered-stage outputs. `KFTOEWellFoundedFullClosureTarget.lean` records
+> this conditional audit route. The harmonic handoff additionally remains
 > conditional on residual-to-chart matching, an affine density schedule, and a
 > BDG analytic kernel package not yet derived from harmonic histories. The
-> unresolved inputs are now stated without the stale Gate 3 convergence
+> new `KFCausalCSpecHauptvermutungDiagonalNoGo.lean` first isolates the legacy
+> contradiction: diagonal chart matching forces count zero, all-pairs
+> concentration forces `1 <= countWindow`, and a vanishing window is therefore
+> impossible. The current certificate is now repaired to quantify interval
+> laws over distinct pairs and record `G x x = 0` separately. A new restricted
+> Karcher theorem plus exact-diagonal wrapper preserves the total distortion
+> conclusion, and an explicit `Fin 2`/one-chart witness has zero windows and
+> zero distortion. Gate 2 and Gate 3 recovery are unaffected. Gate 4 remains a
+> conditional construction because harmonic histories still do not derive its
+> chart sequence, density law, kernel package, or horizon dynamics.
+> The unresolved inputs are now stated without the stale Gate 3 convergence
 > package: physical selection/generalization of the constructed repair update;
 > the Gate 4 continuum chart/kernel/horizon bridges; the Gate 5 continuum QFT
 > lifts; and the Gate 6 cosmological emergence, dynamics, and observational
@@ -135,11 +151,27 @@
 > the actual harmonic protected-source Gate 3/4 handoff rather than the generic
 > well-founded analogue. Gate 6's bare causal-trajectory-measure hypothesis is
 > removed by the proved infinite physical trajectory measure.
+> `KFCausalCSpecQFTSMInterface.lean` now packages a nonempty recovered CSpec
+> stage with independently supplied normalized single-generation states and
+> proves canonical incidence transport alongside exact Born weights and
+> normalization in dimension 16. It neither derives the states from recovery
+> or microscopic amplitudes nor proves that incidence transport acts on them;
+> it also supplies no continuum QFT limit.
 > `KFGate6HarmonicBornBinaryQQGReadout.lean` additionally constructs a concrete
 > nonconstant measurable readout to two positive-parameter QQG records and
 > proves their induced masses are exactly `(1/2, 1/2)`. This is a typed
 > existence result, not a derivation of physical cosmological emergence or a
 > dynamical bridge.
+> The QQG emergence API has also been hardened: all six physical conditions are
+> external predicates carried into the branch conclusion, with explicit
+> evidence required for the selected ledger. The former `True` placeholders
+> and `trivialWitness` are gone, and an impossible ledger is proved
+> unsatisfiable. This prevents a built-in witness but cannot prevent a caller
+> from assigning vacuous meanings to externally chosen predicates; physical
+> semantics and evidence remain obligations. The strict Gate 6 audit and all
+> downstream capstones now require a fixed ledger and its evidence explicitly,
+> instead of counting a universally conditional implication as a completed
+> cosmology mechanism.
 > Nor is there yet a shared-model theorem identifying the Gate 4 continuum,
 > Gate 5 QFT, and Gate 6 scenario as outputs of one microscopic dynamics.
 > `KFGate5ChamberScatteringPremiseRemoval.lean` removes only a redundant finite
