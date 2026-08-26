@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "snapshot_date": "2026-08-26",
+  "status": "preregistered_no_results",
+  "scope": "Gate 4 geometry/BDG, Gate 5 finite quantum-to-local-QFT, Gate 6 QQG/cosmology, and their common microscopic provenance",
+  "epistemic_rule": "Lean verifies mathematical consequences of definitions and hypotheses. Numerical runs test finite implementations. Observations and experiments are required for claims about nature.",
+  "readout_freeze_rule": "A physical verdict is valid only when the microscopic law, coarse-graining/readout, estimator, cuts, tolerances, and data release were fixed before opening the comparison data.",
+  "attacks": [
+    {
+      "id": "A4-HARMONIC-CERTIFICATE-BDG",
+      "gate": 4,
+      "claim_class": "conditional_bridge_plus_numerical_convergence_test",
+      "formal_source": [
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornSourceDrivenRank.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornWellFoundedGate4Handoff.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecBDG4DCanonicalZeroKernel.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicHistoryGate4DerivedInputs.lean"
+      ],
+      "locked_claim": "The source-driven finite defect process reaches exact recovery by its initial natural-rank budget; a physically identified chart sequence must then have zero matched residual distortion, increasing density, and a convergent scheduled BDG observable.",
+      "acceptance_rule": "For every preregistered seed, all discrete defect counters and matched chart residuals are exactly zero at every sampled n >= recoveryBound; density follows the frozen schedule; over at least eight frozen tail densities the BDG error is nonincreasing and the final normalized error is <= 1e-6.",
+      "falsification_rule": "Any post-bound nonzero counter/residual, any schedule violation, or failure of the locked BDG tail criterion rejects that concrete Gate-4 supplier. It does not refute causal-set gravity in general.",
+      "evidence_required": [
+        "source code commit",
+        "seed list",
+        "raw per-stage counters and chart residuals",
+        "density and BDG estimates with numerical precision",
+        "reproduction environment"
+      ],
+      "result": null,
+      "verdict": "pending"
+    },
+    {
+      "id": "A5-CAUSAL-STATE-LOCAL-NET",
+      "gate": 5,
+      "claim_class": "finite_formal_bridge_plus_continuum_target",
+      "formal_source": [
+        "UnifiedTheory/Audit/KFCausalCSpecQFTSMInterface.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornLocalNet.lean",
+        "UnifiedTheory/Audit/KFFiniteProbeCode.lean"
+      ],
+      "locked_claim": "A local quantum state and finite isotonic net constructed from the causal Born data must preserve positivity, unit normalization, incidence transport compatibility, and the Born rule before any continuum-QFT claim is made.",
+      "acceptance_rule": "All finite states are positive and normalized; every registered inclusion satisfies exact isotony; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Continuum acceptance additionally requires a separately frozen scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
+      "falsification_rule": "A positivity, normalization, isotony, or Born mismatch rejects the finite construction. Absence of the separately specified continuum limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
+      "evidence_required": [
+        "finite carrier and region definitions",
+        "state matrices or amplitudes",
+        "inclusion maps",
+        "raw Born comparisons",
+        "continuum scaling prescription when claimed"
+      ],
+      "result": null,
+      "verdict": "pending"
+    },
+    {
+      "id": "A6-QQG-R001-AND-EMERGENCE",
+      "gate": 6,
+      "claim_class": "conditional_falsifiable_physical_prediction",
+      "formal_source": [
+        "UnifiedTheory/Cosmology/QQG/StrongCouplingPrediction.lean",
+        "UnifiedTheory/Cosmology/QQG/EmergenceHypotheses.lean",
+        "UnifiedTheory/Cosmology/QQG/Bridge.lean",
+        "UnifiedTheory/Audit/KFGate6QQGFixedSemanticClaimsLedger.lean"
+      ],
+      "locked_claim": "For positive QQG parameters, r_predicted >= 0.01 exactly when lambda_tH^2 N_e^4 <= 2(800/3)^3. Treating this as a prediction of nature additionally requires evidence for the six fixed emergence claims and a preregistered physical parameter/readout map.",
+      "acceptance_rule": "First establish the frozen physical parameter/readout map and all six emergence-evidence records. Then compare the corresponding tensor-to-scalar prediction with the named blinded CMB likelihood and its preregistered confidence construction.",
+      "falsification_rule": "If the frozen physical bridge selects the perturbative side of the equivalence while the preregistered observational analysis excludes r >= 0.01 at its locked confidence level, that QQG branch fails. Without the physical bridge, the result is inapplicable rather than confirmed.",
+      "evidence_required": [
+        "fixed QQG semantics for all six claims",
+        "theoretical or experimental evidence record for every claim",
+        "parameter/readout derivation",
+        "named CMB likelihood and release hash",
+        "blinded analysis code and covariance"
+      ],
+      "result": null,
+      "verdict": "pending"
+    },
+    {
+      "id": "A456-SHARED-HARMONIC-PROVENANCE",
+      "gate": "4-6",
+      "claim_class": "formal_joint-law_consistency_test",
+      "formal_source": [
+        "UnifiedTheory/Audit/KFTOESharedHarmonicMicroscopicModel.lean",
+        "UnifiedTheory/Audit/KFTOEAllAttacksCapstone.lean"
+      ],
+      "locked_claim": "Gate-4, Gate-5, and Gate-6 readouts advertised as one theory must be measurable functions of the identical harmonic causal history law, and their separately computed laws must equal the three marginals of one joint pushforward.",
+      "acceptance_rule": "The Lean joint-law theorem builds without sorry or custom axioms. In every numerical reproduction, history identifiers, chirality, coupling schedule, seeds, and cuts are identical across all three readouts, and each empirical marginal agrees with the corresponding joint marginal to total-variation error <= 1e-12.",
+      "falsification_rule": "Different source ensembles, post-hoc readouts, or a marginal mismatch reject the advertised shared-model instance. Formal marginal consistency alone does not validate any readout's physical meaning.",
+      "evidence_required": [
+        "single source-law identifier",
+        "joint event table",
+        "three readout versions",
+        "marginal comparison report",
+        "source and data hashes"
+      ],
+      "result": null,
+      "verdict": "pending"
+    }
+  ]
+}

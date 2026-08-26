@@ -5840,6 +5840,12 @@ import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
 -- explicit site-repair trajectory whose natural Gate 3 rank terminates.
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornSourceDrivenRank
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
+-- Strongest constructive Gate-4 attack: a genuine active-region `f4D` bound,
+-- an explicit zero-profile consistency benchmark with a proved nonzero-target
+-- anti-vacuity failure, and a history-derived density/certificate sequence
+-- reducing the unresolved geometry to one typed continuum chart frontier.
+import UnifiedTheory.Audit.KFCausalCSpecBDG4DCanonicalZeroKernel
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicHistoryGate4DerivedInputs
 -- Gate 4 diagonal regression and repair: the legacy all-pairs concentration
 -- law forces countWindow >= 1, while the current certificate restricts interval
 -- laws to distinct pairs and handles G x x = 0 separately.  A restricted
@@ -5851,6 +5857,14 @@ import UnifiedTheory.Audit.KFCausalCSpecHauptvermutungDiagonalNoGo
 -- incidence transport alongside pointwise Born equality and normalized
 -- computational-basis probabilities; state-transport compatibility is open.
 import UnifiedTheory.Audit.KFCausalCSpecQFTSMInterface
+-- The finite Gate-5 state is now derived from harmonic Born readout weights;
+-- its sitewise matrix algebras form an isotonic net with a normalized positive
+-- state and exact Born compatibility.  The general finite-probe code adds
+-- noise-robust Hamming/real-margin recovery, cutoff, adaptive, and Pauli
+-- tomography theorems without assuming a prime-based physical spectrum.
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
+import UnifiedTheory.Audit.KFFiniteProbeCode
+import UnifiedTheory.Audit.KFFiniteProbeAdaptive
 -- Lift the normalization contradiction to the legacy named Gate 3 target and
 -- its scheduled-kernel Gate 4 wrapper.
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3SupplierNormalizedNoGo
@@ -5870,4 +5884,19 @@ import UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapte
 -- Concrete nonconstant measurable rank-one readout into a binary positive-QQG
 -- sector, together with its induced admissible cosmological initial measure.
 import UnifiedTheory.Audit.KFGate6HarmonicBornBinaryQQGReadout
+-- Fixed numerical semantics for all six QQG emergence claims, with typed
+-- preregistrations, external result tokens, mutually exclusive pass/refute
+-- predicates, and exact structural predictions from the binary readout.  No
+-- empirical result or emergence witness is manufactured by this module.
+import UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
+-- Provenance lock for the remaining physics gates: any Gate-4, Gate-5, and
+-- Gate-6 readouts advertised as one model are pushed forward from the same
+-- harmonic Born history law.  Their three laws are proved to be the exact
+-- marginals of one joint probability measure; physical adequacy of the
+-- readouts remains subject to the frozen empirical attack ledger.
+import UnifiedTheory.Audit.KFTOESharedHarmonicMicroscopicModel
+-- Integrates exact Gate-4 recovery with the causal Born finite Gate-5 net and
+-- wraps the harmonic TOE ledger in fixed QQG semantics plus an identified
+-- nonzero BDG target.  All continuum and empirical evidence stays explicit.
+import UnifiedTheory.Audit.KFTOEAllAttacksCapstone
 import UnifiedTheory.LayerC.ContextualFraction

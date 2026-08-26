@@ -1,5 +1,23 @@
 # Framework Status (August 2026)
 
+> **Gate 4--6 all-attacks update (2026-08-26):** Gate 4 now derives its
+> density schedule and residual windows from the source-driven harmonic
+> history and reduces the true continuum input to a chart frontier.  A genuine
+> `f4D` bound plus zero-profile/two-event benchmark proves consistency, while
+> `HasNonzeroBDG4DTarget` prevents that benchmark from counting as the physical
+> nonzero operator.  Gate 5 now derives canonical nonnegative 16-component
+> local states from harmonic Born weights, builds an isotonic finite local
+> star-algebra net, and proves positivity, normalization, and exact Born
+> readout.  Gate 6 now has fixed numerical QQG semantics, typed external result
+> records, disjoint pass/refute rules, and exact structural binary predictions,
+> but no fabricated evidence.  A joint-pushforward theorem locks Gate-4/5/6
+> readouts to one harmonic trajectory law.  The local `prime-cymatics` project
+> supplies the design for a shared robust finite-probe code layer; this is a
+> tomography/certification connection, not a prime-based physical mechanism.
+> Full physical closure still requires the identified nonzero BDG operator,
+> continuum QFT/SM, physical readouts, QQG/black-hole/late-cosmology evidence,
+> and preregistered observations.
+
 > **Gate 3 normalization and stopping correction (2026-08-25):**
 > `KFCausalCSpecMicroscopicGate3NormalizedWeightNoGo.lean` proves that the
 > weighted expectation of `centeredSource` is zero for normalized finite

@@ -3,7 +3,7 @@
 Status: working plan for closing the repo's remaining theory-of-everything
 gaps.  This is not a claim that the gaps are closed.
 
-Date: 2026-08-25
+Date: 2026-08-26
 
 ## Scope Rule
 
@@ -19,6 +19,45 @@ falsifiable prediction
 
 The repo is strongest when each public claim points to a theorem, script,
 dataset, or explicitly named assumption.
+
+## 2026-08-26 Gate 4--6 All-Attacks Pass
+
+The current attack pass makes five advances without relabelling formal
+consistency as empirical proof:
+
+- Gate 4 derives the affine density schedule from post-root event count,
+  derives nonnegative matched residuals from the explicit source-driven
+  history, constructs the repaired chart-certificate sequence from a minimal
+  continuum-chart frontier, and proves a genuine unit-rectangle `f4D` kernel
+  bound.  The explicit zero-profile kernel and two-event chart are consistency
+  benchmarks only; `HasNonzeroBDG4DTarget` proves the zero profile fails the
+  nonzero-target diagnostic required by the physical capstone.
+- Gate 5 removes the independent finite `localState` input.  A typed causal
+  readout of the action-selected harmonic Born law is square-root lifted to a
+  canonical nonnegative 16-component substrate state.  The resulting finite
+  local star-algebra net is isotonic, its state is normalized and positive,
+  and its computational effects recover the causal weights exactly.  The
+  continuum AQFT/Standard-Model completion remains a fixed claim ledger with
+  no built-in witness.
+- Gate 6 fixes numerical meanings for all six former QQG emergence predicates,
+  separates preregistration from external result tokens, proves pass and
+  strict-refutation predicates incompatible, and derives exact structural
+  binary-readout predictions.  No result or empirical-evidence inhabitant is
+  supplied.
+- `KFTOESharedHarmonicMicroscopicModel.lean` constructs one joint pushforward
+  of Gate-4/5/6 readouts from the same harmonic trajectory law and proves the
+  three advertised laws are its exact marginals.
+- The `prime-cymatics` comparison motivates a general finite-probe code layer:
+  minimum distance, adversarial Hamming correction, real-valued margin
+  recovery, finite cutoffs, and Born-tomography instantiation.  This strengthens
+  measurement certification; it does not make prime resonances a fundamental
+  physical mechanism without an additional spectral/dynamical map.
+
+The physical endpoint remains conditional on a nonzero identified BDG target,
+continuum Gate-5 construction, fixed-semantic QQG evidence, black-hole
+dynamics, late structure formation, gravitational-wave compatibility, and
+future comparisons with preregistered observations.  The frozen no-results
+protocol is `TOE_GATE456_ATTACK_LEDGER.json`.
 
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` now mirrors this plan as a
 Lean-facing attack ledger.  It records explicit closure targets for all seven
