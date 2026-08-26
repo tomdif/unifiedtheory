@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "snapshot_date": "2026-08-26",
-  "status": "preregistered_no_results",
-  "scope": "Gate 4 geometry/BDG, Gate 5 finite quantum-to-local-QFT, Gate 6 QQG/cosmology, and their common microscopic provenance",
+  "status": "draft_protocol_no_results_no_freeze_provenance",
+  "scope": "Gate 4 geometry/BDG, Gate 5 finite quantum-to-local-QFT, Gate 6 QQG/cosmology and black-hole dynamics, Gate 7 preregistration/result integrity, and their common microscopic provenance",
   "epistemic_rule": "Lean verifies mathematical consequences of definitions and hypotheses. Numerical runs test finite implementations. Observations and experiments are required for claims about nature.",
   "readout_freeze_rule": "A physical verdict is valid only when the microscopic law, coarse-graining/readout, estimator, cuts, tolerances, and data release were fixed before opening the comparison data.",
   "attacks": [
@@ -14,16 +14,19 @@
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornSourceDrivenRank.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornWellFoundedGate4Handoff.lean",
         "UnifiedTheory/Audit/KFCausalCSpecBDG4DCanonicalZeroKernel.lean",
-        "UnifiedTheory/Audit/KFCausalCSpecHarmonicHistoryGate4DerivedInputs.lean"
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicHistoryGate4DerivedInputs.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornNonzeroBDGFrontier.lean"
       ],
-      "locked_claim": "The source-driven finite defect process reaches exact recovery by its initial natural-rank budget; a physically identified chart sequence must then have zero matched residual distortion, increasing density, and a convergent scheduled BDG observable.",
-      "acceptance_rule": "For every preregistered seed, all discrete defect counters and matched chart residuals are exactly zero at every sampled n >= recoveryBound; density follows the frozen schedule; over at least eight frozen tail densities the BDG error is nonincreasing and the final normalized error is <= 1e-6.",
-      "falsification_rule": "Any post-bound nonzero counter/residual, any schedule violation, or failure of the locked BDG tail criterion rejects that concrete Gate-4 supplier. It does not refute causal-set gravity in general.",
+      "locked_claim": "The source-driven finite defect process reaches exact recovery by its initial natural-rank budget. The existing finite Gate-4 closure gives zero matched residual distortion, increasing density, and convergence of its selected BDG profile, but physical use additionally requires HasNonzeroBDG4DTarget on that same kernel and a typed Lorentzian chart/field target generated from that same certificate sequence. The formal audit keeps the displayed +1/2 versus -1/2 curvature-coefficient conventions distinct: their targets differ by exactly the curvature contribution and agree only when that contribution is zero.",
+      "acceptance_rule": "For every preregistered seed, all discrete defect counters and matched chart residuals are exactly zero at every sampled n >= recoveryBound; density follows the frozen schedule; the actual kernel target is nonzero and is identified with a target of a field in an explicitly generated Lorentzian chart; the curvature-sign dictionary is frozen consistently; over at least eight frozen tail densities the BDG error is nonincreasing and the final normalized error is <= 1e-6.",
+      "falsification_rule": "Any post-bound nonzero counter/residual, schedule violation, or failure of the locked BDG tail criterion rejects that concrete Gate-4 supplier. A zero profile, missing same-kernel target identification, missing Lorentzian chart/field generation evidence, or unresolved curvature-sign dictionary leaves physical Gate 4 open even when the finite closure builds. It does not refute causal-set gravity in general.",
       "evidence_required": [
         "source code commit",
         "seed list",
         "raw per-stage counters and chart residuals",
         "density and BDG estimates with numerical precision",
+        "same-kernel nonzero target and typed Lorentzian chart/field identification",
+        "frozen curvature and d'Alembertian sign dictionary",
         "reproduction environment"
       ],
       "result": null,
@@ -39,19 +42,21 @@
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornFiniteLocality.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornFiniteNetAdditivity.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornPMFProvenance.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornIncidenceEquivariance.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornManyBodyNet.lean",
         "UnifiedTheory/Audit/KFFiniteProbeCode.lean"
       ],
-      "locked_claim": "A local quantum state and finite net constructed from the causal Born data must preserve positivity, unit normalization, exact fixed-parent stage-PMF provenance, exact isotony and finite-union additivity, a declared incidence-transport/readout commuting square, disjoint-region finite microcausality, and the Born rule before any continuum-QFT claim is made.",
-      "acceptance_rule": "All ambient and regional finite states are positive and normalized; each computational-effect expectation equals the readout pushforward of the conditional harmonic stage PMF at the explicitly selected parent; the empty/full endpoint algebras and every registered inclusion and finite union satisfy the exact net identities; the full unital local algebras commute elementwise for every registered disjoint-region pair; a preregistered incidence action and Born readout satisfy an explicit commuting square; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. The conditional stage identity may not be reported as an unconditional trajectory rank marginal. Any zero cross-region products caused by the pointwise algebra must be reported rather than presented as tensor-product correlations. Continuum acceptance additionally requires a separately frozen nondegenerate scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
-      "falsification_rule": "A positivity, normalization, conditional-PMF provenance, endpoint, isotony, finite-additivity, finite-locality, incidence-equivariance, or Born mismatch rejects the finite construction. Absence of a nondegenerate correlation algebra or the separately specified continuum embedding and limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
+      "locked_claim": "A local quantum state and finite net constructed from the causal Born data must preserve positivity, unit normalization, exact fixed-parent stage-PMF provenance, exact isotony and finite-union additivity, disjoint-region finite microcausality, and the Born rule before any continuum-QFT claim is made. Incidence/Born equivariance is a conditional theorem requiring an explicit branch action, commuting readout square, and conditional-stage-PMF invariance record; recovery alone does not construct it. A separate finite many-body matrix net gives commuting but nonzero distinct-site projector products and isotony, unlike the earlier pointwise direct-product algebra, but supplies neither a correlated physical state nor a continuum completion.",
+      "acceptance_rule": "All ambient and regional finite states are positive and normalized; each computational-effect expectation equals the readout pushforward of the conditional harmonic stage PMF at the explicitly selected parent; the empty/full endpoint algebras and every registered inclusion and finite union satisfy the exact net identities; the original pointwise direct-product net's full unital algebras commute elementwise on registered disjoint regions, with its zero-product limitation reported explicitly; and computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Any incidence-equivariance claim must supply an IncidenceEquivariantHarmonicReadout whose branch action makes the readout square commute and preserves the selected conditional stage PMF. The separate many-body construction must show distinct-site commutation, nonzero cross-site computational-projector products, and regional isotony. The conditional stage identity may not be reported as an unconditional trajectory rank marginal, and the finite many-body algebra may not be reported as a correlated state or continuum QFT. Continuum acceptance additionally requires a separately frozen nondegenerate scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
+      "falsification_rule": "A positivity, normalization, conditional-PMF provenance, endpoint, isotony, finite-additivity, finite-locality, supplied incidence-equivariance, many-body commutation/nonzero-product, or Born mismatch rejects the corresponding finite construction. Failure to supply the conditional incidence record, a correlated physical state, or the separately specified continuum embedding and limit leaves the stronger Gate-5 claim open and may not be reported as a successful physical QFT derivation.",
       "evidence_required": [
         "finite carrier and region definitions",
         "state matrices or amplitudes",
         "inclusion maps",
         "regional restriction and finite-union algebra checks",
         "fixed-parent stage-PMF/readout pushforward comparisons",
-        "incidence-action/Born-readout commuting diagram",
-        "cross-region product and correlation audit",
+        "incidence branch action, Born-readout commuting diagram, and conditional-PMF invariance evidence",
+        "separate many-body cross-site commutator, nonzero-product, isotony, and correlation-state audit",
         "raw Born comparisons",
         "continuum scaling prescription when claimed"
       ],
@@ -66,17 +71,47 @@
         "UnifiedTheory/Cosmology/QQG/StrongCouplingPrediction.lean",
         "UnifiedTheory/Cosmology/QQG/EmergenceHypotheses.lean",
         "UnifiedTheory/Cosmology/QQG/Bridge.lean",
-        "UnifiedTheory/Audit/KFGate6QQGFixedSemanticClaimsLedger.lean"
+        "UnifiedTheory/Audit/KFGate6QQGFixedSemanticClaimsLedger.lean",
+        "UnifiedTheory/Audit/KFGate6HarmonicBornBinaryQQGReadout.lean",
+        "UnifiedTheory/Audit/KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter.lean",
+        "UnifiedTheory/Audit/KFGate6PhysicalBoundaryAudit.lean",
+        "UnifiedTheory/Audit/KFGate6ActionSelectedHarmonicBornPhysicalFrontier.lean"
       ],
-      "locked_claim": "For positive QQG parameters, r_predicted >= 0.01 exactly when lambda_tH^2 N_e^4 <= 2(800/3)^3. Treating this as a prediction of nature additionally requires evidence for the six fixed emergence claims and a preregistered physical parameter/readout map.",
-      "acceptance_rule": "First establish the frozen physical parameter/readout map and all six emergence-evidence records. Then compare the corresponding tensor-to-scalar prediction with the named blinded CMB likelihood and its preregistered confidence construction.",
-      "falsification_rule": "If the frozen physical bridge selects the perturbative side of the equivalence while the preregistered observational analysis excludes r >= 0.01 at its locked confidence level, that QQG branch fails. Without the physical bridge, the result is inapplicable rather than confirmed.",
+      "locked_claim": "For positive QQG parameters, r_predicted >= 0.01 exactly when lambda_tH^2 N_e^4 <= 2(800/3)^3. The two repository binary readout examples both have N = 1 and are formally outside the declared QQG viability requirement N >= 100000, so neither is evidence for a viable physical scenario. The legacy Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed premise is formally uninhabited because it requires the Hayden gap for every HPSetup. The reachable action-selected frontier instead requires a typed cosmological readout, one selected valid Hayden-gap setup, selected scrambling and trace-norm-decoupling dynamics, a CPTP recovery channel, and separately supplied microscopic black-hole dynamics claims.",
+      "acceptance_rule": "Do not invoke the uninhabited universal Hayden-gap bridge or count either N = 1 binary example as lying in the N >= 100000 viability window. First establish a frozen physical parameter/readout map, a scenario satisfying the declared QQG viability bounds, and all six emergence-evidence records. For the repaired black-hole route, provide the typed cosmological initial-state readout and almost-sure admissibility proof, one selected setup with HaydenGap, selected dynamics satisfying the frozen scrambling and trace-norm-decoupling predicates, a recovery channel satisfying the frozen CPTP predicate and recovering those dynamics, and microscopic Bekenstein-Hawking, evaporation, and Page-curve evidence. Then compare the corresponding tensor-to-scalar prediction with the named blinded CMB likelihood and its preregistered confidence construction.",
+      "falsification_rule": "Either unchanged N = 1 binary scenario fails the declared viability-window prerequisite, and any use of the legacy universal Hayden-gap premise is invalid because that premise is uninhabited. Failure of the selected readout, admissibility, scrambling, trace-norm decoupling, CPTP recovery, microscopic black-hole claims, six emergence claims, or the frozen observational test rejects the corresponding repaired physical supplier. Without those bridges, formula compatibility is inapplicable rather than confirmed.",
       "evidence_required": [
         "fixed QQG semantics for all six claims",
         "theoretical or experimental evidence record for every claim",
-        "parameter/readout derivation",
+        "viability-window parameter/readout derivation with N >= 100000",
+        "typed cosmological readout and almost-sure admissibility certificate",
+        "selected Hayden-gap setup, scrambling and trace-norm decoupling evidence, and CPTP recovery certificate",
+        "microscopic entropy, evaporation, and Page-curve evidence",
         "named CMB likelihood and release hash",
         "blinded analysis code and covariance"
+      ],
+      "result": null,
+      "verdict": "pending"
+    },
+    {
+      "id": "A7-TYPED-PREREGISTRATION-RESULT-INTEGRITY",
+      "gate": 7,
+      "claim_class": "formal_protocol_integrity_plus_external_empirical_frontier",
+      "formal_source": [
+        "UnifiedTheory/LayerB/PreRegistrationLedger.lean",
+        "UnifiedTheory/Audit/KFGate7ProtocolIntegrity.lean",
+        "UnifiedTheory/Audit/KFTOESevenGateClosureFrontier.lean"
+      ],
+      "locked_claim": "One typed identifier indexes each of the five authoritative prediction entries and its falsification row exactly once. The typed ledger is complete and duplicate-free without relying on display-string equality. External observations are separate provenance-bearing result entries. A completed external package requires exactly one result entry per prediction identifier plus explicit validation of digest authentication, freeze-before-observation ordering, and registered-test linkage. At this snapshot the external result ledger is formally empty, all five predictions are pending, and freeze provenance is absent; therefore Gate 7 has no empirical verdict.",
+      "acceptance_rule": "The typed preregistration ledger must continue to project exactly to the five authoritative prediction entries and falsification rows, with complete unique identifier coverage. Before any empirical verdict, record a nonempty freeze commit hash and freeze timestamp established before data access. Then provide at least one ExternalResultEntry for every typed prediction identifier, each with a nonempty stable dataset source, digest algorithm and value, observation/publication timestamp, and verdict obtained by the registered test. The current empty external ledger and absent freeze provenance do not satisfy this rule.",
+      "falsification_rule": "A missing, duplicate, or mismatched typed registration rejects protocol integrity. Missing, post-hoc, unverifiable, or dataset-mismatched freeze/result provenance invalidates the corresponding physical verdict. Only a valid external result that satisfies the frozen provenance protocol and falsifies its registered test counts as empirical falsification; an empty result ledger is pending, not confirmation.",
+      "evidence_required": [
+        "typed prediction identifier and authoritative entry/row mapping",
+        "pre-data-access commit hash and freeze timestamp",
+        "stable external dataset source",
+        "dataset digest algorithm and value",
+        "observation or publication timestamp",
+        "registered-test output and external verdict for each of five identifiers"
       ],
       "result": null,
       "verdict": "pending"
@@ -87,7 +122,8 @@
       "claim_class": "formal_joint-law_consistency_test",
       "formal_source": [
         "UnifiedTheory/Audit/KFTOESharedHarmonicMicroscopicModel.lean",
-        "UnifiedTheory/Audit/KFTOEAllAttacksCapstone.lean"
+        "UnifiedTheory/Audit/KFTOEAllAttacksCapstone.lean",
+        "UnifiedTheory/Audit/KFTOESevenGateClosureFrontier.lean"
       ],
       "locked_claim": "Gate-4, Gate-5, and Gate-6 readouts advertised as one theory must be measurable functions of the identical harmonic causal history law, and their separately computed laws must equal the three marginals of one joint pushforward.",
       "acceptance_rule": "The Lean joint-law theorem builds without sorry or custom axioms. In every numerical reproduction, history identifiers, chirality, coupling schedule, seeds, and cuts are identical across all three readouts, and each empirical marginal agrees with the corresponding joint marginal to total-variation error <= 1e-12.",

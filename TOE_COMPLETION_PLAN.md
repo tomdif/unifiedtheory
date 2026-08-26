@@ -1,7 +1,9 @@
 # TOE Completion Plan
 
-Status: working plan for closing the repo's remaining theory-of-everything
-gaps.  This is not a claim that the gaps are closed.
+Status: current scoped formal gate pass integrated; the remaining items are
+explicitly typed physical, continuum, or empirical inputs.  This is neither a
+maximality theorem nor a claim that those external inputs have been
+established.
 
 Date: 2026-08-26
 
@@ -20,54 +22,60 @@ falsifiable prediction
 The repo is strongest when each public claim points to a theorem, script,
 dataset, or explicitly named assumption.
 
-## 2026-08-26 Gate 4--6 All-Attacks Pass
+## 2026-08-26 Seven-Gate Closure Audit
 
-The current attack pass makes five advances without relabelling formal
-consistency as empirical proof:
+The obligations targeted in this pass are now proved relative to their stated
+formal inputs or represented as explicit physical/external frontiers rather
+than assumed inhabitants:
 
-- Gate 4 derives the affine density schedule from post-root event count,
-  derives nonnegative matched residuals from the explicit source-driven
-  history, constructs the repaired chart-certificate sequence from a minimal
-  continuum-chart frontier, and proves a genuine unit-rectangle `f4D` kernel
-  bound.  The explicit zero-profile kernel and two-event chart are consistency
-  benchmarks only; `HasNonzeroBDG4DTarget` proves the zero profile fails the
-  nonzero-target diagnostic required by the physical capstone.
-- Gate 5 removes the independent finite `localState` input.  A typed causal
-  readout of the action-selected harmonic Born law is square-root lifted to a
-  canonical nonnegative 16-component substrate state.  The resulting finite
-  local star-algebra net is isotonic, its state is normalized and positive,
-  its computational effects recover the causal weights exactly, and those
-  expectations are the exact readout pushforward of the fixed-parent
-  conditional harmonic stage PMF.  This last identity is not an unconditional
-  trajectory rank marginal.  The net's empty/full endpoint algebras and
-  finite-union additivity are exact, its
-  regional state restrictions are normalized and positive, and the full
-  unital algebras of disjoint finite regions commute elementwise.  The audit
-  also proves that genuinely supported disjoint-region products vanish in the
-  present pointwise algebra.  These results give finite additive locality, not
-  a tensor-product many-body net or continuum spacelike separation.  A typed
-  incidence-transport/Born-readout commuting square remains open.  The
-  continuum AQFT/Standard-Model completion remains a fixed claim ledger with
-  no built-in witness.
-- Gate 6 fixes numerical meanings for all six former QQG emergence predicates,
-  separates preregistration from external result tokens, proves pass and
-  strict-refutation predicates incompatible, and derives exact structural
-  binary-readout predictions.  No result or empirical-evidence inhabitant is
-  supplied.
-- `KFTOESharedHarmonicMicroscopicModel.lean` constructs one joint pushforward
-  of Gate-4/5/6 readouts from the same harmonic trajectory law and proves the
-  three advertised laws are its exact marginals.
-- The `prime-cymatics` comparison motivates a general finite-probe code layer:
-  minimum distance, adversarial Hamming correction, real-valued margin
-  recovery, finite cutoffs, and Born-tomography instantiation.  This strengthens
-  measurement certification; it does not make prime resonances a fundamental
-  physical mechanism without an additional spectral/dynamical map.
+- Gate 1: the canonical harmonic Born transition is nonzero if and only if the
+  child is a physical growth step, for both chiralities at every audited rank
+  below 140.  The finite rational-root certificate uses Lean's compiler trust,
+  not a project axiom or `sorry`.
+- Gate 2: zero count, curvature, and pair-consistency windows imply the exact
+  stored local equations.  The reverse implication is deliberately not claimed
+  because upper bounds may contain slack; identifying these finite equations
+  with a physical Hauptvermutung remains semantic/continuum work.
+- Gate 3: any negative source that is sound on defective sites and detects each
+  nonzero global defect gives a strict stoppable natural-rank step.  The audit
+  constructs its detecting trajectory and retains the explicit source-driven
+  zero-horizon/zero-corrector realization.  Selection or generalization by the
+  microscopic action remains external.
+- Gate 4: `PhysicalBDGTargetIdentification` is the typed nonzero physical
+  frontier: it requires caller-supplied chart and field values, predicates for
+  Lorentzianity and the two generation relationships, identification with the
+  actual kernel target, and nonvanishing.  Opposite curvature-sign conventions
+  differ by exactly the curvature field, ruling out a silent sign ambiguity.
+- Gate 5: every directional permutation is assigned a permutation of the
+  sixteen outcomes; no composition, identity, faithfulness, or nontriviality
+  theorem is claimed.  A supplied child action and commuting readout square,
+  plus a separate conditional-stage-PMF preservation premise, imply Born
+  weight, amplitude, and expectation invariance.  A separate finite many-body
+  matrix algebra proves regional isotony, commutation of distinct one-site
+  lifts, and nonzero distinct-site projector products.  It does not yet prove
+  arbitrary disjoint-region commutation or attach the causal Born state.  The
+  physical state and continuum AQFT/SM remain external.
+- Gate 6: the legacy bridge that demanded a Hayden gap for every setup is proved
+  uninhabited by a concrete valid counterexample.  The old binary examples are
+  also outside their declared large-`N` viability window.  The repaired top
+  frontier requires fixed-semantic evidence and viability, plus caller-supplied
+  predicates named microscopic scrambling, trace-norm decoupling, CPTP
+  recovery, and recovery.  Its entropy, evaporation, and Page-curve fields are
+  separate physical propositions rather than consequences of that dynamics
+  type.
+- Gate 7: the five prediction IDs, authoritative prediction/falsification
+  projections, uniqueness, and typed dataset/digest/timestamp/verdict records
+  are exact.  External completion requires a unique result for every
+  prediction and caller-defined validators for digest authentication,
+  freeze-before-observation ordering, and registered-test linkage.  The
+  current external-result ledger is empty, every prediction is pending, and
+  freeze provenance is absent.
 
-The physical endpoint remains conditional on a nonzero identified BDG target,
-continuum Gate-5 construction, fixed-semantic QQG evidence, black-hole
-dynamics, late structure formation, gravitational-wave compatibility, and
-future comparisons with preregistered observations.  The frozen no-results
-protocol is `TOE_GATE456_ATTACK_LEDGER.json`.
+`KFTOESevenGateClosureFrontier.lean` is the current scoped Lean integration
+module; it records shared-law provenance for three supplied measurable
+readouts and keeps their physical identification explicit.
+The no-results protocol is `TOE_GATE456_ATTACK_LEDGER.json`; null results remain
+null and no observational verdict is synthesized.
 
 `UnifiedTheory/Audit/KFTOESevenGateAttack.lean` now mirrors this plan as a
 Lean-facing attack ledger.  It records explicit closure targets for all seven
@@ -158,19 +166,19 @@ birth.  The older
 `CompleteChiralAtlasSignedFiberWitnessTable` and
 `Gate1PhysicalSelectionBridgeClosed` route remains a sufficient real-only
 special case.
-The newest Gate 4 specialization wires those two remaining Gate 4 fields to
+An earlier Gate 4 specialization wires those two remaining Gate 4 fields to
 existing finite/audit machinery: finite horizon-hit estimator convergence to
 Araki flux and the Dorau-Much/Araki/Bekenstein-Hawking `8*pi` null-balance
-certificate.  The sharpest current full-closure theorem is
+certificate.  Its conditional full-closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiFiniteGate5Gate6Audits_closed`.
 Gate 4's horizon tail is now also represented by the named bridge
 `Gate4EstimatorArakiHorizonBridgeClosed`, whose closure theorem packages the
 estimator-to-Araki identification, Araki relative entropy, Dorau-Much area
 law, Raychaudhuri focusing, Bekenstein-Hawking normalization, and nonzero
-excitation sector while deriving the two facts Gate 4 consumes.  The latest
+excitation sector while deriving the two facts Gate 4 consumes.  A historical
 capstone consuming named Gate 4, Gate 5, and Gate 6 bridges is
 `microscopicTOEClosureTargetsWithFiniteGate1NamedGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
-The latest named-bridge capstone also consumes the named Gate 1 bridge:
+The corresponding named-bridge capstone also consumes the named Gate 1 bridge:
 `microscopicTOEClosureTargetsWithNamedGate1Gate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
 The Gate 1 witness table now has a direct top-level route as well:
 `microscopicTOEClosureTargetsWithGate1WitnessTableGate4ArakiHorizonNamedGate5Gate6HaydenPreskillBridges_closed`.
@@ -210,13 +218,12 @@ The current sharpest formal target is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges`;
 its closure theorem is
 `microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6Bridges_closed`.
-The black-hole part is now further refinable through the Hayden-Preskill-native
-bridge
-`gate6_haydenPreskillMicroscopicEvaporationBridge_closed`, which reduces
-evaporation dynamics to the existing `Scrambling_Target`,
-`Decoupling_Target`, and `Recovery_Target ∧ HaydenGap` obligations.  The
-corresponding HP-specialized full-closure theorem is
-`microscopicTOEClosureTargetsWithFiniteGate1Gate4EstimatorArakiNamedGate5Gate6HaydenPreskillBridges_closed`.
+The historical black-hole specialization used
+`gate6_haydenPreskillMicroscopicEvaporationBridge_closed` and the corresponding
+HP-specialized full-closure implication.  The boundary audit now proves its
+universal Hayden-gap premise uninhabited, so neither theorem is a reachable
+physical completion route.  The repaired selected-setup, typed-dynamics, and
+CPTP-channel frontier is documented under Gate 6 below.
 
 External octonion/S6 watchpoint: Levent Alpoge's primary PDF
 `https://alpo.ge/s6.pdf`, titled on its first page as
@@ -244,18 +251,21 @@ one label-invariant, normalized, quantum-consistent causal-growth law
 whose source terms are computed from parent order data
 ```
 
-Open work:
+Current formal closure:
 
-- integrated support theorem:
-  `completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`;
-- integrated parent-isomorphism covariance:
-  `completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`;
-- integrated concrete projective/quantum-consistency wrappers:
-  `completeChiralCausalSetGrowthLaw_gate1_projective` and
-  `completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`;
-- integrated conditional CSpec realization bridge:
+- `canonicalHarmonicBornShellTransition_ne_zero_iff_physical_below_140`
+  closes the selected harmonic law's audited support in both directions, for
+  both chiralities and every rank below 140.  This supersedes the former
+  one-way atlas obligation for that law.
+
+Already integrated hooks include
+`completeChiralCausalSetGrowthLaw_transition_eq_zero_of_not_physical`,
+`completeChiralCausalSetGrowthLaw_transition_eq_of_parent_isomorphic`,
+`completeChiralCausalSetGrowthLaw_gate1_projective`,
+`completeChiralCausalSetGrowthLaw_gate1_quantum_consistent`, and the conditional
+CSpec realization bridge
   `completeChiral_physicalGrowth_realizes_fullS3_CSpec_determinantSector_of_complexSignedFiberSum_nonzero`;
-  Lean proves `CompleteChiralAtlasRawAggregateNonzero` is equivalent to
+Lean proves `CompleteChiralAtlasRawAggregateNonzero` is equivalent to
   `CompleteChiralAtlasTransitionNonzero`, and
   real or imaginary aggregate-polynomial nonzero implies that raw gate.
   `CompleteChiralAtlasComplexSignedFiberSumNonzero` is the usable mixed
@@ -266,7 +276,10 @@ Open work:
   `Gate1ComplexPhysicalSelectionBridgeClosed` packages this signed-fiber
   certificate with order-data coupling selection, carries
   `Gate1ComplexSignedFiberAtlasCertificateClosed`, and records the resulting
-  finite-branch Gate 1 closure;
+  finite-branch Gate 1 closure.
+
+Remaining physical integration:
+
 - derive the physical aggregate-rate and residual-gap hypotheses from the
   microscopic law;
 - remove external geometric or embedding oracles from source selection.
@@ -292,6 +305,13 @@ curvatureBias
 spectralLocality
 bridge-census transport defect
 ```
+
+`KFCausalCSpecHauptvermutungZeroWindowExact.lean` now proves the exact forward
+semantics of the three stored analytic channels: zero count window gives the
+exact count/density/volume equation, zero curvature bias gives the exact
+curvature/volume equation, and zero pair-consistency window gives the exact
+chart-pair quadratic equation.  No converse is claimed from bounded-error
+records that may contain slack.
 
 The bridge-census component is exact:
 
@@ -1126,6 +1146,15 @@ convergence to Araki flux and the `8*pi` null balance, and
 `microscopicGate4ScheduledKernelData_horizonEinsteinAnalytic_closed_of_estimatorArakiHorizonBridge`
 uses that named bridge to close Gate 4's scheduled-kernel analytic target.
 
+`KFCausalCSpecHarmonicBornNonzeroBDGFrontier.lean` now prevents a consistency
+benchmark from masquerading as the physical endpoint.  Its
+`PhysicalBDGTargetIdentification` binds the actual harmonic kernel to a
+Lorentzian chart, caller-supplied certificate-to-chart and chart-to-field
+generation predicates, the
+same-kernel target equality, and a nonzero target.  It also proves that the two
+curvature-sign conventions differ by exactly the curvature field and can have
+the same limit only in the zero-curvature sector.
+
 Open work:
 
 - prove the physical causal-growth law supplies
@@ -1298,6 +1327,23 @@ Conditional octonion/S6 research hook:
   bridge, but it would still need separate QFT, spin-statistics, and
   renormalization proofs.
 
+Current finite causal-Born locality closure:
+
+- `KFCausalCSpecHarmonicBornIncidenceEquivariance.lean` constructs the
+  directional permutation assignment on the sixteen outcomes.  No group-action
+  composition, identity, faithfulness, or nontriviality theorem is asserted.
+  Given both the explicitly typed child-action/readout commuting square and a
+  separate conditional-stage-PMF preservation field, it proves stage PMF,
+  Born weight, substrate amplitude, and local expectation invariance.
+- `KFCausalCSpecHarmonicBornManyBodyNet.lean` constructs the full finite
+  configuration-space matrix algebra.  Distinct-site lifts commute, their
+  computational-projector products are nonzero, and the generated regional
+  star algebras are isotonic.  These statements concern the displayed one-site
+  lifts; arbitrary elements of disjoint regional algebras are not yet proved
+  to commute.  The construction removes the pointwise zero-product defect but
+  does not provide a causal Born/correlated physical state or continuum
+  completion.
+
 Open work:
 
 - construct the effective Hilbert space and local QFT limit;
@@ -1396,12 +1442,14 @@ that external Gate 6 tail into named sub-obligations: cosmological measure or
 initial state, microscopic scrambling, microscopic decoupling, microscopic
 recovery channel, late-time structure formation, and gravitational-wave
 compatibility.
-`gate6_haydenPreskillMicroscopicEvaporationBridge_closed` specializes the
-three black-hole evaporation obligations to the repo's Hayden-Preskill-native
-targets: scrambling, decoupling, and recovery with a Hayden gap.  Its proof
-then reuses `haydenPreskill_recovery` and
-`haydenPreskill_recovery_error_bounded` to derive the `[0,1]` recovery-bound
-package and the `[0,2]` recovery-error package.
+The historical `gate6_haydenPreskillMicroscopicEvaporationBridge_closed`
+specialized the three black-hole obligations to a record demanding
+`HaydenGap` for every `HPSetup`.  `KFGate6PhysicalBoundaryAudit.lean` proves
+that record uninhabited using the valid setup `k=2, N=e=r=1`; its derived
+`[0,1]` and `[0,2]` packages must therefore not be cited as a reachable
+physical closure.  The same audit proves that both illustrative binary QQG
+scenarios have `N=1` and lie outside the declared `N >= 100000` viability
+window.
 `KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter.lean` now discharges the
 bare causal-growth probability-measure slot with the harmonic trajectory law
 built from the action-selected raw schedule and canonical Born completion,
@@ -1410,6 +1458,17 @@ not rename that measure as cosmology: the remaining typed
 bridge is a measurable trajectory-to-initial-state readout plus an
 almost-sure admissibility proof. Hayden--Preskill dynamics, late structure, and
 gravitational-wave compatibility remain separate physical inputs.
+
+`KFGate6ActionSelectedHarmonicBornPhysicalFrontier.lean` is the repaired
+reachable interface.  The harmonic causal trajectory measure is only the
+upstream law; callers must supply a measurable admissible cosmological readout
+and a selected setup/dynamics/channel satisfying caller-supplied predicates
+named scrambling, trace-norm decoupling, CPTP, and recovery.  The top frontier
+additionally requires the fixed-semantic evidence record and the declared QQG
+viability window.  Its stronger completion type separately retains bare
+physical propositions for microscopic Bekenstein--Hawking entropy, Hawking
+emission/evaporation, and a Page curve; the current type does not derive those
+propositions from `Dynamics`.
 
 Open work:
 
@@ -1424,12 +1483,21 @@ Open work:
 
 Goal: make the theory scientifically sharp.
 
-Open work:
+Formal protocol layer complete:
 
-- freeze predictions before comparison;
+- `KFGate7ProtocolIntegrity.lean` defines a five-case prediction identifier,
+  proves exact and duplicate-free projection to the authoritative prediction
+  and falsification rows, and types result provenance with a dataset source,
+  digest, timestamp, and verdict.
+- The checked current state is intentionally negative: the result ledger is
+  empty, all five prediction IDs are pending, and freeze provenance is absent.
+
+External work:
+
+- record immutable freeze provenance before comparison;
 - attach uncertainty estimates;
-- record decisive future tests;
-- keep a failure ledger.
+- execute and record the five decisive tests with source/digest/timestamp;
+- preserve pass and failure verdicts in the external ledger.
 
 ## Immediate Next Theorem Targets
 
@@ -1459,9 +1527,10 @@ target inventory below):
    recovery, late structure, and gravitational-wave compatibility. A concrete
    nonconstant measurable binary readout and its exact prior now exist, but are
    not claimed to be the physical coarse graining.
-6. Keep the Gate 7 predictions frozen and compare them with real measurements.
-   Lean can verify the prediction and analysis pipeline, but experimental
-   agreement is not a theorem of the formal model.
+6. Record immutable Gate 7 freeze provenance before data access, then compare
+   the registered tests with real measurements.  Lean can verify the typed
+   prediction and analysis pipeline, but experimental agreement is not a
+   theorem of the formal model.
 
 ### Historical target inventory
 
@@ -1836,5 +1905,6 @@ The next high-value theorem targets are:
    thermodynamics, and CMB/structure/gravitational-wave constraints beyond the
    now-checked dark-density and cosmological-constant/graviton-mode
    partial-closure certificates.
-7. Gate 7: keep the closed preregistration protocol live by updating the
-   failure ledger and comparison table when the frozen future tests report.
+7. Gate 7: first create the currently absent freeze provenance; then update the
+   external result/failure ledger and comparison table when the registered
+   future tests report.

@@ -104,13 +104,21 @@ Raychaudhuri focusing, Bekenstein-Hawking normalization, and nonzero excitation,
 and conditional QQG cosmology bridge plus physical-information-limits audit,
 with the remaining Gate 6 tail now split into named cosmological-measure,
 scrambling, decoupling, recovery, late-structure, and gravitational-wave bridge
-obligations; the black-hole evaporation tail now has a Hayden-Preskill-native
-refinement in terms of scrambling, decoupling, and recovery-with-Hayden-gap
-targets. It also proves Gate 7 protocol closure from the preregistration
-ledger. Full Gates 4-6 remain open until their missing physical, infrared,
-cosmological-emergence, evaporation, and black-hole entropy inputs are derived;
-Gate 7 still awaits future empirical comparisons against the frozen
-predictions.
+obligations.  The historical Hayden--Preskill refinement is now proved
+uninhabited because it demanded the Hayden gap for every valid setup; the
+repaired frontier instead requires selected scrambling dynamics, trace-norm
+decoupling, a CPTP recovery channel, and recovery for the chosen physical
+setup.  For any three supplied measurable readouts of one harmonic history
+law, their joint pushforward is normalized and has the three component laws as
+exact marginals; identifying those maps with physical Gate 4--6 observables
+remains an input.  Gate 7's five-row protocol metadata and provenance types
+are exact, but completion still requires one unique result per prediction and
+caller-defined checks for digest authentication, freeze-before-observation
+ordering, and registered-test linkage.  Its external-result ledger is empty
+and freeze provenance is absent. Full Gates 4-6 remain open until their
+missing physical, infrared, cosmological-emergence, evaporation, and
+black-hole entropy inputs are derived; Gate 7 still awaits actual
+preregistration provenance and empirical results.
 
 The action-selection audit now separates a former zero-freeness witness from a
 physical selection rule. `KFCausalSetIntrinsicPairCouplingSelection.lean`
@@ -249,7 +257,11 @@ recovered CSpec stage equipped with independently supplied local
 single-generation states has canonical incidence transport alongside exact
 computational-basis Born weights and normalized probabilities in dimension
 `16`. The local states are not derived from recovery or the causal quantum
-measure, and their compatibility with incidence transport remains open.
+measure.  Their compatibility with incidence transport is now an exact typed
+interface: once its explicit child action, commuting readout square, and
+separate conditional-stage-PMF preservation proof are supplied, the stage PMF,
+Born weights, amplitudes, and local expectations are invariant.  Those inputs
+are not derived from recovery.
 `KFGate5ChamberScatteringPremiseRemoval.lean` removes a redundant finite-chamber
 `ScatteringConstruction` input, but the resulting noncomputable chamber witness
 is not continuum Haag--Ruelle dynamics; the Hilbert/QFT, spin-statistics, and
@@ -267,6 +279,8 @@ constant-map loophole; it does not prove that the binary map is the physical
 cosmological coarse graining or that its records satisfy the QQG emergence and
 observational conditions. Hayden--Preskill dynamics, late structure, and
 gravitational-wave compatibility remain independent physical obligations.
+Both displayed records have `N=1`, so neither lies in the protocol's declared
+`N >= 100000` viability window.
 The QQG emergence ledger now exposes rather than erases its assumptions: its
 six physical claims are externally specified predicates, explicit evidence is
 required for a selected ledger, and all six occur in the conditional Einstein
@@ -1725,36 +1739,43 @@ boundary, and unreconstructible discarded-covariance witness are in
 The two-scale defect cocycle and delayed-loss witness are in
 `UnifiedTheory/Audit/KFOrientationCPChannelComposition.lean`.
 
-## Gate 4--6 attack status (2026-08-26)
+## Seven-gate scoped formal status (2026-08-26)
 
-The latest audit pass derives a history-indexed Gate-4 density and repaired
-chart-certificate sequence, constructs Gate-5 finite local states and an
-isotonic star-algebra net from actual harmonic Born weights, identifies each
-local computational probability with the readout pushforward of the
-fixed-parent conditional harmonic stage PMF, proves its
-empty/full endpoint algebras and finite-union additivity, proves normalized
-positive regional state restrictions, and proves that its full unital
-algebras commute on disjoint finite regions.  The same audit records that
-genuinely supported cross-region products vanish in the present pointwise
-algebra, so this is not yet a tensor-product many-body net.  It also fixes
-falsifiable numerical semantics for every QQG emergence claim, and proves that three
-measurable Gate-4/5/6 readouts of one harmonic trajectory law are marginals of
-one joint probability measure.  A companion finite-probe-code layer imports
-the useful measurement architecture of the local `prime-cymatics` project:
-minimum-distance identification, noise correction, real-margin recovery, and
-finite probe cutoffs.
+The current pass proves its listed obligations relative to the displayed
+formal inputs and makes the additional boundaries explicit; it is not a
+maximality theorem.  Gate 1 has exact physical
+support for the selected harmonic law through the 140-edge atlas, in both
+chiralities.  Gate 2 turns zero stored windows into the exact local geometric
+equations.  Gate 3 derives stoppable rank descent from a sound, complete
+negative-source detector and retains its concrete source-driven sector.
+
+Gate 4 now requires caller-supplied chart/field values and generation
+predicates identifying a same-kernel nonzero BDG target rather than accepting
+the zero consistency benchmark.  Gate 5 has a sixteen-outcome directional
+permutation assignment and proves conditional incidence/readout equivariance
+from both a commuting-square witness and a separate stage-PMF preservation
+premise.  Its finite many-body algebra proves isotony, distinct one-site lift
+commutation, and nonzero cross-site projector products; it does not yet prove
+arbitrary regional commutation or carry the causal Born state.  Gate 6 exposes
+the contradiction in the legacy universal Hayden-gap bridge.  Its repaired top
+frontier requires a viable scenario, fixed-semantic evidence, and selected
+dynamics/channel satisfying caller-supplied scrambling, decoupling, CPTP, and
+recovery predicates.  Three supplied measurable Gate 4--6 readouts of the
+same harmonic law have a normalized joint pushforward with exact component
+marginals, but their physical identification remains external.  Gate 7 proves
+exact five-row protocol integrity; completing it requires exactly one result
+per prediction and explicit digest, temporal-freeze, and registered-test
+validation.  The current result ledger is empty, every test is pending, and
+freeze provenance is absent.
 
 These are finite or conditional theorems, not an experimental proof of a TOE.
-The stage-PMF identity is conditional on the parent selected by the readout;
-it is not an unconditional rank marginal of the infinite trajectory measure.
-The explicit two-event chart and zero BDG profile only prove interface
-consistency; the zero profile is formally excluded from the nonzero physical
-BDG endpoint.  Continuum QFT, the physical coarse-graining maps, nonzero BDG
-identification, a continuum embedding that turns finite disjointness into
-physical spacelike separation, a typed commuting square between incidence
-transport and the 16-outcome Born readout, a nondegenerate correlation
-algebra, QQG evidence, and observations remain required.  The exact
-frozen attack protocol is
+The outstanding inputs relative to the current interfaces are physical
+selection of the general Gate 3 update, a nonzero continuum BDG identification
+and horizon dynamics,
+correlated-state/continuum AQFT and Standard-Model construction, cosmological
+readouts and black-hole/late-cosmology dynamics, and provenance-bearing
+observations.  No absolute irreducibility claim is made.  The no-results
+protocol is
 [`TOE_GATE456_ATTACK_LEDGER.json`](TOE_GATE456_ATTACK_LEDGER.json).
 
 ## What Is Not Derived

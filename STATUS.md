@@ -1,32 +1,54 @@
 # Framework Status (August 2026)
 
-> **Gate 4--6 all-attacks update (2026-08-26):** Gate 4 now derives its
-> density schedule and residual windows from the source-driven harmonic
-> history and reduces the true continuum input to a chart frontier.  A genuine
-> `f4D` bound plus zero-profile/two-event benchmark proves consistency, while
-> `HasNonzeroBDG4DTarget` prevents that benchmark from counting as the physical
-> nonzero operator.  Gate 5 now derives canonical nonnegative 16-component
-> local states from harmonic Born weights, builds an isotonic finite local
-> star-algebra net, and proves positivity, normalization, exact Born readout,
-> exact provenance from the readout pushforward of the fixed-parent
-> conditional harmonic stage PMF,
-> empty/full endpoint algebras, finite-union additivity, normalized positive
-> regional restrictions, and elementwise commutativity of the full unital
-> algebras on disjoint finite regions.  Supported cross-region products
-> actually vanish in the current pointwise algebra, so this finite
-> microcausality is neither a tensor-product correlation net nor continuum
-> spacelike locality.  Equivariance between canonical incidence transport and
-> the 16-outcome Born readout also remains an explicit finite obligation.
-> The stage-PMF theorem is not an unconditional trajectory rank marginal.
-> Gate 6 now has fixed numerical QQG semantics, typed external result
-> records, disjoint pass/refute rules, and exact structural binary predictions,
-> but no fabricated evidence.  A joint-pushforward theorem locks Gate-4/5/6
-> readouts to one harmonic trajectory law.  The local `prime-cymatics` project
-> supplies the design for a shared robust finite-probe code layer; this is a
-> tomography/certification connection, not a prime-based physical mechanism.
-> Full physical closure still requires the identified nonzero BDG operator,
-> continuum QFT/SM, physical readouts, QQG/black-hole/late-cosmology evidence,
-> and preregistered observations.
+> **Seven-gate scoped formal audit (2026-08-26):** The obligations targeted by
+> this pass are either proved or represented by a typed frontier that exposes
+> its additional input; this is not a maximality theorem.  No empirical value
+> or continuum physics is fabricated.
+> Gate 1 proves, for both chiralities and every audited rank below 140, that the
+> canonical harmonic Born transition is nonzero exactly on physical children.
+> Gate 2 proves that zero stored count, curvature, and pair-consistency windows
+> force the corresponding exact local geometric equations; the converse and
+> physical Hauptvermutung semantics are not inferred from slack bounds.  Gate 3
+> proves a general sound-and-complete negative-source criterion for strict
+> natural-rank descent and constructs a detecting trajectory, in addition to
+> the explicit zero-horizon/zero-corrector repair sector.
+>
+> Gate 4 now separates the finite recovery theorem from physical operator
+> identification: `PhysicalBDGTargetIdentification` requires caller-supplied
+> chart and field values, predicates asserting Lorentzianity and the two
+> generation relationships, equality with the same kernel's target, and a
+> nonzero target.  The `+1/2` and `-1/2`
+> curvature conventions differ by exactly the curvature field, so simultaneous
+> identification forces that field to vanish.  Gate 5 assigns an outcome
+> permutation to every directional permutation on the sixteen outcomes; no
+> group-action or faithfulness law is claimed.  An explicit child action and
+> commuting readout square, together with separately supplied conditional-stage
+> PMF preservation, imply Born/readout invariance.  A separate finite many-body
+> matrix algebra proves isotony of generated regional algebras, commutation of
+> distinct one-site lifts, and nonzero cross-site projector products.  It does
+> not yet prove arbitrary disjoint-region commutation or carry the causal Born
+> state.  Those inputs and the continuum AQFT/Standard-Model limit remain
+> external.
+>
+> Gate 6's former universal Hayden--Preskill bridge is now proved uninhabited:
+> its Hayden-gap premise fails for the valid setup `k=2, N=e=r=1`.  The two
+> illustrative binary QQG scenarios also have `N=1`, outside the declared
+> `N >= 100000` viability window.  The repaired top frontier requires fixed
+> semantics and evidence, a viable scenario, and caller-supplied predicates
+> named scrambling, trace-norm decoupling, CPTP recovery, and recovery.  Its
+> entropy, evaporation, and Page-curve fields are separate physical
+> propositions, not a derivation from the typed dynamics.  For any three
+> supplied measurable readouts of one harmonic history law, their joint
+> pushforward is normalized and has the three component laws as exact
+> marginals; identifying those maps with physical Gate 4--6 observables
+> remains an input.  Gate 7's five prediction identities, falsification-row
+> projection, uniqueness, and provenance-bearing result types are exact.
+> External completion additionally requires one unique result per prediction
+> and caller-defined checks for digest authentication,
+> freeze-before-observation ordering, and registered-test linkage.  The
+> current result ledger is empty, all five tests are pending, and freeze
+> provenance is absent.  These are the remaining external inputs relative to
+> the current interfaces; no claim of absolute irreducibility is made.
 
 > **Gate 3 normalization and stopping correction (2026-08-25):**
 > `KFCausalCSpecMicroscopicGate3NormalizedWeightNoGo.lean` proves that the
@@ -431,10 +453,10 @@
 > inverse/preimage audit, discrete holography and Page-curve finite entropy
 > audits, conditional Araki/Dorau-Much horizon-to-Einstein bridges,
 > conditional QQG cosmology bridge, and physical-information-limits
-> audit. It proves Gate 7 protocol closure from the existing
-> preregistration/falsifiability ledger:
-> frozen forward predictions, uncertainty/falsification rows, future-test
-> horizons, and a failure ledger are all recorded. Full Gates 4-6 remain open
+> audit. It proves Gate 7's prediction/falsification-row projection and typed
+> identifier coverage from the existing protocol metadata.  It does not prove
+> that the snapshot was frozen: freeze provenance is absent and the external
+> result/failure ledger is empty. Full Gates 4-6 remain open
 > until their missing physical, infrared, cosmological-emergence, evaporation, and
 > black-hole entropy inputs are derived, and Gate 7 still awaits the future empirical comparisons
 > themselves.
