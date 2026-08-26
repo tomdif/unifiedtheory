@@ -226,6 +226,90 @@ noncomputable def negativeSourceRepairStep
   else
     s
 
+/-! ## 3a. Generic defect-detecting sources -/
+
+/-- Soundness of a repair source: every site selected by a negative source
+value actually carries a nonzero local defect. -/
+def NegativeSourceSound
+    (edge : ι → E4) (source : ι → ℝ)
+    (s : QuantizedGate3State ι) : Prop :=
+  ∀ i, source i < 0 → s.localDefectRank edge i ≠ 0
+
+/-- Completeness of a repair source: every globally defective state exposes
+at least one negative-source site. -/
+def NegativeSourceComplete
+    (edge : ι → E4) (source : ι → ℝ)
+    (s : QuantizedGate3State ι) : Prop :=
+  s.defectRank edge ≠ 0 → ∃ i, source i < 0
+
+/-- Soundness and completeness are exactly sufficient for the generic
+negative-source update to lower the natural defect rank away from zero and
+to be absorbing at zero.  This isolates the transversality/detection input
+needed for nonconstant protected horizons. -/
+theorem negativeSourceRepairStep_rank_of_detecting
+    (edge : ι → E4) (source : ι → ℝ)
+    (s : QuantizedGate3State ι)
+    (hsound : NegativeSourceSound edge source s)
+    (hcomplete : NegativeSourceComplete edge source s) :
+    (negativeSourceRepairStep edge source s).defectRank edge <
+        s.defectRank edge ∨
+      (s.defectRank edge = 0 ∧
+        (negativeSourceRepairStep edge source s).defectRank edge = 0) := by
+  by_cases hnegative : ∃ i, source i < 0
+  · rw [negativeSourceRepairStep, dif_pos hnegative]
+    exact Or.inl <| defectRank_repairAt_lt edge s
+      (Classical.choose hnegative)
+      (hsound (Classical.choose hnegative) (Classical.choose_spec hnegative))
+  · rw [negativeSourceRepairStep, dif_neg hnegative]
+    have hrank : s.defectRank edge = 0 := by
+      by_contra hrank
+      exact hnegative (hcomplete hrank)
+    exact Or.inr ⟨hrank, hrank⟩
+
+/-- Iterate any time-dependent, state-dependent source through the generic
+negative-source repair rule. -/
+noncomputable def detectingSourceTrajectory
+    (edge : ι → E4)
+    (source : ℕ → QuantizedGate3State ι → ι → ℝ)
+    (initial : QuantizedGate3State ι) : ℕ → QuantizedGate3State ι
+  | 0 => initial
+  | n + 1 =>
+      let state := detectingSourceTrajectory edge source initial n
+      negativeSourceRepairStep edge (source n state) state
+
+@[simp]
+theorem detectingSourceTrajectory_succ
+    (edge : ι → E4)
+    (source : ℕ → QuantizedGate3State ι → ι → ℝ)
+    (initial : QuantizedGate3State ι) (n : ℕ) :
+    detectingSourceTrajectory edge source initial (n + 1) =
+      negativeSourceRepairStep edge
+        (source n (detectingSourceTrajectory edge source initial n))
+        (detectingSourceTrajectory edge source initial n) := by
+  rfl
+
+/-- Pointwise soundness and completeness of a state-dependent source produce
+the abstract `StoppableNatRankStep` required by the repaired Gate-3 route. -/
+theorem detectingSourceTrajectory_rank_step
+    (edge : ι → E4)
+    (source : ℕ → QuantizedGate3State ι → ι → ℝ)
+    (initial : QuantizedGate3State ι)
+    (hsound : ∀ n s, NegativeSourceSound edge (source n s) s)
+    (hcomplete : ∀ n s, NegativeSourceComplete edge (source n s) s) :
+    StoppableNatRankStep (fun n =>
+      (detectingSourceTrajectory edge source initial n).defectRank edge) := by
+  intro n
+  change
+    (detectingSourceTrajectory edge source initial (n + 1)).defectRank edge <
+        (detectingSourceTrajectory edge source initial n).defectRank edge ∨
+      ((detectingSourceTrajectory edge source initial n).defectRank edge = 0 ∧
+        (detectingSourceTrajectory edge source initial (n + 1)).defectRank edge = 0)
+  rw [detectingSourceTrajectory_succ]
+  exact negativeSourceRepairStep_rank_of_detecting edge
+    (source n (detectingSourceTrajectory edge source initial n))
+    (detectingSourceTrajectory edge source initial n)
+    (hsound n _) (hcomplete n _)
+
 /-- With the negative-distortion source, the explicit update strictly lowers
 rank until zero and then remains at zero. -/
 theorem negativeSourceRepairStep_rank
@@ -747,6 +831,8 @@ theorem sourceDrivenHarmonicBornProtectedWellFoundedGate4_closed
 
 #print axioms varianceSafeHorizonOrthogonalResidual_self_eq_zero
 #print axioms QuantizedGate3State.defectRank_repairAt_lt
+#print axioms QuantizedGate3State.negativeSourceRepairStep_rank_of_detecting
+#print axioms QuantizedGate3State.detectingSourceTrajectory_rank_step
 #print axioms QuantizedGate3State.sourceDrivenTrajectory_rank_step
 #print axioms harmonicBornProtectedRepairSource_eq_negativeDistortionSource
 #print axioms exists_harmonicBornProtectedRepairSource_neg_of_rank_ne_zero

@@ -465,6 +465,51 @@ theorem canonicalHarmonicBornShellTransition_ne_zero_of_physical_below_140
   exact harmonicCriticalTransition_im_ne_zero_of_physical_below_140
     hn hRank (currentUnlabeledCausalOrder n pathPrefix) child hPhysical
 
+/-- The rank-zero, rank-one, and rational-root audits combine to give exact
+physical support for the positive-radial representative throughout the whole
+finite range used by the displayed atlas.  Reflection supplies the second
+chirality, while the already-proved support theorem supplies the reverse
+implication. -/
+theorem canonicalHarmonicBornShellTransition_ne_zero_iff_physical_below_140
+    (chirality : Fin 2) {n : ℕ} (hRank : n < 140)
+    (pathPrefix : RankedGrowthPath CausalSetGrowthBranch n)
+    (child : CausalSetGrowthBranch n) :
+    (canonicalHarmonicCriticalBornShellGrowthLaw chirality).transition
+          n pathPrefix child ≠ 0 ↔
+      IsPhysicalCausalGrowthStep n pathPrefix child := by
+  have hPositive :
+      IsPhysicalCausalGrowthStep n pathPrefix child →
+        (canonicalHarmonicCriticalBornShellGrowthLaw (0 : Fin 2)).transition
+            n pathPrefix child ≠ 0 := by
+    intro hPhysical
+    by_cases hnZero : n = 0
+    · subst n
+      rw [canonicalHarmonicBornShellTransition_rankZero_eq_one]
+      norm_num
+    · by_cases hnOne : n = 1
+      · subst n
+        exact canonicalHarmonicBornShellTransition_rankOne_ne_zero_of_physical
+          pathPrefix child hPhysical
+      · exact
+          canonicalHarmonicBornShellTransition_ne_zero_of_physical_below_140
+            (by omega) hRank pathPrefix child hPhysical
+  constructor
+  · intro hNonzero
+    by_contra hNotPhysical
+    exact hNonzero
+      ((gate1HarmonicBornShellLaw_closed chirality).physicalSupport
+        n pathPrefix child hNotPhysical)
+  · intro hPhysical
+    fin_cases chirality
+    · exact hPositive hPhysical
+    · have hStar :
+          star
+              ((canonicalHarmonicCriticalBornShellGrowthLaw (0 : Fin 2)).transition
+                n pathPrefix child) ≠ 0 := by
+        simpa using hPositive hPhysical
+      rw [star_canonicalHarmonicCriticalBornShellTransition (0 : Fin 2)] at hStar
+      simpa [reflectedMicroscopicChirality] using hStar
+
 /-- Exact discharge of the formerly open 140-edge positive-radial atlas
 certificate in the positive chiral sector. -/
 theorem harmonicBornShellAtlasTransitionNonzero_zero :
@@ -500,6 +545,8 @@ theorem gate1HarmonicBornShellAtlasRealization_closed
       0 harmonicBornShellAtlasTransitionNonzero_zero
   · exact gate1HarmonicBornShellAtlasRealization_closed_of_transition_nonzero
       1 harmonicBornShellAtlasTransitionNonzero_one
+
+#print axioms canonicalHarmonicBornShellTransition_ne_zero_iff_physical_below_140
 
 end
 
