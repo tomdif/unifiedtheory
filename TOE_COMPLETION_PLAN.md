@@ -694,8 +694,14 @@ canonical positive-radial Born completion and closes its coherent/Born
 normalized, projective, strongly positive, reflection-conjugate law package;
 `KFCausalSetHarmonicBornTrajectoryMeasure.lean` gives its exact infinite
 trajectory law with almost-sure physical support. The first nontrivial PMF is
-exactly `(1/2, 1/2)`. The positive-radial representative's 140-edge atlas
-support remains the isolated finite real-radical cancellation target.
+exactly `(1/2, 1/2)`.
+`KFCausalSetHarmonicBornAtlasExactAudit.lean` now closes the positive-radial
+representative's 140-edge atlas. A rational-root and coefficient-height
+argument proves every physical transition at ranks `2` through `139` has
+nonzero imaginary coordinate and survives the radial correction; exact
+rank-zero/rank-one formulas close the initial edges. The bounded numerator
+computation uses `native_decide` (standard Lean compiler trust, no project
+axiom or `sorry`), and reflection supplies the second chirality.
 `KFCausalSetPhaseSafeHarmonicBornShell.lean` supplies an unconditional
 alternative by exploiting the otherwise free phase of the fixed-modulus Born
 scale. Finite phase avoidance produces a reflection-paired law with exact
@@ -730,8 +736,13 @@ The viable recovery replacement currently formalized in
 entirely. Its finite defect rank is zero exactly at quantized residual vacuum
 and canonical bridge transport, and a strict-decrease/absorbing-zero update
 reaches permanent operational recovery by stage equal to the initial rank.
-The remaining constructive problem is therefore to derive that discrete
-rank-step law from a concrete causal-growth update.
+`KFCausalCSpecHarmonicBornSourceDrivenRank.lean` now constructs one concrete
+solution: in the zero-horizon/zero-corrector sector, the protected source is
+minus the displayed distortion, selects a negative-source site, repairs its
+four quantized channels, strictly lowers rank away from zero, and stops at
+zero. This removes `rank_step` for that sector and supplies its Gate 4 data
+constructor, while leaving physical action-selection and general horizons
+open.
 `KFCausalCSpecHarmonicBornProtectedWellFoundedGate3.lean` supplies the harmonic
 weights and variance-safe protected source and proves finite recovery from
 that rank law. It deliberately does not assume that horizon protection alone
@@ -742,24 +753,28 @@ BDG operator handoff, with recovery permanently established from the explicit
 bound `defectRank 0`. `KFTOEWellFoundedFullClosureTarget.lean` replaces the
 stale capstone route by this finite one. Along that route, Gate 2, Gate 3, and
 Gate 4's density/operator/recovery subpackage are derived; the remaining
-independent targets are the source-driven rank update, Gate 1's displayed-atlas
-noncancellation if required, Gate 4's microscopic-to-chart/kernel and horizon
-bridges, the Gate 5 continuum/QFT bridges, and the Gate 6 physical
-cosmology/evaporation bridges. The harmonic Gate 4 theorem remains explicitly
+independent targets are physical selection/generalization of the constructed
+repair update, Gate 4's microscopic-to-chart/kernel and horizon bridges, the
+Gate 5 continuum/QFT bridges, and the Gate 6 physical cosmology/evaporation
+bridges. The harmonic Gate 4 theorem remains explicitly
 conditional on residual matching, affine density, and independent BDG kernel
 data.
 The harmonic specialization in `KFTOEWellFoundedFullClosureTarget.lean` uses a
 separate target type rather than pretending that the legacy fixed-law Gate 1
 certificate applies to the harmonic law. The vacuum action selects the raw
 harmonic schedule; its canonical positive-radial Born completion is a separate
-construction, and its 140-edge noncancellation check remains explicit in one
-chirality while reflection supplies the other. The capstone's Gate 3/4 input
+construction, and its 140-edge noncancellation is now exact in one chirality
+while reflection supplies the other. The exact-atlas capstone has no remaining
+Gate 1 premise. The capstone's Gate 3/4 input
 is now the actual harmonic protected-source handoff. The canonical infinite
 physical trajectory measure removes Gate
-6's bare causal-history measure hypothesis, but not the typed cosmological
-readout. The remaining frontier includes the source-driven rank update, Gate
-4 continuum/horizon dynamics, Gate 5 constructive QFT, and Gate 6's readout,
-Hayden--Preskill/late-structure/GW dynamics.
+6's bare causal-history measure hypothesis.
+`KFGate6HarmonicBornBinaryQQGReadout.lean` now gives one nonconstant measurable
+typed readout with an exact `(1/2, 1/2)` pushforward onto two positive QQG
+parameter records. This closes mathematical existence, not physical emergence
+or observational adequacy. The remaining frontier includes Gate 4 continuum/
+horizon dynamics, Gate 5 constructive QFT, and Gate 6's physically derived
+readout, Hayden--Preskill/late-structure/GW dynamics.
 It also remains to prove that the Gate 4 continuum, Gate 5 QFT, and Gate 6
 scenario are mutually compatible outputs of one shared microscopic model;
 the present theorem is an aggregate conditional ledger, not that unification
@@ -1348,29 +1363,26 @@ Open work:
 Current viable route (2026-08-25; this supersedes the historical numbered
 target inventory below):
 
-1. Derive the harmonic repair `rank_step` from an explicit source-driven causal
-   update. The variance-safe source and finite termination theorem are proved,
-   but their dynamical connection is not.
+1. Generalize or physically derive/select the explicit source-driven repair
+   beyond its proved zero-horizon, fixed-edge, whole-site sector. The sector's
+   `rank_step` and finite termination are now theorems; uniqueness and origin
+   from the microscopic action are not.
 2. Derive the physical-chart residual identities, density scaling, and BDG
    analytic kernel from the same harmonic histories. The current Gate 4
    handoff proves consequences of those inputs; it does not identify the
    independent kernel package with microscopic growth.
-3. Close Gate 1's displayed 140-edge positive-radial atlas by exact
-   real-radical noncancellation, or justify and select a different phase rule.
-   The law-level certificate built from the action-selected raw schedule and
-   its infinite trajectory measure are already closed.
-   `KFCausalSetPhaseSafeHarmonicBornShell.lean` proves that
-   a noncomputable reflection-paired full-support phase convention exists and
-   closes its own atlas, but that convention changes branch probabilities and
-   is not uniquely selected by the vacuum action.
+3. Strengthen the finite Gate 1 result into a physical derivation that connects
+   the selected microscopic law to the same shared continuum model used by
+   Gates 4--6. The positive-radial 140-edge atlas itself is now closed.
 4. Construct the continuum Hilbert/local-QFT limit, genuine Haag--Ruelle and
    spin-statistics dynamics, and Yang--Mills/Higgs/renormalization lift. The
    finite chamber `ScatteringConstruction` premise is now redundant, but that
    does not supply continuum scattering.
-5. Define a measurable causal-history-to-cosmology readout and prove its
-   physical admissibility, then derive scrambling/decoupling/recovery, late
-   structure, and gravitational-wave compatibility. The underlying harmonic
-   causal-growth probability measure is already constructed.
+5. Derive a physically justified causal-history-to-cosmology readout and its
+   QQG emergence/observational conditions, then derive scrambling/decoupling/
+   recovery, late structure, and gravitational-wave compatibility. A concrete
+   nonconstant measurable binary readout and its exact prior now exist, but are
+   not claimed to be the physical coarse graining.
 6. Keep the Gate 7 predictions frozen and compare them with real measurements.
    Lean can verify the prediction and analysis pipeline, but experimental
    agreement is not a theorem of the formal model.

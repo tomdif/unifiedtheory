@@ -125,17 +125,23 @@ finite/infinite projectivity, strong positivity, and reflection conjugacy.
 probability measure with exact finite Born marginals and almost-sure physical
 histories. `KFCausalSetHarmonicBornRankOneAudit.lean` verifies that its first
 genuine choice consists of two distinct branches of probability `1/2` each.
-The positive-radial representative's full 140-edge atlas support is still
-reduced to explicit finite real-radical noncancellation checks; law-level Gate
-1 does not depend on claiming those checks are already closed.
+`KFCausalSetHarmonicBornAtlasExactAudit.lean` now closes the positive-radial
+representative's full 140-edge atlas support. Its rational-root argument proves
+that every physical transition at ranks `2` through `139` has nonzero raw
+imaginary coordinate and therefore survives the real positive-radial
+correction; ranks zero and one are discharged by their exact formulas. The
+finite numerator bound is discharged by
+`native_decide`, with the standard Lean compiler-trust footprint
+`Lean.ofReduceBool`/`Lean.trustCompiler`; no project axiom or `sorry` is added.
+Reflection conjugacy transfers the result to chirality one.
 `KFCausalSetPhaseSafeHarmonicBornShell.lean` proves a second, unconditional
 full-support completion: the allowed Born scale has fixed modulus but a phase
 circle, and finitely many physical successors forbid only finitely many phases.
 A noncomputably selected reflection-paired phase therefore preserves every
 physical transition and the complete atlas. This is an added full-support
 phase-selection convention, not a gauge freedom or a unique consequence of the
-vacuum action; it can change branch Born probabilities and does not prove the
-positive-radial representative's remaining checks.
+vacuum action; it can change branch Born probabilities and remains distinct
+from the now-audited canonical positive-radial representative.
 
 The historical `KFTOEFullClosureTarget.lean` still records the older
 component-floor supplier chain for audit compatibility.  The normalization
@@ -186,9 +192,17 @@ input is that discrete rank-step law.
 observed weights built on the action-selected raw schedule, the variance-safe
 protected source, and this finite rank theorem. Lean derives normalized weights,
 first- and second-order horizon protection, and permanent exact recovery by the
-initial rank. The physical bridge still missing is an actual source-driven
-causal update that satisfies `rank_step`; source protection and rank descent
-are not silently identified.
+initial rank. `KFCausalCSpecHarmonicBornSourceDrivenRank.lean` now constructs
+one explicit source-driven sector rather than assuming `rank_step`: with zero
+horizon observable and zero corrector, the protected source is exactly minus
+the displayed physical distortion; a negative-source site is repaired, the
+natural defect rank strictly falls away from zero, and zero is absorbing. It
+also wires this construction into the Gate 4 handoff without a rank premise.
+This is an existence dynamics with fixed edges, whole-site repairs, and
+classical site choice—not a proof that the microscopic action uniquely selects
+the update. The same module proves why an unrestricted result needs an extra
+condition: a nonzero-variance horizon projection annihilates distortion
+parallel to the horizon observable.
 `KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff.lean` carries this finite
 theorem into the scheduled chart and BDG operator interface, deriving
 vanishing chart distortion and an explicit Gate 4 recovery deadline without
@@ -200,16 +214,19 @@ package; the continuum operator is not yet derived from harmonic histories.
 `KFTOEWellFoundedFullClosureTarget.lean` installs it as the viable seven-gate
 route: Gates 2 and 3, plus Gate 4 density/operator/recovery, are derived from
 the displayed supplier data. Its harmonic alternative uses a distinct target
-type so it cannot borrow the legacy fixed-law Gate 1 atlas certificate. It
-still requires the exact 140-edge positive-radial noncancellation checks in
-one chirality; reflection conjugacy proves the other. Its Gate 3/4 supplier is
-now the harmonic protected-source handoff, not the generic analogue. Gate 6's
+type so it cannot borrow the legacy fixed-law Gate 1 atlas certificate. The
+exact-atlas capstone theorem removes that finite Gate 1 premise entirely;
+reflection conjugacy supplies the second chirality. Its Gate 3/4 supplier is
+the harmonic protected-source handoff, and the explicit zero-horizon source
+sector can instantiate its rank dynamics while leaving the chart/kernel data
+visible. Gate 6's
 bare causal-trajectory-measure slot is supplied by
 the canonical probability measure on infinite physical causal-growth
 trajectories, not by a cosmological readout theorem. Remaining inputs include
-the concrete source-driven rank update carried by the supplier, the Gate 4
-chart/kernel and horizon-dynamics bridges, Gate 5 constructive continuum QFT,
-and Gate 6 readout/evaporation/late-cosmology/GW dynamics. Gate 7 is a
+the Gate 4 chart/kernel and horizon-dynamics bridges, physical derivation or
+selection of the constructed Gate 3 update beyond its proved sector, Gate 5
+constructive continuum QFT, and Gate 6 emergence/evaporation/late-cosmology/GW
+dynamics. Gate 7 is a
 preregistration-protocol audit, not a claim that experiments have passed.
 The ledger also does not yet prove that its Gate 4 continuum, Gate 5 QFT, and
 Gate 6 scenario are limits or readouts of one shared microscopic model.
@@ -223,7 +240,14 @@ Yang--Mills/Higgs/renormalization lifts remain open.
 bare causal-growth-measure slot using the harmonic trajectory law. It then
 states the missing cosmological bridge with actual types: a measurable readout
 from causal histories to cosmological initial states and an almost-sure
-physical-admissibility theorem. Hayden--Preskill dynamics, late structure, and
+physical-admissibility theorem.
+`KFGate6HarmonicBornBinaryQQGReadout.lean` constructs a concrete nonconstant
+instance: the first genuine causal choice maps measurably to two distinct
+positive-parameter QQG records, and their induced singleton probabilities are
+exactly `1/2` and `1/2`. This closes bare typed existence and excludes the
+constant-map loophole; it does not prove that the binary map is the physical
+cosmological coarse graining or that its records satisfy the QQG emergence and
+observational conditions. Hayden--Preskill dynamics, late structure, and
 gravitational-wave compatibility remain independent physical obligations.
 
 Machine-checked additions now cover:

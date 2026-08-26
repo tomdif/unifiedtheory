@@ -15,6 +15,7 @@ import UnifiedTheory.Audit.KFTOEFullClosureTarget
 import UnifiedTheory.Audit.KFCausalCSpecMicroscopicGate3WellFoundedGate4Handoff
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 import UnifiedTheory.Audit.KFTOEGate1HarmonicBornShellSelection
+import UnifiedTheory.Audit.KFCausalSetHarmonicBornAtlasExactAudit
 import UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 
 set_option autoImplicit false
@@ -37,6 +38,7 @@ open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 open UnifiedTheory.Audit.KFCausalCSpecPhysicalChiralGrowthRealization
 open UnifiedTheory.Audit.KFCausalSetSequentialGrowth
 open UnifiedTheory.Audit.KFTOEGate1HarmonicBornShellSelection
+open UnifiedTheory.Audit.KFCausalSetHarmonicBornAtlasExactAudit
 open UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 open UnifiedTheory.Audit.KFTOEFullClosureTarget
@@ -372,6 +374,31 @@ theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed
       gate6_cosmologyBlackHole_closed_of_actionSelectedHarmonicBornCausalGrowthMeasure
         S hHP hlate hgw,
       gate7_externalTests_closed_from_preRegistrationLedger⟩
+
+/-- The exact rational-root atlas audit removes the last finite Gate 1 premise
+from the harmonic capstone.  The remaining arguments are precisely the
+continuum/horizon, Gate 5, and physical Gate 6 bridge obligations displayed in
+the theorem; `H` still contains the separately supplied Gate 4 chart/kernel
+data and, unless instantiated by the source-driven sector, its Gate 3 update. -/
+theorem actionSelectedHarmonicWellFoundedTOEClosureTargets_closed_exactAtlas
+    {gate5Targets : Gate5QFTStandardModelIRTargets}
+    {S : UnifiedTheory.Cosmology.QQG.QQGScenario}
+    {lateStructureFormation gravitationalWaveCompatibility : Prop}
+    {errorScale : ℝ}
+    {horizonEstimatorConvergence nullBalanceFromDynamics : Prop}
+    (hhorizon : horizonEstimatorConvergence)
+    (hnull : nullBalanceFromDynamics)
+    (hgate5 : Gate5QFTStandardModelIRClosed gate5Targets)
+    (hHP : Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed)
+    (hlate : lateStructureFormation)
+    (hgw : gravitationalWaveCompatibility) :
+    ActionSelectedHarmonicTOEClosureClosed
+      (actionSelectedHarmonicWellFoundedTOEClosureTargets H gate5Targets S
+        lateStructureFormation gravitationalWaveCompatibility errorScale
+        horizonEstimatorConvergence nullBalanceFromDynamics) := by
+  exact actionSelectedHarmonicWellFoundedTOEClosureTargets_closed H
+    harmonicBornShellAtlasTransitionNonzero_zero
+    hhorizon hnull hgate5 hHP hlate hgw
 
 #print axioms gate3_wellFoundedExactRecovery_closed
 #print axioms wellFoundedGate4HorizonEinsteinAnalytic_closed

@@ -5740,6 +5740,11 @@ import UnifiedTheory.Audit.KFTOEGate1OrderCouplingSelection
 -- Born normalized, projective, strongly positive, and reflection conjugate.
 import UnifiedTheory.Audit.KFCausalSetIntrinsicPairCouplingSelection
 import UnifiedTheory.Audit.KFTOEGate1HarmonicBornShellSelection
+-- Exact rational-root audit of the canonical positive-radial representative:
+-- physical transitions at ranks 2--139 have nonzero raw imaginary part, while
+-- exact root/rank-one formulas close the initial edges; reflection then gives
+-- the full atlas in both chiralities.
+import UnifiedTheory.Audit.KFCausalSetHarmonicBornAtlasExactAudit
 -- Alternative full-support phase convention: Born compatibility fixes the
 -- scale modulus, and finite phase avoidance selects a reflection-paired phase
 -- that preserves every physical transition and the 140-edge atlas.  This is
@@ -5829,6 +5834,9 @@ import UnifiedTheory.Audit.KFCausalCSpecCompleteChiralPositiveRankObservation
 -- dynamics; its Gate 4 handoff keeps independent chart/kernel bridges visible.
 import UnifiedTheory.Audit.KFCausalCSpecVarianceSafeHorizonProjection
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
+-- Constructive zero-horizon sector: the actual protected source drives an
+-- explicit site-repair trajectory whose natural Gate 3 rank terminates.
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornSourceDrivenRank
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 -- Lift the normalization contradiction to the legacy named Gate 3 target and
 -- its scheduled-kernel Gate 4 wrapper.
@@ -5846,4 +5854,7 @@ import UnifiedTheory.Audit.KFTOEStoppableFullClosureTarget
 -- typed cosmological readout/dynamics remain explicit physical bridges.
 import UnifiedTheory.Audit.KFGate5ChamberScatteringPremiseRemoval
 import UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
+-- Concrete nonconstant measurable rank-one readout into a binary positive-QQG
+-- sector, together with its induced admissible cosmological initial measure.
+import UnifiedTheory.Audit.KFGate6HarmonicBornBinaryQQGReadout
 import UnifiedTheory.LayerC.ContextualFraction
