@@ -36,8 +36,11 @@ consistency as empirical proof:
   readout of the action-selected harmonic Born law is square-root lifted to a
   canonical nonnegative 16-component substrate state.  The resulting finite
   local star-algebra net is isotonic, its state is normalized and positive,
-  its computational effects recover the causal weights exactly, its
-  empty/full endpoint algebras and finite-union additivity are exact, its
+  its computational effects recover the causal weights exactly, and those
+  expectations are the exact readout pushforward of the fixed-parent
+  conditional harmonic stage PMF.  This last identity is not an unconditional
+  trajectory rank marginal.  The net's empty/full endpoint algebras and
+  finite-union additivity are exact, its
   regional state restrictions are normalized and positive, and the full
   unital algebras of disjoint finite regions commute elementwise.  The audit
   also proves that genuinely supported disjoint-region products vanish in the

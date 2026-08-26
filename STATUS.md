@@ -8,6 +8,8 @@
 > nonzero operator.  Gate 5 now derives canonical nonnegative 16-component
 > local states from harmonic Born weights, builds an isotonic finite local
 > star-algebra net, and proves positivity, normalization, exact Born readout,
+> exact provenance from the readout pushforward of the fixed-parent
+> conditional harmonic stage PMF,
 > empty/full endpoint algebras, finite-union additivity, normalized positive
 > regional restrictions, and elementwise commutativity of the full unital
 > algebras on disjoint finite regions.  Supported cross-region products
@@ -15,6 +17,7 @@
 > microcausality is neither a tensor-product correlation net nor continuum
 > spacelike locality.  Equivariance between canonical incidence transport and
 > the 16-outcome Born readout also remains an explicit finite obligation.
+> The stage-PMF theorem is not an unconditional trajectory rank marginal.
 > Gate 6 now has fixed numerical QQG semantics, typed external result
 > records, disjoint pass/refute rules, and exact structural binary predictions,
 > but no fabricated evidence.  A joint-pushforward theorem locks Gate-4/5/6

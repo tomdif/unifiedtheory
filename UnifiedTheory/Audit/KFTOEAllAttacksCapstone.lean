@@ -9,8 +9,10 @@
     the exact Gate-4 recovery stage and the causal Born local state/net share
     one chirality and site type, canonical incidence transport is recovered,
     and the local state/net is positive, normalized, isotonic, additive, local
-    on disjoint finite regions, and Born-compatible.  Its pointwise-algebra
-    zero-product boundary is retained explicitly.
+    on disjoint finite regions, and Born-compatible.  The local computational
+    expectations are identified with the fixed-parent conditional stage-PMF
+    pushforward, and the pointwise-algebra zero-product boundary is retained
+    explicitly.
 
   * `fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG` is the honest
     physical frontier.  It removes arbitrary QQG predicate meanings by using
@@ -27,6 +29,7 @@ import UnifiedTheory.Audit.KFCausalCSpecHarmonicHistoryGate4DerivedInputs
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornPMFProvenance
 import UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 import UnifiedTheory.Audit.KFTOESharedHarmonicMicroscopicModel
 import UnifiedTheory.Audit.KFTOEWellFoundedFullClosureTarget
@@ -45,11 +48,14 @@ open UnifiedTheory.Audit.KFCausalCSpecBridgeDefectObservable
 open UnifiedTheory.Audit.KFCausalCSpecContinuationProfile
 open UnifiedTheory.Audit.KFCausalCSpecGlobalization
 open UnifiedTheory.Audit.KFCausalCSpecHauptvermutungPhysicalBridge
+open UnifiedTheory.Audit.KFCausalBornObservedWeight
+open UnifiedTheory.Audit.KFCausalSetHarmonicBornTrajectoryMeasure
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
+open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornPMFProvenance
 open UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 open UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 open UnifiedTheory.Audit.KFTOESevenGateAttack
@@ -106,6 +112,14 @@ structure HarmonicGate45FiniteBridgeClosed
       (harmonicLocalStateFunctional chirality R i
         (computationalEffectAt i k)).re =
           harmonicReadoutWeight chirality R i k
+  conditionalStagePMFProvenance :
+    ∀ i k,
+      (causalBornStagePMF (canonicalHarmonicBornLaw chirality)
+          (R.rankAt i) (R.parentSchedule (R.rankAt i))).map
+          (R.observe (R.rankAt i)) k =
+        ENNReal.ofReal
+          ((harmonicLocalStateFunctional chirality R i
+            (computationalEffectAt i k)).re)
   causalBornWeightsNormalized :
     ∀ i,
       ∑ k,
@@ -170,6 +184,8 @@ theorem harmonicGate45FiniteBridge_closed
       canonicalIncidenceTransport := hRecovered.candidate_transport
       causalBornWeights :=
         harmonicLocalStateFunctional_computationalEffect chirality R
+      conditionalStagePMFProvenance :=
+        harmonicCausalBornStagePMF_map_readout_eq_local_expectation chirality R
       causalBornWeightsNormalized :=
         harmonicLocalStateFunctional_computationalEffects_normalized chirality R
       finiteNetIsotony := fun h => finiteLocalObservableAlgebra_isotony h

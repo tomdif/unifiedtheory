@@ -1729,7 +1729,9 @@ The two-scale defect cocycle and delayed-loss witness are in
 
 The latest audit pass derives a history-indexed Gate-4 density and repaired
 chart-certificate sequence, constructs Gate-5 finite local states and an
-isotonic star-algebra net from actual harmonic Born weights, proves its
+isotonic star-algebra net from actual harmonic Born weights, identifies each
+local computational probability with the readout pushforward of the
+fixed-parent conditional harmonic stage PMF, proves its
 empty/full endpoint algebras and finite-union additivity, proves normalized
 positive regional state restrictions, and proves that its full unital
 algebras commute on disjoint finite regions.  The same audit records that
@@ -1743,6 +1745,8 @@ minimum-distance identification, noise correction, real-margin recovery, and
 finite probe cutoffs.
 
 These are finite or conditional theorems, not an experimental proof of a TOE.
+The stage-PMF identity is conditional on the parent selected by the readout;
+it is not an unconditional rank marginal of the infinite trajectory measure.
 The explicit two-event chart and zero BDG profile only prove interface
 consistency; the zero profile is formally excluded from the nonzero physical
 BDG endpoint.  Continuum QFT, the physical coarse-graining maps, nonzero BDG
