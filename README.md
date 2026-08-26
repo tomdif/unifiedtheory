@@ -1729,7 +1729,8 @@ The two-scale defect cocycle and delayed-loss witness are in
 
 The latest audit pass derives a history-indexed Gate-4 density and repaired
 chart-certificate sequence, constructs Gate-5 finite local states and an
-isotonic star-algebra net from actual harmonic Born weights, fixes falsifiable
+isotonic star-algebra net from actual harmonic Born weights, proves that its
+full unital algebras commute on disjoint finite regions, fixes falsifiable
 numerical semantics for every QQG emergence claim, and proves that three
 measurable Gate-4/5/6 readouts of one harmonic trajectory law are marginals of
 one joint probability measure.  A companion finite-probe-code layer imports
@@ -1741,7 +1742,9 @@ These are finite or conditional theorems, not an experimental proof of a TOE.
 The explicit two-event chart and zero BDG profile only prove interface
 consistency; the zero profile is formally excluded from the nonzero physical
 BDG endpoint.  Continuum QFT, the physical coarse-graining maps, nonzero BDG
-identification, QQG evidence, and observations remain required.  The exact
+identification, a continuum embedding that turns finite disjointness into
+physical spacelike separation, QQG evidence, and observations remain
+required.  The exact
 frozen attack protocol is
 [`TOE_GATE456_ATTACK_LEDGER.json`](TOE_GATE456_ATTACK_LEDGER.json).
 

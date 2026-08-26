@@ -7,8 +7,10 @@
 > `HasNonzeroBDG4DTarget` prevents that benchmark from counting as the physical
 > nonzero operator.  Gate 5 now derives canonical nonnegative 16-component
 > local states from harmonic Born weights, builds an isotonic finite local
-> star-algebra net, and proves positivity, normalization, and exact Born
-> readout.  Gate 6 now has fixed numerical QQG semantics, typed external result
+> star-algebra net, and proves positivity, normalization, exact Born readout,
+> and elementwise commutativity of the full unital algebras on disjoint finite
+> regions.  This finite microcausality is not yet continuum spacelike locality.
+> Gate 6 now has fixed numerical QQG semantics, typed external result
 > records, disjoint pass/refute rules, and exact structural binary predictions,
 > but no fabricated evidence.  A joint-pushforward theorem locks Gate-4/5/6
 > readouts to one harmonic trajectory law.  The local `prime-cymatics` project

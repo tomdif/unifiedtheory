@@ -36,11 +36,12 @@
       "formal_source": [
         "UnifiedTheory/Audit/KFCausalCSpecQFTSMInterface.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornLocalNet.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornFiniteLocality.lean",
         "UnifiedTheory/Audit/KFFiniteProbeCode.lean"
       ],
-      "locked_claim": "A local quantum state and finite isotonic net constructed from the causal Born data must preserve positivity, unit normalization, incidence transport compatibility, and the Born rule before any continuum-QFT claim is made.",
-      "acceptance_rule": "All finite states are positive and normalized; every registered inclusion satisfies exact isotony; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Continuum acceptance additionally requires a separately frozen scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
-      "falsification_rule": "A positivity, normalization, isotony, or Born mismatch rejects the finite construction. Absence of the separately specified continuum limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
+      "locked_claim": "A local quantum state and finite isotonic net constructed from the causal Born data must preserve positivity, unit normalization, incidence transport compatibility, disjoint-region finite microcausality, and the Born rule before any continuum-QFT claim is made.",
+      "acceptance_rule": "All finite states are positive and normalized; every registered inclusion satisfies exact isotony; the full unital local algebras commute elementwise for every registered disjoint-region pair; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Continuum acceptance additionally requires a separately frozen scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
+      "falsification_rule": "A positivity, normalization, isotony, finite-locality, or Born mismatch rejects the finite construction. Absence of the separately specified continuum embedding and limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
       "evidence_required": [
         "finite carrier and region definitions",
         "state matrices or amplitudes",

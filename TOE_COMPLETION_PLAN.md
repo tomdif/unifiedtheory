@@ -36,7 +36,10 @@ consistency as empirical proof:
   readout of the action-selected harmonic Born law is square-root lifted to a
   canonical nonnegative 16-component substrate state.  The resulting finite
   local star-algebra net is isotonic, its state is normalized and positive,
-  and its computational effects recover the causal weights exactly.  The
+  its computational effects recover the causal weights exactly, and the full
+  unital algebras of disjoint finite regions commute elementwise.  This last
+  result is finite microcausality; it does not identify finite disjointness
+  with continuum spacelike separation.  The
   continuum AQFT/Standard-Model completion remains a fixed claim ledger with
   no built-in witness.
 - Gate 6 fixes numerical meanings for all six former QQG emergence predicates,
