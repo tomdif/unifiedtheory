@@ -37,15 +37,19 @@
         "UnifiedTheory/Audit/KFCausalCSpecQFTSMInterface.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornLocalNet.lean",
         "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornFiniteLocality.lean",
+        "UnifiedTheory/Audit/KFCausalCSpecHarmonicBornFiniteNetAdditivity.lean",
         "UnifiedTheory/Audit/KFFiniteProbeCode.lean"
       ],
-      "locked_claim": "A local quantum state and finite isotonic net constructed from the causal Born data must preserve positivity, unit normalization, incidence transport compatibility, disjoint-region finite microcausality, and the Born rule before any continuum-QFT claim is made.",
-      "acceptance_rule": "All finite states are positive and normalized; every registered inclusion satisfies exact isotony; the full unital local algebras commute elementwise for every registered disjoint-region pair; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Continuum acceptance additionally requires a separately frozen scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
-      "falsification_rule": "A positivity, normalization, isotony, finite-locality, or Born mismatch rejects the finite construction. Absence of the separately specified continuum embedding and limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
+      "locked_claim": "A local quantum state and finite net constructed from the causal Born data must preserve positivity, unit normalization, exact isotony and finite-union additivity, a declared incidence-transport/readout commuting square, disjoint-region finite microcausality, and the Born rule before any continuum-QFT claim is made.",
+      "acceptance_rule": "All ambient and regional finite states are positive and normalized; the empty/full endpoint algebras and every registered inclusion and finite union satisfy the exact net identities; the full unital local algebras commute elementwise for every registered disjoint-region pair; a preregistered incidence action and Born readout satisfy an explicit commuting square; computational/projective Born probabilities agree with their causal weights to absolute error <= 1e-12. Any zero cross-region products caused by the pointwise algebra must be reported rather than presented as tensor-product correlations. Continuum acceptance additionally requires a separately frozen nondegenerate scaling limit satisfying the named locality, covariance, spectrum, and reconstruction conditions.",
+      "falsification_rule": "A positivity, normalization, endpoint, isotony, finite-additivity, finite-locality, incidence-equivariance, or Born mismatch rejects the finite construction. Absence of a nondegenerate correlation algebra or the separately specified continuum embedding and limit leaves Gate 5 open and may not be reported as a successful physical QFT derivation.",
       "evidence_required": [
         "finite carrier and region definitions",
         "state matrices or amplitudes",
         "inclusion maps",
+        "regional restriction and finite-union algebra checks",
+        "incidence-action/Born-readout commuting diagram",
+        "cross-region product and correlation audit",
         "raw Born comparisons",
         "continuum scaling prescription when claimed"
       ],

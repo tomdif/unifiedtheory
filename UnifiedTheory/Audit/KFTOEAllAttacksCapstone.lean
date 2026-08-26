@@ -8,8 +8,9 @@
   * `HarmonicGate45FiniteBridgeClosed` is unconditional finite mathematics:
     the exact Gate-4 recovery stage and the causal Born local state/net share
     one chirality and site type, canonical incidence transport is recovered,
-    and the local state/net is positive, normalized, isotonic, local on
-    disjoint finite regions, and Born-compatible.
+    and the local state/net is positive, normalized, isotonic, additive, local
+    on disjoint finite regions, and Born-compatible.  Its pointwise-algebra
+    zero-product boundary is retained explicitly.
 
   * `fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG` is the honest
     physical frontier.  It removes arbitrary QQG predicate meanings by using
@@ -25,6 +26,7 @@
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicHistoryGate4DerivedInputs
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
 import UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 import UnifiedTheory.Audit.KFTOESharedHarmonicMicroscopicModel
 import UnifiedTheory.Audit.KFTOEWellFoundedFullClosureTarget
@@ -47,6 +49,7 @@ open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornProtectedWellFoundedGate3
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornWellFoundedGate4Handoff
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
+open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
 open UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 open UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 open UnifiedTheory.Audit.KFTOESevenGateAttack
@@ -81,6 +84,7 @@ variable
 
 /-! ## 1. Gate 4 recovery -> causal Born finite local net -/
 
+open Classical in
 /-- Finite facts that genuinely follow when the Gate-5 causal readout is
 placed on the same recovered site type as the harmonic Gate-4 history.  The
 readout remains a physical coarse-graining choice, but the state is no longer
@@ -111,6 +115,15 @@ structure HarmonicGate45FiniteBridgeClosed
     ∀ {first second : Finset ι}, first ⊆ second →
       finiteLocalObservableAlgebra first ≤
         finiteLocalObservableAlgebra second
+  finiteNetEmptyRegion :
+    finiteLocalObservableAlgebra (∅ : Finset ι) = ⊥
+  finiteNetFullRegion :
+    finiteLocalObservableAlgebra (Finset.univ : Finset ι) = ⊤
+  finiteNetAdditivity :
+    ∀ first second : Finset ι,
+      finiteLocalObservableAlgebra (first ∪ second) =
+        finiteLocalObservableAlgebra first ⊔
+          finiteLocalObservableAlgebra second
   finiteNetLocality :
     ∀ {first second : Finset ι}, Disjoint first second →
       ∀ (firstObservable : finiteLocalObservableAlgebra first)
@@ -119,6 +132,27 @@ structure HarmonicGate45FiniteBridgeClosed
             (secondObservable : FiniteFieldObservable ι) =
           (secondObservable : FiniteFieldObservable ι) *
             (firstObservable : FiniteFieldObservable ι)
+  regionalStatesNormalized :
+    ∀ i region,
+      harmonicRegionStateFunctional chirality R i region 1 = 1
+  regionalStatesPositive :
+    ∀ i region
+      (observable : finiteLocalObservableAlgebra region),
+      0 ≤ (harmonicRegionStateFunctional chirality R i region
+        (star observable * observable)).re
+  regionalStatesIsotonyCompatible :
+    ∀ i {first second : Finset ι} (h : first ⊆ second)
+      (observable : finiteLocalObservableAlgebra first),
+      harmonicRegionStateFunctional chirality R i second
+          (StarSubalgebra.inclusion
+            (finiteLocalObservableAlgebra_isotony h) observable) =
+        harmonicRegionStateFunctional chirality R i first observable
+  supportedDisjointProductsVanish :
+    ∀ {first second : Finset ι}, Disjoint first second →
+      ∀ {firstObservable secondObservable : FiniteFieldObservable ι},
+        firstObservable ∈ regionSupportedObservables first →
+        secondObservable ∈ regionSupportedObservables second →
+        firstObservable * secondObservable = 0
   localStatePositive :
     ∀ i (observable : FiniteFieldObservable ι),
       0 ≤ (harmonicLocalStateFunctional chirality R i
@@ -139,8 +173,19 @@ theorem harmonicGate45FiniteBridge_closed
       causalBornWeightsNormalized :=
         harmonicLocalStateFunctional_computationalEffects_normalized chirality R
       finiteNetIsotony := fun h => finiteLocalObservableAlgebra_isotony h
+      finiteNetEmptyRegion := finiteLocalObservableAlgebra_empty_eq_bot
+      finiteNetFullRegion := finiteLocalObservableAlgebra_univ_eq_top
+      finiteNetAdditivity := finiteLocalObservableAlgebra_union_eq_sup
       finiteNetLocality := fun h =>
         finiteLocalObservableAlgebra_commute_of_disjoint h
+      regionalStatesNormalized :=
+        harmonicRegionStateFunctional_normalized chirality R
+      regionalStatesPositive :=
+        harmonicRegionStateFunctional_positive chirality R
+      regionalStatesIsotonyCompatible :=
+        harmonicRegionStateFunctional_isotony_compatible chirality R
+      supportedDisjointProductsVanish := fun h =>
+        regionSupportedObservables_mul_eq_zero_of_disjoint h
       localStatePositive :=
         harmonicLocalStateFunctional_positive chirality R }
 

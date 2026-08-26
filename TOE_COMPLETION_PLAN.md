@@ -36,10 +36,14 @@ consistency as empirical proof:
   readout of the action-selected harmonic Born law is square-root lifted to a
   canonical nonnegative 16-component substrate state.  The resulting finite
   local star-algebra net is isotonic, its state is normalized and positive,
-  its computational effects recover the causal weights exactly, and the full
-  unital algebras of disjoint finite regions commute elementwise.  This last
-  result is finite microcausality; it does not identify finite disjointness
-  with continuum spacelike separation.  The
+  its computational effects recover the causal weights exactly, its
+  empty/full endpoint algebras and finite-union additivity are exact, its
+  regional state restrictions are normalized and positive, and the full
+  unital algebras of disjoint finite regions commute elementwise.  The audit
+  also proves that genuinely supported disjoint-region products vanish in the
+  present pointwise algebra.  These results give finite additive locality, not
+  a tensor-product many-body net or continuum spacelike separation.  A typed
+  incidence-transport/Born-readout commuting square remains open.  The
   continuum AQFT/Standard-Model completion remains a fixed claim ledger with
   no built-in witness.
 - Gate 6 fixes numerical meanings for all six former QQG emergence predicates,

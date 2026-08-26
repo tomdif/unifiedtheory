@@ -1729,9 +1729,13 @@ The two-scale defect cocycle and delayed-loss witness are in
 
 The latest audit pass derives a history-indexed Gate-4 density and repaired
 chart-certificate sequence, constructs Gate-5 finite local states and an
-isotonic star-algebra net from actual harmonic Born weights, proves that its
-full unital algebras commute on disjoint finite regions, fixes falsifiable
-numerical semantics for every QQG emergence claim, and proves that three
+isotonic star-algebra net from actual harmonic Born weights, proves its
+empty/full endpoint algebras and finite-union additivity, proves normalized
+positive regional state restrictions, and proves that its full unital
+algebras commute on disjoint finite regions.  The same audit records that
+genuinely supported cross-region products vanish in the present pointwise
+algebra, so this is not yet a tensor-product many-body net.  It also fixes
+falsifiable numerical semantics for every QQG emergence claim, and proves that three
 measurable Gate-4/5/6 readouts of one harmonic trajectory law are marginals of
 one joint probability measure.  A companion finite-probe-code layer imports
 the useful measurement architecture of the local `prime-cymatics` project:
@@ -1743,8 +1747,9 @@ The explicit two-event chart and zero BDG profile only prove interface
 consistency; the zero profile is formally excluded from the nonzero physical
 BDG endpoint.  Continuum QFT, the physical coarse-graining maps, nonzero BDG
 identification, a continuum embedding that turns finite disjointness into
-physical spacelike separation, QQG evidence, and observations remain
-required.  The exact
+physical spacelike separation, a typed commuting square between incidence
+transport and the 16-outcome Born readout, a nondegenerate correlation
+algebra, QQG evidence, and observations remain required.  The exact
 frozen attack protocol is
 [`TOE_GATE456_ATTACK_LEDGER.json`](TOE_GATE456_ATTACK_LEDGER.json).
 

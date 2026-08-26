@@ -5859,12 +5859,15 @@ import UnifiedTheory.Audit.KFCausalCSpecHauptvermutungDiagonalNoGo
 import UnifiedTheory.Audit.KFCausalCSpecQFTSMInterface
 -- The finite Gate-5 state is now derived from harmonic Born readout weights;
 -- its sitewise matrix algebras form an isotonic net with a normalized positive
--- state, exact Born compatibility, and elementwise commutativity for disjoint
--- finite regions.  The general finite-probe code adds
+-- state, exact Born compatibility, finite additivity, and elementwise
+-- commutativity for disjoint finite regions.  Supported cross-region products
+-- also vanish, exposing the current pointwise-algebra boundary.  The general
+-- finite-probe code adds
 -- noise-robust Hamming/real-margin recovery, cutoff, adaptive, and Pauli
 -- tomography theorems without assuming a prime-based physical spectrum.
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
 import UnifiedTheory.Audit.KFFiniteProbeCode
 import UnifiedTheory.Audit.KFFiniteProbeAdaptive
 -- Lift the normalization contradiction to the legacy named Gate 3 target and
