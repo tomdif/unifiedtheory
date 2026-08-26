@@ -104,7 +104,7 @@ theorem tensorObservableAt_mul_apply_of_ne
   by_cases hOutput : Function.update middle j (output j) = output
   · rw [if_pos]
     · rw [Finset.sum_eq_single middle]
-      · simp [tensorObservableAt, middle, hOutput, hij]
+      · simp [tensorObservableAt, middle, hOutput, hij.symm]
       · intro other _ hOther
         simp only [tensorObservableAt]
         by_cases hFirst : Function.update input i (other i) = other
@@ -145,7 +145,7 @@ theorem tensorObservableAt_mul_comm_of_ne
   rw [tensorObservableAt_mul_apply_of_ne hij]
   rw [tensorObservableAt_mul_apply_of_ne hij.symm]
   rw [Function.update_comm hij (output i) (output j) input]
-  exact mul_comm _ _
+  simp only [mul_comm]
 
 /-- The computational-basis projector lifted at one many-body site. -/
 def manyBodyComputationalProjector
@@ -167,13 +167,20 @@ theorem manyBodyComputationalProjector_mul_ne_zero_of_ne
     else 0
   intro hZero
   have hEntry := congrFun (congrFun hZero configuration) configuration
+  simp only [manyBodyComputationalProjector] at hEntry
   rw [tensorObservableAt_mul_apply_of_ne hij] at hEntry
   have hFirst : configuration i = firstOutcome := by
     simp [configuration]
   have hSecond : configuration j = secondOutcome := by
-    simp [configuration, hij]
-  simp [manyBodyComputationalProjector, hFirst, hSecond,
-    computationalProjector] at hEntry
+    simp [configuration, hij.symm]
+  have hConfigurationFixed :
+      Function.update
+          (Function.update configuration i (configuration i))
+          j (configuration j) = configuration := by
+    simp
+  rw [if_pos hConfigurationFixed] at hEntry
+  rw [hFirst, hSecond] at hEntry
+  simp [computationalProjector] at hEntry
 
 /-! ## Regional generators and isotony -/
 

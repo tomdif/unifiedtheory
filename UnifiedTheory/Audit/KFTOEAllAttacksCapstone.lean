@@ -3,7 +3,7 @@
 
   INTEGRATION OF THE GATE 4--6 ATTACKS
 
-  This file records two deliberately different endpoints.
+  This file records three deliberately different endpoints.
 
   * `HarmonicGate45FiniteBridgeClosed` is unconditional finite mathematics:
     the exact Gate-4 recovery stage and the causal Born local state/net share
@@ -14,11 +14,18 @@
     pushforward, and the pointwise-algebra zero-product boundary is retained
     explicitly.
 
-  * `fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG` is the honest
-    physical frontier.  It removes arbitrary QQG predicate meanings by using
-    the fixed numerical protocol ledger and refuses the zero-BDG benchmark by
-    requiring an identified nonzero target.  Continuum Gate-4, Gate-5, Gate-6,
-    and empirical evidence remain explicit hypotheses.
+  * `HarmonicGate45FiniteEquivariantManyBodyClosed` is the refined finite
+    Gate-4/5 endpoint.  Given the still-explicit incidence-equivariant readout,
+    it adds the directional permutation assignment on sixteen outcomes and
+    Born invariance from both its commuting square and stage-PMF preservation
+    fields.  Its separate finite many-body matrix algebra has commuting
+    distinct one-site lifts and nonzero cross-site projector products.
+
+  * `fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG` is retained
+    only as a legacy implication.  Its universal Hayden-gap premise is proved
+    contradictory in `KFGate6PhysicalBoundaryAudit`; the reachable physical
+    Gate-6 frontier is therefore the repaired typed interface in
+    `KFGate6ActionSelectedHarmonicBornPhysicalFrontier`.
 
   No empirical evidence value is constructed here.
 
@@ -30,6 +37,9 @@ import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
 import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornPMFProvenance
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornIncidenceEquivariance
+import UnifiedTheory.Audit.KFCausalCSpecHarmonicBornManyBodyNet
+import UnifiedTheory.Audit.KFGate6PhysicalBoundaryAudit
 import UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 import UnifiedTheory.Audit.KFTOESharedHarmonicMicroscopicModel
 import UnifiedTheory.Audit.KFTOEWellFoundedFullClosureTarget
@@ -56,11 +66,15 @@ open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornLocalNet
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteLocality
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornFiniteNetAdditivity
 open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornPMFProvenance
+open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornIncidenceEquivariance
+open UnifiedTheory.Audit.KFCausalCSpecHarmonicBornManyBodyNet
+open UnifiedTheory.Audit.KFGate6PhysicalBoundaryAudit
 open UnifiedTheory.Audit.KFGate6ActionSelectedHarmonicBornInitialMeasureAdapter
 open UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 open UnifiedTheory.Audit.KFTOESevenGateAttack
 open UnifiedTheory.Audit.KFTOEWellFoundedFullClosureTarget
 open UnifiedTheory.Cosmology.QQG
+open UnifiedTheory.LayerC.SMHilbertInstantiation
 
 universe u
 
@@ -205,6 +219,104 @@ theorem harmonicGate45FiniteBridge_closed
       localStatePositive :=
         harmonicLocalStateFunctional_positive chirality R }
 
+/-- Refined finite Gate-4/5 closure after the exact missing incidence/readout
+compatibility data are supplied.  In addition to the direct-product net facts,
+this records the directional permutation assignment on the sixteen outcomes,
+its commuting readout square, the separate stage-PMF preservation premise and
+resulting Born invariance, and the separate many-body matrix algebra whose
+distinct one-site lifts commute and whose cross-site projector products are
+nonzero.  It does not assert commutation of arbitrary regional elements or
+construct a state on that many-body algebra.
+
+The compatibility datum `E` is visible in the type: recovery alone still does
+not construct a permutation of causal children preserving the harmonic stage
+law. -/
+structure HarmonicGate45FiniteEquivariantManyBodyClosed
+    (R : HarmonicSingleGenerationReadout ι)
+    (E : IncidenceEquivariantHarmonicReadout chirality
+      (candidate H.recoveryBound) R) : Prop where
+  baseFiniteBridge : HarmonicGate45FiniteBridgeClosed H R
+  canonicalOutcomeTransport :
+    ∀ i,
+      singleGenerationDirectionAction (candidate H.recoveryBound i) =
+        singleGenerationDirectionAction
+          (fourState.perm (edge H.recoveryBound i))
+  readoutSquare :
+    ∀ i child,
+      R.observe (R.rankAt i) (E.branchAction i child) =
+        singleGenerationDirectionAction (candidate H.recoveryBound i)
+          (R.observe (R.rankAt i) child)
+  conditionalStagePMFInvariant :
+    ∀ i outcome,
+      (causalBornStagePMF (canonicalHarmonicBornLaw chirality)
+          (R.rankAt i) (R.parentSchedule (R.rankAt i))).map
+          (R.observe (R.rankAt i))
+          (singleGenerationDirectionAction
+            (candidate H.recoveryBound i) outcome) =
+        (causalBornStagePMF (canonicalHarmonicBornLaw chirality)
+          (R.rankAt i) (R.parentSchedule (R.rankAt i))).map
+          (R.observe (R.rankAt i)) outcome
+  causalBornWeightInvariant :
+    ∀ i outcome,
+      harmonicReadoutWeight chirality R i
+          (singleGenerationDirectionAction
+            (candidate H.recoveryBound i) outcome) =
+        harmonicReadoutWeight chirality R i outcome
+  causalBornAmplitudeInvariant :
+    ∀ i outcome,
+      (harmonicReadoutSubstrateState chirality R i).amp
+          (singleGenerationDirectionAction
+            (candidate H.recoveryBound i) outcome) =
+        (harmonicReadoutSubstrateState chirality R i).amp outcome
+  causalBornExpectationInvariant :
+    ∀ i outcome,
+      (harmonicLocalStateFunctional chirality R i
+          (computationalEffectAt i
+            (singleGenerationDirectionAction
+              (candidate H.recoveryBound i) outcome))).re =
+        (harmonicLocalStateFunctional chirality R i
+          (computationalEffectAt i outcome)).re
+  manyBodyLocality :
+    ∀ [DecidableEq ι] {i j : ι}, i ≠ j →
+      ∀ A B : SingleGenerationObservable,
+        tensorObservableAt i A * tensorObservableAt j B =
+          tensorObservableAt j B * tensorObservableAt i A
+  manyBodyCrossProjectorProductsNonzero :
+    ∀ [DecidableEq ι] {i j : ι}, i ≠ j →
+      ∀ firstOutcome secondOutcome : Fin singleGenDim,
+        manyBodyComputationalProjector i firstOutcome *
+            manyBodyComputationalProjector j secondOutcome ≠ 0
+  manyBodyIsotony :
+    ∀ [DecidableEq ι] {first second : Finset ι}, first ⊆ second →
+      manyBodyLocalObservableAlgebra first ≤
+        manyBodyLocalObservableAlgebra second
+
+/-- All refined finite Gate-4/5 consequences follow from the one explicit
+incidence-equivariant readout witness. -/
+theorem harmonicGate45FiniteEquivariantManyBody_closed
+    (R : HarmonicSingleGenerationReadout ι)
+    (E : IncidenceEquivariantHarmonicReadout chirality
+      (candidate H.recoveryBound) R) :
+    HarmonicGate45FiniteEquivariantManyBodyClosed H R E := by
+  have hBase := harmonicGate45FiniteBridge_closed H R
+  exact
+    { baseFiniteBridge := hBase
+      canonicalOutcomeTransport := fun i =>
+        congrArg singleGenerationDirectionAction
+          (hBase.canonicalIncidenceTransport i)
+      readoutSquare := E.observe_commutes
+      conditionalStagePMFInvariant := E.mapped_stagePMF_invariant
+      causalBornWeightInvariant := E.harmonicReadoutWeight_invariant
+      causalBornAmplitudeInvariant :=
+        E.harmonicReadoutSubstrateState_amp_invariant
+      causalBornExpectationInvariant :=
+        E.local_computational_expectation_invariant
+      manyBodyLocality := fun h => tensorObservableAt_mul_comm_of_ne h
+      manyBodyCrossProjectorProductsNonzero := fun h =>
+        manyBodyComputationalProjector_mul_ne_zero_of_ne h
+      manyBodyIsotony := fun h =>
+        manyBodyLocalObservableAlgebra_isotony h }
+
 /-- The unconditional structural content now available across Gates 4--6.
 This bundle is intentionally named *finite structural*, not physical TOE
 closure: the Gate-4 package may still be the zero-profile benchmark, the
@@ -231,10 +343,14 @@ theorem harmonicGate456FiniteStructural_closed
   gate6FixedSemanticStructuralEvidence :=
     qqgFixedSemanticStructuralEvidence_closed S
 
-/-! ## 2. One fixed-semantic physical frontier -/
+/-! ## 2. Audit of the legacy fixed-semantic physical wrapper -/
 
-/-- The strongest honest action-selected harmonic closure wrapper produced by
-the present attacks.  In comparison with the previous capstone:
+/-- This legacy implication is retained so downstream code can see exactly
+what the former capstone proved.  Its `hHP` premise is now known to be
+uninhabited: it requires the Hayden gap for every dimensional setup.  It must
+therefore not be cited as a reachable physical closure theorem.
+
+Apart from that inconsistent premise, the wrapper records that:
 
 * QQG emergence predicates have fixed numerical meanings;
 * empirical evidence for all six meanings is still required;
@@ -279,9 +395,17 @@ theorem fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG
       hhorizon hnull hgate5 hQQGEvidence.toEmergenceHypotheses
       hHP hlate hgw
 
+/-- The former physical capstone route has no admissible call site because its
+Hayden--Preskill premise is contradictory. -/
+theorem legacy_fixedSemanticActionSelectedHarmonicTOE_HP_premise_uninhabited :
+    ¬ Gate6HaydenPreskillMicroscopicEvaporationBridgeClosed :=
+  gate6_haydenPreskillMicroscopicEvaporationBridgeClosed_uninhabited
+
 #print axioms harmonicGate45FiniteBridge_closed
+#print axioms harmonicGate45FiniteEquivariantManyBody_closed
 #print axioms harmonicGate456FiniteStructural_closed
 #print axioms fixedSemanticActionSelectedHarmonicTOE_closed_of_nonzeroBDG
+#print axioms legacy_fixedSemanticActionSelectedHarmonicTOE_HP_premise_uninhabited
 
 end
 

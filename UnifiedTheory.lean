@@ -5898,11 +5898,16 @@ import UnifiedTheory.Audit.KFGate6QQGFixedSemanticClaimsLedger
 -- Provenance lock for the remaining physics gates: any Gate-4, Gate-5, and
 -- Gate-6 readouts advertised as one model are pushed forward from the same
 -- harmonic Born history law.  Their three laws are proved to be the exact
--- marginals of one joint probability measure; physical adequacy of the
--- readouts remains subject to the frozen empirical attack ledger.
+-- marginals of one joint probability measure.  Identifying those readouts
+-- with the intended physics and validating them externally remain open; the
+-- current attack ledger has neither results nor freeze provenance.
 import UnifiedTheory.Audit.KFTOESharedHarmonicMicroscopicModel
 -- Integrates exact Gate-4 recovery with the causal Born finite Gate-5 net and
 -- wraps the harmonic TOE ledger in fixed QQG semantics plus an identified
 -- nonzero BDG target.  All continuum and empirical evidence stays explicit.
 import UnifiedTheory.Audit.KFTOEAllAttacksCapstone
+-- Scoped seven-gate integration: packages the proved finite consequences
+-- relative to supplied handoffs and exposes the remaining physical and
+-- external-validation inputs without manufacturing witnesses for them.
+import UnifiedTheory.Audit.KFTOESevenGateClosureFrontier
 import UnifiedTheory.LayerC.ContextualFraction
