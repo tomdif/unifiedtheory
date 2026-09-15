@@ -161,12 +161,39 @@ assumed, and a stronger claim than the one that died.  (ii) inf
 falls in step with the control's — the polytope is dilating, the
 constraint is empty of content in depth, and this section's negative
 closing stands as written.  (iii) intermediate — more depths needed,
-no reading.  The abstract redraft WAITS on this number.
+no reading.
+
+RESOLVED (2026-08-02, selfsim_d8_ipm.log; independently reproduced
+2026-09-15).  inf r_psi(8) = 0.19626.  **READING (ii) FIRES.**  The
+depth-8 self-similar interval is [0.1963, 0.5353] against depth-7's
+[0.2533, 0.4639], while the control moved [0.1241, 0.7687] ->
+[0.1050, 0.8041].  Both endpoints moved OUTWARD.  The correspondence
+candidate of (i) is dead on arrival: the interval is not narrowing
+onto the classical point, it is dilating toward the unconstrained
+family.
+
+One correction to the pre-registration's own wording.  (ii) said the
+infimum would fall "in step with the control's".  It did not -- it
+fell about three times as far (0.0570 against the control's 0.0191),
+and the self-similar width grew 61% against the control's 8.5%.  The
+constraint therefore sheds content FASTER than the ambient family
+dilates, a stronger negative than (ii) anticipated; the fraction of
+the control's width left un-excluded rose from 32.7% to 48.5%.
+
+VERIFICATION NOTE.  Both depth-8 endpoints were reproduced on
+2026-09-15 by an independently written construction (sparse LP,
+Charnes-Cooper linear-fractional solve, interior point), gated on
+exact reproduction of the depth-7 intervals: sup 0.5352513327 against
+the logged 0.5352513327144708 (10 significant figures), inf
+0.1962574349 against 0.19625741911367697 (8).  Both solves attain the
+optimum on a recession direction (t -> 0, amplitude box inactive), as
+the original run did; at depth 7 that costs 8.6e-5 against the
+box-constrained tau-bisection -- four orders of magnitude below the
+0.057 move in the infimum, so the verdict does not depend on it.
 
 The abstract's exclusion claim is hereby scoped to depth 7 and the
 falsification programme's first test is closed negative on the
-exclusion reading.  This section supersedes the abstract's framing
-pending the inf-resolved redraft.
+exclusion reading, with the infimum resolving the fork to dilation.
 
 ## 4. Honest scope
 
