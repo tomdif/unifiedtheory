@@ -5732,6 +5732,7 @@ import UnifiedTheory.Audit.KFCausalCSpec
 -- exposes the current Lean hooks for Gate 1 signed-fiber noncancellation,
 -- Gate 2 base zero sets, and Gate 3 protected convergence certificates.
 import UnifiedTheory.Audit.KFTOESevenGateAttack
+import UnifiedTheory.Audit.FineStructureIRPrecisionExclusion
 -- Replace Gate 1's opaque coupling-selection proposition by the concrete
 -- two-antichain amplitude-matching condition and expose its exact coupling
 -- equality content.

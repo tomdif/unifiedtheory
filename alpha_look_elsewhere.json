@@ -1,0 +1,40 @@
+{
+  "eps_rel": 2.1424655071780345e-05,
+  "n_7smooth": 265,
+  "families": {
+    "gamma4/q (the promoted form's family)": {
+      "size": 265,
+      "p_hit": 0.00083
+    },
+    "p/q": {
+      "size": 14027,
+      "p_hit": 0.01201
+    },
+    "sqrt(p/q)": {
+      "size": 14027,
+      "p_hit": 0.00022
+    },
+    "gamma4*p/q": {
+      "size": 14027,
+      "p_hit": 0.015435
+    },
+    "recorded search: p/q U sqrt(p/q) U gamma4/q": {
+      "size": 27334,
+      "p_hit": 0.01302
+    }
+  },
+  "global_p_N7": {
+    "gamma4/q (the promoted form's family)": 0.005795553095942818,
+    "p/q": 0.08110086627011959,
+    "sqrt(p/q)": 0.001538983972597996,
+    "gamma4*p/q": 0.10316871083562007,
+    "recorded search: p/q U sqrt(p/q) U gamma4/q": 0.08765632406874824
+  },
+  "global_p_N20": {
+    "gamma4/q (the promoted form's family)": 0.016469758543918744,
+    "p/q": 0.2146721890962171,
+    "sqrt(p/q)": 0.004390816127378239,
+    "gamma4*p/q": 0.2673646627496915,
+    "recorded search: p/q U sqrt(p/q) U gamma4/q": 0.23057366676178992
+  }
+}
