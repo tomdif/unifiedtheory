@@ -243,13 +243,40 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
   - **Two-image pairs missing a sheet: 45.6% [45.5%]** (24.8% [24.9%] of sheets).
 * **Reading, against the pre-registered rule: outcome 2.** A window exists and FP = 0, so the topology and the cover's local data are recovered from the order in 3+1. But two-image recovery is poor (about 54% of pairs get both sheets), so the generators are too thin at this resolution. Given ρ^(−2/d) scaling of the miss rate (observed in 1+1 and 2+1, not derived), 3+1 at matched recovery would need roughly 10–100× the density. That is beyond dense matrices on this machine (N would be 10⁵–10⁶): a bit-packed or sparse implementation is required.
 
+**18. Sparse, matrix-free pipeline and denser 3+1** (`ab_cover_sparse.py`; `ab_sparse_3p1_rho2e5.log`, `ab_sparse_3p1_rho6e5.log`).
+* **Design.** The relation matrix is never stored. The construction queries a relation oracle (x < y?) on small blocks; the oracle evaluates the sprinkling internally, and the construction sees only its answers.
+  - Past counts are computed blockwise; slices are minimal elements of a past-count band, completed to a maximal antichain.
+  - T_n is computed inside a layer above each slice. This is complete because A is maximal, so J⁻(x)∖J⁻(A) ⊂ J⁺(A).
+  - **Generators are exact links**: j is a minimal element of J⁺(i) within the next W elements of the linear extension. This is complete for that window, since any i < k < j lies between them in the extension.
+  - The closure uses sparse frontier propagation, one base-size matrix per sheet shift; the gauge check is graph-free.
+* **Lessons.**
+  - A window of all relations to the next W elements works only for W ≈ N/3 (not sparse).
+  - K nearest successors by past increment FAIL (FN 24–42%): they are timelike steps, and the wrapped (second) image is the nearly null one, reachable only through nearly null steps, i.e. links.
+* **Validation, ρ = 6×10⁴, n = 80.** FN 9.8% (dense 9.5%), FP = 0, two-image miss 50.6% (dense 45.5%; different evaluation sample). Peak 0.73 GB.
+* **Results** (n ∝ ρ, so the shadow width is fixed; W = N/3; evaluation on 64 early sources):
+
+  | ρ | N | circumference / discreteness length | FP | FN | two-image pairs missing a sheet |
+  |---|---|---|---|---|---|
+  | 6×10⁴ | 16k | 16 | 0 | 9.8% | 50.6% |
+  | 2×10⁵ | 54k | 21 | 0 of 1.16M | 6.1% | 30.3% (2nd run 30.0%) |
+  | **6×10⁵** | **162k** | **28** | **0 of 3.23M** | **3.6%** | **17.5%** (interior 16.8%) |
+
+  - All runs: every slice nerve (1,1), dim H¹(X) = 1, **0 gauge mismatches** (29.6M generators at ρ = 6×10⁵).
+  - θ error median 0.041 → 0.022 → 0.019.
+  - FN only near null (at ρ = 6×10⁵: 72%, 42%, 9%, 0.2%, then 0% by τ bin).
+* **Density exponent in 3+1: ρ^(−0.46)** over one decade. The two lower points predicted about 19% at 6×10⁵; observed 17.5%. Close to ρ^(−2/d) = ρ^(−0.5).
+  - 1+1: −1.06; 2+1: −0.62; 3+1: −0.46. Observation, not derived.
+* **Against the pre-registered rule.** 3+1 moved from outcome 2 (50%) to 82.5% two-image recovery, approaching but not yet past the 90% bar. The trend puts 90% at about 3.4× more density (ρ ≈ 2×10⁶, N ≈ 5.5×10⁵, an estimated 15 h of link scan).
+  - Johnston's R × T³ concern (link suppression) is not fatal here: links are used only as local generators, and long relations come from the closure.
+* **Resource note.** Construction peak is 0.6–1.1 GB. The ρ = 6×10⁵ run peaked at **2.59 GB** in the link and closure stages (29.6M generators in Python lists, then scipy COO→CSR copies). That exceeds the 1.5 GB one-process guideline; chunking those stages is required before any larger run. Wall time: ρ = 2×10⁵ about 3 min; ρ = 6×10⁵ about 30 min (link scan 22 min).
+
 ## Caveat on existing code
 
 In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is true but has no content. `KFCausalNerveHolonomy` is the declared-2-cell replacement for the homology part.
 
 ## Next
 
-0. 3+1 at higher density (needs a bit-packed or sparse implementation; N ≈ 10⁵–10⁶) to move 3+1 from outcome 2 toward 1; a non-flat or multiply-wound case; why the exponent looks like −2/d; the remaining Lean step (register files once UnifiedTheory.lean is clean).
+0. 3+1: chunk the link/closure stages (memory), then ρ ≈ 2×10⁶ to cross the 90% bar (est. 15 h); a non-flat or multiply-wound case; why the exponent looks like −2/d; the remaining Lean step (register files once UnifiedTheory.lean is clean).
 0b. Controlled density scan of the missed-sheet fraction at fixed settings.
 
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.

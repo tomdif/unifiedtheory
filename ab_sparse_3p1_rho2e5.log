@@ -1,0 +1,41 @@
+=== sparse 3+1 seed=0 rho=200000 n=267 W=18000: N=54092
+  past counts done (10s)
+  slice 0: |A|=3325 (greedy +1257), flagged 18%, layer 15688, |T_n|=14337, maximal 3096, kept shadows 58 (13s)
+  slice 1: |A|=3014 (greedy +1172), flagged 25%, layer 28708, |T_n|=14446, maximal 3120, kept shadows 56 (17s)
+  slice 2: |A|=3032 (greedy +1211), flagged 29%, layer 26120, |T_n|=14341, maximal 2994, kept shadows 50 (22s)
+  slice 3: |A|=3033 (greedy +1252), flagged 32%, layer 23564, |T_n|=14099, maximal 2958, kept shadows 48 (26s)
+  slice 4: |A|=2995 (greedy +1210), flagged 35%, layer 21000, |T_n|=13951, maximal 3036, kept shadows 55 (30s)
+  slice 5: |A|=3003 (greedy +1180), flagged 37%, layer 18494, |T_n|=13984, maximal 3082, kept shadows 42 (33s)
+  slice 6: |A|=2998 (greedy +1135), flagged 38%, layer 15928, |T_n|=13927, maximal 2959, kept shadows 49 (37s)
+  slice 7: |A|=2895 (greedy +1046), flagged 40%, layer 19130, |T_n|=13832, maximal 2962, kept shadows 46 (41s)
+  slice 8: |A|=2957 (greedy +1090), flagged 42%, layer 15427, |T_n|=13370, maximal 2978, kept shadows 35 (44s)
+  per-slice nerve {(1, 1): 9}; X 439v/23883e/505419c; dim H^1(X)=1
+  [eval] theta vs coordinate: |err| median 0.022, 99% 0.107, max 0.243; defined for 96.0%
+    links: 0/54092 (0s)
+    links: 10000/54092 (11s)
+    links: 20000/54092 (21s)
+    links: 30000/54092 (34s)
+    links: 40000/54092 (47s)
+    links: 50000/54092 (48s)
+  [eval] generators 5391643; gauge-mismatched 0
+  [eval] closure: 7 frontier iterations for 64 sources
+  [eval:all] FP=0 of 1087082; FN 6.24%; FN by tau 74.1%, 59.8%, 29.2%, 6.5%, 0.5%, 0.0%, 0.0%; two-image pairs 49398: missing a sheet 30.29%, sheets missed 15.97%
+  [eval:interior] FP=0 of 275907; FN 5.21%; FN by tau 69.3%, 52.6%, 21.3%, 3.5%, 0.1%, 0.0%, 0.0%; two-image pairs 10178: missing a sheet 31.45%, sheets missed 16.67%
+      125.79 real       119.34 user         0.81 sys
+          2016460800  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              308562  page reclaims
+                  73  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+               73250  involuntary context switches
+       1534911159605  instructions retired
+        383470499986  cycles elapsed
+          1998751640  peak memory footprint
