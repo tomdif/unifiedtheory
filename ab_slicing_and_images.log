@@ -1,0 +1,54 @@
+
+=== A/B: rho=3000 n=40 seed=0 N=4226
+slice k=190: |raw minimal set| misses 4 elements; greedy added 4; |A|=61, mean t=0.255±0.013; Dowker b0,b1=1,1
+slice k=270: |raw minimal set| misses 10 elements; greedy added 9; |A|=51, mean t=0.302±0.015; Dowker b0,b1=1,1
+slice k=370: |raw minimal set| misses 2 elements; greedy added 2; |A|=52, mean t=0.355±0.014; Dowker b0,b1=1,1
+random greedy maximal antichain: |A|=28, t-range 0.80–1.19; Dowker b0,b1=1,1
+B: t_q - t_p bin -> pairs, step-7 kept, class counts among kept
+  [0.00,0.30): pairs= 120 kept= 120 (100%)  {'1 class': 114, '0 class': 6}
+  [0.30,0.40): pairs= 268 kept= 268 (100%)  {'1 class': 261, '0 class': 7}
+  [0.40,0.45): pairs= 142 kept= 133 (94%)  {'1 class': 131, '0 class': 2}
+  [0.45,0.50): pairs= 176 kept= 135 (77%)  {'1 class': 131, '0 class': 4}
+  [0.50,0.55): pairs= 178 kept= 112 (63%)  {'1 class': 109, '0 class': 2, '2 class': 1}
+  [0.55,0.60): pairs= 201 kept=  79 (39%)  {'1 class': 70, '2 class': 9}
+  [0.60,0.70): pairs= 374 kept=  37 (10%)  {'1 class': 34, '2 class': 3}
+  [0.70,0.85): pairs= 591 kept=   0 (0%)  {}
+  [0.85,2.00): pairs=1680 kept=   0 (0%)  {}
+A: lower (k=190) vs upper (k=370) slice, two-class pairs: {'orientation reference': 1, 'agree': 145, 'class map not a bijection': 27}
+
+=== A/B: rho=3000 n=40 seed=1 N=4202
+slice k=190: |raw minimal set| misses 7 elements; greedy added 6; |A|=52, mean t=0.257±0.012; Dowker b0,b1=1,1
+slice k=270: |raw minimal set| misses 8 elements; greedy added 8; |A|=60, mean t=0.303±0.009; Dowker b0,b1=1,1
+slice k=370: |raw minimal set| misses 9 elements; greedy added 7; |A|=48, mean t=0.353±0.010; Dowker b0,b1=1,1
+random greedy maximal antichain: |A|=36, t-range 0.65–0.98; Dowker b0,b1=1,1
+B: t_q - t_p bin -> pairs, step-7 kept, class counts among kept
+  [0.00,0.30): pairs= 131 kept= 131 (100%)  {'0 class': 9, '1 class': 122}
+  [0.30,0.40): pairs= 251 kept= 251 (100%)  {'1 class': 241, '0 class': 10}
+  [0.40,0.45): pairs= 179 kept= 168 (94%)  {'0 class': 11, '1 class': 157}
+  [0.45,0.50): pairs= 206 kept= 153 (74%)  {'1 class': 150, '0 class': 3}
+  [0.50,0.55): pairs= 191 kept= 102 (53%)  {'1 class': 100, '2 class': 2}
+  [0.55,0.60): pairs= 187 kept=  69 (37%)  {'1 class': 61, '2 class': 8}
+  [0.60,0.70): pairs= 422 kept=  45 (11%)  {'1 class': 34, '2 class': 11}
+  [0.70,0.85): pairs= 581 kept=   0 (0%)  {}
+  [0.85,2.00): pairs=1566 kept=   0 (0%)  {}
+A: lower (k=190) vs upper (k=370) slice, two-class pairs: {'orientation reference': 1, 'agree': 153, 'class map not a bijection': 28}
+
+=== C: Johnston K vs continuum, rho=2000 m=4.0 N=2018, 400000 related pairs
+  images  Δt-bin        pairs   <K>      <½J0 one image>  <½ΣJ0 images>   <½C>
+       1  [0.0,0.3)     97465  +0.4456   +0.4455          +0.4455        0.5000
+       1  [0.3,0.5)    127892  +0.3089   +0.3085          +0.3085        0.5000
+       1  [0.5,0.7)     90462  +0.0874   +0.0858          +0.0858        0.5000
+       1  [0.7,1.0)     25468  -0.1304   -0.1324          -0.1324        0.5000
+       2  [0.5,0.7)     20311  +0.0955   +0.1804          +0.5452        0.5000
+       2  [0.7,1.0)     38402  -0.1913   -0.1027          +0.0628        0.5000
+
+=== C: Johnston K vs continuum, rho=2000 m=4.0 N=2001, 400000 related pairs
+  images  Δt-bin        pairs   <K>      <½J0 one image>  <½ΣJ0 images>   <½C>
+       1  [0.0,0.3)     99307  +0.4454   +0.4456          +0.4456        0.5000
+       1  [0.3,0.5)    130781  +0.3069   +0.3084          +0.3084        0.5000
+       1  [0.5,0.7)     89307  +0.0845   +0.0873          +0.0873        0.5000
+       1  [0.7,1.0)     24171  -0.1342   -0.1316          -0.1316        0.5000
+       2  [0.5,0.7)     19906  +0.0897   +0.1805          +0.5454        0.5000
+       2  [0.7,1.0)     36528  -0.1960   -0.0999          +0.0684        0.5000
+
+[exited with code 0]

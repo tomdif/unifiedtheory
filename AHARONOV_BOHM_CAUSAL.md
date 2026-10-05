@@ -55,7 +55,18 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 * the order never produces two classes where the continuum has one arc. The opposite happens in 2–3% of pairs: a second overlap arc smaller than the discreteness contains no element of A.
 * When q's past (or p's future) wraps the whole circle, the loop is not defined up to homotopy and h takes mixed values {0, ±1} (130 of about 10⁴ such pairs). There is no AB diamond there, so this is correct behaviour rather than a failure.
 
-So two spacetime chains on either side of the hole differ by exactly e^{±iΦ}, with the phase defined from the causal order. Not done: a phase on every individual link (a full link-level pullback, needed for a gauge-covariant BD operator or Johnston propagator), the 2+1 tube version of this test, and the higher-density continuation.
+**What is forced and what is empirical.** The slice shadows J⁺(p)∩A and J⁻(q)∩A cover the circle. Given b₁(K) = 1 and both pieces contractible (step 7), Mayer–Vietoris fixes h = ±1 between components, and h = 0 within one. So 212/212 and 5154/5154 check the implementation, not physics; the statement belongs in Lean, not numerics. The empirical content is how often step 7 keeps a pair and where two components begin (item 5).
+
+**Limits:**
+* only three-element chains p<a<q were tested. A general chain need not contain an element of A, so it needs a crossing rule.
+* **the relation p<q is itself a chain with no crossing point.** In the order it is one relation standing for both sides at once. Any propagator summed over relations (Johnston) contains that term, and the directed-order lemma applies to it. Item 5C measures the consequence.
+
+**5. Slicing, short pairs, images, ℤ-cover** (`ab_slicing_and_images.py`; logs `ab_slicing_and_images.log`, `ab_zcover.log`; cylinder, ρ = 3000, n = 40, 2 seeds; C and D at ρ = 2000 and 1500, m = 4).
+* **The slices are not maximal as first built.** The minimal elements of {|J⁻(x)| ≥ k} miss 2–10 elements per slice, so they are not maximal antichains. After greedy extension they are (asserted). All slices, including a random greedy maximal antichain, give Dowker b₀ = b₁ = 1. The slices are chosen by past cardinality, which is order-intrinsic.
+* **A. Slicing independence** (lower slice k=190 vs upper k=370, about 0.1 apart in time, for pairs below and above both). Chains p<a<b<q map lower classes to upper classes. With one global orientation sign fixed by a reference pair, the holonomy agrees in **298/298** pairs where the class map is a bijection. In **55 of 354 two-class pairs (16%)** it is not: some lower class reaches both upper classes. The probable cause is a gap between the two overlap arcs that is narrower than the slice separation. That is not yet diagnosed. Transport of chain classes is therefore well defined only when the gap between the classes exceeds the separation between slices.
+* **B. Short pairs and keep rate** (unbiased pairs, binned by t_q−t_p for diagnosis only). Below L/2: **0 two-class pairs among 1359 kept**. Step 7 keeps 100% up to 0.4, then 74–77% at 0.45–0.5, 37–39% at 0.55–0.6, 10–11% at 0.6–0.7, and **0% above 0.7**: once q's past on the slice wraps the circle, the loop is undefined. Among kept pairs, two classes make up 1–2% at 0.5–0.55, 11–12% at 0.55–0.6, and 8–24% at 0.6–0.7. The AB diamond in this setup is the narrow band t_q−t_p ∈ (L/2, ~0.7).
+* **C. The relation term fails** (Johnston K = ½C(I + m²C/2ρ)⁻¹ vs the continuum image sum ½Σ_k J₀(mτ_k)). One-image pairs: K matches ½J₀ to within 0.003 in every bin, which validates the implementation. Two-image pairs: K matches neither the image sum nor a single image (Δt 0.5–0.7: K = 0.090–0.096, one image 0.180, image sum 0.545; Δt 0.7–1.0: K = −0.19, one image −0.10, image sum +0.065). The massless term ½C stays at ½ while the continuum gives ½ × the number of images. **The relation-based propagator does not converge to the cylinder Green function once both ways round are open**, even at zero flux.
+* **D. The ℤ-cover fixes it.** Sprinkle the same points into three deck copies of the unwrapped strip, compute K there, and set K_Φ(x,y) = Σ_k e^{ikΦ} K_cover(x, y+k). This matches the continuum Σ_k e^{ikΦ}½J₀(mτ_k) at Φ = 0, π/2 and π, for one-image and two-image pairs, to within about 1–3% (e.g. two images, Δt 0.5–0.7: 0.543/0.253/−0.038 against 0.544/0.253/−0.038). Charged matter on the cylinder is consistent with propagation on the ℤ-cover, with Φ entering as a character of the deck group. **Caveat:** the cover here is built from the embedding, by copying coordinates. An order-intrinsic construction is open; it is what slicing independence (item A) would supply, and item A already shows where that transport is ambiguous.
 
 ## Caveat on existing code
 
@@ -63,7 +74,9 @@ In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses 
 
 ## Next
 
+0. Order-intrinsic ℤ-cover: glue the slice-class data across slices into a covering order; diagnose the 16% non-bijective transports first. Then rerun D on that cover.
+
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.
 2. Stokes check in the no-tube control (triangle windings over a spanning 2-chain sum to ±1).
-3. Lean converse: on a connected declared complex, trivial holonomy on all cycles ⇒ coboundary (spanning-tree gauge, as in `GAUGE_DRESSED_MEASURE`). Together with `hol_homologous` this gives flat cocycles mod gauge ≅ Hom(H₁, K).
+3. Lean: Mayer–Vietoris two-set-cover lemma (forced h = ±1 / 0); converse: on a connected declared complex, trivial holonomy on all cycles ⇒ coboundary (spanning-tree gauge, as in `GAUGE_DRESSED_MEASURE`). Together with `hol_homologous` this gives flat cocycles mod gauge ≅ Hom(H₁, K).
 4. Link-level pullback of ω, then the covariant BD operator (candidate #3).
