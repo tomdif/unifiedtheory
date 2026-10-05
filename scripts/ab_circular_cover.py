@@ -279,7 +279,7 @@ if __name__ == "__main__":
 
 
 def e2e_fourier(seeds=(0, 1, 2), rho=3000, n=25, B=5, dmax=0.25, T=1.2, ms=(0.0, 4.0),
-                Phis=(0.0, np.pi / 2, np.pi), S=3, label=""):
+                Phis=(0.0, np.pi / 2, np.pi), S=3, label="", absval=False):
     """End-to-end AB propagator via the deck Fourier transform.
 
     The lifted relation is deck-invariant, so on the infinite cover
@@ -332,7 +332,7 @@ def e2e_fourier(seeds=(0, 1, 2), rho=3000, n=25, B=5, dmax=0.25, T=1.2, ms=(0.0,
               f" elements without theta {int((~ok).sum())}")
         for m in ms:
             a_ = m * m / (2 * rho)
-            print(f"  m={m}: images Δt-bin  pairs   " + "   ".join(f"Φ={p:.2f}: order / coord / continuum" for p in Phis))
+            print(f"  m={m} [{'|K| gauge-invariant' if absval else 'Re K'}]: images Δt-bin  pairs   " + "   ".join(f"Φ={p:.2f}: order / coord / continuum" for p in Phis))
             rows = defaultdict(dict)
             for ph in Phis:
                 ph_ = np.exp(1j * ds * ph)
@@ -352,8 +352,9 @@ def e2e_fourier(seeds=(0, 1, 2), rho=3000, n=25, B=5, dmax=0.25, T=1.2, ms=(0.0,
                     for lo_, hi_ in ((0.3, 0.5), (0.5, 0.7), (0.7, 1.0)):
                         s_ = (nimg == ni) & (DT >= lo_) & (DT < hi_)
                         if s_.sum() > 100:
-                            rows[(ni, lo_, hi_)][ph] = (s_.sum(), vals["order"][s_].real.mean(),
-                                                         vals["coord"][s_].real.mean(), G[s_].real.mean())
+                            f_ = np.abs if absval else np.real
+                            rows[(ni, lo_, hi_)][ph] = (s_.sum(), f_(vals["order"][s_]).mean(),
+                                                         f_(vals["coord"][s_]).mean(), f_(G[s_]).mean())
             for key in sorted(rows):
                 ni, lo_, hi_ = key
                 r_ = rows[key]
