@@ -1,0 +1,2 @@
+
+=== 3+1 seed=0 rho=60000 n=20: N=16250, slices=9 (mean t 0.12, 0.18, 0.24, 0.29, 0.34, 0.39, 0.44, 0.49, 0.53 — diagnostic), boundary-flagged 31.9% of slice elements, shadows/slice ~172, per-slice nerve {(1, 1): 1, (1, 9): 1, (3, 13): 1, (3, 21): 1, (1, 15): 1, (1, 13): 1, (1, 26): 1, (1, 4): 1, (1, 3): 1}, X 1544v/60239e/652991c, dim H^1(X)=13

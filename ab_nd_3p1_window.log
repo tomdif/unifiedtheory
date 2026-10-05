@@ -1,0 +1,4 @@
+window 3+1 rho=60000 seed=0: N=16250
+  n=  40: shadows/slice ~124 (median size 32), per-slice nerve {(1, 1): 6, (1, 2): 3}, X 1112v/63308e, dim H^1(X)=2
+  n=  80: shadows/slice ~74 (median size 56), per-slice nerve {(1, 1): 9}, X 662v/40201e, dim H^1(X)=1
+  n= 160: shadows/slice ~33 (median size 98), per-slice nerve {(1, 0): 1, (1, 1): 8}, X 294v/10905e, dim H^1(X)=0

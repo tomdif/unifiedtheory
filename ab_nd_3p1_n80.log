@@ -1,0 +1,12 @@
+
+=== 3+1 seed=0 rho=60000 n=80: N=16250, slices=9 (mean t 0.12, 0.18, 0.24, 0.29, 0.34, 0.39, 0.44, 0.49, 0.53 — diagnostic), boundary-flagged 31.9% of slice elements, shadows/slice ~74, per-slice nerve {(1, 1): 9}, X 662v/40201e/836446c, dim H^1(X)=1
+  [eval] theta vs coordinate: |err| median 0.027, 99% 0.131, max 0.238; theta defined for 95.1% of elements
+  generators 990195 (links 1095217 span-eligible); [eval] gauge-mismatched 0
+  [eval:all sources] FP=0 of 24669681 lifted relations; FN 9.49%; FN by tau 52.6%, 50.3%, 33.9%, 14.5%, 3.9%, 0.6%, 0.0%; two-image pairs 836603: missing a sheet 45.58%, sheets missed 24.78%
+  [eval:interior sources] FP=0 of 8534061 lifted relations; FN 7.90%; FN by tau 46.4%, 44.0%, 28.6%, 12.1%, 3.3%, 0.4%, 0.0%; two-image pairs 300429: missing a sheet 44.94%, sheets missed 24.39%
+
+=== 3+1 seed=1 rho=60000 n=80: N=16204, slices=9 (mean t 0.12, 0.18, 0.23, 0.28, 0.33, 0.38, 0.43, 0.48, 0.54 — diagnostic), boundary-flagged 32.3% of slice elements, shadows/slice ~67, per-slice nerve {(1, 1): 9}, X 599v/31720e/569270c, dim H^1(X)=1
+  [eval] theta vs coordinate: |err| median 0.027, 99% 0.130, max 0.214; theta defined for 94.6% of elements
+  generators 977186 (links 1086818 span-eligible); [eval] gauge-mismatched 0
+  [eval:all sources] FP=0 of 24361348 lifted relations; FN 9.57%; FN by tau 52.6%, 50.6%, 34.6%, 15.0%, 3.9%, 0.5%, 0.0%; two-image pairs 833084: missing a sheet 45.51%, sheets missed 24.85%
+  [eval:interior sources] FP=0 of 8515080 lifted relations; FN 8.16%; FN by tau 47.1%, 45.3%, 30.2%, 13.1%, 3.6%, 0.4%, 0.0%; two-image pairs 304646: missing a sheet 45.42%, sheets missed 24.80%

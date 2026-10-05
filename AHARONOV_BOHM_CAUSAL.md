@@ -207,13 +207,49 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 * **Conclusion.** No published order-only reconstruction of the homotopy-class (image-count) data of causal relations was found, in any dimension beyond Schmitzer/Bogaardt's 1+1 zone rule, and no flux-weighted (AB) version. Items 8–14 are therefore a candidate answer to Johnston's open question, for one compact dimension (H₁ = ℤ) in flat 1+1 and 2+1.
 * **Limits of the search.** Web search plus three citation trawls; theses are poorly indexed (the open problem itself lives in theses); Google Scholar and the Schmitzer/Bogaardt citation lists were not checked. The tool is standard: circular coordinates from persistent cohomology (de Silva, Morozov and Vejdemo-Johansson, 2011) must be cited; the novelty is the application and the order-only lift.
 
+**16. Coordinates removed from the construction** (`ab_cover_nd.py`; `ab_nd_2p1.log`).
+* **Order-only replacements:**
+  - linear extension = sort by |J⁻(x)|, since x < y implies |J⁻(x)| < |J⁻(y)|;
+  - slice levels = quantiles of the past-cardinality distribution (q = 0.125 … 0.75);
+  - boundary handling: on a past-cardinality level set, elements near the region's edge sit later and have truncated futures, so slice elements with |J⁺| < 0.8 × the slice median are flagged, and shadows containing them are dropped (about 29% of slice elements flagged in 2+1). This replaces the y-buffer;
+  - element labels are shuffled after sprinkling, so index order carries no time information.
+* Coordinates now enter **only the evaluation** (ground-truth comparison), reported for all sources and for an interior band.
+* **2+1, ρ = 3×10⁴, n = 40, 2 seeds.**
+  - The order-chosen slices land at t ≈ 0.11–0.61, matching the old coordinate-chosen ones.
+  - Every slice nerve is (1,1) and dim H¹(X) = 1.
+  - θ error median 0.019–0.022; θ is defined for 98.4–98.7% of elements.
+  - 0 gauge mismatches.
+  - **FP = 0 over 36.4M / 36.6M lifted relations (all sources).**
+  - FN 2.3% (all sources) or 1.9% (interior), nearly null only.
+  - Two-image pairs missing a sheet: 12.7–12.9% (all), 12.4–12.6% (interior).
+  - The coordinate-assisted version gave 11.6% (interior). **Removing coordinates costs under one point of recovery.**
+
+**17. 3+1: S¹ (L = 1) × [0,0.6]² × [0,0.75], ρ = 6×10⁴, N ≈ 16,250** (`ab_nd_3p1_*.log`). The circumference is about 16 discreteness lengths (2+1: about 31). Same order-only pipeline.
+* **Window** (topology only, seed 0):
+
+  | n | per-slice nerves | dim H¹(X) |
+  |---|---|---|
+  | 10 | fragmented: b₀ up to 35, b₁ up to 83 | 278 |
+  | 20 | b₁ = 3–26 | 13 |
+  | 40 | 6/9 slices (1,1) | 2 |
+  | **80** | **all 9 slices (1,1)** | **1** |
+  | 160 | one slice b₁ = 0 (shadow diameter ≈ 0.45 of the circumference) | 0 |
+
+  The window is narrow (about n ≈ 60–120), as expected at this resolution.
+* **Cover comparison at n = 80, 2 seeds** (seed 1 in brackets; the two agree to within 0.4 points).
+  - θ error median 0.027 [0.027], max 0.24 [0.21]; θ defined for 95.1% [94.6%] of elements.
+  - **0 gauge mismatches** among 990k [977k] generators. About 1.1M short links are available, so the link suppression Johnston flags for R × T³ does not starve the generators at this scale: long relations come from the closure, not from links.
+  - **FP = 0 over 24.7M [24.4M] lifted relations.** FN 9.5% [9.6%] (all) or 7.9% [8.2%] (interior), concentrated at short proper time (53%, 50%, 34%, 15%, 4%, 0.6%, 0% by τ bin).
+  - **Two-image pairs missing a sheet: 45.6% [45.5%]** (24.8% [24.9%] of sheets).
+* **Reading, against the pre-registered rule: outcome 2.** A window exists and FP = 0, so the topology and the cover's local data are recovered from the order in 3+1. But two-image recovery is poor (about 54% of pairs get both sheets), so the generators are too thin at this resolution. Given ρ^(−2/d) scaling of the miss rate (observed in 1+1 and 2+1, not derived), 3+1 at matched recovery would need roughly 10–100× the density. That is beyond dense matrices on this machine (N would be 10⁵–10⁶): a bit-packed or sparse implementation is required.
+
 ## Caveat on existing code
 
 In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is true but has no content. `KFCausalNerveHolonomy` is the declared-2-cell replacement for the homology part.
 
 ## Next
 
-0. 2+1: higher density (memory-limited at N ≈ 14k dense R; needs a bit-packed R); a non-flat or multiply-wound case; why the exponent looks like −2/d.
+0. 3+1 at higher density (needs a bit-packed or sparse implementation; N ≈ 10⁵–10⁶) to move 3+1 from outcome 2 toward 1; a non-flat or multiply-wound case; why the exponent looks like −2/d; the remaining Lean step (register files once UnifiedTheory.lean is clean).
 0b. Controlled density scan of the missed-sheet fraction at fixed settings.
 
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.
