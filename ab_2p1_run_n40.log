@@ -1,0 +1,8 @@
+
+=== 2+1 seed=0 rho=30000 n=40: N=14447, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation +1): |err| median 0.016, 99% 0.069, max 0.125
+  generators 479144 of 501466 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 13994184, 'FP': 0, 'FN': 242238}; FP=0, FN rate 1.70%
+  FN by tau: [0.00,0.05) 28.6%, [0.05,0.10) 13.5%, [0.10,0.15) 2.8%, [0.15,0.20) 0.2%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 750496; pairs missing a sheet 11.49%; sheets missed 5.83%
+  (continuum #images, order #sheets) -> count: {(1, 0): 154671, (1, 1): 12580759, (2, 0): 1317, (2, 1): 84933, (2, 2): 664246}

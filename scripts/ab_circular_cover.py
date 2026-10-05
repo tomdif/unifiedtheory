@@ -361,3 +361,46 @@ def e2e_fourier(seeds=(0, 1, 2), rho=3000, n=25, B=5, dmax=0.25, T=1.2, ms=(0.0,
                 cnt = next(iter(r_.values()))[0]
                 print(f"   {ni:5d} [{lo_:.1f},{hi_:.1f}) {cnt:7d}  " + "   ".join(
                     f"{r_[p][1]:+.4f} / {r_[p][2]:+.4f} / {r_[p][3]:+.4f}" for p in Phis), flush=True)
+
+
+def density_scan(rhos=(1500, 2250, 3000, 4500), seeds=(0, 1, 2, 3), n_at_3000=25, B=5, dmax=0.25,
+                 bins=((0.5, 0.6), (0.6, 0.7), (0.7, 0.85), (0.85, 1.0))):
+    """Missed-sheet statistics at fixed physical settings: slice spacing 0.05,
+    span bound B, margin dmax, and n proportional to rho (constant shadow width).
+    Reports, for base pairs with 2 continuum images, per Δt bin: the fraction of
+    PAIRS missing >= 1 sheet and the fraction of SHEETS missed."""
+    print("rho   seed  n    " + "  ".join(f"Δt[{a:.2f},{b:.2f}) pairs-miss / sheets-miss" for a, b in bins))
+    for rho in rhos:
+        n = int(round(n_at_3000 * rho / 3000))
+        for seed in seeds:
+            out = lift(seed, rho, n, B, dmax=dmax, quiet=True)
+            if out is None:
+                print(f"{rho:5d} {seed:4d} {n:4d}  dim H1(X) != 1", flush=True)
+                continue
+            t, x, R, theta, sidx, ok, gi, gj, jgen, sgn, delta, S = out
+            N, W = len(t), 2 * S + 1
+            reach = closure(t, gi, gj, jgen, N, S)
+            dl = np.array([delta.get(i, 0) for i in range(N)])
+            nb = (N * W + 7) // 8
+            acc = [[0, 0, 0] for _ in bins]  # pairs, pairs missing, sheets missed
+            fp = 0
+            for u in np.flatnonzero(ok):
+                r = reach.get((int(u), 0), 0)
+                bits = np.unpackbits(np.frombuffer(r.to_bytes(nb, "little"), np.uint8),
+                                     bitorder="little")[: N * W].reshape(N, W).astype(bool) if r else np.zeros((N, W), bool)
+                vs = np.flatnonzero(R[u] & ok)
+                if len(vs) == 0:
+                    continue
+                ku = sgn * (0 - dl[u])
+                js = np.arange(-S, S + 1)
+                kv = sgn * (js[None, :] - dl[vs][:, None])
+                dt = (t[vs] - t[u])[:, None]
+                coord = dt > np.abs(x[vs][:, None] + kv - x[u] - ku)
+                o = bits[vs]
+                fp += int((o & ~coord).sum())
+                nc, no = coord.sum(axis=1), (o & coord).sum(axis=1)
+                for k, (a, b) in enumerate(bins):
+                    m = (nc == 2) & (dt[:, 0] >= a) & (dt[:, 0] < b)
+                    acc[k][0] += int(m.sum()); acc[k][1] += int((no[m] < 2).sum()); acc[k][2] += int((2 - no[m]).sum())
+            print(f"{rho:5d} {seed:4d} {n:4d}  " + "  ".join(
+                f"{a_[1]/max(a_[0],1):6.2%} / {a_[2]/max(2*a_[0],1):6.2%} (n={a_[0]})" for a_ in acc) + f"   FP={fp}", flush=True)

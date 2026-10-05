@@ -111,7 +111,7 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 * **Method: deck Fourier transform.** The lifted relation depends only on the sheet difference, so on the infinite cover K_Φ = ½ Ĉ_Φ (I + m²Ĉ_Φ/2ρ)⁻¹ exactly, with Ĉ_Φ(u,v) = Σ_d e^{idΦ} C_d(u,v), the flux-twisted causal matrix. This is Johnston's formula with C replaced by Ĉ_Φ, and at Φ = 0, Ĉ_0 is the order-derived image count. It is N×N and reproduces the dense ρ = 1200 result (0.5087 vs 0.5082).
 * **Massless, two-image pairs.** Order cover: 0.973–0.975 (Δt 0.5–0.7) and 0.988–0.989 (Δt 0.7–1.0), where the coordinate cover gives exactly 1. At Φ = π/2 it gives 0.489 / 0.498 against ½; at Φ = π, +0.003 to +0.009 against 0. One-image pairs are within 0.004 of ½. The deficit is the missed-sheet fraction, so the massless error equals the entry-level FN, as predicted.
 * **m = 4, two-image pairs, Δt 0.5–0.7.** Order minus coordinate is −0.013 to −0.014 at Φ = 0 (−2.4 to −2.6%), −0.004 to −0.005 at π/2, and +0.003 to +0.005 at π. Values: order 0.522 / 0.525 / 0.535 / 0.541 against coordinate 0.535 / 0.538 / 0.550 / 0.554 and continuum 0.537–0.538. The bare relation propagator gave 0.09.
-* **The massive error decomposes.** Its relative size (2.4–2.6%) matches the massless missed-sheet deficit (2.5–2.7%). The 5% at ρ = 1200 fits the same picture: 96.2% two-sheet recovery, plus one mislifted generator before the filter.
+* **The massive error decomposes.** Its relative size (2.4–2.6%) matches the massless deficit (2.5–2.7%). **Denominator, corrected after review:** that deficit is the fraction of SHEETS missed. A two-image pair missing one sheet loses only half its value, so about 5% of two-image PAIRS in that bin miss a sheet. The one-parameter fit (1−f)·|cos(Φ/2)| + f/2 with f = 5% reproduces the whole |K_Φ| row (0.975, 0.903, 0.697, 0.389, 0.025 vs observed 0.974, 0.902, 0.697, 0.388, 0.025). So the discrepancy is entirely missed sheets, with no phase error. The 5% at ρ = 1200 fits the same picture: 96.2% two-sheet recovery, plus one mislifted generator before the filter.
 * **Discreteness, separately.** In seeds 2 and 3 the coordinate cover itself misses the continuum by up to 0.02 (one-image Δt 0.5–1.0, two-image Δt 0.7–1.0). That is sprinkling noise in Johnston's K, not a cover effect.
 
 **10. Gauge-invariant headline** (`ab_e2e_abs.log`, ρ = 3000, filter 0.25, 2 seeds). |K_Φ(p,q)| needs no gauge alignment. For two-image pairs its flux dependence is the interference between the two sheets.
@@ -126,6 +126,17 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 * **The Φ = π residual is bookkeeping** (reviewer's account, consistent with the numbers). Exactly one of the two images crosses the seam, and the nearly null image is the longer one, so it is more often the one wound around. Missing it leaves ½ where the sum should be 0. With a missed fraction of about 2.6%, the expected values are +0.003 (Δt 0.5–0.7) and +0.009 (Δt 0.7–1.0); observed +0.003–0.006 and +0.007–0.009.
 * **No continuum limit is claimed.** The missed two-sheet fraction was 3.8% at ρ = 1200 (unfiltered) and 2.1–2.6% at ρ = 3000 (filtered): two points under different settings. Some loss may be irreducible. The reviewer's argument, not yet run: a nearly null link in the cover leaves no trace in the base order when its endpoints are already related the other way round. A controlled density scan at fixed settings is needed.
 
+**10b. Density scan, 1+1** (`density_scan` in `ab_circular_cover.py`, `ab_density_scan.log`). Fixed physical settings: slice spacing 0.05, span bound B = 5, margin 0.25, n ∝ ρ (n = 25 at ρ = 3000). 4 seeds per density; per Δt bin, two-image pairs missing a sheet and sheets missed.
+* **FP = 0 in all 13 completed runs.** ρ = 1500 (n = 12) is outside the window in 3 of 4 seeds.
+* **Missed fraction ∝ ρ^(−1.06±0.03) in every Δt bin**, for pairs and sheets alike, over ρ = 2250–4500:
+
+  | Δt bin | pairs missing a sheet (ρ = 2250 / 3000 / 4500) |
+  |---|---|
+  | 0.5–0.6 | 12.2% / 9.2% / 5.9% |
+  | 0.85–1.0 | 2.9% / 2.1% / 1.4% |
+
+* No floor is visible, but the range is only a factor of 2 in density. This is consistent with the loss vanishing like 1/ρ; **no continuum limit is claimed.**
+
 **11. Mayer–Vietoris lemma** (`UnifiedTheory/Audit/KFCausalMayerVietoris.lean`, 0 sorry, axioms `propext, Classical.choice, Quot.sound`; not registered in `UnifiedTheory.lean`). At the level of integer 1-chains on the declared complex of `KFCausalNerveHolonomy`:
 * `same_component_bounds` / `hol_same_component`: endpoints joined inside P∩Q ⇒ the crossing loop bounds ⇒ holonomy 0.
 * `crossing_independent`: the class does not depend on the paths chosen inside P and Q.
@@ -137,10 +148,32 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 **12. Prior art** (checked 2026-10-05).
 * B. Schmitzer, *Curvature and Topology on Causal Sets*, MSc dissertation, Imperial College London (2010). It introduces the **homotopy matrix** (zone number = the number of equivalence classes of causal trajectories from x to y, in the covering space) to define Johnston's propagator on the cylinder. **At Φ = 0 our twisted matrix Ĉ_0 is exactly this homotopy matrix**, and item 5C (the bare relation propagator fails on the cylinder) restates the reason it was introduced, so 5C is not new.
 * L. Bogaardt, MSc dissertation, Imperial College London (2013), §3.7. It gives an order-only zone rule on the cylinder and reports that, as for Schmitzer, "this procedure fails when the spacetime has a dimension larger than two."
-* **What may be new, pending a full read of Schmitzer:**
-  - the flux character e^{idΦ} (the AB propagator as Johnston's formula with the twisted matrix Ĉ_Φ);
+* **Schmitzer, full text checked** (67 pp., local text search). No phase, flux, twist, charge, gauge or holonomy weighting anywhere. §3.3 treats compactified M4 only by unrolling the sprinkling ("cheating", in his words, as it remembers coordinates). §4.2 is an order-only 2D reconstruction ("intersecting lightcones"), imperfect at zone boundaries. §4.3: "In dimensions higher than two … the whole procedure will not work. How to solve this problem is still an open question."
+* **What may be new:**
+  - the flux character e^{idΦ} (the AB propagator as Johnston's formula with the twisted matrix Ĉ_Φ). It is not in Schmitzer.
   - a reconstruction (nerve cocycle → harmonic circular coordinate → nearest-rule lift → closure) whose construction does not depend on dimension.
   - The case they leave open, flat 2+1 with one compact dimension, is therefore the next test, ahead of further 1+1 work.
+
+**13. Flat 2+1 with one compact dimension: the open case** (`ab_cover_2p1.py`; logs `ab_2p1_run_n40.log`, `ab_2p1_run_n40_v2.log`, `ab_2p1_window.log`).
+* **Geometry.** S¹_x (L = 1) × [0, 0.6]_y × [0, 0.8]_t at ρ = 3×10⁴, N ≈ 14,400. The circumference is about 31 discreteness lengths.
+* **Construction.** Order-chosen maximal slices 0.05 apart, from t = 0.1 to 0.6. The complex X is built on pruned thickened-antichain shadows (n = 40):
+  - within a slice, the true nerve;
+  - between adjacent slices, edges when some element of one shadow precedes some element of the other, and witness 2-cells (one relation certifies each triangle);
+  - then the harmonic circular coordinate, the nearest-rule lift of links (span ≤ 4 slices, |Δθ| ≤ 0.25), and the closure on sheets −1..1.
+  - Coordinates are used for slice levels, to delimit the analysed region (shadows touching the y-boundary layer of 0.04 are dropped, as if a larger region were sprinkled), to restrict test sources to the central y band, and for the comparison.
+* **Pre-registered outcomes** (reviewer):
+  1. a window, FP = 0 and two-image recovery above about 90%;
+  2. a window with poor recovery;
+  3. no window (inconclusive).
+* **Result, 2 seeds** (seed 0 also run once before the edge buffer, with identical numbers to within 0.1%):
+  - every slice nerve is (b₀,b₁) = (1,1), and **dim H¹(X) = 1**;
+  - θ vs coordinate: median error 0.016–0.018, max 0.13–0.19;
+  - **0 gauge mismatches** (465k / 458k generators);
+  - **FP = 0** over 14.0M / 14.3M entries;
+  - FN 1.69% / 1.71%, entirely nearly null (28% at τ < 0.05, 13–14%, 3%, 0.2%, then 0.0% from τ = 0.2);
+  - **two-image pairs: 88.4% / 88.3% get both sheets** (11.6% / 11.8% miss a sheet; 5.9% / 6.0% of sheets missed).
+* **Reading.** By the pre-registered rule this sits at the boundary of outcome 1: just under 90% for pairs, above it for sheets. The order alone reconstructs the ℤ-cover and the image-count (homotopy) matrix in 2+1, the case Schmitzer and Bogaardt report their method cannot reach. Recovery is limited the same way as in 1+1 at similar resolution (1+1, Δt 0.5–0.6: 12% of pairs at ρ = 2250, falling as ρ^(−1.06)). A 2+1 density scan is needed to show the same fall.
+* **Window.** In the earlier scan with clique cells and no edge buffer, n = 40 gave dim H¹ = 1 (2 seeds) and n ≥ 80 gave dim H¹ = 0. The diagnosis (`ab_2p1` diagnostic, ρ = 10⁴) found boundary half-disc shadows of angular radius up to 0.28 wrapping the circle. The rerun with the witness cells and edge buffer is in `ab_2p1_window.log`.
 
 ## Caveat on existing code
 
@@ -148,7 +181,7 @@ In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses 
 
 ## Next
 
-0. Flat 2+1 with one compact dimension (Schmitzer/Bogaardt's open case): run the circular-coordinate reconstruction and the deck-Fourier propagator there (Johnston's 3+1 or link-based propagators where established; topology and cover regardless).
+0. 2+1 (item 13): window with the fixes; density scan in 2+1; deck-Fourier image-count/flux matrix there (no established 2+1 propagator).
 0b. Controlled density scan of the missed-sheet fraction at fixed settings.
 
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.

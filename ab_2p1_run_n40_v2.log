@@ -1,0 +1,15 @@
+
+=== 2+1 seed=1 rho=30000 n=40: N=14404, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation +1): |err| median 0.018, 99% 0.088, max 0.186
+  generators 458275 of 482447 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 14308362, 'FP': 0, 'FN': 248428}; FP=0, FN rate 1.71%
+  FN by tau: [0.00,0.05) 28.2%, [0.05,0.10) 13.8%, [0.10,0.15) 3.0%, [0.15,0.20) 0.2%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 775006; pairs missing a sheet 11.75%; sheets missed 5.96%
+  (continuum #images, order #sheets) -> count: {(1, 0): 156019, (1, 1): 12850758, (2, 0): 1340, (2, 1): 89728, (2, 2): 683938}
+
+=== 2+1 seed=0 rho=30000 n=40: N=14447, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  generators 464772 of 489193 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 13995780, 'FP': 0, 'FN': 240636}; FP=0, FN rate 1.69%
+  FN by tau: [0.00,0.05) 28.1%, [0.05,0.10) 13.4%, [0.10,0.15) 2.9%, [0.15,0.20) 0.2%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 750496; pairs missing a sheet 11.57%; sheets missed 5.87%
+  (continuum #images, order #sheets) -> count: {(1, 0): 152480, (1, 1): 12582944, (2, 0): 1318, (2, 1): 85520, (2, 2): 663658}
