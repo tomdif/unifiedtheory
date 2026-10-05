@@ -276,3 +276,87 @@ def e2e(seeds=(0, 1), rho=1200, n=25, B=5, m=4.0, T=1.2, Phis=(0.0, np.pi / 2, n
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "cover"
     {"scan": scan, "cover": cover, "e2e": e2e}[mode]()
+
+
+def e2e_fourier(seeds=(0, 1, 2), rho=3000, n=25, B=5, dmax=0.25, T=1.2, ms=(0.0, 4.0),
+                Phis=(0.0, np.pi / 2, np.pi), S=3, label=""):
+    """End-to-end AB propagator via the deck Fourier transform.
+
+    The lifted relation is deck-invariant, so on the infinite cover
+      K_Phi(u,v) = sum_d e^{i d Phi} K_cover((u,0),(v,d))
+                 = 1/2 Ĉ_Phi (I + m^2/(2 rho) Ĉ_Phi)^{-1},
+      Ĉ_Phi(u,v) = sum_d e^{i d Phi} C_d(u,v),  C_d(u,v) = [(u,0) < (v,d)].
+    Computed for the order-built cover, the coordinate cover (control), and
+    compared with the continuum sum_d e^{i d Phi} 1/2 J0(m tau_d)."""
+    for seed in seeds:
+        out = lift(seed, rho, n, B, S=S, T=T, dmax=dmax)
+        if out is None:
+            continue
+        t, x, R, theta, sidx, ok, gi, gj, jgen, sgn, delta, S = out
+        N, W = len(t), 2 * S + 1
+        reach = closure(t, gi, gj, jgen, N, S)
+        o = np.argsort(t)                      # linear extension -> upper triangular
+        inv = np.empty(N, int); inv[o] = np.arange(N)
+        nb = (N * W + 7) // 8
+        Cd = np.zeros((W, N, N), bool)         # in sorted order
+        for u in range(N):
+            r = reach.get((u, 0), 0)
+            if r:
+                bits = np.unpackbits(np.frombuffer(r.to_bytes(nb, "little"), np.uint8),
+                                     bitorder="little")[: N * W].reshape(N, W)
+                Cd[:, inv[u], :] = bits[o].T
+        dl = np.array([delta.get(i, 0) for i in range(N)])[o]
+        ts, xs, oks = t[o], x[o], ok[o]
+        ds = np.arange(-S, S + 1)
+        # coordinate cover C_d in the same gauge
+        Cc = np.zeros((W, N, N), bool)
+        ku = sgn * (0 - dl)
+        for a, d in enumerate(ds):
+            kv = sgn * (d - dl)
+            Cc[a] = (ts[None, :] - ts[:, None]) > np.abs(xs[None, :] + kv[None, :] - xs[:, None] - ku[:, None])
+        Rs = R[np.ix_(o, o)]
+        I, J = np.nonzero(Rs & oks[:, None] & oks[None, :])
+        rng = np.random.default_rng(seed)
+        sel = rng.choice(len(I), size=min(len(I), 400000), replace=False)
+        I, J = I[sel], J[sel]
+        DT = ts[J] - ts[I]
+        # continuum images per pair, by order-sheet d
+        tau_d, in_d = [], []
+        for d in ds:
+            kv = sgn * (d - dl[J]) - sgn * (0 - dl[I])
+            dd = np.abs(xs[J] + kv - xs[I])
+            in_d.append(dd < DT)
+            tau_d.append(np.sqrt(np.maximum(DT**2 - dd**2, 0)))
+        nimg = np.sum(in_d, axis=0)
+        print(f"\n=== e2e (deck Fourier){label}: seed={seed} rho={rho} n={n} B={B} dmax={dmax} N={N},"
+              f" elements without theta {int((~ok).sum())}")
+        for m in ms:
+            a_ = m * m / (2 * rho)
+            print(f"  m={m}: images Δt-bin  pairs   " + "   ".join(f"Φ={p:.2f}: order / coord / continuum" for p in Phis))
+            rows = defaultdict(dict)
+            for ph in Phis:
+                ph_ = np.exp(1j * ds * ph)
+                vals = {}
+                for name, CC in (("order", Cd), ("coord", Cc)):
+                    Ch = np.tensordot(ph_, CC.astype(np.complex128), axes=1)
+                    if a_ > 0:
+                        Mx = np.eye(N, dtype=complex) + a_ * Ch
+                        # K = 1/2 Ch Mx^{-1}  (both upper triangular, commute)
+                        K = 0.5 * solve_triangular(Mx.T, Ch.T, lower=True, unit_diagonal=True, check_finite=False).T
+                    else:
+                        K = 0.5 * Ch
+                    vals[name] = K[I, J]
+                    del Ch
+                G = sum(ph_[k] * np.where(in_d[k], 0.5 * j0(m * tau_d[k]), 0) for k in range(W))
+                for ni in (1, 2, 3):
+                    for lo_, hi_ in ((0.3, 0.5), (0.5, 0.7), (0.7, 1.0)):
+                        s_ = (nimg == ni) & (DT >= lo_) & (DT < hi_)
+                        if s_.sum() > 100:
+                            rows[(ni, lo_, hi_)][ph] = (s_.sum(), vals["order"][s_].real.mean(),
+                                                         vals["coord"][s_].real.mean(), G[s_].real.mean())
+            for key in sorted(rows):
+                ni, lo_, hi_ = key
+                r_ = rows[key]
+                cnt = next(iter(r_.values()))[0]
+                print(f"   {ni:5d} [{lo_:.1f},{hi_:.1f}) {cnt:7d}  " + "   ".join(
+                    f"{r_[p][1]:+.4f} / {r_[p][2]:+.4f} / {r_[p][3]:+.4f}" for p in Phis), flush=True)

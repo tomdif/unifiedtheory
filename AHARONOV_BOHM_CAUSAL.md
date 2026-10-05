@@ -107,13 +107,20 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
   - The massless case, where the error should equal the entry FN rate exactly, was not run separately.
   - The e2e run predates the margin filter. A rerun with the filter and at higher density is pending.
 
+**9. End to end with the margin filter at ρ = 3000** (`e2e_fourier` in `ab_circular_cover.py`; logs `ab_e2e_rho3000.log`, `ab_e2e_fourier_validation.log`; n = 25, B = 5, filter 0.25, 4 seeds).
+* **Method: deck Fourier transform.** The lifted relation depends only on the sheet difference, so on the infinite cover K_Φ = ½ Ĉ_Φ (I + m²Ĉ_Φ/2ρ)⁻¹ exactly, with Ĉ_Φ(u,v) = Σ_d e^{idΦ} C_d(u,v), the flux-twisted causal matrix. This is Johnston's formula with C replaced by Ĉ_Φ, and at Φ = 0, Ĉ_0 is the order-derived image count. It is N×N and reproduces the dense ρ = 1200 result (0.5087 vs 0.5082).
+* **Massless, two-image pairs.** Order cover: 0.973–0.975 (Δt 0.5–0.7) and 0.988–0.989 (Δt 0.7–1.0), where the coordinate cover gives exactly 1. At Φ = π/2 it gives 0.489 / 0.498 against ½; at Φ = π, +0.003 to +0.009 against 0. One-image pairs are within 0.004 of ½. The deficit is the missed-sheet fraction, so the massless error equals the entry-level FN, as predicted.
+* **m = 4, two-image pairs, Δt 0.5–0.7.** Order minus coordinate is −0.013 to −0.014 at Φ = 0 (−2.4 to −2.6%), −0.004 to −0.005 at π/2, and +0.003 to +0.005 at π. Values: order 0.522 / 0.525 / 0.535 / 0.541 against coordinate 0.535 / 0.538 / 0.550 / 0.554 and continuum 0.537–0.538. The bare relation propagator gave 0.09.
+* **The massive error decomposes.** Its relative size (2.4–2.6%) matches the massless missed-sheet deficit (2.5–2.7%). The 5% at ρ = 1200 fits the same picture: 96.2% two-sheet recovery, plus one mislifted generator before the filter.
+* **Discreteness, separately.** In seeds 2 and 3 the coordinate cover itself misses the continuum by up to 0.02 (one-image Δt 0.5–1.0, two-image Δt 0.7–1.0). That is sprinkling noise in Johnston's K, not a cover effect.
+
 ## Caveat on existing code
 
 In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is true but has no content. `KFCausalNerveHolonomy` is the declared-2-cell replacement for the homology part.
 
 ## Next
 
-0. Rerun the end-to-end K with the 0.25 margin filter and at higher density (needs sparse or blocked K); decompose the 5% cover error; massless check (error = entry FN).
+0. (Done, item 9.) Remaining for the cylinder: higher density to show the missed-sheet deficit → 0; literature check on causal-set propagators in multiply connected spacetimes before calling item 5C new.
 
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.
 2. Stokes check in the no-tube control (triangle windings over a spanning 2-chain sum to ±1).
