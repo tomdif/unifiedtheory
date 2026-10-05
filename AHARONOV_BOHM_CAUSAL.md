@@ -192,6 +192,21 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
   - Two-image pairs, ρ = 3×10⁴, at Φ = 0, π/4, π/2, 3π/4, π: order 1.883, 1.748, 1.365, 0.791, 0.114; coordinate and continuum 2|cos(Φ/2)| = 2, 1.848, 1.414, 0.765, 0.
   - The one-parameter form (1−f)·2|cos(Φ/2)| + f, with f = 11.57% the measured pair-miss rate, gives 1.884, 1.750, 1.366, 0.793, 0.116: **all within 0.002. The whole discrepancy is missed sheets, with no phase error, as in 1+1.**
 
+**15. Literature search on the 2+1 cover result** (2026-10-05; web search plus INSPIRE citation trawls).
+* **The question is posed as open in the field's standard reference.** S. Johnston, *Quantum Fields on Causal Sets*, PhD thesis (arXiv:1010.5514), §3.13.1:
+  - the massless cylinder propagator is "essentially just one half the number of homotopy classes of future-directed causal curves";
+  - "to correctly modify the model we would need a theory of 'causal set homotopy'. This would allow us to assign to each causal relation information about the homotopy class of causal curves that connect the two sprinkled points. Ideally this would be deduced from the causal set itself without recourse to the background manifold";
+  - Schmitzer's cylinder fix is called "ad hoc" because it depends on the background;
+  - the R × T³ case is flagged as worse, since links are exponentially suppressed.
+* Schmitzer (2010, MSc, §4.3) and Bogaardt (2013, MSc, §3.7): their order-only zone rule works only in 1+1; above that it is "still an open question". Neither has any phase or flux weighting.
+* **Citation trawl (INSPIRE, by record ID).**
+  - Johnston 1010.5514, 46 citing papers. The propagator follow-ups (Shuman 2307.08864; Hinrichsen–Kastrati 2604.24812; Kastrati 2608.18753; AdS 2504.12919; Nomaan X 1411.2614) are all topologically trivial or about curvature.
+  - Major–Rideout–Surya 0902.0434, 31 citing papers. The 2025 Loll et al. TDA papers (2510.05693/5) compute Betti numbers for dynamical triangulations, not covers.
+  - Surya 0712.1648, 17 citing papers. Nothing relevant.
+* **Other checks.** Tsilioukas (topology change, GitHub numerics) recovers slice b₁ (MRS-style homology), not homotopy classes of relations. Eichhorn et al. 2605.27514 uses graph observables only. "Causal Homotopy" 2112.01847 is about ML DAG models, not causal sets.
+* **Conclusion.** No published order-only reconstruction of the homotopy-class (image-count) data of causal relations was found, in any dimension beyond Schmitzer/Bogaardt's 1+1 zone rule, and no flux-weighted (AB) version. Items 8–14 are therefore a candidate answer to Johnston's open question, for one compact dimension (H₁ = ℤ) in flat 1+1 and 2+1.
+* **Limits of the search.** Web search plus three citation trawls; theses are poorly indexed (the open problem itself lives in theses); Google Scholar and the Schmitzer/Bogaardt citation lists were not checked. The tool is standard: circular coordinates from persistent cohomology (de Silva, Morozov and Vejdemo-Johansson, 2011) must be cited; the novelty is the application and the order-only lift.
+
 ## Caveat on existing code
 
 In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is true but has no content. `KFCausalNerveHolonomy` is the declared-2-cell replacement for the homology part.
