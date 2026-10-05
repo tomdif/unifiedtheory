@@ -214,6 +214,12 @@ def main(seed=0, rho=3000, n=25):
     tab = Counter()
     imgs = Counter()
     taub = defaultdict(Counter)
+    plateau = Counter()
+    pred = defaultdict(list)
+    for i, j in inter:
+        pred[j].append(i)
+    dead_frac = np.mean([(not succ[u]) for u in range(nV) if sl[u] < sl.max()])
+    dead_in = np.mean([(not pred[u]) for u in range(nV) if sl[u] > 0])
     T_ = t[V]
     for u in range(nV):
         ku = s * (0 - delta[u])
@@ -233,6 +239,9 @@ def main(seed=0, rho=3000, n=25):
                     tau = np.sqrt((T_[v] - T_[u]) ** 2 - d * d)
                     tb = min(int(tau / 0.05), 6)
                     taub[(tb, sl[v] - sl[u] == 1)][outcome] += 1
+                    if tb == 6:
+                        dead = (not succ[u]) or (not pred[v])
+                        plateau[(outcome, dead)] += 1
                 n_order += order_rel
                 n_coord += coord
             if R[V[u], V[v]]:
@@ -249,6 +258,10 @@ def main(seed=0, rho=3000, n=25):
             row.append(f"{c_['FN']/tot:6.1%} of {tot:7d}" if tot else "      -          ")
         lab = f"[{tb*0.05:.2f},{(tb+1)*0.05:.2f})" if tb < 6 else ">=0.30     "
         print(f"    tau {lab}: adjacent {row[0]}   non-adjacent {row[1]}")
+    print(f"  plateau check (tau>=0.3): elements with no generator up {dead_frac:.1%}, no generator down {dead_in:.1%}")
+    for dd in (True, False):
+        tp_, fn_ = plateau[("TP", dd)], plateau[("FN", dd)]
+        print(f"    end without generator={dd}: FN {fn_} of {tp_+fn_} ({fn_/max(tp_+fn_,1):.1%})")
     print(f"  related base pairs: (continuum #images, order-cover #images) -> count: {dict(sorted(imgs.items()))}")
     return t, x, R, V, sl, inter, W, s, delta, tab
 

@@ -1,0 +1,10 @@
+seed=0 rho=3000 n=25: slices=25, |V|=1401, edges=19976 (inter-slice 7525), 2-cells=255637 (squares 163510), connected=True; free vars 1, constraint rank 0 -> dim H^1(X) = 1
+  FP = 0, FN rate = 25.58%
+  plateau check (tau>=0.3): elements with no generator up 0.1%, no generator down 0.0%
+    end without generator=True: FN 911 of 911 (100.0%)
+    end without generator=False: FN 94219 of 567163 (16.6%)
+seed=1 rho=3000 n=25: slices=25, |V|=1344, edges=18563 (inter-slice 7001), 2-cells=225064 (squares 142687), connected=True; free vars 1, constraint rank 0 -> dim H^1(X) = 1
+  FP = 0, FN rate = 24.80%
+  plateau check (tau>=0.3): elements with no generator up 0.0%, no generator down 0.0%
+    end without generator=True: FN 0 of 0 (0.0%)
+    end without generator=False: FN 84755 of 535410 (15.8%)

@@ -1,0 +1,14 @@
+mismatched 151 of 26157
+slice span of mismatched: Counter({1: 62, 0: 34, 2: 29, 3: 12, 5: 7, 4: 7})  all: Counter({1: 9578, 0: 7167, 2: 3880, 3: 2470, 4: 1719, 5: 1343})
+|order displacement| mismatched: mean 0.074 max 0.492; all mean 0.076
+|coord displacement| mismatched: mean 0.067 max 0.389
+theta distortion |err| quantiles all elements: [0.023 0.056 0.085 0.119]
+theta distortion at mismatched endpoints: [0.031 0.062 0.088]
+time of mismatched endpoints: [0.006 0.541 1.347]  slice idx: [(10, 14), (6, 13), (3, 11), (8, 11), (5, 10)]
+on-slice fraction of mismatched endpoints: 1.00
+B=5: generators 26157, genuinely mislifted 2; their |coord displacement| [0.389 0.39 ], span Counter({5: 2})
+B=3: generators 23095, genuinely mislifted 0; their |coord displacement| [], span Counter()
+seed=2 rho=3000 n=25 B=3: N=4153, slices=25, harmonic |resid| max 0.267; generators 23095 of 29611 links (78.0%); gauge-mismatched generators 0
+  entries: {'TP': 7971667, 'FP': 0, 'FN': 134136}; FP=0, FN rate 1.65%
+  FN by tau: [0.00,0.05) 25.1%, [0.05,0.10) 18.3%, [0.10,0.15) 10.7%, [0.15,0.20) 5.2%, [0.20,0.25) 1.8%, [0.25,0.30) 0.3%, [0.30,0.35)+ 0.0%
+  two-image pairs recovered with 2 sheets: 1726742/1801815 (95.8%); one-image recovered: 3897049/3924931; all: {(1, 0): 27882, (1, 1): 3897049, (2, 0): 290, (2, 1): 74783, (2, 2): 1726742, (3, 1): 679, (3, 2): 29533, (3, 3): 162202}

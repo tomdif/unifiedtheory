@@ -80,7 +80,32 @@ Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible 
 * Lift the relations between adjacent slices to sheets and take the transitive closure. Compared entry by entry with the coordinate cover (sheets ±3, about 6.4M entries per seed): **FP = 0 exactly**, FN = 25.6% / 24.8%.
 * FN by proper time τ of the lifted pair (non-adjacent slices; adjacent pairs have 0% FN, being the generators): 90% at τ < 0.05, 59%, 52%, 48%, 44% and 40% in successive 0.05 bins, and **17% at τ ≥ 0.3**. The nearly null exceptions are as predicted. The 17% residual at long τ is not diagnosed; likely cause: lifted chains must pass through every intermediate slice, and the slices are sparse.
 * Image counts from the order alone, for related base pairs: of pairs with 2 continuum images, 32–35% get 2 sheets, 60–62% get 1 and 6–8% get 0. Of pairs with 1 image, 84% get 1 and 16% get 0. The undercounting has the same cause as the FN.
-* **Not yet:** using all elements rather than slice elements only; denser slices; Johnston's K on the order-built cover. Johnston's propagator is established in 1+1 and 3+1, so the 2+1 tube runs can test topology and the cover but not a propagator (to be verified).
+* **Plateau check** (`ab_plateau_check.log`): the reviewer's guess was that the 17% at long τ comes from elements with no generator into the adjacent slice. **Falsified.** Such elements are about 0.1% of the total. Pairs ending on one are always missed, but there are only 911 such entries in seed 0 and 0 in seed 1; the rate stays near 16% among pairs whose ends both have generators. The slice-chain generating set is too thin, since a maximal antichain need not meet every chain. Item 8 replaces it.
+* **Scope:** dim H¹(X) = 1 is not a single point. The n-window scan (`ab_window_scan.log`, ρ = 3000, 5 seeds) gives dim H¹ = 1 on every seed for n = 20, 25, 35 and 50; n = 70 gives [1, 1, 1, 0, 1]. n = 15 fails on one seed, giving 2. At ρ = 1200, n = 25 fails on one of three seeds (dim 0). Johnston's propagator is established in 1+1 and 3+1, so the 2+1 tube runs can test topology and the cover but not a propagator (to be verified).
+
+**8. ℤ-cover from a circular coordinate** (`ab_circular_cover.py`; following the reviewer's proposal; logs `ab_circular_cover*.log`, `ab_seed2_diag.log`, `ab_e2e.log`).
+* **Method.**
+  - **θ:** take the least-squares (harmonic) representative of the integral cocycle on X, and set θ = f mod 1 on slice elements. Off-slice elements get the circular mean of θ over their past shadow on the highest slice below.
+  - **Generators:** base links whose slice span is at most B = 5, lifted by the nearest rule.
+  - **Lift:** the transitive closure over sheets. Coordinates are used only for slice levels, as a linear extension, and for the comparison.
+  - **Result:** θ tracks the coordinate everywhere to within 0.12.
+* **Margin failure.** With no further filter, 3 of 4 seeds at ρ = 3000 are clean. In seed 2, **exactly 2 of 26,157 links were genuinely mislifted.** Both span 5 slices with displacement 0.39, and they produced 39,647 false positives in the closure: one bad generator poisons everything above it. (The "151 mismatched generators" printed by the gauge-matching walk was mostly propagation inside that walk. The gauge-free count is 2.) Lowering B to 3 removes them, at the cost of FN 1.65%.
+* **Fix (order-only):** drop generators whose lifted θ-displacement exceeds 0.25. With θ error at most about 0.12 per end, the true displacement stays below ½. **Result, ρ = 3000, n = 25, 4 seeds:** FP = 0 and 0 gauge mismatches in every seed; FN 0.77–0.85%, concentrated near null (19% at τ < 0.05, 11%, 4–5%, 1%, then 0.0–0.2% from τ = 0.2 up). **Two-image pairs get both sheets in 97.8–98.0%** (vs 32–35% for the slice-chain cover of item 7), and three-image pairs get all three in 92–94%. The reviewer's prediction (FN only on long, nearly null links; two-sheet recovery near 100%) holds, provided the margin filter is applied.
+* **Low density.** At ρ = 1200 (no filter), FN is 1.4%, two-image recovery 96.2%, and one seed has a single mislifted generator (496 FP). This is the same margin effect, with the harmonic residual up to 0.38.
+* **End to end: AB from the order alone on the cylinder** (ρ = 1200, n = 25, B = 5, no filter, m = 4, 3 seeds). Johnston's K is built on the order-built cover and summed over sheets with e^{ijΦ}. As a control, K is also built on the coordinate cover of the same sprinkling, gauge-matched node for node.
+
+  | Two-image pairs, Δt 0.5–0.7 | K_order | K_coord | Continuum |
+  |---|---|---|---|
+  | Φ = 0 | 0.508 / 0.512 / 0.528 | 0.533 / 0.538 / 0.556 | 0.536 / 0.537 / 0.540 |
+  | Φ = π/2 | 0.243 / 0.238 / 0.252 | 0.253 / 0.246 / 0.264 | 0.252 / 0.249 / 0.253 |
+  | Φ = π | −0.022 / −0.037 / −0.023 | −0.028 / −0.046 / −0.029 | −0.032 / −0.038 / −0.033 |
+
+  - The bare relation propagator in item 5C gave 0.09 against 0.545 at Φ = 0.
+  - **Cover error** (K_order − K_coord) is −0.024 to −0.028 at Φ = 0 (about 5%) and within about 0.01 at Φ = π/2 and π.
+  - **Discreteness noise** (K_coord − continuum) is up to 0.02 on seed 2.
+  - The 5% cover error exceeds the 1.4% entry-level FN at this density. It plausibly comes from the 3.8% of two-image pairs that miss a sheet, amplified through the interval term, but this is not decomposed.
+  - The massless case, where the error should equal the entry FN rate exactly, was not run separately.
+  - The e2e run predates the margin filter. A rerun with the filter and at higher density is pending.
 
 ## Caveat on existing code
 
@@ -88,7 +113,7 @@ In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses 
 
 ## Next
 
-0. Order-built cover: find the cause of the 17% long-τ FN (denser slices, or all elements instead of slice elements), then run Johnston's K on the order-built cover.
+0. Rerun the end-to-end K with the 0.25 margin filter and at higher density (needs sparse or blocked K); decompose the 5% cover error; massless check (error = entry FN).
 
 1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.
 2. Stokes check in the no-tube control (triangle windings over a spanning 2-chain sum to ±1).

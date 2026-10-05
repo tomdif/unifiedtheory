@@ -1,0 +1,16 @@
+seed=0 rho=3000 n=25 B=5: N=4226, slices=25, harmonic |resid| max 0.230; generators 26990 of 30573 links (88.3%); gauge-mismatched generators 0
+  entries: {'TP': 8271378, 'FP': 0, 'FN': 47960}; FP=0, FN rate 0.58%
+  FN by tau: [0.00,0.05) 15.9%, [0.05,0.10) 8.2%, [0.10,0.15) 2.4%, [0.15,0.20) 0.4%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image pairs recovered with 2 sheets: 1788487/1816801 (98.4%); one-image recovered: 4099202/4106853; all: {(1, 0): 7651, (1, 1): 4099202, (2, 0): 27, (2, 1): 28287, (2, 2): 1788487, (3, 1): 94, (3, 2): 11780, (3, 3): 181087}
+seed=1 rho=3000 n=25 B=5: N=4202, slices=25, harmonic |resid| max 0.251; generators 26724 of 30150 links (88.6%); gauge-mismatched generators 0
+  entries: {'TP': 8224879, 'FP': 0, 'FN': 46298}; FP=0, FN rate 0.56%
+  FN by tau: [0.00,0.05) 15.6%, [0.05,0.10) 8.0%, [0.10,0.15) 2.4%, [0.15,0.20) 0.3%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image pairs recovered with 2 sheets: 1787383/1814715 (98.5%); one-image recovered: 4040442/4047813; all: {(1, 0): 7371, (1, 1): 4040442, (2, 0): 29, (2, 1): 27303, (2, 2): 1787383, (3, 1): 95, (3, 2): 11376, (3, 3): 186507}
+seed=2 rho=3000 n=25 B=5: N=4153, slices=25, harmonic |resid| max 0.267; generators 26157 of 29611 links (88.3%); gauge-mismatched generators 151
+  entries: {'TP': 8021954, 'FP': 39647, 'FN': 83849}; FP=39647, FN rate 1.03%
+  FN by tau: [0.00,0.05) 16.1%, [0.05,0.10) 8.7%, [0.10,0.15) 3.2%, [0.15,0.20) 1.1%, [0.20,0.25) 0.7%, [0.25,0.30) 0.6%, [0.30,0.35)+ 0.4%
+  two-image pairs recovered with 2 sheets: 1774381/1801815 (98.5%); one-image recovered: 3916919/3924931; all: {(1, 0): 7065, (1, 1): 3916919, (1, 2): 947, (2, 0): 19, (2, 1): 26591, (2, 2): 1774381, (2, 3): 824, (3, 1): 93, (3, 2): 12093, (3, 3): 180228}
+seed=3 rho=3000 n=25 B=5: N=4093, slices=25, harmonic |resid| max 0.276; generators 26016 of 29216 links (89.0%); gauge-mismatched generators 0
+  entries: {'TP': 7870753, 'FP': 0, 'FN': 42493}; FP=0, FN rate 0.54%
+  FN by tau: [0.00,0.05) 15.2%, [0.05,0.10) 7.8%, [0.10,0.15) 2.3%, [0.15,0.20) 0.3%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image pairs recovered with 2 sheets: 1736197/1761113 (98.6%); one-image recovered: 3798135/3804331; all: {(1, 0): 6196, (1, 1): 3798135, (2, 0): 32, (2, 1): 24884, (2, 2): 1736197, (3, 1): 71, (3, 2): 11207, (3, 3): 184285}
