@@ -1,60 +1,69 @@
 # Aharonov–Bohm on causal orders: what this repository can now say
 
 Date: 2026-10-05. Prompted by the external report "Aharonov–Bohm effect open
-questions" (Downloads) and its `ring_time_dependent_flux.py`.
+questions" (Downloads) and its `ring_time_dependent_flux.py`. Revised the same
+day after review.
 
-Lean: `UnifiedTheory/Audit/KFCausalAharonovBohm.lean`, 0 sorry, axioms
-`propext, Classical.choice, Quot.sound` only. It builds on `DiscreteBundles`,
-`DiscreteAmbroseSinger` and `KFCausalQuantumMeasure`.
-Numerics: `scripts/ab_order_complex_h1.py`, with output in `ab_order_complex_h1.log`.
+Lean (0 sorry; axioms `propext, Classical.choice, Quot.sound` only):
+`UnifiedTheory/Audit/KFCausalAharonovBohm.lean`, `UnifiedTheory/Audit/KFCausalNerveHolonomy.lean`.
+Neither is registered in `UnifiedTheory.lean` yet.
+Numerics (`python3.11`): `scripts/ab_order_complex_h1.py`, `ab_thickened_antichain.py`,
+`ab_window_scaling.py`, `ab_chain_pair_holonomy.py`, each with a matching `.log` in the repository root.
 
 ## Proved
 
 | Report candidate | Theorem | Content |
 |---|---|---|
-| #1 triviality lemma | `OrderCocycle.coboundary_of_directed` | A cocycle on all relations of an upward-directed preorder is a coboundary g(x)g(y)⁻¹, for any group. This generalizes CAG `cone_kills_H1`, which needs a global top. |
-| #1 finite caveat | `Crown.crown_cocycle_not_coboundary`, `Crown.not_directed` | The crown P₄(S¹) carries a ℤˣ cocycle with 4-cycle holonomy −1. Finite causal sets can carry global cocycle holonomy, and it is classified by H¹ of the order complex. |
-| #1 gauge invariance | `wilson_gauge_covariant`, `wilson_gauge_invariant` | The Wilson factor hol(γ₁)hol(γ₂)⁻¹ of co-terminal paths is conjugated at the source. In the Abelian case it is invariant. |
-| #2 decoherence functional | `dressedD_diagonal`, `dressedD_offdiag`, `dressed_strong_positivity`, `two_slit_flux` | U(1)-dressed D: the diagonal is flux-independent, the off-diagonal entry is the Wilson factor, and strong positivity is preserved. |
-| #2 × Born-from-growth | `two_history_flux`, `unitarity_quantizes_with_flux`, `two_history_flux_periodic` | A flux through the two-history diamond turns `unitarity_quantizes` into cos(θ₁−θ₂+Φ)=0. The repository's normalization condition is therefore flux-dependent, and a change of enclosed flux must be absorbed by the action gap. The measure is periodic under Φ ↦ Φ+2π (Byers–Yang). |
-| #6 ring model | `ring_rigid_rotation`, `ring_lab_fringe_shift` | For any flux history, ψ(T) is a global phase times the evolution under the static initial flux, rotated rigidly by ∫(α−αᵢ)dt. The 10⁻¹⁴ agreement in the script is therefore an algebraic identity, not independent evidence. The "time-average", "initial-flux" and "cancellation" readings are readouts of this identity against different references. |
+| #1 triviality lemma | `OrderCocycle.coboundary_of_directed` | A cocycle on all relations of an upward-directed preorder is a coboundary, for any group. This generalizes CAG `cone_kills_H1`. |
+| #1 finite caveat | `Crown.crown_cocycle_not_coboundary` | The crown P₄(S¹) carries a ℤˣ cocycle with holonomy −1. |
+| #1 gauge invariance | `wilson_gauge_covariant`, `wilson_gauge_invariant` | The Wilson factor of co-terminal paths is conjugated at the source. In the Abelian case it is invariant. |
+| #2 decoherence functional | `dressedD_diagonal`, `dressedD_offdiag`, `dressed_strong_positivity` | In the U(1)-dressed D the flux enters only off the diagonal, and strong positivity is preserved. |
+| #2 × Born-from-growth | `unitarity_quantizes_with_flux`, `two_history_flux_periodic` | A flux shifts the repository's normalization condition to cos(θ₁−θ₂+Φ)=0. It is periodic under Φ ↦ Φ+2π. |
+| #6 ring model | `ring_rigid_rotation` | For any flux history, the evolution is a rigid rotation of the static-initial-flux evolution by ∫(α−αᵢ)dt, times a global phase. The script's 10⁻¹⁴ agreement is therefore an identity. |
+| declared 2-complexes | `hol_homologous`, `hol_gauge_cycle`, `hol_nsmul_generator` | Flat on the declared triangles ⇒ holonomy is additive on 1-chains, kills boundaries and depends only on the homology class. Gauge changes act only through ∂c. With H₁=ℤ, one number (the generator's holonomy) fixes everything. **Not proved:** the converse (trivial holonomy on all cycles ⇒ coboundary). Without it there is no Lean statement that flat cocycles modulo gauge form exactly a circle. |
 
-## Measured: the bare order complex does not see the hole
+## Numerics
 
-The quantities are b₀ and b₁ (over GF(2)) of the order complex of Poisson sprinklings, after reducing each to its Stong core. Beat-point removal was checked to preserve b₁.
+**1. Global order complex** (`ab_order_complex_h1`). For a short slab, b₁ is noise and much larger than 1. Once the slab is tall enough to be effectively directed, b₁ = 0. The tube and no-tube 2+1 runs cannot be told apart. Reading (reviewer's correction): a thickened antichain is itself a thin slab of the same order. The nerve does not see something the order "couldn't"; it removes the noise loops. Both cutoffs are plausibly the scale at which two elements become joined in two inequivalent ways. The upper one is checked below; the lower one is not.
 
-* **1+1 cylinder S¹(L=1)×[0,T]** (π₁ = ℤ). For T < L/2, b₁ is spurious and much larger than 1 (13–23 at T=0.2; 2–6 at T=0.5, ρ=1000). For T > L/2, b₁ = 0, because the light cones wrap and the order becomes effectively a cone. As density increases the transition sharpens to T = L/2. **There is no window with b₁ = 1** (ρ = 300, 1000).
-* **2+1 window minus a world-tube vs the same window with no tube.** b₁ is in the hundreds in both, and the two are statistically indistinguishable (T=1: hole 141–182, flat 215–273). Both decrease with T.
+**2. Thickened-antichain nerve window** (`ab_thickened_antichain`). There is a window of n with b₀=b₁=1, and in it the embedding-angle AB cochain is flat with winding ±1. Calibration:
+* **Cylinder: a reproduction.** Major–Rideout–Surya (arXiv:0902.0434) already report stable-homology windows for 2d and 3d sprinklings, and the cylinder is globally hyperbolic, so their theorem covers it.
+* **The holonomy is a degree computation.** With phases built from embedding angles, "flat with winding ±1" means the angle map is an isomorphism on H₁, so e^{±iΦ} follows by construction. The order-only version is item 4.
+* **2+1 minus the tube is the new part, but only as numerics.** That spacetime is not globally hyperbolic (diamonds that meet the tube are non-compact), so the MRS theorem does not apply. Its upper edge was capped by the slab top and **was not measured**. The expected scaling is ρR³ for tube radius R, with the window closing for tubes only a few discreteness lengths wide. That is untested.
+* **No-tube control.** It is ordinary curvature inside the accessible region, not "type II", which was a mislabel. The useful check here is Stokes: the triangle windings over a 2-chain spanning an axis-encircling loop should sum to ±1. That has not been run, and it would give `discrete_stokes` real 2-cells.
 
-Conclusion: H¹ of the global order complex never isolates π₁(spacetime). For short slabs it is swamped by sprinkling-noise cycles; this is the "infinitely many link cycles" obstruction. For tall slabs it collapses to zero; this is the directed-order lemma. This supports, numerically, the report's claim that AB data on a causal set must live on a locality-restricted complex with a mesoscale, such as the Major–Rideout–Surya thickened antichains or small-diamond 2-cells. A global cocycle cannot carry it.
+**3. Window scaling on the cylinder** (`ab_window_scaling`; ρ = 1000–10⁴, 5 seeds). The prediction is n_max ≈ ρL²/16: height h ≈ √(n/ρ), shadow width 2h, and opposite shadows meet at h = L/4.
+
+| ρ (L=1) | median n_hi | predicted ρ/16 | median n_lo |
+|---|---|---|---|
+| 1000 | 60 | 62 | 5 |
+| 2000 | 114 | 125 | 9 |
+| 4000 | 185 | 250 | 9 |
+| 7000 | 354 | 437 | 9 |
+| 10000 | 574 | 625 | 9 |
+
+The grid is geometric with step ×1.18, and n_hi is the last grid point inside the window, so the true edge lies in [n_hi, 1.18·n_hi). On that basis the data agree with ρ/16 to within about 15% except at ρ=4000 (13–26% low). Fitted exponent: n_hi ∝ ρ^(0.96±0.03). n_lo grows weakly (ρ^(0.24±0.05)). In physical units the window therefore runs from a few discreteness lengths up to L/4; "opens without limit" holds only in units of n. The L = 2 runs are not independent evidence: by scale invariance a 1+1 sprinkling depends only on ρL², and with the same seeds they reproduce the corresponding ρL² runs exactly.
+
+**4. The AB step, order-only** (`ab_chain_pair_holonomy`; cylinder, ρ = 3000 and 10⁴, 3 seeds each, 3000 random pairs p<q per run). Everything except the sprinkling uses the order alone:
+* Dowker complex K on A (simplices = subsets of a common shadow), b₁(K) = 1 in every run.
+* The integral generator ω of H¹(K;ℝ) is found by solving the triangle-flatness equations in spanning-tree gauge. The AB cocycle is Φ·ω: no angles, and the flat cocycles mod gauge are parametrized by Φ.
+* For p below A and q above, the chains p<a<q split into classes = components of J⁺(p)∩J⁻(q)∩A in K. For two classes, the Wilson factor of chains through a₁ and a₂ is exp(iΦ·h), where h = ω(a₁ → a₂ inside J⁺(p)∩A, back inside J⁻(q)∩A).
+
+Results, restricted to pairs where J⁺(p)∩A and J⁻(q)∩A are contractible in K:
+* two chain classes: **h = ±1 in 212/212 pairs**, for every choice of a₁, a₂ and path;
+* one class: **h = 0 in 5154/5154**;
+* the order never produces two classes where the continuum has one arc. The opposite happens in 2–3% of pairs: a second overlap arc smaller than the discreteness contains no element of A.
+* When q's past (or p's future) wraps the whole circle, the loop is not defined up to homotopy and h takes mixed values {0, ±1} (130 of about 10⁴ such pairs). There is no AB diamond there, so this is correct behaviour rather than a failure.
+
+So two spacetime chains on either side of the hole differ by exactly e^{±iΦ}, with the phase defined from the causal order. Not done: a phase on every individual link (a full link-level pullback, needed for a gauge-covariant BD operator or Johnston propagator), the 2+1 tube version of this test, and the higher-density continuation.
 
 ## Caveat on existing code
 
-In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is therefore true but has no content. A real combinatorial Stokes/Ambrose–Singer statement needs a declared 2-cell set, and that is the natural next Lean target. Natural 2-cell sets here are small diamonds, or the elementary squares of `KFCausalDiamondDirectionCover`.
-
-## Measured: the thickened-antichain nerve sees the hole and carries its flux
-
-`scripts/ab_thickened_antichain.py` (log: `ab_thickened_antichain.log`). It uses the Major–Rideout–Surya construction. A is the set of minimal elements of {t ≥ t₀}. T_n(A) = {x ∈ J⁺(A) : |J⁻(x) ∖ J⁻(A)| ≤ n}. The nerve is built from the shadows J⁻(m) ∩ A of the maximal elements m. On that nerve we place the AB cochain U = exp(iΦ·Δθ/2π), where Δθ is the wrapped angle between shadow centroids. "Flat" means every triangle has zero winding; "w" is the winding of the H₁ generator, so the holonomy is e^{iΦw}.
-
-The window is the set of n where b₀ = 1, b₁ = 1, |w| = 1 and there are zero non-flat triangles:
-
-| Geometry (seeds) | Window in n | Outside the window |
-|---|---|---|
-| 1+1 cylinder, ρ=1000 (4) | 8/12 – 50 | n small: b₀ > 1 or b₁ = 0. n ≥ 70: shadows wrap the circle, non-flat triangles appear, b₁ → 0 |
-| 1+1 cylinder, ρ=3000 (4) | 8/18 – 140 | n = 200: wraps, 28–192 non-flat triangles |
-| 2+1 window minus tube, ρ=1500 (3) | 12/18 – 200 (up to the slab top) | small n: noise b₁ of 2–24 with **w = 0** (non-winding) |
-| 2+1 window, no tube, ρ=1500 (3) | **none** | b₁ = 0 for n ≥ 18. AB cochain non-flat on 10²–10⁴ triangles |
-
-Findings:
-1. **A stable window exists, and it widens with density.** The lower edge, n ≈ 8–18, is fixed by discreteness noise. The upper edge grows roughly in proportion to ρ (50 to 140 for 3× density), because wrapping happens at a fixed spacetime volume. In the continuum limit the window therefore opens without bound. This is the mesoscale that the global order complex lacks.
-2. **The flux is carried exactly.** Inside the window the AB cochain is flat on every triangle, and the generator has winding ±1, so its holonomy is e^{±iΦ}. This is candidate #4 realized on a sprinkled causal set.
-3. **Flatness separates type I from type II.** With the tube excised, the cochain stays flat at every n: the flux is invisible locally and appears only through holonomy (type I). Without the tube, the same cochain fails to be flat on triangles near the axis: the causal set occupies the region the flux threads (type II, curvature present). Non-winding noise cycles (w = 0 at small n) are distinguished from the hole automatically.
-
-Limits: these are single slices with 3–4 seeds per configuration. The window edges have not been fitted against ρ with error bars. The 2+1 relation uses shortest paths around the tube in Minkowski space minus a world-tube, a spacetime whose global hyperbolicity (and hence the MRS theorem's hypotheses) has not been verified. The flux cochain uses embedding coordinates for shadow centroids; an intrinsic, order-only definition of U is still open.
+In `DiscreteAmbroseSinger`, `Plaquette := GraphLoop`, so `discrete_stokes` uses the loop itself as its own plaquette. The theorem is true but has no content. `KFCausalNerveHolonomy` is the declared-2-cell replacement for the homology part.
 
 ## Next
 
-1. Fit the window edges against ρ (more seeds, ρ up to 10⁴), and test cylinder circumference scaling.
-2. Define the cochain intrinsically from the order, without embedding angles, and prove in Lean that a nerve cocycle with flat triangles has holonomy depending only on the H₁ class, with declared 2-cells.
-3. Prove Lean Ambrose–Singer and "flat ⇔ Hom(π₁,U(1))" with declared 2-cells, using the spanning-tree gauge from `GAUGE_DRESSED_MEASURE`.
-4. Covariant BD operator via the Fock–Schwinger reduction (candidate #3). This has no host yet.
+1. 2+1 tube: measure the upper edge in a slab tall enough not to cap it; test ρR³ scaling and window closure for thin tubes; run the chain-pair test there.
+2. Stokes check in the no-tube control (triangle windings over a spanning 2-chain sum to ±1).
+3. Lean converse: on a connected declared complex, trivial holonomy on all cycles ⇒ coboundary (spanning-tree gauge, as in `GAUGE_DRESSED_MEASURE`). Together with `hol_homologous` this gives flat cocycles mod gauge ≅ Hom(H₁, K).
+4. Link-level pullback of ω, then the covariant BD operator (candidate #3).

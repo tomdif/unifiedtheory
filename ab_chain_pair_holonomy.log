@@ -1,0 +1,60 @@
+rho=3000 n=40 seed=0: N=3624 |A|=45 shadows=18 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 1): 55, (0, 2): 1, (1, 1): 2490, (1, 2): 56, (2, 2): 37}
+  one class   contractible J±∩A   holonomy values (): 71
+  one class   contractible J±∩A   holonomy values ('0',): 899
+  one class   wrapping J±∩A       holonomy values (): 11
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 12
+  one class   wrapping J±∩A       holonomy values ('0',): 1543
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 10
+  two classes contractible J±∩A   holonomy values ('-1',): 18
+  two classes contractible J±∩A   holonomy values ('1',): 19
+rho=3000 n=40 seed=1: N=3602 |A|=45 shadows=19 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 1): 43, (0, 2): 1, (1, 1): 2473, (1, 2): 60, (2, 2): 43}
+  one class   contractible J±∩A   holonomy values (): 60
+  one class   contractible J±∩A   holonomy values ('0',): 851
+  one class   wrapping J±∩A       holonomy values (): 15
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 7
+  one class   wrapping J±∩A       holonomy values ('0',): 1584
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 16
+  two classes contractible J±∩A   holonomy values ('-1',): 26
+  two classes contractible J±∩A   holonomy values ('1',): 17
+rho=3000 n=40 seed=2: N=3557 |A|=42 shadows=23 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 0): 1, (0, 1): 43, (0, 2): 1, (1, 1): 2489, (1, 2): 75, (2, 2): 30}
+  one class   contractible J±∩A   holonomy values (): 67
+  one class   contractible J±∩A   holonomy values ('0',): 742
+  one class   wrapping J±∩A       holonomy values (): 9
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 7
+  one class   wrapping J±∩A       holonomy values ('0',): 1733
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 6
+  two classes contractible J±∩A   holonomy values ('-1',): 17
+  two classes contractible J±∩A   holonomy values ('1',): 13
+rho=10000 n=120 seed=0: N=12043 |A|=84 shadows=37 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 1): 13, (1, 1): 2498, (1, 2): 77, (2, 2): 38}
+  one class   contractible J±∩A   holonomy values (): 27
+  one class   contractible J±∩A   holonomy values ('0',): 900
+  one class   wrapping J±∩A       holonomy values (): 1
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 10
+  one class   wrapping J±∩A       holonomy values ('0',): 1623
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 14
+  two classes contractible J±∩A   holonomy values ('-1',): 14
+  two classes contractible J±∩A   holonomy values ('1',): 24
+rho=10000 n=120 seed=1: N=12004 |A|=98 shadows=38 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 1): 17, (1, 1): 2523, (1, 2): 63, (2, 2): 38}
+  one class   contractible J±∩A   holonomy values (): 20
+  one class   contractible J±∩A   holonomy values ('0',): 849
+  one class   wrapping J±∩A       holonomy values (): 2
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 10
+  one class   wrapping J±∩A       holonomy values ('0',): 1694
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 11
+  two classes contractible J±∩A   holonomy values ('-1',): 16
+  two classes contractible J±∩A   holonomy values ('1',): 22
+rho=10000 n=120 seed=2: N=11921 |A|=85 shadows=33 Dowker b0=1 b1=1
+  (order-derived #classes, continuum #arcs) counts: {(0, 1): 15, (1, 1): 2499, (1, 2): 87, (2, 2): 26}
+  one class   contractible J±∩A   holonomy values (): 28
+  one class   contractible J±∩A   holonomy values ('0',): 913
+  one class   wrapping J±∩A       holonomy values (): 4
+  one class   wrapping J±∩A       holonomy values ('-1', '0'): 6
+  one class   wrapping J±∩A       holonomy values ('0',): 1614
+  one class   wrapping J±∩A       holonomy values ('0', '1'): 21
+  two classes contractible J±∩A   holonomy values ('-1',): 11
+  two classes contractible J±∩A   holonomy values ('1',): 15
