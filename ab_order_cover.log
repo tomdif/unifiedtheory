@@ -1,0 +1,23 @@
+seed=0 rho=3000 n=25: slices=25, |V|=1401, edges=19976 (inter-slice 7525), 2-cells=255637 (squares 163510), connected=True; free vars 1, constraint rank 0 -> dim H^1(X) = 1
+  edge-level gauge match: orientation s=+1, mismatched edges 0 of 19976
+  lifted causal matrix vs coordinate cover (sheets ±3): {'TN': 5793427, 'TP': 595277, 'FN': 204659}
+  FP = 0, FN rate = 25.58%
+  related base pairs: (continuum #images, order-cover #images) -> count: {(np.int64(1), 0): 77060, (np.int64(1), 1): 396339, (np.int64(2), 0): 12139, (np.int64(2), 1): 93835, (np.int64(2), 2): 49814, (np.int64(3), 1): 4499, (np.int64(3), 2): 488}
+seed=1 rho=3000 n=25: slices=25, |V|=1344, edges=18563 (inter-slice 7001), 2-cells=225064 (squares 142687), connected=True; free vars 1, constraint rank 0 -> dim H^1(X) = 1
+  edge-level gauge match: orientation s=-1, mismatched edges 0 of 18563
+  lifted causal matrix vs coordinate cover (sheets ±3): {'TN': 5320607, 'TP': 562213, 'FN': 185445}
+  FP = 0, FN rate = 24.80%
+  related base pairs: (continuum #images, order-cover #images) -> count: {(np.int64(1), 0): 68659, (np.int64(1), 1): 364876, (np.int64(2), 0): 9892, (np.int64(2), 1): 86503, (np.int64(2), 2): 52241, (np.int64(3), 1): 4882, (np.int64(3), 2): 735}
+seed=0 rho=3000 n=25: slices=25, |V|=1401, edges=19976 (inter-slice 7525), 2-cells=255637 (squares 163510), connected=True; free vars 1, constraint rank 0 -> dim H^1(X) = 1
+  edge-level gauge match: orientation s=+1, mismatched edges 0 of 19976
+  lifted causal matrix vs coordinate cover (sheets ±3): {'TN': 5793427, 'TP': 595277, 'FN': 204659}
+  FP = 0, FN rate = 25.58%
+  FN rate by proper time tau of the lifted pair (adjacent slices / further apart):
+    tau [0.00,0.05): adjacent   0.0% of    5409   non-adjacent  90.5% of    7623
+    tau [0.05,0.10): adjacent   0.0% of    2116   non-adjacent  58.8% of   27876
+    tau [0.10,0.15): adjacent       -             non-adjacent  52.3% of   39641
+    tau [0.15,0.20): adjacent       -             non-adjacent  48.3% of   45986
+    tau [0.20,0.25): adjacent       -             non-adjacent  44.0% of   50319
+    tau [0.25,0.30): adjacent       -             non-adjacent  40.0% of   52892
+    tau >=0.30     : adjacent       -             non-adjacent  16.7% of  568074
+  related base pairs: (continuum #images, order-cover #images) -> count: {(np.int64(1), 0): 77060, (np.int64(1), 1): 396339, (np.int64(2), 0): 12139, (np.int64(2), 1): 93835, (np.int64(2), 2): 49814, (np.int64(3), 1): 4499, (np.int64(3), 2): 488}
