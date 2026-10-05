@@ -222,7 +222,8 @@ def circ_mean(th):
     return np.mod(np.angle(np.exp(2j * np.pi * np.asarray(th)).mean()) / (2 * np.pi), 1.0)
 
 
-def run(rho=30000, n=160, seeds=(0, 1), B=4, dmax=0.25, S=1):
+def run(rho=30000, n=160, seeds=(0, 1), B=4, dmax=0.25, S=1,
+        dtbins=((0.5, 0.6), (0.6, 0.7), (0.7, 0.8)), Phis=(0.0, np.pi / 4, np.pi / 2, 3 * np.pi / 4, np.pi)):
     ts = np.arange(0.1, T - 0.19, 0.05)
     for seed in seeds:
         rng = np.random.default_rng(seed)
@@ -331,6 +332,9 @@ def run(rho=30000, n=160, seeds=(0, 1), B=4, dmax=0.25, S=1):
         dl = np.array([delta.get(i, 0) for i in range(N)])
         nb = (N * W + 7) // 8
         tab = Counter(); taub = defaultdict(Counter); two = [0, 0, 0]; imgs = Counter()
+        binacc = [[0, 0, 0] for _ in dtbins]
+        flux = {ni: {ph: [0.0, 0.0, 0] for ph in Phis} for ni in (1, 2)}  # sum|C_order|, sum|C_coord|, count
+        phase = {ph: np.exp(1j * ph * np.arange(-S, S + 1)) for ph in Phis}
         srcs = np.flatnonzero(ok & (y > 0.2) & (y < Y - 0.2))
         js = np.arange(-S, S + 1)
         for u in srcs:
@@ -356,6 +360,16 @@ def run(rho=30000, n=160, seeds=(0, 1), B=4, dmax=0.25, S=1):
             nc, no = coord[base].sum(axis=1), (o & coord)[base].sum(axis=1)
             m2 = nc == 2
             two[0] += int(m2.sum()); two[1] += int((no[m2] < 2).sum()); two[2] += int((2 - no[m2]).sum())
+            dtb = dt[base][:, 0]
+            for k_, (a_, b_) in enumerate(dtbins):
+                mm = m2 & (dtb >= a_) & (dtb < b_)
+                binacc[k_][0] += int(mm.sum()); binacc[k_][1] += int((no[mm] < 2).sum()); binacc[k_][2] += int((2 - no[mm]).sum())
+            ob, cb = o[base], coord[base]
+            for ph in Phis:
+                Co = np.abs(ob @ phase[ph]); Cc = np.abs(cb @ phase[ph])
+                for ni in (1, 2):
+                    mm = nc == ni
+                    flux[ni][ph][0] += float(Co[mm].sum()); flux[ni][ph][1] += float(Cc[mm].sum()); flux[ni][ph][2] += int(mm.sum())
             for a_, b_ in zip(nc, (o[base]).sum(axis=1)):
                 imgs[(int(a_), int(b_))] += 1
         fnr = tab["FN"] / max(tab["FN"] + tab["TP"], 1)
@@ -363,7 +377,14 @@ def run(rho=30000, n=160, seeds=(0, 1), B=4, dmax=0.25, S=1):
         print("  FN by tau: " + ", ".join(
             f"[{b*0.05:.2f},{(b+1)*0.05:.2f}){'' if b < 6 else '+'} {taub[b]['FN']/max(taub[b]['FN']+taub[b]['TP'],1):.1%}" for b in range(7)))
         print(f"  two-image base pairs: {two[0]}; pairs missing a sheet {two[1]/max(two[0],1):.2%}; sheets missed {two[2]/max(2*two[0],1):.2%}")
-        print(f"  (continuum #images, order #sheets) -> count: {dict(sorted(imgs.items()))}", flush=True)
+        print(f"  (continuum #images, order #sheets) -> count: {dict(sorted(imgs.items()))}")
+        print("  two-image pairs by Δt: " + "; ".join(
+            f"[{a_:.1f},{b_:.1f}) pairs-miss {ba[1]/max(ba[0],1):.2%} sheets-miss {ba[2]/max(2*ba[0],1):.2%} (n={ba[0]})"
+            for (a_, b_), ba in zip(dtbins, binacc)))
+        for ni in (1, 2):
+            print(f"  |Ĉ_Φ| gauge-invariant, {ni}-image pairs (order / coord / continuum): " + "  ".join(
+                f"Φ={ph:.2f}: {flux[ni][ph][0]/max(flux[ni][ph][2],1):.4f} / {flux[ni][ph][1]/max(flux[ni][ph][2],1):.4f} / "
+                f"{(1.0 if ni == 1 else 2*abs(np.cos(ph/2))):.4f}" for ph in Phis), flush=True)
 
 
 if __name__ == "__main__":

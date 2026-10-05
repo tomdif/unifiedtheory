@@ -22,9 +22,11 @@
     cochain has holonomy ±hol(z) on γ.
 
   "Cycles supported in S bound" is stated directly (`CyclesBound`), which is
-  what the argument uses; it is implied by acyclicity of the subcomplex.  The
-  reduction of a general cycle to one with ∂c_P = n·∂p_P (moving boundary
-  points within each component of P ∩ Q) is a hypothesis, not proved here.
+  what the argument uses; it is implied by acyclicity of the subcomplex.
+  The reduction of a general cycle to one with ∂c_P = n·∂p_P is PROVED
+  (`deg0_is_boundary`, `reduce_two_components`): a degree-zero 0-chain on an
+  internally joined set is a boundary there.  `hol_crossing_pm_full` is the
+  statement with no assumed reduction.
 
   Zero sorry.  Zero custom axioms.
 -/
@@ -199,6 +201,154 @@ theorem hol_crossing_pm_of_cover {K : Type*} [AddCommGroup K] (U : V → V → K
   have hzn := crossing_generates hP hQ pP pQ _ _ n sP sQ scP scQ hloop
     (by rw [hsplit]; exact hcyc) hred
   rw [hsplit] at hzn
+  exact hol_crossing_pm U hU z (pP + pQ) n k hz hzn hγk
+
+/-! ### The reduction step: degree-zero 0-chains on a connected set are boundaries -/
+
+/-- Degree (augmentation) of a 0-chain. -/
+noncomputable def degHom : (V →₀ ℤ) →+ ℤ :=
+  Finsupp.liftAddHom fun _ : V => AddMonoidHom.id ℤ
+
+@[simp] theorem degHom_single (v : V) (k : ℤ) : degHom (Finsupp.single v k) = k := by
+  simp [degHom]
+
+/-- Boundaries have degree zero. -/
+theorem degHom_bd (c : Chain V) : degHom (bd c) = 0 := by
+  have : degHom.comp (bd (V := V)) = 0 := by
+    apply Finsupp.addHom_ext
+    rintro ⟨a, b⟩ k
+    simp [bd_single, map_zsmul, map_sub]
+  exact DFunLike.congr_fun this c
+
+theorem SupportedIn.finset_sum {ι : Type*} {S : Set V} (s : Finset ι) (f : ι → Chain V)
+    (h : ∀ i ∈ s, SupportedIn S (f i)) : SupportedIn S (∑ i ∈ s, f i) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simpa using supportedIn_zero S
+  | insert a s ha ih =>
+    rw [Finset.sum_insert ha]
+    exact (h a (Finset.mem_insert_self a s)).add
+      (ih fun i hi => h i (Finset.mem_insert_of_mem hi))
+
+/-- The vertex boundary of a chain supported in `S` is supported in `S`. -/
+theorem bd_supported {S : Set V} {c : Chain V} (hc : SupportedIn S c) :
+    ∀ v ∈ (bd c).support, v ∈ S := by
+  intro v hv
+  have hsum : bd c = c.sum fun e k => k • (Finsupp.single e.1 1 - Finsupp.single e.2 1) := by
+    simp only [bd, Finsupp.liftAddHom_apply]
+    exact Finsupp.sum_congr fun e _ => zmultiplesHom_apply _ _ _
+  rw [hsum] at hv
+  obtain ⟨e, he, hve⟩ := Finset.mem_biUnion.mp (Finsupp.support_sum hv)
+  have h1 := Finsupp.support_smul hve
+  rcases Finset.mem_union.mp (Finsupp.support_sub h1) with h2 | h2
+  · rw [Finset.mem_singleton.mp (Finsupp.support_single_subset h2)]; exact (hc e he).1
+  · rw [Finset.mem_singleton.mp (Finsupp.support_single_subset h2)]; exact (hc e he).2
+
+/-- Two vertices joined inside `C`: a chain in `C` with boundary `u − v`. -/
+def Joined (C : Set V) (u v : V) : Prop :=
+  ∃ r : Chain V, SupportedIn C r ∧ bd r = Finsupp.single u 1 - Finsupp.single v 1
+
+open Classical in
+/-- **A degree-zero 0-chain supported on a connected set is a boundary there.** -/
+theorem deg0_is_boundary (C : Set V) (u₀ : V) (hJ : ∀ v ∈ C, Joined C v u₀)
+    (b : V →₀ ℤ) (hb : ∀ v ∈ b.support, v ∈ C) (hdeg : degHom b = 0) :
+    ∃ r : Chain V, SupportedIn C r ∧ bd r = b := by
+  let rv : V → Chain V := fun v => if h : v ∈ C then Classical.choose (hJ v h) else 0
+  have hrv : ∀ v ∈ b.support, SupportedIn C (rv v) ∧
+      bd (rv v) = Finsupp.single v 1 - Finsupp.single u₀ 1 := by
+    intro v hv
+    simp only [rv, dif_pos (hb v hv)]
+    exact Classical.choose_spec (hJ v (hb v hv))
+  refine ⟨∑ v ∈ b.support, b v • rv v,
+    SupportedIn.finset_sum _ _ fun v hv => (hrv v hv).1.zsmul _, ?_⟩
+  rw [map_sum]
+  have step : ∀ v ∈ b.support, bd (b v • rv v)
+      = Finsupp.single v (b v) - b v • Finsupp.single u₀ 1 := by
+    intro v hv
+    rw [map_zsmul, (hrv v hv).2, smul_sub, Finsupp.smul_single_one]
+  rw [Finset.sum_congr rfl step, Finset.sum_sub_distrib, ← Finset.sum_smul]
+  have h1 : ∑ v ∈ b.support, Finsupp.single v (b v) = b := Finsupp.sum_single b
+  have h2 : ∑ v ∈ b.support, b v = degHom b := by
+    simp [degHom, Finsupp.liftAddHom_apply, Finsupp.sum]
+  rw [h1, h2, hdeg, zero_smul, sub_zero]
+
+open Classical in
+/-- **The reduction**, for two components `C₁ ∋ a₁`, `C₂ ∋ a₂` of `P ∩ Q`:
+a `P`-chain `cP` and `Q`-chain `cQ` with `∂cP = −∂cQ` can be modified (by
+chains inside `P ∩ Q`) so that the new `P`-part has boundary `n·(a₁ − a₂)`,
+with the same total. -/
+theorem reduce_two_components (C₁ C₂ : Set V) (a₁ a₂ : V)
+    (hC : ∀ v, v ∈ P ∧ v ∈ Q → v ∈ C₁ ∨ v ∈ C₂) (h₁PQ : C₁ ⊆ P ∩ Q) (h₂PQ : C₂ ⊆ P ∩ Q)
+    (ha₁ : a₁ ∈ C₁) (ha₂ : a₂ ∈ C₂)
+    (hJ₁ : ∀ v ∈ C₁, Joined C₁ v a₁) (hJ₂ : ∀ v ∈ C₂, Joined C₂ v a₂)
+    (cP cQ : Chain V) (sP : SupportedIn P cP) (sQ : SupportedIn Q cQ)
+    (hcyc : bd (cP + cQ) = 0) :
+    ∃ (cP' cQ' : Chain V) (n : ℤ), SupportedIn P cP' ∧ SupportedIn Q cQ' ∧
+      cP' + cQ' = cP + cQ ∧
+      bd cP' = n • (Finsupp.single a₁ 1 - Finsupp.single a₂ 1) := by
+  set b := bd cP with hbdef
+  have hbQ : b = -bd cQ := by
+    rw [map_add] at hcyc; exact eq_neg_of_add_eq_zero_left hcyc
+  -- the boundary lives in P ∩ Q
+  have hbPQ : ∀ v ∈ b.support, v ∈ P ∧ v ∈ Q := by
+    intro v hv
+    refine ⟨bd_supported sP v hv, ?_⟩
+    have : v ∈ (bd cQ).support := by rw [hbQ, Finsupp.support_neg] at hv; exact hv
+    exact bd_supported sQ v this
+  let b₁ := b.filter (· ∈ C₁)
+  let b₂ := b.filter (fun v => ¬ v ∈ C₁)
+  have hb12 : b₁ + b₂ = b := Finsupp.filter_pos_add_filter_neg _ _
+  set n := degHom b₁ with hn
+  have hdeg : degHom b₁ + degHom b₂ = 0 := by rw [← map_add, hb12, hbdef, degHom_bd]
+  have hs₁ : ∀ v ∈ (b₁ - n • Finsupp.single a₁ 1).support, v ∈ C₁ := by
+    intro v hv
+    rcases Finset.mem_union.mp (Finsupp.support_sub hv) with h | h
+    · rw [Finsupp.support_filter, Finset.mem_filter] at h; exact h.2
+    · rw [Finset.mem_singleton.mp (Finsupp.support_single_subset (Finsupp.support_smul h))]; exact ha₁
+  have hs₂ : ∀ v ∈ (b₂ + n • Finsupp.single a₂ 1).support, v ∈ C₂ := by
+    intro v hv
+    rcases Finset.mem_union.mp (Finsupp.support_add hv) with h | h
+    · rw [Finsupp.support_filter, Finset.mem_filter] at h
+      exact (hC v (hbPQ v h.1)).resolve_left h.2
+    · rw [Finset.mem_singleton.mp (Finsupp.support_single_subset (Finsupp.support_smul h))]; exact ha₂
+  obtain ⟨r₁, sr₁, hr₁⟩ := deg0_is_boundary C₁ a₁ hJ₁ _ hs₁
+    (by rw [map_sub, map_zsmul, degHom_single, smul_eq_mul, mul_one, hn, sub_self])
+  obtain ⟨r₂, sr₂, hr₂⟩ := deg0_is_boundary C₂ a₂ hJ₂ _ hs₂
+    (by rw [map_add, map_zsmul, degHom_single, smul_eq_mul, mul_one, hn]; linarith)
+  refine ⟨cP - r₁ - r₂, cQ + r₁ + r₂, n,
+    (sP.sub (sr₁.mono fun v h => (h₁PQ h).1)).sub (sr₂.mono fun v h => (h₂PQ h).1),
+    (sQ.add (sr₁.mono fun v h => (h₁PQ h).2)).add (sr₂.mono fun v h => (h₂PQ h).2),
+    by abel, ?_⟩
+  rw [map_sub, map_sub, hr₁, hr₂, ← hbdef, ← hb12, smul_sub]
+  abel
+
+open Classical in
+/-- **Full statement, no assumed reduction.**  If `P ∩ Q` consists of two
+internally joined components `C₁ ∋ a₁` and `C₂ ∋ a₂`, cycles in each shadow
+bound, the shadows cover the generator's edges, the generator `z` has
+infinite order, and the crossing loop `γ = pP + pQ` (from `a₁` to `a₂` in `P`,
+back in `Q`) is a multiple of `z`, then a flat cochain has holonomy `± hol z`
+on `γ`. -/
+theorem hol_crossing_pm_full {K : Type*} [AddCommGroup K] (U : V → V → K)
+    (hU : FlatOn U T) (hP : CyclesBound T P) (hQ : CyclesBound T Q)
+    (C₁ C₂ : Set V) (a₁ a₂ : V)
+    (hC : ∀ v, v ∈ P ∧ v ∈ Q → v ∈ C₁ ∨ v ∈ C₂) (h₁PQ : C₁ ⊆ P ∩ Q) (h₂PQ : C₂ ⊆ P ∩ Q)
+    (ha₁ : a₁ ∈ C₁) (ha₂ : a₂ ∈ C₂)
+    (hJ₁ : ∀ v ∈ C₁, Joined C₁ v a₁) (hJ₂ : ∀ v ∈ C₂, Joined C₂ v a₂)
+    (pP pQ z : Chain V) (k : ℤ)
+    (sP : SupportedIn P pP) (sQ : SupportedIn Q pQ)
+    (hpP : bd pP = Finsupp.single a₁ 1 - Finsupp.single a₂ 1) (hloop : bd pQ = -bd pP)
+    (hcov : EdgeCover P Q z) (hcyc : bd z = 0)
+    (hz : ∀ m : ℤ, m • z ∈ boundaries T → m = 0)
+    (hγk : (pP + pQ) - k • z ∈ boundaries T) :
+    hol U (pP + pQ) = hol U z ∨ hol U (pP + pQ) = -hol U z := by
+  obtain ⟨scP, scQ, hsplit⟩ := split_of_edgeCover z hcov
+  obtain ⟨cP', cQ', n, sP', sQ', hsum, hbd⟩ :=
+    reduce_two_components C₁ C₂ a₁ a₂ hC h₁PQ h₂PQ ha₁ ha₂ hJ₁ hJ₂ _ _ scP scQ
+      (by rw [hsplit]; exact hcyc)
+  have hzn := crossing_generates hP hQ pP pQ cP' cQ' n sP sQ sP' sQ' hloop
+    (by rw [hsum, hsplit]; exact hcyc) (by rw [hbd, hpP])
+  rw [hsum, hsplit] at hzn
   exact hol_crossing_pm U hU z (pP + pQ) n k hz hzn hγk
 
 end UnifiedTheory.Audit.KFCausalMayerVietoris

@@ -1,0 +1,77 @@
+
+=== 2+1 seed=0 rho=12000 n=16: N=5790, slices=11, per-slice nerve {(1, 1): 7, (1, 3): 2, (1, 2): 2}, dim H^1(X)=1
+  generators 126846 of 134705 span-eligible links; gauge-mismatched 0; orientation -1
+  entries (sources in central y band): {'TP': 2318150, 'FP': 0, 'FN': 72652}; FP=0, FN rate 3.04%
+  FN by tau: [0.00,0.05) 30.5%, [0.05,0.10) 22.0%, [0.10,0.15) 9.1%, [0.15,0.20) 2.3%, [0.20,0.25) 0.2%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 121668; pairs missing a sheet 20.36%; sheets missed 10.50%
+  (continuum #images, order #sheets) -> count: {(1, 0): 47110, (1, 1): 2100356, (2, 0): 770, (2, 1): 24002, (2, 2): 96896}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 40.41% sheets-miss 21.77% (n=23359); [0.6,0.7) pairs-miss 17.87% sheets-miss 8.97% (n=62996); [0.7,0.8) pairs-miss 11.53% sheets-miss 5.77% (n=35313)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9781 / 1.0000 / 1.0000  Φ=0.79: 0.9781 / 1.0000 / 1.0000  Φ=1.57: 0.9781 / 1.0000 / 1.0000  Φ=2.36: 0.9781 / 1.0000 / 1.0000  Φ=3.14: 0.9781 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.7901 / 2.0000 / 2.0000  Φ=0.79: 1.6688 / 1.8478 / 1.8478  Φ=1.57: 1.3235 / 1.4142 / 1.4142  Φ=2.36: 0.8068 / 0.7654 / 0.7654  Φ=3.14: 0.1973 / 0.0000 / 0.0000
+
+=== 2+1 seed=1 rho=12000 n=16: N=5762, slices=11, per-slice nerve {(1, 1): 5, (1, 3): 4, (1, 2): 2}, dim H^1(X)=2
+
+=== 2+1 seed=0 rho=18000 n=24: N=8677, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation -1): |err| median 0.017, 99% 0.085, max 0.135
+  generators 228985 of 241549 span-eligible links; gauge-mismatched 0; orientation -1
+  entries (sources in central y band): {'TP': 5292086, 'FP': 0, 'FN': 128181}; FP=0, FN rate 2.36%
+  FN by tau: [0.00,0.05) 29.5%, [0.05,0.10) 18.4%, [0.10,0.15) 6.2%, [0.15,0.20) 1.0%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 282542; pairs missing a sheet 16.08%; sheets missed 8.21%
+  (continuum #images, order #sheets) -> count: {(1, 0): 81762, (1, 1): 4773421, (2, 0): 980, (2, 1): 44459, (2, 2): 237103}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 33.25% sheets-miss 17.51% (n=53335); [0.6,0.7) pairs-miss 13.96% sheets-miss 6.99% (n=146032); [0.7,0.8) pairs-miss 8.80% sheets-miss 4.40% (n=83175)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9832 / 1.0000 / 1.0000  Φ=0.79: 0.9832 / 1.0000 / 1.0000  Φ=1.57: 0.9832 / 1.0000 / 1.0000  Φ=2.36: 0.9832 / 1.0000 / 1.0000  Φ=3.14: 0.9832 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8357 / 2.0000 / 2.0000  Φ=0.79: 1.7080 / 1.8478 / 1.8478  Φ=1.57: 1.3441 / 1.4142 / 1.4142  Φ=2.36: 0.7996 / 0.7654 / 0.7654  Φ=3.14: 0.1574 / 0.0000 / 0.0000
+
+=== 2+1 seed=1 rho=18000 n=24: N=8643, slices=11, per-slice nerve {(1, 1): 10, (1, 2): 1}, dim H^1(X)=1
+  theta vs coordinate (orientation +1): |err| median 0.017, 99% 0.084, max 0.150
+  generators 226644 of 239390 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 4973357, 'FP': 0, 'FN': 119693}; FP=0, FN rate 2.35%
+  FN by tau: [0.00,0.05) 29.6%, [0.05,0.10) 18.0%, [0.10,0.15) 5.9%, [0.15,0.20) 1.0%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 264308; pairs missing a sheet 15.98%; sheets missed 8.17%
+  (continuum #images, order #sheets) -> count: {(1, 0): 76510, (1, 1): 4487922, (2, 0): 939, (2, 1): 41303, (2, 2): 222066}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 33.29% sheets-miss 17.56% (n=50399); [0.6,0.7) pairs-miss 13.66% sheets-miss 6.84% (n=135013); [0.7,0.8) pairs-miss 8.89% sheets-miss 4.45% (n=78896)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9832 / 1.0000 / 1.0000  Φ=0.79: 0.9832 / 1.0000 / 1.0000  Φ=1.57: 0.9832 / 1.0000 / 1.0000  Φ=2.36: 0.9832 / 1.0000 / 1.0000  Φ=3.14: 0.9832 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8366 / 2.0000 / 2.0000  Φ=0.79: 1.7087 / 1.8478 / 1.8478  Φ=1.57: 1.3445 / 1.4142 / 1.4142  Φ=2.36: 0.7993 / 0.7654 / 0.7654  Φ=3.14: 0.1563 / 0.0000 / 0.0000
+
+=== 2+1 seed=0 rho=24000 n=32: N=11562, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation -1): |err| median 0.016, 99% 0.079, max 0.143
+  generators 344148 of 361940 span-eligible links; gauge-mismatched 0; orientation -1
+  entries (sources in central y band): {'TP': 9047767, 'FP': 0, 'FN': 179746}; FP=0, FN rate 1.95%
+  FN by tau: [0.00,0.05) 29.1%, [0.05,0.10) 15.6%, [0.10,0.15) 4.1%, [0.15,0.20) 0.4%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 486903; pairs missing a sheet 13.27%; sheets missed 6.75%
+  (continuum #images, order #sheets) -> count: {(1, 0): 113989, (1, 1): 8139717, (2, 0): 1138, (2, 1): 63480, (2, 2): 422285}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 27.82% sheets-miss 14.51% (n=90882); [0.6,0.7) pairs-miss 11.55% sheets-miss 5.79% (n=246185); [0.7,0.8) pairs-miss 7.28% sheets-miss 3.64% (n=149836)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9862 / 1.0000 / 1.0000  Φ=0.79: 0.9862 / 1.0000 / 1.0000  Φ=1.57: 0.9862 / 1.0000 / 1.0000  Φ=2.36: 0.9862 / 1.0000 / 1.0000  Φ=3.14: 0.9862 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8650 / 2.0000 / 2.0000  Φ=0.79: 1.7329 / 1.8478 / 1.8478  Φ=1.57: 1.3569 / 1.4142 / 1.4142  Φ=2.36: 0.7942 / 0.7654 / 0.7654  Φ=3.14: 0.1304 / 0.0000 / 0.0000
+
+=== 2+1 seed=1 rho=24000 n=32: N=11523, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation +1): |err| median 0.017, 99% 0.087, max 0.152
+  generators 338229 of 356720 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 9171755, 'FP': 0, 'FN': 184141}; FP=0, FN rate 1.97%
+  FN by tau: [0.00,0.05) 28.8%, [0.05,0.10) 15.7%, [0.10,0.15) 4.2%, [0.15,0.20) 0.4%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 495380; pairs missing a sheet 13.34%; sheets missed 6.78%
+  (continuum #images, order #sheets) -> count: {(1, 0): 116914, (1, 1): 8248218, (2, 0): 1130, (2, 1): 64963, (2, 2): 429287}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 27.53% sheets-miss 14.34% (n=93930); [0.6,0.7) pairs-miss 11.64% sheets-miss 5.83% (n=250607); [0.7,0.8) pairs-miss 7.33% sheets-miss 3.67% (n=150843)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9860 / 1.0000 / 1.0000  Φ=0.79: 0.9860 / 1.0000 / 1.0000  Φ=1.57: 0.9860 / 1.0000 / 1.0000  Φ=2.36: 0.9860 / 1.0000 / 1.0000  Φ=3.14: 0.9860 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8643 / 2.0000 / 2.0000  Φ=0.79: 1.7324 / 1.8478 / 1.8478  Φ=1.57: 1.3567 / 1.4142 / 1.4142  Φ=2.36: 0.7944 / 0.7654 / 0.7654  Φ=3.14: 0.1311 / 0.0000 / 0.0000
+
+=== 2+1 seed=0 rho=30000 n=40: N=14447, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  generators 464772 of 489193 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 13995780, 'FP': 0, 'FN': 240636}; FP=0, FN rate 1.69%
+  FN by tau: [0.00,0.05) 28.1%, [0.05,0.10) 13.4%, [0.10,0.15) 2.9%, [0.15,0.20) 0.2%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 750496; pairs missing a sheet 11.57%; sheets missed 5.87%
+  (continuum #images, order #sheets) -> count: {(1, 0): 152480, (1, 1): 12582944, (2, 0): 1318, (2, 1): 85520, (2, 2): 663658}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 24.43% sheets-miss 12.66% (n=140718); [0.6,0.7) pairs-miss 10.05% sheets-miss 5.03% (n=379040); [0.7,0.8) pairs-miss 6.24% sheets-miss 3.12% (n=230738)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9880 / 1.0000 / 1.0000  Φ=0.79: 0.9880 / 1.0000 / 1.0000  Φ=1.57: 0.9880 / 1.0000 / 1.0000  Φ=2.36: 0.9880 / 1.0000 / 1.0000  Φ=3.14: 0.9880 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8825 / 2.0000 / 2.0000  Φ=0.79: 1.7479 / 1.8478 / 1.8478  Φ=1.57: 1.3645 / 1.4142 / 1.4142  Φ=2.36: 0.7908 / 0.7654 / 0.7654  Φ=3.14: 0.1140 / 0.0000 / 0.0000
+
+=== 2+1 seed=1 rho=30000 n=40: N=14404, slices=11, per-slice nerve {(1, 1): 11}, dim H^1(X)=1
+  theta vs coordinate (orientation +1): |err| median 0.018, 99% 0.088, max 0.186
+  generators 458275 of 482447 span-eligible links; gauge-mismatched 0; orientation +1
+  entries (sources in central y band): {'TP': 14308362, 'FP': 0, 'FN': 248428}; FP=0, FN rate 1.71%
+  FN by tau: [0.00,0.05) 28.2%, [0.05,0.10) 13.8%, [0.10,0.15) 3.0%, [0.15,0.20) 0.2%, [0.20,0.25) 0.0%, [0.25,0.30) 0.0%, [0.30,0.35)+ 0.0%
+  two-image base pairs: 775006; pairs missing a sheet 11.75%; sheets missed 5.96%
+  (continuum #images, order #sheets) -> count: {(1, 0): 156019, (1, 1): 12850758, (2, 0): 1340, (2, 1): 89728, (2, 2): 683938}
+  two-image pairs by Δt: [0.5,0.6) pairs-miss 24.47% sheets-miss 12.67% (n=147413); [0.6,0.7) pairs-miss 10.09% sheets-miss 5.05% (n=397356); [0.7,0.8) pairs-miss 6.48% sheets-miss 3.24% (n=230237)
+  |Ĉ_Φ| gauge-invariant, 1-image pairs (order / coord / continuum): Φ=0.00: 0.9880 / 1.0000 / 1.0000  Φ=0.79: 0.9880 / 1.0000 / 1.0000  Φ=1.57: 0.9880 / 1.0000 / 1.0000  Φ=2.36: 0.9880 / 1.0000 / 1.0000  Φ=3.14: 0.9880 / 1.0000 / 1.0000
+  |Ĉ_Φ| gauge-invariant, 2-image pairs (order / coord / continuum): Φ=0.00: 1.8808 / 2.0000 / 2.0000  Φ=0.79: 1.7464 / 1.8478 / 1.8478  Φ=1.57: 1.3638 / 1.4142 / 1.4142  Φ=2.36: 0.7912 / 0.7654 / 0.7654  Φ=3.14: 0.1158 / 0.0000 / 0.0000
