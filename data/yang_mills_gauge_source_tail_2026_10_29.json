@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual source-weighted near-antipodal endpoint neighborhood bounded by stationary variance; full obligations remained open",
+  "current_goal_turn_classification": "progress: actual one-vertex gauge-instability source tail controlled locally and paid by physical transfer variance loss; global obligations remain open",
+  "scope": "For the actual Wilson temporal action, a gauge rotation q at one spatial vertex changes the action by at most 12*norm(q-1), independently of volume, including repeated edge occurrences. Local Haar integration gives a Gaussian lower bound on the one-vertex orbit normalizer and the pointwise density cap exp(1)*cap(36*(beta+1)^2)=exp(1)*cap(36)*(beta+1)^3 for beta>=0. Define B_x(t) to mean that some gauge rotation at x lowers the unscaled temporal action T(u,v) by more than t. For every nonnegative continuous physical source H and every actual middle field u, the raw transition contribution on B_x(t) is at most epsilon(beta,t) times its full contribution, where epsilon=exp(1)*cap(36)*(beta+1)^3*exp(-beta*t). Spatial Wilson factors, the true positive ground amplitude and the physical source are exactly invariant under the local gauge change; their local normalization cancels without a global transfer-norm bound. Applying this to the exact variance-pair source, with the other actual endpoint transition retained, bounds the stationary exceptional contribution by epsilon times the variance loss of the same physical transfer step. This is a local source-weighted complement estimate for gauge instability, not a bound for all large fields or a proof of covariance summability, coercivity, a continuum limit or mass gap.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonSiteGauge",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitTail",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeSourceTail"
+  ],
+  "new_declarations": 42,
+  "retained_declarations": 7984,
+  "cumulative_declarations": 8026,
+  "formal_results": {
+    "local_geometry": "The sum of endpoint link displacements under one-vertex gauge rotation is <=6*norm(q-1). Counting both endpoints retains repeated occurrences at small periods. Therefore abs(T(u,G_x(q)v)-T(u,v))<=12*norm(q-1).",
+    "local_normalization": "For Z_x(u,v)=integral_q exp(-beta*T(u,G_x(q)v)), mass(36*beta^2)*exp(-beta*T(u,v))<=exp(1)*Z_x(u,v). The Gaussian envelope uses (6*beta*norm(q-1)-1)^2>=0. Right Haar invariance makes Z_x constant along this same orbit.",
+    "polynomial_cap": "Every orbit point is bounded by peakCap(beta)*Z_x, where peakCap=exp(1)*cap(36*(beta+1)^2)=exp(1)*cap(36)*(beta+1)^3 for beta>=0. The already proved exact SU(2) Haar Gaussian mass bound is used.",
+    "measurable_event": "B_x(t)={(u,v): exists q, T(u,v)-T(u,G_x(q)v)>t} is open, hence measurable. No gauge-minimizer selection or measurable gauge fixing is assumed.",
+    "source_cancellation": "For any continuous nonnegative source S invariant under G_x, integral_v Z_x(u,v)*S(v)=integral_v exp(-beta*T(u,v))*S(v). This cancels the local normalizer exactly.",
+    "actual_transition": "Set S(v)=W(v)*g(v)*H(v), with H continuous, nonnegative and physical. W, g and H are invariant under G_x. The actual transition tail is <=epsilon(beta,t) times its full H-weighted integral, uniformly in u, x and n.",
+    "actual_pair_source": "H_u(v)=integral_w P(u,w)*(F(v)-F(w))^2 retains the other endpoint transition. g(u)^2*P(u,v)*H_u(v)=integral_w J(u,v,w)*(F(v)-F(w))^2, using the previously constructed exact variance-pair density J.",
+    "loss_payment": "The restricted pair source at a fixed u is <=epsilon*rowVariance_u(F). Its stationary average is <=epsilon*loss(F), where loss=Var_pi(F)-Var_pi(PF). The exceptional event restricts the first endpoint; no independent-endpoint approximation or source-range bound is used."
+  },
+  "next_attack": {
+    "joint_events": "Establish an actual source-weighted joint estimate for separated vertex gauge-instability events, handling indicator weights and overlap instead of assuming independence.",
+    "residual_geometry": "Analyze gauge-stable configurations that still fail temporal pinning or small-field conditions. The new tail estimate does not classify or suppress them.",
+    "physical_targets": "Use valid complement control in a domain functional inequality or connected-boundary covariance estimate. The independent physical response coercivity and summable mixed-ground estimate are still required."
+  },
+  "not_inferred": [
+    "The controlled event is one-vertex gauge instability of temporal alignment. It does not include every large spatial plaquette defect, every failed-pinning configuration, or gauge-stable configurations with poor alignment.",
+    "The event and its decomposition depend on the chosen raw temporal-gauge representation. The total source mass remains exactly the physical variance loss; no equality with an individually gauge-invariant exceptional event is asserted.",
+    "A single-site estimate does not imply a product bound for simultaneous bad sites. Such a bound needs an actual separation/dependence argument and the required measurable source-weight extension.",
+    "Local gauge rotations leave physical observables unchanged, so these rotations cannot themselves supply the missing lower response coercivity. Their role here is source-weighted exceptional-set control.",
+    "The positive small-field curvature still requires a domain functional inequality and control of the remaining complement, including gauge-stable high-action regions.",
+    "Distant mixed-ground summability, the physical collective Haar form, independent global coercivity, physical scaling, a surviving continuum theory and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_gauge_source_tail_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

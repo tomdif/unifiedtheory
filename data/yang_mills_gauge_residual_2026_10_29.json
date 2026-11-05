@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual physical SU(2) Wilson transfer response admits a gauge-score projection and a signed quadratic-form criterion. For the actual row law nu_u and a chosen pure gauge input change h, the nuisance likelihood t=p_(h.u)/p_u-1 has zero mean and zero centered response against every continuous gauge-invariant source. For the amplitude-weighted local likelihood scores s_i, the constructed residual r_i=s_i-E[s_i*t]/E[t^2]*t preserves every physical response. The zero-variance case is proved and needs no nondegeneracy assumption. Its actual Gram matrix is exactly M_red=M-c*c^T/v, with c_i=E[s_i*t], v=E[t^2], and satisfies 0<=M_red<=M in quadratic-form order. A bound a^T M_red a<=kappa*sum_i a_i^2 suffices for collective conditional-variance and stationary-dissipation estimates, with the same coefficient through every original physical transfer time step. An absolute row-sum bound is sufficient but not required by this criterion. The chosen gauge transformation may depend on the input; no regular gauge fixing is used or constructed. If a separate physical-slab response lower bound has constant C, the resulting variance contraction factor is C*kappa/(1+C*kappa). Neither uniform control of the reduced signed form nor the lower-bound constant is proved. Exactly one chosen pure-gauge score is projected out, not the entire gauge sector. No mass gap, continuum limit or surviving excitation is inferred. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactScoreResidual",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeResidual",
+    "UnifiedTheory.Clay.YangMills.WilsonResidualDissipation"
+  ],
+  "new_declarations": 39,
+  "retained_declarations": 7381,
+  "cumulative_declarations": 7420,
+  "proof": {
+    "actual_nuisance": "t(u,v)=p_(gaugeSlice(h,u))(v)/p_u(v)-1 under the actual temporal-gauge row nu_u. Its mean is zero and its centered response against every continuous physical source is zero by exact physical gauge invariance.",
+    "weighted_scores": "s_i(u,v)=a_i*(p_(R_i u)(v)/p_u(v)-1) for the actual specified link rotations.",
+    "constructed_projection": "r_i=s_i-c_i/v*t with c_i=E_nu_u[s_i*t] and v=E_nu_u[t^2]. If v=0 then c_i=0 by L2 Cauchy-Schwarz. The definition uses real division at zero, and the degenerate case is explicitly proved.",
+    "orthogonality": "E_nu_u[r_i*t]=0 and E_nu_u[r_i]=0. Centered responses against every continuous physical f are unchanged exactly.",
+    "matrix_identity": "M_red,ij=M_ij-c_i*c_j/v. Both are actual row Gram matrices. For every real vector b, b^T M_red b=b^T M b-(sum_i b_i*c_i)^2/v<=b^T M b, and M_red is positive semidefinite.",
+    "signed_bound": "A generic proved Bessel estimate takes a signed Gram quadratic bound directly, without passing through absolute entries. Applied to the constructed residuals, it bounds the original physical response family by kappa*Var_nu_u(f).",
+    "input_dependent_choice": "The gauge transformation may be chosen separately for each input u. No continuity or measurability of this choice is needed for the displayed implication, because only a pointwise residual-form upper bound is used; the integrated response and row-variance functions are the already proved continuous actual quantities.",
+    "stationary_dissipation": "If all reduced quadratic forms are bounded by kappa times Euclidean squared norm, E(P f)<=kappa*(Var_pi(f)-Var_pi(P f)) for physical sources, with the same coefficient after summing through k steps. The original transfer-power identification and preservation of gauge invariance are reused.",
+    "conditional_contraction": "If Var_pi(P^k f)<=C*sum_(j<k) E(P^(j+1) f), then Var_pi(P^k f)<=C*kappa/(1+C*kappa)*Var_pi(f). This exposes the required uniform product C*kappa; the lower premise remains unproved.",
+    "comparison": "Every previously sufficient raw absolute-row bound also bounds the residual quadratic form. The converse is not required. No claim is made that absolute row sums decrease or that the improvement is strict for a specified actual gauge choice."
+  },
+  "assumptions": [
+    "Finite periodic SU(2) spatial lattice n>0; beta>=0.",
+    "Finite family of specified link rotations with real amplitudes.",
+    "Continuous real gauge-invariant sources for physical response preservation and dissipation.",
+    "One chosen pure-gauge input transformation per baseline input; it is not a gauge fixing or a projection of all gauge modes.",
+    "The uniform reduced quadratic bound and the independent whole-slab lower inequality are assumptions only in the final dissipation/contraction implications."
+  ],
+  "not_inferred": [
+    "Prove a cutoff- and volume-uniform bound on the actual reduced signed Gram quadratic form for a justified physical trajectory, retaining spatial cancellations and controlling exceptional inputs. The projection identity alone does not supply this bound or even a strict improvement for any particular choice of gauge transformation.",
+    "Construct an adequate family of physical variations and prove the independent whole-slab observability inequality Var_pi(P^k f)<=C*sum_(j<k) E(P^(j+1) f). The projection leaves these physical response energies unchanged, so it does not prove or strengthen the lower inequality.",
+    "Control the product C*kappa over a fixed physical slab; the contraction formula requires this product uniformly bounded. Neither factor has been controlled in the required weak-coupling regime.",
+    "The removed nuisance space is one-dimensional. No complete removal of all gauge directions, regular gauge fixing, or preservation of entrywise absolute-row bounds is asserted; the improvement is in quadratic-form order.",
+    "The original distant absolute mixed-ground sum remains open. The new theorem provides an alternative sufficient signed-form target; it does not show that the original sum is false or divergent.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible all-order renormalized bounds, with correlated large-field, boundary and generated-interaction control on the same independently justified physical beta(a) trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_gauge_residual_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

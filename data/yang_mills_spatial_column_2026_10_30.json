@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: exact spatial midpoint geometry, full spatial Wilson reflection kernel and spatial-slice removal bound audited",
+  "current_goal_turn_classification": "progress: actual temporal-history insertion, polynomial spatial column transfer-norm comparison and isolated spatial-defect source decay/tail proved",
+  "scope": "The actual raw temporal kinetic interaction is now a constructed positive kernel across the previously proved independent spatial midpoint halves, including both periodic seams. Each normal crossing temporal link is represented by two-time half-paths; all interior temporal factors are localized. Combining these factors with the actual spatial kernels proves reflection positivity for finite temporal Wilson networks, with arbitrary nonnegative reflection-invariant spatial couplings at each slice and arbitrary nonnegative kinetic couplings. Product half-history Haar measure pushes forward to the original coarse history Haar measure. Iterated exact SU(2) insertion gives m(s)^card(T)*Q_cut(f)<=Q_full(f), for every continuous complex half-history source, when one geometrically crossing spatial plaquette is omitted at all times; the polynomial removal price is cap(s)^card(T). The same inequality holds for actual coarse Haar partitions. A genuine finite-chain dictionary retains the full spatial endpoint weights. The compact positive cut transfer is constructed and its positivity is proved with continuous Hilbert features. A proved spectral-growth comparison uses a continuous complex top eigenfunction of the actual cut operator and the already constructed original full ground only for the upper comparison. Boundary prefactors disappear in the growth rate. This closes the previously open spatial column normalization: m(beta)*||T_cut,raw||<=||T_full|| and ||T_cut,raw||<=cap(beta)*||T_full|| for beta>=3/4, independently of spatial volume. No reflection premise or positive profile is supplied for the modified ground. For sources supported on the actual spatial plaquette defect D_p>=R, M(PF)<=cap(beta)^2*exp(-beta*R)*M(F). Reversibility and the existing two-step residual yield the arbitrary-source bound integral_(D_p>=2R) F^2 dpi<=2*loss(F)+2*cap(beta)^2*exp(-beta*R)*M(F), for R>0. Here pi is the actual full-ground law and P is the actual raw stationary transition, agreeing with the original full transition on the proved physical sector. This handles a single isolated spatial defect, without a defect-density threshold or exterior-volume cost. The distant mixed-ground/signed-form estimate, compatible independent global coercivity, physical scaling and nontrivial continuum survival remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels",
+    "UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel",
+    "UnifiedTheory.Clay.YangMills.SU2FiniteInsertion",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion",
+    "UnifiedTheory.Clay.YangMills.FiniteKernelChain",
+    "UnifiedTheory.Clay.YangMills.FiniteKernelGrowth",
+    "UnifiedTheory.Clay.YangMills.KernelPartitionNorm",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonColumnNorm",
+    "UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay",
+    "UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail"
+  ],
+  "new_declarations": 133,
+  "retained_declarations": 8742,
+  "cumulative_declarations": 8875,
+  "formal_results": {
+    "actual_temporal_spatial_positivity": "The raw Wilson slab, including every temporal kinetic link and both spatial potentials, is a constructed positive kernel across the same independent spatial midpoint halves.",
+    "actual_finite_history": "Finite temporal networks with arbitrary nonnegative kinetic couplings and per-slice reflection-invariant spatial couplings have constructed reflection kernels. Their independent half-history Haar measure pushes forward exactly to the original coarse history measure.",
+    "column_insertion": "For a geometrically crossing marked spatial plaquette omitted at every time, m(s)^card(T)*Q_cut(f)<=Q_full(f) for all continuous complex half-history sources. The polynomial removal price is cap(s)^card(T). The coarse Haar partitions satisfy the same exact mass floor.",
+    "boundary_dictionary": "For a chain with L temporal bonds, the literal density equals B(u0)*product(K_raw)*B(uL), with each full spatial endpoint weight retained. This is proved for both the full and the actual omitted-plaquette models.",
+    "spectral_growth": "A genuine positive compact cut operator has a continuous complex top eigenfunction. Positive path integration bounds it from below in the chain growth comparison; the already constructed original full ground bounds the full chain from above. Positive boundary prefactors disappear by a proved exponential-rate comparison.",
+    "normalization_closed": "m(beta)*||T_cut,raw||<=||T_full||. Hence ||T_cut,raw||<=cap(beta)*||T_full|| for beta>=3/4, with cap(beta)=4*SU2ScalarTilt.partition(0)*beta*sqrt(beta)/Gamma(3/2). No volume or temporal-length factor remains.",
+    "ground_reflection_bypass": "This proves the desired single spatial-column normalization without assuming or constructing spatial reflection positivity of the modified ground. The earlier proposed cap(beta/2)^2 route is no longer a prerequisite for this bound.",
+    "isolated_defect_input": "For every continuous real F supported on D_p>=R, M_pi(PF)<=cap(beta)^2*exp(-beta*R)*M_pi(F), beta>=3/4. The actual original ground and full eigenvalue are retained.",
+    "isolated_defect_source": "For every continuous real F and R>0, integral_(D_p>=2R) F^2 dpi<=2*loss(F)+2*cap(beta)^2*exp(-beta*R)*M_pi(F). P is the actual raw stationary transition; the original full physical-sector agreement is retained."
+  },
+  "next_attack": {
+    "spatial_symmetries": "Transport the proved crossing-plaquette estimate through actual spatial translations and coordinate permutations to cover all plaquettes and orientations; keep the actual law and transfer normalization.",
+    "joint_source_and_clusters": "Use the existing square-cutoff joint-localization theorem after symmetry transport, charging the two-step residual once. Control the sum of mass errors on the justified trajectory and compare retained-region physical defect clusters. Do not replace source-weighted quantities by background probabilities.",
+    "global_form": "Use the now-polynomial single-column price and isolated-defect dynamics in the actual distant connected covariance or signed physical form. Establish compatible global lower coercivity; the local tail alone is not that inequality.",
+    "continuum": "Construct a compatible physical coupling/spacing trajectory with nonzero renormalized reflected states and transfer the uniform physical decay to the reconstructed continuum Hamiltonian."
+  },
+  "not_inferred": [
+    "The full Clay existence and mass-gap result is not proved; all twelve full requirements remain open. Neither a nonzero continuum limit nor a cutoff-uniform physical gap is constructed.",
+    "The new spatial column norm comparison is proved for a plaquette crossing the chosen spatial link-reflection plane on an even-period lattice. The theorem covers both periodic seams; extending it to every translated plaquette and orientation must use explicit spatial symmetry transport.",
+    "The raw cut transfer retains all temporal kinetic links and all spatial plaquettes except the same marked plaquette at every time. Its norm is compared to the original full gauge-averaged transfer norm. Raw and full kernels are not asserted identical on arbitrary nonphysical inputs.",
+    "The modified-ground reflection theorem has been bypassed for this norm comparison, not proved as a separate result. Do not reopen it as a prerequisite for the now-proved single-column price.",
+    "The source bound concerns the actual stationary squared mass, with the explicit loss coefficient two. It is not an arbitrarily small loss-only absorption bound and does not contradict the earlier physical plaquette-bump obstruction.",
+    "Finite families of bad-plaquette cutoffs need a justified joint cover and symmetry transport. An exponentially small one-plaquette mass error does not alone control an unbounded union or a physical changing-regulator trajectory.",
+    "The norm comparison for one reflection-fixed omitted column does not automatically iterate over arbitrary deleted columns: each subsequent background must satisfy the needed spatial reflection symmetry or have an independently proved replacement.",
+    "Actual distant mixed-ground summability or an appropriate signed physical form, retained-region physical coercivity including defect clusters, field-dependent boundary normalization beyond the proved single-column comparison, and nonzero physical continuum survival remain to be established."
+  ],
+  "audit": "data/yang_mills_spatial_column_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

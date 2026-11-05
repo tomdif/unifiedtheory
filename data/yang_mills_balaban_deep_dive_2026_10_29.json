@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-29",
+  "claim_status": "framework_only_no_clay_certificate",
+  "conclusion": "Balaban supplies a relevant multiscale effective-action strategy, but the examined results do not discharge the repository's continuum source bounds, physical coupling trajectory, nonzero reflected limit, or mass gap.",
+  "review_scope": "Examined theorem statements and core constructions in four original gauge-theory papers. Visually inspected the cached original Large Field II pages 355, 358, 359 and 390, alongside extracted text and the companion papers' online PDF text. This is a targeted mathematical dependency review, not an independent verification of every proof in the series. Large Field I was located bibliographically but its full text was not retrieved in this review.",
+  "primary_sources": [
+    {
+      "id": "RG-I",
+      "title": "Renormalization group approach to lattice gauge field theories I",
+      "doi": "10.1007/BF01215223",
+      "url": "https://doi.org/10.1007/BF01215223",
+      "original_pdf_mirror": "https://scispace.com/pdf/renormalization-group-approach-to-lattice-gauge-field-3ygai0vxt1.pdf",
+      "locations": "pp. 252-259, equations (0.2), (0.18)-(0.31); pp. 261-262, equations (1.8)-(1.14)",
+      "finding": "Uses gauge-covariant averaging, constrained minimizing backgrounds, localized analytic effective actions and Ward identities to extract the running coupling. Theorem 2 announces coupling control with a proof deferred elsewhere. The variable J in the analytic pair (U,J) replaces particular background derivatives; it is not an arbitrary source for our observables."
+    },
+    {
+      "id": "RG-II",
+      "title": "Renormalization group approach to lattice gauge field theories II: Cluster expansions",
+      "doi": "10.1007/BF01239022",
+      "url": "https://doi.org/10.1007/BF01239022",
+      "original_pdf_mirror": "https://scispace.com/pdf/renormalization-group-approach-to-lattice-gauge-field-4penm4k7hc.pdf",
+      "locations": "p. 1; pp. 17-21, equations (2.27)-(2.41), Lemma 3",
+      "finding": "Localizes fluctuation integrals using propagator/minimizer expansions, then exponentiates a convergent cluster expansion. Activity decay pays for sums over connected domains and survives reblocking after parameter restrictions. This closes the small-field effective-action induction; a probability estimate for a prescribed bad event is a different input."
+    },
+    {
+      "id": "RG-III",
+      "title": "Convergent renormalization expansions for lattice gauge theories",
+      "doi": "10.1007/BF01217741",
+      "url": "https://doi.org/10.1007/BF01217741",
+      "original_pdf_mirror": "https://scispace.com/pdf/convergent-renormalization-expansions-for-lattice-gauge-29jyexd38e.pdf",
+      "locations": "pp. 243-244; Section 2, pp. 256-264, especially (2.18)-(2.42), Theorems 1-2 and Corollary 3",
+      "finding": "The inductive state contains scale histories, background minimizers, regular action terms, large-field R terms and boundary terms. Theorem 1 assumes running-coupling inequalities. The abstract's completed convergent construction is explicitly for superrenormalizable models. Large-field integrations and boundary terms remain in the representation rather than being discarded."
+    },
+    {
+      "id": "LF-II",
+      "title": "Large field renormalization II: Localization, exponentiation, and bounds for the R operation",
+      "doi": "10.1007/BF01238433",
+      "url": "https://doi.org/10.1007/BF01238433",
+      "original_pdf_mirror": "https://scispace.com/pdf/large-field-renormalization-ii-localization-exponentiation-h8b7ih93xo.pdf",
+      "cached_pdf": "/tmp/balaban-1989-large-field-II.pdf",
+      "cached_pdf_sha256": "80ab1ee09fff0a5b6840a568b72c400a812858425da3200bc5c1c9e2d6941482",
+      "locations": "pp. 355-359; pp. 384-390, equations (1.80)-(1.100)",
+      "finding": "Theorem 1 assumes every effective coupling is sufficiently small. The paper says the coupling proof was unpublished at that time, and leaves observable expectations to further analysis. Wilson background terms of order g_k^-2 cancel between numerator and denominator before the remaining terms are bounded. Equation (1.100) gives exp(-p0(g_k))*exp(-kappa*d_k(X)) for the specified interior R terms; boundary terms have a separate bound. This does not assert uniform physical clustering.",
+      "historical_limit": "No claim that the deferred coupling proof has never subsequently appeared. No later result is imported here."
+    }
+  ],
+  "repository_mapping": [
+    {
+      "existing": "FiniteFactorIteration.stageAction_eq_tower; WilsonFactorTower.stageAction_eq_tower",
+      "provides": "Exact generated potentials and actual finite-step marginal identities.",
+      "missing": "Identification with gauge-covariant block averaging, constrained backgrounds and an invariant class of quantitatively bounded local interactions. Coordinate elimination alone is not Balaban's RG map."
+    },
+    {
+      "existing": "WilsonRegionDensityTail.fiber_exponential_bound; WilsonRegionClusters.joint_common_probability_bound",
+      "provides": "Original-law regional exponential moments and joint bad-density probabilities, including boundary costs.",
+      "missing": "Pointwise regular background domains, control of the surviving large-field terms after each integration, and summable bounds for connected generated activities."
+    },
+    {
+      "existing": "WilsonNoiseSourceJets.all_order; WilsonNoiseSourceJets.second_retained",
+      "provides": "Actual finite-cutoff source derivatives and a second-order retained covariance identity.",
+      "missing": "Cutoff-uniform source bounds with compatible contact renormalization at every order. Background analyticity in the papers does not directly provide these."
+    },
+    {
+      "existing": "WilsonExtensiveSchedule.repaired_limit_iff_exhaustedCoarseSum_limit",
+      "provides": "Exact reduction to the actual finite coarse-noise sum.",
+      "missing": "Convergence or suitable compactness of that sum with uniform scale control. Finite-volume exhaustion does not establish a limit as the number of terms grows."
+    },
+    {
+      "existing": "RenormalizedWilsonLimit.exists_hierarchy_limit",
+      "provides": "Subsequence compactness once the full continuous-Schwartz-seminorm bound hb holds.",
+      "missing": "A proof of hb for one nontrivial physical trajectory, plus nonzero separated reflected signal and the remaining field-theory properties."
+    }
+  ],
+  "new_deductions_and_design_decisions": [
+    "Mean-small boxes are not pointwise small-field domains: D_B<=u only implies each nonnegative remainder contribution is <=|B|u. Increasing the box size can weaken that individual bound. Therefore the new box packing cannot be used as the domain hypothesis of a background/minimizer theorem without an additional argument.",
+    "A source-free normalization bound cannot imply source derivative bounds. For the elementary probability law giving +/-1 equal weight and Phi_a=a^-4 X, Z_a(0)=1 while Z_a''(0)=a^-8. This is a logical counterexample to that implication, not a Yang-Mills counterexample.",
+    "The normalized local comparison must preserve common background factors until they cancel. Bounding numerator and denominator separately by full-volume suprema can destroy exactly the cancellation needed for a uniform estimate.",
+    "A polymer is a finite connected block region. Exponential decay in its scale-dependent size controls sums of local interactions; it is not automatically decay of physical connected correlations at a fixed mass.",
+    "A coupling window has to be tracked in physical scale. Bare beta tending to infinity does not prove every coarse effective coupling remains small, nor does small-coupling control on a finite scale window prove the infrared limit.",
+    "With matching plaquette counts, the repository action beta*sum(2-ReTr U_p) equals 2*beta times the normalized-trace Wilson action. Its algebraic bare-coupling match to exp(-A/g^2) is g^-2=2*beta. A regulator, scale and observable comparison is still needed; the paper's beta symbols must not be identified with the repository's beta by name."
+  ],
+  "proposed_next_theorem": {
+    "status": "research_target_not_proved_or_added_as_an_axiom",
+    "name": "A source-preserving one-step local interaction estimate for the actual Wilson integral",
+    "required_construction": [
+      "Fix one exact block map and geometry. Either construct Balaban's gauge-covariant averaging/background map in the repo, or prove a quantitative comparison with the coordinate-elimination construction.",
+      "Insert finite physical test sources before integration and identify the transformed sourced density with the original Wilson integral, including normalization and the complete large-field history.",
+      "Factor out the common constrained-background Wilson action in local numerator/denominator ratios. Prove a nonvanishing normalized denominator on an explicit complex domain and a localized expansion for the remaining logarithm.",
+      "Separate vacuum and marginal coupling terms from the remainder. Prove weighted connected-domain bounds stable under the next integration, initially for zero, one and two observable-source derivatives, uniformly in cutoff and allowed exterior fields.",
+      "Establish the coupling recursion and its domain of validity on the same trajectory. Then extend insertion estimates to every required order and to full Schwartz tests, while proving reflection positivity for the chosen renormalization."
+    ],
+    "sufficient_analytic_bridge": "For fixed test functions f_i, a corrected generating function Z_a(t_1,...,t_m), holomorphic on a polydisc |t_i|<=r/q(f_i) and uniformly bounded by M_m, has mixed derivative at zero bounded by M_m*r^-m*product q(f_i), by iterated Cauchy estimates. If a q(f_i) vanishes, handle that direction separately by a vanishing statement or a nondegenerate seminorm choice. This is only a sufficient target. Such uniform holomorphy is not established; factorized-test estimates still require a continuous tensor extension to the repository's full CorrelationTest m. Logarithmic derivatives additionally require a zero-free domain.",
+    "nontriviality": "Upper bounds alone permit the zero limit. A positive leading separated reflected covariance with a uniformly smaller error is still required.",
+    "convergence": "A scale sum needs both a summable uniform tail and convergence of the terms at each fixed physical scale (or another actual Cauchy/compactness argument). Summability without identification across cutoffs is insufficient."
+  },
+  "formal_progress_companion": {
+    "modules": ["UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes", "UnifiedTheory.Clay.YangMills.WilsonBoxPacking"],
+    "result": "Explicit no-wrap cubes have 4*L^4 edges and at most 96*L^3 crossing plaquettes. L>=24*beta discharges the regional surface condition. A packing of M^4 disjoint boxes has P(any bad-density box)<=M^4*exp(-4*L^4).",
+    "verification_reference": "data/yang_mills_box_packing_audit.json",
+    "limitation": "This is a finite packing, not a full torus tiling or a multiscale interaction bound. It has uncovered boundary slices and does not force pointwise small fields."
+  },
+  "continuum_limit_proved": false,
+  "clay_obligations_closed": [],
+  "external_results_added_as_lean_axioms": false
+}

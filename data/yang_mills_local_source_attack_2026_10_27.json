@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "record_type": "local_Wilson_estimates_and_separate_mathematical_derivations",
+  "research_date_local": "2026-10-27",
+  "written_at_utc": "2026-10-28T03:15:24.581964+00:00",
+  "verdict": "Actual local normalization, conditional energy tails and averaged boundary-response control have advanced. A sharper SU(2) one-link tail and weighted-source fluctuation estimate are derived below. None establishes multiscale marked insertion transport or a nonzero four-dimensional continuum limit.",
+  "formal_certificate": {
+    "path": "data/yang_mills_local_source_audit.json",
+    "sha256": "05c9804da63ae561402e777293a690ea1e73bbe476156e514ede194b5ae66de5",
+    "new_declarations": 46,
+    "cumulative_declarations": 3106,
+    "modules": [
+      "WilsonSlabLocalComparison",
+      "WilsonSlabConditional",
+      "WilsonResponseL2",
+      "WilsonConditionalEnergyTail"
+    ],
+    "scope": "The four Lean modules are certified. The longer operator, SU(2) Gamma, source-gradient and counterexample derivations below are written mathematics, not additions to the certified declaration count."
+  },
+  "formal_results": {
+    "local_kernel": "For actual spatial links differing at one bond, |Delta potential|<=8B, |Delta temporalAction|<=2B and |Delta slabAction|<=6|beta|B. Thus K(u,v)<=exp(6|beta|B)K(u_prime,v), uniformly in lattice volume and offset. The spatial weight costs exp(4|beta|B). A supplied nonnegative continuous positive-eigenvalue eigenfunction inherits the kernel comparison; w*psi costs exp(10|beta|B). No eigenpair existence is certified here.",
+    "normalization": "A positive continuous weight satisfying w(x)<=exp(D)w(y) for every x,y gives normalized expectation E_w Q>=exp(-D) E_Haar Q for Q>=0. The actual selected-link row of K obeys this with D=6|beta|B. No global partition lower bound or squared ratio loss is used.",
+    "response": "Under the actual Wilson law and actual boundary marginal, integral |response(F)-g|^2 <= integral |F-g(boundary)|^2. This makes an averaged insertion-error estimate sufficient for this conditional-response step. The averaged renormalized error itself is not established.",
+    "unitary_energy_tail": {
+      "scope": "Actual one-link U(d) conditional Wilson law, any exterior and volume, not automatically SU(2) Haar or a multiscale history law.",
+      "definitions": "S is its conditional action; A is an actual minimizer; E(U)=S(U)-S(A); k=ceil(48*d^5*|beta|)+1.",
+      "partition_bound": "Z_E>=exp(-1)*(2k+1)^(-2d^2).",
+      "tilted_tail": "For delta<=1, E[exp(delta E) 1_{E>=T}] <= exp(1-(1-delta)T)*(2k+1)^(2d^2).",
+      "marked_tail": "For continuous Q<=M and M>=0, E[Q 1_{E>=T}] <= M exp(1-T)*(2k+1)^(2d^2). Squared centered real traces have M=4d^2 when the center has norm at most d.",
+      "mechanism": "A uniform Haar cap around A has mass at least (2k+1)^(-2d^2). The actual Lipschitz bound implies E<=1 there, supplying the normalized partition lower bound."
+    }
+  },
+  "SU2_uniform_conditional_energy": {
+    "status": "Complete mathematical derivation written here; not Lean-certified.",
+    "scope": "Periodic four-dimensional Wilson SU(2), side n>=3, one variable link g, all exterior links fixed, beta>=0. The source-independent conditional law is the actual Gibbs law on that link.",
+    "trace_conventions": "For the repo action beta sum_p(2-Re Tr U_p), Tr is the unnormalized fundamental trace. If the staple sum has quaternion norm r, kappa=2 beta r. For beta sum_p(1-Re tr U_p), tr=Tr/2 and kappa=beta r. The estimates do not depend on kappa.",
+    "conclusions": [
+      "For conditional excess energy E=S-min S and 0<=t<1, E_W exp(tE) <= (1-t)^(-3/2), uniformly in coupling, exterior and volume.",
+      "For delta,eta>=0, delta+eta<1 and T>=0, E_W[exp(delta E)1_{E>=T}] <= exp(-eta T)*(1-delta-eta)^(-3/2). In particular delta=eta=1/4 gives 2^(3/2) exp(-T/4).",
+      "All increasing nonnegative Gamma-integrable functions obey E_W f(E)<=E_Gamma f. In particular E_W E^2<=15/4."
+    ],
+    "proof": [
+      "The link occurs once in each of six adjacent plaquettes. By cyclicity and Re Tr(g^(-1)B)=Re Tr(gB^(-1)), each contribution is linear in g: Re Tr(g A_p), where A_p is an SU(2) staple matrix fixed by the exterior.",
+      "The real vector space of quaternion matrices is closed under addition. For A=sum_p A_p, either A=0 or A=rV with r>0 and V in SU(2), since A* A=r^2 I. Right Haar invariance replaces gV by g. The conditional action becomes C-kappa q0, where q0 is the real quaternion coordinate and kappa>=0.",
+      "Therefore E=kappa(1-q0). If kappa=0, E is identically zero and all stated bounds are immediate.",
+      "SU(2) Haar measure is the uniform measure on S^3. Its q0 density is (2/pi)sqrt(1-q0^2) on [-1,1], obtained by the sphere coordinate marginal. Under the Wilson weight and y=1-q0, the density is proportional to exp(-kappa y)y^(1/2)(2-y)^(1/2) on [0,2].",
+      "For kappa>0 and u=kappa y, the density is proportional to u^(1/2)exp(-u) h_kappa(u), with h_kappa(u)=sqrt(max(2-u/kappa,0)). This h is bounded, nonnegative and decreasing; its integral against the probability density proportional to u^(1/2)exp(-u) is positive.",
+      "Let gamma be that Gamma(shape3/2,rate1) probability measure. For nonnegative increasing integrable f, twice [E_gamma(fh)-E_gamma(f)E_gamma(h)] equals the double integral of (f(u)-f(v))(h(u)-h(v)), which is nonpositive. Fubini is justified by bounded h and integrable f. Dividing by E_gamma h proves stochastic domination.",
+      "For f(u)=exp(tu), scale v=(1-t)u in the ratio of its defining integrals. This gives E_gamma exp(tu)=(1-t)^(-3/2), with no Bessel identity. For f(u)=u^2, two integrations by parts give E_gamma u^2=(5/2)(3/2)=15/4.",
+      "On E>=T, exp(delta E)<=exp(-eta T)exp((delta+eta)E). Integrating gives the tilted-tail bound."
+    ],
+    "limitations": "This controls conditional excess energy, not an arbitrary plaquette or a renormalized multiscale source residual. The cancelling-staple example below has E=0 and nonzero plaquette variance. The constant is asymptotically sharp as kappa tends to infinity, but this is a local conditional statement, not a continuum limit."
+  },
+  "SU2_weighted_source_corollary": {
+    "status": "Elementary consequence of the preceding natural-math proof; not Lean-certified.",
+    "scope": "Use the repo convention a_p(g)=2-Re Tr U_p(g) in [0,4] and S(g)=C+beta A(g), A=sum of the six incident a_p, beta>0. Let f_p be real source coefficients and let f0 be any real reference coefficient. Terms from all other plaquettes are constant under this one-link conditioning.",
+    "bound": "sd_cond(sum_p f_p a_p) <= sqrt(15)*|f0|/(2 beta) + 2 sum_p |f_p-f0|.",
+    "proof": [
+      "E=beta(A-min A), so Var_cond(A)=beta^(-2)Var_cond(E)<=15/(4 beta^2).",
+      "Write sum f_p a_p=f0 A+R, where R=sum(f_p-f0)a_p.",
+      "Since each a_p lies in [0,4], the range of R has width at most 4 sum|f_p-f0|. Popoviciu variance therefore gives sd_cond(R)<=2 sum|f_p-f0|.",
+      "Apply the triangle inequality to the centered L2 functions f0(A-E A) and R-E R."
+    ],
+    "normalized_trace_variant": "If both action and source use a_p=1-Re tr U_p in [0,2] with action beta sum a_p, the remainder coefficient is1 instead of2, and the first term remains sqrt(15)|f0|/(2 beta). If only the source is normalized while retaining the repo action, replace beta by2 beta in that variant.",
+    "smooth_source_interpretation": "For an isotropic scalar action-density source whose six coefficients sample one smooth f within O(a) of the link, sum|f_p-f0|<=C a sup|grad f|. This does not hold for a source selecting just one plaquette plane while setting the other orientation coefficients to zero.",
+    "remaining_gap": "This controls fluctuation within a one-link conditional law. It does not bound the variance of conditional means across exteriors, prove a global Gibbs Poincare inequality, or transport the source through many RG scales."
+  },
+  "volume_independent_local_plaquette_covariance": {
+    "status": "Checked mathematical derivation, not a Lean-certified theorem. Improves the prior research note for a local plaquette only.",
+    "setting": "Compact group with a continuous d-dimensional unitary representation and nonconstant real character; beta>0; spatial side n>1; time period M>=2. The repo equal-side regulator is the specialization M=n. Action is beta sum_p[d-Re Tr U_p]. P is one spatial plaquette, and v_H=Var_Haar(Re Tr U)>0.",
+    "constants": "c_beta=exp(-24 beta d)*v_H^2/(d^2+192d^4/beta^4).",
+    "result": "For 1<=p<M and r=min(p,M-p), actual periodic centered covariance C_M(p)>=c_beta^r/d^(2r-2)>0. No spatial or temporal volume appears in the bound.",
+    "proof": [
+      "The full Wilson slab kernel is K=w q w, with q the gauge average of k=product_e exp[-beta d+beta Re Tr(u_e* v_e)]. Its real-entry feature expansion is positive definite. Gauge averaging is an orthogonal projection commuting with the kinetic operator, so K is nonnegative selfadjoint. Its continuous kernel is Hilbert-Schmidt. The slab factorization and Fubini give Z_M=Tr(K^M) for M>=2 and the corresponding inserted traces.",
+      "Let m be the actual periodic expectation of P and B=P-m. In both numerator C_M(1)Z_M and denominator Z_M, the other factors are separately gauge invariant in u,v. Changing v by the gauge variable under product Haar therefore removes the gauge average from the single displayed k factor.",
+      "Let S be the four distinct links of P and split k=k_S k_out. Put D(u,v)=w(u)w(v)K^(M-1)(u,v)k_out(u,v). This is pointwise positive and positive semidefinite, by the Schur product property. Here powers denote kernel composition; K^(M-1) is positive semidefinite and has a positive continuous kernel.",
+      "The degree-zero and degree-four positive feature terms of k_S yield N>=exp(-4 beta d)[||B||_D^2 + beta^4||PB||_D^2/(192d^4)], where N=C_M(1)Z_M. The real plaquette trace has 8d^4 signed degree-four real-entry monomials; its coefficient norm and 4! give192d^4. Termwise integration is justified by uniform convergence on the compact configuration space.",
+      "Weighted Cauchy-Schwarz in the D-seminorm, and |m|<=d, give N>=exp(-4 beta d)||PB-mB||_D^2/(d^2+192d^4/beta^4). Since PB-mB=(P-m)^2=B^2, the remaining integrand is pointwise nonnegative.",
+      "For one selected link in S, changing u changes w by at most exp(4 beta d), and K^(M-1)(u,v) by at most exp(6 beta d), inherited from the first kernel factor under positive integration. k_out is unchanged. Thus the D ratio is at most exp(10 beta d), in either argument.",
+      "Normalized one-link Haar comparison yields integral D(u,v)B(u)^2 du >=exp(-10 beta d)v_H integral D(u,v)du. A plaquette with all other links fixed is a Haar translate or inverse translate of the selected link, so its Haar centered square is at least v_H for any m. Applying the same comparison in v gives ||B^2||_D^2>=exp(-20 beta d)v_H^2 integral D.",
+      "Because k_S<=1, Z_M=integral D k_S<=integral D. Combining the last bounds gives C_M(1)>=c_beta. No Perron eigenfunction or global trace denominator bound is needed.",
+      "For any positive scalar normalization T=K/lambda with eigenvalues r_i>=0, periodic covariance has expansion C_M(p)=sum_ij r_i^(M-p)r_j^p |B_ij|^2/Tr(T^M). The products are trace class because both separated powers are Hilbert-Schmidt. For r_i>0, use weights r_i^M|B_ij|^2/Tr(T^M) and nonnegative ratios r_j/r_i. Terms with r_i=0 vanish when p<M. Jensen for x^p gives C_M(p)>=C_M(1)^p/C_M(0)^(p-1). Ratios may exceed1; this argument does not assign a vacuum positive-energy spectral measure to the periodic state.",
+      "The actual centered variance C_M(0)<=d^2. Periodic symmetry replaces p by min(p,M-p), yielding the result."
+    ],
+    "scaling": "For beta asymptotic to b log(1/a) and r asymptotic to tau/a, the floor behaves on the scale exp[-O(a^(-1)log(1/a))]. This removes the previous spatial-volume penalty, but still gives no surviving continuum floor.",
+    "fixed_smear_limitation": "Spatial cross-covariances need not be nonnegative. The local bound cannot be transferred to a fixed spatially smeared test by retaining one summand. The older fixed-smear argument retains its weaker penalty. No claim that actual correlations vanish is made."
+  },
+  "energy_domination_obstruction": {
+    "status": "Explicit SU(2) Wilson construction checked algebraically; not Lean-certified.",
+    "construction": "For n>=3 and variable bond U_mu(x)=g, set U_mu(x+e_nu)=I and U_mu(x-e_nu)=-I for every nu!=mu. These six bonds are distinct. Set all remaining exterior links to I.",
+    "calculation": "The two incident mu-nu plaquettes have holonomies g and -g^(-1), up to inverse orientation. Their normalized real traces cancel. Each pair contributes2 to normalized action, so S(g)=C+6 beta is constant. Under the repo unnormalized trace convention the selected contributions are12 beta; constancy is unchanged.",
+    "failure": "The one-plaquette source X(g)=1-Re tr(g) takes values0 and2 at I and-I, whereas E=S-min S=0. Thus for any c independent of g, sup|X-c|>=1. No finite C can give |X-c|<=C g0^2 E without an additive term. The conditional law is Haar and its source variance is1/4.",
+    "robustness": "Nearby exteriors can make the sum of incident normalized traces uniformly at most delta in absolute value and perturb X by at most delta. Then 0<=g0^2 E<=2delta while osc X>=2-2delta, contradicting any fixed zero-remainder domination when delta is small. These exteriors form an open set of positive Haar and finite-cutoff Wilson probability. Fixed-coupling conditional L2 failure is likewise stable by density comparison.",
+    "interpretation": "Conditional normalization discards the frustrated exterior energy that could pay for the source fluctuation. A useful joint energy reserve must retain that cost, or an additive source-gradient term must be kept. The source-gradient corollary above is consistent with this obstruction.",
+    "not_a_refutation": "A nonconstant coarse G(V(g)) could absorb the source variation. The construction fixes the exterior, not the coarse block field. It does not refute Source Lemma8.21 or an averaged multiscale residual estimate."
+  },
+  "annealed_multiscale_route": {
+    "exact_hessian": "For a positive source-independent joint integral Z(z)=integral exp(F(z,omega))d lambda, let Y_i=partial_i F(0) and D12=partial_12 F(0). Then partial_12 log Z(0)=E D12+Cov(Y1,Y2). This includes both within-history covariance and covariance of history means.",
+    "error_bound": "If Y_i=c_i+G_i+R_i, sigma_i=sd(G_i), epsilon_i=sd(R_i), then |S12-Cov(G1,G2)|<=|E D12|+sigma1 epsilon2+sigma2 epsilon1+epsilon1 epsilon2. Bounding only conditional means of R_i can miss their within-history covariance.",
+    "energy_reserve": "For available positive energy E_h and |R_i|<=a_i E_h+b_i, |R_i|^2 exp(-E_h)<=[8 a_i^2/(e^2 delta^2)+2 b_i^2]exp(-(1-delta)E_h), 0<delta<1. This follows from x^2 exp(-delta x)<=4/(e^2 delta^2).",
+    "normalized_target": "Apply that inequality to actual joint RG branch weights while bounding their normalized tilted bad-branch mass. The one-link theorems do not identify that joint mass. The available energy must include the needed exterior cost and leave enough suppression after paying the insertion.",
+    "age_alternative": "If age-a marked second moments are bounded by B^2 L^(8(a+1))p_a, then sum_a L^(8a)p_a must converge. An exponential age penalty exp(-ca) suffices for c>8log L. A creation penalty exp[-c(log(x+a))^p] alone does not absorb L^(8a).",
+    "current_unproved_inputs": [
+      "Identification of actual sourced/re-filed RG weights with a positive source-independent representation.",
+      "A common ultraviolet vacuum subtraction and creation-scale marked insertion bound, including signed collar terms.",
+      "A normalized joint tilted bad-history estimate with sufficient energy reserve or lifetime suppression.",
+      "Mixed derivative locality and a relative error below the positive coarse witness.",
+      "Fixed-smear nonzero continuum survival and compatible full distributional hierarchy on a justified physical trajectory."
+    ]
+  },
+  "full_target_status": {
+    "ledger_consistent": true,
+    "full_target_requirements_open": 12,
+    "verified_auxiliary_references": 228,
+    "clay_certificate_present": false
+  },
+  "continuum_theory_constructed": false,
+  "mass_gap_proved": false
+}

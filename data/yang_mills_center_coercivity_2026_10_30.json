@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 27 new declarations established transported bridge response tails, 9460 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: a genuine flat winding direction is isolated and its odd-sector coercivity is proved for the actual ground law; the matching transfer-loss estimate and even-sector coercivity remain open",
+  "scope": "On every positive periodic SU(2) spatial lattice, a seam configuration with arbitrary holonomy q has every spatial plaquette holonomy equal to the identity, while its actual gauge-invariant winding loop equals the real character of q. The q=1 and q=-1 configurations are gauge inequivalent, including at even periods. No function of the complete spatial plaquette holonomies can reconstruct this winding observable, whose variance under the original physical ground law is strictly positive at each finite cutoff. The central seam twist J multiplies seam links by -1. It is a continuous Haar-preserving involution commuting with gauge transformations and preserving every spatial plaquette holonomy, the simultaneous kinetic action, the raw Wilson kernel, the original normalized physical ground, and its stationary integrals. The winding loop is J-odd. Every continuous real source decomposes into f_plus=(f+f composed with J)/2 and f_minus=(f-f composed with J)/2. For physical sources both parts remain gauge invariant. They are orthogonal under the actual ground law, and their mass, variance and actual transfer loss split exactly. Both parts commute with the normalized raw transfer; on invariant sources this is the original full physical transition by the existing step_full identification. Defining E_J(f)=integral (f(Ju)-f(u))^2 d(pi), the exact identity is Var(f)=Var(f_plus)+E_J(f)/4. In particular every odd source, including the nonzero physical winding loop, has Var(f)=E_J(f)/4, with coefficient independent of coupling and volume. The response is a whole-seam center flip, not the earlier small single-link response form or a new physical time step. No comparison of E_J(Pf) with actual transfer loss is proved. Every plaquette-based weighting leaves the winding loop centered; this is an integral identity, not a conditional-variance lower bound. A nonconstant physical plaquette has zero twist response and positive ground variance when n>1, formally ruling out all-physical coercivity from this one global response alone. Center-even global holonomy modes can also remain. The complete distant mixed-ground sum, bridge-complement estimate, combined global coercivity, physical mass gap and nonzero continuum construction remain unproved. All twelve full Clay requirements stay open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonWindingLoop",
+    "UnifiedTheory.Clay.YangMills.WilsonCenterTwist",
+    "UnifiedTheory.Clay.YangMills.WilsonCenterCoercivity"
+  ],
+  "new_declarations": 60,
+  "retained_declarations": 9460,
+  "cumulative_declarations": 9520,
+  "notation": {
+    "J": "Multiply all links crossing one chosen periodic seam by the central SU(2) element -1. This is a spatial symmetry, not physical transfer time.",
+    "f_plus": "(f+f composed with J)/2",
+    "f_minus": "(f-f composed with J)/2",
+    "E_J": "Integral (f(Ju)-f(u))^2 under the original physical ground law pi.",
+    "P": "Normalized raw transfer, equal to the full physical gauge-averaged transfer on invariant sources."
+  },
+  "proved_identities": [
+    "Every seam configuration q has trivial spatial plaquette holonomies and winding-loop character Re chi(q).",
+    "Var(f)=Var(f_plus)+Var(f_minus); M(f)=M(f_plus)+M(f_minus).",
+    "P(f_plus)=(Pf)_plus; P(f_minus)=(Pf)_minus.",
+    "loss(f)=loss(f_plus)+loss(f_minus).",
+    "E_J(f)=4*M(f_minus); Var(f)=Var(f_plus)+E_J(f)/4.",
+    "For odd f, Var(f)=E_J(f)/4, and the winding loop has strictly positive variance.",
+    "Every plaquette-based weighting W satisfies integral W(plaquettes(u))*winding(u) d(pi)=0."
+  ],
+  "next_attack": [
+    "Bound the actual full-transition response to a global seam twist in terms of physical variance loss, retaining any dependence on seam area and coupling.",
+    "Control center-even retained fields, including remaining global holonomy directions; then combine lower bounds with the same response energy used in an upper bound.",
+    "Estimate the bridge-complement response and finite-boundary retained propagation without requiring all response paths to be bad.",
+    "Keep physical scale matching and nonzero continuum survival explicit."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no physical mass gap or nonzero continuum Yang-Mills construction is proved.",
+    "The odd-sector coercivity concerns a whole periodic seam flip. It does not establish the lower bound for the earlier local response or Haar response form.",
+    "No uniform comparison E_J(Pf)<=kappa*loss(f) is proved. The new coefficient 1/4 alone therefore gives no physical contraction.",
+    "The center-even variance is retained exactly. Nonconstant physical plaquettes have zero seam response, so seam response alone cannot control every physical source.",
+    "This is one Z2 center symmetry in any chosen spatial direction. It is not control of every continuous toron direction, and center-even winding observables are not removed.",
+    "The exactly flat examples are pointwise configurations, not positive-measure flat sectors. Positive variance is established separately using the full support of the finite-cutoff ground law; no cutoff-uniform variance floor is proved.",
+    "Plaquette-weighted odd cancellation is not a concentration, decorrelation, conditional-variance, or mixed-ground-response estimate.",
+    "The bridge-complement response can still include defects and disconnected clusters. No retained propagation bound or complete distant mixed-ground sum is supplied.",
+    "The raw transfer uses the original physical ground and eigenvalue. Its identification with the full gauge-averaged transfer still requires gauge invariance.",
+    "Physical scale matching, multiscale stability, a compatible coupling trajectory and nonzero renormalized continuum survival remain separate obligations."
+  ],
+  "verification_report": "data/yang_mills_center_coercivity_audit.json",
+  "root_build_checked": false
+}

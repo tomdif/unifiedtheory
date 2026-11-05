@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: proved a polynomial volume-independent lower floor for actual ground-law physical plaquette variance, without a mixing assumption",
+  "scope": "The volume obstruction for the separately summed normalized Haar upper coefficient now also holds when the lower estimate is direct Haar coercivity, Var_pi(f)<=A_H*totalEnergy(f), rather than heat-bath variance factorization. A source supported on T with oscillation at most M has total Haar energy at most card(T)*M^2. Therefore an actual physical plaquette has totalEnergy<=64. Combining this with the proved actual ground-law variance floor forces 1<=1536*(exp(36)+1)*(beta+1)^4*A_H for every valid nonnegative direct Haar constant, with no heat-bath premise. The direct lower estimate gives the same slab factor A_H*kappa/(k+A_H*kappa). On beta_m=log(m+2)/8, k=m+1, the normalized summed kappa=N_links*(exp(8*beta)-1)^2/(4*exp(8*beta)) and any cap r<1 require (1-r)*N_links<=12288*(exp(36)+1)*(beta_m+1)^4*r. For spatial periods n=m+2, an elementary logarithm envelope sharpens this to (1-r)*(m+2)<=16384*(exp(36)+1)*r. The certified coefficient is at least (m+2)/(m+2+16384*(exp(36)+1)), and no fixed strict cap holds even eventually. Thus weakening the lower premise to direct Haar coercivity cannot repair the volume loss of this upper coefficient on this diagnostic path. This is not a lower bound on the actual transfer spectral ratio, a failure of the mass gap, or identification of the physical renormalization trajectory. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget",
+    "UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction"
+  ],
+  "new_declarations": 15,
+  "retained_declarations": 7635,
+  "cumulative_declarations": 7650,
+  "proof": {
+    "local_haar_support": "A one-link rotation outside a source support leaves the source unchanged, so its actual response energy vanishes. Oscillation at most M bounds every remaining response and its Haar average by M^2; summing gives card(T)*M^2.",
+    "actual_plaquette_upper": "The real fundamental trace has absolute value at most 2 and a plaquette uses at most four links. Thus totalEnergy(plaquette)<=4*4^2=64, under the actual ground law for every beta>=0.",
+    "direct_lower_budget": "The actual variance floor 1/[24*(exp(36)+1)*(beta+1)^4], together with direct Haar coercivity applied to that gauge-invariant plaquette, forces 1<=1536*(exp(36)+1)*(beta+1)^4*A_H. This does not reuse the stronger A>=1/4 heat-bath-specific constraint.",
+    "slab_binding": "Variance monotonicity along the original physical transfer and time summation give k*Var(P^k f)<=A_H*sum_j totalEnergy(P^(j+1) f). Combining with a matching upper loss estimate yields the same A_H*kappa/(k+A_H*kappa) coefficient, now from the direct Haar premise.",
+    "logarithmic_budget": "The existing normalized Haar cap is at least (m+1)/8 at beta_m=log(m+2)/8. The new direct lower budget and rate<=r<1 then imply (1-r)*N_links<=12288*(exp(36)+1)*(beta_m+1)^4*r.",
+    "explicit_growing_volume": "The exponential Taylor inequality gives log(m+2)^2<=2*(m+2), hence (beta_m+1)^4<=4*(m+2)^2. With N_links=3*(m+2)^3, cancellation gives (1-r)*(m+2)<=16384*(exp(36)+1)*r.",
+    "no_uniform_or_eventual_cap": "The certified rate has the explicit lower bound (m+2)/(m+2+16384*(exp(36)+1)). Choosing an arbitrarily large integer cutoff contradicts any fixed strict cap, including a cap assumed only beyond some initial cutoff.",
+    "scope": "The mathematical object bounded from below is the proved upper-bound coefficient. No analogous lower bound on the actual transfer ratio is asserted."
+  },
+  "decision": "Do not attempt to cancel the separately summed N_links cost solely by replacing heat-bath factorization with a more favorable direct Haar constant on this path. A collective upper estimate or a compatible change of response family remains necessary.",
+  "not_inferred": [
+    "The result constrains a direct Haar coercivity constant if such an estimate is supplied; it does not prove a useful uniform direct coercivity estimate.",
+    "The tested obstruction is to the explicit separately summed normalized upper coefficient. The actual transfer may contract more strongly; no lower spectral-ratio bound or vanishing gap is inferred.",
+    "The path beta_m=log(m+2)/8, k=m+1, n=m+2 is diagnostic. It has not been established as a physical coupling trajectory, and no failure for every trajectory is claimed.",
+    "A genuinely collective physical Haar integral-form bound, or a different response family with compatible physical-scale lower control, remains the relevant upper-estimate target.",
+    "The distant mixed-ground sum, actual uniform coercivity/factorization, physical trajectory, nonzero separated/smeared continuum source and full field axioms remain open.",
+    "All twelve full Clay obligations remain open. No continuum Yang-Mills theory or mass-gap certificate is constructed."
+  ],
+  "audit": "data/yang_mills_direct_haar_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

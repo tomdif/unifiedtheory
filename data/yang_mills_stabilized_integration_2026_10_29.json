@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-29",
+  "task": "Attack exponential reweighting of local star errors and their propagation through genuine successive Gibbs integration.",
+  "claim_status": "global_one_sided_stability_and_stabilized_density_control_proved_no_continuum_solution",
+  "scope": "Global SU2 star error bounds -27/(32*beta)<=E<=beta*(6-norm(A))^2/6 for beta>=3/2 and norm(A)<=6, including zero staples. Retaining max(E,0) and removing only the negative part changes the actual action by a nonnegative penalty at most 27/(32*beta) per corrected link. The corrected singleton full Wilson action integrates exactly to the stabilized potential. Every subsequent genuine coordinate integration preserves the initial action interval: with m initial corrections, d=27*m/(32*beta), all normalized stage-density ratios lie in [exp(-d),exp(d)] and any continuous observable bounded by M changes in expectation by at most M*d/2, at arbitrary depth. For varying lattices, schedules, depths and uniformly bounded tests the difference vanishes when m/beta tends to zero. Positive remainders are retained; no stagewise new correction estimates, extensive physical-volume control, continuum correlation or physical mass gap follows.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.SU2StableStarRemainder",
+    "UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation",
+    "UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration"
+  ],
+  "fresh_declarations": 38,
+  "cumulative_declarations": 6757,
+  "source_sha256": {
+    "UnifiedTheory/Clay/YangMills/SU2StableStarRemainder.lean": "e5cf04b5315d5ca96249df71cea91270e26ec7fc41664902b4acbf8b6b2fcb62",
+    "UnifiedTheory/Clay/YangMills/GibbsOrderedPerturbation.lean": "2be65eb7169998bb97c711e1b3af68f97195b29da87c4956470f7fe965343f9a",
+    "UnifiedTheory/Clay/YangMills/WilsonStabilizedIntegration.lean": "52779d844d540d06fa31d35d86d76f205f9a6a59b375b62b91ce9ffbbabf2abd"
+  },
+  "results": {
+    "remainder": "For beta>=3/2 and r=norm(A)<=6, -27/(32*beta)<=E_beta(A)<=beta*(6-r)^2/6, including r=0.",
+    "proof_of_lower_bound": "For r>=2 the previous radial estimate gives E>=beta*(6-r)^2/6-3*(6-r)/4, bounded below by -27/(32*beta) by completing a square. For r<=2, monotonicity of the exact radial potential and its value at r=2 give E>=2*beta-3>=0.",
+    "stabilization": "V_stable=V_beta(6*1)+Q_beta+max(E_beta,0). Its difference from the exact V_beta is max(-E_beta,0), in [0,27/(32*beta)]. Positive large-field corrections are retained.",
+    "actual_wilson_binding": "The singleton corrected full Wilson action splits into the original splitAction plus an exterior-only penalty. Its actual one-link Haar integration equals the exterior action plus V_stable.",
+    "integration": "For any two compact actions with 0<=B-A<=d, exact negative-log integration preserves 0<=F_B-F_A<=d. Induction applies this to the genuine GibbsCoordinateTower, with the same d at all depths.",
+    "density_and_expectations": "At every stage normalized density ratios lie between exp(-d) and exp(d), and any continuous observable bounded by M changes in expectation by at most M*d/2. This is a uniform statement over configurations, not only a high-probability event.",
+    "multiple_corrections": "For m initially corrected actual Wilson links d=27*m/(32*beta). No independence or sparse-block assumption is needed for this action-comparison theorem.",
+    "varying_trajectory": "When beta tends to infinity and m/beta tends to zero, bounded-observable expectation differences vanish for arbitrary varying lattice periods, schedules, integration depths and uniformly bounded tests."
+  },
+  "research_assessment": [
+    "The sign of the remainder is decisive. Removing positive E multiplies the exact weight by exp(E) and remains uncontrolled. Retaining positive E and removing its negative part has a globally small penalty, so rare configurations cannot amplify this comparison.",
+    "The exact-integration theorem propagates one initial perturbation. Introducing a fresh approximation at each scale would require new quantitative inputs; the current generated actions need not have the original SU2 one-link form.",
+    "The cardinality cost m/beta cannot be claimed small for an extensive continuum lattice on a logarithmic coupling trajectory. Uniform bounded-observable comparisons also do not directly control cutoff-diverging physical insertions.",
+    "The retained positive remainder and generated interactions are now explicit targets. No fixed-physical-scale bound for exhaustedCoarseSum or nonzero separated reflected correlation has been proved."
+  ],
+  "remaining": [
+    "Control the retained nonnegative remainder and its generated interactions at physical scale. The proved upper bound beta*(6-norm(A))^2/6 does not give the required coarse covariance or all-order source bounds.",
+    "Prove estimates for new approximations introduced after non-Wilson interactions have been generated. The arbitrary-depth theorem propagates one initial bounded perturbation; it does not supply fresh stagewise star formulas.",
+    "Replace the explicit m/beta budget with appropriate local or extensive estimates on a physical continuum trajectory. Uniformly bounded observables do not include arbitrary cutoff-diverging physical insertions.",
+    "Prove convergence of exhaustedCoarseSum, a nonzero separated reflected signal, the physical coupling trajectory, compatible all-order continuum reconstruction, the physical spectral gap and every compact simple gauge group. All twelve full Clay requirements remain open."
+  ],
+  "all_twelve_full_clay_requirements_open": true,
+  "positive_remainder_discarded": false,
+  "fresh_stagewise_approximation_control_proved": false,
+  "extensive_physical_scale_control_proved": false,
+  "nonzero_continuum_limit_constructed": false,
+  "physical_mass_gap_proved": false,
+  "full_root_build_claimed": false,
+  "verification": {
+    "audit_report": "data/yang_mills_stabilized_integration_audit.json",
+    "runner": "scripts/yang_mills_stabilized_integration_audit.py",
+    "result_location": "The linked audit records cumulative selected-module build, all fresh axiom checks, requirements and preserved certificate-chain results."
+  }
+}

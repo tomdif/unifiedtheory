@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-29",
+  "scope": "The nearby part of the actual SU(2) Wilson likelihood Gram row has a proved uniform bound. For each spatial link e, near(e) is the union of the four-link supports of its affected spatial plaquettes. Its cardinality is at most 16 and it contains e; any link outside it has a disjoint affected plaquette set. These facts are proved for every positive periodic spatial period, including repeated plaquette occurrences. For one chosen quaternion rotation q_d per spatial link and B(beta,q_d)<=D, every Gram entry has absolute value at most D by actual-row L2 Cauchy-Schwarz. Consequently sum_(d in near(e)) |G_ed(u)|<=16*D. The entire row splits exactly into this nearby sum plus farCost(u,e)=sum_(d outside near(e)) |exp(Delta_e Delta_d log g(u))-1|. For beta*norm(q_d-1)<=1 the nearby part is at most 16*(exp(4)-1)^2, independently of beta and spatial volume. Thus the remaining upper-bound input is a uniform bound R on this explicit distant-ground sum, which would give collective response and time-sum coefficient 16*D+R. That distant bound, the separate whole-slab lower coercivity estimate, physical scaling and continuum source survival remain unproved. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood",
+    "UnifiedTheory.Clay.YangMills.WilsonGramNearFar"
+  ],
+  "new_declarations": 20,
+  "retained_declarations": 7361,
+  "cumulative_declarations": 7381,
+  "proof": {
+    "geometry": "plaquetteLinks(p) consists of the four actual spatial plaquette edges. Every affected plaquette contains its specified changed link. near(e) is their union, has cardinality at most 4*4=16 and contains e.",
+    "separation": "If d is outside near(e), then d!=e and the affected plaquette sets of d and e are disjoint. The predecessor exact mixed-ground Gram identity therefore applies.",
+    "entry_bound": "Actual-row L2 Cauchy-Schwarz gives |G_ed|^2<=G_ee*G_dd. The proved diagonal bounds B(beta,q_e)<=D and B(beta,q_d)<=D, with D>=0, imply |G_ed|<=D.",
+    "nearby_budget": "Summing over the explicit near(e) gives at most 16*D, independently of beta and volume whenever D is uniform.",
+    "exact_split": "sum_d |G_ed(u)| = sum_(d in near(e)) |G_ed(u)| + farCost(u,e). The latter is exactly the sum over the complement of |exp(groundMixedLog(e,d,u))-1|.",
+    "scaled_budget": "If beta*norm(q_d-1)<=1 for every chosen rotation, D=(exp(4)-1)^2 is valid. The nearby sum is at most 16*D for every input and positive period.",
+    "conditional_dissipation": "If farCost(u,e)<=R uniformly and R>=0, the proved actual collective estimate has coefficient kappa=16*D+R for the sum over all chosen link responses and for its whole transfer-time sum. No additional volume or time factor is introduced.",
+    "physical_binding": "For gauge-invariant sources, the same already proved ground embedding identifies the iterates with original normalized physical transfer powers."
+  },
+  "assumptions": [
+    "Positive periodic spatial period n, beta>=0.",
+    "One specified unit quaternion rotation for every spatial link.",
+    "The general nearby estimate assumes only the proved individual coefficient cap B(beta,q_d)<=D; the scaled version uses beta*norm(q_d-1)<=1.",
+    "Uniform control of the explicit farCost is an assumption only in the final dissipation and time-sum implications; it is not asserted for the actual weak-coupling ground."
+  ],
+  "not_inferred": [
+    "Prove a uniform bound on farCost(u,e), the exact sum of |exp(Delta_e Delta_d log g(u))-1| over links outside the proved local neighborhood, on a justified physical weak-coupling trajectory. Nearby terms are now controlled explicitly; no spatial decay of the distant mixed ground response has been established.",
+    "A pointwise-in-input distant bound suffices for the proved transfer estimate. Any exceptional-input or averaged substitute must control its product with conditional source variance, rather than just averaging the Gram matrix.",
+    "Choose a family of rotations or collective physical variations with sufficient coverage and prove the separate lower bound of accumulated response by final variance over a fixed physical slab. A bound on one chosen rotation per link does not itself prove this coercivity.",
+    "Keep both the collective upper coefficient and the lower-bound constants uniform in cutoff and volume. Bounded nearby coefficients for shrinking rotations do not establish a physical scale or uniform contraction.",
+    "Control correlated large-field clusters, boundaries and generated interactions; construct a surviving nonzero finite-energy continuum excitation and compatible all-order renormalized bounds on the same independently justified physical beta(a) trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_near_far_gram_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

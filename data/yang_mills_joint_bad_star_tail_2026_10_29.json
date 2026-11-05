@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-29",
+  "claim_status": "framework_only_no_clay_certificate",
+  "scope": "Normalized joint bad-star tails under the actual original SU2 Wilson law. Disjoint affected plaquette sets give an additive energy cost 2*beta*delta*m for m selected deficient staples. The actual Haar-cap partition satisfies Z>=exp(-V*C(beta,K)), C=9408*beta/K^2+32*log(2*K+1), with C(beta,grid(beta))<=6*beta*energyEnvelope(beta). Consequently P(all selected deficits>=delta)<=exp(6*beta*V*energyEnvelope(beta)-2*beta*delta*m). A concrete maximal-packing block has m>=4*V/25. Once (75/2)*energyEnvelope(beta)<=delta its joint event is bounded by exp(-beta*delta*m). For the exact positive star remainder, once (25/12)*q(beta)<=sqrt(epsilon), the probability that every selected remainder is at least epsilon is bounded by exp(-sqrt(beta)*sqrt(epsilon)*m). Both fixed-threshold probabilities tend to zero along arbitrary diverging beta and varying volumes. These are probabilities of simultaneous events on an extensive block, not local chessboard or arbitrary-cluster estimates, and do not prove continuum convergence.",
+  "verification": {
+    "new_modules": [
+      "UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail"
+    ],
+    "new_declarations": 23,
+    "retained_declarations": 6803,
+    "result_location": "data/yang_mills_joint_bad_star_tail_audit.json",
+    "root_build_claimed": false
+  },
+  "continuum_attempt": {
+    "requested_target": "Nontrivial continuum limit of the actual renormalized four-dimensional Yang-Mills Wilson family.",
+    "conditional_existence_theorem": "UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.exists_hierarchy_limit",
+    "unproved_uniform_input": "A fixed continuous Schwartz seminorm p_m at every order m bounding every cutoff correlation on one nontrivial physical trajectory; this is the explicit hb hypothesis, not a supplied proof.",
+    "second_order_reduction": "UnifiedTheory.Clay.YangMills.WilsonExtensiveSchedule.repaired_limit_iff_exhaustedCoarseSum_limit",
+    "missing_second_order_result": "Convergence or suitable uniform compactness of the actual exhaustedCoarseSum together with a strictly positive separated reflected limit.",
+    "why_current_tail_result_does_not_close_it": "The exponentially rare event requires all members of a particular extensive independent block to be bad. The complement still contains the typical interacting configurations and arbitrary bad clusters. The theorem does not bound physical-scale coarse covariance or higher renormalized source moments on this complement.",
+    "status": "not_proved"
+  },
+  "primary_reference_for_proposed_dissemination_route": {
+    "title": "Marek Biskup, Reflection Positivity and Phase Transitions in Lattice Spin Models, Theorem 5.2",
+    "url": "https://arxiv.org/html/math-ph/0610025v2",
+    "usage": "Motivation for the unproved repeated-reflection step; no external theorem is assumed as a Lean axiom or treated as a completed Wilson application."
+  },
+  "remaining": [
+    "Prove repeated-reflection dissemination for actual Wilson block events and a geometry compatible with the reflection tiling. A maximal independent packing is not by itself a chessboard tiling.",
+    "Derive exponential integrability and correlated-cluster estimates for the local remainder and subsequently generated interactions. A bound for the event that every member of an extensive block is bad is not a bound for arbitrary bad regions.",
+    "For continuum existence, discharge the actual cutoff-uniform Schwartz-seminorm hypothesis hb of RenormalizedWilsonLimit.exists_hierarchy_limit on a physically justified trajectory with a nonzero reflected signal. Existing finite-lattice bounds do not discharge hb.",
+    "Prove convergence of WilsonExtensiveSchedule.exhaustedCoarseSum (and compatible higher correlations); its equivalence with repaired-covariance convergence is an exact reduction, not a convergence proof.",
+    "Establish a nontrivial continuum Yang-Mills theory, physical mass gap and all twelve full Clay requirements. None is marked closed by these finite-volume tail estimates."
+  ]
+}

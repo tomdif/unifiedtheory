@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-29",
+  "status": "exact_marginal_mixed_budget_stability_no_clay_claim",
+  "scope": "A quantitative recurrence for the actual one-coordinate Gibbs marginal: c_new(i,j)=c(i,j)+c(i,e)*c(e,j) on distinct retained coordinates, with zero eliminated row/column and diagonal. The coefficient bounds one quarter of every mixed action rectangle. Exact logarithmic integration proves the new mixed bound. A nonnegative symmetric zero-diagonal matrix with row sums <=alpha<=1 preserves that same row budget after every finite stage of genuine coordinate elimination. For actual SU(2) Wilson input this supplies the depth- and volume-independent bound 36*beta when 0<=beta<=1/36, and discharges generated-action smallness for the auxiliary contraction criterion in the strict small-beta regime. Uniform control of the coloring, entry from beta(a)->infinity, physical-time decay, nontrivial continuum limit and physical mass gap remain unproved.",
+  "normalization": "MixedBound(A,c) means every mixed action rectangle in coordinates i,j is bounded by 4*c(i,j); hence c bounds actual single-coordinate conditional influence.",
+  "one_step": {
+    "operator": "The existing GibbsCoordinateElimination.blockAction on the singleton {e}; its equality to -log integral exp(-A(update(U,e,q))) dmu(q) is proved.",
+    "recurrence": "For i,j distinct and different from e, c_new(i,j)=c(i,j)+c(i,e)*c(e,j). The diagonal and eliminated row/column are zero.",
+    "derivation": "The pre-existing mixed term contributes 4*c(i,j). The oscillations of the two boundary action changes in the integrated variable are bounded by 4*c(e,i) and 4*c(e,j). The actual free-energy rectangle estimate contributes their product divided by four. Symmetry yields the stated normalized recurrence.",
+    "row_accounting": "sum_j c_new(i,j) <= sum_j c(i,j)-c(i,e)+c(i,e)*sum_j c(e,j) <= alpha-(1-alpha)*c(i,e) <= alpha when alpha<=1.",
+    "no_independence_assumption": "One coordinate is genuinely integrated at each step. Arbitrary schedules, including repeated choices, are covered; no conditional product law for a larger block is assumed."
+  },
+  "iteration": {
+    "result": "Every finite action in the actual GibbsCoordinateTower for singleton schedules has the recursively computed mixed bound. Nonnegativity, symmetry, zero diagonal and the initial row budget persist.",
+    "wilson_application": "Actual SU(2) plaquette oscillations provide the seed matrix. For 0<=beta<=1/36, every finite induced Wilson action has row budget at most 36*beta, independent of lattice volume and elimination depth.",
+    "contraction": "For beta<1/36, the generated-factor auxiliary L2 contraction now follows from the initial beta condition and any valid current-support coloring. The former per-stage smallness premise is discharged in this regime. The rate still depends on the color count.",
+    "improvement_over_global_weights": "The proof estimates mixed variations of the sum of actual generated factors, retaining cancellations that separate global factor-amplitude bounds lose."
+  },
+  "limitations": [
+    "This is stability inside an already established small-influence regime, not entry into it from the weak-coupling limit beta->infinity.",
+    "The theorem is for exact one-site coordinate elimination. No identification with Balaban gauge-covariant block averaging is asserted.",
+    "The row bound does not control the number of colors needed for enlarged interaction supports or the physical-time propagation of observables.",
+    "Elimination may increase individual retained couplings even while the total row bound remains controlled.",
+    "No nontrivial continuum correlation limit, source-uniform bound, finite physical-energy witness or physical mass gap is proved."
+  ],
+  "new_declaration_count": 41,
+  "predecessor_declaration_count": 7017,
+  "remaining": [
+    "Prove entry into a small coarse mixed-interaction budget along a physically justified weak-coupling cutoff trajectory; the stability theorem starts from a budget <=1 and does not establish crossover.",
+    "Control actual large-field, boundary and source contributions uniformly after background cancellation; relate the exact coordinate-elimination construction to a physical-scale coarse representation.",
+    "Control a valid current-support coloring uniformly or prove physical clustering directly from a weighted influence matrix; row-budget stability alone does not give a volume-uniform color-update rate.",
+    "Prove the original transfer fixed-physical-slab estimate and construct nontrivial continuum correlations with a nonzero finite-energy excitation on the same trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true
+}

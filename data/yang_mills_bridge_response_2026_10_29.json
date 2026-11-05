@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: exact variance-pair cancellation, explicit middle law, correlated endpoint disintegration and uniform middle translation-entropy budget proved",
+  "scope": "The inserted ground logarithm under the explicit middle bridge is now quantitatively bounded. For a fixed simultaneous q, let L(q)=sum_e norm(q_e-1) and c(q)=sum_e norm(q_e-1)^2. Exact first-order plaquette incidence gives abs(V(qU)-V(U))<=8*L(q). The constructed ground satisfies g(qU)<=exp(6*beta*L(q))*g(U), and its actual log increment has absolute value at most 6*beta*L(q). Under each actual middle bridge mu_vw, the expectation of logg(qU)+logg(qinv U)-2logg(U) equals the first-log-increment response between its density rho(U) and rho(qU). Hellinger response and the already-proved middle entropy budget imply that this expectation has absolute value at most B(q)=72*beta*L(q)*sqrt(beta*c(q)), uniformly in the endpoint pair. Exact profile disintegration retains the true endpoint/source weights and gives E_pi[sigma_f^2*pairedGroundGain]<=B(q)*loss(f). Actual row entropy weighted by row variance is therefore at most (18*beta*c(q)+B(q))*loss(f). The original full transfer on gauge-invariant sources obeys E_q(Pf)<=C(q)*(18*beta*c(q)+B(q))*loss(f), C(q)=2*(1+exp(4*beta*L(q))). This is a closed response-loss estimate with no uncontrolled profile-energy remainder in its right-hand side. For equal rotations at N links, B(q)^2=5184*beta^3*N*c(q)^2, so B(q)/c(q)=72*beta*sqrt(beta*N) when c(q)>0. This square-root link-count dependence and the l1-dependent prefactor remain; no volume-uniform physical Haar-form bound or contraction is concluded. The earlier signed profile-energy remainder is bypassed in this estimate, not bounded directly. Global coercivity, distant mixed-ground summability, physical scaling, continuum construction and all twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz",
+    "UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain",
+    "UnifiedTheory.Clay.YangMills.WilsonBridgeResponse"
+  ],
+  "new_declarations": 19,
+  "retained_declarations": 7847,
+  "cumulative_declarations": 7866,
+  "proof": {
+    "joint_first_difference": "Trace difference is at most twice holonomy chord. Product variation bounds the chord by the sum of its four link displacements. Exact incidence counts each spatial link four times, giving abs(V(qU)-V(U))<=8*L(q), including small periods.",
+    "ground_log_increment": "The spatial-weight comparison costs exp(4*beta*L); the actual row partition costs exp(2*beta*L). Their exact relation to lambda*g gives exp(6*beta*L). Applying the comparison in both directions bounds the actual log-ground increment by 6*beta*L.",
+    "finite_difference_integration_by_parts": "Let h(U)=logg(qU)-logg(U). Haar translation gives E_rho[logg(qU)+logg(qinv U)-2logg(U)]=integral rho(U)*h(U)-integral rho(qU)*h(U). This is exact for every endpoint middle conditional.",
+    "conditional_insertion_bound": "The first increment h is in [-6*beta*L,6*beta*L]. Bounded-response entropy gives the squared insertion <=(12*beta*L)^2*D(rho||rho_q). The middle bound D<=36*beta*c yields 5184*beta^3*L^2*c and hence the explicit cap B=72*beta*L*sqrt(beta*c).",
+    "actual_source_weight": "Exact weighted-profile disintegration and positive endpoint squared-source weights turn the uniform conditional cap into E_pi[sigma_f^2*pairedGroundGain]<=B*loss. The endpoint source mass is exactly 2*loss; no source-range norm or endpoint independence is introduced.",
+    "entropy_and_response": "Integrate the actual paired row-entropy inequality with sigma_f^2, then use the weighted insertion cap and nonnegativity of the inverse entropy. The existing variance-sensitive pointwise response gives the stated closed response-loss bound. The original full transfer is bound explicitly for gauge-invariant f.",
+    "scaling_check": "For q_e=a at all N links, L^2=N*c exactly, so B^2=5184*beta^3*N*c^2. The bound improves the gain-cost scaling relative to the previous coarse l1-squared profile price, but is not uniformly sharper at every beta and direction; the prefactor C is unchanged."
+  },
+  "decision": "The previously uncontrolled middle log-ground insertion now has an explicit actual estimate. The new upper route no longer requires an unproved absorption of the signed profile energy. The remaining collective task is to remove L(q)/sqrt(c(q)) from the gain coefficient and control the response prefactor on a compatible family, while proving actual lower coercivity.",
+  "next_unproved_route": {
+    "fluctuation_target": "Replace the uniform first-log-increment range bound by a collective centered fluctuation estimate under the explicit middle conditional and actual endpoint/source weights. This is not supplied by the middle entropy budget itself.",
+    "normalization_cancellation": "The identity logg=log(spatialWeight)+log(rowPartition)-log(lambda) may isolate local spatial terms from the nonlocal normalization fluctuation. Any claimed improved bound must be proved with the actual row partition and source weights.",
+    "full_target": "The distant mixed-ground sum, a volume-uniform physical Haar-form upper bound, matching global coercivity and a nonzero continuum field remain separate required work."
+  },
+  "not_inferred": [
+    "The gain cap uses L(q)*sqrt(c(q)), not c(q) alone. Its exact equal-rotation square exhibits a square-root link-count factor relative to c(q). This is the scaling of a proved upper-bound coefficient, not a lower bound on actual response or on the actual transfer ratio.",
+    "The density-comparison prefactor C(q)=2*(1+exp(4*beta*L(q))) is unchanged. It is bounded under a small-total-displacement constraint, not uniformly on full-Haar rotations.",
+    "The new estimate bypasses the signed profile-energy remainder by controlling the true weighted ground-log insertion directly. It does not prove a separate bound on that signed remainder or a lower bound on ground-amplitude energy.",
+    "No unrestricted baseline-dependent coefficient-mixture estimate or matching uniform full-Haar lower comparison is established.",
+    "The true correlated endpoint law is retained, but no endpoint decay, distant mixed-ground summability, global ground-law coercivity or variance factorization is proved.",
+    "Uniform physical-time contraction, physical coupling identification, continuum source survival and the full continuum field construction remain open. No Clay certificate is constructed."
+  ],
+  "audit": "data/yang_mills_bridge_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 66 fresh declarations established the all-input physical seam bound, continuous minimized penalty and source-weighted response; 9656 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: unconditional strictly improved finite-cutoff physical odd-sector contraction, with a proved limitation of the averaged cap certificate",
+  "scope": "The previous source-weighted sufficient condition is replaced by an unconditional improved finite-cutoff contraction rate in the physical center-odd sector. For W(u) equal to the clipped gauge-minimized seam coefficient, define the continuous physical profile r(u)=W(u)/(4+W(u)). The actual conditional response estimate, oddness of P f, and the exact row-variance formula give (P f(u))^2<=r(u)*P(f^2)(u). This requires no additional source-weighted bound. Detailed balance and Fubini for the original stationary ground law move the coefficient through the same physical transfer: Var(P f)<=integral f(v)^2*(P r)(v) d pi(v). Compactness constructs an attained maximum q_star=max_v(P r)(v). Consequently Var(P f)<=q_star*Var(f), with 0<=q_star<=q_raw<1 at every positive period and nonnegative coupling. Physical powers obey Var(P^k f)<=q_star^k*Var(f), and positive-variance physical odd eigenfunctions satisfy sigma^2<=q_star. For arbitrary physical sources the center-even variance remains explicitly in the partial-contraction bound. The new profile is strictly below q_raw at the identity whenever n>=4 and beta>0, because beta*pi^2*n<4*beta*n^2 there. Strict positivity of every actual transition row spreads this gain to every row, and compactness then proves q_star<q_raw unconditionally at each such finite cutoff. The certified margin equals the attained minimum over input rows of the actual full-transition expectation of 4/(4+W). No source is discarded and no auxiliary time step is substituted. The same construction has a proved limitation: for n>=4, beta>=0, nonnegative penalty and clipping imply r(u)>=q_base=((exp(beta*pi^2*n)-1)/(exp(beta*pi^2*n)+1))^2. The original Markov averaging preserves this floor, so q_star>=q_base and 1-q_star<=4*exp(-beta*pi^2*n). This is an upper bound on this certificate margin, not an upper bound on the actual spectral gap. It shows that averaging this particular likelihood-cap profile cannot remove the exponential linear-period cost; controlling the mismatch alone is insufficient. A physical-scale gap requires a stronger argument based on actual physical-score moments or multiscale response, plus center-even/global coercivity. The distant mixed-ground sum, retained propagation, bad-bridge complement, compatible physical scaling, nonzero continuum construction and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging",
+    "UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile",
+    "UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction",
+    "UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor"
+  ],
+  "new_declarations": 55,
+  "retained_declarations": 9656,
+  "cumulative_declarations": 9711,
+  "notation": {
+    "P": "The original normalized raw step; all physical identifications explicitly require gauge-invariant sources. The profile is proved gauge invariant, so P r is the original full physical transition.",
+    "W": "The earlier minimum of the raw global seam coefficient and the coefficient from the gauge-minimized mismatch.",
+    "r": "W/(4+W), a continuous gauge-invariant and center-even profile.",
+    "q_star": "The attained maximum over all inputs of P r.",
+    "q_raw": "((exp(4*beta*n^2)-1)/(exp(4*beta*n^2)+1))^2.",
+    "q_base": "((exp(beta*pi^2*n)-1)/(exp(beta*pi^2*n)+1))^2.",
+    "pi": "The original stationary ground law."
+  },
+  "proved_bounds": [
+    "For physical center-odd f, (P f(u))^2<=r(u)*P(f^2)(u), with no extra source-weighted hypothesis.",
+    "Var(P f)<=integral f(v)^2*(P r)(v) d pi(v)<=q_star*Var(f).",
+    "0<=q_star<=q_raw<1 for all positive periods and beta>=0.",
+    "q_star<q_raw for n>=4 and beta>0; the strict gain is propagated through the actual positive transition rows.",
+    "Var(P^k f)<=q_star^k*Var(f) on the original physical clock; physical odd eigenvalues satisfy sigma^2<=q_star.",
+    "For arbitrary physical f, Var(P f)<=Var(f_even)+q_star*Var(f_odd).",
+    "1-q_star is the attained minimum over rows of integral T(u,v)*4/(4+W(v)) d Haar(v).",
+    "For n>=4 and beta>=0, q_star>=q_base and 1-q_star<=4*exp(-beta*pi^2*n). This limits the certificate, not the actual spectral gap."
+  ],
+  "next_attack": [
+    "Go beyond the likelihood-cap profile: estimate actual physical-score moments or a multiscale response form under the original ground. The proved profile floor rules out removing the beta*n cost by better mismatch estimates alone.",
+    "Derive a physical-time decay bound compatible with one coupling and cutoff trajectory; a qualitative strict finite-cutoff gain is insufficient.",
+    "Close the center-even/global coercivity and connect retained propagation to finite-boundary connected covariance and bad-bridge response tails.",
+    "Keep physical scaling, compactness and nonzero continuum survival as independent obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no nonzero continuum Yang-Mills construction or uniform physical mass gap is proved.",
+    "The unconditional improvement is for continuous gauge-invariant center-odd sources. The center-even variance remains explicitly present for arbitrary physical sources.",
+    "The rate q_star is constructed as an attained maximum of the actual original physical transfer applied to a continuous geometric profile. No effective numerical or uniform lower bound on the size of its strict improvement is supplied.",
+    "Strict q_star<q_raw is proved for n>=4 and beta>0. The non-strict contraction and iteration hold for all positive periods and beta>=0.",
+    "The proved floor q_star>=q_base yields 1-q_star<=4*exp(-beta*pi^2*n). This caps the certified margin, not the actual spectral gap, and prevents this profile averaging from removing the linear-period exponential cost.",
+    "A physical gap need not require a contraction factor uniformly below one at each shrinking time step. It requires a suitable lower decay rate in physical time. This certificate does not supply that scaling and is inadequate on trajectories where exp(-beta*pi^2*n) is negligible compared with the physical time step.",
+    "An estimate of the actual physical likelihood/score variance or multiscale response is still needed to go beyond the capped profile. Further control of the noncommutation penalty alone cannot remove its zero-penalty floor.",
+    "The complete distant mixed logarithmic ground sum, retained propagation and bad-bridge-complement response remain open. The whole-seam form is not identified with the earlier local finite-rotation form.",
+    "Multiscale stability, physical coupling and time matching, normalized reflected-state compactness and nonzero renormalized continuum survival remain independent obligations."
+  ],
+  "verification_report": "data/yang_mills_averaged_seam_audit.json",
+  "root_build_checked": false
+}

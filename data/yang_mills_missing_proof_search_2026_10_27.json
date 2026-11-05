@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "record_type": "research_provenance_and_conditional_mathematical_deduction",
+  "research_date_local": "2026-10-27",
+  "written_at_utc": "2026-10-28T01:05:37.757291+00:00",
+  "request": "Find the missing proof for the nontrivial four-dimensional continuum Yang-Mills construction.",
+  "verdict": "No complete usable proof found; the strongest inspected public candidate has explicit unresolved analytic inputs.",
+  "new_lean_declarations": 0,
+  "new_clay_requirements_closed": 0,
+  "continuum_yang_mills_candidate_constructed": false,
+  "scope_of_review": "Targeted dependency audit of original papers, the public draft, and selected companion sections. Not a line-by-line verification of the complete companion sources and not proof that no completion exists elsewhere.",
+  "certified_repository_baseline": {
+    "certificate": "data/yang_mills_full_slab_audit.json",
+    "certificate_sha256": "36e5d51f9c6605c3d3638ccca387dac4f200432ddae76bd09ad36b11f58bb30e",
+    "audited_declarations": 3012,
+    "existing_certified_source_hashes_rechecked": 1398,
+    "existing_build_and_audit_logs_rechecked": 3,
+    "frozen_new_proof_source_hashes_rechecked": 3,
+    "requirements_status": {
+      "ledger_consistent": true,
+      "full_target_requirements_open": 12,
+      "verified_auxiliary_references": 209,
+      "clay_certificate_present": false
+    },
+    "existing_proof_sources_or_integration_files_modified": false,
+    "new_build_run": false,
+    "reason_no_new_build": "Research JSON only; no Lean source changed. Existing source and verification-log hashes match the previous certificate."
+  },
+  "public_candidate": {
+    "repository": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment",
+    "revision": "1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310",
+    "revision_date_utc": "2026-10-27T10:45:28Z",
+    "draft_date": "2026-10-06",
+    "author_status": {
+      "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/README.md",
+      "finding": "Authors describe tentative, insufficiently vetted work in progress."
+    },
+    "downloaded_sources": [
+      {
+        "name": "README.md",
+        "url": "https://raw.githubusercontent.com/ethanwsussman/Yang--Mills-LLM-experiment/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/README.md",
+        "bytes": 5246,
+        "sha256": "984a09a62948ae2f220ffd74869e4f55b8bff5406079f5efb0034422da9a0fcb"
+      },
+      {
+        "name": "ym4_manuscript_zeroth_draft.pdf",
+        "url": "https://raw.githubusercontent.com/ethanwsussman/Yang--Mills-LLM-experiment/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/ym4_manuscript_zeroth_draft.pdf",
+        "bytes": 2064505,
+        "sha256": "869ed86a1384dbc57277647e2bcd4096f545e533c74e45917c1caccb4868b24b"
+      },
+      {
+        "name": "theorem_0_complete_account_raw_I.tex",
+        "url": "https://raw.githubusercontent.com/ethanwsussman/Yang--Mills-LLM-experiment/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_I.tex",
+        "bytes": 10554720,
+        "sha256": "4cb5cb5e0af8dbddbee207926621300350e018c6cf1d6567a753167ce10e6e93"
+      },
+      {
+        "name": "theorem_0_complete_account_raw_II.tex",
+        "url": "https://raw.githubusercontent.com/ethanwsussman/Yang--Mills-LLM-experiment/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex",
+        "bytes": 9092940,
+        "sha256": "6a1f74b05f74ba44a2186c11fb08e139178d86b15c1494a95c434212944b2b8f"
+      },
+      {
+        "name": "theorem_0_complete_account_raw_III.tex",
+        "url": "https://raw.githubusercontent.com/ethanwsussman/Yang--Mills-LLM-experiment/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_III.tex",
+        "bytes": 6963158,
+        "sha256": "7e36523b85fb4f85aefdd45ab175420459f24e34fe56a4e83e53a6829c7a352d"
+      }
+    ],
+    "draft": {
+      "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/ym4_manuscript_zeroth_draft.pdf",
+      "locations": [
+        "Theorem 0",
+        "Theorem 3.1",
+        "Theorem 5.8, printed page 79",
+        "Section 9"
+      ],
+      "finding": "The conditional SU(2) action-density construction treats separated supports. Theorem 5.8 claims a positive connected two-point witness through a relative-error estimate. It does not establish the full coincident field hierarchy, unconditional rotational covariance, a mass gap, or all compact simple gauge groups.",
+      "claimed_witness": "S_2^T = (zeta_prime)^2 b_0 g_(K-s)^4 K_(K,s) (1+R), with |R| <= 1/4 and a positive lower bound for K_(K,s).",
+      "repo_import_status": "Not an established input: underlying source-dependent estimates require proof and identification with our actual Wilson observables and trajectory."
+    },
+    "companion_II_findings": [
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L2791",
+        "finding": "The correlation theorem assumes preparatory window data whose proof remains outstanding."
+      },
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L145173",
+        "finding": "Source Lemma 8.21 explicitly lacks a proof. It requires a positive source-independent history integral, uniform source analyticity, age-controlled live large-field derivatives, and a summable distant contribution."
+      },
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L101471",
+        "finding": "Later second-order extraction repairs an earlier incomplete Gaussian route, conditional on its remainder and correlation premises. The old extraction objection alone is obsolete."
+      },
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L145274",
+        "finding": "The flat-shell lemma is optional: the main bookkeeping sums healed labels out."
+      },
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L145319",
+        "finding": "Corollary 8.21 states uniform witness bounds, coupling bounds, and convergence as assumptions A1-A3; see the independent simplification below."
+      },
+      {
+        "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_II.tex#L102452",
+        "finding": "The moduli-insufficiency example shows generic analytic bounds cannot replace the actual RG production formula."
+      }
+    ],
+    "companion_III_status": {
+      "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_III.tex#L110864",
+      "finding": "The status ledger does not assert unconditional proof of the main theorem. It identifies unfinished induction, domain and remainder control, correlation inputs, and volume uniformity. Later local repairs and optional branches must be checked against this broad ledger."
+    }
+  },
+  "other_primary_sources": [
+    {
+      "title": "Balaban, Large Field Renormalization II (1989)",
+      "url": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-122/issue-3/Large-field-renormalization-II-Localization-exponentiation-and-bounds-for-the/cmp/1104178467.full",
+      "doi": "10.1007/BF01238433",
+      "pdf_sha256": "80ab1ee09fff0a5b6840a568b72c400a812858425da3200bc5c1c9e2d6941482",
+      "locations": [
+        "printed pp. 355-356, Theorem 1 and equation (0.1)",
+        "printed p. 390, equation (1.100)"
+      ],
+      "finding": "The effective-density bounds assume all effective couplings remain sufficiently small. The paper reports that a referenced second-order coupling proof was unpublished at that time, and leaves loop-observable expectations to subsequent analysis. Localized remainder decay is not itself a renormalized source-hierarchy estimate.",
+      "limitation": "No verified later completion found in this targeted search; no claim that none exists."
+    },
+    {
+      "title": "Magnen, Rivasseau and Seneor, Construction of YM4 with an infrared cutoff (1993)",
+      "url": "https://link.springer.com/article/10.1007/BF02097397",
+      "author_uploaded_full_text": "https://www.researchgate.net/publication/251358884_Construction_of_YM_4_with_an_infrared_cutoff",
+      "locations": [
+        "printed pp. 325-328"
+      ],
+      "finding": "The construction retains an infrared cutoff and works with a particular gauge and regularization. Its stated scope does not directly establish our original periodic Wilson continuum limit with the infrared cutoff removed."
+    },
+    {
+      "title": "OpenAI academic scientific-understanding announcement",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "finding": "The announcement itself does not provide an importable physics proof. The separate public candidate above was audited on its own sources."
+    },
+    {
+      "title": "scottnarmstrong/balaban-lean",
+      "url": "https://github.com/scottnarmstrong/balaban-lean",
+      "finding": "Its README concerns the classical O(N) spin model and still reports unresolved proof blockers. It is not a completed four-dimensional Yang-Mills proof."
+    }
+  ],
+  "conditional_mathematical_progress": {
+    "name": "A uniform positive scalar lower bound passes to a continuum limit without separate convergence of its factors.",
+    "status": "Elementary mathematical deduction checked during this audit; not a new Lean-certified declaration or an established Wilson estimate.",
+    "hypotheses": [
+      "Fix nonzero test functions f1,f2, g>0 and a depth s, independent of the ultraviolet cutoff K.",
+      "For all sufficiently large K, S_K = zeta_K^2 b0 g_K^4 K_K (1+R_K), with b0>0, zeta_K in [2/3,4/3], and |R_K|<=1/4.",
+      "K_K >= cK ||f1||_infty ||f2||_infty with cK>0 independent of K.",
+      "g_K>0 and g_K^(-2) <= D := g^(-2)+B(s+1), where D>0 is independent of K.",
+      "S_K converges to a real number S along the chosen cutoff sequence."
+    ],
+    "conclusion": "S >= c := (b0*cK/3) ||f1||_infty ||f2||_infty D^(-2) > 0.",
+    "proof": [
+      "zeta_K^2 >= 4/9, 1+R_K >= 3/4, and g_K^4 >= D^(-2). Multiplication gives S_K >= c for every applicable K.",
+      "If S<c, convergence with epsilon=(c-S)/2>0 eventually gives S_K<S+epsilon<c, a contradiction.",
+      "Thus S>=c>0. This uses convergence of S_K only, not separate convergence of g_K, K_K, or R_K."
+    ],
+    "weaker_error_variant": "If only |R_K|<=1/2 is known, replace the coefficient 1/3 by 2/9.",
+    "consequence_for_candidate": "The additional continuum-kernel premise is unnecessary for this positivity consequence once A1-A3 hold. This does not remove it from every other claimed consequence.",
+    "unproved_actual_input": "No cutoff-uniform witness bound or coupling trajectory for the actual Wilson measure was established by this deduction."
+  },
+  "next_actual_estimate_to_prove": {
+    "target": "Source-dependent RG bounds for the actual Wilson measure, simultaneously with a justified physical coupling trajectory.",
+    "work_needed": [
+      "Construct the sourced coarse density and prove its identification with the original Wilson integral, including history measures and the actual observable-renormalization formula.",
+      "Close the analytic domains, regularity and remainder induction with constants uniform in the cutoff and required volumes; track two source derivatives rather than only the partition function.",
+      "Control live large-field source contributions and distant tails strongly enough to bound the connected-correlation error below its positive leading term.",
+      "Prove full distributional hierarchy bounds and preserve reflection positivity under any contact renormalization on the same trajectory.",
+      "After obtaining nontrivial continuum correlations, separately establish the remaining field-theory and mass-gap requirements."
+    ],
+    "important_distinctions": [
+      "A finite-cutoff ordinary plaquette-variance floor does not imply a positive separated reflected continuum covariance.",
+      "Polymer-local vacuum terms can couple separated supports; they are not automatically point-local contact counterterms.",
+      "Upper source-holomorphy bounds do not by themselves force a nonzero second derivative of the logarithmic generating functional.",
+      "Conditional completion of the source lemma alone would not complete all other prerequisites or the Clay problem."
+    ]
+  }
+}

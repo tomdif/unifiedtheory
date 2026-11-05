@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "scope": "The actual SU(2) Wilson temporal-gauge ground-row response equals the original full normalized transfer on continuous gauge-invariant observables. Its localized tilt covariance vanishes exactly for a pure gauge input change. A literal row action retains the spatial weight and constructed ground amplitude; those terms cancel from input action differences, yielding the bound beta*(hi-lo)*inputCost. Compactness constructs an attained gauge-orbit cost, with nonnegativity, symmetry, triangle inequality, gauge invariance and zero exactly on gauge-equivalent pairs. The actual response and normalized collective tilt covariance are bounded by beta*(hi-lo)*orbitCost; a chosen local alignment charges only its remaining changed links. No regular or local gauge fixing, spatial covariance decay, weak-coupling contraction, physical-scale gap or nontrivial continuum limit is proved. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse",
+    "UnifiedTheory.Clay.YangMills.WilsonRowGeometry",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse"
+  ],
+  "new_declarations": 47,
+  "retained_declarations": 7168,
+  "cumulative_declarations": 7215,
+  "identities": {
+    "row_law": "nu_u(dv) is proportional to kineticWeight(u,v)*spatialWeight(v)*ground(v)*Haar(dv). ground is the existing constructed positive ground amplitude.",
+    "physical_dictionary": "For continuous gauge-invariant f, rowMean_f(u) equals its expectation under the original full normalized physical transfer.",
+    "gauge_cancellation": "Cov_{nu_u}(tilt(gauge(h)u,u),f)=0 when the tilt support contains all changed input links.",
+    "row_action": "A_u(v)=beta*kineticAction(u,v)-log(spatialWeight(v))-log(ground(v)). Its Gibbs law is exactly nu_u.",
+    "action_difference": "|A_u_prime(v)-A_u(v)| <= 2*beta*sum_e norm(u_e-u_prime_e).",
+    "orbit_cost": "d(u,u_prime)=min_h sum_e norm(u_e-gauge(h)u_prime_e). Compactness attains this minimum.",
+    "response_bound": "|rowMean_f(u)-rowMean_f(u_prime)| <= beta*(hi-lo)*d(u,u_prime) for lo<=f<=hi.",
+    "covariance_bound": "|Cov_{nu_u_prime}(tilt,f)|/E_{nu_u_prime}(tilt) <= beta*(hi-lo)*d(u,u_prime); the actual denominator is strictly positive.",
+    "localized_alignment": "For any chosen alignment with agreement off S, replace orbit cost by the sum of residual link distances in S."
+  },
+  "assumptions": [
+    "Finite periodic spatial SU(2) lattice n>0.",
+    "beta>=0.",
+    "Continuous real physical observables invariant under every lattice gauge transformation, with a specified finite value interval.",
+    "Localized covariance identities require agreement of the two input configurations off their stated finite support."
+  ],
+  "not_inferred": [
+    "Improve the actual gauge-invariant collective response bound to a physical-scale contraction estimate uniform in cutoff and volume; its current coefficient grows with beta.",
+    "Control correlated large-field clusters, boundaries, generated interactions and renormalized source responses on an independently justified beta(a)->infinity trajectory.",
+    "If using an explicit gauge fixing or coarse block representation, prove its regularity/locality and the exact law and source dictionary; compact choice of an orbit optimizer supplies none of these.",
+    "Obtain contraction of original physical transfer powers over a fixed physical slab, and construct a surviving nonzero finite-energy continuum excitation with compatible all-order bounds.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_gauge_response_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "next_physical_target": {
+    "estimate": "For some ell>0 and q<1 independent of cutoff and spatial volume, ||P_a^(ceil(ell/a)) v|| <= q*||v|| for every v orthogonal to the vacuum, on the same independently justified physical coupling trajectory.",
+    "why_current_bound_is_insufficient": "The present estimate uses the global observable interval width and has coefficient beta. It supplies neither contraction in a physical norm nor a bound on accumulated collective response over the number of time steps in a fixed physical slab.",
+    "separate_continuum_requirement": "Construct a nonzero finite-energy continuum source and compatible all-order renormalized bounds on that same trajectory."
+  }
+}

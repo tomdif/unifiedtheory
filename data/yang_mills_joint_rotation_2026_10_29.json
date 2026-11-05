@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: proved actual one-link ground-log semiconvexity, Gaussian peak envelope, polynomial conditional density/source-weight domination and shifted-ground entropy bound",
+  "scope": "For an arbitrary fixed simultaneous link rotation q, define cost(q)=sum_e norm(q_e-1)^2. Exact spatial plaquette incidence counting and quaternion word second differences give a spatial potential upper second difference of 32*cost(q), a temporal kinetic upper second difference of 2*cost(q), and an input-action budget 18*beta*cost(q). The true ground-law averaged paired row relative entropy is at most that same budget. The proof preserves the signed ground correction and uses Haar invariance to show that each averaged ground log gain is nonpositive. For every continuous bounded source with range [lo,hi], the actual mean-square simultaneous response is at most 18*beta*(hi-lo)^2*cost(q). The estimate is bound to the original full transfer on physical observables and to the exact all-link normalized tilt covariance. Rational rotations q_e(t)=rotation(t*a_e,axis_e) give cost(q(t))<=4*t^2*sum_e a_e^2 and a finite-difference quotient bound 72*beta*(hi-lo)^2*sum_e a_e^2, for arbitrary fixed coefficients and axes, without an additional channel-count factor. There is also an actual collective ground-log lower second difference >=-18*beta*cost(q), and ground-density relative entropy at most 36*beta*cost(q). These estimates concern fixed simultaneous rotations and oscillation norms; they do not give the required source-dependent Haar mixture form estimate or an upper bound paid for by variance loss. The distant mixed-ground sum, global coercivity and full continuum mass-gap obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonJointRotation",
+    "UnifiedTheory.Clay.YangMills.WilsonJointEntropy",
+    "UnifiedTheory.Clay.YangMills.WilsonJointResponse"
+  ],
+  "new_declarations": 34,
+  "retained_declarations": 7685,
+  "cumulative_declarations": 7719,
+  "proof": {
+    "joint_geometry": "Quaternion Variation product bounds apply to q_e and q_e inverse simultaneously. A four-factor word has second difference bounded by the square of the sum of its four chord displacements. Cauchy-Schwarz changes this to four times the sum of their squares; the fundamental real trace contributes a factor two.",
+    "incidence": "The exact periodic spatial sum counts each link four times, including possible repeated word occurrences on small periods. This proves the potential second-difference constant 32, independently of spatial volume. The temporal term has one occurrence per link and constant 2.",
+    "action": "The actual input action is beta/2 times the spatial potential plus beta times the temporal action, giving (32/2+2)*beta*cost=18*beta*cost.",
+    "ground_cancellation": "The actual row entropy formula contains the action difference and a log-ground gain. Pair q and q inverse at the same baseline, then integrate against the true g^2 Haar law. Haar translation preserves the mass of the shifted ground density; its relative entropy shows each ground gain is nonpositive.",
+    "actual_physical_response": "The entropy-to-bounded-response inequality gives the same simultaneous cost times the squared range. Existing exact physical/raw transfer equality binds the result to the original full transfer for gauge-invariant sources. The literal all-link tilt covariance retains its true row-dependent denominator.",
+    "fixed_directions": "Each rational quaternion rotation at t*a_e has chord distance at most 2*abs(t*a_e). Summing the squares gives 4*t^2*sum a_e^2. Divide the actual mean-square response by t^2 for t nonzero to obtain the 72*beta range-squared directional quotient bound.",
+    "ground_regularities": "Nonnegative paired row entropy also yields the collective lower second difference of log g. Integrating that inequality and using the sign of the opposite ground gain bounds entropy(g^2,(g o L_q)^2) by 36*beta*cost(q)."
+  },
+  "decision": "The signed collective stationary calculation has a dimension-independent coefficient for fixed simultaneous perturbations. The next upper-bound task must handle baseline-dependent source-weighted coefficient mixtures and pay for response with actual variance loss. Do not sum the fixed-direction range bounds as a substitute for that task.",
+  "not_inferred": [
+    "The new estimate controls one fixed simultaneous rotation or one fixed coefficient direction. The rotation is fixed across baseline inputs; arbitrary input-dependent rotations need not preserve Haar and are not covered.",
+    "The response bound uses (hi-lo)^2. It is not a bound by actual variance dissipation, and summing it over coordinate directions would reintroduce a link-count cost.",
+    "The continuous physical Haar-form hypothesis requires pointwise or sufficiently source-weighted control, allowing the test coefficients to depend on the baseline input. This stronger control is not implied by the new fixed-direction averaged entropy estimate.",
+    "The finite-difference quotient is proved for nonzero t. No derivative-limit passage, infinitesimal Fisher-matrix identification or full-Haar response-family comparison is asserted.",
+    "The collective log-ground estimate is a lower symmetric second difference only. It supplies neither an upper mixed-ground Hessian estimate nor distant decay or summability.",
+    "The actual ground-law global coercivity/factorization, physical coupling trajectory, continuum construction and surviving separated/smeared source remain open. All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_joint_rotation_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

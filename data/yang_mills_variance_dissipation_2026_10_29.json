@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual SU(2) Wilson normalized physical transfer response is bounded by its actual stationary variance dissipation, with no observable-range factor. For a rotation R_q at a specified link, B(beta,q)=(exp(4*beta*norm(q-1))-1)^2 and E_q(F)=E_pi|F(R_q u)-F(u)|^2, the proof gives E_q(P f)<=B*(Var_pi(f)-Var_pi(P f)). Iteration yields sum_{j<k} E_q(P^(j+1) f)<=B*(Var_pi(f)-Var_pi(P^k f))<=B*Var_pi(f), summability and vanishing response, and a 1/k time-average bound. The actual raw transition preserves the constructed ground law; on gauge-invariant observables all iterates are explicitly identified with powers of the original normalized complex Hilbert-space transfer under the ground-state embedding. The coefficient is independent of spatial volume and bounded by (exp(4)-1)^2 when beta*norm(q-1)<=1, but grows exponentially at fixed nonzero displacement as beta increases. Conditional one-step and whole-slab collective coercivity give variance contraction C/(1+C), C=sum_i weights_i*B(beta,q_i); their lower-bound premises are not proved. This does not establish a uniform physical gap, a surviving continuum source or a continuum limit. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance",
+    "UnifiedTheory.Clay.YangMills.WilsonVarianceResponse",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance",
+    "UnifiedTheory.Clay.YangMills.WilsonDissipationIteration"
+  ],
+  "new_declarations": 53,
+  "retained_declarations": 7269,
+  "cumulative_declarations": 7322,
+  "proof": {
+    "law": "pi(du)=g(u)^2 Haar(du) for the already constructed strictly positive normalized ground amplitude; nu_u is the actual temporal-gauge transition row law.",
+    "likelihood": "The actual row densities satisfy p_u(v)<=exp(4*beta*inputCost(u,w))*p_w(v). For w=R_q u, inputCost is exactly norm(q-1). Both ratio directions imply |p_w/p_u-1|<=exp(4*beta*norm(q-1))-1.",
+    "conditional_variance": "Centering against nu_u and L2 Cauchy-Schwarz give |E_nu_w f-E_nu_u f|^2<=B(beta,q)*Var_nu_u(f). No range bound on f occurs.",
+    "stationarity": "Actual raw detailed balance and row normalization imply E_pi(P_raw f)=E_pi f for every continuous real f.",
+    "variance_loss": "E_pi Var_nu_u(f)=Var_pi(f)-Var_pi(P_raw f). Therefore E_q(P_raw f)<=B(beta,q)*(Var_pi(f)-Var_pi(P_raw f)).",
+    "physical_identification": "For gauge-invariant f, P_raw preserves gauge invariance and agrees with the original full ground-state-transformed transfer. embed(g*P_raw^k f)=normalizedTransfer^k embed(g*f) is proved for every natural k.",
+    "telescoping": "sum_{j<k} E_q(P_raw^(j+1) f)<=B(beta,q)*(Var_pi(f)-Var_pi(P_raw^k f))<=B(beta,q)*Var_pi(f).",
+    "infinite_time": "The nonnegative response sequence is summable; its infinite sum is at most B*Var_pi(f), its terms tend to zero, and its k-step average is at most B*Var_pi(f)/k for k>0.",
+    "scaling": "If beta*norm(q-1)<=1 then B(beta,q)<=(exp(4)-1)^2. This controls individual shrinking rotations, not a collective Poincare constant.",
+    "conditional_slab_payoff": "If Var_pi(P^k f)<=sum_i w_i sum_{j<k} E_{e_i,q_i}(P^(j+1) f), with w_i>=0, then Var_pi(P^k f)<=C/(1+C)*Var_pi(f), where C=sum_i w_i B(beta,q_i). There is no additional factor k. The same implication is proved for one step. The collective lower-bound premise remains open."
+  },
+  "assumptions": [
+    "Finite periodic spatial SU(2) lattice n>0; beta>=0.",
+    "Continuous real observables, arbitrary chosen link and unit quaternion rotation.",
+    "Gauge invariance is required for the explicit original physical transfer identification; raw row-law variance and response statements hold for all continuous real observables.",
+    "The contraction theorems assume their displayed collective coercivity inequalities; these inequalities are not derived."
+  ],
+  "comparison_to_predecessor": "The preceding bound 66*beta*range(f)^2*norm(q-1)^2 remains a separate estimate. The present bound uses actual variance loss, with coefficient (exp(4*beta*norm(q-1))-1)^2; no 66*beta variance-loss bound is claimed.",
+  "not_inferred": [
+    "Prove collective coercivity under the actual squared-ground law: the variance after a fixed physical slab must be bounded by a suitable nonnegative weighted sum of its time-integrated local responses, with C=sum_i weights_i*(exp(4*beta*norm(q_i-1))-1)^2 uniformly controlled in cutoff and spatial volume for all physical observables.",
+    "The proved response upper bound and time summability alone give no rate of stationary variance decay. Shrinking rotations with beta*norm(q-1)<=1 do not by themselves control the collective coercivity constant or establish a physical scale.",
+    "Obtain uniform contraction of original normalized physical transfer powers on an independently justified beta(a)->infinity trajectory; finite-cutoff results and the new conditional slab criterion do not supply this input.",
+    "Control correlated large-field clusters, generated interactions, boundary terms and renormalized source responses through the required physical scale.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible all-order renormalized bounds on the same trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_variance_dissipation_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

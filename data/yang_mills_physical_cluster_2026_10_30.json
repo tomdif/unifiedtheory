@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "current_goal_turn_classification": "progress: explicit physical-source transfer identification accompanying 120 newly checked arbitrary-pattern declarations",
+  "scope": "Explicit full gauge-averaged Wilson transition corollaries of the proved arbitrary noncoplanar plaquette activity and defect-count tails on fine period 4*n. For a continuous gauge-invariant source f, the squared output under the actual full normalized transition is proved equal to the raw-step squared mass by WilsonPhysicalVariance.step_full. The supported intersection estimate, arbitrary-source hard-pattern tail and region defect-density tail are stated with the actual full transition integral and its exact mass loss. Gauge invariance is an explicit hypothesis of each physical identification. The preceding cube-cluster record notation described P too broadly as the full normalized transition: for arbitrary continuous sources P is the normalized raw step built using the original physical ground and eigenvalue; its equality to the full gauge-averaged transition is justified here for gauge-invariant sources. The original ground law and physical eigenvalue in the preceding estimates were unchanged. No proof statement in the preceding batch is altered. The distant mixed-ground sum or signed physical replacement, independent global coercivity and all continuum and Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource"
+  ],
+  "new_declarations": 4,
+  "retained_declarations": 9356,
+  "cumulative_declarations": 9360,
+  "formal_results": {
+    "UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.full_mass": "For continuous gauge-invariant sources, the exact full gauge-averaged Wilson transition output mass equals the normalized raw-step mass with the original physical ground and eigenvalue.",
+    "UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.intersection_decay": "Explicit full-transfer arbitrary noncoplanar supported-pattern suppression, with gauge invariance stated and rho^card(S) unchanged.",
+    "UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.source_tail": "The source-weighted arbitrary-pattern tail is bounded by twice the actual full-transfer mass loss plus twice rho^card(S) times source mass for gauge-invariant sources.",
+    "UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.density_tail": "The arbitrary-region defect-density tail uses the actual full gauge-averaged transfer loss for gauge-invariant sources, with explicit binomial-entropy activity."
+  },
+  "clarifies_record": "data/yang_mills_cube_cluster_2026_10_30.json",
+  "clarifies_field": "notation.P",
+  "corrected_notation_P": "For arbitrary continuous sources, P is WilsonPhysicalVariance.step, the normalized raw transition built using the original physical ground and eigenvalue. For gauge-invariant sources it agrees with the full gauge-averaged Wilson transition by step_full; the new corollaries state this hypothesis explicitly.",
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. No mass gap or continuum construction is claimed.",
+    "For arbitrary continuous sources, the predecessor estimates use the normalized raw step and its variance loss, with the original physical ground and eigenvalue. Equality to the full gauge-averaged step is asserted only with the explicit gauge-invariance hypothesis.",
+    "The new full-transfer corollaries retain the source-loss term. They do not promote a rare-event probability to an arbitrary-source bound without loss.",
+    "The rooted connected-response/interaction count, distant mixed-ground sum or signed physical replacement and independent global coercivity remain unproved.",
+    "Physical scaling, multiscale stability and nonzero continuum survival remain open."
+  ],
+  "audit": "data/yang_mills_physical_cluster_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

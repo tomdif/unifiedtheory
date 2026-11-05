@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "status": "weighted_clustering_no_clay_claim",
+  "scope": "Weighted mixed-interaction budgets are preserved at every finite depth of exact singleton Gibbs elimination. Actual random-site conditional covariance, weighted oscillation iteration, stationarity and a geometric telescoping limit prove a Gibbs covariance bound with no number-of-sites or color-count factor. A constructed least periodic coordinate radius supplies the Wilson geometry. For actual SU(2) Wilson input, the initial exponential row budget is at most 36*beta*exp(m); when this is <1 and beta,m>=0, every finite induced stage law satisfies |Cov(F,G)| <= |S|*norm(F)*norm(G)*exp(-m*R)/(1-36*beta*exp(m)) for observables supported on S,T separated by periodic radius R. No generated-support coloring or stagewise smallness premise is used. Weak-coupling entry, the physical-scale coarse representation, a nonzero continuum limit and the physical mass gap remain unproved.",
+  "weighted_elimination": {
+    "assumptions": "c>=0, zero diagonal, w>=0, w(i,j)<=w(i,e)*w(e,j), initial weighted rows<=alpha<=1",
+    "calculation": "w*step(c) <= step(w*c); the existing removed-column row accounting preserves alpha at every finite depth.",
+    "spatial_weights": "w(i,j)=exp(m*d(i,j)) for m>=0 and a distance satisfying the triangle inequality."
+  },
+  "actual_covariance": {
+    "one_step": "Actual singleton conditional covariance is at most delta_i(F)*delta_i(G)/4, proved with the compact Gibbs covariance theorem. The random-site average divides its sum by N.",
+    "iteration": "Weighted oscillations contract at q_N=1-(1-alpha)/N. Stationarity gives a vanishing covariance remainder, and geometric telescoping cancels the site count N.",
+    "bound": "If sum_j C(i,j)u(j)<=alpha*u(i) and delta_i(G)<=b*u(i), then |Cov(F,G)|<=b*sum_i u(i)*delta_i(F)/(4*(1-alpha)); an ordinary row bound<=alpha supplies convergence.",
+    "localization": "For u(i)=exp(-m*r(i)), with r a distance-to-support potential vanishing on T and at least R on S, the bound is |S|*norm(F)*norm(G)*exp(-m*R)/(1-alpha)."
+  },
+  "wilson_specialization": {
+    "geometry": "The least natural radius in PeriodicSupportRelation.Close is constructed; symmetry, triangle inequality, actual plaquette diameter<=1 and distance to a nonempty support are proved. Periodic wrapping is retained.",
+    "initial_budget": "The actual Wilson seed vanishes at periodic distance>1, so its exponential row budget is <=36*beta*exp(m).",
+    "all_stages": "For beta,m>=0 and 36*beta*exp(m)<1, the covariance estimate holds for every finite singleton-elimination schedule and its constructed Wilson stageLaw.",
+    "eliminated_variables": "The stage action is represented on the full product with inactive integrated variables. Retained-coordinate observables see the genuine retained marginal. Uniform bounds on eliminated-source responses are not asserted."
+  },
+  "new_declaration_count": 43,
+  "predecessor_declaration_count": 7058,
+  "remaining": [
+    "Establish a small exponentially weighted coarse mixed budget uniformly along an independently justified weak-coupling trajectory beta(a)->infinity; the present theorem only preserves initial smallness.",
+    "Relate the exact elimination tower to a gauge-covariant coarse representation at a fixed physical scale, including large fields, boundary conditions, source responses and renormalization.",
+    "Control the weights and localized source norms on the surviving observables uniformly at that physical scale; the result does not identify random-site update time with physical transfer time.",
+    "Prove the original transfer fixed-physical-slab contraction and compatible all-order continuum bounds, together with a nonzero finite-energy excitation on the same trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true,
+  "next_entry_target": {
+    "scale": "Choose a fixed physical coarse spacing ell>0, rather than a fixed number of fine lattice steps.",
+    "estimate": "For the identified actual coarse action, prove a uniform bound on sum_j exp(m*d_coarse(i,j)) times one quarter of the full mixed action oscillation, with a common alpha<1 along beta(a)->infinity.",
+    "source_bridge": "At the same scale, prove uniform norm/localization bounds for conditional responses of the intended physical observables and bind coarse time separation to the original transfer powers.",
+    "large_field_issue": "A global worst-boundary supremum may be too strong. If only good-block estimates are attainable, rare bad-block probabilities and their correlated clusters must be incorporated into a new covariance comparison theorem. The present proof does not perform that step.",
+    "balaban_scope": "The earlier Ba\u0142aban literature audit supplies ultraviolet stability and large-field bookkeeping as research inputs; it does not supply the missing common weighted contraction margin or its physical-scale source dictionary."
+  }
+}

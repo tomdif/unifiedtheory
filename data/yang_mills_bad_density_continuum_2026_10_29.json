@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-29",
+  "claim_status": "framework_only_no_clay_certificate",
+  "scope": "Actual SU2 Wilson full-lattice remainder-density tails and shrinking-sector removal in the continuum. Exact incidence counting gives mean(sqrt(R_e))<=3*sqrt(beta)*energyDensity. The actual Haar partition bound gives P(mean(sqrt(R_e))>=t)<=exp(-sqrt(beta)*t*V) when q(beta)<=3*t, where q=18*sqrt(beta)*energyEnvelope(beta). The explicit threshold t_beta=q(beta)/3+1/sqrt(beta) tends to zero and satisfies P(mean(sqrt(R_e))>=t_beta)<=exp(-V). Under a>0 tending to zero, beta tending to infinity, and noncollapsing physical side length N*a>=1 eventually, this sector contributes zero to every fixed-order actual mean-centered a^-4 Wilson correlation on every full Schwartz test. The proof also constructs cutoff-uniform continuous Schwartz seminorms for this exceptional sector on positive-coupling sequences with noncollapsing boxes. The full hierarchy differs from its unnormalized restriction to the complementary shrinking-density sector by a quantity tending to zero. This does not prove convergence of the complementary sector, remove its contact divergences, control sparse bad clusters, or construct a nonzero continuum theory.",
+  "verification": {
+    "new_modules": [
+      "UnifiedTheory.Clay.YangMills.WilsonRemainderDensityTail",
+      "UnifiedTheory.Clay.YangMills.WilsonBadDensityContinuum",
+      "UnifiedTheory.Clay.YangMills.WilsonBadDensityHierarchy"
+    ],
+    "new_declarations": 42,
+    "retained_declarations": 6826,
+    "result_location": "data/yang_mills_bad_density_continuum_audit.json",
+    "root_build_claimed": false
+  },
+  "continuum_attempt": {
+    "requested_target": "Nontrivial continuum limit of the actual renormalized four-dimensional Yang-Mills Wilson family.",
+    "proved_reduction": "The full actual mean-centered a^-4 hierarchy has the same possible distributional limits as its unnormalized restriction to the sector with mean(sqrt(R_e))<q(beta)/3+1/sqrt(beta). The deleted sector converges to zero on every fixed-order full Schwartz test.",
+    "derived_uniform_input": "The exceptional sector has derived cutoff-uniform continuous Schwartz seminorms at every order. The corresponding input for the full or retained renormalized hierarchy is not proved.",
+    "why_this_is_not_the_continuum_limit": "Small average remainder permits sparse large-field regions and correlated typical configurations. No scale-appropriate covariance bounds, compatible contact renormalization, higher retained-sector compactness, nonzero reflected endpoint, or physical coupling trajectory have been constructed here.",
+    "conditional_existence_theorem": "UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.exists_hierarchy_limit",
+    "second_order_reduction": "UnifiedTheory.Clay.YangMills.WilsonExtensiveSchedule.repaired_limit_iff_exhaustedCoarseSum_limit",
+    "status": "not_proved"
+  },
+  "remaining": [
+    "Establish bounds for correlations and generated interactions on the complementary sector where mean(sqrt(R_e))<t_beta. Small global density permits sparse bad clusters and does not control long-distance correlations.",
+    "Construct compatible physical contact counterterms and prove cutoff-uniform continuous Schwartz seminorm bounds at every order for the retained sector on one physically justified trajectory. The derived seminorms in this batch cover only the exceptional sector.",
+    "Prove convergence or suitable compactness of the actual exhaustedCoarseSum and compatible higher renormalized correlations. Sector removal alone proves neither.",
+    "Prove a strictly positive separated reflected limit on the same trajectory; a zero sector limit is not a nontrivial Yang-Mills candidate.",
+    "Construct the nontrivial continuum Yang-Mills theory, its required quantum fields and symmetries, and a finite positive physical mass gap. All twelve full Clay requirements remain open."
+  ]
+}

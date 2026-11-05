@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 30 fresh declarations established the linear-period full physical seam bound on the identity input gauge orbit, 9590 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: all-input full physical seam bounds with a continuous gauge-minimized penalty and an actual source-weighted response bound",
+  "scope": "The distributed-seam comparison is extended from the identity input gauge orbit to every input and output of the original full physical Wilson transition. For a fixed rotation q and fixed gauge h, the actual opposite fields gauge_h(Ju) and gauge_(h inverse)(Ju) have exactly the same full kernel and unchanged spatial potential. Their mismatch with q*u and q inverse*u is retained as the sum of two actual link inputCosts. The kinetic second difference is at most twice cost(q) plus twice this mismatch, and the temporal Haar midpoint inequality gives exp(-beta*(cost(q)+mismatch(u)))*K(u,v)<=K(Ju,v). Mismatch is center-invariant, yielding the reverse bound. The explicit distributed root has cost<=pi^2*n, so the full physical likelihood lies in exp(plus or minus beta*(pi^2*n+rootMismatch(u))) for all inputs and outputs, with the original ground retained. Every common-axis input has zero mismatch without a flatness requirement. Compactness constructs an attained minimum delta(u) of rootMismatch over spatial gauge representatives. This minimum value, not the chosen minimizer, is proved continuous, gauge invariant and center invariant. It vanishes on every orbit with a representative commuting linkwise with the root. The same likelihood bound holds with delta(u); the optimizer only evaluates an invariant transition and performs no adaptive change of integration variables. For each epsilon>0 the open set delta<epsilon has positive actual ground-law measure at every finite cutoff, with no quantitative uniform lower mass supplied. For physical sources, the full likelihood has mean one under the actual raw row law and reproduces the original full transition response. Its variance is at most (L(u)-1)^2/L(u), L(u)=exp(beta*(pi^2*n+delta(u))). Clipping this coefficient by the earlier global raw coefficient gives a continuous physical weight W(u). The same whole-seam energy now satisfies E_J(Pf)<=integral W(u)*Var_row_u(f) d pi(u)<=C_raw*loss(f). The exact odd-sector coercivity gives 4*Var(Pf)<=that source-weighted integral. If that integral is at most C*loss(f), with C>=0, the actual physical odd-sector contraction rate is C/(4+C). The weighted bound is a sufficient hypothesis, not a newly proved uniform estimate. In particular no unweighted mean penalty is substituted, the positive-measure neighborhood has no uniform probability estimate, and the remaining beta*pi^2*n cost still diverges on many trajectories even at zero mismatch. The complete distant mixed-ground sum, center-even coercivity, retained propagation, bad-bridge complement, cutoff-uniform physical gap, nonzero continuum construction and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry",
+    "UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison",
+    "UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse"
+  ],
+  "new_declarations": 66,
+  "retained_declarations": 9590,
+  "cumulative_declarations": 9656,
+  "notation": {
+    "J": "The original central seam involution in one spatial direction.",
+    "rawMismatch": "inputCost(gauge_h(Ju),q*u)+inputCost(gauge_(h inverse)(Ju),q inverse*u), with fixed q and h.",
+    "delta": "The attained minimum over spatial gauge representatives of the explicit distributed-root mismatch.",
+    "T": "The original full gauge-averaged physical transition, normalized with its actual ground and eigenvalue.",
+    "P": "The normalized raw step, equal to the full physical transition on the explicitly gauge-invariant source.",
+    "pi": "The original stationary ground law.",
+    "L(u)": "exp(beta*(pi^2*n+delta(u)))",
+    "C_raw": "(exp(4*beta*n^2)-1)^2/exp(4*beta*n^2)",
+    "W(u)": "min(C_raw,(L(u)-1)^2/L(u))"
+  },
+  "proved_bounds": [
+    "For every input u and output v, exp(-beta*(pi^2*n+delta(u)))<=T(Ju,v)/T(u,v)<=exp(beta*(pi^2*n+delta(u))).",
+    "delta is nonnegative, continuous, gauge invariant, center invariant, and zero on any orbit with a representative commuting linkwise with the chosen root.",
+    "For epsilon>0, the open small-penalty region delta<epsilon has positive actual ground measure at each finite cutoff, without a quantitative uniform estimate.",
+    "For continuous physical f, E_J(Pf)<=integral W(u)*Var_row_u(f) d pi(u)<=C_raw*loss(f).",
+    "For center-odd continuous physical f, 4*Var(Pf)<=integral W(u)*Var_row_u(f) d pi(u).",
+    "If the source-weighted integral is <=C*loss(f), C>=0, then Var(Pf)<=C/(4+C)*Var(f)."
+  ],
+  "next_attack": [
+    "Estimate the actual source-weighted physical likelihood or score variance under the original ground law; do not replace it with an unweighted mean mismatch.",
+    "Improve the remaining beta*n cost using averaged physical-score or multiscale estimates, retaining the physical clock and scale trajectory.",
+    "Quantify retained-field noncommutation and global holonomy modes without treating the bad-bridge complement as entirely small-field.",
+    "Bind retained propagation to the finite-boundary connected covariance and the proved bad-bridge response tails, while supplying center-even/global coercivity.",
+    "Preserve independent physical scaling and nonzero continuum survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no cutoff-uniform physical mass gap or nonzero continuum construction is proved.",
+    "The all-input comparison retains an explicit noncommutation penalty. No small weighted ground-law average of its coefficient is proved.",
+    "The optimized penalty is continuous and has positive-measure small sublevel sets at each finite cutoff, but no quantitative lower mass uniform in volume or coupling is established.",
+    "The needed bound is integral W(u)*Var_row_u(f) d pi(u)<=C*loss(f), for the actual source. An unweighted mean of W or the penalty does not imply this bound.",
+    "Even zero penalty leaves the exponent beta*pi^2*n. Controlling only noncommutation cannot by itself make this pointwise coefficient cutoff-uniform. Source-weighted physical-score or multiscale estimates and physical time scaling remain necessary.",
+    "The odd-sector conditional rate C/(4+C) is proved only from the explicitly stated weighted estimate. No improved cutoff-uniform C is supplied, and the center-even sector is retained.",
+    "A continuous minimum value is proved; continuity of a chosen minimizer is not. The optimizer evaluates an invariant kernel and authorizes no adaptive Haar substitution.",
+    "Zero penalty is proved for inputs with a representative commuting linkwise with the chosen root, including nonflat common-axis fields. No classification of all flat holonomy moduli is supplied.",
+    "The whole-seam response is not identified with the earlier local finite-rotation energy. The complete distant mixed logarithmic ground sum, retained propagation and bad-bridge-complement response remain open.",
+    "Multiscale stability, a compatible physical coupling trajectory, normalized reflected-state compactness and nonzero renormalized continuum survival remain separate obligations."
+  ],
+  "verification_report": "data/yang_mills_seam_penalty_audit.json",
+  "root_build_checked": false
+}

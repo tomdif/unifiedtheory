@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual connected finite-boundary rectangle and depth-uniform per-pair bound checked; summability and coercivity remained open",
+  "current_goal_turn_classification": "progress: quantitative defect-sensitive action curvature for the actual Wilson middle law; no global covariance or coercivity obligation closed",
+  "scope": "The negative symmetric second difference of the actual SU(2) spatial Wilson action is controlled by the actual plaquette defects times the adjacent squared link-rotation displacements. If every spatial plaquette defect is at most delta, the bound is -32*delta*cost(q), with no volume factor. The temporal second difference is computed exactly as sum_e norm(q_e-1)^2*(2-norm(u_e-v_e)^2). For the already constructed exact middle Wilson law this yields action second difference at least beta*(4-eta_v-eta_w-32*delta)*cost(q). Under delta<=1/32 and squared endpoint-link distances<=1/2, it is at least 2*beta*cost(q), and the actual normalized log density has the opposite upper bound. These are pointwise finite-difference curvature estimates on the stated small-field sector, not global variance coercivity, spatial covariance decay, or control of the sector complement. All twelve full Clay obligations remain open. Exact antipodal endpoints cancel all middle-dependent temporal action, leaving beta*V plus a constant. On even spatial periods, every field and its pointwise antipode are related by a proved alternating central gauge transformation, so the actual physical endpoint source factor vanishes there. This exact cancellation supplies no uniform neighborhood estimate.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature",
+    "UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature",
+    "UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge"
+  ],
+  "new_declarations": 22,
+  "retained_declarations": 7943,
+  "cumulative_declarations": 7965,
+  "formal_results": {
+    "quaternion_identity": "For E(a)=2-Re char(a)=norm(a-1)^2, E(ap)+E(am)-2E(a)=norm(ap-a)^2+norm(am-a)^2+2*inner(a-1,ap+am-2a). The negative remainder carries the actual base defect.",
+    "local_spatial_remainder": "Delta_q^2 V(u)>=-8*sum_p norm(U_p-1)*sum_(four occurrences e in p) norm(q_e-1)^2. Repeated edge occurrences are permitted; the existing finite-word variation theorem and exact incidence count are used.",
+    "uniform_spatial": "If norm(U_p-1)<=delta for all spatial plaquettes and delta>=0, Delta_q^2 V(u)>=-32*delta*cost(q).",
+    "exact_temporal": "Delta_q^2 T(u,v)=sum_e norm(q_e-1)^2*(2-norm(u_e-v_e)^2).",
+    "actual_middle": "For A_beta(v,w;u)=beta*V(u)+beta*T(u,v)+beta*T(u,w), Delta_q^2 A>=beta*(4-eta_v-eta_w-32*delta)*cost(q) when each squared relative link distance is bounded by the corresponding eta.",
+    "explicit_sector": "Taking delta=1/32, eta_v=eta_w=1/2 gives Delta_q^2 A>=2*beta*cost(q) for beta>=0 and every simultaneous rotation q.",
+    "normalized_density": "The true middle density rho satisfies log rho(q*u)+log rho(q^(-1)*u)-2*log rho(u)<=-2*beta*cost(q) under those same conditions; the actual conditional normalizer cancels exactly.",
+    "antipodal_action": "For every v,u, A_beta(v,-v;u)=beta*V(u)+4*beta*N_links. The pinning term becomes constant; squared distances to v and -v sum to 4 at each link.",
+    "antipodal_physical_source": "If 2 divides the spatial period, an explicit central alternating gauge sends every v to -v. Hence F(-v)=F(v) for all gauge-invariant F, and endpointWeight(v,-v)*(F(v)-F(-v))^2=0 exactly."
+  },
+  "next_attack": {
+    "use": "Use the local plaquette-defect remainder to retain spatial support and avoid charging the maximum defect to every link when bad regions are sparse.",
+    "required_small_field_step": "Prove a functional inequality for the actual conditional law on a specified small-field domain, including the domain geometry and boundary treatment. Do not infer a global Poincare constant from the pointwise finite-difference estimate.",
+    "required_complement_step": "Control the defect terms and endpoint-separation failures with the actual variance-pair source weight endpointWeight(v,w)*(f(v)-f(w))^2. An unweighted rare-event estimate is insufficient for arbitrary physical sources.",
+    "required_spatial_step": "Use such estimates to control the actual connected boundary insertion covariance with summable spatial decay or a justified signed collective bound.",
+    "unchanged_lower_target": "The original central-slice direct Haar variance comparison must still be proved with constants compatible with physical scaling. Middle action curvature is not a replacement statement for that goal.",
+    "endpoint_geometry": "Uniform endpoint pinning is unavailable: opposite endpoints cancel it exactly. On even periods their physical source weight vanishes, so investigate a quantitative source-weighted estimate near such gauge-equivalent pairs. Exact cancellation at the pairs does not control a neighborhood or arbitrary observable moduli."
+  },
+  "not_inferred": [
+    "The positive action second-difference bound requires the stated plaquette and endpoint-link conditions at the base middle configuration. Their occurrence is not proved uniformly under every endpoint-conditioned law.",
+    "Pointwise small-field action curvature is not the global direct Haar variance comparison A required by the physical-transfer contraction theorem. No such comparison is asserted.",
+    "No spatially summable bound on the actual connected boundary covariance or distant mixed-ground sum follows from this result alone.",
+    "A valid extension must prove a functional inequality on an appropriate small-field domain, handle its geometry and boundary, and control the excluded fields with the actual source-weighted endpoint law. Probability of a bad set alone does not bound arbitrary source-weighted contributions.",
+    "The source-weighted middle disintegration retains its correlated endpoints. This turn does not replace them with independent or flat endpoints, or insert a ground-state approximation.",
+    "The physical coupling trajectory, compatible continuum estimates, surviving nonzero fields and all twelve full Clay requirements remain open.",
+    "The antipodal gauge equivalence requires even spatial period. Its exact source cancellation is not a bound on a neighborhood, a variance comparison, or a statement of a uniform modulus for arbitrary continuous physical observables."
+  ],
+  "audit": "data/yang_mills_small_field_curvature_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

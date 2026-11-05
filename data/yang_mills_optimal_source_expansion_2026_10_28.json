@@ -1,0 +1,183 @@
+{
+  "title": "An elementary optimally truncated SU(2) first-block source expansion",
+  "date": "2026-10-28",
+  "verification_scope": "natural mathematics independently reviewed; not Lean-certified",
+  "status": {
+    "proved_scope": "A finite-volume, first-block approximation to the exact conditional mean of a weighted Wilson plaquette source, including its full fixed-physical-smear cardinality and an explicit rescaling error estimate.",
+    "independent_review": "The full_transfer_audit agent independently checked the Gamma Taylor estimates, formal coefficient recurrence, factorial convolution bound, exact shifted-truncation quotient identity, optimal truncation constants, bounded anisotropic clipping, and the 2048-color joint bad-count aggregation.",
+    "finite_expansion_sufficient_logarithmic_branch": "For beta = b log(1/a) + O(log log(1/a)), b > 1/2 makes the finite inverse-staple expansion's first-block conditional-mean approximation error tend to zero in L2, using cutoff r0 = 2 and the finite-volume chessboard input below.",
+    "hybrid_sufficient_logarithmic_branch": "For every b > 1/6, a separate hybrid approximation has a first-block conditional-mean error tending to zero even in sup norm. It retains the exact conditional response on a nonperturbative staple sector. That sector is not shown negligible and its retained correlations are not controlled.",
+    "conservative_sufficient_branch": "The simpler sum of single-link L2 bounds gives b > 5/6, using cutoff r0 = 6/5.",
+    "continuum_status": "All twelve substantive continuum obligations remain open. Neither sufficient branch is identified with the physical coupling trajectory. No positive retained Osterwalder-Schrader norm, continuum limit, nontriviality theorem, or mass gap is proved.",
+    "no_global_build": true,
+    "new_artifact_only": true
+  },
+  "notation_and_assumptions": {
+    "lattice": "An unfixed SU(2) Wilson theory on the four-dimensional periodic lattice of side n = 4 * 2^k. The improved finite-color bound uses n divisible by 8; this holds eventually in the stated dyadic continuum sequence. The physical torus side is fixed and its lattice spacing is a = physical_side / n.",
+    "action_normalization": "a_p(U) = 2 - Re Tr(U_p) is the unnormalized fundamental-trace plaquette defect, in [0,4]. S0 = sum_p a_p. The probability measure is d mu_beta = Z_beta^{-1} exp(-beta S0) dHaar. beta >= 1.",
+    "selected_links": "Fix a direction mu and one parity of the sum of the other three coordinates. Select the mu-directed links with that transverse parity. Each mu-nu plaquette contains exactly one selected link, and every other plaquette contains none. Conditional on the retained links, the selected-link Wilson integrals factor exactly.",
+    "one_link_staples": "For a selected link, identify its group variable with q in S^3. Orient its six exterior staple quaternions v_p in S^3 so that Re Tr(U_p) = 2 q dot v_p. Set A = sum_{p=1}^6 v_p, r = |A| in [0,6], and kappa = 2 beta r. Inverting a plaquette orientation or moving an inverse from the link to a staple preserves this representation because SU(2) traces are real and inversion preserves the scalar part.",
+    "cutoff": "Fix 0 < r0 < 6. Require beta >= max(1, 3/(4 r0)), so kappa0 = 2 beta r0 >= 3/2. Define r_c = max(r,r0) and N = floor(2 kappa0) = floor(4 beta r0). Both optimized choices r0 = 6/5 and r0 = 2 satisfy the requirement for every beta >= 1.",
+    "source_weights": "The six source weights f_p are arbitrary deterministic real numbers. They need not be equal, isotropic, or slowly varying. Thus the formulas cover a fixed-plane source, where only the corresponding two plaquettes of a star can have nonzero weights.",
+    "norm": "All L2 norms are under the actual finite-volume Wilson measure or its exact retained marginal; these give the same norm for retained-measurable random variables."
+  },
+  "one_link_integral": {
+    "conditional_law": "A Haar-invariant quaternion rotation sends A/r to the scalar direction when r > 0. The conditional density is proportional to exp(kappa q0). The conditional action excess above its minimum is E = kappa (1-q0). When r = 0 the conditional measure is Haar, E = 0, and the formulas below use m(0) = h(0) = 0.",
+    "haar_marginal": "Under Haar probability on SU(2), q0 has density (2/pi) sqrt(1-q0^2) on [-1,1]. Consequently E has density proportional to exp(-u) u^(1/2) sqrt((2-u/kappa)_+) on [0,infinity).",
+    "gamma_representation": "Let gamma be Gamma(alpha, rate 1), alpha = 3/2, and let (alpha)_j denote its jth moment. Put F_kappa(u) = sqrt((1-u/(2 kappa))_+), D_kappa = E_gamma[F_kappa], and M_kappa = E_gamma[u F_kappa]. Then h(kappa) = E[E] = M_kappa / D_kappa. Also m(kappa) = E[q0] and h(kappa) = kappa (1-m(kappa)). The symbol M_kappa here is a numerator integral, not the number of selected links.",
+    "gamma_domination_proof": [
+      "For an increasing integrable function f and a nonnegative decreasing function g, 2 Cov_gamma(f,g) equals the double integral of (f(u)-f(v))(g(u)-g(v)) against dgamma(u) dgamma(v). The integrand is nonpositive. Therefore E_gamma[fg]/E_gamma[g] <= E_gamma[f] whenever the expressions exist and E_gamma[g] > 0.",
+      "Apply this to g = F_kappa. It gives 0 <= h(kappa) <= 3/2, E[E^2] <= 15/4, and E[exp(t E)] <= (1-t)^(-3/2) for 0 <= t < 1. The last Gamma identity follows directly by scaling u to (1-t)u in its defining integral.",
+      "The symmetry of the Haar q0 density also gives m(kappa) >= 0: pairing x and -x leaves a nonnegative numerator proportional to x sinh(kappa x) for x >= 0. Thus 0 <= m(kappa) <= 1."
+    ]
+  },
+  "elementary_gamma_taylor_estimates": {
+    "coefficients": "Set a_j = (-1)^j binom(1/2,j), d_j = a_j (alpha)_j / 2^j, and e_j = (alpha+j) d_j, with alpha = 3/2. Here a_0 = 1, a_j < 0 for j >= 1, and sum_{j>=1}|a_j| = 1. The final identity follows from the binomial expansion on [0,1) and monotone convergence as x tends to 1.",
+    "finite_truncations": "For an integer ell >= 1, D^[ell](kappa) = sum_{j=0}^{ell-1} d_j kappa^(-j), and M^[ell](kappa) = sum_{j=0}^{ell-1} e_j kappa^(-j). These are finite polynomials; no convergence of the resulting inverse-kappa series is assumed.",
+    "pointwise_remainder_proof": [
+      "Let T_[ell-1](x) = sum_{j<ell} a_j x^j. For 0 <= x <= 1, |sqrt(1-x)-T_[ell-1](x)| = sum_{j>=ell}|a_j|x^j <= x^ell.",
+      "For x >= 1, sqrt((1-x)_+) = 0 and |T_[ell-1](x)| <= 1 + sum_{1<=j<ell}|a_j|x^j <= 2 x^ell.",
+      "Set x = u/(2 kappa), split the Gamma integral into x <= 1 and x > 1, and bound each partial moment by the full Gamma moment. This proves the following estimates with the deliberately conservative constant 3."
+    ],
+    "denominator_remainder": "|D_kappa - D^[ell](kappa)| <= 3 (alpha)_ell / (2 kappa)^ell.",
+    "numerator_remainder": "|M_kappa - M^[ell](kappa)| <= 3 (alpha)_(ell+1) / (2 kappa)^ell.",
+    "denominator_lower_bound": "For every x >= 0, sqrt((1-x)_+) >= 1-x. Integrating gives D_kappa >= 1 - 3/(4 kappa), hence D_kappa >= 1/2 for kappa >= 3/2. This is the only division estimate needed below."
+  },
+  "formal_quotient_coefficients": {
+    "definition": "Define b_j by the formal power-series identity (sum_{j>=0} d_j z^j)(sum_{j>=0} b_j z^j) = sum_{j>=0} e_j z^j. This is well-defined coefficient algebra because d_0 = 1. It makes no assertion that any infinite series converges at a nonzero z.",
+    "direct_recurrence": "b_0 = alpha = 3/2 and, for n >= 1, b_n = n d_n - sum_{i=1}^{n-1} b_i d_(n-i).",
+    "denominator_recurrence": "2 n d_n = [n(n-1)-3/4] d_(n-1), for n >= 1.",
+    "formal_differential_derivation": [
+      "Write D(z) = sum d_j z^j and H(z) = sum b_j z^j. The denominator recurrence is exactly z^2 D'' + (2z-2)D' - (3/4)D = 0.",
+      "Since e_j = (alpha+j)d_j, the numerator series is alpha D + zD'. Thus H = alpha + zD'/D as a formal identity.",
+      "Substituting L = zD'/D = H-alpha into the denominator equation gives zH' + H^2 - 2H + (3-2H)/z = 0. The last quotient is a valid formal series because the constant coefficient of 3-2H is zero.",
+      "Comparing coefficients yields b_1 = -3/8 and 2 b_(n+1) = (n+1)b_n + sum_{i=1}^{n-1} b_i b_(n-i) for n >= 1."
+    ],
+    "first_coefficients": ["b_0 = 3/2", "b_1 = -3/8", "b_2 = -3/8", "b_3 = -63/128", "b_4 = -27/32"],
+    "factorial_bound": "For n >= 1, |b_n| <= (n+1)! / 2^(n+1). This bound is deliberately NOT asserted for n = 0: b_0 = 3/2 exceeds 1!/2.",
+    "factorial_convolution_proof": [
+      "For n >= 2 and 1 <= i <= n-1, (i+1)!(n-i+1)! = (n+2)! / binom(n+2,i+1). Every binomial coefficient in this range is at least binom(n+2,2).",
+      "There are n-1 terms, so sum_{i=1}^{n-1}(i+1)!(n-i+1)! <= 2(n-1)n! <= 2(n+1)!. For n = 1 the sum is empty and the inequality is immediate.",
+      "The coefficient bound holds at n = 1 because 3/8 <= 1/2. Assuming it through n, the recurrence bounds |b_(n+1)| by (n+1)(n+1)!/2^(n+2) plus the preceding convolution divided by 2^(n+3). The second term is at most (n+1)!/2^(n+2), and their sum is (n+2)!/2^(n+2), completing induction."
+    ]
+  },
+  "exact_quotient_remainder": {
+    "approximant": "P_N(kappa) = sum_{i=0}^{N-1} b_i kappa^(-i), for integer N >= 1.",
+    "shifted_denominator_identity": "D_kappa P_N(kappa) - M_kappa = sum_{i=0}^{N-1} b_i kappa^(-i) [D_kappa - D^[N-i](kappa)] + [M^[N](kappa) - M_kappa].",
+    "identity_proof": "Expand sum_{i=0}^{N-1} b_i kappa^(-i) D^[N-i](kappa). The summation indices satisfy i+j < N, so this is exactly the formal product truncated to total degree less than N. By the definition of b, it equals M^[N](kappa). Subtract this finite identity from D_kappa P_N(kappa) - M_kappa. This shifted-truncation argument includes all terms and does not discard any higher-degree cross-products.",
+    "predivision_bound": "The Gamma Taylor estimates give |D_kappa P_N - M_kappa| <= 3/(2 kappa)^N times [alpha (alpha)_N + sum_{i=1}^{N-1} |b_i| 2^i (alpha)_(N-i) + (alpha)_(N+1)].",
+    "bracket_bound_proof": [
+      "Because alpha = 3/2, the factorwise inequality (alpha)_j <= (j+1)! holds for every nonnegative integer j.",
+      "The i = 0 term is at most (3/2)(N+1)!.",
+      "For i >= 1, |b_i|2^i <= (i+1)!/2. The middle sum is therefore at most one half of sum_{i=1}^{N-1}(i+1)!(N-i+1)!, which the factorial convolution bound makes at most (N+1)!.",
+      "The final term is at most (N+2)! = (N+2)(N+1)!. The whole bracket is at most (N+9/2)(N+1)!; the three coefficients are 3/2, 1, and N+2."
+    ],
+    "theorem": "For kappa >= 3/2 and every integer N >= 1, |h(kappa)-P_N(kappa)| <= 6 (N+9/2)(N+1)! / (2 kappa)^N. This follows by dividing the predivision bound by D_kappa >= 1/2."
+  },
+  "uniform_optimal_truncation": {
+    "choice": "Fix kappa0 >= 3/2, set N = floor(2 kappa0), and use this same N for every kappa >= kappa0.",
+    "factorial_estimate": "Integrating the increasing function log x gives log(N!) <= integral_1^N log x dx + log N = N log N - N + 1 + log N. Therefore N! <= e N (N/e)^N.",
+    "uniform_error_proof": "Since N <= 2 kappa0 <= 2 kappa, (N+1)!/(2 kappa)^N <= e N(N+1)e^(-N). Since N >= 2 kappa0 - 1, the quotient remainder is at most 6 e^2 (N+9/2)N(N+1) exp(-2 kappa0).",
+    "definition_of_error": "Eopt(kappa0) = 6 e^2 (N+9/2)N(N+1) exp(-2 kappa0), where N = floor(2 kappa0). Thus sup_{kappa>=kappa0}|h(kappa)-P_N(kappa)| <= Eopt(kappa0).",
+    "wilson_scaling": "With kappa0 = 2 beta r0 and N = floor(4 beta r0), Eopt is an explicit cubic polynomial bound in beta times exp(-4 beta r0).",
+    "bounded_approximant_proof": [
+      "For 1 <= i < N let t_i = (i+1)!/(2^(i+1) kappa0^i). Then t_1 = 1/(2 kappa0), and t_(i+1)/t_i = (i+2)/(2 kappa0) <= 1 for i <= N-2.",
+      "Consequently sum_{i=1}^{N-1} t_i <= (N-1)/(2 kappa0) <= 1. The factorial coefficient estimate and kappa >= kappa0 give |P_N(kappa)| <= 3/2 + 1 = 5/2.",
+      "Evaluating at 2 beta max(r,r0) therefore bounds the approximant even on the small-staple event. No singular inverse power of an unclipped r is left in the source approximant below."
+    ]
+  },
+  "weighted_actual_source": {
+    "definitions": "O_f = sum_{p=1}^6 f_p a_p; fbar = (1/6)sum_p f_p; D_f = sum_p(f_p-fbar)v_p; F = max_p|f_p|; D1 = sum_p|f_p-fbar|. Cauchy-Schwarz and sum_p(f_p-fbar)^2 <= 6F^2 give D1 <= 6F.",
+    "exact_mean": "For r > 0, Y_f = E[O_f | exterior] = 12 fbar - 2 m(2 beta r) (A/r) dot (fbar A + D_f). At r = 0, Y_f = 12 fbar. This is a continuous conditional-mean function of the staple data.",
+    "unclipped_minimum_source": "For r > 0 define G_f = fbar(12-2r) - 2(A/r) dot D_f. It is the source evaluated at the minimizing link q = A/r, but can be discontinuous as r tends to zero.",
+    "continuous_coarse_source": "Define Gtilde_f = fbar(12-2r) - 2(A/r_c) dot D_f, where r_c = max(r,r0). At r = 0 the second term is zero. For r > 0 put s = r/r_c. Then Gtilde_f = s G_f + (1-s)fbar(12-2r). Since G_f is a weighted sum of nonnegative minimizing plaquette defects totaling 12-2r, |Gtilde_f| <= F(12-2r) <= 12F.",
+    "good_region_identity": "On r >= r0, Y_f = G_f + beta^(-1) h(2 beta r) [fbar + (A dot D_f)/r^2]. This follows by substituting 1-m = h/(2 beta r) into the exact mean.",
+    "finite_source_approximant": "C_(N,f) = Gtilde_f + beta^(-1) P_N(2 beta r_c) [fbar + (A dot D_f)/r_c^2]. It is continuous in the retained links, is finite for r = 0, and treats all six source weights separately.",
+    "good_region_bound": "On r >= r0, |Y_f-C_(N,f)| <= beta^(-1)(|fbar| + D1/r0) Eopt(2 beta r0) <= F K(beta,r0), where K(beta,r0) = beta^(-1)(1+6/r0) Eopt(2 beta r0).",
+    "bad_region_bound": "On r < r0, |Y_f| <= F E[sum_p a_p | exterior] = F(12-2r m) <= 12F. Also |Gtilde_f| <= 12F, |P_N(2 beta r_c)| <= 5/2, and |A dot D_f|/r_c^2 <= D1/r0. For beta >= 1, |Y_f-C_(N,f)| <= B(r0)F, where B(r0) = 24 + (5/2)(1+6/r0).",
+    "combined_pointwise_bound": "|Y_f-C_(N,f)| <= K(beta,r0) F + B(r0) F 1_{r<r0}. The first term is a valid upper bound on the good-region error, and the second pays the entire bad-region error."
+  },
+  "explicit_local_operator_expansion": {
+    "common_vacuum": "Define the deterministic coefficient v_N(beta) = beta^(-1)P_N(12 beta). Then the common vacuum contribution to the local source is v_N(beta) fbar.",
+    "expanded_approximant": "C_(N,f) = Gtilde_f + v_N(beta) fbar + (3/(2 beta))(A dot D_f) r_c^(-2) + sum_{j=1}^{N-1} [b_j/(2^j beta^(j+1))] { fbar[r_c^(-j)-6^(-j)] + (A dot D_f) r_c^(-j-2) }.",
+    "algebra_check": "Expand P_N in the defining formula for C_(N,f), extract the fbar terms evaluated at r = 6 as v_N(beta) fbar, and leave the difference r_c^(-j)-6^(-j). The j = 0 difference vanishes, while the anisotropic j = 0 term is exactly (3/(2 beta))(A dot D_f) r_c^(-2).",
+    "flat_configuration": "For six aligned staple quaternions, r = 6 and D_f = 0. All displayed non-vacuum terms, including Gtilde_f, vanish there. The surviving conditional-mean approximation is v_N(beta) fbar.",
+    "coefficient_bound": "For j >= 1, |b_j/(2^j beta^(j+1))| <= (j+1)!/[2 * 4^j beta^(j+1)]. The j = 0 coefficient is 3/(2 beta) and is kept separately.",
+    "operator_count_and_limit": "There are N = floor(4 beta r0) terms, so the number of operators grows with beta, and with log(1/a) on the logarithmic branches below. This is a finite, optimally truncated expansion. It is not a convergent all-orders expansion at fixed beta.",
+    "unproved_control": "Bounded values of these continuous clipped operators do not provide their analytic, derivative, localization, or multiscale RG norms. Those controls are still required for iterating a field-theory construction."
+  },
+  "finite_volume_bad_star_input": {
+    "event": "B_e = {r_e < r0}, with r_e the norm of the six-staple sum at a selected link. This is a gauge-invariant exterior-link event. It is retained-measurable because no plaquette contains two selected links.",
+    "explicit_bound": "C_beta = 1536(1+log beta) + 1024 log(24 pi^3), and q_beta = min(1, exp(C_beta - 2(6-r0)beta)). The audited B = 4 chessboard estimate gives mu_beta(B_e) <= q_beta.",
+    "joint_bound": "For distinct stars occupying a single reflected B = 4 block family, the same chessboard estimate gives mu_beta(intersection_{e in S} B_e) <= q_beta^|S|. Only this stated geometry is used; arbitrary translated stars are handled by a finite coloring below.",
+    "energy_and_cap_constants": [
+      "The six incident defects at a link have sum 12 - 2 q dot A >= 12 - 2r. Thus the bad-star event forces their sum to be at least 2(6-r0). The B = 4 reflected copies used in dissemination have disjoint incident plaquette sets.",
+      "For beta >= 1, restrict every link to SU(2) angle at most delta = 1/(4 sqrt(beta)). A plaquette angle is at most 4 delta, so each plaquette defect is at most 1/beta.",
+      "The Haar angle density is (2/pi)sin^2(theta). On [0,pi/2], sin(theta) >= 2theta/pi. The cap mass is therefore at least 8 delta^3/(3 pi^3) = (24 pi^3)^(-1) beta^(-3/2).",
+      "If there are P plaquettes and L links, this gives Z_beta >= exp(-P)[(24 pi^3)^(-1)beta^(-3/2)]^L. A B = 4 block has 4^4 sites, hence contributes P/block = 6*4^4 = 1536 and L/block = 4*4^4 = 1024 in the disseminated partition-function bound. These give exactly C_beta above."
+    ],
+    "reflection_input_status": "The use of positive Wilson site reflections, shared-boundary B = 4 closed blocks, dyadic chessboard dissemination, and the disjoint-star geometry was independently audited in this session as a finite-volume natural-math input. This JSON supplies a full new elementary source-expansion proof, not a Lean formalization of reflection positivity or chessboard estimates.",
+    "marginal_transport": "Because B_e is retained-measurable, every stated probability and joint probability equals its value under the exact retained marginal after first-block integration. No comparison of two different probability measures is involved."
+  },
+  "conservative_full_smear_estimate": {
+    "counting": "In a fixed physical compact region, the number M(a) of selected links with a nonzero assigned source weight is at most C a^(-4). For weights bounded by F, summing the one-link L2 errors gives ||sum_e(Y_e-C_e)||_2 <= M(a) F [K(beta,r0) + B(r0)sqrt(q_beta)].",
+    "explicit_rate": "For fixed r0, K(beta,r0) is bounded by a constant times beta^2 exp(-4r0 beta). Also sqrt(q_beta) <= C beta^768 exp(-(6-r0)beta), with C = exp(768)(24 pi^3)^512. Thus the preceding bound is at most C_f a^(-4)[beta^2 exp(-4r0 beta) + beta^768 exp(-(6-r0)beta)].",
+    "logarithmic_branch": "If beta(a) = b log(1/a) + O(log log(1/a)), with b > 0, every displayed power of beta and the O(log log) correction is subpolynomial in 1/a. The bound tends to zero provided b r0 > 1 and b(6-r0) > 4.",
+    "optimized_sufficient_condition": "The maximum of 1/r0 and 4/(6-r0) is minimized at r0 = 6/5. Hence b > 5/6 is sufficient for this conservative first-block conditional-mean remainder estimate. At equality this argument makes no conclusion."
+  },
+  "joint_bad_count_improvement": {
+    "audit_status": "Independently reviewed and approved by full_transfer_audit before inclusion in this artifact.",
+    "finite_coloring": "For n divisible by 8, partition selected links by their starting coordinates modulo 8. One fixed direction and one transverse parity give J = 8^4/2 = 2048 classes. For each residue class, shift a B = 4 block grid so that its chosen interior star has that residue. The links of the class occupy even-indexed tiles in all four directions. On these tiles, the reflected star is the same translated star, with no orientation change. Each class therefore inherits the literal joint bound q_beta^|S| from a single reflected block family.",
+    "weighted_bad_count_proof": [
+      "Let w_e >= 0 be deterministic weights in one color class. Expanding the square gives E[(sum_e w_e 1_Be)^2] <= q_beta sum_e w_e^2 + q_beta^2 sum_{e!=f} w_e w_f <= q_beta sum_e w_e^2 + q_beta^2(sum_e w_e)^2.",
+      "Taking square roots and using sqrt(x+y) <= sqrt(x)+sqrt(y) yields ||sum_e w_e 1_Be||_2 <= sqrt(q_beta sum_e w_e^2) + q_beta sum_e w_e in that class.",
+      "Apply the L2 triangle inequality across the J classes. Cauchy-Schwarz on the sum of the J square-root terms gives ||sum_e w_e 1_Be||_2 <= sqrt(J q_beta sum_e w_e^2) + q_beta sum_e w_e. This does not assume independence of stars or color classes."
+    ],
+    "master_source_bound": "For the arbitrary six-weight sources at selected links let F_e = max_p|f_(e,p)|, S1 = sum_e F_e, and S2 = sum_e F_e^2. Then ||sum_e(Y_e-C_e)||_2 <= K(beta,r0) S1 + B(r0)[sqrt(2048 q_beta S2) + q_beta S1].",
+    "uniform_weight_specialization": "If F_e <= F and there are at most M nonzero stars, the right side is at most F{M K(beta,r0) + B(r0)[sqrt(2048 M q_beta) + M q_beta]}.",
+    "reason_for_improvement": "The diagonal second-moment contribution of the bad-star count costs sqrt(M q_beta), and the off-diagonal contribution costs M q_beta. Bounding each star separately by sqrt(q_beta) would instead cost M sqrt(q_beta). The improvement uses the joint chessboard bound, not a centering or an independence assumption."
+  },
+  "fixed_plane_physical_smear": {
+    "definition": "For a fixed plaquette plane mu-nu, let its plaquette at x have coefficient w_x = Z_a integral_{Q_a(x)} f_per(y) dy, where Q_a(x) is a four-dimensional lattice cell of volume a^4 and f_per is the physical test function periodized onto the fixed physical torus. Select the mu-links by one transverse parity as above.",
+    "assignment": "The two mu-directed edges of every mu-nu plaquette have opposite transverse parity. Consequently every plaquette in the source is assigned to exactly one selected link, and no source coefficient is counted twice. At each selected link use its actual six assigned weights, including zeros on the other planes. Thus the anisotropic formulas apply directly.",
+    "coefficient_sums": [
+      "Because F_e is at most the sum of the absolute assigned coefficients, S1 = sum_e F_e <= sum_x |w_x| <= |Z_a| ||f_per||_1.",
+      "Because F_e^2 is at most the sum of the squared assigned coefficients, S2 = sum_e F_e^2 <= sum_x |w_x|^2. Cellwise Cauchy-Schwarz gives |integral_Q f_per|^2 <= a^4 integral_Q |f_per|^2. Therefore S2 <= |Z_a|^2 a^4 ||f_per||_2^2."
+    ],
+    "exact_smear_bound": "The first-block conditional-mean approximation satisfies ||R_a||_2 <= |Z_a|{K(beta,r0)||f_per||_1 + B(r0)[sqrt(2048 q_beta) a^2 ||f_per||_2 + q_beta ||f_per||_1]}.",
+    "canonical_rescaling": "For the stated canonical factor Z_a = a^(-4), this is ||R_a||_2 <= a^(-4)K(beta,r0)||f_per||_1 + B(r0)[sqrt(2048 q_beta) a^(-2)||f_per||_2 + q_beta a^(-4)||f_per||_1]. The physical dimension and the number of microscopic cells have therefore been retained, rather than hidden in a one-point error.",
+    "explicit_asymptotic_rate": "For fixed r0 and f_per, the right side is bounded by a constant times a^(-4) beta^2 exp(-4r0 beta) + a^(-2) beta^768 exp(-(6-r0)beta) + a^(-4) beta^1536 exp(-2(6-r0)beta).",
+    "optimized_logarithmic_condition": "For beta(a) = b log(1/a) + O(log log(1/a)), the three terms tend to zero if b r0 > 1 and b(6-r0) > 2. The maximum of 1/r0 and 2/(6-r0) is minimized at r0 = 2, giving the sufficient strict threshold b > 1/2. This proves neither convergence at b = 1/2 nor failure for smaller b.",
+    "what_R_a_is": "Write F_a for the original smeared lattice source and let T be exact conditional expectation onto retained links. The approximation replaces the integrated local means Y_e in T F_a by C_e and retains all already-retained source pieces exactly. Thus R_a = T F_a - F_a^approx. The estimate is NOT an estimate of ||F_a-F_a^approx||_2. In particular it does not bound the separate eliminated fluctuation F_a-T F_a, whose ordinary L2 behavior may diverge."
+  },
+  "perturbative_normalization_comparison": {
+    "primary_source": "Berg and Clarke, Deconfinement, gradient and cooling scales for pure SU(2) lattice gauge theory, https://arxiv.org/pdf/1612.07347, page 1 Eq. (1) and page 9 Eq. (34); checked directly on 2026-10-28.",
+    "normalization": "That paper uses S = beta_latt sum_p(1-Tr(U_p)/2) and beta_latt = 4/g0^2. Since this artifact uses beta sum_p(2-Tr(U_p)), beta_latt = 2 beta and beta = 2/g0^2.",
+    "perturbative_prediction": "Eq. (34) has leading exponential exp[-beta_latt/(4 N_c b0)], with b0 = 11 N_c/(48 pi^2). For N_c = 2 this predicts beta = [11/(6 pi^2)] log(1/(a Lambda)) + O(log log(1/a)). The coefficient b_pert = 11/(6 pi^2) is approximately 0.1857555.",
+    "scope": "This perturbative prediction is below the sufficient b > 1/2 threshold of the finite inverse-staple expansion with bounded clipping above. Those bounds therefore do not cover the predicted physical branch. Failure of this sufficient bound is not a proof of failure of the approximation, and implies no continuum nonexistence statement. The separately stated hybrid estimate below covers this slope only by retaining an exact nonperturbative sector. The perturbative prediction is not itself a rigorous construction or identification of a physical trajectory."
+  },
+  "hybrid_with_exact_nonperturbative_sector": {
+    "audit_status": "Independently reviewed and approved by full_transfer_audit before inclusion. This is a separate theorem and does not replace or weaken the assumptions of the finite-expansion bounds above.",
+    "cutoffs": "Choose 0 < r0 < r1 < 6 and a continuous function eta(r) in [0,1], equal to 0 for r <= r0 and equal to 1 for r >= r1. For example, use the linear interpolation eta(r) = (r-r0)/(r1-r0) on (r0,r1). A smooth interpolation may also be chosen.",
+    "exact_retained_response": "Let J(kappa) = integral_{SU(2)} exp(kappa q0) dHaar(q), and let B_f = sum_p f_p v_p = fbar A + D_f. For r > 0 the exact response is Y_f = 12 fbar - 2[J'(2 beta r)/(r J(2 beta r))] A dot B_f. Define Y_f = 12 fbar at r = 0.",
+    "continuity_at_zero": "The compact Haar integral can be differentiated at zero. Symmetry gives J(0) = 1 and J'(0) = 0, while rotational symmetry on S^3 gives J''(0) = E_Haar[q0^2] = 1/4. Hence J'(2 beta r)/(r J(2 beta r)) tends to beta/2 as r tends to zero. The displayed Y_f is therefore continuous, including zero staple amplitude. It is local, gauge invariant, and linear in the six source weights.",
+    "definition": "Use the same globally clipped C_(N,f) and N = floor(4 beta r0) as above. Define C_hyb,f = (1-eta(r))Y_f + eta(r)C_(N,f). Thus the approximation retains the exact integrated response when r <= r0, uses the finite expansion when r >= r1, and interpolates in between.",
+    "uniform_local_error_proof": "Y_f - C_hyb,f = eta(r)[Y_f-C_(N,f)]. This is zero for r <= r0. Whenever eta(r) is nonzero, r > r0, so the good-region bound applies. Since 0 <= eta <= 1, |Y_f-C_hyb,f| <= K(beta,r0)F everywhere. No probability estimate, rare-event factor, or discarded bad-sector term appears in this bound.",
+    "physical_smear_sup_bound": "For the actual fixed-plane cell-integral coefficients above, sum_e F_e <= |Z_a| ||f_per||_1. Therefore ||T F_a - F_a^hyb||_infinity <= |Z_a| K(beta,r0)||f_per||_1. With Z_a = a^(-4), this is at most C(r0) a^(-4) beta^2 exp(-4 beta r0)||f_per||_1. The same bound holds in every probability Lp norm, including L2.",
+    "sufficient_logarithmic_slope": "If beta(a)/log(1/a) tends to b, the bound is a^(4 b r0 - 4 + o(1)) times a power of log(1/a). It tends to zero whenever b r0 > 1. Since r0 may be chosen below 6, every b > 1/6 admits suitable cutoffs r0 < r1 < 6. The endpoint b = 1/6 is not established.",
+    "perturbative_slope_example": "At the perturbative prediction b = 11/(6 pi^2), choose r0 = 11/2 and r1 = 23/4. Then 4 b r0 - 4 = 121/(3 pi^2) - 4, approximately 0.0866211, which is positive. If only beta/log(1/a) tends to this b, the error is a^(0.0866211 + o(1)) times a power of log(1/a); an exact fixed-power bound is not asserted. With the stronger O(log log(1/a)) trajectory assumption, the correction can instead be absorbed into additional logarithmic powers.",
+    "retained_exact_correction": "Equivalently, C_hyb,f = C_(N,f) + (1-eta(r))[Y_f-C_(N,f)]. The second term is an explicit local nonperturbative correction involving the exact one-link integral. It is retained, not bounded away or declared negligible. Its support includes the small-staple sector and the transition region r < r1.",
+    "what_is_still_missing": "The sup-norm error bound does not control the retained correction's connected correlations, Osterwalder-Schrader norm, multiscale evolution, or contribution to a nonzero continuum limit. Nor does it prove a finite operator basis closes under later integrations. Retaining an exact sector is an honest one-step approximation construction, not a solution of the interacting RG or continuum construction.",
+    "relation_to_other_bounds": "This hybrid theorem uses the elementary optimal expansion only where r >= r0 and does not need the chessboard estimate. The separate b > 1/2 theorem estimates an approximation that replaces the small-staple response too; its stronger coupling requirement remains unchanged. Both results concern T F_a, not the eliminated fluctuation F_a-T F_a."
+  },
+  "transport_and_remaining_gaps": {
+    "further_exact_integrations": "For any later source-independent conditional expectation T2, ||T2 R_a||_2 <= ||R_a||_2. Deterministic vacuum terms are preserved exactly. Repeated source-independent exact integrations therefore preserve the established aggregate error bound by the tower property and L2 contraction.",
+    "transport_is_not_rg_closure": "The preceding statement controls only the remainder already constructed. It does not identify the later image of Gtilde_f or the inverse-r local operators, control the new coarse action, prove stability of an operator basis, or establish a uniform multiscale RG estimate.",
+    "physical_trajectory": "The conditions b > 5/6 and b > 1/2 describe sufficient mathematical branches for this one-step error. No perturbative coefficient, physical matching condition, or nontrivial continuum branch is identified or assumed from them.",
+    "nonzero_limit": "An approximation error tending to zero does not supply a nonzero lower bound for the retained source, a positive reflected covariance, or a fixed-separation Wilson limit. Such a lower bound and the necessary accompanying norm bounds remain to be proved.",
+    "geometry_scope": "The arguments are for the explicitly stated even, dyadic torus and checkerboard geometry. They do not automatically transfer to an odd blocking-factor Bałaban construction or to a different lattice regulator.",
+    "field_theory_scope": "This artifact proves finite-lattice natural-math statements. It does not construct the interacting four-dimensional continuum theory, establish the full Schwinger hierarchy or Osterwalder-Schrader axioms, prove a mass gap, or close any of the twelve substantive continuum obligations.",
+    "source_independence_and_public_claims": "The proof uses the actual source-free finite-volume Wilson conditional integrals and explicit finite-volume chessboard estimates. It does not assume a desired continuum source lemma, import an unproved public-draft RG bound, or make claims about an unpublished KITP proof.",
+    "formalization_scope": "No theorem in this JSON is represented as Lean-certified. The independent review is a natural-mathematical audit. The explicit Gamma remainder, quotient estimate, and finite-color aggregation are candidates for later formalization."
+  }
+}

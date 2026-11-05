@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "title": "Actual local Wilson transition comparison, a rigorous obstruction to local-ratio gap arguments, and a correctly normalized block criterion",
+  "status": "Partial progress. No volume-independent or physically scaled Yang-Mills mass gap is proved.",
+  "verification_scope": {
+    "lean_certified": [
+      "Explicit finite product-kernel counterexample, real eigenvalue classification, complex positive semidefiniteness, uniform one-coordinate comparisons, and absence of a uniform excited/top ratio gap.",
+      "Actual Wilson one-link ground-state transition row comparison, with the positive continuous eigenfunction equation as an explicit input."
+    ],
+    "natural_mathematics_not_lean_certified": [
+      "Reversible heat-bath two-edge coupling comparison and its optimized constant.",
+      "Weighted block-factorization/Dirichlet comparison criterion, time normalization, and the parity obstruction to a sum-of-local-variances shortcut."
+    ],
+    "not_established": [
+      "Physical running coupling trajectory.",
+      "Volume-uniform approximate tensorization or strong mixing for the actual Wilson ground-state law.",
+      "Volume-independent parallel-block comparison for the actual transfer kernel.",
+      "Positive physical continuum mass gap or nonzero interacting continuum theory."
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "UnifiedTheory/Clay/YangMills/LocalRatioSpectralCounterexample.lean",
+      "sha256": "46ab63c26560b5bc468bb0f1408dab7bae6dd13d1a12b2e6a6f491874303391d",
+      "bytes": 14820,
+      "declaration_count": 52,
+      "verification": {
+        "source_check": "passed",
+        "mathlib_standard_style_check": "passed",
+        "scoped_lake_build": "passed",
+        "scoped_build_jobs": 3114,
+        "principal_axiom_checks": 9,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "scope": "A real finite matrix is defined explicitly by its entries and action. The module classifies all REAL pointwise eigenvalues and proves their upper bound, rather than stating a theorem using mathlib spectrum. Symmetry and complex quadratic positive semidefiniteness are proved. The standard finite-dimensional identification of real symmetric-matrix eigenvalues with its spectrum is not separately packaged here."
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonSlabTransitionComparison.lean",
+      "sha256": "cbc3aba828b36c233728adeeee79ce7836e65ba020457fe8aebf930d6361907d",
+      "bytes": 2681,
+      "declaration_count": 1,
+      "verification": {
+        "source_check": "passed",
+        "mathlib_standard_style_check": "passed",
+        "scoped_lake_build": "passed",
+        "scoped_build_jobs": 3129,
+        "principal_axiom_checks": 1,
+        "allowed_axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "scope": "One actual-kernel theorem. It uses the supplied positive continuous ground eigenfunction and the original spatial Haar eigenfunction equation; it does not assume a gap or a transition comparison. Another swarm module specializes to the constructed Wilson ground state and telescopes finite link sets."
+    }
+  ],
+  "actual_repository_inputs": [
+    {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonSlabBounds.lean",
+      "theorem": "kernel_bounds",
+      "formula": "exp(-24 beta V) <= K_beta(u,v) <= 1, beta>=0, V=card(SpatialVertex n).",
+      "scope": "Actual full SU(2) slab, including spatial and temporal plaquettes. This global comparison loses exponentially in spatial volume."
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonSlabLocalComparison.lean",
+      "theorems": [
+        "kernel_comparison",
+        "eigenfunction_comparison"
+      ],
+      "formula": "K(u,v) <= exp(6 |beta| C_chi) K(u_prime,v); psi(u) <= exp(6 |beta| C_chi) psi(u_prime), when u and u_prime differ at one spatial link and |chi|<=C_chi.",
+      "scope": "Actual Wilson kernel; eigenfunction comparison follows from the kernel eigenfunction equation, with no partition-volume factor."
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonSlabConditional.lean",
+      "theorem": "row_expectation_lower",
+      "formula": "For the normalized one-link row law, E_row[Q] >= exp(-6 |beta| C_chi) E_Haar[Q] for Q>=0.",
+      "scope": "Single-link comparison only; it does not supply cross-link mixing or an approximate-tensorization constant."
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/GroundStateDirichlet.lean",
+      "theorems": [
+        "transition_normalized",
+        "edge_marginal",
+        "dirichlet_expectation"
+      ],
+      "formula": "P(x,dy)=K(x,y) psi(y)/(lambda0 psi(x)) mu(dy); pi(dx)=psi(x)^2 mu(dx); E_P(f)=1/2 integral (f(x)-f(y))^2 pi(dx)P(x,dy).",
+      "scope": "Exact ground-state transform identities. They do not estimate a uniform gap."
+    }
+  ],
+  "certified_counterexample": {
+    "space": "X_N={false,true}^{Fin N}, N>=1, with counting measure for the displayed finite operator.",
+    "amplitudes": {
+      "f_plus": "product_i (4/5 if x_i=true else 3/5)",
+      "f_minus": "product_i (3/5 if x_i=true else 4/5)"
+    },
+    "kernel": "K_N(x,y)=f_plus(x) f_plus(y)+f_minus(x) f_minus(y).",
+    "exact_product_identity": "sum_x amplitude(a,b;x) amplitude(c,d;x)=(a*c+b*d)^N.",
+    "normalization_and_overlap": "sum f_plus^2=sum f_minus^2=1; s_N=sum f_plus*f_minus=(24/25)^N.",
+    "positivity": "Every entry K_N(x,y)>0; K_N is symmetric and positive semidefinite, not generally positive definite. Its real quadratic form is (sum f_plus*f)^2+(sum f_minus*f)^2. Arbitrary complex quadratic forms have nonnegative real part and zero imaginary part. For N>=2 the rank-two matrix has zero modes because its ambient dimension is 2^N>2.",
+    "eigenvectors": {
+      "ground": "g_N=f_plus+f_minus>0; T_N g_N=(1+s_N)g_N; sum g_N^2=2(1+s_N).",
+      "excited": "e_N=f_plus-f_minus; T_N e_N=(1-s_N)e_N; sum e_N^2=2(1-s_N)>0; sum g_N e_N=0."
+    },
+    "eigenvalue_scope": "Every real eigenvalue with a nonzero pointwise eigenfunction is 0, 1+s_N, or 1-s_N. The positive ground eigenvalue 1+s_N is consequently the largest real eigenvalue. Both nonzero eigenvalues are explicitly attained for N>=1. There is no hidden compactness/eigenvector assumption.",
+    "ratio": "r_N=(1-s_N)/(1+s_N); 0<r_N<1; 1-r_N=2s_N/(1+s_N)<=2(24/25)^N; r_N tends to 1.",
+    "formal_no_uniform_statement": "not exists delta>0 such that for every N>=1, r_N<=1-delta.",
+    "local_bounds": "If x and x_prime differ at one coordinate, K_N(x,y)<=4/3 K_N(x_prime,y) and g_N(x)<=4/3 g_N(x_prime). These constants do not depend on N.",
+    "additional_natural_consequences": "The normalized stationary density proportional to g_N^2 has one-coordinate ratios at most 16/9. Its Doob transition has one-coordinate row ratios at most 16/9, while its nonconstant eigenvalue ratio remains r_N.",
+    "measure_convention": "With normalized counting/Haar measure 2^(-N) sum, retaining the same kernel scales both eigenvalues by 2^(-N), leaving r_N unchanged. Alternatively multiply K_N by 2^N to retain the displayed eigenvalues; local ratios and positive semidefiniteness are unchanged.",
+    "what_it_rules_out": "No theorem using only strict pointwise positivity, symmetry, positive semidefiniteness, and volume-uniform one-coordinate kernel/ground/transition ratios can conclude a volume-uniform spectral gap.",
+    "what_it_does_not_rule_out": "This is not Wilson theory: the shared latent product component creates nonlocal collective correlations. It does not refute a theorem exploiting genuine Wilson plaquette locality plus a proved inter-block mixing estimate, and it does not refute the Yang-Mills conjecture."
+  },
+  "actual_transition_comparison": {
+    "lean_api": "WilsonSlabTransitionComparison.transition_local_comparison",
+    "general_formula": "P(u,dy) <= exp(12 |beta| C_chi) P(u_prime,dy) for configurations differing at one spatial link.",
+    "proof": "The kernel ratio contributes exp(6 |beta| C_chi). The reverse ground-function ratio contributes the same factor because psi(u_prime)<=exp(6 |beta| C_chi) psi(u). Multiply these inequalities and use positivity of lambda0 and psi in the exact Doob formula. No spatial-volume estimate appears.",
+    "su2_convention": "The repository uses unnormalized fundamental trace, C_chi=2 and action beta sum_p(2-Re Tr U_p). For beta>=0 the transition ratio is exp(24 beta).",
+    "finite_block_natural_extension": "Changing b links one at a time yields R_B=exp(12 |beta| C_chi b), hence R_B=exp(24 beta b) for SU(2). Another swarm module owns the actual-ground finite-set formalization."
+  },
+  "proved_natural_local_dirichlet_comparison": {
+    "status": "Full natural-mathematics proof below; not Lean-certified in these two files.",
+    "setup": "Let pi=psi^2 mu be the actual normalized ground law and P its reversible transition. Let Q_B be the exact pi-heat-bath kernel that resamples links in B conditional on the complement. Let b=card B. The complement is fixed by Q_B; Q_B is pi-reversible. For the actual compact SU(2) product space this conditional law has an explicit normalized positive density.",
+    "input_already_reduced_to_actual_local_bounds": "For x and x_prime agreeing outside B, P(x,dy)<=R_B P(x_prime,dy), R_B=exp(24 beta b).",
+    "coupling": "Sample X~pi; then conditionally on X, sample X_prime~Q_B(X,.) and Y~P(X,.) independently. Denote the resulting three-variable probability by Gamma.",
+    "edge1": "The (X,Y) marginal of Gamma is J_P(dx,dy)=pi(dx)P(x,dy).",
+    "edge2_proof": "Reversibility of Q_B rewrites the (X_prime,Y) marginal as pi(dx_prime) integral Q_B(x_prime,dx) P(x,dy). Every x in that conditional support agrees with x_prime outside B; the row comparison therefore bounds this marginal by R_B pi(dx_prime)P(x_prime,dy).",
+    "l2_triangle": "||f(X)-f(X_prime)||_L2(Gamma) <= ||f(X)-f(Y)||_2 + ||f(Y)-f(X_prime)||_2 <= (1+sqrt(R_B))*sqrt(2 E_P(f)).",
+    "conclusion": "E_Q_B(f) <= A_B E_P(f), A_B=(1+sqrt(R_B))^2. Thus for SU(2), A_B=(1+exp(12 beta b))^2. This is independent of total spatial volume but depends exponentially on coupling and block cardinality.",
+    "direct_density_caveat": "The heat-bath edge law is supported on equal outside-B coordinates and is singular relative to a full continuous transition edge law when B is proper. Direct domination of Q_B edge densities by J_P is generally impossible. The two-edge coupling avoids this mistake."
+  },
+  "correctly_normalized_block_criterion": {
+    "status": "A sufficient analytic reduction with explicit auxiliary mixing quantities. The corresponding uniform estimates for Wilson theory remain unproved.",
+    "block_form": "Choose blocks B and weights alpha_B>=0 with sum_B alpha_B=1. Let Q=sum_B alpha_B Q_B and gamma(alpha)=min_link sum_{B containing link} alpha_B. Then E_Q(f)=sum_B alpha_B E_pi[Var(f | outside B)].",
+    "auxiliary_mixing_target": "Prove gamma(alpha) Var_pi(f) <= C sum_B alpha_B E_pi[Var(f | outside B)] for all centered square-integrable f. C must be quantified for the actual ground-state law, not a supplied product law.",
+    "comparison_consequence": "The proved local coupling gives E_Q(f)<=A E_P(f), with A=sum_B alpha_B A_B (or max_B A_B). Therefore E_P(f)>=gamma(alpha)/(C A) Var_pi(f), and every nonconstant positive eigenvalue ratio satisfies r<=1-gamma(alpha)/(C A).",
+    "physical_time": "For one lattice time step a, the resulting energy floor is -log(1-gamma/(C A))/a, at least gamma/(a C A). A positive limit requires a quantitatively suitable behavior of gamma/(C A), rather than only positivity at fixed cutoff.",
+    "single_block_time_normalization": "For M disjoint equally weighted blocks of bounded size, alpha=1/M and gamma=1/M. A continuous-time heat-bath generator that updates every block at unit rate has M times the clock rate of this random-scan Markov step. Dropping this factor incorrectly manufactures a volume-free transfer bound.",
+    "parallel_color_option": "A cover by q color unions, each chosen with weight 1/q, has gamma>=1/q. But each union contains order volume links. Applying the proved row comparison to the entire union makes A exponential in volume. Replacing the union update by independent bounded-block updates requires actual conditional independence or a quantitative comparison controlling their interactions; neither follows from a local ground-function ratio.",
+    "fixed_time_block_option": "Apply a genuinely volume-uniform auxiliary comparison to P^k with k approximately ell/a and constants independent of a and spatial volume. A fixed contraction over physical time ell would yield a physical spectral floor. The parent module formalizes this spectral conversion; the missing content is the actual inter-block estimate, not the conversion.",
+    "sum_local_variances_no_go": "Even for an independent product law and a positive-semidefinite Markov contraction P, E_P(f)<=Var(f). Here positive semidefinite means nonnegative quadratic form (equivalently, nonnegative spectrum for self-adjoint P), not merely positivity-preserving or a pointwise positive transition kernel. For the parity function on N fair bits, Var(f)=1 and sum_i E Var(f | outside i)=N. Thus an unrestricted form inequality E_P>=c sum_i E Var_i cannot have c independent of N. Use correctly normalized random-scan or bounded-color updates."
+  },
+  "rate_audit_of_current_constants": {
+    "fixed_physical_box": "For lattice spacing a and a fixed physical three-dimensional spatial box, V is of order a^(-3).",
+    "coupling_branch": "Suppose beta(a)=b0 log(1/a)+O(log log(1/a)), b0>0. This is a stipulated branch here, not a proved physical trajectory.",
+    "fixed_size_blocks": "For block cardinality b and SU(2), A_B grows like a^(-24 b0 b) times logarithmic factors. Equally weighted bounded-size blocks have gamma of order 1/V. Even if C were uniform, the certified lower-bound expression gamma/(a C A_B) is only of order a^(2+24 b0 b) up to logarithms and tends to zero.",
+    "interpretation": "This is failure of the available estimate to prove a positive physical floor; it is not evidence that the actual mass gap vanishes.",
+    "what_must_improve": "Use correlation information to obtain parallel-block/time-block comparison without an extensive oscillation cost, and prove the actual ground-law variance factorization with the required cutoff behavior."
+  },
+  "concrete_mixing_quantity_for_next_attack": {
+    "finite_volume_object": "For an actual finite link region Lambda and exterior condition tau, define the normalized conditional Wilson law mu_Lambda^tau from the original plaquette action. For an interior link set Delta and a single changed exterior link e, compare the exact marginal densities on Delta.",
+    "quantity": "I(Lambda,Delta,e)=sup_{tau,tau_prime differing only at e} || d mu_{Lambda,Delta}^{tau_prime}/d mu_{Lambda,Delta}^{tau} - 1 ||_infinity.",
+    "target": "A quantitatively verified decay of I with separation, on suitable overlapping physical-size blocks, is a concrete route to a block factorization estimate. The present local oscillation theorem only bounds nearby conditional densities; it supplies no decay in the distance from e to Delta.",
+    "finite_size_caution": "A single arbitrarily chosen box estimate is not automatically a Dobrushin-Shlosman criterion. One must specify and prove the relevant finite-size influence norm, overlap geometry, and its recursion for the plaquette link interaction, including boundary/gauge treatment.",
+    "ground_law_caution": "The spatial marginal psi^2 may have effective interactions of unbounded range after temporal integration. Locality of the original four-dimensional action must not be silently transferred to this marginal."
+  },
+  "primary_sources": [
+    {
+      "authors": "P. Diaconis and L. Saloff-Coste",
+      "title": "Comparison Theorems for Reversible Markov Chains",
+      "year": 1993,
+      "url": "https://www2.stat.duke.edu/~scs/Courses/Stat376/Papers/ConvergeRates/ComparisonReversMC_DiaconisSalaffCoste_AAP1993.pdf",
+      "locator": "Annals of Applied Probability 3(3), 696-730; Section 2, equation (2.1) and comparison framework.",
+      "use": "Primary background for comparing reversible Dirichlet forms and spectral gaps. The specific continuous Wilson two-edge coupling proof above is provided explicitly and is not asserted to be a theorem copied from this finite-state paper."
+    },
+    {
+      "authors": "P. Caputo and D. Parisi",
+      "title": "Block Factorization of the Relative Entropy via Spatial Mixing",
+      "year": 2021,
+      "url": "https://arxiv.org/pdf/2004.10574",
+      "published_url": "https://doi.org/10.1007/s00220-021-04237-1",
+      "locator": "Preprint pp.2-3, equations (1.3)-(1.5); pp.4-5 setup/extensions; p.6 Definition 2.1 and equation (2.2).",
+      "use": "Gives the coverage factor gamma(alpha) and derives block functional inequalities from strong spatial mixing. The single-spin space can be an arbitrary probability space, including compact spins. The stated interaction is nearest-neighbor pairwise; the authors explicitly say extension to general finite-range interactions is not immediate. Wilson four-link plaquettes and the effective ground marginal therefore require a justified adaptation or a direct proof. The paper does not prove the missing weak-coupling Wilson mixing estimate."
+    },
+    {
+      "authors": "R. L. Dobrushin and S. B. Shlosman",
+      "title": "Completely Analytical Interactions: Constructive Description",
+      "year": 1987,
+      "url": "https://www.cpt.univ-mrs.fr/~shlosman/papers/132.pdf",
+      "locator": "Journal of Statistical Physics 46, 983-1014.",
+      "use": "Primary precedent for reducing complete-analyticity/mixing conditions to specified finite-volume checks. It is not treated as an already instantiated theorem for the present compact-group plaquette model or its physical weak-coupling branch."
+    }
+  ],
+  "next_actions_in_priority_order": [
+    "Bind the actual constructed positive Wilson ground state to the new one-link transition theorem and finite-link telescoping; the parallel worker owns this formalization.",
+    "Construct the exact block heat-bath kernel for psi^2 and formalize the two-edge coupling comparison, preserving its block-cardinality and clock factors.",
+    "Attack actual spatial conditional correlations or a finite-size influence norm. A bound only on one-link density oscillation cannot suffice, as the certified rank-two family shows.",
+    "If an auxiliary block variance factorization is established, test its C(a,L) together with the genuine transfer comparison A(a,L) and the update coverage gamma; report the resulting physical rate without deleting volume/time factors.",
+    "Keep the independent continuum nontriviality, coupling identification, and full field-reconstruction requirements open even if a transfer ratio estimate improves."
+  ]
+}

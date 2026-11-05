@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual support obstruction rules out uniform loss-only absorption of the spatial complement; valid localization retains cutoff cost",
+  "current_goal_turn_classification": "progress: numerical high-density L2 decay/coercivity and an arbitrary-source shrinking-density concentration theorem proved for the actual Wilson dynamics",
+  "scope": "Actual Wilson high-spatial-energy dynamics is quantified with its original top eigenvalue and ground law. Let N be the number of spatial links, V the spatial potential and e(beta)=1568/beta^2+(28/(3*beta))*log(2*beta+5). The actual full transfer norm satisfies lambda>=exp(-2*beta*N*e(beta)). For every continuous f vanishing when V<r*N, M(Pf)<=exp(-beta*N*(r-4*e(beta)))*M(f), where M(f)=integral pi*f^2. If beta>0, r>=0 and 4*e(beta)<=r/2, then M(Pf)<=exp(-beta*r/2)*M(f) and loss(f)>=(1-exp(-beta*r/2))*M(f), uniformly in the spatial period. For every fixed r>0 that numerical condition holds eventually, and the bound tends to zero. Constant quaternion axes I,J,K give every spatial plaquette -1 and V=4*N; the physical bump max(0,V-r*N) is nonconstant and has positive mass for 0<=r<4. Actual detailed balance, L2 Cauchy-Schwarz and mass contraction imply M(f-P^2 f)<=loss(f). For every continuous cutoff 0<=chi<=1 vanishing below r*N, the input decay estimate also gives M(chi*Pf)<=exp(-beta*r/2)*M(f). Consequently M(chi*f)<=2*loss(f)+2*exp(-beta*r/2)*M(f) for every continuous f. The constructed physical energy cutoff is zero at V<=r*N and one at V>=2*r*N. Taking r(beta)=8*e(beta), which is positive for beta>0 and tends to zero, gives for beta>=1 the actual weighted tail integral_{V>=16*e(beta)*N} f^2 dpi <=2*loss(f)+(2/beta)*M(f). On physical observables the raw step equals the original full Wilson transition by the existing theorem. These are numerical high-density dynamics and slow-mode concentration, not a uniform physical gap or a local plaquette-defect estimate. Sparse spatial defects, the low-density functional inequality, actual distant mixed-ground summability, independent global coercivity and the continuum limit remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization",
+    "UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay",
+    "UnifiedTheory.Clay.YangMills.WilsonHighFieldSector",
+    "UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction"
+  ],
+  "new_declarations": 61,
+  "retained_declarations": 8193,
+  "cumulative_declarations": 8254,
+  "formal_results": {
+    "normalization": "lambda>=exp(-2*beta*N*e(beta)), derived from the actual cap Rayleigh lower bound, with no ground-amplitude ratio discarded.",
+    "supported_dynamics": "For f supported on V>=r*N, M(Pf)<=exp(-beta*N*(r-4*e(beta)))*M(f). Above the proved numerical threshold, loss(f)>=(1-exp(-beta*r/2))*M(f), uniformly in n.",
+    "nonvacuity": "Constant quaternion axes have V=4*N; the flat field has V=0. The gauge-invariant continuous bump max(0,V-r*N) has positive mass for 0<=r<4.",
+    "reversible_reduction": "Detailed balance and contraction give M(f-P^2 f)<=loss(f); duality moves supported input decay to cutoff output decay for arbitrary f.",
+    "arbitrary_source": "M(chi*f)<=2*loss(f)+2*exp(-beta*r/2)*M(f) for continuous 0<=chi<=1 vanishing below V<r*N.",
+    "shrinking_threshold": "r(beta)=8*e(beta)>0 tends to zero. For beta>=1, exp(-beta*r(beta)/2)<=1/beta.",
+    "weighted_event": "For every continuous f and beta>=1, integral_{V>=16*e(beta)*N} f^2 dpi<=2*loss(f)+(2/beta)*M(f). The hard event is bounded using the constructed continuous physical cutoff.",
+    "physical_interpretation": "The existing step_full and step_gauge theorems identify this dynamics with the original full Wilson transition and its square for physical f."
+  },
+  "next_attack": {
+    "low_density_modes": "Use the actual weighted-tail theorem to restrict an approximate slow mode to a shrinking low-density sector, then prove the missing spatial/coercive estimate with quantitative control of localization and sparse defects.",
+    "sparse_defects": "Low total energy density permits isolated large plaquettes. Obtain a localized or conditional high-field dynamics bound whose normalization cost is proportional to the block rather than the whole volume.",
+    "normalization_obstacle": "The present lambda lower bound pays an extensive free-energy cost. It cannot make a fixed finite-block defect expensive uniformly in total volume; a valid conditional/block normalization estimate is needed.",
+    "global_closure": "Retain the separate actual distant or signed upper form and lower physical comparison obligations, and control their product on a justified physical scale."
+  },
+  "not_inferred": [
+    "The energy threshold is proportional to the total spatial link count. Sparse or isolated large plaquette defects can remain below it. The theorem does not control the entire axial FlatBox complement.",
+    "The arbitrary-source tail is f-squared L2 mass, paid by twice the actual loss plus a small mass error. It is not the false loss-only variance-pair tail ruled out by the preceding certificate.",
+    "The original plaquette cutoff variation has not been absorbed. The new global energy cutoff reduction uses reversibility and a two-step residual instead of estimating that local cutoff cost.",
+    "High-field input decay is a one-step support-restricted estimate. Its support is not invariant under P; no iterated global decay is inferred from it alone.",
+    "Slow modes may still concentrate inside the shrinking low-density region. Prove a quantitative physical functional inequality there, handling sparse defects, gauge geometry and the relevant physical scales.",
+    "The actual distant mixed-ground or signed physical Haar-form bound and the independent lower coercivity constant remain unproved. No numerical closure of their contraction product is claimed.",
+    "A physical coupling trajectory, nontrivial continuum limit, continuum mass gap and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_high_field_dynamics_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

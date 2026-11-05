@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: numerical high-density dynamics and arbitrary-source shrinking-density concentration for the actual Wilson transition",
+  "current_goal_turn_classification": "progress: exterior-volume normalization canceled, numerical local high-density decay and arbitrary-source box concentration proved for actual Wilson dynamics",
+  "scope": "Actual finite-cutoff SU(2) Wilson dynamics now has a local block normalization comparison with no ambient-volume cost. For an actual spatial-link set S, let s=#S, p=#internal plaquettes, b=#crossing plaquettes, V_S the internal potential and q the Haar mean of the internal cut kernel. Exact spatial and temporal splitting gives exp(-4*beta*b)*K_cut<=K_full<=K_cut. Generic kernel domination, weighted Schur and product compression imply q*||T_out||<=exp(4*beta*b)*lambda_full, without an exterior ground-state premise or product assumption for the interacting ground law. A concrete block cap gives q>=exp(-2*beta*(p+s)*e(beta)), where e(beta)=1568/beta^2+(28/(3*beta))*log(2*beta+5) tends to zero. Consequently every continuous F supported on V_S>=R satisfies M(PF)<=exp(-beta*(R-8*b-4*(p+s)*e(beta)))*M(F), for the original ground law and actual step. If R>=8*b+rho and 4*(p+s)*e(beta)<=rho/2, this yields decay exp(-beta*rho/2) and the matching supported-sector loss lower bound. For the concrete box S with link origins in [1,L+1)^3 and L+1<=n, s=3*L^3, p<=3*L^3, p>=3*(L-1)^3 and b<=24*L^2. For L>=4096, beta>0 and e(beta)<=1/96, inputs supported above V_S>=L^3 satisfy M(PF)<=exp(-beta*L^3/4)*M(F). Reversibility and the two-step residual extend this to every continuous source: integral_{V_S>=2*L^3} F^2 dpi<=2*loss(F)+2*exp(-beta*L^3/4)*M(F). The continuous gauge-invariant cutoff is nonconstant and has positive mass, witnessed by the flat field and constant quaternion axes. The beta condition holds eventually independently of n and L. On physical observables the existing step_full and step_gauge identify this with the original full Wilson dynamics. These are local high-density estimates with a quantified boundary cost. Sparse defects, retained-region physical coercivity, actual distant mixed-ground summability, a physical coupling trajectory and a nontrivial continuum limit remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactKernelDomination",
+    "UnifiedTheory.Clay.YangMills.CompactKernelWeightedSchur",
+    "UnifiedTheory.Clay.YangMills.CompactKernelProductComparison",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutEnergy",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutKernel",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutCap",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutDecay",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutBox",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialCutLocalization"
+  ],
+  "new_declarations": 118,
+  "retained_declarations": 8254,
+  "cumulative_declarations": 8372,
+  "formal_results": {
+    "exact_split": "The full raw kernel equals the product of internal and external cut kernels times exp(-beta*(V_boundary(u)+V_boundary(v))/2). All actual interacting ground-law coordinates remain in the source.",
+    "normalization": "q*||T_out||<=exp(4*beta*b)*lambda_full. Product compression and weighted Schur prove this without an exterior eigenfunction premise.",
+    "block_cap": "q>=exp(-2*beta*(p+s)*e(beta)); all counts are internal links or plaquettes, with no exterior volume.",
+    "supported_dynamics": "M(PF)<=exp(-beta*(R-8*b-4*(p+s)*e(beta)))*M(F) for F supported on V_S>=R.",
+    "supported_coercivity": "If R>=8*b+rho and 4*(p+s)*e(beta)<=rho/2, then loss(F)>=(1-exp(-beta*rho/2))*M(F). Positive rho gives an eventually valid numerical condition for each fixed block.",
+    "box_geometry": "For link origins [1,L+1)^3 and L+1<=n, s=3*L^3, 3*(L-1)^3<=p<=3*L^3, and b<=24*L^2 for L>=1.",
+    "box_dynamics": "For L>=4096, beta>0, e(beta)<=1/96 and supported inputs V_S>=L^3, M(PF)<=exp(-beta*L^3/4)*M(F).",
+    "arbitrary_source": "For every continuous F, integral_{V_S>=2*L^3} F^2 dpi<=2*loss(F)+2*exp(-beta*L^3/4)*M(F) under the same box and beta conditions.",
+    "nonvacuity": "The constructed physical cutoff is zero on the flat field and one on the I,J,K constant-axis field, whose V_S=4*p>2*L^3. It has positive ground-law mass.",
+    "uniform_condition": "beta>0 and e(beta)<=1/96 hold eventually as beta tends to infinity, independently of n and L.",
+    "physical_identification": "Existing step_full and step_gauge identify the actual raw ground step and its square with the original full Wilson transition on physical observables."
+  },
+  "next_attack": {
+    "boundary_cost": "Improve the actual boundary comparison or localize defects in blocks whose internal energy pays their surface cost. The current comparison leaves sparse defects unresolved.",
+    "joint_localization": "Control multiple local regions with source weights without charging full loss independently at every box; combine with existing packing and alignment geometry.",
+    "retained_region": "Prove an actual physical functional inequality covering low local energy density and sparse defects, including the earlier cutoff variation.",
+    "global_closure": "Quantitatively control the actual distant mixed-ground or signed Haar form and the independent lower comparison on a justified physical scale."
+  },
+  "not_inferred": [
+    "The boundary comparison pays 8*b in the energy threshold. Single, sparse or moderate plaquette defects may not exceed this cost; no control of the full axial FlatBox complement is claimed.",
+    "The explicit box theorem treats high local energy density, not every large plaquette. Its exterior-volume independence does not make the fixed local threshold shrink with beta.",
+    "The arbitrary-source estimate bounds f-squared L2 mass by twice the actual loss plus a small mass error. It is not a loss-only variance-pair tail, and does not contradict the earlier support obstruction.",
+    "A sum of the local source bounds charges the loss once per box. Joint source bookkeeping, translation/packing and a justified multiscale decomposition still need proof before global coercivity can follow.",
+    "The earlier local plaquette cutoff cost has not been absorbed. The supported sector is not invariant under P; no iterated global decay follows from its one-step estimate alone.",
+    "A quantitative physical functional inequality on the retained low-density region, actual distant mixed-ground or signed physical Haar-form control, and the independent global lower comparison remain unproved.",
+    "A physical coupling trajectory, nontrivial continuum limit, continuum mass gap and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_spatial_cut_dynamics_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

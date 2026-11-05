@@ -1,0 +1,404 @@
+{
+  "date": "2026-10-30",
+  "status": "finite_lattice_groundwork_and_numerics_no_clay_or_continuum_claim",
+  "modules": [
+    "TwistedReflection",
+    "TwistedRectangle",
+    "TwistedFlat",
+    "RateFilter",
+    "CommutingShifts",
+    "TwistedHessian",
+    "TwistedActionJet",
+    "TwistedTransfer",
+    "TwistedVacuum",
+    "TwistedStability",
+    "TwistedSmallField",
+    "TwistedLocalization",
+    "TwistedLandau",
+    "TwistedAxial",
+    "TwistedFrame",
+    "TwistedSeams",
+    "TwistedNearFlat",
+    "TwistedGaussianCompare",
+    "TwistedMehler",
+    "TwistedCollatz",
+    "TwistedTreeGauge",
+    "TwistedTreeGauge",
+    "TwistedSliceLift",
+    "TwistedNormLower",
+    "TwistedFluxSector",
+    "TwistedFiniteGap",
+    "TwistedPoincare",
+    "TwistedHessianField",
+    "BlockShifts",
+    "TwistedCovariant",
+    "TwistedBadSet",
+    "TwistedBlockMap",
+    "TwistedBlockLaw",
+    "TwistedIBP"
+  ],
+  "axiom_check": "scripts/CheckYangMillsTwisted.lean; 131 key declarations, see its output",
+  "not_in_audit_chain": true,
+  "hessian": {
+    "N": [
+      3,
+      4,
+      5
+    ],
+    "twisted_physical_zero_modes": 0,
+    "untwisted_physical_zero_modes": 9,
+    "twisted_lowest_nonzero": [
+      2.0,
+      1.171573,
+      0.763932
+    ],
+    "prediction": "8 sin^2(pi/2N)"
+  },
+  "spectrum_T_eq_3L": {
+    "N6_beta16": {
+      "one_gluon_meff_t4_t5": [
+        [
+          0.517,
+          0.008
+        ],
+        [
+          0.522,
+          0.014
+        ]
+      ],
+      "tree": 0.512,
+      "neutral_meff_t3_t4": [
+        [
+          1.019,
+          0.026
+        ],
+        [
+          0.938,
+          0.069
+        ]
+      ],
+      "tree2": 1.024
+    },
+    "N6_beta8": {
+      "one_gluon_meff_t4_t5": [
+        [
+          0.518,
+          0.008
+        ],
+        [
+          0.519,
+          0.017
+        ]
+      ],
+      "neutral_meff_t3_t4": [
+        [
+          0.998,
+          0.026
+        ],
+        [
+          1.042,
+          0.074
+        ]
+      ]
+    },
+    "N8_beta16": {
+      "one_gluon_meff_t4_t5": [
+        [
+          0.392,
+          0.009
+        ],
+        [
+          0.412,
+          0.014
+        ]
+      ],
+      "tree": 0.388,
+      "neutral_meff_t3_t4": [
+        [
+          0.795,
+          0.027
+        ],
+        [
+          0.748,
+          0.044
+        ]
+      ],
+      "tree2": 0.775
+    },
+    "N8_beta8": {
+      "one_gluon_meff_t4_t5": [
+        [
+          0.384,
+          0.008
+        ],
+        [
+          0.368,
+          0.01
+        ]
+      ],
+      "neutral_meff_t3_t4": [
+        [
+          0.754,
+          0.024
+        ],
+        [
+          0.746,
+          0.048
+        ]
+      ]
+    }
+  },
+  "spectrum_note": "Errors are jackknife over 40 bins; autocorrelation within bins not separately assessed. Runs at T=L gave low neutral masses and are not comparable.",
+  "not_done": [
+    "Target A, including TwistedTransfer.TargetAGap",
+    "Neutral Poincare inequality with constant about n",
+    "Milestone A0 semiclassical gap",
+    "Neutral upper bound at scale C/n: single-trial crude method cannot reach it",
+    "Identification of Tr T^t with the 4D twisted law",
+    "Twisted Gaussian covariance",
+    "Any block RG step",
+    "Finite-box mixing criterion",
+    "Small-to-large-volume bridge"
+  ],
+  "claim_status": "All twelve Clay requirements remain open.",
+  "localization_threshold_estimate": {
+    "eps": 1,
+    "note": "Solves beta = L*log(K*(24 beta)^1.5)+1 with L=4N^4 and K=4*sqrt(pi), an asymptotic estimate of cap; not a formal evaluation.",
+    "beta": {
+      "N4": 22260.0,
+      "N8": 428900.0,
+      "N16": 8014000.0,
+      "N32": 146500000.0,
+      "N64": 2635000000.0
+    }
+  },
+  "crossover_scan": {
+    "sizes": [
+      6,
+      8,
+      10
+    ],
+    "T": "3L",
+    "bins": 40,
+    "beta_std": [
+      2.2,
+      2.4,
+      2.6,
+      3,
+      4,
+      6
+    ],
+    "one_gluon_EL_note": "near pi for beta_std>=2.6; at 2.4 about 3.5,5,10 for L=6,8,10, noisy",
+    "neutral_EL_note": "near 6 for beta_std>=3, consistent with 2 pi; poorly resolved below",
+    "e3_EL_plateau_beta_std_2p4": {
+      "L6": 1.7,
+      "L8": 4,
+      "L10": 6
+    },
+    "e3_validity": "Only meaningful when <trW3> is near 0. Fails for beta_std>=3 and for L=6 at 2.6.",
+    "conjecture": "L*E_e3(L) increases with L at fixed coupling; no proof, sparse evidence"
+  },
+  "measure_near_flat_threshold_estimate": {
+    "note": "beta solving beta*sigma = L*log(K*(24 beta)^1.5)+1 at sigma=(1/(1408 N^5))^2, L=4N^4, K=4*sqrt(pi); asymptotic cap estimate, not formal",
+    "beta": {
+      "N4": 1.4038794882043123e+17,
+      "N8": 2.818370767076818e+21,
+      "N16": 5.463781555091033e+25,
+      "N32": 1.0334762028167777e+30
+    }
+  },
+  "flux_sector_threshold_estimate": {
+    "note": "beta where the explicit theorem gives E*L <= about 0.1, using epsilon=0.1/n; asymptotic cap estimate, not formal",
+    "values": {
+      "n2": {
+        "beta": 776305.3129394511,
+        "sigma_condition": 776305.3129394511,
+        "tau_condition": 365125.2911203026
+      },
+      "n4": {
+        "beta": 127426972.89043841,
+        "sigma_condition": 127426972.89043841,
+        "tau_condition": 9959145.789600588
+      },
+      "n8": {
+        "beta": 19868315675.92019,
+        "sigma_condition": 19868315675.92019,
+        "tau_condition": 291053630.3421866
+      },
+      "n16": {
+        "beta": 2995531506052.778,
+        "sigma_condition": 2995531506052.778,
+        "tau_condition": 9141690548.0564
+      }
+    }
+  },
+  "crossover_scan_fine": {
+    "sizes": [
+      6,
+      8,
+      10,
+      12
+    ],
+    "beta_std": [
+      2.3,
+      2.4,
+      2.5,
+      2.6
+    ],
+    "e3_EL_plateau": {
+      "2.4": {
+        "L6": 1.45,
+        "L8": "3-4",
+        "L10": "about 7",
+        "L12": "10 +- 8"
+      },
+      "2.6": {
+        "L6": 0.3,
+        "L8": 0.6,
+        "L10": 1.2,
+        "L12": "2-3"
+      }
+    },
+    "neutral": "no resolved dip below 2 pi; signal lost beyond L=8",
+    "one_gluon_2p6": "about 2.7 at L=6,8, below tree 3.1, effective mass still drifting"
+  },
+  "convexity_probe": {
+    "script": "scripts/yang_mills_twisted_convexity_probe.py",
+    "quantity": "lowest gauge-orthogonal eigenvalue of second-order slice potential / 4 sin^2(pi/2N), on sampled fields",
+    "configs": {
+      "N4": 6,
+      "N6": 4,
+      "N8": 2
+    },
+    "mean_ratio": {
+      "16": {
+        "N4": 0.568,
+        "N6": 0.259,
+        "N8": -0.063
+      },
+      "64": {
+        "N4": 0.846,
+        "N6": 0.772,
+        "N8": 0.704
+      },
+      "256": {
+        "N4": 0.93,
+        "N6": 0.895,
+        "N8": 0.89
+      },
+      "1024": {
+        "N4": 0.972,
+        "N6": 0.96,
+        "N8": 0.959
+      }
+    },
+    "N4_beta4": -0.473,
+    "zero_crossing_estimate": {
+      "N4": 6,
+      "N6": 12,
+      "N8": 17
+    },
+    "caveat": "typical fields only; necessary not sufficient; extrapolated crossings"
+  },
+  "hessian_field": {
+    "theorems": [
+      "second_derivative_field",
+      "hessian_field_lower",
+      "hessian_field_coercive",
+      "near_flat_coercive"
+    ],
+    "bound": "Hess >= beta*(sum curl energy - (3072 r^2 + 192 r)*||X||^2); >= (2 beta/N^2)||X||^2 for flat-div-free X, r <= 1/(100 N^2)",
+    "scope": "pointwise, along geodesics exp(tX)U at t=0; not reduced-potential convexity, not a statement about the measure",
+    "beta_needed_for_region_to_carry_measure": "beta >~ N^14 log N, per measure_near_flat_threshold_estimate",
+    "decision": "Brascamp-Lieb toy not pursued as a route to Target A: convexity threshold is a power of N even numerically; physical trajectory needs log N"
+  },
+  "covariant_block": {
+    "theorems": [
+      "weitzenbock_le",
+      "block_poincare",
+      "block_coercive",
+      "cov_comm",
+      "hessian_cov_lower",
+      "cov_block_lower",
+      "cov_block_coercive",
+      "measure_smallDefects"
+    ],
+    "bound": "sup defect <= 1/(1000 L^2) => Hess + beta||div_U X||^2 + (beta/4L^2) sum||A_U X_mu||^2 >= (beta/16 L^2)||X||^2; independent of N and of distance from flat",
+    "scope": "L2 operator bound on a quadratic form at U; no pointwise decay, no group block-spin constraint, no effective action",
+    "beta_estimate_global_tail": {
+      "L1": {
+        "N4": 44600000000.0,
+        "N16": 13700000000000.0,
+        "N64": 4070000000000000.0
+      },
+      "L2": {
+        "N4": 783000000000.0,
+        "N16": 236000000000000.0,
+        "N64": 6.97e+16
+      },
+      "L4": {
+        "N4": 13700000000000.0,
+        "N16": 4070000000000000.0,
+        "N64": 1.19e+18
+      }
+    },
+    "numerics_gap": "no non-gauge far-from-flat small-defect background was tested; smooth backgrounds tried had defects 1.2-2.0"
+  },
+  "bad_set": {
+    "theorems": [
+      "block_coercive_avoids",
+      "measure_bad_density",
+      "cross_local",
+      "hessian_avoids"
+    ],
+    "beta_for_excluded_fraction_t1_asymptotic_cap": {
+      "L1": {
+        "frac0.1": 1579865952.3902698,
+        "frac0.01": 17232327808.064117
+      },
+      "L2": {
+        "frac0.1": 28039063553.39611,
+        "frac0.01": 303247770222.59174
+      },
+      "L4": {
+        "frac0.1": 492649849031.4346,
+        "frac0.01": 5291143506211.032
+      }
+    },
+    "scope": "coercive on a subspace of small relative codimension uniform in N; excluded directions uncontrolled; fixed L; not a Poincare inequality"
+  },
+  "block_map": {
+    "theorems": [
+      "blockLink_act",
+      "blockLink_flat",
+      "blockLink_close",
+      "blocked_defect"
+    ],
+    "scope": "worst-case deterministic; no statement about the blocked law",
+    "numerics": "path product ratio tends to 2 (perimeter law); averaged maps approach 1; beta shift independent of beta through level 2, slope 0.129 not confirmed; see yang_mills_block_map_2026_10_30.json"
+  },
+  "block_law": {
+    "theorems": [
+      "measure_blocked_links",
+      "close_of_not_notGood",
+      "smooth_grad",
+      "cov_split"
+    ],
+    "scope": "location of the blocked field on most links, uniform in volume; worst-case constants; no density, no effective action"
+  },
+  "ibp": {
+    "theorems": [
+      "gibbs_ibp",
+      "force_bound",
+      "ibp_reference",
+      "ibp_second",
+      "plaquette_ibp",
+      "own_le_of_cross",
+      "ibp_mixed"
+    ],
+    "statement": "E[(d_X S)^2]=E[d2_X S] for all X, beta>=0, N; E[(d_X S)^2]<=48 beta |X|^2",
+    "scope": "force along X, not plaquette defects; no gap",
+    "numeric_check": "yang_mills_twisted_ibp_check_2026_10_30.json, N=4, agreement within errors at about 2%",
+    "open_conjecture": "cross terms E[A_q A_p] >= 0 would give E|Im c_p|^2 <= 3/(2 beta), volume-free; all 120 pairs positive for beta_std>=2 at N=8, unresolved at beta_std=1 (worst -0.0014+-0.0005); see yang_mills_twisted_loop_eq_2026_10_30.json"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: verified exact-normalization gain and stronger local-source factorization constraint; diagnosed the remaining volume cost",
+  "scope": "The collective response construction now covers the continuous family of every spatial link and every Haar rotation. An integral Bessel inequality controls the entire response energy with the same quadratic-form coefficient kappa, with no added factor equal to the number of channels or rotations. It is instantiated with the canonical physical scores from the original full gauge-averaged Wilson transition and the actual raw conditional row law. The upper form is the exact double-Haar Gram kernel quadratic form; each kernel entry agrees with the earlier canonical finite-family physical Gram entry. The resulting collective stationary energy bound and time sum use exactly the Haar family in the proved lower comparison, yielding conditional slab contraction A*kappa/(k+A*kappa). Both the actual ground-law factorization and a suitable bound on the physical integral form remain explicit unproved analytic hypotheses. For arbitrary continuous Haar mixtures, the raw squared norm splits into the physical squared norm plus a nonnegative removed squared norm. The physical mixture is minimal among continuous representations of the same mixed response on all continuous physical test functions. This closes a response-family compatibility gap, not the distant mixed-ground sum, a uniform kappa estimate, the mass gap or the continuum limit. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactHaarFrame",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalHaarFrame",
+    "UnifiedTheory.Clay.YangMills.WilsonHaarProjection"
+  ],
+  "new_declarations": 37,
+  "retained_declarations": 7561,
+  "cumulative_declarations": 7598,
+  "proof": {
+    "continuous_frame": "For a finite channel set I and compact rotation space Q with probability measure nu, define H_a(x)=sum_i integral a_i(q)*s_i(q,x) dnu(q) and size(a)=sum_i integral a_i(q)^2 dnu(q). A bound integral H_a^2 dmu<=kappa*size(a) for all continuous a implies sum_i integral pairing(s_i(q),f-E_mu f)^2 dnu(q)<=kappa*Var_mu(f).",
+    "no_count_loss": "The proof chooses the continuous response itself as coefficient a, uses the exact adjoint/Fubini identity and Cauchy-Schwarz, then cancels the nonzero response norm. The zero-norm case is handled separately. Neither a channel-count factor nor a discretization factor enters.",
+    "actual_physical_family": "s_e(q,v)=P_full(R_e(q)u,v)/P_full(u,v)-1, where P_full is the original full gauge-averaged Doob transition. All pairings and squared norms use the actual raw row law at u. Joint continuity, gauge invariance and pairing preservation are proved.",
+    "actual_haar_binding": "The resulting summed Haar response energy is exactly totalEnergy in WilsonHaarLinkResponse. The pointwise physical integral-form estimate gives totalEnergy(P f)<=kappa*loss(f), then the same kappa times the telescoping total variance loss over k steps.",
+    "matching_lower_family": "Combining this upper bound with the existing actual Haar lower comparison and ground-law factorization premise gives Var(P^k f)<=A*kappa/(k+A*kappa)*Var(f). The family mismatch is removed; the two analytic estimates are still required.",
+    "exact_kernel": "The physical mixture norm equals sum_e integral_q sum_d integral_r a_e(q)*a_d(r)*K(e,q;d,r). K is the actual continuous Gram kernel under the baseline row law, and each entry equals the corresponding previously defined finite-family physical Gram matrix entry.",
+    "integral_projection": "For every continuous coefficient family a, rawMixture-physicalMixture is orthogonal to every continuous physical test. Hence rawForm=physicalForm+removedForm and physicalForm<=rawForm.",
+    "minimality": "For the same a and baseline, any continuous r representing the mixed physical response on every continuous physical test has squared row norm at least physicalForm. This extends the earlier finite-family minimum to arbitrary continuous Haar mixtures."
+  },
+  "decision": "Attack the actual signed continuous physical Gram form now bound to the lower Haar family. Do not pay the known per-link full-variance cost or silently substitute a small-rotation/finite-family upper estimate. A quantitative bound is still the main unresolved step.",
+  "not_inferred": [
+    "Prove a quantitative bound on the actual signed physical Haar integral quadratic form, uniform in the needed baseline inputs or with a rigorously controlled source-weighted exceptional-input replacement. The new theorem does not supply such a bound.",
+    "Prove actual slice ground-law factorization on physical sources and bounded A*kappa/k on an independently established physical scaling trajectory. The known A>=1/4 constraint remains in force.",
+    "The continuous Gram kernel retains correlations among both links and rotations. No pointwise locality, distant decay or identification with the raw mixed-log-ground formula is asserted for the projected kernel.",
+    "A bound for a finite chosen list of rotations, or only for beta-scaled small rotations, is not automatically a bound on this full-Haar form. The new theorem specifies the matching integral hypothesis explicitly.",
+    "The integral physical projection proves no strict numerical improvement by itself; minimality is relative to the same baseline row law and the same mixed physical response.",
+    "The literal distant mixed-ground sum remains open. No uniform physical contraction, surviving nonzero continuum source, or full Yang-Mills theory with all required axioms has been proved. All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_haar_frame_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

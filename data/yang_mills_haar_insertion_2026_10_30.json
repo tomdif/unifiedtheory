@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual full-block coercivity, physical transfer loss and local source approximation errors audited",
+  "current_goal_turn_classification": "progress: polynomial Haar insertion, actual temporal factor removal, background moments and physical source-squared temporal tails with quantified variance-loss cost proved",
+  "scope": "The normalized fundamental SU(2) crossing kernel k_beta(x,y)=exp(-beta*||x^-1*y-1||^2) has constant Haar row integral m(beta). An actual Bochner mean in its constructed Hilbert completion proves that k_beta-m(beta) is positive definite. Tensor-product Hilbert features preserve positivity when this remainder is multiplied by any other positive kernel. Hence inserting one marked crossing multiplies its compact reflection form by at least m(beta), for every continuous complex half-source and any finite collection of other nonnegative-coupling Wilson crossings. The proved inverse-mass bound is m(beta)^-1<=cap(beta)=4*Z_scalar(0)*beta*sqrt(beta)/Gamma(3/2), beta>=3/4. This removes an exponential coupling cost from this integral-form comparison. The application to the actual raw Wilson time-slab kernel retains both spatial potentials and all other temporal kinetic factors: deleting one marked temporal factor gives Q_cut(f)<=cap(beta)*Q_raw(f), for every continuous complex half-source. Specializing to the actually constructed full-transfer ground state psi gives integral psi(u)*K_cut(u,v)*psi(v)<=cap(beta)*||T_full||, with no volume factor and no supplied reflection premise on the ground. The actual normalized stationary raw two-slice law is constructed and proved a probability measure from that same ground and full eigenvalue. For D_e(u,v)=||u_e^-1*v_e-1||^2, its exponential moment is <=cap(beta), and its tail is P(D_e>=t)<=exp(-beta*t)*cap(beta). The background tail is then strengthened to an actual source-sensitive bound. For every continuous real F, E[exp(beta*D_e)*|F(u)|*|F(v)|]<=cap(beta)*M(F). For every continuous gauge-invariant physical F, the exact raw time-increment identity and original full-operator positivity give integral_(D_e>=t) F(u)^2 dnu<=2*loss(F)+2*exp(-beta*t)*cap(beta)*M(F). The coefficient of loss is retained explicitly; no small loss-only absorption is claimed. This is a temporal-gauge defect estimate, not a spatial-plaquette estimate. The spatial omitted-plaquette ground-state reflection identification, actual distant/signed-form control, independent global coercivity and continuum construction remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor",
+    "UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor",
+    "UnifiedTheory.Clay.YangMills.PositiveKernelInsertion",
+    "UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion",
+    "UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor",
+    "UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment",
+    "UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail"
+  ],
+  "new_declarations": 71,
+  "retained_declarations": 8566,
+  "cumulative_declarations": 8637,
+  "formal_results": {
+    "kernel_remainder": "k_beta-m(beta) is a constructed positive kernel, using an actual Hilbert-valued Haar integral.",
+    "insertion_floor": "For any positive continuous kernel B and continuous complex half-source f, Q_(B*k)(f)>=m(beta)*Q_B(f), including arbitrary finite products of other Wilson crossings.",
+    "polynomial_price": "m(beta)^-1<=cap(beta)=4*SU2ScalarTilt.partition(0)*beta*sqrt(beta)/Gamma(3/2), beta>=3/4.",
+    "actual_temporal_deletion": "The exact raw Wilson time-slab kernel factors into the cut kernel and one normalized SU(2) crossing. Both spatial weights and all other kinetic factors are retained. Q_cut(f)<=cap(beta)*Q_raw(f) for every continuous complex f.",
+    "actual_normalizer": "For the full-transfer ground psi, integral psi(u)*K_cut(u,v)*psi(v)<=cap(beta)*||T_full||. The original full eigenvalue is retained.",
+    "stationary_law": "The raw two-slice law with density K_raw(u,v)*psi(u)*psi(v)/||T_full|| is proved a probability measure.",
+    "temporal_defect": "For D_e=||u_e^-1*v_e-1||^2, E[exp(beta*D_e)]<=cap(beta) and P(D_e>=t)<=exp(-beta*t)*cap(beta), independently of spatial volume.",
+    "source_product_moment": "Every continuous real F satisfies E_nu[exp(beta*D_e)*|F(u)|*|F(v)|]<=cap(beta)*M_pi(F). The actual ground and original normalization are retained.",
+    "physical_increment": "For continuous gauge-invariant F, E_nu[(F(u)-F(v))^2]=2*(M(F)-<F,PF>_pi)<=2*loss(F).",
+    "physical_source_tail": "For every continuous physical F, integral_(D_e>=t) F(u)^2 dnu<=2*loss(F)+2*exp(-beta*t)*cap(beta)*M(F), beta>=3/4. This is source-sensitive temporal localization, with an explicit loss cost."
+  },
+  "next_attack": {
+    "spatial_geometry": "Build the actual spatial link-reflection split for the model with a marked spatial plaquette omitted at all time slices, prove reflection positivity through finite temporal approximants, and identify the marked plaquette as a Wilson crossing before applying the proved insertion floor.",
+    "proposed_norm_bridge_not_formalized": "If T=w*T0*w, w=exp(-beta*D_p/2), T0 is positive, and psi0 is its unit top ground, positivity gives ||T||>=||T0||*(integral w*psi0^2)^2. A proved reflection insertion in the actual modified marginal would give integral w*psi0^2>=m(beta/2), hence ||T0||/||T||<=cap(beta/2)^2 for beta>=3/2. Neither the actual spatial reflection premise nor this instantiated norm comparison is supplied by the current modules.",
+    "source_control": "The temporal endpoint source-squared tail now has the explicit bound 2*loss+2*exp(-beta*t)*cap(beta)*mass. Use the actual weight required by temporal pinning or the variance-pair argument and account for the non-small loss coefficient. Extend this to the precise two-neighbor or spatial-defect source without substituting background probabilities.",
+    "global_target": "Close the actual distant mixed-ground or signed physical-form estimate and compatible independent global coercivity, then the physical trajectory and nontrivial continuum survival."
+  },
+  "not_inferred": [
+    "The constant Haar floor is positive-semidefinite kernel order and integral-form order, not a pointwise kernel lower bound. Pointwise kernel domination cannot be replaced with it without a new argument.",
+    "The concrete deletion removes one temporal kinetic factor exp(-beta*D_e(u,v)). Both spatial potentials are retained. It does not remove a spatial plaquette from either potential or modify the ground Hamiltonian.",
+    "The constructed two-slice law uses the actual raw temporal-gauge kernel, actual full-transfer ground state and full-transfer norm. Raw and full transitions agree on the previously established gauge-invariant physical tests; they are not asserted equal as kernels or on arbitrary nonphysical tests.",
+    "The reflection-form half-source initially enters as conjugate f(u)*f(v). A separate proved argument now controls every physical endpoint squared source on a temporal bad event, at cost 2*loss(F)+2*exp(-beta*t)*cap(beta)*M(F). It does not supply a small multiple of loss alone or the distant connected covariance.",
+    "The background tail and the physical source-squared temporal tail do not imply independence of temporal links, a spatial plaquette tail, or a domain functional inequality. The source loss coefficient is two, not an arbitrarily small absorption constant; the precise two-neighbor variance-pair source still needs its own argument.",
+    "To use the same insertion floor for removal of a spatial plaquette column, construct spatial link-reflection positivity and the marked-crossing identification for the actual modified ground marginal, including periodic geometry and limiting temporal boundaries. Finite spatial volume with infinite time is not invariant under a naive interchange of space and time.",
+    "No polynomial spatial removed-plaquette transfer-norm comparison, actual distant mixed-ground bound, independent global coercivity, physical scale trajectory, nontrivial continuum limit or mass gap is proved. All twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_haar_insertion_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

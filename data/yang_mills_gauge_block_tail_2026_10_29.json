@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual one-vertex gauge-instability source tail bounded locally by physical transfer variance loss",
+  "current_goal_turn_classification": "progress: coordinated finite-block gauge-instability source tails and weak-coupling block-size suppression proved; global obligations remain open",
+  "scope": "Coordinated gauge changes supported on an arbitrary finite vertex block B are controlled with the actual coupled Wilson temporal action. The summed link displacement is at most six times the sum of vertex displacements, so the temporal action variation is at most twelve times that sum. A product Haar Gaussian lower envelope proves mass(36*beta^2)^|B|*C(u,v)<=exp(|B|)*Z_B(u,v); only this reference envelope factorizes, not the Wilson law. The actual block-orbit density is bounded by peakCap(beta)^|B| times its own normalizer, with peakCap=exp(1)*cap(36)*(beta+1)^3. If some simultaneous gauge change on B lowers temporal action by more than t, the actual physical variance-pair contribution of this event is at most exp(-beta*t)*peakCap(beta)^|B| times the original transfer variance loss. For t=delta*|B|, the coefficient is exactly [exp(1)*cap(36)*(beta+1)^3*exp(-beta*delta)]^|B|. For every delta>0 its base tends to zero as beta tends to infinity, giving a subcritical threshold independent of B and ambient volume. Adjacent vertices and all their coupled interactions are allowed. This controls block gauge instability, not fields stable under block changes, distant mixed-ground summability, global physical coercivity or any full Clay obligation.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeBlock",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeBlockTail",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeBlockSource"
+  ],
+  "new_declarations": 35,
+  "retained_declarations": 8026,
+  "cumulative_declarations": 8061,
+  "formal_results": {
+    "block_action": "Parameters are arbitrary independent group elements at vertices in B, extended by identity outside B. The actual gauge action and Haar invariance are constructed. Both endpoint occurrences of every edge are counted, including small periodic lattices.",
+    "geometry": "inputCost(G_B(q)v,v)<=6*sum_(y in B) norm(q_y-1), hence abs(T(u,G_B(q)v)-T(u,v))<=12*sum norm(q_y-1). No separation condition is imposed on B.",
+    "reference_gaussian": "integral_q product_(y in B) exp(-s*norm(q_y-1)^2)=mass(s)^|B| under product Haar. This identity is used only for the lower envelope.",
+    "coupled_normalizer": "mass(36*beta^2)^|B|*C(u,v)<=exp(|B|)*Z_B(u,v). Orbit right invariance retains the same true normalizer after any block gauge change.",
+    "density_domination": "C(u,G_B(q)v)<=peakCap(beta)^|B|*Z_B(u,v), with the existing explicit polynomial peakCap. All interactions between adjacent rotated vertices are retained.",
+    "measurable_event": "E_B(t)={(u,v): exists q, T(u,v)-T(u,G_B(q)v)>t} is open. No minimizer selection or gauge fixing is assumed.",
+    "source_and_loss": "Spatial Wilson factors, the actual ground amplitude and every physical source are invariant under the block gauge action. Haar averaging cancels Z_B. The same previously checked two-endpoint pair source is used, giving mean restricted pair mass<=exp(-beta*t)*peakCap(beta)^|B|*loss(F).",
+    "extensive_threshold": "For t=delta*|B| the coefficient is exactly the |B|-th power of epsilon(beta,delta)=exp(1)*cap(36)*(beta+1)^3*exp(-beta*delta).",
+    "weak_coupling": "For each delta>0, epsilon(beta,delta) tends to zero as beta tends to infinity. Eventually beta>=0 and epsilon<1, with a threshold independent of block size and ambient spatial volume."
+  },
+  "next_attack": {
+    "residual_fields": "Study fields stable under coordinated block gauge changes. Establish appropriate regularity/alignment estimates with the actual source weight; further gauge-only normalization will not supply physical coercivity by itself.",
+    "multiscale_use": "Use the quantitative block-size price in a justified decomposition, preserving interaction and event dependence rather than assuming independent bad blocks.",
+    "unchanged_targets": "Prove the actual summable connected boundary covariance or signed physical form estimate and the independent direct Haar lower comparison needed for contraction."
+  },
+  "not_inferred": [
+    "The controlled event requires a witnessed temporal-action decrease by a gauge change supported in a specified block. It does not classify or control the residual fields stable under all such changes.",
+    "Adjacent vertices within a block are allowed and their Wilson interaction remains coupled. This theorem is not a product law or an independence statement for arbitrary bad-block events.",
+    "The Gaussian lower envelope factorizes under reference Haar measure. No factorization of the actual row, ground law or endpoint marginal is assumed or concluded.",
+    "Gauge rotations leave physical observables unchanged and cannot themselves provide a lower response/coercivity comparison. This result controls a source-weighted exceptional part only.",
+    "To exploit the bound in a small-field domain argument, prove regularity/alignment of appropriate orbit-minimized fields and control remaining gauge-invariant plaquette defects and physical modes.",
+    "Distant mixed-ground summability, the physical collective Haar form, independent global coercivity, physical scaling, a surviving continuum theory and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_gauge_block_tail_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "title": "Actual SU(2) conditional influence: a strong-coupling bound and a weak-coupling obstruction",
+  "baseline": {
+    "declaration_count_reported_by_parent": 4493,
+    "baseline_sources_immutable": true
+  },
+  "status": "Finite-cutoff progress and a precisely delimited obstruction. The physical mass gap and all twelve Clay requirements remain open.",
+  "normalization": {
+    "group": "SU(2), represented by unit quaternions q in R^4",
+    "action": "S_beta(U) = beta sum_p (2 - Re Tr U_p), with unnormalized fundamental trace Tr(q)=2 Re(q)",
+    "conditional_law": "nu_A(dq) = exp(2 beta <q,A>) Haar(dq) / Z_beta(A)",
+    "staple_sum": "A = sum of six actual exterior unit-quaternion staples; r = ||A|| <= 6",
+    "scalar_mean": "m(kappa) = SU2HaarTilt.axisMean(kappa), the actual Haar expectation of q.re under exp(kappa q.re)",
+    "metric": "Quaternion chord distance ||q-q_prime|| on each link. Infinitesimal subgroup speed agrees with the usual unit-sphere geodesic normalization. Uniform rescaling of all link metrics cancels in influence ratios.",
+    "operator_distinction": "The Euclidean four-dimensional Wilson single-link heatbath is studied here. It is not the temporal Wilson slab Doob operator, its gauge-reduced version, or the reconstructed physical Hamiltonian."
+  },
+  "new_certified_module": {
+    "path": "UnifiedTheory/Clay/YangMills/SU2ConditionalInfluence.lean",
+    "verification_scope": "Lean-certified actual-Haar differential responses, quaternion metric bounds, and actual original-Wilson-law scalar lower estimates. No formal Dobrushin matrix or Wasserstein distance is defined in this module.",
+    "key_apis": [
+      "mean_path_perpendicular",
+      "aligned_mean_hasDerivAt",
+      "rotating_staple_norm",
+      "rotating_staple_distance",
+      "probe_lipschitz",
+      "local_response_constant_lower",
+      "local_row_not_contracting",
+      "directional_response_bounds",
+      "directional_response_good",
+      "perpendicular_response_formula",
+      "clipped_le_eighteen_perpendicular",
+      "actual_annealed_row_lower",
+      "annealed_lower_envelope_tendsto",
+      "actual_annealed_row_eventually_gt_one"
+    ],
+    "results": [
+      "For differentiable A(t), A(t0) nonzero and <A(t0),B>=0, derivative E_{nu_A(t)}<q,B> at t0 equals m(2 beta ||A||)<A_prime,B>/||A||.",
+      "A(t)=(5+cos t)1+sin t I is a sum of five fixed unit staples and one genuine rotating unit staple. The probe I has norm one, its response derivative at zero is m(12 beta)/6, and the input chord displacement is at most |t|.",
+      "Every uniform local mean-response bound along that path has constant C >= m(12 beta)/6. For beta>3/16, 18 C>1.",
+      "For every unit B perpendicular to A, the exact affine-direction response is m(2 beta ||A||)/||A||. Its scalar lower proxy J_beta(A)=18 m(2 beta ||A||)/max(3,||A||) is continuous and nonnegative for beta>=0.",
+      "For 3<=||A||<=6 and beta>0, J_beta(A)>=3-3/(2 beta).",
+      "Under the actual interacting Wilson law, E J_beta(A_e) >= (3-3/(2 beta)) (1-P[||A_e||<=3]). This uses the real staple field and original Wilson measure, not an arbitrary marginal or assumed concentration estimate.",
+      "For every beta_i tending to infinity, every sequence/net of allowed lattice volumes and selected links, the explicit lower envelope tends to 3. The original-law expectation of J eventually exceeds 1."
+    ],
+    "verification": "PASS: source check and real scoped Lake build; no new warnings; ten principal axiom checks use only propext, Classical.choice and Quot.sound.",
+    "sha256": "22f69c22858ea7ba86584b9d9da173e577a239dabd7fe39cb1e91968e1c5c4ff",
+    "bytes": 17833,
+    "declaration_count": 28,
+    "theorem_count": 24,
+    "definition_count": 4,
+    "scoped_build": {
+      "command": [
+        "lake",
+        "build",
+        "UnifiedTheory.Clay.YangMills.SU2ConditionalInfluence"
+      ],
+      "jobs": 3453,
+      "module_seconds": 6.3,
+      "log": "/tmp/su2-influence-build-final.log",
+      "new_module_warnings": 0,
+      "old_dependency_warnings_replayed": true
+    },
+    "principal_axiom_check": {
+      "declarations": 10,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "log": "/tmp/su2-influence-axioms.log"
+    }
+  },
+  "eighteen_neighbor_geometry": {
+    "verification_scope": "Natural mathematics, checked directly against WilsonSingleLinkStaples.forwardStaple/backwardStaple. Not a new Lean lattice-count theorem.",
+    "lattice_condition": "Periodic n^4 lattice, n>=3, selected positive link e=(x,mu).",
+    "for_each_transverse_nu": {
+      "forward_staple": "U(x,nu) U(x+e_nu,mu) U(x+e_mu,nu)^(-1)",
+      "backward_staple": "U(x-e_nu,nu)^(-1) U(x-e_nu,mu) U(x-e_nu+e_mu,nu)",
+      "parallel_neighbors": [
+        "(x+e_nu,mu)",
+        "(x-e_nu,mu)"
+      ],
+      "transverse_neighbors": [
+        "(x,nu)",
+        "(x+e_mu,nu)",
+        "(x-e_nu,nu)",
+        "(x-e_nu+e_mu,nu)"
+      ]
+    },
+    "disjointness_proof": [
+      "Different transverse directions have different link directions except for the opposite parallel links.",
+      "The six opposite parallel-link bases x plus or minus e_nu are distinct for n>=3.",
+      "For fixed nu, the four nu-link bases differ in their mu and nu coordinates and are distinct already for n>=2.",
+      "Thus the three transverse directions give 3*6=18 distinct other links, each occurring in exactly one of the selected link’s six staples. The n>=3 restriction avoids the n=2 collision of opposite parallel links."
+    ],
+    "isometry": "For fixed other links, a staple is obtained from its varied link by multiplication on either side and possibly inversion. All these maps are chord-metric isometries of the unit quaternions; their differentials map the link tangent isometrically onto the tangent v-perp of the affected unit staple."
+  },
+  "worst_boundary_obstruction": {
+    "verification_scope": "Natural-math interpretation of certified scalar responses through the above actual lattice geometry and the Kantorovich dual lower bound. No physical gap nonexistence claim.",
+    "definition": "c_ej = sup_{exteriors differing only at j} W1(nu_e(.|U),nu_e(.|U_prime)) / ||U_j-U_prime_j||. alpha_e = sum_{j!=e} c_ej.",
+    "aligned_construction": [
+      "Set every exterior link to 1. All six staples equal 1, so A=6*1.",
+      "Change any one of the 18 neighbor links along exp(t I). Exactly one staple becomes exp(t I) or exp(-t I); use probe I or -I to remove the orientation sign.",
+      "The output probe is 1-Lipschitz, so any coupling gives W1 >= absolute change of that probe mean.",
+      "Taking t to zero and using the certified derivative and chord speed yields c_ej >= m(12 beta)/6.",
+      "Consequently alpha_e >= 3 m(12 beta) >= 3-3/(8 beta). In particular the ordinary unweighted row-sum Dobrushin condition fails for beta>3/16."
+    ],
+    "balanced_staples": [
+      "A cancelling exterior is also available: set the transverse links in the six staples to 1 and choose the six distinct opposite parallel links to be three +1 and three -1. Then A=0.",
+      "The normalized conditional law is Haar and its coordinate covariance is exactly I/4. A unit tangent displacement of any one staple therefore has linear-probe response beta/2.",
+      "This gives the stronger natural-math lower bound alpha_e >= 9 beta, hence failure for beta>1/9. The actual smooth unit-link path version at A=0 uses ordinary differentiability of the compact Haar exponential integral; this particular lattice-path/W1 statement is not packaged as a Lean theorem here.",
+      "The aligned construction is independently useful because it avoids relying on rare cancelling exteriors.",
+      "The zero-staple derivative follows directly by uniform first-order Taylor expansion of exp(2 beta <q,A(t)>) on compact S^3: the denominator has zero first derivative, the Haar first moment is zero, and its covariance is I/4. Thus the response derivative is (beta/2) A_prime(0), without assuming a differentiability theorem about an unspecified effective action."
+    ],
+    "limits": [
+      "Failure of this sufficient mixing criterion is not failure of uniqueness, a physical mass gap, or continuum existence.",
+      "The witnessing single-link linear probes are gauge variant. Gauge-invariant collective norms and cancellations are not ruled out.",
+      "No assertion is made about a choice of nonuniform link weights, multiscale block metrics, or a gauge-fixed quotient criterion without separate analysis."
+    ]
+  },
+  "annealed_obstruction": {
+    "verification_scope": "The scalar proxy and its original-law lower expectation are Lean-certified. Its domination by the complete local W1 differential row is natural mathematics, supplied below.",
+    "local_coefficient": "At fixed exterior U, define ell_linear_ej(U) as the supremum over unit imaginary-quaternion generators X and unit ambient vectors B of the absolute derivative of E_{nu_e}[<q,B>] when link j follows U_j exp(tX). This is a lower bound for the full local W1 differential influence.",
+    "pointwise_derivation": [
+      "For any affected unit staple v and A!=0, the orthogonal complement of span(A,v) in R^4 has dimension at least two. Choose a unit D perpendicular to both.",
+      "Because D is tangent to the staple sphere at v, an actual unit-speed change of any one of its three constituent links realizes this staple derivative, by the isometry noted above.",
+      "The probe F_D(q)=<q,D> is 1-Lipschitz and perpendicular to A. The exact response is m(2 beta r)/r.",
+      "Hence each of the 18 local differential coefficients is at least m(2 beta r)/r. Their sum is at least 18 m(2 beta r)/r >= J_beta(A). At A=0, J_beta(0)=0 and the lower inequality is automatic.",
+      "Each linear coefficient is a maximum over the fixed compact parameter set S^2 x S^3 of a continuous covariance expression, 2 beta |Cov(<q,B>,<q,D_ej(U)X>)|. The actual staple differential D_ej(U) is continuous in the finitely many exterior links. Compact normalized Haar differentiation gives continuity of the covariance, and the maximum theorem gives continuity, hence measurability, of ell_linear_ej(U). Therefore the original-law expectation of the linear row is well defined and is at least E J_beta(A)."
+    ],
+    "actual_probability_input": "WilsonBadStapleProbability.bad_probability_tendsto, derived from the actual energy cost and the proved Wilson entropy/free-energy bound, supplies P_beta(r<=3)->0 uniformly in changing volume.",
+    "conclusion": "The annealed row of absolute linear-probe differential influences has liminf at least 3 along beta->infinity. The full supremum-over-Lipschitz-probes row is no smaller. Replacing a supremum over exteriors by either of these original-law averages therefore cannot yield a contraction constant below 1.",
+    "distinction": "This does not bound the spectral radius of a signed/cancelled influence operator or the response of fixed gauge-invariant observables; the supremum over direction/probe is essential."
+  },
+  "volume_independent_strong_coupling_estimate": {
+    "verification_scope": "Self-contained natural-math derivation, not newly Lean-certified as a full Wasserstein/Dobrushin theorem.",
+    "derivation": [
+      "For any probability law on the unit sphere and any chord-1-Lipschitz F, independent q,q_prime give Var(F)=(1/2)E(F(q)-F(q_prime))^2 <= (1/2)E||q-q_prime||^2 = 1-||E q||^2 <= 1.",
+      "For G_D(q)=<q,D>, Var(G_D)<=||D||^2. Compactness makes every Lipschitz probe bounded and justifies differentiating the normalized exponential integral.",
+      "For A_s=A+sD, d/ds E_{nu_A_s}F=2 beta Cov(F,G_D). Cauchy-Schwarz therefore gives an absolute derivative bound 2 beta ||D|| for beta>=0.",
+      "Integrating along the straight staple interpolation A_s=(1-s)A+sA_prime gives |E_nu_A F-E_nu_A_prime F|<=2 beta ||A-A_prime||. On this compact metric space Kantorovich duality gives W1(nu_A,nu_A_prime)<=2 beta ||A-A_prime||.",
+      "If one actual exterior neighbor link changes, exactly one staple changes and its chord distance equals that of the link. Thus c_ej<=2 beta; all non-neighbor coefficients vanish. For n>=3, alpha_e<=36 beta independently of volume.",
+      "In particular beta<1/36 gives a genuine volume-independent single-site Wasserstein Dobrushin influence bound alpha<1. Standard associated Lipschitz coupling/uniqueness estimates can then be applied; this calculation alone does not identify an L2 physical transfer gap."
+    ],
+    "why_not_physical": "Every positive logarithmically growing weak-coupling branch beta(a) tends to infinity and eventually leaves this strong-coupling interval. A fixed-lattice strong-coupling mixing theorem cannot be analytically continued to that trajectory without new estimates."
+  },
+  "why_small_staple_upper_bounds_do_not_close_mixing": {
+    "all_lipschitz_good_region_derivation": [
+      "Let u=A/r. For any chord-1-Lipschitz F, Var(F)<=E(F(q)-F(u))^2<=E||q-u||^2=2(1-m(2 beta r)).",
+      "Similarly Var(G_D)<=2(1-m(2 beta r))||D||^2. Thus |d E F/ds|<=4 beta (1-m)||D||<=3||D||/r, using the certified Gamma-derived mean concentration 1-m<=3/(4 beta r).",
+      "Combining this with the global 2 beta bound yields an infinitesimal scalar envelope min(2 beta,3/r). For the original Wilson exterior distribution, its mean is at most 3/r0+2 beta P(r<=r0).",
+      "The certified probability estimate is P(r<=r0)<=18 energyEnvelope(beta)/(6-r0), with energyEnvelope(beta)=1568/beta^2+(16/(3 beta))log(2 beta+5). Multiplication by beta leaves an O(log beta) bound on the bad contribution.",
+      "Even a separately established exponentially small bad-event probability would only remove that term. The remaining summed eighteen-neighbor upper envelope is 54/r0>9 for r0<6, and the proved lower-proxy argument shows an actual annealed absolute-row obstruction, rather than merely a loose upper estimate."
+    ],
+    "important_transport_limit": "This original-law estimate is for infinitesimal response. A finite exterior perturbation interpolates through other tilted exterior laws; the original-law probability bound cannot be applied to all those laws without an additional change-of-measure or stability estimate."
+  },
+  "primary_literature_check": [
+    {
+      "title": "Shen, Zhu and Zhu: A stochastic analysis approach to lattice Yang-Mills at strong coupling",
+      "url": "https://arxiv.org/pdf/2204.12737",
+      "identifiers": [
+        "Eq. (1.2), PDF p.4: action coefficient N beta_paper",
+        "Assumption 1.1 / Eq. (1.3), PDF p.4",
+        "Theorem 1.4, PDF p.6",
+        "Corollary 1.6, PDF pp.7-8"
+      ],
+      "verified_summary": "The authors prove strong-coupling functional inequalities, uniqueness and spatial clustering for actual lattice gauge measures. Their SU(N) condition gives K=N/2-8(d-1) beta_repo>0 after normalizing beta_repo=N beta_paper. Thus SU(2), d=4 has beta_repo<1/24 and K=1-24 beta_repo. The Langevin-time Poincare constant is not itself the physical transfer-time gap.",
+      "normalization_status": "Conversion is our algebraic inference from their displayed action and threshold. No weak-coupling extension inferred."
+    },
+    {
+      "title": "Michael R. Douglas: lgt strong-coupling Lean development",
+      "url": "https://github.com/mrdouglasny/lgt/blob/b8793ccf6a51e00e9e2b1685ba191b8626e37137/LGT/MassGap/StrongCoupling.lean",
+      "commit": "b8793ccf6a51e00e9e2b1685ba191b8626e37137",
+      "verified_summary": "Read the actual headline theorem ym_mass_gap_exponential_decay, lines 1971-1988, with its explicit small-coupling assumption. It is a U(n) lattice plaquette-covariance decay theorem. The source-level statement does not assert a four-dimensional continuum construction.",
+      "verification_limit": "Read-only statement inspection; no independent rebuild or full dependency/axiom audit performed. No source copied or imported into this repository."
+    }
+  ],
+  "remaining_collective_target": {
+    "required_change": "Use a gauge-invariant collective norm or a finite physical-block estimate that preserves cancellations before taking absolute values. The failed raw-link scalar row norm is not the correct quantity to force below one at weak coupling.",
+    "concrete_estimate_to_seek": "For the actual interacting block conditional expectation operators, bound the connected responses of gauge-invariant interior loop/source observables to boundary perturbations in a norm with volume-uniform constants at a fixed physical block diameter. Derive the estimate from the actual Wilson action and evolved effective law, including all mixed derivatives and the nonlocal ground-state density.",
+    "not_yet_proved": [
+      "Uniform weak-coupling block functional inequality for the actual ground-state law psi^2 Haar.",
+      "A cancellation-sensitive inter-block influence or factorization estimate valid on the physical running trajectory.",
+      "Comparison in correctly normalized physical time giving the required excited/top transfer eigenvalue ratio.",
+      "A nonzero physical continuum limit and its gauge-invariant local fields."
+    ],
+    "scope": "No new assumed-gap wrapper is counted as closure. The present results show why a concrete candidate estimate fails and provide a verified target change, but do not supply the missing collective estimate."
+  },
+  "independent_review": {
+    "reviewer": "full_transfer_audit swarm agent",
+    "scope": "Natural-math geometry, tangent response, original-law proxy and strong-coupling constants",
+    "verdict": "Passed; exact 18-neighbor geometry for n>=3, inverse orientations and chord metric isometries checked. The proxy is zero at A=0 while the true unit tangent response there is beta/2. No ground-state-law or physical-transfer conclusion."
+  }
+}

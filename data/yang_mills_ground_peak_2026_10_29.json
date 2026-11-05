@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: verified the direct-Haar necessary lower-constant budget and its obstruction to repairing the separately summed normalized contraction coefficient on the diagnostic path",
+  "scope": "The actual constructed SU(2) slice ground amplitude g has the lower symmetric logarithmic difference log g(R_q u)+log g(R_qinv u)-2 log g(u)>=-66*beta*norm(q-1)^2. This follows from the proved paired row-entropy inequality and nonnegative actual row relative entropy. It is a one-sided second-difference estimate, not convexity or an upper Hessian bound. At a maximum along a true link, g(R_q u)^2>=exp(-132*beta*norm(q-1)^2)*g(u)^2. Exact quaternion Haar integration gives J(s)=exp(-2*s)*axisPartition(2*s) for J(s)=integral exp(-s*norm(q-1)^2), and J(s)*cap(s)>=1 for s>=3/4, where cap(s)=4*scalarPartition(0)*s*sqrt(s)/Gamma(3/2). Compactness, right-Haar invariance and the Gaussian lower envelope therefore give conditionalDensity_e(r,a)<=peakCap(beta)=C*(beta+1)*sqrt(beta+1) for every actual ground-law singleton conditional, every exterior and every beta>=0, independently of volume. Here C=cap(132)>0 is explicit. Every continuous nonnegative source weight is dominated with this same coefficient by its Haar integral. Separately, the relative entropy of the actual g^2 law against its shifted density is at most 132*beta*norm(q-1)^2. These unconditional local quantitative results do not establish distant mixed-ground summability, collective Gram control, variance factorization, a physical trajectory, continuum survival or the mass gap. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonGroundSemiconvex",
+    "UnifiedTheory.Clay.YangMills.SU2GaussianMass",
+    "UnifiedTheory.Clay.YangMills.WilsonGroundPeak"
+  ],
+  "new_declarations": 35,
+  "retained_declarations": 7650,
+  "cumulative_declarations": 7685,
+  "proof": {
+    "actual_logarithmic_bound": "The existing paired row-entropy bound has 66*beta*d^2+Delta_q log g+Delta_qinv log g on its right. Its left side is nonnegative. This yields the lower logarithmic second difference with no regularity assumption on g beyond the constructed continuous positive amplitude.",
+    "peak_envelope": "Exponentiate the logarithmic bound. At a maximum of the actual one-link ground profile, the opposite rotated value is at most the maximum, so cancellation leaves a lower Gaussian envelope for g; squaring gives exponent 132*beta*d^2 for g^2.",
+    "gaussian_haar_mass": "The exact unit-quaternion identity norm(q-1)^2=2*(1-re(q)) converts the Haar Gaussian into exp(-2*s)*axisPartition(2*s). The proved semicircle formula and exact Gamma change of variables yield J(s)*cap(s)=2*denominator(2*s). The existing denominator>=1/2 bound for 2*s>=3/2 supplies the mass lower estimate.",
+    "normalization": "The actual link profile attains a maximum by compactness. Its Haar integral is invariant under changing the baseline link by right multiplication. Integrating the Gaussian envelope at that maximum controls the maximum squared amplitude divided by the actual link integral.",
+    "all_couplings": "Use s=132*(beta+1), at least 132 and larger than 132*beta. Monotonicity of J preserves the bound for beta=0 as well as positive coupling. peakCap(beta)=C*(beta+1)*sqrt(beta+1), C=4*scalarPartition(0)*132*sqrt(132)/Gamma(3/2)>0.",
+    "actual_conditional_binding": "Haar rotations are proved equal to Haar replacement in singleton block coordinates. The new linkMass is exactly the existing ground-law fiberMass, and its normalized profile is exactly the existing conditionalDensity. No surrogate Gibbs density is substituted.",
+    "source_weights": "Pointwise conditional density domination integrates against every continuous nonnegative source weight F, giving E_conditional F<=peakCap(beta)*E_Haar F.",
+    "ground_entropy": "Integrate the lower logarithmic second difference under g^2 Haar. Each shift gain is nonpositive by the previously proved relative-entropy identity, giving entropy(g^2,(g o R_q)^2)<=132*beta*d^2."
+  },
+  "decision": "Use the polynomial actual conditional-density estimate as a local normalization and source-control input. Continue attacking collective correlations; do not infer distant decay or global coercivity from a local peak bound.",
+  "not_inferred": [
+    "The density comparison is a one-link conditional upper bound. It is not a lower density comparison, a spatial mixing estimate or a global variance factorization theorem.",
+    "The logarithmic second difference is bounded below only. No two-sided Hessian estimate, log-concavity, or off-diagonal mixed-ground decay has been proved.",
+    "The new peak bound is polynomial in coupling and independent of spatial volume and exterior. Multiplying such factors across an extensive block would still lose control; a collective estimate remains necessary.",
+    "The source-weighted comparison covers continuous nonnegative tests under the actual singleton conditional. No uniform bound on the full physical Haar Gram form follows from this local comparison alone.",
+    "The distant mixed-ground sum, collective physical Haar upper estimate and compatible physical-scale coercivity remain open.",
+    "No physical renormalization trajectory, nonzero separated/smeared continuum field, full field axioms or continuum mass-gap certificate has been constructed. All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_ground_peak_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

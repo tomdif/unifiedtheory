@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-28",
+  "task": "Attack the remaining physically rescaled source and nonzero-continuum obstacle.",
+  "claim_status": "Partial progress: exact finite-cutoff identities certified; separate SU(2) analysis independently reviewed; no nonzero four-dimensional continuum construction.",
+  "formal_certificate": {
+    "path": "data/yang_mills_separated_source_audit.json",
+    "sha256": "cab3f019a129afd9caf372a8161619ae69ac580c37d83760fe65e31233f1f6b3",
+    "new_declarations": 43,
+    "new_modules": 3,
+    "cumulative_declarations": 3260,
+    "validation": "Real cumulative lake --rehash build, all 43 new public declarations checked for standard axioms, requirements checker passed, prior proof/source/audit/log certificate chain verified. All frozen source hashes and successful logs rechecked. No warnings from the three new modules. Counts include definitions and intermediate lemmas.",
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "local_lean_dependencies": 1350,
+    "fingerprinted_files": 1427,
+    "full_root_build_checked": false,
+    "full_clay_requirements_open": 12,
+    "continuum_candidate_constructed": false,
+    "modules": {
+      "GibbsCrossCovariance": "Generic compact-Gibbs total covariance, centered product, arbitrary scalar scaling, conditional product preservation, and zero mixed moment of removed fluctuations.",
+      "WilsonSeparatedSources": "Finite-product polarization and actual selected-edge Inside S action/source decomposition; geometry proves conditional product factorization when no selected link touches both sources.",
+      "WilsonCrossCovariance": "Original interacting Wilson means, mixed products, covariance and rescaled covariance equal the corresponding actual retained-source quantities; eliminated mixed fluctuation is zero under the original Wilson law."
+    },
+    "explicit_hypotheses": [
+      "Selected links have pairwise disjoint affected-plaquette sets.",
+      "For every selected link, at least one source vanishes on every affected plaquette.",
+      "Continuous real sources obtained from continuous compact-group loop character."
+    ],
+    "not_formalized_here": [
+      "The conversion from fixed physical support separation to affected-plaquette separation.",
+      "Reflection compatibility and positive-half support preservation for the actual checkerboard.",
+      "Any SU(2) asymptotic expansion, bad-region probability or variance lower bound below.",
+      "Any positive retained covariance or physical coupling trajectory."
+    ]
+  },
+  "source_normalization": {
+    "actual_repository": "FiniteCellSmearing.coefficient is a cell integral W_p(a)=integral_cell(p) f, not a cell average. The current proposed field is F_a=Z_a sum_p W_p(a) a_p, Z_a=a^(-4). A cell-average representation of the same field has no additional a^(-4).",
+    "cell_bounds": [
+      "sum_p |W_p| <= ||f||_1",
+      "sum_p |W_p|^2 <= a^4 ||f_periodized||_2^2"
+    ],
+    "plane_warning": "The repo observable uses one fixed plaquette plane. Choosing a selected-link direction in that plane gives two active source weights among six incident plaquettes. For constant plane weight f, fbar=f/3 and sum_p(f_p-fbar)^2=4 f^2/3. This is not a gradient-size anisotropy. The new weighted approximation retains the orientation term explicitly."
+  },
+  "exact_separated_transport": {
+    "identity": "Cov_W(F_f,F_g)=Cov_retained(M_f,M_g), M_f=E_W[F_f|R], whenever no selected link touches both source supports.",
+    "removed_noise": "D_f=F_f-M_f has conditional mean zero. Selected-link noises are conditionally independent. All cross-link terms vanish; same-link mixed terms also vanish under the explicit source-separation condition. Therefore E_W[D_f D_g]=0 exactly, even after arbitrary scalar rescaling.",
+    "scope": "The retained variables remain correlated. Conditional factorization on the selected first block does not propagate automatically to another checkerboard under the effective action.",
+    "reflection_interpretation": {
+      "status": "Natural-math implication with explicit geometric hypotheses; not counted as a new Lean theorem.",
+      "conditions": [
+        "The selected-edge sigma algebra is stable under the Wilson reflection.",
+        "The law is reflection invariant, so conditional expectation commutes with reflection.",
+        "The observable and its retained conditional mean lie in the positive-time half, and no selected link touches both the source and its reflection. A fixed positive-time support margin accommodates the O(a) conditional-mean support enlargement."
+      ],
+      "conclusion": "Then E[(theta D_f)D_f]=0, so the removed fluctuation is OS-null. This is compatible with divergent ordinary E[D_f^2].",
+      "geometry": "For a parallel checkerboard, transverse parity is unchanged by the relevant reflected basepoint changes. Temporal links reverse and shift their time base by one, but time is excluded from their transverse parity. Spatial links see a sign change in the time coordinate, changing parity by an even integer. A full formal binding of this geometry is still required.",
+      "support_warning": "A general noncompact Schwartz function need not have separated support. Use a genuine positive-time gap and the correct cell-support halo; mere disjoint plaquette sets are insufficient."
+    }
+  },
+  "actual_smooth_smear_variance_lower_bound": {
+    "status": "Independently reviewed natural mathematics, not Lean-certified.",
+    "model": "Pure fundamental SU(2), action beta sum_p(2-Re Tr U_p), a fixed source plaquette plane, even torus, independent parallel checkerboard in a direction of that plane.",
+    "test": "Real nonnegative compact smooth f with f>=f0>0 on a cube Q of side ell. The support and relevant cells sit in one physical fundamental box; distinct counted cells do not alias modulo the torus. Let a<=ell/8.",
+    "constants": {
+      "c0": "exp(-4)/pi",
+      "A_beta": "log(beta)+1+(2/3)log(24 pi^3)"
+    },
+    "conditions": "beta>=1 and beta>=6 A_beta; sufficiently fine lattice as stated above.",
+    "conclusion": "Var_W(F_a) >= [exp(-4) f0^2 ell^4/(4608 pi)] a^(-4) beta^(-2), for F_a=a^(-4) sum W_p a_p.",
+    "general_normalization": "For F_a=Z_a sum W_p a_p, the same bound is C_f |Z_a|^2 a^4 / beta^2.",
+    "proof": [
+      "For a selected link, write the six SU(2) staples as unit quaternions v_p, A=sum v_p, r=|A|<=6, n=A/r, kappa=2 beta r. The conditional link law is the S^3 density proportional to exp(kappa q0), where q0=n dot q.",
+      "For kappa>=3, T=kappa(1-q0) has density proportional to t^(1/2) exp(-t) sqrt(2-t/kappa), 0<t<2kappa. Its normalizer is at most sqrt(pi/2). On [1/2,1] and [2,3] the square-root factor is at least one. The probabilities are at least exp(-1)/(2 sqrt(2) sqrt(pi/2)) and sqrt(2) exp(-3)/sqrt(pi/2), respectively.",
+      "The two intervals are separated by at least one. For independent T,Tprime, Var(T)=E[(T-Tprime)^2]/2 >= P(T in first interval)P(T in second interval) >= c0. Thus Var(q0)>=c0/kappa^2.",
+      "On r>=5, sum_p(1-v_p dot n)=6-r<=1. Each v_p dot n>=0, and the two active fixed-plane staple projections sum to at least one. Their renormalized cell weights are at least f0 inside Q. Thus for B=sum_two (a^(-4) W_p)v_p, B dot n>=f0.",
+      "Axial symmetry makes the quaternion covariance radial/transverse with nonnegative transverse eigenvalues. Therefore the conditional weighted-source variance is at least 4 f0^2 Var(q0)>=c0 f0^2/(36 beta^2), using kappa<=12 beta.",
+      "The previously derived entropy bound P(r<5)<=3 A_beta/beta implies P(r>=5)>=1/2 under beta>=6 A_beta. The expected conditional variance per counted link is at least c0 f0^2/(72 beta^2).",
+      "Take bases with a k_j in [u_j+a,u_j+ell-a] in every coordinate of Q. There are at least ell/(2a) choices per coordinate, and the chosen transverse parity retains at least one quarter of the product. Hence at least ell^4/(64a^4) eligible independent links. Both incident fixed-plane cells lie in Q.",
+      "Conditional independence makes the eliminated noises orthogonal. Total variance is the positive sum of their expected conditional variances plus the retained-mean variance. Multiplying the preceding lower bounds proves the claim."
+    ],
+    "implication": "On beta asymptotic to b log(1/a), b>0, the ordinary variance of the proposed centered smear diverges. Affine centering does not alter it. This obstructs convergence of the unmodified centered full two-point distributions when tested on f tensor f; additional normalization or contact renormalization is needed. It does not obstruct a separated or OS limit."
+  },
+  "optimal_first_block_approximation": {
+    "status": "Independently reviewed natural mathematics; full derivation in the separate optimal-source-expansion record; not Lean-certified.",
+    "derivation_path": "data/yang_mills_optimal_source_expansion_2026_10_28.json",
+    "exact_excess": "h(kappa)=N_kappa/D_kappa, with Gamma(3/2,1) expectations D=E sqrt((1-u/(2kappa))_+) and N=E[u sqrt((1-u/(2kappa))_+)].",
+    "coefficient_recurrence": "b0=3/2, b1=-3/8; 2 b_(n+1)=(n+1)b_n+sum_(i=1)^(n-1)b_i b_(n-i). For n>=1, |b_n|<=(n+1)!/2^(n+1); this bound does not apply to b0.",
+    "remainder": "P_N(kappa)=sum_(j<N)b_j kappa^(-j). For kappa>=3/2, |h-P_N|<=6(N+9/2)(N+1)!/(2kappa)^N. For kappa>=kappa0 and N=floor(2kappa0), it is <=6 exp(2)(N+9/2)N(N+1)exp(-2kappa0).",
+    "uniform_polynomial_bound": "For N=floor(2kappa0), kappa>=kappa0>=3/2, |P_N(kappa)|<=5/2. Never take N to infinity at fixed beta.",
+    "weighted_operator": "Set r_c=max(r,r0), fbar=(sum f_p)/6, D_f=sum(f_p-fbar)v_p, Gtilde=fbar(12-2r)-2(A/r_c) dot D_f. The approximant is C_N=Gtilde+beta^(-1)P_N(2 beta r_c)[fbar+(A dot D_f)/r_c^2], N=floor(4 beta r0).",
+    "common_vacuum": "A deterministic vacuum term is beta^(-1)P_N(12 beta) fbar. After extracting it, the finite nonlinear operators have explicit factorial coefficients and include all orientation-sensitive A dot D_f terms. The operator count grows as O(beta).",
+    "good_region": "For r>=r0, error <= beta^(-1)(|fbar|+sum|f_p-fbar|/r0) times the uniform remainder. This is polynomial(beta)exp(-4 beta r0) for bounded weights.",
+    "bad_region": "Both ratios are clipped. The exact mean and Gtilde are bounded by 12 max|f_p|; |P_N|<=5/2 gives an O(max|f_p|) residual, uniformly in beta>=1. No inverse-r singularity remains.",
+    "conservative_aggregation": "Triangle inequality and q_beta<=exp(C_beta-2(6-r0)beta) give total L2 residual <=C_f a^(-4)[polynomial(beta) exp(-4 beta r0)+polynomial(beta)exp(-(6-r0)beta)]. Optimal r0=6/5 yields the strict sufficient b>5/6 condition.",
+    "weighted_chessboard_improvement": {
+      "geometry": "For n divisible by 8, the independent checkerboard in one direction partitions into 2048 basepoint residue classes mod 8. Each is a subset of even-indexed B4 tiles in a shifted tiling, so its bad events are reflected copies. No independence between colors is assumed.",
+      "probability": "q_beta=min(1,exp(C_beta-2(6-r0)beta)), C_beta=1536(1+log(beta))+1024 log(24 pi^3). Joint events in each tile family obey probability<=q_beta^m.",
+      "count_bound": "For deterministic w_e>=0, ||sum_e w_e 1_bad,e||_2 <=sqrt(2048 q_beta sum_e w_e^2)+q_beta sum_e w_e. This follows from the same-color second moment and Minkowski/Cauchy across colors.",
+      "actual_cell_weights": "Choose the checkerboard direction inside the observed plane. Each observed plaquette belongs to exactly one selected link. For F_e=max of its active |Z_a W_p|, sum F_e<=|Z_a|||f||_1 and sum F_e^2<=|Z_a|^2 a^4 ||f_periodized||_2^2.",
+      "full_residual_bound": "||E[F_a|R]-C_a||_2 <= C(r0)|Z_a|[(polynomial(beta)exp(-4 beta r0)+q_beta)||f||_1+a^2 sqrt(q_beta)||f_periodized||_2]. The unchanged source pieces, if any, are retained exactly.",
+      "repo_scaling": "For Z_a=a^(-4), beta=b log(1/a)+O(log log(1/a)), sufficient conditions are b>max(1/r0,2/(6-r0)). Optimal r0=2 gives b>1/2. The endpoint is not established and this bound proves no impossibility below it.",
+      "normalization_conversion": "For action beta_norm sum(1-Tr U_p/2), beta_norm=2 beta_repo, so the identical sufficient condition is b_norm>1. Constant source factors and fixed logarithmic powers do not change strict exponent thresholds.",
+      "scope": "This bounds only the first-block conditional-mean approximation error. It does not bound ||F_a-C_a||_2, which includes the large removed noise. Subsequent source-independent exact integrations contract an existing error but do not prove locality or control new approximation errors."
+    },
+    "finite_regression": "An independent exact-rational calculation checked the first 60 formal quotient coefficients against the recurrence and factorial bound and the factorial convolution inequality for n=1 through 99. Initial coefficients are 3/2,-3/8,-3/8,-63/128,-27/32. These finite checks support the derivation but do not replace its general proof.",
+    "derivation_sha256": "397b686f3025e7a277bf5aa45595d0d82ce1e526d8a30f5be7165e0e51044f91"
+  },
+  "remaining_precise_estimate": {
+    "decomposition": "For centered retained means M_f=Q_f+R_f, the separated covariance error is Cov(R_f,Q_g)+Cov(Q_f,R_g)+Cov(R_f,R_g).",
+    "os_sufficient_target": "With reflection/support compatibility, ||R_a(f)||_OS tends to zero and ||Q_a(f)||_OS remains bounded; covariance error is at most 2||Q_a||_OS||R_a||_OS+||R_a||_OS^2 for a reflected self-pairing.",
+    "positive_witness": "Separately prove liminf ||Q_a(f)||_OS^2>0 for a fixed positive-time test on the same physically identified trajectory. No ordinary variance floor or exact conditional transport supplies this lower bound.",
+    "kernel_sufficient_example": "Uniform mixed bare remainder/coarse covariance o(a^8) across two fixed separated physical supports would suffice for the proposed normalization; a weaker weighted distributional pairing estimate is enough. The old local O(beta^(-2)) estimate gives no such spatial decay.",
+    "not_needed": "Ordinary L2 smallness of the removed fluctuation is unnecessary for separated correlations and false for the witness above.",
+    "still_needed": [
+      "Physical coupling/scale matching on the same sequence as all source estimates.",
+      "Control correlations of the explicit retained low-staple correction in the hybrid construction; it was retained exactly, not estimated away.",
+      "Control of the explicit nonlinear coarse operators and new errors through repeated integration.",
+      "Compatible all-order contact renormalization and distributional bounds.",
+      "A positive retained reflected norm or controlled nonzero boundary-probe overlap.",
+      "Full field identification, infinite volume, rotations/joint spectrum, vacuum uniqueness and positive mass gap."
+    ]
+  },
+  "integration_status": "All twelve full Clay requirements remain open; no target-proof status was promoted. No commit or push was made.",
+  "physical_trajectory_comparison": {
+    "status": "Perturbative normalization comparison verified in a primary paper; not a rigorous construction of a physical trajectory.",
+    "primary_source": {
+      "title": "Deconfinement, gradient and cooling scales for pure SU(2) lattice gauge theory",
+      "authors": "Bernd A. Berg and David A. Clarke",
+      "url": "https://arxiv.org/pdf/1612.07347",
+      "locations": [
+        "Equation (1), printed page 1",
+        "Equation (34), printed page 9"
+      ]
+    },
+    "standard_convention": "S=beta_latt sum_p(1-Tr U_p/2), beta_latt=4/g0^2.",
+    "one_loop": "b0=11 N/(48 pi^2), hence b0=11/(24 pi^2) for SU(2). Asymptotic scaling has a Lambda proportional, up to logarithmic corrections, to exp(-beta_latt/(4 N b0)).",
+    "repo_conversion": "beta_latt=2 beta_repo, so beta_repo=2/g0^2 is perturbatively asymptotic to [11/(6 pi^2)] log(1/(a Lambda)).",
+    "predicted_b": 0.18575550334428592,
+    "consequence": "The strict sufficient b_repo>1/2 threshold for discarding the clipped bad-sector residual does not cover the perturbatively predicted physical branch. This is a limitation of that approximation estimate, not a proof that the continuum fails to exist. Higher-loop log-log corrections do not change the leading coefficient."
+  },
+  "hybrid_exact_sector_construction": {
+    "status": "Independently reviewed natural mathematics; not Lean-certified; an explicit first-block insertion, not a continuum construction.",
+    "motivation": "The b>1/2 threshold comes from discarding the low-staple correction in the particular clipped inverse-staple expansion. It is not a fundamental obstruction to first-block approximation.",
+    "cutoff": "Fix 0<r0<r1<6 and a continuous eta in [0,1], zero for r<=r0 and one for r>=r1. A smooth cutoff with flat endpoints may also be used.",
+    "exact_local_term": "With B_f=sum_p f_p v_p=fbar A+D_f, kappa=2 beta r, J(kappa)=E_Haar exp(kappa q0), define Y_f=12 fbar-2[Jprime(2 beta r)/(r J(2 beta r))](A dot B_f) for r>0, and Y_f=12 fbar at r=0. The coefficient extends continuously with value beta/2 at r=0, since Jprime(kappa)/J(kappa)=kappa/4+O(kappa^3). Thus Y_f is an explicit nonsingular local conditional mean.",
+    "hybrid": "C_hyb,f=(1-eta(r))Y_f+eta(r) C_N,f, using the globally clipped finite expansion C_N and N=floor(4 beta r0). Equivalently retain the exact correction (1-eta)(Y_f-C_N,f) in addition to the finite expansion.",
+    "properties": "Continuous, local, gauge invariant and linear in the source weights. A smooth cutoff gives a smooth local insertion; the exact ratio is real analytic in the staple vector at zero. No assertion of finite polynomial closure is made.",
+    "proof_of_error": "Y_f-C_hyb,f=eta(r)(Y_f-C_N,f). Wherever eta is nonzero, r>=r0 and the uniform good-region remainder applies. Else the difference is exactly zero. Therefore |Y_f-C_hyb,f|<=C(r0) beta^2 exp(-4 beta r0) max_p|f_p| for sufficiently large beta.",
+    "full_smear_bound": "For the actual cell-integral smear, ||E[F_a|R]-F_hyb,a||_infinity <=C(r0) a^(-4) beta^2 exp(-4 beta r0)||f||_1. Unchanged source pieces are kept exactly. No bad-event probability or inter-color independence is needed for this error bound.",
+    "trajectory_condition": "For beta/log(1/a) tending to b, the error tends to zero whenever b r0>1. A choice r0<6 exists for every b>1/6. This is a theorem about an assumed numerical trajectory, not a proof that it is physically realized.",
+    "perturbatively_compatible_example": {
+      "predicted_b": "11/(6 pi^2)",
+      "r0": "11/2",
+      "r1": "23/4",
+      "leading_error_power": "4 b r0-4=121/(3 pi^2)-4",
+      "leading_error_power_decimal": 0.08662107357429072,
+      "scope": "With beta=b log(1/a)+O(log log(1/a)), the power has logarithmic prefactors. Under only beta/log(1/a) tending to b, use a^(power+o(1)) times beta^2."
+    },
+    "remaining_nonperturbative_sector": "The explicit term (1-eta)(Y_f-C_N,f) is retained, not proved negligible. Its correlations, physical OS norm and behavior under further coarse integration remain uncontrolled. Taking Y exact everywhere was already possible; this construction isolates a finite asymptotic expansion on the good region and an exact nonperturbative correction on its complement.",
+    "correlation_warning": "A vanishing one-source error alone does not imply convergence of mixed correlations when the other source norms can grow. A bounded retained OS norm, mixed-pairing estimates, compatible all-order bounds and a positive norm floor are still needed."
+  },
+  "verification_note": "Formal certificate and full frozen source/log hashes rechecked after writing the separate research records; both new research JSON files parse. Research records are not Lean certificates."
+}

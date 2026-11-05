@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual SU(2) ground-law conditional variance is dominated by Haar refresh response with coefficient one, at every nonnegative coupling and every finite spatial block. The exact identity is refreshEnergy=heatBathEnergy+nonnegative remainder, proved by conditional disintegration under the constructed ground law. No density-ratio bound, small-coupling hypothesis or global mixing premise enters this local comparison. Block refresh is an average over true block rotations; on singleton blocks it is exactly the previously defined physical link-response energy averaged over normalized SU(2) Haar rotations. Summing local comparisons gives a collective conditional-variance lower bound. If the actual ground law has variance factorization constant A on continuous physical sources, the original physical transfer satisfies k*Var_pi(P^k f)<=A*sum_(j<k) E_Haar(P^(j+1) f). With a one-step upper coefficient kappa for that same Haar-averaged energy, contraction is A*kappa/(k+A*kappa). A crude upper coefficient N_links*(exp(8*beta)-1)^2 is proved without a mixing premise. Neither the required ground-law factorization nor uniform physical-scale control of A*kappa/k is proved. The earlier finite-family signed-Gram bound is not automatically a uniform bound for this Haar-indexed family. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactCrossVariance",
+    "UnifiedTheory.Clay.YangMills.WilsonHaarRefresh",
+    "UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse"
+  ],
+  "new_declarations": 38,
+  "retained_declarations": 7420,
+  "cumulative_declarations": 7458,
+  "proof": {
+    "generic_identity": "For independent X~mu and Y~nu: E(f(X)-g(Y))^2=Var_mu(f)+Var_nu(g)+(E_mu f-E_nu g)^2. Compact probability laws and continuous real probes are used.",
+    "actual_block_identity": "At each actual exterior r, take X from the true conditional ground law and Y from inside Haar. The cross-square equals Var_conditional(f)+E_Haar(E_conditional f-f(Y))^2. Integrate against the actual retained marginal to obtain refreshEnergy=heatBathEnergy+nonnegative remainder.",
+    "local_lower": "heatBathEnergy(B,f)<=refreshEnergy(B,f), with constant one for every beta>=0 and finite block B, including arbitrary correlated ground laws constructed in the repository. Haar refresh is not asserted stationary for pi.",
+    "actual_rotations": "Right invariance of inside Haar identifies refresh with averaged left block rotations. For B={e}, the energy is exactly integral_Q responseEnergy(e,q,f) dHaar(q).",
+    "collective_lower": "Sum_e heatBathEnergy({e},f)<=E_Haar(f), where E_Haar sums the Haar-averaged response over all spatial links.",
+    "physical_slab_lower": "Assuming Var_pi(F)<=A*sum_e heatBathEnergy({e},F) for every continuous physical F, monotone transfer variance and preservation of gauge invariance give k*Var_pi(P^k f)<=A*sum_(j<k) E_Haar(P^(j+1) f). The generic whole-slab lower premise is thus discharged from a specific static ground-law factorization premise.",
+    "upper": "The actual original-transfer response inequality, norm(q-1)<=2, and Haar integration prove E_Haar(Pf)<=N_links*(exp(8*beta)-1)^2*(Var_pi(f)-Var_pi(Pf)). This is a finite-cutoff bound with explicit extensive and weak-coupling costs.",
+    "contraction": "For any improved upper coefficient kappa valid for this same Haar energy on physical sources, Var_pi(P^k f)<=A*kappa/(k+A*kappa)*Var_pi(f), k>0. A second theorem instantiates kappa with the proved crude coefficient, leaving only static ground-law factorization as its additional analytic premise."
+  },
+  "not_inferred": [
+    "Prove variance factorization for the actual three-dimensional slice ground law pi=g^2 Haar, at the required weak-coupling trajectory, at least on continuous gauge-invariant observables. The proved beta<1/36 estimate for the separate four-dimensional Wilson Gibbs law is not this premise.",
+    "Improve the upper coefficient for the same Haar-averaged response family. The proved crude coefficient N_links*(exp(8*beta)-1)^2 retains volume and coupling dependence. The earlier finite-family residual Gram estimates do not automatically control the continuum of Haar rotations; a suitable integral-family bound or justified replacement is still needed.",
+    "Control A*kappa/k on a fixed physical time slab, keeping k and the actual original-transfer clock explicit. No uniform bound on this ratio, physical mass gap or continuum limit is supplied by the local coefficient-one inequality.",
+    "The original distant absolute mixed-ground sum and the finite-family reduced signed Gram bound remain open. This local lower-bound comparison neither estimates either matrix nor makes a global conditional-variance factorization automatic.",
+    "Haar averaging uses rotations of all sizes. The previous uniform local coefficient under beta*norm(q-1)<=1 cannot be substituted for the proved Haar-average upper bound.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible renormalized all-order estimates on the same independently justified physical coupling trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_haar_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

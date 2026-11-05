@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 40 fresh declarations established matching finite-cutoff center-odd contraction and its certified deterioration, 9560 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: actual gauge averaging improves the raw seam-area cap to a linear-period exponent on the identity input gauge orbit, with arbitrary outputs",
+  "scope": "The raw seam-area endpoint obstruction is improved for the original full gauge-averaged transition on the identity input gauge orbit. An explicit periodic gauge transformation h(x)=q^val(-x_i) maps the seam configuration of holonomy q^n to the directional constant field U_q, whose i-links equal q and all other links equal identity. Every U_q has exactly trivial spatial plaquette holonomies. If q^n=-1, U_q and U_(q inverse) are on the same nontrivial central seam orbit; U_(q squared) is on the identity orbit. A concrete unit-quaternion root q=cos(pi/n)+i*sin(pi/n) has q^n=-1 and total squared link displacement cost(U_q)=n^3*norm(q-1)^2<=pi^2*n. A compact exponential midpoint theorem proves that an action second-difference bound survives integration when the opposite partitions agree. Applied to actual temporal Haar integration, unchanged spatial potentials and the kinetic second-difference bound yield exp(-beta*cost(q))*K(u,v)<=K(q*u,v) whenever the full opposite kernels agree. The proved gauge equivalences supply this equality at both the identity and distributed-root inputs. Thus, for every positive period n, beta>=0, and every output configuration v, exp(-beta*pi^2*n)*K(1,v)<=K(J1,v)<=exp(beta*pi^2*n)*K(1,v). The original physical ground is retained; ground(J1)=ground(1) makes the same bounds hold for the original full normalized physical transition T. Hence T(Ju,v)/T(u,v) lies in [exp(-beta*pi^2*n),exp(beta*pi^2*n)] for every u gauge equivalent to identity and every v. This has a linear-period exponent rather than the raw cap exp(4*beta*n^2) whose extreme configurations motivated the test. The input restriction is essential: this is not a bound for every flat connection, every small-plaquette configuration, or almost every input under the ground law. No positive-measure neighborhood estimate or ground-law averaging of this input bound is supplied. The improved exponent still grows with beta*n and does not give a uniform mass gap. The earlier finite-cutoff center-odd contraction rate is not globally improved by this restricted-input comparison. Extending the estimate to retained fields and their global holonomy modes remains an analytic task. The complete mixed-ground sum, bad-bridge complement, uniform contraction, nonzero continuum construction and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactExponentialMidpoint",
+    "UnifiedTheory.Clay.YangMills.WilsonDistributedSeam",
+    "UnifiedTheory.Clay.YangMills.WilsonSeamRoot",
+    "UnifiedTheory.Clay.YangMills.WilsonGaugeKernelCurvature",
+    "UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison"
+  ],
+  "new_declarations": 30,
+  "retained_declarations": 9560,
+  "cumulative_declarations": 9590,
+  "notation": {
+    "J": "The original center seam involution in one fixed spatial direction.",
+    "q": "The explicit SU(2) root cos(pi/n)+i*sin(pi/n), with q^n=-1.",
+    "U_q": "All links in the chosen direction equal q; all other links equal identity.",
+    "h": "The periodic distributing gauge h(x)=q^val(-x_i).",
+    "K": "The original full Wilson kernel, including spatial factors and temporal Haar integration.",
+    "T": "The original full normalized gauge-averaged physical transition with its constructed ground.",
+    "input_scope": "u is gauge equivalent to identity; compare u and J u. Outputs v are arbitrary."
+  },
+  "proved_bounds": [
+    "gauge_h(seam(q^n))=U_q, including the periodic seam and period-one case.",
+    "cost(U_q)=n^3*norm(q-1)^2<=pi^2*n for the explicit central root.",
+    "When spatial potentials agree and opposite full kernels agree, exp(-beta*cost(q))*K(u,v)<=K(q*u,v).",
+    "exp(-beta*pi^2*n)*K(1,v)<=K(J1,v)<=exp(beta*pi^2*n)*K(1,v) for all v.",
+    "exp(-beta*pi^2*n)<=T(Ju,v)/T(u,v)<=exp(beta*pi^2*n) whenever u is gauge equivalent to identity, for every output v."
+  ],
+  "next_attack": [
+    "Extend the distributed-seam comparison to retained configurations near flat gauge orbits, keeping the defect-dependent error explicit instead of assuming equal opposite kernels.",
+    "Treat nontrivial flat holonomy moduli and center-even modes; the identity orbit does not exhaust the small-field region.",
+    "Prove a source-weighted or ground-law input estimate before using the new comparison in global variance contraction.",
+    "Bind retained propagation to the existing finite-boundary connected covariance and bad-bridge energy estimates.",
+    "Preserve independent physical scaling and nonzero continuum survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no cutoff-uniform physical mass gap or nonzero continuum Yang-Mills construction is proved.",
+    "The improved full-transition likelihood bound applies only when the baseline input is gauge equivalent to identity, with its prescribed central seam partner. It does not cover every flat connection or general global holonomy moduli.",
+    "Output configurations are unrestricted, but no positive-measure input neighborhood or almost-everywhere ground-law input estimate is proved. The pointwise comparison cannot simply be integrated over arbitrary ground inputs.",
+    "The full physical exponent beta*pi^2*n still grows with the linear period and coupling. This restricted comparison does not improve the globally proved center-odd contraction rate or supply physical scale matching.",
+    "The midpoint estimate requires equal opposite full kernels and unchanged spatial potentials. These are derived for the actual distributed flat roots; no such equalities are assumed for arbitrary retained fields or raw kernels.",
+    "The attained raw likelihood endpoints exp(plus or minus 4*beta*n^2) remain valid. Their area exponent is not a lower bound on the full gauge-averaged likelihood, as the new explicit comparison demonstrates.",
+    "Quantitative control near flat gauge orbits, center-even retained fields and other global holonomy directions is still needed, with sources and the original ground law retained.",
+    "The complete distant mixed logarithmic ground sum, retained propagation, bad-bridge-complement response and independent global coercivity remain open in the required uniform norms.",
+    "Multiscale stability, a compatible physical coupling trajectory, normalized reflected-state compactness and nonzero renormalized continuum survival remain separate obligations."
+  ],
+  "verification_report": "data/yang_mills_flat_seam_audit.json",
+  "root_build_checked": false
+}

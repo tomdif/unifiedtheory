@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-28",
+  "task": "Continue the Yang-Mills source construction and formalize the analytic estimates as they are developed.",
+  "claim_status": "Finite-cutoff analytic and geometric progress; no four-dimensional continuum candidate or Clay proof.",
+  "verification_status": "Passed: cumulative selected-target lake --rehash build, all 272 new declaration axiom checks, requirements ledger, and complete predecessor certificate/source/log hash verification.",
+  "predecessor_certificate": {
+    "path": "data/yang_mills_separated_source_audit.json",
+    "sha256": "cab3f019a129afd9caf372a8161619ae69ac580c37d83760fe65e31233f1f6b3",
+    "declarations": 3260
+  },
+  "previous_natural_math_records": [
+    "data/yang_mills_rescaled_source_attack_2026_10_28.json",
+    "data/yang_mills_optimal_source_expansion_2026_10_28.json"
+  ],
+  "scalar_proof_chain": [
+    {
+      "module": "SqrtSourceRemainder",
+      "result": "Actual coefficients a_n=(-1)^n Ring.choose(1/2,n), coefficient signs and exact finite endpoint identity; proves |sqrt(max(1-x,0))-sum_(j<N) a_j x^j|<=2 x^N for x>=0. No pointwise remainder premise."
+    },
+    {
+      "module": "SqrtSourceRemainder",
+      "result": "Actual Euler Gamma integrals are evaluated for all natural moments, including rising-product formulas. Integrating the proved square-root bound gives explicit numerator and denominator expansions, with constant 2. The shape-3/2 denominator is at least 1-3/(4 kappa) for kappa>0, hence at least 1/2 for kappa>=3/2. No moment or denominator bound is assumed."
+    },
+    {
+      "module": "SU2SourceCoefficients",
+      "result": "The concrete recurrence has b0=3/2, b1=-3/8 and 2b_(n+1)=(n+1)b_n+sum_(i=1)^(n-1)b_i b_(n-i). Proves uniqueness, values through b4, factorial convolution and |b_n|<=(n+1)!/2^(n+1) for n>=1. The n=0 exception is explicit."
+    },
+    {
+      "module": "SU2SourceQuotient",
+      "result": "Defines the actual binomial-times-Gamma coefficients d_n and e_n=(3/2+n)d_n. Derives the denominator formal differential equation and the quotient Riccati equation, then proves sum_(i=0)^n b_i d_(n-i)=e_n. This identifies the integral expansion coefficients with the factorial-bounded sequence; no quotient identity is assumed."
+    },
+    {
+      "module": "FiniteSourceConvolution",
+      "result": "Proves triangular finite-sum rearrangement, exact shifted polynomial cancellation, and the normalized residual identity. No infinite asymptotic series is summed."
+    },
+    {
+      "module": "OptimalSourceTruncation",
+      "result": "For n>=1, proves n!<=exp(1)n(n/exp(1))^n from an elementary logarithmic inequality. Converts the actual floor index N=floor(2 kappa0) into a uniform exponential bound for all kappa>=kappa0."
+    },
+    {
+      "module": "SU2QuotientRemainder",
+      "result": "Defines sourceRatio as the actual shape-3/2 Gamma numerator divided by its actual cutoff denominator. Proves the finite quotient error and uniform optimal-truncation estimate without supplied analytic error or cancellation assumptions."
+    }
+  ],
+  "certified_scalar_formulas": {
+    "D": "Gamma(3/2)^(-1) integral_(u>0) u^(1/2) exp(-u) sqrt(max(1-u/(2 kappa),0)) du",
+    "M": "Gamma(3/2)^(-1) integral_(u>0) u^(3/2) exp(-u) sqrt(max(1-u/(2 kappa),0)) du",
+    "h": "sourceRatio(kappa)=M(kappa)/D(kappa)",
+    "P": "sourceTruncation(N,kappa)=sum_(j<N)b_j/kappa^j",
+    "finite_error": "For kappa>=3/2 and N>=1, |h(kappa)-P(N,kappa)|<=6(N+9/2)(N+1)!/(2 kappa)^N.",
+    "uniform_error": "For kappa>=kappa0>=3/2 and N=floor(2 kappa0), |h(kappa)-P(N,kappa)|<=6 exp(2)(2 kappa0)(2 kappa0+1)(2 kappa0+9/2)exp(-2 kappa0).",
+    "scope": "These are unconditional scalar integral theorems. Identifying this h with the actual Wilson SU(2) conditional response requires the geometric Haar and staple dictionary."
+  },
+  "hybrid_and_actual_marginal_binding": {
+    "HybridSourceApproximation": "Constructs a continuous clipped cutoff eta and hybrid=(1-eta)Y+eta P. A supplied good-region estimate bounds the global hybrid residual, including weighted finite sums. Proves rescaled convergence for exact a=exp(-t), beta=b*t, provided b*r0>1, and constructs admissible cutoffs for all b>1/6. The numerical example b=11/(6pi^2), r0=11/2, r1=23/4 satisfies this arithmetic margin.",
+    "WilsonHybridSource": "Uses the actual Wilson retainedSource and retainedLaw. A supplied good-region error epsilon gives pointwise error<=epsilon and actual retained mean-square error<=epsilon^2. A second exact integration preserves this bound under the induced correlated action. The removed fluctuation is retained explicitly in the original-source decomposition.",
+    "scope": "The good-region hypothesis for the actual Wilson response is still explicit. The scalar estimate is proved, but the Haar/staple identification must be completed before it can instantiate that hypothesis. A numerical trajectory is not a physical scale-identification theorem.",
+    "unformalized_robustness": "The earlier natural-math extension to beta/log(1/a) tending to b, or log-log corrections, is not part of the exact-trajectory Lean theorem."
+  },
+  "reflection_binding": {
+    "GibbsReflectionResponse": "Proves exact fiber mass invariance and response/reflection commutation from measure-preserving fiber symmetry and action invariance. Reflected product/covariance transport additionally requires the explicit conditional mixed-product factorization hypothesis hprod; symmetry alone does not supply it.",
+    "WilsonBlockReflection": "Constructs the actual selected and retained edge reflections, including temporal-link inversion, and proves their Haar preservation for reflection-stable selected sets. Wilson action and source symmetry prove actual retained response equivariance. For geometrically independent selected sets and explicit reflected source separation, the prior Wilson factorization theorem supplies the mixed-product hypothesis, giving zero reflected pairing of removed fluctuations.",
+    "nonvacuous_geometry": "Constructs a full periodic temporal line of selected links, proves cardinality n, geometric independence and reflection stability. Time support T with t in T implying -t-1 not in T gives the affected-plaquette separation and a concrete zero reflected self-pairing theorem.",
+    "limits": "This does not construct the full checkerboard reflection binding or the fixed physical support-margin lemma for arbitrary cell-smeared tests. Membership in the particular positive-half OS domain remains a separate support requirement. No positive retained reflected norm is inferred from zero removed pairing."
+  },
+  "coordinate_geometry": {
+    "SU2QuaternionCoordinates": "Constructs the explicit quaternion matrix representation [[a+ib,c+id],[-c+id,a-ib]]. Proves multiplication, star, determinant=normSq, trace=2a, real trace pairing=twice the Euclidean quaternion inner product, continuity, injectivity and unit-norm SU(2) membership.",
+    "scope": "The group and normalized Haar equivalence are proved. Equality of unit-quaternion Haar with a normalized sphere-surface measure, its first-coordinate slicing density, and the actual nondegenerate Wilson six-staple/weighted-source identity remain separate. The scalar semicircle law is not identified with Haar by assumption.",
+    "SU2QuaternionEquivalence": "Constructs the inverse quaternion coordinates of every determinant-one unitary 2x2 complex matrix, proves surjectivity and a continuous multiplicative equivalence, constructs compact/topological/Borel instances, and transports the repository normalized compact Haar probabilities in both directions."
+  },
+  "remaining_essential_bridge": {
+    "normalized_sphere_slice": "Prove integral_Haar F(q.re) = [integral_-1^1 F(t)sqrt(1-t^2)dt]/[integral_-1^1 sqrt(1-t^2)dt] for the constructed unit-quaternion Haar law. No explicit 2/pi constant is required for normalized tilted ratios.",
+    "local_wilson_dictionary": "Bind actual oriented Wilson plaquette products to the six-staple quaternion vector A; prove local action=C-2 beta inner(q,A), the rotational mean and weighted source formulas, including the r=0 extension. State a nondegenerate lattice period (n>=2; n>=3 is a safe convention). At n=1 a plaquette can repeat the selected link and its inverse, so the affine single-link staple formula cannot be inferred from NeZero n alone.",
+    "interacting_targets": [
+      "Control the exact retained small-staple contribution and generated interactions through repeated integration.",
+      "Prove bounded renormalized reflected norms and a positive limiting reflected norm on one physically identified trajectory.",
+      "Construct compatible all-order contact renormalization and distributional bounds.",
+      "Complete infinite volume, physical field identification, covariance and spectral conditions, vacuum uniqueness and positive mass gap."
+    ],
+    "all_twelve_full_target_requirements": "open"
+  },
+  "validation_limits": "Declaration counts include definitions and intermediate lemmas. A cumulative selected-target build is not a full UnifiedTheory root build. No commit, push, external communication, continuum certificate or Clay certificate is claimed.",
+  "scalar_tilt_bridge": {
+    "module": "SU2ScalarTilt",
+    "law": "One-dimensional measure with density proportional to exp(kappa*t)*sqrt(1-t^2) on [-1,1]. It is not yet identified with a Haar pushforward.",
+    "change_of_variables": "Proves t=1-u/kappa for kappa>0, exact cutoff support reduction and the common prefactor exp(kappa)*sqrt(2/kappa)/kappa in both partition and excess numerator.",
+    "identity": "For kappa>0, the actual normalized semicircle excess mean of kappa*(1-t) equals SU2QuotientRemainder.sourceRatio kappa.",
+    "consequence": "The proved factorial and optimal exponential bounds apply to this actual one-dimensional integral, without a supplied substitution or integral identity.",
+    "endpoint": "Partition positivity holds for every real kappa, and excessMean_zero proves excessMean(0)=0. The Gamma quotient identification is restricted to positive kappa. Do not use the raw Gamma definition at zero as the physical excess; use the actual excessMean or an explicit zero extension."
+  },
+  "modules": {
+    "GibbsReflectionResponse": 6,
+    "WilsonBlockReflection": 32,
+    "SqrtSourceRemainder": 53,
+    "SU2SourceCoefficients": 15,
+    "SU2SourceQuotient": 20,
+    "FiniteSourceConvolution": 3,
+    "OptimalSourceTruncation": 6,
+    "SU2QuotientRemainder": 22,
+    "HybridSourceApproximation": 29,
+    "WilsonHybridSource": 14,
+    "SU2QuaternionCoordinates": 21,
+    "SU2ScalarTilt": 22,
+    "SU2QuaternionEquivalence": 29
+  },
+  "new_module_source_sha256": {
+    "UnifiedTheory/Clay/YangMills/GibbsReflectionResponse.lean": "e91f69fd5126032d3d27f2ee9e457640eba422f808d9d0750577b20349fb04a6",
+    "UnifiedTheory/Clay/YangMills/WilsonBlockReflection.lean": "5898ff7bd07628f66c1e6d9cde831987a8c932113f0fad293400a8ad75139736",
+    "UnifiedTheory/Clay/YangMills/SqrtSourceRemainder.lean": "e20fe0116e5d643ff3b86d559179a893b7d021c5192f9ab6250845eb1a8e6481",
+    "UnifiedTheory/Clay/YangMills/SU2SourceCoefficients.lean": "89fec84684fdc5c6bad0e5f3b1343907e391d6c917ef422d3e06c364e0e41cea",
+    "UnifiedTheory/Clay/YangMills/SU2SourceQuotient.lean": "3587b4523f72d31b842d17d0d08812fea90e2135cebb7d5b3249146bb22a06f0",
+    "UnifiedTheory/Clay/YangMills/FiniteSourceConvolution.lean": "aa332f576f594496be7d89b9d95ae432c211a89cd8a24ffb8ef45085bb6722fc",
+    "UnifiedTheory/Clay/YangMills/OptimalSourceTruncation.lean": "a5ccc3bcfe878e54246aa16cb3f5763c0ef7aacea48eb7f26abb813c0c1cb59c",
+    "UnifiedTheory/Clay/YangMills/SU2QuotientRemainder.lean": "bad362a7c09dcc3191e7bcf87db48531c158023fd5665f92c54183adc397d019",
+    "UnifiedTheory/Clay/YangMills/HybridSourceApproximation.lean": "7beebba97f870ff457f068ba39e5deaca4c3a306cb256271ecefd7cf1a1368e7",
+    "UnifiedTheory/Clay/YangMills/WilsonHybridSource.lean": "f1b8df6a9963844efea354188e26ff4e1033dfa684d148d722f83b9de8f6df44",
+    "UnifiedTheory/Clay/YangMills/SU2QuaternionCoordinates.lean": "6dc0e784d139c43a2dc79f45f3dc926f63c1091e55b7573360f04219c20f3ddf",
+    "UnifiedTheory/Clay/YangMills/SU2ScalarTilt.lean": "935107c1cce7912049ce12b5901af6af2473fbfed1b322195bb07529c34ad86b",
+    "UnifiedTheory/Clay/YangMills/SU2QuaternionEquivalence.lean": "9240532f5dd291d45d467436d94493fd4dcd736fd8eb6b9d63b3956a0b6fa274"
+  },
+  "cumulative_expected_declarations": 3532,
+  "new_public_declarations": 272,
+  "full_clay_requirements_open": 12,
+  "final_certificate": {
+    "path": "data/yang_mills_source_expansion_audit.json",
+    "sha256": "db0e0247fb1332e92a39e6b955e29e5c43cb6c641214ffa549bdaa75b256c02e",
+    "new_modules": 13,
+    "fresh_declarations": 272,
+    "retained_declarations": 3260,
+    "cumulative_declarations": 3532,
+    "local_lean_dependencies": 1363,
+    "fingerprinted_files": 1443,
+    "verified_certificate_chain_length": 22,
+    "verified_chain_log_count": 63,
+    "all_new_source_hashes_match": true,
+    "standard_axioms_only": true,
+    "root_build_checked": false,
+    "uses_temporary_dependency_overlay": false,
+    "requirements": {
+      "ledger_consistent": true,
+      "full_target_requirements_open": 12,
+      "verified_auxiliary_references": 278,
+      "clay_certificate_present": false
+    }
+  }
+}

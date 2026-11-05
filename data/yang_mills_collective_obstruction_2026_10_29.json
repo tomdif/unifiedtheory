@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual weighted bridge response-loss upper bound proved, with residual volume-dependent coefficients",
+  "current_goal_turn_classification": "proved obstruction to a generic regularity-only closure; no actual Yang-Mills analytic obligation closed",
+  "scope": "A diagnostic periodic amplitude a_kappa(u)=cosh(kappa*sum_i sin(u_i)), not the Wilson ground, has proved positivity, smoothness, coordinate periodicity, dimension-independent first-log chord bounds and a quadratic lower second-log bound. Nevertheless its distinct-coordinate mixed ratio at the zero configuration is tanh(kappa*sin(t))^2. Removing any fixed near set leaves its complement cardinality times this number. At kappa=1 and t=pi/2, the example far sum is N*tanh(1)^2 and exceeds every fixed constant for some N. Thus these local regularity estimates alone do not imply distant mixed-ground summability. The actual Wilson correlation estimate and matching global coercivity are not proved. The latest primary-source announcements and the pinned public Balaban-based draft were examined for usable inputs; no external result is added as a Lean axiom. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction"
+  ],
+  "new_declarations": 22,
+  "retained_declarations": 7866,
+  "cumulative_declarations": 7888,
+  "formal_results": {
+    "amplitude": "a_kappa(u)=cosh(kappa*sum_i sin(u_i)), for kappa>=0 and finitely many angle coordinates.",
+    "first_log_chord": "abs(log a(u+delta)-log a(u)) <= kappa*sum_i sqrt(2*(1-cos(delta_i))).",
+    "joint_lower_second_log": "log a(u+delta)+log a(u-delta)-2*log a(u) >= -2*kappa*sum_i(1-cos(delta_i)). The right side is -kappa times summed squared circle chord displacements.",
+    "mixed_ratio": "At u=0, changing distinct coordinates e,d by t gives a(0)*a(t_e+t_d)/(a(t_e)*a(t_d))-1=tanh(kappa*sin(t))^2.",
+    "far_sum": "For every near set containing e, the absolute sum on its complement is exactly card(complement)*tanh(kappa*sin(t))^2.",
+    "unbounded": "For kappa=1, t=pi/2, and N+1 coordinates with near={0}, the sum is N*tanh(1)^2; Lean proves that it exceeds each real R for some N."
+  },
+  "primary_source_review": [
+    {
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "publication_date": "2026-10-26",
+      "finding": "Announces a Balaban-based existence formalization; physics artifacts are withheld pending the independent group writeup. No public proof artifact from this announcement was available to inspect or import. No mass-gap estimate is stated there."
+    },
+    {
+      "url": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment",
+      "commit": "1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310",
+      "finding": "Repository labels its materials tentative and not satisfactorily vetted. Inspected the raw Part I theorem and proof-status sections, not every proof in the project.",
+      "inspected_source": "https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310/theorem_0_complete_account_raw_I.tex",
+      "source_locations": [
+        "lines 14-87: proof-status conventions",
+        "lines 2660-2713: stated continuum scope and explicit exclusions",
+        "lines 3024-3088: conditional far-sphere flux input",
+        "lines 166650-166692: outstanding covariance and large-field steps"
+      ],
+      "finding_details": "The raw theorem omits clustering and mass gap. Its full rotation assertion assumes an infrared flux condition. The status list includes unfinished block-covariance decay and large-field steps. These omissions describe the inspected raw draft, not a verdict on other manuscripts or unpublished work.",
+      "cached_source_sha256": {
+        "README.md": "984a09a62948ae2f220ffd74869e4f55b8bff5406079f5efb0034422da9a0fcb",
+        "theorem_0_complete_account_raw_III.tex": "7e36523b85fb4f85aefdd45ab175420459f24e34fe56a4e83e53a6829c7a352d",
+        "theorem_0_complete_account_raw_master.tex": "35c013474c557f08495cf5b4d7e65ae248092c3c338dc042c6afe8b448ccbc28",
+        "theorem_0_complete_account_raw_I.tex": "4cb5cb5e0af8dbddbee207926621300350e018c6cf1d6567a753167ce10e6e93",
+        "theorem_0_complete_account_raw_II.tex": "6a1f74b05f74ba44a2186c11fb08e139178d86b15c1494a95c434212944b2b8f"
+      }
+    }
+  ],
+  "next_attack": {
+    "actual_object": "Use the existing exact Wilson gram_ground_log identity and the true row weight C(u,v)*W(v)*g(v), with its ground-dependent normalization.",
+    "two_source_family": "For distinct input links, let F_e(v)=beta*(Re char((q*u_e)^(-1)*v_e)-Re char(u_e^(-1)*v_e)). The proposed interpolation keeps the actual row weight multiplied by exp(s*F_e+t*F_d), 0<=s,t<=1.",
+    "candidate_identity_not_newly_formalized": "For disjoint affected plaquettes, the mixed ground logarithm equals the double integral of Cov(F_e,F_d) under that two-source tilted actual row. Existing compact Gibbs source derivatives establish the generic derivative mechanism; this turn has not added the Wilson interpolation binding or its decay bound.",
+    "required_estimate": "Prove summable bounds b(e,d) for these connected insertions, uniform in the relevant baseline and source rectangle, including large-field histories and the ground boundary limit. A Gaussian block covariance bound alone does not establish this.",
+    "far_conversion": "If each mixed logarithm is bounded by b(e,d)>=0, b(e,d)<=M, and sum_d b(e,d)<=B, then sum_d abs(exp(mixed)-1)<=exp(M)*B. This is the proposed analytic input, not an estimate proved here.",
+    "lower_bound": "A matching global variance comparison on the physical observable family remains necessary. The local singleton density upper bound does not supply it."
+  },
+  "not_inferred": [
+    "The counterexample is a smooth periodic angle-coordinate amplitude, not the Wilson ground state, a Wilson transfer kernel, or a counterexample to Yang-Mills existence or mass gap.",
+    "The function is formalized on finite real coordinate spaces with proved coordinate periodicity. No quotient-circle probability law, normalized density, conditional variance factorization failure, or spectral-gap theorem is newly constructed here.",
+    "The first-log chord bound and lower second-log bound do not supply the missing upper mixed response. Their simultaneous validity in the example rules out this proposed generic implication, not a Wilson-specific proof using its eigenfunction equation and local action.",
+    "No bound on the actual distant Wilson mixed-ground sum, unrestricted physical Haar form, global lower coercivity, physical scaling trajectory or surviving continuum field has been obtained.",
+    "The public primary announcement does not release its physics proof materials. The examined pinned public raw draft explicitly omits mass gap and clustering and lists unfinished covariance and large-field arguments; no theorem is imported from either source."
+  ],
+  "audit": "data/yang_mills_collective_obstruction_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

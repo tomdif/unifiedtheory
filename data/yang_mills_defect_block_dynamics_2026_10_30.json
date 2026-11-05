@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: audited sparse-mask geometry and curvature, retained sparse sources and actual masked-coercivity counterexamples",
+  "current_goal_turn_classification": "progress: independent full-block local coercivity, original physical transfer loss bounds, exact exterior variance remainder and source approximation error proved",
+  "scope": "Full fixed-block updates now control local physical defects under the actual finite-cutoff SU(2) ground law. Support means dependence on a fixed set S of s link coordinates, not spatial energy support or membership in a field-dependent mask. A weighted-center lemma pays one density-oscillation ratio. For every continuous S-supported F, actual ground variance is <=exp(24*beta*s) times the actual S-block heat-bath energy, with no exterior-volume factor. Full S-block Haar refresh separately has the exact decomposition Var_pi(F)+Var_Haar(F_ref)+(mean_pi(F)-mean_Haar(F_ref))^2 and thus dominates Var_pi(F) with coefficient one; no ground-law stationarity of Haar refresh is claimed. The constructed full transfer operator is positive and its actual normalization is a contraction. On physical observables only, the established raw/full-step identification yields M(PF)<=<F,PF>_pi and the original full-transfer Dirichlet energy <=loss(F)=Var_pi(F)-Var_pi(PF). Combining the actual block heat-bath comparison gives Var_pi(F)<=Gamma(beta,s)*loss(F), where Gamma=exp(24*beta*s)*(1+exp(12*beta*s))^2<=4*exp(48*beta*s). Therefore one physical step contracts variance of an S-supported input by 1-1/Gamma. The exact law of total variance retains the correlated exterior conditional-mean variance. For a general physical F and any continuous S-supported approximation G, Var_pi(F)<=4*Gamma*loss(F)+(4*exp(24*beta*s)+2)*M(F-G), and the corresponding lower bound on every local approximation error is proved. The same physical plaquette bump (D-1)_+ that was invisible to good-mask updates is supported on an actual block of at most four links: its true full-block heat-bath energy is positive and Var_pi(bump)<=4*exp(192*beta)*loss(bump). These are actual dynamics bounds, not a reference-product substitution. They do not iterate automatically, because PF need not remain S-supported. The exponential coupling/block-size cost, source approximation or cluster-marginal control, actual distant mixed-ground or signed-form estimate, independent global coercivity, physical scaling and the nontrivial continuum construction remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactWeightedCenter",
+    "UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss",
+    "UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder",
+    "UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics"
+  ],
+  "new_declarations": 41,
+  "retained_declarations": 8525,
+  "cumulative_declarations": 8566,
+  "formal_results": {
+    "weighted_center": "A within-fiber weight oscillation ratio C controls the reference-centered square by C times the square around any center, without squaring C.",
+    "actual_heat_bath_lower": "For every continuous S-supported F, Var_pi(F)<=exp(24*beta*#S)*E_S(F). No mixing assumption, exterior-volume factor or replacement product ground law is used.",
+    "haar_identity": "Full block Haar response = Var_pi(F)+Var_Haar(F_ref)+(mean_pi(F)-mean_Haar(F_ref))^2 for S-supported F.",
+    "physical_loss": "Positivity of the actual full operator and actual normalization imply M(PF)<=<F,PF>_pi and E_transfer(F)<=loss(F) on physical F.",
+    "local_dynamics": "For physical S-supported F, Var_pi(F)<=Gamma(beta,#S)*loss(F), Gamma=exp(24*beta*#S)*(1+exp(12*beta*#S))^2<=4*exp(48*beta*#S). One step has variance factor 1-1/Gamma.",
+    "exterior_remainder": "Var_pi(F)=E_S(F)+Var_outside(E[F|outside S]) exactly, with the actual conditional mean and actual exterior law.",
+    "source_approximation": "For any physical F and any continuous S-supported G, Var_pi(F)<=4*Gamma*loss(F)+(4*exp(24*beta*#S)+2)*M(F-G). The explicit lower bound on M(F-G) is also proved.",
+    "defect_witness": "G=(D-1)_+ depends on an actual plaquette block with at most four links. Its full-block heat-bath energy is positive and Var_pi(G)<=4*exp(192*beta)*loss(G)."
+  },
+  "next_attack": {
+    "source_locality": "Control actual evolved or hypothetical slow physical sources by fixed-block or cluster-local approximations in the ground-law L2 norm, with errors strong enough to pay the explicit exponential constants.",
+    "cluster_marginal": "Use the true total-variance remainder to identify and control the defect-cluster marginal and its coupling to the good region; do not infer source locality from sparse defects.",
+    "weak_coupling": "Improve the block/coupling cost using actual low-energy or source-weighted structure while retaining defect motion.",
+    "global_target": "Prove the compatible distant mixed-ground or signed physical-form estimate and independent global coercivity, then a physical trajectory and nontrivial continuum survival."
+  },
+  "not_inferred": [
+    "The local support set S is fixed. A field-dependent small defect count does not imply that an arbitrary physical source depends on only those coordinates, or has a small ground-law L2 approximation error.",
+    "The one-step local contraction is not a spectral gap on an invariant subspace. The evolved source generally depends on links outside S, so the same constant cannot be iterated without a new locality or approximation estimate.",
+    "The heat-bath constant exp(24*beta*s) and the loss constant Gamma<=4*exp(48*beta*s) deteriorate at weak coupling and with block size. No uniform physical-time estimate follows merely from eliminating exterior-volume dependence.",
+    "The exact total-variance identity retains the exterior conditional-mean variance. The new supported-source comparison is not a global variance factorization over many correlated blocks or field-dependent defect clusters.",
+    "The physical Dirichlet-to-loss comparison uses the proved positivity of the full operator and the proved raw/full identification on gauge-invariant observables. It does not silently assume positivity of the raw transition on all nonphysical sources.",
+    "Full Haar refresh is used as a response form and an independent comparison draw. It is not asserted to preserve the actual ground law; the true heat-bath law and its exterior correlations are retained separately.",
+    "The plaquette bump witness here is G=(D-1)_+. The earlier retained-region source F_loc=(D-1)_+*(32-V)_+ depends on total energy and is not claimed to be supported on four links.",
+    "A domain functional inequality from good-region curvature, temporal-pinning source control, field-dependent boundary normalization, source-sensitive defect-cluster control, actual distant/signed-form bounds, compatible global lower coercivity and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_defect_block_dynamics_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}
