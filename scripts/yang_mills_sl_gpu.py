@@ -98,7 +98,7 @@ def poly_obs(U,phis):
 def polyakov(U,d):
     """(1/2) tr of the Polyakov loop along untwisted direction d, as a field on the slice x_d = 0 (kept N^4 by broadcasting)."""
     L=U[d]
-    for k in range(1,U.shape[1]): L=qmul(L,S(U[d],d,k))
+    for k in range(1,U.shape[1+d]): L=qmul(L,S(U[d],d,k))     # loop length = extent along d (was U.shape[1]: wrong on non-cubic lattices)
     return L[...,0].select(d,0)
 def observables(U,z,phis):
     pl=plaq_re(U,z); vals=[]

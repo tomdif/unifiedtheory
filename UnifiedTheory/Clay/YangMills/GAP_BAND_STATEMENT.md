@@ -216,9 +216,97 @@ Reading:
   inside the band, so such a mechanism must use cancellations between blocks, not block-wise convexity.
 - **T2 (BC-uniform decay).** Local influence decays within a few lattice units for every tested BC. The supremum
   over BCs, and the long-range sectors, are untested and are where the gap problem actually sits.
-- **T3 (finite-box criterion).** The observable-level influence needs a box L0 ≈ 5 at β 2.3–2.5. A
+- **T3 (finite-box criterion).** Superseded by §8 (center sector): the box must exceed the deconfinement length
+  N_t,c(β) by a factor of 2–3, i.e. L₀ ≈ 16–24 at β 2.5. The observable-level influence alone would need only
+  L0 ≈ 5 at β 2.3–2.5. A
   Dobrushin–Shlosman-type check on a 5⁴ box would mean a supremum over boundary conditions of a total-variation
   influence for about 2500 links × 3 dof. That is far beyond rigorous interval arithmetic today, and it is the
   concrete size of the computer-assisted route.
 
 None of the three is proved. The band statement (§3) stands as the precise missing step.
+
+## 8. Second round: adversarial boundaries and the slowest sector (2026-11-06)
+
+Pre-registrations (4)–(6) are in the docstring of `scripts/yang_mills_band_targets.py`, written before these
+runs.
+
+**T2, adversarial flux family** (Lx = 16, M = 12, 1500 sweeps per BC; `data/yang_mills_band_adv_2026_11_06.json`).
+The family is uniform abelian boundary flux φ = 2πk/M in two planes, k = 1…6 (k = 6 is anti-like). Plaquette
+shift Δ(d) relative to the cold BC:
+
+| β | k | Δ(1) | Δ(2) | Δ(3) | Δ(4) | Δ(5) |
+|---|---|---|---|---|---|---|
+| 2.3 | 1 | −0.037 | −0.012 | −0.0037 | −0.0012 | −0.0003 |
+| 2.3 | 4 | −0.081 | −0.016 | −0.0041 | −0.0012 | −0.0002 |
+| 2.3 | 6 | −0.079 | −0.015 | −0.0042 | −0.0012 | −0.0003 |
+| 2.5 | 1 | −0.033 | −0.0086 | −0.0027 | −0.0010 | −0.0006 |
+| 2.5 | 4 | −0.069 | −0.010 | −0.0027 | −0.0010 | −0.0006 |
+| 2.5 | 6 | −0.064 | −0.0087 | −0.0025 | −0.0007 | −0.0004 |
+
+Errors are 1–2 × 10⁻⁴.
+
+- **(4) Held.** The worst flux at depth 4 (0.0012–0.0013) is within a factor 1.2 of the worst of hot/anti
+  (0.0011 / 0.0010).
+- **The influence saturates.** Beyond depth 2 it is the same for every boundary flux strength k ≥ 2. The boundary
+  layer screens the boundary data, and the deep influence is set by the bulk, not by how adversarial the boundary
+  is. Among smooth fluxes there is no hidden adversarial direction.
+
+**T1, slowest sector** (periodic N⁴, no frozen layer, 2000 sweeps, MC-time autocorrelation of the smeared spatial
+Polyakov-loop averages; `data/yang_mills_band_auto_2026_11_06.json`).
+
+| β | N | τ_int charged | τ_int neutral (P²) | ⟨P²⟩ |
+|---|---|---|---|---|
+| 2.3 | 8 | 2.2 | 1.1 | 0.028 |
+| 2.3 | 12 | 1.4 | 0.74 | 0.0038 |
+| 2.3 | 16 | 0.82 | 0.54 | 0.0009 |
+| 2.5 | 8 | 16.8 | 4.8 | 0.22 |
+| 2.5 | 12 | 20.1 | 7.1 | 0.046 |
+| 2.5 | 16 | 7.7 | 3.2 | 0.0083 |
+
+- **(6) Held.** At β 2.3 the neutral τ_int falls with N.
+- **At β 2.5**, N = 8–12 sit at or near the finite-temperature transition (β_c(N_t = 8) = 2.51,
+  β_c(N_t = 12) ≈ 2.635; ⟨P²⟩ is large). There the Polyakov sector is slow, about 20 sweeps. At N = 16, deep in the
+  confined phase, it drops to 7.7 / 3.2.
+- **Reading.** In the confined theory the slowest gauge-invariant sector tested relaxes in O(1–10) sweeps,
+  decreasing with volume. Slowness appears only near the deconfinement transition, which is a finite-size effect
+  of the periodic box, not a property of the infinite-volume band.
+
+**T2/T3, electric-flux (center) sector** (cold BC, boundary holonomy +1, against center-flipped BC, U₁ = −1 on one
+x₁-slice of the frozen layer: same boundary plaquettes, holonomy −1). Smeared spatial Polyakov loop P₁(d) along x₁
+(length M = 12), 3000 sweeps; `data/yang_mills_band_p1_2026_11_06.json`. The first attempt (in the adv file) is
+invalid: the shared helper `polyakov()` took the loop length from the x₀ extent, which is wrong on non-cubic
+lattices. All earlier runs used cubic lattices and are unaffected. The fix is in `scripts/yang_mills_sl_gpu.py`,
+and the run asserts that the flipped boundary has holonomy −1.
+
+| β | d = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 (mid-slab) |
+|---|---|---|---|---|---|---|---|---|
+| 2.3: P₁^cold − P₁^flip | 1.760 | 1.471 | 0.806 | 0.288 | 0.084 | 0.029 | 0.012 | 0.000 ± 0.004 |
+| 2.5: P₁^cold − P₁^flip | 1.832 | 1.667 | 1.310 | 0.973 | 0.731 | 0.570 | 0.463 | 0.382 ± 0.030 |
+
+The plaquette shift under the flip is ≤ 2 × 10⁻⁴ at every depth. Local observables are blind to this sector.
+
+The slab is bounded by the same frozen layer on both sides, so the profile is ∝ cosh(m(D − d)).
+- **β 2.5:** the fit gives m ≈ 0.32 per lattice unit. That is the flux-tube energy across the transverse box:
+  σa²·M − π/(3M) = 0.034·12 − 0.087 = 0.32 (a√σ ≈ 0.185 at β 2.5, with the Lüscher term).
+- **β 2.3:** local rates are 1.0–1.2 per lattice unit.
+
+Prediction (5):
+- **Held in its main claim.** The flux sector decays far more slowly than the plaquette at β 2.5: 0.32 against
+  1.05–1.15.
+- **Held for the rate at β 2.5**, which equals σM with the Lüscher term.
+- **Inaccurate at β 2.3.** The pre-registered σa² ≈ 0.07 at β 2.3 was wrong; the standard value is about 0.13.
+
+**Consequence for T3, the main result of this round.** A finite-box mixing criterion must control the whole
+conditional law, including this sector. In a box of side L₀ the boundary-holonomy influence decays at the
+flux-tube energy σa²L₀ − π/(3L₀). That is positive only when L₀ exceeds the deconfinement length
+1/(aT_c) = N_t,c(β), and only well above it is the decay fast.
+- **At β 2.5**, N_t,c = 8. The plaquette-level L₀ ≈ 5 of §6 is below the deconfinement length, so a 5⁴ box is
+  effectively deconfined and the criterion cannot close there.
+- **A realistic box** is L₀ ≳ 2–3 × N_t,c ≈ 16–24 at β 2.5, about 3 × 10⁵ to 1.3 × 10⁶ links.
+- **Along asymptotic freedom**, N_t,c ∝ 1/a doubles every Δβ ≈ 0.26 in perturbative running. A box set by
+  N_t,c(β_eff) at the band's weak-coupling edge (β_eff ≈ 2.5–3) is far beyond rigorous computation.
+
+T3 in the naive sense ("a small box suffices because local correlations are short") is therefore ruled out by
+the center sector: the box must contain confinement itself. The target can only be rescued with block variables
+that make the center sector local, for instance by conditioning on center vortices or 't Hooft fluxes, in the
+spirit of the twisted boxes this program uses.

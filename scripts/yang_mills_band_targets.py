@@ -41,7 +41,20 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import yang_mills_sl_gpu as G
 DT = torch.float32
 G.DT = DT; G.dev = dev; G.CJ = torch.tensor([1., -1, -1, -1], dtype=DT)
-qmul, qc, S, staple, kp = G.qmul, G.qc, G.S, G.staple, G.kp
+qmul, qc, S, staple = G.qmul, G.qc, G.S, G.staple
+
+
+def kp(k):
+    """a0 ~ sqrt(1 - a^2) e^{k a} on [-1, 1]. Kennedy-Pendleton for k >= 1; for small k (where KP can stall, e.g. at
+    near-cancelling staples next to a frozen flux layer) exact rejection from the uniform S^3 marginal."""
+    out = torch.empty_like(k); big = k >= 1
+    if bool(big.any()): out[big] = G.kp(k[big])
+    idx = (~big).nonzero(as_tuple=True)[0]
+    while idx.numel():
+        ks = k[idx].double(); g = torch.randn((idx.numel(), 4), dtype=torch.float64)
+        a = g[:, 0] / g.norm(dim=-1); ok = torch.rand(idx.numel(), dtype=torch.float64) <= torch.exp(ks * (a - 1))
+        out[idx[ok]] = a[ok].to(DT); idx = idx[~ok]
+    return out
 
 
 def update(U, z, beta, par, free, heat):
@@ -161,13 +174,15 @@ def flux_bc(k, shp, xs, sigma=3):
     return U
 
 
-def mode_adv(out, betas, Lx, M, nsw):
+def mode_adv(out, betas, Lx, M, nsw, only_p1=False):
     shp, xs, par, z, free = setup(Lx, M); res = []
     d = torch.minimum(torch.arange(Lx), Lx - torch.arange(Lx)); D = Lx // 2
     for b in betas:
         beta = b / 2; t0 = time.time(); prof = {}
         cfgs = [('cold', flux_bc(0, shp, xs))] + [(f'flux{k}', flux_bc(k, shp, xs)) for k in range(1, M // 2 + 1)]
         flip = flux_bc(0, shp, xs); flip[1][(xs[0] == 0) & (xs[1] == 0)] = torch.tensor([-1., 0, 0, 0]); cfgs.append(('flip', flip))
+        if only_p1: cfgs = [cfgs[0], cfgs[-1]]
+        assert float(G.polyakov(flip, 1)[0].mean()) < -0.99   # boundary holonomy of the flipped layer is -1
         for name, U in cfgs:
             for _ in range(300): sweep(U, z, beta, par, free)
             rp = []; rl = []
@@ -224,5 +239,6 @@ if __name__ == '__main__':
     Lx = int(Lx) if mode != 'auto' else None
     if mode == 'bc': mode_bc(out, betas, Lx, int(sys.argv[5]), int(sys.argv[6]))
     elif mode == 'adv': mode_adv(out, betas, Lx, int(sys.argv[5]), int(sys.argv[6]))
+    elif mode == 'p1': mode_adv(out, betas, Lx, int(sys.argv[5]), int(sys.argv[6]), only_p1=True)
     elif mode == 'auto': mode_auto(out, betas, [int(v) for v in sys.argv[4].split(',')], int(sys.argv[5]))
     else: mode_relax(out, betas, Lx, [int(v) for v in sys.argv[5].split(',')], int(sys.argv[6]), int(sys.argv[7]))
