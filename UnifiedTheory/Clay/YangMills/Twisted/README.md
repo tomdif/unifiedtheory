@@ -1721,6 +1721,146 @@ Convexity has to be used block by block: side-2 blocks conditioned on the coarse
 block-convexity numerics, with the coarse direction's constant `c` kept small. The Lean step above
 is stated in exactly that form (fine `x`, coarse `y`, joint convexity on `D`).
 
+## Lean: TwistedHolderStep (the upper Hessian bound; two-sided convex step)
+
+`TwistedHolderStep.lean` is axiom-clean (205 checks in `scripts/CheckYangMillsTwisted.lean`).
+
+- `logConvex_lintegral`: integrals of log-convex `ℝ≥0∞`-valued functions are log-convex (Hölder with
+  exponents `1/λ`, `1/(1−λ)`; only a.e.-measurability in the integrated variable is needed).
+- `holder_rg_step_upper`: if `y ↦ V(x, y) − C‖y‖²` is concave for every fine field `x`, then the coarse
+  action `U = −log ∫ e^{−V(x,y)} dμ(x)` has `U − C‖y‖²` concave. This needs no convexity in `x` and no
+  Prékopa property: a uniform upper bound on `∂²_y V` passes to the coarse action for any measure `μ`.
+- `rg_step_two_sided`: with `prekopa_rg_step_multi`, one convex step preserves both bounds,
+  `2c ≤ ∂²U ≤ 2C`, with the same constants. So the condition number of the effective action does not grow
+  under the convex step.
+
+This is the form-preservation half that iterating the convex step needs. It does not touch the real
+obstacle: on SU(2) the action is convex only in a small-field chart, the box region in a fixed chart is
+empty at the critical slope (section below), and the large-field region needs a polymer expansion. The
+external audit checklist is [`../EXTERNAL_EXISTENCE_AUDIT.md`](../EXTERNAL_EXISTENCE_AUDIT.md).
+
+## Lean: TwistedTiltBL (the localization covariance bound in the convex regime)
+
+`TwistedTiltBL.lean` is axiom-clean (207 checks).
+
+- `quad_le_sq_div`: if `κ|v|² ≤ vᵀAv` for all `v`, then `κ · wᵀAw ≤ |Aw|²`. The proof expands `0 ≤ |Aw − κw|²`;
+  no spectral theorem and no symmetry are used.
+- `sl_tilt_sub_gaussian`: let `V − ½xᵀHx` be convex with `H ≥ λ·I`, and let the localization tilt be
+  `V_{t,y} = V − y·x + (t/2)|x|²`. Then for **every** `y`, every `t` with `λ + t > 0` and every direction `u`,
+  `log Z(s) + log Z(−s) − 2 log Z(0) ≤ s²|u|²/(λ + t)`, where `Z(s) = ∫ e^{s u·x − V_{t,y}}`.
+
+At second order in `s` this is `Var_{μ_{t,y}}(u·x) ≤ |u|²/(λ + t)`, i.e. `α_t ≤ 1/(λ + t)`, so
+`∫₀ᵀ α ≤ log(1 + T/λ)`. That is exactly the Gaussian-sharp profile the GPU path runs measure on the slow
+neutral mode (log(1 + t·C_P) with C_P = 1/λ). In the convex regime the localization criterion therefore
+closes for every tilt, deterministically: the almost-sure issue of the large-t endpoint does not arise.
+Everything open is the gap between this and SU(2): the Wilson measure is not log-concave in any global
+chart, and λ would have to be the N-uniform block constant of an RG-blocked effective action.
+
+## Block convexity of the SU(2) measure: where the convex theorems apply (numerics)
+
+The two convex theorems above need a Hessian bounded below. On SU(2)^links the right local quantity is the
+Bakry–Émery curvature `κ = Ric + Hess(βS)`, with `Ric = 2` on the unit 3-sphere (Haar metric). This is the
+quantity whose positivity gives the strong-coupling LSI. `scripts/yang_mills_block_bakry_emery.py` measures it per
+2⁴ block. For each thermalized configuration (N = 8, twisted box), every block is conditioned on all links except
+its 32 interior links (Dirichlet data, so no gauge zero modes). The script computes the exact 96 × 96 Riemannian
+Hessian of βS in the geodesic chart `U → exp(ε)U` and records `λ_B = λ_min`. The free block value is
+`λ₀ = 3` per unit β (largest eigenvalue 11). Blocks are processed in 16 parity classes, so each class Hessian is
+exactly block diagonal. There are 1024 blocks per β (4 configurations).
+
+| β_std | ⟨P⟩ | κ_B ≤ 0 | λ_B ≤ 0 | λ_B < βλ₀/2 | median λ_B/(βλ₀) | 0.1% quantile |
+|---|---|---|---|---|---|---|
+| 0.25 | 0.064 | 0 | 100% | 100% | −1.80 | −2.20 |
+| 0.5 | 0.126 | 97.9% | 100% | 100% | −1.69 | −2.14 |
+| 1 | 0.241 | 100% | 100% | 100% | −1.45 | −1.93 |
+| 2 | 0.501 | 99.7% | 100% | 100% | −0.82 | −1.40 |
+| 2.5 | 0.653 | 72.2% | 99.3% | 100% | −0.35 | −1.04 |
+| 3 | 0.722 | 30.4% | 86.4% | 100% | −0.14 | −0.65 |
+| 4 | 0.799 | 2.5% | 16.2% | 100% | 0.11 | −0.35 |
+| 6 | 0.870 | 0 | 0 | 97.6% | 0.36 | 0.08 |
+| 8 | 0.904 | 0 | 0 | 62.9% | 0.48 | 0.29 |
+| 12 | 0.936 | 0 | 0 | 1.5% | 0.61 | 0.43 |
+| 16 | 0.953 | 0 | 0 | 0 | 0.68 | 0.53 |
+| 32 | 0.976 | 0 | 0 | 0 | 0.80 | 0.70 |
+| 64 | 0.988 | 0 | 0 | 0 | 0.87 | 0.81 |
+| 128 | 0.994 | 0 | 0 | 0 | 0.91 | 0.88 |
+
+Pre-registered (script docstring, written before the run):
+- **(1) Held.** The median of `λ_B/(βλ₀)` tends to 1 with deficit and spread of order β^{-1/2}:
+  `(1 − median)·√β` = 1.46, 1.27, 1.15, 1.06, 1.00 at β = 8, 16, 32, 64, 128. A field-strength-linear (spin
+  coupling `[F, ·]`) correction is the expected source.
+- **(2) Held.** The Bakry–Émery-negative fraction is 72% at 2.5 and 0 at β ≥ 6. Statistics are limited: 1024 blocks.
+- **(3) Held, more strongly than predicted.** At β ≤ 4 every block has less than half the free convexity, and at
+  2.5 99% of blocks have a negative Hessian direction.
+
+The strong-coupling side was not pre-registered. There the Ricci term carries Bakry–Émery alone (β = 0.25: every
+block has κ_B ≥ 0.35), consistent with the strong-coupling LSI regime.
+
+**Scope (added 2026-11-06).** These are **Dirichlet** blocks: all 32 interior links are free, including the
+block's coarse directions. The RG-relevant quantity is the one in "Large fields in hypothesis (a)" above:
+fine (zero-mean) directions only, coarse field fixed. It is non-convex far less often, 3.2% at β_std 2.5 and 0
+at ≥ 3.25. So the edges below are upper bounds on the difficulty. See `../GAP_BAND_STATEMENT.md` §2b.
+
+**Reading.** Block-scale Bakry–Émery positivity holds in two disjoint regimes:
+- strong coupling, β ≲ 0.3, where Ricci dominates;
+- weak coupling, β ≳ 5, where the Hessian dominates.
+
+At block side 2 it fails for essentially every block in between, including the whole physical scaling window
+β ≈ 2.2–3. Uniform half-convexity, the regime where `TwistedHolderStep` and `TwistedTiltBL` apply with an
+O(1)-degraded constant, needs β ≳ 12.
+
+A convex RG flow started in the UV can therefore run only down to an effective coupling of about 5–12. The flow from
+there to the confining scale crosses a band with no convexity and no strong-coupling small parameter. That is the
+classical intermediate-coupling obstacle, now quantified at block scale. This is a pointwise test at typical
+configurations (a necessary condition for convexity on the support, not a sufficient one), at one block size. It
+says nothing about RG-blocked effective actions whose couplings differ from Wilson's.
+
+### Are the non-convex blocks a dilute polymer gas? (numerics, 2026-11-06)
+
+`scripts/yang_mills_block_polymer.py` reuses the same per-block `κ_B`.
+
+- **Bad block.** A block is bad at threshold `c` if `κ_B < c·β·λ₀`. With `c = 0` this is plain Bakry–Émery
+  failure; `c = 1/2` keeps half the free convexity.
+- **Interacting blocks.** Two blocks interact if they share a plaquette. A block has 32 such neighbours.
+- **Measured.** `p_bad`, the pair ratio `r = P(both bad)/p_bad²` over interacting pairs, and a crude
+  Kotecký–Preiss margin `e·32·p_bad·r`. A margin below 1 suggests a convergent cluster expansion.
+- **Sample.** N = 8, 16 configurations, 4096 blocks and 65,536 pairs per β.
+
+| β_std | p_bad (c = 0) | r | margin | p_bad (c = ¼) | margin | p_bad (c = ½) | margin |
+|---|---|---|---|---|---|---|---|
+| 3 | 0.295 | 1.01 | 26 | 0.906 | 79 | 1.000 | 87 |
+| 3.5 | 0.075 | 1.00 | 6.5 | 0.672 | 58 | 1.000 | 87 |
+| 4 | 0.0176 | 1.19 | 1.8 | 0.417 | 36 | 0.991 | 86 |
+| 4.5 | 0.0020 | (no pairs) | ≈0.17 | 0.204 | 18 | 0.965 | 84 |
+| 5 | 0.0005 | (no pairs) | ≈0.04 | 0.085 | 8.0 | 0.909 | 79 |
+| 5.5 | 0 | — | 0 | 0.029 | 2.4 | 0.808 | 70 |
+| 6 | 0 | — | 0 | 0.0098 | 0.82 | 0.679 | 59 |
+| 8 | 0 | — | 0 | 0 | 0 | 0.178 | 15 |
+
+Pre-registered (docstring, written before the run):
+- **(1) Held.** `p_bad(0)` falls faster than exponentially over β = 3–5, by a factor of about 4–9 per half unit
+  of β. It is 0.05% at β = 5, against a predicted bound of 0.3%.
+- **(2) Held.** Bad blocks are essentially independent: `r` = 1.0–1.2 wherever it is measurable. Badness does not
+  cluster at block scale.
+- **(3) Held.** The `c = 0` margin drops below 1 between β = 4 and 4.5. For `c = ½` it stays above 1 at every
+  β ≤ 6, and at 8.
+
+**Reading.** If Bakry–Émery-negative blocks are treated as dilute, independent polymers, the convex machinery plus
+a cluster expansion plausibly reaches down to β_eff ≈ 4.5 with `c = 0`, or ≈ 6 with `c = ¼`. That is lower than
+the β ≈ 12 needed for uniform half-convexity. The physical window (β ≈ 2.2–3, margin 26 at β = 3) stays out of
+reach. Between roughly β 2.5 and 4.5 bad blocks are dense (8–30%) yet uncorrelated. That is a high-density,
+weak-correlation gas, the regime where no known expansion converges.
+
+Caveats:
+- The margin is a heuristic. Real polymer activities carry the free-energy cost of a non-convex block, not just
+  its probability, and only pair correlations were measured.
+- The test is a pointwise check at sampled configurations, at one block size, for the Wilson action only.
+- Zero counts at β ≥ 5.5 mean below about 1/4096, not zero.
+
+Side-4 blocks, the three band-crossing targets T1–T3 and their numerical tests are in
+[`../GAP_BAND_STATEMENT.md`](../GAP_BAND_STATEMENT.md), §§4, 6 and 7. In short, fixed-boundary convexity needs
+β ∝ s⁴. Boundary influence on local observables dies within about 5 lattice units across the band, and
+heat-bath energy relaxation is volume-independent there. None of this is a proof.
+
 ## Box small-field region in a fixed linear chart (numerics)
 
 These runs test the hypothesis of `prekopa_rg_step_domain`.
@@ -1926,8 +2066,10 @@ synchronization transition with α growing in n at weak coupling) failed at n �
   precision βΔ + tI, so correlation length ξ ~ √(β/t) ~ √(log n) at the critical slope. A multiscale analysis of the
   tilted theory would need only O(log log n) scales instead of O(log n). This is the most promising reduction found,
   and it is unproved.
-- The crux: an almost-sure (or high-probability, with control of the exceptional y) bound ‖Cov μ_t‖ ≤ A on the window
-  t ∈ [0, O(β)], uniform in n. Numerically A ≈ 3–5 with α ≈ 1/t already from t ≈ 4 at every β tested (the decay
+- The crux, as first stated: an almost-sure (or high-probability, with control of the exceptional y) bound
+  ‖Cov μ_t‖ ≤ A on the window t ∈ [0, O(β)], uniform in n. **Corrected 2026-11-05: this cannot hold at weak
+  coupling.** ‖Cov μ_0‖ ≥ C_P, which grows like N² (smeared Polyakov loops, "Gaussian sharpness" below). The right
+  target is α_t ≲ 1/(C_P⁻¹ + t), whose integral is log(1 + T·C_P) ≈ 2 log N. Numerically A ≈ 3–5 with α ≈ 1/t already from t ≈ 4 at every β tested (the decay
   starts at t = O(1), not t = O(β)). No argument for it exists here.
 
 **Next.**
@@ -1965,3 +2107,102 @@ independent chain. The criterion needs ∫₀ᵀ α ≥ log(V0/V(T)) ("required"
   Written before the run: if a slow neutral mode exists at β 4, R_poly2 grows ≥ 2× from N = 8 to 24.
 - Caveats: 2 realizations of y; α_struct is a lower bound on ‖Cov μ_t‖_op on a fixed span, not the operator norm;
   the trapezoid uses ¼ on [0, 0.01].
+
+#### Polyakov-loop observables and the weak-coupling calibration (2026-11-05, numerics)
+
+R·β (removing the trivial 1/β), μ-only rows, S = 1000; data `data/yang_mills_sl_gpu_mu_poly_2026_11_05.json`,
+`data/yang_mills_sl_gpu_mu_cal_2026_11_05.json`. poly2 = (½tr L)² (center neutral), bare links:
+
+| β_std | N = 8 | N = 16 | N = 24 |
+|---|---|---|---|
+| 64 | 0.32 | 0.55 | 0.77 |
+| 16 | 0.30 | 0.44 | 0.36 |
+| 4 | 0.10 | 0.033 | 0.021 |
+| 2.5 | 0.039 | 0.019 | 0.013 |
+
+The plaquette group stays flat at R·β ≈ 0.065–0.08 at every β, N. The prediction made before the run (R_poly2 at β 4
+grows ≥ 2× from N 8 to 24) failed. But near the free theory (β 64) the same observable grows roughly linearly in N,
+so it can see a slow mode. β 16 grows and then turns over at N = 24 (g²N = 6). Reading: the bare loop's UV perimeter
+self-energy, ~ exp(−c g² N), takes over at g²N ≳ 4 and buries the long-wavelength part. The fall at β 4 is not
+evidence against a slow mode. Next: the same rows on stout-smeared links (ρ 0.1, 10 steps, with the gradient taken
+through the smearing), poly2s/poly1s. At N = 8, β 4, R_poly2s·β = 2.40 against 0.10 bare.
+
+Smeared Polyakov loops (`data/yang_mills_sl_gpu_smear_2026_11_05.json`), R_poly2s·β:
+
+| β_std | N = 8 | N = 16 | N = 24 |
+|---|---|---|---|
+| 4 | 2.40 | 6.32 | 9.14 |
+| 16 | 1.96 | 4.67 | 7.51 |
+| Gaussian slow mode N²/(4π²) | 1.62 | 6.48 | 14.6 |
+
+The prediction made before the run (R_poly2s·β grows with N at β 4) holds: ×2.6 from N 8 to 16, close to N². So a
+slow neutral mode with C_P ≳ N²/(4π²β) is now seen directly at β 4. That is what a neutral gap of order 1/n implies,
+so this is not an obstruction to TargetAGap. The open question is whether localization certifies it. Running: the
+localization path at β 4, N = 8, 16, t up to 30, with these observables. Written before the run: at t = 30 the required
+integral for poly2s at N = 16 exceeds that at N = 8 by 0.6–1.4 (log of the C_P ratio ≈ 0.97).
+
+Growth from N 16 to 24 is slower than N² (×1.45 at β 4, ×1.6 at β 16), so the overall growth is about N^1.3.
+
+**Sampling caveat (path run, N = 8, β 4).** At t = 1 the measured E Var_{μ_t} F exceeds the single-chain Var_μ F:
+×1.45 for poly2s and ×12.8 for poly1s. Exact sampling forbids this (Nishimori: E_y Var_{μ_t} F ≤ Var_μ F), so the
+single μ chain under-samples. The smeared loops sit near ±0.97: the small box is deconfined and the chain stays in
+the center sector it started in. That biases V0 for charged observables low by orders of magnitude, and the
+required integrals computed from it low as well. A multi-chain test with center-flipped starts is running
+(`scripts/yang_mills_sl_ergodicity.py`).
+
+**Gaussian sharpness, and a quantitative prediction (written before the N = 16 path data).** For a Gaussian μ with
+precision βK the tilted measure has Cov μ_t = (βK + t)⁻¹ exactly. On the slowest mode, with C_P = 1/(βλ_min),
+α_t = 1/(C_P⁻¹ + t), so ∫₀ᵀ α = log(1 + T·C_P) = log(V0/V(T)). The criterion holds with equality: localization
+loses nothing on Gaussian slow modes, and the required integral is log(1 + T·C_P) → 2 log N + O(1). Around a center
+sector (smeared L ≈ ±0.97), (½tr L)² is linear in the fluctuation, so the same formula applies to poly2s. Check at
+N = 8, β 4, with C_P ≈ R_poly2s = 0.60 (a lower bound): log(1 + 30·0.60) = 2.94 against 3.08 measured for iy 0,
+an agreement in hindsight. Prediction for N = 16 (C_P ≈ 1.58): required at t = 30 is 3.88 ± 0.3, a difference
+of ≈ 0.94. A second consequence: at small t the operator norm α_t ≈ C_P grows like N². So no N-uniform bound
+‖Cov μ_t‖ ≤ A can hold near t = 0. The criterion has to be fed by α_t ≈ 1/t over t ∈ [C_P⁻¹, T], which is the
+log N scale count of a multiscale analysis. The structured span (α_struct ≈ 0.25, the isotropic value) does not
+contain the slow direction.
+
+**Localization path at β 4, N = 8, smeared observables** (`data/yang_mills_sl_gpu_path_smear_b4_n8_2026_11_05.json`,
+2 realizations of y, S = 1000):
+
+| t | required, poly2s | Gaussian log(1 + t·C_P), C_P = 0.60 | structured ∫₀ᵗ α | required, plaquette group |
+|---|---|---|---|---|
+| 3 | 0.98 | 1.03 | 0.65 | 0.01 |
+| 10 | 2.16 | 1.95 | 1.65 | 0.10 |
+| 30 | 3.24 | 2.94 | 2.70 | 0.39 |
+
+- The required integral follows the Gaussian formula within ~10% over t ∈ [3, 30].
+- With an observable that sees the slow mode, the structured 216-dimensional span no longer supplies enough: 2.70
+  against 3.24 at t = 30, already at N = 8. The earlier 4.5× margin (β 2.5, plaquette group) came from an
+  observable that cannot see the mode.
+- At t = 1 the first realization has negative required values (−0.17 poly2s, −1.92 poly1s): one center tunnelling
+  event in a tilted chain (see the sampling caveat). The second realization does not.
+
+## External: claimed existence proof (noted 2026-11-05)
+
+The KITP shepherding committee (Gross, chair; Douglas, Jaffe, Klebanov, Nekrasov) stated on 2026-11-03 that it is
+checking an OpenAI-produced Lean proof of the existence of pure quantum Yang–Mills theory, and hopes to release it
+around the week of 2026-11-09. Press coverage says the claim covers existence only, not the mass gap. It is
+unverified and not public. This program's step 4 (a neutral gap of order 1/n) is a gap statement and is not covered
+by the claim. To do on release: check whether its multiscale estimates give the per-scale covariance bounds that
+the localization criterion needs (α_t ≲ 1/(C_P⁻¹ + t), see "Gaussian sharpness").
+
+**Results of the two checks (2026-11-05).**
+- Ergodicity (`data/yang_mills_sl_ergodicity_n8_b4_2026_11_05.json`; 8 chains, N 8, β 4, 20000 sweeps, half started
+  center-flipped): pooled/single-chain variance is 1.00 for poly2s, poly2 and the plaquettes, and 5.3 for poly1s. So
+  V0 for the neutral observables is reliable, and only the charged ones are under-sampled. 2 of the 8 chains
+  tunnelled (1–3 sign changes of the loop mean), so the prediction "no tunnelling" failed. Neutral variance per chain
+  is 457–524 across all four sectors, the same within noise, as center symmetry requires.
+- N = 16 path (`data/yang_mills_sl_gpu_path_smear_b4_n16_2026_11_05.json`; 1 realization, S = 500; C_P ≥ R_poly2s =
+  1.43 in this run):
+
+| t | required, poly2s | log(1 + t·C_P) |
+|---|---|---|
+| 3 | 1.36 | 1.67 |
+| 10 | 2.62 | 2.73 |
+| 30 | 3.77 | 3.78 |
+
+  The prediction 3.88 ± 0.3 at t = 30 held. The difference from N = 8 is 0.53, just outside the stated 0.6–1.4,
+  because N = 8 came out above its Gaussian value. Reading: on the slow neutral mode the localization criterion is
+  sharp, as for a Gaussian. The required integral is log(1 + T·C_P) with C_P ~ N^1.3–2, and a proof has to supply
+  α_t ≈ 1/(C_P⁻¹ + t) on that mode, scale by scale. This is one renormalization-group estimate per scale.

@@ -76,7 +76,25 @@ def plaq_re(U,z):
             P=qmul(qmul(qmul(U[m],S(U[n],m)),qc(S(U[m],n))),qc(U[n]))[...,0]
             out[(m,n)]=P*z if {m,n}=={1,2} else P
     return out
-GROUPS={'plaq':slice(0,24),'poly2':slice(24,38),'poly1':slice(38,52)}
+GROUPS={'plaq':slice(0,24),'poly2':slice(24,38),'poly1':slice(38,52),'poly2s':slice(52,66),'poly1s':slice(66,80)}
+SMEAR=(0.1,10)                                        # stout rho, steps: flow time 1, radius ~ sqrt(8) lattice units
+def smear(U,z,rho,nst):
+    """Stout smearing, all directions at once: U <- exp(rho Im(A U^dagger)) U, A = conj(staple sum). Differentiable."""
+    for _ in range(nst):
+        new=[]
+        for m in range(4):
+            v=rho*qmul(qc(staple(U,z,m)),qc(U[m]))[...,1:]; th=v.norm(dim=-1,keepdim=True)
+            e=torch.cat([torch.cos(th),torch.sinc(th/math.pi)*v],-1); new.append(qmul(e,U[m]))
+        U=torch.stack(new)
+    return U
+def poly_obs(U,phis):
+    p1=[];p2=[]
+    for d in (0,3):
+        l=polyakov(U,d); ws=[torch.ones_like(l)]
+        for e in range(4):
+            if e!=d: ws+=[phis[e][0].select(d,0),phis[e][1].select(d,0)]
+        for w in ws: p2.append((w*l*l).sum()); p1.append((w*l).sum())
+    return p2,p1
 def polyakov(U,d):
     """(1/2) tr of the Polyakov loop along untwisted direction d, as a field on the slice x_d = 0 (kept N^4 by broadcasting)."""
     L=U[d]
@@ -88,13 +106,9 @@ def observables(U,z,phis):
         for d in range(4):
             if d in (m,n): continue
             vals.append((P*phis[d][0]).sum()); vals.append((P*phis[d][1]).sum())
-    p1=[];p2=[]
-    for d in (0,3):                                   # twist is in plane {1,2}: loops along 0 and 3 are gauge invariant
-        l=polyakov(U,d); ws=[torch.ones_like(l)]
-        for e in range(4):
-            if e!=d: ws+=[phis[e][0].select(d,0),phis[e][1].select(d,0)]
-        for w in ws: p2.append((w*l*l).sum()); p1.append((w*l).sum())
-    return torch.stack(vals+p2+p1)
+    p2,p1=poly_obs(U,phis)                            # twist is in plane {1,2}: loops along 0 and 3 are gauge invariant
+    p2s,p1s=poly_obs(smear(U,z,*SMEAR),phis)          # smeared: removes the UV perimeter self-energy of the bare loop
+    return torch.stack(vals+p2+p1+p2s+p1s)
 def grad_norm2(U,z,phis):
     Ug=U.clone().requires_grad_(True); F=observables(Ug,z,phis); out=[]
     for i in range(F.numel()):
