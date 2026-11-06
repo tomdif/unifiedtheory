@@ -67,6 +67,28 @@ For SU(2): construct a nontrivial quantum field theory on R⁴ satisfying the Os
   2. `L₀` and `L₃` are not doubled. `-log z(2t) = -2 log z(t) + log K_tw - log K_per` is an identity, and using it needs `K_tw/K_per = 1` to the precision of `y`. A Jensen bound in the eigenbasis of `T` gives linearity in `t` with no `K`, but its rate is a single-slice 't Hooft loop, of order `L₃`. That is not small in `L₁L₂`, so it is useless.
   3. Nothing proves `y` falls below threshold at some L for every β. At L = 4 and β_std = 2.5 the bound is `K₃ y⁴` ≈ 52 while `y < 1`, so it is vacuous exactly where control is needed. This is the crossover restated.
 
+- *5d. What the constant is, and why the route needs the gap (2026-11-06, `TwistedFluxThermal`, Lean, standard axioms; lattice identification by hand).*
+  1. **K is thermal.** Normalize the sector spectrum by its top eigenvalue and let `Φ(t) = log Σ e^{-t(E_i - E_0)}` be the box's
+     vacuum-subtracted thermal free energy at temperature `1/t`. Then exactly `Φ(t) ≤ log K ≤ 2Φ(t)` (`thermal_two_sided`).
+     A uniform bound on `K₃` is equivalent to a Stefan-Boltzmann-type bound on boxes at temperature of order their inverse size.
+     That bound holds in a massless phase too, so it carries no confinement. The measured `log K₃` fits this reading: large
+     where the box is hot (β_std 2.5, L = 4, 6 < N_t,c = 8: 5.2, 4.0), small where it is cold (β_std 2.3, L = 6 > N_t,c = 4: 0.95).
+  2. **The (1,2) chain only sees a slab.** At fixed `L₀, L₃` the chain doubles only the flux plane. The slab theory is
+     two-dimensional at long distance (2D gauge theory with adjoint scalars), which has a fundamental area law at every β, and
+     2D compact U(1) does too. So the chain can succeed at fixed thickness without saying anything about four dimensions. All 4D
+     content of step 5 is in doubling `L₀, L₃`. (By hand, from the standard 2D results; not formalized.)
+  3. **Transverse doubling costs the box thermal free energy.** Take `L₀` as the time of the magnetic-sector transfer operators
+     (untwisted `A`, twisted `B`, `z = B/A`). `A(2t) ≤ A(t)²` and the definition of `K_B` give `z' ≥ z²/K_B`, hence
+     `y' ≤ (K_B − z²)/(K_B + z²) ≤ 4y + κ` with `K_B = 1 + κ` (`transverse_ratio`, `transverse_y`, `transverse_y_linear`).
+     By item 1, `κ` is small only when `Φ` is small, i.e. the box at temperature `1/L` is cold. That means a gap at scale `L` of
+     order `log(L³)/L`.
+  4. **Consequence.** With these inequalities an isotropic doubling chain `y(2L) ≤ K₃(4y(L) + κ(L))⁴` contracts only if
+     `κ(L) ≪ 1` at every scale past the start, which is a finite-volume mass gap at every scale. Together with step 7 (no theorem from
+     area law to gap) the flux-recursion route is circular: it consumes the gap instead of producing it. It also cannot start below the
+     deconfinement length, where `κ = O(1)`, which agrees with the center-sector numerics of GAP_BAND_STATEMENT §8 (box ≳ 2.5–3.5 N_t,c).
+     The route is closed in this form. A crossover argument needs an inequality for transverse doubling whose error term is not a
+     thermal free energy, and none is known.
+
 **Step 6. Long distance. Open.** `BoxCriterionOn` implies mixing and covariance decay (`TwistedBridge.mixing`, Lean, conditional), and holds at strong coupling (Lean). Nothing establishes it at the coupling reached after step 5. Hand argument: block Dobrushin has no margin below the correlation length.
 
 **Step 7. A gap in infinite volume. Open.** Two routes, neither complete:

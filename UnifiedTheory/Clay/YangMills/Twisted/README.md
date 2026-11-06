@@ -527,6 +527,15 @@ With time along direction 1, Z_tw = Tr(Omega T^t) for the periodic T and the cen
 - **Defect in that test.** The inequality doubles L1 and L2 only. The next step of a chain starts from (L, 2L, 2L, L), so K3 at the isotropic base L = 6 is not the constant of any chain that starts at L = 4. Doubling L0 and L3 has no inequality: -log z(2t) = -2 log z(t) + log K_tw - log K_per is an identity, with K_tw the same ratio for Z_tw, and using it needs K_tw/K_per = 1 to the precision of y. Nothing here bounds that. At fixed L0, L3 the chain gives at most decay at fixed transverse size, not an infinite-volume area law. The numbers do not establish a recursion on L^4.
 - Not compared against the step Ito and Seiler dispute in Tomboulis 0707.2179.
 
+## The flux-recursion constant is thermal; the route needs the gap (2026-11-06)
+
+`TwistedFluxThermal.lean` (Lean, standard axioms; not imported by root): `thermal_two_sided` (`Φ ≤ log K ≤ 2Φ`, with Φ the box's
+vacuum-subtracted thermal free energy at temperature 1/t), `transverse_ratio`/`transverse_y`/`transverse_y_linear` (doubling a
+direction transverse to the flux plane: `y' ≤ 4y + κ`, `κ = K_B − 1`). The reading and the conclusion are in BEST_ATTEMPT.md step 5d.
+In short, K₃ is a Stefan-Boltzmann-type quantity with no confinement content. The (1,2) chain alone only proves a slab area law,
+which holds at every β by two-dimensional reduction. Transverse doubling is controlled only in cold boxes, i.e. given a
+finite-volume gap at every scale. So the flux recursion does not lead to the gap.
+
 ## Fixed-n inputs (2026-11-01)
 
 `TwistedFixedN`: `frameWeight_lower` (frame weight at least `ballMass ε₁` for fields within `ε` of a rotated reference, `ε + 2ε₁ < √2`, free of `β` and `n`), `integral_tree_chart_of_close` (the chart identity with closeness in place of the frame-weight hypothesis), `energy_no_log`. Axioms: propext, Classical.choice, Quot.sound. Not imported by root and not in the swarm audit script. Closeness on the valley in tree gauge is not proved, so the chart identity is still conditional. No limit of `neutralLevel` follows.
