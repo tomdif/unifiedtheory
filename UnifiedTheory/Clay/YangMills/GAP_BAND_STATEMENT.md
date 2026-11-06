@@ -216,8 +216,8 @@ Reading:
   inside the band, so such a mechanism must use cancellations between blocks, not block-wise convexity.
 - **T2 (BC-uniform decay).** Local influence decays within a few lattice units for every tested BC. The supremum
   over BCs, and the long-range sectors, are untested and are where the gap problem actually sits.
-- **T3 (finite-box criterion).** Superseded by §8 (center sector): the box must exceed the deconfinement length
-  N_t,c(β) by a factor of 2–3, i.e. L₀ ≈ 16–24 at β 2.5. The observable-level influence alone would need only
+- **T3 (finite-box criterion).** Superseded by §8 (center sector): the boundary-holonomy influence obeys an area law,
+  so the box needs σ_eff L₀² ≳ 2 ln(1/ε), i.e. L₀ ≈ 20–28 at β 2.5 (2.5–3.5 × N_t,c). The observable-level influence alone would need only
   L0 ≈ 5 at β 2.3–2.5. A
   Dobrushin–Shlosman-type check on a 5⁴ box would mean a supremum over boundary conditions of a total-variation
   influence for about 2500 links × 3 dof. That is far beyond rigorous interval arithmetic today, and it is the
@@ -293,16 +293,45 @@ The slab is bounded by the same frozen layer on both sides, so the profile is �
 Prediction (5):
 - **Held in its main claim.** The flux sector decays far more slowly than the plaquette at β 2.5: 0.32 against
   1.05–1.15.
-- **Held for the rate at β 2.5**, which equals σM with the Lüscher term.
+- **Held for the rate at β 2.5 at M = 12**, which equals σM with the Lüscher term. The M-scan below shows this
+  agreement is partly coincidental: the rate is linear in M, but with a smaller slope and no Lüscher curvature.
 - **Inaccurate at β 2.3.** The pre-registered σa² ≈ 0.07 at β 2.3 was wrong; the standard value is about 0.13.
 
+**M-scan, pre-registration (7).** Same run at transverse sizes M = 8 and 16 (Lx = 16, 3000 sweeps;
+`data/yang_mills_band_p1_m8_2026_11_06.json`, `..._m16_...`; fit `scripts/yang_mills_band_p1_fit.py`, cosh fit
+for d ≥ dmin, 1σ = Δχ² 1). Pre-registered: m(M) = σa²M − π/(3M), β 2.5: m(8) = 0.14, m(16) = 0.48 within 30%;
+β 2.3: m(8) ≈ 0.9.
+
+| β | dmin | m(8) | m(12) | m(16) | χ²/dof (8, 12, 16) | σa²M − π/(3M) at 8, 12, 16 |
+|---|---|---|---|---|---|---|
+| 2.5 | 2 | 0.218 [0.214, 0.220] | 0.318 [0.314, 0.320] | 0.424 [0.420, 0.426] | 1.2/5, 0.1/5, 1.1/5 | 0.141, 0.321, 0.479 |
+| 2.5 | 3 | 0.212 | 0.318 | 0.420 | 0.3/4, 0.0/4, 0.8/4 | |
+| 2.3 | 2 | 0.708 | 1.074 | 1.442 | 21/5, 18/5, 20/5 | 0.957, 1.545, 2.111 |
+| 2.3 | 3 | 0.804 [0.78, 0.83] | 1.200 [1.16, 1.24] | 1.70 [1.62, 1.78] | 0.6/4, 3.6/4, 7.3/4 | |
+
+- **Linearity in M: held, and sharply.** At β 2.5 the increments are 0.100 and 0.106 per ΔM = 4 (dmin 2: 0.103,
+  0.104). The rate is m(M) ≈ σ_eff·M + c with σ_eff = 0.026 and c ≈ 0.01. At β 2.3 (dmin 2, which has poor χ²
+  because of smearing-radius curvature) the increments are 0.366 and 0.368, so σ_eff ≈ 0.092.
+- **Numbers: failed at β 2.5, M = 8.** The measured 0.215 is 53% above the predicted 0.14. M = 16 held (0.42 against
+  0.48, −12%). β 2.3, M = 8 held within 30% (0.71–0.80 against 0.9–0.96) but is low.
+- **The Lüscher term is not seen.** A fit σL + c/L to M = 8, 16 at β 2.5 gives c = +0.04, not −π/3 = −1.05. The
+  slope is σ_eff ≈ 0.75 σa² at β 2.5 and ≈ 0.67 σa² at β 2.3. The same ~0.7 ratio at both couplings suggests a
+  systematic of this geometry rather than noise. Candidates, untested: the flux loop lives in a transverse box of
+  the same size M, the frozen layer is at distance ≤ 8, and the cosh window is short. The earlier agreement at
+  M = 12 is where the line σ_eff·M + c happens to cross σa²M − π/(3M).
+
+What survives is the structural claim: the center-sector boundary influence decays at a rate proportional to the
+transverse size, i.e. the boundary-holonomy correlation in a box obeys an area law with an effective tension
+σ_eff of order the string tension.
+
 **Consequence for T3, the main result of this round.** A finite-box mixing criterion must control the whole
-conditional law, including this sector. In a box of side L₀ the boundary-holonomy influence decays at the
-flux-tube energy σa²L₀ − π/(3L₀). That is positive only when L₀ exceeds the deconfinement length
-1/(aT_c) = N_t,c(β), and only well above it is the decay fast.
-- **At β 2.5**, N_t,c = 8. The plaquette-level L₀ ≈ 5 of §6 is below the deconfinement length, so a 5⁴ box is
-  effectively deconfined and the criterion cannot close there.
-- **A realistic box** is L₀ ≳ 2–3 × N_t,c ≈ 16–24 at β 2.5, about 3 × 10⁵ to 1.3 × 10⁶ links.
+conditional law, including this sector. In a box of side L₀ the boundary-holonomy influence across the box is
+suppressed by about exp(−σ_eff·L₀·L₀/2), an area law. Reaching influence ε needs σ_eff L₀² ≳ 2 ln(1/ε). Since
+T_c/√σ ≈ 0.71 for SU(2), 1/√σ is about 0.7 deconfinement lengths N_t,c(β), so this is a statement about boxes a few
+times the deconfinement length.
+- **At β 2.5** (σ_eff ≈ 0.026): ε = e⁻⁵ needs L₀ ≈ 20 and ε = e⁻¹⁰ needs L₀ ≈ 28. The plaquette-level L₀ ≈ 5 of §6
+  gives only σ_eff L₀²/2 ≈ 0.3, no suppression at all.
+- **A realistic box** is L₀ ≈ 20–28 at β 2.5, i.e. 2.5–3.5 × N_t,c, about 6 × 10⁵ to 2.5 × 10⁶ links.
 - **Along asymptotic freedom**, N_t,c ∝ 1/a doubles every Δβ ≈ 0.26 in perturbative running. A box set by
   N_t,c(β_eff) at the band's weak-coupling edge (β_eff ≈ 2.5–3) is far beyond rigorous computation.
 

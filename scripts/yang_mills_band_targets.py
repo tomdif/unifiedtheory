@@ -31,7 +31,11 @@ Added 2026-11-06 (second round), written before these runs:
       loop averages (charged) and their squares (neutral), N = 8, 12, 16.
       (6) at beta 2.3 (confined for N >= 8, beta_c(N_t = 8) = 2.51) the neutral tau_int does not grow from N = 12 to 16; the charged
           one may (center-sector tunnelling is a finite-volume effect outside the neutral target).
-Usage: out mode(bc|relax|adv|auto) betas Lx M sweeps [extra]
+Added 2026-11-06 (third round, p1 mode = cold/flip only), written before the M = 8, 16 runs:
+      (7) the center-sector boundary influence rate is the electric flux energy, m(M) = sigma a^2 M - pi/(3M),
+          linear in the transverse size: beta 2.5 (sigma a^2 = 0.034): m(8) = 0.14, m(16) = 0.48, within 30%;
+          beta 2.3 (sigma a^2 ~ 0.13): m(8) ~ 0.9; m(16) ~ 2 is beyond the resolution set by the smearing radius.
+Usage: out mode(bc|relax|adv|auto|p1) betas Lx M sweeps [extra]
 """
 import os, sys, json, math, time
 import torch
