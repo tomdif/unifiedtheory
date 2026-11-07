@@ -394,3 +394,52 @@ about 3–5 lattice units at β 2.3–2.5, on the boundary families tested. The 
 the supremum over boundary conditions, a total-variation statement rather than single observables, and the
 cutoff-uniformity of the box size along asymptotic freedom (N ∝ 1/a).
 
+
+## 9. Matching at one coupling: no β* in a 16⁴ box for long-wavelength observables (2026-11-07)
+
+**Question.** §2b puts the end of the convex fine-direction RG at β_eff ≈ 2.5–3. §8b found boundary influence on UV
+observables gone within 3–5 lattice units at β 2.3–2.5. If a finite-box criterion also held at one β* ≥ 2.5 for
+long-wavelength observables, the missing step of §3 would shrink from a band crossing to a matching at β*: convex RG
+down to β*, then a finite-box criterion for the effective measure at β*.
+
+**Test.** `scripts/yang_mills_box_matching.py`, `data/yang_mills_box_matching_2026_11_07.json`.
+- Contractible box C = [1, 16]⁴ with a frozen two-layer shell; boundary conditions cold, hot (frozen Haar draw) and
+  thin vortex (as §8b); 3000 sweeps, measurements every 4, 20 bins; β = 2.5, 2.65, 2.8, 3.0.
+- Observable: e = 1 − mean plaquette after n = 0, 5, 20 steps of stout smearing (ρ = 0.1) built only from plaquettes
+  inside C. It is a gauge-invariant function of the interior links alone. Smoothing radius ≈ 0, 2, 4.
+- Influence: relative difference (e_BC − e_cold)/e_cold by Chebyshev depth d from the shell (d = 7 is the centre).
+
+n = 20 (radius ≈ 4), relative influence (1σ errors 0.01–0.07 at d = 6–7):
+
+| β | hot d = 3 | hot d = 5 | hot d = 7 | vortex d = 3 | vortex d = 7 | rate (hot, d 2→5) |
+|---|---|---|---|---|---|---|
+| 2.50 | 1.40 | 0.53 | 0.25 | 0.066 | 0.09 ± 0.09 | 0.51 |
+| 2.65 | 1.14 | 0.52 | 0.35 | 0.069 | 0.07 ± 0.04 | 0.43 |
+| 2.80 | 0.94 | 0.40 | 0.28 | 0.071 | 0.04 ± 0.03 | 0.45 |
+| 3.00 | 0.84 | 0.36 | 0.23 | 0.093 | 0.10 ± 0.02 | 0.44 |
+
+The unsmeared (n = 0) influence reproduces §8b: hot falls to ≤ 3 × 10⁻³ by d = 4 and the vortex is invisible
+(≤ 2 × 10⁻³) at every depth.
+
+- **(11) failed.** No β* in [2.5, 2.8] (nor 3.0) has n = 20 influence < 10⁻² at d = 7. The hot boundary still moves the
+  smoothed energy at the centre of the box by 23–35 %. The cold profile itself has not plateaued: e(d = 7)/e(d = 0) is
+  3.3, 2.3, 2.0 and 1.9 at the four β.
+- **(10) failed.** The decay rate barely moves with β: 0.51 → 0.44 (ratio 0.87) on d = 2–5 and 0.48 → 0.38 (0.78) on
+  d = 3–6, not ≤ 0.6. The 0++ mass in lattice units should fall by a factor of about 3–4 from 2.5 to 3.0. In a 16⁴
+  box the rate is set by the box and the smoothing kernel, not by the glueball. At β 2.8–3.0 the box is physically
+  small (L₀ a √σ ≲ 1), so this regime is a small-volume one.
+- **Vortex: a non-decaying imprint.** The thin vortex, invisible to plaquettes and 2 × 2 loops, moves the smoothed
+  energy by 4–10 % at every depth with no visible decay. The frozen holonomy −1 forces a center-vortex sheet across the
+  interior; UV observables do not see it, but radius-4 observables do, wherever the sheet wanders. This qualifies §8b:
+  the center sector entering through a contractible boundary is local for UV observables only.
+
+**Consequence.** At the couplings where the convex RG ends (β_eff ≳ 2.5), a finite-box criterion for long-wavelength
+observables needs a box much larger than 16. At the measured rate of about 0.45 per unit, the hot influence would reach
+10⁻² near depth 14, so L₀ ≈ 30 at least. The vortex imprint shows no decay at all at L₀ = 16, so the
+center-vortex boundary conditions may need larger boxes still. A matching at one coupling is therefore not available
+with a modest box. The missing step remains the band crossing of §3, or a finite-box criterion on boxes of ≳ 30⁴
+with the supremum over boundary conditions, which is far beyond interval-arithmetic reach.
+
+**Caveats.** The bare Wilson action stands in for the effective action at β_eff. Relative influence on a smoothed
+energy amplifies small absolute differences, because e_cold at n = 20 is about 10⁻³ of its n = 0 value. Only one box
+size was run, and no TV or supremum-over-BC statement was tested.
