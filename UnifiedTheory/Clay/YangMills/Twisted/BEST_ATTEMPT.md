@@ -85,7 +85,9 @@ For SU(2): construct a nontrivial quantum field theory on R⁴ satisfying the Os
   4. **Consequence.** With these inequalities an isotropic doubling chain `y(2L) ≤ K₃(4y(L) + κ(L))⁴` contracts only if
      `κ(L) ≪ 1` at every scale past the start, which is a finite-volume mass gap at every scale. Together with step 7 (no theorem from
      area law to gap) the flux-recursion route is circular: it consumes the gap instead of producing it. It also cannot start below the
-     deconfinement length, where `κ = O(1)`, which agrees with the center-sector numerics of GAP_BAND_STATEMENT §8 (box ≳ 2.5–3.5 N_t,c).
+     deconfinement length, where `κ = O(1)`, like the periodic-slab numerics of GAP_BAND_STATEMENT §8. Both are statements about periodic boxes: in
+     contractible boxes a boundary center vortex is forgotten within 2–3 lattice units (§8b). So the deconfinement-length
+     requirement belongs to this route and to tori, not to finite-box mixing criteria on Z⁴.
      The route is closed in this form. A crossover argument needs an inequality for transverse doubling whose error term is not a
      thermal free energy, and none is known.
 

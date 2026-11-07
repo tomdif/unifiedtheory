@@ -216,8 +216,9 @@ Reading:
   inside the band, so such a mechanism must use cancellations between blocks, not block-wise convexity.
 - **T2 (BC-uniform decay).** Local influence decays within a few lattice units for every tested BC. The supremum
   over BCs, and the long-range sectors, are untested and are where the gap problem actually sits.
-- **T3 (finite-box criterion).** Superseded by §8 (center sector): the boundary-holonomy influence obeys an area law,
-  so the box needs σ_eff L₀² ≳ 2 ln(1/ε), i.e. L₀ ≈ 20–28 at β 2.5 (2.5–3.5 × N_t,c). The observable-level influence alone would need only
+- **T3 (finite-box criterion).** §8 found that in *periodic* boxes the boundary-holonomy influence obeys an area law
+  (L₀ ≈ 20–28 at β 2.5). §8b shows this is a periodic-geometry artifact: in contractible boxes a boundary center
+  vortex is forgotten within 2–3 lattice units. The observable-level influence alone would need only
   L0 ≈ 5 at β 2.3–2.5. A
   Dobrushin–Shlosman-type check on a 5⁴ box would mean a supremum over boundary conditions of a total-variation
   influence for about 2500 links × 3 dof. That is far beyond rigorous interval arithmetic today, and it is the
@@ -335,7 +336,61 @@ times the deconfinement length.
 - **Along asymptotic freedom**, N_t,c ∝ 1/a doubles every Δβ ≈ 0.26 in perturbative running. A box set by
   N_t,c(β_eff) at the band's weak-coupling edge (β_eff ≈ 2.5–3) is far beyond rigorous computation.
 
-T3 in the naive sense ("a small box suffices because local correlations are short") is therefore ruled out by
-the center sector: the box must contain confinement itself. The target can only be rescued with block variables
-that make the center sector local, for instance by conditioning on center vortices or 't Hooft fluxes, in the
-spirit of the twisted boxes this program uses.
+T3 in the naive sense ("a small box suffices because local correlations are short") would therefore be ruled out
+by the center sector *in periodic boxes*: the box must contain confinement itself. **§8b shows this does not carry
+over to contractible boxes, which is the geometry a Dobrushin–Shlosman / Martinelli–Olivieri criterion on Z⁴ uses.**
+
+## 8b. Contractible boxes: the center-sector obstruction is a periodic-geometry artifact (2026-11-07)
+
+**Why the slab result may not transfer.** In the slab, the transverse directions are periodic, so a center-flipped
+holonomy is a large center transformation. It is invisible to every plaquette, and it couples to the non-contractible
+Polyakov loop.
+- A finite box Λ ⊂ Z⁴ is contractible.
+- Gauge transformations at the sites of a sub-box Δ deep inside Λ are symmetries of the conditional law, so the marginal
+  on Δ is seen only through contractible Wilson loops (and spin networks) in Δ.
+- On a contractible boundary every center cocycle is exact, so a "plaquette-invisible" flip is a gauge transformation
+  and has zero influence.
+- The nearest legitimate analogue is a thick center vortex in the frozen exterior. Its holonomy around the box is −1,
+  it is not gauge-equivalent to the cold boundary, and away from its core each boundary plaquette is perturbed only
+  slightly.
+
+**Test.** `scripts/yang_mills_box_vortex.py`, `data/yang_mills_box_vortex_2026_11_06.json`.
+- **Box:** C = [1, L₀]⁴ with a frozen two-layer shell (periodic N = L₀ + 2), 4000 sweeps per boundary condition.
+- **Boundary condition:** a τ₃ vortex of flux π through the (1,2) plane along the axis of C, extended in x₀ and x₃, with
+  Gaussian width s = 1.5 (thin). Its frozen holonomy around the box in the shell is −0.92, −0.96 and −0.96 at
+  L₀ = 8, 12, 16. The compensating anti-vortex sits in the shell corner.
+- **Observable:** influence Δ(d) = ⟨W⟩_cold − ⟨W⟩_vortex on r × r loops in the (1,2) plane, linked with the axis or
+  not, at depth d from the x₀/x₃ faces where the vortex sheet enters.
+
+Thin vortex, linked r = 2 loop (1σ errors ≈ 0.0013–0.005):
+
+| β | L₀ | d = 0 | 1 | 2 | 3 |
+|---|---|---|---|---|---|
+| 2.5 | 8 | 0.0278 | 0.0116 | 0.0069 | 0.0033 ± 0.0045 |
+| 2.5 | 12 | 0.0282 | 0.0118 | 0.0060 | −0.0022 ± 0.0023 |
+| 2.5 | 16 | 0.0278 | 0.0095 | 0.0039 | 0.0005 ± 0.0016 |
+| 2.3 | 8 | 0.0255 | 0.0068 | 0.0003 | −0.005 ± 0.006 |
+| 2.3 | 16 | 0.0234 | 0.0063 | 0.0017 | 0.0026 ± 0.0016 |
+
+The unlinked loop in the same plane gives 0.016–0.018 at d = 0 and the same rapid fall-off. Plaquettes give ≤ 1e-3.
+
+- **(9) H_local held, H_center failed (my guess was H_center).** The profile does not depend on L₀ from 8 to 16. The
+  decay rate is about 1.0 per lattice unit from d = 0 to 1 and about 0.7–0.9 from 1 to 2, a glueball-like rate. The
+  influence is at the noise level, < 3 × 10⁻³, from d = 3 on at every L₀. Nothing grows with the cross-section, unlike
+  the slab's m(M) ∝ M. The interior does not carry the boundary vortex; it forgets it within 2–3 lattice units.
+- **(8) failed.** The linked/unlinked ratio at d = 1 is about 1.6–1.8 at L₀ = 8, not ≥ 3. The center-specific excess is
+  a modest near-face effect.
+- **Defect.** The "thick" vortex (s = L₀/4) is not a clean center boundary condition at large L₀: its flux spreads
+  beyond the box cross-section, so its frozen holonomy is −0.54, −0.13 and +0.19 at L₀ = 8, 12, 16. Its rows are in
+  the data file but are not used here. A thick vortex with holonomy −1 needs a larger shell.
+- **Scope.** Only one family of boundary conditions (thin vortices) and r ≤ 4 loops were tested in contractible
+  geometry. The supremum over all boundary conditions remains untested, as in §6.
+
+**Consequence.** The slab result of §8 is correct, but it concerns periodic boxes: torelon / electric-flux states of
+a finite torus. Those matter for gaps on a finite torus and for the flux-recursion route (BEST_ATTEMPT step 5d).
+They do not matter for a finite-box mixing criterion on Z⁴, where the center sector entering through the boundary is
+local. For T3 this reverts the box size to the observable level of §6: boundary influence below 1e-3 to 3e-3 within
+about 3–5 lattice units at β 2.3–2.5, on the boundary families tested. The remaining T3 obstacles are those of §7:
+the supremum over boundary conditions, a total-variation statement rather than single observables, and the
+cutoff-uniformity of the box size along asymptotic freedom (N ∝ 1/a).
+
