@@ -513,3 +513,51 @@ must become multiplicative for an area law.
   Both are spectral statements about the finite-box transfer matrix in the confined, cold regime. The side-4 failure
   of (13) shows (S) is false for thin boxes, so L₀(β) must exceed a thermal length. For Clay, both inputs and L₀(β)
   would also have to be controlled uniformly as β → ∞, which is the renormalization-group content that remains.
+
+## 11. Direct test of the multiplicative transverse step (2026-11-08)
+
+Script `scripts/yang_mills_twist_transverse_scan.py`, data `data/yang_mills_twist_transverse_scan_2026_11_08.json`.
+Boxes (8, 8, 8, C) with C ∈ {4, 6, 8, 12, 16, 24}, twist in the (1,2) plane, β 2.5 and 2.6, 8000 sweeps, 7 Gauss nodes.
+F = −log z, and R(C) = F(2C)/F(C). Pre-registrations (16) and (17) were committed in 993fa53 before any run.
+
+| β | F(4) | F(6) | F(8) | F(12) | F(16) | F(24) |
+|---|---|---|---|---|---|---|
+| 2.5 | 0.24(10) | 0.84(15) | 1.27(19) | 1.61(28) | 1.79(26) | 2.62(30) |
+| 2.6 | 0.22(12) | 1.63(23) | 3.02(27) | 4.41(34) | 4.25(42) | 7.00(58) |
+
+| β | R(4) | R(6) | R(8) | R(12) |
+|---|---|---|---|---|
+| 2.5 | 5.3 ± 2.4 | 1.91 ± 0.48 | 1.41 ± 0.29 | 1.62 ± 0.34 |
+| 2.6 | 13 ± 7 | 2.71 ± 0.44 | 1.41 ± 0.19 | 1.59 ± 0.18 |
+
+Verdicts:
+- **(16), R(C) ≤ 2.6 within 2σ for every C ≥ 6 at both β: HOLDS.** All eight ratios pass. The worst is R(6) at β 2.6,
+  0.3σ above 2.6. R(8) and R(12) are 3–6σ below 2.6.
+  - The thin-box part, R(4) > 2.6, holds on central values (5.3 and 13) but only at 1.1σ and 1.5σ. It is not
+    significant, because F(4) ≈ 0.2 is comparable to its error.
+- **(17), R(8) and R(12) in [1.6, 2.4]: FAILS as written.** Three of the four central values fall below 1.6
+  (1.41, 1.41, 1.59). The one that passes is R(12) at β 2.5, at 1.62. Every value is within 1σ of 1.6.
+  - The miss is on the favourable side: F grows **sublinearly** in C over this range. Linear fits for C ≥ 6 give slopes
+    0.094(17) at β 2.5 and 0.29(3) at β 2.6, with positive intercepts.
+  - The prediction that F grows roughly linearly, i.e. that the tΔ term dominates, is wrong at these sizes. The
+    thermal part D still matters.
+- **Consequence for the multiplicative step.** For C ≥ 8 at both β, R ≤ 2 holds on central values and within 1σ, i.e.
+  z(2C) ≥ z(C)². So `transverse_mult` applies with n = 2.
+  - At C = 6, β 2.5 still has n = 2. β 2.6 needs n = 3, since R(6) = 2.71 ± 0.44.
+  - The step fails only at C = 4. That matches the side-4 failure of (13), and puts the onset length L₀ between 4
+    and 6–8 at these couplings.
+- **Consistency.** Two earlier measurements are compatible within about 2σ:
+  - the (8,8,8,4) values from §10: log z = +0.06 and −0.06, versus −0.24 and −0.22 here;
+  - 8⁴: log z = −1.11 and −2.54 in §10, versus −1.27 and −3.02 here.
+
+  F(16) < F(12) at β 2.6 is a 0.3σ inversion.
+
+**What this does not settle.**
+- The scan varies one transverse side of a fixed 8³ cross-section. It does not cover the chain shapes, two β values,
+  or L → ∞.
+- It tests F(2t) ≤ cF(t) directly, not (S) through the split F(t) = tΔ + D(t).
+- K̄ is not addressed.
+- Nothing here is uniform in β.
+
+The multiplicative step is therefore an **observed** property at β 2.5–2.6 for transverse sides ≥ 6–8, not a proved
+one. The open inputs remain (S) for L ≥ L₀(β) and K̄, both uniform in β.
