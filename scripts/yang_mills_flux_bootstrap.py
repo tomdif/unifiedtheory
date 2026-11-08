@@ -30,6 +30,9 @@ Written before any run (2026-11-07):
  (14) Original route (additive kappa): the chained bound Y(2L), from y(s0) and the four measured constants, is below
       y(s0) (contraction) at beta 2.4 for L = 6, and not at beta 2.6 for any L <= 6. At beta 2.4 the transverse kappas
       fall from L = 4 to L = 6; at 2.6 they do not (torelon-dominated, L sqrt(sigma) < 1.2).
+Added 2026-11-08 after reading the L = 4, 6 results at beta 2.4-2.6 and before any further run:
+ (15) The chain sits at threshold at beta 2.4, L = 6 (y = 0.355 vs 1/K_1 = 0.35, transverse kappas ~ 0). Prediction:
+      the chained bound contracts, Y(2L) < y(L), at beta 2.3 with L = 6 and at beta 2.4 with L = 8.
 Usage: out betas Ls sweeps
 """
 import os, sys, json, math, time
