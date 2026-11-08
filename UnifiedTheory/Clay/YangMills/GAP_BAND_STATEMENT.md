@@ -443,3 +443,55 @@ with the supremum over boundary conditions, which is far beyond interval-arithme
 **Caveats.** The bare Wilson action stands in for the effective action at β_eff. Relative influence on a smoothed
 energy amplifies small absolute differences, because e_cold at n = 20 is about 10⁻³ of its n = 0 value. Only one box
 size was run, and no TV or supremum-over-BC statement was tested.
+
+## 10. Flux bootstrap: the doubling chain as an induction on box size (2026-11-08)
+
+**Idea.** Run the electric-flux recursion as an induction at fixed β instead of crossing the band: H(L) = "y(L) small and
+the box thermal constants small". Isotropic doubling L⁴ → (2L)⁴ in four steps: two in-plane, y' ≤ K y²
+(TwistedFluxRecursion), and two transverse, y' ≤ (K_B − z²)/(K_B + z²) ≤ 4y + κ (TwistedFluxThermal). If H(L) ⇒ H(2L),
+the base case H(L₀) is one finite computation.
+
+**Measurement.** `scripts/yang_mills_flux_bootstrap.py`, `data/yang_mills_flux_bootstrap_2026_11_08{,b}.json`.
+- log z on the five chain shapes (twist integration, 7 nodes).
+- log Kper = 2 log Z(s) − log Z(s') for each doubling, by split/join interpolation on the doubled lattice. This is
+  exact; bulk free energy cancels.
+- Check: the λ = 1 half lattice reproduces a standalone lattice within about 1σ in 7 of 8 cases, 2.5σ once.
+
+| β | L | y(L) | log Kper (steps 1–4) | chain bound Y(2L) | P(contract), resampled |
+|---|---|---|---|---|---|
+| 2.4 | 4 | 0.61 | 2.2, 2.7, 2.3, 5.6 | 1 (empty) | — |
+| 2.5 | 4 | 0.74 | 2.7, 3.2, 4.3, 8.8 | 1 | — |
+| 2.6 | 4 | 0.85 | 3.4, 4.4, 4.2, 8.5 | 1 | — |
+| 2.5 | 6 | 0.67 | 1.6, 1.6, 2.0, 5.5 (± 0.4–0.9) | 1 | — |
+| 2.6 | 6 | 0.87 | 3.7, 3.8, 4.4, 4.8 (± 0.5–1.3) | 1 | — |
+| 2.4 | 6 | 0.355 | 1.5, 0.5, 0.5, 0.1 (± 0.35–0.9) | 0.67 | — |
+| 2.3 | 6 | 0.037 | 0.4, 0.9, −0.6, −0.8 (± 0.3–1.0) | 0.000 | 0.66 |
+| 2.4 | 8 | 0.008 | 0.1, −1.3, −0.1, −1.3 (± 0.5–1.5) | 0.000 | 0.37 |
+
+- **(12) Bug checks passed.**
+  - log Kper ≥ 0 within 2σ everywhere; the worst is −1.31 ± 0.73.
+  - The in-plane theorem holds within errors; the worst is 1.6σ, at β 2.4, L 6, step 2.
+- **(13) Failed.** Transverse superadditivity z(2t) ≥ z(t)² is violated at 3.4σ (β 2.5, L 4) and 5.5σ (β 2.6, L 4),
+  on (8,8,8,4) → 8⁴. With the short side 4 the twist is almost free; doubling that side restores its cost. The candidate
+  multiplicative lemma is false as a statement for all L. It holds within errors on every shape with sides ≥ 6.
+- **(14) Contraction part failed.** There is no contraction at β 2.4, L 6, where y = 0.355 against a threshold
+  1/K₁ = 0.35. The thermal part held: the constants collapse from L 4 to L 6 at β 2.4 and stay large at 2.6. This is
+  the torelon picture: the box goes cold once L√σ ≳ 1.6.
+- **(15) Held on central values, not established.** The chain contracts at β 2.3, L 6 and at β 2.4, L 8 (Y = 0.000
+  < y). But the resampled probability of contraction is 0.66 and 0.37: the decisive constants are 0 ± 0.5–1.5, while
+  contraction needs κ below y ≈ 0.01–0.04.
+
+**What this shows.**
+- **Encouraging:** the thermal constants do fall to 0 within errors once L√σ ≳ 2, and y falls with them. Inside the
+  band, at β 2.3–2.4 and L 6–8, the hypothesis H(L) looks numerically true.
+- **The precision wall:** whether H(L) ⇒ H(2L) closes is decided by κ against y. That requires log K to a precision of
+  about y, which is 10⁻² here and falls like e^{−σL²} as L grows. A statistical estimate needs about 10⁴× the present
+  statistics. A rigorous interval-arithmetic base case would need certified partition-function ratios on 6⁴–16⁴
+  lattices to 10⁻² precision. Both are far out of reach.
+- **The structural wall** (header of the script): the transverse step is additive in κ, and κ ≥ e^{−mL} while
+  y ~ e^{−σL²}. Even a closed induction would give y ≲ e^{−mL}, a perimeter-type bound, so no area law. The
+  multiplicative replacement (13) is false at small L.
+
+The induction is therefore a sound reformulation, and numerically consistent inside the band. It does not reduce the
+missing step to a finite computation: the base case would have to resolve κ to the size of y, and the transverse step
+must become multiplicative for an area law.
