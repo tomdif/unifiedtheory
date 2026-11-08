@@ -495,3 +495,21 @@ the base case H(L₀) is one finite computation.
 The induction is therefore a sound reformulation, and numerically consistent inside the band. It does not reduce the
 missing step to a finite computation: the base case would have to resolve κ to the size of y, and the transverse step
 must become multiplicative for an area law.
+
+**Addendum (2026-11-08): what replaces the two walls.** `Twisted/TwistedFluxInduction.lean` (axiom-clean).
+- **Precision wall removed.** With a multiplicative transverse step y' ≤ 2n·y (`transverse_mult`, from z' ≥ zⁿ), one
+  isotropic doubling gives y(2L) ≤ 4n²K₁²K₂·y(L)⁴ (`chain_step`). The in-plane constants then only need an upper bound
+  K̄, not smallness. Iterating gives M·y_k³ ≤ (M·y₀³)^(4^k) with 4^k = (L_k/L₀)² (`area_law_iterate`): area-type decay,
+  and an area law via Tomboulis–Yaffe. The base case M·y₀³ < 1 is mild: y ≈ 0.01–0.04 at β 2.3–2.4, L 6–8.
+- **The structural wall becomes one spectral statement (S).** Take the transfer matrix along the doubled transverse
+  direction and write F(t) = tΔ + D(t), with Δ ≥ 0 the twisted-minus-untwisted ground-state gap and
+  D = Φ_per − Φ_tw the difference of the two sectors' thermal free energies. Then D(2t) ≤ c·D(t) with c ≥ 2 implies
+  F(2t) ≤ c·F(t) (`F_double_le`; no sign condition on D is needed).
+- **Remaining open inputs, uniform in L ≥ L₀(β):**
+  - (S);
+  - K̄: a bound on the box thermal free energy at temperature 1/L. Here bounded is enough, not small: massless
+    Stefan–Boltzmann scaling already gives O(1) at T = 1/L.
+
+  Both are spectral statements about the finite-box transfer matrix in the confined, cold regime. The side-4 failure
+  of (13) shows (S) is false for thin boxes, so L₀(β) must exceed a thermal length. For Clay, both inputs and L₀(β)
+  would also have to be controlled uniformly as β → ∞, which is the renormalization-group content that remains.
