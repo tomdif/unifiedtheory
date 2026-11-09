@@ -1,0 +1,243 @@
+import UnifiedTheory.Clay.YangMills.AffineWilsonSmearing
+import UnifiedTheory.Clay.YangMills.BareDefectHierarchy
+import UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation
+import UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation
+import UnifiedTheory.Clay.YangMills.EuclideanTranslationCandidate
+import UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration
+import UnifiedTheory.Clay.YangMills.InteriorCellSupport
+import UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction
+import UnifiedTheory.Clay.YangMills.OSFactorizedCollapse
+import UnifiedTheory.Clay.YangMills.OSInjectiveEvolution
+import UnifiedTheory.Clay.YangMills.OSKernelShift
+import UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel
+import UnifiedTheory.Clay.YangMills.OSScalarDynamics
+import UnifiedTheory.Clay.YangMills.OSStrongContinuity
+import UnifiedTheory.Clay.YangMills.OSTestTranslation
+import UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse
+import UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation
+import UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization
+import UnifiedTheory.Clay.YangMills.TranslationOSCandidate
+import UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect
+import UnifiedTheory.Clay.YangMills.WilsonAverageDefect
+import UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood
+import UnifiedTheory.Clay.YangMills.WilsonWeakCouplingDefect
+import UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization
+import UnifiedTheory.Clay.YangMills.ZeroCouplingSchwingerCollapse
+
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.coefficient_sum
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.observable_affine
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.affineCharacter
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.affine_word_one
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.affine_smearing
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.affine_mean
+#print axioms UnifiedTheory.Clay.YangMills.AffineWilsonSmearing.affine_centered
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.norm_prod_sub_pow
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.real_character_difference
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.real_character_bound
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.plaquetteDefect
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.word_difference
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.law_real_character
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.coefficient_difference
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.unitaryHierarchy
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.hierarchy_difference
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.hierarchy_difference_average
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.hierarchy_tendsto_constant
+#print axioms UnifiedTheory.Clay.YangMills.BareDefectHierarchy.weak_limit_eq_constant
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.displacement
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.cellVector
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.integerVertex
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.pointTranslate
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.point_add_displacement
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.vertexSample_translate
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.sample_translate
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.sampleConfiguration_translate
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.word_shift
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.sampled_word_shift
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.observable_translation
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.expectation_translation
+#print axioms UnifiedTheory.Clay.YangMills.CellSpacetimeTranslation.hierarchy_translation
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation.latticeApproximation
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation.latticeApproximation_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation.displacement_continuous
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation.translated_tests_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpacetimeTranslation.hierarchy_spacetime_translation
+#print axioms UnifiedTheory.Clay.YangMills.EuclideanTranslationCandidate.exists_candidate
+#print axioms UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration.weight
+#print axioms UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration.weight_continuous
+#print axioms UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration.partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration.expectation_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsLowEnergyConcentration.volume_uniform_expectation_bound
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.InteriorP
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.positive_of_time
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.interior_plaquette_support
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.sample_interior
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.InteriorWord
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.Supported
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.eventually_supported
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.coefficient_zero_outside
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.positive_link_independent
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.plaquette_independent
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.word_independent
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.observable_independent
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.interiorObservable
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.interiorObservable_continuous
+#print axioms UnifiedTheory.Clay.YangMills.InteriorCellSupport.interior_identification
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.bounded_doubling
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.norm_le
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.null_preserved
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.shiftCLM
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.shiftCLM_apply
+#print axioms UnifiedTheory.Clay.YangMills.OSBoundedOrbitContraction.shiftCLM_norm_le
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.vacuumTest
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.vacuumTest_apply
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.vacuumLabel
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.amplitude
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.amplitude_vacuum
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.amplitude_shift
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.integral_reflectedTensor
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.kernel_factorized
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.amplitude_inner
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.scalarRealization
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.scalarRealization_canonical
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.every_state_vacuum_multiple
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.vacuum_norm
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.vacuum_orthogonal_eq_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSFactorizedCollapse.evolution_identity
+#print axioms UnifiedTheory.Clay.YangMills.OSInjectiveEvolution.selfAdjoint
+#print axioms UnifiedTheory.Clay.YangMills.OSInjectiveEvolution.half_null
+#print axioms UnifiedTheory.Clay.YangMills.OSInjectiveEvolution.null_implies_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSInjectiveEvolution.injective
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.ShiftData
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_single
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_add
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_inner
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_orbit_bounded
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_contraction
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formal_null
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.formalCLM
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator_embed
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator_contraction
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator_add
+#print axioms UnifiedTheory.Clay.YangMills.OSKernelShift.operator_canonical
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.Supported
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.Label
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.shift
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.shift_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.shift_add
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.kernel
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.Positive
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.positiveKernel
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.Stationary
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.Bounded
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.kernel_shift
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.kernel_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.labelBound
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.labelBound_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.kernel_bound
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.shiftData
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.kernel_shift_continuous
+#print axioms UnifiedTheory.Clay.YangMills.OSPositiveTimeKernel.positive_of_finite_form
+#print axioms UnifiedTheory.Clay.YangMills.OSScalarDynamics.Evolution
+#print axioms UnifiedTheory.Clay.YangMills.OSScalarDynamics.evolution
+#print axioms UnifiedTheory.Clay.YangMills.OSScalarDynamics.null_descent
+#print axioms UnifiedTheory.Clay.YangMills.OSScalarDynamics.exists_candidate_dynamics
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.kernel_pair
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.operator_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.operator_positive
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.canonical_continuous
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.embed_continuous
+#print axioms UnifiedTheory.Clay.YangMills.OSStrongContinuity.operator_continuous
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.timeVector_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.timeVector_add
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.timeVector_neg
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.translation_add
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.split_timeVector
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.reflect_timeVector
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.reflectedTensor_shift
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.l1_translation
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.l1_conjugation
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.l1_reflection
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.l1_tensor
+#print axioms UnifiedTheory.Clay.YangMills.OSTestTranslation.l1_reflectedTensor
+#print axioms UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse.scalarRealization
+#print axioms UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse.vacuum_norm
+#print axioms UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse.every_state_vacuum_multiple
+#print axioms UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse.vacuum_orthogonal_eq_zero
+#print axioms UnifiedTheory.Clay.YangMills.OSWeakCouplingCollapse.evolution_identity
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftVertex
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftVertex_zero
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftVertex_add
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftVertex_step
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.vertexShiftEquiv
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.edgeShiftEquiv
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.edgeShift_zero
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.edgeShift_add
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftConfiguration
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftConfiguration_zero
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftConfiguration_add
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.configurationShiftEquiv
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shift_link
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shifted_plaquette
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.plaquette_holonomy_shift
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftPlaquette
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.plaquetteShiftEquiv
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.wilsonAction_shift
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.shiftConfiguration_continuous
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.configurationShiftMeasurableEquiv
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.reference_preserves_shift
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSpacetimeTranslation.wilsonLaw_preserves_shift
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.centered
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.reflectedForm
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.centered_affine
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.reflectedForm_affine
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.proposedCurvatureForm
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.bare_eq_eighth_power_rescaled
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonRenormalization.necessary_bare_bound
+#print axioms UnifiedTheory.Clay.YangMills.TranslationOSCandidate.exists_candidate
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect_one
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect_le
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.matrix_square_trace
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect_matrix_square
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.defect_continuous
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryHolonomyDefect.exists_identity_neighborhood
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.plaquetteDefect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.averageDefect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.volume_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.plaquette_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.plaquette_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.plaquette_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.average_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.average_le_of_plaquette_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.average_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.total_eq_average
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.action_eq_average
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.plaquette_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.average_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.mean_translation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAverageDefect.mean_plaquette_le_six_average
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.goodEvent
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.goodEvent_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.edge_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.goodEvent_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.goodEvent_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.exists_good_neighborhood
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.law_eq_average_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIdentityNeighborhood.average_expectation_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeakCouplingDefect.average_expectation_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeakCouplingDefect.plaquette_expectation_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.wilsonLaw_zero
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.reference_integral_split
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.remove_boundary_integral
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.reference_half_mean
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.reference_half_pair
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingFactorization.reflected_pair_factorizes
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingSchwingerCollapse.limiting_reflected_pair_factorizes
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingSchwingerCollapse.limiting_connected_reflected_zero
+#print axioms UnifiedTheory.Clay.YangMills.ZeroCouplingSchwingerCollapse.explicit_candidate_connected_zero

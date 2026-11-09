@@ -1,0 +1,23 @@
+import UnifiedTheory.Clay.YangMills.FiniteMarkedEventSum
+import UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity
+import UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum
+
+#print axioms UnifiedTheory.Clay.YangMills.FiniteMarkedEventSum.pointwise
+#print axioms UnifiedTheory.Clay.YangMills.FiniteMarkedEventSum.integral_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity.size_activity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity.activity_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity.rate_half
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity.budget_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.hard_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.farEvent
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.farEvent_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.farEvent_cover
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.weightedCount
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.weightedCount_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.weightedCount_smul
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.output_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.eigen_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.weak_output_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.slow_eigen_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.physical_output_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum.physical_slow_eigen_sum

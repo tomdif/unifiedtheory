@@ -1,0 +1,33 @@
+import UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget
+import UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.ground_reference_absolutelyContinuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.ground_openPos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.variance_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.spatialStep_ne
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.singleLink
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.singleLink_holonomy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.plaquette_variance_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.heatBathEnergy_le_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.totalConditionalVariance_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.factorization_budget_of_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget.factorization_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.scalarRate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.scalarRate_lt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.scalarRate_deficit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.scalarRate_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.coupling
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.coupling_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.coupling_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.cost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.cost_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.necessary_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.logarithmic_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.actual_logarithmic_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.logarithmic_rate_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.actual_logarithmic_rate_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.no_uniform_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction.no_eventual_cap

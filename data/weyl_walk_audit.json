@@ -1,0 +1,1761 @@
+{
+  "scope": "specified three-dimensional free quantum walk; Weyl limit plus mirror species",
+  "sympy_version": "1.14.0",
+  "numpy_version": "1.26.4",
+  "symbolic": {
+    "axis_unitarity_checks": 3,
+    "explicit_symbol": true,
+    "weyl_generator": true,
+    "hamiltonian_square": true,
+    "exact_mirror_identity": true,
+    "opposite_mirror_generator": true,
+    "reversed_order_has_same_generator": true,
+    "reversed_order_zero_outcome_probabilities": [
+      "0",
+      "1/2"
+    ],
+    "reversal_is_coordinate_and_spin_equivalent": true,
+    "commutator_loop_zero_generator": true,
+    "modified_law_trace_witness": "0",
+    "original_trace_under_signed_axis_permutations": "1",
+    "signed_axis_permutation_checks": 48,
+    "quaternion_normalization": true
+  },
+  "position_stencil": {
+    "nonzero_displacements": 8,
+    "max_coordinate_displacement": 1,
+    "exact_unitarity_correlation_checks": 54,
+    "stencil_fourier_symbol_matches": true,
+    "coefficients": {
+      "(-1, -1, -1)": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/4 - I/4",
+          "1/4 + I/4"
+        ]
+      ],
+      "(-1, -1, 1)": [
+        [
+          "1/4 - I/4",
+          "-1/4 + I/4"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "(-1, 1, -1)": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1/4 + I/4",
+          "1/4 - I/4"
+        ]
+      ],
+      "(-1, 1, 1)": [
+        [
+          "1/4 + I/4",
+          "-1/4 - I/4"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "(1, -1, -1)": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1/4 - I/4",
+          "1/4 - I/4"
+        ]
+      ],
+      "(1, -1, 1)": [
+        [
+          "1/4 + I/4",
+          "1/4 + I/4"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "(1, 1, -1)": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1/4 + I/4",
+          "1/4 + I/4"
+        ]
+      ],
+      "(1, 1, 1)": [
+        [
+          "1/4 - I/4",
+          "1/4 - I/4"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    }
+  },
+  "spectrum": {
+    "cube_nodes": [
+      {
+        "momentum_over_pi": [
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, -2)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, 0)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1",
+          "0",
+          "-1"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, 0)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1",
+          "0",
+          "0"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, -2)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1/2",
+          "-1/2",
+          "-1/2"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, -1)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1/2",
+          "-1/2",
+          "1/2"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, 1)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1/2",
+          "1/2",
+          "-1/2"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, 1)"
+      },
+      {
+        "momentum_over_pi": [
+          "-1/2",
+          "1/2",
+          "1/2"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, -1)"
+      },
+      {
+        "momentum_over_pi": [
+          "0",
+          "-1",
+          "-1"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, 0)"
+      },
+      {
+        "momentum_over_pi": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, -2)"
+      },
+      {
+        "momentum_over_pi": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, -2)"
+      },
+      {
+        "momentum_over_pi": [
+          "0",
+          "0",
+          "0"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": 1,
+        "bcc_class": "(-2, -2, 0)"
+      },
+      {
+        "momentum_over_pi": [
+          "1/2",
+          "-1/2",
+          "-1/2"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, 1)"
+      },
+      {
+        "momentum_over_pi": [
+          "1/2",
+          "-1/2",
+          "1/2"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, -1)"
+      },
+      {
+        "momentum_over_pi": [
+          "1/2",
+          "1/2",
+          "-1/2"
+        ],
+        "step_sign": -1,
+        "quasienergy": "pi",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, -1)"
+      },
+      {
+        "momentum_over_pi": [
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "step_sign": 1,
+        "quasienergy": "0",
+        "relative_velocity": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "chirality": -1,
+        "bcc_class": "(-1, -1, 1)"
+      }
+    ],
+    "inequivalent_bcc_nodes": [
+      {
+        "representative": "(-2, -2, -2)",
+        "cube_copies": 4,
+        "quasienergy": "pi",
+        "chirality": 1
+      },
+      {
+        "representative": "(-2, -2, 0)",
+        "cube_copies": 4,
+        "quasienergy": "0",
+        "chirality": 1
+      },
+      {
+        "representative": "(-1, -1, -1)",
+        "cube_copies": 4,
+        "quasienergy": "pi",
+        "chirality": -1
+      },
+      {
+        "representative": "(-1, -1, 1)",
+        "cube_copies": 4,
+        "quasienergy": "0",
+        "chirality": -1
+      }
+    ],
+    "cube_node_count": 16,
+    "single_bcc_sector_node_count": 4,
+    "chirality_sum_at_each_quasienergy": 0,
+    "completeness": "analytic classification in WEYL_WALK_CONTINUUM.md; grid verifies its candidates"
+  },
+  "continuum_numerical": {
+    "arithmetic": "complex128 numerical checks; analytic uniform bound proved in note",
+    "checked_cases": 105,
+    "results": [
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 4,
+        "operator_norm_error": 0.0,
+        "analytic_upper_bound": 0.015625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 8,
+        "operator_norm_error": 4.47545209131181e-16,
+        "analytic_upper_bound": 0.0078125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 16,
+        "operator_norm_error": 4.652682298944613e-16,
+        "analytic_upper_bound": 0.00390625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 32,
+        "operator_norm_error": 2.2614484592567964e-15,
+        "analytic_upper_bound": 0.001953125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 64,
+        "operator_norm_error": 2.268442851244985e-15,
+        "analytic_upper_bound": 0.0009765625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 128,
+        "operator_norm_error": 2.268442851244985e-15,
+        "analytic_upper_bound": 0.00048828125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 0.25,
+        "steps": 256,
+        "operator_norm_error": 2.268442851244985e-15,
+        "analytic_upper_bound": 0.000244140625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 4,
+        "operator_norm_error": 2.220446049250313e-16,
+        "analytic_upper_bound": 0.25
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 8,
+        "operator_norm_error": 2.220446049250313e-16,
+        "analytic_upper_bound": 0.125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 16,
+        "operator_norm_error": 2.220446049250313e-16,
+        "analytic_upper_bound": 0.0625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 32,
+        "operator_norm_error": 1.7763568394002505e-15,
+        "analytic_upper_bound": 0.03125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 64,
+        "operator_norm_error": 2.180218140357919e-15,
+        "analytic_upper_bound": 0.015625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 128,
+        "operator_norm_error": 8.818602172463808e-15,
+        "analytic_upper_bound": 0.0078125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 1.0,
+        "steps": 256,
+        "operator_norm_error": 8.58344134021194e-15,
+        "analytic_upper_bound": 0.00390625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 4,
+        "operator_norm_error": 1.5700924586837754e-16,
+        "analytic_upper_bound": 1.0
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 8,
+        "operator_norm_error": 3.0376456655598514e-16,
+        "analytic_upper_bound": 0.5
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 16,
+        "operator_norm_error": 3.0376456655598514e-16,
+        "analytic_upper_bound": 0.25
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 32,
+        "operator_norm_error": 3.0376456655598514e-16,
+        "analytic_upper_bound": 0.125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 64,
+        "operator_norm_error": 3.4800094475773e-15,
+        "analytic_upper_bound": 0.0625
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 128,
+        "operator_norm_error": 4.2512876509574824e-15,
+        "analytic_upper_bound": 0.03125
+      },
+      {
+        "momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "time": 2.0,
+        "steps": 256,
+        "operator_norm_error": 1.4804425423375292e-14,
+        "analytic_upper_bound": 0.015625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 4,
+        "operator_norm_error": 0.002424940562133779,
+        "analytic_upper_bound": 0.01265625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 8,
+        "operator_norm_error": 0.0012147158765741662,
+        "analytic_upper_bound": 0.006328125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 16,
+        "operator_norm_error": 0.0006079207021013272,
+        "analytic_upper_bound": 0.0031640625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 32,
+        "operator_norm_error": 0.00030410120053083145,
+        "analytic_upper_bound": 0.00158203125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 64,
+        "operator_norm_error": 0.00015208583168865479,
+        "analytic_upper_bound": 0.000791015625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 128,
+        "operator_norm_error": 7.605172603405449e-05,
+        "analytic_upper_bound": 0.0003955078125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 0.25,
+        "steps": 256,
+        "operator_norm_error": 3.8028065855329554e-05,
+        "analytic_upper_bound": 0.00019775390625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 4,
+        "operator_norm_error": 0.03675885913858678,
+        "analytic_upper_bound": 0.2025
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 8,
+        "operator_norm_error": 0.018524735511146487,
+        "analytic_upper_bound": 0.10125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 16,
+        "operator_norm_error": 0.009299259807353027,
+        "analytic_upper_bound": 0.050625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 32,
+        "operator_norm_error": 0.004658912708209058,
+        "analytic_upper_bound": 0.0253125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 64,
+        "operator_norm_error": 0.0023317838152749643,
+        "analytic_upper_bound": 0.01265625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 128,
+        "operator_norm_error": 0.0011664745722513384,
+        "analytic_upper_bound": 0.006328125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 1.0,
+        "steps": 256,
+        "operator_norm_error": 0.000583383049311517,
+        "analytic_upper_bound": 0.0031640625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 4,
+        "operator_norm_error": 0.1253039871073646,
+        "analytic_upper_bound": 0.81
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 8,
+        "operator_norm_error": 0.06385458960901175,
+        "analytic_upper_bound": 0.405
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 16,
+        "operator_norm_error": 0.03224239933409357,
+        "analytic_upper_bound": 0.2025
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 32,
+        "operator_norm_error": 0.01620152568988813,
+        "analytic_upper_bound": 0.10125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 64,
+        "operator_norm_error": 0.008121020287850696,
+        "analytic_upper_bound": 0.050625
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 128,
+        "operator_norm_error": 0.004065595323110342,
+        "analytic_upper_bound": 0.0253125
+      },
+      {
+        "momentum": [
+          0.2,
+          -0.3,
+          0.4
+        ],
+        "time": 2.0,
+        "steps": 256,
+        "operator_norm_error": 0.00203407148328093,
+        "analytic_upper_bound": 0.01265625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 4,
+        "operator_norm_error": 0.026703202698121948,
+        "analytic_upper_bound": 0.140625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 8,
+        "operator_norm_error": 0.013256182177516817,
+        "analytic_upper_bound": 0.0703125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 16,
+        "operator_norm_error": 0.006604068075245228,
+        "analytic_upper_bound": 0.03515625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 32,
+        "operator_norm_error": 0.003296012931489718,
+        "analytic_upper_bound": 0.017578125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 64,
+        "operator_norm_error": 0.0016464996082421093,
+        "analytic_upper_bound": 0.0087890625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 128,
+        "operator_norm_error": 0.0008228729127533484,
+        "analytic_upper_bound": 0.00439453125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 0.25,
+        "steps": 256,
+        "operator_norm_error": 0.00041134221268732146,
+        "analytic_upper_bound": 0.002197265625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 4,
+        "operator_norm_error": 0.3064981721128098,
+        "analytic_upper_bound": 2.25
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 8,
+        "operator_norm_error": 0.14497297681850793,
+        "analytic_upper_bound": 1.125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 16,
+        "operator_norm_error": 0.07044234516061063,
+        "analytic_upper_bound": 0.5625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 32,
+        "operator_norm_error": 0.03471845989727431,
+        "analytic_upper_bound": 0.28125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 64,
+        "operator_norm_error": 0.017234841645130356,
+        "analytic_upper_bound": 0.140625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 128,
+        "operator_norm_error": 0.008586498460734796,
+        "analytic_upper_bound": 0.0703125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 1.0,
+        "steps": 256,
+        "operator_norm_error": 0.004285541260193155,
+        "analytic_upper_bound": 0.03515625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 4,
+        "operator_norm_error": 0.7482575271767872,
+        "analytic_upper_bound": 9.0
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 8,
+        "operator_norm_error": 0.3385444785822468,
+        "analytic_upper_bound": 4.5
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 16,
+        "operator_norm_error": 0.1592076251893289,
+        "analytic_upper_bound": 2.25
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 32,
+        "operator_norm_error": 0.07706561459032264,
+        "analytic_upper_bound": 1.125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 64,
+        "operator_norm_error": 0.037901139534150544,
+        "analytic_upper_bound": 0.5625
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 128,
+        "operator_norm_error": 0.018793298004574455,
+        "analytic_upper_bound": 0.28125
+      },
+      {
+        "momentum": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "time": 2.0,
+        "steps": 256,
+        "operator_norm_error": 0.00935742753727796,
+        "analytic_upper_bound": 0.140625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 4,
+        "operator_norm_error": 0.011947378242147458,
+        "analytic_upper_bound": 0.0625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 8,
+        "operator_norm_error": 0.00598208632057625,
+        "analytic_upper_bound": 0.03125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 16,
+        "operator_norm_error": 0.002993216461190983,
+        "analytic_upper_bound": 0.015625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 32,
+        "operator_norm_error": 0.0014971601495313935,
+        "analytic_upper_bound": 0.0078125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 64,
+        "operator_norm_error": 0.0007487190869406732,
+        "analytic_upper_bound": 0.00390625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 128,
+        "operator_norm_error": 0.0003743944229348203,
+        "analytic_upper_bound": 0.001953125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 0.25,
+        "steps": 256,
+        "operator_norm_error": 0.00018720594697657102,
+        "analytic_upper_bound": 0.0009765625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 4,
+        "operator_norm_error": 0.15052374033949614,
+        "analytic_upper_bound": 1.0
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 8,
+        "operator_norm_error": 0.0760649279192065,
+        "analytic_upper_bound": 0.5
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 16,
+        "operator_norm_error": 0.03826304084036279,
+        "analytic_upper_bound": 0.25
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 32,
+        "operator_norm_error": 0.019192441818715867,
+        "analytic_upper_bound": 0.125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 64,
+        "operator_norm_error": 0.00961183063771283,
+        "analytic_upper_bound": 0.0625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 128,
+        "operator_norm_error": 0.004809863199315173,
+        "analytic_upper_bound": 0.03125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 1.0,
+        "steps": 256,
+        "operator_norm_error": 0.002405924124666481,
+        "analytic_upper_bound": 0.015625
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 4,
+        "operator_norm_error": 0.24137448541350523,
+        "analytic_upper_bound": 4.0
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 8,
+        "operator_norm_error": 0.13245254475694704,
+        "analytic_upper_bound": 2.0
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 16,
+        "operator_norm_error": 0.06958820063557135,
+        "analytic_upper_bound": 1.0
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 32,
+        "operator_norm_error": 0.03568476437889874,
+        "analytic_upper_bound": 0.5
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 64,
+        "operator_norm_error": 0.018071125961620138,
+        "analytic_upper_bound": 0.25
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 128,
+        "operator_norm_error": 0.009093493627596991,
+        "analytic_upper_bound": 0.125
+      },
+      {
+        "momentum": [
+          -0.7,
+          0.4,
+          0.9
+        ],
+        "time": 2.0,
+        "steps": 256,
+        "operator_norm_error": 0.004561321512619054,
+        "analytic_upper_bound": 0.0625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 4,
+        "operator_norm_error": 0.03367646677910606,
+        "analytic_upper_bound": 0.19140625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 8,
+        "operator_norm_error": 0.01690230806588989,
+        "analytic_upper_bound": 0.095703125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 16,
+        "operator_norm_error": 0.008468538797261367,
+        "analytic_upper_bound": 0.0478515625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 32,
+        "operator_norm_error": 0.004238778497432176,
+        "analytic_upper_bound": 0.02392578125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 64,
+        "operator_norm_error": 0.002120536390525793,
+        "analytic_upper_bound": 0.011962890625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 128,
+        "operator_norm_error": 0.0010605574328675614,
+        "analytic_upper_bound": 0.0059814453125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 0.25,
+        "steps": 256,
+        "operator_norm_error": 0.0005303513303972172,
+        "analytic_upper_bound": 0.00299072265625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 4,
+        "operator_norm_error": 0.19152144306085722,
+        "analytic_upper_bound": 3.0625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 8,
+        "operator_norm_error": 0.10069305284048581,
+        "analytic_upper_bound": 1.53125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 16,
+        "operator_norm_error": 0.05186937916653219,
+        "analytic_upper_bound": 0.765625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 32,
+        "operator_norm_error": 0.026349392267035667,
+        "analytic_upper_bound": 0.3828125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 64,
+        "operator_norm_error": 0.013282503033165522,
+        "analytic_upper_bound": 0.19140625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 128,
+        "operator_norm_error": 0.006668712525865223,
+        "analytic_upper_bound": 0.095703125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 1.0,
+        "steps": 256,
+        "operator_norm_error": 0.003341284730407679,
+        "analytic_upper_bound": 0.0478515625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 4,
+        "operator_norm_error": 0.5375941916479863,
+        "analytic_upper_bound": 12.25
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 8,
+        "operator_norm_error": 0.29032706565818733,
+        "analytic_upper_bound": 6.125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 16,
+        "operator_norm_error": 0.153614402996264,
+        "analytic_upper_bound": 3.0625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 32,
+        "operator_norm_error": 0.07919090172159628,
+        "analytic_upper_bound": 1.53125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 64,
+        "operator_norm_error": 0.040219003893481486,
+        "analytic_upper_bound": 0.765625
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 128,
+        "operator_norm_error": 0.020268424591269533,
+        "analytic_upper_bound": 0.3828125
+      },
+      {
+        "momentum": [
+          2.0,
+          -1.0,
+          0.5
+        ],
+        "time": 2.0,
+        "steps": 256,
+        "operator_norm_error": 0.010174294327318551,
+        "analytic_upper_bound": 0.19140625
+      }
+    ],
+    "same_continuum_different_update_order_norm_difference": 0.2941467027212176,
+    "maximum_error_bound_ratio": 0.19229994783139487
+  },
+  "source_sha256": {
+    "scripts/weyl_walk_audit.py": "58efa4b7e3727819846d7178d9c9705f8569646212e4fb2b140e35ef585ed53a",
+    "UnifiedTheory/Audit/KFCausalWeylWalk.lean": "e9d857b8276be9941e1ff8c7561871ed11dbd9bfe0f4469fceffac715b7f95d2"
+  }
+}

@@ -1,0 +1,641 @@
+{
+  "symbolic": {
+    "second_at_round": -8.722839111673,
+    "fourth_at_round": -11.565425786767994,
+    "einstein_fourth_order_mismatch": 23.325930659924005,
+    "exact_boundary_correction": true,
+    "scope": "The leading normalized full action is W_xi(u), up to a shape-independent constant. W_0 fails the Einstein fourth-versus-second derivative identity."
+  },
+  "fermion_matrices": {
+    "cases": [
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "fermion_dimension": 128,
+        "matching_eight_scalar_dimension": 128,
+        "square_error": 8.978723321354434e-16,
+        "spectral_error": 1.509903313490213e-14,
+        "determinant_phase_error": 4.9004117470448915e-15,
+        "determinant_log_error": 1.4210854715202004e-14
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "fermion_dimension": 288,
+        "matching_eight_scalar_dimension": 288,
+        "square_error": 1.7812235795871823e-15,
+        "spectral_error": 2.042810365310288e-14,
+        "determinant_phase_error": 1.5582722720639762e-15,
+        "determinant_log_error": 5.684341886080802e-14
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "fermion_dimension": 648,
+        "matching_eight_scalar_dimension": 648,
+        "square_error": 1.790180836524724e-15,
+        "spectral_error": 3.3306690738754696e-14,
+        "determinant_phase_error": 2.7888829449096375e-15,
+        "determinant_log_error": 2.2737367544323206e-13
+      }
+    ],
+    "scope": "An explicit Hermitian first-order matrix operator with paired spectrum gives a positive det(m+iQ). This checks the finite fermionic determinant and its statistics sign, not reflection positivity or a Lorentzian physical fermion phase."
+  },
+  "quadrature": {
+    "cases": [
+      {
+        "size": 8,
+        "scaled_time": 0.2,
+        "finite_difference": 0.17263604951011047,
+        "boundary_limit": 0.17250769876880723,
+        "error": 0.0001283507413032403
+      },
+      {
+        "size": 8,
+        "scaled_time": 1.0,
+        "finite_difference": 0.5015473033907583,
+        "boundary_limit": 0.5,
+        "error": 0.001547303390758259
+      },
+      {
+        "size": 8,
+        "scaled_time": 4.0,
+        "finite_difference": 0.5326482443034237,
+        "boundary_limit": 0.5274734583331012,
+        "error": 0.005174785970322504
+      },
+      {
+        "size": 8,
+        "scaled_time": 16.0,
+        "finite_difference": 0.521955016044982,
+        "boundary_limit": 0.5000008440138104,
+        "error": 0.02195417203117156
+      },
+      {
+        "size": 16,
+        "scaled_time": 0.2,
+        "finite_difference": 0.1725397630137877,
+        "boundary_limit": 0.17250769876880723,
+        "error": 3.206424498047866e-05
+      },
+      {
+        "size": 16,
+        "scaled_time": 1.0,
+        "finite_difference": 0.5003857530927291,
+        "boundary_limit": 0.5,
+        "error": 0.0003857530927291464
+      },
+      {
+        "size": 16,
+        "scaled_time": 4.0,
+        "finite_difference": 0.5287555059820761,
+        "boundary_limit": 0.5274734583331012,
+        "error": 0.0012820476489748822
+      },
+      {
+        "size": 16,
+        "scaled_time": 16.0,
+        "finite_difference": 0.5052753706485049,
+        "boundary_limit": 0.5000008440138104,
+        "error": 0.005274526634694521
+      },
+      {
+        "size": 32,
+        "scaled_time": 0.2,
+        "finite_difference": 0.17251571336669258,
+        "boundary_limit": 0.17250769876880723,
+        "error": 8.01459788535297e-06
+      },
+      {
+        "size": 32,
+        "scaled_time": 1.0,
+        "finite_difference": 0.5000963714960562,
+        "boundary_limit": 0.5,
+        "error": 9.637149605623563e-05
+      },
+      {
+        "size": 32,
+        "scaled_time": 4.0,
+        "finite_difference": 0.5277932545436954,
+        "boundary_limit": 0.5274734583331012,
+        "error": 0.00031979621059419205
+      },
+      {
+        "size": 32,
+        "scaled_time": 16.0,
+        "finite_difference": 0.5013069999002582,
+        "boundary_limit": 0.5000008440138104,
+        "error": 0.0013061558864477796
+      },
+      {
+        "size": 64,
+        "scaled_time": 0.2,
+        "finite_difference": 0.1725097023268063,
+        "boundary_limit": 0.17250769876880723,
+        "error": 2.003557999064043e-06
+      },
+      {
+        "size": 64,
+        "scaled_time": 1.0,
+        "finite_difference": 0.5000240887047767,
+        "boundary_limit": 0.5,
+        "error": 2.4088704776659142e-05
+      },
+      {
+        "size": 64,
+        "scaled_time": 4.0,
+        "finite_difference": 0.5275533628421272,
+        "boundary_limit": 0.5274734583331012,
+        "error": 7.990450902595203e-05
+      },
+      {
+        "size": 64,
+        "scaled_time": 16.0,
+        "finite_difference": 0.5003266158945507,
+        "boundary_limit": 0.5000008440138104,
+        "error": 0.00032577188074034424
+      }
+    ],
+    "exact_dimension_balance": true,
+    "scope": "Exact midpoint/trapezoid representations expose cancellation of the fourth-power cutoff term. Equality of counts is a chosen field-content condition, not a proved supersymmetry."
+  },
+  "limit_integral": {
+    "cases": [
+      {
+        "shape": 0.0,
+        "integral": -8.317766166719343,
+        "closed_expression": -8.317766166719343,
+        "absolute_error": 0.0,
+        "quadrature_error": 1.2696967367501566e-12
+      },
+      {
+        "shape": 0.2,
+        "integral": -8.492839342850687,
+        "closed_expression": -8.492839342850681,
+        "absolute_error": 5.329070518200751e-15,
+        "quadrature_error": 4.652496554365045e-12
+      },
+      {
+        "shape": 0.4,
+        "integral": -9.01972168564803,
+        "closed_expression": -9.019721685648033,
+        "absolute_error": 3.552713678800501e-15,
+        "quadrature_error": 3.531555757940515e-12
+      },
+      {
+        "shape": 0.7,
+        "integral": -10.414659070829273,
+        "closed_expression": -10.414659070829273,
+        "absolute_error": 0.0,
+        "quadrature_error": 7.982050376630097e-11
+      }
+    ]
+  },
+  "complete_determinants": {
+    "cases": [
+      {
+        "size": 16,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -9.029822597058683,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -15.710180277788822,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 16,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.18149286128482345,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -9.237418260900085,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 10.459088268216874,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 16,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.7311727895084914,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -9.084549625886666,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 24.12129919443214,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -8.814055897983053,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -12.834294485845021,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.17698336983812624,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -8.962313144651489,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 13.879753404326038,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.7106884363674908,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -8.609437811950556,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 29.26738543807096,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 64,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -8.74925534259819,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -11.940506622282555,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 64,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.1756269065081142,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -8.878985719493357,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 14.970617223880254,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 64,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.704494981240714,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -8.462446748497314,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 31.019432095803495,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -8.730345823045354,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -11.673642890760675,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.17523064580745995,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -8.854528501891764,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 15.301516338717192,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.7026793858967721,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -8.418701815913664,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 31.570251929049846,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 256,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -8.724941430962645,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -11.596090599894524,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 256,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.17511730222031474,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -8.847508628852665,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 15.398741262033582,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 256,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.7021587332710624,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -8.406019745976664,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 31.73594319523545,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -8.723421100061387,
+        "limiting_second_derivative": -8.722839111672997,
+        "normalized_fourth_derivative": -11.573994547128677,
+        "limiting_fourth_derivative": -11.565425786767918
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.1750853918492794,
+        "limiting_shape_action_difference": -0.17507317613133822,
+        "normalized_second_derivative": -8.845527316909283,
+        "limiting_second_derivative": -8.844766287654316,
+        "normalized_fourth_derivative": 15.426669685170054,
+        "limiting_fourth_derivative": 15.437588688448812
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.0,
+        "shape": 0.4,
+        "normalized_shape_action_difference": -0.7020118776708841,
+        "limiting_shape_action_difference": -0.7019555189286901,
+        "normalized_second_derivative": -8.402412984520197,
+        "limiting_second_derivative": -8.401016869798877,
+        "normalized_fourth_derivative": 31.78434921731241,
+        "limiting_fourth_derivative": 31.80358662396617
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -3.8105869562314183,
+        "limiting_second_derivative": -3.778271289338395,
+        "normalized_fourth_derivative": -35.29317003895994,
+        "limiting_fourth_derivative": -34.8523406294143
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.07837150008344906,
+        "limiting_shape_action_difference": -0.07769575259480632,
+        "normalized_second_derivative": -4.378942922105125,
+        "limiting_second_derivative": -4.3377689146636875,
+        "normalized_fourth_derivative": -0.5288767921447288,
+        "limiting_fourth_derivative": -0.06786503841362901
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -3.781085515918676,
+        "limiting_second_derivative": -3.778271289338395,
+        "normalized_fourth_derivative": -34.89261621213518,
+        "limiting_fourth_derivative": -34.8523406294143
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.07775474363006651,
+        "limiting_shape_action_difference": -0.07769575259480632,
+        "normalized_second_derivative": -4.34140518453205,
+        "limiting_second_derivative": -4.3377689146636875,
+        "normalized_fourth_derivative": -0.11371537728700787,
+        "limiting_fourth_derivative": -0.06786503841362901
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": -3.778496819548309,
+        "limiting_second_derivative": -3.778271289338395,
+        "normalized_fourth_derivative": -34.85565214604139,
+        "limiting_fourth_derivative": -34.8523406294143
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.1,
+        "shape": 0.2,
+        "normalized_shape_action_difference": -0.07770048454403877,
+        "limiting_shape_action_difference": -0.07769575259480632,
+        "normalized_second_derivative": -4.338062573689967,
+        "limiting_second_derivative": -4.3377689146636875,
+        "normalized_fourth_derivative": -0.07179307751357555,
+        "limiting_fourth_derivative": -0.06786503841362901
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": 3.598180541923284,
+        "limiting_second_derivative": 3.6385804441635017,
+        "normalized_fourth_derivative": -70.2022878536518,
+        "limiting_fourth_derivative": -69.78271289338396
+      },
+      {
+        "size": 32,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.2,
+        "normalized_shape_action_difference": 0.06753378042049007,
+        "limiting_shape_action_difference": 0.06837038270999596,
+        "normalized_second_derivative": 2.373471402845098,
+        "limiting_second_derivative": 2.4227271448222645,
+        "normalized_fourth_derivative": -23.87654551903688,
+        "limiting_fourth_derivative": -23.326045628707348
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": 3.635152850067243,
+        "limiting_second_derivative": 3.6385804441635017,
+        "normalized_fourth_derivative": -69.8233843910275,
+        "limiting_fourth_derivative": -69.78271289338396
+      },
+      {
+        "size": 128,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.2,
+        "normalized_shape_action_difference": 0.06829905905760825,
+        "limiting_shape_action_difference": 0.06837038270999596,
+        "normalized_second_derivative": 2.418441330693895,
+        "limiting_second_derivative": 2.4227271448222645,
+        "normalized_fourth_derivative": -23.379784161923453,
+        "limiting_fourth_derivative": -23.326045628707348
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.0,
+        "normalized_shape_action_difference": 0.0,
+        "limiting_shape_action_difference": 0.0,
+        "normalized_second_derivative": 3.638309810310602,
+        "limiting_second_derivative": 3.6385804441635017,
+        "normalized_fourth_derivative": -69.78615742735565,
+        "limiting_fourth_derivative": -69.78271289338396
+      },
+      {
+        "size": 512,
+        "nonminimal_scalar_coupling": 0.25,
+        "shape": 0.2,
+        "normalized_shape_action_difference": 0.06836473755538464,
+        "limiting_shape_action_difference": 0.06837038270999596,
+        "normalized_second_derivative": 2.422383837401867,
+        "limiting_second_derivative": 2.4227271448222645,
+        "normalized_fourth_derivative": -23.330611443147063,
+        "limiting_fourth_derivative": -23.326045628707348
+      }
+    ],
+    "scope": "Complete boson-plus-fermion determinants; no intermediate spectral window is discarded. The leading term is quadratic in matrix size and negative near the round background, but its shape function is not the Einstein functional."
+  },
+  "independent_variations": {
+    "cases": [
+      {
+        "size": 12,
+        "shape": 0.0,
+        "relative_second_and_fourth_errors": [
+          [
+            2.636153933518166e-06,
+            0.00013161681093260013
+          ],
+          [
+            6.782005649764081e-07,
+            3.289200834393082e-05
+          ]
+        ]
+      },
+      {
+        "size": 12,
+        "shape": 0.2,
+        "relative_second_and_fourth_errors": [
+          [
+            1.0516379760500138e-06,
+            9.757170998321891e-05
+          ],
+          [
+            2.6325213289225745e-07,
+            2.439033209065238e-05
+          ]
+        ]
+      },
+      {
+        "size": 24,
+        "shape": 0.0,
+        "relative_second_and_fourth_errors": [
+          [
+            2.0712378839117578e-06,
+            0.00017975247570491855
+          ],
+          [
+            4.656242964253328e-07,
+            4.4867807171334494e-05
+          ]
+        ]
+      },
+      {
+        "size": 24,
+        "shape": 0.2,
+        "relative_second_and_fourth_errors": [
+          [
+            1.8910179734311466e-06,
+            5.312316161391043e-05
+          ],
+          [
+            3.2591321207962474e-07,
+            1.3270863502755065e-05
+          ]
+        ]
+      }
+    ]
+  },
+  "continuum_window": {
+    "cases": [
+      {
+        "upper_cutoff": 4.0,
+        "lower_cutoff": 2.0,
+        "full_matter_window_hessian": -207.89576657297806,
+        "einstein_hessian": -192.0,
+        "quadrature_error": 2.3081066677141722e-12
+      },
+      {
+        "upper_cutoff": 8.0,
+        "lower_cutoff": 4.0,
+        "full_matter_window_hessian": -783.046562215852,
+        "einstein_hessian": -768.0,
+        "quadrature_error": 8.69356322725614e-12
+      },
+      {
+        "upper_cutoff": 16.0,
+        "lower_cutoff": 8.0,
+        "full_matter_window_hessian": -3086.8510033622497,
+        "einstein_hessian": -3072.0,
+        "quadrature_error": 3.427093057520036e-11
+      },
+      {
+        "upper_cutoff": 32.0,
+        "lower_cutoff": 16.0,
+        "full_matter_window_hessian": -12302.803045283446,
+        "einstein_hessian": -12288.0,
+        "quadrature_error": 1.3658855208302175e-10
+      }
+    ],
+    "leading_volume_coefficient": 0,
+    "curvature_coefficient_in_supertrace": "2R",
+    "scope": "The balanced geometric window retains an Einstein term with positive Newton coefficient. Its proper-time regularization is distinct from the complete fixed-size determinant."
+  },
+  "source_sha256": {
+    "BALANCED_MATTER_INDUCTION.md": "c5d82aa29edbec7344e53b4cd05d47b85cbcdf302ab33d7fa4bdc23ef0695760",
+    "scripts/balanced_matter_induction_audit.py": "042c914b2900f41db6bc399e91de8be6f1ed9b2bfadeb081d16b0efca5e1d78e",
+    "GEOMETRIC_SPECTRAL_INDUCTION.md": "b14ef872fdd6818cc6b3deefa816d4f7ca7705613723203733adfca290033869",
+    "scripts/geometric_spectral_induction_audit.py": "55912200e1fffd1d76c661f12bbeef2288d95dbc1dcb3b7336723bfec40d1d26",
+    "MICROSCOPIC_METRIC_WARD.md": "ce3f462a7d0b98e6bc594ccca38bd50eb7472fc5c926307d3abf31f586145646",
+    "ISOTROPIC_TENSOR_REGULATOR.md": "862ea5788263365cfd782ebd174c87137108168149381839a9b19634c0d39164",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "A specified first-order fermion determinant and eight real scalars cancel the leading fourth-power cutoff shape term in the complete curved matrix model. The derived quadratic-order shape response has the Einstein sign near the round background but fails its higher-variation identity. A constant scalar curvature coupling cannot repair the whole shape function. No supersymmetry, Lorentzian microscopic phase, gravitational constraint algebra, or TOE is proved."
+}

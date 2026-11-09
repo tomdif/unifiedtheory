@@ -1,0 +1,25 @@
+import UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.gibbs_event_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.entropyCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.entropyCost_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.entropyCost_grid_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.action
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.action_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.law_identification
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.independent_energy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointBad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointBad_energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointBad_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointBad_probability_grid
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointBad_probability_extensive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedBlock
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedBlock_independent
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedBlock_card_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedBlock_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedBlock_probability_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointRemainderBad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.jointRemainderBad_subset
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedRemainder_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointBadStarTail.packedRemainder_probability_tendsto

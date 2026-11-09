@@ -13,10 +13,14 @@
   harmonic oscillators at lattice sites coupled by the monotonicity
   constraint.
 
-  **Spectral gap independence:**
-  The spectral gap γ₄ = ln(5/3) comes from K_F eigenvalue ratios,
-  not from the partition function. The MacMahon correction has no
-  effect on the gap.
+  The MacMahon coefficients below are now computed from a genuine infinite
+  weighted Euler product, with a proved coefficient bridge. The `solid3`
+  values remain an explicitly recorded reference table: this file does not
+  verify an enumeration of actual solid partitions.
+
+  The legacy `gap_independent` declarations at the end are elementary
+  arithmetic identities. They do not identify a physical transfer operator
+  or prove that its spectral gap is insensitive to an interaction.
 
   Status: ZERO sorrys. ZERO custom axioms.
 -/
@@ -25,6 +29,7 @@ import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.IntervalCases
 import Mathlib.Data.Nat.Basic
+import UnifiedTheory.QSeries.WeightedEuler
 
 set_option relaxedAutoImplicit false
 
@@ -33,22 +38,20 @@ namespace UnifiedTheory.LayerA.MacMahonBridge
 /-! ### MacMahon product coefficients for d = 3
 
   These are the coefficients of ∏_{k≥1} (1 - q^k)^{-k(k+1)/2},
-  computed through n = 6. -/
+  defined and computable for every n. -/
 
 /-- Coefficients of the MacMahon product formula for d = 3 solid partitions. -/
-def mac3 : ℕ → ℕ
-  | 0 => 1
-  | 1 => 1
-  | 2 => 4
-  | 3 => 10
-  | 4 => 26
-  | 5 => 59
-  | 6 => 141
-  | _ => 0  -- only defined through n = 6
+def mac3 (n : ℕ) : ℕ := QSeries.macMahonCoefficient n
+
+/-- The computed number is the coefficient of the actual infinite product. -/
+theorem mac3_eq_product_coeff (n : ℕ) :
+    PowerSeries.coeff n QSeries.macMahonProduct = (mac3 n : ℤ) :=
+  QSeries.coeff_macMahonProduct n
 
 /-! ### Actual solid partition counts -/
 
-/-- Actual number of solid (3D) partitions of n (OEIS A000293). -/
+/-- Reference values from OEIS A000293, entered as data through degree six.
+This definition is not a formal combinatorial enumeration. -/
 def solid3 : ℕ → ℕ
   | 0 => 1
   | 1 => 1
@@ -63,49 +66,49 @@ def solid3 : ℕ → ℕ
 
 theorem mac_eq_solid_through_5 : ∀ n : ℕ, n ≤ 5 → mac3 n = solid3 n := by
   intro n hn
-  interval_cases n <;> rfl
+  interval_cases n <;> decide
 
 /-! ### First discrepancy at n = 6 -/
 
-theorem mac3_six : mac3 6 = 141 := by rfl
+theorem mac3_six : mac3 6 = 141 := by decide
+
+/-- The coefficient algorithm also covers degrees beyond the old table. -/
+theorem mac3_seven : mac3 7 = 310 := by decide
 
 theorem solid3_six : solid3 6 = 140 := by rfl
 
 theorem first_discrepancy : mac3 6 = 141 ∧ solid3 6 = 140 ∧ mac3 6 ≠ solid3 6 := by
   refine ⟨rfl, rfl, ?_⟩
-  simp [mac3, solid3]
+  rw [mac3_six, solid3_six]
+  norm_num
 
 /-! ### The correction at n = 6 -/
 
-theorem correction_at_6 : mac3 6 - solid3 6 = 1 := by rfl
+theorem correction_at_6 : mac3 6 - solid3 6 = 1 := by
+  rw [mac3_six, solid3_six]
 
 /-! ### MacMahon overcounts: mac3 ≥ solid3 through n = 6 -/
 
 theorem mac_ge_solid : ∀ n : ℕ, n ≤ 6 → solid3 n ≤ mac3 n := by
   intro n hn
-  interval_cases n <;> simp [mac3, solid3]
+  interval_cases n <;> decide
 
 /-! ### Spectral gap independence
 
-  The spectral gap γ₄ = ln(5/3) arises from K_F eigenvalue ratios on
-  the Weyl chamber boundary. It depends only on the adjacency structure
-  of the poset, not on the partition-counting generating function.
+  These retained compatibility lemmas have only the arithmetic scope of
+  their statements. A spectral interpretation requires an independent
+  identification with the eigenvalues of the intended operator. -/
 
-  We formalize this as: the eigenvalue ratio bound holds for all
-  lattice sizes m ≥ 4, independently of MacMahon-type corrections. -/
-
-/-- A simple model of K_F eigenvalue ratios: for m ≥ 4 lattice sites,
-    the ratio of the second-largest to largest eigenvalue is bounded
-    by 3/5 (so the gap is at least ln(5/3)).
-    Here we state this for the finite regime we have verified. -/
+/-- Arithmetic comparison retained from the finite model. No operator occurs
+in this statement, so it does not itself prove a spectral-gap bound. -/
 theorem gap_independent (m : ℕ) (hm : 4 ≤ m) (hm' : m ≤ 100) :
     3 * (m + 1) ≤ 5 * m := by omega
 
-/-- The MacMahon correction factor R(q) = D₃(q)/M₃(q) does not appear
-    in the spectral gap computation. The gap depends only on K_F. -/
+/-- Bookkeeping for the reference discrepancy, retained under its legacy name.
+This is not a theorem about invariance of a physical spectral gap. -/
 theorem gap_independent_of_correction :
     ∀ n : ℕ, n ≤ 6 → (mac3 n - solid3 n) + solid3 n = mac3 n := by
   intro n hn
-  interval_cases n <;> simp [mac3, solid3]
+  interval_cases n <;> decide
 
 end UnifiedTheory.LayerA.MacMahonBridge

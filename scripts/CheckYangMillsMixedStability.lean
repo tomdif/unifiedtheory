@@ -1,0 +1,46 @@
+import UnifiedTheory.Clay.YangMills.MixedInfluenceBudget
+import UnifiedTheory.Clay.YangMills.GibbsMixedElimination
+import UnifiedTheory.Clay.YangMills.MixedEliminationTower
+import UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower
+
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.step
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.step_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.step_diagonal
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.step_eliminated
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.step_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.retained_le_step
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.row_step_bound
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.row_step_le
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.iterate
+#print axioms UnifiedTheory.Clay.YangMills.MixedInfluenceBudget.iterate_properties
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.MixedBound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.factor_mixedBound_iff
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.update_agrees
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.update_eq_of_agrees
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.rectangle_oscillation_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.singleAction
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.singleAction_apply
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.singleAction_update
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.singleAction_eq_of_agrees
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedElimination.singleAction_mixed
+#print axioms UnifiedTheory.Clay.YangMills.MixedEliminationTower.coefficient_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.MixedEliminationTower.factor_mixed_of_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.MixedEliminationTower.uniform_tower
+#print axioms UnifiedTheory.Clay.YangMills.MixedEliminationTower.tower_localInfluence
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed_diagonal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed_row
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.seed_mixed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.singleton_admissible
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.coefficients
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.tower_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.factors_mixed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.tower_localInfluence
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.stageLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.stageLaw_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.stageUpdate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.stageLaw_eq_tower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMixedBudgetTower.stage_contraction

@@ -1,0 +1,232 @@
+{
+  "scope": "external non-Abelian gauge-coupled Weyl walk; no gauge-field dynamics or TOE closure",
+  "sympy_version": "1.14.0",
+  "numpy_version": "1.26.4",
+  "exact_lattice": {
+    "lattice": [
+      2,
+      2,
+      2
+    ],
+    "dimension": 32,
+    "time_steps": 3,
+    "exact_unitarity_and_step_covariance_checks": 45,
+    "site_spin_density_checks": 24,
+    "initial_squared_norm": 6,
+    "temporal_link_omission_covariance_defect_squared": "20272/625",
+    "wilson_traces": [
+      "226/625",
+      "226/625",
+      "226/625",
+      "226/625",
+      "226/625",
+      "226/625",
+      "226/625",
+      "226/625"
+    ],
+    "nontrivial_wilson_defect": "1024/625",
+    "pure_gauge_similarity_and_powers": true,
+    "finite_volume_note": "opposite nearest neighbors coincide on the two-site axes; larger lattice checked separately"
+  },
+  "continuum": {
+    "arithmetic": "exact symbolic derivatives at zero",
+    "noncommuting_constant_background_generator": true,
+    "constant_field_plaquette_second_order": true,
+    "hamiltonian": [
+      [
+        "59/72",
+        "-4*I/11",
+        "2/7 + I/3",
+        "17/35"
+      ],
+      [
+        "4*I/11",
+        "5/72",
+        "-3/35",
+        "2/7 + I/3"
+      ],
+      [
+        "2/7 - I/3",
+        "-3/35",
+        "-59/72",
+        "-4*I/11"
+      ],
+      [
+        "17/35",
+        "2/7 - I/3",
+        "4*I/11",
+        "-5/72"
+      ]
+    ],
+    "scope": "constant supplied SU(2) potentials; variable-field continuum derivation in note"
+  },
+  "numerical_lattice": {
+    "lattice": [
+      3,
+      3,
+      3
+    ],
+    "dimension": 108,
+    "arithmetic": "complex128 Frobenius residuals, not certified bounds",
+    "unitarity": 2.124904818962186e-15,
+    "spacetime_covariance": 2.3335739694118425e-15
+  },
+  "constant_field_convergence": {
+    "arithmetic": "complex128 checks of an analytic bound; not interval certification",
+    "cases_checked": 24,
+    "norm_budget": 2.287842712842713,
+    "max_error_to_bound_ratio": 0.10465467346808147,
+    "cases": [
+      {
+        "time": 0.25,
+        "steps": 1,
+        "error": 0.03405618535003846,
+        "analytic_bound": 0.32713901741921897
+      },
+      {
+        "time": 0.25,
+        "steps": 2,
+        "error": 0.017074083010898564,
+        "analytic_bound": 0.16356950870960948
+      },
+      {
+        "time": 0.25,
+        "steps": 4,
+        "error": 0.008548434358836359,
+        "analytic_bound": 0.08178475435480474
+      },
+      {
+        "time": 0.25,
+        "steps": 8,
+        "error": 0.0042770093050734734,
+        "analytic_bound": 0.04089237717740237
+      },
+      {
+        "time": 0.25,
+        "steps": 16,
+        "error": 0.0021391929970025164,
+        "analytic_bound": 0.020446188588701186
+      },
+      {
+        "time": 0.25,
+        "steps": 32,
+        "error": 0.0010697672064441557,
+        "analytic_bound": 0.010223094294350593
+      },
+      {
+        "time": 0.25,
+        "steps": 64,
+        "error": 0.0005349260974720647,
+        "analytic_bound": 0.005111547147175296
+      },
+      {
+        "time": 0.25,
+        "steps": 128,
+        "error": 0.000267473648802167,
+        "analytic_bound": 0.002555773573587648
+      },
+      {
+        "time": 0.75,
+        "steps": 1,
+        "error": 0.28589590718823654,
+        "analytic_bound": 2.944251156772971
+      },
+      {
+        "time": 0.75,
+        "steps": 2,
+        "error": 0.14437883037085553,
+        "analytic_bound": 1.4721255783864855
+      },
+      {
+        "time": 0.75,
+        "steps": 4,
+        "error": 0.07263126816553084,
+        "analytic_bound": 0.7360627891932428
+      },
+      {
+        "time": 0.75,
+        "steps": 8,
+        "error": 0.03642627302166382,
+        "analytic_bound": 0.3680313945966214
+      },
+      {
+        "time": 0.75,
+        "steps": 16,
+        "error": 0.01824021826845532,
+        "analytic_bound": 0.1840156972983107
+      },
+      {
+        "time": 0.75,
+        "steps": 32,
+        "error": 0.009126770141304318,
+        "analytic_bound": 0.09200784864915534
+      },
+      {
+        "time": 0.75,
+        "steps": 64,
+        "error": 0.004565034315873104,
+        "analytic_bound": 0.04600392432457767
+      },
+      {
+        "time": 0.75,
+        "steps": 128,
+        "error": 0.0022829273226694447,
+        "analytic_bound": 0.023001962162288836
+      },
+      {
+        "time": 2.0,
+        "steps": 1,
+        "error": 1.2932339674714746,
+        "analytic_bound": 20.936897114830014
+      },
+      {
+        "time": 2.0,
+        "steps": 2,
+        "error": 0.6743571701784808,
+        "analytic_bound": 10.468448557415007
+      },
+      {
+        "time": 2.0,
+        "steps": 4,
+        "error": 0.35455325092701695,
+        "analytic_bound": 5.2342242787075035
+      },
+      {
+        "time": 2.0,
+        "steps": 8,
+        "error": 0.18167355544784763,
+        "analytic_bound": 2.6171121393537518
+      },
+      {
+        "time": 2.0,
+        "steps": 16,
+        "error": 0.09190424871110385,
+        "analytic_bound": 1.3085560696768759
+      },
+      {
+        "time": 2.0,
+        "steps": 32,
+        "error": 0.04621249309724933,
+        "analytic_bound": 0.6542780348384379
+      },
+      {
+        "time": 2.0,
+        "steps": 64,
+        "error": 0.02317035810405341,
+        "analytic_bound": 0.32713901741921897
+      },
+      {
+        "time": 2.0,
+        "steps": 128,
+        "error": 0.0116010734578652,
+        "analytic_bound": 0.16356950870960948
+      }
+    ]
+  },
+  "source_sha256": {
+    "scripts/gauge_walk_audit.py": "d4dbd82176de4c150cd6d036ac4fc33aa191508794b37dc17da1de3bb35f48b0",
+    "scripts/weyl_walk_audit.py": "58efa4b7e3727819846d7178d9c9705f8569646212e4fb2b140e35ef585ed53a",
+    "UnifiedTheory/Audit/KFCausalGaugeWalk.lean": "9deeab3f1d61c60c64fdb61ad3dcae9c6078701b1a7e5bce29ed04533c148fa0",
+    "UnifiedTheory/Audit/KFCausalWeylWalk.lean": "e9d857b8276be9941e1ff8c7561871ed11dbd9bfe0f4469fceffac715b7f95d2"
+  }
+}

@@ -1,0 +1,812 @@
+{
+  "energy_flows": [
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "dimension": 28,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 4.294348922353204e-15,
+          "minimum_clock_energy_margin": 0.02224676786090826,
+          "unitarity_error": 2.5053942752294947e-13
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 6.37799847299282e-15,
+          "minimum_clock_energy_margin": 0.026965369541025914,
+          "unitarity_error": 5.0421770208585014e-14
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 1.8563830362537756e-16,
+          "minimum_clock_energy_margin": 0.032681582578238264,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 9.52468641239985e-15,
+          "minimum_clock_energy_margin": 0.03961134629756155,
+          "unitarity_error": 1.867694447258172e-13
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 6.477322291089342e-15,
+          "minimum_clock_energy_margin": 0.048019201869841946,
+          "unitarity_error": 6.498774451982912e-13
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.0041418981541258455,
+          "minimum_energy_upper_margin": 0.10596285107819231,
+          "minimum_clock_bound_margin": 0.3387684745389009
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.00949042243076386,
+          "minimum_energy_upper_margin": 0.23571842159280362,
+          "minimum_clock_bound_margin": 0.6765396475732485
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.01663313725179803,
+          "minimum_energy_upper_margin": 0.39518618945719636,
+          "minimum_clock_bound_margin": 1.0691464490862432
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.026283955431640436,
+          "minimum_energy_upper_margin": 0.5920646194574729,
+          "minimum_clock_bound_margin": 1.529419048243082
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.005058915634826152,
+          "minimum_energy_upper_margin": 0.10598213591064816,
+          "minimum_clock_bound_margin": 0.3518664132433305
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.011591186802764787,
+          "minimum_energy_upper_margin": 0.2359224165811684,
+          "minimum_clock_bound_margin": 0.695327765685446
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.020311295899280105,
+          "minimum_energy_upper_margin": 0.3960745908031865,
+          "minimum_clock_bound_margin": 1.0945154232976089
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.006178953478702493,
+          "minimum_energy_upper_margin": 0.10601085289864053,
+          "minimum_clock_bound_margin": 0.3673507451423074
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.014156642028163524,
+          "minimum_energy_upper_margin": 0.23622388935674335,
+          "minimum_clock_bound_margin": 0.7168124724225814
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.007546952164023807,
+          "minimum_energy_upper_margin": 0.10605357739747069,
+          "minimum_clock_bound_margin": 0.3857249624298956
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "dimension": 28,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 2.3936329412044435e-15,
+          "minimum_clock_energy_margin": 0.020251389569632943,
+          "unitarity_error": 7.403854253509583e-14
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 2.794807295004626e-15,
+          "minimum_clock_energy_margin": 0.024625812464657372,
+          "unitarity_error": 1.3600725118984672e-13
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 1.762788736514269e-16,
+          "minimum_clock_energy_margin": 0.029944146191305806,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 2.5050054299721695e-15,
+          "minimum_clock_energy_margin": 0.03641299215555868,
+          "unitarity_error": 8.056754878222748e-13
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 3.597008938187397e-15,
+          "minimum_clock_energy_margin": 0.04428523091150005,
+          "unitarity_error": 2.163823192697605e-13
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.00418083717631416,
+          "minimum_energy_upper_margin": 0.09692605028023127,
+          "minimum_clock_bound_margin": 0.2993798358558488
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.009422263429850572,
+          "minimum_energy_upper_margin": 0.21542318116280545,
+          "minimum_clock_bound_margin": 0.5971043621025485
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.016085649544147804,
+          "minimum_energy_upper_margin": 0.36049120670574764,
+          "minimum_clock_bound_margin": 0.9475255285857314
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.024580219081421238,
+          "minimum_energy_upper_margin": 0.5384218178896736,
+          "minimum_clock_bound_margin": 1.3653022998144368
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.005106482719552278,
+          "minimum_energy_upper_margin": 0.09693248384283731,
+          "minimum_clock_bound_margin": 0.311536553130287
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.011508253349535522,
+          "minimum_energy_upper_margin": 0.2154917790627357,
+          "minimum_clock_bound_margin": 0.6145735254761601
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.019646057475648612,
+          "minimum_energy_upper_margin": 0.36079565793584084,
+          "minimum_clock_bound_margin": 0.9716557659093695
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.006237065780328366,
+          "minimum_energy_upper_margin": 0.09694207002983779,
+          "minimum_clock_bound_margin": 0.3259977239345813
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.01405597865733056,
+          "minimum_energy_upper_margin": 0.21559351682172906,
+          "minimum_clock_bound_margin": 0.6349018769195678
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.0076179575559202455,
+          "minimum_energy_upper_margin": 0.0969563453569184,
+          "minimum_clock_bound_margin": 0.3432386631276284
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "dimension": 84,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 1.1661997439642874e-14,
+          "minimum_clock_energy_margin": 0.023971919722136203,
+          "unitarity_error": 6.978944302821129e-13
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 1.9003570147513883e-14,
+          "minimum_clock_energy_margin": 0.028908517968192233,
+          "unitarity_error": 3.012737047160719e-12
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 9.487582375639518e-16,
+          "minimum_clock_energy_margin": 0.03485583592822391,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 1.951418421940468e-14,
+          "minimum_clock_energy_margin": 0.04202907072468923,
+          "unitarity_error": 7.267830939889043e-12
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 1.797528671079389e-14,
+          "minimum_clock_energy_margin": 0.0506919104919791,
+          "unitarity_error": 1.8235117972680502e-12
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.003947824197863516,
+          "minimum_energy_upper_margin": 0.10424665031385089,
+          "minimum_clock_bound_margin": 0.37606084885260144
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.00925035494832278,
+          "minimum_energy_upper_margin": 0.23238446084859304,
+          "minimum_clock_bound_margin": 0.7385494656712844
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.01673419932154217,
+          "minimum_energy_upper_margin": 0.39114893233168607,
+          "minimum_clock_bound_margin": 1.1514032059461352
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.027375988578246937,
+          "minimum_energy_upper_margin": 0.5890573750410495,
+          "minimum_clock_bound_margin": 1.6293832984849437
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.0048218500854454735,
+          "minimum_energy_upper_margin": 0.10429418242368367,
+          "minimum_clock_bound_margin": 0.3910817928136337
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.011296884904537596,
+          "minimum_energy_upper_margin": 0.23286841476118406,
+          "minimum_clock_bound_margin": 0.7615937807514084
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.02042290674854058,
+          "minimum_energy_upper_margin": 0.3930258078981963,
+          "minimum_clock_bound_margin": 1.1830262819235797
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.005889351895979477,
+          "minimum_energy_upper_margin": 0.10436461175794386,
+          "minimum_clock_bound_margin": 0.4084620324875222
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.013794948055344789,
+          "minimum_energy_upper_margin": 0.23356136202108144,
+          "minimum_clock_bound_margin": 0.7872128257311826
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.007193132292057737,
+          "minimum_energy_upper_margin": 0.10446856946622063,
+          "minimum_clock_bound_margin": 0.4286967140425353
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "dimension": 84,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 6.512521299467194e-15,
+          "minimum_clock_energy_margin": 0.019846729802247887,
+          "unitarity_error": 1.64626924388362e-13
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 7.936873501365143e-15,
+          "minimum_clock_energy_margin": 0.02410876231908243,
+          "unitarity_error": 1.1489530401186698e-12
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 3.933438479152519e-16,
+          "minimum_clock_energy_margin": 0.02928551805388473,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 8.835572279466494e-15,
+          "minimum_clock_energy_margin": 0.03557695353490731,
+          "unitarity_error": 1.2561073456884894e-12
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 9.573860055376084e-15,
+          "minimum_clock_energy_margin": 0.04322792910506956,
+          "unitarity_error": 5.206341258201495e-13
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.004035626336086854,
+          "minimum_energy_upper_margin": 0.0902724287347024,
+          "minimum_clock_bound_margin": 0.29527158268524156
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.009059159219339658,
+          "minimum_energy_upper_margin": 0.20063623569848985,
+          "minimum_clock_bound_margin": 0.5828220534686096
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.015392672664982352,
+          "minimum_energy_upper_margin": 0.33575016158564874,
+          "minimum_clock_bound_margin": 0.9196974300782779
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.023423285546599778,
+          "minimum_energy_upper_margin": 0.5014765532120865,
+          "minimum_clock_bound_margin": 1.3212337352678993
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.0049291238522319,
+          "minimum_energy_upper_margin": 0.09027848199697196,
+          "minimum_clock_bound_margin": 0.3078150739594323
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.011064828964404845,
+          "minimum_energy_upper_margin": 0.20070071862976782,
+          "minimum_clock_bound_margin": 0.6013659777462903
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.018800168925136935,
+          "minimum_energy_upper_margin": 0.33603568660647004,
+          "minimum_clock_bound_margin": 0.9456290057788395
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.0060204430157343196,
+          "minimum_energy_upper_margin": 0.09028749990071419,
+          "minimum_clock_bound_margin": 0.32262775256269105
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.013514512190187077,
+          "minimum_energy_upper_margin": 0.20079626885323468,
+          "minimum_clock_bound_margin": 0.6228641937004428
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.0073533810719922064,
+          "minimum_energy_upper_margin": 0.09030092533865636,
+          "minimum_clock_bound_margin": 0.3401525004629953
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "dimension": 210,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 3.0735591700202414e-14,
+          "minimum_clock_energy_margin": 0.02608166731572106,
+          "unitarity_error": 1.615753860100284e-12
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 3.8282643155630934e-14,
+          "minimum_clock_energy_margin": 0.03126203705363948,
+          "unitarity_error": 5.266065145262755e-12
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 4.8922353464818666e-15,
+          "minimum_clock_energy_margin": 0.03746358378426068,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 5.0413558668800674e-14,
+          "minimum_clock_energy_margin": 0.044900116281757683,
+          "unitarity_error": 1.3225705736986058e-12
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 5.4641326580882084e-14,
+          "minimum_clock_energy_margin": 0.05383345510837412,
+          "unitarity_error": 4.833528263637604e-12
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.003719971795801991,
+          "minimum_energy_upper_margin": 0.10087432140687912,
+          "minimum_clock_bound_margin": 0.41502111682619597
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.0089915425403513,
+          "minimum_energy_upper_margin": 0.22606563740486407,
+          "minimum_clock_bound_margin": 0.8007272344949241
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.016891302565934685,
+          "minimum_energy_upper_margin": 0.3841166489429326,
+          "minimum_clock_bound_margin": 1.2332200072266994
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.02859790751743853,
+          "minimum_energy_upper_margin": 0.5847543595205068,
+          "minimum_clock_bound_margin": 1.7293252926565073
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.004543487588422933,
+          "minimum_energy_upper_margin": 0.100992357981769,
+          "minimum_clock_bound_margin": 0.43240906083162944
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.010978332978307434,
+          "minimum_energy_upper_margin": 0.22721600458573937,
+          "minimum_clock_bound_margin": 0.8284890267421954
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.020594101550464056,
+          "minimum_energy_upper_margin": 0.38811526399050944,
+          "minimum_clock_bound_margin": 1.2713500726112175
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.005549226099092486,
+          "minimum_energy_upper_margin": 0.10116629733195406,
+          "minimum_clock_bound_margin": 0.4521213071109635
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.013400829711307767,
+          "minimum_energy_upper_margin": 0.22881347949572606,
+          "minimum_clock_bound_margin": 0.858757918716154
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.006777432562524873,
+          "minimum_energy_upper_margin": 0.10142085849927523,
+          "minimum_clock_bound_margin": 0.47464274177547705
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "dimension": 210,
+      "samples": [
+        {
+          "time": -0.2,
+          "derivative_identity_error": 1.1270016392936916e-14,
+          "minimum_clock_energy_margin": 0.01953843552660188,
+          "unitarity_error": 3.7988782162003346e-13
+        },
+        {
+          "time": -0.1,
+          "derivative_identity_error": 1.3124334327111542e-14,
+          "minimum_clock_energy_margin": 0.023710636203000644,
+          "unitarity_error": 2.7314710582298126e-12
+        },
+        {
+          "time": 0.0,
+          "derivative_identity_error": 1.131039929690246e-15,
+          "minimum_clock_energy_margin": 0.02877383730672406,
+          "unitarity_error": 0.0
+        },
+        {
+          "time": 0.1,
+          "derivative_identity_error": 1.639307659302734e-14,
+          "minimum_clock_energy_margin": 0.03492264639975252,
+          "unitarity_error": 2.4923776391460803e-12
+        },
+        {
+          "time": 0.2,
+          "derivative_identity_error": 2.0050202025950856e-14,
+          "minimum_clock_energy_margin": 0.042395461857421865,
+          "unitarity_error": 1.3291961174866927e-12
+        }
+      ],
+      "all_state_matrix_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_lower_margin": 0.0038988781465257747,
+          "minimum_energy_upper_margin": 0.08511403880621347,
+          "minimum_clock_bound_margin": 0.2916682640554727
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.008739867747340516,
+          "minimum_energy_upper_margin": 0.18917830508058334,
+          "minimum_clock_bound_margin": 0.5712839091359663
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.014819624178516504,
+          "minimum_energy_upper_margin": 0.31660025296114674,
+          "minimum_clock_bound_margin": 0.8977530515055503
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.02250254230473959,
+          "minimum_energy_upper_margin": 0.4729341375319086,
+          "minimum_clock_bound_margin": 1.2866485779006764
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_lower_margin": 0.004762099969180563,
+          "minimum_energy_upper_margin": 0.0851201472303747,
+          "minimum_clock_bound_margin": 0.3044945163689356
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.010674875139464328,
+          "minimum_energy_upper_margin": 0.18924329742055798,
+          "minimum_clock_bound_margin": 0.590524076198658
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.018100504016761627,
+          "minimum_energy_upper_margin": 0.31688726313668664,
+          "minimum_clock_bound_margin": 0.9248362906879057
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_lower_margin": 0.00581644096203458,
+          "minimum_energy_upper_margin": 0.08512924574783427,
+          "minimum_clock_bound_margin": 0.31957374241794617
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.013038276790591953,
+          "minimum_energy_upper_margin": 0.18933952379365607,
+          "minimum_clock_bound_margin": 0.6127751076213477
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_lower_margin": 0.007104214972500728,
+          "minimum_energy_upper_margin": 0.08514278781747456,
+          "minimum_clock_bound_margin": 0.33732412387305466
+        }
+      ]
+    }
+  ],
+  "finite_occupation_witnesses": [
+    {
+      "capacity": 2,
+      "physical_dimension": 10,
+      "sharp_finite_coefficient": 2.476679448407017,
+      "energy": 0.6097843689388758,
+      "second_occupation_moment": 3.9869198629177736,
+      "generalized_eigenvector_residual": 1.6587594057298465e-15,
+      "boundary_probability": 0.9959888403456635,
+      "mean_clock_s": -0.043492243790327935,
+      "mean_clock_ps": -0.020533390877204932,
+      "scope": "Finite spectral witness only; does not prove absence of a uniform quantum bound."
+    },
+    {
+      "capacity": 3,
+      "physical_dimension": 22,
+      "sharp_finite_coefficient": 5.419514820431503,
+      "energy": 0.6497840635341517,
+      "second_occupation_moment": 8.941029182835047,
+      "generalized_eigenvector_residual": 2.2098809879750837e-15,
+      "boundary_probability": 0.9904775267046856,
+      "mean_clock_s": -0.06886964338137858,
+      "mean_clock_ps": -0.04395210248413243,
+      "scope": "Finite spectral witness only; does not prove absence of a uniform quantum bound."
+    },
+    {
+      "capacity": 4,
+      "physical_dimension": 48,
+      "sharp_finite_coefficient": 9.36128264633314,
+      "energy": 0.6900790952259943,
+      "second_occupation_moment": 15.821308105069509,
+      "generalized_eigenvector_residual": 7.28029723925781e-15,
+      "boundary_probability": 0.9815086022403523,
+      "mean_clock_s": -0.08825544334153902,
+      "mean_clock_ps": -0.07813935795150086,
+      "scope": "Finite spectral witness only; does not prove absence of a uniform quantum bound."
+    },
+    {
+      "capacity": 5,
+      "physical_dimension": 88,
+      "sharp_finite_coefficient": 14.19830040065701,
+      "energy": 0.7302446661698461,
+      "second_occupation_moment": 24.56653353691399,
+      "generalized_eigenvector_residual": 1.5665128247325912e-14,
+      "boundary_probability": 0.9679598953037938,
+      "mean_clock_s": -0.09908030069353847,
+      "mean_clock_ps": -0.12272641387126207,
+      "scope": "Finite spectral witness only; does not prove absence of a uniform quantum bound."
+    },
+    {
+      "capacity": 6,
+      "physical_dimension": 158,
+      "sharp_finite_coefficient": 19.83710737089162,
+      "energy": 0.7692631553396058,
+      "second_occupation_moment": 35.09706317983428,
+      "generalized_eigenvector_residual": 2.747601769266073e-14,
+      "boundary_probability": 0.9486747532505938,
+      "mean_clock_s": -0.10229707547850694,
+      "mean_clock_ps": -0.175499250732689,
+      "scope": "Finite spectral witness only; does not prove absence of a uniform quantum bound."
+    }
+  ],
+  "classical_domain": {
+    "boundary_time": "-2*log(2)/3",
+    "boundary_time_float": -0.4620981203732969,
+    "boundary_energy": "3/2",
+    "near_boundary_samples": [
+      {
+        "distance_from_boundary": 0.1,
+        "time": -0.3620981203732969,
+        "clock": 0.16183424272828315,
+        "chart_s": -1.8211826606043786,
+        "chart_ps": -0.08763669140822634,
+        "energy": 1.8236684854565663
+      },
+      {
+        "distance_from_boundary": 0.01,
+        "time": -0.4520981203732969,
+        "clock": 0.015113064615718978,
+        "chart_s": -4.192195702897505,
+        "chart_ps": -0.043337231980442016,
+        "energy": 1.5302261292314379
+      },
+      {
+        "distance_from_boundary": 0.0001,
+        "time": -0.4619981203732969,
+        "clock": 0.00015001125056252111,
+        "chart_s": -8.804800262930518,
+        "chart_ps": -0.001121362437191599,
+        "energy": 1.5003000225011252
+      },
+      {
+        "distance_from_boundary": 1e-06,
+        "time": -0.4620971203732969,
+        "clock": 1.5000011250005626e-06,
+        "chart_s": -13.410044699856016,
+        "chart_ps": -1.8120589366940518e-05,
+        "energy": 1.50000300000225
+      },
+      {
+        "distance_from_boundary": 1e-08,
+        "time": -0.4620981103732969,
+        "clock": 1.5000000112500003e-08,
+        "chart_s": -18.0152156283442,
+        "chart_ps": -2.5028331614446655e-07,
+        "energy": 1.5000000300000003
+      },
+      {
+        "distance_from_boundary": 1e-10,
+        "time": -0.4620981202732969,
+        "clock": 1.5000000001125e-10,
+        "chart_s": -22.620385821757292,
+        "chart_ps": -3.1936086711824003e-09,
+        "energy": 1.5000000003
+      }
+    ],
+    "implication": "The exact classical positive-clock branch is not global for these initial data."
+  },
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da"
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sympy": "1.14.0"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "Lean proves a capacity-independent energy-growth factor and upper clock-expectation bound for the exponential model. Classical bounded energy does not control clock momentum, and some positive-clock solutions reach a finite-time branch boundary. The finite quantum spectral witnesses do not prove an asymptotic obstruction. Occupation propagation, infinite-dimensional domains, continuum correspondence and a TOE remain unproved."
+}

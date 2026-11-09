@@ -1,0 +1,272 @@
+{
+  "scope": "overlap Euclidean chiral regulator; no completed Weyl gauge measure or TOE",
+  "exact_free": {
+    "arithmetic": "exact symbolic matrices and derivatives",
+    "clifford_algebra": true,
+    "overlap_norm_identity": true,
+    "ginsparg_wilson_defect_identity": true,
+    "continuum_generator": true,
+    "corners": [
+      {
+        "pi_coordinates": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "wilson_mass": -1,
+        "overlap_value": "0",
+        "polar_step_value": "I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "wilson_mass": 1,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "wilson_mass": 1,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "wilson_mass": 1,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "wilson_mass": 5,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "wilson_mass": 1,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          0,
+          1,
+          0
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "wilson_mass": 5,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "wilson_mass": 3,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "wilson_mass": 5,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "wilson_mass": 5,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      },
+      {
+        "pi_coordinates": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "wilson_mass": 7,
+        "overlap_value": "2 I",
+        "polar_step_value": "-I"
+      }
+    ],
+    "free_dirac_zero_corners": 1,
+    "polar_reinterpretation_pi_corners": 15,
+    "polar_three_spatial_slice_pi_corners": 7,
+    "completeness": "analytic sine-zero and Wilson-mass argument, not a momentum scan"
+  },
+  "fixed_filter": {
+    "arithmetic": "exact",
+    "sites": 4,
+    "retained_momenta": 1,
+    "gauge_transformed_state_leakage": "1",
+    "commutator_squared_frobenius": "2"
+  },
+  "numerical_external_gauge": {
+    "arithmetic": "complex128 eigendecomposition and Frobenius residuals; not interval certificates",
+    "lattice": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "dimension": 648,
+    "colors": 2,
+    "supplied_background": "inhomogeneous weak SU(2) links; independent large local gauge transformation",
+    "analytic_gap_bound": "1 - 8/sqrt(401)",
+    "numeric_gap_lower_bound": 0.6004990644488621,
+    "observed_kernel_gap": 0.9206118028093061,
+    "residuals": {
+      "wilson_hermiticity": 0.0,
+      "wilson_covariance": 2.4008249193108527e-14,
+      "sign_involution": 1.536503856823926e-13,
+      "overlap_covariance": 1.4018425953093107e-13,
+      "ginsparg_wilson": 1.5796759220702175e-13,
+      "gamma_hermiticity": 3.834823465122119e-15,
+      "chirality_projector": 3.9042530784732824e-14,
+      "chiral_intertwining": 7.823366861530317e-14,
+      "chiral_projector_covariance": 6.99621243938827e-14
+    },
+    "wilson_loop_frobenius_defect": 2.2519841128822295,
+    "chiral_projector_change_under_gauge": 6.013740134365097,
+    "local_polynomial_checks": [
+      {
+        "order": 0,
+        "range_at_most": 1,
+        "numerical_error": 0.8755846089043388,
+        "analytic_bound": 150.8379000005845
+      },
+      {
+        "order": 8,
+        "range_at_most": 17,
+        "numerical_error": 0.6012427545431003,
+        "analytic_bound": 143.07138721197603
+      },
+      {
+        "order": 32,
+        "range_at_most": 65,
+        "numerical_error": 0.31207920638656117,
+        "analytic_bound": 122.08989493055832
+      },
+      {
+        "order": 128,
+        "range_at_most": 257,
+        "numerical_error": 0.04504162482979768,
+        "analytic_bound": 64.74219919569641
+      },
+      {
+        "order": 512,
+        "range_at_most": 1025,
+        "numerical_error": 6.340738237065047e-05,
+        "analytic_bound": 5.119391680228643
+      },
+      {
+        "order": 2048,
+        "range_at_most": 4097,
+        "numerical_error": 9.547918011776346e-15,
+        "analytic_bound": 0.0002001437353817016
+      }
+    ]
+  },
+  "sympy_version": "1.14.0",
+  "numpy_version": "1.26.4",
+  "source_sha256": {
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "UnifiedTheory/Audit/KFCausalOverlapChirality.lean": "7e2f4a94fad373266444d67ae65d5c29b899ed945c466e4b61009eeeb788dbbb",
+    "UnifiedTheory/Audit/KFCausalGaugeWalk.lean": "9deeab3f1d61c60c64fdb61ad3dcae9c6078701b1a7e5bce29ed04533c148fa0"
+  }
+}

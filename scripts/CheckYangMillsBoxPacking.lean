@@ -1,0 +1,39 @@
+import UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes
+import UnifiedTheory.Clay.YangMills.WilsonBoxPacking
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.interval
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.mem_interval
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.interval_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.vertices
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.mem_vertices
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.vertices_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.block
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.mem_block
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.block_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.block_nonempty
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.val_sub_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.touching_base
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.inner_plaquette
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.inner_subset_outer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.boundary_subset_shell
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.boundary_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.boundary_surface_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes.surface_condition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.Index
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.origin
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.origin_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.origin_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.region
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.region_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.region_nonempty
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.region_disjoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.index_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.packing_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.region_surface
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.badBox
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.badBox_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.joint_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxPacking.any_probability_bound

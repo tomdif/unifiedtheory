@@ -1,0 +1,259 @@
+{
+  "spin_tensor": {
+    "dimension": 16,
+    "exact_bilinear_norm_identity": true,
+    "diagonal_stiffness_eigenvalues": [
+      0.22999999999999995,
+      0.24999999999999986,
+      0.2499999999999999,
+      0.24999999999999994,
+      0.24999999999999994,
+      0.24999999999999997,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25000000000000006,
+      0.2500000000000002,
+      0.26999999999999996
+    ],
+    "onsite_stiffness_commutator_norm": 0.004000000000000004,
+    "xx_xy_component_commutator_norm": 0.00028284271247461923,
+    "lower_stiffness": 0.23
+  },
+  "microscopic_energy_bracket": {
+    "field_sites": 3,
+    "oscillator_total_cutoff": 6,
+    "oscillator_input_cutoff": 2,
+    "spin_field_dimension": 1344,
+    "input_dimension": 160,
+    "truncated_oscillator_ground_energy": 0.8864220811772962,
+    "rows": [
+      {
+        "case": 0,
+        "full_output_residual": 4.387482016074793e-15
+      },
+      {
+        "case": 1,
+        "full_output_residual": 1.2983152654602938e-14
+      },
+      {
+        "case": 2,
+        "full_output_residual": 7.757713285662896e-15
+      },
+      {
+        "case": 3,
+        "full_output_residual": 7.0018351901297284e-15
+      },
+      {
+        "case": 4,
+        "full_output_residual": 1.3503553689288998e-14
+      },
+      {
+        "case": 5,
+        "full_output_residual": 1.0906320539374675e-14
+      }
+    ],
+    "scope": "Three sites, one dynamical spin cell, two supplied algebraic stencils (centered and forward) probing noncommuting tensor components. This is a local algebra test, not a two-dimensional continuum lattice. Full commutators are applied before input restriction; four oscillator steps fit below the cutoff. The ground energy checks only the truncated oscillator model."
+  },
+  "stencil_consistency": {
+    "rows": [
+      {
+        "length": 9,
+        "spin_cells": 729,
+        "spacing": 0.6981317007977318,
+        "coefficient_operator_norm_error": 0.248015948866175,
+        "uniform_bound": 37.19792384626909,
+        "error_over_spacing_squared": 0.5088677074012921
+      },
+      {
+        "length": 17,
+        "spin_cells": 4913,
+        "spacing": 0.36959913571644626,
+        "coefficient_operator_norm_error": 0.0804028713516645,
+        "uniform_bound": 9.713226829416584,
+        "error_over_spacing_squared": 0.5885856432621129
+      },
+      {
+        "length": 33,
+        "spin_cells": 35937,
+        "spacing": 0.19039955476301776,
+        "coefficient_operator_norm_error": 0.022269862787265525,
+        "uniform_bound": 2.5236148119006683,
+        "error_over_spacing_squared": 0.6143073113613184
+      },
+      {
+        "length": 65,
+        "spin_cells": 274625,
+        "spacing": 0.0966643893412244,
+        "coefficient_operator_norm_error": 0.005806734372199081,
+        "uniform_bound": 0.6467270128623229,
+        "error_over_spacing_squared": 0.6214396171703
+      }
+    ],
+    "bound_constants": {
+      "e0": 0.4781817413680471,
+      "d0": 0.4642796092394707,
+      "g0": 1.5362291495737217,
+      "F0": 0.6391993836668146
+    },
+    "scope": "Exact spin-space norm of coefficient forms on smooth field profiles, not a full unbounded-current norm or a spin-field continuum theorem."
+  },
+  "full_space_obstruction": {
+    "arbitrary_generators": 30,
+    "sharp_full_space_lower_bound": 0.54,
+    "minimum_random_ratio": 1.0976384431153718,
+    "zero_generator_saturates": true,
+    "scope": "Obstruction to uniform full-space matrix dilation, not to a growing non-invariant low-occupation domain."
+  },
+  "logarithmic_repair": {
+    "rows": [
+      {
+        "copies": 4,
+        "input_occupation": 2,
+        "metric_minimum": 0.11142901703805683,
+        "full_space_error": 2.985107827527528,
+        "full_space_lower_bound": 1.1217903856883888,
+        "compressed_error": 0.0016629077140054732,
+        "analytic_compressed_bound": 9.840024751076191,
+        "full_output_error_on_input": 0.12338962054908591,
+        "analytic_full_output_bound": 15.375038673556542,
+        "limiting_metric_represented_rows_error": 0.0012422136887729458,
+        "analytic_full_fock_metric_convergence_bound": 0.17877799202794412,
+        "numerical_roundoff_allowance": 3.84744766016568e-12,
+        "duhamel_residual": 2.5400063644640423e-15,
+        "error_if_generators_compressed_first": 1.7029738174021476
+      },
+      {
+        "copies": 8,
+        "input_occupation": 2,
+        "metric_minimum": 0.0697601993428969,
+        "full_space_error": 6.338503301843301,
+        "full_space_lower_bound": 1.7918526778511505,
+        "compressed_error": 3.924284571333423e-12,
+        "analytic_compressed_bound": 0.05994178268997242,
+        "full_output_error_on_input": 6.850067014875898e-05,
+        "analytic_full_output_bound": 2.572422238396414,
+        "limiting_metric_represented_rows_error": 3.4457409049884347e-07,
+        "analytic_full_fock_metric_convergence_bound": 0.00100890247254012,
+        "numerical_roundoff_allowance": 1.2847869421101278e-11,
+        "duhamel_residual": 3.758106052189218e-14,
+        "error_if_generators_compressed_first": 1.7029919143888037
+      },
+      {
+        "copies": 12,
+        "input_occupation": 2,
+        "metric_minimum": 0.04846907081639538,
+        "full_space_error": 10.69629247340916,
+        "full_space_lower_bound": 2.5789642321287625,
+        "compressed_error": 5.954100383763268e-15,
+        "analytic_compressed_bound": 1.7329232981413522e-05,
+        "full_output_error_on_input": 8.676477600359022e-09,
+        "analytic_full_output_bound": 0.07531582742302036,
+        "limiting_metric_represented_rows_error": 2.9059947829419014e-11,
+        "analytic_full_fock_metric_convergence_bound": 1.610791195513903e-06,
+        "numerical_roundoff_allowance": 2.8426563663171434e-11,
+        "duhamel_residual": 9.002549631726167e-14,
+        "error_if_generators_compressed_first": 1.7029919143888193
+      },
+      {
+        "copies": 16,
+        "input_occupation": 2,
+        "metric_minimum": 0.035620554341666645,
+        "full_space_error": 16.21109600393687,
+        "full_space_lower_bound": 3.5092098455577134,
+        "compressed_error": 1.28791481295394e-14,
+        "analytic_compressed_bound": 8.785654969304598e-10,
+        "full_output_error_on_input": 4.621502855325244e-13,
+        "analytic_full_output_bound": 0.0008304103794537428,
+        "limiting_metric_represented_rows_error": 1.608955016179304e-15,
+        "analytic_full_fock_metric_convergence_bound": 1.1659919837668117e-09,
+        "numerical_roundoff_allowance": 5.273168377624345e-11,
+        "duhamel_residual": 1.6782757536290158e-13,
+        "error_if_generators_compressed_first": 1.7029919143888195
+      },
+      {
+        "copies": 24,
+        "input_occupation": 2,
+        "metric_minimum": 0.021237148676108663,
+        "full_space_error": 31.40924372752364,
+        "full_space_lower_bound": 5.885912553817668,
+        "compressed_error": 1.2018220060202066e-14,
+        "analytic_compressed_bound": 7.593255524078322e-20,
+        "full_output_error_on_input": 1.9341325455040517e-14,
+        "analytic_full_output_bound": 1.5567582891410214e-08,
+        "limiting_metric_represented_rows_error": 1.6283769571112945e-15,
+        "analytic_full_fock_metric_convergence_bound": 1.2477191110378856e-16,
+        "numerical_roundoff_allowance": 1.3929994903019707e-10,
+        "duhamel_residual": 3.465095238040305e-13,
+        "error_if_generators_compressed_first": 1.702991914388822
+      },
+      {
+        "copies": 32,
+        "input_occupation": 2,
+        "metric_minimum": 0.013734627367760028,
+        "full_space_error": 53.5175530430872,
+        "full_space_lower_bound": 9.101084190563405,
+        "compressed_error": 2.52105965959414e-14,
+        "analytic_compressed_bound": 2.8750617561036524e-31,
+        "full_output_error_on_input": 6.821074303264008e-14,
+        "analytic_full_output_bound": 5.3432796342257553e-14,
+        "limiting_metric_represented_rows_error": 3.905649287099583e-15,
+        "analytic_full_fock_metric_convergence_bound": 3.0188803078252937e-24,
+        "numerical_roundoff_allowance": 3.031588989250467e-10,
+        "duhamel_residual": 6.646624580102894e-13,
+        "error_if_generators_compressed_first": 1.7029919143888135
+      },
+      {
+        "copies": 48,
+        "input_occupation": 2,
+        "metric_minimum": 0.006617374961291972,
+        "full_space_error": 126.52293908278983,
+        "full_space_lower_bound": 18.889665574521494,
+        "compressed_error": 2.2890360793619626e-14,
+        "analytic_compressed_bound": 7.694532402079318e-57,
+        "full_output_error_on_input": 9.961020067577337e-14,
+        "analytic_full_output_bound": 2.186522569965387e-26,
+        "limiting_metric_represented_rows_error": 3.1683981876112707e-15,
+        "analytic_full_fock_metric_convergence_bound": 8.642769710804967e-41,
+        "numerical_roundoff_allowance": 1.054527587071053e-09,
+        "duhamel_residual": 1.370492502621389e-12,
+        "error_if_generators_compressed_first": 1.7029919143888297
+      },
+      {
+        "copies": 64,
+        "input_occupation": 2,
+        "metric_minimum": 0.0035788865236155393,
+        "full_space_error": 255.53648955254062,
+        "full_space_lower_bound": 34.927064374672305,
+        "compressed_error": 2.578418948359576e-14,
+        "analytic_compressed_bound": 5.614778041573525e-85,
+        "full_output_error_on_input": 8.693004387096773e-14,
+        "analytic_full_output_bound": 3.94457706505236e-40,
+        "limiting_metric_represented_rows_error": 4.120456374802628e-15,
+        "analytic_full_fock_metric_convergence_bound": 1.4255066703865281e-58,
+        "numerical_roundoff_allowance": 2.8822786935427433e-09,
+        "duhamel_residual": 5.533870278066802e-12,
+        "error_if_generators_compressed_first": 1.7029919143888042
+      }
+    ],
+    "logarithmic_scale": 0.4,
+    "kappa": 0.25,
+    "sigma": 1.0,
+    "scope": "One positive metric component and one dilation generator on a fixed input domain. No invariant physical sector, six-component gravity algebra, or stable spin phase is established."
+  },
+  "source_sha256": {
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "scripts/spin_clock_bracket_audit.py": "184bd8d42f7cfe2e58088e21f61125416abfb5521900eafc344844692d340996",
+    "UnifiedTheory/Audit/KFCausalSpinClockBracket.lean": "2ee5f6d15b49065f6bccc5c1ff97b7cbb0ba405a71c346942c6c6e77fc8a9b6f",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "scripts/gravity_constraint_audit.py": "e54db23021148296d5c0ab8861eb898a15e644d7d9e16e03e37093f0b5adee90",
+    "MICROSCOPIC_SPIN_TWO_SEED.md": "0f5c2db9e104a824d00d6acc4247786b7fd573ada0a4a5024b7b6ce027938045",
+    "scripts/microscopic_spin_two_audit.py": "bbcd8399832d531626a2b60458364f17cdfa96e7366241646b73b430698b1922",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8"
+  },
+  "scope": "Exact spin-valued local energy commutator and uniform smooth-test coefficient estimate; finite full-space metric-dilation obstruction and controlled single logarithmic dilation repair. The full constraint algebra, stable gravitational spin phase, quantum continuum, and TOE remain unproved."
+}

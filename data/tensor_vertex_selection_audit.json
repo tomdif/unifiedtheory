@@ -1,0 +1,711 @@
+{
+  "channel_checks": {
+    "cases": [
+      {
+        "cell_dimension": 2,
+        "input_copies": 2,
+        "output_copies": 1,
+        "exact_partial_trace_weight": "1/2",
+        "identity_error": 1.1102230246251565e-16,
+        "CP_remainder_minimum": 0.24999999999999994,
+        "trace_preservation_error": 0.0,
+        "maximally_entangled_input_error": 0.6666666666666666,
+        "diamond_bound": 1.0
+      },
+      {
+        "cell_dimension": 2,
+        "input_copies": 3,
+        "output_copies": 2,
+        "exact_partial_trace_weight": "1/5",
+        "identity_error": 1.1102230246251565e-16,
+        "CP_remainder_minimum": 0.06666666666666665,
+        "trace_preservation_error": 0.0,
+        "maximally_entangled_input_error": 1.0,
+        "diamond_bound": 1.6
+      },
+      {
+        "cell_dimension": 2,
+        "input_copies": 5,
+        "output_copies": 3,
+        "exact_partial_trace_weight": "5/42",
+        "identity_error": 5.551115123125783e-17,
+        "CP_remainder_minimum": 0.011904761904761809,
+        "trace_preservation_error": 4.440892098500626e-16,
+        "maximally_entangled_input_error": 1.0,
+        "diamond_bound": 1.7619047619047619
+      },
+      {
+        "cell_dimension": 2,
+        "input_copies": 8,
+        "output_copies": 2,
+        "exact_partial_trace_weight": "28/55",
+        "identity_error": 1.1102230246251565e-16,
+        "CP_remainder_minimum": 0.018181818181818066,
+        "trace_preservation_error": 0.0,
+        "maximally_entangled_input_error": 0.44444444444444436,
+        "diamond_bound": 0.9818181818181819
+      },
+      {
+        "cell_dimension": 3,
+        "input_copies": 3,
+        "output_copies": 1,
+        "exact_partial_trace_weight": "1/2",
+        "identity_error": 2.7755575615628914e-17,
+        "CP_remainder_minimum": 0.16666666666666644,
+        "trace_preservation_error": 2.220446049250313e-16,
+        "maximally_entangled_input_error": 0.8000000000000002,
+        "diamond_bound": 1.0
+      },
+      {
+        "cell_dimension": 3,
+        "input_copies": 4,
+        "output_copies": 2,
+        "exact_partial_trace_weight": "3/14",
+        "identity_error": 8.326672684688674e-17,
+        "CP_remainder_minimum": 0.03571428571428555,
+        "trace_preservation_error": 4.710277376051325e-16,
+        "maximally_entangled_input_error": 1.2,
+        "diamond_bound": 1.5714285714285714
+      },
+      {
+        "cell_dimension": 3,
+        "input_copies": 5,
+        "output_copies": 3,
+        "exact_partial_trace_weight": "1/12",
+        "identity_error": 1.1102230246251565e-16,
+        "CP_remainder_minimum": 0.00833333333333318,
+        "trace_preservation_error": 2.7194799110210365e-16,
+        "maximally_entangled_input_error": 1.4285714285714286,
+        "diamond_bound": 1.8333333333333333
+      },
+      {
+        "cell_dimension": 7,
+        "input_copies": 2,
+        "output_copies": 1,
+        "exact_partial_trace_weight": "2/9",
+        "identity_error": 2.7755575615628914e-17,
+        "CP_remainder_minimum": 0.11111111111111084,
+        "trace_preservation_error": 5.551115123125783e-16,
+        "maximally_entangled_input_error": 1.5000000000000002,
+        "diamond_bound": 1.5555555555555556
+      }
+    ],
+    "scope": "Independent coherent-state moments and cloning decomposition, including complete Choi matrices. The analytical diamond bound retains arbitrary external entanglement."
+  },
+  "young_checks": {
+    "cases": [
+      {
+        "cell_dimension": 2,
+        "partition": [
+          3
+        ],
+        "R": 3,
+        "first_row": 3,
+        "defect": 0,
+        "representation_dimension": 4,
+        "first_row_symmetry_error": 1.5700924586837752e-16,
+        "exchange_eigenvalue": 0.0,
+        "exchange_eigen_error": 0.0,
+        "collective_invariance_error": 5.438959822042073e-16
+      },
+      {
+        "cell_dimension": 2,
+        "partition": [
+          2,
+          1
+        ],
+        "R": 3,
+        "first_row": 2,
+        "defect": 1,
+        "representation_dimension": 2,
+        "first_row_symmetry_error": 7.850462293418876e-17,
+        "exchange_eigenvalue": 3.0,
+        "exchange_eigen_error": 4.440892098500626e-16,
+        "collective_invariance_error": 5.438959822042073e-16
+      },
+      {
+        "cell_dimension": 2,
+        "partition": [
+          4
+        ],
+        "R": 4,
+        "first_row": 4,
+        "defect": 0,
+        "representation_dimension": 5,
+        "first_row_symmetry_error": 6.614917107302101e-16,
+        "exchange_eigenvalue": 0.0,
+        "exchange_eigen_error": 1.6653345369377348e-16,
+        "collective_invariance_error": 5.438959822042073e-16
+      },
+      {
+        "cell_dimension": 2,
+        "partition": [
+          3,
+          1
+        ],
+        "R": 4,
+        "first_row": 3,
+        "defect": 1,
+        "representation_dimension": 3,
+        "first_row_symmetry_error": 2.554196752399476e-16,
+        "exchange_eigenvalue": 4.0,
+        "exchange_eigen_error": 8.689132506289366e-16,
+        "collective_invariance_error": 1.4904605145194077e-15
+      },
+      {
+        "cell_dimension": 2,
+        "partition": [
+          2,
+          2
+        ],
+        "R": 4,
+        "first_row": 2,
+        "defect": 2,
+        "representation_dimension": 1,
+        "first_row_symmetry_error": 0.0,
+        "exchange_eigenvalue": 6.0,
+        "exchange_eigen_error": 4.440892098500626e-16,
+        "collective_invariance_error": 1.1537776118301384e-15
+      },
+      {
+        "cell_dimension": 3,
+        "partition": [
+          4
+        ],
+        "R": 4,
+        "first_row": 4,
+        "defect": 0,
+        "representation_dimension": 15,
+        "first_row_symmetry_error": 8.491573300505515e-16,
+        "exchange_eigenvalue": 0.0,
+        "exchange_eigen_error": 6.521083742145178e-16,
+        "collective_invariance_error": 1.3042167484290357e-15
+      },
+      {
+        "cell_dimension": 3,
+        "partition": [
+          3,
+          1
+        ],
+        "R": 4,
+        "first_row": 3,
+        "defect": 1,
+        "representation_dimension": 15,
+        "first_row_symmetry_error": 1.16347704331935e-15,
+        "exchange_eigenvalue": 4.0,
+        "exchange_eigen_error": 3.4341689000779968e-15,
+        "collective_invariance_error": 2.8463727998586172e-15
+      },
+      {
+        "cell_dimension": 3,
+        "partition": [
+          2,
+          2
+        ],
+        "R": 4,
+        "first_row": 2,
+        "defect": 2,
+        "representation_dimension": 6,
+        "first_row_symmetry_error": 3.5453576112678516e-16,
+        "exchange_eigenvalue": 6.0,
+        "exchange_eigen_error": 2.0888024143222974e-15,
+        "collective_invariance_error": 2.064247204498085e-15
+      },
+      {
+        "cell_dimension": 3,
+        "partition": [
+          2,
+          1,
+          1
+        ],
+        "R": 4,
+        "first_row": 2,
+        "defect": 2,
+        "representation_dimension": 3,
+        "first_row_symmetry_error": 5.551115123125783e-17,
+        "exchange_eigenvalue": 8.0,
+        "exchange_eigen_error": 1.27675647831893e-15,
+        "collective_invariance_error": 9.777686967753793e-16
+      },
+      {
+        "cell_dimension": 7,
+        "partition": [
+          3
+        ],
+        "R": 3,
+        "first_row": 3,
+        "defect": 0,
+        "representation_dimension": 84,
+        "first_row_symmetry_error": 8.563843312570936e-16,
+        "exchange_eigenvalue": 0.0,
+        "exchange_eigen_error": 7.343435057440258e-16,
+        "collective_invariance_error": 1.5263043145882805e-15
+      },
+      {
+        "cell_dimension": 7,
+        "partition": [
+          2,
+          1
+        ],
+        "R": 3,
+        "first_row": 2,
+        "defect": 1,
+        "representation_dimension": 112,
+        "first_row_symmetry_error": 4.506619227333606e-15,
+        "exchange_eigenvalue": 3.0,
+        "exchange_eigen_error": 1.248168891701276e-14,
+        "collective_invariance_error": 6.906691572133557e-15
+      },
+      {
+        "cell_dimension": 7,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "R": 3,
+        "first_row": 1,
+        "defect": 2,
+        "representation_dimension": 35,
+        "first_row_symmetry_error": 0.0,
+        "exchange_eigenvalue": 6.0,
+        "exchange_eigen_error": 9.589185719190714e-15,
+        "collective_invariance_error": 2.779637959941212e-15
+      }
+    ],
+    "scope": "Row-last Young images explicitly retain the same collective representation inside Sym^(R-m) tensor m extra cells."
+  },
+  "large_block_entangled_rounding": {
+    "cases": [
+      {
+        "R": 8,
+        "partition": [
+          7,
+          1
+        ],
+        "ancilla_dimension": 7,
+        "maximally_entangled_local_error": 0.28571428571428575,
+        "R_times_error": 2.285714285714286,
+        "channel_comparison_bound": 1.5666666666666667
+      },
+      {
+        "R": 16,
+        "partition": [
+          15,
+          1
+        ],
+        "ancilla_dimension": 15,
+        "maximally_entangled_local_error": 0.13333333333333336,
+        "R_times_error": 2.1333333333333337,
+        "channel_comparison_bound": 0.8774509803921569
+      },
+      {
+        "R": 32,
+        "partition": [
+          31,
+          1
+        ],
+        "ancilla_dimension": 31,
+        "maximally_entangled_local_error": 0.06451612903225817,
+        "R_times_error": 2.0645161290322616,
+        "channel_comparison_bound": 0.46724598930481287
+      },
+      {
+        "R": 64,
+        "partition": [
+          63,
+          1
+        ],
+        "ancilla_dimension": 63,
+        "maximally_entangled_local_error": 0.031746031746031814,
+        "R_times_error": 2.031746031746036,
+        "channel_comparison_bound": 0.24152097902097913
+      },
+      {
+        "R": 128,
+        "partition": [
+          127,
+          1
+        ],
+        "ancilla_dimension": 127,
+        "maximally_entangled_local_error": 0.01574803149606306,
+        "R_times_error": 2.015748031496072,
+        "channel_comparison_bound": 0.1228421288014312
+      }
+    ],
+    "scope": "Two-cell marginals with a full irrep-dimensional entangled reference. This tests actual 1/R decay, not only a bound exceeding two."
+  },
+  "scalar_bounds": {
+    "cases": [
+      {
+        "cell_dimension": 2,
+        "R": 2,
+        "partitions_checked": 1,
+        "maximum_rescaled_local_error_bound": 4.0,
+        "theorem_constant": 60,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 2,
+        "R": 4,
+        "partitions_checked": 2,
+        "maximum_rescaled_local_error_bound": 8.0,
+        "theorem_constant": 60,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 2,
+        "R": 8,
+        "partitions_checked": 4,
+        "maximum_rescaled_local_error_bound": 16.0,
+        "theorem_constant": 60,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 2,
+        "R": 16,
+        "partitions_checked": 8,
+        "maximum_rescaled_local_error_bound": 22.97420020639835,
+        "theorem_constant": 60,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 2,
+        "R": 32,
+        "partitions_checked": 16,
+        "maximum_rescaled_local_error_bound": 26.04583651642475,
+        "theorem_constant": 60,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 3,
+        "R": 2,
+        "partitions_checked": 1,
+        "maximum_rescaled_local_error_bound": 4.0,
+        "theorem_constant": 72,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 3,
+        "R": 4,
+        "partitions_checked": 3,
+        "maximum_rescaled_local_error_bound": 8.0,
+        "theorem_constant": 72,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 3,
+        "R": 8,
+        "partitions_checked": 9,
+        "maximum_rescaled_local_error_bound": 16.0,
+        "theorem_constant": 72,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 3,
+        "R": 16,
+        "partitions_checked": 29,
+        "maximum_rescaled_local_error_bound": 25.228070175438596,
+        "theorem_constant": 72,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 3,
+        "R": 32,
+        "partitions_checked": 101,
+        "maximum_rescaled_local_error_bound": 29.708683473389357,
+        "theorem_constant": 72,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 7,
+        "R": 2,
+        "partitions_checked": 1,
+        "maximum_rescaled_local_error_bound": 4.0,
+        "theorem_constant": 120,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 7,
+        "R": 4,
+        "partitions_checked": 4,
+        "maximum_rescaled_local_error_bound": 8.0,
+        "theorem_constant": 120,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 7,
+        "R": 8,
+        "partitions_checked": 20,
+        "maximum_rescaled_local_error_bound": 16.0,
+        "theorem_constant": 120,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 7,
+        "R": 16,
+        "partitions_checked": 163,
+        "maximum_rescaled_local_error_bound": 30.806324110671937,
+        "theorem_constant": 120,
+        "minimum_exchange_defect_margin": 0.5
+      },
+      {
+        "cell_dimension": 7,
+        "R": 32,
+        "partitions_checked": 2399,
+        "maximum_rescaled_local_error_bound": 40.88259109311741,
+        "theorem_constant": 120,
+        "minimum_exchange_defect_margin": 0.5
+      }
+    ],
+    "cubic_absorption_factorization": "(3*t - 1)**2*(3*t**2 + 2*t + 1)/4"
+  },
+  "entangled_energy_rounding": {
+    "cases": [
+      {
+        "cell_dimension": 2,
+        "left_partition": [
+          3
+        ],
+        "right_partition": [
+          3
+        ],
+        "defect_sum": 0,
+        "original_energy": 0.6653067457831209,
+        "rounded_energy": 0.6653067457831209,
+        "energy_change": 0.0,
+        "uniform_energy_change_bound": 0.0,
+        "rounded_density_minimum": -1.6792820580975337e-16
+      },
+      {
+        "cell_dimension": 2,
+        "left_partition": [
+          2,
+          1
+        ],
+        "right_partition": [
+          3
+        ],
+        "defect_sum": 1,
+        "original_energy": 0.27382481758821325,
+        "rounded_energy": 0.5675381936389932,
+        "energy_change": 0.2937133760507799,
+        "uniform_energy_change_bound": 98.39999999999999,
+        "rounded_density_minimum": -8.342683293583252e-17
+      },
+      {
+        "cell_dimension": 2,
+        "left_partition": [
+          3
+        ],
+        "right_partition": [
+          2,
+          1
+        ],
+        "defect_sum": 1,
+        "original_energy": 0.0437408282530784,
+        "rounded_energy": 0.02842092197011356,
+        "energy_change": -0.01531990628296484,
+        "uniform_energy_change_bound": 98.39999999999999,
+        "rounded_density_minimum": -8.943993281148917e-17
+      },
+      {
+        "cell_dimension": 2,
+        "left_partition": [
+          2,
+          1
+        ],
+        "right_partition": [
+          2,
+          1
+        ],
+        "defect_sum": 2,
+        "original_energy": 0.19915879395631264,
+        "rounded_energy": 0.5038165127923844,
+        "energy_change": 0.30465771883607173,
+        "uniform_energy_change_bound": 196.79999999999998,
+        "rounded_density_minimum": 0.016728685976355174
+      },
+      {
+        "cell_dimension": 3,
+        "left_partition": [
+          3
+        ],
+        "right_partition": [
+          3
+        ],
+        "defect_sum": 0,
+        "original_energy": 0.32137299770353417,
+        "rounded_energy": 0.32137299770353445,
+        "energy_change": 2.7755575615628914e-16,
+        "uniform_energy_change_bound": 0.0,
+        "rounded_density_minimum": -4.236274396431516e-16
+      },
+      {
+        "cell_dimension": 3,
+        "left_partition": [
+          2,
+          1
+        ],
+        "right_partition": [
+          3
+        ],
+        "defect_sum": 1,
+        "original_energy": 0.21700626572736734,
+        "rounded_energy": 0.3378668139041024,
+        "energy_change": 0.12086054817673506,
+        "uniform_energy_change_bound": 118.08,
+        "rounded_density_minimum": -1.579650207904e-17
+      },
+      {
+        "cell_dimension": 3,
+        "left_partition": [
+          3
+        ],
+        "right_partition": [
+          2,
+          1
+        ],
+        "defect_sum": 1,
+        "original_energy": 0.26127276103657604,
+        "rounded_energy": 0.2558848598304336,
+        "energy_change": -0.005387901206142465,
+        "uniform_energy_change_bound": 118.08,
+        "rounded_density_minimum": -1.4508963539629035e-17
+      },
+      {
+        "cell_dimension": 3,
+        "left_partition": [
+          2,
+          1
+        ],
+        "right_partition": [
+          2,
+          1
+        ],
+        "defect_sum": 2,
+        "original_energy": 0.18403808193093973,
+        "rounded_energy": 0.2581246299200379,
+        "energy_change": 0.07408654798909814,
+        "uniform_energy_change_bound": 236.16,
+        "rounded_density_minimum": 0.0062258990359429795
+      }
+    ],
+    "scope": "The state is entangled between complete collective irreps; only defective blocks are measured and replaced."
+  },
+  "complex_parent_spectra": {
+    "cases": [
+      {
+        "cell_dimension": 2,
+        "R": 3,
+        "blocks": 2,
+        "full_dimension": 64,
+        "per_cell_budget_bound": 1.64,
+        "J": 197.6,
+        "ground_energy": -1.6020480016298249,
+        "collective_ground_energy": -1.6020480016298106,
+        "excluded_gap": 198.35673632504296,
+        "analytical_gap": 0.4,
+        "ground_projection_error": 9.063780924730616e-15
+      },
+      {
+        "cell_dimension": 3,
+        "R": 3,
+        "blocks": 2,
+        "full_dimension": 729,
+        "per_cell_budget_bound": 1.64,
+        "J": 236.96,
+        "ground_energy": -1.5504777060105408,
+        "collective_ground_energy": -1.5504777060105157,
+        "excluded_gap": 237.36573200567787,
+        "analytical_gap": 0.4,
+        "ground_projection_error": 2.217573681985519e-14
+      }
+    ]
+  },
+  "tensor_parent": {
+    "cases": [
+      {
+        "R": 1,
+        "blocks": 2,
+        "cell_basis_dimension": 7,
+        "full_test_dimension": 49,
+        "collective_dimension": 49,
+        "ground_energy": 2.682951730195858,
+        "collective_ground_energy": 2.6829517301958585,
+        "excluded_gap": null,
+        "inactive_gap": null,
+        "analytical_gap": 0.4,
+        "ground_projection_error": 0.0,
+        "eigensolver_residual": 1.0874802028443414e-15,
+        "largest_positive_offdiagonal": 6.684660941124954e-05,
+        "occupation_bound_minimum": 1.5828897528747006,
+        "collective_invariance_error": 0.0,
+        "minimum_cubic_entry": -0.052083333333333315,
+        "maximum_cubic_entry": 0.018042195912175797
+      },
+      {
+        "R": 2,
+        "blocks": 2,
+        "cell_basis_dimension": 7,
+        "full_test_dimension": 2401,
+        "collective_dimension": 784,
+        "ground_energy": 3.1863728747198956,
+        "collective_ground_energy": 3.186372874719116,
+        "excluded_gap": 2766.2498697685205,
+        "inactive_gap": null,
+        "analytical_gap": 0.4,
+        "ground_projection_error": 2.1110240488437333e-14,
+        "eigensolver_residual": 6.204028473590156e-11,
+        "largest_positive_offdiagonal": 3.3423304705624754e-05,
+        "occupation_bound_minimum": 1.6482747561774531,
+        "collective_invariance_error": 4.440892098500626e-14,
+        "minimum_cubic_entry": -0.026041666666666644,
+        "maximum_cubic_entry": 0.009021097956087895
+      },
+      {
+        "R": 2,
+        "blocks": 2,
+        "cell_basis_dimension": 8,
+        "full_test_dimension": 4096,
+        "collective_dimension": 784,
+        "ground_energy": 3.1863728747186766,
+        "collective_ground_energy": 3.1863728747191162,
+        "excluded_gap": 2766.249869764631,
+        "inactive_gap": 2788.7722845895855,
+        "analytical_gap": 0.4,
+        "ground_projection_error": 1.3786217555289375e-14,
+        "eigensolver_residual": 4.0489353172007796e-11,
+        "largest_positive_offdiagonal": 3.3423304705624754e-05,
+        "occupation_bound_minimum": 1.648274756177454,
+        "collective_invariance_error": 4.440892098500626e-14,
+        "minimum_cubic_entry": -0.026041666666666644,
+        "maximum_cubic_entry": 0.009021097956087895
+      }
+    ],
+    "cubic_monomials": 22,
+    "c_star": 2.434834288532753,
+    "chi": 0.003705015162047876,
+    "lambda_guard": 0.256591796875,
+    "alpha_counterterm": 0.625,
+    "a3": 0.0625,
+    "b3": 0.3247595264191645,
+    "per_cell_F_budget": 11.522964830394251,
+    "J": 2766.3115592946206,
+    "inactive_penalty": 2789.7574889554094,
+    "scope": "The actual traceless Einstein cubic extension on a two-site Dirichlet finite-difference patch. This patch is not a physical TT reduction. q=8 exactly collapses nine identical inactive levels to one representative, retaining every inactive-pattern energy but not its multiplicity."
+  },
+  "source_sha256": {
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f",
+    "scripts/tensor_vertex_selection_audit.py": "fc922e3bbed1b04fe91ffe71e4f36b48ef54621648d32daee7a9f4f242eb92bf",
+    "COLLECTIVE_GRAVITY_COUPLING.md": "f869c43ba01ada9de4d83b649ffb530d5bdc540896a4b9a0f9812df3d61898f7",
+    "scripts/collective_gravity_coupling_audit.py": "68caa2fe62fd33c769d3993eee013f91b2e6b2a6c063eff4d46155a090d778cf",
+    "data/collective_gravity_coupling_audit.json": "f16631ba603e376a63a8be8342cee1178cbf1c473446c3a2689713cb41b448be",
+    "SPIN_BLOCK_WAVE_PARENT.md": "ed3ca0eb86604e9334b38d86a1133fe5c59a951fd44f44e424ee5401a67cda05",
+    "scripts/spin_block_wave_parent_audit.py": "d37d6013a0fe327e33d692a95bb2397f4fa9855f5bc9d7a00e232432b6e05750",
+    "scripts/microscopic_spin_two_audit.py": "bbcd8399832d531626a2b60458364f17cdfa96e7366241646b73b430698b1922",
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "SPATIAL_METRIC_VACUUM.md": "ace18b372464f57b7d5bdf97773fac8e6da5319231e1ad99f4815b5bb9914059"
+  },
+  "scope": "For a block-permutation-invariant k-cell Hamiltonian of bounded per-cell norm sum, a sign-independent rounding argument selects symmetric ground sectors with exchange strength independent of block size and volume. Applied to the actual supplied tensor cubic with a three-cell guard, it proves occupation control and the fixed-volume Gaussian limit. A two-helicity gravitational constraint phase, Einstein quartic, nonzero physical coupling limit and TOE remain unproved."
+}

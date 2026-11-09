@@ -1,0 +1,804 @@
+{
+  "exact_identities": {
+    "exact_coherent_recurrences": true,
+    "weighted_least_squares": true,
+    "Einstein_source_bracket": "sqrt(2)*k*(-k**2*q0*qc + 4*p0*pc)/16",
+    "nonterminating_double_bracket": "(k^2/2)f",
+    "selected_quartic_symbol": "hbar*k**4/16896",
+    "source_weights": [
+      "32 k^2",
+      "k^2"
+    ],
+    "scope": "Specified three-pair TT source truncation; exact quadratic Weyl bracket, not full Einstein dynamics"
+  },
+  "coherent_kernels": [
+    {
+      "block_size": 1,
+      "alpha": 0.3,
+      "kernel_residual": 5.13647029835756e-18,
+      "spectrum_error": 9.205582269963029e-18,
+      "normal_gap": 1.1881000000000002,
+      "exact_gap": 1.1881000000000002,
+      "normal_third_moment": 0.08256880733944956,
+      "poisson_upper_bound": 0.11502899999999999
+    },
+    {
+      "block_size": 1,
+      "alpha": 1.0,
+      "kernel_residual": 0.0,
+      "spectrum_error": 0.0,
+      "normal_gap": 4.0,
+      "exact_gap": 4.0,
+      "normal_third_moment": 0.5000000000000001,
+      "poisson_upper_bound": 5.0
+    },
+    {
+      "block_size": 1,
+      "alpha": 3.0,
+      "kernel_residual": 1.1102230246251565e-16,
+      "spectrum_error": 2.220446049250313e-16,
+      "normal_gap": 100.0,
+      "exact_gap": 100.0,
+      "normal_third_moment": 0.8999999999999997,
+      "poisson_upper_bound": 981.0
+    },
+    {
+      "block_size": 2,
+      "alpha": 0.3,
+      "kernel_residual": 5.594519395177741e-17,
+      "spectrum_error": 6.312638987362731e-16,
+      "normal_gap": 1.0920249999999994,
+      "exact_gap": 1.0920249999999998,
+      "normal_third_moment": 0.09725052082140972,
+      "poisson_upper_bound": 0.11502899999999999
+    },
+    {
+      "block_size": 2,
+      "alpha": 1.0,
+      "kernel_residual": 0.0,
+      "spectrum_error": 0.0,
+      "normal_gap": 2.25,
+      "exact_gap": 2.25,
+      "normal_third_moment": 1.3333333333333337,
+      "poisson_upper_bound": 5.0
+    },
+    {
+      "block_size": 2,
+      "alpha": 3.0,
+      "kernel_residual": 0.0,
+      "spectrum_error": 2.220446049250313e-16,
+      "normal_gap": 30.25,
+      "exact_gap": 30.25,
+      "normal_third_moment": 5.652892561983474,
+      "poisson_upper_bound": 981.0
+    },
+    {
+      "block_size": 5,
+      "alpha": 0.3,
+      "kernel_residual": 5.598695219502775e-17,
+      "spectrum_error": 1.0665900486131713e-15,
+      "normal_gap": 1.0363239999999996,
+      "exact_gap": 1.036324,
+      "normal_third_moment": 0.10749894126685305,
+      "poisson_upper_bound": 0.11502899999999999
+    },
+    {
+      "block_size": 5,
+      "alpha": 1.0,
+      "kernel_residual": 3.254673074712915e-17,
+      "spectrum_error": 9.923510643927627e-16,
+      "normal_gap": 1.439999999999999,
+      "exact_gap": 1.44,
+      "normal_third_moment": 2.777777777777777,
+      "poisson_upper_bound": 5.0
+    },
+    {
+      "block_size": 5,
+      "alpha": 3.0,
+      "kernel_residual": 3.3438110788595377e-16,
+      "spectrum_error": 5.146859169718955e-15,
+      "normal_gap": 7.839999999999999,
+      "exact_gap": 7.839999999999999,
+      "normal_third_moment": 43.95043731778424,
+      "poisson_upper_bound": 981.0
+    },
+    {
+      "block_size": 12,
+      "alpha": 0.3,
+      "kernel_residual": 6.802163179385092e-20,
+      "spectrum_error": 4.5018576453975155e-15,
+      "normal_gap": 1.0150562500000002,
+      "exact_gap": 1.0150562500000002,
+      "normal_third_moment": 0.1118191524149878,
+      "poisson_upper_bound": 0.11502899999999999
+    },
+    {
+      "block_size": 12,
+      "alpha": 1.0,
+      "kernel_residual": 1.9484179900674506e-16,
+      "spectrum_error": 5.193973951659103e-15,
+      "normal_gap": 1.1736111111111116,
+      "exact_gap": 1.173611111111111,
+      "normal_third_moment": 3.8670914883932657,
+      "poisson_upper_bound": 5.0
+    },
+    {
+      "block_size": 12,
+      "alpha": 3.0,
+      "kernel_residual": 3.6111675757370774e-16,
+      "spectrum_error": 1.123796903268197e-14,
+      "normal_gap": 3.062499999999994,
+      "exact_gap": 3.0625,
+      "normal_third_moment": 181.78425655976667,
+      "poisson_upper_bound": 981.0
+    }
+  ],
+  "microscopic_budgets": [
+    {
+      "block_size": 1,
+      "c_monomials": 3,
+      "normal_term_support_bound": 10,
+      "scaled_D_budget": 1.2974489964769633,
+      "uniform_D_budget": 2.629781588671848,
+      "total_parent_budget": 4.229781588671848,
+      "scope": "Conservative absolute-monomial norm sums, including repeated microscopic indices"
+    },
+    {
+      "block_size": 2,
+      "c_monomials": 42,
+      "normal_term_support_bound": 10,
+      "scaled_D_budget": 0.5450743652343749,
+      "uniform_D_budget": 2.629781588671848,
+      "total_parent_budget": 4.229781588671848,
+      "scope": "Conservative absolute-monomial norm sums, including repeated microscopic indices"
+    },
+    {
+      "block_size": 3,
+      "c_monomials": 273,
+      "normal_term_support_bound": 10,
+      "scaled_D_budget": 0.2941250111164086,
+      "uniform_D_budget": 2.629781588671848,
+      "total_parent_budget": 4.229781588671848,
+      "scope": "Conservative absolute-monomial norm sums, including repeated microscopic indices"
+    },
+    {
+      "block_size": 5,
+      "c_monomials": 3255,
+      "normal_term_support_bound": 10,
+      "scaled_D_budget": 0.1318548590296339,
+      "uniform_D_budget": 2.629781588671848,
+      "total_parent_budget": 4.229781588671848,
+      "scope": "Conservative absolute-monomial norm sums, including repeated microscopic indices"
+    }
+  ],
+  "full_spin_selection": [
+    {
+      "block_size": 1,
+      "full_dimension": 8,
+      "symmetric_dimension": 8,
+      "kernel_dimension": 4,
+      "normal_gap": 1.03085947265625,
+      "physical_ground_energy": 0.010621369834042493,
+      "excluded_sector_gap": null,
+      "required_excluded_gap": 1.0,
+      "exchange": 4062.5903251249742,
+      "sector_leakage": 0.0
+    },
+    {
+      "block_size": 2,
+      "full_dimension": 64,
+      "symmetric_dimension": 27,
+      "kernel_dimension": 9,
+      "normal_gap": 0.9999999999999986,
+      "physical_ground_energy": 0.015948162840372843,
+      "excluded_sector_gap": 4062.6133316046185,
+      "required_excluded_gap": 1.0,
+      "exchange": 4062.5903251249742,
+      "sector_leakage": 3.3778377538190714e-13
+    },
+    {
+      "block_size": 3,
+      "full_dimension": 512,
+      "symmetric_dimension": 64,
+      "kernel_dimension": 16,
+      "normal_gap": 1.0011345808952756,
+      "physical_ground_energy": 0.019163435404308544,
+      "excluded_sector_gap": 4062.5971708386087,
+      "required_excluded_gap": 1.0,
+      "exchange": 4062.5903251249742,
+      "sector_leakage": 2.8456112257590533e-12
+    }
+  ],
+  "control_quantum_limit": [
+    {
+      "block_size": 4,
+      "full_symmetric_dimension": 125,
+      "eigenvalues": [
+        0.021364695260676747,
+        1.0353447323592453,
+        1.035344732359246
+      ],
+      "kernel_compression_eigenvalues": [
+        0.033018543680111784,
+        1.0532510689239483,
+        1.0532510689239485
+      ],
+      "limiting_eigenvalues": [
+        0.034183366069626464,
+        1.0745168755500247,
+        1.0745168755500267
+      ],
+      "max_error": 0.03917214319078077,
+      "ground_fast_expectation": 0.0018693549758464119,
+      "residual": 6.075868920974292e-15,
+      "canonical_cutoff_comparison": 2.9066526963106298e-11,
+      "scope": "Full three-spin-block symmetric spectrum, not a global-particle truncation; canonical cutoff comparison is not an interval bound"
+    },
+    {
+      "block_size": 8,
+      "full_symmetric_dimension": 729,
+      "eigenvalues": [
+        0.02601377430995455,
+        1.0492753973769329,
+        1.0492753973769338
+      ],
+      "kernel_compression_eigenvalues": [
+        0.03347814249748479,
+        1.06306295855,
+        1.0630629585500007
+      ],
+      "limiting_eigenvalues": [
+        0.034183366069626464,
+        1.0745168755500247,
+        1.0745168755500267
+      ],
+      "max_error": 0.025241478173092968,
+      "ground_fast_expectation": 0.0007148971807314809,
+      "residual": 1.028015486329751e-13,
+      "canonical_cutoff_comparison": 2.9066526963106298e-11,
+      "scope": "Full three-spin-block symmetric spectrum, not a global-particle truncation; canonical cutoff comparison is not an interval bound"
+    },
+    {
+      "block_size": 12,
+      "full_symmetric_dimension": 2197,
+      "eigenvalues": [
+        0.028154663795135204,
+        1.0557265181100164,
+        1.055726518110018
+      ],
+      "kernel_compression_eigenvalues": [
+        0.03368203802232836,
+        1.066659332804537,
+        1.066659332804538
+      ],
+      "limiting_eigenvalues": [
+        0.034183366069626464,
+        1.0745168755500247,
+        1.0745168755500267
+      ],
+      "max_error": 0.018790357440008787,
+      "ground_fast_expectation": 0.000379418841663278,
+      "residual": 4.041153702935311e-13,
+      "canonical_cutoff_comparison": 2.9066526963106298e-11,
+      "scope": "Full three-spin-block symmetric spectrum, not a global-particle truncation; canonical cutoff comparison is not an interval bound"
+    },
+    {
+      "block_size": 20,
+      "full_symmetric_dimension": 9261,
+      "eigenvalues": [
+        0.03021156959841398,
+        1.0619984502946278,
+        1.0619984502946302
+      ],
+      "kernel_compression_eigenvalues": [
+        0.03386662095642981,
+        1.0696865670619222,
+        1.0696865670619253
+      ],
+      "limiting_eigenvalues": [
+        0.034183366069626464,
+        1.0745168755500247,
+        1.0745168755500267
+      ],
+      "max_error": 0.012518425255396926,
+      "ground_fast_expectation": 0.00016084775584795073,
+      "residual": 9.269652588475765e-13,
+      "canonical_cutoff_comparison": 2.9066526963106298e-11,
+      "scope": "Full three-spin-block symmetric spectrum, not a global-particle truncation; canonical cutoff comparison is not an interval bound"
+    },
+    {
+      "block_size": 28,
+      "full_symmetric_dimension": 24389,
+      "eigenvalues": [
+        0.031216656931269543,
+        1.0651032611133728,
+        1.06510326111338
+      ],
+      "kernel_compression_eigenvalues": [
+        0.0339520343368481,
+        1.0710293169149834,
+        1.0710293169149845
+      ],
+      "limiting_eigenvalues": [
+        0.034183366069626464,
+        1.0745168755500247,
+        1.0745168755500267
+      ],
+      "max_error": 0.009413614436651896,
+      "ground_fast_expectation": 8.875373569052774e-05,
+      "residual": 4.243023940928647e-12,
+      "canonical_cutoff_comparison": 2.9066526963106298e-11,
+      "scope": "Full three-spin-block symmetric spectrum, not a global-particle truncation; canonical cutoff comparison is not an interval bound"
+    }
+  ],
+  "source_curvature": [
+    {
+      "block_size": 1,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.06,
+      "band_eigenvalues": [
+        2.573602291961339e-05,
+        2.573602291961339e-05,
+        0.00010186121663851127,
+        0.00010186121663851127
+      ],
+      "scaled_band_eigenvalues": [
+        1.9858042376244902,
+        1.9858042376244902,
+        7.859661777662907,
+        7.859661777662907
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.19948100820959339,
+      "first_excluded_energy": 1.0000127760229192,
+      "repaired_band_eigenvalues": [
+        -3.8622848983174193e-16,
+        1.0335027746383213e-16,
+        1.0335027746383213e-16,
+        5.929290447594062e-16
+      ],
+      "uncorrected_order_two_commutator_norm": 12.649110640673518,
+      "repaired_order_two_commutator_norm": 0.0,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 1,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.03,
+      "band_eigenvalues": [
+        1.6170944574826072e-06,
+        1.6170944574826072e-06,
+        6.451029989122737e-06,
+        6.451029989632115e-06
+      ],
+      "scaled_band_eigenvalues": [
+        1.996412910472355,
+        1.996412910472355,
+        7.964234554472516,
+        7.9642345551013785
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.05083373451886558,
+      "first_excluded_energy": 1.0000008070944573,
+      "repaired_band_eigenvalues": [
+        -2.4499549482188463e-16,
+        8.377515924045118e-18,
+        8.377515924045118e-18,
+        2.617505266699748e-16
+      ],
+      "uncorrected_order_two_commutator_norm": 12.649110640673518,
+      "repaired_order_two_commutator_norm": 0.0,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 1,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.015,
+      "band_eigenvalues": [
+        1.012044785919255e-07,
+        1.012044785919255e-07,
+        4.0454512196917837e-07,
+        4.0454512196917837e-07
+      ],
+      "scaled_band_eigenvalues": [
+        1.9991008116923559,
+        1.9991008116923559,
+        7.991014754946734,
+        7.991014754946734
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.012770526087816472,
+      "first_excluded_energy": 1.0000000505794775,
+      "repaired_band_eigenvalues": [
+        -2.4845143532948695e-16,
+        -2.4845143532948695e-16,
+        -1.2601550626728581e-17,
+        -1.2601550626728581e-17
+      ],
+      "uncorrected_order_two_commutator_norm": 12.649110640673518,
+      "repaired_order_two_commutator_norm": 0.0,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.06,
+      "band_eigenvalues": [
+        2.5647891878457494e-05,
+        2.564789187910361e-05,
+        0.00010099557971892628,
+        0.00010099557971957239
+      ],
+      "scaled_band_eigenvalues": [
+        1.9790040029673996,
+        1.9790040030172542,
+        7.792868805472708,
+        7.792868805522562
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.2944288152553117,
+      "first_excluded_energy": 0.9915456460102654,
+      "repaired_band_eigenvalues": [
+        7.048465215246757e-08,
+        7.048465258693848e-08,
+        6.967593105417048e-07,
+        6.967593109761758e-07
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 3.8107101412571066e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.03,
+      "band_eigenvalues": [
+        1.6157087904055534e-06,
+        1.6157087904055534e-06,
+        6.437235888573498e-06,
+        6.4372358892671474e-06
+      ],
+      "scaled_band_eigenvalues": [
+        1.9947022103772267,
+        1.9947022103772267,
+        7.947204800708024,
+        7.947204801564381
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.07503865134655929,
+      "first_excluded_energy": 0.997814663974887,
+      "repaired_band_eigenvalues": [
+        1.1084638941251318e-09,
+        1.10846427240789e-09,
+        1.1052570380208376e-08,
+        1.1052572649904924e-08
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 3.8107101412571066e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.015,
+      "band_eigenvalues": [
+        1.0118279323454536e-07,
+        1.0118279323454536e-07,
+        4.0432851631001224e-07,
+        4.04328517598669e-07
+      ],
+      "scaled_band_eigenvalues": [
+        1.9986724589539828,
+        1.9986724589539828,
+        7.986736124642219,
+        7.986736150097167
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.01885165335479142,
+      "first_excluded_energy": 0.9994489118860658,
+      "repaired_band_eigenvalues": [
+        1.7347828800354935e-11,
+        1.7348215953920134e-11,
+        1.733498092819423e-10,
+        1.733521322033335e-10
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 3.8107101412571066e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 8,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.06,
+      "band_eigenvalues": [
+        2.566227514559925e-05,
+        2.566227514559925e-05,
+        0.00010113720145973819,
+        0.00010113720145973819
+      ],
+      "scaled_band_eigenvalues": [
+        1.9801138229629054,
+        1.9801138229629054,
+        7.803796408930418,
+        7.803796408930418
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.27889535380049235,
+      "first_excluded_energy": 0.9883664933322611,
+      "repaired_band_eigenvalues": [
+        1.0319192880994948e-07,
+        1.0319192880994948e-07,
+        1.0231081026673116e-06,
+        1.023108103527648e-06
+      ],
+      "uncorrected_order_two_commutator_norm": 23.717082451262844,
+      "repaired_order_two_commutator_norm": 6.698243350643887e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 8,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.03,
+      "band_eigenvalues": [
+        1.615936556817929e-06,
+        1.615936557857147e-06,
+        6.4395044763260565e-06,
+        6.4395044773652745e-06
+      ],
+      "scaled_band_eigenvalues": [
+        1.994983403478925,
+        1.9949834047619102,
+        7.950005526328466,
+        7.950005527611451
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.07105791395432873,
+      "first_excluded_energy": 0.9969842835600421,
+      "repaired_band_eigenvalues": [
+        1.6208437151603395e-09,
+        1.6208445882732968e-09,
+        1.61735944972547e-08,
+        1.617359537036766e-08
+      ],
+      "uncorrected_order_two_commutator_norm": 23.717082451262844,
+      "repaired_order_two_commutator_norm": 6.698243350643887e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 8,
+      "normal_weights": [
+        1.0,
+        1.0
+      ],
+      "lambda_value": 0.015,
+      "band_eigenvalues": [
+        1.0118636371239535e-07,
+        1.011863649011793e-07,
+        4.0436419062434847e-07,
+        4.0436419062434847e-07
+      ],
+      "scaled_band_eigenvalues": [
+        1.9987429869115134,
+        1.9987430103936656,
+        7.987440802456267,
+        7.987440802456267
+      ],
+      "target_curvature_eigenvalues": [
+        2.0,
+        2.0,
+        8.0,
+        8.0
+      ],
+      "effective_coefficient_error": 0.017850125788347895,
+      "first_excluded_energy": 0.9992390488623244,
+      "repaired_band_eigenvalues": [
+        2.5358550892539546e-11,
+        2.5360876271141092e-11,
+        2.5345261253972565e-10,
+        2.5345338766592616e-10
+      ],
+      "uncorrected_order_two_commutator_norm": 23.717082451262844,
+      "repaired_order_two_commutator_norm": 6.698243350643887e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        2.3
+      ],
+      "lambda_value": 0.06,
+      "band_eigenvalues": [
+        3.5752754489606316e-05,
+        3.575275449039522e-05,
+        0.00014112075111425516,
+        0.00014112075111504408
+      ],
+      "scaled_band_eigenvalues": [
+        2.758700192099253,
+        2.7587001921601257,
+        10.88894684523574,
+        10.888946845296614
+      ],
+      "target_curvature_eigenvalues": [
+        2.7878787878787876,
+        2.7878787878787876,
+        11.15151515151515,
+        11.15151515151515
+      ],
+      "effective_coefficient_error": 0.3736134523711422,
+      "first_excluded_energy": 1.0023276191564512,
+      "repaired_band_eigenvalues": [
+        1.0954966768054797e-07,
+        1.0954966833189656e-07,
+        6.595155139856577e-07,
+        6.595155146370063e-07
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 4.6650839618999105e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        2.3
+      ],
+      "lambda_value": 0.03,
+      "band_eigenvalues": [
+        2.2522193661317314e-06,
+        2.2522193661317314e-06,
+        8.978562798897771e-06,
+        8.97856279966111e-06
+      ],
+      "scaled_band_eigenvalues": [
+        2.780517735965101,
+        2.780517735965101,
+        11.084645430737991,
+        11.084645431680384
+      ],
+      "target_curvature_eigenvalues": [
+        2.7878787878787876,
+        2.7878787878787876,
+        11.15151515151515,
+        11.15151515151515
+      ],
+      "effective_coefficient_error": 0.09513931447171642,
+      "first_excluded_energy": 1.0005954226743645,
+      "repaired_band_eigenvalues": [
+        1.7220990142561245e-09,
+        1.7220990142561245e-09,
+        1.0464506548372456e-08,
+        1.0464507849787844e-08
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 4.6650839618999105e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    },
+    {
+      "block_size": 3,
+      "normal_weights": [
+        1.0,
+        2.3
+      ],
+      "lambda_value": 0.015,
+      "band_eigenvalues": [
+        1.4104298771957549e-07,
+        1.4104298771957549e-07,
+        5.636951437548038e-07,
+        5.636951444012864e-07
+      ],
+      "scaled_band_eigenvalues": [
+        2.786034325324948,
+        2.786034325324948,
+        11.13471888898378,
+        11.134718901753807
+      ],
+      "target_curvature_eigenvalues": [
+        2.7878787878787876,
+        2.7878787878787876,
+        11.15151515151515,
+        11.15151515151515
+      ],
+      "effective_coefficient_error": 0.02389628685158643,
+      "first_excluded_energy": 1.0001497130721635,
+      "repaired_band_eigenvalues": [
+        2.6947507837232046e-11,
+        2.6948816717187757e-11,
+        1.641371059550649e-10,
+        1.6413906927499843e-10
+      ],
+      "uncorrected_order_two_commutator_norm": 14.054567378526128,
+      "repaired_order_two_commutator_norm": 4.6650839618999105e-15,
+      "scope": "Bounded four-dimensional source space; exact complete two-normal-block matrices"
+    }
+  ],
+  "source_sha256": {
+    "POLYNOMIAL_SPIN_CONSTRAINTS.md": "9fe5f2d72a88cf221e96e6ae4b1e12fddb7d5f66fa61dc1ed47afce811fae566",
+    "scripts/polynomial_spin_constraints_audit.py": "4b546df38eafc4f0531afdffccabd3245a332abe04a8fa2959a3f81db0d897c1",
+    "COVARIANT_CONSTRAINT_TRANSPORT.md": "a0b85d3ec2a97340f210bc43a5beb123eebe075654a33f76485e5f1d34d4dab0",
+    "scripts/covariant_constraint_transport_audit.py": "bd4183bd0dac8ae74ae40bcd6b5354a7d5342aefb31f9556dd7bc4de73157506",
+    "data/covariant_constraint_transport_audit.json": "b23d510cca3aa894158c0e1c8a9799601ae9f02f91aec4a2d4582fb5f5960ea6",
+    "NONLINEAR_CONSTRAINT_DRESSING.md": "2f9984fd2982ff15a8f9475dd71d8fc980ac7eaeaa88a3d8f4774323209f6f24",
+    "data/nonlinear_constraint_dressing_audit.json": "65097fc969d437857a22b4143de015a54e110c15256a8bfc9188cd3a82739dc0",
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f",
+    "HOLOMORPHIC_TENSOR_PHASE.md": "071b05e1667061a5f8994031615b4c68e323b832d1afb2dc605846a2b781c76b",
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea"
+  },
+  "scope": {
+    "proved": "Fixed-ten-qubit commuting-source nonlinear control with bounded strength and a three-block quantum limit; R-independent fourth-order source-curvature energy",
+    "not_proved": [
+      "All-order compatible Einstein sources",
+      "covariant finite-body tensor parent",
+      "Einstein clock algebra",
+      "physical Newton constant",
+      "joint spatial continuum",
+      "TOE"
+    ],
+    "warning": "The control keeps a geometric mass term and an added stabilizing interaction; neither is a derived Einstein model"
+  }
+}

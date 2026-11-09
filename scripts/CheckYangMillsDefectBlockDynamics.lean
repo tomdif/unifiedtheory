@@ -1,0 +1,47 @@
+import UnifiedTheory.Clay.YangMills.CompactWeightedCenter
+import UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss
+import UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder
+import UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactWeightedCenter.center_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.Supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.supported_mono
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.reference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.supported_fiber
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.supported_update
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.haar_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.variance_le_haar
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.weight_ratio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.conditional_ratio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.fiber_center_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.variance_le_heatBath
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.heatBath_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLocalBlockCoercivity.variance_le_transferEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.positive_contraction_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.normalized_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.normalized_norm_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.weighted_embedding_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.weighted_embedding_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.mass_step_le_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.transferEnergy_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalEnergyLoss.transferEnergy_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder.total_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder.variance_approximation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder.heatBath_approximation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockVarianceRemainder.approximate_local_coercivity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.price_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.price_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.local_variance_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.local_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.approximate_variance_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.approximation_error_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.defectBlock
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.defectBlock_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.bump_local
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.bump_variance_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDefectBlockDynamics.bump_heatBath_positive

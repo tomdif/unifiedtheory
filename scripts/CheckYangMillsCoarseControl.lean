@@ -1,0 +1,74 @@
+import UnifiedTheory.Clay.YangMills.ContactScaleBarrier
+import UnifiedTheory.Clay.YangMills.GibbsMixedInteraction
+import UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation
+import UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity
+import UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance
+
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.fourth_factor_eq
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.order_factor_eq
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.stage_factor_lower
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.accumulated_factor_lower
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.fixed_order_factor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.accumulated_factor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.accumulated_factor_not_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.weighted_displacement_bound
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.weighted_displacement_subtraction_bound
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.weighted_displacement_sum_bound
+#print axioms UnifiedTheory.Clay.YangMills.ContactScaleBarrier.subtraction_tendsto_of_weighted_moments
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.freeEnergy
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.mixed
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.log_difference_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.mixed_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.freeEnergy_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.rectangle_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsMixedInteraction.nextFactor_rectangle_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radialPotential
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radialPotential_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radial_correction_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.cosine_remainder
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.rotor
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.rotor_norm
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.alignedSum
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.alignedRadius
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.starPotential
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.starPotential_integral
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.starPotential_radial
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radius_le_six
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radius_defect_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radius_square
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radius_quadratic_error
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.radius_zero
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.scaled_star_error
+#print axioms UnifiedTheory.Clay.YangMills.SU2AlignedGaussianApproximation.scaled_star_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.mean_add
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_symm
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_add_left
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_add_right
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_smul_left
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_add_self
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.perpendicular_covariance
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.radial_perpendicular_zero
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.perpendicular_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.floorConstant
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.floorConstant_pos
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.floorConstant_le
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_exponential_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_global_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.covariance_six_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.SU2CovarianceEllipticity.wilson_conditional_source_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.covariance_interval
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.coarseCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.coarseCovariance_eq_retained
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.coarseCovariance_kernel_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.retained_self_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.coarse_self_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.final_le_coarse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.repair_eq_remainder
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.growing_coarse_repair_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.growing_real_coarse_repair_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.repairedCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.repaired_limit_iff_coarse_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoarseCovariance.repaired_diagonal_limit_nonneg

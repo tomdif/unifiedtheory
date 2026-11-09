@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "source_paper": "https://arxiv.org/abs/2610.29019v2",
+  "coefficient": "[t^4] d_t log W_+(tA) = 5 [t^5] log W_+(tA)",
+  "spacing": "ell=2pi, a=2pi/N, antiperiodic fourth/time direction",
+  "fourier_terms": [
+    {
+      "component": 0,
+      "frequency": [
+        1,
+        0
+      ],
+      "real": -0.0,
+      "imag": -0.05
+    },
+    {
+      "component": 0,
+      "frequency": [
+        1,
+        1
+      ],
+      "real": 0.02,
+      "imag": 0.0
+    },
+    {
+      "component": 1,
+      "frequency": [
+        0,
+        1
+      ],
+      "real": -0.0,
+      "imag": -0.035
+    },
+    {
+      "component": 1,
+      "frequency": [
+        2,
+        -1
+      ],
+      "real": 0.015,
+      "imag": 0.0
+    },
+    {
+      "component": 2,
+      "frequency": [
+        1,
+        0
+      ],
+      "real": 0.045,
+      "imag": 0.0
+    },
+    {
+      "component": 2,
+      "frequency": [
+        1,
+        1
+      ],
+      "real": -0.0,
+      "imag": -0.03
+    },
+    {
+      "component": 3,
+      "frequency": [
+        0,
+        1
+      ],
+      "real": 0.04,
+      "imag": 0.0
+    },
+    {
+      "component": 3,
+      "frequency": [
+        2,
+        -1
+      ],
+      "real": -0.0,
+      "imag": -0.025
+    }
+  ],
+  "supplied_generation_fifth_charge_moment": 4320,
+  "completed_measure_phase_included": false,
+  "uniform_continuum_comparison_proved": false,
+  "position_space_control": {
+    "passed": true,
+    "amplitude": 0.4,
+    "current_error": 1.5993360207877824e-16,
+    "dense_current_real": 0.037781223969642924,
+    "dense_current_imag": 4.163336342344337e-17
+  },
+  "continuum": [
+    {
+      "cutoff": 4,
+      "current_t4_real": 1.5617169965001163e-21,
+      "current_t4_imag": 8.389418371963544e-06,
+      "log_weight_t5_real": 3.1234339930002327e-22,
+      "log_weight_t5_imag": 1.6778836743927087e-06,
+      "seconds": 0.14385676383972168,
+      "evidence": "final-curved-standard.json.gz"
+    },
+    {
+      "cutoff": 8,
+      "current_t4_real": -5.1864224407074835e-22,
+      "current_t4_imag": 9.077499608328864e-06,
+      "log_weight_t5_real": -1.0372844881414968e-22,
+      "log_weight_t5_imag": 1.8154999216657728e-06,
+      "seconds": 1.5606839656829834,
+      "evidence": "final-curved-standard.json.gz"
+    },
+    {
+      "cutoff": 12,
+      "current_t4_real": 2.062988447707251e-21,
+      "current_t4_imag": 9.219302461373373e-06,
+      "log_weight_t5_real": 4.125976895414502e-22,
+      "log_weight_t5_imag": 1.8438604922746747e-06,
+      "seconds": 6.9813549518585205,
+      "evidence": "final-curved-standard.json.gz"
+    },
+    {
+      "cutoff": 16,
+      "current_t4_real": 1.4781717546322605e-21,
+      "current_t4_imag": 9.269356777496443e-06,
+      "log_weight_t5_real": 2.9563435092645207e-22,
+      "log_weight_t5_imag": 1.8538713554992886e-06,
+      "seconds": 20.923985242843628,
+      "evidence": "final-curved-standard.json.gz"
+    },
+    {
+      "cutoff": 24,
+      "current_t4_real": -7.702085478634379e-22,
+      "current_t4_imag": 9.305120343030635e-06,
+      "log_weight_t5_real": -1.5404170957268757e-22,
+      "log_weight_t5_imag": 1.8610240686061272e-06,
+      "seconds": 101.16831111907959,
+      "evidence": "final-curved-high-cutoff.json.gz"
+    },
+    {
+      "cutoff": 32,
+      "current_t4_real": -7.203192171688334e-22,
+      "current_t4_imag": 9.317613113876459e-06,
+      "log_weight_t5_real": -1.4406384343376668e-22,
+      "log_weight_t5_imag": 1.8635226227752917e-06,
+      "seconds": 310.91046380996704,
+      "evidence": "final-curved-high-cutoff.json.gz"
+    }
+  ],
+  "overlap": [
+    {
+      "n": 4,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -9.242823520438925e-18,
+      "current_t4_imag": 1.8815783317969667e-05,
+      "log_weight_t5_real": -1.848564704087785e-18,
+      "log_weight_t5_imag": 3.7631566635939334e-06,
+      "seconds": 0.5508651733398438,
+      "evidence": "final-curved-standard.json.gz",
+      "relative_difference_from_cutoff_32": 1.019378041136721
+    },
+    {
+      "n": 6,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -3.642919299551295e-17,
+      "current_t4_imag": 1.8874640307498317e-05,
+      "log_weight_t5_real": -7.28583859910259e-18,
+      "log_weight_t5_imag": 3.774928061499663e-06,
+      "seconds": 9.318564176559448,
+      "evidence": "final-curved-standard.json.gz",
+      "relative_difference_from_cutoff_32": 1.0256947865101682
+    },
+    {
+      "n": 8,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -5.180995606493544e-16,
+      "current_t4_imag": 1.4852854415218358e-05,
+      "log_weight_t5_real": -1.0361991212987087e-16,
+      "log_weight_t5_imag": 2.9705708830436717e-06,
+      "seconds": 73.24026989936829,
+      "evidence": "final-curved-standard.json.gz",
+      "relative_difference_from_cutoff_32": 0.5940621523658693
+    },
+    {
+      "n": 10,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -9.020562075079397e-17,
+      "current_t4_imag": 1.2889864516921895e-05,
+      "log_weight_t5_real": -1.8041124150158794e-17,
+      "log_weight_t5_imag": 2.577972903384379e-06,
+      "seconds": 376.1646521091461,
+      "evidence": "overlap_refined.log.gz",
+      "source_snapshot": "overlap_refined.py.gz",
+      "relative_difference_from_cutoff_32": 0.38338696395597094
+    },
+    {
+      "n": 12,
+      "angles": 12,
+      "radius": 1.0,
+      "jobs": 6,
+      "current_t4_real": 3.3885383648318834e-16,
+      "current_t4_imag": 1.175813513179351e-05,
+      "log_weight_t5_real": 6.777076729663767e-17,
+      "log_weight_t5_imag": 2.351627026358702e-06,
+      "seconds": 278.85412096977234,
+      "evidence": "final-curved-n12.json.gz",
+      "relative_difference_from_cutoff_32": 0.26192566573540704
+    }
+  ],
+  "source_sha256": {
+    "scripts/chiral_curved_response.py": "126cd8457daa7154170bfbd52c299e4e568ce4b636af0fff765bf7db2819d29b",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded"
+  },
+  "collection_scope": "Completed numerical rows from recorded production and exploratory runs; no continuum-limit theorem.",
+  "extraction_controls": [
+    {
+      "n": 4,
+      "angles": 16,
+      "radius": 1.0,
+      "current_t4_real": -8.543513119185775e-17,
+      "current_t4_imag": 1.8815783395366957e-05,
+      "log_weight_t5_real": -1.708702623837155e-17,
+      "log_weight_t5_imag": 3.7631566790733915e-06,
+      "seconds": 0.7364883422851562
+    },
+    {
+      "n": 4,
+      "angles": 16,
+      "radius": 0.7,
+      "current_t4_real": 1.7520707107365752e-16,
+      "current_t4_imag": 1.8815783395069452e-05,
+      "log_weight_t5_real": 3.50414142147315e-17,
+      "log_weight_t5_imag": 3.7631566790138904e-06,
+      "seconds": 0.7216062545776367
+    }
+  ],
+  "parallel_control": [
+    {
+      "n": 4,
+      "angles": 12,
+      "radius": 1.0,
+      "jobs": 2,
+      "current_t4_real": -4.85722573273506e-17,
+      "current_t4_imag": 1.8815783318023444e-05,
+      "log_weight_t5_real": -9.714451465470119e-18,
+      "log_weight_t5_imag": 3.7631566636046886e-06,
+      "seconds": 0.7913417816162109
+    }
+  ],
+  "continuum_last_cutoff_difference": 1.2492770845823508e-08,
+  "provenance": {
+    "directory": "data/chiral_continuum_comparison_evidence",
+    "source_versions": {
+      "chiral_curved_response_initial.py.gz": "K=24,32 and N=4 16-angle run",
+      "chiral_curved_response_serial.py.gz": "K=4,8,12,16 and N=4,6,8; radius check",
+      "scripts/chiral_curved_response.py": "N=12 parallel run and parallel control",
+      "overlap_refined.py.gz": "N=10 recorded complete; unrecorded N=12 was stopped and replaced by the production parallel run"
+    },
+    "prototype_dependency": "curved_probe.py.gz supplies constants and definitions; its asymmetric continuum results are excluded",
+    "prototype_refactor_check": "N=4 16-angle values agree within 1e-15 between exploratory and production implementations"
+  },
+  "current_production_source_sha256": {
+    "scripts/chiral_curved_response.py": "e24999387b015e37aa0775741d0d05f8c7277a63f2314d6ecea42c09890d8507",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded"
+  },
+  "evidence_sha256": {
+    "chiral_curved_response_initial.py.gz": "907a8857a3cbe5bbabf0ec79b5391147405a465c2a655cc78786b93cdd997710",
+    "chiral_curved_response_serial.py.gz": "1311483ddf1ead752437c6c76b2104a219b32ba37acb13521adfe3b938140974",
+    "continuum_symmetric.log.gz": "a7ec2356a284ff4872f23547dc0a47286c57d3755637c75f61abf0212e67e1d8",
+    "continuum_symmetric.py.gz": "2c80eb325f0bc88522274105951a571060b96284a815ad60eb5f5e00c7a04778",
+    "curved_probe.py.gz": "ab6e02e70266853a72fa4c97817b1c1ca54ad468d12bc7c0fd49b7b61bf28c6a",
+    "final-curved-high-cutoff.json.gz": "77f10a66c922ef160b4a46e0149f841880887f8a4e4633baf2967699eb2c5fb2",
+    "final-curved-n12.json.gz": "bbd1d1d976c101702a6b01d75eeddb454b63f7a34323c5f9e5f8584b0a692ed3",
+    "final-curved-radius.json.gz": "ccd694a8319ef2d80187fb5d3d08563010e527035ae0460859aeb64be359eae1",
+    "final-curved-standard.json.gz": "489d3bc271758faeb38b1d7b80d594b2aa33dc1b60d1c913958cdf931da4b056",
+    "lean-axioms.log.gz": "e26d1943a5f1032d9b1e64f403877678862a7387eb071457d9926f7e00657bf9",
+    "lean-build.log.gz": "b83639f6899d7894e7e3f1013c2bc587089c97ea8edbadf477d09d869019e189",
+    "overlap_probe.log.gz": "b0f4af29f5bbfcb8b028ae79346b2bc1b1ffec3d7db99423ed4aa67b2a767018",
+    "overlap_probe.py.gz": "90157f7e8fafb3920562882eb4ab3a7957890fc4e85109cb9a1ba0b710a0513b",
+    "overlap_refined.log.gz": "6be664452cfc7047d61bb1df964e4c9d7654564f1a3126321ef56a613a6f7d4c",
+    "overlap_refined.py.gz": "64af0454480ef8b3e74ce53e11d94830a4dc31b0f1e6cfcfa3afe82d7e26cdae",
+    "parallel-control.json.gz": "80993b61be30ba9e96bd572c7dd8b75b2ca1375f0381c12774a5b936f4663dc0"
+  }
+}

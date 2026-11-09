@@ -1,0 +1,60 @@
+import UnifiedTheory.Clay.YangMills.CompactDensityEntropy
+import UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange
+import UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange
+import UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy
+import UnifiedTheory.Clay.YangMills.WilsonAveragedResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.scalar_hellinger_le
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.entropy
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.continuous_integrable
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.hellinger_le_entropy
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.entropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.integral_product_sq
+#print axioms UnifiedTheory.Clay.YangMills.CompactDensityEntropy.response_sq_le_entropy
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.Variation
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.unit_norm
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.same
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.same_one
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.inverse
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.product
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.rotation
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange.character_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.haar_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.shift_at
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.shift_away
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.shift_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.shift_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.link_variation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.holonomy_variation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.potential_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.kinetic_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.inputAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.inputAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange.inputAction_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.rowEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.row_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.rowEntropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.rowEntropy_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.logGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.logGain_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.groundGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.ground_entropy_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.groundGain_nonpos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.log_row
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.log_row_ratio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.rowEntropy_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.rowEntropy_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.meanEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.meanEntropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.meanEntropy_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.meanEntropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy.meanEntropy_eq_groundLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.rowMean_eq_raw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.rowMean_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.response_sq_le_rowEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.mean_response_sq_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.physical_response_sq_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedResponse.covariance_mean_square_bound

@@ -1,0 +1,6 @@
+import UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.full_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.intersection_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.source_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonClusterPhysicalSource.density_tail

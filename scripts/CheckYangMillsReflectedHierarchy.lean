@@ -1,0 +1,175 @@
+/- All explicit public declarations in the reflected-hierarchy bridge batch. -/
+import UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization
+import UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS
+import UnifiedTheory.Clay.YangMills.CellReflectionCovariance
+import UnifiedTheory.Clay.YangMills.ClosedHalfSmearing
+import UnifiedTheory.Clay.YangMills.ExplicitLatticeScales
+import UnifiedTheory.Clay.YangMills.FiniteCellSmearing
+import UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates
+import UnifiedTheory.Clay.YangMills.KernelHilbertRealization
+import UnifiedTheory.Clay.YangMills.PositiveCellSupport
+import UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert
+import UnifiedTheory.Clay.YangMills.WilsonJointCompactness
+import UnifiedTheory.Clay.YangMills.WilsonJointNontrivial
+import UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit
+import UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit
+import UnifiedTheory.Clay.YangMills.WilsonSmearedObservable
+
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.amplitude_continuous
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.boundaryMeasure
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.boundaryMeasure_finite
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.raw_pairing_identity
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.pairing_identity
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.amplitudeL2
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.amplitudeL2_inner
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryAmplitudeRealization.reflected_null_iff
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryPlaquette
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryPlaquette_boundary
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.realCharacter
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryValue
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.family
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.loop_assemble
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.observable_true
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.observable_false
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.observable_reflection
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.action_realCharacter
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.realCharacter_continuous
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.law_realCharacter
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.haarFluctuation_realCharacter
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryValue_continuous
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.family_continuous
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.kernel_eq_ordinary
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.reflected_variance_identity
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.family_bound
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.real_plaquette_variance_lower
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.reflected_variance_lower
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryKernel
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.boundaryKernel_normalized
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.finite_centered_floor
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.finite_nonvacuum
+#print axioms UnifiedTheory.Clay.YangMills.BoundaryPlaquetteOS.exists_bounded_coupling_nonvacuum_limit
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.OffGrid
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.floor_neg_offGrid
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.floor_one_sub_offGrid
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.pointReflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.cellOffset
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.cellReflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.pointReflection_involutive
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.pointReflection_offset_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.cellReflection_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.vertexSample_temporal_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.vertexSample_spatial_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.sample_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.reflectPoints
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.point_reflectPoints
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.sampleConfiguration_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.coordinate_ae_ne
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.offGrid_ae
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.offGrid_points_ae
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.sampleConfiguration_reflection_ae
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.realPartCharacter
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.real_word_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.sampled_real_word_reflection
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.sampled_real_word_reflection_ae
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.reflected_observable_integral
+#print axioms UnifiedTheory.Clay.YangMills.CellReflectionCovariance.unitary_reflected_observable_integral
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.ClosedWord
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.Supported
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.coefficient_zero_outside
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.word_independent
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.observable_independent
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.halfObservable
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.halfObservable_continuous
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.half_identification
+#print axioms UnifiedTheory.Clay.YangMills.ClosedHalfSmearing.reflection_positive
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.halfPeriod
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.spacing
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.halfPeriod_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.spacing_pos
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.half_extent
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.spacing_to_zero
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.half_extent_to_infinity
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.scales
+#print axioms UnifiedTheory.Clay.YangMills.ExplicitLatticeScales.fixed_test_eventually_supported
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.cellFunction
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.cellFunction_integrable
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.pointwise_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.integral_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.observable
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.observable_integral
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.observable_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.observable_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FiniteCellSmearing.expectation_identity
+#print axioms UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates.weakConvergence_subsequence
+#print axioms UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates.coordinateConvergence_subsequence
+#print axioms UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates.exists_joint_refinement
+#print axioms UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates.exists_l1_joint_limit
+#print axioms UnifiedTheory.Clay.YangMills.JointHierarchyCoordinates.exists_bounded_kernel_joint_limit
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.vectorKernel
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.sumMap
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.sumMap_inner
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.sumIsometry
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.embedIsometry
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.realizationCLM
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.realization_embed
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.realization
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.realization_canonical
+#print axioms UnifiedTheory.Clay.YangMills.KernelHilbertRealization.realization_injective
+#print axioms UnifiedTheory.Clay.YangMills.PositiveCellSupport.sample_time_val_lt
+#print axioms UnifiedTheory.Clay.YangMills.PositiveCellSupport.sample_closed
+#print axioms UnifiedTheory.Clay.YangMills.PositiveCellSupport.SlabSupported
+#print axioms UnifiedTheory.Clay.YangMills.PositiveCellSupport.supported_of_slab
+#print axioms UnifiedTheory.Clay.YangMills.PositiveCellSupport.eventually_supported
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.continuous_reflection
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.continuous_observable
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.positiveObservable
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.positiveObservable_eq_reflected
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.positive_reflection_positive
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.kernel
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.combination
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.gram_as_reflected_square
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.kernel_positive
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.positiveKernel
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.kernel_normalized
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.vacuum_normalized
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.canonical_reflected_inner
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.kernel_bound
+#print axioms UnifiedTheory.Clay.YangMills.ReflectedWilsonKernel.exists_normalized_reflected_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.amplitudeMeasure
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.boundaryAmplitude
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.kernel_amplitude_inner
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.realization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.realization_canonical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.realization_injective
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHilbert.formal_null_iff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointCompactness.exists_hierarchy_coordinate_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointCompactness.exists_hierarchy_gram_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointCompactness.exists_hierarchy_wilson_word_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointNontrivial.unitaryBareHierarchy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointNontrivial.exists_joint_nontrivial_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.integral_reflection
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.half_mean_eq_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.family
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.family_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.family_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.unit_cross_eq_hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.reflected_pair_eq_half_kernel
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedJointLimit.exists_joint_reflected_hilbert_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.family
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.bound_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.family_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.family_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.unit_cross_eq_hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedJointLimit.exists_joint_smeared_hilbert_limit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.word
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.word_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.word_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.cellCoefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.observable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.observable_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.observable_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.observable_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmearedObservable.expectation_eq_hierarchy

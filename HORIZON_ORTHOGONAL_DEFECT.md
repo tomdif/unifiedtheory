@@ -2,6 +2,20 @@
 
 Date: 2026-08-20
 
+Update (2026-09-09): [Exact protected selection](NAVIER_STOKES_GR_TRANSFER.md)
+constructs a different finite probability update that preserves the entire
+protected-record distribution. Conditional centering supplies exact defect
+improvement, with a positive step whenever a within-record residual remains.
+This does not negate the fixed-exponential-source leakage results below;
+it changes the update and supplies the needed record-dependent compensation.
+
+The [convergence and feasibility follow-up](PROTECTED_SELECTION_CONVERGENCE.md)
+adds a lower bound applying to every selector preserving those records and
+a geometric convergence rate for repeated bridge-census reconstruction.
+Protected mass in records incompatible with the canonical matching imposes
+irreducible census error. Reconstruction still differs from physical birth
+dynamics on the underlying order.
+
 Lean files:
 
 ```text

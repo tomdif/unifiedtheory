@@ -1,0 +1,2334 @@
+{
+  "symbolic": {
+    "exact_second_class_bracket": "Matrix([[0, -k**3], [k**3, 0]])",
+    "original_q_p_dirac_bracket_zero": true,
+    "reduced_phase_space_dimension": 4,
+    "reduced_canonical_coordinates": [
+      "q+a",
+      "p",
+      "b",
+      "k*q"
+    ],
+    "exact_flow_nonzero_but_square_zero": true,
+    "attempted_unconstrained_mediator_determinant": "k**4*(g*k**2*v**2 - lambda**2)"
+  },
+  "auxiliary_interlacing": {
+    "cases": [
+      {
+        "auxiliary_pairs": 1,
+        "case": 0,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.01671685534752148,
+          0.02112689303993982
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6191427906489437,
+          0.7824775199977712
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004277536666376946
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 0,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006173111432259681,
+          0.0007842179331053315
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.617311143225968,
+          0.7842179331053314
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.281054944263134e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 0,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.6665538413862736e-05,
+          2.1175631451355417e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6172421634763977,
+          0.784282646346497
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.277667036621431e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 0,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.172403197754239e-07,
+          7.842843753189145e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6172403197754237,
+          0.7842843753189144
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.281071765888075e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 1,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.015228672638272687,
+          0.02618607498935357
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5640249125286181,
+          0.9698546292353176
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0034058253012448397
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 1,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005663036010623551,
+          0.0009699591369325563
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.566303601062355,
+          0.9699591369325561
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.226745006345294e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 1,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.5297141334786437e-05,
+          2.618921304102376e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5665607901772756,
+          0.9699708533712506
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.4256035668876885e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 1,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.665833804012117e-07,
+          9.699718816909135e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5665833804012116,
+          0.9699718816909134
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.229349741531342e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 2,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.016990784965303558,
+          0.02659175902704582
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.62928833204828,
+          0.9848799639646602
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0047681108759929005
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 2,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006294088264348859,
+          0.0009849674968314501
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6294088264348858,
+          0.9849674968314499
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.921891105118017e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 2,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.699413995671683e-05,
+          2.6594209088768455e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6294125909895123,
+          0.9849707069914244
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.799743263976572e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 2,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.294126908814425e-07,
+          9.849707925973086e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6294126908814425,
+          0.9849707925973085
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.925933070694436e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 3,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.01619069634101385,
+          0.024504951042514444
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5996554200375501,
+          0.907590779352387
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.003760146868700345
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 3,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005956830972584898,
+          0.0009086570124469107
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5956830972584897,
+          0.9086570124469104
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.6754931829489885e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 3,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.6070456683092496e-05,
+          2.4536869117883544e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5952020993737962,
+          0.9087729302919832
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.7900754085063837e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 3,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.951595334659011e-07,
+          9.087830693096533e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.595159533465901,
+          0.9087830693096531
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.679421317502807e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 4,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.017299174132626896,
+          0.026046748367644285
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6407101530602555,
+          0.9646943839868255
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0039282226973938374
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 4,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006403567422431141,
+          0.0009644808944742338
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.640356742243114,
+          0.9644808944742336
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.8682193850672194e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 4,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.7289241937208013e-05,
+          2.604076512083282e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6403422939706672,
+          0.9644727822530675
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.944893738797393e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 4,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.403419066630311e-07,
+          9.644725653176907e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.640341906663031,
+          0.9644725653176905
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.870415888706565e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 5,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.016625892600537522,
+          0.026041819993255513
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6157738000199083,
+          0.9645118516020562
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.005556352391635785
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 5,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0006139576247495753,
+          0.0009643597422058171
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6139576247495752,
+          0.9643597422058169
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.860315250101633e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 5,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.6571032116824456e-05,
+          2.603722247588517e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6137419302527577,
+          0.9643415731809324
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.556905677828583e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 5,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.137228795431053e-07,
+          9.643399675266714e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6137228795431052,
+          0.9643399675266712
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.8603827692326196e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 6,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.01696291186634665,
+          0.022537783665771857
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6282559950498761,
+          0.8347327283619207
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.005388333701404025
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 6,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006291811672379798,
+          0.0008338066105289564
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6291811672379797,
+          0.8338066105289562
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.653956583371831e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 6,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.698876981411266e-05,
+          2.2511846576399943e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6292136968189875,
+          0.8337720954222203
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.389848079533859e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 6,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.292145639973456e-07,
+          8.3377117342077e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6292145639973454,
+          0.8337711734207698
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.6541488380282976e-09
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 7,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.018552300929050882,
+          0.02319572077576706
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6871222566315143,
+          0.8591007694728542
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.005085329243579167
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 7,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.000690993399064819,
+          0.0008576267976550464
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6909933990648189,
+          0.8576267976550462
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.290938905487269e-05
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 7,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.8667612508346003e-05,
+          2.315135779642682e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6913930558646669,
+          0.8574576961639565
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.096673811159787e-07
+      },
+      {
+        "auxiliary_pairs": 1,
+        "case": 7,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.914277872539979e-07,
+          8.57442818900326e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6914277872539978,
+          0.8574428189003258
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 6.292298183539201e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 0,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.016186171898431554,
+          0.022737786493557056
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5994878480900576,
+          0.8421402405021133
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004601381356953976
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 0,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006006571423012977,
+          0.0008411897505267773
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6006571423012975,
+          0.8411897505267771
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.6810640811385095e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 0,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.6218904482967056e-05,
+          2.271114646900532e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.600700166035817,
+          0.8411535729261231
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.6016914934087545e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 0,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.007013151134578e-07,
+          8.4115260548374e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6007013151134577,
+          0.8411526054837398
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.681103794482134e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 1,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.016329443767996603,
+          0.020345065811912023
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6047942136295039,
+          0.7535209559967417
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0042691216201362625
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 1,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0006050221322980368,
+          0.0007504706325498759
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6050221322980366,
+          0.7504706325498758
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.2707712954125616e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 1,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.6335652001295017e-05,
+          2.025336022633525e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6050241481961118,
+          0.7501244528272316
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.2693462152537574e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 1,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.050240845644319e-07,
+          7.500940324602257e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6050240845644318,
+          0.7500940324602255
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.270800108017169e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 2,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.015224393986471857,
+          0.023004276883074482
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5638664439434021,
+          0.8520102549286847
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004203628119068379
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 2,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0005634951936498788,
+          0.0008521617688423294
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5634951936498787,
+          0.8521617688423292
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.192065229228061e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 2,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.5213994192216694e-05,
+          2.3008520155527375e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5634812663783961,
+          0.8521674131676807
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.205777088946851e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 2,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          5.634808938806771e-07,
+          8.521675637752509e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.563480893880677,
+          0.8521675637752507
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.19233937326787e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 3,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.017257108991978767,
+          0.0206123866297502
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6391521848881025,
+          0.7634217270277853
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004205499588123366
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 3,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.000641711350291145,
+          0.0007636746966010632
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6417113502911449,
+          0.763674696601063
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.200400571486612e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 3,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.7333180412878076e-05,
+          2.0619991678995344e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6419696449214103,
+          0.7637033955183462
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.2130327400834186e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 3,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.419920307996041e-07,
+          7.637059172003697e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.641992030799604,
+          0.7637059172003696
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.2013511114271726e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 4,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.01526432107063994,
+          0.026314577892484536
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5653452248385163,
+          0.974613996017946
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0027331034870646076
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 4,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.000566036780114129,
+          0.0009746603096902537
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5660367801141288,
+          0.9746603096902535
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.3743138467118466e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 4,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.5283687836936787e-05,
+          2.6315872965468675e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5660625124791404,
+          0.9746619616840252
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 2.733204136350593e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 4,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          5.660632000752217e-07,
+          9.74662005866622e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5660632000752216,
+          0.9746620058666218
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.3743271663373976e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 5,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.01700813706288392,
+          0.022180208575467413
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6299310023290342,
+          0.8214892064987932
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004326132450337658
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 5,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0006260736264093555,
+          0.0008194483828214583
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6260736264093554,
+          0.8194483828214582
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.3647870055293826e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 5,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.6891202371539714e-05,
+          2.2118796205099075e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6256000878348044,
+          0.8192146742629288
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.347500975644357e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 5,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.255581150960271e-07,
+          8.19194116904203e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.625558115096027,
+          0.8191941169042029
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.367502800150537e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 6,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.015013809589203729,
+          0.024730241804429575
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5560670218223605,
+          0.9159348816455399
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0036571981026280666
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 6,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0005566858760674242,
+          0.0009157344844440755
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5566858760674241,
+          0.9157344844440753
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.5351175193955114e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 6,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.5031127655399876e-05,
+          2.4724621764762586e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.556708431681477,
+          0.9157267320282441
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.675196573985496e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 6,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          5.567090335670016e-07,
+          9.157265246705952e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5567090335670015,
+          0.915726524670595
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.537468693718173e-09
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 7,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.01719920800224991,
+          0.023308800785774228
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6370077037870338,
+          0.8632889179916382
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004118040845814163
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 7,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.000639252074179829,
+          0.0008636214798641498
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6392520741798289,
+          0.8636214798641496
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.116834606997779e-05
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 7,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.7266082051843564e-05,
+          2.331866083777985e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6394845204386507,
+          0.8636541051029575
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.147419050005428e-07
+      },
+      {
+        "auxiliary_pairs": 2,
+        "case": 7,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          6.395047307705658e-07,
+          8.63656922623126e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6395047307705657,
+          0.8636569226231259
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.120569782734266e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 0,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.016264779707165403,
+          0.022337642456159854
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6023992484135335,
+          0.8273200909688836
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.003938601518993421
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 0,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006019404569439854,
+          0.0008275110579145083
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6019404569439852,
+          0.8275110579145081
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.888975816387883e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 0,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.625192191350631e-05,
+          2.234298796095243e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6019230338335672,
+          0.8275180726278679
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.962329191506208e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 0,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.019225677286968e-07,
+          8.275182604518564e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6019225677286967,
+          0.8275182604518563
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.892007533149079e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 1,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.015537103056785326,
+          0.0239925783405604
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5754482613624196,
+          0.8886140126133483
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.003186645357273376
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 1,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005769254926310718,
+          0.000888632688728473
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5769254926310717,
+          0.8886326887284728
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.936377315782286e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 1,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.558145488171901e-05,
+          2.3992929118974364e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5770909215451486,
+          0.888627004406458
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.1886645854825093e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 1,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.771054392969169e-07,
+          8.886264280192963e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5771054392969168,
+          0.8886264280192961
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.9366444449789e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 2,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.016832222174784993,
+          0.02168324080928705
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.623415636103148,
+          0.8030829929365575
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0036137519170267775
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 2,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0006233128389184219,
+          0.0008032551002493596
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6233128389184218,
+          0.8032551002493594
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.465169906908442e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 2,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.682933908117565e-05,
+          2.1688058264744944e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6233088548583575,
+          0.8032614172127758
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.6171123499987915e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 2,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          6.233087472690172e-07,
+          8.032615867743569e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.6233087472690171,
+          0.8032615867743568
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.465605812571883e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 3,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.016129237133417337,
+          0.019124205421272605
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.597379153089531,
+          0.7083039044915781
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004274230419940103
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 3,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005960622677893353,
+          0.0007070098124062887
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5960622677893351,
+          0.7070098124062886
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.298506300623313e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 3,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.6088974486479916e-05,
+          1.9084650821904465e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5958879439437007,
+          0.7068389193297951
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.2936392327443806e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 3,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.958723771368176e-07,
+          7.068236685476076e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5958723771368175,
+          0.7068236685476075
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.3009882060265395e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 4,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.016044541064731625,
+          0.01803722689631962
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.594242261656727,
+          0.6680454406044304
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0036986817189477213
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 4,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.000593887391615952,
+          0.0006681481454572914
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5938873916159518,
+          0.6681481454572913
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.5689016652353286e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 4,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.6034595331872107e-05,
+          1.8040095803892702e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5938739011804485,
+          0.6681516964404706
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.701039974965199e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 4,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          5.938735413510468e-07,
+          6.681517923154092e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5938735413510466,
+          0.6681517923154091
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.5692099335581965e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 5,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.014706965416904057,
+          0.02310468348427339
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5447024228482985,
+          0.8557290179360516
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.0042818839561160876
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 5,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005466248961721534,
+          0.0008560540707532882
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5466248961721533,
+          0.856054070753288
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.3079603751880147e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 5,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.4764531935161196e-05,
+          2.3114280729704453e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5468345161170814,
+          0.8560844714705355
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.301289603052328e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 5,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.468528561777667e-07,
+          8.560870792749768e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5468528561777666,
+          0.8560870792749767
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.310432220175677e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 6,
+        "wave_number": 0.3,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.013964940998212598,
+          0.022263448315068112
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5172200369708371,
+          0.8245721598173376
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.002853160477037458
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 6,
+        "wave_number": 0.1,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          0.0005164549863845095,
+          0.0008244314305088884
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5164549863845094,
+          0.8244314305088882
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.523073026924039e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 6,
+        "wave_number": 0.03,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          1.3943503456829591e-05,
+          2.2259502049098425e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5164260539566516,
+          0.8244260018184604
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 2.8537468341469575e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 6,
+        "wave_number": 0.01,
+        "gapless_auxiliary": false,
+        "lowest_full_frequencies": [
+          5.164252795625496e-07,
+          8.244258573599492e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5164252795625495,
+          0.824425857359949
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 3.523150471757287e-09
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 7,
+        "wave_number": 0.3,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.015325632674937074,
+          0.023889892205356155
+        ],
+        "original_frequencies": [
+          0.023692403845958727,
+          0.02753470537340104
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5676160249976695,
+          0.8848108224205985
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 0.004691541543458835
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 7,
+        "wave_number": 0.1,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          0.0005679239449096162,
+          0.0008838286388997936
+        ],
+        "original_frequencies": [
+          0.0008774964387392125,
+          0.0010198039027185571
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5679239449096161,
+          0.8838286388997934
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.795559406738923e-05
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 7,
+        "wave_number": 0.03,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          1.5334642593655596e-05,
+          2.3859734001998677e-05
+        ],
+        "original_frequencies": [
+          2.3692403845958725e-05,
+          2.753470537340104e-05
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5679497256909481,
+          0.883693851925877
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 4.694698215550456e-07
+      },
+      {
+        "auxiliary_pairs": 4,
+        "case": 7,
+        "wave_number": 0.01,
+        "gapless_auxiliary": true,
+        "lowest_full_frequencies": [
+          5.679518998646459e-07,
+          8.83681779667146e-07
+        ],
+        "original_frequencies": [
+          8.774964387392124e-07,
+          1.019803902718557e-06
+        ],
+        "full_frequency_over_k_cubed": [
+          0.5679518998646459,
+          0.8836817796671459
+        ],
+        "full_inertia_negative_count": 2,
+        "minimum_static_schur_eigenvalue": 5.795955419267597e-09
+      }
+    ],
+    "scope": "Full stable canonical spectra, including mixed coordinate-momentum couplings and auxiliaries whose frequencies vanish with momentum. The original two canonical pairs remain a principal subspace. Tests verify symplectic interlacing and the sign of the static Schur correction."
+  },
+  "coulomb_minimization": {
+    "cases": [
+      {
+        "length": 3,
+        "case": 0,
+        "exact_constrained_energy": 2.122841432071001,
+        "inverse_laplacian_energy": 2.122841432071002,
+        "independent_least_squares_error": 1.4249875394900702e-14,
+        "divergence_residual": 2.9373795961134934e-14,
+        "transverse_energy_excess": 30.888485543515582
+      },
+      {
+        "length": 3,
+        "case": 1,
+        "exact_constrained_energy": 2.176813363561043,
+        "inverse_laplacian_energy": 2.1768133635610423,
+        "independent_least_squares_error": 1.43555357000604e-14,
+        "divergence_residual": 2.958335635978683e-14,
+        "transverse_energy_excess": 22.37402596261532
+      },
+      {
+        "length": 3,
+        "case": 2,
+        "exact_constrained_energy": 1.4941087987967234,
+        "inverse_laplacian_energy": 1.4941087987967232,
+        "independent_least_squares_error": 7.354025407457846e-15,
+        "divergence_residual": 1.0149094837948537e-14,
+        "transverse_energy_excess": 21.839308019053334
+      },
+      {
+        "length": 3,
+        "case": 3,
+        "exact_constrained_energy": 2.608017701864689,
+        "inverse_laplacian_energy": 2.608017701864688,
+        "independent_least_squares_error": 9.281957237046627e-15,
+        "divergence_residual": 1.922405747787218e-14,
+        "transverse_energy_excess": 17.73085908668393
+      },
+      {
+        "length": 4,
+        "case": 0,
+        "exact_constrained_energy": 5.095352605597416,
+        "inverse_laplacian_energy": 5.095352605597414,
+        "independent_least_squares_error": 1.5161006917524858e-14,
+        "divergence_residual": 2.804854813725751e-14,
+        "transverse_energy_excess": 53.06318745626763
+      },
+      {
+        "length": 4,
+        "case": 1,
+        "exact_constrained_energy": 5.13870738339714,
+        "inverse_laplacian_energy": 5.138707383397147,
+        "independent_least_squares_error": 1.8590202919339115e-14,
+        "divergence_residual": 2.9799386661736715e-14,
+        "transverse_energy_excess": 73.27656839058818
+      },
+      {
+        "length": 4,
+        "case": 2,
+        "exact_constrained_energy": 6.427928231217752,
+        "inverse_laplacian_energy": 6.427928231217759,
+        "independent_least_squares_error": 1.5095617835665538e-14,
+        "divergence_residual": 2.521993849083864e-14,
+        "transverse_energy_excess": 66.54090133309238
+      },
+      {
+        "length": 4,
+        "case": 3,
+        "exact_constrained_energy": 6.037218308067911,
+        "inverse_laplacian_energy": 6.037218308067907,
+        "independent_least_squares_error": 1.5600935400419188e-14,
+        "divergence_residual": 2.8251873333696866e-14,
+        "transverse_energy_excess": 68.80615276707937
+      },
+      {
+        "length": 5,
+        "case": 0,
+        "exact_constrained_energy": 14.796115077242417,
+        "inverse_laplacian_energy": 14.796115077242412,
+        "independent_least_squares_error": 3.29113835425395e-14,
+        "divergence_residual": 5.539313614391919e-14,
+        "transverse_energy_excess": 133.18427597341213
+      },
+      {
+        "length": 5,
+        "case": 1,
+        "exact_constrained_energy": 9.226206866864546,
+        "inverse_laplacian_energy": 9.226206866864551,
+        "independent_least_squares_error": 3.231123378893655e-14,
+        "divergence_residual": 5.389077956963222e-14,
+        "transverse_energy_excess": 127.62252668824607
+      },
+      {
+        "length": 5,
+        "case": 2,
+        "exact_constrained_energy": 12.304480487381731,
+        "inverse_laplacian_energy": 12.304480487381744,
+        "independent_least_squares_error": 3.7555347138095874e-14,
+        "divergence_residual": 6.078490248685688e-14,
+        "transverse_energy_excess": 108.49147866610667
+      },
+      {
+        "length": 5,
+        "case": 3,
+        "exact_constrained_energy": 18.818643319949484,
+        "inverse_laplacian_energy": 18.81864331994948,
+        "independent_least_squares_error": 4.161625524565729e-14,
+        "divergence_residual": 6.76609745588108e-14,
+        "transverse_energy_excess": 131.42256695736103
+      }
+    ],
+    "scope": "Positive local electric energy with an imposed divergence constraint yields a positive inverse Laplacian on zero-mean sources. This static minimization does not remove canonical transverse modes or establish compatible tensor Gauss laws."
+  },
+  "dirac_dynamics": {
+    "cases": [
+      {
+        "wave_number": 0.4,
+        "J": 0.7,
+        "g": 1.3,
+        "naive_substitution_frequency": 0.38157568056677826,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 1.0718,
+        "preserved_constraint_residual": 6.840271371877088e-18
+      },
+      {
+        "wave_number": 0.4,
+        "J": 2.0,
+        "g": 0.5,
+        "naive_substitution_frequency": 0.4,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 1.4282240720559223,
+        "preserved_constraint_residual": 6.840271371877088e-18
+      },
+      {
+        "wave_number": 0.2,
+        "J": 0.7,
+        "g": 1.3,
+        "naive_substitution_frequency": 0.19078784028338913,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 0.6798202409460901,
+        "preserved_constraint_residual": 3.3532595168448326e-18
+      },
+      {
+        "wave_number": 0.2,
+        "J": 2.0,
+        "g": 0.5,
+        "naive_substitution_frequency": 0.2,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 1.3922126274387834,
+        "preserved_constraint_residual": 3.3532595168448326e-18
+      },
+      {
+        "wave_number": 0.1,
+        "J": 0.7,
+        "g": 1.3,
+        "naive_substitution_frequency": 0.09539392014169457,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 0.5389857512031277,
+        "preserved_constraint_residual": 1.6681655123653398e-18
+      },
+      {
+        "wave_number": 0.1,
+        "J": 2.0,
+        "g": 0.5,
+        "naive_substitution_frequency": 0.1,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 1.3830632668103078,
+        "preserved_constraint_residual": 1.6681655123653398e-18
+      },
+      {
+        "wave_number": 0.05,
+        "J": 0.7,
+        "g": 1.3,
+        "naive_substitution_frequency": 0.04769696007084728,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 0.4975873390672234,
+        "preserved_constraint_residual": 8.330213658873783e-19
+      },
+      {
+        "wave_number": 0.05,
+        "J": 2.0,
+        "g": 0.5,
+        "naive_substitution_frequency": 0.05,
+        "exact_dirac_flow_eigenvalues_zero": true,
+        "original_q_p_change": 0.0,
+        "auxiliary_coordinate_change": 1.3807664538219344,
+        "preserved_constraint_residual": 8.330213658873783e-19
+      }
+    ],
+    "scope": "An exact three-pair Gaussian model. Substituting the two constraints into its positive energy gives an apparent oscillator only if the original bracket is incorrectly retained. Correct Dirac reduction gives two free canonical pairs and constant original q,p."
+  },
+  "tensor_constraint_algebra": {
+    "cases": [
+      {
+        "case": 0,
+        "wave_vector": [
+          -0.2752967237330431,
+          -0.11351609664342724,
+          0.03641166989706269
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.02700000000000001
+      },
+      {
+        "case": 1,
+        "wave_vector": [
+          0.14774570774800527,
+          0.23295496442837887,
+          -0.11791179071752636
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999993
+      },
+      {
+        "case": 2,
+        "wave_vector": [
+          -0.15002834813826024,
+          0.008710666214492256,
+          -0.2596451791368457
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.027
+      },
+      {
+        "case": 3,
+        "wave_vector": [
+          -0.060627557558299454,
+          0.2934068109712175,
+          0.015386440141089164
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.027000000000000003
+      },
+      {
+        "case": 4,
+        "wave_vector": [
+          -0.2697424911367332,
+          -0.10314585538839263,
+          -0.08123989778148552
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.02700000000000001
+      },
+      {
+        "case": 5,
+        "wave_vector": [
+          0.1801892900434697,
+          0.07146456996683329,
+          0.2289642657557854
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999996
+      },
+      {
+        "case": 6,
+        "wave_vector": [
+          0.21889030047503322,
+          0.07066735493048625,
+          -0.19259584965693924
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.02699999999999999
+      },
+      {
+        "case": 7,
+        "wave_vector": [
+          -0.009122311209544034,
+          -0.2743950640479486,
+          -0.12093027852576212
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999993
+      },
+      {
+        "case": 8,
+        "wave_vector": [
+          0.14844064795177256,
+          0.19589539823328866,
+          -0.1720185076864671
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999986
+      },
+      {
+        "case": 9,
+        "wave_vector": [
+          -0.20318212117875709,
+          -0.012624579939110892,
+          0.22035799421546268
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.027000000000000003
+      },
+      {
+        "case": 10,
+        "wave_vector": [
+          0.15562201745388643,
+          -0.23944614884529247,
+          0.09190935472921305
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.027000000000000003
+      },
+      {
+        "case": 11,
+        "wave_vector": [
+          -0.2955911047453663,
+          0.049630636292886075,
+          0.01275534149198344
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.02699999999999999
+      },
+      {
+        "case": 12,
+        "wave_vector": [
+          0.05028966259835293,
+          -0.10694006552061353,
+          -0.27574403388322055
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999986
+      },
+      {
+        "case": 13,
+        "wave_vector": [
+          0.21450849316848303,
+          -0.20110960759561172,
+          0.05950657183308369
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999993
+      },
+      {
+        "case": 14,
+        "wave_vector": [
+          0.16783563944970326,
+          0.24862668394107335,
+          -0.00399626863146293
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999993
+      },
+      {
+        "case": 15,
+        "wave_vector": [
+          -0.21392529670584506,
+          0.05469308329395399,
+          -0.2030877496776129
+        ],
+        "mixed_tensor_constraint_rank": 2,
+        "total_added_constraint_bracket_rank": 4,
+        "largest_mixed_singular_value": 0.026999999999999996
+      }
+    ],
+    "exact_lattice_current_pairing": 1,
+    "exact_lattice_pairing_mod_5": 1,
+    "scope": "The continuum current pairings have rank two at nonzero momentum (real coefficient convention, with Fourier reality partners understood). An independently contracted exact finite-lattice pair from the frozen compact audit also has nonzero Weyl charge pairing. Independent electric Gauss constraints therefore do not commute."
+  },
+  "source_sha256": {
+    "CONSTRAINED_MEDIATOR_TEST.md": "fa4947a22f92d9cdcd8415a9ace7f5770bc51229699c699c35db685cb647ca89",
+    "scripts/constrained_mediator_audit.py": "5b278e86f711c54404ad4c2247261a6faaf5124f28f50613d88c08b56814a77c",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "data/compact_tensor_dynamics_audit.json": "5d8ee3c89e3a4559bd0b1b74464bdfaa0ddd53d012373dc42472c9796bb45b4e",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "CONVEX_MATTER_POLE_BOUND.md": "33cfebd3adbaa88f83f7a424366135376a0a872cfe41adfc9fecb6d4a81e4526",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc"
+  },
+  "scope": "Stable canonical auxiliary oscillators leave at least two O(k^3) frequencies when the compact tensor quadratic block survives as a canonical principal subspace. Constrained electric minimization supplies a positive inverse Laplacian, but the two proposed tensor-current Gauss laws fail to commute. Exact Dirac reduction of a minimal example eliminates the apparent oscillator obtained by naive substitution. These are conditional Gaussian and constraint benchmarks, not a finite-spin phase theorem, nonlinear Einstein gravity, or TOE. No new Lean theorem."
+}

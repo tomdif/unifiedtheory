@@ -1,0 +1,27 @@
+import UnifiedTheory.Clay.YangMills.WilsonAlignedConditional
+import UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin
+import UnifiedTheory.Clay.YangMills.WilsonFlatGaugeOrbit
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.probe
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.probe_abs
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.probe_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.probe_not_left_invariant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.constantConfiguration
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.constant_plaquette
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.constant_starEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.constant_stapleField
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAlignedConditional.constant_coordinate_mean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.Admissible
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.row_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.row_lower_explicit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.weighted_row_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.margin_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.coupling_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.eventually_row_exceeds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMicroscopicMargin.eventually_weighted_row_exceeds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatGaugeOrbit.alternatingGauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatGaugeOrbit.alternating_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatGaugeOrbit.constant_neg_one_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatGaugeOrbit.invariant_endpoints

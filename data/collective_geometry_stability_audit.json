@@ -1,0 +1,796 @@
+{
+  "local_flow_certificate": {
+    "box": [
+      4,
+      3,
+      3
+    ],
+    "source_columns": "e_a-e_d, e_b-e_c",
+    "uniform_operator_inequality": "U U^T <= L(m), all m in [0,1]^M",
+    "certificates": [
+      {
+        "occupied": 0,
+        "vertices": 36,
+        "edges": 75,
+        "resistance": [
+          [
+            "495/713",
+            "117/713"
+          ],
+          [
+            "117/713",
+            "261/713"
+          ]
+        ],
+        "potential": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "55/1426",
+            "13/1426"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "55/1426",
+            "13/1426"
+          ],
+          [
+            "317/1426",
+            "49/1426"
+          ],
+          [
+            "55/1426",
+            "13/1426"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "55/1426",
+            "13/1426"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "-55/713",
+            "-13/713"
+          ],
+          [
+            "-97/1426",
+            "3/1426"
+          ],
+          [
+            "-55/713",
+            "-13/713"
+          ],
+          [
+            "-97/1426",
+            "3/1426"
+          ],
+          [
+            "-61/1426",
+            "193/1426"
+          ],
+          [
+            "-97/1426",
+            "3/1426"
+          ],
+          [
+            "-55/713",
+            "-13/713"
+          ],
+          [
+            "-97/1426",
+            "3/1426"
+          ],
+          [
+            "-55/713",
+            "-13/713"
+          ],
+          [
+            "-123/713",
+            "-55/713"
+          ],
+          [
+            "-259/1426",
+            "-139/1426"
+          ],
+          [
+            "-123/713",
+            "-55/713"
+          ],
+          [
+            "-259/1426",
+            "-139/1426"
+          ],
+          [
+            "-295/1426",
+            "-329/1426"
+          ],
+          [
+            "-259/1426",
+            "-139/1426"
+          ],
+          [
+            "-123/713",
+            "-55/713"
+          ],
+          [
+            "-259/1426",
+            "-139/1426"
+          ],
+          [
+            "-123/713",
+            "-55/713"
+          ],
+          [
+            "-178/713",
+            "-68/713"
+          ],
+          [
+            "-411/1426",
+            "-149/1426"
+          ],
+          [
+            "-178/713",
+            "-68/713"
+          ],
+          [
+            "-411/1426",
+            "-149/1426"
+          ],
+          [
+            "-673/1426",
+            "-185/1426"
+          ],
+          [
+            "-411/1426",
+            "-149/1426"
+          ],
+          [
+            "-178/713",
+            "-68/713"
+          ],
+          [
+            "-411/1426",
+            "-149/1426"
+          ],
+          [
+            "-178/713",
+            "-68/713"
+          ]
+        ],
+        "largest_resistance_eigenvalue": 0.7622201778368193,
+        "exact_divergence_and_energy_identities": true
+      },
+      {
+        "occupied": 1,
+        "vertices": 36,
+        "edges": 75,
+        "resistance": [
+          [
+            "99/157",
+            "-9/157"
+          ],
+          [
+            "-9/157",
+            "261/785"
+          ]
+        ],
+        "potential": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "11/314",
+            "-1/314"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "11/314",
+            "-1/314"
+          ],
+          [
+            "67/314",
+            "-59/1570"
+          ],
+          [
+            "11/314",
+            "-1/314"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "11/314",
+            "-1/314"
+          ],
+          [
+            "0",
+            "0"
+          ],
+          [
+            "-11/157",
+            "1/157"
+          ],
+          [
+            "-23/314",
+            "39/1570"
+          ],
+          [
+            "-11/157",
+            "1/157"
+          ],
+          [
+            "-23/314",
+            "39/1570"
+          ],
+          [
+            "-41/314",
+            "247/1570"
+          ],
+          [
+            "-23/314",
+            "39/1570"
+          ],
+          [
+            "-11/157",
+            "1/157"
+          ],
+          [
+            "-23/314",
+            "39/1570"
+          ],
+          [
+            "-11/157",
+            "1/157"
+          ],
+          [
+            "-21/157",
+            "-19/785"
+          ],
+          [
+            "-41/314",
+            "-67/1570"
+          ],
+          [
+            "-21/157",
+            "-19/785"
+          ],
+          [
+            "-41/314",
+            "-67/1570"
+          ],
+          [
+            "-23/314",
+            "-55/314"
+          ],
+          [
+            "-41/314",
+            "-67/1570"
+          ],
+          [
+            "-21/157",
+            "-19/785"
+          ],
+          [
+            "-41/314",
+            "-67/1570"
+          ],
+          [
+            "-21/157",
+            "-19/785"
+          ],
+          [
+            "-32/157",
+            "-14/785"
+          ],
+          [
+            "-75/314",
+            "-23/1570"
+          ],
+          [
+            "-32/157",
+            "-14/785"
+          ],
+          [
+            "-75/314",
+            "-23/1570"
+          ],
+          [
+            "-131/314",
+            "31/1570"
+          ],
+          [
+            "-75/314",
+            "-23/1570"
+          ],
+          [
+            "-32/157",
+            "-14/785"
+          ],
+          [
+            "-75/314",
+            "-23/1570"
+          ],
+          [
+            "-32/157",
+            "-14/785"
+          ]
+        ],
+        "largest_resistance_eigenvalue": 0.6412171904390536,
+        "exact_divergence_and_energy_identities": true
+      }
+    ]
+  },
+  "temperature_bounds": {
+    "thermal_rows": [
+      {
+        "beta": 1.0,
+        "uniform_history_curvature_bound": 1.0007541135951503,
+        "direct_sum_error": 0.0
+      },
+      {
+        "beta": 2.0,
+        "uniform_history_curvature_bound": 0.5054483255838311,
+        "direct_sum_error": 3.3306690738754696e-16
+      },
+      {
+        "beta": 4.0,
+        "uniform_history_curvature_bound": 0.2805330342045751,
+        "direct_sum_error": 1.9984014443252818e-15
+      },
+      {
+        "beta": 8.0,
+        "uniform_history_curvature_bound": 0.21987606252695324,
+        "direct_sum_error": 1.5237811012980274e-14
+      },
+      {
+        "beta": 16.0,
+        "uniform_history_curvature_bound": 0.21651252619334346,
+        "direct_sum_error": 1.2312373343092986e-13
+      },
+      {
+        "beta": 32.0,
+        "uniform_history_curvature_bound": 0.21650635095756623,
+        "direct_sum_error": 9.85433956657289e-13
+      }
+    ],
+    "zero_temperature_bound": 0.21650635094610965,
+    "zero_temperature_free_energy_density_errors": {
+      "2": 0.02464609795608791,
+      "4": 0.004929219591217583,
+      "8": 0.00030427281427269047,
+      "12": 2.3405601097899283e-05,
+      "16": 1.988711204396672e-06
+    }
+  },
+  "factorized_stability": {
+    "uniform_response_bound": 0.21650635094610965,
+    "sufficient_geometry_scale": 0.13531646934131852,
+    "nonlinear_source_checks": [
+      {
+        "occupations": [
+          0.0,
+          0.0
+        ],
+        "vacuum_force": [
+          0.025777306999900083,
+          0.02577730699989983
+        ],
+        "largest_field_susceptibility": 0.048944654224741
+      },
+      {
+        "occupations": [
+          1.0,
+          1.0
+        ],
+        "vacuum_force": [
+          -0.020319629024600414,
+          -0.020319629024599824
+        ],
+        "largest_field_susceptibility": 0.047147802859720436
+      },
+      {
+        "occupations": [
+          0.0,
+          1.0
+        ],
+        "vacuum_force": [
+          0.025777280354562865,
+          -0.02031962735339203
+        ],
+        "largest_field_susceptibility": 0.04894456435720103
+      },
+      {
+        "occupations": [
+          0.5,
+          0.5
+        ],
+        "vacuum_force": [
+          0.002514978710066078,
+          0.0025149787100660543
+        ],
+        "largest_field_susceptibility": 0.04514813195205797
+      },
+      {
+        "occupations": [
+          0.3241592479721984,
+          0.6138607358467428
+        ],
+        "vacuum_force": [
+          0.010499338515608629,
+          -0.0026204964425745017
+        ],
+        "largest_field_susceptibility": 0.04578252911969157
+      },
+      {
+        "occupations": [
+          0.3701802246908681,
+          0.7233104357589242
+        ],
+        "vacuum_force": [
+          0.008397960342099761,
+          -0.007567430182150813
+        ],
+        "largest_field_susceptibility": 0.0455482722263403
+      },
+      {
+        "occupations": [
+          0.9891166685374121,
+          0.5821640329580114
+        ],
+        "vacuum_force": [
+          -0.0198070880480008,
+          -0.0011911226494125918
+        ],
+        "largest_field_susceptibility": 0.0470408994821091
+      },
+      {
+        "occupations": [
+          0.5016577271970323,
+          0.8923370286933217
+        ],
+        "vacuum_force": [
+          0.002440134587623991,
+          -0.015295956262998149
+        ],
+        "largest_field_susceptibility": 0.04622314657560828
+      },
+      {
+        "occupations": [
+          0.09376993771962239,
+          0.09491194128705538
+        ],
+        "vacuum_force": [
+          0.02124638789256084,
+          0.021191879015623052
+        ],
+        "largest_field_susceptibility": 0.04773752708874367
+      },
+      {
+        "occupations": [
+          0.4242301554493533,
+          0.21801238646095622
+        ],
+        "vacuum_force": [
+          0.005942137686803609,
+          0.0153954968382101
+        ],
+        "largest_field_susceptibility": 0.04651565471307831
+      },
+      {
+        "occupations": [
+          0.02111395874351285,
+          0.9473562448304311
+        ],
+        "vacuum_force": [
+          0.024747001106996964,
+          -0.017850765391184697
+        ],
+        "largest_field_susceptibility": 0.04864997206936886
+      },
+      {
+        "occupations": [
+          0.752213169182027,
+          0.6488190647688883
+        ],
+        "vacuum_force": [
+          -0.00887921195374677,
+          -0.004198019743668246
+        ],
+        "largest_field_susceptibility": 0.04544017639076925
+      }
+    ],
+    "solutions": [
+      {
+        "geometry_scale": 1.0,
+        "uncorrected_occupancy": 0.31933946612067626,
+        "optimized_occupancy": [
+          0.31381817343078383,
+          0.31381817343277263
+        ],
+        "vacuum_force": [
+          0.010973089659842363,
+          0.010973089659751384
+        ],
+        "local_effective_spin_gap": [
+          0.8619882390646553,
+          0.8619882390646214
+        ],
+        "iterations": 8,
+        "fixed_point_residual": 1.6166535674911866e-12,
+        "a_posteriori_distance_bound": 1.8696476920980374e-12,
+        "contraction_bound": 0.13531646934131852,
+        "uniform_curvature_margin": 1.3834936490538905,
+        "variational_hessian_eigenvalues": [
+          1.955650819471693,
+          1.955650864372335
+        ],
+        "quadratic_static_response": [
+          [
+            0.5113387208805449,
+            5.87002436579127e-09
+          ],
+          [
+            5.87002436579127e-09,
+            0.5113387208832415
+          ]
+        ]
+      },
+      {
+        "geometry_scale": 0.5,
+        "uncorrected_occupancy": 0.31933946612067626,
+        "optimized_occupancy": [
+          0.3081174210105697,
+          0.30811742101104467
+        ],
+        "vacuum_force": [
+          0.011234519891247477,
+          0.011234519891227887
+        ],
+        "local_effective_spin_gap": [
+          0.43316730671124476,
+          0.4331673067112372
+        ],
+        "iterations": 10,
+        "fixed_point_residual": 3.8266245601903103e-13,
+        "a_posteriori_distance_bound": 5.24650037428173e-13,
+        "contraction_bound": 0.27063293868263705,
+        "uniform_curvature_margin": 0.5834936490538905,
+        "variational_hessian_eigenvalues": [
+          0.9700850755479685,
+          0.9700851212384524
+        ],
+        "quadratic_static_response": [
+          [
+            1.030837399374209,
+            2.427594223425784e-08
+          ],
+          [
+            2.427594223425784e-08,
+            1.0308373993755902
+          ]
+        ]
+      },
+      {
+        "geometry_scale": 0.2,
+        "uncorrected_occupancy": 0.31933946612067626,
+        "optimized_occupancy": [
+          0.28995012038539414,
+          0.28995012038689205
+        ],
+        "vacuum_force": [
+          0.01206897655702421,
+          0.01206897655695603
+        ],
+        "local_effective_spin_gap": [
+          0.17631282791732714,
+          0.1763128279172985
+        ],
+        "iterations": 13,
+        "fixed_point_residual": 1.1658123858015304e-12,
+        "a_posteriori_distance_bound": 3.6046652801104054e-12,
+        "contraction_bound": 0.6765823467065926,
+        "uniform_curvature_margin": 0.10349364905389041,
+        "variational_hessian_eigenvalues": [
+          0.38220616887416153,
+          0.3822062171521235
+        ],
+        "quadratic_static_response": [
+          [
+            2.616388792954652,
+            1.6524316027888326e-07
+          ],
+          [
+            1.6524316027888326e-07,
+            2.6163887929680234
+          ]
+        ]
+      }
+    ],
+    "scope": "Exact optimum among geometry-field factorized states; not the full entangled ground state or an exact spectral gap."
+  },
+  "finite_history_sums": [
+    {
+      "time_steps": 4,
+      "inverse_temperature": 2.0,
+      "histories_enumerated": 256,
+      "source_matrix_dimension": 16,
+      "gaussian_field_vertices": 3456,
+      "finite_grid_response_constant": 0.5083493892099055,
+      "maximum_trace_square": 0.14861867896182418,
+      "exact_grid_free_energy_shift_per_switch": -0.009480226521078355,
+      "exact_grid_occupancy": [
+        0.3712810777455948,
+        0.37128107774559516
+      ],
+      "exact_grid_static_response": [
+        [
+          0.39053399080410606,
+          3.6436271030398345e-08
+        ],
+        [
+          3.6436271046108013e-08,
+          0.39053399080410633
+        ]
+      ],
+      "bare_finite_temperature_occupancy": 0.37440361960730917,
+      "truncation_rows": [
+        {
+          "order": 2,
+          "free_energy_density_error": 0.0001595438005819183,
+          "uniform_error_bound": 0.05786818163825285,
+          "largest_history_action_error": 0.0011126515107111185
+        },
+        {
+          "order": 4,
+          "free_energy_density_error": 3.9622893437119e-06,
+          "uniform_error_bound": 0.011573636327650572,
+          "largest_history_action_error": 3.132091609436144e-05
+        },
+        {
+          "order": 8,
+          "free_energy_density_error": 3.347657318020225e-09,
+          "uniform_error_bound": 0.0007144219955339863,
+          "largest_history_action_error": 3.064901327870517e-08
+        },
+        {
+          "order": 12,
+          "free_energy_density_error": 3.3435476609611214e-12,
+          "uniform_error_bound": 5.495553811799897e-05,
+          "largest_history_action_error": 3.33024302578977e-11
+        }
+      ],
+      "scope": "Full interacting history sum on this finite Euclidean time grid; no claimed time-grid error rate, zero-temperature spectrum, or thermodynamic phase."
+    },
+    {
+      "time_steps": 6,
+      "inverse_temperature": 2.0,
+      "histories_enumerated": 4096,
+      "source_matrix_dimension": 24,
+      "gaussian_field_vertices": 3456,
+      "finite_grid_response_constant": 0.506855866517165,
+      "maximum_trace_square": 0.1468730347721866,
+      "exact_grid_free_energy_shift_per_switch": -0.00923533506622215,
+      "exact_grid_occupancy": [
+        0.37128860061241575,
+        0.3712886006124172
+      ],
+      "exact_grid_static_response": [
+        [
+          0.3876026100916399,
+          3.5922871108318155e-08
+        ],
+        [
+          3.592287112219594e-08,
+          0.38760261009164
+        ]
+      ],
+      "bare_finite_temperature_occupancy": 0.37440361960730917,
+      "truncation_rows": [
+        {
+          "order": 2,
+          "free_energy_density_error": 0.00015694990749945403,
+          "uniform_error_bound": 0.057698165809968505,
+          "largest_history_action_error": 0.0011120515461469915
+        },
+        {
+          "order": 4,
+          "free_energy_density_error": 3.894686951194659e-06,
+          "uniform_error_bound": 0.011539633161993704,
+          "largest_history_action_error": 3.132023610445678e-05
+        },
+        {
+          "order": 8,
+          "free_energy_density_error": 3.2811166839064043e-09,
+          "uniform_error_bound": 0.0007123230346909698,
+          "largest_history_action_error": 3.064901234889339e-08
+        },
+        {
+          "order": 12,
+          "free_energy_density_error": 3.272826454292499e-12,
+          "uniform_error_bound": 5.479407959161308e-05,
+          "largest_history_action_error": 3.3302478830155025e-11
+        }
+      ],
+      "scope": "Full interacting history sum on this finite Euclidean time grid; no claimed time-grid error rate, zero-temperature spectrum, or thermodynamic phase."
+    },
+    {
+      "time_steps": 8,
+      "inverse_temperature": 2.0,
+      "histories_enumerated": 65536,
+      "source_matrix_dimension": 32,
+      "gaussian_field_vertices": 3456,
+      "finite_grid_response_constant": 0.5062645414946757,
+      "maximum_trace_square": 0.1460698976847909,
+      "exact_grid_free_energy_shift_per_switch": -0.009130150380052604,
+      "exact_grid_occupancy": [
+        0.37129054314975934,
+        0.37129054314976234
+      ],
+      "exact_grid_static_response": [
+        [
+          0.3865755234065294,
+          3.5742611689815185e-08
+        ],
+        [
+          3.5742611689815185e-08,
+          0.38657552340652956
+        ]
+      ],
+      "bare_finite_temperature_occupancy": 0.37440361960730917,
+      "truncation_rows": [
+        {
+          "order": 2,
+          "free_energy_density_error": 0.0001559517269018318,
+          "uniform_error_bound": 0.057630852059750694,
+          "largest_history_action_error": 0.001111889974446327
+        },
+        {
+          "order": 4,
+          "free_energy_density_error": 3.867080906994058e-06,
+          "uniform_error_bound": 0.011526170411950141,
+          "largest_history_action_error": 3.1320078128366236e-05
+        },
+        {
+          "order": 8,
+          "free_energy_density_error": 3.2514918535397896e-09,
+          "uniform_error_bound": 0.0007114920007376634,
+          "largest_history_action_error": 3.064901218929883e-08
+        },
+        {
+          "order": 12,
+          "free_energy_density_error": 3.2390756743438942e-12,
+          "uniform_error_bound": 5.473015390289722e-05,
+          "largest_history_action_error": 3.330249270794283e-11
+        }
+      ],
+      "scope": "Full interacting history sum on this finite Euclidean time grid; no claimed time-grid error rate, zero-temperature spectrum, or thermodynamic phase."
+    }
+  ],
+  "source_sha256": {
+    "COLLECTIVE_GEOMETRY_STABILITY.md": "e763acd0a26a196694e7090aed2e376074d4cf82d1c92928699eb2cf9647eacf",
+    "scripts/collective_geometry_stability_audit.py": "30168ebe13877309be8367bb1e86dbe7c734fd4bcb852a5ce8ba9e33ba45097f",
+    "UnifiedTheory/Audit/KFCausalGeometryStability.lean": "579b99b000827c81ab590fc36d81007adbd151a20986a1e3fd22c26275cc5605",
+    "INDUCED_GEOMETRY_INTERACTION.md": "087b5af9a4edfc13d1590741fd0e3426ba5f3224f77926b4c81534540696ad03",
+    "scripts/induced_geometry_audit.py": "97784f0ddc86dc0df4ada72a89af078c26b75a63515b145f440ff942fa18df10",
+    "FINITE_GAP_GEOMETRY_FEEDBACK.md": "0ed4feb92ef55c4dfb0f115dc0112fec4857a37742d4b1bff7a2fbcecbdd553a",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "Uniform nonlinear Gaussian influence curvature and intensive determinant-error bounds; unique stable factorized variational branch; exact finite-time-grid interacting history sums. No proof of the entangled thermodynamic phase, a graviton pole, physical spin-half order, or Einstein gravity."
+}

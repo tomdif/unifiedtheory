@@ -1,0 +1,707 @@
+{
+  "exact_identities": {
+    "TT_diagonal_angular_average": "4/15",
+    "free_diagonal_variance": "hbar*Lambda^2/(30*pi^2*c)",
+    "metric_inverse_moment_product_lower_bound": "exp(g^2*hbar*Lambda^2/(30*pi^2*c))",
+    "high_derivative_clock_defect": "-4*k**7*p/M**6 - 6*k**6*p**2/M**6 - 4*k**5*p**3/M**6 - k**4*p**4/M**6",
+    "extra_inferred_metric_coefficient": "4*k**6/M**6"
+  },
+  "angular_covariance": [
+    {
+      "polar_order": 4,
+      "azimuth_points": 9,
+      "isotropic_STF_covariance_error": 5.565907847531573e-16,
+      "diagonal_angular_average": 0.26666666666666655
+    },
+    {
+      "polar_order": 8,
+      "azimuth_points": 17,
+      "isotropic_STF_covariance_error": 5.959566613470663e-16,
+      "diagonal_angular_average": 0.26666666666666655
+    },
+    {
+      "polar_order": 16,
+      "azimuth_points": 33,
+      "isotropic_STF_covariance_error": 7.762869609309667e-16,
+      "diagonal_angular_average": 0.26666666666666644
+    }
+  ],
+  "radial_spectra": [
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 2.0,
+      "radial_integral": 2.0,
+      "TT_diagonal_variance": 0.013509491152311703,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 4.0,
+      "radial_integral": 8.0,
+      "TT_diagonal_variance": 0.054037964609246814,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 8.0,
+      "radial_integral": 32.0,
+      "TT_diagonal_variance": 0.21615185843698725,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 16.0,
+      "radial_integral": 128.0,
+      "TT_diagonal_variance": 0.864607433747949,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 32.0,
+      "radial_integral": 512.0,
+      "TT_diagonal_variance": 3.458429734991796,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 2,
+      "cutoff": 2.0,
+      "radial_integral": 1.2360679774997898,
+      "TT_diagonal_variance": 0.008349324702844616,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 2,
+      "cutoff": 4.0,
+      "radial_integral": 3.12310562561766,
+      "TT_diagonal_variance": 0.021095783908508345,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 2,
+      "cutoff": 8.0,
+      "radial_integral": 7.062257748298548,
+      "TT_diagonal_variance": 0.047703754282992006,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 2,
+      "cutoff": 16.0,
+      "radial_integral": 15.031219541881395,
+      "TT_diagonal_variance": 0.10153206370475075,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 2,
+      "cutoff": 32.0,
+      "radial_integral": 31.015621187164246,
+      "TT_diagonal_variance": 0.20950263000572342,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 3,
+      "cutoff": 2.0,
+      "radial_integral": 1.0473562736305506,
+      "TT_diagonal_variance": 0.00707462515596504,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 3,
+      "cutoff": 4.0,
+      "radial_integral": 1.7333555189423624,
+      "TT_diagonal_variance": 0.011708375523481253,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 3,
+      "cutoff": 8.0,
+      "radial_integral": 2.4260456467443445,
+      "TT_diagonal_variance": 0.016387321099898523,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 3,
+      "cutoff": 16.0,
+      "radial_integral": 3.119164219857473,
+      "TT_diagonal_variance": 0.021069160715385886,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 3,
+      "cutoff": 32.0,
+      "radial_integral": 3.812309612288946,
+      "TT_diagonal_variance": 0.025751181488545192,
+      "infinite_radial_integral": null,
+      "tail_upper_bound": null,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 2.0,
+      "radial_integral": 0.9027366508292811,
+      "TT_diagonal_variance": 0.006097756398622836,
+      "infinite_radial_integral": 1.402182105325454,
+      "tail_upper_bound": 0.5,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 4.0,
+      "radial_integral": 1.1521864645496909,
+      "TT_diagonal_variance": 0.007782726424323676,
+      "infinite_radial_integral": 1.402182105325454,
+      "tail_upper_bound": 0.25,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 8.0,
+      "radial_integral": 1.2771821393851988,
+      "TT_diagonal_variance": 0.008627040405957439,
+      "infinite_radial_integral": 1.402182105325454,
+      "tail_upper_bound": 0.125,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 16.0,
+      "radial_integral": 1.3396821055915464,
+      "TT_diagonal_variance": 0.009049211776199655,
+      "infinite_radial_integral": 1.402182105325454,
+      "tail_upper_bound": 0.0625,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 32.0,
+      "radial_integral": 1.3709321053275332,
+      "TT_diagonal_variance": 0.009260297573671184,
+      "infinite_radial_integral": 1.402182105325454,
+      "tail_upper_bound": 0.03125,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 8,
+      "cutoff": 2.0,
+      "radial_integral": 0.6516773509221465,
+      "TT_diagonal_variance": 0.0044019147032223335,
+      "infinite_radial_integral": 0.6579273007300842,
+      "tail_upper_bound": 0.00625,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 8,
+      "cutoff": 4.0,
+      "radial_integral": 0.65773198823018,
+      "TT_diagonal_variance": 0.0044428122377940015,
+      "infinite_radial_integral": 0.6579273007300842,
+      "tail_upper_bound": 0.0001953125,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 8,
+      "cutoff": 8.0,
+      "radial_integral": 0.6579211972144593,
+      "TT_diagonal_variance": 0.004444090296343531,
+      "infinite_radial_integral": 0.6579273007300842,
+      "tail_upper_bound": 6.103515625e-06,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 8,
+      "cutoff": 16.0,
+      "radial_integral": 0.657927109995221,
+      "TT_diagonal_variance": 0.004444130235673223,
+      "infinite_radial_integral": 0.6579273007300842,
+      "tail_upper_bound": 1.9073486328125e-07,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    },
+    {
+      "ultraviolet_exponent": 8,
+      "cutoff": 32.0,
+      "radial_integral": 0.6579272947696199,
+      "TT_diagonal_variance": 0.004444131483777277,
+      "infinite_radial_integral": 0.6579273007300842,
+      "tail_upper_bound": 5.960464477539063e-09,
+      "scope": "Infinite-volume radial Gaussian covariance; c=hbar=M=1"
+    }
+  ],
+  "point_metric": [
+    {
+      "cutoff": 2.0,
+      "diagonal_variance": 0.013509491152311703,
+      "log_moment_product_lower_bound": 0.013509491152311703,
+      "median_log_condition": 0.40860629998800635,
+      "fraction_condition_below_100": 1.0,
+      "chi_squared_probability_upper_bound": 1.0,
+      "normalized_upper_metric_log_95th_percentile": 0.3338419462154598,
+      "bounded_metric_endpoint_defect": 0.7437316072180584,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 4.0,
+      "diagonal_variance": 0.054037964609246814,
+      "log_moment_product_lower_bound": 0.054037964609246814,
+      "median_log_condition": 0.8172125999760127,
+      "fraction_condition_below_100": 1.0,
+      "chi_squared_probability_upper_bound": 1.0,
+      "normalized_upper_metric_log_95th_percentile": 0.6541744012786079,
+      "bounded_metric_endpoint_defect": 0.7257711233320562,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 8.0,
+      "diagonal_variance": 0.21615185843698725,
+      "log_moment_product_lower_bound": 0.21615185843698725,
+      "median_log_condition": 1.6344251999520254,
+      "fraction_condition_below_100": 1.0,
+      "chi_squared_probability_upper_bound": 0.9999999721603257,
+      "normalized_upper_metric_log_95th_percentile": 1.254310837947969,
+      "bounded_metric_endpoint_defect": 0.6643628659926564,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 16.0,
+      "diagonal_variance": 0.864607433747949,
+      "log_moment_product_lower_bound": 0.864607433747949,
+      "median_log_condition": 3.268850399904051,
+      "fraction_condition_below_100": 0.87195,
+      "chi_squared_probability_upper_bound": 0.9466335653694653,
+      "normalized_upper_metric_log_95th_percentile": 2.292469817458951,
+      "bounded_metric_endpoint_defect": 0.512618798601975,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 32.0,
+      "diagonal_variance": 3.458429734991796,
+      "log_moment_product_lower_bound": 3.458429734991796,
+      "median_log_condition": 6.537700799808102,
+      "fraction_condition_below_100": 0.17235,
+      "chi_squared_probability_upper_bound": 0.25776869306440975,
+      "normalized_upper_metric_log_95th_percentile": 3.7203322011699527,
+      "bounded_metric_endpoint_defect": 0.31086778131670945,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 64.0,
+      "diagonal_variance": 13.833718939967184,
+      "log_moment_product_lower_bound": 13.833718939967184,
+      "median_log_condition": 13.075401599616203,
+      "fraction_condition_below_100": 0.00895,
+      "chi_squared_probability_upper_bound": 0.016023440378044033,
+      "normalized_upper_metric_log_95th_percentile": 3.9822346673481093,
+      "bounded_metric_endpoint_defect": 0.17441503386526955,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    },
+    {
+      "cutoff": 128.0,
+      "diagonal_variance": 55.33487575986874,
+      "log_moment_product_lower_bound": 55.33487575986874,
+      "median_log_condition": 26.150803199232406,
+      "fraction_condition_below_100": 0.000375,
+      "chi_squared_probability_upper_bound": 0.0005994805887300145,
+      "normalized_upper_metric_log_95th_percentile": -5.869249605270966,
+      "bounded_metric_endpoint_defect": 0.09870652940575733,
+      "scope": "Exact isotropic five-dimensional one-point TT law; empirical quantiles, not Monte Carlo estimates of rare-event means"
+    }
+  ],
+  "momentum_sources": [
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 4.0,
+      "momentum_diagonal_variance": 0.4323037168739745,
+      "coordinate_diagonal_variance": 0.054037964609246814,
+      "variance_product_lower_bound": 0.02076516706922817,
+      "mean_subtracted_momentum_square_variance": 0.373773007246107,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 8.0,
+      "momentum_diagonal_variance": 6.916859469983592,
+      "coordinate_diagonal_variance": 0.21615185843698725,
+      "variance_product_lower_bound": 1.3289706924306028,
+      "mean_subtracted_momentum_square_variance": 95.6858898550034,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 16.0,
+      "momentum_diagonal_variance": 110.66975151973747,
+      "coordinate_diagonal_variance": 0.864607433747949,
+      "variance_product_lower_bound": 85.05412431555858,
+      "mean_subtracted_momentum_square_variance": 24495.58780288087,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 32.0,
+      "momentum_diagonal_variance": 1770.7160243157996,
+      "coordinate_diagonal_variance": 3.458429734991796,
+      "variance_product_lower_bound": 5443.463956195749,
+      "mean_subtracted_momentum_square_variance": 6270870.477537503,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 4.0,
+      "momentum_diagonal_variance": 15.820977692180694,
+      "coordinate_diagonal_variance": 0.007782726424323676,
+      "variance_product_lower_bound": 0.02076516706922817,
+      "mean_subtracted_momentum_square_variance": 500.60667027295835,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 8.0,
+      "momentum_diagonal_variance": 2023.6999788816795,
+      "coordinate_diagonal_variance": 0.008627040405957439,
+      "variance_product_lower_bound": 1.3289706924306028,
+      "mean_subtracted_momentum_square_variance": 8190723.20905142,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 16.0,
+      "momentum_diagonal_variance": 259030.5099556951,
+      "coordinate_diagonal_variance": 0.009049211776199655,
+      "variance_product_lower_bound": 85.05412431555858,
+      "mean_subtracted_momentum_square_variance": 134193610175.81493,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 32.0,
+      "momentum_diagonal_variance": 33155898.782624125,
+      "coordinate_diagonal_variance": 0.009260297573671184,
+      "variance_product_lower_bound": 5443.463956195749,
+      "mean_subtracted_momentum_square_variance": 2198627248167232.0,
+      "scope": "Exact Gaussian covariance integrals; scalar normal ordering removes the mean, not the variance"
+    }
+  ],
+  "frame_and_conformal": [
+    {
+      "cutoff": 2.0,
+      "frame_condition": 1.3828150219900819,
+      "inverse_identity_error": 3.592105626061148e-16,
+      "smallest_Jensen_margin": 3.0526131684083246e-05,
+      "tests": 80,
+      "scope": "Scalar conformal factors and a fixed uniformly conditioned frame cannot remove anisotropy"
+    },
+    {
+      "cutoff": 4.0,
+      "frame_condition": 1.3828150219900819,
+      "inverse_identity_error": 4.3518419524076753e-16,
+      "smallest_Jensen_margin": 0.000514482245997927,
+      "tests": 80,
+      "scope": "Scalar conformal factors and a fixed uniformly conditioned frame cannot remove anisotropy"
+    },
+    {
+      "cutoff": 8.0,
+      "frame_condition": 1.3828150219900819,
+      "inverse_identity_error": 1.3818866680906165e-15,
+      "smallest_Jensen_margin": 0.0007911771897642916,
+      "tests": 80,
+      "scope": "Scalar conformal factors and a fixed uniformly conditioned frame cannot remove anisotropy"
+    }
+  ],
+  "TT_fourier": [
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 2,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.01239208936126673,
+      "expected_field_Frobenius_squared": 0.08911132637621583,
+      "sampled_spatial_Frobenius_squared": 0.07501984877768325,
+      "maximum_log_condition": 8.2492476835079,
+      "mean_bounded_normalization_log_sup_upper": 3.868845093493582,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 4,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.05141765135870348,
+      "expected_field_Frobenius_squared": 0.3829784697911366,
+      "sampled_spatial_Frobenius_squared": 0.3851037390391973,
+      "maximum_log_condition": 23.534372906023656,
+      "mean_bounded_normalization_log_sup_upper": 8.439254791962547,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 8,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.2124530234195495,
+      "expected_field_Frobenius_squared": 1.5917742594678153,
+      "sampled_spatial_Frobenius_squared": 1.5874994634470312,
+      "maximum_log_condition": 48.34783306940873,
+      "mean_bounded_normalization_log_sup_upper": 11.28760249785128,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 1,
+      "cutoff": 16,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.8606173933462471,
+      "expected_field_Frobenius_squared": 6.45297602097123,
+      "sampled_spatial_Frobenius_squared": 6.4779696128069055,
+      "maximum_log_condition": 111.598903770235,
+      "mean_bounded_normalization_log_sup_upper": -4.913963884553013,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 2,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.004917001485876272,
+      "expected_field_Frobenius_squared": 0.03352564571974535,
+      "sampled_spatial_Frobenius_squared": 0.027524405113080457,
+      "maximum_log_condition": 4.647333105116973,
+      "mean_bounded_normalization_log_sup_upper": 2.3893351964243177,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 4,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.006574044672410056,
+      "expected_field_Frobenius_squared": 0.04595339224466592,
+      "sampled_spatial_Frobenius_squared": 0.041292464824235604,
+      "maximum_log_condition": 6.787378001978313,
+      "mean_bounded_normalization_log_sup_upper": 2.9777105400163877,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 8,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.007435833218917687,
+      "expected_field_Frobenius_squared": 0.05240444419829283,
+      "sampled_spatial_Frobenius_squared": 0.04778151207221633,
+      "maximum_log_condition": 7.899435644437623,
+      "mean_bounded_normalization_log_sup_upper": 3.6297324406391938,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    },
+    {
+      "ultraviolet_exponent": 4,
+      "cutoff": 16,
+      "grid_size": 41,
+      "metric_coupling": 12.0,
+      "analytic_diagonal_variance": 0.007862430567570832,
+      "expected_field_Frobenius_squared": 0.055600553185261664,
+      "sampled_spatial_Frobenius_squared": 0.05103118723962903,
+      "maximum_log_condition": 8.754162580248469,
+      "mean_bounded_normalization_log_sup_upper": 3.8890875759841617,
+      "scope": "One reproducible TT Fourier realization on a fixed torus; finite-grid extrema do not prove continuum sup bounds"
+    }
+  ],
+  "resolved_metric": [
+    {
+      "resolution": 0.2,
+      "cutoff": 5.0,
+      "diagonal_variance": 0.053372669354304556,
+      "limiting_variance": 0.08443431970194815,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 0.2,
+      "cutoff": 10.0,
+      "diagonal_variance": 0.08288785119247133,
+      "limiting_variance": 0.08443431970194815,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 0.2,
+      "cutoff": 20.0,
+      "diagonal_variance": 0.08443431020011723,
+      "limiting_variance": 0.08443431970194815,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 0.5,
+      "cutoff": 2.0,
+      "diagonal_variance": 0.00853962709668873,
+      "limiting_variance": 0.013509491152311703,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 0.5,
+      "cutoff": 4.0,
+      "diagonal_variance": 0.013262056190795414,
+      "limiting_variance": 0.013509491152311703,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 0.5,
+      "cutoff": 8.0,
+      "diagonal_variance": 0.013509489632018758,
+      "limiting_variance": 0.013509491152311703,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 1.0,
+      "cutoff": 1.0,
+      "diagonal_variance": 0.0021349067741721823,
+      "limiting_variance": 0.003377372788077926,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 1.0,
+      "cutoff": 2.0,
+      "diagonal_variance": 0.0033155140476988534,
+      "limiting_variance": 0.003377372788077926,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "resolution": 1.0,
+      "cutoff": 4.0,
+      "diagonal_variance": 0.0033773724080046895,
+      "limiting_variance": 0.003377372788077926,
+      "scope": "Flat Gaussian smearing of the logarithmic field before exponentiation"
+    },
+    {
+      "amplitude": 0.3,
+      "averaged_exponential_diagonal": 1.022626879351597,
+      "exponential_of_averaged_log_diagonal": 1.0,
+      "scope": "Commuting traceless diagonal example proving that the two coarse-graining prescriptions differ"
+    },
+    {
+      "amplitude": 1.0,
+      "averaged_exponential_diagonal": 1.2660658777520084,
+      "exponential_of_averaged_log_diagonal": 1.0,
+      "scope": "Commuting traceless diagonal example proving that the two coarse-graining prescriptions differ"
+    },
+    {
+      "amplitude": 3.0,
+      "averaged_exponential_diagonal": 4.880792585865024,
+      "exponential_of_averaged_log_diagonal": 1.0,
+      "scope": "Commuting traceless diagonal example proving that the two coarse-graining prescriptions differ"
+    }
+  ],
+  "clock_defect": [
+    {
+      "crossover": 2.0,
+      "field_wavenumber": 1,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -1.234375,
+      "ordinary_clock_coefficient": -1,
+      "inferred_metric_coefficient": 1.234375,
+      "Fourier_output_error": 3.112290050891324e-11,
+      "relative_dispersion_change": 0.0077822185373186414,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    },
+    {
+      "crossover": 2.0,
+      "field_wavenumber": 2,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -18.25,
+      "ordinary_clock_coefficient": -2,
+      "inferred_metric_coefficient": 9.125,
+      "Fourier_output_error": 8.929348222201384e-11,
+      "relative_dispersion_change": 0.41421356237309515,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    },
+    {
+      "crossover": 4.0,
+      "field_wavenumber": 1,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -1.003662109375,
+      "ordinary_clock_coefficient": -1,
+      "inferred_metric_coefficient": 1.003662109375,
+      "Fourier_output_error": 4.944623004103329e-13,
+      "relative_dispersion_change": 0.00012206286282867573,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    },
+    {
+      "crossover": 4.0,
+      "field_wavenumber": 2,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -2.25390625,
+      "ordinary_clock_coefficient": -2,
+      "inferred_metric_coefficient": 1.126953125,
+      "Fourier_output_error": 1.419729195652845e-12,
+      "relative_dispersion_change": 0.0077822185373186414,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    },
+    {
+      "crossover": 8.0,
+      "field_wavenumber": 1,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -1.0000572204589844,
+      "ordinary_clock_coefficient": -1,
+      "inferred_metric_coefficient": 1.0000572204589844,
+      "Fourier_output_error": 4.0797081671123045e-14,
+      "relative_dispersion_change": 1.9073468138230965e-06,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    },
+    {
+      "crossover": 8.0,
+      "field_wavenumber": 2,
+      "lapse_wavenumber": 1,
+      "bracket_coefficient": -2.00396728515625,
+      "ordinary_clock_coefficient": -2,
+      "inferred_metric_coefficient": 1.001983642578125,
+      "Fourier_output_error": 1.2091198647218967e-13,
+      "relative_dispersion_change": 0.00012206286282867573,
+      "scope": "One canonical scalar with supplied eighth-order spatial stiffness; diagnostic for the proposed UV repair, not the full Einstein bracket"
+    }
+  ],
+  "source_sha256": {
+    "ULTRAVIOLET_METRIC_CONTROL.md": "4fbf39cec000b98b9edb1b4fddaca3d71484da2a4d9e7474341b20048badcb2a",
+    "scripts/ultraviolet_metric_control_audit.py": "d66f2afbaac2a0e27f050aa4d7de8e9d1d3a86ce76d55c0d8b6e20c8bb3af465",
+    "AFFINE_SPIN_METRIC.md": "64c802085e526a9c325fa6ed52b5951ef348ef7e8037ff00e087a7ba9e14c8c7",
+    "data/affine_spin_metric_audit.json": "e815146a168e49939a635ec4c1df9b9da8a06bf177026e619ebd4d32f551ebc0",
+    "SPATIAL_METRIC_VACUUM.md": "ace18b372464f57b7d5bdf97773fac8e6da5319231e1ad99f4815b5bb9914059",
+    "data/spatial_metric_vacuum_audit.json": "99017f5c4f28bb089972caa6c9237361a9811ef6e9598573528175b2378eedb0",
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "CLOCK_MEDIATED_CONSTRAINTS.md": "9e0f56105c326d6a48205c90b4ff2deafe238d1ab906cb5cc299e2b0a02626e0",
+    "data/clock_mediated_constraints_audit.json": "e35e6cd0e50a64f55e44b7248ff5a835ae58c76e9490d18fa6f620c92268c0b7"
+  },
+  "scope": {
+    "proved": "A Gaussian ultraviolet obstruction to a nondegenerate pointwise exponential TT metric; sufficient Gaussian spectral smoothing and its explicit clock defect",
+    "not_proved": [
+      "Interacting ultraviolet completion",
+      "Einstein refoliation symmetry",
+      "physical Newton constant",
+      "microscopic selection of the repaired spectrum",
+      "TOE"
+    ],
+    "qualification": "Applies to the displayed Gaussian equal-time TT ansatz in a regular background frame; no no-go claim for general quantum gravity or distributional observables"
+  }
+}

@@ -1,0 +1,220 @@
+MINIMAL LINKED OPERATOR FRONTIER FOR THE FULL PHYSICAL RESPONSE
+2026-10-21. Analytic research handoff; NOT Lean verified.
+This is a new successor. No frozen source, audit, analytic predecessor,
+repository evidence, or numerical artifact has been modified.
+
+1. Precisely retained original class and physical parameters
+
+Use alpha,beta>0, a>0, r=a+ib, |b|<a, eta=2b, L=3-2a,
+p=alpha*r^2/2, nu=L-i*eta, and the strict floor
+  alpha*(a^2-b^2)>2*beta*eta^2.
+The intended uniform target is on the ACTUAL physical clock range, including
+b=0, with the original physical width hypotheses (in particular alpha>=32beta).
+It is not asserted on every abstract parameter tuple satisfying only the
+strict inequality above.
+
+For a finite original family keep every label fixed under geometry/clock
+variation:
+  w_i>=1 real, d_i=c_i*w_i,
+  f_i(zeta)=d_i*exp(-beta*zeta^2+B_i*zeta)*P_i(zeta).
+Let g_i(k)=(1/(2pi))*integral exp(-ikx) f_i(x) dx, so
+  f_i(x)=integral exp(ikx) g_i(k) dk,  D=i*d/dk.
+All neutral sources B_i, polynomial coefficients, widths, and amplitudes
+are fixed. Equal charged widths can first be merged by summing their actual
+g_i; this does not make any of their derivatives independent.
+
+All norms and inner products below use
+  dmu=dk du dv dY,  k,u,v real, Y>0.
+Define the exact original Fourier feature and linked field channels
+  phi_i=exp(-w_i*(p*(u^2+v^2)+conj(p)*Y))*exp(-eta*k*v),
+  psi=sum_i phi_i*g_i,
+  X=D+L*v,
+  h_j=X^j psi  (j=0,1,2).
+Equivalently
+  h_j=sum_i phi_i*(D+nu*v)^j g_i.
+The entire quartic energy, in Fourier normalization, is
+  E_F=sum_(j=0)^2 c_j*||h_j||^2,  (c_0,c_1,c_2)=(1,1/2,1/4).
+The physical x-space integral is 2pi*E_F; restoring the original pi/4 model
+prefactor multiplies every displayed energy and response by the same factor.
+No angular mode, charged-width cross term, or neutral derivative is dropped.
+
+2. Finite-label operator notation; no global domain claim
+
+On this finite-feature module let W multiply the label w_i:
+  W(sum_i phi_i a_i(k,v))=sum_i w_i phi_i a_i(k,v).
+The coefficients generated here are polynomials in v with genuine derivatives
+of the original g_i. After merging equal widths, W is unambiguous: at fixed
+v,Y,k, varying u^2 separates the distinct exponentials exp(-p*w_i*u^2).
+This notation asserts neither that W is selfadjoint in the physical norm nor
+that it extends to a closed or accretive operator on an arbitrary completion.
+Such assertions would need a separate proof.
+
+Put
+  Theta=alpha*b^2*(u^2+v^2+Y)*W
+        -i*alpha*a*b*(u^2+v^2-Y)*W-eta*k*v.
+The last term is ordinary scalar multiplication. Direct differentiation at
+fixed a,L and fixed labels gives EXACTLY
+  b*partial_b psi=Theta psi,
+  [X,Theta]=-i*eta*v,
+  b*partial_b h_j=Theta h_j-i*j*eta*v*h_(j-1),
+  partial_L h_j=j*v*h_(j-1).
+For j=0 the adjacent term is absent, so no h_(-1) has to be defined.
+In particular the sign of the charged phase is negative:
+  -w_i*b*partial_b p=alpha*w_i*b^2-i*alpha*w_i*a*b.
+
+3. Exact clock coefficients and real-scaling reduction
+
+Let t=fraction(epsilon,s), and r=scale(epsilon,y,s) for the actual frozen clock.
+The original velocity has rdot=delta+ell*r, delta>0. Define
+  q=delta/a, h=adot/a=ell+q, chi=h/q.
+Here h denotes the real dilation rate, not a new field channel or regulator.
+Equivalently, using the exact existing clock definitions,
+  q=t*radius(r)/denominator(1-t,t,r),
+  h=t*realNumerator(t,r)/(2*denominator(1-t,t,r)),
+  chi=realNumerator(t,r)/(2*radius(r)), radius(r)=a^2+b^2.
+For finite s, t>0, so q>0; the endpoint t=0 is obtained directly or by continuity.
+The frozen physical clock bounds give
+  q<=20t, |h|<=8t*b^2, |chi|<=2*b^2/radius(r)<=2*b^2,
+  b^2<=1/2.
+Only this actual chi is intended. Replacing it by an arbitrary number in a
+bounding interval would strengthen the statement and is not justified here.
+
+Changing charged variables u,v,Y under simultaneous (a,b,L)->(ta,tb,tL)
+shows the exact energy homogeneity (with a fresh positive scale factor):
+  a*E_(F,a)+b*E_(F,b)+L*E_(F,L)=-4E_F.
+In fact the full linked-jet matrix B satisfies this identity entrywise before
+integration against any neutral jets. Using L+2a=3 gives
+  Edot_F=-4h*E_F-q*J,
+  J=b*E_(F,b)+3chi*E_(F,L).
+This is exactly the matrix defect in the predecessor note cited below.
+It has already canceled the order-one real field drift. No separate v^2
+charged-coercivity statement is being inserted.
+
+4. Minimal genuinely linked operator inequality
+
+The exact raw form of J is
+
+  J=2 Re sum_(j=0)^2 c_j integral conj(h_j)
+        *[Theta h_j+j*(3chi-i*eta)*v*h_(j-1)] dmu.              (A)
+
+For each fixed u,v,Y and j=1,2, the integral
+  integral conj(h_j)*h_(j-1) dk
+is real: h_j=X h_(j-1), X=i*d/dk+Lv is formally symmetric, and the boundary
+term vanishes by the Gaussian estimates in section 6. Multiplication by the
+real, k-independent v preserves this conclusion. Therefore the imaginary
+adjacent part in (A) integrates to zero, giving equivalently
+
+  J=2 Re sum_j c_j integral conj(h_j)*Theta h_j dmu
+       +6chi sum_(j=1)^2 j*c_j Re integral conj(h_j)*v*h_(j-1) dmu.   (B)
+
+This cancellation uses the genuine linked h_j=X^j psi. It is not an entrywise
+matrix cancellation at fixed k and does not hold for three independent jets.
+It is also the same cancellation obtained from the physical Plancherel
+identity for (x+Lv)^(2j-1)|Phi|^2.
+
+The precise OPEN inequality is
+
+  J >= -C*E_F,                                                (C)
+
+uniformly for the actual physical clock and all original finite families,
+with C depending at most on the fixed physical model parameters, not on the
+number of labels, their widths, amplitudes, sources, polynomial degrees, or
+clock position. A sufficient theorem may specify its dependence on alpha,
+beta and the prescribed physical parameter range explicitly.
+
+If (C) is proved with C>=0, the existing clock bounds imply
+  Edot_F <= (16+20C)*t*E_F.
+The 16 is exactly 4*(8*b^2)<=16. Thus (C) really is sufficient for the
+unrestricted physical response; it is not a surrogate independent-block
+positivity problem. Conversely (A) and the clock identity express the actual
+remaining form exactly. No bound (C), and no counterexample to it, is proved
+by this handoff.
+
+5. Equivalent positive moment formulation and what remains unavailable
+
+Let K_m=A^*V^m A, where A has columns phi_i and V multiplies v. Let B(K,nu)
+be the full three-jet matrix in the frozen matrix-curvature note, with jet
+(g,Dg,D^2g). The same J is exactly
+  integral jet(g)^*[b*B_b+3chi*B_L]*jet(g) dk.
+With H_m=-partial_a K_m and the known charged positive form B(H,nu), it is
+also
+  integral jet(g)^*[a*B(H,nu)-(L-3chi)*B_L-4B]*jet(g) dk.
+The critical coefficient L in this comparison cannot be weakened by
+estimating the two order-one pieces separately near b=0.
+
+At b=0 the moment matrices obey the exact entrywise identity
+  a*B(H,nu)-L*B_L=4B.
+The actual clock also has h=chi=0, so J=0 and Edot_F=0 exactly.
+The raw formulas (A),(B) contain no inverse b or k and remain regular at k=0.
+The j=0 boundary is explicit. No hidden negative angular mode has been omitted.
+
+The previously proved scalar Mellin charged-tail bounds control the zeroth
+channel. The exact positive full moment/connection decomposition controls
+E_F. What is still missing is a comparison that connects those structures
+on the linked vector (g,Dg,D^2g), at the critical coefficient displayed above.
+One cannot multiply a scalar density inequality by an indefinite completed
+quartic form, differentiate a matrix Loewner inequality in k, or assert
+accretivity of Theta separately on arbitrary radial-polynomial blocks.
+
+A semigroup proof would need an actual invariant finite-polynomial extension
+of the scalar charged transform, with a lower numerical-range bound on the
+COMPLETE norm sum_j c_j||X^j psi||^2 and its physical field correction. No such
+extension or numerical-range estimate has been constructed here. The scalar
+charged-contraction theorem alone does not furnish it. This is a missing
+analytic implication, not merely missing parameter differentiation algebra.
+
+6. Concrete regularity sufficient for all identities above
+
+There are no new unproved regularity hypotheses for an original finite family.
+Each g_i and each of its k derivatives is a polynomial times
+  exp((B_i-ik)^2/(4beta)),
+up to a fixed scalar. Hence any finite collection of derivatives has a bound
+  C*(1+|k|)^m*exp(-k^2/(4beta)+C*|k|).
+For a single feature, its squared modulus has the quadratic exponent
+  -alpha*w_i*(a^2-b^2)*(u^2+v^2+Y)-k^2/(2beta)-2eta*k*v
+plus at most a linear k term and a polynomial factor. Complete the square:
+  -k^2/(2beta)-2eta*k*v
+    =-(k+2beta*eta*v)^2/(2beta)+2beta*eta^2*v^2.
+The strict floor and w_i>=1 leave a positive coefficient for v^2; u^2 and Y
+already have positive coefficients. Linear k and every fixed polynomial in
+k,u,v,Y can be absorbed into a slightly weaker Gaussian/Laplace majorant.
+For a fixed finite family the factors w_i and any of their finite powers are
+just constants. The same argument works in a small compact parameter
+neighborhood with positive floor margin.
+
+Consequently all h_j, Theta h_j, v*h_j and all finitely many k/geometry
+ derivatives used above are L2; all displayed products are L1 by Cauchy--Schwarz.
+Fubini, geometry differentiation under the integral, and the k integration
+by parts in section 4 are justified. At fixed u,v,Y, all needed k boundary
+terms decay Gaussianly. This proof gives packet-dependent domination, which
+is enough for the exact identities; it is NOT a state-independent bound on
+those dominating constants and does not prove (C).
+
+For future Lean integration, a natural next formal interface is the actual
+original feature family together with its derived L2 first/second field
+channels, their derived geometry derivatives, and the exact equality (A).
+The target theorem must retain h_j=X^j psi and the fixed-label derivative
+convention. An abstract theorem that assumes (C), assumes the required
+numerical-range bound, or supplies independent jets would not close the gap.
+
+7. Immutable predecessors, independent review, and terminal status
+
+Real-scaling predecessor:
+  /tmp/unifiedtheory-proof-20261015.FavapN/whole-response-real-scaling-defect-20261021.txt
+  SHA256 ab6f96670a22b5eeac6a48b793305509bc9b24e6df7f9ff2579c9625ae5c5c5c.
+Root checked its algebra; uniform_estimate independently checked scaling,
+clock substitution/constants, the b=0 matrix identity, and the integrated
+nu-only cancellation. Both reported agreement. The operator rendering and
+regularity argument in THIS successor have not been separately Lean verified.
+
+Frozen full positive moment/curvature note:
+  data/quantum_whole_response_matrix_curvature_20261021.txt
+  SHA256 f6f4119d5f5736dd4a679addad5c548e1c8c6d372e277d56d6f4baa2ad4fbafd.
+Frozen stronger width-floor obstruction (not a response counterexample):
+  data/quantum_width_floor_cooling_obstruction_20261021.txt
+  SHA256 cdf4e33e91731885c718d4dee77b8fef418334dc29627e6fc7875c4ce11be459.
+
+This bounded research pass ends with the exact target (C) still OPEN.
+No new admissible violating full-response family, Lean source/theorem,
+numerical probe, compiler, or live process was produced. Existing frozen
+sources and analytic notes remain unchanged.

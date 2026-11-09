@@ -1,0 +1,184 @@
+WHOLE LINKED RESPONSE: FINITE POSITIVE MOMENT/CURVATURE FORM
+2026-10-21. Analytic research successor, NOT Lean verified.
+No repository source, evidence, audit, or previously frozen note changed.
+
+1. Scope, original labels, and conventions
+
+Keep exactly the original finite packet class and Fourier convention from
+quantum_charged_mellin_pairing_20261021.txt, SHA256
+b6b472c6af208ccdd67214c196016de5439e98457a014e5380b5182063755d8a.
+Use a>0, |b|<a, alpha,beta>0, eta=2b, p=alpha*(a+ib)^2/2,
+L=3-2a, nu=L-i*eta, and alpha*(a^2-b^2)>2*beta*eta^2.
+The widths w_i>=1 are real and fixed under differentiation. Equal widths
+may first be merged by summing their actual neutral Fourier profiles.
+Let g_i(k) denote the resulting original Fourier streams, including d_i=c_iw_i.
+They remain linked to Dg_i and D^2g_i, with D=i*d/dk.
+
+For fixed k let A(k):C^N -> L^2(du dv dY), Y>0, have columns
+  phi_i(k;u,v,Y)=exp(-w_i*(p*(u^2+v^2)+conj(p)*Y))*exp(-eta*k*v).
+V denotes multiplication by the REAL coordinate v. Define Hermitian moments
+  K_m=A^* V^m A, m=0,...,4; K=K_0.
+These definitions retain every charged-width cross term. Matrix entries use
+the standard convention (A^*A)_ij=integral conj(phi_i)*phi_j.
+Then K_m'= -2eta*K_(m+1), wherever the next moment is used.
+
+The Fourier-normalized physical field channels are exactly
+  h_0=A g,
+  h_1=A Dg+nu*V A g,
+  h_2=A D^2g+2nu*V A Dg+nu^2*V^2 A g.
+Indeed h_j=(D+Lv)^j[A(k)g(k)], because D A=-i eta V A.
+Thus E_F=integral [||h_0||^2+||h_1||^2/2+||h_2||^2/4] dk.
+The physical x-space energy is 2pi E_F; the unchanged model prefactor pi/4
+can be restored to all forms simultaneously.
+
+2. Exact finite-dimensional orthogonalization
+
+For distinct widths the block Gram matrix of the columns of A,VA,V^2A is
+strictly positive. To see this, an a.e. vanishing finite sum is continuous
+and hence vanishes everywhere. At fixed v,Y, varying u^2 gives independent
+exponentials exp(-p*w_i*u^2). A Vandermonde argument separates each width;
+varying v then separates the coefficients of 1,v,v^2. Thus all coefficients
+vanish. In particular the following inverses exist at every real k:
+
+  M=K^-1 K_1,
+  Sigma=K_2-K_1 K^-1 K_1 > 0,
+  Q=K^-1 Sigma,
+  J=Sigma^-1 (K_3-K_1 K^-1 K_2),
+  Omega=K_4-K_2 K^-1 K_2
+        -(K_3-K_2 K^-1 K_1) Sigma^-1 (K_3-K_1 K^-1 K_2) > 0.
+
+Put N=VA-AM, and
+  O=V^2A-A K^-1 K_2-NJ.
+Then the three column spaces A,N,O are pairwise orthogonal and
+  A^*A=K, N^*N=Sigma, O^*O=Omega.
+This is exact matrix Gram orthogonalization; it does not select independent
+angular modes, discard cross-width cancellation, or assume a uniform lower
+bound on any individual inverse matrix.
+
+3. Exact positive first and second channel forms
+
+Define the actual k-differential connection
+  T=D+nu M.
+Because K'=-2eta K_1 and K_1'=-2eta K_2,
+  M'=-2eta Q.
+Therefore
+  D^2g+2nu M Dg+nu^2 K^-1K_2 g
+     =T^2g+|nu|^2 Qg.
+The factor |nu|^2 is exact: nu^2+2i eta nu=|nu|^2.
+Consequently, pointwise in k,
+
+  ||h_1||^2 = ||Tg||_K^2 + |nu|^2 ||g||_Sigma^2,
+
+  ||h_2||^2 = ||T^2g+|nu|^2Qg||_K^2
+            + ||2nu Dg+nu^2 Jg||_Sigma^2
+            + |nu|^4 ||g||_Omega^2.
+
+Here ||z||_H^2=z^*Hz. All displayed terms are positive; the entire genuine
+quartic norm has been retained. In particular the negative completed Mellin
+Q_n forms have not been used as weights in a scalar density inequality.
+
+There is also an intrinsic second connection. Let
+  M_1=Sigma^-1 N^*VN, T_1=D+nu M_1.
+Differentiating Sigma, or expanding N^*VN, gives
+  J=M+M_1, Sigma'=-2eta Sigma M_1.
+Thus the middle square is equivalently |nu|^2 ||(T+T_1)g||_Sigma^2.
+Neither this expression nor the moment definitions require division by eta.
+The connection T is formally symmetric in the varying metric K:
+its formal adjoint equals T because K'=-2eta KM and nu=L-i eta.
+No symmetry of the full second-order expression is needed for the identities.
+
+4. Regular b=0 and k=0 limits, and integration
+
+All definitions in sections 1--3 use ordinary finite moments and no 1/k or
+1/b. At b=0, eta=0 and the v parity gives K_1=K_3=0, M=J=0,
+Sigma=K_2, Omega=K_4-K_2 K^-1K_2. The formulas reduce to
+
+  ||h_1||^2=||Dg||_K^2+L^2||g||_(K_2)^2,
+  ||h_2||^2=||D^2g+L^2K^-1K_2g||_K^2
+            +4L^2||Dg||_(K_2)^2+L^4||g||_Omega^2.
+
+Here the K_m are independent of k. After the justified k integration by
+parts, the second identity is also
+  E_2=integral [||D^2g||_K^2+6L^2||Dg||_(K_2)^2
+                         +L^4||g||_(K_4)^2] dk.
+This is the exact common-width Hermite-type coefficient 6, but for the FULL
+cross-width moment matrices; no uniform comparison of K_2 and K_4 follows
+from it automatically.
+
+The original strict Gaussian floor gives L1 for the raw channel norms and
+for their actual a,L derivatives in a parameter neighborhood. Since each
+positive term in the decomposition is bounded by the corresponding raw
+channel norm pointwise, its k integral exists without separately estimating
+large inverse matrices. Parameter derivatives should first be taken in the
+raw original form; differentiating separate inverse-matrix terms without a
+fresh domination argument would not be justified by this observation alone.
+
+5. Charged dissipation as a second positive Gram form
+
+At fixed b,L and fixed labels define H_m=-partial_a K_m. The known fixed-v
+charged contraction says that, after u,Y integration, the matrix kernel
+  -partial_a [integral conj(phi_i)*phi_j du dY]
+is positive for each v,k. Consequently the full block moment matrix (H_(r+s))
+for r,s=0,1,2 is positive semidefinite. This conclusion applies to arbitrary
+vector polynomials of v, and hence to the genuine three linked channels.
+It gives the total nonnegative charged form
+  H_E=-partial_a E_F >=0.
+No assumption that an independently chosen radial-polynomial angular block
+contracts is made. That stronger relaxation fails in the separate enlarged-
+block diagnostic, and is not needed for this positive fixed-v Gram statement.
+
+The scalar Mellin result further implies the genuine zeroth-moment matrix
+bound, for 0<b<a,
+  H_0 >= (3a/(a^2+b^2))*K.
+Indeed H_0 has the exact spectral form (2/(a^2+b^2))*sum_n D_n|L_n|^2,
+and D_n>=((n+3)a/2+2b|omega|)rho_n. The b=0 case also follows directly
+from H_0=(4/a)K. This is a useful zeroth-channel coercivity statement, but
+it is NOT automatically a coercivity estimate on the block of all moments.
+Differentiating a positive matrix inequality in k does not preserve its sign.
+
+6. Fully regular finite matrix statement of the remaining comparison
+
+For any Hermitian moment sequence Z=(Z_0,...,Z_4), write B(Z,nu) for the
+Hermitian 3-by-3 block matrix, in the jet order (g,Dg,D^2g), with lower
+triangular entries
+
+  B00=Z0+|nu|^2 Z2/2+|nu|^4 Z4/4,
+  B10=nu*(Z1+|nu|^2 Z3)/2,
+  B20=nu^2 Z2/4,
+  B11=Z0/2+|nu|^2 Z2,
+  B21=nu Z1/2,
+  B22=Z0/4.
+
+The upper entries are Hermitian adjoints. Then, exactly,
+  E_F=integral jet(g)^* B(K,nu) jet(g) dk,
+  H_E=integral jet(g)^* B(H,nu) jet(g) dk,
+  partial_L E_F=integral jet(g)^* partial_L B(K,nu) jet(g) dk,
+where K_m are held fixed in the last derivative and dnu/dL=1.
+The required whole physical response estimate, apart from the separately
+controlled -4ell E_F term, is precisely
+
+  integral jet(g)^* [kappa*partial_L B(K,nu)-delta*B(H,nu)] jet(g) dk
+       <= C*fraction * integral jet(g)^* B(K,nu) jet(g) dk.
+
+It is required only for the actual original finite profiles and their linked
+first/second k derivatives. A pointwise-in-k block Loewner inequality would
+be a sufficient stronger result, but it has NOT been proved here and cannot
+be assumed by treating the jets as independent. The exact decomposition
+above permits investigation through the positive matrices Sigma,Omega and
+the metric connections, retaining the missing neutral uncertainty. Neither
+H_0>=cK nor the scalar polarized Mellin pairing estimate alone supplies the
+needed comparison between those connections/curvatures for K and H.
+
+7. Status and provenance
+
+New exact positive moment/connection identities derived analytically. The
+unrestricted state-independent response estimate remains OPEN; no original
+admissible counterexample is produced. This note is research evidence only,
+not a Lean theorem or a numerical scan. No compiler or process is live.
+
+Authoritative predecessor SHA256:
+  b6b472c6af208ccdd67214c196016de5439e98457a014e5380b5182063755d8a.
+Related positive-angular note SHA256:
+  181a8a3d6299c1b03b422578b0d1d758028b1607bec637ed7e7dab3156dcb1fa.
+Related enlarged-block diagnostic SHA256:
+  abaa9550e33312d9027549707743ad05fef94f60f5612048d6785976a79ac867.

@@ -1,0 +1,674 @@
+{
+  "stencils": {
+    "exact_integer_BG_zero": true,
+    "x_check_supports": [
+      6,
+      6,
+      6
+    ],
+    "z_check_support": 27,
+    "checks_per_tensor_component": [
+      7,
+      7,
+      7,
+      8,
+      8,
+      8
+    ],
+    "maximum_stencil_l1_offset": 2,
+    "x_stencil": [
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      }
+    ],
+    "z_stencil": [
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": -2
+      }
+    ]
+  },
+  "finite_fields": {
+    "rows": [
+      {
+        "prime": 3,
+        "length": 2,
+        "vertices": 8,
+        "qudits": 48,
+        "x_rank": 21,
+        "z_rank": 7,
+        "encoded_qudits": 20,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 3,
+        "length": 4,
+        "vertices": 64,
+        "qudits": 384,
+        "x_rank": 189,
+        "z_rank": 63,
+        "encoded_qudits": 132,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 5,
+        "length": 2,
+        "vertices": 8,
+        "qudits": 48,
+        "x_rank": 21,
+        "z_rank": 7,
+        "encoded_qudits": 20,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 5,
+        "length": 3,
+        "vertices": 27,
+        "qudits": 162,
+        "x_rank": 78,
+        "z_rank": 26,
+        "encoded_qudits": 58,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 5,
+        "length": 4,
+        "vertices": 64,
+        "qudits": 384,
+        "x_rank": 189,
+        "z_rank": 63,
+        "encoded_qudits": 132,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 7,
+        "length": 2,
+        "vertices": 8,
+        "qudits": 48,
+        "x_rank": 21,
+        "z_rank": 7,
+        "encoded_qudits": 20,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 7,
+        "length": 3,
+        "vertices": 27,
+        "qudits": 162,
+        "x_rank": 78,
+        "z_rank": 26,
+        "encoded_qudits": 58,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 7,
+        "length": 4,
+        "vertices": 64,
+        "qudits": 384,
+        "x_rank": 189,
+        "z_rank": 63,
+        "encoded_qudits": 132,
+        "coprime_fourier_hypothesis": true,
+        "adjacent_scalar_pair_allowed": true
+      },
+      {
+        "prime": 3,
+        "length": 3,
+        "vertices": 27,
+        "qudits": 162,
+        "x_rank": 75,
+        "z_rank": 23,
+        "encoded_qudits": 64,
+        "coprime_fourier_hypothesis": false,
+        "adjacent_scalar_pair_allowed": false
+      }
+    ],
+    "scope": "Exact integer stencil composition and exact modular ranks, without constructing the exponentially large many-spin Hilbert space. Encoded qudits are degenerate states, not propagating graviton modes."
+  },
+  "spin_embedding": {
+    "exact_dicke_isometry": true,
+    "exact_spin_two_projector": true,
+    "exact_quintet_weyl_algebra": true,
+    "two_cell_dimension": 256,
+    "guarded_check_commutator_norm": 5.068564890956723e-16,
+    "unguarded_extension_commutator_norm": 1.1755705045849476,
+    "guarded_parent_spectrum_error": 9.769962616701378e-15,
+    "spectrum": [
+      {
+        "energy": 0,
+        "multiplicity": 1
+      },
+      {
+        "energy": 0.4,
+        "multiplicity": 8
+      },
+      {
+        "energy": 0.8,
+        "multiplicity": 16
+      },
+      {
+        "energy": 1.7,
+        "multiplicity": 110
+      },
+      {
+        "energy": 3.4,
+        "multiplicity": 121
+      }
+    ],
+    "scope": "Exact quintet embedding plus a full 256-state guarded-parent check. Guarding is necessary: identity extensions of Weyl operators do not preserve cancellations in partially inactive spin sectors."
+  },
+  "wave_benchmark": {
+    "rows": [
+      {
+        "length": 3,
+        "nonzero_momenta": 26,
+        "zero_corners": 1,
+        "maximum_staggered_symbol_error": 7.40467540609883e-15,
+        "maximum_reduced_wave_error": 3.22073763727223e-15,
+        "constraint_rank": 4
+      },
+      {
+        "length": 4,
+        "nonzero_momenta": 63,
+        "zero_corners": 1,
+        "maximum_staggered_symbol_error": 3.66205343881779e-15,
+        "maximum_reduced_wave_error": 7.20999291977096e-15,
+        "constraint_rank": 4
+      },
+      {
+        "length": 5,
+        "nonzero_momenta": 124,
+        "zero_corners": 1,
+        "maximum_staggered_symbol_error": 7.114373388423989e-15,
+        "maximum_reduced_wave_error": 5.378034462868996e-15,
+        "constraint_rank": 4
+      },
+      {
+        "length": 8,
+        "nonzero_momenta": 511,
+        "zero_corners": 1,
+        "maximum_staggered_symbol_error": 7.672601558002837e-15,
+        "maximum_reduced_wave_error": 9.579406596854105e-15,
+        "constraint_rank": 4
+      }
+    ],
+    "scope": "Separate continuous canonical Fierz-Pauli benchmark with the same stencils. Its nonzero-momentum quotient has two positive waves. No dynamical Hamiltonian on the finite-qudit code is derived, and homogeneous metric modes are excluded from the positive wave statement."
+  },
+  "wave_stencil_locality": {
+    "rows": [
+      {
+        "operator": "kinetic",
+        "laurent_terms": 12,
+        "maximum_integer_l1_offset": 2
+      },
+      {
+        "operator": "potential",
+        "laurent_terms": 75,
+        "maximum_integer_l1_offset": 3
+      }
+    ],
+    "integer_translation_powers_only": true,
+    "scope": "Exact finite-range certificates for the separate continuous canonical benchmark; these energy forms are not added to the compact spin parent."
+  },
+  "source_sha256": {
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "scripts/compact_tensor_constraint_audit.py": "8af5c69d28cedea8fb19b8726212aa2b2a4a2ab36a5998db628d56659a1c40c1",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "MICROSCOPIC_SPIN_TWO_SEED.md": "0f5c2db9e104a824d00d6acc4247786b7fd573ada0a4a5024b7b6ce027938045",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "A newly engineered local finite-spin constraint parent with a uniform excitation-gap lower bound, and a separate continuous linear-wave benchmark. No propagating modes of the compact parent, nonlinear clock algebra, gravitational phase, or TOE are proved."
+}

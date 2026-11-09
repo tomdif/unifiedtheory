@@ -1,0 +1,315 @@
+{
+  "exact": {
+    "canonical_intertwiner_coefficients": true,
+    "clock_defect_identity": true,
+    "exact_seven_state_clock_commutators": true,
+    "coherent_block_rate_ratio": "((R-1)/R)*((R-n)/(R+n))-5/(4R), n=|alpha|^2",
+    "required_positive_clock_interaction": "u^2/(8*T^2)",
+    "interaction_clock_force": "u^2/(4*T^3)",
+    "scope": "The required autonomous interaction is a proposed model change. It exerts a clock force; treating T as an exact prescribed time would omit backreaction. The Lean obstruction concerns pointwise linear canonical maps and monotone time changes of the massless free parent."
+  },
+  "canonical_clock": {
+    "cases": [
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 10.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.055720879019457714,
+        "bound": 0.2
+      },
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 10.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.22245112585562662,
+        "bound": 0.8
+      },
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 100.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.005050628515176263,
+        "bound": 0.02
+      },
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 100.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.020202191972130894,
+        "bound": 0.08
+      },
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 1000.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.0005005006206523026,
+        "bound": 0.002
+      },
+      {
+        "sites": 8,
+        "energy_band_dimension": 14,
+        "total_energy": 1000.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.002002002169169394,
+        "bound": 0.008
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 10.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.055720879019457714,
+        "bound": 0.2
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 10.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.22245112585562662,
+        "bound": 0.8
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 100.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.005050628515176263,
+        "bound": 0.02
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 100.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.020202191972130894,
+        "bound": 0.08
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 1000.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.0005005006206523026,
+        "bound": 0.002
+      },
+      {
+        "sites": 32,
+        "energy_band_dimension": 62,
+        "total_energy": 1000.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.002002002169169394,
+        "bound": 0.008
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 10.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.055720879019457714,
+        "bound": 0.2
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 10.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.22245112585562662,
+        "bound": 0.8
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 100.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.005050628515176263,
+        "bound": 0.02
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 100.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.020202191972130894,
+        "bound": 0.08
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 1000.0,
+        "time": 0.5,
+        "entire_band_operator_error": 0.0005005006206523026,
+        "bound": 0.002
+      },
+      {
+        "sites": 128,
+        "energy_band_dimension": 254,
+        "total_energy": 1000.0,
+        "time": 2.0,
+        "entire_band_operator_error": 0.002002002169169394,
+        "bound": 0.008
+      }
+    ],
+    "scope": "Exact diagonal conditional evolution for a canonical free clock on a fixed total-energy shell. These are generalized stationary clock states. This is not a preparation or conditioning theorem for finite-R spin packets. The bound depends on total system energy, not on the number of modes."
+  },
+  "finite_spin_clock": {
+    "cases": [
+      {
+        "R": 2,
+        "full_collective_dimension": 28,
+        "full_space_retained": true,
+        "initial_momentum": 0.8278323291940068,
+        "initial_clock_rate": -0.2851983329235448,
+        "canonical_initial_rate": 0.8278323291940068,
+        "exact_rate_ratio": -0.3445121951219512,
+        "relative_initial_rate_error": 1.3445121951219512,
+        "relative_initial_rate_bound": 1.6875,
+        "time": 0.5,
+        "clock_position": -0.14193439608188319,
+        "canonical_clock_position": 0.4139161645970034,
+        "position_error": 0.5558505606788866
+      },
+      {
+        "R": 4,
+        "full_collective_dimension": 210,
+        "full_space_retained": true,
+        "initial_momentum": 0.929893849231624,
+        "initial_clock_rate": 0.2348618882905215,
+        "canonical_initial_rate": 0.929893849231624,
+        "exact_rate_ratio": 0.25256849315068497,
+        "relative_initial_rate_error": 0.747431506849315,
+        "relative_initial_rate_bound": 0.84375,
+        "time": 0.5,
+        "clock_position": 0.10506766862985283,
+        "canonical_clock_position": 0.464946924615812,
+        "position_error": 0.35987925598595916
+      },
+      {
+        "R": 8,
+        "full_collective_dimension": 3003,
+        "full_space_retained": true,
+        "initial_momentum": 0.9909817663344315,
+        "initial_clock_rate": 0.5983414086421626,
+        "canonical_initial_rate": 0.9909817663344315,
+        "exact_rate_ratio": 0.603786496350365,
+        "relative_initial_rate_error": 0.39621350364963503,
+        "relative_initial_rate_bound": 0.421875,
+        "time": 0.5,
+        "clock_position": 0.2853573914207555,
+        "canonical_clock_position": 0.49549088316721573,
+        "position_error": 0.21013349174646023
+      },
+      {
+        "R": 16,
+        "full_collective_dimension": 74613,
+        "full_space_retained": true,
+        "initial_momentum": 1.02463775085145,
+        "initial_clock_rate": 0.8152999084752546,
+        "canonical_initial_rate": 1.02463775085145,
+        "exact_rate_ratio": 0.7956957547169812,
+        "relative_initial_rate_error": 0.20430424528301883,
+        "relative_initial_rate_bound": 0.2109375,
+        "time": 0.5,
+        "clock_position": 0.39770362889004,
+        "canonical_clock_position": 0.512318875425725,
+        "position_error": 0.11461524653568494
+      }
+    ],
+    "scope": "Complete six-flavor symmetric block, massless homogeneous kinetic Hamiltonian U sum P_alpha^2/2. This probes the actual collective spin clock mechanism on normalizable states. It is a one-block diagnostic with zero tensor penalty, not a finite-volume tensor-clock factorization or a uniform R theorem."
+  },
+  "periodic_metric": {
+    "cases": [
+      {
+        "sites": 8,
+        "spacing": 0.7853981633974483,
+        "source_sum": 0.0,
+        "continuity_error": 4.5102810375396984e-17,
+        "metric_log_amplitude": 0.014274114758541573,
+        "energy_bound": 0.0748730142316187
+      },
+      {
+        "sites": 16,
+        "spacing": 0.39269908169872414,
+        "source_sum": 8.673617379884035e-19,
+        "continuity_error": 3.707971429900425e-17,
+        "metric_log_amplitude": 0.01696043512720486,
+        "energy_bound": 0.09688549169709504
+      },
+      {
+        "sites": 32,
+        "spacing": 0.19634954084936207,
+        "source_sum": -3.469446951953614e-18,
+        "continuity_error": 5.0306980803327406e-17,
+        "metric_log_amplitude": 0.019326811219528728,
+        "energy_bound": 0.10402860887081931
+      },
+      {
+        "sites": 64,
+        "spacing": 0.09817477042468103,
+        "source_sum": -1.3010426069826053e-18,
+        "continuity_error": 4.0657581468206416e-17,
+        "metric_log_amplitude": 0.020465453207175775,
+        "energy_bound": 0.10593524892102353
+      },
+      {
+        "sites": 128,
+        "spacing": 0.04908738521234052,
+        "source_sum": 9.75781955236954e-19,
+        "continuity_error": 5.228564976811345e-17,
+        "metric_log_amplitude": 0.021059782791823526,
+        "energy_bound": 0.10641978200177354
+      }
+    ],
+    "scope": "Constructed periodic longitudinal log metric for the supplied reduced momentum constraint. Exact discrete flux uses p_j p_(j+1), not p_j^2; a continuum Leibniz rule was not imposed on the lattice. Clock/Einstein selection is separate."
+  },
+  "autonomous_completion": {
+    "cases": [
+      {
+        "clock_mass": 8.0,
+        "initial_wave_energy": 0.030000000000000006,
+        "maximum_clock_rate_error": 0.003771226456991128,
+        "proved_rate_bound": 0.015000000000000003,
+        "trajectory_error": 0.0015536920355795395,
+        "total_energy_error": 3.241851231905457e-14
+      },
+      {
+        "clock_mass": 32.0,
+        "initial_wave_energy": 0.030000000000000006,
+        "maximum_clock_rate_error": 0.0009388204226967733,
+        "proved_rate_bound": 0.0037500000000000007,
+        "trajectory_error": 0.00038695479782824884,
+        "total_energy_error": 3.552713678800501e-14
+      },
+      {
+        "clock_mass": 128.0,
+        "initial_wave_energy": 0.030000000000000006,
+        "maximum_clock_rate_error": 0.00023445742966066163,
+        "proved_rate_bound": 0.0009375000000000002,
+        "trajectory_error": 9.664739468881588e-05,
+        "total_energy_error": 4.973799150320701e-14
+      },
+      {
+        "clock_mass": 512.0,
+        "initial_wave_energy": 0.030000000000000006,
+        "maximum_clock_rate_error": 5.8598900344319915e-05,
+        "proved_rate_bound": 0.00023437500000000005,
+        "trajectory_error": 2.415614924922172e-05,
+        "total_energy_error": 1.1368683772161603e-13
+      }
+    ],
+    "scope": "Revised positive canonical Hamiltonian with an explicit u^2/(8T^2) clock interaction. T and Pc are dynamical; their force and feedback are included. This is a one-mode numerical trajectory diagnostic, not an implementation in the original spin Hamiltonian or a frequency-uniform trajectory convergence theorem."
+  },
+  "source_sha256": {
+    "scripts/internal_clock_metric_audit.py": "2849eeb4ead6f85c6a386d1a41057281e0fa743f538a3cfb71f8a3eb7b6bb7cf",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalInternalClock.lean": "8d4d6a32d0b2b27ffbc704664c7ac328e2d39abf589dc18a7f04712564198f60",
+    "UnifiedTheory/Audit/KFCausalLocalClockObstruction.lean": "85a093246557c6c6a38b7c4db32ff556a9780cc1f2552d14d1d07760d0d3754a",
+    "UnifiedTheory/Audit/KFCausalPeriodicMetricReconstruction.lean": "4652bce71f44707dc6f22a3556d60db747c696faccbdb09153ce389f5524de1b",
+    "UnifiedTheory/Audit/KFCausalAutonomousArealClock.lean": "8209e9d69e252b42aedcc3465c199c3ba58c1449f553428d33b6af7ad9ec8d47"
+  }
+}

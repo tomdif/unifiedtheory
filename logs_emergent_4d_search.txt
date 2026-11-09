@@ -1,0 +1,1 @@
+[    0.0s] NBIG=55 NPATH=30; scanning 7 phases

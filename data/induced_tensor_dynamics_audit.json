@@ -1,0 +1,609 @@
+{
+  "symbolic": {
+    "positive_stencil_identity": true,
+    "strict_speed_deficit_identity": true,
+    "tensor_temporal_gram_kernel_dimension": 0
+  },
+  "frequency_integral": {
+    "cases": [
+      {
+        "a": 0.8153284059455121,
+        "b": 2.9096735640885254,
+        "frequency": 1.325801334654188,
+        "absolute_error": 0.0,
+        "quadrature_error": 1.655289221149909e-13
+      },
+      {
+        "a": 2.4511536778656446,
+        "b": 2.808094105446726,
+        "frequency": 0.5811032652651256,
+        "absolute_error": 1.734723475976807e-18,
+        "quadrature_error": 1.9551324537859412e-13
+      },
+      {
+        "a": 2.3042753936311557,
+        "b": 2.2248859455290737,
+        "frequency": 1.2055818403689842,
+        "absolute_error": 0.0,
+        "quadrature_error": 2.391002485127355e-16
+      },
+      {
+        "a": 1.8043911633068848,
+        "b": 1.8619533603597842,
+        "frequency": 0.8230244367114323,
+        "absolute_error": 0.0,
+        "quadrature_error": 1.0239899836078195e-13
+      },
+      {
+        "a": 0.9705826949109186,
+        "b": 2.002953775988346,
+        "frequency": 0.4754358816936026,
+        "absolute_error": 1.3877787807814457e-17,
+        "quadrature_error": 3.0756229430781646e-14
+      },
+      {
+        "a": 1.6422174122554631,
+        "b": 0.29115177453996577,
+        "frequency": 1.063673300406392,
+        "absolute_error": 0.0,
+        "quadrature_error": 1.9812864550626688e-12
+      },
+      {
+        "a": 2.024707749798009,
+        "b": 1.5447748223393183,
+        "frequency": 0.7799412969265134,
+        "absolute_error": 6.938893903907228e-18,
+        "quadrature_error": 5.504506593629615e-13
+      },
+      {
+        "a": 1.1598325149102957,
+        "b": 1.5865662797329274,
+        "frequency": 1.7156167625005618,
+        "absolute_error": 1.3877787807814457e-17,
+        "quadrature_error": 2.5128008383996506e-14
+      },
+      {
+        "a": 0.6405815075269018,
+        "b": 0.5358268703203906,
+        "frequency": 1.609758865296175,
+        "absolute_error": 5.551115123125783e-17,
+        "quadrature_error": 4.253791146969867e-13
+      },
+      {
+        "a": 0.948897765076588,
+        "b": 1.6948639082893788,
+        "frequency": 0.3228307480179011,
+        "absolute_error": 0.0,
+        "quadrature_error": 6.654891080766494e-15
+      },
+      {
+        "a": 0.911555873276243,
+        "b": 0.20960970088318764,
+        "frequency": 0.6035235742310596,
+        "absolute_error": 0.0,
+        "quadrature_error": 2.651710987162051e-12
+      },
+      {
+        "a": 0.8126062941728867,
+        "b": 2.806506161493623,
+        "frequency": 0.7770281852327858,
+        "absolute_error": 1.3877787807814457e-17,
+        "quadrature_error": 3.191157947292071e-13
+      },
+      {
+        "a": 1.168920903672454,
+        "b": 1.3176688080508543,
+        "frequency": 0.6362597600658018,
+        "absolute_error": 2.7755575615628914e-17,
+        "quadrature_error": 2.735414657430469e-13
+      },
+      {
+        "a": 0.4879591621213242,
+        "b": 0.5503825048900359,
+        "frequency": 0.2025291192951164,
+        "absolute_error": 2.220446049250313e-16,
+        "quadrature_error": 1.7308761156360935e-12
+      },
+      {
+        "a": 1.8951246004852191,
+        "b": 2.588626350945615,
+        "frequency": 0.9495049650692626,
+        "absolute_error": 3.469446951953614e-18,
+        "quadrature_error": 2.560069701800825e-13
+      },
+      {
+        "a": 2.660457650495036,
+        "b": 0.834909869498665,
+        "frequency": 0.03728960101378753,
+        "absolute_error": 1.3877787807814457e-17,
+        "quadrature_error": 6.409594787712919e-14
+      }
+    ]
+  },
+  "coefficients": {
+    "infinite_volume": [
+      {
+        "mass": 0.0,
+        "polarization": "plus",
+        "mass_shift": -0.003694532036139843,
+        "time_coefficient": 0.00047040549129068063,
+        "space_coefficient": 0.00034219673682733294,
+        "speed": 0.8529071211836539,
+        "estimated_coefficient_errors": [
+          1.2063267051942717e-14,
+          1.5933435126846973e-15,
+          6.232644608750171e-15
+        ],
+        "normalization": "One real scalar and unit squared source coupling; lattice spacing and scalar acoustic speed are one."
+      },
+      {
+        "mass": 0.0,
+        "polarization": "cross",
+        "mass_shift": -0.01178192585542631,
+        "time_coefficient": 0.0009768547166092492,
+        "space_coefficient": 0.0006009366612778087,
+        "speed": 0.7843309648565058,
+        "estimated_coefficient_errors": [
+          9.63812363252714e-14,
+          6.0344524516198206e-15,
+          2.3582481453732207e-15
+        ],
+        "normalization": "One real scalar and unit squared source coupling; lattice spacing and scalar acoustic speed are one."
+      },
+      {
+        "mass": 0.2,
+        "polarization": "plus",
+        "mass_shift": -0.003590416800295274,
+        "time_coefficient": 0.0004071643575364976,
+        "space_coefficient": 0.0002835192503221431,
+        "speed": 0.8344616823907053,
+        "estimated_coefficient_errors": [
+          4.002223899512991e-14,
+          6.722144034056521e-15,
+          9.108916044606895e-16
+        ],
+        "normalization": "One real scalar and unit squared source coupling; lattice spacing and scalar acoustic speed are one."
+      },
+      {
+        "mass": 0.2,
+        "polarization": "cross",
+        "mass_shift": -0.011558453313224613,
+        "time_coefficient": 0.0008957147617006632,
+        "space_coefficient": 0.0005293357494520418,
+        "speed": 0.7687422438634649,
+        "estimated_coefficient_errors": [
+          2.521420572332289e-14,
+          3.822354759097646e-15,
+          3.255009237635471e-15
+        ],
+        "normalization": "One real scalar and unit squared source coupling; lattice spacing and scalar acoustic speed are one."
+      }
+    ],
+    "brillouin_zone_checks": [
+      {
+        "points_per_axis": 24,
+        "mass": 0.0,
+        "polarization": "plus",
+        "coefficients": [
+          -0.003692324660417714,
+          0.0004520104829814717,
+          0.0003250436990972754
+        ],
+        "absolute_errors": [
+          2.20737572212892e-06,
+          1.839500830920894e-05,
+          1.7153037730057526e-05
+        ]
+      },
+      {
+        "points_per_axis": 24,
+        "mass": 0.0,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011783470886065003,
+          0.000986149294657797,
+          0.0006392126924179247
+        ],
+        "absolute_errors": [
+          1.5450306386933371e-06,
+          9.294578048547799e-06,
+          3.827603114011594e-05
+        ]
+      },
+      {
+        "points_per_axis": 24,
+        "mass": 0.2,
+        "polarization": "plus",
+        "coefficients": [
+          -0.0035898714410686422,
+          0.0004045101569373632,
+          0.00028122009260339
+        ],
+        "absolute_errors": [
+          5.453592266317468e-07,
+          2.654200599134409e-06,
+          2.2991577187530827e-06
+        ]
+      },
+      {
+        "points_per_axis": 24,
+        "mass": 0.2,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011558771255486947,
+          0.0008975856382144744,
+          0.0005334353388163289
+        ],
+        "absolute_errors": [
+          3.1794226233380907e-07,
+          1.8708765138112466e-06,
+          4.0995893642871125e-06
+        ]
+      },
+      {
+        "points_per_axis": 40,
+        "mass": 0.0,
+        "polarization": "plus",
+        "coefficients": [
+          -0.0036942474482671785,
+          0.0004637557487785067,
+          0.00033597681149794033
+        ],
+        "absolute_errors": [
+          2.845878726643117e-07,
+          6.649742512173935e-06,
+          6.219925329392607e-06
+        ]
+      },
+      {
+        "points_per_axis": 40,
+        "mass": 0.0,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011782124449176782,
+          0.0009801940785313752,
+          0.0006147845951187299
+        ],
+        "absolute_errors": [
+          1.9859375047226457e-07,
+          3.339361922125939e-06,
+          1.384793384092114e-05
+        ]
+      },
+      {
+        "points_per_axis": 40,
+        "mass": 0.2,
+        "polarization": "plus",
+        "coefficients": [
+          -0.0035904056918458866,
+          0.0004070472472235474,
+          0.00028342025347006584
+        ],
+        "absolute_errors": [
+          1.1108449387339098e-08,
+          1.1711031295017979e-07,
+          9.899685207725474e-08
+        ]
+      },
+      {
+        "points_per_axis": 40,
+        "mass": 0.2,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011558457960299234,
+          0.0008957714809485924,
+          0.000529436728781323
+        ],
+        "absolute_errors": [
+          4.647074620944824e-09,
+          5.671924792924159e-08,
+          1.0097932928124654e-07
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "mass": 0.0,
+        "polarization": "plus",
+        "coefficients": [
+          -0.0036944886876949874,
+          0.00046780425065262707,
+          0.0003397610347909277
+        ],
+        "absolute_errors": [
+          4.334844485535255e-08,
+          2.601240638053562e-06,
+          2.435702036405259e-06
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "mass": 0.0,
+        "polarization": "cross",
+        "coefficients": [
+          -0.01178195607292771,
+          0.000978158251885119,
+          0.0006063551695719733
+        ],
+        "absolute_errors": [
+          3.021750140039248e-08,
+          1.3035352758696602e-06,
+          5.418508294164552e-06
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "mass": 0.2,
+        "polarization": "plus",
+        "coefficients": [
+          -0.0035904167426983567,
+          0.000407163208771099,
+          0.00028351826678019013
+        ],
+        "absolute_errors": [
+          5.759691725296112e-11,
+          1.148765398615876e-09,
+          9.835419529594797e-10
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "mass": 0.2,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011558453329338815,
+          0.0008957151134102502,
+          0.0005293363087765374
+        ],
+        "absolute_errors": [
+          1.6114201986661136e-11,
+          3.517095870184811e-10,
+          5.593244955734433e-10
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "mass": 0.0,
+        "polarization": "plus",
+        "coefficients": [
+          -0.00369452347880821,
+          0.000469248801251367,
+          0.0003411132436791567
+        ],
+        "absolute_errors": [
+          8.557331632793458e-09,
+          1.1566900393136532e-06,
+          1.0834931481762422e-06
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "mass": 0.0,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011781931818310845,
+          0.0009774339222957552,
+          0.000603346335799331
+        ],
+        "absolute_errors": [
+          5.962884535096191e-09,
+          5.792056865059226e-07,
+          2.409674521522279e-06
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "mass": 0.2,
+        "polarization": "plus",
+        "coefficients": [
+          -0.003590416800225459,
+          0.0004071643552371541,
+          0.0002835192482717043
+        ],
+        "absolute_errors": [
+          6.981481365242459e-14,
+          2.299343495552192e-12,
+          2.050438811795896e-12
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "mass": 0.2,
+        "polarization": "cross",
+        "coefficients": [
+          -0.011558453313238135,
+          0.0008957147621718361,
+          0.000529335750177781
+        ],
+        "absolute_errors": [
+          1.3522169495239211e-14,
+          4.711729053794023e-13,
+          7.257392386703088e-13
+        ]
+      }
+    ],
+    "scope": "Independent adaptive one-dimensional Bessel integrals and three-dimensional midpoint quadrature. Error estimates are floating-point quadrature estimates, not interval certificates."
+  },
+  "independent_response": {
+    "cases": [
+      {
+        "polarization": "plus",
+        "amplitude": 0.004,
+        "exact_vacuum_curvature": -0.0035904186423217424,
+        "bubble_curvature": -0.0035904167426983567
+      },
+      {
+        "polarization": "plus",
+        "amplitude": 0.002,
+        "exact_vacuum_curvature": -0.0035904172176034095,
+        "bubble_curvature": -0.0035904167426983567
+      },
+      {
+        "polarization": "plus",
+        "frequency": 0.02,
+        "frequency_difference_coefficient": 0.0004071194064082263,
+        "limit": 0.000407163208771099
+      },
+      {
+        "polarization": "plus",
+        "frequency": 0.01,
+        "frequency_difference_coefficient": 0.0004071522557539008,
+        "limit": 0.000407163208771099
+      },
+      {
+        "polarization": "plus",
+        "frequency": 0.005,
+        "frequency_difference_coefficient": 0.000407160470365057,
+        "limit": 0.000407163208771099
+      },
+      {
+        "polarization": "cross",
+        "amplitude": 0.004,
+        "exact_vacuum_curvature": -0.011558462265599263,
+        "bubble_curvature": -0.011558453329338815
+      },
+      {
+        "polarization": "cross",
+        "amplitude": 0.002,
+        "exact_vacuum_curvature": -0.011558455563399886,
+        "bubble_curvature": -0.011558453329338815
+      },
+      {
+        "polarization": "cross",
+        "frequency": 0.02,
+        "frequency_difference_coefficient": 0.0008956543704180415,
+        "limit": 0.0008957151134102502
+      },
+      {
+        "polarization": "cross",
+        "frequency": 0.01,
+        "frequency_difference_coefficient": 0.00089569992501155,
+        "limit": 0.0008957151134102502
+      },
+      {
+        "polarization": "cross",
+        "frequency": 0.005,
+        "frequency_difference_coefficient": 0.0008957113161448188,
+        "limit": 0.0008957151134102502
+      }
+    ]
+  },
+  "temporal_gram": {
+    "eigenvalues": [
+      0.00020356961876738343,
+      0.00020356961876738462,
+      0.000447862496976319,
+      0.00044786249697631903,
+      0.0004478624969763191,
+      0.0008753633642318626
+    ],
+    "rank": 6,
+    "scope": "The full six-component temporal response is positive definite. It supplies no gauge null directions or first-class gravitational constraints."
+  },
+  "tuned_gaussian_poles": {
+    "cases": [
+      {
+        "polarization": "plus",
+        "momentum": 0.4,
+        "frequency": 0.33855679605503697,
+        "speed": 0.8463919901375924,
+        "two_scalar_threshold": 0.39733866159012243,
+        "inverse_propagator_residual": 8.673617379884035e-19,
+        "positive_kinetic_residue_inverse": 0.00045355147527392477
+      },
+      {
+        "polarization": "cross",
+        "momentum": 0.4,
+        "frequency": 0.31103533756641233,
+        "speed": 0.7775883439160308,
+        "two_scalar_threshold": 0.39733866159012243,
+        "inverse_propagator_residual": 8.673617379884035e-18,
+        "positive_kinetic_residue_inverse": 0.0009520683667450577
+      },
+      {
+        "polarization": "plus",
+        "momentum": 0.2,
+        "frequency": 0.17017675522296621,
+        "speed": 0.850883776114831,
+        "two_scalar_threshold": 0.1996668332936563,
+        "inverse_propagator_residual": 8.673617379884035e-19,
+        "positive_kinetic_residue_inverse": 0.0004644812911630307
+      },
+      {
+        "polarization": "cross",
+        "momentum": 0.2,
+        "frequency": 0.15648903160061192,
+        "speed": 0.7824451580030596,
+        "two_scalar_threshold": 0.1996668332936563,
+        "inverse_propagator_residual": 5.204170427930421e-18,
+        "positive_kinetic_residue_inverse": 0.0009686393143477529
+      },
+      {
+        "polarization": "plus",
+        "momentum": 0.1,
+        "frequency": 0.08520851522030992,
+        "speed": 0.8520851522030992,
+        "two_scalar_threshold": 0.09995833854135666,
+        "inverse_propagator_residual": 1.734723475976807e-18,
+        "positive_kinetic_residue_inverse": 0.0004679716207554659
+      },
+      {
+        "polarization": "cross",
+        "momentum": 0.1,
+        "frequency": 0.07838034853468105,
+        "speed": 0.7838034853468104,
+        "two_scalar_threshold": 0.09995833854135666,
+        "inverse_propagator_residual": 1.734723475976807e-18,
+        "positive_kinetic_residue_inverse": 0.0009748512362051836
+      },
+      {
+        "polarization": "plus",
+        "momentum": 0.05,
+        "frequency": 0.042618795374214875,
+        "speed": 0.8523759074842975,
+        "two_scalar_threshold": 0.049994791829424665,
+        "inverse_propagator_residual": 4.336808689942018e-19,
+        "positive_kinetic_residue_inverse": 0.0004689246176643601
+      },
+      {
+        "polarization": "cross",
+        "momentum": 0.05,
+        "frequency": 0.03919602343584964,
+        "speed": 0.7839204687169927,
+        "two_scalar_threshold": 0.049994791829424665,
+        "inverse_propagator_residual": 1.734723475976807e-18,
+        "positive_kinetic_residue_inverse": 0.0009768538678868693
+      }
+    ],
+    "scope": "Poles of a deliberately mass-tuned Gaussian collective-source model built from the exact scalar response. This does not establish a pole, critical phase, or mass tuning in the full spin-field Hamiltonian."
+  },
+  "isolated_spin_reference": {
+    "cases": [
+      {
+        "polarization": "plus",
+        "coupling": 0.5,
+        "reference_critical_spin_gap": 0.0018472660180699214,
+        "reference_speed": 0.0005621957527353037
+      },
+      {
+        "polarization": "cross",
+        "coupling": 0.5,
+        "reference_critical_spin_gap": 0.005890962927713155,
+        "reference_speed": 0.001330429518534735
+      }
+    ],
+    "scope": "A susceptibility-matching reference, not a controlled proof of the interacting critical spin phase. One common bare gap cannot satisfy both polarization tunings here."
+  },
+  "source_sha256": {
+    "INDUCED_TENSOR_DYNAMICS.md": "1ddfe381a4d759277f9f342d316cde877d11f69c1dd059ac01e32525786ea6e7",
+    "scripts/induced_tensor_dynamics_audit.py": "81f3efaa8e407e89604be7bc508d5cb0af825750c2581d704d3b2a46b6c3da77",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "scripts/spin_clock_bracket_audit.py": "184bd8d42f7cfe2e58088e21f61125416abfb5521900eafc344844692d340996",
+    "INDUCED_GEOMETRY_INTERACTION.md": "087b5af9a4edfc13d1590741fd0e3426ba5f3224f77926b4c81534540696ad03",
+    "COLLECTIVE_GEOMETRY_STABILITY.md": "e763acd0a26a196694e7090aed2e376074d4cf82d1c92928699eb2cf9647eacf",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816"
+  },
+  "scope": "Scalar fluctuations induce positive shear derivative coefficients and mass-tuned Gaussian linear poles, but unequal subluminal speeds and a full-rank six-component response fail the Einstein matching test. A microscopic gravitational phase and TOE remain unproved."
+}

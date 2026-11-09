@@ -1,0 +1,52 @@
+/- Actual independent Wilson blocks and exact source integration. -/
+import UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks
+import UnifiedTheory.Clay.YangMills.WilsonBlockIntegration
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.Link
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.edgeCoord
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.edgeCoord_selected
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.selected_edgeCoord
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.incident
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.incident_affected
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.Independent
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.independent_unique
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.affected_preserves_parallel_coordinate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.parallelLine
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.parallelLine_independent
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.parallelLine_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.mem_affected_iff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.common_affected_parallel
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.independent_of_transverse_separation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.blockUpdate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.blockUpdate_selected
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.blockUpdate_outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.blockUpdate_singleton
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.plaquette_congr
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.plaquetteTerm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.term_update_unchanged
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.term_update_single
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.term_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.action_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentBlocks.weighted_plaquette_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.partition_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.log_partition_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.log_product_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.log_product_second_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.action
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.source
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.localAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.localSource
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.update_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.blockUpdate_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.source_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.localAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.localSource_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.action_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.source_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiberPartition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiberPartition_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiber_log_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiber_log_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiber_log_second_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiber_source_partition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockIntegration.fiber_covariance_eq_sum

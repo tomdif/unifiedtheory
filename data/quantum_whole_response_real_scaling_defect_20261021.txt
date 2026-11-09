@@ -1,0 +1,149 @@
+FULL MOMENT MATRIX: EXACT REAL-SCALING CANCELLATION AND REMAINING DEFECT
+2026-10-21. Analytic successor, NOT Lean verified.
+No frozen source, audit, evidence, or earlier analytic artifact is changed.
+
+1. Inputs and definitions
+
+Use the exact original finite real-width family, Fourier convention, positive
+moment matrices K_m, and full block matrix B(K,nu) in
+  whole-response-matrix-curvature-20261021.txt,
+SHA f6f4119d5f5736dd4a679addad5c548e1c8c6d372e277d56d6f4baa2ad4fbafd.
+In particular nu=L-i*eta, eta=2b, p=alpha*(a+ib)^2/2, D=i*d/dk,
+  E_F=integral jet(g)^* B(a,b,L;k) jet(g) dk,
+  jet(g)=(g,Dg,D^2g).
+The widths and actual neutral source/polynomial labels remain fixed under
+all geometry derivatives. Repeated widths can be merged. The strict Gaussian
+floor justifies the original raw integrals and their parameter derivatives.
+
+The actual clock identities used below are already proved in frozen
+  KFCausalJointFourierRealDilationClock.lean,
+especially rate_decomposition, corrected_velocity, corrected_field,
+real_dilation_bound, and zero_imaginary_rate. Their integrated/matrix
+attachment here is an analytic calculation, not an additional Lean theorem.
+
+2. Exact scaling, BEFORE integration against neutral jets
+
+For every t>0, with k fixed, changing u,v,Y to u/t,v/t,Y/t^2 gives
+  K_m(t*a,t*b;k)=t^(-m-4)*K_m(a,b;k).
+Indeed p scales by t^2 and eta by t, so the neutral Fourier tilt eta*k*v is
+unchanged; the spatial measure scales by t^-4. If L is also multiplied by t,
+then nu scales by t. Every block of the full B matrix consequently satisfies
+
+  B(t*a,t*b,t*L;k)=t^-4 B(a,b,L;k),
+  a*B_a+b*B_b+L*B_L=-4B.                       (1)
+
+This is an entrywise finite-matrix identity, not merely an integrated
+cancellation that assumes independent neutral jets. It retains all cross
+widths and the complete quartic form. It also uses no division by b or k.
+
+3. Actual combined clock generator and its small defect
+
+Write the actual complex velocity as rdot=delta+ell*r, with delta>0, and
+Ldot=-2*adot. Let
+  q=delta/a,
+  h=adot/a=ell+q,
+  chi=h/q.
+Then bdot=(h-q)*b and Ldot=-2ha. Substituting (1) gives the exact identity
+
+  Bdot=-4h B-q*[b B_b+3chi B_L].                (2)
+
+Thus the entire order-one field drift has already canceled. In the frozen
+normalized clock notation, with t=fraction,
+
+  q=t*radius(r)/denominator(1-t,t,r),
+  h=t*realNumerator(t,r)/(2*denominator(1-t,t,r)),
+  chi=realNumerator(t,r)/(2*radius(r)).
+
+The existing physical bounds imply
+  0<q<=20t,
+  |h|<=8t*b^2,
+  |chi|<=2b^2/radius(r)<=2b^2,
+  b^2<=1/2.
+Only the ACTUAL chi is intended here; replacing it by arbitrary parameters
+throughout this bounding interval is a stronger, unproved statement.
+
+A sufficient state-independent estimate is therefore precisely
+
+  integral jet(g)^* [b B_b+3chi B_L] jet(g) dk
+      >= -C*integral jet(g)^*B jet(g) dk.       (3)
+
+If (3) holds uniformly on the actual physical clock range and original finite
+families, (2) yields Bdot energy <=(16+20C)*t*E_F. All external normalizations
+multiply both sides. Formula (3) has NOT been established by this note.
+It is the current exact combined defect target, not a separated v^2 cooling
+condition or a statement about independent radial/angular blocks.
+
+4. Exact b=0 cancellation at the matrix level
+
+At b=0 the moments are v-even and K_m=0 for odd m. For even m,
+  K_m(a,0;k)=a^(-m-4)*K_m(1,0;k),
+and they are independent of k. With H_m=-partial_a K_m,
+  H_m=(m+4)K_m/a.
+Consequently the complete matrices satisfy
+  a*B(H,nu)-L*B_L=4B,
+or equivalently b B_b=0 at b=0. This statement is pointwise in k and already
+retains every neutral jet cross term.
+
+For the actual zero-imaginary clock one has a=1,b=0,h=0,chi=0,q=t, so the
+entire matrix Bdot vanishes. Neither the nonzero real charged derivative nor
+the nonzero order-one field term should be estimated separately there. The
+width-floor cooling obstruction is fully consistent with this cancellation.
+
+5. One further exact integrated null term; all original linkage preserved
+
+The b derivative changes eta=2b and nu=L-i*eta. Separate the nu change while
+holding the charged feature/tilt matrix fixed. In channel j its contribution
+to b*dE_j/db is
+
+  2j Re integral (-i*eta*v) h_(j-1)*conj(h_j) dk du dv dY.
+
+At each fixed charged point, Plancherel identifies
+  integral h_(j-1)*conj(h_j) dk
+with a real constant multiple of
+  integral (x+Lv)^(2j-1)|Phi(z,x+i*eta*v)|^2 dx.
+Therefore this nu-only contribution is exactly zero after the genuine k
+integration. This is a null term for the linked original derivatives, not a
+pointwise-in-k matrix identity, and not a license to replace g,Dg,D^2g by
+independent vectors.
+
+The remainder of b B_b includes BOTH charged imaginary motion and neutral
+tilt. If C_m denotes partial_b K_m with eta held fixed inside the tilt, then
+  b*partial_b K_m = b*C_m-2eta*k*K_(m+1).
+The pure tilt term is the derivative of exp(-2eta*k*v). At fixed charged
+radius its actual degree-j angular polynomial obeys the analytic Laurent
+support bound tiltDerivative >=-2j*channelEnergy. Summed over j<=2 this gives
+an exact degree cost at most4 times E_F. The already frozen Lean angular
+subestimate uses a larger absolute constant and is sufficient for that
+separate fact.
+
+Dropping the remaining charged imaginary term is not justified. Scalar j=0
+imaginary monotonicity concerns the SUM of charged motion and tilt; it does
+not assert the charged term alone is nonnegative for the weighted channels.
+Similarly the O(b^2) coefficient of B_L in (3) does not bound B_L/E uniformly:
+large neutral source/frequency/charged-width correlations may scale with b.
+These two steps remain genuine analytic obstacles, not missing algebra.
+
+6. Relation to the positive curvature decomposition
+
+The positive moment orthogonalization from the previous note expresses E_1
+and E_2 through the exact K, Sigma, Omega metric norms and their two
+connections T,T_1. The charged form has the analogous raw positive block
+B(H,nu). It follows from (1) that the matrix in (3) can equally be written
+
+  a*B(H,nu)-(L-3chi)*B_L-4B.                  (4)
+
+Thus a useful comparison must have the CRITICAL coefficient of L*B_L,
+including its cancellation with a*B(H,nu). A scalar lower bound H_0>=cK,
+a uniform v^2 lower bound (which is false), or positivity on independent
+radial blocks does not prove (3)/(4). A possible approach is a comparison
+of the two exact metric connections/curvatures retaining the linked
+neutral derivatives; no such uniform comparison is proved in this note.
+
+7. Status
+
+Exact full-matrix real-scaling identity and actual combined defect derived.
+The zero-imaginary cancellation is explicit before estimating. The precise
+remaining inequality is (3), on genuine original profiles and actual chi.
+The unrestricted response estimate is still OPEN. No original admissible
+response counterexample, new numerical evidence, Lean source, or compiler
+process was produced by this successor.

@@ -1,0 +1,421 @@
+{
+  "exact_identities": {
+    "covariant_momentum_preserves_constraint": true,
+    "canonical_commutator": true,
+    "kinetic_action_on_shifted_gaussian_exact": true,
+    "bare_induced_term": "hbar*lambda^2*q^2/mu",
+    "covariant_induced_term": 0,
+    "normal_gap": "hbar*lambda_min(M), independent of dressing lambda",
+    "R2_five_qubit_coefficient": "(1-cos(lambda))/8"
+  },
+  "unitary_response": [
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.12,
+      "bare_remainder": 0.00013415860796559494,
+      "covariant_remainder": 6.509220117011912e-05,
+      "quantum_correction_norm": 0.7187944049629363,
+      "embedding_compression_difference": 8.859669336361216e-06,
+      "covariance_identity_error": 4.929126132785201e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    },
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.06,
+      "bare_remainder": 1.3434217295264045e-05,
+      "covariant_remainder": 4.0809633401210495e-06,
+      "quantum_correction_norm": 0.7187944049629363,
+      "embedding_compression_difference": 5.585051881534486e-07,
+      "covariance_identity_error": 4.98489202710849e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    },
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.03,
+      "bare_remainder": 1.5911689450963271e-06,
+      "covariant_remainder": 2.552591875065385e-07,
+      "quantum_correction_norm": 0.7187944049629363,
+      "embedding_compression_difference": 3.4981749677188585e-08,
+      "covariance_identity_error": 4.4176827787009433e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.12,
+      "bare_remainder": 7.736834107962918e-05,
+      "covariant_remainder": 2.5842298448447434e-05,
+      "quantum_correction_norm": 0.1897536115828661,
+      "embedding_compression_difference": 2.51192436722397e-06,
+      "covariance_identity_error": 5.9119716510573225e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.06,
+      "bare_remainder": 8.495368594664096e-06,
+      "covariant_remainder": 1.6173434142614707e-06,
+      "quantum_correction_norm": 0.1897536115828661,
+      "embedding_compression_difference": 1.5760473536463205e-07,
+      "covariance_identity_error": 5.906592058693095e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.03,
+      "bare_remainder": 9.942971584208778e-07,
+      "covariant_remainder": 1.0111838221415375e-07,
+      "quantum_correction_norm": 0.1897536115828661,
+      "embedding_compression_difference": 9.859860108814156e-09,
+      "covariance_identity_error": 5.753880410643487e-16,
+      "scope": "Noncommuting regulated source matrices; momentum-space Gaussian quadrature"
+    }
+  ],
+  "covariant_oscillator": [
+    {
+      "Lambda": 2.0,
+      "eigenvalues": [
+        0.35000000048021107,
+        1.0500000154830829,
+        1.7500002928486764
+      ],
+      "exact_eigenvalues": [
+        0.35,
+        1.0499999999999998,
+        1.75
+      ],
+      "error": 2.9284867641976575e-07,
+      "cutoff_comparison": 1.5804203199021316e-05,
+      "residual": 1.6872028029773099e-13,
+      "physical_cutoff": 58,
+      "normal_cutoff": 48,
+      "scope": "Variational Galerkin compression with full intermediate outputs; no interval certificate"
+    },
+    {
+      "Lambda": 16.0,
+      "eigenvalues": [
+        0.35000000184228985,
+        1.0500000509662268,
+        1.7500009189124035
+      ],
+      "exact_eigenvalues": [
+        0.35,
+        1.0499999999999998,
+        1.75
+      ],
+      "error": 9.189124035025031e-07,
+      "cutoff_comparison": 5.269192969237224e-05,
+      "residual": 1.8467203665995215e-09,
+      "physical_cutoff": 58,
+      "normal_cutoff": 48,
+      "scope": "Variational Galerkin compression with full intermediate outputs; no interval certificate"
+    },
+    {
+      "Lambda": 64.0,
+      "eigenvalues": [
+        0.3500000062146241,
+        1.05000016098936,
+        1.7500028376552705
+      ],
+      "exact_eigenvalues": [
+        0.35,
+        1.0499999999999998,
+        1.75
+      ],
+      "error": 2.837655270537809e-06,
+      "cutoff_comparison": 0.00016769559354079533,
+      "residual": 2.731698162836675e-09,
+      "physical_cutoff": 58,
+      "normal_cutoff": 48,
+      "scope": "Variational Galerkin compression with full intermediate outputs; no interval certificate"
+    }
+  ],
+  "regulated_band": [
+    {
+      "Lambda": 2.0,
+      "physical_eigenvalues": [
+        0.1270777862834736,
+        0.7288575870417526
+      ],
+      "limiting_eigenvalues": [
+        0.28483202267627045,
+        0.8872806682895505
+      ],
+      "first_excluded_eigenvalue": 4.140308315697606,
+      "max_error": 0.15842308124779791,
+      "normal_cutoff_comparison": 2.6476442815948076e-08,
+      "effective_cutoff_comparison": 4.906538934871705e-18,
+      "scope": "Noncommuting physical matrices, two normal oscillators; increasing normal cutoff, no interval certificate"
+    },
+    {
+      "Lambda": 8.0,
+      "physical_eigenvalues": [
+        0.2319684024602216,
+        0.8343059684887132
+      ],
+      "limiting_eigenvalues": [
+        0.28483202267627045,
+        0.8872806682895505
+      ],
+      "first_excluded_eigenvalue": 12.609041494395896,
+      "max_error": 0.052974699800837355,
+      "normal_cutoff_comparison": 1.7286172493413687e-13,
+      "effective_cutoff_comparison": 4.906538934871705e-18,
+      "scope": "Noncommuting physical matrices, two normal oscillators; increasing normal cutoff, no interval certificate"
+    },
+    {
+      "Lambda": 32.0,
+      "physical_eigenvalues": [
+        0.2702565182659407,
+        0.8726877011263748
+      ],
+      "limiting_eigenvalues": [
+        0.28483202267627045,
+        0.8872806682895505
+      ],
+      "first_excluded_eigenvalue": 45.36188597198633,
+      "max_error": 0.014592967163175707,
+      "normal_cutoff_comparison": 2.741695759311824e-13,
+      "effective_cutoff_comparison": 4.906538934871705e-18,
+      "scope": "Noncommuting physical matrices, two normal oscillators; increasing normal cutoff, no interval certificate"
+    },
+    {
+      "Lambda": 128.0,
+      "physical_eigenvalues": [
+        0.28108870481658893,
+        0.8835339048847971
+      ],
+      "limiting_eigenvalues": [
+        0.28483202267627045,
+        0.8872806682895505
+      ],
+      "first_excluded_eigenvalue": 175.95380517203878,
+      "max_error": 0.0037467634047534393,
+      "normal_cutoff_comparison": 1.7533752227905097e-12,
+      "effective_cutoff_comparison": 4.906538934871705e-18,
+      "scope": "Noncommuting physical matrices, two normal oscillators; increasing normal cutoff, no interval certificate"
+    }
+  ],
+  "full_spin": [
+    {
+      "block_size": 1,
+      "full_dimension": 8,
+      "lambda_value": 0.61,
+      "microscopic_commutator_norm": 0.4180840238852129,
+      "exact_commutator_norm": 0.4180840238852128,
+      "unscaled_parent_budget_lower_bound": 0.20904201194260644,
+      "generator_optimal_budget": 0.35355339059327373,
+      "scaled_parent_budget_upper_bound": 2.9000000000000004,
+      "low_physical_eigenvalues": [
+        1.0239514069083274e-17,
+        0.8,
+        1.0000000000000004,
+        1.1000000000000003,
+        1.8,
+        1.9000000000000012
+      ],
+      "expected_eigenvalues": [
+        0.0,
+        0.8,
+        1.0,
+        1.1,
+        1.8,
+        1.9000000000000001
+      ],
+      "five_qubit_coefficient": null,
+      "exchange_gap": 1.7
+    },
+    {
+      "block_size": 2,
+      "full_dimension": 64,
+      "lambda_value": 0.61,
+      "microscopic_commutator_norm": 0.6005863504185233,
+      "exact_commutator_norm": 0.600586350418523,
+      "unscaled_parent_budget_lower_bound": 0.30029317520926163,
+      "generator_optimal_budget": 0.5,
+      "scaled_parent_budget_upper_bound": 1.9500000000000002,
+      "low_physical_eigenvalues": [
+        -1.0683744900545931e-16,
+        0.7999999999999952,
+        1.0999999999999965,
+        1.6000000000000016,
+        1.8999999999999948,
+        1.9999999999999971
+      ],
+      "expected_eigenvalues": [
+        0.0,
+        0.8,
+        1.1,
+        1.6,
+        1.9000000000000001,
+        2.0
+      ],
+      "five_qubit_coefficient": 0.022543997769315066,
+      "exchange_gap": 1.7
+    },
+    {
+      "block_size": 3,
+      "full_dimension": 512,
+      "lambda_value": 0.61,
+      "microscopic_commutator_norm": 0.7393962305793073,
+      "exact_commutator_norm": 0.7393962305793065,
+      "unscaled_parent_budget_lower_bound": 0.36969811528965363,
+      "generator_optimal_budget": 0.6123724356957945,
+      "scaled_parent_budget_upper_bound": 1.6333333333333333,
+      "low_physical_eigenvalues": [
+        4.073691704085991e-16,
+        0.7999999999999848,
+        1.0999999999999888,
+        1.5999999999999976,
+        1.8999999999999768,
+        2.1999999999999957
+      ],
+      "expected_eigenvalues": [
+        0.0,
+        0.8,
+        1.1,
+        1.6,
+        1.9000000000000001,
+        2.2
+      ],
+      "five_qubit_coefficient": null,
+      "exchange_gap": 1.7
+    }
+  ],
+  "high_weight_pauli": [
+    {
+      "block_size": 2,
+      "selected_per_control": 2,
+      "pauli_weight": 5,
+      "lambda_value": 0.61,
+      "coefficient": 0.022543997769315042,
+      "leading_lambda_coefficient": 0.0625
+    },
+    {
+      "block_size": 4,
+      "selected_per_control": 4,
+      "pauli_weight": 9,
+      "lambda_value": 0.9,
+      "coefficient": -0.00044126587431616855,
+      "leading_lambda_coefficient": -0.0007324218749999998
+    },
+    {
+      "block_size": 6,
+      "selected_per_control": 6,
+      "pauli_weight": 13,
+      "lambda_value": 1.1,
+      "coefficient": 6.735815371490529e-06,
+      "leading_lambda_coefficient": 4.465306355738456e-06
+    }
+  ],
+  "spin_limit": [
+    {
+      "block_size": 4,
+      "state_norm_difference": 0.06206572312804935,
+      "response": 0.17223323272692334,
+      "limiting_response": 0.175,
+      "physical_time": 0.7,
+      "evolution_norm_difference": 0.062065723128058296,
+      "normal_gap_in_physical_units": 4,
+      "reference_cutoff_comparison": 2.0347230240134682e-13,
+      "scope": "Exact symmetric-spin unitary; canonical reference compared at two occupation cutoffs"
+    },
+    {
+      "block_size": 8,
+      "state_norm_difference": 0.03215477053032813,
+      "response": 0.17332248592857769,
+      "limiting_response": 0.175,
+      "physical_time": 0.7,
+      "evolution_norm_difference": 0.03215477053034884,
+      "normal_gap_in_physical_units": 8,
+      "reference_cutoff_comparison": 2.0347230240134682e-13,
+      "scope": "Exact symmetric-spin unitary; canonical reference compared at two occupation cutoffs"
+    },
+    {
+      "block_size": 16,
+      "state_norm_difference": 0.016362028004460395,
+      "response": 0.1740808167679127,
+      "limiting_response": 0.175,
+      "physical_time": 0.7,
+      "evolution_norm_difference": 0.016362028004487536,
+      "normal_gap_in_physical_units": 16,
+      "reference_cutoff_comparison": 2.0347230240134682e-13,
+      "scope": "Exact symmetric-spin unitary; canonical reference compared at two occupation cutoffs"
+    },
+    {
+      "block_size": 32,
+      "state_norm_difference": 0.008243337949266618,
+      "response": 0.1745193324109716,
+      "limiting_response": 0.175,
+      "physical_time": 0.7,
+      "evolution_norm_difference": 0.008243337949657195,
+      "normal_gap_in_physical_units": 32,
+      "reference_cutoff_comparison": 2.0347230240134682e-13,
+      "scope": "Exact symmetric-spin unitary; canonical reference compared at two occupation cutoffs"
+    },
+    {
+      "block_size": 64,
+      "state_norm_difference": 0.00413540972022982,
+      "response": 0.17475426770128502,
+      "limiting_response": 0.175,
+      "physical_time": 0.7,
+      "evolution_norm_difference": 0.004135409720283514,
+      "normal_gap_in_physical_units": 64,
+      "reference_cutoff_comparison": 2.0347230240134682e-13,
+      "scope": "Exact symmetric-spin unitary; canonical reference compared at two occupation cutoffs"
+    }
+  ],
+  "inverse_locality": [
+    {
+      "side": 8,
+      "inverse_row_absolute_sum": 2.187499999999999,
+      "spectral_lower_bound": 1.7071067811865475,
+      "elliptic_residual": 1.798766884999431e-16,
+      "scope": "Periodic one-dimensional inverse; same small-momentum pole mechanism in higher dimensions"
+    },
+    {
+      "side": 16,
+      "inverse_row_absolute_sum": 8.343749999999986,
+      "spectral_lower_bound": 6.568535592272046,
+      "elliptic_residual": 1.076401158743041e-15,
+      "scope": "Periodic one-dimensional inverse; same small-momentum pole mechanism in higher dimensions"
+    },
+    {
+      "side": 32,
+      "inverse_row_absolute_sum": 32.953124999999915,
+      "spectral_lower_bound": 26.021717229954362,
+      "elliptic_residual": 1.2437471331954208e-15,
+      "scope": "Periodic one-dimensional inverse; same small-momentum pole mechanism in higher dimensions"
+    },
+    {
+      "side": 64,
+      "inverse_row_absolute_sum": 131.5234375000001,
+      "spectral_lower_bound": 103.8362655579756,
+      "elliptic_residual": 4.5627329887741915e-15,
+      "scope": "Periodic one-dimensional inverse; same small-momentum pole mechanism in higher dimensions"
+    }
+  ],
+  "source_sha256": {
+    "COVARIANT_CONSTRAINT_TRANSPORT.md": "a0b85d3ec2a97340f210bc43a5beb123eebe075654a33f76485e5f1d34d4dab0",
+    "scripts/covariant_constraint_transport_audit.py": "bd4183bd0dac8ae74ae40bcd6b5354a7d5342aefb31f9556dd7bc4de73157506",
+    "NONLINEAR_CONSTRAINT_DRESSING.md": "2f9984fd2982ff15a8f9475dd71d8fc980ac7eaeaa88a3d8f4774323209f6f24",
+    "scripts/nonlinear_constraint_dressing_audit.py": "15ff991609f914476a2069954db13d10017d568005455b2ea1591f679eef268e",
+    "data/nonlinear_constraint_dressing_audit.json": "65097fc969d437857a22b4143de015a54e110c15256a8bfc9188cd3a82739dc0",
+    "HOLOMORPHIC_TENSOR_PHASE.md": "071b05e1667061a5f8994031615b4c68e323b832d1afb2dc605846a2b781c76b",
+    "data/holomorphic_tensor_phase_audit.json": "ff01fe34e04798ce1ba51cb5dc2a7d099d8cb71ee068359a9eeed1b2d1436667",
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea",
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f",
+    "SPATIAL_METRIC_VACUUM.md": "ace18b372464f57b7d5bdf97773fac8e6da5319231e1ad99f4815b5bb9914059"
+  },
+  "scope": {
+    "proved": "Covariant operator transport; response-order cancellation; exact commuting-source repair; microscopic strength and interaction-order tests; hierarchical three-block spin limit",
+    "not_proved": [
+      "Finite-body local nonlinear tensor parent",
+      "Einstein clock algebra",
+      "interacting protected masslessness",
+      "physical Newton constant",
+      "joint continuum limit",
+      "TOE"
+    ],
+    "warning": "A fully transported free Hamiltonian remains a free theory; the control is not gravitational self-interaction"
+  }
+}

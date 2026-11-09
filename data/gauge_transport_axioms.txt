@@ -1,0 +1,51 @@
+'UnifiedTheory.LayerA.GaugeTransportStability.path_gauge' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.treeGauge_root' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.treeGauge_horizontal' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.treeGauge_left_boundary' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.plaquette_gauge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.axial_plaquette' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.axial_reconstruction' depends on axioms: [propext]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_norm_le_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.contractive_mul_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_difference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_uniform_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_distance_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.orderedProduct_linearization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.coe_leftProduct' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.unitary_axial_strip_stability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.unitary_inverse_distance' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.unitary_path_stability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.unitary_axial_word_stability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.axialPrimitive_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.GaugeTransportStability.axialPrimitive_moving_point_convergence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

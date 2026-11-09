@@ -1,0 +1,1205 @@
+{
+  "scope": "sharp ordering-statistic constraint, not a physical 4D law",
+  "exact_arithmetic": "Fraction certificates and probability laws; Arb lifts at 256 bits",
+  "independent_numerical_check": "SciPy HiGHS linear programming",
+  "source_sha256": {
+    "scripts/causal_cut_contrast_audit.py": "a318ef8ff250ff683e53c3ae7fe3f7c40a12fd52f57e3be2394acdc2c45af982",
+    "scripts/microscopic_selection_audit.py": "f1458e6c6a546429ff096b886c033ae2ecd6fd45dda4bbe1aad243ca64ae5dba",
+    "scripts/protected_selection_audit.py": "484a2b8ffdfb278392de4ba7631997fb75f72338ab60e52182ceb11fdc1c859b",
+    "scripts/harmonic_born_geometry_drift.py": "0862f8f59fe2f17d3d6b6ca0443f52c01a0aa3f4509f84b443e79b80e9088637",
+    "scripts/harmonic_child_nonuniformity.py": "1228508d292ea0f4e662a35280df28046f07fa2fdcd37b5d1f70763a7a4e79f0",
+    "scripts/chiral_growth_generalization.py": "b188cf7471839a2fb352714ad27e31e9a913e4173a80ceb8d4eef5388c9da36a",
+    "UnifiedTheory/Audit/KFCausalBornCutWeightEnvelope.lean": "f479b30148fef9c2b0e834704768773af1abd3c7c962e209bcd0b9024b000b54"
+  },
+  "optimization": {
+    "dual_certificates": 32776,
+    "independent_LP_checks": 224,
+    "all_vertex_checks": 6138,
+    "eighty_one_ratio": [
+      {
+        "rank": 9,
+        "threshold": 1,
+        "mean_ancestors": "1/2",
+        "mean_ancestor_fraction": "1/18"
+      },
+      {
+        "rank": 49,
+        "threshold": 5,
+        "mean_ancestors": "9/2",
+        "mean_ancestor_fraction": "9/98"
+      },
+      {
+        "rank": 99,
+        "threshold": 10,
+        "mean_ancestors": "19/2",
+        "mean_ancestor_fraction": "19/198"
+      },
+      {
+        "rank": 999,
+        "threshold": 100,
+        "mean_ancestors": "199/2",
+        "mean_ancestor_fraction": "199/1998"
+      },
+      {
+        "rank": 9999,
+        "threshold": 1000,
+        "mean_ancestors": "1999/2",
+        "mean_ancestor_fraction": "1999/19998"
+      },
+      {
+        "rank": 99999,
+        "threshold": 10000,
+        "mean_ancestors": "19999/2",
+        "mean_ancestor_fraction": "19999/199998"
+      },
+      {
+        "rank": 999999,
+        "threshold": 100000,
+        "mean_ancestors": "199999/2",
+        "mean_ancestor_fraction": "199999/1999998"
+      }
+    ]
+  },
+  "actual_births": {
+    "parents": 88,
+    "strict_shape_improvements": 48,
+    "records": [
+      {
+        "rank": 0,
+        "successor_masks": [],
+        "mean_ancestors": "0",
+        "cutoff": 0,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 1,
+        "successor_masks": [
+          0
+        ],
+        "mean_ancestors": "1/82",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 2,
+        "successor_masks": [
+          0,
+          0
+        ],
+        "mean_ancestors": "3/83",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 2,
+        "successor_masks": [
+          2,
+          0
+        ],
+        "mean_ancestors": "3/83",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "1/14",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          2,
+          0,
+          0
+        ],
+        "mean_ancestors": "1/14",
+        "cutoff": 1,
+        "shape_improvement": "1/1260"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          6,
+          0,
+          0
+        ],
+        "mean_ancestors": "1/14",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          4,
+          4,
+          0
+        ],
+        "mean_ancestors": "1/14",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          6,
+          4,
+          0
+        ],
+        "mean_ancestors": "1/14",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "23/18360"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          6,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "1/680"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          4,
+          4,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "3/1700"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          6,
+          4,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          8,
+          4,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          4,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "3/3400"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          4,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "1/1275"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          12,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          12,
+          0,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          8,
+          8,
+          8,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          10,
+          8,
+          8,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "1/1275"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          8,
+          8,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          12,
+          8,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          12,
+          8,
+          0
+        ],
+        "mean_ancestors": "2/17",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "23/13975"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "51/21500"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/1720"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          0,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          4,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/1075"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          6,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          8,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "37/23220"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "37249/18167500"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "21/10750"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "6/2365"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "67/48762"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          4,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "23/18576"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          12,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "2/559"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          12,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1935"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          20,
+          12,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "27/19264"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          12,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "11/7224"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          12,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/688"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          0,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          8,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "9/3655"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          10,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "8/5805"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "4/2795"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "9/8600"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "2/903"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "164/63855"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          8,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/1720"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1935"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "33/21500"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1806"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          12,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          16,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          16,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "2/1935"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          16,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/3311"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "6/3311"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          24,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "27/19264"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/3440"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          8,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          24,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          24,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          24,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          24,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          24,
+          0,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          16,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          18,
+          16,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "7/5676"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          22,
+          16,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/688"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          16,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          20,
+          20,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "3/1720"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          22,
+          20,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1032"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          20,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          20,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/774"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          20,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          16,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          24,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          24,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "1/1290"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          24,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          24,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          24,
+          16,
+          0
+        ],
+        "mean_ancestors": "15/86",
+        "cutoff": 1,
+        "shape_improvement": "0"
+      }
+    ],
+    "bell_singleton_to_empty_before": "1/162",
+    "bell_singleton_to_empty_after_spectator_deletion": "1/81"
+  },
+  "disjoint_ten_chain_counterexample": [
+    {
+      "events": 20,
+      "ordering_fraction": "1/19",
+      "longest_chain": 2,
+      "connected_components": 10
+    },
+    {
+      "events": 50,
+      "ordering_fraction": "4/49",
+      "longest_chain": 5,
+      "connected_components": 10
+    },
+    {
+      "events": 100,
+      "ordering_fraction": "1/11",
+      "longest_chain": 10,
+      "connected_components": 10
+    },
+    {
+      "events": 200,
+      "ordering_fraction": "19/199",
+      "longest_chain": 20,
+      "connected_components": 10
+    },
+    {
+      "events": 500,
+      "ordering_fraction": "49/499",
+      "longest_chain": 50,
+      "connected_components": 10
+    }
+  ]
+}

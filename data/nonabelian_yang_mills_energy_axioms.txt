@@ -1,0 +1,43 @@
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.covariant_derivatives_commute_to_curvature' depends on axioms: [propext]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.dot_self_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.dot_bracket_skew' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.gauge_term_orthogonal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.curvature_bochner_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.curvature_bochner_nonpos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.curvature_line_expansion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.energy_line_expansion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.projected_gradient_pairing' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.projected_gradient_dissipation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.energy_defect_absorption' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.perturbed_energy_dissipation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.integrated_speed_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.excursion_squared_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsEnergy.accepted_step_energy_nonincrease' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

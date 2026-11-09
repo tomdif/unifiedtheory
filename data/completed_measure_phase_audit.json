@@ -1,0 +1,47 @@
+{
+  "arithmetic": "Float64 independent direct-frame refinement; no interval certificate",
+  "determinant_phase": {
+    "radial_relative_phase": -7.306016177695949e-09,
+    "scalar_correction": 3.1285987575134227e-09,
+    "predicted_corrected_relative_phase": -1.0434614935209371e-08,
+    "complete_frame_rank": 480,
+    "direct_frames": [
+      {
+        "steps": 64,
+        "corrected_relative_determinant_phase": -1.0435596164981574e-08,
+        "error_against_integrated_derivative": 9.812297722023485e-13
+      },
+      {
+        "steps": 128,
+        "corrected_relative_determinant_phase": -1.043485972629376e-08,
+        "error_against_integrated_derivative": 2.447910843879034e-13
+      }
+    ],
+    "scope": "Nonconstant finite determinant phase; not continuum equivalence"
+  },
+  "zero_modes": {
+    "lengths": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "boundary": "periodic in every direction",
+    "constant_spinor_dirac_residual": 3.567801180453661e-15,
+    "kernel_gap": 0.9999999999999973,
+    "current_norm": 0.0,
+    "ward_error": 0.0,
+    "scope": "Current defined at free Dirac zero modes; determinant phase undefined there"
+  },
+  "source_sha256": {
+    "scripts/completed_measure_phase_audit.py": "10a7dc9f426362a3d55ec3e901de7f2f088e3c6d5726455362319b5802c9e1b3",
+    "scripts/second_cohomology_audit.py": "a10cbb381e97a9b3818661f10a08d1bfb4f16f5cef51d7d169c47e6ba23659aa",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "data/second_cohomology_audit.json": "223e87a4322ae1729b12a3d218a494a3a0f38ca9fbd6a2ded4e8f9087eb39f18"
+  }
+}

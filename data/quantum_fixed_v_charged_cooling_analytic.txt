@@ -1,0 +1,192 @@
+FIXED-v CHARGED COOLING: ANALYTIC POSITIVITY PROOF
+2026-10-21. Analytic argument, not a Lean-verified theorem.
+
+Statement and scope
+-------------------
+Let alpha>0, a>0, b real, and a>|b|. Put r=a+i b,
+p=(alpha/2)r^2, p_a=alpha r, and theta=arg(p)=2 arg(r).
+Then |theta|<pi/2 and arg(p_a)=theta/2. For any finite list of
+positive real widths w_i and any real v define
+
+ S_ij=p w_i+conj(p) w_j,  T_ij=conj(S_ij),
+ Sdot_ij=p_a w_i+conj(p_a) w_j, Tdot_ij=conj(Sdot_ij),
+ K_v,ij=exp(-S_ij v^2) S_ij^(-1/2) T_ij^(-1).
+
+The square root is the principal one. The matrices K_v are positive
+semidefinite, and -partial_a K_v is positive semidefinite, with b and
+v held fixed. This holds for every finite family, without a separation
+condition on the widths or a numerical conditioning cutoff. The widths
+need only be positive, not at least one.
+
+Equivalently, increasing the real part of r with b fixed decreases the
+charged norm after integration in u in R and Y>0, at every fixed v.
+The u,Y integral has the additional harmless constant sqrt(pi).
+Transposing the convention for S, as in some repository formulas,
+conjugates these Hermitian matrices and preserves positivity.
+
+This statement concerns the derivative of the charged kernel while its
+coefficient vector is frozen. The vector can be any function of v and
+of neutral Fourier frequency. Consequently this proves the charged
+part of cooling for arbitrary quadratic neutral jets, whenever the
+already established integrability justifies the integrals. It does not
+by itself bound the additional derivative of the field multiplier
+nu=L-i eta, nor prove the full uniform quartic-response estimate.
+
+1. A scalar normalized shifted-cosh positivity criterion
+-------------------------------------------------------
+For |Im z|<pi/2 there is a single analytic logarithm L(z)=log(cosh z)
+with L(0)=0 and real L(x) for real x. Indeed Re(cosh(x+i y))=
+cosh(x)cos(y)>0 on this strip, so this is the principal logarithm.
+Its elementary integral representation is
+
+ L(z)=integral_0^infinity (1-cos(2zt))/(t sinh(pi t)) dt.          (1)
+
+The integral is locally uniformly convergent in the strip. One direct
+verification uses 1/sinh(pi t)=2 sum_{n>=0} exp(-(2n+1)pi t),
+the elementary Laplace-log integral, and the Euler product
+cosh z=product_{n>=0}(1+4z^2/((2n+1)^2 pi^2)). This first proves
+(1) for real z and then throughout the strip by analytic continuation.
+No branch choice outside this strip is used.
+
+Suppose real shifts lambda_j and lambda_0 lie in (-pi/2,pi/2),
+real exponents gamma_j are fixed, and set
+
+ k(x)=[cosh(x+i lambda_0)/cos(lambda_0)]
+      product_j [cos(lambda_j)/cosh(x+i lambda_j)]^gamma_j.
+
+Powers use L. Define, for t>0,
+ A(t)=sum_j gamma_j cosh(2 lambda_j t)-cosh(2 lambda_0 t),
+ B(t)=sum_j gamma_j sinh(2 lambda_j t)-sinh(2 lambda_0 t).
+Then (1) gives exactly
+
+ log k(x)=integral_0^infinity
+   [A(t)(cos(2xt)-1)-i B(t)sin(2xt)]/(t sinh(pi t)) dt.         (2)
+
+If both A(t)+B(t) and A(t)-B(t) are nonnegative, define
+
+ nu_plus(t) =(A(t)-B(t))/(2t sinh(pi t)),
+ nu_minus(t)=(A(t)+B(t))/(2t sinh(pi t)).
+
+For each epsilon>0 these are finite positive measures on
+(epsilon,infinity), because all shifts lie inside the strip.
+The exponential of the integral over that interval in (2) is
+
+ k_epsilon(x)=exp integral_epsilon^infinity
+   [(exp(2ixt)-1)nu_plus(t)+(exp(-2ixt)-1)nu_minus(t)] dt.
+
+This is a compound-Poisson characteristic function. Alternatively,
+its positive definiteness follows directly by expanding the exponential
+of the Fourier transform of a finite positive measure and taking
+Schur products. Near zero A(t)=O(1), B(t)=O(t), so the paired
+integrand in (2) is O(1). The improper integral therefore converges
+and k_epsilon(x) tends pointwise to k(x). Each finite Gram matrix
+converges entrywise; its quadratic form remains nonnegative. Thus k
+is positive definite on R. The truncation treats both signs together;
+no missing or unspecified linear compensation is present.
+
+2. Positivity of B_kernel=Sdot S^(-1/2) T^(-1)
+------------------------------------------------
+Write x_i=(1/2)log w_i and x=x_i-x_j. Set c0=2|p|>0 and
+c1=2|p_a|>0. Then
+
+ S_ij=c0 sqrt(w_i w_j) cosh(x+i theta),
+ Sdot_ij=c1 sqrt(w_i w_j) cosh(x+i theta/2).
+
+Therefore B_kernel is a positive constant times a positive diagonal
+congruence of the matrix k_B(x_i-x_j), where
+
+ k_B(x)=[cosh(x+i theta/2)/cos(theta/2)]
+        [cos(theta)/cosh(x+i theta)]^(1/2)
+        [cos(theta)/cosh(x-i theta)].
+
+More precisely the constant is
+ c1 c0^(-3/2) cos(theta/2) cos(theta)^(-3/2),
+and the congruence diagonal is w_i^(-1/4).
+For this ratio,
+ A=3/2 cosh(2theta t)-cosh(theta t),
+ B=-1/2 sinh(2theta t)-sinh(theta t).
+Consequently A+B and A-B have the forms
+
+ (1/2) exp(2theta t)+exp(-2theta t)-exp(theta t)
+
+and the same expression with t replaced by -t. For any x>0,
+
+ x^2[(1/2)x^2+x^(-2)-x]
+ = (1/2)x^4-x^3+1
+ = (x-3/2)^2[(1/2)x^2+(1/2)x+3/8]+5/32 > 0.               (3)
+
+Apply (3) with x=exp(theta t), or its reciprocal. The criterion in
+section 1 proves k_B positive definite, hence B_kernel is positive
+semidefinite.
+
+3. Positivity of C_kernel=Tdot S^(-1/2) T^(-2)
+------------------------------------------------
+The same diagonal-congruence reduction now gives
+
+ k_C(x)=[cosh(x-i theta/2)/cos(theta/2)]
+        [cos(theta)/cosh(x+i theta)]^(1/2)
+        [cos(theta)/cosh(x-i theta)]^2.
+
+The constant is c1 c0^(-5/2) cos(theta/2) cos(theta)^(-5/2),
+and the congruence diagonal is w_i^(-3/4). The two candidate Levy
+densities have numerators
+
+ (1/2) exp(2theta t)+2 exp(-2theta t)-exp(-theta t)
+
+and its reflected version. For x>0 their positivity follows from
+
+ x^2[(1/2)x^2+2x^(-2)-x^(-1)]
+ = (1/2)x^4-x+2
+ = (1/2)(x-1)^2(x^2+2x+3)+x+1/2 > 0.                    (4)
+
+Thus k_C, and hence C_kernel, are positive semidefinite.
+
+4. The derivative is a sum of positive Schur products
+----------------------------------------------------
+Entrywise differentiation, with the square-root branch already fixed,
+gives the exact identity
+
+ -partial_a K_v
+ = exp(-S v^2) * [v^2 B_kernel +(1/2) B_kernel * S^(-1)
+                  + C_kernel],                           (5)
+
+where * means entrywise product. The matrix exp(-S_ij v^2) is
+rank-one positive semidefinite: its entries are
+exp(-p w_i v^2) conjugate(exp(-p w_j v^2)). Also
+
+ S_ij^(-1)=integral_0^infinity
+              exp(-p w_i t) conjugate(exp(-p w_j t)) dt,
+
+so S^(-1) is positive semidefinite. By sections 2 and 3, every term
+on the right side of (5) is positive semidefinite under the Schur
+product theorem. This proves the claim. The positivity of K_v itself
+also follows by the same Laplace-Gram representation for S^(-1/2)
+and T^(-1).
+
+At theta=0 all formulas are regular. The normalized B ratio becomes
+cosh(x)^(-1/2), and C becomes cosh(x)^(-3/2). There is no division
+by b, theta, or sin(theta). Nothing here covers the boundary
+|theta|=pi/2, where the original u,Y integrals also cease to have
+the required strict exponential decay.
+
+External reference and independent derivation
+--------------------------------------------
+Hiroki Masuda, "Parametric estimation of Levy processes",
+arXiv:1409.0292v1, Section 2.2.3, page 15:
+https://arxiv.org/pdf/1409.0292#page=15
+The displayed Meixner characteristic function immediately before
+(2.15), together with the Levy density on that page, independently
+confirms the shifted-cosh logarithm/density convention. Equation
+(2.15) itself is the subsequent scaling identity, not the displayed
+characteristic function. Sections 1-4 above derive the needed
+positivity directly; they do not infer that an arbitrary quotient of
+characteristic functions is positive definite.
+
+Verification status
+-------------------
+This is a self-contained analytic derivation checked independently by
+the response-review and Hamiltonian-domains agents. It is not a Lean
+proof and is outside the Lean theorem audit. The finite
+confluent-width diagnostics preceded this argument and are not needed
+for its validity. The full quartic theorem still requires control of
+the moving field coefficients, using or compatible with (5).

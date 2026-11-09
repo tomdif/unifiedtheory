@@ -1,0 +1,51 @@
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse
+import UnifiedTheory.Clay.YangMills.WilsonRowGeometry
+import UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.rowMean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.rowMean_eq_full
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.full_transition_gauge_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.rowMean_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.tiltCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.tilt_mean_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.covariance_eq_response_mul
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalResponse.gauge_tilt_covariance_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.character_pair
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.character_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_self
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_triangle
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_eq_zero_iff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.inputCost_eq_support
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowAction_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowAction_law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.kinetic_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.kinetic_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowAction_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRowGeometry.rowMean_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.alignment_cost_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.exists_alignment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.alignment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_le_inputCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_eq_zero_iff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_self
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.inverse_alignment_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_le_reverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_triangle
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_gauge_right
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.orbitCost_gauge_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.rowMean_orbit_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.rowMean_local_alignment_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.normalized_covariance_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.covariance_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeOrbitResponse.full_transfer_orbit_bound

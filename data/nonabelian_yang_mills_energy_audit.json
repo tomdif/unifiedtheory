@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "exact_rational_checks": 80,
+  "nonconstant_field_identity_checks": [
+    {
+      "cutoff": 1,
+      "gauge_work_abs": 1.2719592183359817e-15,
+      "energy_defect_identity_error": 4.135580766728708e-15,
+      "projected_gradient_identity_error": 2.1316282072803006e-14,
+      "agreement_with_existing_DeTurck_rhs": 1.4914990634890729e-15,
+      "curvature_evolution_max_error": 5.240252676230739e-14,
+      "pointwise_bochner_max_error": 3.410605131648481e-13,
+      "energy_gradient_pairing_error": 1.734723475976807e-17,
+      "quartic_energy_expansion_error": 5.551115123125783e-17,
+      "centered_energy_difference_error": 7.54854997953025e-11,
+      "nonzero_projection_residual_L2": 0.23509299826568048
+    },
+    {
+      "cutoff": 2,
+      "gauge_work_abs": 1.5735202452818828e-15,
+      "energy_defect_identity_error": 1.532107773982716e-14,
+      "projected_gradient_identity_error": 0.0,
+      "agreement_with_existing_DeTurck_rhs": 2.8946188710031292e-15,
+      "curvature_evolution_max_error": 6.67021993194794e-13,
+      "pointwise_bochner_max_error": 1.057287590811029e-11,
+      "energy_gradient_pairing_error": 4.163336342344337e-17,
+      "quartic_energy_expansion_error": 8.881784197001252e-16,
+      "centered_energy_difference_error": 3.11392675533817e-10,
+      "nonzero_projection_residual_L2": 0.9956162256359578
+    },
+    {
+      "cutoff": 3,
+      "gauge_work_abs": 2.3283064365386964e-14,
+      "energy_defect_identity_error": 4.654054919228656e-13,
+      "projected_gradient_identity_error": 0.0,
+      "agreement_with_existing_DeTurck_rhs": 8.689288592432747e-15,
+      "curvature_evolution_max_error": 3.664180070472867e-12,
+      "pointwise_bochner_max_error": 1.291482476517558e-10,
+      "energy_gradient_pairing_error": 2.220446049250313e-16,
+      "quartic_energy_expansion_error": 1.7763568394002505e-15,
+      "centered_energy_difference_error": 7.398934798175105e-10,
+      "nonzero_projection_residual_L2": 2.9947026790002074
+    }
+  ],
+  "global_finite_ODE_experiment": {
+    "cutoff": 2,
+    "end_time": 0.4,
+    "samples": 41,
+    "initial_energy": 0.09789065920665332,
+    "final_energy": 0.032156896323377135,
+    "max_energy_balance_error": 1.1441680936030707e-12,
+    "accumulated_squared_speed": 0.06573376288353233,
+    "final_excursion_L2": 0.15708715625792508,
+    "analytic_excursion_bound": 0.19787941702628228,
+    "rhs_evaluations": 548,
+    "tighter_integration_max_L2_difference": 1.005795417458621e-11,
+    "tighter_integration_energy_balance_error": 4.3576253716537394e-15,
+    "qualification": "Finite-N experiment supported by the global finite-ODE theorem. No global continuum convergence or rigorous ODE error enclosure claimed."
+  },
+  "energy_decreasing_time_steps": {
+    "cutoff": 2,
+    "end_time": 0.4,
+    "accepted_steps": 24,
+    "rejected_trial_steps": 49,
+    "initial_energy": 0.09789065920665332,
+    "final_energy": 0.03115278612754955,
+    "minimum_Armijo_margin": 1.5384172631867365e-05,
+    "energy_decreases_at_every_accepted_step": true,
+    "qualification": "Ordinary floating-point line search, not interval-certified. Accepted steps approximate a different finite ODE from the DeTurck cutoff."
+  },
+  "scope": "Continuum identities, existing DeTurck cutoff energy defect, and distinct projected-gradient finite model.",
+  "padding": "6N+1 for exact gradient-energy integrals; 8N+1 for scalar Bochner derivatives."
+}

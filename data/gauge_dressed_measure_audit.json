@@ -1,0 +1,636 @@
+{
+  "exact": {
+    "arithmetic": "exact SymPy complex rationals and integers",
+    "gauge_frames": 256,
+    "prefix_current_dipoles": [
+      {
+        "probe_edge": 2,
+        "radius": 1,
+        "response": 1,
+        "source_sites": [
+          0,
+          5
+        ]
+      },
+      {
+        "probe_edge": 5,
+        "radius": 4,
+        "response": 1,
+        "source_sites": [
+          0,
+          11
+        ]
+      },
+      {
+        "probe_edge": 17,
+        "radius": 16,
+        "response": 1,
+        "source_sites": [
+          0,
+          35
+        ]
+      },
+      {
+        "probe_edge": 65,
+        "radius": 64,
+        "response": 1,
+        "source_sites": [
+          0,
+          131
+        ]
+      }
+    ],
+    "root_phase_included": true,
+    "source_locality_scope": "arbitrary zero-sum sources, not a no-go for the actual anomaly density",
+    "tree_edges_normalized": true,
+    "universal_slice_bounds": {
+      "dirac_smallest_singular_value": "sqrt(2)-1",
+      "kernel_gap": "1/2",
+      "link_angle": "1/48",
+      "max_integer_charge": 6,
+      "projector_distance": "1/2",
+      "reference_gram": "3/4"
+    },
+    "unpaired_antifermion_negative_control": "3/5 + 4*I/5"
+  },
+  "locality": {
+    "arithmetic": "float64 central differences; no interval certification",
+    "interpretation": "persistent response for mu=0 in the measured range, including the hypercharge sum",
+    "lattice_family": "L x 2 x 2 x 2; antiperiodic fermion time boundary",
+    "limitations": "not an asymptotic no-go or a four-dimensional continuum/locality proof; other directions decay to the numerical floor",
+    "probe_link": {
+      "direction": 1,
+      "head": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    "remote_head": "[L/2,1,0,0]",
+    "rows": [
+      {
+        "charge_six_direction_scan": [
+          {
+            "derivatives": [
+              2.550120953813406e-06,
+              2.550106835766397e-06
+            ],
+            "remote_direction": 0
+          },
+          {
+            "derivatives": [
+              -4.3063102909968176e-07,
+              -4.306424140898546e-07
+            ],
+            "remote_direction": 1
+          },
+          {
+            "derivatives": [
+              -7.934712192847471e-07,
+              -7.934766697859086e-07
+            ],
+            "remote_direction": 2
+          },
+          {
+            "derivatives": [
+              1.3096540718224303e-06,
+              1.3096365814729838e-06
+            ],
+            "remote_direction": 3
+          }
+        ],
+        "dirac_dimension": 128,
+        "head_separation": 2,
+        "hypercharge_mu0_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              3.272681333831712e-10,
+              3.2868412852549156e-10
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              -3.35705381028506e-07,
+              -3.3568338820427757e-07
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              1.048989898850411e-08,
+              1.0487394156225016e-08
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              -7.96614809707441e-08,
+              -7.965230038042836e-08
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              2.550120953813406e-06,
+              2.550106835766397e-06
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "hypercharge_mu0_total_derivatives": [
+          1.4171151545522113e-06,
+          1.4171863576325355e-06
+        ],
+        "lattice_sites": 32,
+        "mu0_minimum_endpoint_distance": 1,
+        "spatial_length": 4
+      },
+      {
+        "charge_six_direction_scan": [
+          {
+            "derivatives": [
+              3.386804729894888e-06,
+              3.3867909776576915e-06
+            ],
+            "remote_direction": 0
+          },
+          {
+            "derivatives": [
+              -1.7603146371114597e-08,
+              -1.7560639574421e-08
+            ],
+            "remote_direction": 1
+          },
+          {
+            "derivatives": [
+              -2.149529968083208e-08,
+              -2.1515200211708052e-08
+            ],
+            "remote_direction": 2
+          },
+          {
+            "derivatives": [
+              3.7293937361036755e-08,
+              3.727766142644362e-08
+            ],
+            "remote_direction": 3
+          }
+        ],
+        "dirac_dimension": 256,
+        "head_separation": 4,
+        "hypercharge_mu0_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              4.3428478315680336e-10,
+              4.2807825426788293e-10
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              -4.4518688507768495e-07,
+              -4.452214465155979e-07
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              1.3902146022370075e-08,
+              1.3876088835905118e-08
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              -1.055903459828457e-07,
+              -1.0558789801697055e-07
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              3.386804729894888e-06,
+              3.3867909776576915e-06
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "hypercharge_mu0_total_derivatives": [
+          1.8843755294621926e-06,
+          1.8841475781102793e-06
+        ],
+        "lattice_sites": 64,
+        "mu0_minimum_endpoint_distance": 3,
+        "spatial_length": 8
+      },
+      {
+        "charge_six_direction_scan": [
+          {
+            "derivatives": [
+              3.4648847825179824e-06,
+              3.464894087357867e-06
+            ],
+            "remote_direction": 0
+          },
+          {
+            "derivatives": [
+              -4.671843424272626e-10,
+              -4.306930246472662e-10
+            ],
+            "remote_direction": 1
+          },
+          {
+            "derivatives": [
+              -3.7009935047183085e-10,
+              -4.0371091886148847e-10
+            ],
+            "remote_direction": 2
+          },
+          {
+            "derivatives": [
+              9.181403467367621e-10,
+              9.952681040426015e-10
+            ],
+            "remote_direction": 3
+          }
+        ],
+        "dirac_dimension": 384,
+        "head_separation": 6,
+        "hypercharge_mu0_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              4.4244812925453656e-10,
+              4.4971884492739887e-10
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              -4.553631772325449e-07,
+              -4.553493351691987e-07
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              1.4212944562323315e-08,
+              1.4206430391067951e-08
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              -1.0798960056528865e-07,
+              -1.0797209250268912e-07
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              3.4648847825179824e-06,
+              3.464894087357867e-06
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "hypercharge_mu0_total_derivatives": [
+          1.9281095721522675e-06,
+          1.928219501087661e-06
+        ],
+        "lattice_sites": 96,
+        "mu0_minimum_endpoint_distance": 5,
+        "spatial_length": 12
+      },
+      {
+        "charge_six_direction_scan": [
+          {
+            "derivatives": [
+              3.4700123799748586e-06,
+              3.470022783003124e-06
+            ],
+            "remote_direction": 0
+          },
+          {
+            "derivatives": [
+              -5.6818699051275345e-12,
+              -1.2862974574368025e-11
+            ],
+            "remote_direction": 1
+          },
+          {
+            "derivatives": [
+              1.7523959713883208e-11,
+              1.2802259252708836e-11
+            ],
+            "remote_direction": 2
+          },
+          {
+            "derivatives": [
+              8.546527201225285e-11,
+              -1.8764503839641122e-11
+            ],
+            "remote_direction": 3
+          }
+        ],
+        "dirac_dimension": 512,
+        "head_separation": 8,
+        "hypercharge_mu0_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              4.444996430527865e-10,
+              4.406169914063056e-10
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              -4.560327909026128e-07,
+              -4.560130169523405e-07
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              1.4227143043581223e-08,
+              1.4211604847580092e-08
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              -1.0811491762616199e-07,
+              -1.0814521988426057e-07
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              3.4700123799748586e-06,
+              3.470022783003124e-06
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "hypercharge_mu0_total_derivatives": [
+          1.9310325990037566e-06,
+          1.9309718088687594e-06
+        ],
+        "lattice_sites": 128,
+        "mu0_minimum_endpoint_distance": 7,
+        "spatial_length": 16
+      }
+    ],
+    "steps": [
+      0.001,
+      0.0005
+    ]
+  },
+  "numerical": {
+    "arithmetic": "float64; no interval certification",
+    "current_curl_checks": [
+      {
+        "current_curl": 0.0004380914607069647,
+        "error": 2.522526112546785e-08,
+        "projector_curvature": 0.00043811668596809017,
+        "step": 0.0002
+      },
+      {
+        "current_curl": 0.00043811042008212974,
+        "error": 6.265885960424471e-09,
+        "projector_curvature": 0.00043811668596809017,
+        "step": 0.0001
+      }
+    ],
+    "current_gauge_residual": 4.462346340723155e-14,
+    "current_ward_residual": 2.498001805406602e-16,
+    "gauge_loop": [
+      {
+        "connection_phase_radians": 7.019774042739364e-06,
+        "error": 2.1429321658683588e-07,
+        "minimum_neighbor_overlap": 0.9863294307747175,
+        "phase_radians": 6.805480826152528e-06,
+        "steps": 64
+      },
+      {
+        "connection_phase_radians": 7.019774042739364e-06,
+        "error": 5.274437433375044e-08,
+        "minimum_neighbor_overlap": 0.9965249941188534,
+        "phase_radians": 6.967029668405614e-06,
+        "steps": 128
+      },
+      {
+        "connection_phase_radians": 7.019774042739364e-06,
+        "error": 1.3133706977106355e-08,
+        "minimum_neighbor_overlap": 0.9991276586685061,
+        "phase_radians": 7.006640335762258e-06,
+        "steps": 256
+      }
+    ],
+    "gauge_loop_site": 9,
+    "gauge_transformations": [
+      {
+        "phase_correction": -1.4534872094795767e-07,
+        "total_logabs_error": 0.0,
+        "total_phase_error": 7.165025373129265e-15,
+        "trial": 0,
+        "uncorrected_phase_change": 1.4534871870659877e-07,
+        "weyl_matrix_residual": 3.8109583246660246e-14
+      },
+      {
+        "phase_correction": 4.562214994674678e-09,
+        "total_logabs_error": 1.7053025658242404e-13,
+        "total_phase_error": 5.175354376521686e-15,
+        "trial": 1,
+        "uncorrected_phase_change": -4.56221006813641e-09,
+        "weyl_matrix_residual": 3.618812038605409e-14
+      },
+      {
+        "phase_correction": -6.739443630943473e-07,
+        "total_logabs_error": 2.8421709430404007e-13,
+        "total_phase_error": 4.987361067513563e-15,
+        "trial": 2,
+        "uncorrected_phase_change": 6.739443750475352e-07,
+        "weyl_matrix_residual": 3.792679271586602e-14
+      },
+      {
+        "phase_correction": 1.8459553607909506e-09,
+        "total_logabs_error": 1.7053025658242404e-13,
+        "total_phase_error": 6.572857864924091e-15,
+        "trial": 3,
+        "uncorrected_phase_change": -1.845950254735416e-09,
+        "weyl_matrix_residual": 4.1222049576148586e-14
+      },
+      {
+        "phase_correction": -5.3753039713777566e-08,
+        "total_logabs_error": 1.7053025658242404e-13,
+        "total_phase_error": 1.336885555457667e-15,
+        "trial": 4,
+        "uncorrected_phase_change": 5.375304402940244e-08,
+        "weyl_matrix_residual": 3.699548507569652e-14
+      },
+      {
+        "phase_correction": -1.1188514945081814e-07,
+        "total_logabs_error": 5.684341886080802e-14,
+        "total_phase_error": 3.7452547271128454e-15,
+        "trial": 5,
+        "uncorrected_phase_change": 1.1188514804995497e-07,
+        "weyl_matrix_residual": 4.007073999457045e-14
+      },
+      {
+        "phase_correction": 1.0926532872934621e-07,
+        "total_logabs_error": 1.1368683772161603e-13,
+        "total_phase_error": 1.6504651808933464e-15,
+        "trial": 6,
+        "uncorrected_phase_change": -1.0926532766381947e-07,
+        "weyl_matrix_residual": 3.939037529212516e-14
+      },
+      {
+        "phase_correction": 4.920468971853049e-07,
+        "total_logabs_error": 2.8421709430404007e-13,
+        "total_phase_error": 6.0044490637300816e-15,
+        "trial": 7,
+        "uncorrected_phase_change": -4.920469046755487e-07,
+        "weyl_matrix_residual": 3.784968880108445e-14
+      },
+      {
+        "phase_correction": 5.466508495866244e-09,
+        "total_logabs_error": 1.7053025658242404e-13,
+        "total_phase_error": 6.343834181149101e-15,
+        "trial": 8,
+        "uncorrected_phase_change": -5.466508770445803e-09,
+        "weyl_matrix_residual": 3.765623956922467e-14
+      },
+      {
+        "phase_correction": 3.8795435863826025e-08,
+        "total_logabs_error": 1.7053025658242404e-13,
+        "total_phase_error": 7.093273899344904e-15,
+        "trial": 9,
+        "uncorrected_phase_change": -3.879542692702665e-08,
+        "weyl_matrix_residual": 3.772888224284697e-14
+      },
+      {
+        "phase_correction": 2.9920304728259266e-07,
+        "total_logabs_error": 2.8421709430404007e-13,
+        "total_phase_error": 5.79553433516819e-15,
+        "trial": 10,
+        "uncorrected_phase_change": -2.992030565087071e-07,
+        "weyl_matrix_residual": 3.806398651512892e-14
+      },
+      {
+        "phase_correction": -1.5249725648924778e-08,
+        "total_logabs_error": 5.684341886080802e-14,
+        "total_phase_error": 2.5631488888267375e-15,
+        "trial": 11,
+        "uncorrected_phase_change": 1.5249716985709823e-08,
+        "weyl_matrix_residual": 3.610970672290772e-14
+      }
+    ],
+    "lattice": "periodic 2^4 links; antiperiodic Euclidean-time fermions",
+    "maximum_density": 1.1172317382901475e-06,
+    "maximum_identity_residual": 2.8421709430404007e-13,
+    "minimum_kernel_gap": 0.9578208313886329,
+    "minimum_reference_gram": 0.9987408449698646,
+    "minimum_weyl_singular_value": 1.4107386299805484,
+    "moving_frame_connection": [
+      {
+        "constructed_connection": -7.897156638835097e-06,
+        "error": 3.934477989094113e-08,
+        "explicit_current_connection": -7.89714917861489e-06,
+        "explicit_current_error": 3.93522401111489e-08,
+        "frame_derivative_connection": -7.936501418726039e-06,
+        "step": 0.0001
+      },
+      {
+        "constructed_connection": -7.897149558945038e-06,
+        "error": 9.836099278637495e-09,
+        "explicit_current_connection": -7.89714917861489e-06,
+        "explicit_current_error": 9.836479608785634e-09,
+        "frame_derivative_connection": -7.906985658223675e-06,
+        "step": 5e-05
+      }
+    ],
+    "operator_dimension": 64,
+    "phase_correction_identity": true,
+    "random_seed": 9904009,
+    "scope": "gauge-saturated weak slice, index zero, supplied U(1) charges; no spacetime locality or physical QFT claim",
+    "slice_angle_bound": "1/48",
+    "species": [
+      {
+        "charge": 1,
+        "multiplicity": 6,
+        "name": "Q"
+      },
+      {
+        "charge": -4,
+        "multiplicity": 3,
+        "name": "uc"
+      },
+      {
+        "charge": 2,
+        "multiplicity": 3,
+        "name": "dc"
+      },
+      {
+        "charge": -3,
+        "multiplicity": 2,
+        "name": "L"
+      },
+      {
+        "charge": 6,
+        "multiplicity": 1,
+        "name": "ec"
+      }
+    ],
+    "total_determinant_logabs": 305.5032370692154,
+    "total_left_handed_components": 15,
+    "weyl_matrix_dimension": 32
+  },
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalGaugeDressedMeasure.lean": "b0675ad68c5bab6bb48535d12112a850976f6e357a422d581fb698e8d978405f",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3"
+  }
+}

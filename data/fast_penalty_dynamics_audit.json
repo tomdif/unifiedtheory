@@ -1,0 +1,324 @@
+{
+  "finite_spin_dynamics": {
+    "cases": [
+      {
+        "R": 1,
+        "dimension": 49,
+        "kernel_dimension": 13,
+        "full_collective_space": true,
+        "occupation_cutoff": false,
+        "positive_constraint_gap": 3.9999999999999782,
+        "partial_inverse_error": 1.0173065066989698e-14,
+        "correction_equation_error": 2.550985775336147e-15,
+        "bare_generator_residual": 0.39999999999999986,
+        "correction_norm": 0.038017265814363856,
+        "residual_coefficient": 0.06690857604266406,
+        "evolution_cases": [
+          {
+            "Gamma": 1.0,
+            "penalty": 1.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.06967354955680274,
+            "lean_sharp_bound": 0.09276167563939372,
+            "norm_triangle_bound": 0.16312694342969886,
+            "dressing_identity_error": 2.340853625590358e-14
+          },
+          {
+            "Gamma": 1.0,
+            "penalty": 1.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.02779753932158801,
+            "lean_sharp_bound": 0.1429431076713918,
+            "norm_triangle_bound": 0.4244041788326122,
+            "dressing_identity_error": 2.340853625590358e-14
+          },
+          {
+            "Gamma": 1.0,
+            "penalty": 1.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.0445835430154852,
+            "lean_sharp_bound": 0.20985168371405583,
+            "norm_triangle_bound": 0.7727738260364968,
+            "dressing_identity_error": 2.340853625590358e-14
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 4.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.012963479621653212,
+            "lean_sharp_bound": 0.02319041890984843,
+            "norm_triangle_bound": 0.040781735857424714,
+            "dressing_identity_error": 9.48216710689118e-14
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 4.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.010921228133060594,
+            "lean_sharp_bound": 0.03573577691784795,
+            "norm_triangle_bound": 0.10610104470815306,
+            "dressing_identity_error": 9.48216710689118e-14
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 4.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.018779445301916827,
+            "lean_sharp_bound": 0.052462920928513956,
+            "norm_triangle_bound": 0.1931934565091242,
+            "dressing_identity_error": 9.48216710689118e-14
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 16.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.0009578814812348962,
+            "lean_sharp_bound": 0.0057976047274621075,
+            "norm_triangle_bound": 0.010195433964356179,
+            "dressing_identity_error": 3.6615192686208056e-13
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 16.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.0023103082990994376,
+            "lean_sharp_bound": 0.008933944229461987,
+            "norm_triangle_bound": 0.026525261177038264,
+            "dressing_identity_error": 3.6615192686208056e-13
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 16.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.0031364256792293004,
+            "lean_sharp_bound": 0.013115730232128489,
+            "norm_triangle_bound": 0.04829836412728105,
+            "dressing_identity_error": 3.6615192686208056e-13
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 64.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.0009839531162539252,
+            "lean_sharp_bound": 0.0014494011818655269,
+            "norm_triangle_bound": 0.0025488584910890446,
+            "dressing_identity_error": 1.4709748847366694e-12
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 64.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.000803487904924042,
+            "lean_sharp_bound": 0.0022334860573654967,
+            "norm_triangle_bound": 0.006631315294259566,
+            "dressing_identity_error": 1.4709748847366694e-12
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 64.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.0012090973322530143,
+            "lean_sharp_bound": 0.0032789325580321223,
+            "norm_triangle_bound": 0.012074591031820263,
+            "dressing_identity_error": 1.4709748847366694e-12
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 256.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.00026991482962714477,
+            "lean_sharp_bound": 0.0003623502954663817,
+            "norm_triangle_bound": 0.0006372146227722612,
+            "dressing_identity_error": 5.8956001036322625e-12
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 256.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.0002609489788129173,
+            "lean_sharp_bound": 0.0005583715143413742,
+            "norm_triangle_bound": 0.0016578288235648915,
+            "dressing_identity_error": 5.8956001036322625e-12
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 256.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.00027117311436543703,
+            "lean_sharp_bound": 0.0008197331395080306,
+            "norm_triangle_bound": 0.0030186477579550656,
+            "dressing_identity_error": 5.8956001036322625e-12
+          }
+        ]
+      },
+      {
+        "R": 2,
+        "dimension": 784,
+        "kernel_dimension": 82,
+        "full_collective_space": true,
+        "occupation_cutoff": false,
+        "positive_constraint_gap": 1.999999999999993,
+        "partial_inverse_error": 7.93640481656846e-15,
+        "correction_equation_error": 3.242964458587958e-14,
+        "bare_generator_residual": 0.3685961036821249,
+        "correction_norm": 0.09456675469608762,
+        "residual_coefficient": 0.07638623631159068,
+        "evolution_cases": [
+          {
+            "Gamma": 1.0,
+            "penalty": 4.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.04138236354101111,
+            "lean_sharp_bound": 0.05205751711751823,
+            "norm_triangle_bound": 0.10943882288368874,
+            "dressing_identity_error": 8.664166729398514e-14
+          },
+          {
+            "Gamma": 1.0,
+            "penalty": 4.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.03909635809703255,
+            "lean_sharp_bound": 0.06637993642594148,
+            "norm_triangle_bound": 0.2959051594906235,
+            "dressing_identity_error": 8.664166729398514e-14
+          },
+          {
+            "Gamma": 1.0,
+            "penalty": 4.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.04411307348932092,
+            "lean_sharp_bound": 0.08547649550383915,
+            "norm_triangle_bound": 0.5445269416332033,
+            "dressing_identity_error": 8.664166729398514e-14
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 16.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.009485694938195215,
+            "lean_sharp_bound": 0.013014379279379557,
+            "norm_triangle_bound": 0.027359705720922185,
+            "dressing_identity_error": 3.5094114265167184e-13
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 16.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.00610189337703675,
+            "lean_sharp_bound": 0.01659498410648537,
+            "norm_triangle_bound": 0.07397628987265588,
+            "dressing_identity_error": 3.5094114265167184e-13
+          },
+          {
+            "Gamma": 4.0,
+            "penalty": 16.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.007827587090711326,
+            "lean_sharp_bound": 0.021369123875959788,
+            "norm_triangle_bound": 0.1361317354083008,
+            "dressing_identity_error": 3.5094114265167184e-13
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 64.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.0016112008589772957,
+            "lean_sharp_bound": 0.0032535948198448893,
+            "norm_triangle_bound": 0.006839926430230546,
+            "dressing_identity_error": 1.4205696785060415e-12
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 64.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.002463157903563671,
+            "lean_sharp_bound": 0.004148746026621342,
+            "norm_triangle_bound": 0.01849407246816397,
+            "dressing_identity_error": 1.4205696785060415e-12
+          },
+          {
+            "Gamma": 16.0,
+            "penalty": 64.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.00287310552840176,
+            "lean_sharp_bound": 0.005342280968989947,
+            "norm_triangle_bound": 0.0340329338520752,
+            "dressing_identity_error": 1.4205696785060415e-12
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 256.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.0006567300860905736,
+            "lean_sharp_bound": 0.0008133987049612223,
+            "norm_triangle_bound": 0.0017099816075576365,
+            "dressing_identity_error": 5.613767277310179e-12
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 256.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.0006614623606721903,
+            "lean_sharp_bound": 0.0010371865066553356,
+            "norm_triangle_bound": 0.004623518117040992,
+            "dressing_identity_error": 5.613767277310179e-12
+          },
+          {
+            "Gamma": 64.0,
+            "penalty": 256.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.0005843898733670197,
+            "lean_sharp_bound": 0.0013355702422474867,
+            "norm_triangle_bound": 0.0085082334630188,
+            "dressing_identity_error": 5.613767277310179e-12
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 1024.0,
+            "time": 0.25,
+            "bare_evolution_error": 0.00016890545566329988,
+            "lean_sharp_bound": 0.00020334967624030558,
+            "norm_triangle_bound": 0.00042749540188940913,
+            "dressing_identity_error": 2.257272424082253e-11
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 1024.0,
+            "time": 1.0,
+            "bare_evolution_error": 0.00010416802820639861,
+            "lean_sharp_bound": 0.0002592966266638339,
+            "norm_triangle_bound": 0.001155879529260248,
+            "dressing_identity_error": 2.257272424082253e-11
+          },
+          {
+            "Gamma": 256.0,
+            "penalty": 1024.0,
+            "time": 2.0,
+            "bare_evolution_error": 0.00016893843232035715,
+            "lean_sharp_bound": 0.0003338925605618717,
+            "norm_triangle_bound": 0.0021270583657547,
+            "dressing_identity_error": 2.257272424082253e-11
+          }
+        ]
+      }
+    ],
+    "scope": "Actual six-flavor collective spin operators and the original integer tensor stencils on a periodic 1x2x1 carrier. All allowed local occupations, including N_total>R, are retained. The target K=J*F_R J is computed from the entire finite-R kernel, not identified with the continuum areal Hamiltonian. Gamma varies at fixed R; these cases do not establish uniform R, volume, or continuum convergence. Floating-point spectral and norm checks are not certified interval bounds."
+  },
+  "areal_clock": {
+    "canonical_rescaling": true,
+    "transformed_hamilton_equations": true,
+    "transformed_mass_squared": "1/(4*t^2)",
+    "periodic_reconstruction": true,
+    "total_momentum_zero": true,
+    "longitudinal_classical_symbol_cost": "pi*A**2*B**2/c**2",
+    "scope": "Exact SymPy identities for the supplied continuum target. The bare linear tensor penalty charges its nonlinear longitudinal metric reconstruction, even with zero total momentum. This is a classical-symbol cost, not a finite-spin quantum no-go theorem. Composite/dressed metric observables and an internal clock remain possible."
+  },
+  "source_sha256": {
+    "scripts/fast_penalty_dynamics_audit.py": "1976b926111d122736c556c493d58f6ee30144fb1a8e61335dfce8dd0ccd3fcd",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "scripts/compact_tensor_constraint_audit.py": "8af5c69d28cedea8fb19b8726212aa2b2a4a2ab36a5998db628d56659a1c40c1",
+    "UnifiedTheory/Audit/KFCausalFastPenaltyDynamics.lean": "b5eb83108703263721e0fe1eda3ca0204dbc68837718cc616e21847eefb5c377",
+    "UnifiedTheory/Audit/KFCausalFinitePenaltyInverse.lean": "6a14273c7bead913d3436b178f55b2362707992b32d44295955f65d42bc22b5d",
+    "UnifiedTheory/Audit/KFCausalArealMicroscopicBridge.lean": "bac3d313f02c5edc2f0b7a388184f3aee747341074ba15bb393d2e65c5bab1a6"
+  }
+}

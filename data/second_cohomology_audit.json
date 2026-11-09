@@ -1,0 +1,221 @@
+{
+  "scope": "Second descent and exact finite Ward completion; locality of final residual requires its own bound",
+  "algebra_checks": [
+    {
+      "lengths": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "exact_integer_identities": true,
+      "averaged_finite_solver_translation_checked": true
+    },
+    {
+      "lengths": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "exact_integer_identities": true,
+      "averaged_finite_solver_translation_checked": true
+    }
+  ],
+  "hessian_checks": {
+    "reference_norm": 0.06617173412392233,
+    "quadrature": [
+      {
+        "nodes": 24,
+        "error": 1.2003092480818519e-11,
+        "mixed_symmetry_error": 4.739849525016349e-15
+      },
+      {
+        "nodes": 32,
+        "error": 3.449533490683066e-14,
+        "mixed_symmetry_error": 4.080293658506978e-15
+      }
+    ],
+    "free_charge_scaling": [
+      {
+        "charge": -4,
+        "error": 0.0
+      },
+      {
+        "charge": 6,
+        "error": 5.095633833964856e-15
+      }
+    ],
+    "cubic_charge_sum": 0,
+    "free_first_derivative_norm": 2.783402129755235e-16
+  },
+  "synthetic_classes": [
+    {
+      "length": 3,
+      "local_divergence_remainder": 0.0,
+      "local_diagonal_norm": 0.0,
+      "topological_remainder": 44.090815370097204,
+      "top_diagonal_norm": 9.0,
+      "top_x_boundary": 0.0,
+      "top_y_boundary": 0.0
+    },
+    {
+      "length": 4,
+      "local_divergence_remainder": 0.0,
+      "local_diagonal_norm": 0.0,
+      "topological_remainder": 78.38367176906169,
+      "top_diagonal_norm": 16.0,
+      "top_x_boundary": 0.0,
+      "top_y_boundary": 0.0
+    },
+    {
+      "length": 5,
+      "local_divergence_remainder": 0.0,
+      "local_diagonal_norm": 0.0,
+      "topological_remainder": 122.47448713915891,
+      "top_diagonal_norm": 25.0,
+      "top_x_boundary": 0.0,
+      "top_y_boundary": 0.0
+    }
+  ],
+  "base": {
+    "lengths": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "field_nodes": 4,
+    "resolvent_nodes": 32,
+    "sampled_kernel_gap": 0.9756913530538298,
+    "second_radial_identity_error": 2.757296145576917e-13,
+    "weighted_second_radial_identity_error": 5.6471327625630725e-12,
+    "anomaly_norm": 1.5975154592366953e-06,
+    "first_and_second": {
+      "first_current_norm": 1.9596036559461473e-06,
+      "second_current_norm": 2.7275701285507116e-06,
+      "residual_norm": 3.720495707874085e-06,
+      "residual_total": -1.2739810054606619e-14,
+      "finite_completion_norm": 2.3789876887820763e-06,
+      "ward_error": 3.1849523018934644e-15,
+      "bianchi_cap_error": 6.430849160755223e-22,
+      "residual_formula_error": 2.8489704483435606e-14,
+      "second_descent": {
+        "factorization_error": 1.901448779520823e-18,
+        "top_centering_error": 1.049774239489565e-19,
+        "cycle_remainder_error": 9.780987814987582e-19,
+        "top_gradient_error": 8.152611813803578e-19,
+        "k_norm": 0.00916969322771715,
+        "s_norm": 0.005284174860376928,
+        "q_norm": 0.006836884249241052,
+        "top_diagonal_norm": 1.8722274139992726e-06,
+        "input_x_boundary": 0.0071261326158222,
+        "input_y_boundary": 6.640305205988003e-14
+      }
+    },
+    "phase_weighted": {
+      "first_current_norm": 3.929172288717597e-07,
+      "second_current_norm": 5.463611461039883e-07,
+      "residual_norm": 7.454479120723134e-07,
+      "residual_total": 6.48474928006669e-14,
+      "finite_completion_norm": 4.766521711794095e-07,
+      "ward_error": 1.621187319192077e-14,
+      "bianchi_cap_error": 6.550936228505627e-23,
+      "residual_formula_error": 4.626903823193753e-14,
+      "second_descent": {
+        "factorization_error": 4.0406095238938003e-19,
+        "top_centering_error": 1.7046209243183485e-20,
+        "cycle_remainder_error": 1.9526604094627186e-19,
+        "top_gradient_error": 1.3812676675078624e-19,
+        "k_norm": 0.0018364208544547889,
+        "s_norm": 0.0010583842403714026,
+        "q_norm": 0.0013695029578723395,
+        "top_diagonal_norm": 2.67681916222514e-07,
+        "input_x_boundary": 0.001427303927100243,
+        "input_y_boundary": 2.593850580878239e-14
+      }
+    }
+  },
+  "phase": 3.1285987575134227e-09,
+  "gauge_and_phase": {
+    "current_gauge_error": 7.12606253144966e-14,
+    "phase_change": 2.5100758056446464e-08,
+    "predicted_phase_change": 2.5100777584740665e-08,
+    "phase_change_error": 1.9528294200487533e-14,
+    "corrected_ward_error": 1.1596220244902078e-14
+  },
+  "quadrature_refinement": {
+    "current_error": 5.626377143027522e-15,
+    "weighted_current_error": 1.0826749238157492e-13,
+    "phase_error": 1.656493345587047e-15,
+    "refined_audit": {
+      "lengths": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "field_nodes": 6,
+      "resolvent_nodes": 32,
+      "sampled_kernel_gap": 0.9746776366120882,
+      "second_radial_identity_error": 1.0769163167030228e-14,
+      "weighted_second_radial_identity_error": 6.027096929528302e-15,
+      "anomaly_norm": 1.5975154592366953e-06,
+      "first_and_second": {
+        "first_current_norm": 1.9596036565661246e-06,
+        "second_current_norm": 2.7275701273739546e-06,
+        "residual_norm": 3.7204957076787965e-06,
+        "residual_total": -1.2739809207573671e-14,
+        "finite_completion_norm": 2.3789876890735417e-06,
+        "ward_error": 3.1849521761620823e-15,
+        "bianchi_cap_error": 5.69100261436483e-22,
+        "residual_formula_error": 2.8435169140038116e-14,
+        "second_descent": {
+          "factorization_error": 1.92015422680368e-18,
+          "top_centering_error": 7.814768387166965e-20,
+          "cycle_remainder_error": 9.798704170547799e-19,
+          "top_gradient_error": 6.22718437487098e-19,
+          "k_norm": 0.009169693221898416,
+          "s_norm": 0.005284174856817299,
+          "q_norm": 0.006836884245129853,
+          "top_diagonal_norm": 1.8722275365935937e-06,
+          "input_x_boundary": 0.00712613261167574,
+          "input_y_boundary": 5.955216637584236e-14
+        }
+      },
+      "phase_weighted": {
+        "first_current_norm": 3.9291723237422293e-07,
+        "second_current_norm": 5.46361136062709e-07,
+        "residual_norm": 7.454478947525984e-07,
+        "residual_total": 9.087795812899563e-14,
+        "finite_completion_norm": 4.766521721489645e-07,
+        "ward_error": 2.2719489515498504e-14,
+        "bianchi_cap_error": 1.109285902725366e-22,
+        "residual_formula_error": 2.7243857844126303e-14,
+        "second_descent": {
+          "factorization_error": 3.818786269476441e-19,
+          "top_centering_error": 2.0222634443329946e-20,
+          "cycle_remainder_error": 1.9297450438484139e-19,
+          "top_gradient_error": 1.4370133008744493e-19,
+          "k_norm": 0.0018364208003609113,
+          "s_norm": 0.0010583842143438156,
+          "q_norm": 0.0013695029380899886,
+          "top_diagonal_norm": 2.676775182656757e-07,
+          "input_x_boundary": 0.0014273038993142138,
+          "input_y_boundary": 2.1535258989166208e-14
+        }
+      }
+    }
+  },
+  "arithmetic": "Float64 diagnostics; integer-valued cubical controls stay exactly representable; not interval certification",
+  "source_sha256": {
+    "scripts/second_cohomology_audit.py": "a10cbb381e97a9b3818661f10a08d1bfb4f16f5cef51d7d169c47e6ba23659aa",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "UnifiedTheory/Audit/KFCausalSecondCohomology.lean": "c5b6ed81623007c6fa407a8a8293774cc1a07c8140fe86d6765b50bfa2b3f92b"
+  }
+}

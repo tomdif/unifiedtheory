@@ -1,0 +1,42 @@
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.comm_self' depends on axioms: [propext]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.comm_antisymm' depends on axioms: [propext]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.deturck_component_identity' depends on axioms: [propext, Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.comm_difference' depends on axioms: [propext]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.double_comm_difference' depends on axioms: [propext]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.comm_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.double_comm_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.comm_difference_norm' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.nonlinear_bound_relation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.nonlinearLipschitz_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.contraction_ball' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.absorb_cutoff_error' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.homogeneous_curvature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.homogeneous_rhs_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.homogeneous_rhs_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.homogeneous_curvature_nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.homogeneous_curvature_normSq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsLocal.amplitude_hasDerivAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

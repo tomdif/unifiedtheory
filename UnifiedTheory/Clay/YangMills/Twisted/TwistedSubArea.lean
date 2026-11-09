@@ -8,9 +8,12 @@ and `m_k = log M_k` (`M_k = 4 n_k² K₁² K₂` at scale `L_k = 2^k L₀`), one
 * `subarea_sum`: if `m_j ≤ A + B q^j` with `0 ≤ q < 4`, then `Σ_{j<k} m_j / 4^{j+1} ≤ A/3 + B/(4 - q)`.
 * `area_law_growing`: so `u_0 > A/3 + B/(4 - q)` gives `u_k ≥ 4^k δ` with `δ > 0`, i.e. `y_k ≤ e^{-δ (L_k/L₀)²}`.
 
-With `q = 2^α`, the constants may grow like `log M(L) ≤ A + B (L/L₀)^α` for any `α < 2`: sub-area growth, not
-boundedness, is what `K̄` and the transverse factor `n` must satisfy. Area-type growth (`α = 2`) is the borderline and
-fails. -/
+With `q = 2^α`, the sufficient envelope allows
+`log M(L) ≤ A + B (L/L₀)^α` for any `α < 2`, together with the stated initial margin.
+An arbitrary `o(L²)` assertion is insufficient: the normalized scale costs must
+have a bounded sum below the initial value. `TwistedWeightedBudget` supplies a
+stronger telescoping envelope and a pointwise-subarea counterexample with a
+divergent normalized budget. -/
 import Mathlib
 
 set_option autoImplicit false

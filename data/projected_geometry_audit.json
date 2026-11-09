@@ -1,0 +1,338 @@
+{
+  "rooted_obstruction": {
+    "template_vertices": 63,
+    "exhaustive_forward_rooted_paths": 600,
+    "squares_before": 12,
+    "squares_after": {
+      "7": 192,
+      "8": 312,
+      "9": 96
+    },
+    "root_positions": {
+      "3": 150,
+      "2": 150,
+      "1": 150,
+      "0": 150
+    },
+    "representative_paths": {
+      "8": [
+        [
+          -3,
+          0,
+          0
+        ],
+        [
+          -2,
+          0,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "9": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ]
+      ],
+      "7": [
+        [
+          -1,
+          -1,
+          0
+        ],
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ]
+    },
+    "independent_torus_vertices": 1000,
+    "independent_isomorphism_checks": 600,
+    "scope": "Radius-three data determines every post-flip square at an affected root; all completions covered."
+  },
+  "regulated_family": {
+    "vertices": 13824,
+    "reference_side": 24,
+    "selected_switches": 2,
+    "full_extensive_construction_switches_at_this_size": 8,
+    "configurations": 4,
+    "switched_paths": [
+      [
+        2404,
+        2980,
+        3556,
+        4132
+      ],
+      [
+        9616,
+        10192,
+        10768,
+        11344
+      ]
+    ],
+    "rows": [
+      {
+        "mask": 0,
+        "active_switches": 0,
+        "triangles": 0,
+        "squares": 41472,
+        "defects": 0,
+        "antipode_distance": 36,
+        "ball_checks": [
+          {
+            "radius": 1,
+            "reference_lower": 1,
+            "actual": 7,
+            "reference_upper": 25
+          },
+          {
+            "radius": 2,
+            "reference_lower": 7,
+            "actual": 25,
+            "reference_upper": 129
+          },
+          {
+            "radius": 4,
+            "reference_lower": 25,
+            "actual": 129,
+            "reference_upper": 833
+          },
+          {
+            "radius": 8,
+            "reference_lower": 129,
+            "actual": 833,
+            "reference_upper": 5630
+          }
+        ]
+      },
+      {
+        "mask": 1,
+        "active_switches": 1,
+        "triangles": 0,
+        "squares": 41464,
+        "defects": 62,
+        "antipode_distance": 35,
+        "ball_checks": [
+          {
+            "radius": 1,
+            "reference_lower": 1,
+            "actual": 7,
+            "reference_upper": 25
+          },
+          {
+            "radius": 2,
+            "reference_lower": 7,
+            "actual": 29,
+            "reference_upper": 129
+          },
+          {
+            "radius": 4,
+            "reference_lower": 25,
+            "actual": 153,
+            "reference_upper": 833
+          },
+          {
+            "radius": 8,
+            "reference_lower": 129,
+            "actual": 945,
+            "reference_upper": 5630
+          }
+        ]
+      },
+      {
+        "mask": 2,
+        "active_switches": 1,
+        "triangles": 0,
+        "squares": 41464,
+        "defects": 62,
+        "antipode_distance": 35,
+        "ball_checks": [
+          {
+            "radius": 1,
+            "reference_lower": 1,
+            "actual": 7,
+            "reference_upper": 25
+          },
+          {
+            "radius": 2,
+            "reference_lower": 7,
+            "actual": 25,
+            "reference_upper": 129
+          },
+          {
+            "radius": 4,
+            "reference_lower": 25,
+            "actual": 129,
+            "reference_upper": 833
+          },
+          {
+            "radius": 8,
+            "reference_lower": 129,
+            "actual": 833,
+            "reference_upper": 5630
+          }
+        ]
+      },
+      {
+        "mask": 3,
+        "active_switches": 2,
+        "triangles": 0,
+        "squares": 41456,
+        "defects": 124,
+        "antipode_distance": 35,
+        "ball_checks": [
+          {
+            "radius": 1,
+            "reference_lower": 1,
+            "actual": 7,
+            "reference_upper": 25
+          },
+          {
+            "radius": 2,
+            "reference_lower": 7,
+            "actual": 29,
+            "reference_upper": 129
+          },
+          {
+            "radius": 4,
+            "reference_lower": 25,
+            "actual": 153,
+            "reference_upper": 833
+          },
+          {
+            "radius": 8,
+            "reference_lower": 129,
+            "actual": 945,
+            "reference_upper": 5630
+          }
+        ]
+      }
+    ],
+    "all_compressed_move_weights": 4,
+    "all_move_diagonal_per_vertex": 300,
+    "scope": "Two selected switches out of eight possible separated cells; analytic construction allows all cells."
+  },
+  "joint_dynamics": {
+    "joint_dimension": 55296,
+    "rho": 0.1,
+    "J": 0.005,
+    "kappa": 0.25,
+    "retained_root_touching_geometry_entry": -0.4,
+    "old_occupied_root_projected_entry": 0,
+    "rows": [
+      {
+        "time": 0.3,
+        "geometry_probabilities": [
+          0.971576843412097,
+          0.014102480038237334,
+          0.014115785313366932,
+          0.00020489123629860524
+        ],
+        "geometry_reduced_purity": 0.999921280468025,
+        "energy": 0.800000000000003,
+        "maximum_transport_to_bound_ratio_beyond_distance_eight": 9.328911562759025e-11
+      },
+      {
+        "time": 1.0,
+        "geometry_probabilities": [
+          0.7229863653498747,
+          0.12659062184844858,
+          0.12800933750465956,
+          0.022413675297017245
+        ],
+        "geometry_reduced_purity": 0.9926893955671885,
+        "energy": 0.8000000000000034,
+        "maximum_transport_to_bound_ratio_beyond_distance_eight": 1.6346336899746687e-07
+      }
+    ],
+    "scope": "Four full 13,824-site graph configurations and one neutral probe; arbitrary-state bound is analytic."
+  },
+  "extensive_geometry": {
+    "vertices": 13824,
+    "switches": 8,
+    "full_carrier_configurations": 256,
+    "all_switches_active_defects": 496,
+    "all_switches_active_squares": 41408,
+    "recognized_affected_roots": 1104,
+    "matter_site_interaction_coefficient": 8,
+    "geometry_site_interaction_coefficient": 70,
+    "common_envelope_at_unit_couplings": 74,
+    "maximum_interaction_diameter": 4,
+    "scope": "Full eight-cell interaction list and all-active configuration; not all 256 states enumerated."
+  },
+  "local_many_body": {
+    "local_hilbert_dimension": 32,
+    "exact_matter_number_conservation": true,
+    "all_occupation_columns_checked": 32,
+    "mixed_commutators": [
+      {
+        "time": 0.0001,
+        "mixed_geometry_matter_commutator_norm": 7.07106780690854e-10,
+        "general_lr_bound": 0.04044060309632175
+      },
+      {
+        "time": 0.02,
+        "mixed_geometry_matter_commutator_norm": 2.8283477129723487e-05,
+        "general_lr_bound": 2.0
+      },
+      {
+        "time": 0.5,
+        "mixed_geometry_matter_commutator_norm": 0.017369975718229926,
+        "general_lr_bound": 2.0
+      }
+    ],
+    "graph_only_switch_gap": "sqrt((62*J)^2+64*rho^2)",
+    "graph_only_ground_active_probability": "(1-62*J/sqrt((62*J)^2+64*rho^2))/2",
+    "scope": "Full local neutral hard-core field motif; global common cone follows from uniform interaction support."
+  },
+  "source_sha256": {
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b",
+    "scripts/projected_geometry_audit.py": "bc1f78606a741086e23a3b8ffdf770fcb7297f6274cf20c37a721d7cafed08a2",
+    "UnifiedTheory/Audit/KFCausalProjectedGeometry.lean": "a05a17e758746b80b36a2077e1a41208148f1c47e7a70d812d07395d2a242ec1",
+    "ENERGETIC_PROBE_SECTOR.md": "be228dc34aa95e9520b11c9bdf5fa40e08442854ae7adc1b870bbd06c2754f89",
+    "scripts/energetic_probe_audit.py": "f37ab496b2ac17173f863420574e31ac6edca0f44498265f3a45845c4a6d12df",
+    "PATCH_GROWTH_AND_NONCOLLAPSE.md": "d45a1345b0e651c754e8301215d978b102c23d658569de6fc8ff4e9526a21e66",
+    "scripts/patch_growth_audit.py": "3855a592c43df43f22427c317b3e207c06ee00a763dddd52277e5c218b946803",
+    "PATCH_GEOMETRY_PROTECTION.md": "7d633bccb14107722244fa4cfeb6edb9ddfbbf6f17bc06d7b47ffe468d41936a",
+    "scripts/patch_geometry_audit.py": "1b34c3c0124c5e68cdb23f45073110e135f21b602ebc36aabda902d38a27b577",
+    "AUTONOMOUS_GEOMETRY_SELECTION.md": "dabbf8cfd8a80f9ebf02003f0b86b297842d3dfea1b12419d566059ca314ac81",
+    "scripts/autonomous_geometry_audit.py": "7a135437ee855d772eeb28d0d24f5eafcaa9d1facf8baf55837170aa94a145b9"
+  },
+  "scope": "Exact cubic-root flip obstruction and frozen all-good graph sector. A supplied bounded-distortion reference carrier permits extensive quantum geometry, uniform noncollapse, and joint neutral-matter/geometry locality. No emergent regulator, physical charged matter, Lorentz symmetry, Einstein dynamics, or completed TOE."
+}

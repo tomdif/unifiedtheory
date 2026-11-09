@@ -1,0 +1,232 @@
+{
+  "seed_growth": {
+    "vertices": 124,
+    "moves": 2065,
+    "neutral_moves": 2064,
+    "final_defect_drop": 1,
+    "initial_good_roots": [
+      31
+    ],
+    "final_good_roots": [
+      31,
+      50
+    ],
+    "adjacent_final_roots": true,
+    "frozen_ball_vertices": 63,
+    "frozen_ball_edges": 114,
+    "rooted_patch_tests": 256184,
+    "scope": "Target-guided finite existence witness retaining the original seed; no general growth-time claim."
+  },
+  "rewired_graphs": [
+    {
+      "cells_per_axis": 2,
+      "cell_side": 16,
+      "vertices": 32768,
+      "binary_tree_height": 3,
+      "changed_endpoints": 28,
+      "affected_root_tests": 1004,
+      "untouched_root_spot_checks": 8,
+      "defective_roots": 444,
+      "good_components": [
+        32324
+      ],
+      "certified_connected_good_subset": 28064,
+      "exact_good_fraction": "8081/8192",
+      "exact_hard_probe_antipode_distance": 48,
+      "constructed_diameter_upper_bound": 363,
+      "sampled_routes": 32,
+      "cross_edges_without_squares": 14,
+      "soft_gate_good_endpoint_pair": [
+        21268,
+        7956
+      ],
+      "original_torus_distance": 13,
+      "actual_graph_distance": 9,
+      "exact_soft_walk_moments_of_4A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64
+      ],
+      "hard_walk_moments_through_order_9": 0
+    },
+    {
+      "cells_per_axis": 2,
+      "cell_side": 20,
+      "vertices": 64000,
+      "binary_tree_height": 3,
+      "changed_endpoints": 28,
+      "affected_root_tests": 1004,
+      "untouched_root_spot_checks": 8,
+      "defective_roots": 444,
+      "good_components": [
+        63556
+      ],
+      "certified_connected_good_subset": 59296,
+      "exact_good_fraction": "15889/16000",
+      "exact_hard_probe_antipode_distance": 60,
+      "constructed_diameter_upper_bound": 447,
+      "sampled_routes": 32,
+      "cross_edges_without_squares": 14,
+      "soft_gate_good_endpoint_pair": [
+        39544,
+        12344
+      ],
+      "original_torus_distance": 17,
+      "actual_graph_distance": 9,
+      "exact_soft_walk_moments_of_4A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64
+      ],
+      "hard_walk_moments_through_order_9": 0
+    },
+    {
+      "cells_per_axis": 3,
+      "cell_side": 16,
+      "vertices": 110592,
+      "binary_tree_height": 4,
+      "changed_endpoints": 104,
+      "affected_root_tests": 3626,
+      "untouched_root_spot_checks": 8,
+      "defective_roots": 1622,
+      "good_components": [
+        108970
+      ],
+      "certified_connected_good_subset": 94716,
+      "exact_good_fraction": "54485/55296",
+      "exact_hard_probe_antipode_distance": 72,
+      "constructed_diameter_upper_bound": 467,
+      "sampled_routes": 32,
+      "cross_edges_without_squares": 52,
+      "soft_gate_good_endpoint_pair": [
+        84900,
+        58756
+      ],
+      "original_torus_distance": 43,
+      "actual_graph_distance": 9,
+      "exact_soft_walk_moments_of_4A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        64
+      ],
+      "hard_walk_moments_through_order_9": 0
+    }
+  ],
+  "scaling": {
+    "asymptotic_sequence": [
+      {
+        "h": 1,
+        "growing_test_radius": 1,
+        "cell_side": 18,
+        "cells_per_axis": 2,
+        "vertices": 46656,
+        "radius_test_failure_bound": "49/11664",
+        "fixed_radius_three_failure_bound": "7/162",
+        "giant_good_fraction_lower_bound": "437/486",
+        "normalized_diameter_upper_bound": "45/4",
+        "required_cubic_volume_constant_lower_bound": "64/91125"
+      },
+      {
+        "h": 2,
+        "growing_test_radius": 2,
+        "cell_side": 24,
+        "cells_per_axis": 4,
+        "vertices": 884736,
+        "radius_test_failure_bound": "175/24576",
+        "fixed_radius_three_failure_bound": "7/384",
+        "giant_good_fraction_lower_bound": "1103/1152",
+        "normalized_diameter_upper_bound": "329/32",
+        "required_cubic_volume_constant_lower_bound": "32768/35611289"
+      },
+      {
+        "h": 4,
+        "growing_test_radius": 4,
+        "cell_side": 48,
+        "cells_per_axis": 16,
+        "vertices": 452984832,
+        "radius_test_failure_bound": "19565/4194304",
+        "fixed_radius_three_failure_bound": "7/3072",
+        "giant_good_fraction_lower_bound": "9167/9216",
+        "normalized_diameter_upper_bound": "1233/256",
+        "required_cubic_volume_constant_lower_bound": "16777216/1874516337"
+      },
+      {
+        "h": 8,
+        "growing_test_radius": 8,
+        "cell_side": 144,
+        "cells_per_axis": 256,
+        "vertices": 50096498540544,
+        "radius_test_failure_bound": "1552824455/1391569403904",
+        "fixed_radius_three_failure_bound": "7/82944",
+        "giant_good_fraction_lower_bound": "248783/248832",
+        "normalized_diameter_upper_bound": "7121/12288",
+        "required_cubic_volume_constant_lower_bound": "1855425871872/361096232561"
+      },
+      {
+        "h": 16,
+        "growing_test_radius": 16,
+        "cell_side": 528,
+        "cells_per_axis": 65536,
+        "vertices": 41432540111056259776512,
+        "radius_test_failure_bound": "17107423584525365/104627626543071363072",
+        "fixed_radius_three_failure_bound": "7/4088832",
+        "giant_good_fraction_lower_bound": "12266447/12266496",
+        "normalized_diameter_upper_bound": "51345/11534336",
+        "required_cubic_volume_constant_lower_bound": "1534538522631713325056/135361286888625"
+      },
+      {
+        "h": 32,
+        "growing_test_radius": 32,
+        "cell_side": 2064,
+        "cells_per_axis": 4294967296,
+        "vertices": 696640409434454411691406414654822416384,
+        "radius_test_failure_bound": "134467798045043084082375982374125/6450374161430133441587096431989096448",
+        "fixed_radius_three_failure_bound": "7/244245504",
+        "giant_good_fraction_lower_bound": "732736463/732736512",
+        "normalized_diameter_upper_bound": "398609/2954937499648",
+        "required_cubic_volume_constant_lower_bound": "25801496645720533766348385727956385792/63334639165780529"
+      }
+    ],
+    "cubic_ball_formula": "(4R^3+6R^2+8R+3)/3",
+    "exact_basis_patch_energy": "300*rho*N+J*D3",
+    "hard_probe_propagation_bound": "exp(6*kappa*abs(t)*exp(mu)-mu*d_original)",
+    "soft_probe_time": "epsilon^18/(kappa*6^10)",
+    "soft_probe_amplitude_lower_bound": "epsilon^180/(2*9!*6^90)",
+    "scope": "Static graph family and supplied neutral-probe coupling; no full fluctuating-model locality theorem."
+  },
+  "source_sha256": {
+    "PATCH_GROWTH_AND_NONCOLLAPSE.md": "d45a1345b0e651c754e8301215d978b102c23d658569de6fc8ff4e9526a21e66",
+    "scripts/patch_growth_audit.py": "3855a592c43df43f22427c317b3e207c06ee00a763dddd52277e5c218b946803",
+    "UnifiedTheory/Audit/KFCausalPatchGrowth.lean": "9b4245af04f1f1ca335c9abdf6864b80cf8057eeea976545f7b915028fa2682c",
+    "data/patch_growth_path.json": "132c4e89d4405a803ad19ca0a75f7a7358b3d89c234a3382854f99d6a890f3c8",
+    "NEUTRAL_PATCH_NUCLEATION.md": "ffd7384199477b146ef4b1db52c84687e9492f79634b99b20ac005b9f3616bc9",
+    "scripts/neutral_patch_audit.py": "f3411884e992cfab3a81ce93ba65c6e564d7317144f7d12cdba90b5ea7c5ce9a",
+    "data/neutral_patch_path.json": "e460c7319bf6b342abb16d614f41edc3f2e1b4ddb0579b9378ad8149d28aecef",
+    "PATCH_GEOMETRY_PROTECTION.md": "7d633bccb14107722244fa4cfeb6edb9ddfbbf6f17bc06d7b47ffe468d41936a",
+    "scripts/patch_geometry_audit.py": "1b34c3c0124c5e68cdb23f45073110e135f21b602ebc36aabda902d38a27b577",
+    "RESERVOIR_GEOMETRY_PREPARATION.md": "bda764b4a422cee1305eaf22a6770ff6fd7a2adc8376eca5c612d330bc7d4994",
+    "scripts/reservoir_geometry_audit.py": "55ac461074743816dc800537598bb2b87ca3c8e78cb6cf87a233eab495c8b117"
+  },
+  "scope": "Finite seed growth; vanishing local defects and a giant good component do not imply noncollapse of the full graph metric. A hard neutral-probe gate restores a scoped propagation bound; a fixed soft gate does not."
+}

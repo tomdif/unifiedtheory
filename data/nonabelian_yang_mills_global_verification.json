@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "analytic_result": "For smooth periodic SU(m) initial data on T^2, exact projected Yang--Mills gradient cutoffs converge as an entire sequence on every finite interval to the unique global smooth solution. Includes L2 and uniform field convergence, curvature, energy, transport, cumulative dissipation and strong spacetime convergence of projected velocities.",
+  "external_dependency": {
+    "result": "Global smooth continuum existence and uniqueness, not reproved or Lean-formalized here.",
+    "source": "Cao and Chatterjee, A State Space for 3D Euclidean Yang--Mills Theories, Theorem 3.14 and Appendix B; reduced to T^2 by symmetry.",
+    "url": "https://link.springer.com/article/10.1007/s00220-023-04870-y"
+  },
+  "formalization": "16 supporting theorems, including the complete scalar Riccati barrier comparison. The Fourier-space and PDE assembly is analytic; no added axiom represents external global existence.",
+  "targeted_build": "PASS (no warnings)",
+  "targeted_build_command": "lake build UnifiedTheory.LayerA.NonabelianYangMillsGlobal",
+  "axiom_audit": "PASS",
+  "axiom_audit_command": "lake env lean scripts/CheckNonabelianYangMillsGlobal.lean",
+  "theorem_count": 16,
+  "theorems": [
+    "relative_gradient_identity",
+    "relative_square_completion",
+    "relative_gradient_upper",
+    "bracket_normsq_identity",
+    "bracket_pair_bound",
+    "forcing_young",
+    "envelope_pos",
+    "envelope_lower",
+    "envelope_mono",
+    "envelope_hasDerivAt",
+    "contact_derivative_strict",
+    "riccati_envelope_bound",
+    "spectral_threshold",
+    "rotated_curvature",
+    "rotated_gradient_one",
+    "rotated_gradient_two"
+  ],
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "numerical_audit_command": "python3 scripts/nonabelian_yang_mills_global_audit.py",
+  "exact_rational_checks": 64,
+  "cutoff_comparisons": 5,
+  "exact_reference": "Spatially varying fixed-gauge transform of the homogeneous nonlinear SU(2) solution; Bessel initialization and independently evaluated physical fields.",
+  "N6_final_L2_error": 3.047691429899644e-08,
+  "N6_time_refinement_difference": 1.892065138011566e-12,
+  "transport_comparisons": 15,
+  "prior_stage_hashes_unchanged": true,
+  "limitations": [
+    "Smooth data; no rough-data extension claimed.",
+    "Convergence on each finite time interval, not a uniform-in-infinite-time bound.",
+    "Constants depend on reference-solution regularity; no assertion that practical tested cutoffs meet the conservative threshold.",
+    "Exact Galerkin ODE theorem; numerical time integration is not interval-certified.",
+    "No local Wilson-link evolution, finite-cutoff local gauge equivariance, or novelty claim."
+  ],
+  "sha256": {
+    "UnifiedTheory/LayerA/NonabelianYangMillsGlobal.lean": "c818974bbf1b34ff2a2f6063a2099f1cbd2e989a4af60010c85a912eb7f23006",
+    "scripts/CheckNonabelianYangMillsGlobal.lean": "0f018e9311e61dff640febeb2cf9e010863e838cabd4d1c834878045d453e992",
+    "data/nonabelian_yang_mills_global_axioms.txt": "f181b11c654d2688c11bbd9c6ebd6ad8541507863aeddb0a95299f5392f1b3e5",
+    "data/nonabelian_yang_mills_global_audit.json": "95f77a22e07ecfe864ee66f744b9ae7891200766674076e834a5d93d11585e22",
+    "scripts/nonabelian_yang_mills_global_audit.py": "357dade19a9aa38999ab86cead1023f2c4ebdf2dbc4efad56ed72b119f676432",
+    "NONABELIAN_YANG_MILLS_GLOBAL_LIMIT.md": "ae4aba13947acee2ba261572c9eba68372f3e83c6430e4874e20f5929fc33fcd",
+    "UnifiedTheory/LayerA/NonabelianYangMillsEnergy.lean": "03b59155c0b5c74fe9c38aefdaa87c2cf4cc584624ac8947ed98d85b45e9cdc4",
+    "scripts/nonabelian_yang_mills_energy_audit.py": "e02e251cf6e3a47982328e536cca5fcf669ed3d745b1159154c7f177f963c782",
+    "scripts/nonabelian_yang_mills_local_audit.py": "8bdd22cb91b8b5b86b1116f2693d32b5af75793ced93a6134ce21e053f9b62e5",
+    "NONABELIAN_YANG_MILLS_ENERGY.md": "bdca535b15fca123697cf255279703f8d6d7b0d9c50332a7269e79febc59c85d",
+    "NONABELIAN_YANG_MILLS_LOCAL_LIMIT.md": "3cd8d0f695d40e2cb3182bdbe80edbf4c62b76c7198f9fcd32775d1a1a5e127a"
+  }
+}

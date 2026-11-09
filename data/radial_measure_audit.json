@@ -1,0 +1,535 @@
+{
+  "arithmetic": "exact controls and float64 diagnostics are separate",
+  "closing_gap": {
+    "final_volume_differences": [
+      {
+        "positive_difference": -4.8169526535164325e-06,
+        "positive_error": 6.991399880073933e-11,
+        "radial_difference": 2.05696677401819e-11,
+        "radial_error": 1.3302133623513758e-14,
+        "step": 0.001
+      },
+      {
+        "positive_difference": -4.817000309129951e-06,
+        "positive_error": 2.2258385282314288e-11,
+        "radial_difference": 2.0554839687286384e-11,
+        "radial_error": 1.5259192720016165e-15,
+        "step": 0.0005
+      }
+    ],
+    "final_volume_quadrature": [
+      {
+        "charge": 1,
+        "eight_node_response": 2.759540419485605e-15,
+        "error": 4.279203572201488e-20,
+        "four_node_response": 2.759497627449883e-15
+      },
+      {
+        "charge": -4,
+        "eight_node_response": -2.77419000450166e-12,
+        "error": 1.733413951324114e-19,
+        "four_node_response": -2.7741901778430553e-12
+      },
+      {
+        "charge": 2,
+        "eight_node_response": 8.797962793479839e-14,
+        "error": 3.00115452579366e-20,
+        "four_node_response": 8.797959792325313e-14
+      },
+      {
+        "charge": -3,
+        "eight_node_response": -6.640068900645462e-13,
+        "error": 1.487879555186912e-20,
+        "four_node_response": -6.640068751857506e-13
+      },
+      {
+        "charge": 6,
+        "eight_node_response": 2.0556365606558386e-11,
+        "error": 2.5766633494149963e-18,
+        "four_node_response": 2.0556363029895036e-11
+      }
+    ],
+    "lattice_family": "2 x 2 x 2 x T, antiperiodic time fermions",
+    "limitation": "finite diagnostics, not an asymptotic positive-current no-go or a physical 4D continuum",
+    "probe_link": {
+      "direction": 0,
+      "head": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "random_seed": 2026090902,
+    "remote_link": {
+      "direction": 1,
+      "head": "[0,0,0,T/2]"
+    },
+    "rows": [
+      {
+        "charge_six_dirac_gap": 0.7667748285692283,
+        "minimum_endpoint_distance": 2,
+        "positive_hypercharge_response": -2.791885333276361e-06,
+        "radial_hypercharge_response": 8.983434313577744e-07,
+        "terms": [
+          {
+            "charge": 1,
+            "kernel_gap": 0.9946851441687812,
+            "multiplicity": 6,
+            "positive_response": -6.24732814631503e-10,
+            "radial_response": 2.2554796840486937e-10,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "kernel_gap": 0.9773305427763105,
+            "multiplicity": 3,
+            "positive_response": 6.462137031934192e-07,
+            "radial_response": -2.2565484779638278e-07,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "kernel_gap": 0.9891316902960715,
+            "multiplicity": 3,
+            "positive_response": -2.0032189849098226e-08,
+            "radial_response": 7.184193897644991e-09,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "kernel_gap": 0.9833448129393146,
+            "multiplicity": 2,
+            "positive_response": 1.5263342069547898e-07,
+            "radial_response": -5.41344938845482e-08,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "kernel_gap": 0.9646477754901005,
+            "multiplicity": 1,
+            "positive_response": -4.971948317812493e-06,
+            "radial_response": 1.660671093012655e-06,
+            "species": "ec"
+          }
+        ],
+        "time_length": 4
+      },
+      {
+        "charge_six_dirac_gap": 0.39084823179642747,
+        "minimum_endpoint_distance": 4,
+        "positive_hypercharge_response": -5.083180445180707e-06,
+        "radial_hypercharge_response": 1.8972624189552817e-07,
+        "terms": [
+          {
+            "charge": 1,
+            "kernel_gap": 0.9945112972844085,
+            "multiplicity": 6,
+            "positive_response": -1.1855755371281823e-09,
+            "radial_response": 4.6169494674848594e-11,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "kernel_gap": 0.9749148077399813,
+            "multiplicity": 3,
+            "positive_response": 1.2114603167600674e-06,
+            "radial_response": -4.6591175766999064e-08,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "kernel_gap": 0.9884651550613035,
+            "multiplicity": 3,
+            "positive_response": -3.7922637565072846e-08,
+            "radial_response": 1.473087520893457e-09,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "kernel_gap": 0.9819143767729698,
+            "multiplicity": 2,
+            "positive_response": 2.8777297457106107e-07,
+            "radial_response": -1.1131770052082504e-08,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "kernel_gap": 0.9597866361723678,
+            "multiplicity": 1,
+            "positive_response": -9.172225978685044e-06,
+            "radial_response": 3.470670297699609e-07,
+            "species": "ec"
+          }
+        ],
+        "time_length": 8
+      },
+      {
+        "charge_six_dirac_gap": 0.2616954141169609,
+        "minimum_endpoint_distance": 6,
+        "positive_hypercharge_response": -3.7144815207994793e-06,
+        "radial_hypercharge_response": 1.8975383228999307e-08,
+        "terms": [
+          {
+            "charge": 1,
+            "kernel_gap": 0.9942471071484836,
+            "multiplicity": 6,
+            "positive_response": -8.754688132279505e-10,
+            "radial_response": 4.6297742355225944e-12,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "kernel_gap": 0.9720254260519862,
+            "multiplicity": 3,
+            "positive_response": 8.919700352283595e-07,
+            "radial_response": -4.6683648130617415e-09,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "kernel_gap": 0.9875239329785828,
+            "multiplicity": 3,
+            "positive_response": -2.798729904039172e-08,
+            "radial_response": 1.4769404477954304e-10,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "kernel_gap": 0.9800525888022904,
+            "multiplicity": 2,
+            "positive_response": 2.1217381477634555e-07,
+            "radial_response": -1.1157921439734642e-09,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "kernel_gap": 0.954847776861447,
+            "multiplicity": 1,
+            "positive_response": -6.725524546036706e-06,
+            "radial_response": 3.4741201176379697e-08,
+            "species": "ec"
+          }
+        ],
+        "time_length": 12
+      },
+      {
+        "charge_six_dirac_gap": 0.19690157042658443,
+        "minimum_endpoint_distance": 8,
+        "positive_hypercharge_response": -3.0041065525784746e-06,
+        "radial_hypercharge_response": 1.6853193085032621e-09,
+        "terms": [
+          {
+            "charge": 1,
+            "kernel_gap": 0.9939150162524232,
+            "multiplicity": 6,
+            "positive_response": -7.167807730376895e-10,
+            "radial_response": 4.1262626858995665e-13,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "kernel_gap": 0.96943171724098,
+            "multiplicity": 3,
+            "positive_response": 7.278711946811096e-07,
+            "radial_response": -4.156543013985179e-10,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "kernel_gap": 0.9864714397318834,
+            "multiplicity": 3,
+            "positive_response": -2.2899651300186866e-08,
+            "radial_response": 1.3160559987064385e-11,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "kernel_gap": 0.9781980735698476,
+            "multiplicity": 2,
+            "positive_response": 1.734142897354015e-07,
+            "radial_response": -9.939205016858689e-11,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "kernel_gap": 0.9509955705937247,
+            "multiplicity": 1,
+            "positive_response": -5.46154907755382e-06,
+            "radial_response": 3.0891088754632567e-09,
+            "species": "ec"
+          }
+        ],
+        "time_length": 16
+      },
+      {
+        "charge_six_dirac_gap": 0.13238951964962586,
+        "minimum_endpoint_distance": 12,
+        "positive_hypercharge_response": -2.6077784258929953e-06,
+        "radial_hypercharge_response": 1.1186274525528828e-11,
+        "terms": [
+          {
+            "charge": 1,
+            "kernel_gap": 0.9931670527131323,
+            "multiplicity": 6,
+            "positive_response": -6.523961714250356e-10,
+            "radial_response": 2.759497627449883e-15,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "kernel_gap": 0.9658984075567912,
+            "multiplicity": 3,
+            "positive_response": 6.539945785004732e-07,
+            "radial_response": -2.7741901778430553e-12,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "kernel_gap": 0.9845793563319979,
+            "multiplicity": 3,
+            "positive_response": -2.079058371755914e-08,
+            "radial_response": 8.797959792325313e-14,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "kernel_gap": 0.9753778677300299,
+            "multiplicity": 2,
+            "positive_response": 1.5677326715102305e-07,
+            "radial_response": -6.640068751857506e-13,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "kernel_gap": 0.9466793713155675,
+            "multiplicity": 1,
+            "positive_response": -4.817022567515233e-06,
+            "radial_response": 2.0556363029895036e-11,
+            "species": "ec"
+          }
+        ],
+        "time_length": 24
+      }
+    ]
+  },
+  "differential": {
+    "curl_error": 7.664143842137094e-15,
+    "finite_difference_checks": [
+      {
+        "positive_response_error": 7.610609315672479e-08,
+        "projector_hessian_error": 2.3775251121148678e-05,
+        "radial_response_error": 1.739123738937587e-08,
+        "step": 0.0002
+      },
+      {
+        "positive_response_error": 1.9018286452621158e-08,
+        "projector_hessian_error": 5.943811776983254e-06,
+        "radial_response_error": 4.347705019865724e-09,
+        "step": 0.0001
+      },
+      {
+        "positive_response_error": 4.7322141275008e-09,
+        "projector_hessian_error": 1.4859423305265344e-06,
+        "radial_response_error": 1.087527654164016e-09,
+        "step": 5e-05
+      }
+    ],
+    "free_periodic_dirac_zero_residual": 6.059299750067017e-15,
+    "free_periodic_kernel_gap": 0.9999999999999974,
+    "kernel_commutator_hessian_residual": 3.932402514140844e-13,
+    "operator_legacy_agreement": true,
+    "projector_curvature": 0.0001305878725104126,
+    "projector_hessian_identity_residual": 5.0560837932478746e-14,
+    "radial_curl": 0.00013058787250274845,
+    "radial_current_at_exact_dirac_zero": 0.0
+  },
+  "exact": {
+    "absolute_fifth_moment": 11436,
+    "antiunitary_square": "-I",
+    "arithmetic": "exact SymPy complex rational matrices",
+    "charge_conjugation_matrix": "Matrix([[0, 1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, -1], [0, 0, 1, 0]])",
+    "hypercharge_moments": {
+      "1": 0,
+      "3": 0,
+      "5": 4320,
+      "7": 226800
+    },
+    "moving_gauge_flux_changes": true,
+    "moving_gauge_flux_divergence_zero": true,
+    "pair_flux_divergence": true,
+    "tangent_triple_trace_zero": true
+  },
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalRadialMeasure.lean": "215a9d06ca147fe1d1441d65d6350cf7e1789dfabc67e02ec95f9e37d0df03f2",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded"
+  },
+  "ward": {
+    "charge_conjugation_residual": 1.3683004078457597e-14,
+    "density_halving_ratios": [
+      15.87979875127093,
+      15.970119570233114
+    ],
+    "limitation": "quartic suppression is not exact vanishing; a local gauge-invariant primitive is still required",
+    "random_seed": 2026090904,
+    "rows": [
+      {
+        "averaged_density_norm": 2.483969582740453e-07,
+        "endpoint_anomaly_contraction": 4.4990152783270174e-07,
+        "endpoint_density_norm": 1.238410091203898e-06,
+        "field_scale": 1.0,
+        "integrated_defect": 9.038749763765126e-08,
+        "radial_gauge_current": -3.595140592727681e-07,
+        "terms": [
+          {
+            "charge": 1,
+            "endpoint_density_norm": 2.895048860619556e-10,
+            "multiplicity": 6,
+            "predicted_defect": 2.1153337778399213e-11,
+            "species": "Q",
+            "ward_defect": 2.1155744137903203e-11
+          },
+          {
+            "charge": -4,
+            "endpoint_density_norm": 2.9560879508545144e-07,
+            "multiplicity": 3,
+            "predicted_defect": -2.1592788151174634e-08,
+            "species": "uc",
+            "ward_defect": -2.159279480095697e-08
+          },
+          {
+            "charge": 2,
+            "endpoint_density_norm": 9.258869114349775e-09,
+            "multiplicity": 3,
+            "predicted_defect": 6.764961740286049e-10,
+            "species": "dc",
+            "ward_defect": 6.764931697405613e-10
+          },
+          {
+            "charge": -3,
+            "endpoint_density_norm": 7.024285613225527e-08,
+            "multiplicity": 2,
+            "predicted_defect": -5.131691230925246e-09,
+            "species": "L",
+            "ward_defect": -5.131693980014341e-09
+          },
+          {
+            "charge": 6,
+            "endpoint_density_norm": 2.2362026370043965e-06,
+            "multiplicity": 1,
+            "predicted_defect": 1.6327283600426947e-07,
+            "species": "ec",
+            "ward_defect": 1.6327282694878425e-07
+          }
+        ],
+        "total_ward_defect": 9.038746855993365e-08
+      },
+      {
+        "averaged_density_norm": 1.5608417898089387e-08,
+        "endpoint_anomaly_contraction": 2.8452720598701747e-08,
+        "endpoint_density_norm": 7.798651044647417e-08,
+        "field_scale": 0.5,
+        "integrated_defect": 5.696901849883979e-09,
+        "radial_gauge_current": -2.275581287215662e-08,
+        "terms": [
+          {
+            "charge": 1,
+            "endpoint_density_norm": 1.8095544230802966e-11,
+            "multiplicity": 6,
+            "predicted_defect": 1.3228959364529812e-12,
+            "species": "Q",
+            "ward_defect": 1.3210849699147451e-12
+          },
+          {
+            "charge": -4,
+            "endpoint_density_norm": 1.8517738382091745e-08,
+            "multiplicity": 3,
+            "predicted_defect": -1.3529878817372877e-09,
+            "species": "uc",
+            "ward_defect": -1.352979535754541e-09
+          },
+          {
+            "charge": 2,
+            "endpoint_density_norm": 5.79008695120004e-10,
+            "multiplicity": 3,
+            "predicted_defect": 4.230841104377453e-11,
+            "species": "dc",
+            "ward_defect": 4.230773565247298e-11
+          },
+          {
+            "charge": -3,
+            "endpoint_density_norm": 4.395803315681055e-09,
+            "multiplicity": 2,
+            "predicted_defect": -3.2118863675497547e-10,
+            "species": "L",
+            "ward_defect": -3.211935034545394e-10
+          },
+          {
+            "charge": 6,
+            "endpoint_density_norm": 1.4048570976925778e-07,
+            "multiplicity": 1,
+            "predicted_defect": 1.0263380159855745e-08,
+            "species": "ec",
+            "ward_defect": 1.0263383623940917e-08
+          }
+        ],
+        "total_ward_defect": 5.696907726545126e-09
+      },
+      {
+        "averaged_density_norm": 9.76824136025351e-10,
+        "endpoint_anomaly_contraction": 1.7835189755111488e-09,
+        "endpoint_density_norm": 4.883276553034337e-09,
+        "field_scale": 0.25,
+        "integrated_defect": 3.5680147066074213e-10,
+        "radial_gauge_current": -1.4267027151658967e-09,
+        "terms": [
+          {
+            "charge": 1,
+            "endpoint_density_norm": 1.1315440880704995e-12,
+            "multiplicity": 6,
+            "predicted_defect": 8.343591591051702e-14,
+            "species": "Q",
+            "ward_defect": 8.374913003435199e-14
+          },
+          {
+            "charge": -4,
+            "endpoint_density_norm": 1.1580158001872888e-09,
+            "multiplicity": 3,
+            "predicted_defect": -8.461528250829489e-11,
+            "species": "uc",
+            "ward_defect": -8.461590728576568e-11
+          },
+          {
+            "charge": 2,
+            "endpoint_density_norm": 3.619255894727336e-11,
+            "multiplicity": 3,
+            "predicted_defect": 2.644848605979973e-12,
+            "species": "dc",
+            "ward_defect": 2.6422576036108465e-12
+          },
+          {
+            "charge": -3,
+            "endpoint_density_norm": 2.7482443355265075e-10,
+            "multiplicity": 2,
+            "predicted_defect": -2.0084085441274713e-11,
+            "species": "L",
+            "ward_defect": -2.007822587985537e-11
+          },
+          {
+            "charge": 6,
+            "endpoint_density_norm": 8.791605805511281e-09,
+            "multiplicity": 1,
+            "predicted_defect": 6.423803277547733e-10,
+            "species": "ec",
+            "ward_defect": 6.423911663712214e-10
+          }
+        ],
+        "total_ward_defect": 3.5681626034525206e-10
+      }
+    ]
+  }
+}

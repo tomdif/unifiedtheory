@@ -1,0 +1,17 @@
+import UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics
+
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.stepOperator_apply
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.stepOperator_pow_apply
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_eq_heat
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_derivative
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_hasDerivAt
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_add
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_add
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.gridHeat_hasDerivAt
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.gridHeat_add
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_initial_hasFDerivAt
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_opNorm_le_one
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.step_sum
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.walk_sum
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_sum
+#print axioms UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_unique

@@ -1,0 +1,38 @@
+import UnifiedTheory.Clay.YangMills.WilsonJointRotation
+import UnifiedTheory.Clay.YangMills.WilsonJointEntropy
+import UnifiedTheory.Clay.YangMills.WilsonJointResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.displacement
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.cost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.rotation_unit_scale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.square_four_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.plane_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.step_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.incidence_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.holonomy_variation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.potential_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.kinetic_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointRotation.inputAction_second_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.haar_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.rotation_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.logGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.logGain_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.groundGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.ground_entropy_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.groundGain_nonpos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.rowEntropy_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.meanEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.meanEntropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.meanEntropy_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.meanEntropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.meanEntropy_eq_groundLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.log_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointEntropy.ground_entropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.mean_response_sq_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.physical_response_sq_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.covariance_mean_square_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.direction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.direction_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.directional_response_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointResponse.directional_quotient_bound

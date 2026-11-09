@@ -34,6 +34,12 @@ import UnifiedTheory.Clay.YangMills.Twisted.TwistedPrekopaDomain
 import UnifiedTheory.Clay.YangMills.Twisted.TwistedVMFLyapunov
 import UnifiedTheory.Clay.YangMills.Twisted.TwistedHolderStep
 import UnifiedTheory.Clay.YangMills.Twisted.TwistedTiltBL
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxBasis
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedSubArea
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedSlabCriterion
 
 #print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedReflection.reflection_positive
 #print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedReflection.temporalFlux_eq_one
@@ -262,3 +268,29 @@ import UnifiedTheory.Clay.YangMills.Twisted.TwistedTiltBL
 #print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedHolderStep.rg_step_two_sided
 #print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedTiltBL.quad_le_sq_div
 #print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedTiltBL.sl_tilt_sub_gaussian
+
+/- November 6–9 flux-bootstrap and thermal-excess reductions. -/
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal.two_sided_of
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal.thermal_two_sided
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal.transverse_ratio
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal.transverse_y
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxThermal.transverse_y_linear
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction.F_double_le
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction.z_pow_of_F
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction.transverse_mult
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction.chain_step
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxInduction.area_law_iterate
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.excess_antitone
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.kper_sandwich
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.k_le_two_kper
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.log_z_telescope
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.flux_projection_le
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess.kper_flux_split
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxBasis.transverse_flux_identity
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedFluxBasis.transverse_flux_le
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSubArea.log_iterate
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSubArea.geom_le
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSubArea.subarea_sum
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSubArea.area_law_growing
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSlabCriterion.log_step
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedSlabCriterion.slab_criterion

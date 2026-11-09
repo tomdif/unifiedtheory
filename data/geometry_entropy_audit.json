@@ -1,0 +1,364 @@
+{
+  "exact_regular_graphs": [
+    {
+      "sites": 6,
+      "degree": 3,
+      "all_regular_graphs": 70,
+      "connected_regular_graphs": 70,
+      "flip_components": 1,
+      "directed_distinct_transitions": 900,
+      "triangles": {
+        "0": 10,
+        "2": 60
+      },
+      "ordered_exchange_row_sums": {
+        "72": 60,
+        "144": 10
+      }
+    },
+    {
+      "sites": 8,
+      "degree": 3,
+      "all_regular_graphs": 19355,
+      "connected_regular_graphs": 19320,
+      "flip_components": 1,
+      "directed_distinct_transitions": 544320,
+      "triangles": {
+        "0": 3360,
+        "1": 3360,
+        "2": 10080,
+        "4": 2520
+      },
+      "ordered_exchange_row_sums": {
+        "64": 2520,
+        "120": 10080,
+        "156": 3360,
+        "192": 3360
+      }
+    },
+    {
+      "sites": 8,
+      "degree": 4,
+      "all_regular_graphs": 19355,
+      "connected_regular_graphs": 19355,
+      "flip_components": 1,
+      "directed_distinct_transitions": 808920,
+      "triangles": {
+        "0": 35,
+        "4": 2520,
+        "6": 10080,
+        "7": 3360,
+        "8": 3360
+      },
+      "ordered_exchange_row_sums": {
+        "160": 2520,
+        "192": 840,
+        "204": 3360,
+        "248": 10080,
+        "352": 2520,
+        "576": 35
+      }
+    }
+  ],
+  "exact_sectors": {
+    "uniform_cycle_support": 3,
+    "full_gauss_dimension": 249,
+    "exact_ground_vector": true,
+    "k4_compressed_diagonal": "324/55",
+    "k4_expected_diagonal": "12*kappa+4*lambda",
+    "k4_second_order_coefficient": "-13086/4235",
+    "excursions": {
+      "wedge": 6,
+      "magnetic": 4
+    },
+    "scope": "Exact projection and perturbative coefficient; no uniform thermodynamic expansion claimed."
+  },
+  "quantum_event_bounds": {
+    "noncommuting_exact_trials": 12,
+    "spectral_ratio": "16",
+    "trials": [
+      {
+        "rank": 1,
+        "probability": "4/21",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 1,
+        "probability": "88/147",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 1,
+        "probability": "31/147",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 2,
+        "probability": "116/147",
+        "sharp_bound": "32/33"
+      },
+      {
+        "rank": 2,
+        "probability": "59/147",
+        "sharp_bound": "32/33"
+      },
+      {
+        "rank": 2,
+        "probability": "17/21",
+        "sharp_bound": "32/33"
+      },
+      {
+        "rank": 1,
+        "probability": "3/7",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 1,
+        "probability": "4/21",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 1,
+        "probability": "8/21",
+        "sharp_bound": "8/9"
+      },
+      {
+        "rank": 2,
+        "probability": "13/21",
+        "sharp_bound": "32/33"
+      },
+      {
+        "rank": 2,
+        "probability": "17/21",
+        "sharp_bound": "32/33"
+      },
+      {
+        "rank": 2,
+        "probability": "4/7",
+        "sharp_bound": "32/33"
+      }
+    ],
+    "rank_one_sharp_saturation": "8/9"
+  },
+  "local_flip_stress": {
+    "rows": [
+      {
+        "cubic_length": 4,
+        "sites": 64,
+        "before": {
+          "diameter": 6,
+          "mean_pair_distance": 3.0476190476190474,
+          "mean_balls": [
+            1.0,
+            7.0,
+            22.0,
+            42.0,
+            57.0
+          ],
+          "spatial_laplacian_gap": 1.999999999999993
+        },
+        "trials": [
+          {
+            "seed": 1729,
+            "attempts": 6400,
+            "accepted": 3904,
+            "metrics": {
+              "diameter": 4,
+              "mean_pair_distance": 2.4603174603174605,
+              "mean_balls": [
+                1.0,
+                7.0,
+                30.75,
+                62.25,
+                64.0
+              ],
+              "spatial_laplacian_gap": 1.8257405497133155
+            }
+          },
+          {
+            "seed": 2718,
+            "attempts": 6400,
+            "accepted": 3959,
+            "metrics": {
+              "diameter": 4,
+              "mean_pair_distance": 2.464781746031746,
+              "mean_balls": [
+                1.0,
+                7.0,
+                30.46875,
+                62.25,
+                64.0
+              ],
+              "spatial_laplacian_gap": 1.9145997658250216
+            }
+          },
+          {
+            "seed": 3141,
+            "attempts": 6400,
+            "accepted": 3908,
+            "metrics": {
+              "diameter": 4,
+              "mean_pair_distance": 2.4935515873015874,
+              "mean_balls": [
+                1.0,
+                7.0,
+                29.6875,
+                61.21875,
+                64.0
+              ],
+              "spatial_laplacian_gap": 1.7450352476917146
+            }
+          }
+        ]
+      },
+      {
+        "cubic_length": 6,
+        "sites": 216,
+        "before": {
+          "diameter": 9,
+          "mean_pair_distance": 4.52093023255814,
+          "mean_balls": [
+            1.0,
+            7.0,
+            25.0,
+            60.0,
+            108.0
+          ],
+          "spatial_laplacian_gap": 0.9999999999999922
+        },
+        "trials": [
+          {
+            "seed": 1729,
+            "attempts": 21600,
+            "accepted": 14389,
+            "metrics": {
+              "diameter": 5,
+              "mean_pair_distance": 3.2223514211886304,
+              "mean_balls": [
+                1.0,
+                7.0,
+                35.342592592592595,
+                130.03703703703704,
+                213.8148148148148
+              ],
+              "spatial_laplacian_gap": 1.7442823395963634
+            }
+          },
+          {
+            "seed": 2718,
+            "attempts": 21600,
+            "accepted": 14302,
+            "metrics": {
+              "diameter": 5,
+              "mean_pair_distance": 3.2218346253229972,
+              "mean_balls": [
+                1.0,
+                7.0,
+                35.166666666666664,
+                129.77777777777777,
+                214.36111111111111
+              ],
+              "spatial_laplacian_gap": 1.696547626846429
+            }
+          },
+          {
+            "seed": 3141,
+            "attempts": 21600,
+            "accepted": 14437,
+            "metrics": {
+              "diameter": 5,
+              "mean_pair_distance": 3.2319552110249785,
+              "mean_balls": [
+                1.0,
+                7.0,
+                34.851851851851855,
+                128.28703703703704,
+                213.99074074074073
+              ],
+              "spatial_laplacian_gap": 1.6608754976716977
+            }
+          }
+        ]
+      },
+      {
+        "cubic_length": 8,
+        "sites": 512,
+        "before": {
+          "diameter": 12,
+          "mean_pair_distance": 6.011741682974559,
+          "mean_balls": [
+            1.0,
+            7.0,
+            25.0,
+            63.0,
+            126.0
+          ],
+          "spatial_laplacian_gap": 0.5857864376269042
+        },
+        "trials": [
+          {
+            "seed": 1729,
+            "attempts": 51200,
+            "accepted": 34965,
+            "metrics": {
+              "diameter": 6,
+              "mean_pair_distance": 3.754005626223092,
+              "mean_balls": [
+                1.0,
+                7.0,
+                36.2109375,
+                160.62109375,
+                436.88671875
+              ],
+              "spatial_laplacian_gap": 1.5707703518075398
+            }
+          },
+          {
+            "seed": 2718,
+            "attempts": 51200,
+            "accepted": 34956,
+            "metrics": {
+              "diameter": 6,
+              "mean_pair_distance": 3.762146832191781,
+              "mean_balls": [
+                1.0,
+                7.0,
+                36.09375,
+                159.328125,
+                434.15234375
+              ],
+              "spatial_laplacian_gap": 1.5855159545935011
+            }
+          },
+          {
+            "seed": 3141,
+            "attempts": 51200,
+            "accepted": 34664,
+            "metrics": {
+              "diameter": 6,
+              "mean_pair_distance": 3.7654415362035225,
+              "mean_balls": [
+                1.0,
+                7.0,
+                36.0859375,
+                158.8046875,
+                433.01953125
+              ],
+              "spatial_laplacian_gap": 1.5972446682370305
+            }
+          }
+        ]
+      }
+    ],
+    "scope": "Finite stochastic stress test, not real-time unitary evolution; no mixing certificate."
+  },
+  "scope": "Analytic entropy obstruction and cited asymptotic graph results; full TOE remains open.",
+  "source_sha256": {
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1",
+    "UnifiedTheory/Audit/KFCausalGeometryEntropy.lean": "6c2a09f7a6beaafcb5878b7c2bdcf319d4dbf2205f37f63a1ef5f5e1e5374289",
+    "RELATIONAL_QUANTUM_GEOMETRY_V2.md": "b50ab197b7ef2d708959b48d72ac80275bc2b071f4b5c59c2346e4aca3872203",
+    "scripts/balanced_quantum_geometry_audit.py": "20ced7436e8ee4d551322c8761a87c2db55e8c1f02f7c6d50399a9cfb95b342f",
+    "scripts/quantum_geometry_phase_audit.py": "5d6fba55ced73e83ac2691a25b2b7b9804d0269ed2809fb5ce94fc79b4b2f869"
+  }
+}

@@ -1,0 +1,185 @@
+/- All public declarations in the post-2395 Wilson tuning, renormalized-limit,
+Schwartz-density and classical-plaquette batch. Predecessor checks are retained
+by the accompanying audit runner after full source and certificate validation. -/
+import UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette
+import UnifiedTheory.Clay.YangMills.CompactGibbsContinuity
+import UnifiedTheory.Clay.YangMills.FullSchwartzReflection
+import UnifiedTheory.Clay.YangMills.ProposedCouplingSelection
+import UnifiedTheory.Clay.YangMills.ProposedCouplingTail
+import UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit
+import UnifiedTheory.Clay.YangMills.RenormalizedOSWitness
+import UnifiedTheory.Clay.YangMills.RenormalizedSpacetimeTranslation
+import UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy
+import UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit
+import UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter
+import UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity
+import UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity
+import UnifiedTheory.Clay.YangMills.TunedRenormalizedLimit
+import UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness
+import UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette
+import UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction
+import UnifiedTheory.Clay.YangMills.WilsonReflectedTuning
+
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.constantConnection
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.linkValue_constant
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.holonomy_eq
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.plaquetteDefect_eq
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.plaquetteDefect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceX
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceY
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceX_skew
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceY_skew
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.reference_energy
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.reference_defect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceGenerators
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referenceGenerators_skew
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.referencePlane
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.reference_lattice_defect_eq
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.reference_lattice_defect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.reference_lattice_defect_lower
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.action_density_eq
+#print axioms UnifiedTheory.Clay.YangMills.ClassicalWilsonPlaquette.action_density_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.law
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.partition_positive
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.law_probability
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.expectation_formula
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.compact_integral_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContinuity.expectation_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.cutoff
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.cutoff_slab
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.cutoff_supported
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.correlation_cutoff_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.finite_form_positive
+#print axioms UnifiedTheory.Clay.YangMills.FullSchwartzReflection.positive_of_positive
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingSelection.signal_continuous
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingSelection.exists_tuned_above
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingSelection.positive_endpoint_trajectory
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.signal
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.boundConstant
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.boundConstant_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.signal_grid_bound
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.signal_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.ProposedCouplingTail.exists_small_endpoint
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit.fullVacuum
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit.embedding_vacuum
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit.fullVacuum_norm
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit.nonzero_full_state
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedFullOSLimit.exists_affine_candidate
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.observable_vacuum
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.connected_identity
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.sequence
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.positive
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.connected_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.kernel_unit_left
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedOSWitness.exists_nonzero_orthogonal
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedSpacetimeTranslation.expectation_translation
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedSpacetimeTranslation.hierarchy_translation
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedSpacetimeTranslation.limit_translation
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.kernel
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.kernel_measurable
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.kernel_bound
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.hierarchy_apply
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.expectation_eq_hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.hierarchy_order_zero
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.hierarchy_bound
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.realHierarchy
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.reflected_pair_eq_hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.affine_continuous
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.affine_class
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.affine_inverse
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.affine_bound
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonHierarchy.realPart_affine
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.exists_hierarchy_limit
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.reflected_pair_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.reflected_pair_eq_half_kernel
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.finite_form_positive
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.reflected_pair_tendsto_along
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonLimit.finite_form_positive_along
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.exists_positive_limit
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.exists_nonzero_limit
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.affine_reflected_form
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.affineBound
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.affineSequence
+#print axioms UnifiedTheory.Clay.YangMills.RenormalizedWilsonUltrafilter.exists_affine_nonzero_limit
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.bump
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.profile
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.profile_apply
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.radius
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.radius_pos
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.dilation
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.dilation_apply
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.dilation_norm_le
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.multiplier
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.multiplier_temperate
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.cutoff
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.cutoff_apply
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.multiplier_one
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.error_derivative_bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.bound_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.weighted_error_bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.seminorm_cutoff_bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.cutoff_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.cutoff_support_bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzCutoffDensity.cutoff_hasCompactSupport
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity.control_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity.product_seminorm_bound
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity.product_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity.configuration_tensor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.SchwartzTensorContinuity.reflected_tensor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.TunedRenormalizedLimit.proposedSequence
+#print axioms UnifiedTheory.Clay.YangMills.TunedRenormalizedLimit.signal_one_eq_scaled
+#print axioms UnifiedTheory.Clay.YangMills.TunedRenormalizedLimit.exists_tuned_candidate
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.regulatorUltrafilter
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.regulatorUltrafilter_le
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.bounded_scalar_limit
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.exists_linear_limit
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.moving_test_limit
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.WeakAlong
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.exists_hierarchy_limit
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.exists_regulator_limit
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.atTop_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UltrafilterHierarchyCompactness.atTop_eventually
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.energy
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.energy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.energy_continuous
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.energy_smul
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.unitary_defect_energy
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_val
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_zero
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_slope_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.scaled_defect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_defect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.link_neg
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette_exp_formula
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.commutator_difference
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.scaled_commutator_difference
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette_slope_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette_defect_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.energy_pos
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette_defect_remainder
+#print axioms UnifiedTheory.Clay.YangMills.UnitaryExponentialPlaquette.plaquette_defect_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.mean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.mean_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.mean_realPart
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.mean_translation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.kernel_one_constant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.expectation_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.affine_expectation_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMeanSubtraction.real_affine_expectation_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.action_joint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.wilsonLaw_eq_compactGibbs
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.wilson_expectation_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.mean_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.centered_joint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.reflectedForm_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.dimensionlessCoupling
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.dimensionlessCoupling_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.exists_tuned_coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.bracket_trajectory
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectedTuning.wilson_bracket_trajectory

@@ -1,0 +1,344 @@
+{
+  "character_identities": [
+    {
+      "prime": 3,
+      "exact_character_identities": 3
+    },
+    {
+      "prime": 5,
+      "exact_character_identities": 5
+    },
+    {
+      "prime": 7,
+      "exact_character_identities": 7
+    }
+  ],
+  "local_compression": {
+    "cases": 12,
+    "rows": [
+      {
+        "prime": 3,
+        "case": 0,
+        "support_error": 4.507809860034763e-17,
+        "compression_error": 3.1417290694257564e-17,
+        "commutation_error": 2.265184943930919e-16,
+        "original_norm": 1.0000000000000002,
+        "averaged_norm": 0.21328849299937147
+      },
+      {
+        "prime": 3,
+        "case": 1,
+        "support_error": 5.583387057506045e-17,
+        "compression_error": 1.915437864993538e-17,
+        "commutation_error": 1.5460549742412724e-16,
+        "original_norm": 0.9999999999999998,
+        "averaged_norm": 0.23809196971207452
+      },
+      {
+        "prime": 3,
+        "case": 2,
+        "support_error": 6.631541964716163e-17,
+        "compression_error": 4.506301111678453e-17,
+        "commutation_error": 2.0185208691829467e-16,
+        "original_norm": 0.9999999999999997,
+        "averaged_norm": 0.3011111760812028
+      },
+      {
+        "prime": 3,
+        "case": 3,
+        "support_error": 4.6651897232181e-17,
+        "compression_error": 1.9625330326222538e-17,
+        "commutation_error": 2.4694896727382716e-16,
+        "original_norm": 1.0000000000000002,
+        "averaged_norm": 0.21305917673525573
+      },
+      {
+        "prime": 3,
+        "case": 4,
+        "support_error": 6.42678390775551e-17,
+        "compression_error": 5.611919807251132e-17,
+        "commutation_error": 2.0407594383823747e-16,
+        "original_norm": 1.0000000000000013,
+        "averaged_norm": 0.3314103931695747
+      },
+      {
+        "prime": 3,
+        "case": 5,
+        "support_error": 3.793281250642215e-17,
+        "compression_error": 2.8942386436546404e-17,
+        "commutation_error": 2.391988557456804e-16,
+        "original_norm": 1.0000000000000007,
+        "averaged_norm": 0.10439602298047561
+      },
+      {
+        "prime": 5,
+        "case": 0,
+        "support_error": 6.303527677870604e-17,
+        "compression_error": 2.0133896009258666e-17,
+        "commutation_error": 1.0961003351146748e-16,
+        "original_norm": 1.0000000000000002,
+        "averaged_norm": 0.14935980381821723
+      },
+      {
+        "prime": 5,
+        "case": 1,
+        "support_error": 9.027812608481886e-17,
+        "compression_error": 3.0267152376247283e-17,
+        "commutation_error": 1.4370346087797496e-16,
+        "original_norm": 1.0000000000000007,
+        "averaged_norm": 0.20009649018715328
+      },
+      {
+        "prime": 5,
+        "case": 2,
+        "support_error": 9.337946686918447e-17,
+        "compression_error": 2.1053996422905488e-17,
+        "commutation_error": 1.5552242663973596e-16,
+        "original_norm": 1.0000000000000004,
+        "averaged_norm": 0.19191479364862143
+      },
+      {
+        "prime": 5,
+        "case": 3,
+        "support_error": 7.118042763995188e-17,
+        "compression_error": 2.5642802750268147e-17,
+        "commutation_error": 1.3164571443194502e-16,
+        "original_norm": 1.0000000000000016,
+        "averaged_norm": 0.16395582137184966
+      },
+      {
+        "prime": 5,
+        "case": 4,
+        "support_error": 7.142151433269966e-17,
+        "compression_error": 2.5165722115549286e-17,
+        "commutation_error": 1.1791800315507549e-16,
+        "original_norm": 1.0000000000000002,
+        "averaged_norm": 0.17763200275725818
+      },
+      {
+        "prime": 5,
+        "case": 5,
+        "support_error": 7.106457283456061e-17,
+        "compression_error": 2.358291811018301e-17,
+        "commutation_error": 1.0570202980352166e-16,
+        "original_norm": 1.0000000000000004,
+        "averaged_norm": 0.14879367806863195
+      }
+    ],
+    "scope": "Dense local operators, not preselected neutral Pauli sums; independent partial traces check that averaging leaves the idle site idle."
+  },
+  "weak_preservation": {
+    "exact_code_leakage": 1.3432681425791077e-16,
+    "nonzero_check_commutator": 0.6708203932499373,
+    "exact_code_action_error": 3.58963892313514e-16,
+    "exact_evolution_error": 4.1608397414558665e-16,
+    "preserved_protection": {
+      "ground_energy": -1.3571696914418312,
+      "excluded_sector_bound": 2.4,
+      "original_minimum_residual": -3.1547357430106857e-16,
+      "averaged_minimum_residual": -5.688090774015954e-16
+    },
+    "approximate_cases": [
+      {
+        "strength": 0.001,
+        "time": 0.2,
+        "leakage_norm": 0.0007697077367417183,
+        "evolution_error": 0.00015393431145494681,
+        "upper_bound": 0.00015394154734834367
+      },
+      {
+        "strength": 0.001,
+        "time": 1.0,
+        "leakage_norm": 0.0007697077367417183,
+        "evolution_error": 0.0007688105480155641,
+        "upper_bound": 0.0007697077367417183
+      },
+      {
+        "strength": 0.001,
+        "time": 4.0,
+        "leakage_norm": 0.0007697077367417183,
+        "evolution_error": 0.0030281933654933532,
+        "upper_bound": 0.0030788309469668733
+      },
+      {
+        "strength": 0.01,
+        "time": 0.2,
+        "leakage_norm": 0.007697077367416834,
+        "evolution_error": 0.0015393400283933215,
+        "upper_bound": 0.0015394154734833668
+      },
+      {
+        "strength": 0.01,
+        "time": 1.0,
+        "leakage_norm": 0.007697077367416834,
+        "evolution_error": 0.007687724831460018,
+        "upper_bound": 0.007697077367416834
+      },
+      {
+        "strength": 0.01,
+        "time": 4.0,
+        "leakage_norm": 0.007697077367416834,
+        "evolution_error": 0.03026217999099069,
+        "upper_bound": 0.030788309469667336
+      },
+      {
+        "strength": 0.1,
+        "time": 0.2,
+        "leakage_norm": 0.07697077367416806,
+        "evolution_error": 0.015392859711569468,
+        "upper_bound": 0.015394154734833613
+      },
+      {
+        "strength": 0.1,
+        "time": 1.0,
+        "leakage_norm": 0.07697077367416806,
+        "evolution_error": 0.07681035847469825,
+        "upper_bound": 0.07697077367416806
+      },
+      {
+        "strength": 0.1,
+        "time": 4.0,
+        "leakage_norm": 0.07697077367416806,
+        "evolution_error": 0.2989460710923539,
+        "upper_bound": 0.30788309469667224
+      }
+    ],
+    "scope": "A Hamiltonian that preserves the code but fails to commute with a check has identical code evolution after averaging; nine leaking examples check the all-output Duhamel bound."
+  },
+  "full_spin_average": {
+    "matrix_dimension": 256,
+    "unused_states_per_cell": 11,
+    "nonzero_unguarded_check_commutator": 1.1755705045849463,
+    "support_error": 1.7072748343511328e-16,
+    "code_action_error": 3.241854730397115e-16,
+    "averaged_check_commutator": 1.332365124501479e-15,
+    "protected_sector_margin": 1.9,
+    "minimum_protection_residual": 1.2723832954727778e-16,
+    "scope": "The full finite group is non-Abelian on inactive sectors. Flag dephasing followed by Weyl averaging implements its projection in this two-cell example."
+  },
+  "virtual_dynamics": {
+    "prime": 5,
+    "matrix_dimension": 125,
+    "delta": 1.6,
+    "perturbation_norm": 1.5850893062813924,
+    "first_order_norm": 8.326672684688674e-17,
+    "second_order_error": 1.2971894886940506e-15,
+    "second_order_logical_spectrum": [
+      -0.7393323846569346,
+      -0.5619106586188314,
+      -0.517271170429153,
+      -0.36839644491391194,
+      -0.23496434138116862
+    ],
+    "rows": [
+      {
+        "strength": 0.005,
+        "maximum_energy_error": 9.656019390238144e-11,
+        "conservative_feshbach_bound": 3.9281238958021097e-07,
+        "maximum_feshbach_residual": 9.656751912789859e-11,
+        "exact_low_energies": [
+          -1.8483213056229464e-05,
+          -1.4047712308314511e-05,
+          -1.2931734118166453e-05,
+          -9.209889115043901e-06,
+          -5.87409995192125e-06
+        ]
+      },
+      {
+        "strength": 0.01,
+        "maximum_energy_error": 1.5436416589138368e-09,
+        "conservative_feshbach_bound": 3.1742605616316806e-06,
+        "maximum_feshbach_residual": 1.5437584093099525e-09,
+        "exact_low_energies": [
+          -7.393169482403455e-05,
+          -5.619019930662435e-05,
+          -5.172639528369636e-05,
+          -3.683929246369159e-05,
+          -2.3496296808625637e-05
+        ]
+      },
+      {
+        "strength": 0.02,
+        "maximum_energy_error": 2.4654568864224645e-08,
+        "conservative_feshbach_bound": 2.591799423338413e-05,
+        "maximum_feshbach_residual": 2.4656427598191194e-08,
+        "exact_low_energies": [
+          -0.00029570829929390964,
+          -0.0002247503977252773,
+          -0.00020689693739404206,
+          -0.0001473529492030799,
+          -9.398353952120379e-05
+        ]
+      },
+      {
+        "strength": 0.04,
+        "maximum_energy_error": 3.9298701528319054e-07,
+        "conservative_feshbach_bound": 0.00021626766491468908,
+        "maximum_feshbach_residual": 3.930167759521292e-07,
+        "exact_low_energies": [
+          -0.0011825388284358123,
+          -0.0008988352142075401,
+          -0.0008274499653113797,
+          -0.0005893443799252617,
+          -0.00037590780430389083
+        ]
+      }
+    ],
+    "scope": "A finite three-qudit calculation generates neutral logical X and Z at second order. The norm bound is finite-volume and does not establish a thermodynamic perturbation expansion or tensor dispersion."
+  },
+  "tensor_paths": {
+    "paths": [
+      {
+        "kind": "X",
+        "steps": 4,
+        "violated_checks_after_each_step": [
+          4,
+          8,
+          4,
+          0
+        ],
+        "support": 4
+      },
+      {
+        "kind": "Z",
+        "steps": 15,
+        "violated_checks_after_each_step": [
+          2,
+          4,
+          6,
+          8,
+          12,
+          16,
+          20,
+          19,
+          17,
+          16,
+          14,
+          11,
+          7,
+          4,
+          0
+        ],
+        "support": 15
+      }
+    ],
+    "scope": "Explicit charged single-cell paths ending in the previous neutral tensor logical patterns; no claim that these are minimal-order processes or that their coefficient survives every perturbative cancellation."
+  },
+  "inherited_derivative_obstruction": {
+    "constant_X_kernel_dimension": 0,
+    "constant_Z_kernel_dimension": 0,
+    "linear_Z_kernel_dimension": 0,
+    "scope": "Exact coefficient elimination for analytic continuum-neutral local patterns: X starts at one derivative and Z at two. Modular-only patterns or singular coefficient limits are outside this statement."
+  },
+  "source_sha256": {
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "scripts/compact_constraint_normalizer_audit.py": "97d7185a81537e2681f6d9c92b1f60d546c49c32d9ffcf1f0e394d00e59f0aa3",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "scripts/compact_tensor_dynamics_audit.py": "f7c0d2ea711be796eedbba03db765ee51fac8017ef8ac2495b56ebc18c3eb232",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "scripts/compact_tensor_constraint_audit.py": "8af5c69d28cedea8fb19b8726212aa2b2a4a2ab36a5998db628d56659a1c40c1",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "Local averaging closes the weak-preservation loophole for the fixed compact code. The regular continuum obstruction retains its stated assumptions; a gravitational phase, nonlinear clock algebra, and TOE are not proved."
+}

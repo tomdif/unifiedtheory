@@ -1,0 +1,379 @@
+{
+  "exact": {
+    "arithmetic": "exact SymPy",
+    "first_density_derivative_zero_at_all_flat_references": true,
+    "one_and_three_clifford_traces_zero": true,
+    "even_resolvent_numerator": true
+  },
+  "seam": {
+    "length": 4,
+    "charge": 6,
+    "weak_fluctuation_max": 0.0179995387156953,
+    "covariance_error": 2.970060852907522e-14,
+    "difference_off_seam": 0.0,
+    "minimum_seam_endpoint_distance": 1,
+    "changed_link_count": 256
+  },
+  "mixed_connection": {
+    "charge": 6,
+    "theta_direction": 0,
+    "predicted_curvature_transgression": 3.603784493507267e-05,
+    "finite_difference_step": 0.0002,
+    "transport": [
+      {
+        "steps": 32,
+        "connection": 3.603744098824266e-05,
+        "error": 4.0394683000562377e-10
+      },
+      {
+        "steps": 64,
+        "connection": 3.603774161623822e-05,
+        "error": 1.0331883444495218e-10
+      },
+      {
+        "steps": 128,
+        "connection": 3.603781789353611e-05,
+        "error": 2.704153655825551e-11
+      }
+    ],
+    "scope": "Reference-direction component of radial connection; adding dC preserves mixed curvature"
+  },
+  "local_scan": {
+    "dense_projector_comparison_error": 1.4051260155412137e-16,
+    "rows": [
+      {
+        "length": 2,
+        "zero_toron_charge_one": 9.181482727464915e-21,
+        "anomaly_free_sum": 0.02441754690689556,
+        "maximum_normalized_toron_change": 0.0005050025651208859,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": -0.0002623087651768666
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": 0.0063509796603568695
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": -0.004040020520967087
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": 0.009311640386414199
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.0004352413069590158
+          }
+        ]
+      },
+      {
+        "length": 3,
+        "zero_toron_charge_one": 0.0001410118919174544,
+        "anomaly_free_sum": -0.006482639497353181,
+        "maximum_normalized_toron_change": 8.786659083772034e-05,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 0.00013408244179767087
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.0053917476739937745
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0009424929620886888
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.0027093775228232532
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.011479385033222558
+          }
+        ]
+      },
+      {
+        "length": 4,
+        "zero_toron_charge_one": 0.00010020145260932968,
+        "anomaly_free_sum": -0.0026925202120105206,
+        "maximum_normalized_toron_change": 2.6840984810236473e-05,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 9.919426782722094e-05
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.005496738043779464
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0007703753583766067
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.0024772294036847025
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.015845861044604132
+          }
+        ]
+      },
+      {
+        "length": 6,
+        "zero_toron_charge_one": 8.344937079697478e-05,
+        "anomaly_free_sum": -0.00034793973333778136,
+        "maximum_normalized_toron_change": 3.1514407717977337e-06,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 8.336059124638768e-05
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.005242143371061025
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0006646507525768464
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.0022299891554009087
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.017344352885438244
+          }
+        ]
+      },
+      {
+        "length": 8,
+        "zero_toron_charge_one": 8.14905018146256e-05,
+        "anomaly_free_sum": -4.862481107507574e-05,
+        "maximum_normalized_toron_change": 4.339629925955243e-07,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 8.147823355335978e-05
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.005202024155451986
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0006515206021727958
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.00219709796905808
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.017508212385558497
+          }
+        ]
+      },
+      {
+        "length": 12,
+        "zero_toron_charge_one": 8.118499206982969e-05,
+        "anomaly_free_sum": -1.2582916440150027e-06,
+        "maximum_normalized_toron_change": 1.1099134785541977e-08,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 8.11846734788005e-05
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.005195502004932028
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0006494695832115899
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.0021919149706625196
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.017533560873969536
+          }
+        ]
+      },
+      {
+        "length": 16,
+        "zero_toron_charge_one": 8.117723362536738e-05,
+        "anomaly_free_sum": -4.2081016910638924e-08,
+        "maximum_normalized_toron_change": 3.6860137790878204e-10,
+        "species": [
+          {
+            "charge": 1,
+            "multiplicity": 6,
+            "value": 8.11772230912316e-05
+          },
+          {
+            "charge": -4,
+            "multiplicity": 3,
+            "value": -0.00519533182985651
+          },
+          {
+            "charge": 2,
+            "multiplicity": 3,
+            "value": 0.0006494175274118854
+          },
+          {
+            "charge": -3,
+            "multiplicity": 2,
+            "value": -0.002191782678706077
+          },
+          {
+            "charge": 6,
+            "multiplicity": 1,
+            "value": 0.017534202845181725
+          }
+        ]
+      }
+    ],
+    "largest_charge_quadrature_refinement_error": 6.938893903907228e-18,
+    "scope": "One fixed local Hessian entry; volume-independent exponential bounds are analytic"
+  },
+  "weak_charts": {
+    "theta": [
+      0.37,
+      -0.29,
+      0.43,
+      0.61
+    ],
+    "original": {
+      "minimum_kernel_gap": 1.0345374256713658,
+      "radial_identity_error": 2.74049890969729e-13,
+      "weighted_identity_error": 1.5874497749484896e-12,
+      "phase": -1.6188757355134282e-06,
+      "anomaly_norm": 0.0002755345078201163,
+      "unweighted": {
+        "first_current_norm": 0.0004977826243911185,
+        "second_current_norm": 0.0005081576461602445,
+        "residual_norm": 0.0006682225470103828,
+        "residual_total": -2.2232212002360613e-13,
+        "finite_completion_norm": 0.00039122017327881384,
+        "ward_error": 5.558055880516691e-14,
+        "bianchi_cap_error": 1.4285757462127215e-19,
+        "residual_formula_error": 7.773538030201806e-14,
+        "second_descent": {
+          "factorization_error": 4.978573654682198e-16,
+          "top_centering_error": 3.581216771603122e-17,
+          "cycle_remainder_error": 1.9093076298749904e-16,
+          "top_gradient_error": 1.2717987255344345e-16,
+          "k_norm": 0.13167549102001158,
+          "s_norm": 0.06882420968681668,
+          "q_norm": 2.1248008835106815,
+          "top_diagonal_norm": 0.41936800235701505,
+          "input_x_boundary": 0.0987528162606154,
+          "input_y_boundary": 4.7054520868089064e-14
+        }
+      },
+      "weighted": {
+        "first_current_norm": 0.00016641697168999806,
+        "second_current_norm": 0.0001684784972714462,
+        "residual_norm": 0.00022344223452711249,
+        "residual_total": -1.9572325937701127e-14,
+        "finite_completion_norm": 0.00013109399178594928,
+        "ward_error": 4.893076190613639e-15,
+        "bianchi_cap_error": 3.036350252603582e-20,
+        "residual_formula_error": 2.707269239441381e-14,
+        "second_descent": {
+          "factorization_error": 1.5004953028263292e-16,
+          "top_centering_error": 1.2896538128422117e-17,
+          "cycle_remainder_error": 7.037576047354356e-17,
+          "top_gradient_error": 4.047624179287601e-17,
+          "k_norm": 0.0329184221772076,
+          "s_norm": 0.017198973137778396,
+          "q_norm": 0.7075208989548316,
+          "top_diagonal_norm": 0.13929752956818925,
+          "input_x_boundary": 0.024676340037852552,
+          "input_y_boundary": 1.6578353797491643e-14
+        }
+      }
+    },
+    "periodic_current_error": 7.265512631867491e-14,
+    "gauge_current_error": 6.810945937768547e-14,
+    "finite_gauge_phase_error": 2.225161989887446e-14,
+    "flat_reference_first_jets": [
+      {
+        "charge": 1,
+        "jacobian_norm": 5.103342805613771e-16,
+        "density_norm": 2.5820145420757907e-15
+      },
+      {
+        "charge": -4,
+        "jacobian_norm": 7.051594207213476e-15,
+        "density_norm": 1.818123678936315e-14
+      },
+      {
+        "charge": 2,
+        "jacobian_norm": 1.7532574125894553e-15,
+        "density_norm": 8.344878942032408e-15
+      },
+      {
+        "charge": -3,
+        "jacobian_norm": 4.195211716863315e-15,
+        "density_norm": 6.4151866069996376e-15
+      },
+      {
+        "charge": 6,
+        "jacobian_norm": 1.3283438660714164e-14,
+        "density_norm": 1.4521869944278383e-14
+      }
+    ],
+    "scope": "Weak-potential charts parametrized by torons, including gauge orbits; quotient descent remains separate"
+  },
+  "source_sha256": {
+    "scripts/toron_locality_audit.py": "10232b7239b00556c4b280656a9f23dc920761d4a98c780f8b874ff2af7e2f6a",
+    "scripts/compact_measure_holonomy_audit.py": "1f6da67cfca1614ba5b8579b5fb400b0d570683dc3eca1768606ec19e6e0d486",
+    "scripts/second_cohomology_audit.py": "a10cbb381e97a9b3818661f10a08d1bfb4f16f5cef51d7d169c47e6ba23659aa",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "UnifiedTheory/Audit/KFCausalToronLocality.lean": "bfb9efd86c2e06b022d10d3a3783ea9b7fb44473c32b3a128ce3d6274c189ee6",
+    "TORON_WEAK_CHART_EXTENSION.md": "6cc5480f118868e08d01db7fe593cf7ed8215eb23130ab5964cb462b614bd6c7"
+  }
+}

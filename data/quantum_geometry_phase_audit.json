@@ -1,0 +1,160 @@
+{
+  "graphs": {
+    "all_labeled_graphs": 33867,
+    "saturated_triangle_free_graphs": 110,
+    "maximum_vertices": 6
+  },
+  "operator_bound": {
+    "actual_hamiltonian_dimension": 216,
+    "maximum_absolute_row_sum": "11/2",
+    "extensive_bound": "111/10",
+    "sites": 3,
+    "degree_cap": 2
+  },
+  "families": {
+    "families": [
+      {
+        "length": 4,
+        "sites": 64,
+        "frozen_graph_edges": 192,
+        "cubic_ball_sizes": [
+          1,
+          7,
+          22,
+          42,
+          57,
+          63
+        ],
+        "thin_ball_sizes": [
+          1,
+          7,
+          17,
+          27,
+          37,
+          47
+        ],
+        "matching_coordinates": 32,
+        "common_neighbors": 4
+      },
+      {
+        "length": 6,
+        "sites": 216,
+        "frozen_graph_edges": 648,
+        "cubic_ball_sizes": [
+          1,
+          7,
+          25,
+          60,
+          108,
+          156
+        ],
+        "thin_ball_sizes": [
+          1,
+          7,
+          17,
+          27,
+          37,
+          47
+        ],
+        "matching_coordinates": 108,
+        "common_neighbors": 4
+      },
+      {
+        "length": 8,
+        "sites": 512,
+        "frozen_graph_edges": 1536,
+        "cubic_ball_sizes": [
+          1,
+          7,
+          25,
+          63,
+          126,
+          210
+        ],
+        "thin_ball_sizes": [
+          1,
+          7,
+          17,
+          27,
+          37,
+          47
+        ],
+        "matching_coordinates": 256,
+        "common_neighbors": 4
+      },
+      {
+        "length": 10,
+        "sites": 1000,
+        "frozen_graph_edges": 3000,
+        "cubic_ball_sizes": [
+          1,
+          7,
+          25,
+          63,
+          129,
+          228
+        ],
+        "thin_ball_sizes": [
+          1,
+          7,
+          17,
+          27,
+          37,
+          47
+        ],
+        "matching_coordinates": 500,
+        "common_neighbors": 4
+      }
+    ],
+    "cubic_switch": {
+      "squares_before": 240,
+      "squares_after": 232,
+      "degree_preserved": 6,
+      "connected": true
+    }
+  },
+  "variational": [
+    {
+      "mu": "-3/5",
+      "u": "11/10",
+      "g": "2/5",
+      "removal_cost": "-52/5",
+      "mixing_amplitude": "8/5",
+      "trial_ratio": "8/57",
+      "energy_shift_per_coordinate": "-10624/16565",
+      "all_matching_energy_density_shift": "-5312/16565",
+      "explicit_compression_dimension": 64,
+      "explicit_trial_energy": "15520608/16565"
+    },
+    {
+      "mu": "-12",
+      "u": "11/10",
+      "g": "2/5",
+      "removal_cost": "1",
+      "mixing_amplitude": "8/5",
+      "trial_ratio": "4/5",
+      "energy_shift_per_coordinate": "-48/41",
+      "all_matching_energy_density_shift": "-24/41",
+      "explicit_compression_dimension": 64,
+      "explicit_trial_energy": "-51456/41"
+    }
+  ],
+  "proposed_switch": {
+    "full_basis_states": 11664,
+    "nonzero_transitions": 192,
+    "hermitian_involution_on_support": true,
+    "cube_equals_generator": true,
+    "all_gauss_signs_preserved": true,
+    "all_vertex_degrees_preserved": true,
+    "connected_components_preserved": true,
+    "exact_gate_unitarity": true
+  },
+  "source_sha256": {
+    "scripts/quantum_geometry_phase_audit.py": "5d6fba55ced73e83ac2691a25b2b7b9804d0269ed2809fb5ce94fc79b4b2f869",
+    "QUANTUM_GEOMETRY_PHASE_TEST.md": "febdcec02c322f9335367ef6a1a9854733c3c16634b78319aecacb21af2b2932",
+    "UnifiedTheory/Audit/KFCausalQuantumGeometryPhase.lean": "41f28c60cd7cb9afb070b6b88acd06a7b8bbe2ca37561bad4b2e75583a3d54f4",
+    "RELATIONAL_QUANTUM_GEOMETRY_PROPOSAL.md": "1ae740ffeb4bbb407680ae4b9e5ec97e232f511b6bb9819a1fda4765620bc5cb",
+    "scripts/relational_quantum_geometry_audit.py": "12bffd48dfd3ea6eadd66b573097b171b1d25fe0beeed1bfbe89d4e9f19f881e"
+  },
+  "scope": "Original Hamiltonian: extensive norm bound and frozen-geometry obstruction; saturated cubic trivial-flux particle-empty state loses to an explicit trial. A new switch removes freezing, not the unproved geometric/Einstein/chiral limits."
+}

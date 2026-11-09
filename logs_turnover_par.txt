@@ -1,0 +1,14 @@
+[   11.5s] sprinkling n=8: ab=[1.059 0.398 0.176]
+[   11.5s] sprinkling n=9: ab=[1.141 0.457 0.217]
+[   11.5s] sprinkling n=10: ab=[1.223 0.517 0.26 ]
+[   11.5s] sprinkling n=11: ab=[1.298 0.568 0.298]
+[   12.4s] level 2: 1 classes  (solved 1 new gc; 1s)  rss=11.9GB
+[   12.8s] level 3: 3 classes  (solved 1 new gc; 0s)  rss=11.9GB
+[   13.1s] level 4: 9 classes  (solved 3 new gc; 0s)  rss=11.9GB
+[   13.5s] level 5: 37 classes  (solved 9 new gc; 0s)  rss=11.9GB
+[   15.3s] level 6: 193 classes  (solved 36 new gc; 2s)  rss=11.9GB
+[   23.4s] level 7: 1314 classes  (solved 176 new gc; 8s)  rss=11.9GB
+[   92.3s] level 8: 11303 classes  (solved 1109 new gc; 69s)  rss=11.9GB
+[   92.3s]   n=8: tex_mu=0.2656  tex_P=0.2872  r_mu=0.4816
+[  806.2s] level 9: 120617 classes  (solved 8558 new gc; 714s)  rss=11.9GB
+[  806.3s]   n=9: tex_mu=0.2777  tex_P=0.3133  r_mu=0.4734

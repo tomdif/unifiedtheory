@@ -1,0 +1,554 @@
+{
+  "exact_algebra": {
+    "logarithmic_kinetic_factor_series": "1-z^2/12+z^4/240",
+    "christoffel_quadratic_bulk_identity": true,
+    "aligned_longitudinal_squared_coefficient": "3/32",
+    "scope": "Exact algebra used in the reduced Hamiltonian expansion. TT differential identities, asymptotically flat constraints and the canonical reduction are stated in the note."
+  },
+  "compact_TT_seed": {
+    "trace_zero": true,
+    "divergence_zero": true,
+    "seed": "symmetrized curl of the Cotton TT tensor of diag(-1,-1,2)*(1-r^2)^10",
+    "exact_unnormalized_L2_squared": "2493692371795968*pi/4775249765",
+    "exact_normalized_gradient_energy": "105/4",
+    "exact_cubic_curvature_coefficient": "172125*sqrt(33426748355)/(1051588951*sqrt(pi))",
+    "exact_cubic_curvature_coefficient_positive": true,
+    "compact_boundary_vanishing_order": 6
+  },
+  "compact_curvature": {
+    "cases": [
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.005,
+        "normalized_profile_gradient_energy": 26.250000000000068,
+        "cubic_curvature_coefficient": 16.883794927409618,
+        "quartic_curvature_coefficient": 8.135166020548478,
+        "exact_compact_curvature_potential": 0.0006583655685821965,
+        "fourth_order_expansion": 0.0006583655588446907,
+        "expansion_error": 9.737505723625417e-12,
+        "odd_difference_cubic_coefficient": 16.88387272670696
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.01,
+        "normalized_profile_gradient_energy": 26.250000000000068,
+        "cubic_curvature_coefficient": 16.883794927409618,
+        "quartic_curvature_coefficient": 8.135166020548478,
+        "exact_compact_curvature_potential": 0.0026419654585926895,
+        "fourth_order_expansion": 0.002641965146587622,
+        "expansion_error": 3.1200506761530633e-10,
+        "odd_difference_cubic_coefficient": 16.88410612647956
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.02,
+        "normalized_profile_gradient_energy": 26.250000000000068,
+        "cubic_curvature_coefficient": 16.883794927409618,
+        "quartic_curvature_coefficient": 8.135166020548478,
+        "exact_compact_curvature_potential": 0.010636381996179004,
+        "fourth_order_expansion": 0.010636371985982591,
+        "expansion_error": 1.001019641309886e-08,
+        "odd_difference_cubic_coefficient": 16.885039753907314
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.04,
+        "normalized_profile_gradient_energy": 26.250000000000068,
+        "cubic_curvature_coefficient": 16.883794927409618,
+        "quartic_curvature_coefficient": 8.135166020548478,
+        "exact_compact_curvature_potential": 0.04310171090844405,
+        "fourth_order_expansion": 0.043101388900366924,
+        "expansion_error": 3.220080771262901e-07,
+        "odd_difference_cubic_coefficient": 16.888774716879897
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 32,
+        "amplitude": 0.005,
+        "normalized_profile_gradient_energy": 26.249999999999964,
+        "cubic_curvature_coefficient": 16.88379492740959,
+        "quartic_curvature_coefficient": 8.135166020548468,
+        "exact_compact_curvature_potential": 0.0006583655685821938,
+        "fourth_order_expansion": 0.0006583655588446882,
+        "expansion_error": 9.737505506784983e-12,
+        "odd_difference_cubic_coefficient": 16.883872726699586
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 32,
+        "amplitude": 0.01,
+        "normalized_profile_gradient_energy": 26.249999999999964,
+        "cubic_curvature_coefficient": 16.88379492740959,
+        "quartic_curvature_coefficient": 8.135166020548468,
+        "exact_compact_curvature_potential": 0.0026419654585926816,
+        "fourth_order_expansion": 0.002641965146587612,
+        "expansion_error": 3.120050697837107e-10,
+        "odd_difference_cubic_coefficient": 16.884106126480425
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 32,
+        "amplitude": 0.02,
+        "normalized_profile_gradient_energy": 26.249999999999964,
+        "cubic_curvature_coefficient": 16.88379492740959,
+        "quartic_curvature_coefficient": 8.135166020548468,
+        "exact_compact_curvature_potential": 0.010636381996178959,
+        "fourth_order_expansion": 0.010636371985982551,
+        "expansion_error": 1.001019640789469e-08,
+        "odd_difference_cubic_coefficient": 16.885039753905797
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 32,
+        "amplitude": 0.04,
+        "normalized_profile_gradient_energy": 26.249999999999964,
+        "cubic_curvature_coefficient": 16.88379492740959,
+        "quartic_curvature_coefficient": 8.135166020548468,
+        "exact_compact_curvature_potential": 0.0431017109084439,
+        "fourth_order_expansion": 0.043101388900366765,
+        "expansion_error": 3.22008077133229e-07,
+        "odd_difference_cubic_coefficient": 16.88877471687995
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 40,
+        "amplitude": 0.005,
+        "normalized_profile_gradient_energy": 26.25000000000009,
+        "cubic_curvature_coefficient": 16.883794927409625,
+        "quartic_curvature_coefficient": 8.135166020548509,
+        "exact_compact_curvature_potential": 0.0006583655685821985,
+        "fourth_order_expansion": 0.0006583655588446913,
+        "expansion_error": 9.737507241508458e-12,
+        "odd_difference_cubic_coefficient": 16.88387272670696
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 40,
+        "amplitude": 0.01,
+        "normalized_profile_gradient_energy": 26.25000000000009,
+        "cubic_curvature_coefficient": 16.883794927409625,
+        "quartic_curvature_coefficient": 8.135166020548509,
+        "exact_compact_curvature_potential": 0.0026419654585926955,
+        "fourth_order_expansion": 0.002641965146587624,
+        "expansion_error": 3.1200507151843415e-10,
+        "odd_difference_cubic_coefficient": 16.884106126478258
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 40,
+        "amplitude": 0.02,
+        "normalized_profile_gradient_energy": 26.25000000000009,
+        "cubic_curvature_coefficient": 16.883794927409625,
+        "quartic_curvature_coefficient": 8.135166020548509,
+        "exact_compact_curvature_potential": 0.010636381996178994,
+        "fourth_order_expansion": 0.0106363719859826,
+        "expansion_error": 1.0010196394016901e-08,
+        "odd_difference_cubic_coefficient": 16.88503975390493
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 40,
+        "amplitude": 0.04,
+        "normalized_profile_gradient_energy": 26.25000000000009,
+        "cubic_curvature_coefficient": 16.883794927409625,
+        "quartic_curvature_coefficient": 8.135166020548509,
+        "exact_compact_curvature_potential": 0.043101710908444085,
+        "fourth_order_expansion": 0.04310138890036696,
+        "expansion_error": 3.220080771262901e-07,
+        "odd_difference_cubic_coefficient": 16.888774716879354
+      }
+    ],
+    "scope": "A genuine compact, nonzero TT metric profile with its full exponential-metric curvature integral. This checks local curvature coefficients, not a replacement of the scalar and vector Einstein solves by an unconstrained energy."
+  },
+  "pointwise_scalar_source": {
+    "cases": [
+      {
+        "point": [
+          0.08,
+          0.03,
+          0.12
+        ],
+        "quadratic_scalar_curvature": -77.04433796546692,
+        "independent_exponential_Ricci_estimate": -77.0443379653323,
+        "error": 1.3461942671710858e-10
+      },
+      {
+        "point": [
+          0.16,
+          0.11,
+          0.25
+        ],
+        "quadratic_scalar_curvature": -61.14401111799042,
+        "independent_exponential_Ricci_estimate": -61.14401111798525,
+        "error": 5.172751116333529e-12
+      },
+      {
+        "point": [
+          0.25,
+          0.05,
+          0.36
+        ],
+        "quadratic_scalar_curvature": -13.314782457172097,
+        "independent_exponential_Ricci_estimate": -13.314782457183918,
+        "error": 1.1821654766208667e-11
+      },
+      {
+        "point": [
+          0.37,
+          0.14,
+          0.18
+        ],
+        "quadratic_scalar_curvature": -18.64302396353969,
+        "independent_exponential_Ricci_estimate": -18.643023963532446,
+        "error": 7.243983191074221e-12
+      },
+      {
+        "point": [
+          0.46,
+          0.2,
+          0.3
+        ],
+        "quadratic_scalar_curvature": -5.499711382710382,
+        "independent_exponential_Ricci_estimate": -5.499711382711301,
+        "error": 9.192646643896296e-13
+      },
+      {
+        "point": [
+          0.58,
+          0.1,
+          0.17
+        ],
+        "quadratic_scalar_curvature": -3.846348677215163,
+        "independent_exponential_Ricci_estimate": -3.846348677202331,
+        "error": 1.283195771861756e-11
+      }
+    ],
+    "scope": "Independent Ricci evaluation uses first Frechet derivatives and 9x9 block exponentials for second derivatives. A centered small-amplitude extrapolation checks R_2=-|grad h|^2/4 pointwise on an exact compact TT profile."
+  },
+  "pointwise_kinetic": {
+    "cases": [
+      {
+        "log_metric_operator_norm": 0.0,
+        "case": 0,
+        "kinetic_norm": 9.061467335265121,
+        "spectral_identity_error": 1.7763568394002505e-15,
+        "lower_factor": 1.0
+      },
+      {
+        "log_metric_operator_norm": 0.0,
+        "case": 1,
+        "kinetic_norm": 9.849092529157192,
+        "spectral_identity_error": 1.7763568394002505e-15,
+        "lower_factor": 1.0
+      },
+      {
+        "log_metric_operator_norm": 0.0,
+        "case": 2,
+        "kinetic_norm": 8.378250066724803,
+        "spectral_identity_error": 1.7763568394002505e-15,
+        "lower_factor": 1.0
+      },
+      {
+        "log_metric_operator_norm": 0.0,
+        "case": 3,
+        "kinetic_norm": 6.705686955152956,
+        "spectral_identity_error": 0.0,
+        "lower_factor": 1.0
+      },
+      {
+        "log_metric_operator_norm": 0.2,
+        "case": 0,
+        "kinetic_norm": 3.463443195315513,
+        "spectral_identity_error": 1.7763568394002505e-15,
+        "lower_factor": 0.9867726598576441
+      },
+      {
+        "log_metric_operator_norm": 0.2,
+        "case": 1,
+        "kinetic_norm": 4.892457983336437,
+        "spectral_identity_error": 1.0658141036401503e-14,
+        "lower_factor": 0.9867726598576441
+      },
+      {
+        "log_metric_operator_norm": 0.2,
+        "case": 2,
+        "kinetic_norm": 3.5786425876783268,
+        "spectral_identity_error": 5.329070518200751e-15,
+        "lower_factor": 0.9867726598576441
+      },
+      {
+        "log_metric_operator_norm": 0.2,
+        "case": 3,
+        "kinetic_norm": 2.6471713440471683,
+        "spectral_identity_error": 1.7763568394002505e-15,
+        "lower_factor": 0.9867726598576441
+      },
+      {
+        "log_metric_operator_norm": 0.6,
+        "case": 0,
+        "kinetic_norm": 3.1251292334105747,
+        "spectral_identity_error": 6.661338147750939e-15,
+        "lower_factor": 0.8881700552263031
+      },
+      {
+        "log_metric_operator_norm": 0.6,
+        "case": 1,
+        "kinetic_norm": 8.631582762913009,
+        "spectral_identity_error": 3.552713678800501e-15,
+        "lower_factor": 0.8881700552263031
+      },
+      {
+        "log_metric_operator_norm": 0.6,
+        "case": 2,
+        "kinetic_norm": 1.342117982593396,
+        "spectral_identity_error": 2.6645352591003757e-15,
+        "lower_factor": 0.8881700552263031
+      },
+      {
+        "log_metric_operator_norm": 0.6,
+        "case": 3,
+        "kinetic_norm": 1.4081555788425681,
+        "spectral_identity_error": 4.440892098500626e-15,
+        "lower_factor": 0.8881700552263031
+      }
+    ],
+    "scope": "Pointwise exact logarithmic cotangent kinetic factor and its positive spectral bounds; no cubic h p^2 term is present."
+  },
+  "nonlinear_momentum_kinetic": {
+    "cases": [
+      {
+        "grid_per_axis": 7,
+        "amplitude": 0.025,
+        "quadratic_kinetic": 1.825e-05,
+        "predicted_fourth_order_correction": -6.695926902181707e-10,
+        "averaged_full_nonlinear_kinetic": 1.8249330479120897e-05,
+        "remainder_after_quartic": 7.181111547288642e-14,
+        "momentum_residual": 5.809703276059557e-16
+      },
+      {
+        "grid_per_axis": 7,
+        "amplitude": 0.05,
+        "quadratic_kinetic": 7.3e-05,
+        "predicted_fourth_order_correction": -1.0713483043490731e-08,
+        "averaged_full_nonlinear_kinetic": 7.298929111223127e-05,
+        "remainder_after_quartic": 4.595274765655088e-12,
+        "momentum_residual": 2.007685521920273e-16
+      },
+      {
+        "grid_per_axis": 7,
+        "amplitude": 0.1,
+        "quadratic_kinetic": 0.000292,
+        "predicted_fourth_order_correction": -1.714157286958517e-07,
+        "averaged_full_nonlinear_kinetic": 0.00029182887820601187,
+        "remainder_after_quartic": 2.93934707726244e-10,
+        "momentum_residual": 1.1989658985908798e-15
+      },
+      {
+        "grid_per_axis": 9,
+        "amplitude": 0.025,
+        "quadratic_kinetic": 1.825e-05,
+        "predicted_fourth_order_correction": -6.695926902181714e-10,
+        "averaged_full_nonlinear_kinetic": 1.82493304791209e-05,
+        "remainder_after_quartic": 7.1811118861742e-14,
+        "momentum_residual": 6.727923207007318e-16
+      },
+      {
+        "grid_per_axis": 9,
+        "amplitude": 0.05,
+        "quadratic_kinetic": 7.3e-05,
+        "predicted_fourth_order_correction": -1.0713483043490743e-08,
+        "averaged_full_nonlinear_kinetic": 7.298929111223127e-05,
+        "remainder_after_quartic": 4.595274765666668e-12,
+        "momentum_residual": 2.736004177224092e-16
+      },
+      {
+        "grid_per_axis": 9,
+        "amplitude": 0.1,
+        "quadratic_kinetic": 0.000292,
+        "predicted_fourth_order_correction": -1.7141572869585188e-07,
+        "averaged_full_nonlinear_kinetic": 0.000291828878206011,
+        "remainder_after_quartic": 2.9393470685906755e-10,
+        "momentum_residual": 1.956309439183987e-15
+      },
+      {
+        "grid_per_axis": 11,
+        "amplitude": 0.025,
+        "quadratic_kinetic": 1.825e-05,
+        "predicted_fourth_order_correction": -6.695926902181704e-10,
+        "averaged_full_nonlinear_kinetic": 1.8249330479120904e-05,
+        "remainder_after_quartic": 7.181112224883981e-14,
+        "momentum_residual": 6.800296628256996e-16
+      },
+      {
+        "grid_per_axis": 11,
+        "amplitude": 0.05,
+        "quadratic_kinetic": 7.3e-05,
+        "predicted_fourth_order_correction": -1.0713483043490726e-08,
+        "averaged_full_nonlinear_kinetic": 7.29892911122313e-05,
+        "remainder_after_quartic": 4.595274792755179e-12,
+        "momentum_residual": 2.8654884307910965e-16
+      },
+      {
+        "grid_per_axis": 11,
+        "amplitude": 0.1,
+        "quadratic_kinetic": 0.000292,
+        "predicted_fourth_order_correction": -1.7141572869585162e-07,
+        "averaged_full_nonlinear_kinetic": 0.000291828878206011,
+        "remainder_after_quartic": 2.9393470685880285e-10,
+        "momentum_residual": 1.882941289444144e-16
+      }
+    ],
+    "scope": "Full periodic nonlinear vector constraint solve, averaged over opposite h signs, tests the quartic kinetic correction and absent cubic term. It is not a periodic scalar-constraint or ADM-energy solve."
+  },
+  "aligned_mode_coefficients": {
+    "cases": [
+      {
+        "quadrature_order": 36,
+        "newton_F_F": 0.2302269432790464,
+        "newton_F_V": 5.630442918250854,
+        "newton_V_V": 142.06497656358488,
+        "a2_coefficient": 26.249999999999964,
+        "a3_coefficient": 16.88379492740959,
+        "a4_coefficient": 25.893288090996577,
+        "a2_b2_coefficient": -3.871536884805915,
+        "b4_coefficient": -0.20144857536916558,
+        "aligned_longitudinal_norm_coefficient": 0.3512953038822258
+      },
+      {
+        "quadrature_order": 44,
+        "newton_F_F": 0.230226943279047,
+        "newton_F_V": 5.630442918250915,
+        "newton_V_V": 142.06497656358712,
+        "a2_coefficient": 26.249999999999964,
+        "a3_coefficient": 16.88379492740959,
+        "a4_coefficient": 25.893288090996858,
+        "a2_b2_coefficient": -3.8715368848059604,
+        "b4_coefficient": -0.20144857536916613,
+        "aligned_longitudinal_norm_coefficient": 0.3512953038822258
+      },
+      {
+        "quadrature_order": 52,
+        "newton_F_F": 0.23022694327904705,
+        "newton_F_V": 5.63044291825089,
+        "newton_V_V": 142.06497656358607,
+        "a2_coefficient": 26.249999999999964,
+        "a3_coefficient": 16.88379492740959,
+        "a4_coefficient": 25.893288090996727,
+        "a2_b2_coefficient": -3.8715368848059417,
+        "b4_coefficient": -0.20144857536916616,
+        "aligned_longitudinal_norm_coefficient": 0.3512953038822258
+      }
+    ],
+    "scope": "Coefficients of the reduced energy restricted to h=a eta,s=b eta with integral eta^2=1. Split-domain polynomial Gaussian quadrature removes the Green-kernel diagonal kink and includes the whole-space inverse. This two-dimensional restriction is not an invariant dynamical subspace."
+  },
+  "full_momentum_slice": {
+    "cases": [
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.02,
+        "kappa_times_ADM_energy": 0.0003999677133483895,
+        "quartic_prediction": 0.00039996770901119626,
+        "remainder": 4.337193256452598e-12,
+        "integral_equation_residual": 1.1062419697730613e-16,
+        "discretized_newton_self_energy": 0.23064992002699117
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.04,
+        "kappa_times_ADM_energy": 0.0015994836216225972,
+        "quartic_prediction": 0.0015994833441791397,
+        "remainder": 2.7744345753102917e-10,
+        "integral_equation_residual": 1.1099519740820352e-16,
+        "discretized_newton_self_energy": 0.23064992002699117
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 20,
+        "amplitude": 0.08,
+        "kappa_times_ADM_energy": 0.006391751228317417,
+        "quartic_prediction": 0.006391733506866233,
+        "remainder": 1.7721451184109227e-08,
+        "integral_equation_residual": 1.1068348928361393e-16,
+        "discretized_newton_self_energy": 0.23064992002699117
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 32,
+        "amplitude": 0.02,
+        "kappa_times_ADM_energy": 0.0003999677575594943,
+        "quartic_prediction": 0.00039996775323494494,
+        "remainder": 4.324549344927181e-12,
+        "integral_equation_residual": 1.1092912883831768e-16,
+        "discretized_newton_self_energy": 0.23033403610766143
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 32,
+        "amplitude": 0.04,
+        "kappa_times_ADM_energy": 0.0015994843283940565,
+        "quartic_prediction": 0.0015994840517591189,
+        "remainder": 2.766349376133459e-10,
+        "integral_equation_residual": 1.1091049411347809e-16,
+        "discretized_newton_self_energy": 0.23033403610766143
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 32,
+        "amplitude": 0.08,
+        "kappa_times_ADM_energy": 0.006391762498010829,
+        "quartic_prediction": 0.006391744828145902,
+        "remainder": 1.7669864927141732e-08,
+        "integral_equation_residual": 1.1226913496087398e-16,
+        "discretized_newton_self_energy": 0.23033403610766143
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 40,
+        "amplitude": 0.02,
+        "kappa_times_ADM_energy": 0.0003999677658554314,
+        "quartic_prediction": 0.000399967761533253,
+        "remainder": 4.32217841161639e-12,
+        "integral_equation_residual": 1.109121881793726e-16,
+        "discretized_newton_self_energy": 0.23027476247881803
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 40,
+        "amplitude": 0.04,
+        "kappa_times_ADM_energy": 0.0015994844610153858,
+        "quartic_prediction": 0.0015994841845320476,
+        "remainder": 2.764833381772164e-10,
+        "integral_equation_residual": 1.1084611960948676e-16,
+        "discretized_newton_self_energy": 0.23027476247881803
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 40,
+        "amplitude": 0.08,
+        "kappa_times_ADM_energy": 0.00639176461270521,
+        "quartic_prediction": 0.00639174695251276,
+        "remainder": 1.7660192449912848e-08,
+        "integral_equation_residual": 1.1188966420050406e-16,
+        "discretized_newton_self_energy": 0.23027476247881803
+      }
+    ],
+    "scope": "Full conformal scalar solve for the same compact TT profile on h=0. It checks the pure-momentum quartic term against the nonlinear boundary energy, with discretization error separated from amplitude order."
+  },
+  "source_sha256": {
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "scripts/reduced_tensor_hamiltonian_audit.py": "17026bbf103152078bc95a0f4ace9b4b3315dd6de69bb2531b8a3ed7e58ac7e3",
+    "CANONICAL_METRIC_RECONSTRUCTION.md": "960357fd3d35d2c7f4a583c0551f2cc3713c7c9528daf506fda3a4657dd3c8f9",
+    "scripts/canonical_metric_reconstruction_audit.py": "67470c2714e6440475ac443a66acb3b18f99b83fc8e128b192a8d0379a060ec7",
+    "TENSOR_PACKET_SELF_GRAVITY.md": "5c70a78daf255266b0df044f54dc615c43aa012283c305d02c026450075561ee",
+    "scripts/tensor_packet_self_gravity_audit.py": "eb24b30b8c96c0f087c6524c783d8c5e7b790ed18a30726946307b79dc75676c",
+    "SPATIAL_METRIC_VACUUM.md": "ace18b372464f57b7d5bdf97773fac8e6da5319231e1ad99f4815b5bb9914059",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920"
+  },
+  "scope": "A classical small-amplitude reduced TT Hamiltonian is derived through quartic order from supplied asymptotically flat Einstein constraints. The quadratic wave energy sources the conformal metric; the logarithmic kinetic cubic term cancels and a nonzero cubic curvature interaction remains. This supplies a nonlinear physical tensor target, not a microscopic phase, invariant finite-time flow, quantum constraint construction or physical TOE."
+}

@@ -1,0 +1,61 @@
+/- Fresh averaged-seam declarations; retained certificates are checked by the runner. -/
+import UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging
+import UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile
+import UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction
+import UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging.pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging.step_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging.step_le_const
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundRowAveraging.step_lt_const
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.fraction_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.fraction_lt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.likelihood_coefficient_lt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.global_rate_fraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_le_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_lt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_complement
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_even
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.odd_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateProfile.profile_identity_lt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged_full
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged_le_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged_lt_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.exists_maximizer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.maximizer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.averaged_le_rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_le_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_lt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_lt_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.row_margin
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_margin_le_row
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.rate_margin_at_maximum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.odd_source_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.odd_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.partial_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.odd_iterate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAveragedSeamContraction.odd_eigenvalue
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.likelihood_coefficient_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseScale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseScale_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseScale_ge_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseCoefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseCoefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseRate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseRate_fraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseRate_margin
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseRate_margin_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseCoefficient_le_new
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseCoefficient_le_raw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.baseCoefficient_le_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.profile_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.averaged_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.rate_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRateFloor.certified_margin_upper

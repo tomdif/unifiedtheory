@@ -1,0 +1,44 @@
+import UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry
+import UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood
+import UnifiedTheory.Clay.YangMills.WilsonCenterContraction
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.vertices
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.links
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.mem_links
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.vertices_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.links_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.twist_away
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.twist_on
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.tilt_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.tilt_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry.tilt_opposite
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.scale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.scale_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.scale_ge_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.partition_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.likelihood_tilt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.likelihood_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.likelihood_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.response_conditional
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.response_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.likelihood_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.likelihood_opposite
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood.pointwise_cap_floor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_lt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.coefficient_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_margin
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_margin_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_margin_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.rate_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.step_odd
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.odd_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.physical_odd_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.flow_odd
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.odd_iterate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.partial_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCenterContraction.odd_eigenvalue

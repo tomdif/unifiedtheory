@@ -42,3 +42,10 @@ structure above the flat law).
    Reading: taken as a γ₄/q-family hit, p ≈ 0.006 (≈2.5σ) after a 7-observable trials factor —
    not negligible, not decisive, and it cannot substitute for the
    adjoint-content derivation above. Gate status unchanged: OPEN.
+
+## Closed 2026-10-25: FALSIFIED-BY-DEFAULT
+See GAUGE_AND_ALPHA_GATES_2026-10-25.md. Adjoint content is not derivable from the order
+(Audit/CausalOrderGaugeUniversality.lean; minimal chiral search finds 5/12/14-fermion
+theories beating the SM). The framework's own unification boundary conditions with SM content
+hit an alpha_3 Landau pole above M_Z (unification_running_test.py), so there is no
+dynamical origin for ln(5/3)/70 or its 2.1e-5 correction.

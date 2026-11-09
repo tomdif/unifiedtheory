@@ -1,0 +1,48 @@
+/- Exact separated-source transport under the interacting Wilson law. -/
+import UnifiedTheory.Clay.YangMills.GibbsCrossCovariance
+import UnifiedTheory.Clay.YangMills.WilsonSeparatedSources
+import UnifiedTheory.Clay.YangMills.WilsonCrossCovariance
+
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.covariance
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.centered_product
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.covariance_eq_centered
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.covariance_scale
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.conditionalCovariance
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.total_covariance
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.product_preserved
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.covariance_preserved
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.removed
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.removed_continuous
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.removed_response
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.conditional_removed_product
+#print axioms UnifiedTheory.Clay.YangMills.GibbsCrossCovariance.removed_product_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.quadratic
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.quadratic_neg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.quadratic_polarization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.affine_partition_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.affine_log_partition_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.product_quadratic_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.product_response_mul
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.SeparatedOnBlock
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.splitSource
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.edgeCoord_injective
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.assignment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.assignment_edge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.assemble_blockUpdate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.inside_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.inside_action_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.inside_source_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.source_update_unchanged
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.edge_update_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeparatedSources.actual_response_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.retainedLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.retainedSource
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.splitSource_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.retainedSource_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.source_mean_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.source_product_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.source_covariance_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.rescaled_covariance_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.removedSource
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.removedSource_assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCrossCovariance.removed_product_zero

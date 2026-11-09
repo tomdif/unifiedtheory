@@ -1,0 +1,47 @@
+{
+  "exact_constraint_algebra": {
+    "normal_bracket_with_divergence": true,
+    "cross_terms_cancel": true,
+    "spatial_spatial": true,
+    "spatial_normal_with_divergence": true,
+    "current": "(a*b*(-2*dpy + dx*px + dy*py + dz*pz - (2*lam - 1)*(2*dpx + 2*dpy + 2*dpz - (dx + dy + dz)*(px + py + pz))) + dphi*gam*kap*pi)*exp(-x/2 - y/2 - z/2)*exp(x/2 - y/2 + z/2)",
+    "selection": "lambda=1/2 and kappa*gamma=a*b",
+    "potential_parameters_selected": false,
+    "bare_potential_defect": "M*dN*(2*mass2*phi**2 + phi**4*quartic + 4*vacuum)/4",
+    "periodic_bare_potential_defect": "pi for V=1, N=sin(s), M=cos(s)"
+  },
+  "exact_homogeneous_reduction": {
+    "reduced_H": "c/2 + (P**2 + kap*pi**2/a + 2*(mass2*phi**2/2 + phi**4*quartic/4 + vacuum)*exp(L + 2*T)/a)/(2*c)",
+    "all_eight_Hamilton_equations": true,
+    "c_equation": "dc/dT=exp(2T+L)*V/(a*c)",
+    "constant_c_requires_zero_V": true,
+    "scope": "Homogeneous exact canonical comparison; spatial constraint identities are separate."
+  },
+  "exact_spatial_reduction": {
+    "all_eight_Hamilton_PDE_components": true,
+    "common_cone_imposed": "gamma=a*b/kappa",
+    "unmatched_PT_residual": "-(a*b - gam*kap)*(c*phix*pix + c*phixx*pi - 2*cx*phix*pi)*exp(2*T)/(a**2*c**3)",
+    "scalar_constraint": true,
+    "spatial_constraint": "Lx=(P*Qx+pi*phix+2*cx)/c",
+    "scope": "Exact symbolic jet identity on the gauge and both constraints; no PDE existence theorem."
+  },
+  "classical_clock_evolution": {
+    "initial_c": 1.0,
+    "final_c": 1.1006574035363166,
+    "initial_c_force": 0.0227025,
+    "minimum_c": 1.0,
+    "maximum_constraint_shell_residual": 1.3566592294012025e-11,
+    "sample_count": 401,
+    "mass_squared": 0.5,
+    "quartic": 0.1,
+    "final_scalar": -0.16225742034638566,
+    "scope": "Floating-point homogeneous classical ODE diagnostic; no existence or quantum claim."
+  },
+  "source_sha256": {
+    "scripts/matter_clock_revision_audit.py": "726eccc60c1ccbf7989cfc0801a2fef989eb646eaf0b769bbb3f45afe98a97e4",
+    "UnifiedTheory/Audit/KFCausalMatterConstraintAlgebra.lean": "40693dced0afd8d482e446e4375bd53925c5aa00326ae66baeda4a80b952d118",
+    "UnifiedTheory/Audit/KFCausalMatterArealReduction.lean": "a4276f24adcc0030a2eeebf0b5021d9abffea873f1ce301fc9f09fb17738eb62",
+    "UnifiedTheory/Audit/KFCausalTwoModeObstruction.lean": "421a06e08fc3a7edf43037525d088b5f13f4b983c68619349384a4053dc59860"
+  },
+  "scope": "A revised classical diagonal one-coordinate gravity/scalar target. The spin dynamics, full three-dimensional closure, quantum anomaly control, continuum limit and Standard Model are not derived by these checks."
+}

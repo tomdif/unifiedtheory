@@ -1,0 +1,8 @@
+.git
+.lake
+.claude
+.venv*
+**/__pycache__
+**/*.pyc
+.DS_Store
+tmp

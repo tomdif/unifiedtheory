@@ -1,0 +1,36 @@
+import UnifiedTheory.Clay.YangMills.CompactExponentialMidpoint
+import UnifiedTheory.Clay.YangMills.WilsonDistributedSeam
+import UnifiedTheory.Clay.YangMills.WilsonSeamRoot
+import UnifiedTheory.Clay.YangMills.WilsonGaugeKernelCurvature
+import UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactExponentialMidpoint.equal_midpoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.uniform
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.distributingGauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.uniform_inv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.uniform_mul
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.uniform_flat
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.val_neg_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.val_neg_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.seam_gauge_uniform
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.uniform_potential
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.kernel_uniform_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDistributedSeam.kernel_uniform_center
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.rotor_add
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.rotor_pow
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.rotor_pi
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.root
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.root_power
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.root_distance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.uniform_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamRoot.root_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeKernelCurvature.slab_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeKernelCurvature.kernel_equal_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.identity_potential
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.kernel_root_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.kernel_root_reverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.kernel_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.kernel_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.transition_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.physical_likelihood_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFlatSeamComparison.gauge_input_bounds

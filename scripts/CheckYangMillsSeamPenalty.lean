@@ -1,0 +1,72 @@
+/- Fresh seam-penalty axioms; the runner verifies the retained certificate chain. -/
+import UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry
+import UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison
+import UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.twist_mul_right
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.inputCost_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.mismatch
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.mismatch_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.mismatch_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.mismatch_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.kinetic_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.slab_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.distributing_inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.gauge_twist_of_commute
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.mismatch_zero_of_commute
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.rootMismatch
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.rootMismatch_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.rootMismatch_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.rootMismatch_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorGeometry.rootMismatch_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.kernel_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.kernel_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.root_kernel_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.transition_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.physical_likelihood_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamCommutatorComparison.commuting_input_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.representative_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.exists_minimizer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.minimizer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_le_root
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_eq_sInf
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_gauge_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_twist_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_zero_of_commuting_representative
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.penalty_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.small_penalty_open
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.small_penalty_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.physical_likelihood_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSeamGaugePenalty.bounded_penalty_likelihood
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio_mean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.scale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.scale_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.scale_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.coefficient_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.ratio_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.response_conditional
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weight_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weight_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weight_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weight_twist
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.clipped_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weightedLoss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weightedLoss_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.response_le_weightedLoss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.weightedLoss_le_global
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.odd_output_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSeamResponse.odd_contraction_of_weighted_bound

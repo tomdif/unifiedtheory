@@ -1,0 +1,94 @@
+{
+  "gadget": {
+    "minimum_vertices_for_one_good_root": 88,
+    "ball_vertices": 63,
+    "ball_edges": 114,
+    "outgoing_stubs": 150,
+    "required_outside_vertices": 25,
+    "minimal_gadget_good_roots": [
+      31
+    ],
+    "small_sizes_checked": [
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94
+    ],
+    "exhaustive_core_states": 105,
+    "injective_images": 105,
+    "asymptotic_event_mass_lower_bound": "((10/3)^88+o(1))*N^(-264)",
+    "expected_proposal_bound": "O(N^280 log N)",
+    "expected_physical_time_bound": "O(N^279 log N / gamma)",
+    "pairing_ratio_checks": [
+      {
+        "vertices": 1000,
+        "log_ratio_error": 11.972568208086159
+      },
+      {
+        "vertices": 10000,
+        "log_ratio_error": 1.1650224196864656
+      },
+      {
+        "vertices": 100000,
+        "log_ratio_error": 0.11619408848264356
+      },
+      {
+        "vertices": 1000000,
+        "log_ratio_error": 0.01161634073832829
+      }
+    ]
+  },
+  "plateau_path": {
+    "vertices": 124,
+    "certified_moves": 3360,
+    "neutral_moves": 3359,
+    "final_defect_drop": 1,
+    "final_good_roots": [
+      31
+    ],
+    "rooted_patch_tests": 416764,
+    "valid_degree_and_connectivity_at_every_step": true,
+    "scope": "Existence witness found with target-guided search, not a typical stochastic trajectory."
+  },
+  "quantum_markov": {
+    "coherent_classically_accessible_dark_state": "(|1>-|2>)/sqrt(2)",
+    "coherent_dark_stationarity_exact": true,
+    "all_matrix_units_checked": 16,
+    "weighted_partial_permutation_units_checked": 16,
+    "killed_generator_eigenvalues": [
+      "-1",
+      "-2-sqrt(3)",
+      "-2+sqrt(3)"
+    ],
+    "exact_mean_absorption_times": [
+      4,
+      4,
+      3
+    ],
+    "unique_markov_stationary_state": "|0><0|",
+    "finite_collision_isometry_dimension": [
+      24,
+      4
+    ],
+    "exact_collision_energy_intertwining": true,
+    "mixing_block_steps": 8,
+    "block_survival_bound": "7/8",
+    "scope": "Exact finite Lindblad model; no autonomous Hamiltonian bath limit is derived."
+  },
+  "source_sha256": {
+    "NEUTRAL_PATCH_NUCLEATION.md": "ffd7384199477b146ef4b1db52c84687e9492f79634b99b20ac005b9f3616bc9",
+    "scripts/neutral_patch_audit.py": "f3411884e992cfab3a81ce93ba65c6e564d7317144f7d12cdba90b5ea7c5ce9a",
+    "UnifiedTheory/Audit/KFCausalNeutralPatch.lean": "21585413a8a9c3914b4414ed7cb75824812463adb16cbaf59d887fdcc70f843c",
+    "data/neutral_patch_path.json": "e460c7319bf6b342abb16d614f41edc3f2e1b4ddb0579b9378ad8149d28aecef",
+    "RESERVOIR_GEOMETRY_PREPARATION.md": "bda764b4a422cee1305eaf22a6770ff6fd7a2adc8376eca5c612d330bc7d4994",
+    "scripts/reservoir_geometry_audit.py": "55ac461074743816dc800537598bb2b87ca3c8e78cb6cf87a233eab495c8b117",
+    "PATCH_GEOMETRY_PROTECTION.md": "7d633bccb14107722244fa4cfeb6edb9ddfbbf6f17bc06d7b47ffe468d41936a",
+    "scripts/patch_geometry_audit.py": "1b34c3c0124c5e68cdb23f45073110e135f21b602ebc36aabda902d38a27b577",
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1"
+  },
+  "scope": "First supplied cubic neighborhood in a specified quantum Markov model; positive-density order and a physical unitary reservoir remain open."
+}

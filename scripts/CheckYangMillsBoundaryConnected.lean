@@ -1,0 +1,25 @@
+import UnifiedTheory.Clay.YangMills.CompactConnectedRectangle
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactConnectedRectangle.expectation_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactConnectedRectangle.covariance_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactConnectedRectangle.source_difference
+#print axioms UnifiedTheory.Clay.YangMills.CompactConnectedRectangle.mixed_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryAction_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryPartition_action
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryPartition_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.source
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.source_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.source_local
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.source_shift_away
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.source_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryAction_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.tilted_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.mixedLog
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.mixedLog_eq_mixed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.mixedLog_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.mixedLog_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected.boundaryRatio_eq_exp

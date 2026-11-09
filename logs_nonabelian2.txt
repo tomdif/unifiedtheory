@@ -1,0 +1,27 @@
+[    0.5s] control: uncoupled (must be ~0)
+
+UNCOUPLED (control):
+  total size  8: mean delta = 0.00e+00  max = 0.00e+00  (n=31)
+  total size  9: mean delta = 0.00e+00  max = 0.00e+00  (n=34)
+  total size 10: mean delta = 0.00e+00  max = 0.00e+00  (n=33)
+  total size 11: mean delta = 0.00e+00  max = 0.00e+00  (n=34)
+  total size 12: mean delta = 0.00e+00  max = 0.00e+00  (n=33)
+  total size 13: mean delta = 0.00e+00  max = 0.00e+00  (n=36)
+  total size 14: mean delta = 0.00e+00  max = 0.00e+00  (n=35)
+  total size 15: mean delta = 0.00e+00  max = 0.00e+00  (n=35)
+  total size 16: mean delta = 0.00e+00  max = 0.00e+00  (n=33)
+  total size 17: mean delta = 0.00e+00  max = 0.00e+00  (n=33)
+  total size 18: mean delta = 0.00e+00  max = 0.00e+00  (n=36)
+  total size 19: mean delta = 0.00e+00  max = 0.00e+00  (n=36)
+  total size 20: mean delta = 0.00e+00  max = 0.00e+00  (n=34)
+  total size 21: mean delta = 0.00e+00  max = 0.00e+00  (n=35)
+  total size 22: mean delta = 0.00e+00  max = 0.00e+00  (n=39)
+  total size 23: mean delta = 0.00e+00  max = 0.00e+00  (n=38)
+  total size 24: mean delta = 0.00e+00  max = 0.00e+00  (n=39)
+  total size 25: mean delta = 0.00e+00  max = 0.00e+00  (n=37)
+  total size 26: mean delta = 0.00e+00  max = 0.00e+00  (n=35)
+  total size 27: mean delta = 0.00e+00  max = 0.00e+00  (n=34)
+  total size 28: mean delta = 0.00e+00  max = 0.00e+00  (n=37)
+  total size 29: mean delta = 0.00e+00  max = 0.00e+00  (n=40)
+  OVERALL: mean = 0.00e+00  max = 0.00e+00  frac>1e-6 = 0.000
+[   34.8s] coupled merged-spectrum law

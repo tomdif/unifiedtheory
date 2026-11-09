@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "theorem_count": 21,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "targeted_lean_build": "PASS",
+  "axiom_audit_exit_code": 0,
+  "exact_rational_checks": 47,
+  "numerical_path_checks": 260,
+  "scope": "Analytic U(m) reconstruction proof with partially formalized ingredients; see section 7 of the note.",
+  "sha256": {
+    "UnifiedTheory/LayerA/GaugeTransportStability.lean": "39eb9dbde86c996c06f4808aa5f2e77e628429633024f77c2681e77bc864aadc",
+    "scripts/CheckGaugeTransportStability.lean": "24ffa6a4949759c02eda7f65f986215cfb1db57e814894e8121f766ad36052bf",
+    "scripts/gauge_discrete_continuum_audit.py": "79810196d74613dce34e2948b961a2b7478cf8f89e75751c2bdda275a324e7cf",
+    "GAUGE_DISCRETE_CONTINUUM.md": "1e6f085266d950a91edd41ca38d2131832800d07e663a05198c56f0d4d128d70",
+    "data/gauge_transport_axioms.txt": "e77256b942d3ef666e805c5d3556329690bc1873d340ab4e7c347e0fdd206d46",
+    "data/gauge_discrete_continuum_audit.json": "acc20d8f150b4af82c17b975217954c55311907004e1d397ad8ce4fe56fe64d2"
+  }
+}

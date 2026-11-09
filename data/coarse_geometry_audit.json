@@ -1,0 +1,333 @@
+{
+  "coarse_partitions": [
+    {
+      "sites": 6,
+      "degree": 3,
+      "coarse_template": "path3",
+      "cells": 3,
+      "cell_size": 2,
+      "labeled_balanced_assignments": 90,
+      "distinct_locality_masks": 45,
+      "all_regular_graphs": 70,
+      "minimum_far_edge_histogram": {
+        "1": 60,
+        "2": 10
+      }
+    },
+    {
+      "sites": 8,
+      "degree": 3,
+      "coarse_template": "cycle4",
+      "cells": 4,
+      "cell_size": 2,
+      "labeled_balanced_assignments": 2520,
+      "distinct_locality_masks": 315,
+      "all_regular_graphs": 19355,
+      "minimum_far_edge_histogram": {
+        "0": 19355
+      }
+    },
+    {
+      "sites": 8,
+      "degree": 4,
+      "coarse_template": "cycle4",
+      "cells": 4,
+      "cell_size": 2,
+      "labeled_balanced_assignments": 2520,
+      "distinct_locality_masks": 315,
+      "all_regular_graphs": 19355,
+      "minimum_far_edge_histogram": {
+        "0": 5915,
+        "1": 13440
+      }
+    }
+  ],
+  "generating_function": {
+    "subsets": 32768,
+    "weighted_sum": "5250987/32768",
+    "product": "5250987/32768",
+    "tests": [
+      {
+        "far_edge_budget": 0,
+        "allowed_graphs": 1384,
+        "full_gauss_rank": 57627,
+        "graph_count_bound": "5250987/64"
+      },
+      {
+        "far_edge_budget": 1,
+        "allowed_graphs": 5920,
+        "full_gauss_rank": 356211,
+        "graph_count_bound": "15752961/64"
+      },
+      {
+        "far_edge_budget": 3,
+        "allowed_graphs": 11888,
+        "full_gauss_rank": 962843,
+        "graph_count_bound": "141776649/64"
+      },
+      {
+        "far_edge_budget": 6,
+        "allowed_graphs": 12068,
+        "full_gauss_rank": 990155,
+        "graph_count_bound": "3827969523/64"
+      }
+    ]
+  },
+  "preparation": {
+    "cases": [
+      {
+        "input_dimension": 12,
+        "target_rank": 3,
+        "record_dimension": 1,
+        "exact_success": "1/4",
+        "unitary": true,
+        "coherent_recovery": true
+      },
+      {
+        "input_dimension": 12,
+        "target_rank": 3,
+        "record_dimension": 2,
+        "exact_success": "1/2",
+        "unitary": true,
+        "coherent_recovery": true
+      },
+      {
+        "input_dimension": 12,
+        "target_rank": 3,
+        "record_dimension": 4,
+        "exact_success": "1",
+        "unitary": true,
+        "coherent_recovery": true
+      },
+      {
+        "input_dimension": 70,
+        "target_rank": 10,
+        "record_dimension": 7,
+        "exact_success": "1",
+        "unitary": true,
+        "coherent_recovery": true
+      },
+      {
+        "input_dimension": 70,
+        "target_rank": 1,
+        "record_dimension": 70,
+        "exact_success": "1",
+        "unitary": true,
+        "coherent_recovery": true
+      }
+    ],
+    "scope": "Unrestricted reversible register construction; locality and covariance not asserted."
+  },
+  "encoding_and_leakage": {
+    "graph_states": 70,
+    "qubits": 6,
+    "hilbert_dimension": 64,
+    "pair_comparisons": 2415,
+    "overlap_magnitude_violations": 432,
+    "witness": {
+      "before_graphs": [
+        27847,
+        27309
+      ],
+      "after_graphs": [
+        27847,
+        26862
+      ],
+      "before_overlap": "1/4",
+      "after_overlap": "1/2",
+      "edge_lists": [
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      ]
+    },
+    "coherent_exchange": {
+      "reduced_hamiltonian": [
+        [
+          "144",
+          "-24*sqrt(6)"
+        ],
+        [
+          "-24*sqrt(6)",
+          "24"
+        ]
+      ],
+      "leakage_formula": "(24/49)*sin(84*rho*t)^2",
+      "time_at_rho_one": "pi/168",
+      "exact_leakage": "24/49",
+      "coherent_initial_target_probability": "1/7",
+      "coherent_amplified_target_probability": "289/343",
+      "amplified_state": [
+        "-17*sqrt(7)/49",
+        "-3*sqrt(42)/49"
+      ],
+      "coherent_protocol_inverse_verified": true,
+      "maximally_mixed_target_probability_unchanged": "1/7",
+      "controls": "Triangle-occupancy phase followed by exchange pulse; independent controls, not autonomous v2."
+    },
+    "scope": "Graph-state encoding fails the original conditional flip; six-site class leakage is not a spacetime observable."
+  },
+  "decoding": {
+    "states": 4,
+    "dimension": 2,
+    "exact_success": "1/2",
+    "dimension_bound": "1/2"
+  },
+  "scope": "Finite resource and coarse-counting results; no selected geometric phase or TOE.",
+  "source_sha256": {
+    "COARSE_GEOMETRY_AND_PREPARATION.md": "5d02ab825a6a97fcc6df7e4523ba0448bae1c49d262cd84a35075e9e8efa856a",
+    "scripts/coarse_geometry_audit.py": "c89d411a2af22ae69e12b86c21e3be63561a0e8af9caa5bb58724e3defc2a635",
+    "UnifiedTheory/Audit/KFCausalCoarseGeometry.lean": "ea5a908c0caf101e8181e78e4dfe9e1195c33409322a7d8db76a0508e63d1e73",
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1"
+  }
+}

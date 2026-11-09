@@ -1,0 +1,846 @@
+{
+  "exact_bounds": {
+    "exact_spin_similarity_ratio": true,
+    "falling_number_coercivity": true,
+    "cubic_absorption_square": true,
+    "vector_row_l1": "4 + 4*sqrt(2)",
+    "scalar_row_l1": "12*sqrt(2) + 24",
+    "constraint_incidence_bound": "672*sqrt(2) + 1008",
+    "microscopic_time_scale": "R^(-2)"
+  },
+  "exact_stencil": {
+    "exact_integer_BG_zero": true,
+    "x_check_supports": [
+      6,
+      6,
+      6
+    ],
+    "z_check_support": 27,
+    "checks_per_tensor_component": [
+      7,
+      7,
+      7,
+      8,
+      8,
+      8
+    ],
+    "maximum_stencil_l1_offset": 2,
+    "x_stencil": [
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      }
+    ],
+    "z_stencil": [
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -4
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          -1,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          -1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          -1
+        ],
+        "coefficient": -2
+      }
+    ]
+  },
+  "symbols": {
+    "cases": [
+      {
+        "length": 2,
+        "one_particle_dimension": 48,
+        "kernel_dimension": 20,
+        "maximum_symbol_error": 5.684341886080802e-14,
+        "positive_gap": 8.000000000000002
+      },
+      {
+        "length": 3,
+        "one_particle_dimension": 162,
+        "kernel_dimension": 58,
+        "maximum_symbol_error": 5.684341886080802e-14,
+        "positive_gap": 5.999999999999999
+      },
+      {
+        "length": 4,
+        "one_particle_dimension": 384,
+        "kernel_dimension": 132,
+        "maximum_symbol_error": 5.684341886080802e-14,
+        "positive_gap": 4.0
+      },
+      {
+        "length": 7,
+        "one_particle_dimension": 2058,
+        "kernel_dimension": 690,
+        "maximum_symbol_error": 1.7053025658242404e-13,
+        "positive_gap": 1.134079434435006
+      }
+    ],
+    "real_stencil_incidence": 1958.3515139147198,
+    "scope": "All momenta of the stated carriers, including homogeneous and Brillouin-corner modes; real-space incidence is checked before small-box aliasing."
+  },
+  "finite_spin_kernels": {
+    "cases": [
+      {
+        "length": 2,
+        "blocks": 8,
+        "R": 2,
+        "total_particles": 2,
+        "full_sector_dimension": 1176,
+        "lower_output_dimension": 1536,
+        "exact_kernel_dimension": 210,
+        "kernel_residual": 1.3666295567943196e-13,
+        "positive_gap": 5.582801007897738,
+        "similarity_gap_bound": 3.9999999999999867,
+        "generic_note_gap_bound": 2.943035529371528
+      },
+      {
+        "length": 2,
+        "blocks": 8,
+        "R": 4,
+        "total_particles": 2,
+        "full_sector_dimension": 1176,
+        "lower_output_dimension": 1536,
+        "exact_kernel_dimension": 210,
+        "kernel_residual": 1.3671284579515671e-13,
+        "positive_gap": 6.946131437807388,
+        "similarity_gap_bound": 5.999999999999979,
+        "generic_note_gap_bound": 5.732250484590294
+      },
+      {
+        "length": 2,
+        "blocks": 8,
+        "R": 16,
+        "total_particles": 2,
+        "full_sector_dimension": 1176,
+        "lower_output_dimension": 1536,
+        "exact_kernel_dimension": 210,
+        "kernel_residual": 1.3672961370835044e-13,
+        "positive_gap": 7.761181248822362,
+        "similarity_gap_bound": 7.499999999999972,
+        "generic_note_gap_bound": 7.484055880252916
+      }
+    ],
+    "scope": "Complete active-symmetric two-particle sectors of the actual three-dimensional stencil. The theorem supplies full microscopic sector selection; the exponentially larger unrestricted spin space is not diagonalized."
+  },
+  "three_particle_kernels": {
+    "cases": [
+      {
+        "R": 3,
+        "total_particles": 3,
+        "full_sector_dimension": 19600,
+        "lower_output_dimension": 37632,
+        "kernel_residual": 8.024921849385817e-15,
+        "coherent_similarity_squared_norm": 1.2936850096455634,
+        "independent_block_probability_norm": 1.2936850096455663,
+        "distance_from_undeformed_vector": 0.17925079515151296
+      },
+      {
+        "R": 8,
+        "total_particles": 3,
+        "full_sector_dimension": 19600,
+        "lower_output_dimension": 37632,
+        "kernel_residual": 1.0496093056289571e-14,
+        "coherent_similarity_squared_norm": 1.0726482311032703,
+        "independent_block_probability_norm": 1.0726482311032681,
+        "distance_from_undeformed_vector": 0.04662577131333034
+      },
+      {
+        "R": 32,
+        "total_particles": 3,
+        "full_sector_dimension": 19600,
+        "lower_output_dimension": 37632,
+        "kernel_residual": 7.287405929579324e-15,
+        "coherent_similarity_squared_norm": 1.0155376926894224,
+        "independent_block_probability_norm": 1.015537692689424,
+        "distance_from_undeformed_vector": 0.010491394411718038
+      }
+    ]
+  },
+  "normal_mode_separation": {
+    "cases": [
+      {
+        "momentum": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "R": 4,
+        "physical_frequency": 0.5401441110047169,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 1.2152575094969795,
+        "normal_zero_point_limit_error": 0.02527197313919438
+      },
+      {
+        "momentum": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "R": 16,
+        "physical_frequency": 0.5401441110047169,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 10.558719167301206,
+        "normal_zero_point_limit_error": 0.0029683351033083505
+      },
+      {
+        "momentum": [
+          0.1,
+          0.2,
+          0.3
+        ],
+        "R": 64,
+        "physical_frequency": 0.5401441110047169,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 159.34593245430364,
+        "normal_zero_point_limit_error": 0.00019674546172537832
+      },
+      {
+        "momentum": [
+          3.141592653589793,
+          0.0,
+          0.0
+        ],
+        "R": 4,
+        "physical_frequency": 1.2041594578792296,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 129.2248041205712,
+        "normal_zero_point_limit_error": 9.793971439109317e-05
+      },
+      {
+        "momentum": [
+          3.141592653589793,
+          0.0,
+          0.0
+        ],
+        "R": 16,
+        "physical_frequency": 1.2041594578792296,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 2049.224987647769,
+        "normal_zero_point_limit_error": 6.176115379341596e-06
+      },
+      {
+        "momentum": [
+          3.141592653589793,
+          0.0,
+          0.0
+        ],
+        "R": 64,
+        "physical_frequency": 1.2041594578792296,
+        "surviving_nonzero_momentum_pairs": 2,
+        "minimum_normal_frequency": 32769.224999227554,
+        "normal_zero_point_limit_error": 3.8622365960971905e-07
+      }
+    ],
+    "scope": "Exact canonical strong-penalty normal modes, used as a comparison for the proved finite-spin limit. The interacting model has no proved protected massless spectrum."
+  },
+  "projected_tensor_cubic": {
+    "cases": [
+      {
+        "length": 5,
+        "profile_norm": 1.0,
+        "constraint_fourier_residual_before_normalization": 1.0927252835579192e-14,
+        "homogeneous_mode_removed": true,
+        "classical_cubic": -0.0010369702755003891,
+        "vacuum_to_three_particle_matrix_element_per_chi": -0.000898042601552685,
+        "exact_finite_spin_matrix_elements": [
+          {
+            "R": 3,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0008910386209221384
+          },
+          {
+            "R": 8,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0008960521874256782
+          },
+          {
+            "R": 32,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0008975929947381413
+          }
+        ]
+      },
+      {
+        "length": 7,
+        "profile_norm": 1.0,
+        "constraint_fourier_residual_before_normalization": 1.5114161063916467e-14,
+        "homogeneous_mode_removed": true,
+        "classical_cubic": 0.0005813114972144235,
+        "vacuum_to_three_particle_matrix_element_per_chi": 0.0005034305240996577,
+        "exact_finite_spin_matrix_elements": [
+          {
+            "R": 3,
+            "normalized_spin_kernel_matrix_element_per_chi": 0.0005020964474661818
+          },
+          {
+            "R": 8,
+            "normalized_spin_kernel_matrix_element_per_chi": 0.0005030500107967312
+          },
+          {
+            "R": 32,
+            "normalized_spin_kernel_matrix_element_per_chi": 0.0005033445891034425
+          }
+        ]
+      },
+      {
+        "length": 9,
+        "profile_norm": 1.0,
+        "constraint_fourier_residual_before_normalization": 3.183161656768743e-14,
+        "homogeneous_mode_removed": true,
+        "classical_cubic": -0.0007939686743313492,
+        "vacuum_to_three_particle_matrix_element_per_chi": -0.0006875970417800021,
+        "exact_finite_spin_matrix_elements": [
+          {
+            "R": 3,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0006866514143375124
+          },
+          {
+            "R": 8,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0006873271557210884
+          },
+          {
+            "R": 32,
+            "normalized_spin_kernel_matrix_element_per_chi": -0.0006875360969945495
+          }
+        ]
+      }
+    ],
+    "cubic_monomials": 93,
+    "uniform_incidence_bound": 83.08322430083626,
+    "scope": "Actual supplied tracefree cubic extension on normalized nonzero-momentum kernel profiles. Staggered lattice symmetry is not claimed to give exact nonlinear diffeomorphism covariance."
+  },
+  "small_interacting_model": {
+    "cases": [
+      {
+        "R": 4,
+        "total_occupation_cutoff": 12,
+        "retained_dimension": 225,
+        "full_output_dimension": 225,
+        "ground_energy_lower_estimate": 1.5295157063341498,
+        "ground_energy_upper_estimate": 1.5295157063341498,
+        "cutoff_interval_width": 0.0,
+        "analytical_complement_lower_bound": 0.0,
+        "slow_target_energy": 1.563959959979567,
+        "distance_from_target_energy": 0.034444253645417255,
+        "constraint_energy": 0.00012427445666903322,
+        "eigensolver_residual": 1.390898108197444e-14,
+        "full_two_block_space_retained": true
+      },
+      {
+        "R": 8,
+        "total_occupation_cutoff": 12,
+        "retained_dimension": 1390,
+        "full_output_dimension": 1944,
+        "ground_energy_lower_estimate": 1.553083956404509,
+        "ground_energy_upper_estimate": 1.5530839564045107,
+        "cutoff_interval_width": 1.7763568394002505e-15,
+        "analytical_complement_lower_bound": 5.325145000000001,
+        "slow_target_energy": 1.563959959979567,
+        "distance_from_target_energy": 0.010876003575056359,
+        "constraint_energy": 6.203607323190051e-06,
+        "eigensolver_residual": 9.74210595427649e-14,
+        "full_two_block_space_retained": false
+      },
+      {
+        "R": 16,
+        "total_occupation_cutoff": 12,
+        "retained_dimension": 1820,
+        "full_output_dimension": 3876,
+        "ground_energy_lower_estimate": 1.5594353859200378,
+        "ground_energy_upper_estimate": 1.559435385920057,
+        "cutoff_interval_width": 1.9095836023552692e-14,
+        "analytical_complement_lower_bound": 5.325145000000001,
+        "slow_target_energy": 1.563959959979567,
+        "distance_from_target_energy": 0.0045245740595101225,
+        "constraint_energy": 3.809502543776433e-07,
+        "eigensolver_residual": 6.32595566915418e-12,
+        "full_two_block_space_retained": false
+      },
+      {
+        "R": 32,
+        "total_occupation_cutoff": 12,
+        "retained_dimension": 1820,
+        "full_output_dimension": 3876,
+        "ground_energy_lower_estimate": 1.5618816331752536,
+        "ground_energy_upper_estimate": 1.561881633175362,
+        "cutoff_interval_width": 1.0835776720341528e-13,
+        "analytical_complement_lower_bound": 5.325145000000001,
+        "slow_target_energy": 1.563959959979567,
+        "distance_from_target_energy": 0.002078326804205055,
+        "constraint_energy": 2.3771207017740197e-08,
+        "eigensolver_residual": 1.3768454169703443e-12,
+        "full_two_block_space_retained": false
+      },
+      {
+        "R": 64,
+        "total_occupation_cutoff": 12,
+        "retained_dimension": 1820,
+        "full_output_dimension": 3876,
+        "ground_energy_lower_estimate": 1.5629625703105452,
+        "ground_energy_upper_estimate": 1.5629625703107437,
+        "cutoff_interval_width": 1.98507876802978e-13,
+        "analytical_complement_lower_bound": 5.325145000000001,
+        "slow_target_energy": 1.563959959979567,
+        "distance_from_target_energy": 0.0009973896688233452,
+        "constraint_energy": 1.4854111077735325e-09,
+        "eigensolver_residual": 4.198484265699882e-12,
+        "full_two_block_space_retained": false
+      }
+    ],
+    "target_energy_lower_estimate": 1.5639599599792247,
+    "target_energy_upper_estimate": 1.563959959979567,
+    "target_eigensolver_residual": 4.851217979873781e-13,
+    "chi": 0.004,
+    "nu": 0.1,
+    "uniform_coercivity_constant": 0.77024,
+    "scope": "Two blocks with two excitation flavors and two retained canonical modes. The R=4 case retains its entire collective Hilbert space. Other cases use all output rows through cutoff+3 and a Schur lower bound from uniform number coercivity. Floating-point eigenvalues are diagnostics, not interval-arithmetic certificates. This is not a full three-dimensional interacting gravity spectrum."
+  },
+  "source_sha256": {
+    "HOLOMORPHIC_TENSOR_PHASE.md": "071b05e1667061a5f8994031615b4c68e323b832d1afb2dc605846a2b781c76b",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "scripts/compact_tensor_constraint_audit.py": "8af5c69d28cedea8fb19b8726212aa2b2a4a2ab36a5998db628d56659a1c40c1",
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f",
+    "data/tensor_vertex_selection_audit.json": "27409422703120803cb3c676ed35affcc6a6157b32664309f55d22c7977053a4",
+    "COLLECTIVE_GRAVITY_COUPLING.md": "f869c43ba01ada9de4d83b649ffb530d5bdc540896a4b9a0f9812df3d61898f7",
+    "data/collective_gravity_coupling_audit.json": "f16631ba603e376a63a8be8342cee1178cbf1c473446c3a2689713cb41b448be",
+    "SPIN_BLOCK_WAVE_PARENT.md": "ed3ca0eb86604e9334b38d86a1133fe5c59a951fd44f44e424ee5401a67cda05",
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920"
+  },
+  "scope": "An engineered local annihilation-constraint parent on finite spin blocks selects two tensor polarizations per nonzero momentum. Exact kernel embeddings and number bounds prove a fixed-volume quantum spectral and evolution limit, with a surviving supplied normally ordered cubic under slow-clock scaling. Six homogeneous modes are retained. Nonlinear Einstein constraints, the Newton quartic, protected interacting masslessness, physical G, a joint continuum limit and TOE remain unproved."
+}

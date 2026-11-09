@@ -1,0 +1,417 @@
+{
+  "overlap": {
+    "existing_flat_block_error": 2.861383123522437e-15,
+    "positive_resolvent_mass": 0.7,
+    "rows": [
+      {
+        "length": 16,
+        "maximum_operator_error": 5.538952332360023,
+        "maximum_error_over_bound": 0.528200664897134,
+        "maximum_resolvent_error": 0.03158017725288619,
+        "maximum_chiral_projector_error": 0.4130232169835815
+      },
+      {
+        "length": 32,
+        "maximum_operator_error": 2.672473747617317,
+        "maximum_error_over_bound": 0.5097001475043027,
+        "maximum_resolvent_error": 0.015577563746710045,
+        "maximum_chiral_projector_error": 0.2041353860537471
+      },
+      {
+        "length": 64,
+        "maximum_operator_error": 1.3176059989796476,
+        "maximum_error_over_bound": 0.5025935035891305,
+        "maximum_resolvent_error": 0.007769393078709917,
+        "maximum_chiral_projector_error": 0.10143675248088144
+      },
+      {
+        "length": 128,
+        "maximum_operator_error": 0.656267055324852,
+        "maximum_error_over_bound": 0.5006588599038913,
+        "maximum_resolvent_error": 0.0038870610140315774,
+        "maximum_chiral_projector_error": 0.050628887160188756
+      },
+      {
+        "length": 256,
+        "maximum_operator_error": 0.32781009213651924,
+        "maximum_error_over_bound": 0.5001653691508845,
+        "maximum_resolvent_error": 0.0019451349759989512,
+        "maximum_chiral_projector_error": 0.025302927307698772
+      }
+    ],
+    "scope": "Free Euclidean operator on supplied flat geometry; interacting QFT remains open"
+  },
+  "random_jets": {
+    "generic_four_coordinate_jets": 24,
+    "boundary_identity_error": 2.220446049250313e-16,
+    "ricci_symmetry_error": 6.938893903907228e-17
+  },
+  "checkerboard": {
+    "length": 16,
+    "old_metric_action": 0.0,
+    "old_metric_variation": 0.0,
+    "new_metric_action": 1.924812030075191,
+    "new_metric_variation": 77.1854448150452,
+    "centered_scalar_zero_modes": [
+      0,
+      8
+    ],
+    "new_scalar_zero_modes": [
+      0
+    ],
+    "scope": "This exact checkerboard defect is removed; full gravitational stability is not proved"
+  },
+  "gravity": [
+    {
+      "case": "general",
+      "boundary_identity_error": 1.4210854715202004e-14,
+      "integrated_einstein_variation_error": 4.996003610813204e-16,
+      "exact_solution_einstein_residual": null,
+      "exact_solution_scalar_residual": null,
+      "independent_action_difference_error": 1.6830764212882876e-12,
+      "continuum_first_variations": [
+        0.11170803534921037,
+        -0.006516627501520638,
+        -0.00029783197970831326,
+        0.007277029042105428,
+        -0.39605788756074267,
+        -0.5229485508656453,
+        0.0035479106479032506,
+        0.24031625771421933,
+        0.03529576233349831,
+        0.4329093866092918,
+        0.2514455149585051
+      ],
+      "rows": [
+        {
+          "length": 16,
+          "action_error": 0.008509650627336579,
+          "maximum_first_variation_error": 0.019136843898723388,
+          "first_variations": [
+            0.10751723512147626,
+            -0.006239829353556444,
+            -0.0002712139972059896,
+            0.007061292685711212,
+            -0.3769210436620193,
+            -0.5142674072239222,
+            0.0030397479352634784,
+            0.2476815843766107,
+            0.03426176069278727,
+            0.4299771464797501,
+            0.23751522432745167
+          ]
+        },
+        {
+          "length": 32,
+          "action_error": 0.0021619733086111204,
+          "maximum_first_variation_error": 0.004858739503811882,
+          "first_variations": [
+            0.11064027182777506,
+            -0.006446546187428627,
+            -0.0002907058360983709,
+            0.007222474557057514,
+            -0.3911991480569308,
+            -0.5207612722183035,
+            0.0034148604903439655,
+            0.24220582662309936,
+            0.03504279215520684,
+            0.4321831964140569,
+            0.2479062354546664
+          ]
+        },
+        {
+          "length": 64,
+          "action_error": 0.0005426849668044853,
+          "maximum_first_variation_error": 0.0012194786839760385,
+          "first_variations": [
+            0.1114398189291939,
+            -0.006499050727597537,
+            -0.00029601945747624093,
+            0.007263351590718357,
+            -0.39483840887676663,
+            -0.5224006870704518,
+            0.0035142612863239137,
+            0.24079176277585168,
+            0.0352328714448326,
+            0.43272831661262945,
+            0.25055706892233076
+          ]
+        },
+        {
+          "length": 128,
+          "action_error": 0.00013580871977131315,
+          "maximum_first_variation_error": 0.00030517225051807095,
+          "first_variations": [
+            0.1116409012016248,
+            -0.006512229762264742,
+            -0.0002973768884913094,
+            0.007273607248778437,
+            -0.3957527153102246,
+            -0.522811519868694,
+            0.003539474012552836,
+            0.24043532985049787,
+            0.03528006092189541,
+            0.4328641504449644,
+            0.2512231758268928
+          ]
+        },
+        {
+          "length": 256,
+          "action_error": 3.396078017058046e-05,
+          "maximum_first_variation_error": 7.63120497499492e-05,
+          "first_variations": [
+            0.11169124680466977,
+            -0.006515527844823036,
+            -0.0002977180839850335,
+            0.007276173441805462,
+            -0.3959815755109927,
+            -0.5229142890539491,
+            0.0035457999702063116,
+            0.2403460380100654,
+            0.03529183828207916,
+            0.4328980795722969,
+            0.2513899159379925
+          ]
+        }
+      ],
+      "final_refinement_ratio": 3.999004764228261
+    },
+    {
+      "case": "de_sitter",
+      "boundary_identity_error": 5.329070518200751e-15,
+      "integrated_einstein_variation_error": 1.126040469884993e-16,
+      "exact_solution_einstein_residual": 2.6645352591003757e-15,
+      "exact_solution_scalar_residual": 0.0,
+      "independent_action_difference_error": null,
+      "continuum_first_variations": [
+        1.1683727016565692e-17,
+        0.0,
+        0.0,
+        0.0,
+        -2.3337662868967865e-18,
+        0.0,
+        0.0,
+        -2.3337662868967865e-18,
+        0.0,
+        -2.3337662868967865e-18,
+        0.0
+      ],
+      "rows": [
+        {
+          "length": 16,
+          "action_error": 0.010462388294959046,
+          "maximum_first_variation_error": 0.003283528904955288,
+          "first_variations": [
+            -0.0032835289049552765,
+            0.0,
+            0.0,
+            0.0,
+            0.0019221032162184959,
+            0.0,
+            0.0,
+            0.0019221032162184959,
+            0.0,
+            0.0019221032162184959,
+            0.0
+          ]
+        },
+        {
+          "length": 32,
+          "action_error": 0.002605113773753498,
+          "maximum_first_variation_error": 0.0008175198506942251,
+          "first_variations": [
+            -0.0008175198506942134,
+            0.0,
+            0.0,
+            0.0,
+            0.00048705640891107474,
+            0.0,
+            0.0,
+            0.00048705640891107474,
+            0.0,
+            0.00048705640891107474,
+            0.0
+          ]
+        },
+        {
+          "length": 64,
+          "action_error": 0.0006506239749990428,
+          "maximum_first_variation_error": 0.00020417041591735068,
+          "first_variations": [
+            -0.000204170415917339,
+            0.0,
+            0.0,
+            0.0,
+            0.00012227084224576863,
+            0.0,
+            0.0,
+            0.00012227084224576863,
+            0.0,
+            0.00012227084224576863,
+            0.0
+          ]
+        },
+        {
+          "length": 128,
+          "action_error": 0.00016261510089865538,
+          "maximum_first_variation_error": 5.1029519484961614e-05,
+          "first_variations": [
+            -5.102951948494993e-05,
+            0.0,
+            0.0,
+            0.0,
+            3.060274595401735e-05,
+            0.0,
+            0.0,
+            3.060274595401735e-05,
+            0.0,
+            3.060274595401735e-05,
+            0.0
+          ]
+        },
+        {
+          "length": 256,
+          "action_error": 4.0651219606724354e-05,
+          "maximum_first_variation_error": 1.2756562291836396e-05,
+          "first_variations": [
+            -1.2756562291824712e-05,
+            0.0,
+            0.0,
+            0.0,
+            7.652985978157112e-06,
+            0.0,
+            0.0,
+            7.652985978157112e-06,
+            0.0,
+            7.652985978157112e-06,
+            0.0
+          ]
+        }
+      ],
+      "final_refinement_ratio": 4.000256363551654
+    },
+    {
+      "case": "scalar_flrw",
+      "boundary_identity_error": 6.679959666192498e-16,
+      "integrated_einstein_variation_error": 4.0814700937654354e-17,
+      "exact_solution_einstein_residual": 2.7755575615628914e-16,
+      "exact_solution_scalar_residual": 3.3306690738754696e-16,
+      "independent_action_difference_error": null,
+      "continuum_first_variations": [
+        -1.083849591037732e-17,
+        0.0,
+        0.0,
+        0.0,
+        -9.059561671818028e-18,
+        0.0,
+        0.0,
+        -9.059561671818028e-18,
+        0.0,
+        -9.059561671818028e-18,
+        4.788146064723834e-18
+      ],
+      "rows": [
+        {
+          "length": 16,
+          "action_error": 0.0003620634612009569,
+          "maximum_first_variation_error": 7.234588338444558e-05,
+          "first_variations": [
+            6.193356374595703e-05,
+            0.0,
+            0.0,
+            0.0,
+            3.561894242185004e-05,
+            0.0,
+            0.0,
+            3.561894242185004e-05,
+            0.0,
+            3.561894242185004e-05,
+            7.234588338445036e-05
+          ]
+        },
+        {
+          "length": 32,
+          "action_error": 9.044579542218892e-05,
+          "maximum_first_variation_error": 1.7180094300248902e-05,
+          "first_variations": [
+            1.5462953870694154e-05,
+            0.0,
+            0.0,
+            0.0,
+            6.356438165898426e-06,
+            0.0,
+            0.0,
+            6.356438165898426e-06,
+            0.0,
+            6.356438165898426e-06,
+            1.718009430025369e-05
+          ]
+        },
+        {
+          "length": 64,
+          "action_error": 2.2607072109010195e-05,
+          "maximum_first_variation_error": 4.264033631837828e-06,
+          "first_variations": [
+            3.864460370534172e-06,
+            0.0,
+            0.0,
+            0.0,
+            1.4211030068656363e-06,
+            0.0,
+            0.0,
+            1.4211030068656363e-06,
+            0.0,
+            1.4211030068656363e-06,
+            4.264033631842616e-06
+          ]
+        },
+        {
+          "length": 128,
+          "action_error": 5.651494521457284e-06,
+          "maximum_first_variation_error": 1.0649683946034607e-06,
+          "first_variations": [
+            9.660352330149499e-07,
+            0.0,
+            0.0,
+            0.0,
+            3.44497286482223e-07,
+            0.0,
+            0.0,
+            3.44497286482223e-07,
+            0.0,
+            3.44497286482223e-07,
+            1.0649683946082487e-06
+          ]
+        },
+        {
+          "length": 256,
+          "action_error": 1.4128565369129511e-06,
+          "maximum_first_variation_error": 2.662066811384003e-07,
+          "first_variations": [
+            2.415038174884745e-07,
+            0.0,
+            0.0,
+            0.0,
+            8.544190072123925e-08,
+            0.0,
+            0.0,
+            8.544190072123925e-08,
+            0.0,
+            8.544190072123925e-08,
+            2.6620668114318846e-07
+          ]
+        }
+      ],
+      "final_refinement_ratio": 4.000532180669747
+    }
+  ],
+  "source_sha256": {
+    "scripts/continuum_einstein_audit.py": "5cba5f07516e1445e5f647b5d01b08321eb438a9f94a53cf3a29c98740901912",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/compact_measure_holonomy_audit.py": "1f6da67cfca1614ba5b8579b5fb400b0d570683dc3eca1768606ec19e6e0d486",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "CONTINUUM_EINSTEIN_BRIDGE.md": "5f8afaf33cfd57b024006378d50cd834d73671a73f2ea6084d993f1313b456be",
+    "UnifiedTheory/Audit/KFCausalContinuumEinstein.lean": "9263bb05f096518f919355f01b89716539b1d90268317d1ffe9e96c17ca825c9"
+  },
+  "scope": "Free flat overlap continuum plus a chosen classical metric-scalar action; smooth-limit existence and microscopic selection unproved"
+}

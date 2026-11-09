@@ -1,0 +1,46 @@
+{
+ "inputs": {
+  "alpha_s": 0.118,
+  "inv_alpha_em_MZ": 127.951,
+  "sin2_MZ": 0.23122,
+  "delta_0_to_MZ": 9.084999177000014
+ },
+ "targets": {
+  "inv_alpha0_CODATA": 137.035999177,
+  "inv_alpha0_ln53_over_70": 137.03306322798522
+ },
+ "A_g2_eq_1@M_P": {
+  "landau_pole_GeV": 402366789659835.9,
+  "coupling": "alpha_3"
+ },
+ "A_g2_eq_1@M_P_reduced": {
+  "landau_pole_GeV": 80282255789251.78,
+  "coupling": "alpha_3"
+ },
+ "B_alpha_3_over_32pi@M_P": {
+  "landau_pole_GeV": 3611402.3574567297,
+  "coupling": "alpha_3"
+ },
+ "B_alpha_3_over_32pi@M_P_reduced": {
+  "landau_pole_GeV": 720881.8145910813,
+  "coupling": "alpha_3"
+ },
+ "free_scale_unification": {
+  "M_12_GeV": 10916052350729.496,
+  "inv_alpha_12": 42.20068374963152,
+  "inv_alpha_3_there": 37.29883773230001,
+  "alpha3_mismatch_in_inv": -4.901846017331515,
+  "mismatch_sigma_from_alpha_s": -75.83700438369334
+ },
+ "best_fit_free_M_alphaU_matching_alpha_s": {
+  "log10_M": 14.625,
+  "inv_alpha_U": 41.39290798353163,
+  "inv_alpha1_MZ": 60.6158317111657,
+  "inv_alpha2_MZ": 26.959887756239674,
+  "inv_alpha3_MZ": 8.474576271186447,
+  "alpha_s_MZ": 0.11799999999999992,
+  "sin2_MZ": 0.21064671176034996,
+  "inv_alpha_em_MZ": 127.98627394151583,
+  "inv_alpha0_pred": 137.07127311851585
+ }
+}

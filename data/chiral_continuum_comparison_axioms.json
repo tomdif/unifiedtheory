@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "checked_declarations": 9,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "declarations": {
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.negative_domain_is_positive_sign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.positive_domain_is_negative_sign": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.complementary_intertwining": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.fifth_resolvent_remainder": [
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.fifth_trace_remainder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.fifth_counterterm_coefficient_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.supplied_generation_linear_cancellation": [
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.supplied_generation_cubic_cancellation": [
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChiralContinuumComparison.supplied_generation_fifth_moment": [
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "source_sha256": {
+    "scripts/CheckChiralContinuumComparison.lean": "e10560a6954d6c8cd6e2790f95d358e905ddb72f4554a94a4afafa85bc5bc6f9",
+    "UnifiedTheory/Audit/KFCausalChiralContinuumComparison.lean": "bc24ff91dbe45619f935402e7666dd8788e34fd656340ebcbc93095c646b0fa9",
+    "UnifiedTheory/Audit/KFCausalOverlapChirality.lean": "7e2f4a94fad373266444d67ae65d5c29b899ed945c466e4b61009eeeb788dbbb"
+  }
+}

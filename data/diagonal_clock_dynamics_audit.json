@@ -1,0 +1,36 @@
+{
+  "tensor_symbol": {
+    "exact_laurent_staggering_identities": true,
+    "exact_Lean_penalty_coordinate_match": true,
+    "weighted_gram_determinant": "(vx^2+vy^2+vz^2)^3/2",
+    "scope": "For t_i=exp(i*k_i/2), the phase matrices are unitary and v_i=2*sin(k_i/2). The source lattice penalty is unitarily equivalent to the Lean real symbol. This bridge is checked by SymPy, not yet formalized in Lean."
+  },
+  "diagonal_clock": {
+    "ricci_derived_from_Christoffel_symbols": true,
+    "Euler_bracket_computed_from_density": true,
+    "spatial_spatial_bracket": true,
+    "spatial_normal_bracket_with_exact_boundary": true,
+    "spatial_generator_metric_and_momentum_actions": true,
+    "hamiltonian_density": "a*(-lambda*(px + py + pz)**2 + px**2 + py**2 + pz**2)*exp(-x/2 - y/2 - z/2) + b*(ddx + ddz + dx**2/2 + dx*dz/2 - dy*(dx + dz)/2 + dz**2/2)*exp(x/2 - y/2 + z/2)",
+    "bracket_current": "a*b*(-2*dpy + dx*px + dy*py + dz*pz - (2*lambda - 1)*(2*dpx + 2*dpy + 2*dpz - (dx + dy + dz)*(px + py + pz)))*exp(-y)",
+    "DeWitt_lambda": "1/2",
+    "inverse_metric_structure_function": "a*b*exp(-y)",
+    "periodic_witness_spatial_constraint": 0,
+    "periodic_witness_clock_bracket": "2*pi*a*b*(1 - 2*lambda)",
+    "representative_ultralocal_cubic_bracket_unchanged": true,
+    "unit_homogeneous_trace_kinetic_at_lambda_half": "-3/2",
+    "scope": "Nonlinear diagonal fields depending on one spatial coordinate, periodic smearing. A target continuum constraint ansatz; no claim of microscopic derivation, complete 3D constraint closure, quantum anomaly control, or stable spin realization."
+  },
+  "areal_reduction": {
+    "canonical_area_change_of_variables": true,
+    "gauge": "T=tau, P_L=-c<0, zero shift; retain the global L/c data",
+    "physical_Hamiltonian_density": "c/2 + (P**2 + b*dQ**2*exp(2*T)/a)/(2*c)",
+    "all_six_original_Hamilton_equations": true,
+    "scalar_and_spatial_constraints": true,
+    "metric_reconstruction_compatible": true,
+    "energy_balance_with_time_dependent_source": true,
+    "wave_metric_cone_agrees_when_a_times_b_equals_one": true,
+    "periodic_obligation": "integral P*Q' ds=0; the local momentum divergence law preserves it for smooth periodic solutions",
+    "scope": "Classical polarized diagonal sector only. Gauge admissibility is assumed, c is nonzero, homogeneous global data remain, and periodic reconstruction needs the global momentum condition. No microscopic emergence, general 3D reduction, PDE existence, or quantum implementation is claimed."
+  }
+}

@@ -722,5 +722,12 @@ edge-neighbours of a plaquette. So `area_law_unconditional` gives ⟨W_C⟩ ≤ 
 The only remaining hypothesis is the minimal spanning area A. The 2^|T| factor is a perimeter correction. On ℤ⁴,
 Δ = 21, so the constants are crude (t < 2^{−21}) but rigorous.
 
-This proves confinement at strong coupling for Z₂, modulo the minimal-area lemma. It is not the SU(2) result:
+The minimal-area lemma is now PROVED on the concrete torus (ℤ/L)⁴ (`Twisted/Z2Torus.lean`). The proof combines a discrete
+Stokes theorem over ZMod 2 with column cochains. Results:
+- any S bounded by the R×T rectangle has |S| ≥ T·min(R, L−R), so |S| ≥ RT when 2R ≤ L;
+- Δ = 24;
+- `wilson_area_law_torus`: the Z₂ Gibbs expectation of the rectangular Wilson loop satisfies
+  ⟨W⟩ ≤ 2^{|T_C|}(2²⁴t)^{RT}/(1 − 2²⁴t) for t = tanh β < 2⁻²⁴, uniformly in L.
+
+This is a fully machine-checked strong-coupling area law (standard axioms, no hypotheses) for Z₂ on the 4D torus. It is not the SU(2) result:
 Osterwalder–Seiler needs the non-abelian character expansion plus a cluster expansion. It is not new mathematics either.

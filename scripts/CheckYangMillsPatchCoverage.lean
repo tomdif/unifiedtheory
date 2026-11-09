@@ -1,0 +1,55 @@
+/- Fresh energetic eligibility, weighted coverage and full middle covariance checks. -/
+import UnifiedTheory.Clay.YangMills.WilsonPatchEligibility
+import UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset
+import UnifiedTheory.Clay.YangMills.WilsonPatchCoverage
+import UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.threshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.threshold_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.background_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.incident_point_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.defect_chord
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.link_kinetic_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.geometry
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.budget_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.connected_good
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchEligibility.transport_good
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.outsideOf
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.outside_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_inside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.background_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.incident_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.endpoint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.local_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.cost_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.potential_fixed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.incident_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_distance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_endpoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.endpoint_triangle
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_cost_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.outside_assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.reset_assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchBackgroundReset.background_fiber_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.ineligible
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.ineligible_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.ineligible_energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.weighted_coverage
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.outside_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCoverage.probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.good_bad_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.energyMoment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.energyMoment_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.retainedCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.full_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchAveragedCovariance.transport_bound

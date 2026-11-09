@@ -1,0 +1,43 @@
+import UnifiedTheory.Clay.YangMills.CompactScoreResidual
+import UnifiedTheory.Clay.YangMills.WilsonGaugeResidual
+import UnifiedTheory.Clay.YangMills.WilsonResidualDissipation
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.collective_of_quadratic
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_symm
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_self_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_sq_le
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_zero_of_self_zero
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.coefficient_normal
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_residual_left
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.pair_residual_right
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_orthogonal
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_response
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_pair
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_gram_quadratic
+#print axioms UnifiedTheory.Clay.YangMills.CompactScoreResidual.residual_gram_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisance_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisance_mean_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisance_physical_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.weightedScore
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.weightedScore_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualScore
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualScore_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisanceVariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualScore_mean_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.nuisanceCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualMatrix
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualMatrix_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualScore_orthogonal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.response_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualMatrix_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGaugeResidual.residualMatrix_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResidualDissipation.reduced_bound_of_rows
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResidualDissipation.conditional_collective
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResidualDissipation.energy_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResidualDissipation.time_sum_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResidualDissipation.slab_contraction

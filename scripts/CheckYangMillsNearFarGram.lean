@@ -1,0 +1,23 @@
+import UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood
+import UnifiedTheory.Clay.YangMills.WilsonGramNearFar
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.plaquetteLinks
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.plaquetteLinks_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.affected_contains_link
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.near
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.near_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.self_mem_near
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.far_disjoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialGramNeighborhood.far_ne
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.gram_abs_of_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.farCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.farCost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.row_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.near_sum_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.row_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.scaled_near_sum_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.scaled_row_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.energy_le_loss_of_far
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGramNearFar.time_sum_of_far

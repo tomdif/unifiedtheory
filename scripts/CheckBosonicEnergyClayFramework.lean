@@ -1,0 +1,138 @@
+import UnifiedTheory.Audit.KFCausalDirectSumEnergyForm
+import UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian
+import UnifiedTheory.Audit.KFCausalClosedFormLowerBound
+import UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm
+import UnifiedTheory.Audit.KFCausalBosonicSectorLadders
+import UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy
+import UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian
+import UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField
+import UnifiedTheory.Clay.YangMills.LocalFields
+import UnifiedTheory.Clay.YangMills.SpectralGap
+import UnifiedTheory.Clay.YangMills.ContinuumControl
+import UnifiedTheory.Audit.KFCausalBosonicClayGapInterface
+
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.coordinateGraph
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.singleValued
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.operator
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.graph_iff
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.closed
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.single_graph
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.domain_dense
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.formData
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.operator_domain_iff
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.coordinate
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.coordinate_embedding
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.coordinate_output
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.singleForm
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.singleForm_embedding
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.singleForm_output
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.form_domain_iff
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.energy_hasSum
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumEnergyForm.energy_identity
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian.coordinate_graph
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian.inclusion
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian.graph_identification
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian.hamiltonian_eq
+#print axioms UnifiedTheory.Audit.KFCausalDirectSumFormHamiltonian.operator_form_dense
+#print axioms UnifiedTheory.Audit.KFCausalClosedFormLowerBound.formLift_dense
+#print axioms UnifiedTheory.Audit.KFCausalClosedFormLowerBound.lower_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.EnergyFock
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.fullFormData
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.coordinate
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.coordinate_embedding
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.coordinate_output
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.hamiltonian_identification
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.form_domain_iff
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.energy_hasSum
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.component_lower
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.weighted_summable
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.number_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.number_summable
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.vacuum_form_gap
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFullEnergyForm.operator_form_dense
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.average_norm_le
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.projection_norm_le
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.append
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.append_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.creator
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.creator_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.creator_norm_le
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.annihilator
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.adjoint_pairing
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.annihilator_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.annihilator_square_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorLadders.creator_vacuum
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.component_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.squares_summable
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.annihilationLinear
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.square_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.form_norm_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.annihilationForm
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.annihilationForm_apply
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.energy_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.energy_norm_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicAnnihilationEnergy.annihilation_vacuum
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.fieldForm
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.field_pairing
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.field_symmetric
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.field_diagonal
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.relative_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.hamiltonian
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.variational_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.domain_in_form_range
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.full_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.lower_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.operator_lower_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyFieldHamiltonian.zero_coupling
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.form_hamiltonian_identification
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.form_domain
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.form_number_bound
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.form_vacuum_gap
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.annihilation
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.annihilation_energy
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.fieldHamiltonian
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.field_selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.field_variational_graph
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.field_lower_bound
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicEnergyField.field_zero_coupling
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.Spacetime
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.TestFunction
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.minkowskiSquare
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.minkowskiSquare_neg
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.minkowskiSquare_sub_comm
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.SpacelikeSeparated
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.spacelikeSeparated_symm
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.FieldSystem
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.WeakTempered
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.Locality
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.wordState
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.Cyclic
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.Nontrivial
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.vacuumCorrelation
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.zero_fields_not_nontrivial
+#print axioms UnifiedTheory.Clay.YangMills.LocalFields.LocalFieldRequirements
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.ResolventWitness
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.InRealResolvent
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.IntervalGap
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.FiniteExcitation
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.VacuumFormGap
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.SpectralRequirements
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.resolvent_excludes_eigenvector
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.vacuum_not_in_resolvent
+#print axioms UnifiedTheory.Clay.YangMills.SpectralGap.gap_excludes_eigenvector
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.Configuration
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.CorrelationTest
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.Hierarchy
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.WeakConvergence
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.RegulatorScales
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.physicalGap
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.UniformPhysicalGap
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.uniform_norm_bound_survives
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.nonzero_witness_survives
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.exponential_bound_survives
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.positive_cutoff_gaps_can_close
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumControl.collapsing_gap_has_no_uniform_floor
+#print axioms UnifiedTheory.Audit.KFCausalBosonicClayGapInterface.auxiliary_vacuum_not_in_resolvent
+#print axioms UnifiedTheory.Audit.KFCausalBosonicClayGapInterface.auxiliary_form_gap
+#print axioms UnifiedTheory.Audit.KFCausalBosonicClayGapInterface.auxiliary_spectral_requirements_of_inputs

@@ -1,0 +1,51 @@
+import UnifiedTheory.Clay.YangMills.WeightedMixedInfluence
+import UnifiedTheory.Clay.YangMills.WeightedOscillation
+import UnifiedTheory.Clay.YangMills.GibbsSiteCovariance
+import UnifiedTheory.Clay.YangMills.GibbsWeightedCovariance
+import UnifiedTheory.Clay.YangMills.PeriodicSupportDistance
+import UnifiedTheory.Clay.YangMills.GibbsWeightedClustering
+import UnifiedTheory.Clay.YangMills.WilsonWeightedClustering
+
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.weighted_step
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.row_step
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.iterate_rows
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.exp_triangle
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.entry_decay
+#print axioms UnifiedTheory.Clay.YangMills.WeightedMixedInfluence.unweighted_row
+#print axioms UnifiedTheory.Clay.YangMills.WeightedOscillation.weighted_budget
+#print axioms UnifiedTheory.Clay.YangMills.WeightedOscillation.weighted_iterate
+#print axioms UnifiedTheory.Clay.YangMills.WeightedOscillation.exp_site_row
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.law
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.law_probability
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.update
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.update_apply
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.update_stationary
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.update_eq_colorAverage
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.cross_defect
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.singleton_covariance_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.singleton_defect_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsSiteCovariance.update_defect_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsWeightedCovariance.geometric_defects
+#print axioms UnifiedTheory.Clay.YangMills.GibbsWeightedCovariance.covariance_bound
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.exists_close
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.distance
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.close_distance
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.distance_le
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.distance_self
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.distance_triangle
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.distance_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.plaquette_distance
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.exists_close_support
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.toSupport
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.toSupport_attained
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.toSupport_zero
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.toSupport_triangle
+#print axioms UnifiedTheory.Clay.YangMills.PeriodicSupportDistance.toSupport_lower
+#print axioms UnifiedTheory.Clay.YangMills.GibbsWeightedClustering.supported_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.GibbsWeightedClustering.covariance_decay
+#print axioms UnifiedTheory.Clay.YangMills.GibbsWeightedClustering.tower_covariance_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedClustering.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedClustering.seed_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedClustering.seed_weighted_row
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedClustering.stage_weighted_row
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedClustering.stage_covariance_decay

@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-09T18:21:51.572035+00:00",
+  "scope": "Fourier continuation of the actual classical Abelian grid heat; no physical Yang-Mills or TOE completion",
+  "base_commit": "df22de9f0736dd2d408ddbc0802ac70280c13840",
+  "workspace_state": "Local uncommitted work; unrelated pre-existing changes preserved",
+  "build": {
+    "passed": true,
+    "target": "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit",
+    "whole_repository_build": false
+  },
+  "axiom_check": {
+    "passed": true,
+    "checked_declarations": 42,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "declarations": {
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.walk_eigenfunction": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.heat_eigenfunction": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.character_mode_step": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.character_mode_heat": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.real_fourier_inversion": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.heat_fourier": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.gridHeat_fourier": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.gridCharacter_axes": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.gridCharacter_eigenvalue": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatFourier.gridHeat_mode": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.gaussian_moment_nat": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.gaussian_moment_int": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.gaussian_moment": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.gaussian_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.spectralSymbol_eq_sinc": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.spectralSymbol_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.discreteEigenvalue_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.frequencyWindow_eventually": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.discreteMultiplier_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.discreteMultiplier_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.continuumMultiplier_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.continuum_weighted_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.planeWave_norm": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.continuumSeries_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.discreteSeries_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.coefficientError_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.coefficientError_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.series_error_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.coefficientError_tsum_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.series_tendstoUniformly": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.reciprocal_mesh_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.series_reciprocal_tendstoUniformly": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.continuumSeries_continuous": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatContinuum.weighted_coefficientError_tsum_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.planeWave_integer_grid": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.planeWave_gridPosition": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.mem_gridFrequencies": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.gridHeat_finite_modes": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.discreteSeries_gridPosition": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.gridHeat_reconstruction_limit": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.gridHeat_stability": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.gridHeat_perturbed_reconstruction_limit": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "modules": {
+    "AbelianCurvatureHeatFourier": {
+      "theorem_count": 10
+    },
+    "AbelianCurvatureHeatContinuum": {
+      "theorem_count": 24
+    },
+    "AbelianCurvatureHeatGridLimit": {
+      "theorem_count": 8
+    }
+  },
+  "main_result": {
+    "declaration": "UnifiedTheory.LayerA.AbelianCurvatureHeatGridLimit.gridHeat_perturbed_reconstruction_limit",
+    "hypotheses": [
+      "Uniform complex coefficient bounds for every grid and integer frequency",
+      "Coefficient convergence at every fixed frequency",
+      "Fixed strictly positive diffusion time",
+      "Initial grid values differ from the real Fourier reconstruction by eta_n tending to zero"
+    ],
+    "conclusion": "The actual gridHeat converges uniformly over all nodes to the real part of the continuum Fourier series",
+    "frequency_window": "-1/2 <= h*k_j < 1/2 in each coordinate",
+    "grid_size": "n+1",
+    "rate_claimed": false,
+    "uniform_over_time_intervals_claimed": false
+  },
+  "additional_results": [
+    "Exact Fourier diagonalization of the original Poisson heat for every real datum on a finite additive group",
+    "Actual grid characters have the stated sine-squared eigenvalues",
+    "Every polynomially weighted Gaussian on the integer frequency plane is summable",
+    "Discrete eigenvalues tend to their continuum values",
+    "The full positive-time series converges uniformly in space",
+    "The coefficient error tends to zero under every fixed polynomial frequency weight",
+    "The continuum series is spatially continuous"
+  ],
+  "remaining_formal_obligations": [
+    "Construct the original cell-average Fourier coefficients, prove their bounds and consistency, and identify their reconstruction with the specified grid data",
+    "Differentiate the continuum series and establish the PDE, L2 initial trace, and uniqueness",
+    "Prove the quantitative estimates uniformly over positive time intervals and assemble the gauge and path-transport estimates"
+  ],
+  "physical_ledgers": {
+    "yang_mills": {
+      "ledger_consistent": true,
+      "full_target_requirements_open": 12,
+      "verified_auxiliary_references": 1718,
+      "clay_certificate_present": false
+    },
+    "toe": "valid: 5 draft no-result attacks\ncanonical_sha256: a5171f7cfe6591fe45c92c713f53410187afdad775a49d0599141bb731e67239",
+    "gate_statuses_changed": false
+  },
+  "prior_reports": "Earlier repository, heat, and open-obligation JSON records are historical checkpoints; this record covers the new source and documentation versions.",
+  "source_sha256": {
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatFourier.lean": "8ca7cd25542a862ed0c8c18eae5f7de41440dcd78b559f960c86b67dd5cc2ecc",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatContinuum.lean": "97e75b02a188ff47dbaf0f6a8e543d042f0e7275c47bac5c0fd3073ec0473398",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatGridLimit.lean": "f44e6657287c01fea102fab3d5054b230bc98479de56dec12bb310381da33080",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeat.lean": "c45f3e8de5ad4a9432263478e18426175ca9d0ec510c1150b8ca8ff34c7d00c0",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatDynamics.lean": "cfae4ff92e5a31be15d378436033fa9680f41c6fe09a79dc0daed3709dcbc22a",
+    "scripts/CheckAbelianCurvatureHeatFourier.lean": "0d99ae2b8b61957d23aa9f0cd7e15b9155977e652001bb17ba678c7f8baf6a38",
+    "scripts/audit_repository.py": "c86185a9567703381818f736f2a975cc5fe07c2752d01d249eb70a9cba623232",
+    "scripts/check_yang_mills_requirements.py": "f3285754a270da596c0aad8bb0edff6f74fe6af973e75412fad1c20a94cd3ca4",
+    "scripts/validate_toe_attack_ledger.py": "96b9c0cf38b7626fdf258a8c2215b7b5fbea1f52894ca96502c72109769bea82",
+    "ABELIAN_CURVATURE_HEAT_LIMIT.md": "0877d9d418ecb7f88957dc1f56478ebda2df1cae046f9b0dc1d586026248fdc0",
+    "OPEN_OBLIGATIONS_ATTACK.md": "251f611ca3d88937d5e8cc531ca606de640a486376e02e5c667e65f95f358c40",
+    "README.md": "694f43cfd3597d9dbfa2d805ec669449e1609c058f56d5ebbff4f476853ad28b",
+    "STATUS.md": "714227c8d988cc1d597d4cfe74a6ec519392356776fc9a020d56157363bd8aaf",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    "lakefile.toml": "005d6050df28a17285d4d1c5f3acd6d5c2a0879946468b77172335501abf03aa",
+    "lake-manifest.json": "4201230dd8432c335849b1cd31666f52732dde8d1d2eeb4f2456ff0fceb3a627"
+  },
+  "evidence_sha256": {
+    "data/abelian_curvature_heat_fourier_evidence/axioms.log.gz": "fa8c6e322f34c9e8b28470b78edfa595800447fbe3148d07b2f25cf2281fbece",
+    "data/abelian_curvature_heat_fourier_evidence/final-build.log.gz": "d1020cd5edd8fe11003a8d762f472067c1d32a918bc1d6eea071674c3ab85574",
+    "data/abelian_curvature_heat_fourier_evidence/toe-ledger.log.gz": "cdebe8b32af4feea2e012f3f0ab4d82295603f9c92fed546a06ba57c5f5e9f7a",
+    "data/abelian_curvature_heat_fourier_evidence/ym-ledger.log.gz": "3af1724a2a107d7af061854a984f34229f2f435c280383716a3545596f475e43",
+    "data/abelian_curvature_heat_fourier_evidence/source-audit.json.gz": "e07668b45ab9aba68afeb3d35fd35702dbb98c0cf6b09307ec88d7f60f02f90a",
+    "data/abelian_curvature_heat_fourier_evidence/record_verification.py.gz": "0625ed002cb1e852d7575cbe6f98df3f64510d0e70d756434ad90177037fbce8"
+  },
+  "source_audit": {
+    "passed": true,
+    "library_modules": 5431,
+    "all_modules_in_default_build": true,
+    "git_diff_check_passed": true
+  }
+}

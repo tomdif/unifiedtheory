@@ -1,0 +1,521 @@
+{
+  "local_algebra": {
+    "microscopic_spins": 4,
+    "hilbert_dimension": 16,
+    "projector_ranks": [
+      1,
+      5,
+      3,
+      7
+    ],
+    "pair_triplet_projector": true,
+    "vacuum_is_unique_pair_triplet_singlet": true,
+    "quintet_casimir": 6,
+    "quadrupole_vacuum_gram": "I_5/3",
+    "transition_pair_identities": 25,
+    "higher_sectors_annihilated": true,
+    "scope": "Exact local spin matrices and engineered projector Hamiltonian; physical spatial spin interpretation remains an input."
+  },
+  "microscopic_propagation": {
+    "mu": 0.2,
+    "triplet_gap": 1.1,
+    "inactive_gap": 1.6,
+    "hopping": 0.07,
+    "local_spectrum": [
+      1.1167930422278428e-16,
+      0.19999999999999996,
+      0.2,
+      0.2,
+      0.20000000000000026,
+      0.20000000000000034,
+      1.0999999999999992,
+      1.0999999999999999,
+      1.1000000000000003,
+      1.5999999999999996,
+      1.5999999999999996,
+      1.5999999999999996,
+      1.6,
+      1.6,
+      1.6000000000000008,
+      1.6000000000000012
+    ],
+    "bond_dimension": 256,
+    "bond_spectrum_multiplicities": {
+      "0": 126,
+      "1": 100,
+      "2": 30
+    },
+    "chain_cells": 3,
+    "microscopic_hilbert_dimension": 4096,
+    "one_excitation_dimension": 15,
+    "gap_lower_bound_from_positive_terms": 0.2,
+    "gap_saturating_eigenstate_residual": 6.752376313124512e-16,
+    "full_space_intertwining_residual": 3.0467127727672078e-15,
+    "one_excitation_eigenvalues": [
+      0.2,
+      0.2,
+      0.20000000000000004,
+      0.20000000000000012,
+      0.20000000000000015,
+      0.40999999999999953,
+      0.40999999999999975,
+      0.41,
+      0.41,
+      0.41,
+      0.41000000000000003,
+      0.4100000000000001,
+      0.41000000000000014,
+      0.41000000000000014,
+      0.41000000000000036
+    ],
+    "propagation_checks": [
+      {
+        "euclidean_time": 0.1,
+        "error": 3.172990405827472e-16
+      },
+      {
+        "euclidean_time": 1.0,
+        "error": 7.77159170848258e-16
+      },
+      {
+        "euclidean_time": 3.0,
+        "error": 1.7517884162401125e-15
+      }
+    ]
+  },
+  "collective_commutators": {
+    "rows": [
+      {
+        "cells": 2,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 2.220446049250313e-16,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 1.0,
+        "uniform_bound": 1.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 1.9999999999999998,
+        "uniform_bound": 2.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 6.123233995736765e-17,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.9999999999999998,
+        "uniform_bound": 1.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.9999999999999998,
+        "uniform_bound": 2.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.0,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.4999999999999999,
+        "uniform_bound": 1.0
+      },
+      {
+        "cells": 2,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.7071067811865475,
+        "uniform_bound": 2.0
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 2.220446049250313e-16,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.6666666666666665,
+        "uniform_bound": 0.6666666666666666
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 1.3333333333333335,
+        "uniform_bound": 1.3333333333333333
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 1.5700924586837752e-16,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.666666666666667,
+        "uniform_bound": 0.6666666666666666
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.666666666666667,
+        "uniform_bound": 1.3333333333333333
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.0,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.3333333333333334,
+        "uniform_bound": 0.6666666666666666
+      },
+      {
+        "cells": 3,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.47140452079103184,
+        "uniform_bound": 1.3333333333333333
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.0,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.5,
+        "uniform_bound": 0.5
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 1.0,
+        "uniform_bound": 1.0
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 6.206335383118183e-17,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.5,
+        "uniform_bound": 0.5
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          1
+        ],
+        "components": [
+          0,
+          0
+        ],
+        "commutator_error": 0.7071067811865476,
+        "uniform_bound": 1.0
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 0,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.0,
+        "uniform_bound": 0.0
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 1,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.25,
+        "uniform_bound": 0.5
+      },
+      {
+        "cells": 4,
+        "occupation_cutoff": 2,
+        "momenta": [
+          0,
+          0
+        ],
+        "components": [
+          0,
+          1
+        ],
+        "commutator_error": 0.3535533905932738,
+        "uniform_bound": 1.0
+      }
+    ],
+    "all_matrix_identity_checks_passed": true,
+    "scope": "Compressed commutators computed in the full finite active tensor product before projection; no full-Hilbert-space canonical commutator is claimed."
+  },
+  "strain_coupling": {
+    "exact_traceless_norm_identity": true,
+    "random_spin_tensor_spectra": 50,
+    "maximum_star_spectrum_error": 3.552713678800501e-15,
+    "central_difference_vertices": 125,
+    "minimum_edge_minus_central_eigenvalue": 3.3306690738754696e-15,
+    "kappa": 0.25,
+    "gamma": 0.02,
+    "coupled_field_lower_stiffness": 0.04617006838144548,
+    "old_switch_blind_gradient_quintet_amplitude": 0.816496580927726,
+    "scope": "Direct operator lower bound for the explicit coupling to the supplied large-spin scalar field. Tensor pole persistence and a positive spin-history representation are not claimed."
+  },
+  "continuum_band": {
+    "polarizations": 5,
+    "gapless_dynamic_exponent": 2,
+    "scaled_mass": 0.2,
+    "hopping": 0.07,
+    "rows": [
+      {
+        "spacing": 0.2,
+        "maximum_error": 0.01278305757913234,
+        "maximum_error_to_bound": 0.9999516877984506
+      },
+      {
+        "spacing": 0.1,
+        "maximum_error": 0.0032135163104620723,
+        "maximum_error_to_bound": 0.9999879216353347
+      },
+      {
+        "spacing": 0.05,
+        "maximum_error": 0.0008044930090107538,
+        "maximum_error_to_bound": 0.9999969801082803
+      },
+      {
+        "spacing": 0.025,
+        "maximum_error": 0.00020119294247544772,
+        "maximum_error_to_bound": 0.9999992463185734
+      }
+    ]
+  },
+  "source_sha256": {
+    "MICROSCOPIC_SPIN_TWO_SEED.md": "0f5c2db9e104a824d00d6acc4247786b7fd573ada0a4a5024b7b6ce027938045",
+    "scripts/microscopic_spin_two_audit.py": "bbcd8399832d531626a2b60458364f17cdfa96e7366241646b73b430698b1922",
+    "UnifiedTheory/Audit/KFCausalMicroscopicSpinTwo.lean": "139bc96fab0e15ae4c418a9b1ce5c62d734c8684793ac38cf97fe9a8a930962b",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "ENTANGLED_ACOUSTIC_BOUNDS.md": "acc79eec1f9ae71587c2791a5bba63c8c38d1a8d03d989b75b933d071e8668a3",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "Explicit four-spin-half cells with a singlet vacuum and selected quintet; local microscopic hopping, exact five-polarization quadratic band, dilute collective commutator bound, and a stable scalar-strain coupling. No emergent gravitational constraints, two-helicity linear pole, universal stress coupling, physical spacetime selection, or Einstein gravity is proved."
+}

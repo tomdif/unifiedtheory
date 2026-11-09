@@ -1,0 +1,267 @@
+{
+  "uniform_relative_bound": {
+    "local_eigenvalues": [
+      "1",
+      "2-sqrt(3)",
+      "2+sqrt(3)"
+    ],
+    "physical_mean_relative_radius": 0.9931360123164139,
+    "midpoint_relative_radius": 0.5773502691896258,
+    "midpoint_sum_of_squares": true,
+    "admissible_reference_interval": [
+      0.3169872981077807,
+      0.6830127018922193
+    ],
+    "endpoint_ratios": [
+      -0.0,
+      0.30509578339559285,
+      -0.4659408150944286,
+      0.0,
+      -0.6503006387938873,
+      0.9931360123164139
+    ],
+    "random_form_checks": 200
+  },
+  "physical_mean_vertex": {
+    "harmonic_coordinates": [
+      4.087430492602446,
+      5.159596944428807,
+      5.840403055571194,
+      6.912569507397554
+    ],
+    "matched_gamma": 0.4808429765248231,
+    "uncorrected_affine_gamma": 0.75,
+    "derivative_Dx_wrt_p": 0.0005565312238831055,
+    "vertex_derivative_prediction": 0.0005565312228296564,
+    "corrector_residual": 8.138138424890981e-15
+  },
+  "midpoint_vertex": {
+    "harmonic_coordinates": [
+      4.117268083701788,
+      5.2414084903106914,
+      5.7585915096893086,
+      6.882731916298212
+    ],
+    "matched_gamma": 0.3575627337311453,
+    "uncorrected_affine_gamma": 0.75,
+    "derivative_Dx_wrt_p": 0.0004138457573854559,
+    "vertex_derivative_prediction": 0.00041384575663327,
+    "corrector_residual": 9.674790095882815e-15
+  },
+  "finite_carrier": {
+    "vertices": 3456,
+    "relative_oscillators": 3455,
+    "geometry_sources": 2,
+    "periods": [
+      24,
+      12,
+      12
+    ],
+    "vacuum_force": [
+      0.002514978710066078,
+      0.0025149787100660543
+    ],
+    "static_susceptibility": [
+      [
+        0.045148119914813475,
+        1.2037244605674197e-08
+      ],
+      [
+        1.2037244605674195e-08,
+        0.04514811991481325
+      ]
+    ],
+    "two_source_relative_radius": 0.3852531673618402,
+    "full_configuration_relative_radii": [
+      {
+        "bits": [
+          0.0,
+          0.0
+        ],
+        "relative_radius": 0.1926265836809201
+      },
+      {
+        "bits": [
+          0.0,
+          1.0
+        ],
+        "relative_radius": 0.1918455273727034
+      },
+      {
+        "bits": [
+          1.0,
+          0.0
+        ],
+        "relative_radius": 0.1918455273727034
+      },
+      {
+        "bits": [
+          1.0,
+          1.0
+        ],
+        "relative_radius": 0.1926265836809201
+      }
+    ],
+    "quadrature_orders": [
+      48,
+      80
+    ],
+    "quadrature_change": 9.358833152894874e-16,
+    "maximum_linear_solve_residual": 2.8279308104202164e-12,
+    "energy_rows": [
+      {
+        "source_amplitude": 0.025,
+        "exact_gaussian_energy_shift": 9.753911391192484e-05,
+        "second_order_energy_shift": 9.753135303326707e-05,
+        "remainder": 7.760878657770125e-09,
+        "remainder_bound": 1.8294387639367622e-07,
+        "relative_radius": 0.009631329184046005
+      },
+      {
+        "source_amplitude": 0.05,
+        "exact_gaussian_energy_shift": 0.00013868386798097975,
+        "second_order_energy_shift": 0.00013862754112646167,
+        "remainder": 5.6326854518074995e-08,
+        "remainder_bound": 1.4779238110497055e-06,
+        "relative_radius": 0.01926265836809201
+      },
+      {
+        "source_amplitude": 0.1,
+        "exact_gaussian_energy_shift": 5.187302639055406e-05,
+        "second_order_energy_shift": 5.15144224926335e-05,
+        "remainder": 3.586038979205608e-07,
+        "remainder_bound": 1.2060266129217882e-05,
+        "relative_radius": 0.03852531673618402
+      },
+      {
+        "source_amplitude": 0.2,
+        "exact_gaussian_energy_shift": -0.0007985349700871742,
+        "second_order_energy_shift": -0.0007999337940558925,
+        "remainder": 1.3988239687183447e-06,
+        "remainder_bound": 0.00010050944051496833,
+        "relative_radius": 0.07705063347236804
+      }
+    ],
+    "scope": "Finite spatial carrier, full Gaussian oscillator Hilbert space; no occupation cutoff or infinite-volume fit."
+  },
+  "time_history_determinant": {
+    "euclidean_time_points": 8,
+    "relative_field_coordinates": 3,
+    "matrix_dimension": 24,
+    "actual_relative_radius": 0.24676644314417792,
+    "universal_radius": 0.5773502691896258,
+    "history": [
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    "truncation_rows": [
+      {
+        "order": 2,
+        "actual_error": 0.0012578821353009667,
+        "bound": 0.058908106382519504
+      },
+      {
+        "order": 4,
+        "actual_error": 4.319716079473346e-05,
+        "bound": 0.011781621276503902
+      },
+      {
+        "order": 8,
+        "actual_error": 8.918025833082321e-08,
+        "bound": 0.0007272605726236981
+      },
+      {
+        "order": 12,
+        "actual_error": 2.3457853715047605e-10,
+        "bound": 5.5943120971053734e-05
+      }
+    ],
+    "scope": "Finite time-grid determinant check; the trace-class argument removes this time grid at finite volume and duration."
+  },
+  "oscillator_crosscheck": {
+    "oscillators": 3,
+    "fock_dimension": 27,
+    "susceptibility": 0.0248915540882526,
+    "imaginary_time_error": 6.938893903907228e-18,
+    "fock_error": 6.938893903907228e-18,
+    "vacuum_creates_only_two_phonons": true,
+    "trace_square_root_rows": [
+      {
+        "amplitude": 0.1,
+        "exact_energy_shift": 0.0009700880105071308,
+        "second_order_error": 8.211855877259845e-07,
+        "bound": 2.6778019683713866e-06
+      },
+      {
+        "amplitude": 0.2,
+        "exact_energy_shift": 0.001695954030044411,
+        "second_order_error": 6.335921088127319e-06,
+        "bound": 2.213685212964292e-05
+      },
+      {
+        "amplitude": 0.4,
+        "exact_energy_shift": 0.0024306685480200985,
+        "second_order_error": 4.709449363763567e-05,
+        "bound": 0.0001897512012097945
+      }
+    ]
+  },
+  "acoustic_prediction": {
+    "time_integrals": [
+      "5*pi/16",
+      "35*pi/128",
+      "63*pi/256"
+    ],
+    "angular_rows": [
+      {
+        "cosine_squared": 0.0,
+        "angular_polynomial": 5.0,
+        "time_integral_error": 1.1102230246251565e-16
+      },
+      {
+        "cosine_squared": 0.2777777777777778,
+        "angular_polynomial": 0.1388888888888884,
+        "time_integral_error": 1.0061396160665481e-16
+      },
+      {
+        "cosine_squared": 0.5,
+        "angular_polynomial": 3.25,
+        "time_integral_error": 1.1102230246251565e-16
+      },
+      {
+        "cosine_squared": 1.0,
+        "angular_polynomial": 33.0,
+        "time_integral_error": 8.881784197001252e-16
+      }
+    ],
+    "acoustic_speeds": [
+      0.6127547844594152,
+      0.6123724356957945,
+      0.6123724356957945
+    ],
+    "matched_gamma": 0.3575627337311453,
+    "static_kernel_prefactor": 0.03894974497893829,
+    "kernel_formula": "prefactor*(5-35*mu^2+63*mu^4)/R^7",
+    "zero_momentum_spectral_prefactor": 0.008833287027703682,
+    "spectral_normalization_crosscheck_error": 0.0,
+    "spectral_formula": "prefactor*omega^4*theta(omega); continuous two-phonon weight",
+    "scope": "Exact Gaussian acoustic calculation with the cell-matched vertex; no proof of the full interacting quantum continuum."
+  },
+  "source_sha256": {
+    "INDUCED_GEOMETRY_INTERACTION.md": "087b5af9a4edfc13d1590741fd0e3426ba5f3224f77926b4c81534540696ad03",
+    "scripts/induced_geometry_audit.py": "97784f0ddc86dc0df4ada72a89af078c26b75a63515b145f440ff942fa18df10",
+    "UnifiedTheory/Audit/KFCausalInducedGeometry.lean": "76f0671ac74fd9461e5fe08c78c9b3563312e740aa1e06828da0fd4211254c9e",
+    "FINITE_GAP_GEOMETRY_FEEDBACK.md": "0ed4feb92ef55c4dfb0f115dc0112fec4857a37742d4b1bff7a2fbcecbdd553a",
+    "scripts/finite_gap_feedback_audit.py": "1bd3b7559e964ed87e64c2006fcf6dcda47e211e827d8ac7a95bdd9846a80f9f",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "scripts/collective_wave_audit.py": "7599bc471dd9b723e5c8303c36e4bd8911fc68acd5bcd08502a8167868f8385c",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "Exact Gaussian influence at finite spatial volume, a uniform relative form bound, and leading two-phonon induced response. The acoustic pair potential is anisotropic R^-7, with continuous spectral weight, not a demonstrated graviton. No resummed interacting phase, physical spin-half phase, universal coupling, or Einstein equation."
+}

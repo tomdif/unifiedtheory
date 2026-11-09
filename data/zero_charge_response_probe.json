@@ -1,0 +1,354 @@
+{
+  "kind": "Exploratory floating-point projection quadrature; sign not certified",
+  "parameters": {
+    "A": 10.0,
+    "lam": 4.0,
+    "eps": 1.0,
+    "a": 1.0
+  },
+  "physical_time": 0.0,
+  "couplings": {
+    "mass2": 1.0,
+    "quartic": 1.0,
+    "vacuum": 1.0
+  },
+  "hbar": [
+    0.01,
+    -0.01,
+    0.05
+  ],
+  "checks": {
+    "parameters": {
+      "A": 1.0,
+      "lam": 0.4,
+      "h": 0.3,
+      "eps": 1.0,
+      "a": 1.0
+    },
+    "ns": 160,
+    "nt": 64,
+    "absolute_angle_energy": 94.26465642170744,
+    "absolute_angle_response": 18.420326870201652,
+    "difference_angle_result": {
+      "E": 94.26465642170699,
+      "R": 18.42032687020149,
+      "ratio": 0.19541074639677689,
+      "norm_over_E": 0.04037674142726768,
+      "parts_over_E": [
+        0.029710672263645023,
+        0.09092265321759817,
+        0.8279345930124172,
+        0.05143208150633911,
+        0.1974029518198592
+      ],
+      "kernel_error": 9.992007221626409e-16,
+      "projection_norm": 0.5133879340045755,
+      "projection_norm_reference": 0.5133879340045666,
+      "projection_norm_relative_error": 1.7300336857784912e-14,
+      "imaginary_error": 3.089579522035357e-18
+    },
+    "relative_errors": {
+      "energy": 4.824155396169368e-15,
+      "response": 8.871983238460972e-15
+    }
+  },
+  "underresolved_grid_rejection": "Underresolved charge projection: relative norm error 0.00967305",
+  "runs": [
+    {
+      "quadrature": {
+        "ns": 160,
+        "nt": 96,
+        "nd": 768,
+        "left": -10.0,
+        "right": 4.0
+      },
+      "values": [
+        {
+          "h": 0.01,
+          "E": 74.48739572719835,
+          "R": -3.6173538393393505,
+          "ratio": -0.04856330126760639,
+          "norm_over_E": 0.0007941700198224145,
+          "parts_over_E": [
+            0.002254345630328813,
+            0.014896689641509508,
+            0.9687080092033544,
+            0.01414095552480727,
+            -0.05127112061320583
+          ],
+          "kernel_error": 1.3243850460753492e-12,
+          "projection_norm": 0.007979244640107335,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 1.450087834956766e-13,
+          "imaginary_error": 9.388155894951976e-15
+        },
+        {
+          "h": -0.01,
+          "E": 74.48739572719835,
+          "R": -3.6173538393393514,
+          "ratio": -0.048563301267606405,
+          "norm_over_E": 0.0007941700198224145,
+          "parts_over_E": [
+            0.002254345630328813,
+            0.014896689641509508,
+            0.9687080092033544,
+            0.01414095552480727,
+            -0.051271120613205844
+          ],
+          "kernel_error": 1.3243850460753492e-12,
+          "projection_norm": 0.007979244640107335,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 1.450087834956766e-13,
+          "imaginary_error": 9.38815094512557e-15
+        },
+        {
+          "h": 0.05,
+          "E": 178.181887944351,
+          "R": -4.451934000174677,
+          "ratio": -0.024985334096162937,
+          "norm_over_E": 0.000742514070800513,
+          "parts_over_E": [
+            0.002211305321251591,
+            0.0151712383892098,
+            0.9693658438452443,
+            0.01325161244429436,
+            -0.027523395134651157
+          ],
+          "kernel_error": 3.3228975127030935e-13,
+          "projection_norm": 0.017845706500152745,
+          "projection_norm_reference": 0.017845706500153165,
+          "projection_norm_relative_error": 2.352403818715635e-14,
+          "imaginary_error": 2.0917904418580435e-15
+        }
+      ],
+      "seconds": 2.940488292
+    },
+    {
+      "quadrature": {
+        "ns": 240,
+        "nt": 160,
+        "nd": 1024,
+        "left": -12.0,
+        "right": 4.5
+      },
+      "values": [
+        {
+          "h": 0.01,
+          "E": 74.4873957271891,
+          "R": -3.61735383935202,
+          "ratio": -0.048563301267782515,
+          "norm_over_E": 0.0007941700198224597,
+          "parts_over_E": [
+            0.0022543456303286704,
+            0.0148966896415102,
+            0.9687080092033525,
+            0.014140955524808586,
+            -0.05127112061338209
+          ],
+          "kernel_error": 1.329492071988625e-12,
+          "projection_norm": 0.007979244640106721,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 2.2196996694015865e-13,
+          "imaginary_error": 4.173395834771865e-15
+        },
+        {
+          "h": -0.01,
+          "E": 74.4873957271891,
+          "R": -3.61735383935202,
+          "ratio": -0.048563301267782515,
+          "norm_over_E": 0.0007941700198224597,
+          "parts_over_E": [
+            0.0022543456303286704,
+            0.0148966896415102,
+            0.9687080092033525,
+            0.014140955524808586,
+            -0.05127112061338209
+          ],
+          "kernel_error": 1.329492071988625e-12,
+          "projection_norm": 0.007979244640106721,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 2.2196996694015865e-13,
+          "imaginary_error": 4.173395834771865e-15
+        },
+        {
+          "h": 0.05,
+          "E": 178.18188794433854,
+          "R": -4.451934000182945,
+          "ratio": -0.024985334096211086,
+          "norm_over_E": 0.0007425140708005459,
+          "parts_over_E": [
+            0.002211305321251544,
+            0.015171238389210128,
+            0.9693658438452435,
+            0.013251612444295058,
+            -0.02752339513469915
+          ],
+          "kernel_error": 3.5293989952833726e-13,
+          "projection_norm": 0.017845706500152103,
+          "projection_norm_reference": 0.017845706500153165,
+          "projection_norm_relative_error": 5.949054285346977e-14,
+          "imaginary_error": 9.764119606956066e-16
+        }
+      ],
+      "seconds": 9.380203583
+    },
+    {
+      "quadrature": {
+        "ns": 360,
+        "nt": 224,
+        "nd": 1280,
+        "left": -14.0,
+        "right": 5.0
+      },
+      "values": [
+        {
+          "h": 0.01,
+          "E": 74.48739572718468,
+          "R": -3.617353839329502,
+          "ratio": -0.04856330126748309,
+          "norm_over_E": 0.0007941700198224411,
+          "parts_over_E": [
+            0.0022543456303291036,
+            0.014896689641510405,
+            0.968708009203352,
+            0.014140955524808492,
+            -0.05127112061308291
+          ],
+          "kernel_error": 1.5104584250025255e-12,
+          "projection_norm": 0.007979244640106183,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 2.893653535723322e-13,
+          "imaginary_error": 3.5750680850298555e-15
+        },
+        {
+          "h": -0.01,
+          "E": 74.48739572718468,
+          "R": -3.617353839329502,
+          "ratio": -0.04856330126748309,
+          "norm_over_E": 0.0007941700198224411,
+          "parts_over_E": [
+            0.0022543456303291036,
+            0.014896689641510405,
+            0.968708009203352,
+            0.014140955524808492,
+            -0.05127112061308291
+          ],
+          "kernel_error": 1.5104584250025255e-12,
+          "projection_norm": 0.007979244640106183,
+          "projection_norm_reference": 0.007979244640108492,
+          "projection_norm_relative_error": 2.893653535723322e-13,
+          "imaginary_error": 3.5750680850298555e-15
+        },
+        {
+          "h": 0.05,
+          "E": 178.1818879443306,
+          "R": -4.4519340001769905,
+          "ratio": -0.02498533409617878,
+          "norm_over_E": 0.000742514070800538,
+          "parts_over_E": [
+            0.002211305321251482,
+            0.015171238389209902,
+            0.969365843845244,
+            0.013251612444294814,
+            -0.02752339513466677
+          ],
+          "kernel_error": 4.5130565951012613e-13,
+          "projection_norm": 0.017845706500151402,
+          "projection_norm_reference": 0.017845706500153165,
+          "projection_norm_relative_error": 9.876207767830929e-14,
+          "imaginary_error": 1.0489771599103162e-15
+        }
+      ],
+      "seconds": 24.329160792
+    }
+  ],
+  "refinements": [
+    {
+      "h": 0.01,
+      "changes": {
+        "E": 1.2419908535236442e-13,
+        "R": 3.5024002711556473e-12,
+        "ratio": 1.7612300506897327e-13,
+        "norm_over_E": 4.5211230592645535e-17
+      }
+    },
+    {
+      "h": -0.01,
+      "changes": {
+        "E": 1.2419908535236442e-13,
+        "R": 3.5021547385207036e-12,
+        "ratio": 1.7610912728116546e-13,
+        "norm_over_E": 4.5211230592645535e-17
+      }
+    },
+    {
+      "h": 0.05,
+      "changes": {
+        "E": 6.986517470510669e-14,
+        "R": 1.85718227373737e-12,
+        "ratio": 4.814898479921226e-14,
+        "norm_over_E": 3.2851325826310784e-17
+      }
+    },
+    {
+      "h": 0.01,
+      "changes": {
+        "E": 5.93332036015171e-14,
+        "R": 6.224988893768578e-12,
+        "ratio": 2.994271497414047e-13,
+        "norm_over_E": 1.8648277366750676e-17
+      }
+    },
+    {
+      "h": -0.01,
+      "changes": {
+        "E": 5.93332036015171e-14,
+        "R": 6.224988893768578e-12,
+        "ratio": 2.994271497414047e-13,
+        "norm_over_E": 1.8648277366750676e-17
+      }
+    },
+    {
+      "h": 0.05,
+      "changes": {
+        "E": 4.4503159229967196e-14,
+        "R": 1.3374744830972156e-12,
+        "ratio": 3.23040205696401e-14,
+        "norm_over_E": 7.914675859144182e-18
+      }
+    }
+  ],
+  "hbar_sign_errors": [
+    1.3877787807814457e-17,
+    0.0,
+    0.0
+  ],
+  "normalization": "E and R use the same common transverse unprojected norm divisor; ratio R/E is independent of this divisor and of unit normalization of the nonzero projected state.",
+  "parts_over_E_order": [
+    "vacuum_energy",
+    "mass_energy",
+    "quartic_energy",
+    "static_energy",
+    "matter_plus_vacuum_response"
+  ],
+  "overlap_oracle": "K(theta,phi)=exp(-nu*(1-cos(phi-theta))), nu=A^2/(4*abs(h)); its double-circle mean is exp(-nu)*I0(nu). Checked numerically, not formalized here.",
+  "source_sha256": {
+    "scripts/zero_charge_response_probe.py": "50c2b7a9f76421cd5bb1671a3851f660146db2810c7ea23c991efb43e2397da1",
+    "scripts/matter_energy_gram_probe.py": "6d4977ba630fe1e340b94aad1f28361f8f43774b6accb57035db18dbf460dabe",
+    "scripts/displaced_signed_response_probe.py": "fe79f513e0b730fe867f5afd98cb55a689f277d3a1060a78fad86364a113baff",
+    "UnifiedTheory/Audit/KFCausalDisplacedQuarticTestFamily.lean": "0b0b5f0597b15f715163bef1d2838952fd512bf67c6b755549b03bb421547bfd",
+    "UnifiedTheory/Audit/KFCausalDisplacedQuarticOrbitPhase.lean": "aa60d2df829b3b5816a3b1387f32b2ecb756a818a6881dffb1fd4ba35f27c1ce",
+    "UnifiedTheory/Audit/KFCausalPureClockZeroProjection.lean": "4a6aded95d19952926300b62465a0da9644650a72a8c8a66e7adb1b66cae8cdc",
+    "UnifiedTheory/Audit/KFCausalZeroChargeStructuredResponse.lean": "e61b5732a154edb671e23cfb0aee6841b7d2ce71e9741db291616ccaaf515951",
+    "data/displaced_structured_response_audit.json": "23eda4ea1c665cc106e09f0ed321d1b20adcbbee8078154e43a7a4dce418c6cc"
+  },
+  "limitations": [
+    "No interval enclosure of clock tails or quadrature error; no certified sign.",
+    "Lean proves projected domains, phase and response identities, but not this full numerical transcription.",
+    "No Lean nonzero or unit-normalization theorem for this specific projected test state is added.",
+    "The response has no proved identification with a Hamiltonian evolution derivative.",
+    "Finite negative quotients do not refute a finite state-uniform lower bound or prove clock failure.",
+    "The zero-charge constraint remains a model input; no microscopic sector selection is derived.",
+    "No model revision, regulator limit or physical TOE follows."
+  ]
+}

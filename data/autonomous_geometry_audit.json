@@ -1,0 +1,684 @@
+{
+  "autonomous_six_site": {
+    "resonant_triangle_coefficient": "84*rho",
+    "exact_target_probability": "(1+6*sin(24*sqrt(7)*rho*t)^2)/7",
+    "first_perfect_time": "pi/(48*sqrt(7)*rho)",
+    "target_probability_at_first_perfect_time": "1",
+    "target_probability_at_twice_that_time": "1/7",
+    "initial_energy": "12*v/7",
+    "target_energy": "144*rho",
+    "stationary_ground_target_probability_at_resonance": "(1+1/sqrt(7))/2",
+    "stationary_ground_target_probability_formula": "(-60*rho + v)/(2*sqrt(3456*rho**2 + (-60*rho + v)**2)) + 1/2",
+    "scope": "Known pure input and supplied constant occupancy coupling; focusing recurs, without capture."
+  },
+  "regular_quotients": [
+    {
+      "sites": 6,
+      "degree": 3,
+      "all_regular_graphs": 70,
+      "connected_regular_graphs": 70,
+      "verified_equitable_classes": 2,
+      "directed_distinct_transitions": 900,
+      "classes": [
+        {
+          "size": 10,
+          "triangles": 0,
+          "squares": 9
+        },
+        {
+          "size": 60,
+          "triangles": 2,
+          "squares": 3
+        }
+      ],
+      "identified_classes": {
+        "0": {
+          "name": "K3,3",
+          "automorphisms": 72
+        },
+        "1": {
+          "name": "triangular prism",
+          "automorphisms": 12
+        }
+      },
+      "exact_weighted_adjacency_rows": [
+        [
+          0,
+          144
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "normalized_laplacian": [
+        [
+          "144",
+          "-24*sqrt(6)"
+        ],
+        [
+          "-24*sqrt(6)",
+          "24"
+        ]
+      ],
+      "ground_states": [
+        {
+          "v_over_rho": 0,
+          "energy_over_rho": -2.6645352591003757e-15,
+          "class_probabilities": [
+            0.14285714285714282,
+            0.8571428571428571
+          ],
+          "residual": 2.5788640071813747e-15
+        },
+        {
+          "v_over_rho": 84,
+          "energy_over_rho": 104.50196853444983,
+          "class_probabilities": [
+            0.6889822365046137,
+            0.3110177634953864
+          ],
+          "residual": 1.5888218580782548e-14
+        },
+        {
+          "v_over_rho": 168,
+          "energy_over_rho": 129.03659080848482,
+          "class_probabilities": [
+            0.9391550328268401,
+            0.06084496717316007
+          ],
+          "residual": 3.552713678800501e-15
+        },
+        {
+          "v_over_rho": 1000,
+          "energy_over_rho": 142.16349614171355,
+          "class_probabilities": [
+            0.9990250410497136,
+            0.0009749589502865381
+          ],
+          "residual": 2.8546336281444334e-14
+        },
+        {
+          "v_over_rho": 1000000,
+          "energy_over_rho": 143.9982718963153,
+          "class_probabilities": [
+            0.9999999991358965,
+            8.641036870919215e-10
+          ],
+          "residual": 2.9482531609618445e-14
+        }
+      ],
+      "strong_triangle_limit": {
+        "matrix": [
+          [
+            "144"
+          ]
+        ],
+        "energy_over_rho": "144",
+        "class_probabilities": [
+          "1"
+        ]
+      },
+      "triangle_free_trial_energy_over_rho": "144",
+      "maximum_escape_per_square": "16",
+      "triangle_escape_bound_coefficient": 64
+    },
+    {
+      "sites": 8,
+      "degree": 3,
+      "all_regular_graphs": 19355,
+      "connected_regular_graphs": 19320,
+      "verified_equitable_classes": 5,
+      "directed_distinct_transitions": 544320,
+      "classes": [
+        {
+          "size": 2520,
+          "triangles": 0,
+          "squares": 4
+        },
+        {
+          "size": 840,
+          "triangles": 0,
+          "squares": 6
+        },
+        {
+          "size": 3360,
+          "triangles": 1,
+          "squares": 3
+        },
+        {
+          "size": 10080,
+          "triangles": 2,
+          "squares": 2
+        },
+        {
+          "size": 2520,
+          "triangles": 4,
+          "squares": 2
+        }
+      ],
+      "identified_classes": {
+        "0": {
+          "name": "Mobius ladder",
+          "automorphisms": 16
+        },
+        "1": {
+          "name": "cube",
+          "automorphisms": 48
+        }
+      },
+      "exact_weighted_adjacency_rows": [
+        [
+          64,
+          32,
+          64,
+          32,
+          0
+        ],
+        [
+          96,
+          0,
+          0,
+          96,
+          0
+        ],
+        [
+          48,
+          0,
+          12,
+          96,
+          0
+        ],
+        [
+          8,
+          8,
+          32,
+          64,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          32,
+          32
+        ]
+      ],
+      "normalized_laplacian": [
+        [
+          "128",
+          "-32*sqrt(3)",
+          "-32*sqrt(3)",
+          "-16",
+          "0"
+        ],
+        [
+          "-32*sqrt(3)",
+          "192",
+          "0",
+          "-16*sqrt(3)",
+          "0"
+        ],
+        [
+          "-32*sqrt(3)",
+          "0",
+          "144",
+          "-32*sqrt(3)",
+          "0"
+        ],
+        [
+          "-16",
+          "-16*sqrt(3)",
+          "-32*sqrt(3)",
+          "56",
+          "-16"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "-16",
+          "32"
+        ]
+      ],
+      "ground_states": [
+        {
+          "v_over_rho": 0,
+          "energy_over_rho": -1.8192737219225915e-14,
+          "class_probabilities": [
+            0.1304347826086954,
+            0.043478260869565195,
+            0.17391304347826103,
+            0.5217391304347827,
+            0.13043478260869565
+          ],
+          "residual": 7.788372806440762e-14
+        },
+        {
+          "v_over_rho": 84,
+          "energy_over_rho": 67.12618214407226,
+          "class_probabilities": [
+            0.6146577572873597,
+            0.16895295100311183,
+            0.13542705484481302,
+            0.08073392565150286,
+            0.00022831121321249101
+          ],
+          "residual": 1.8997275293252622e-13
+        },
+        {
+          "v_over_rho": 168,
+          "energy_over_rho": 80.72373563983122,
+          "class_probabilities": [
+            0.722576675942698,
+            0.20682344652942208,
+            0.054713854144694096,
+            0.01587556154774352,
+            1.0461835442185423e-05
+          ],
+          "residual": 7.809929738838924e-14
+        },
+        {
+          "v_over_rho": 1000,
+          "energy_over_rho": 93.33196240583942,
+          "class_probabilities": [
+            0.755090276351193,
+            0.24249771855753047,
+            0.0021762236291755035,
+            0.00023577757125809796,
+            3.8908429163588295e-09
+          ],
+          "residual": 1.9632356482945398e-13
+        },
+        {
+          "v_over_rho": 1000000,
+          "energy_over_rho": 95.9973120195695,
+          "class_probabilities": [
+            0.7500074975233867,
+            0.2499924999806948,
+            2.30387557977467e-09,
+            1.9204262537360633e-10,
+            3.0727803299668955e-21
+          ],
+          "residual": 2.57696803275001e-10
+        }
+      ],
+      "strong_triangle_limit": {
+        "matrix": [
+          [
+            "128",
+            "-32*sqrt(3)"
+          ],
+          [
+            "-32*sqrt(3)",
+            "192"
+          ]
+        ],
+        "energy_over_rho": "96",
+        "class_probabilities": [
+          "3/4",
+          "1/4"
+        ],
+        "cube_probability": "1/4"
+      },
+      "triangle_free_trial_energy_over_rho": "96",
+      "maximum_escape_per_square": "24",
+      "triangle_escape_bound_coefficient": 64
+    },
+    {
+      "sites": 8,
+      "degree": 4,
+      "all_regular_graphs": 19355,
+      "connected_regular_graphs": 19355,
+      "verified_equitable_classes": 6,
+      "directed_distinct_transitions": 808920,
+      "classes": [
+        {
+          "size": 35,
+          "triangles": 0,
+          "squares": 36
+        },
+        {
+          "size": 2520,
+          "triangles": 4,
+          "squares": 20
+        },
+        {
+          "size": 10080,
+          "triangles": 6,
+          "squares": 14
+        },
+        {
+          "size": 3360,
+          "triangles": 7,
+          "squares": 12
+        },
+        {
+          "size": 2520,
+          "triangles": 8,
+          "squares": 10
+        },
+        {
+          "size": 840,
+          "triangles": 8,
+          "squares": 12
+        }
+      ],
+      "identified_classes": {
+        "0": {
+          "name": "K4,4",
+          "automorphisms": 1152
+        }
+      },
+      "exact_weighted_adjacency_rows": [
+        [
+          0,
+          576,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          104,
+          224,
+          0,
+          0,
+          16
+        ],
+        [
+          0,
+          56,
+          120,
+          48,
+          16,
+          8
+        ],
+        [
+          0,
+          0,
+          144,
+          12,
+          48,
+          0
+        ],
+        [
+          0,
+          0,
+          64,
+          64,
+          32,
+          0
+        ],
+        [
+          0,
+          48,
+          96,
+          0,
+          0,
+          48
+        ]
+      ],
+      "normalized_laplacian": [
+        [
+          "576",
+          "-48*sqrt(2)",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-48*sqrt(2)",
+          "248",
+          "-112",
+          "0",
+          "0",
+          "-16*sqrt(3)"
+        ],
+        [
+          "0",
+          "-112",
+          "128",
+          "-48*sqrt(3)",
+          "-32",
+          "-16*sqrt(3)"
+        ],
+        [
+          "0",
+          "0",
+          "-48*sqrt(3)",
+          "192",
+          "-32*sqrt(3)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "-32",
+          "-32*sqrt(3)",
+          "128",
+          "0"
+        ],
+        [
+          "0",
+          "-16*sqrt(3)",
+          "-16*sqrt(3)",
+          "0",
+          "0",
+          "144"
+        ]
+      ],
+      "ground_states": [
+        {
+          "v_over_rho": 0,
+          "energy_over_rho": -7.470999723486546e-15,
+          "class_probabilities": [
+            0.001808318264014462,
+            0.1301989150090413,
+            0.5207956600361663,
+            0.17359855334538896,
+            0.13019891500904177,
+            0.043399638336347184
+          ],
+          "residual": 9.771296649798403e-14
+        },
+        {
+          "v_over_rho": 84,
+          "energy_over_rho": 455.1676914020128,
+          "class_probabilities": [
+            0.15820663666953722,
+            0.5012776871262077,
+            0.3018897875588995,
+            0.02357367060281133,
+            0.0057253668718419805,
+            0.00932685117070225
+          ],
+          "residual": 3.6209804381544776e-13
+        },
+        {
+          "v_over_rho": 168,
+          "energy_over_rho": 562.2173473234709,
+          "class_probabilities": [
+            0.9588133325379391,
+            0.03952639606360814,
+            0.0015886111005219286,
+            1.786344537321028e-05,
+            2.7536095154892493e-06,
+            5.1043243042475155e-05
+          ],
+          "residual": 2.5988933783487414e-13
+        },
+        {
+          "v_over_rho": 1000,
+          "energy_over_rho": 574.7447187007274,
+          "class_probabilities": [
+            0.9996580172426889,
+            0.00034183859970138227,
+            1.393637409602661e-07,
+            2.2125898166849014e-11,
+            2.6117626224911055e-12,
+            4.76913097446204e-09
+          ],
+          "residual": 2.482548861201708e-13
+        },
+        {
+          "v_over_rho": 1000000,
+          "energy_over_rho": 575.9988479055278,
+          "class_probabilities": [
+            0.9999999997119529,
+            2.880472378762379e-10,
+            1.0038362190833353e-19,
+            1.4161865863934347e-29,
+            1.6063839456204417e-30,
+            3.457069263032655e-21
+          ],
+          "residual": 1.6770438058196917e-13
+        }
+      ],
+      "strong_triangle_limit": {
+        "matrix": [
+          [
+            "576"
+          ]
+        ],
+        "energy_over_rho": "576",
+        "class_probabilities": [
+          "1"
+        ]
+      },
+      "triangle_free_trial_energy_over_rho": "576",
+      "maximum_escape_per_square": "16",
+      "triangle_escape_bound_coefficient": 96
+    }
+  ],
+  "cubic_local_checks": {
+    "families": [
+      {
+        "side_length": 6,
+        "sites": 216,
+        "squares": 648,
+        "oriented_paths_per_root": 150,
+        "square_change_histogram": {
+          "-8": 126,
+          "-6": 24
+        },
+        "weighted_row_sum": 64800,
+        "repair_checks": [
+          {
+            "initial_square_deficit": 8,
+            "weighted_valid_moves": 64800,
+            "weighted_square_restoring_moves": 4,
+            "weighted_remote_moves": 14344,
+            "radius_three_sites": 118
+          },
+          {
+            "initial_square_deficit": 6,
+            "weighted_valid_moves": 64800,
+            "weighted_square_restoring_moves": 8,
+            "weighted_remote_moves": 17392,
+            "radius_three_sites": 108
+          }
+        ]
+      },
+      {
+        "side_length": 8,
+        "sites": 512,
+        "squares": 1536,
+        "oriented_paths_per_root": 150,
+        "square_change_histogram": {
+          "-8": 126,
+          "-6": 24
+        },
+        "weighted_row_sum": 153600,
+        "repair_checks": []
+      },
+      {
+        "side_length": 10,
+        "sites": 1000,
+        "squares": 3000,
+        "oriented_paths_per_root": 150,
+        "square_change_histogram": {
+          "-8": 126,
+          "-6": 24
+        },
+        "weighted_row_sum": 300000,
+        "repair_checks": []
+      },
+      {
+        "side_length": 12,
+        "sites": 1728,
+        "squares": 5184,
+        "oriented_paths_per_root": 150,
+        "square_change_histogram": {
+          "-8": 126,
+          "-6": 24
+        },
+        "weighted_row_sum": 518400,
+        "repair_checks": []
+      }
+    ],
+    "analytic_repair_weight_bound": 897600,
+    "analytic_ground_weight_bound": "D*r/((D-E0/rho)^2+D*r), D=300*N, r=897600",
+    "asymptotic_scope": "O(1/N) exact cubic-orbit ground weight; external short-cycle inputs required."
+  },
+  "patch_criterion_checks": {
+    "reference_ball_sites": 63,
+    "checks": [
+      {
+        "periods": [
+          8,
+          8,
+          8
+        ],
+        "sites": 512,
+        "rooted_patch_matches": true,
+        "all_roots_by_translation_symmetry": true,
+        "ball_volumes": {
+          "3": 63
+        }
+      },
+      {
+        "sites": 512,
+        "one_exchange_from_cubic": true,
+        "rooted_patch_matches_at_changed_endpoint": false
+      },
+      {
+        "periods": [
+          8,
+          8,
+          128
+        ],
+        "sites": 8192,
+        "rooted_patch_matches": true,
+        "all_roots_by_translation_symmetry": true,
+        "ball_volumes": {
+          "3": 63,
+          "8": 576,
+          "16": 1600,
+          "32": 3648
+        }
+      },
+      {
+        "sites": 512,
+        "family": "circulant(512;1,3,5)",
+        "triangles": 0,
+        "rooted_patch_matches": false,
+        "radius_three_ball": 27
+      }
+    ],
+    "scope": "Supplied radius-three template; the thin-torus example demonstrates missing noncollapse."
+  },
+  "scope": "Autonomous finite focusing and a scoped zero-temperature cubic exclusion; no stable preparation, general geometric phase, Einstein dynamics, or TOE.",
+  "source_sha256": {
+    "AUTONOMOUS_GEOMETRY_SELECTION.md": "dabbf8cfd8a80f9ebf02003f0b86b297842d3dfea1b12419d566059ca314ac81",
+    "scripts/autonomous_geometry_audit.py": "7a135437ee855d772eeb28d0d24f5eafcaa9d1facf8baf55837170aa94a145b9",
+    "UnifiedTheory/Audit/KFCausalAutonomousGeometry.lean": "d06c099cfef2c2712a3541532dd397b517f9c3b634a59d2ee029108054e67435",
+    "COARSE_GEOMETRY_AND_PREPARATION.md": "5d02ab825a6a97fcc6df7e4523ba0448bae1c49d262cd84a35075e9e8efa856a",
+    "scripts/coarse_geometry_audit.py": "c89d411a2af22ae69e12b86c21e3be63561a0e8af9caa5bb58724e3defc2a635",
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1",
+    "scripts/quantum_geometry_phase_audit.py": "5d6fba55ced73e83ac2691a25b2b7b9804d0269ed2809fb5ce94fc79b4b2f869"
+  }
+}

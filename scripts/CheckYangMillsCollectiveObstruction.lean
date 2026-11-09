@@ -1,0 +1,24 @@
+import UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction
+
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.cosh_comparison
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_cosh_lipschitz
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_cosh_midpoint
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.amplitude
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.logAmplitude
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.amplitude_pos
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.amplitude_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.logAmplitude_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.amplitude_smooth
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_first_bound
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_first_angular
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.sin_increment_chord
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_first_chord
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.log_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.sin_sum_update
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.amplitude_periodic
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.mixedRatio
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.mixedRatio_eq
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.far_sum_eq
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.exampleFar
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.exampleFar_eq
+#print axioms UnifiedTheory.Clay.YangMills.CollectiveCoshObstruction.far_unbounded

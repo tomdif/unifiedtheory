@@ -1,26 +1,15 @@
 /-
-  LayerB/PartitionFunction.lean — Partition function from Born rule + K-sector projection
+  LayerB/PartitionFunction.lean — Finite phase sums and Boltzmann weights.
 
-  THE DERIVATION (three steps, all proven):
-
-  1. Born rule: the observable for an ensemble of amplitudes is |Σ zᵢ|²
-     (proven unique by rotation invariance in BornRuleUniqueness.lean)
-
-  2. Propagation rule: zᵢ = e^{ik·sᵢ} where sᵢ = φ(γᵢ) is the source
-     functional value on path γᵢ (proven in PropagationRule.lean)
-
-  3. K-sector projection: under k → iβ (Wick rotation), the amplitude
-     e^{ik·s} → e^{-β·s} (the Boltzmann weight). The observable
-     |Σ e^{-βsᵢ}|² = (Σ e^{-βsᵢ})² since all terms are real.
-     The square root Z = Σ e^{-βsᵢ} is the partition function.
-
-  RESULT: The statistical-mechanical partition function Z = Σ e^{-βEᵢ}
-  is the K-sector projection of the quantum amplitude sum Σ e^{ikEᵢ},
-  both derived from the same source functional.
+  The exponential functional forms are definitions. The theorems establish
+  their multiplicative identities, positivity for nonempty finite ensembles,
+  and unit modulus of the phase weights. No analytic continuation, physical
+  Wick rotation, or derivation of statistical mechanics is formalized here.
 
   Zero sorry. Zero custom axioms.
 -/
 import UnifiedTheory.LayerB.PropagationRule
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 namespace UnifiedTheory.LayerB.PartitionFunction
 
@@ -30,7 +19,7 @@ open PropagationRule
 
 /-- The quantum amplitude sum for an ensemble of paths with source values sᵢ.
     Z_quantum(k) = Σᵢ e^{iksᵢ} (complex). -/
-def quantumAmplitudeSum {N : ℕ} (k : ℝ) (s : Fin N → ℝ) : ℂ :=
+noncomputable def quantumAmplitudeSum {N : ℕ} (k : ℝ) (s : Fin N → ℝ) : ℂ :=
   ∑ i : Fin N, expAmplitude k (s i)
 
 /-- The quantum observable: |Z_quantum|². -/
@@ -40,8 +29,8 @@ noncomputable def quantumObservable {N : ℕ} (k : ℝ) (s : Fin N → ℝ) : �
 /-! ## The partition function (K-sector projection) -/
 
 /-- The partition function: Z = Σᵢ e^{-β·sᵢ} (real).
-    This is the K-sector projection of the quantum amplitude sum
-    under k → iβ. -/
+    This definition does not formalize a Wick rotation of the real-parameter
+    quantum amplitude sum. -/
 noncomputable def partitionFunction {N : ℕ} (β : ℝ) (s : Fin N → ℝ) : ℝ :=
   ∑ i : Fin N, Real.exp (-(β * s i))
 
@@ -55,31 +44,20 @@ theorem partition_multiplicative (β s₁ s₂ : ℝ) :
 /-- **The partition function is positive.** -/
 theorem partition_positive {N : ℕ} (hN : 0 < N) (β : ℝ) (s : Fin N → ℝ) :
     0 < partitionFunction β s := by
+  haveI : Nonempty (Fin N) := ⟨⟨0, hN⟩⟩
   apply Finset.sum_pos
   · intro i _; exact Real.exp_pos _
   · exact Finset.univ_nonempty
 
-/-! ## The connection: Born rule + Wick rotation = partition function -/
+/-! ## Finite exponential identities -/
 
-/-- **THE PARTITION FUNCTION THEOREM.**
-
-    The quantum observable |Σ e^{iksᵢ}|² and the statistical partition
-    function Σ e^{-βsᵢ} are related by the K-sector projection:
-
-    (1) Quantum: Z_q = Σ e^{iks} is complex (oscillatory phases)
-    (2) Wick-rotated: Z_w = Σ e^{-βs} is real (decaying exponentials)
-    (3) Quantum observable: |Z_q|² involves interference (cross terms)
-    (4) Partition function: Z_w = Z_w² involves no interference (all real)
-
-    Both arise from the same primitive (source functional φ, linear)
-    via the same mechanism (exponential of a linear functional).
-    The partition function is the K-sector shadow of the quantum amplitude. -/
+/-- The two defining finite sums, positivity, and multiplicativity of their
+    weights. The legacy theorem name does not assert a Born-rule derivation
+    or analytic continuation. Squaring a real sum still produces cross terms. -/
 theorem partition_from_born_rule {N : ℕ} (β : ℝ) (s : Fin N → ℝ) :
     -- (1) The quantum amplitude is complex-valued
     (∀ k : ℝ, quantumAmplitudeSum k s = ∑ i, expAmplitude k (s i))
-    -- (2) Each Boltzmann weight is the real part of the amplitude at imaginary k
-    --     More precisely: Re(e^{iks}) at k = iβ would give e^{-βs}.
-    --     We prove this directly: e^{-βs} is the Boltzmann weight.
+    -- (2) The real partition function unfolds to its defining sum.
     ∧ (partitionFunction β s = ∑ i, Real.exp (-(β * s i)))
     -- (3) The partition function is positive
     ∧ (0 < N → 0 < partitionFunction β s)
@@ -115,17 +93,8 @@ noncomputable def freeEnergy {N : ℕ} (β : ℝ) (s : Fin N → ℝ) (hβ : β 
 
 /-! ## Summary -/
 
-/-- **UNIFIED ORIGIN OF QUANTUM AND STATISTICAL MECHANICS.**
-
-    From the source functional φ (linear, framework primitive):
-    - Quantum: z = e^{ikφ} (amplitudes, proven)
-    - Statistical: w = e^{-βφ} (Boltzmann weights, K-sector projection)
-    - Observable: |z|² (Born rule, proven unique)
-    - Partition function: Z = Σw (K-sector of amplitude sum)
-    - Free energy: F = -T ln Z (from partition function)
-    - Entropy: S = -Σ p ln p (from Boltzmann weights)
-
-    All from one primitive and one operation (exponential of linear functional). -/
+/-- Multiplicativity, phase normalization, and positive real weights for the
+    specified exponential functions. Physical identification is separate. -/
 theorem unified_quantum_statistical :
     -- The quantum amplitude is multiplicative
     (∀ k s₁ s₂ : ℝ,

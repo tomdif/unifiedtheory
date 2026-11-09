@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "source_paper": "https://arxiv.org/abs/2610.29019v2",
+  "physics_convention": "ell=2pi; AP fourth/time direction; mass-one Wilson kernel; one Weyl species",
+  "arithmetic": "float64 with analytic continuum spatial-tail bounds; no interval rounding certificate",
+  "complex_chirality": {
+    "passed": true,
+    "rows": [
+      {
+        "sample": 0,
+        "negative_chirality_phase": 3.509672552581831e-08,
+        "positive_chirality_phase": -3.5096725664596193e-08,
+        "conjugation_error": 3.608224830031759e-16,
+        "modulus_error": 2.842170943040401e-14,
+        "kernel_gap": 0.9639329796689107
+      },
+      {
+        "sample": 1,
+        "negative_chirality_phase": 1.0114131726579594e-08,
+        "positive_chirality_phase": -1.0114131348409873e-08,
+        "conjugation_error": 4.385386436897185e-16,
+        "modulus_error": 3.552713678800501e-15,
+        "kernel_gap": 0.9934085425685696
+      },
+      {
+        "sample": 2,
+        "negative_chirality_phase": -4.732247149696885e-09,
+        "positive_chirality_phase": 4.732247819300147e-09,
+        "conjugation_error": 7.054589532296079e-16,
+        "modulus_error": 1.0658141036401503e-14,
+        "kernel_gap": 0.9738347217853097
+      },
+      {
+        "sample": 3,
+        "negative_chirality_phase": 2.5306110984502074e-08,
+        "positive_chirality_phase": -2.5306110894296453e-08,
+        "conjugation_error": 9.020562075079397e-17,
+        "modulus_error": 3.552713678800501e-15,
+        "kernel_gap": 0.9630398451015332
+      }
+    ],
+    "scope": "Direct-rotation finite-chart phases, not the completed cohomology measure or a continuum phase test."
+  },
+  "position_space_cross_check": {
+    "passed": true,
+    "rows": [
+      {
+        "n": 2,
+        "log_weight_error": 3.774758283725532e-15,
+        "current_error": 1.7829353528710137e-15
+      },
+      {
+        "n": 4,
+        "log_weight_error": 2.3570034812792073e-13,
+        "current_error": 5.343814127587568e-15
+      }
+    ]
+  },
+  "flat_holonomy": {
+    "rows": [
+      {
+        "h": 0.05,
+        "n": 8,
+        "spacing": 0.7853981633974483,
+        "log_weight": -0.028336714883685388,
+        "current": -1.1364350919992994,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 0.002286149344243104,
+        "current_error": 0.09071570556935771
+      },
+      {
+        "h": 0.05,
+        "n": 12,
+        "spacing": 0.5235987755982988,
+        "log_weight": -0.02712298163349136,
+        "current": -1.0882698149925538,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 0.0010724160940490772,
+        "current_error": 0.04255042856261215
+      },
+      {
+        "h": 0.05,
+        "n": 16,
+        "spacing": 0.39269908169872414,
+        "log_weight": -0.026618159952217724,
+        "current": -1.0682394662390653,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 0.00056759441277544,
+        "current_error": 0.022520079809123628
+      },
+      {
+        "h": 0.05,
+        "n": 24,
+        "spacing": 0.2617993877991494,
+        "log_weight": -0.026284561053509403,
+        "current": -1.0550033916268298,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 0.00023399551406711946,
+        "current_error": 0.009284005196888101
+      },
+      {
+        "h": 0.05,
+        "n": 32,
+        "spacing": 0.19634954084936207,
+        "log_weight": -0.02617832226457817,
+        "current": -1.0507882487049827,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 0.00012775672513588507,
+        "current_error": 0.005068862275040997
+      },
+      {
+        "h": 0.05,
+        "n": 48,
+        "spacing": 0.1308996938995747,
+        "log_weight": -0.026106175923289676,
+        "current": -1.0479257740558126,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 5.561038384739245e-05,
+        "current_error": 0.002206387625870887
+      },
+      {
+        "h": 0.05,
+        "n": 64,
+        "spacing": 0.09817477042468103,
+        "log_weight": -0.02608162289597038,
+        "current": -1.046951613107538,
+        "continuum_log_weight": -0.026050565539442284,
+        "continuum_current": -1.0457193864299417,
+        "log_error": 3.105735652809624e-05,
+        "current_error": 0.0012322266775963708
+      },
+      {
+        "h": 0.13,
+        "n": 8,
+        "spacing": 0.7853981633974483,
+        "log_weight": -0.1946231449160727,
+        "current": -3.0529444798316874,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.014755263087918996,
+        "current_error": 0.21459267365194412
+      },
+      {
+        "h": 0.13,
+        "n": 12,
+        "spacing": 0.5235987755982988,
+        "log_weight": -0.18678622752167118,
+        "current": -2.938912721717088,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.006918345693517486,
+        "current_error": 0.10056091553734481
+      },
+      {
+        "h": 0.13,
+        "n": 16,
+        "spacing": 0.39269908169872414,
+        "log_weight": -0.1835291288477825,
+        "current": -2.891562524478779,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.003661247019628805,
+        "current_error": 0.053210718299035786
+      },
+      {
+        "h": 0.13,
+        "n": 24,
+        "spacing": 0.2617993877991494,
+        "log_weight": -0.18137718605103892,
+        "current": -2.860285976480238,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.0015093042228852271,
+        "current_error": 0.021934170300494937
+      },
+      {
+        "h": 0.13,
+        "n": 32,
+        "spacing": 0.19634954084936207,
+        "log_weight": -0.18069191908218052,
+        "current": -2.8503270381793087,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.000824037254026827,
+        "current_error": 0.011975231999565406
+      },
+      {
+        "h": 0.13,
+        "n": 48,
+        "spacing": 0.1308996938995747,
+        "log_weight": -0.1802265678697763,
+        "current": -2.8435643080813833,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.00035868604162261897,
+        "current_error": 0.005212501901640021
+      },
+      {
+        "h": 0.13,
+        "n": 64,
+        "spacing": 0.09817477042468103,
+        "log_weight": -0.18006820071326235,
+        "current": -2.8412628705448952,
+        "continuum_log_weight": -0.1798678818281537,
+        "continuum_current": -2.8383518061797433,
+        "log_error": 0.00020031888510865792,
+        "current_error": 0.002911064365151983
+      },
+      {
+        "h": 0.24,
+        "n": 8,
+        "spacing": 0.7853981633974483,
+        "log_weight": -0.7006683463646377,
+        "current": -6.359785217469573,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.04398061633146999,
+        "current_error": 0.29571719097656235
+      },
+      {
+        "h": 0.24,
+        "n": 12,
+        "spacing": 0.5235987755982988,
+        "log_weight": -0.677286372111721,
+        "current": -6.202339499797068,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.02059864207855333,
+        "current_error": 0.13827147330405776
+      },
+      {
+        "h": 0.24,
+        "n": 16,
+        "spacing": 0.39269908169872414,
+        "log_weight": -0.667585878762492,
+        "current": -6.137194868812845,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.010898148729324264,
+        "current_error": 0.07312684231983457
+      },
+      {
+        "h": 0.24,
+        "n": 24,
+        "spacing": 0.2617993877991494,
+        "log_weight": -0.6611798322495162,
+        "current": -6.09420481283906,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.004492102216348437,
+        "current_error": 0.030136786346049327
+      },
+      {
+        "h": 0.24,
+        "n": 32,
+        "spacing": 0.19634954084936207,
+        "log_weight": -0.6591402082147697,
+        "current": -6.080520473782549,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.0024524781816019914,
+        "current_error": 0.016452447289538874
+      },
+      {
+        "h": 0.24,
+        "n": 48,
+        "spacing": 0.1308996938995747,
+        "log_weight": -0.6577552160544595,
+        "current": -6.071228991705663,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.001067486021291808,
+        "current_error": 0.007160965212652748
+      },
+      {
+        "h": 0.24,
+        "n": 64,
+        "spacing": 0.09817477042468103,
+        "log_weight": -0.657283894235432,
+        "current": -6.068067194015228,
+        "continuum_log_weight": -0.6566877300331677,
+        "continuum_current": -6.06406802649301,
+        "log_error": 0.000596164202264271,
+        "current_error": 0.003999167522217739
+      }
+    ],
+    "reference_tail_bounds": {
+      "log_weight": 0.0,
+      "current": 0.0,
+      "spatial_cutoff": 6,
+      "log_tail_bound": 3.741074965347651e-16,
+      "current_tail_bound": 1.175293362766487e-15
+    },
+    "scope": "Sampled flat-background refinement, not a uniform estimate over curved fields."
+  },
+  "elapsed_seconds": 5.621031999588013,
+  "source_sha256": {
+    "scripts/chiral_continuum_comparison.py": "c7f728ad3979b27ddbe74826a728bdebcbfa0d49feb141963f9289ef6a1294b3",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3"
+  }
+}

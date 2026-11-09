@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-09T19:53:14.318065+00:00",
+  "scope": "Actual cell-average initialization, qualitative positive-time grid heat limit, and continuum heat PDE in two dimensions",
+  "base_commit": "03da6d7fd98506831dc1d882699df2290084ce94",
+  "workspace_state": "Local uncommitted work; pre-existing research changes preserved",
+  "build": {
+    "passed": true,
+    "target": "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage",
+    "whole_repository_build": false
+  },
+  "axiom_check": {
+    "passed": true,
+    "checked_declarations": 53,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "declarations": {
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.radiusSq_nonneg": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.radiusOne_nonneg": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.radiusSq_le_radiusOne_sq": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.xSymbol_norm_le": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.ySymbol_norm_le": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.symbolCoeff_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.xCoeff_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.yCoeff_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.timeCoeff_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.mode_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.polynomial_series_summable": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.planeWave_dx": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.planeWave_dy": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.mode_dt": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.series_dx": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.series_dy": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.series_dt": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.timeCoeff_eq_laplacian": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.series_laplacian": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.continuum_heat_equation": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.real_series_dx": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.real_series_dy": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.real_series_dt": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.real_heat_equation": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.normalized_fourier_inversion": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.centered_cast": [
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.centered_bounds": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.centered_unique": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.gridDualMap_bijective": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.frequencyCharacterEquiv_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatGridInversion.grid_fourier_inversion": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.snapCoordinate_error": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.snapCoordinate_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.snap_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.measurable_snap": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.continuous_planeWave": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.continuumCoefficient_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellCoefficient_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellCoefficient_tendsto": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.measurableSet_cell": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.planeWave_snap": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellCoefficient_eq_sum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.gridCharacter_neg_frequency": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellCoefficient_eq_normalized": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.reconstructedData_cellAverage": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.gridHeat_cellAverage_limit": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellAverage_limit_heat_equation": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.coordinate_cell_iff": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cell_inter_square": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.squareMeasure_cell": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.squareMeasure_univ": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.realCellAverage_eq_complex": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.bounded_cellAverage_limit": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "modules": {
+    "AbelianCurvatureHeatPDE": {
+      "theorem_count": 24
+    },
+    "AbelianCurvatureHeatGridInversion": {
+      "theorem_count": 7
+    },
+    "AbelianCurvatureHeatCellAverage": {
+      "theorem_count": 22
+    }
+  },
+  "main_result": {
+    "declaration": "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.bounded_cellAverage_limit",
+    "initial_datum": "An almost-everywhere strongly measurable, essentially bounded real function on the unit square with restricted Lebesgue measure",
+    "initial_grid": "Exact real cell integrals multiplied by (n+1)^2",
+    "conclusion": "The actual Poisson-series gridHeat converges uniformly over all grid nodes at every fixed strictly positive time to the real continuum Fourier series",
+    "coefficient_bounds_and_consistency": "Derived from integration, not assumed",
+    "cell_geometry": "The modular cells restricted to the unit square equal the ordinary half-open rectangles; their measure is proved to be 1/(n+1)^2",
+    "frequency_convention": "-1/2 <= h*k_j < 1/2, with exact normalized inversion",
+    "underlying_complex_extension": "The coefficient construction and convergence require only integrability"
+  },
+  "pde_result": {
+    "declarations": [
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.continuum_heat_equation",
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatPDE.real_heat_equation",
+      "UnifiedTheory.LayerA.AbelianCurvatureHeatCellAverage.cellAverage_limit_heat_equation"
+    ],
+    "equation": "partial_t u = partial_x^2 u + partial_y^2 u at every t > 0",
+    "derivative_interchange": "Proved with summable Gaussian majorants for polynomially bounded Fourier coefficients; second spatial derivatives use the result twice"
+  },
+  "remaining_formal_obligations": [
+    "L2 initial trace and continuum initial-data uniqueness",
+    "Quantitative estimates uniform over positive time intervals",
+    "Final axial gauge reconstruction and path-transport assembly"
+  ],
+  "scientific_boundary": "Classical scalar Abelian diffusion; no four-dimensional quantum Yang-Mills or TOE completion",
+  "physical_ledgers": {
+    "yang_mills": {
+      "ledger_consistent": true,
+      "full_target_requirements_open": 12,
+      "verified_auxiliary_references": 1718,
+      "clay_certificate_present": false
+    },
+    "toe": "valid: 5 draft no-result attacks\ncanonical_sha256: a5171f7cfe6591fe45c92c713f53410187afdad775a49d0599141bb731e67239",
+    "gate_statuses_changed": false
+  },
+  "prior_records": "Earlier JSON reports remain historical checkpoints; their documentation hashes precede the current extension.",
+  "source_sha256": {
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatPDE.lean": "7447998972001bcbf14c776062cd8245a4bea35067e893c2d3d0f79e00cb70bd",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatGridInversion.lean": "f6d1d1c9572278145cfdd206438853dd1ee417399f5ddf2b742c1284ff4df7d3",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatCellAverage.lean": "44c6113ae481ae9faf30471fd106acb314fbefe31c53ea23683d1e8642f19c68",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeat.lean": "c45f3e8de5ad4a9432263478e18426175ca9d0ec510c1150b8ca8ff34c7d00c0",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatDynamics.lean": "cfae4ff92e5a31be15d378436033fa9680f41c6fe09a79dc0daed3709dcbc22a",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatFourier.lean": "8ca7cd25542a862ed0c8c18eae5f7de41440dcd78b559f960c86b67dd5cc2ecc",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatContinuum.lean": "97e75b02a188ff47dbaf0f6a8e543d042f0e7275c47bac5c0fd3073ec0473398",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatGridLimit.lean": "f44e6657287c01fea102fab3d5054b230bc98479de56dec12bb310381da33080",
+    "scripts/CheckAbelianCurvatureHeatCellAverage.lean": "ffad89ae9f9237f60d9f0f3048f8394488120588bdaa609f692c25b492f5721e",
+    "scripts/audit_repository.py": "c86185a9567703381818f736f2a975cc5fe07c2752d01d249eb70a9cba623232",
+    "scripts/check_yang_mills_requirements.py": "f3285754a270da596c0aad8bb0edff6f74fe6af973e75412fad1c20a94cd3ca4",
+    "scripts/validate_toe_attack_ledger.py": "96b9c0cf38b7626fdf258a8c2215b7b5fbea1f52894ca96502c72109769bea82",
+    "README.md": "c974134e1520d96700bd6fea83ed27363ce35cbd817efcecf08583ad079c3c79",
+    "STATUS.md": "41157594592e74b4562f99eb14b3b3311baaa6abe60b66649458e8cec42fb43e",
+    "OPEN_OBLIGATIONS_ATTACK.md": "c7f5cd840859196e93cc7520158c5da98b1b6173a230e93caa91a28955ec81aa",
+    "ABELIAN_CURVATURE_HEAT_LIMIT.md": "6acf007352442d30c11e7e844c8b2d8d0515bdd37e4b3b312bea583e8c6cad4f",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028",
+    "lakefile.toml": "005d6050df28a17285d4d1c5f3acd6d5c2a0879946468b77172335501abf03aa",
+    "lake-manifest.json": "4201230dd8432c335849b1cd31666f52732dde8d1d2eeb4f2456ff0fceb3a627"
+  },
+  "evidence_sha256": {
+    "data/abelian_curvature_heat_cell_average_evidence/axioms.log.gz": "1bd66dbe49648fa3c99b975ff2c9a59026b8345fabc89a8554c7c75071ddc220",
+    "data/abelian_curvature_heat_cell_average_evidence/final-build.log.gz": "76c5b4a0779e86fa5487656c83a1010c38c673a400b2f9c92c3ef9954f2d9623",
+    "data/abelian_curvature_heat_cell_average_evidence/record_verification.py.gz": "78c80354d217a6065638e657a7c81d3e7c733459b002d6fd234977df95f6da0f",
+    "data/abelian_curvature_heat_cell_average_evidence/toe-ledger.log.gz": "cdebe8b32af4feea2e012f3f0ab4d82295603f9c92fed546a06ba57c5f5e9f7a",
+    "data/abelian_curvature_heat_cell_average_evidence/ym-ledger.log.gz": "3af1724a2a107d7af061854a984f34229f2f435c280383716a3545596f475e43",
+    "data/abelian_curvature_heat_cell_average_evidence/source-audit.json.gz": "064dc9c6ea19a8ec32f17e51488c434977fcaecd4aa08577d85a1e67a244ebc0"
+  },
+  "source_audit": {
+    "passed": true,
+    "library_modules": 5437,
+    "all_modules_in_default_build": true,
+    "git_diff_check_passed": true
+  }
+}

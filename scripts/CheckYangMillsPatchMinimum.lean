@@ -1,0 +1,41 @@
+/- Fresh patch-minimizer axioms; the runner verifies the retained chain. -/
+import UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint
+import UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood
+import UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature
+import UnifiedTheory.Clay.YangMills.WilsonPatchMinimum
+import UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.sum_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_sum
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_inner
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_cap
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_self
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.midpoint_chord
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint.rotation_chord
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.region
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.center_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.region_closed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.region_compact
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.distanceSq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.distanceSq_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.distanceSq_eq_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.exists_midpoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.holonomy_drift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.incident_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood.endpoint_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature.action_second_active
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature.transport_second_active
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature.action_second_patch
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature.transport_second_patch
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.midpoint_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.minimum_growth
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.exists_unique_minimum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.action_unique_minimum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.action_minimum_growth
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimum.transport_unique_minimum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse.distanceSq_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse.source_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse.minimum_source_stability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse.transport_minimum_stability

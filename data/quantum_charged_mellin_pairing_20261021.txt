@@ -1,0 +1,232 @@
+CHARGED MELLIN COERCIVITY AND THE EXACT LINKED HARDY PAIRING
+2026-10-21. Analytic proof successor; NOT Lean verified.
+Parent artifact: data/quantum_whole_response_mellin_frontier_20261021.txt,
+SHA256 f9e28fb65eb823d0ec5f9d8b44b4984e50580e05bd679e4d7a7b688742ca7390.
+That hash was checked before reliance. No frozen source/evidence was edited.
+No original-family numerical probe or Lean compiler was run in this pass.
+
+A. Conventions, original class, and scope
+
+Use the parent artifact's exact full Fourier/Mellin representation. Fix
+alpha,beta>0, r=a+i b, 0<b<a, R=a^2+b^2, A=a^2-b^2,
+eta=2b, p=alpha*r^2/2, rho=|p|, theta=arg p in (0,pi/2),
+and the strict integrability floor alpha*A>8*beta*b^2.
+All widths w_i>=1, coefficients, neutral complex sources and polynomials
+are fixed finite original labels. Their Fourier amplitudes G_i(k) are
+polynomials times Gaussians; all finite neutral derivative streams have
+the same property. Labels are fixed under clock differentiation.
+
+Set z_+=t/2+i theta, z_-=t/2-i theta and
+  d_n=pi*eta^(2n)/(n!*(2rho)^(n+2)),
+  C_n(t)=d_n*cosh(z_+)^(-(n+1))*cosh(z_-)^(-1),
+  rho_n(omega)=(1/(2pi)) integral C_n(t) exp(-i omega t) dt,
+  D_n(omega)=(n+2)*a*rho_n(omega)+b*partial_theta rho_n(omega).
+The theta derivative holds eta and rho fixed. Every rho_n is nonnegative.
+The kernel-to-density Fourier convention is fixed throughout this note.
+
+For any original profile stream G define
+  H_n[G](k,omega)=sum_i w_i^(-(n+2)/2+i omega)G_i(k),
+  L_n[G](k,omega)=k^n H_n[G](k,omega), n>=0.
+Also define H_-1[G]=sum_i w_i^(-1/2+i omega)G_i; no separate H_-1 norm is
+asserted. The exact linkage is H_(n+1)(omega)=H_n(omega+i/2).
+The completed quartic form Q_n,s from the parent artifact is NOT positive
+for individual n. None of the inequalities below is multiplied by Q_n,s.
+
+B. Exact charged-density lower bound, with the Fourier signs explicit
+
+Define
+  Astar=a-2b*cot(2theta)
+       =(a^4+4a^2*b^2-b^4)/(2a(a^2-b^2)),
+  Bstar=2b*csc(2theta)=R^2/(2a(a^2-b^2)).
+Both are positive, and
+  Astar-a/2=b^2(5a^2-b^2)/(2a(a^2-b^2))>0.
+These identities use theta=2atan(b/a), not an independently chosen angle.
+
+With the stated Fourier convention,
+  FT(C_n')=i omega rho_n,
+so the inverse kernel for omega*rho_n is -i C_n'. Since
+  C_n'/C_n=-[(n+1)tanh(z_+)+tanh(z_-)]/2,
+  (partial_theta C_n)/C_n=-i(n+1)tanh(z_+)+i tanh(z_-),
+we obtain exactly
+  D_n-2b omega rho_n
+    =[a+(n+1)Astar]rho_n
+      +(n+1)Bstar FT[d_n*cosh(z_+)^(-(n+2))],
+  D_n+2b omega rho_n
+    =[(n+1)a+Astar]rho_n
+      +Bstar FT[d_n*cosh(z_+)^(-n)*cosh(z_-)^(-2)].
+The elementary decomposition used here is
+  a cosh(z_+)-2ib sinh(z_+)
+       =Astar cosh(z_+)+Bstar cosh(z_-),
+and its conjugate-sign counterpart.
+
+Every residual Fourier density is nonnegative: a shifted inverse cosh
+power has a positive Gamma Fourier density, and products give convolutions.
+At n=0 the second residual is simply d_0*cosh(z_-)^(-2); there is no negative
+power or undefined Gamma factor.
+For omega>=0 use the first identity; for omega<=0 use the second. Hence
+  D_n(omega) >= [(n+3)*a/2+2b*|omega|] rho_n(omega),  n>=0.       (B1)
+This is exact at every frequency and every n, not just an asymptotic bound.
+As a sign cross-check, the explicit rho_0 has
+  partial_theta rho_0/rho_0 ~ 2omega-2cot(2theta) as omega->+infinity;
+therefore D_0-2b omega rho_0 has only a bounded multiple of rho_0 there.
+The first residual above, the pure-plus kernel, is exponentially smaller
+in this positive-frequency tail, as required.
+
+C. A uniform independent 2-by-2 comparison on theta<=pi/3
+
+This section is useful for unlinked auxiliary pairings. The stronger linked
+identity in sectionD does not need the additional theta<=pi/3 restriction.
+Assume 0<theta<=pi/3. In the positive Gamma convolution for rho_m, the
+conditional sigma density, up to its normalization, is
+  f_m(sigma)=exp(-4theta*sigma)
+      |Gamma((m+1)/2+i sigma)|^2 / cosh(pi*(omega-sigma)).
+The exact Gamma recurrence, including BOTH factorial ratios, gives
+  rho_(m+2)/rho_m
+    =eta^4/[rho^2*(m+1)^2*(m+2)^2]
+       *E[ ((m+1)/2)^2+sigma^2 ].                              (C1)
+
+For x>0 the integer/half-integer Gamma product implies
+  d/dx log|Gamma((m+1)/2+i x)|^2
+       <= m/x-pi*tanh(pi*x).
+For odd m, the elementary starting factor is x/sinh(pi*x); its log derivative
+is 1/x-pi*coth(pi*x), which is even smaller than the stated bound. Thus m=0
+and both parities are included.
+Put M=|omega|+2(m+1). On both tails |sigma|>=M, the outward logarithmic
+derivative of f_m is at most
+  1/2+4pi/3-2pi*tanh(pi) <= 1/2-pi/2 <= -1.
+Here pi>=3 and tanh(pi)>=11/12 suffice. The latter follows, for example,
+from exp(2pi)>=exp(6)>=1+6+18=25 and (25-1)/(25+1)=12/13>=11/12.
+
+For completeness, the normalized tail-moment argument is NOT inferred from
+f(M+u) alone. The derivative bound gives
+  f(M+u+v)<=exp(-u)f(M+v), u,v>=0.
+Integrating over v yields S(u)<=exp(-u)S(0) for the unnormalized right-tail
+survival S; the left tail satisfies the same inequality. Consequently each
+tail's conditional excess has first moment<=1 and second moment<=2. Combining
+both tails and the interior gives
+  E sigma^2 <= M^2+2M+2 <= 2omega^2+32(m+1)^2.
+Thus (C1) implies
+  rho_(m+2) <= 33eta^4*((m+1)^2+omega^2)
+                 /[rho^2*(m+1)^2*(m+2)^2] *rho_m.              (C2)
+
+For n>=1, apply (C2) with m=n-1. By (B1) and a>b,
+  D_(n-1)D_(n+1)
+    >= (b^2/4)*(n^2+omega^2)*rho_(n-1)rho_(n+1).
+Since eta^2=4b^2 this proves
+  rho_(n+1) <= [8sqrt(33)b/(rho*n*(n+1))]
+                  sqrt(D_(n-1)D_(n+1)).                      (C3)
+Equivalently the Hermitian block with diagonal c_n D_(n-1),c_n D_(n+1)
+and off-diagonal exp(i phi)rho_(n+1) is positive for every real phi, where
+c_n=8sqrt(33)b/(rho*n*(n+1)). This repairs the failed energy-only tail
+comparison in the parent artifact. It does not by itself prove the full
+quartic response bound.
+
+D. Exact polarized linked pairing: both real and imaginary parts
+
+Define q_n=eta^2/[2rho(n+1)]. The two elementary Fourier shift identities are
+  exp(i theta)rho_(n+1)(omega+i/2)
+    +exp(-i theta)rho_(n+1)(omega-i/2)=2q_n rho_n(omega),
+  exp(i theta)rho_(n+1)(omega+i/2)
+    -exp(-i theta)rho_(n+1)(omega-i/2)
+       =i*q_n/(n+1)*(partial_theta rho_n-2omega rho_n).          (D1)
+To check the second sign directly,
+  partial_theta C_n+2i C_n'=-2i(n+1)tanh(z_+)C_n,
+so
+  FT(tanh(z_+)C_n)=i/(2(n+1))*(partial_theta rho_n-2omega rho_n).
+Also sinh(z_+)C_(n+1)=q_n tanh(z_+)C_n. These facts give (D1).
+
+Let G,J be two finite profile streams with the SAME width list (zero padding
+allows a union of finite lists). For n>=0 define the regular product
+  I_n[G,J](k)=k^(2n) integral rho_(n+1)(omega)
+       H_(n-1)[G](k,omega)*conjugate(H_(n+1)[J](k,omega)) domega.
+At n=0 this contains H_-1 only as part of the displayed product. Do not
+introduce a separately bounded negative-index norm, or k^(-1)L_-1.
+
+Apply (D1) to H_n[G] H_n[J]^*, shift the two contours oppositely, and use the
+actual width linkage. The result is the FULL complex sesquilinear identity
+  exp(i theta) I_n[G,J](k)
+    =q_n integral [rho_n+i*(partial_theta rho_n-2omega rho_n)/(2(n+1))]
+          L_n[G](k,omega)*conjugate(L_n[J](k,omega)) domega.   (D2)
+For G=J its real part is the parent artifact's identity. Its imaginary part
+is new and is essential; a shifted function was never identified with its
+shifted conjugate. For G different from J the two shifted terms are
+exp(i theta)I_n[G,J] and exp(-i theta)conjugate(I_n[J,G]); summing and
+subtracting them proves (D2) without any independent-mode assumption.
+
+Contour justification: rho_(n+1) is holomorphic for
+|Im omega|<(n+3)/2 and decays exponentially on every smaller closed horizontal
+strip, with any rate less than pi-2theta. Finite width sums are bounded on
+horizontal strips. The half shifts therefore cross no poles, and the
+vertical rectangle sides tend to zero. This remains true at n=0. Nearest
+rho_0 poles at +/-i do not enter (D2), whose shifted density is rho_1.
+The H_-1 term is retained exactly, not discarded by a contour argument.
+
+E. A full summed charged bound for the linked pair, including n=0
+
+From (B1),
+  rho_n <= 2D_n/[a(n+3)],
+  |partial_theta rho_n-2omega rho_n| <= 4D_n/b.                (E1)
+Indeed b partial_theta rho_n=D_n-(n+2)a rho_n, and the three terms
+D_n, (n+2)a rho_n and 2b|omega|rho_n are bounded by D_n, 2D_n and D_n.
+Using (D2), Cauchy-Schwarz with the POSITIVE weight D_n, and a>b gives
+  (n+1)^2 |I_n[G,J](k)|
+    <= (8b/rho)
+       sqrt( integral D_n|L_n[G]|^2 * integral D_n|L_n[J]|^2 ). (E2)
+For the constant, before simplification the coefficient is
+  (n+1)^2*q_n*(2/[a(n+3)]+2/[b(n+1)])
+     =eta^2/rho*((n+1)/(a(n+3))+1/b) <= 8b/rho.
+Thus a second Cauchy-Schwarz, over n and k, yields the genuine full-sequence
+bound
+  sum_(n>=0) (n+1)^2 integral_k |I_n[G,J](k)| dk
+    <= (8b/rho) sqrt( Dvac[G]*Dvac[J] ),
+  Dvac[G]=sum_(n>=0) integral_(k,omega) D_n|L_n[G]|^2.         (E3)
+For G=J, Dvac is exactly R/2 times the real charged dissipation of the vacuum
+channel at fixed b,L. Formula (E3) uses the genuine whole linked sequence,
+includes n=0, and has a constant independent of widths, number of packets,
+neutral source labels and their polynomial degrees. The independent Gamma
+comparison (C3) is unnecessary for (E3), but remains useful for auxiliary
+pairings that do not obey the exact linkage.
+
+All sums and k integrals are finite for the stated original packet streams:
+the same Gaussian/factorial domination in the parent artifact applies, with
+polynomial n factors and theta derivatives absorbed in a small neighborhood
+of the strict packet floor. Finite neutral derivative streams are legitimate
+choices of G,J. This does NOT mean that their Dvac norms are automatically
+bounded by the full field-weighted charged dissipation.
+
+F. What remains in the actual quartic conversion
+
+The original full energy is sum_n integral rho_n Q_n,s[L_n], where
+s=L/eta and Q=q0+q1/2+q2/4 is the exact completed degree-two field form in the
+parent artifact. The charged form is sum_n integral D_n Q_n,s[L_n]. It is
+nonnegative by the existing full fixed-v charged contraction, but individual
+Q_n,s can be negative. Scalar (B1), (C3), or (E1) cannot be multiplied by Q.
+
+The raw quartic moment formula is regular. In its completed form, the n=1
+squares separately have k^(-2) singularities which cancel in their sum.
+Estimating those squares individually would lose that cancellation. Likewise,
+although (E3) applies to each actual neutral derivative stream, the resulting
+norms Dvac[D^j G] are not yet bounded by the positive full charged field form:
+large neutral translations can cancel the field shift inside its linked jets.
+No such diagonal graph-norm comparison is being assumed.
+
+A valid remaining step must apply (D2)/(E3) inside a positive full-feature
+representation of the RAW j=0,1,2 moment Gram, or prove a joint norm comparison
+that preserves these cancellations. The desired final inequality is still
+  sum_n integral {
+      -(2delta/R)*D_n Q_n,s[L_n]
+      +(kappa/eta)*rho_n partial_s Q_n,s[L_n] }
+      <= C*fraction *sum_n integral rho_n Q_n,s[L_n],
+with the actual clock kappa=-2delta-3ell. The controlled -4ell energy term
+is then restored. No bound for this full expression is claimed here.
+
+At b->0 the factor 8b/rho in (E3) vanishes, but s=L/eta diverges and the
+completed quartic coefficients contain compensating powers. Therefore one
+must take the JOINT raw-channel limit; (E3) alone is not a uniform b=0 proof.
+The n=0 PAIR boundary is now controlled by (D2)/(E3); that is a genuine
+advance over assigning an uncontrolled H_-1 norm. The full k=0 quartic
+cancellation and the conversion to the actual charged norm remain open.
+
+STATUS: exact analytic charged-density coercivity, uniform adjacent block,
+and full linked polarized-pair estimate; no unrestricted physical response
+bound or admissible violating family. All repository sources are unchanged.

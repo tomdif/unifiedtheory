@@ -1,0 +1,345 @@
+{
+  "arithmetic": "Exact bounded int64, no overflow",
+  "scope": "Exhaustive finite-basis controls; the uniform locality theorem is analytic",
+  "volumes": [
+    {
+      "length": 3,
+      "checks": [
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 0,
+          "basis_vectors": 81,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 27,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 1,
+          "basis_vectors": 324,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 18,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 2,
+          "basis_vectors": 486,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 9,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 3,
+          "basis_vectors": 324,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 4,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 4,
+          "basis_vectors": 81,
+          "maximum_coefficient": 0,
+          "maximum_absolute_row_sum": 0,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "degree": 0,
+          "basis_vectors": 81,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 27,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "degree": 1,
+          "basis_vectors": 324,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 18,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "degree": 2,
+          "basis_vectors": 486,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 9,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "degree": 3,
+          "basis_vectors": 324,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 4,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "degree": 4,
+          "basis_vectors": 81,
+          "maximum_coefficient": 0,
+          "maximum_absolute_row_sum": 0,
+          "coefficient_bound": 1,
+          "row_sum_bound": 1296,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        }
+      ]
+    },
+    {
+      "length": 4,
+      "checks": [
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 0,
+          "basis_vectors": 256,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 128,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 1,
+          "basis_vectors": 1024,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 64,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 2,
+          "basis_vectors": 1536,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 24,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 3,
+          "basis_vectors": 1024,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 8,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "degree": 4,
+          "basis_vectors": 256,
+          "maximum_coefficient": 0,
+          "maximum_absolute_row_sum": 0,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "degree": 0,
+          "basis_vectors": 256,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 128,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "degree": 1,
+          "basis_vectors": 1024,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 64,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "degree": 2,
+          "basis_vectors": 1536,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 24,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "degree": 3,
+          "basis_vectors": 1024,
+          "maximum_coefficient": 1,
+          "maximum_absolute_row_sum": 8,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        },
+        {
+          "center": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "degree": 4,
+          "basis_vectors": 256,
+          "maximum_coefficient": 0,
+          "maximum_absolute_row_sum": 0,
+          "coefficient_bound": 1,
+          "row_sum_bound": 4096,
+          "centered_box_preserved": true,
+          "contraction_exact": true
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "scripts/cohomology_locality_audit.py": "082f11099f3fbc25d62d478d9d9a355cbc1d607e1afb07cc8493bf73c28d420b",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3"
+  }
+}

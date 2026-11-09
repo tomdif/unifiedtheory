@@ -1,0 +1,653 @@
+{
+  "modules": [
+    {
+      "source": "UnifiedTheory/Audit/KFCausalComplexClockChart.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalComplexClockChart.olean",
+        "UnifiedTheory/Audit/KFCausalComplexClockChart.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "296175f7d66e3706eeebba4ba5f1e2553b2ef66748323bd3bc24e8193f7a5c03",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_derivative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_analytic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_continuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_re": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_im": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.strip_exp_re_nonnegative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.complexChart_derivative_ne_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.closedStrip_closed": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.openStrip_open": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockChart.closedStrip_segment": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalComplexClockCoercivity.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalComplexClockCoercivity.olean",
+        "UnifiedTheory/Audit/KFCausalComplexClockCoercivity.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c986744f9f461c56c6aacf605b9e0c5953f6f4b1fd82864999770b480e8bcbdb",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalComplexClockCoercivity.segmentPairing_derivative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockCoercivity.complexChart_strong_monotone": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockCoercivity.complexChart_norm_lower": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockCoercivity.complexChart_injOn": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalComplexClockImage.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalComplexClockImage.olean",
+        "UnifiedTheory/Audit/KFCausalComplexClockImage.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "367abdbc050455413b769e0c03cab6a206794b419433ef1b58889b0a816c9281",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalComplexClockImage.complexChart_closed_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockImage.target_preimage_interior": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockImage.complexChart_open_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockImage.targetStrip_convex": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockImage.complexChart_surjOn_strip": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalComplexClockInverse.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalComplexClockInverse.olean",
+        "UnifiedTheory/Audit/KFCausalComplexClockInverse.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "984aef1383056fa202c20b9ecb2d95b03a639edd6181bac8c4c6314342bc69a7",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_left": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_right_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_mem_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_analytic_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_right": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_mem": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_analytic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_norm_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockInverse.complexInverse_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalComplexClockWeights.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalComplexClockWeights.olean",
+        "UnifiedTheory/Audit/KFCausalComplexClockWeights.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e86a6781d350a0c5533d23de269dd33d0ea3980cb0263f2b41963cfa02867fd3",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.complexInverse_re_upper": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.complexInverse_re_lower_of_nonpos": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.complexInverse_inverse_clock_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.complexPhase_analytic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.complexPhase_re_upper": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.fieldCoefficient_analytic": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalComplexClockWeights.fieldCoefficient_norm_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalLocalStripContour.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalLocalStripContour.olean",
+        "UnifiedTheory/Audit/KFCausalLocalStripContour.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "82f742418b9b7f49a50a276a80d0755e47de36c93fca031a544d769439234dd1",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalLocalStripContour.horizontal_continuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalLocalStripContour.horizontal_integral_eq_strip": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalLocalStripContour.fourier_shift_strip": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalFieldCoefficientTrials.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalFieldCoefficientTrials.olean",
+        "UnifiedTheory/Audit/KFCausalFieldCoefficientTrials.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "7a5e7b07b9feb0c66f50e281c788b0d1745ed4d60fea83889c0a18e2cd0078ad",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedTrial_differentiableAt": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.fieldCoefficient_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_real": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.linear_gaussian_absorption": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_gaussian_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_continuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_integrable": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_memLp": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalFieldCoefficientTrials.weightedLine_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "source": "UnifiedTheory/Audit/KFCausalShiftedFieldCoefficient.lean",
+      "command": [
+        "lean",
+        "-o",
+        "/private/tmp/unifiedtheory-proof-20261015.FavapN/UnifiedTheory/Audit/KFCausalShiftedFieldCoefficient.olean",
+        "UnifiedTheory/Audit/KFCausalShiftedFieldCoefficient.lean"
+      ],
+      "exit_code": 0,
+      "log_sha256": "69fb99d2e6b262058e4bc2f151e299e70a50091ba1ddb7a5821313f405d06da4",
+      "audited_declarations": {
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_continuous": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_integrable": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_memLp": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_square_bound": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_fourier": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_zero": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.shiftedWeighted_inverse_clock_energy": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Audit.KFCausalShiftedFieldCoefficient.inverseHalfWeighted_memLp": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    }
+  ],
+  "root_check": {
+    "command": [
+      "lean",
+      "UnifiedTheory.lean"
+    ],
+    "exit_code": 0,
+    "empty_log": true,
+    "source_sha256": "d3f5ec7dacfe8178d1443eb5f4630ed40d603d73b2fdcd8fa998a1127c3f0ba4",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "audited_declaration_count": 56,
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da",
+    "scripts/inverse_clock_parity_audit.py": "43c0ddbb37ff0a5021cb8a64c28d972c57124ecb7c6c1cbd7bd47a43e153d156",
+    "UnifiedTheory/Audit/KFCausalGravityPairCoercivity.lean": "54348ed81542838ecfee8ed2a0f987f1019e64638242bb70da0aed9e802dabe1",
+    "UnifiedTheory/Audit/KFCausalInverseClockEnergy.lean": "7fe949640f029747228db95b9cdec39e9666fbb189a759e2a5e24a5f8bce87c4",
+    "UnifiedTheory/Audit/KFCausalOccupationParity.lean": "458f93c0149b4f1a7921a37cbc88d635047e9d4f955f3646dbb71a1e857d9ba4",
+    "UnifiedTheory/Audit/KFCausalUniformInverseClock.lean": "b661d91479a5e5c4244b5c23fc933755187cd0a9b06680bf016738ffa0048a4d",
+    "scripts/longitudinal_domain_audit.py": "4e4134870fbc864a2508f4063042e5e87e542dcd003a79b53b7665b243222b9e",
+    "UnifiedTheory/Audit/KFCausalLongitudinalDomain.lean": "7eec07207bcf1f18f2c10cad77dfed6a20775995888fe49b10425922d45f40dd",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalChart.lean": "152bf170505f4fce2327c91e620a11641906493b4befbc172430ac9fac02db94",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalPullback.lean": "3fa015346d21f8cf26982c9c2164c0c181d24ce0c56a00ad1884f5a744906982",
+    "scripts/regularized_constraint_spin_model.py": "633956425de4f4d9b19bda57e51476416d8deea3ea57d7a1f1d92595985be63d",
+    "scripts/regularized_spin_dynamics_audit.py": "ea3e76a6a19225d60061b002de3e55a2204393bd4d3436ae5712aa97dcf35579",
+    "UnifiedTheory/Audit/KFCausalRegularizedClockDatum.lean": "38e2b7491651aa9a147f4be6e32ed20cd753d15655ea3d5c8739c626724961fc",
+    "UnifiedTheory/Audit/KFCausalRegularizedSpinDynamics.lean": "ad93f97b6bdbe79827017336f67381a920d95e61673e32b860c62a72cd5f5521",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianCore.lean": "4866fabe9a33015aa03e40644f5bcc156c589f35805dd51a10b038286cdaa92d",
+    "UnifiedTheory/Audit/KFCausalRegularizedTrialBounds.lean": "43b898c82a4fe7242024383ab20e7c5a3b0fc786a764d7928bc600796807fa27",
+    "UnifiedTheory/Audit/KFCausalFourierUniqueness.lean": "29bb4bce91b943c7005c34091474fae7b03ec2a810948903011315f900088a30",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianTotality.lean": "2a1af3b76f1d7ebbe475ed2188241b649da50e0e035bbc4bdf1de887b35f25d6",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormDomain.lean": "4a6154adcac084ff62f2238ab1a7f74b7b5763f9c31aa89d8eb4334525466b67",
+    "scripts/regularized_closed_form_audit.py": "81e393aad33862e0361820ce14da856682659b1b3dac184bbe1c6aea3a31e60a",
+    "UnifiedTheory/Audit/KFCausalRegularizedAdjointTests.lean": "3b06359f9cad8d6d428072fb3c4871a10fbf775246a96de625371702c212070c",
+    "UnifiedTheory/Audit/KFCausalSeparatedGraphClosure.lean": "4f8cb27e6402846d8d3155a87b85d82d5fd009df12ad803fd3be0e6d01b48122",
+    "UnifiedTheory/Audit/KFCausalRegularizedMomentumClosure.lean": "a7b48a09096bfcf1aeb6323373efbd832552b8757120bbeb69678241c20e0712",
+    "UnifiedTheory/Audit/KFCausalRegularizedClockFactor.lean": "0fc9c7c601abfd9d21265668641a7b6943bf11b34da2e927783233c5c916da0e",
+    "UnifiedTheory/Audit/KFCausalRegularizedClosedForm.lean": "676c470f6d8ca333572368573d5d8c826547741319a79d1cccfc3ae650d00305",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormEmbedding.lean": "50c765c73feb7dc57f4b8a69c4264be7a0f27a5275cff783abe7b9c0cc44f212",
+    "scripts/regularized_hamiltonian_audit.py": "956dbcef8406af1529669339815856d5129cceaf24f0e544d558d50d080399a4",
+    "UnifiedTheory/Audit/KFCausalFormResolvent.lean": "56e93d58d0c4cf6fd1ab579677b156c6925991cec19eed358a18ac24e3482c87",
+    "UnifiedTheory/Audit/KFCausalResolventHamiltonian.lean": "20e62721b10299e9eb2219e29c819092f08e21f358c8ee9f1688231d519cfaa3",
+    "UnifiedTheory/Audit/KFCausalFormHamiltonian.lean": "de0bd67ae3bb5f044c5812f3688bc324286e7a2cb35fb37000ed0bcca27d37a8",
+    "UnifiedTheory/Audit/KFCausalRegularizedHamiltonian.lean": "e795d3bc2ba49582a9fe3b10c386f98f4235a69d791bba7e8152c49a4a44f160",
+    "scripts/regularized_form_time_audit.py": "d5adfa16e722df49c99bf0eb6fc4e9427cfb471a1b7fec155fade8bb95f16509",
+    "UnifiedTheory/Audit/KFCausalGraphTransport.lean": "c820a8c68a54bd24b371eef3eed92c6156f1c6b8cb52d851605909080ea6fd94",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormTransport.lean": "534876e19debdaa93e710fd79cc3caee7042a2b95c6285369366e7eb38b0a239",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormTimeControl.lean": "0be0163b01fe57dfef37a0e9e138bf61b8e518c897bff74a9ed4b18f37a5fc29",
+    "UnifiedTheory/Audit/KFCausalBoundedFormCurve.lean": "10cfe546070959bd2d9002994ab25d0947ac2c6e40835932e0d6faab586fbc1f",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormRegularity.lean": "df44da5c82cacf5f6c6cf1642d048dc1d8547cb13b8d565e4732546931d2cc94",
+    "UnifiedTheory/Audit/KFCausalRegularizedHamiltonianFormBridge.lean": "b3204890696f42c3d3d7f31a4cddf87d146fc46cbff6288449f63a6090f80ab8",
+    "scripts/regularized_resolvent_audit.py": "ecb5d68aa9f196c898e2ae6059a2591f46bbef1c1e2cb28247d0980ae99fe7fe",
+    "UnifiedTheory/Audit/KFCausalCoerciveInverse.lean": "b7f3eac243068b04dd623a3fbacf986b959bd2fc8898445a5041f1f742b1d17e",
+    "UnifiedTheory/Audit/KFCausalShiftedForm.lean": "83549145e0f2d478f0bd4a9840d319861722dba1db0a17bb7237fad70b88f0c9",
+    "UnifiedTheory/Audit/KFCausalInverseCurve.lean": "0431c0a0a2bed60dd11fe79506b6367e53997d346e1c6e03403876603063bb64",
+    "UnifiedTheory/Audit/KFCausalRegularizedShiftedResolvent.lean": "e448c3d5a93b514e2ae0904f8ac74bf74e04c1d15a01849b0373543a6bb2dbd6",
+    "UnifiedTheory/Audit/KFCausalPositiveResolventBounds.lean": "e7a4d0bce077af6b2aae4c2fd83c204e1afc6616eb4ce1cdd0391a95a30fafd8",
+    "UnifiedTheory/Audit/KFCausalYosidaApproximation.lean": "aafe0e04cb3d9fa5e411e7cc5ba2358e717fc432180598509a6c8da46d56cf51",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosida.lean": "055df3f4f0074052759e2a2519f391744fc42eac5b8df66b4e2870716a03cf09",
+    "scripts/regularized_yosida_dynamics_audit.py": "59c9297972b152e71b75484dea34def7cfff14b70f5ed6f634ebfb303669e62c",
+    "UnifiedTheory/Audit/KFCausalHilbertIntervalPropagator.lean": "886d3a5035374c5d052a5141a0fcc9f648b98d00b61fc66bec62bf071f5cbc94",
+    "UnifiedTheory/Audit/KFCausalHilbertGlobalFlow.lean": "5d7dd3d53bc0b5cb1672501a3d1802020cfd1b7f3669ee1dbcfcf518fd1e805e",
+    "UnifiedTheory/Audit/KFCausalHilbertEvolution.lean": "5be135496dccd5311c1f59798f3a290054149ea5e861f9b2edcedac1215dda7f",
+    "UnifiedTheory/Audit/KFCausalHilbertStateEvolution.lean": "d5971eaf25244fd78aa88ec3cc42fc5d91cdaf0698996fbf3d758fc7d5186521",
+    "UnifiedTheory/Audit/KFCausalHilbertEvolutionStability.lean": "10578b2444a1621bd5c3335f0dc7b79f1b918a36260265c0068c14559ba1b008",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaDynamics.lean": "1d96564a37ac4ea39fb33287f998f62778ca4b15e528cfb9d644eb2fa289cd31",
+    "scripts/regularized_yosida_energy_audit.py": "dd54364ed96427cfb1319fb1f4d437ad5cd1f67944e3784329b6d01d222b12c4",
+    "UnifiedTheory/Audit/KFCausalSandwichCalculus.lean": "c3a3fa74ff9e400194212bd4ee0b6398a8405977c463e5d245465729a16781fb",
+    "UnifiedTheory/Audit/KFCausalFormEnergyIdentities.lean": "5f96bb0209d64a939c0fff1fb1b3a7103bff1dc405cdb8313fa4e0024029d626",
+    "UnifiedTheory/Audit/KFCausalSchrodingerEnergyEstimate.lean": "f07c689c3a16033956676c19f32aecd8a87da23de24ebff13fd9b798122c5780",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaDerivative.lean": "ecff207a53d778123b239db54d26ae3890c9b3f43126ef1903c9bd36196d03c9",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaEnergy.lean": "b862d572965a3e7b39b879b9bf435c5e64e31fa58104be403637de810f6c6b42",
+    "UnifiedTheory/Audit/KFCausalRegularizedSmoothedTrajectory.lean": "28870dab1007b61f685c9381dfbe7f70333a3a23f2cf99b273977f0b7c464dcd",
+    "scripts/regularized_weak_trajectory_audit.py": "288b4d119f6e0fe0c6c8079bdb50a91fb4e2259f95e2409d7538ab84e61b3f54",
+    "UnifiedTheory/Audit/KFCausalHilbertWeakSubsequence.lean": "e1e0da335cc2d82ad0082035e74cd6c4795788e62e1a398243c3216f576872a2",
+    "UnifiedTheory/Audit/KFCausalWeakLimitTransport.lean": "6e09607b56f3dd5c3d640b51b09fdcc00005391e64335a9537d0c8b667be7ac9",
+    "UnifiedTheory/Audit/KFCausalWeakLimitFromTests.lean": "3243529fb6ba1d8aa63c9ae9a9a3d1841f2a51b74265d0ec0efc57cece92a4cb",
+    "UnifiedTheory/Audit/KFCausalRationalCauchyExtension.lean": "71a101de91ccc2579bfb10e9dff72faa503238dcb4ff5819373ee6b6d67df03d",
+    "UnifiedTheory/Audit/KFCausalPairingCauchyTransfer.lean": "eef22ed20d6daf5810ff3c0760fe97ce3cd1f1ebe7babd6f89ec787275360405",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormSeparable.lean": "1e909e676ab5b8369834f4d8481df290882c2df305cfe4ae6a1a67193c91b32c",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormWindowBound.lean": "85b378ecd972378e09f930952254a4f5977396405630ef01417fef86983e6759",
+    "UnifiedTheory/Audit/KFCausalRegularizedCountableLimit.lean": "45689b53c300245766ac0b7c40709269efe4fc4ca164c3caaac4fba593f5f04f",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakPairing.lean": "89f53738b8f3bf5f08e81823cb3faa5169d1ec583d93a9b8766cf712aace853e",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakTrajectory.lean": "2b670bb7ba9fb576c31f61b9f1dbf91e0ddb5314f509aa18a8a8e38be8234e84",
+    "UnifiedTheory/Audit/KFCausalWeakIntegralLimit.lean": "abd22bc3e86aa25a1aa7d992a7dba30b207ff993b98cfbc108ab93f773f5fc5c",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakIntegralEquation.lean": "7e891572a24ce4a52a70f29d9094debe922d0894a65479da1237520db6694e88",
+    "UnifiedTheory/Audit/KFCausalWeakContinuity.lean": "ce2f04d301a871e5c6e5b838c6d27dc44c871d3f038bad260944afbc8dcf583d",
+    "scripts/regularized_mass_energy_audit.py": "24f96e5bebfacffb2fb697d0491b7fe74694c9b062023d45c541407e3ac8690d",
+    "UnifiedTheory/Audit/KFCausalMassGram.lean": "6774892a7213586a970a7f450016d55e6fe75a918872919544bad847e59fff4e",
+    "UnifiedTheory/Audit/KFCausalLocalWeakContinuity.lean": "56ce49bf301f48bbab5a171cc53dca8fa7fd3ea0c7f4c8deb265a172a32cff0c",
+    "UnifiedTheory/Audit/KFCausalWeakQuadraticDerivative.lean": "bef4e8bc9018cdffa1796f5bc81768578ed3c076e00a31db11d4636a779aaaef",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakFormContinuity.lean": "8828ef1a89c857796cd093512d5b0af930b4dd6cc38a8219303c94db9036e4ea",
+    "UnifiedTheory/Audit/KFCausalMassRegularization.lean": "ea13151225b76940c27258b3082e8807e45d7284438ea23c8fd5927b7a4722a5",
+    "UnifiedTheory/Audit/KFCausalRegularizedEnergyLimit.lean": "4eae75f253907958d04708bf3ac2cc264ba1e115bc8e5296dafb9ea7622329d4",
+    "UnifiedTheory/Audit/KFCausalMassEnergyIdentities.lean": "908f43ccdf224f58ceb19af5e28f6e64f032d2bae9185c1742a3221cfcd376bc",
+    "UnifiedTheory/Audit/KFCausalRegularizedMassEnergy.lean": "c526ef8d4faa333d8f94b4310d4c6272234226adb82b4330b6a710fcce325469",
+    "UnifiedTheory/Audit/KFCausalWeakNormStrongLimit.lean": "4a68b591ceb66ddd79266eaa186038455427816bfdd6d225a24e1cb7e611c9c2",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakNormConservation.lean": "cf054c93814867f384fa31a2d9f9bdf104dba4fbdf149d3b0686d56d43d6e9f1",
+    "UnifiedTheory/Audit/KFCausalWeakMassConservation.lean": "1baa3c8e8028423b976e2b802082cc73b522947a0f7070f7852d94f9d7c68fdb",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakUniqueness.lean": "9a0f2e5fad0989f716027fb7a5e7d22b70cfa06bfb8dbdd999946b669986c760",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormFlow.lean": "ea989485ce21c357cda431d090699eacead6a0988dc4d0aa97925ad9ae94d8cf",
+    "scripts/regularized_homogeneous_evolution_audit.py": "99f11e9f7b714fc623fdf4f53e313e2ca4518645703e83f87bbb82c4af87fc97",
+    "UnifiedTheory/Audit/KFCausalWeakFormSolution.lean": "17176be65c97ddda589658faef8dff42482628d46d403468fda09447ecc0f113",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakSolution.lean": "ba8251907d12a037a89f10ffd339e23ac5e6a5280df7471652818a7878094378",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormLinearity.lean": "2f8f83e28fe0f0cb66cc159e2dc43370cbcf4b4f084a8456a740e55f5caf6e5f",
+    "UnifiedTheory/Audit/KFCausalDenseUnitaryExtension.lean": "d46ea952ac035a6fb4f1b3d65a170425eae05c7283287ffd2b7b669359fd4ebe",
+    "UnifiedTheory/Audit/KFCausalRegularizedHomogeneousEvolution.lean": "60ace9b5df0b25189015ffd99a2685e654fc3e66dfb0b5204f02bd58c92cd87f",
+    "UnifiedTheory/Audit/KFCausalStrongUnitaryContinuity.lean": "124844cb05fcf8c979acfa83dfd67ff94947f35afb6e9f2fa6b760039b67e4a2",
+    "UnifiedTheory/Audit/KFCausalRegularizedHomogeneousContinuity.lean": "c4ea57523735dc726b4403b60db231b193ab9bf2830d492064adf0cd091f3abb",
+    "scripts/coupled_longitudinal_domain_audit.py": "e0faddd0bfbb3ed238d763c45188d0b851dd1f7daea69927dd05b6a044a7c0c6",
+    "UnifiedTheory/Audit/KFCausalQuadraticSourcePrimitive.lean": "293c0e0f8c30ad8ea4e360ded47bdc6b17276d402e25703f23e6a9f92b8cff88",
+    "UnifiedTheory/Audit/KFCausalSourcePrimitiveQuadratures.lean": "e28baabaad8ac9070dd1fcf81e6d4ef0206c8606078b40bd469d78474362e9cd",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationFlow.lean": "ad1f61e4d562d0079db177749941d6db76dae0c9e0c58e86fec415301d3440f8",
+    "UnifiedTheory/Audit/KFCausalCoupledLongitudinalFlow.lean": "c1c957a02bb33b7434a5a6bf4881c154e960602cbb862ffcf3149d50b0c4933e",
+    "UnifiedTheory/Audit/KFCausalCommutingClockReconstruction.lean": "63734d0414335d49f214182f92b30fc401755ed692f38ae98b28b5271a19dbfc",
+    "UnifiedTheory/Audit/KFCausalCoupledGaussianObstruction.lean": "0036a03e66d8a919784b88f51034a8792abb2f1d4ff25ab4002862c2814038fb",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationPullback.lean": "74dd50e99a22d4e13e459e4b1977c58bf2a545bb2fa7394e7058ab6813914944",
+    "UnifiedTheory/Audit/KFCausalTransverseDerivativeScaling.lean": "67f4f44f32f52286340047f41edea304cf5053b67a2e2742aa5b6582ef1bd9b3",
+    "UnifiedTheory/Audit/KFCausalCoupledDampedGaussian.lean": "43d5d9a57db937da54950cfc6db8fcb27197e3bb20a379dad38bbf8d98dba31c",
+    "scripts/damped_gaussian_momentum_audit.py": "e1371e1541f34cf254a3ff0aafdefa60435a97b4981443457a3d1c86110227ad",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianStrip.lean": "2eb64bd5d8a1e1486997c9b854212c2342fb0ebcc52bc89b21105f9a057e3e1b",
+    "UnifiedTheory/Audit/KFCausalGaussianContourShift.lean": "e3fc8d261f5c54072087e532ae8422c904c0166f6495d5e4eed0e8fbaef802f4",
+    "UnifiedTheory/Audit/KFCausalFourierStripDecay.lean": "f587bfeb45ab21c1117be58a335878ebe583d2577066038955582a8dcf166da3",
+    "UnifiedTheory/Audit/KFCausalExponentialFourierDomain.lean": "b0253ae56d1b2b160bd32ccd6d920d6ba494a035c1972b1aef31b9399dde4947",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianMomentum.lean": "103f8d30933a5590b0c9c142f7380f3318d6b19f773d471f2e5531b204fe2512",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianTotality.lean": "b0fdc4cbad3aa003e5537cd57f2192f9b762f10873badd353b132918d20f40d0",
+    "scripts/coupled_unitary_transport_audit.py": "a4b2d5daafcebf020a1bc536744866d4c9edb86f41506b1eba642eebd0b9af7b",
+    "UnifiedTheory/Audit/KFCausalConfigurationTestSpace.lean": "826bcd7f782cd2b60c845af08a4764ae9274f3d46e7e384cb20274c08778dbb7",
+    "UnifiedTheory/Audit/KFCausalCoupledCoordinateHomeomorph.lean": "a8973bad0eec70cd3c1391e688a0797c6aad9b06756ce8673ffe5f943dc30a82",
+    "UnifiedTheory/Audit/KFCausalWeightedConfigurationTests.lean": "d0a26cf004e3d2feb09aadef6c917b9eb260c71d1cab4cdbc76b0d55c173a99e",
+    "UnifiedTheory/Audit/KFCausalCoupledTestPullback.lean": "efffce7a241da0116e0b4a66bd8943d8ac4acd5138de7b4ca7c1cd61c2c4c4d6",
+    "UnifiedTheory/Audit/KFCausalCoupledUnitaryCoordinates.lean": "5572d8bf155f42eb1d54fec25183e70f2c6ce524ad53b89c668be5780cd87c52",
+    "UnifiedTheory/Audit/KFCausalConfigurationTranslation.lean": "c3f07847c948669bdaa9ce505942755de17e9554be0737bcf67b69689b79ad94",
+    "UnifiedTheory/Audit/KFCausalCoupledUnitaryTransport.lean": "8881bc23ced6b489c25019c6cd43547063d54b72e67eea421fb204229ed78ff0",
+    "UnifiedTheory/Audit/KFCausalCoupledTransportDerivative.lean": "352886a99b00e93deb8165eacfb3b402b3043b78cfd3657f304b1fdc41f1ae59",
+    "UnifiedTheory/Audit/KFCausalUnitaryOrbitAverage.lean": "8c93164f32f05eab41dd4b6f1c9383e854539fa5bf40f4573faf5b853c086132",
+    "UnifiedTheory/Audit/KFCausalStrongUnitaryGenerator.lean": "cee45738cadd42e4e5f80777e94c3fccaf67c34e59c0403f903facf1c979ac35",
+    "UnifiedTheory/Audit/KFCausalUnitaryWeakGenerator.lean": "ca190c8e7bc67fb7b0d1998539db32da83121624bcce4b113bf0e749a1c3d78f",
+    "UnifiedTheory/Audit/KFCausalUnitaryMomentumSelfAdjoint.lean": "d6f55721c23aea6b926268e9e362a48eff71bbc6b828b86b7038be8b1d055321",
+    "UnifiedTheory/Audit/KFCausalUnitaryMomentumEvolution.lean": "11f2ccda36bb2ccb78624ce573993d7c8439ba1f89513dfdd9dce7efc310f68c",
+    "UnifiedTheory/Audit/KFCausalUnitaryMomentumCore.lean": "47ccd1876bee5a8eabbc35f95f5c23908e98e84b42d00d0c9ecbd3d6da851479",
+    "UnifiedTheory/Audit/KFCausalCoupledLongitudinalMomentum.lean": "171d32455efb25d5ee733eb3973419f056ffbf457f58b359bb6636cf9f977685",
+    "UnifiedTheory/Audit/KFCausalLongitudinalMomentumConjugacy.lean": "c8d22170fedeeefc14656d000d37e0587c32aea06924390c7c86c0969bcb6349",
+    "scripts/longitudinal_momentum_domain_audit.py": "8011bd0b7c08649407c80585ca36050090fda3b78d34315801e0e064a31afda6",
+    "UnifiedTheory/Audit/KFCausalMeasureUnitaryPullback.lean": "4867f8d77e8da55a17b4c60770f3b2916b0b63cf9ecc161a7441bd465019ef67",
+    "UnifiedTheory/Audit/KFCausalEuclideanConfiguration.lean": "db9f0bff2f490a68867352e25d00502caab07b4fada5171a181aba66f87c4a83",
+    "UnifiedTheory/Audit/KFCausalUnitModulusMultiplier.lean": "ce5ff7c53a5a1bcf9720fb99d740977fddb5498833141f5110c2cfb525b9a2e7",
+    "UnifiedTheory/Audit/KFCausalFourierTranslation.lean": "60f226f433474e56431305f1f5c26c66f0bf42151968d8510cc06b86c9600fc8",
+    "UnifiedTheory/Audit/KFCausalClockFourierDiagonalization.lean": "372eb1c2e2004307611c8c2f9324859c9cda5d1736180a6826f4684508d6133e",
+    "UnifiedTheory/Audit/KFCausalLpDerivativeRepresentative.lean": "d923a8118c924b08f6ca2e2d67e0aac0d48717fee7d7b42d7ac0590290755299",
+    "UnifiedTheory/Audit/KFCausalLongitudinalFourierMultiplier.lean": "d95629d082497eff59b9edcf529722181c597a0cbdde3b3a06c0045eafa1f574",
+    "scripts/longitudinal_fourier_identification_audit.py": "cf8174ddb7840d5a1d5fb4374a678f9ed947c07ba042340a602f11d360e3e95e",
+    "UnifiedTheory/Audit/KFCausalContractiveMultiplier.lean": "27c4cdc59ce20ede9adf542c41307f1c3093257094f458628edffde9c4c2d035",
+    "UnifiedTheory/Audit/KFCausalInverseResolventGraph.lean": "efcf7d915a716dfc3a42288970c4c274cf6a1db2b5f086cddb7feca73eeb6d29",
+    "UnifiedTheory/Audit/KFCausalPositiveMultiplierResolvent.lean": "80923a7565c76cfc048f8bad88fb1b52d8937660e4d15dca9a9a5e91c6c66b73",
+    "UnifiedTheory/Audit/KFCausalPositiveMultiplierEnergy.lean": "3661fd18e290a736514d52c76caf06f55085cb9850bbc5b7f838ce856f6ab80b",
+    "UnifiedTheory/Audit/KFCausalUnitaryPositiveMultiplier.lean": "3f3629631672cbc9da492368118b1e166c7fc612d7999ae3b414711b30005085",
+    "UnifiedTheory/Audit/KFCausalSpectralExponential.lean": "234294662c2f73fe40826006f58edb0d16dcbcb6d17529dde5d22205d4b75ebc",
+    "UnifiedTheory/Audit/KFCausalSpectralExponentialSquare.lean": "d89d26fd13265c992568ae9a42357c2e553a73a325b174f1db4105adb33ab505",
+    "UnifiedTheory/Audit/KFCausalLongitudinalExponential.lean": "c6884ed5068b2eaadf41478cfe4c8de42702f4d6ea26d145d415a07c88a56ac1",
+    "scripts/longitudinal_exponential_audit.py": "a1deb191b955f29a2a9345c722bb3200776f47d256e677db614f928685d2fc90",
+    "UnifiedTheory/Audit/KFCausalCoupledCoordinateNullSets.lean": "2f10403900e2a77aa6787ef1195e6f66b52dc7bafc6738c13d39907860c58f37",
+    "UnifiedTheory/Audit/KFCausalWeightedLpRepresentative.lean": "cd86eac66b01f6c4c7de3bd6c3113ffb3161cfbfccfa2ce67d836b8cb33bba0b",
+    "UnifiedTheory/Audit/KFCausalCoupledLpCoordinates.lean": "1c1b56010cdd226a3481bdd919bcf4385696f86000f04daf9f061c4738c24c18",
+    "UnifiedTheory/Audit/KFCausalCoupledFunctionEnergy.lean": "03ee13b946fe64190c288621ca3a465f83892af48cb7bcc254b32a69723e4ae7",
+    "UnifiedTheory/Audit/KFCausalCoupledLpTransport.lean": "a5d10086951fe5160a131eab21e434bcbced55da44b583505a4e17ba9fa24b18",
+    "UnifiedTheory/Audit/KFCausalNoncompactFourierCoordinates.lean": "dd85a28d695d2260ee62fc30b42fabbe3e7efc8554693528f8e8f9f910f06081",
+    "UnifiedTheory/Audit/KFCausalL2FourierIntegral.lean": "bedb6d35da3db09e0b01ce18ab4984a21cbfc8e14a18cbcb4c2441375bf44543",
+    "UnifiedTheory/Audit/KFCausalNoncompactIntegralDomains.lean": "20d6512ca0dfb17a9d5b3d69a685a448466eaa40accda6bc07eeb16985f3cb3d",
+    "scripts/noncompact_coordinate_domain_audit.py": "42eb93d05c846abf5e53b53c6f56262badff3638a93130af9dab40896c7b8a82",
+    "UnifiedTheory/Audit/KFCausalEuclideanClockSplit.lean": "a2e8fe56543eaaaca4e6fa6181acfe88b62bb699732b4d951796675077939c67",
+    "UnifiedTheory/Audit/KFCausalClockTransverseProducts.lean": "386d1a54cef26954f124bab4fb3ede354158e7333c639150c48c9a883406edee",
+    "UnifiedTheory/Audit/KFCausalProductFourierEnergy.lean": "28b89bd7b20cdf6165f5c681d59a69bfda41288bd5b1e283abcb61bc0fbc3353",
+    "UnifiedTheory/Audit/KFCausalCoupledProductDomain.lean": "e48c980fe483cb733f49bb060c20d0888fabba1e6fdb7ead39718202109d22b2",
+    "UnifiedTheory/Audit/KFCausalSchwartzTransversePacket.lean": "d8dd8ba2de6730fdb7b688a40fd04c829e0425b22865fa308fc4196c9c5b8b7a",
+    "UnifiedTheory/Audit/KFCausalDampedProductDomain.lean": "7fc66f7181840e8c2bc169afea02248214fc97028228d30ad401abfcab5e1b47",
+    "UnifiedTheory/Audit/KFCausalDampedProductJointEnergy.lean": "7a34d4fda32fff6a912b3dda5d333dcaea8764fe6a9dd5014d46ff148b271696",
+    "UnifiedTheory/Audit/KFCausalDampedProductNonzero.lean": "9c816b490ef7b64e7cafed90768cbfcaf69e0ccbf33289e4e019b2e64ef3dc5d",
+    "scripts/damped_product_domain_audit.py": "2c9614f17cb515290e6eb92560c2bebb26df4d1211ff4a46267401f8c5df9840",
+    "UnifiedTheory/Audit/KFCausalEuclideanFourierUniqueness.lean": "f77fd337292ac537055ae346f3384f4cefa1db15162911f49309abdaae7d2188",
+    "UnifiedTheory/Audit/KFCausalCompactTransverseModulation.lean": "bffcd4d4c148ff8ff462ccb3f9a0afda9984596abb4d66122285ca937cfb13c5",
+    "UnifiedTheory/Audit/KFCausalDampedProductTotality.lean": "518a7e19d6e8b4a49ebd5b51d96c85e96804aa432af9c8be043d756fb717cbbd",
+    "UnifiedTheory/Audit/KFCausalCoupledTrialDensity.lean": "703415714a4bcfe8ca6168efce3ef630b248d0abf06342f8c6657fe802a899a5",
+    "UnifiedTheory/Audit/KFCausalTransverseEnergySpace.lean": "de5ed5307c051092d616dab6f432bdfb2e9e599b735efd61a8b5e923fed8c01c",
+    "UnifiedTheory/Audit/KFCausalCoupledJointDomain.lean": "e67f94179e38071adcc199466eefed129dbf5fb9a7b3707f4102c953824b6628",
+    "scripts/coupled_joint_domain_audit.py": "3a1905eca27a3a31e428fb75d94577c32c6c049cd5ff8cb16960864b4d11043d",
+    "UnifiedTheory/Audit/KFCausalClockTrialWeights.lean": "9ec0167bc0fabb4b49c14b0ab8aca2be917d773f753850e3193130db209c0bfe",
+    "UnifiedTheory/Audit/KFCausalPhysicalClockPowers.lean": "16ef0c85b8cbcd49d492ec701a2a789d0bc7a3fb7856789bf3b6fa4213437b32",
+    "UnifiedTheory/Audit/KFCausalClockDressedProducts.lean": "aadaeac2eec48696018b01b11be0052073b0995941716702173bb004e5040c71",
+    "UnifiedTheory/Audit/KFCausalWeightedProductTotality.lean": "2985c60bc4115832930f3960579f90e6474cb0b2a50761da145edc5915566045",
+    "UnifiedTheory/Audit/KFCausalClockDressedActions.lean": "0dc296b1612679d0316cb78873c80e836d41d4773f0b3aa9e52add50ffd4120a",
+    "UnifiedTheory/Audit/KFCausalClockDressedDomain.lean": "f8170a8e0fa742ff0c6e53562dfeda6eddf6edd972a77f251c4a7f3a83c78f40",
+    "scripts/clock_dressed_domain_audit.py": "e7d0ab0c0cc6d324489256a93351b88b8e5df1f9a4f1c3e8d165eead11fd48cc",
+    "UnifiedTheory/Audit/KFCausalTransverseFlowBounds.lean": "fc8d2573299f53ae6349120f14dc1c1d3fc419cb30d2de82b1c3ea34d5e0ba05",
+    "UnifiedTheory/Audit/KFCausalTransverseClockWeights.lean": "22e0602eeecf9b61053dfd911fa5c5c0add39dd3cb0a585fca6412fd20255f11",
+    "UnifiedTheory/Audit/KFCausalTransverseTrialDerivative.lean": "bcac2d79c027feebe68a55c6e600c8c72497aab36ae8d581359f1cd92f00cced",
+    "UnifiedTheory/Audit/KFCausalAllTransverseTrialEnergy.lean": "2dbea735d03786985b2ae26470fb4109b9c9df8b31862997e3111a3b0153f2f0",
+    "UnifiedTheory/Audit/KFCausalFullTransverseEnergySpace.lean": "de06987535abf5268ddad258fd0cb230c26da86e59af5818ced5be5a712f8724",
+    "UnifiedTheory/Audit/KFCausalFullTransverseJointDomain.lean": "216005d3091b866ac78d3a2ac1d18680c388077ff3025244a022133a1f9b843c",
+    "scripts/full_transverse_domain_audit.py": "e36f9847c187717c89a1fc18c2e39b48e94b899cfd84eb386924b2a922486b70",
+    "UnifiedTheory/Audit/KFCausalShiftedDampedScalar.lean": "b12320fe59a81ee678d145dc6929f18e7842714f3f032de8408b69cc9475648b",
+    "UnifiedTheory/Audit/KFCausalProductExponentialGraph.lean": "d419340aefe49026214533c54f60d3eab465665ba4e2956b7c9b930b4c5664df",
+    "UnifiedTheory/Audit/KFCausalShiftedProductAction.lean": "3d8273a040090061cf60ab6bc42971c1a95622a7d5625f5dacc92c09c6cfec72",
+    "UnifiedTheory/Audit/KFCausalShiftedScalarMoments.lean": "01d550bdadfd797214661af4737f6aea4d8f8b7ff1df7c24eabe9dd976f19069",
+    "UnifiedTheory/Audit/KFCausalTransversePositionMoments.lean": "456e6161eb7d6c85a2ab5a40d50028bf73b760e7c9c5f7cd103839b6942a7a10",
+    "UnifiedTheory/Audit/KFCausalShiftedFieldEnergy.lean": "1179ce9c5f5194c7369869985189638814fbc9c1a7a2cd34b62e06736b046040",
+    "UnifiedTheory/Audit/KFCausalTransverseFieldSquare.lean": "50a1d41f9b06df9dc5e9ae43e95932b3aadd3e200359ed1392c12b8490754d9e",
+    "UnifiedTheory/Audit/KFCausalMatterOrderedDomain.lean": "637019eeddda343ae8f0820793cdbb7d23d7d640a3a7563fff016816ace00e10",
+    "scripts/shifted_matter_domain_audit.py": "6e0587f9e9374059a93335cc3a9f08a1e00e12edc45a19be285204c8e809bc78",
+    "UnifiedTheory/Audit/KFCausalRealSignMultiplier.lean": "f8562a142e587c0cb307444be077ed2e445b67e9b37568fd1d5ac14ab1784c0c",
+    "UnifiedTheory/Audit/KFCausalUnitaryRealMultiplier.lean": "2bf9a300d38b1e6ec3332ef168307a4f8bef97e9f1163147b30acd60a9b886a4",
+    "UnifiedTheory/Audit/KFCausalRealMultiplierSelfAdjoint.lean": "24d2f4d5baa304feb43d02b92d2c6f596536f400ac21f3f9f890d5089f0a0ec7",
+    "UnifiedTheory/Audit/KFCausalL2DirectionalDerivative.lean": "be6a7a1e766c3f52adee73af7116d85db06f5d4b20ccf0a21b422310664d1dd7",
+    "UnifiedTheory/Audit/KFCausalPhysicalTransverseMomentum.lean": "88d2e7279a88a095365fd5cc1a89324a868dcf3a47acf509322f3a1a731a3730",
+    "UnifiedTheory/Audit/KFCausalTransverseMomentumDerivative.lean": "80a2448fb0d68d31996476a0caab404562fa5f7289573ea68a1b302fcae8bc1f",
+    "UnifiedTheory/Audit/KFCausalMomentumMatterDomain.lean": "aa3c781d0803bf46f7d08634fb046f099eb2c72b298fee1192a84ece232c32eb",
+    "scripts/transverse_momentum_domain_audit.py": "b0f1b7c6038cec67c9d52f86c1225b24c7debc63ef90ad22ddaae76fe4e3d5d0",
+    "UnifiedTheory/Audit/KFCausalShiftedInverseClock.lean": "caa0e1c10c77ef1ec0048562d56db855ba6aac04293a6e9e5b7e34b8834b94be",
+    "UnifiedTheory/Audit/KFCausalOrderedOperatorComposition.lean": "501945321de0b853f111cadfe59449717ca20272bc06ace67ee525d0392ac81d",
+    "UnifiedTheory/Audit/KFCausalShiftedInverseClockAction.lean": "7573077f168aebd14e804d553ee84a65d0780fd746c894c1e60ef86976d7a97e",
+    "UnifiedTheory/Audit/KFCausalOrderedExponentialClosure.lean": "ed10753dfe6e41e77e1379478e89af5cf1e3e409fbe2cf201005cf0cbe514cfb",
+    "scripts/ordered_exponential_closure_audit.py": "8d0943a44e06bc30d392ede1f3914c2c524ecbceddb430e08301e9d493243a0c",
+    "UnifiedTheory/Audit/KFCausalPhysicalTensorMomentum.lean": "c63cd88d1a60ad0980764a79a7f97e44ea84b8b15784ebd3984a5e609f5681cd",
+    "UnifiedTheory/Audit/KFCausalGaussianClockWeights.lean": "427038b172875028e9aa84251ac580ae79d712ab5c5f05f9138c8b775658dcdc",
+    "UnifiedTheory/Audit/KFCausalPhysicalTensorDensity.lean": "3fc63d91de4f450d480229ba1cb78f4a81a275344f815e3fcf6c06fca4db2471",
+    "UnifiedTheory/Audit/KFCausalClockMomentumClosure.lean": "9244892e248b714b67804ce74686c2de31321ad5e55685448c21309d4186d44d",
+    "UnifiedTheory/Audit/KFCausalClosedOrderedFactorDomain.lean": "2dacd186dfe02569dd45f6ff2dbae137362af470307bc11c65f0a2b0f1299e01",
+    "scripts/clock_momentum_closure_audit.py": "80397b26c6b7c36414056b35dab0995e24bc3ed2fdc4ad562b7ee952380cd7ff",
+    "UnifiedTheory/Audit/KFCausalComplexClockChart.lean": "9cfced6b09e271dee4690d6ccab6822735cb0e4ea6455bc70a0f532581af7826",
+    "UnifiedTheory/Audit/KFCausalComplexClockCoercivity.lean": "81c7eefd2550095ccfc212e1bb0b919504dede4ec362ee7b4e8e679280a9ed83",
+    "UnifiedTheory/Audit/KFCausalComplexClockImage.lean": "b4398c9f0979c6489a0023d0f2516dbdd12ad19f0ba188cc1276aeef08a7578e",
+    "UnifiedTheory/Audit/KFCausalComplexClockInverse.lean": "b9c491e4e2e837622545cd4cb1556eb72dfda3c1e1fa182cb370ec20afe693ce",
+    "UnifiedTheory/Audit/KFCausalComplexClockWeights.lean": "f837a3b0f9dc309f10f2c83bc46d86a83ae15fb88eec6b976988ac4e8cafa6c0",
+    "UnifiedTheory/Audit/KFCausalLocalStripContour.lean": "d73a58bc16cb8f6e9e7391c17694760afa4c7d5e6f043cb00d709b4035788e21",
+    "UnifiedTheory/Audit/KFCausalFieldCoefficientTrials.lean": "faf9291f0c03691f175420fae7d8f231416028c1e591d0def240f697c4a9bcb3",
+    "UnifiedTheory/Audit/KFCausalShiftedFieldCoefficient.lean": "314c4583c1d04b6fd668d1febf58cbde9328b568e4e1944f1c4dae3b8cb3b039",
+    "scripts/complex_clock_inverse_audit.py": "6c27b993f7bcb1ef4cc83094320ec9c47b9557a072803b830acfdda8d43cc985"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "Derived strong monotonicity and quantitative injectivity of Z(z)=exp(z)+epsilon*z on |Im(z)|<=pi/2 for epsilon>0. Proved its closed strip image closed by a Cauchy sequence argument, its open strip image open, and existence of an interior preimage for every |Im(q)|<=pi*epsilon/2 by connectedness and boundary exclusion. Constructed one inverse branch, proved it analytic near each point of the closed target strip, equal to the real chart inverse on the real axis, and Lipschitz there with constant 1/epsilon. Derived real-part, inverse-clock, and nonnegative field-coefficient growth bounds. A local-strip contour theorem yields exact Fourier translations for coefficient-weighted repaired scalar trials, including the strip boundary. These trials and their shifted modulations are L1 and L2; the shifted outputs also have finite inverse-clock energy, with explicit L2 inverse-half-clock images. The physical reversed matter operator triples, their dense domains and adjoint pairings, the full Hamiltonian form, charge averaging, physical evolution, finite-to-infinite identification, controlled limits, physical identification and the TOE remain open."
+}

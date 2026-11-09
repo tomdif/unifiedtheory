@@ -1,0 +1,456 @@
+{
+  "exact_identities": {
+    "second_order_flatness": true,
+    "naive_pauli_commutator_determinant": 4,
+    "scalar_target": "(-7*T + V)*(T + V)/8",
+    "exact_geometric_potential": "h*q**2/mu",
+    "exact_oscillator_frequency": "sqrt(omega^2+2*hbar*lambda^2/mu)",
+    "all_order_kernel": "Omega exp(lambda*y.S/hbar) C^d",
+    "physical_map": "J (J^dagger J)^(-1/2)"
+  },
+  "exact_tensor_correction": {
+    "physical_pairs": 3,
+    "free_hamiltonian": "k**2*qc**2/4 + k**2*qs**2/4 + p0**2 + pc**2 + ps**2",
+    "correction_divided_by_hbar": "(4*k**2*q0**2 + 3*k**2*qc**2 + 3*k**2*qs**2 + 20*pc**2 + 20*ps**2)/256",
+    "homogeneous_shear_coefficient": "hbar*lambda^2*k^2/64",
+    "scope": "Exact three-pair TT Galerkin source algebra; auxiliary constants removed; no full periodic Einstein solution"
+  },
+  "flatness": [
+    {
+      "physical_dimension": 2,
+      "auxiliaries": 2,
+      "flatness_residual": 3.821567597983379e-12,
+      "naive_curvature": 0.10399176063607171,
+      "kernel_residual": 3.4136821051036425e-10
+    },
+    {
+      "physical_dimension": 3,
+      "auxiliaries": 2,
+      "flatness_residual": 2.2373305524594265e-12,
+      "naive_curvature": 0.07394742847233239,
+      "kernel_residual": 2.617211904530528e-10
+    },
+    {
+      "physical_dimension": 4,
+      "auxiliaries": 3,
+      "flatness_residual": 3.5856361208244062e-12,
+      "naive_curvature": 0.061102710492820095,
+      "kernel_residual": 1.066549013198991e-09
+    }
+  ],
+  "tensor_quantum_correction": [
+    {
+      "wavenumber": 1,
+      "grid_points": 7,
+      "quadratic_hessian_error": 1.0459339178250796e-17,
+      "correction_hessian_diagonal": [
+        0.031249999999999997,
+        0.023437500000000003,
+        0.023437500000000003,
+        7.709860856242824e-34,
+        0.15625,
+        0.15625
+      ],
+      "homogeneous_q_squared_coefficient": 0.015624999999999998,
+      "hbar": 1,
+      "scope": "FFT inverse and canonical quadratic Hessians of actual restricted Einstein sources"
+    },
+    {
+      "wavenumber": 2,
+      "grid_points": 13,
+      "quadratic_hessian_error": 4.6889127258935015e-17,
+      "correction_hessian_diagonal": [
+        0.12499999999999999,
+        0.09375000000000003,
+        0.09374999999999999,
+        3.652577136865194e-33,
+        0.15625,
+        0.15625
+      ],
+      "homogeneous_q_squared_coefficient": 0.06249999999999999,
+      "hbar": 1,
+      "scope": "FFT inverse and canonical quadratic Hessians of actual restricted Einstein sources"
+    },
+    {
+      "wavenumber": 3,
+      "grid_points": 19,
+      "quadratic_hessian_error": 1.6662621567994335e-16,
+      "correction_hessian_diagonal": [
+        0.28124999999999983,
+        0.2109375,
+        0.2109375,
+        3.950283794213747e-33,
+        0.15625,
+        0.15625
+      ],
+      "homogeneous_q_squared_coefficient": 0.14062499999999992,
+      "hbar": 1,
+      "scope": "FFT inverse and canonical quadratic Hessians of actual restricted Einstein sources"
+    },
+    {
+      "wavenumber": 5,
+      "grid_points": 31,
+      "quadratic_hessian_error": 2.879768894409037e-16,
+      "correction_hessian_diagonal": [
+        0.7812499999999999,
+        0.5859375000000001,
+        0.5859375000000002,
+        3.274478794944977e-33,
+        0.15625000000000003,
+        0.15625000000000003
+      ],
+      "homogeneous_q_squared_coefficient": 0.39062499999999994,
+      "hbar": 1,
+      "scope": "FFT inverse and canonical quadratic Hessians of actual restricted Einstein sources"
+    }
+  ],
+  "normalized_response": [
+    {
+      "physical_dimension": 2,
+      "coupled_covariance": false,
+      "lambda_value": 0.08,
+      "gram_min_eigenvalue": 1.0010828793913875,
+      "errors": {
+        "gram": 5.6921850695982556e-05,
+        "physical": 1.3352939107362138e-06,
+        "mean": 2.115043182633755e-05,
+        "mixed": 2.540617415076401e-05,
+        "second": 1.9520140398948943e-09
+      }
+    },
+    {
+      "physical_dimension": 2,
+      "coupled_covariance": false,
+      "lambda_value": 0.04,
+      "gram_min_eigenvalue": 1.0002703421660677,
+      "errors": {
+        "gram": 3.5484583912071596e-06,
+        "physical": 8.363943963285592e-08,
+        "mean": 2.6522413348216855e-06,
+        "mixed": 3.1815468304024285e-06,
+        "second": 3.058444622303036e-11
+      }
+    },
+    {
+      "physical_dimension": 2,
+      "coupled_covariance": false,
+      "lambda_value": 0.02,
+      "gram_min_eigenvalue": 1.0000675619817947,
+      "errors": {
+        "gram": 2.2163591183502608e-07,
+        "physical": 5.230343201230665e-09,
+        "mean": 3.317952368245017e-07,
+        "mixed": 3.9787512475018543e-07,
+        "second": 4.782117553453328e-13
+      }
+    },
+    {
+      "physical_dimension": 3,
+      "coupled_covariance": true,
+      "lambda_value": 0.08,
+      "gram_min_eigenvalue": 1.0006780826650017,
+      "errors": {
+        "gram": 4.857884505504096e-05,
+        "physical": 4.089191283462481e-06,
+        "mean": 2.4788808219470124e-05,
+        "mixed": 5.0722802407187915e-05,
+        "second": 4.4592966079388397e-07
+      }
+    },
+    {
+      "physical_dimension": 3,
+      "coupled_covariance": true,
+      "lambda_value": 0.04,
+      "gram_min_eigenvalue": 1.0001694082941983,
+      "errors": {
+        "gram": 3.0294239417544756e-06,
+        "physical": 2.5618944684530513e-07,
+        "mean": 3.1108909858950834e-06,
+        "mixed": 6.357260734123419e-06,
+        "second": 2.7946281155044803e-08
+      }
+    },
+    {
+      "physical_dimension": 3,
+      "coupled_covariance": true,
+      "lambda_value": 0.02,
+      "gram_min_eigenvalue": 1.000042345058778,
+      "errors": {
+        "gram": 1.8923369177822672e-07,
+        "physical": 1.6021483766767946e-08,
+        "mean": 3.8924736032114373e-07,
+        "mixed": 7.951878816785605e-07,
+        "second": 1.747832469347205e-09
+      }
+    },
+    {
+      "physical_dimension": 4,
+      "coupled_covariance": true,
+      "lambda_value": 0.08,
+      "gram_min_eigenvalue": 1.0010074013218122,
+      "errors": {
+        "gram": 3.9614841070166066e-05,
+        "physical": 1.626354893168447e-05,
+        "mean": 6.322527695891791e-05,
+        "mixed": 0.00010927870853884415,
+        "second": 4.203747327553381e-07
+      }
+    },
+    {
+      "physical_dimension": 4,
+      "coupled_covariance": true,
+      "lambda_value": 0.04,
+      "gram_min_eigenvalue": 1.0002516791357825,
+      "errors": {
+        "gram": 2.4713423126579885e-06,
+        "physical": 1.01880160292622e-06,
+        "mean": 7.918592724359982e-06,
+        "mixed": 1.3686476463369636e-05,
+        "second": 2.6370390886939868e-08
+      }
+    },
+    {
+      "physical_dimension": 4,
+      "coupled_covariance": true,
+      "lambda_value": 0.02,
+      "gram_min_eigenvalue": 1.0000629090927426,
+      "errors": {
+        "gram": 1.54387380455169e-07,
+        "physical": 6.371161327324965e-08,
+        "mean": 9.903080387135446e-07,
+        "mixed": 1.7116442484981162e-06,
+        "second": 1.649671946590675e-09
+      }
+    }
+  ],
+  "quartic_response": [
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.08,
+      "raw_remainder": 8.904181032982833e-06,
+      "counterterm_remainder": 8.740161905415182e-06,
+      "quantum_correction_norm": 0.11545750701833861,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    },
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.04,
+      "raw_remainder": 1.0973447587000664e-06,
+      "counterterm_remainder": 1.0854041657345603e-06,
+      "quantum_correction_norm": 0.11545750701833861,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    },
+    {
+      "physical_dimension": 2,
+      "lambda_value": 0.02,
+      "raw_remainder": 1.362104608627495e-07,
+      "counterterm_remainder": 1.3541123936180934e-07,
+      "quantum_correction_norm": 0.11545750701833861,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.08,
+      "raw_remainder": 3.257713036352171e-05,
+      "counterterm_remainder": 3.2535726728763165e-05,
+      "quantum_correction_norm": 0.2153656471077204,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.04,
+      "raw_remainder": 3.941603551741837e-06,
+      "counterterm_remainder": 3.954797796980138e-06,
+      "quantum_correction_norm": 0.2153656471077204,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    },
+    {
+      "physical_dimension": 3,
+      "lambda_value": 0.02,
+      "raw_remainder": 4.869416305329029e-07,
+      "counterterm_remainder": 4.882788853609482e-07,
+      "quantum_correction_norm": 0.2153656471077204,
+      "scope": "Noncommuting matrix analogue of scalar and vector source ordering"
+    }
+  ],
+  "finite_spin_dressing": [
+    {
+      "block_size": 2,
+      "lambda_value": 0.1,
+      "dimension": 18,
+      "kernel_dimension": 2,
+      "residual": 2.5594302309271237e-17,
+      "gap": 0.990054953658293,
+      "condition_bound": 0.5679707120121916,
+      "norm_bound": 0.5679707120121921
+    },
+    {
+      "block_size": 2,
+      "lambda_value": 0.3,
+      "dimension": 18,
+      "kernel_dimension": 2,
+      "residual": 2.6202235114130363e-17,
+      "gap": 0.9141159938941665,
+      "condition_bound": 0.18322208643830673,
+      "norm_bound": 0.18322208643830706
+    },
+    {
+      "block_size": 3,
+      "lambda_value": 0.1,
+      "dimension": 32,
+      "kernel_dimension": 2,
+      "residual": 6.803465406344869e-18,
+      "gap": 0.9869680865078423,
+      "condition_bound": 0.5001634554780692,
+      "norm_bound": 0.500163455478069
+    },
+    {
+      "block_size": 3,
+      "lambda_value": 0.3,
+      "dimension": 32,
+      "kernel_dimension": 2,
+      "residual": 2.8145349647320526e-17,
+      "gap": 0.8956474615014841,
+      "condition_bound": 0.12512263168945897,
+      "norm_bound": 0.1251226316894589
+    },
+    {
+      "block_size": 5,
+      "lambda_value": 0.1,
+      "dimension": 72,
+      "kernel_dimension": 2,
+      "residual": 5.4248932691502624e-17,
+      "gap": 0.984382266265447,
+      "condition_bound": 0.4088417197978038,
+      "norm_bound": 0.40884171979780387
+    },
+    {
+      "block_size": 5,
+      "lambda_value": 0.3,
+      "dimension": 72,
+      "kernel_dimension": 2,
+      "residual": 4.306598891347179e-17,
+      "gap": 0.877737419507702,
+      "condition_bound": 0.06833852792409166,
+      "norm_bound": 0.0683385279240917
+    }
+  ],
+  "oscillator_limit": [
+    {
+      "Lambda": 2.0,
+      "lambda_value": 0.3,
+      "omega": 0.7,
+      "mu": 1.2,
+      "hbar": 1.0,
+      "eigenvalues": [
+        0.3806567382848245,
+        1.1408554429586784,
+        1.8168837987019784
+      ],
+      "limiting_eigenvalues": [
+        0.39999999999999997,
+        1.2,
+        1.9999999999999998
+      ],
+      "max_error": 0.18311620129802142,
+      "cutoff_difference": 1.9257928585147965e-12,
+      "residual": 1.1571893264731753e-13,
+      "physical_cutoff": 58,
+      "auxiliary_cutoff": 48,
+      "scope": "Variational Galerkin spectra; cutoff difference is not an interval bound"
+    },
+    {
+      "Lambda": 8.0,
+      "lambda_value": 0.3,
+      "omega": 0.7,
+      "mu": 1.2,
+      "hbar": 1.0,
+      "eigenvalues": [
+        0.3929039758285634,
+        1.1778997561998399,
+        1.9459239628071914
+      ],
+      "limiting_eigenvalues": [
+        0.39999999999999997,
+        1.2,
+        1.9999999999999998
+      ],
+      "max_error": 0.0540760371928084,
+      "cutoff_difference": 1.517189218702697e-08,
+      "residual": 4.2763432457575913e-13,
+      "physical_cutoff": 58,
+      "auxiliary_cutoff": 48,
+      "scope": "Variational Galerkin spectra; cutoff difference is not an interval bound"
+    },
+    {
+      "Lambda": 32.0,
+      "lambda_value": 0.3,
+      "omega": 0.7,
+      "mu": 1.2,
+      "hbar": 1.0,
+      "eigenvalues": [
+        0.3979771728827646,
+        1.193634743439561,
+        1.9848346195580198
+      ],
+      "limiting_eigenvalues": [
+        0.39999999999999997,
+        1.2,
+        1.9999999999999998
+      ],
+      "max_error": 0.015165380441980014,
+      "cutoff_difference": 7.937881654207501e-07,
+      "residual": 1.1824178869714222e-09,
+      "physical_cutoff": 58,
+      "auxiliary_cutoff": 48,
+      "scope": "Variational Galerkin spectra; cutoff difference is not an interval bound"
+    },
+    {
+      "Lambda": 128.0,
+      "lambda_value": 0.3,
+      "omega": 0.7,
+      "mu": 1.2,
+      "hbar": 1.0,
+      "eigenvalues": [
+        0.3994754538555231,
+        1.1983437046166687,
+        1.9960733626745557
+      ],
+      "limiting_eigenvalues": [
+        0.39999999999999997,
+        1.2,
+        1.9999999999999998
+      ],
+      "max_error": 0.003926637325444071,
+      "cutoff_difference": 6.120586996782862e-06,
+      "residual": 2.9313842988428053e-09,
+      "physical_cutoff": 58,
+      "auxiliary_cutoff": 48,
+      "scope": "Variational Galerkin spectra; cutoff difference is not an interval bound"
+    }
+  ],
+  "source_sha256": {
+    "NONLINEAR_CONSTRAINT_DRESSING.md": "2f9984fd2982ff15a8f9475dd71d8fc980ac7eaeaa88a3d8f4774323209f6f24",
+    "scripts/nonlinear_constraint_dressing_audit.py": "15ff991609f914476a2069954db13d10017d568005455b2ea1591f679eef268e",
+    "HOLOMORPHIC_TENSOR_PHASE.md": "071b05e1667061a5f8994031615b4c68e323b832d1afb2dc605846a2b781c76b",
+    "data/holomorphic_tensor_phase_audit.json": "ff01fe34e04798ce1ba51cb5dc2a7d099d8cb71ee068359a9eeed1b2d1436667",
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea",
+    "data/einstein_quartic_constraints_audit.json": "14fdc8e26b5ffca0a108d0bc728a84afdb3029b4b5eac6440e96c2ff3968144e",
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f"
+  },
+  "scope": {
+    "proved": "Bounded-source compatible Gaussian kernel, normalized response, finite-spin similarity bound; untruncated scalar-control spectral limit",
+    "conditional": "Einstein scalar/vector source ordering through coupling order two with supplied physical regulator and Hamiltonian",
+    "not_proved": [
+      "Einstein clock algebra",
+      "uniform nonlinear spin locality",
+      "physical cutoff removal",
+      "protected graviton masslessness",
+      "physical Newton constant",
+      "joint continuum limit",
+      "TOE"
+    ],
+    "numerics": "Noncommuting matrix controls and oscillator Galerkin checks; no full nonlinear 3D tensor diagonalization"
+  }
+}

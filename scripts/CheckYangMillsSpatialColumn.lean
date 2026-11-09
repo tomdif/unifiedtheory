@@ -1,0 +1,146 @@
+import UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels
+import UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel
+import UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel
+import UnifiedTheory.Clay.YangMills.SU2FiniteInsertion
+import UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion
+import UnifiedTheory.Clay.YangMills.FiniteKernelChain
+import UnifiedTheory.Clay.YangMills.FiniteKernelGrowth
+import UnifiedTheory.Clay.YangMills.KernelPartitionNorm
+import UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer
+import UnifiedTheory.Clay.YangMills.SpatialWilsonColumnNorm
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail
+
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.PairHalf
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.pairAssemble
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.Crossing
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.startPath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.endPath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.path_character
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.timePath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.pairSide
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.startPath_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.endPath_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.crossing_defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.crossing_defect_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.crossing_factor
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.noncrossing_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.interior_defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.timePath_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.pairAssemble_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.defect_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.linkKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalLinkKernels.linkKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.defect_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.kineticAction_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.pairAssemble_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.kineticAction_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.kineticKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.kineticKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.kineticKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.slabKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.slabKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialTemporalReflectionKernel.rawKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.HalfHistory
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.History
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.halfHistoryBorel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.historyBorel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.assembleHistory
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.halfMeasure
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.measure
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.halfMeasure_probability
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.measure_probability
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.assembleHistory_preserving
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.assembleHistory_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.integral_assembleHistory
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.density
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.historyKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.historyKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.density_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.historyKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryKernel.reflection_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.augment
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.augment_value
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.product_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.list_floor
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.finiteAugment
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.finiteAugment_value
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.finite_floor
+#print axioms UnifiedTheory.Clay.YangMills.SU2FiniteInsertion.finite_removal
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.halfHistoryBorel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.historyBorel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.path
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.path_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.density_restore
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.density_assemble_restore
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.cutKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.cutKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.augmented_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.cut_form
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.augmented_form
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.column_floor
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.column_removal
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.constant_source_form
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHistoryInsertion.partition_floor
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.Path
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.pathBorel
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.pathMeasure
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.pathMeasure_probability
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.path_integral_cons
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.chain
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.endpoint
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message_succ
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.chain_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.endpoint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.chain_cons
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.endpoint_message
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message_mono
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message_smul
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelChain.message_eigen
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.pathBorel
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.endpoint_lower
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.endpoint_upper
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.eigen_message_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.message_partition_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.eigen_partition_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteKernelGrowth.rate_le
+#print axioms UnifiedTheory.Clay.YangMills.KernelPartitionNorm.positive_floor
+#print axioms UnifiedTheory.Clay.YangMills.KernelPartitionNorm.norm_comparison
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.boundary
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.kernelMap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.transfer
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.boundary_pos
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.kernelMap_pos
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.boundary_square
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.constant_boundary
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.constant_kernelMap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.feature
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.feature_inner
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.feature_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.transfer_positive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.weighted_chain
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.endpoint_density
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnTransfer.column_partition_floor
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnNorm.mass_norm_lower
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonColumnNorm.polynomial_norm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.boundary_restore
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.raw_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.raw_high
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.source
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.source_norm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.source_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.output_norm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.input_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnDecay.mass_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.rate_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.cutoff_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.source_cutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.cutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.cutoff_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.cutoff_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.cutoff_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteColumnTail.source_tail

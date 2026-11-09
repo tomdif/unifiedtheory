@@ -1,0 +1,400 @@
+{
+  "exact_algebra": {
+    "affine_vector_field_sign_pairs": 16,
+    "bounded_metric_vector_field_sign_pairs": 16,
+    "bounded_transform_derivative": true,
+    "scope": "Exact polynomial identities in dimension two; the note proves the matrix identities in arbitrary finite dimension."
+  },
+  "microscopic_encoding": {
+    "active_cell_gram_error": 4.450939371437514e-16,
+    "microscopic_rotation_errors": [
+      3.5108334685767007e-16,
+      3.5108334685767007e-16,
+      3.2055022865575914e-16
+    ],
+    "cases": [
+      {
+        "cells": 1,
+        "microscopic_qubits": 4,
+        "symmetric_dimension": 7,
+        "dressed_transition_error": 0.0
+      },
+      {
+        "cells": 2,
+        "microscopic_qubits": 8,
+        "symmetric_dimension": 28,
+        "dressed_transition_error": 2.220446049250313e-16
+      },
+      {
+        "cells": 4,
+        "microscopic_qubits": 16,
+        "symmetric_dimension": 210,
+        "dressed_transition_error": 2.220446049250313e-16
+      },
+      {
+        "cells": 8,
+        "microscopic_qubits": 32,
+        "symmetric_dimension": 3003,
+        "dressed_transition_error": 4.440892098500626e-16
+      }
+    ],
+    "scope": "Exact occupation-space isometry into a selected symmetric block of seven active states per four-spin cell. No local parent, phase selection, or bounded body order is supplied."
+  },
+  "finite_metric_algebra": {
+    "cases": [
+      {
+        "spatial_dimension": 3,
+        "log_coordinates": 6,
+        "generators": 9,
+        "cutoff": 1,
+        "quadrature_order": 8,
+        "quadrature_nodes": 262144,
+        "oscillator_scale": 0.3,
+        "block_dimension": 7,
+        "input_cutoff": 1,
+        "input_dimension": 7,
+        "full_output_dimension": 7,
+        "gram_error": 6.921825120720915e-16,
+        "minimum_b_eigenvalue": 0.4262955069171312,
+        "maximum_b_eigenvalue": 0.573704493082869,
+        "maximum_lie_algebra_defect": 22.554206178788313,
+        "worst_generator_pair": [
+          0,
+          8
+        ],
+        "full_block_collective_rotation_error": 1.9286281325276495e-15,
+        "maximum_b_component_commutator": 0.002711239911644477,
+        "maximum_b_covariance_defect": 1.0450448533614558
+      },
+      {
+        "spatial_dimension": 3,
+        "log_coordinates": 6,
+        "generators": 9,
+        "cutoff": 2,
+        "quadrature_order": 8,
+        "quadrature_nodes": 262144,
+        "oscillator_scale": 0.3,
+        "block_dimension": 28,
+        "input_cutoff": 1,
+        "input_dimension": 7,
+        "full_output_dimension": 28,
+        "gram_error": 2.8722722004508668e-15,
+        "minimum_b_eigenvalue": 0.3861952939100359,
+        "maximum_b_eigenvalue": 0.613804706089966,
+        "maximum_lie_algebra_defect": 4.0896825920710117e-07,
+        "worst_generator_pair": [
+          3,
+          4
+        ],
+        "full_block_collective_rotation_error": 7.848349941126657e-15,
+        "maximum_b_component_commutator": 1.3430494459443578e-07,
+        "maximum_b_covariance_defect": 0.004731360749234117
+      },
+      {
+        "spatial_dimension": 3,
+        "log_coordinates": 6,
+        "generators": 9,
+        "cutoff": 3,
+        "quadrature_order": 8,
+        "quadrature_nodes": 262144,
+        "oscillator_scale": 0.3,
+        "block_dimension": 84,
+        "input_cutoff": 1,
+        "input_dimension": 7,
+        "full_output_dimension": 84,
+        "gram_error": 5.232202641534621e-15,
+        "minimum_b_eigenvalue": 0.35725883597753905,
+        "maximum_b_eigenvalue": 0.6427411640224637,
+        "maximum_lie_algebra_defect": 0.004340487063854628,
+        "worst_generator_pair": [
+          4,
+          7
+        ],
+        "full_block_collective_rotation_error": 1.9891052419062326e-14,
+        "maximum_b_component_commutator": 3.640587286017271e-05,
+        "maximum_b_covariance_defect": 0.010618122297364143
+      },
+      {
+        "spatial_dimension": 3,
+        "log_coordinates": 6,
+        "generators": 9,
+        "cutoff": 4,
+        "quadrature_order": 9,
+        "quadrature_nodes": 531441,
+        "oscillator_scale": 0.3,
+        "block_dimension": 210,
+        "input_cutoff": 1,
+        "input_dimension": 7,
+        "full_output_dimension": 210,
+        "gram_error": 5.3043654157933076e-15,
+        "minimum_b_eigenvalue": 0.33368349300902134,
+        "maximum_b_eigenvalue": 0.6663165069909761,
+        "maximum_lie_algebra_defect": 9.045774579330133e-09,
+        "worst_generator_pair": [
+          7,
+          8
+        ],
+        "full_block_collective_rotation_error": 2.465165139166726e-14,
+        "maximum_b_component_commutator": 5.713888530770398e-09,
+        "maximum_b_covariance_defect": 0.00013542276772639884
+      },
+      {
+        "spatial_dimension": 2,
+        "log_coordinates": 3,
+        "generators": 4,
+        "cutoff": 2,
+        "quadrature_order": 16,
+        "quadrature_nodes": 4096,
+        "oscillator_scale": 0.3,
+        "block_dimension": 10,
+        "input_cutoff": 1,
+        "input_dimension": 4,
+        "full_output_dimension": 10,
+        "gram_error": 2.1453719774745597e-15,
+        "minimum_b_eigenvalue": 0.39737011340071365,
+        "maximum_b_eigenvalue": 0.6026298865992854,
+        "maximum_lie_algebra_defect": 2.6311421027228727e-07,
+        "worst_generator_pair": [
+          0,
+          2
+        ],
+        "full_block_collective_rotation_error": null,
+        "maximum_b_component_commutator": 1.1911210830190554e-07,
+        "maximum_b_covariance_defect": 0.004314010678161624
+      },
+      {
+        "spatial_dimension": 2,
+        "log_coordinates": 3,
+        "generators": 4,
+        "cutoff": 4,
+        "quadrature_order": 16,
+        "quadrature_nodes": 4096,
+        "oscillator_scale": 0.3,
+        "block_dimension": 35,
+        "input_cutoff": 1,
+        "input_dimension": 4,
+        "full_output_dimension": 35,
+        "gram_error": 4.502322021387616e-15,
+        "minimum_b_eigenvalue": 0.34348759124975287,
+        "maximum_b_eigenvalue": 0.6565124087502436,
+        "maximum_lie_algebra_defect": 5.989980317428218e-09,
+        "worst_generator_pair": [
+          0,
+          1
+        ],
+        "full_block_collective_rotation_error": null,
+        "maximum_b_component_commutator": 4.974215273666536e-09,
+        "maximum_b_covariance_defect": 0.000115158601905568
+      },
+      {
+        "spatial_dimension": 2,
+        "log_coordinates": 3,
+        "generators": 4,
+        "cutoff": 6,
+        "quadrature_order": 16,
+        "quadrature_nodes": 4096,
+        "oscillator_scale": 0.3,
+        "block_dimension": 84,
+        "input_cutoff": 1,
+        "input_dimension": 4,
+        "full_output_dimension": 84,
+        "gram_error": 6.52056340523204e-15,
+        "minimum_b_eigenvalue": 0.303634073463366,
+        "maximum_b_eigenvalue": 0.6963659265366327,
+        "maximum_lie_algebra_defect": 1.544224365178874e-10,
+        "worst_generator_pair": [
+          2,
+          3
+        ],
+        "full_block_collective_rotation_error": null,
+        "maximum_b_component_commutator": 2.2580822432469484e-10,
+        "maximum_b_covariance_defect": 3.988828246032073e-06
+      },
+      {
+        "spatial_dimension": 2,
+        "log_coordinates": 3,
+        "generators": 4,
+        "cutoff": 8,
+        "quadrature_order": 16,
+        "quadrature_nodes": 4096,
+        "oscillator_scale": 0.3,
+        "block_dimension": 165,
+        "input_cutoff": 1,
+        "input_dimension": 4,
+        "full_output_dimension": 165,
+        "gram_error": 8.387579727632052e-15,
+        "minimum_b_eigenvalue": 0.2716443873921546,
+        "maximum_b_eigenvalue": 0.7283556126078465,
+        "maximum_lie_algebra_defect": 4.530262681143973e-12,
+        "worst_generator_pair": [
+          0,
+          1
+        ],
+        "full_block_collective_rotation_error": null,
+        "maximum_b_component_commutator": 1.116036240675147e-11,
+        "maximum_b_covariance_defect": 1.6876810097661717e-07
+      }
+    ],
+    "quadrature_refinement": [
+      {
+        "spatial_dimension": 3,
+        "cutoff": 1,
+        "lower_quadrature_order": 7,
+        "higher_quadrature_order": 8,
+        "full_generator_matrix_change": 1.3427589666092274e-14,
+        "full_b_matrix_change": 1.4751628103219938e-12
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 2,
+        "lower_quadrature_order": 7,
+        "higher_quadrature_order": 8,
+        "full_generator_matrix_change": 4.057744245821793e-12,
+        "full_b_matrix_change": 2.3186508226365523e-10
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 3,
+        "lower_quadrature_order": 7,
+        "higher_quadrature_order": 8,
+        "full_generator_matrix_change": 9.01782695676909e-10,
+        "full_b_matrix_change": 2.122643669862603e-08
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 4,
+        "lower_quadrature_order": 8,
+        "higher_quadrature_order": 9,
+        "full_generator_matrix_change": 2.3471469635331856e-09,
+        "full_b_matrix_change": 4.698473550758893e-08
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 2,
+        "lower_quadrature_order": 12,
+        "higher_quadrature_order": 16,
+        "full_generator_matrix_change": 7.43039516710649e-15,
+        "full_b_matrix_change": 1.0160851233323256e-15
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 4,
+        "lower_quadrature_order": 12,
+        "higher_quadrature_order": 16,
+        "full_generator_matrix_change": 2.3491083260445653e-14,
+        "full_b_matrix_change": 1.6414976970278691e-13
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 6,
+        "lower_quadrature_order": 12,
+        "higher_quadrature_order": 16,
+        "full_generator_matrix_change": 6.223645238176689e-12,
+        "full_b_matrix_change": 3.4756582862959624e-10
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 8,
+        "lower_quadrature_order": 12,
+        "higher_quadrature_order": 16,
+        "full_generator_matrix_change": 3.000862155905619e-08,
+        "full_b_matrix_change": 3.864516522101061e-07
+      }
+    ],
+    "scope": "All GL(3) generators and all six metric components at cutoffs 1,2,3,4; GL(2) illustration and independent finite-shear transport to cutoff 8. Norms retain every output row. Quadrature refinement is measured separately and is not a rigorous integration certificate."
+  },
+  "shear_time_evolution": {
+    "cases": [
+      {
+        "spatial_dimension": 2,
+        "cutoff": 2,
+        "shear_coefficient": 0.2,
+        "time": 0.8,
+        "full_hilbert_space_error": 0.058234594911217935,
+        "finite_state_generator_quadrature_change": 3.1154547068179274e-16,
+        "exact_flow_quadrature_norm": 0.9999999999999999,
+        "exact_flow_coefficient_refinement": 4.6868170876270816e-15,
+        "norm_error_squared_quadrature_change": 7.380214929732076e-15
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 4,
+        "shear_coefficient": 0.2,
+        "time": 0.8,
+        "full_hilbert_space_error": 0.0036758173950883653,
+        "finite_state_generator_quadrature_change": 6.20102182138634e-16,
+        "exact_flow_quadrature_norm": 0.9999999999999999,
+        "exact_flow_coefficient_refinement": 4.7526355509070156e-15,
+        "norm_error_squared_quadrature_change": 7.392441848273011e-15
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 6,
+        "shear_coefficient": 0.2,
+        "time": 0.8,
+        "full_hilbert_space_error": 0.0001610983288782135,
+        "finite_state_generator_quadrature_change": 7.459359019468698e-16,
+        "exact_flow_quadrature_norm": 0.9999999999999999,
+        "exact_flow_coefficient_refinement": 4.772635368908146e-15,
+        "norm_error_squared_quadrature_change": 7.393860788942309e-15
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 8,
+        "shear_coefficient": 0.2,
+        "time": 0.8,
+        "full_hilbert_space_error": 5.398684736772887e-06,
+        "finite_state_generator_quadrature_change": 1.311175912926214e-15,
+        "exact_flow_quadrature_norm": 0.9999999999999999,
+        "exact_flow_coefficient_refinement": 4.799931892315165e-15,
+        "norm_error_squared_quadrature_change": 7.393948732930733e-15
+      }
+    ],
+    "scope": "GL(2) finite-shear evolution compared with independent exact nonlinear log-congruence transport and its half-density Jacobian; full continuum-state error inferred using exact unit normalization and numerical overlap quadrature."
+  },
+  "dilation_time_evolution": {
+    "cases": [
+      {
+        "cutoff": 2,
+        "speed": 0.8,
+        "time": 0.9,
+        "full_hilbert_space_error": 0.05009772058546945,
+        "continuum_tail_norm": 0.048914873304833774
+      },
+      {
+        "cutoff": 4,
+        "speed": 0.8,
+        "time": 0.9,
+        "full_hilbert_space_error": 0.0028540436787454935,
+        "continuum_tail_norm": 0.002803753966690395
+      },
+      {
+        "cutoff": 8,
+        "speed": 0.8,
+        "time": 0.9,
+        "full_hilbert_space_error": 3.4348035494874105e-06,
+        "continuum_tail_norm": 3.395316306634284e-06
+      },
+      {
+        "cutoff": 16,
+        "speed": 0.8,
+        "time": 0.9,
+        "full_hilbert_space_error": 4.899621357031294e-13,
+        "continuum_tail_norm": 4.866602488653301e-13
+      }
+    ],
+    "scope": "Finite-time numerical control for the central dilation subgroup only. The general affine finite-time result is the analytical Schwartz-domain estimate in the note."
+  },
+  "source_sha256": {
+    "AFFINE_SPIN_METRIC.md": "64c802085e526a9c325fa6ed52b5951ef348ef7e8037ff00e087a7ba9e14c8c7",
+    "scripts/affine_spin_metric_audit.py": "2ea7f0940a1298aaa7213464e8ba92ff6f92b5d906aef624a13d3da6c9d5ff54",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "scripts/spin_clock_bracket_audit.py": "184bd8d42f7cfe2e58088e21f61125416abfb5521900eafc344844692d340996",
+    "MICROSCOPIC_SPIN_TWO_SEED.md": "0f5c2db9e104a824d00d6acc4247786b7fd573ada0a4a5024b7b6ce027938045",
+    "scripts/microscopic_spin_two_audit.py": "bbcd8399832d531626a2b60458364f17cdfa96e7366241646b73b430698b1922",
+    "CANONICAL_METRIC_RECONSTRUCTION.md": "960357fd3d35d2c7f4a583c0551f2cc3713c7c9528daf506fda3a4657dd3c8f9",
+    "EMBEDDING_VERSUS_GRAVITY.md": "0adaf0f87b0a625643ff09764aa47aef22c66322b79bbeb925c7a6475737aa9b",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b"
+  },
+  "scope": "Full onsite positive-metric affine kinematics can be represented on growing finite symmetric spin blocks with fixed-input Galerkin convergence. The analytical theorem controls bounded metric functions, Lie brackets and finite affine transformations, not unbounded inverse-metric moments, spatial constraints, a uniformly local parent or an Einstein phase. Affine quantization is established prior work; no physical TOE is proved."
+}

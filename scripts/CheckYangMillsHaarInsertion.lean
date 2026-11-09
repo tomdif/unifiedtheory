@@ -1,0 +1,79 @@
+import UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor
+import UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor
+import UnifiedTheory.Clay.YangMills.PositiveKernelInsertion
+import UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion
+import UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor
+import UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment
+import UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.meanFeature
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.centeredFeature
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.canonical_integrable
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.canonical_mean_inner
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.mean_canonical_inner
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.mean_inner
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.mean_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.centered_inner
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.centeredKernel
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.centeredKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.CompactKernelMeanFloor.centeredKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.haar_left
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.kernel
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.kernel_eq_crossing
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.kernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.positiveKernel
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.positiveKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.row_mass
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.positiveKernel_row
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.remainder
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.remainder_value
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.remainder_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2CrossingHaarFloor.inverse_mass_le
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.pullback
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.product
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.product_value
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.oneKernel
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.listProduct
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.listProduct_value
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.finiteProduct
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.finiteProduct_value
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.form
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.form_integrable
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.form_eq_inner
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.form_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelInsertion.insertion_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.insertion_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.polynomial_removal
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.crossingProduct
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.crossingProduct_value
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.crossingProduct_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.crossing_form
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.marked_form
+#print axioms UnifiedTheory.Clay.YangMills.SU2ReflectionInsertion.crossing_polynomial_removal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.unmarked
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.cut
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.unmarked_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.cut_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.kinetic_product
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.unmarked_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.raw_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.quadratic_removal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.real_reflection
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.ground_raw_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalCutFloor.ground_removal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.defect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.defect_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.law_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.law_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.cancellation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.exponential_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalDefectMoment.tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.law_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.pairing_le_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.raw_dirichlet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.increment_identity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.physical_increment_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.source_product_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTemporalSourceTail.physical_source_tail

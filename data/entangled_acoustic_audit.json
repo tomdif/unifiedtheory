@@ -1,0 +1,1370 @@
+{
+  "finite_spectral_checks": [
+    {
+      "total_occupation_cutoff": 6,
+      "geometry_scale": 0.2,
+      "joint_dimension": 168,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2363364405091675,
+      "ground_parity_error": 4.2168235090929517e-16,
+      "geometry_purity": 0.967274829751769,
+      "geometry_occupancy": 0.31158852503635004,
+      "normalized_sum_rule": 1.000554178449912,
+      "sum_rule_defect": 0.0005541784499119018,
+      "second_moment": 0.38581914766024056,
+      "expected_second_moment": 0.3849146833549276,
+      "third_sum_rule_defect": 0.0009044643053129353,
+      "inverse_second_moment": 3.773545794488389,
+      "equal_time_variance": 1.4278586617601527,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9999273668815815,
+      "unweighted_band_fraction": 0.9999850879002045,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.660318691732585,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.658000700798847,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 5.437674405614153,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.813794062821611,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1411815696414185,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05913657366243795,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037484686529120777,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 10,
+      "geometry_scale": 0.2,
+      "joint_dimension": 572,
+      "relative_field_modes": 3,
+      "ground_energy": 1.236332835010252,
+      "ground_parity_error": 4.231175489632577e-16,
+      "geometry_purity": 0.967264454482726,
+      "geometry_occupancy": 0.3115854379891135,
+      "normalized_sum_rule": 1.0000020120020623,
+      "sum_rule_defect": 2.0120020622904633e-06,
+      "second_moment": 0.3849179407189453,
+      "expected_second_moment": 0.3849130462009015,
+      "third_sum_rule_defect": 4.894518043807583e-06,
+      "inverse_second_moment": 3.777947464632886,
+      "equal_time_variance": 1.4282498672406818,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9999742626910648,
+      "unweighted_band_fraction": 0.9999939506034567,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.666921196949331,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.664596223890916,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 5.4436225890996575,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.814506531964148,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1409019981802317,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05910529108299927,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037464063708894314,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 14,
+      "geometry_scale": 0.2,
+      "joint_dimension": 1360,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2363328275703682,
+      "ground_parity_error": 6.126038808861444e-16,
+      "geometry_purity": 0.9672644287506642,
+      "geometry_occupancy": 0.31158543003176203,
+      "normalized_sum_rule": 1.000000005792015,
+      "sum_rule_defect": 5.792015089767233e-09,
+      "second_moment": 0.3849130631129505,
+      "expected_second_moment": 0.3849130419808786,
+      "third_sum_rule_defect": 2.1132071870155755e-08,
+      "inverse_second_moment": 3.777962503446564,
+      "equal_time_variance": 1.4282510495886682,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9999743868203369,
+      "unweighted_band_fraction": 0.999993968269471,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.666943755169846,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.664618757438961,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 5.443642836824721,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.814508534692396,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1409008326486425,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05910517802588618,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.003746398891016064,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 6,
+      "geometry_scale": 1.0,
+      "joint_dimension": 168,
+      "relative_field_modes": 3,
+      "ground_energy": 1.244605038778586,
+      "ground_parity_error": 2.1416986362598837e-16,
+      "geometry_purity": 0.9831629327215206,
+      "geometry_occupancy": 0.3126758632962416,
+      "normalized_sum_rule": 1.0002831243195114,
+      "sum_rule_defect": 0.0002831243195113853,
+      "second_moment": 0.3859465967201431,
+      "expected_second_moment": 0.3854913315476872,
+      "third_sum_rule_defect": 0.0004552651724558654,
+      "inverse_second_moment": 3.3788882939968987,
+      "equal_time_variance": 1.3649060031506053,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9957141159534021,
+      "unweighted_band_fraction": 0.998848046108738,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.068332440995348,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.066552039789895,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.896317306093672,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.7046613615685304,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1351907769194542,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05912645740012553,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037474530996692316,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 10,
+      "geometry_scale": 1.0,
+      "joint_dimension": 572,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2446035122415506,
+      "ground_parity_error": 2.1561727426840062e-16,
+      "geometry_purity": 0.9831599369032054,
+      "geometry_occupancy": 0.31267413162014746,
+      "normalized_sum_rule": 1.0000008367031963,
+      "sum_rule_defect": 8.367031962830396e-07,
+      "second_moment": 0.3854924669483156,
+      "expected_second_moment": 0.38549041318775557,
+      "third_sum_rule_defect": 2.053760560061235e-06,
+      "inverse_second_moment": 3.3808396921538533,
+      "equal_time_variance": 1.3650868776287208,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9946048981417029,
+      "unweighted_band_fraction": 0.9985201289298906,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.071259538230778,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.069476481181032,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.898993118998276,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.7050762737779315,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1350587548475009,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.059110445501958354,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.003746398723041197,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 14,
+      "geometry_scale": 1.0,
+      "joint_dimension": 1360,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2446035096124706,
+      "ground_parity_error": 3.3517349693035653e-16,
+      "geometry_purity": 0.9831599305986757,
+      "geometry_occupancy": 0.312674127815249,
+      "normalized_sum_rule": 1.0000000021037714,
+      "sum_rule_defect": 2.103771379324826e-09,
+      "second_moment": 0.38549041894499747,
+      "expected_second_moment": 0.3854904111699034,
+      "third_sum_rule_defect": 7.775094068573907e-09,
+      "inverse_second_moment": 3.3808452383844285,
+      "equal_time_variance": 1.3650873372559855,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9945854750240046,
+      "unweighted_band_fraction": 0.9985143868615525,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 5.071267857576645,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 5.069484792709178,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.899000699131958,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.7050772861041854,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1350582987774989,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05911039844864123,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037463956114552875,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 6,
+      "geometry_scale": 4.0,
+      "joint_dimension": 168,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2552858876299706,
+      "ground_parity_error": 1.0508026893705952e-16,
+      "geometry_purity": 0.9960514434823577,
+      "geometry_occupancy": 0.31554894191836547,
+      "normalized_sum_rule": 1.000070834912131,
+      "sum_rule_defect": 7.083491213100146e-05,
+      "second_moment": 0.3871302568546733,
+      "expected_second_moment": 0.38701501158012663,
+      "third_sum_rule_defect": 0.00011524527454664923,
+      "inverse_second_moment": 3.0038678427622973,
+      "equal_time_variance": 1.2932537657350107,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9980767564121952,
+      "unweighted_band_fraction": 0.9996943625643369,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 4.505801764143445,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 4.504416837932267,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.371424712331434,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.5521283941320556,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1146129798494482,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.059122518362041805,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037466537503109865,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 10,
+      "geometry_scale": 4.0,
+      "joint_dimension": 572,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2552856171125273,
+      "ground_parity_error": 2.456205872449531e-16,
+      "geometry_purity": 0.9960512012905057,
+      "geometry_occupancy": 0.31554867013257554,
+      "normalized_sum_rule": 1.000000118544681,
+      "sum_rule_defect": 1.1854468096039739e-07,
+      "second_moment": 0.3870151697721741,
+      "expected_second_moment": 0.3870148674439453,
+      "third_sum_rule_defect": 3.023282287850648e-07,
+      "inverse_second_moment": 3.004257148932136,
+      "equal_time_variance": 1.2932892698270348,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.9980697906167727,
+      "unweighted_band_fraction": 0.9996912568369587,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 4.506385723398203,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 4.505000334963106,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.37196462565402,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.5522321145529965,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1145849829931567,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.059118495313288104,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.003746389618787784,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    },
+    {
+      "total_occupation_cutoff": 14,
+      "geometry_scale": 4.0,
+      "joint_dimension": 1360,
+      "relative_field_modes": 3,
+      "ground_energy": 1.2552856168255353,
+      "ground_parity_error": 1.0464339631592703e-16,
+      "geometry_purity": 0.9960512009432008,
+      "geometry_occupancy": 0.31554866977576146,
+      "normalized_sum_rule": 1.0000000001962546,
+      "sum_rule_defect": 1.9625456815219877e-10,
+      "second_moment": 0.3870148680061465,
+      "expected_second_moment": 0.3870148672547161,
+      "third_sum_rule_defect": 7.514303623779028e-10,
+      "inverse_second_moment": 3.0042577935441903,
+      "equal_time_variance": 1.29328932385,
+      "omega_reference": 0.46868957115567345,
+      "energy_weighted_band_fraction": 0.998069795221553,
+      "unweighted_band_fraction": 0.9996912543019978,
+      "response_rows": [
+        {
+          "frequency": 0.0,
+          "response": 4.506386690316286,
+          "lower": 1.7071067811865497,
+          "upper": 27.313708498984795
+        },
+        {
+          "frequency": 0.01,
+          "response": 4.50500130109644,
+          "lower": 1.7069125223904253,
+          "upper": 27.26406298772182
+        },
+        {
+          "frequency": 0.1,
+          "response": 4.371965517816776,
+          "lower": 1.687897308247511,
+          "upper": 23.106257883446034
+        },
+        {
+          "frequency": 0.5,
+          "response": 2.5522322715789403,
+          "lower": 1.3289864767570263,
+          "upper": 4.919363780796213
+        },
+        {
+          "frequency": 1.0,
+          "response": 1.1145849279778173,
+          "lower": 0.7984330882903887,
+          "upper": 1.421912168991393
+        },
+        {
+          "frequency": 5.0,
+          "response": 0.05911848862079441,
+          "lower": 0.05796277166817123,
+          "upper": 0.0598684869461464
+        },
+        {
+          "frequency": 20.0,
+          "response": 0.0037463891775846793,
+          "lower": 0.00374178043413415,
+          "upper": 0.0037494852193149485
+        }
+      ],
+      "scope": "Fock compression of a canonical one-switch four-vertex path motif, not the full carrier spectrum."
+    }
+  ],
+  "full_carrier_history_sums": [
+    {
+      "time_steps": 4,
+      "inverse_temperature": 2.0,
+      "histories": 256,
+      "field_vertices": 3456,
+      "relative_field_modes": 3455,
+      "probes": [
+        {
+          "name": "long_x_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 14.673870135245398,
+          "gaussian_upper": 234.78192216392756
+        },
+        {
+          "name": "long_x_time_mode_1",
+          "finite_grid_frequency": 2.82842712474619,
+          "gaussian_lower": 0.18513438702622287,
+          "gaussian_upper": 0.18735037946777336
+        },
+        {
+          "name": "long_y_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 3.732050807568835,
+          "gaussian_upper": 59.71281292110414
+        },
+        {
+          "name": "local_difference_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 0.22572679001705273,
+          "gaussian_upper": 3.611628640272843
+        }
+      ],
+      "geometry_rows": [
+        {
+          "geometry_scale": 0.2,
+          "occupancy": [
+            0.4655896521466309,
+            0.46558965214663117
+          ],
+          "exact_grid_field_response": [
+            58.603091628887825,
+            0.18690131073098445,
+            14.928203230275475,
+            0.8902988771841047
+          ],
+          "fourth_cumulant": [
+            0.014497648145265232,
+            4.588028882878465e-12,
+            2.4233807008389504e-27,
+            0.0005391129158164847
+          ],
+          "cumulant_uncentered_subtraction_error": 2.990029057681198e-11,
+          "excess_kurtosis": [
+            4.221399936948275e-06,
+            1.313413418906038e-10,
+            1.0874431633306882e-29,
+            0.0006801552979390285
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.024413051662049226,
+              -4.341211109672314e-07,
+              -1.4481038005548178e-29,
+              -0.00658704848759832
+            ],
+            [
+              -0.024413051662049226,
+              -4.3412111096723156e-07,
+              -1.4199496293978212e-29,
+              -1.3008801712261318e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.293015518550672,
+                0.0009345065536543462,
+                0.07464101615137797,
+                0.004451496632216889
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.63714401578931,
+                0.008410558982896221,
+                0.6717691453623981,
+                0.04006363141894309
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 1.0,
+          "occupancy": [
+            0.3712810777455947,
+            0.37128107774559516
+          ],
+          "exact_grid_field_response": [
+            58.616714454454176,
+            0.18690166363165311,
+            14.928203230275486,
+            0.8892549048626815
+          ],
+          "fourth_cumulant": [
+            0.011961098429581587,
+            3.745370757811393e-12,
+            9.466330862652156e-28,
+            0.000669788636263405
+          ],
+          "cumulant_uncentered_subtraction_error": 4.7564943303490814e-11,
+          "excess_kurtosis": [
+            3.4811931499470936e-06,
+            1.0721819241135853e-10,
+            4.247824856760497e-30,
+            0.0008470035612840936
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.01957318353047729,
+              -3.422851970560985e-07,
+              8.461147211512583e-31,
+              -0.005592628124934199
+            ],
+            [
+              -0.019573183530477198,
+              -3.4228519705609865e-07,
+              -5.5220263365470826e-30,
+              -1.0533926889522443e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930836221087627,
+                0.0009345083181586666,
+                0.07464101615137797,
+                0.004446277315079961
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.6377561862866954,
+                0.008410574863426001,
+                0.6717691453623981,
+                0.04001669675751751
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 4.0,
+          "occupancy": [
+            0.31780198602745463,
+            0.31780198602745485
+          ],
+          "exact_grid_field_response": [
+            58.61305842233442,
+            0.18690190506021506,
+            14.928203230275493,
+            0.8806733244214212
+          ],
+          "fourth_cumulant": [
+            0.006134511919981534,
+            2.0137925227692824e-12,
+            3.4078791105547755e-28,
+            0.0007143604827019804
+          ],
+          "cumulant_uncentered_subtraction_error": 3.205953211238288e-11,
+          "excess_kurtosis": [
+            1.7856290710033587e-06,
+            5.7648401275236766e-11,
+            1.5292169484337773e-30,
+            0.0009210596107040348
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.008777051307007556,
+              -1.3331428558848998e-07,
+              5.672983885316969e-30,
+              -0.0036048424074437858
+            ],
+            [
+              -0.008777051307007419,
+              -1.3331428558849012e-07,
+              5.02898827078395e-30,
+              -4.6913375710941875e-07
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930653176721081,
+                0.0009345095253010527,
+                0.0746410161513773,
+                0.004403369598648954
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.6375896993782866,
+                0.008410585727710806,
+                0.6717691453623975,
+                0.03963054072484429
+              ]
+            }
+          ]
+        }
+      ],
+      "max_history_relative_radius": 0.19262658368091992,
+      "max_cg_residual": 1.7809587954404723e-12,
+      "full_space_time_cg_residual": 1.531950497494074e-11,
+      "largest_independent_covariance_error": 7.105427357601002e-15,
+      "protected_transverse_response": 14.928203230275512,
+      "scope": "Exact correlated history sum and untruncated Gaussian field on the specified finite Euclidean grid; no time-grid convergence rate."
+    },
+    {
+      "time_steps": 6,
+      "inverse_temperature": 2.0,
+      "histories": 4096,
+      "field_vertices": 3456,
+      "relative_field_modes": 3455,
+      "probes": [
+        {
+          "name": "long_x_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 14.673870135245398,
+          "gaussian_upper": 234.78192216392756
+        },
+        {
+          "name": "long_x_time_mode_1",
+          "finite_grid_frequency": 3.0,
+          "gaussian_lower": 0.16479491646325134,
+          "gaussian_upper": 0.16654843749186948
+        },
+        {
+          "name": "long_y_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 3.732050807568835,
+          "gaussian_upper": 59.71281292110414
+        },
+        {
+          "name": "local_difference_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 0.22572679001705273,
+          "gaussian_upper": 3.611628640272843
+        }
+      ],
+      "geometry_rows": [
+        {
+          "geometry_scale": 0.2,
+          "occupancy": [
+            0.46559286733346394,
+            0.4655928673334643
+          ],
+          "exact_grid_field_response": [
+            58.60306719823195,
+            0.16619344589100637,
+            14.928203230275509,
+            0.8902816478142245
+          ],
+          "fourth_cumulant": [
+            0.014494451078764067,
+            2.9278423331776504e-12,
+            8.519697776386897e-29,
+            0.0005401424451353729
+          ],
+          "cumulant_uncentered_subtraction_error": 1.8614493627056028e-10,
+          "excess_kurtosis": [
+            4.220472539581792e-06,
+            1.0600342569972952e-10,
+            3.823042371084416e-31,
+            0.0006814805483074987
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.0244058915241066,
+              -3.4693440150626775e-07,
+              6.310887241768095e-30,
+              -0.006585287453768298
+            ],
+            [
+              -0.02440589152410661,
+              -3.4693440150626786e-07,
+              3.4512664603419266e-30,
+              -1.3004482453547652e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930153963840887,
+                0.0008309672294486425,
+                0.07464101615137375,
+                0.004451410489647589
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.6371429153320944,
+                0.007478705065102842,
+                0.6717691453623938,
+                0.04006285644466123
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 1.0,
+          "occupancy": [
+            0.37128860061241575,
+            0.37128860061241714
+          ],
+          "exact_grid_field_response": [
+            58.61622681420569,
+            0.16619372408118177,
+            14.92820323027535,
+            0.8889073927345404
+          ],
+          "fourth_cumulant": [
+            0.011897540749104658,
+            2.316437113592542e-12,
+            7.001298306017577e-26,
+            0.0006850664585863831
+          ],
+          "cumulant_uncentered_subtraction_error": 6.222821563595105e-11,
+          "excess_kurtosis": [
+            3.4627527502691223e-06,
+            8.386703226065773e-11,
+            3.1416912640601395e-28,
+            0.0008670011398483237
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.019433920586668877,
+              -2.7177278149468914e-07,
+              2.193033316514413e-28,
+              -0.005567555262235277
+            ],
+            [
+              -0.01943392058666891,
+              -2.7177278149468935e-07,
+              1.1832913578315177e-28,
+              -1.0451224997932692e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930811836427252,
+                0.0008309686204073241,
+                0.07464101615138108,
+                0.004444539818102777
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.6377342210464727,
+                0.0074787175836488196,
+                0.6717691453624014,
+                0.040001063867236786
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 4.0,
+          "occupancy": [
+            0.3179153229558893,
+            0.31791532295588854
+          ],
+          "exact_grid_field_response": [
+            58.610595917853765,
+            0.1661939004323586,
+            14.928203230275312,
+            0.87895838447251
+          ],
+          "fourth_cumulant": [
+            0.005581217158731336,
+            9.28839578255327e-13,
+            1.1041528318197591e-25,
+            0.0006736916020332099
+          ],
+          "cumulant_uncentered_subtraction_error": 3.9002040225916135e-10,
+          "excess_kurtosis": [
+            1.6247129670157508e-06,
+            3.3628736604828575e-11,
+            4.954662912925611e-28,
+            0.0008720161074888622
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.007925454585694016,
+              -9.644562399377827e-08,
+              -1.6447749873858096e-28,
+              -0.003326146491936092
+            ],
+            [
+              -0.007925454585694023,
+              -9.644562399377764e-08,
+              2.800456213534592e-29,
+              -4.221093902216568e-07
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930530028443252,
+                0.0008309695021511132,
+                0.07464101615136975,
+                0.004394794729448481
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.6374786999474686,
+                0.007478725519447504,
+                0.67176914536239,
+                0.03955335470163934
+              ]
+            }
+          ]
+        }
+      ],
+      "max_history_relative_radius": 0.19262658368092012,
+      "max_cg_residual": 1.7809587954404723e-12,
+      "full_space_time_cg_residual": 1.7285947219175345e-11,
+      "largest_independent_covariance_error": 7.105427357601002e-15,
+      "protected_transverse_response": 14.928203230275512,
+      "scope": "Exact correlated history sum and untruncated Gaussian field on the specified finite Euclidean grid; no time-grid convergence rate."
+    },
+    {
+      "time_steps": 8,
+      "inverse_temperature": 2.0,
+      "histories": 65536,
+      "field_vertices": 3456,
+      "relative_field_modes": 3455,
+      "probes": [
+        {
+          "name": "long_x_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 14.673870135245398,
+          "gaussian_upper": 234.78192216392756
+        },
+        {
+          "name": "long_x_time_mode_1",
+          "finite_grid_frequency": 3.061467458920718,
+          "gaussian_lower": 0.1583145950946312,
+          "gaussian_upper": 0.1599322414500957
+        },
+        {
+          "name": "long_y_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 3.732050807568835,
+          "gaussian_upper": 59.71281292110414
+        },
+        {
+          "name": "local_difference_static",
+          "finite_grid_frequency": 0.0,
+          "gaussian_lower": 0.22572679001705273,
+          "gaussian_upper": 3.611628640272843
+        }
+      ],
+      "geometry_rows": [
+        {
+          "geometry_scale": 0.2,
+          "occupancy": [
+            0.46559379660133443,
+            0.4655937966013208
+          ],
+          "exact_grid_field_response": [
+            58.603058006377964,
+            0.15960486184702052,
+            14.928203230275084,
+            0.8902751265241946
+          ],
+          "fourth_cumulant": [
+            0.014493345069236586,
+            2.5079366345288533e-12,
+            5.2723676372621215e-25,
+            0.000540534259978141
+          ],
+          "cumulant_uncentered_subtraction_error": 2.663913999112477e-09,
+          "excess_kurtosis": [
+            4.22015181724154e-06,
+            9.845195085397913e-11,
+            2.365868532221174e-27,
+            0.0006819848796428156
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.024403373947018477,
+              -3.2109019646596367e-07,
+              -9.598859494729272e-27,
+              -0.006584667681994147
+            ],
+            [
+              -0.024403373947018463,
+              -3.2109019646596346e-07,
+              -4.013724285764508e-27,
+              -1.3002950886534682e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.29301535042021176,
+                0.0007980243092255979,
+                0.07464101615137486,
+                0.004451377884781449
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.637142501326175,
+                0.0071822187830987705,
+                0.671769145362395,
+                0.040062563118860695
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 1.0,
+          "occupancy": [
+            0.37129054314975934,
+            0.37129054314976234
+          ],
+          "exact_grid_field_response": [
+            58.61604147193993,
+            0.15960511806557048,
+            14.928203230275159,
+            0.8887751761787434
+          ],
+          "fourth_cumulant": [
+            0.011875142731228479,
+            1.976420479499064e-12,
+            3.5627482834680227e-25,
+            0.0006907141168234994
+          ],
+          "cumulant_uncentered_subtraction_error": 8.717373559119501e-10,
+          "excess_kurtosis": [
+            3.4562557140878313e-06,
+            7.758642084440688e-11,
+            1.5987113630905662e-27,
+            0.0008744087604221354
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.01938478858253756,
+              -2.5094665090961685e-07,
+              8.835242138475332e-29,
+              -0.005558655040125165
+            ],
+            [
+              -0.01938478858253748,
+              -2.5094665090961675e-07,
+              -8.835242138475332e-28,
+              -1.0421851589237103e-06
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.2930802568380073,
+                0.0007980255903254907,
+                0.074641016151338,
+                0.004443878758884745
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.637725873092636,
+                0.007182230312926308,
+                0.6717691453623583,
+                0.03999511602797057
+              ]
+            }
+          ]
+        },
+        {
+          "geometry_scale": 4.0,
+          "occupancy": [
+            0.31796137737347197,
+            0.31796137737347757
+          ],
+          "exact_grid_field_response": [
+            58.60961449855887,
+            0.1596052752080303,
+            14.92820323027675,
+            0.8782761057700569
+          ],
+          "fourth_cumulant": [
+            0.0053677833294548186,
+            7.514756129866676e-13,
+            4.665045714437896e-24,
+            0.0006540708354270482
+          ],
+          "cumulant_uncentered_subtraction_error": 4.7967821451000425e-09,
+          "excess_kurtosis": [
+            1.5626339209116885e-06,
+            2.949989081729623e-11,
+            2.0933450807104046e-26,
+            0.0008479351710867815
+          ],
+          "geometry_field_squared_covariance": [
+            [
+              -0.007608752573936022,
+              -8.578574824593731e-08,
+              -2.863052326363879e-26,
+              -0.00321446789526099
+            ],
+            [
+              -0.007608752573935991,
+              -8.578574824593719e-08,
+              -2.1568246009647684e-26,
+              -4.046485874123387e-07
+            ]
+          ],
+          "mgf_rows": [
+            {
+              "amplitude": 0.1,
+              "log_mgf": [
+                0.29304809485833827,
+                0.0007980263759876927,
+                0.07464101615127383,
+                0.004391383254272796
+              ]
+            },
+            {
+              "amplitude": 0.3,
+              "log_mgf": [
+                2.637434464040984,
+                0.0071822373843501985,
+                0.6717691453622945,
+                0.03952264553689089
+              ]
+            }
+          ]
+        }
+      ],
+      "max_history_relative_radius": 0.19262658368091976,
+      "max_cg_residual": 1.7809587954404723e-12,
+      "full_space_time_cg_residual": 1.1946877398270118e-11,
+      "largest_independent_covariance_error": 7.105427357601002e-15,
+      "protected_transverse_response": 14.928203230275512,
+      "scope": "Exact correlated history sum and untruncated Gaussian field on the specified finite Euclidean grid; no time-grid convergence rate."
+    }
+  ],
+  "protected_transverse_sector": {
+    "protected_relative_modes": 143,
+    "all_relative_modes": 3455,
+    "isometry_error": 3.9968028886505635e-15,
+    "all_switch_source_annihilation_error": 0.0,
+    "stiffness_intertwining_error": 1.596367909478636e-15,
+    "exact_protected_spatial_momenta": "k_x=0; nonzero (k_y,k_z)",
+    "all_orders_geometry_backreaction_from_free_factor": 0,
+    "continuum_rows": [
+      {
+        "spacing": 0.2,
+        "momentum_cases": 100,
+        "largest_frequency_error": 0.033478279974604064,
+        "largest_error_to_bound": 0.998105563843701
+      },
+      {
+        "spacing": 0.1,
+        "momentum_cases": 100,
+        "largest_frequency_error": 0.005814354613139061,
+        "largest_error_to_bound": 0.9999296442407214
+      },
+      {
+        "spacing": 0.05,
+        "momentum_cases": 100,
+        "largest_frequency_error": 0.001420596498364901,
+        "largest_error_to_bound": 0.9998608688672537
+      },
+      {
+        "spacing": 0.025,
+        "momentum_cases": 100,
+        "largest_frequency_error": 0.00024688093520119914,
+        "largest_error_to_bound": 0.9999616471420884
+      }
+    ],
+    "free_shear_spectrum": "omega^3 theta(omega)/(256 chi^2 c^6)",
+    "shear_angular_integral": "pi/4",
+    "shear_euclidean_radial_integral": "3/32",
+    "scope": "Exact invariant Gaussian factor of the full supplied Hamiltonian; free transverse scalar poles and two-particle shear continuum, not gravitational modes."
+  },
+  "spin_diagnostic": {
+    "single_spin_half_quadrupole_zero_components": 9,
+    "four_spin_half_block_dimension": 16,
+    "total_spin_squared_multiplicities": {
+      "6": 5,
+      "2": 9,
+      "0": 2
+    },
+    "spin_two_multiplet_dimension": 5,
+    "rank_two_double_angle_identity": true,
+    "scope": "Internal angular-momentum representation algebra only. It does not establish a physical spatial helicity-two pole or gravity in the repository Hamiltonian."
+  },
+  "atomless_response": {
+    "energy_squared_distribution": "Uniform on [omega^2/4, 4 omega^2]",
+    "omega": 0.2,
+    "has_spectral_atom": false,
+    "response_rows": [
+      {
+        "frequency": 0.0,
+        "response": 27.72588722239781,
+        "lower": 9.374999999999998,
+        "upper": 149.99999999999997
+      },
+      {
+        "frequency": 0.01,
+        "response": 27.63263196155455,
+        "lower": 9.369144284821985,
+        "upper": 148.51485148514848
+      },
+      {
+        "frequency": 0.1,
+        "response": 21.400661634962706,
+        "lower": 8.823529411764705,
+        "upper": 74.99999999999999
+      },
+      {
+        "frequency": 0.5,
+        "response": 4.554755286828258,
+        "lower": 3.658536585365854,
+        "upper": 5.769230769230769
+      },
+      {
+        "frequency": 1.0,
+        "response": 1.384696742651052,
+        "lower": 1.2931034482758619,
+        "upper": 1.4851485148514851
+      },
+      {
+        "frequency": 10.0,
+        "response": 0.014987263633637194,
+        "lower": 0.014976038338658149,
+        "upper": 0.014998500149985002
+      }
+    ],
+    "inverse_second_moment": 18.48392481493187,
+    "second_moment": 0.08500000000000002,
+    "scope": "Counterexample to inferring an isolated wave pole from the bounds; not a proposed spectrum of the repository model."
+  },
+  "analytical_constants": {
+    "energy_weighted_band_fraction": 0.5,
+    "unweighted_band_fraction": 0.0625,
+    "lower_energy_over_reference": 0.25,
+    "upper_energy_over_reference": 4.0,
+    "variational_gap_upper_factor": 2.0,
+    "reference_small_wave_number_slope": 0.6123724356957945
+  },
+  "source_sha256": {
+    "ENTANGLED_ACOUSTIC_BOUNDS.md": "acc79eec1f9ae71587c2791a5bba63c8c38d1a8d03d989b75b933d071e8668a3",
+    "scripts/entangled_acoustic_audit.py": "c2ee2a8822192c3d9df992244b317635b761f60cf373840c90d8baf4ea4fbd4b",
+    "UnifiedTheory/Audit/KFCausalEntangledAcoustic.lean": "9c1bc4eda867a76a16f3fcaa90993c473674a69d92307e2339a066c9a07af9fb",
+    "COLLECTIVE_GEOMETRY_STABILITY.md": "e763acd0a26a196694e7090aed2e376074d4cf82d1c92928699eb2cf9647eacf",
+    "scripts/collective_geometry_stability_audit.py": "30168ebe13877309be8367bb1e86dbe7c734fd4bcb852a5ce8ba9e33ba45097f",
+    "scripts/induced_geometry_audit.py": "97784f0ddc86dc0df4ada72a89af078c26b75a63515b145f440ff942fa18df10",
+    "scripts/finite_gap_feedback_audit.py": "1bd3b7559e964ed87e64c2006fcf6dcda47e211e827d8ac7a95bdd9846a80f9f",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "Exact full entangled large-spin covariance and acoustic spectral-weight bounds; unique even and entangled finite-volume relative-field ground state. Exact free transverse wave poles, but no general three-dimensional wave-pole theorem. No theorem of geometry thermodynamic uniqueness or physical spin-half phase, regulator selection, universal matter coupling, or Einstein gravity."
+}

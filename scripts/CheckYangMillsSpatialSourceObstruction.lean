@@ -1,0 +1,63 @@
+import UnifiedTheory.Clay.YangMills.CompactEndpointSupport
+import UnifiedTheory.Clay.YangMills.WilsonEndpointSupport
+import UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction
+import UnifiedTheory.Clay.YangMills.WilsonSourceLocalization
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair_swap
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.restricted
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.restricted_iterated
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.second_endpoint
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair_le_twice_restricted
+#print axioms UnifiedTheory.Clay.YangMills.CompactEndpointSupport.pair_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.density
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.source_pair
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.rowMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.rowMass_pair
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.rowMass_integrable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.row_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.meanMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.loss_half_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.rowVariance_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.loss_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonEndpointSupport.no_small_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.defect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.defect_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.defect_chord
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bad_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bump
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bump_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bump_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.defect_single
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bump_nonconstant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bump_loss_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.no_uniform_endpoint_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.bad_outside_flat
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excluded
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excluded_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excludedRow
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excludedRow_integrable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.row_le_excluded
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excludedMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.excluded_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction.no_uniform_excluded_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffPair
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffPair_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffPair_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffPair_ground
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffRow
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffRow_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffRow_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.cutoffCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.row_localization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.mean_localization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff_on_bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatialCutoff_mul_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceLocalization.spatial_localization

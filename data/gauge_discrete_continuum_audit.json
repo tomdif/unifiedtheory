@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "date": "2026-11-09",
+  "group": "SU(2) as unit quaternions",
+  "exact_checks": {
+    "passed": 47,
+    "arithmetic": "fractions.Fraction; exact noncommuting unit quaternions"
+  },
+  "noncommutative_remainder_checks": {
+    "cases": 15,
+    "maximum_error_over_bound": 0.9999999867829283
+  },
+  "continuum_reference": {
+    "method": "32 midpoint exponential substeps per vertical edge",
+    "analytic_error_budget": "L*h^2/(4*substeps), L=1; floating-point rounding is not certified",
+    "M": 1,
+    "L_l1": 1
+  },
+  "convergence": [
+    {
+      "n": 4,
+      "h": 0.25,
+      "epsilon": 0.0,
+      "max_plaquette_discrepancy": 0.0,
+      "gauge_reconstruction_error": 1.3663984178626658e-15,
+      "max_edge_error_vs_midpoint_reference": 0.010771536818721724,
+      "edge_analytic_bound": 0.125,
+      "edge_reference_error_budget": 0.00048828125,
+      "boundary_error_vs_midpoint_reference": 0.041546723028746,
+      "boundary_analytic_bound": 1.0,
+      "boundary_reference_error_budget": 0.00390625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.041546723028746,
+      "reversing_noncommutative_strip_order_error": 0.001208225214379748
+    },
+    {
+      "n": 8,
+      "h": 0.125,
+      "epsilon": 0.0,
+      "max_plaquette_discrepancy": 0.0,
+      "gauge_reconstruction_error": 1.3322676295501878e-15,
+      "max_edge_error_vs_midpoint_reference": 0.0027264161329056207,
+      "edge_analytic_bound": 0.03125,
+      "edge_reference_error_budget": 0.0001220703125,
+      "boundary_error_vs_midpoint_reference": 0.020912825593035714,
+      "boundary_analytic_bound": 0.5,
+      "boundary_reference_error_budget": 0.001953125,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.04182565118607143,
+      "reversing_noncommutative_strip_order_error": 0.0003175303450276935
+    },
+    {
+      "n": 16,
+      "h": 0.0625,
+      "epsilon": 0.0,
+      "max_plaquette_discrepancy": 0.0,
+      "gauge_reconstruction_error": 2.4425128309372857e-15,
+      "max_edge_error_vs_midpoint_reference": 0.0006858870741796082,
+      "edge_analytic_bound": 0.0078125,
+      "edge_reference_error_budget": 3.0517578125e-05,
+      "boundary_error_vs_midpoint_reference": 0.010489661335242885,
+      "boundary_analytic_bound": 0.25,
+      "boundary_reference_error_budget": 0.0009765625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.04195864534097154,
+      "reversing_noncommutative_strip_order_error": 8.035327762960062e-05
+    },
+    {
+      "n": 32,
+      "h": 0.03125,
+      "epsilon": 0.0,
+      "max_plaquette_discrepancy": 0.0,
+      "gauge_reconstruction_error": 4.218853199898959e-15,
+      "max_edge_error_vs_midpoint_reference": 0.00017201509826278511,
+      "edge_analytic_bound": 0.001953125,
+      "edge_reference_error_budget": 7.62939453125e-06,
+      "boundary_error_vs_midpoint_reference": 0.005252964063645276,
+      "boundary_analytic_bound": 0.125,
+      "boundary_reference_error_budget": 0.00048828125,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.04202371250916221,
+      "reversing_noncommutative_strip_order_error": 2.0149065856416776e-05
+    },
+    {
+      "n": 64,
+      "h": 0.015625,
+      "epsilon": 0.0,
+      "max_plaquette_discrepancy": 0.0,
+      "gauge_reconstruction_error": 8.21566228717976e-15,
+      "max_edge_error_vs_midpoint_reference": 4.307224556112785e-05,
+      "edge_analytic_bound": 0.00048828125,
+      "edge_reference_error_budget": 1.9073486328125e-06,
+      "boundary_error_vs_midpoint_reference": 0.002628494546285831,
+      "boundary_analytic_bound": 0.0625,
+      "boundary_reference_error_budget": 0.000244140625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.0420559127405733,
+      "reversing_noncommutative_strip_order_error": 5.0410649733219e-06
+    },
+    {
+      "n": 4,
+      "h": 0.25,
+      "epsilon": 0.05,
+      "max_plaquette_discrepancy": 0.003124923660960601,
+      "gauge_reconstruction_error": 9.992007221626409e-16,
+      "max_edge_error_vs_midpoint_reference": 0.011859001351420638,
+      "edge_analytic_bound": 0.1375,
+      "edge_reference_error_budget": 0.00048828125,
+      "boundary_error_vs_midpoint_reference": 0.041942265730318534,
+      "boundary_analytic_bound": 1.1,
+      "boundary_reference_error_budget": 0.00390625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.03812933248210776,
+      "reversing_noncommutative_strip_order_error": 0.0012643737301751233
+    },
+    {
+      "n": 8,
+      "h": 0.125,
+      "epsilon": 0.025,
+      "max_plaquette_discrepancy": 0.000390624411009408,
+      "gauge_reconstruction_error": 1.7763568394002505e-15,
+      "max_edge_error_vs_midpoint_reference": 0.0029959449807558563,
+      "edge_analytic_bound": 0.034375,
+      "edge_reference_error_budget": 0.0001220703125,
+      "boundary_error_vs_midpoint_reference": 0.02092519483931521,
+      "boundary_analytic_bound": 0.55,
+      "boundary_reference_error_budget": 0.001953125,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.038045808798754924,
+      "reversing_noncommutative_strip_order_error": 0.00032459788374567347
+    },
+    {
+      "n": 16,
+      "h": 0.0625,
+      "epsilon": 0.0125,
+      "max_plaquette_discrepancy": 4.882812041304366e-05,
+      "gauge_reconstruction_error": 3.997188364167557e-15,
+      "max_edge_error_vs_midpoint_reference": 0.0007521218040899804,
+      "edge_analytic_bound": 0.00859375,
+      "edge_reference_error_budget": 3.0517578125e-05,
+      "boundary_error_vs_midpoint_reference": 0.010445071238902235,
+      "boundary_analytic_bound": 0.275,
+      "boundary_reference_error_budget": 0.0009765625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.037982077232371764,
+      "reversing_noncommutative_strip_order_error": 8.122613387846319e-05
+    },
+    {
+      "n": 32,
+      "h": 0.03125,
+      "epsilon": 0.00625,
+      "max_plaquette_discrepancy": 6.103515589192789e-06,
+      "gauge_reconstruction_error": 4.4409354663757694e-15,
+      "max_edge_error_vs_midpoint_reference": 0.00018837787009324736,
+      "edge_analytic_bound": 0.0021484375,
+      "edge_reference_error_budget": 7.62939453125e-06,
+      "boundary_error_vs_midpoint_reference": 0.00521743029929527,
+      "boundary_analytic_bound": 0.1375,
+      "boundary_reference_error_budget": 0.00048828125,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.037944947631238325,
+      "reversing_noncommutative_strip_order_error": 2.0257106950461097e-05
+    },
+    {
+      "n": 64,
+      "h": 0.015625,
+      "epsilon": 0.003125,
+      "max_plaquette_discrepancy": 7.629394528453197e-07,
+      "gauge_reconstruction_error": 5.7731603144582096e-15,
+      "max_edge_error_vs_midpoint_reference": 4.713521182401065e-05,
+      "edge_analytic_bound": 0.000537109375,
+      "edge_reference_error_budget": 1.9073486328125e-06,
+      "boundary_error_vs_midpoint_reference": 0.0026073505092086223,
+      "boundary_analytic_bound": 0.06875,
+      "boundary_reference_error_budget": 0.000244140625,
+      "paths_checked": 26,
+      "max_path_error_over_analytic_bound": 0.037925098315761775,
+      "reversing_noncommutative_strip_order_error": 5.054491275578525e-06
+    }
+  ],
+  "coherent_O_h_squared_counterexample": [
+    {
+      "n": 4,
+      "plaquette_error": 0.06248982797065216,
+      "plaquette_error_over_h_squared": 0.9998372475304346,
+      "boundary_error_from_flat": 0.9588510772084059
+    },
+    {
+      "n": 8,
+      "plaquette_error": 0.015624841054765663,
+      "plaquette_error_over_h_squared": 0.9999898275050024,
+      "boundary_error_from_flat": 0.9588510772084048
+    },
+    {
+      "n": 16,
+      "plaquette_error": 0.003906247516473608,
+      "plaquette_error_over_h_squared": 0.9999993642172437,
+      "boundary_error_from_flat": 0.9588510772084015
+    },
+    {
+      "n": 32,
+      "plaquette_error": 0.0009765624611948932,
+      "plaquette_error_over_h_squared": 0.9999999602635706,
+      "boundary_error_from_flat": 0.9588510772083931
+    },
+    {
+      "n": 64,
+      "plaquette_error": 0.0002441406243936702,
+      "plaquette_error_over_h_squared": 0.9999999975164732,
+      "boundary_error_from_flat": 0.9588510772083532
+    }
+  ],
+  "formalization_boundary": "See GAUGE_DISCRETE_CONTINUUM.md section 7; numerics are not proofs."
+}

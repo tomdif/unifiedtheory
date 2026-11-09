@@ -21,3 +21,5 @@ rev = "4fd6f26f5c7cd8e62fba6db00852d6712535ce38"
 
 [[lean_lib]]
 name = "UnifiedTheory"
+# Independent research modules must be checked even when the umbrella omits them.
+globs = ["UnifiedTheory.*"]
