@@ -16,6 +16,14 @@ Written 2026-11-09, before any run of this script:
  (18) Gapped decrease: log Kper_0 at beta 2.5, L = 8 is below 1.0 (previous: 2.66(22) at L = 4, 1.64(35) at L = 6).
  (19) Small-box growth: at L = 4, log Kper_0 increases with beta over 2.6, 3.0, 4.0, and log Kper_0(4.0) exceeds
       log Kper_0(2.6) by more than 1.0 (2 sigma).
+Results 2026-11-09: L4: 3.73(23) at 2.6, 2.46(22) at 3.0, 5.10(47) at 4.0; beta 2.5 L8: 1.25(55). (18) fails on the
+central value (1.25 > 1.0, 0.5 sigma). (19) fails: not monotone (drop 2.6 -> 3.0 at 4 sigma).
+Added 2026-11-09 after those results, before any further run. Hypothesis: log Kper_0 is set by T/T_c with T = 1/L
+(SU(2) beta_c(N_t): 4 -> 2.30, 6 -> 2.43, 8 -> 2.51, so N_t^c(2.5) ~ 7.7, N_t^c(2.6) ~ 10-11). All small values so far
+(beta 2.4 L8: 0.07, beta 2.3 L6: 0.40) are the only boxes with L > N_t^c. If true, L0(beta) = N_t^c(beta) = 1/(a T_c),
+which scales with the physical length 1/T_c.
+ (20) beta 2.5, L = 12 (T/T_c ~ 0.65): log Kper_0 < 0.8. beta 2.6, L = 12 (T/T_c ~ 0.9): log Kper_0 < 1.0.
+      beta 2.6, L = 8 (T/T_c ~ 1.3): log Kper_0 > 1.5.
 Usage: out jobs sweeps   with jobs = "beta:L,beta:L,..."
 """
 import os, sys, json, time
