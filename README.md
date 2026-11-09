@@ -8,8 +8,8 @@ and a physical Yang–Mills mass gap remain unproved.** Formal results establish
 consequences of their definitions and hypotheses; names such as “capstone”,
 “Standard Model”, or “complete synthesis” do not certify those physical targets.
 
-Current review: **2026-11-09**, consolidating the research on
-`paper3-inf-resolution` for publication on `main`. See [status](STATUS.md) and the
+Current review: **2026-11-09**. The research was published on `main` in
+[PR #1](https://github.com/tomdif/unifiedtheory/pull/1). See [status](STATUS.md) and the
 [remaining research obligations](TOE_COMPLETION_PLAN.md).
 
 ## Current work
@@ -17,6 +17,7 @@ Current review: **2026-11-09**, consolidating the research on
 | Area | Current result and boundary | Evidence |
 |---|---|---|
 | Yang–Mills flux bootstrap | Conditional transverse/in-plane iteration and thermal-excess reductions. Uniform spectral and renormalization estimates remain open. | [Program](UnifiedTheory/Clay/YangMills/README.md), [twisted route](UnifiedTheory/Clay/YangMills/Twisted/README.md), [band tests](UnifiedTheory/Clay/YangMills/GAP_BAND_STATEMENT.md) |
+| Abelian curvature heat | Exact cell averages converge uniformly over grid nodes at each fixed positive time to a field satisfying the heat PDE. L² initial trace, continuum uniqueness, rates, and transport assembly remain open formal tasks. | [Model and formal scope](ABELIAN_CURVATURE_HEAT_LIMIT.md) |
 | Quantum operator domains and response | Explicit operator, resolvent, regularization, and response theorems for specified causal models. Their hypotheses and domains must be retained. | [Lean audit modules](UnifiedTheory/Audit), [latest causal checkpoint record](data/twenty_seven_checkpoint_complete_tier_one_synthesis_audit.json) |
 | Chiral continuum comparison | Flat-holonomy refinement and a nonzero curved fifth-order phase response. Completed-measure phase matching and uniform continuum control remain open. | [Comparison and reproduction](CHIRAL_CONTINUUM_COMPARISON.md) |
 | Order, gauge, and geometry | Finite algebraic constructions, obstruction results, and conditional continuum bridges. Physical SM/GR identification remains open. | [Gauge and alpha gates](GAUGE_AND_ALPHA_GATES_2026-10-25.md), [metric assessment](EINSTEIN_MODEL_DECISION.md), [causal holonomy](MONOPOLE_CAUSAL.md) |
@@ -37,6 +38,15 @@ a sufficient initial margin. Establishing those estimates for physical
 transfer operators remains open.
 [TwistedSlabCriterion](UnifiedTheory/Clay/YangMills/Twisted/TwistedSlabCriterion.lean)
 specializes the recurrence to a slab with fixed transverse dimensions.
+The [weighted-budget criterion](UnifiedTheory/Clay/YangMills/Twisted/TwistedWeightedBudget.lean)
+also permits a summable normalized cost of order `1/j²`.
+[Matrix sector traces](UnifiedTheory/Clay/YangMills/Twisted/SectorTraceMatrix.lean)
+and [probability-space kernels](UnifiedTheory/Clay/YangMills/Twisted/KernelDoubling.lean)
+now supply doubling inequalities for their specified models. Identifying the
+actual Wilson partition functions with those kernel traces remains a separate step.
+The [Z₂ torus result](UnifiedTheory/Clay/YangMills/Twisted/Z2Torus.lean)
+proves a finite-lattice rectangular-loop bound in its explicit strong-coupling
+regime; it does not establish the SU(2) continuum target.
 The concurrent [gauge reconstruction study](GAUGE_DISCRETE_CONTINUUM.md)
 separates an analytic square-grid argument from its formalized transport
 stability ingredients.
@@ -90,8 +100,11 @@ used by older modules; it does not claim the whole library uses only three axiom
 
 Recorded checkpoint reports are historical snapshots. Their hashes and old
 build logs must match before their verification claims can be reused for a
-new checkout. The [current audit record](data/repository_audit_2026_11_09.json)
-records the scope and outcome of this cleanup's checks.
+new checkout. The [initial cleanup audit](data/repository_audit_2026_11_09.json)
+retains its original scope. The [published verification checkpoint](STATUS.md)
+covers all 5,440 library modules and 150,121 local declarations; the
+[post-merge cleanup record](data/post_merge_cleanup_2026_11_09.json)
+records subsequent documentation and temporary-file changes.
 
 ## Repository layout
 

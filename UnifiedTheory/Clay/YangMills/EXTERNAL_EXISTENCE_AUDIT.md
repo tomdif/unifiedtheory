@@ -1,17 +1,27 @@
 # Audit checklist for an external existence proof of 4D quantum Yang–Mills
 
-Prepared 2026-11-05 for the Lean proof the KITP shepherding committee (Gross, chair; Douglas, Jaffe, Klebanov,
-Nekrasov) expects to release (statement of 2026-11-03). Press reports say the claim is existence of pure quantum
-Yang–Mills in four dimensions, not the mass gap. Nothing below has been checked against that proof, which is not
-public. The checklist maps the claim onto this repository's obligations
+Prepared 2026-11-05; source status checked 2026-11-09 against the
+[official KITP page](https://www.kitp.ucsb.edu/statement-by-the-yangmills-working-group).
+The [November 3 committee statement](https://www.kitp.ucsb.edu/sites/default/files/2nd-Statement-About-Quantum-YangMills-Theory_Nov-3.pdf)
+describes validation of the pure Yang–Mills existence formalization and makes
+release conditional on completing that validation. The checked page links
+statements and procedures, with no Lean source release linked there.
+This repository has not audited that external proof or imported a verified
+certificate from it. The checklist maps a prospective result onto our obligations
 ([`yang_mills_requirements.json`](../../../data/yang_mills_requirements.json); README, "Full-target obligations").
 It lists the specific ways our own candidates failed, because a formal proof can be correct and still prove a
 weaker statement than the one announced.
 
+Historical references to Twisted README sections below use the
+[preserved pre-cleanup snapshot](https://github.com/tomdif/unifiedtheory/blob/7c7864f8dc12a969682b908001acb0212f1930f9/UnifiedTheory/Clay/YangMills/Twisted/README.md).
+
 ## 0. First pass: what exactly is the main theorem?
 
-- [ ] Locate the top-level theorem and run `#print axioms` on it. Record any `sorry`, `axiom`, `opaque` or
-      `implemented_by` in its dependency cone, and any `Classical.choice` uses beyond the standard ones.
+- [ ] Locate and build the top-level theorem, then inspect its transitive axioms
+      with `#print axioms`. Check for `sorryAx` or unjustified assumptions and
+      disclose native-computation dependencies such as `Lean.ofReduceBool` and
+      `Lean.trustCompiler`. An opaque declaration alone is not an axiom;
+      inspect its definition and dependencies.
 - [ ] Gauge group: which group(s)? SU(2) only, SU(N), or every compact simple group (YM01)? Connected? Covering
       conventions?
 - [ ] Spacetime: ℝ⁴, or a torus / finite volume? Euclidean (OS) or Minkowski (Wightman) output?

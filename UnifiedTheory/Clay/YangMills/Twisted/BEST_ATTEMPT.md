@@ -1,12 +1,16 @@
-# Best attempt at the Yang-Mills proof (2026-11-01)
+# Historical Yang–Mills route assessment (started 2026-11-01)
 
-**This is not a proof.** It is the strongest argument available from this repo, written as a proof, with the status of every step marked. Steps 4, 5, 6, 7 and 9 are open, and they carry nearly all the mathematical content. All twelve full-target requirements remain open.
+**This is not a proof.** It records a November 2026 strategy and its obstructions,
+with the status of each step marked. Steps 4, 5, 6, 7 and 9 remain open.
+All twelve full-target requirements remain open. See the [current frontier](README.md)
+for subsequent results. References to README sections below refer to the
+[preserved pre-cleanup README](https://github.com/tomdif/unifiedtheory/blob/7c7864f8dc12a969682b908001acb0212f1930f9/UnifiedTheory/Clay/YangMills/Twisted/README.md).
 
 Labels:
-- **Lean**: compiled, standard axioms only.
+- **Lean**: formal statements with their source hypotheses; verification records have explicit scopes.
 - **By hand**: derived here, not formalized and not refereed.
 - **Literature**: published, cited from memory, not rechecked here.
-- **Open**: no proof exists, here or as far as I know anywhere.
+- **Open**: the required proof is not supplied by this repository.
 
 ## Target
 

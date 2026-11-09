@@ -1,6 +1,8 @@
 # The intermediate-coupling band: what a mass-gap proof has to supply
 
-Written 2026-11-06. This summarizes the block-convexity numerics in [`Twisted/README.md`](Twisted/README.md)
+Written 2026-11-06, with subsequent dated updates. Historical README section
+references below use the [preserved pre-cleanup Twisted README](https://github.com/tomdif/unifiedtheory/blob/7c7864f8dc12a969682b908001acb0212f1930f9/UnifiedTheory/Clay/YangMills/Twisted/README.md).
+This summarizes its block-convexity numerics
 ("Block convexity of the SU(2) measure", "Are the non-convex blocks a dilute polymer gas?") and the convex Lean
 results. It turns them into one statement of the missing step. The setting is 4D SU(2) lattice Yang–Mills with
 Wilson action `βS = β Σ_p (1 − ½ tr U_p)` (β = β_std = 4/g²). Nothing here is a theorem about the continuum, and
@@ -46,7 +48,7 @@ short-range-disordered gas of non-convex blocks.
 
 The table above uses the **Dirichlet** block: all 32 interior links are free, and their block-average (coarse)
 directions are free too. That is harsher than what a renormalization-group step needs. The earlier study in
-[`Twisted/README.md`](Twisted/README.md) ("Large fields in hypothesis (a)", 2026-11-03/04,
+[the historical Twisted README](https://github.com/tomdif/unifiedtheory/blob/7c7864f8dc12a969682b908001acb0212f1930f9/UnifiedTheory/Clay/YangMills/Twisted/README.md) ("Large fields in hypothesis (a)", 2026-11-03/04,
 `scripts/yang_mills_block_convexity.py`) measured the one-step quantity. It restricts the Hessian to each
 block's **fine (zero-mean) directions**, holds the coarse field fixed, and uses covariant frames and a
 background-gauge penalty.
