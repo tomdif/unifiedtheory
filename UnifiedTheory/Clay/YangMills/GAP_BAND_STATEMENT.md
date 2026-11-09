@@ -615,3 +615,20 @@ The working hypothesis was that log Kper₀ is set by T/T_c with T = 1/L, which 
 **Status.** Both open inputs now reduce to sector-resolved interface free energies being sub-area, uniformly in β, above
 some L₀. That is still unproved. The missing ingredient is a local clustering property of flux sectors, which is
 weaker in form than confinement but not established at weak coupling.
+
+**Addendum: a rigorous finite-size criterion on ℤ² × T²_{L⊥}** (`Twisted/TwistedSlabCriterion.lean`).
+Fix the transverse sides at L⊥ and double only in-plane. Then no transverse step and no spectral input are needed.
+- The elementary interpolation bound log Kper ≤ 2β·N_bnd is only linear in L here: N_bnd = 6LL⊥² and then 12LL⊥².
+- So the per-scale log constant is m_k ≤ 3 log 2 + 48βL⊥²·L_k, which is sub-area (q = 2).
+- Result: if one finite box has y(L₀, L₀, L⊥, L⊥) < ½·exp(−24βL⊥²L₀), then y(2^k L₀) ≤ exp(−4^k δ) for all k: area-type
+  decay, and an area law in the twist plane via Tomboulis–Yaffe (cited).
+- Conversely, a genuine area law y ~ e^{−σL²} makes the criterion hold for all large L₀. So area-type decay of the
+  flux ratio on ℤ² × T²_{L⊥} is decided by a single finite box.
+
+What it still depends on:
+- the by-hand identification of the in-plane step `four_step` with lattice sector traces, as throughout;
+- Tomboulis–Yaffe for Wilson loops.
+
+It does **not** reach ℝ⁴. Every transverse doubling costs β·L²L⊥ under the elementary bounds, which is beyond sub-area.
+So L⊥ must stay fixed, and the threshold exp(−24βL⊥²L₀) is far below anything measurable. This is the precise form of
+the remaining gap: to let L⊥ grow, the transverse interface cost must improve from volume to o(area).
