@@ -667,3 +667,42 @@ for boxes well above 1/(aT_c) with z measured to ≪ 1 − z, which is beyond th
 - β 2.6 L12 gives 1.40(58), against a prediction below 1.0: fails on the central value (0.7σ).
 - Combined with (20), β 2.6 L12 averages 1.74(50), 1.5σ above 1.0. The T/T_c hypothesis with N_t^c(2.6) ≈ 10–11 is not
   confirmed: log Kper₀ does fall from L8 (2.29) to L12, but more slowly than predicted.
+
+## 14. Attempting confinement directly: the closest prior attempt and the U(1) test (2026-11-09)
+
+**Closest prior attempt.** Tomboulis (arXiv:0707.2179, 2007) claimed confinement for all β in 4D SU(2). He used the same
+order parameter as this program, the vortex free energy Z⁻/Z. Z and Z⁻ were bounded above and below by
+Migdal–Kadanoff-type decimations, with interpolation parameters (α, t, r) chosen so the bounds become exact.
+
+Ito and Seiler (arXiv:0711.4930, 0803.3019; reply arXiv:0712.2620) identify open steps:
+- existence of the matching points t*, t_m (a contractivity argument is missing);
+- global continuation of t(λ) from λ = 0 to λ = 1;
+- the parameter r: r < 1 is needed for the derivative bounds, but it lets the flow reach the weak-coupling fixed point
+  (crossover near β ≈ 4.8 at r = 0.9);
+- most importantly, the argument "seems to work even for U(1)", which deconfines at large β. So, as written, it cannot be
+  correct.
+
+**The U(1) test applied to this program.** Any valid confinement argument must use an input that is false for U(1) in
+its Coulomb phase. Checked against the chain here:
+- The in-plane step (y' ≤ K y²), the flux-basis identity (§12), the sub-area tolerance (`TwistedSubArea`) and the slab
+  criterion (`TwistedSlabCriterion`) are all algebra plus positivity. They hold verbatim for a Z₂-twist in U(1). For
+  U(1) the slab criterion's base condition simply fails: y stays O(1).
+- K̄ (bounded thermal excess) holds for U(1) too. The free photon gives log Kper ≈ O(1).
+- So the only input that can fail for U(1) is the remaining one: sub-area transverse cost, i.e. local indistinguishability
+  of flux sectors on the cut. In the Coulomb phase the electric flux spreads over the whole cross-section (field
+  ~ 1/L⊥²). The sector difference is then volume-like, and the hypothesis fails, as it must.
+
+The program therefore passes the U(1) test: everything abelian-blind is proved, and the one open input is exactly where
+non-abelian dynamics (flux-tube formation) has to enter. That is also why it cannot be closed by the elementary methods
+used here.
+
+**What a proof would need.** The open input is a clustering estimate for the flux-sector measures at weak coupling,
+uniformly in β. A flux string must be shown to be localized, with sector differences decaying away from it. The only
+known machinery that controls lattice SU(2) uniformly as β → ∞ is multiscale renormalization group (Bałaban's
+UV-stability programme). It has never been carried to infrared confinement. No step in this programme supplies that
+estimate. The measurements in §13 (volume-like S at accessible sizes) neither support nor refute it in the asymptotic
+regime.
+
+**Status: confinement is NOT proved.** The reduction stands:
+- proved: the abelian-blind chain (Lean, standard axioms);
+- open: sector clustering for the 4D SU(2) flux measures, which is the non-abelian content.
