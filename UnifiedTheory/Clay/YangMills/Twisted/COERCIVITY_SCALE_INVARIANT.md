@@ -1,5 +1,9 @@
 # Scale-invariant classical coercivity on the twisted lattice (by hand, 2026-11-02)
 
+Historical note. References to README sections use the
+[preserved pre-cleanup README](https://github.com/tomdif/unifiedtheory/blob/7c7864f8dc12a969682b908001acb0212f1930f9/UnifiedTheory/Clay/YangMills/Twisted/README.md).
+See the [current frontier](README.md) for later results.
+
 **Lean (2026-11-02):** `TwistedPlaquetteValue.lean` proves the per-plaquette step of (i) with explicit constants:
 - `plaquette_value_lower`: `((‖c‖ − 5s²)₊)²/2 ≤ 1 − Re(e^A e^B e^C e^D)` for imaginary `A..D` with `s ≤ 1/2`;
 - `sum_value_lower`: the summed form, `(1−δ)/2 · Σ‖c_p‖² − 25/(2δ) · Σ s_p⁴ ≤ S`.

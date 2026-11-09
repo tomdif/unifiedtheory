@@ -24,6 +24,9 @@ relaxes the bounded-constant iteration: a log cost `m_j <= A + B q^j`,
 The corresponding lattice estimates, initial margin, and renormalization
 control remain open. This is a specific growth condition, not a theorem for
 every `o(L^2)` cost.
+[TwistedWeightedBudget](Twisted/TwistedWeightedBudget.lean) sharpens this to a
+summable normalized-cost budget, with an explicit `4^j/j²` envelope and a
+counterexample showing why pointwise subarea growth alone is insufficient.
 [TwistedSlabCriterion](Twisted/TwistedSlabCriterion.lean) specializes this
 recurrence to `q=2`. Its physical interpretation keeps two transverse
 directions fixed and does not provide the four-dimensional continuum limit.
@@ -35,6 +38,19 @@ bounds `Kper` by the zero-flux ratio within factors `1/8` and `64`, provided
 the required sector positivity and normalized-sum bounds hold. This reduces
 the analytic target; it does not establish the uniform thermal bound or the
 physical trace correspondence.
+
+[SectorTraceMatrix](Twisted/SectorTraceMatrix.lean) proves sector doubling for
+positive semidefinite matrices commuting with a symmetric involution.
+[KernelDoubling](Twisted/KernelDoubling.lean) proves the even-time version for
+bounded symmetric measurable kernels on a probability space. Its sector
+composition identity uses a measure-preserving involution. The identification
+with the full Wilson partition function remains a separate, by-hand step;
+uniform thermal bounds and the continuum limit remain open.
+
+[Z2Torus](Twisted/Z2Torus.lean) proves the finite four-dimensional Z₂
+rectangular Wilson-loop bound under its explicit strong-coupling condition
+`2^24 t < 1` and rectangle-size hypotheses. Its combinatorial inputs are proved
+for that torus; this separate model does not close the SU(2) continuum problem.
 
 The November 8 transverse scan supports registered test (16) on the sampled
 boxes and fails test (17) as written. Its fixed cross-section and two couplings

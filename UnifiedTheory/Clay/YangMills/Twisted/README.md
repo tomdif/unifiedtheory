@@ -21,6 +21,11 @@ log cost `m_j <= A + B q^j` for `0 <= q < 4`. Its area-decay conclusion needs
 `u_0 > A/3 + B/(4-q)`. Proving those bounds for the lattice operators is still
 required; an arbitrary `o(L^2)` bound alone is not what the theorem proves.
 
+[TwistedWeightedBudget](TwistedWeightedBudget.lean) gives a sharper sufficient
+summable normalized-cost criterion, including an envelope of order `4^j/j²`.
+Its harmonic counterexample demonstrates failure of pointwise subarea control
+without a finite weighted budget.
+
 [TwistedSlabCriterion](TwistedSlabCriterion.lean) specializes the recurrence
 to `q=2`. Its slab interpretation holds the transverse dimensions fixed;
 the physical recurrence identification remains outside the formal theorem,
@@ -41,6 +46,18 @@ Taking `s=7` yields the factors `1/8` and `64` for an eight-sector application.
 The physical trace identification, sector positivity, and uniform bound must
 still be supplied. These reductions are not a proof of the needed spectral
 estimate.
+
+[SectorTraceMatrix](SectorTraceMatrix.lean) proves the doubling inequality
+for a positive semidefinite matrix and commuting symmetric involution.
+[KernelDoubling](KernelDoubling.lean) extends the even-time inequality to
+bounded symmetric measurable kernels on any probability space; sector
+composition also requires a measure-preserving involution. Identifying the
+Wilson partition functions with these kernel traces is still by hand.
+
+[Z2Torus](Z2Torus.lean) proves a rectangular-loop area bound for the finite
+four-dimensional Z₂ lattice, including its Stokes/minimal-area and degree
+estimates. The bound retains `0 <= t`, `2^24 t < 1`, `1 <= R`, `2R <= L`,
+and `T < L`. This is a separate strong-coupling model.
 
 ## Numerical tests
 

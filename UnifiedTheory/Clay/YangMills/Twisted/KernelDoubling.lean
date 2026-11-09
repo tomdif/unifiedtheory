@@ -8,7 +8,7 @@ not positivity. The time extent must be even (t = 2s), which holds for the in-pl
   from scratch via the discriminant of `∫ (f + λ g)² ≥ 0`.
 * `comp_sq_le`: for a symmetric bounded measurable kernel `F` and `G = F ∘ F`, `G(x,y)² ≤ G(x,x) G(y,y)`.
 * `trace_double`: `Tr(G ∘ G) ≤ (Tr G)²`, i.e. `Z(4s) ≤ Z(2s)²` with `G = K_s ∘ K_s`.
-* `sector_symm`: if `F` commutes with a measurable involution `Ω`, the sector kernel `F⁻(x,y) = (F x y - F x (Ω y))/2`
+* `minus_kernel`: if `F` commutes with a measurable involution `Ω`, the sector kernel `F⁻(x,y) = (F x y - F x (Ω y))/2`
   is again symmetric, bounded and measurable.
 * `comp_minus`: if `Ω` is also measure-preserving, then `F⁻ ∘ F⁻ = (F ∘ F)⁻`, by change of variables.
 * `sector_double`: `Z_e(4s) ≤ Z_e(2s)²` in every flux sector, for kernels on any probability space.

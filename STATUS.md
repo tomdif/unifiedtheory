@@ -1,7 +1,7 @@
 # Current research status
 
-Reviewed **2026-11-09**, consolidating the research on
-`paper3-inf-resolution` for publication on `main`. Historical verification
+Reviewed **2026-11-09** after publication on `main` in
+[PR #1](https://github.com/tomdif/unifiedtheory/pull/1). Historical verification
 records retain their original source hashes and checkout scope.
 
 **The physical TOE and the Clay Yang–Mills target remain open.** No theorem
@@ -59,6 +59,16 @@ are still missing.
   of test (22): at beta 2.4 the fitted exponent is `2.8 [1.7, 4.1]`, with
   approximately volume-like scaling. Beta 2.3 remains undetermined by the noise.
   See the [recorded data](data/yang_mills_sector_slab_2026_11_09.json).
+- [SectorTraceMatrix](UnifiedTheory/Clay/YangMills/Twisted/SectorTraceMatrix.lean)
+  proves sector doubling for a positive semidefinite matrix commuting with a
+  symmetric involution. [KernelDoubling](UnifiedTheory/Clay/YangMills/Twisted/KernelDoubling.lean)
+  proves the corresponding even-time inequality for bounded symmetric measurable
+  kernels on a probability space, with the stated measure-preserving involution
+  assumptions. The actual Wilson partition-function identification is still by hand.
+- [Z2Torus](UnifiedTheory/Clay/YangMills/Twisted/Z2Torus.lean) supplies the concrete
+  discrete Stokes/minimal-area and degree bounds for rectangular loops on the
+  finite four-dimensional Z₂ torus. Its Wilson bound assumes `2^24 t < 1`,
+  `0 <= t`, `1 <= R`, `2R <= L`, and `T < L`. This is a separate finite model.
 
 All **twelve full-target requirements remain open** in the
 [requirements ledger](data/yang_mills_requirements.json). The
@@ -137,7 +147,24 @@ candidate with physical SM/GR fields. Consult the
 negative experiments remain evidence about their specified models, even when
 the overall research direction has advanced.
 
-## Repository audit and cleanup
+## Published verification checkpoint
+
+The published tree `6eaedd7a5ff697df75accde9d0686aa971e417c4`
+passed the full library build and static source audit for **5,440 modules**.
+Axiom inspection covered **150,121 declarations**: 150,051 in the preceding
+complete snapshot, followed by all 44 matrix-sector and 26 kernel declarations.
+There were no unexpected axioms; the older native-computation dependencies
+remain disclosed. All five audit tests, both research ledgers, and the
+231-declaration focused Twisted axiom check passed. These are local validation
+results; [GitHub Actions](https://github.com/tomdif/unifiedtheory/actions)
+records remote CI separately.
+
+The [post-merge cleanup record](data/post_merge_cleanup_2026_11_09.json)
+documents later overview corrections, historical citation repairs, and removal
+of unreferenced temporary downloads. Formal statements, proofs, and recorded
+experiment results are preserved.
+
+## Initial repository audit and cleanup
 
 The [audit record](data/repository_audit_2026_11_09.json) gives check outcomes
 and limitations. Before cleanup, the checkout contained 3,181 tracked files

@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-09",
+  "baseline_commit": "0227268fa328a6bed5ac6d96aee42aaaddc048c4",
+  "baseline_pull_request": "https://github.com/tomdif/unifiedtheory/pull/1",
+  "baseline_published_tree": "6eaedd7a5ff697df75accde9d0686aa971e417c4",
+  "published_verification": {
+    "library_modules_built": 5440,
+    "declarations_axiom_checked": 150121,
+    "scope": "Full 5438-module declaration audit plus all declarations of the two added matrix/kernel modules; no unexpected axioms. Native-computation dependencies in older modules are disclosed."
+  },
+  "removed": [
+    {
+      "path": "tmp/pdfs/balaban/BF01215223-inspire.json",
+      "bytes": 29108,
+      "sha256": "d75ed5b1a6200ae52f92130338a0f7ecaab79dc2596760de2d9a00778a4e1c3d",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/BF01217741-inspire.json",
+      "bytes": 6874,
+      "sha256": "ae6c2033544dce4421b66ddadac3ecf5d70e678647e003fbc4b15a48ab09cb51",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/BF01238433-inspire.json",
+      "bytes": 6622,
+      "sha256": "9e2faf70e81f7d3fb81cc2af480420ef83d07c15ee9bc2c881bc93dd106bace3",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/BF01239022-inspire.json",
+      "bytes": 859,
+      "sha256": "5508aacc806e6aefdb32089b7e6557ed6e83a38940ddabc0e468987f79e1a525",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/BF01257412-inspire.json",
+      "bytes": 6464,
+      "sha256": "0691988b7dc34d50f18b57d7f06ffb355a23ebf3fdad59190ed5714d76c43fd5",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/dimock-rome.pdf",
+      "bytes": 562740,
+      "sha256": "abcd8115078959379d337c5a5aaca0eb22870b43eb72156e3b4ba08a513fb7c1",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/dimock-rome.txt",
+      "bytes": 169336,
+      "sha256": "82116e4533e1e2bddb72cdcb5907e37264762819ac60287644bae2d5e64ccf45",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/largefield2-04.png",
+      "bytes": 260811,
+      "sha256": "871bdb03296dcecab1681dbb5f15765ac5247ad8df606f94c718ceb87efb1c16",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/largefield2-05.png",
+      "bytes": 292530,
+      "sha256": "f67edd9e87641fbf90e6e127fdb36623533bd183f176450c261131bbcb81344c",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/largefield2-mirror.html",
+      "bytes": 919,
+      "sha256": "b68d3596548bc5340eec0f530d861eb29c17d7f3996dc2c573400bb1293a5734",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/balaban/provenance.json",
+      "bytes": 387,
+      "sha256": "0d454a634b9cb6967278bfe0e9203ec8a4e0fc781114c336fe7d7a5b150c3724",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/Prague-School.pdf",
+      "bytes": 352923,
+      "sha256": "bba0f0c68a11e5d3125e57f6f8ba3f62af1b0c05093916d46a160a11c324632e",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/YM_working_group.pdf",
+      "bytes": 89273,
+      "sha256": "dbab31f0f954ac8265a3fc1c1a29664c7fa0b7f16c616d58012e65896557bd12",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/YM_working_group.txt",
+      "bytes": 5760,
+      "sha256": "10cb3223ab2d6a58a68e8e5affdb5db29394c1991e67b708218670aaeb5181e8",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/chessboard-42.png",
+      "bytes": 224181,
+      "sha256": "32e5a7a5677d1d4e3dc4320d99d99486b75c37422f484961258f03cd39a0a724",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/chessboard-43.png",
+      "bytes": 166999,
+      "sha256": "9458723d37488c54075dadb209f39457458dd22dc35ac03b9522de2f1f9b2eb2",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/chessboard-44.png",
+      "bytes": 175085,
+      "sha256": "0767567f200d12043721d5ef8dce8c889f3ee91df0c5a07036677bc7a882ebcf",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/page-1.png",
+      "bytes": 179988,
+      "sha256": "3aa8c180171904d29620bfde5041a654bbb914f299b9fa05d67d84c32f794c82",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    },
+    {
+      "path": "tmp/pdfs/kitp_ym_20261028/page-2.png",
+      "bytes": 217377,
+      "sha256": "7c14a1f7b812a45973cf307a0d20ce3a6cbb31d09d992550f177d32a6cc01965",
+      "reason": "Unreferenced temporary literature download, extraction, screenshot, or retrieval metadata; preserved in Git history."
+    }
+  ],
+  "removed_bytes": 2748236,
+  "updated": [
+    "Publication status and current verification checkpoint",
+    "Weighted-cost, matrix-sector, integral-kernel, and finite Z2 model summaries with scope limits",
+    "Historical README section references replaced or qualified with an immutable pre-cleanup source link",
+    "External-proof checklist sourced to the official KITP statements, checked 2026-11-09",
+    "Ignore temporary downloads and Lake directory/symlink caches",
+    "Correct the KernelDoubling overview to name the existing minus_kernel theorem"
+  ],
+  "preserved": [
+    "All formal theorem statements and proofs; only one Lean comment identifier was corrected",
+    "Numerical experiment sources, results, logs, and restart checkpoints",
+    "Historical source-hash reports and their original semantics",
+    "New certificate research in the shared checkout"
+  ],
+  "external_source_check": {
+    "checked_on": "2026-11-09",
+    "official_page": "https://www.kitp.ucsb.edu/statement-by-the-yangmills-working-group",
+    "statement": "https://www.kitp.ucsb.edu/sites/default/files/2nd-Statement-About-Quantum-YangMills-Theory_Nov-3.pdf",
+    "finding": "The checked page links statements and procedures, with no Lean source release linked there; the November 3 statement describes validation before release."
+  },
+  "validation": {
+    "status": "passed",
+    "lean_comment_only_change": "UnifiedTheory/Clay/YangMills/Twisted/KernelDoubling.lean",
+    "lean_code_unchanged_after_masking_comments": true,
+    "static_source_audit": true,
+    "library_modules": 5440,
+    "python_syntax_and_json": true,
+    "local_file_links": true,
+    "local_markdown_anchor_candidates": 0,
+    "repository_audit_tests_passed": 5,
+    "yang_mills_ledger_consistent": true,
+    "yang_mills_full_target_requirements_open": 12,
+    "toe_draft_no_result_attacks": 5,
+    "git_diff_check": true,
+    "full_library_rebuild_performed": false,
+    "scope": "Documentation, ignore rules, temporary artifact removal, and one Lean comment correction. Proof code is unchanged; the complete build/axiom checkpoint is recorded separately."
+  }
+}

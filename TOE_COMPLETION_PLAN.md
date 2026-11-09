@@ -17,7 +17,13 @@ For the current flux-bootstrap route:
 2. Prove K-bar, the required uniform thermal-excess bound. The
    [thermal-excess reduction](UnifiedTheory/Clay/YangMills/Twisted/TwistedThermalExcess.lean)
    is conditional: supply trace identities, sector positivity, and the
-   infinite-spectrum convergence needed for the physical application.
+   infinite-spectrum convergence needed for the spectral formulation.
+   [SectorTraceMatrix](UnifiedTheory/Clay/YangMills/Twisted/SectorTraceMatrix.lean)
+   now proves the finite matrix inequality, and
+   [KernelDoubling](UnifiedTheory/Clay/YangMills/Twisted/KernelDoubling.lean)
+   supplies an integral-kernel alternative at even time. For that alternative,
+   identify the actual Wilson partition functions with the formal kernel traces
+   and verify the symmetry, measurability, boundedness, and involution hypotheses.
 3. Control both bounds and the onset scale along the renormalization trajectory.
 4. Construct and identify one nontrivial continuum theory, its physical fields,
    quantum-field axioms, and positive finite excitation scale. Finite-volume
