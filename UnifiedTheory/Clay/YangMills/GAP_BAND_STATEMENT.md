@@ -716,5 +716,11 @@ This holds for Z₂ lattice gauge theory (the centre of SU(2)) on any finite pla
   - every spanning set has at least the minimal area A;
   - there are at most M·Kⁿ C-connected sets of size n (the lattice-animal count).
 
-This proves confinement at strong coupling for Z₂, except for those two counting lemmas. It is not the SU(2) result:
+The lattice-animal count is now PROVED (`Twisted/Z2AnimalCount.lean`, `span_count`): there are at most
+2^|T|·(2^Δ)ⁿ C-connected spanning sets of size n, where T is the set of plaquettes touching C and Δ bounds the number of
+edge-neighbours of a plaquette. So `area_law_unconditional` gives ⟨W_C⟩ ≤ 2^|T|(2^Δ t)^A/(1 − 2^Δ t) for 2^Δ t < 1.
+The only remaining hypothesis is the minimal spanning area A. The 2^|T| factor is a perimeter correction. On ℤ⁴,
+Δ = 21, so the constants are crude (t < 2^{−21}) but rigorous.
+
+This proves confinement at strong coupling for Z₂, modulo the minimal-area lemma. It is not the SU(2) result:
 Osterwalder–Seiler needs the non-abelian character expansion plus a cluster expansion. It is not new mathematics either.
