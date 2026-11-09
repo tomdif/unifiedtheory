@@ -706,3 +706,15 @@ regime.
 **Status: confinement is NOT proved.** The reduction stands:
 - proved: the abelian-blind chain (Lean, standard axioms);
 - open: sector clustering for the 4D SU(2) flux measures, which is the non-abelian content.
+
+**Addendum: a proved strong-coupling area law (Z₂)** (`Twisted/Z2StrongCoupling.lean`, standard axioms).
+This holds for Z₂ lattice gauge theory (the centre of SU(2)) on any finite plaquette–edge complex:
+- **High-temperature expansion (exact):** Σ_s W_C ∏_p(1 + tσ_p) = 2^|E|·N_C(t), so ⟨W_C⟩ = N_C/N_∅, with t = tanh β.
+- **Peierls decomposition:** N_C ≤ (Σ_{S∈𝒮_C} t^|S|)·N_∅, where 𝒮_C is the set of C-connected spanning sets. The proof
+  splits X into its C-connected component (whose boundary is C) and a closed remainder. Hence ⟨W_C⟩ ≤ Σ_{S∈𝒮_C} t^|S|.
+- **Area law:** ⟨W_C⟩ ≤ M(Kt)^A/(1 − Kt) for Kt < 1. Two standard combinatorial facts are taken as hypotheses:
+  - every spanning set has at least the minimal area A;
+  - there are at most M·Kⁿ C-connected sets of size n (the lattice-animal count).
+
+This proves confinement at strong coupling for Z₂, except for those two counting lemmas. It is not the SU(2) result:
+Osterwalder–Seiler needs the non-abelian character expansion plus a cluster expansion. It is not new mathematics either.
