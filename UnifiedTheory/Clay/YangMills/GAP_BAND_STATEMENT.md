@@ -731,3 +731,26 @@ Stokes theorem over ZMod 2 with column cochains. Results:
 
 This is a fully machine-checked strong-coupling area law (standard axioms, no hypotheses) for Z₂ on the 4D torus. It is not the SU(2) result:
 Osterwalder–Seiler needs the non-abelian character expansion plus a cluster expansion. It is not new mathematics either.
+
+## 15. Closing the by-hand identification: matrix and kernel versions (2026-11-09)
+
+- **Finite-dimensional case** (`Twisted/SectorTraceMatrix.lean`). For A real symmetric PSD commuting with a symmetric
+  involution Ω, the sector traces Z_±(t) = Tr(P_± A^t), with P_± = (1 ± Ω)/2, satisfy Z_±(2t) ≤ Z_±(t)²
+  (`Ze_double`, `Z0_double`). Also Z₀ + Z_e = Tr A^t, Z₀ − Z_e = Tr(Ω A^t), and the flux-ratio step
+  y(2t) ≤ (Z₀(t)²/Z₀(2t))·y(t)² (`flux_ratio_step`). This replaces the eigenvalue abstraction of
+  `TwistedFluxRecursion` with real matrices (finite gauge groups, e.g. Z₂).
+- **Continuous gauge groups, no operator theory** (`Twisted/KernelDoubling.lean`). For any probability space X and any
+  symmetric, bounded, measurable kernel F:
+  - with G = F∘F, G(x,y)² ≤ G(x,x)G(y,y) (`comp_sq_le`, via Cauchy–Schwarz proved from scratch), hence
+    Tr(G∘G) ≤ (Tr G)² (`trace_double`);
+  - with Ω a measure-preserving measurable involution commuting with F, the sector kernel F⁻ = (F − F∘Ω)/2 is again
+    symmetric (`minus_kernel`) and F⁻∘F⁻ = (F∘F)⁻ (`comp_minus`), hence Z_e(4s) ≤ Z_e(2s)² (`sector_double`).
+
+  Positivity of the transfer operator is not needed, only symmetry plus even time extents. This covers SU(2), with
+  X = SU(2)^{spatial edges} and product Haar measure.
+
+**Still by hand:**
+- that the full lattice integral equals tr(K_s∘K_s) (Fubini over time slices plus integrating out temporal links);
+- that the gauge-averaged one-step kernel is symmetric and Ω-invariant.
+
+Both are explicit integral identities, not missing theory. They are the next formalization target.
