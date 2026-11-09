@@ -531,7 +531,7 @@ F = −log z, and R(C) = F(2C)/F(C). Pre-registrations (16) and (17) were commit
 | 2.6 | 13 ± 7 | 2.71 ± 0.44 | 1.41 ± 0.19 | 1.59 ± 0.18 |
 
 Verdicts:
-- **(16), R(C) ≤ 2.6 within 2σ for every C ≥ 6 at both β: HOLDS.** All eight ratios pass. The worst is R(6) at β 2.6,
+- **(16), R(C) ≤ 2.6 within 2σ for every C ≥ 6 at both β: HOLDS.** All six qualifying ratios pass. The worst is R(6) at β 2.6,
   0.3σ above 2.6. R(8) and R(12) are 3–6σ below 2.6.
   - The thin-box part, R(4) > 2.6, holds on central values (5.3 and 13) but only at 1.1σ and 1.5σ. It is not
     significant, because F(4) ≈ 0.2 is comparable to its error.
@@ -553,7 +553,7 @@ Verdicts:
   F(16) < F(12) at β 2.6 is a 0.3σ inversion.
 
 **What this does not settle.**
-- The scan varies one transverse side of a fixed 8³ cross-section. It does not cover the chain shapes, two β values,
+- The scan varies one transverse side of a fixed 8³ cross-section. It does not cover the chain shapes, more than two β values,
   or L → ∞.
 - It tests F(2t) ≤ cF(t) directly, not (S) through the split F(t) = tΔ + D(t).
 - K̄ is not addressed.
@@ -561,3 +561,57 @@ Verdicts:
 
 The multiplicative step is therefore an **observed** property at β 2.5–2.6 for transverse sides ≥ 6–8, not a proved
 one. The open inputs remain (S) for L ≥ L₀(β) and K̄, both uniform in β.
+
+## 12. Attacking the two open inputs: thermal excess, sub-area growth, flux basis (2026-11-09)
+
+Lean modules: `Twisted/TwistedThermalExcess.lean`, `Twisted/TwistedSubArea.lean` and `Twisted/TwistedFluxBasis.lean`.
+All compile with standard axioms only and are not imported by the root. Script: `scripts/yang_mills_thermal_excess.py`.
+Data: `data/yang_mills_thermal_excess_2026_11_09{,b}.json`.
+
+**K̄ is a thermal excess.** Take the doubled in-plane direction as time, with the spatial box fixed. Let P(L) be the
+excited-state part of the box partition function at T = 1/L, i.e. the thermal excess. Then
+1 + P ≤ Kper ≤ (1 + P)² (`kper_sandwich`), and K ≤ 2·Kper (`k_le_two_kper`).
+
+log(1 + P(L)) equals the exact sum Σ_k 2^{-(k+1)} log Kper(2^k L) (`log_z_telescope`). Splitting into the 8 electric-flux
+sectors costs at most a factor 64 (`kper_flux_split`, `flux_projection_le`). So K̄ is a statement about the zero-flux
+spectrum only.
+
+**The induction needs only sub-area growth, not bounded constants.** With u_k = −log y_k and m_k = log M_k,
+u_{k+1} ≥ 4u_k − m_k gives u_k ≥ 4^k(u₀ − A/3 − B/(4−q)) whenever m_k ≤ A + B q^k with q < 4 (`area_law_growing`). So
+log M(L) ≤ A + B(L/L₀)^α with any α < 2 is enough. The case α = 2 is the borderline and fails.
+
+**The transverse step in the flux basis.** Set Z₀ = (Z + Z_tw)/2 and Z_e = (Z − Z_tw)/2. Then exactly
+y(2t) = [2y/(1+y²)]·K₀/K_e (`transverse_flux_identity`), where K_s = Z_s^split/Z_s(2t) is the split/join interface ratio
+in sector s.
+- In the twist basis, (S) looked like it needed Kper_tw and Kper to agree to O(y): exponentially fine, and
+  confinement-strength. In the flux basis it needs only log K₀ − log K_e = o(L²). Physically both are O(1).
+- K̄ and (S) therefore take one common form: in each flux sector, the interface free energy of the split/join cut is
+  sub-area.
+- **The gap.** The only rigorous bound is |log K_s| ≲ β·(slab volume) ~ βL³. That misses the requirement by more than
+  one power of L.
+- Closing it needs *local indistinguishability of flux sectors*: the sector difference of the cut observable,
+  averaged over the 3D slab, must be o(1/L).
+- Three routes tried, none works:
+  - Cauchy–Schwarz on the twist reweighting gives 1/√y.
+  - Transverse reflection positivity cuts the twist sheet, which brings back an additive perimeter term.
+  - Averaging over cut positions fails because the split observable is not translation-invariant.
+
+**Thermal-excess numerics.** log Kper₀ is the first chain step, i.e. time-doubling with spatial L³.
+
+| β, L | log Kper₀ | pre-reg | verdict |
+|---|---|---|---|
+| 2.5, 8 | 1.25(55) | (18) < 1.0 | fails on central value (0.5σ) |
+| 2.6 / 3.0 / 4.0, 4 | 3.73(23) / 2.46(22) / 5.10(47) | (19) monotone rise, last > first + 1 | fails (dip at 3.0, 4σ) |
+| 2.5, 12 | −0.08(99) | (20) < 0.8 | holds, not significant |
+| 2.6, 12 | 2.78(102) | (20) < 1.0 | **fails** (1.8σ) |
+| 2.6, 8 | 2.29(80) | (20) > 1.5 | holds (1σ) |
+
+The working hypothesis was that log Kper₀ is set by T/T_c with T = 1/L, which would give L₀(β) = 1/(a T_c).
+- It is consistent with the two small values from §10: β 2.4 L8 gives 0.07, and β 2.3 L6 gives 0.40. Both are boxes
+  with L > N_t^c.
+- It is not supported at β 2.6 L12.
+- A rerun at 6× statistics is pre-registered as (21).
+
+**Status.** Both open inputs now reduce to sector-resolved interface free energies being sub-area, uniformly in β, above
+some L₀. That is still unproved. The missing ingredient is a local clustering property of flux sectors, which is
+weaker in form than confinement but not established at weak coupling.
