@@ -31,6 +31,7 @@ Added 2026-11-09 after (20), before any further run:
  (21) Rerun of (20) at L = 12 with 6x the sweeps (48000), same thresholds: beta 2.5 L12 < 0.8 and beta 2.6 L12 < 1.0.
       If beta 2.6 L12 stays above 1.0 at 2 sigma, the T/T_c hypothesis with N_t^c(2.6) ~ 10-11 is refuted, or L0 is
       larger than 1/(a T_c) for aspect-ratio-1 boxes.
+Result (21), 2026-11-09: beta 2.5 L12 0.30(36) holds; beta 2.6 L12 1.40(58) fails on the central value (0.7 sigma).
 Usage: out jobs sweeps   with jobs = "beta:L,beta:L,..."
 """
 import os, sys, json, time

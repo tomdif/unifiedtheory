@@ -15,6 +15,8 @@ Even L only, because the checkerboard update needs even periodic sizes.
 Written 2026-11-09, before any run:
  (22) At beta 2.3 and 2.4, with L = 4, 6, 8: the scaling exponent p of |S| ~ L^p, from a fit over L = 4..8, is below 2
       at both beta (sub-area), and S/L^3 decreases from L = 4 to L = 8. My central guess is p ~ 1.
+Result 2026-11-09 (GAP §13): (22) FAILS. beta 2.4: p = 2.8 [1.7, 4.1], S/L^3 flat ~ 0.0026-0.0030 (volume-like; L4 and L6
+are deconfined boxes). beta 2.3 undetermined (z ~ 1 within noise at L >= 6).
 Usage: out betas Ls sweeps
 """
 import os, sys, json, time, math

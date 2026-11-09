@@ -632,3 +632,38 @@ What it still depends on:
 It does **not** reach ℝ⁴. Every transverse doubling costs β·L²L⊥ under the elementary bounds, which is beyond sub-area.
 So L⊥ must stay fixed, and the threshold exp(−24βL⊥²L₀) is far below anything measurable. This is the precise form of
 the remaining gap: to let L⊥ grow, the transverse interface cost must improve from volume to o(area).
+
+## 13. Does the flux-sector difference on the cut scale sub-area? (2026-11-09)
+
+Script `scripts/yang_mills_sector_slab.py`, data `data/yang_mills_sector_slab_2026_11_09.json`. Pre-reg (22) was
+committed in c55d8ce before any run.
+
+S(L) is the zero-flux minus one-flux sector difference summed over one transverse cut slab:
+S = 2zD/(1−z²), with D = (1/L) Σ_box(⟨P⟩_tw − ⟨P⟩) over plaquettes in planes (0,3), (1,3), (2,3). Boxes L⁴, 8000 sweeps.
+
+| β | L | z | S | 16–84% | S/L³ |
+|---|---|---|---|---|---|
+| 2.3 | 4 | 0.42 | −0.73 | [−0.83, −0.63] | −0.011 |
+| 2.3 | 6 | 0.91 | −0.57 | [−2.3, 0.8] | — |
+| 2.3 | 8 | 1.09 (noise) | undefined | — | — |
+| 2.4 | 4 | 0.25 | −0.19 | [−0.23, −0.16] | −0.0030 |
+| 2.4 | 6 | 0.46 | −0.57 | [−0.78, −0.39] | −0.0026 |
+| 2.4 | 8 | 0.76 | −1.35 | [−3.0, −0.6] | −0.0026 |
+
+**Verdict on (22): FAILS.**
+- At β 2.4 the exponent of |S| ~ L^p is p = 2.8 [1.7, 4.1] (16–84%) from L4 to L8, with P(p < 2) = 0.23.
+- S/L³ is flat at 0.0026–0.0030, which is **volume scaling**, not string scaling.
+- β 2.3 is undetermined, because z is within noise of 1 at L ≥ 6.
+
+**Caveat.** At β 2.4, N_t^c ≈ 5.6, so the L4 and L6 boxes are at or above the deconfinement temperature (T = 1/L). Only
+L8 is cold. In a deconfined box the flux sectors genuinely differ throughout the volume, so a volume law there is
+expected and does not decide the asymptotic, confined scaling. The one cold point (L8) has a 2× error bar.
+
+The data therefore do **not** support the sub-area hypothesis in the accessible range. They would only become informative
+for boxes well above 1/(aT_c) with z measured to ≪ 1 − z, which is beyond the present method.
+
+**Pre-reg (21)** (48000 sweeps; `data/yang_mills_thermal_excess_2026_11_09c.json`):
+- β 2.5 L12 gives 0.30(36) < 0.8: holds.
+- β 2.6 L12 gives 1.40(58), against a prediction below 1.0: fails on the central value (0.7σ).
+- Combined with (20), β 2.6 L12 averages 1.74(50), 1.5σ above 1.0. The T/T_c hypothesis with N_t^c(2.6) ≈ 10–11 is not
+  confirmed: log Kper₀ does fall from L8 (2.29) to L12, but more slowly than predicted.
