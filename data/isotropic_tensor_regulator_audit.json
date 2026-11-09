@@ -1,0 +1,954 @@
+{
+  "symbolic": {
+    "derivative_recursion": true,
+    "sine_squared_fourth_moment": true
+  },
+  "frequency": {
+    "cases": [
+      {
+        "energies": [
+          2.8160886917780723,
+          2.3777982865075242
+        ],
+        "frequency": 0.4705440273659929,
+        "absolute_error": 0.0,
+        "quadrature_error": 9.295532114271682e-16
+      },
+      {
+        "energies": [
+          1.2167255058912012,
+          1.8863433190110104
+        ],
+        "frequency": -1.2809895089214904,
+        "absolute_error": 0.0,
+        "quadrature_error": 7.252855753937027e-16
+      },
+      {
+        "energies": [
+          1.5141933897149646,
+          1.7958215121451335
+        ],
+        "frequency": -1.3305283026441637,
+        "absolute_error": 1.3877787807814457e-17,
+        "quadrature_error": 4.446534726324533e-16
+      },
+      {
+        "energies": [
+          2.807132228141038,
+          1.058102142252798
+        ],
+        "frequency": 0.09551638938904405,
+        "absolute_error": 3.469446951953614e-18,
+        "quadrature_error": 7.975779778778017e-15
+      },
+      {
+        "energies": [
+          2.027122172473396,
+          2.1396283243113965
+        ],
+        "frequency": -0.9488767691916222,
+        "absolute_error": 3.469446951953614e-18,
+        "quadrature_error": 1.0060774877880538e-13
+      },
+      {
+        "energies": [
+          1.7608849337831274,
+          0.4875605101823709
+        ],
+        "frequency": -1.65745325983582,
+        "absolute_error": 8.326672684688674e-17,
+        "quadrature_error": 7.921179044436814e-13
+      },
+      {
+        "energies": [
+          0.648719302685596,
+          0.34305572767880504
+        ],
+        "frequency": 3.038243896438325,
+        "absolute_error": 2.220446049250313e-16,
+        "quadrature_error": 3.2771542521319006e-12
+      },
+      {
+        "energies": [
+          0.4519763951227562,
+          1.7364946800287668
+        ],
+        "frequency": -2.8412967591432152,
+        "absolute_error": 8.326672684688674e-17,
+        "quadrature_error": 1.1777360146843957e-12
+      },
+      {
+        "energies": [
+          0.8880369540698873,
+          0.7473450785959499
+        ],
+        "frequency": -2.00647498891954,
+        "absolute_error": 2.7755575615628914e-17,
+        "quadrature_error": 1.870439383802153e-12
+      },
+      {
+        "energies": [
+          1.4224696690977656,
+          0.5284201239251816
+        ],
+        "frequency": -3.1124684373249285,
+        "absolute_error": 2.7755575615628914e-17,
+        "quadrature_error": 1.9171740264270395e-14
+      },
+      {
+        "energies": [
+          2.853478881808753,
+          2.489031226808403
+        ],
+        "frequency": -0.31153167111523095,
+        "absolute_error": 0.0,
+        "quadrature_error": 4.943799812221064e-16
+      },
+      {
+        "energies": [
+          2.679546093471943,
+          1.7883524810981988
+        ],
+        "frequency": 1.1424856420884515,
+        "absolute_error": 0.0,
+        "quadrature_error": 1.3287340291534149e-16
+      }
+    ]
+  },
+  "vertex": {
+    "cases": 32,
+    "largest_vertex_remainder_at_p_001": 7.237854415744101e-11,
+    "exact_shift_identity": true,
+    "fourth_order_remainder_scaling": true
+  },
+  "directional_response": {
+    "cases": [
+      {
+        "points_per_axis": 32,
+        "scalar_mass": 0.0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.00017477970308178654,
+            1.1899594296987547e-21
+          ],
+          [
+            1.1899594296987547e-21,
+            0.00032485490839045435
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.00017461446079701393,
+            -2.1510216036346263e-22
+          ],
+          [
+            -2.1510216036346263e-22,
+            0.0003207263254615101
+          ]
+        ],
+        "vertex_correction": [
+          [
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          0.9872909941567453,
+          0.9990545682258352
+        ]
+      },
+      {
+        "points_per_axis": 32,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "time_matrix": [
+          [
+            0.0002122985044089541,
+            1.6167186759750812e-23
+          ],
+          [
+            1.6167186759750812e-23,
+            0.00032485490839045456
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006456080225587415,
+            8.403738000109825e-22
+          ],
+          [
+            8.403738000109825e-22,
+            0.001093482988745
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.00045357939524745886,
+            -3.69010198800664e-23
+          ],
+          [
+            -3.69010198800664e-23,
+            0.0007649073057636594
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.0410389576513275,
+          3.366065774295471
+        ]
+      },
+      {
+        "points_per_axis": 32,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.00027482983995423196,
+            1.2083671750562989e-20
+          ],
+          [
+            1.2083671750562989e-20,
+            0.0002748298399542328
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.001001661417006543,
+            -5.449987691856663e-20
+          ],
+          [
+            -5.449987691856663e-20,
+            0.0010016614170065435
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.0007431404872260326,
+            -5.106569589380095e-20
+          ],
+          [
+            -5.106569589380095e-20,
+            0.0007431404872260352
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.6446603366408454,
+          3.6446603366408548
+        ]
+      },
+      {
+        "points_per_axis": 32,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "time_matrix": [
+          [
+            0.0002214324137768524,
+            -7.628562378687922e-06
+          ],
+          [
+            -7.628562378687922e-06,
+            0.0003157209990225562
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006777160241078768,
+            -1.5943151959683558e-05
+          ],
+          [
+            -1.5943151959683558e-05,
+            0.0010081163351400458
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.000474944351654267,
+            -7.83728891741523e-06
+          ],
+          [
+            -7.83728891741523e-06,
+            0.0006945286258353502
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.054985168717056,
+          3.2004032070645683
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "scalar_mass": 0.0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.00017865716353197326,
+            1.2027779383120922e-21
+          ],
+          [
+            1.2027779383120922e-21,
+            0.0003229032801334876
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0001786160760158162,
+            5.1696951376662807e-23
+          ],
+          [
+            5.1696951376662807e-23,
+            0.0003218724753376674
+          ]
+        ],
+        "vertex_correction": [
+          [
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          0.9968076979726125,
+          0.9997700203263907
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "time_matrix": [
+          [
+            0.00021471869268235177,
+            -7.839574715588648e-23
+          ],
+          [
+            -7.839574715588648e-23,
+            0.0003229032801334882
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006492736833907016,
+            1.1777755601927668e-21
+          ],
+          [
+            1.1777755601927668e-21,
+            0.0010887163360685614
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.0004535854777912287,
+            1.1930367245735646e-21
+          ],
+          [
+            1.1930367245735646e-21,
+            0.0007648787844740976
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.023834000103648,
+          3.3716484255548167
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.00027482124126631635,
+            -1.4784454980219987e-20
+          ],
+          [
+            -1.4784454980219987e-20,
+            0.0002748212412663162
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.001001467398150268,
+            4.4451163257134807e-20
+          ],
+          [
+            4.4451163257134807e-20,
+            0.0010014673981502667
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.0007431332178029139,
+            3.365204660896163e-20
+          ],
+          [
+            3.365204660896163e-20,
+            0.0007431332178029126
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.6440683898221393,
+          3.6440683898221424
+        ]
+      },
+      {
+        "points_per_axis": 64,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "time_matrix": [
+          [
+            0.00022349783080180145,
+            -7.332260489765172e-06
+          ],
+          [
+            -7.332260489765172e-06,
+            0.0003141241420140385
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006807761931252611,
+            -1.5639643263351572e-05
+          ],
+          [
+            -1.5639643263351572e-05,
+            0.001004945549155956
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.00047494805950124285,
+            -7.836417809396107e-06
+          ],
+          [
+            -7.836417809396107e-06,
+            0.0006945079270764004
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.041983414701454,
+          3.2047401516405025
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "scalar_mass": 0.0,
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.00017937889481707114,
+            1.53450581797902e-20
+          ],
+          [
+            1.53450581797902e-20,
+            0.00032254149456447144
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.00017936065415830353,
+            1.551230184512083e-20
+          ],
+          [
+            1.551230184512083e-20,
+            0.00032208347009443454
+          ]
+        ],
+        "vertex_correction": [
+          [
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          0.9985799517961083,
+          0.9998983121242542
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "time_matrix": [
+          [
+            0.0002151695447539208,
+            6.314145342488111e-23
+          ],
+          [
+            6.314145342488111e-23,
+            0.00032254149456447144
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006499551945058472,
+            2.8504031182197666e-22
+          ],
+          [
+            2.8504031182197666e-22,
+            0.0010878343311628285
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.00045358580614687983,
+            6.683619349428464e-22
+          ],
+          [
+            6.683619349428464e-22,
+            0.000764877268165181
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.020665379243936,
+          3.3726957600656435
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "time_matrix": [
+          [
+            0.0002748206279820047,
+            5.071413699243629e-21
+          ],
+          [
+            5.071413699243629e-21,
+            0.0002748206279820046
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0010014329909136864,
+            -2.311694085214861e-21
+          ],
+          [
+            -2.311694085214861e-21,
+            0.0010014329909136862
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.0007431328357595287,
+            -2.9410866224107644e-21
+          ],
+          [
+            -2.9410866224107644e-21,
+            0.0007431328357595288
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.6439513229671396,
+          3.64395132296714
+        ]
+      },
+      {
+        "points_per_axis": 96,
+        "scalar_mass": 0.0,
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "time_matrix": [
+          [
+            0.00022388273763795553,
+            -7.277183597529869e-06
+          ],
+          [
+            -7.277183597529869e-06,
+            0.00031382830168043665
+          ]
+        ],
+        "space_matrix": [
+          [
+            0.0006813453954632651,
+            -1.5583235035013007e-05
+          ],
+          [
+            -1.5583235035013007e-05,
+            0.00100435900095158
+          ]
+        ],
+        "vertex_correction": [
+          [
+            0.0004749482612663228,
+            -7.83637137228359e-06
+          ],
+          [
+            -7.83637137228359e-06,
+            0.0006945068277717188
+          ]
+        ],
+        "projected_squared_response_ratios": [
+          3.0395328010104707,
+          3.205605485072336
+        ]
+      }
+    ],
+    "normalization": "Frobenius-orthonormal TT tensors; one real scalar; gamma squared and lattice spacing are one.",
+    "scope": "Generalized eigenvalues of the TT-projected source Hessian. Off-axis mixing with other strain components and the absence of constraints preclude identifying these with physical graviton speeds. Massless integrals use midpoint quadrature with an infrared convergence check."
+  },
+  "finite_momentum": {
+    "cases": [
+      {
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "momentum": 0.04,
+        "relative_space_coefficient_error": 0.00045389028120617134
+      },
+      {
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "momentum": 0.02,
+        "relative_space_coefficient_error": 0.00011356030758100928
+      },
+      {
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "momentum": 0.01,
+        "relative_space_coefficient_error": 2.839598875584821e-05
+      },
+      {
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "frequency": 0.02,
+        "relative_time_coefficient_error": 0.00011365653761005598
+      },
+      {
+        "direction": [
+          0,
+          0,
+          1
+        ],
+        "frequency": 0.01,
+        "relative_time_coefficient_error": 2.841975607586917e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "momentum": 0.04,
+        "relative_space_coefficient_error": 0.0003453294292866487
+      },
+      {
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "momentum": 0.02,
+        "relative_space_coefficient_error": 8.63629248956609e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "momentum": 0.01,
+        "relative_space_coefficient_error": 2.1592632185262065e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "frequency": 0.02,
+        "relative_time_coefficient_error": 0.00011162136268153747
+      },
+      {
+        "direction": [
+          1,
+          1,
+          0
+        ],
+        "frequency": 0.01,
+        "relative_time_coefficient_error": 2.7910768549006678e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "momentum": 0.04,
+        "relative_space_coefficient_error": 0.00028063675986205323
+      },
+      {
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "momentum": 0.02,
+        "relative_space_coefficient_error": 7.01861674118957e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "momentum": 0.01,
+        "relative_space_coefficient_error": 1.7548258086158485e-05
+      },
+      {
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "frequency": 0.02,
+        "relative_time_coefficient_error": 0.00011220731426496471
+      },
+      {
+        "direction": [
+          1,
+          1,
+          1
+        ],
+        "frequency": 0.01,
+        "relative_time_coefficient_error": 2.805728714142481e-05
+      },
+      {
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "momentum": 0.04,
+        "relative_space_coefficient_error": 0.0002992458208771173
+      },
+      {
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "momentum": 0.02,
+        "relative_space_coefficient_error": 7.48424219911589e-05
+      },
+      {
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "momentum": 0.01,
+        "relative_space_coefficient_error": 1.8712530839650574e-05
+      },
+      {
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "frequency": 0.02,
+        "relative_time_coefficient_error": 0.00011211468287513969
+      },
+      {
+        "direction": [
+          1,
+          2,
+          3
+        ],
+        "frequency": 0.01,
+        "relative_time_coefficient_error": 2.8034135342111785e-05
+      }
+    ],
+    "points_per_axis": 48,
+    "scalar_mass": 0.2,
+    "scope": "Independent unexpanded finite-momentum bubble, after subtracting its zero-momentum mass matrix. Subtraction is supplied tuning, not protected masslessness."
+  },
+  "transfer": {
+    "cases": [
+      {
+        "stiffness": 0.1,
+        "quadrature_nodes": 80,
+        "first_five_eigenvalue_max_error": 1.3322676295501878e-15,
+        "smallest_numerical_eigenvalue": -7.605199196603902e-17
+      },
+      {
+        "stiffness": 0.1,
+        "quadrature_nodes": 120,
+        "first_five_eigenvalue_max_error": 1.915134717478395e-15,
+        "smallest_numerical_eigenvalue": -1.2927764374615226e-16
+      },
+      {
+        "stiffness": 0.5,
+        "quadrature_nodes": 80,
+        "first_five_eigenvalue_max_error": 2.0816681711721685e-16,
+        "smallest_numerical_eigenvalue": -9.220122639504125e-17
+      },
+      {
+        "stiffness": 0.5,
+        "quadrature_nodes": 120,
+        "first_five_eigenvalue_max_error": 3.3306690738754696e-16,
+        "smallest_numerical_eigenvalue": -1.2978465793043203e-16
+      },
+      {
+        "stiffness": 2.0,
+        "quadrature_nodes": 80,
+        "first_five_eigenvalue_max_error": 1.1102230246251565e-16,
+        "smallest_numerical_eigenvalue": -8.20868165950679e-17
+      },
+      {
+        "stiffness": 2.0,
+        "quadrature_nodes": 120,
+        "first_five_eigenvalue_max_error": 4.440892098500626e-16,
+        "smallest_numerical_eigenvalue": -7.800866439856952e-17
+      },
+      {
+        "stiffness": 8.0,
+        "quadrature_nodes": 80,
+        "first_five_eigenvalue_max_error": 1.5924532471758152e-13,
+        "smallest_numerical_eigenvalue": -1.601508002045428e-16
+      },
+      {
+        "stiffness": 8.0,
+        "quadrature_nodes": 120,
+        "first_five_eigenvalue_max_error": 1.1796119636642288e-16,
+        "smallest_numerical_eigenvalue": -1.2270598485842043e-16
+      },
+      {
+        "stiffness": 12.0,
+        "quadrature_nodes": 80,
+        "first_five_eigenvalue_max_error": 1.988910379571501e-10,
+        "smallest_numerical_eigenvalue": -9.160289438144536e-17
+      },
+      {
+        "stiffness": 12.0,
+        "quadrature_nodes": 120,
+        "first_five_eigenvalue_max_error": 7.285970736242361e-15,
+        "smallest_numerical_eigenvalue": -1.0621732691062152e-16
+      }
+    ],
+    "scope": "Mehler kernel checked against an independently discretized positive integral operator. Tiny negative numerical eigenvalues are roundoff; positivity follows analytically from the symmetric transfer product."
+  },
+  "locality": {
+    "polynomials": [
+      {
+        "degree": 13,
+        "max_sampled_error": 0.00026800318187236716,
+        "analytical_uniform_error_bound": 0.14254358410835266,
+        "sampled_minimum": 0.38010226076682696,
+        "analytical_positive_lower_bound": 0.2376294140421205,
+        "relative_quadratic_form_error_bound": 0.37494399865803635
+      },
+      {
+        "degree": 20,
+        "max_sampled_error": 6.295072426665271e-06,
+        "analytical_uniform_error_bound": 0.01902727163360396,
+        "sampled_minimum": 0.38017463363777804,
+        "analytical_positive_lower_bound": 0.3611457265168692,
+        "relative_quadratic_form_error_bound": 0.050048982242744476
+      },
+      {
+        "degree": 30,
+        "max_sampled_error": 3.1929237032102264e-08,
+        "analytical_uniform_error_bound": 0.0010714925410200884,
+        "sampled_minimum": 0.3801730063530181,
+        "analytical_positive_lower_bound": 0.3791015056094531,
+        "relative_quadratic_form_error_bound": 0.0028184340977209267
+      }
+    ],
+    "periodic_matrix_size": 81,
+    "polynomial_a_range": 13,
+    "polynomial_b_range": 15,
+    "coefficient_a_at_12": 0.3801729981504732,
+    "scope": "Analytical bounds hold for any nearest-neighbor cubic Laplacian with spectrum in [0,12], uniformly in volume. The finite matrix is a check in one dimension. These are Gaussian coefficient and relative energy-form bounds, not bounded-operator-norm locality of interacting spin dynamics."
+  },
+  "temporal_gram": {
+    "eigenvalues": [
+      0.0001498809595667541,
+      0.00014988095956675556,
+      0.0002857510649800079,
+      0.00028575106498000835,
+      0.0002857510649800086,
+      0.0005785075570367671
+    ],
+    "rank": 6,
+    "scope": "Positive weighted Gram matrix; no gravitational constraint reduction follows."
+  },
+  "source_sha256": {
+    "ISOTROPIC_TENSOR_REGULATOR.md": "862ea5788263365cfd782ebd174c87137108168149381839a9b19634c0d39164",
+    "scripts/isotropic_tensor_regulator_audit.py": "5a8ed8d38667332e49292602291ac7614cf81ea2556989965b23ab3e05f2dba7",
+    "INDUCED_TENSOR_DYNAMICS.md": "1ddfe381a4d759277f9f342d316cde877d11f69c1dd059ac01e32525786ea6e7",
+    "scripts/induced_tensor_dynamics_audit.py": "81f3efaa8e407e89604be7bc508d5cb0af825750c2581d704d3b2a46b6c3da77",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129"
+  },
+  "scope": "The isotropic Euclidean Gaussian scalar has a positive transfer operator, exponentially local Hamiltonian coefficients and positive finite-range approximants. It repairs the axial TT response ratio but fails generic-direction Einstein matching for the specified centered-derivative source. No full interacting spin locality theorem, graviton phase, nonlinear constraint algebra, or TOE is proved."
+}

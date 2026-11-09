@@ -1,0 +1,1094 @@
+{
+  "repair_channels": {
+    "graph_states": 70,
+    "target_rank": 10,
+    "unwanted_rank": 60,
+    "original_ordered_moves": 360,
+    "distinct_channels": 45,
+    "duplicate_multiplicity": 8,
+    "rank_per_channel": 4,
+    "outgoing_gram": "3*I_60",
+    "incoming_gram": "18*I_10",
+    "hilbert_schmidt_channel_gram": "4*I_45",
+    "collective_channel_rank": 10,
+    "collective_dark_dimension": 50,
+    "relabeling_generators_checked": 5,
+    "finite_channel_isometry_verified": true,
+    "mixed_input_final_graph": "I_10/10",
+    "mixed_input_bath_vacuum_probability": "1/7",
+    "mixed_input_probability_per_emission_channel": "2/105",
+    "mixed_input_effective_bath_rank": 46,
+    "pure_uniform_final_graph_eigenvalues": {
+      "17/35": 1,
+      "2/35": 9
+    },
+    "pure_uniform_final_graph_purity": "13/49",
+    "channels": [
+      {
+        "entries": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            29
+          ],
+          [
+            6,
+            41
+          ],
+          [
+            9,
+            54
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            1
+          ],
+          [
+            3,
+            23
+          ],
+          [
+            7,
+            47
+          ],
+          [
+            9,
+            56
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            17
+          ],
+          [
+            6,
+            39
+          ],
+          [
+            8,
+            48
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            11
+          ],
+          [
+            7,
+            45
+          ],
+          [
+            8,
+            50
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            4
+          ],
+          [
+            2,
+            15
+          ],
+          [
+            3,
+            21
+          ],
+          [
+            5,
+            30
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            5
+          ],
+          [
+            1,
+            10
+          ],
+          [
+            4,
+            26
+          ],
+          [
+            5,
+            31
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            10
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            4,
+            31
+          ],
+          [
+            5,
+            26
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            11
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            7,
+            50
+          ],
+          [
+            8,
+            45
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            15
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            30
+          ],
+          [
+            5,
+            21
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            17
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            6,
+            48
+          ],
+          [
+            8,
+            39
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            21
+          ],
+          [
+            2,
+            30
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5,
+            15
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            23
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            7,
+            56
+          ],
+          [
+            9,
+            47
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            26
+          ],
+          [
+            1,
+            31
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            10
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            29
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            6,
+            54
+          ],
+          [
+            9,
+            41
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            39
+          ],
+          [
+            2,
+            48
+          ],
+          [
+            6,
+            2
+          ],
+          [
+            8,
+            17
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            41
+          ],
+          [
+            4,
+            54
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            9,
+            29
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            45
+          ],
+          [
+            1,
+            50
+          ],
+          [
+            7,
+            3
+          ],
+          [
+            8,
+            11
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            0,
+            47
+          ],
+          [
+            3,
+            56
+          ],
+          [
+            7,
+            1
+          ],
+          [
+            9,
+            23
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            6
+          ],
+          [
+            5,
+            35
+          ],
+          [
+            6,
+            40
+          ],
+          [
+            9,
+            55
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            7
+          ],
+          [
+            3,
+            22
+          ],
+          [
+            8,
+            53
+          ],
+          [
+            9,
+            58
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            16
+          ],
+          [
+            6,
+            37
+          ],
+          [
+            7,
+            42
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            9
+          ],
+          [
+            2,
+            14
+          ],
+          [
+            3,
+            20
+          ],
+          [
+            4,
+            25
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            14
+          ],
+          [
+            2,
+            9
+          ],
+          [
+            3,
+            25
+          ],
+          [
+            4,
+            20
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            16
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            6,
+            42
+          ],
+          [
+            7,
+            37
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            20
+          ],
+          [
+            2,
+            25
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            4,
+            14
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            22
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            8,
+            58
+          ],
+          [
+            9,
+            53
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            35
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            55
+          ],
+          [
+            9,
+            40
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            37
+          ],
+          [
+            2,
+            42
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            16
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            40
+          ],
+          [
+            5,
+            55
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            9,
+            35
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            1,
+            53
+          ],
+          [
+            3,
+            58
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            9,
+            22
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            12
+          ],
+          [
+            5,
+            34
+          ],
+          [
+            7,
+            46
+          ],
+          [
+            9,
+            57
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            13
+          ],
+          [
+            4,
+            28
+          ],
+          [
+            8,
+            52
+          ],
+          [
+            9,
+            59
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            28
+          ],
+          [
+            4,
+            13
+          ],
+          [
+            8,
+            59
+          ],
+          [
+            9,
+            52
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            34
+          ],
+          [
+            5,
+            12
+          ],
+          [
+            7,
+            57
+          ],
+          [
+            9,
+            46
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            46
+          ],
+          [
+            5,
+            57
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            9,
+            34
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            2,
+            52
+          ],
+          [
+            4,
+            59
+          ],
+          [
+            8,
+            13
+          ],
+          [
+            9,
+            28
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            18
+          ],
+          [
+            5,
+            33
+          ],
+          [
+            6,
+            38
+          ],
+          [
+            8,
+            49
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            19
+          ],
+          [
+            4,
+            27
+          ],
+          [
+            6,
+            36
+          ],
+          [
+            7,
+            43
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            27
+          ],
+          [
+            4,
+            19
+          ],
+          [
+            6,
+            43
+          ],
+          [
+            7,
+            36
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            33
+          ],
+          [
+            5,
+            18
+          ],
+          [
+            6,
+            49
+          ],
+          [
+            8,
+            38
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            36
+          ],
+          [
+            4,
+            43
+          ],
+          [
+            6,
+            19
+          ],
+          [
+            7,
+            27
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            3,
+            38
+          ],
+          [
+            5,
+            49
+          ],
+          [
+            6,
+            18
+          ],
+          [
+            8,
+            33
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            4,
+            24
+          ],
+          [
+            5,
+            32
+          ],
+          [
+            7,
+            44
+          ],
+          [
+            8,
+            51
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            4,
+            32
+          ],
+          [
+            5,
+            24
+          ],
+          [
+            7,
+            51
+          ],
+          [
+            8,
+            44
+          ]
+        ],
+        "original_copies": 8
+      },
+      {
+        "entries": [
+          [
+            4,
+            44
+          ],
+          [
+            5,
+            51
+          ],
+          [
+            7,
+            24
+          ],
+          [
+            8,
+            32
+          ]
+        ],
+        "original_copies": 8
+      }
+    ]
+  },
+  "exact_unitary_dilation": {
+    "reservoir_sites_per_channel": 2,
+    "invariant_excitation_sector_dimension": 970,
+    "represented_bright_dimension": 190,
+    "exact_intertwining": true,
+    "hermiticity": true,
+    "bare_energy_conservation": true,
+    "gap": 4,
+    "hopping": 1
+  },
+  "transport": {
+    "finite_chains": [
+      {
+        "chain_length": 1,
+        "sampled_times": 162,
+        "max_return_amplitude_error_on_0_to_20": 1.0259268269628607,
+        "max_sampled_unwanted_probability_on_11_to_20": 0.9993527385686057
+      },
+      {
+        "chain_length": 2,
+        "sampled_times": 162,
+        "max_return_amplitude_error_on_0_to_20": 1.0203832926647962,
+        "max_sampled_unwanted_probability_on_11_to_20": 0.9995364731775115
+      },
+      {
+        "chain_length": 16,
+        "sampled_times": 162,
+        "max_return_amplitude_error_on_0_to_20": 0.7036317559310559,
+        "max_sampled_unwanted_probability_on_11_to_20": 0.4933242619252198
+      },
+      {
+        "chain_length": 64,
+        "sampled_times": 162,
+        "max_return_amplitude_error_on_0_to_20": 2.65946461263292e-15,
+        "max_sampled_unwanted_probability_on_11_to_20": 0.00017748662549284876
+      },
+      {
+        "chain_length": 128,
+        "sampled_times": 162,
+        "max_return_amplitude_error_on_0_to_20": 4.938496046867754e-15,
+        "max_sampled_unwanted_probability_on_11_to_20": 0.00017748662549281564
+      }
+    ],
+    "moment_checks": [
+      {
+        "chain_length": 1,
+        "first_differing_return_moment": 4
+      },
+      {
+        "chain_length": 2,
+        "first_differing_return_moment": 6
+      },
+      {
+        "chain_length": 3,
+        "first_differing_return_moment": 8
+      },
+      {
+        "chain_length": 4,
+        "first_differing_return_moment": 10
+      },
+      {
+        "chain_length": 5,
+        "first_differing_return_moment": 12
+      },
+      {
+        "chain_length": 6,
+        "first_differing_return_moment": 14
+      },
+      {
+        "chain_length": 7,
+        "first_differing_return_moment": 16
+      },
+      {
+        "chain_length": 8,
+        "first_differing_return_moment": 18
+      }
+    ],
+    "infinite_return_amplitude": "J_1(2*kappa*t)/(kappa*t)",
+    "exact_unwanted_probability": "p_B(0)*abs(J_1(2*kappa*t)/(kappa*t))^2",
+    "rigorous_envelope": "p_B(t) <= p_B(0)/(kappa*t)^2",
+    "retention_certificate": {
+      "channels": 45,
+      "sites_per_channel": 128,
+      "physical_chain_sites": 5760,
+      "scaled_time_interval": [
+        11,
+        20
+      ],
+      "amplitude_truncation_error_less_than": "1/1000",
+      "exact_failure_upper_bound": "1022121/121000000",
+      "target_probability_greater_than": "99/100"
+    },
+    "scope": "Infinite-reservoir asymptotic preparation; finite reservoirs have a certified finite retention interval and recur."
+  },
+  "patch_plateau": {
+    "vertices": 124,
+    "degree": 6,
+    "connected": true,
+    "bipartite": true,
+    "initial_squares": 0,
+    "oriented_moves_checked": 18600,
+    "distinct_output_graphs": 9300,
+    "weighted_row_sum": 37200,
+    "initial_patch_defects": 124,
+    "defects_after_every_one_step_move": 124,
+    "strictly_downhill_patch_moves": 0,
+    "scope": "Strict descent cannot start here; zero-energy motion or other interactions are not excluded."
+  },
+  "scope": "Autonomous universal preparation of the six-site graph class with an explicit reservoir; the target is supplied and not a spatial continuum. Scalable patch repair remains open.",
+  "source_sha256": {
+    "RESERVOIR_GEOMETRY_PREPARATION.md": "bda764b4a422cee1305eaf22a6770ff6fd7a2adc8376eca5c612d330bc7d4994",
+    "scripts/reservoir_geometry_audit.py": "55ac461074743816dc800537598bb2b87ca3c8e78cb6cf87a233eab495c8b117",
+    "UnifiedTheory/Audit/KFCausalReservoirGeometry.lean": "d3f2d6434181d592fbc52af7ca5d4613cda2f5cab4d18eac5b79fc1cf2c26514",
+    "PATCH_GEOMETRY_PROTECTION.md": "7d633bccb14107722244fa4cfeb6edb9ddfbbf6f17bc06d7b47ffe468d41936a",
+    "scripts/patch_geometry_audit.py": "1b34c3c0124c5e68cdb23f45073110e135f21b602ebc36aabda902d38a27b577",
+    "AUTONOMOUS_GEOMETRY_SELECTION.md": "dabbf8cfd8a80f9ebf02003f0b86b297842d3dfea1b12419d566059ca314ac81",
+    "scripts/autonomous_geometry_audit.py": "7a135437ee855d772eeb28d0d24f5eafcaa9d1facf8baf55837170aa94a145b9",
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1"
+  }
+}

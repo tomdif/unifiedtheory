@@ -1,0 +1,106 @@
+COMMON REAL-SOURCE GAUSSIAN: FULL QUARTIC RESPONSE, ARBITRARY CHARGED WIDTHS
+Analytic successor, 2026-10-21. This note is not a Lean proof certificate.
+All frozen repository sources and earlier analytic notes are unchanged.
+
+1. Precise class and geometry
+Fix alpha>0,beta>0,a>0, |b|<a and alpha(a^2-b^2)>8 beta b^2.
+Fix finitely many real widths w_i>=1 and arbitrary complex d_i=c_i w_i.
+Fix one common REAL neutral source B and the neutral polynomial P=1.
+These labels are held fixed under all clock/geometry derivatives.
+Set r=a+ib, p=alpha r^2/2, A=a^2-b^2, R=a^2+b^2, eta=2b.
+F(z)=sum_i d_i exp(-w_i z), z=p(u^2+v^2)+conj(p)Y, Y>0.
+Use the original quartic W(t)=1+t^2/2+t^4/4. Up to the constant pi/4,
+which cancels from every displayed differential inequality, the ORIGINAL
+full energy is
+ E(a,b,L)=int du dv dY dx W(x+Lv)|F(z)|^2
+            exp(-2 beta x^2+2 B x+8 beta b^2 v^2).
+This is exactly |exp(-beta(x+i2bv)^2+B(x+i2bv))|^2.
+All coherent width cross terms remain. This is not a single-width theorem.
+The strict displayed floor gives a local common Gaussian majorant for the
+energy and its first geometry derivatives. Constants in that majorant may
+depend on the finite packet; the final response constant will not.
+
+2. Actual even charged moments and the matrix lower bound
+I_l=int du dv dY v^(2l)|F(p(u^2+v^2)+conj(p)Y)|^2.
+Let S_ij=p w_i+conj(p)w_j, T_ij=conj(S_ij), K_l=S_ij^(-l-1)T_ij^-1.
+With c_l=pi (2l)!/(4^l l!), I_l=c_l sum_ij d_i conj(d_j) K_l(i,j).
+The coefficient order follows by writing F times conj(F). Equivalently
+this is the standard Hermitian quadratic form with coefficient conj(d).
+The exact Gaussian/Laplace integral produces c_l, not an unspecified
+positive normalization. Recursively c_0=pi and c_(l+1)=(2l+1)c_l/2.
+Every K_l is positive semidefinite, by the positive inverse-Laplace Gram
+kernel S^-1 and the Schur product theorem; T^-1 is equally positive.
+
+No division by b is required in the following identity:
+ b S_b=u S+v0 T, b T_b=u T+v0 S,
+ u=1/2-b^2/A, v0=-R/(2A).
+Consequently
+ b (K_l)_b=-(l+2)u K_l
+             -v0[(l+1)S^(-l-2)+S^(-l)T^-2].
+Thus the following exact residual is positive semidefinite:
+ b (K_l)_b+(l+2)K_l/2
+   = (l+2)b^2/A K_l
+     +R/(2A)[(l+1)S^(-l-2)+S^(-l)T^-2] >=0.
+For l=0 the last term is T^-2; no negative power or lost boundary term.
+At b=0 the formula is nonsingular. It gives a lower bound, not exact
+positivity of (K_l)_b. All statements include coherent finite width sums.
+Hence b (I_l)_b >= -(l+2) I_l/2 for every natural l.
+
+3. Positive quartic decomposition
+Let M_j=int_R x^j exp(-2 beta x^2+2Bx)dx, j=0,2,4. These are finite,
+nonnegative, with M_0>0. Since |F(z)|^2 is even in v, all odd-v terms in
+W(x+Lv) vanish after v integration, including when B is not zero.
+Define
+ A_0=M_0+M_2/2+M_4/4,
+ A_1=L^2(M_0/2+3 M_2/2), A_2=L^4 M_0/4.
+Every A_m is nonnegative. Exact Tonelli expansion of the nonnegative
+exp(8 beta b^2 v^2) gives
+ E=sum_(m=0)^2 A_m sum_(n>=0) (8 beta)^n/n! b^(2n) I_(m+n).
+Odd-v cancellation is performed in the already absolutely integrable
+polynomial integral before applying Tonelli. It is not a termwise sign
+assumption on the coherent charged expansion.
+
+For b>0, every summand of b^2 E is nondecreasing as b increases within
+0<b<a (with the full energy finite whenever the strict floor holds):
+ b d_b[b^(2n+2) I_(m+n)]
+ >= [2n+2-(m+n+2)/2] b^(2n+2) I_(m+n)
+ = (3n+2-m)/2 b^(2n+2) I_(m+n) >=0, since m<=2.
+First prove this finite-increment monotonicity for each differentiable
+moment, then sum the nonnegative inequalities. This avoids any exchange
+of differentiation with the infinite series. The already justified
+actual derivative of E therefore gives
+                         b E_b >= -2 E.
+For b<0, either repeat the argument in t=-b, or conjugate the fixed width
+amplitudes and reflect b. At b=0 the claimed inequality is immediate.
+Also A_m is proportional to L^(2m), so for L>0,
+                         0 <= L E_L <= 4 E.
+This is again an actual finite polynomial identity after the v parity
+cancellation, not an independent-jet relaxation.
+
+4. Actual-clock conversion (existing real-dilation identity)
+Let fraction=t>=0, q=delta/a, h=adot/a, chi=h/q in the actual nonzero-q
+case. The frozen actual-clock identities/bounds give
+ E_dot=-4h E-q[b E_b+3chi E_L],
+ 0<=q<=20t, |h|<=8t b^2, b^2<=1/2, |chi|<=1, L>=1/2.
+Thus b E_b+3chi E_L >= -2E-3*(4/L)E >=-26E,
+ E_dot <= (16+20*26)t E =536t E.
+At the q=0 clock endpoint use the actual identity before dividing by q;
+the original derivative vanishes there. At b=0 the actual real-dilation
+cancellation is preserved; the coarse estimate does not need equality.
+The bound is independent of the number/values of charged widths, charged
+amplitudes, common real B, beta and alpha within the stated physical floors.
+It is restricted to one common real neutral source and P=1.
+
+5. Status and limitations
+The all-order residual matrix algebra and finite-increment power count
+were independently reviewed by uniform_estimate. It confirmed u,v0,
+the l=0 kernel, coefficient (3n+2-m)/2, and defect constant26.
+The last actual-clock536 conversion is elementary given the frozen q,h
+bounds; no new physical assumption is inserted.
+A unique Lean successor is being developed for the actual even moment
+kernel derivative and lower bound. The infinite-series/full-original-
+energy restricted attachment is not yet Lean verified as of this note.
+No claim is made for arbitrary neutral polynomials, width-dependent
+neutral sources, general complex common sources, or the unrestricted
+whole-response problem. Those cases do not possess this proved positive
+even-coefficient decomposition without further arguments.

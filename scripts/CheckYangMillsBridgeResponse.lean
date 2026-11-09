@@ -1,0 +1,23 @@
+import UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz
+import UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain
+import UnifiedTheory.Clay.YangMills.WilsonBridgeResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz.linear_incidence
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz.potential_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz.spatial_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz.ground_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonJointGroundLipschitz.log_gain_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.pairedGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainMean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainMean_as_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainMean_sq_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainCap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainCap_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainCap_sq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainMean_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleGroundGain.gainCap_constant_sq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponse.endpoint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponse.weighted_gain_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponse.weighted_entropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponse.response_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponse.physical_response_bound

@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified partial progress: 39 fresh declarations supplied exact sourced middle recursion and small-field curvature; retained covariance, far decay and global coercivity remained open",
+  "current_goal_turn_classification": "progress: unique constrained patch minimizers, explicit quadratic growth and volume-independent deterministic source stability",
+  "scope": "The exact sourced middle action now has a proved unique minimizer on an explicit fixed patch neighborhood, together with quantitative quadratic growth and source stability. The existing source-free WilsonMaskedCurvature estimate is reused rather than duplicated. Its active-link bound extends to the actual two-source rectangle with lower coefficient beta*(4-eta_u-eta_w-32*delta)-2, and to the additional transported source interval with coefficient beta*(4-eta_u-eta_w-32*delta)-4. Only plaquettes incident to the fixed active link set S and endpoint distances on S enter these hypotheses. A patch region fixes all links outside S to a base v0 and bounds each active quaternion chord displacement from v0 by 1/256. If incident base plaquette chord defects are at most 1/64 and the base-to-endpoint chord distances on S are at most 1/2, all configurations in this region satisfy the localized small-field hypotheses, with coefficients 2*beta-2 and 2*beta-4. The region is nonempty, compact and closed under normalized quaternion midpoints. The endpoints of each midpoint are exact opposite supported group rotations, and their total squared chord distance is at most four times the rotation cost. A uniform positive second-difference coefficient kappa therefore gives strict midpoint control, an actual unique constrained minimizer, and quadratic growth at least (kappa/4)*sum_link norm(v_link-vmin_link)^2. These are applied to the literal two-source action for beta>1 and to the transported third-source action for beta>2, including an overlapping extra source link. The original local beta-scaled insertion has squared difference at most four times total squared chord distance. For third-source strengths h,k in [0,1], their actual patch minimizers consequently satisfy (2*beta-4)^2*distanceSq(v_h,v_k)<=16*(h-k)^2, independently of total volume and boundary depth. The exterior is fixed, with arbitrary defects away from incident plaquettes. No field-dependent mask is used as a change of variables. These are deterministic constrained-minimizer results: no fluctuation covariance, retained-endpoint contraction, exceptional-field bound, global lower coercivity, or continuum construction is inferred. All twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.QuaternionChordMidpoint",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchNeighborhood",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchSourceCurvature",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchMinimum",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchMinimumResponse"
+  ],
+  "new_declarations": 34,
+  "retained_declarations": 9847,
+  "cumulative_declarations": 9881,
+  "notation": {
+    "S": "A fixed finite active link set; no field-dependent mask is substituted into a Haar change of variables.",
+    "region(S,v0,epsilon)": "Configurations equal to v0 outside S and within quaternion chord epsilon of v0 on every link.",
+    "A_st": "The explicit middle Wilson action with the two original beta-scaled kinetic insertions and their full source rectangle.",
+    "A_st,h": "The same exact middle action with the additional endpoint kinetic insertion at strength h.",
+    "distanceSq(v,z)": "The sum over spatial links of norm(v_link-z_link)^2.",
+    "cost(a)": "The sum over spatial links of norm(a_link-1)^2."
+  },
+  "base_hypotheses": [
+    "The patch is centered at a specified v0, with fixed exterior and chord radius 1/256.",
+    "Every plaquette incident to S has base holonomy chord defect<=1/64.",
+    "On S, the base chord distance to each fixed endpoint is<=1/2.",
+    "The first two source links are distinct, their strengths lie in [0,1], and their rotations obey beta*norm(q-1)<=1.",
+    "For the transported action the additional rotation obeys the same beta scaling; its strength is in [0,1] and its link may overlap either original insertion.",
+    "The unique two-source minimizer uses beta>1; the transported action and its quantitative stability use beta>2."
+  ],
+  "proved_results": [
+    "Quaternion chord caps with squared radius<2 are closed under normalized midpoints. Both endpoints are literal opposite group rotations of the midpoint.",
+    "The fixed patch region is nonempty and compact. Midpoint rotations are supported in S, and distanceSq(v,w)<=4*cost(a).",
+    "Incident holonomy chord drift is<=4*epsilon. The numerical base hypotheses supply localized small-field bounds throughout the fixed patch.",
+    "The localized actual two-source action has second-difference coefficient 2*beta-2 throughout the patch; the third-source action has coefficient 2*beta-4.",
+    "A uniform positive coefficient kappa supplies a unique compact-patch minimizer and action growth>=(kappa/4)*distanceSq from it.",
+    "For the actual two-source minimizer, action growth>=((beta-1)/2)*distanceSq.",
+    "For strengths h,k of the additional source, actual patch minimizers obey (2*beta-4)^2*distanceSq(v_h,v_k)<=16*(h-k)^2."
+  ],
+  "next_attack": [
+    "Construct and bound the normalized fluctuation covariance in inside-patch Haar coordinates, retaining the fixed exterior and cap boundary.",
+    "Convert local curvature and sparse plaquette coupling into spatially decaying influence estimates for the actual sourced conditional law, not merely for its minimizer.",
+    "Control the retained endpoint covariance and the extra-source hierarchy in the exact boundary recursion.",
+    "Estimate the excluded backgrounds and bad-bridge complement in the matching response-weighted energy.",
+    "Feed actual depth-uniform spatial decay into the dyadic far-sum theorem, and prove the independent global coercivity lower bound at the physical time scale.",
+    "Retain separate continuum compactness, coupling/time scaling and nonzero reflected-source survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no continuum Yang-Mills construction or uniform physical mass gap is proved.",
+    "The new lower bound is quadratic growth of the constrained action near its unique patch minimizer. It is not the independent global lower coercivity inequality required for transfer contraction.",
+    "The proved source response concerns minimizing configurations, not Gibbs expectations or connected covariance. A normalized fluctuation covariance estimate remains to be proved.",
+    "The fixed patch cap is a conditional configuration fiber. Probabilistic work must use Haar measure on the patch coordinates with the exterior fixed, and keep the cap boundary and excluded configurations.",
+    "The local base hypotheses still require incident plaquette chord defects<=1/64 and active base-to-endpoint chord distances<=1/2. Their availability and probabilistic coverage are not proved for arbitrary boundary inputs.",
+    "The exact boundary covariance recursion retains both averaged middle covariance and the retained covariance of responses. The true endpoint distribution keeps spatialWeight(w), boundaryMessage_j(w) and the sourced middle partition.",
+    "The full distant mixed-ground sum still needs actual spatial covariance decay at all boundary depths. The dyadic summation theorem alone does not supply that decay.",
+    "Existing ground-averaged bad-bridge tails do not replace uniform estimates for arbitrary boundary fields or settle the response-weighted complement. Defective directions cannot simply be omitted from global coercivity.",
+    "The fixed chord cap and deterministic minimizer are not a construction of Balaban gauge-covariant constrained block RG or its fluctuation expansion.",
+    "Independent center-even/global coercivity, controlled physical coupling/time scaling, the actual overlap margin, reflected compactness and nonzero continuum survival remain open."
+  ],
+  "verification_report": "data/yang_mills_patch_minimum_audit.json",
+  "root_build_checked": false
+}

@@ -1,0 +1,79 @@
+{
+  "probe_report_sha256": "1f95dfc3cb1e5c52018f2a7f62c06337e888ab8035b20a0f18126d60727cadc1",
+  "verifier_sha256": "f763164260a7bea81f06a10394ef50b5023a22c961202f2ee30f7c21a074e946",
+  "checks": [
+    {
+      "case": "four_displacements",
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 5.773159728050814e-15
+    },
+    {
+      "case": "four_displacements",
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 6.772360450213455e-15
+    },
+    {
+      "case": "negative_h",
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 6.217248937900877e-15
+    },
+    {
+      "case": "negative_h",
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 6.328271240363392e-15
+    },
+    {
+      "case": "mixed_clock",
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 3.774758283725532e-15
+    },
+    {
+      "case": "mixed_clock",
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 2.4424906541753444e-15
+    }
+  ],
+  "limitations": "Checks floating matrices, full-space spectra, witnesses, refinements and source hashes. No certified quadrature error, tails, field-energy inequality, model refutation or physical TOE."
+}

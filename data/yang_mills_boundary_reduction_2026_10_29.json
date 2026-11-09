@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "proved regularity-only obstruction; no actual Yang-Mills analytic obligation closed",
+  "current_goal_turn_classification": "progress on the actual Wilson route: exact finite-cylinder reduction and full-Haar compatibility; no numerical upper or lower obligation closed",
+  "scope": "The actual finite Wilson boundary messages, with their true spatial endpoint weight, converge uniformly to a positive multiple of the constructed ground after transfer normalization and one smoothing step. Their distant mixed ratios converge to the literal ground farCost, and depth-uniform bounds pass unchanged at fixed spatial cutoff. The input spatial factors cancel exactly for disjoint affected plaquettes, leaving a finite output partition with no unknown ground boundary. Central-slice finite-cylinder variances and the matching full-Haar energies converge to their actual ground-law versions; a common direct coercivity constant passes unchanged. Averaging complete Haar rotation assignments gives precisely the total Haar energy without a link-count factor. Consequently finite-cylinder upper and lower estimates imply actual physical-transfer slab contraction with A*(16*D+R)/(k+A*(16*D+R)). This is an exact reduction, not a proof of the depth- and spatially uniform numerical R and A. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit",
+    "UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction"
+  ],
+  "new_declarations": 33,
+  "retained_declarations": 7888,
+  "cumulative_declarations": 7921,
+  "formal_results": {
+    "actual_boundary": "B_0=W and B_(j+1)=T B_j; positivity and gauge invariance are proved. Temporal gauge averaging is removed only against this invariant message.",
+    "uniform_limit": "lambda^(-(j+1))*B_(j+1) tends uniformly to overlap*g. The existing fixed-cutoff L2 boundary limit is composed with the bounded kernel smoothing operator; overlap and lambda are strictly positive.",
+    "finite_partition": "Z_j(u)=integral C(u,v)*W(v)*B_j(v) dHaar(v); B_(j+1)(u)=W(u)*Z_j(u). For distinct links with disjoint affected spatial plaquettes, the mixed B ratio equals Z_j(u)*Z_j(R_e R_d u)/(Z_j(R_e u)*Z_j(R_d u))-1 exactly.",
+    "far_limit": "The sum of absolute finite mixed B ratios over the complement of near(e) tends to the actual ground farCost. The common scalar transfer and overlap factors cancel. Any depth-uniform R passes with the same value at each fixed cutoff.",
+    "lower_limit": "Central finite-cylinder variance is identified with ProbabilityTheory.variance under the original Wilson cylinder law. Its mean, variance and the full-Haar energy converge to the corresponding true ground-law quantities.",
+    "coercivity": "If centralVar_j(F)<=A*centralEnergy_j(F) for every j and continuous gauge-invariant F, then Var_pi(F)<=A*totalEnergy_pi(F) with the same A.",
+    "haar_binding": "The product-Haar average of sum_e responseEnergy(e,q_e;F) is exactly totalEnergy(F). Integrating the all-assignment bound yields totalEnergy(PF)<=(16*D+R)*loss(F), with no link-count multiplier.",
+    "contraction": "For physical F and k>0, Var_pi(P^k F)<=A*(16*D+R)/(k+A*(16*D+R))*Var_pi(F), under the explicit finite-cylinder hypotheses. D can be instantiated by the previously proved (exp(8*beta)-1)^2."
+  },
+  "next_attack": {
+    "upper_object": "Use Z_j(u), the literal finite-cylinder partition above, and local kinetic defects at two distant boundary links. This avoids presupposing estimates for the unknown ground amplitude.",
+    "candidate_connected_source_identity_not_newly_formalized": "For w_j(v)=C(u,v)*W(v)*B_j(v), F_e(v)=beta*(Re char((q*u_e)^(-1)*v_e)-Re char(u_e^(-1)*v_e)), define Z_j(s,t)=integral w_j(v)*exp(s*F_e(v)+t*F_d(v)) dHaar(v). The mixed log partition difference is the double source-parameter integral of the connected covariance. The generic derivative mechanism exists in the repository; this finite Wilson two-source binding and its summable bound are not added in this turn.",
+    "required_upper": "Prove a summable connected-insertion bound uniform in finite depth, spatial period, baseline boundary and the entire source rectangle, including large-field histories. Preserve the actual finite endpoint weights and source normalizers.",
+    "required_lower": "Prove a variance comparison for central marginals of the same finite Wilson cylinders on physical observables, with a constant uniform in cylinder depth and sufficiently controlled in spatial period and coupling. Local density bounds alone do not provide this.",
+    "physical_budget": "Track A*(16*D+R)/k for k corresponding to fixed physical time. Remove exponential coupling losses if this budget diverges on the justified trajectory. A finite-cutoff strict ratio alone is not a physical mass gap.",
+    "stop_repeating": "Do not re-prove boundary-to-ground passage or replace the two actual numerical estimates with additional conditional wrappers. The new theorem already supplies their common contraction conclusion."
+  },
+  "not_inferred": [
+    "No depth- and spatially uniform numerical bound R on the actual finite-boundary far sum, or its ground limit, has been obtained.",
+    "No depth- and spatially uniform direct Haar coercivity constant A for the actual central Wilson slices has been obtained. The limiting argument does not establish that estimate.",
+    "The all-rotation upper hypothesis is essential for the product-Haar averaging argument. A bound only on selected small rotations does not give the full-Haar conclusion.",
+    "The explicit all-rotation local cap D=(exp(8*beta)-1)^2 grows exponentially in beta. A bounded contraction factor on fixed physical time slabs requires control of A*(16*D+R)/k along a justified physical trajectory.",
+    "Boundary convergence is used only at fixed spatial period and coupling. Neither a uniform vacuum-convergence rate nor an interchange with the spatial or continuum limit is proved or required for this reduction.",
+    "Finite-cylinder normalization, the true ground boundary limit and response-family compatibility are now bound exactly, but the connected-correlation estimates, global coercivity, nontrivial continuum survival and all twelve Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_boundary_reduction_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

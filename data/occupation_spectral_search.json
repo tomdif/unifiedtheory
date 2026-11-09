@@ -1,0 +1,352 @@
+{
+  "exact_capacity_one": {
+    "matrix": [
+      [
+        "413/64",
+        "-63/32",
+        "0"
+      ],
+      [
+        "-63/32",
+        "241/128",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    "eigenvalues": [
+      "1",
+      "1067/256 - 9*sqrt(7361)/256",
+      "9*sqrt(7361)/256 + 1067/256"
+    ],
+    "eigenvalues_numeric": [
+      1.0,
+      1.1516936217310183,
+      7.1842438782689815
+    ],
+    "multiplicities": [
+      1,
+      1,
+      1
+    ],
+    "occupation_multiplicities": [
+      1,
+      2
+    ],
+    "no_affine_idempotent_similarity": true,
+    "static_growing_commutator": [
+      [
+        "0",
+        "-585/512",
+        "0"
+      ],
+      [
+        "585/512",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "parameters": {
+    "hbar": 2,
+    "correction": "exact",
+    "mass2": 0,
+    "quartic": 0,
+    "vacuum": 0
+  },
+  "numerical_cases": [
+    {
+      "capacity": 1,
+      "functional_order": 2,
+      "time": 0.0,
+      "neutral_dimension": 3,
+      "eigenvalues": [
+        0.9999999999999998,
+        1.1516936217310176,
+        7.184243878268978
+      ],
+      "relative_total_occupation_commutator": 0.37909763136253377,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 1,
+      "functional_order": 2,
+      "time": 0.25,
+      "neutral_dimension": 3,
+      "eigenvalues": [
+        0.9999999999999998,
+        1.1575105509384274,
+        9.14486330087133
+      ],
+      "relative_total_occupation_commutator": 0.4116024934883267,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 1,
+      "functional_order": null,
+      "time": 0.0,
+      "neutral_dimension": 3,
+      "eigenvalues": [
+        0.9999999999999998,
+        1.1951751473165284,
+        7.291768344167308
+      ],
+      "relative_total_occupation_commutator": 0.39006267969874014,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 1,
+      "functional_order": null,
+      "time": 0.25,
+      "neutral_dimension": 3,
+      "eigenvalues": [
+        0.9999999999999998,
+        1.2010823960272035,
+        9.287919555876844
+      ],
+      "relative_total_occupation_commutator": 0.42327780375359764,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 2,
+      "functional_order": 2,
+      "time": 0.0,
+      "neutral_dimension": 10,
+      "eigenvalues": [
+        1.3162501037995409,
+        1.5156249999999991,
+        1.7390049625750612,
+        2.4999999999999982,
+        2.499999999999999,
+        2.499999999999999,
+        2.499999999999999,
+        4.133010489036222,
+        9.093749999999993,
+        16.296109444589142
+      ],
+      "relative_total_occupation_commutator": 0.6439665010433653,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 2,
+      "functional_order": 2,
+      "time": 0.25,
+      "neutral_dimension": 10,
+      "eigenvalues": [
+        1.3563844921130412,
+        1.5156249999999998,
+        1.784244783076594,
+        2.953746617379232,
+        3.1487212707001273,
+        3.1487212707001278,
+        3.1487212707001295,
+        4.996213800124933,
+        11.060186351809765,
+        20.975547220119864
+      ],
+      "relative_total_occupation_commutator": 0.6675090973701204,
+      "relative_charged_occupation_commutator": 0.1282702975907038,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 2,
+      "functional_order": null,
+      "time": 0.0,
+      "neutral_dimension": 10,
+      "eigenvalues": [
+        1.3286801488831383,
+        1.543080634815244,
+        1.985296880769995,
+        2.4999999999999987,
+        2.4999999999999987,
+        2.4999999999999996,
+        2.5,
+        4.007432950554577,
+        9.258483808891459,
+        18.080632101023717
+      ],
+      "relative_total_occupation_commutator": 0.6898316183927715,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 2,
+      "functional_order": null,
+      "time": 0.25,
+      "neutral_dimension": 10,
+      "eigenvalues": [
+        1.3651229391467055,
+        1.5430806348152446,
+        2.0592916477674055,
+        2.9741592391648193,
+        3.148721270700127,
+        3.148721270700128,
+        3.1487212707001295,
+        4.771128978518426,
+        11.260542269311676,
+        23.288017923053978
+      ],
+      "relative_total_occupation_commutator": 0.7115827162781355,
+      "relative_charged_occupation_commutator": 0.12217639821468973,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 3,
+      "functional_order": 2,
+      "time": 0.0,
+      "neutral_dimension": 22,
+      "eigenvalues": [
+        1.587783826848411,
+        1.6117450963304862,
+        1.9070000592425747,
+        2.231629976393881,
+        2.4338549008734858,
+        2.4338549008734893,
+        2.43385490087349,
+        2.4338549008734915,
+        2.9999999999999987,
+        2.9999999999999987,
+        2.9999999999999996,
+        3.0,
+        4.744679114280881,
+        4.865709034061611,
+        6.939898037746568,
+        11.154302889577684,
+        14.995832599126496,
+        14.995832599126505,
+        14.995832599126505,
+        14.995832599126507,
+        20.50966589321393,
+        28.931961072303743
+      ],
+      "relative_total_occupation_commutator": 0.7064464468519616,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 3,
+      "functional_order": 2,
+      "time": 0.25,
+      "neutral_dimension": 22,
+      "eigenvalues": [
+        1.6639407981407475,
+        1.6731480785204906,
+        1.9503552331428557,
+        2.241196307313844,
+        2.7876958941836723,
+        2.8194277363516527,
+        2.8194277363516553,
+        2.8194277363516553,
+        3.4780075388182423,
+        3.648721270700126,
+        3.6487212707001273,
+        3.6487212707001278,
+        5.175244825223884,
+        5.738088480247549,
+        8.635605437622038,
+        13.14901658786566,
+        19.419958378555503,
+        19.52635064317273,
+        19.526350643172734,
+        19.52635064317274,
+        25.170071507913452,
+        37.43910592402358
+      ],
+      "relative_total_occupation_commutator": 0.7216101550993217,
+      "relative_charged_occupation_commutator": 0.13753985612694886,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 3,
+      "functional_order": null,
+      "time": 0.0,
+      "neutral_dimension": 22,
+      "eigenvalues": [
+        1.6184468851870817,
+        1.6610148789994916,
+        2.036638248375406,
+        2.413339056619225,
+        2.413339056619228,
+        2.413339056619229,
+        2.4133390566192316,
+        2.48694994788223,
+        2.9999999999999982,
+        2.9999999999999987,
+        2.9999999999999996,
+        2.9999999999999996,
+        4.671337805425556,
+        5.3312142077578795,
+        6.856010886759851,
+        11.385934596879572,
+        15.332088243756056,
+        15.332088243756063,
+        15.332088243756065,
+        15.332088243756067,
+        22.816269843029737,
+        36.20685468585316
+      ],
+      "relative_total_occupation_commutator": 0.7814988114912028,
+      "relative_charged_occupation_commutator": 0.0,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    },
+    {
+      "capacity": 3,
+      "functional_order": null,
+      "time": 0.25,
+      "neutral_dimension": 22,
+      "eigenvalues": [
+        1.6798575709410408,
+        1.7241393878721043,
+        2.1415382312748275,
+        2.5057906068885702,
+        2.778379044700603,
+        2.778379044700608,
+        2.7783790447006136,
+        2.8140689519292392,
+        3.4787064651377704,
+        3.648721270700125,
+        3.648721270700126,
+        3.6487212707001273,
+        5.479714184545692,
+        5.528406853213122,
+        8.546160480513748,
+        13.410098441763711,
+        19.912067926838592,
+        19.972194406725183,
+        19.972194406725187,
+        19.97219440672521,
+        28.00461430043141,
+        46.800489337089886
+      ],
+      "relative_total_occupation_commutator": 0.7945344867592137,
+      "relative_charged_occupation_commutator": 0.13284673673238734,
+      "evidence": "floating-point finite-model probe; not a universal theorem"
+    }
+  ],
+  "candidate": "Free, fixed-clock charged oscillator sector after canonical squeezing.",
+  "remaining_obligations": [
+    "Intertwine the actual closed quantum Hamiltonian and its domains with the normal form.",
+    "Construct the complete neutral Hermite basis and its charged energy degeneracies.",
+    "Handle continuous clock and homogeneous momentum variables; establish a suitable trace.",
+    "Control mass/quartic/vacuum terms and the extra generator of a time-dependent squeeze."
+  ],
+  "source_sha256": {
+    "scripts/occupation_spectral_search.py": "8947e35ba21d4e20c826ef7b28fa103b31655fb42c909be6988f31d8f189d3e9",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911"
+  }
+}

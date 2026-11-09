@@ -1,0 +1,32 @@
+import UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport
+import UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability
+import UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail
+import UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport.shifted_event_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport.shifted_square_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport.square_mono
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport.difference_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.defect_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.event_mono
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.event_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.farEvent_mono
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.farEvent_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.bufferedThreshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability.bufferedThreshold_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.response_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.response_le_count
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.output_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.weak_output_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.slow_eigen_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.physical_output_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.physical_slow_eigen_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.complement
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail.energy_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.rate_power
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.budget_power
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.scale_absorption
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.slow_response_power
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.scaled_slow_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse.physical_scaled_slow_response

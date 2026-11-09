@@ -1,0 +1,394 @@
+{
+  "exact_algebra": {
+    "conformal_factor_cancels_canonical_one_form": true,
+    "momentum_only_family_one_form_zero": true,
+    "first_nonlinear_momentum_density_commutator": true,
+    "scalar_example_invariant_bound": "76471/2239488",
+    "scalar_example_contraction_bound": "465313/1679616",
+    "scope": "Exact algebra. Existence of the full reconstruction uses the separate small-field and scalar Green bounds in the note."
+  },
+  "pointwise_cotangent": {
+    "cases": [
+      {
+        "log_metric_size": 0.0,
+        "case": 0,
+        "one_form_error": 3.885780586188048e-16,
+        "symplectic_finite_difference_error": 8.701583632358528e-11,
+        "independent_frechet_error": 0.0,
+        "minimum_metric_eigenvalue": 1.100770451612858
+      },
+      {
+        "log_metric_size": 0.0,
+        "case": 1,
+        "one_form_error": 0.0,
+        "symplectic_finite_difference_error": 8.36444862273923e-11,
+        "independent_frechet_error": 3.1401849173675503e-16,
+        "minimum_metric_eigenvalue": 1.048218480091498
+      },
+      {
+        "log_metric_size": 0.0,
+        "case": 2,
+        "one_form_error": 0.0,
+        "symplectic_finite_difference_error": 8.413104438030163e-11,
+        "independent_frechet_error": 1.3597399555105182e-16,
+        "minimum_metric_eigenvalue": 1.0251402621226424
+      },
+      {
+        "log_metric_size": 0.0,
+        "case": 3,
+        "one_form_error": 2.220446049250313e-16,
+        "symplectic_finite_difference_error": 8.463287734627736e-11,
+        "independent_frechet_error": 0.0,
+        "minimum_metric_eigenvalue": 1.0238252404088568
+      },
+      {
+        "log_metric_size": 0.1,
+        "case": 0,
+        "one_form_error": 4.6629367034256575e-15,
+        "symplectic_finite_difference_error": 1.304660832314498e-10,
+        "independent_frechet_error": 1.863451552826149e-15,
+        "minimum_metric_eigenvalue": 0.9622095360654762
+      },
+      {
+        "log_metric_size": 0.1,
+        "case": 1,
+        "one_form_error": 7.216449660063518e-16,
+        "symplectic_finite_difference_error": 1.737723244445511e-10,
+        "independent_frechet_error": 8.286096941105926e-16,
+        "minimum_metric_eigenvalue": 0.9407557589357514
+      },
+      {
+        "log_metric_size": 0.1,
+        "case": 2,
+        "one_form_error": 1.6653345369377348e-15,
+        "symplectic_finite_difference_error": 1.315715503990578e-10,
+        "independent_frechet_error": 6.674335893081556e-16,
+        "minimum_metric_eigenvalue": 0.9197290632819118
+      },
+      {
+        "log_metric_size": 0.1,
+        "case": 3,
+        "one_form_error": 6.938893903907228e-17,
+        "symplectic_finite_difference_error": 1.2534258148934262e-10,
+        "independent_frechet_error": 2.2235338784208083e-15,
+        "minimum_metric_eigenvalue": 0.8340891839614737
+      },
+      {
+        "log_metric_size": 0.4,
+        "case": 0,
+        "one_form_error": 2.636779683484747e-16,
+        "symplectic_finite_difference_error": 1.4549842271288273e-10,
+        "independent_frechet_error": 2.328327212283787e-15,
+        "minimum_metric_eigenvalue": 0.6671664052273798
+      },
+      {
+        "log_metric_size": 0.4,
+        "case": 1,
+        "one_form_error": 4.440892098500626e-16,
+        "symplectic_finite_difference_error": 2.4749766173999457e-10,
+        "independent_frechet_error": 7.777754145844614e-16,
+        "minimum_metric_eigenvalue": 0.5846728087172279
+      },
+      {
+        "log_metric_size": 0.4,
+        "case": 2,
+        "one_form_error": 6.106226635438361e-16,
+        "symplectic_finite_difference_error": 2.9657330923635146e-10,
+        "independent_frechet_error": 1.6856228661697993e-15,
+        "minimum_metric_eigenvalue": 0.666365340558269
+      },
+      {
+        "log_metric_size": 0.4,
+        "case": 3,
+        "one_form_error": 3.885780586188048e-16,
+        "symplectic_finite_difference_error": 1.5872454284173485e-10,
+        "independent_frechet_error": 1.7845912429145624e-15,
+        "minimum_metric_eigenvalue": 0.6296841353467992
+      }
+    ],
+    "scope": "Five pointwise shape pairs before spatial reduction. Full canonical two-form is checked while the conformal factor depends on both coordinates and momenta. This alone is not the two-polarization gravitational field."
+  },
+  "nonlinear_momentum": {
+    "cases": [
+      {
+        "grid_per_axis": 5,
+        "shape_amplitude": 0.025,
+        "coercivity_relative_error_bound": 0.14190463270721423,
+        "iterations": 7,
+        "initial_momentum_residual": 0.0017793168870252206,
+        "final_momentum_residual": 1.08750157833158e-14,
+        "longitudinal_correction_norm": 0.0009213963362927027,
+        "proved_correction_norm_bound": 0.028258717143607587,
+        "first_source_remainder": 1.467491815859487e-05,
+        "first_correction_remainder": 5.471840754949654e-06,
+        "TT_one_form_error": 2.0643209364124003e-19,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 6.813167198189642e-18,
+        "sampled_relative_gauge_error": 0.007990158639978604,
+        "sampled_coercivity_ratio": 1.0001001884810259
+      },
+      {
+        "grid_per_axis": 5,
+        "shape_amplitude": 0.05,
+        "coercivity_relative_error_bound": 0.2914015977146734,
+        "iterations": 8,
+        "initial_momentum_residual": 0.003558996690065169,
+        "final_momentum_residual": 4.266070741363761e-14,
+        "longitudinal_correction_norm": 0.0018428064830517184,
+        "proved_correction_norm_bound": 0.07027214101064687,
+        "first_source_remainder": 5.8693602581177415e-05,
+        "first_correction_remainder": 2.1881243674191637e-05,
+        "TT_one_form_error": 1.5959455978986625e-19,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 3.822511522143586e-18,
+        "sampled_relative_gauge_error": 0.015976738311337026,
+        "sampled_coercivity_ratio": 1.0002540787416427
+      },
+      {
+        "grid_per_axis": 5,
+        "shape_amplitude": 0.1,
+        "coercivity_relative_error_bound": 0.6154384655490912,
+        "iterations": 10,
+        "initial_momentum_residual": 0.007120892494889187,
+        "final_momentum_residual": 4.343097788923924e-14,
+        "longitudinal_correction_norm": 0.0036857210712010736,
+        "proved_correction_norm_bound": 0.2734703335408679,
+        "first_source_remainder": 0.00023467736110589985,
+        "first_correction_remainder": 8.74805273553683e-05,
+        "TT_one_form_error": 7.771561172376096e-19,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 9.065745934535982e-18,
+        "sampled_relative_gauge_error": 0.031942740251837784,
+        "sampled_coercivity_ratio": 1.0007228846530276
+      },
+      {
+        "grid_per_axis": 7,
+        "shape_amplitude": 0.025,
+        "coercivity_relative_error_bound": 0.14190463270721423,
+        "iterations": 7,
+        "initial_momentum_residual": 0.0017793101974101606,
+        "final_momentum_residual": 2.323062010904327e-14,
+        "longitudinal_correction_norm": 0.0009213950915962169,
+        "proved_correction_norm_bound": 0.028258717143607656,
+        "first_source_remainder": 1.3839516861791748e-05,
+        "first_correction_remainder": 5.274085931776301e-06,
+        "TT_one_form_error": 2.768982807863854e-19,
+        "full_metric_pairing_error": 2.0715531654813416e-17,
+        "momentum_adjoint_identity_error": 6.169968562822845e-18,
+        "sampled_relative_gauge_error": 0.008801558671881184,
+        "sampled_coercivity_ratio": 1.0002577009930893
+      },
+      {
+        "grid_per_axis": 7,
+        "shape_amplitude": 0.05,
+        "coercivity_relative_error_bound": 0.2914015977146734,
+        "iterations": 8,
+        "initial_momentum_residual": 0.003558943222773618,
+        "final_momentum_residual": 1.1004238877030735e-13,
+        "longitudinal_correction_norm": 0.00184279677804497,
+        "proved_correction_norm_bound": 0.07027214101064702,
+        "first_source_remainder": 5.5352302265363e-05,
+        "first_correction_remainder": 2.1096930232089948e-05,
+        "TT_one_form_error": 2.174726223527776e-19,
+        "full_metric_pairing_error": 4.143106330962683e-17,
+        "momentum_adjoint_identity_error": 1.0855304364354859e-17,
+        "sampled_relative_gauge_error": 0.017610333930262543,
+        "sampled_coercivity_ratio": 1.000556500655053
+      },
+      {
+        "grid_per_axis": 7,
+        "shape_amplitude": 0.1,
+        "coercivity_relative_error_bound": 0.6154384655490912,
+        "iterations": 10,
+        "initial_momentum_residual": 0.007120465797775593,
+        "final_momentum_residual": 1.6203954974922029e-13,
+        "longitudinal_correction_norm": 0.003685647450399521,
+        "proved_correction_norm_bound": 0.2734703335408686,
+        "first_source_remainder": 0.0002213170357718068,
+        "first_correction_remainder": 8.439710014969744e-05,
+        "TT_one_form_error": 2.3770263373443127e-19,
+        "full_metric_pairing_error": 2.0715531654813416e-17,
+        "momentum_adjoint_identity_error": 5.418015245252647e-18,
+        "sampled_relative_gauge_error": 0.0352518871462291,
+        "sampled_coercivity_ratio": 1.0012773371383652
+      },
+      {
+        "grid_per_axis": 9,
+        "shape_amplitude": 0.025,
+        "coercivity_relative_error_bound": 0.14190463270721423,
+        "iterations": 7,
+        "initial_momentum_residual": 0.0017793101974100806,
+        "final_momentum_residual": 2.6916095427391762e-14,
+        "longitudinal_correction_norm": 0.0009213950915963656,
+        "proved_correction_norm_bound": 0.028258717143607687,
+        "first_source_remainder": 1.3839516861826453e-05,
+        "first_correction_remainder": 5.2740859602594326e-06,
+        "TT_one_form_error": 1.4931947615575398e-19,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 8.834050491208942e-18,
+        "sampled_relative_gauge_error": 0.008532935117084217,
+        "sampled_coercivity_ratio": 0.9998719486946405
+      },
+      {
+        "grid_per_axis": 9,
+        "shape_amplitude": 0.05,
+        "coercivity_relative_error_bound": 0.2914015977146734,
+        "iterations": 8,
+        "initial_momentum_residual": 0.0035589432227683265,
+        "final_momentum_residual": 1.3758686194796963e-13,
+        "longitudinal_correction_norm": 0.0018427967780543562,
+        "proved_correction_norm_bound": 0.07027214101064712,
+        "first_source_remainder": 5.5352302268321885e-05,
+        "first_correction_remainder": 2.109693112246178e-05,
+        "TT_one_form_error": 6.829432614613768e-19,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 5.7430023843849715e-18,
+        "sampled_relative_gauge_error": 0.017065300675793812,
+        "sampled_coercivity_ratio": 0.9997902912429395
+      },
+      {
+        "grid_per_axis": 9,
+        "shape_amplitude": 0.1,
+        "coercivity_relative_error_bound": 0.6154384655490912,
+        "iterations": 11,
+        "initial_momentum_residual": 0.0071204657974386415,
+        "final_momentum_residual": 1.9565318090206657e-14,
+        "longitudinal_correction_norm": 0.003685647451011378,
+        "proved_correction_norm_bound": 0.27347033354086886,
+        "first_source_remainder": 0.0002213170359593459,
+        "first_correction_remainder": 8.439712816750208e-05,
+        "TT_one_form_error": 3.807349192816037e-20,
+        "full_metric_pairing_error": 0.0,
+        "momentum_adjoint_identity_error": 1.0656963079860928e-17,
+        "sampled_relative_gauge_error": 0.0341310851786374,
+        "sampled_coercivity_ratio": 0.9997660918510174
+      }
+    ],
+    "scope": "Spectral discrete momentum constraints on periodic even seeds, with mean-zero vector correction. Checks exact discrete adjoint structure, the correction estimate and nonlinear TT pairing. This does not solve a periodic scalar constraint or prove quantum spatial covariance."
+  },
+  "initial_metric_velocity": {
+    "cases": [
+      {
+        "radial_points": 32,
+        "angular_points": 10,
+        "amplitude": 0.12,
+        "ADM_energy": 0.000285764389244915,
+        "canonical_velocity_pairing": 0.004750879870482707,
+        "finite_difference_energy_gradient": 0.004750879854211387,
+        "gradient_error": 1.6271320228689046e-11,
+        "lapse_equation_integral_residual": 5.594483210025203e-17,
+        "minimum_lapse": 0.9963257369355532,
+        "charge_scaling_derivative_identity_error": 0.0
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 10,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007903011225953167,
+        "canonical_velocity_pairing": 0.007848888500160517,
+        "finite_difference_energy_gradient": 0.007848888473996925,
+        "gradient_error": 2.6163592126149382e-11,
+        "lapse_equation_integral_residual": 5.984795992119984e-17,
+        "minimum_lapse": 0.9898979204073401,
+        "charge_scaling_derivative_identity_error": 2.6020852139652106e-18
+      },
+      {
+        "radial_points": 32,
+        "angular_points": 10,
+        "amplitude": 0.32,
+        "ADM_energy": 0.0020019254991127523,
+        "canonical_velocity_pairing": 0.012297840591398537,
+        "finite_difference_energy_gradient": 0.01229784055297627,
+        "gradient_error": 3.8422267104043506e-11,
+        "lapse_equation_integral_residual": 5.898059818321144e-17,
+        "minimum_lapse": 0.9747643422905345,
+        "charge_scaling_derivative_identity_error": 0.0
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 14,
+        "amplitude": 0.12,
+        "ADM_energy": 0.00028576488593558703,
+        "canonical_velocity_pairing": 0.004750896353975909,
+        "finite_difference_energy_gradient": 0.004750896337715402,
+        "gradient_error": 1.6260506829901544e-11,
+        "lapse_equation_integral_residual": 5.572799166575493e-17,
+        "minimum_lapse": 0.9963250205323896,
+        "charge_scaling_derivative_identity_error": 4.336808689942018e-19
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 14,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007903048959173021,
+        "canonical_velocity_pairing": 0.00784896305455566,
+        "finite_difference_energy_gradient": 0.007848963028409591,
+        "gradient_error": 2.614606968431854e-11,
+        "lapse_equation_integral_residual": 6.591949208711867e-17,
+        "minimum_lapse": 0.9898958798909786,
+        "charge_scaling_derivative_identity_error": 0.0
+      },
+      {
+        "radial_points": 64,
+        "angular_points": 14,
+        "amplitude": 0.32,
+        "ADM_energy": 0.0020019493253002948,
+        "canonical_velocity_pairing": 0.012298129456856908,
+        "finite_difference_energy_gradient": 0.012298129418455116,
+        "gradient_error": 3.840179216285655e-11,
+        "lapse_equation_integral_residual": 5.898059818321144e-17,
+        "minimum_lapse": 0.9747588342678667,
+        "charge_scaling_derivative_identity_error": 1.734723475976807e-18
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.12,
+        "ADM_energy": 0.00028576497772680353,
+        "canonical_velocity_pairing": 0.004750899400222811,
+        "finite_difference_energy_gradient": 0.004750899383964364,
+        "gradient_error": 1.6258446845773822e-11,
+        "lapse_equation_integral_residual": 5.681219383824043e-17,
+        "minimum_lapse": 0.9963245015421532,
+        "charge_scaling_derivative_identity_error": 4.336808689942018e-19
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007903055932541091,
+        "canonical_velocity_pairing": 0.00784897683283841,
+        "finite_difference_energy_gradient": 0.007848976806694202,
+        "gradient_error": 2.6144208326028817e-11,
+        "lapse_equation_integral_residual": 6.591949208711867e-17,
+        "minimum_lapse": 0.9898944423590593,
+        "charge_scaling_derivative_identity_error": 8.673617379884035e-19
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.32,
+        "ADM_energy": 0.002001953728647763,
+        "canonical_velocity_pairing": 0.012298182843436357,
+        "finite_difference_energy_gradient": 0.012298182805038464,
+        "gradient_error": 3.8397892504482556e-11,
+        "lapse_equation_integral_residual": 6.245004513516506e-17,
+        "minimum_lapse": 0.9747551820848334,
+        "charge_scaling_derivative_identity_error": 1.734723475976807e-18
+      }
+    ],
+    "scope": "Boundary-energy variation on the conformal momentum slice agrees with the weak TT metric velocity and maximal lapse. The pairing uses a TT amplitude variation. No finite-time evolution or packet-center force law is computed."
+  },
+  "source_sha256": {
+    "CANONICAL_METRIC_RECONSTRUCTION.md": "960357fd3d35d2c7f4a583c0551f2cc3713c7c9528daf506fda3a4657dd3c8f9",
+    "scripts/canonical_metric_reconstruction_audit.py": "67470c2714e6440475ac443a66acb3b18f99b83fc8e128b192a8d0379a060ec7",
+    "TENSOR_PACKET_SELF_GRAVITY.md": "5c70a78daf255266b0df044f54dc615c43aa012283c305d02c026450075561ee",
+    "scripts/tensor_packet_self_gravity_audit.py": "eb24b30b8c96c0f087c6524c783d8c5e7b790ed18a30726946307b79dc75676c",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816",
+    "EMBEDDING_VERSUS_GRAVITY.md": "0adaf0f87b0a625643ff09764aa47aef22c66322b79bbeb925c7a6475737aa9b"
+  },
+  "scope": "A small-data classical reconstruction under supplied Einstein constraints restores the nonlinear metric and momentum constraints while preserving the TT canonical one-form. The momentum-only packet family is isotropic; the extension supplies its missing partners. A boundary-energy derivative matches the initial metric velocity on that slice. No microscopic phase, complete quantum clock algebra, finite-time gravitational evolution, Standard Model, or TOE is proved."
+}

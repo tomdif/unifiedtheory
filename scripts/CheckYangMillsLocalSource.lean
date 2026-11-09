@@ -1,0 +1,52 @@
+/- Actual local Wilson bounds and response averaging: every public declaration. -/
+import UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison
+import UnifiedTheory.Clay.YangMills.WilsonSlabConditional
+import UnifiedTheory.Clay.YangMills.WilsonResponseL2
+import UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.planes
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.planes_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.transverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.affected
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.affected_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.base_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.shifted_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.holonomy_unchanged
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.potential_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.spatialWeight_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.temporalAction_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.slabAction_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.boltzmann_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.kernel_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.eigenfunction_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabLocalComparison.weighted_eigenfunction_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.normalized_expectation_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.rowWeight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.rowWeight_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.rowLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.rowLaw_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSlabConditional.row_expectation_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.mean_square_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.response_square_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.response_l2_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.response_sub_boundary
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.response_error_l2_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonResponseL2.actual_wilson_response_error
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.excessPartition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.tiltedTail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.markedTail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.shifted_expectation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.tiltedTail_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.markedTail_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.cap_energy_le_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.unitary_partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.grid
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.grid_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.grid_scale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.tailBound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.tailBound_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.actual_partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.actual_tilted_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.actual_marked_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.actual_centered_trace_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEnergyTail.exists_minimum_with_tail

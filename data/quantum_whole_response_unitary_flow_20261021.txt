@@ -1,0 +1,190 @@
+WHOLE RESPONSE: EXACT CLOCK-INDEPENDENT UNITARY-FLOW REDUCTION
+2026-10-21. New analytic successor; NOT Lean verified.
+No frozen repository or scratch artifact is changed. No numerical probe.
+
+1. Original finite family and unchanged norm
+
+Retain the exact class and Fourier/physical normalization in
+  whole-response-linked-defect-operator-frontier-20261021.txt,
+SHA cfd10263fb0ea1775d174b6f7d0dd3b3ab5125355aa6e4463709b960d7254864.
+In this note E denotes the original x-space positive integral BEFORE the
+constant external pi/4. Thus E=2pi*E_F in that predecessor.
+All alpha,beta,w_i,d_i,B_i,P_i are fixed under clock differentiation.
+Write R=a^2+b^2, rho=sqrt(R), phi=arg(a+ib), so a=rho cos(phi),
+b=rho sin(phi). Initially assume 0<b<a; all regular formulas below extend to
+b=0. The negative side can also be treated with the reversed imaginary strip.
+
+Replace the original nonnegative radial coordinate Y by s^2+t^2. Since
+  integral_(R^2) F(s^2+t^2) dsdt=pi*integral_(0,infinity) F(Y)dY,
+this introduces exactly the constant 1/pi, with no state-dependent factor.
+Use two charged two-vectors y_+,y_- and a neutral coordinate n:
+  y_+=rho*(u,v), y_-=rho*(s,t),
+  n=x+2*(rho-a)*v.
+Let V denote the second coordinate of y_+, so V=rho*v.
+The real Jacobian of this transformation is rho^4.
+
+Define ONE clock-independent original seed on R^5 by
+  f(y_+,y_-,n)=sum_i d_i exp(-alpha*w_i*(|y_+|^2+|y_-|^2)/2)
+                     *exp(-beta*n^2+B_i*n)*P_i(n).
+This retains every width/source/polynomial cross term. It is radial in the
+four charged variables, even though charged widths can be correlated with
+the neutral sources and polynomials.
+
+2. A concrete determinant-one real group and its imaginary continuation
+
+For a complex parameter z define the entire linear flow
+  T_z(y_+,y_-,n)=
+    (exp(z)*y_+, exp(-z)*y_-, n+2*(exp(z)-1)*V).
+It obeys T_z T_w=T_(z+w). For real z its real determinant is
+exp(2z)*exp(-2z)=1. Therefore
+  U_z f=f composed with T_z   (z real)
+is a strongly continuous unitary group on L2(R^5).
+The actual selfadjoint generator, with U_z=exp(i*z*G), is
+  G=-i*(y_+ dot partial_(y_+) - y_- dot partial_(y_-)+2V*partial_n).
+The generator here is independent of the clock, widths, sources, and packet
+number. Unlike the finite-label W notation, this is a genuine ambient
+selfadjoint group generator, not an asserted accretive extension.
+
+Direct substitution gives
+  f(T_(i phi)(y,n))
+    =sum_i d_i exp(-w_i*[p*(u^2+v^2)+conj(p)*(s^2+t^2)])
+                  *exp(-beta*(x+i*2b*v)^2+B_i*(x+i*2b*v))
+                  *P_i(x+i*2b*v).
+Indeed rho exp(i phi)=a+ib, while
+  n+2*(exp(i phi)-1)*V=x+i*2b*v.
+Thus the original packet is exactly f_phi=U_(i phi)f=exp(-phi*G)f.
+The sign is negative because U_z=exp(i*z*G).
+
+3. Actual analytic-vector identification; no extra domain premise
+
+The finite seed is Schwartz on real R^5. Along the imaginary flow its squared
+Gaussian exponent, after completing the neutral real coordinate, has charged
+margin
+  alpha*w_i*cos(2phi)-8beta*sin(phi)^2.
+The original strict floor is exactly positivity of this margin after
+multiplication by rho^2. It stays positive on a small closed imaginary
+neighborhood. Polynomial coordinate insertions, G derivatives, and finitely
+many geometry derivatives have the same Gaussian domination with a smaller
+positive margin. Therefore the complex pullback is locally L2-holomorphic,
+and all polynomially weighted vectors used below are in Dom(G).
+For a real horizontal shift z, T_z is measure preserving and commutes with
+T_(i phi), so the scalar L2 norm is unchanged along each horizontal line.
+
+There is also an explicit spectral-coordinate verification. Away from the
+measure-zero charged axes put
+  q=|y_+|*|y_-|>0,
+  tau=(log|y_+|-log|y_-|)/2,
+  m=n-2V,
+with the two charged polar angles retained. Then
+  |y_+|=sqrt(q)*exp(tau), |y_-|=sqrt(q)*exp(-tau),
+  d^5y=q*dq*d(tau)*d(angle_+)*d(angle_-)*dm.
+The flow translates tau and fixes q,m,angles. Hence G=-i*partial_tau.
+For fixed invariants the finite packet has double-exponential decay as
+Re(tau) tends to either infinity on the permitted closed imaginary strip:
+the charged term is exp(-alpha*w_i*q*cosh(2tau)); the neutral term is the
+same actual Gaussian evaluated at m+2sqrt(q)exp(tau)sin(angle_+).
+The positive margin above controls the potentially growing imaginary-neutral
+part. Contour shifting in tau is justified, first for a fixed invariant fiber
+and then with the global Gaussian domination. With Fourier convention
+exp(-i*xi*tau), the shift tau->tau+i phi multiplies the transform by
+exp(-phi*xi). This identifies the concrete continuation with exp(-phi*G)
+and establishes its spectral-domain membership, rather than assuming it.
+
+4. Exact full quartic norm, including the physical field
+
+At general independent L, the original real physical field is
+  x+L*v=n+c*V,
+  c=(L+2a)/rho-2.
+Write M_c for real multiplication by n+cV and
+  F(phi,c)=sum_(j=0)^2 c_j*||M_c^j exp(-phi*G)f||^2,
+  (c_0,c_1,c_2)=(1,1/2,1/4).
+Then the entire original energy is exactly
+  E=rho^(-4)*F(phi,c)/pi.
+For the actual L=3-2a one has c=3/rho-2.
+No field-channel comparison or independent-vector replacement has occurred.
+The three vectors M_c^j exp(-phi*G)f MUST remain linked to the same seed f.
+
+The real commutator is explicit:
+  [G,M_c]=-i*(c+2)*V.
+All adjacent multiplication pairings
+  <M_c^j f_phi, V*M_c^(j-1) f_phi>
+are real. Consequently, with H_j=M_c^j f_phi,
+  F_phi=-2*sum_j c_j*<H_j,G H_j>,
+  F_c=2*sum_(j=1)^2 j*c_j*<H_j,V H_(j-1)>.
+The apparent commutator term in F_phi has zero real part; it has not been
+dropped as a sign estimate. The inner products with G are real by the actual
+domain statement in section3.
+
+5. An actual scalar consequence and its precise limitation
+
+For the UNWEIGHTED seed norm F_0(phi)=||exp(-phi*G)f||^2,
+  F_0''(phi)=4*||G exp(-phi*G)f||^2>=0.
+Moreover <f,Gf>=0 exactly. In the charged dilation part, interchange the plus
+and minus charged pairs; every cross-source density is radial and the factor
+|y_+|^2-|y_-|^2 changes sign. The neutral shear part has one V factor and is
+odd under V->-V. This argument retains all finite-family cross terms.
+Thus F_0'(0)=0 and phi*F_0'(phi)>=0 on either admissible side.
+At fixed a the original scalar channel therefore satisfies the genuine
+state-independent lower bound
+  b*partial_b E_0 >= -4*b^2/R * E_0.
+This is weaker than the previously available scalar imaginary-monotonicity
+result, but follows from a concrete clock-independent selfadjoint group and
+has no matrix-kernel or inverse-width assumptions.
+
+This convexity argument cannot simply be repeated for F(phi,c): the vectors
+M_c^j f_phi have charged polynomial factors, and their generator expectations
+need not have the seed cancellation. The ambient G has two-sided unbounded
+spectrum. A selfadjoint generator does not by itself make its imaginary-time
+flow contractive. No weighted conclusion is asserted from scalar convexity.
+
+6. Exact combined actual-clock target in this representation
+
+Use the actual q,h,chi of the immutable real-scaling predecessor; in particular
+  chi=realNumerator(t,r)/(2R),  |chi|*R<=2b^2.
+Here q is the CLOCK rate delta/a, unrelated to the invariant q in section3.
+For clarity no orbit-invariant symbol is used in the following formulas.
+At fixed a,L,
+  b*partial_b rho=b^2/rho,
+  b*partial_b phi=ab/R,
+  b*partial_b c=-(L+2a)*b^2/rho^3,
+  partial_L c=1/rho.
+Therefore the full linked defect J=b*E_b+3chi*E_L is exactly
+
+  J = rho^(-4)/(pi*R) *
+       [ ab*F_phi + 3*(chi*R-b^2)/rho*F_c -4*b^2*F ].       (1)
+
+For b>0, putting v0=(b^2-chi*R)/(ab), the bracket is also
+  ab*[F_phi-(3v0/rho)*F_c]-4b^2*F.
+Equation(1), which uses no division by b, is the preferred endpoint.
+In terms of the SAME three linked H_j, its bracket equals
+
+  -2ab*sum_j c_j*<H_j,G H_j>
+   +6*(chi*R-b^2)/rho*sum_(j=1)^2 j*c_j*<H_j,V H_(j-1)>
+   -4b^2*sum_j c_j*||H_j||^2.                              (2)
+
+The exact remaining uniform target is that (2) be at least -C*R*F,
+for all original seeds and actual clock parameters, with a state-independent
+C. This is equivalent to the previous J>=-C*E. At b=0 every coefficient in
+(2) vanishes, since the actual chi is zero. The target therefore retains the
+exact zero-imaginary cancellation rather than estimating an order-one drift.
+
+The coefficient chi*R-b^2 is O(b^2), but the V insertion is unbounded. The
+positive/negative spectral splitting of G does not control this insertion on
+its own. A valid next result would be a weighted numerical-range bound for
+(2) on the concrete radial-seed analytic orbit, or an original-family sequence
+violating it. Treating the H_j as independent vectors would change the problem.
+No such weighted estimate or admissible violating sequence is obtained here.
+
+7. Status and independent checks
+
+uniform_estimate independently checked the flow/group law, Jacobian and 1/pi
+polar normalization, the complex substitution and imaginary-time sign, and
+the scalar initial-expectation cancellation. That review explicitly reserved
+the analytic-vector identification and final combined coefficient; sections3
+and6 provide the detailed arguments for those points. They are analytic
+calculations in this handoff, not new Lean theorems.
+
+This successor supplies an exact actual-family semigroup representation and
+a derived scalar estimate, but leaves the full linked quartic bound OPEN.
+There is no new numerical evidence, no Lean source or compiler, and no live
+process. Earlier scratch and repository analytic artifacts remain immutable.

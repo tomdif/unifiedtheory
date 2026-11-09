@@ -1,0 +1,270 @@
+{
+  "status": "PASS",
+  "model": "Exact Fourier--Galerkin SU(2) DeTurck--Yang--Mills heat on T^2",
+  "scope": "Local regular-data theorem; no local Wilson-link evolution asserted.",
+  "exact_rational_checks": 64,
+  "projection_audit": {
+    "independent_convolution_max_error": 8.881790363086878e-16,
+    "constant_SU2_conjugation_max_error": 4.718447854656915e-16,
+    "Lie_algebra_reality_max_error": 0.0,
+    "coefficients_compared": 54,
+    "padding_rule": "M=6N+1"
+  },
+  "homogeneous_nonlinear_witness": {
+    "initial_amplitude": 0.7,
+    "end_time": 1.0,
+    "time_samples": 21,
+    "exact_solution_max_error": 5.521139101460903e-13,
+    "half_energy_initial": 0.48019999999999985,
+    "half_energy_final": 0.019837728865095453,
+    "energy_strictly_decreases": true,
+    "separation_from_commutator_free_solution": 0.384415627866391,
+    "rhs_evaluations": 323,
+    "scope": "Global test of this exact homogeneous family only."
+  },
+  "local_experiment": {
+    "s": 2,
+    "p": 2,
+    "q": 4,
+    "initial_Wq_certifying_upper_formula_float": 0.1680402185120949,
+    "common_radius": 0.3360804370241898,
+    "guaranteed_time_formula_float": 5.0252367982661174e-05,
+    "contraction_constant_formula_float": 0.5,
+    "time_samples": 5,
+    "reference_cutoff": 8,
+    "inhomogeneous_nonlinear_separation_from_heat_Ws": 6.430933636729116e-07,
+    "maximum_time_tolerance_comparison_Ws": 1.3613585709697563e-17,
+    "cutoff_comparisons": [
+      {
+        "cutoff": 1,
+        "sampled_max_Ws_difference_to_N8": 0.00046448269959490734,
+        "sampled_max_Wq_upper": 0.1629,
+        "analytic_allowance_EN_plus_E8": 0.131687103560075,
+        "tighter_time_integration_difference_Ws": 6.93906931680774e-18,
+        "rhs_evaluations": 113
+      },
+      {
+        "cutoff": 2,
+        "sampled_max_Ws_difference_to_N8": 8.47951995949074e-05,
+        "sampled_max_Wq_upper": 0.1663171875,
+        "analytic_allowance_EN_plus_E8": 0.061970401675329405,
+        "tighter_time_integration_difference_Ws": 8.844647158611819e-18,
+        "rhs_evaluations": 113
+      },
+      {
+        "cutoff": 3,
+        "sampled_max_Ws_difference_to_N8": 2.553594033564815e-05,
+        "sampled_max_Wq_upper": 0.16726533564814813,
+        "analytic_allowance_EN_plus_E8": 0.03756955601566845,
+        "tighter_time_integration_difference_Ws": 1.3613585709697563e-17,
+        "rhs_evaluations": 113
+      },
+      {
+        "cutoff": 4,
+        "sampled_max_Ws_difference_to_N8": 9.056448148148148e-06,
+        "sampled_max_Wq_upper": 0.16767732295283566,
+        "analytic_allowance_EN_plus_E8": 0.026275450310339666,
+        "tighter_time_integration_difference_Ws": 1.0148602626045819e-17,
+        "rhs_evaluations": 113
+      },
+      {
+        "cutoff": 6,
+        "sampled_max_Ws_difference_to_N8": 3.40844302371441e-12,
+        "sampled_max_Wq_upper": 0.1680402185120949,
+        "analytic_allowance_EN_plus_E8": 0.016441126975087393,
+        "tighter_time_integration_difference_Ws": 1.015708213281091e-17,
+        "rhs_evaluations": 113
+      }
+    ],
+    "qualification": "Bounds evaluated in ordinary floating point, not interval-certified. Differences use an N=8 numerical reference, not the exact continuum. Tolerance comparisons are diagnostics, not rigorous ODE error bounds."
+  },
+  "transport": {
+    "path_comparisons": 20,
+    "steps_per_segment": 96,
+    "max_operator_difference": 3.450881065584931e-06,
+    "max_quadrature_doubling_change": 2.6590608834997397e-08,
+    "comparisons": [
+      {
+        "path": 0,
+        "cutoff": 1,
+        "coordinate_length": 0.7,
+        "SU2_operator_error_to_N8": 3.450881065584931e-06,
+        "normalized_trace_error_to_N8": 1.3344831906181298e-09,
+        "analytic_allowance_including_quadrature": 0.09757009371773495,
+        "quadrature_doubling_change": 2.567913160796165e-08
+      },
+      {
+        "path": 0,
+        "cutoff": 2,
+        "coordinate_length": 0.7,
+        "SU2_operator_error_to_N8": 4.1724148205102375e-08,
+        "normalized_trace_error_to_N8": 1.6256107571166467e-11,
+        "analytic_allowance_including_quadrature": 0.04876840239841304,
+        "quadrature_doubling_change": 2.655474383434577e-08
+      },
+      {
+        "path": 0,
+        "cutoff": 3,
+        "coordinate_length": 0.7,
+        "SU2_operator_error_to_N8": 1.995751615579867e-08,
+        "normalized_trace_error_to_N8": 7.725708961459077e-12,
+        "analytic_allowance_including_quadrature": 0.03168781043665038,
+        "quadrature_doubling_change": 2.6590608834997397e-08
+      },
+      {
+        "path": 0,
+        "cutoff": 4,
+        "coordinate_length": 0.7,
+        "SU2_operator_error_to_N8": 5.396394542727658e-09,
+        "normalized_trace_error_to_N8": 2.089994843856857e-12,
+        "analytic_allowance_including_quadrature": 0.02378193644292023,
+        "quadrature_doubling_change": 2.657570942434701e-08
+      },
+      {
+        "path": 0,
+        "cutoff": 6,
+        "coordinate_length": 0.7,
+        "SU2_operator_error_to_N8": 1.3717352302147192e-15,
+        "normalized_trace_error_to_N8": 0.0,
+        "analytic_allowance_including_quadrature": 0.01689791010824364,
+        "quadrature_doubling_change": 2.6566553844334507e-08
+      },
+      {
+        "path": 1,
+        "cutoff": 1,
+        "coordinate_length": 2.4000000000000004,
+        "SU2_operator_error_to_N8": 3.132725865287325e-08,
+        "normalized_trace_error_to_N8": 1.1435297153639112e-13,
+        "analytic_allowance_including_quadrature": 0.33188646602373667,
+        "quadrature_doubling_change": 9.773767949317859e-09
+      },
+      {
+        "path": 1,
+        "cutoff": 2,
+        "coordinate_length": 2.4000000000000004,
+        "SU2_operator_error_to_N8": 1.0259873977338083e-09,
+        "normalized_trace_error_to_N8": 5.88418203051333e-15,
+        "analytic_allowance_including_quadrature": 0.16456638150034722,
+        "quadrature_doubling_change": 9.773854841292175e-09
+      },
+      {
+        "path": 1,
+        "cutoff": 3,
+        "coordinate_length": 2.4000000000000004,
+        "SU2_operator_error_to_N8": 5.256731359834532e-10,
+        "normalized_trace_error_to_N8": 9.880984919163893e-15,
+        "analytic_allowance_including_quadrature": 0.10600435191716093,
+        "quadrature_doubling_change": 9.77382085304605e-09
+      },
+      {
+        "path": 1,
+        "cutoff": 4,
+        "coordinate_length": 2.4000000000000004,
+        "SU2_operator_error_to_N8": 4.864807170759178e-11,
+        "normalized_trace_error_to_N8": 6.661338147750939e-16,
+        "analytic_allowance_including_quadrature": 0.07889849822437184,
+        "quadrature_doubling_change": 9.77384772924486e-09
+      },
+      {
+        "path": 1,
+        "cutoff": 6,
+        "coordinate_length": 2.4000000000000004,
+        "SU2_operator_error_to_N8": 1.2006100849150907e-15,
+        "normalized_trace_error_to_N8": 1.1102230246251565e-16,
+        "analytic_allowance_including_quadrature": 0.05529612221976638,
+        "quadrature_doubling_change": 9.773847533615389e-09
+      },
+      {
+        "path": 2,
+        "cutoff": 1,
+        "coordinate_length": 1.0,
+        "SU2_operator_error_to_N8": 8.346151667960851e-08,
+        "normalized_trace_error_to_N8": 1.910582803077432e-12,
+        "analytic_allowance_including_quadrature": 0.14268531014310043,
+        "quadrature_doubling_change": 7.94196427750416e-10
+      },
+      {
+        "path": 2,
+        "cutoff": 2,
+        "coordinate_length": 1.0,
+        "SU2_operator_error_to_N8": 7.280986086175784e-09,
+        "normalized_trace_error_to_N8": 7.771561172376096e-16,
+        "analytic_allowance_including_quadrature": 0.07296860825835484,
+        "quadrature_doubling_change": 8.297642106043115e-10
+      },
+      {
+        "path": 2,
+        "cutoff": 3,
+        "coordinate_length": 1.0,
+        "SU2_operator_error_to_N8": 1.1998219872937532e-09,
+        "normalized_trace_error_to_N8": 1.2212453270876722e-15,
+        "analytic_allowance_including_quadrature": 0.04856776259869389,
+        "quadrature_doubling_change": 8.36185355443508e-10
+      },
+      {
+        "path": 2,
+        "cutoff": 4,
+        "coordinate_length": 1.0,
+        "SU2_operator_error_to_N8": 2.576252308293318e-10,
+        "normalized_trace_error_to_N8": 2.1094237467877974e-15,
+        "analytic_allowance_including_quadrature": 0.037273656893365106,
+        "quadrature_doubling_change": 8.379547755368229e-10
+      },
+      {
+        "path": 2,
+        "cutoff": 6,
+        "coordinate_length": 1.0,
+        "SU2_operator_error_to_N8": 1.1479491440995452e-16,
+        "normalized_trace_error_to_N8": 1.1102230246251565e-16,
+        "analytic_allowance_including_quadrature": 0.02743933355811283,
+        "quadrature_doubling_change": 8.387790385556979e-10
+      },
+      {
+        "path": 3,
+        "cutoff": 1,
+        "coordinate_length": 1.04,
+        "SU2_operator_error_to_N8": 3.4539987714938976e-07,
+        "normalized_trace_error_to_N8": 1.177080766190386e-09,
+        "analytic_allowance_including_quadrature": 0.14290461746389474,
+        "quadrature_doubling_change": 1.4603488500393541e-08
+      },
+      {
+        "path": 3,
+        "cutoff": 2,
+        "coordinate_length": 1.04,
+        "SU2_operator_error_to_N8": 1.122416360721393e-07,
+        "normalized_trace_error_to_N8": 1.915645975181235e-09,
+        "analytic_allowance_including_quadrature": 0.07039924750375934,
+        "quadrature_doubling_change": 1.4649847639439004e-08
+      },
+      {
+        "path": 3,
+        "cutoff": 3,
+        "coordinate_length": 1.04,
+        "SU2_operator_error_to_N8": 2.6505008483118693e-09,
+        "normalized_trace_error_to_N8": 4.531308661626099e-11,
+        "analytic_allowance_including_quadrature": 0.04502236801771195,
+        "quadrature_doubling_change": 1.4657453887108657e-08
+      },
+      {
+        "path": 3,
+        "cutoff": 4,
+        "coordinate_length": 1.04,
+        "SU2_operator_error_to_N8": 7.268055783563335e-09,
+        "normalized_trace_error_to_N8": 7.880951446992412e-11,
+        "analytic_allowance_including_quadrature": 0.03327649808417002,
+        "quadrature_doubling_change": 1.4661400770618705e-08
+      },
+      {
+        "path": 3,
+        "cutoff": 6,
+        "coordinate_length": 1.04,
+        "SU2_operator_error_to_N8": 1.3275549224441592e-15,
+        "normalized_trace_error_to_N8": 0.0,
+        "analytic_allowance_including_quadrature": 0.02304880181550765,
+        "quadrature_doubling_change": 1.4656607139338575e-08
+      }
+    ],
+    "qualification": "Computed from numerical ODE endpoints; no rigorous time-error certificate is claimed. For unit quaternions, Euclidean quaternion difference equals the SU(2) matrix operator difference."
+  }
+}

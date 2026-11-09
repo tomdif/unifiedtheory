@@ -1,0 +1,116 @@
+{
+  "title": "Exact original Wilson conditional block to parallel product operator dictionary",
+  "date": "2026-10-28",
+  "verification_scope": "Lean-certified exact finite-lattice identities. This module contains no assumed mixing estimate and asserts no physical mass gap.",
+  "module": {
+    "path": "UnifiedTheory/Clay/YangMills/WilsonParallelKernel.lean",
+    "namespace": "UnifiedTheory.Clay.YangMills.WilsonParallelKernel",
+    "sha256": "b0534da027345a84b7460f2627b56533e3d91031eb7fec78204b24d3c10df4c6",
+    "bytes": 8423,
+    "definitions": [
+      "stateAction",
+      "overwrite"
+    ],
+    "theorems": [
+      "overwrite_continuous",
+      "toConfiguration_overwrite",
+      "assemble_exterior_update",
+      "localAction_selected",
+      "zero_action_law",
+      "localAction_law",
+      "auxiliary_law_product",
+      "overwrite_map_auxiliaryLaw",
+      "integral_overwrite_eq_product",
+      "blockAverage_eq_parallelAverage"
+    ]
+  },
+  "parameters": {
+    "group": "Q = unitary (Quaternion Real), with existing proved SU(2) matrix equivalence.",
+    "period": "n nonzero. These factorization identities use the actual independence condition and do not require n > 1 or even n.",
+    "coupling": "Any real beta. Positivity and smallness of beta are not hypotheses of this exact dictionary.",
+    "block": "S is a finite set of positive link coordinates with WilsonIndependentBlocks.Independent n S, meaning no plaquette is affected by two distinct selected links.",
+    "state": "U : Link n -> Q is the actual retained full state.",
+    "action": "stateAction n beta U = beta sum_p (2 - Re Tr U_p), using the actual toConfiguration coordinate map and unnormalized fundamental trace."
+  },
+  "exact_construction": [
+    {
+      "name": "stateAction",
+      "formula": "stateAction n beta : C(Link n -> Q, Real)",
+      "meaning": "Continuous original full Wilson action through the actual Link-to-Edge configuration map."
+    },
+    {
+      "name": "overwrite",
+      "formula": "overwrite n U S W i = if i in S then W i else U i",
+      "meaning": "The selected coordinates are sampled, and all unselected original links are retained."
+    },
+    {
+      "name": "toConfiguration_overwrite",
+      "formula": "toConfiguration(overwrite U S W) = blockUpdate(toConfiguration U) S W",
+      "meaning": "Literal equality with the existing actual Wilson block update."
+    },
+    {
+      "name": "localAction_selected",
+      "formula": "localAction(U,S,a,q) = -stateAction(U) + splitAction(exterior(U,a),q) for a in S",
+      "meaning": "The factor supplied by the proved action decomposition differs from the full one-link conditional action by an explicit constant. This constant cancels in its normalized Gibbs law."
+    },
+    {
+      "name": "localAction_law",
+      "formula": "law(Haar, localAction(U,S,a)) = if a in S then coordinateLaw(beta,U,a) else Haar",
+      "meaning": "Each selected factor is the existing actual normalized Wilson conditional law. Every unselected auxiliary coordinate is unused by the action and remains Haar."
+    },
+    {
+      "name": "auxiliary_law_product",
+      "formula": "law(Haar^Links, W -> stateAction(overwrite U S W)) = product_a (if a in S then coordinateLaw(beta,U,a) else Haar)",
+      "meaning": "Equality of measures derived from the actual independent-block action decomposition and normalized factorization theorem."
+    },
+    {
+      "name": "overwrite_map_auxiliaryLaw",
+      "formula": "map(overwrite U S, auxiliary law) = product_a (if a in S then coordinateLaw(beta,U,a) else dirac(U_a))",
+      "meaning": "Exact map of a finite product measure. Selected coordinate maps are the identity; unselected coordinate maps are constant, so their Haar probabilities map to the retained Dirac masses."
+    },
+    {
+      "name": "integral_overwrite_eq_product",
+      "formula": "Integral of F(overwrite U S W) under the actual auxiliary law equals integral of F under the selected-conditional/retained-Dirac product.",
+      "meaning": "Obtained from the proved measure pushforward, for every real continuous observable F."
+    },
+    {
+      "name": "blockAverage_eq_parallelAverage",
+      "formula": "CompactGibbsBlockUpdate.blockAverage Haar (stateAction n beta) S F U = ParallelOscillation.parallelAverage (fun a V -> coordinateLaw n beta V a) S F U",
+      "meaning": "The generic actual conditional-expectation fiber identity is bound to the exact Wilson pushforward law. Binder order: n beta U S hS F."
+    }
+  ],
+  "dependencies": {
+    "actual_conditional_law": "WilsonCoordinateInfluence.coordinateLaw",
+    "geometric_factorization": "WilsonParallelConditional.wilson_block_law",
+    "constant_cancellation": "GibbsConstantShift.law_const_add",
+    "actual_fiber_operator": "CompactGibbsBlockFiber.blockAverage_full_fiber",
+    "product_update": "ParallelOscillation.parallelAverage",
+    "previous_influence_record": {
+      "path": "data/yang_mills_coordinate_influence_research_2026_10_28.json",
+      "sha256": "7d527de44851030a65092d0d4d929258c209e56ed8ef773c7cf36c20a2b2100f"
+    }
+  },
+  "scope": {
+    "closed": "The actual Wilson fixed-exterior conditional block operator is now the same literal product update used by the independently proved collective influence estimates.",
+    "important_distinction": "The product equality concerns a fixed-exterior conditional update on a geometrically independent selected block. It does not assert that the interacting full Wilson Gibbs measure is a product measure.",
+    "separate_work": [
+      "Exact transport of the product-coordinate Gibbs law to the original Edge-indexed Wilson law.",
+      "Binding the collective contraction theorem and stationarity/reversibility to actual color updates.",
+      "Any comparison of auxiliary heatbath update time with physical transfer time.",
+      "Weak-coupling, continuum nontriviality and physical mass-gap estimates."
+    ],
+    "clay_status": "All Clay-status changes remain outside this exact finite-cutoff identity; no physical obligation is promoted to complete."
+  },
+  "validation": {
+    "scoped_build": "lake build UnifiedTheory.Clay.YangMills.WilsonParallelKernel",
+    "result": "passed",
+    "jobs": 3444,
+    "new_warnings": 0,
+    "build_log": "/tmp/wilson-parallel-kernel-build-final.log",
+    "public_declarations": 12,
+    "theorems_checked": 10,
+    "axioms": "All ten theorems use only propext, Classical.choice and Quot.sound.",
+    "axiom_log": "/tmp/wilson-parallel-kernel-axioms.log",
+    "existing_files": "No prior proof, script, audit or frozen research file was edited."
+  }
+}

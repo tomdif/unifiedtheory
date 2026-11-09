@@ -62,8 +62,8 @@ transforms), not a session-scale composition. What IS in hand:
   necessarily oscillatory-growing (complex) — consistent with and sharpening
   ASS's numerics. Formalizing h(s) < 0 for all real s >= 0 is the natural
   first rung and reuses the operator chain.
-- The precise no-go conjecture: no kernel with M[K](1/2) = M[K](1) =
-  M[K](3/2) = 0, M[K](2) = -1 (the forced structure) has a retarded symbol
+- The precise no-go conjecture: no kernel with `M[K](1/2) = M[K](1) = 0`,
+  `M[K](3/2) = 0, M[K](2) = -1` (the forced structure) has a retarded symbol
   zero-free in the closed upper half-plane.
 
 This is the one item of the three left open, stated as a conjecture with a

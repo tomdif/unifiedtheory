@@ -1,0 +1,67 @@
+/- Fresh actual patch-conditioning and disintegration axioms; retained chain checked by runner. -/
+import UnifiedTheory.Clay.YangMills.GibbsEventCovariance
+import UnifiedTheory.Clay.YangMills.GibbsConditionedLaw
+import UnifiedTheory.Clay.YangMills.WilsonPatchConditioning
+import UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer
+import UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition
+
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.mass_partition
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.weighted_cond_integral
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.integral_split
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.covariance_split
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.conditional_mean_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.conditional_covariance_bound
+#print axioms UnifiedTheory.Clay.YangMills.GibbsEventCovariance.bounded_source_transfer
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.cond_smul
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.weightedLaw_smul
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.weightedLaw_normalize
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.conditioned_weightedLaw
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.weightedLaw_cond
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.weightedLaw_transport
+#print axioms UnifiedTheory.Clay.YangMills.GibbsConditionedLaw.law_cond
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.pi_conditioning
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.cap_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.Inside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.haar
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.event
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.event_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.event_nonzero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.forget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.forget_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.forget_injective
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.base_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.insert
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.insert_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.insert_forget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.interiorLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.interior_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.law_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.conditioned_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchConditioning.conditioned_covariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.goodMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.badMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.mass_partition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.covariance_transfer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.covariance_transfer_coarse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovarianceTransfer.transport_connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.Outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.outsideHaar
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.background
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.insert_background
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.splitAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.split_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.split_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.outsideLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.outside_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.outside_density
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.outsideResponse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.conditional_covariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.covariance_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.eventContribution
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.eventContribution_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.full_patch_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.middle_patch_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExteriorDecomposition.connected_patch_decomposition

@@ -1,0 +1,553 @@
+{
+  "analytic_gauge_covectors": {
+    "cases": [
+      {
+        "homogeneous_degree": 0,
+        "unknown_coefficients": 6,
+        "exact_constraint_rank": 6,
+        "exact_kernel_dimension": 0
+      },
+      {
+        "homogeneous_degree": 1,
+        "unknown_coefficients": 18,
+        "exact_constraint_rank": 18,
+        "exact_kernel_dimension": 0
+      },
+      {
+        "homogeneous_degree": 2,
+        "unknown_coefficients": 36,
+        "exact_constraint_rank": 36,
+        "exact_kernel_dimension": 0
+      },
+      {
+        "homogeneous_degree": 3,
+        "unknown_coefficients": 60,
+        "exact_constraint_rank": 55,
+        "exact_kernel_dimension": 5
+      }
+    ],
+    "scope": "Exact coefficient elimination over the rationals: an analytic symmetric transverse tracefree covector starts at third order in momentum. This supports the bounded-depth tangent-factor argument, not a general theorem excluding all entangled phases."
+  },
+  "single_spin_geometry": {
+    "cases": [
+      {
+        "spin": 0.5,
+        "momentum": -0.3,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 2.5003926170246937e-16,
+        "berry_connection_momentum": -0.3,
+        "exact_metric_determinant": 0.25000000000000006,
+        "nearby_fidelity": 0.9980557905239376
+      },
+      {
+        "spin": 0.5,
+        "momentum": -0.3,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 1.1599289370346787e-16,
+        "berry_connection_momentum": -0.29999999999999993,
+        "exact_metric_determinant": 0.24999999999999994,
+        "nearby_fidelity": 0.9980557905239373
+      },
+      {
+        "spin": 0.5,
+        "momentum": 0.0,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 2.7755592018958907e-16,
+        "berry_connection_momentum": -4.522843460849784e-18,
+        "exact_metric_determinant": 0.2500000000000001,
+        "nearby_fidelity": 0.9975778259327458
+      },
+      {
+        "spin": 0.5,
+        "momentum": 0.0,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 8.58779566693147e-18,
+        "berry_connection_momentum": -1.2149156471380492e-17,
+        "exact_metric_determinant": 0.25,
+        "nearby_fidelity": 0.9975778259327454
+      },
+      {
+        "spin": 0.5,
+        "momentum": 0.35,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 4.744423902846005e-16,
+        "berry_connection_momentum": 0.3500000000000001,
+        "exact_metric_determinant": 0.25000000000000006,
+        "nearby_fidelity": 0.9981966639020201
+      },
+      {
+        "spin": 0.5,
+        "momentum": 0.35,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 2.387984283299555e-16,
+        "berry_connection_momentum": 0.35,
+        "exact_metric_determinant": 0.25,
+        "nearby_fidelity": 0.9981966639020199
+      },
+      {
+        "spin": 2.0,
+        "momentum": -1.2,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 2.2246917733806933e-16,
+        "berry_connection_momentum": -1.2000000000000004,
+        "exact_metric_determinant": 0.2500000000000001,
+        "nearby_fidelity": 0.9922458124168969
+      },
+      {
+        "spin": 2.0,
+        "momentum": -1.2,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 2.247882054522334e-16,
+        "berry_connection_momentum": -1.2000000000000004,
+        "exact_metric_determinant": 0.2500000000000001,
+        "nearby_fidelity": 0.9922458124168971
+      },
+      {
+        "spin": 2.0,
+        "momentum": 0.0,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 1.0695524967885813e-17,
+        "berry_connection_momentum": -7.82577822701521e-18,
+        "exact_metric_determinant": 0.25,
+        "nearby_fidelity": 0.9903464484857993
+      },
+      {
+        "spin": 2.0,
+        "momentum": 0.0,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 1.955179118246943e-17,
+        "berry_connection_momentum": -8.971335275831213e-18,
+        "exact_metric_determinant": 0.25,
+        "nearby_fidelity": 0.9903464484857993
+      },
+      {
+        "spin": 2.0,
+        "momentum": 1.4,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 5.82532657384053e-17,
+        "berry_connection_momentum": 1.4,
+        "exact_metric_determinant": 0.24999999999999994,
+        "nearby_fidelity": 0.9928061442872005
+      },
+      {
+        "spin": 2.0,
+        "momentum": 1.4,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 1.0413214677988611e-16,
+        "berry_connection_momentum": 1.3999999999999995,
+        "exact_metric_determinant": 0.24999999999999994,
+        "nearby_fidelity": 0.9928061442872005
+      },
+      {
+        "spin": 5.0,
+        "momentum": -3.0,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 7.791875153574023e-16,
+        "berry_connection_momentum": -3.0000000000000018,
+        "exact_metric_determinant": 0.25000000000000017,
+        "nearby_fidelity": 0.9807271241229129
+      },
+      {
+        "spin": 5.0,
+        "momentum": -3.0,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 1.1854143785888841e-15,
+        "berry_connection_momentum": -3.0000000000000013,
+        "exact_metric_determinant": 0.2500000000000004,
+        "nearby_fidelity": 0.9807271241229129
+      },
+      {
+        "spin": 5.0,
+        "momentum": 0.0,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 9.024624914424706e-16,
+        "berry_connection_momentum": -4.700019360881699e-18,
+        "exact_metric_determinant": 0.25000000000000017,
+        "nearby_fidelity": 0.9760405729731324
+      },
+      {
+        "spin": 5.0,
+        "momentum": 0.0,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 4.711437747831297e-16,
+        "berry_connection_momentum": -3.062622836460424e-17,
+        "exact_metric_determinant": 0.25000000000000006,
+        "nearby_fidelity": 0.9760405729731322
+      },
+      {
+        "spin": 5.0,
+        "momentum": 3.5,
+        "angle": 0.2,
+        "quantum_geometric_tensor_error": 6.870127433194205e-16,
+        "berry_connection_momentum": 3.5000000000000004,
+        "exact_metric_determinant": 0.25,
+        "nearby_fidelity": 0.9821122784465449
+      },
+      {
+        "spin": 5.0,
+        "momentum": 3.5,
+        "angle": 1.1,
+        "quantum_geometric_tensor_error": 6.857907326528008e-16,
+        "berry_connection_momentum": 3.4999999999999996,
+        "exact_metric_determinant": 0.2500000000000001,
+        "nearby_fidelity": 0.9821122784465454
+      }
+    ],
+    "scope": "Exact finite spin vectors, derivatives and overlaps independently verify the coherent-state Berry form and Fubini-Study metric. No large-spin approximation is used."
+  },
+  "local_state_pullback": {
+    "cases": [
+      {
+        "length": 2,
+        "spin": 0.5,
+        "exact_berry_form_error": 2.1398101159127353e-14,
+        "berry_rank": 28,
+        "quantum_metric_rank": 49,
+        "distinguishable_gauge_rank": 21,
+        "scalar_P_gauge_fidelity": 0.9666479094873688,
+        "spatial_Phi_gauge_fidelity": 0.9559747721702212
+      },
+      {
+        "length": 2,
+        "spin": 2.0,
+        "exact_berry_form_error": 2.1398101159127353e-14,
+        "berry_rank": 28,
+        "quantum_metric_rank": 49,
+        "distinguishable_gauge_rank": 21,
+        "scalar_P_gauge_fidelity": 0.8731186485632566,
+        "spatial_Phi_gauge_fidelity": 0.8351908470639724
+      },
+      {
+        "length": 3,
+        "spin": 0.5,
+        "exact_berry_form_error": 3.3151912744293987e-14,
+        "berry_rank": 104,
+        "quantum_metric_rank": 182,
+        "distinguishable_gauge_rank": 78,
+        "scalar_P_gauge_fidelity": 0.9707497395796083,
+        "spatial_Phi_gauge_fidelity": 0.9242172803620905
+      },
+      {
+        "length": 3,
+        "spin": 2.0,
+        "exact_berry_form_error": 3.3151912744293987e-14,
+        "berry_rank": 104,
+        "quantum_metric_rank": 182,
+        "distinguishable_gauge_rank": 78,
+        "scalar_P_gauge_fidelity": 0.8880330532532317,
+        "spatial_Phi_gauge_fidelity": 0.7296193404292883
+      }
+    ],
+    "scope": "A finite-range product-spin state map reproduces the exact lattice Berry form. Full state overlaps and quantum-metric ranks show that three nominal gauge directions per nonzero momentum still change the physical ray."
+  },
+  "global_mode_encoding": {
+    "cases": [
+      {
+        "length": 2,
+        "spin": 0.5,
+        "encoded_spins": 14,
+        "exact_berry_form_error": 3.4646063178535724e-13,
+        "exact_quadratic_energy_error": 1.145921188067125e-12,
+        "gauge_parameter_to_spin_state_error": 3.5850408989037726e-14,
+        "reconstructed_metric_response_relative_error": 9.400270240031433e-16,
+        "finite_amplitude_energy_relative_error": 3.0144954917155076e-05,
+        "encoding": "Global singular-vector and normal-mode map; spatial locality is not established."
+      },
+      {
+        "length": 2,
+        "spin": 2.0,
+        "encoded_spins": 14,
+        "exact_berry_form_error": 3.4646063178535724e-13,
+        "exact_quadratic_energy_error": 1.145921188067125e-12,
+        "gauge_parameter_to_spin_state_error": 3.5850408989037726e-14,
+        "reconstructed_metric_response_relative_error": 9.400270240031433e-16,
+        "finite_amplitude_energy_relative_error": 7.513407369597047e-06,
+        "encoding": "Global singular-vector and normal-mode map; spatial locality is not established."
+      },
+      {
+        "length": 3,
+        "spin": 0.5,
+        "encoded_spins": 52,
+        "exact_berry_form_error": 1.2986025016055e-12,
+        "exact_quadratic_energy_error": 2.6534959482531553e-12,
+        "gauge_parameter_to_spin_state_error": 1.1686200125779637e-13,
+        "reconstructed_metric_response_relative_error": 3.896031321831781e-15,
+        "finite_amplitude_energy_relative_error": 3.8009148648487923e-06,
+        "encoding": "Global singular-vector and normal-mode map; spatial locality is not established."
+      },
+      {
+        "length": 3,
+        "spin": 2.0,
+        "encoded_spins": 52,
+        "exact_berry_form_error": 1.2986025016055e-12,
+        "exact_quadratic_energy_error": 2.6534959482531553e-12,
+        "gauge_parameter_to_spin_state_error": 1.1686200125779637e-13,
+        "reconstructed_metric_response_relative_error": 3.896031321831781e-15,
+        "finite_amplitude_energy_relative_error": 9.282214725736537e-07,
+        "encoding": "Global singular-vector and normal-mode map; spatial locality is not established."
+      }
+    ],
+    "scope": "A global encoding into finitely many genuine spins reproduces the same Berry form, gauge-ray identification and quadratic energy. Its Hamiltonian frequencies and nonlocal parameter map are explicitly supplied, so this is an existence benchmark, not emergent gravity from local spin dynamics."
+  },
+  "finite_spin_mode_response": {
+    "cases": [
+      {
+        "spin": 0.5,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 854.7008547008544,
+        "expected_metric_response": 854.7008547008548,
+        "relative_error": 5.551115123125783e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 17.148876748572956,
+        "expected_metric_response": 17.148876748572963,
+        "relative_error": 4.440892098500626e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 1.426187657772009,
+        "expected_metric_response": 1.4261876577720096,
+        "relative_error": 4.440892098500626e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 8.547008547008543,
+        "expected_metric_response": 8.547008547008547,
+        "relative_error": 4.440892098500626e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 5.742411812961441,
+        "expected_metric_response": 5.742411812961443,
+        "relative_error": 3.3306690738754696e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 1.223990208078335,
+        "expected_metric_response": 1.2239902080783354,
+        "relative_error": 3.3306690738754696e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.7692307692307687,
+        "expected_metric_response": 0.7692307692307692,
+        "relative_error": 5.551115123125783e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.7368421052631573,
+        "expected_metric_response": 0.7368421052631577,
+        "relative_error": 5.551115123125783e-16
+      },
+      {
+        "spin": 0.5,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.49999999999999967,
+        "expected_metric_response": 0.5,
+        "relative_error": 6.661338147750939e-16
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 854.7008547008558,
+        "expected_metric_response": 854.7008547008548,
+        "relative_error": 1.1102230246251565e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 17.148876748572935,
+        "expected_metric_response": 17.148876748572963,
+        "relative_error": 1.6653345369377348e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 1.4261876577720072,
+        "expected_metric_response": 1.4261876577720096,
+        "relative_error": 1.6653345369377348e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 8.547008547008554,
+        "expected_metric_response": 8.547008547008547,
+        "relative_error": 8.881784197001252e-16
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 5.742411812961441,
+        "expected_metric_response": 5.742411812961443,
+        "relative_error": 3.3306690738754696e-16
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 1.2239902080783327,
+        "expected_metric_response": 1.2239902080783354,
+        "relative_error": 2.220446049250313e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.76923076923077,
+        "expected_metric_response": 0.7692307692307692,
+        "relative_error": 1.1102230246251565e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.7368421052631585,
+        "expected_metric_response": 0.7368421052631577,
+        "relative_error": 1.1102230246251565e-15
+      },
+      {
+        "spin": 2.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.49999999999999983,
+        "expected_metric_response": 0.5,
+        "relative_error": 3.3306690738754696e-16
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 854.700854700855,
+        "expected_metric_response": 854.7008547008548,
+        "relative_error": 2.220446049250313e-16
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 17.148876748572917,
+        "expected_metric_response": 17.148876748572963,
+        "relative_error": 2.6645352591003757e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.03,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.028618176042508367,
+        "exact_spectral_response": 1.4261876577720058,
+        "expected_metric_response": 1.4261876577720096,
+        "relative_error": 2.6645352591003757e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 8.547008547008545,
+        "expected_metric_response": 8.547008547008547,
+        "relative_error": 2.220446049250313e-16
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 5.742411812961455,
+        "expected_metric_response": 5.742411812961443,
+        "relative_error": 2.220446049250313e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 0.3,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.2861817604250837,
+        "exact_spectral_response": 1.2239902080783425,
+        "expected_metric_response": 1.2239902080783354,
+        "relative_error": 5.773159728050814e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.0,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.7692307692307699,
+        "expected_metric_response": 0.7692307692307692,
+        "relative_error": 1.1102230246251565e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.2,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.7368421052631586,
+        "expected_metric_response": 0.7368421052631577,
+        "relative_error": 1.1102230246251565e-15
+      },
+      {
+        "spin": 5.0,
+        "wave_number": 1.0,
+        "euclidean_frequency": 0.7,
+        "prescribed_spin_gap": 0.9539392014169457,
+        "exact_spectral_response": 0.500000000000001,
+        "expected_metric_response": 0.5,
+        "relative_error": 1.9984014443252818e-15
+      }
+    ],
+    "scope": "Exact finite-spin spectral sums reproduce a massless-shaped response when each spin is assigned the desired momentum-dependent gap and a singularly normalized mode observable. The dispersion is input; there is no spatially local microscopic derivation."
+  },
+  "source_sha256": {
+    "SPIN_STATE_GAUGE_GEOMETRY.md": "daee053da9e4b357478c4c3d288dc015485175a93d93409c7e6200dd56067f47",
+    "scripts/spin_state_gauge_geometry_audit.py": "b2e84498a9deb67cad4ece2b37213e6aecc89696648e49429712941d04d45e1a",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "scripts/prepotential_lattice_bridge_audit.py": "0664b96afffad4028cf3699d40be0db514d2c316e70275e916d20da8e0e281c0",
+    "scripts/geometric_spectral_induction_audit.py": "55912200e1fffd1d76c661f12bbeef2288d95dbc1dcb3b7336723bfec40d1d26",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "CONVEX_MATTER_POLE_BOUND.md": "33cfebd3adbaa88f83f7a424366135376a0a872cfe41adfc9fecb6d4a81e4526",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc"
+  },
+  "scope": "Finite-spin product coherent states can pull back the exact prepotential Berry form while failing its gauge-ray identification. Exact polynomial elimination supports a conditional obstruction to a fixed-depth local state preparation with exact linearized gauge rays. A global finite-spin encoding reproduces the Berry form, gauge identification, quadratic energy and prescribed positive mode response. Its spatially nonlocal encoding and inserted spectrum do not derive a local spin phase, nonlinear Einstein gravity or TOE. No Lean theorem."
+}

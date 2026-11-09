@@ -1,0 +1,217 @@
+{
+  "classical": {
+    "continuum_constraint_rate": "0",
+    "four_site_initial_constraint": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "four_site_constraint_derivative": [
+      "1/4",
+      "0",
+      "-1/4",
+      "0"
+    ],
+    "smooth_grid_samples": [
+      {
+        "sites": 16,
+        "spacing": 0.39269908169872414,
+        "rms_initial_constraint_rate": 0.1383777549894528
+      },
+      {
+        "sites": 32,
+        "spacing": 0.19634954084936207,
+        "rms_initial_constraint_rate": 0.04068495799878231
+      },
+      {
+        "sites": 64,
+        "spacing": 0.09817477042468103,
+        "rms_initial_constraint_rate": 0.010596586807235941
+      },
+      {
+        "sites": 128,
+        "spacing": 0.04908738521234052,
+        "rms_initial_constraint_rate": 0.0026764893436516672
+      },
+      {
+        "sites": 256,
+        "spacing": 0.02454369260617026,
+        "rms_initial_constraint_rate": 0.0006708433525110778
+      }
+    ],
+    "scope": "Continuum identity along supplied smooth solutions; graph inconsistency is exact at finite spacing."
+  },
+  "finite_quantum": [
+    {
+      "capacity": 2,
+      "dimension": 28,
+      "physical_dimension": 10,
+      "correction": "second_order",
+      "functional_order": 2,
+      "source_mean_identity_error": 3.538647663416085e-17,
+      "local_constraint_identity_error": 4.482641026739483e-17,
+      "constraint_on_entire_physical_sector": 3.170255184458672e-17,
+      "symmetrized_inverse_constraint_error": 0.0008359568028200494,
+      "translation_average_error": 1.9313168634844396e-16,
+      "minimum_physical_energy": 0.4652030192253251,
+      "physical_preparation_probability": 0.7626641651031895,
+      "final_constraint_norm": 2.2673622247586723e-17,
+      "norm_error": 3.3306690738754696e-16,
+      "time_step_state_difference": 7.181259023738219e-07,
+      "full_vs_restricted_evolution_error": 2.5672881827321503e-16,
+      "clock_rate": 0.06038874666464386,
+      "potential_energy": 0.030808477364439483,
+      "clock_rate_defect": 0.029580269300204378,
+      "gradient_energy": 0.05862054273891116
+    },
+    {
+      "capacity": 3,
+      "dimension": 84,
+      "physical_dimension": 22,
+      "correction": "second_order",
+      "functional_order": 2,
+      "source_mean_identity_error": 1.1447560736547998e-16,
+      "local_constraint_identity_error": 3.632730222130792e-16,
+      "constraint_on_entire_physical_sector": 1.7042161400588133e-16,
+      "symmetrized_inverse_constraint_error": 0.0015931887807219016,
+      "translation_average_error": 6.784363911903134e-16,
+      "minimum_physical_energy": 0.4504319866611719,
+      "physical_preparation_probability": 0.7461347886887159,
+      "final_constraint_norm": 5.3477921334887184e-17,
+      "norm_error": 2.220446049250313e-15,
+      "time_step_state_difference": 7.743380901614672e-07,
+      "full_vs_restricted_evolution_error": 2.1125856170274854e-16,
+      "clock_rate": 0.0481083204472792,
+      "potential_energy": 0.03686767532269722,
+      "clock_rate_defect": 0.011240645124581984,
+      "gradient_energy": 0.06637803634494498
+    },
+    {
+      "capacity": 4,
+      "dimension": 210,
+      "physical_dimension": 48,
+      "correction": "second_order",
+      "functional_order": 2,
+      "source_mean_identity_error": 1.212604720560677e-16,
+      "local_constraint_identity_error": 1.4113785485077607e-15,
+      "constraint_on_entire_physical_sector": 5.270864897840374e-16,
+      "symmetrized_inverse_constraint_error": 0.002722737598976536,
+      "translation_average_error": 1.3169217786280293e-15,
+      "minimum_physical_energy": 0.43753466237401545,
+      "physical_preparation_probability": 0.7424815994934325,
+      "final_constraint_norm": 9.895163206865639e-17,
+      "norm_error": 1.3322676295501878e-15,
+      "time_step_state_difference": 8.294924964696416e-07,
+      "full_vs_restricted_evolution_error": 2.4495388892239294e-16,
+      "clock_rate": 0.04398455148355582,
+      "potential_energy": 0.039504419768983896,
+      "clock_rate_defect": 0.004480131714571921,
+      "gradient_energy": 0.06960170840512356
+    },
+    {
+      "capacity": 5,
+      "dimension": 462,
+      "physical_dimension": 88,
+      "correction": "second_order",
+      "functional_order": 2,
+      "source_mean_identity_error": 2.1956922099824444e-16,
+      "local_constraint_identity_error": 4.566535720594293e-15,
+      "constraint_on_entire_physical_sector": 1.513853619977905e-15,
+      "symmetrized_inverse_constraint_error": 0.003756090189184953,
+      "translation_average_error": 2.6484951857311372e-15,
+      "minimum_physical_energy": 0.4263312042706206,
+      "physical_preparation_probability": 0.7418385771630955,
+      "final_constraint_norm": 1.8192660607620127e-16,
+      "norm_error": 1.1102230246251565e-15,
+      "time_step_state_difference": 8.697746855919723e-07,
+      "full_vs_restricted_evolution_error": 3.545942218391403e-16,
+      "clock_rate": 0.04251727532529014,
+      "potential_energy": 0.040625847059383664,
+      "clock_rate_defect": 0.001891428265906478,
+      "gradient_energy": 0.07093782619477822
+    },
+    {
+      "capacity": 6,
+      "dimension": 924,
+      "physical_dimension": 158,
+      "correction": "second_order",
+      "functional_order": 2,
+      "source_mean_identity_error": 4.860233763582656e-16,
+      "local_constraint_identity_error": 1.408327180946438e-14,
+      "constraint_on_entire_physical_sector": 4.35174568349488e-15,
+      "symmetrized_inverse_constraint_error": 0.005088505476376565,
+      "translation_average_error": 4.2351149231476475e-15,
+      "minimum_physical_energy": 0.4165008730608134,
+      "physical_preparation_probability": 0.7417456278877718,
+      "final_constraint_norm": 2.9916771815446697e-16,
+      "norm_error": 8.881784197001252e-16,
+      "time_step_state_difference": 9.047372115147935e-07,
+      "full_vs_restricted_evolution_error": 1.874526857371628e-16,
+      "clock_rate": 0.04195563100735032,
+      "potential_energy": 0.04112862211440134,
+      "clock_rate_defect": 0.0008270088929489827,
+      "gradient_energy": 0.07152610533999272
+    }
+  ],
+  "comparisons": [
+    {
+      "capacity": 4,
+      "dimension": 210,
+      "physical_dimension": 48,
+      "correction": "exact",
+      "functional_order": null,
+      "source_mean_identity_error": 2.2762377823766023e-16,
+      "local_constraint_identity_error": 1.7452368576229283e-15,
+      "constraint_on_entire_physical_sector": 6.681527132610161e-16,
+      "symmetrized_inverse_constraint_error": 0.005021422603920114,
+      "translation_average_error": 1.4819520687087747e-15,
+      "minimum_physical_energy": 0.4493985983414518,
+      "physical_preparation_probability": 0.7424815994934325,
+      "final_constraint_norm": 1.0376993917004369e-16,
+      "norm_error": 1.1102230246251565e-15,
+      "time_step_state_difference": 1.0138662490262303e-06,
+      "full_vs_restricted_evolution_error": 3.198949958694447e-16,
+      "clock_rate": 0.04314120340523321,
+      "potential_energy": 0.04100853907450452,
+      "clock_rate_defect": 0.002132664330728694,
+      "gradient_energy": 0.0715177926863476
+    },
+    {
+      "capacity": 4,
+      "dimension": 210,
+      "physical_dimension": 48,
+      "correction": "bare",
+      "functional_order": 2,
+      "source_mean_identity_error": 5.668987612111449e-17,
+      "local_constraint_identity_error": 6.984042091380626e-16,
+      "constraint_on_entire_physical_sector": 2.4704345643137084e-16,
+      "symmetrized_inverse_constraint_error": 0.0007021312248542492,
+      "translation_average_error": 1.2713325947918277e-15,
+      "minimum_physical_energy": 0.4313094247823449,
+      "physical_preparation_probability": 0.7424815994934325,
+      "final_constraint_norm": 5.823695599807296e-17,
+      "norm_error": 4.440892098500626e-16,
+      "time_step_state_difference": 5.602499832187605e-07,
+      "full_vs_restricted_evolution_error": 3.0759402489980007e-16,
+      "clock_rate": 0.04922058444839957,
+      "potential_energy": 0.03248228467578405,
+      "clock_rate_defect": 0.016738299772615525,
+      "gradient_energy": 0.059715571527456345
+    }
+  ],
+  "source_sha256": {
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/constraint_reduced_spin_audit.py": "59aeea2e1208135fe827cebe21681841fd29d1e90658f96692b569d0877051b1",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalArealConstraintPropagation.lean": "400a1eedf206255a5a4bbf13039ee5d6ee5ca58b4dbc45f4268c05a63b1d390b",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d"
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sympy": "1.14.0"
+  },
+  "scope": "Specified nonlocal Fourier reduction with one Q harmonic pair, one scalar harmonic pair, a scalar zero mode and a homogeneous geometry clock. The local symmetrized constraint is reconstructed; total charge zero is imposed and preserved. No microscopic selection, unreduced quantum Dirac algebra, spatial continuum limit, full 3D gravity or TOE is proved."
+}

@@ -1,0 +1,705 @@
+{
+  "finite_code_projection": {
+    "cases": [
+      {
+        "prime": 3,
+        "variance_parameter": 0.6,
+        "direct_code_projection_probability": 0.17303831504673256,
+        "shifted_projection_probability": 0.24015055131871982,
+        "logical_gaussian_ray_error": -5.329070518200751e-15,
+        "gauge_ray_fidelity": 1.0000000000000036
+      },
+      {
+        "prime": 3,
+        "variance_parameter": 1.4,
+        "direct_code_projection_probability": 0.33849103882166903,
+        "shifted_projection_probability": 0.30836529853466693,
+        "logical_gaussian_ray_error": 6.661338147750939e-16,
+        "gauge_ray_fidelity": 0.9999999999999987
+      },
+      {
+        "prime": 5,
+        "variance_parameter": 0.6,
+        "direct_code_projection_probability": 0.07162306052175983,
+        "shifted_projection_probability": 0.07640335588838693,
+        "logical_gaussian_ray_error": -9.769962616701378e-15,
+        "gauge_ray_fidelity": 0.9999999999999898
+      },
+      {
+        "prime": 5,
+        "variance_parameter": 1.4,
+        "direct_code_projection_probability": 0.1456077019895431,
+        "shifted_projection_probability": 0.13915803969565999,
+        "logical_gaussian_ray_error": -2.2648549702353193e-14,
+        "gauge_ray_fidelity": 0.9999999999999978
+      },
+      {
+        "prime": 7,
+        "variance_parameter": 0.6,
+        "direct_code_projection_probability": 0.03553105090646054,
+        "shifted_projection_probability": 0.035850093561705626,
+        "logical_gaussian_ray_error": -4.440892098500626e-15,
+        "gauge_ray_fidelity": 0.9999999999998026
+      },
+      {
+        "prime": 7,
+        "variance_parameter": 1.4,
+        "direct_code_projection_probability": 0.07873289509595624,
+        "shifted_projection_probability": 0.07730440070993483,
+        "logical_gaussian_ray_error": -1.199040866595169e-13,
+        "gauge_ray_fidelity": 0.9999999999999214
+      }
+    ],
+    "scope": "Direct full vectors in a six-qudit axis-momentum constraint benchmark. Projection exactly removes the nominal gauge dependence and leaves two discrete-Gaussian logical coordinates. This is not a computation of the full spatial tensor-code wavefunction."
+  },
+  "finite_logical_berry": {
+    "cases": [
+      {
+        "prime": 5,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.987478591097814,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 10.053096491487338
+      },
+      {
+        "prime": 5,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.7022323597613428,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 20.106192982974676
+      },
+      {
+        "prime": 5,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.6854644514841676,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 2.0106192982974678
+      },
+      {
+        "prime": 5,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9255530885025349,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 4.0212385965949355
+      },
+      {
+        "prime": 5,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.18709323087793578,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 0.40212385965949354
+      },
+      {
+        "prime": 5,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.3471793816876117,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 0.8042477193189871
+      },
+      {
+        "prime": 11,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999977945825497,
+        "canonical_error_upper_bound": 1.5514425505250555e-05,
+        "finite_window_saturation_bound": 28.559933214452666
+      },
+      {
+        "prime": 11,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9938855996044562,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 57.11986642890533
+      },
+      {
+        "prime": 11,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9357717153754956,
+        "canonical_error_upper_bound": 0.609457253771108,
+        "finite_window_saturation_bound": 5.711986642890533
+      },
+      {
+        "prime": 11,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9976024769979196,
+        "canonical_error_upper_bound": 0.04645017528524566,
+        "finite_window_saturation_bound": 11.423973285781067
+      },
+      {
+        "prime": 11,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.3806643271987024,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 1.1423973285781066
+      },
+      {
+        "prime": 11,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.6317034439629051,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 2.284794657156213
+      },
+      {
+        "prime": 23,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999999999999701,
+        "canonical_error_upper_bound": 1.6936412092193999e-13,
+        "finite_window_saturation_bound": 66.11003671032434
+      },
+      {
+        "prime": 23,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9999989679192882,
+        "canonical_error_upper_bound": 1.0320808001729093e-06,
+        "finite_window_saturation_bound": 132.22007342064867
+      },
+      {
+        "prime": 23,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9979051273755097,
+        "canonical_error_upper_bound": 0.020140760969989784,
+        "finite_window_saturation_bound": 13.222007342064867
+      },
+      {
+        "prime": 23,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.999998197203244,
+        "canonical_error_upper_bound": 3.7094323953976194e-05,
+        "finite_window_saturation_bound": 26.444014684129733
+      },
+      {
+        "prime": 23,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.6490574567836482,
+        "canonical_error_upper_bound": 1.0,
+        "finite_window_saturation_bound": 2.6444014684129735
+      },
+      {
+        "prime": 23,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.8922311662203265,
+        "canonical_error_upper_bound": 0.7315242669064352,
+        "finite_window_saturation_bound": 5.288802936825947
+      },
+      {
+        "prime": 47,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999999999999999,
+        "canonical_error_upper_bound": 1.1470824902568072e-29,
+        "finite_window_saturation_bound": 141.43851180842557
+      },
+      {
+        "prime": 47,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9999999999999863,
+        "canonical_error_upper_bound": 1.373490225168817e-14,
+        "finite_window_saturation_bound": 282.87702361685115
+      },
+      {
+        "prime": 47,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999984188520619,
+        "canonical_error_upper_bound": 1.5227289053397513e-05,
+        "finite_window_saturation_bound": 28.287702361685113
+      },
+      {
+        "prime": 47,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9999999999992794,
+        "canonical_error_upper_bound": 1.5255019571523744e-11,
+        "finite_window_saturation_bound": 56.57540472337023
+      },
+      {
+        "prime": 47,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.897411332059347,
+        "canonical_error_upper_bound": 0.624001143792931,
+        "finite_window_saturation_bound": 5.657540472337023
+      },
+      {
+        "prime": 47,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9925882865046133,
+        "canonical_error_upper_bound": 0.04884807141127916,
+        "finite_window_saturation_bound": 11.315080944674046
+      },
+      {
+        "prime": 97,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999999999999998,
+        "canonical_error_upper_bound": 1.4304072875932984e-63,
+        "finite_window_saturation_bound": 298.4836896441601
+      },
+      {
+        "prime": 97,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 1.0,
+        "canonical_error_upper_bound": 2.4991655536450484e-31,
+        "finite_window_saturation_bound": 596.9673792883202
+      },
+      {
+        "prime": 97,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999999999996589,
+        "canonical_error_upper_bound": 3.28778411422991e-12,
+        "finite_window_saturation_bound": 59.69673792883202
+      },
+      {
+        "prime": 97,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 1.0,
+        "canonical_error_upper_bound": 5.0226021637294e-25,
+        "finite_window_saturation_bound": 119.39347585766404
+      },
+      {
+        "prime": 97,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9937282756573448,
+        "canonical_error_upper_bound": 0.03658736345514765,
+        "finite_window_saturation_bound": 11.939347585766404
+      },
+      {
+        "prime": 97,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9999801546515346,
+        "canonical_error_upper_bound": 0.00012758048210402635,
+        "finite_window_saturation_bound": 23.878695171532808
+      },
+      {
+        "prime": 193,
+        "wave_number": 1.0,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 1.0,
+        "canonical_error_upper_bound": 7.350303606077367e-129,
+        "finite_window_saturation_bound": 600.0604745177935
+      },
+      {
+        "prime": 193,
+        "wave_number": 1.0,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 1.0,
+        "canonical_error_upper_bound": 8.944336070432152e-64,
+        "finite_window_saturation_bound": 1200.120949035587
+      },
+      {
+        "prime": 193,
+        "wave_number": 0.2,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 1.0,
+        "canonical_error_upper_bound": 3.695738843365671e-25,
+        "finite_window_saturation_bound": 120.0120949035587
+      },
+      {
+        "prime": 193,
+        "wave_number": 0.2,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 1.0000000000000002,
+        "canonical_error_upper_bound": 4.530484112490686e-51,
+        "finite_window_saturation_bound": 240.0241898071174
+      },
+      {
+        "prime": 193,
+        "wave_number": 0.04,
+        "diagonal_pair": false,
+        "canonical_berry_coefficient": 0.9999787758750748,
+        "canonical_error_upper_bound": 0.00012021438705250273,
+        "finite_window_saturation_bound": 24.00241898071174
+      },
+      {
+        "prime": 193,
+        "wave_number": 0.04,
+        "diagonal_pair": true,
+        "canonical_berry_coefficient": 0.9999999998387242,
+        "canonical_error_upper_bound": 1.0235608215824956e-09,
+        "finite_window_saturation_bound": 48.00483796142348
+      }
+    ],
+    "scope": "Finite logical-mode Gaussian states have exact gauge identification but a cutoff-dependent Berry coefficient. The analytical alias and tail bounds recover coefficient one when the logical cutoff grows sufficiently; fixed-prime infrared saturation is a statement about this encoding, not all finite-spin phases."
+  },
+  "gaussian_reduction": {
+    "cases": [
+      {
+        "case": 0,
+        "momentum": [
+          -0.6867751381382872,
+          -0.3660973327956954,
+          -0.12924962099152862
+        ],
+        "projected_berry_error": 4.451992384956928e-16,
+        "projected_critical_metric_error": 5.466663900937545e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6018489128959101,
+        "reduced_precision_lower": 4.237325930653926
+      },
+      {
+        "case": 1,
+        "momentum": [
+          0.1825160201818685,
+          -0.8550693393369608,
+          -0.14645605124160013
+        ],
+        "projected_berry_error": 2.4331594455443254e-16,
+        "projected_critical_metric_error": 1.2382761249618159e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6592292908516065,
+        "reduced_precision_lower": 2.1950041360768986
+      },
+      {
+        "case": 2,
+        "momentum": [
+          0.014041070686245929,
+          0.151104111432327,
+          -0.056927070718498805
+        ],
+        "projected_berry_error": 1.0536974784203591e-18,
+        "projected_critical_metric_error": 1.0553160340709385e-18,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6382346410441867,
+        "reduced_precision_lower": 1.6242710751551086
+      },
+      {
+        "case": 3,
+        "momentum": [
+          -0.11171138422723684,
+          -0.08737905044195286,
+          -0.07863122689009952
+        ],
+        "projected_berry_error": 1.997027685940263e-18,
+        "projected_critical_metric_error": 1.6218360832578564e-18,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6046707964042284,
+        "reduced_precision_lower": 1.3178505498506037
+      },
+      {
+        "case": 4,
+        "momentum": [
+          -0.15096471257994717,
+          0.5942173860586417,
+          0.07619330620705814
+        ],
+        "projected_berry_error": 8.705497488575987e-17,
+        "projected_critical_metric_error": 1.1447078984744707e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6284191643745098,
+        "reduced_precision_lower": 3.3063214298614825
+      },
+      {
+        "case": 5,
+        "momentum": [
+          -0.20943268033145723,
+          -0.633167103881174,
+          0.5694220445842214
+        ],
+        "projected_berry_error": 3.0075500460755984e-16,
+        "projected_critical_metric_error": 2.944332209886148e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6114775925653806,
+        "reduced_precision_lower": 7.99698239805288
+      },
+      {
+        "case": 6,
+        "momentum": [
+          -0.026830243742654684,
+          -0.022603936340865344,
+          -0.19564913500814024
+        ],
+        "projected_berry_error": 2.705519237284097e-18,
+        "projected_critical_metric_error": 2.2450680870252553e-18,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6517492565402052,
+        "reduced_precision_lower": 1.6855963821825517
+      },
+      {
+        "case": 7,
+        "momentum": [
+          -0.09096429603691733,
+          -0.2423319190365506,
+          0.8039616542251867
+        ],
+        "projected_berry_error": 2.2331122631422067e-16,
+        "projected_critical_metric_error": 2.436821023333627e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6143063154594514,
+        "reduced_precision_lower": 0.9140003769567479
+      },
+      {
+        "case": 8,
+        "momentum": [
+          0.3541310660538333,
+          0.826193362284405,
+          -0.467524493170995
+        ],
+        "projected_berry_error": 4.242748577515429e-16,
+        "projected_critical_metric_error": 2.832251521607808e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6030553688861939,
+        "reduced_precision_lower": 1.3414117900599933
+      },
+      {
+        "case": 9,
+        "momentum": [
+          0.4987995116005991,
+          -0.8759824712757943,
+          -0.46113148252062186
+        ],
+        "projected_berry_error": 5.51587818819998e-16,
+        "projected_critical_metric_error": 4.0079245804287273e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6245713771963749,
+        "reduced_precision_lower": 1.2544499594814027
+      },
+      {
+        "case": 10,
+        "momentum": [
+          0.02382942347711939,
+          -0.14446127955417676,
+          -0.15251763811705676
+        ],
+        "projected_berry_error": 3.619156340675041e-18,
+        "projected_critical_metric_error": 1.7285715787887993e-18,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6003789722782419,
+        "reduced_precision_lower": 1.2928193577726297
+      },
+      {
+        "case": 11,
+        "momentum": [
+          -0.3679676692655468,
+          -0.2410386396894737,
+          0.050036145853128156
+        ],
+        "projected_berry_error": 5.584336562204038e-17,
+        "projected_critical_metric_error": 4.410371324593511e-17,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6707806801163287,
+        "reduced_precision_lower": 1.5778880412356973
+      },
+      {
+        "case": 12,
+        "momentum": [
+          -0.1614154081929029,
+          -0.05948044583003688,
+          -0.26395291776773144
+        ],
+        "projected_berry_error": 1.2072340094127699e-17,
+        "projected_critical_metric_error": 6.439832350070171e-18,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6771918559501875,
+        "reduced_precision_lower": 1.4672841287811647
+      },
+      {
+        "case": 13,
+        "momentum": [
+          0.6965575547920894,
+          -0.2752867621697202,
+          0.7925793674554565
+        ],
+        "projected_berry_error": 9.345101424371598e-16,
+        "projected_critical_metric_error": 5.94764812791851e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6129863988416683,
+        "reduced_precision_lower": 0.9730902561069272
+      },
+      {
+        "case": 14,
+        "momentum": [
+          0.35791635871308947,
+          -0.1410293673012653,
+          0.3889469731657644
+        ],
+        "projected_berry_error": 1.0688106915900324e-16,
+        "projected_critical_metric_error": 7.247013647274199e-17,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.91760651571661,
+        "reduced_precision_lower": 2.6710082006465234
+      },
+      {
+        "case": 15,
+        "momentum": [
+          -0.13009866659649053,
+          0.12087777828545582,
+          -0.9268462383979041
+        ],
+        "projected_berry_error": 3.047985207182162e-16,
+        "projected_critical_metric_error": 4.72747413542554e-16,
+        "projected_metric_rank": 4,
+        "input_precision_lower": 0.6015098052926358,
+        "reduced_precision_lower": 1.7525407600273837
+      }
+    ],
+    "scope": "The exact noncompact Gaussian rigging map removes the gauge directions, preserves the physical Berry form, and retains the input physical width. Matrix checks also verify the uniform-precision Schur bound. No finite-spin thermodynamic projection theorem is inferred."
+  },
+  "shared_vacuum": {
+    "cases": [
+      {
+        "wave_number": 0.025,
+        "shared_ground_precision": 0.03406925719346235,
+        "shared_equal_time_variance": 14.675987714106855,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.02384848003542364,
+            "equal_time_variance": 14.675987714106856,
+            "static_response": 1230.7692307692307,
+            "covariance_at_time_inverse_k": 5.653492342569933
+          },
+          {
+            "exponent": 3,
+            "frequency": 1.4905300022139775e-05,
+            "equal_time_variance": 14.675987714106856,
+            "static_response": 1969230.769230769,
+            "covariance_at_time_inverse_k": 14.667240322016044
+          }
+        ]
+      },
+      {
+        "wave_number": 0.05,
+        "shared_ground_precision": 0.0681385143869247,
+        "shared_equal_time_variance": 7.337993857053427,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.04769696007084728,
+            "equal_time_variance": 7.337993857053428,
+            "static_response": 307.6923076923077,
+            "covariance_at_time_inverse_k": 2.8267461712849666
+          },
+          {
+            "exponent": 3,
+            "frequency": 0.0001192424001771182,
+            "equal_time_variance": 7.337993857053428,
+            "static_response": 123076.92307692306,
+            "covariance_at_time_inverse_k": 7.320514707894802
+          }
+        ]
+      },
+      {
+        "wave_number": 0.1,
+        "shared_ground_precision": 0.1362770287738494,
+        "shared_equal_time_variance": 3.6689969285267137,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.09539392014169457,
+            "equal_time_variance": 3.668996928526714,
+            "static_response": 76.92307692307692,
+            "covariance_at_time_inverse_k": 1.4133730856424833
+          },
+          {
+            "exponent": 3,
+            "frequency": 0.0009539392014169456,
+            "equal_time_variance": 3.668996928526714,
+            "static_response": 7692.3076923076915,
+            "covariance_at_time_inverse_k": 3.634163338317174
+          }
+        ]
+      },
+      {
+        "wave_number": 0.2,
+        "shared_ground_precision": 0.2725540575476988,
+        "shared_equal_time_variance": 1.8344984642633568,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.19078784028338913,
+            "equal_time_variance": 1.834498464263357,
+            "static_response": 19.23076923076923,
+            "covariance_at_time_inverse_k": 0.7066865428212417
+          },
+          {
+            "exponent": 3,
+            "frequency": 0.007631513611335565,
+            "equal_time_variance": 1.834498464263357,
+            "static_response": 480.7692307692307,
+            "covariance_at_time_inverse_k": 1.7658171532923386
+          }
+        ]
+      },
+      {
+        "wave_number": 0.4,
+        "shared_ground_precision": 0.5451081150953976,
+        "shared_equal_time_variance": 0.9172492321316784,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.38157568056677826,
+            "equal_time_variance": 0.9172492321316785,
+            "static_response": 4.8076923076923075,
+            "covariance_at_time_inverse_k": 0.35334327141062083
+          },
+          {
+            "exponent": 3,
+            "frequency": 0.06105210889068452,
+            "equal_time_variance": 0.9172492321316785,
+            "static_response": 30.04807692307692,
+            "covariance_at_time_inverse_k": 0.7874099018982723
+          }
+        ]
+      },
+      {
+        "wave_number": 0.8,
+        "shared_ground_precision": 1.0902162301907952,
+        "shared_equal_time_variance": 0.4586246160658392,
+        "two_dynamics": [
+          {
+            "exponent": 1,
+            "frequency": 0.7631513611335565,
+            "equal_time_variance": 0.45862461606583926,
+            "static_response": 1.2019230769230769,
+            "covariance_at_time_inverse_k": 0.17667163570531041
+          },
+          {
+            "exponent": 3,
+            "frequency": 0.48841687112547616,
+            "equal_time_variance": 0.45862461606583926,
+            "static_response": 1.8780048076923075,
+            "covariance_at_time_inverse_k": 0.2490642652720691
+          }
+        ]
+      }
+    ],
+    "scope": "The positive Gaussian tensor Hamiltonians with linear and cubic dispersion have exactly the same vacuum and displaced-state geometry at each nonzero mode. Their full time-dependent and zero-frequency responses differ. This does not prove the Gaussian phase of the compact five-state Hamiltonian."
+  },
+  "source_sha256": {
+    "PROJECTED_TENSOR_VACUUM.md": "078887d7c82b0e55dec3a9d866566b19490b2176a1526ae0d948c8f3647f572a",
+    "scripts/projected_tensor_vacuum_audit.py": "576071ccc4ba6efa209909fdd8f599a541da78080d7ebb64fedc822c99ac373b",
+    "SPIN_STATE_GAUGE_GEOMETRY.md": "daee053da9e4b357478c4c3d288dc015485175a93d93409c7e6200dd56067f47",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "scripts/prepotential_lattice_bridge_audit.py": "0664b96afffad4028cf3699d40be0db514d2c316e70275e916d20da8e0e281c0",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc"
+  },
+  "scope": "Exact projection in a six-qudit tensor constraint benchmark removes gauge-ray distinguishability. The finite logical Gaussian Berry coefficient has explicit cutoff errors and saturates in the infrared at fixed prime. A noncompact Gaussian rigging map repairs the prepotential state quotient but does not create a critical width from uniformly bounded Gaussian precision. The linear and cubic tensor Gaussian Hamiltonians have the same vacuum and different time response. No local finite-spin gravitational phase, nonlinear Einstein gravity, or TOE is proved. No Lean theorem."
+}

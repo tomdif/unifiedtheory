@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: verified the crude Haar coefficient obstruction and actual finite-cutoff factorization budget; all full obligations still open",
+  "scope": "Exact mean-one likelihood normalization improves the actual raw Wilson one-link response coefficient to (exp(4*beta*d)-1)^2/(4*exp(4*beta*d)), d=norm(q-1). The common partition ratio is retained to obtain an unnormalized range ratio exp(4*beta*d), and Bhatia-Davis plus Cauchy-Schwarz gives the result. It is propagated through the actual stationary variance loss, the same full-Haar family and the existing conditional slab contraction. The improved Haar cap is B(beta)=(exp(8*beta)-1)^2/(4*exp(8*beta)). Independently, conditional energy vanishes outside a source support, and an actual positive-variance four-link physical plaquette forces every valid nonnegative ground-law factorization constant to obey A>=1/4. On the diagnostic path beta_m=log(m+2)/8, k=m+1, B=k^2/(4*(k+1)), between k/8 and k/4. A cap r<1 on the improved summed proof coefficient requires (1-r)*N_links<=32*r. Therefore this improved summed bound still admits no uniform strict cap along unbounded spatial link counts, including n_m=m+2. The obstruction concerns a proved upper-bound coefficient, not the actual transfer spectral ratio. It does not disprove a mass gap. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood",
+    "UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse",
+    "UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget",
+    "UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget"
+  ],
+  "new_declarations": 40,
+  "retained_declarations": 7521,
+  "cumulative_declarations": 7561,
+  "proof": {
+    "normalization": "For a mean-one likelihood r with m<=r<=R*m, variance(r)<=(R*m-1)*(1-m)<=(R-1)^2/(4*R). The scalar step follows from a nonnegative square; the response is bounded by variance(r)*variance(f).",
+    "actual_range": "Row weights at u and w differ by factors between exp(-2*beta*d) and exp(2*beta*d). Their likelihood uses one common positive partition ratio. Thus R=exp(4*beta*d), not the larger ratio obtained by separately bounding the two normalized rows.",
+    "actual_response": "For every finite cutoff, beta>=0 and continuous source, one-link response of P f is at most the improved coefficient times the actual stationary variance lost under P. The full-Haar coefficient is B(beta); summing links costs N_links*B(beta).",
+    "conditional_contraction": "The same Haar lower comparison and actual ground-law factorization premise give Var(P^k f)<=q*Var(f), q=A*N_links*B/(k+A*N_links*B), on continuous physical sources. Ground-law factorization itself remains unproved.",
+    "local_support": "A conditional refresh outside the coordinate support leaves the source unchanged, hence has zero energy. For a source supported on T, totalConditionalVariance<=(card T)*Var. A spatial plaquette has at most four supporting links and strictly positive actual variance for n>1.",
+    "stronger_factorization_constraint": "Applying any proposed physical ground-law factorization to that actual plaquette gives 1<=4*A, independent of volume and coupling.",
+    "diagnostic_improvement": "At beta_m=log(m+2)/8 and k=m+1, the old cap k^2 is replaced by k^2/(4*(k+1)). The improvement in combined upper cost is exactly a factor 4*exp(8*beta). If A*N_links<=C, q<=C/(4+C); existence of this budget is not claimed.",
+    "remaining_volume_obstruction": "Since B>=k/8 and A>=1/4, any cap q<=r<1 forces (1-r)*N_links<=32*r. Unbounded link counts forbid such a common r. The explicit period sequence n_m=m+2 has N_links=3*(m+2)^3 and satisfies the unboundedness premise.",
+    "boundary": "All no-cap conclusions concern only the improved explicit summed upper-bound coefficient. The actual ratio may be much smaller."
+  },
+  "decision": "Retain the normalization gain, but stop trying to remove the volume loss by optimizing the lower factorization constant. The next useful upper estimate must retain collective physical correlations, or use a different response family with a proved compatible lower bound.",
+  "not_inferred": [
+    "The actual response upper estimate is sharper, but still pays a separate variance charge for every link. Collective physical correlations or another response family with matching lower control are still needed.",
+    "The new A>=1/4 lower constraint rules out canceling the link-count factor by an A of order 1/N_links. It does not prove any upper factorization bound for the actual ground law.",
+    "The bounded-budget sufficient cap C/(4+C) assumes A*N_links<=C. Such a common C cannot hold at unbounded spatial volume under the proved actual factorization constraint.",
+    "No lower bound on the actual transfer spectral ratio, vanishing actual gap, or nonexistence of Yang-Mills follows from failure of this proof coefficient.",
+    "The logarithmic path is diagnostic, not an independently established physical coupling trajectory. No obstruction for every logarithmic slope or for genuinely collective upper bounds is asserted.",
+    "The distant mixed-ground sum, a uniform canonical physical Gram estimate compatible with the Haar family, and actual ground-law factorization remain open.",
+    "No surviving continuum observable, nontrivial continuum Yang-Mills measure with full axioms, or uniform positive physical mass gap has been constructed. All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_normalized_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

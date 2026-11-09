@@ -1,0 +1,419 @@
+{
+  "finite_construction": {
+    "capacity": 4,
+    "dimension": 35,
+    "full_six_flavor_dimension": 210,
+    "polynomial_matrix_residual": 3.125606839015699e-15,
+    "minimum_H_eigenvalue": 0.3655637199578762,
+    "minimum_C_eigenvalue": 0.6668734819579026,
+    "clock_force_trace_abs": 3.469446951953614e-18,
+    "clock_force_eigenvalue_range": [
+      -0.2548305016656641,
+      0.22674116489863522
+    ],
+    "six_flavor_intertwining_residual": 0.0,
+    "clock_force_is_not_globally_nonnegative": true
+  },
+  "homogeneous": {
+    "end_time": 0.2,
+    "hbar": 0.05,
+    "initial_centers": [
+      0.0,
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.1
+    ],
+    "time_step_convergence": {
+      "steps": [
+        20,
+        40,
+        80
+      ],
+      "raw_state_error_20_to_40": 3.19807609705679e-06,
+      "raw_state_error_40_to_80": 7.99524252730601e-07
+    },
+    "capacity_comparison": [
+      {
+        "capacity": 4,
+        "dimension": 35,
+        "correction": "bare",
+        "initial_preparation_tail": 0.018575936222140668,
+        "raw_state_distance_to_R32_exact_80_steps": 0.30271719802176084,
+        "norm": 0.9999999999999994,
+        "clock": 1.0118550968516276,
+        "clock_rate": 0.030927702206313933,
+        "potential_energy": 0.02187312097114699,
+        "clock_rate_defect": 0.009054581235166944,
+        "energy": 0.5571409056591671,
+        "longitudinal": -0.05707586211842042,
+        "scalar": 0.2266653369343967,
+        "top_two_probability": 0.2078878539706929
+      },
+      {
+        "capacity": 4,
+        "dimension": 35,
+        "correction": "second_order",
+        "initial_preparation_tail": 0.018575936222140668,
+        "raw_state_distance_to_R32_exact_80_steps": 0.24053958590925298,
+        "norm": 1.0000000000000002,
+        "clock": 1.0173323610317857,
+        "clock_rate": 0.04788116134886341,
+        "potential_energy": 0.03237249393830528,
+        "clock_rate_defect": 0.015508667410558126,
+        "energy": 0.582574843042113,
+        "longitudinal": -0.0740264582117694,
+        "scalar": 0.2728741619136306,
+        "top_two_probability": 0.2310548932662715
+      },
+      {
+        "capacity": 4,
+        "dimension": 35,
+        "correction": "exact",
+        "initial_preparation_tail": 0.018575936222140668,
+        "raw_state_distance_to_R32_exact_80_steps": 0.22256365935703962,
+        "norm": 0.9999999999999999,
+        "clock": 1.019391162495434,
+        "clock_rate": 0.05434798995599746,
+        "potential_energy": 0.03677763387210043,
+        "clock_rate_defect": 0.01757035608389703,
+        "energy": 0.592158662179893,
+        "longitudinal": -0.07874023084127302,
+        "scalar": 0.28708244889207907,
+        "top_two_probability": 0.23843512248285714
+      },
+      {
+        "capacity": 8,
+        "dimension": 165,
+        "correction": "bare",
+        "initial_preparation_tail": 2.7735819246862702e-05,
+        "raw_state_distance_to_R32_exact_80_steps": 0.15267354750591602,
+        "norm": 0.9999999999999992,
+        "clock": 1.0153088703302462,
+        "clock_rate": 0.03627125222397726,
+        "potential_energy": 0.03219793013782461,
+        "clock_rate_defect": 0.004073322086152645,
+        "energy": 0.5780582993855059,
+        "longitudinal": -0.07022694770404928,
+        "scalar": 0.2736780529736708,
+        "top_two_probability": 0.0014130217664496917
+      },
+      {
+        "capacity": 8,
+        "dimension": 165,
+        "correction": "second_order",
+        "initial_preparation_tail": 2.7735819246862702e-05,
+        "raw_state_distance_to_R32_exact_80_steps": 0.04674513770283871,
+        "norm": 0.9999999999999992,
+        "clock": 1.0195384650366832,
+        "clock_rate": 0.045296540149832525,
+        "potential_energy": 0.04272456911127862,
+        "clock_rate_defect": 0.0025719710385539024,
+        "energy": 0.5990481438381167,
+        "longitudinal": -0.08129040929348344,
+        "scalar": 0.3107306211937526,
+        "top_two_probability": 0.00248477735849534
+      },
+      {
+        "capacity": 8,
+        "dimension": 165,
+        "correction": "exact",
+        "initial_preparation_tail": 2.7735819246862702e-05,
+        "raw_state_distance_to_R32_exact_80_steps": 0.020652101316823514,
+        "norm": 1.0000000000000002,
+        "clock": 1.0200252760825772,
+        "clock_rate": 0.04529587685228928,
+        "potential_energy": 0.04478328794366531,
+        "clock_rate_defect": 0.000512588908623969,
+        "energy": 0.6018556542098592,
+        "longitudinal": -0.08221565250831844,
+        "scalar": 0.3160612777637542,
+        "top_two_probability": 0.003627341957642274
+      },
+      {
+        "capacity": 16,
+        "dimension": 969,
+        "correction": "bare",
+        "initial_preparation_tail": 6.739758583246616e-13,
+        "raw_state_distance_to_R32_exact_80_steps": 0.07748679321952999,
+        "norm": 0.9999999999999999,
+        "clock": 1.0174967959110028,
+        "clock_rate": 0.039855753251870255,
+        "potential_energy": 0.038370296912866905,
+        "clock_rate_defect": 0.0014854563390033493,
+        "energy": 0.5898747754195605,
+        "longitudinal": -0.0766138121894358,
+        "scalar": 0.2957026163593517,
+        "top_two_probability": 2.625220960991942e-10
+      },
+      {
+        "capacity": 16,
+        "dimension": 969,
+        "correction": "second_order",
+        "initial_preparation_tail": 6.739758583246616e-13,
+        "raw_state_distance_to_R32_exact_80_steps": 0.005305842986210196,
+        "norm": 0.9999999999999994,
+        "clock": 1.0199524226561854,
+        "clock_rate": 0.044920091125995175,
+        "potential_energy": 0.044678482635841225,
+        "clock_rate_defect": 0.00024160849015394947,
+        "energy": 0.6015934160533843,
+        "longitudinal": -0.08214096309909968,
+        "scalar": 0.3158186719738092,
+        "top_two_probability": 3.2926366618940467e-09
+      },
+      {
+        "capacity": 16,
+        "dimension": 969,
+        "correction": "exact",
+        "initial_preparation_tail": 6.739758583246616e-13,
+        "raw_state_distance_to_R32_exact_80_steps": 7.463523362583431e-05,
+        "norm": 1.0,
+        "clock": 1.0200126218435308,
+        "clock_rate": 0.04493033429937321,
+        "potential_energy": 0.04493034095228083,
+        "clock_rate_defect": 6.652907620641191e-09,
+        "energy": 0.6019164605700652,
+        "longitudinal": -0.08224062792373782,
+        "scalar": 0.31643536399755884,
+        "top_two_probability": 4.2098962703155064e-08
+      },
+      {
+        "capacity": 32,
+        "dimension": 6545,
+        "correction": "bare",
+        "initial_preparation_tail": 1.7396160312343125e-32,
+        "raw_state_distance_to_R32_exact_80_steps": 0.03900175512339344,
+        "norm": 0.9999999999999996,
+        "clock": 1.0187071977875242,
+        "clock_rate": 0.042146104878299506,
+        "potential_energy": 0.04160800304072317,
+        "clock_rate_defect": 0.0005381018375763338,
+        "energy": 0.5958677823929808,
+        "longitudinal": -0.07952349602739747,
+        "scalar": 0.30621719766415595,
+        "top_two_probability": 3.3784359075747735e-26
+      },
+      {
+        "capacity": 32,
+        "dimension": 6545,
+        "correction": "second_order",
+        "initial_preparation_tail": 1.7396160312343125e-32,
+        "raw_state_distance_to_R32_exact_80_steps": 0.0006102210957589125,
+        "norm": 0.9999999999999989,
+        "clock": 1.0200053593040346,
+        "clock_rate": 0.044927752720766295,
+        "potential_energy": 0.0449007784010722,
+        "clock_rate_defect": 2.6974319694096638e-05,
+        "energy": 0.60187820472804,
+        "longitudinal": -0.08222884872217635,
+        "scalar": 0.31636299726426287,
+        "top_two_probability": 8.765996262680527e-17
+      },
+      {
+        "capacity": 32,
+        "dimension": 6545,
+        "correction": "exact",
+        "initial_preparation_tail": 1.7396160312343125e-32,
+        "raw_state_distance_to_R32_exact_80_steps": 7.99524252730601e-07,
+        "norm": 0.999999999999999,
+        "clock": 1.0200126221278314,
+        "clock_rate": 0.0449303423512222,
+        "potential_energy": 0.04493034242911296,
+        "clock_rate_defect": 7.789075634478948e-11,
+        "energy": 0.6019164606822636,
+        "longitudinal": -0.0822406266171875,
+        "scalar": 0.3164353670408629,
+        "top_two_probability": 4.324845063618451e-12
+      }
+    ],
+    "polynomial_comparison": [
+      {
+        "Taylor_order": 2,
+        "norm": 1.0,
+        "clock": 1.0199062694805425,
+        "clock_rate": 0.044623201313069155,
+        "potential_energy": 0.044922552267730016,
+        "clock_rate_defect": 0.0002993509546608611,
+        "energy": 0.6018502835662893,
+        "longitudinal": -0.08198165487649972,
+        "scalar": 0.31636288360051484,
+        "top_two_probability": 1.961163999515147e-17,
+        "raw_state_distance_to_exact_spin_exact_functions": 0.0013891948042033086
+      },
+      {
+        "Taylor_order": 4,
+        "norm": 1.0,
+        "clock": 1.0200051944407602,
+        "clock_rate": 0.04492716155727619,
+        "potential_energy": 0.04490081913394242,
+        "clock_rate_defect": 2.634242333376946e-05,
+        "energy": 0.6018781637793527,
+        "longitudinal": -0.08222846829545905,
+        "scalar": 0.31636299713756966,
+        "top_two_probability": 8.424726754200279e-17,
+        "raw_state_distance_to_exact_spin_exact_functions": 0.0006104189081759962
+      },
+      {
+        "Taylor_order": 6,
+        "norm": 0.9999999999999991,
+        "clock": 1.0200053591037048,
+        "clock_rate": 0.044927751868815424,
+        "potential_energy": 0.044900778456314544,
+        "clock_rate_defect": 2.6973412500880256e-05,
+        "energy": 0.6018782046856384,
+        "longitudinal": -0.08222884832998845,
+        "scalar": 0.316362997264233,
+        "top_two_probability": 8.760241448169956e-17,
+        "raw_state_distance_to_exact_spin_exact_functions": 0.0006102215042378038
+      },
+      {
+        "Taylor_order": null,
+        "norm": 0.9999999999999989,
+        "clock": 1.0200053593040346,
+        "clock_rate": 0.044927752720766295,
+        "potential_energy": 0.0449007784010722,
+        "clock_rate_defect": 2.6974319694096638e-05,
+        "energy": 0.60187820472804,
+        "longitudinal": -0.08222884872217635,
+        "scalar": 0.31636299726426287,
+        "top_two_probability": 8.765996262680527e-17,
+        "raw_state_distance_to_exact_spin_exact_functions": 0.0006102210957589125
+      }
+    ],
+    "comparison_scope": "Fixed-hbar finite-capacity diagnostics; not a classical or continuum convergence proof."
+  },
+  "semiclassical": {
+    "classical": {
+      "clock": 1.0056466490393896,
+      "longitudinal": -0.08969837557363887,
+      "scalar": 0.3164955515946489
+    },
+    "samples": [
+      {
+        "hbar": 0.1,
+        "capacity": 16,
+        "initial_preparation_tail": 1.0415801101124616e-17,
+        "initial_clock": 1.0253151205244269,
+        "errors_to_classical": {
+          "clock": 0.02904332443990998,
+          "longitudinal": 0.015730421811111048,
+          "scalar": 0.00016080613904051466
+        },
+        "norm": 0.9999999999999997,
+        "clock": 1.0346899734792996,
+        "clock_rate": 0.056446815422212956,
+        "potential_energy": 0.0564519769047744,
+        "clock_rate_defect": 5.161482561445718e-06,
+        "energy": 0.6464952285383831,
+        "longitudinal": -0.07396795376252782,
+        "scalar": 0.3163347454556084,
+        "top_two_probability": 6.131455856580183e-07
+      },
+      {
+        "hbar": 0.05,
+        "capacity": 24,
+        "initial_preparation_tail": 3.8542651144079833e-22,
+        "initial_clock": 1.0125784515406349,
+        "errors_to_classical": {
+          "clock": 0.01436597307594556,
+          "longitudinal": 0.007457748931787911,
+          "scalar": 6.018455312983839e-05
+        },
+        "norm": 0.9999999999999996,
+        "clock": 1.0200126221153352,
+        "clock_rate": 0.04493034182944555,
+        "potential_energy": 0.04493034243821928,
+        "clock_rate_defect": 6.08773725874201e-10,
+        "energy": 0.6019164606826585,
+        "longitudinal": -0.08224062664185096,
+        "scalar": 0.3164353670415191,
+        "top_two_probability": 6.101561739243897e-11
+      },
+      {
+        "hbar": 0.025,
+        "capacity": 32,
+        "initial_preparation_tail": 3.494898672656751e-23,
+        "initial_clock": 1.0062695720037615,
+        "errors_to_classical": {
+          "clock": 0.007145980216277881,
+          "longitudinal": 0.0036318255181024967,
+          "scalar": 2.5513694958845257e-05
+        },
+        "norm": 0.9999999999999986,
+        "clock": 1.0127926292556675,
+        "clock_rate": 0.03951312506748711,
+        "potential_energy": 0.03951312506750559,
+        "clock_rate_defect": 1.847827446610495e-14,
+        "energy": 0.5802617854312929,
+        "longitudinal": -0.08606655005553637,
+        "scalar": 0.3164700378996901,
+        "top_two_probability": 2.0281702648402682e-15
+      }
+    ],
+    "scope": "Centers match the classical initial datum; finite-width quantum means need not equal those centers."
+  },
+  "two_site": {
+    "samples": [
+      {
+        "capacity": 2,
+        "dimension": 100,
+        "initial_gradient_energy": 0.044785334584223256,
+        "norm_error": 0.0,
+        "raw_state_error_20_to_40": 7.171517733648172e-07,
+        "initial_clocks": [
+          1.0081289488754783,
+          1.0110146934824158
+        ],
+        "final_clocks": [
+          1.0099451138609559,
+          1.01289867449192
+        ]
+      },
+      {
+        "capacity": 4,
+        "dimension": 1225,
+        "initial_gradient_energy": 0.06436164811950995,
+        "norm_error": 3.3306690738754696e-16,
+        "raw_state_error_20_to_40": 1.0771330970590027e-06,
+        "initial_clocks": [
+          1.010971545824656,
+          1.01227638073042
+        ],
+        "final_clocks": [
+          1.0137442218364838,
+          1.014132662486502
+        ]
+      },
+      {
+        "capacity": 6,
+        "dimension": 7056,
+        "initial_gradient_energy": 0.07179627286171597,
+        "norm_error": 6.661338147750939e-16,
+        "raw_state_error_20_to_40": 1.3604716635748177e-06,
+        "initial_clocks": [
+          1.0119916650879441,
+          1.0124591399211913
+        ],
+        "final_clocks": [
+          1.0150959358804739,
+          1.0143071867349311
+        ]
+      }
+    ],
+    "scope": "Supplied graph and reduced Hamiltonian; no exact lattice spatial constraint or continuum limit."
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "random_seed": 0
+  },
+  "source_sha256": {
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/quantum_areal_spin_audit.py": "b84ecc436f61f589f2a5b4dd6919cf4442f3a3ba768a4d77d641f2ebcfc1facc",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c"
+  },
+  "scope": "Specified finite-spin quantization of a supplied reduced areal target. Large runs use a three-active-flavor invariant sector. Original-law selection, quantum constraint closure, joint limits and a TOE are unproved."
+}

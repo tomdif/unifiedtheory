@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual SU(2) Wilson collective local response is controlled by the absolute row sums of its centered likelihood Gram matrix, retaining correlations between input-link changes. For actual row nu_u, s_i(v)=p_(R_i u)(v)/p_u(v)-1 is continuous, has zero mean, and depends on output v only through link e_i. Its Gram G_ij(u)=E_nu_u[s_i*s_j] is symmetric positive semidefinite with proved diagonal bound B(beta,q_i)=(exp(4*beta*norm(q_i-1))-1)^2. For distinct links, G_ij+1=Z(u)*Z(R_i R_j u)/(Z(R_i u)*Z(R_j u)), where Z is the actual row partition function. If their affected spatial plaquette sets are disjoint, the bare spatial action cancels and G_ij=exp(Delta_i Delta_j log g)-1 for the constructed original ground amplitude g. For real amplitudes a_i, a uniform absolute row-sum bound kappa on M_ij=a_i*a_j*G_ij implies sum_i a_i^2 E_i(P f)<=kappa*(Var_pi f-Var_pi(P f)), and the time sum through k steps is at most kappa*(Var_pi f-Var_pi(P^k f)). Gauge-invariant sources use the already proved identification with original normalized physical transfer powers. The upper Gram bound is an explicit hypothesis; its uniform weak-coupling control is not proved. A separate collective whole-slab lower bound then conditionally gives contraction kappa/(1+kappa). No mass gap, continuum limit or surviving physical excitation is inferred. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactGramResponse",
+    "UnifiedTheory.Clay.YangMills.WilsonRowGram",
+    "UnifiedTheory.Clay.YangMills.WilsonMixedGroundResponse",
+    "UnifiedTheory.Clay.YangMills.WilsonCollectiveGram"
+  ],
+  "new_declarations": 39,
+  "retained_declarations": 7322,
+  "cumulative_declarations": 7361,
+  "proof": {
+    "law": "The actual temporal-gauge row nu_u and constructed ground law pi=g^2 Haar are unchanged. Physical observables are continuous real gauge-invariant functions.",
+    "scores": "For rotation q_i at link e_i, s_i(u,v)=p_(R_i u)(v)/p_u(v)-1. Its mean under nu_u is zero. Its output dependence is exactly local to v_(e_i), despite full-law dependence of the normalization.",
+    "response": "E_nu_u[s_i*(f-E_nu_u f)]=P_raw f(R_i u)-P_raw f(u).",
+    "gram": "G_ij(u)=E_nu_u[s_i*s_j], with actual interacting-row expectation. G is symmetric positive semidefinite; 0<=G_ii<=(exp(4*beta*norm(q_i-1))-1)^2.",
+    "distinct_link_partition_identity": "For e_i!=e_j, G_ij(u)+1=Z(u)*Z(R_i R_j u)/(Z(R_i u)*Z(R_j u)). The pointwise row-weight product factorization preceding integration is proved for the actual kernel, including its output ground amplitude.",
+    "bare_action_cancellation": "For distinct links with disjoint affected spatial plaquette sets, V(R_i R_j u)+V(u)=V(R_i u)+V(R_j u). The corresponding spatial-weight product identity is proved, including periodic geometries with repeated plaquette occurrences.",
+    "mixed_ground_identity": "Since Z(u)=lambda*g(u)/spatialWeight(u), the separated Gram entry is exactly G_ij=exp(Delta_i Delta_j log g)-1, where Delta_i Delta_j log g=log g(R_i R_j u)+log g(u)-log g(R_i u)-log g(R_j u). No regular gauge fixing or ground derivative is assumed.",
+    "generic_collective_bound": "For a continuous real score family s under a compact probability law and absolute Gram row sums<=kappa, sum_i |E[s_i*(f-Ef)]|^2<=kappa*Var(f). The proof expands the Gram quadratic form, bounds it by a symmetric Schur estimate, and applies L2 Cauchy-Schwarz with the response vector itself.",
+    "weighted_matrix": "For real a_i, M_ij=a_i*a_j*G_ij is the actual Gram matrix of a_i*s_i and is positive semidefinite. The row condition is forall u,i: sum_j |M_ij(u)|<=kappa, with kappa>=0.",
+    "stationary_dissipation": "The row condition gives sum_i a_i^2 E_i(P_raw f)<=kappa*(Var_pi(f)-Var_pi(P_raw f)). The same coefficient bounds the sum over times j<k by kappa*(Var_pi(f)-Var_pi(P_raw^k f)). There is no additional direction-count or time-count factor in this implication.",
+    "physical_identification": "For gauge-invariant f the predecessor flow_embedding identifies every iterate used here with original normalized complex Hilbert-space transfer powers under the ground-state embedding.",
+    "conditional_slab_payoff": "If final variance is bounded above by the accumulated weighted response, then Var_pi(P^k f)<=kappa/(1+kappa)*Var_pi(f). Both the uniform Gram upper bound and this lower response bound are explicit unproved analytic premises."
+  },
+  "assumptions": [
+    "Finite periodic spatial SU(2) lattice n>0 and beta>=0.",
+    "A finite family of specified link rotations with arbitrary real amplitudes; repeated links are allowed for the Gram and collective bounds.",
+    "Distinct links are required for the mixed partition formula; disjoint affected plaquette sets are additionally required for bare-action cancellation and the mixed ground formula.",
+    "The collective upper estimate assumes a uniform absolute row-sum bound on the actual Gram matrix, pointwise in baseline input.",
+    "The contraction conclusion separately assumes the displayed whole-slab response lower bound."
+  ],
+  "comparison_to_predecessor": "The preceding coefficient sum_i a_i^2 B(beta,q_i) charges each direction separately. The new sufficient coefficient uses actual cross-correlations through a Gram row norm and can exploit weak correlations; it is not automatically smaller for every matrix, and no uniform row bound for the weak-coupling model is claimed.",
+  "not_inferred": [
+    "Prove a uniformly controlled absolute row sum, or a sufficiently strong substitute quadratic bound, for the actual centered likelihood Gram matrix along a justified physical weak-coupling trajectory. Individual diagonal bounds alone do not control accumulated off-diagonal correlations.",
+    "For input links whose affected plaquettes are disjoint, bound the exact mixed ground response exp(Delta_i Delta_j log g)-1 with summable spatial dependence, including control of the remaining nearby pairs. The proved identity does not establish this decay.",
+    "The present integrated estimate assumes a pointwise-in-input Gram row bound. A bound only on the ground-law average of the matrix is not a valid replacement: conditional source variance is correlated with that input. Any good-region/bad-region substitute needs a corresponding weighted source estimate.",
+    "Prove the separate collective whole-slab lower bound of Var_pi(P^k f) by its accumulated weighted local responses, uniformly for the required physical observables and fixed physical slab. Neither Gram positivity nor its proposed upper bound supplies this coercivity.",
+    "Keep kappa uniform in cutoff and spatial volume; replacing a sum of individual constants by an actual Gram row norm does not itself prove volume independence. Correlated large-field clusters, boundary terms and generated interactions remain to be controlled.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible all-order renormalized bounds on the same independently justified physical beta(a) trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_collective_gram_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

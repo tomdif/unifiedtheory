@@ -1,0 +1,45 @@
+/- Fresh sourced middle-recursion axioms; the runner verifies the retained chain. -/
+import UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance
+import UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.kinetic_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.source_linear
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.source_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action_joint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.pair_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction.action_second_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.outputAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.outputAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.jointAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.jointAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.middle_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.joint_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.joint_weight_fiber
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.joint_unnormalized
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.joint_partition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.joint_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion.middle_conditional
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.response_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.response_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.middleCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.retainedLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.retainedLaw_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.retainedLaw_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.joint_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.joint_conditionalCovariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.joint_covariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.covariance_recursion
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance.connected_recursion
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.endpoint_action_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.endpoint_expectation_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.endpoint_expectation_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.endpoint_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.transport_action_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport.transport_action_second_small

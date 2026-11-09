@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-28",
+  "title": "Positive strong-coupling collective estimates from actual Wilson conditionals and finite influence paths",
+  "baseline": {
+    "reported_declaration_count": 4655,
+    "existing_sources_and_audits_immutable": true
+  },
+  "status": "New finite-cutoff theorems and a natural-math strong-coupling synthesis. No physical mass gap, weak-coupling continuation, or Clay requirement is closed.",
+  "normalization": {
+    "wilson_action": "S_beta(U)=beta sum_p (2-Re Tr U_p), with unnormalized fundamental SU(2) trace",
+    "conditional_law": "nu_A(dq)=exp(2 beta <q,A>) Haar(dq)/Z_beta(A), where A is the actual sum of six exterior unit staples",
+    "total_variation": "TV(mu,nu)=sup_E|mu(E)-nu(E)|=sup_{0<=F<=1}|mu(F)-nu(F)|=(1/2)sup_{|F|<=1}|mu(F)-nu(F)|",
+    "safe_lattice_range": "Periodic n^4, n>=3 for eighteen distinct neighbors and a unique shared plaquette. The eight-color synthesis additionally requires even n, hence n>=4.",
+    "coupling_regime": "0<=beta<1/36 for the proved linear influence majorant; alpha=36 beta"
+  },
+  "certified_modules": [
+    {
+      "path": "UnifiedTheory/Clay/YangMills/CompactGibbsOscillation.lean",
+      "sha256": "8dd75b5b864616a18b8d4d3712e99a52f78a2c923e47846d3cdabe4e926d2cc3",
+      "bytes": 5942,
+      "theorems": 4,
+      "definitions": 0
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/SU2WilsonConditionalInfluence.lean",
+      "sha256": "fc7b4ba454a126f2e43fdfa362637af922a4dbfa1c23068ef7252ad1b8b0d364",
+      "bytes": 6233,
+      "theorems": 5,
+      "definitions": 0
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/FiniteInfluenceDecay.lean",
+      "sha256": "97b519f5aa5b7b81d1cf8421ddc3235d594c6049aa5e14be18ea64d96c84335b",
+      "bytes": 9025,
+      "theorems": 12,
+      "definitions": 2
+    }
+  ],
+  "verification": {
+    "scope": "23 new declarations, consisting of21 theorems and2 definitions. Source checks and real scoped builds passed; all21 theorem axiom checks use only propext, Classical.choice, Quot.sound.",
+    "build_command": [
+      "lake",
+      "build",
+      "UnifiedTheory.Clay.YangMills.CompactGibbsOscillation",
+      "UnifiedTheory.Clay.YangMills.SU2WilsonConditionalInfluence",
+      "UnifiedTheory.Clay.YangMills.FiniteInfluenceDecay"
+    ],
+    "build_jobs": 3427,
+    "new_module_warnings": 0,
+    "old_dependency_warnings_replayed": true,
+    "build_log": "/tmp/positive-collective-build-final.log",
+    "axiom_log": "/tmp/positive-collective-axioms.log",
+    "no_custom_axioms_or_sorry": true
+  },
+  "formal_results": {
+    "sharp_compact_gibbs_bound": {
+      "api": "CompactGibbsOscillation.covariance_bound",
+      "statement": "For continuous F in[a,b] and G in[c,d] on a compact probability space, |E(FG)-EF EG| <= (b-a)(d-c)/4.",
+      "proof": "Construct the actual centered L2 embeddings; identify their inner product with covariance and squared norms with variances. Apply Popoviciu to each variance and the Hilbert-space Cauchy-Schwarz inequality."
+    },
+    "finite_action_change": {
+      "apis": [
+        "CompactGibbsOscillation.source_covariance_bound",
+        "CompactGibbsOscillation.source_expectation_difference",
+        "CompactGibbsOscillation.action_expectation_difference"
+      ],
+      "statement": "For actual normalized compact Gibbs laws with continuous actions A,B, if A-B is bounded in[a,b] and G in[c,d], then |E_B G-E_A G| <= (d-c)(b-a)/4.",
+      "proof": "Use the existing proved derivative of the actual normalized Gibbs expectation along A-t(A-B), bound its covariance uniformly, and integrate from0 to1 by the mean-value theorem. The derivative estimate is derived, not assumed."
+    },
+    "actual_wilson_conditionals": {
+      "apis": [
+        "SU2WilsonConditionalInfluence.tilt_expectation_difference",
+        "SU2WilsonConditionalInfluence.one_staple_difference",
+        "SU2WilsonConditionalInfluence.conditional_expectation_difference",
+        "SU2WilsonConditionalInfluence.exteriorStaple_difference_single",
+        "SU2WilsonConditionalInfluence.conditional_single_staple_influence"
+      ],
+      "statements": [
+        "|nu_B(G)-nu_A(G)| <= beta (d-c)||B-A|| for beta>=0 and continuous G in[c,d].",
+        "Replacing one unit staple v by w changes its sum by w-v, whose norm is at most2, so the bounded-test influence is at most2 beta (d-c).",
+        "The actual finite-lattice conditional measures are identified with these Haar tilts by the existing exact Wilson dictionary. The final theorem explicitly assumes equality of all affected exterior staples except one and proves the2 beta bound for the actual conditional measures."
+      ],
+      "scope_boundary": "The last hypothesis is an explicit finite geometric condition, not a mixing or gap assumption. This file does not prove that every single neighbor-link change satisfies it; that eighteen-neighbor dictionary is checked separately in natural mathematics below."
+    },
+    "constructed_path_sum": {
+      "apis": [
+        "FiniteInfluenceDecay.paths_eq_matrix_power",
+        "FiniteInfluenceDecay.paths_nonneg",
+        "FiniteInfluenceDecay.paths_row_bound",
+        "FiniteInfluenceDecay.paths_entry_bound",
+        "FiniteInfluenceDecay.paths_vanish_before_distance",
+        "FiniteInfluenceDecay.paths_summable",
+        "FiniteInfluenceDecay.green_distance_bound",
+        "FiniteInfluenceDecay.green_row_bound",
+        "FiniteInfluenceDecay.green_neumann",
+        "FiniteInfluenceDecay.green_resolves",
+        "FiniteInfluenceDecay.local_degree_row_bound"
+      ],
+      "construction": "paths(C,0,i,j)=1_{i=j}; paths(C,k+1,i,j)=sum_v C(i,v) paths(C,k,v,j). The module proves these are exactly the matrix powers. Green(C,i,j)=sum_{k>=0}paths(C,k,i,j).",
+      "hypotheses": "C is nonnegative with every row sum<=alpha,0<=alpha<1. For spatial decay, a natural-number distance has zero diagonal and the triangle inequality, and C(i,j)=0 whenever distance(i,j)>1.",
+      "proved_conclusions": [
+        "Every power has row sum<=alpha^k and entries<=alpha^k.",
+        "No path contributes before its distance: paths(C,k,i,j)=0 when k<distance(i,j).",
+        "Every entry series is summable; Green(i,j)<=alpha^distance(i,j)/(1-alpha).",
+        "Every Green row sum is<=1/(1-alpha), independently of the number of sites.",
+        "The actual constructed matrix satisfies (I-C) Green=I, as well as Green=I+C Green.",
+        "If each row has at mostD supported entries and each coefficient<=delta, its row sum is<=D delta. No volume cardinality appears."
+      ],
+      "scope_boundary": "No Gibbs comparison theorem or covariance domination premise is asserted as proved by this matrix file. Its matrix hypotheses are elementary local estimates; connecting them to a given probability specification is a separate step."
+    }
+  },
+  "actual_eighteen_neighbor_dictionary": {
+    "verification_scope": "Natural mathematics checked directly against the actual forward/backward staple formulas; independently reviewed. Not a new Lean enumeration theorem.",
+    "selected_link": "e=(x,mu)",
+    "per_transverse_direction_nu": {
+      "parallel_links": [
+        "(x+e_nu,mu)",
+        "(x-e_nu,mu)"
+      ],
+      "transverse_links": [
+        "(x,nu)",
+        "(x+e_mu,nu)",
+        "(x-e_nu,nu)",
+        "(x-e_nu+e_mu,nu)"
+      ]
+    },
+    "argument": "For each of three transverse directions, these are the three links in each of its two staples. Distinct transverse directions distinguish link directions; the six parallel-link positions are distinct for n>=3. The four transverse-link positions for a fixed direction are distinct. Thus there are18 distinct neighbors, each in exactly one selected-link plaquette. A neighbor change alters exactly one staple; every other-link change alters no staple.",
+    "consequence": "The actual TV interdependence coefficient is bounded by2 beta on each of these18 neighbors and is zero elsewhere. The shared-plaquette graph is undirected and18-regular, so the explicit symmetric majorant C_ij=2 beta 1_{neighbors} has both row and column sum alpha=36 beta."
+  },
+  "tv_extension_and_sharpening": {
+    "verification_scope": "Natural mathematics, not a Lean total-variation theorem in the new modules.",
+    "linear_bound": "The formal continuous-test estimate with range[0,1] extends to TV on compact SU(2): the Gibbs laws are Radon measures with continuous Haar densities, and continuous functions in[0,1] approximate the optimal measurable test in L1 of their sum. This yields TV<=2 beta for a single changed staple.",
+    "log_oscillation": "The action difference is -2 beta<q,w-v> up to an irrelevant constant. Its range has width4 beta||w-v||<=8 beta.",
+    "sharp_density_bound": [
+      "For a normalized positive density ratio R with expectation1 and range[l,u], convexity of(r-1)_+ gives TV<=((u-1)(1-l))/(u-l).",
+      "If the ratio of the unnormalized extrema is at mostQ>1, then u/l<=Q. For fixed l the preceding bound increases with u, so it is at most((Q l-1)(1-l))/(l(Q-1)).",
+      "AM-GM gives Q l+1/l>=2 sqrt(Q); therefore TV<=(sqrt(Q)-1)/(sqrt(Q)+1). The Q=1 case is equality of laws.",
+      "With Q=exp(w), this is tanh(w/4). Consequently the Wilson single-neighbor coefficient is<=tanh(2 beta)<=2 beta, and alpha can be sharpened naturally to18 tanh(2 beta)."
+    ],
+    "important_distinction": "The new Lean files certify the linear2 beta bound for continuous bounded tests. They do not certify the tanh optimization or the continuous-test-to-TV approximation."
+  },
+  "positive_natural_covariance_theorem": {
+    "status": "A derived natural-math finite-volume strong-coupling theorem, using the primary classical Gibbs comparison theorem. Not a newly Lean-certified global Gibbs covariance theorem.",
+    "statement": "For the actual periodic SU(2) Wilson law with n>=3 and0<=beta<1/36, let alpha=36 beta and let d(S,T) be minimum graph distance between finite link supports in the shared-plaquette graph. Continuous functions f,g with supports S,T satisfy |Cov(f,g)| <= [alpha^d(S,T)/(4(1-alpha))] (sum_i delta_i f)(sum_j delta_j g), where delta_i is the coordinate oscillation. Empty supports give zero covariance.",
+    "derivation": [
+      "The actual single-link conditional kernels preserve the actual Wilson law by finite product-Haar disintegration. All single-site spaces are compact Polish and all densities are strictly positive and continuous. On a finite index set the locality/quasilocality requirements are automatic.",
+      "The preceding actual conditional TV estimate gives an interdependence matrix bounded entrywise by C_ij=2 beta 1_{neighbors}. Positivity propagates this domination to powers. Since alpha<1, the comparison decay hypothesis follows from the row bound alpha^k, and its Neumann series is bounded by the constructed Green kernel.",
+      "Keep the reference Wilson law rho fixed. Tilt only the comparison measure to rho_t=exp(tg)rho/rho(exp(tg)). The discrepancy of its j-conditional from the reference conditional is at most |t|delta_j g/4 by the sharp oscillation inequality with a test in[0,1].",
+      "Classical Gibbs comparison gives |rho_t f-rho f| <= (|t|/4) sum_ij delta_i f Green_ij delta_j g. The influence matrix belongs to the reference law; no contraction assumption on rho_t is needed.",
+      "Differentiate at t=0 using the actual compact Gibbs source derivative. This yields |Cov(f,g)| <=(1/4)sum_ij delta_i f Green_ij delta_j g.",
+      "Use Green_ij<=alpha^distance(i,j)/(1-alpha) and distance(i,j)>=d(S,T) on the source supports. For0<=alpha<1 the powers decrease with distance, giving the displayed bound."
+    ],
+    "su2_plaquette_corollary": "Each unnormalized trace Re Tr(U_p), or defect2-Re Tr(U_p), depends on four links and has each coordinate oscillation at most4. Hence |Cov(F_p,F_q)|<=64 alpha^d(boundary(p),boundary(q))/(1-alpha). The factor64 is(1/4)*16 pairs*16. This is a fixed-cutoff spatial graph-distance estimate, not a continuum field normalization.",
+    "rate": "For0<beta<1/36, the graph-distance decay rate is -log(36 beta)>0. At beta=0 the law is product Haar; the power convention0^0=1 handles coincident supports, and disjoint link supports have zero covariance.",
+    "unformalized_links": [
+      "Actual18-neighbor enumeration and application of the unchanged-staple hypothesis for every neighbor.",
+      "Extension from continuous bounded tests to the full TV coefficient.",
+      "Classical Gibbs comparison applied to the actual Wilson specification and differentiation of its measure-comparison conclusion.",
+      "Final source-support aggregation into the covariance theorem."
+    ]
+  },
+  "parallel_color_positive_synthesis": {
+    "verification_scope": "Natural-math coupling synthesis, using parent-owned actual eight-color geometric and measure-level factorization theorems. Not a new Lean global Markov contraction theorem here.",
+    "actual_inputs": [
+      "WilsonParallelColors.colorBlock_independent",
+      "WilsonParallelColors.uniform_color_coverage",
+      "WilsonParallelConditional.wilson_color_law"
+    ],
+    "setting": "Even n>=4; choose uniformly one of the eight independent color blocks, and redraw all links in that color from their actual conditional law. The law factorizes into the product of its one-link conditionals.",
+    "proof": [
+      "Couple two updates by selecting the same color and using a product of maximal couplings for the selected links. Unselected links remain unchanged.",
+      "Telescoping exterior discrepancies and the TV coefficient bound give disagreement probability at selected link i at most sum_j C_ij 1_{U_j!=V_j}.",
+      "Let H(U,V)=sum_i1_{U_i!=V_i}. Each link is selected with probability1/8. Thus E H(U_prime,V_prime) <= H-H/8+(1/8)sum_j(sum_i C_ij)1_{U_j!=V_j}.",
+      "The explicit majorant is symmetric, hence its column sums as well as row sums are alpha. Therefore E H(U_prime,V_prime)<=[1-(1-alpha)/8]H(U,V). The column bound is essential; a row bound alone for an arbitrary nonsymmetric matrix would not justify this step."
+    ],
+    "conclusion": "At beta<1/36, the auxiliary random-color heatbath has a volume-independent one-update coupling contraction factor1-(1-36 beta)/8. Its whole-configuration TV estimate still has the initial Hamming diameter factor(number of links), so mixing to fixed TV accuracy has a logarithmic volume overhead.",
+    "clock_limits": [
+      "One uniform random single-link update has factor1-(1-alpha)/N for N links.",
+      "Unit-rate-per-site continuous-time heatbath has rate1-alpha in this coupling convention.",
+      "One random-color update has factor1-(1-alpha)/8 under the stated product coupling.",
+      "None of these clocks is a physical Wilson transfer step. No ground-state law psi^2 Haar functional inequality or physical gap follows without a proved comparison."
+    ],
+    "unformalized_construction": "The continuous-test-to-TV extension, actual measurable maximal couplings and their tensor-product/color Markov coupling, and the resulting global Hamming contraction theorem are natural mathematics here. No such total-variation/coupling construction is counted among the23 new Lean declarations."
+  },
+  "primary_sources": [
+    {
+      "title": "Rebeschini and van Handel, Comparison Theorems for Gibbs Measures",
+      "url": "https://arxiv.org/pdf/1308.4117",
+      "identifiers": [
+        "Corollary2.6, PDF p.8",
+        "TV convention, PDF p.9",
+        "Corollary2.8, PDF pp.9-10"
+      ],
+      "verified_scope": "Provides comparison of local specifications through D=sum_k C^k. Finite index sets and the row-sum condition alpha<1 meet its decay hypothesis; the discrete single-site metric gives TV. This theorem is used externally in the natural covariance synthesis, not silently assumed inside a new Lean theorem."
+    },
+    {
+      "title": "Shen, Zhu and Zhu, A stochastic analysis approach to lattice Yang-Mills at strong coupling",
+      "url": "https://arxiv.org/pdf/2204.12737",
+      "identifiers": [
+        "Eq.(1.2), PDF p.4",
+        "Assumption1.1, PDF p.4",
+        "Theorem1.4, PDF p.6",
+        "Corollary1.6, PDF pp.7-8"
+      ],
+      "verified_scope": "An independent actual lattice result establishes strong-coupling functional inequalities and spatial clustering. Converting their coefficient N beta_paper to beta_repo gives SU(2),d=4 threshold beta_repo<1/24 and K=1-24 beta_repo. This is stronger than our conservative beta_repo<1/36 route; its Langevin gap is not a physical transfer gap."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "full_transfer_audit swarm agent",
+    "checked": [
+      "Eighteen-neighbor geometry and unique affected staple for n>=3.",
+      "TV sharpening tanh(2 beta) and linear2 beta bound.",
+      "Covariance differentiation factor1/4 and SU2plaquette constant64, conditional on the stated comparison theorem."
+    ],
+    "not_claimed": "The reviewer did not independently re-read all hypotheses of Corollary2.6; this agent checked those directly in the primary source. The parallel-color synthesis is an explicit natural coupling derivation, not counted as a Lean theorem."
+  },
+  "weak_coupling_and_clay_limits": {
+    "trajectory_obstruction": "Any branch beta(a) tending to infinity eventually violates beta<1/36. The earlier certified SU2ConditionalInfluence lower-proxy result also shows why a raw absolute single-link influence strategy cannot be extended merely by discarding rare bad staples.",
+    "physical_meaning": "A finite-cutoff exponential covariance bound at fixed small beta supplies a positive lattice correlation scale. It does not construct a nonzero rescaled continuum theory along the physical weak-coupling branch.",
+    "still_needed": [
+      "A gauge-invariant collective or multiscale estimate valid at weak coupling.",
+      "An actual ground-state-law factorization or functional inequality with controlled scale dependence.",
+      "A comparison between auxiliary update time and the physical transfer-time eigenvalue ratio.",
+      "The physical coupling trajectory, nonzero continuum witness, and the remaining full field-theory axioms."
+    ],
+    "requirement_status": "All twelve Clay requirements remain open; no status promotion is justified by this tranche."
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "exact": {
+    "source_matrix_eigenvalues": [
+      "-1",
+      "1/4"
+    ],
+    "source_square_decomposition": true,
+    "scalar_saddle_solution": {
+      "n": "(7*T - V)/(8*l)",
+      "u": "(T + V)/(8*l)"
+    },
+    "quadratic_lapse": "-N T",
+    "gauss_source_identically_zero": true,
+    "gauss_bracket_on_constraint": "-3*sqrt(3)",
+    "TT_lapse_bracket": "0",
+    "incorrectly_unprojected_bracket": "-1/8",
+    "two_source_normal_frequency_polynomial": "(-d*w - ell**2 + w**2)*(d*w - ell**2 + w**2)"
+  },
+  "field_localization": {
+    "cases": [
+      {
+        "grid_per_axis": 9,
+        "case": "mixed",
+        "elliptic_solve_error": 9.658940314238862e-14,
+        "scalar_energy": -0.12507326796235613,
+        "vector_energy": 0.2413961140922156,
+        "complete_quartic": 0.16758596876075557,
+        "localized_quartic": 0.16758596876075574,
+        "scalar_force_error": 5.193870507291809e-11,
+        "frozen_response_force_error": 0.03802500800467992,
+        "vector_force_error": 2.5164592631909954e-12,
+        "constant_conformal_source_removed": 1.5373008101609167
+      },
+      {
+        "grid_per_axis": 9,
+        "case": "gradient_only",
+        "elliptic_solve_error": 1.366962099069724e-15,
+        "scalar_energy": 0.0010479298513580732,
+        "vector_energy": 0.0,
+        "complete_quartic": 0.07228419456647156,
+        "localized_quartic": 0.07228419456647156,
+        "scalar_force_error": 4.523495293617952e-12,
+        "frozen_response_force_error": 0.0005969861639091721,
+        "vector_force_error": 2.4234580051000293e-11,
+        "constant_conformal_source_removed": 0.4785539740552672
+      },
+      {
+        "grid_per_axis": 9,
+        "case": "momentum_only",
+        "elliptic_solve_error": 9.270362255620057e-14,
+        "scalar_energy": -0.20189343599665835,
+        "vector_energy": 0.0,
+        "complete_quartic": -0.20189343599665835,
+        "localized_quartic": -0.20189343599665846,
+        "scalar_force_error": 1.0519002335840355e-10,
+        "frozen_response_force_error": 0.13683591550496346,
+        "vector_force_error": 4.7191710601528106e-12,
+        "constant_conformal_source_removed": 1.0
+      },
+      {
+        "grid_per_axis": 11,
+        "case": "mixed",
+        "elliptic_solve_error": 7.37188088351104e-14,
+        "scalar_energy": -0.1789597244919373,
+        "vector_energy": 0.17487447470230244,
+        "complete_quartic": 0.032720374596071994,
+        "localized_quartic": 0.03272037459607177,
+        "scalar_force_error": 3.67562230652041e-12,
+        "frozen_response_force_error": 0.011937063632906805,
+        "vector_force_error": 3.254335689817367e-11,
+        "constant_conformal_source_removed": 1.5273950439951005
+      },
+      {
+        "grid_per_axis": 11,
+        "case": "gradient_only",
+        "elliptic_solve_error": 4.038436252074007e-15,
+        "scalar_energy": 0.0015358220162427058,
+        "vector_energy": 0.0,
+        "complete_quartic": 0.07740853296247907,
+        "localized_quartic": 0.07740853296247907,
+        "scalar_force_error": 6.232935174932397e-12,
+        "frozen_response_force_error": 0.0010077035039806454,
+        "vector_force_error": 1.8539150783464798e-11,
+        "constant_conformal_source_removed": 0.5141119420582264
+      },
+      {
+        "grid_per_axis": 11,
+        "case": "momentum_only",
+        "elliptic_solve_error": 6.075695502261169e-14,
+        "scalar_energy": -0.31342010265811676,
+        "vector_energy": 0.0,
+        "complete_quartic": -0.31342010265811676,
+        "localized_quartic": -0.31342010265811676,
+        "scalar_force_error": 5.7543553255712254e-12,
+        "frozen_response_force_error": 0.05063882175863448,
+        "vector_force_error": 1.761381740894913e-11,
+        "constant_conformal_source_removed": 1.0
+      }
+    ],
+    "scope": "Band-limited TT fields; periodic elliptic inverses remove source constants. These are coefficient/variation checks, not full periodic or asymptotically flat Einstein solutions."
+  },
+  "projected_brackets": {
+    "cases": [
+      {
+        "grid_per_axis": 9,
+        "case": 0,
+        "TT_bracket": -5.196152422706628,
+        "unprojected_current_expression": -5.196152422706628,
+        "exact_expected": -5.196152422706632
+      },
+      {
+        "grid_per_axis": 9,
+        "case": 1,
+        "TT_bracket": -9.042454332938089e-18,
+        "unprojected_current_expression": -0.12499999999999992,
+        "exact_expected": 0.0
+      },
+      {
+        "grid_per_axis": 11,
+        "case": 0,
+        "TT_bracket": -5.196152422706632,
+        "unprojected_current_expression": -5.19615242270663,
+        "exact_expected": -5.196152422706632
+      },
+      {
+        "grid_per_axis": 11,
+        "case": 1,
+        "TT_bracket": 1.2511904860538954e-18,
+        "unprojected_current_expression": -0.12500000000000006,
+        "exact_expected": 0.0
+      },
+      {
+        "grid_per_axis": 13,
+        "case": 0,
+        "TT_bracket": -5.196152422706637,
+        "unprojected_current_expression": -5.196152422706634,
+        "exact_expected": -5.196152422706632
+      },
+      {
+        "grid_per_axis": 13,
+        "case": 1,
+        "TT_bracket": 5.053359238166393e-19,
+        "unprojected_current_expression": -0.125,
+        "exact_expected": 0.0
+      }
+    ]
+  },
+  "dirac_flows": {
+    "cases": [
+      {
+        "physical_pairs": 2,
+        "auxiliary_pairs": 2,
+        "source_bracket_norm": 0.34296204671522,
+        "reduced_poisson_error": 0.0,
+        "full_Dirac_flow_error": 4.011297225060332e-17,
+        "frozen_auxiliary_flow_error": 0.7152858246222786
+      },
+      {
+        "physical_pairs": 2,
+        "auxiliary_pairs": 4,
+        "source_bracket_norm": 0.46022891056960663,
+        "reduced_poisson_error": 0.0,
+        "full_Dirac_flow_error": 6.844161852793696e-17,
+        "frozen_auxiliary_flow_error": 0.0978243886307384
+      },
+      {
+        "physical_pairs": 3,
+        "auxiliary_pairs": 4,
+        "source_bracket_norm": 2.5320936752353673,
+        "reduced_poisson_error": 0.0,
+        "full_Dirac_flow_error": 4.572132165651326e-16,
+        "frozen_auxiliary_flow_error": 0.5572652725742359
+      },
+      {
+        "physical_pairs": 4,
+        "auxiliary_pairs": 6,
+        "source_bracket_norm": 4.690665492389028,
+        "reduced_poisson_error": 0.0,
+        "full_Dirac_flow_error": 2.5267434806825144e-15,
+        "frozen_auxiliary_flow_error": 4.177919221490163
+      }
+    ],
+    "scope": "All auxiliary and physical components of the Dirac Hamiltonian vector field are checked for quadratic noncommuting sources; auxiliary momenta vanish and coordinates follow their constraints."
+  },
+  "quantum_normal_modes": {
+    "cases": [
+      {
+        "source_strength": 0.1,
+        "source_bracket": 0.010000000000000002,
+        "normal_frequencies": [
+          0.9950124999218759,
+          1.0050124999218761
+        ],
+        "surviving_physical_pairs": 1,
+        "ground_energy_per_penalty_hbar": 1.000012499921876,
+        "ground_energy_above_commuting_reference": 1.2499921876019116e-05
+      },
+      {
+        "source_strength": 0.4,
+        "source_bracket": 0.16000000000000003,
+        "normal_frequencies": [
+          0.9231948963187562,
+          1.0831948963187563
+        ],
+        "surviving_physical_pairs": 1,
+        "ground_energy_per_penalty_hbar": 1.0031948963187562,
+        "ground_energy_above_commuting_reference": 0.0031948963187562462
+      },
+      {
+        "source_strength": 1.0,
+        "source_bracket": 1.0,
+        "normal_frequencies": [
+          0.6180339887498948,
+          1.6180339887498951
+        ],
+        "surviving_physical_pairs": 1,
+        "ground_energy_per_penalty_hbar": 1.118033988749895,
+        "ground_energy_above_commuting_reference": 0.1180339887498949
+      },
+      {
+        "source_strength": 2.0,
+        "source_bracket": 4.0,
+        "normal_frequencies": [
+          0.23606797749978967,
+          4.236067977499791
+        ],
+        "surviving_physical_pairs": 1,
+        "ground_energy_per_penalty_hbar": 2.2360679774997902,
+        "ground_energy_above_commuting_reference": 1.2360679774997902
+      }
+    ],
+    "scope": "Exact quadratic linear-source model. Field-dependent tangent frequencies for nonlinear Einstein sources are only a diagnostic, not a proved nonlinear quantum reduction."
+  },
+  "source_sha256": {
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea",
+    "scripts/einstein_quartic_constraints_audit.py": "e2720d3799970255a661c24a7caf39999170aee4d4a4bf36305f62e8c7ce3310",
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "scripts/reduced_tensor_hamiltonian_audit.py": "17026bbf103152078bc95a0f4ace9b4b3315dd6de69bb2531b8a3ed7e58ac7e3",
+    "CONSTRAINED_MEDIATOR_TEST.md": "fa4947a22f92d9cdcd8415a9ace7f5770bc51229699c699c35db685cb647ca89",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "TENSOR_VERTEX_SELECTION.md": "fa757db249bcf6305f8044b55cc22c23186bb37dbf6a3406e8bcd9b8b4623b7f",
+    "data/tensor_vertex_selection_audit.json": "27409422703120803cb3c676ed35affcc6a6157b32664309f55d22c7977053a4",
+    "CANONICAL_METRIC_RECONSTRUCTION.md": "960357fd3d35d2c7f4a583c0551f2cc3713c7c9528daf506fda3a4657dd3c8f9",
+    "scripts/canonical_metric_reconstruction_audit.py": "67470c2714e6440475ac443a66acb3b18f99b83fc8e128b192a8d0379a060ec7"
+  },
+  "scope": "A supplied Einstein quartic has a classical local constrained realization preserving the assumed TT brackets, energy and forces; its scalar multiplier matches the quadratic maximal lapse. Stable quadratic elimination and an independent Abelian source Gauss law fail. The microscopic two-helicity constraint phase, quantum Einstein dynamics, physical nonzero-G limit and TOE remain unproved."
+}

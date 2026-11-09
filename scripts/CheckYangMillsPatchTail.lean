@@ -1,0 +1,46 @@
+/- Fresh actual local-energy, Gaussian normalization and cap-complement checks. -/
+import UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy
+import UnifiedTheory.Clay.YangMills.CompactGibbsGaussianTail
+import UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition
+import UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail
+import UnifiedTheory.Clay.YangMills.WilsonPatchExponentialCovariance
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.incidentEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.endpointEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.localEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.exteriorEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.incident_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.endpoint_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.local_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.action_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.pair_defect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.kinetic_distance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.distance_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.chord_triangle_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.distance_kinetic_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.local_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.local_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.insert_outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchLocalEnergy.bad_distance
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsGaussianTail.partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsGaussianTail.event_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.haar_right
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.centered_gaussian
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.gaussianCap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.gaussianCap_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.gaussianCap_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.distance_inside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.gaussian_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchGaussianPartition.gaussian_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.backgroundCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.tailBound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.perturbed_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.scaled_source_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.source_strength_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.two_source_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.transport_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchComplementTail.tailBound_suppressed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExponentialCovariance.connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchExponentialCovariance.transport_connected_bound

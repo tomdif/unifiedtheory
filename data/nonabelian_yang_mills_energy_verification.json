@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "analytic_results": [
+    "Two-dimensional continuum curvature maximum principle and exact energy dissipation on any smooth existence interval.",
+    "Existing DeTurck cutoffs: quantitative vanishing energy allowance and local full-sequence energy/dissipation convergence.",
+    "Distinct projected Yang--Mills gradient model: exact energy dissipation, all-time existence for each finite cutoff, and a cutoff-independent L2 excursion bound.",
+    "Armijo Euler line search terminates for nonstationary states and decreases energy for each accepted step in exact arithmetic."
+  ],
+  "formalization": "15 supporting theorems; no complete PDE maximum-principle, Fourier integration, or global finite-ODE existence formalization claimed.",
+  "targeted_build": "PASS (no warnings)",
+  "targeted_build_command": "lake build UnifiedTheory.LayerA.NonabelianYangMillsEnergy",
+  "axiom_audit": "PASS",
+  "axiom_audit_command": "lake env lean scripts/CheckNonabelianYangMillsEnergy.lean",
+  "theorem_count": 15,
+  "theorems": [
+    "covariant_derivatives_commute_to_curvature",
+    "dot_self_nonneg",
+    "dot_bracket_skew",
+    "gauge_term_orthogonal",
+    "curvature_bochner_identity",
+    "curvature_bochner_nonpos",
+    "curvature_line_expansion",
+    "energy_line_expansion",
+    "projected_gradient_pairing",
+    "projected_gradient_dissipation",
+    "energy_defect_absorption",
+    "perturbed_energy_dissipation",
+    "integrated_speed_bound",
+    "excursion_squared_bound",
+    "accepted_step_energy_nonincrease"
+  ],
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "numerical_audit_command": "python3 scripts/nonabelian_yang_mills_energy_audit.py",
+  "exact_rational_checks": 80,
+  "nonconstant_identity_cutoffs": [
+    1,
+    2,
+    3
+  ],
+  "max_energy_balance_error": 1.1441680936030707e-12,
+  "energy_decreasing_steps": 24,
+  "prior_local_stage_hashes_unchanged": true,
+  "limitations": [
+    "Global finite-cutoff existence is not a global continuum-limit theorem.",
+    "The new projected-gradient ODE differs from the previously analyzed DeTurck cutoffs.",
+    "No locally gauge-equivariant finite spectral evolution or local Wilson lattice flow is claimed.",
+    "Numerical integration and acceptance checks use ordinary floating point, not certified intervals.",
+    "No mathematical novelty claim."
+  ],
+  "sha256": {
+    "UnifiedTheory/LayerA/NonabelianYangMillsEnergy.lean": "03b59155c0b5c74fe9c38aefdaa87c2cf4cc584624ac8947ed98d85b45e9cdc4",
+    "scripts/CheckNonabelianYangMillsEnergy.lean": "c1dad5dd2c7b5f228c33e69cf5800b6a98e9c9a6797920c464fd3d0561ba48ed",
+    "data/nonabelian_yang_mills_energy_axioms.txt": "3b5db633fbee37b53a60e9f7a20ea374824148fa76269c271afbc86388df4059",
+    "data/nonabelian_yang_mills_energy_audit.json": "09ffa5f8654fb2c344776a4f87c1791f72704fe58409cba179031b2c09dfc9d2",
+    "scripts/nonabelian_yang_mills_energy_audit.py": "e02e251cf6e3a47982328e536cca5fcf669ed3d745b1159154c7f177f963c782",
+    "NONABELIAN_YANG_MILLS_ENERGY.md": "bdca535b15fca123697cf255279703f8d6d7b0d9c50332a7269e79febc59c85d",
+    "UnifiedTheory/LayerA/NonabelianYangMillsLocal.lean": "db3b02eda11fbcfc8ce5125566db9ee1423e1a949320126b2277133fd64a5acc",
+    "scripts/nonabelian_yang_mills_local_audit.py": "8bdd22cb91b8b5b86b1116f2693d32b5af75793ced93a6134ce21e053f9b62e5",
+    "NONABELIAN_YANG_MILLS_LOCAL_LIMIT.md": "3cd8d0f695d40e2cb3182bdbe80edbf4c62b76c7198f9fcd32775d1a1a5e127a"
+  }
+}

@@ -1,0 +1,85 @@
+/- Fresh normalized patch-fluctuation axioms; the runner verifies the retained chain. -/
+import UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling
+import UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling
+import UnifiedTheory.Clay.YangMills.QuaternionCapContraction
+import UnifiedTheory.Clay.YangMills.FiniteProductContraction
+import UnifiedTheory.Clay.YangMills.CompactGibbsContractionMoment
+import UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw
+import UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation
+import UnifiedTheory.Clay.YangMills.WilsonPatchCovariance
+
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.direction
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.direction_norm
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.direction_restore
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.direction_difference
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_zero
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_norm
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_lipschitz
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_smul
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_unit
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.volume_image_bound
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling.radialDouble_volume
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.haar
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.cone
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.haar_cone
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.cone_image
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.haar_image_bound
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.fold
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.radialFold
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.right_lipschitz
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.radialFold_lipschitz
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.radialFold_smul
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.radialFold_unit
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.fold_continuous
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.fold_image_bound
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.fold_compact_bound
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling.fold_midpoint
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.haar_isHaar
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.cap
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.cap_closed
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.Cap
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.cap_compact
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.raw
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.raw_finite
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.raw_mass
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.raw_pos
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.measure
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.measure_probability
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.contract
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.contract_continuous
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.fold_contract
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.contract_injective
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.raw_map_bound
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionCapContraction.measure_map_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteProductContraction.pi_mono
+#print axioms UnifiedTheory.Clay.YangMills.FiniteProductContraction.pi_scale
+#print axioms UnifiedTheory.Clay.YangMills.FiniteProductContraction.pi_map_bound
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContractionMoment.exponential_moment
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsContractionMoment.mean_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.Coordinates
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.baseMeasure
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.base_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble_inside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble_outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.lift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.assemble_lift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.contract
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.contract_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.contract_map_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw.law_probability
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.distance_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.action_gain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.exponential_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.mean_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.action_fluctuation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation.transport_fluctuation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovariance.covariance_moment_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovariance.source_second_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovariance.connected_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPatchCovariance.transport_connected_bound

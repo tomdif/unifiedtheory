@@ -1,0 +1,1128 @@
+{
+  "symbolic": {
+    "exact_square_completion": true,
+    "resolvent_antiderivatives": true,
+    "manifestly_negative_curvature_identity": true,
+    "scope": "The reweighting identity, Gaussian fourth moments and Jensen yield an exact finite-species inequality. Symbolic identities do not replace the analytical uniform-limit argument."
+  },
+  "coefficients": {
+    "cases": [
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 0.0,
+        "limiting_gaussian_mass_ratio": 0.01,
+        "volume_coefficient": 0.0,
+        "curvature_coefficient": -0.5063209530993036,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.0,
+        "independent_curvature": -0.5063209530993035,
+        "quadrature_errors": [
+          0.0,
+          0.0
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.08058348247675387
+      },
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 0.1,
+        "limiting_gaussian_mass_ratio": 0.01084464930283452,
+        "volume_coefficient": 0.0002823426508060191,
+        "curvature_coefficient": -0.5057391854728392,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.0002823426508055103,
+        "independent_curvature": -0.505739185472839,
+        "quadrature_errors": [
+          1.2523193386299637e-17,
+          1.2917836277645905e-17
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.08049089128327123
+      },
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 1.0,
+        "limiting_gaussian_mass_ratio": 0.01827848335726407,
+        "volume_coefficient": 0.002765622028892535,
+        "curvature_coefficient": -0.501014255047447,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.0027656220288923704,
+        "independent_curvature": -0.5010142550474469,
+        "quadrature_errors": [
+          1.2148521612899988e-16,
+          1.1783236723809273e-16
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.07973889525030477
+      },
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 10.0,
+        "limiting_gaussian_mass_ratio": 0.0828005779770173,
+        "volume_coefficient": 0.023951358989805136,
+        "curvature_coefficient": -0.4722393421879942,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.02395135898980506,
+        "independent_curvature": -0.4722393421879941,
+        "quadrature_errors": [
+          3.190003977579131e-13,
+          8.082515101910691e-14
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.0751592256316843
+      },
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 100.0,
+        "limiting_gaussian_mass_ratio": 0.47887521074656314,
+        "volume_coefficient": 0.13774688407134525,
+        "curvature_coefficient": -0.39256895172452405,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.13774688407134478,
+        "independent_curvature": -0.39256895172452383,
+        "quadrature_errors": [
+          2.7812689207354095e-14,
+          5.196986697502626e-15
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.062479289171361634
+      },
+      {
+        "bare_mass_ratio": 0.01,
+        "coupling": 1000.0,
+        "limiting_gaussian_mass_ratio": 2.093964460834991,
+        "volume_coefficient": 0.4388850723062102,
+        "curvature_coefficient": -0.3043084748731216,
+        "strong_coupling_curvature_limit": -0.22612235030125255,
+        "independent_volume": 0.4388850723062099,
+        "independent_curvature": -0.3043084748731214,
+        "quadrature_errors": [
+          9.87404820255704e-14,
+          1.9508889793497137e-14
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.04843219800081314
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 0.0,
+        "limiting_gaussian_mass_ratio": 0.1,
+        "volume_coefficient": 0.0,
+        "curvature_coefficient": -0.44118867099695647,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.0,
+        "independent_curvature": -0.44118867099695647,
+        "quadrature_errors": [
+          0.0,
+          0.0
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.07021735782530954
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 0.1,
+        "limiting_gaussian_mass_ratio": 0.10070727951533238,
+        "volume_coefficient": 0.00019770704531452127,
+        "curvature_coefficient": -0.44095708897442987,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.000197707045314331,
+        "independent_curvature": -0.44095708897442987,
+        "quadrature_errors": [
+          8.775104735448717e-18,
+          5.142153869965551e-18
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.07018050040169321
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 1.0,
+        "limiting_gaussian_mass_ratio": 0.1070042581393273,
+        "volume_coefficient": 0.001957794222421413,
+        "curvature_coefficient": -0.4389273105891404,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.001957794222421679,
+        "independent_curvature": -0.43892731058914053,
+        "quadrature_errors": [
+          8.64772890026653e-17,
+          5.02122878346595e-17
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.06985745113829331
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 10.0,
+        "limiting_gaussian_mass_ratio": 0.16457450626297565,
+        "volume_coefficient": 0.017979343256689807,
+        "curvature_coefficient": -0.4225574440329196,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.017979343256689827,
+        "independent_curvature": -0.42255744403291967,
+        "quadrature_errors": [
+          7.647508799231104e-16,
+          4.1369634304981383e-16
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.06725210595811608
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 100.0,
+        "limiting_gaussian_mass_ratio": 0.5448230149472889,
+        "volume_coefficient": 0.11557521986908366,
+        "curvature_coefficient": -0.35961719195087316,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.11557521986908383,
+        "independent_curvature": -0.35961719195087316,
+        "quadrature_errors": [
+          1.1041323446275323e-13,
+          1.81125068379431e-15
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.05723485371980842
+      },
+      {
+        "bare_mass_ratio": 0.1,
+        "coupling": 1000.0,
+        "limiting_gaussian_mass_ratio": 2.147339399371333,
+        "volume_coefficient": 0.3989397941993815,
+        "curvature_coefficient": -0.2778247638708382,
+        "strong_coupling_curvature_limit": -0.20094848740940652,
+        "independent_volume": 0.3989397941993813,
+        "independent_curvature": -0.2778247638708381,
+        "quadrature_errors": [
+          7.592825190102279e-13,
+          6.154052978409041e-15
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.044217184483382514
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 0.0,
+        "limiting_gaussian_mass_ratio": 1.0,
+        "volume_coefficient": 0.0,
+        "curvature_coefficient": -0.23217831296817812,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 0.0,
+        "independent_curvature": -0.23217831296817815,
+        "quadrature_errors": [
+          0.0,
+          0.0
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.036952326187622654
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 0.1,
+        "limiting_gaussian_mass_ratio": 1.0003312904160588,
+        "volume_coefficient": 4.3336773307631193e-05,
+        "curvature_coefficient": -0.23215783100996495,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 4.333677330758547e-05,
+        "independent_curvature": -0.23215783100996495,
+        "quadrature_errors": [
+          1.9243641151173805e-18,
+          4.547908319540654e-19
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.03694906638272883
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 1.0,
+        "limiting_gaussian_mass_ratio": 1.0033074936155995,
+        "volume_coefficient": 0.00043265947270508515,
+        "curvature_coefficient": -0.23197415760210094,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 0.0004326594727056449,
+        "independent_curvature": -0.231974157602101,
+        "quadrature_errors": [
+          1.9196514943567296e-17,
+          4.533159760392674e-18
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.03691983385195274
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 10.0,
+        "limiting_gaussian_mass_ratio": 1.0325530020413067,
+        "volume_coefficient": 0.0042578593029520976,
+        "curvature_coefficient": -0.23020028061592746,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 0.00425785930295224,
+        "independent_curvature": -0.2302002806159276,
+        "quadrature_errors": [
+          1.8743626853807885e-16,
+          4.3921141218440693e-17
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.03663751256116627
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 100.0,
+        "limiting_gaussian_mass_ratio": 1.286533677442322,
+        "volume_coefficient": 0.037225500990994094,
+        "curvature_coefficient": -0.21682720642439557,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 0.03722550099099383,
+        "independent_curvature": -0.2168272064243955,
+        "quadrature_errors": [
+          1.5462718459405684e-15,
+          3.4086303876762747e-16
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.03450912169924932
+      },
+      {
+        "bare_mass_ratio": 1.0,
+        "coupling": 1000.0,
+        "limiting_gaussian_mass_ratio": 2.722321635771306,
+        "volume_coefficient": 0.2014302852059366,
+        "curvature_coefficient": -0.17634063363888333,
+        "strong_coupling_curvature_limit": -0.1111815299984064,
+        "independent_volume": 0.20143028520593592,
+        "independent_curvature": -0.17634063363888325,
+        "quadrature_errors": [
+          7.0729808707131625e-15,
+          1.239845544660387e-15
+        ],
+        "inverse_newton_per_species_over_cutoff_squared": 0.02806548351158524
+      }
+    ],
+    "scope": "The optimized Gaussian curvature coefficient has the Einstein sign for all positive coupling by the negative-sum identity; numerical samples check the formula, not the all-coupling theorem."
+  },
+  "finite_gap_and_geometry": {
+    "cases": [
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "gaussian_mass_ratio": 0.10702683825800721,
+        "gap_residual": 9.540979117872439e-18,
+        "mass_shift_times_product_over_sum": 0.004001891802962048,
+        "predicted_scaled_mass_shift": 0.003983335979997239,
+        "mass_shift_error_times_size_squared": 0.0047502906789911314,
+        "complete_gaussian_action_per_species": -76.81180702411143,
+        "leading_volume_term": 288.6885048613719,
+        "leading_curvature_term": -365.18752241016483,
+        "gaussian_action_remainder": -0.3127894753184819
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "gaussian_mass_ratio": 0.10700988349591295,
+        "gap_residual": 1.5612511283791264e-17,
+        "mass_shift_times_product_over_sum": 0.003987945099485028,
+        "predicted_scaled_mass_shift": 0.003983335979997239,
+        "mass_shift_error_times_size_squared": 0.004719738355496439,
+        "complete_gaussian_action_per_species": 3157.9540628957093,
+        "leading_volume_term": 4619.01607778195,
+        "leading_curvature_term": -1460.7500896406593,
+        "gaussian_action_remainder": -0.3119252455815058
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "gaussian_mass_ratio": 0.10700566325878061,
+        "gap_residual": 6.071532165918825e-18,
+        "mass_shift_times_product_over_sum": 0.003984486425123963,
+        "predicted_scaled_mass_shift": 0.003983335979997239,
+        "mass_shift_error_times_size_squared": 0.00471222323906062,
+        "complete_gaussian_action_per_species": 68060.94517476283,
+        "leading_volume_term": 73904.2572445112,
+        "leading_curvature_term": -5843.000358562637,
+        "gaussian_action_remainder": -0.31171118573092826
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "gaussian_mass_ratio": 0.1070046093431115,
+        "gap_residual": 6.071532165918825e-18,
+        "mass_shift_times_product_over_sum": 0.003983623477079863,
+        "predicted_scaled_mass_shift": 0.003983335979997239,
+        "mass_shift_error_times_size_squared": 0.004710352201712453,
+        "complete_gaussian_action_per_species": 1159095.8028202804,
+        "leading_volume_term": 1182468.1159121792,
+        "leading_curvature_term": -23372.00143425055,
+        "gaussian_action_remainder": -0.3116576482534583
+      },
+      {
+        "coupling": 10.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "gaussian_mass_ratio": 0.1647436103269288,
+        "gap_residual": 1.9567680809018384e-15,
+        "mass_shift_times_product_over_sum": 0.02997044333446625,
+        "predicted_scaled_mass_shift": 0.02987713338935594,
+        "mass_shift_error_times_size_squared": 0.023887345948239158,
+        "complete_gaussian_action_per_species": 2299.3531966213504,
+        "leading_volume_term": 2651.1620392584523,
+        "leading_curvature_term": -351.56779343538915,
+        "gaussian_action_remainder": -0.2410492017127126
+      },
+      {
+        "coupling": 10.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "gaussian_mass_ratio": 0.16461668343596697,
+        "gap_residual": 1.790234627208065e-15,
+        "mass_shift_times_product_over_sum": 0.029900371252923517,
+        "predicted_scaled_mass_shift": 0.02987713338935594,
+        "mass_shift_error_times_size_squared": 0.023795572293199285,
+        "complete_gaussian_action_per_species": 41012.080892574246,
+        "leading_volume_term": 42418.59262813524,
+        "leading_curvature_term": -1406.2711737415566,
+        "gaussian_action_remainder": -0.2405618194343333
+      },
+      {
+        "coupling": 10.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "gaussian_mass_ratio": 0.1645850444081868,
+        "gap_residual": 1.734723475976807e-15,
+        "mass_shift_times_product_over_sum": 0.0298829373126112,
+        "predicted_scaled_mass_shift": 0.02987713338935594,
+        "mass_shift_error_times_size_squared": 0.023772869653541306,
+        "complete_gaussian_action_per_species": 673072.1569143317,
+        "leading_volume_term": 678697.4820501638,
+        "leading_curvature_term": -5625.084694966226,
+        "gaussian_action_remainder": -0.24044086584399338
+      },
+      {
+        "coupling": 10.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "gaussian_mass_ratio": 0.16457714041548432,
+        "gap_residual": 1.7208456881689926e-15,
+        "mass_shift_times_product_over_sum": 0.029878584024537795,
+        "predicted_scaled_mass_shift": 0.02987713338935594,
+        "mass_shift_error_times_size_squared": 0.02376720681951383,
+        "complete_gaussian_action_per_species": 10836659.13361208,
+        "leading_volume_term": 10859159.71280262,
+        "leading_curvature_term": -22500.338779864906,
+        "gaussian_action_remainder": -0.24041067615326028
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "gaussian_mass_ratio": 0.5454176578093752,
+        "gap_residual": 5.551115123125783e-17,
+        "mass_shift_times_product_over_sum": 0.10538901186514565,
+        "predicted_scaled_mass_shift": 0.10527437513561286,
+        "mass_shift_error_times_size_squared": 0.029347002760395924,
+        "complete_gaussian_action_per_species": 16742.963712463203,
+        "leading_volume_term": 17042.2596210156,
+        "leading_curvature_term": -299.2015037031265,
+        "gaussian_action_remainder": -0.09440484927154102
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "gaussian_mass_ratio": 0.5449715543466139,
+        "gap_residual": 1.1102230246251565e-16,
+        "mass_shift_times_product_over_sum": 0.1053030080137992,
+        "predicted_scaled_mass_shift": 0.10527437513561286,
+        "mass_shift_error_times_size_squared": 0.029320067262815996,
+        "complete_gaussian_action_per_species": 271479.25364570157,
+        "leading_volume_term": 272676.1539362496,
+        "leading_curvature_term": -1196.806014812506,
+        "gaussian_action_remainder": -0.09427573553875845
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "gaussian_mass_ratio": 0.5448601422235566,
+        "gap_residual": 0.0,
+        "mass_shift_times_product_over_sum": 0.1052815317178871,
+        "predicted_scaled_mass_shift": 0.10527437513561286,
+        "mass_shift_error_times_size_squared": 0.029313360995274707,
+        "complete_gaussian_action_per_species": 4358031.144676942,
+        "leading_volume_term": 4362818.462979994,
+        "leading_curvature_term": -4787.224059250024,
+        "gaussian_action_remainder": -0.09424380138079869
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "gaussian_mass_ratio": 0.5448322962931438,
+        "gap_residual": 1.1102230246251565e-16,
+        "mass_shift_times_product_over_sum": 0.1052761641827741,
+        "predicted_scaled_mass_shift": 0.10527437513561286,
+        "mass_shift_error_times_size_squared": 0.02931174868990638,
+        "complete_gaussian_action_per_species": 69785946.41720712,
+        "leading_volume_term": 69805095.4076799,
+        "leading_curvature_term": -19148.896237000095,
+        "gaussian_action_remainder": -0.0942357785825152
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "gaussian_mass_ratio": 2.1483695275194123,
+        "gap_residual": 0.0,
+        "mass_shift_times_product_over_sum": 0.18257040409037018,
+        "predicted_scaled_mass_shift": 0.18250211172347236,
+        "mass_shift_error_times_size_squared": 0.017482845925840707,
+        "complete_gaussian_action_per_species": 58594.89731742213,
+        "leading_volume_term": 58826.066293464,
+        "leading_curvature_term": -231.1502035405374,
+        "gaussian_action_remainder": -0.018772501329294755
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "gaussian_mass_ratio": 2.1475968591511365,
+        "gap_residual": 0.0,
+        "mass_shift_times_product_over_sum": 0.1825191792822457,
+        "predicted_scaled_mass_shift": 0.18250211172347236,
+        "mass_shift_error_times_size_squared": 0.017477180183902874,
+        "complete_gaussian_action_per_species": 940292.4411788697,
+        "leading_volume_term": 941217.060695424,
+        "leading_curvature_term": -924.6008141621496,
+        "gaussian_action_remainder": -0.0187023921389482
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "gaussian_mass_ratio": 2.1474037598020312,
+        "gap_residual": 0.0,
+        "mass_shift_times_product_over_sum": 0.1825063782507641,
+        "predicted_scaled_mass_shift": 0.18250211172347236,
+        "mass_shift_error_times_size_squared": 0.01747569578697039,
+        "complete_gaussian_action_per_species": 15055774.549184944,
+        "leading_volume_term": 15059472.971126784,
+        "leading_curvature_term": -3698.4032566485985,
+        "gaussian_action_remainder": -0.018685190560063347
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "gaussian_mass_ratio": 2.1473554891968907,
+        "gap_residual": 0.0,
+        "mass_shift_times_product_over_sum": 0.1825031782640368,
+        "predicted_scaled_mass_shift": 0.18250211172347236,
+        "mass_shift_error_times_size_squared": 0.017474200607921375,
+        "complete_gaussian_action_per_species": 240936773.90632093,
+        "leading_volume_term": 240951567.53802854,
+        "leading_curvature_term": -14793.613026594394,
+        "gaussian_action_remainder": -0.018681014305911958
+      }
+    ],
+    "scope": "These are complete finite spectral sums for the variational Gaussian action. The full nonlinear partition function is enclosed separately; it has not been integrated at these large dimensions."
+  },
+  "exact_radial_enclosures": {
+    "cases": [
+      {
+        "coupling": 1.0,
+        "species": 8,
+        "exact_interaction_action_per_species": 0.12167450752497935,
+        "optimized_gaussian_interaction": 0.10589135743043693,
+        "exact_gap": 0.015783150094542425,
+        "analytical_gap_bound": 0.01909172827542053,
+        "uniform_all_coupling_gap_bound": 0.0625,
+        "quadrature_error": 4.899524979255549e-15
+      },
+      {
+        "coupling": 1.0,
+        "species": 32,
+        "exact_interaction_action_per_species": 0.1099982271022103,
+        "optimized_gaussian_interaction": 0.10589135743043693,
+        "exact_gap": 0.004106869671773372,
+        "analytical_gap_bound": 0.004772932068855132,
+        "uniform_all_coupling_gap_bound": 0.015625,
+        "quadrature_error": 3.059034542728815e-15
+      },
+      {
+        "coupling": 1.0,
+        "species": 128,
+        "exact_interaction_action_per_species": 0.1069289221901497,
+        "optimized_gaussian_interaction": 0.10589135743043693,
+        "exact_gap": 0.0010375647597127696,
+        "analytical_gap_bound": 0.001193233017213783,
+        "uniform_all_coupling_gap_bound": 0.00390625,
+        "quadrature_error": 7.352419451006793e-16
+      },
+      {
+        "coupling": 1.0,
+        "species": 512,
+        "exact_interaction_action_per_species": 0.10615143968846737,
+        "optimized_gaussian_interaction": 0.10589135743043693,
+        "exact_gap": 0.00026008225803043905,
+        "analytical_gap_bound": 0.00029830825430344576,
+        "uniform_all_coupling_gap_bound": 0.0009765625,
+        "quadrature_error": 6.056159942008755e-16
+      },
+      {
+        "coupling": 10.0,
+        "species": 8,
+        "exact_interaction_action_per_species": 0.4218768443217371,
+        "optimized_gaussian_interaction": 0.3916789575410014,
+        "exact_gap": 0.030197886780735705,
+        "analytical_gap_bound": 0.042112824635066395,
+        "uniform_all_coupling_gap_bound": 0.0625,
+        "quadrature_error": 4.5433794198875e-15
+      },
+      {
+        "coupling": 10.0,
+        "species": 32,
+        "exact_interaction_action_per_species": 0.3995976431408452,
+        "optimized_gaussian_interaction": 0.3916789575410014,
+        "exact_gap": 0.007918685599843822,
+        "analytical_gap_bound": 0.010528206158766599,
+        "uniform_all_coupling_gap_bound": 0.015625,
+        "quadrature_error": 4.7380897028682664e-15
+      },
+      {
+        "coupling": 10.0,
+        "species": 128,
+        "exact_interaction_action_per_species": 0.3936828869815693,
+        "optimized_gaussian_interaction": 0.3916789575410014,
+        "exact_gap": 0.0020039294405678754,
+        "analytical_gap_bound": 0.0026320515396916497,
+        "uniform_all_coupling_gap_bound": 0.00390625,
+        "quadrature_error": 2.5507372459163067e-15
+      },
+      {
+        "coupling": 10.0,
+        "species": 512,
+        "exact_interaction_action_per_species": 0.39218147230911543,
+        "optimized_gaussian_interaction": 0.3916789575410014,
+        "exact_gap": 0.0005025147681140263,
+        "analytical_gap_bound": 0.0006580128849229124,
+        "uniform_all_coupling_gap_bound": 0.0009765625,
+        "quadrature_error": 1.278119188527723e-16
+      },
+      {
+        "coupling": 100.0,
+        "species": 8,
+        "exact_interaction_action_per_species": 0.8850907637946359,
+        "optimized_gaussian_interaction": 0.8479722189560954,
+        "exact_gap": 0.03711854483854049,
+        "analytical_gap_bound": 0.05512401071859547,
+        "uniform_all_coupling_gap_bound": 0.0625,
+        "quadrature_error": 1.3942070455641509e-15
+      },
+      {
+        "coupling": 100.0,
+        "species": 32,
+        "exact_interaction_action_per_species": 0.8576988132666715,
+        "optimized_gaussian_interaction": 0.8479722189560954,
+        "exact_gap": 0.009726594310576098,
+        "analytical_gap_bound": 0.013781002679648867,
+        "uniform_all_coupling_gap_bound": 0.015625,
+        "quadrature_error": 4.9382432614586e-15
+      },
+      {
+        "coupling": 100.0,
+        "species": 128,
+        "exact_interaction_action_per_species": 0.850432616831956,
+        "optimized_gaussian_interaction": 0.8479722189560954,
+        "exact_gap": 0.0024603978758606093,
+        "analytical_gap_bound": 0.003445250669912217,
+        "uniform_all_coupling_gap_bound": 0.00390625,
+        "quadrature_error": 2.1605379844190932e-15
+      },
+      {
+        "coupling": 100.0,
+        "species": 512,
+        "exact_interaction_action_per_species": 0.8485891232420562,
+        "optimized_gaussian_interaction": 0.8479722189560954,
+        "exact_gap": 0.0006169042859607288,
+        "analytical_gap_bound": 0.0008613126674780542,
+        "uniform_all_coupling_gap_bound": 0.0009765625,
+        "quadrature_error": 8.347215637636438e-16
+      }
+    ],
+    "scope": "Independent nonperturbative integrals for the exact constant-mode member verify the enclosure at finite species. The general proof is square completion and Jensen, not extrapolation from these cases."
+  },
+  "eight_species_shapes": {
+    "cases": [
+      {
+        "coupling": 0.1,
+        "species": 8,
+        "base_sizes": [
+          12,
+          12
+        ],
+        "deformed_sizes": [
+          16,
+          9
+        ],
+        "gaussian_shape_difference": -21.75141021161464,
+        "full_interacting_difference_lower": -22.792090670386944,
+        "full_interacting_difference_upper": -20.70779180963593,
+        "enclosure_has_negative_sign": true
+      },
+      {
+        "coupling": 0.1,
+        "species": 8,
+        "base_sizes": [
+          24,
+          24
+        ],
+        "deformed_sizes": [
+          32,
+          18
+        ],
+        "gaussian_shape_difference": -86.5703291557964,
+        "full_interacting_difference_lower": -103.01760018363645,
+        "full_interacting_difference_upper": -70.11163620091786,
+        "enclosure_has_negative_sign": true
+      },
+      {
+        "coupling": 0.1,
+        "species": 8,
+        "base_sizes": [
+          48,
+          48
+        ],
+        "deformed_sizes": [
+          64,
+          36
+        ],
+        "gaussian_shape_difference": -345.8526748836168,
+        "full_interacting_difference_lower": -608.206830687726,
+        "full_interacting_difference_upper": -83.45314756067268,
+        "enclosure_has_negative_sign": true
+      },
+      {
+        "coupling": 0.1,
+        "species": 8,
+        "base_sizes": [
+          96,
+          96
+        ],
+        "deformed_sizes": [
+          128,
+          72
+        ],
+        "gaussian_shape_difference": -1382.9836436367186,
+        "full_interacting_difference_lower": -5577.453428661456,
+        "full_interacting_difference_upper": 2811.667314416438,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 1.0,
+        "species": 8,
+        "base_sizes": [
+          12,
+          12
+        ],
+        "deformed_sizes": [
+          16,
+          9
+        ],
+        "gaussian_shape_difference": -21.648225965049306,
+        "full_interacting_difference_lower": -31.849648112403848,
+        "full_interacting_difference_upper": -11.418833014559958,
+        "enclosure_has_negative_sign": true
+      },
+      {
+        "coupling": 1.0,
+        "species": 8,
+        "base_sizes": [
+          24,
+          24
+        ],
+        "deformed_sizes": [
+          32,
+          18
+        ],
+        "gaussian_shape_difference": -86.16888744577363,
+        "full_interacting_difference_lower": -247.45140880670988,
+        "full_interacting_difference_upper": 75.22253140491944,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 1.0,
+        "species": 8,
+        "base_sizes": [
+          48,
+          48
+        ],
+        "deformed_sizes": [
+          64,
+          36
+        ],
+        "gaussian_shape_difference": -344.2577512710668,
+        "full_interacting_difference_lower": -2917.1284977554706,
+        "full_interacting_difference_upper": 2229.0457148921123,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 1.0,
+        "species": 8,
+        "base_sizes": [
+          96,
+          96
+        ],
+        "deformed_sizes": [
+          128,
+          72
+        ],
+        "gaussian_shape_difference": -1376.6146880933666,
+        "full_interacting_difference_lower": -42512.05730428572,
+        "full_interacting_difference_upper": 39760.555963252984,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 10.0,
+        "species": 8,
+        "base_sizes": [
+          12,
+          12
+        ],
+        "deformed_sizes": [
+          16,
+          9
+        ],
+        "gaussian_shape_difference": -20.82166078881795,
+        "full_interacting_difference_lower": -107.26927200745763,
+        "full_interacting_difference_upper": 65.81732619612806,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 10.0,
+        "species": 8,
+        "base_sizes": [
+          24,
+          24
+        ],
+        "deformed_sizes": [
+          32,
+          18
+        ],
+        "gaussian_shape_difference": -82.93655926497286,
+        "full_interacting_difference_lower": -1452.7575545248587,
+        "full_interacting_difference_upper": 1287.6355378607334,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 10.0,
+        "species": 8,
+        "base_sizes": [
+          48,
+          48
+        ],
+        "deformed_sizes": [
+          64,
+          36
+        ],
+        "gaussian_shape_difference": -331.4000846688141,
+        "full_interacting_difference_lower": -22195.71271535482,
+        "full_interacting_difference_upper": 21535.902899068915,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 10.0,
+        "species": 8,
+        "base_sizes": [
+          96,
+          96
+        ],
+        "deformed_sizes": [
+          128,
+          72
+        ],
+        "gaussian_shape_difference": -1325.2551306530368,
+        "full_interacting_difference_lower": -350943.497062308,
+        "full_interacting_difference_upper": 348304.9342415039,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 100.0,
+        "species": 8,
+        "base_sizes": [
+          12,
+          12
+        ],
+        "deformed_sizes": [
+          16,
+          9
+        ],
+        "gaussian_shape_difference": -17.687917854392254,
+        "full_interacting_difference_lower": -425.30943146112577,
+        "full_interacting_difference_upper": 390.39113195231704,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 100.0,
+        "species": 8,
+        "base_sizes": [
+          24,
+          24
+        ],
+        "deformed_sizes": [
+          32,
+          18
+        ],
+        "gaussian_shape_difference": -70.55117714779772,
+        "full_interacting_difference_lower": -6560.378682058329,
+        "full_interacting_difference_upper": 6421.092642037629,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 100.0,
+        "species": 8,
+        "base_sizes": [
+          48,
+          48
+        ],
+        "deformed_sizes": [
+          64,
+          36
+        ],
+        "gaussian_shape_difference": -282.0059745251201,
+        "full_interacting_difference_lower": -103991.29251578248,
+        "full_interacting_difference_upper": 103434.53209273389,
+        "enclosure_has_negative_sign": false
+      },
+      {
+        "coupling": 100.0,
+        "species": 8,
+        "base_sizes": [
+          96,
+          96
+        ],
+        "deformed_sizes": [
+          128,
+          72
+        ],
+        "gaussian_shape_difference": -1127.8255824148655,
+        "full_interacting_difference_lower": -1659965.1075561894,
+        "full_interacting_difference_upper": 1657738.448788784,
+        "enclosure_has_negative_sign": false
+      }
+    ],
+    "scope": "Analytical finite-species enclosures, printed with floating-point endpoints. Some finite-size shape signs follow; many bounds include both signs. These are not direct evaluations of the eight-species partition function or a finite-species Einstein limit."
+  },
+  "joint_geometry_species_limit": {
+    "cases": [
+      {
+        "coupling": 1.0,
+        "k": 2,
+        "scale": 36,
+        "shape_step": 0.4054651081081644,
+        "species": 524288,
+        "gaussian_second_difference": -3.710991804552639,
+        "gaussian_fourth_difference": -15.720553819090172,
+        "finite_einstein_second": -3.7081144735256286,
+        "finite_einstein_fourth": -15.663314422511563,
+        "gaussian_second_error": -0.002877331027010488,
+        "gaussian_fourth_error": -0.0572393965786091,
+        "full_action_second_deviation_bound": 0.015035854316739747,
+        "full_action_fourth_deviation_bound": 0.3658315235477215
+      },
+      {
+        "coupling": 1.0,
+        "k": 3,
+        "scale": 144,
+        "shape_step": 0.2876820724517809,
+        "species": 344373768,
+        "gaussian_second_difference": -3.609524788295238,
+        "gaussian_fourth_difference": -14.843043310017162,
+        "finite_einstein_second": -3.609363234202226,
+        "finite_einstein_fourth": -14.840159910447284,
+        "gaussian_second_error": -0.00016155409301177315,
+        "gaussian_fourth_error": -0.0028833995698782644,
+        "full_action_second_deviation_bound": 0.0007275608543665858,
+        "full_action_fourth_deviation_bound": 0.035164441019964444
+      },
+      {
+        "coupling": 1.0,
+        "k": 4,
+        "scale": 400,
+        "shape_step": 0.22314355131420976,
+        "species": 34359738368,
+        "gaussian_second_difference": -3.5701082545085696,
+        "gaussian_fourth_difference": -14.519295447444271,
+        "finite_einstein_second": -3.5700882040497355,
+        "finite_einstein_fourth": -14.51895277100398,
+        "gaussian_second_error": -2.0050458834131035e-05,
+        "gaussian_fourth_error": -0.0003426764402920668,
+        "full_action_second_deviation_bound": 9.351934432772135e-05,
+        "full_action_fourth_deviation_bound": 0.007512643203863387
+      },
+      {
+        "coupling": 1.0,
+        "k": 5,
+        "scale": 900,
+        "shape_step": 0.18232155679395465,
+        "species": 1220703125000,
+        "gaussian_second_difference": -3.5505030742792187,
+        "gaussian_fourth_difference": -14.360124772482436,
+        "finite_einstein_second": -3.550499203321142,
+        "finite_einstein_fourth": -14.360059500356899,
+        "gaussian_second_error": -3.870958076745978e-06,
+        "gaussian_fourth_error": -6.52721255374189e-05,
+        "full_action_second_deviation_bound": 1.9961764215958823e-05,
+        "full_action_fourth_deviation_bound": 0.00240205458269154
+      },
+      {
+        "coupling": 10.0,
+        "k": 2,
+        "scale": 36,
+        "shape_step": 0.4054651081081644,
+        "species": 524288,
+        "gaussian_second_difference": -3.5722052424855066,
+        "gaussian_fourth_difference": -15.126574484500157,
+        "finite_einstein_second": -3.569819731680263,
+        "finite_einstein_fourth": -15.079148523651298,
+        "gaussian_second_error": -0.00238551080524374,
+        "gaussian_fourth_error": -0.04742596084885875,
+        "full_action_second_deviation_bound": 0.015035854316739747,
+        "full_action_fourth_deviation_bound": 0.3658315235477215
+      },
+      {
+        "coupling": 10.0,
+        "k": 3,
+        "scale": 144,
+        "shape_step": 0.2876820724517809,
+        "species": 344373768,
+        "gaussian_second_difference": -3.474885428941689,
+        "gaussian_fourth_difference": -14.289085120093926,
+        "finite_einstein_second": -3.4747514361404597,
+        "finite_einstein_fourth": -14.28669369509394,
+        "gaussian_second_error": -0.0001339928012291658,
+        "gaussian_fourth_error": -0.002391424999986569,
+        "full_action_second_deviation_bound": 0.0007275608543665858,
+        "full_action_fourth_deviation_bound": 0.035164441019964444
+      },
+      {
+        "coupling": 10.0,
+        "k": 4,
+        "scale": 400,
+        "shape_step": 0.22314355131420976,
+        "species": 34359738368,
+        "gaussian_second_difference": -3.4369578049379683,
+        "gaussian_fourth_difference": -13.977750247796639,
+        "finite_einstein_second": -3.4369411747254714,
+        "finite_einstein_fourth": -13.977466028977299,
+        "gaussian_second_error": -1.663021249687091e-05,
+        "gaussian_fourth_error": -0.00028421881934015403,
+        "full_action_second_deviation_bound": 9.351934432772135e-05,
+        "full_action_fourth_deviation_bound": 0.007512643203863387
+      },
+      {
+        "coupling": 10.0,
+        "k": 5,
+        "scale": 900,
+        "shape_step": 0.18232155679395465,
+        "species": 1220703125000,
+        "gaussian_second_difference": -3.418085959421072,
+        "gaussian_fourth_difference": -13.824552884341237,
+        "finite_einstein_second": -3.4180827490150247,
+        "finite_einstein_fourth": -13.824498709107326,
+        "gaussian_second_error": -3.21040604722711e-06,
+        "gaussian_fourth_error": -5.4175233911379905e-05,
+        "full_action_second_deviation_bound": 1.9961764215958823e-05,
+        "full_action_fourth_deviation_bound": 0.00240205458269154
+      },
+      {
+        "coupling": 100.0,
+        "k": 2,
+        "scale": 36,
+        "shape_step": 0.4054651081081644,
+        "species": 524288,
+        "gaussian_second_difference": -3.039462663249355,
+        "gaussian_fourth_difference": -12.860332033649575,
+        "finite_einstein_second": -3.0380923725429927,
+        "finite_einstein_fourth": -12.833097903401692,
+        "gaussian_second_error": -0.0013702907063621872,
+        "gaussian_fourth_error": -0.02723413024788357,
+        "full_action_second_deviation_bound": 0.015035854316739747,
+        "full_action_fourth_deviation_bound": 0.3658315235477215
+      },
+      {
+        "coupling": 100.0,
+        "k": 3,
+        "scale": 144,
+        "shape_step": 0.2876820724517809,
+        "species": 344373768,
+        "gaussian_second_difference": -2.957261562815229,
+        "gaussian_fourth_difference": -12.16005389711208,
+        "finite_einstein_second": -2.957184571796933,
+        "finite_einstein_fourth": -12.158679823166613,
+        "gaussian_second_error": -7.699101829583554e-05,
+        "gaussian_fourth_error": -0.0013740739454668471,
+        "full_action_second_deviation_bound": 0.0007275608543665858,
+        "full_action_fourth_deviation_bound": 0.035164441019964444
+      },
+      {
+        "coupling": 100.0,
+        "k": 4,
+        "scale": 400,
+        "shape_step": 0.22314355131420976,
+        "species": 34359738368,
+        "gaussian_second_difference": -2.9250157329534883,
+        "gaussian_fourth_difference": -11.895675177813992,
+        "finite_einstein_second": -2.925006177524162,
+        "finite_einstein_fourth": -11.89551185267483,
+        "gaussian_second_error": -9.555429326457698e-06,
+        "gaussian_fourth_error": -0.00016332513916239577,
+        "full_action_second_deviation_bound": 9.351934432772135e-05,
+        "full_action_fourth_deviation_bound": 0.007512643203863387
+      },
+      {
+        "coupling": 100.0,
+        "k": 5,
+        "scale": 900,
+        "shape_step": 0.18232155679395465,
+        "species": 1220703125000,
+        "gaussian_second_difference": -2.908958568665492,
+        "gaussian_fourth_difference": -11.76536090180594,
+        "finite_einstein_second": -2.90895672864005,
+        "finite_einstein_fourth": -11.765329131228253,
+        "gaussian_second_error": -1.8400254422346052e-06,
+        "gaussian_fourth_error": -3.177057768688485e-05,
+        "full_action_second_deviation_bound": 1.9961764215958823e-05,
+        "full_action_fourth_deviation_bound": 0.00240205458269154
+      }
+    ],
+    "scope": "The full finite-coupling partition function lies within the analytical stencil errors shown around the Gaussian values. The joint limit requires growing species, and is not a proof for fixed eight-species matter."
+  },
+  "source_sha256": {
+    "NONPERTURBATIVE_MATTER_BOUND.md": "e0340fa12789da879e7dd03a56018fdfb40f6f768a892c7f8fea1691a04c282c",
+    "scripts/nonperturbative_matter_bound_audit.py": "8f8f7af12274dba46ba2be055e59b4a9058f19ead2468b8a2259baced78768eb",
+    "LOCAL_SYMBOL_INTERACTION.md": "a4b02cc8be542c1436b66b25e8c964d722d503a99cf5fc55a507eba390e8f121",
+    "scripts/local_symbol_interaction_audit.py": "1955d28f66772e9078f68f69fb92e655d0454fc52b0e2a22483a0c16ef50990b",
+    "PROPER_RESOLUTION_INDUCTION.md": "ae9b5abb3dbf2d2edef31b84427d0bd38eb6450b36cf9286becf58069d627b26",
+    "scripts/proper_resolution_induction_audit.py": "03228f67f7e5d081fa131a1e04fafacc43ac0125413df73ac995d9fbe93b27bc",
+    "GEOMETRIC_SPECTRAL_INDUCTION.md": "b14ef872fdd6818cc6b3deefa816d4f7ca7705613723203733adfca290033869",
+    "BALANCED_MATTER_INDUCTION.md": "c5d82aa29edbec7344e53b4cd05d47b85cbcdf302ab33d7fa4bdc23ef0695760",
+    "CONTINUUM_EINSTEIN_BRIDGE.md": "5f8afaf33cfd57b024006378d50cd834d73671a73f2ea6084d993f1313b456be",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "An exact square-completion identity encloses the full positive-quartic action per species between an optimized Gaussian action and that value plus P/(2q), for every finite species count and nonnegative coupling. The Gaussian homogeneous curvature coefficient is negative at every coupling. A joint large-geometry/large-species limit controls full second and fourth shape differences at finite coupling. Fixed eight-species curvature recovery is not proved. Nor are fixed physical Newton coupling in the large-species limit, independent local sites, microscopic refinement, arbitrary-metric dynamics, Lorentzian gravity, Standard Model or TOE. No new Lean theorem is asserted."
+}

@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual conditional and exterior-dependent weighted collective response proved, with squared source range and exterior-only weight restriction",
+  "scope": "For any fixed simultaneous rotation q and any continuous square weight F^2, including weights depending on the rotated coordinates, the actual ground-log correction has an energy bound. With pi=g^2 Haar, E_q(F)=E_pi[(F(qU)-F(U))^2] and A_q(gF)=integral_Haar[(g(qU)F(qU)-g(U)F(U))^2], the proved inequality is E_pi[F^2*(logg(qU)+logg(qinv U)-2logg(U))]+A_q(gF)<=(E_q(F)+E_qinv(F))/2. The underlying ground-amplitude finite-difference identity is exact, proved by Haar translation; scalar log x<=x-1 and a symmetric energy comparison give this bound. Actual row entropies therefore satisfy E_pi[F^2*(D_q+D_qinv)]+A_q(gF)<=18*beta*cost(q)*E_pi[F^2]+(E_q(F)+E_qinv(F))/2. The original full transfer on continuous gauge-invariant sources f in [lo,hi] satisfies E_pi[w*(Pf(U)-Pf(qU))^2]<=range^2*(18*beta*cost(q)*E_pi[w]+(E_q(sqrt(w))+E_qinv(sqrt(w)))/2) for every continuous nonnegative weight w. There is no exterior-only restriction on w, but the rotation q is fixed, the explicit square-root-weight energy must still be controlled, and the source norm remains range rather than variance dissipation. No new global coercivity, distant mixed-ground summability, physical Haar-form estimate, continuum limit or Clay mass gap is proved; all twelve full obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactRotationIdentity",
+    "UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy",
+    "UnifiedTheory.Clay.YangMills.WilsonInteriorResponse"
+  ],
+  "new_declarations": 25,
+  "retained_declarations": 7753,
+  "cumulative_declarations": 7778,
+  "proof": {
+    "definitions": "E_q(F)=integral_Haar g(U)^2*(F(qU)-F(U))^2; M_q(F)=integral_Haar g(U)*g(qU)*(F(qU)-F(U))^2; A_q(gF)=integral_Haar(g(qU)*F(qU)-g(U)*F(U))^2.",
+    "exact_identity": "integral_Haar F(U)^2*g(U)*(g(qU)+g(qinv U)-2*g(U))+A_q(gF)=M_q(F). Expanding both sides leaves differences of two integrable functions and their Haar translates, whose integrals vanish.",
+    "symmetric_energy_comparison": "2*g(U)*g(qU)<=g(U)^2+g(qU)^2, multiplied by a nonnegative source difference square. Haar translation turns the second term into E_qinv(F), giving M_q(F)<=(E_q(F)+E_qinv(F))/2.",
+    "weighted_ground_log": "For positive a,b, a^2*(log b-log a)<=a*(b-a). Multiply by F^2, apply in the q and qinv directions, and combine with the exact identity. The actual signed ground correction is bounded by the source energy minus nonnegative amplitude energy, without any invariance claim for the weighted law.",
+    "actual_density_binding": "The actual groundLaw equals g^2 times the actual normalized spatial Haar measure. Its stationary-integral theorem binds the generic compact-group identity to the already-constructed Wilson ground state.",
+    "actual_entropy_form": "Multiply the actual pointwise paired row-entropy estimate by F^2 and integrate. The weighted ground correction is controlled by the preceding energy identity. No new eigenvector, spectral, mixing or factorization premise enters.",
+    "physical_response": "Integrate the proved bounded-source entropy response with F^2. Drop the nonnegative inverse entropy and amplitude terms. The actual row mean equals the original full transfer on gauge-invariant sources.",
+    "arbitrary_nonnegative_weight": "For continuous w>=0, F=sqrt(w) is continuous and F^2=w. This gives the actual interior-dependent weighted response with exactly the symmetric source energy of sqrt(w)."
+  },
+  "decision": "The interior dependence of a source weight is now priced by a proved quadratic-form estimate. Next determine whether actual source dynamics can pay for or absorb this square-root-weight energy while replacing range squared by variance loss. The identity itself does not provide that absorption or the full physical Haar-form estimate.",
+  "not_inferred": [
+    "The new arbitrary-weight estimate uses a fixed simultaneous group translation q. Previously proved exterior-dependent rotation choices remain available with exterior-only weights; the combination with arbitrary interior weights is not asserted here.",
+    "The symmetric finite-difference energy of sqrt(w) is an explicit error, not a term already controlled by actual transfer variance loss. Closing or absorbing it is a new quantitative task.",
+    "The source norm is still squared range, not source variance or actual transfer dissipation. The required physical collective Haar-form estimate remains unproved.",
+    "The retained nonnegative amplitude energy is a finite-cutoff quadratic-form term. No uniform lower bound yielding physical-scale contraction has been deduced from it.",
+    "No spatial covariance decay, distant mixed-ground summability, global ground-law coercivity or variance factorization follows from this weighted form estimate.",
+    "Physical coupling identification, uniform physical-scale contraction, continuum construction, a nonzero separated or smeared continuum source and the full field axioms remain open. No Clay certificate is constructed."
+  ],
+  "audit": "data/yang_mills_interior_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

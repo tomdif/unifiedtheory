@@ -1,0 +1,42 @@
+import UnifiedTheory.Clay.YangMills.CompactCrossVariance
+import UnifiedTheory.Clay.YangMills.WilsonHaarRefresh
+import UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactCrossVariance.square_about_center
+#print axioms UnifiedTheory.Clay.YangMills.CompactCrossVariance.variance_le_square
+#print axioms UnifiedTheory.Clay.YangMills.CompactCrossVariance.cross_square
+#print axioms UnifiedTheory.Clay.YangMills.CompactCrossVariance.cross_square_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.CompactCrossVariance.variance_le_cross_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.fiber
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.fiberMean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.fiberMean_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.refreshAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.refreshAt_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.energy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.remainderAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.remainderAt_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.remainderAt_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.fiberVariance_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.conditional_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.energy_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.heatBathEnergy_le_energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.rotateBlock
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarRefresh.refreshAt_rotations
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.shift_joint_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.rotate_singleton
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.refreshAt_singleton
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.responseEnergy_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.energy_singleton
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.local_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.totalEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.totalConditionalVariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.total_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.coefficient_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.total_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.variance_flow_antitone
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.slab_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHaarLinkResponse.explicit_slab_contraction

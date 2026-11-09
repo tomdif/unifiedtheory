@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: planar joint source activity, all-frame entropy and nonzero physical witnesses",
+  "current_goal_turn_classification": "progress: actual one-cut spatial history and transfer norm inequalities for arbitrary noncoplanar deletions, range preservation and exact average deletion count",
+  "scope": "For every even spatial period N=2*n and every finite temporal network with nonnegative kinetic coefficients, actual Wilson half-history reflection Cauchy-Schwarz is proved. Interior perturbations are split exactly into two half-history sources; their reflected doubles have explicit coupling profiles. The crossing coefficients on both periodic seams remain in a common positive kernel. Consequently every nonnegative, possibly inhomogeneous spatial coupling profile gamma(t,p) satisfies Z(gamma)^2<=Z(copyPositive gamma)*Z(copyNegative gamma), with the actual coarse Haar history partitions and every kinetic factor retained. Copies agree with the original coupling on the chosen half and with its reflection on the other half; crossing coefficients are unchanged. Coupling ranges are preserved, so true plaquette deletions remain true deletions. A general compact positive kernel growth theorem proves endpoint upper growth using the L2 operator norm, and lower growth using compact positivity and a strictly positive endpoint floor. Thus the actual raw Wilson transfer obeys ||T_gamma||^2<=||T_copyPositive||*||T_copyNegative||. No modified ground-state reflection positivity or modified positive ground profile is assumed. The two copy profiles conserve total coupling deficit in average. For a literal arbitrary finite deleted set S, explicit sets Splus and Sminus satisfy |Splus|+|Sminus|=2|S| and ||T_cut(S)||^2<=||T_cut(Splus)||*||T_cut(Sminus)||. No coplanarity or common-crossing-plane restriction is imposed on S. An exponential price per removed coupling is preserved in the same squared inequality; at least one reflection choice does not decrease the priced norm. This is one actual canonical spatial cut, including its two periodic seams. A geometric multicut dissemination argument, control of the disseminated model, and resulting polynomial per-defect norm bound for arbitrary clusters are still unproved. The distant mixed-ground sum, independent retained-region coercivity, physical scaling, nonzero continuum survival and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.PositiveKernelSchwarz",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz",
+    "UnifiedTheory.Clay.YangMills.KernelEndpointNorm",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz",
+    "UnifiedTheory.Clay.YangMills.WilsonDeletionReflection"
+  ],
+  "new_declarations": 82,
+  "retained_declarations": 9075,
+  "cumulative_declarations": 9157,
+  "formal_results": {
+    "PositiveKernelSchwarz.schwarz": "Independent complex sources satisfy mixed-integral Cauchy-Schwarz for an actually constructed continuous positive kernel.",
+    "SpatialWilsonCutProfiles.action_split": "An arbitrary interior plaquette perturbation, including noncoplanar support, splits exactly into two half-field actions.",
+    "SpatialWilsonCutProfiles.positive_doubled_action": "The reflected positive-half perturbation is identified with an explicit doubled physical coefficient profile.",
+    "SpatialWilsonHalfCopies.copyPositive_value": "The copied profile keeps crossing coefficients and positive-half interior coefficients; the other interior coefficients are reflected.",
+    "SpatialWilsonHalfCopies.copies_range": "Both reflection copies preserve every pointwise allowed coupling range, including binary deletion couplings.",
+    "SpatialWilsonHalfCopies.copies_deficit": "The two reflected profiles conserve total coupling deficit in average.",
+    "SpatialWilsonCutSchwarz.reflection_schwarz": "The actual finite Wilson temporal history obeys mixed-source reflection Cauchy-Schwarz with every kinetic factor retained.",
+    "SpatialWilsonCutSchwarz.partition_schwarz": "Arbitrary signed interior perturbations of a reflection-positive background satisfy the actual physical partition inequality.",
+    "SpatialWilsonCutSchwarz.partition_copies": "Every nonnegative inhomogeneous Wilson profile, including deletions on both seams, satisfies Z(gamma)^2<=Z(copyPositive gamma)*Z(copyNegative gamma).",
+    "KernelEndpointNorm.endpoint_upper_norm": "The actual endpoint chain has an L2-operator-norm exponential upper bound without a positive comparison ground profile.",
+    "KernelEndpointNorm.endpoint_lower_rate": "Compact positivity and a positive endpoint floor give a nonzero-prefactor lower bound at the actual operator norm growth rate.",
+    "KernelEndpointNorm.norm_schwarz": "A squared actual partition comparison passes to the actual compact positive operator norms with all endpoint constants removed by the growth rate.",
+    "SpatialWilsonNormSchwarz.norm_schwarz": "Arbitrary nonnegative spatial Wilson coupling profiles satisfy the actual one-cut transfer-norm Cauchy-Schwarz inequality.",
+    "SpatialWilsonNormSchwarz.priced_choice": "At least one reflected profile preserves or increases the transfer norm after an arbitrary exponential price per removed coupling.",
+    "WilsonDeletionReflection.copies_card": "For literal arbitrary finite deletion sets, the two explicit reflected sets satisfy card(Splus)+card(Sminus)=2*card(S).",
+    "WilsonDeletionReflection.deletion_norm_schwarz": "The actual transfer norms for arbitrary noncoplanar finite deletion sets satisfy the square reflection inequality, including seam deletions.",
+    "WilsonDeletionReflection.deletion_priced_choice": "The literal deletion count can be used as the exponential price in the nondecreasing reflection choice."
+  },
+  "notation": {
+    "period": "N=2*n with n>0",
+    "profile": "gamma(p)>=0 is an arbitrary spatial plaquette coupling; temporal beta>=0 is independent",
+    "copies": "Crossing coefficients on both seams stay fixed. Interior coefficients in the selected half stay fixed; the other half is copied by the actual plaquette reflection.",
+    "norm": "Actual raw weighted Wilson temporal transfer; both original endpoint factors are retained in the finite-history bridge.",
+    "deletion": "gamma(p)=0 on S and s elsewhere, s>=0. Explicit Splus,Sminus need no coplanarity hypothesis.",
+    "priced_norm": "||T_gamma||*exp(-a*sum_p(s-gamma(p))), arbitrary real a and reference s; for deletion sets the deficit is s*card(S)."
+  },
+  "research_sources": [
+    {
+      "title": "Marek Biskup, Reflection Positivity and Phase Transitions in Lattice Spin Models",
+      "url": "https://arxiv.org/pdf/math-ph/0610025",
+      "locations": [
+        "Equation (5.6), page 39",
+        "Theorem 5.8 and proof, pages 44-46"
+      ],
+      "use": "The repeated reflection Cauchy-Schwarz strategy motivates the attack. The cited block chessboard theorem is not imported as a Lean axiom or asserted to apply directly to the repository half-edge geometry; its geometric iteration remains to be constructed."
+    }
+  ],
+  "next_attack": [
+    "Transport arbitrary modified profiles and their norms through actual affine lattice symmetries.",
+    "Prove the multicut block reflection/dissemination combinatorics and boundary accounting. A priced nondecreasing reflection choice alone does not imply termination.",
+    "Estimate the fully disseminated model, obtain a polynomial norm price per deleted cell, and combine with compatible connected-cluster counting.",
+    "Then address the actual distant mixed-ground form and independent retained-region coercivity, followed by physical scale matching and nonzero continuum survival."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. This is not a proof of the continuum Yang-Mills construction or a cutoff-uniform physical mass gap.",
+    "The new result is a one-cut comparison for arbitrary noncoplanar patterns. It does not yet give the planar rho^card(S) activity for an arbitrary noncoplanar set, nor a completed chessboard/dissemination estimate.",
+    "The canonical spatial cut has normal coordinate zero and both periodic seams. Exact translated/oriented modified-profile transport and the complete sequence of geometric cuts, including block locality and boundary accounting, remain to be connected to the iteration.",
+    "A priced norm has at least one nondecreasing reflection choice and deletion count is conserved in average. The existence of such a choice does not imply that repeated choices terminate in a uniformly controlled pattern or prove a numerical bound on that pattern.",
+    "Actual raw Wilson transfer norms and full endpoint weights are retained. No reflected modified ground state is assumed. The prior physical-sector dictionary is still required when passing raw estimates to original full physical observables.",
+    "The independent retained-region global lower bound, including gauge/toron directions and source-dependent boundaries, and the actual distant mixed-ground sum or appropriate signed physical form remain open.",
+    "Physical scale matching, normalized reflected-state compactness and nonzero renormalized continuum survival remain independent obligations. Local bad-field bounds and finite-regulator nonzero sources do not settle them."
+  ],
+  "audit": "data/yang_mills_reflection_copies_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

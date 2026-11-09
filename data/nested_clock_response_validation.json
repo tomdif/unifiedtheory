@@ -1,0 +1,158 @@
+{
+  "probe_report_sha256": "02d977943f01e846d2b10ce0de8340883e9c978156dd4fdf65017bfdbb099b75",
+  "verifier_sha256": "71d97d7d92d5891cb9d45638d0742d51baa2d7d68b7f8d2efd713de7c047ba26",
+  "checks": [
+    {
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 96,
+        "order": 14
+      },
+      "frequency_limit": 0,
+      "dimension": 3,
+      "minimum_response": -0.06985016220593093,
+      "first_witness_quotient": -0.06985016220593092
+    },
+    {
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 96,
+        "order": 14
+      },
+      "frequency_limit": 4,
+      "dimension": 15,
+      "minimum_response": -0.0807848265250621,
+      "first_witness_quotient": -0.08078482652506211
+    },
+    {
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 96,
+        "order": 14
+      },
+      "frequency_limit": 12,
+      "dimension": 39,
+      "minimum_response": -0.08296684856505494,
+      "first_witness_quotient": -0.08296684856505489
+    },
+    {
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 96,
+        "order": 14
+      },
+      "frequency_limit": 24,
+      "dimension": 75,
+      "minimum_response": -0.08475333275900387,
+      "first_witness_quotient": -0.08475333275900394
+    },
+    {
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 96,
+        "order": 14
+      },
+      "frequency_limit": 32,
+      "dimension": 99,
+      "minimum_response": -0.08566975467503225,
+      "first_witness_quotient": -0.08566975467503223
+    },
+    {
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 144,
+        "order": 16
+      },
+      "frequency_limit": 0,
+      "dimension": 3,
+      "minimum_response": -0.06985016220592988,
+      "first_witness_quotient": -0.06985016220592989
+    },
+    {
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 144,
+        "order": 16
+      },
+      "frequency_limit": 4,
+      "dimension": 15,
+      "minimum_response": -0.08078482652505488,
+      "first_witness_quotient": -0.08078482652505485
+    },
+    {
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 144,
+        "order": 16
+      },
+      "frequency_limit": 12,
+      "dimension": 39,
+      "minimum_response": -0.08296684856504545,
+      "first_witness_quotient": -0.08296684856504531
+    },
+    {
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 144,
+        "order": 16
+      },
+      "frequency_limit": 24,
+      "dimension": 75,
+      "minimum_response": -0.08475333275899406,
+      "first_witness_quotient": -0.08475333275899392
+    },
+    {
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 144,
+        "order": 16
+      },
+      "frequency_limit": 32,
+      "dimension": 99,
+      "minimum_response": -0.08566975467502198,
+      "first_witness_quotient": -0.08566975467502208
+    }
+  ],
+  "maximum_spectral_error": 2.7949864644938316e-14,
+  "energy_scaled_direct_reduced_gaps": [
+    {
+      "ordered": 4.187655301690175e-11,
+      "remainder": 3.898379461531663e-12
+    },
+    {
+      "ordered": 7.675895839107886e-11,
+      "remainder": 2.7351994149466976e-12
+    }
+  ],
+  "scope": "Independent matrix spectra, witnesses, nesting, refinement and provenance. No independent quadrature, certified error, uniform response bound, evolution counterexample or new Lean theorem."
+}

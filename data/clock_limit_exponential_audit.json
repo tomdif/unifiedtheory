@@ -1,0 +1,664 @@
+{
+  "symbolic": {
+    "polynomial_jacobian_defect": "s**2*(s**5 - 2*s**4 + 16*s**2 + 64*s - 128)/1024",
+    "polynomial_points": [
+      {
+        "s": -2,
+        "p": 0,
+        "potential": "25/4",
+        "clock_rate": "0",
+        "defect": "-25/4"
+      },
+      {
+        "s": 0,
+        "p": 0,
+        "potential": "1",
+        "clock_rate": "1",
+        "defect": "0"
+      },
+      {
+        "s": 1,
+        "p": 0,
+        "potential": "25/64",
+        "clock_rate": "24375/65536",
+        "defect": "-1225/65536"
+      }
+    ],
+    "exponential_classical_identity": true
+  },
+  "ladder_cases": [
+    {
+      "flavors": 1,
+      "capacity": 1,
+      "profile": "bare",
+      "dimension": 2,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 7.127668296702882e-15,
+      "defect": 32.81102880234251,
+      "moment_order": 1,
+      "moment_bound": 32.81102880234251,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 1,
+      "profile": "exact",
+      "dimension": 2,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 2.06184900854932e-17,
+      "defect": 6.714911194776038,
+      "moment_order": 2,
+      "moment_bound": 6.714911194776038,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 2,
+      "profile": "bare",
+      "dimension": 3,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 7.179713418641845e-15,
+      "defect": 47.88822212978897,
+      "moment_order": 1,
+      "moment_bound": 47.88822212978897,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 2,
+      "profile": "exact",
+      "dimension": 3,
+      "matrix_identity_error": 6.280369834735101e-16,
+      "expectation_error": 1.4233710990662134e-14,
+      "defect": 70.83261682686364,
+      "moment_order": 2,
+      "moment_bound": 110.09757491584489,
+      "top_state_defect": 3.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 4,
+      "profile": "bare",
+      "dimension": 5,
+      "matrix_identity_error": 3.1401849173675503e-16,
+      "expectation_error": 7.129081421616002e-15,
+      "defect": 50.350543557945464,
+      "moment_order": 1,
+      "moment_bound": 50.350543557945464,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 4,
+      "profile": "exact",
+      "dimension": 5,
+      "matrix_identity_error": 2.2644195468014703e-15,
+      "expectation_error": 1.065890582654041e-14,
+      "defect": 16.002953568828847,
+      "moment_order": 2,
+      "moment_bound": 73.4178620434372,
+      "top_state_defect": 5.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 6,
+      "profile": "bare",
+      "dimension": 7,
+      "matrix_identity_error": 9.222205069512407e-16,
+      "expectation_error": 7.24302838904163e-15,
+      "defect": 51.9945466061324,
+      "moment_order": 1,
+      "moment_bound": 51.994546606132396,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 1,
+      "capacity": 6,
+      "profile": "exact",
+      "dimension": 7,
+      "matrix_identity_error": 2.2644195468014703e-15,
+      "expectation_error": 9.3342812889419e-15,
+      "defect": 3.5277295008630754,
+      "moment_order": 2,
+      "moment_bound": 191.53071315977573,
+      "top_state_defect": 7.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 1,
+      "profile": "bare",
+      "dimension": 3,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 1.4214724347789486e-14,
+      "defect": 61.70403360975408,
+      "moment_order": 1,
+      "moment_bound": 91.089279409114,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 1,
+      "profile": "exact",
+      "dimension": 3,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 5.676604419755003e-17,
+      "defect": 29.113370640956774,
+      "moment_order": 2,
+      "moment_bound": 56.46373830866236,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 2,
+      "profile": "bare",
+      "dimension": 6,
+      "matrix_identity_error": 1.5700924586837752e-16,
+      "expectation_error": 1.289995712454003e-16,
+      "defect": 45.76671415158466,
+      "moment_order": 1,
+      "moment_bound": 59.55943045378941,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 2,
+      "profile": "exact",
+      "dimension": 6,
+      "matrix_identity_error": 6.280369834735101e-16,
+      "expectation_error": 7.928409628518166e-15,
+      "defect": 43.74762563834984,
+      "moment_order": 2,
+      "moment_bound": 96.2939054188162,
+      "top_state_defect": 3.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 4,
+      "profile": "bare",
+      "dimension": 15,
+      "matrix_identity_error": 4.1540741810552243e-16,
+      "expectation_error": 2.365429149306563e-16,
+      "defect": 54.79388835000054,
+      "moment_order": 1,
+      "moment_bound": 66.80076816428037,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 4,
+      "profile": "exact",
+      "dimension": 15,
+      "matrix_identity_error": 2.432376777795247e-15,
+      "expectation_error": 1.427374023372842e-14,
+      "defect": 94.44815112923841,
+      "moment_order": 2,
+      "moment_bound": 249.38290297872362,
+      "top_state_defect": 5.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 6,
+      "profile": "bare",
+      "dimension": 28,
+      "matrix_identity_error": 1.4454233994478134e-15,
+      "expectation_error": 1.4217791915866692e-14,
+      "defect": 48.06233670574976,
+      "moment_order": 1,
+      "moment_bound": 64.46145464573351,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 2,
+      "capacity": 6,
+      "profile": "exact",
+      "dimension": 28,
+      "matrix_identity_error": 4.0091197218190075e-15,
+      "expectation_error": 2.842170943040401e-14,
+      "defect": 67.08811831282287,
+      "moment_order": 2,
+      "moment_bound": 334.235447083755,
+      "top_state_defect": 7.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 1,
+      "profile": "bare",
+      "dimension": 7,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 7.10881114935035e-15,
+      "defect": 45.30520411280762,
+      "moment_order": 1,
+      "moment_bound": 85.28125999394207,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 1,
+      "profile": "exact",
+      "dimension": 7,
+      "matrix_identity_error": 0.0,
+      "expectation_error": 6.869802580311378e-17,
+      "defect": 59.66304564432566,
+      "moment_order": 2,
+      "moment_bound": 87.4087101410445,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 2,
+      "profile": "bare",
+      "dimension": 28,
+      "matrix_identity_error": 3.510833468576701e-16,
+      "expectation_error": 2.1322135960735627e-14,
+      "defect": 40.061254541070625,
+      "moment_order": 1,
+      "moment_bound": 68.28804512754316,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 2,
+      "profile": "exact",
+      "dimension": 28,
+      "matrix_identity_error": 6.280369834735101e-16,
+      "expectation_error": 7.160723346098895e-15,
+      "defect": 48.18319927613086,
+      "moment_order": 2,
+      "moment_bound": 148.74149532541256,
+      "top_state_defect": 3.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 4,
+      "profile": "bare",
+      "dimension": 210,
+      "matrix_identity_error": 8.455206652451151e-16,
+      "expectation_error": 1.4221559343596952e-14,
+      "defect": 50.11678983043557,
+      "moment_order": 1,
+      "moment_bound": 84.55006735622925,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 4,
+      "profile": "exact",
+      "dimension": 210,
+      "matrix_identity_error": 3.607797795906347e-15,
+      "expectation_error": 1.421774582342076e-14,
+      "defect": 53.941704631379594,
+      "moment_order": 2,
+      "moment_bound": 318.21708984332264,
+      "top_state_defect": 5.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 6,
+      "profile": "bare",
+      "dimension": 924,
+      "matrix_identity_error": 3.457769959779857e-15,
+      "expectation_error": 1.1102230246251565e-16,
+      "defect": 49.266263749189505,
+      "moment_order": 1,
+      "moment_bound": 83.93394868143805,
+      "top_state_defect": 2.0
+    },
+    {
+      "flavors": 6,
+      "capacity": 6,
+      "profile": "exact",
+      "dimension": 924,
+      "matrix_identity_error": 1.214971591805676e-14,
+      "expectation_error": 5.684366280577337e-14,
+      "defect": 51.91717158403428,
+      "moment_order": 2,
+      "moment_bound": 456.7020558586575,
+      "top_state_defect": 7.0
+    }
+  ],
+  "exponential_models": [
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8808626792904617e-15,
+        "base": 4.3641503636668244e-16,
+        "source": 0.0,
+        "longitudinal": 4.941538693316678e-16,
+        "static_seed": 1.5282044421700296e-15,
+        "growing_seed": 4.510928966263966e-16
+      },
+      "clock_inverse_error": 6.301602070747395e-16,
+      "constraint_identity_error": 1.2388940834620077e-16,
+      "minimum_clock_eigenvalue": 0.6394073191618974,
+      "flow_samples": [
+        {
+          "time": 0.0,
+          "moment": 0.4861387075409215,
+          "ccr_defect": 0.24306935377046074,
+          "ccr_bound": 0.4861387075409215,
+          "unitarity_error": 0.0,
+          "constraint_error": 6.575969523423105e-17
+        },
+        {
+          "time": 0.05,
+          "moment": 0.4887579489884803,
+          "ccr_defect": 0.24451075575396428,
+          "ccr_bound": 0.4887579489884803,
+          "unitarity_error": 7.173111837066523e-14,
+          "constraint_error": 6.575969523423047e-17
+        },
+        {
+          "time": 0.1,
+          "moment": 0.4921017704428091,
+          "ccr_defect": 0.24658328637422408,
+          "ccr_bound": 0.4921017704428091,
+          "unitarity_error": 8.056754878222748e-13,
+          "constraint_error": 6.575969523423553e-17
+        },
+        {
+          "time": 0.15000000000000002,
+          "moment": 0.4960658975984333,
+          "ccr_defect": 0.24925094511657409,
+          "ccr_bound": 0.4960658975984333,
+          "unitarity_error": 2.070505474146923e-13,
+          "constraint_error": 6.575969523422857e-17
+        },
+        {
+          "time": 0.2,
+          "moment": 0.5006536834894844,
+          "ccr_defect": 0.25254475807051247,
+          "ccr_bound": 0.5006536834894844,
+          "unitarity_error": 2.163823192697605e-13,
+          "constraint_error": 6.575969523422881e-17
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "second_order",
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 2.2040793297253082e-15,
+        "base": 1.2468788824928411e-15,
+        "source": 1.7554167342883506e-16,
+        "longitudinal": 1.2871111640127062e-15,
+        "static_seed": 1.9668488392229667e-15,
+        "growing_seed": 1.2258556776973446e-15
+      },
+      "clock_inverse_error": 7.486004481840698e-16,
+      "constraint_identity_error": 3.5225985829869855e-16,
+      "minimum_clock_eigenvalue": 0.5887902943860253
+    },
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8343894894033213e-15,
+        "base": 8.796809942557537e-16,
+        "source": 0.0,
+        "longitudinal": 9.30450479336113e-16,
+        "static_seed": 1.635665817647217e-15,
+        "growing_seed": 7.615570718940732e-16
+      },
+      "clock_inverse_error": 7.932345682027244e-16,
+      "constraint_identity_error": 3.77816017969236e-16,
+      "minimum_clock_eigenvalue": 0.5782652777781268,
+      "flow_samples": [
+        {
+          "time": 0.0,
+          "moment": 0.6695051565900273,
+          "ccr_defect": 0.09168322452455291,
+          "ccr_bound": 0.6695051565900273,
+          "unitarity_error": 0.0,
+          "constraint_error": 2.6716298428317663e-16
+        },
+        {
+          "time": 0.05,
+          "moment": 0.6791882719430076,
+          "ccr_defect": 0.09448047410205132,
+          "ccr_bound": 0.6791882719430076,
+          "unitarity_error": 1.518380218087536e-12,
+          "constraint_error": 2.671629842831871e-16
+        },
+        {
+          "time": 0.1,
+          "moment": 0.6924169376525646,
+          "ccr_defect": 0.098936923640907,
+          "ccr_bound": 0.6924169376525646,
+          "unitarity_error": 1.867694447258172e-13,
+          "constraint_error": 2.671629842831693e-16
+        },
+        {
+          "time": 0.15000000000000002,
+          "moment": 0.7097475682741552,
+          "ccr_defect": 0.10519466398319627,
+          "ccr_bound": 0.7097475682741552,
+          "unitarity_error": 2.727664338087144e-13,
+          "constraint_error": 2.671629842831657e-16
+        },
+        {
+          "time": 0.2,
+          "moment": 0.7321825312142083,
+          "ccr_defect": 0.11345597699338097,
+          "ccr_bound": 0.7321825312142083,
+          "unitarity_error": 6.498774451982912e-13,
+          "constraint_error": 2.671629842831582e-16
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 3.939508508606974e-15,
+        "base": 1.4583880437024571e-15,
+        "source": 3.192020986519275e-16,
+        "longitudinal": 1.6843473543217257e-15,
+        "static_seed": 3.2864106721075346e-15,
+        "growing_seed": 1.445434178934361e-15
+      },
+      "clock_inverse_error": 8.08770638504149e-16,
+      "constraint_identity_error": 1.0180058590639598e-15,
+      "minimum_clock_eigenvalue": 0.5782652777781272,
+      "flow_samples": [
+        {
+          "time": 0.0,
+          "moment": 0.536904559571082,
+          "ccr_defect": 0.17896818652369395,
+          "ccr_bound": 0.35793637304738796,
+          "unitarity_error": 0.0,
+          "constraint_error": 4.460215156574632e-16
+        },
+        {
+          "time": 0.05,
+          "moment": 0.5413627923760875,
+          "ccr_defect": 0.18058386171366803,
+          "ccr_bound": 0.360908528250725,
+          "unitarity_error": 1.3801714198156332e-13,
+          "constraint_error": 4.46021515657458e-16
+        },
+        {
+          "time": 0.1,
+          "moment": 0.547208468847466,
+          "ccr_defect": 0.18294649760904422,
+          "ccr_bound": 0.36480564589831066,
+          "unitarity_error": 1.2561073456884894e-12,
+          "constraint_error": 4.46021515657446e-16
+        },
+        {
+          "time": 0.15000000000000002,
+          "moment": 0.5547868828645467,
+          "ccr_defect": 0.18622171214354363,
+          "ccr_bound": 0.3698579219096978,
+          "unitarity_error": 5.209210391583376e-13,
+          "constraint_error": 4.460215156574426e-16
+        },
+        {
+          "time": 0.2,
+          "moment": 0.5646986496423368,
+          "ccr_defect": 0.19068002227797215,
+          "ccr_bound": 0.37646576642822455,
+          "unitarity_error": 5.206341258201495e-13,
+          "constraint_error": 4.460215156574422e-16
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "second_order",
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 5.1649240890545995e-15,
+        "base": 1.8144278811099338e-15,
+        "source": 4.02597776791051e-16,
+        "longitudinal": 2.8193893138470778e-15,
+        "static_seed": 3.5969680664483345e-15,
+        "growing_seed": 2.0778577283650016e-15
+      },
+      "clock_inverse_error": 9.663301097074954e-16,
+      "constraint_identity_error": 3.571191529104632e-15,
+      "minimum_clock_eigenvalue": 0.5030690860258341
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 4.705051057030291e-15,
+        "base": 2.91212076056614e-15,
+        "source": 3.6453966336013327e-16,
+        "longitudinal": 3.399234914707918e-15,
+        "static_seed": 3.739145351137862e-15,
+        "growing_seed": 3.2520037068273428e-15
+      },
+      "clock_inverse_error": 1.5261101278963336e-15,
+      "constraint_identity_error": 1.9876756344587475e-15,
+      "minimum_clock_eigenvalue": 0.47797034258190146,
+      "flow_samples": [
+        {
+          "time": 0.0,
+          "moment": 0.8377342748103396,
+          "ccr_defect": 0.02019437276927117,
+          "ccr_bound": 0.5584895165402264,
+          "unitarity_error": 0.0,
+          "constraint_error": 9.050370278259792e-16
+        },
+        {
+          "time": 0.05,
+          "moment": 0.8642691878444908,
+          "ccr_defect": 0.021954089179052214,
+          "ccr_bound": 0.5761794585629939,
+          "unitarity_error": 3.1548107415960905e-12,
+          "constraint_error": 9.050370278258528e-16
+        },
+        {
+          "time": 0.1,
+          "moment": 0.9051051186721155,
+          "ccr_defect": 0.025409127938845068,
+          "ccr_bound": 0.603403412448077,
+          "unitarity_error": 7.267830939889043e-12,
+          "constraint_error": 9.050370278256966e-16
+        },
+        {
+          "time": 0.15000000000000002,
+          "moment": 0.9648144365605881,
+          "ccr_defect": 0.030822849555687735,
+          "ccr_bound": 0.6432096243737254,
+          "unitarity_error": 7.773040224368531e-13,
+          "constraint_error": 9.050370278259488e-16
+        },
+        {
+          "time": 0.2,
+          "moment": 1.0491338613890968,
+          "ccr_defect": 0.0385102654799202,
+          "ccr_bound": 0.6994225742593979,
+          "unitarity_error": 1.8235117972680502e-12,
+          "constraint_error": 9.050370278259074e-16
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 5.579382453840481e-15,
+        "base": 2.190513186986935e-15,
+        "source": 3.134813796900204e-16,
+        "longitudinal": 4.8739335487590485e-15,
+        "static_seed": 3.465764343488636e-15,
+        "growing_seed": 2.0848017805593595e-15
+      },
+      "clock_inverse_error": 1.875272849359524e-15,
+      "constraint_identity_error": 8.616718725760628e-15,
+      "minimum_clock_eigenvalue": 0.5312856091329676
+    },
+    {
+      "capacity": 4,
+      "profile": "second_order",
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 1.0013317271732528e-14,
+        "base": 5.060478879285232e-15,
+        "source": 6.928785349089874e-16,
+        "longitudinal": 7.517332651254976e-15,
+        "static_seed": 6.458469592700159e-15,
+        "growing_seed": 6.060911137481395e-15
+      },
+      "clock_inverse_error": 1.938112064255512e-15,
+      "constraint_identity_error": 1.0726346720671737e-14,
+      "minimum_clock_eigenvalue": 0.4417864392797172
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 8.152344741343194e-15,
+        "base": 5.719141002120758e-15,
+        "source": 4.569144405373685e-16,
+        "longitudinal": 9.28987294973246e-15,
+        "static_seed": 7.94206403282074e-15,
+        "growing_seed": 9.487266652488767e-15
+      },
+      "clock_inverse_error": 2.1761937596451184e-15,
+      "constraint_identity_error": 1.3001566830374777e-14,
+      "minimum_clock_eigenvalue": 0.4051680964334681
+    }
+  ],
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61"
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "sympy": "1.14.0"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "Exact finite CCR identities and state moment bounds; conditional moment-controlled CCR limits; a classical fixed-polynomial clock counterexample and exponential repair; exact finite global constrained dynamics of the exponential variant. Uniform evolved moment bounds, infinite-dimensional domains, spatial continuum, microscopic sector selection and a TOE remain unproved."
+}

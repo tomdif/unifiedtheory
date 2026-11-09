@@ -1,0 +1,1774 @@
+{
+  "scope": "finite protected selection; no claimed physical action or continuum limit",
+  "arithmetic": "exact Fraction probability identities; 256-bit Arb coherent/Born lift",
+  "protected_record": [
+    "ancestor count",
+    "hits on maximal parent frontier"
+  ],
+  "defect": "number of new intervals with exactly one internal event",
+  "source_sha256": {
+    "protected_selection_audit.py": "484a2b8ffdfb278392de4ba7631997fb75f72338ab60e52182ceb11fdc1c859b",
+    "microscopic_selection_audit.py": "f1458e6c6a546429ff096b886c033ae2ecd6fd45dda4bbe1aad243ca64ae5dba",
+    "harmonic_born_geometry_drift.py": "0862f8f59fe2f17d3d6b6ca0443f52c01a0aa3f4509f84b443e79b80e9088637",
+    "harmonic_child_nonuniformity.py": "1228508d292ea0f4e662a35280df28046f07fa2fdcd37b5d1f70763a7a4e79f0",
+    "chiral_growth_generalization.py": "b188cf7471839a2fb352714ad27e31e9a913e4173a80ceb8d4eef5388c9da36a"
+  },
+  "ranks": {
+    "0": {
+      "parents": 1,
+      "strict_descent": 0,
+      "zero_conditional_variance": 1,
+      "uncorrected_exponential_leakage": 0
+    },
+    "1": {
+      "parents": 1,
+      "strict_descent": 0,
+      "zero_conditional_variance": 1,
+      "uncorrected_exponential_leakage": 0
+    },
+    "2": {
+      "parents": 2,
+      "strict_descent": 0,
+      "zero_conditional_variance": 2,
+      "uncorrected_exponential_leakage": 0
+    },
+    "3": {
+      "parents": 5,
+      "strict_descent": 1,
+      "zero_conditional_variance": 4,
+      "uncorrected_exponential_leakage": 1
+    },
+    "4": {
+      "parents": 16,
+      "strict_descent": 6,
+      "zero_conditional_variance": 10,
+      "uncorrected_exponential_leakage": 6
+    },
+    "5": {
+      "parents": 63,
+      "strict_descent": 41,
+      "zero_conditional_variance": 22,
+      "uncorrected_exponential_leakage": 41
+    }
+  },
+  "parents": [
+    {
+      "rank": 0,
+      "successor_masks": [],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 1,
+      "children": 1
+    },
+    {
+      "rank": 1,
+      "successor_masks": [
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 2,
+      "children": 2
+    },
+    {
+      "rank": 2,
+      "successor_masks": [
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 3,
+      "children": 3
+    },
+    {
+      "rank": 2,
+      "successor_masks": [
+        2,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/3",
+      "defect_after": "1/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 3,
+      "children": 3
+    },
+    {
+      "rank": 3,
+      "successor_masks": [
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 4,
+      "children": 4
+    },
+    {
+      "rank": 3,
+      "successor_masks": [
+        2,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/18",
+      "defect_before": "1/3",
+      "defect_after": "19/60",
+      "exact_decrease": "1/60",
+      "uncorrected_exponential_horizon_second_derivative": "1/108",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 5,
+      "children": 6
+    },
+    {
+      "rank": 3,
+      "successor_masks": [
+        6,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/4",
+      "defect_after": "1/4",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 4,
+      "children": 4
+    },
+    {
+      "rank": 3,
+      "successor_masks": [
+        4,
+        4,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 4,
+      "children": 4
+    },
+    {
+      "rank": 3,
+      "successor_masks": [
+        6,
+        4,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 4,
+      "children": 4
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "23/300",
+      "defect_before": "1/3",
+      "defect_after": "337/1080",
+      "exact_decrease": "23/1080",
+      "uncorrected_exponential_horizon_second_derivative": "11/450",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 9
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        6,
+        0,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "7/80",
+      "defect_before": "1/4",
+      "defect_after": "9/40",
+      "exact_decrease": "1/40",
+      "uncorrected_exponential_horizon_second_derivative": "1/64",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 8
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        14,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/5",
+      "defect_after": "1/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        4,
+        4,
+        0,
+        0
+      ],
+      "step": "1/5",
+      "conditional_variance": "3/20",
+      "defect_before": "1/2",
+      "defect_after": "47/100",
+      "exact_decrease": "3/100",
+      "uncorrected_exponential_horizon_second_derivative": "3/80",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 8
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        6,
+        4,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 7,
+      "children": 8
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        8,
+        4,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        12,
+        4,
+        0,
+        0
+      ],
+      "step": "5/16",
+      "conditional_variance": "6/125",
+      "defect_before": "13/25",
+      "defect_after": "101/200",
+      "exact_decrease": "3/200",
+      "uncorrected_exponential_horizon_second_derivative": "54/3125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 8
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        14,
+        4,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "2/45",
+      "defect_before": "7/15",
+      "defect_after": "34/75",
+      "exact_decrease": "1/75",
+      "uncorrected_exponential_horizon_second_derivative": "2/135",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 7
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        12,
+        12,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/5",
+      "defect_after": "2/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        14,
+        12,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/5",
+      "defect_after": "2/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        8,
+        8,
+        8,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/5",
+      "defect_after": "3/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        10,
+        8,
+        8,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "2/45",
+      "defect_before": "2/3",
+      "defect_after": "49/75",
+      "exact_decrease": "1/75",
+      "uncorrected_exponential_horizon_second_derivative": "-2/225",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 5,
+      "children": 7
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        14,
+        8,
+        8,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/5",
+      "defect_after": "3/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        12,
+        12,
+        8,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/5",
+      "defect_after": "3/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 4,
+      "successor_masks": [
+        14,
+        12,
+        8,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/5",
+      "defect_after": "3/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 5,
+      "children": 5
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "0",
+      "defect_after": "0",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "7/26",
+      "conditional_variance": "46/525",
+      "defect_before": "1/3",
+      "defect_after": "302/975",
+      "exact_decrease": "23/975",
+      "uncorrected_exponential_horizon_second_derivative": "127/3150",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "17/150",
+      "defect_before": "1/4",
+      "defect_after": "27/125",
+      "exact_decrease": "17/500",
+      "uncorrected_exponential_horizon_second_derivative": "7/200",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "5/16",
+      "conditional_variance": "2/25",
+      "defect_before": "1/5",
+      "defect_after": "7/40",
+      "exact_decrease": "1/40",
+      "uncorrected_exponential_horizon_second_derivative": "-2/125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        0,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/6",
+      "defect_after": "1/6",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        4,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "7/38",
+      "conditional_variance": "38/175",
+      "defect_before": "1/2",
+      "defect_after": "23/50",
+      "exact_decrease": "1/25",
+      "uncorrected_exponential_horizon_second_derivative": "37/350",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 10,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        6,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 10,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        8,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "37/450",
+      "defect_before": "2/3",
+      "defect_after": "1043/1620",
+      "exact_decrease": "37/1620",
+      "uncorrected_exponential_horizon_second_derivative": "7/540",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        12,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "11/52",
+      "conditional_variance": "37249/268125",
+      "defect_before": "13/25",
+      "defect_after": "621851/1267500",
+      "exact_decrease": "37249/1267500",
+      "uncorrected_exponential_horizon_second_derivative": "225457/13406250",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 16
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        14,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "7/75",
+      "defect_before": "7/15",
+      "defect_after": "329/750",
+      "exact_decrease": "7/250",
+      "uncorrected_exponential_horizon_second_derivative": "7/270",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 14
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "5/22",
+      "conditional_variance": "4/25",
+      "defect_before": "7/12",
+      "defect_after": "361/660",
+      "exact_decrease": "2/55",
+      "uncorrected_exponential_horizon_second_derivative": "11/75",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "67/972",
+      "defect_before": "1/2",
+      "defect_after": "817/1701",
+      "exact_decrease": "67/3402",
+      "uncorrected_exponential_horizon_second_derivative": "473/13122",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 11
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        4,
+        0,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "23/360",
+      "defect_before": "4/9",
+      "defect_after": "553/1296",
+      "exact_decrease": "23/1296",
+      "uncorrected_exponential_horizon_second_derivative": "14/405",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        12,
+        12,
+        0,
+        0,
+        0
+      ],
+      "step": "5/26",
+      "conditional_variance": "4/15",
+      "defect_before": "2/5",
+      "defect_after": "68/195",
+      "exact_decrease": "2/39",
+      "uncorrected_exponential_horizon_second_derivative": "2/25",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        14,
+        12,
+        0,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "2/75",
+      "defect_before": "2/5",
+      "defect_after": "53/135",
+      "exact_decrease": "1/135",
+      "uncorrected_exponential_horizon_second_derivative": "3/125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        20,
+        12,
+        0,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "9/128",
+      "defect_before": "23/48",
+      "defect_after": "617/1344",
+      "exact_decrease": "9/448",
+      "uncorrected_exponential_horizon_second_derivative": "37/1024",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        12,
+        0,
+        0,
+        0
+      ],
+      "step": "7/24",
+      "conditional_variance": "11/147",
+      "defect_before": "17/42",
+      "defect_after": "193/504",
+      "exact_decrease": "11/504",
+      "uncorrected_exponential_horizon_second_derivative": "199/6174",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        12,
+        0,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "7/96",
+      "defect_before": "3/8",
+      "defect_after": "17/48",
+      "exact_decrease": "1/48",
+      "uncorrected_exponential_horizon_second_derivative": "65/2304",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        28,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/3",
+      "defect_after": "1/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        28,
+        0,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/3",
+      "defect_after": "1/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        8,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "5/34",
+      "conditional_variance": "6/25",
+      "defect_before": "3/5",
+      "defect_after": "48/85",
+      "exact_decrease": "3/85",
+      "uncorrected_exponential_horizon_second_derivative": "9/125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        10,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "16/225",
+      "defect_before": "2/3",
+      "defect_after": "262/405",
+      "exact_decrease": "8/405",
+      "uncorrected_exponential_horizon_second_derivative": "-1/1125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 14
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        14,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "5/26",
+      "conditional_variance": "8/75",
+      "defect_before": "3/5",
+      "defect_after": "113/195",
+      "exact_decrease": "4/195",
+      "uncorrected_exponential_horizon_second_derivative": "4/125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        16,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "21/400",
+      "defect_before": "5/6",
+      "defect_after": "491/600",
+      "exact_decrease": "3/200",
+      "uncorrected_exponential_horizon_second_derivative": "7/320",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "3/14",
+      "conditional_variance": "4/27",
+      "defect_before": "37/54",
+      "defect_after": "247/378",
+      "exact_decrease": "2/63",
+      "uncorrected_exponential_horizon_second_derivative": "46/729",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 11
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        26,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "11/54",
+      "conditional_variance": "328/1815",
+      "defect_before": "7/11",
+      "defect_after": "2671/4455",
+      "exact_decrease": "164/4455",
+      "uncorrected_exponential_horizon_second_derivative": "2449/59895",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        8,
+        8,
+        0,
+        0
+      ],
+      "step": "1/5",
+      "conditional_variance": "1/8",
+      "defect_before": "7/12",
+      "defect_after": "67/120",
+      "exact_decrease": "1/40",
+      "uncorrected_exponential_horizon_second_derivative": "3/64",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        12,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "2/75",
+      "defect_before": "3/5",
+      "defect_after": "16/27",
+      "exact_decrease": "1/135",
+      "uncorrected_exponential_horizon_second_derivative": "1/125",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 9,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        14,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/5",
+      "defect_after": "3/5",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 9,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        16,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "11/150",
+      "defect_before": "5/6",
+      "defect_after": "1217/1500",
+      "exact_decrease": "11/500",
+      "uncorrected_exponential_horizon_second_derivative": "-1/360",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 12
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "1/36",
+      "defect_before": "13/18",
+      "defect_after": "5/7",
+      "exact_decrease": "1/126",
+      "uncorrected_exponential_horizon_second_derivative": "-31/1944",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 8,
+      "children": 11
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "13/21",
+      "defect_after": "13/21",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 8,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        12,
+        8,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "7/12",
+      "defect_after": "7/12",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 8,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        16,
+        8,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "3/4",
+      "defect_after": "3/4",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 7,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        26,
+        16,
+        8,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "4/81",
+      "defect_before": "41/54",
+      "defect_after": "67/90",
+      "exact_decrease": "2/135",
+      "uncorrected_exponential_horizon_second_derivative": "-11/729",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 11
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        16,
+        8,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "13/18",
+      "defect_after": "13/18",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 7,
+      "children": 7
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        24,
+        8,
+        0,
+        0
+      ],
+      "step": "7/22",
+      "conditional_variance": "2/49",
+      "defect_before": "13/21",
+      "defect_after": "20/33",
+      "exact_decrease": "1/77",
+      "uncorrected_exponential_horizon_second_derivative": "20/1029",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        26,
+        24,
+        8,
+        0,
+        0
+      ],
+      "step": "7/22",
+      "conditional_variance": "4/49",
+      "defect_before": "9/14",
+      "defect_after": "95/154",
+      "exact_decrease": "2/77",
+      "uncorrected_exponential_horizon_second_derivative": "-2/1029",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        24,
+        8,
+        0,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "9/128",
+      "defect_before": "31/48",
+      "defect_after": "841/1344",
+      "exact_decrease": "9/448",
+      "uncorrected_exponential_horizon_second_derivative": "1/1024",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        24,
+        8,
+        0,
+        0
+      ],
+      "step": "5/16",
+      "conditional_variance": "1/25",
+      "defect_before": "3/5",
+      "defect_after": "47/80",
+      "exact_decrease": "1/80",
+      "uncorrected_exponential_horizon_second_derivative": "7/375",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        28,
+        8,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "5/9",
+      "defect_after": "49/90",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "4/243",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 8
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        28,
+        8,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "5/9",
+      "defect_after": "49/90",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "4/243",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 7,
+      "children": 8
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        24,
+        24,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        26,
+        24,
+        24,
+        0,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "5/9",
+      "defect_after": "49/90",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "-1/54",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 8
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        24,
+        24,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        28,
+        24,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        28,
+        24,
+        0,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "1/2",
+      "defect_after": "1/2",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        16,
+        16,
+        16,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        18,
+        16,
+        16,
+        16,
+        0
+      ],
+      "step": "3/11",
+      "conditional_variance": "7/108",
+      "defect_before": "7/9",
+      "defect_after": "301/396",
+      "exact_decrease": "7/396",
+      "uncorrected_exponential_horizon_second_derivative": "-7/648",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 10
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        22,
+        16,
+        16,
+        16,
+        0
+      ],
+      "step": "2/7",
+      "conditional_variance": "7/96",
+      "defect_before": "17/24",
+      "defect_after": "11/16",
+      "exact_decrease": "1/48",
+      "uncorrected_exponential_horizon_second_derivative": "-7/576",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        16,
+        16,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        20,
+        20,
+        16,
+        16,
+        0
+      ],
+      "step": "1/5",
+      "conditional_variance": "1/8",
+      "defect_before": "3/4",
+      "defect_after": "29/40",
+      "exact_decrease": "1/40",
+      "uncorrected_exponential_horizon_second_derivative": "-1/48",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        22,
+        20,
+        16,
+        16,
+        0
+      ],
+      "step": "1/3",
+      "conditional_variance": "1/24",
+      "defect_before": "3/4",
+      "defect_after": "53/72",
+      "exact_decrease": "1/72",
+      "uncorrected_exponential_horizon_second_derivative": "-1/144",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        20,
+        16,
+        16,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "8/9",
+      "defect_after": "79/90",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "-1/162",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 7
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        20,
+        16,
+        16,
+        0
+      ],
+      "step": "5/18",
+      "conditional_variance": "1/15",
+      "defect_before": "23/30",
+      "defect_after": "101/135",
+      "exact_decrease": "1/54",
+      "uncorrected_exponential_horizon_second_derivative": "-1/90",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 9
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        20,
+        16,
+        16,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "13/18",
+      "defect_after": "32/45",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "-1/162",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 8
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        28,
+        16,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        28,
+        16,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        24,
+        24,
+        24,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        26,
+        24,
+        24,
+        16,
+        0
+      ],
+      "step": "3/10",
+      "conditional_variance": "1/27",
+      "defect_before": "13/18",
+      "defect_after": "32/45",
+      "exact_decrease": "1/90",
+      "uncorrected_exponential_horizon_second_derivative": "-1/162",
+      "strict_descent": true,
+      "exponential_leakage_nonzero": true,
+      "protected_records": 6,
+      "children": 8
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        24,
+        24,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        28,
+        28,
+        24,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    },
+    {
+      "rank": 5,
+      "successor_masks": [
+        30,
+        28,
+        24,
+        16,
+        0
+      ],
+      "step": "1/2",
+      "conditional_variance": "0",
+      "defect_before": "2/3",
+      "defect_after": "2/3",
+      "exact_decrease": "0",
+      "uncorrected_exponential_horizon_second_derivative": "0",
+      "strict_descent": false,
+      "exponential_leakage_nonzero": false,
+      "protected_records": 6,
+      "children": 6
+    }
+  ]
+}

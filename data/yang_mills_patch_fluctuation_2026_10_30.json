@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 34 fresh declarations proved fixed-patch constrained minimizers, quadratic growth and deterministic source stability; fluctuation control was still missing",
+  "current_goal_turn_classification": "progress: actual normalized fixed-patch Gibbs fluctuation and connected-covariance estimates from proved Haar contraction distortion",
+  "scope": "The fixed-patch minimizer estimates now yield actual normalized Gibbs fluctuation and connected-covariance bounds. The proof constructs the homogeneous quaternion doubling map x -> norm(x)^(-1)*x*x and proves it is globally three-Lipschitz and norm-preserving. Hausdorff-measure image control and additive Haar uniqueness transfer this to the actual four-dimensional Euclidean volume with factor 81. The existing quaternion sphere/cone identification then proves that the inverse midpoint map q -> q*z^(-1)*q increases actual quaternion Haar image measure by at most 81. On a closed chord cap, midpoint contraction toward any cap point is continuous and injective, stays in the cap and has that map as its left inverse. The cap has positive Haar mass for positive radius; its normalization and boundary are retained. The normalized cap measure pushed through contraction is at most 81 times itself. This inequality tensorizes over the actual product of cap-coordinate measures, giving factor 81^|S|. The full sourced middle action is pulled back to these coordinates with the exterior fixed. Its unique constrained minimizer and the supported curvature coefficient kappa supply action decrease at least (kappa/4)*distanceSq under the same contracting map. Exact partition cancellation proves E(exp((kappa/4)*distanceSq))<=81^|S|, and Jensen gives E(distanceSq)<=4*|S|*log(81)/kappa. For the literal two-source action, kappa=2*beta-2 yields mean squared fluctuation<=2*|S|*log(81)/(beta-1). For the additionally transported source, kappa=2*beta-4 gives the same bound with beta-2. The proved local source difference bound and centered Cauchy-Schwarz give connected covariance<=8*|S|*log(81)/(beta-1) for the two original insertions under their actual normalized patch law, and <=8*|S|*log(81)/(beta-2) for the original/extra-source pair under the corresponding three-source patch law. The base hypotheses are unchanged: radius 1/256, incident base plaquette chords<=1/64, active base-to-endpoint chord distances<=1/2, beta-scaled rotations and source strengths in [0,1]; the original two source links are distinct and the extra source may overlap. The bounds are linear in patch cardinality and contain no total exterior-volume or boundary-depth factor. They do not decay in source separation. They concern the fixed capped Haar-coordinate Gibbs law, not the unrestricted middle or full boundary law. Controlling the cap complement, retained endpoint covariance, spatial propagation, independent global lower coercivity and continuum obligations remains open. All twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.QuaternionRadialDoubling",
+    "UnifiedTheory.Clay.YangMills.QuaternionHaarDoubling",
+    "UnifiedTheory.Clay.YangMills.QuaternionCapContraction",
+    "UnifiedTheory.Clay.YangMills.FiniteProductContraction",
+    "UnifiedTheory.Clay.YangMills.CompactGibbsContractionMoment",
+    "UnifiedTheory.Clay.YangMills.WilsonChordPatchLaw",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchFluctuation",
+    "UnifiedTheory.Clay.YangMills.WilsonPatchCovariance"
+  ],
+  "new_declarations": 75,
+  "retained_declarations": 9881,
+  "cumulative_declarations": 9956,
+  "notation": {
+    "S": "A fixed active link set with the exterior fixed to v0.",
+    "patch reference measure": "The product over free links of actual quaternion Haar measure on the closed chord cap, each normalized by its proved positive mass.",
+    "patch law": "The full sourced middle Wilson action tilted against this cap-coordinate reference measure, divided by its actual partition.",
+    "T_z": "Coordinatewise normalized quaternion midpoint contraction toward the actual constrained minimizer z.",
+    "D": "Total squared chord distance between the assembled configuration and the constrained minimizer.",
+    "kappa": "2*beta-2 for the two-source action; 2*beta-4 for the additionally sourced transported action."
+  },
+  "proved_results": [
+    "The homogeneous radial doubling map is globally three-Lipschitz. Its image increases four-dimensional Euclidean volume by at most 81.",
+    "The inverse midpoint map q -> q*z^(-1)*q increases actual quaternion Haar image measure by at most 81; the normalization follows from the previously proved sphere-cone identity.",
+    "Closed Haar chord caps have positive mass for positive radius. The midpoint map preserves the cap and pushes its normalized measure to at most 81 times itself.",
+    "Product-coordinate pushforward domination is at most 81^|S|, with the exterior fixed.",
+    "The same midpoint map decreases the actual sourced action by at least (kappa/4)*D.",
+    "Exact partition cancellation yields E(exp(kappa*D/4))<=81^|S| for the normalized interacting patch Gibbs law.",
+    "Jensen gives E(D)<=4*|S|*log(81)/kappa. The literal two-source and extra-source Wilson instances are proved.",
+    "The original two insertions have connected covariance<=8*|S|*log(81)/(beta-1) under the actual two-source patch law.",
+    "The original/extra-source pair has connected covariance<=8*|S|*log(81)/(beta-2) under the corresponding three-source patch law, including overlapping links."
+  ],
+  "next_attack": [
+    "Obtain spatially decaying connected influence estimates in patch coordinates; the present extensive second moment is only a starting bound.",
+    "Relate the fixed-patch law to the unrestricted middle covariance through a decomposition that keeps the cap complement and exterior fluctuations.",
+    "Control the retained endpoint covariance and source transport in the exact boundary recursion, retaining the true endpoint message and sourced partition.",
+    "Bound excluded configurations in the same response-weighted energy and establish actual depth-uniform far decay.",
+    "Feed that decay into the existing dyadic far-sum bridge, then prove the independent global contraction lower bound on the physical time scale.",
+    "Retain separate continuum compactness, physical scaling and nonzero reflected-source survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no continuum Yang-Mills construction or uniform physical mass gap is proved.",
+    "The covariance bounds are for the normalized fixed-exterior Haar-cap Gibbs law with the actual sourced Wilson action. They do not bound the unrestricted middle or full boundary covariance.",
+    "The bound grows linearly with the number of active links and does not decay in source separation. It does not supply the spatial decay premise of the dyadic far-sum theorem.",
+    "The explicit base hypotheses still require small incident plaquette chords and active endpoint distances. Their coverage and the contribution of the cap complement remain to be controlled in the matching response-weighted energy.",
+    "The exact boundary recursion retains both averaged middle covariance and retained covariance of responses. The endpoint distribution retains spatialWeight(w), boundaryMessage_j(w) and the sourced middle partition.",
+    "The additionally transported source is included under the same capped law, even with overlapping links. A propagation estimate for the unrestricted source hierarchy is still missing.",
+    "The normalized fluctuation upper bounds do not establish the independent global lower coercivity inequality needed for transfer contraction, including the center-even physical sector.",
+    "This midpoint contraction argument is not a construction of Balaban gauge-covariant constrained block RG, its localized fluctuation expansion, or a full physical clustering theorem.",
+    "Existing averaged bad-bridge tails cannot simply replace uniform control for arbitrary boundary inputs or eliminate defective directions from global coercivity.",
+    "Controlled physical coupling/time scaling, a suitable overlap margin, reflected compactness and nonzero continuum survival remain open."
+  ],
+  "verification_report": "data/yang_mills_patch_fluctuation_audit.json",
+  "root_build_checked": false
+}

@@ -95,6 +95,16 @@
   (`AlphaRunning`). This pins the result to a physical scale rather than
   being a generic coupling pattern, and guards against over-generalizing.
 
+  PRECISION CAVEAT (added 2026-09-16). `prediction_brackets_PDG` and
+  `prediction_matches_PDG` hold only because the 12-term bracket is
+  ~6×10⁵× wider than the CODATA uncertainty. The true value
+  70/ln(5/3) = 137.03306 misses CODATA 137.035999177(21) by 1.4×10⁵ σ;
+  `Audit.FineStructureIRPrecisionExclusion.codata_excludes_exact_closed_form`
+  proves the exclusion. γ₄/70 is at best a leading term. Look-elsewhere
+  (alpha_look_elsewhere.py, ALPHA_GATE.md §audit): chance hit rate
+  0.08 % per target for the γ₄/q family, 1.3 % for the full recorded
+  search, so "uniqueness" (1) above is not by itself significance.
+
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   WHAT IS PROVED (zero sorry, zero custom axioms)
 

@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: verified canonical physical Gram construction and minimality; all full obligations still open",
+  "scope": "The actual finite-cutoff SU(2) slice ground law has full topological support, and a constructed spatial plaquette has strictly positive variance for every spatial period n>1 and beta>=0. Every actual block conditional variance is at most total ground-law variance. Hence any nonnegative constant A satisfying ground-law variance factorization on all continuous physical sources must obey A*N_links>=1; no nontriviality premise is assumed in this conclusion. For the previously proved crude Haar upper coefficient kappa=N_links*(exp(8*beta)-1)^2, the combined proof cost A*kappa is therefore at least (exp(8*beta)-1)^2. A fixed certified rate cap r<1 requires (1-r)*(exp(8*beta)-1)^2<=r*k. On the diagnostic path beta_m=log(m+2)/8 and k_m=m+1, the explicit contraction coefficient is at least 1-1/(m+2) and tends to one for every spatial-period sequence and every admissible factorization-constant sequence. A fixed strict uniform cap on this proof coefficient is impossible there. This is an obstruction to the crude bound, not a lower bound on the actual transfer spectral ratio, not a counterexample to the mass gap, and not identification of a physical renormalization trajectory. Improving the lower constant alone cannot rescue this particular coefficient on the stated path. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonGroundVarianceBudget",
+    "UnifiedTheory.Clay.YangMills.WilsonHaarBudgetObstruction"
+  ],
+  "new_declarations": 30,
+  "retained_declarations": 7491,
+  "cumulative_declarations": 7521,
+  "proof": {
+    "actual_full_support": "The spatial Haar law is absolutely continuous with respect to pi=g^2 Haar because g is strictly positive. Thus pi assigns positive mass to every nonempty open set.",
+    "physical_witness": "For n>1, changing a single link at the base of a spatial plaquette realizes any SU(2) holonomy. The choices 1 and -1 give distinct real fundamental traces. Continuity and full support give strictly positive actual ground-law variance.",
+    "conditional_budget": "E_pi Var(f|outside B)<=Var_pi(f) for every true spatial block B, from conditional centering and actual disintegration. Summing over N_links singletons gives totalConditionalVariance<=N_links*Var_pi(f).",
+    "factorization_constraint": "If Var_pi(f)<=A*totalConditionalVariance(f) for every continuous gauge-invariant f and A>=0, applying it to the constructed positive-variance plaquette proves A*N_links>=1.",
+    "crude_cost_floor": "For the explicit Haar coefficient kappa=N_links*(exp(8*beta)-1)^2, cost=A*kappa >=(exp(8*beta)-1)^2.",
+    "necessary_cap_constraint": "If rate=cost/(k+cost)<=r<1 with k>0, then (1-r)*(exp(8*beta)-1)^2<=r*k.",
+    "logarithmic_path": "At beta_m=log(m+2)/8, (exp(8*beta_m)-1)^2=(m+1)^2. With k_m=m+1, rate>=1-1/(m+2). Since rate<1, it tends to one by squeezing, for any period sequence and admissible A_m.",
+    "scope": "The rate is exactly the coefficient appearing in the earlier explicit_slab_contraction theorem. An upper bound tending to one need not mean the actual transfer ratio tends to one.",
+    "no_eventual_cap": "No cap r<1 holds even eventually in the cutoff index; deleting a finite initial segment cannot repair the coefficient."
+  },
+  "decision": "Do not spend the next attack merely shrinking A while keeping the crude Haar coefficient on this diagnostic path. Estimate the canonical physical correlations collectively, or justify another response family without silently borrowing an incompatible lower bound.",
+  "not_inferred": [
+    "Improve the collective physical response upper coefficient, or change the response family while proving compatible upper and lower estimates. On the stated logarithmic path, optimizing the ground-law factorization constant alone cannot repair the proved crude Haar coefficient.",
+    "The new lower bound applies to the explicit certified contraction formula, not to the actual physical transfer ratio. No vanishing physical gap or nonexistence of Yang-Mills is inferred.",
+    "The sequence beta_m=log(m+2)/8, k_m=m+1 is a diagnostic path. It is not an independently established physical coupling trajectory, and the theorem does not assert failure for every logarithmic slope or for an improved coefficient.",
+    "Prove the still-open actual ground-law variance factorization and a suitable collective physical Gram or integral-family bound on the same justified physical trajectory.",
+    "The positive plaquette variance is finite-cutoff only. No regulator-uniform positive floor or surviving nonzero continuum excitation follows from full support.",
+    "Construct a nontrivial continuum Yang-Mills theory with the full required field axioms, correct short-distance behavior, physical gap and finite nonzero excitation scale for every compact simple gauge group.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_haar_budget_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

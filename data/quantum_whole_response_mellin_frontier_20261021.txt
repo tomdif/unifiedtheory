@@ -1,0 +1,281 @@
+WHOLE LINKED RESPONSE: FLOW OBSTRUCTIONS AND EXACT MELLIN DIFFERENTIAL FORM
+2026-10-21. Analytic research successor, NOT Lean verified.
+All frozen sources/evidence are unchanged. No original-family numerical probe.
+This follows whole-response-holomorphic-domain-20261021.txt. The inherited 23
+numerical artifacts were separately hash-checked and reviewed in
+response-whole-form-evidence-review-20261021.txt.
+
+1. Exact hypotheses and original energy
+
+Fix alpha,beta>0, r=a+i b with 0<b<a, A=a^2-b^2,
+R=a^2+b^2, eta=2b, L=3-2a, p=alpha*r^2/2, rho=|p|,
+theta=arg(p) in (0,pi/2). Assume the strict packet floor
+  alpha*A > 8*beta*b^2.
+The physical geometry has further restrictions, but the identities here need
+only these. The b=0 boundary requires the combined limit described below.
+Use arbitrary FINITE widths w_i>=1, coefficients d_i, complex neutral sources
+B_i and complex polynomials P_i, all HELD FIXED in the clock derivative:
+  Phi(z,zeta)=sum_i exp(-w_i z) f_i(zeta),
+  f_i(zeta)=d_i exp(-beta*zeta^2+B_i*zeta)P_i(zeta).
+In original notation d_i=c_i*w_i. There is no independent-jet relaxation.
+Set W(F)=1+F^2/2+F^4/4. Omitting only the unchanged external pi/4, the original
+energy is
+  E=integral_{u,v,x real,Y>0} W(x+Lv)
+       |Phi(p(u^2+v^2)+bar(p)Y,x+i eta v)|^2 du dv dx dY.
+All width/source/polynomial cross terms are present.
+
+2. Scope-limited affine and logarithmic flow obstructions
+
+The exact fixed holomorphic image from the preceding note is
+  X=Re(cX z), Y=Re(cY z), v=Im(zeta)/eta, H=X-v^2,
+  cX=(1/A-i/(2ab))/alpha, cY=(1/A+i/(2ab))/alpha,
+  D={Y>0,H>0}, density proportional H^(-1/2)W(Re zeta+Lv).
+Write the actual clock velocity rdot=delta+ell*r, delta>0, ell real,
+  p0=(3a^2-b^2)/(2aA), q0=R/(2aA).
+At fixed holomorphic coordinates the boundary speeds are
+  Ydot|Y=0=-delta*q0*X,
+  Hdot|H=0=-delta*(p0*X+q0*Y).
+A compensating holomorphic field must offset BOTH inward speeds.
+
+Consider the weighted-affine class
+  Vz=A0*z+B0*zeta^2+C0,
+  Vzeta=E0*zeta+F0.
+The same obstruction permits additional z*zeta terms in Vz and terms in
+Vzeta that do not affect d(v^2) at v=0. On zeta=0, Y=0, z=pX with X large,
+  Re(cY Vz)=-Im(A0)csc(2theta) X+O(1).
+On zeta=0, H=X=0, z=bar(p)Y with Y large,
+  Re(cX Vz)=+Im(A0)csc(2theta) Y+O(1).
+Offsetting both boundary speeds requires simultaneously
+  Im(A0)<=-delta*q0*sin(2theta),
+  Im(A0)>=+delta*q0*sin(2theta),
+which is impossible. This only excludes this stated class. A z^2 field is
+outside the class; this is not a no-go theorem for nonlinear holomorphic flows.
+
+For the suggested branch of wedge narrowing, take the principal log on
+|arg z|<theta and lambda>0:
+  Vz=-lambda*z*log z,
+  Vzeta=-(lambda/2)*log z*zeta.
+Let l=log|z|, phi=arg z, chi=Re zeta+Lv. Direct differentiation gives
+  V(Y)=-lambda*l*Y+lambda*phi*Im(cY z),
+  V(H)=-lambda*l*H+lambda*phi*(Im(cX z)+v*Re(zeta)/eta),
+  V(chi)=-(lambda/2)*(l+(L/eta)*phi)*chi
+          +(lambda/2)*phi*(L^2+eta^2)*v/eta,
+  real divergence(V)=-3lambda*l-2lambda.
+Thus the log-radius terms in V(H) cancel ON H=0 exactly, as hoped. However,
+on Y=H=0, z=pv^2 and chi=0, one has
+  V(H)=-lambda*theta*L*v^2/eta,
+which is outward when L>0 (the physical range). Moreover at fixed chi with
+W'(chi) nonzero and v unbounded, V(chi) contains an unbounded linear-v term,
+whereas the displayed divergence is only logarithmic. Adding further terms
+might repair this, but this natural log lift is not the required contraction.
+Neither computation disproves the full response estimate. Both explain why
+an inward charged wedge map or a bounded interior-density claim is insufficient.
+
+3. Fourier kernel and nonnegative Mellin densities
+
+Use f_i(x)=integral_R exp(i k x) g_i(k) dk and D=i*d/dk. Hence
+integral|f|^2 dx=2pi integral|g|^2 dk. The actual jth field channel is
+  exp(-eta*k*v) (D+nu*v)^j g_i(k),  nu=L-i eta,  j=0,1,2.
+Let E_F=E/(2pi). These constant normalizations have no effect on response ratios.
+For each pair of widths define
+  S_ij=p*w_i+bar(p)*w_j, T_ij=bar(p)*w_i+p*w_j.
+After the full u,v,Y integrations the vacuum kernel and v moments are
+  K_ij(k)=pi/(S_ij*T_ij)*exp(eta^2*k^2/S_ij),
+  V_m,ij(k)=(-1/(2eta))^m (d/dk)^m K_ij(k).
+This follows by the actual Gaussian u,v integrals and Laplace Y integral.
+Writing t=log(w_i)-log(w_j), mbar=(log(w_i)+log(w_j))/2 gives
+  K_ij(k)=sum_{n>=0} k^(2n) exp(-(n+2)mbar) C_n(t),
+  C_n(t)=D_n0*cosh(t/2+i theta)^(-(n+1))*cosh(t/2-i theta)^(-1),
+  D_n0=pi*eta^(2n)/(n!*(2rho)^(n+2)).
+All powers here are integer powers. Let
+  rho_n(omega)=(1/(2pi)) integral_R C_n(t) exp(-i omega t) dt.
+Then C_n(t)=integral exp(i omega t)rho_n(omega)domega and rho_n>=0.
+An explicit nonnegative formula is as follows:
+  g_v(omega)=|Gamma(v/2+i omega)|^2/(2pi*Gamma(v)),
+  rho_n(omega)=pi*eta^(2n)/(n!*rho^(n+2))
+    * integral_R exp(-2theta*sigma)g_(n+1)(sigma)
+                 exp(2theta*(omega-sigma))g_1(omega-sigma) dsigma.
+The elementary beta-integral transform of (2cosh(t/2))^(-v), followed by a
+contour shift smaller than pi, proves this formula. Equivalently positivity
+follows from the inverse-S Laplace Gram kernels and their Schur products.
+For n=0 one can check the normalization directly:
+  rho_0(omega)=pi/(2rho^2 sin(2theta))
+                *sinh(2theta*omega)/sinh(pi*omega),
+with its continuous value at omega=0.
+
+4. The actual linked Mellin features
+
+Define, for real k and complex omega,
+  H_n(k,omega)=sum_i w_i^(-(n+2)/2+i omega) g_i(k),
+  L_n(k,omega)=k^n H_n(k,omega),  n>=0.
+They are entire finite exponential sums in omega, and
+  H_(n+1)(k,omega)=H_n(k,omega+i/2),
+  L_(n+1)(k,omega)=k L_n(k,omega+i/2).
+Since log(w_i)>=0, an upward imaginary shift multiplies each width amplitude
+by w_i^(-shift). These features are NEVER independent functions of n or omega.
+The labels, the g_i, and every L_n are clock-independent.
+
+For j=0,1,2 the exact raw channel is
+  E_j=sum_n integral_{k,omega} rho_n(omega)
+       sum_{l,m=0}^j binom(j,l)binom(j,m)
+       d0^l bar(d0)^m (2n)_falling(l+m)
+       A_l * conjugate(A_m),
+  d0=-nu/(2eta),
+  A_l=k^(n-l) sum_i w_i^(-(n+2)/2+i omega) D^(j-l)g_i(k).
+A term with l+m>2n is zero. This raw formula, with canceled powers of k,
+is the nonsingular interpretation at k=0. E_F=E_0+E_1/2+E_2/4.
+
+All exchanges can be justified for this original finite packet class: each
+g_i and its finitely many derivatives is a polynomial times a Gaussian of
+modulus bounded by const*(1+|k|)^M exp(-k^2/(4beta)+C|k|). Absolute summation
+of the kernel/moment series is bounded by a polynomial times
+exp(eta^2*k^2/(alpha*A)); the strict floor makes its product with two such
+Gaussians integrable. In Mellin variables one can use
+  integral rho_n=C_n(0)=pi*eta^(2n)/(n!*(alpha*A)^(n+2))
+and the finite width floor. This also handles polynomial n factors. The same
+bounds hold in a small parameter neighborhood, justifying fixed-label clock
+differentiation. These are analytic justifications, not new Lean proofs.
+
+5. Exact completed differential forms, including the quartic LDU
+
+Set s=L/eta and define A_n=D-n*s/k on k!=0. For a linked L=L_n set
+  q0_n[L]=|L|^2,
+  q1_n,s[L]=|A_n L|^2 - n*(1+s^2)/(2k^2)*|L|^2,
+  q2_n,s[L]=|A_n^2 L-n*(1+s^2)/(2k^2)*L|^2
+       -2n*(1+s^2)/k^2*|A_n L+(s-i)/(2k)*L|^2
+       +n*(2n-1)*(1+s^2)^2/(4k^4)*|L|^2,
+  Q_n,s=q0_n+q1_n,s/2+q2_n,s/4.
+Then exactly
+  E_j=sum_n integral rho_n qj_n,s[L_n],
+  E_F=sum_n integral rho_n Q_n,s[L_n].
+The imaginary neutral shift cancels to the REAL connection ns/k because
+  i+nu/eta=s.
+
+For verification of the quartic formula, write N=2n and
+  A0=D^2 L-2i*n*D L/k-n(n+1)*L/k^2,
+  A1=(D L-i*n*L/k)/k,
+  A2=L/k^2.
+The falling-moment Hankel form has the exact LDU
+  |A0+2d0*N*A1+d0^2*N(N-1)*A2|^2
+  -N*|2d0*A1+2d0^2*(N-1)*A2|^2
+  +2N(N-1)|d0|^4 |A2|^2.
+Its first square is A_n^2 L-n(1+s^2)L/(2k^2); its middle expression is
+  -(s-i)/k*(A_n L+(s-i)L/(2k)).
+All three polynomial identities were independently expanded exactly with
+SymPy (zero residuals); no floating numerical response test was involved.
+
+The completed pieces MUST be combined before taking k->0 or integrating.
+At n=1, j=2 individual displayed squares have k^(-2) singularities which
+cancel in their sum. At n=0, q1=|DL_0|^2 and q2=|D^2L_0|^2, with all terms
+carrying n defined as zero, not as a separately evaluated singular product.
+At b->0 one likewise cannot discard n>=1 merely because rho_n has eta^(2n):
+s=L/eta and the moment factors compensate. The raw combined expression has
+the correct finite limit; terms n<=2 can survive in the quartic channel.
+
+Individual n forms are not positive. Already the j=1 falling-moment matrix
+at n=1 is [[1,2],[2,2]], of determinant -2 (after harmless nonzero scalar
+congruence). This is NOT a realizable counterexample: the features satisfy
+the exact width/Hardy linkage, and their full sum is the original positive
+energy.
+
+6. Half-shift recurrence, contour validity, and the boundary mode
+
+The cosh relation gives the EXACT recurrence
+  exp(i theta)rho_(n+1)(omega+i/2)
+  +exp(-i theta)rho_(n+1)(omega-i/2)
+      =2 q_n rho_n(omega),
+  q_n=eta^2/(2rho*(n+1)).
+The density rho_n is holomorphic in |Im omega|<(n+2)/2. Uniformly in a smaller
+closed substrip it decays faster than exp(-sigma*|Re omega|) for every
+sigma<pi-2theta, by shifting the defining t contour. Finite width sums are
+bounded on each horizontal omega strip. Therefore the half-shift contour
+moves used below are justified and cross NO poles.
+
+For a finite exponential sum H, write H^*(z)=conjugate(H(conjugate z)).
+Integrating the recurrence against H_n(omega)H_n^*(omega), and shifting its
+two terms in opposite directions, gives the precise identity
+  q_n integral rho_n |H_n|^2
+   =Re[exp(i theta) integral rho_(n+1)
+          H_(n-1)(omega)*conjugate(H_(n+1)(omega))].
+Here H_(-1)=sum_i w_i^(-1/2+i omega)g_i is explicitly defined if n=0.
+For n>=1 this may also be written with L_(n-1),L_(n+1) after restoring k
+powers. The k powers cancel in that pairing. At n=0 the H_(-1) term is a
+real boundary feature absent from the original nonnegative-index energy;
+it cannot simply be dropped.
+
+In particular
+  |H_n(omega+i/2)|^2=H_n(omega+i/2)H_n^*(omega-i/2).
+A common contour shift preserves the separation i between these arguments.
+It does NOT replace this expression by |H_n(omega)|^2. This is the reason
+naive adjacent-square telescoping is invalid.
+
+The nearest meromorphic poles of rho_n occur at omega=+i(n+2)/2 and its
+negative, from the two tails of C_n(t). With
+  A_n^+=pi*eta^(2n)/(n!*rho^(n+2))*exp(-i*n*theta),
+the residue at the upper pole is A_n^+/(2pi*i); the lower residue is
+-conjugate(A_n^+)/(2pi*i). In particular rho_0 has poles at +/-i. A proposed
+further contour shift reaching those lines requires explicit residues.
+No such pole is crossed in the preceding half-shift identity. There is no
+hidden residue term available to erase the H_(-1) boundary feature.
+
+7. What the straightforward 2x2 comparison does and does not prove
+
+Cauchy-Schwarz bounds the off-diagonal pairing in section6 using both norms
+with weight rho_(n+1). Replacing the first of those weights by rho_(n-1)
+with a uniform scalar is impossible even at fixed positive geometry.
+For fixed theta in (0,pi/2), the nearest upper t-plane pole yields, as T->infty,
+  rho_n(-T) ~ [pi*eta^(2n)/(2*rho^(n+2)*(n!)^2*sin(2theta))]
+                 *T^n*exp(-(pi-2theta)T).
+This follows by the residue at t=i(pi-2theta), of order n+1; shifting to a
+line between it and the next pole gives an exponentially smaller remainder.
+Consequently, for n>=1,
+  rho_(n+1)(-T)/rho_(n-1)(-T)
+      ~ eta^4*T^2/(rho^2*n^2*(n+1)^2).
+Thus a pointwise positive block with diagonal C*rho_(n-1),C*rho_(n+1) and
+off-diagonal rho_(n+1) cannot hold with finite C. This excludes only that
+unweighted adjacent-energy comparison. The original modes are linked, and
+the charged dissipative density has an additional |omega| tail which may
+control this loss. No counterexample to the full response follows.
+
+8. The exact full-response operator inequality still to prove
+
+For actual clock velocity rdot=delta+ell*r, delta>0, ell real, set
+  kappa=-2delta-3ell.
+At fixed labels the linked L_n do not move. Direct differentiation gives
+  sdot=kappa/eta,
+  rhodot_n=-4ell*rho_n
+       -(2delta/R)*[(n+2)*a*rho_n+b*partial_theta rho_n].
+The theta derivative here acts on the cosh/Gamma angular factor with eta and
+rho fixed; their scale derivatives have already been included. Therefore
+  E_Fdot=-4ell E_F
+   +sum_n integral_{k,omega} {
+       -(2delta/R)*[(n+2)*a*rho_n+b*rho_n,theta]*Q_n,s[L_n]
+       +(kappa/eta)*rho_n*partial_s Q_n,s[L_n] }.
+This is the full original linked response, up to the same constant 2pi and
+external pi/4. It includes every quartic cross term. No chart remainder or
+independent neutral jet is introduced.
+
+The remaining desired state-independent estimate is precisely
+  sum_n integral {
+       -(2delta/R)*[(n+2)*a*rho_n+b*rho_n,theta]*Q_n,s[L_n]
+       +(kappa/eta)*rho_n*partial_s Q_n,s[L_n] }
+       <= C*fraction * sum_n integral rho_n*Q_n,s[L_n],
+for the ACTUAL admissible clock parameters and ALL finite source families in
+section1, with one C independent of labels, widths, polynomial degrees and
+number of packets. The already controlled -4ell E term is added afterward.
+All singular completed pieces must be evaluated as the combined raw forms.
+The b=0 boundary must be obtained through their joint limit, not by treating
+s and rho_n independently.
+
+A potentially useful next comparison must retain the charged densities
+  D_n=(n+2)*a*rho_n+b*partial_theta rho_n,
+not just the E0 densities. Their Mellin tails have the extra linear |omega|
+scale that the failed adjacent-norm comparison loses. An estimate for those
+shifted pairings against the actual summed charged form, with the exact
+n=0 and k=0 cancellations, has NOT been proved here. Positivity of individual
+vacuum kernels alone does not establish it because Q_n,s is indefinite.
+
+STATUS: exact analytic identities and scope-limited strategy obstructions;
+no unrestricted uniform response bound, no genuine admissible violating
+sequence, no proposed model change, and no additional algebra-only Lean
+wrapper. The all-order physical response remains open.

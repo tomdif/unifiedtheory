@@ -1,0 +1,29 @@
+import UnifiedTheory.Clay.YangMills.CompactRotationIdentity
+import UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy
+import UnifiedTheory.Clay.YangMills.WilsonInteriorResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.sourceEnergy
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.mixedEnergy
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.amplitudeEnergy
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.sourceEnergy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.amplitudeEnergy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.identity
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.mixed_le_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.scalar_log_gain
+#print axioms UnifiedTheory.Clay.YangMills.CompactRotationIdentity.weighted_log_le_energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.haar_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.sourceEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.amplitudeEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.amplitudeEnergy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.sourceEnergy_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.ground_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.weightedEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.weightedEntropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.paired_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonWeightedEntropy.bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonInteriorResponse.square_weight_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonInteriorResponse.physical_square_weight_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonInteriorResponse.sqrtWeight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonInteriorResponse.sqrtWeight_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonInteriorResponse.nonnegative_weight_response

@@ -1,0 +1,1209 @@
+{
+  "contour_cases": [
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "imaginary_shift": -0.2827433388230814,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.443059973708341e-16,
+      "norm_formula_error": 1.5178830414797062e-18,
+      "sampled_strip_bound_excess": -5.798353909491363e-07,
+      "direct_quadrature_error_estimate": 4.506672931415328e-13,
+      "shifted_quadrature_error_estimate": 3.97733111430901e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "imaginary_shift": -0.12566370614359174,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 6.662752011349776e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.798353909491363e-07,
+      "direct_quadrature_error_estimate": 4.506672931415328e-13,
+      "shifted_quadrature_error_estimate": 3.055151861993237e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.798353909491363e-07,
+      "direct_quadrature_error_estimate": 4.506672931415328e-13,
+      "shifted_quadrature_error_estimate": 4.506672931415328e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "imaginary_shift": 0.12566370614359174,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 6.662752011349776e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.798353909491363e-07,
+      "direct_quadrature_error_estimate": 4.506672931415328e-13,
+      "shifted_quadrature_error_estimate": 3.0496423391995516e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "imaginary_shift": 0.2827433388230814,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 3.376611507232129e-16,
+      "norm_formula_error": 1.5178830414797062e-18,
+      "sampled_strip_bound_excess": -5.798353909491363e-07,
+      "direct_quadrature_error_estimate": 4.506672931415328e-13,
+      "shifted_quadrature_error_estimate": 3.9772234547864515e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "imaginary_shift": -0.2827433388230814,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.941739743737032e-16,
+      "norm_formula_error": 6.938893903907228e-18,
+      "sampled_strip_bound_excess": -1.0401831404937401e-49,
+      "direct_quadrature_error_estimate": 1.7108273492081657e-13,
+      "shifted_quadrature_error_estimate": 2.475690940552085e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "imaginary_shift": -0.12566370614359174,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 3.376611507232129e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.0401831404937401e-49,
+      "direct_quadrature_error_estimate": 1.7108273492081657e-13,
+      "shifted_quadrature_error_estimate": 1.5831492869351534e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.0401831404937401e-49,
+      "direct_quadrature_error_estimate": 1.7108273492081657e-13,
+      "shifted_quadrature_error_estimate": 1.7108273492081657e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.12566370614359174,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 3.1401849173675503e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.0401831404937401e-49,
+      "direct_quadrature_error_estimate": 1.7108273492081657e-13,
+      "shifted_quadrature_error_estimate": 1.5802120454044424e-13
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.2827433388230814,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 5.026748538604307e-16,
+      "norm_formula_error": 6.938893903907228e-18,
+      "sampled_strip_bound_excess": -1.0401831404937401e-49,
+      "direct_quadrature_error_estimate": 1.7108273492081657e-13,
+      "shifted_quadrature_error_estimate": 2.474550409314362e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "imaginary_shift": -0.7068583470577035,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 2.6694734027976646e-15,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -7.133740855371378e-07,
+      "direct_quadrature_error_estimate": 2.40729931346517e-13,
+      "shifted_quadrature_error_estimate": 5.348815144997805e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "imaginary_shift": -0.3141592653589793,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.445165523364545e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -7.133740855371378e-07,
+      "direct_quadrature_error_estimate": 2.40729931346517e-13,
+      "shifted_quadrature_error_estimate": 2.5502262855435486e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -7.133740855371378e-07,
+      "direct_quadrature_error_estimate": 2.40729931346517e-13,
+      "shifted_quadrature_error_estimate": 2.40729931346517e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "imaginary_shift": 0.3141592653589793,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.445165523364545e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -7.133740855371378e-07,
+      "direct_quadrature_error_estimate": 2.40729931346517e-13,
+      "shifted_quadrature_error_estimate": 2.554276307851555e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "imaginary_shift": 0.7068583470577035,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 1.6636169978078549e-15,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -7.133740855371378e-07,
+      "direct_quadrature_error_estimate": 2.40729931346517e-13,
+      "shifted_quadrature_error_estimate": 5.064741788908157e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "imaginary_shift": -0.7068583470577035,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 1.4781355509288414e-14,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.297453958748768e-49,
+      "direct_quadrature_error_estimate": 1.1273521558550744e-13,
+      "shifted_quadrature_error_estimate": 1.0474825350806229e-12
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "imaginary_shift": -0.3141592653589793,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 1.4752290795525882e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.297453958748768e-49,
+      "direct_quadrature_error_estimate": 1.1273521558550744e-13,
+      "shifted_quadrature_error_estimate": 1.707284512012812e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.297453958748768e-49,
+      "direct_quadrature_error_estimate": 1.1273521558550744e-13,
+      "shifted_quadrature_error_estimate": 1.1273521558550744e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.3141592653589793,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.0815798435103034e-16,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.297453958748768e-49,
+      "direct_quadrature_error_estimate": 1.1273521558550744e-13,
+      "shifted_quadrature_error_estimate": 1.6834746109392764e-13
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.7068583470577035,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 6.866350197783356e-15,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -5.297453958748768e-49,
+      "direct_quadrature_error_estimate": 1.1273521558550744e-13,
+      "shifted_quadrature_error_estimate": 1.044829693107871e-12
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "imaginary_shift": -1.413716694115407,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 1.4929855514617844e-13,
+      "norm_formula_error": 2.7755575615628914e-17,
+      "sampled_strip_bound_excess": -1.4955155517634402e-06,
+      "direct_quadrature_error_estimate": 1.846416130415267e-13,
+      "shifted_quadrature_error_estimate": 9.845791739415676e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "imaginary_shift": -0.6283185307179586,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 4.378244108969851e-16,
+      "norm_formula_error": 1.1102230246251565e-16,
+      "sampled_strip_bound_excess": -1.4955155517634402e-06,
+      "direct_quadrature_error_estimate": 1.846416130415267e-13,
+      "shifted_quadrature_error_estimate": 2.591174514186669e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.4955155517634402e-06,
+      "direct_quadrature_error_estimate": 1.846416130415267e-13,
+      "shifted_quadrature_error_estimate": 1.846416130415267e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "imaginary_shift": 0.6283185307179586,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 6.12663375008106e-16,
+      "norm_formula_error": 1.1102230246251565e-16,
+      "sampled_strip_bound_excess": -1.4955155517634402e-06,
+      "direct_quadrature_error_estimate": 1.846416130415267e-13,
+      "shifted_quadrature_error_estimate": 2.4339945040904817e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "imaginary_shift": 1.413716694115407,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 8.230975848550346e-14,
+      "norm_formula_error": 2.7755575615628914e-17,
+      "sampled_strip_bound_excess": -1.4955155517634402e-06,
+      "direct_quadrature_error_estimate": 1.846416130415267e-13,
+      "shifted_quadrature_error_estimate": 9.687515704018294e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "imaginary_shift": -1.413716694115407,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 8.652855333384186e-12,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.7738421825445512e-46,
+      "direct_quadrature_error_estimate": 7.11922801762893e-14,
+      "shifted_quadrature_error_estimate": 9.887656944626915e-11
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "imaginary_shift": -0.6283185307179586,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 2.7122821771666613e-15,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.7738421825445512e-46,
+      "direct_quadrature_error_estimate": 7.11922801762893e-14,
+      "shifted_quadrature_error_estimate": 3.5609101872907525e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.0,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 0.0,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.7738421825445512e-46,
+      "direct_quadrature_error_estimate": 7.11922801762893e-14,
+      "shifted_quadrature_error_estimate": 7.11922801762893e-14
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "imaginary_shift": 0.6283185307179586,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 1.788512522917511e-15,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.7738421825445512e-46,
+      "direct_quadrature_error_estimate": 7.11922801762893e-14,
+      "shifted_quadrature_error_estimate": 3.453379513561426e-13
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "imaginary_shift": 1.413716694115407,
+      "frequencies": [
+        -0.7,
+        -0.25,
+        0.0,
+        0.3,
+        0.65
+      ],
+      "shift_identity_error": 9.683454502749729e-12,
+      "norm_formula_error": 0.0,
+      "sampled_strip_bound_excess": -1.7738421825445512e-46,
+      "direct_quadrature_error_estimate": 7.11922801762893e-14,
+      "shifted_quadrature_error_estimate": 9.876101152571014e-11
+    }
+  ],
+  "momentum_cases": [
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "hbar": 0.0,
+      "width_margin": 0.6283185307179586,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        1.0594853533473259,
+        1.0594853559180997
+      ],
+      "dominating_integral": 4.305768320720408,
+      "real_square_integral_in_window": 1.0594853559180555,
+      "finite_window_plancherel_error": 4.418687638008123e-14
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "hbar": 0.25132741228718347,
+      "width_margin": 0.37699111843077515,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        1.1135680053842072,
+        1.1135691432878656
+      ],
+      "dominating_integral": 7.176280534534015,
+      "real_square_integral_in_window": 1.0594853559180555
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "hbar": 0.5026548245743669,
+      "width_margin": 0.12566370614359168,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        1.3410006983720137,
+        1.342568235730197
+      ],
+      "dominating_integral": 21.52884160360205,
+      "real_square_integral_in_window": 1.0594853559180555
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "hbar": 0.0,
+      "width_margin": 0.6283185307179586,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.4182937338807363,
+        0.41829373438905626
+      ],
+      "dominating_integral": 0.9418621754633155,
+      "real_square_integral_in_window": 0.4182937343890508,
+      "finite_window_plancherel_error": 5.440092820663267e-15
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "hbar": 0.25132741228718347,
+      "width_margin": 0.37699111843077515,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.4953804650944608,
+        0.49538067988024936
+      ],
+      "dominating_integral": 1.5697702924388595,
+      "real_square_integral_in_window": 0.4182937343890508
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "hbar": 0.5026548245743669,
+      "width_margin": 0.12566370614359168,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.8389594796685567,
+        0.8392138842956216
+      ],
+      "dominating_integral": 4.70931087731658,
+      "real_square_integral_in_window": 0.4182937343890508
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "hbar": 0.0,
+      "width_margin": 1.5707963267948966,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.7931252161562963,
+        0.79312521615632
+      ],
+      "dominating_integral": 2.6069690073543286,
+      "real_square_integral_in_window": 0.7931252161562816,
+      "finite_window_plancherel_error": 3.8413716652030416e-14
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "hbar": 0.6283185307179586,
+      "width_margin": 0.9424777960769379,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.9492678401957731,
+        0.9492678401960124
+      ],
+      "dominating_integral": 4.344948345590548,
+      "real_square_integral_in_window": 0.7931252161562816
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "hbar": 1.2566370614359172,
+      "width_margin": 0.3141592653589793,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        1.718562756287246,
+        1.7185667722371023
+      ],
+      "dominating_integral": 13.034845036771642,
+      "real_square_integral_in_window": 0.7931252161562816
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "hbar": 0.0,
+      "width_margin": 1.5707963267948966,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.26221388766129194,
+        0.2622138876612946
+      ],
+      "dominating_integral": 9.771519625204155,
+      "real_square_integral_in_window": 0.26221388766129045,
+      "finite_window_plancherel_error": 4.163336342344337e-15
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "hbar": 0.6283185307179586,
+      "width_margin": 0.9424777960769379,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.5767401466920848,
+        0.5767401466920861
+      ],
+      "dominating_integral": 16.285866042006926,
+      "real_square_integral_in_window": 0.26221388766129045
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "hbar": 1.2566370614359172,
+      "width_margin": 0.3141592653589793,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        6.008102050084087,
+        6.008102050464556
+      ],
+      "dominating_integral": 48.857598126020775,
+      "real_square_integral_in_window": 0.26221388766129045
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "hbar": 0.0,
+      "width_margin": 3.141592653589793,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.38480794516652833,
+        0.3848079451665414
+      ],
+      "dominating_integral": 5.7286604569082495,
+      "real_square_integral_in_window": 0.3848079451665202,
+      "finite_window_plancherel_error": 2.1149748619109232e-14
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "hbar": 1.2566370614359172,
+      "width_margin": 1.8849555921538759,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.6651150490202269,
+        0.6651150490202391
+      ],
+      "dominating_integral": 9.547767428180416,
+      "real_square_integral_in_window": 0.3848079451665202
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "hbar": 2.5132741228718345,
+      "width_margin": 0.6283185307179586,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        3.6051763649458217,
+        3.6051763649610162
+      ],
+      "dominating_integral": 28.64330228454125,
+      "real_square_integral_in_window": 0.3848079451665202
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "hbar": 0.0,
+      "width_margin": 3.141592653589793,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        0.10288368594106465,
+        0.10288368594106137
+      ],
+      "dominating_integral": 547807.1393267103,
+      "real_square_integral_in_window": 0.10288368594106416,
+      "finite_window_plancherel_error": 2.789435349370706e-15
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "hbar": 1.2566370614359172,
+      "width_margin": 1.8849555921538759,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        1.7392872677412439,
+        1.7392872677412312
+      ],
+      "dominating_integral": 913011.8988778504,
+      "real_square_integral_in_window": 0.10288368594106416
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "hbar": 2.5132741228718345,
+      "width_margin": 0.6283185307179586,
+      "frequency_cutoffs": [
+        4.0,
+        8.0
+      ],
+      "weighted_fourier_integrals": [
+        7696.8802194817645,
+        7696.8802194817645
+      ],
+      "dominating_integral": 2739035.696633551,
+      "real_square_integral_in_window": 0.10288368594106416
+    }
+  ],
+  "strip_tail_diagnostics": [
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -139.9356870123947
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -3047887.775306929
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -1478725981431745.8
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": 136.814675430336
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": 3047875.054295314
+    },
+    {
+      "epsilon": 0.2,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": 1478725981431678.8
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -150.6421884177835
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -3047931.380920178
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -1478725981431921.0
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": 126.12982077288311
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": 3047831.4703288134
+    },
+    {
+      "epsilon": 0.2,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": 1478725981431503.5
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -2.2205154667311455
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -52.980107374825
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -139585.10138144577
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": -0.48580692112636825
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": 40.67378498696732
+    },
+    {
+      "epsilon": 0.5,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": 139534.3950590574
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -11.562703525025476
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -95.22140727619686
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -139758.93912871944
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": -9.692702804821378
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": -1.432222739805212
+    },
+    {
+      "epsilon": 0.5,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": 139360.6926039583
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -0.8842190542576642
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -7.16709253012198
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -118.2862763463097
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": -0.34107049717237825
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": -3.658197021308068
+    },
+    {
+      "epsilon": 1.0,
+      "a": 0.8,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": 69.0609867948793
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -2.0,
+      "log_norm": -5.353859444357473
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -4.0,
+      "log_norm": -44.53584476329931
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 0.98,
+      "real_coordinate": -8.0,
+      "log_norm": -287.2514759517971
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -2.0,
+      "log_norm": -4.269542188874905
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -4.0,
+      "log_norm": -40.48578055608811
+    },
+    {
+      "epsilon": 1.0,
+      "a": 6.283185307179586,
+      "width_ratio": 1.02,
+      "real_coordinate": -8.0,
+      "log_norm": -99.36304411221082
+    }
+  ],
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da",
+    "scripts/inverse_clock_parity_audit.py": "43c0ddbb37ff0a5021cb8a64c28d972c57124ecb7c6c1cbd7bd47a43e153d156",
+    "UnifiedTheory/Audit/KFCausalGravityPairCoercivity.lean": "54348ed81542838ecfee8ed2a0f987f1019e64638242bb70da0aed9e802dabe1",
+    "UnifiedTheory/Audit/KFCausalInverseClockEnergy.lean": "7fe949640f029747228db95b9cdec39e9666fbb189a759e2a5e24a5f8bce87c4",
+    "UnifiedTheory/Audit/KFCausalOccupationParity.lean": "458f93c0149b4f1a7921a37cbc88d635047e9d4f955f3646dbb71a1e857d9ba4",
+    "UnifiedTheory/Audit/KFCausalUniformInverseClock.lean": "b661d91479a5e5c4244b5c23fc933755187cd0a9b06680bf016738ffa0048a4d",
+    "scripts/longitudinal_domain_audit.py": "4e4134870fbc864a2508f4063042e5e87e542dcd003a79b53b7665b243222b9e",
+    "UnifiedTheory/Audit/KFCausalLongitudinalDomain.lean": "7eec07207bcf1f18f2c10cad77dfed6a20775995888fe49b10425922d45f40dd",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalChart.lean": "152bf170505f4fce2327c91e620a11641906493b4befbc172430ac9fac02db94",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalPullback.lean": "3fa015346d21f8cf26982c9c2164c0c181d24ce0c56a00ad1884f5a744906982",
+    "scripts/regularized_constraint_spin_model.py": "633956425de4f4d9b19bda57e51476416d8deea3ea57d7a1f1d92595985be63d",
+    "scripts/regularized_spin_dynamics_audit.py": "ea3e76a6a19225d60061b002de3e55a2204393bd4d3436ae5712aa97dcf35579",
+    "UnifiedTheory/Audit/KFCausalRegularizedClockDatum.lean": "38e2b7491651aa9a147f4be6e32ed20cd753d15655ea3d5c8739c626724961fc",
+    "UnifiedTheory/Audit/KFCausalRegularizedSpinDynamics.lean": "ad93f97b6bdbe79827017336f67381a920d95e61673e32b860c62a72cd5f5521",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianCore.lean": "4866fabe9a33015aa03e40644f5bcc156c589f35805dd51a10b038286cdaa92d",
+    "UnifiedTheory/Audit/KFCausalRegularizedTrialBounds.lean": "43b898c82a4fe7242024383ab20e7c5a3b0fc786a764d7928bc600796807fa27",
+    "UnifiedTheory/Audit/KFCausalFourierUniqueness.lean": "29bb4bce91b943c7005c34091474fae7b03ec2a810948903011315f900088a30",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianTotality.lean": "2a1af3b76f1d7ebbe475ed2188241b649da50e0e035bbc4bdf1de887b35f25d6",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormDomain.lean": "4a6154adcac084ff62f2238ab1a7f74b7b5763f9c31aa89d8eb4334525466b67",
+    "scripts/regularized_closed_form_audit.py": "81e393aad33862e0361820ce14da856682659b1b3dac184bbe1c6aea3a31e60a",
+    "UnifiedTheory/Audit/KFCausalRegularizedAdjointTests.lean": "3b06359f9cad8d6d428072fb3c4871a10fbf775246a96de625371702c212070c",
+    "UnifiedTheory/Audit/KFCausalSeparatedGraphClosure.lean": "4f8cb27e6402846d8d3155a87b85d82d5fd009df12ad803fd3be0e6d01b48122",
+    "UnifiedTheory/Audit/KFCausalRegularizedMomentumClosure.lean": "a7b48a09096bfcf1aeb6323373efbd832552b8757120bbeb69678241c20e0712",
+    "UnifiedTheory/Audit/KFCausalRegularizedClockFactor.lean": "0fc9c7c601abfd9d21265668641a7b6943bf11b34da2e927783233c5c916da0e",
+    "UnifiedTheory/Audit/KFCausalRegularizedClosedForm.lean": "676c470f6d8ca333572368573d5d8c826547741319a79d1cccfc3ae650d00305",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormEmbedding.lean": "50c765c73feb7dc57f4b8a69c4264be7a0f27a5275cff783abe7b9c0cc44f212",
+    "scripts/regularized_hamiltonian_audit.py": "956dbcef8406af1529669339815856d5129cceaf24f0e544d558d50d080399a4",
+    "UnifiedTheory/Audit/KFCausalFormResolvent.lean": "56e93d58d0c4cf6fd1ab579677b156c6925991cec19eed358a18ac24e3482c87",
+    "UnifiedTheory/Audit/KFCausalResolventHamiltonian.lean": "20e62721b10299e9eb2219e29c819092f08e21f358c8ee9f1688231d519cfaa3",
+    "UnifiedTheory/Audit/KFCausalFormHamiltonian.lean": "de0bd67ae3bb5f044c5812f3688bc324286e7a2cb35fb37000ed0bcca27d37a8",
+    "UnifiedTheory/Audit/KFCausalRegularizedHamiltonian.lean": "e795d3bc2ba49582a9fe3b10c386f98f4235a69d791bba7e8152c49a4a44f160",
+    "scripts/regularized_form_time_audit.py": "d5adfa16e722df49c99bf0eb6fc4e9427cfb471a1b7fec155fade8bb95f16509",
+    "UnifiedTheory/Audit/KFCausalGraphTransport.lean": "c820a8c68a54bd24b371eef3eed92c6156f1c6b8cb52d851605909080ea6fd94",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormTransport.lean": "534876e19debdaa93e710fd79cc3caee7042a2b95c6285369366e7eb38b0a239",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormTimeControl.lean": "0be0163b01fe57dfef37a0e9e138bf61b8e518c897bff74a9ed4b18f37a5fc29",
+    "UnifiedTheory/Audit/KFCausalBoundedFormCurve.lean": "10cfe546070959bd2d9002994ab25d0947ac2c6e40835932e0d6faab586fbc1f",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormRegularity.lean": "df44da5c82cacf5f6c6cf1642d048dc1d8547cb13b8d565e4732546931d2cc94",
+    "UnifiedTheory/Audit/KFCausalRegularizedHamiltonianFormBridge.lean": "b3204890696f42c3d3d7f31a4cddf87d146fc46cbff6288449f63a6090f80ab8",
+    "scripts/regularized_resolvent_audit.py": "ecb5d68aa9f196c898e2ae6059a2591f46bbef1c1e2cb28247d0980ae99fe7fe",
+    "UnifiedTheory/Audit/KFCausalCoerciveInverse.lean": "b7f3eac243068b04dd623a3fbacf986b959bd2fc8898445a5041f1f742b1d17e",
+    "UnifiedTheory/Audit/KFCausalShiftedForm.lean": "83549145e0f2d478f0bd4a9840d319861722dba1db0a17bb7237fad70b88f0c9",
+    "UnifiedTheory/Audit/KFCausalInverseCurve.lean": "0431c0a0a2bed60dd11fe79506b6367e53997d346e1c6e03403876603063bb64",
+    "UnifiedTheory/Audit/KFCausalRegularizedShiftedResolvent.lean": "e448c3d5a93b514e2ae0904f8ac74bf74e04c1d15a01849b0373543a6bb2dbd6",
+    "UnifiedTheory/Audit/KFCausalPositiveResolventBounds.lean": "e7a4d0bce077af6b2aae4c2fd83c204e1afc6616eb4ce1cdd0391a95a30fafd8",
+    "UnifiedTheory/Audit/KFCausalYosidaApproximation.lean": "aafe0e04cb3d9fa5e411e7cc5ba2358e717fc432180598509a6c8da46d56cf51",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosida.lean": "055df3f4f0074052759e2a2519f391744fc42eac5b8df66b4e2870716a03cf09",
+    "scripts/regularized_yosida_dynamics_audit.py": "59c9297972b152e71b75484dea34def7cfff14b70f5ed6f634ebfb303669e62c",
+    "UnifiedTheory/Audit/KFCausalHilbertIntervalPropagator.lean": "886d3a5035374c5d052a5141a0fcc9f648b98d00b61fc66bec62bf071f5cbc94",
+    "UnifiedTheory/Audit/KFCausalHilbertGlobalFlow.lean": "5d7dd3d53bc0b5cb1672501a3d1802020cfd1b7f3669ee1dbcfcf518fd1e805e",
+    "UnifiedTheory/Audit/KFCausalHilbertEvolution.lean": "5be135496dccd5311c1f59798f3a290054149ea5e861f9b2edcedac1215dda7f",
+    "UnifiedTheory/Audit/KFCausalHilbertStateEvolution.lean": "d5971eaf25244fd78aa88ec3cc42fc5d91cdaf0698996fbf3d758fc7d5186521",
+    "UnifiedTheory/Audit/KFCausalHilbertEvolutionStability.lean": "10578b2444a1621bd5c3335f0dc7b79f1b918a36260265c0068c14559ba1b008",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaDynamics.lean": "1d96564a37ac4ea39fb33287f998f62778ca4b15e528cfb9d644eb2fa289cd31",
+    "scripts/regularized_yosida_energy_audit.py": "dd54364ed96427cfb1319fb1f4d437ad5cd1f67944e3784329b6d01d222b12c4",
+    "UnifiedTheory/Audit/KFCausalSandwichCalculus.lean": "c3a3fa74ff9e400194212bd4ee0b6398a8405977c463e5d245465729a16781fb",
+    "UnifiedTheory/Audit/KFCausalFormEnergyIdentities.lean": "5f96bb0209d64a939c0fff1fb1b3a7103bff1dc405cdb8313fa4e0024029d626",
+    "UnifiedTheory/Audit/KFCausalSchrodingerEnergyEstimate.lean": "f07c689c3a16033956676c19f32aecd8a87da23de24ebff13fd9b798122c5780",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaDerivative.lean": "ecff207a53d778123b239db54d26ae3890c9b3f43126ef1903c9bd36196d03c9",
+    "UnifiedTheory/Audit/KFCausalRegularizedYosidaEnergy.lean": "b862d572965a3e7b39b879b9bf435c5e64e31fa58104be403637de810f6c6b42",
+    "UnifiedTheory/Audit/KFCausalRegularizedSmoothedTrajectory.lean": "28870dab1007b61f685c9381dfbe7f70333a3a23f2cf99b273977f0b7c464dcd",
+    "scripts/regularized_weak_trajectory_audit.py": "288b4d119f6e0fe0c6c8079bdb50a91fb4e2259f95e2409d7538ab84e61b3f54",
+    "UnifiedTheory/Audit/KFCausalHilbertWeakSubsequence.lean": "e1e0da335cc2d82ad0082035e74cd6c4795788e62e1a398243c3216f576872a2",
+    "UnifiedTheory/Audit/KFCausalWeakLimitTransport.lean": "6e09607b56f3dd5c3d640b51b09fdcc00005391e64335a9537d0c8b667be7ac9",
+    "UnifiedTheory/Audit/KFCausalWeakLimitFromTests.lean": "3243529fb6ba1d8aa63c9ae9a9a3d1841f2a51b74265d0ec0efc57cece92a4cb",
+    "UnifiedTheory/Audit/KFCausalRationalCauchyExtension.lean": "71a101de91ccc2579bfb10e9dff72faa503238dcb4ff5819373ee6b6d67df03d",
+    "UnifiedTheory/Audit/KFCausalPairingCauchyTransfer.lean": "eef22ed20d6daf5810ff3c0760fe97ce3cd1f1ebe7babd6f89ec787275360405",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormSeparable.lean": "1e909e676ab5b8369834f4d8481df290882c2df305cfe4ae6a1a67193c91b32c",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormWindowBound.lean": "85b378ecd972378e09f930952254a4f5977396405630ef01417fef86983e6759",
+    "UnifiedTheory/Audit/KFCausalRegularizedCountableLimit.lean": "45689b53c300245766ac0b7c40709269efe4fc4ca164c3caaac4fba593f5f04f",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakPairing.lean": "89f53738b8f3bf5f08e81823cb3faa5169d1ec583d93a9b8766cf712aace853e",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakTrajectory.lean": "2b670bb7ba9fb576c31f61b9f1dbf91e0ddb5314f509aa18a8a8e38be8234e84",
+    "UnifiedTheory/Audit/KFCausalWeakIntegralLimit.lean": "abd22bc3e86aa25a1aa7d992a7dba30b207ff993b98cfbc108ab93f773f5fc5c",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakIntegralEquation.lean": "7e891572a24ce4a52a70f29d9094debe922d0894a65479da1237520db6694e88",
+    "UnifiedTheory/Audit/KFCausalWeakContinuity.lean": "ce2f04d301a871e5c6e5b838c6d27dc44c871d3f038bad260944afbc8dcf583d",
+    "scripts/regularized_mass_energy_audit.py": "24f96e5bebfacffb2fb697d0491b7fe74694c9b062023d45c541407e3ac8690d",
+    "UnifiedTheory/Audit/KFCausalMassGram.lean": "6774892a7213586a970a7f450016d55e6fe75a918872919544bad847e59fff4e",
+    "UnifiedTheory/Audit/KFCausalLocalWeakContinuity.lean": "56ce49bf301f48bbab5a171cc53dca8fa7fd3ea0c7f4c8deb265a172a32cff0c",
+    "UnifiedTheory/Audit/KFCausalWeakQuadraticDerivative.lean": "bef4e8bc9018cdffa1796f5bc81768578ed3c076e00a31db11d4636a779aaaef",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakFormContinuity.lean": "8828ef1a89c857796cd093512d5b0af930b4dd6cc38a8219303c94db9036e4ea",
+    "UnifiedTheory/Audit/KFCausalMassRegularization.lean": "ea13151225b76940c27258b3082e8807e45d7284438ea23c8fd5927b7a4722a5",
+    "UnifiedTheory/Audit/KFCausalRegularizedEnergyLimit.lean": "4eae75f253907958d04708bf3ac2cc264ba1e115bc8e5296dafb9ea7622329d4",
+    "UnifiedTheory/Audit/KFCausalMassEnergyIdentities.lean": "908f43ccdf224f58ceb19af5e28f6e64f032d2bae9185c1742a3221cfcd376bc",
+    "UnifiedTheory/Audit/KFCausalRegularizedMassEnergy.lean": "c526ef8d4faa333d8f94b4310d4c6272234226adb82b4330b6a710fcce325469",
+    "UnifiedTheory/Audit/KFCausalWeakNormStrongLimit.lean": "4a68b591ceb66ddd79266eaa186038455427816bfdd6d225a24e1cb7e611c9c2",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakNormConservation.lean": "cf054c93814867f384fa31a2d9f9bdf104dba4fbdf149d3b0686d56d43d6e9f1",
+    "UnifiedTheory/Audit/KFCausalWeakMassConservation.lean": "1baa3c8e8028423b976e2b802082cc73b522947a0f7070f7852d94f9d7c68fdb",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakUniqueness.lean": "9a0f2e5fad0989f716027fb7a5e7d22b70cfa06bfb8dbdd999946b669986c760",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormFlow.lean": "ea989485ce21c357cda431d090699eacead6a0988dc4d0aa97925ad9ae94d8cf",
+    "scripts/regularized_homogeneous_evolution_audit.py": "99f11e9f7b714fc623fdf4f53e313e2ca4518645703e83f87bbb82c4af87fc97",
+    "UnifiedTheory/Audit/KFCausalWeakFormSolution.lean": "17176be65c97ddda589658faef8dff42482628d46d403468fda09447ecc0f113",
+    "UnifiedTheory/Audit/KFCausalRegularizedWeakSolution.lean": "ba8251907d12a037a89f10ffd339e23ac5e6a5280df7471652818a7878094378",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormLinearity.lean": "2f8f83e28fe0f0cb66cc159e2dc43370cbcf4b4f084a8456a740e55f5caf6e5f",
+    "UnifiedTheory/Audit/KFCausalDenseUnitaryExtension.lean": "d46ea952ac035a6fb4f1b3d65a170425eae05c7283287ffd2b7b669359fd4ebe",
+    "UnifiedTheory/Audit/KFCausalRegularizedHomogeneousEvolution.lean": "60ace9b5df0b25189015ffd99a2685e654fc3e66dfb0b5204f02bd58c92cd87f",
+    "UnifiedTheory/Audit/KFCausalStrongUnitaryContinuity.lean": "124844cb05fcf8c979acfa83dfd67ff94947f35afb6e9f2fa6b760039b67e4a2",
+    "UnifiedTheory/Audit/KFCausalRegularizedHomogeneousContinuity.lean": "c4ea57523735dc726b4403b60db231b193ab9bf2830d492064adf0cd091f3abb",
+    "scripts/coupled_longitudinal_domain_audit.py": "e0faddd0bfbb3ed238d763c45188d0b851dd1f7daea69927dd05b6a044a7c0c6",
+    "UnifiedTheory/Audit/KFCausalQuadraticSourcePrimitive.lean": "293c0e0f8c30ad8ea4e360ded47bdc6b17276d402e25703f23e6a9f92b8cff88",
+    "UnifiedTheory/Audit/KFCausalSourcePrimitiveQuadratures.lean": "e28baabaad8ac9070dd1fcf81e6d4ef0206c8606078b40bd469d78474362e9cd",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationFlow.lean": "ad1f61e4d562d0079db177749941d6db76dae0c9e0c58e86fec415301d3440f8",
+    "UnifiedTheory/Audit/KFCausalCoupledLongitudinalFlow.lean": "c1c957a02bb33b7434a5a6bf4881c154e960602cbb862ffcf3149d50b0c4933e",
+    "UnifiedTheory/Audit/KFCausalCommutingClockReconstruction.lean": "63734d0414335d49f214182f92b30fc401755ed692f38ae98b28b5271a19dbfc",
+    "UnifiedTheory/Audit/KFCausalCoupledGaussianObstruction.lean": "0036a03e66d8a919784b88f51034a8792abb2f1d4ff25ab4002862c2814038fb",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationPullback.lean": "74dd50e99a22d4e13e459e4b1977c58bf2a545bb2fa7394e7058ab6813914944",
+    "UnifiedTheory/Audit/KFCausalTransverseDerivativeScaling.lean": "67f4f44f32f52286340047f41edea304cf5053b67a2e2742aa5b6582ef1bd9b3",
+    "UnifiedTheory/Audit/KFCausalCoupledDampedGaussian.lean": "43d5d9a57db937da54950cfc6db8fcb27197e3bb20a379dad38bbf8d98dba31c",
+    "scripts/damped_gaussian_momentum_audit.py": "e1371e1541f34cf254a3ff0aafdefa60435a97b4981443457a3d1c86110227ad",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianStrip.lean": "2eb64bd5d8a1e1486997c9b854212c2342fb0ebcc52bc89b21105f9a057e3e1b",
+    "UnifiedTheory/Audit/KFCausalGaussianContourShift.lean": "e3fc8d261f5c54072087e532ae8422c904c0166f6495d5e4eed0e8fbaef802f4",
+    "UnifiedTheory/Audit/KFCausalFourierStripDecay.lean": "f587bfeb45ab21c1117be58a335878ebe583d2577066038955582a8dcf166da3",
+    "UnifiedTheory/Audit/KFCausalExponentialFourierDomain.lean": "b0253ae56d1b2b160bd32ccd6d920d6ba494a035c1972b1aef31b9399dde4947",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianMomentum.lean": "103f8d30933a5590b0c9c142f7380f3318d6b19f773d471f2e5531b204fe2512",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianTotality.lean": "b0fdc4cbad3aa003e5537cd57f2192f9b762f10873badd353b132918d20f40d0"
+  },
+  "numpy_version": "1.26.4",
+  "scipy_version": "1.13.1",
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "The concrete repaired scalar trial has proved Gaussian strip bounds, a derived contour-shift identity, exponential Fourier decay and weighted Fourier square integrability for abs(hbar)<pi*epsilon. Its momentum modulations retain this integrability and have dense span in scalar clock L2. The same modulated family retains the earlier transverse derivative-energy condition after pullback. Full coupled L2 operator identification, all matter and charge-averaged energy terms, a dense full six-mode domain, capacity/regulator limits, physical identification and the TOE remain open. The strict parameter condition is sufficient for this proof; failure or necessity outside it is not claimed."
+}

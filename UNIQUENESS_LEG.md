@@ -733,7 +733,7 @@ causet ensembles.
    the analytic remainder is now the mean post-depth asymptotics of
    the two ensembles.
 
-6. PAPER P1 SPINE [PAPER_P1_SPINE.md]: the terminal theorem as the
+6. PAPER P1 SPINE [PAPER_P1_SPINE.md (superseded draft removed; see data/repository_cleanup_2026_11_09.json)]: the terminal theorem as the
    paper's centerpiece; theorem-to-section map fixed; two assembly
    routes (beam-splitter §24 and divisible-time §11-17) both
    reported; prior-art sweep and honest-scope sections drafted.

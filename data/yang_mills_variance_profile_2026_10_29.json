@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: arbitrary interior-dependent source weights for fixed translations proved with symmetric square-root-weight energy and retained ground-amplitude energy",
+  "scope": "The source-range factor is replaced by actual row variance through a density-comparison entropy bound. For positive normalized continuous densities p,q with q<=R*p, response squared is at most 2*(1+R)*D(p||q) times the p-centered second moment; choosing the actual p mean gives the true variance. For actual Wilson rows and a fixed simultaneous rotation q, let L(q)=sum_e norm(q_e-1), c(q)=sum_e norm(q_e-1)^2, C(q)=2*(1+exp(4*beta*L(q))), sigma_f(U)=sqrt(Var_row_U(f)), and loss(f)=Var_pi(f)-Var_pi(Pf). The actual profile satisfies E_pi[sigma_f^2]=loss(f). Testing the proved weighted entropy form with sigma_f gives E_q(Pf)+C(q)*A_q(g*sigma_f)<=C(q)*(18*beta*c(q)*loss(f)+(E_q(sigma_f)+E_qinv(sigma_f))/2). Here E_q(F)=E_pi[(F(qU)-F(U))^2] and A_q(gF)=integral_Haar[(g(qU)F(qU)-g(U)F(U))^2]. The estimate is explicitly bound to the original full transfer for gauge-invariant f and assumes no mixing or variance factorization. A direct two-sided row-density comparison also proves E_q(sigma_f)<=delta(q)*loss(f), where delta(q)=(exp(2*beta*L(q))-1)^2. This closes a coarse bound with coefficient C(q)*(18*beta*c(q)+delta(q)), retaining the nonnegative amplitude term. However delta(q)>=4*beta^2*L(q)^2, and for equal rotations at N links, delta(q)>=4*beta^2*N*c(q). This is a lower bound on the coarse proof coefficient only, not on actual response or the transfer ratio. The signed profile remainder needs collective control; no uniform physical Haar-form bound, global coercivity, distant mixed-ground sum, continuum limit or mass gap is proved. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactEntropyMoment",
+    "UnifiedTheory.Clay.YangMills.WilsonVarianceProfile",
+    "UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost"
+  ],
+  "new_declarations": 25,
+  "retained_declarations": 7778,
+  "cumulative_declarations": 7803,
+  "proof": {
+    "entropy_moment": "Factor the centered density difference into (sqrt(p)-sqrt(q))*(f-c)*(sqrt(p)+sqrt(q)). Cauchy-Schwarz and Hellinger<=relative entropy control the first factor; q<=R*p gives (sqrt(p)+sqrt(q))^2<=2*(1+R)*p. No observable-range bound is used.",
+    "actual_row_comparison": "The previously proved geometric normalized-row comparison gives R=exp(4*beta*inputCost). For fixed simultaneous q, inputCost(qU,U)=sum_e norm(q_e-1) exactly, independent of U.",
+    "actual_profile": "sigma_f is the continuous nonnegative square root of actual row variance. Its squared mass under the actual stationary ground law is exactly the actual transfer variance loss.",
+    "signed_remainder": "Test the prior weighted paired entropy form with F=sigma_f, and bound the pointwise response by C*rowVariance*rowEntropy. This yields the main response-loss estimate while retaining the nonnegative amplitude energy on the left.",
+    "physical_binding": "For gauge-invariant continuous f, the row mean is exactly the original full transfer expectation, giving the same estimate for physical sources.",
+    "coarse_profile_cost": "Variance is minimized by centering at the mean. Two-sided row-density comparison therefore gives Var_q<=R*Var and Var<=R*Var_q. Their square roots differ by at most (sqrt(R)-1)*sqrt(Var). Integrating gives E_q(sigma_f)<=delta(q)*loss(f).",
+    "coarse_scaling_diagnostic": "exp(x)>=1+x gives delta(q)>=4*beta^2*L(q)^2. For the same group element at every link, L(q)^2=N*c(q), so the fallback contains a link-count loss. No lower bound on the actual response is inferred."
+  },
+  "decision": "The source-range obstruction is replaced by an actual variance-profile remainder. A coarse payment of that remainder by actual variance loss is now proved, and its l1/link-count defect is certified. Next control the signed combination of profile energy and amplitude energy rather than bounding the former alone and dropping the latter.",
+  "next_unproved_route": {
+    "target": "Bound (E_q(sigma_f)+E_qinv(sigma_f))/2-A_q(g*sigma_f) by B(beta)*c(q)*loss(f), with no spatial-volume factor, together with a prefactor and response-family comparison usable for the full physical Haar form.",
+    "candidate_structure": "Use the positive two-output variance representation of the normalized row, equivalently a Gram determinant for g(U)*sigma_f(U), to retain correlations between the two energy terms. This representation and its required collective estimate are a proposed next attack, not a result of this certificate.",
+    "lower_obligation": "Even a successful collective upper estimate leaves actual physical-scale lower coercivity and continuum source survival to prove."
+  },
+  "not_inferred": [
+    "The key unresolved quantity is (E_q(sigma_f)+E_qinv(sigma_f))/2-A_q(g*sigma_f). A volume-uniform bound in squared l2 displacement times actual variance loss has not been proved.",
+    "The proved fallback controls the profile energy by delta(q)*loss(f), but delta(q) uses total l1 displacement. Equal rotations incur a link-count factor relative to squared l2 cost. This obstruction concerns the coarse proof coefficient, not an actual spectral-gap counterexample.",
+    "C(q)=2*(1+exp(4*beta*L(q))) is bounded when beta*L(q) is bounded. It is not uniformly controlled over full-Haar rotations or arbitrarily large simultaneous displacement. No small-rotation to full-Haar lower comparison is newly established.",
+    "The estimate concerns fixed simultaneous translations. It does not directly estimate unrestricted baseline-dependent physical Haar coefficient mixtures.",
+    "Distant mixed-ground summability, actual ground-law global coercivity or variance factorization, and a uniform physical-time contraction remain open.",
+    "Physical coupling identification, a nonzero separated or smeared continuum source, the continuum construction and full field axioms remain open. No Clay certificate is constructed."
+  ],
+  "audit": "data/yang_mills_variance_profile_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

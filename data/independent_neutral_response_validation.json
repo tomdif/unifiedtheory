@@ -1,0 +1,143 @@
+{
+  "probe_report_sha256": "fdaed18a51dc98f0b64b43f1cfea3ac13b8402114955564d77a37723fb2411aa",
+  "verifier_sha256": "fefc3b4cb17dd89ce0352c4beeb174ad8755689c9bc4f19213cf417f82956071",
+  "checks": [
+    {
+      "case": "neutral_grid_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 6.661338147750939e-16,
+      "prior_moment_witnesses": {
+        "0": {
+          "initial_final_field_ratio": 0.990059491717866,
+          "response_over_energy": 0.2111557583664576
+        },
+        "1": {
+          "initial_final_field_ratio": 1.0529416183446612,
+          "response_over_energy": 0.20431872838874748
+        },
+        "2": {
+          "initial_final_field_ratio": 1.0955084004738767,
+          "response_over_energy": 0.19981790491432835
+        }
+      }
+    },
+    {
+      "case": "neutral_grid_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 2.7755575615628914e-16,
+      "prior_moment_witnesses": {
+        "0": {
+          "initial_final_field_ratio": 0.990059491717866,
+          "response_over_energy": 0.2111557583664577
+        },
+        "1": {
+          "initial_final_field_ratio": 1.0529416183446612,
+          "response_over_energy": 0.20431872838874798
+        },
+        "2": {
+          "initial_final_field_ratio": 1.0955084004738767,
+          "response_over_energy": 0.19981790491432874
+        }
+      }
+    },
+    {
+      "case": "neutral_grid_16",
+      "dimension": 16,
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 6.361577931102147e-14,
+      "prior_moment_witnesses": {
+        "0": {
+          "initial_final_field_ratio": 0.9899289519752013,
+          "response_over_energy": 0.21082745889552715
+        },
+        "1": {
+          "initial_final_field_ratio": 1.0869856669748414,
+          "response_over_energy": 0.19196138894620016
+        },
+        "2": {
+          "initial_final_field_ratio": 1.1671921010440234,
+          "response_over_energy": 0.18754694980705228
+        }
+      }
+    },
+    {
+      "case": "neutral_grid_16",
+      "dimension": 16,
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 2.2426505097428162e-14,
+      "prior_moment_witnesses": {
+        "0": {
+          "initial_final_field_ratio": 0.9899289519752013,
+          "response_over_energy": 0.21082745889552715
+        },
+        "1": {
+          "initial_final_field_ratio": 1.0869856669748414,
+          "response_over_energy": 0.1919613889461998
+        },
+        "2": {
+          "initial_final_field_ratio": 1.1671921010440234,
+          "response_over_energy": 0.1875469498070513
+        }
+      }
+    },
+    {
+      "case": "independent_neutral_adverse_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 12
+      },
+      "maximum_spectral_error": 4.107825191113079e-15,
+      "prior_moment_witnesses": {}
+    },
+    {
+      "case": "independent_neutral_adverse_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 14
+      },
+      "maximum_spectral_error": 3.219646771412954e-15,
+      "prior_moment_witnesses": {}
+    }
+  ],
+  "scope": "Independent floating spectra, complex witnesses, prior field-moment witnesses, static bound, refinements and provenance. No certified sign, integration error or uniform energy estimate."
+}

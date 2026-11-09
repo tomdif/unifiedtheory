@@ -1,0 +1,1009 @@
+{
+  "exact_algebra": {
+    "trace_zero": true,
+    "divergence_zero": true,
+    "compact_boundary_vanishing_order": 5,
+    "compact_seed_is_prepotential_cotton": true,
+    "linear_prepotential_image_cannot_supply_quadratic_source": true,
+    "source_integral": "3367254360064*pi/770201575",
+    "normalized_newton_uniform_bound": "1502700975/(1879048192*pi)",
+    "conformal_scaling_identity": true,
+    "physical_packet_charge_scales_as_inverse_c": true,
+    "paired_charge_energy_series": "2*ma**2*mb*s**2 + 2*ma*mb**2*s**2 - 2*ma*mb*s + ma + mb",
+    "scope": "Exact compact TT polynomial identities, a radial envelope bound, conformal scaling exponents and the algebraic charge expansion. Einstein constraints are supplied."
+  },
+  "isolated_packets": {
+    "cases": [
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitude": 0.12,
+        "ADM_energy": 0.0002857638723531466,
+        "contraction_bound": 0.025659329813031505,
+        "discrete_residual": 1.1107651257113993e-16,
+        "fixed_seed_charge_susceptibility": 0.001994650231412272,
+        "susceptibility_relative_difference": 1.1822966864565524e-07,
+        "source_integral": 1.0000000001107257
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007902971957307335,
+        "contraction_bound": 0.07127591614730976,
+        "discrete_residual": 1.0993810029003015e-16,
+        "fixed_seed_charge_susceptibility": 0.005488751534063191,
+        "susceptibility_relative_difference": 1.1517809661588898e-07,
+        "source_integral": 1.0000000001107257
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitude": 0.32,
+        "ADM_energy": 0.002001900704066299,
+        "contraction_bound": 0.18246634533711295,
+        "discrete_residual": 1.1058862159352145e-16,
+        "fixed_seed_charge_susceptibility": 0.013738950480750385,
+        "susceptibility_relative_difference": 1.0821885854306264e-07,
+        "source_integral": 1.0000000001107257
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitude": 0.12,
+        "ADM_energy": 0.0002857647573291263,
+        "contraction_bound": 0.025659329813031505,
+        "discrete_residual": 1.1080546202801855e-16,
+        "fixed_seed_charge_susceptibility": 0.001994663443930278,
+        "susceptibility_relative_difference": 1.1823165130730207e-07,
+        "source_integral": 1.0000000000000309
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007903039188990155,
+        "contraction_bound": 0.07127591614730976,
+        "discrete_residual": 1.1123914289701275e-16,
+        "fixed_seed_charge_susceptibility": 0.005488851081308664,
+        "susceptibility_relative_difference": 1.1518400286191321e-07,
+        "source_integral": 1.0000000000000309
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitude": 0.32,
+        "ADM_energy": 0.002001943155950895,
+        "contraction_bound": 0.18246634533711295,
+        "discrete_residual": 1.1145598333150986e-16,
+        "fixed_seed_charge_susceptibility": 0.013739566808383981,
+        "susceptibility_relative_difference": 1.0823245938867447e-07,
+        "source_integral": 1.0000000000000309
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.12,
+        "ADM_energy": 0.00028576497772680353,
+        "contraction_bound": 0.025659329813031505,
+        "discrete_residual": 1.109138822452671e-16,
+        "fixed_seed_charge_susceptibility": 0.001994666734380146,
+        "susceptibility_relative_difference": 1.1823249988657628e-07,
+        "source_integral": 0.999999999999999
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.2,
+        "ADM_energy": 0.0007903055932541091,
+        "contraction_bound": 0.07127591614730976,
+        "discrete_residual": 1.117812439832555e-16,
+        "fixed_seed_charge_susceptibility": 0.005488875873016619,
+        "susceptibility_relative_difference": 1.1518544018154528e-07,
+        "source_integral": 0.999999999999999
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitude": 0.32,
+        "ADM_energy": 0.002001953728647763,
+        "contraction_bound": 0.18246634533711295,
+        "discrete_residual": 1.1080546202801855e-16,
+        "fixed_seed_charge_susceptibility": 0.013739720310950776,
+        "susceptibility_relative_difference": 1.0823549429538106e-07,
+        "source_integral": 0.999999999999999
+      }
+    ],
+    "scope": "Compact TT sources with numerical isolated conformal solutions and an independently differentiated fixed-seed flux response."
+  },
+  "physical_scaling": {
+    "cases": [
+      {
+        "amplitude": 0.12,
+        "scale": 1.0,
+        "rescaled_equation_residual": 1.109138822452671e-16,
+        "charge": 0.00028576497772680353,
+        "predicted_charge": 0.00028576497772680353
+      },
+      {
+        "amplitude": 0.12,
+        "scale": 1.01,
+        "rescaled_equation_residual": 2.1098574276567916e-16,
+        "charge": 0.0002829356215116866,
+        "predicted_charge": 0.0002829356215116867
+      },
+      {
+        "amplitude": 0.12,
+        "scale": 1.08,
+        "rescaled_equation_residual": 2.2394195872688094e-16,
+        "charge": 0.0002645972015988921,
+        "predicted_charge": 0.00026459720159889214
+      },
+      {
+        "amplitude": 0.2,
+        "scale": 1.0,
+        "rescaled_equation_residual": 1.117812439832555e-16,
+        "charge": 0.0007903055932541091,
+        "predicted_charge": 0.0007903055932541091
+      },
+      {
+        "amplitude": 0.2,
+        "scale": 1.01,
+        "rescaled_equation_residual": 2.1890041862482335e-16,
+        "charge": 0.0007824807854001079,
+        "predicted_charge": 0.000782480785400108
+      },
+      {
+        "amplitude": 0.2,
+        "scale": 1.08,
+        "rescaled_equation_residual": 2.25730892311482e-16,
+        "charge": 0.0007317644381982489,
+        "predicted_charge": 0.000731764438198249
+      },
+      {
+        "amplitude": 0.32,
+        "scale": 1.0,
+        "rescaled_equation_residual": 1.1080546202801855e-16,
+        "charge": 0.002001953728647763,
+        "predicted_charge": 0.002001953728647763
+      },
+      {
+        "amplitude": 0.32,
+        "scale": 1.01,
+        "rescaled_equation_residual": 2.1250362580715887e-16,
+        "charge": 0.001982132404601746,
+        "predicted_charge": 0.0019821324046017455
+      },
+      {
+        "amplitude": 0.32,
+        "scale": 1.08,
+        "rescaled_equation_residual": 2.239961688355052e-16,
+        "charge": 0.0018536608598590395,
+        "predicted_charge": 0.00185366085985904
+      }
+    ],
+    "scope": "The exact coordinate/seed/conformal scaling preserves local physical packet geometry and scales its external charge by 1/c."
+  },
+  "interacting_packets": {
+    "cases": [
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.0002857638723531466,
+          0.0002857638723531466
+        ],
+        "physical_packet_scales": [
+          1.0000357192081823,
+          1.0000357192081823
+        ],
+        "total_ADM_energy": 0.0005715076056094356,
+        "Newton_normalized_binding": 0.9864733050409907,
+        "algebraic_charge_sum": 0.0005715073309169624,
+        "charge_sum_error": 2.7469247319486523e-10,
+        "proved_energy_error_bound": 1.510218819811971e-07,
+        "comparison_potential_error": 1.4578394047504162e-09,
+        "proved_comparison_potential_bound": 1.9325268426129205e-06,
+        "contraction_bound": 0.05133332595460311,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.0002857638723531466,
+          0.0002857638723531466
+        ],
+        "physical_packet_scales": [
+          1.0000178599230451,
+          1.0000178599230451
+        ],
+        "total_ADM_energy": 0.0005715175716997618,
+        "Newton_normalized_binding": 0.9966086807412432,
+        "algebraic_charge_sum": 0.0005715175374470555,
+        "charge_sum_error": 3.425270624860671e-11,
+        "proved_energy_error_bound": 2.517026883794836e-08,
+        "comparison_potential_error": 3.51059847858437e-10,
+        "proved_comparison_potential_bound": 3.220757295170401e-07,
+        "contraction_bound": 0.051325992462918,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.0002857638723531466,
+          0.0002857638723531466
+        ],
+        "physical_packet_scales": [
+          1.0000089300412653,
+          1.0000089300412653
+        ],
+        "total_ADM_energy": 0.0005715226452644049,
+        "Newton_normalized_binding": 0.999143770740173,
+        "algebraic_charge_sum": 0.0005715226409855251,
+        "charge_sum_error": 4.2788798762863345e-12,
+        "proved_energy_error_bound": 5.393514157269217e-09,
+        "comparison_potential_error": 8.600542500403208e-11,
+        "proved_comparison_potential_bound": 6.901352521050642e-08,
+        "contraction_bound": 0.05132232596263849,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.0002857638723531466,
+          0.0002857638723531466
+        ],
+        "physical_packet_scales": [
+          1.0000044650405688,
+          1.0000044650405688
+        ],
+        "total_ADM_energy": 0.0005715251933578945,
+        "Newton_normalized_binding": 0.9997815115496234,
+        "algebraic_charge_sum": 0.0005715251928231211,
+        "charge_sum_error": 5.347733974397917e-13,
+        "proved_energy_error_bound": 1.25846980932682e-09,
+        "comparison_potential_error": 2.1274315642472175e-11,
+        "proved_comparison_potential_bound": 1.6102796767628548e-08,
+        "contraction_bound": 0.05132049277388795,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.0007902971957307335,
+          0.002001900704066299
+        ],
+        "physical_packet_scales": [
+          1.0002502128763746,
+          1.0000987624378328
+        ],
+        "total_ADM_energy": 0.0027918077908924404,
+        "Newton_normalized_binding": 0.9863087403227884,
+        "algebraic_charge_sum": 0.002791802513658666,
+        "charge_sum_error": 5.2772337745359e-09,
+        "proved_energy_error_bound": 6.6525973004367094e-06,
+        "comparison_potential_error": 2.818472966126251e-08,
+        "proved_comparison_potential_bound": 8.51468568032787e-05,
+        "contraction_bound": 0.2540292761206912,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.0007902971957307335,
+          0.002001900704066299
+        ],
+        "physical_packet_scales": [
+          1.000125112615018,
+          1.000049387395747
+        ],
+        "total_ADM_energy": 0.002792000830259711,
+        "Newton_normalized_binding": 0.9964981820377953,
+        "algebraic_charge_sum": 0.0027920001722376462,
+        "charge_sum_error": 6.580220647880997e-10,
+        "proved_energy_error_bound": 1.1086533244522721e-06,
+        "comparison_potential_error": 6.789659945383164e-09,
+        "proved_comparison_potential_bound": 1.418769270525773e-05,
+        "contraction_bound": 0.25388573762539335,
+        "iterations": 9,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.0007902971957307335,
+          0.002001900704066299
+        ],
+        "physical_packet_scales": [
+          1.0000625578521207,
+          1.0000246952424852
+        ],
+        "total_ADM_energy": 0.0027920991095907125,
+        "Newton_normalized_binding": 0.9990814647345138,
+        "algebraic_charge_sum": 0.002792099027392073,
+        "charge_sum_error": 8.219863938813132e-11,
+        "proved_energy_error_bound": 2.3753281782391555e-07,
+        "comparison_potential_error": 1.6637042854483752e-09,
+        "proved_comparison_potential_bound": 3.0395475515390307e-06,
+        "contraction_bound": 0.25381399176250513,
+        "iterations": 9,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 24,
+        "angular_points": 10,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.0007902971957307335,
+          0.002001900704066299
+        ],
+        "physical_packet_scales": [
+          1.0000312793122639,
+          1.000012348007446
+        ],
+        "total_ADM_energy": 0.0027921484717109233,
+        "Newton_normalized_binding": 0.9997485886181456,
+        "algebraic_charge_sum": 0.002792148461437897,
+        "charge_sum_error": 1.0273026353202486e-11,
+        "proved_energy_error_bound": 5.541941761858534e-08,
+        "comparison_potential_error": 4.1157588448470506e-10,
+        "proved_comparison_potential_bound": 7.091399206137258e-07,
+        "contraction_bound": 0.25377812467559924,
+        "iterations": 9,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.0002857647573291263,
+          0.0002857647573291263
+        ],
+        "physical_packet_scales": [
+          1.0000357193187963,
+          1.0000357193187963
+        ],
+        "total_ADM_energy": 0.0005715093754374875,
+        "Newton_normalized_binding": 0.986473264416689,
+        "algebraic_charge_sum": 0.0005715091007424881,
+        "charge_sum_error": 2.746949993859271e-10,
+        "proved_energy_error_bound": 1.5102234968483292e-07,
+        "comparison_potential_error": 1.4478838128439975e-09,
+        "proved_comparison_potential_bound": 1.93253282814753e-06,
+        "contraction_bound": 0.05133332600002694,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.0002857647573291263,
+          0.0002857647573291263
+        ],
+        "physical_packet_scales": [
+          1.0000178599783542,
+          1.0000178599783542
+        ],
+        "total_ADM_energy": 0.0005715193415888166,
+        "Newton_normalized_binding": 0.9966086704857962,
+        "algebraic_charge_sum": 0.0005715193073357946,
+        "charge_sum_error": 3.425302207669956e-11,
+        "proved_energy_error_bound": 2.5170346788276288e-08,
+        "comparison_potential_error": 3.483744404064737e-10,
+        "proved_comparison_potential_bound": 3.220767270313301e-07,
+        "contraction_bound": 0.05132599248562794,
+        "iterations": 6,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.0002857647573291263,
+          0.0002857647573291263
+        ],
+        "physical_packet_scales": [
+          1.0000089300689203,
+          1.0000089300689203
+        ],
+        "total_ADM_energy": 0.0005715244151847931,
+        "Newton_normalized_binding": 0.9991437680864816,
+        "algebraic_charge_sum": 0.0005715244109058737,
+        "charge_sum_error": 4.27891944966563e-12,
+        "proved_energy_error_bound": 5.393530860199385e-09,
+        "comparison_potential_error": 8.530598449851823e-11,
+        "proved_comparison_potential_bound": 6.901373894682932e-08,
+        "contraction_bound": 0.051322325973992944,
+        "iterations": 6,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.0002857647573291263,
+          0.0002857647573291263
+        ],
+        "physical_packet_scales": [
+          1.0000044650543967,
+          1.0000044650543967
+        ],
+        "total_ADM_energy": 0.0005715269632940538,
+        "Newton_normalized_binding": 0.9997815106177815,
+        "algebraic_charge_sum": 0.000571526962759275,
+        "charge_sum_error": 5.347788184506541e-13,
+        "proved_energy_error_bound": 1.2584737065729705e-09,
+        "comparison_potential_error": 2.109579178011245e-11,
+        "proved_comparison_potential_bound": 1.610284663721295e-08,
+        "contraction_bound": 0.051320492779565116,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.0007903039188990155,
+          0.002001943155950895
+        ],
+        "physical_packet_scales": [
+          1.000250218182126,
+          1.0000987632774947
+        ],
+        "total_ADM_energy": 0.0027918569544304367,
+        "Newton_normalized_binding": 0.9863085469990822,
+        "algebraic_charge_sum": 0.0027918516769658216,
+        "charge_sum_error": 5.27746461505621e-09,
+        "proved_energy_error_bound": 6.652738407554735e-06,
+        "comparison_potential_error": 2.799333387315528e-08,
+        "proved_comparison_potential_bound": 8.514866320519212e-05,
+        "contraction_bound": 0.2540292803779004,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.0007903039188990155,
+          0.002001943155950895
+        ],
+        "physical_packet_scales": [
+          1.000125115268077,
+          1.0000493878157615
+        ],
+        "total_ADM_energy": 0.002792049999466907,
+        "Newton_normalized_binding": 0.9964981321500733,
+        "algebraic_charge_sum": 0.0027920493414160313,
+        "charge_sum_error": 6.580508755092696e-10,
+        "proved_energy_error_bound": 1.1086768393194706e-06,
+        "comparison_potential_error": 6.737991720129344e-09,
+        "proved_comparison_potential_bound": 1.4187993661743956e-05,
+        "contraction_bound": 0.25388573975283246,
+        "iterations": 9,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.0007903039188990155,
+          0.002001943155950895
+        ],
+        "physical_packet_scales": [
+          1.0000625591786962,
+          1.0000246954525385
+        ],
+        "total_ADM_energy": 0.0027921482817095393,
+        "Newton_normalized_binding": 0.999081451459094,
+        "algebraic_charge_sum": 0.0027921481995072965,
+        "charge_sum_error": 8.22022428424718e-11,
+        "proved_energy_error_bound": 2.3753785548644017e-07,
+        "comparison_potential_error": 1.6502486044345233e-09,
+        "proved_comparison_potential_bound": 3.0396120186353872e-06,
+        "contraction_bound": 0.25381399282593375,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 14,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.0007903039188990155,
+          0.002001943155950895
+        ],
+        "physical_packet_scales": [
+          1.000031279975563,
+          1.000012348112484
+        ],
+        "total_ADM_energy": 0.002792197645295322,
+        "Newton_normalized_binding": 0.9997485849230918,
+        "algebraic_charge_sum": 0.0027921976350218465,
+        "charge_sum_error": 1.0273475646582764e-11,
+        "proved_energy_error_bound": 5.542059290026427e-08,
+        "comparison_potential_error": 4.0814041035730497e-10,
+        "proved_comparison_potential_bound": 7.091549598206805e-07,
+        "contraction_bound": 0.2537781252072406,
+        "iterations": 9,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.00028576497772680353,
+          0.00028576497772680353
+        ],
+        "physical_packet_scales": [
+          1.000035719346344,
+          1.000035719346344
+        ],
+        "total_ADM_energy": 0.0005715098162019832,
+        "Newton_normalized_binding": 0.986473254316101,
+        "algebraic_charge_sum": 0.0005715095415063549,
+        "charge_sum_error": 2.7469562822318716e-10,
+        "proved_energy_error_bound": 1.5102246616762743e-07,
+        "comparison_potential_error": 1.4488859001460241e-09,
+        "proved_comparison_potential_bound": 1.932534318807114e-06,
+        "contraction_bound": 0.05133332601133947,
+        "iterations": 6,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.00028576497772680353,
+          0.00028576497772680353
+        ],
+        "physical_packet_scales": [
+          1.0000178599921286,
+          1.0000178599921286
+        ],
+        "total_ADM_energy": 0.0005715197823685047,
+        "Newton_normalized_binding": 0.996608667969655,
+        "algebraic_charge_sum": 0.0005715197481154044,
+        "charge_sum_error": 3.4253100247676194e-11,
+        "proved_energy_error_bound": 2.5170366202006125e-08,
+        "comparison_potential_error": 3.493076938809736e-10,
+        "proved_comparison_potential_bound": 3.220769754559627e-07,
+        "contraction_bound": 0.051325992491283695,
+        "iterations": 6,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.00028576497772680353,
+          0.00028576497772680353
+        ],
+        "physical_packet_scales": [
+          1.0000089300758077,
+          1.0000089300758077
+        ],
+        "total_ADM_energy": 0.0005715248559722849,
+        "Newton_normalized_binding": 0.9991437674273551,
+        "algebraic_charge_sum": 0.0005715248516933553,
+        "charge_sum_error": 4.2789296411660516e-12,
+        "proved_energy_error_bound": 5.393535020107144e-09,
+        "comparison_potential_error": 8.563150188933832e-11,
+        "proved_comparison_potential_bound": 6.901379217651035e-08,
+        "contraction_bound": 0.051322325976820724,
+        "iterations": 6,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.00028576497772680353,
+          0.00028576497772680353
+        ],
+        "physical_packet_scales": [
+          1.0000044650578401,
+          1.0000044650578401
+        ],
+        "total_ADM_energy": 0.0005715274040854725,
+        "Newton_normalized_binding": 0.9997815107168427,
+        "algebraic_charge_sum": 0.0005715274035506927,
+        "charge_sum_error": 5.347797942326094e-13,
+        "proved_energy_error_bound": 1.2584746771921557e-09,
+        "comparison_potential_error": 2.1193713450884388e-11,
+        "proved_comparison_potential_bound": 1.6102859056917874e-08,
+        "contraction_bound": 0.05132049278097888,
+        "iterations": 6,
+        "discrete_residual": 0.0
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 4.0,
+        "isolated_masses": [
+          0.0007903055932541091,
+          0.002001953728647763
+        ],
+        "physical_packet_scales": [
+          1.0002502195035303,
+          1.000098763486606
+        ],
+        "total_ADM_energy": 0.002791869198614586,
+        "Newton_normalized_binding": 0.9863084989129292,
+        "algebraic_charge_sum": 0.002791863921092504,
+        "charge_sum_error": 5.27752208210816e-09,
+        "proved_energy_error_bound": 6.652773550648586e-06,
+        "comparison_potential_error": 2.8013645847480007e-08,
+        "proved_comparison_potential_bound": 8.514911309193171e-05,
+        "contraction_bound": 0.25402928143815307,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 8.0,
+        "isolated_masses": [
+          0.0007903055932541091,
+          0.002001953728647763
+        ],
+        "physical_packet_scales": [
+          1.000125115928825,
+          1.000049387920363
+        ],
+        "total_ADM_energy": 0.0027920622450629947,
+        "Newton_normalized_binding": 0.9964981197402693,
+        "algebraic_charge_sum": 0.0027920615870049466,
+        "charge_sum_error": 6.580580481571618e-10,
+        "proved_energy_error_bound": 1.1086826957581632e-06,
+        "comparison_potential_error": 6.756263326579415e-09,
+        "proved_comparison_potential_bound": 1.418806861534718e-05,
+        "contraction_bound": 0.25388574028266864,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 16.0,
+        "isolated_masses": [
+          0.0007903055932541091,
+          0.002001953728647763
+        ],
+        "physical_packet_scales": [
+          1.0000625595090815,
+          1.0000246955048506
+        ],
+        "total_ADM_energy": 0.002792160528030771,
+        "Newton_normalized_binding": 0.9990814481795014,
+        "algebraic_charge_sum": 0.0027921604458276345,
+        "charge_sum_error": 8.220313665874279e-11,
+        "proved_energy_error_bound": 2.3753911012936294e-07,
+        "comparison_potential_error": 1.6565988580907742e-09,
+        "proved_comparison_potential_bound": 3.039628074249315e-06,
+        "contraction_bound": 0.2538139930907793,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 18,
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 32.0,
+        "isolated_masses": [
+          0.0007903055932541091,
+          0.002001953728647763
+        ],
+        "physical_packet_scales": [
+          1.0000312801407587,
+          1.0000123481386431
+        ],
+        "total_ADM_energy": 0.00279220989198156,
+        "Newton_normalized_binding": 0.9997485839652189,
+        "algebraic_charge_sum": 0.00279220988170797,
+        "charge_sum_error": 1.0273590138332178e-11,
+        "proved_energy_error_bound": 5.542088560721577e-08,
+        "comparison_potential_error": 4.1005820961004247e-10,
+        "proved_comparison_potential_bound": 7.091587053546664e-07,
+        "contraction_bound": 0.25377812533964544,
+        "iterations": 9,
+        "discrete_residual": 2.220446049250313e-16
+      }
+    ],
+    "refinement": [
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 4.0,
+        "coarse_change": 4.062430170037601e-08,
+        "fine_change": 1.0100588032635471e-08
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 8.0,
+        "coarse_change": 1.0255447047136101e-08,
+        "fine_change": 2.5161411842944403e-09
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 16.0,
+        "coarse_change": 2.6536913777519544e-09,
+        "fine_change": 6.591265311328698e-10
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 32.0,
+        "coarse_change": 9.318418259240957e-10,
+        "fine_change": 9.906120368441407e-11
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 4.0,
+        "coarse_change": 1.9332370615465777e-07,
+        "fine_change": 4.8086153059401227e-08
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 8.0,
+        "coarse_change": 4.988772195346769e-08,
+        "fine_change": 1.2409804073243436e-08
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 16.0,
+        "coarse_change": 1.3275419763481011e-08,
+        "fine_change": 3.2795925974937745e-09
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 32.0,
+        "coarse_change": 3.6950538184754578e-09,
+        "fine_change": 9.578728921155744e-10
+      }
+    ],
+    "scope": "Two disjoint compact TT packets, rescaled to preserve their isolated local geometry in a constant external conformal field. Full nonlinear source-region integral equations and multipole coupling are solved. The continuum error bound is analytical; radial/angular discretization errors are not certified."
+  },
+  "fixed_coordinate_control": {
+    "cases": [
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 4.0,
+        "fixed_coordinate_binding_coefficient": 6.963912532849559,
+        "large_separation_susceptibility_prediction": 6.980095147583422,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 8.0,
+        "fixed_coordinate_binding_coefficient": 6.975374133346112,
+        "large_separation_susceptibility_prediction": 6.980095147583422,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 16.0,
+        "fixed_coordinate_binding_coefficient": 6.978573815859759,
+        "large_separation_susceptibility_prediction": 6.980095147583422,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.12,
+          0.12
+        ],
+        "separation": 32.0,
+        "fixed_coordinate_binding_coefficient": 6.979544066360924,
+        "large_separation_susceptibility_prediction": 6.980095147583422,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 4.0,
+        "fixed_coordinate_binding_coefficient": 6.877858372947665,
+        "large_separation_susceptibility_prediction": 6.90420665701636,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 8.0,
+        "fixed_coordinate_binding_coefficient": 6.894362934045769,
+        "large_separation_susceptibility_prediction": 6.90420665701636,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 16.0,
+        "fixed_coordinate_binding_coefficient": 6.900114664643514,
+        "large_separation_susceptibility_prediction": 6.90420665701636,
+        "discrete_residual": 2.220446049250313e-16
+      },
+      {
+        "amplitudes": [
+          0.2,
+          0.32
+        ],
+        "separation": 32.0,
+        "fixed_coordinate_binding_coefficient": 6.902367996260107,
+        "large_separation_susceptibility_prediction": 6.90420665701636,
+        "discrete_residual": 2.220446049250313e-16
+      }
+    ],
+    "scope": "Keeping coordinate seeds fixed changes the physical packets. Its interaction coefficient approaches the charge-susceptibility prediction, near 7 for weak seeds, rather than the properly normalized value 1."
+  },
+  "source_sha256": {
+    "TENSOR_PACKET_SELF_GRAVITY.md": "5c70a78daf255266b0df044f54dc615c43aa012283c305d02c026450075561ee",
+    "scripts/tensor_packet_self_gravity_audit.py": "eb24b30b8c96c0f087c6524c783d8c5e7b790ed18a30726946307b79dc75676c",
+    "GRAVITATIONAL_BOUNDARY_DRESSING.md": "26b71ed2b242b70774ed949d1f677815a19437c55e6b728bd58b77672725fcbc",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "EMBEDDING_VERSUS_GRAVITY.md": "0adaf0f87b0a625643ff09764aa47aef22c66322b79bbeb925c7a6475737aa9b",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816"
+  },
+  "scope": "A two-packet Einstein initial-data construction has Newtonian leading binding energy when local physical TT packets are held fixed, with an explicit large-separation error bound. This is a conditional nonlinear self-coupling benchmark: the Einstein constraint and G are supplied. No microscopic gravity phase, dynamical packet force, quantum deformation algebra, universal matter coupling, Standard Model, or TOE is proved."
+}

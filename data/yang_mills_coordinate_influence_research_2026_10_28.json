@@ -1,0 +1,161 @@
+{
+  "title": "Actual Wilson coordinate influence and measurable-event variation",
+  "date": "2026-10-28",
+  "baseline": {
+    "declarations": 4780,
+    "audit_sha256": "e60b4cd08f0991b8fc8663c268b434e756d48353db0ffd44ae35200327cc34a2",
+    "policy": "Existing proof files, scripts and research records unchanged."
+  },
+  "verification_scope": "Lean-certified finite-lattice conditional-influence theorem. No global mixing, weak-coupling or physical transfer gap conclusion is claimed by these modules.",
+  "new_modules": [
+    {
+      "path": "UnifiedTheory/Clay/YangMills/ContinuousTestVariation.lean",
+      "sha256": "bb874f68a8a8c5063d48ebd30f0f6a6faa5d9ce816e23211f934a7e3341b261b",
+      "bytes": 3429,
+      "namespace": "UnifiedTheory.Clay.YangMills.ContinuousTestVariation",
+      "theorems": [
+        "closed_event_bound",
+        "measurable_event_bound",
+        "measurable_event_abs_bound"
+      ],
+      "definitions": []
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonCoordinateInfluence.lean",
+      "sha256": "1df6ef50e0b2f6f9dcb66072e95adbb3e0c2d7013466686bb5bc171c0af21b39",
+      "bytes": 13706,
+      "namespace": "UnifiedTheory.Clay.YangMills.WilsonCoordinateInfluence",
+      "theorems": [
+        "staple_congr_of_incident",
+        "staple_eq_of_outside",
+        "stapleSum_difference_bound",
+        "exteriorConfig_agree_outside",
+        "stapleField_difference_intersection",
+        "exterior_eq_of_agree_outside",
+        "stapleField_difference_bound",
+        "conditional_coordinate_influence",
+        "conditional_replaceLink_influence",
+        "influence_column_bound",
+        "conditional_event_influence",
+        "conditional_replaceLink_event_influence",
+        "coordinateLaw_probability",
+        "toConfiguration_agree_outside",
+        "coordinateLaw_influence",
+        "coordinateLaw_event_influence"
+      ],
+      "definitions": [
+        "toConfiguration",
+        "coordinateLaw"
+      ]
+    }
+  ],
+  "geometry_dependency": {
+    "path": "UnifiedTheory/Clay/YangMills/WilsonInfluenceGeometry.lean",
+    "sha256": "de33d26be9f049b117b7c156715bdbe4a3402486bbc70d8b015b7cc3be07e95e",
+    "owner": "continuum_estimate_audit",
+    "scope": "Actual plaquette incidence, symmetric shared-plaquette multiplicity with zero diagonal, sum_b multiplicity(a,b) <= 18, coefficient row sum <= 36 beta."
+  },
+  "normalization": {
+    "group": "Q = unitary (Quaternion Real), with the existing proved SU(2) matrix equivalence.",
+    "lattice": "Four-dimensional periodic lattice of period n > 1, including n = 2. No even-period condition is required for these influence theorems.",
+    "action": "S(U) = beta * sum_p (2 - Re Tr(U_p)); Tr is the unnormalized two-dimensional fundamental trace.",
+    "staple_dictionary": "For every affected plaquette p and replacement q at a, Re Tr(U_p(q)) = 2 <q, v_p(U)>; each actual staple v_p is a unit quaternion.",
+    "total_variation_convention": "sup over measurable events E of |mu(E) - nu(E)|, without an additional factor of two."
+  },
+  "proved_chain": [
+    {
+      "theorem": "WilsonCoordinateInfluence.staple_congr_of_incident",
+      "statement": "The actual target staple assigned to a plaquette is determined by the actual links incident on that plaquette.",
+      "proof": "Equal incident configurations remain equal after the common selected-link replacement. The actual plaquette holonomies, and therefore fundamental traces, agree for every replacement unit quaternion q. The proved trace dictionary gives equality of the two staple inner products against every q. Testing with the first staple and using both unit norms proves the staples equal."
+    },
+    {
+      "theorem": "WilsonCoordinateInfluence.staple_eq_of_outside",
+      "statement": "If U and V agree away from coordinate b and p is not affected by b, their target-a staples for p agree.",
+      "proof": "Each incident edge of p differs from the selected edge at b, because incidence implies membership in affected(b). Apply actual plaquette-staple locality."
+    },
+    {
+      "theorem": "WilsonCoordinateInfluence.stapleField_difference_bound",
+      "statement": "If U and V agree away from b, ||A_a(U)-A_a(V)|| <= 2 multiplicity(a,b).",
+      "proof": "Rewrite the difference of the actual six-staple sums as the sum of differences. Nonshared plaquettes have zero difference. Each shared pair of unit staples differs in norm by at most two. Exterior reconstruction preserves agreement off b. On a=b, the target exterior is identical and both sides are zero."
+    },
+    {
+      "theorem": "WilsonCoordinateInfluence.conditional_coordinate_influence",
+      "statement": "For continuous G with c <= G <= d, |E_{mu_a(U)} G - E_{mu_a(V)} G| <= C_ab (d-c), where C_ab = 2 beta multiplicity(a,b), beta >= 0.",
+      "proof": "Instantiate the frozen actual normalized conditional-law theorem with the proved actual staple-field difference. The input is the literal Wilson conditional law, not a replacement measure or assumed influence bound."
+    },
+    {
+      "theorem": "ContinuousTestVariation.measurable_event_abs_bound",
+      "statement": "For two finite weakly regular measures on a space with continuous outer approximations of closed sets, uniform continuous [0,1]-test difference <= C implies |mu(E)-nu(E)| <= C for every measurable E.",
+      "proof": "The actual bounded continuous approximation of the indicator of each closed set converges in integral. Passing the bound to the limit gives the closed-event estimate. Inner regularity then gives all measurable events, first one-sided and then in both directions. C >= 0 is explicit in this generic theorem."
+    },
+    {
+      "theorem": "WilsonCoordinateInfluence.conditional_event_influence",
+      "statement": "For every measurable event E, |mu_a(U)(E)-mu_a(V)(E)| <= C_ab.",
+      "proof": "Apply the generic theorem to the actual Wilson conditional probabilities. Finite measure and weak regularity are discharged by the existing compact metrizable SU(2) law instances; no TV or regularity premise appears in the actual theorem."
+    },
+    {
+      "theorem": "WilsonCoordinateInfluence.coordinateLaw_event_influence",
+      "statement": "The same all-measurable-event bound holds in the literal product indexing U : Link n -> Q, when U(c)=V(c) for c != b.",
+      "proof": "toConfiguration n U e = U(edgeCoord n e); edgeCoord and selectedLink are actual inverse coordinate maps. coordinateLaw is the actual normalized Wilson law on the retained exterior of this configuration."
+    },
+    {
+      "theorem": "WilsonInfluenceGeometry.coefficient_row_le and WilsonCoordinateInfluence.influence_column_bound",
+      "statement": "C is symmetric, has zero diagonal, is nonnegative for beta >= 0, and both every row sum and every column sum are <= 36 beta.",
+      "proof": "Every target touches at most six plaquettes, each with at most three other links. Shared multiplicities, rather than distinct-neighbor assumptions, count period-two overlaps correctly. Symmetry transfers the row estimate to columns."
+    }
+  ],
+  "stable_product_api": {
+    "toConfiguration": "WilsonCoordinateInfluence.toConfiguration n (U : Link n -> Q) : Configuration (Vertex n) Q",
+    "law": "WilsonCoordinateInfluence.coordinateLaw n beta U a : Measure Q",
+    "probability": "WilsonCoordinateInfluence.coordinateLaw_probability n beta U a",
+    "continuous_test": "WilsonCoordinateInfluence.coordinateLaw_influence n a b beta hbeta U V hUV G hG c d hcd hGb",
+    "measurable_event": "WilsonCoordinateInfluence.coordinateLaw_event_influence n a b beta hbeta U V hUV E hE",
+    "agreement": "hUV : forall c, c != b -> U c = V c",
+    "coefficient": "WilsonInfluenceGeometry.coefficient n beta a b"
+  },
+  "scope_update": {
+    "newly_closed": [
+      "The actual coordinate-to-staple locality and shared-plaquette norm estimate.",
+      "The actual full Wilson conditional-law interdependence bound.",
+      "The continuous bounded-test to measurable-event/TV extension.",
+      "The period-two multiplicity issue in the global row count, via the geometry dependency."
+    ],
+    "prior_record": "data/yang_mills_positive_collective_research_2026_10_28.json is unchanged. Its previously open geometry and continuous-test/TV links are now discharged by the named new modules; its unformalized global Gibbs comparison remains a separate theorem.",
+    "strong_coupling": "The actual coefficient matrix has row/column norm < 1 whenever 0 <= beta < 1/36. This follows from the proved coefficient estimate; a complete global Gibbs or parallel-update mixing conclusion additionally needs the corresponding comparison/coupling theorem.",
+    "not_established": [
+      "The sharp tanh optimization of the finite influence coefficient.",
+      "A global Dobrushin comparison/covariance theorem in these new modules.",
+      "Mixing of the physical transfer ground-state law pi = psi^2.",
+      "A comparison between the auxiliary Euclidean heatbath clock and physical transfer time.",
+      "A uniform weak-coupling estimate along beta -> infinity.",
+      "A nontrivial four-dimensional interacting continuum construction or physical mass gap."
+    ],
+    "clay_status": "No Clay obligation is promoted to complete by these finite-lattice estimates."
+  },
+  "primary_references": [
+    {
+      "title": "Rebeschini and van Handel, Comparison Theorems for Gibbs Measures",
+      "url": "https://arxiv.org/pdf/1308.4117",
+      "locator": "Corollary 2.6, PDF page 8; discrete-metric total-variation interpretation, PDF page 9.",
+      "use": "Primary context for the remaining global Gibbs comparison step. The paper supplies a classical comparison theorem; it is not imported as an axiom or treated as a Lean-certified conclusion here."
+    },
+    {
+      "title": "Shen, Zhu and Zhu, A stochastic analysis approach to lattice Yang-Mills at strong coupling",
+      "url": "https://arxiv.org/pdf/2204.12737",
+      "locator": "Abstract; Theorem 1.4 and Corollary 1.6.",
+      "use": "Primary example of rigorous strong-coupling functional inequalities and lattice clustering. Its auxiliary Langevin dynamics and small inverse coupling do not identify the weak-coupling physical transfer gap."
+    }
+  ],
+  "validation": {
+    "scoped_build": "lake build UnifiedTheory.Clay.YangMills.ContinuousTestVariation UnifiedTheory.Clay.YangMills.WilsonCoordinateInfluence",
+    "result": "passed",
+    "jobs": 3435,
+    "new_warnings": 0,
+    "old_dependency_warnings": "Replayed unchanged dependency warnings remain; no old files were edited.",
+    "build_log": "/tmp/wilson-coordinate-influence-build.log",
+    "theorems_checked": 19,
+    "new_public_declarations": 21,
+    "axiom_check": "All 19 new theorems use only propext, Classical.choice and Quot.sound.",
+    "axiom_log": "/tmp/wilson-coordinate-influence-axioms.log"
+  }
+}

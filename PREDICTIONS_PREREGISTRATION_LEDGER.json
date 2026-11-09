@@ -55,6 +55,14 @@
       "citations": [
         "UnifiedTheory/LayerB/CKMPreRegistration.lean",
         "UnifiedTheory/LayerB/PreRegistrationLedger.lean"
+      ],
+      "evidence_notes": [
+        {
+          "date": "2026-11-07",
+          "source": "LHCb, 'Evidence for the decay B0 -> mu+ mu- and improved measurements of B0s -> mu+ mu-', arXiv:2611.00230 (3.2 sigma, not yet peer-reviewed)",
+          "relation": "BR(B0 -> mu mu) ~ |V_td|^2 f_B^2; the framework tower relation CS-1 V_td^2 = 5 V_ub^2 with the PR2 closed form gives |V_td| ~ 0.0085, versus world average ~0.0086 +/- 0.0002",
+          "verdict": "consistent, non-discriminating: the measured rate is SM-like and its ~30-40% uncertainty constrains |V_td| only to ~15-20%, far weaker than B-mixing; no bearing on the locked PR2 survival window or falsification rule"
+        }
       ]
     },
     {

@@ -1,0 +1,224 @@
+COMMON COMPLEX SOURCE: ABEL-ANGULAR MASS RESPONSE CLOSURE
+2026-10-22. NEW ANALYTIC SUCCESSOR. NOT A LEAN RESPONSE THEOREM.
+No numerical probe. Frozen files and prior notes unchanged.
+
+The charged score supplier below is Lean verified in:
+ KFCausalChargedCoolingBoundaryScore (7), SHA c9a44ee5b478c71825bdeda94874e1c228ec9c96bad8850ea3422829a314ce2a;
+ KFCausalChargedCoolingMarginalScore (4), SHA a33f9e4bfcf7bdcfac7f3bd9fe4ea809d030c97f3ea8492e0c34880ee4f53106.
+The new angular inequalities and their assembly here are analytic proofs,
+not additional counted Lean theorems. Independent review is requested.
+This note addresses the MASS CHANNEL, not the quartic channel.
+
+1. Actual coherent packet and exact response target
+
+Let r=a+i b be the original physical scale at (epsilon,y,s), epsilon>0,
+|y|<=pi*epsilon/3. Put t=fraction(epsilon,s), A=a^2-b^2,
+Rgeom=a^2+b^2, L=3-2a. Frozen exact clock geometry supplies
+ 1/2<=A<=1<=Rgeom<=2, b^2<=1/2, |a^2-1|<=b^2,
+ 0<a<=5/4, 1/2<=L<=2, 0<t<1.
+In fact a^2=(A+Rgeom)/2>=3/4, hence a>=5/6 and L<=4/3.
+
+Fix alpha,beta>0, finite REAL widths wi>=1 and complex amplitudes di=ci wi.
+All labels, including common neutral source A_source+i D, remain fixed
+under the geometric clock derivative. Assume the original strict margins
+ alpha*A*wi>8*beta*b^2.
+Set p=alpha*r^2/2 and
+ f(v)=int_(u in R,Y>0)|sum_i di exp[-wi(p(u^2+v^2)+bar(p)Y)]|^2 du dY,
+ g(v)=-partial_a f(v).
+The new literal-marginal Lean theorem proves
+ g(v)>=(gamma+1/a)f(v)-gamma*v*f'(v),
+ gamma=(3a^2-b^2)/(4a A)>0.                                      (S)
+It retains an exact positive Gaussian boundary remainder before this
+inequality. All cross-width terms and actual derivatives are included.
+
+Put d=8 beta b^2, q=4 D b, sigma=1/(4 beta)>0,
+mu=A_source/(2 beta), W(v)=(mu+L v)^2+sigma, and
+ E=int exp(dv^2-qv)W(v)f(v)dv,
+ E_L=2 int exp(dv^2-qv)v(mu+Lv)f(v)dv,
+ T=int exp(dv^2-qv)(2dv^2-qv)W(v)f(v)dv.
+The original mass energy (mass2=2, other potential couplings zero) is
+ N exp(A_source^2/(2 beta))*E, N=sqrt(pi/(2 beta)); the physical slice
+has a further pi/4. Both factors are positive and fixed in the corrected
+real-a motion. There is no coefficient differentiation in this statement.
+
+Use the original imaginary-dilation split, with
+ lambda=t*normalizedDilation(t,r), delta=t*normalizedRealCooling(t,r)>0,
+ kappa=-2delta-3lambda, and h=Re(r_dot)/a=lambda+delta/a.
+The original geometric response is exactly
+ E_dot=-4lambda E-delta int exp(dv^2-qv)W(v)g(v)dv+kappa E_L.
+For K=536t, c=K+4lambda>=488t, the desired defect is
+ c E+delta int exp(dv^2-qv)Wg-kappa E_L.                         (D)
+
+2. The actual Abel marginal (not a free radial packet)
+
+Define
+ hX(X)=int_(Y>0)|sum_i di exp[-wi(p X+bar(p)Y)]|^2dY >=0.
+The change X=u^2+v^2 gives exactly
+ f(v)=int_(X>v^2) hX(X)/sqrt(X-v^2)dX.
+Thus any weighted moment of f is a positive mixture of circle arcsine
+moments at radius R=sqrt(X):
+ int F(v)f(v)dv=int_(X>0)hX(X)
+   int_(-pi/2,pi/2)F(sqrt(X)*sin(theta))dtheta dX.
+Equivalently the inner integral is half the full circle integral.
+The function hX is the same actual packet; it is not independently chosen.
+
+The finite strict Gaussian margin dominates every polynomial in u,v,Y
+used below, including the derivative kernels, and the added X moment.
+For example |packet|^2 is bounded by a finite constant times
+exp[-alpha*A*min(wi)*(u^2+v^2+Y)]. After the exp(dv^2-qv)
+weight there remains a strictly positive quadratic margin. This justifies
+Fubini for signed polynomial moments, IBP in v, and its zero boundary
+terms. The zero packet and all zero amplitudes are allowed.
+
+3. A new circle inequality for a LINEAR field
+
+On each circle of radius R>=0, put Q(v)=d v^2-qv, d>=0, q real.
+With the arcsine measure and W=(mu+Lv)^2+sigma, define circle E,E_L,T
+as above. Then
+                  2 T-L E_L+4 E >=0.                         (C1)
+No charged width, source size or circle radius enters the constant.
+
+Proof first for d=0 and sigma=0. The case R=0 is immediate; q=0 is
+immediate from the uniform-circle moments. Reflection reduces qR to z>0.
+Let
+ F(z)=int_(-1,1) exp(z u)/sqrt(1-u^2)du,
+ m(z)=F'(z)/F(z)>0.
+Compact-angle differentiation and angular integration by parts give
+ F''+F'/z-F=0, F(0)=pi, F'(0)=0, F''(0)=pi/2.
+No modified-Bessel-function theorem is assumed.
+
+After division by F, the quadratic form 2T-L E_L+4E on the vector
+(mu,L R) has matrix
+ [ 4+2z m,       -(2z+m)        ]
+ [ -(2z+m),     2z m+2m/z       ].                            (C2)
+For negative q the off-diagonal changes sign only. Both diagonal entries
+are positive. Its determinant is
+ (4z^2+3)m^2+(4z+8/z)m-4z^2.
+Let x=z^2, y=z m(z)>0. The ODE is
+ dy/dx=(x-y^2)/(2x).
+Multiplying the determinant by x yields
+ P(x,y)=(4x+3)y^2+(4x+8)y-4x^2.
+Since y=x/2+O(x^2), P=4x+O(x^2)>0 near x=0.
+Along the ODE, exact differentiation gives
+ 2x dP/dx = [2x(y+4)-y^2-24y]+(3-2y)P.                       (C3)
+At any zero P=0 with x,y>0, P as a quadratic in x has a unique positive
+root x*. Put xD=y(y+24)/(2(y+4)). Direct substitution gives
+ P(xD,y)=2y*(y^4+30y^3+116y^2-136y+64)/(y+4)^2>0,
+because
+ 116y^2-136y+64=116(y-17/29)^2+700/29.
+Therefore 0<xD<x*, and the bracket in (C3) is strictly positive.
+A first crossing from P>0 to P=0 would have derivative <=0, contradicting
+(C3). This proves P>0 for all x>0. The limiting matrix at z=0 is
+[[4,0],[0,1]], so no singular endpoint is lost.
+
+The sigma term in (C1) is sigma*(4F+2zF')>=0 and can be added.
+To include d>0 use the ordinary standard normal Z and
+ exp(dv^2-qv)=E_Z exp[-(q-sqrt(2d)Z)v].
+Apply the already proved d=0 inequality to EACH effective tilt
+q_Z=q-sqrt(2d)Z, holding mu,L,R,sigma fixed. Its Tilt term averages to
+ E_Z[-q_Z v exp(-q_Z v)] = (2dv^2-qv) exp(dv^2-qv).
+This is the exact Gaussian first-moment identity, not differentiation of
+an unproved monotone series. All mixed signed integrals are absolutely
+integrable because v lies in the fixed compact interval [-R,R].
+This proves (C1) for d>=0, including q=0 and either source sign.
+
+4. A second circle inequality from the genuine Hardy modes
+
+For the same circle,
+                 T >= d R^2 E-2 E.                          (C4)
+For the polynomial mu+Lv, multiply by the holomorphic entire factor
+ exp(-d Z^2/4+i q Z/2), Z=u+i v, |Z|=R.
+Its squared modulus is exp(-dR^2/2)*exp(dv^2-qv).
+The resulting Laurent series has modes >=-1, so the quadratic form of
+N=-i partial_theta is bounded below by minus its norm squared.
+The real part of the logarithmic number derivative of the entire factor
+is -dR^2/2+d v^2-qv/2.
+The additional polynomial derivative N(mu+Lv)=-i L u has zero real
+angular pairing by u-oddness (also valid for complex polynomial constants).
+Thus the number inequality is exactly (C4). The added positive constant
+sigma is treated as a degree-zero channel, whose mode support is >=0 and
+which even satisfies T>=dR^2 E. Adding it preserves (C4).
+
+All series and their angular derivatives converge absolutely uniformly on
+each fixed circle, since the entire factor is an exponential of a fixed
+quadratic polynomial. Parseval/number pairing follow by finite Laurent
+truncations and uniform convergence. No boundary distribution or contour
+shift occurs. R=0 is immediate. This is an analytic Hardy proof, not yet
+an added Lean theorem.
+
+Positive mixing in X using section2 gives the SAME-state global inequalities
+ 2T-L E_L+4E>=0,      T>=d XW-2E,
+where XW=int_(X>0)hX(X) int_circle X exp(Q)W >=0.
+All terms are finite by the strict Gaussian margin. Also
+ |E_L|<=sigma^(-1/2)*sqrt(E*XW),                              (C5)
+since 2 sqrt(sigma)|mu+Lv|<=W and |v|<=sqrt(X), followed by ordinary
+Cauchy-Schwarz for this positive actual joint measure.
+
+5. Combine the SCORE before estimating the O(b^2) defect
+
+Multiplying (S) by exp(Q)W and integrating by parts yields
+ int exp(Q)Wg >= (2gamma+1/a)E+gamma L E_L+gamma T.
+No derivative of hX or separate positivity of an unintegrated response
+is used. Put B=delta*gamma*L-kappa and
+ Rcoef=B+delta*gamma*L/3=(4/3)delta*gamma*L-kappa.
+Using (C1) and then (C4),
+ delta*gamma*T+B E_L
+ =delta*gamma/3*(2T-L E_L)+delta*gamma/3*T+Rcoef E_L
+ >=-2delta*gamma E+(delta*gamma*d/3)XW+Rcoef E_L.
+Hence (D) is bounded below by
+ (c+delta/a)E+(delta*gamma*d/3)XW+Rcoef E_L.                  (C6)
+This is where the leading real-scaling term cancels; applying Young before
+this cancellation would incorrectly create a 1/b^2 loss.
+
+The residual coefficient is exactly
+ Rcoef=delta*L*((4/3)gamma-1/a)+3h
+      =(2delta*L/(3a A))*b^2+3h.                            (C7)
+The actual normalized real velocity satisfies
+ h/delta=realNumerator(t,r)/(2a Rgeom).
+Using |a^2-1|<=b^2 and Rgeom-1<=2b^2,
+ |realNumerator(t,r)|
+ =|(1-t)(1-a^2+3b^2)+t Rgeom(1-Rgeom)|<=4b^2.
+This is a convex combination of quantities in [2b^2,4b^2] and
+[-4b^2,0], respectively; it holds for the actual same clock t,r.
+Consequently
+ |Rcoef|<=delta*b^2*[2L/(3a A)+6/(a Rgeom)]
+          <=(28/3)*delta*b^2,                              (C8)
+using a>=5/6,L<=4/3,A>=1/2,Rgeom>=1.
+
+For b!=0, d sigma=2b^2. By (C5) and the exact scalar Young completion,
+ (delta*gamma*d/3)XW+Rcoef E_L
+ >=-[3 Rcoef^2/(4delta*gamma*d*sigma)]E
+ = -[3 Rcoef^2/(8delta*gamma*b^2)]E.
+Now gamma>=3/(4a), a<=5/4, delta<=10t give
+ delta/gamma<=50t/3.
+Together with (C8) and b^2<=1/2 the loss is at most
+ (3/8)*(784/9)*(50/3)*t*b^2 = (4900/9)*t*b^2 <= (2450/9)*t.
+Since c>=488t and 2450/9<488, (C6) is NONNEGATIVE, strictly positive
+for nonzero energy. This proves the desired mass536 bound analytically.
+At b=0, q=d=0, the actual h=0 and Rcoef=0; use (C6) directly without
+any division by b. It gives (c+delta/a)E>=0. All zero-energy cases are
+included without dividing by E or XW.
+
+6. Scope and formalization frontier
+
+This is a proof candidate for the actual geometric MASS-channel response
+upper bound 536*fraction times its energy, for arbitrary finite coherent
+positive real widths and ONE fixed common COMPLEX source, P=1. It uses
+exact physical clock geometry and the same amplitudes throughout. Positive
+normalizations N exp(A_source^2/(2beta)) and pi/4 cancel. The frozen exact
+mass-discriminant reduction therefore identifies the resulting bound with
+the original same-label odd-defect inequality.
+
+The new score and actual marginal derivatives are Lean verified. Sections
+2--5 still need independent analytic review and formal attachment:
+Abel pushforward with L1, the compact-angle ODE/barrier, Gaussian mixing,
+Hardy number estimate, weighted score IBP, and actual clock coefficient
+bounds. No new Lean mass response theorem is claimed by this artifact.
+
+The QUARTIC channel is not addressed: (C1) here is proved only for a
+linear field polynomial and its positive sigma smoothing. A degree-two
+analogue with compatible constants is not inferred. No arbitrary source
+family, arbitrary neutral polynomial, unbounded expectation derivative,
+or evolved uniform response claim is made. The conclusion is geometric
+response with labels frozen; existing clock IBP/Hilbert attachments would
+still require a new actual source-class theorem if formalized.

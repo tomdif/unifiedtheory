@@ -1,0 +1,41 @@
+import UnifiedTheory.Clay.YangMills.QuaternionRotationFrame
+import UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor
+
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis_zero
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis_one
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis_two
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis_normSq
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.axis_sub_one_normSq
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.cosine
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.sine
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.circle
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.cosine_neg
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.sine_neg
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.rotation
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.distance_square
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.distance_le
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.frame_identity
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.cosine_bounds
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.deficit_lower
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionRotationFrame.frame_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.trace_shift_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.potential_shift_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.spatialWeight_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.ground_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.ground_square_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.shift_inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.inverse_distance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.shifted_integral_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation.response_le_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.holonomy_shift_base
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.pointwise_frame_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.energy_frame_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.rotation_response_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.energy_frame_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.scale
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.scale_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.scale_le_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.scale_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor.variance_lower

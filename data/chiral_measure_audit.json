@@ -1,0 +1,225 @@
+{
+  "exact": {
+    "ambient_dimension": 2,
+    "arithmetic": "exact symbolic matrices, differentiation, integration",
+    "chiral_rank": 1,
+    "complement_curvature_cancels": true,
+    "coordinate_curvature": "-2/(x**4 + 2*x**2*y**2 + 2*x**2 + y**4 + 2*y**2 + 1)",
+    "flat_circle_negative_control": {
+      "candidate_connection_holonomy": "-1",
+      "curvature": "0",
+      "kato_holonomy": "1"
+    },
+    "kato_holonomy": "-I",
+    "kato_ode_verified": true,
+    "max_projector_distance": "sqrt(3)/2",
+    "minimum_reference_gram": "1/4",
+    "orthogonal_reference_negative_control": true,
+    "periodic_frame_connection": "-1/4",
+    "projector_loop_closes": true,
+    "scope": "projector geometry example, not a lattice gauge anomaly",
+    "universal_disk_scalar_bounds": {
+      "eta_upper": "129/175",
+      "gap_lower": "46/175",
+      "gram_lower": "91/2116",
+      "projector_distance_upper": "45/46"
+    },
+    "zero_connection_holonomy": "1 (fails against -I)"
+  },
+  "hypercharge": {
+    "coefficient_arithmetic": "exact integers",
+    "interpretation": "zero measure connection fails the sampled finite-lattice curvature condition",
+    "limitations": "no anomaly of the SM inferred; no continuum scaling theorem, local current, or global measure constructed",
+    "matrix_arithmetic": "float64, no interval certification",
+    "samples": [
+      {
+        "field_scale_denominator": 6,
+        "minimum_kernel_gap": 0.9176756383116046,
+        "species": [
+          {
+            "curvature": -3.2448210525093586e-09,
+            "integer_hypercharge": 1,
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "curvature": 3.3632319053611675e-06,
+            "integer_hypercharge": -4,
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "curvature": -1.0408776342314056e-07,
+            "integer_hypercharge": 2,
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "curvature": 7.936234532947587e-07,
+            "integer_hypercharge": -3,
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "curvature": -2.59492908992031e-05,
+            "integer_hypercharge": 6,
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "weighted_curvature": -1.4604080493114559e-05
+      },
+      {
+        "field_scale_denominator": 12,
+        "minimum_kernel_gap": 0.9587364638209422,
+        "species": [
+          {
+            "curvature": -1.0133876286306219e-10,
+            "integer_hypercharge": 1,
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "curvature": 1.0408776336153077e-07,
+            "integer_hypercharge": -4,
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "curvature": -3.2448210525093586e-09,
+            "integer_hypercharge": 2,
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "curvature": 2.466542625496253e-08,
+            "integer_hypercharge": -3,
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "curvature": -7.936234533640393e-07,
+            "integer_hypercharge": 6,
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "weighted_curvature": -4.4237180650422833e-07
+      },
+      {
+        "field_scale_denominator": 24,
+        "minimum_kernel_gap": 0.9793366409781162,
+        "species": [
+          {
+            "curvature": -3.166352334203781e-12,
+            "integer_hypercharge": 1,
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "curvature": 3.2448210533360627e-09,
+            "integer_hypercharge": -4,
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "curvature": -1.0133876286306219e-10,
+            "integer_hypercharge": 2,
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "curvature": 7.697370557481866e-10,
+            "integer_hypercharge": -3,
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "curvature": -2.4665426264977846e-08,
+            "integer_hypercharge": 6,
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "weighted_curvature": -1.3714503396067694e-08
+      }
+    ],
+    "sum_m_q": 0,
+    "sum_m_q_cubed": 0
+  },
+  "numerical": {
+    "ambient_dimension": 64,
+    "analytic_disk_kernel_gap_lower_bound": 0.36349629333921607,
+    "analytic_disk_patch_distance_upper_bound": 0.7003054663602917,
+    "analytic_disk_reference_gram_lower_bound": 0.5095722537858944,
+    "arithmetic": "float64; no interval certification",
+    "central_difference_projector_derivative_errors": [
+      8.888749037767004e-07,
+      2.2221900949386946e-07
+    ],
+    "chiral_rank": 32,
+    "complementary_transport_cancellation": true,
+    "curvature_disk_integrals": [
+      -1.0747226976081158e-07,
+      -1.0747226976168194e-07
+    ],
+    "fixed_gauge_rebuild_check": true,
+    "group": "external U(1), charge 1",
+    "lattice": "periodic 2^4",
+    "loop_refinements": [
+      {
+        "complement_phase_radians": 1.0693030938478292e-07,
+        "maximum_reference_projector_distance": 0.040992902911765175,
+        "minimum_kernel_gap": 0.9048658927912825,
+        "minimum_neighbor_frame_singular_value": 0.999990967204897,
+        "minimum_reference_gram": 0.998319581910867,
+        "phase_radians": -1.0693030742163157e-07,
+        "steps": 32
+      },
+      {
+        "complement_phase_radians": 1.0733680533275929e-07,
+        "maximum_reference_projector_distance": 0.040992902911765175,
+        "minimum_kernel_gap": 0.9048658927912825,
+        "minimum_neighbor_frame_singular_value": 0.9999977303330135,
+        "minimum_reference_gram": 0.998319581910867,
+        "phase_radians": -1.0733680781451024e-07,
+        "steps": 64
+      },
+      {
+        "complement_phase_radians": 1.0743839455580424e-07,
+        "maximum_reference_projector_distance": 0.04100026540899559,
+        "minimum_kernel_gap": 0.9048642319990124,
+        "minimum_neighbor_frame_singular_value": 0.9999994321278098,
+        "minimum_reference_gram": 0.9983189782363929,
+        "phase_radians": -1.074384121622696e-07,
+        "steps": 128
+      },
+      {
+        "complement_phase_radians": 1.0746382900520293e-07,
+        "maximum_reference_projector_distance": 0.04100118650522265,
+        "minimum_kernel_gap": 0.9048632328695091,
+        "minimum_neighbor_frame_singular_value": 0.9999998580099078,
+        "minimum_reference_gram": 0.9983189027051625,
+        "phase_radians": -1.074637833044736e-07,
+        "steps": 256
+      }
+    ],
+    "maximum_identity_residual": 4.570072933144213e-14,
+    "periodic_basis_change_check": true,
+    "radius": 0.045,
+    "random_seed": 9811032,
+    "scope": "local frame and contractible loop; no physical measure current or anomaly cancellation",
+    "transport_vs_curvature_errors": [
+      5.419623400503767e-10,
+      1.3546194717170908e-10,
+      3.385759941235082e-11,
+      8.486457208345863e-12
+    ],
+    "uniform_weak_field_eta_bound": 0.6365037066607839
+  },
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalChiralMeasure.lean": "4124c76f4284031ed9430b0f06417969b568f824b9f8a970d351909d06236076",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3"
+  }
+}

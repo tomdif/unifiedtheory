@@ -91,10 +91,13 @@ for n in range(1, NMAX):
                 m &= m-1
             hgt[x] = best + 1
         popD = bits.sum(axis=1)
-        out_ch = np.sort(outdeg[None, :] + bits, axis=1)
+        out_ch = outdeg[None, :] + bits                      # (nc, n)
         hnew = 1 + (hgt[None, :] * bits).max(axis=1)
-        ind_sorted = np.sort(np.concatenate([np.broadcast_to(indeg, (nc, n)), popD[:, None]], axis=1), axis=1)
-        h_all = np.sort(np.concatenate([np.broadcast_to(hgt, (nc, n)), hnew[:, None]], axis=1), axis=1)
+        # joint per-element (indeg, outdeg, height) triples, packed
+        enc_old = (np.broadcast_to(indeg, (nc, n)) * 4096
+                   + out_ch * 64 + np.broadcast_to(hgt, (nc, n)))
+        enc_new = (popD * 4096 + 0 * 64 + hnew)[:, None]
+        enc = np.sort(np.concatenate([enc_old, enc_new], axis=1), axis=1)
         Rn = R + popD
         plist = p.tolist(); glist = g.tolist()
         for j in range(nc):
@@ -102,7 +105,7 @@ for n in range(1, NMAX):
             if pp < 1e-13: continue
             gg = glist[j]
             ckey = (Rn[j].tobytes() + np.int64(ACT + gg).tobytes()
-                    + ind_sorted[j].tobytes() + out_ch[j].tobytes() + h_all[j].tobytes())
+                    + np.int64(round(N0 + float(h0[j]))).tobytes() + enc[j].tobytes())
             x = math.sqrt(pp)
             a = A * x * complex(math.cos(PHIF*math.pi*gg), math.sin(PHIF*math.pi*gg))
             pr = P * pp

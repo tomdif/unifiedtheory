@@ -1,0 +1,95 @@
+import UnifiedTheory.Clay.YangMills.WilsonRawSymmetry
+import UnifiedTheory.Clay.YangMills.WilsonSpatialRotations
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover
+import UnifiedTheory.Clay.YangMills.WilsonCoverContraction
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteContraction
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.Symmetry
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.composition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.pull
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.integral_pull
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.ground_invariant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.mass_pull
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.step_pull
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.loss_pull
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRawSymmetry.pull_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.vertexEquiv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.linkEquiv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotationEquiv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotationEquiv_apply
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotate_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotationEquiv_inv_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.vertex_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.holonomy_rotate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.orientedDefect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.defect_diagonal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.defect_swap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.plane_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.potential_ordered
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.potential_rotate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.kinetic_rotate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.raw_rotate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.rotation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.kinetic_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialRotations.translation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.cutBase
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.canonical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.canonical_crossing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.planePermutation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.permutation_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.permutation_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.relocation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.defect_relocation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.mass_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteRelocation.cutoff_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cover
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.bad_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cover_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cover_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cover_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.defect_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cutoff_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.cover_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.bad_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.joint_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.weighted_union
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.output_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.plaquette_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.allBad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteCover.all_plaquettes_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.supported_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.total
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.total_apply
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.total_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.total_mass_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCoverContraction.cover_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteContraction.union_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteContraction.union_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteContraction.all_plaquettes_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteContraction.all_plaquettes_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.gaussian_mass_le_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.cap_ge_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.totalRate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.totalRate_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.price_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.entropy_price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.entropy_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.entropy_coercivity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.fast_volume_obstruction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteEntropy.allBad_empty_of_large_threshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.cap_squared
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.threshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.threshold_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.threshold_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.rate_threshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.local_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteLocalLimit.slow_mode_concentration

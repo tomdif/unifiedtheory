@@ -2,7 +2,7 @@
 
 This file restates, without truncation, the material previously
 delivered only in chat.  Companion files: DEFINITIONS.md,
-PAPER1_DICHOTOMY.md, PAPER2_LANDSCAPE.md, PAPER3_SELECTION.md,
+PAPER1_DICHOTOMY.md (superseded draft removed; see data/repository_cleanup_2026_11_09.json), PAPER2_LANDSCAPE.md (superseded draft removed; see data/repository_cleanup_2026_11_09.json), PAPER3_SELECTION.md (superseded draft removed; see data/repository_cleanup_2026_11_09.json),
 VR_GATE_REPORT.md, QUANTUM_GATE_REPORT.md, PI4_CERTIFICATE.md.
 
 ## Chronology of results (tags in the repository)

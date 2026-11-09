@@ -1,0 +1,1540 @@
+{
+  "scope": "finite covariant benchmark and inherited quotient norm; GUT uncompleted",
+  "arithmetic": "exact rational real and imaginary parts; no sampled path claims",
+  "model": "known complex percolation at a=(1+i)/2, b=(1-i)/2",
+  "source_sha256": {
+    "scripts/covariant_quotient_audit.py": "00e7f9047af0139743c1bb480d7da7b0621aa5cb4e194e9d2c7e8e052809670f",
+    "scripts/chiral_growth_generalization.py": "b188cf7471839a2fb352714ad27e31e9a913e4173a80ceb8d4eef5388c9da36a",
+    "scripts/harmonic_child_nonuniformity.py": "1228508d292ea0f4e662a35280df28046f07fa2fdcd37b5d1f70763a7a4e79f0",
+    "UnifiedTheory/Audit/KFCausalBornCovariantQuotient.lean": "556ed61dc3834dbc57c1c672e6cffbec516f28d84587c307a59982b249433b54",
+    "UnifiedTheory/Audit/KFCausalSetTransitionEdges.lean": "5c39a6523d2daee9a3dfb8b8b5bf38eea4694c8643ac5d43ca3adc1a139dd7e5"
+  },
+  "parents": {
+    "summary": {
+      "0": {
+        "parents": 1,
+        "flat_grouped_Born_failure": 0
+      },
+      "1": {
+        "parents": 1,
+        "flat_grouped_Born_failure": 0
+      },
+      "2": {
+        "parents": 2,
+        "flat_grouped_Born_failure": 1
+      },
+      "3": {
+        "parents": 5,
+        "flat_grouped_Born_failure": 3
+      },
+      "4": {
+        "parents": 16,
+        "flat_grouped_Born_failure": 11
+      },
+      "5": {
+        "parents": 63,
+        "flat_grouped_Born_failure": 44
+      }
+    },
+    "parents": [
+      {
+        "rank": 0,
+        "successor_masks": [],
+        "precursor_slots": 1,
+        "unlabeled_children": 1,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 1,
+        "successor_masks": [
+          0
+        ],
+        "precursor_slots": 2,
+        "unlabeled_children": 2,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 2,
+        "successor_masks": [
+          0,
+          0
+        ],
+        "precursor_slots": 4,
+        "unlabeled_children": 3,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 2,
+        "successor_masks": [
+          2,
+          0
+        ],
+        "precursor_slots": 3,
+        "unlabeled_children": 3,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 4,
+        "flat_grouped_Born_mass": "5/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "3/2"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          2,
+          0,
+          0
+        ],
+        "precursor_slots": 6,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          6,
+          0,
+          0
+        ],
+        "precursor_slots": 5,
+        "unlabeled_children": 4,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          4,
+          4,
+          0
+        ],
+        "precursor_slots": 5,
+        "unlabeled_children": 4,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 3,
+        "successor_masks": [
+          6,
+          4,
+          0
+        ],
+        "precursor_slots": 4,
+        "unlabeled_children": 4,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 16,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "35/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/16",
+        "exact_flat_excess": "27/8"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          6,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "5/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "3/2"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          4,
+          4,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          6,
+          4,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          8,
+          4,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          4,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          4,
+          0,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 7,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          12,
+          0,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          12,
+          0,
+          0
+        ],
+        "precursor_slots": 6,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          8,
+          8,
+          8,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "7/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "3/4"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          10,
+          8,
+          8,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 7,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          8,
+          8,
+          0
+        ],
+        "precursor_slots": 6,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          12,
+          12,
+          8,
+          0
+        ],
+        "precursor_slots": 6,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "9/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/8"
+      },
+      {
+        "rank": 4,
+        "successor_masks": [
+          14,
+          12,
+          8,
+          0
+        ],
+        "precursor_slots": 5,
+        "unlabeled_children": 5,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 32,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "63/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/32",
+        "exact_flat_excess": "55/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 24,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "5/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/16",
+        "exact_flat_excess": "3/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 20,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "9/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/16",
+        "exact_flat_excess": "5/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 18,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "5/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/16",
+        "exact_flat_excess": "3/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          0,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 17,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "35/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/16",
+        "exact_flat_excess": "27/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          4,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 20,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "15/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "7/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          6,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 16,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          8,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 18,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 16,
+        "unlabeled_children": 16,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 14,
+        "unlabeled_children": 14,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 15,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 14,
+        "unlabeled_children": 11,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          4,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 13,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          12,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 14,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          12,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          20,
+          12,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 13,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "25/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "9/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          12,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          12,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "41/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "25/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          0,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "5/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/8",
+        "exact_flat_excess": "3/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          8,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 18,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "7/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "3/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          10,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 14,
+        "unlabeled_children": 14,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 15,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 14,
+        "unlabeled_children": 11,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          8,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          12,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "9/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          14,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 12,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 11,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          12,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          16,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 13,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          16,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 11,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          16,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 7,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 12,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "9/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          24,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "17/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          8,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          24,
+          0,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "15/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "7/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          24,
+          0,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          24,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "13/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "5/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          24,
+          0,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "25/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "9/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          24,
+          0,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "3/2",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/4",
+        "exact_flat_excess": "1/2"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          16,
+          16,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 17,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "43/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "27/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          18,
+          16,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 13,
+        "unlabeled_children": 10,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          22,
+          16,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          16,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "7/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "3/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          20,
+          20,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 11,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "9/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          22,
+          20,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          20,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 7,
+        "flat_grouped_Born_mass": "21/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "5/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          20,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 9,
+        "unlabeled_children": 9,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          20,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "21/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "5/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          16,
+          16,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "5/4",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/4"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          24,
+          24,
+          24,
+          16,
+          0
+        ],
+        "precursor_slots": 10,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "11/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "3/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          26,
+          24,
+          24,
+          16,
+          0
+        ],
+        "precursor_slots": 8,
+        "unlabeled_children": 8,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          24,
+          24,
+          16,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "9/8",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/8"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          28,
+          28,
+          24,
+          16,
+          0
+        ],
+        "precursor_slots": 7,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "17/16",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "1/16"
+      },
+      {
+        "rank": 5,
+        "successor_masks": [
+          30,
+          28,
+          24,
+          16,
+          0
+        ],
+        "precursor_slots": 6,
+        "unlabeled_children": 6,
+        "flat_grouped_Born_mass": "1",
+        "inherited_quotient_Born_mass": "1",
+        "largest_raw_Born_probability": "1/2",
+        "exact_flat_excess": "0"
+      }
+    ],
+    "Bell_pair_checks": 11993,
+    "natural_labeling_path_checks": 1010
+  },
+  "rank_two": {
+    "chain_cut_law": [
+      "1/4",
+      "1/4",
+      "1/2"
+    ],
+    "antichain_cut_law": [
+      "1/4",
+      "1/2",
+      "1/4"
+    ],
+    "antichain_grouped_amplitudes": [
+      [
+        "0",
+        "-1/2"
+      ],
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1/2"
+      ]
+    ],
+    "multiplicities": [
+      1,
+      2,
+      1
+    ],
+    "flat_mass": "3/2",
+    "inherited_mass": "1"
+  },
+  "recorded_geometry": {
+    "scope": "recorded Born process only",
+    "edge_configurations": 36062,
+    "rows": [
+      {
+        "events": 2,
+        "bond_probability": "1/5",
+        "exact_expected_missing_pairs": "4/5",
+        "exact_expected_ordering_fraction": "1/5",
+        "two_step_envelope": "4/5"
+      },
+      {
+        "events": 2,
+        "bond_probability": "1/2",
+        "exact_expected_missing_pairs": "1/2",
+        "exact_expected_ordering_fraction": "1/2",
+        "two_step_envelope": "1/2"
+      },
+      {
+        "events": 2,
+        "bond_probability": "4/5",
+        "exact_expected_missing_pairs": "1/5",
+        "exact_expected_ordering_fraction": "4/5",
+        "two_step_envelope": "1/5"
+      },
+      {
+        "events": 3,
+        "bond_probability": "1/5",
+        "exact_expected_missing_pairs": "296/125",
+        "exact_expected_ordering_fraction": "79/375",
+        "two_step_envelope": "296/125"
+      },
+      {
+        "events": 3,
+        "bond_probability": "1/2",
+        "exact_expected_missing_pairs": "11/8",
+        "exact_expected_ordering_fraction": "13/24",
+        "two_step_envelope": "11/8"
+      },
+      {
+        "events": 3,
+        "bond_probability": "4/5",
+        "exact_expected_missing_pairs": "59/125",
+        "exact_expected_ordering_fraction": "316/375",
+        "two_step_envelope": "59/125"
+      },
+      {
+        "events": 4,
+        "bond_probability": "1/5",
+        "exact_expected_missing_pairs": "72956/15625",
+        "exact_expected_ordering_fraction": "10397/46875",
+        "two_step_envelope": "14604/3125"
+      },
+      {
+        "events": 4,
+        "bond_probability": "1/2",
+        "exact_expected_missing_pairs": "161/64",
+        "exact_expected_ordering_fraction": "223/384",
+        "two_step_envelope": "81/32"
+      },
+      {
+        "events": 4,
+        "bond_probability": "4/5",
+        "exact_expected_missing_pairs": "11966/15625",
+        "exact_expected_ordering_fraction": "40892/46875",
+        "two_step_envelope": "2406/3125"
+      },
+      {
+        "events": 5,
+        "bond_probability": "1/5",
+        "exact_expected_missing_pairs": "74865264/9765625",
+        "exact_expected_ordering_fraction": "11395493/48828125",
+        "two_step_envelope": "600496/78125"
+      },
+      {
+        "events": 5,
+        "bond_probability": "1/2",
+        "exact_expected_missing_pairs": "3927/1024",
+        "exact_expected_ordering_fraction": "6313/10240",
+        "two_step_envelope": "499/128"
+      },
+      {
+        "events": 5,
+        "bond_probability": "4/5",
+        "exact_expected_missing_pairs": "10406034/9765625",
+        "exact_expected_ordering_fraction": "43625108/48828125",
+        "two_step_envelope": "84154/78125"
+      },
+      {
+        "events": 6,
+        "bond_probability": "1/2",
+        "exact_expected_missing_pairs": "172665/32768",
+        "exact_expected_ordering_fraction": "21257/32768",
+        "two_step_envelope": "2777/512"
+      }
+    ]
+  }
+}

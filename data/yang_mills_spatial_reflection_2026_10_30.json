@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: polynomial Haar insertion and actual source-sensitive temporal defect tails proved",
+  "current_goal_turn_classification": "progress: actual independent spatial reflection geometry, full spatial Wilson positive kernel and polynomial spatial-slice plaquette removal proved",
+  "scope": "The actual even-period spatial SU(2) Wilson slice now has an explicitly constructed positive kernel in independent spatial halves. Every coarse link is reconstructed as A_e*B_e^-1 from two endpoint-to-midpoint half-edges. Independent half-edge Haar measure pushes forward exactly to the original coarse-link Haar measure; this is a redundant surjection, not a gauge-fixing bijection. The link-plane reflection fixes no coarse vertex, swaps the two disjoint half-edge halves, and reverses normal-link orientation. Both periodic seams are covered. The actual crossing plaquette holonomy is conjugate to the difference of two midpoint paths, and its normalized Wilson weight is exactly the previously proved SU(2) crossing kernel. Interior plaquette factors are localized to their own half. Symmetrized local kernels multiply to the original full spatial weight after a proved action-reflection identity, allowing arbitrary nonnegative reflection-invariant couplings. In particular, deleting one geometrically crossing plaquette preserves this constructed positivity while retaining every other plaquette. Restoring that factor gives Q_cut(f)<=cap(s)*Q_full(f) for every continuous complex half-source and every finite half-space measure, for s>=3/4. The original spatialWeight has s=beta/2, so the price is cap(beta/2) for beta>=3/2. The actual spatial Haar partition functions obey the same comparison, with no volume factor. No reflection positivity of a ground state is assumed or proved here. Extending the slice construction to the actual modified temporal history and ground marginal, the spatial transfer-norm comparison, distant mixed-ground/signed-form control, independent global coercivity and nontrivial continuum survival remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.HaarHalfEdges",
+    "UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry",
+    "UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit",
+    "UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths",
+    "UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry",
+    "UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel",
+    "UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion"
+  ],
+  "new_declarations": 105,
+  "retained_declarations": 8637,
+  "cumulative_declarations": 8742,
+  "formal_results": {
+    "coarse_Haar_identity": "Every coarse link U=A*B^-1 has the original compact Haar law under independent midpoint half-edges; the whole finite product is preserved.",
+    "spatial_geometry": "Reflection on period 2*n sends x_0 to -(x_0+1), swaps two disjoint halves of endpoint half-edges, includes both seams, and induces the exact coarse orientation-reflecting link map.",
+    "crossing_plaquette": "The actual four-link plaquette is conjugate to startPath^-1*endPath. Under the half split, these paths depend on opposite halves. The normalized factor is k_s(path(a),path(b)) at either seam.",
+    "full_spatial_kernel": "All original spatial plaquettes are retained. Arbitrary nonnegative reflection-invariant couplings give a constructed positive kernel whose value is exactly exp(-sum_p gamma_p*D_p(assemble(a,b))). Constant gamma=beta/2 is exactly the existing spatialWeight.",
+    "omitted_spatial_kernel": "A marked crossing plaquette is fixed by the plaquette reflection; setting its coupling to zero preserves the exact positive-kernel construction.",
+    "polynomial_removal": "For s>=3/4, Q_cut(f)<=cap(s)*Q_full(f) for every continuous complex half-source and finite half-space measure. For the original spatialWeight s=beta/2; cap(s)=4*Z_scalar(0)*s*sqrt(s)/Gamma(3/2). No volume factor.",
+    "actual_Haar_integral": "The same removal comparison holds between the original coarse spatial Haar partition integrals, using the proved assembly pushforward."
+  },
+  "primary_literature": [
+    {
+      "authors": [
+        "Arthur Jaffe",
+        "Bas Janssens"
+      ],
+      "title": "Reflection Positive Doubles",
+      "url": "https://arxiv.org/abs/1607.07126",
+      "pdf": "https://arxiv.org/pdf/1607.07126",
+      "journal": "Journal of Functional Analysis 272 (2017), 3506-3557",
+      "sections_reviewed": "IX.1-IX.2, printed pages 41-45; midpoint bonds, independent halves and Wilson crossing positivity",
+      "use": "The midpoint construction supplies the geometric approach. The actual normalized Wilson factors and all stated results are proved in Lean; no external result is added as an axiom."
+    }
+  ],
+  "next_attack": {
+    "actual_temporal_bridge": "Express the raw temporal kinetic interaction across these same spatial halves. A crossing normal link U=a*b^-1 produces a positive SU(2) kernel in two-time midpoint paths. Interior temporal factors should be separable. Combine with the two proved spatial weight kernels.",
+    "finite_history_and_ground": "Prove that integrating independent finite half-histories preserves positivity, with the marked spatial plaquette deleted at every temporal slice. Construct/identify the modified transfer ground limit with this positive kernel and retain its normalization.",
+    "norm_comparison_not_yet_proved": "For T=w*T0*w with w=exp(-beta*D_p/2), a positive modified T0 and its unit top ground psi0 should give ||T||>=||T0||*(integral w*psi0^2)^2. The actual ground-marginal insertion would then give ||T0||/||T||<=cap(beta/2)^2. The slice proof is insufficient for that conclusion.",
+    "global_target": "Close the actual distant mixed-ground or signed physical form and independent lower coercivity, then establish a compatible physical trajectory and nonzero continuum survival."
+  },
+  "not_inferred": [
+    "The new positivity is for the actual three-dimensional spatial slice and its omitted-plaquette spatial weight. It does not yet prove positivity of the marginal of the four-dimensional temporal slab or of the modified ground state.",
+    "The proved marked plaquette crosses the chosen normal spatial link-reflection plane. The full even-period geometry includes both seams. General coordinate permutations and arbitrary physical volumes are not silently substituted into the theorem.",
+    "The half-edge assembly is a Haar-preserving many-to-one map with midpoint redundancy. No links are fixed to the identity, no gauge-fixing Jacobian is omitted, and no independence of the Wilson-weighted halves is claimed.",
+    "The insertion bound is a positive-kernel reflection-form inequality for conjugate f(a)*f(b), not a pointwise lower bound or an arbitrary physical squared-source bound. It cannot by itself estimate the actual distant mixed-ground sum.",
+    "Construct the raw temporal interaction as a positive kernel across these same spatial halves, integrate finite histories while retaining the marked plaquette deletion at every time slice, and justify the modified-ground limit with the correct normalization.",
+    "The proposed polynomial removed-plaquette transfer-norm comparison still needs the modified ground marginal and the spectral comparison. The already proved original-ground temporal tails do not supply this missing spatial argument.",
+    "No independent global coercivity, physical scale trajectory, nontrivial continuum limit or mass gap is proved. All twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_spatial_reflection_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

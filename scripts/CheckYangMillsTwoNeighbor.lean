@@ -1,0 +1,48 @@
+import UnifiedTheory.Clay.YangMills.SU2HaarSeparation
+import UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields
+import UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction
+
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separation_sq_le
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separation_sq_pos
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.denominator_pos
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator_le_one
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator_distance_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.separator_complement_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.integral_separation
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.orientation_distance_bound
+#print axioms UnifiedTheory.Clay.YangMills.SU2HaarSeparation.tilt_separation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.fieldA
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.fieldB
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.fieldA_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.fieldB_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.field_orientations_ne
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.aligned_zero_field
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.aligned_first_field
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.aligned_second_field
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.coordinates
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.toConfiguration_coordinates
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.coordinateLaw_coordinates
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.alignedCoordinates
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.change_first
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.change_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.aligned_coordinate_law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.baseline_law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.first_neighbor_law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborFields.second_neighbor_law
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.separationConstant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.separationConstant_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.test
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.test_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.test_separation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.influence_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.first_coefficient_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.second_coefficient_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.row_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.row_gt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.no_unit_row_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.weighted_row_gt_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonTwoNeighborObstruction.eventually_no_unit_row_budget

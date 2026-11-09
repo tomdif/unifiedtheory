@@ -1,0 +1,38 @@
+import UnifiedTheory.Clay.YangMills.CompactPhysicalProjection
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalScore
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalGram
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactPhysicalProjection.gram_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.CompactPhysicalProjection.gram_le
+#print axioms UnifiedTheory.Clay.YangMills.CompactPhysicalProjection.gram_le_residual
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.transition_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.transition_gauge_right
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.pure_gauge_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.row_integral_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.raw_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score_mean_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.residual_orthogonal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalScore.score_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.physicalScore
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.physicalScore_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.physicalScore_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.removed_orthogonal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_full_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_decomposition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.response_preserved
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.physical_pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_le_raw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_le_residual
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalGram.matrix_minimal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation.bound_of_rows
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation.conditional_collective
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation.energy_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation.time_sum_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation.slab_contraction

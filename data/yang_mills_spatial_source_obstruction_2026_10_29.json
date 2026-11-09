@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: constructive axial regularity, supported alignment, explicit surface cost and actual small-curvature mismatch source tail proved and audited",
+  "current_goal_turn_classification": "progress: actual physical counterexample rules out the proposed loss-only spatial-complement absorption; a valid source localization comparison and physical cutoff are proved",
+  "scope": "The proposed loss-only absorption of the spatial-large-field complement is rigorously ruled out for the actual Wilson source, not merely for a toy law. For any measurable endpoint region E and continuous f vanishing outside E, endpoint symmetry gives loss(f)/2<=R_E(f). Every nonconstant continuous f has strictly positive actual transfer variance loss at finite cutoff. The physical bump f=max(0,D-t), D=2-Re(character(spatialHolonomy(0,0,1))), is supported on the actual large-plaquette event E={D>t}, is nonconstant for 0<=t<4 on periods n>1, and is gauge invariant. Consequently no bound R_E(f)<=epsilon*loss(f) can hold for all physical f when epsilon<1/2. For 0<=delta<2, E={D>delta^2} lies in the spatial-large-field complement of the two-field axial FlatBox region. That exact excluded source also retains at least half the bump loss, ruling out the proposed uniform small coefficient for this complement. A valid replacement is proved: R_E(f)<=2*loss(chi*f)+cutoffCost(chi,f), for chi=1 on E. The cutoff cost retains the actual two-endpoint density and f(w)^2*(chi(v)-chi(w))^2; ground weighting gives the existing correlated density J exactly. A concrete continuous physical cutoff equals one above D>t, vanishes below D<=t/2 and lies in [0,1]. Neither the localized loss nor cutoff cost is numerically absorbed. Distant mixed-ground summability, global physical coercivity and continuum Yang-Mills remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactEndpointSupport",
+    "UnifiedTheory.Clay.YangMills.WilsonEndpointSupport",
+    "UnifiedTheory.Clay.YangMills.WilsonSpatialSourceObstruction",
+    "UnifiedTheory.Clay.YangMills.WilsonSourceLocalization"
+  ],
+  "new_declarations": 58,
+  "retained_declarations": 8135,
+  "cumulative_declarations": 8193,
+  "formal_results": {
+    "support_obstruction": "For symmetric nonnegative variance-pair density, f supported in E implies full pair mass<=2*one-endpoint-restricted mass. No rarity or independence premise is used.",
+    "actual_wilson_binding": "The generic pair is the actual product of conditional transitions and (f(v)-f(w))^2. Its stationary mean is the accepted original-transfer variance loss. Thus loss(f)/2<=R_E(f).",
+    "strict_positivity": "Positive continuous actual transitions and full-support Haar/ground laws imply loss(f)>0 for every nonconstant continuous f.",
+    "physical_witness": "The bump max(0,D-t) is gauge invariant, continuous and supported on E={D>t}. Actual single-link configurations give D=0 and D=4, proving nonconstancy for 0<=t<4 and n>1.",
+    "axial_complement": "For 0<=delta<2, D>delta^2 contradicts FlatBox at the origin plaquette. The exact two-field spatial complement from axial alignment therefore retains >=loss(bump)/2. A uniform epsilon*loss estimate for all physical sources is impossible when epsilon<1/2.",
+    "localization": "For every continuous chi=1 on E, R_E(f)<=2*loss(chi*f)+cutoffCost(chi,f). The proof retains the two-endpoint f(w)^2-weighted cutoff difference and the exact ground-to-J identity.",
+    "concrete_cutoff": "chi_t=min(1,max(0,(D-t/2)/(t/2))) for t>0 is physical, lies in [0,1], equals one on D>t and vanishes outside D>t/2. Its product with every physical f is physical."
+  },
+  "next_attack": {
+    "discarded_target": "Do not seek an all-physical-source small loss-only tail for the spatial complement; the explicit counterexample disproves it.",
+    "actual_localization_costs": "Estimate the constructed high-field localized loss and f-weighted cutoff cost using the actual dynamics. A physical high-field drift/restricted-transfer estimate is a possible next target; it is not supplied as an assumption.",
+    "global_closure": "Combine validated high-field dynamics with a retained-region functional inequality and actual spatial response control. Preserve the separate distant/signed-form and lower-coercivity requirements."
+  },
+  "not_inferred": [
+    "The lower bound concerns exceptional variance-pair source mass for arbitrary continuous physical tests. It does not give a lower bound on the transfer spectral ratio or refute a Yang-Mills mass gap.",
+    "The earlier gauge-instability and axial small-curvature source tails remain valid. The obstruction applies to the gauge-invariant spatial-large-field complement, which permits physical observables supported there.",
+    "An unweighted probability or energy tail cannot alone provide uniform epsilon*loss absorption of this complement below epsilon=1/2. Do not continue trying to prove that false all-source statement.",
+    "The valid cutoff comparison retains loss(chi*f) and the actual source-weighted cutoff variation. Neither term has a usable small bound in the required global contraction estimate.",
+    "A next route must control localized physical high-field modes and cutoff variation, for example through an actual dynamical/drift or restricted-transfer estimate, then combine with a proved retained-region functional inequality.",
+    "A restricted class of sources would require a justified invariant/dense-core argument with controlled constants; simply assuming the source avoids the bad set does not establish the mass gap.",
+    "The actual distant mixed-ground or signed physical Haar-form estimate, independent lower coercivity, physical scaling, continuum nontriviality and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_spatial_source_obstruction_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

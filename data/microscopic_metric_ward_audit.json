@@ -1,0 +1,361 @@
+{
+  "symbolic": {
+    "exact_bubble": "-39/10",
+    "exact_contact": "39/10",
+    "mixed_ward_identity": true,
+    "finite_point_algebra": [
+      {
+        "sites": 2,
+        "derivation_dimension": 0
+      },
+      {
+        "sites": 3,
+        "derivation_dimension": 0
+      },
+      {
+        "sites": 4,
+        "derivation_dimension": 0
+      },
+      {
+        "sites": 5,
+        "derivation_dimension": 0
+      },
+      {
+        "sites": 6,
+        "derivation_dimension": 0
+      },
+      {
+        "sites": 7,
+        "derivation_dimension": 0
+      }
+    ]
+  },
+  "ward": {
+    "cases": [
+      {
+        "dimension": 1,
+        "side": 9,
+        "sites": 9,
+        "amplitude": 0.15,
+        "bubble": -0.15230126606650457,
+        "contact": 0.15230126606650454,
+        "cancellation_error": 2.7755575615628914e-17,
+        "mixed_ward_error": 1.6479873021779667e-17,
+        "logdet_error": 8.881784197001252e-16,
+        "spectrum_error": 2.220446049250313e-15,
+        "unchanged_strain_curvature_error": 1.734723475976807e-18,
+        "finite_strain_logdet_error": 2.6645352591003757e-15
+      },
+      {
+        "dimension": 1,
+        "side": 9,
+        "sites": 9,
+        "amplitude": 0.6,
+        "bubble": -0.15230126606650457,
+        "contact": 0.15230126606650454,
+        "cancellation_error": 2.7755575615628914e-17,
+        "mixed_ward_error": 1.6479873021779667e-17,
+        "logdet_error": 0.0,
+        "spectrum_error": 1.7763568394002505e-15,
+        "unchanged_strain_curvature_error": 8.673617379884035e-19,
+        "finite_strain_logdet_error": 4.440892098500626e-16
+      },
+      {
+        "dimension": 2,
+        "side": 5,
+        "sites": 25,
+        "amplitude": 0.15,
+        "bubble": -0.691523081311251,
+        "contact": 0.6915230813112508,
+        "cancellation_error": 1.1102230246251565e-16,
+        "mixed_ward_error": 7.546047120499111e-17,
+        "logdet_error": 1.4210854715202004e-14,
+        "spectrum_error": 4.440892098500626e-15,
+        "unchanged_strain_curvature_error": 8.673617379884035e-19,
+        "finite_strain_logdet_error": 7.105427357601002e-15
+      },
+      {
+        "dimension": 2,
+        "side": 5,
+        "sites": 25,
+        "amplitude": 0.6,
+        "bubble": -0.691523081311251,
+        "contact": 0.6915230813112508,
+        "cancellation_error": 1.1102230246251565e-16,
+        "mixed_ward_error": 7.546047120499111e-17,
+        "logdet_error": 3.552713678800501e-15,
+        "spectrum_error": 3.552713678800501e-15,
+        "unchanged_strain_curvature_error": 8.673617379884035e-19,
+        "finite_strain_logdet_error": 0.0
+      },
+      {
+        "dimension": 3,
+        "side": 4,
+        "sites": 64,
+        "amplitude": 0.15,
+        "bubble": -1.5875381584289023,
+        "contact": 1.5875381584289023,
+        "cancellation_error": 0.0,
+        "mixed_ward_error": 0.0,
+        "logdet_error": 0.0,
+        "spectrum_error": 1.4210854715202004e-14,
+        "unchanged_strain_curvature_error": 0.0,
+        "finite_strain_logdet_error": 0.0
+      },
+      {
+        "dimension": 3,
+        "side": 4,
+        "sites": 64,
+        "amplitude": 0.6,
+        "bubble": -1.5875381584289023,
+        "contact": 1.5875381584289023,
+        "cancellation_error": 0.0,
+        "mixed_ward_error": 0.0,
+        "logdet_error": 0.0,
+        "spectrum_error": 5.329070518200751e-15,
+        "unchanged_strain_curvature_error": 1.734723475976807e-18,
+        "finite_strain_logdet_error": 1.4210854715202004e-14
+      },
+      {
+        "dimension": 3,
+        "side": 5,
+        "sites": 125,
+        "amplitude": 0.15,
+        "bubble": -1.9475768752475668,
+        "contact": 1.9475768752475666,
+        "cancellation_error": 2.220446049250313e-16,
+        "mixed_ward_error": 3.642919299551295e-17,
+        "logdet_error": 8.526512829121202e-14,
+        "spectrum_error": 8.881784197001252e-15,
+        "unchanged_strain_curvature_error": 8.673617379884035e-19,
+        "finite_strain_logdet_error": 2.842170943040401e-14
+      },
+      {
+        "dimension": 3,
+        "side": 5,
+        "sites": 125,
+        "amplitude": 0.6,
+        "bubble": -1.9475768752475668,
+        "contact": 1.9475768752475666,
+        "cancellation_error": 2.220446049250313e-16,
+        "mixed_ward_error": 3.642919299551295e-17,
+        "logdet_error": 1.4210854715202004e-13,
+        "spectrum_error": 1.0658141036401503e-14,
+        "unchanged_strain_curvature_error": 2.6020852139652106e-18,
+        "finite_strain_logdet_error": 2.842170943040401e-14
+      }
+    ],
+    "scope": "Exact relabeling of positive finite Gaussian matrices. Transporting an independent strain interaction preserves its complete effective action, including any failed Einstein response."
+  },
+  "locality": {
+    "cases": [
+      {
+        "dimension": 1,
+        "side": 41,
+        "degree": 2,
+        "coefficient_error": 0.0009232486815269909,
+        "analytical_error_bound": 0.015587275059020647,
+        "smallest_eigenvalue": 0.09000000201582863,
+        "positive_lower_bound": 0.08965765607617561,
+        "finite_range": 5,
+        "measured_weighted_row_norm": 5.177080786009616,
+        "analytical_weighted_row_bound": 9.49323696082618
+      },
+      {
+        "dimension": 1,
+        "side": 41,
+        "degree": 4,
+        "coefficient_error": 1.9572411951327073e-06,
+        "analytical_error_bound": 3.433216845735113e-05,
+        "smallest_eigenvalue": 0.08999999999978042,
+        "positive_lower_bound": 0.08999924452758125,
+        "finite_range": 9,
+        "measured_weighted_row_norm": 5.177080786009616,
+        "analytical_weighted_row_bound": 9.49323696082618
+      },
+      {
+        "dimension": 1,
+        "side": 41,
+        "degree": 8,
+        "coefficient_error": 1.0173735886322768e-12,
+        "analytical_error_bound": 2.2073192939402816e-11,
+        "smallest_eigenvalue": 0.0900000000000014,
+        "positive_lower_bound": 0.08999999999951429,
+        "finite_range": 17,
+        "measured_weighted_row_norm": 5.177080786009616,
+        "analytical_weighted_row_bound": 9.49323696082618
+      },
+      {
+        "dimension": 2,
+        "side": 9,
+        "degree": 2,
+        "coefficient_error": 0.008769905220076639,
+        "analytical_error_bound": 0.30528230964393627,
+        "smallest_eigenvalue": 0.09000168159544705,
+        "positive_lower_bound": 0.08666667966010094,
+        "finite_range": 5,
+        "measured_weighted_row_norm": 10.788755364848852,
+        "analytical_weighted_row_bound": 35.14482689937471
+      },
+      {
+        "dimension": 2,
+        "side": 9,
+        "degree": 4,
+        "coefficient_error": 3.897650935204128e-05,
+        "analytical_error_bound": 0.002659562520804914,
+        "smallest_eigenvalue": 0.08999999723621777,
+        "positive_lower_bound": 0.0899704176404444,
+        "finite_range": 9,
+        "measured_weighted_row_norm": 10.788755364848852,
+        "analytical_weighted_row_bound": 35.14482689937471
+      },
+      {
+        "dimension": 2,
+        "side": 9,
+        "degree": 8,
+        "coefficient_error": 8.944906446833581e-11,
+        "analytical_error_bound": 2.7194376530582976e-08,
+        "smallest_eigenvalue": 0.08999999999999564,
+        "positive_lower_bound": 0.08999999969746676,
+        "finite_range": 17,
+        "measured_weighted_row_norm": 10.788755364848852,
+        "analytical_weighted_row_bound": 35.14482689937471
+      },
+      {
+        "dimension": 3,
+        "side": 5,
+        "degree": 2,
+        "coefficient_error": 0.019698040654226576,
+        "analytical_error_bound": 1.9289709465640013,
+        "smallest_eigenvalue": 0.09001392815603104,
+        "positive_lower_bound": 0.07670277474163963,
+        "finite_range": 5,
+        "measured_weighted_row_norm": 16.380072062432987,
+        "analytical_weighted_row_bound": 97.61048450943922
+      },
+      {
+        "dimension": 3,
+        "side": 5,
+        "degree": 4,
+        "coefficient_error": 0.00011234619006852442,
+        "analytical_error_bound": 0.036520607532896904,
+        "smallest_eigenvalue": 0.08999995185422272,
+        "positive_lower_bound": 0.08972854443225707,
+        "finite_range": 9,
+        "measured_weighted_row_norm": 16.380072062432987,
+        "analytical_weighted_row_bound": 97.61048450943922
+      },
+      {
+        "dimension": 3,
+        "side": 5,
+        "degree": 8,
+        "coefficient_error": 4.2802055535063574e-10,
+        "analytical_error_bound": 1.8629346554944432e-06,
+        "smallest_eigenvalue": 0.0899999999998844,
+        "positive_lower_bound": 0.08999998613200114,
+        "finite_range": 17,
+        "measured_weighted_row_norm": 16.380072062432987,
+        "analytical_weighted_row_bound": 97.61048450943922
+      }
+    ],
+    "scope": "Volume-independent matrix-coefficient bounds at fixed lattice spacing, bounded displacement and finite transformation parameter. They are not uniform refinement bounds or bounded-operator-norm estimates for interacting scalar/spin Hamiltonians."
+  },
+  "algebra": {
+    "odd_cycle_cases": [
+      {
+        "sites": 5,
+        "side": 5,
+        "dimension": 1,
+        "initial_rank": 5,
+        "lie_rank_mod_prime": 10,
+        "full_skew_dimension": 10,
+        "prime": 101
+      },
+      {
+        "sites": 7,
+        "side": 7,
+        "dimension": 1,
+        "initial_rank": 7,
+        "lie_rank_mod_prime": 21,
+        "full_skew_dimension": 21,
+        "prime": 101
+      },
+      {
+        "sites": 9,
+        "side": 9,
+        "dimension": 1,
+        "initial_rank": 9,
+        "lie_rank_mod_prime": 36,
+        "full_skew_dimension": 36,
+        "prime": 101
+      },
+      {
+        "sites": 11,
+        "side": 11,
+        "dimension": 1,
+        "initial_rank": 11,
+        "lie_rank_mod_prime": 55,
+        "full_skew_dimension": 55,
+        "prime": 101
+      },
+      {
+        "sites": 9,
+        "side": 3,
+        "dimension": 2,
+        "initial_rank": 18,
+        "lie_rank_mod_prime": 36,
+        "full_skew_dimension": 36,
+        "prime": 101
+      }
+    ],
+    "exact_edge_reconstruction": true,
+    "exact_edge_commutator": true,
+    "scope": "For this generator family on a periodic cubic graph with odd side, unrestricted finite-lattice closure is so(V), not generally the dV-parameter family of sampled vector fields. Edge reconstruction on each odd coordinate cycle and graph connectivity prove the general statement. This is not a no-go theorem for emergent gravitational symmetry."
+  },
+  "continuum": {
+    "refinement": [
+      {
+        "sites": 64,
+        "spacing": 0.09817477042468103,
+        "smooth_full_output_error": 0.3962417619072349,
+        "ultraviolet_error": 10.659788054225123,
+        "spacing_times_uv_error": 1.0465222449993088
+      },
+      {
+        "sites": 128,
+        "spacing": 0.04908738521234052,
+        "smooth_full_output_error": 0.10335184560472399,
+        "ultraviolet_error": 20.85916186718867,
+        "spacing_times_uv_error": 1.0239217137812544
+      },
+      {
+        "sites": 256,
+        "spacing": 0.02454369260617026,
+        "smooth_full_output_error": 0.0261121529594881,
+        "ultraviolet_error": 41.23742942564303,
+        "spacing_times_uv_error": 1.0121187916916228
+      },
+      {
+        "sites": 512,
+        "spacing": 0.01227184630308513,
+        "smooth_full_output_error": 0.0065452698834196354,
+        "ultraviolet_error": 81.98423784077987,
+        "spacing_times_uv_error": 1.0060979660576264
+      }
+    ],
+    "mode_bound_cases": 80,
+    "largest_fraction_of_proved_bound": 0.09049213788897505,
+    "scope": "The spatial half-density bracket converges on fixed band-limited data with a proved a^2 K^4 bound. A high-frequency input exhibits an error proportional to 1/a; there is no full-space operator-norm convergence. No state-selection or loop-level Ward restoration follows."
+  },
+  "source_sha256": {
+    "MICROSCOPIC_METRIC_WARD.md": "ce3f462a7d0b98e6bc594ccca38bd50eb7472fc5c926307d3abf31f586145646",
+    "scripts/microscopic_metric_ward_audit.py": "047b66b90943e7ac7b204389ffd3f9dabca253db3157ad58527fdb8583bae09d",
+    "ISOTROPIC_TENSOR_REGULATOR.md": "862ea5788263365cfd782ebd174c87137108168149381839a9b19634c0d39164",
+    "scripts/isotropic_tensor_regulator_audit.py": "5a8ed8d38667332e49292602291ac7614cf81ea2556989965b23ab3e05f2dba7",
+    "INDUCED_TENSOR_DYNAMICS.md": "1ddfe381a4d759277f9f342d316cde877d11f69c1dd059ac01e32525786ea6e7",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937"
+  },
+  "scope": "An exact positive, exponentially local Gaussian relabeling completion supplies the nonlinear contact cancellation required along its redundant directions. It preserves any independent strain response and does not repair the failed Einstein cone. The finite-lattice generator closure and fixed-band versus ultraviolet estimates distinguish matrix basis symmetry from gravitational diffeomorphisms. No microscopic Einstein gravity or TOE is proved."
+}

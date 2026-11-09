@@ -1,0 +1,19 @@
+{
+  "report_sha256": "c3f2fa4f3f1199876ddd902f77e07245645ec417acb22d7fb68e9f9ddc6f0d1f",
+  "source_sha256": {
+    "scripts/joint_neutral_coherent_response_probe.py": "5d183bebc5e8d655682702d1a8beeeea427c59aa160dc6686afe1fd8fb7aae84",
+    "scripts/verify_joint_neutral_coherent_response.py": "97d8b611cbe12eccadb0e2af33cd74d22fea7b6eb15f28a5bef59c8b5da10cd0",
+    "scripts/matter_energy_gram_probe.py": "6d4977ba630fe1e340b94aad1f28361f8f43774b6accb57035db18dbf460dabe",
+    "UnifiedTheory/Audit/KFCausalReciprocalNeutralKernel.lean": "9a21ac4a1c647fc2bb654192e55e5abcc33a3a1eb9112e831cde26e28197297b",
+    "UnifiedTheory/Audit/KFCausalReciprocalCrossGeometry.lean": "db106aeca81e784dfeeb2cde66efcb95f92256e20500f8cad3ec3051cd69c7f1",
+    "UnifiedTheory/Audit/KFCausalNeutralRadialActualGeometry.lean": "1c96cf4c7ec3c239eb89fe953fa52fd81def0ef8495632e8cd27cb6d23026b1f"
+  },
+  "mpmath_precision": 80,
+  "verified_finite_candidate_slope": "0.049766455485540728981648759267369401515672271794255",
+  "energy_relative_error": 2.144247851759912e-13,
+  "slope_absolute_error": 1.4101018351240732e-14,
+  "radial_obstruction_profile_slope": "-0.0001082363323670105941892377769964669551117975390741",
+  "obstruction_slope_absolute_error": 3.9499418923777698e-16,
+  "scope": "Independently recompute selected coupled-kernel witnesses at high precision.\n\nThis checks floating diagnostics, not a Lean theorem or an interval bound.\nThe high-precision derivative is taken through a fresh complex clock solve\nand a Gaussian-moment recurrence, independently of the producer's analytic\nderivative. It verifies a finite candidate Rayleigh quotient, not a uniform\nconstant or coverage of arbitrary polynomials and Hamiltonian evolution.\n",
+  "passed": true
+}

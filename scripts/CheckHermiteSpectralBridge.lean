@@ -1,0 +1,26 @@
+import UnifiedTheory.Audit.KFCausalHermiteHilbertBasis
+import UnifiedTheory.Audit.KFCausalNeutralHermiteDomain
+
+#print axioms UnifiedTheory.Audit.KFCausalGaussianPolynomialTotality.exponential_integral_zero
+#print axioms UnifiedTheory.Audit.KFCausalGaussianPolynomialTotality.zero_of_gaussian_moments
+#print axioms UnifiedTheory.Audit.KFCausalGaussianPolynomialTotality.dense_monomial_span
+#print axioms UnifiedTheory.Audit.KFCausalGaussianPolynomialTotality.polynomialState_coe
+#print axioms UnifiedTheory.Audit.KFCausalHermiteL2Completeness.state_coe
+#print axioms UnifiedTheory.Audit.KFCausalHermiteL2Completeness.oscillator_dense_span
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorPolynomial.ladder_identities
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorPolynomial.hermite_ode
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorPolynomial.multiplier_eigenvalue
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorFunctions.polynomialState_ne_zero
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorFunctions.hermite_equation
+#print axioms UnifiedTheory.Audit.KFCausalHermiteOscillatorFunctions.derivative_memLp
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.step_skew
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.oscillator_symmetric
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.state_orthogonal
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.orthonormal
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.normalized_dense_span
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.basis
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.expansion
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.transform
+#print axioms UnifiedTheory.Audit.KFCausalHermiteHilbertBasis.transform_oscillator
+#print axioms UnifiedTheory.Audit.KFCausalNeutralHermiteDomain.state_coe
+#print axioms UnifiedTheory.Audit.KFCausalNeutralHermiteDomain.state_commonEnergyDomain

@@ -1,0 +1,401 @@
+{
+  "full_clock": [
+    {
+      "events": 2,
+      "coupling": 0.25,
+      "full_qubit_dimension": 64,
+      "kernel_dimension": 4,
+      "kernel_residual": 1.997667792633776e-16,
+      "normal_gap": 0.09903113209758027,
+      "gap_lower_bound": 0.041666666666666664,
+      "illegal_clock_gap": 1.0,
+      "summed_strength_budget": 4.0,
+      "largest_term_support": 5,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    },
+    {
+      "events": 2,
+      "coupling": 0.7,
+      "full_qubit_dimension": 64,
+      "kernel_dimension": 4,
+      "kernel_residual": 2.247066098864171e-16,
+      "normal_gap": 0.09903113209758038,
+      "gap_lower_bound": 0.041666666666666664,
+      "illegal_clock_gap": 1.0,
+      "summed_strength_budget": 4.0,
+      "largest_term_support": 5,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    },
+    {
+      "events": 4,
+      "coupling": 0.25,
+      "full_qubit_dimension": 256,
+      "kernel_dimension": 4,
+      "kernel_residual": 6.928002562164899e-17,
+      "normal_gap": 0.024471741852422395,
+      "gap_lower_bound": 0.00625,
+      "illegal_clock_gap": 0.9999999999999991,
+      "summed_strength_budget": 3.5,
+      "largest_term_support": 6,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    },
+    {
+      "events": 4,
+      "coupling": 0.7,
+      "full_qubit_dimension": 256,
+      "kernel_dimension": 4,
+      "kernel_residual": 1.2300002012560194e-16,
+      "normal_gap": 0.0244717418524225,
+      "gap_lower_bound": 0.00625,
+      "illegal_clock_gap": 0.9999999999999989,
+      "summed_strength_budget": 3.5,
+      "largest_term_support": 6,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    },
+    {
+      "events": 6,
+      "coupling": 0.25,
+      "full_qubit_dimension": 1024,
+      "kernel_dimension": 4,
+      "kernel_residual": 8.217135524678229e-17,
+      "normal_gap": 0.008769866754140088,
+      "gap_lower_bound": 0.001984126984126984,
+      "illegal_clock_gap": 0.9999999999999996,
+      "summed_strength_budget": 3.0000000000000004,
+      "largest_term_support": 6,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    },
+    {
+      "events": 6,
+      "coupling": 0.7,
+      "full_qubit_dimension": 1024,
+      "kernel_dimension": 4,
+      "kernel_residual": 6.638241772694693e-17,
+      "normal_gap": 0.008769866754140107,
+      "gap_lower_bound": 0.001984126984126984,
+      "illegal_clock_gap": 0.9999999999999991,
+      "summed_strength_budget": 3.0000000000000004,
+      "largest_term_support": 6,
+      "scope": "Full clock and work tensor product, including illegal clocks"
+    }
+  ],
+  "clock_gap": [
+    {
+      "events": 1,
+      "input_gap_divided_by_norm_sum": 1.0,
+      "gap": 0.38196601125010515,
+      "lower_bound": 0.25
+    },
+    {
+      "events": 1,
+      "input_gap_divided_by_norm_sum": 0.1,
+      "gap": 0.04875078027496077,
+      "lower_bound": 0.025
+    },
+    {
+      "events": 2,
+      "input_gap_divided_by_norm_sum": 1.0,
+      "gap": 0.13397459621556143,
+      "lower_bound": 0.041666666666666664
+    },
+    {
+      "events": 2,
+      "input_gap_divided_by_norm_sum": 0.1,
+      "gap": 0.029823693169201138,
+      "lower_bound": 0.016666666666666666
+    },
+    {
+      "events": 5,
+      "input_gap_divided_by_norm_sum": 1.0,
+      "gap": 0.015099221064356402,
+      "lower_bound": 0.0033333333333333335
+    },
+    {
+      "events": 5,
+      "input_gap_divided_by_norm_sum": 0.1,
+      "gap": 0.008839445755546432,
+      "lower_bound": 0.0033333333333333335
+    },
+    {
+      "events": 12,
+      "input_gap_divided_by_norm_sum": 1.0,
+      "gap": 0.001296923814902239,
+      "lower_bound": 0.0002670940170940171
+    },
+    {
+      "events": 12,
+      "input_gap_divided_by_norm_sum": 0.1,
+      "gap": 0.0011552200863922774,
+      "lower_bound": 0.0002670940170940171
+    },
+    {
+      "events": 40,
+      "input_gap_divided_by_norm_sum": 1.0,
+      "gap": 3.755601160451625e-05,
+      "lower_bound": 7.621951219512195e-06
+    },
+    {
+      "events": 40,
+      "input_gap_divided_by_norm_sum": 0.1,
+      "gap": 3.714251050690736e-05,
+      "lower_bound": 7.621951219512195e-06
+    }
+  ],
+  "physical_band": [
+    {
+      "epsilon": 5.681818181818182e-05,
+      "eigenvalues": [
+        -0.6996667356754233,
+        -0.09646432282744044,
+        0.30133028778842874,
+        0.9029106853096065
+      ],
+      "target_eigenvalues": [
+        -0.69813385409348,
+        -0.09586464015509696,
+        0.30186614590652006,
+        0.9041353598449031
+      ],
+      "spectral_error": 0.0015328815819432018,
+      "spectral_bound": 0.49107142857142855,
+      "projector_error": 0.0012295037094190706,
+      "projector_bound": 0.07142857142857142,
+      "evolution_error": 0.002316105926702169,
+      "boundary_identity_second_moment": 5.0,
+      "scope": "Supplied noncommuting four-dimensional physical sector; full legal clock band"
+    },
+    {
+      "epsilon": 1.4204545454545455e-05,
+      "eigenvalues": [
+        -0.6985173666949714,
+        -0.09601475887946231,
+        0.3017321199093952,
+        0.9038292339785474
+      ],
+      "target_eigenvalues": [
+        -0.69813385409348,
+        -0.09586464015509696,
+        0.30186614590652006,
+        0.9041353598449031
+      ],
+      "spectral_error": 0.000383512601491387,
+      "spectral_bound": 0.11088709677419355,
+      "projector_error": 0.0003079295169981614,
+      "projector_bound": 0.016129032258064516,
+      "evolution_error": 0.0005315684754662223,
+      "boundary_identity_second_moment": 5.0,
+      "scope": "Supplied noncommuting four-dimensional physical sector; full legal clock band"
+    },
+    {
+      "epsilon": 3.5511363636363636e-06,
+      "eigenvalues": [
+        -0.6982297505889649,
+        -0.09590218225697222,
+        0.30183263555432616,
+        0.9040588310476299
+      ],
+      "target_eigenvalues": [
+        -0.69813385409348,
+        -0.09586464015509696,
+        0.30186614590652006,
+        0.9041353598449031
+      ],
+      "spectral_error": 9.589649548480406e-05,
+      "spectral_bound": 0.027066929133858265,
+      "projector_error": 7.701707098181672e-05,
+      "projector_bound": 0.003937007874015748,
+      "evolution_error": 0.00010173580856182614,
+      "boundary_identity_second_moment": 5.0,
+      "scope": "Supplied noncommuting four-dimensional physical sector; full legal clock band"
+    },
+    {
+      "epsilon": 8.877840909090909e-07,
+      "eigenvalues": [
+        -0.6981578297590167,
+        -0.09587402662905953,
+        0.3018577680261121,
+        0.9041162277602259
+      ],
+      "target_eigenvalues": [
+        -0.69813385409348,
+        -0.09586464015509696,
+        0.30186614590652006,
+        0.9041353598449031
+      ],
+      "spectral_error": 2.3975665536690727e-05,
+      "spectral_bound": 0.006727005870841487,
+      "projector_error": 1.9256437423717368e-05,
+      "projector_bound": 0.0009784735812133072,
+      "evolution_error": 3.370583728440594e-05,
+      "boundary_identity_second_moment": 5.0,
+      "scope": "Supplied noncommuting four-dimensional physical sector; full legal clock band"
+    }
+  ],
+  "Einstein_response": [
+    {
+      "coupling": 0.24,
+      "quartic_response_error": 1.2015263150195562e-05,
+      "bare_kinetic_remainder": 1.6370139322855804e-06,
+      "known_bare_kinetic_correction": 0.015624999999999983,
+      "source_commutator_norm": 0.26516504294495524,
+      "scope": "Actual Einstein source pair at fixed physical two-level and normal four-level cutoffs; not the full quartic or regulator removal"
+    },
+    {
+      "coupling": 0.12,
+      "quartic_response_error": 7.519447450045522e-07,
+      "bare_kinetic_remainder": 1.0240571909579113e-07,
+      "known_bare_kinetic_correction": 0.015624999999999983,
+      "source_commutator_norm": 0.26516504294495524,
+      "scope": "Actual Einstein source pair at fixed physical two-level and normal four-level cutoffs; not the full quartic or regulator removal"
+    },
+    {
+      "coupling": 0.06,
+      "quartic_response_error": 4.7012045107461246e-08,
+      "bare_kinetic_remainder": 6.401801664358265e-09,
+      "known_bare_kinetic_correction": 0.015624999999999983,
+      "source_commutator_norm": 0.26516504294495524,
+      "scope": "Actual Einstein source pair at fixed physical two-level and normal four-level cutoffs; not the full quartic or regulator removal"
+    }
+  ],
+  "circuit_approximation": [
+    {
+      "rounds": 1,
+      "events": 3,
+      "endpoint_unitary_error": 0.0009469081046393037,
+      "response_error": 6.215185994326404e-05,
+      "response_error_bound": 0.015263846124559425,
+      "largest_work_gate_support": 4,
+      "clock_term_support_bound": 7,
+      "scope": "Fixed seven-work-qubit Einstein source-pair circuit; exact history kernel for each supplied circuit"
+    },
+    {
+      "rounds": 2,
+      "events": 6,
+      "endpoint_unitary_error": 0.00023597985489464887,
+      "response_error": 1.55060143463559e-05,
+      "response_error_bound": 0.0038039173769452953,
+      "largest_work_gate_support": 4,
+      "clock_term_support_bound": 7,
+      "scope": "Fixed seven-work-qubit Einstein source-pair circuit; exact history kernel for each supplied circuit"
+    },
+    {
+      "rounds": 4,
+      "events": 12,
+      "endpoint_unitary_error": 5.89484835754859e-05,
+      "response_error": 3.8745174403900795e-06,
+      "response_error_bound": 0.0009502300995882592,
+      "largest_work_gate_support": 4,
+      "clock_term_support_bound": 7,
+      "scope": "Fixed seven-work-qubit Einstein source-pair circuit; exact history kernel for each supplied circuit"
+    },
+    {
+      "rounds": 8,
+      "events": 24,
+      "endpoint_unitary_error": 1.4734219275851464e-05,
+      "response_error": 9.68505393205213e-07,
+      "response_error_bound": 0.00023751075177224655,
+      "largest_work_gate_support": 4,
+      "clock_term_support_bound": 7,
+      "scope": "Fixed seven-work-qubit Einstein source-pair circuit; exact history kernel for each supplied circuit"
+    },
+    {
+      "rounds": 16,
+      "events": 48,
+      "endpoint_unitary_error": 3.683373521737998e-06,
+      "response_error": 2.421186030103495e-07,
+      "response_error_bound": 5.9374765491633e-05,
+      "largest_work_gate_support": 4,
+      "clock_term_support_bound": 7,
+      "scope": "Fixed seven-work-qubit Einstein source-pair circuit; exact history kernel for each supplied circuit"
+    }
+  ],
+  "source_loops": [
+    {
+      "model": "bounded_nonscalar",
+      "coupling": 0.12,
+      "physical_input_dimension": 4,
+      "unrepaired_kernel_dimension": 0,
+      "repaired_kernel_dimension": 4,
+      "loop_mismatch": 0.09011621442039584,
+      "fourth_order_energy_error": 0.03341091037117096,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    },
+    {
+      "model": "bounded_nonscalar",
+      "coupling": 0.06,
+      "physical_input_dimension": 4,
+      "unrepaired_kernel_dimension": 0,
+      "repaired_kernel_dimension": 4,
+      "loop_mismatch": 0.02270835873800641,
+      "fourth_order_energy_error": 0.008482992834055136,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    },
+    {
+      "model": "bounded_nonscalar",
+      "coupling": 0.03,
+      "physical_input_dimension": 4,
+      "unrepaired_kernel_dimension": 0,
+      "repaired_kernel_dimension": 4,
+      "loop_mismatch": 0.0056883440678579394,
+      "fourth_order_energy_error": 0.0021290976770337996,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    },
+    {
+      "model": "Einstein_source_pair",
+      "coupling": 0.12,
+      "physical_input_dimension": 8,
+      "unrepaired_kernel_dimension": 4,
+      "repaired_kernel_dimension": 8,
+      "loop_mismatch": 0.0038171596658966305,
+      "fourth_order_energy_error": 1.3997340014125312e-06,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    },
+    {
+      "model": "Einstein_source_pair",
+      "coupling": 0.06,
+      "physical_input_dimension": 8,
+      "unrepaired_kernel_dimension": 4,
+      "repaired_kernel_dimension": 8,
+      "loop_mismatch": 0.0009545180878027116,
+      "fourth_order_energy_error": 3.501478625616217e-07,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    },
+    {
+      "model": "Einstein_source_pair",
+      "coupling": 0.03,
+      "physical_input_dimension": 8,
+      "unrepaired_kernel_dimension": 4,
+      "repaired_kernel_dimension": 8,
+      "loop_mismatch": 0.00023864378436195692,
+      "fourth_order_energy_error": 8.774849174579908e-08,
+      "scope": "A source-order diamond, not Einstein hypersurface-deformation generators"
+    }
+  ],
+  "source_sha256": {
+    "CLOCK_MEDIATED_CONSTRAINTS.md": "9e0f56105c326d6a48205c90b4ff2deafe238d1ab906cb5cc299e2b0a02626e0",
+    "scripts/clock_mediated_constraints_audit.py": "20fd0db04d610dcc94a37e48b3ffe5ced195ecb96fb40cda99a8701371f7a8a1",
+    "POLYNOMIAL_SPIN_CONSTRAINTS.md": "9fe5f2d72a88cf221e96e6ae4b1e12fddb7d5f66fa61dc1ed47afce811fae566",
+    "data/polynomial_spin_constraints_audit.json": "505e44bb43dc7b797125b27facf62bcbbbdf137b246a55449657cc2d04c9661a",
+    "COVARIANT_CONSTRAINT_TRANSPORT.md": "a0b85d3ec2a97340f210bc43a5beb123eebe075654a33f76485e5f1d34d4dab0",
+    "scripts/covariant_constraint_transport_audit.py": "bd4183bd0dac8ae74ae40bcd6b5354a7d5342aefb31f9556dd7bc4de73157506",
+    "data/covariant_constraint_transport_audit.json": "b23d510cca3aa894158c0e1c8a9799601ae9f02f91aec4a2d4582fb5f5960ea6",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8",
+    "NONLINEAR_CONSTRAINT_DRESSING.md": "2f9984fd2982ff15a8f9475dd71d8fc980ac7eaeaa88a3d8f4774323209f6f24",
+    "EINSTEIN_QUARTIC_CONSTRAINTS.md": "d04320c82bd42e8179b7c145803f361677bcccf04336f1facee3589240d46cea",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937"
+  },
+  "scope": {
+    "proved": "Exact supplied-circuit kernel with bounded interaction order and strength; explicit shrinking gap and low-band error; source-order holonomy",
+    "not_proved": [
+      "Einstein refoliation algebra",
+      "autonomous gate selection",
+      "uniform spatial tensor phase",
+      "physical cutoff removal",
+      "protected masslessness",
+      "physical Newton constant",
+      "TOE"
+    ],
+    "qualification": "Clock mediation encodes supplied dynamics. Boundary compression does not preserve bare observable products."
+  }
+}

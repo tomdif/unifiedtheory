@@ -1,0 +1,84 @@
+import UnifiedTheory.Clay.YangMills.CompactCutoffCover
+import UnifiedTheory.Clay.YangMills.WilsonCutoffCover
+import UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion
+import UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate
+import UnifiedTheory.Clay.YangMills.WilsonBoxCover
+import UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.squareSum
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.normalizer
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.normalizer_ge_one
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.weight
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.weight_range
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.weight_zero
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.sum_square
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.sum_square_le
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.sum_square_one
+#print axioms UnifiedTheory.Clay.YangMills.CompactCutoffCover.weight_eq_of_values
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.cutoff_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.mass_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.sum_mass_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.sum_mass_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.joint_localization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCutoffCover.event_le_sum_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cutoff_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cover
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.bad_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cover_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cover_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.cover_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.weighted_union
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutUnion.weighted_union_rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.linkShift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.plaquetteShift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.translate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.support_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.bulk_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.bulk_translate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.translate_compl
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.boundary_translate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.translate_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.bulk_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.boundary_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.potential_translate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.box
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.box_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.box_bulk_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.box_boundary_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpatialCutTranslate.box_bulk_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.box_rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.family_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.same_scale_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.allBad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.all_boxes_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.volume_price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.all_boxes_volume_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoxCover.union_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.threshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.envelope_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.threshold_ge_surface
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.threshold_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.hardDensity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.threshold_density
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.hardDensity_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.rate_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.allBad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.all_boxes_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.volume_price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.volume_tail
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.threshold_le_cube
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.high_box_nonempty
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.flat_not_bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAdaptiveBoxCover.slow_mode_concentration

@@ -1,0 +1,91 @@
+  Proof by OpenAI of the Existence of Quantum
+               Yang-Mills theory
+               Statement by the shepherding committee
+     Michael R. Douglas, David J. Gross (Chair), Arthur Jaffe,
+              Igor R. Klebanov and Nikita Nekrasov
+                                October 2026
+
+
+    AI agents are beginning to dramatically accelerate progress in mathematics,
+theoretical physics, and many other disciplines. This era of rapid change calls
+for new ideas on how to comprehend and disseminate scientific results. We
+are pleased to contribute to a new experimental approach where a group of
+scientists serves as an interface between AI generated breakthroughs and the
+broader scientific community. We are honored to work on shepherding this
+result to the community.
+    We were delighted to learn of the recent proof by OpenAI of the existence
+of quantum Yang-Mills theory, including coupling to fermions. This constitutes
+an important juncture for the entire subject of Quantum Field Theory (QFT),
+which applies quantum mechanics to systems with an infinite number of degrees
+of freedom and provides a universal language for a variety of observed physical
+phenomena. The new proof by OpenAI appears to be an important step towards
+putting QFT on a rigorous mathematical footing.
+    On Oct. 16, David Gross was asked by OpenAI to assume custody of the
+proof, decide on the best way to release it to the community, and shepherd
+the release process. David Gross then chose the rest of the committee. We
+will work on behalf of the academic community, to shepherd the release of the
+exciting new results discovered by OpenAI’s LLM, while minimizing the risks
+(such as putting out wrong results or carelessly omitting attributions.) We have
+no responsibility to OpenAI.
+    The quantum Yang-Mills (YM) theory with group SU(3) coupled to quarks is
+the part of the Standard Model of Particle Physics called Quantum Chromody-
+namics (QCD), which provides a theoretical explanation of the strong nuclear
+force. A salient feature of YM and QCD is asymptotic freedom: that forces
+weaken at short distances and grow stronger at long distances. This has en-
+abled the many successful testable predictions at high energies over the last 50
+years and is believed to lead to the confinement of quarks within hadrons and
+to a mass gap. Understanding all of these effects together is an outstanding
+challenge for theoretical and mathematical physics.
+
+
+                                       1
+    The OpenAI work builds on methods to tackle these problems developed
+over several decades. These include a lattice regularization of Yang-Mills the-
+ory introduced by Kenneth G. Wilson in 1974, soon after the discovery of QCD.
+This led to the formation of the global Lattice Gauge Theory community, which
+has dedicated monumental efforts to approximate numerical evaluation of prop-
+erties of QCD and connecting them with real world data. More generally, their
+work has provided strong evidence for the existence of the continuum limit of
+the quantum Yang-Mills theory, for confinement and the mass gap, as well as
+accurate calculations of hadronic masses.
+    Another approach to this problem is the renormalization group, which in-
+volves repeated coarse graining of the lattice by integrating out a subset of the
+degrees of freedom. It was long hoped that this method would allow researchers
+to access the continuum limit of the theory where it “forgets” about the lat-
+tice regularization. Importantly, in the infinite volume limit, it must become
+translationally and rotationally invariant.
+    While many researchers have worked on the lattice regularized Yang-Mills
+theory, a rigorous treatment of the renormalization group was developed in con-
+structive quantum field theory papers published by Tadeusz Balaban in the
+1980s. Balaban’s ideas were among the important elements that recently en-
+abled OpenAI to follow the theory all the way to infinite distances and prove
+the existence of its proper continuum limit. But confinement and the mass gap
+remain very important open challenges.
+    The length and complexity of the OpenAI manuscripts are formidable, and
+some time will be needed to digest its methodology and meaning in both physics
+and mathematics. Our working group will lead the efforts towards this goal. In
+due course, we plan to release the proof by OpenAI along with our assessment of
+it. Before we release it, we would like to be convinced that it is correct. OpenAI
+is providing a formalization in the Lean interactive theorem proving language,
+which will help make this feasible. Our first objective will be to check that the
+definitions and problem statement correspond with those which are standard in
+physics and mathematics, and that the formalization aligns with the informal
+treatment. Once this validation is done, we will release the Lean proof.
+    We will then turn to developing a deeper understanding and exploration of
+ways the proof can be used to advance the physics and mathematics of quantum
+field theory. We intend to draw upon the talent and expertise of other members
+of the community to help us with this difficult task. When we are satisfied
+with the quality and correctness of the proofs, we will provide our assessment
+together with the full 1147-page LLM proofs.
+    This is an experiment in how the academic community can deal with the
+rapid development of new knowledge by AI. We intend to proceed very carefully.
+
+   For a very recent review of this topic, we refer you to: Douglas, M.R. The
+Yang–Mills Millennium problem, Nat. Rev. Phys 8, 86–97 (2026).
+   For any and all communication with us please address our email account:
+YANGMILLS4d@gmail.com
+
+
+
+                                        2
+

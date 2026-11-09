@@ -1,0 +1,393 @@
+{
+  "conformal": {
+    "momentum_constraints_identically_zero": true,
+    "scalar_curvature_identity": true,
+    "trace_identity": true,
+    "extrinsic_norm_identity": true,
+    "scope": "A general three-dimensional conformal factor and a z-dependent flat TT seed; identities are exact, not finite-difference constraints."
+  },
+  "exact_initial_data": {
+    "exact_vacuum_scalar_constraint": true,
+    "magnetic_weyl_identity": true,
+    "canonical_constraint_identity": true,
+    "cases": [
+      {
+        "amplitude": 0.001,
+        "wavenumber": 1,
+        "mean_curvature": 0.0017320508075688772,
+        "magnetic_weyl_norm_squared": 2e-06
+      },
+      {
+        "amplitude": 0.001,
+        "wavenumber": 2,
+        "mean_curvature": 0.0017320508075688772,
+        "magnetic_weyl_norm_squared": 8e-06
+      },
+      {
+        "amplitude": 0.001,
+        "wavenumber": 5,
+        "mean_curvature": 0.0017320508075688772,
+        "magnetic_weyl_norm_squared": 4.9999999999999996e-05
+      },
+      {
+        "amplitude": 0.01,
+        "wavenumber": 1,
+        "mean_curvature": 0.017320508075688773,
+        "magnetic_weyl_norm_squared": 0.0002
+      },
+      {
+        "amplitude": 0.01,
+        "wavenumber": 2,
+        "mean_curvature": 0.017320508075688773,
+        "magnetic_weyl_norm_squared": 0.0008
+      },
+      {
+        "amplitude": 0.01,
+        "wavenumber": 5,
+        "mean_curvature": 0.017320508075688773,
+        "magnetic_weyl_norm_squared": 0.005
+      },
+      {
+        "amplitude": 0.1,
+        "wavenumber": 1,
+        "mean_curvature": 0.17320508075688773,
+        "magnetic_weyl_norm_squared": 0.020000000000000004
+      },
+      {
+        "amplitude": 0.1,
+        "wavenumber": 2,
+        "mean_curvature": 0.17320508075688773,
+        "magnetic_weyl_norm_squared": 0.08000000000000002
+      },
+      {
+        "amplitude": 0.1,
+        "wavenumber": 5,
+        "mean_curvature": 0.17320508075688773,
+        "magnetic_weyl_norm_squared": 0.5000000000000001
+      },
+      {
+        "amplitude": 1.0,
+        "wavenumber": 1,
+        "mean_curvature": 1.7320508075688772,
+        "magnetic_weyl_norm_squared": 2.0
+      },
+      {
+        "amplitude": 1.0,
+        "wavenumber": 2,
+        "mean_curvature": 1.7320508075688772,
+        "magnetic_weyl_norm_squared": 8.0
+      },
+      {
+        "amplitude": 1.0,
+        "wavenumber": 5,
+        "mean_curvature": 1.7320508075688772,
+        "magnetic_weyl_norm_squared": 50.0
+      }
+    ],
+    "scope": "Exact non-flat vacuum initial data on the continuum torus. The subsequent Einstein evolution is supplied by the known Cauchy theorem, not simulated or derived from spins."
+  },
+  "perturbative_coefficients": {
+    "mean_source": "417/200",
+    "normalized_c_derivative_at_zero": "-48999643/368640000",
+    "mean_source_times_response": "6999949/368640000",
+    "source_fourier_coefficients": {
+      "1": "1/2",
+      "2": "3/10",
+      "3": "1/2",
+      "4": "-19/80",
+      "6": "-9/400"
+    },
+    "inverse_laplacian_response_verified": true
+  },
+  "one_dimensional": {
+    "grid_cases": [
+      {
+        "shape": [
+          32
+        ],
+        "vertices": 32,
+        "epsilon": 0.2,
+        "c": 2.080467072149842,
+        "tau_squared": 0.12482802432899055,
+        "newton_iterations": 3,
+        "scalar_residual": 2.8622937353617317e-16,
+        "volume_residual": 6.776263578034403e-21,
+        "minimum_psi": 0.9977743672321044,
+        "maximum_psi": 1.002765168924331,
+        "subsolution": 0.9500562215460315,
+        "supersolution": 1.034484762127563,
+        "fixed_c_residual_error_bound": 4.942143588567665e-16
+      },
+      {
+        "shape": [
+          64
+        ],
+        "vertices": 64,
+        "epsilon": 0.2,
+        "c": 2.0804902536720817,
+        "tau_squared": 0.12482941522032492,
+        "newton_iterations": 3,
+        "scalar_residual": 5.689893001203927e-16,
+        "volume_residual": 3.2526065174565133e-19,
+        "minimum_psi": 0.9977850603968434,
+        "maximum_psi": 1.002754485940903,
+        "subsolution": 0.9500553393876932,
+        "supersolution": 1.0344838015745577,
+        "fixed_c_residual_error_bound": 9.824309428513629e-16
+      },
+      {
+        "shape": [
+          128
+        ],
+        "vertices": 128,
+        "epsilon": 0.2,
+        "c": 2.080495983097078,
+        "tau_squared": 0.1248297589858247,
+        "newton_iterations": 3,
+        "scalar_residual": 3.157196726277789e-15,
+        "volume_residual": 1.7618285302889447e-19,
+        "minimum_psi": 0.9977876873828206,
+        "maximum_psi": 1.0027518205928083,
+        "subsolution": 0.9500551213596474,
+        "supersolution": 1.034483564171038,
+        "fixed_c_residual_error_bound": 5.451283638185477e-15
+      },
+      {
+        "shape": [
+          256
+        ],
+        "vertices": 256,
+        "epsilon": 0.2,
+        "c": 2.080497411392662,
+        "tau_squared": 0.12482984468355975,
+        "newton_iterations": 3,
+        "scalar_residual": 1.2496947920936918e-14,
+        "volume_residual": 1.6263032587282567e-19,
+        "minimum_psi": 0.997788341302087,
+        "maximum_psi": 1.0027511546173233,
+        "subsolution": 0.9500550670072623,
+        "supersolution": 1.0344835049885253,
+        "fixed_c_residual_error_bound": 2.1577488657146992e-14
+      }
+    ],
+    "successive_grid_differences": [
+      1.069316473907957e-05,
+      2.6653480945802895e-06,
+      6.659754850034914e-07
+    ],
+    "convergence_ratios": [
+      4.011920529563481,
+      4.002171483183523
+    ],
+    "small_amplitude_cases": [
+      {
+        "shape": [
+          256
+        ],
+        "vertices": 256,
+        "epsilon": 0.2,
+        "c": 2.080497411392662,
+        "tau_squared": 0.12482984468355975,
+        "newton_iterations": 3,
+        "scalar_residual": 1.2496947920936918e-14,
+        "volume_residual": 1.6263032587282567e-19,
+        "minimum_psi": 0.997788341302087,
+        "maximum_psi": 1.0027511546173233,
+        "subsolution": 0.9500550670072623,
+        "supersolution": 1.0344835049885253,
+        "fixed_c_residual_error_bound": 2.1577488657146992e-14,
+        "psi_expansion_error": 0.0003245404593670213,
+        "c_expansion_error": 0.0008147813394040193
+      },
+      {
+        "shape": [
+          256
+        ],
+        "vertices": 256,
+        "epsilon": 0.1,
+        "c": 2.0837281880835774,
+        "tau_squared": 0.03125592282125367,
+        "newton_iterations": 3,
+        "scalar_residual": 4.099151573733195e-15,
+        "volume_residual": 1.1180834903756764e-19,
+        "minimum_psi": 0.9993983158592428,
+        "maximum_psi": 1.0007466641696332,
+        "subsolution": 0.9499322263226265,
+        "supersolution": 1.0343497478344295,
+        "fixed_c_residual_error_bound": 2.8281448414944135e-14,
+        "psi_expansion_error": 2.225959953948485e-05,
+        "c_expansion_error": 5.7530570262941116e-05
+      },
+      {
+        "shape": [
+          256
+        ],
+        "vertices": 256,
+        "epsilon": 0.05,
+        "c": 2.0846713798481735,
+        "tau_squared": 0.007817517674430651,
+        "newton_iterations": 2,
+        "scalar_residual": 1.3314002678121994e-15,
+        "volume_residual": 1.4515187723919843e-14,
+        "minimum_psi": 0.9998461561043949,
+        "maximum_psi": 1.0001908048095152,
+        "subsolution": 0.9498964031663878,
+        "supersolution": 1.0343107411857493,
+        "fixed_c_residual_error_bound": 3.673205930019104e-14,
+        "psi_expansion_error": 1.4261327779522713e-06,
+        "c_expansion_error": 3.715469844933414e-06
+      },
+      {
+        "shape": [
+          256
+        ],
+        "vertices": 256,
+        "epsilon": 0.025,
+        "c": 2.084917150258979,
+        "tau_squared": 0.001954609828367793,
+        "newton_iterations": 2,
+        "scalar_residual": 2.5348646792711094e-16,
+        "volume_residual": 5.807850809438561e-17,
+        "minimum_psi": 0.9999613184650373,
+        "maximum_psi": 1.0000479680388283,
+        "subsolution": 0.9498870714988829,
+        "supersolution": 1.034300580241986,
+        "fixed_c_residual_error_bound": 2.7971597886955575e-14,
+        "psi_expansion_error": 8.969674490047502e-08,
+        "c_expansion_error": 2.3416439682557785e-07
+      }
+    ],
+    "discrete_c_derivative": -0.13293424866855014,
+    "scope": "A local second-order elliptic discretization. The analytical fixed-c residual bound is evaluated in floating point, without interval certification; volume errors are separate. Continuum existence and uniqueness are analytical arguments in the note."
+  },
+  "three_dimensional": {
+    "cases": [
+      {
+        "shape": [
+          6,
+          6,
+          6
+        ],
+        "vertices": 216,
+        "epsilon": 0.1,
+        "c": 2.06484704246717,
+        "tau_squared": 0.030972705637007557,
+        "newton_iterations": 2,
+        "scalar_residual": 3.3200438925851117e-15,
+        "volume_residual": 2.0729708619670337e-14,
+        "minimum_psi": 0.9996422636544731,
+        "maximum_psi": 1.0003163432931204,
+        "subsolution": 0.9755923237247294,
+        "supersolution": 1.0172417425085134,
+        "fixed_c_residual_error_bound": 1.7731333342388662e-14
+      },
+      {
+        "shape": [
+          6,
+          6,
+          6
+        ],
+        "vertices": 216,
+        "epsilon": 0.3,
+        "c": 2.0638641795100368,
+        "tau_squared": 0.278621664233855,
+        "newton_iterations": 3,
+        "scalar_residual": 3.4867941867133823e-16,
+        "volume_residual": 6.424901762877063e-20,
+        "minimum_psi": 0.9971287293865345,
+        "maximum_psi": 1.0024893213144637,
+        "subsolution": 0.9756310320344644,
+        "supersolution": 1.0172821033308435,
+        "fixed_c_residual_error_bound": 2.069756338504068e-16
+      },
+      {
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "vertices": 512,
+        "epsilon": 0.1,
+        "c": 2.0648529717553905,
+        "tau_squared": 0.030972794576330863,
+        "newton_iterations": 2,
+        "scalar_residual": 2.8421275749535013e-15,
+        "volume_residual": 1.7670877578584467e-14,
+        "minimum_psi": 0.9996563031317091,
+        "maximum_psi": 1.0003040083299253,
+        "subsolution": 0.9755920902708319,
+        "supersolution": 1.0172414990881382,
+        "fixed_c_residual_error_bound": 1.5178900216439717e-14
+      },
+      {
+        "shape": [
+          8,
+          8,
+          8
+        ],
+        "vertices": 512,
+        "epsilon": 0.3,
+        "c": 2.063900550856989,
+        "tau_squared": 0.27862657436569355,
+        "newton_iterations": 3,
+        "scalar_residual": 4.2327252813834093e-16,
+        "volume_residual": 4.0657581468206416e-20,
+        "minimum_psi": 0.9972311479066684,
+        "maximum_psi": 1.0024052672298676,
+        "subsolution": 0.9756295992578479,
+        "supersolution": 1.0172806093869626,
+        "fixed_c_residual_error_bound": 2.512510514355788e-16
+      },
+      {
+        "shape": [
+          10,
+          10,
+          10
+        ],
+        "vertices": 1000,
+        "epsilon": 0.1,
+        "c": 2.064855624012758,
+        "tau_squared": 0.030972834360191378,
+        "newton_iterations": 2,
+        "scalar_residual": 2.645886981733625e-15,
+        "volume_residual": 1.6418901828407774e-14,
+        "minimum_psi": 0.9996625771672893,
+        "maximum_psi": 1.0002984912939772,
+        "subsolution": 0.9755919858437233,
+        "supersolution": 1.0172413902028883,
+        "fixed_c_residual_error_bound": 1.4130829468216966e-14
+      },
+      {
+        "shape": [
+          10,
+          10,
+          10
+        ],
+        "vertices": 1000,
+        "epsilon": 0.3,
+        "c": 2.0639169907283317,
+        "tau_squared": 0.2786287937483248,
+        "newton_iterations": 3,
+        "scalar_residual": 4.822531263215524e-16,
+        "volume_residual": 4.85722573273506e-20,
+        "minimum_psi": 0.9972770882046507,
+        "maximum_psi": 1.002367312758957,
+        "subsolution": 0.975628951650906,
+        "supersolution": 1.017279934132763,
+        "fixed_c_residual_error_bound": 2.8625992372701797e-16
+      }
+    ],
+    "scope": "Six nonconstant three-dimensional source tests through 1000 vertices, with independently transverse-traceless seeds. These are constraint solves, not spacetime evolution simulations."
+  },
+  "source_sha256": {
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816",
+    "scripts/nonlinear_tensor_backreaction_audit.py": "05a22c0615451d51ba791821c4b19069ae38579ba3bac64d12f02068937ebe42",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc"
+  },
+  "scope": "Nonlinear vacuum initial data and a necessary global constraint for the supplied Einstein target. The microscopic gravitational dynamics, its state selection, and a TOE remain unproved."
+}

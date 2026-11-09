@@ -1,0 +1,56 @@
+{
+  "scope": "derived sufficient memory for specified finite CNOT dynamics; no TOE closure",
+  "arithmetic": "exact rational complex matrices",
+  "sympy_version": "1.14.0",
+  "source_sha256": {
+    "scripts/quantum_memory_closure_audit.py": "1aa93803f09f3cbab08aaac276f4c2aeca363f374c6e34f88583dfc40d5fb90f",
+    "scripts/quantum_refinement_audit.py": "4d0367308cc8d45d1032d4e9541c5a70e8d65baa8ac07cdc83e4f4d915ca12f4",
+    "UnifiedTheory/Audit/KFCausalQuantumMemoryClosure.lean": "08b35bfcafaaeca0c10779e4673474ce4269bbb312e99652b529c9ea7c01215b",
+    "UnifiedTheory/Audit/KFCausalQuantumRefinement.lean": "8fea4a36565400fc097103221a51acee7609aa6860bd482aaabe99a2f21ce8e4"
+  },
+  "algebra": {
+    "system_algebra_dimension": 4,
+    "one_time_observable_span_dimension": 6,
+    "closure_dimensions": [
+      6,
+      8
+    ],
+    "closed_algebra_dimension": 8,
+    "projection_rank": 8,
+    "center_dimension": 2
+  },
+  "structural_checks": {
+    "full_matrix_basis_inputs": 16,
+    "commuting_branch_operators": 5,
+    "intertwining_checks": 80,
+    "conditional_block_update_checks": 16
+  },
+  "counterexamples": {
+    "same_system_and_record_marginals_next_X": [
+      "1",
+      "0"
+    ],
+    "record_probabilities": [
+      "1/2",
+      "1/2"
+    ],
+    "retained_memory_X_history": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1"
+    ]
+  },
+  "adaptive_histories": {
+    "initial_states": 8,
+    "max_interaction_rounds": 5,
+    "adaptive_instruments": 3,
+    "branch_checks": 496,
+    "nonzero_branches": 350,
+    "normalized_trees": 40,
+    "arithmetic": "unnormalized branch states; no conditioning on zero-probability events"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "model": "U(1) lifted curvature heat on periodic scalar grid; gauge reconstruction on open square",
+  "analytic_result": "Bounded initial data; positive-time smoothing; unique full-sequence continuum limit; explicit O(h) transport estimate.",
+  "formalization": "23 supporting theorems; Fourier smoothing, ODE identification, and continuum convergence/uniqueness are analytically proved, not fully formalized.",
+  "targeted_build": "PASS (no warnings)",
+  "axiom_audit": "PASS",
+  "theorem_count": 23,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "exact_rational_checks": 92,
+  "spectral_modes_checked": 5378,
+  "independent_poisson_fft_comparisons": 6,
+  "numerical_path_checks": 378,
+  "sha256": {
+    "UnifiedTheory/LayerA/AbelianCurvatureHeat.lean": "c45f3e8de5ad4a9432263478e18426175ca9d0ec510c1150b8ca8ff34c7d00c0",
+    "scripts/CheckAbelianCurvatureHeat.lean": "9d5ecdec16245a68d60676950a6e608dbb9cb2cdd0d3eeb4e83c38b596b485ed",
+    "scripts/abelian_curvature_heat_audit.py": "8c462901a430d4759e85647e1b02e92009481e4dcd47932cbdc579f84c726d94",
+    "ABELIAN_CURVATURE_HEAT_LIMIT.md": "558474ba9232f206eccc0b14b0f564d4c27897c4f37a04a27364fc0df024bd33",
+    "data/abelian_curvature_heat_axioms.txt": "ee307b495d0d094d19fa9c0b41cf41d788e590127581f89a756bebb8f0c8ca10",
+    "data/abelian_curvature_heat_audit.json": "dc8ee8ffefd47158f572bd91b70bb374db974a9e64dfc0fab48bab7ca1e75f76",
+    "UnifiedTheory/LayerA/GaugeTransportStability.lean": "39eb9dbde86c996c06f4808aa5f2e77e628429633024f77c2681e77bc864aadc",
+    "GAUGE_DISCRETE_CONTINUUM.md": "1e6f085266d950a91edd41ca38d2131832800d07e663a05198c56f0d4d128d70"
+  }
+}

@@ -1,0 +1,155 @@
+EXACT FAILURE OF WIDTH-FLOOR v^2 COERCIVITY IN THE ORIGINAL FINITE CLASS
+2026-10-21. Analytic successor, NOT Lean verified.
+No repository source, frozen evidence, or previous research note changed.
+
+1. Scope
+
+This note rules out a specific stronger intermediate estimate:
+  -partial_a E >= c*alpha*a*integral v^2 W(x+Lv)|Phi|^2
+with c>0 independent of the original finite charged-width family.
+All neutral jets and the full quartic W are retained. The charged-width
+floor w_i>=1 does NOT imply this estimate. This is not a counterexample to
+the actual clock response, whose geometric/dilation cancellations are kept
+separate below. In particular no failure of the target uniform response
+bound is inferred from failure of this stronger sufficient condition.
+
+2. Original geometry and an exact confluent limit
+
+Fix b=0, a>0, alpha,beta>0, w0>=1, L real. Put p=alpha*a^2/2 and
+  z=p*(u^2+v^2+Y), Y>0,
+  Phi_N(z,x)=z^N exp(-w0*z)*exp(-beta*x^2), N>=0.
+This is the Nth charged-width confluence of original finite packets. The
+neutral source is zero and its polynomial is 1. It preserves the original
+neutral width beta and can satisfy alpha>=32beta. All labels of each
+finite approximant are held fixed under the a derivative.
+
+Let W(s)=1+s^2/2+s^4/4. Integrating only x gives
+  integral W(x+Lv)exp(-2beta*x^2) dx = c0+c2*v^2+c4*v^4,
+where, writing M_j=integral x^j exp(-2beta*x^2) dx,
+  c0=M0+M2/2+M4/4 > 0,
+  c2=L^2*(M0/2+3M2/2) >= 0,
+  c4=L^4*M0/4 >= 0.
+Thus this reduction is exactly the FULL original quartic norm, not a
+replacement by its highest channel. The coefficients are independent of a
+when the partial derivative holds b,L fixed.
+
+3. Exact charged moments, including all cross terms
+
+Define
+  I_m(a)=integral_(u,v real,Y>0)
+         v^(2m) z^(2N) exp(-2w0*z) du dv dY.
+Put C_m=(2m choose m)/4^m. Polar coordinates in (u,v), followed by
+X=u^2+v^2 and T=X+Y, give
+
+  I_m=pi*C_m/(m+1) * p^(-m-2)
+        *Gamma(2N+m+2)/(2w0)^(2N+m+2).
+
+The angular average of v^(2m) is C_m*X^m, and
+integral_0^T X^m dX=T^(m+1)/(m+1), which fixes all constants.
+The exact moment ratio is
+
+  I_(m+1)/I_m
+    =(2m+1)*(2N+m+2)/[4*(m+2)*w0*p].
+
+For m=0,1,2 it is at least (N+1)/(4*w0*p).
+The full energy and v^2-weighted energy are
+  E_N=c0*I0+c2*I1+c4*I2,
+  V_N=c0*I1+c2*I2+c4*I3.
+Consequently
+  V_N/E_N >= (N+1)/(4*w0*p).
+Since p_a/p=2/a and the coefficients are held fixed,
+  -partial_a I_m=(2m+4)*I_m/a,
+  4/a <= (-partial_a E_N)/E_N <= 8/a.
+Therefore
+
+  (-partial_a E_N)/(alpha*a*V_N)
+      <= 16*w0/(N+1) -> 0.
+
+The common model normalization and the physical Fourier normalization, if
+included, cancel in this quotient. No independent angular or neutral jets
+were chosen in this calculation.
+
+4. Transfer to ACTUAL finite real-width families
+
+For fixed N, tau>0, define
+
+  F_(N,tau)(z)=exp(-w0*z)*[(1-exp(-tau*z))/tau]^N
+       =sum_(j=0)^N d_j exp(-(w0+j*tau)*z),
+  d_j=(-1)^j*(N choose j)/tau^N.
+
+Every width w_j=w0+j*tau is real and >=1, and the original model amplitudes
+are c_j=d_j/w_j because its charged coefficient is c_j*w_j. Every packet
+has the same zero neutral source and P=1. The cross terms stay inside the
+squared sum; they are not discarded or replaced by a diagonal sum.
+
+As tau decreases to zero, F_(N,tau)->z^N exp(-w0*z). For real z>=0,
+  |(1-exp(-tau*z))/tau| <= z,
+  |d/dz [(1-exp(-tau*z))/tau]| <= 1.
+Hence the functions and their first charged derivatives are bounded by a
+fixed polynomial in z times exp(-w0*z), for each fixed N. The extra factors
+v^2 W(x+Lv) and z_a=2z/a are polynomial. Gaussian/gamma integration therefore
+proves convergence of E, V, and -partial_a E by dominated convergence.
+These are also instances of the already frozen original-family confluence
+route, but the elementary domination here is sufficient for this example.
+
+Given any proposed c>0, first choose fixed N so that 16*w0/(N+1)<c.
+Then choose tau>0 small enough that the strict inequality survives all
+three convergences. This supplies an actual finite real-width family
+violating the proposed v^2 cooling estimate. No uniform-in-N confluence
+interchange is needed. All finite labels are frozen during differentiation.
+
+This transfer concerns the stronger cooling comparison, not a divergent
+actual clock response. It does not use the nonadmissible complex exponent
+from the earlier independent radial-block diagnostic.
+
+5. Fixed-v version and the precise flaw in common-width extraction
+
+For any fixed holomorphic charged function F at b=0, put q=p*v^2. The exact
+u,Y marginal is
+  I_v(a)=2*p^(-3/2)*integral_q^infinity (z-q)^(1/2)|F(z)|^2 dz.
+Thus, whenever the displayed finite integrals and differentiation apply,
+
+  -partial_a I_v/I_v
+    =3/a+(q/a)*[integral_q^infinity (z-q)^(-1/2)|F(z)|^2 dz]
+                 /[integral_q^infinity (z-q)^(1/2)|F(z)|^2 dz].
+
+For the fixed-label choice F(z)=(z-q0)^N exp(-w0*z), evaluated at q=q0,
+this ratio is exactly 3/a+4*w0*q0/[a*(4N+1)]. At q0=N/w0 it is less than
+4/a although v^2=N/(w0*p). This is another direct obstruction to a uniform
+fixed-v v^2 lower bound. The full-quartic argument above already provides
+the simpler transfer from actual confluence, so no additional transfer is
+needed for this fixed-v diagnostic.
+
+Factoring exp(-p*v^2) out of a charged-width sum does produce a scalar
+negative derivative proportional to v^2. The remaining atoms, however,
+have widths shifted only in the v^2 coefficient, while their u,Y widths
+are unchanged. Their derivative need not satisfy the former contraction.
+The exact example proves that assuming this preservation would be false.
+Factoring the whole common charged exponential instead alters the u,Y
+measure by parameter-dependent weights; the unweighted contraction does
+not automatically transport to that weighted measure either.
+
+6. Why this is not a physical response counterexample
+
+The actual zero-imaginary clock geometry has a=1,b=0,r=1 and rdot=0.
+The original physical response is therefore exactly zero for every fixed
+finite family. In the corrected split one has delta=t, ell=-t, kappa=t,
+L=1. The exact real charged scaling identity at eta=0 is
+
+  a*partial_a E+L*partial_L E=-4E.
+
+It holds for every fixed original profile, including each approximant.
+Hence at a=L=1,
+  -4ell E+delta*partial_a E+kappa*partial_L E=0.
+No positive response is generated by the examples above. For each fixed
+finite approximant, the failed strict cooling comparison also persists in
+a sufficiently small b neighborhood by the original Gaussian domination,
+but that continuity statement still does not break the combined response
+identity or prove that its quotient diverges.
+
+7. Status
+
+Exact full-quartic moments and original finite-family transfer established
+analytically. The width-floor v^2 coercivity route is invalid. The unrestricted
+whole-response estimate remains open, and no admissible violating response
+sequence has been found. No Lean source/probe/compiler was created here.

@@ -1,0 +1,237 @@
+{
+  "scope": "Independent consistency checks of stored floating-point matrices; no certified sign or uniform bound.",
+  "probe_report_sha256": "3ad9f9fb7b4eab2b099c127c357fe0ee10e100a99ae60efbb7991915aec514ad",
+  "verifier_sha256": "d8cd49246f9706a06371968628b85a2d00144a11e6d20507b196de51488b799a",
+  "checks": [
+    {
+      "case": "transverse_superposition",
+      "dimension": 3,
+      "quadrature": {
+        "nt": 24,
+        "nd": 96,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "minimum": 0.16965864932523683,
+      "real_coefficient_minimum": 0.1799737957752918,
+      "energy_scaled_matrix_changes": {
+        "energy": 0.0,
+        "ordered": 0.0,
+        "remainder": 0.0,
+        "norm": 0.0,
+        "ordered_direct": 0.0,
+        "remainder_direct": 0.0,
+        "response": 0.0
+      }
+    },
+    {
+      "case": "transverse_superposition",
+      "dimension": 3,
+      "quadrature": {
+        "nt": 40,
+        "nd": 160,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 33,
+        "order": 14
+      },
+      "minimum": 0.16965864932523672,
+      "real_coefficient_minimum": 0.17997379577529163,
+      "energy_scaled_matrix_changes": {
+        "energy": 8.909703705917441e-15,
+        "ordered": 2.0453945797648104e-15,
+        "remainder": 7.920677676195093e-17,
+        "norm": 8.396296948432927e-16,
+        "ordered_direct": 1.2668198970273066e-14,
+        "remainder_direct": 1.7581706799258008e-16,
+        "response": 2.076239400122751e-15
+      }
+    },
+    {
+      "case": "clock_frequency_superposition",
+      "dimension": 5,
+      "quadrature": {
+        "nt": 24,
+        "nd": 96,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "minimum": 0.12477148529198555,
+      "real_coefficient_minimum": 0.15957914358954645,
+      "energy_scaled_matrix_changes": {
+        "energy": 0.0,
+        "ordered": 0.0,
+        "remainder": 0.0,
+        "norm": 0.0,
+        "ordered_direct": 0.0,
+        "remainder_direct": 0.0,
+        "response": 0.0
+      }
+    },
+    {
+      "case": "clock_frequency_superposition",
+      "dimension": 5,
+      "quadrature": {
+        "nt": 40,
+        "nd": 160,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 33,
+        "order": 14
+      },
+      "minimum": 0.12477148529199779,
+      "real_coefficient_minimum": 0.15957914358954692,
+      "energy_scaled_matrix_changes": {
+        "energy": 1.0164869169302591e-13,
+        "ordered": 3.187562015380662e-14,
+        "remainder": 1.816455634875907e-15,
+        "norm": 6.549599281378844e-15,
+        "ordered_direct": 2.053880237634834e-12,
+        "remainder_direct": 1.1097154929956252e-13,
+        "response": 3.1001252155829295e-14
+      }
+    },
+    {
+      "case": "mixed_width_frequency_superposition",
+      "dimension": 3,
+      "quadrature": {
+        "nt": 24,
+        "nd": 96,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "minimum": 0.16170874763955634,
+      "real_coefficient_minimum": 0.16767425557694488,
+      "energy_scaled_matrix_changes": {
+        "energy": 0.0,
+        "ordered": 0.0,
+        "remainder": 0.0,
+        "norm": 0.0,
+        "ordered_direct": 0.0,
+        "remainder_direct": 0.0,
+        "response": 0.0
+      }
+    },
+    {
+      "case": "mixed_width_frequency_superposition",
+      "dimension": 3,
+      "quadrature": {
+        "nt": 40,
+        "nd": 160,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 33,
+        "order": 14
+      },
+      "minimum": 0.16170874763955642,
+      "real_coefficient_minimum": 0.1676742555769449,
+      "energy_scaled_matrix_changes": {
+        "energy": 7.681681318252124e-15,
+        "ordered": 1.863924197534716e-15,
+        "remainder": 6.066699967580373e-17,
+        "norm": 4.026413141301921e-16,
+        "ordered_direct": 9.156051463237367e-14,
+        "remainder_direct": 3.629805291014581e-15,
+        "response": 1.8376300384131643e-15
+      }
+    },
+    {
+      "case": "negative_clock_span_33",
+      "dimension": 33,
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 56,
+        "order": 24
+      },
+      "minimum": -0.039586575364354906,
+      "real_coefficient_minimum": -0.03029781553019983,
+      "energy_scaled_matrix_changes": {
+        "energy": 0.0,
+        "ordered": 0.0,
+        "remainder": 0.0,
+        "norm": 0.0,
+        "ordered_direct": 0.0,
+        "remainder_direct": 0.0,
+        "response": 0.0
+      }
+    },
+    {
+      "case": "negative_clock_span_33",
+      "dimension": 33,
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 66,
+        "order": 28
+      },
+      "minimum": -0.039586575364352734,
+      "real_coefficient_minimum": -0.030297815530203342,
+      "energy_scaled_matrix_changes": {
+        "energy": 1.0401177036521246e-13,
+        "ordered": 2.4550303554069703e-14,
+        "remainder": 2.6523066528625164e-16,
+        "norm": 1.3420105931976245e-16,
+        "ordered_direct": 3.660515134670357e-12,
+        "remainder_direct": 1.3298336136415275e-14,
+        "response": 2.449957224943167e-14
+      }
+    },
+    {
+      "case": "negative_transverse_clock_span_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 64,
+        "nd": 512,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 56,
+        "order": 24
+      },
+      "minimum": -0.04157499131127913,
+      "real_coefficient_minimum": -0.03521971677195985,
+      "energy_scaled_matrix_changes": {
+        "energy": 0.0,
+        "ordered": 0.0,
+        "remainder": 0.0,
+        "norm": 0.0,
+        "ordered_direct": 0.0,
+        "remainder_direct": 0.0,
+        "response": 0.0
+      }
+    },
+    {
+      "case": "negative_transverse_clock_span_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 96,
+        "nd": 768,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 66,
+        "order": 28
+      },
+      "minimum": -0.0415749913112765,
+      "real_coefficient_minimum": -0.03521971677196011,
+      "energy_scaled_matrix_changes": {
+        "energy": 2.9872587004677015e-14,
+        "ordered": 7.115131624201812e-15,
+        "remainder": 5.2744051197136815e-17,
+        "norm": 2.2675899054148343e-17,
+        "ordered_direct": 8.401731454025993e-14,
+        "remainder_direct": 5.85462200290739e-17,
+        "response": 7.154287774845085e-15
+      }
+    }
+  ]
+}

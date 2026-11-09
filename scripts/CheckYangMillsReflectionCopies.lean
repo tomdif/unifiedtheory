@@ -1,0 +1,90 @@
+import UnifiedTheory.Clay.YangMills.PositiveKernelSchwarz
+import UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles
+import UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies
+import UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz
+import UnifiedTheory.Clay.YangMills.KernelEndpointNorm
+import UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz
+import UnifiedTheory.Clay.YangMills.WilsonDeletionReflection
+
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelSchwarz.mixed
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelSchwarz.mixed_eq_inner
+#print axioms UnifiedTheory.Clay.YangMills.PositiveKernelSchwarz.schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.positivePart
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.negativePart
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.reflected
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.doubled
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.parts_add
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.action_add
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.action_sub
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.defect_reflected
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.action_reflected
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.action_doubled
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.positive_action
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.negative_action
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.action_split
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.positive_doubled_action
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.negative_doubled_action
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.doubled_invariant
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutProfiles.weight_perturb
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.crossingPart
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.interiorPart
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copyPositive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copyNegative
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.crossing_reflected
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.crossing_invariant
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.crossing_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.parts_add
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.interior_crossing
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.vertex_reflected_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.interior_reflected_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copyPositive_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copyNegative_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copies_range
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copies_invariant
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.perturbation_original
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.perturbation_copies
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.sum_reflected
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.sum_doubled
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copies_sum
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonHalfCopies.copies_deficit
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.halfHistoryBorel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.pairing
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.pairing_complex
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.reflection_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.halfSource
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.halfSource_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.density_perturb
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_factor
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_split
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_positive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_negative
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonCutSchwarz.partition_copies
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.message_embedding
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.message_norm
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.endpoint_inner
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.endpoint_upper_norm
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.endpoint_lower_rate
+#print axioms UnifiedTheory.Clay.YangMills.KernelEndpointNorm.norm_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.endpoint_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.endpoint_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.norm_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.pricedNorm
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.pricedNorm_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.priced_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonNormSchwarz.priced_choice
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.positiveIndex
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.negativeIndex
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.positiveSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.negativeSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.copyPositive_index
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.copyNegative_index
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.positiveSet_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.negativeSet_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.copyPositive_omitted
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.copyNegative_omitted
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.deficit_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.copies_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.deletion_norm_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDeletionReflection.deletion_priced_choice

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "scope": "Actual stationary mean-square one-link sensitivity of the SU(2) Wilson normalized physical transfer, uniform in spatial volume: for a unit quaternion q, actual input rotation R_q at a specified link, and continuous gauge-invariant lo<=f<=hi, the ground-law mean of |P f(u)-P f(R_q u)|^2 is at most 66*beta*(hi-lo)^2*norm(q-1)^2. The actual localized normalized tilt covariance obeys the same mean-square bound. The proof derives the averaged row relative-entropy bound 66*beta*norm(q-1)^2. The constructed ground correction is exactly minus one half of the entropy between its normalized square density and its Haar-translated square density, hence nonpositive. Paired q and q-inverse changes have quadratic Wilson input-action cost at most 66*beta*norm(q-1)^2, without a large-period assumption; repeated plaquette link occurrences are allowed. Positive continuous-density entropy controls squared bounded-observable response through Hellinger distance and L2 Cauchy-Schwarz. The result improves the beta-squared dependence inherited by averaging the squared prior range bound to linear beta. It is an averaged sensitivity estimate, not pointwise contraction, spatial mixing, a lower spectral-energy estimate or a physical mass gap. All twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactDensityEntropy",
+    "UnifiedTheory.Clay.YangMills.QuaternionSymmetricChange",
+    "UnifiedTheory.Clay.YangMills.WilsonSymmetricLinkChange",
+    "UnifiedTheory.Clay.YangMills.WilsonStationaryEntropy",
+    "UnifiedTheory.Clay.YangMills.WilsonAveragedResponse"
+  ],
+  "new_declarations": 54,
+  "retained_declarations": 7215,
+  "cumulative_declarations": 7269,
+  "proof": {
+    "rotation": "R_q(u) changes only the specified link e to q*u_e. It preserves spatial product Haar, not generally the stationary ground law.",
+    "physical_law": "pi(du)=g(u)^2 Haar(du), with g the existing constructed strictly positive unit ground amplitude. nu_u is the existing actual temporal-gauge row law.",
+    "ground_identity": "Integral g(u)^2*log(g(R_q u)/g(u)) du = -D(g^2 || (g composed with R_q)^2)/2 <= 0. Both densities are normalized by Haar invariance.",
+    "entropy_formula": "D(nu_u || nu_w)=E_nu_u[inputAction(w,v)-inputAction(u,v)] + log(g(w)/g(u)).",
+    "action": "inputAction(u,v)=(beta/2)*potential(u)+beta*kineticAction(u,v). The unchanged output action cancels.",
+    "symmetric_action": "inputAction(R_q u,v)+inputAction(R_q_inverse u,v)-2*inputAction(u,v) <=66*beta*norm(q-1)^2. Four affected spatial plaquettes have total second difference <=128*norm(q-1)^2; the kinetic term contributes <=2*norm(q-1)^2.",
+    "entropy_bound": "E_pi[D(nu_u || nu_R_q_u)+D(nu_u || nu_R_q_inverse_u)] <=66*beta*norm(q-1)^2. Each entropy is nonnegative.",
+    "response": "For continuous lo<=f<=hi, squared row expectation difference <=(hi-lo)^2*D(nu_u || nu_w), proved using Hellinger distance and L2 Cauchy-Schwarz.",
+    "physical_response": "For gauge-invariant f, E_pi[|P f(u)-P f(R_q u)|^2] <=66*beta*(hi-lo)^2*norm(q-1)^2 for the original full normalized transfer P.",
+    "covariance": "The actual one-link tilt covariance divided by its actual positive tilt mean has the same stationary mean-square bound."
+  },
+  "assumptions": [
+    "Finite periodic spatial SU(2) lattice with n>0, including periods with repeated plaquette link occurrences.",
+    "beta>=0; arbitrary unit quaternion q and a specified actual spatial link.",
+    "Continuous real bounded observables; gauge invariance required only for identifying the raw row response with the full physical transfer."
+  ],
+  "comparison": "Squaring and averaging the prior pointwise orbit bound gives beta^2*(hi-lo)^2*norm(q-1)^2. This new ground-law average bound has 66*beta instead. It does not replace the prior pointwise bound, and improves that averaged consequence when beta>66.",
+  "not_inferred": [
+    "Obtain collective physical-scale variance/factorization and iterated-response estimates under the same actual ground law; a bounded-observable range estimate alone does not give contraction relative to actual source variance.",
+    "Prove a common q0<1 for original normalized transfer powers over a fixed physical slab, uniformly in cutoff and spatial volume along an independently justified physical beta(a)->infinity trajectory.",
+    "Control correlated large-field clusters, boundary terms, generated interactions and renormalized source responses through the required physical scale.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible all-order renormalized bounds on the same trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_stationary_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

@@ -40,6 +40,14 @@
 
   This closes the gap: the quartic is derived, not assumed.
 
+  SCOPE CAVEAT (added 2026-09-16). γ is a gap in LATTICE units: any
+  finite transfer matrix with a separated top eigenvalue has one, so its
+  existence carries no physical content by itself. What is proved is the
+  algebra m = γv ∧ m² = 2λv² ⟹ λ = γ²/2. The identification of the
+  lattice scale with v (INPUT 1) is an assumption, not a theorem; the
+  Yang–Mills-style question — does γ/a survive as a → 0 — is not
+  addressed here.
+
   Zero sorry. Zero custom axioms.
 -/
 

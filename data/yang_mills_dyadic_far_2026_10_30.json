@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: actual optimal center-odd row contrast, harmonic-overlap contraction and a flat center-fixed orbit; 9777 cumulative audited declarations",
+  "current_goal_turn_classification": "partial progress: verified geometric summation and a sharper sufficient decay target; the requested distant mixed-ground bound and contraction lower bound remain unproved",
+  "scope": "The actual three-dimensional periodic spatial geometry is now counted explicitly: balls have at most 3*(2*r+1)^3 links, and dyadic annuli have at most 375*8^k links, without a no-wrapping assumption. A finite torus is covered at a proved finite dyadic stage. A scalar field bounded by M locally and C*16^(-k) beyond radius 2^k has total sum at most 81*M+750*C, independently of the period. An actual two-source covariance bound over the full unit source rectangle passes to the exact finite-boundary mixed logarithm. The estimate abs(exp(x)-1)<=exp(M)*abs(x) for abs(x)<=M preserves the decay when returning to the nonlinear four-message ratio. For beta*norm(q-1)<=1 the existing action bound proves the all-distance mixed-log cap four. Consequently, if the actual tilted finite-boundary covariance satisfies C*16^(-k) for every distant pair beyond radius 2^k, the full finite-boundary distant sum is <=exp(4)*(324+750*C). Uniformity in finite boundary depth transfers that bound to the constructed ground with no uniform boundary-convergence rate assumption. Uniformity also in input fields and root links gives the actual collective-energy upper bound [16*(exp(4)-1)^2+exp(4)*(324+750*C)]*loss(f), for the same scaled rotations and original transfer. The decay premise refers to the original source-tilted Wilson message, including its propagated endpoint and normalization; it is not a bad-bridge event or an auxiliary propagator. This turn proves the geometric and analytic implication, not the covariance decay premise. No Balaban propagator has been identified with this actual covariance, no independent coercivity lower bound is supplied, and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.SpatialDyadicSummation",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryDecayBudget",
+    "UnifiedTheory.Clay.YangMills.WilsonDyadicFarClosure"
+  ],
+  "new_declarations": 31,
+  "retained_declarations": 9777,
+  "cumulative_declarations": 9808,
+  "proved_unconditionally": [
+    "Periodic spatial ball cardinality <=3*(2*r+1)^3 and dyadic annulus cardinality <=375*8^k, including periodic collisions.",
+    "The source rectangle integrates actual normalized connected covariance to the finite-boundary mixed logarithm.",
+    "The nonlinear ratio is bounded by exp(M) times the absolute mixed logarithm whenever its absolute value is <=M.",
+    "The actual local mixed-log cap is four for beta*norm(q-1)<=1 and distinct links."
+  ],
+  "proved_conditionally": [
+    "Local scalar cap M and dyadic tail C*16^(-k) imply total sum <=81*M+750*C, uniformly in the spatial period.",
+    "The displayed actual connected-covariance decay implies complete boundaryFar<=exp(4)*(324+750*C).",
+    "The same bound uniformly in finite boundary depth implies the complete actual ground farCost bound.",
+    "Uniformity in inputs and roots yields original-transfer collective-energy <=[16*(exp(4)-1)^2+exp(4)*(324+750*C)]*loss(f)."
+  ],
+  "source_followup": {
+    "title": "Propagators for lattice gauge theories in a background field",
+    "author": "T. Balaban",
+    "year": 1985,
+    "url": "https://doi.org/10.1007/BF01240355",
+    "primary_publisher_page": "https://link.springer.com/article/10.1007/BF01240355",
+    "coverage": "Publisher abstract and metadata checked in this turn. The abstract states regularity and decay for background-dependent RG propagators. Full-text theorem hypotheses were not newly verified; no numerical bound or source identification is taken from the abstract.",
+    "prior_detailed_review": "data/yang_mills_balaban_deep_dive_2026_10_29.json",
+    "not_used_as_proof": "No external theorem is assumed in any new Lean declaration. The exact Wilson connected-covariance decay is still an explicit premise."
+  },
+  "next_attack": [
+    "Construct a controlled multiscale representation of the exact two-source tilted boundary covariance, including the retained coarse contribution and endpoint message.",
+    "Test whether the complete response can satisfy the displayed fourth-power tail uniformly in input fields. If exceptional backgrounds prevent that, derive a source-weighted replacement before discarding them.",
+    "Combine any valid retained-propagation estimate with the already proved bad-bridge response tails, while treating their complement explicitly.",
+    "Prove an independent center-even/global coercivity inequality for the same response form and obtain the required physical-time scaling.",
+    "Continue the separate actual harmonic-overlap lower-bound and nonzero continuum-survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. No continuum Yang-Mills construction or uniform physical mass gap is proved.",
+    "The fourth-power dyadic decay of the actual tilted boundary covariance is an explicit hypothesis. It has not been established, even though the geometric sum and its connection to the ground are now proved.",
+    "A useful uniform conclusion requires the same finite C across boundary depths, inputs, root links and the relevant regulator trajectory. No such C is constructed.",
+    "The covariance premise covers all distant pairs and the whole unit source rectangle under the exact propagated finite-boundary law. Existing bad-bridge probabilities and source-restricted tails do not establish it on the complementary configurations.",
+    "The selected rotation family obeys beta*norm(q-1)<=1. No full-Haar response estimate or coercivity for this potentially degenerate family follows from that restriction.",
+    "Polynomial summability provides an upper response estimate. Independent global coercivity, including center-even and holonomy modes, remains open.",
+    "The finite-boundary limit is taken at each fixed cutoff. No uniform convergence rate or exchange with the continuum limit has been proved.",
+    "Balaban background-propagator regularity and decay are not imported as axioms or equated with the actual sourced boundary covariance. The source dictionary, retained coarse modes and large-field complement still need analysis.",
+    "Physical coupling/time scaling, a quantitative actual-overlap margin, normalized reflected-state compactness, and nonzero renormalized continuum survival remain independent obligations."
+  ],
+  "verification_report": "data/yang_mills_dyadic_far_audit.json",
+  "root_build_checked": false
+}

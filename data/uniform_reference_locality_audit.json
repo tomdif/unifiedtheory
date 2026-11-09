@@ -1,0 +1,89 @@
+{
+  "marked_homotopy": [
+    {
+      "length": 3,
+      "basis_vectors": 2430,
+      "marked_output_checks": 279936,
+      "arithmetic": "exact int64",
+      "all_marked_sites": true
+    },
+    {
+      "length": 4,
+      "basis_vectors": 7680,
+      "marked_output_checks": 4194304,
+      "arithmetic": "exact int64",
+      "all_marked_sites": true
+    }
+  ],
+  "mean_and_action": {
+    "mean_hessian_all_four_terms_exact": true,
+    "dropping_mean_derivatives_fails_exactly": true,
+    "wilson_plaquette_cost": 0.007537863180583318,
+    "couplings": [
+      1,
+      2
+    ],
+    "boltzmann_weights": [
+      0.99249047526161,
+      0.9850373434850167
+    ],
+    "action_gauge_error": 9.003891918962506e-16,
+    "conclusion": "The measure conditions leave the gauge-action coupling undetermined"
+  },
+  "reference": {
+    "original_phase": 2.80227725091125e-07,
+    "reference_changes": {
+      "gradient": {
+        "phase": -2.961456291703387e-07,
+        "flux": 5.763733537956629e-07,
+        "comparison": -4.658007289309993e-16,
+        "minimum_kernel_gap": 1.0353389517847689,
+        "flatness_error": 3.434577253370758e-17,
+        "endpoint_error": 8.326672684688674e-17,
+        "ward_error": 1.2084345281554847e-14,
+        "weighted_primitive_change": 1.81109447510675e-14,
+        "phase_ward_error": 1.0729605629677822e-15,
+        "flux_ward_error": 6.071598869763421e-16
+      },
+      "uniform": {
+        "phase": 4.2590148605573446e-07,
+        "flux": 7.573025724681959e-09,
+        "comparison": 1.5324678668929144e-07,
+        "minimum_kernel_gap": 1.0353393814040883,
+        "flatness_error": 0.0,
+        "endpoint_error": 0.0,
+        "ward_error": 2.903809471055553e-14
+      },
+      "seam": {
+        "phase": 3.3883931188872097e-07,
+        "flux": 9.463520051686048e-08,
+        "comparison": 1.5324678731445645e-07,
+        "minimum_kernel_gap": 1.0353393814040868,
+        "flatness_error": 0.0,
+        "endpoint_error": 0.0,
+        "ward_error": 1.6712262797440195e-14
+      }
+    },
+    "uniform_to_seam_error": 6.251650016383308e-16,
+    "previous_comparison_error": 2.0443807220428501e-16,
+    "maximum_seam_amplitude": 0.008000000000000007,
+    "scope": "Independent finite operator checks; no numerical all-volume inference"
+  },
+  "source_sha256": {
+    "scripts/uniform_reference_locality_audit.py": "96a5bdbd839e6eea25b0ddbc8feae8ede39567aedce1277664e6fe174c492294",
+    "scripts/reference_phase_descent_audit.py": "a9431019a5a96384e1186ac1fc29bbfcc36a6aa71fd07cd27c9c755a8809a4c3",
+    "scripts/toron_locality_audit.py": "10232b7239b00556c4b280656a9f23dc920761d4a98c780f8b874ff2af7e2f6a",
+    "scripts/second_cohomology_audit.py": "a10cbb381e97a9b3818661f10a08d1bfb4f16f5cef51d7d169c47e6ba23659aa",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/compact_measure_holonomy_audit.py": "1f6da67cfca1614ba5b8579b5fb400b0d570683dc3eca1768606ec19e6e0d486",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "UnifiedTheory/Audit/KFCausalUniformReferenceLocality.lean": "f6bd12ef5aec0e8d0342e215009d177fdeb1727d4447aaa27e8854c0a652fc17",
+    "UNIFORM_REFERENCE_LOCALITY.md": "89f6222226dc879198972ea233bb693917b1b63dd87f24dc68b49ce759c9bb49",
+    "data/reference_phase_descent_audit.json": "ee480672c1fbd242885f6d184ad4a9ce5607805006f4050de1ba625832e27726"
+  },
+  "scope": "Finite diagnostics and exact controls; locality proof is analytic; TOE not proved"
+}

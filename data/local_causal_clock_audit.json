@@ -1,0 +1,206 @@
+{
+  "two_work_qubit_clock": {
+    "events": 5,
+    "work_qubits": 2,
+    "joint_dimension": 128,
+    "ideal_count": 8,
+    "legal_dimension": 32,
+    "legal_kernel_dimension": 4,
+    "maximum_immediate_predecessors": 2,
+    "maximum_immediate_successors": 2,
+    "legal_illegal_coupling": 0.0,
+    "violation_commutator": 0.0,
+    "weighted_laplacian_equivalence_error": 3.402102813260764e-16,
+    "minimum_illegal_energy": 1.2999999999999978,
+    "missing_successor_guard_leakage": 2.8867513459481287,
+    "readouts": {
+      "compatible_local_readouts": 16,
+      "maximum_reduced_state_error": 2.4124499369903617e-16,
+      "maximum_distinct_clock_bits_read": 3,
+      "minimum_readout_probability": 0.125,
+      "missing_next_bit_reduced_state_mismatch": 0.32066920540706545,
+      "initial_state": "Seeded generally entangled pure work state; analytic theorem covers arbitrary density matrices."
+    }
+  },
+  "coupled_geometry_matter_clock": {
+    "events": 8,
+    "work_qubits": 5,
+    "joint_dimension": 8192,
+    "ideal_count": 13,
+    "legal_dimension": 416,
+    "legal_kernel_dimension": 32,
+    "maximum_immediate_predecessors": 3,
+    "maximum_immediate_successors": 3,
+    "legal_illegal_coupling": 0.0,
+    "violation_commutator": 0.0,
+    "weighted_laplacian_equivalence_error": 2.2570665575909174e-15,
+    "minimum_illegal_energy": null,
+    "missing_successor_guard_leakage": 11.04898185354648,
+    "readouts": {
+      "compatible_local_readouts": 288,
+      "maximum_reduced_state_error": 2.2292977815514065e-16,
+      "maximum_distinct_clock_bits_read": 6,
+      "minimum_readout_probability": 0.07692307692307693,
+      "missing_next_bit_reduced_state_mismatch": 0.003534552551240042,
+      "initial_state": "Seeded generally entangled pure work state; analytic theorem covers arbitrary density matrices."
+    }
+  },
+  "uniform_strength_loads": [
+    {
+      "rounds": 1,
+      "clock_bits": 8,
+      "maximum_weighted_work_load": 1.5666666666666667,
+      "maximum_clock_load": 10.633333333333335,
+      "maximum_unweighted_work_load": 10,
+      "minimum_weight": 0.03333333333333333
+    },
+    {
+      "rounds": 4,
+      "clock_bits": 32,
+      "maximum_weighted_work_load": 1.8282170443935146,
+      "maximum_clock_load": 10.633333333333335,
+      "maximum_unweighted_work_load": 40,
+      "minimum_weight": 0.002380952380952381
+    },
+    {
+      "rounds": 16,
+      "clock_bits": 128,
+      "maximum_weighted_work_load": 1.9022685904622907,
+      "maximum_clock_load": 10.633333333333335,
+      "maximum_unweighted_work_load": 160,
+      "minimum_weight": 0.00015432098765432098
+    },
+    {
+      "rounds": 64,
+      "clock_bits": 512,
+      "maximum_weighted_work_load": 1.9213115673861048,
+      "maximum_clock_load": 10.633333333333335,
+      "maximum_unweighted_work_load": 640,
+      "minimum_weight": 9.735202492211838e-06
+    },
+    {
+      "rounds": 256,
+      "clock_bits": 2048,
+      "maximum_weighted_work_load": 1.9261052696295957,
+      "maximum_clock_load": 10.633333333333335,
+      "maximum_unweighted_work_load": 2560,
+      "minimum_weight": 6.098750975800156e-07
+    }
+  ],
+  "local_bottleneck": [
+    {
+      "work_qubits": 2,
+      "events": 7,
+      "ideal_clock_states": 10,
+      "states_each_side": 5,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.03333333333333333,
+      "measured_constraint_gap": 0.00991521944541221
+    },
+    {
+      "work_qubits": 3,
+      "events": 11,
+      "ideal_clock_states": 22,
+      "states_each_side": 11,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.01515151515151515,
+      "measured_constraint_gap": 0.0029664543890467825
+    },
+    {
+      "work_qubits": 4,
+      "events": 15,
+      "ideal_clock_states": 46,
+      "states_each_side": 23,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.007246376811594202,
+      "measured_constraint_gap": 0.0011575702898996346
+    },
+    {
+      "work_qubits": 6,
+      "events": 23,
+      "ideal_clock_states": 190,
+      "states_each_side": 95,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.0017543859649122805,
+      "measured_constraint_gap": 0.00023355259369414402
+    },
+    {
+      "work_qubits": 8,
+      "events": 31,
+      "ideal_clock_states": 766,
+      "states_each_side": 383,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.0004351610095735422,
+      "measured_constraint_gap": 5.433785228515699e-05
+    },
+    {
+      "work_qubits": 10,
+      "events": 39,
+      "ideal_clock_states": 3070,
+      "states_each_side": 1535,
+      "bridge_weight": 0.08333333333333333,
+      "rayleigh_upper_bound": 0.00010857763300760043,
+      "measured_constraint_gap": 1.3261676239551661e-05
+    }
+  ],
+  "continuum_encoding": {
+    "rows": [
+      {
+        "side": 24,
+        "lattice_spacing": 0.041666666666666664,
+        "work_sites": 13832,
+        "microscopic_round_duration": 5.232780885630999e-09,
+        "macroscopic_round_duration": 9.084689037553817e-12,
+        "rounds_at_T_one": 110075314176,
+        "event_bits_at_T_one": 4569446442074112,
+        "product_error_bound": 0.15309062620563268,
+        "rounding_error_bound": 5.161458932600047e-08
+      },
+      {
+        "side": 48,
+        "lattice_spacing": 0.020833333333333332,
+        "work_sites": 110656,
+        "microscopic_round_duration": 8.176220133798436e-11,
+        "macroscopic_round_duration": 3.54870665529446e-14,
+        "rounds_at_T_one": 28179280429056,
+        "event_bits_at_T_one": 9358226313367781376,
+        "product_error_bound": 0.07654531310281634,
+        "rounding_error_bound": 4.7348174376523876e-09
+      },
+      {
+        "side": 96,
+        "lattice_spacing": 0.010416666666666666,
+        "work_sites": 885248,
+        "microscopic_round_duration": 1.2775343959060057e-12,
+        "macroscopic_round_duration": 1.3862135372243984e-16,
+        "rounds_at_T_one": 7213895789838336,
+        "event_bits_at_T_one": 19165647489777216258048,
+        "product_error_bound": 0.03827265655140817,
+        "rounding_error_bound": 5.650239573925223e-10
+      },
+      {
+        "side": 192,
+        "lattice_spacing": 0.005208333333333333,
+        "work_sites": 7081984,
+        "microscopic_round_duration": 1.996147493603134e-14,
+        "macroscopic_round_duration": 5.414896629782806e-19,
+        "rounds_at_T_one": 1846757322198614016,
+        "event_bits_at_T_one": 39251246059063738896482304,
+        "product_error_bound": 0.019136328275704086,
+        "rounding_error_bound": 7.020880370040863e-11
+      }
+    ],
+    "scope": "Analytic resource/error bounds, not exponentially large circuit simulations. The previous dressed-band error must also be added."
+  },
+  "source_sha256": {
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8",
+    "scripts/local_causal_clock_audit.py": "416841914b14381d271b119da8ca633927bc85c9fc5b06dc64f7a6c7772168b1",
+    "UnifiedTheory/Audit/KFCausalLocalClock.lean": "55255fdda845428b031c9bac6ffda129b2576fd5a545352531aa06b92311569f",
+    "CAUSAL_ORDER_CLOCK_BRIDGE.md": "6b3218098021cfacf0c67390324dc9bfdbd48661d20a8e5ef620fb334bc1f810",
+    "scripts/causal_order_clock_audit.py": "c3de04fe7b7f5ce1cac7183696cacb403de5a4680fc92616e7c31c58250242cd",
+    "UnifiedTheory/Audit/KFCausalOrderClock.lean": "c0709f74c13ac0b869e1fa9e206fddd310b59903dd61ea2916c4392c4020dca9",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b",
+    "COLLECTIVE_SPACETIME_TEST.md": "c0e744fe91a22848670ed14bbc8dccb5f74318f8e0c3abc1ec5ed55de132c8dd"
+  },
+  "scope": "An exact local constraint and local single-readout clock for supplied circuits, with a conditional Schroedinger continuum encoding. Event selection, physical duration calibration, preparation, Lorentzian geometry, and Einstein dynamics remain unproved. Constraint spectrum is not physical frequency."
+}

@@ -1,0 +1,159 @@
+COMMON COMPLEX SOURCE: FINITE QUARTIC ANGULAR LOSS
+2026-10-22. ANALYTIC SUCCESSOR ONLY; NOT LEAN-VERIFIED.
+No numerical probe, no frozen source/evidence edits.
+This is a new artifact outside the current radial-domain checkpoint.
+
+1. Exact restricted statement
+
+For a circle u^2+v^2=R^2 with its arcsine/full-circle measure, let
+ Q(v)=d v^2-qv, d>=0, and W(v)=(mu+Lv)^4.
+Define E=int e^Q W, T=int e^Q(2dv^2-qv)W,
+ E_L=int e^Q 4v(mu+Lv)^3.
+There is a FINITE UNIVERSAL C4>=0, independent of R,d,q,mu,L, such that
+                  2T-L E_L+C4 E>=0.                       (1)
+The proof below does not compute C4 numerically. It retains the repeated
+linear factor; it is NOT a claim for an arbitrary quadratic polynomial
+squared with freely chosen coefficients.
+
+The same C4 works for the actual neutral Gaussian smoothing
+ W_sigma(v)=(mu+Lv)^4+6sigma(mu+Lv)^2+3sigma^2,
+ sigma>=0, because W_sigma=E_Z(mu+Lv+sqrt(sigma)Z)^4 with standard normal Z.
+All smoothing coefficients and their L derivatives are linked exactly.
+
+2. Reduction to deterministic fourth powers, d=0, positive tilt
+
+Take R>0 and write v=R x, x in[-1,1] with arcsine law. Set l=LR and
+ z=qR. Reflection reduces to z>=0, changing mu or l harmlessly.
+The expression is homogeneous of degree4 in(mu,l). The cases R=0 or
+l=0 cause no problem: for l=0, T is a nonnegative constant times zF'(z),
+where F(z)=int exp(zx)/sqrt(1-x^2)dx.
+For z>0 and l!=0 divide by l^4 and put mu/l=1-s/z.
+Let U=z(1+x), with probability distribution proportional to
+ u^(-1/2) exp(-u) (1-u/(2z))^(-1/2) on(0,2z).
+Writing E_z for expectation under this probability law, exact scaling gives
+ E/l^4=F(z) z^(-4) E_z[(U-s)^4],
+ (2T-L E_L)/l^4=2F(z)z^(-3) P_z(s),
+ P_z(s)=E_z[(1-U/z)((U-s)^4+2(U-s)^3)].                     (2)
+F(z)>0 is the original unnormalized angular partition function; its
+normalization cancels in all signs. Formula(2) follows directly from
+x=-1+U/z, qv=zx and L E_L=4int e^(-zx)l*x(mu+l*x)^3.
+
+3. Uniform high-tilt positivity: actual finite moment convergence
+
+For j=0,...,5 define
+ A_j(z)=int_0^(2z) u^(j-1/2)e^(-u)(1-u/(2z))^(-1/2)du.
+Then A_j(z)->Gamma(j+1/2) as z->infinity.
+Indeed, on0<u<=z the extra factor is <=sqrt2 and converges to1,
+so dominated convergence applies to u^(j-1/2)e^(-u).
+The remaining part z<=u<2z is bounded by
+ C_j z^(j+1/2)e^(-z), using
+ (1-u/(2z))^(-1/2)=sqrt(2z)/sqrt(2z-u)
+and integrating the final inverse square root. This tends to0.
+The same estimate works at j=0 using u^(-1/2)<=z^(-1/2).
+Since A0->sqrt(pi)>0, the first five normalized U moments converge to
+those of Gamma(shape1/2,rate1), and moments divided by z tend to0.
+Therefore every coefficient of the degree4 polynomial P_z(s) converges.
+
+The limiting polynomial is exactly
+ P_infty(s)=E[(U-s)^4+2(U-s)^3]
+ =s^4-4s^3+(15/2)s^2-12s+165/16
+ =((s-1)^2-3/4)^2+3(s-1-5/6)^2+1/6.                       (3)
+In particular P_infty(s)>0 for all real s. More quantitatively,
+             P_infty(s)>=(1+s^4)/108.                     (4)
+To check(4), put y=s-1, A=(y^2-3/4)^2. Then
+ s^4<=(8y^4+8)<=16A+17, while108P_infty>=108A+18.
+Coefficientwise convergence now gives a common Z0>0 such that, for z>=Z0,
+each of the FIVE coefficient errors has modulus <=1/1080. Since
+ |s|^j<=1+s^4 for0<=j<=4,
+ |P_z(s)-P_infty(s)|<=(1+s^4)/216 for EVERY real s.
+Thus P_z(s)>=(1+s^4)/216>0 uniformly over the entire field-shift parameter.
+Equation(2) proves 2T-L E_L>=0 for all sufficiently large z, without
+assuming s stays bounded or exchanging a parameter-dependent limit.
+
+4. Bounded-tilt compactness supplies a universal finite loss
+
+For 0<=z<=Z0, restrict (mu,l) to the unit circle mu^2+l^2=1 by homogeneity.
+The angular energy E(z,mu,l)=int e^(-zx)(mu+l*x)^4/sqrt(1-x^2)dx
+is continuous and STRICTLY positive on this compact parameter space:
+a nonzero affine polynomial cannot vanish on an interval of positive
+arcsine measure. Therefore E has a positive minimum.
+The expression Fdef=2T-L E_L is also continuous there, since its
+integrand is an exponential times a fixed-degree polynomial on[-1,1].
+Consequently max(0,-Fdef/E) has a finite maximum C4 on this compact set.
+Together with section3 this proves(1) for d=0 and all real q, including
+q=0. The zero polynomial and R=0 follow without dividing by its norm.
+
+5. Two legitimate Gaussian mixtures
+
+First, integrate the deterministic fourth-power inequality over a real
+normal shift mu->mu+sqrt(sigma)Z. This gives W_sigma and its actual
+L derivative, preserving the same C4. For each fixed circle all terms
+are absolutely integrable by Gaussian moments.
+Second, for d>0 use
+ exp(dv^2-qv)=E_Z exp[-(q-sqrt(2d)Z)v].
+For the effective tilt q_Z=q-sqrt(2d)Z, the tilt averages EXACTLY as
+ E_Z[-q_Z v exp(-q_Z v)]=(2dv^2-qv)exp(dv^2-qv).
+Thus(1) holds for d>=0 with W_sigma. Absolute integrability of signed
+terms is immediate for a fixed circle because |v|<=R; Gaussian
+exponential moments absorb the additional polynomial factors.
+
+6. Actual coherent charged packet and score assembly
+
+Use the same actual f(v), g(v)=-f_a(v), gamma, delta,lambda,kappa,h
+and physical-clock bounds as in the independently reviewed mass note
+common-complex-mass-abel-angular-closure-20261022.txt
+SHA99d4587524c668b6c9d22589c89f21c2800e6995e300f23cb990d8f8f57f4585.
+There is NO change of packet or independent radial coefficient.
+The actual Abel marginal is a positive mixture of the circles, so (1)
+integrates with identical C4. Finite strict width margins justify all
+signed Fubini and polynomial moments exactly as in the mass note.
+
+For W_sigma, the holomorphic angular factor from the mass note times
+(mu+sqrt(sigma)Z+Lv)^2 has Laurent support>=-2. This gives, after the
+same Gaussian smoothing and Abel mixing,
+                         T>=d XW-4E.                      (5)
+It is the actual linked degree2 channel, not a free radial polynomial.
+The field logarithmic derivative obeys
+ |W_sigma'|<=2 W_sigma/sqrt(sigma), sigma>0, since for x=m^2/sigma>=0,
+ (x^2+6x+3)^2-4x(x+3)^2=x^4+8x^3+18x^2+9>=0.
+Thus
+                     |E_L|<=2/sqrt(sigma)*sqrt(E XW).      (6)
+
+The verified charged score and justified v IBP still give
+ int e^Q Wg >=(2gamma+1/a)E+gamma L E_L+gamma T.
+Combining (1) with(5) in the same 2/3+1/3 decomposition yields for the
+actual response defect with c=K+4lambda:
+ defect >=[c+delta/a-delta*gamma*(C4-2)/3]E
+             +(delta*gamma*d/3)XW+Rcoef E_L,
+ Rcoef=(4/3)delta*gamma*L-kappa
+      =2delta*L*b^2/(3a(a^2-b^2))+3h.                       (7)
+The EXACT leading clock cancellation is unchanged by the quartic weight.
+For b!=0, d*sigma=2b^2. Completing the scalar square using(6) loses at most
+             3Rcoef^2/(2delta*gamma*b^2) E,
+four times the mass-channel loss. The same actual clock estimates bound
+this by(9800/9)*fraction*E. Also gamma<=15/8 and delta<=10*fraction,
+so delta*gamma*C4/3 <=(25/4)*C4*fraction. Hence the finite universal choice
+             K=[1200+(25/4)C4]*fraction                    (8)
+makes the entire defect nonnegative. At b=0, Rcoef=0; (7) directly gives
+the bound without dividing by b. Zero-energy states are not divided out.
+
+This is an ANALYTIC existence route to an actual arbitrary-distinct-width,
+common COMPLEX neutral source, P=1, quartic-channel response bound. The
+same finite constant dominates the previously reviewed mass/vacuum
+constants and hence their nonnegative weighted sum. It does NOT cover
+distinct neutral sources or arbitrary neutral polynomials, and does not
+claim a Lean theorem, a numerical value of C4, or the old536 constant.
+The original Hilbert/whole-clock IBP attachment would still need a new
+formal supplier for this source class. Fixed-label geometric response
+is the directly analyzed object.
+
+7. Exact formal frontier
+
+Needed new checked suppliers: finite circle-moment convergence through5
+with quantitative-or-existential coefficient control; strict positive
+compact energy on the unit coefficient circle; Gaussian mixture/Tonelli;
+actual Abel pushforward; degree2 Hardy number bound; and full score/clock
+assembly. The SOS and scaling identities above are explicit but are not
+added to any current frozen audit. No source edits or compiler was used
+for this note; only scratch symbolic arithmetic checked intermediate
+moment expansions.

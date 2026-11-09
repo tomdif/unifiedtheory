@@ -1,0 +1,134 @@
+{
+  "finite_clocks": {
+    "spectator_example_extensions": 60,
+    "enumeration_tick_gaps": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "unchanged_interval_strict_step_height": 1,
+    "branch_height_through_y": 2,
+    "maximal_endpoint_height": 4,
+    "scope": "Exact finite enumeration and chain counts; no continuum-duration claim."
+  },
+  "quantum_histories": {
+    "context_independent": {
+      "events": 5,
+      "ideals": 8,
+      "edges": 9,
+      "diamonds": 2,
+      "full_extensions": 4,
+      "paths_to_all_ideals": 15,
+      "joint_dimension": 32,
+      "maximum_diamond_error": 0.0,
+      "maximum_path_error": 1.781278445607238e-16,
+      "gauge_equivalence_error": 1.4985238115928317e-15,
+      "constraint_error": 2.1960530900878702e-16,
+      "history_isometry_error": 5.5043094273939e-17,
+      "spectrum_error": 4.440892098500626e-15,
+      "kernel_dimension": 4
+    },
+    "context_dependent": {
+      "events": 5,
+      "ideals": 8,
+      "edges": 9,
+      "diamonds": 2,
+      "full_extensions": 4,
+      "paths_to_all_ideals": 15,
+      "joint_dimension": 32,
+      "maximum_diamond_error": 4.999982329443267e-16,
+      "maximum_path_error": 5.934159820850247e-16,
+      "gauge_equivalence_error": 5.784888987543209e-15,
+      "constraint_error": 4.674486118422929e-16,
+      "history_isometry_error": 9.807054724821246e-16,
+      "spectrum_error": 1.3322676295501878e-14,
+      "kernel_dimension": 4
+    },
+    "inconsistent_diamond": {
+      "operator_mismatch": 0.41431542808581234,
+      "constraint_smallest_eigenvalue": 0.010875790819087098,
+      "kernel_dimension": 0
+    },
+    "same_order_different_laws": {
+      "identity_excitation_probability": 0.0,
+      "rotation_excitation_probability": 0.13076572063520606
+    }
+  },
+  "local_geometry_matter": {
+    "qubits": 5,
+    "system_dimension": 32,
+    "gate_occurrences_per_round": 8,
+    "ideal_clock_states_one_round": 13,
+    "allowed_enumerations_one_round": 7,
+    "enumeration_error": 1.239833170044072e-16,
+    "commutator_norm_sum": 1.275,
+    "product_limit": [
+      {
+        "rounds": 4,
+        "ticks": 32,
+        "error": 0.022791579950930327,
+        "analytic_bound": 0.07809374999999999
+      },
+      {
+        "rounds": 8,
+        "ticks": 64,
+        "error": 0.011383283969935345,
+        "analytic_bound": 0.039046874999999995
+      },
+      {
+        "rounds": 16,
+        "ticks": 128,
+        "error": 0.005689274899068223,
+        "analytic_bound": 0.019523437499999997
+      },
+      {
+        "rounds": 32,
+        "ticks": 256,
+        "error": 0.0028441396957688395,
+        "analytic_bound": 0.009761718749999999
+      },
+      {
+        "rounds": 64,
+        "ticks": 512,
+        "error": 0.0014219571152461264,
+        "analytic_bound": 0.004880859374999999
+      }
+    ],
+    "scope": "Exact local neutral-field/switch motif. The other degree-six carrier edges are omitted; this is a local benchmark, not a complete torus simulation."
+  },
+  "frequency_ratios": [
+    {
+      "momentum": 0.1,
+      "quadratic_frequency_ratio": 3.990008330556096,
+      "linear_frequency_ratio": 2.0
+    },
+    {
+      "momentum": 0.05,
+      "quadratic_frequency_ratio": 3.9975005207900045,
+      "linear_frequency_ratio": 2.0
+    },
+    {
+      "momentum": 0.025,
+      "quadratic_frequency_ratio": 3.9993750325517934,
+      "linear_frequency_ratio": 2.0
+    },
+    {
+      "momentum": 0.0125,
+      "quadratic_frequency_ratio": 3.9998437520366257,
+      "linear_frequency_ratio": 2.0
+    }
+  ],
+  "source_sha256": {
+    "CAUSAL_ORDER_CLOCK_BRIDGE.md": "6b3218098021cfacf0c67390324dc9bfdbd48661d20a8e5ef620fb334bc1f810",
+    "scripts/causal_order_clock_audit.py": "c3de04fe7b7f5ce1cac7183696cacb403de5a4680fc92616e7c31c58250242cd",
+    "UnifiedTheory/Audit/KFCausalOrderClock.lean": "c0709f74c13ac0b869e1fa9e206fddd310b59903dd61ea2916c4392c4020dca9",
+    "UnifiedTheory/Audit/KFCausalBornRateAndDilation.lean": "a33dcf4242ff4e00b89d75af1dfeea6eb0044dcaa899aaeebdd6cd2b3af9c355",
+    "UnifiedTheory/Audit/KFCausalCSpecVolumeGauge.lean": "5d08bf7b18a7adf6368ad706a8fe92ab2b562871e962cf0e4bcbe5d24e593d62",
+    "UnifiedTheory/Audit/KFCausalCSpecTwoEmbeddingProperTime.lean": "4d85358935faf2a156f9724d0e42c8ae9ccde8ee4cdc0c71d410d1d4faf7458a",
+    "COLLECTIVE_SPACETIME_TEST.md": "c0e744fe91a22848670ed14bbc8dccb5f74318f8e0c3abc1ec5ed55de132c8dd",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b",
+    "HARMONIC_BORN_EVENTUAL_CHAIN_COLLAPSE.md": "381205670a8ea7c4ebb85c8f1a42925b85a169ceadd2aa525c066f5dd1b13449"
+  },
+  "scope": "A supplied finite event order and unitary ticks admit an internal causal-past clock exactly when all diamonds are flat for every initial state. This does not select the event order, tick dynamics, physical clock calibration, a Lorentzian continuum, or Einstein gravity."
+}

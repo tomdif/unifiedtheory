@@ -1,0 +1,26 @@
+import UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature
+import UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature
+import UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge
+
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature.character_chord
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature.defect_second_identity
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature.defect_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature.relative_character
+#print axioms UnifiedTheory.Clay.YangMills.QuaternionDefectCurvature.kinetic_second_exact
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.potential_second_local
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.potential_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.kinetic_second_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.kinetic_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.middle_second_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.middle_second_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmallFieldCurvature.middle_log_density_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.kinetic_antipodal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.action_antipodal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.antipodal_distance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.parity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.parity_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.alternatingGauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.alternating_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.gauge_antipode
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.physical_antipodal
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalBridge.endpoint_source_zero

@@ -1,0 +1,1625 @@
+{
+  "matrix_cases": [
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "epsilon": 0.0,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8808626792904617e-15,
+        "mobility": 1.7194041447207858e-15,
+        "base": 3.9668324760571454e-16,
+        "source": 0.0,
+        "longitudinal": 4.543845614377909e-16,
+        "static_seed": 1.5282044421700296e-15,
+        "growing_seed": 4.526911134228981e-16
+      },
+      "constraint_identity_error": 1.2388940834620077e-16,
+      "zero_regulator_hamiltonian_error": 2.4428358230764335e-17,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5071551994859588,
+          "minimum_added_potential": 0.015887263387794583,
+          "minimum_clock_margin": 0.02025138956963324
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.530706543380667,
+          "minimum_added_potential": 0.023701011899843746,
+          "minimum_clock_margin": 0.029944146191306014
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5606317883397192,
+          "minimum_added_potential": 0.035357754911276476,
+          "minimum_clock_margin": 0.04428523091150041
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "epsilon": 0.01,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8808626792904617e-15,
+        "mobility": 2.346146644512218e-15,
+        "base": 4.474924520880323e-16,
+        "source": 0.0,
+        "longitudinal": 5.039661194259134e-16,
+        "static_seed": 1.5282044421700296e-15,
+        "growing_seed": 4.066464624968581e-16
+      },
+      "constraint_identity_error": 1.2388940834620077e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5070860838249531,
+          "minimum_added_potential": 0.015919002767353654,
+          "minimum_clock_margin": 0.020219795982130227
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5306197754990473,
+          "minimum_added_potential": 0.023748361490157997,
+          "minimum_clock_margin": 0.029902173264733163
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5605271478437486,
+          "minimum_added_potential": 0.03542839219953037,
+          "minimum_clock_margin": 0.04422998426604576
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "epsilon": 0.1,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8808626792904617e-15,
+        "mobility": 1.4834634646509078e-15,
+        "base": 3.641887879519982e-16,
+        "source": 0.0,
+        "longitudinal": 4.244974296877484e-16,
+        "static_seed": 1.5282044421700296e-15,
+        "growing_seed": 4.418544047321544e-16
+      },
+      "constraint_identity_error": 1.2388940834620077e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.506570312547352,
+          "minimum_added_potential": 0.016160005969119394,
+          "minimum_clock_margin": 0.019983361439621004
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5299708901295247,
+          "minimum_added_potential": 0.024107896018762662,
+          "minimum_clock_margin": 0.02958798056637535
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5597427549921578,
+          "minimum_added_potential": 0.03596475468895767,
+          "minimum_clock_margin": 0.04381635888230827
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "bare",
+      "epsilon": 1.0,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8808626792904617e-15,
+        "mobility": 7.567731182910431e-16,
+        "base": 1.2884336746979466e-16,
+        "source": 0.0,
+        "longitudinal": 2.5558278508703246e-16,
+        "static_seed": 1.5282044421700296e-15,
+        "growing_seed": 4.262652434921699e-16
+      },
+      "constraint_identity_error": 1.2388940834620077e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5049768883903288,
+          "minimum_added_potential": 0.01700284874980247,
+          "minimum_clock_margin": 0.019236009143921512
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5279464179676775,
+          "minimum_added_potential": 0.025365269695214316,
+          "minimum_clock_margin": 0.028594123740180957
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5572689953669006,
+          "minimum_added_potential": 0.03784053579365222,
+          "minimum_clock_margin": 0.042507634796911234
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "epsilon": 0.0,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8343894894033213e-15,
+        "mobility": 2.5668280697679643e-15,
+        "base": 8.276212809741666e-16,
+        "source": 0.0,
+        "longitudinal": 8.813945924291408e-16,
+        "static_seed": 1.635665817647217e-15,
+        "growing_seed": 7.647460444706241e-16
+      },
+      "constraint_identity_error": 3.77816017969236e-16,
+      "zero_regulator_hamiltonian_error": 3.615463618881835e-17,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5669188418271248,
+          "minimum_added_potential": 0.014499890770453697,
+          "minimum_clock_margin": 0.02224676786090872,
+          "minimum_inverse_clock_margin": 0.480544303121562
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5965036118325739,
+          "minimum_added_potential": 0.021631295164463493,
+          "minimum_clock_margin": 0.032681582578239166,
+          "minimum_inverse_clock_margin": 0.47239168666963205
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6320245561103283,
+          "minimum_added_potential": 0.03227010036831507,
+          "minimum_clock_margin": 0.04801920186984244,
+          "minimum_inverse_clock_margin": 0.5145836199393147
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "epsilon": 0.01,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8343894894033213e-15,
+        "mobility": 3.513821890829433e-15,
+        "base": 1.091547781865349e-15,
+        "source": 0.0,
+        "longitudinal": 1.1328744459226004e-15,
+        "static_seed": 1.635665817647217e-15,
+        "growing_seed": 7.955501632477375e-16
+      },
+      "constraint_identity_error": 3.77816017969236e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5667334398180099,
+          "minimum_added_potential": 0.014552247385497286,
+          "minimum_clock_margin": 0.022135261586771,
+          "minimum_inverse_clock_margin": 0.4803488098345615
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5962592874480047,
+          "minimum_added_potential": 0.02170940205587042,
+          "minimum_clock_margin": 0.03252824748312063,
+          "minimum_inverse_clock_margin": 0.47213194184582724
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6317110875417759,
+          "minimum_added_potential": 0.03238662215797173,
+          "minimum_clock_margin": 0.04780925422720175,
+          "minimum_inverse_clock_margin": 0.5142561023833413
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "epsilon": 0.1,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8343894894033213e-15,
+        "mobility": 1.9500637618274425e-15,
+        "base": 6.509999111078367e-16,
+        "source": 0.0,
+        "longitudinal": 7.181426281677525e-16,
+        "static_seed": 1.635665817647217e-15,
+        "growing_seed": 7.06040161996414e-16
+      },
+      "constraint_identity_error": 3.77816017969236e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5653614310304462,
+          "minimum_added_potential": 0.014940532764507667,
+          "minimum_clock_margin": 0.021316004390377754,
+          "minimum_inverse_clock_margin": 0.47890552254863056
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5944479868804406,
+          "minimum_added_potential": 0.02228865577401106,
+          "minimum_clock_margin": 0.0314002338153318,
+          "minimum_inverse_clock_margin": 0.4702108419999433
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6293825429423662,
+          "minimum_added_potential": 0.033250767160894625,
+          "minimum_clock_margin": 0.04626264461210767,
+          "minimum_inverse_clock_margin": 0.5118263116582653
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "profile": "exact",
+      "epsilon": 1.0,
+      "dimension": 28,
+      "transcription_errors": {
+        "clock": 1.8343894894033213e-15,
+        "mobility": 6.834556658420641e-16,
+        "base": 2.4330694948069746e-16,
+        "source": 0.0,
+        "longitudinal": 3.916743933944086e-16,
+        "static_seed": 1.635665817647217e-15,
+        "growing_seed": 5.838544796121313e-16
+      },
+      "constraint_identity_error": 3.77816017969236e-16,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5612176480771961,
+          "minimum_added_potential": 0.01613956524537675,
+          "minimum_clock_margin": 0.018900913843002874,
+          "minimum_inverse_clock_margin": 0.4745924464806765
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5889384001378949,
+          "minimum_added_potential": 0.024077402042245566,
+          "minimum_clock_margin": 0.028060162971592834,
+          "minimum_inverse_clock_margin": 0.46442897922357185
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.622244152244747,
+          "minimum_added_potential": 0.035919263021660354,
+          "minimum_clock_margin": 0.04166097654697901,
+          "minimum_inverse_clock_margin": 0.5044217595323645
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "epsilon": 0.0,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 3.939508508606974e-15,
+        "mobility": 4.417298254893958e-15,
+        "base": 1.0314434917005427e-15,
+        "source": 3.192020986519275e-16,
+        "longitudinal": 1.3328013530259746e-15,
+        "static_seed": 3.2864106721075346e-15,
+        "growing_seed": 1.3658913982298249e-15
+      },
+      "constraint_identity_error": 1.0180058590639598e-15,
+      "zero_regulator_hamiltonian_error": 1.2498400414897666e-16,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.48470991840118827,
+          "minimum_added_potential": 0.014682793896812643,
+          "minimum_clock_margin": 0.01984672980224783
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.509498471076044,
+          "minimum_added_potential": 0.021904154565641425,
+          "minimum_clock_margin": 0.029285518053885257
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5409859034266143,
+          "minimum_added_potential": 0.03267715876197584,
+          "minimum_clock_margin": 0.04322792910506945
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "epsilon": 0.01,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 3.939508508606974e-15,
+        "mobility": 5.146971326815198e-15,
+        "base": 1.147871700101619e-15,
+        "source": 3.192020986519275e-16,
+        "longitudinal": 1.4234305915107834e-15,
+        "static_seed": 3.2864106721075346e-15,
+        "growing_seed": 1.3162961291267833e-15
+      },
+      "constraint_identity_error": 1.0180058590639598e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.4846320861670642,
+          "minimum_added_potential": 0.014713836341564063,
+          "minimum_clock_margin": 0.01982208808915764
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.509406664517494,
+          "minimum_added_potential": 0.021950464451396867,
+          "minimum_clock_margin": 0.029254553031157086
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5408851548676149,
+          "minimum_added_potential": 0.03274624499329067,
+          "minimum_clock_margin": 0.04318978429295073
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "epsilon": 0.1,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 3.939508508606974e-15,
+        "mobility": 3.3048650550565938e-15,
+        "base": 7.629621601824676e-16,
+        "source": 3.192020986519275e-16,
+        "longitudinal": 1.1429549231418698e-15,
+        "static_seed": 3.2864106721075346e-15,
+        "growing_seed": 1.3884073542816953e-15
+      },
+      "constraint_identity_error": 1.0180058590639598e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.48405875199819265,
+          "minimum_added_potential": 0.014948705579482826,
+          "minimum_clock_margin": 0.01963900533662351
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.50872830501737,
+          "minimum_added_potential": 0.022300848181240392,
+          "minimum_clock_margin": 0.02902456680831104
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5401383875239547,
+          "minimum_added_potential": 0.0332689560951227,
+          "minimum_clock_margin": 0.04290678811937687
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "bare",
+      "epsilon": 1.0,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 3.939508508606974e-15,
+        "mobility": 1.3280803312496257e-15,
+        "base": 2.6718752089115665e-16,
+        "source": 3.192020986519275e-16,
+        "longitudinal": 8.939269256680225e-16,
+        "static_seed": 3.2864106721075346e-15,
+        "growing_seed": 1.3708811249924874e-15
+      },
+      "constraint_identity_error": 1.0180058590639598e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.48238106605143966,
+          "minimum_added_potential": 0.01580816899305048,
+          "minimum_clock_margin": 0.019073575633933915
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.5067139315439851,
+          "minimum_added_potential": 0.02358301692831971,
+          "minimum_clock_margin": 0.02831580488611194
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5378860729534014,
+          "minimum_added_potential": 0.035181727098559545,
+          "minimum_clock_margin": 0.04203953812975838
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "epsilon": 0.0,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 4.705051057030291e-15,
+        "mobility": 6.5701780850016915e-15,
+        "base": 2.4750461657029935e-15,
+        "source": 3.6453966336013327e-16,
+        "longitudinal": 3.029932785562718e-15,
+        "static_seed": 3.739145351137862e-15,
+        "growing_seed": 3.2129868530552697e-15
+      },
+      "constraint_identity_error": 1.9876756344587475e-15,
+      "zero_regulator_hamiltonian_error": 2.910368089297972e-16,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5903586705536855,
+          "minimum_added_potential": 0.012454649923714325,
+          "minimum_clock_margin": 0.02397191972213587,
+          "minimum_inverse_clock_margin": 0.4983339897598281
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.627605002530494,
+          "minimum_added_potential": 0.01858015435667293,
+          "minimum_clock_margin": 0.03485583592822339,
+          "minimum_inverse_clock_margin": 0.496068621554081
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6716503135955975,
+          "minimum_added_potential": 0.02771833315527181,
+          "minimum_clock_margin": 0.05069191049197798,
+          "minimum_inverse_clock_margin": 0.5486179946924514
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "epsilon": 0.01,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 4.705051057030291e-15,
+        "mobility": 8.075735688465088e-15,
+        "base": 2.9553823594909937e-15,
+        "source": 3.6453966336013327e-16,
+        "longitudinal": 3.434086175410558e-15,
+        "static_seed": 3.739145351137862e-15,
+        "growing_seed": 3.2422209306608397e-15
+      },
+      "constraint_identity_error": 1.9876756344587475e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5899339059532436,
+          "minimum_added_potential": 0.012527260044663854,
+          "minimum_clock_margin": 0.023761179624874066,
+          "minimum_inverse_clock_margin": 0.49789343900597965
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.627058220209036,
+          "minimum_added_potential": 0.01868847592840403,
+          "minimum_clock_margin": 0.03457052668151768,
+          "minimum_inverse_clock_margin": 0.49549613881160615
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.670973441612316,
+          "minimum_added_potential": 0.027879929951268007,
+          "minimum_clock_margin": 0.050307560397726686,
+          "minimum_inverse_clock_margin": 0.5479184212845613
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "epsilon": 0.1,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 4.705051057030291e-15,
+        "mobility": 5.123952809764093e-15,
+        "base": 2.003685966134208e-15,
+        "source": 3.6453966336013327e-16,
+        "longitudinal": 2.6692861501552817e-15,
+        "static_seed": 3.739145351137862e-15,
+        "growing_seed": 3.225142937058714e-15
+      },
+      "constraint_identity_error": 1.9876756344587475e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5868588387397272,
+          "minimum_added_potential": 0.013030563544946153,
+          "minimum_clock_margin": 0.02226242530264942,
+          "minimum_inverse_clock_margin": 0.4947087470699231
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6230922218054912,
+          "minimum_added_potential": 0.019439316520534686,
+          "minimum_clock_margin": 0.03253541613595658,
+          "minimum_inverse_clock_margin": 0.4913469693898153
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6660479670999426,
+          "minimum_added_potential": 0.029000052490599372,
+          "minimum_clock_margin": 0.04755758184613988,
+          "minimum_inverse_clock_margin": 0.5428255445794147
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "profile": "exact",
+      "epsilon": 1.0,
+      "dimension": 84,
+      "transcription_errors": {
+        "clock": 4.705051057030291e-15,
+        "mobility": 1.5270962463178416e-15,
+        "base": 5.928864052316998e-16,
+        "source": 3.6453966336013327e-16,
+        "longitudinal": 1.8839307894809884e-15,
+        "static_seed": 3.739145351137862e-15,
+        "growing_seed": 2.828386476321578e-15
+      },
+      "constraint_identity_error": 1.9876756344587475e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5783303604583021,
+          "minimum_added_potential": 0.014286048153035316,
+          "minimum_clock_margin": 0.018337334774610567,
+          "minimum_inverse_clock_margin": 0.48594567601773536
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6120127154515765,
+          "minimum_added_potential": 0.02131227946639061,
+          "minimum_clock_margin": 0.027154667325347624,
+          "minimum_inverse_clock_margin": 0.47982281210895844
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6521235412792733,
+          "minimum_added_potential": 0.031794184870994224,
+          "minimum_clock_margin": 0.04021427467826228,
+          "minimum_inverse_clock_margin": 0.5284388923615488
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "epsilon": 0.0,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 5.579382453840481e-15,
+        "mobility": 8.532758706608306e-15,
+        "base": 2.2568315903941636e-15,
+        "source": 3.134813796900204e-16,
+        "longitudinal": 4.906080137298823e-15,
+        "static_seed": 3.465764343488636e-15,
+        "growing_seed": 2.0923547508446055e-15
+      },
+      "constraint_identity_error": 8.616718725760628e-15,
+      "zero_regulator_hamiltonian_error": 9.389948464738181e-17,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.4678923795378743,
+          "minimum_added_potential": 0.013577913015091562,
+          "minimum_clock_margin": 0.019538435526602338
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.4934492102568904,
+          "minimum_added_potential": 0.020255865978338457,
+          "minimum_clock_margin": 0.028773837306724177
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5258417827330101,
+          "minimum_added_potential": 0.030218201138596894,
+          "minimum_clock_margin": 0.04239546185742218
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "epsilon": 0.01,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 5.579382453840481e-15,
+        "mobility": 8.143402268003292e-15,
+        "base": 2.2656700819481575e-15,
+        "source": 3.134813796900204e-16,
+        "longitudinal": 4.908718197288949e-15,
+        "static_seed": 3.465764343488636e-15,
+        "growing_seed": 2.1624257724195684e-15
+      },
+      "constraint_identity_error": 8.616718725760628e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.4678113890922681,
+          "minimum_added_potential": 0.01360846120547346,
+          "minimum_clock_margin": 0.019518979185062457
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.49335988951295756,
+          "minimum_added_potential": 0.020301438523218557,
+          "minimum_clock_margin": 0.028751034281345827
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5257540452055074,
+          "minimum_added_potential": 0.0302861873865833,
+          "minimum_clock_margin": 0.042369836554705755
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "epsilon": 0.1,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 5.579382453840481e-15,
+        "mobility": 6.758659661266575e-15,
+        "base": 1.5008372975207015e-15,
+        "source": 3.134813796900204e-16,
+        "longitudinal": 4.605630413877415e-15,
+        "static_seed": 3.465764343488636e-15,
+        "growing_seed": 2.0908435991396754e-15
+      },
+      "constraint_identity_error": 8.616718725760628e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.4672199520462102,
+          "minimum_added_potential": 0.013838817441116185,
+          "minimum_clock_margin": 0.019374992985496248
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.4927049854736886,
+          "minimum_added_potential": 0.020645089644805888,
+          "minimum_clock_margin": 0.028582624603413126
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5251086041506273,
+          "minimum_added_potential": 0.03079885461713912,
+          "minimum_clock_margin": 0.04218148631234413
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "bare",
+      "epsilon": 1.0,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 5.579382453840481e-15,
+        "mobility": 2.55830430863763e-15,
+        "base": 4.506588653614037e-16,
+        "source": 3.134813796900204e-16,
+        "longitudinal": 4.380424186609374e-15,
+        "static_seed": 3.465764343488636e-15,
+        "growing_seed": 2.0085626051855026e-15
+      },
+      "constraint_identity_error": 8.616718725760628e-15,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.4655481788174609,
+          "minimum_added_potential": 0.014699271946288759,
+          "minimum_clock_margin": 0.01893570045448083
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.4908165427953009,
+          "minimum_added_potential": 0.02192873692681893,
+          "minimum_clock_margin": 0.028073861302481906
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.5232107654601207,
+          "minimum_added_potential": 0.0327138313355064,
+          "minimum_clock_margin": 0.04162518266201995
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "epsilon": 0.0,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 8.152344741343194e-15,
+        "mobility": 1.176510497011637e-14,
+        "base": 4.750947772227444e-15,
+        "source": 4.569144405373685e-16,
+        "longitudinal": 8.724035092637735e-15,
+        "static_seed": 7.94206403282074e-15,
+        "growing_seed": 9.184266907372699e-15
+      },
+      "constraint_identity_error": 1.3001566830374777e-14,
+      "zero_regulator_hamiltonian_error": 8.595903112108885e-16,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.614838569081467,
+          "minimum_added_potential": 0.010727937784998906,
+          "minimum_clock_margin": 0.02608166731572077,
+          "minimum_inverse_clock_margin": 0.518454375824206
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6591215364660651,
+          "minimum_added_potential": 0.016004202542420243,
+          "minimum_clock_margin": 0.037463583784258896,
+          "minimum_inverse_clock_margin": 0.5218323023333306
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.7109087806289348,
+          "minimum_added_potential": 0.023875464618835968,
+          "minimum_clock_margin": 0.053833455108379676,
+          "minimum_inverse_clock_margin": 0.5835161723344197
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "epsilon": 0.01,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 8.152344741343194e-15,
+        "mobility": 1.4138271810326325e-14,
+        "base": 5.03736606574836e-15,
+        "source": 4.569144405373685e-16,
+        "longitudinal": 8.879779694985913e-15,
+        "static_seed": 7.94206403282074e-15,
+        "growing_seed": 9.094573024363654e-15
+      },
+      "constraint_identity_error": 1.3001566830374777e-14,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.6140537638087318,
+          "minimum_added_potential": 0.0108273962508133,
+          "minimum_clock_margin": 0.02574008911801038,
+          "minimum_inverse_clock_margin": 0.51765017165465
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6581350236807268,
+          "minimum_added_potential": 0.016152577138111676,
+          "minimum_clock_margin": 0.037010391958029146,
+          "minimum_inverse_clock_margin": 0.5208134531124897
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.7097216208724008,
+          "minimum_added_potential": 0.024096813505191376,
+          "minimum_clock_margin": 0.05323508738064441,
+          "minimum_inverse_clock_margin": 0.582303481619115
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "epsilon": 0.1,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 8.152344741343194e-15,
+        "mobility": 9.490590905878653e-15,
+        "base": 3.4830621024016865e-15,
+        "source": 4.569144405373685e-16,
+        "longitudinal": 8.10441634674993e-15,
+        "static_seed": 7.94206403282074e-15,
+        "growing_seed": 8.569151492776962e-15
+      },
+      "constraint_identity_error": 1.3001566830374777e-14,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.6084684117936637,
+          "minimum_added_potential": 0.011459352682024493,
+          "minimum_clock_margin": 0.02338029544667625,
+          "minimum_inverse_clock_margin": 0.5119199130210588
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6510959112137562,
+          "minimum_added_potential": 0.017095345350025923,
+          "minimum_clock_margin": 0.03386197902029686,
+          "minimum_inverse_clock_margin": 0.5135242411873826
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.7012123211668929,
+          "minimum_added_potential": 0.025503258407875623,
+          "minimum_clock_margin": 0.04905513571016675,
+          "minimum_inverse_clock_margin": 0.5735806968766973
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "profile": "exact",
+      "epsilon": 1.0,
+      "dimension": 210,
+      "transcription_errors": {
+        "clock": 8.152344741343194e-15,
+        "mobility": 2.9123095114534276e-15,
+        "base": 9.741206110445526e-16,
+        "source": 4.569144405373685e-16,
+        "longitudinal": 7.380196729336238e-15,
+        "static_seed": 7.94206403282074e-15,
+        "growing_seed": 7.66529058284581e-15
+      },
+      "constraint_identity_error": 1.3001566830374777e-14,
+      "zero_regulator_hamiltonian_error": null,
+      "operator_margins": [
+        {
+          "time": -0.2,
+          "minimum_hamiltonian": 0.5939789107242048,
+          "minimum_added_potential": 0.012653926908767207,
+          "minimum_clock_margin": 0.017797607579015298,
+          "minimum_inverse_clock_margin": 0.4970718258828372
+        },
+        {
+          "time": 0.0,
+          "minimum_hamiltonian": 0.6326556947320827,
+          "minimum_added_potential": 0.018877440684646023,
+          "minimum_clock_margin": 0.026287316623953828,
+          "minimum_inverse_clock_margin": 0.4943719058601201
+        },
+        {
+          "time": 0.2,
+          "minimum_hamiltonian": 0.6785568692957443,
+          "minimum_added_potential": 0.028161832241613123,
+          "minimum_clock_margin": 0.03882783927469068,
+          "minimum_inverse_clock_margin": 0.550189138600857
+        }
+      ]
+    }
+  ],
+  "flow_cases": [
+    {
+      "capacity": 2,
+      "epsilon": 0.1,
+      "dimension": 28,
+      "samples": [
+        {
+          "time": -0.2,
+          "unitarity_error": 2.4889783430674563e-13,
+          "constraint_error": 1.0962234243389664e-16,
+          "energy_derivative_cancellation_error": 4.418155361328761e-15,
+          "minimum_energy_source": 0.03686585423698211
+        },
+        {
+          "time": -0.1,
+          "unitarity_error": 8.451981790043502e-14,
+          "constraint_error": 1.0962234243389585e-16,
+          "energy_derivative_cancellation_error": 4.49276249263288e-15,
+          "minimum_energy_source": 0.04502805604698087
+        },
+        {
+          "time": 0.0,
+          "unitarity_error": 0.0,
+          "constraint_error": 1.0962234243389494e-16,
+          "energy_derivative_cancellation_error": 2.1006472241710698e-16,
+          "minimum_energy_source": 0.054997391850372834
+        },
+        {
+          "time": 0.1,
+          "unitarity_error": 2.498025502577792e-13,
+          "constraint_error": 1.096223424338935e-16,
+          "energy_derivative_cancellation_error": 5.615468285915242e-15,
+          "minimum_energy_source": 0.06717396609766048
+        },
+        {
+          "time": 0.2,
+          "unitarity_error": 6.365152617182433e-13,
+          "constraint_error": 1.0962234243389146e-16,
+          "energy_derivative_cancellation_error": 5.7426786676091116e-15,
+          "minimum_energy_source": 0.08204646746823999
+        }
+      ],
+      "all_state_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_increase": 0.004126175559856792,
+          "minimum_energy_growth_margin": 0.10596175084667506,
+          "minimum_evolved_clock_margin": 0.3359933787728396,
+          "minimum_evolved_inverse_margin": 7.144121963430963
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_increase": 0.009459606489831459,
+          "minimum_energy_growth_margin": 0.2357068837368397,
+          "minimum_evolved_clock_margin": 0.6725695183297944,
+          "minimum_evolved_inverse_margin": 7.144715436351968
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_increase": 0.01659260191347363,
+          "minimum_energy_growth_margin": 0.3951369075464349,
+          "minimum_evolved_clock_margin": 1.063717320729168,
+          "minimum_evolved_inverse_margin": 9.02130796445535
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_increase": 0.026242878280858833,
+          "minimum_energy_growth_margin": 0.5919256467867084,
+          "minimum_evolved_clock_margin": 1.522290029714877,
+          "minimum_evolved_inverse_margin": 11.319337474963227
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_increase": 0.005039712415621102,
+          "minimum_energy_growth_margin": 0.1059804991091441,
+          "minimum_evolved_clock_margin": 0.3486604170535106,
+          "minimum_evolved_inverse_margin": 5.806431922755817
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_increase": 0.011553571913560446,
+          "minimum_energy_growth_margin": 0.2359054475049686,
+          "minimum_evolved_clock_margin": 0.690778128061584,
+          "minimum_evolved_inverse_margin": 7.378655356035614
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.020262106509763435,
+          "minimum_energy_growth_margin": 0.39600420156198535,
+          "minimum_evolved_clock_margin": 1.0883234104162838,
+          "minimum_evolved_inverse_margin": 9.302265028545646
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_increase": 0.0061554997041767655,
+          "minimum_energy_growth_margin": 0.10600842109164975,
+          "minimum_evolved_clock_margin": 0.3636528998342743,
+          "minimum_evolved_inverse_margin": 6.023563128256924
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_increase": 0.014110755738470378,
+          "minimum_energy_growth_margin": 0.23619911568641125,
+          "minimum_evolved_clock_margin": 0.7116174973643699,
+          "minimum_evolved_inverse_margin": 7.637296812275288
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.007518308180638349,
+          "minimum_energy_growth_margin": 0.10604997168302574,
+          "minimum_evolved_clock_margin": 0.38146313009822996,
+          "minimum_evolved_inverse_margin": 6.2604657238169565
+        }
+      ]
+    },
+    {
+      "capacity": 2,
+      "epsilon": 1.0,
+      "dimension": 28,
+      "samples": [
+        {
+          "time": -0.2,
+          "unitarity_error": 2.28285257480019e-13,
+          "constraint_error": 1.0962234243389642e-16,
+          "energy_derivative_cancellation_error": 4.431913139902137e-15,
+          "minimum_energy_source": 0.03588247731684692
+        },
+        {
+          "time": -0.1,
+          "unitarity_error": 1.4083313583337678e-13,
+          "constraint_error": 1.0962234243389641e-16,
+          "energy_derivative_cancellation_error": 4.648337461309787e-15,
+          "minimum_energy_source": 0.04382695676441703
+        },
+        {
+          "time": 0.0,
+          "unitarity_error": 0.0,
+          "constraint_error": 1.0962234243389494e-16,
+          "energy_derivative_cancellation_error": 1.7929146969229796e-16,
+          "minimum_energy_source": 0.05353036587382448
+        },
+        {
+          "time": 0.1,
+          "unitarity_error": 3.143491049341034e-13,
+          "constraint_error": 1.0962234243389297e-16,
+          "energy_derivative_cancellation_error": 7.333113271471369e-15,
+          "minimum_energy_source": 0.06538213652361223
+        },
+        {
+          "time": 0.2,
+          "unitarity_error": 5.90425643520028e-13,
+          "constraint_error": 1.0962234243389178e-16,
+          "energy_derivative_cancellation_error": 7.870901243219763e-15,
+          "minimum_energy_source": 0.07985792188434403
+        }
+      ],
+      "all_state_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_increase": 0.004019061418515695,
+          "minimum_energy_growth_margin": 0.10595909252980283,
+          "minimum_evolved_clock_margin": 0.32866181438108594,
+          "minimum_evolved_inverse_margin": 7.080093483239112
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_increase": 0.009234595549986173,
+          "minimum_energy_growth_margin": 0.2356790518189838,
+          "minimum_evolved_clock_margin": 0.661792197734376,
+          "minimum_evolved_inverse_margin": 7.0816540385070805
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_increase": 0.016258809443302207,
+          "minimum_energy_growth_margin": 0.3950183714890485,
+          "minimum_evolved_clock_margin": 1.048606831705711,
+          "minimum_evolved_inverse_margin": 8.946150234215315
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_increase": 0.025846298594216867,
+          "minimum_energy_growth_margin": 0.5915928978462278,
+          "minimum_evolved_clock_margin": 1.502065318117559,
+          "minimum_evolved_inverse_margin": 11.229398129550729
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_increase": 0.0049088820468764114,
+          "minimum_energy_growth_margin": 0.1059765444871077,
+          "minimum_evolved_clock_margin": 0.3401827137894033,
+          "minimum_evolved_inverse_margin": 5.7456049457182425
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_increase": 0.011278719740739341,
+          "minimum_energy_growth_margin": 0.23586451695783145,
+          "minimum_evolved_clock_margin": 0.6784328062818102,
+          "minimum_evolved_inverse_margin": 7.306004571334332
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.019854359476091633,
+          "minimum_energy_growth_margin": 0.3958348856981554,
+          "minimum_evolved_clock_margin": 1.0711123862782845,
+          "minimum_evolved_inverse_margin": 9.215529791131486
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_increase": 0.00599570287392288,
+          "minimum_energy_growth_margin": 0.1060025456889961,
+          "minimum_evolved_clock_margin": 0.3538627003269546,
+          "minimum_evolved_inverse_margin": 5.954012393694953
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_increase": 0.01377506165691673,
+          "minimum_energy_growth_margin": 0.23613935150363663,
+          "minimum_evolved_clock_margin": 0.6975225099434965,
+          "minimum_evolved_inverse_margin": 7.55412747656336
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.007323133376832554,
+          "minimum_energy_growth_margin": 0.10604125954681709,
+          "minimum_evolved_clock_margin": 0.3701634750500983,
+          "minimum_evolved_inverse_margin": 6.181447070591949
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "epsilon": 0.1,
+      "dimension": 84,
+      "samples": [
+        {
+          "time": -0.2,
+          "unitarity_error": 7.105837727527776e-13,
+          "constraint_error": 7.993958509233597e-16,
+          "energy_derivative_cancellation_error": 1.487215623642011e-14,
+          "minimum_energy_source": 0.034610386690721
+        },
+        {
+          "time": -0.1,
+          "unitarity_error": 1.0577271835314673e-12,
+          "constraint_error": 7.993958509233106e-16,
+          "energy_derivative_cancellation_error": 1.2729711798866716e-14,
+          "minimum_energy_source": 0.042273221765033335
+        },
+        {
+          "time": 0.0,
+          "unitarity_error": 0.0,
+          "constraint_error": 7.993958509233398e-16,
+          "energy_derivative_cancellation_error": 6.95766106944622e-16,
+          "minimum_energy_source": 0.05163262966013072
+        },
+        {
+          "time": 0.1,
+          "unitarity_error": 8.820255462731152e-12,
+          "constraint_error": 7.993958509231271e-16,
+          "energy_derivative_cancellation_error": 2.7480352343020378e-14,
+          "minimum_energy_source": 0.06306423627793199
+        },
+        {
+          "time": 0.2,
+          "unitarity_error": 1.8609209871155697e-12,
+          "constraint_error": 7.993958509232908e-16,
+          "energy_derivative_cancellation_error": 1.7966787030146287e-14,
+          "minimum_energy_source": 0.07702683213115036
+        }
+      ],
+      "all_state_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_increase": 0.003904514365754719,
+          "minimum_energy_growth_margin": 0.10424327011348998,
+          "minimum_evolved_clock_margin": 0.37042939633079325,
+          "minimum_evolved_inverse_margin": 7.379419816384311
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_increase": 0.009149422178786483,
+          "minimum_energy_growth_margin": 0.23235191616786893,
+          "minimum_evolved_clock_margin": 0.7302675244481489,
+          "minimum_evolved_inverse_margin": 7.379296867140053
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_increase": 0.016554358085772932,
+          "minimum_energy_growth_margin": 0.3910414917323448,
+          "minimum_evolved_clock_margin": 1.1400694689681203,
+          "minimum_evolved_inverse_margin": 9.329288817690003
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_increase": 0.0270908473158754,
+          "minimum_energy_growth_margin": 0.5889072586737495,
+          "minimum_evolved_clock_margin": 1.61463294413677,
+          "minimum_evolved_inverse_margin": 11.719541972064961
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_increase": 0.004768957939347798,
+          "minimum_energy_growth_margin": 0.10428920899190541,
+          "minimum_evolved_clock_margin": 0.38466012742327754,
+          "minimum_evolved_inverse_margin": 6.0298647189809635
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_increase": 0.01117389640116627,
+          "minimum_energy_growth_margin": 0.23282371850583422,
+          "minimum_evolved_clock_margin": 0.7522156008262508,
+          "minimum_evolved_inverse_margin": 7.670935060025138
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.02020617278082191,
+          "minimum_energy_growth_margin": 0.39291020279981925,
+          "minimum_evolved_clock_margin": 1.170246346253705,
+          "minimum_evolved_inverse_margin": 9.679867477659549
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_increase": 0.0058247624017606645,
+          "minimum_energy_growth_margin": 0.10435734951292203,
+          "minimum_evolved_clock_margin": 0.40115448308975754,
+          "minimum_evolved_inverse_margin": 6.300076637568295
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_increase": 0.013645295792472756,
+          "minimum_energy_growth_margin": 0.23350338388730252,
+          "minimum_evolved_clock_margin": 0.7766451460403657,
+          "minimum_evolved_inverse_margin": 7.9926531163076575
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.007114267989987527,
+          "minimum_energy_growth_margin": 0.10445809253245372,
+          "minimum_evolved_clock_margin": 0.42038976115891424,
+          "minimum_evolved_inverse_margin": 6.593695539879172
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "epsilon": 1.0,
+      "dimension": 84,
+      "samples": [
+        {
+          "time": -0.2,
+          "unitarity_error": 7.190585018405862e-13,
+          "constraint_error": 7.993958509233591e-16,
+          "energy_derivative_cancellation_error": 1.2707262902792202e-14,
+          "minimum_energy_source": 0.03321548191000166
+        },
+        {
+          "time": -0.1,
+          "unitarity_error": 3.2903590462126344e-12,
+          "constraint_error": 7.993958509234317e-16,
+          "energy_derivative_cancellation_error": 1.4273331268223268e-14,
+          "minimum_energy_source": 0.0405694812185019
+        },
+        {
+          "time": 0.0,
+          "unitarity_error": 0.0,
+          "constraint_error": 7.993958509233398e-16,
+          "energy_derivative_cancellation_error": 5.243287870287013e-16,
+          "minimum_energy_source": 0.049551676257396655
+        },
+        {
+          "time": 0.1,
+          "unitarity_error": 9.379221988967135e-12,
+          "constraint_error": 7.993958509231152e-16,
+          "energy_derivative_cancellation_error": 1.9401415551856424e-14,
+          "minimum_energy_source": 0.06052255405222966
+        },
+        {
+          "time": 0.2,
+          "unitarity_error": 1.9190244446389514e-12,
+          "constraint_error": 7.99395850923291e-16,
+          "energy_derivative_cancellation_error": 3.0157544820502824e-14,
+          "minimum_energy_source": 0.07392241445030895
+        }
+      ],
+      "all_state_comparisons": [
+        {
+          "start": -0.2,
+          "end": -0.1,
+          "minimum_energy_increase": 0.0037486219573902918,
+          "minimum_energy_growth_margin": 0.10423550790074412,
+          "minimum_evolved_clock_margin": 0.3571014859851303,
+          "minimum_evolved_inverse_margin": 7.249334254163375
+        },
+        {
+          "start": -0.2,
+          "end": 0.0,
+          "minimum_energy_increase": 0.008794535880386728,
+          "minimum_energy_growth_margin": 0.23227466207348393,
+          "minimum_evolved_clock_margin": 0.710059140075995,
+          "minimum_evolved_inverse_margin": 7.2511401027926325
+        },
+        {
+          "start": -0.2,
+          "end": 0.1,
+          "minimum_energy_increase": 0.015943756256591248,
+          "minimum_energy_growth_margin": 0.3907607109636719,
+          "minimum_evolved_clock_margin": 1.1117293351427566,
+          "minimum_evolved_inverse_margin": 9.175886017604961
+        },
+        {
+          "start": -0.2,
+          "end": 0.2,
+          "minimum_energy_increase": 0.026158161248549628,
+          "minimum_energy_growth_margin": 0.5884062328594679,
+          "minimum_evolved_clock_margin": 1.577100847071101,
+          "minimum_evolved_inverse_margin": 11.534740165826895
+        },
+        {
+          "start": -0.1,
+          "end": 0.0,
+          "minimum_energy_increase": 0.004578563642138633,
+          "minimum_energy_growth_margin": 0.10427774360369209,
+          "minimum_evolved_clock_margin": 0.36942915661470627,
+          "minimum_evolved_inverse_margin": 5.907318182810757
+        },
+        {
+          "start": -0.1,
+          "end": 0.1,
+          "minimum_energy_increase": 0.010741040038481971,
+          "minimum_energy_growth_margin": 0.23271503635339644,
+          "minimum_evolved_clock_margin": 0.7293168094417105,
+          "minimum_evolved_inverse_margin": 7.524202371369446
+        },
+        {
+          "start": -0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.019466725364039265,
+          "minimum_energy_growth_margin": 0.39257731802402573,
+          "minimum_evolved_clock_margin": 1.1382908444867665,
+          "minimum_evolved_inverse_margin": 9.503998335032978
+        },
+        {
+          "start": 0.0,
+          "end": 0.1,
+          "minimum_energy_increase": 0.0055922415676420995,
+          "minimum_energy_growth_margin": 0.10434050714308156,
+          "minimum_evolved_clock_margin": 0.3837733292889832,
+          "minimum_evolved_inverse_margin": 6.161189067708689
+        },
+        {
+          "start": 0.0,
+          "end": 0.2,
+          "minimum_energy_increase": 0.013117822706580195,
+          "minimum_energy_growth_margin": 0.23335651778558558,
+          "minimum_evolved_clock_margin": 0.7508031512021647,
+          "minimum_evolved_inverse_margin": 7.826254198605769
+        },
+        {
+          "start": 0.1,
+          "end": 0.2,
+          "minimum_energy_increase": 0.006830321073229051,
+          "minimum_energy_growth_margin": 0.10443356648401222,
+          "minimum_evolved_clock_margin": 0.40056615554951264,
+          "minimum_evolved_inverse_margin": 6.437766043490671
+        }
+      ]
+    }
+  ],
+  "homogeneous_trial_vectors": [
+    {
+      "epsilon": "0.01",
+      "hbar": "0.2",
+      "norm_square": "0.0863800712534525868385495837906",
+      "clock_form_integral": "0.0300929927833198627239011392259",
+      "potential_form_integral": "0.752961081428254031773500102451",
+      "potential_integral_check_error": "1.3363824e-51",
+      "normalized_unit_vacuum_energy": "8.89102737095990667006182158416",
+      "uniform_norm_floor": "0.0129924735219226192841847262397",
+      "uniform_form_ceiling": "1.52675310189273330749608862309",
+      "regulator_uniform_energy_bound": "116.708926119114680599206181565",
+      "momentum_modulations": [
+        {
+          "momentum": -1,
+          "potential_form_integral": "0.21429990953509813741833957447",
+          "normalized_unit_vacuum_energy": "2.65508470413065511653620369617",
+          "regulator_uniform_energy_bound": "75.2494479847736300290418155095"
+        },
+        {
+          "momentum": 0,
+          "potential_form_integral": "0.752961081428254031773500102451",
+          "normalized_unit_vacuum_energy": "8.89102737095990667006182158416",
+          "regulator_uniform_energy_bound": "116.708926119114680599206181565"
+        },
+        {
+          "momentum": 1,
+          "potential_form_integral": "2.64559323135295306230594789756",
+          "normalized_unit_vacuum_energy": "30.801545879001205173919994136",
+          "regulator_uniform_energy_bound": "262.380352482324104100255274682"
+        }
+      ]
+    },
+    {
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "norm_square": "0.147285307798072970594666908963",
+      "clock_form_integral": "0.0502499119872547425872303364102",
+      "potential_form_integral": "0.752961081428254031773500102451",
+      "potential_integral_check_error": "1.3363824e-51",
+      "normalized_unit_vacuum_energy": "5.28284897559932728325417514232",
+      "uniform_norm_floor": "0.0129924735219226192841847262397",
+      "uniform_form_ceiling": "1.52675310189273330749608862309",
+      "regulator_uniform_energy_bound": "116.708926119114680599206181565",
+      "momentum_modulations": [
+        {
+          "momentum": -1,
+          "potential_form_integral": "0.21429990953509813741833957447",
+          "normalized_unit_vacuum_energy": "1.62558553265187296457725131954",
+          "regulator_uniform_energy_bound": "75.2494479847736300290418155095"
+        },
+        {
+          "momentum": 0,
+          "potential_form_integral": "0.752961081428254031773500102451",
+          "normalized_unit_vacuum_energy": "5.28284897559932728325417514232",
+          "regulator_uniform_energy_bound": "116.708926119114680599206181565"
+        },
+        {
+          "momentum": 1,
+          "potential_form_integral": "2.64559323135295306230594789756",
+          "normalized_unit_vacuum_energy": "18.1329572329652501523518183779",
+          "regulator_uniform_energy_bound": "262.380352482324104100255274682"
+        }
+      ]
+    },
+    {
+      "epsilon": "1.0",
+      "hbar": "0.2",
+      "norm_square": "0.405154974802006311346893218213",
+      "clock_form_integral": "0.239548948152847026786382875533",
+      "potential_form_integral": "0.752961081428254031773500102451",
+      "potential_integral_check_error": "1.3363824e-51",
+      "normalized_unit_vacuum_energy": "2.1540783398529697465073496144",
+      "uniform_norm_floor": "0.0129924735219226192841847262397",
+      "uniform_form_ceiling": "1.52675310189273330749608862309",
+      "regulator_uniform_energy_bound": "116.708926119114680599206181565",
+      "momentum_modulations": [
+        {
+          "momentum": -1,
+          "potential_form_integral": "0.21429990953509813741833957447",
+          "normalized_unit_vacuum_energy": "0.82455950041037809744714275551",
+          "regulator_uniform_energy_bound": "75.2494479847736300290418155095"
+        },
+        {
+          "momentum": 0,
+          "potential_form_integral": "0.752961081428254031773500102451",
+          "normalized_unit_vacuum_energy": "2.1540783398529697465073496144",
+          "regulator_uniform_energy_bound": "116.708926119114680599206181565"
+        },
+        {
+          "momentum": 1,
+          "potential_form_integral": "2.64559323135295306230594789756",
+          "normalized_unit_vacuum_energy": "6.8254566213355121923385709082",
+          "regulator_uniform_energy_bound": "262.380352482324104100255274682"
+        }
+      ]
+    }
+  ],
+  "fourier_modulation_samples": [
+    {
+      "momentum": "-1",
+      "frequency": -1,
+      "transform_error": "0.0"
+    },
+    {
+      "momentum": "-1",
+      "frequency": 0,
+      "transform_error": "8.3523897e-53"
+    },
+    {
+      "momentum": "-1",
+      "frequency": 1,
+      "transform_error": "7.5448833e-55"
+    },
+    {
+      "momentum": "0.5",
+      "frequency": -1,
+      "transform_error": "5.2202436e-54"
+    },
+    {
+      "momentum": "0.5",
+      "frequency": 0,
+      "transform_error": "0.0"
+    },
+    {
+      "momentum": "0.5",
+      "frequency": 1,
+      "transform_error": "0.0"
+    },
+    {
+      "momentum": "1",
+      "frequency": -1,
+      "transform_error": "7.5448833e-55"
+    },
+    {
+      "momentum": "1",
+      "frequency": 0,
+      "transform_error": "8.3523897e-53"
+    },
+    {
+      "momentum": "1",
+      "frequency": 1,
+      "transform_error": "0.0"
+    }
+  ],
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da",
+    "scripts/inverse_clock_parity_audit.py": "43c0ddbb37ff0a5021cb8a64c28d972c57124ecb7c6c1cbd7bd47a43e153d156",
+    "UnifiedTheory/Audit/KFCausalGravityPairCoercivity.lean": "54348ed81542838ecfee8ed2a0f987f1019e64638242bb70da0aed9e802dabe1",
+    "UnifiedTheory/Audit/KFCausalInverseClockEnergy.lean": "7fe949640f029747228db95b9cdec39e9666fbb189a759e2a5e24a5f8bce87c4",
+    "UnifiedTheory/Audit/KFCausalOccupationParity.lean": "458f93c0149b4f1a7921a37cbc88d635047e9d4f955f3646dbb71a1e857d9ba4",
+    "UnifiedTheory/Audit/KFCausalUniformInverseClock.lean": "b661d91479a5e5c4244b5c23fc933755187cd0a9b06680bf016738ffa0048a4d",
+    "scripts/longitudinal_domain_audit.py": "4e4134870fbc864a2508f4063042e5e87e542dcd003a79b53b7665b243222b9e",
+    "UnifiedTheory/Audit/KFCausalLongitudinalDomain.lean": "7eec07207bcf1f18f2c10cad77dfed6a20775995888fe49b10425922d45f40dd",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalChart.lean": "152bf170505f4fce2327c91e620a11641906493b4befbc172430ac9fac02db94",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalPullback.lean": "3fa015346d21f8cf26982c9c2164c0c181d24ce0c56a00ad1884f5a744906982",
+    "scripts/regularized_constraint_spin_model.py": "633956425de4f4d9b19bda57e51476416d8deea3ea57d7a1f1d92595985be63d",
+    "scripts/regularized_spin_dynamics_audit.py": "ea3e76a6a19225d60061b002de3e55a2204393bd4d3436ae5712aa97dcf35579",
+    "UnifiedTheory/Audit/KFCausalRegularizedClockDatum.lean": "38e2b7491651aa9a147f4be6e32ed20cd753d15655ea3d5c8739c626724961fc",
+    "UnifiedTheory/Audit/KFCausalRegularizedSpinDynamics.lean": "ad93f97b6bdbe79827017336f67381a920d95e61673e32b860c62a72cd5f5521",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianCore.lean": "4866fabe9a33015aa03e40644f5bcc156c589f35805dd51a10b038286cdaa92d",
+    "UnifiedTheory/Audit/KFCausalRegularizedTrialBounds.lean": "43b898c82a4fe7242024383ab20e7c5a3b0fc786a764d7928bc600796807fa27",
+    "UnifiedTheory/Audit/KFCausalFourierUniqueness.lean": "29bb4bce91b943c7005c34091474fae7b03ec2a810948903011315f900088a30",
+    "UnifiedTheory/Audit/KFCausalRegularizedGaussianTotality.lean": "2a1af3b76f1d7ebbe475ed2188241b649da50e0e035bbc4bdf1de887b35f25d6",
+    "UnifiedTheory/Audit/KFCausalRegularizedFormDomain.lean": "4a6154adcac084ff62f2238ab1a7f74b7b5763f9c31aa89d8eb4334525466b67"
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "mpmath": "1.3.0"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "The full finite regularized six-mode Hamiltonian has proved unique global unitary, constraint-preserving dynamics and energy/clock bounds. The homogeneous infinite-coordinate form has a constructed dense linear domain and normalized Gaussian-dressed states with regulator-uniform initial norm and energy bounds. Form closedness, the full infinite Hamiltonian domain, capacity/regulator limits, physical identification and a TOE remain unproved."
+}

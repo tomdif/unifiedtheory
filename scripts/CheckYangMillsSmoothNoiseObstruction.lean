@@ -1,0 +1,132 @@
+import UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath
+import UnifiedTheory.Clay.YangMills.LogarithmicUltravioletGrowth
+import UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor
+import UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower
+import UnifiedTheory.Clay.YangMills.WilsonCellWeightLower
+import UnifiedTheory.Clay.YangMills.WilsonCompactCellCount
+import UnifiedTheory.Clay.YangMills.WilsonIndependentVariance
+import UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment
+import UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction
+import UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower
+
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.period
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.spacing
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.coupling
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.period_gt_one
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.periodNeZero
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.periodFact
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.period_even
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.spacing_pos
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.cast_successor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.spacing_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.physical_size
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.physical_size_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.coupling_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.coupling_log_spacing
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.variance_prefactor
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.variance_prefactor_lower
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.variance_prefactor_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.ExpandingLogarithmicPath.variance_prefactor_tendsto_of_log_upper
+#print axioms UnifiedTheory.Clay.YangMills.LogarithmicUltravioletGrowth.inverse_square_lower
+#print axioms UnifiedTheory.Clay.YangMills.LogarithmicUltravioletGrowth.reciprocal_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.LogarithmicUltravioletGrowth.inverse_fourth_div_square_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.six_projection
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.weighted_projection
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.localMass
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.localMass_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.exterior_projection
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.annealed_of_good_floor
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.eventual_good_coupling
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.fiberVariance_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2PositiveSourceFloor.annealed_variance_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.haarIsHaar
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.haarInv
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.axis_square_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.axis_variance_integral
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.axis_variance_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.covariance_rotated
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.covariance_radial_domination
+#print axioms UnifiedTheory.Clay.YangMills.SU2RadialCovarianceLower.covariance_radial_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessBump
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_apply
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_real
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_compact
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witnessTest_eq_zero_of_norm_ge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.weight_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.linkWeight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.linkWeight_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.linkWeight_eq_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.incidentLinks_card_four
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.sum_linkWeight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.link_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.linkWeight_square_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.physical_weight_square_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCellWeightLower.witness_weight_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.radius
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.interval
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.cube
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.cells
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.interval_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.cube_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.cells_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.cells_card_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.sample_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCompactCellCount.weight_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.covariance_sub_const
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.covariance_le_square_shift
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.source_covariance_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.Q
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.State
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.sourceMap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.local_covariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.block_covariance_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.block_variance_mean_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.independent_variance_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.all_link_variance_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonIndependentVariance.renormalized_second_moment_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction.moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction.eventual_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction.moment_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction.no_uniform_second_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonLogarithmicMomentObstruction.explicit_path_moment_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.complexRealNormedSpace
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.oneIndex
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.onePoint
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.onePoint_apply
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.onePoint_preserves_volume
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.oneTest
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.oneTest_apply
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.oneTest_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.squareTest
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.one_observable_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.coefficient_real
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.one_real_observable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.one_affine_observable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.hierarchy_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.proposedSequence_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.doubledPeriodFact
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.proposedSequence_witness_moment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.proposed_norm_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalSecondMoment.no_common_second_seminorm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.secondMoment
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.annealed_sum_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.positive_weights_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.physical_test_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.witness_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSmoothSourceObstruction.classical_witness_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.occupiedLinks
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.occupied_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.linkWeight_zero_outside
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.occupied_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.supported_square_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.supported_secondMoment_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSupportedWeightLower.classical_compact_witness_lower

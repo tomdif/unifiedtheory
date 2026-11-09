@@ -1,0 +1,1543 @@
+{
+  "matrix_cases": [
+    {
+      "capacity": 1,
+      "hbar": 0.1,
+      "dimension": 7,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 4.710384010726379e-16,
+        "clock_parity_congruence": 4.710384010726379e-16,
+        "exact_inverse": 1.0235787745971167e-15,
+        "exact_loops": 0.0,
+        "exact_gravity_pair": 2.9655654663338704e-17,
+        "clock_positive_remainder": 5.878127840437145e-16
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -3.7575684684753905e-16,
+        "inverse_minus_parity": -3.7575684684753905e-16,
+        "gravity_pair_minus_parity": -5.55514718427444e-17
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.018393972058572117,
+          "minimum_uniform_inverse_margin": 0.44904878225858963
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.03351600230178197,
+          "minimum_uniform_inverse_margin": 0.43896234658841443
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.42699788153617146,
+          "minimum_boundary_corrected_margin": -1.2030716676526175e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4361139992218561,
+          "minimum_boundary_corrected_margin": -1.1795022059898577e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.451027680464683,
+          "minimum_boundary_corrected_margin": -1.0032422211342322e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.406279084181518,
+      "proved_capacity_uniform_coefficient": 0.05
+    },
+    {
+      "capacity": 1,
+      "hbar": 0.2,
+      "dimension": 7,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 4.710849588353469e-16,
+        "clock_parity_congruence": 4.710775521534083e-16,
+        "exact_inverse": 9.421369191454216e-16,
+        "exact_loops": 0.0,
+        "exact_gravity_pair": 5.054568667899559e-17,
+        "clock_positive_remainder": 5.028663855320258e-16
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.1823123963086967e-16,
+        "inverse_minus_parity": -4.2800809244522167e-16,
+        "gravity_pair_minus_parity": 0.0
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.4547369477085954
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.42976509416944597
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4012417329742585,
+          "minimum_boundary_corrected_margin": -1.972866293807519e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.41465965588981873,
+          "minimum_boundary_corrected_margin": -1.309938714700483e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.43483368182925464,
+          "minimum_boundary_corrected_margin": -1.5234178455602625e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.42255778232568386,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 1,
+      "hbar": 0.5,
+      "dimension": 7,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 6.280661018683012e-16,
+        "clock_parity_congruence": 6.280661018683012e-16,
+        "exact_inverse": 1.337114782023804e-15,
+        "exact_loops": 0.0,
+        "exact_gravity_pair": 6.938893903907228e-18,
+        "clock_positive_remainder": 6.4796043696850615e-16
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -4.554760842971663e-16,
+        "inverse_minus_parity": -4.554760842971663e-16,
+        "gravity_pair_minus_parity": -1.1102230246251565e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.09196986029286058,
+          "minimum_uniform_inverse_margin": 0.5000924952447031
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.16758001150890983,
+          "minimum_uniform_inverse_margin": 0.4262745145006841
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.34527351941881024,
+          "minimum_boundary_corrected_margin": -1.369680859510722e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.3685638410733527,
+          "minimum_boundary_corrected_margin": -1.247909256460763e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.3749999999999999,
+          "minimum_boundary_corrected_margin": -8.954744585449937e-17
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.5206027282924801,
+      "proved_capacity_uniform_coefficient": 0.25
+    },
+    {
+      "capacity": 1,
+      "hbar": 1.0,
+      "dimension": 7,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 3.14520997505447e-16,
+        "clock_parity_congruence": 4.0050165297039854e-16,
+        "exact_inverse": 6.228408609297384e-16,
+        "exact_loops": 0.0,
+        "exact_gravity_pair": 2.4196749845665633e-16,
+        "clock_positive_remainder": 4.965068306494546e-16
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.300363052379129e-16,
+        "inverse_minus_parity": -2.4586345108430365e-16,
+        "gravity_pair_minus_parity": -2.298192161376422e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.5660602794142787
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.4148399769821802
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.2499999999999999,
+          "minimum_boundary_corrected_margin": -2.0956530868807553e-17
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.2499999999999999,
+          "minimum_boundary_corrected_margin": 6.775738970428195e-17
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.2499999999999999,
+          "minimum_boundary_corrected_margin": 2.498650813205646e-17
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.7302636543054206,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 1,
+      "hbar": 2.0,
+      "dimension": 7,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.5724074195528753e-16,
+        "clock_parity_congruence": 1.5724074195528753e-16,
+        "exact_inverse": 3.190130391928229e-16,
+        "exact_loops": 0.0,
+        "exact_gravity_pair": 1.1102230246251565e-16,
+        "clock_positive_remainder": 4.577566798522237e-16
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -4.625662451286853e-17,
+        "inverse_minus_parity": -4.625662451286853e-17,
+        "gravity_pair_minus_parity": -4.440892098500626e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.8160602794142786
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.6648399769821801
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.4999999999999998,
+          "minimum_boundary_corrected_margin": -4.777236989189209e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.4999999999999998,
+          "minimum_boundary_corrected_margin": -4.11505107342751e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.4999999999999998,
+          "minimum_boundary_corrected_margin": -9.495208943845028e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.9999999999999998,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 2,
+      "hbar": 0.1,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.4248260667511429e-15,
+        "clock_parity_congruence": 1.3102232926356663e-15,
+        "exact_inverse": 2.407280860007709e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 1.747680094658922e-16,
+        "clock_positive_remainder": 1.4637160433113805e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -5.149143304551927e-16,
+        "inverse_minus_parity": -8.881788129421782e-16,
+        "gravity_pair_minus_parity": -5.55514718427444e-17
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.018393972058572117,
+          "minimum_uniform_inverse_margin": 0.4288613336524345
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.03351600230178197,
+          "minimum_uniform_inverse_margin": 0.4220019938175106
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4126196785770084,
+          "minimum_boundary_corrected_margin": 1.2296329251456413e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.42783328534054316,
+          "minimum_boundary_corrected_margin": 5.823315872504857e-17
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4532821273289651,
+          "minimum_boundary_corrected_margin": 8.986613836505462e-17
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.35112328659967484,
+      "proved_capacity_uniform_coefficient": 0.05
+    },
+    {
+      "capacity": 2,
+      "hbar": 0.2,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.4636708958113788e-15,
+        "clock_parity_congruence": 1.784917509634845e-15,
+        "exact_inverse": 2.5108133489582773e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 1.71860237566754e-16,
+        "clock_positive_remainder": 1.9072746207504078e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.1823123963086967e-16,
+        "inverse_minus_parity": -9.478677888176615e-16,
+        "gravity_pair_minus_parity": -4.0343788427911964e-17
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.4554625233069181
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.4324962127192912
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4059072573054518,
+          "minimum_boundary_corrected_margin": 6.347641366148494e-18
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4279590376414637,
+          "minimum_boundary_corrected_margin": 1.0008122982623013e-17
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4618493524114766,
+          "minimum_boundary_corrected_margin": -7.459637386081875e-17
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.382326225828465,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 2,
+      "hbar": 0.5,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 2.7192194985711916e-15,
+        "clock_parity_congruence": 2.1353884202916163e-15,
+        "exact_inverse": 3.59687956463824e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 3.512889995240559e-16,
+        "clock_positive_remainder": 2.35726389603414e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -4.554760842971663e-16,
+        "inverse_minus_parity": -1.8741991437486167e-15,
+        "gravity_pair_minus_parity": -1.5883232640900318e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.09196986029286058,
+          "minimum_uniform_inverse_margin": 0.5266837608553079
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.16758001150890983,
+          "minimum_uniform_inverse_margin": 0.47534076512231344
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.40265201273801826,
+          "minimum_boundary_corrected_margin": -6.648264660870551e-17
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.4377259633763351,
+          "minimum_boundary_corrected_margin": -3.1117926317883285e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.4639261427005507,
+          "minimum_boundary_corrected_margin": 2.013043938814291e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.5292942890498875,
+      "proved_capacity_uniform_coefficient": 0.25
+    },
+    {
+      "capacity": 2,
+      "hbar": 1.0,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 2.6574708854421964e-15,
+        "clock_parity_congruence": 2.5754371204802566e-15,
+        "exact_inverse": 2.8320325946254953e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 1.1046579618885443e-15,
+        "clock_positive_remainder": 2.7290944067463696e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -5.337047401315211e-16,
+        "inverse_minus_parity": -1.4392673975215299e-15,
+        "gravity_pair_minus_parity": -4.4233449914293715e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.5895485762959602
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.5212053228881084
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.38736192025370586,
+          "minimum_boundary_corrected_margin": -6.038540748238391e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.4187630536267609,
+          "minimum_boundary_corrected_margin": -2.2902776757307594e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.4375289610338176,
+          "minimum_boundary_corrected_margin": -5.141918406133218e-17
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.8071428175150587,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 2,
+      "hbar": 2.0,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 4.367777232119881e-15,
+        "clock_parity_congruence": 3.1582217811149034e-15,
+        "exact_inverse": 4.600959481375891e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 1.1267533089989422e-15,
+        "clock_positive_remainder": 3.0847422370805075e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.0269947981615988e-16,
+        "inverse_minus_parity": -2.300683346913779e-15,
+        "gravity_pair_minus_parity": -6.936894420716329e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.8906346158505235
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.9266801518790784
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.82510252072978,
+          "minimum_boundary_corrected_margin": -2.1205840274649307e-15
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.8587501098710383,
+          "minimum_boundary_corrected_margin": -1.7105798035259964e-15
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.8823380481815408,
+          "minimum_boundary_corrected_margin": 2.0886725261207627e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 1.3005384544290561,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 3,
+      "hbar": 0.1,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 3.102290125125162e-15,
+        "clock_parity_congruence": 4.509764710076828e-15,
+        "exact_inverse": 6.1977454542485084e-15,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 5.837607536628439e-16,
+        "clock_positive_remainder": 4.424688952999782e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -8.000191056716026e-16,
+        "inverse_minus_parity": -1.2752492465351857e-15,
+        "gravity_pair_minus_parity": -9.431469189512084e-17
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.018393972058572117,
+          "minimum_uniform_inverse_margin": 0.41584224888413435
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.03351600230178197,
+          "minimum_uniform_inverse_margin": 0.4110028954950257
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4031180262239508,
+          "minimum_boundary_corrected_margin": -9.996625829748358e-17
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.42273026094672433,
+          "minimum_boundary_corrected_margin": -4.587109597454667e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4561033913123187,
+          "minimum_boundary_corrected_margin": 2.2203473867380793e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.31453447820345337,
+      "proved_capacity_uniform_coefficient": 0.05
+    },
+    {
+      "capacity": 3,
+      "hbar": 0.2,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 4.224592022074522e-15,
+        "clock_parity_congruence": 3.713741079130145e-15,
+        "exact_inverse": 6.244176782876994e-15,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 7.848622125648918e-16,
+        "clock_positive_remainder": 4.16481926681741e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.5390637914499805e-15,
+        "inverse_minus_parity": -2.7037065651225793e-15,
+        "gravity_pair_minus_parity": -1.4757559315238856e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.45846524262014016
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.43673714218800314
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4114159289108714,
+          "minimum_boundary_corrected_margin": -5.1022842328405646e-17
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4399860636028049,
+          "minimum_boundary_corrected_margin": 3.608214115261848e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.48545587386554057,
+          "minimum_boundary_corrected_margin": 6.63385674950959e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.3576967802704347,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 3,
+      "hbar": 0.5,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 5.761616845492181e-15,
+        "clock_parity_congruence": 5.47250088405714e-15,
+        "exact_inverse": 8.826351458447076e-15,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 1.997130114051924e-15,
+        "clock_positive_remainder": 5.7221688604071704e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.3843541759482449e-15,
+        "inverse_minus_parity": -2.106210150610727e-15,
+        "gravity_pair_minus_parity": -4.2934126176051435e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.09196986029286058,
+          "minimum_uniform_inverse_margin": 0.5745893980820492
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.16758001150890983,
+          "minimum_uniform_inverse_margin": 0.5243059174910673
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.4545514219246792,
+          "minimum_boundary_corrected_margin": 2.3832327393169665e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.5094991356191501,
+          "minimum_boundary_corrected_margin": 1.2501213463908176e-15
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.550083019545546,
+          "minimum_boundary_corrected_margin": 2.1629402504909846e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.5343503614366711,
+      "proved_capacity_uniform_coefficient": 0.25
+    },
+    {
+      "capacity": 3,
+      "hbar": 1.0,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 7.412940220113135e-15,
+        "clock_parity_congruence": 8.026024197310872e-15,
+        "exact_inverse": 1.3856834234344545e-14,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 3.5492425361262693e-15,
+        "clock_positive_remainder": 8.563303557537412e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.2892990348460753e-15,
+        "inverse_minus_parity": -3.329707294269813e-15,
+        "gravity_pair_minus_parity": -7.313229763923623e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.744993718955169
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.6785474507200157
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.5536557386907989,
+          "minimum_boundary_corrected_margin": -1.6832055759221887e-15
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.5811673799967528,
+          "minimum_boundary_corrected_margin": -8.074319865458399e-15
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.6043984346623663,
+          "minimum_boundary_corrected_margin": -7.538918375950232e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.8619345531454132,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 3,
+      "hbar": 2.0,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.0799052960346716e-14,
+        "clock_parity_congruence": 1.3183978414340491e-14,
+        "exact_inverse": 3.428578259466913e-14,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 1.1321009018419086e-14,
+        "clock_positive_remainder": 1.2494325815035072e-14
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.4638866532227362e-15,
+        "inverse_minus_parity": -4.062589888439716e-15,
+        "gravity_pair_minus_parity": -2.055732465687849e-15
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 1.1780208520999098
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 1.2010065924554876
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.117906914209918,
+          "minimum_boundary_corrected_margin": 3.4943843835262112e-15
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.1704152246432624,
+          "minimum_boundary_corrected_margin": -2.124231296631734e-14
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.2138661684325223,
+          "minimum_boundary_corrected_margin": -2.6934846447550947e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 1.5748430144986,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 4,
+      "hbar": 0.1,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 6.0049416845737025e-15,
+        "clock_parity_congruence": 5.681263931684285e-15,
+        "exact_inverse": 1.1981381196899753e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 6.008373522372769e-16,
+        "clock_positive_remainder": 5.770969457521933e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.5248567502363813e-15,
+        "inverse_minus_parity": -2.1042509711543757e-15,
+        "gravity_pair_minus_parity": -1.5317854675457863e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.018393972058572117,
+          "minimum_uniform_inverse_margin": 0.4073678447792507
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.03351600230178197,
+          "minimum_uniform_inverse_margin": 0.40359969615603586
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.39656836977615795,
+          "minimum_boundary_corrected_margin": -1.49345743554761e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.4195315672299792,
+          "minimum_boundary_corrected_margin": -2.713067248747198e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.05,
+          "minimum_uniform_inverse_margin": 0.45917017520880266,
+          "minimum_boundary_corrected_margin": 9.992007221617682e-16
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.28849440866940335,
+      "proved_capacity_uniform_coefficient": 0.05
+    },
+    {
+      "capacity": 4,
+      "hbar": 0.2,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 8.67545287607511e-15,
+        "clock_parity_congruence": 7.491863155072622e-15,
+        "exact_inverse": 1.4216210961321767e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 9.709935609236938e-16,
+        "clock_positive_remainder": 8.006239759902977e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.2476550663326716e-15,
+        "inverse_minus_parity": -2.48819559136275e-15,
+        "gravity_pair_minus_parity": -2.8368723890789434e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.46170611223134994
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.44142702661027977
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4171452981914816,
+          "minimum_boundary_corrected_margin": -2.751330845161392e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.4509823931592527,
+          "minimum_boundary_corrected_margin": -1.3452169105985147e-16
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5058552256593263,
+          "minimum_boundary_corrected_margin": -3.3428542163329473e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.3410196561523364,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 4,
+      "hbar": 0.5,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.107371741793445e-14,
+        "clock_parity_congruence": 1.1088364268834248e-14,
+        "exact_inverse": 1.4042749837795689e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 2.0570518188528856e-15,
+        "clock_positive_remainder": 1.1767950829547373e-14
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.4171208693650498e-15,
+        "inverse_minus_parity": -1.953827040765394e-15,
+        "gravity_pair_minus_parity": -9.51419730680393e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.09196986029286058,
+          "minimum_uniform_inverse_margin": 0.5985577997298344
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.16758001150890983,
+          "minimum_uniform_inverse_margin": 0.5592277867773556
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.49458217058874704,
+          "minimum_boundary_corrected_margin": -1.5975268490590156e-16
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.5603162438803819,
+          "minimum_boundary_corrected_margin": 2.1235500313344836e-15
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.25,
+          "minimum_uniform_inverse_margin": 0.6186299290875531,
+          "minimum_boundary_corrected_margin": -3.5254536721705495e-15
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.5376644207067964,
+      "proved_capacity_uniform_coefficient": 0.25
+    },
+    {
+      "capacity": 4,
+      "hbar": 1.0,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.5959827106731964e-14,
+        "clock_parity_congruence": 1.4333015113060132e-14,
+        "exact_inverse": 1.861768917716734e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 7.424921263460844e-15,
+        "clock_positive_remainder": 1.4338599268260757e-14
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.1436062464505555e-15,
+        "inverse_minus_parity": -4.000563374994926e-15,
+        "gravity_pair_minus_parity": -2.657331518984691e-15
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 0.7698651541556508
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 0.7374610019898502
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.632038274492542,
+          "minimum_boundary_corrected_margin": -1.0536811924446012e-15
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.7020863680750539,
+          "minimum_boundary_corrected_margin": 5.0157206873867035e-15
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 0.7462831581260781,
+          "minimum_boundary_corrected_margin": -1.999094170501576e-14
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.8940356966639648,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 4,
+      "hbar": 2.0,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0,
+        "quartic": 0,
+        "vacuum": 0
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 2.5964155673546257e-14,
+        "clock_parity_congruence": 2.5345033023629163e-14,
+        "exact_inverse": 4.108413023273205e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 1.34157946431373e-14,
+        "clock_positive_remainder": 2.639366986738248e-14
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -3.554917167856035e-15,
+        "inverse_minus_parity": -5.400766893710941e-15,
+        "gravity_pair_minus_parity": -1.4431658943051443e-14
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.18393972058572117,
+          "minimum_uniform_inverse_margin": 1.2670864839451175
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.33516002301781966,
+          "minimum_uniform_inverse_margin": 1.3752264424762117
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.337742515607295,
+          "minimum_boundary_corrected_margin": 1.8707772474216116e-14
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.424924745458427,
+          "minimum_boundary_corrected_margin": -2.0661277608731208e-14
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.5,
+          "minimum_uniform_inverse_margin": 1.4992829347476402,
+          "minimum_boundary_corrected_margin": 2.3679403933496883e-14
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 1.6555734336134982,
+      "proved_capacity_uniform_coefficient": 0.5
+    },
+    {
+      "capacity": 2,
+      "hbar": 0.2,
+      "dimension": 28,
+      "potential_parameters": {
+        "mass2": 0.5,
+        "quartic": 0.1,
+        "vacuum": 0.03
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.4636708958113788e-15,
+        "clock_parity_congruence": 1.784917509634845e-15,
+        "exact_inverse": 2.5108133489582773e-15,
+        "exact_loops": 8.881784197001252e-16,
+        "exact_gravity_pair": 1.71860237566754e-16,
+        "clock_positive_remainder": 1.9072746207504078e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.1823123963086967e-16,
+        "inverse_minus_parity": -9.478677888176615e-16,
+        "gravity_pair_minus_parity": -4.0343788427911964e-17
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.48427903970001
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.48054430312156216
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.472391686669632,
+          "minimum_boundary_corrected_margin": 0.031088340897088704
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5145836199393145,
+          "minimum_boundary_corrected_margin": 0.046078411425893105
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5895587140468345,
+          "minimum_boundary_corrected_margin": 0.0833285390409869
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.4438470067783373,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 3,
+      "hbar": 0.2,
+      "dimension": 84,
+      "potential_parameters": {
+        "mass2": 0.5,
+        "quartic": 0.1,
+        "vacuum": 0.03
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 4.224592022074522e-15,
+        "clock_parity_congruence": 3.713741079130145e-15,
+        "exact_inverse": 6.244176782876994e-15,
+        "exact_loops": 4.824043605111779e-15,
+        "exact_gravity_pair": 7.848622125648918e-16,
+        "clock_positive_remainder": 4.16481926681741e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.5390637914499805e-15,
+        "inverse_minus_parity": -2.7037065651225793e-15,
+        "gravity_pair_minus_parity": -1.4757559315238856e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.4953191687992671
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.4983339897598285
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.49606862155408105,
+          "minimum_boundary_corrected_margin": 0.03209029232690085
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5486179946924505,
+          "minimum_boundary_corrected_margin": 0.04738646290292259
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.6392113359632419,
+          "minimum_boundary_corrected_margin": 0.08520937574377384
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.4291501954363573,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 4,
+      "hbar": 0.2,
+      "dimension": 210,
+      "potential_parameters": {
+        "mass2": 0.5,
+        "quartic": 0.1,
+        "vacuum": 0.03
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 8.67545287607511e-15,
+        "clock_parity_congruence": 7.491863155072622e-15,
+        "exact_inverse": 1.4216210961321767e-14,
+        "exact_loops": 5.291933685841681e-15,
+        "exact_gravity_pair": 9.709935609236938e-16,
+        "clock_positive_remainder": 8.006239759902977e-15
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -1.2476550663326716e-15,
+        "inverse_minus_parity": -2.48819559136275e-15,
+        "gravity_pair_minus_parity": -2.8368723890789434e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.5084515924667677
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.5184543758242073
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5218323023333288,
+          "minimum_boundary_corrected_margin": 0.033248137299172226
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5835161723344156,
+          "minimum_boundary_corrected_margin": 0.04889206757631432
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.6881117687285255,
+          "minimum_boundary_corrected_margin": 0.08731266464344088
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.42089172899377403,
+      "proved_capacity_uniform_coefficient": 0.1
+    },
+    {
+      "capacity": 5,
+      "hbar": 0.2,
+      "dimension": 462,
+      "potential_parameters": {
+        "mass2": 0.5,
+        "quartic": 0.1,
+        "vacuum": 0.03
+      },
+      "identity_errors": {
+        "parity_involution": 0.0,
+        "parity_clock_anticommutation": 0.0,
+        "inverse_parity_congruence": 1.4868371186926215e-14,
+        "clock_parity_congruence": 1.3800733837332662e-14,
+        "exact_inverse": 2.411865175291513e-14,
+        "exact_loops": 1.2047838252593955e-14,
+        "exact_gravity_pair": 2.469973660563024e-15,
+        "clock_positive_remainder": 1.3605829722004877e-14
+      },
+      "minimum_positive_remainders": {
+        "loops_minus_parity": 0.0,
+        "clock_minus_parity": -2.245763361741779e-15,
+        "inverse_minus_parity": -3.481585298066433e-15,
+        "gravity_pair_minus_parity": -5.018976932443607e-16
+      },
+      "time_samples": [
+        {
+          "time": -0.5,
+          "coefficient": 0.036787944117144235,
+          "minimum_uniform_inverse_margin": 0.5233849750952463
+        },
+        {
+          "time": -0.2,
+          "coefficient": 0.06703200460356394,
+          "minimum_uniform_inverse_margin": 0.5405763492362652
+        },
+        {
+          "time": 0.0,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.5493548991741144,
+          "minimum_boundary_corrected_margin": 0.03441716887469074
+        },
+        {
+          "time": 0.2,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.6191196898104199,
+          "minimum_boundary_corrected_margin": 0.050376982847283536
+        },
+        {
+          "time": 0.5,
+          "coefficient": 0.1,
+          "minimum_uniform_inverse_margin": 0.7363547769842534,
+          "minimum_boundary_corrected_margin": 0.08925297836377934
+        }
+      ],
+      "sharp_finite_inverse_coefficient": 0.41573496880931105,
+      "proved_capacity_uniform_coefficient": 0.1
+    }
+  ],
+  "evolution_cases": [
+    {
+      "capacity": 2,
+      "hbar": 0.2,
+      "dimension": 28,
+      "samples": [
+        {
+          "time": -0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.048959734492851,
+          "minimum_evolved_clock_margin": 0.06644539346861644,
+          "unitarity_error": 5.0421770208585014e-14
+        },
+        {
+          "time": -0.2,
+          "inverse_energy_factor": 14.9182469764127,
+          "minimum_evolved_inverse_margin": 7.661857082536316,
+          "minimum_evolved_clock_margin": 0.07087877334932063,
+          "unitarity_error": 2.5053942752294947e-13
+        },
+        {
+          "time": 0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.049788932062177,
+          "minimum_evolved_clock_margin": 0.3673507451423074,
+          "unitarity_error": 1.867694447258172e-13
+        },
+        {
+          "time": 0.2,
+          "inverse_energy_factor": 14.918246976412703,
+          "minimum_evolved_inverse_margin": 7.668733996784599,
+          "minimum_evolved_clock_margin": 0.7168124724225814,
+          "unitarity_error": 6.498774451982912e-13
+        }
+      ]
+    },
+    {
+      "capacity": 3,
+      "hbar": 0.2,
+      "dimension": 84,
+      "samples": [
+        {
+          "time": -0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.355842841771942,
+          "minimum_evolved_clock_margin": 0.07139381916334774,
+          "unitarity_error": 3.012737047160719e-12
+        },
+        {
+          "time": -0.2,
+          "inverse_energy_factor": 14.9182469764127,
+          "minimum_evolved_inverse_margin": 8.051336026907187,
+          "minimum_evolved_clock_margin": 0.07831208600470634,
+          "unitarity_error": 6.978944302821129e-13
+        },
+        {
+          "time": 0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.357005259183814,
+          "minimum_evolved_clock_margin": 0.4084620324875222,
+          "unitarity_error": 7.267830939889043e-12
+        },
+        {
+          "time": 0.2,
+          "inverse_energy_factor": 14.918246976412703,
+          "minimum_evolved_inverse_margin": 8.06106200827119,
+          "minimum_evolved_clock_margin": 0.7872128257311826,
+          "unitarity_error": 1.8235117972680502e-12
+        }
+      ]
+    },
+    {
+      "capacity": 4,
+      "hbar": 0.2,
+      "dimension": 210,
+      "samples": [
+        {
+          "time": -0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.68425792548085,
+          "minimum_evolved_clock_margin": 0.07723444130705703,
+          "unitarity_error": 5.266065145262755e-12
+        },
+        {
+          "time": -0.2,
+          "inverse_energy_factor": 14.9182469764127,
+          "minimum_evolved_inverse_margin": 8.462947388571628,
+          "minimum_evolved_clock_margin": 0.08672226254732998,
+          "unitarity_error": 1.615753860100284e-12
+        },
+        {
+          "time": 0.1,
+          "inverse_energy_factor": 12.214027581601698,
+          "minimum_evolved_inverse_margin": 6.6856608616361495,
+          "minimum_evolved_clock_margin": 0.4521213071109635,
+          "unitarity_error": 1.3225705736986058e-12
+        },
+        {
+          "time": 0.2,
+          "inverse_energy_factor": 14.918246976412703,
+          "minimum_evolved_inverse_margin": 8.475021397774523,
+          "minimum_evolved_clock_margin": 0.858757918716154,
+          "unitarity_error": 4.833528263637604e-12
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da",
+    "scripts/inverse_clock_parity_audit.py": "43c0ddbb37ff0a5021cb8a64c28d972c57124ecb7c6c1cbd7bd47a43e153d156",
+    "UnifiedTheory/Audit/KFCausalGravityPairCoercivity.lean": "54348ed81542838ecfee8ed2a0f987f1019e64638242bb70da0aed9e802dabe1",
+    "UnifiedTheory/Audit/KFCausalInverseClockEnergy.lean": "7fe949640f029747228db95b9cdec39e9666fbb189a759e2a5e24a5f8bce87c4",
+    "UnifiedTheory/Audit/KFCausalOccupationParity.lean": "458f93c0149b4f1a7921a37cbc88d635047e9d4f955f3646dbb71a1e857d9ba4",
+    "UnifiedTheory/Audit/KFCausalUniformInverseClock.lean": "b661d91479a5e5c4244b5c23fc933755187cd0a9b06680bf016738ffa0048a4d"
+  },
+  "numerical_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "scope": "Exact amplitude compensation and exact exponentials. Lean derives H(t)>= min(1,exp(2t))*min(1,hbar)*C^{-1}/2 for every finite capacity and all states, with nonnegative potential coefficients and hbar>=0. Positive hbar and the proved energy-growth bound give inverse-clock expectation control with no boundary-tail assumption. Constants degenerate as hbar tends to zero. Occupation/momentum propagation, operator domains and convergence, physical identification and a TOE remain unproved."
+}

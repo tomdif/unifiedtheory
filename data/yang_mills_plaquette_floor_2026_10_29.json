@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: verified the continuous physical Haar upper/lower family bridge and integral projection; quantitative hypotheses remained open",
+  "scope": "For the actual finite-cutoff SU(2) slice ground law pi=g^2 Haar, every spatial plaquette with distinct directions has Var_pi(f)>=1/[24*(exp(36)+1)*(beta+1)^4] for beta>=0 and spatial period n>1, with f the real unnormalized fundamental trace. There is no assumed mixing, factorization, spectral bound, limiting law or nontriviality premise. Six explicit rational unit-quaternion rotations give a deterministic sum of squared trace increments at least 8*t^4 at every holonomy for 0<=t<=1. The constructed ground amplitude obeys g(R_q u)<=exp(18*beta*norm(q-1))*g(u), derived from the actual row partition identity, geometric row-weight bounds and local plaquette geometry. Haar change of variables then bounds the shifted g^2 law by exp(36*beta*norm(q-1)) and pays for local response energy with actual source variance. Choosing t=1/[2*(beta+1)] gives the polynomial floor with an explicit conservative constant independent of spatial volume. This strengthens finite-cutoff positivity to a quantitative weak-coupling lower estimate. It does not prove a nonzero reflected or separated continuum correlation, survival of a smeared field, the distant mixed-ground sum, factorization or a mass gap. All twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.QuaternionRotationFrame",
+    "UnifiedTheory.Clay.YangMills.WilsonGroundSmallRotation",
+    "UnifiedTheory.Clay.YangMills.WilsonPlaquetteVarianceFloor"
+  ],
+  "new_declarations": 37,
+  "retained_declarations": 7598,
+  "cumulative_declarations": 7635,
+  "proof": {
+    "actual_observable": "f(u)=Re(character(spatialHolonomy(u,x,i,j))) is the existing continuous gauge-invariant real fundamental trace. The theorem holds at every x and every i!=j, for n>1.",
+    "explicit_rotations": "c(t)=(1-t^2)/(1+t^2), s(t)=2*t/(1+t^2). The three axis quaternions c+s*i_axis have norm square one, and their chord distances to identity are at most 2*abs(t). Both t and -t are used.",
+    "pointwise_frame": "For any unit quaternion h the six squared trace increments sum exactly to 24*(c-1)^2*Re(h)^2+8*s^2*(imI(h)^2+imJ(h)^2+imK(h)^2). For 0<=t<=1 this is at least 8*t^4. This lower bound also holds at trace extrema.",
+    "spatial_geometry": "Rotating the base link multiplies the plaquette holonomy on the left when n>1 and i!=j. For the ground comparison, a conservative word estimate bounds every affected trace difference by 8*d and there are at most four affected spatial plaquettes, giving potential difference at most 32*d.",
+    "actual_ground_comparison": "The spatial weight ratio costs exp(16*beta*d), and the row partition ratio costs exp(2*beta*d). The exact ground/partition equation gives g(R_q u)<=exp(18*beta*d)*g(u). Squaring gives exp(36*beta*d) for the true ground density.",
+    "quasi_invariance": "Haar invariance and the inverse rotation identity prove E_pi[F(R_q u)]<=exp(36*beta*d)*E_pi[F(u)] for continuous nonnegative F. This is an actual ground-law estimate, not a substitute Gibbs law.",
+    "variance_payment": "Centering at the true pi-mean and using the square difference inequality gives responseEnergy(q,f)<=2*(exp(36*beta*d)+1)*Var_pi(f).",
+    "polynomial_floor": "At t=1/[2*(beta+1)], beta*d<=1 for all six rotations. Their total response energy is at most 12*(exp(36)+1)*Var_pi(f) and at least 8*t^4. Rearrangement gives Var_pi(f)>=1/[24*(exp(36)+1)*(beta+1)^4].",
+    "scope": "The statement is unconditional at finite cutoff within the already constructed SU(2) ground theory. It does not claim a surviving continuum source, decay or a mass gap."
+  },
+  "decision": "Use the quantitative local floor and small-rotation quasi-invariance where a genuine ground-law lower estimate is needed. Continue seeking collective physical-scale coercivity and nonzero separated/smeared sources; do not equate local variance with continuum survival.",
+  "not_inferred": [
+    "The floor concerns one local plaquette under the actual ground law, not a continuum-smeared or separated reflected observable. Contact fluctuations can satisfy such a floor without yielding a nontrivial continuum field.",
+    "The floor tends to zero as beta tends to infinity. It is not a beta-uniform positive lower bound and does not identify the physical beta(a) trajectory or an observable normalization.",
+    "The constants 18 and 36 are conservative local comparison constants. No optimal local covariance asymptotic or beta^-2 plaquette variance lower bound is asserted.",
+    "Ground-law variance factorization, a useful collective physical Haar form bound, the literal distant mixed-ground sum and uniform physical-slab contraction remain open.",
+    "The variance floor alone does not bound the physical excitation energy after time rescaling. Finite positive continuum excitation and common all-order field bounds remain separate obligations.",
+    "No full continuum Yang-Mills theory or Clay certificate has been constructed. All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_plaquette_floor_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

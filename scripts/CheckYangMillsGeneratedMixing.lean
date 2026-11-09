@@ -1,0 +1,62 @@
+import UnifiedTheory.Clay.YangMills.FiniteFactorInfluence
+import UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel
+import UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower
+import UnifiedTheory.Clay.YangMills.FiniteFactorContraction
+import UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing
+
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.OscillationBound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.MixedOscillationBound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.mixedBound_of_factor_bounds
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.localAction
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.action_eq_constant_add
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.localAction_difference_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.rowBudget
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coefficient_row_sum
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coordinateLaw
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coordinateLaw_probability
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.localAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coordinateLaw_eq_local
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.coordinateLaw_self
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.localInfluence
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorInfluence.localInfluence_of_mixed
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.actionMap
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.auxiliaryAction
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.auxiliaryAction_continuous
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.action_sum
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.auxiliaryAction_law
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.auxiliary_law_product
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.overwrite_map_auxiliaryLaw
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorParallelKernel.blockAverage_eq_parallelAverage
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.nextWeight
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.nextWeight_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.increment_abs_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.generated_abs_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.nextFactor_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.weights
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.weights_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorOscillationTower.factors_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.AdmissibleColoring
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.law
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.law_probability
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.update
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.update_apply
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.update_stationary
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.update_reversible
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.update_eq_colorAverage
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.iterate_expectation_error
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.centered_moment_bound
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.iterate_eq
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.centered_norm_contraction
+#print axioms UnifiedTheory.Clay.YangMills.FiniteFactorContraction.centered_norm_contraction_of_mixed
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.initial_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.weights
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.weights_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.factors_oscillation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.touching_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.initial_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.first_generated_weight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.stage_law_eq_tower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGeneratedMixing.stage_contraction

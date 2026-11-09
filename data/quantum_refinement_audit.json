@@ -1,0 +1,92 @@
+{
+  "scope": "finite quantum refinement and underdetermination; no TOE or spacetime derivation",
+  "arithmetic": "exact symbolic rational complex matrices",
+  "sympy_version": "1.14.0",
+  "source_sha256": {
+    "scripts/quantum_refinement_audit.py": "4d0367308cc8d45d1032d4e9541c5a70e8d65baa8ac07cdc83e4f4d915ca12f4",
+    "UnifiedTheory/Audit/KFCausalQuantumRefinement.lean": "8fea4a36565400fc097103221a51acee7609aa6860bd482aaabe99a2f21ce8e4",
+    "UnifiedTheory/LayerB/PartialTrace.lean": "909b10f56820884b3375e9f8d72fc2daefa3f4af139cedda2139a10a0f48ec53"
+  },
+  "product_models": [
+    {
+      "retained": 2,
+      "discarded": 2,
+      "unitary_pairs": 4,
+      "observable_basis_checks": 16,
+      "full_matrix_input_checks": 64,
+      "commutant_dimension": 4
+    },
+    {
+      "retained": 2,
+      "discarded": 3,
+      "unitary_pairs": 4,
+      "observable_basis_checks": 16,
+      "full_matrix_input_checks": 144,
+      "commutant_dimension": 9
+    },
+    {
+      "retained": 3,
+      "discarded": 2,
+      "unitary_pairs": 4,
+      "observable_basis_checks": 36,
+      "full_matrix_input_checks": 144,
+      "commutant_dimension": 4
+    },
+    {
+      "retained": 3,
+      "discarded": 3,
+      "unitary_pairs": 4,
+      "observable_basis_checks": 36,
+      "full_matrix_input_checks": 324,
+      "commutant_dimension": 9
+    }
+  ],
+  "counterexamples": {
+    "admitted_laws_same_experiment_probabilities": [
+      "1",
+      "0"
+    ],
+    "environment_dependence_X_expectations": [
+      "0",
+      "1"
+    ],
+    "actual_two_step_X": "1",
+    "reduced_map_iterated_X": "0",
+    "encoded_state": "Bell pair",
+    "decoded_purity": "1",
+    "ordinary_marginal_purity": "1/2",
+    "encoded_autonomy_full_matrix_checks": 16
+  },
+  "finite_tower": [
+    {
+      "depth": 0,
+      "dimension": 2,
+      "trace": "1",
+      "purity": "1"
+    },
+    {
+      "depth": 1,
+      "dimension": 4,
+      "trace": "1",
+      "purity": "1"
+    },
+    {
+      "depth": 2,
+      "dimension": 8,
+      "trace": "1",
+      "purity": "1"
+    },
+    {
+      "depth": 3,
+      "dimension": 16,
+      "trace": "1",
+      "purity": "1"
+    },
+    {
+      "depth": 4,
+      "dimension": 32,
+      "trace": "1",
+      "purity": "1"
+    }
+  ]
+}

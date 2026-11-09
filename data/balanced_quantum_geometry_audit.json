@@ -1,0 +1,114 @@
+{
+  "model": "Relational Quantum Geometry v2",
+  "finite_hamiltonians": [
+    {
+      "sites": 3,
+      "cap": 2,
+      "gauss_dimension": 27,
+      "matrix_nonzero_entries": 83,
+      "max_absolute_column_sum": "189/40",
+      "extensive_bound": "87331/5005",
+      "exact_complex_quadratic_form": "42701/55",
+      "hermitian": true,
+      "matter_number_preserved": true,
+      "connected_components_preserved": true,
+      "relabeling_covariant": true,
+      "balanced_row_sums_zero": true
+    },
+    {
+      "sites": 4,
+      "cap": 2,
+      "gauss_dimension": 249,
+      "matrix_nonzero_entries": 761,
+      "max_absolute_column_sum": "63/10",
+      "extensive_bound": "349324/15015",
+      "exact_complex_quadratic_form": "3993981/715",
+      "hermitian": true,
+      "matter_number_preserved": true,
+      "connected_components_preserved": true,
+      "relabeling_covariant": true,
+      "balanced_row_sums_zero": true
+    },
+    {
+      "sites": 4,
+      "cap": 3,
+      "gauss_dimension": 729,
+      "matrix_nonzero_entries": 5097,
+      "max_absolute_column_sum": "8917/462",
+      "extensive_bound": "894874/15015",
+      "exact_complex_quadratic_form": "71551388/715",
+      "hermitian": true,
+      "matter_number_preserved": true,
+      "connected_components_preserved": true,
+      "relabeling_covariant": true,
+      "balanced_row_sums_zero": true
+    }
+  ],
+  "independent_matrices_and_feedback": {
+    "independent_gauss_matrix_dimension": 27,
+    "exact_matrix_match": true,
+    "balanced_move_identity_verified": true,
+    "unitary_feedback": [
+      {
+        "matter_pulse": "0",
+        "edge_presence": "0",
+        "arrival": "0"
+      },
+      {
+        "matter_pulse": "pi/2",
+        "edge_presence": "3/4",
+        "arrival": "1/2"
+      },
+      {
+        "matter_pulse": "pi",
+        "edge_presence": "1",
+        "arrival": "0"
+      }
+    ],
+    "multiplicity_two_correct_eigenvalues": [
+      "0",
+      "4"
+    ],
+    "multiplicity_two_wrong_eigenvalues": [
+      "2",
+      "6"
+    ],
+    "previous_dense_witness_balanced_block_determinant": "8/5"
+  },
+  "six_site_exchange": {
+    "sites": 6,
+    "degree": 3,
+    "labeled_configurations": 70,
+    "move_components": 1,
+    "triangle_free_configurations": 10,
+    "prism_configurations": 60,
+    "ordered_exchange_row_sums": {
+      "triangle_free": 144,
+      "prism": 72
+    },
+    "adjacency_quotient": [
+      [
+        0,
+        144
+      ],
+      [
+        24,
+        48
+      ]
+    ],
+    "raw_ground_energy": "-24*sqrt(7) - 24",
+    "raw_triangle_free_probability": "1/2 - sqrt(7)/14",
+    "balanced_ground_energy": "0",
+    "balanced_triangle_free_probability": "1/7",
+    "balanced_prism_probability": "6/7",
+    "scope": "Fixed-degree trivial-flux exchange-only benchmark; labeled basis, not a continuum phase."
+  },
+  "scope": "Exact finite checks plus supporting Lean lemmas; geometry/GR/chiral continuum remain unproved.",
+  "source_sha256": {
+    "RELATIONAL_QUANTUM_GEOMETRY_V2.md": "b50ab197b7ef2d708959b48d72ac80275bc2b071f4b5c59c2346e4aca3872203",
+    "scripts/balanced_quantum_geometry_audit.py": "20ced7436e8ee4d551322c8761a87c2db55e8c1f02f7c6d50399a9cfb95b342f",
+    "UnifiedTheory/Audit/KFCausalBalancedGeometry.lean": "6a14a8afe12427ff7c5b42b1134c7907ed0c0a9d94ce2a4323671251ab449a37",
+    "scripts/relational_quantum_geometry_audit.py": "12bffd48dfd3ea6eadd66b573097b171b1d25fe0beeed1bfbe89d4e9f19f881e",
+    "QUANTUM_GEOMETRY_PHASE_TEST.md": "febdcec02c322f9335367ef6a1a9854733c3c16634b78319aecacb21af2b2932"
+  }
+}

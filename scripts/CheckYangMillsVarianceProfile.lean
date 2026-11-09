@@ -1,0 +1,29 @@
+import UnifiedTheory.Clay.YangMills.CompactEntropyMoment
+import UnifiedTheory.Clay.YangMills.WilsonVarianceProfile
+import UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactEntropyMoment.response_sq_le_entropy_moment
+#print axioms UnifiedTheory.Clay.YangMills.CompactEntropyMoment.variance_le_centered_moment
+#print axioms UnifiedTheory.Clay.YangMills.CompactEntropyMoment.sqrt_gap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.length
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.rotation_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.profile
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.profile_square
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.profile_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.pointwise_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.response_with_remainder
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.physical_response_with_remainder
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfile.coefficient_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.length_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.length_inv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.rowVariance_geometric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.errorCoefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.errorCoefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.errorCoefficient_inv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.profile_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.profile_energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.response_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.errorCoefficient_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceProfileCost.constant_rotation_lower

@@ -1,0 +1,37 @@
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.step_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.walk_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.step_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.walk_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.walk_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.walk_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.walk_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.poissonWeight_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.poissonWeight_hasSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_series_summable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_initial_data_stability' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.heat_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.generator_uniformization' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.gridHeat_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.gridHeat_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.spectralSymbol_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.spectralSymbol_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.AbelianCurvatureHeat.phase_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound]

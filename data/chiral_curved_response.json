@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "source_paper": "https://arxiv.org/abs/2610.29019v2",
+  "coefficient": "[t^4] d_t log W_+(tA) = 5 [t^5] log W_+(tA)",
+  "spacing": "ell=2pi, a=2pi/N, antiperiodic fourth/time direction",
+  "fourier_terms": [
+    {
+      "component": 0,
+      "frequency": [
+        1,
+        0
+      ],
+      "real": -0.0,
+      "imag": -0.05
+    },
+    {
+      "component": 0,
+      "frequency": [
+        1,
+        1
+      ],
+      "real": 0.02,
+      "imag": 0.0
+    },
+    {
+      "component": 1,
+      "frequency": [
+        0,
+        1
+      ],
+      "real": -0.0,
+      "imag": -0.035
+    },
+    {
+      "component": 1,
+      "frequency": [
+        2,
+        -1
+      ],
+      "real": 0.015,
+      "imag": 0.0
+    },
+    {
+      "component": 2,
+      "frequency": [
+        1,
+        0
+      ],
+      "real": 0.045,
+      "imag": 0.0
+    },
+    {
+      "component": 2,
+      "frequency": [
+        1,
+        1
+      ],
+      "real": -0.0,
+      "imag": -0.03
+    },
+    {
+      "component": 3,
+      "frequency": [
+        0,
+        1
+      ],
+      "real": 0.04,
+      "imag": 0.0
+    },
+    {
+      "component": 3,
+      "frequency": [
+        2,
+        -1
+      ],
+      "real": -0.0,
+      "imag": -0.025
+    }
+  ],
+  "supplied_generation_fifth_charge_moment": 4320,
+  "completed_measure_phase_included": false,
+  "uniform_continuum_comparison_proved": false,
+  "position_space_control": {
+    "passed": true,
+    "amplitude": 0.4,
+    "current_error": 1.5993360207877824e-16,
+    "dense_current_real": 0.037781223969642924,
+    "dense_current_imag": 4.163336342344337e-17
+  },
+  "continuum": [
+    {
+      "cutoff": 4,
+      "current_t4_real": 1.5617169965001163e-21,
+      "current_t4_imag": 8.389418371963544e-06,
+      "log_weight_t5_real": 3.1234339930002327e-22,
+      "log_weight_t5_imag": 1.6778836743927087e-06,
+      "seconds": 0.14385676383972168
+    },
+    {
+      "cutoff": 8,
+      "current_t4_real": -5.1864224407074835e-22,
+      "current_t4_imag": 9.077499608328864e-06,
+      "log_weight_t5_real": -1.0372844881414968e-22,
+      "log_weight_t5_imag": 1.8154999216657728e-06,
+      "seconds": 1.5606839656829834
+    },
+    {
+      "cutoff": 12,
+      "current_t4_real": 2.062988447707251e-21,
+      "current_t4_imag": 9.219302461373373e-06,
+      "log_weight_t5_real": 4.125976895414502e-22,
+      "log_weight_t5_imag": 1.8438604922746747e-06,
+      "seconds": 6.9813549518585205
+    },
+    {
+      "cutoff": 16,
+      "current_t4_real": 1.4781717546322605e-21,
+      "current_t4_imag": 9.269356777496443e-06,
+      "log_weight_t5_real": 2.9563435092645207e-22,
+      "log_weight_t5_imag": 1.8538713554992886e-06,
+      "seconds": 20.923985242843628
+    }
+  ],
+  "overlap": [
+    {
+      "n": 4,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -9.242823520438925e-18,
+      "current_t4_imag": 1.8815783317969667e-05,
+      "log_weight_t5_real": -1.848564704087785e-18,
+      "log_weight_t5_imag": 3.7631566635939334e-06,
+      "seconds": 0.5508651733398438
+    },
+    {
+      "n": 6,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -3.642919299551295e-17,
+      "current_t4_imag": 1.8874640307498317e-05,
+      "log_weight_t5_real": -7.28583859910259e-18,
+      "log_weight_t5_imag": 3.774928061499663e-06,
+      "seconds": 9.318564176559448
+    },
+    {
+      "n": 8,
+      "angles": 12,
+      "radius": 1.0,
+      "current_t4_real": -5.180995606493544e-16,
+      "current_t4_imag": 1.4852854415218358e-05,
+      "log_weight_t5_real": -1.0361991212987087e-16,
+      "log_weight_t5_imag": 2.9705708830436717e-06,
+      "seconds": 73.24026989936829
+    }
+  ],
+  "source_sha256": {
+    "scripts/chiral_curved_response.py": "126cd8457daa7154170bfbd52c299e4e568ce4b636af0fff765bf7db2819d29b",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded"
+  }
+}

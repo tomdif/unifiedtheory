@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the frozen Gate 4--6 attack ledger without inventing evidence."""
+"""Validate the draft Gate 4--7 attack ledger without inventing evidence."""
 
 from __future__ import annotations
 
@@ -23,6 +23,8 @@ REQUIRED_ATTACK_FIELDS = {
     "verdict",
 }
 
+EXPECTED_STATUS = "draft_protocol_no_results_no_freeze_provenance"
+
 
 def load_json(path: Path) -> dict[str, Any]:
     with path.open("rb") as stream:
@@ -33,8 +35,8 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def validate(ledger: dict[str, Any]) -> None:
-    if ledger.get("status") != "preregistered_no_results":
-        raise ValueError("ledger must remain preregistered_no_results")
+    if ledger.get("status") != EXPECTED_STATUS:
+        raise ValueError(f"ledger status must remain {EXPECTED_STATUS}")
     attacks = ledger.get("attacks")
     if not isinstance(attacks, list) or not attacks:
         raise ValueError("attacks must be a nonempty array")
@@ -78,7 +80,7 @@ def main() -> int:
     args = parser.parse_args()
     ledger = load_json(args.ledger)
     validate(ledger)
-    print(f"valid: {len(ledger['attacks'])} frozen attacks")
+    print(f"valid: {len(ledger['attacks'])} draft no-result attacks")
     print(f"canonical_sha256: {canonical_digest(ledger)}")
     return 0
 

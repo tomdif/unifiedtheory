@@ -1,0 +1,144 @@
+GENUINE ONE-PACKET OBSTRUCTION TO PURE QUARTIC IMAGINARY CONTRACTION
+2026-10-21. Exact analytic derivation; not a Lean certificate.
+
+Scope
+-----
+The scalar theorem b*dK/db >= 0 does NOT extend unchanged to the
+full quartic weighted energy. The example below uses one actual
+admissible Gaussian packet, hence its neutral Fourier derivatives are
+genuine linked jets. It does not use independent artificial jet data.
+It disproves a sign assertion only. It does NOT disprove a uniform
+lower bound b*E_b >= -C E, the proposed joint field inequality, or the
+user's full physical response estimate.
+
+1. Packet and original positive integral
+---------------------------------------
+Use beta=1, alpha=32, a=1, L=3-2a=1, and one charged width w=1.
+Thus beta>0 and alpha>=32 beta hold exactly. Take
+
+ f(zeta)=exp(-(zeta-1)^2+i zeta)
+        =exp(-1)*exp(-zeta^2+(2+i)zeta).
+
+In the original admissible notation this is c=exp(-1), w=1,
+neutral parameter B=2+i, and polynomial P=1. The charged amplitude
+c*w is therefore the required one. With r=1+i b,
+
+ z=(alpha/2)[r^2(u^2+v^2)+conj(r)^2 Y],
+ zeta=x+i 2bv,
+ V(X)=1+X^2/2+X^4/4,
+
+consider exactly
+
+ E(b)=(pi/4) integral_{Y>0,u,v,x real}
+             V(x+v) |exp(-z) f(x+i2bv)|^2 dx dv du dY.       (1)
+
+Here a and L are fixed when differentiating b, as required for the
+imaginary-shrink partial derivative in the new real-dilation split.
+
+The squared charged modulus is
+ exp(-32(1-b^2)(u^2+v^2+Y)).
+The squared neutral modulus is
+ exp(-2(x-1)^2+8b^2 v^2-4bv).
+These identities check both the factor2 in the imaginary neutral
+shift and the factor alpha/2 in z. Define
+
+ h=32(1-b^2), H=32-40b^2.
+
+For |b|<1/2 both h,H are strictly positive. All integrals and their
+b derivatives on smaller closed intervals converge absolutely by a
+fixed Gaussian majorant times a polynomial. Differentiation under
+the integrals and Gaussian evaluation are therefore justified.
+
+2. Exact Gaussian evaluation
+----------------------------
+The u,Y integrals contribute sqrt(pi)*h^(-3/2).
+Completing the v square gives a Gaussian with
+
+ mean_v=-2b/H, variance_v=1/(2H),
+ integral_v exp(-Hv^2-4bv)=sqrt(pi/H)*exp(4b^2/H).
+
+The x Gaussian has mean1, variance1/4, and mass sqrt(pi/2).
+Thus the physical field x+v has mean and variance
+
+ M=1-2b/H, s=1/4+1/(2H).
+
+Set
+ Q(M,s)=1+(M^2+s)/2+(M^4+6M^2s+3s^2)/4.
+The exact result, with no b-dependent constant omitted, is
+
+ E(b)=C h^(-3/2) H^(-1/2) exp(4b^2/H) Q(M,s),              (2)
+ C=pi^(5/2)/(4 sqrt(2))>0.
+
+3. Exact sign at and near zero
+-----------------------------
+At b=0, h=H=32, M=1, s=17/64. Their derivatives satisfy
+ h'=H'=s'=0, M'=-1/16, and (4b^2/H)'=0. Direct rational arithmetic
+now gives
+
+ Q(1,17/64)=38243/16384,
+ Q_M(1,17/64)=179/64,
+ E'(0)/E(0)=(-1/16)*(179/64)/(38243/16384)
+           =-2864/38243 < 0.                               (3)
+
+Hence continuity gives b E'(b)<0 at all sufficiently small b>0.
+No statement is made that b E'(b) is negative at b=0 itself: it is
+zero there because of the exterior factor b.
+
+An explicit rational parameter also works: b=1/100. The logarithmic
+derivative of (2) is the following rational expression in b:
+
+ D(b)=-(3/2)h'/h-(1/2)H'/H+(4b^2/H)'
+       +(Q_M M'+Q_s s')/Q.
+
+At b=1/100, exact substitution and rational simplification give
+
+ D(1/100)=
+ -3842942777341457053850380400
+ /130327818267455420279324597391 < 0.                        (4)
+
+All factors in E(1/100) are positive, so (4) proves
+(1/100) E'(1/100)<0 without a floating-point sign test. The algebra
+in (3) is a smaller independently checkable certificate; (4) selects
+one concrete nonzero b rather than relying only on continuity.
+
+4. Compatibility with the actual clock strip
+--------------------------------------------
+The point a=1,b=1/100 can also occur on the actual clock, rather than
+only in an enlarged parameter rectangle. Set epsilon=1 and, for any
+0<b<=1/100,
+
+ R=1+b^2, d=log R,
+ q=d/b^2>0, real_clock_s=log q,
+ theta=2 arctan b,
+ y=theta+2d/b.
+
+Then r^2=1-b^2+i2b and
+ complex_inverse_candidate=real_clock_s+d+i theta.
+Its exponential is q r^2. Consequently
+
+ exp(complex_inverse_candidate)+complex_inverse_candidate
+ = [q+real_clock_s] + i y,
+
+because q b^2=d. Its real part is precisely the real-clock chart at
+real_clock_s, and its imaginary part is y. Moreover
+0<y<=4b<=1/25<pi/3, by arctan b<=b and log(1+b^2)<=b^2.
+The candidate is in the same inverse strip, so uniqueness of the
+clock inverse gives relative scale exp((d+i theta)/2)=1+i b.
+The associated normalized fraction is t=d/(b^2+d).
+Thus this obstruction occurs at admissible clock points as well.
+It still concerns only the fixed-a partial b derivative; the other
+terms in the actual total derivative must not be dropped.
+
+5. What remains open
+--------------------
+This negative first derivative comes from the shift of the physical
+field mean M=1-2b/H. The scalar growth and all even Gaussian-width
+terms have zero first derivative at b=0, whereas the quartic field
+moment has the nonzero linear derivative in (3). That mechanism is
+absent from the scalar channel.
+
+The example does not show arbitrarily negative relative derivatives.
+Indeed (3)-(4) have finite relative derivatives. A valid next theorem
+may be a finite uniform defect bound for b E_b, or a joint inequality
+including the small field motion in the real-dilation decomposition.
+No audited repository source or report was modified for this note.

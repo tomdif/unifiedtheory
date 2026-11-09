@@ -1,0 +1,66 @@
+import UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization
+import UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay
+import UnifiedTheory.Clay.YangMills.WilsonHighFieldSector
+import UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.links
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.links_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.links_ge_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.log_top_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.top_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.normalized_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.rate_uniform
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.eventually_small_price
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldNormalization.uniform_rate_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.mass_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.mass_ground
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.l1_square_le_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.ground_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.kernel_output_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.weighted_kernel_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.amplitude_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.squared_amplitude_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.mass_decay_factor
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.loss_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.highfield_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.highfield_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.uniform_highfield_decay
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldDecay.uniform_highfield_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.largeField
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.large_holonomy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.large_potential
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.flat_potential
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.potentialMap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump_nonconstant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump_mass_positive
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldSector.bump_coercivity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing_self
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing_raw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.pairing_sq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.mass_step_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.mass_sub
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.residual_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.cutoff_mass_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.cutoff_output
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.slow_mode_highfield
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energyCutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energyCutoff_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energyCutoff_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energyCutoff_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energyCutoff_physical
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.energy_localization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinkingThreshold
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinkingThreshold_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinkingThreshold_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinking_rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinking_localization
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.weighted_tail_le_cutoff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonHighFieldReduction.shrinking_weighted_tail

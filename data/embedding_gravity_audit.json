@@ -1,0 +1,657 @@
+{
+  "exact_algebra": {
+    "normal_normal_coefficient": true,
+    "spatial_metric_lie_derivative": true,
+    "independent_metric_mismatch": true,
+    "scope": "Exact symbolic identities. The general three-dimensional Poisson-algebra proof is in the note, not an exact finite lattice or continuum quantum theorem."
+  },
+  "embedding_variations": {
+    "cases": [
+      {
+        "case": 0,
+        "minimum_metric_eigenvalue": 0.5768834173410895,
+        "normal_commutator_finite_difference_error": 2.5280184139196575e-11,
+        "normal_metric_variation_error": 7.757919228897728e-17,
+        "spatial_metric_variation_error": 7.364386412590295e-16
+      },
+      {
+        "case": 1,
+        "minimum_metric_eigenvalue": 0.772118343234992,
+        "normal_commutator_finite_difference_error": 1.590168886688561e-10,
+        "normal_metric_variation_error": 8.804469334467934e-17,
+        "spatial_metric_variation_error": 8.308148362110449e-16
+      },
+      {
+        "case": 2,
+        "minimum_metric_eigenvalue": 0.944552168942749,
+        "normal_commutator_finite_difference_error": 2.5284708879850452e-11,
+        "normal_metric_variation_error": 1.2974815504100321e-16,
+        "spatial_metric_variation_error": 4.0507929009243675e-16
+      },
+      {
+        "case": 3,
+        "minimum_metric_eigenvalue": 0.5601879427341357,
+        "normal_commutator_finite_difference_error": 4.194865713128633e-11,
+        "normal_metric_variation_error": 2.044325800678625e-16,
+        "spatial_metric_variation_error": 4.839349969133127e-16
+      },
+      {
+        "case": 4,
+        "minimum_metric_eigenvalue": 0.52326636901055,
+        "normal_commutator_finite_difference_error": 3.973452253276063e-11,
+        "normal_metric_variation_error": 1.9033718796769967e-16,
+        "spatial_metric_variation_error": 1.6653345369377348e-16
+      },
+      {
+        "case": 5,
+        "minimum_metric_eigenvalue": 0.7707633190586268,
+        "normal_commutator_finite_difference_error": 3.085411906844357e-11,
+        "normal_metric_variation_error": 2.6910028968576024e-16,
+        "spatial_metric_variation_error": 9.192921513844874e-16
+      },
+      {
+        "case": 6,
+        "minimum_metric_eigenvalue": 0.4758415072404697,
+        "normal_commutator_finite_difference_error": 1.913369506652787e-11,
+        "normal_metric_variation_error": 2.3060732986917945e-16,
+        "spatial_metric_variation_error": 4.965068306494546e-16
+      },
+      {
+        "case": 7,
+        "minimum_metric_eigenvalue": 0.4976139766555814,
+        "normal_commutator_finite_difference_error": 4.7977453994447895e-11,
+        "normal_metric_variation_error": 6.877910602720239e-17,
+        "spatial_metric_variation_error": 1.076401158743041e-15
+      },
+      {
+        "case": 8,
+        "minimum_metric_eigenvalue": 0.5598991360913306,
+        "normal_commutator_finite_difference_error": 1.2684096436221147e-10,
+        "normal_metric_variation_error": 5.5417899281119825e-17,
+        "spatial_metric_variation_error": 1.0923855516905794e-15
+      },
+      {
+        "case": 9,
+        "minimum_metric_eigenvalue": 0.49272647732156394,
+        "normal_commutator_finite_difference_error": 8.153271526170282e-11,
+        "normal_metric_variation_error": 1.4234249143548578e-16,
+        "spatial_metric_variation_error": 1.0877919644084146e-15
+      }
+    ],
+    "scope": "General embedding tangents and second derivatives at a point. The normal commutator is checked by independently perturbing the embedding tangents."
+  },
+  "graph_geometry": {
+    "cases": [
+      {
+        "case": 0,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": 0.2515883494672909,
+        "gauss_error": 7.046480070129584e-18,
+        "electric_weyl_norm": 2.0378386694203683e-17,
+        "magnetic_weyl_norm": 3.2448633251934347e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 0.0
+      },
+      {
+        "case": 1,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": 1.5392129146879021,
+        "gauss_error": 8.092071311423672e-17,
+        "electric_weyl_norm": 6.378500613402836e-17,
+        "magnetic_weyl_norm": 3.0444273447339113e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 0.0
+      },
+      {
+        "case": 2,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": 0.10483220023911627,
+        "gauss_error": 7.359808400080195e-18,
+        "electric_weyl_norm": 1.3877787807814457e-17,
+        "magnetic_weyl_norm": 4.706186817419513e-17,
+        "scalar_constraint_error": 1.3877787807814457e-17,
+        "momentum_constraint_error": 5.721958498152797e-17
+      },
+      {
+        "case": 3,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": 0.0022659236986697223,
+        "gauss_error": 4.2774214746361777e-17,
+        "electric_weyl_norm": 3.925231146709438e-17,
+        "magnetic_weyl_norm": 1.2018516789897274e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 5.551115123125783e-17
+      },
+      {
+        "case": 0,
+        "slope_norm": 0.2,
+        "spatial_scalar_curvature": 0.14956150121479414,
+        "gauss_error": 1.0725594045547747e-16,
+        "electric_weyl_norm": 3.671717528720129e-17,
+        "magnetic_weyl_norm": 6.426469113022051e-17,
+        "scalar_constraint_error": 1.1102230246251565e-16,
+        "momentum_constraint_error": 8.777083671441753e-17
+      },
+      {
+        "case": 1,
+        "slope_norm": 0.2,
+        "spatial_scalar_curvature": 0.3169134089988674,
+        "gauss_error": 1.1980086951454514e-16,
+        "electric_weyl_norm": 5.66514050698572e-17,
+        "magnetic_weyl_norm": 3.893438685620708e-17,
+        "scalar_constraint_error": 5.551115123125783e-17,
+        "momentum_constraint_error": 5.928593550334434e-17
+      },
+      {
+        "case": 2,
+        "slope_norm": 0.2,
+        "spatial_scalar_curvature": 0.30966070158701975,
+        "gauss_error": 6.329654836620299e-17,
+        "electric_weyl_norm": 5.4305434602284093e-17,
+        "magnetic_weyl_norm": 9.062292348934603e-17,
+        "scalar_constraint_error": 5.551115123125783e-17,
+        "momentum_constraint_error": 1.1188630228279524e-16
+      },
+      {
+        "case": 3,
+        "slope_norm": 0.20000000000000004,
+        "spatial_scalar_curvature": 0.00795422577915774,
+        "gauss_error": 6.754129722953385e-17,
+        "electric_weyl_norm": 4.470069705610593e-17,
+        "magnetic_weyl_norm": 3.6787118736921565e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 5.721958498152797e-17
+      },
+      {
+        "case": 0,
+        "slope_norm": 0.49999999999999994,
+        "spatial_scalar_curvature": -0.3422573456496149,
+        "gauss_error": 9.327717110596337e-17,
+        "electric_weyl_norm": 6.245004513516504e-17,
+        "magnetic_weyl_norm": 7.159812028857625e-17,
+        "scalar_constraint_error": 2.220446049250313e-16,
+        "momentum_constraint_error": 9.819209125020507e-17
+      },
+      {
+        "case": 1,
+        "slope_norm": 0.5,
+        "spatial_scalar_curvature": 0.6535166466174726,
+        "gauss_error": 1.017737414848562e-16,
+        "electric_weyl_norm": 4.381679373608966e-17,
+        "magnetic_weyl_norm": 5.194906766852184e-17,
+        "scalar_constraint_error": 1.1102230246251565e-16,
+        "momentum_constraint_error": 1.2412670766236366e-16
+      },
+      {
+        "case": 2,
+        "slope_norm": 0.5,
+        "spatial_scalar_curvature": 0.16444017436046535,
+        "gauss_error": 8.896967442367416e-17,
+        "electric_weyl_norm": 7.376145397762941e-17,
+        "magnetic_weyl_norm": 1.4418131346111494e-16,
+        "scalar_constraint_error": 1.6653345369377348e-16,
+        "momentum_constraint_error": 2.7755575615628914e-17
+      },
+      {
+        "case": 3,
+        "slope_norm": 0.5,
+        "spatial_scalar_curvature": 0.2828194615949045,
+        "gauss_error": 9.494723429584249e-17,
+        "electric_weyl_norm": 6.871344576781775e-17,
+        "magnetic_weyl_norm": 1.563711553876774e-16,
+        "scalar_constraint_error": 1.1102230246251565e-16,
+        "momentum_constraint_error": 6.359601310784502e-17
+      },
+      {
+        "case": 0,
+        "slope_norm": 0.8,
+        "spatial_scalar_curvature": 0.5127526603035673,
+        "gauss_error": 2.0443005514873478e-16,
+        "electric_weyl_norm": 1.6258348159242626e-16,
+        "magnetic_weyl_norm": 3.871185333236132e-16,
+        "scalar_constraint_error": 4.440892098500626e-16,
+        "momentum_constraint_error": 8.08254562088053e-16
+      },
+      {
+        "case": 1,
+        "slope_norm": 0.8,
+        "spatial_scalar_curvature": 2.558277997492021,
+        "gauss_error": 4.025255457610737e-16,
+        "electric_weyl_norm": 3.815760786470701e-16,
+        "magnetic_weyl_norm": 3.3395885829657746e-16,
+        "scalar_constraint_error": 8.881784197001252e-16,
+        "momentum_constraint_error": 6.377745716588144e-16
+      },
+      {
+        "case": 2,
+        "slope_norm": 0.7999999999999999,
+        "spatial_scalar_curvature": 2.792022472346956,
+        "gauss_error": 8.376011133220122e-16,
+        "electric_weyl_norm": 3.3422138886441676e-16,
+        "magnetic_weyl_norm": 7.353764640874322e-16,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 9.155133597044475e-16
+      },
+      {
+        "case": 3,
+        "slope_norm": 0.8,
+        "spatial_scalar_curvature": 0.7370849584742666,
+        "gauss_error": 1.69441525512046e-16,
+        "electric_weyl_norm": 2.3039844637534604e-16,
+        "magnetic_weyl_norm": 1.1765180050253656e-16,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 2.2473876566261383e-16
+      }
+    ],
+    "scope": "Curvature is constructed from first and second derivatives of q, including arbitrary symmetric third derivatives of the graph. Gauss, Codazzi, vacuum constraints and zero Weyl are independent comparisons."
+  },
+  "gaussian_slices": {
+    "cases": [
+      {
+        "amplitude": 0.1,
+        "point": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "global_maximum_slope": 0.06065306597126335,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": -0.06000000000000001,
+        "gauss_error": 0.0,
+        "electric_weyl_norm": 0.0,
+        "magnetic_weyl_norm": 0.0,
+        "scalar_constraint_error": 6.938893903907228e-18,
+        "momentum_constraint_error": 0.0
+      },
+      {
+        "amplitude": 0.1,
+        "point": [
+          0.3,
+          -0.4,
+          0.6
+        ],
+        "global_maximum_slope": 0.06065306597126335,
+        "slope_norm": 0.0575711759594543,
+        "spatial_scalar_curvature": -0.01943589758988226,
+        "gauss_error": 3.00678589726327e-18,
+        "electric_weyl_norm": 2.0713653421116587e-18,
+        "magnetic_weyl_norm": 1.6317591856545202e-17,
+        "scalar_constraint_error": 6.938893903907228e-18,
+        "momentum_constraint_error": 1.3877787807814457e-17
+      },
+      {
+        "amplitude": 0.1,
+        "point": [
+          1.0,
+          1.0,
+          0.5
+        ],
+        "global_maximum_slope": 0.06065306597126335,
+        "slope_norm": 0.048697870103752455,
+        "spatial_scalar_curvature": 0.0031820502429374276,
+        "gauss_error": 8.455207383602452e-19,
+        "electric_weyl_norm": 5.554883140902701e-19,
+        "magnetic_weyl_norm": 1.1540897420656428e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 3.1031676915590914e-17
+      },
+      {
+        "amplitude": 0.4,
+        "point": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "global_maximum_slope": 0.2426122638850534,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": -0.9600000000000002,
+        "gauss_error": 0.0,
+        "electric_weyl_norm": 0.0,
+        "magnetic_weyl_norm": 0.0,
+        "scalar_constraint_error": 1.1102230246251565e-16,
+        "momentum_constraint_error": 0.0
+      },
+      {
+        "amplitude": 0.4,
+        "point": [
+          0.3,
+          -0.4,
+          0.6
+        ],
+        "global_maximum_slope": 0.2426122638850534,
+        "slope_norm": 0.2302847038378172,
+        "spatial_scalar_curvature": -0.33484467107765525,
+        "gauss_error": 5.659205103490506e-17,
+        "electric_weyl_norm": 7.781158180288698e-17,
+        "magnetic_weyl_norm": 3.9046021027794254e-17,
+        "scalar_constraint_error": 8.326672684688674e-17,
+        "momentum_constraint_error": 1.5700924586837752e-16
+      },
+      {
+        "amplitude": 0.4,
+        "point": [
+          1.0,
+          1.0,
+          0.5
+        ],
+        "global_maximum_slope": 0.2426122638850534,
+        "slope_norm": 0.19479148041500982,
+        "spatial_scalar_curvature": 0.056043710412308954,
+        "gauss_error": 1.942192610381801e-17,
+        "electric_weyl_norm": 9.85133562538035e-18,
+        "magnetic_weyl_norm": 3.6997576281926386e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 5.551115123125783e-17
+      },
+      {
+        "amplitude": 0.8,
+        "point": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "global_maximum_slope": 0.4852245277701068,
+        "slope_norm": 0.0,
+        "spatial_scalar_curvature": -3.8400000000000007,
+        "gauss_error": 0.0,
+        "electric_weyl_norm": 0.0,
+        "magnetic_weyl_norm": 0.0,
+        "scalar_constraint_error": 4.440892098500626e-16,
+        "momentum_constraint_error": 0.0
+      },
+      {
+        "amplitude": 0.8,
+        "point": [
+          0.3,
+          -0.4,
+          0.6
+        ],
+        "global_maximum_slope": 0.4852245277701068,
+        "slope_norm": 0.4605694076756344,
+        "spatial_scalar_curvature": -1.7566549072357085,
+        "gauss_error": 2.0190343805784803e-16,
+        "electric_weyl_norm": 1.294433873018199e-16,
+        "magnetic_weyl_norm": 8.586456554817104e-17,
+        "scalar_constraint_error": 4.440892098500626e-16,
+        "momentum_constraint_error": 2.220446049250313e-16
+      },
+      {
+        "amplitude": 0.8,
+        "point": [
+          1.0,
+          1.0,
+          0.5
+        ],
+        "global_maximum_slope": 0.4852245277701068,
+        "slope_norm": 0.38958296083001964,
+        "spatial_scalar_curvature": 0.30972480424424764,
+        "gauss_error": 7.907205985998696e-17,
+        "electric_weyl_norm": 3.9936333522191037e-17,
+        "magnetic_weyl_norm": 4.781297978850464e-17,
+        "scalar_constraint_error": 0.0,
+        "momentum_constraint_error": 1.2412670766236366e-16
+      }
+    ],
+    "scope": "Globally spacelike Gaussian graph examples. Zero ADM energy follows analytically from exponential metric falloff; a finite-radius flux is not called the ADM energy."
+  },
+  "tensor_quotient": {
+    "cases": [
+      {
+        "case": 0,
+        "momentum": [
+          -0.5329992200491958,
+          0.18119678305178594,
+          0.766663002727428
+        ],
+        "tensor_phase_space_map_norm": 3.5819097826205756e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 1,
+        "momentum": [
+          1.3543934950648633,
+          -0.009925254606197474,
+          0.6730964124945291
+        ],
+        "tensor_phase_space_map_norm": 2.551739025298546e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 2,
+        "momentum": [
+          -0.3112609604494448,
+          0.5304227243486777,
+          -0.6049917804030013
+        ],
+        "tensor_phase_space_map_norm": 2.5559832292666874e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 3,
+        "momentum": [
+          -0.2380051541343035,
+          -1.6832430256251216,
+          1.5061429052401372
+        ],
+        "tensor_phase_space_map_norm": 1.3187023012233825e-15,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 4,
+        "momentum": [
+          0.6954977153524148,
+          0.8228034705721643,
+          -1.9900928222149528
+        ],
+        "tensor_phase_space_map_norm": 4.140436040691881e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 5,
+        "momentum": [
+          0.07475763396569643,
+          2.1032888840350425,
+          0.628693903718055
+        ],
+        "tensor_phase_space_map_norm": 4.1051376979216355e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 6,
+        "momentum": [
+          -0.5371195563475393,
+          -0.210632946460494,
+          -0.3538801813099015
+        ],
+        "tensor_phase_space_map_norm": 1.445038262966515e-16,
+        "tensor_phase_space_map_rank": 0
+      },
+      {
+        "case": 7,
+        "momentum": [
+          -3.756491396847038,
+          -1.0096749044818933,
+          1.3699258742992313
+        ],
+        "tensor_phase_space_map_norm": 2.208193651638381e-15,
+        "tensor_phase_space_map_rank": 0
+      }
+    ],
+    "scope": "All four linear embedding perturbations are projected into both TT metric and TT canonical momentum. The map has rank zero around a flat slice."
+  },
+  "nonflat_control": {
+    "cases": [
+      {
+        "amplitude": 0.07,
+        "wave_number": 1,
+        "scalar_constraint_error": 6.938893903907228e-18,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.005658032638058335,
+        "magnetic_weyl_squared_norm": 0.009800000000000001
+      },
+      {
+        "amplitude": 0.07,
+        "wave_number": 2,
+        "scalar_constraint_error": 8.673617379884035e-18,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.005658032638058335,
+        "magnetic_weyl_squared_norm": 0.039200000000000006
+      },
+      {
+        "amplitude": 0.07,
+        "wave_number": 3,
+        "scalar_constraint_error": 5.204170427930421e-18,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.005658032638058335,
+        "magnetic_weyl_squared_norm": 0.0882
+      },
+      {
+        "amplitude": 0.2,
+        "wave_number": 1,
+        "scalar_constraint_error": 2.7755575615628914e-17,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.046188021535170064,
+        "magnetic_weyl_squared_norm": 0.08000000000000003
+      },
+      {
+        "amplitude": 0.2,
+        "wave_number": 2,
+        "scalar_constraint_error": 1.3877787807814457e-17,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.04618802153517007,
+        "magnetic_weyl_squared_norm": 0.3200000000000001
+      },
+      {
+        "amplitude": 0.2,
+        "wave_number": 3,
+        "scalar_constraint_error": 4.163336342344337e-17,
+        "momentum_constraint_error": 0.0,
+        "electric_weyl_norm": 0.04618802153517008,
+        "magnetic_weyl_squared_norm": 0.7200000000000002
+      }
+    ],
+    "scope": "The existing periodic Einstein initial-data benchmark passes vacuum constraints but fails the flat-embedding zero-Weyl condition. Einstein dynamics remain supplied."
+  },
+  "physical_structure_function": {
+    "cases": [
+      {
+        "amplitude": 0.002,
+        "case": 0,
+        "structure_function_mismatch": 0.0020845844199427533,
+        "linear_prediction_norm": 0.002088061301782109,
+        "linear_remainder": 4.169168839876685e-06,
+        "remainder_bound": 4.184491586737695e-06
+      },
+      {
+        "amplitude": 0.002,
+        "case": 1,
+        "structure_function_mismatch": 0.0020845844199426722,
+        "linear_prediction_norm": 0.0020880613017821097,
+        "linear_remainder": 4.169168839984612e-06,
+        "remainder_bound": 4.184491586737695e-06
+      },
+      {
+        "amplitude": 0.01,
+        "case": 0,
+        "structure_function_mismatch": 0.010354339254445762,
+        "linear_prediction_norm": 0.01044030650891055,
+        "linear_remainder": 0.00010354339254441504,
+        "remainder_bound": 0.00010545764150414698
+      },
+      {
+        "amplitude": 0.01,
+        "case": 1,
+        "structure_function_mismatch": 0.010354339254445755,
+        "linear_prediction_norm": 0.010440306508910556,
+        "linear_remainder": 0.00010354339254436809,
+        "remainder_bound": 0.00010545764150414698
+      },
+      {
+        "amplitude": 0.05,
+        "case": 0,
+        "structure_function_mismatch": 0.05016852773771132,
+        "linear_prediction_norm": 0.05220153254455273,
+        "linear_remainder": 0.002508426386885469,
+        "remainder_bound": 0.00274744908129225
+      },
+      {
+        "amplitude": 0.05,
+        "case": 1,
+        "structure_function_mismatch": 0.05016852773771127,
+        "linear_prediction_norm": 0.05220153254455278,
+        "linear_remainder": 0.0025084263868855486,
+        "remainder_bound": 0.002747449081292251
+      },
+      {
+        "amplitude": 0.2,
+        "case": 0,
+        "structure_function_mismatch": 0.18276426832884418,
+        "linear_prediction_norm": 0.20880613017821095,
+        "linear_remainder": 0.03655285366576889,
+        "remainder_bound": 0.05220153254455275
+      },
+      {
+        "amplitude": 0.2,
+        "case": 1,
+        "structure_function_mismatch": 0.18276426832884415,
+        "linear_prediction_norm": 0.20880613017821095,
+        "linear_remainder": 0.036552853665768846,
+        "remainder_bound": 0.05220153254455275
+      }
+    ],
+    "scope": "An independent TT perturbation changes the required inverse metric in the off-constraint-surface bracket. Keeping the embedding metric misses a first-order term."
+  },
+  "lattice_bracket": {
+    "cases": [
+      {
+        "grid_per_axis": 8,
+        "canonical_bracket": -4.787372505410786,
+        "continuum_target_quadrature": -5.42522381317151,
+        "absolute_error": 0.637851307760724,
+        "relative_error": 0.11757142741505536,
+        "hamiltonian_gradient_finite_difference_error": 6.147696393621338e-09
+      },
+      {
+        "grid_per_axis": 16,
+        "canonical_bracket": -5.260703512439402,
+        "continuum_target_quadrature": -5.425224403654619,
+        "absolute_error": 0.16452089121521674,
+        "relative_error": 0.03032517716767435,
+        "hamiltonian_gradient_finite_difference_error": 9.358714109231059e-09
+      },
+      {
+        "grid_per_axis": 24,
+        "canonical_bracket": -5.351687591252525,
+        "continuum_target_quadrature": -5.425224403654619,
+        "absolute_error": 0.07353681240209387,
+        "relative_error": 0.013554612110156572,
+        "hamiltonian_gradient_finite_difference_error": 2.3445896613072392e-09
+      },
+      {
+        "grid_per_axis": 32,
+        "canonical_bracket": -5.383778007620066,
+        "continuum_target_quadrature": -5.425224403654619,
+        "absolute_error": 0.041446396034553246,
+        "relative_error": 0.0076395726611112194,
+        "hamiltonian_gradient_finite_difference_error": 2.6492669169542182e-11
+      }
+    ],
+    "observed_convergence_orders": [
+      1.9549493582887325,
+      1.9859943912903604,
+      1.9931210674779627
+    ],
+    "scope": "Canonical Poisson bracket of discrete embedding generators with centered differences on a periodic flat spatial quotient. The finite bracket is not exactly the continuum algebra; this is smooth-profile convergence evidence only."
+  },
+  "source_sha256": {
+    "EMBEDDING_VERSUS_GRAVITY.md": "0adaf0f87b0a625643ff09764aa47aef22c66322b79bbeb925c7a6475737aa9b",
+    "scripts/embedding_gravity_audit.py": "b4c79063ec3f26139900c8062dca44840ba83271f6945dd2a25dab2944f29b09",
+    "QUANTUM_ENERGY_DRESSING.md": "ef79fbff357a1ca686af02f61008571ebcfe968b638584190b39c85e54a21b32",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816",
+    "GRAVITATIONAL_BOUNDARY_DRESSING.md": "26b71ed2b242b70774ed949d1f677815a19437c55e6b728bd58b77672725fcbc",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920"
+  },
+  "scope": "Classical fixed-flat-spacetime embeddings realize the metric-dependent deformation algebra and vacuum initial-data constraints with no independent gravitational tensor phase space and zero spacetime Weyl curvature. This rejects a specific pure-clock metric identification. A physical TT perturbation must affect the same structure function. No Einstein spin phase, quantum anomaly cancellation, Standard Model, or TOE is proved."
+}

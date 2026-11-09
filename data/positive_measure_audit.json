@@ -1,0 +1,492 @@
+{
+  "consistency": {
+    "arithmetic": "float64; no interval certification",
+    "basis_checks": [
+      {
+        "corrected_frame_connection": -2.598230476991148e-06,
+        "direct_frame_connection": -2.305257527090987e-06,
+        "direct_frame_error": 2.7145713454856946e-10,
+        "frame_connection_error": 2.9324440703470955e-07,
+        "phase_relation_error": 2.277149974786664e-11,
+        "positive_current": -2.3049860699564384e-06,
+        "step": 0.0002,
+        "tree_plus_phase_derivative": -2.3049632984566905e-06
+      },
+      {
+        "corrected_frame_connection": -2.3782987348397455e-06,
+        "direct_frame_connection": -2.305053081297359e-06,
+        "direct_frame_error": 6.701134092068628e-11,
+        "frame_connection_error": 7.331266488330712e-08,
+        "phase_relation_error": 2.371151669320598e-12,
+        "positive_current": -2.3049860699564384e-06,
+        "step": 0.0001,
+        "tree_plus_phase_derivative": -2.3049836988047693e-06
+      }
+    ],
+    "charge": 6,
+    "contractible_loop": [
+      {
+        "current_integral": 3.8904366643422446e-08,
+        "error": 2.924058559074091e-10,
+        "minimum_neighbor_overlap": 0.9999965331959765,
+        "minimum_weyl_singular": 1.4060941446750919,
+        "steps": 32,
+        "transport_phase": 3.861196080922452e-08
+      },
+      {
+        "current_integral": 3.8904366645423515e-08,
+        "error": 7.327420170948347e-11,
+        "minimum_neighbor_overlap": 0.9999991307844901,
+        "minimum_weyl_singular": 1.406080093875229,
+        "steps": 64,
+        "transport_phase": 3.883109249422832e-08
+      },
+      {
+        "current_integral": 3.8904366630692063e-08,
+        "error": 1.833498169898723e-11,
+        "minimum_neighbor_overlap": 0.99999978257377,
+        "minimum_weyl_singular": 1.4060800938752283,
+        "steps": 128,
+        "transport_phase": 3.888603168626503e-08
+      }
+    ],
+    "corrected_determinant_phase_error": 6.213625458628545e-16,
+    "curvature_checks": [
+      {
+        "curl": 0.0002281815067450843,
+        "error": 4.669564141468463e-07,
+        "projector_curvature": 0.00022771455033093746,
+        "step": 0.0002
+      },
+      {
+        "curl": 0.0002278312671855076,
+        "error": 1.1671685457015357e-07,
+        "projector_curvature": 0.00022771455033093746,
+        "step": 0.0001
+      },
+      {
+        "curl": 0.00022774374941469944,
+        "error": 2.9199083761977107e-08,
+        "projector_curvature": 0.00022771455033093746,
+        "step": 5e-05
+      }
+    ],
+    "determinant_logabs_error": 3.552713678800501e-15,
+    "direct_basis_species": [
+      {
+        "charge": 1,
+        "gauge_covariance_residual": 1.1955024879175926e-14,
+        "logabs_error": 2.1316282072803006e-14,
+        "matrix_residual": 1.443536454151591e-14,
+        "multiplicity": 6,
+        "phase_error": 3.797962452176137e-17,
+        "species": "Q"
+      },
+      {
+        "charge": -4,
+        "gauge_covariance_residual": 1.1962397968238468e-14,
+        "logabs_error": 2.1316282072803006e-14,
+        "matrix_residual": 1.4359383713067306e-14,
+        "multiplicity": 3,
+        "phase_error": 8.184801929672593e-19,
+        "species": "uc"
+      },
+      {
+        "charge": 2,
+        "gauge_covariance_residual": 1.2738132070895545e-14,
+        "logabs_error": 3.552713678800501e-15,
+        "matrix_residual": 1.4802851554977473e-14,
+        "multiplicity": 3,
+        "phase_error": 3.769773668691835e-17,
+        "species": "dc"
+      },
+      {
+        "charge": -3,
+        "gauge_covariance_residual": 1.2153085992307442e-14,
+        "logabs_error": 7.105427357601002e-15,
+        "matrix_residual": 1.5199980890966973e-14,
+        "multiplicity": 2,
+        "phase_error": 1.805776399624924e-18,
+        "species": "L"
+      },
+      {
+        "charge": 6,
+        "gauge_covariance_residual": 1.231525000459247e-14,
+        "logabs_error": 3.552713678800501e-15,
+        "matrix_residual": 1.538323526001784e-14,
+        "multiplicity": 1,
+        "phase_error": 5.2074888702896514e-17,
+        "species": "ec"
+      }
+    ],
+    "gauge_residual": 5.10702591327572e-15,
+    "lattice": "2^4 links, antiperiodic time fermions",
+    "random_seed": 2026090901,
+    "ward_residual": 1.6520194669350493e-14
+  },
+  "exact": {
+    "antiperiodic_inverse": [
+      {
+        "inverse_entry_abs": "1/2",
+        "inverse_identity": true,
+        "maximum_separation": 1,
+        "time_length": 2
+      },
+      {
+        "inverse_entry_abs": "1/2",
+        "inverse_identity": true,
+        "maximum_separation": 2,
+        "time_length": 4
+      },
+      {
+        "inverse_entry_abs": "1/2",
+        "inverse_identity": true,
+        "maximum_separation": 4,
+        "time_length": 8
+      },
+      {
+        "inverse_entry_abs": "1/2",
+        "inverse_identity": true,
+        "maximum_separation": 8,
+        "time_length": 16
+      },
+      {
+        "inverse_entry_abs": "1/2",
+        "inverse_identity": true,
+        "maximum_separation": 16,
+        "time_length": 32
+      }
+    ],
+    "arithmetic": "exact SymPy complex rationals; integer plaquette supports",
+    "limitation": "inverse nondecay does not prove nonlocality of the full current",
+    "phase_corrections": [
+      {
+        "corrected": "2",
+        "correction": "1",
+        "z": "2"
+      },
+      {
+        "corrected": "5",
+        "correction": "3/5 - 4*I/5",
+        "z": "3 + 4*I"
+      },
+      {
+        "corrected": "13",
+        "correction": "-5/13 - 12*I/13",
+        "z": "-5 + 12*I"
+      },
+      {
+        "corrected": "1",
+        "correction": "I",
+        "z": "-I"
+      }
+    ],
+    "plaquette_counterterms": [
+      {
+        "mixed_counterterm_increment": 0,
+        "plaquettes_containing_both_edges": 0,
+        "spatial_length": 4
+      },
+      {
+        "mixed_counterterm_increment": 0,
+        "plaquettes_containing_both_edges": 0,
+        "spatial_length": 8
+      },
+      {
+        "mixed_counterterm_increment": 0,
+        "plaquettes_containing_both_edges": 0,
+        "spatial_length": 12
+      },
+      {
+        "mixed_counterterm_increment": 0,
+        "plaquettes_containing_both_edges": 0,
+        "spatial_length": 16
+      }
+    ]
+  },
+  "locality": {
+    "arithmetic": "float64 central differences; no interval certification",
+    "final_tree_sum_recomputed": 1.931049049301776e-06,
+    "free_time_gap_scan": [
+      {
+        "free_dirac_gap": 1.414213562373095,
+        "inverse_entry_abs": 0.5,
+        "time_length": 2
+      },
+      {
+        "free_dirac_gap": 0.7653668647301796,
+        "inverse_entry_abs": 0.5,
+        "time_length": 4
+      },
+      {
+        "free_dirac_gap": 0.3901806440322565,
+        "inverse_entry_abs": 0.5,
+        "time_length": 8
+      },
+      {
+        "free_dirac_gap": 0.1960342806591212,
+        "inverse_entry_abs": 0.5,
+        "time_length": 16
+      },
+      {
+        "free_dirac_gap": 0.09813534865483603,
+        "inverse_entry_abs": 0.5,
+        "time_length": 32
+      },
+      {
+        "free_dirac_gap": 0.049082457045824576,
+        "inverse_entry_abs": 0.5,
+        "time_length": 64
+      },
+      {
+        "free_dirac_gap": 0.02454307657143985,
+        "inverse_entry_abs": 0.5,
+        "time_length": 128
+      }
+    ],
+    "lattice_family": "L x 2 x 2 x 2; time length remains 2 in locality scan",
+    "limitation": "slab diagnostic and gapped-domain locality, not a massless 4D continuum or full-current no-go",
+    "rows": [
+      {
+        "absolute_response_reduction": 1.3782804356852718,
+        "minimum_endpoint_distance": 1,
+        "positive_current_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              -2.361178790432261e-10,
+              -2.360270055369964e-10
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              2.4233133003616336e-07,
+              2.423315654960761e-07
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              -7.55843093785258e-09,
+              -7.558403969170572e-09
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              5.744292188588447e-08,
+              5.7442786072621705e-08
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              -1.8460130728317802e-06,
+              -1.8460167654075392e-06
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "positive_hypercharge_derivatives": [
+          -1.0282252390393383e-06,
+          -1.0282278707148012e-06
+        ],
+        "previous_tree_hypercharge_derivative": 1.4171863576325355e-06,
+        "spatial_length": 4
+      },
+      {
+        "absolute_response_reduction": 22.464202516963166,
+        "minimum_endpoint_distance": 3,
+        "positive_current_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              -1.8989462583666204e-11,
+              -1.8938531774677753e-11
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              1.955914923317092e-08,
+              1.9559246332160862e-08
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              -6.079339705411206e-10,
+              -6.078951232742014e-10
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              4.6267429147265725e-09,
+              4.626767008623425e-09
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              -1.4986675092409415e-07,
+              -1.4986729122610557e-07
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "positive_hypercharge_derivatives": [
+          -8.38735560822536e-08,
+          -8.38733347728468e-08
+        ],
+        "previous_tree_hypercharge_derivative": 1.8841475781102793e-06,
+        "spatial_length": 8
+      },
+      {
+        "absolute_response_reduction": 457.8316449661228,
+        "minimum_endpoint_distance": 5,
+        "positive_current_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              -9.021119842053635e-13,
+              -9.43993368120314e-13
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              9.6927350892508e-10,
+              9.695613921883484e-10
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              -2.996123424216482e-11,
+              -2.99463641893288e-11
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              2.2852854106140957e-10,
+              2.2873885059725937e-10
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              -7.482182538795817e-09,
+              -7.482293215677582e-09
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "positive_hypercharge_derivatives": [
+          -4.212601304529484e-09,
+          -4.211634390694727e-09
+        ],
+        "previous_tree_hypercharge_derivative": 1.928219501087661e-06,
+        "spatial_length": 12
+      },
+      {
+        "absolute_response_reduction": 11209.80952042732,
+        "minimum_endpoint_distance": 7,
+        "positive_current_terms": [
+          {
+            "charge": 1,
+            "derivatives": [
+              -7.416216722903457e-14,
+              -7.976039272709715e-14
+            ],
+            "multiplicity": 6,
+            "species": "Q"
+          },
+          {
+            "charge": -4,
+            "derivatives": [
+              3.91200346594266e-11,
+              3.907775186823243e-11
+            ],
+            "multiplicity": 3,
+            "species": "uc"
+          },
+          {
+            "charge": 2,
+            "derivatives": [
+              -1.226738517859598e-12,
+              -1.1247688863022655e-12
+            ],
+            "multiplicity": 3,
+            "species": "dc"
+          },
+          {
+            "charge": -3,
+            "derivatives": [
+              9.312397571849137e-12,
+              9.281605941361117e-12
+            ],
+            "multiplicity": 2,
+            "species": "L"
+          },
+          {
+            "charge": 6,
+            "derivatives": [
+              -3.040521045147111e-10,
+              -3.042009241073453e-10
+            ],
+            "multiplicity": 1,
+            "species": "ec"
+          }
+        ],
+        "positive_hypercharge_derivatives": [
+          -1.7219239394968604e-10,
+          -1.7225732563519513e-10
+        ],
+        "previous_tree_hypercharge_derivative": 1.9309718088687594e-06,
+        "spatial_length": 16
+      }
+    ],
+    "steps": [
+      0.001,
+      0.0005
+    ]
+  },
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalPositiveMeasure.lean": "d583f48227a0e00af5e6c196a2a3ad41c7780b28dcf69b4fe5dbfcd6ed62415f",
+    "data/gauge_dressed_measure_audit.json": "455491669940dd72b4688db83e29f3ac94af9f563976228cc64bc7a46cdc42cc",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e"
+  }
+}

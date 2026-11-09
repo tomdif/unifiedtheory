@@ -1,0 +1,38 @@
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit
+import UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit
+import UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.boundaryMessage
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.boundaryMessage_pos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.boundaryMessage_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.boundaryMessage_raw_succ
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.scaledMessage_succ
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.smoothing_ground
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.scaledMessage_uniform_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryPointwise.scaledMessage_pointwise_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryPartition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryMessage_partition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryRatio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryRatio_partition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryRatio_scaled
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryRatio_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryFar
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.boundaryFar_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.far_bound_of_boundary
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryMixedLimit.energy_le_loss_of_boundary
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralMean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralMean_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralVariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralVariance_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralVariance_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.haarObservable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.centralEnergy_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.coercivity_of_cylinders
+#print axioms UnifiedTheory.Clay.YangMills.WilsonCylinderCoercivityLimit.slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction.energy_average
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction.totalEnergy_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction.slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBoundaryHaarContraction.slab_contraction_explicit_cap

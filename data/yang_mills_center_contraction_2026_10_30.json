@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 60 fresh declarations established actual winding modes and center-odd coercivity, 9520 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: the matching center-response upper bound and actual odd-sector finite-cutoff contraction are proved, with an explicit degeneration theorem and attained pointwise endpoints",
+  "scope": "The actual center-seam response now has matching upper and lower bounds, giving one-step finite-cutoff contraction on its odd sector. On a positive-period SU(2) spatial slice the seam contains exactly n^2 links. Its simultaneous symmetry makes rowPartition(Ju)=rowPartition(u) exactly. Therefore the normalized raw likelihood r_u(v)=P(Ju,v)/P(u,v) equals the explicit kinetic tilt exp(-2*beta*sum_seam Re chi(u_e inverse*v_e)); neither the physical ground nor the spatial weight is replaced. Set L=exp(4*beta*n^2), C=(L-1)^2/L, and q=(L-1)^2/(L+1)^2. For beta>=0 the normalized likelihood lies in [L inverse,L]. Its mean-one constraint and the fixed-endpoint variance inequality yield Var_row(r)<=C. Cauchy-Schwarz then gives E_J(Pf)<=C*loss(f) for every continuous real source, using the same seam response E_J as in the previously proved odd-sector coercivity. The actual transfer preserves oddness. Thus Var(Pf)<=q*Var(f) for odd f, with 0<=q<1. The full physical-transition theorem explicitly requires gauge invariance. Actual transfer iterates obey Var(P^k f)<=q^k*Var(f), and a nonzero-variance odd eigenfunction Pf=sigma*f obeys sigma^2<=q. Every source retains its even remainder: Var(Pf)<=Var(f_plus)+q*Var(f_minus). The proved contraction margin is exactly 1-q=4L/(L+1)^2, between L inverse and 4/L for beta>=0. Along every varying-regulator trajectory with 4*beta*n^2 tending to infinity, q tends to one. This is deterioration of the certified rate, not a proof that the actual spectral gap closes. The likelihood endpoints L inverse and L are both attained by explicit flat configurations. Any uniform pointwise upper cap on this seam likelihood must be at least L, so removing its exponential seam-area cost requires a different estimate, not improved arithmetic in that cap. No lower bound on the optimal averaged response constant is inferred. The center-even sector, complete distant mixed-ground sum, bad-bridge complement, cutoff-uniform physical contraction and nonzero continuum construction remain open. All twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonCenterSeamGeometry",
+    "UnifiedTheory.Clay.YangMills.WilsonCenterLikelihood",
+    "UnifiedTheory.Clay.YangMills.WilsonCenterContraction"
+  ],
+  "new_declarations": 40,
+  "retained_declarations": 9520,
+  "cumulative_declarations": 9560,
+  "notation": {
+    "J": "The previously proved central seam involution on one chosen spatial direction.",
+    "L": "exp(4*beta*n^2), with n^2 exactly the number of seam links.",
+    "C": "(L-1)^2/L, the proved squared-response coefficient.",
+    "q": "(L-1)^2/(L+1)^2, the certified variance contraction rate.",
+    "P": "Normalized raw transfer with original physical ground; the full gauge-averaged transition on invariant sources.",
+    "E_J": "The same whole-seam response integral (f(Ju)-f(u))^2 d(pi) as in the odd-sector coercivity theorem."
+  },
+  "proved_bounds": [
+    "rowPartition(Ju)=rowPartition(u) exactly.",
+    "L inverse <= P(Ju,v)/P(u,v) <= L, with both endpoints attained by explicit flat configurations.",
+    "E_J(Pf)<=C*loss(f) for every continuous real f.",
+    "For odd f, Var(Pf)<=q*Var(f), 0<=q<1.",
+    "Var(P^k f)<=q^k*Var(f) for actual transfer powers of odd sources.",
+    "For Pf=sigma*f with positive variance and odd f, sigma^2<=q.",
+    "For every f, Var(Pf)<=Var(f_plus)+q*Var(f_minus).",
+    "1-q=4L/(L+1)^2, and L inverse <=1-q<=4/L for beta>=0.",
+    "q tends to one along every trajectory with 4*beta*n^2 tending to infinity."
+  ],
+  "next_attack": [
+    "Avoid further optimization of a uniform pointwise seam-likelihood cap: its exponential area cost is attained exactly. Seek an averaged physical-row or multiscale estimate which uses the source rather than its supremum.",
+    "Control the retained center-even sector and remaining global holonomy directions with the same response forms used in upper estimates.",
+    "Bind the finite-boundary connected covariance to retained propagation and the already controlled bad-bridge response; do not assume every response path is entirely bad.",
+    "Keep physical scaling, coupling trajectory and nonzero continuum survival as separate unresolved requirements."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no cutoff-uniform physical mass gap or nonzero continuum Yang-Mills construction is proved.",
+    "The completed matching upper and lower bounds concern only the center-odd sector at finite cutoff. The center-even variance remains explicit, including possible center-even global holonomy modes.",
+    "The certified rate q tends to one when coupling times seam area diverges. This does not imply that the actual spectral gap vanishes or exclude a better averaged estimate.",
+    "The exact endpoint examples force an exponential seam-area cost for a uniform pointwise likelihood cap. They do not prove a matching lower bound on integrated likelihood variance, the optimal response coefficient, or the actual spectral rate.",
+    "The seam response is a global spatial operation. It is not the earlier local finite-rotation energy and is not used as a substitute physical clock; all iterations here are actual transfer iterations.",
+    "The arbitrary-source operator is the normalized raw transfer with original physical ground and eigenvalue. The full physical-transition theorem explicitly assumes gauge invariance.",
+    "The complete distant mixed logarithmic ground sum, retained propagation and bad-bridge-complement response remain unbounded in the needed uniform norms.",
+    "The contraction rate is in lattice transfer units. No physical coupling trajectory, physical scale matching, multiscale stability or nonzero renormalized continuum survival follows."
+  ],
+  "verification_report": "data/yang_mills_center_contraction_audit.json",
+  "root_build_checked": false
+}

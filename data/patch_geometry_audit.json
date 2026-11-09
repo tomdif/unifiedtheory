@@ -1,0 +1,1283 @@
+{
+  "virtual_exchanges": {
+    "tori": [
+      {
+        "periods": [
+          8,
+          8,
+          8
+        ],
+        "sites": 512,
+        "symmetry_classes": 5,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "66": 48,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "61953512/2788357",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 6,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 66
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 8,
+            "defective_roots": 52
+          }
+        ]
+      },
+      {
+        "periods": [
+          10,
+          10,
+          10
+        ],
+        "sites": 1000,
+        "symmetry_classes": 5,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "64": 48,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "5678226/253487",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 6,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 8,
+            "defective_roots": 52
+          }
+        ]
+      },
+      {
+        "periods": [
+          16,
+          16,
+          16
+        ],
+        "sites": 4096,
+        "symmetry_classes": 5,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "64": 48,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "5678226/253487",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 6,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 8,
+            "defective_roots": 52
+          }
+        ]
+      },
+      {
+        "periods": [
+          8,
+          8,
+          64
+        ],
+        "sites": 4096,
+        "symmetry_classes": 13,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "64": 16,
+          "66": 32,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "186367510/8365071",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 4,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 66
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 66
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 32,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 2,
+            "transition_weight": 4,
+            "defective_roots": 62
+          }
+        ]
+      },
+      {
+        "periods": [
+          20,
+          20,
+          20
+        ],
+        "sites": 8000,
+        "symmetry_classes": 5,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "64": 48,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "5678226/253487",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 6,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 48,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 24,
+            "transition_weight": 8,
+            "defective_roots": 52
+          }
+        ]
+      },
+      {
+        "periods": [
+          10,
+          10,
+          80
+        ],
+        "sites": 8000,
+        "symmetry_classes": 13,
+        "oriented_cost_histogram": {
+          "52": 24,
+          "62": 6,
+          "64": 48,
+          "68": 48,
+          "74": 24
+        },
+        "second_order_diagonal_magnitude_per_site": "5678226/253487",
+        "classes": [
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 4,
+            "transition_weight": 4,
+            "defective_roots": 62
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 32,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                -1,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 68
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 16,
+            "transition_weight": 4,
+            "defective_roots": 64
+          },
+          {
+            "steps": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                1,
+                0,
+                0
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 4,
+            "defective_roots": 74
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "oriented_paths_per_root": 8,
+            "transition_weight": 8,
+            "defective_roots": 52
+          },
+          {
+            "steps": [
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "oriented_paths_per_root": 2,
+            "transition_weight": 4,
+            "defective_roots": 62
+          }
+        ]
+      }
+    ],
+    "equal_size_eight_period_difference": "4/33",
+    "equal_size_ten_period_difference": "0",
+    "scope": "Exact diagonal entries of finite second-order effective Hamiltonians; off-diagonal mixing and uniform remainders are not computed."
+  },
+  "cycle_packing": {
+    "exhaustive_sites": 8,
+    "exhaustive_degree": 4,
+    "graphs_checked": 19355,
+    "first_moment_identities": [
+      {
+        "disjoint_squares": 1,
+        "collections_in_complete_graph": 210,
+        "fixed_motif_occurrences": 1278,
+        "exact_expected_collection_count": "7668/553"
+      },
+      {
+        "disjoint_squares": 2,
+        "collections_in_complete_graph": 315,
+        "fixed_motif_occurrences": 250,
+        "exact_expected_collection_count": "2250/553"
+      }
+    ],
+    "finite_edge_bound_checks": [
+      {
+        "sites": 144,
+        "disjoint_squares": 1,
+        "simplified_log_bound": 7.1308988302963465
+      },
+      {
+        "sites": 144,
+        "disjoint_squares": 36,
+        "simplified_log_bound": 160.9926633485253
+      },
+      {
+        "sites": 216,
+        "disjoint_squares": 1,
+        "simplified_log_bound": 7.1308988302963465
+      },
+      {
+        "sites": 216,
+        "disjoint_squares": 2,
+        "simplified_log_bound": 13.568650480032748
+      },
+      {
+        "sites": 216,
+        "disjoint_squares": 54,
+        "simplified_log_bound": 220.74842457280752
+      },
+      {
+        "sites": 512,
+        "disjoint_squares": 1,
+        "simplified_log_bound": 7.1308988302963465
+      },
+      {
+        "sites": 512,
+        "disjoint_squares": 5,
+        "simplified_log_bound": 30.86700240869969
+      },
+      {
+        "sites": 512,
+        "disjoint_squares": 128,
+        "simplified_log_bound": 416.3495717907147
+      },
+      {
+        "sites": 1000,
+        "disjoint_squares": 1,
+        "simplified_log_bound": 7.1308988302963465
+      },
+      {
+        "sites": 1000,
+        "disjoint_squares": 10,
+        "simplified_log_bound": 56.20457572988796
+      },
+      {
+        "sites": 1000,
+        "disjoint_squares": 250,
+        "simplified_log_bound": 648.6794757832336
+      }
+    ],
+    "degree_six_incidence_cap": 75,
+    "greedy_square_intersection_cap": 300,
+    "good_vertex_to_disjoint_square_factor": 100,
+    "asymptotic_local_order_exponent": "-(alpha/100)*N*log(N)+O_alpha(N)"
+  },
+  "finite_energy": {
+    "toy_template": "Six-site K3,3; not the spatial cubic patch",
+    "hilbert_dimension": 70,
+    "dynamics_samples": 808,
+    "checks": [
+      {
+        "J_over_rho": 1,
+        "ground_defect_fraction": 0.8480530700874733,
+        "prepared_sampled_defect_range": [
+          4.714710130727432e-31,
+          0.515434178821513
+        ],
+        "uniform_sampled_defect_range": [
+          0.8387344936135165,
+          0.8571428571428562
+        ]
+      },
+      {
+        "J_over_rho": 10,
+        "ground_defect_fraction": 0.7272727272727267,
+        "prepared_sampled_defect_range": [
+          8.017459325200584e-31,
+          0.7932524196936925
+        ],
+        "uniform_sampled_defect_range": [
+          0.5738384215379648,
+          0.8571428571428559
+        ]
+      },
+      {
+        "J_over_rho": 100,
+        "ground_defect_fraction": 0.014357068821367938,
+        "prepared_sampled_defect_range": [
+          4.461394924776696e-31,
+          0.0565915013534781
+        ],
+        "uniform_sampled_defect_range": [
+          0.6550303523090053,
+          0.8571428571428553
+        ]
+      },
+      {
+        "J_over_rho": 1000,
+        "ground_defect_fraction": 9.992838565561281e-05,
+        "prepared_sampled_defect_range": [
+          5.411417381110858e-31,
+          0.0003996348448137632
+        ],
+        "uniform_sampled_defect_range": [
+          0.8428701841137952,
+          0.8571428571428577
+        ]
+      }
+    ],
+    "scope": "Numerical full finite Hamiltonian checks; the all-time, all-size bounds are analytic."
+  },
+  "scope": "Uniform expected patch protection with an imposed 3D template; fixed-temperature local-order exclusion on the regular carrier. No autonomous cooling, noncollapsed continuum, or TOE.",
+  "source_sha256": {
+    "PATCH_GEOMETRY_PROTECTION.md": "7d633bccb14107722244fa4cfeb6edb9ddfbbf6f17bc06d7b47ffe468d41936a",
+    "scripts/patch_geometry_audit.py": "1b34c3c0124c5e68cdb23f45073110e135f21b602ebc36aabda902d38a27b577",
+    "UnifiedTheory/Audit/KFCausalPatchGeometry.lean": "a68abd9ea71b69a8e6e370c97dc7f1fbb97f29bc1c6e5b8ae19cc3e64395437c",
+    "AUTONOMOUS_GEOMETRY_SELECTION.md": "dabbf8cfd8a80f9ebf02003f0b86b297842d3dfea1b12419d566059ca314ac81",
+    "scripts/autonomous_geometry_audit.py": "7a135437ee855d772eeb28d0d24f5eafcaa9d1facf8baf55837170aa94a145b9",
+    "UnifiedTheory/Audit/KFCausalAutonomousGeometry.lean": "d06c099cfef2c2712a3541532dd397b517f9c3b634a59d2ee029108054e67435",
+    "GEOMETRY_ENTROPY_OBSTRUCTION.md": "7c377d93c0504bbe47ef7ff612627379db49aa67519636752db8ceff15280e70",
+    "scripts/geometry_entropy_audit.py": "c31d2823c9f868ba53eb66313dcbe4a5c41f4cdec48b827078112a223455fbf1"
+  }
+}

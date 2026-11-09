@@ -1,0 +1,5 @@
+{"D": 4, "beta": 2.3, "Lmax": 12, "ell": 4, "n_vars": 524, "n_eq": 85, "blocks": [49, 7, 19, 4, 3, 30, 6, 12, 6, 24], "secs": 2.32954478263855, "lower": 6.55464596886031e-10, "lower_status": "optimal_inaccurate", "upper": 0.848811451769134, "upper_status": "optimal_inaccurate"}
+{"D": 4, "beta": 2.3, "Lmax": 14, "ell": 4, "n_vars": 12563, "n_eq": 1929, "blocks": [49, 7, 19, 4, 3, 30, 6, 12, 6, 24], "secs": 47.09315776824951, "lower": 6.661244402800429e-10, "lower_status": "optimal_inaccurate", "upper": 0.8488114724242847, "upper_status": "optimal_inaccurate"}
+{"Lmax": 14, "ell": 5, "killed": "rss over 1.5GB"}
+{"Lmax": 16, "ell": 5, "killed": "rss over 1.5GB"}
+{"Lmax": 16, "ell": 6, "killed": "rss over 1.5GB"}

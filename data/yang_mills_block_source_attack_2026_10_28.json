@@ -1,0 +1,179 @@
+{
+  "date": "2026-10-28",
+  "scope": "Actual finite-cutoff independent-link Wilson integration, source transport, and weak-coupling obstructions. Mathematical derivations below are not included in the Lean-certified count unless explicitly linked to a declaration.",
+  "certificate": "data/yang_mills_block_source_audit.json",
+  "previous_research_record": "data/yang_mills_local_source_attack_2026_10_27.json",
+  "conventions": {
+    "lattice": "Periodic n^4 lattice; SU(2) derivations assume n>=3, checkerboard n even >=4.",
+    "action": "S_beta(U)=beta*S0(U), S0=sum_p (2-ReTr U_p), with normalized product Haar and beta>=0.",
+    "counts": "L=4*n^4 positive links and P=6*n^4 unoriented plaquettes.",
+    "quaternion": "For an oriented selected link, define a_e in R^4 by ReTr(g A_e)=2*q(g) dot a_e. This uses the conjugate quaternion coordinates of the raw staple matrix sum A_e. r_e=|a_e|<=6.",
+    "one_link": "Conditionally on all exterior links, the action is C-2*beta*q dot a_e. E=S-min S=kappa*(1-q0), kappa=2*beta*r_e after Haar rotation.",
+    "not_a_continuum_identification": "No coupling trajectory, observable mixing, infinite-volume continuum field, or physical mass scale is supplied by these finite formulas."
+  },
+  "lean_results": {
+    "WilsonIndependentBlocks": {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonIndependentBlocks.lean",
+      "content": [
+        "Actual edge-coordinate inverse to selectedLink.",
+        "Independent means disjoint actual affected-plaquette sets.",
+        "A full parallel coordinate line has exactly n independent selected links.",
+        "Transverse nearest-neighbor separation gives an independence criterion.",
+        "Actual Wilson action and arbitrarily weighted real plaquette observables decompose into singleton changes."
+      ],
+      "restriction": "An independent block is conditional on the exterior. No independence of retained links after integration is asserted."
+    },
+    "WilsonBlockIntegration": {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonBlockIntegration.lean",
+      "content": [
+        "Product Haar integration of the actual sourced block action factors exactly into single-link partitions and the reference-configuration prefactor.",
+        "The first logarithmic source derivative is the actual reference source plus the sum of conditional source increments.",
+        "The second logarithmic derivative and actual sourced fixed-exterior Gibbs variance equal the sum of single-link variances. Compactness supplies differentiation bounds."
+      ],
+      "domain": "Any compact second-countable topological group with Borel Haar measure and a continuous character function; no SU(2) quaternion formula is built into these formal theorems.",
+      "auxiliary_coordinates": "The integral is indexed by all positive link coordinates, while the block update ignores unselected auxiliary coordinates. Their Haar integrals equal one."
+    }
+  },
+  "exact_su2_step": {
+    "status": "Mathematical derivation, not Lean-certified.",
+    "independent_checkerboard": "Fix direction mu and select bases whose sum of transverse coordinates is even. On an even torus, transverse stepping flips this parity. A plaquette contains at most one selected mu-link.",
+    "partition": "J(b)=integral_{S3} exp(b dot q) d sigma(q). For real b, J(b)>0; for complex b the entire series is sum_{j>=0}(b dot b/4)^j/[j!*(j+1)!]. In particular J(0)=1 and there is no singularity at a cancelling staple.",
+    "block_excess": "Under fixed exterior, selected-link excess energies are independent. E exp(t*sum_e E_e)<= (1-t)^(-3*|B|/2) for 0<=t<1, using the previously derived one-link Gamma domination.",
+    "retained_action": "S_eff=beta*sum_{p untouched}(2-ReTr U_p)+sum_{e selected}[12*beta-log J(2*beta*a_e)]. Constants follow from six incident plaquettes per selected link.",
+    "normalized_source": "For trace sources J_p, b_e(J)=sum_{p incident e}J_p*a_{e,p}. With the actual unsourced retained marginal nu_eff, Z(J)/Z(0)=E_nu_eff exp[sum_{p untouched}J_p ReTr U_p + sum_e(log J(2*(beta*a_e+b_e(J)))-log J(2*beta*a_e))]. Defect sources add their constants and change the trace-source sign.",
+    "locality": "Each first-step factor depends on at most18 retained exterior links. Its support contains opposite-parity parallel links at x+nu and x-nu; those links are coupled by the generated factor.",
+    "nonclosure": "The resulting action is not assumed to have Wilson plaquette form. Reapplying the original opposite-parity product rule would be invalid."
+  },
+  "sharp_one_link_covariance": {
+    "status": "Complete natural-math derivation independently checked by two agents; sphere/Haar and series bridges not yet Lean-certified.",
+    "claim": "For d sigma_b(q)=exp(b dot q)/J(b) d sigma(q) on S3, 0<=Cov_b(q)<=I/4. If kappa=|b|>0, Cov_b(q)<=I/kappa also.",
+    "proof": [
+      "Normalized Haar on S3 has q0 density (2/pi)*sqrt(1-q0^2) on [-1,1]. Its even moments M_j obey M_0=1 and M_j=(2j-1)/(2j+2)*M_{j-1}, by integration by parts. Thus M_j=(2j)!/[4^j*j!*(j+1)!].",
+      "Writing a_j=1/[4^j*j!*(j+1)!], J(kappa)=sum_j a_j*kappa^(2j). Factorial convergence justifies locally uniform differentiation and sums weighted by j.",
+      "Let m=J_prime/J and t=m/kappa. The radial and transverse Hessian eigenvalues of log J are v=m_prime=Var(q0)>=0 and t. Differentiating the positive series gives J_prime/kappa=sum_j c_j*a_j*kappa^(2j), c_j=1/[2*(j+2)].",
+      "Therefore t is the expectation of the decreasing sequence c_j under probabilities proportional to a_j*kappa^(2j). It is <=1/4 and t_prime=(2/kappa)*Cov(j,c_j)<=0. The covariance sign follows by expanding twice the covariance as the sum of w_i*w_j*(i-j)*(c_i-c_j).",
+      "Consequently v=t+kappa*t_prime<=t<=1/4. Since m<=1, t<=1/kappa. At kappa=0, J=1+kappa^2/8+O(kappa^4), so Hessian log J=I/4.",
+      "The earlier Gamma excess-energy domination also gives v<=15/(4*kappa^2). This sharper radial estimate is separate from the transverse 1/kappa bound."
+    ],
+    "weighted_defect_source": "For a_p=c*(1-v_p dot q), c=2 for repo trace or1 for normalized trace, action beta*sum a_p, and real weights f_p, sd_cond(sum f_p*a_p)<=sqrt(15)*|f0|/(2*beta)+(c/2)*sum_p|f_p-f0|. Proof: split f0*sum a_p plus the remainder; use Gamma for the first term and Cov(q)<=I/4 for the remainder, then centered L2 triangle.",
+    "gradient_scope": "If all six coefficients sample the same smooth scalar test nearby, the remainder is O(a*norm(grad f)). A source supported in one plaquette orientation does not automatically have this small remainder."
+  },
+  "averaged_bad_staples": {
+    "status": "Complete mathematical derivation, independently checked; not Lean-certified.",
+    "parameters": "beta>=1; C=24*pi^3; A_beta=log beta+1+(2/3)*log C.",
+    "claim": "For any link and0<=r0<6, P_Wilson(r_e<=r0)<=min(1,3*A_beta/[(6-r0)*beta]). At r0=3 this is min(1,A_beta/beta), independent of n.",
+    "proof": [
+      "Use SU(2) bi-invariant angular distance theta from identity. Its normalized Haar angle density is (2/pi)*sin(theta)^2. For delta=1/(4*sqrt beta), sin theta>=2*theta/pi on[0,delta], giving cap mass>=8*delta^3/(3*pi^3)=C^(-1)*beta^(-3/2).",
+      "When every link lies in the cap, the triangle inequality bounds every plaquette angle by4*delta. Its unnormalized trace defect2*(1-cos theta) is <=theta^2<=1/beta. Therefore Z_beta>=exp(-P)*(C^(-1)*beta^(-3/2))^L.",
+      "Relative entropy of exp(-beta*S0)/Z_beta against probability Haar is -beta*E_Wilson S0-log Z_beta>=0. Hence beta*E S0<=-log Z_beta<=P+L*log C+(3/2)*L*log beta.",
+      "Translations, coordinate permutations and orientation invariance of real SU(2) trace give the same mean defect for all plaquettes. Since L/P=2/3, E defect<=A_beta/beta.",
+      "The sum of the six incident defects equals12-2*q dot a_e and is at least12-2*r_e. On r_e<=r0 it is at least2*(6-r0). Its expectation is <=6*A_beta/beta; Markov yields the claim."
+    ],
+    "probe_bound": "For O_b=2*b dot q with exterior-measurable |b|<=B, Var_cond(O_b)<=|b|^2*min(1,2/(beta*r_e)), treating r_e=0 by the first bound. Therefore E_Wilson Var_cond(O_b)<=B^2*min(1,(A_beta+2/3)/beta), using r0=3.",
+    "optimized_threshold": "The same split optimized at r0=6/[1+sqrt(3*A_beta/2)] gives B^2*min(1,[sqrt(1/3)+sqrt(A_beta/2)]^2/beta).",
+    "scope": "This proves a normalized actual-model averaged local source remainder. It does not bound the covariance of retained conditional means, source-tilted marginals, or repeated RG transformations."
+  },
+  "finite_source_remainder": {
+    "status": "Mathematical consequence of the sharp covariance bound; not Lean-certified.",
+    "definition": "Phi(v)=log J(2*v), v=beta*a. R(v,b)=Phi(v+b)-Phi(v)-gradient Phi(v) dot b.",
+    "global": "0<=R(v,b)<=|b|^2/2, since Hessian Phi=4*Cov(q)<=I.",
+    "good_region": "If r>=r0>0 and |b|<=beta*r0/2, every segment point has |v+s*b|>=beta*r0/2. Hessian Phi<=4/(beta*r0)*I, so R<=2*|b|^2/(beta*r0).",
+    "averaged": "For exterior-dependent b bounded by B and B<=beta*r0/2, E_original_retained R<=B^2*(2/(beta*r0)+(1/2)*P(r<r0)).",
+    "limitation": "An expectation bound for a local remainder cannot be exponentiated into a bound on log E exp(sum R). Source tilting and joint tails still need control."
+  },
+  "worst_boundary_obstruction": {
+    "status": "Explicit actual-model construction and derivation; not Lean-certified.",
+    "geometry": "Set all transverse links to identity. The six opposite parallel links based at x+/-e_nu, nu!=mu, are distinct for n>=3 and independently determine the six selected-link staples (up to inversion).",
+    "construction": "Set five staples to diag(exp(2*pi*i*k/5),exp(-2*pi*i*k/5)), k=0,...,4. They sum to zero. Vary the sixth opposite parallel exterior link from I to -I, leaving all others unchanged. The staple sum switches between+I and-I.",
+    "conditional_laws": "The selected link then has density proportional to exp(+/-2*beta*q0). Their TV distance equals1-2*P_plus(q0<0).",
+    "bound": "Let kappa=2*beta. Gamma(3/2,rate1) domination of E=kappa*(1-q0) gives TV>=1-2*[erfc(sqrt kappa)+(2/sqrt pi)*sqrt kappa*exp(-kappa)], tending to1.",
+    "dobrushin": "Each of the six exterior-coordinate influence coefficients is at least this TV bound (the maximizing exterior may differ with the coefficient). Thus the supremum Dobrushin row sum exceeds1 for beta>=1. This blocks that particular uniform smallness criterion, not averaged or block methods.",
+    "effective_hessian": "At a=0, log J(2*beta*a)=beta^2*|a|^2/2-beta^4*|a|^4/24+O(|a|^6), and the Hessian is beta^2*I. Cancelling staples are realized by actual exterior configurations."
+  },
+  "remaining_transport_identity": {
+    "exact": "For a source O and retained configuration Y, Var(O)=E Var(O|Y)+Var(E[O|Y]); mixed sources have the corresponding total covariance decomposition.",
+    "controlled": "The first-step conditional variance and local finite-source remainder.",
+    "not_controlled": "Retained conditional-mean correlations, source-tilted bad-region moments, stability of the generated interaction class and scale-sensitive bounds under repeated integrations. These are required before a nonzero continuum source or physical-energy window can be claimed."
+  },
+  "external_statement": {
+    "url": "https://www.kitp.ucsb.edu/sites/default/files/YM_working_group.pdf",
+    "archived_pdf": "data/yang_mills_kitp_statement_2026_10_28.pdf",
+    "sha256": "dbab31f0f954ac8265a3fc1c1a29664c7fa0b7f16c616d58012e65896557bd12",
+    "pages": 2,
+    "observed_metadata_creation": "2026-10-27; statement dated October2026; read2026-10-28.",
+    "summary": "Committee reports an OpenAI continuum-existence construction including fermions, based on Wilson/Balaban methods. It leaves confinement and mass gap open and describes validation before release of the Lean proof and1147-page manuscript.",
+    "effect": "No analytic theorem or Lean artifact is supplied in this statement. It changes the external evidence, not this repository certificate.",
+    "provenance_correction": "The previously audited public153-page October6 draft in the Sussman repository is not established to be the committee-held1147-page manuscript. Its identified gaps must not be attributed to the unreleased manuscript.",
+    "physical_identifications": "The announced definition/informal-formal matching review remains essential to importing any eventual theorem; existence alone would not identify this repo's fields, couplings or mass gap."
+  },
+  "full_clay_status": {
+    "all_twelve_repo_requirements": "open",
+    "continuum_candidate_constructed": false,
+    "mass_gap_proved": false
+  },
+  "certificate_sha256": "dc4fff6440e0090ad0c3411a230d21bef06f0d5db74283e4161eb0eeed74fba6",
+  "chessboard_bad_regions": {
+    "status": "Mathematical derivation, independently audited by two agents and checked against the primary chessboard theorem. Not Lean-certified.",
+    "parameters": "Periodic n=4*2^k, k>=1, beta>=1, tile side4; T=(n/4)^4; 0<=r0<6. The case n=4 has a direct one-tile bound, but no chessboard theorem is needed there.",
+    "primary_reference": {
+      "author": "Marek Biskup",
+      "title": "Reflection Positivity and Phase Transitions in Lattice Spin Models",
+      "year": 2006,
+      "url": "https://www.math.ucla.edu/~biskup/PDFs/papers/Prague-School.pdf",
+      "location": "Section4.3, Theorem4.8 and event form(4.32), printed pages42-44. All three pages visually inspected.",
+      "sha256": "bba0f0c68a11e5d3125e57f6f8ba3f62af1b0c05093916d46a160a11c324632e"
+    },
+    "application_is_ours": "The reference supplies the general reflection-positive chessboard inequality. Its application to the actual oriented Wilson link measure, star geometry and constants is the derivation below, not a theorem attributed to that reference.",
+    "epsilon": "epsilon(beta,r0)=min(1,exp[-2*(6-r0)*beta+C_beta]), C_beta=1536*(1+log beta)+1024*log(24*pi^3).",
+    "claim": "For any chosen link e, P_Wilson(r_e<=r0)<=epsilon(beta,r0). For distinct coarse tiles with one specified strictly interior star event each, their joint probability is <=epsilon^m.",
+    "proof": [
+      "Choose direction mu=0 and link(1,2,2,2)->(2,2,2,2) inside closed tile[0,4]^4. All vertices of its six plaquettes lie in{1,2,3}^4, so the star and staple event are strictly interior. Coordinate permutations and a translated tiling cover any selected link.",
+      "For each site reflection across coordinate b (a multiple of4), include both fixed planes b and b+n/2. Boundary variables are tangential links lying in those planes. Every remaining link belongs to one of two reflected halves. No unit plaquette has a strict interior vertex on both sides, so S0=S_boundary+S_plus+theta(S_plus). Reflection reversals invert appropriate group variables, preserving Haar and real trace.",
+      "Conditional on boundary links, the two half measures are independent and reflection-identical. Hence the reflected quadratic form is the boundary expectation of the squared modulus of a conditional mean, proving reflection positivity for bounded measurable functions in the closed half. No bond-reflection hypothesis is used.",
+      "Use reflected copies of the star event in the coarse tiles. They are not silently identified with ordinary translates: normal reflection can reverse a link and change its offset. The quantity2*(6-r_e) is the minimum over U_e of the six-plaquette defect sum, hence is invariant under those reflection/orientation changes.",
+      "The disseminated star plaquette sets are disjoint. All T events therefore force S0>=2*(6-r0)*T. Their joint probability is at most exp[-2*(6-r0)*beta*T]/Z_beta.",
+      "The previously proved cap lower partition gives -log Z_beta<=6*n^4+4*n^4*log(24*pi^3)+6*n^4*log beta. Divide byT=n^4/256 and apply the chessboard inequality. This gives exactly the stated C_beta and no volume dependence.",
+      "The multi-event version applies a separate disseminated bound to each chosen block function. It gives the joint epsilon^m estimate even for different specified interior stars in distinct tiles, since each full dissemination has the same energy cost."
+    ],
+    "exponential_moment": "For the chosen tile events A_t and s_t>=0, E exp(sum_t s_t*1_A_t)<=prod_t[1+epsilon*(exp(s_t)-1)]. Expand the product into subsets and apply the joint probability bound. In particular E exp(s*N_bad)<=[1+epsilon*(exp(s)-1)]^T.",
+    "probe_improvement": "At r0=3, the averaged trace-probe variance is <=B^2*min(1,2/(3*beta)+epsilon(beta,3)); thus it is O(1/beta) on this lattice family. Constants are deliberately crude, so the exponential bound becomes useful only at sufficiently large beta.",
+    "actual_insertion_mean": "Put delta=6-r. The same result for every threshold gives P(delta>=t)<=min(1,exp[C_beta-2*beta*t]). With u=C_beta/(2*beta), delta is dominated by u+Exp(rate2*beta), so E delta^2<=u^2+u/beta+1/(2*beta^2). For fixed real six-plaquette weights f, Y_f=E[sum f_p*a_p|exterior] satisfies |Y_f|<=norm(f)_infty*(2*delta+3/(2*beta)). Consequently norm(Y_f)_L2<=norm(f)_infty*(C_beta+sqrt(2)+3/2)/beta. This is an actual one-step effective-source mean bound.",
+    "limits": [
+      "The even dyadic family is not automatically the odd lattice/blocking family used in a given Balaban construction. A regulator comparison is needed before such an import.",
+      "These are microscopic Wilson star events and the original Wilson probability measure. They have not been identified with all bad multiscale histories or proved stable under arbitrary source tilts.",
+      "The exponential moment controls these bad-event counts; it does not by itself bound arbitrary source remainders or retained source correlations."
+    ]
+  },
+  "common_vacuum_subtraction": {
+    "status": "New natural-math derivation independently checked; not Lean-certified. This is one exact conditional-integration step, not a multiscale history theorem.",
+    "setting": "A_e(U)=sum of the six incident unnormalized plaquette defects. beta>0, r=|a_e|, kappa=2*beta*r, h(kappa)=E_kappa[kappa*(1-q0)]. Set h(0)=0.",
+    "identity": "E[A_e|exterior]=12-2*r+h(kappa)/beta. The retained nonlinear insertion is A_min=12-2*r.",
+    "sphere_ibp": "Integrating the derivative of exp(kappa*x)*(1-x^2)^(3/2) over[-1,1] gives kappa*E(1-q0^2)=3*E q0. Substitute q0=1-E/kappa to get2*kappa*(h-3/2)=E[E^2]-3*h.",
+    "bound": "Gamma domination gives0<=h<=3/2. Since E[E^2]>=0,0<=3/2-h<=(3*h)/(2*kappa)<=9/(4*kappa) for kappa>0.",
+    "subtraction": "Subtract the SAME vacuum constant3/(2*beta) for every exterior. Then E[A_e|exterior]-3/(2*beta)=A_min+R, R=(h-3/2)/beta.",
+    "good_bad_bounds": "For r>=3, |R|<=3/(8*beta^2). For r<3, including r=0, |R|<=3/(2*beta).",
+    "actual_L2_bound": "On the chessboard lattice family, E_Wilson R^2<=9/(64*beta^4)+9*epsilon(beta,3)/(4*beta^2). Thus the source remainder after a common first-step vacuum subtraction is O(beta^(-2)) in L2, while retaining the explicit nonlinear coarse insertion.",
+    "unclosed_step": "The coarse insertion12-2*r is a nonlinear function of retained links. Its correlations, normalization/mixing across scales and evolution under the generated log J interactions are not yet controlled. A first-step vacuum subtraction is not a proof of a common subtraction across every RG history."
+  },
+  "aligned_weighted_fluctuations": {
+    "status": "Natural-math derivation; not Lean-certified.",
+    "parameters": "Fixed real six-plaquette weights; fbar=(sum f_p)/6, d_p=f_p-fbar, sum d_p=0. Unit staple coefficient vectors v_p have sum a, r=|a|, delta=6-r.",
+    "alignment": "For r>0 let vhat=a/r. Since sum|v_p-vhat|^2=2*delta, Cauchy-Schwarz gives |sum d_p*v_p|^2<=2*delta*sum d_p^2.",
+    "good_region": "On r>=3 the remainder R_grad=-2*q dot sum d_p*v_p has conditional variance<=4*delta*sum d_p^2/(3*beta). The entropy estimate E delta<=3*A_beta/beta gives its good-region mean<=4*A_beta*sum d_p^2/beta^2.",
+    "bad_region": "The global covariance bound gives Var_cond R_grad<=6*sum d_p^2. On r<3 its mean contribution is <=6*epsilon(beta,3)*sum d_p^2.",
+    "conclusion": "sqrt(E Var_cond(sum f_p*a_p))<=sqrt(15)*|fbar|/(2*beta)+sqrt(4*A_beta/beta^2+6*epsilon(beta,3))*sqrt(sum d_p^2). A source-gradient remainder is now O(beta^(-1)*sqrt(log beta)) in the averaged conditional standard deviation.",
+    "limits": "These weighted fluctuation and common vacuum results concern local incident-plaquette sources. Summation over a growing continuum lattice, contact renormalization and retained conditional-mean correlations remain separate tasks."
+  },
+  "weighted_common_vacuum_subtraction": {
+    "status": "Complete natural-math first-step derivation, independently reviewed; not Lean-certified.",
+    "definitions": "Prescribed real weights f_p; fbar=(sum f_p)/6; d_p=f_p-fbar; d=sum d_p*v_p; D_infty=max|d_p|; D1=sum|d_p|. For r>0 set q_star=a/r; for r=0 set q_star=0. This last convention is a vector convention, not an SU(2) group element.",
+    "coarse_source": "G_f=2*sum_p f_p*(1-q_star dot v_p). For r>0 this evaluates the source at the conditional action minimizer. At r=0 it is the Haar average over the degenerate minimizers. G_f is measurable and gauge invariant but is not claimed continuous at r=0.",
+    "identity": "Y_f=E[sum f_p*a_p|exterior]=G_f+3*fbar/(2*beta)+R_f, where R_f=fbar*R0+2*(1-m(kappa))*q_star dot d and R0=(h(kappa)-3/2)/beta. The vacuum term depends only on the prescribed weights and coupling, not exterior links.",
+    "good_region": "Since sum d_p=0, |q_star dot d|<=D_infty*(6-r). On r>=3, |R_f|<=3*|fbar|/(8*beta^2)+D_infty*(6-r)/(2*beta).",
+    "bad_region": "For r<3, |R_f|<=3*|fbar|/(2*beta)+2*D1. At r=0 the exact gradient contribution is zero under the q_star=0 convention, so no division by r is used.",
+    "L2_bound": "With delta=6-r and epsilon>=P(r<3), norm(R_f)_L2<=|fbar|*sqrt(9/(64*beta^4)+9*epsilon/(4*beta^2))+sqrt(D_infty^2*E delta^2/(4*beta^2)+4*D1^2*epsilon). This follows by the L2 triangle inequality and separate good/bad bounds on the gradient contribution.",
+    "chessboard_consequence": "For the audited dyadic even lattice family, epsilon<=min(1,exp(C_beta-6*beta)) and E delta^2<=u^2+u/beta+1/(2*beta^2), u=C_beta/(2*beta). Hence the residual is O((|fbar|+D_infty*log beta)/beta^2), plus the displayed exponentially small contribution.",
+    "smooth_source_scope": "D_infty and D1 are O(a*norm(grad f)) when the six coefficients sample one isotropic smooth scalar source at nearby plaquettes. No such assertion is made for arbitrary orientation-dependent sources.",
+    "remaining_gap": "G_f is a nonlinear retained-link observable; neither a scale-invariant field identification nor stability of its transport under the generated interactions has been proved. Control at every history/scale cannot be inferred from this one-step construction."
+  }
+}

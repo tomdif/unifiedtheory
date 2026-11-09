@@ -9,3 +9,7 @@ lake-packages/
 .DS_Store
 **/.DS_Store
 .venv-ibmq/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/

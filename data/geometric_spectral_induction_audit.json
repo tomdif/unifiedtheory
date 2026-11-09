@@ -1,0 +1,790 @@
+{
+  "symbolic": {
+    "euler_maclaurin_boundary_coefficients": "4*t**2/315 + t/15 + 1/3",
+    "complete_determinant_positive_shape_hessian": "(8*A*B + 2*m2*(A + B))/(A + B + m2)**2",
+    "product_sphere_curvature_square_identity": true
+  },
+  "spin_spectra": {
+    "cases": [
+      {
+        "twice_spins": [
+          1,
+          1
+        ],
+        "scalar_matrix_dimension": 16,
+        "spectral_error": 4.440892098500626e-15,
+        "zero_modes": 1,
+        "leibniz_error": 4.440892098500626e-16,
+        "quadratic_form_error": 1.7763568394002505e-15
+      },
+      {
+        "twice_spins": [
+          1,
+          2
+        ],
+        "scalar_matrix_dimension": 36,
+        "spectral_error": 9.769962616701378e-15,
+        "zero_modes": 1,
+        "leibniz_error": 2.0816681711721685e-16,
+        "quadratic_form_error": 1.7763568394002505e-15
+      },
+      {
+        "twice_spins": [
+          2,
+          2
+        ],
+        "scalar_matrix_dimension": 81,
+        "spectral_error": 2.1316282072803006e-14,
+        "zero_modes": 1,
+        "leibniz_error": 2.2644195468014707e-15,
+        "quadratic_form_error": 0.0
+      },
+      {
+        "twice_spins": [
+          2,
+          3
+        ],
+        "scalar_matrix_dimension": 144,
+        "spectral_error": 3.375077994860476e-14,
+        "zero_modes": 1,
+        "leibniz_error": 6.661338147750939e-16,
+        "quadratic_form_error": 0.0
+      },
+      {
+        "twice_spins": [
+          3,
+          3
+        ],
+        "scalar_matrix_dimension": 256,
+        "spectral_error": 7.460698725481052e-14,
+        "zero_modes": 1,
+        "leibniz_error": 3.552713678800501e-15,
+        "quadratic_form_error": 0.0
+      }
+    ],
+    "scope": "Dense adjoint-Casimir matrices independently reproduce the product-sphere spectrum. This does not establish a local finite-spin ground phase or a Lorentzian spacetime."
+  },
+  "heat_tails": {
+    "cases": [
+      {
+        "dimensionless_time": 0.003,
+        "maximum_angular_momentum": 4,
+        "tail_jets": [
+          309.54564487044473,
+          664.9504081722919,
+          1336.6019998686577
+        ],
+        "analytical_tail_bounds": [
+          719.9314445154415,
+          2118.783819920719,
+          29180.191884178337
+        ]
+      },
+      {
+        "dimensionless_time": 0.003,
+        "maximum_angular_momentum": 12,
+        "tail_jets": [
+          200.91650027968836,
+          605.3643718195781,
+          1416.5008646075546
+        ],
+        "analytical_tail_bounds": [
+          642.3645590588173,
+          1890.5017201191815,
+          26036.2583628334
+        ]
+      },
+      {
+        "dimensionless_time": 0.003,
+        "maximum_angular_momentum": 32,
+        "tail_jets": [
+          12.698816717324098,
+          108.42931853879757,
+          759.5983858119107
+        ],
+        "analytical_tail_bounds": [
+          317.39783642922737,
+          934.1131095568721,
+          12864.738498624158
+        ]
+      },
+      {
+        "dimensionless_time": 0.03,
+        "maximum_angular_momentum": 4,
+        "tail_jets": [
+          15.84399451674888,
+          55.376644464630154,
+          145.68720528846333
+        ],
+        "analytical_tail_bounds": [
+          71.36715093310013,
+          210.03606082613484,
+          2892.646479494496
+        ]
+      },
+      {
+        "dimensionless_time": 0.03,
+        "maximum_angular_momentum": 12,
+        "tail_jets": [
+          0.2062109835020892,
+          2.5202152543689245,
+          26.54380327906164
+        ],
+        "analytical_tail_bounds": [
+          22.8245724012406,
+          67.17352751956415,
+          925.1233675323047
+        ]
+      },
+      {
+        "dimensionless_time": 0.03,
+        "maximum_angular_momentum": 32,
+        "tail_jets": [
+          1.860220893637632e-13,
+          1.2638465519933966e-11,
+          8.339272592938396e-10
+        ],
+        "analytical_tail_bounds": [
+          0.019798238547538313,
+          0.058266919464378425,
+          0.8024602956115399
+        ]
+      },
+      {
+        "dimensionless_time": 0.3,
+        "maximum_angular_momentum": 4,
+        "tail_jets": [
+          0.0014021096328841352,
+          0.025565605865752135,
+          0.41740866952698535
+        ],
+        "analytical_tail_bounds": [
+          1.5315931180818152,
+          4.507532963055721,
+          62.078384566456855
+        ]
+      },
+      {
+        "dimensionless_time": 0.3,
+        "maximum_angular_momentum": 12,
+        "tail_jets": [
+          5.235883153037287e-23,
+          5.717796861363862e-21,
+          6.129745943223341e-19
+        ],
+        "analytical_tail_bounds": [
+          1.714692753850156e-05,
+          5.046401696536935e-05,
+          0.0006949976134662991
+        ]
+      },
+      {
+        "dimensionless_time": 0.3,
+        "maximum_angular_momentum": 32,
+        "tail_jets": [
+          4.390886333282687e-145,
+          2.9559446798208106e-142,
+          1.9840300692777305e-139
+        ],
+        "analytical_tail_bounds": [
+          4.1345222971274824e-36,
+          1.2168046017425008e-35,
+          1.6758005904408866e-34
+        ]
+      }
+    ],
+    "scope": "Explicit infinite-tail bounds for the trace and first two log-radius derivatives. Numerical tails stop after exponential suppression; the bound is established analytically, not by the finite reference sum."
+  },
+  "heat_geometry": {
+    "cases": [
+      {
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "proper_time": 0.04,
+        "estimated_curvature_over_six": 0.6765574389916096,
+        "target_curvature_over_six": 0.6666666666666666,
+        "remainder_after_curvature_squared": 4.519781886758167e-06
+      },
+      {
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "proper_time": 0.02,
+        "estimated_curvature_over_six": 0.6715836471245407,
+        "target_curvature_over_six": 0.6666666666666666,
+        "remainder_after_curvature_squared": 5.618313796418306e-07
+      },
+      {
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "proper_time": 0.01,
+        "estimated_curvature_over_six": 0.6691181145587644,
+        "target_curvature_over_six": 0.6666666666666666,
+        "remainder_after_curvature_squared": 7.003447666242835e-08
+      },
+      {
+        "radii": [
+          1.0,
+          1.0
+        ],
+        "proper_time": 0.005,
+        "estimated_curvature_over_six": 0.6678906373318583,
+        "target_curvature_over_six": 0.6666666666666666,
+        "remainder_after_curvature_squared": 8.74221472990655e-09
+      },
+      {
+        "radii": [
+          0.8,
+          1.3
+        ],
+        "proper_time": 0.04,
+        "estimated_curvature_over_six": 0.7297799728727405,
+        "target_curvature_over_six": 0.7180719921104535,
+        "remainder_after_curvature_squared": 6.190049868459724e-06
+      },
+      {
+        "radii": [
+          0.8,
+          1.3
+        ],
+        "proper_time": 0.02,
+        "estimated_curvature_over_six": 0.723887014304958,
+        "target_curvature_over_six": 0.7180719921104535,
+        "remainder_after_curvature_squared": 7.681487341759663e-07
+      },
+      {
+        "radii": [
+          0.8,
+          1.3
+        ],
+        "proper_time": 0.01,
+        "estimated_curvature_over_six": 0.7209698668158238,
+        "target_curvature_over_six": 0.7180719921104535,
+        "remainder_after_curvature_squared": 9.567326486603633e-08
+      },
+      {
+        "radii": [
+          0.8,
+          1.3
+        ],
+        "proper_time": 0.005,
+        "estimated_curvature_over_six": 0.7195185333462639,
+        "target_curvature_over_six": 0.7180719921104535,
+        "remainder_after_curvature_squared": 1.1937731914102301e-08
+      },
+      {
+        "radii": [
+          1.2,
+          0.9
+        ],
+        "proper_time": 0.04,
+        "estimated_curvature_over_six": 0.6522699886691519,
+        "target_curvature_over_six": 0.6430041152263374,
+        "remainder_after_curvature_squared": 4.2019752577449054e-06
+      },
+      {
+        "radii": [
+          1.2,
+          0.9
+        ],
+        "proper_time": 0.02,
+        "estimated_curvature_over_six": 0.6476106370172707,
+        "target_curvature_over_six": 0.6430041152263374,
+        "remainder_after_curvature_squared": 5.221952048550804e-07
+      },
+      {
+        "radii": [
+          1.2,
+          0.9
+        ],
+        "proper_time": 0.01,
+        "estimated_curvature_over_six": 0.6453008298170637,
+        "target_curvature_over_six": 0.6430041152263374,
+        "remainder_after_curvature_squared": 6.508575389752025e-08
+      },
+      {
+        "radii": [
+          1.2,
+          0.9
+        ],
+        "proper_time": 0.005,
+        "estimated_curvature_over_six": 0.6441508430325982,
+        "target_curvature_over_six": 0.6430041152263374,
+        "remainder_after_curvature_squared": 8.123993033848365e-09
+      }
+    ]
+  },
+  "induced_window": {
+    "cases": [
+      {
+        "shape": 0.0,
+        "upper_cutoff": 4.0,
+        "lower_cutoff": 2.0,
+        "maximum_angular_momentum": 49,
+        "scalar_real_dimensions_including_constant": 6250000,
+        "window_jets": [
+          -64.17628275448301,
+          0.0,
+          -17.589964140636315
+        ],
+        "quadrature_error": 2.2218380374669134e-12,
+        "volume_jets": [
+          -60.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -4.0,
+          -0.0,
+          -16.0
+        ],
+        "curvature_squared_jets": [
+          -0.16943597747020883,
+          -0.0,
+          -1.4787139851945499
+        ],
+        "remainder_jets": [
+          -0.0068467770128028405,
+          0.0,
+          -0.11125015544176531
+        ],
+        "analytical_finite_size_jet_bounds": [
+          1.5890462067637402e-14,
+          9.35323888863752e-14,
+          1.5634104959707394e-12
+        ],
+        "independent_window_hessian_error": 1.7763568394002505e-14,
+        "complete_determinant_shape_hessian": 9655152.373928044,
+        "complete_hessian_analytical_lower_bound": 580529.4803913506,
+        "complete_hessian_analytical_upper_bound": 12500000.0,
+        "ultraviolet_shape_hessian": 9655179.341130627,
+        "infrared_shape_hessian": -9.377238442921213,
+        "sector_sum_error": 0.0
+      },
+      {
+        "shape": 0.0,
+        "upper_cutoff": 8.0,
+        "lower_cutoff": 4.0,
+        "maximum_angular_momentum": 98,
+        "scalar_real_dimensions_including_constant": 96059601,
+        "window_jets": [
+          -976.171090764524,
+          0.0,
+          -65.50481825944446
+        ],
+        "quadrature_error": 3.2591608815766804e-11,
+        "volume_jets": [
+          -960.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -16.0,
+          -0.0,
+          -64.0
+        ],
+        "curvature_squared_jets": [
+          -0.16943597747020883,
+          -0.0,
+          -1.4787139851945499
+        ],
+        "remainder_jets": [
+          -0.001654787053815221,
+          0.0,
+          -0.026104274249912685
+        ],
+        "analytical_finite_size_jet_bounds": [
+          5.624736583879902e-13,
+          3.3107599219428894e-12,
+          5.5339940241372095e-11
+        ],
+        "independent_window_hessian_error": 1.8474111129762605e-13,
+        "complete_determinant_shape_hessian": 148420506.6720629,
+        "complete_hessian_analytical_lower_bound": 9288471.68626161,
+        "complete_hessian_analytical_upper_bound": 192119202.0,
+        "ultraviolet_shape_hessian": 148420599.14408374,
+        "infrared_shape_hessian": -26.967202583557558,
+        "sector_sum_error": 0.0
+      },
+      {
+        "shape": 0.0,
+        "upper_cutoff": 16.0,
+        "lower_cutoff": 8.0,
+        "maximum_angular_momentum": 196,
+        "scalar_real_dimensions_including_constant": 1506138481,
+        "window_jets": [
+          -15424.169846309524,
+          0.0,
+          -257.48514399476926
+        ],
+        "quadrature_error": 5.138049527704536e-10,
+        "volume_jets": [
+          -15360.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -64.0,
+          -0.0,
+          -256.0
+        ],
+        "curvature_squared_jets": [
+          -0.16943597747020883,
+          -0.0,
+          -1.4787139851945499
+        ],
+        "remainder_jets": [
+          -0.00041033205335500034,
+          0.0,
+          -0.00643000957470985
+        ],
+        "analytical_finite_size_jet_bounds": [
+          1.3042132852241011e-11,
+          7.676692072585812e-11,
+          1.28317271733496e-09
+        ],
+        "independent_window_hessian_error": 6.423306331271306e-12,
+        "complete_determinant_shape_hessian": 2327217101.6764317,
+        "complete_hessian_analytical_lower_bound": 148615546.98018575,
+        "complete_hessian_analytical_upper_bound": 3012276962.0,
+        "ultraviolet_shape_hessian": 2327217451.6335964,
+        "infrared_shape_hessian": -92.47202084300183,
+        "sector_sum_error": 0.0
+      },
+      {
+        "shape": 0.0,
+        "upper_cutoff": 32.0,
+        "lower_cutoff": 16.0,
+        "maximum_angular_momentum": 391,
+        "scalar_real_dimensions_including_constant": 23612624896,
+        "window_jets": [
+          -246016.16953835302,
+          0.0,
+          -1025.480315628205
+        ],
+        "quadrature_error": 8.194060939026977e-09,
+        "volume_jets": [
+          -245760.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -256.0,
+          -0.0,
+          -1024.0
+        ],
+        "curvature_squared_jets": [
+          -0.16943597747020883,
+          -0.0,
+          -1.4787139851945499
+        ],
+        "remainder_jets": [
+          -0.00010237554662401172,
+          0.0,
+          -0.0016016430105123547
+        ],
+        "analytical_finite_size_jet_bounds": [
+          3.0207146204331133e-10,
+          1.778014090405343e-09,
+          2.9719821379741397e-08
+        ],
+        "independent_window_hessian_error": 1.1050360626541078e-10,
+        "complete_determinant_shape_hessian": 36485560384.00503,
+        "complete_hessian_analytical_lower_bound": 2353677677.141002,
+        "complete_hessian_analytical_upper_bound": 47225249792.0,
+        "ultraviolet_shape_hessian": 36485561759.442505,
+        "infrared_shape_hessian": -349.95716483776266,
+        "sector_sum_error": 7.62939453125e-06
+      },
+      {
+        "shape": 0.2,
+        "upper_cutoff": 4.0,
+        "lower_cutoff": 2.0,
+        "maximum_angular_momentum": 49,
+        "scalar_real_dimensions_including_constant": 6250000,
+        "window_jets": [
+          -64.53423940059761,
+          -3.641850819683631,
+          -19.46933820386023
+        ],
+        "quadrature_error": 2.2553836561884614e-12,
+        "volume_jets": [
+          -60.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -4.324289487353819,
+          -3.286018606422524,
+          -17.297157949415276
+        ],
+        "curvature_squared_jets": [
+          -0.20062158835735547,
+          -0.328313684048945,
+          -1.9776837593888958
+        ],
+        "remainder_jets": [
+          -0.009328324886438838,
+          -0.027518529212161913,
+          -0.19449649505605726
+        ],
+        "analytical_finite_size_jet_bounds": [
+          4.069692740894294e-09,
+          2.3954500660154696e-08,
+          4.0040373397625555e-07
+        ],
+        "independent_window_hessian_error": 2.4868995751603507e-14,
+        "complete_determinant_shape_hessian": 8800620.46249783,
+        "complete_hessian_analytical_lower_bound": 580529.4803913506,
+        "complete_hessian_analytical_upper_bound": 12500000.0,
+        "ultraviolet_shape_hessian": 8800651.179678803,
+        "infrared_shape_hessian": -11.247842769838561,
+        "sector_sum_error": 1.862645149230957e-09
+      },
+      {
+        "shape": 0.2,
+        "upper_cutoff": 8.0,
+        "lower_cutoff": 4.0,
+        "maximum_angular_momentum": 98,
+        "scalar_real_dimensions_including_constant": 96059601,
+        "window_jets": [
+          -977.5000134358256,
+          -13.478777139795831,
+          -71.210787236153
+        ],
+        "quadrature_error": 3.265338576144557e-11,
+        "volume_jets": [
+          -960.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -17.297157949415276,
+          -13.144074425690096,
+          -69.1886317976611
+        ],
+        "curvature_squared_jets": [
+          -0.20062158835735547,
+          -0.328313684048945,
+          -1.9776837593888958
+        ],
+        "remainder_jets": [
+          -0.0022338980529907626,
+          -0.006389030056789591,
+          -0.04447167910299732
+        ],
+        "analytical_finite_size_jet_bounds": [
+          9.751226900966871e-08,
+          5.739641444901805e-07,
+          9.593912638080062e-06
+        ],
+        "independent_window_hessian_error": 2.7000623958883807e-13,
+        "complete_determinant_shape_hessian": 135285636.37588507,
+        "complete_hessian_analytical_lower_bound": 9288471.68626161,
+        "complete_hessian_analytical_upper_bound": 192119202.0,
+        "ultraviolet_shape_hessian": 135285738.30385327,
+        "infrared_shape_hessian": -30.71718097369882,
+        "sector_sum_error": 0.0
+      },
+      {
+        "shape": 0.2,
+        "upper_cutoff": 16.0,
+        "lower_cutoff": 8.0,
+        "maximum_angular_momentum": 196,
+        "scalar_real_dimensions_including_constant": 1506138481,
+        "window_jets": [
+          -15429.389806205692,
+          -52.90618174486865,
+          -278.74310794568663
+        ],
+        "quadrature_error": 5.139952629920293e-10,
+        "volume_jets": [
+          -15360.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -69.1886317976611,
+          -52.576297702760385,
+          -276.7545271906444
+        ],
+        "curvature_squared_jets": [
+          -0.20062158835735547,
+          -0.328313684048945,
+          -1.9776837593888958
+        ],
+        "remainder_jets": [
+          -0.0005528196739083835,
+          -0.001570358059316601,
+          -0.01089699565332558
+        ],
+        "analytical_finite_size_jet_bounds": [
+          1.8619868966210846e-06,
+          1.0959787183960205e-05,
+          0.000183194789751649
+        ],
+        "independent_window_hessian_error": 5.002220859751105e-12,
+        "complete_determinant_shape_hessian": 2121268140.3537977,
+        "complete_hessian_analytical_lower_bound": 148615546.98018575,
+        "complete_hessian_analytical_upper_bound": 3012276962.0,
+        "ultraviolet_shape_hessian": 2121268521.0248737,
+        "infrared_shape_hessian": -101.92796820985177,
+        "sector_sum_error": 2.384185791015625e-07
+      },
+      {
+        "shape": 0.2,
+        "upper_cutoff": 32.0,
+        "lower_cutoff": 16.0,
+        "maximum_angular_momentum": 391,
+        "scalar_real_dimensions_including_constant": 23612624896,
+        "window_jets": [
+          -246036.955286637,
+          -210.6338954518619,
+          -1108.998503439892
+        ],
+        "quadrature_error": 8.194769427512653e-09,
+        "volume_jets": [
+          -245760.0,
+          0.0,
+          0.0
+        ],
+        "einstein_jets": [
+          -276.7545271906444,
+          -210.30519081104154,
+          -1107.0181087625776
+        ],
+        "curvature_squared_jets": [
+          -0.20062158835735547,
+          -0.328313684048945,
+          -1.9776837593888958
+        ],
+        "remainder_jets": [
+          -0.00013785800502771894,
+          -0.0003909567714029949,
+          -0.0027109179253839155
+        ],
+        "analytical_finite_size_jet_bounds": [
+          3.674041961870535e-05,
+          0.00021625672060373793,
+          0.0036147695022183493
+        ],
+        "independent_window_hessian_error": 9.345058060716838e-11,
+        "complete_determinant_shape_hessian": 33256758200.675865,
+        "complete_hessian_analytical_lower_bound": 2353677677.141002,
+        "complete_hessian_analytical_upper_bound": 47225249792.0,
+        "ultraviolet_shape_hessian": 33256759690.345444,
+        "infrared_shape_hessian": -380.67107615553226,
+        "sector_sum_error": 3.814697265625e-06
+      }
+    ],
+    "scope": "The proper-time window has a controlled Einstein curvature response. The full fixed-size positive scalar determinant instead has positive shape Hessian. The window is a regulated spectral contribution, not a separately derived microscopic theory or proof that the omitted contribution can be discarded."
+  },
+  "independent_variations": {
+    "cases": [
+      {
+        "maximum_angular_momentum": 8,
+        "shape": 0.0,
+        "mass": 0.0,
+        "positive_hessian": 10060.043536605262,
+        "finite_difference_relative_errors": [
+          6.321180535576529e-06,
+          1.5803921139974476e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 8,
+        "shape": 0.0,
+        "mass": 0.3,
+        "positive_hessian": 10052.059301427387,
+        "finite_difference_relative_errors": [
+          6.314197875204993e-06,
+          1.5786691248266085e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 8,
+        "shape": 0.2,
+        "mass": 0.0,
+        "positive_hessian": 9164.040740272443,
+        "finite_difference_relative_errors": [
+          4.615222705873347e-06,
+          1.1537691440527284e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 8,
+        "shape": 0.2,
+        "mass": 0.3,
+        "positive_hessian": 9157.731765743074,
+        "finite_difference_relative_errors": [
+          4.610359820680673e-06,
+          1.1526418332922084e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 16,
+        "shape": 0.0,
+        "mass": 0.0,
+        "positive_hessian": 128792.80327281999,
+        "finite_difference_relative_errors": [
+          6.28764535209699e-06,
+          1.5718495435579207e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 16,
+        "shape": 0.0,
+        "mass": 0.3,
+        "positive_hessian": 128761.99658183582,
+        "finite_difference_relative_errors": [
+          6.286077470603499e-06,
+          1.5713571679311535e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 16,
+        "shape": 0.2,
+        "mass": 0.0,
+        "positive_hessian": 117381.1854530311,
+        "finite_difference_relative_errors": [
+          4.591171982494659e-06,
+          1.1478495888984378e-06
+        ]
+      },
+      {
+        "maximum_angular_momentum": 16,
+        "shape": 0.2,
+        "mass": 0.3,
+        "positive_hessian": 117355.89874431388,
+        "finite_difference_relative_errors": [
+          4.59012873761662e-06,
+          1.1474903891821589e-06
+        ]
+      },
+      {
+        "window_shape": 0.0,
+        "finite_difference_relative_error": 1.4269461941847522e-06
+      },
+      {
+        "window_shape": 0.2,
+        "finite_difference_relative_error": 1.4492654715545741e-06
+      }
+    ]
+  },
+  "source_sha256": {
+    "GEOMETRIC_SPECTRAL_INDUCTION.md": "b14ef872fdd6818cc6b3deefa816d4f7ca7705613723203733adfca290033869",
+    "scripts/geometric_spectral_induction_audit.py": "55912200e1fffd1d76c661f12bbeef2288d95dbc1dcb3b7336723bfec40d1d26",
+    "MICROSCOPIC_METRIC_WARD.md": "ce3f462a7d0b98e6bc594ccca38bd50eb7472fc5c926307d3abf31f586145646",
+    "ISOTROPIC_TENSOR_REGULATOR.md": "862ea5788263365cfd782ebd174c87137108168149381839a9b19634c0d39164",
+    "INDUCED_TENSOR_DYNAMICS.md": "1ddfe381a4d759277f9f342d316cde877d11f69c1dd059ac01e32525786ea6e7",
+    "CONTINUUM_EINSTEIN_BRIDGE.md": "5f8afaf33cfd57b024006378d50cd834d73671a73f2ea6084d993f1313b456be",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "Known spin-matrix product-sphere spectra yield a controlled geometric heat-kernel window and its first two radius variations, including the Einstein curvature coefficient. The complete fixed-size scalar determinant has the opposite sign of fixed-volume shape curvature, with a proved fourth-power angular-cutoff lower bound; the omitted ultraviolet contribution cannot be dropped. The matrix geometry and regulator window are supplied. Microscopic locality, Lorentzian gravity, state selection, gravitational constraints, and a TOE remain unproved."
+}

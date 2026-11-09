@@ -1,0 +1,530 @@
+{
+  "symbolic": {
+    "quartic_hessian_identity": true,
+    "actual_low_mode_quartic_identity": true
+  },
+  "derivative_sources": {
+    "cases": [
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "kappa": 0.7,
+        "species": 1,
+        "real_frame_casimir_error": 1.3877787807814457e-17,
+        "kernel_diagonal_error": 5.421010862427522e-20,
+        "derivative_covariance_operator_norm": 0.1893939393939394,
+        "source_gram_error": 1.1102230246251565e-15,
+        "free_susceptibility_largest_eigenvalue": 7.644929255390144e-06,
+        "full_interacting_uniform_upper_bound": 0.006081804048131324,
+        "minimum_upper_bound_slack": 0.006066514189620545
+      },
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "kappa": 0.7,
+        "species": 8,
+        "real_frame_casimir_error": 1.3877787807814457e-17,
+        "kernel_diagonal_error": 5.421010862427522e-20,
+        "derivative_covariance_operator_norm": 0.1893939393939394,
+        "source_gram_error": 1.1102230246251565e-15,
+        "free_susceptibility_largest_eigenvalue": 9.55616156923768e-07,
+        "full_interacting_uniform_upper_bound": 0.0007602255060164155,
+        "minimum_upper_bound_slack": 0.0007583142737025682
+      },
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "kappa": 1.4,
+        "species": 1,
+        "real_frame_casimir_error": 5.551115123125783e-17,
+        "kernel_diagonal_error": 8.673617379884035e-19,
+        "derivative_covariance_operator_norm": 0.1893939393939394,
+        "source_gram_error": 1.1102230246251565e-15,
+        "free_susceptibility_largest_eigenvalue": 0.0001223188680862423,
+        "full_interacting_uniform_upper_bound": 0.09730886477010119,
+        "minimum_upper_bound_slack": 0.09706422703392872
+      },
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "kappa": 1.4,
+        "species": 8,
+        "real_frame_casimir_error": 5.551115123125783e-17,
+        "kernel_diagonal_error": 8.673617379884035e-19,
+        "derivative_covariance_operator_norm": 0.1893939393939394,
+        "source_gram_error": 1.1102230246251565e-15,
+        "free_susceptibility_largest_eigenvalue": 1.5289858510780287e-05,
+        "full_interacting_uniform_upper_bound": 0.012163608096262648,
+        "minimum_upper_bound_slack": 0.01213302837924109
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "kappa": 0.7,
+        "species": 1,
+        "real_frame_casimir_error": 2.0816681711721685e-17,
+        "kernel_diagonal_error": 1.0842021724855044e-19,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 4.107825191113079e-15,
+        "free_susceptibility_largest_eigenvalue": 9.372675860862479e-06,
+        "full_interacting_uniform_upper_bound": 0.006081804048131324,
+        "minimum_upper_bound_slack": 0.006063058696409599
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "kappa": 0.7,
+        "species": 8,
+        "real_frame_casimir_error": 2.0816681711721685e-17,
+        "kernel_diagonal_error": 1.0842021724855044e-19,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 4.107825191113079e-15,
+        "free_susceptibility_largest_eigenvalue": 1.1715844826078098e-06,
+        "full_interacting_uniform_upper_bound": 0.0007602255060164155,
+        "minimum_upper_bound_slack": 0.0007578823370511999
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "kappa": 1.4,
+        "species": 1,
+        "real_frame_casimir_error": 8.326672684688674e-17,
+        "kernel_diagonal_error": 1.734723475976807e-18,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 4.107825191113079e-15,
+        "free_susceptibility_largest_eigenvalue": 0.00014996281377379966,
+        "full_interacting_uniform_upper_bound": 0.09730886477010119,
+        "minimum_upper_bound_slack": 0.09700893914255358
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "kappa": 1.4,
+        "species": 8,
+        "real_frame_casimir_error": 8.326672684688674e-17,
+        "kernel_diagonal_error": 1.734723475976807e-18,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 4.107825191113079e-15,
+        "free_susceptibility_largest_eigenvalue": 1.8745351721724958e-05,
+        "full_interacting_uniform_upper_bound": 0.012163608096262648,
+        "minimum_upper_bound_slack": 0.012126117392819198
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "kappa": 0.7,
+        "species": 1,
+        "real_frame_casimir_error": 2.0816681711721685e-17,
+        "kernel_diagonal_error": 1.0842021724855044e-19,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 1.887379141862766e-14,
+        "free_susceptibility_largest_eigenvalue": 9.851673708980252e-06,
+        "full_interacting_uniform_upper_bound": 0.006081804048131324,
+        "minimum_upper_bound_slack": 0.006062100700713364
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "kappa": 0.7,
+        "species": 8,
+        "real_frame_casimir_error": 2.0816681711721685e-17,
+        "kernel_diagonal_error": 1.0842021724855044e-19,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 1.887379141862766e-14,
+        "free_susceptibility_largest_eigenvalue": 1.2314592136225315e-06,
+        "full_interacting_uniform_upper_bound": 0.0007602255060164155,
+        "minimum_upper_bound_slack": 0.0007577625875891705
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "kappa": 1.4,
+        "species": 1,
+        "real_frame_casimir_error": 8.326672684688674e-17,
+        "kernel_diagonal_error": 1.734723475976807e-18,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 1.887379141862766e-14,
+        "free_susceptibility_largest_eigenvalue": 0.00015762677934368403,
+        "full_interacting_uniform_upper_bound": 0.09730886477010119,
+        "minimum_upper_bound_slack": 0.09699361121141382
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "kappa": 1.4,
+        "species": 8,
+        "real_frame_casimir_error": 8.326672684688674e-17,
+        "kernel_diagonal_error": 1.734723475976807e-18,
+        "derivative_covariance_operator_norm": 0.3517082974447316,
+        "source_gram_error": 1.887379141862766e-14,
+        "free_susceptibility_largest_eigenvalue": 1.9703347417960503e-05,
+        "full_interacting_uniform_upper_bound": 0.012163608096262648,
+        "minimum_upper_bound_slack": 0.012124201401426728
+      }
+    ],
+    "scope": "Exact-degree cubature and real angular matrices check the derivative-frame and local-source constants on actual product spheres. These cases evaluate free covariances; the analytical inequality bounds the nonlinear ones."
+  },
+  "radial_covariances": {
+    "cases": [
+      {
+        "modes": 2,
+        "species": 8,
+        "coupling": 0.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.5102040816326531,
+          0.5102040816326531,
+          0.5102040816326548
+        ],
+        "twice_free_upper_eigenvalue": 1.020408163265306,
+        "composite_legendre_minimum_eigenvalue": 1.959999999999993,
+        "analytical_legendre_floor": 0.9800000000000002
+      },
+      {
+        "modes": 2,
+        "species": 8,
+        "coupling": 0.1,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.22990706795183674,
+          0.27955831212187504,
+          0.27955831212187504
+        ],
+        "twice_free_upper_eigenvalue": 1.020408163265306,
+        "composite_legendre_minimum_eigenvalue": 3.5770712464598238,
+        "analytical_legendre_floor": 0.9800000000000002
+      },
+      {
+        "modes": 2,
+        "species": 8,
+        "coupling": 1.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.04542004308730701,
+          0.06929143572323397,
+          0.06929143572323397
+        ],
+        "twice_free_upper_eigenvalue": 1.020408163265306,
+        "composite_legendre_minimum_eigenvalue": 14.431797949666267,
+        "analytical_legendre_floor": 0.9800000000000002
+      },
+      {
+        "modes": 2,
+        "species": 8,
+        "coupling": 10.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.005548221878341212,
+          0.009551521480665986,
+          0.009551521480665986
+        ],
+        "twice_free_upper_eigenvalue": 1.020408163265306,
+        "composite_legendre_minimum_eigenvalue": 104.69536209746076,
+        "analytical_legendre_floor": 0.9800000000000002
+      },
+      {
+        "modes": 2,
+        "species": 32,
+        "coupling": 0.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.12755102040816146,
+          0.12755102040816324,
+          0.12755102040816324
+        ],
+        "twice_free_upper_eigenvalue": 0.2551020408163265,
+        "composite_legendre_minimum_eigenvalue": 7.840000000000002,
+        "analytical_legendre_floor": 3.920000000000001
+      },
+      {
+        "modes": 2,
+        "species": 32,
+        "coupling": 0.1,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.05930990073860831,
+          0.07304266918272517,
+          0.07304266918272517
+        ],
+        "twice_free_upper_eigenvalue": 0.2551020408163265,
+        "composite_legendre_minimum_eigenvalue": 13.690627836975366,
+        "analytical_legendre_floor": 3.920000000000001
+      },
+      {
+        "modes": 2,
+        "species": 32,
+        "coupling": 1.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.011741805988933205,
+          0.018649109400813598,
+          0.018649109400813598
+        ],
+        "twice_free_upper_eigenvalue": 0.2551020408163265,
+        "composite_legendre_minimum_eigenvalue": 53.62186357040585,
+        "analytical_legendre_floor": 3.920000000000001
+      },
+      {
+        "modes": 2,
+        "species": 32,
+        "coupling": 10.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.0014275251665516713,
+          0.002595043650487874,
+          0.002595043650487874
+        ],
+        "twice_free_upper_eigenvalue": 0.2551020408163265,
+        "composite_legendre_minimum_eigenvalue": 385.34997274978315,
+        "analytical_legendre_floor": 3.920000000000001
+      },
+      {
+        "modes": 3,
+        "species": 8,
+        "coupling": 0.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.5102040816326532,
+          0.5102040816326532,
+          0.5102040816326534
+        ],
+        "twice_free_upper_eigenvalue": 1.0204081632653066,
+        "composite_legendre_minimum_eigenvalue": 1.9599999999999986,
+        "analytical_legendre_floor": 0.9799999999999995
+      },
+      {
+        "modes": 3,
+        "species": 8,
+        "coupling": 0.1,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.1865688242932861,
+          0.2385226976572309,
+          0.2385226976572309
+        ],
+        "twice_free_upper_eigenvalue": 1.0204081632653066,
+        "composite_legendre_minimum_eigenvalue": 4.192473126549366,
+        "analytical_legendre_floor": 0.9799999999999995
+      },
+      {
+        "modes": 3,
+        "species": 8,
+        "coupling": 1.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.032474710135688124,
+          0.051987380339712744,
+          0.051987380339712744
+        ],
+        "twice_free_upper_eigenvalue": 1.0204081632653066,
+        "composite_legendre_minimum_eigenvalue": 19.235437397796865,
+        "analytical_legendre_floor": 0.9799999999999995
+      },
+      {
+        "modes": 3,
+        "species": 8,
+        "coupling": 10.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.00380718557997421,
+          0.006788887779488213,
+          0.006788887779488213
+        ],
+        "twice_free_upper_eigenvalue": 1.0204081632653066,
+        "composite_legendre_minimum_eigenvalue": 147.2995330724683,
+        "analytical_legendre_floor": 0.9799999999999995
+      },
+      {
+        "modes": 3,
+        "species": 32,
+        "coupling": 0.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.12755102040815938,
+          0.12755102040816332,
+          0.12755102040816332
+        ],
+        "twice_free_upper_eigenvalue": 0.25510204081632665,
+        "composite_legendre_minimum_eigenvalue": 7.839999999999996,
+        "analytical_legendre_floor": 3.919999999999998
+      },
+      {
+        "modes": 3,
+        "species": 32,
+        "coupling": 0.1,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.0477103076390088,
+          0.06174922367997796,
+          0.06174922367997796
+        ],
+        "twice_free_upper_eigenvalue": 0.25510204081632665,
+        "composite_legendre_minimum_eigenvalue": 16.194535581250516,
+        "analytical_legendre_floor": 3.919999999999998
+      },
+      {
+        "modes": 3,
+        "species": 32,
+        "coupling": 1.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.008294969295763843,
+          0.013693857134226129,
+          0.013693857134226129
+        ],
+        "twice_free_upper_eigenvalue": 0.25510204081632665,
+        "composite_legendre_minimum_eigenvalue": 73.02544419721028,
+        "analytical_legendre_floor": 3.919999999999998
+      },
+      {
+        "modes": 3,
+        "species": 32,
+        "coupling": 10.0,
+        "exact_radial_susceptibility_eigenvalues": [
+          0.000969492173575691,
+          0.001797395565249087,
+          0.001797395565249087
+        ],
+        "twice_free_upper_eigenvalue": 0.25510204081632665,
+        "composite_legendre_minimum_eigenvalue": 556.3605582065726,
+        "analytical_legendre_floor": 3.919999999999998
+      }
+    ],
+    "scope": "Nonperturbative radial integrals test the general even-convex theorem at finite species, including indefinite quadratic matrices. For more than one mode this radial quartic is a test measure, not the pointwise product-sphere interaction."
+  },
+  "actual_low_mode_interaction": {
+    "cases": [
+      {
+        "matrix_sizes": [
+          2,
+          1
+        ],
+        "species": 1,
+        "coupling": 0.0,
+        "independent_quadrature_moment_error": 7.638334409421077e-13,
+        "full_nonlinear_susceptibility": [
+          [
+            12.499999999999705,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.469135802469131,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            2.46913580246915
+          ]
+        ],
+        "minimum_twice_free_bound_slack": 2.4691358024691215
+      },
+      {
+        "matrix_sizes": [
+          2,
+          1
+        ],
+        "species": 1,
+        "coupling": 1.0,
+        "independent_quadrature_moment_error": 7.105427357601002e-13,
+        "full_nonlinear_susceptibility": [
+          [
+            11.308093377179066,
+            -0.02810216271521961,
+            0.0
+          ],
+          [
+            -0.02810216271521961,
+            2.445721599429255,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            2.447249443447191
+          ]
+        ],
+        "minimum_twice_free_bound_slack": 2.49102216149108
+      },
+      {
+        "matrix_sizes": [
+          2,
+          1
+        ],
+        "species": 1,
+        "coupling": 10.0,
+        "independent_quadrature_moment_error": 4.565237077258644e-13,
+        "full_nonlinear_susceptibility": [
+          [
+            6.491742852165621,
+            -0.14194381730932795,
+            0.0
+          ],
+          [
+            -0.14194381730932795,
+            2.2872359538577363,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            2.298080400758819
+          ]
+        ],
+        "minimum_twice_free_bound_slack": 2.640191204179452
+      },
+      {
+        "matrix_sizes": [
+          2,
+          1
+        ],
+        "species": 1,
+        "coupling": 50.0,
+        "independent_quadrature_moment_error": 2.398081733190338e-13,
+        "full_nonlinear_susceptibility": [
+          [
+            2.448673564998062,
+            -0.20228823723652917,
+            0.0
+          ],
+          [
+            -0.20228823723652917,
+            1.9099275194634788,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.9414475949506813
+          ]
+        ],
+        "minimum_twice_free_bound_slack": 2.99682400998759
+      }
+    ],
+    "scope": "Actual nonconstant-mode tapered pointwise theory at q=1. Rotational integration reduces the four-dimensional field integral to two Gamma-weighted integrals. Increasing quadrature order checks numerical convergence; no interval-certified integration or large-volume extrapolation is claimed."
+  },
+  "source_sha256": {
+    "CONVEX_MATTER_POLE_BOUND.md": "33cfebd3adbaa88f83f7a424366135376a0a872cfe41adfc9fecb6d4a81e4526",
+    "scripts/convex_matter_pole_bound_audit.py": "be3eb88377e125e3eed1467f3b8396c3cfb99e6e0d53e4252f4604992baf65a5",
+    "SPECTRAL_EDGE_LOCALITY.md": "9469f243ced968c363e1b486b26cc3c37eea3fe504a57461753f8d5c2890accc",
+    "scripts/spectral_edge_locality_audit.py": "ad6a96fd5a1952b7e206656787e066491ce5ca8dd8ca87a0557688a85713d8bc",
+    "LOCAL_SYMBOL_INTERACTION.md": "a4b02cc8be542c1436b66b25e8c964d722d503a99cf5fc55a507eba390e8f121",
+    "scripts/local_symbol_interaction_audit.py": "1955d28f66772e9078f68f69fb92e655d0454fc52b0e2a22483a0c16ef50990b",
+    "scripts/geometric_spectral_induction_audit.py": "55912200e1fffd1d76c661f12bbeef2288d95dbc1dcb3b7336723bfec40d1d26",
+    "INDUCED_TENSOR_DYNAMICS.md": "1ddfe381a4d759277f9f342d316cde877d11f69c1dd059ac01e32525786ea6e7",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "MICROSCOPIC_METRIC_WARD.md": "ce3f462a7d0b98e6bc594ccca38bd50eb7472fc5c926307d3abf31f586145646"
+  },
+  "scope": "The even convex matter measure obeys a full-interacting quadratic-source covariance bound at every nonnegative coupling and finite species. Derivative tensor sources have a uniform fixed-proper-cutoff bound. A positive massless pole with nonzero fixed residue cannot be identified with these bounded-normalization composites. This is not a no-go theorem for every emergent graviton, a proof of momentum differentiability, or a construction of a physical metric propagator. Einstein gravity, fixed-species curvature control, and TOE remain unproved. No Lean theorem."
+}

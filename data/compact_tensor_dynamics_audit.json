@@ -1,0 +1,3656 @@
+{
+  "local_operators": {
+    "exact_curl_scalar_commutation": true,
+    "exact_curvature_vector_commutation": true,
+    "curl_maximum_support": 8,
+    "curvature_maximum_support": 15,
+    "curl_incidence": [
+      12,
+      12,
+      12,
+      8,
+      8,
+      8
+    ],
+    "curvature_incidence": [
+      14,
+      14,
+      14,
+      26,
+      26,
+      26
+    ],
+    "maximum_l1_offset": 2,
+    "logical_pair": {
+      "length": 3,
+      "prime": 5,
+      "curl_row": 0,
+      "curvature_row": 48,
+      "symplectic_phase": 1,
+      "x_pattern": [
+        {
+          "index": 99,
+          "coefficient": 1
+        },
+        {
+          "index": 100,
+          "coefficient": -1
+        },
+        {
+          "index": 153,
+          "coefficient": -1
+        },
+        {
+          "index": 156,
+          "coefficient": 1
+        }
+      ],
+      "z_pattern": [
+        {
+          "index": 57,
+          "coefficient": 1
+        },
+        {
+          "index": 60,
+          "coefficient": -1
+        },
+        {
+          "index": 75,
+          "coefficient": -1
+        },
+        {
+          "index": 78,
+          "coefficient": 1
+        },
+        {
+          "index": 102,
+          "coefficient": -1
+        },
+        {
+          "index": 103,
+          "coefficient": 2
+        },
+        {
+          "index": 104,
+          "coefficient": -1
+        },
+        {
+          "index": 111,
+          "coefficient": -1
+        },
+        {
+          "index": 112,
+          "coefficient": 1
+        },
+        {
+          "index": 129,
+          "coefficient": 1
+        },
+        {
+          "index": 130,
+          "coefficient": -1
+        },
+        {
+          "index": 156,
+          "coefficient": 1
+        },
+        {
+          "index": 157,
+          "coefficient": -1
+        },
+        {
+          "index": 159,
+          "coefficient": -1
+        },
+        {
+          "index": 160,
+          "coefficient": 1
+        }
+      ]
+    },
+    "curl_stencil": [
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 3,
+        "shift": [
+          -1,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 0,
+        "column": 5,
+        "shift": [
+          -1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 0,
+        "shift": [
+          -1,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 3,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 4,
+        "column": 3,
+        "shift": [
+          0,
+          -1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 4,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 4,
+        "shift": [
+          1,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 1,
+        "shift": [
+          1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 0,
+        "shift": [
+          -1,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          -1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 1,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 1,
+        "shift": [
+          1,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          0,
+          -1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 8,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          -1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          -1
+        ],
+        "coefficient": -1
+      }
+    ],
+    "curvature_stencil": [
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          2
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          2,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 0,
+        "column": 4,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          2
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 1,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 1,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 3,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 4,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 2,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 5,
+        "shift": [
+          0,
+          2,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 2,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          2
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 3,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 3,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          2
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          2,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 4,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 4,
+        "column": 5,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 4,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 4,
+        "column": 5,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 3,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 3,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 4,
+        "shift": [
+          2,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 3,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 4,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 4,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 6,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 5,
+        "shift": [
+          0,
+          2,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 6,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          1
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 3,
+        "shift": [
+          1,
+          0,
+          1
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 4,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 4,
+        "shift": [
+          2,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 4,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 7,
+        "column": 5,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 7,
+        "column": 5,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 5,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -1
+      },
+      {
+        "row": 7,
+        "column": 5,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 0,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 0,
+        "shift": [
+          0,
+          2,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 0,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 8,
+        "column": 1,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 1,
+        "shift": [
+          2,
+          0,
+          0
+        ],
+        "coefficient": 1
+      },
+      {
+        "row": 8,
+        "column": 1,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 8,
+        "column": 3,
+        "shift": [
+          0,
+          0,
+          0
+        ],
+        "coefficient": -2
+      },
+      {
+        "row": 8,
+        "column": 3,
+        "shift": [
+          1,
+          0,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 8,
+        "column": 3,
+        "shift": [
+          0,
+          1,
+          0
+        ],
+        "coefficient": 2
+      },
+      {
+        "row": 8,
+        "column": 3,
+        "shift": [
+          1,
+          1,
+          0
+        ],
+        "coefficient": -2
+      }
+    ]
+  },
+  "logical_pair": {
+    "representation_dimension": 5,
+    "commutator_norm": 0.7826237921249265,
+    "time": 0.8,
+    "initial_return_probability": 0.8565966110657421,
+    "spectrum": [
+      -1.3571696914418312,
+      -0.413985846431731,
+      -0.22177350025285755,
+      0.6789431916946886,
+      1.3139858464317316
+    ],
+    "scope": "Exact dynamics of one local logical Weyl pair inside the large tensor code, using its five-dimensional irreducible representation. This does not measure a lattice wave dispersion."
+  },
+  "sector_comparison": {
+    "state_tests": 75,
+    "maximum_constraint_error": 5.551115123125783e-16,
+    "minimum_energy_drop": 0.31553426081392844,
+    "syndrome_blocks": [
+      {
+        "alpha": 0,
+        "beta": 0,
+        "excess_dynamic_energy": 0.0
+      },
+      {
+        "alpha": 0,
+        "beta": 1,
+        "excess_dynamic_energy": 0.18620814452060697
+      },
+      {
+        "alpha": 0,
+        "beta": 2,
+        "excess_dynamic_energy": 0.5180446368476723
+      },
+      {
+        "alpha": 0,
+        "beta": 3,
+        "excess_dynamic_energy": 0.5180446368476728
+      },
+      {
+        "alpha": 0,
+        "beta": 4,
+        "excess_dynamic_energy": 0.1862081445206074
+      },
+      {
+        "alpha": 1,
+        "beta": 0,
+        "excess_dynamic_energy": 0.1057772171447049
+      },
+      {
+        "alpha": 1,
+        "beta": 1,
+        "excess_dynamic_energy": 0.30457651026493826
+      },
+      {
+        "alpha": 1,
+        "beta": 2,
+        "excess_dynamic_energy": 0.658050222933543
+      },
+      {
+        "alpha": 1,
+        "beta": 3,
+        "excess_dynamic_energy": 0.6580502229335425
+      },
+      {
+        "alpha": 1,
+        "beta": 4,
+        "excess_dynamic_energy": 0.3045765102649385
+      },
+      {
+        "alpha": 2,
+        "beta": 0,
+        "excess_dynamic_energy": 0.29553723583863367
+      },
+      {
+        "alpha": 2,
+        "beta": 1,
+        "excess_dynamic_energy": 0.524078207520756
+      },
+      {
+        "alpha": 2,
+        "beta": 2,
+        "excess_dynamic_energy": 0.9113847527345758
+      },
+      {
+        "alpha": 2,
+        "beta": 3,
+        "excess_dynamic_energy": 0.9113847527345749
+      },
+      {
+        "alpha": 2,
+        "beta": 4,
+        "excess_dynamic_energy": 0.5240782075207573
+      },
+      {
+        "alpha": 3,
+        "beta": 0,
+        "excess_dynamic_energy": 0.2955372358386332
+      },
+      {
+        "alpha": 3,
+        "beta": 1,
+        "excess_dynamic_energy": 0.5240782075207564
+      },
+      {
+        "alpha": 3,
+        "beta": 2,
+        "excess_dynamic_energy": 0.9113847527345753
+      },
+      {
+        "alpha": 3,
+        "beta": 3,
+        "excess_dynamic_energy": 0.9113847527345753
+      },
+      {
+        "alpha": 3,
+        "beta": 4,
+        "excess_dynamic_energy": 0.5240782075207564
+      },
+      {
+        "alpha": 4,
+        "beta": 0,
+        "excess_dynamic_energy": 0.10577721714470378
+      },
+      {
+        "alpha": 4,
+        "beta": 1,
+        "excess_dynamic_energy": 0.3045765102649389
+      },
+      {
+        "alpha": 4,
+        "beta": 2,
+        "excess_dynamic_energy": 0.658050222933543
+      },
+      {
+        "alpha": 4,
+        "beta": 3,
+        "excess_dynamic_energy": 0.6580502229335436
+      },
+      {
+        "alpha": 4,
+        "beta": 4,
+        "excess_dynamic_energy": 0.30457651026493826
+      }
+    ],
+    "scope": "Two successive basis absolute-value operations on 75 charged states and independent spectra of all 25 syndrome blocks. The all-volume comparison is proved analytically in the note."
+  },
+  "guarded_dynamics": {
+    "matrix_dimension": 216,
+    "full_four_spin_dimension": 4096,
+    "rows": [
+      {
+        "strength": 0.1,
+        "ground_energy": -0.19435502250011105,
+        "charged_energy_margin": 0.7105777217144709,
+        "inactive_energy_margin": 1.4420858078528926
+      },
+      {
+        "strength": 1.0,
+        "ground_energy": -1.943550225001111,
+        "charged_energy_margin": 0.8057772171447042,
+        "inactive_energy_margin": 2.72085807852894
+      },
+      {
+        "strength": 10.0,
+        "ground_energy": -19.435502250011105,
+        "charged_energy_margin": 1.7577721714470513,
+        "inactive_energy_margin": 15.508580785289404
+      },
+      {
+        "strength": 100.0,
+        "ground_energy": -194.3550225001111,
+        "charged_energy_margin": 11.277721714470403,
+        "inactive_energy_margin": 143.38580785289406
+      }
+    ],
+    "charge_bound": 0.7,
+    "inactive_bound": 1.3,
+    "scope": "Each local inactive label has eleven identical copies in the full four-spin model; this 216-state block represents every active/inactive pattern. This toy has independent check relations, so its charge lower bound is Delta; the periodic tensor code instead has 2 Delta."
+  },
+  "derivative_obstruction": {
+    "constant_X_kernel_dimension": 0,
+    "constant_Z_kernel_dimension": 0,
+    "linear_Z_kernel_dimension": 0,
+    "scope": "Exact coefficient elimination for analytic continuum-neutral local patterns: X starts at one derivative and Z at two. Modular-only patterns or singular coefficient limits are outside this statement."
+  },
+  "cubic_expansion": {
+    "cases": 192,
+    "maximum_symbol_error": 1.31660828194896e-16,
+    "rows": [
+      {
+        "case": 0,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.3880102937243296e-17,
+        "frequency_over_radius": 0.0892972292919359,
+        "frequency_over_radius_cubed": 0.9921914365770655,
+        "nonlocal_repair_frequency_over_radius": 0.9973903411304768
+      },
+      {
+        "case": 0,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.868356283128404e-17,
+        "frequency_over_radius": 0.02245595638379883,
+        "frequency_over_radius_cubed": 0.9980425059466146,
+        "nonlocal_repair_frequency_over_radius": 0.9993470757649303
+      },
+      {
+        "case": 0,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.939495305882189e-18,
+        "frequency_over_radius": 0.005622245388120535,
+        "frequency_over_radius_cubed": 0.9995102912214285,
+        "nonlocal_repair_frequency_over_radius": 0.9998367370871483
+      },
+      {
+        "case": 0,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.336811472994549e-19,
+        "frequency_over_radius": 0.0014060778072756705,
+        "frequency_over_radius_cubed": 0.9998775518404769,
+        "nonlocal_repair_frequency_over_radius": 0.9999591822807621
+      },
+      {
+        "case": 1,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.179619566798222e-17,
+        "frequency_over_radius": 0.08959477656601017,
+        "frequency_over_radius_cubed": 0.9954975174001132,
+        "nonlocal_repair_frequency_over_radius": 0.9984969143321367
+      },
+      {
+        "case": 1,
+        "radius": 0.15,
+        "maximum_symbol_error": 3.4755083736392135e-18,
+        "frequency_over_radius": 0.02247463460518094,
+        "frequency_over_radius_cubed": 0.9988726491191531,
+        "nonlocal_repair_frequency_over_radius": 0.9996240750712071
+      },
+      {
+        "case": 1,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.0783098943988901e-18,
+        "frequency_over_radius": 0.005623414053843192,
+        "frequency_over_radius_cubed": 0.9997180540165675,
+        "nonlocal_repair_frequency_over_radius": 0.9999060091715233
+      },
+      {
+        "case": 1,
+        "radius": 0.0375,
+        "maximum_symbol_error": 2.1838185304221027e-19,
+        "frequency_over_radius": 0.0014061508688471554,
+        "frequency_over_radius_cubed": 0.9999295067357551,
+        "nonlocal_repair_frequency_over_radius": 0.9999765016930855
+      },
+      {
+        "case": 2,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.1269275860195966e-17,
+        "frequency_over_radius": 0.08934790531969733,
+        "frequency_over_radius_cubed": 0.9927545035521926,
+        "nonlocal_repair_frequency_over_radius": 0.9975789778995372
+      },
+      {
+        "case": 2,
+        "radius": 0.15,
+        "maximum_symbol_error": 4.984103317853089e-18,
+        "frequency_over_radius": 0.02245913716084741,
+        "frequency_over_radius_cubed": 0.9981838738154405,
+        "nonlocal_repair_frequency_over_radius": 0.9993942577555672
+      },
+      {
+        "case": 2,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.7488130127066165e-18,
+        "frequency_over_radius": 0.00562244439857146,
+        "frequency_over_radius_cubed": 0.9995456708571485,
+        "nonlocal_repair_frequency_over_radius": 0.9998485340115952
+      },
+      {
+        "case": 2,
+        "radius": 0.0375,
+        "maximum_symbol_error": 9.76369606725674e-19,
+        "frequency_over_radius": 0.0014060902487417247,
+        "frequency_over_radius_cubed": 0.9998863991052266,
+        "nonlocal_repair_frequency_over_radius": 0.999962131601078
+      },
+      {
+        "case": 3,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.373293364520669e-17,
+        "frequency_over_radius": 0.08955531059546105,
+        "frequency_over_radius_cubed": 0.9950590066162341,
+        "nonlocal_repair_frequency_over_radius": 0.9983502821329776
+      },
+      {
+        "case": 3,
+        "radius": 0.15,
+        "maximum_symbol_error": 9.966301684146053e-18,
+        "frequency_over_radius": 0.02247215892410721,
+        "frequency_over_radius_cubed": 0.9987626188492095,
+        "nonlocal_repair_frequency_over_radius": 0.9995873693757895
+      },
+      {
+        "case": 3,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.5925063423831435e-18,
+        "frequency_over_radius": 0.005623259181961764,
+        "frequency_over_radius_cubed": 0.9996905212376469,
+        "nonlocal_repair_frequency_over_radius": 0.9998968297688182
+      },
+      {
+        "case": 3,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.0902257358633664e-18,
+        "frequency_over_radius": 0.0014061411871376052,
+        "frequency_over_radius_cubed": 0.9999226219645193,
+        "nonlocal_repair_frequency_over_radius": 0.9999742066562158
+      },
+      {
+        "case": 4,
+        "radius": 0.3,
+        "maximum_symbol_error": 8.809281690377336e-17,
+        "frequency_over_radius": 0.08951165070678144,
+        "frequency_over_radius_cubed": 0.994573896742016,
+        "nonlocal_repair_frequency_over_radius": 0.998188017616931
+      },
+      {
+        "case": 4,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.402817075444911e-18,
+        "frequency_over_radius": 0.022469420874667037,
+        "frequency_over_radius_cubed": 0.9986409277629794,
+        "nonlocal_repair_frequency_over_radius": 0.9995467705350791
+      },
+      {
+        "case": 4,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.7497565513209892e-18,
+        "frequency_over_radius": 0.005623087908175378,
+        "frequency_over_radius_cubed": 0.9996600725645118,
+        "nonlocal_repair_frequency_over_radius": 0.9998866780134495
+      },
+      {
+        "case": 4,
+        "radius": 0.0375,
+        "maximum_symbol_error": 5.387760719455256e-19,
+        "frequency_over_radius": 0.00140613048024834,
+        "frequency_over_radius_cubed": 0.9999150081765974,
+        "nonlocal_repair_frequency_over_radius": 0.9999716685895381
+      },
+      {
+        "case": 5,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.0738824224192686e-16,
+        "frequency_over_radius": 0.0895399106447344,
+        "frequency_over_radius_cubed": 0.9948878960526045,
+        "nonlocal_repair_frequency_over_radius": 0.9982930533417983
+      },
+      {
+        "case": 5,
+        "radius": 0.15,
+        "maximum_symbol_error": 9.82836776008368e-18,
+        "frequency_over_radius": 0.02247119454419853,
+        "frequency_over_radius_cubed": 0.9987197575199348,
+        "nonlocal_repair_frequency_over_radius": 0.9995730702635841
+      },
+      {
+        "case": 5,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.3409438815697584e-18,
+        "frequency_over_radius": 0.005623198878775362,
+        "frequency_over_radius_cubed": 0.9996798006711756,
+        "nonlocal_repair_frequency_over_radius": 0.9998932554964084
+      },
+      {
+        "case": 5,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.3889514321979638e-18,
+        "frequency_over_radius": 0.0014061374177283426,
+        "frequency_over_radius_cubed": 0.9999199414957103,
+        "nonlocal_repair_frequency_over_radius": 0.9999733131197197
+      },
+      {
+        "case": 6,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.939096098343115e-17,
+        "frequency_over_radius": 0.08901016602935376,
+        "frequency_over_radius_cubed": 0.9890018447705974,
+        "nonlocal_repair_frequency_over_radius": 0.9963204255953144
+      },
+      {
+        "case": 6,
+        "radius": 0.15,
+        "maximum_symbol_error": 6.939682317020824e-18,
+        "frequency_over_radius": 0.022437911673865333,
+        "frequency_over_radius_cubed": 0.9972405188384594,
+        "nonlocal_repair_frequency_over_radius": 0.9990793255648716
+      },
+      {
+        "case": 6,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.7347819775549175e-18,
+        "frequency_over_radius": 0.0056211159751104285,
+        "frequency_over_radius_cubed": 0.9993095066862985,
+        "nonlocal_repair_frequency_over_radius": 0.9997697825660999
+      },
+      {
+        "case": 6,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.848784621270617e-19,
+        "frequency_over_radius": 0.0014060071936506972,
+        "frequency_over_radius_cubed": 0.9998273377071626,
+        "nonlocal_repair_frequency_over_radius": 0.9999424425895957
+      },
+      {
+        "case": 7,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.551223145737253e-17,
+        "frequency_over_radius": 0.08944152395786953,
+        "frequency_over_radius_cubed": 0.9937947106429948,
+        "nonlocal_repair_frequency_over_radius": 0.9979272770019691
+      },
+      {
+        "case": 7,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.759797500148723e-18,
+        "frequency_over_radius": 0.02246502103410492,
+        "frequency_over_radius_cubed": 0.998445379293552,
+        "nonlocal_repair_frequency_over_radius": 0.9994815243272859
+      },
+      {
+        "case": 7,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.576613451875554e-18,
+        "frequency_over_radius": 0.005622812653198314,
+        "frequency_over_radius_cubed": 0.999611138346367,
+        "nonlocal_repair_frequency_over_radius": 0.9998703626436708
+      },
+      {
+        "case": 7,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.850493369870385e-19,
+        "frequency_over_radius": 0.0014061132726702614,
+        "frequency_over_radius_cubed": 0.9999027716766304,
+        "nonlocal_repair_frequency_over_radius": 0.9999675895084481
+      },
+      {
+        "case": 8,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.0368835458165464e-17,
+        "frequency_over_radius": 0.08941009754108135,
+        "frequency_over_radius_cubed": 0.9934455282342373,
+        "nonlocal_repair_frequency_over_radius": 0.9978103851642561
+      },
+      {
+        "case": 8,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.791749197442356e-18,
+        "frequency_over_radius": 0.02246304343223733,
+        "frequency_over_radius_cubed": 0.9983574858772148,
+        "nonlocal_repair_frequency_over_radius": 0.9994521952571656
+      },
+      {
+        "case": 8,
+        "radius": 0.075,
+        "maximum_symbol_error": 8.834765803979822e-19,
+        "frequency_over_radius": 0.005622688842271573,
+        "frequency_over_radius_cubed": 0.9995891275149463,
+        "nonlocal_repair_frequency_over_radius": 0.9998630237433437
+      },
+      {
+        "case": 8,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.0851630901592458e-18,
+        "frequency_over_radius": 0.0014061055311909256,
+        "frequency_over_radius_cubed": 0.9998972666246583,
+        "nonlocal_repair_frequency_over_radius": 0.9999657543688031
+      },
+      {
+        "case": 9,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.1187837522758356e-17,
+        "frequency_over_radius": 0.08949320937844495,
+        "frequency_over_radius_cubed": 0.9943689930938329,
+        "nonlocal_repair_frequency_over_radius": 0.9981194634971934
+      },
+      {
+        "case": 9,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.4749069313490713e-17,
+        "frequency_over_radius": 0.022468267091146528,
+        "frequency_over_radius_cubed": 0.9985896484954013,
+        "nonlocal_repair_frequency_over_radius": 0.9995296616483178
+      },
+      {
+        "case": 9,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.468357446347072e-18,
+        "frequency_over_radius": 0.005623015777987062,
+        "frequency_over_radius_cubed": 0.9996472494199222,
+        "nonlocal_repair_frequency_over_radius": 0.9998824026447114
+      },
+      {
+        "case": 9,
+        "radius": 0.0375,
+        "maximum_symbol_error": 2.1717342771891133e-19,
+        "frequency_over_radius": 0.0014061259718192512,
+        "frequency_over_radius_cubed": 0.9999118021825787,
+        "nonlocal_repair_frequency_over_radius": 0.9999705998631663
+      },
+      {
+        "case": 10,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.31660828194896e-16,
+        "frequency_over_radius": 0.08942771284095061,
+        "frequency_over_radius_cubed": 0.9936412537883401,
+        "nonlocal_repair_frequency_over_radius": 0.9978759093628753
+      },
+      {
+        "case": 10,
+        "radius": 0.15,
+        "maximum_symbol_error": 3.7237010399964874e-18,
+        "frequency_over_radius": 0.022464148775887385,
+        "frequency_over_radius_cubed": 0.9984066122616617,
+        "nonlocal_repair_frequency_over_radius": 0.9994685884056275
+      },
+      {
+        "case": 10,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.3238776128445635e-18,
+        "frequency_over_radius": 0.005622757994967794,
+        "frequency_over_radius_cubed": 0.9996014213276079,
+        "nonlocal_repair_frequency_over_radius": 0.9998671227869648
+      },
+      {
+        "case": 10,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.878686282023584e-19,
+        "frequency_over_radius": 0.0014061098543088038,
+        "frequency_over_radius_cubed": 0.9999003408418161,
+        "nonlocal_repair_frequency_over_radius": 0.9999667791769944
+      },
+      {
+        "case": 11,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.7801311619438155e-17,
+        "frequency_over_radius": 0.08956214832779881,
+        "frequency_over_radius_cubed": 0.9951349814199868,
+        "nonlocal_repair_frequency_over_radius": 0.9983756901861415
+      },
+      {
+        "case": 11,
+        "radius": 0.15,
+        "maximum_symbol_error": 6.1246635510759544e-18,
+        "frequency_over_radius": 0.022472589225425953,
+        "frequency_over_radius_cubed": 0.9987817433522647,
+        "nonlocal_repair_frequency_over_radius": 0.9995937494335813
+      },
+      {
+        "case": 11,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.485570874281164e-18,
+        "frequency_over_radius": 0.00562328612190516,
+        "frequency_over_radius_cubed": 0.9996953105609174,
+        "nonlocal_repair_frequency_over_radius": 0.9998984265368199
+      },
+      {
+        "case": 11,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.2674124934082613e-18,
+        "frequency_over_radius": 0.0014061428716050427,
+        "frequency_over_radius_cubed": 0.9999238198080305,
+        "nonlocal_repair_frequency_over_radius": 0.9999746059578245
+      },
+      {
+        "case": 12,
+        "radius": 0.3,
+        "maximum_symbol_error": 2.0102174789225345e-17,
+        "frequency_over_radius": 0.08914071937970047,
+        "frequency_over_radius_cubed": 0.9904524375522276,
+        "nonlocal_repair_frequency_over_radius": 0.9968072966776905
+      },
+      {
+        "case": 12,
+        "radius": 0.15,
+        "maximum_symbol_error": 5.033362753140478e-18,
+        "frequency_over_radius": 0.022446119493958108,
+        "frequency_over_radius_cubed": 0.9976053108425827,
+        "nonlocal_repair_frequency_over_radius": 0.9992011322611398
+      },
+      {
+        "case": 12,
+        "radius": 0.075,
+        "maximum_symbol_error": 5.251460738427857e-18,
+        "frequency_over_radius": 0.005621629720089819,
+        "frequency_over_radius_cubed": 0.999400839127079,
+        "nonlocal_repair_frequency_over_radius": 0.999800239807549
+      },
+      {
+        "case": 12,
+        "radius": 0.0375,
+        "maximum_symbol_error": 3.0490011692397286e-20,
+        "frequency_over_radius": 0.00140603931453785,
+        "frequency_over_radius_cubed": 0.9998501792269157,
+        "nonlocal_repair_frequency_over_radius": 0.9999500572480682
+      },
+      {
+        "case": 13,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.1159616163691596e-17,
+        "frequency_over_radius": 0.08946667045672499,
+        "frequency_over_radius_cubed": 0.9940741161858333,
+        "nonlocal_repair_frequency_over_radius": 0.9980207907102301
+      },
+      {
+        "case": 13,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.1002600793045178e-17,
+        "frequency_over_radius": 0.02246659758971245,
+        "frequency_over_radius_cubed": 0.9985154484316646,
+        "nonlocal_repair_frequency_over_radius": 0.9995049043980186
+      },
+      {
+        "case": 13,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.743043821083815e-18,
+        "frequency_over_radius": 0.005622911264619393,
+        "frequency_over_radius_cubed": 0.99962866926567,
+        "nonlocal_repair_frequency_over_radius": 0.9998762077646713
+      },
+      {
+        "case": 13,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.544639980008241e-19,
+        "frequency_over_radius": 0.001406119437083003,
+        "frequency_over_radius_cubed": 0.9999071552590244,
+        "nonlocal_repair_frequency_over_radius": 0.999969050795165
+      },
+      {
+        "case": 14,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.722491782428617e-17,
+        "frequency_over_radius": 0.08934744083708884,
+        "frequency_over_radius_cubed": 0.9927493426343206,
+        "nonlocal_repair_frequency_over_radius": 0.9975772492304393
+      },
+      {
+        "case": 14,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.5596430230981298e-17,
+        "frequency_over_radius": 0.0224591078677982,
+        "frequency_over_radius_cubed": 0.9981825719021424,
+        "nonlocal_repair_frequency_over_radius": 0.9993938232580518
+      },
+      {
+        "case": 14,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.0031621587065197e-18,
+        "frequency_over_radius": 0.00562244256363394,
+        "frequency_over_radius_cubed": 0.999545344646034,
+        "nonlocal_repair_frequency_over_radius": 0.9998484252415981
+      },
+      {
+        "case": 14,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.141914907831304e-19,
+        "frequency_over_radius": 0.0014060901339936688,
+        "frequency_over_radius_cubed": 0.9998863175066091,
+        "nonlocal_repair_frequency_over_radius": 0.9999621043994782
+      },
+      {
+        "case": 15,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.682884419505164e-17,
+        "frequency_over_radius": 0.08952572185192446,
+        "frequency_over_radius_cubed": 0.9947302427991608,
+        "nonlocal_repair_frequency_over_radius": 0.9982403196075722
+      },
+      {
+        "case": 15,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.1107286277537934e-17,
+        "frequency_over_radius": 0.022470300033399764,
+        "frequency_over_radius_cubed": 0.9986800014844341,
+        "nonlocal_repair_frequency_over_radius": 0.9995598067531486
+      },
+      {
+        "case": 15,
+        "radius": 0.075,
+        "maximum_symbol_error": 5.499058599062305e-18,
+        "frequency_over_radius": 0.0056231428510028075,
+        "frequency_over_radius_cubed": 0.999669840178277,
+        "nonlocal_repair_frequency_over_radius": 0.9998899346121476
+      },
+      {
+        "case": 15,
+        "radius": 0.0375,
+        "maximum_symbol_error": 9.751189471723753e-19,
+        "frequency_over_radius": 0.001406133914102906,
+        "frequency_over_radius_cubed": 0.9999174500287333,
+        "nonlocal_repair_frequency_over_radius": 0.9999724825857097
+      },
+      {
+        "case": 16,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.412525533451599e-17,
+        "frequency_over_radius": 0.08945683112362246,
+        "frequency_over_radius_cubed": 0.9939647902624719,
+        "nonlocal_repair_frequency_over_radius": 0.9979842027124758
+      },
+      {
+        "case": 16,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.793063716333818e-18,
+        "frequency_over_radius": 0.022465981168981235,
+        "frequency_over_radius_cubed": 0.9984880519547216,
+        "nonlocal_repair_frequency_over_radius": 0.9994957631061304
+      },
+      {
+        "case": 16,
+        "radius": 0.075,
+        "maximum_symbol_error": 4.195373925468368e-18,
+        "frequency_over_radius": 0.00562287271544552,
+        "frequency_over_radius_cubed": 0.9996218160792036,
+        "nonlocal_repair_frequency_over_radius": 0.9998739227982747
+      },
+      {
+        "case": 16,
+        "radius": 0.0375,
+        "maximum_symbol_error": 2.3659467823278035e-19,
+        "frequency_over_radius": 0.001406117027402055,
+        "frequency_over_radius_cubed": 0.999905441708128,
+        "nonlocal_repair_frequency_over_radius": 0.999968479575849
+      },
+      {
+        "case": 17,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.5386685585863857e-17,
+        "frequency_over_radius": 0.08943546036935857,
+        "frequency_over_radius_cubed": 0.9937273374373174,
+        "nonlocal_repair_frequency_over_radius": 0.9979047253695367
+      },
+      {
+        "case": 17,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.942529902424609e-19,
+        "frequency_over_radius": 0.022464638708422746,
+        "frequency_over_radius_cubed": 0.998428387041011,
+        "nonlocal_repair_frequency_over_radius": 0.999475854332989
+      },
+      {
+        "case": 17,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.940117836521579e-18,
+        "frequency_over_radius": 0.005622788705308646,
+        "frequency_over_radius_cubed": 0.9996068809437593,
+        "nonlocal_repair_frequency_over_radius": 0.9998689431394359
+      },
+      {
+        "case": 17,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.890656857374796e-19,
+        "frequency_over_radius": 0.001406111775105644,
+        "frequency_over_radius_cubed": 0.9999017067417914,
+        "nonlocal_repair_frequency_over_radius": 0.999967234507031
+      },
+      {
+        "case": 18,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.939144072084475e-17,
+        "frequency_over_radius": 0.08935581289511381,
+        "frequency_over_radius_cubed": 0.9928423655012646,
+        "nonlocal_repair_frequency_over_radius": 0.9976084066748694
+      },
+      {
+        "case": 18,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.4594900797750325e-17,
+        "frequency_over_radius": 0.02245963545637084,
+        "frequency_over_radius_cubed": 0.9982060202831484,
+        "nonlocal_repair_frequency_over_radius": 0.9994016488083087
+      },
+      {
+        "case": 18,
+        "radius": 0.075,
+        "maximum_symbol_error": 4.7931590036014e-18,
+        "frequency_over_radius": 0.005622475605883889,
+        "frequency_over_radius_cubed": 0.9995512188238026,
+        "nonlocal_repair_frequency_over_radius": 0.9998503838907369
+      },
+      {
+        "case": 18,
+        "radius": 0.0375,
+        "maximum_symbol_error": 7.852243433899999e-19,
+        "frequency_over_radius": 0.0014060922001971335,
+        "frequency_over_radius_cubed": 0.9998877868068505,
+        "nonlocal_repair_frequency_over_radius": 0.9999625942031073
+      },
+      {
+        "case": 19,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.485724865462497e-17,
+        "frequency_over_radius": 0.08921183485464541,
+        "frequency_over_radius_cubed": 0.9912426094960601,
+        "nonlocal_repair_frequency_over_radius": 0.9970723068093994
+      },
+      {
+        "case": 19,
+        "radius": 0.15,
+        "maximum_symbol_error": 9.849734416719708e-18,
+        "frequency_over_radius": 0.02245058934594203,
+        "frequency_over_radius_cubed": 0.9978039709307569,
+        "nonlocal_repair_frequency_over_radius": 0.9992674538173762
+      },
+      {
+        "case": 19,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.9467817300880056e-18,
+        "frequency_over_radius": 0.005621909479836505,
+        "frequency_over_radius_cubed": 0.9994505741931566,
+        "nonlocal_repair_frequency_over_radius": 0.9998168245131752
+      },
+      {
+        "case": 19,
+        "radius": 0.0375,
+        "maximum_symbol_error": 7.832095820759434e-19,
+        "frequency_over_radius": 0.0014060568056831872,
+        "frequency_over_radius_cubed": 0.999862617374711,
+        "nonlocal_repair_frequency_over_radius": 0.9999542036943007
+      },
+      {
+        "case": 20,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.975700878051766e-17,
+        "frequency_over_radius": 0.08961721291911247,
+        "frequency_over_radius_cubed": 0.9957468102123609,
+        "nonlocal_repair_frequency_over_radius": 0.9985802553498295
+      },
+      {
+        "case": 20,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.2512746029960193e-17,
+        "frequency_over_radius": 0.02247604115229,
+        "frequency_over_radius_cubed": 0.9989351623239999,
+        "nonlocal_repair_frequency_over_radius": 0.9996449280468299
+      },
+      {
+        "case": 20,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.268653848986718e-18,
+        "frequency_over_radius": 0.00562350202994602,
+        "frequency_over_radius_cubed": 0.999733694212626,
+        "nonlocal_repair_frequency_over_radius": 0.9999112235231788
+      },
+      {
+        "case": 20,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.2276526856693667e-18,
+        "frequency_over_radius": 0.0014061563683994613,
+        "frequency_over_radius_cubed": 0.999933417528506,
+        "nonlocal_repair_frequency_over_radius": 0.9999778053502364
+      },
+      {
+        "case": 21,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.1638910985583466e-17,
+        "frequency_over_radius": 0.08900132247925692,
+        "frequency_over_radius_cubed": 0.9889035831028548,
+        "nonlocal_repair_frequency_over_radius": 0.996287428235538
+      },
+      {
+        "case": 21,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.7347268103872154e-17,
+        "frequency_over_radius": 0.022437355540987757,
+        "frequency_over_radius_cubed": 0.9972158018216782,
+        "nonlocal_repair_frequency_over_radius": 0.9990710712992222
+      },
+      {
+        "case": 21,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.127329753656975e-18,
+        "frequency_over_radius": 0.005621081163323166,
+        "frequency_over_radius_cubed": 0.9993033179241185,
+        "nonlocal_repair_frequency_over_radius": 0.9997677186909439
+      },
+      {
+        "case": 21,
+        "radius": 0.0375,
+        "maximum_symbol_error": 9.697432165420636e-19,
+        "frequency_over_radius": 0.0014060050170776042,
+        "frequency_over_radius_cubed": 0.9998257899218519,
+        "nonlocal_repair_frequency_over_radius": 0.9999419266014961
+      },
+      {
+        "case": 22,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.2204558482025084e-17,
+        "frequency_over_radius": 0.08941383675333167,
+        "frequency_over_radius_cubed": 0.9934870750370186,
+        "nonlocal_repair_frequency_over_radius": 0.9978242947520537
+      },
+      {
+        "case": 22,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.055092937937788e-17,
+        "frequency_over_radius": 0.022463277652589205,
+        "frequency_over_radius_cubed": 0.9983678956706314,
+        "nonlocal_repair_frequency_over_radius": 0.9994556689810469
+      },
+      {
+        "case": 22,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.5348356690615215e-18,
+        "frequency_over_radius": 0.005622703489171089,
+        "frequency_over_radius_cubed": 0.9995917314081937,
+        "nonlocal_repair_frequency_over_radius": 0.9998638919448359
+      },
+      {
+        "case": 22,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.1627379107057649e-18,
+        "frequency_over_radius": 0.0014061064467491718,
+        "frequency_over_radius_cubed": 0.9998979176883,
+        "nonlocal_repair_frequency_over_radius": 0.9999659714048342
+      },
+      {
+        "case": 23,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.103984990732503e-17,
+        "frequency_over_radius": 0.08954060432126766,
+        "frequency_over_radius_cubed": 0.9948956035696408,
+        "nonlocal_repair_frequency_over_radius": 0.9982956313008758
+      },
+      {
+        "case": 23,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.1037755166865173e-17,
+        "frequency_over_radius": 0.02247123874427813,
+        "frequency_over_radius_cubed": 0.9987217219679169,
+        "nonlocal_repair_frequency_over_radius": 0.9995737256386272
+      },
+      {
+        "case": 23,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.446814637664194e-18,
+        "frequency_over_radius": 0.0056232016545318605,
+        "frequency_over_radius_cubed": 0.9996802941389975,
+        "nonlocal_repair_frequency_over_radius": 0.9998934200207773
+      },
+      {
+        "case": 23,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.2085664108022457e-19,
+        "frequency_over_radius": 0.0014061375914203504,
+        "frequency_over_radius_cubed": 0.9999200650100271,
+        "nonlocal_repair_frequency_over_radius": 0.9999733542933548
+      },
+      {
+        "case": 24,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.09399602402067e-17,
+        "frequency_over_radius": 0.08964864566107053,
+        "frequency_over_radius_cubed": 0.9960960629007838,
+        "nonlocal_repair_frequency_over_radius": 0.9986969905373663
+      },
+      {
+        "case": 24,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.030004613015028e-17,
+        "frequency_over_radius": 0.022478011728221944,
+        "frequency_over_radius_cubed": 0.9990227434765309,
+        "nonlocal_repair_frequency_over_radius": 0.9996741416533821
+      },
+      {
+        "case": 24,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.146130312464901e-18,
+        "frequency_over_radius": 0.00562362528530768,
+        "frequency_over_radius_cubed": 0.9997556062769211,
+        "nonlocal_repair_frequency_over_radius": 0.9999185287882623
+      },
+      {
+        "case": 24,
+        "radius": 0.0375,
+        "maximum_symbol_error": 5.042447071729489e-19,
+        "frequency_over_radius": 0.0014061640733346347,
+        "frequency_over_radius_cubed": 0.9999388965935181,
+        "nonlocal_repair_frequency_over_radius": 0.9999796317829778
+      },
+      {
+        "case": 25,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.228355548736681e-17,
+        "frequency_over_radius": 0.08934000897827636,
+        "frequency_over_radius_cubed": 0.9926667664252931,
+        "nonlocal_repair_frequency_over_radius": 0.9975495891998497
+      },
+      {
+        "case": 25,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.2535013420917396e-17,
+        "frequency_over_radius": 0.02245864389957822,
+        "frequency_over_radius_cubed": 0.9981619510923655,
+        "nonlocal_repair_frequency_over_radius": 0.999386941266582
+      },
+      {
+        "case": 25,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.256588011033034e-18,
+        "frequency_over_radius": 0.00562241357387937,
+        "frequency_over_radius_cubed": 0.9995401909118881,
+        "nonlocal_repair_frequency_over_radius": 0.9998467068063603
+      },
+      {
+        "case": 25,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.2651020971884918e-18,
+        "frequency_over_radius": 0.0014060883222634024,
+        "frequency_over_radius_cubed": 0.9998850291650863,
+        "nonlocal_repair_frequency_over_radius": 0.9999616749195694
+      },
+      {
+        "case": 26,
+        "radius": 0.3,
+        "maximum_symbol_error": 2.0889027095384227e-17,
+        "frequency_over_radius": 0.0895984471777137,
+        "frequency_over_radius_cubed": 0.9955383019745967,
+        "nonlocal_repair_frequency_over_radius": 0.9985105499648876
+      },
+      {
+        "case": 26,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.949207566250979e-18,
+        "frequency_over_radius": 0.02247486325128727,
+        "frequency_over_radius_cubed": 0.9988828111683232,
+        "nonlocal_repair_frequency_over_radius": 0.9996274649576502
+      },
+      {
+        "case": 26,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.2906301081265866e-18,
+        "frequency_over_radius": 0.005623428332178716,
+        "frequency_over_radius_cubed": 0.9997205923873274,
+        "nonlocal_repair_frequency_over_radius": 0.9999068554534722
+      },
+      {
+        "case": 26,
+        "radius": 0.0375,
+        "maximum_symbol_error": 2.2206168729854183e-19,
+        "frequency_over_radius": 0.0014061517610546707,
+        "frequency_over_radius_cubed": 0.9999301411944326,
+        "nonlocal_repair_frequency_over_radius": 0.9999767131892061
+      },
+      {
+        "case": 27,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.006148355699746e-17,
+        "frequency_over_radius": 0.08942911033970288,
+        "frequency_over_radius_cubed": 0.9936567815522543,
+        "nonlocal_repair_frequency_over_radius": 0.9978811073156121
+      },
+      {
+        "case": 27,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.5850495673002422e-17,
+        "frequency_over_radius": 0.022464237695862612,
+        "frequency_over_radius_cubed": 0.9984105642605606,
+        "nonlocal_repair_frequency_over_radius": 0.999469907138063
+      },
+      {
+        "case": 27,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.397568479003657e-18,
+        "frequency_over_radius": 0.00562276357718577,
+        "frequency_over_radius_cubed": 0.9996024137219148,
+        "nonlocal_repair_frequency_over_radius": 0.9998674536728858
+      },
+      {
+        "case": 27,
+        "radius": 0.0375,
+        "maximum_symbol_error": 7.033648727377032e-19,
+        "frequency_over_radius": 0.0014061102035840209,
+        "frequency_over_radius_cubed": 0.9999005892153038,
+        "nonlocal_repair_frequency_over_radius": 0.9999668619736511
+      },
+      {
+        "case": 28,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.7385268101090358e-17,
+        "frequency_over_radius": 0.08940158964973541,
+        "frequency_over_radius_cubed": 0.9933509961081712,
+        "nonlocal_repair_frequency_over_radius": 0.9977787350044639
+      },
+      {
+        "case": 28,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.4363490956964034e-17,
+        "frequency_over_radius": 0.022462509194296886,
+        "frequency_over_radius_cubed": 0.9983337419687507,
+        "nonlocal_repair_frequency_over_radius": 0.9994442718797157
+      },
+      {
+        "case": 28,
+        "radius": 0.075,
+        "maximum_symbol_error": 8.722738570782158e-19,
+        "frequency_over_radius": 0.005622655413316168,
+        "frequency_over_radius_cubed": 0.999583184589541,
+        "nonlocal_repair_frequency_over_radius": 0.9998610422214771
+      },
+      {
+        "case": 28,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.216853135675602e-19,
+        "frequency_over_radius": 0.0014061034412701154,
+        "frequency_over_radius_cubed": 0.9998957804587488,
+        "nonlocal_repair_frequency_over_radius": 0.9999652589459892
+      },
+      {
+        "case": 29,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.477749269372173e-17,
+        "frequency_over_radius": 0.08922083948273471,
+        "frequency_over_radius_cubed": 0.9913426609192747,
+        "nonlocal_repair_frequency_over_radius": 0.9971058522960407
+      },
+      {
+        "case": 29,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.0510525899845259e-17,
+        "frequency_over_radius": 0.022451154810895085,
+        "frequency_over_radius_cubed": 0.9978291027064483,
+        "nonlocal_repair_frequency_over_radius": 0.999275843292462
+      },
+      {
+        "case": 29,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.881140459447678e-18,
+        "frequency_over_radius": 0.005621944863324763,
+        "frequency_over_radius_cubed": 0.9994568645910691,
+        "nonlocal_repair_frequency_over_radius": 0.9998189220764542
+      },
+      {
+        "case": 29,
+        "radius": 0.0375,
+        "maximum_symbol_error": 8.683829710429314e-19,
+        "frequency_over_radius": 0.0014060590178068134,
+        "frequency_over_radius_cubed": 0.9998641904404008,
+        "nonlocal_repair_frequency_over_radius": 0.9999547280972859
+      },
+      {
+        "case": 30,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.931765810166808e-17,
+        "frequency_over_radius": 0.08912453084222378,
+        "frequency_over_radius_cubed": 0.9902725649135976,
+        "nonlocal_repair_frequency_over_radius": 0.9967469507836076
+      },
+      {
+        "case": 30,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.2518568851969692e-17,
+        "frequency_over_radius": 0.02244510192277664,
+        "frequency_over_radius_cubed": 0.9975600854567395,
+        "nonlocal_repair_frequency_over_radius": 0.9991860327893891
+      },
+      {
+        "case": 30,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.2726165184587278e-18,
+        "frequency_over_radius": 0.005621566031163349,
+        "frequency_over_radius_cubed": 0.9993895166512623,
+        "nonlocal_repair_frequency_over_radius": 0.9997964641263795
+      },
+      {
+        "case": 30,
+        "radius": 0.0375,
+        "maximum_symbol_error": 7.818645957384324e-19,
+        "frequency_over_radius": 0.0014060353325611656,
+        "frequency_over_radius_cubed": 0.9998473475990513,
+        "nonlocal_repair_frequency_over_radius": 0.9999491132769358
+      },
+      {
+        "case": 31,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.4709746192045322e-17,
+        "frequency_over_radius": 0.08954388540197421,
+        "frequency_over_radius_cubed": 0.9949320600219358,
+        "nonlocal_repair_frequency_over_radius": 0.9983078248323374
+      },
+      {
+        "case": 31,
+        "radius": 0.15,
+        "maximum_symbol_error": 4.324026361406829e-18,
+        "frequency_over_radius": 0.022471439774250104,
+        "frequency_over_radius_cubed": 0.998730656633338,
+        "nonlocal_repair_frequency_over_radius": 0.9995767063922489
+      },
+      {
+        "case": 31,
+        "radius": 0.075,
+        "maximum_symbol_error": 2.223573993458513e-18,
+        "frequency_over_radius": 0.005623214155572618,
+        "frequency_over_radius_cubed": 0.9996825165462432,
+        "nonlocal_repair_frequency_over_radius": 0.9998941609805783
+      },
+      {
+        "case": 31,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.490192895267346e-19,
+        "frequency_over_radius": 0.0014061383717448657,
+        "frequency_over_radius_cubed": 0.9999206199074602,
+        "nonlocal_repair_frequency_over_radius": 0.999973539268989
+      },
+      {
+        "case": 32,
+        "radius": 0.3,
+        "maximum_symbol_error": 2.0752604205775732e-17,
+        "frequency_over_radius": 0.08942265017900536,
+        "frequency_over_radius_cubed": 0.9935850019889485,
+        "nonlocal_repair_frequency_over_radius": 0.9978570784972615
+      },
+      {
+        "case": 32,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.0998248409367853e-17,
+        "frequency_over_radius": 0.022463835571493878,
+        "frequency_over_radius_cubed": 0.9983926920663947,
+        "nonlocal_repair_frequency_over_radius": 0.9994639433834487
+      },
+      {
+        "case": 32,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.9419869808184865e-18,
+        "frequency_over_radius": 0.005622738470114163,
+        "frequency_over_radius_cubed": 0.999597950242518,
+        "nonlocal_repair_frequency_over_radius": 0.9998659654497148
+      },
+      {
+        "case": 32,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.168490121058859e-18,
+        "frequency_over_radius": 0.0014061086347941958,
+        "frequency_over_radius_cubed": 0.9998994736314283,
+        "nonlocal_repair_frequency_over_radius": 0.9999664900875745
+      },
+      {
+        "case": 33,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.1090449377250056e-17,
+        "frequency_over_radius": 0.08959577924138734,
+        "frequency_over_radius_cubed": 0.9955086582376372,
+        "nonlocal_repair_frequency_over_radius": 0.9985006391197256
+      },
+      {
+        "case": 33,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.761737004015479e-18,
+        "frequency_over_radius": 0.022474696987446707,
+        "frequency_over_radius_cubed": 0.9988754216642982,
+        "nonlocal_repair_frequency_over_radius": 0.9996249999473047
+      },
+      {
+        "case": 33,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.971435549127265e-18,
+        "frequency_over_radius": 0.005623417948262118,
+        "frequency_over_radius_cubed": 0.99971874635771,
+        "nonlocal_repair_frequency_over_radius": 0.9999062399952395
+      },
+      {
+        "case": 33,
+        "radius": 0.0375,
+        "maximum_symbol_error": 9.47985897848645e-19,
+        "frequency_over_radius": 0.0014061511121783719,
+        "frequency_over_radius_cubed": 0.9999296797712867,
+        "nonlocal_repair_frequency_over_radius": 0.9999765593743032
+      },
+      {
+        "case": 34,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.071483650166445e-17,
+        "frequency_over_radius": 0.0890900093089167,
+        "frequency_over_radius_cubed": 0.9898889923212968,
+        "nonlocal_repair_frequency_over_radius": 0.9966182407027543
+      },
+      {
+        "case": 34,
+        "radius": 0.15,
+        "maximum_symbol_error": 2.5146301061808412e-17,
+        "frequency_over_radius": 0.02244293192564632,
+        "frequency_over_radius_cubed": 0.9974636411398364,
+        "nonlocal_repair_frequency_over_radius": 0.9991538312470065
+      },
+      {
+        "case": 34,
+        "radius": 0.075,
+        "maximum_symbol_error": 8.690720514595052e-19,
+        "frequency_over_radius": 0.005621430211932454,
+        "frequency_over_radius_cubed": 0.9993653710102142,
+        "nonlocal_repair_frequency_over_radius": 0.9997884122371808
+      },
+      {
+        "case": 34,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.3448889529450061e-18,
+        "frequency_over_radius": 0.0014060268408190699,
+        "frequency_over_radius_cubed": 0.9998413090268943,
+        "nonlocal_repair_frequency_over_radius": 0.9999471002106268
+      },
+      {
+        "case": 35,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.474492433869929e-17,
+        "frequency_over_radius": 0.08939050966346457,
+        "frequency_over_radius_cubed": 0.9932278851496064,
+        "nonlocal_repair_frequency_over_radius": 0.9977375133980181
+      },
+      {
+        "case": 35,
+        "radius": 0.15,
+        "maximum_symbol_error": 9.846525236136937e-18,
+        "frequency_over_radius": 0.022461815338673963,
+        "frequency_over_radius_cubed": 0.9983029039410651,
+        "nonlocal_repair_frequency_over_radius": 0.9994339809966224
+      },
+      {
+        "case": 35,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.134173348942989e-18,
+        "frequency_over_radius": 0.005622612026130846,
+        "frequency_over_radius_cubed": 0.9995754713121504,
+        "nonlocal_repair_frequency_over_radius": 0.9998584704077035
+      },
+      {
+        "case": 35,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.336955976850506e-19,
+        "frequency_over_radius": 0.0014061007292395906,
+        "frequency_over_radius_cubed": 0.9998938519037088,
+        "nonlocal_repair_frequency_over_radius": 0.999964616049227
+      },
+      {
+        "case": 36,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.118919805214614e-17,
+        "frequency_over_radius": 0.08961315293275177,
+        "frequency_over_radius_cubed": 0.9957016992527975,
+        "nonlocal_repair_frequency_over_radius": 0.9985651753471161
+      },
+      {
+        "case": 36,
+        "radius": 0.15,
+        "maximum_symbol_error": 6.616698882124369e-17,
+        "frequency_over_radius": 0.02247578565066123,
+        "frequency_over_radius_cubed": 0.9989238066960549,
+        "nonlocal_repair_frequency_over_radius": 0.9996411401336858
+      },
+      {
+        "case": 36,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.6355574710474816e-18,
+        "frequency_over_radius": 0.0056234860336404294,
+        "frequency_over_radius_cubed": 0.9997308504249652,
+        "nonlocal_repair_frequency_over_radius": 0.9999102754247302
+      },
+      {
+        "case": 36,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.7060549966623185e-19,
+        "frequency_over_radius": 0.001406155368201117,
+        "frequency_over_radius_cubed": 0.99993270627635,
+        "nonlocal_repair_frequency_over_radius": 0.9999775682556034
+      },
+      {
+        "case": 37,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.507985149089952e-18,
+        "frequency_over_radius": 0.08950105036311938,
+        "frequency_over_radius_cubed": 0.994456115145771,
+        "nonlocal_repair_frequency_over_radius": 0.9981486128628847
+      },
+      {
+        "case": 37,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.251102688044105e-17,
+        "frequency_over_radius": 0.022468757501765114,
+        "frequency_over_radius_cubed": 0.998611444522894,
+        "nonlocal_repair_frequency_over_radius": 0.9995369337770698
+      },
+      {
+        "case": 37,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.577799560803556e-18,
+        "frequency_over_radius": 0.005623046434078207,
+        "frequency_over_radius_cubed": 0.9996526993916813,
+        "nonlocal_repair_frequency_over_radius": 0.9998842197260057
+      },
+      {
+        "case": 37,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.898575003065922e-19,
+        "frequency_over_radius": 0.0014061278879096476,
+        "frequency_over_radius_cubed": 0.9999131647357495,
+        "nonlocal_repair_frequency_over_radius": 0.9999710540740581
+      },
+      {
+        "case": 38,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.398784416996896e-17,
+        "frequency_over_radius": 0.08919287387265885,
+        "frequency_over_radius_cubed": 0.9910319319184319,
+        "nonlocal_repair_frequency_over_radius": 0.9970016629326832
+      },
+      {
+        "case": 38,
+        "radius": 0.15,
+        "maximum_symbol_error": 1.7807988631467497e-17,
+        "frequency_over_radius": 0.02244939732785826,
+        "frequency_over_radius_cubed": 0.9977509923492562,
+        "nonlocal_repair_frequency_over_radius": 0.9992497680759013
+      },
+      {
+        "case": 38,
+        "radius": 0.075,
+        "maximum_symbol_error": 8.682956530874972e-19,
+        "frequency_over_radius": 0.005621834869653329,
+        "frequency_over_radius_cubed": 0.9994373101605919,
+        "nonlocal_repair_frequency_over_radius": 0.9998124015292117
+      },
+      {
+        "case": 38,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.8491546006164625e-19,
+        "frequency_over_radius": 0.0014060521408414007,
+        "frequency_over_radius_cubed": 0.999859300153885,
+        "nonlocal_repair_frequency_over_radius": 0.999953097851518
+      },
+      {
+        "case": 39,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.396211663680766e-17,
+        "frequency_over_radius": 0.08950651593480749,
+        "frequency_over_radius_cubed": 0.9945168437200833,
+        "nonlocal_repair_frequency_over_radius": 0.9981689304708199
+      },
+      {
+        "case": 39,
+        "radius": 0.15,
+        "maximum_symbol_error": 3.687075265511239e-18,
+        "frequency_over_radius": 0.022469101541499042,
+        "frequency_over_radius_cubed": 0.9986267351777354,
+        "nonlocal_repair_frequency_over_radius": 0.99954203535965
+      },
+      {
+        "case": 39,
+        "radius": 0.075,
+        "maximum_symbol_error": 9.321204760993e-19,
+        "frequency_over_radius": 0.005623067974820016,
+        "frequency_over_radius_cubed": 0.9996565288568918,
+        "nonlocal_repair_frequency_over_radius": 0.9998854965084146
+      },
+      {
+        "case": 39,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.515286840193572e-19,
+        "frequency_over_radius": 0.001406129234804228,
+        "frequency_over_radius_cubed": 0.9999141225274512,
+        "nonlocal_repair_frequency_over_radius": 0.99997137335634
+      },
+      {
+        "case": 40,
+        "radius": 0.3,
+        "maximum_symbol_error": 8.886142554695787e-17,
+        "frequency_over_radius": 0.08924752970406238,
+        "frequency_over_radius_cubed": 0.9916392189340266,
+        "nonlocal_repair_frequency_over_radius": 0.997205269736861
+      },
+      {
+        "case": 40,
+        "radius": 0.15,
+        "maximum_symbol_error": 3.476935642447652e-18,
+        "frequency_over_radius": 0.02245283329030068,
+        "frequency_over_radius_cubed": 0.9979037017911415,
+        "nonlocal_repair_frequency_over_radius": 0.9993007450869156
+      },
+      {
+        "case": 40,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.2276352489060464e-18,
+        "frequency_over_radius": 0.005622049930391626,
+        "frequency_over_radius_cubed": 0.9994755431807336,
+        "nonlocal_repair_frequency_over_radius": 0.9998251504896749
+      },
+      {
+        "case": 40,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.133182839216864e-19,
+        "frequency_over_radius": 0.0014060655870334515,
+        "frequency_over_radius_cubed": 0.9998688618904545,
+        "nonlocal_repair_frequency_over_radius": 0.9999562853858787
+      },
+      {
+        "case": 41,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.827247750423195e-17,
+        "frequency_over_radius": 0.0894692735505824,
+        "frequency_over_radius_cubed": 0.9941030394509157,
+        "nonlocal_repair_frequency_over_radius": 0.9980304699817799
+      },
+      {
+        "case": 41,
+        "radius": 0.15,
+        "maximum_symbol_error": 5.005823841879528e-18,
+        "frequency_over_radius": 0.022466759690509035,
+        "frequency_over_radius_cubed": 0.9985226529115127,
+        "nonlocal_repair_frequency_over_radius": 0.9995073082652247
+      },
+      {
+        "case": 41,
+        "radius": 0.075,
+        "maximum_symbol_error": 6.157835371362963e-18,
+        "frequency_over_radius": 0.005622921386608734,
+        "frequency_over_radius_cubed": 0.9996304687304417,
+        "nonlocal_repair_frequency_over_radius": 0.9998768077344363
+      },
+      {
+        "case": 41,
+        "radius": 0.0375,
+        "maximum_symbol_error": 5.391878682686995e-19,
+        "frequency_over_radius": 0.0014061200695616597,
+        "frequency_over_radius_cubed": 0.9999076050216248,
+        "nonlocal_repair_frequency_over_radius": 0.9999692007252892
+      },
+      {
+        "case": 42,
+        "radius": 0.3,
+        "maximum_symbol_error": 3.2120581180193555e-17,
+        "frequency_over_radius": 0.08950856617858542,
+        "frequency_over_radius_cubed": 0.9945396242065049,
+        "nonlocal_repair_frequency_over_radius": 0.9981765517931048
+      },
+      {
+        "case": 42,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.85204579589336e-18,
+        "frequency_over_radius": 0.022469225720145418,
+        "frequency_over_radius_cubed": 0.9986322542286854,
+        "nonlocal_repair_frequency_over_radius": 0.9995438767260861
+      },
+      {
+        "case": 42,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.9779324549964872e-18,
+        "frequency_over_radius": 0.005623075673843005,
+        "frequency_over_radius_cubed": 0.9996578975720898,
+        "nonlocal_repair_frequency_over_radius": 0.9998859528511055
+      },
+      {
+        "case": 42,
+        "radius": 0.0375,
+        "maximum_symbol_error": 7.131649934078206e-19,
+        "frequency_over_radius": 0.0014061297150212409,
+        "frequency_over_radius_cubed": 0.9999144640151046,
+        "nonlocal_repair_frequency_over_radius": 0.9999714871920625
+      },
+      {
+        "case": 43,
+        "radius": 0.3,
+        "maximum_symbol_error": 4.388626183397635e-17,
+        "frequency_over_radius": 0.08949142788061387,
+        "frequency_over_radius_cubed": 0.9943491986734876,
+        "nonlocal_repair_frequency_over_radius": 0.9981128404268669
+      },
+      {
+        "case": 43,
+        "radius": 0.15,
+        "maximum_symbol_error": 7.758223077478604e-18,
+        "frequency_over_radius": 0.022468155434642933,
+        "frequency_over_radius_cubed": 0.9985846859841304,
+        "nonlocal_repair_frequency_over_radius": 0.999528005918013
+      },
+      {
+        "case": 43,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.7347255770686644e-18,
+        "frequency_over_radius": 0.005623008794559136,
+        "frequency_over_radius_cubed": 0.9996460079216243,
+        "nonlocal_repair_frequency_over_radius": 0.9998819887144256
+      },
+      {
+        "case": 43,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.336817194349634e-19,
+        "frequency_over_radius": 0.0014061255352784694,
+        "frequency_over_radius_cubed": 0.9999114917535784,
+        "nonlocal_repair_frequency_over_radius": 0.9999704963807377
+      },
+      {
+        "case": 44,
+        "radius": 0.3,
+        "maximum_symbol_error": 5.238318679998673e-17,
+        "frequency_over_radius": 0.08941951203102508,
+        "frequency_over_radius_cubed": 0.9935501336780564,
+        "nonlocal_repair_frequency_over_radius": 0.9978454056164695
+      },
+      {
+        "case": 44,
+        "radius": 0.15,
+        "maximum_symbol_error": 9.833796603817788e-18,
+        "frequency_over_radius": 0.022463633155838197,
+        "frequency_over_radius_cubed": 0.9983836958150311,
+        "nonlocal_repair_frequency_over_radius": 0.9994609414063904
+      },
+      {
+        "case": 44,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.940171993236389e-18,
+        "frequency_over_radius": 0.005622725720613552,
+        "frequency_over_radius_cubed": 0.9995956836646315,
+        "nonlocal_repair_frequency_over_radius": 0.9998652097206073
+      },
+      {
+        "case": 44,
+        "radius": 0.0375,
+        "maximum_symbol_error": 1.1696237999235181e-18,
+        "frequency_over_radius": 0.00140610783640953,
+        "frequency_over_radius_cubed": 0.9998989058912213,
+        "nonlocal_repair_frequency_over_radius": 0.9999663008281184
+      },
+      {
+        "case": 45,
+        "radius": 0.3,
+        "maximum_symbol_error": 1.408389676900683e-17,
+        "frequency_over_radius": 0.08943202890146085,
+        "frequency_over_radius_cubed": 0.9936892100162317,
+        "nonlocal_repair_frequency_over_radius": 0.9978919626398124
+      },
+      {
+        "case": 45,
+        "radius": 0.15,
+        "maximum_symbol_error": 4.623838098243455e-18,
+        "frequency_over_radius": 0.02246441896768904,
+        "frequency_over_radius_cubed": 0.9984186207861797,
+        "nonlocal_repair_frequency_over_radius": 0.999472595488775
+      },
+      {
+        "case": 45,
+        "radius": 0.075,
+        "maximum_symbol_error": 3.895528160147601e-18,
+        "frequency_over_radius": 0.005622774888799998,
+        "frequency_over_radius_cubed": 0.9996044246755553,
+        "nonlocal_repair_frequency_over_radius": 0.9998681241680482
+      },
+      {
+        "case": 45,
+        "radius": 0.0375,
+        "maximum_symbol_error": 6.525288121008714e-19,
+        "frequency_over_radius": 0.0014061109102802658,
+        "frequency_over_radius_cubed": 0.9999010917548559,
+        "nonlocal_repair_frequency_over_radius": 0.9999670294979096
+      },
+      {
+        "case": 46,
+        "radius": 0.3,
+        "maximum_symbol_error": 6.206852340667944e-17,
+        "frequency_over_radius": 0.089547540129386,
+        "frequency_over_radius_cubed": 0.994972668104289,
+        "nonlocal_repair_frequency_over_radius": 0.9983214066022117
+      },
+      {
+        "case": 46,
+        "radius": 0.15,
+        "maximum_symbol_error": 3.485606576194905e-18,
+        "frequency_over_radius": 0.02247167110321922,
+        "frequency_over_radius_cubed": 0.9987409379208543,
+        "nonlocal_repair_frequency_over_radius": 0.9995801363794967
+      },
+      {
+        "case": 46,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.3649744967856834e-18,
+        "frequency_over_radius": 0.005623228659222029,
+        "frequency_over_radius_cubed": 0.9996850949728051,
+        "nonlocal_repair_frequency_over_radius": 0.9998950206373207
+      },
+      {
+        "case": 46,
+        "radius": 0.0375,
+        "maximum_symbol_error": 4.903467647780885e-19,
+        "frequency_over_radius": 0.0014061392789358415,
+        "frequency_over_radius_cubed": 0.9999212650210428,
+        "nonlocal_repair_frequency_over_radius": 0.9999737543181844
+      },
+      {
+        "case": 47,
+        "radius": 0.3,
+        "maximum_symbol_error": 7.297973608104055e-17,
+        "frequency_over_radius": 0.08963763900989948,
+        "frequency_over_radius_cubed": 0.9959737667766608,
+        "nonlocal_repair_frequency_over_radius": 0.9986561170465218
+      },
+      {
+        "case": 47,
+        "radius": 0.15,
+        "maximum_symbol_error": 6.997559556644539e-18,
+        "frequency_over_radius": 0.022477321487051328,
+        "frequency_over_radius_cubed": 0.9989920660911702,
+        "nonlocal_repair_frequency_over_radius": 0.999663909085942
+      },
+      {
+        "case": 47,
+        "radius": 0.075,
+        "maximum_symbol_error": 1.2742583578332297e-18,
+        "frequency_over_radius": 0.005623582108834673,
+        "frequency_over_radius_cubed": 0.9997479304594976,
+        "nonlocal_repair_frequency_over_radius": 0.9999159697589488
+      },
+      {
+        "case": 47,
+        "radius": 0.0375,
+        "maximum_symbol_error": 3.6472824452917836e-19,
+        "frequency_over_radius": 0.0014061613742360729,
+        "frequency_over_radius_cubed": 0.9999369772345409,
+        "nonlocal_repair_frequency_over_radius": 0.9999789919701796
+      }
+    ],
+    "scope": "The formal unwrapped quadratic expansion gives cubic dispersion. This is not a theorem that the fixed five-state quantum model is gapless or has this continuum limit."
+  },
+  "source_sha256": {
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "scripts/compact_tensor_dynamics_audit.py": "f7c0d2ea711be796eedbba03db765ee51fac8017ef8ac2495b56ebc18c3eb232",
+    "COMPACT_TENSOR_CONSTRAINTS.md": "5440cf2f6f0ad54ba42f5c23e5a6110650e745e3c122f4fa53c536efa4934b55",
+    "scripts/compact_tensor_constraint_audit.py": "8af5c69d28cedea8fb19b8726212aa2b2a4a2ab36a5998db628d56659a1c40c1",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "Exact nontrivial local dynamics in the compact constraint space with a protected low-energy sector, plus an obstruction to a regular linear-wave expansion with the fixed linear gauges. Einstein gravity and the nonlinear constraint completion remain unproved."
+}

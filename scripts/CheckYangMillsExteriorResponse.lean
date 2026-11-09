@@ -1,0 +1,38 @@
+import UnifiedTheory.Clay.YangMills.WilsonBlockRotation
+import UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy
+import UnifiedTheory.Clay.YangMills.WilsonExteriorResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.inside_left
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.extend
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.extend_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.extend_assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.extend_inv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.cost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.cost_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.extend_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.density_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.rotated_density_mass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.logGain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.logGain_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.gain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.entropy_eq_gain
+#print axioms UnifiedTheory.Clay.YangMills.WilsonBlockRotation.gain_nonpos
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.rowAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.rowAt_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.rowAt_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.meanEntropy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.meanEntropy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.meanEntropy_pair_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.meanEntropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy.response_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.selected
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.selected_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.selected_assemble
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.outside_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.weighted_entropy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.weighted_response_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonExteriorResponse.physical_weighted_response_bound

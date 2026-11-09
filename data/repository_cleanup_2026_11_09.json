@@ -1,0 +1,729 @@
+{
+  "date": "2026-11-09",
+  "baseline_head": "4b0c441ba1b192486ec0bcca82ec2e4b6796f37a",
+  "removed": [
+    {
+      "path": "paper/time_is_a_partial_order.tex",
+      "sha256": "4c676b7e110c178a14e7e7f3b8479c153f3141333b83562283eb47f2ce3768b4",
+      "bytes": 62493,
+      "reason": "April manuscript advertises physical derivations beyond the current verified scope."
+    },
+    {
+      "path": "paper/time_is_a_partial_order.pdf",
+      "sha256": "f13ab60404263f72dc803f3a4bdb9ccfac3e263c0c31bbe0fef099d2db62770a",
+      "bytes": 241274,
+      "reason": "Compiled April manuscript; superseded physical claims and no current verification."
+    },
+    {
+      "path": "paper_P1.tex",
+      "sha256": "54348b7016c7c0cc80cf9d79e1eed48e88a03d9ecbdd2d498e48c88d35245a81",
+      "bytes": 13218,
+      "reason": "August draft with frozen theorem totals; no current publication verification."
+    },
+    {
+      "path": "paper_P2.tex",
+      "sha256": "82b666b00386154dba79fcaccff7a52e5cdceabff292294f691dfbb0e1b2778a",
+      "bytes": 12053,
+      "reason": "August draft predates the current dynamics and continuum scope."
+    },
+    {
+      "path": "NOGO_PAPER_DRAFT.md",
+      "sha256": "05448d6dc99aa01f5751f9d5f0e88a9cf62546787620aa574914bab77b15bd12",
+      "bytes": 11666,
+      "reason": "July draft; underlying obstruction proofs and experiment records remain."
+    },
+    {
+      "path": "PAPER1_DICHOTOMY.md",
+      "sha256": "a407275f704975c4899c6b07e8b68a44ebc608364844062c9d88c528b76289c6",
+      "bytes": 19923,
+      "reason": "Superseded July/August paper draft; source proofs remain."
+    },
+    {
+      "path": "PAPER2_LANDSCAPE.md",
+      "sha256": "c72a750e57eeec567dda3102246450ac403725c10e5f5f485b4f60b34ef34727",
+      "bytes": 6082,
+      "reason": "Superseded July/August paper draft; source proofs remain."
+    },
+    {
+      "path": "PAPER3_SELECTION.md",
+      "sha256": "4011972ea7ee1665eacbf33a20090129daa83385c46d77a8eba611e015167957",
+      "bytes": 13585,
+      "reason": "Superseded August paper draft; source proofs and negative results remain."
+    },
+    {
+      "path": "PAPERS_SHOREUP.md",
+      "sha256": "515418386202eadc72d068bcc7a970a769aa95a985f3e0c8eacf4e404394a6e6",
+      "bytes": 4286,
+      "reason": "Checklist for removed paper drafts."
+    },
+    {
+      "path": "PAPER_P1_SPINE.md",
+      "sha256": "5fb39049e56399b1cc60bd50c40f61dd3cc04d46c9fbe587563f9bb4182de720",
+      "bytes": 7251,
+      "reason": "Outline for removed paper draft."
+    },
+    {
+      "path": "PAPER_P2_SPINE.md",
+      "sha256": "4e9fa99705c268f46390054213b1be26ea5a6218eef75b5b132ef112c128734b",
+      "bytes": 2699,
+      "reason": "Outline for removed paper draft."
+    },
+    {
+      "path": "causal_higgs/docs/foundation_paper.tex",
+      "sha256": "c300d1235809db3cc1ef64a7baacf45de623c59e684fbf7ed1344010f1696dda",
+      "bytes": 15365,
+      "reason": "March prototype manuscript does not describe the current program."
+    },
+    {
+      "path": "causal_higgs/docs/foundation_paper_outline.md",
+      "sha256": "242462f0cc8f0af2b7876eba83dcd4be59baeedc42f1c64281433a9d3dd7efa2",
+      "bytes": 4155,
+      "reason": "Outline for removed March prototype manuscript."
+    },
+    {
+      "path": "causal_higgs/docs/scaling_table.tex",
+      "sha256": "736a150ae9bcb9a2cdfea0862a583b5063ab1e453109dc8ae3634dec648864cf",
+      "bytes": 1164,
+      "reason": "Generated table for removed March manuscript; computational evidence remains."
+    },
+    {
+      "path": "CLAY_YM_PLAN.md",
+      "sha256": "701a2bbc6960f3d729f32e3552e318ed47a4bc0b17213f63c0fbe02cf2e400ac",
+      "bytes": 9063,
+      "reason": "May chamber-matrix plan superseded by the twelve-obligation Yang\u2013Mills ledger and November band program."
+    },
+    {
+      "path": "COMPLETION.md",
+      "sha256": "b00fc1f52d3bcdb67176d70f45e3de91f5916e4557684dcd7f04f617b01c4fd7",
+      "bytes": 3092,
+      "reason": "August completion-attempt status superseded by current open research plan."
+    },
+    {
+      "path": "project_unifiedtheory.md",
+      "sha256": "96d891891c1326287943f0ae067734dad4297aeba8db882c71544ffa7160e460",
+      "bytes": 1780,
+      "reason": "July task handoff with stale uncommitted-state instructions."
+    },
+    {
+      "path": "FINAL_FRAMEWORK_CHARACTERIZATION.md",
+      "sha256": "c042f5c811fc669c466d3c6b2218cbfae46a3d8acb21b3b6f8066e1c580b2714",
+      "bytes": 10346,
+      "reason": "May frozen final-status summary superseded by subsequent research; obstruction evidence remains."
+    },
+    {
+      "path": "TOE_SWARM_EXECUTION.md",
+      "sha256": "b6b3e9ce6b89f0ed626d2059bedd70e8bb8b5aabbd910ba595362d00ae86efbe",
+      "bytes": 17143,
+      "reason": "Old execution/handoff plan superseded by current completion plan."
+    },
+    {
+      "path": "scripts/__pycache__/ab_order_complex_h1.cpython-311.pyc",
+      "sha256": "6bc6d29e0ab68e659a1538cdcb88fccd18892dc2bc732809468096f3f31f3f07",
+      "bytes": 11827,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "scripts/__pycache__/ab_thickened_antichain.cpython-311.pyc",
+      "sha256": "4a8ce54f55459bde45fd4cfa9611133189181187afc73b4d372fa95620077f30",
+      "bytes": 16134,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "scripts/__pycache__/ab_window_scaling.cpython-311.pyc",
+      "sha256": "f96d241addd1014ab2da1d6a379a739b1eb74fa736e125e7378fbbf0d22e2bd3",
+      "bytes": 7117,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "scripts/__pycache__/cabibbo_gpu.cpython-313.pyc",
+      "sha256": "849193c03dce34597b71d074868bd17498ce4342ba163d78547b6f53eeebf583",
+      "bytes": 24680,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "scripts/__pycache__/lepton_gpu.cpython-313.pyc",
+      "sha256": "1a2e17d0b895b2e5dcce7469755505cd29308b7743fd387c660d06b44692a3fe",
+      "bytes": 20671,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "scripts/__pycache__/lepton_gpu.cpython-314.pyc",
+      "sha256": "95215f823f1df727efd798a4f7142da5a544215be7147a5ab3bf7bf381163108",
+      "bytes": 21897,
+      "reason": "Generated Python bytecode."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/KAGGLE_COMPLIANCE.md",
+      "sha256": "dded52c84e67b58a9cfebb12262626a47007b456d846a10d34bd7666df9db796",
+      "bytes": 3957,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/README.md",
+      "sha256": "def449a1c96ce5efa521a9c73bab45d3db5492d906b8276e44215e4061472f39",
+      "bytes": 22288,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/__init__.py",
+      "sha256": "3f37f116792a8cc61f3b48ed616af8cfb2a69605fe06539c4f0e39d91c4fecf0",
+      "bytes": 472,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/adapter_smoke.py",
+      "sha256": "2828b053320bc3a305b00f74d3c7c25d1c607d77a1d8d58f44e2a06c77038de0",
+      "bytes": 3258,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/adaptive_checkpoint_smoke.py",
+      "sha256": "188170b14cb9d13cd278a80ad5e54a1824fc2a642c257b51ca1ccc274ada0f63",
+      "bytes": 3001,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/adaptive_copas_smoke.py",
+      "sha256": "6d3909650a6b44d36c969506c8d84e521cb51f54ab47d597d5c20e38f2f73a26",
+      "bytes": 6435,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/adaptive_review_gate.py",
+      "sha256": "5c4fa806bcdb88b7898a96f040fbf3ac7f8b394e0d58cc57f454850e3c4ffa99",
+      "bytes": 5428,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/adaptive_review_gate_smoke.py",
+      "sha256": "e68737323d0a31f0a4668458df8b73a0d79b8c1957d6d2800aed762a7f377fea",
+      "bytes": 2720,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/audit_fixed_family_ensemble.py",
+      "sha256": "94f514b3456bd41bc0887b28c8ab35ffa79a1e4f4c51a658e48ced6903a4e7f9",
+      "bytes": 5637,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/audit_mean_ensemble.py",
+      "sha256": "67ed13303a9be1e069f141e6374643e78e9d14055bc8e3d460beb30da7a117b6",
+      "bytes": 9819,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/audit_raw_pilots.py",
+      "sha256": "f77b01038862706f9cde9c64c8162d5f6c59dc00ce27cefca2bb6abcd7e0ca9d",
+      "bytes": 5739,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/backbone_smoke.py",
+      "sha256": "dfc49b3803f30f33c29180c79e4b3e5d6afe3c755dc89dde70eb889440e64789",
+      "bytes": 1674,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/blend_submission_files.py",
+      "sha256": "ba01f9a59ac1e3d95115652ac95ce6bc464dcdb5fa711a7bae81abb8255448f4",
+      "bytes": 3007,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/blend_submission_smoke.py",
+      "sha256": "59865beb4c587dcd2fa86f67f591a0f31a7f2df5e84321aa2894a5dd461726f5",
+      "bytes": 1943,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/build_fixed_seed_oof.py",
+      "sha256": "1d82d0ddef366a5fc9eacaf2ed461b20c51f69419802b522ca3ee2a8ce59ad03",
+      "bytes": 5477,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/build_kaggle_credible_kernel.py",
+      "sha256": "fdf542dbe69b5426465d16f5ad38615d1efa8c6ca609d305a41adeb49fb0eb63",
+      "bytes": 11141,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/build_kaggle_patch_kernel.py",
+      "sha256": "84e331c5cf57a41b2639e1cd9f5fa1201f71f5f2393a5041032d92a7546c46ed",
+      "bytes": 4174,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/compliance_smoke.py",
+      "sha256": "152cdca58cfaf3380840519d53c7733d5c606840f0772daa7c6cea3351228abc",
+      "bytes": 7024,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/consensus_labels.py",
+      "sha256": "78c78162e2b5ee0420089b6e1a77bb06463dbb278873d3f70a24b38b9ca1a803",
+      "bytes": 6510,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/consensus_labels_smoke.py",
+      "sha256": "fa04f3398002fd79e8e07e6ed1ce6f2388158d89b930ac15868b2a416d43a554",
+      "bytes": 1675,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/constants.py",
+      "sha256": "f92ee1aba46841506c098f9efee07300d659fb60e787c43519d29bb2321a478a",
+      "bytes": 2079,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/credible_kernel_smoke.py",
+      "sha256": "674672c62a053ec73760aabbedff1a895c818dc2305967a64166c956ea8289c6",
+      "bytes": 3905,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/credible_route_smoke.py",
+      "sha256": "574f582742ad0de75dccfeb7ebc0b5f47e4d77f45cad6955ebb7ac6a1282bd22",
+      "bytes": 4821,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/data.py",
+      "sha256": "68892c557f32d5c520c035d537339d508bf3ac35536c9d609bc1a5cf711c034d",
+      "bytes": 10498,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/derive_summary_cache.py",
+      "sha256": "c54810bbeba093e4fbe954ebe92563c60d259dbdc8172dca3123c2942db3d03b",
+      "bytes": 1726,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/dicom_smoke.py",
+      "sha256": "2e9f66d4ed1b226c3d07a10d45002ec05bfb5092c199b7d2f9219548a0adc7cd",
+      "bytes": 4557,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/dino_adapter.py",
+      "sha256": "2fe66d28f98ce5f035b36b0a035ddde228dcce455755f354744f890db132f2f2",
+      "bytes": 7929,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/embed_reports.py",
+      "sha256": "e50442badb7d29d6bbed18041da460bba3fe746d7dd6e37a9ee4aa371ed7ded1",
+      "bytes": 3558,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/ensemble_infer.py",
+      "sha256": "01c0fa707d7ae896537238cb008d9b4bc07a22037c566918a47d572a0f527114",
+      "bytes": 4530,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/ensemble_smoke.py",
+      "sha256": "c1f21a09b0f164f27b8b69ae7e8f31633658908d7428cd7c6bc4c4ca2a47cd5d",
+      "bytes": 3180,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/external_asset_compliance.py",
+      "sha256": "cd41f21389f65f2d2f49e1ea2e961deda6e2d522321f31516eaba4157ef5b93d",
+      "bytes": 2591,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/external_assets.json",
+      "sha256": "e2e06b252d5e72c34320ea7a0e817166f19f23d9dca3b4dd32023e119951c0cb",
+      "bytes": 4424,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/extract_features.py",
+      "sha256": "7c9bb0a94a1e8717012d77b7dc7775c4b42d78e30629c5de05103cec8b3b676a",
+      "bytes": 22732,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/fit_nested_subset_ensemble.py",
+      "sha256": "3a1a8f9534bd19d045db6bc2e5c96994416363cfd16388b74f667e4b78df40b4",
+      "bytes": 10567,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/fit_nested_target_router.py",
+      "sha256": "0a22872b2b73e1c97beb973f5fd1cc770fa562f7f380cbae06d81b1eb347b817",
+      "bytes": 10600,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/fit_oof_ensemble.py",
+      "sha256": "f3e73830a453e602541a8347d4bba11465e542cd4163d5b4adce67a2822dd010",
+      "bytes": 7447,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/fixed_seed_oof_smoke.py",
+      "sha256": "b95fbc654befa6992ee901b89bf85b82351dae89d0795a948d958a08776aaf73",
+      "bytes": 2403,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/folds.py",
+      "sha256": "f65bf6a1398358e6f66428a46df6f692badcfd6bbd01ef91ee40e3bbba8f17b1",
+      "bytes": 9972,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/gpu_benchmark.py",
+      "sha256": "56d8387dced7acee67c6158f6b422160634ecef4713e9183780a4b1b615da58d",
+      "bytes": 4426,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/infer.py",
+      "sha256": "ced809acbb0ff22ddc8d07f8d8ec4591babddb345b6ab87daa994514fea614b5",
+      "bytes": 5700,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/infer_raw_mil.py",
+      "sha256": "64ff10a2c5be6e478280f35bafa848eed887e47fb834438f70e22c6fd86592a2",
+      "bytes": 9295,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/kaggle_kernel_smoke.py",
+      "sha256": "d3c4b2fc0e7ec88cb6c6112f564c83ab51c2f969006e7d5022e0b8a315afdcf8",
+      "bytes": 1421,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/kaggle_offline_infer.py",
+      "sha256": "59521e5c6a4d425e0a47db47fe5334912c1109a76a3cef9ce13669da60eca86f",
+      "bytes": 6157,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/knee_pretrain.py",
+      "sha256": "0c97be576bc823c3dc6e38e9b2797fb931d1310a5b943c13edb6ea26b6abb962",
+      "bytes": 8310,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/knee_pretrain_smoke.py",
+      "sha256": "6c2cf11e2a21273dbf9ed8fc220da64cca1b4b05e50a7b10dfa3d1e1e9ca1e35",
+      "bytes": 2251,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/merge_cache_shards.py",
+      "sha256": "29091b596f0f99aea3500556bcdb055d8781f8292d155542b7d578bd1fc6bf9d",
+      "bytes": 1972,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/model.py",
+      "sha256": "dc5c072b19027d4564b2a7dd5546283561e8f236daa476a5379b2325c9eeb5f1",
+      "bytes": 14401,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/patch_model.py",
+      "sha256": "f0fef548254fe968387d790c0aff4f16217956f83e342e65e8e1006810a2a89a",
+      "bytes": 12859,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/pipeline_smoke.py",
+      "sha256": "3f61e283dedbc13671c5050e706325854cc4b4304153eb6717f25f61b3ca7c57",
+      "bytes": 7540,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/prepare_folded_reports.py",
+      "sha256": "f3c5541e578b9c0536bbca10df97c37724aa48438a181889a4cb6692c3471843",
+      "bytes": 2510,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/pretrain_knee_native.py",
+      "sha256": "1d80c459b001bd958c432949954ce4652ae463b6cecb29ba02f709e5061bb4d9",
+      "bytes": 11907,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/promoted_raw_cv_smoke.py",
+      "sha256": "407bc865cc32cf2e7bdb39a8799c5845a189312d915fdd9590cdd59ed7e3a914",
+      "bytes": 2647,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/promotion_smoke.py",
+      "sha256": "1d35f33f3f73d54e06105f436e10563d282edcfddd4fd3146abc17c4584df553",
+      "bytes": 2833,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/raw_dicom_smoke.py",
+      "sha256": "e493bea67f338fc477e0b36f3a841172c4f97383c607cc81b0df8f87d444fcaa",
+      "bytes": 2157,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/raw_mil.py",
+      "sha256": "2b685f925c8d83d40099f5a6a5cb72e3ac225484b4614d98ce073d521d916888",
+      "bytes": 42755,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/raw_mil_smoke.py",
+      "sha256": "2ae168ae9c1424099e5fb61b282e86ce15c1ad9a926fe68b631eda622814e975",
+      "bytes": 1818,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/report_teacher.py",
+      "sha256": "b35ce0596558350861d262aede84400d9237a7760eb6ddbd843f4cfc58d3229f",
+      "bytes": 8469,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/requirements.txt",
+      "sha256": "8972568e0ab4aa000afcdf7bdb7c3808fc7e5dbc3da66e1d07dd2bfa4d0c1efa",
+      "bytes": 374,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/VALIDATION.md",
+      "sha256": "1c085421891f457b23880d2ad7d5f05a16296e8b6ae245d2de5b440765bd4fdd",
+      "bytes": 8125,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/adapter_smoke_dinov2_base.json",
+      "sha256": "a633c67cdb9e5ef822f7781d0c2b885a78ca250d9136457863e2f3d628518c9e",
+      "bytes": 373,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/backbone_smoke_dinov2_base.json",
+      "sha256": "c59e300323be41b04312ed11d40b89c4dbbb9800a56b62169b70b267cd088ce0",
+      "bytes": 280,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/gpu_benchmark_4090.json",
+      "sha256": "7f8c0b0a9ec13c08c26e143e153dbfe825431f9f170ababee5f770da90350395",
+      "bytes": 958,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/llm_consensus_teacher_transfer.csv",
+      "sha256": "a606b7836adb13c61d3038ed55150c6ba34b8ae0bdb114bf57926a27fc3f5358",
+      "bytes": 5510,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/llm_consensus_teacher_transfer.json",
+      "sha256": "e715f3947ddcdd29d1874d15aa8762d8b612c4e611df2b225a916404408fc506",
+      "bytes": 3336,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/mean_ensemble_audit.json",
+      "sha256": "1bedc3d037d4125b3807e624b7d4345de16f407306c8b8b8d0af779a01130da7",
+      "bytes": 1008,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/results/offline_inference_smoke.json",
+      "sha256": "7d747d46e1d809cfdc8d0053aa93c48281563bd400c631184138c32842ce9f23",
+      "bytes": 392,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_ablation.py",
+      "sha256": "6938bfe7c40c82a64c6cae91d2da1e2a796374c30057a2f24d6bbcecba8c4a2f",
+      "bytes": 2562,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_compliant_pipeline.py",
+      "sha256": "0d7fd5563478745ebe1b40f0fcd8f1bbf6e9d60f852ac482f6327544301f330a",
+      "bytes": 7837,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_knee_native_pilot.py",
+      "sha256": "b4ce5e7d22dc0f2c97baed8cda9a3265c0230ec50ec531ec76b91f183fcdb8e9",
+      "bytes": 4696,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_promoted_family_inference.py",
+      "sha256": "1e14b708ad84ae97cba7d87c98daf64b8563c6d4e3ae060cf0e5bc3be03cab69",
+      "bytes": 6998,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_promoted_raw_cv.py",
+      "sha256": "fe6704ee9ab9922ff9cf9eb63378d16685475c3a880774e79db6b32a8e51870f",
+      "bytes": 6115,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_raw_mil_cv.py",
+      "sha256": "58e79ef38ef7bb146194fc0ea6fa8ade4f9b972ae4aa63dc376c1d0a218bffe9",
+      "bytes": 1167,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_selected_raw_inference.py",
+      "sha256": "456c95b1443d69ad17f8d9ed0f0a3133be2a96d8664cdf27f83e624574ab6f89",
+      "bytes": 7772,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/run_stage2.py",
+      "sha256": "782c100394e1cb2ecca4742748097be3c737fadcde94357cf8ea7aedf0580b40",
+      "bytes": 3095,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/runpod_raw_family_registry.json",
+      "sha256": "51b5dc26249123359693461f0ce94f12fcb15136c036e87857297a929d64aba1",
+      "bytes": 5605,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/score_reports_nli.py",
+      "sha256": "daec48f028657693c1bcca567fd648407aaa7218b36ca44d503f20cdf27b8577",
+      "bytes": 5452,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/smoke_test.py",
+      "sha256": "57f735357637bb37603174f61751c59ed08078304090713409a1f75c240de238",
+      "bytes": 6323,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/stage2_smoke.py",
+      "sha256": "20d4698611e67de511ab46677b3c3990504c3e2fbcb35c1ad71e943f3cd0d687",
+      "bytes": 9329,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/summarize_ablation.py",
+      "sha256": "80a897fd79e2d04ebd6a909a02bf1a657c82ce630a5f6686abad6eba19ff9a44",
+      "bytes": 2295,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/summarize_stage2.py",
+      "sha256": "6df8652c8a734fc3ff2651bbb3b808450236493217644d28261facd6c82b3cbd",
+      "bytes": 5797,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/target_router_smoke.py",
+      "sha256": "f99c1e8fc82e916ace2c24b9b04ab61e53b23b446953661be92f50297ac040aa",
+      "bytes": 2767,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/train.py",
+      "sha256": "2c3ac3d5480683343801a12f9c280ada62423d7b3794fe6656e91fb23b1a0f9d",
+      "bytes": 19755,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    },
+    {
+      "path": "experiments/rsna_knee_dino_alibi/train_raw_mil.py",
+      "sha256": "050968aa65e56e942fe0d346611a733312b275634d9265e6a26ae67462f8a695",
+      "bytes": 21050,
+      "reason": "August MRI competition software, outside the current physics research and unreferenced by the retained project."
+    }
+  ],
+  "retained": "Formal proofs, physics numerical evidence and source experiments, the delay-memory falsification benchmark, current uncommitted research, and historical source-hash reports. Full pre-cleanup backup outside this repository.",
+  "rewritten_documents": [
+    {
+      "path": "ARC_REPORT.md",
+      "previous_sha256": "81fa6ff03672189fee5e79a7178a7de6d5a7d3f9bcd98a0221512be4e5639d83",
+      "previous_bytes": 5044,
+      "current_bytes": 5260
+    },
+    {
+      "path": "EINSTEIN_MODEL_DECISION.md",
+      "previous_sha256": "dc309654dde8f963f3a0bcb2b196f109341eb8a3bbb80acbc9463b050f02d0ac",
+      "previous_bytes": 657470,
+      "current_bytes": 12610
+    },
+    {
+      "path": "README.md",
+      "previous_sha256": "714c3e990d3bb189eb9200f4c5bb66423b5890ed1f92ff455622ab72a04bdd43",
+      "previous_bytes": 728058,
+      "current_bytes": 5711
+    },
+    {
+      "path": "REMAINING_THREE_REPORT.md",
+      "previous_sha256": "e23a7dd842e1658b61a707e6dd949afbfefe9de0af908d0ab4d09a4b70365cac",
+      "previous_bytes": 4097,
+      "current_bytes": 4104
+    },
+    {
+      "path": "STATUS.md",
+      "previous_sha256": "7fe253529dd0b04796df080376f3f9e484842e67ce3e2d3386d6e8d28eef31ca",
+      "previous_bytes": 1029415,
+      "current_bytes": 9002
+    },
+    {
+      "path": "TOE_COMPLETION_PLAN.md",
+      "previous_sha256": "9db35cc7afc9188f80d6ce14d5faa937af1de8081726da52afb43295674c7092",
+      "previous_bytes": 2671727,
+      "current_bytes": 5673
+    },
+    {
+      "path": "UNIQUENESS_LEG.md",
+      "previous_sha256": "54fc8c53de0b0d04c8fb3428804a631074025cab7026b1b973e131cac2207dee",
+      "previous_bytes": 40020,
+      "current_bytes": 40092
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/GAP_BAND_STATEMENT.md",
+      "previous_sha256": "e748915106e4d6d2017fe122e9cef8692a60ed03f0b2433a80d633690732727f",
+      "previous_bytes": 39864,
+      "current_bytes": 44936
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/README.md",
+      "previous_sha256": "c49891cb7de6d8c103dc8eb4cbcafd2fb50e5216f36f25a0ca95bd10c562ef5c",
+      "previous_bytes": 376067,
+      "current_bytes": 5576
+    },
+    {
+      "path": "UnifiedTheory/Clay/YangMills/Twisted/README.md",
+      "previous_sha256": "69e1d0c1f140d7e8076e456673b816b7f3f88d3f6ce279e1da4579a1dbd79cc7",
+      "previous_bytes": 174080,
+      "current_bytes": 5340
+    },
+    {
+      "path": "UnifiedTheory/QSeries/README.md",
+      "previous_sha256": "ca674e2c17c1e6da0cb57d382e5433d3d4d5f3ae897f3a51a2ba633873d36c3c",
+      "previous_bytes": 124278,
+      "current_bytes": 5876
+    },
+    {
+      "path": "causal_higgs/README.md",
+      "previous_sha256": "0bdd3d4e75eb79c435f0e04589d1232fe591c010f0f079b15d04a64f3cb8278c",
+      "previous_bytes": 1960,
+      "current_bytes": 1214
+    }
+  ]
+}

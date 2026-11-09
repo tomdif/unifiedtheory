@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "record_type": "source_transport_attack_with_separate_formal_and_mathematical_results",
+  "research_date_local": "2026-10-27",
+  "written_at_utc": "2026-10-28T01:47:33.760968+00:00",
+  "verdict": "The exact finite source/conditional-normalization step is closed. A finite-cutoff positive reflected witness has a checked mathematical derivation. The cutoff-uniform marked insertion transport and nonzero continuum lower bound remain unproved.",
+  "formal_results": {
+    "certificate": "data/yang_mills_source_response_audit.json",
+    "certificate_sha256": "116c310c6df99c04852321a114a151c23c69e984506f906962daa74f485c51d5",
+    "new_declarations": 48,
+    "cumulative_declarations": 3060,
+    "modules": [
+      "UnifiedTheory/Clay/YangMills/CompactGibbsSource.lean",
+      "UnifiedTheory/Clay/YangMills/BoundedSourceTube.lean",
+      "UnifiedTheory/Clay/YangMills/WilsonSourceResponse.lean"
+    ],
+    "results": [
+      "Differentiation under an actual compact Gibbs integral is proved by local domination. The first log-partition derivative is the sourced expectation; the derivative of an expectation is connected covariance; the second log-partition derivative is variance.",
+      "The derivative and curvature identities apply to the full interacting finite periodic Wilson probability law, at arbitrary coupling and volume.",
+      "The actual physical smear F=(Z/a^4) Re O_psi(f) obeys |F| <= M_a := |Z/a^4| B ||f||_1 when |psi|<=B. Its source curvature is between zero and M_a^2.",
+      "For any positive compact probability law, |F-c|<=B implies its complex source integral is nonzero whenever |Im z| B < pi/2. An explicit equal two-point generating function vanishes at z=i pi/(2B). The latter is not a claim about Wilson source zeros.",
+      "The genuine Wilson time-half log-partition derivative is its normalized boundary response. A pointwise centered insertion bound passes to this derivative without an inverse partition loss."
+    ],
+    "not_formalized": [
+      "The full positive transfer-operator and periodic trace dictionary below.",
+      "The fixed smooth-test positivity proof below.",
+      "The Gaussian conditional computation and multiscale age summation below.",
+      "Marked source transport through the actual interacting RG."
+    ]
+  },
+  "finite_positive_propagation": {
+    "status": "Checked mathematical derivation, not included in the Lean-certified count; preserve these hypotheses and review the functional-analysis steps when formalizing.",
+    "setting": [
+      "Spatial torus side n>1, time period M>=2, beta>0. For the repo equal-side regulator specialize M=n (and take an even side for its reflection dictionary). Rectangular periods are a mathematical extension, not an implemented change to the regulator.",
+      "Compact gauge group with a continuous d-dimensional unitary representation, nonconstant real character, d>=1; Wilson action beta sum_p[d-Re Tr(U_p)]. SU(2) fundamental is a concrete case.",
+      "mu is probability product Haar on E=3n^3 spatial links. P=Re Tr(U_p) for one spatial plaquette. Its four links are distinct; their product is Haar. Therefore v_H=Var_mu(P)>0 by nonconstancy and Haar full support."
+    ],
+    "definitions": {
+      "V": "sum over spatial plaquettes of [d-Re Tr(U_p)]",
+      "w": "exp(-beta V/2)",
+      "k": "k(u,v)=exp(-beta d E + beta sum_e Re Tr(u_e^* v_e))",
+      "q": "q(u,v)=integral over vertex gauge transformations h of k(u,h.v)",
+      "K": "K(u,v)=w(u) q(u,v) w(v)",
+      "epsilon": "exp(-6 beta d n^3)",
+      "L": "exp(-27 beta d n^3) v_H^2 / (d^2+192 d^4/beta^4)"
+    },
+    "conclusion": "For integer 1<=p<M, Cov_W(P(0),P(p)) >= epsilon^2 L^p/(4d^2)^(p-1) > 0, with centering by the actual periodic Wilson expectation.",
+    "proof": [
+      "There are 3n^3 spatial plaquettes and each d-Re Tr(U_p) lies in [0,2d]. Thus sqrt(epsilon)<=w<=1. Also epsilon<=k<=1 and epsilon<=q<=1.",
+      "List the real and imaginary matrix entries of spatial links in Phi(u). The kinetic kernel is exp(-beta d E) exp(beta <Phi(u),Phi(v)>). Its uniformly convergent power series is positive definite. Its integral operator C_beta commutes with the orthogonal gauge-averaging projection P_gauge. Spatial w is gauge invariant, so K=M_w C_beta P_gauge M_w is nonnegative selfadjoint.",
+      "K has a continuous kernel on a compact space, hence is Hilbert-Schmidt and compact. Its nonnegative top eigenvalue lambda=||K|| is positive. A maximizing real eigenvector can be replaced by its absolute value without reducing the Rayleigh quotient. Applying K then makes it continuous and strictly positive because K(u,v)>0. Choose this normalized eigenfunction psi, with integral psi^2=1. Gauge invariance of the kernel makes psi gauge invariant. Thus T=K/lambda has spectrum in [0,1]. These are constructed objects in this mathematical argument, not assumed Wilson eigenpairs.",
+      "Let S=integral w psi and eta=(w psi/S)mu. The eigen-equation gives psi(u)/w(u)>=epsilon S/lambda. Consequently d eta/d mu>=epsilon w^2/lambda>=epsilon^2, since lambda<=1 follows from K<=1 and Cauchy-Schwarz. Also lambda=<psi,K psi><=S^2, hence S^2/lambda>=1.",
+      "For any m in [-d,d], set f=(P-m)psi and g=w f. Let p0=integral g, p4=integral g P, and a_eta=integral P d eta. Then p4-a_eta p0=S Var_eta(P). The density bound yields Var_eta(P)>=epsilon^2 v_H, by comparing centered squares and minimizing the Haar square over the center.",
+      "The real trace of a four-link plaquette is a sum of 8d^4 signed degree-four real-entry monomials. With four distinct link tags these coefficient-vector entries are distinct and its squared norm is 8d^4. Cauchy-Schwarz gives p4^2 <= 8d^4 sum_alpha (integral g Phi_alpha1 Phi_alpha2 Phi_alpha3 Phi_alpha4)^2.",
+      "Since g is gauge invariant, retain only the degree-zero and degree-four positive feature terms: <f,Kf> >= exp(-beta d E)[p0^2 + beta^4 p4^2/(192d^4)]. Weighted Cauchy-Schwarz bounds the bracket below by (p4-a_eta p0)^2/(d^2+192d^4/beta^4). Divide by lambda and use S^2/lambda>=1 and Var_eta(P)>=epsilon^2 v_H. This gives <f,Tf>>=L. The exponent 27 is 3 from beta d E plus 24 from epsilon^4.",
+      "The full Wilson slab factorization, followed by Fubini and the Hilbert-Schmidt trace identity, gives Z_M=Tr(K^M) for M>=2. The analogous inserted formula gives C_M(p)=Tr(T^(M-p) B T^p B)/Tr(T^M), where B multiplies by P-m and m is the actual periodic expectation. Both separated factors are Hilbert-Schmidt, so their product is trace class.",
+      "In an eigenbasis of T with eigenvalues r_i>=0 and r_0=1, the numerator is sum_ij r_i^(M-p) r_j^p |B_ij|^2. Retaining the i=0 terms is legitimate and gives at least <f,T^p f>. Jensen for the spectral probability law of f yields <f,T^p f> >= <f,Tf>^p/||f||^(2p-2) >= L^p/(4d^2)^(p-1), because ||f||^2<=4d^2.",
+      "Testing the Rayleigh quotient with w gives lambda>=epsilon ||w||_2^2. The kernel upper bound gives ||K||_HS^2<=||w||_2^4. Thus Tr(T^M)<=Tr(T^2)<=epsilon^(-2), proving the displayed periodic covariance floor."
+    ],
+    "fixed_smooth_witness": {
+      "scope": "Fundamental SU(2), spatial n>=3, one purely spatial plaquette plane, and one fixed real test f(t,x)=h(t)g(x). Both profiles are nonnegative, smooth, compactly supported and nonzero. The time support is strictly inside the positive physical half and away from the reflection boundaries.",
+      "cell_coefficients": "The actual floor-cell sampling yields nonnegative c_t=integral over the time cell of h and b_x=integral over the spatial cell of g. Thus F=sum_t c_t P_b(t), where P_b=sum_x b_x P_x. For small enough spacing, all nonzero c_t have 1<=t<=M/2-1.",
+      "spatial_variance": "Distinct same-plane plaquettes are Haar orthogonal: for n>=3 one has a link absent from the other, and multiplying that link by central -I flips only its fundamental SU(2) trace. Therefore v_b=Var_Haar(P_b)=v_H sum_x b_x^2>0.",
+      "constants": "Let S1=sum_x |b_x|, B_b=d S1, and L_b=exp(-27 beta d n^3) v_b^2/[B_b^2+192 d^4 S1^2/beta^4]. The degree-four coefficient norm is at most 8d^4 S1^2, by the triangle inequality; no disjoint-monomial assumption is needed.",
+      "reflected_bound": "The connected reflected covariance is sum_st c_s c_t C_b(s+t), with each term nonnegative by the transfer spectral formula. Choosing t* with c_t*>0 gives the positive lower bound c_t*^2 epsilon^2 L_b^(2t*)/(4B_b^2)^(2t*-1). The existing boundary-response identity then implies nonconstant normalized half response at every sufficiently fine finite cutoff.",
+      "remaining_limit": "For fixed smooth g, sum b_x is constant and sum b_x^2 is asymptotic to a^3 integral g^2. This contributes polynomial factors, while the dominant exponential still collapses."
+    },
+    "continuum_scaling": "For n asymptotic to L_phys/a, p asymptotic to tau/a and beta asymptotic to b log(1/a), the lower bound decays on the scale exp[-C a^(-4) log(1/a)]. Multiplication by powers of a or beta cannot rescue this particular floor. This does not imply that the actual covariance vanishes or that no stronger estimate exists."
+  },
+  "conditional_source_transport_attack": {
+    "normalization_cancellation": "For a positive source-independent integration functional T and tau(z)=T[exp(F(z,u))], legitimate differentiation at zero yields partial_i log tau(0)=E_partial[partial_i F(0,u)], where the normalized positive measure is exp(F(0,u))T/tau(0). A tiny history mass cancels. A cutoff-uniform zero-free complex neighborhood is not necessary for this first derivative.",
+    "frozen_history_representation": "A source-independent positive history/blocking kernel applied to the original Wilson law has conditional source integral E[exp(sum z_i X_i)|h,V]. Boundedness gives legitimate differentiation at each fixed cutoff. Equivalence to the actual sourced and re-filed RG history weights requires an additional intertwining theorem; it is not supplied merely by disintegration.",
+    "gaussian_case": {
+      "status": "Exact finite-dimensional calculation, not Lean-certified; applies to unrestricted Gaussian conditioning, not history-truncated Wilson fields.",
+      "setting": "Remove gauge and harmonic zero modes. Let H>0, density proportional to exp[-a^T H a/(2g0^2)], surjective linear block map Q, and quadratic source X_f=a^T H_f a/2 with -||f||_infty H <= H_f <= ||f||_infty H.",
+      "conditional_mean": "m=H^(-1)Q^T(QH^(-1)Q^T)^(-1)v",
+      "conditional_covariance": "C=g0^2[H^(-1)-H^(-1)Q^T(QH^(-1)Q^T)^(-1)QH^(-1)]",
+      "slope": "E[X_f|Qa=v]=Tr(CH_f)/2 + m^T H_f m/2.",
+      "renormalized_bound": "Subtracting c_f=Tr(CH_f)/2, which is independent of v for this fixed untruncated blocking, leaves absolute value <=(||f||_infty/2) v^T(QH^(-1)Q^T)^(-1)v. This exhibits ultraviolet vacuum subtraction followed by coarse-energy control.",
+      "source_domain": "C<=g0^2 H^(-1) implies ||C^(1/2)(sum z_i H_fi)C^(1/2)||<1 whenever g0^2 sum |z_i| ||f_i||_infty<1. Gaussian completion of the square gives an analytic nonzero determinant branch there, independent of the number of fine variables. Its magnitude need not be volume-independent.",
+      "missing_interacting_input": "History restrictions and Wilson interactions alter the conditional mean and covariance. The Gaussian cancellation does not prove a common vacuum subtraction or a uniform remainder for those laws."
+    },
+    "age_and_distance": {
+      "near": "If the transported insertion has a per-cell bound P(x)||f||_infty at creation-minus-one scale, a component of age a contributes at most C L^(4(a+1)) rho^4 P(x)||f||_infty by counting cells. The per-cell premise is the unproved interacting estimate.",
+      "far": "If its age-a tail is bounded by C||f||_infty rho^8 L^(4a) exp[-kappa rho L^a/8], then summing ages yields C C_(kappa,L)||f||_infty rho^8 exp[-kappa rho/16] for rho>=1 and L>1.",
+      "sum_proof": "Split the exponent into two halves. Since rho>=1 and L^a>=1, each term is at most exp[-kappa rho/16] L^(4a) exp[-kappa L^a/16]. The remaining series converges by the ratio test. Decay only in current-scale distance would not absorb the unbounded age factor.",
+      "rare_history_obstruction": "Let standard Gaussians X,Y have correlation q=exp(-kappa r). For H_t={t<=Y<=t+1}, t>=0, E[X^2|H_t]-1=q^2(E[Y^2|H_t]-1)>=exp(-2kappa r)(t^2-1). Hence covariance decay alone cannot give a conditional bound uniform over rare histories."
+    },
+    "remaining_theorem": [
+      "Identify the actual sourced blocked Wilson density with a positive frozen-history representation, including every history transformation.",
+      "After integrating ultraviolet scales, subtract a common history-independent vacuum term and prove a bounded creation-scale local marked insertion.",
+      "Preserve creation-scale exponential decay through storage, merging and re-filing, with constants uniform in the cutoff and required volumes.",
+      "Control the resulting connected-correlation error relative to its positive leading term, on one justified coupling and field-normalization trajectory."
+    ]
+  },
+  "full_target_status": {
+    "ledger_consistent": true,
+    "full_target_requirements_open": 12,
+    "verified_auxiliary_references": 219,
+    "clay_certificate_present": false
+  },
+  "continuum_theory_constructed": false,
+  "mass_gap_proved": false
+}

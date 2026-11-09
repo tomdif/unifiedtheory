@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: proved joint-rotation action and true stationary entropy budgets, physical collective bounded-source response and finite-difference estimates for fixed coefficient directions",
+  "scope": "The collective simultaneous-rotation estimate now holds inside every actual ground-law block conditional, uniformly in the retained exterior. For a block S, inside rotation q and exterior r, extend q by identity outside S. Its full squared displacement is exactly cost_S(q)=sum_{e in S} norm(q_e-1)^2. Haar translation inside S preserves the actual conditional density normalization, and the conditional ground-log gain equals minus one half of its actual relative entropy. The gain is nonpositive for each exterior, not merely after averaging exteriors. Conditional paired row entropies are therefore bounded by 18*beta*cost_S(q), and conditional bounded-source mean-square response by 18*beta*range^2*cost_S(q). Let q(r) be any continuous exterior-dependent block rotation, w(r) any continuous nonnegative exterior weight, r(U) the true exterior projection, and R(U)=extend(q(r(U)))*U. Disintegration over the actual correlated exterior marginal gives E_pi[w(r(U))*D(row_U||row_R(U))]<=18*beta*E_pi[w(r(U))*cost_S(q(r(U)))]. The physical full-transfer response satisfies E_pi[w(r(U))*(Pf(U)-Pf(R(U)))^2]<=18*beta*range^2*E_pi[w(r(U))*cost_S(q(r(U)))]. No independence of the exterior, conditioning penalty, or additional block-cardinality factor is introduced. The proved class allows exterior dependence only; arbitrary dependence on the rotated coordinates is not covered. The source norm remains oscillation rather than variance dissipation. The full physical Haar-form estimate, distant mixed-ground sum, global coercivity and all twelve full Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonBlockRotation",
+    "UnifiedTheory.Clay.YangMills.WilsonConditionalEntropy",
+    "UnifiedTheory.Clay.YangMills.WilsonExteriorResponse"
+  ],
+  "new_declarations": 34,
+  "retained_declarations": 7719,
+  "cumulative_declarations": 7753,
+  "proof": {
+    "block_coordinates": "Extend an inside group element by identity on the actual retained exterior. Multiplication of the assembled configuration is proved equal to assembly with the rotated inside coordinates. Inversion commutes with extension, and full displacement cost equals the inside cost exactly.",
+    "conditional_normalization": "The actual conditional density is g(assemble(r,a))^2/fiberMass(r). Inside Haar translation a -> q*a preserves its integral. The two normalizers cancel in the logarithmic density ratio; relative entropy is exactly -2 times the conditional mean log-ground gain.",
+    "conditional_sign": "Both densities are positive continuous probability densities on the same inside Haar space. Relative entropy nonnegativity implies the actual conditional gain<=0 separately for every retained exterior.",
+    "conditional_entropy": "Apply the already-proved actual joint row-entropy pair bound to the identity extension, then integrate only over the true conditional block law. Both signed gains are nonpositive, leaving the same 18*beta*cost_S(q) budget.",
+    "conditional_response": "The actual entropy-to-bounded-response inequality integrates under that same conditional law, with range squared multiplying the entropy budget.",
+    "exterior_dependent_selection": "For each exterior r choose q(r). Uniform conditional bounds permit this choice before averaging. Nonnegative w(r) is constant over each conditional integral. Actual ground-law disintegration and the true outside marginal give the global weighted entropy bound without replacing the outside law by a product reference.",
+    "physical_source_binding": "The weighted row-mean response is bounded pointwise by the weighted row entropy, then integrated under actual pi. Exact equality of raw and full transfer expectations for gauge-invariant sources supplies the stated physical full-transfer result."
+  },
+  "decision": "The exterior-dependent part of the weighted fixed-block rotation argument is now proved. The next upper-bound task is to handle dependence on rotated coordinates and to pay for response by actual variance loss; do not re-open the true conditional normalization or exterior-marginal binding as assumptions.",
+  "not_inferred": [
+    "The new input dependence is restricted to the retained exterior of the rotated block. Rotation choices or source weights depending on the rotated interior coordinates are not covered by the conditional sign argument.",
+    "The proved rotation field and exterior weight are continuous, and the weight is nonnegative. No extension to arbitrary measurable or signed weights is asserted.",
+    "The response coefficient still contains the squared source range, not actual variance dissipation. The full physical Haar-form bound therefore remains open.",
+    "The argument preserves the actual correlated exterior marginal. It does not prove spatial independence, covariance decay, distant mixed-ground summability or global variance factorization.",
+    "The displacement cost is a sum over the rotated links. There is no additional cardinality factor, but the cost itself grows if many links are rotated by comparable amounts.",
+    "Physical coupling identification, uniform physical-scale contraction, continuum construction, a nonzero separated/smeared continuum source and the full field axioms remain open. No Clay mass-gap certificate is constructed."
+  ],
+  "audit": "data/yang_mills_exterior_response_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

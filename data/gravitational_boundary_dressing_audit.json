@@ -1,0 +1,585 @@
+{
+  "exact_TT_seed": {
+    "trace_identically_zero": true,
+    "divergence_identically_zero": true,
+    "source_polynomial": "9*(x**2 + y**2)*(x**4 + 2*x**2*y**2 + x**2*z**2 - 8*x**2 + y**4 + y**2*z**2 - 8*y**2 + 16)/2",
+    "exact_source_integral": "63*pi**(3/2)/2",
+    "newton_potential_uniform_bound": "99/16",
+    "leading_newton_potential_at_origin": "3/2",
+    "scope": "Exact symbolic localized TT data from the prepotential Cotton operator, its source norm and a continuum contraction bound."
+  },
+  "boundary_operator_bounds": {
+    "cases": [
+      {
+        "case": 0,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.31954177866744365,
+        "boundary_intertwining_error": 1.075700295631924,
+        "compression_error": 5.140322667759709e-15,
+        "boundary_leakage": 1.0757002956319233,
+        "bulk_leakage": 1.2368993459031248,
+        "strong_commutator_bound": 4.598016595919515,
+        "compression_with_leakage_bound": 2.661065984109862,
+        "physical_dressing_error": 2.7750995078180276,
+        "physical_dressing_commutator_bound": 12.08685793255022
+      },
+      {
+        "case": 1,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.7092592543251289,
+        "boundary_intertwining_error": 0.8583198720888063,
+        "compression_error": 0.12931458606659346,
+        "boundary_leakage": 0.854316438248497,
+        "bulk_leakage": 1.0418552066425397,
+        "strong_commutator_bound": 1.9174975718533394,
+        "compression_with_leakage_bound": 2.0495560077348,
+        "physical_dressing_error": 3.4889784069716425,
+        "physical_dressing_commutator_bound": 13.129604884892938
+      },
+      {
+        "case": 2,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.26454933100854156,
+        "boundary_intertwining_error": 0.40385505235458735,
+        "compression_error": 0.17632479523077024,
+        "boundary_leakage": 0.38179927483550924,
+        "bulk_leakage": 1.564982435709501,
+        "strong_commutator_bound": 1.2929581080388632,
+        "compression_with_leakage_bound": 1.5928814077475504,
+        "physical_dressing_error": 2.492078653689513,
+        "physical_dressing_commutator_bound": 8.187653255671092
+      },
+      {
+        "case": 3,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.9759423584974558,
+        "boundary_intertwining_error": 1.0913042430504258,
+        "compression_error": 3.399711195449741e-15,
+        "boundary_leakage": 1.0913042430504256,
+        "bulk_leakage": 1.219816989688179,
+        "strong_commutator_bound": 3.553282331220234,
+        "compression_with_leakage_bound": 2.6623829131834245,
+        "physical_dressing_error": 3.6072541726060123,
+        "physical_dressing_commutator_bound": 14.833235641505217
+      },
+      {
+        "case": 4,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.8637029684164419,
+        "boundary_intertwining_error": 2.4764832178853613,
+        "compression_error": 0.10501330225008099,
+        "boundary_leakage": 2.4744999893585695,
+        "bulk_leakage": 0.8190318697461546,
+        "strong_commutator_bound": 7.877951149928315,
+        "compression_with_leakage_bound": 4.311509329148503,
+        "physical_dressing_error": 4.125591182861231,
+        "physical_dressing_commutator_bound": 41.57172136110301
+      },
+      {
+        "case": 5,
+        "code_rank": 4,
+        "physical_commutator_norm": 1.5223969074347405,
+        "boundary_intertwining_error": 1.5885034490168704,
+        "compression_error": 0.4136418029504977,
+        "boundary_leakage": 1.5606223609318721,
+        "bulk_leakage": 1.602093432533278,
+        "strong_commutator_bound": 9.40208584321606,
+        "compression_with_leakage_bound": 7.447598609980694,
+        "physical_dressing_error": 4.3715794935770145,
+        "physical_dressing_commutator_bound": 24.281225117102743
+      },
+      {
+        "case": 6,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.7617740053227267,
+        "boundary_intertwining_error": 1.2245969734092559,
+        "compression_error": 3.0243442137499475e-15,
+        "boundary_leakage": 1.2245969734092559,
+        "bulk_leakage": 1.3234578806883044,
+        "strong_commutator_bound": 3.4049517204236697,
+        "compression_with_leakage_bound": 3.241405030251059,
+        "physical_dressing_error": 4.002802845637569,
+        "physical_dressing_commutator_bound": 24.703447114671313
+      },
+      {
+        "case": 7,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.7907315854630353,
+        "boundary_intertwining_error": 1.3277074478309505,
+        "compression_error": 0.13631585732919563,
+        "boundary_leakage": 1.324078223000617,
+        "bulk_leakage": 0.8211036016812144,
+        "strong_commutator_bound": 4.437869860055162,
+        "compression_with_leakage_bound": 2.531324844625906,
+        "physical_dressing_error": 2.649476677290682,
+        "physical_dressing_commutator_bound": 16.54120136888674
+      },
+      {
+        "case": 8,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.2986341844854794,
+        "boundary_intertwining_error": 1.1226757151372286,
+        "compression_error": 0.23694267016911863,
+        "boundary_leakage": 1.1116056948076345,
+        "bulk_leakage": 0.5879177254196032,
+        "strong_commutator_bound": 2.5452012171684975,
+        "compression_with_leakage_bound": 1.804820256885498,
+        "physical_dressing_error": 1.847021490893283,
+        "physical_dressing_commutator_bound": 6.566794288053326
+      },
+      {
+        "case": 9,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.4294513334167906,
+        "boundary_intertwining_error": 0.4841559665745703,
+        "compression_error": 2.2030922291613194e-15,
+        "boundary_leakage": 0.48415596657457033,
+        "bulk_leakage": 1.1255726301408993,
+        "strong_commutator_bound": 1.2044618740242166,
+        "compression_with_leakage_bound": 1.089905409391502,
+        "physical_dressing_error": 2.4226596354991456,
+        "physical_dressing_commutator_bound": 8.13673576335262
+      },
+      {
+        "case": 10,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.083536372437451,
+        "boundary_intertwining_error": 0.7246140111163675,
+        "compression_error": 0.06631242225887424,
+        "boundary_leakage": 0.7219901504490248,
+        "bulk_leakage": 0.251386268050206,
+        "strong_commutator_bound": 2.0216326869130503,
+        "compression_with_leakage_bound": 0.5293386510395731,
+        "physical_dressing_error": 3.196931596083813,
+        "physical_dressing_commutator_bound": 15.326634714035519
+      },
+      {
+        "case": 11,
+        "code_rank": 4,
+        "physical_commutator_norm": 2.4586600332771247,
+        "boundary_intertwining_error": 2.296411008364351,
+        "compression_error": 0.2631079325116932,
+        "boundary_leakage": 2.2928050310240162,
+        "bulk_leakage": 1.395199950196848,
+        "strong_commutator_bound": 9.872542054668967,
+        "compression_with_leakage_bound": 7.483796370644622,
+        "physical_dressing_error": 3.95918154473361,
+        "physical_dressing_commutator_bound": 39.50714427036186
+      },
+      {
+        "case": 12,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.9472063472637827,
+        "boundary_intertwining_error": 1.6610783471437838,
+        "compression_error": 4.768947105218828e-15,
+        "boundary_leakage": 1.661078347143784,
+        "bulk_leakage": 1.023826114441176,
+        "strong_commutator_bound": 5.310984944227975,
+        "compression_with_leakage_bound": 3.4013107798771935,
+        "physical_dressing_error": 3.5667042354823577,
+        "physical_dressing_commutator_bound": 29.501392641989497
+      },
+      {
+        "case": 13,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.8846314668616585,
+        "boundary_intertwining_error": 0.9918974249198853,
+        "compression_error": 0.18988771492240225,
+        "boundary_leakage": 0.9877675589182112,
+        "bulk_leakage": 1.151593991588392,
+        "strong_commutator_bound": 2.691847912342657,
+        "compression_with_leakage_bound": 2.7476057284181676,
+        "physical_dressing_error": 4.490987090732612,
+        "physical_dressing_commutator_bound": 25.598588150206943
+      },
+      {
+        "case": 14,
+        "code_rank": 3,
+        "physical_commutator_norm": 0.942743406629295,
+        "boundary_intertwining_error": 1.3994674656670878,
+        "compression_error": 0.17082517631684926,
+        "boundary_leakage": 1.3952680452874382,
+        "bulk_leakage": 1.6035639663841879,
+        "strong_commutator_bound": 4.793901528683888,
+        "compression_with_leakage_bound": 4.982481739060284,
+        "physical_dressing_error": 2.0879832763026567,
+        "physical_dressing_commutator_bound": 11.710851302650962
+      },
+      {
+        "case": 15,
+        "code_rank": 4,
+        "physical_commutator_norm": 0.9564067132656631,
+        "boundary_intertwining_error": 0.9931087119334777,
+        "compression_error": 3.461613570070716e-15,
+        "boundary_leakage": 0.9931087119334778,
+        "bulk_leakage": 1.108547203209552,
+        "strong_commutator_bound": 3.2526575228023082,
+        "compression_with_leakage_bound": 2.201815770193805,
+        "physical_dressing_error": 3.2257594901755877,
+        "physical_dressing_commutator_bound": 12.486063045834761
+      }
+    ],
+    "scope": "Finite eight-state operator tests, with generic nonlocal projectors. The random Hamiltonians are not microscopic gravity models."
+  },
+  "compression_counterexample": {
+    "cases": [
+      {
+        "theta": 0.0,
+        "physical_commutator_norm": 0.0,
+        "predicted_commutator_norm": 0.0,
+        "boundary_leakage": 0.0,
+        "bulk_leakage": 0.0
+      },
+      {
+        "theta": 0.2,
+        "physical_commutator_norm": 0.0773654814657816,
+        "predicted_commutator_norm": 0.07736548146578166,
+        "boundary_leakage": 0.3894183423086504,
+        "bulk_leakage": 0.19866933079506122
+      },
+      {
+        "theta": 0.4,
+        "physical_commutator_norm": 0.27935161976310574,
+        "predicted_commutator_norm": 0.2793516197631058,
+        "boundary_leakage": 0.7173560908995227,
+        "bulk_leakage": 0.3894183423086506
+      },
+      {
+        "theta": 0.7,
+        "physical_commutator_norm": 0.6348441459421729,
+        "predicted_commutator_norm": 0.6348441459421729,
+        "boundary_leakage": 0.9854497299884601,
+        "bulk_leakage": 0.644217687237691
+      },
+      {
+        "theta": 1.0,
+        "physical_commutator_norm": 0.7651474012342926,
+        "predicted_commutator_norm": 0.7651474012342926,
+        "boundary_leakage": 0.9092974268256817,
+        "bulk_leakage": 0.8414709848078966
+      },
+      {
+        "theta": 1.5707963267948966,
+        "physical_commutator_norm": 1.2246467991473532e-16,
+        "predicted_commutator_norm": 1.2246467991473532e-16,
+        "boundary_leakage": 1.2246467991473532e-16,
+        "bulk_leakage": 1.0
+      }
+    ],
+    "scope": "An exact compression-equality counterexample: disjoint operators can have noncommuting compressions when both leak out of the code."
+  },
+  "finite_prefix_code": {
+    "cases": [
+      {
+        "size": 1,
+        "full_product_dimension": 4,
+        "exact_code_dimension": 2,
+        "verified_dressed_creations": 1,
+        "maximum_code_energy": 1.0,
+        "minimum_excluded_energy": 2.0,
+        "link_dimension": 2,
+        "penalty": 2.0
+      },
+      {
+        "size": 2,
+        "full_product_dimension": 36,
+        "exact_code_dimension": 4,
+        "verified_dressed_creations": 4,
+        "maximum_code_energy": 2.0,
+        "minimum_excluded_energy": 3.0,
+        "link_dimension": 3,
+        "penalty": 3.0
+      },
+      {
+        "size": 3,
+        "full_product_dimension": 512,
+        "exact_code_dimension": 8,
+        "verified_dressed_creations": 12,
+        "maximum_code_energy": 3.0,
+        "minimum_excluded_energy": 4.0,
+        "link_dimension": 4,
+        "penalty": 4.0
+      },
+      {
+        "size": 4,
+        "full_product_dimension": 10000,
+        "exact_code_dimension": 16,
+        "verified_dressed_creations": 32,
+        "maximum_code_energy": 4.0,
+        "minimum_excluded_energy": 5.0,
+        "link_dimension": 5,
+        "penalty": 5.0
+      }
+    ],
+    "scope": "Complete finite kernels and logical transitions for local prefix constraints. Link dimensions and the full-band protection penalty grow with size. There are no propagating tensor modes."
+  },
+  "nonlinear_conformal_dressing": {
+    "cases": [
+      {
+        "radial_points": 48,
+        "angular_points": 8,
+        "radius": 8.0,
+        "amplitude": 0.05,
+        "contraction_upper_bound": 0.10828125000000002,
+        "iterations": 8,
+        "discrete_fixed_point_residual": 1.4268100589909238e-16,
+        "maximum_conformal_change": 0.00370861348890592,
+        "nonlinear_minus_leading_uniform_error": 8.079477229994353e-05,
+        "continuum_perturbation_error_bound": 0.0016749755859375008,
+        "bare_TT_energy": 0.008723796297425588,
+        "ADM_energy": 0.00855135483625781,
+        "continuum_ADM_lower_bound": 0.007835010363804646
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 8,
+        "radius": 8.0,
+        "amplitude": 0.1,
+        "contraction_upper_bound": 0.4331250000000001,
+        "iterations": 12,
+        "discrete_fixed_point_residual": 8.309325449928906e-16,
+        "maximum_conformal_change": 0.013979209358464386,
+        "nonlinear_minus_leading_uniform_error": 0.0011784236863590682,
+        "continuum_perturbation_error_bound": 0.026799609375000012,
+        "bare_TT_energy": 0.03489518518970235,
+        "ADM_energy": 0.03237370036475578,
+        "continuum_ADM_lower_bound": 0.02292195913762031
+      },
+      {
+        "radial_points": 48,
+        "angular_points": 8,
+        "radius": 8.0,
+        "amplitude": 0.14,
+        "contraction_upper_bound": 0.8489250000000002,
+        "iterations": 15,
+        "discrete_fixed_point_residual": 6.040307143351242e-15,
+        "maximum_conformal_change": 0.025628369178379733,
+        "nonlinear_minus_leading_uniform_error": 0.004080591589474235,
+        "continuum_perturbation_error_bound": 0.10295337937500004,
+        "bare_TT_energy": 0.0683945629718166,
+        "ADM_energy": 0.0596391434791303,
+        "continuum_ADM_lower_bound": 0.030692806707871032
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 12,
+        "radius": 8.0,
+        "amplitude": 0.05,
+        "contraction_upper_bound": 0.10828125000000002,
+        "iterations": 8,
+        "discrete_fixed_point_residual": 1.4181364416110398e-16,
+        "maximum_conformal_change": 0.003706999321553221,
+        "nonlinear_minus_leading_uniform_error": 8.062220687716929e-05,
+        "continuum_perturbation_error_bound": 0.0016749755859375008,
+        "bare_TT_energy": 0.008723796297425588,
+        "ADM_energy": 0.008551590508632533,
+        "continuum_ADM_lower_bound": 0.007835010363804646
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 12,
+        "radius": 8.0,
+        "amplitude": 0.1,
+        "contraction_upper_bound": 0.4331250000000001,
+        "iterations": 12,
+        "discrete_fixed_point_residual": 8.239936510889834e-16,
+        "maximum_conformal_change": 0.013974403147492272,
+        "nonlinear_minus_leading_uniform_error": 0.0011760829662292895,
+        "continuum_perturbation_error_bound": 0.026799609375000012,
+        "bare_TT_energy": 0.03489518518970235,
+        "ADM_energy": 0.03237681228255766,
+        "continuum_ADM_lower_bound": 0.02292195913762031
+      },
+      {
+        "radial_points": 96,
+        "angular_points": 12,
+        "radius": 8.0,
+        "amplitude": 0.14,
+        "contraction_upper_bound": 0.8489250000000002,
+        "iterations": 15,
+        "discrete_fixed_point_residual": 5.9119376061289586e-15,
+        "maximum_conformal_change": 0.025621865404488995,
+        "nonlinear_minus_leading_uniform_error": 0.0040730873784052615,
+        "continuum_perturbation_error_bound": 0.10295337937500004,
+        "bare_TT_energy": 0.0683945629718166,
+        "ADM_energy": 0.05964881405479536,
+        "continuum_ADM_lower_bound": 0.030692806707871032
+      },
+      {
+        "radial_points": 192,
+        "angular_points": 16,
+        "radius": 8.0,
+        "amplitude": 0.05,
+        "contraction_upper_bound": 0.10828125000000002,
+        "iterations": 8,
+        "discrete_fixed_point_residual": 1.3921155894713877e-16,
+        "maximum_conformal_change": 0.0037071245513332933,
+        "nonlinear_minus_leading_uniform_error": 8.059438974330297e-05,
+        "continuum_perturbation_error_bound": 0.0016749755859375008,
+        "bare_TT_energy": 0.008723796297425588,
+        "ADM_energy": 0.00855164919334993,
+        "continuum_ADM_lower_bound": 0.007835010363804646
+      },
+      {
+        "radial_points": 192,
+        "angular_points": 16,
+        "radius": 8.0,
+        "amplitude": 0.1,
+        "contraction_upper_bound": 0.4331250000000001,
+        "iterations": 12,
+        "discrete_fixed_point_residual": 8.153200337090993e-16,
+        "maximum_conformal_change": 0.013975157425781155,
+        "nonlinear_minus_leading_uniform_error": 0.0011757183385252296,
+        "continuum_perturbation_error_bound": 0.026799609375000012,
+        "bare_TT_energy": 0.03489518518970235,
+        "ADM_energy": 0.0323775873686639,
+        "continuum_ADM_lower_bound": 0.02292195913762031
+      },
+      {
+        "radial_points": 192,
+        "angular_points": 16,
+        "radius": 8.0,
+        "amplitude": 0.14,
+        "contraction_upper_bound": 0.8489250000000002,
+        "iterations": 15,
+        "discrete_fixed_point_residual": 5.873773689657469e-15,
+        "maximum_conformal_change": 0.025623752182501507,
+        "nonlinear_minus_leading_uniform_error": 0.0040719643155390055,
+        "continuum_perturbation_error_bound": 0.10295337937500004,
+        "bare_TT_energy": 0.0683945629718166,
+        "ADM_energy": 0.059651223283673165,
+        "continuum_ADM_lower_bound": 0.030692806707871032
+      }
+    ],
+    "refinement": [
+      {
+        "amplitude": 0.05,
+        "coarse_to_middle_change": 2.3567237472307823e-07,
+        "middle_to_fine_change": 5.868471739632619e-08,
+        "refinement_change_ratio": 0.24900974272136228
+      },
+      {
+        "amplitude": 0.1,
+        "coarse_to_middle_change": 3.1119178018831906e-06,
+        "middle_to_fine_change": 7.750861062347236e-07,
+        "refinement_change_ratio": 0.24907023757686558
+      },
+      {
+        "amplitude": 0.14,
+        "coarse_to_middle_change": 9.670575665060577e-06,
+        "middle_to_fine_change": 2.4092288778074233e-06,
+        "refinement_change_ratio": 0.24912983065856936
+      }
+    ],
+    "scope": "Nonlinear conformal Einstein initial data with an actual smooth TT seed, G=1. Discrete Newton-potential residuals and resolution comparisons are numerical evidence, not certified continuum discretization bounds."
+  },
+  "asymptotic_flux": {
+    "cases": [
+      {
+        "amplitude": 0.05,
+        "observation_radius": 16.0,
+        "conformal_flux": 0.008551649193349926,
+        "finite_radius_ADM_metric_surface_expression": 0.008558507030485933,
+        "limiting_ADM_energy": 0.00855164919334993,
+        "finite_radius_metric_relative_error": 0.0008019315316789566,
+        "leading_relative_error_prediction": 0.000801717111876556,
+        "metric_tail_monopole_coefficient": 0.01710329838669986
+      },
+      {
+        "amplitude": 0.05,
+        "observation_radius": 32.0,
+        "conformal_flux": 0.008551649193349928,
+        "finite_radius_ADM_metric_surface_expression": 0.008555077653205036,
+        "limiting_ADM_energy": 0.00855164919334993,
+        "finite_radius_metric_relative_error": 0.00040091212555504185,
+        "leading_relative_error_prediction": 0.000400858555938278,
+        "metric_tail_monopole_coefficient": 0.01710329838669986
+      },
+      {
+        "amplitude": 0.05,
+        "observation_radius": 64.0,
+        "conformal_flux": 0.008551649193349928,
+        "finite_radius_ADM_metric_surface_expression": 0.008553363308738989,
+        "limiting_ADM_energy": 0.00855164919334993,
+        "finite_radius_metric_relative_error": 0.00020044266904584163,
+        "leading_relative_error_prediction": 0.000200429277969139,
+        "metric_tail_monopole_coefficient": 0.01710329838669986
+      },
+      {
+        "amplitude": 0.1,
+        "observation_radius": 16.0,
+        "conformal_flux": 0.032377587368663883,
+        "finite_radius_ADM_metric_surface_expression": 0.032475965749840796,
+        "limiting_ADM_energy": 0.0323775873686639,
+        "finite_radius_metric_relative_error": 0.0030384716457321215,
+        "leading_relative_error_prediction": 0.0030353988158122406,
+        "metric_tail_monopole_coefficient": 0.0647551747373278
+      },
+      {
+        "amplitude": 0.1,
+        "observation_radius": 32.0,
+        "conformal_flux": 0.03237758736866389,
+        "finite_radius_ADM_metric_surface_expression": 0.03242675167825532,
+        "limiting_ADM_energy": 0.0323775873686639,
+        "finite_radius_metric_relative_error": 0.0015184673592758546,
+        "leading_relative_error_prediction": 0.0015176994079061203,
+        "metric_tail_monopole_coefficient": 0.0647551747373278
+      },
+      {
+        "amplitude": 0.1,
+        "observation_radius": 64.0,
+        "conformal_flux": 0.03237758736866389,
+        "finite_radius_ADM_metric_surface_expression": 0.0324021633067045,
+        "limiting_ADM_energy": 0.0323775873686639,
+        "finite_radius_metric_relative_error": 0.0007590416716591886,
+        "leading_relative_error_prediction": 0.0007588497039530601,
+        "metric_tail_monopole_coefficient": 0.0647551747373278
+      },
+      {
+        "amplitude": 0.14,
+        "observation_radius": 16.0,
+        "conformal_flux": 0.05965122328367316,
+        "finite_radius_ADM_metric_surface_expression": 0.05998543324199488,
+        "limiting_ADM_energy": 0.059651223283673165,
+        "finite_radius_metric_relative_error": 0.005602734360238948,
+        "leading_relative_error_prediction": 0.005592302182844359,
+        "metric_tail_monopole_coefficient": 0.11930244656734633
+      },
+      {
+        "amplitude": 0.14,
+        "observation_radius": 32.0,
+        "conformal_flux": 0.05965122328367316,
+        "finite_radius_ADM_metric_surface_expression": 0.05981817262733257,
+        "limiting_ADM_energy": 0.059651223283673165,
+        "finite_radius_metric_relative_error": 0.0027987580885888708,
+        "leading_relative_error_prediction": 0.0027961510914221795,
+        "metric_tail_monopole_coefficient": 0.11930244656734633
+      },
+      {
+        "amplitude": 0.14,
+        "observation_radius": 64.0,
+        "conformal_flux": 0.059651223283673165,
+        "finite_radius_ADM_metric_surface_expression": 0.05973465907138139,
+        "limiting_ADM_energy": 0.059651223283673165,
+        "finite_radius_metric_relative_error": 0.0013987271863888928,
+        "leading_relative_error_prediction": 0.0013980755457110897,
+        "metric_tail_monopole_coefficient": 0.11930244656734633
+      }
+    ],
+    "scope": "Boundary flux for the numerically truncated source. The conformal flux is distinct from the finite-radius ADM metric surface expression, which approaches the same limiting mass."
+  },
+  "source_sha256": {
+    "GRAVITATIONAL_BOUNDARY_DRESSING.md": "26b71ed2b242b70774ed949d1f677815a19437c55e6b728bd58b77672725fcbc",
+    "scripts/gravitational_boundary_dressing_audit.py": "108f4a276a2c4212244b2ff943ac18a0f8ecdadad2aabd86dad5db7786fed139",
+    "CAUSAL_VACUUM_SELECTION.md": "9ba4d36433f95b02c811a9ca1af5c72a6c61c6174ab5cb9d080417865de2b3ca",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "scripts/prepotential_lattice_bridge_audit.py": "0664b96afffad4028cf3699d40be0db514d2c316e70275e916d20da8e0e281c0",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "NONLINEAR_TENSOR_BACKREACTION.md": "dc9065d0f8577b0fdd7d8171c14097ff4a301e8addd9fd2c562b75e16371d816",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "SPIN_STATE_GAUGE_GEOMETRY.md": "daee053da9e4b357478c4c3d288dc015485175a93d93409c7e6200dd56067f47",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "A quantitative boundary-energy bound requires nonlocal dressing or a change of the stated encoding assumptions for energy-changing bulk observables. A finite local prefix code demonstrates dressed logical transitions but is not gravity. A localized TT seed has a controlled small-amplitude asymptotically flat conformal completion with positive ADM energy and a compulsory metric tail. Einstein constraints and G are inputs. No microscopic gravitational phase, derived nonlinear evolution, universal coupling, Standard Model dynamics, or TOE is proved."
+}

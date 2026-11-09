@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual finite-cylinder reduction and full-Haar compatibility checked; numerical upper and lower estimates remained open",
+  "current_goal_turn_classification": "progress: actual finite Wilson connected-source identity and unconditional bilinear bounds checked; spatial summability and lower coercivity still unproved",
+  "scope": "The mixed logarithm of the actual finite Wilson output partition is now exactly a double integral of the connected covariance of two local kinetic defects under the corresponding normalized two-source laws. The true finite boundary message remains inside every weight, and all four source corners are bound to the literal finite boundary partitions. For distant pairs, exponentiating this integrated covariance gives the earlier finite boundary ratio exactly. An unconditional bound 4*beta^2*norm(q-1)*norm(r-1) is proved both for each connected covariance throughout the source rectangle and for the mixed logarithm. It is uniform in temporal depth, baseline and spatial period for each pair, but has no distance decay. Consequently it does not establish a spatially summable far bound or the matching lower coercivity. No actual continuum or mass-gap obligation is closed; all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactConnectedRectangle",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryConnected"
+  ],
+  "new_declarations": 22,
+  "retained_declarations": 7921,
+  "cumulative_declarations": 7943,
+  "formal_results": {
+    "finite_action": "A_j(u,v)=beta*T(u,v)-log W(v)-log B_j(v), where B_j is the actual propagated spatial boundary. exp(-A_j)=C(u,v)*W(v)*B_j(v) and its integral is the earlier boundaryPartition Z_j(u).",
+    "local_defect": "F_e(v)=beta*(T(u,v)-T(R_e(q)u,v))=beta*(Re char((q*u_e)^(-1)*v_e)-Re char(u_e^(-1)*v_e)). Only v_e occurs. Its absolute value is at most 2*beta*norm(q-1).",
+    "tilted_weight": "At source strengths s,t the exact weight is C(u,v)*W(v)*B_j(v)*exp(s*F_e(v)+t*F_d(v)). The covariance uses CompactGibbsSource.expectation, hence the actual positive normalizer at each s,t.",
+    "connected_rectangle": "For distinct links, mixedLog=log Z_j(u)+log Z_j(R_e R_d u)-log Z_j(R_e u)-log Z_j(R_d u)=integral_0^1 ds integral_0^1 dt Cov_(j,u,s,t)(F_e,F_d). Continuity and both applications of the fundamental theorem of calculus are checked.",
+    "per_pair_covariance_bound": "For beta>=0, all depths, baselines and all real s,t, absolute connected covariance is at most 4*beta^2*norm(q-1)*norm(r-1). This is a direct oscillation bound and contains no spatial separation.",
+    "mixed_log_bound": "For distinct links the same bilinear bound holds for absolute mixedLog.",
+    "actual_far_response": "For distinct links with disjoint affected spatial plaquettes, boundaryRatio=exp(mixedLog)-1, exactly matching the preceding far-sum/ground-limit reduction."
+  },
+  "attempt_assessment": {
+    "successful": "The two-source interpolation is now bound to the literal finite Wilson boundary response. Positivity, normalization, source locality, endpoints, derivative integration and an unconditional numerical per-pair bound are proved.",
+    "unsuccessful": "The direct range/Cauchy-Schwarz route produces no separation decay and therefore does not close the distant mixed-ground sum. It cannot be reported as proving the numerical R required by the previous contraction theorem.",
+    "lower": "This turn does not change the missing central-slice coercivity estimate.",
+    "next_real_estimate": "Obtain a summable bound for these connected insertions under the true finite-cylinder source family, uniformly in depth and with adequate spatial/coupling control. Any good-field analysis must also pay for bad-field histories and source normalizers. If only weighted baseline control is available, prove the actual source-weighted transfer estimate rather than replacing the uniform hypothesis silently.",
+    "do_not_repeat": "Do not add another conditional contraction wrapper or re-prove the rectangle identity. The next step is an estimate on this actual covariance, or evidence ruling out the proposed uniformity and a justified replacement target."
+  },
+  "primary_source_screen": [
+    {
+      "url": "https://arxiv.org/abs/2401.10507",
+      "title": "A scaling limit of SU(2) lattice Yang-Mills-Higgs theory",
+      "scope_reviewed": "Primary abstract, not a full audit of the proof.",
+      "finding": "The stated scaling limit contains a Higgs field with diverging length and is massive Gaussian. It does not provide the missing bound for pure Wilson finite-cylinder source laws."
+    }
+  ],
+  "not_inferred": [
+    "The bilinear connected-covariance bound has no separation decay. Summing it over distant links can cost their number; a spatially summable estimate for the actual sourced finite-cylinder law is still unproved.",
+    "The two-source law is positive and normalized but is interacting. Locality of each insertion does not make the distant insertions independent.",
+    "All temporal-depth and background uniformities of the proved per-pair range estimate are genuine. They do not imply a volume-independent operator or absolute-row bound.",
+    "The central-slice direct Haar coercivity constant remains unproved at the required spatial and coupling scales. No new lower estimate is asserted.",
+    "A complete physical proof must control the upper/lower contraction budget on a justified scaling trajectory and construct surviving nontrivial continuum fields; these tasks and all twelve Clay obligations remain open.",
+    "The inspected Higgs-model result includes an additional Higgs field and a massive Gaussian scaling limit. It is not an estimate for these pure Wilson boundary laws, and no result from it is imported as a Lean axiom."
+  ],
+  "audit": "data/yang_mills_boundary_connected_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

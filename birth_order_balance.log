@@ -1,0 +1,62 @@
+[    1.9s] levels: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+[    4.6s] parents: 2450
+[    4.6s] === pi/4 feasibility at all parents (incl. n=7) ===
+[   36.6s] infeasible parents: 0 per level {}
+[   36.6s] parents with generic residual freedom (K>3): 2447/2450; forced-or-discrete (K<=3): 3
+[   68.4s] final forbidden: 0
+[   68.4s] === CONTROL: transitive percolation p=1/2 (covariant) ===
+[   87.2s] [percolation] 16998 supported non-chain C at n=8  (19s)
+[   87.2s]    uniform delta: min 0.3333  (sanity: must be >= 1/3)
+[   87.2s]    law delta:     min 0.3333  weighted-mean 0.4873  (uniform weighted-mean 0.4873)
+[   87.2s]    max |P_law - P_unif| over all pairs: 0.000e+00  weighted-mean per C 0.0000
+[   87.2s]    C with delta_law < 1/3:     0 (mass 0.0000)
+[   87.2s]    C with delta_law < 0.2764: 0 (mass 0.0000)
+[   87.2s]    C with a DETERMINISTIC spacelike birth order (P=0/1): 0 (mass 0.0000)
+[   87.2s]    worst: delta_law 0.3333 vs unif 0.3333  rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 6))  mass-weight 1.00e+00
+[   87.2s]    worst: delta_law 0.3333 vs unif 0.3333  rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (6, 0), (6, 1), (6, 2), (6, 3), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 1.00e+00
+[   87.2s]    worst: delta_law 0.3333 vs unif 0.3333  rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (5, 0), (5, 1), (5, 2), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 1.00e+00
+[   87.2s] === BASELINE: uniform labeled growth (non-covariant counting) ===
+[   95.3s] [uniform growth] 16998 supported non-chain C at n=8  (8s)
+[   95.3s]    uniform delta: min 0.3333  (sanity: must be >= 1/3)
+[   95.3s]    law delta:     min 0.3600  weighted-mean 0.4860  (uniform weighted-mean 0.4815)
+[   95.3s]    max |P_law - P_unif| over all pairs: 4.117e-01  weighted-mean per C 0.1557
+[   95.3s]    C with delta_law < 1/3:     0 (mass 0.0000)
+[   95.3s]    C with delta_law < 0.2764: 0 (mass 0.0000)
+[   95.3s]    C with a DETERMINISTIC spacelike birth order (P=0/1): 0 (mass 0.0000)
+[   95.3s]    worst: delta_law 0.3600 vs unif 0.3333  rel=((2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 6.89e-05
+[   95.3s]    worst: delta_law 0.3636 vs unif 0.3333  rel=((1, 0), (2, 0), (3, 0), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 5.46e-05
+[   95.3s]    worst: delta_law 0.3684 vs unif 0.3333  rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (5, 4), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 4.19e-05
+[   95.3s] === pi/4 max-entropy law ===
+[  130.2s] [pi/4 maxent] 13958 supported non-chain C at n=8  (8s)
+[  130.2s]    uniform delta: min 0.3333  (sanity: must be >= 1/3)
+[  130.2s]    law delta:     min 0.3333  weighted-mean 0.4941  (uniform weighted-mean 0.4931)
+[  130.2s]    max |P_law - P_unif| over all pairs: 9.620e-01  weighted-mean per C 0.3086
+[  130.2s]    C with delta_law < 1/3:     0 (mass 0.0000)
+[  130.2s]    C with delta_law < 0.2764: 0 (mass 0.0000)
+[  130.2s]    C with a DETERMINISTIC spacelike birth order (P=0/1): 6039 (mass 0.1008)
+[  130.2s]    worst: delta_law 0.3333 vs unif 0.4583  rel=((2, 1), (3, 1), (4, 1), (4, 3), (5, 1), (5, 2), (5, 3), (5, 4), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 4.14e-07
+[  130.2s]    worst: delta_law 0.3333 vs unif 0.5000  rel=((2, 1), (3, 1), (4, 1), (4, 3), (5, 1), (5, 3), (6, 1), (6, 2), (6, 3), (6, 5), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 1.36e-07
+[  130.2s]    worst: delta_law 0.3333 vs unif 0.5000  rel=((1, 0), (2, 0), (2, 1), (3, 0), (3, 1), (3, 2), (4, 0), (4, 1), (4, 2), (4, 3), (5, 0), (5, 1), (5, 2), (5, 3), (6, 0), (6, 1), (6, 2), (6, 3), (6, 5), (7, 0), (7, 1), (7, 2), (7, 3), (7, 5), (7, 6))  mass-weight 1.07e-06
+[  130.2s] === pi/4 random selection 0 ===
+[  144.6s] [pi/4 random 0] 11931 supported non-chain C at n=8  (8s)
+[  144.6s]    uniform delta: min 0.3590  (sanity: must be >= 1/3)
+[  144.6s]    law delta:     min 0.3404  weighted-mean 0.4959  (uniform weighted-mean 0.4937)
+[  144.6s]    max |P_law - P_unif| over all pairs: 9.524e-01  weighted-mean per C 0.3081
+[  144.6s]    C with delta_law < 1/3:     0 (mass 0.0000)
+[  144.6s]    C with delta_law < 0.2764: 0 (mass 0.0000)
+[  144.6s]    C with a DETERMINISTIC spacelike birth order (P=0/1): 7445 (mass 0.2807)
+[  144.6s]    worst: delta_law 0.3404 vs unif 0.4912  rel=((2, 0), (3, 1), (4, 0), (4, 1), (5, 0), (5, 1), (6, 0), (6, 1), (6, 5), (7, 0), (7, 1), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 3.89e-06
+[  144.6s]    worst: delta_law 0.3433 vs unif 0.4528  rel=((2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (5, 0), (5, 1), (6, 0), (6, 1), (6, 5), (7, 0), (7, 1), (7, 2), (7, 4), (7, 5), (7, 6))  mass-weight 1.61e-06
+[  144.6s]    worst: delta_law 0.3469 vs unif 0.4924  rel=((2, 0), (3, 1), (4, 0), (4, 1), (5, 0), (5, 1), (6, 1), (6, 3), (7, 0), (7, 1), (7, 2), (7, 3), (7, 5), (7, 6))  mass-weight 2.84e-06
+[  144.6s] === pi/4 random selection 1 ===
+[  158.3s] [pi/4 random 1] 10942 supported non-chain C at n=8  (8s)
+[  158.3s]    uniform delta: min 0.3590  (sanity: must be >= 1/3)
+[  158.3s]    law delta:     min 0.3924  weighted-mean 0.4969  (uniform weighted-mean 0.4943)
+[  158.3s]    max |P_law - P_unif| over all pairs: 9.701e-01  weighted-mean per C 0.3392
+[  158.3s]    C with delta_law < 1/3:     0 (mass 0.0000)
+[  158.3s]    C with delta_law < 0.2764: 0 (mass 0.0000)
+[  158.3s]    C with a DETERMINISTIC spacelike birth order (P=0/1): 6312 (mass 0.3285)
+[  158.3s]    worst: delta_law 0.3924 vs unif 0.4519  rel=((3, 2), (4, 1), (4, 2), (5, 1), (5, 2), (6, 1), (6, 2), (6, 5), (7, 0), (7, 1), (7, 2), (7, 5))  mass-weight 2.56e-06
+[  158.3s]    worst: delta_law 0.3976 vs unif 0.4654  rel=((3, 1), (4, 2), (5, 1), (5, 2), (6, 2), (6, 4), (7, 0), (7, 2), (7, 4))  mass-weight 2.51e-06
+[  158.3s]    worst: delta_law 0.4000 vs unif 0.4912  rel=((2, 0), (3, 1), (4, 0), (4, 1), (5, 0), (5, 1), (6, 0), (6, 1), (6, 5), (7, 0), (7, 1), (7, 3), (7, 4), (7, 5), (7, 6))  mass-weight 9.73e-06
+[  158.3s] DONE

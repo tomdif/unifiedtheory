@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-30",
+  "status": "numerical_refutation_evidence_not_a_Lean_certificate",
+  "target_tested": "hdecay in WilsonDyadicFarClosure.energy_le_loss_of_connected_decay and groundFar_of_connected_decay: |connected n beta j e d q r u s t| <= C*16^(-k) for ALL inputs u, with C independent of n",
+  "input": "Central Z2 pi-flux slice: u(x,0)=1, u(x,1)=(-1)^x0, u(x,2)=(-1)^(x0+x1), n even; every spatial plaquette holonomy is -1. Global conjugation is then an exact symmetry of the output law.",
+  "law": "Literal boundaryAction: beta*kin(u,v0) with no temporal average on the first step; later slices use the Haar-averaged kernel, sampled through temporal links; beta*potential on every slice. Source rotation q about one axis with beta*norm(q-1)=1, s=t=0.",
+  "method": "Heat bath. Cov uses the SO(3)-symmetrized exact source formula. mixedLog is estimated directly from log E[e^(Fe+Fd)]-log E[e^Fe]-log E[e^Fd] with samples symmetrized by random global conjugation.",
+  "probe": "scripts/yang_mills_pi_flux_probe.c; args: n j beta kind(0 flat,1 pi-flux) therm meas seed",
+  "results": {
+    "depth_0_beta_4_mean_abs_Cov_at_r_ge_n_over_2": {
+      "n4": 0.402,
+      "n6": 0.398,
+      "n8": 0.409,
+      "n10": 0.405,
+      "n12": 0.406
+    },
+    "depth_0_beta_4_sum_d_abs_Cov": {
+      "n4": 25.9,
+      "n6": 87.7,
+      "n8": 212,
+      "n10": 410,
+      "n12": 710,
+      "reading": "grows as n^3"
+    },
+    "depth_0_n6_mean_abs_Cov_by_beta": {
+      "1.5": 0.01,
+      "2": 0.018,
+      "3": 0.296,
+      "8": 0.598,
+      "16": 0.688,
+      "reading": "ordering onset between beta 2 and 3 at n=6"
+    },
+    "n6_mean_abs_Cov_depth_by_beta": {
+      "j1": {
+        "4": 0.425,
+        "8": 0.609,
+        "16": 0.689,
+        "32": 0.742
+      },
+      "j2": {
+        "4": 0.41,
+        "8": 0.618,
+        "16": 0.687,
+        "32": 0.738
+      },
+      "j4": {
+        "4": 0.429,
+        "8": 0.61,
+        "16": 0.685,
+        "32": 0.745
+      }
+    },
+    "n6_antipodal_mixedLog_beta16": {
+      "j1": -0.623,
+      "j2": -0.619,
+      "j4": -0.65
+    },
+    "n8_j2_beta16": {
+      "pi_flux_mean_abs_Cov": 0.683,
+      "pi_flux_sum_d": 350,
+      "pi_flux_antipodal_mixedLog": 0.477,
+      "flat_mean_abs_Cov": 0.00082,
+      "flat_sum_d": 0.468,
+      "flat_antipodal_mixedLog": -0.0015
+    },
+    "flat_energy_check_j1_n6": "E/link 0.798,0.385,0.190,0.0945,0.0470 at beta 2,4,8,16,32, consistent with 3/(2 beta)"
+  },
+  "conclusion": "For this input the covariance does not decay out to the antipode at any tested depth, so C must grow like n^4 and the distant sum grows with volume. A pointwise all-input C appears unavailable, and all-input farCost control appears false. The theorems remain true as implications but look unusable with volume-uniform constants.",
+  "not_shown": [
+    "No rigorous long-range-order proof; sizes are n<=12 at j=0 and n<=8 at j>=1.",
+    "Depth j=8 and the j-to-infinity ground were not run with the corrected code.",
+    "energy(Pf)<=C*loss(f) itself is not refuted, since it is an integrated statement and this input is exponentially suppressed.",
+    "Typical inputs and the defect threshold for ordering were not studied.",
+    "Only the flat control and this one input were tested."
+  ],
+  "code_note": "A first version had wrong inverses in temporal couplings, giving false no-ordering at j>=1. Those runs are discarded. The j=0 path never used those terms; its numbers came from the earlier build and were not rerun on the corrected file.",
+  "route_consequence": "The distant-sum target should be restated for a weighted or eligible set of inputs under the true law, with the exceptional set paid for by its probability. The all-twelve Clay status is unchanged."
+}

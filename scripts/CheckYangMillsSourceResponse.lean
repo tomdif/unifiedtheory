@@ -1,0 +1,53 @@
+/- Every new public source-response declaration, checked with standard axioms only. -/
+import UnifiedTheory.Clay.YangMills.BoundedSourceTube
+import UnifiedTheory.Clay.YangMills.CompactGibbsSource
+import UnifiedTheory.Clay.YangMills.WilsonSourceResponse
+
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.partition
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.exponential_real_positive
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.integral_exponential_real_positive
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.partition_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.partition_shift
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.partition_ne_zero_of_centered_bound
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.twoPointPartition
+#print axioms UnifiedTheory.Clay.YangMills.BoundedSourceTube.twoPointPartition_zero
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.integral_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.action
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.weight
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.partition
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.moment
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.expectation
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.covariance
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.action_continuous
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.partition_positive
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.expectation_eq_quotient
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.moment_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.partition_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.log_partition_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.expectation_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.mean_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.covariance_self_eq
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.covariance_self_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.CompactGibbsSource.log_partition_second_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourcePartition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourceExpectation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourcePartition_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourcePartition_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourceExpectation_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.log_sourcePartition_hasDerivAt
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.sourceExpectation_hasDerivAt_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.log_sourcePartition_second
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.source_curvature_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.realSmear
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.realSmear_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.realSmear_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.physicalSmear
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.physicalSmear_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.physicalSmear_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.physical_source_ne_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.physical_source_curvature_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.halfSourcePartition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.halfSourceSlope
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.halfSourceSlope_eq_integral
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.halfSourceSlope_eq_response
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSourceResponse.halfSourceSlope_centered_bound

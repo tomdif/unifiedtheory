@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-09",
+  "scope": "Canonical 12 Yang-Mills requirements, 5 registered TOE attacks, and current heat/chiral/geometry frontiers; not an enumeration of every conditional lemma in the repository",
+  "axiom_checks": {
+    "heat": {
+      "passed": true,
+      "checked_declarations": 15,
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "declarations": {
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.stepOperator_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.stepOperator_pow_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_eq_heat": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_derivative": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_hasDerivAt": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_add": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_add": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.gridHeat_hasDerivAt": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.gridHeat_add": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_initial_hasFDerivAt": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.evolution_opNorm_le_one": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.step_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.walk_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.LayerA.AbelianCurvatureHeatDynamics.heat_unique": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "weighted_budget": {
+      "passed": true,
+      "checked_declarations": 10,
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "declarations": {
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.area_bound_of_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.positive_margin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.saturated_step": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.saturated_margin_iff": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.reciprocal_pair_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.near_area_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.near_area_positive_margin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_normalized_cost_not_summable": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_cost_is_subarea": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_budget_diverges": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    }
+  },
+  "full_yang_mills_requirements_open": 12,
+  "registered_toe_attacks_pending": 5,
+  "complete_physical_theory_proved": false,
+  "attacks": [
+    {
+      "id": "YM01",
+      "target": "Every compact simple gauge group",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "A construction parametrized by compact Lie gauge groups with simple Lie algebra; the scope convention on connectedness and coverings must be made precise.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM02",
+      "target": "Nontrivial continuum theory on four-dimensional spacetime",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "An actual infinite-volume continuum Hilbert-space theory and non-vacuum observable states. A chosen finite sector or abstract added Fock space is not yet this object.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM03",
+      "target": "Yang--Mills gauge-observable identification",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "Renormalized local observables corresponding to gauge-invariant curvature polynomials and covariant derivatives, with their gauge-group dependence and mixing controlled.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM04",
+      "target": "Hilbert space and common field domain",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "A positive complex Hilbert space with the appropriate separability conditions and a common dense invariant domain for the unbounded smeared fields, including adjoint relations.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM05",
+      "target": "Full Poincare covariance",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "A strongly continuous unitary representation of the proper orthochronous Poincare group, the actual spacetime action on tests and field labels, and covariance of the candidate fields.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM06",
+      "target": "Translation generators and forward-cone spectrum",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "The physical Hamiltonian and momenta generate that representation; the joint energy-momentum spectral condition is proved. Positivity of an unrelated operator is insufficient.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM07",
+      "target": "Vacuum and cyclicity",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "A normalized Poincare-invariant vacuum unique up to phase, cyclic for the local field algebra on the full Hilbert space.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM08",
+      "target": "Spacelike locality",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "Spacelike-separated smeared gauge-invariant bosonic observables commute on the common domain, for the physical Minkowski support relation.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM09",
+      "target": "Complete quantum-field axiom strength",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "Distributional regularity, positivity, covariance, spectrum, locality, adjoints and cyclicity are assembled into a precise adequate axiom system. An OS route needs a proved reconstruction theorem with all regularity assumptions.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM10",
+      "target": "Yang--Mills short-distance behavior",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "Prove the required ultraviolet agreement with asymptotic freedom and perturbative renormalization, including the specified local stress-tensor and operator-product behavior.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM11",
+      "target": "Positive spectral gap of the physical Hamiltonian",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "For one fixed continuum candidate, prove a strictly positive interval above the vacuum lies in the bounded resolvent set; identify that Hamiltonian with the time-translation generator.",
+      "new_physical_supplier_proved": false,
+      "attack": "Weighted scale budget and subarea counterexample formalized; physical sector/path estimate remains absent",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "YM12",
+      "target": "Finite nonzero excitation scale",
+      "status": "open",
+      "source": "data/yang_mills_requirements.json",
+      "acceptance_condition": "Exhibit finite positive spectral support and nontrivial local excitations; a vacuum-only system or an infinite claimed gap cannot satisfy the target.",
+      "new_physical_supplier_proved": false,
+      "attack": "Reviewed against the new deterministic heat model and fermion diagnostics; no physical continuum supplier established",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "A4-HARMONIC-CERTIFICATE-BDG",
+      "target": "conditional_bridge_plus_numerical_convergence_test",
+      "status": "open",
+      "source": "TOE_GATE456_ATTACK_LEDGER.json",
+      "registered_verdict": "pending",
+      "new_physical_supplier_proved": false,
+      "attack": "Prerequisites and existing obstructions checked; original acceptance rule and pending verdict retained",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "A5-CAUSAL-STATE-LOCAL-NET",
+      "target": "finite_formal_bridge_plus_continuum_target",
+      "status": "open",
+      "source": "TOE_GATE456_ATTACK_LEDGER.json",
+      "registered_verdict": "pending",
+      "new_physical_supplier_proved": false,
+      "attack": "Prerequisites and existing obstructions checked; original acceptance rule and pending verdict retained",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "A6-QQG-R001-AND-EMERGENCE",
+      "target": "conditional_falsifiable_physical_prediction",
+      "status": "open",
+      "source": "TOE_GATE456_ATTACK_LEDGER.json",
+      "registered_verdict": "pending",
+      "new_physical_supplier_proved": false,
+      "attack": "Prerequisites and existing obstructions checked; original acceptance rule and pending verdict retained",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "A7-TYPED-PREREGISTRATION-RESULT-INTEGRITY",
+      "target": "formal_protocol_integrity_plus_external_empirical_frontier",
+      "status": "open",
+      "source": "TOE_GATE456_ATTACK_LEDGER.json",
+      "registered_verdict": "pending",
+      "new_physical_supplier_proved": false,
+      "attack": "Prerequisites and existing obstructions checked; original acceptance rule and pending verdict retained",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "A456-SHARED-HARMONIC-PROVENANCE",
+      "target": "formal_joint-law_consistency_test",
+      "status": "open",
+      "source": "TOE_GATE456_ATTACK_LEDGER.json",
+      "registered_verdict": "pending",
+      "new_physical_supplier_proved": false,
+      "attack": "Prerequisites and existing obstructions checked; original acceptance rule and pending verdict retained",
+      "details": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "HEAT-FINITE-ODE",
+      "status": "proved_for_finite_grid_model",
+      "attack": "Poisson-series/operator-exponential equality; ODE; semigroup; uniqueness; conserved sum; exact initial-data derivative and norm bound",
+      "source": "UnifiedTheory/LayerA/AbelianCurvatureHeatDynamics.lean"
+    },
+    {
+      "id": "HEAT-CONTINUUM-FORMALIZATION",
+      "status": "open",
+      "attack": "Finite dynamics gap closed; Fourier smoothing, cell averages, continuum uniqueness and transport assembly still analytic",
+      "source": "ABELIAN_CURVATURE_HEAT_LIMIT.md"
+    },
+    {
+      "id": "CHIRAL-COMPLETED-PHASE",
+      "status": "finite_nonzero_correction_measured_continuum_bound_open",
+      "attack": "Fifth phase correction resolved on a generic finite field with fit-range, quadrature and field-reversal controls",
+      "source": "data/chiral_completed_phase_response.json"
+    },
+    {
+      "id": "CHIRAL-UNIFORM-MATCHING",
+      "status": "open",
+      "attack": "Flat and curved diagnostics implemented; finest curved dynamical coefficient differs by 26.2 percent from cutoff reference",
+      "source": "data/chiral_curved_response_refinement.json"
+    },
+    {
+      "id": "FOUR-DIMENSIONAL-GAUGE-RECONSTRUCTION",
+      "status": "open",
+      "attack": "Two-dimensional Abelian heat initial-data response is uniformly controlled; no four-dimensional non-Abelian reconstruction identified",
+      "source": "OPEN_OBLIGATIONS_ATTACK.md"
+    },
+    {
+      "id": "MICROSCOPIC-ACTION-AND-GRAVITY",
+      "status": "open",
+      "attack": "Existing action-family underdetermination and regular-coordinate-change obstruction retained; no physical action or constraint algebra selected",
+      "source": "EINSTEIN_MODEL_DECISION.md"
+    }
+  ],
+  "completed_phase_controls": {
+    "max_quadrature_change": 1.178380655691607e-16,
+    "field_reversal_oddness_error": 9.219909293982226e-17,
+    "relative_fifth_current_correction": 0.13512299820720325
+  },
+  "historical_heat_checkpoint": "All eight hashes matched before the intentional follow-up documentation edit; original verification JSON preserved.",
+  "source_sha256": {
+    "UnifiedTheory/LayerA/AbelianCurvatureHeatDynamics.lean": "cfae4ff92e5a31be15d378436033fa9680f41c6fe09a79dc0daed3709dcbc22a",
+    "UnifiedTheory/LayerA/AbelianCurvatureHeat.lean": "c45f3e8de5ad4a9432263478e18426175ca9d0ec510c1150b8ca8ff34c7d00c0",
+    "UnifiedTheory/Clay/YangMills/Twisted/TwistedWeightedBudget.lean": "d0e0a37f79905038de2eee599f1cd34984a230a87af413445edb34e3f37e0a81",
+    "UnifiedTheory/Clay/YangMills/Twisted/TwistedSubArea.lean": "7e34ac6b0346dc9c19bb7f87923e058b95c53a51ede53a610ccf870f3671e15a",
+    "scripts/CheckAbelianCurvatureHeatDynamics.lean": "9da5f47247e82c87c870536ebc946bba1b44c3cf35be95e3180a46b5c0c9ba9c",
+    "scripts/CheckTwistedWeightedBudget.lean": "f8d46827da04121505575f5a8bc8ce0d53a9bda8ec6c339713762aa6bc4d5c8e",
+    "scripts/chiral_completed_phase_response.py": "09e8b676238b1d8a0e6a1781982d123f8d1e35529ea38cc24f3483905bd90e4d",
+    "data/chiral_completed_phase_response.json": "30171764d9ba2f59e37b902d5c2462935c674ed3557058ccbb7e0463a67898cd",
+    "data/yang_mills_requirements.json": "8ce6a2879194071d737314abcb199b3138feda830cb0b458448bf02ff50b4c0f",
+    "TOE_GATE456_ATTACK_LEDGER.json": "b6ff499f0c30c0baa8091e85e2dc2f6785842dc8a9b62a6a24125c848e434f3e",
+    "OPEN_OBLIGATIONS_ATTACK.md": "f140ff3a48d1f9d79caa9d6ca7baa597beb378df4f12195da7a1480232956a60",
+    "ABELIAN_CURVATURE_HEAT_LIMIT.md": "878d542585dacac84f196a130fd1c7a5141ae6366b286897a2cc9e81eb648148",
+    "README.md": "0c717b7b314932b23d99c98ff985f08773d4b5442b83f7643b0c672aef6e0646",
+    "STATUS.md": "237364cd3ffc565d2aff4f0d8f8fed6ad8ddb8671504840cae22d59cbfb450c0",
+    "TOE_COMPLETION_PLAN.md": "671760ab5911b054c724c0752c849939a317c0e0282a87e95d7ab8cd1ea9a3d8",
+    "CHIRAL_CONTINUUM_COMPARISON.md": "d1b18f53f10666670179cfd83ab8abf368fce5feeddbd514494a75109be62965",
+    "scripts/chiral_continuum_comparison.py": "c7f728ad3979b27ddbe74826a728bdebcbfa0d49feb141963f9289ef6a1294b3",
+    "scripts/chiral_curved_response.py": "e24999387b015e37aa0775741d0d05f8c7277a63f2314d6ecea42c09890d8507",
+    "scripts/plot_chiral_continuum_comparison.py": "bb0e8d5f8ab6230c3b3ca98cda99650d45c27e3ada31a1a02d9617b65795f8d7"
+  },
+  "verification": {
+    "heat_target_build": "passed",
+    "weighted_budget_target_build": "passed",
+    "focused_axiom_declarations": 25,
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "repository_static_source_audit": "passed",
+    "complete_library_rebuilt_for_this_attack": false,
+    "git_diff_check": "passed",
+    "initial_phase_sampling_source_snapshot_verified": true,
+    "scope": "Targeted builds and theorem checks; existing whole-library cleanup report remains a historical snapshot."
+  },
+  "evidence_sha256": {
+    "data/open_obligations_attack_evidence/chiral_completed_phase_response_sampling.py.gz": "361cf7d06731e78dc1c0d95d0ff3ca893a20cdf6df2d4c4d108d299fb85fc800",
+    "data/open_obligations_attack_evidence/completed-phase-controls.log.gz": "26ce7094630fa0b8bbd9e53d72235cb5b3ac16125c63f6bb90a2e55e71bed064",
+    "data/open_obligations_attack_evidence/completed-phase-response.log.gz": "a5925b2f1e8d0e60a0d11f3dc8f261c64b176c86eb15a8f757e5f50b5bdb2664",
+    "data/open_obligations_attack_evidence/final-source-audit.json.gz": "285b786b7458b2bcab38b6e0b62a04071f529c75cb94a9f061f10d8d17c0c975",
+    "data/open_obligations_attack_evidence/heat-dynamics-axioms.log.gz": "9849733f4060167002a476fb9a915f0e43ab95d35f8b06b945b6c9ec438689dd",
+    "data/open_obligations_attack_evidence/heat-dynamics-build.log.gz": "d22d03bdefd24d19d02a99ab9400150cd941e281a26b271f2721ce75e20b2dbf",
+    "data/open_obligations_attack_evidence/weighted-budget-axioms.log.gz": "f5e13f3c85b7c524efe9936ef57525e960778bdb50a9b888d2e1551cc3847909",
+    "data/open_obligations_attack_evidence/weighted-budget-build.log.gz": "f6a67d77b97f47dad3229d90e6bb5df7144bd18161eca68169218fd7ea107969"
+  }
+}

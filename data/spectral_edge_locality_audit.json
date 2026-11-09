@@ -1,0 +1,904 @@
+{
+  "symbolic": {
+    "exact_edge_bulk_identity": true,
+    "quadrature_boundary_functional": true,
+    "tapered_heat_boundary_coefficient": "1/3",
+    "tapered_log_upper_endpoint_and_derivative_zero": true
+  },
+  "finite_kernel": {
+    "cases": [
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "tapered": false,
+        "independently_integrated_zero": 0.02962163337944524,
+        "independently_integrated_harmonic_step": 0.017963083082907075,
+        "exact_edge": 0.003634780283054371,
+        "exact_bulk": 0.014328302799852716,
+        "absolute_step_error": 1.214306433183765e-17
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "tapered": true,
+        "independently_integrated_zero": 0.019615391371212737,
+        "independently_integrated_harmonic_step": 0.017779469963108082,
+        "exact_edge": 9.76309723046234e-05,
+        "exact_bulk": 0.017681838990803462,
+        "absolute_step_error": 3.469446951953614e-18
+      },
+      {
+        "matrix_sizes": [
+          4,
+          5
+        ],
+        "tapered": false,
+        "independently_integrated_zero": 0.013633743684402233,
+        "independently_integrated_harmonic_step": 0.0025556962756355306,
+        "exact_edge": 0.0010337381655987764,
+        "exact_bulk": 0.0015219581100367548,
+        "absolute_step_error": 6.505213034913027e-19
+      },
+      {
+        "matrix_sizes": [
+          4,
+          5
+        ],
+        "tapered": true,
+        "independently_integrated_zero": 0.004509577421645424,
+        "independently_integrated_harmonic_step": 0.0016480580469393864,
+        "exact_edge": 1.377239111080291e-06,
+        "exact_bulk": 0.0016466808078283081,
+        "absolute_step_error": 1.951563910473908e-18
+      },
+      {
+        "matrix_sizes": [
+          8,
+          6
+        ],
+        "tapered": false,
+        "independently_integrated_zero": 0.011995981827021484,
+        "independently_integrated_harmonic_step": 0.0007249942841813648,
+        "exact_edge": 0.00041794845067279977,
+        "exact_bulk": 0.0003070458335085679,
+        "absolute_step_error": 2.8731357570865868e-18
+      },
+      {
+        "matrix_sizes": [
+          8,
+          6
+        ],
+        "tapered": true,
+        "independently_integrated_zero": 0.003250820957104189,
+        "independently_integrated_harmonic_step": 0.00030657404089864623,
+        "exact_edge": 3.2797606729562825e-08,
+        "exact_bulk": 0.0003065412432919174,
+        "absolute_step_error": 7.047314121155779e-19
+      }
+    ],
+    "scope": "Exact-degree Legendre cubature independently checks the finite density covariance eigenvalues and the positive edge/bulk decomposition."
+  },
+  "finite_gradient": {
+    "cases": [
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": false,
+        "zero_mode": 0.033502187489365565,
+        "edge": 0.00047660444527035443,
+        "bulk": 0.006861113252853855,
+        "effective_gradient": 0.23480696633997472,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.006269720034302232
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": true,
+        "zero_mode": 0.01973493504438858,
+        "edge": 3.7175574533892687e-08,
+        "bulk": 0.006948937881122466,
+        "effective_gradient": 0.222367201814304,
+        "tapered_limiting_gradient": 0.10144961432350928,
+        "tapered_uniform_upper_bound": 329452.16118703893,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": false,
+        "zero_mode": 0.025170205580920643,
+        "edge": 0.0001022066739598803,
+        "bulk": 0.00020880873982717424,
+        "effective_gradient": 0.15923989185897192,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.02507888013720893
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": true,
+        "zero_mode": 0.011835137088584689,
+        "edge": 2.9951418117238475e-11,
+        "bulk": 0.00020574805606404982,
+        "effective_gradient": 0.10534302003991958,
+        "tapered_limiting_gradient": 0.10144961432350928,
+        "tapered_uniform_upper_bound": 329452.16118703893,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": false,
+        "zero_mode": 0.024886046068063175,
+        "edge": 2.4656046281873474e-05,
+        "bulk": 1.2623950506832255e-05,
+        "effective_gradient": 0.3053977336930773,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.10031552054883572
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": true,
+        "zero_mode": 0.011580199877493112,
+        "edge": 2.80215480195758e-14,
+        "bulk": 1.2412377468739287e-05,
+        "effective_gradient": 0.10168219645346475,
+        "tapered_limiting_gradient": 0.10144961432350928,
+        "tapered_uniform_upper_bound": 329452.16118703893,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": false,
+        "zero_mode": 0.024868763764076415,
+        "edge": 6.110210382701959e-06,
+        "bulk": 7.874691079520426e-07,
+        "effective_gradient": 0.9040926461990013,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.4012620821953429
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": true,
+        "zero_mode": 0.01156474421531474,
+        "edge": 2.708130555291763e-17,
+        "bulk": 7.741097394800165e-07,
+        "effective_gradient": 0.10146411177667433,
+        "tapered_limiting_gradient": 0.10144961432350928,
+        "tapered_uniform_upper_bound": 329452.16118703893,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": false,
+        "zero_mode": 0.011538239182775925,
+        "edge": 0.0004127740114852918,
+        "bulk": 0.00027878967839214253,
+        "effective_gradient": 0.0221300380760779,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.0057438312722413705
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": true,
+        "zero_mode": 0.0029385634714978962,
+        "edge": 3.132480454949498e-08,
+        "bulk": 0.00026959067416625684,
+        "effective_gradient": 0.008627903967065803,
+        "tapered_limiting_gradient": 0.007881967553128666,
+        "tapered_uniform_upper_bound": 45.911161337934296,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": false,
+        "zero_mode": 0.011116785417316262,
+        "edge": 8.952637823256386e-05,
+        "bulk": 1.659491843344151e-05,
+        "effective_gradient": 0.05433410389299475,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.022975325088965482
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": true,
+        "zero_mode": 0.0026666236318267102,
+        "edge": 2.5610965285239493e-11,
+        "bulk": 1.5477928030628806e-05,
+        "effective_gradient": 0.007924712264496175,
+        "tapered_limiting_gradient": 0.007881967553128666,
+        "tapered_uniform_upper_bound": 45.911161337934296,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": false,
+        "zero_mode": 0.011091702183207071,
+        "edge": 2.1651049349302026e-05,
+        "bulk": 1.0371700232475793e-06,
+        "effective_gradient": 0.18586189309992637,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.09190130035586193
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": true,
+        "zero_mode": 0.002650894904182352,
+        "edge": 2.4038244255322968e-14,
+        "bulk": 9.624786731461e-07,
+        "effective_gradient": 0.007884625487334148,
+        "tapered_limiting_gradient": 0.007881967553128666,
+        "tapered_uniform_upper_bound": 45.911161337934296,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": false,
+        "zero_mode": 0.01109013903846726,
+        "edge": 5.368768100183473e-06,
+        "bulk": 6.48686570981613e-08,
+        "effective_gradient": 0.7121976370504184,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.3676052014234477
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": true,
+        "zero_mode": 0.002649916383022184,
+        "edge": 2.3249854127845266e-17,
+        "bulk": 6.013590706892123e-08,
+        "effective_gradient": 0.007882133614385048,
+        "tapered_limiting_gradient": 0.007881967553128666,
+        "tapered_uniform_upper_bound": 45.911161337934296,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": false,
+        "zero_mode": 0.0018411166933437512,
+        "edge": 0.00014721972363217496,
+        "bulk": 5.740988546268817e-06,
+        "effective_gradient": 0.0048947427897102005,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.0028144773233982714
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "tapered": true,
+        "zero_mode": 0.000158859273864698,
+        "edge": 9.52214769124865e-09,
+        "bulk": 9.035733459541902e-06,
+        "effective_gradient": 0.00028944817943146083,
+        "tapered_limiting_gradient": 0.00028206646553967694,
+        "tapered_uniform_upper_bound": 0.031662869888230555,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": false,
+        "zero_mode": 0.0018229679192573458,
+        "edge": 3.386360685286354e-05,
+        "bulk": 3.8971950188052295e-07,
+        "effective_gradient": 0.01753770309362896,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.011257909293593086
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "tapered": true,
+        "zero_mode": 0.0001518547390028584,
+        "edge": 8.384010143967064e-12,
+        "bulk": 5.517670005652819e-07,
+        "effective_gradient": 0.00028250899690261807,
+        "tapered_limiting_gradient": 0.00028206646553967694,
+        "tapered_uniform_upper_bound": 0.031662869888230555,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": false,
+        "zero_mode": 0.0018218429640954404,
+        "edge": 8.29956717991886e-06,
+        "bulk": 2.4875385044403978e-08,
+        "effective_gradient": 0.06819383349217906,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.04503163717437234
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "tapered": true,
+        "zero_mode": 0.00015142797541272678,
+        "edge": 8.002395908813473e-15,
+        "bulk": 3.443528315468246e-08,
+        "effective_gradient": 0.000282093905158786,
+        "tapered_limiting_gradient": 0.00028206646553967694,
+        "tapered_uniform_upper_bound": 0.031662869888230555,
+        "untapered_diverging_lower_bound": null
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": false,
+        "zero_mode": 0.0018217726905923341,
+        "edge": 2.0647452642133737e-06,
+        "bulk": 1.5629586975036958e-09,
+        "effective_gradient": 0.27083515139337455,
+        "tapered_limiting_gradient": null,
+        "tapered_uniform_upper_bound": null,
+        "untapered_diverging_lower_bound": 0.18012654869748937
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          512,
+          768
+        ],
+        "tapered": true,
+        "zero_mode": 0.00015140134495296564,
+        "edge": 7.771734922253285e-18,
+        "bulk": 2.1520094021336877e-09,
+        "effective_gradient": 0.00028206817737512355,
+        "tapered_limiting_gradient": 0.00028206646553967694,
+        "tapered_uniform_upper_bound": 0.031662869888230555,
+        "untapered_diverging_lower_bound": null
+      }
+    ],
+    "scope": "The unfiltered first-harmonic gradient coefficient has an all-size linearly diverging lower bound. The taper gives an all-size uniform upper bound and a finite limiting coefficient."
+  },
+  "flat_response": {
+    "cases": [
+      {
+        "tapered": false,
+        "direction": "axis",
+        "momentum": 0.04,
+        "bubble": 0.011003589388974342,
+        "response_quotient": 0.0021611364706443804,
+        "predicted_limit": 0.0017452129022294096
+      },
+      {
+        "tapered": false,
+        "direction": "axis",
+        "momentum": 0.02,
+        "bubble": 0.011050968555648213,
+        "response_quotient": 0.001953314607595208,
+        "predicted_limit": 0.0017452129022294096
+      },
+      {
+        "tapered": false,
+        "direction": "axis",
+        "momentum": 0.01,
+        "bubble": 0.011071542171767423,
+        "response_quotient": 0.0018492676032693528,
+        "predicted_limit": 0.0017452129022294096
+      },
+      {
+        "tapered": false,
+        "direction": "axis",
+        "momentum": 0.005,
+        "bubble": 0.011081048661253607,
+        "response_quotient": 0.00179723730930198,
+        "predicted_limit": 0.0017452129022294096
+      },
+      {
+        "tapered": false,
+        "direction": "diagonal",
+        "momentum": 0.04,
+        "bubble": 0.010975176432755952,
+        "response_quotient": 0.002871460376104116,
+        "predicted_limit": 0.0024681037555613415
+      },
+      {
+        "tapered": false,
+        "direction": "diagonal",
+        "momentum": 0.02,
+        "bubble": 0.011036631733445119,
+        "response_quotient": 0.0026701557177499086,
+        "predicted_limit": 0.0024681037555613415
+      },
+      {
+        "tapered": false,
+        "direction": "diagonal",
+        "momentum": 0.01,
+        "bubble": 0.011064342934563121,
+        "response_quotient": 0.0025691913236996003,
+        "predicted_limit": 0.0024681037555613415
+      },
+      {
+        "tapered": false,
+        "direction": "diagonal",
+        "momentum": 0.005,
+        "bubble": 0.011077441553081288,
+        "response_quotient": 0.0025186589437658363,
+        "predicted_limit": 0.0024681037555613415
+      },
+      {
+        "tapered": true,
+        "direction": "axis",
+        "momentum": 0.04,
+        "bubble": 0.0026372750563854307,
+        "response_quotient": 0.007860069200876741,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "axis",
+        "momentum": 0.02,
+        "bubble": 0.0026467005744585112,
+        "response_quotient": 0.007876481620805714,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "axis",
+        "momentum": 0.01,
+        "bubble": 0.002649063107578072,
+        "response_quotient": 0.007880595287615248,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "axis",
+        "momentum": 0.005,
+        "bubble": 0.0026496541264959166,
+        "response_quotient": 0.007881624436677226,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "diagonal",
+        "momentum": 0.04,
+        "bubble": 0.0026372760454989263,
+        "response_quotient": 0.007859451004942031,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "diagonal",
+        "momentum": 0.02,
+        "bubble": 0.002646700636201374,
+        "response_quotient": 0.007876327263649317,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "diagonal",
+        "momentum": 0.01,
+        "bubble": 0.002649063111431041,
+        "response_quotient": 0.007880556757923658,
+        "predicted_limit": 0.007881967553128666
+      },
+      {
+        "tapered": true,
+        "direction": "diagonal",
+        "momentum": 0.005,
+        "bubble": 0.002649654126736485,
+        "response_quotient": 0.00788161481394059,
+        "predicted_limit": 0.007881967553128666
+      }
+    ],
+    "sharp_axis_cusp": 0.0017452129022294096,
+    "sharp_diagonal_cusp": 0.0024681037555613415,
+    "tapered_isotropic_gradient": 0.007881967553128666,
+    "scope": "Centered disk-intersection integrals test the nonanalytic sharp response and its anisotropy. With the taper the leading quadratic coefficient agrees across directions; no tensor/graviton inference follows."
+  },
+  "filtered_geometry": {
+    "cases": [
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "reference_shift": 0.0015121766861175287,
+        "limiting_reference_shift": 0.001496694456459999,
+        "gaussian_action_per_species": -354.0464784941759,
+        "volume_term": 13.074641296125424,
+        "curvature_term": -366.79973408006384,
+        "gaussian_remainder": -0.3213857102375073,
+        "full_q8_action_upper_error": 3.327877031364432
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.0015005422783892564,
+        "limiting_reference_shift": 0.001496694456459999,
+        "gaussian_action_per_species": -1258.3251471371468,
+        "volume_term": 209.1942607380068,
+        "curvature_term": -1467.1989363202554,
+        "gaussian_remainder": -0.3204715548981767,
+        "full_q8_action_upper_error": 52.42985413834626
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "reference_shift": 0.001497655004282869,
+        "limiting_reference_shift": 0.001496694456459999,
+        "gaussian_action_per_species": -2522.007818682415,
+        "volume_term": 3347.1081718081086,
+        "curvature_term": -5868.7957452810215,
+        "gaussian_remainder": -0.32024520950199076,
+        "full_q8_action_upper_error": 835.6525127719071
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.0014969345056411892,
+        "limiting_reference_shift": 0.001496694456459999,
+        "gaussian_action_per_species": 30078.227579043472,
+        "volume_term": 53553.73074892974,
+        "curvature_term": -23475.182981124086,
+        "gaussian_remainder": -0.320188762179896,
+        "full_q8_action_upper_error": 13357.578675170049
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "reference_shift": 0.12703993513015419,
+        "limiting_reference_shift": 0.12610925439185752,
+        "gaussian_action_per_species": 734.5490188529152,
+        "volume_term": 1083.237400540059,
+        "curvature_term": -348.53860703094904,
+        "gaussian_remainder": -0.1497746561948361,
+        "full_q8_action_upper_error": 234.8782058154692
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.12634135263376012,
+        "limiting_reference_shift": 0.12610925439185752,
+        "gaussian_action_per_species": 15937.494178652298,
+        "volume_term": 17331.798408640945,
+        "curvature_term": -1394.1544281237962,
+        "gaussian_remainder": -0.14980186485126978,
+        "full_q8_action_upper_error": 3716.8344793120687
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "reference_shift": 0.12616724322258635,
+        "limiting_reference_shift": 0.12610925439185752,
+        "gaussian_action_per_species": 271732.00701694714,
+        "volume_term": 277308.7745382551,
+        "curvature_term": -5576.617712495185,
+        "gaussian_remainder": -0.14980881279370806,
+        "full_q8_action_upper_error": 59305.5566943682
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.12612374936669174,
+        "limiting_reference_shift": 0.12610925439185752,
+        "gaussian_action_per_species": 4414633.771951379,
+        "volume_term": 4436940.392612082,
+        "curvature_term": -22306.47084998074,
+        "gaussian_remainder": -0.14981072195951128,
+        "full_q8_action_upper_error": 948234.7955885859
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "reference_shift": 0.8058741031937913,
+        "limiting_reference_shift": 0.8023513222069092,
+        "gaussian_action_per_species": 5689.0989490663615,
+        "volume_term": 5984.181597132771,
+        "curvature_term": -295.17854481887326,
+        "gaussian_remainder": 0.09589675246417073,
+        "full_q8_action_upper_error": 945.1409799673887
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.8032312292357506,
+        "limiting_reference_shift": 0.8023513222069092,
+        "gaussian_action_per_species": 94566.28692503004,
+        "volume_term": 95746.90555412433,
+        "curvature_term": -1180.714179275493,
+        "gaussian_remainder": 0.09555018120704517,
+        "full_q8_action_upper_error": 15023.23107819659
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "reference_shift": 0.8025712496369022,
+        "limiting_reference_shift": 0.8023513222069092,
+        "gaussian_action_per_species": 1527227.7276121508,
+        "volume_term": 1531950.4888659893,
+        "curvature_term": -4722.856717101972,
+        "gaussian_remainder": 0.09546326354484336,
+        "full_q8_action_upper_error": 239976.85393169918
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.8024063009804583,
+        "limiting_reference_shift": 0.8023513222069092,
+        "gaussian_action_per_species": 24492316.49042843,
+        "volume_term": 24511207.82185583,
+        "curvature_term": -18891.42686840789,
+        "gaussian_remainder": 0.09544100881976192,
+        "full_q8_action_upper_error": 3838051.543405487
+      }
+    ],
+    "scope": "The revised interaction preserves the exact finite-species enclosure with a momentum-dependent Gaussian self-energy. Its homogeneous Gaussian curvature expansion is recomputed, not inherited from the constant-mass model."
+  },
+  "filtered_reference_gradients": {
+    "cases": [
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "reference_shift": 0.0015601377157140669,
+        "effective_gradient": 0.008474191246747333,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 3.1323716971185444e-08,
+        "bulk": 0.00026478715274388297
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.0015005422783892564,
+        "effective_gradient": 0.007797459276047287,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.5610916709096552e-11,
+        "bulk": 1.5229387037613148e-05
+      },
+      {
+        "coupling": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.0014969345056411892,
+        "effective_gradient": 0.007758790700247028,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.4038241473043205e-14,
+        "bulk": 9.47117981363007e-07
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "reference_shift": 0.12986864804892237,
+        "effective_gradient": 0.003286549031351232,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 3.123448626468092e-08,
+        "bulk": 0.00010267342274346133
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.12634135263376012,
+        "effective_gradient": 0.0032047949294893422,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.5606875847428393e-11,
+        "bulk": 6.259339489783024e-06
+      },
+      {
+        "coupling": 100.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.12612374936669174,
+        "effective_gradient": 0.003199781264091094,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.4038009837079087e-14,
+        "bulk": 3.9059827480123504e-07
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          8,
+          12
+        ],
+        "reference_shift": 0.8164926318609712,
+        "effective_gradient": 0.0006208118206419612,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 3.076405622317456e-08,
+        "bulk": 1.936960533883811e-05
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "reference_shift": 0.8032312292357506,
+        "effective_gradient": 0.0006246467321574545,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.558498455663455e-11,
+        "bulk": 1.2199875637604717e-06
+      },
+      {
+        "coupling": 1000.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "reference_shift": 0.8024063009804583,
+        "effective_gradient": 0.0006249147583699621,
+        "uniform_all_shift_upper_bound": 45.911161337934296,
+        "edge": 2.4036752937943738e-14,
+        "bulk": 7.628351580333032e-08
+      }
+    ],
+    "scope": "The same first-harmonic bound holds for the tapered self-consistent Gaussian covariance at every nonnegative reference shift. It is not a bound on all exact interacting correlation functions."
+  },
+  "strong_coupling": {
+    "cases": [
+      {
+        "coupling": 176134.70351910876,
+        "reference_shift": 22.142091377159936,
+        "curvature_coefficient": -0.05090789588699712
+      },
+      {
+        "coupling": 704538.814076435,
+        "reference_shift": 48.731028929915276,
+        "curvature_coefficient": 0.052257621284182654
+      }
+    ],
+    "bare_mass_ratio": 0.1,
+    "critical_reference_shift": 32.954909869715785,
+    "critical_gaussian_curvature_coupling": 352269.4070382175,
+    "independent_quadrature_relative_error": 4.440892098500626e-16,
+    "scope": "The tapered Gaussian curvature coefficient changes sign at sufficiently strong coupling. This is not a proved phase transition or a fixed-eight-species gravitational threshold."
+  },
+  "source_sha256": {
+    "SPECTRAL_EDGE_LOCALITY.md": "9469f243ced968c363e1b486b26cc3c37eea3fe504a57461753f8d5c2890accc",
+    "scripts/spectral_edge_locality_audit.py": "ad6a96fd5a1952b7e206656787e066491ce5ca8dd8ca87a0557688a85713d8bc",
+    "NONPERTURBATIVE_MATTER_BOUND.md": "e0340fa12789da879e7dd03a56018fdfb40f6f768a892c7f8fea1691a04c282c",
+    "scripts/nonperturbative_matter_bound_audit.py": "8f8f7af12274dba46ba2be055e59b4a9058f19ead2468b8a2259baced78768eb",
+    "LOCAL_SYMBOL_INTERACTION.md": "a4b02cc8be542c1436b66b25e8c964d722d503a99cf5fc55a507eba390e8f121",
+    "scripts/local_symbol_interaction_audit.py": "1955d28f66772e9078f68f69fb92e655d0454fc52b0e2a22483a0c16ef50990b",
+    "PROPER_RESOLUTION_INDUCTION.md": "ae9b5abb3dbf2d2edef31b84427d0bd38eb6450b36cf9286becf58069d627b26",
+    "scripts/proper_resolution_induction_audit.py": "03228f67f7e5d081fa131a1e04fafacc43ac0125413df73ac995d9fbe93b27bc",
+    "GEOMETRIC_SPECTRAL_INDUCTION.md": "b14ef872fdd6818cc6b3deefa816d4f7ca7705613723203733adfca290033869",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "The exact unfiltered collective density response has a spectral-edge term that forces its first-harmonic gradient coefficient to grow with radius. Its flat counterpart has an anisotropic |p| cusp. A new polynomial taper in the interaction removes that obstruction in this channel, preserves the free determinant, and retains a finite-species nonlinear enclosure. The recomputed homogeneous Gaussian curvature coefficient has the Einstein sign in a finite coupling range but changes sign at sufficiently strong coupling. Full observable locality, fixed-eight-species Einstein dynamics, microscopic refinement, Lorentzian gravity, Standard Model and TOE remain unproved. No new Lean theorem."
+}

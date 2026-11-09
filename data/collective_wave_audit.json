@@ -1,0 +1,438 @@
+{
+  "spin_expansion": {
+    "spin_half_hopping_identity": true,
+    "degree_six_algebraic_identity": true,
+    "low_occupation_operator_checks": [
+      {
+        "S": 2.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.1339745962155613,
+        "local_quadrature_bound": 0.5,
+        "bond_error": 0.1437117758812588,
+        "bond_bound": 0.625,
+        "error_times_S": 0.2874235517625176
+      },
+      {
+        "S": 4.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.06458565330651456,
+        "local_quadrature_bound": 0.25,
+        "bond_error": 0.07171833212864286,
+        "bond_bound": 0.3125,
+        "error_times_S": 0.2868733285145714
+      },
+      {
+        "S": 8.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.031754163448145634,
+        "local_quadrature_bound": 0.125,
+        "bond_error": 0.035829088127082145,
+        "bond_bound": 0.15625,
+        "error_times_S": 0.28663270501665716
+      },
+      {
+        "S": 16.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.01574901574852361,
+        "local_quadrature_bound": 0.0625,
+        "bond_error": 0.017907477483315525,
+        "bond_bound": 0.078125,
+        "error_times_S": 0.2865196397330484
+      },
+      {
+        "S": 32.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.00784325835077837,
+        "local_quadrature_bound": 0.03125,
+        "bond_error": 0.00895202430513988,
+        "bond_bound": 0.0390625,
+        "error_times_S": 0.28646477776447615
+      },
+      {
+        "S": 64.0,
+        "maximum_input_occupation": 1,
+        "local_quadrature_error": 0.003913909343173261,
+        "local_quadrature_bound": 0.015625,
+        "bond_error": 0.004475589818648041,
+        "bond_bound": 0.01953125,
+        "error_times_S": 0.28643774839347463
+      },
+      {
+        "S": 2.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.3829214656708083,
+        "local_quadrature_bound": 1.224744871391589,
+        "bond_error": 0.5681899934009557,
+        "bond_bound": 2.0,
+        "error_times_S": 1.1363799868019113
+      },
+      {
+        "S": 4.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.17633801422187262,
+        "local_quadrature_bound": 0.6123724356957945,
+        "bond_error": 0.2835664350190637,
+        "bond_bound": 1.0,
+        "error_times_S": 1.1342657400762548
+      },
+      {
+        "S": 8.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.08523665183379468,
+        "local_quadrature_bound": 0.30618621784789724,
+        "bond_error": 0.14169403398914804,
+        "bond_bound": 0.5,
+        "error_times_S": 1.1335522719131843
+      },
+      {
+        "S": 16.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.04195857292001923,
+        "local_quadrature_bound": 0.15309310892394862,
+        "bond_error": 0.07082809718899181,
+        "bond_bound": 0.25,
+        "error_times_S": 1.133249555023869
+      },
+      {
+        "S": 32.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.020822198422066937,
+        "local_quadrature_bound": 0.07654655446197431,
+        "bond_error": 0.03540966549912809,
+        "bond_bound": 0.125,
+        "error_times_S": 1.133109295972099
+      },
+      {
+        "S": 64.0,
+        "maximum_input_occupation": 2,
+        "local_quadrature_error": 0.010372740172305581,
+        "local_quadrature_bound": 0.038273277230987154,
+        "bond_error": 0.01770377654321034,
+        "bond_bound": 0.0625,
+        "error_times_S": 1.1330416987654617
+      },
+      {
+        "S": 2.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.7952599458683715,
+        "local_quadrature_bound": 2.1213203435596424,
+        "bond_error": 1.296484400422905,
+        "bond_bound": 4.125,
+        "error_times_S": 2.59296880084581
+      },
+      {
+        "S": 4.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.3400787116882624,
+        "local_quadrature_bound": 1.0606601717798212,
+        "bond_error": 0.6465052035348209,
+        "bond_bound": 2.0625,
+        "error_times_S": 2.5860208141392835
+      },
+      {
+        "S": 8.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.16111657384048272,
+        "local_quadrature_bound": 0.5303300858899106,
+        "bond_error": 0.32306156602858926,
+        "bond_bound": 1.03125,
+        "error_times_S": 2.584492528228714
+      },
+      {
+        "S": 16.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.07867071888673291,
+        "local_quadrature_bound": 0.2651650429449553,
+        "bond_error": 0.16149487124334186,
+        "bond_bound": 0.515625,
+        "error_times_S": 2.5839179398934697
+      },
+      {
+        "S": 32.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.03889701306492556,
+        "local_quadrature_bound": 0.13258252147247765,
+        "bond_error": 0.08073951651328232,
+        "bond_bound": 0.2578125,
+        "error_times_S": 2.583664528425034
+      },
+      {
+        "S": 64.0,
+        "maximum_input_occupation": 3,
+        "local_quadrature_error": 0.019342678919149328,
+        "local_quadrature_bound": 0.06629126073623882,
+        "bond_error": 0.04036789249540168,
+        "bond_bound": 0.12890625,
+        "error_times_S": 2.5835451197057075
+      }
+    ],
+    "scope": "Finite-column Holstein-Primakoff operator checks with output margins, not a finite-S ordered-phase proof."
+  },
+  "fast_geometry_oscillator": {
+    "oscillator_cutoff": 24,
+    "joint_dimension": 48,
+    "initial_energy": 0.4973761498976267,
+    "rows": [
+      {
+        "geometry_scale": 1.0,
+        "maximum_state_error": 0.2111518928649627,
+        "maximum_geometry_leakage": 0.03707174058419192,
+        "uniform_energy_leakage_bound": 0.5797176824474051,
+        "largest_high_occupation_probability": 3.447288701205899e-06
+      },
+      {
+        "geometry_scale": 4.0,
+        "maximum_state_error": 0.10486165945809334,
+        "maximum_geometry_leakage": 0.008880228365556873,
+        "uniform_energy_leakage_bound": 0.14492942061185127,
+        "largest_high_occupation_probability": 1.8588119522322436e-06
+      },
+      {
+        "geometry_scale": 16.0,
+        "maximum_state_error": 0.034095288957027285,
+        "maximum_geometry_leakage": 0.000917474936873494,
+        "uniform_energy_leakage_bound": 0.03623235515296282,
+        "largest_high_occupation_probability": 2.733747769537318e-07
+      },
+      {
+        "geometry_scale": 64.0,
+        "maximum_state_error": 0.008215486206939307,
+        "maximum_geometry_leakage": 4.80116001827599e-05,
+        "uniform_energy_leakage_bound": 0.009058088788240704,
+        "largest_high_occupation_probability": 8.801932587898949e-08
+      },
+      {
+        "geometry_scale": 256.0,
+        "maximum_state_error": 0.00202625703114693,
+        "maximum_geometry_leakage": 2.8410504637157803e-06,
+        "uniform_energy_leakage_bound": 0.002264522197060176,
+        "largest_high_occupation_probability": 5.6498457597897434e-08
+      }
+    ],
+    "scope": "A truncated one-oscillator / two-level-geometry benchmark of the fast-gap mechanism; the infinite-field convergence is the separate quadratic-form proof."
+  },
+  "collective_wave": {
+    "cell_vertices": 1728,
+    "active_probability": 0.31933946612067626,
+    "spatial_tensor": [
+      0.2502248847171456,
+      0.25,
+      0.25
+    ],
+    "susceptibility": 0.6666666666666666,
+    "characteristic_speed": [
+      0.6126478001884267,
+      0.6123724356957945,
+      0.6123724356957945
+    ],
+    "acoustic_metric_diagonal": [
+      -1.0,
+      2.664270052198314,
+      2.6666666666666665,
+      2.6666666666666665
+    ],
+    "diamagnetic_coefficient": 0.2502772043976767,
+    "corrector": 5.23196805311029e-05,
+    "reduced_inverse_residual": 8.138138424890981e-15,
+    "fiber_gap_lower_bound": 0.016746824526945165,
+    "analytic_radius": 0.0013936247150185376,
+    "quartic_bound_constant": 4439653857.366966,
+    "band_rows": [
+      {
+        "momentum": 0.04,
+        "band_energy": 0.0004003062364220597,
+        "collective_frequency": 0.02450427217105396,
+        "frequency_over_momentum": 0.612606804276349,
+        "limiting_speed": 0.6126478001884267,
+        "inside_conservative_radius": false
+      },
+      {
+        "momentum": 0.02,
+        "band_energy": 0.00010008660506020814,
+        "collective_frequency": 0.012252751021314038,
+        "frequency_over_momentum": 0.612637551065702,
+        "limiting_speed": 0.6126478001884267,
+        "inside_conservative_radius": false
+      },
+      {
+        "momentum": 0.01,
+        "band_energy": 2.5022279167817656e-05,
+        "collective_frequency": 0.006126452378965047,
+        "frequency_over_momentum": 0.6126452378965047,
+        "limiting_speed": 0.6126478001884267,
+        "inside_conservative_radius": false
+      },
+      {
+        "momentum": 0.005,
+        "band_energy": 6.255609036261512e-06,
+        "collective_frequency": 0.003063235798039757,
+        "frequency_over_momentum": 0.6126471596079515,
+        "limiting_speed": 0.6126478001884267,
+        "inside_conservative_radius": false
+      },
+      {
+        "momentum": 0.0005,
+        "band_energy": 6.255621968383827e-08,
+        "collective_frequency": 0.0003063238964327749,
+        "frequency_over_momentum": 0.6126477928655498,
+        "limiting_speed": 0.6126478001884267,
+        "inside_conservative_radius": true
+      }
+    ],
+    "wave_evolution_factors": [
+      {
+        "spacing": 0.02,
+        "continuum_momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 0.0,
+        "displacement_factor_error": 0.0,
+        "velocity_factor_error": 0.0
+      },
+      {
+        "spacing": 0.02,
+        "continuum_momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 1.0249122724736992e-05,
+        "displacement_factor_error": 1.5039255232718318e-05,
+        "velocity_factor_error": 9.209940718957199e-06
+      },
+      {
+        "spacing": 0.02,
+        "continuum_momentum": [
+          1.0,
+          0.4,
+          -0.3
+        ],
+        "frequency_error": 9.476975009192756e-06,
+        "displacement_factor_error": 1.4798146924122069e-05,
+        "velocity_factor_error": 9.256693495940382e-06
+      },
+      {
+        "spacing": 0.01,
+        "continuum_momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 0.0,
+        "displacement_factor_error": 0.0,
+        "velocity_factor_error": 0.0
+      },
+      {
+        "spacing": 0.01,
+        "continuum_momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 2.5622919219703277e-06,
+        "displacement_factor_error": 3.759844673045798e-06,
+        "velocity_factor_error": 2.302506489915146e-06
+      },
+      {
+        "spacing": 0.01,
+        "continuum_momentum": [
+          1.0,
+          0.4,
+          -0.3
+        ],
+        "frequency_error": 2.369247457334467e-06,
+        "displacement_factor_error": 3.69955213747053e-06,
+        "velocity_factor_error": 2.3141856111408288e-06
+      },
+      {
+        "spacing": 0.005,
+        "continuum_momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 0.0,
+        "displacement_factor_error": 0.0,
+        "velocity_factor_error": 0.0
+      },
+      {
+        "spacing": 0.005,
+        "continuum_momentum": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "frequency_error": 6.405804752196431e-07,
+        "displacement_factor_error": 9.399730639403359e-07,
+        "velocity_factor_error": 5.756340577534047e-07
+      },
+      {
+        "spacing": 0.005,
+        "continuum_momentum": [
+          1.0,
+          0.4,
+          -0.3
+        ],
+        "frequency_error": 5.923171277899542e-07,
+        "displacement_factor_error": 9.248968546038405e-07,
+        "velocity_factor_error": 5.785520826862012e-07
+      }
+    ],
+    "transverse_eigenvector_residual": 2.435934714543031e-17
+  },
+  "quantum_fast_coefficient": [
+    {
+      "geometry_scale": 1.0,
+      "quantum_fiber_dimension": 3456,
+      "quantum_Dx": 0.2501712777295924,
+      "limiting_mean_Dx": 0.2502248847171456,
+      "coefficient_difference": 5.360698755318971e-05,
+      "reduced_inverse_residual": 1.3756457894769178e-14
+    },
+    {
+      "geometry_scale": 4.0,
+      "quantum_fiber_dimension": 3456,
+      "quantum_Dx": 0.2501989003076505,
+      "limiting_mean_Dx": 0.2502248847171456,
+      "coefficient_difference": 2.5984409495083405e-05,
+      "reduced_inverse_residual": 1.2519848812109312e-14
+    },
+    {
+      "geometry_scale": 16.0,
+      "quantum_fiber_dimension": 3456,
+      "quantum_Dx": 0.25021628482536296,
+      "limiting_mean_Dx": 0.2502248847171456,
+      "coefficient_difference": 8.599891782645752e-06,
+      "reduced_inverse_residual": 6.706011300630955e-15
+    },
+    {
+      "geometry_scale": 64.0,
+      "quantum_fiber_dimension": 3456,
+      "quantum_Dx": 0.2502225401439961,
+      "limiting_mean_Dx": 0.2502248847171456,
+      "coefficient_difference": 2.3445731495153055e-06,
+      "reduced_inverse_residual": 8.957959022599919e-15
+    },
+    {
+      "geometry_scale": 256.0,
+      "quantum_fiber_dimension": 3456,
+      "quantum_Dx": 0.2502242848815887,
+      "limiting_mean_Dx": 0.2502248847171456,
+      "coefficient_difference": 5.998355568914704e-07,
+      "reduced_inverse_residual": 1.328827439001893e-14
+    }
+  ],
+  "source_sha256": {
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "scripts/collective_wave_audit.py": "7599bc471dd9b723e5c8303c36e4bd8911fc68acd5bcd08502a8167868f8385c",
+    "UnifiedTheory/Audit/KFCausalCollectiveWave.lean": "b99abff8d6e2fd9ddb330e5cc74acf56ca0314ab234cec6e987832ec5fb377f5",
+    "COLLECTIVE_SPACETIME_TEST.md": "c0e744fe91a22848670ed14bbc8dccb5f74318f8e0c3abc1ec5ed55de132c8dd",
+    "scripts/collective_spacetime_audit.py": "92a54ea8428efb7fe863722343b8ef69e96a45d3344b9294afc18a0981e54da7",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8",
+    "scripts/local_causal_clock_audit.py": "416841914b14381d271b119da8ca633927bc85c9fc5b06dc64f7a6c7772168b1"
+  },
+  "scope": "A collective acoustic wave cone in sequential large-spin, fast-geometry, and long-wavelength limits about a supplied orientation. No proof of the ordered phase at spin 1/2, physical causal-order matching, universal matter cones, metric dynamics, or Einstein gravity."
+}

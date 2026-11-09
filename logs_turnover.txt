@@ -1,0 +1,171 @@
+[   15.9s] sprinkling n=10: ab=[1.22  0.512 0.261]
+[   15.9s] sprinkling n=11: ab=[1.295 0.569 0.29 ]
+[   15.9s] sprinkling n=12: ab=[1.364 0.623 0.338]
+[   16.0s] level 2: 1 classes  (0s)
+[   16.0s] level 3: 3 classes  (0s)
+[   16.0s] level 4: 9 classes  (0s)
+[   16.0s] level 5: 35 classes  (0s)
+[   16.2s] level 6: 180 classes  (0s)
+[   17.0s] level 7: 1235 classes  (1s)
+[   23.3s] level 8: 10766 classes  (6s)
+[   79.7s] level 9: 116381 classes  (56s)
+[  679.7s] level 10: 1553920 classes  (600s)
+[  685.3s]   n=10: tex_mu=0.2833  tex_P=0.3177  r_mu=0.4697
+[ 1972.7s]   level 10->11: 200000/1553920 parents, 4254705 classes
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   3.108e-05 /   3.108e-05 (  perturbed bounds)
+1 /   3.114e-05 /   3.114e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001797 /   0.0001797 (  perturbed bounds)
+1 /   0.0001798 /   0.0001798 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002254 /   0.0002254 (  perturbed bounds)
+1 /   0.0002256 /   0.0002256 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /    0.000231 /    0.000231 (  perturbed bounds)
+1 /   0.0002311 /   0.0002311 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /    0.000166 /    0.000166 (  perturbed bounds)
+1 /   0.0001661 /   0.0001661 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002692 /   0.0002692 (  perturbed bounds)
+1 /   0.0002697 /   0.0002697 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001468 /   0.0001468 (  perturbed bounds)
+1 /   0.0001471 /   0.0001471 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002134 /   0.0002134 (  perturbed bounds)
+1 /   0.0002136 /   0.0002136 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /    0.000208 /   0.0002224 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   9.536e-05 /   0.0001585 (  perturbed bounds)
+1 /   0.0001221 /   0.0001221 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   2.623e-05 /   2.623e-05 (  perturbed bounds)
+1 /   2.669e-05 /   2.669e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002307 /   0.0002307 (  perturbed bounds)
+1 /   0.0002311 /   0.0002311 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0002583 /   0.0002867 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0002365 /   0.0002541 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002714 /   0.0002714 (  perturbed bounds)
+1 /   0.0002718 /   0.0002718 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001992 /   0.0001992 (  perturbed bounds)
+1 /   0.0001993 /   0.0001993 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001531 /   0.0001531 (  perturbed bounds)
+1 /   0.0001535 /   0.0001535 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002989 /   0.0002989 (  perturbed bounds)
+1 /    0.000299 /    0.000299 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001356 /   0.0001356 (  perturbed bounds)
+1 /   0.0001359 /   0.0001359 (unperturbed [ 3185.0s]   level 10->11: 400000/1553920 parents, 7939876 classes
+[ 4240.1s]   level 10->11: 600000/1553920 parents, 11550443 classes
+[ 5277.7s]   level 10->11: 800000/1553920 parents, 14705740 classes
+[ 6492.5s]   level 10->11: 1000000/1553920 parents, 17890794 classes
+[ 7458.1s]   level 10->11: 1200000/1553920 parents, 20977142 classes
+bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0003178 /   0.0003545 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   4.053e-05 /   4.053e-05 (  perturbed bounds)
+1 /   4.069e-05 /   4.069e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0002144 /   0.0002383 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001761 /   0.0001761 (  perturbed bounds)
+1 /   0.0001762 /   0.0001762 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002112 /   0.0002112 (  perturbed bounds)
+1 /   0.0002114 /   0.0002114 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /    0.000249 /    0.000249 (  perturbed bounds)
+1 /   0.0002491 /   0.0002491 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002488 /   0.0002488 (  perturbed bounds)
+1 /   0.0002491 /   0.0002491 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0001403 /   0.0001585 (  perturbed bounds)
+1 /   0.0001221 /   0.0001221 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002023 /   0.0002023 (  perturbed bounds)
+1 /   0.0002023 /   0.0002023 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001867 /   0.0001867 (  perturbed bounds)
+1 /   0.0001869 /   0.0001869 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002694 /   0.0002694 (  perturbed bounds)
+1 /   0.0002697 /   0.0002697 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001245 /   0.0001245 (  perturbed bounds)
+1 /   0.0001246 /   0.0001246 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0002441 /   0.0002447 (  perturbed bounds)
+1 /   0.0002441 /   0.0002441 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002487 /   0.0002487 (  perturbed bounds)
+1 /   0.0002491 /   0.0002491 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   4.033e-05 /   4.033e-05 (  perturbed bounds)
+1 /   4.045e-05 /   4.045e-05 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0001761 /   0.0001761 (  perturbed bounds)
+1 /   0.0001762 /   0.0001762 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002694 /   0.0002694 (  perturbed bounds)
+1 /   0.0002697 /   0.0002697 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+2 /   0.0001533 /   0.0001552 (  perturbed bounds)
+1 /   0.0001221 /   0.0001221 (unperturbed bounds)
+Solve 1: Forcing phase 2 since near primal feasible with unperturbed costs
+num / max / sum primal infeasiblitiles
+1 /   0.0002487 /   0.0002487 (  perturbed bounds)
+1 /   0.0002491 /   0.0002491 (unpe

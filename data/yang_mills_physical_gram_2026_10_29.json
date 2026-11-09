@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "scope": "Canonical physical likelihood scores are constructed directly from the actual original gauge-averaged Wilson transfer: s_phys(u,w;v)=P(w,v)/P(u,v)-1. They are continuous and gauge invariant in the output, have zero mean under the actual raw row law, and preserve all continuous physical source pairings and centered responses. Every pure-gauge input change has identically zero physical score. The difference from the raw score is orthogonal to every continuous gauge-invariant test. For any fixed finite response family and baseline input, the actual raw Gram matrix splits exactly as M_raw=M_phys+Gram(removed). Hence 0<=M_phys<=M_one_gauge_residual<=M_raw in quadratic-form order, for every previous choice of one nuisance gauge score. More generally M_phys is minimal among all continuous score families representing those same physical pairings under the same raw row law. Its entries equal the corresponding full-transition density integrals, so it is not a surrogate matrix. A uniform signed bound on M_phys gives the original-transfer response dissipation and whole-time sum with that same coefficient, and the previous conditional contraction formula. No regular gauge fixing or choice of gauge transformation is needed. No numerical uniform bound or strict improvement of the optimal upper constant is proved. Projected scores are not asserted local, and no finite-family bound is silently extended to the Haar-indexed family. Ground-law factorization, physical-scale control, continuum survival and all twelve Clay obligations remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.CompactPhysicalProjection",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalScore",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalGram",
+    "UnifiedTheory.Clay.YangMills.WilsonPhysicalDissipation"
+  ],
+  "new_declarations": 33,
+  "retained_declarations": 7458,
+  "cumulative_declarations": 7491,
+  "proof": {
+    "actual_densities": "p_u is the proved temporal-gauge raw row density; P_u is the original normalized gauge-averaged transfer density. Both are actual constructed Wilson densities, and their expectations agree on continuous gauge-invariant tests.",
+    "canonical_score": "s_phys(u,w;v)=P_w(v)/P_u(v)-1, with a strictly positive denominator. It is continuous and output-gauge invariant; for w=gaugeSlice(h,u) it vanishes identically for every h.",
+    "physical_pairings": "The raw score and physical score have identical integrals against every continuous physical test under the actual raw row nu_u. Their difference is orthogonal to every such test. Centered responses are exactly P f(w)-P f(u).",
+    "gram_identity": "For amplitude-weighted local-input response families, M_raw=M_phys+Gram_nu_u(raw-physical). The last matrix is positive semidefinite. M_phys is computed under nu_u, and its gauge-invariant entries equal their density integrals under the actual full transition P_u.",
+    "one_score_comparison": "Every earlier one-pure-gauge nuisance score is orthogonal to each physical score. Pythagoras gives M_phys<=M_one_gauge_residual, including the already handled zero-variance nuisance case.",
+    "minimality": "At a fixed baseline and for a fixed finite family, every continuous alternative r_i satisfying integral_nu_u r_i*f=amplitude_i*(step(f)(shift_i u)-step(f)(u)) for every continuous physical f has Gram(r)>=M_phys in quadratic-form order. This is a precise statement about continuous score representations under the same row law, not a theorem about every possible mass-gap method.",
+    "dissipation": "A pointwise signed quadratic bound a^T M_phys(u) a<=kappa*sum a_i^2 yields the original collective response energy of P f bounded by kappa times actual variance loss. The same kappa pays for the whole transfer time sum.",
+    "conditional_contraction": "The independent finite-family whole-slab lower constant C still gives variance contraction C*kappa/(1+C*kappa). No choice of a gauge transformation or a regular gauge fixing is an input to the upper proof."
+  },
+  "attempt_outcome": "The initial attempt to improve the Haar upper coefficient did not produce a uniform numerical estimate. It instead yielded the canonical physical projection and its optimality within the fixed score representation class. The expensive Haar bound has not been replaced by a proved uniform bound.",
+  "not_inferred": [
+    "Estimate the actual canonical physical Gram form uniformly on the required physical weak-coupling trajectory, with volume, baseline-input dependence and exceptional regions controlled. The projection and minimality theorems do not supply this analytic estimate or a strict improvement of a numerical upper constant.",
+    "For this fixed family and raw row law, further subtraction of components invisible to all physical tests cannot improve the canonical quadratic form within the class of continuous score representations preserving all physical pairings. New progress must estimate physical correlations or justify changing the variation family or comparison.",
+    "Physical scores obtained from the gauge-averaged full kernel are not asserted to depend on only one output link. The raw distant identity exp(Delta_i Delta_j log g)-1 is not asserted for entries of the physical matrix, and entrywise absolute sums need not decrease.",
+    "Prove variance factorization for the actual slice ground law on physical observables. The previous coefficient-one Haar local lower comparison does not furnish collective factorization or the lower bound for an arbitrary finite variation family.",
+    "Connect an improved upper bound to the same response family used in the lower estimate. The canonical matrix results here concern finite families; they do not automatically furnish a uniform integral-operator bound for all Haar rotations.",
+    "Control C*kappa, or A*kappa/k where the proved Haar lower reduction applies, on a fixed physical time slab. The existing crude Haar coefficient and finite-cutoff spectral deficits retain their growth and do not prove the needed uniform product.",
+    "Construct a surviving nonzero finite-energy continuum excitation and compatible renormalized all-order estimates on the same independently justified physical coupling trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "audit": "data/yang_mills_physical_gram_audit.json",
+  "all_twelve_clay_obligations": "open"
+}

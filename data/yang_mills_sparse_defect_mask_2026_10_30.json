@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: finite joint localization and all-translates adaptive shrinking-density source concentration verified",
+  "current_goal_turn_classification": "progress: actual almost-full defect masks and their curvature/source bounds verified; explicit retained sparse sources and masked-coercivity counterexamples force retention of defect dynamics",
+  "scope": "Actual finite-cutoff SU(2) defect masks, their source-weighted size and their coercivity obstruction are now formalized. For a spatial-link block S, bad internal plaquettes have squared chord defect D_p>delta^2. The good set removes all links touching those plaquettes or any crossing plaquette. Exact support counting gives delta^2*#removed<=4*V_S+4*delta^2*b. Every plaquette touching a good link is internal and has chord <=delta for delta>=0; the mask is gauge invariant and its removed count is measurable. For rotations equal to one off an arbitrary active set, the actual spatial second difference only needs small plaquettes touching that set. The temporal bounds likewise only need pinning on active links. At delta=1/32 and squared endpoint distances <=1/2 on good links, the actual middle-action second difference is >=2*beta*cost(q), with the corresponding normalized log-density bound. Outside the previously proved adaptive bad-box union, every translated box retains at least a 1-rho fraction of its 3*L^3 links, where rho=4*(768/L+96*e(beta))/(3*delta^2)+32/L. For fixed positive delta, rho tends to zero as beta and L grow. The measurable event that any box loses more than this fraction is contained in the adaptive bad union and has the same actual f-squared source bound 2*loss(F)+2*exp(-96*beta*L^2)*M(F) under the explicit volume budget. The corresponding approximate slow-mode concentration is proved for changing admissible regulators. A single -1 link has total spatial energy <=16 and a plaquette defect exactly four; it lies inside every positive-size adaptive retained region and violates axial flatness for delta<2. The separate physical source F_loc=(D-1)_+*(32-V)_+ is nonconstant, has positive actual variance and loss, and is supported entirely in the retained region. However, the physical bump G=(D-1)_+ is unchanged by every rotation supported on the good mask at delta=1/32 with each link displacement <=1/16. Hence every finite family of such state-dependent masked responses has zero energy on G despite positive actual ground variance: no direct all-physical variance comparison with that response form can hold for any finite constant. Without a size restriction, masked rotations make G nondecreasing; if each induced update preserves the actual ground law, stationarity forces almost-sure invariance and gives the same obstruction. This rules out discarding the defect directions, not the full Wilson gap or a comparison using full block/Haar updates. Pointwise masked curvature still needs an actual domain functional inequality and temporal-pinning source control. Defect-coordinate dynamics, actual distant mixed-ground summability, independent full physical coercivity and the continuum construction remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonDefectMask",
+    "UnifiedTheory.Clay.YangMills.WilsonMaskedCurvature",
+    "UnifiedTheory.Clay.YangMills.WilsonBoxDefectBudget",
+    "UnifiedTheory.Clay.YangMills.WilsonSparseRetainedWitness",
+    "UnifiedTheory.Clay.YangMills.WilsonMaskedCoercivityObstruction"
+  ],
+  "new_declarations": 76,
+  "retained_declarations": 8449,
+  "cumulative_declarations": 8525,
+  "formal_results": {
+    "mask_geometry": "Good(S,delta,u)=S minus supports of internal plaquettes with D>delta^2 and all crossing plaquettes. It is gauge invariant; every touching plaquette is internal and has chord <=delta.",
+    "mask_size": "delta^2*#removed<=4*V_S+4*delta^2*b; the actual removed count and the corresponding threshold event are measurable.",
+    "active_curvature": "The actual spatial second difference is >=-32*delta*cost(q) when q is trivial off the active links and only touching plaquettes are small. Temporal pinning is needed only on those active links.",
+    "middle_curvature": "At delta=1/32 and both squared endpoint distances <=1/2 on the good mask, the actual middle-action second difference is >=2*beta*cost(q), with the normalized log-density counterpart.",
+    "retained_fraction": "Outside the adaptive bad-box union, every translated box loses at most rho=4*(768/L+96*e(beta))/(3*delta^2)+32/L of its links. For fixed delta>0 this tends to zero as L,beta grow.",
+    "actual_source_event": "The event that any box loses more than rho is contained in the adaptive union and has integral_event F^2 dpi<=2*loss(F)+2*exp(-96*beta*L^2)*M(F) under the explicit volume budget.",
+    "source_mask_concentration": "For the stated changing regulator family, bounded mass and vanishing actual loss imply both rho->0 and vanishing source mass of the event that any box loses more than rho.",
+    "sparse_field": "One actual -1 link gives total V<=16 and a selected plaquette D=4. It is retained at every positive adaptive box size and is not axially flat for chord threshold <2.",
+    "retained_physical_source": "F_loc=(D-1)_+*(32-V)_+ vanishes outside the retained region, is zero on the flat field, >=48 on the sparse field, and has positive actual variance and loss.",
+    "small_masked_obstruction": "The different observable G=(D-1)_+ is invariant under every q supported on Good(S,1/32,u) with per-link displacement <=1/16. Any finite such response family has zero energy on G and cannot dominate its positive actual variance.",
+    "stationary_masked_obstruction": "For arbitrary rotation sizes, masked motion makes G nondecreasing. Individual updates preserving the actual ground law must therefore preserve G almost surely. Their finite response form again cannot dominate all physical variances."
+  },
+  "next_attack": {
+    "keep_defect_directions": "Use full block or full-Haar physical updates that can change defective plaquettes. Do not replace them by updates restricted to the good mask and claim direct all-source coercivity.",
+    "good_region_analysis": "Use the proved local curvature while conditioning on retained defect coordinates, but supply a real domain functional inequality and temporal-pinning source estimates.",
+    "defect_clusters": "Control the defect-coordinate or cluster marginal and its coupling to the good region, including the actual source weight and capacity. Small cardinality alone is insufficient.",
+    "operator_boundary": "A sharper boundary normalization still requires an actual weighted operator comparison. Evaluating the crossing energy on a single retained field does not prove it.",
+    "full_target": "Continue the actual distant mixed-ground or signed physical-form upper estimate together with compatible full physical lower coercivity, then physical scaling and nontrivial continuum survival."
+  },
+  "not_inferred": [
+    "The worst-case boundary factor in the operator normalization has not been replaced by a field-dependent or small-field boundary factor. Such a replacement still needs a valid operator comparison over both kernel inputs.",
+    "The good-mask curvature estimate is pointwise and only controls rotations supported on the mask. It still requires temporal pinning on those links; no global Poincare or conditional-domain functional inequality follows from it alone.",
+    "The mask depends on the field and need not vary continuously or define a measure-preserving change of variables. No variable-rotation Haar or ground-law invariance is silently assumed.",
+    "The actual direct all-physical comparison using only small masked responses is false. Enlarging their rotation size does not repair a family whose individual updates preserve the ground law. Full physical defect directions or another justified comparison must be retained.",
+    "The obstruction concerns the stated direct variance response forms. It does not refute the full-Haar comparison, an independently proved time-evolved comparison, the original Wilson spectral gap, or the Yang-Mills mass gap.",
+    "The retained-region source F_loc and the invariant response witness G are different observables. Neither is constructed as an approximate eigenvector or a continuum excitation.",
+    "A vanishing fraction of removed links does not control their connectivity, capacity or source sensitivity. Sparse defects and defect-cluster dynamics remain essential even when most links have pointwise positive curvature.",
+    "The source-tail and slow-mode statements retain the explicit fit, volume, bounded-mass and vanishing-loss hypotheses. The middle bridge source law has not been replaced by this endpoint f-squared law; temporal-pinning and correlated bridge estimates remain open.",
+    "Actual distant mixed-ground or signed physical Haar-form control, compatible independent global lower coercivity, a physical coupling trajectory, nontrivial continuum survival and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_sparse_defect_mask_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

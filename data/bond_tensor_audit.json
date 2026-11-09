@@ -1,0 +1,1177 @@
+{
+  "bond_encoding": {
+    "axis_only_rank": 3,
+    "six_direction_rank": 6,
+    "six_direction_determinant": "1",
+    "isotropic_positive_direction_count": 9,
+    "isotropic_stiffness": "(w_axis + 4 w_diagonal) I",
+    "full_tensor_reconstruction": true,
+    "positive_reference_reconstruction": true
+  },
+  "symbolic_constraints": {
+    "spatial_gauge_solution": {
+      "a": "-1",
+      "b": "-2",
+      "d": "2"
+    },
+    "momentum_trace_coefficient": "-1/2",
+    "independent_polynomial_coefficients": 48,
+    "scalar_vector_constraint_brackets_zero": true,
+    "scope": "Uniqueness within the explicitly supplied rotational quadratic ansatz and four constraints."
+  },
+  "constrained_modes": {
+    "momentum_rows": [
+      {
+        "wavevector": [
+          0.10574834364122751,
+          0.0,
+          0.0
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 0.0,
+        "evolution_residual": 2.6090541663392916e-19,
+        "linear_frequency": 0.1008774904842773,
+        "curvature_square_frequency": 0.0011280839418151885
+      },
+      {
+        "wavevector": [
+          0.0,
+          1.0795523254131216,
+          0.0
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 0.0,
+        "evolution_residual": 3.3184431979703146e-16,
+        "linear_frequency": 1.0298272831923998,
+        "curvature_square_frequency": 1.2001949300982246
+      },
+      {
+        "wavevector": [
+          0.0,
+          0.0,
+          1.4708784734754756
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 0.0,
+        "evolution_residual": 8.495678324404853e-16,
+        "linear_frequency": 1.4031286363685713,
+        "curvature_square_frequency": 3.0356456303369757
+      },
+      {
+        "wavevector": [
+          0.600989383272897,
+          0.600989383272897,
+          0.600989383272897
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0792033189208838e-16,
+        "evolution_residual": 4.0340519490487827e-16,
+        "linear_frequency": 0.9929974279636338,
+        "curvature_square_frequency": 1.0759769764374139
+      },
+      {
+        "wavevector": [
+          0.49390410069124957,
+          0.9878082013824991,
+          -1.481712302073749
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.336178935689197e-16,
+        "evolution_residual": 6.166446319615963e-16,
+        "linear_frequency": 1.7628986530877242,
+        "curvature_square_frequency": 6.020612078385027
+      },
+      {
+        "wavevector": [
+          -0.4274128375628579,
+          0.1385286155937657,
+          0.22629529924141945
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 3.6491081767100263e-17,
+        "evolution_residual": 6.778830056611581e-17,
+        "linear_frequency": 0.47990013637700374,
+        "curvature_square_frequency": 0.12145383365224098
+      },
+      {
+        "wavevector": [
+          -0.10318022149299388,
+          -1.0315171516420005,
+          -1.03816854260248
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.4969000678883883e-16,
+        "evolution_residual": 5.411145421544648e-16,
+        "linear_frequency": 1.3995519357031296,
+        "curvature_square_frequency": 3.01249035719036
+      },
+      {
+        "wavevector": [
+          0.34747760003632616,
+          -0.35361334954383883,
+          0.5766174760760855
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 9.188777152386201e-17,
+        "evolution_residual": 1.7781302244655686e-16,
+        "linear_frequency": 0.7254146576057486,
+        "curvature_square_frequency": 0.4194861123680048
+      },
+      {
+        "wavevector": [
+          -0.49818552644162173,
+          -0.6970716517480973,
+          0.351391795465528
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 9.157045940796658e-17,
+        "evolution_residual": 1.422571812033536e-16,
+        "linear_frequency": 0.8833981261673435,
+        "curvature_square_frequency": 0.7575791766167577
+      },
+      {
+        "wavevector": [
+          -0.2789450175161283,
+          0.11134513887376697,
+          -0.2959182209714052
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.0350394351421478e-17,
+        "evolution_residual": 3.852594406887867e-17,
+        "linear_frequency": 0.4022136834920008,
+        "curvature_square_frequency": 0.07150380153583115
+      },
+      {
+        "wavevector": [
+          0.09799992535383201,
+          -0.46300033363790427,
+          0.549162216522224
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 8.783863418622446e-17,
+        "evolution_residual": 1.345241037082283e-16,
+        "linear_frequency": 0.6915581792446172,
+        "curvature_square_frequency": 0.3634500846131
+      },
+      {
+        "wavevector": [
+          0.3088397953028993,
+          -0.09094961218505924,
+          -0.08712752362291373
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.5600788727363346e-18,
+        "evolution_residual": 1.3951021368475785e-17,
+        "linear_frequency": 0.31817133970194394,
+        "curvature_square_frequency": 0.03539498865928152
+      },
+      {
+        "wavevector": [
+          -0.0827014929395638,
+          -0.20537836788638736,
+          -0.02951281493674503
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0405874791359235e-18,
+        "evolution_residual": 4.54239759854142e-18,
+        "linear_frequency": 0.21307426787342384,
+        "curvature_square_frequency": 0.010630449343297713
+      },
+      {
+        "wavevector": [
+          -1.7075473596623805,
+          -0.44575985009380353,
+          -0.4688097371460131
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 7.666975390418172e-16,
+        "evolution_residual": 2.0728364040124856e-15,
+        "linear_frequency": 1.7418737563814901,
+        "curvature_square_frequency": 5.807759657436516
+      },
+      {
+        "wavevector": [
+          -0.41550133884951956,
+          0.2813734507191917,
+          1.6306343687498104
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 7.524629585784313e-16,
+        "evolution_residual": 1.6514754804954752e-15,
+        "linear_frequency": 1.6275166824251448,
+        "curvature_square_frequency": 4.737344353041124
+      },
+      {
+        "wavevector": [
+          -0.9913503261123752,
+          -0.20348834251044243,
+          -0.15569611441408795
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 9.927146996054037e-17,
+        "evolution_residual": 2.1034630453099708e-16,
+        "linear_frequency": 0.976763058138773,
+        "curvature_square_frequency": 1.0240620812128676
+      },
+      {
+        "wavevector": [
+          -0.32521386856274476,
+          -0.579278266397157,
+          1.05646377196336
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 6.149028558053424e-16,
+        "evolution_residual": 1.0157694811861131e-15,
+        "linear_frequency": 1.1904928371241843,
+        "curvature_square_frequency": 1.8541248210835997
+      },
+      {
+        "wavevector": [
+          1.4395216101166441,
+          -0.6417172099263615,
+          0.6465545025726765
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.6563649371978547e-15,
+        "evolution_residual": 2.822269281066755e-15,
+        "linear_frequency": 1.625075725361128,
+        "curvature_square_frequency": 4.716061032747781
+      },
+      {
+        "wavevector": [
+          -1.066333206089238,
+          0.4633540956953502,
+          0.2671738092192922
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.4258749575828298e-16,
+        "evolution_residual": 2.4065187601332e-16,
+        "linear_frequency": 1.138008034045652,
+        "curvature_square_frequency": 1.6195508632397937
+      },
+      {
+        "wavevector": [
+          -1.134631593791145,
+          -0.7662101475118311,
+          -0.802350985136812
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 5.051944765347743e-16,
+        "evolution_residual": 1.1343640660182587e-15,
+        "linear_frequency": 1.5138008098450486,
+        "curvature_square_frequency": 3.812104588543399
+      },
+      {
+        "wavevector": [
+          0.5019285520748329,
+          -0.8077000672834621,
+          0.039628978774986494
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.8056556723290935e-16,
+        "evolution_residual": 3.875572589781078e-16,
+        "linear_frequency": 0.907938728490596,
+        "curvature_square_frequency": 0.8224854656758431
+      },
+      {
+        "wavevector": [
+          0.027305863468593684,
+          0.08772641180819533,
+          0.046363507219393627
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 8.74812420728205e-20,
+        "evolution_residual": 1.372289475910062e-18,
+        "linear_frequency": 0.09817285043367274,
+        "curvature_square_frequency": 0.0010397592920630444
+      },
+      {
+        "wavevector": [
+          0.12119034633667965,
+          -0.17631137221606494,
+          1.0529151186665138
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.4147347548216867e-16,
+        "evolution_residual": 3.649783456051344e-16,
+        "linear_frequency": 1.0249423266176179,
+        "curvature_square_frequency": 1.1831965449844353
+      },
+      {
+        "wavevector": [
+          -0.9996132479619317,
+          -0.31724670003634775,
+          -0.4690829323265676
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.5571647270976895e-16,
+        "evolution_residual": 2.0701804081476295e-16,
+        "linear_frequency": 1.0959557151374282,
+        "curvature_square_frequency": 1.446563907023884
+      },
+      {
+        "wavevector": [
+          -0.4637560613913168,
+          -0.5371683172957797,
+          1.6291355582752303
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 3.754446544089254e-16,
+        "evolution_residual": 2.209495489650875e-15,
+        "linear_frequency": 1.695142754775091,
+        "curvature_square_frequency": 5.35275592609106
+      },
+      {
+        "wavevector": [
+          0.6184925478946689,
+          -0.526855084073203,
+          1.2338490471750418
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.1584694640277922e-15,
+        "evolution_residual": 1.9107307523608466e-15,
+        "linear_frequency": 1.4092794017486736,
+        "curvature_square_frequency": 3.075742123025295
+      },
+      {
+        "wavevector": [
+          -0.12984069943068868,
+          -0.12547498783669486,
+          0.36067309273113923
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.9764452341360413e-17,
+        "evolution_residual": 4.150674980402772e-17,
+        "linear_frequency": 0.384767163691989,
+        "curvature_square_frequency": 0.06259686936025773
+      },
+      {
+        "wavevector": [
+          0.6526198320448231,
+          1.0772198745180035,
+          0.03672243802098801
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 3.000859795410826e-16,
+        "evolution_residual": 6.54403272027159e-16,
+        "linear_frequency": 1.2019875602629968,
+        "curvature_square_frequency": 1.9083521863875523
+      },
+      {
+        "wavevector": [
+          -0.02381742722965967,
+          0.17777894644052405,
+          0.023242465934445858
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 6.114583528557126e-19,
+        "evolution_residual": 4.0724007227858865e-18,
+        "linear_frequency": 0.1725360270571095,
+        "curvature_square_frequency": 0.005644142733065531
+      },
+      {
+        "wavevector": [
+          -0.3801350848037172,
+          0.11843669664127913,
+          0.8175768325849568
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 8.113124153420802e-17,
+        "evolution_residual": 2.867474129105619e-16,
+        "linear_frequency": 0.8674878950167588,
+        "curvature_square_frequency": 0.7173793606746828
+      },
+      {
+        "wavevector": [
+          -0.525818537739221,
+          0.44150520447571245,
+          1.0532620548203337
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.6312375305745156e-16,
+        "evolution_residual": 6.756331334890908e-16,
+        "linear_frequency": 1.1993762429128199,
+        "curvature_square_frequency": 1.8959415052781856
+      },
+      {
+        "wavevector": [
+          -1.6004495022327474,
+          1.07449561656603,
+          0.4275811706343426
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 8.77366558474582e-16,
+        "evolution_residual": 1.477631399340685e-15,
+        "linear_frequency": 1.8835903583303095,
+        "curvature_square_frequency": 7.343751689148852
+      },
+      {
+        "wavevector": [
+          0.042349438553682416,
+          0.7684455747573187,
+          -0.9091570776776552
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.953172634239116e-17,
+        "evolution_residual": 1.925246488706946e-16,
+        "linear_frequency": 1.1362968309659125,
+        "curvature_square_frequency": 1.6122559712339528
+      },
+      {
+        "wavevector": [
+          -0.6048731059408569,
+          0.8476829522257542,
+          0.7429515542706187
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0128034461129068e-16,
+        "evolution_residual": 3.2293934136449266e-16,
+        "linear_frequency": 1.2203022310632035,
+        "curvature_square_frequency": 1.9969207214161053
+      },
+      {
+        "wavevector": [
+          -0.3073826460601698,
+          -0.6563698619093329,
+          -0.008743285038460067
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.946845042474899e-17,
+        "evolution_residual": 1.3022572426277894e-16,
+        "linear_frequency": 0.6914459905857678,
+        "curvature_square_frequency": 0.3632732302382639
+      },
+      {
+        "wavevector": [
+          -0.6467408974865277,
+          1.2004079396381109,
+          -1.074514145397882
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.1274598402633e-15,
+        "evolution_residual": 1.3058365556559676e-15,
+        "linear_frequency": 1.6560762752379827,
+        "curvature_square_frequency": 4.991138419666942
+      },
+      {
+        "wavevector": [
+          0.09009629278396478,
+          -0.06345722833094022,
+          0.009428017673365005
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.715295696939412e-20,
+        "evolution_residual": 1.338264835837517e-18,
+        "linear_frequency": 0.10550864836343286,
+        "curvature_square_frequency": 0.0012906924989168175
+      },
+      {
+        "wavevector": [
+          -1.2338145881921583,
+          -0.3669926190558002,
+          -0.42962313693194876
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.194902174384463e-16,
+        "evolution_residual": 9.072984681472377e-16,
+        "linear_frequency": 1.2945338291603918,
+        "curvature_square_frequency": 2.383959207375346
+      },
+      {
+        "wavevector": [
+          0.6562825707664557,
+          -0.5785317085035817,
+          -0.40574038147200103
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.9703461849889803e-16,
+        "evolution_residual": 3.0864638916667303e-16,
+        "linear_frequency": 0.9199609866236617,
+        "curvature_square_frequency": 0.8555922433358049
+      },
+      {
+        "wavevector": [
+          0.9000603443291411,
+          -0.24414399782549898,
+          1.2707495158826287
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0415681102135378e-16,
+        "evolution_residual": 1.3680888902400264e-15,
+        "linear_frequency": 1.5036331051735594,
+        "curvature_square_frequency": 3.7358053905669646
+      },
+      {
+        "wavevector": [
+          0.40788485499768484,
+          -0.8263179669535515,
+          0.7842623517395055
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.4790917775997337e-16,
+        "evolution_residual": 5.166170991759104e-16,
+        "linear_frequency": 1.1543211750463858,
+        "curvature_square_frequency": 1.6902019373565442
+      },
+      {
+        "wavevector": [
+          0.7628321096088244,
+          -0.4110317539538839,
+          -1.2925034427419653
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 7.804732110887522e-16,
+        "evolution_residual": 1.6423300847758925e-15,
+        "linear_frequency": 1.484418008020222,
+        "curvature_square_frequency": 3.594406993391082
+      },
+      {
+        "wavevector": [
+          -0.9202647995839943,
+          -0.10536914494635011,
+          -0.431589758608486
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 8.116223947438458e-17,
+        "evolution_residual": 4.243421817139298e-16,
+        "linear_frequency": 0.9748211665706695,
+        "curvature_square_frequency": 1.017966437311638
+      },
+      {
+        "wavevector": [
+          -0.7599614386221862,
+          0.944359875860107,
+          0.3255992545936135
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.0919219725100109e-16,
+        "evolution_residual": 6.654930302276664e-16,
+        "linear_frequency": 1.197325508166603,
+        "curvature_square_frequency": 1.8862328863878852
+      },
+      {
+        "wavevector": [
+          0.11422710437028771,
+          -0.547909005425893,
+          0.858015360173993
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.932901236510964e-16,
+        "evolution_residual": 4.710465868341382e-16,
+        "linear_frequency": 0.9772372515329367,
+        "curvature_square_frequency": 1.025554272966791
+      },
+      {
+        "wavevector": [
+          -1.0246965071358258,
+          -0.8634417419551522,
+          0.5994527225250972
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 7.437771075699489e-16,
+        "evolution_residual": 1.4010014268002609e-15,
+        "linear_frequency": 1.4003353553442086,
+        "curvature_square_frequency": 3.017552045941902
+      },
+      {
+        "wavevector": [
+          0.05535672432242154,
+          -0.13909348083710116,
+          -0.43077516628160734
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.6514698999860118e-17,
+        "evolution_residual": 4.899532575185034e-17,
+        "linear_frequency": 0.43504084012178995,
+        "curvature_square_frequency": 0.09047918801410441
+      },
+      {
+        "wavevector": [
+          0.5500954841419704,
+          -0.03276213998626322,
+          0.049581797125071436
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.614296645573798e-17,
+        "evolution_residual": 2.3733538666893088e-17,
+        "linear_frequency": 0.5278109947958438,
+        "curvature_square_frequency": 0.16158234472299096
+      },
+      {
+        "wavevector": [
+          -0.09505211388561612,
+          0.21251679785583433,
+          -0.48950232871451854
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.9205140232887366e-17,
+        "evolution_residual": 5.965294641074273e-17,
+        "linear_frequency": 0.5170762510724912,
+        "curvature_square_frequency": 0.15192259916159703
+      },
+      {
+        "wavevector": [
+          -0.2476646773811373,
+          -0.22328990142135324,
+          -1.7617447980415484
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.262701063056519e-16,
+        "evolution_residual": 2.1763081513049266e-15,
+        "linear_frequency": 1.7104374365618347,
+        "curvature_square_frequency": 5.498955281829024
+      },
+      {
+        "wavevector": [
+          1.4586402600583876,
+          0.505646612618105,
+          1.1082093467880445
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0009732825272212e-15,
+        "evolution_residual": 3.137068350913344e-15,
+        "linear_frequency": 1.8128454026462408,
+        "curvature_square_frequency": 6.546978524024616
+      },
+      {
+        "wavevector": [
+          0.11453394144665033,
+          -0.6858256657741706,
+          0.5568587065519857
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 5.5341598175774347e-17,
+        "evolution_residual": 1.3580851311414644e-16,
+        "linear_frequency": 0.849791446675584,
+        "curvature_square_frequency": 0.6743660127156096
+      },
+      {
+        "wavevector": [
+          -0.22540607078741853,
+          0.8020357727319691,
+          0.9953711436007464
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 5.2488821139549165e-16,
+        "evolution_residual": 8.165439509690813e-16,
+        "linear_frequency": 1.2382237365728412,
+        "curvature_square_frequency": 2.0862002016204944
+      },
+      {
+        "wavevector": [
+          0.07621095503210971,
+          1.4671748465262087,
+          -0.07689013747763151
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 3.798607064592816e-16,
+        "evolution_residual": 1.1118076537139069e-15,
+        "linear_frequency": 1.4034005957674984,
+        "curvature_square_frequency": 3.0374111114880953
+      },
+      {
+        "wavevector": [
+          0.42407794046694186,
+          -1.3330057615667101,
+          0.9976183131970663
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 9.603884338904191e-16,
+        "evolution_residual": 1.95025052149639e-15,
+        "linear_frequency": 1.63899657427832,
+        "curvature_square_frequency": 4.838299462959819
+      },
+      {
+        "wavevector": [
+          0.4634452321754541,
+          -0.4373496701359959,
+          -1.0964623265672824
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.534773003831525e-16,
+        "evolution_residual": 6.441030030472302e-16,
+        "linear_frequency": 1.2097686242442238,
+        "curvature_square_frequency": 1.945653761084204
+      },
+      {
+        "wavevector": [
+          0.19628471932126013,
+          -0.15132854717418154,
+          0.2111938974282542
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0109395042699437e-17,
+        "evolution_residual": 1.6486051049523456e-17,
+        "linear_frequency": 0.3106253420299564,
+        "curvature_square_frequency": 0.03293587915466671
+      },
+      {
+        "wavevector": [
+          0.09841403298528521,
+          -0.1661950920054635,
+          0.22849194450582974
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 4.850580335300432e-18,
+        "evolution_residual": 1.05043487388933e-17,
+        "linear_frequency": 0.28540913838078397,
+        "curvature_square_frequency": 0.02554831317085543
+      },
+      {
+        "wavevector": [
+          -1.3192384185960946,
+          0.690571354563659,
+          0.46112402379379375
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 1.0569664303526405e-15,
+        "evolution_residual": 1.7987809555356108e-15,
+        "linear_frequency": 1.4870177844292474,
+        "curvature_square_frequency": 3.6133255797218253
+      },
+      {
+        "wavevector": [
+          0.6490389894171985,
+          -0.545123964534284,
+          1.0070138381463447
+        ],
+        "constraint_rank": 4,
+        "constraint_surface_dimension": 8,
+        "gauge_dimension": 4,
+        "physical_phase_dimension": 4,
+        "physical_polarizations": 2,
+        "bracket_residual": 2.3802612886851624e-16,
+        "evolution_residual": 6.1007439469216e-16,
+        "linear_frequency": 1.2556132530391158,
+        "curvature_square_frequency": 2.175335667882372
+      }
+    ],
+    "independent_generic_directions": 60,
+    "scope": "Finite Fourier blocks of the supplied canonical constrained continuum model, not a microscopic lattice-limit proof."
+  },
+  "soft_penalty_test": {
+    "axis_characteristic_polynomial": "(c2*q**2 - lam)**2*(2*W*q**4 + c2*q**2 - lam)*(U*c2*q**4 + c2*q**2 - lam)*(U*c2*q**4 + 2*c2*q**2 - 2*lam)**2/4",
+    "rows": [
+      {
+        "U": 1.0,
+        "W": 1.0,
+        "wave_number": 1.0,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957946,
+          0.7499999999999999,
+          0.7499999999999999,
+          0.8660254037844386,
+          1.541103500742244
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.25,
+        "trace_coordinate_energy_coefficient": 1.0
+      },
+      {
+        "U": 1.0,
+        "W": 1.0,
+        "wave_number": 0.1,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6139014578904337,
+          0.6139014578904337,
+          0.6154266812545585,
+          0.6284902544988267
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.745,
+        "trace_coordinate_energy_coefficient": -0.009800000000000001
+      },
+      {
+        "U": 1.0,
+        "W": 1.0,
+        "wave_number": 0.01,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6123877448153253,
+          0.6123877448153253,
+          0.612403053552152,
+          0.6125357132445421
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.74995,
+        "trace_coordinate_energy_coefficient": -9.998e-05
+      },
+      {
+        "U": 1.0,
+        "W": 1.0,
+        "wave_number": 0.001,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6123725887888843,
+          0.6123725887888843,
+          0.6123727418819358,
+          0.612374068686779
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.7499995,
+        "trace_coordinate_energy_coefficient": -9.99998e-07
+      },
+      {
+        "U": 1.0,
+        "W": 1.0,
+        "wave_number": 0.0001,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6123724372267256,
+          0.6123724372267256,
+          0.6123724387576566,
+          0.6123724520257258
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.749999995,
+        "trace_coordinate_energy_coefficient": -9.9999998e-09
+      },
+      {
+        "U": 10000.0,
+        "W": 10000.0,
+        "wave_number": 1.0,
+        "frequencies_over_q": [
+          0.612372435695702,
+          0.6123724356957945,
+          43.30560009975614,
+          43.30560009975614,
+          61.2403053552152,
+          141.42268205630947
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": 4999.25,
+        "trace_coordinate_energy_coefficient": 19999.0
+      },
+      {
+        "U": 10000.0,
+        "W": 10000.0,
+        "wave_number": 0.1,
+        "frequencies_over_q": [
+          0.6123724356957857,
+          0.6123724356957945,
+          4.373213921133975,
+          4.373213921133975,
+          6.154266812545584,
+          14.15538766689207
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": 49.25,
+        "trace_coordinate_energy_coefficient": 1.9900000000000004
+      },
+      {
+        "U": 10000.0,
+        "W": 10000.0,
+        "wave_number": 0.01,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957946,
+          0.7499999999999999,
+          0.7499999999999999,
+          0.8660254037844386,
+          1.541103500742244
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.25,
+        "trace_coordinate_energy_coefficient": 0.0001
+      },
+      {
+        "U": 10000.0,
+        "W": 10000.0,
+        "wave_number": 0.001,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6139014578904337,
+          0.6139014578904337,
+          0.6154266812545585,
+          0.6284902544988267
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.745,
+        "trace_coordinate_energy_coefficient": -9.8e-07
+      },
+      {
+        "U": 10000.0,
+        "W": 10000.0,
+        "wave_number": 0.0001,
+        "frequencies_over_q": [
+          0.6123724356957945,
+          0.6123724356957945,
+          0.6123877448153253,
+          0.6123877448153253,
+          0.612403053552152,
+          0.6125357132445421
+        ],
+        "number_of_gapless_branches": 6,
+        "trace_momentum_energy_coefficient": -0.74995,
+        "trace_coordinate_energy_coefficient": -9.998e-09
+      }
+    ],
+    "scope": "Noncompact quadratic tensor variables and fixed finite derivative penalties; compact spin models are not ruled out."
+  },
+  "scalar_coupling": {
+    "stress_divergence_components": [
+      "f0*(s0 - s4 - s7 - s9)",
+      "-f1*(s0 - s4 - s7 - s9)",
+      "-f2*(s0 - s4 - s7 - s9)",
+      "-f3*(s0 - s4 - s7 - s9)"
+    ],
+    "free_stress_identity": true,
+    "old_switch_blind_gradient_new_shear_contraction": "1",
+    "unequal_free_species_couplings_also_conserved": true,
+    "scope": "First-order on-shell free-scalar Ward identity and a nonzero static/off-shell vertex. Universal coupling and interacting constraint closure are not proved."
+  },
+  "source_sha256": {
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "scripts/bond_tensor_audit.py": "a3cd8220fdf4ec45c1448ccca6f34ef2f2fe80a9b546c5c54b11a3aafe534298",
+    "UnifiedTheory/Audit/KFCausalBondTensor.lean": "8e15eca494f8b6c6185f233d69cafc893771abf252933cfb62a9a83184229f41",
+    "ENTANGLED_ACOUSTIC_BOUNDS.md": "acc79eec1f9ae71587c2791a5bba63c8c38d1a8d03d989b75b933d071e8668a3",
+    "scripts/entangled_acoustic_audit.py": "c2ee2a8822192c3d9df992244b317635b761f60cf373840c90d8baf4ea4fbd4b",
+    "COLLECTIVE_GEOMETRY_STABILITY.md": "e763acd0a26a196694e7090aed2e376074d4cf82d1c92928699eb2cf9647eacf",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "PROJECTED_GEOMETRY_AND_LOCAL_DYNAMICS.md": "9dc488329c03129f73dd90a5ea42e76857ec69e3f15fe0257ba7ae7236a10a7b"
+  },
+  "scope": "Conditional canonical spatial-tensor construction with imposed first-class constraints; two linear TT modes and explicit failures of noncompact finite-penalty realizations. No microscopic canonical tensor, emergent constraint phase, universal matter coupling, nonlinear Einstein dynamics, or TOE is established."
+}

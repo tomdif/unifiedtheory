@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: actual coordinated finite-block source tails and weak-coupling block-size suppression proved and audited",
+  "current_goal_turn_classification": "progress: constructive spatial axial regularity, supported alignment with explicit surface cost, and an actual low-curvature/high-temporal-mismatch source tail proved; full goal remains open",
+  "scope": "An explicit coordinate-tree gauge is constructed on the actual periodic SU(2) spatial lattice. Actual small plaquette defects imply direction-0,1,2 interior link defect bounds (b+c)*delta, c*delta and zero. The relative gauge aligns two such fields. Restricting it to B=[1,L]^3 retains the full Wilson action and charges at most 24*L^2 links to the boundary, including any periodic seam. The transformed touched-link temporal energy is at most budget(L,delta)=48*(L+1)^5*delta^2+96*L^2. Thus low spatial curvature plus local mismatch above budget+t implies the previously normalized B-gauge instability event. For L>=4096, L+1<=n, delta=1/(100*(L+1)), and mismatch>L^3/8, the actual correlated physical variance-pair source contribution is <=epsilon(beta,1/16)^(L^3)*loss(F), where epsilon=exp(1)*cap(36)*(beta+1)^3*exp(-beta/16). No independent-block law, variable-map Haar preservation, all-field pinning, global coercivity, distant mixed-ground summability or continuum existence is inferred.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonAxialGauge",
+    "UnifiedTheory.Clay.YangMills.WilsonAxialRegularity",
+    "UnifiedTheory.Clay.YangMills.WilsonAxialBox",
+    "UnifiedTheory.Clay.YangMills.WilsonAxialAlignment",
+    "UnifiedTheory.Clay.YangMills.WilsonAxialSource"
+  ],
+  "new_declarations": 74,
+  "retained_declarations": 8061,
+  "cumulative_declarations": 8135,
+  "formal_results": {
+    "actual_gauge": "Ordered products along coordinate axes define the gauge. Exact tree-link identities are proved on the nonwrapping interior; the spatial plaquette chord is unchanged under gauge conjugation.",
+    "strip_estimates": "Plaquette identities and norm telescoping give direction-0 defect <=(b+c)*delta, direction-1 <=c*delta, and direction-2 zero. These are actual field estimates, not assumptions of a regular gauge choice.",
+    "relative_alignment": "The relative gauge (g_u)^(-1)*g_v aligns two low-curvature fields with interior link chord <=4*(L+1)*delta on the box used below.",
+    "supported_box": "B=[1,L]^3 has exactly L^3 vertices. Only links touching B change. The interior is controlled by the strip estimates; all remaining touched links lie in a shell with at most 24*L^2 links.",
+    "boundary_and_action": "The squared chord cost per boundary link is <=4. Exact cancellation outside the touched set gives the actual kinetic-action decrease. The transformed local energy is <=48*(L+1)^5*delta^2+96*L^2.",
+    "numerical_scale": "For L>=4096 and 0<=delta<=1/(100*(L+1)), the transformed energy budget is <=L^3/16.",
+    "event": "Both fields obey FlatBox on [0,L]^3, and the sum of squared temporal link distances on links touching B exceeds L^3/8. The event is measurable and is contained in B-gauge instability at threshold L^3/16.",
+    "source_tail": "For beta>=0, physical continuous F, L>=4096 and L+1<=n, the actual pair-source contribution of this event is <=epsilon(beta,1/16)^(L^3)*loss(F). The same correlated endpoint source and original transfer variance loss are retained.",
+    "weak_coupling": "The previously accepted limit theorem gives epsilon(beta,1/16)->0 at beta->infinity, independent of the ambient period and block side."
+  },
+  "next_attack": {
+    "spatial_large_fields": "Prove source-weighted bounds for the actual ground/transition law on the complement of the two-field spatial small-curvature condition; an unweighted energy tail is not sufficient.",
+    "retained_region": "Use the constructive gauge and temporal mismatch control in a proved domain functional inequality, preserving the boundary cost and gauge-invariant physical modes.",
+    "global_obligations": "Close the actual connected covariance or physical signed form bound and an independent lower coercivity comparison, then physical scaling and continuum survival."
+  },
+  "not_inferred": [
+    "The new event requires both input and endpoint spatial plaquettes to be small in the coordinate box [0,L]^3. Source-weighted control of its spatial-large-field complement is not proved.",
+    "The temporal criterion is total squared link mismatch on links touching B=[1,L]^3. It is not a per-link pinning theorem or an inequality on every configuration.",
+    "The gauge is an explicit action-decrease witness in an existential event. No change of variables by a field-dependent gauge map, Jacobian identity or new Haar invariance is assumed.",
+    "The boundary is paid explicitly; no periodic seam is treated as a tree link. The present geometric construction is for the stated coordinate box. Translation, packing, overlap and multiscale source bookkeeping remain to be supplied where needed.",
+    "The constructive coordinate gauge leaves gauge-invariant observables unchanged. It controls an exceptional source contribution but supplies no direct physical response lower bound.",
+    "One still needs a proved functional inequality on the retained region, control/absorption of all excluded source weights, and either actual summable mixed-ground responses or the corresponding signed physical Haar-form estimate.",
+    "Physical scaling, nontrivial continuum existence, a surviving rescaled mass gap, and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_axial_source_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

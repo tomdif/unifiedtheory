@@ -1,0 +1,34 @@
+{
+  "total_dimension": 216,
+  "gauss_dimension": 27,
+  "connected_gauss_dimension": 20,
+  "exactly_checked_gauge_invariant_generators": 12,
+  "vertex_permutations": 6,
+  "matter_number_conserved": true,
+  "symbolic_matter_angle_identity": true,
+  "hamiltonian_coefficients": {
+    "degree": "11/10",
+    "edge": "-3/5",
+    "electric": "7/10",
+    "loop": "-3/10",
+    "geometry": "-2/5",
+    "hopping": "-4/5"
+  },
+  "probabilities": {
+    "connection_after_creation": "1/2",
+    "connection_after_matter_transport_and_recombination": "3/4",
+    "connection_without_matter_transport": "0",
+    "matter_arrival": "1/2",
+    "connection_after_coherent_matter_return": "1",
+    "matter_arrival_after_coherent_return": "0",
+    "connection_in_measured_control": "1/2"
+  },
+  "charged_flux_blocks_bare_deletion": true,
+  "scope": "Exact Z2 charged hard-core matter and quantum connection prototype; no geometric phase, Lorentz symmetry, Einstein gravity, chiral matter, or TOE proof",
+  "source_sha256": {
+    "scripts/relational_quantum_geometry_audit.py": "12bffd48dfd3ea6eadd66b573097b171b1d25fe0beeed1bfbe89d4e9f19f881e",
+    "RELATIONAL_QUANTUM_GEOMETRY_PROPOSAL.md": "1ae740ffeb4bbb407680ae4b9e5ec97e232f511b6bb9819a1fda4765620bc5cb",
+    "EMERGENCE_SUPPORT_AND_GAUGE_COMPACTNESS.md": "338375c8335a29bade5a558d681a504043fac1fe45608a05b147f71472a63747",
+    "QUANTUM_MEMORY_CLOSURE.md": "e74b2252a26bca8b2502894ab6be7be2cbd1f0115466a36200c1f5916a2d4617"
+  }
+}

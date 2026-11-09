@@ -1,0 +1,85 @@
+{
+  "probe_report_sha256": "e8aa6beb797f69c08f0f3fd1d54bc110d1dbc01db6ab58d45eec4b7c7b24df79",
+  "verifier_sha256": "f28ea2219e57b8b00569e559a7162eb5ab9c5571c1e12258765120635f4a4a6e",
+  "checks": [
+    {
+      "case": "neutral_grid_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 2.4424906541753444e-15
+    },
+    {
+      "case": "neutral_grid_9",
+      "dimension": 9,
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 3.885780586188048e-15
+    },
+    {
+      "case": "neutral_grid_16",
+      "dimension": 16,
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 7.844169758186581e-12
+    },
+    {
+      "case": "neutral_grid_16",
+      "dimension": 16,
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 6.0785820821251946e-12
+    },
+    {
+      "case": "independent_momentum_clock",
+      "dimension": 4,
+      "quadrature": {
+        "nt": 32,
+        "nd": 128,
+        "left": -10.0,
+        "right": 4.0,
+        "panels": 28,
+        "order": 10
+      },
+      "maximum_spectral_error": 6.661338147750939e-16
+    },
+    {
+      "case": "independent_momentum_clock",
+      "dimension": 4,
+      "quadrature": {
+        "nt": 48,
+        "nd": 192,
+        "left": -12.0,
+        "right": 4.5,
+        "panels": 44,
+        "order": 12
+      },
+      "maximum_spectral_error": 7.771561172376096e-16
+    }
+  ],
+  "limitations": "Floating complete-space matrices, spectra, energy quotients, witnesses, refinements and provenance only; no certified quadrature errors, uniform inequality or model refutation."
+}

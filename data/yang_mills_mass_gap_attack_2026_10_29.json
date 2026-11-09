@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-29",
+  "status": "research_strategy_no_mass_gap_claim",
+  "primary_target": "Uniform contraction across a fixed physical time slab for the original normalized Wilson transfer, along the same trajectory used to construct nontrivial continuum correlations.",
+  "precise_sufficient_estimate": {
+    "objects": "P_(a,V) is the positive self-adjoint original transfer divided by its top eigenvalue; Omega_(a,V) is its normalized vacuum; r(a)=ceil(ell/a), where ell>0 is fixed in physical units.",
+    "hypothesis_to_prove": "There exist ell>0 and 0<q<1, independent of sufficiently small a and spatial volume V, such that ||P_(a,V)^r(a) v|| <= q ||v|| for every v perpendicular to Omega_(a,V).",
+    "spectral_deduction": "For each positive excited spectral ratio lambda, lambda^r(a)<=q. Consequently E=-(log lambda)/a >= -(log q)/(a*r(a)). For 0<a<=ell, ell<=a*r(a)<ell+a<=2*ell, so E>=-(log q)/(2*ell)>0. As a tends to zero the lower bound approaches -(log q)/ell. This deduction uses positivity/self-adjointness and the spectral functional calculus; the actual-model slab estimate is unproved.",
+    "scope": "This is a proposed sufficient criterion, not a new Lean-certified Wilson estimate. Passage to a continuum theory also requires construction, convergence and reconstruction on the same trajectory. A separately defined blocked transfer must not be substituted without proving its relation to the original transfer."
+  },
+  "ordered_attack": [
+    {
+      "step": 1,
+      "task": "Build source-dependent ultraviolet control to a fixed physical scale.",
+      "deliverable": "An exact sourced coarse representation with uniform bounds on generated local interactions, large-field and boundary contributions, and a justified running coupling.",
+      "role_of_balaban": "Use the background-action cancellation, local expansions and inductive domain control identified in the companion review. The source extension and the repository/block-map identification still require proof."
+    },
+    {
+      "step": 2,
+      "task": "Prove a nonperturbative contraction at some fixed physical scale.",
+      "deliverable": "A cutoff- and volume-uniform slab contraction or a sufficient physical-time clustering estimate for a dense gauge-invariant observable algebra.",
+      "hard_obstacle": "Establish a quantitative mixing criterion for the full induced interaction, including its generated terms. Reaching a strong-coupling expansion domain is one possible route, but has not been proved and is not a consequence of ultraviolet stability. Increasing the number of perturbative steps cannot be assumed to solve the crossover."
+    },
+    {
+      "step": 3,
+      "task": "Transfer the estimate to the original observables and take the continuum/infinite-volume limits.",
+      "deliverable": "Uniform exponential decay for all required centered reflected-kernel quadratic forms, including arbitrary finite complex combinations and cross terms, with reflection positivity and the existing continuum construction hypotheses verified.",
+      "existing_bridge": "OSClusteringGap.QuadraticDecay, followed by OSFormGapResolvent.intervalGap_of_quadraticDecay, converts the stated full physical decay premise to the spectral-interval conclusion once its other hypotheses are supplied. One selected two-point function does not generate the entire physical Hilbert space automatically."
+    },
+    {
+      "step": 4,
+      "task": "Keep a nonzero excitation at finite physical energy.",
+      "deliverable": "A centered renormalized observable with nonvanishing spectral weight in [m,M], for some fixed finite M>m>0, or a positive separated reflected correlation with the necessary uniform norm control.",
+      "existing_bridge": "TransferSpectralScale.window_dictionary and band_lower; ContinuumSpectralWindow.window_limit_positive.",
+      "reason": "A lower energy bound alone permits every excitation to escape to infinite physical energy. For normalized transfer ratios, the finite physical-energy window is [exp(-a*M),exp(-a*m)], which shrinks toward one as a tends to zero."
+    }
+  ],
+  "first_concrete_subproblem": {
+    "task": "Extend a cylinder-decay/mixing bound to a class of generated interactions, and derive an explicit weighted interaction norm that guarantees contraction.",
+    "acceptance_conditions": [
+      "The class contains the actual induced action by a proved integration identity, not an assumed Wilson-shaped ansatz.",
+      "Constants remain uniform in spatial volume and ultraviolet cutoff at a fixed physical blocking length.",
+      "The estimate includes source response and the surviving large-field/boundary terms.",
+      "A proof must then show the physical RG trajectory actually enters this class; this is a separate nonperturbative problem."
+    ],
+    "fallback": "If the induced action cannot be shown to enter the chosen mixing class, investigate a more suitable gauge-invariant infrared representation. The failed criterion should not be relabeled as a mass-gap theorem."
+  },
+  "existing_results_and_limits": [
+    "WilsonStrongCouplingTransferGap proves a spatial-volume-independent original-transfer rate q(beta)=7/8+9*beta/2, strictly below one for 0<=beta<1/36 on its stated even-period lattice. This does not cover beta(a)->infinity.",
+    "WilsonBoxPacking bounds rare regional mean-remainder events under the original measure. It neither proves conditional independence nor controls physical-time mixing of retained modes.",
+    "LocalRatioSpectralCounterexample proves that positivity and bounded one-coordinate ratios alone do not imply a uniform transfer gap.",
+    "A heat-bath/Glauber update gap concerns an auxiliary sampling dynamics. It requires an additional physical bridge before implying a transfer-Hamiltonian gap."
+  ],
+  "sources": [
+    {
+      "url": "https://doi.org/10.1007/BF01238433",
+      "location": "Large Field Renormalization II, pp. 355-359 and 390",
+      "role": "Ultraviolet effective-density method under its small-running-coupling hypothesis; not the missing volume-uniform infrared contraction."
+    },
+    {
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf",
+      "location": "Jaffe and Witten, Sections 6.5-6.6",
+      "role": "Distinguishes effective-action ultraviolet control, observable expectations, and a mass gap uniform in spacetime volume."
+    }
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true
+}

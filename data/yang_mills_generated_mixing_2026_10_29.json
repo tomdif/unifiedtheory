@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "status": "finite_generated_interaction_mixing_no_clay_claim",
+  "scope": "Derived quantitative influence and actual reversible Gibbs update contraction for arbitrary finite local factors. A weighted support-size budget alpha and a current-support independent coloring with C colors give the rate 1-(1-alpha)/C; alpha<1 makes it strict. Exact elimination supplies recursively computed oscillation bounds for every generated factor. The actual SU(2) Wilson tower is identified with this construction; its seed budget is at most 36*beta and each first-step generated factor receives the conservative weight at most 48*beta. No cutoff-uniform entry into alpha<1, physical-transfer contraction, continuum limit or mass gap is proved.",
+  "quantitative_results": {
+    "hypotheses": "Finite compact-spin Gibbs system with continuous actual factors Phi_p supported on D_p and oscillation at most w_p>=0.",
+    "influence": "For i!=j, c_ij=(1/2)*sum_{p:i,j in D_p} w_p; c_ii=0. Actual conditional expectations of a test of oscillation d differ by at most c_ij*d.",
+    "budget": "sum_j c_ij = (1/2)*sum_{p:i in D_p} (card(D_p erase i))*w_p.",
+    "mixing": "A coloring independent for the current factor supports, with C colors, and every row budget <=alpha yields auxiliary L2 norm contraction <=[1-(1-alpha)/C]. For alpha<1 this is strict; the rate is volume-uniform only when alpha and C are uniformly controlled.",
+    "elimination": "Retained factors keep their old weights. A generated factor for an eliminated site i receives weight 2*sum_{p:i in D_p} w_p. The oscillation bound is proved for the literal negative-log-integral factor and iterated through the actual factor construction.",
+    "wilson": "For beta>=0, seed plaquette weight 4*beta; initial row budget <=36*beta; first generated-factor weight <=48*beta. For admissible elimination schedules the represented law equals the exact Wilson induced Gibbs law.",
+    "mixed_criterion": "If the full action mixed rectangles are bounded by r(i,j)>=0 and each row sum is <=4*alpha, the actual influence is <=r(i,j)/4 and the same L2 contraction follows. Factorwise rectangle bounds are proved to add to the full bound. Whole-factor smallness is not required. Uniform bounds for the actual physical Wilson trajectory remain unproved."
+  },
+  "attack_outcome": {
+    "completed": "A proved quantitative mixing criterion for general generated local interactions, with an actual-kernel identity, L2 contraction, computed integration bounds and explicit Wilson specialization. A sharper mixed-rectangle criterion connects the existing free-energy rectangle estimates to auxiliary contraction without requiring small global factor amplitudes.",
+    "not_completed": "The current bounds do not certify a small interaction budget in the beta(a)->infinity regime. They are upper bounds, so their growth does not prove that the actual physical theory fails to mix.",
+    "next_specific_estimate": "Replace the growing global-oscillation bound with a scale-uniform bound on the relevant coarse mixed interactions after cancellation of the background action, then prove entry into a physical-scale contraction regime.",
+    "physical_bridge": "A valid physical-time locality/clustering or original-transfer slab argument is still required. The color-update theorem is about an auxiliary sampler.",
+    "sources_and_large_fields": "Existing exact source transport remains available, but this increment does not establish scale-uniform source estimates or absorb large-field/boundary tails into the mixing budget."
+  },
+  "new_declaration_count": 56,
+  "predecessor_declaration_count": 6961,
+  "remaining": [
+    "Derive a small weighted interaction budget for the actual renormalized Wilson trajectory at a fixed physical scale, with a uniformly bounded admissible coloring or a method that handles weighted long-range interactions.",
+    "Improve the conservative global-oscillation bounds by controlling mixed interactions after background cancellation, including large-field and boundary contributions and sourced observables.",
+    "Prove physical-time clustering or fixed-physical-slab contraction for the original Wilson transfer; an auxiliary heat-bath contraction alone is not a physical mass-gap theorem.",
+    "Construct nontrivial continuum correlations on the same trajectory, including full Schwartz bounds, contact renormalization, reflection positivity and a nonzero finite-energy excitation.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true
+}

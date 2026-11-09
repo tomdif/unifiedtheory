@@ -1,0 +1,793 @@
+{
+  "exact_identities": {
+    "asinh_metric_inverse": true,
+    "two_sided_moment_identity": "Q+Q^(-1)=2I+g^2 H^2",
+    "logarithmic_chart": "gH-g^3 H^3/24+O(g^5)",
+    "signed_spectral_reflection_determinant": "-a*b*(u*s-v*r)^2",
+    "nonGaussian_moment_bound": "E(exp X) E(exp -X)>=cosh(sqrt(2 Var X))"
+  },
+  "nonGaussian_moments": [
+    {
+      "distribution_atoms": 3,
+      "coupling": 0.2,
+      "component_variance": 0.03109842987312829,
+      "scalar_log_moment_product": 0.03097049116592221,
+      "lower_log_bound": 0.030781306919655305,
+      "matrix_log_moment_product": 0.053246384551782294
+    },
+    {
+      "distribution_atoms": 3,
+      "coupling": 0.7,
+      "component_variance": 0.3809557659458213,
+      "scalar_log_moment_product": 0.3628900337454124,
+      "lower_log_bound": 0.34058261920650035,
+      "matrix_log_moment_product": 0.6089489808327916
+    },
+    {
+      "distribution_atoms": 3,
+      "coupling": 1.4,
+      "component_variance": 1.5238230637832852,
+      "scalar_log_moment_product": 1.282832211402384,
+      "lower_log_bound": 1.0826042482606373,
+      "matrix_log_moment_product": 2.0673424267069436
+    },
+    {
+      "distribution_atoms": 7,
+      "coupling": 0.2,
+      "component_variance": 0.04905975877021871,
+      "scalar_log_moment_product": 0.04890308977703839,
+      "lower_log_bound": 0.04827785809920937,
+      "matrix_log_moment_product": 0.08697811337512709
+    },
+    {
+      "distribution_atoms": 7,
+      "coupling": 0.7,
+      "component_variance": 0.6009820449351787,
+      "scalar_log_moment_product": 0.5775719754140733,
+      "lower_log_bound": 0.5090097053499446,
+      "matrix_log_moment_product": 0.9590257377424586
+    },
+    {
+      "distribution_atoms": 7,
+      "coupling": 1.4,
+      "component_variance": 2.403928179740715,
+      "scalar_log_moment_product": 2.065484097850935,
+      "lower_log_bound": 1.5119166514809725,
+      "matrix_log_moment_product": 3.0887954857861217
+    },
+    {
+      "distribution_atoms": 15,
+      "coupling": 0.2,
+      "component_variance": 0.02188607064860725,
+      "scalar_log_moment_product": 0.021860885665586416,
+      "lower_log_bound": 0.021728243254545254,
+      "matrix_log_moment_product": 0.05048957964631079
+    },
+    {
+      "distribution_atoms": 15,
+      "coupling": 0.7,
+      "component_variance": 0.26810436544543875,
+      "scalar_log_moment_product": 0.264355298514124,
+      "lower_log_bound": 0.2470948516727941,
+      "matrix_log_moment_product": 0.5932757578632423
+    },
+    {
+      "distribution_atoms": 15,
+      "coupling": 1.4,
+      "component_variance": 1.072417461781755,
+      "scalar_log_moment_product": 1.0144904094623828,
+      "lower_log_bound": 0.8234466574988689,
+      "matrix_log_moment_product": 2.1251655485789565
+    }
+  ],
+  "tail_examples": [
+    {
+      "model": "rare_tail",
+      "scale": 2.0,
+      "variance": 4.0,
+      "probability_nonzero": 0.25,
+      "log_exponential_moment_product": 4.050250050496739,
+      "scope": "Divergent variance need not imply divergence in probability; no Lorentzian QFT is claimed for this probability example"
+    },
+    {
+      "model": "rare_tail",
+      "scale": 4.0,
+      "variance": 16.0,
+      "probability_nonzero": 0.0625,
+      "log_exponential_moment_product": 25.068534946499657,
+      "scope": "Divergent variance need not imply divergence in probability; no Lorentzian QFT is claimed for this probability example"
+    },
+    {
+      "model": "rare_tail",
+      "scale": 8.0,
+      "variance": 64.0,
+      "probability_nonzero": 0.015625,
+      "log_exponential_moment_product": 118.29593947216077,
+      "scope": "Divergent variance need not imply divergence in probability; no Lorentzian QFT is claimed for this probability example"
+    },
+    {
+      "model": "rare_tail",
+      "scale": 16.0,
+      "variance": 256.0,
+      "probability_nonzero": 0.00390625,
+      "log_exponential_moment_product": 499.523350749921,
+      "scope": "Divergent variance need not imply divergence in probability; no Lorentzian QFT is claimed for this probability example"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "integration_lower_endpoint": 2.0,
+      "variance": 15.0,
+      "log_positive_tail_integral_lower_bound": -1.4189385332046727,
+      "asinh_two_sided_scalar_mean": 5.75,
+      "scope": "All polynomial moments finite, exponential moments infinite; divergence follows from the displayed analytical tail bound"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "integration_lower_endpoint": 4.0,
+      "variance": 15.0,
+      "log_positive_tail_integral_lower_bound": 18.581061466795326,
+      "asinh_two_sided_scalar_mean": 5.75,
+      "scope": "All polynomial moments finite, exponential moments infinite; divergence follows from the displayed analytical tail bound"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "integration_lower_endpoint": 8.0,
+      "variance": 15.0,
+      "log_positive_tail_integral_lower_bound": 214.58106146679532,
+      "asinh_two_sided_scalar_mean": 5.75,
+      "scope": "All polynomial moments finite, exponential moments infinite; divergence follows from the displayed analytical tail bound"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "integration_lower_endpoint": 12.0,
+      "variance": 15.0,
+      "log_positive_tail_integral_lower_bound": 778.5810614667953,
+      "asinh_two_sided_scalar_mean": 5.75,
+      "scope": "All polynomial moments finite, exponential moments infinite; divergence follows from the displayed analytical tail bound"
+    }
+  ],
+  "positive_spectra": [
+    {
+      "masses": [
+        0.0
+      ],
+      "weights": [
+        1.0
+      ],
+      "cutoff": 2.0,
+      "scalar_equal_time_variance": 0.05066059182116889,
+      "pole_variance_lower_bound": 0.05066059182116889,
+      "euclidean_xD": 1.0,
+      "derivative_xD": 0.0,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0
+      ],
+      "weights": [
+        1.0
+      ],
+      "cutoff": 8.0,
+      "scalar_equal_time_variance": 0.8105694691387022,
+      "pole_variance_lower_bound": 0.8105694691387022,
+      "euclidean_xD": 1.0,
+      "derivative_xD": 0.0,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0
+      ],
+      "weights": [
+        1.0
+      ],
+      "cutoff": 32.0,
+      "scalar_equal_time_variance": 12.969111506219235,
+      "pole_variance_lower_bound": 12.969111506219235,
+      "euclidean_xD": 1.0,
+      "derivative_xD": 0.0,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        0.5,
+        2.0
+      ],
+      "weights": [
+        0.4,
+        0.2,
+        0.7
+      ],
+      "cutoff": 2.0,
+      "scalar_equal_time_variance": 0.04827748501664478,
+      "pole_variance_lower_bound": 0.020264236728467555,
+      "euclidean_xD": 0.9382352941176471,
+      "derivative_xD": 0.046518166089965396,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        0.5,
+        2.0
+      ],
+      "weights": [
+        0.4,
+        0.2,
+        0.7
+      ],
+      "cutoff": 8.0,
+      "scalar_equal_time_variance": 0.9950402362065033,
+      "pole_variance_lower_bound": 0.3242277876554809,
+      "euclidean_xD": 1.2580453192950332,
+      "derivative_xD": 0.0006176485518955964,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        0.5,
+        2.0
+      ],
+      "weights": [
+        0.4,
+        0.2,
+        0.7
+      ],
+      "cutoff": 32.0,
+      "scalar_equal_time_variance": 16.75186492700067,
+      "pole_variance_lower_bound": 5.187644602487694,
+      "euclidean_xD": 1.297227448384459,
+      "derivative_xD": 2.6972085040815444e-06,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        3.0
+      ],
+      "weights": [
+        0.15,
+        1.5
+      ],
+      "cutoff": 2.0,
+      "scalar_equal_time_variance": 0.03770661191828944,
+      "pole_variance_lower_bound": 0.007599088773175333,
+      "euclidean_xD": 0.6115384615384616,
+      "derivative_xD": 0.07988165680473373,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        3.0
+      ],
+      "weights": [
+        0.15,
+        1.5
+      ],
+      "cutoff": 8.0,
+      "scalar_equal_time_variance": 1.1281859299674173,
+      "pole_variance_lower_bound": 0.12158542037080533,
+      "euclidean_xD": 1.4650684931506848,
+      "derivative_xD": 0.002533308313004316,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    },
+    {
+      "masses": [
+        0.0,
+        3.0
+      ],
+      "weights": [
+        0.15,
+        1.5
+      ],
+      "cutoff": 32.0,
+      "scalar_equal_time_variance": 20.960718693722445,
+      "pole_variance_lower_bound": 1.9453667259328853,
+      "euclidean_xD": 1.6369312681510164,
+      "derivative_xD": 1.2651240899306431e-05,
+      "scope": "Positive scalar spectral examples; the tensor pole bound is proved separately with its TT angular factor"
+    }
+  ],
+  "reflection_positivity": [
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 0.5,
+      "spatial_momentum": 0.4,
+      "reflected_Gram_eigenvalues": [
+        -0.001858839509178935,
+        1.9261149225150378
+      ],
+      "integral_comparison": 2.9373740229761033e-16,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 0.5,
+      "spatial_momentum": 0.7,
+      "reflected_Gram_eigenvalues": [
+        -0.0013568423651260356,
+        0.8741459573598012
+      ],
+      "integral_comparison": 7.850462293418876e-17,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 0.5,
+      "spatial_momentum": 1.2,
+      "reflected_Gram_eigenvalues": [
+        -0.0007509467054141668,
+        0.32326245632622275
+      ],
+      "integral_comparison": 8.777083671441753e-17,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 1.0,
+      "spatial_momentum": 0.4,
+      "reflected_Gram_eigenvalues": [
+        -0.0024273713625922537,
+        1.4067700280763864
+      ],
+      "integral_comparison": 1.5700924586837752e-16,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 1.0,
+      "spatial_momentum": 0.7,
+      "reflected_Gram_eigenvalues": [
+        -0.001156743508954142,
+        0.44973595923400983
+      ],
+      "integral_comparison": 9.614813431917819e-17,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 1.0,
+      "spatial_momentum": 1.2,
+      "reflected_Gram_eigenvalues": [
+        -0.0002506713789513212,
+        0.07246243644788408
+      ],
+      "integral_comparison": 9.813077866773595e-18,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 2.0,
+      "spatial_momentum": 0.4,
+      "reflected_Gram_eigenvalues": [
+        -0.0017561709607543283,
+        0.6287526488150328
+      ],
+      "integral_comparison": 3.236828524569469e-16,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 2.0,
+      "spatial_momentum": 0.7,
+      "reflected_Gram_eigenvalues": [
+        -0.00024371835132423305,
+        0.06595335835484274
+      ],
+      "integral_comparison": 2.8609792490763984e-17,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "exponential_Euclidean_damping",
+      "length": 2.0,
+      "spatial_momentum": 1.2,
+      "reflected_Gram_eigenvalues": [
+        -2.406063837718536e-06,
+        0.000551976776580438
+      ],
+      "integral_comparison": 6.22826730135561e-19,
+      "scope": "Reflection-positivity test of this Euclidean covariance as written, not every nonlocal theory"
+    },
+    {
+      "model": "Pauli_Villars_comparison",
+      "mass": 1.0,
+      "negative_weight_eigenvalues": [
+        -0.005398214241108994,
+        0.5075569680093611
+      ],
+      "positive_weight_eigenvalues": [
+        0.002298646268887966,
+        1.1919629783697245
+      ]
+    },
+    {
+      "model": "Pauli_Villars_comparison",
+      "mass": 2.0,
+      "negative_weight_eigenvalues": [
+        -0.007940206251936595,
+        0.7364932387686345
+      ],
+      "positive_weight_eigenvalues": [
+        0.006080252332507723,
+        0.9617870935576592
+      ]
+    },
+    {
+      "model": "Pauli_Villars_comparison",
+      "mass": 4.0,
+      "negative_weight_eigenvalues": [
+        -0.00493869080186637,
+        0.8279447387866263
+      ],
+      "positive_weight_eigenvalues": [
+        0.004706950997246439,
+        0.8687073794248583
+      ]
+    }
+  ],
+  "observer_covariance": [
+    {
+      "boost_speed": 0.2,
+      "mass": 0.0,
+      "observer_filter_error": 6.661338147750939e-16,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    },
+    {
+      "boost_speed": 0.2,
+      "mass": 1.3,
+      "observer_filter_error": 5.551115123125783e-16,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    },
+    {
+      "boost_speed": 0.6,
+      "mass": 0.0,
+      "observer_filter_error": 8.881784197001252e-16,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    },
+    {
+      "boost_speed": 0.6,
+      "mass": 1.3,
+      "observer_filter_error": 6.661338147750939e-16,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    },
+    {
+      "boost_speed": 0.85,
+      "mass": 0.0,
+      "observer_filter_error": 8.881784197001252e-16,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    },
+    {
+      "boost_speed": 0.85,
+      "mass": 1.3,
+      "observer_filter_error": 1.7763568394002505e-15,
+      "scope": "Simultaneous Lorentz transformation of momentum and supplied observer; no preferred observer is selected"
+    }
+  ],
+  "resolved_spectra": [
+    {
+      "spatial_resolution": 0.3,
+      "temporal_resolution": 0.2,
+      "continuum_power": 0,
+      "continuum_weight": 0.0,
+      "resolved_scalar_variance": 0.03896968601628376,
+      "pole_lower_bound": 0.03896968601628376,
+      "laplace_spectral_upper_bound": 0.03896968601628376,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 0.3,
+      "temporal_resolution": 0.2,
+      "continuum_power": 0,
+      "continuum_weight": 0.1,
+      "resolved_scalar_variance": 0.16122477883142033,
+      "pole_lower_bound": 0.03896968601628376,
+      "laplace_spectral_upper_bound": 0.28253022361805724,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 0.3,
+      "temporal_resolution": 0.2,
+      "continuum_power": 2,
+      "continuum_weight": 0.005,
+      "resolved_scalar_variance": 4.502848918977391,
+      "pole_lower_bound": 0.03896968601628376,
+      "laplace_spectral_upper_bound": 15.261503286127123,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 1.0,
+      "temporal_resolution": 0.4,
+      "continuum_power": 0,
+      "continuum_weight": 0.0,
+      "resolved_scalar_variance": 0.004367292398376628,
+      "pole_lower_bound": 0.004367292398376628,
+      "laplace_spectral_upper_bound": 0.004367292398376628,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 1.0,
+      "temporal_resolution": 0.4,
+      "continuum_power": 0,
+      "continuum_weight": 0.1,
+      "resolved_scalar_variance": 0.00704426887938912,
+      "pole_lower_bound": 0.004367292398376628,
+      "laplace_spectral_upper_bound": 0.011191186770840108,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 1.0,
+      "temporal_resolution": 0.4,
+      "continuum_power": 2,
+      "continuum_weight": 0.005,
+      "resolved_scalar_variance": 0.009881458720734326,
+      "pole_lower_bound": 0.004367292398376628,
+      "laplace_spectral_upper_bound": 0.03102312979081209,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 0.5,
+      "temporal_resolution": 1.0,
+      "continuum_power": 0,
+      "continuum_weight": 0.0,
+      "resolved_scalar_variance": 0.004052847345693511,
+      "pole_lower_bound": 0.004052847345693511,
+      "laplace_spectral_upper_bound": 0.004052847345693511,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 0.5,
+      "temporal_resolution": 1.0,
+      "continuum_power": 0,
+      "continuum_weight": 0.1,
+      "resolved_scalar_variance": 0.00469773245369015,
+      "pole_lower_bound": 0.004052847345693511,
+      "laplace_spectral_upper_bound": 0.005066059182116889,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    },
+    {
+      "spatial_resolution": 0.5,
+      "temporal_resolution": 1.0,
+      "continuum_power": 2,
+      "continuum_weight": 0.005,
+      "resolved_scalar_variance": 0.0040957602069145675,
+      "pole_lower_bound": 0.004052847345693511,
+      "laplace_spectral_upper_bound": 0.004154168529335849,
+      "scope": "Positive spectrum rho=Z delta_0+weight*s^power ds; spatial resolution alone need not control its mass continuum"
+    }
+  ],
+  "measurement_commutators": [
+    {
+      "resolution_squared": 0.04,
+      "time": 0.4,
+      "radius": 0.6,
+      "spacelike": true,
+      "commutator_kernel": 0.14532906941447915,
+      "integral_error": 1.3600232051658168e-15,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    },
+    {
+      "resolution_squared": 0.04,
+      "time": 0.4,
+      "radius": 1.2,
+      "spacelike": true,
+      "commutator_kernel": 0.0017131420146059332,
+      "integral_error": 4.7704895589362195e-18,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    },
+    {
+      "resolution_squared": 0.04,
+      "time": 0.4,
+      "radius": 2.0,
+      "spacelike": true,
+      "commutator_kernel": 6.315583788759009e-09,
+      "integral_error": 7.074503547890397e-19,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    },
+    {
+      "resolution_squared": 0.16,
+      "time": 0.4,
+      "radius": 0.6,
+      "spacelike": true,
+      "commutator_kernel": 0.06826197013246388,
+      "integral_error": 2.7755575615628914e-17,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    },
+    {
+      "resolution_squared": 0.16,
+      "time": 0.4,
+      "radius": 1.2,
+      "spacelike": true,
+      "commutator_kernel": 0.016348218034136015,
+      "integral_error": 3.469446951953614e-18,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    },
+    {
+      "resolution_squared": 0.16,
+      "time": 0.4,
+      "radius": 2.0,
+      "spacelike": true,
+      "commutator_kernel": 0.0005104828228677492,
+      "integral_error": 1.5178830414797062e-18,
+      "scope": "Local massless scalar smeared with noncompact Gaussian measurement profiles; not a test of unsmeared graviton microcausality"
+    }
+  ],
+  "metric_chart": [
+    {
+      "matrix_dimension": 3,
+      "coupling": 0.1,
+      "two_sided_identity_error": 1.1755509241416223e-15,
+      "inverse_product_error": 1.2432797312332503e-15,
+      "global_chart_inverse_error": 1.1932474373696106e-14,
+      "unitary_covariance_error": 1.3499443044974045e-15,
+      "minimum_metric_eigenvalue": 0.8377953809012777,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 3,
+      "coupling": 0.5,
+      "two_sided_identity_error": 3.1816389917431723e-15,
+      "inverse_product_error": 1.5059169528642003e-15,
+      "global_chart_inverse_error": 3.5418983622598985e-15,
+      "unitary_covariance_error": 3.2155697207994616e-15,
+      "minimum_metric_eigenvalue": 0.4234276211753556,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 3,
+      "coupling": 1.0,
+      "two_sided_identity_error": 9.227315767675993e-15,
+      "inverse_product_error": 4.874747848499373e-15,
+      "global_chart_inverse_error": 5.497514329070774e-15,
+      "unitary_covariance_error": 7.964604463031395e-15,
+      "minimum_metric_eigenvalue": 0.2025148072103866,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 3,
+      "coupling": 2.0,
+      "two_sided_identity_error": 3.303837367370184e-14,
+      "inverse_product_error": 3.716707373855879e-14,
+      "global_chart_inverse_error": 6.7710441744036745e-15,
+      "unitary_covariance_error": 2.2767709476770374e-14,
+      "minimum_metric_eigenvalue": 0.0690002499756424,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 6,
+      "coupling": 0.1,
+      "two_sided_identity_error": 3.481163488916172e-15,
+      "inverse_product_error": 3.3234336849330787e-15,
+      "global_chart_inverse_error": 5.843796647835675e-14,
+      "unitary_covariance_error": 2.141393590794251e-15,
+      "minimum_metric_eigenvalue": 0.6143760389886904,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 6,
+      "coupling": 0.5,
+      "two_sided_identity_error": 2.5562135703019745e-14,
+      "inverse_product_error": 1.1330232923053157e-14,
+      "global_chart_inverse_error": 2.1185845093235233e-14,
+      "unitary_covariance_error": 3.981349623453227e-15,
+      "minimum_metric_eigenvalue": 0.12618443584590103,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 6,
+      "coupling": 1.0,
+      "two_sided_identity_error": 9.607063431443298e-14,
+      "inverse_product_error": 7.857282369464315e-14,
+      "global_chart_inverse_error": 2.0880274548851887e-14,
+      "unitary_covariance_error": 9.495098455014092e-15,
+      "minimum_metric_eigenvalue": 0.03821731365878715,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "matrix_dimension": 6,
+      "coupling": 2.0,
+      "two_sided_identity_error": 3.6248889726448017e-13,
+      "inverse_product_error": 9.462691294058205e-13,
+      "global_chart_inverse_error": 1.9689589114395314e-14,
+      "unitary_covariance_error": 3.560452313342249e-14,
+      "minimum_metric_eigenvalue": 0.010120704322096042,
+      "scope": "Dimension six also tests a self-adjoint matrix with operator-valued blocks; commuting metric entries are not inferred"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "coupling": 0.2,
+      "two_sided_mean": 2.6000000000000005,
+      "exact_mean": 2.6,
+      "scope": "Finite asinh-metric and inverse means for a non-Gaussian variable without exponential moments"
+    },
+    {
+      "model": "Gaussian_cubed",
+      "coupling": 1.0,
+      "two_sided_mean": 17.000000000000007,
+      "exact_mean": 17.0,
+      "scope": "Finite asinh-metric and inverse means for a non-Gaussian variable without exponential moments"
+    }
+  ],
+  "canonical_pullback": [
+    {
+      "configuration_scale": 0.2,
+      "coupling": 0.4,
+      "cotangent_symplectic_error": 6.746171164915842e-11,
+      "scope": "Full six-coordinate canonical chart with all twelve phase-space outputs"
+    },
+    {
+      "configuration_scale": 0.2,
+      "coupling": 1.2,
+      "cotangent_symplectic_error": 5.052914336519533e-11,
+      "scope": "Full six-coordinate canonical chart with all twelve phase-space outputs"
+    },
+    {
+      "configuration_scale": 1.5,
+      "coupling": 0.4,
+      "cotangent_symplectic_error": 1.6159192616394928e-09,
+      "scope": "Full six-coordinate canonical chart with all twelve phase-space outputs"
+    },
+    {
+      "configuration_scale": 1.5,
+      "coupling": 1.2,
+      "cotangent_symplectic_error": 3.1081045570909665e-10,
+      "scope": "Full six-coordinate canonical chart with all twelve phase-space outputs"
+    }
+  ],
+  "metric_convergence": [
+    {
+      "Gaussian_input_clip": 1.5,
+      "field_L2_error": 2.8822471623294184,
+      "metric_and_inverse_L1_error": 3.1730811459768002,
+      "analytical_L1_upper_bound": 15.333554903592503,
+      "scope": "Unbounded non-Gaussian matrix H=Z^3 E0+Z E2, with full Gaussian tail integration; not an interacting spin-field limit"
+    },
+    {
+      "Gaussian_input_clip": 2.0,
+      "field_L2_error": 2.0625105816454887,
+      "metric_and_inverse_L1_error": 2.1745324017557954,
+      "analytical_L1_upper_bound": 10.972556294353998,
+      "scope": "Unbounded non-Gaussian matrix H=Z^3 E0+Z E2, with full Gaussian tail integration; not an interacting spin-field limit"
+    },
+    {
+      "Gaussian_input_clip": 3.0,
+      "field_L2_error": 0.7023980241599175,
+      "metric_and_inverse_L1_error": 0.44764095165496653,
+      "analytical_L1_upper_bound": 3.7367574885307606,
+      "scope": "Unbounded non-Gaussian matrix H=Z^3 E0+Z E2, with full Gaussian tail integration; not an interacting spin-field limit"
+    },
+    {
+      "Gaussian_input_clip": 4.0,
+      "field_L2_error": 0.13968795363711703,
+      "metric_and_inverse_L1_error": 0.028769134519676606,
+      "analytical_L1_upper_bound": 0.7431399133494625,
+      "scope": "Unbounded non-Gaussian matrix H=Z^3 E0+Z E2, with full Gaussian tail integration; not an interacting spin-field limit"
+    }
+  ],
+  "source_sha256": {
+    "POSITIVE_SPECTRAL_METRIC.md": "062c0590f14aef3b4454e7ec911713e269d1884c4b7d5eca62a8240259500a6f",
+    "scripts/positive_spectral_metric_audit.py": "c2393241d0c421919bacebf892a4ad70c2d72f8586bc4b91c934dcdcfae45301",
+    "ULTRAVIOLET_METRIC_CONTROL.md": "4fbf39cec000b98b9edb1b4fddaca3d71484da2a4d9e7474341b20048badcb2a",
+    "scripts/ultraviolet_metric_control_audit.py": "d66f2afbaac2a0e27f050aa4d7de8e9d1d3a86ce76d55c0d8b6e20c8bb3af465",
+    "data/ultraviolet_metric_control_audit.json": "096e71ae3d2b4363d7d7a6a87de762c0c459af62a0460014c6892f0c5af366da",
+    "AFFINE_SPIN_METRIC.md": "64c802085e526a9c325fa6ed52b5951ef348ef7e8037ff00e087a7ba9e14c8c7",
+    "REDUCED_TENSOR_HAMILTONIAN.md": "ffb4f6fa427f90f8dc80f06214bc163cee859debb83d3dd07f8b075b749b625c",
+    "CANONICAL_METRIC_RECONSTRUCTION.md": "960357fd3d35d2c7f4a583c0551f2cc3713c7c9528daf506fda3a4657dd3c8f9",
+    "CLOCK_MEDIATED_CONSTRAINTS.md": "9e0f56105c326d6a48205c90b4ff2deafe238d1ab906cb5cc299e2b0a02626e0"
+  },
+  "scope": {
+    "proved": "Conditional positive-pole non-Gaussian metric moment bound; observer-covariant linear resolution; global positive asinh metric with exact two-sided moment control",
+    "not_proved": [
+      "A local positive-metric graviton potential",
+      "Einstein diffeomorphism and clock algebra",
+      "microscopic observer construction",
+      "interacting spin regulator removal",
+      "physical G",
+      "TOE"
+    ],
+    "qualification": "The metric chart and measurement family are supplied constructions. A coordinate change alone preserves the original physical difficulties."
+  }
+}

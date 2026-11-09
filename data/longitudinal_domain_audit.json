@@ -1,0 +1,286 @@
+{
+  "homogeneous_matrix_cases": [
+    {
+      "capacity": 16,
+      "precision_digits": 70,
+      "epsilon": "0",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.134515082002792649547588447941702250849837595",
+      "log_vacuum_energy": "0.512594534679390325700178788022321499226158773",
+      "largest_longitudinal_eigenvalue": "7.11427661099550605924750090062",
+      "hermitian_relative_error": "0.0",
+      "eigenvector_relative_residual": "1.017554e-70",
+      "orthonormality_error": "4.4198641e-70"
+    },
+    {
+      "capacity": 16,
+      "precision_digits": 70,
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.112906454119814388582869418695119105663339311",
+      "log_vacuum_energy": "0.4978393149348671558892906323500118384986545",
+      "largest_longitudinal_eigenvalue": "4.62941355555505100268604944227",
+      "hermitian_relative_error": "1.8965548e-73",
+      "eigenvector_relative_residual": "9.9464434e-71",
+      "orthonormality_error": "4.1416307e-70"
+    },
+    {
+      "capacity": 32,
+      "precision_digits": 70,
+      "epsilon": "0",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.134515333478983763658051921716449200788953932",
+      "log_vacuum_energy": "0.512594706984862814829403688325777819444577103",
+      "largest_longitudinal_eigenvalue": "25.6865709318496402110902808533",
+      "hermitian_relative_error": "0.0",
+      "eigenvector_relative_residual": "1.6994164e-70",
+      "orthonormality_error": "9.2726428e-70"
+    },
+    {
+      "capacity": 32,
+      "precision_digits": 70,
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.112906454156953615441546741599806313126649648",
+      "log_vacuum_energy": "0.497839314960140263192439338696288013891489462",
+      "largest_longitudinal_eigenvalue": "10.8160218813200682816646831922",
+      "hermitian_relative_error": "9.8664732e-74",
+      "eigenvector_relative_residual": "1.424748e-70",
+      "orthonormality_error": "8.2424472e-70"
+    },
+    {
+      "capacity": 48,
+      "precision_digits": 70,
+      "epsilon": "0",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.598772257233117141124822150250131939906019598",
+      "log_vacuum_energy": "0.852506540825433180115689989494206213759304945",
+      "largest_longitudinal_eigenvalue": "65.5942365061577959318446048087",
+      "hermitian_relative_error": "0.0",
+      "eigenvector_relative_residual": "2.3636566e-70",
+      "orthonormality_error": "1.2983481e-69"
+    },
+    {
+      "capacity": 48,
+      "precision_digits": 70,
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.112906454156953618299632728961485389721303163",
+      "log_vacuum_energy": "0.497839314960140265137356342906065226076743435",
+      "largest_longitudinal_eigenvalue": "17.3883813851101878900682505794",
+      "hermitian_relative_error": "2.7205647e-72",
+      "eigenvector_relative_residual": "1.4454219e-70",
+      "orthonormality_error": "1.2387581e-69"
+    },
+    {
+      "capacity": 64,
+      "precision_digits": 70,
+      "epsilon": "0",
+      "hbar": "0.2",
+      "log_vacuum_potential": "50.8636104925862923465004227910013862272419642",
+      "log_vacuum_energy": "50.863610492586292346500465537383321615703184",
+      "largest_longitudinal_eigenvalue": "141.787294854858636429290851823",
+      "hermitian_relative_error": "0.0",
+      "eigenvector_relative_residual": "1.7797969e-70",
+      "orthonormality_error": "1.75776e-69"
+    },
+    {
+      "capacity": 64,
+      "precision_digits": 70,
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.112906454156953618299634633317389829591119394",
+      "log_vacuum_energy": "0.497839314960140265137357638813255209332436029",
+      "largest_longitudinal_eigenvalue": "23.7579990796148581834966294704",
+      "hermitian_relative_error": "2.3692949e-72",
+      "eigenvector_relative_residual": "2.1925267e-70",
+      "orthonormality_error": "2.150167e-69"
+    },
+    {
+      "capacity": 64,
+      "precision_digits": 110,
+      "epsilon": "0",
+      "hbar": "0.2",
+      "log_vacuum_potential": "50.8636104925862923465004227910013862272419642",
+      "log_vacuum_energy": "50.863610492586292346500465537383321615703184",
+      "largest_longitudinal_eigenvalue": "141.787294854858636429290851823",
+      "hermitian_relative_error": "0.0",
+      "eigenvector_relative_residual": "1.9573807e-110",
+      "orthonormality_error": "1.7908625e-109"
+    },
+    {
+      "capacity": 64,
+      "precision_digits": 110,
+      "epsilon": "0.1",
+      "hbar": "0.2",
+      "log_vacuum_potential": "0.112906454156953618299634633317389829591119394",
+      "log_vacuum_energy": "0.497839314960140265137357638813255209332436029",
+      "largest_longitudinal_eigenvalue": "23.7579990796148581834966294704",
+      "hermitian_relative_error": "9.2031176e-113",
+      "eigenvector_relative_residual": "1.8933946e-110",
+      "orthonormality_error": "1.6698787e-109"
+    }
+  ],
+  "precision_comparisons": [
+    {
+      "epsilon": "0",
+      "log_potential_precision_difference": "0.0"
+    },
+    {
+      "epsilon": "0.1",
+      "log_potential_precision_difference": "0.0"
+    }
+  ],
+  "regularized_translation_samples": [
+    {
+      "epsilon": "0.01",
+      "translation_parameter": -5,
+      "clock": "1.9151695967140056950198397786542644e-174",
+      "chart_identity_error": "0.0",
+      "derivative_error": "4.0646196e-251"
+    },
+    {
+      "epsilon": "0.01",
+      "translation_parameter": -1,
+      "clock": "0.033856301402900501848882443645297269",
+      "chart_identity_error": "0.0",
+      "derivative_error": "1.0542198e-81"
+    },
+    {
+      "epsilon": "0.01",
+      "translation_parameter": 0,
+      "clock": "1.0",
+      "chart_identity_error": "0.0",
+      "derivative_error": "1.0542198e-81"
+    },
+    {
+      "epsilon": "0.01",
+      "translation_parameter": 1,
+      "clock": "1.9931030724288193577607834889057946",
+      "chart_identity_error": "0.0",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.01",
+      "translation_parameter": 5,
+      "clock": "5.982112262732127156858327398387167",
+      "chart_identity_error": "0.0",
+      "derivative_error": "1.0542198e-81"
+    },
+    {
+      "epsilon": "0.1",
+      "translation_parameter": -5,
+      "clock": "4.2483542552915888148440959983171523e-18",
+      "chart_identity_error": "0.0",
+      "derivative_error": "8.1929336e-97"
+    },
+    {
+      "epsilon": "0.1",
+      "translation_parameter": -1,
+      "clock": "0.17455280027406993830743012648753899",
+      "chart_identity_error": "0.0",
+      "derivative_error": "1.0542198e-81"
+    },
+    {
+      "epsilon": "0.1",
+      "translation_parameter": 0,
+      "clock": "1.0",
+      "chart_identity_error": "0.0",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.1",
+      "translation_parameter": 1,
+      "clock": "1.9340389465355944649919429770488126",
+      "chart_identity_error": "2.1084396e-81",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.1",
+      "translation_parameter": 5,
+      "clock": "5.8238046236432866014597104539925845",
+      "chart_identity_error": "8.4337584e-81",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.5",
+      "translation_parameter": -5,
+      "clock": "0.00033523778379133064998862958505361745",
+      "chart_identity_error": "0.0",
+      "derivative_error": "1.0295115e-84"
+    },
+    {
+      "epsilon": "0.5",
+      "translation_parameter": -1,
+      "clock": "0.42630275100686274567323620734765873",
+      "chart_identity_error": "5.271099e-82",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.5",
+      "translation_parameter": 0,
+      "clock": "1.0",
+      "chart_identity_error": "0.0",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.5",
+      "translation_parameter": 1,
+      "clock": "1.7268504111633889389468388219165148",
+      "chart_identity_error": "0.0",
+      "derivative_error": "0.0"
+    },
+    {
+      "epsilon": "0.5",
+      "translation_parameter": 5,
+      "clock": "5.1778090028178339031943938077370553",
+      "chart_identity_error": "0.0",
+      "derivative_error": "0.0"
+    }
+  ],
+  "source_sha256": {
+    "scripts/positive_clock_continuous_audit.py": "3d2d2cee9ad62c86279be610b81ed93b6774f2d80344459265880b0e48732c5b",
+    "scripts/constraint_reduced_spin_model.py": "791550fbeed1f24d19c3f994c646a1025ff43090a479f431ff97695e2d972671",
+    "scripts/quantum_areal_spin_model.py": "aa1847f4b9e207a2debab2eeca65005fddd6b581c98ee156ea76e74dc43425bb",
+    "scripts/holomorphic_tensor_phase_audit.py": "55993733f8d158a2fd62fe7ca7cc1c23be1406ad6e1dff6508ebc0545052e911",
+    "UnifiedTheory/Audit/KFCausalPositiveClockReconstruction.lean": "3f3cfbaa4a98302a66032ee532ebe42bde5715be52e1143a2e77b14492eb442d",
+    "UnifiedTheory/Audit/KFCausalContinuousConstraintFlow.lean": "4c4e86e12c4c690eda1a1a6d06972cc734f2c4259479e978272a3c5fe314c8f7",
+    "UnifiedTheory/Audit/KFCausalConcreteClockConstraint.lean": "7578256ebd7c6a4229a24015157b19c47fd63158d05cbe0534cc2df170d03be0",
+    "UnifiedTheory/Audit/KFCausalReducedSpinHamiltonian.lean": "6edc1a57176217402d78b9b1fa77ce30c0ae990463f4a9364bfc1d7db8c4ab6b",
+    "UnifiedTheory/Audit/KFCausalSpinSourceIdentity.lean": "bcfe582498150ba85e45251cad95bbe61cf543af463fb3116bc4c6f4f4f7cee1",
+    "UnifiedTheory/Audit/KFCausalQuantumArealCandidate.lean": "e92bb69e83f8b8c466450a2efb8ac4a56539a3c97111467e797a731df7d7535c",
+    "UnifiedTheory/Audit/KFCausalFiniteOccupationLadders.lean": "3f6bd126b4ee28ca613e7932fda4f4a9af67679a7add755aa34cf9a316207c8f",
+    "UnifiedTheory/Audit/KFCausalGradedSpinSource.lean": "e5d004beee0600bb9eb2c745595edbc04c50378e8700409b014ceac3dbace300",
+    "UnifiedTheory/Audit/KFCausalQuantumConstraintReduction.lean": "55ac05e54e5ce01a0819fafd47323fbc22b8480a9095e89901b881bc69448d8d",
+    "scripts/global_spin_dynamics_audit.py": "b8d638388a45fb36f8ad5da862e55b02921529a51f5346d1af0d3d4df2c09baa",
+    "UnifiedTheory/Audit/KFCausalRadialCutoff.lean": "a399ef6c1e6b954b5226c10621e71a554765c99cf6d8054f3b7091b7bef547bc",
+    "UnifiedTheory/Audit/KFCausalIntervalPropagator.lean": "75464f75a7618393b03f46e28b80e8d491001f689090dc376224fcf7a06f1e07",
+    "UnifiedTheory/Audit/KFCausalGlobalPropagator.lean": "93fb06cde8a089096942c05ae9c25e99d8c30e689cdb6f10878c8d5b163769cd",
+    "UnifiedTheory/Audit/KFCausalGlobalSpinDynamics.lean": "0daac957338761f6dbac46351bcc53c415105c7084044c202d06c0b2727e5adc",
+    "scripts/clock_limit_exponential_audit.py": "af9d6533b5c8973c18fdbd98b053dad1096e4a501b0b58ac0a8def2c269924de",
+    "UnifiedTheory/Audit/KFCausalFiniteClockCCR.lean": "1754f9befe2be265d769f6f9e8e72b327bf0aa0a5354ab2900febc4e16d265ed",
+    "UnifiedTheory/Audit/KFCausalPolynomialClockObstruction.lean": "98754b72669635bc2f83e7291b93b94f0b5565b6e971f5d82e1c6e179647403c",
+    "UnifiedTheory/Audit/KFCausalExponentialClockDynamics.lean": "9a4989e32e7c9b7393b8eebed7be852b966c5efaef96bb535a12e8df03e92e61",
+    "scripts/quantum_energy_domain_audit.py": "d4ab89e4e87735d4c4b0c19f16c196b52695982ead351ed12e85dbe7c9244a6a",
+    "UnifiedTheory/Audit/KFCausalQuantumEnergyControl.lean": "dc5d06cc6179defc698aafb8468578bbbf4434acc85b760c686e005afefac5de",
+    "UnifiedTheory/Audit/KFCausalExponentialEnergyBound.lean": "ad6d57c8e016ed1749e92382739f4e53999a82807a3bb43dff4932f8ad94b53c",
+    "UnifiedTheory/Audit/KFCausalClockEnergyObstruction.lean": "7ebbb2067a55d065f76970102ae8f752c5bb54ae076287e49fead36809e1e219",
+    "UnifiedTheory/Audit/KFCausalVacuumClockDomain.lean": "504c9de6e31a180473ca02c1efaa3fe550f8702b9ecec9ef60cb1f744f0048da",
+    "scripts/inverse_clock_parity_audit.py": "43c0ddbb37ff0a5021cb8a64c28d972c57124ecb7c6c1cbd7bd47a43e153d156",
+    "UnifiedTheory/Audit/KFCausalGravityPairCoercivity.lean": "54348ed81542838ecfee8ed2a0f987f1019e64638242bb70da0aed9e802dabe1",
+    "UnifiedTheory/Audit/KFCausalInverseClockEnergy.lean": "7fe949640f029747228db95b9cdec39e9666fbb189a759e2a5e24a5f8bce87c4",
+    "UnifiedTheory/Audit/KFCausalOccupationParity.lean": "458f93c0149b4f1a7921a37cbc88d635047e9d4f955f3646dbb71a1e857d9ba4",
+    "UnifiedTheory/Audit/KFCausalUniformInverseClock.lean": "b661d91479a5e5c4244b5c23fc933755187cd0a9b06680bf016738ffa0048a4d",
+    "scripts/longitudinal_domain_audit.py": "4e4134870fbc864a2508f4063042e5e87e542dcd003a79b53b7665b243222b9e",
+    "UnifiedTheory/Audit/KFCausalLongitudinalDomain.lean": "7eec07207bcf1f18f2c10cad77dfed6a20775995888fe49b10425922d45f40dd",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalChart.lean": "152bf170505f4fce2327c91e620a11641906493b4befbc172430ac9fac02db94",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalPullback.lean": "3fa015346d21f8cf26982c9c2164c0c181d24ce0c56a00ad1884f5a744906982"
+  },
+  "numerical_environment": {
+    "mpmath": "1.3.0",
+    "sympy": "1.14.0"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.28.0",
+  "external_domain_reference": "https://arxiv.org/pdf/quant-ph/0103153",
+  "scope": "Lean verifies the formal half-line differential expression and deficiency profiles; the self-adjoint-extension obstruction uses the cited operator-domain theorem and is not claimed to be a Lean-verified unbounded-operator result. The proposed epsilon>0 chart has a proved global positive translation flow and an L2 Jacobian pullback. It changes the longitudinal model. These finite one-mode spectra do not prove divergence or convergence of the full six-mode Hamiltonian. A quantum Hamiltonian domain, regulator removal, physical identification and a TOE remain unproved."
+}

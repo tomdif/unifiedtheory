@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "model": "Nonlinear nonabelian DeTurck--Yang--Mills heat on T^2; exact Fourier--Galerkin truncations.",
+  "analytic_result": "Regular initial connection data in W_(s+p), s>=2, p>=1: common local existence time, uniqueness, cutoff-uniform bounds, full-sequence O((N+1)^(-p)) convergence and transport bounds.",
+  "formalization": "18 supporting theorems; Banach-space existence, smoothing, gauge removal and full continuum convergence are analytic proofs, not fully Lean-formalized.",
+  "targeted_build": "PASS (no warnings)",
+  "targeted_build_command": "lake build UnifiedTheory.LayerA.NonabelianYangMillsLocal",
+  "axiom_audit": "PASS",
+  "axiom_audit_command": "lake env lean scripts/CheckNonabelianYangMillsLocal.lean",
+  "theorem_count": 18,
+  "theorems": [
+    "comm_self",
+    "comm_antisymm",
+    "deturck_component_identity",
+    "comm_difference",
+    "double_comm_difference",
+    "comm_norm",
+    "double_comm_norm",
+    "comm_difference_norm",
+    "nonlinear_bound_relation",
+    "nonlinearLipschitz_pos",
+    "contraction_ball",
+    "absorb_cutoff_error",
+    "homogeneous_curvature",
+    "homogeneous_rhs_one",
+    "homogeneous_rhs_two",
+    "homogeneous_curvature_nonzero",
+    "homogeneous_curvature_normSq",
+    "amplitude_hasDerivAt"
+  ],
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "used_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "numerical_audit_command": "python3 scripts/nonabelian_yang_mills_local_audit.py",
+  "exact_rational_checks": 64,
+  "independent_convolution_coefficients": 54,
+  "homogeneous_exact_solution_max_error": 5.521139101460903e-13,
+  "inhomogeneous_cutoff_comparisons": 5,
+  "numerical_path_checks": 20,
+  "limits": [
+    "Local time and regular data only.",
+    "No global nonlinear or abelian-style rough-data theorem claimed.",
+    "No local Wilson-link evolution or finite-cutoff local gauge equivariance claimed.",
+    "Floating-point diagnostics are not rigorous time-integration enclosures or a continuum proof.",
+    "No mathematical novelty claim."
+  ],
+  "sha256": {
+    "UnifiedTheory/LayerA/NonabelianYangMillsLocal.lean": "db3b02eda11fbcfc8ce5125566db9ee1423e1a949320126b2277133fd64a5acc",
+    "scripts/CheckNonabelianYangMillsLocal.lean": "24bd1f042feca265d0308743472c41a9387051ce8011777e243b6fe354d603cf",
+    "scripts/nonabelian_yang_mills_local_audit.py": "8bdd22cb91b8b5b86b1116f2693d32b5af75793ced93a6134ce21e053f9b62e5",
+    "NONABELIAN_YANG_MILLS_LOCAL_LIMIT.md": "3cd8d0f695d40e2cb3182bdbe80edbf4c62b76c7198f9fcd32775d1a1a5e127a",
+    "data/nonabelian_yang_mills_local_axioms.txt": "e5bc328aa224a5b428fc9c1df03467fed3b88c21a9913fde449a93cb2d3fa35c",
+    "data/nonabelian_yang_mills_local_audit.json": "1ce1db80e8fc246f4844be8d1933549e8f0e56ed9584fc88d0c4293895dca03d",
+    "UnifiedTheory/LayerA/GaugeTransportStability.lean": "39eb9dbde86c996c06f4808aa5f2e77e628429633024f77c2681e77bc864aadc"
+  }
+}

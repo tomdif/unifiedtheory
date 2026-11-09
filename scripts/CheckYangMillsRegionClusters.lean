@@ -1,0 +1,62 @@
+import UnifiedTheory.Clay.YangMills.WilsonRegionEnergy
+import UnifiedTheory.Clay.YangMills.WilsonRegionPartition
+import UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail
+import UnifiedTheory.Clay.YangMills.WilsonRegionClusters
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.touching
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.mem_touching
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.touching_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.interior
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.boundary
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.interior_subset
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.energy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.energy_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.term_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.energy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.star_sum_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.density
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.density_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.density_energy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.untouched_constant
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.fiber_action_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.fiberLaw
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionEnergy.fiberLaw_local
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.massLower_le_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.plaquetteDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cap_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cap_mass_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.plaquette_small
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cap_energy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.partition_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionPartition.cost_grid_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.rate_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.rate_eq_density
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.rate_energy_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.fiber_exponential_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.exponential_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.event_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.level
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.bad
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.bad_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.bad_rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.bad_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.commonLevel
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.commonLevel_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.level_le_common
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionDensityTail.level_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.mem_boundary
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.boundary_biUnion_subset
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.boundary_biUnion_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.rate_biUnion
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.union_cost_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.joint_bad_probability_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonRegionClusters.joint_common_probability_bound

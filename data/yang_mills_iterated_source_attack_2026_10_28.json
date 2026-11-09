@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-28",
+  "scope": "Continue actual Wilson source transport beyond the first independent-link integration. Separate new Lean results from SU(2) mathematical derivations and from remaining continuum requirements.",
+  "predecessor_research": "data/yang_mills_block_source_attack_2026_10_28.json",
+  "certificate": "data/yang_mills_source_tower_audit.json",
+  "conventions": {
+    "model": "Periodic n^4 SU(2), S0=sum_p a_p with a_p=2-ReTr U_p>=0, and probability mu_beta proportional to exp(-beta*S0) against product normalized Haar.",
+    "geometry": "Analytic chessboard estimates below use n=4*2^k, k>=1, tile side4, beta>=1. One-link statements assume at least n>=3. The Lean marginal tower has arbitrary compact groups and arbitrary finite coordinate subsets.",
+    "constants": "C_beta=1536*(1+log beta)+1024*log(24*pi^3); A_beta=log beta+1+(2/3)*log(24*pi^3).",
+    "star": "For selected link e, S_star=sum of its six incident plaquette defects. Unit quaternion staple coefficient vectors v_p have sum a, r=|a|<=6, and S_star=12-2*q dot a. Hence S_star>=12-2*r.",
+    "bad_event": "B_e(r0)={r_e<=r0}, 0<=r0<6; energy cost eta=2*(6-r0)>0; q_beta(r0)=min(1,exp(C_beta-beta*eta)).",
+    "primary_chessboard_reference": "Marek Biskup, Reflection Positivity and Phase Transitions in Lattice Spin Models(2006), Section4.3, Theorem4.8 and(4.32), printed42-44: https://www.math.ucla.edu/~biskup/PDFs/papers/Prague-School.pdf . The preceding research record contains the actual Wilson site-reflection/energy argument and inspected PDF hash; the Wilson application is our derivation."
+  },
+  "lean_certified_scope": {
+    "GibbsMarginalTower": {
+      "path": "UnifiedTheory/Clay/YangMills/GibbsMarginalTower.lean",
+      "declarations": 32,
+      "results": [
+        "Actual pushforward marginal equals the Gibbs law of the negative-log fiber partition.",
+        "Exact partition, response and marginal towers for successive integrations.",
+        "Nested L2 residual contraction with the same constant subtraction, true first/second marginals and original law.",
+        "Exact centered-square identity, hence total variance, retaining the eliminated contribution."
+      ],
+      "assumptions": "Continuous real sources and action on compact second-countable probability spaces; no supplied marginal or conditional normalizer bound.",
+      "not_asserted": "No strict contraction, fresh scale-dependent approximation, ultraviolet bound or physical field identification."
+    },
+    "WilsonBlockMarginal": {
+      "path": "UnifiedTheory/Clay/YangMills/WilsonBlockMarginal.lean",
+      "declarations": 31,
+      "results": [
+        "Measurable/continuous one- and two-stage finite coordinate decompositions and exact product-measure preservation.",
+        "Actual interacting periodic Wilson probability transport, not just a formal product partition.",
+        "First and second marginals proved equal to original Wilson pushforwards.",
+        "Nested residual and original-error L2 bounds and total centered-square decomposition under that actual law."
+      ],
+      "assumptions": "Arbitrary chosen finite subsets of positive edges; the second subset belongs to the first retained coordinate set. No independence of these blocks is required.",
+      "connection": "The previously proved independent-block factorization can supply the first response. The new theorem continues with the induced correlated law, without asserting Wilson-form closure."
+    }
+  },
+  "unscaled_error_transport": {
+    "status": "The two-stage continuous compact case and actual Wilson binding are Lean-certified. Iteration along a finite nested chain is the mathematical induction of the same theorem; no dedicated arbitrary-length Lean induction is counted.",
+    "statement": "If E[O|F1]=v+G+R and Fj is contained in F1, then E[O|Fj]=v+E[G|Fj]+E[R|Fj], and norm(E[R|Fj])_2<=norm(R)_2.",
+    "proof": "Apply the conditional-expectation tower and linearity; constants are preserved. Conditional Jensen gives the L2 bound. The formal implementation uses exact fiber Gibbs integrals and actual marginals, avoiding assumed conditional kernels.",
+    "sharpness": "If R is already measurable in Fj, equality holds. Thus this is nonexpansion, not strict contraction.",
+    "scale_warning": "If the physically normalized insertion is multiplied by Z_j, the transported error is multiplied by |Z_j|. Exact unscaled contraction does not absorb canonical field scaling, changes of normalization, fresh scale errors or infinite-volume limits.",
+    "second_derivative_warning": "A nonlinear effective source has both a conditional covariance and covariance of conditional means. The exact variance decomposition records both; replacing the effective source by its linear part would omit a term."
+  },
+  "continuous_clipped_coarse_source": {
+    "status": "Natural-math SU(2) derivation, independently checked; the Haar/quaternion bridge and numerical beta-dependent estimate are not Lean-certified.",
+    "definitions": "For fixed real weights f_p on the six plaquettes let fbar=(sum f_p)/6, d_p=f_p-fbar, d=sum d_p*v_p, D_infty=max|d_p|, D1=sum|d_p|. Set Gtilde_f=fbar*(12-2*r)-2*(a/max(r,3)) dot d.",
+    "regularity": "Gtilde is continuous and gauge invariant, including at a=0. It equals the earlier minimizer-based G_f when r>=3. For nonnegative f, with s=min(1,r/3), it is s*G_f+(1-s)*fbar*(12-2*r), hence nonnegative.",
+    "exact_identity": "Put kappa=2*beta*r, m=E_kappa q0, h=kappa*(1-m), and R0=(h-3/2)/beta. Then E[sum f_p*a_p|exterior]=Gtilde_f+3*fbar/(2*beta)+Rtilde_f. For r>0, Rtilde=fbar*R0+2*(s-m)*(a/r) dot d. At r=0 the gradient term vanishes.",
+    "bounds": "On r>=3, |Rtilde|<=3|fbar|/(8*beta^2)+D_infty*(6-r)/(2*beta). On r<3, both s and m lie in[0,1], giving |Rtilde|<=3|fbar|/(2*beta)+2*D1. These are the same estimates as before clipping.",
+    "L2": "With delta=6-r, epsilon=q_beta(3), norm(Rtilde)_2<=|fbar|*sqrt(9/(64*beta^4)+9*epsilon/(4*beta^2))+sqrt(D_infty^2*E delta^2/(4*beta^2)+4*D1^2*epsilon). The preceding chessboard tail gives E delta^2<=u^2+u/beta+1/(2*beta^2), u=C_beta/(2*beta).",
+    "consequence": "This continuous source can be used in the compact marginal-tower theorem after its actual SU(2) construction/estimates are formalized. The vacuum remains source- and coupling-dependent but exterior-independent; its unscaled L2 residual can be transported further."
+  },
+  "bad_events_and_coarse_conditional_probabilities": {
+    "status": "Natural-math consequence of the audited chessboard bound and conditional Jensen; not Lean-certified as a Yang-Mills bad-region theorem.",
+    "first_marginal": "For an eliminated link in the first independent checkerboard, all six staples contain only retained links. Thus r_e and its bad event are retained-measurable, and the entire joint bad-event law passes exactly to the first marginal.",
+    "MGF": "For one specified star per coarse tile, E exp(sum lambda_t*1_Bt)<=product_t[1+q_beta(r0)*(exp(lambda_t)-1)] for lambda_t>=0. No independence is assumed.",
+    "later_steps": "If later integration removes coordinates needed to evaluate those stars, define p_t=E[1_Bt|Fj]. Conditional Jensen preserves the same displayed MGF with p_t in place of1_Bt.",
+    "coarse_tail": "For q<theta<1 and a finite tile set D, P(p_t>=theta for all t in D)<=exp[-|D|*D_Ber(theta||q)], where D_Ber=theta*log(theta/q)+(1-theta)*log((1-theta)/(1-q)). Apply Chernoff to sum_D p_t and optimize the positive parameter.",
+    "product_caution": "One cannot instead assert E product p_t<=q^|D|. For two independent Bernoulli(q) indicators, retaining only their sum gives p1=p2=(B1+B2)/2 and E p1*p2=q^2+q*(1-q)/2>q^2.",
+    "geometric_gap": "The events p_t>=theta measure retained conditional risk of microscopic bad stars. They have not been identified with bad regions of the newly generated coarse action."
+  },
+  "full_star_marked_energy": {
+    "status": "Natural-math actual Wilson estimates, independently checked; not Lean-certified.",
+    "normalized_tail": "For0<=s<beta, E_beta[1_B*exp(s*S_star)]<=exp[C_beta-(beta-s)*eta].",
+    "proof": [
+      "Apply the positive-function chessboard estimate to1_B*exp(s*S_star).",
+      "Disseminated stars have disjoint plaquette sets. On the event that all stars are bad, -beta*S0+s*sum S_star<=-(beta-s)*eta*Ntiles; the untouched plaquettes contribute nonpositively.",
+      "Use the previously constructed product-Haar cap lower bound for the original partition. Taking the chessboard root removes the total lattice volume and produces C_beta."
+    ],
+    "mark": "For O_g=sum g_p*a_p, M_g=max|g_p|, positivity gives |O_g|<=M_g*S_star. For integer m>=1 and0<s<beta, E_beta[|O_g|^m*1_B]<=M_g^m*(m/(exp(1)*s))^m*exp[C_beta-(beta-s)*eta].",
+    "example": "m=2,s=beta/2 yields16*M_g^2/(exp(2)*beta^2)*exp[C_beta-beta*eta/2].",
+    "why_this_helps": "The energy includes frustration forced by the exterior. It need not vanish when the selected-link conditional excess energy vanishes, so it avoids the earlier cancelling-staple domination obstruction.",
+    "multi_region": "The positive-function chessboard inequality gives the product of these bounds for matched marks and events on distinct coarse tiles."
+  },
+  "normalized_real_local_tilts": {
+    "status": "Natural-math finite-lattice theorem, independently checked; not Lean-certified.",
+    "tilt": "H=t*O_f, lambda=|t|*max|f_p|<beta, mu_H=e^H*mu_beta/E_beta e^H.",
+    "normalizer": "The entropy estimate gives E_beta S_star<=6*A_beta/beta. Jensen gives E_beta e^H>=exp(E_beta H)>=exp[-6*lambda*A_beta/beta].",
+    "bad_probability": "mu_H(B)<=min(1,exp[C_beta-(beta-lambda)*eta+6*lambda*A_beta/beta]).",
+    "marked_moment": "For an additional O_g and s>0 with lambda+s<beta, E_muH[|O_g|^m*1_B]<=M_g^m*(m/(exp(1)*s))^m*exp[C_beta-(beta-lambda-s)*eta+6*lambda*A_beta/beta].",
+    "matched_multi_region": "For a finite collection of sources and marked events on the same distinct tile family, multiply the positive-function chessboard factors. The denominator penalty is exp[(6*A_beta/beta)*sum lambda_t].",
+    "scope": "This is uniform in ambient lattice volume. Additional source support outside the marked family cannot be discarded; the statement is not uniform under an arbitrary extensive background."
+  },
+  "actual_effective_source_jets": {
+    "status": "Exact finite compact integral identities with analytic bad-region estimates above; the full combined result is not Lean-certified.",
+    "tilted_marginal": "For retained variables V, define exp(H_eff(V))=E_beta[exp(H)|V]. The actual source-tilted retained marginal has density exp(H_eff)/E_beta exp(H) relative to the unsourced marginal. This is an exact nonlinear source, not its linearization.",
+    "slope": "For H_eff(u)=log E_beta[exp(H+u*O_g)|V], derivative at0 equals E_muH[O_g|V]. If B is retained-measurable, conditional Jensen transfers each marked mth-moment bound to the slope.",
+    "hessian": "For two marks O_g,O_k the mixed second derivative equals Cov_muH(O_g,O_k|V). Conditional Cauchy-Schwarz followed by ordinary Cauchy-Schwarz gives E_muH[|Hessian|*1_B]<=sqrt(B_g2*B_k2), where B_g2,B_k2 are the explicit tilted second-moment bounds.",
+    "later_marks": "If B ceases to be retained-measurable later, transport the marked observable E_muH[O_g*1_B|Fj]. Do not replace it by E_muH[O_g|Fj]*E_muH[1_B|Fj]. Conditional Jensen still controls the marked observable itself.",
+    "limitation": "The remaining covariance of retained conditional means and the newly generated coarse source jets still require spatial/scale control. No uniform complex logarithm domain or general all-history theorem follows from these real local bounds."
+  },
+  "nonlinear_effective_action": {
+    "status": "Natural-math exact decomposition and error bounds, independently checked; not Lean-certified.",
+    "single_link_partition": "J(kappa)=integral_{S3} exp(kappa*q0)d sigma. The actual integrated six-plaquette action is a_beta(r)=12*beta-log J(2*beta*r).",
+    "definitions": "G(r)=12-2*r; c_beta=6*beta-log J(6*beta); Ahat_beta(r)=beta*G(r)+(3/2)*log(max(r,3)/3)+c_beta. Define Delta=a_beta-Ahat_beta.",
+    "derivation": [
+      "Let d(kappa)=kappa-log J(kappa), and L(kappa)=log J(kappa)-kappa+(3/2)*log kappa for kappa>0.",
+      "The earlier spherical integration-by-parts/Gamma estimate gives0<=L_prime=(3/2-h)/kappa<=9/(4*kappa^2). Also d_prime=1-m=h/kappa lies between0 andmin(1,3/(2*kappa)).",
+      "For r>=3, Delta=-(L(2*beta*r)-L(6*beta)), hence -3/(8*beta)<=Delta<=0. The upper limit r<=6 improves3/8 to3/16, but the conservative constant is retained.",
+      "For r<3, Delta=d(2*beta*r)-d(6*beta), hence -c_beta<=Delta<=0. Integrating the bound for d_prime at its crossover kappa=3/2 gives c_beta<=(3/2)*(1+log(4*beta)) for beta>=1."
+    ],
+    "domination": "With delta_beta=3/(8*beta), |Delta(r)|<=delta_beta+c_beta*1_{r<3}; both exact and approximate actions are continuous.",
+    "whole_first_checkerboard": "Partition the selected one-direction checkerboard links by basepoint residue modulo4. There are128 classes; each class has one star in each suitably shifted4-tile. General multi-function chessboard estimates cover ordinary translates by pulling each event back to the base tile before dissemination.",
+    "global_MGF": "For M selected links and theta>=0, Holder across the128 classes yields log E_actual exp(theta*sum_e|Delta_e|)<=theta*delta_beta*M+(M/128)*log[1+q_beta(3)*(exp(128*theta*c_beta)-1)]. For fixed theta, the second term per selected link decays exponentially in beta.",
+    "actual_marginal": "Every r_e for an integrated first-checkerboard link is retained-measurable, so the same expectation is under the exact retained marginal.",
+    "normalized_comparison": "Include untouched plaquettes in both full retained actions. If X=sum_e|Delta_e|, then exact action=approximate action-X and d mu_hat/d mu_exact=exp(-X)/E_exact exp(-X). Thus0<=log(Z_exact/Z_hat)<=E_exact X<=M*(delta_beta+c_beta*q_beta(3)).",
+    "relative_entropies": "D(mu_exact||mu_hat)=E_exact X+log E_exact exp(-X)<=E_exact X. D(mu_hat||mu_exact)=-E_hat X-log E_exact exp(-X)<=E_exact X. The last inequality uses Jensen and X>=0.",
+    "limitations": [
+      "This is a free-energy/relative-entropy DENSITY estimate, not volume-uniform total variation. When M is of order a^(-4), the total error bound M/ beta diverges along logarithmic beta.",
+      "The leading nonlinear beta*G interaction is still strong. No local correlator comparison, spatial mixing or small renormalization norm is proved.",
+      "Reflection positivity of the exact marginal does not automatically transfer to the approximate action Ahat. No such transfer is asserted."
+    ]
+  },
+  "positive_coarse_insertion_envelope": {
+    "status": "Natural-math consequence of chessboard and Jensen; not Lean-certified.",
+    "pointwise": "0<=G_e=12-2*r_e<=S_star,e; the sum over disjoint tile stars is <=S0.",
+    "tail": "P(G_e>=u)<=min(1,exp(C_beta-beta*u)) for0<=u<=12. Thus G_e is dominated by C_beta/beta+Exp(rate beta), and E G_e^2<=(C_beta^2+2*C_beta+2)/beta^2.",
+    "positive_MGF": "Different thresholds in different tiles admit the multi-event bound. Layer-cake/product expansion yields E exp(sum_t lambda_t*G_t)<=exp[(C_beta/beta)*sum_t lambda_t]*product_t(1-lambda_t/beta)^(-1) for0<=lambda_t<beta.",
+    "tower": "For G_t^(j)=E[G_t|Fj], conditional Jensen preserves this positive-weight MGF envelope at every later exact integration.",
+    "not_inferred": "No centered cumulant decay or nonzero lower bound follows. The linear MGF envelope need not equal the actual mean. After conditioning, mixed moments cannot be bounded simply by comparing coefficients of two MGFs."
+  },
+  "limits_of_source_tilt_transport": {
+    "safe_reflection_family": "A reflection-compatible positive plaquette coefficient field with beta_min<=beta_p<=beta_max, beta_min>0,beta_max>=1, retains site RP. The same proof gives bad-star bound min1 exp[-2*(6-r0)*beta_min+1536*(1+log beta_max)+1024*log(24*pi^3)]. Uniform isotropic sources are the special case of a shifted coupling.",
+    "safe_bounded_oscillation": "For a real tilt V with bounded total oscillation, P_V(A_I)<=exp(osc V)*q^|I|. For plaquette traces/defects, osc V<=4*sum|J_p|. This is not a uniform physical-source bound when that total grows with the cutoff.",
+    "logical_counterexample": {
+      "scope": "Shows joint rarity/MGF bounds alone do not imply stability under arbitrary extensive tilts. It is not a Wilson-model counterexample.",
+      "construction": "For0<q<1 take H~Bernoulli(q), independent Y_j~Bernoulli(q), X0=H and Xj=H*Yj forj>=1. Every simultaneous bad-indicator event has probability <=q raised to the number of indicators.",
+      "tilt": "Under exp[t*sum_{j=1}^m Xj], P_t(X0=1)=q*(1-q+q*exp t)^m/[1-q+q*(1-q+q*exp t)^m], tending to1 for every fixed t>0."
+    }
+  },
+  "logarithmic_path_sufficient_condition": {
+    "status": "Mathematical asymptotic consequence, not a physical trajectory construction.",
+    "assumptions": "beta_n=b*log n+O(log log n), b>0, n in the audited dyadic family.",
+    "bound": "Union over4*n^4 links gives log P(exists e:r_e<=r0)<=[4-2*(6-r0)*b]*log n+O(log log n).",
+    "conclusion": "If2*(6-r0)*b>4, severe microscopic staple cancellations disappear throughout the fixed-physical-volume lattice with probability tending to1.",
+    "limitations": "The branch is not proved physically calibrated or nontrivial. Excluding a fixed severe-defect threshold is not a global small-field estimate with a shrinking threshold, nor a continuum construction."
+  },
+  "next_hard_targets": [
+    "Identify the evolved continuous nonlinear source with a local coarse observable after blocking and physical rescaling, with errors that remain small at creation and later scales.",
+    "Control new effective interactions and arbitrary extensive source backgrounds, not only inherited microscopic stars or matched local source marks.",
+    "Prove scale-sensitive connected-correlation estimates and a nonzero reflected/physical-energy witness on one justified coupling trajectory compatible with all-order distributional bounds.",
+    "Complete the independent physical identification, infinite-volume covariance, spectrum, vacuum uniqueness and mass-gap requirements."
+  ],
+  "full_clay_status": {
+    "all_twelve_repo_requirements": "open",
+    "continuum_candidate_constructed": false,
+    "mass_gap_proved": false
+  },
+  "provenance_note": "No theorem has been imported from the committee-held OpenAI manuscript. Earlier gaps in the separate public draft are not attributed to it.",
+  "certificate_sha256": "818da5f1f8e431903dab5ca4fe67c9f7abc2e224060eca086083d54195f3a8da"
+}

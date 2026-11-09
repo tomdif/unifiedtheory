@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-29",
+  "task": "Attempt the remaining Yang-Mills proof through all-direction generated-interaction control and actual large-deviation-event estimates.",
+  "claim_status": "partial_advance_no_continuum_construction_or_mass_gap",
+  "scope": "All-direction quadratic approximation of the actual six-staple SU(2) Haar potential. The exact model is beta/12 times the ordered sum of pairwise squared staple distances. On beta*(6-norm(A))<=K<=beta its error is at most (K^2/6+K/2)/beta. Under the original interacting Wilson law at beta=t^4, the probability that the local error exceeds 1/t^2 is at most 18*t^3*energyEnvelope(t^4), which tends to zero. The resulting convergence in probability holds for every diverging coupling sequence and arbitrary varying lattice periods and selected links. Simultaneous control retains the number-of-links cost. This does not prove uniform integrability, control after successive integrations, physical-scale covariance convergence, or a mass gap.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.SU2GeneralStarApproximation",
+    "UnifiedTheory.Clay.YangMills.WilsonStarApproximationProbability"
+  ],
+  "fresh_declarations": 28,
+  "cumulative_declarations": 6719,
+  "source_sha256": {
+    "UnifiedTheory/Clay/YangMills/SU2GeneralStarApproximation.lean": "03873e3fa5610ea9833e1cd53f48bf09c50bdee7613b25e8403bcdd0ede2aa5e",
+    "UnifiedTheory/Clay/YangMills/WilsonStarApproximationProbability.lean": "e63c71f934121b667b6c4c97c08a930005940afce0a6bda6d884310f2f6ec4c8"
+  },
+  "mathematical_results": {
+    "definitions": "For six unit quaternion staples u_i, A=sum_i u_i, r=norm(A), delta=6-r, V_beta(A)=-log integral_Haar exp(2 beta inner(q,A)). Q_beta(A)=beta*(36-r^2)/6=(beta/12)*sum_i sum_j norm(u_i-u_j)^2. E_beta(A)=V_beta(A)-V_beta(6*1)-Q_beta(A).",
+    "deterministic_error": "For beta>0 and 0<r<=6, abs(E_beta(A)) <= beta*delta^2/6 + 3*delta/(2*r). All quaternion directions are allowed.",
+    "bounded_fluctuation_region": "If beta*delta<=K<=beta and K>=0, abs(E_beta(A)) <= (K^2/6+K/2)/beta.",
+    "actual_effective_action": "The original one-link induced action is beta*exteriorSourceConstant + V_beta(6*1) + Q_beta(exteriorStaple) + E_beta(exteriorStaple). The exterior action is retained exactly.",
+    "probability_estimate": "For t>=1, beta=t^4, the original Wilson probability of abs(E_beta(stapleField))>=t^-2 is <=18*t^3*energyEnvelope(t^4). The envelope is 28224/t^5 + 96*log(2*t^4+5)/t and tends to zero.",
+    "proof_mechanism": "On delta<=t^-3 the deterministic error is <=2/(3*t^2)<t^-2. The complementary event is an actual low-staple event bounded by the existing original-Wilson six-plaquette mean-energy estimate.",
+    "arbitrary_trajectory": "Taking t=sqrt(sqrt(beta)) transfers the result to every beta->infinity trajectory, even with arbitrary varying lattice period and selected link.",
+    "simultaneous_control": "For m selected links the union probability is <=m*probabilityEnvelope(t); outside that event the sum of absolute local errors is <=m/t^2. No independence is assumed."
+  },
+  "proof_search_assessment": [
+    "The all-direction local approximation and its original-law probability control remove the earlier restriction to one aligned two-staple sector.",
+    "A proposed passage from this local estimate to the full effective Gibbs law is not justified: convergence in probability does not control exp(error), large-deviation weighted tails, or partition-function ratios.",
+    "The explicit number-of-links factor prevents claiming a uniform physical-volume block estimate on logarithmic continuum coupling trajectories.",
+    "No estimate for exhaustedCoarseSum, nonzero separated reflected continuum correlation, physical coupling identification, or mass gap has been obtained."
+  ],
+  "literature_checked": [
+    {
+      "url": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+      "finding": "Official problem page lists the problem as unsolved; no external completion is assumed."
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.10507",
+      "finding": "Chatterjee scaling-limit result concerns Yang-Mills coupled to a Higgs field; it is not a theorem completing the pure-gauge target and is not imported."
+    }
+  ],
+  "remaining": [
+    "Control exponentially weighted errors and retained source cumulants under successive induced laws. Original-law convergence in probability for one local interaction does not justify replacing the full Gibbs density by its quadratic approximation.",
+    "Control growing physical-scale blocks without the unresolved number-of-links factor, and prove quantitative decay or cancellation across the exhaustedCoarseSum stages.",
+    "Prove a nonzero separated reflected limit and compatible all-order renormalized bounds on one physically identified coupling and normalization trajectory.",
+    "Complete symmetry-compatible continuum field reconstruction, physical spectral gap, finite excitation scale, field domains and every compact simple gauge group. All twelve full Clay requirements remain open."
+  ],
+  "all_twelve_full_clay_requirements_open": true,
+  "uniform_integrability_proved": false,
+  "successive_induced_law_error_control_proved": false,
+  "uniform_physical_scale_covariance_proved": false,
+  "nonzero_continuum_limit_constructed": false,
+  "physical_mass_gap_proved": false,
+  "full_root_build_claimed": false,
+  "verification": {
+    "audit_report": "data/yang_mills_star_approximation_audit.json",
+    "runner": "scripts/yang_mills_star_approximation_audit.py",
+    "result_location": "Build, axiom, retained-chain and requirements results are recorded in the audit report."
+  }
+}

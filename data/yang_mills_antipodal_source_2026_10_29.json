@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-29",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "progress: pointwise actual small-field action curvature and exact antipodal physical source cancellation; no global obligation closed",
+  "current_goal_turn_classification": "progress: the actual source-weighted near-antipodal neighborhood is quantitatively controlled; global obligations remain open",
+  "scope": "For the actual SU(2) Wilson transfer, beta>=112*log(201) implies lambda>=exp(-beta*N_links/2), uniformly in spatial volume. On even spatial periods, the actual correlated middle-bridge endpoint density at (v,w) is at most exp(-2*beta*N_links)*g(v)^2 whenever sum_e norm(v_e+w_e)<=N_links/8; symmetry gives the corresponding g(w)^2 bound. Integrating with the true squared source difference proves that the contribution of this entire near-antipodal region to the variance-loss pair integral is at most 2*exp(-2*beta*N_links)*Var_pi(F), for every continuous F. No modulus of continuity or bound on the range of F is used. This closes a quantitative neighborhood estimate around globally opposite endpoints, not the full excluded-field problem, distant covariance summability, direct Haar coercivity, or any full Clay obligation.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression",
+    "UnifiedTheory.Clay.YangMills.WilsonAntipodalSource"
+  ],
+  "new_declarations": 19,
+  "retained_declarations": 7965,
+  "cumulative_declarations": 7984,
+  "formal_results": {
+    "normalization": "Use the existing genuine transfer Rayleigh cap bound with K=100. Its one-group mass lower bound is 201^(-8), and its squared action tolerance is 98/625. For beta>=112*log(201), lambda>=exp(-beta*N_links/2). No new spectral assumption is introduced.",
+    "geometry": "D(v,w)=sum_e norm(-v_e-w_e). T(u,v)+T(u,w)>=4*N_links-2*D(v,w). This lower bound is uniform in the actual middle field u.",
+    "middle_mass": "The actual unnormalized middle mass is at most exp(-4*beta*N_links+2*beta*D(v,w)); all spatial Wilson weights are bounded by one using their actual nonnegative action.",
+    "ground_ratio": "For even period, g(-v)=g(v) by the proved central gauge equivalence. Actual joint ground comparison then gives g(w)<=exp(6*beta*D(v,w))*g(v).",
+    "endpoint_density": "The actual correlated endpoint density is <=lambda^(-2)*exp(-4*beta*N_links+8*beta*D(v,w))*g(v)^2. On D<=N_links/8 at the stated beta, this is <=exp(-2*beta*N_links)*g(v)^2 and likewise with w.",
+    "source_weight": "With R={D<=N_links/8}, (1/2)*integral_R endpointWeight(v,w)*(F(v)-F(w))^2 <=2*exp(-2*beta*N_links)*Var_pi(F). Center at the true stationary mean; pay each centered term with its own g^2 density. This applies to every continuous F, not only physical F.",
+    "restriction": "The restricted source mass is nonnegative and no larger than the full exact variance loss."
+  },
+  "next_attack": {
+    "localized_regions": "Treat local and intermediate-size regions of temporal pinning failure with conditional normalizers, retaining source weights and domain geometry. The global lambda bound cannot simply be reused without a volume penalty.",
+    "absorption": "Combine the proved stationary-variance error for this tube with a proved estimate on the remaining endpoint region. No loss-proportional conclusion follows from the tube estimate alone.",
+    "unchanged_targets": "Actual connected spatial covariance summability and the independent global direct Haar coercivity remain the targets needed for contraction."
+  },
+  "not_inferred": [
+    "The exceptional contribution is paid by stationary variance, not by one-step variance loss. It must be absorbed in a proved estimate for the remaining region before it can help a contraction argument.",
+    "The tube concerns endpoints that are globally near opposite. Endpoint pairs with local or intermediate-size regions of failed pinning are not covered by this estimate.",
+    "The transfer-normalization lower bound is global. Using it for small localized bad regions would leave an extensive volume cost; a valid localized extension needs conditional normalization or an equivalent cancellation.",
+    "The positive small-field action curvature still needs a domain functional inequality and a source-weighted treatment of the rest of the middle-field and endpoint complement.",
+    "No summable spatial bound on the actual connected boundary covariance or distant mixed-ground sum, and no global direct Haar lower comparison, is proved.",
+    "The physical coupling trajectory, compatible continuum estimates, surviving nonzero fields and all twelve full Clay requirements remain open."
+  ],
+  "audit": "data/yang_mills_antipodal_source_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

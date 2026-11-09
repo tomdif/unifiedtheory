@@ -1,0 +1,96 @@
+{
+  "scope": "Independent high-precision quadrature of clustered-width witnesses.\n\nThis verifier does not import the producer or its moment recurrence.\nIt evaluates the saved finite polynomial through complex-contour Gaussian\nquadrature and differentiates through a fresh inverse-clock solve with all\ncoefficients frozen. Both orders integrate the finite polynomial exactly\nin exact arithmetic. All width pairs are included. Decimal floating\narithmetic supplies reproducibility, not an interval-error certificate.\nThe two selected Rayleigh quotients, not every scan extremum, receive this\nindependent integral check. No uniform estimate or divergent limit follows.\n",
+  "report_sha256": "319729ce692393592d16adaf39c42366931d1398fafb622809baa0aa8555b021",
+  "parent_report": {
+    "path": "data/quantum_joint_angular_clock_obstruction_audit.json",
+    "sha256": "b980893bfaf538b30cc5c8896e71099f5ccd5d63fa6a27504749c5a863aff0c3"
+  },
+  "root_sha256": "5df49a07cabdf9ee29d3d4862878f92858a6d141f824f928a543aa6b32ac9707",
+  "source_sha256": {
+    "scripts/joint_neutral_clustered_response_probe.py": "dbd432bbf39cb11e575864fbd15c22ce923e003a43eebf2c81dc29afa6b7656b",
+    "scripts/verify_joint_neutral_clustered_response.py": "c2cd0abfc42559cdcd1be90bc87ec77e41c8667587c41ffd63c2924e61133d6c",
+    "scripts/joint_neutral_hermite_response_probe.py": "4716867875e60274299ca361b40d7a8889331a658d24e72480013e26076d0c9c",
+    "scripts/joint_neutral_coherent_response_probe.py": "5d183bebc5e8d655682702d1a8beeeea427c59aa160dc6686afe1fd8fb7aae84",
+    "scripts/matter_energy_gram_probe.py": "6d4977ba630fe1e340b94aad1f28361f8f43774b6accb57035db18dbf460dabe",
+    "UnifiedTheory/Audit/KFCausalReciprocalNeutralKernel.lean": "9a21ac4a1c647fc2bb654192e55e5abcc33a3a1eb9112e831cde26e28197297b",
+    "UnifiedTheory/Audit/KFCausalReciprocalCrossGeometry.lean": "db106aeca81e784dfeeb2cde66efcb95f92256e20500f8cad3ec3051cd69c7f1",
+    "UnifiedTheory/Audit/KFCausalReciprocalNeutralWholeClock.lean": "dc0dd01a47201c042f27135ff5d6903bd7883a435084d34f73e69a565cc027b7"
+  },
+  "verifier_sha256": "c2cd0abfc42559cdcd1be90bc87ec77e41c8667587c41ffd63c2924e61133d6c",
+  "mpmath_precision": 160,
+  "test_count": 44,
+  "independently_integrated_witness_count": 2,
+  "rejected_cases": 0,
+  "rank_truncation": false,
+  "candidates": [
+    {
+      "role": "largest_observed",
+      "parameters": {
+        "h": "100.0",
+        "epsilon": "100.0",
+        "alpha": "0.005",
+        "beta": "0.00015625",
+        "s": "5.60517018598809136803598290936872841520220297725754595206665580193514521935470496047199441017919659668393556808457249727",
+        "clock_offset": "1",
+        "width_count": 11,
+        "max_degree": 8,
+        "width_spacing": "0.01",
+        "dimension": 99
+      },
+      "quadrature": [
+        {
+          "order": 11,
+          "energy": "0.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999519112348022735",
+          "slope": "0.1522334482371465206683959598022755384066792193798341356985827328126772867753850624957161441208069967",
+          "energy_relative_error": "5.74788805463e-85",
+          "slope_absolute_error": "8.89281639893e-86"
+        },
+        {
+          "order": 13,
+          "energy": "0.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999519112348022735",
+          "slope": "0.1522334482371465206683959598022755384066792193798341356985827328126772867753850624957161441208069967",
+          "energy_relative_error": "5.74788805463e-85",
+          "slope_absolute_error": "8.89281639893e-86"
+        }
+      ],
+      "normalized_slope": "0.04094187994895376331627970539014954828574572449207957272189090811938290587137248322597417494102891753",
+      "quadrature_order_difference": "1.46859586579e-125",
+      "saved_matrix_eigen_residual": "2.59553676383e-106"
+    },
+    {
+      "role": "closest_widths",
+      "parameters": {
+        "h": "100.0",
+        "epsilon": "100.0",
+        "alpha": "0.005",
+        "beta": "0.00015625",
+        "s": "5.60517018598809136803598290936872841520220297725754595206665580193514521935470496047199441017919659668393556808457249727",
+        "clock_offset": "1",
+        "width_count": 7,
+        "max_degree": 8,
+        "width_spacing": "0.001",
+        "dimension": 63
+      },
+      "quadrature": [
+        {
+          "order": 11,
+          "energy": "0.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999925315616861111",
+          "slope": "0.1143490872841165142103190666155260469277332345498259949764102203034008925464909674514858678032169966",
+          "energy_relative_error": "6.49534482307e-86",
+          "slope_absolute_error": "7.37420704907e-87"
+        },
+        {
+          "order": 13,
+          "energy": "0.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999925315616861111",
+          "slope": "0.1143490872841165142103190666155260469277332345498259949764102203034008925464909674514858678032169966",
+          "energy_relative_error": "6.49534482307e-86",
+          "slope_absolute_error": "7.37420704907e-87"
+        }
+      ],
+      "normalized_slope": "0.03075320606655193041849632362702077528901337773141283531518983265309523649206285883176546508098140851",
+      "quadrature_order_difference": "4.22336639118e-127",
+      "saved_matrix_eigen_residual": "2.13716515256e-106"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,45 @@
+import UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood
+import UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse
+import UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget
+import UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood.range_product_le
+#print axioms UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood.variance_le_range_ratio
+#print axioms UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood.response_sq_le_likelihood_variance
+#print axioms UnifiedTheory.Clay.YangMills.CompactNormalizedLikelihood.response_sq_le_range_ratio
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.rangeCoefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.rangeCoefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.rangeCoefficient_mono
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.haarCap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.haarCap_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.coefficient_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.likelihood_range
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.response_sq_conditional_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.response_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.total_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedResponse.slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.heatBathEnergy_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.supported_total_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.plaquetteSupport
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.plaquetteSupport_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.plaquette_supported
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.plaquette_total_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonGroundLocalBudget.factorization_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.logarithmic_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.logarithmic_cap_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.logarithmic_cap_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.link_count
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.rate
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.cost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.rate_le_iff
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.cost_eq_old_div
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.bounded_budget_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.logarithmic_volume_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.actual_logarithmic_volume_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.no_uniform_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.standard_volume_unbounded
+#print axioms UnifiedTheory.Clay.YangMills.WilsonNormalizedBudget.standard_volume_no_uniform_cap

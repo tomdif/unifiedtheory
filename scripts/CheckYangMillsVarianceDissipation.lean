@@ -1,0 +1,58 @@
+import UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance
+import UnifiedTheory.Clay.YangMills.WilsonVarianceResponse
+import UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance
+import UnifiedTheory.Clay.YangMills.WilsonDissipationIteration
+
+#print axioms UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance.ratio_deviation
+#print axioms UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance.variance_formula
+#print axioms UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance.centered_likelihood
+#print axioms UnifiedTheory.Clay.YangMills.CompactLikelihoodVariance.response_sq_le_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.linkDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.rowWeight_geometric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.rowPartition_geometric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.row_geometric
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.shift_cost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.coefficient
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.coefficient_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.likelihood
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.likelihood_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.likelihood_mean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.likelihood_reweight
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.likelihood_shift_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonVarianceResponse.response_sq_conditional_variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.step_full
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.step_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.stationary_mean
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.variance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.variance_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.variance_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.rowVariance
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.rowVariance_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.rowVariance_formula
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.rowVariance_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.mean_rowVariance_eq_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.loss_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.variance_step_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.responseEnergy
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.responseEnergy_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPhysicalVariance.response_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.flow
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.flow_gauge
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.flow_succ_full
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.weighted_step
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.step_embedding
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.flow_embedding
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.variance_flow_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.loss_telescope
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_sum_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_sum_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_summable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_tsum_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.response_time_average
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.coefficient_scaled
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.scaled_response_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.contraction_of_coercivity
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDissipationIteration.block_contraction_of_coercivity

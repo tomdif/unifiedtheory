@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified partial progress: 31 fresh declarations supplied the exact spatial summation bridge from polynomial decay; the decay and contraction lower bound remained open",
+  "current_goal_turn_classification": "progress: exact sourced middle recursion, retained-response transport, and quantitative source-stable small-field second-difference bounds",
+  "scope": "The exact finite-boundary covariance needed by the distant mixed-ground criterion now has a proved one-step middle-slice recursion with both sources present. Exposing the next endpoint yields a joint action whose middle part is the explicit Wilson bridge action minus the two original local kinetic insertions. Integrating the exposed endpoint gives exactly the original tilted boundary weight at depth j+1, including its partition. Conditioning on the endpoint cancels the propagated message only from the middle law. The retained endpoint law has the explicit normalized weight spatialWeight(w)*boundaryMessage_j(w)*Z_middle(u,w), and retains all source dependence. The actual tilted connected covariance is exactly the average of the middle conditional covariance plus the retained covariance of the two middle conditional responses. No retained term is discarded. The local kinetic insertion has the exact symmetric finite difference Delta_a F_e(v)=-norm(a_e-1)^2*F_e(v). For two distinct insertions with beta*norm(q-1), beta*norm(r-1)<=1 and source strengths in [0,1], the source correction costs at most 2*cost(a), with no spatial-volume, depth or separation factor. In the previously specified small-field sector (plaquette chord defects<=1/32 and squared middle-to-endpoint link distances<=1/2), the actual two-source middle action therefore has second-difference lower bound (2*beta-2)*cost(a). Varying an endpoint link changes a retained response by an exact integral of middle connected covariance under one additional local source tilt. That extra tilt is retained explicitly. If its rotation also obeys beta*norm(p-1)<=1, the full three-source interval has lower bound (2*beta-4)*cost(a) in the same small-field sector, even for an overlapping extra link. These are pointwise finite-difference and exact conditional-measure results, not a global Poincare or spatial covariance-decay theorem. The retained covariance, exceptional backgrounds, localized gauge-coordinate construction, physical-time coercivity, nonzero continuum survival and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonTiltedMiddleAction",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleRecursion",
+    "UnifiedTheory.Clay.YangMills.WilsonBoundaryMiddleCovariance",
+    "UnifiedTheory.Clay.YangMills.WilsonMiddleSourceTransport"
+  ],
+  "new_declarations": 39,
+  "retained_declarations": 9808,
+  "cumulative_declarations": 9847,
+  "notation": {
+    "u": "The original fixed boundary input.",
+    "v": "The original output slice, exposed as the middle of a two-step joint law.",
+    "w": "The newly exposed endpoint, whose correlated retained distribution is kept.",
+    "F_e": "The original local kinetic insertion beta*(kinetic(u,v)-kinetic(shift_e(q,u),v)).",
+    "A_st(u,w;v)": "The explicit middle Wilson action minus (s*F_e(v)+t*F_d(v)).",
+    "retained_weight": "spatialWeight(w)*boundaryMessage_j(w)*integral exp(-A_st(u,w;v)) dHaar(v).",
+    "cost(a)": "Sum over spatial links of norm(a_link-1)^2."
+  },
+  "proved_identities": [
+    "Integrating w in the exposed joint law recovers exactly the original two-source output law at boundary depth j+1, including normalization.",
+    "Conditioning v on w gives exactly the explicit sourced middle action, independent of the boundary depth.",
+    "The original connected covariance equals the retained average of middle covariance plus the retained covariance of middle conditional responses.",
+    "Delta_a F_e(v)=-norm(a_e-1)^2*F_e(v).",
+    "Rotating one endpoint link changes the retained response by an integral of actual middle covariance under an additional local source tilt."
+  ],
+  "proved_estimates": [
+    "For two distinct beta-scaled insertions and strengths in [0,1], the middle-action second difference loses at most 2*cost(a).",
+    "In the explicit small-field sector, the two-source action has lower bound (2*beta-2)*cost(a).",
+    "The additional beta-scaled endpoint tilt has lower bound (2*beta-4)*cost(a) throughout its unit source interval in the same sector, including overlapping source links."
+  ],
+  "next_attack": [
+    "Localize the sourced finite-difference lower bounds to constrained fluctuations supported in a specified patch, without demanding all links of the torus are small-field.",
+    "Construct suitable gauge coordinates and a normalized constrained fluctuation covariance estimate; pointwise second differences alone do not provide that estimate.",
+    "Control the retained endpoint covariance and the extra-source transport hierarchy, preserving the actual endpoint message and normalization.",
+    "Treat exceptional input fields and the bad-bridge complement in the matching source-weighted energy. Do not substitute stationary averaged rarity for uniformity in arbitrary fixed inputs.",
+    "Combine proved propagation with the dyadic far-sum bridge, then establish an independent global lower coercivity inequality on the physical time scale.",
+    "Retain separate continuum compactness, scaling and nonzero reflected-source survival obligations."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open; no continuum construction or uniform physical mass gap is proved.",
+    "The actual sourced covariance is decomposed exactly, not bounded by a spatially decaying function. Both the conditional and retained covariance terms remain.",
+    "The propagated boundary message cancels from the middle conditional law only. Its full value and the sourced middle partition remain in the retained endpoint distribution.",
+    "The small-field lower bounds are pointwise symmetric finite-difference estimates. No global Poincare, Brascamp-Lieb, convex-chart, or covariance-decay theorem follows without further work.",
+    "The displayed small-field sector requires the stated plaquette and endpoint conditions at the middle configuration. Its complement is not discarded or proved negligible for every boundary input.",
+    "Ground-averaged bad-bridge source tails do not by themselves supply estimates uniform in the arbitrary boundary input u required by the current pointwise far-sum criterion.",
+    "The retained-response variation introduces an additional source tilt. It does not close a two-source hierarchy or supply uniform all-order renormalized source estimates.",
+    "The exact time-slice recursion is not a construction of Balaban gauge-covariant block RG, nor an identification with a constrained fluctuation propagator.",
+    "Independent center-even/global coercivity, controlled physical coupling/time scaling, the actual overlap margin, reflected compactness and nonzero continuum survival remain open."
+  ],
+  "verification_report": "data/yang_mills_middle_recursion_audit.json",
+  "root_build_checked": false
+}

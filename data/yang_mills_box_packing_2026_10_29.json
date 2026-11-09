@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-29",
+  "claim_status": "framework_only_no_clay_certificate",
+  "scope": "Explicit actual four-dimensional Wilson edge boxes and a finite disjoint packing. A no-wrap box has 4*L^4 edges and at most 96*L^3 crossing plaquettes; L>=24*beta discharges the regional surface condition. On period n>=L*M+1, M^4 disjoint boxes have joint bad-density probability at most exp(-4*L^4*card s), and probability of any bad box at most M^4*exp(-4*L^4), under the actual Wilson law at the common vanishing threshold. This is a finite packing with uncovered boundary slices, not pointwise small-field regularity, repeated-scale interaction control or a continuum limit.",
+  "verification": {
+    "new_modules": [
+      "UnifiedTheory.Clay.YangMills.WilsonMesoscopicBoxes",
+      "UnifiedTheory.Clay.YangMills.WilsonBoxPacking"
+    ],
+    "new_declarations": 36,
+    "retained_declarations": 6925,
+    "result_location": "data/yang_mills_box_packing_audit.json",
+    "root_build_claimed": false
+  },
+  "remaining": [
+    "Choose and justify a physical coupling/cutoff trajectory and handle uncovered boundary slices; the current result is a finite packing, not a full torus tiling.",
+    "Prove one-step source-preserving estimates for the actual generated Wilson interactions, with local background cancellation, scale-uniform analytic domains and a controlled running coupling.",
+    "Prove all-order full Schwartz correlation bounds, compatible contact renormalization and reflection positivity on one nontrivial trajectory.",
+    "Prove convergence or suitable compactness of exhaustedCoarseSum and a strictly positive separated reflected continuum signal.",
+    "Construct the continuum Yang-Mills theory and physical mass gap; all twelve full Clay obligations remain open."
+  ],
+  "balaban_review": "data/yang_mills_balaban_deep_dive_2026_10_29.json"
+}

@@ -1,0 +1,222 @@
+{
+  "raw": {
+    "curvature_fluxes": [
+      {
+        "source": 0,
+        "target": 1,
+        "value": 7.573025724681959e-09
+      },
+      {
+        "source": 1,
+        "target": 2,
+        "value": -1.2987329445115897e-07
+      },
+      {
+        "source": 0,
+        "target": 2,
+        "value": -1.2230026872662843e-07
+      }
+    ],
+    "additive_flux_cocycle_error": 1.5140713932170619e-19,
+    "quadrature_refinement_error": 2.5480471589083464e-20,
+    "direct_frames": [
+      {
+        "steps": 32,
+        "source": 0,
+        "target": 1,
+        "flux": 7.573025724681959e-09,
+        "raw_overlap_phase": -7.583893997427546e-09,
+        "error": 1.0868278879006843e-11
+      },
+      {
+        "steps": 32,
+        "source": 1,
+        "target": 2,
+        "flux": -1.2987329445115897e-07,
+        "raw_overlap_phase": 1.298974884224319e-07,
+        "error": 2.4193971273992195e-11
+      },
+      {
+        "steps": 32,
+        "source": 0,
+        "target": 2,
+        "flux": -1.2230026872662843e-07,
+        "raw_overlap_phase": 1.2231359441077752e-07,
+        "error": 1.332568689224926e-11
+      },
+      {
+        "steps": 64,
+        "source": 0,
+        "target": 1,
+        "flux": 7.573025724681959e-09,
+        "raw_overlap_phase": -7.575744178805104e-09,
+        "error": 2.7184708905520593e-12
+      },
+      {
+        "steps": 64,
+        "source": 1,
+        "target": 2,
+        "flux": -1.2987329445115897e-07,
+        "raw_overlap_phase": 1.2987934036369253e-07,
+        "error": 6.045912534612134e-12
+      },
+      {
+        "steps": 64,
+        "source": 0,
+        "target": 2,
+        "flux": -1.2230026872662843e-07,
+        "raw_overlap_phase": 1.2230359623305643e-07,
+        "error": 3.3275126593558887e-12
+      },
+      {
+        "steps": 128,
+        "source": 0,
+        "target": 1,
+        "flux": 7.573025724681959e-09,
+        "raw_overlap_phase": -7.57370307366617e-09,
+        "error": 6.773571729902181e-13
+      },
+      {
+        "steps": 128,
+        "source": 1,
+        "target": 2,
+        "flux": -1.2987329445115897e-07,
+        "raw_overlap_phase": 1.2987480600869794e-07,
+        "error": 1.5115575389782892e-12
+      },
+      {
+        "steps": 128,
+        "source": 0,
+        "target": 2,
+        "flux": -1.2230026872662843e-07,
+        "raw_overlap_phase": 1.2230110290531435e-07,
+        "error": 8.341905073168371e-13
+      }
+    ]
+  },
+  "corrected": {
+    "references": [
+      [
+        0.37,
+        -0.29,
+        0.43,
+        0.61
+      ],
+      [
+        0.378,
+        -0.296,
+        0.434,
+        0.612
+      ],
+      [
+        0.366,
+        -0.284,
+        0.422,
+        0.614
+      ]
+    ],
+    "scalar_corrections": [
+      2.80227725091125e-07,
+      4.2590148626017254e-07,
+      -9.860341190946619e-08
+    ],
+    "canonical_adjustments": [
+      0.0,
+      1.5324678689372952e-07,
+      -5.011314057272196e-07
+    ],
+    "transitions": [
+      {
+        "steps": 32,
+        "source": 0,
+        "target": 1,
+        "corrected_overlap_phase": -1.5325765516647512e-07,
+        "predicted_transition_error": 1.0868272745598498e-11,
+        "descended_transition_error": 1.0868272745598498e-11
+      },
+      {
+        "steps": 32,
+        "source": 1,
+        "target": 2,
+        "corrected_overlap_phase": 6.544023865920707e-07,
+        "predicted_transition_error": 2.4193971273333876e-11,
+        "descended_transition_error": 2.4193971121777886e-11
+      },
+      {
+        "steps": 32,
+        "source": 0,
+        "target": 2,
+        "corrected_overlap_phase": 5.011447314113687e-07,
+        "predicted_transition_error": 1.3325684149096369e-11,
+        "descended_transition_error": 1.3325684149096369e-11
+      },
+      {
+        "steps": 64,
+        "source": 0,
+        "target": 1,
+        "corrected_overlap_phase": -1.5324950534785264e-07,
+        "predicted_transition_error": 2.7184541231219736e-12,
+        "descended_transition_error": 2.7184541231219736e-12
+      },
+      {
+        "steps": 64,
+        "source": 1,
+        "target": 2,
+        "corrected_overlap_phase": 6.543842385333314e-07,
+        "predicted_transition_error": 6.045912534718013e-12,
+        "descended_transition_error": 6.04591238239739e-12
+      },
+      {
+        "steps": 64,
+        "source": 0,
+        "target": 2,
+        "corrected_overlap_phase": 5.011347332336475e-07,
+        "predicted_transition_error": 3.327506427974484e-12,
+        "descended_transition_error": 3.327506427974484e-12
+      },
+      {
+        "steps": 128,
+        "source": 0,
+        "target": 1,
+        "corrected_overlap_phase": -1.5324746424271373e-07,
+        "predicted_transition_error": 6.773489842123072e-13,
+        "descended_transition_error": 6.773489842123072e-13
+      },
+      {
+        "steps": 128,
+        "source": 1,
+        "target": 2,
+        "corrected_overlap_phase": 6.543797041783368e-07,
+        "predicted_transition_error": 1.5115575390841683e-12,
+        "descended_transition_error": 1.511557387677029e-12
+      },
+      {
+        "steps": 128,
+        "source": 0,
+        "target": 2,
+        "corrected_overlap_phase": 5.011322399059055e-07,
+        "predicted_transition_error": 8.341786858961025e-13,
+        "descended_transition_error": 8.341786858961025e-13
+      }
+    ],
+    "triangle_gauge_change_error": 7.331219035114361e-14,
+    "canonical_adjustment_gauge_error": 8.214234037259231e-15,
+    "original_ward_errors": [
+      1.4425958732241682e-14,
+      1.7069684085907063e-14,
+      2.289877383535253e-16
+    ],
+    "scope": "Exact analytic phase descent for equal real potentials; uniform locality of the new adjustment not certified"
+  },
+  "source_sha256": {
+    "scripts/reference_phase_descent_audit.py": "a9431019a5a96384e1186ac1fc29bbfcc36a6aa71fd07cd27c9c755a8809a4c3",
+    "scripts/toron_locality_audit.py": "10232b7239b00556c4b280656a9f23dc920761d4a98c780f8b874ff2af7e2f6a",
+    "scripts/compact_measure_holonomy_audit.py": "1f6da67cfca1614ba5b8579b5fb400b0d570683dc3eca1768606ec19e6e0d486",
+    "scripts/second_cohomology_audit.py": "a10cbb381e97a9b3818661f10a08d1bfb4f16f5cef51d7d169c47e6ba23659aa",
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "UnifiedTheory/Audit/KFCausalReferencePhaseDescent.lean": "e67310c5abf2d562aee06549da132e8e5427f97cd3a15b01ba4a4742f4d7f713",
+    "REFERENCE_PHASE_DESCENT.md": "924a24f0d4709485e4f65cce24d9cadfecc04274ce5d28a85a0f8e031ac17fbb"
+  }
+}

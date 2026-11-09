@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-29",
+  "status": "microscopic_margin_obstruction_no_clay_claim",
+  "scope": "For the actual periodic SU(2) Wilson one-link conditional laws, every global local-influence matrix C satisfies axisMean(12*beta)<=sum_j C(i,j). Haar concentration gives 1-1/(8*beta)<=sum_j C(i,j) for beta>0. Any row upper bound alpha therefore satisfies (1-alpha)*beta<=1/8; no common alpha<1 works along beta->infinity, even with changing periods. Nonnegative majorants with weights>=1 obey the same obstruction. The constant +1 and -1 endpoints are proved gauge equivalent on even periods, and every gauge-invariant observable agrees there. This rules out a fixed microscopic comparison margin, not shrinking margins, a physical mass gap, or physical-scale coarse estimates. The continuum limit and all twelve Clay obligations remain open.",
+  "actual_law_calculation": {
+    "configurations": "Every link equals q in SU(2): every plaquette action term is zero and the actual six-staple field is exactly 6*q.",
+    "test": "probe(q)=Re(q), continuous with absolute value<=1 and oscillation<=2; it is not invariant under left multiplication.",
+    "conditional_mean": "The genuine Wilson coordinate conditional at the all-q exterior has probe expectation axisMean(12*beta)*probe(q).",
+    "row_bound": "Apply the actual LocalInfluence predicate to this test and telescope between all +1 and all -1 coordinate configurations. The total mean difference is 2*axisMean(12*beta), forcing axisMean(12*beta)<=sum_j C(i,j).",
+    "concentration": "axis_concentration yields 1-axisMean(12*beta)<=1/(8*beta), for beta>0.",
+    "margin": "If sum_j C(i,j)<=alpha then (1-alpha)*beta<=1/8. A fixed alpha<1 forces beta<=1/(8*(1-alpha)).",
+    "trajectory": "For beta_k->infinity, every fixed alpha<1 is eventually exceeded by each selected row, even for varying finite periods N_k>1. Weights>=1 cannot improve a nonnegative majorant."
+  },
+  "gauge_scope": {
+    "even_period": "The actual alternating central gauge g(x)=(-1)^(sum of periodic coordinate parities) sends the constant +1 configuration to constant -1.",
+    "consequence": "Every gauge-invariant observable takes the same value on the two endpoints. The test witnessing the row obstruction measures raw link orientation.",
+    "restriction": "The coordinate telescoping path need not stay within a good-field domain. The theorem is global; it does not exclude estimates restricted to good fields or to gauge-invariant observables."
+  },
+  "not_proved": [
+    "Rows are not proved >=1 at finite beta; shrinking margins alpha(beta)<1 are not excluded.",
+    "No row bound for a gauge quotient, gauge-fixed collective block kernel or physical-scale coarse action is derived here.",
+    "No obstruction to a physical mass gap is asserted; auxiliary microscopic update time is not original physical transfer time.",
+    "No large-field cluster comparison, physical trajectory, nonzero continuum candidate or finite-energy excitation is constructed."
+  ],
+  "next_attack": {
+    "comparison_space": "Use the physical gauge-invariant observable algebra, or construct a collective gauge-fixed block representation with an exact Wilson/source dictionary. Do not require the microscopic raw-link norm to have a common contraction margin.",
+    "scale": "At fixed physical coarse spacing ell>0, seek uniform exponential localization and a common contraction budget for the appropriate collective comparison, controlling both good blocks and correlated bad clusters.",
+    "original_transfer": "Bind the estimate to ||P_a^ceil(ell/a) v||<=q||v|| for all v orthogonal to the constructed vacuum, with q<1 uniform in cutoff and volume.",
+    "survival": "On the same trajectory prove compatible all-order renormalized bounds and a nonzero finite positive-energy source. Gauge cancellation alone supplies none of these estimates."
+  },
+  "new_declaration_count": 23,
+  "predecessor_declaration_count": 7101,
+  "remaining": [
+    "Construct a physical-scale representation and a comparison estimate for gauge-invariant observables or controlled gauge-fixed collective variables, rather than require a common global microscopic margin.",
+    "Establish the needed coarse mixing estimate along an independently justified beta(a)->infinity trajectory with large-field clusters, boundary conditions and source responses controlled.",
+    "Prove the original-transfer fixed-physical-slab contraction uniformly in cutoff and volume; a shrinking microscopic margin alone neither proves nor disproves this.",
+    "Construct a surviving nonzero finite-energy excitation and compatible all-order continuum bounds on the same physical trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true,
+  "analytic_followup_not_lean_certified": {
+    "status": "A separate mathematical derivation to formalize next; excluded from the 23 fresh declaration checks and from verified auxiliary evidence.",
+    "existing_geometry": "SU2WilsonAlignedRealization.alignedConfig realizes two independent rotating forward staples at the distinct coordinates (x,1) and (x,2) for the target (x,0); the actual staple field is 4*1+rotor(t)+rotor(s).",
+    "conditional_pair": "For each of the two neighbors separately, compare the all-identity configuration with the corresponding angle pi/2 rotor. These configurations differ at exactly that coordinate. Their target staple fields are A=6*1 and B=5*1+imaginaryUnit, with radii 6 and sqrt(26).",
+    "discriminator": "Let a=A/|A| and b=B/|B|, d=|a-b|=sqrt(2-10/sqrt(26))>0. The continuous test f(q)=|q-b|/(|q-a|+|q-b|) lies in [0,1], equals 1 at a and 0 at b. The denominator is at least d by the triangle inequality.",
+    "concentration_derivation": "For the Haar tilt with field A=r*a, E|q-a|^2=2*(1-axisMean(2*beta*r))<=3/(2*beta*r). Cauchy-Schwarz gives E|q-a|<=sqrt(3/(2*beta*r)). The same statement holds for B and b.",
+    "influence_derivation": "Since 1-f(q)<=|q-a|/d and f(q)<=|q-b|/d, the two conditional expectations differ by at least 1-K/sqrt(beta), where K=(1/2+sqrt(3/(2*sqrt(26))))/sqrt(2-10/sqrt(26)). Thus each of the two actual neighbor coefficients should satisfy this bound when the existing coordinate dictionary is connected to the discriminator estimates.",
+    "row_consequence": "The global LocalInfluence predicate forces all coefficients nonnegative by using the zero test with oscillation budget 1 and equal configurations. The two distinct neighbors would therefore give sum_j C((x,0),j)>=2-2*K/sqrt(beta), exceeding 1 when beta>4*K^2. This would strengthen the certified fixed-margin obstruction to failure of every global strict row contraction at sufficiently large beta.",
+    "remaining_formal_steps": [
+      "Bind the two aligned configurations to the coordinateLaw inputs and prove exact agreement away from their selected distinct coordinates.",
+      "Construct the continuous distance-ratio discriminator on Q and prove its range and pointwise bounds.",
+      "Prove the first-distance expectation estimate for the actual tilted Haar laws from the existing axis concentration theorem.",
+      "Combine the two LocalInfluence bounds and the nonnegativity of all other row entries."
+    ],
+    "scope": "Even this proposed strengthening concerns the global raw-link comparison. It would not rule out good-field restricted estimates, gauge-fixed collective blocks, physical gauge-invariant estimates, or the Yang-Mills mass gap."
+  }
+}

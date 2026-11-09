@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-28",
+  "task": "Continue the Yang-Mills construction by closing the actual SU(2) Haar/source bridge and formalizing the resulting approximation.",
+  "claim_status": "Actual finite-cutoff one-link SU(2) source theorem and approximation-residual convergence; no nonzero continuum construction or Clay proof.",
+  "verification_status": "Passed: real cumulative selected-target lake --rehash build, all237 new declaration axiom checks, requirements ledger, and complete predecessor/source/log hash verification.",
+  "predecessor_certificate": {
+    "path": "data/yang_mills_source_expansion_audit.json",
+    "sha256": "db0e0247fb1332e92a39e6b955e29e5c43cb6c641214ffa549bdaa75b256c02e",
+    "declarations": 3532
+  },
+  "closed_gaps": [
+    {
+      "modules": [
+        "SU2HaarSphere",
+        "SU2HaarSlice",
+        "SU2SemicircleSlice"
+      ],
+      "result": "Constructs normalized quaternion Haar as sphere-surface measure; proves actual Euclidean coordinate and radial changes of variables, bounded-support integrability, planar polar Jacobian, radial factor1/4 and cosine substitution. Derives the first-coordinate semicircle density for every continuous scalar test. No density or desired integral identity is assumed."
+    },
+    {
+      "module": "WilsonSingleLinkStaples",
+      "result": "For every positive lattice link and period n>=2, constructs actual forward/backward staple triples, proves exact affected cardinality6 and derives full Wilson action/source identities. Vectors and constants are functions only of exterior links. Norm bounds and continuity are proved."
+    },
+    {
+      "module": "SU2HaarTilt",
+      "result": "Haar inversion and left translation prove the actual normalized tilted mean is parallel to the quaternion source. Partitions are positive; zero-source and zero-axis endpoints are proved."
+    },
+    {
+      "modules": [
+        "GibbsConstantShift",
+        "SU2WilsonConditionalSource",
+        "SU2WilsonMarginalTransport"
+      ],
+      "result": "Positive constant weights cancel in the constructed Gibbs measure. The actual Wilson single-link conditional law equals the Haar tilt. The actual retained law equals the exterior pushforward of the original interacting Wilson law, as an equality of measures."
+    },
+    {
+      "modules": [
+        "SU2HaarScalarBridge",
+        "SU2WilsonSourceApproximation",
+        "SU2WilsonSourceTheorem"
+      ],
+      "result": "The explicit intermediate FirstCoordinateFormula premise is discharged by the unconditional semicircle theorem. The original scalar/Gamma remainder supplies the actual one-link source error. Every denominator is clipped with max(r0,normA), giving a globally continuous polynomial extension and hybrid. The actual retained and original-law residual MSE bounds follow."
+    },
+    {
+      "module": "CouplingTrajectoryRobustness",
+      "result": "A positive cutoff a tending to0 and beta/log(1/a) tending to b with b*r0>1 imply decay of a^-4 beta^2 exp(-4 beta r0). General sublinear corrections and logarithmic/constant corrections preserve the slope. The final actual source theorem allows varying lattice periods, links, exterior configurations and weights with uniformly bounded affected absolute weight sum."
+    }
+  ],
+  "normalizations": {
+    "wilson_action": "S=beta*sum_p(2-ReTr(U_p)); standard lattice beta_latt=2*beta.",
+    "conditional_action": "S(q)=beta*C_1-2*beta*inner(q,A).",
+    "weighted_source": "O_f(q)=C_f-2*inner(q,B_f).",
+    "A_bound": "norm(A)<=6",
+    "B_bound": "norm(B_f)<=sum_affected |f_p|",
+    "kappa": "2*beta*norm(A)",
+    "haar_coordinate": "integral_Haar F(Re q)=(2/pi)*integral_-1^1 F(t)*sqrt(1-t^2) dt.",
+    "surface_area": "2*pi^2",
+    "unit_ball_volume": "pi^2/2",
+    "zero_endpoint": "Actual axisExcess(0)=excessMean(0)=0. Raw Gamma sourceRatio is not used at zero; its identification remains restricted to positive kappa."
+  },
+  "actual_approximation": {
+    "hypotheses": [
+      "n>=2",
+      "r0>0",
+      "r0<r1",
+      "beta*r0>=3/4"
+    ],
+    "truncation_index": "N=floor(4*beta*r0)",
+    "good_region": "norm(A)>=r0",
+    "raw_polynomial": "C_f-2*inner(A,B_f)/norm(A)+inner(A,B_f)/(beta*norm(A)^2)*P_N(2*beta*norm(A))",
+    "continuous_extension": "Replace every norm(A) in denominators and P_N argument by rho=max(r0,norm(A)); retain the actual source constant and numerator pairings.",
+    "hybrid": "(1-eta(normA))*conditionalSource+eta(normA)*continuous_approximation; eta is the proved continuous cutoff from0 atr0 to1 atr1.",
+    "pointwise_and_RMS_bound": "epsilon=1280*exp(2)*r0^2*beta^2*exp(-4*beta*r0)*sum_affected|f_p|.",
+    "MSE_bound": "epsilon^2 under the actual retained law and under the original Wilson law composed with exterior projection.",
+    "rescaled_MSE": "If the source is multiplied by a^-4, its squared approximation error is multiplied by a^-8.",
+    "low_staple_scope": "The response below r0 is retained exactly, not shown negligible. The original removed fluctuation is not part of the estimated conditional-source residual.",
+    "nonvacuous_cutoff_choice": "A useful polynomial sector takes0<r0<r1<6. The earlier formal example r0=11/2,r1=23/4 meets this condition. With r0>=6 the actual hybrid is exact everywhere and the error conclusion is trivial."
+  },
+  "varying_lattice_theorem": {
+    "declaration": "UnifiedTheory.Clay.YangMills.SU2WilsonSourceTheorem.rescaled_hybrid_error_tendsto",
+    "inputs": [
+      "Any filter-indexed periods n_i>=2, selected links, exteriors and real source weights",
+      "a_i tends to0 through positive values",
+      "beta_i/log(1/a_i) tends to a specified b",
+      "r0>0, r0<r1, b*r0>1",
+      "Eventually sum over the six affected plaquettes of |f_i,p| <= a fixed M"
+    ],
+    "conclusion": "a_i^-4*(actual conditionalSource_i-continuous hybridSource_i) tends to0.",
+    "limits": "No n_i-versus-a_i relation or independent-block aggregation is used. This is a one-link approximation theorem, not a physical smeared-field convergence theorem. The slope, uniform weights, exact retained source bounds and nonzero limiting correlations are not constructed."
+  },
+  "remaining_obligations": [
+    "Aggregate single-link approximations over appropriate independent/reflection-compatible blocks, with actual physical test smearing, weight scaling and fixed support margins.",
+    "Control the exact retained low-staple sector and covariance of the retained conditional means, including positive reflected norm.",
+    "Control newly generated overlapping interactions and nonlinear source operators through repeated integration; preserve compatible all-order estimates and reflection positivity.",
+    "Identify the physical coupling and observable-normalization trajectory and prove a strictly positive continuum covariance on that same trajectory.",
+    "Construct required contact counterterms, infinite-volume local fields, Euclidean covariance, spectrum, vacuum uniqueness and the full-sector mass gap.",
+    "The general compact-simple-gauge-group Clay target remains open; the new concrete source construction is for the SU(2) fundamental Wilson law."
+  ],
+  "independent_review": "Separate read-only reviews checked Wilson normalization, constants24e^2/1280e^2, Haar density proof inputs, zero endpoints, clipping continuity, original-law versus raw-source error, and varying-lattice weight/slope scope.",
+  "modules": {
+    "CouplingTrajectoryRobustness": 13,
+    "GibbsConstantShift": 2,
+    "WilsonSingleLinkStaples": 50,
+    "SU2HaarTilt": 44,
+    "SU2HaarSphere": 28,
+    "SU2HaarSlice": 26,
+    "SU2HaarScalarBridge": 12,
+    "SU2SemicircleSlice": 15,
+    "SU2WilsonConditionalSource": 14,
+    "SU2WilsonSourceApproximation": 19,
+    "SU2WilsonMarginalTransport": 9,
+    "SU2WilsonSourceTheorem": 5
+  },
+  "new_module_source_sha256": {
+    "UnifiedTheory/Clay/YangMills/CouplingTrajectoryRobustness.lean": "3b309c8012dbce3abb648f0eafdaddfcdbe0da47452f21485024990297baf5eb",
+    "UnifiedTheory/Clay/YangMills/GibbsConstantShift.lean": "05ee612cac9c0d5b6cd5f465e267ba0165d9849b060f637874f7a781097db9ab",
+    "UnifiedTheory/Clay/YangMills/WilsonSingleLinkStaples.lean": "7c97d5dd34323509672e87dec76be0879abb02b18d70d6de4dec4efe3f48c6bb",
+    "UnifiedTheory/Clay/YangMills/SU2HaarTilt.lean": "8cd962d8d256538c54122967a887a95b6e35fd4055c13b51e209a0f71ee37b62",
+    "UnifiedTheory/Clay/YangMills/SU2HaarSphere.lean": "9061df181c25ffd3084faed122b1b109ab9809378da5a799037410b40a7e9f65",
+    "UnifiedTheory/Clay/YangMills/SU2HaarSlice.lean": "5a36f25d6ef2a80a90007e0310b36e0d03972cbd40261ed8efb6869125d081f2",
+    "UnifiedTheory/Clay/YangMills/SU2HaarScalarBridge.lean": "50992b178005f003a8a8f76099b16cb97711ad5773349b9c15cbf093baf8dcc5",
+    "UnifiedTheory/Clay/YangMills/SU2SemicircleSlice.lean": "e5fbb47ef5e0dc0dd7025589fa46adfaa9ec0bb2b5fc153acb8aaf57da9a194c",
+    "UnifiedTheory/Clay/YangMills/SU2WilsonConditionalSource.lean": "b7671cbfd9a494a0fa9c6bb8034634c3391411100063dd218161cd77bd561529",
+    "UnifiedTheory/Clay/YangMills/SU2WilsonSourceApproximation.lean": "65fb1e5aa829474f31d5094c06334de5b97bb893371e0127077a968d65288f89",
+    "UnifiedTheory/Clay/YangMills/SU2WilsonMarginalTransport.lean": "5be6e3a8f97a17e57070d4af458422a650f7b69a1c082cd1f88c1bfcd0800278",
+    "UnifiedTheory/Clay/YangMills/SU2WilsonSourceTheorem.lean": "bc06cecaf9d96aafe53510ec96b4851db70339877f08fd22f2f25459cda77369"
+  },
+  "new_source_declarations": 237,
+  "cumulative_expected_declarations": 3769,
+  "declaration_count_scope": "Includes definitions, intermediate lemmas and all five local instances, including two generated instance names checked explicitly.",
+  "full_clay_requirements_open": 12,
+  "validation_limits": "Real cumulative selected-module build and standard-axiom/dependency-certificate audit; no full UnifiedTheory root build, commit, push, or external publication.",
+  "final_certificate": {
+    "path": "data/yang_mills_haar_source_audit.json",
+    "sha256": "e249c43cde08b0232ba53366adfa83b69a2107f048a9f610b784f8466762b07a",
+    "new_modules": 12,
+    "fresh_declarations": 237,
+    "retained_declarations": 3532,
+    "cumulative_declarations": 3769,
+    "local_lean_dependencies": 1375,
+    "fingerprinted_files": 1458,
+    "verified_certificate_chain_length": 23,
+    "verified_chain_log_count": 66,
+    "all_new_source_hashes_match": true,
+    "standard_axioms_only": true,
+    "root_build_checked": false,
+    "uses_temporary_dependency_overlay": false,
+    "requirements": {
+      "ledger_consistent": true,
+      "full_target_requirements_open": 12,
+      "verified_auxiliary_references": 300,
+      "clay_certificate_present": false
+    }
+  }
+}

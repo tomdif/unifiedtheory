@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: canonical one-cut actual norm comparison for arbitrary noncoplanar deletions and exact average deletion count",
+  "current_goal_turn_classification": "progress: exact modified-profile affine transport, actual all-frame reflection extrema, and a proved finite block-label maximum theorem with uninstantiated Wilson block hypotheses",
+  "scope": "Exact plaquette frames are constructed for every spatial translation and coordinate permutation on even period N=2*n. Reversed orientations use the actual SU(2) inverse-character defect identity. The plaquette permutation, Haar-preserving field symmetry and kinetic interaction are carried together. Arbitrary signed inhomogeneous coupling profiles are transported exactly: actions, weights, actual finite temporal-network densities and coarse Haar partitions agree. Compact positive endpoint growth gives equality of the actual raw modified transfer norms for temporal beta>=0, without any modified ground-state hypothesis. Explicit finite deletion sets and their cardinalities move with the profile. Conjugating the canonical copies proves the actual square norm inequality, average deletion-count conservation, priced Schwarz inequality and nondecreasing reflection choice at every affine spatial cut. At a global maximum of the actual finite Wilson priced norm, both copies at every frame retain the maximum. A maximum minimizing any natural-number rank exists; minimizing deletion count yields an actual maximizer whose two copies have exactly the same count at every frame. Separately, exact nearest-neighbor variation of finite block labels on an even three-dimensional torus is proved to decrease in average under a cut, strictly if the cut crosses a disagreement. Zero variation is equivalent to a constant label, and affine label symmetries preserve variation and move any disagreement to the canonical seam. The finite combinatorial chessboard maximum theorem is proved: a nonnegative score on finite labels, invariant under those affine symmetries and satisfying the literal half-copy Schwarz inequality, is bounded by a constant-label score. For binary labels the bound is max(empty score,fully marked score). The geometric extremal theorem has explicit hypotheses; it has not yet been instantiated with a concrete Wilson block deletion encoding. The fully disseminated quantitative model bound, arbitrary-cluster per-defect suppression, actual distant mixed-ground sum, independent global coercivity, physical scaling, nonzero continuum survival and all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames",
+    "UnifiedTheory.Clay.YangMills.WilsonProfileTransport",
+    "UnifiedTheory.Clay.YangMills.KernelPartitionEquivalence",
+    "UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport",
+    "UnifiedTheory.Clay.YangMills.WilsonFramedDeletion",
+    "UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum",
+    "UnifiedTheory.Clay.YangMills.BlockReflectionVariation",
+    "UnifiedTheory.Clay.YangMills.BlockLabelSymmetry",
+    "UnifiedTheory.Clay.YangMills.BlockChessboardExtremum"
+  ],
+  "new_declarations": 79,
+  "retained_declarations": 9157,
+  "cumulative_declarations": 9236,
+  "formal_results": {
+    "WilsonPlaquetteFrames.planeMap_inverse": "The actual sorted spatial-plane permutation has a proved inverse, including reversed orientations.",
+    "WilsonPlaquetteFrames.affine_plaquette": "Every translated/permuted plaquette has an explicit position and orientation dictionary consistent with its Haar field symmetry.",
+    "WilsonProfileTransport.action_push": "Arbitrary inhomogeneous coupling actions transform exactly with the actual field symmetry.",
+    "WilsonProfileTransport.partition_push": "Actual finite Wilson history partitions are unchanged by transporting all spatial profiles through a common affine frame; every kinetic factor is retained.",
+    "WilsonProfileTransport.push_omitted": "Transported literal deletion sets agree exactly with transported omitted-coupling profiles.",
+    "KernelPartitionEquivalence.norm_eq": "Equality of all actual endpoint partitions determines the compact positive operator norm, with positive endpoint constants removed by growth rates.",
+    "WilsonProfileNormTransport.norm_push": "The actual modified raw Wilson transfer norm is invariant under every constructed affine spatial frame; signed spatial profiles are allowed and temporal beta>=0.",
+    "WilsonProfileNormTransport.norm_pushSet": "Actual transfer norms of arbitrary deleted plaquette sets are unchanged by affine transport.",
+    "WilsonFramedDeletion.positiveSet_mem": "The reflected set in a general frame is identified by an explicit conjugated plaquette selector.",
+    "WilsonFramedDeletion.copies_card": "Every framed reflection conserves deleted-plaquette count in average.",
+    "WilsonFramedDeletion.norm_schwarz": "Arbitrary noncoplanar deleted sets satisfy the actual square transfer norm inequality at every translated/oriented spatial cut.",
+    "WilsonFramedDeletion.priced_schwarz": "The same arbitrary exponential price per removed coupling obeys the actual Schwarz inequality at every frame.",
+    "WilsonFramedDeletion.priced_choice": "At every affine cut, at least one explicit reflected deletion set does not decrease the actual priced norm.",
+    "WilsonReflectionExtremum.maximal_copies": "At an actual global finite Wilson priced-norm maximum, both reflected copies at every frame have the same maximum value.",
+    "WilsonReflectionExtremum.exists_ranked_maximizer": "An actual finite Wilson maximizer minimizing an arbitrary natural-number rank exists and neither copy can have smaller rank.",
+    "WilsonReflectionExtremum.exists_count_balanced_maximizer": "There is an actual global maximizer whose two reflected copies have exactly its deletion count at every frame.",
+    "BlockReflectionVariation.variation_strict": "On the actual even three-dimensional block-label torus, a cut crossing a disagreement strictly decreases average nearest-neighbor variation.",
+    "BlockReflectionVariation.variation_zero_iff": "Zero block-label variation is equivalent to a spatially constant label, with periodic connectivity proved explicitly.",
+    "BlockLabelSymmetry.variation_pull": "Every affine coordinate permutation/translation preserves the actual block-label variation.",
+    "BlockLabelSymmetry.move_disagreement": "Any disagreeing block edge can be moved to the canonical reflection seam.",
+    "BlockChessboardExtremum.constant_maximum": "A finite nonnegative affine-invariant label score satisfying the explicit half-copy Schwarz inequality is bounded by a constant-label score; its Wilson block-family instantiation remains open.",
+    "BlockChessboardExtremum.binary_bound": "For a binary block-label score satisfying the stated hypotheses, the maximum is bounded by the empty or fully marked pattern; no unconditional Wilson activity estimate is inferred."
+  },
+  "notation": {
+    "fine_period": "The actual frame results hold on N=2*n, n>0. The proposed cell instantiation will use fine period 4*n and coarse block-label period 2*n.",
+    "push_profile": "push(F,gamma)(p)=gamma(F.plaquettes.symm(p)); its actual weight is the original weight evaluated on the framed field.",
+    "framed_copy": "Transport the deleted set into the canonical frame, apply its literal half-copy, and transport back.",
+    "priced": "||T_cut(S)||*exp(-a*s*card(S)), where s>=0 is retained spatial coupling, beta>=0 the independent temporal coupling, a arbitrary real.",
+    "variation": "The number of disagreeing nearest-neighbor block-label edges on the even spatial torus."
+  },
+  "next_attack": {
+    "whole_cell_family": "On fine period 4*n, encode cells with vertices 2*x+epsilon, epsilon in {0,1}^3, x in the coarse period-2*n torus. A marked cell deletes all six internal plaquettes, two for each of the three orientations. Deleting only one orientation would not automatically satisfy the full coordinate-permutation symmetry hypothesis of BlockChessboardExtremum.",
+    "exact_dictionary": "Prove fine half-copies of the whole-cell deleted set equal coarse positive/negative label copies. Fine crossing plaquettes lie between cells and retain their original couplings. Prove coarse translations/permutations correspond to actual fine affine frames, and prove disjointness/cardinality.",
+    "quantitative_step": "Use the binary extremal bound only after its Wilson score hypotheses are proved. Control the fully disseminated raw norm by positivity/bounded kernel and compare the original norm with its proved quantitative lower bound, retaining the physical full/raw dictionary.",
+    "arbitrary_patterns": "Use finitely many parity-shifted cell tilings to retain a positive fraction of a marked plaquette pattern. Charge at most six internal plaquettes per selected cell and retain the actual source-supported defect-energy gain. Prove the covering constants and connected-cluster entropy.",
+    "full_goal": "Then close the actual distant mixed-ground or signed physical form and independent global retained-region coercivity, followed by justified scaling and nonzero continuum survival."
+  },
+  "research_sources": [
+    {
+      "title": "Marek Biskup, Reflection Positivity and Phase Transitions in Lattice Spin Models",
+      "url": "https://arxiv.org/pdf/math-ph/0610025",
+      "locations": [
+        "Theorem 5.8 and proof, pages 44-46"
+      ],
+      "use": "The finite extremal reflection strategy informs this construction. The new combinatorial statements are proved in Lean, with all score hypotheses explicit; no literature theorem is imported as an axiom or asserted to discharge the remaining Wilson block encoding."
+    }
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. No continuum Yang-Mills construction or cutoff-uniform physical mass gap is claimed.",
+    "The actual modified Wilson action and norm now transport through every affine spatial frame. The actual arbitrary-set reflection inequality is valid at every resulting cut; no coplanarity assumption or reflected modified ground state is inserted.",
+    "The block-label chessboard maximum theorem is a proved finite combinatorial theorem with explicit nonnegativity, affine-invariance and half-copy Schwarz hypotheses. A concrete Wilson block deletion family satisfying those hypotheses has not yet been encoded and verified.",
+    "The existence of an actual priced-norm maximizer, equality of its copied maximum values and count balance do not identify its geometry or give a numerical norm bound. The block-label variation argument is not silently applied to arbitrary plaquette sets.",
+    "The next candidate family deletes all six internal plaquettes of selected 2-by-2-by-2 vertex cells on fine period 4*n. This whole-cell choice is intended to preserve coordinate-permutation symmetry; the encoding, copy/transport identities, disjointness and cardinality are still to be proved.",
+    "Even after that instantiation, the completely disseminated model must be quantitatively compared with the original full model, and arbitrary marked patterns must be covered with a bounded geometric loss. Connected-cluster entropy and the actual source-weighted activity still require proof.",
+    "The distant mixed-ground sum or appropriate signed physical replacement and independent retained-region coercivity, including global gauge/toron directions and source-dependent boundaries, remain open.",
+    "Physical scale matching, normalized reflected-state compactness and nonzero renormalized continuum survival remain separate. Finite-regulator norm comparisons and combinatorial reflection theorems do not settle them."
+  ],
+  "audit": "data/yang_mills_framed_chessboard_audit.json",
+  "all_twelve_clay_obligations": "open",
+  "external_results_added_as_lean_axioms": false
+}

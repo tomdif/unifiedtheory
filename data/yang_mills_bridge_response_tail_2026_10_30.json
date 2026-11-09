@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: 19 new declarations proved all-target bridge output and slow physical eigenfunction bounds, with 9433 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: actual local response-energy control on bad-bridge events, with a small bound after finite-step square normalization",
+  "scope": "Actual squared finite-difference response on bad-bridge events is now controlled, with the original ground density and source retained. An exact change-of-variables formula transports a measurable event under a fixed single-link rotation. If the event and its rotated image lie in F, its restricted squared difference is bounded by 2*(exp(36*beta*displacement)+1) times the F-weighted source mass. Every actual spatial plaquette defect changes by at most eight times that displacement, including periodic degeneracies. A high-defect bridge at threshold 2*(R+4*r) survives any such rotation of displacement<=r as a bridge at threshold 2*R, with the same connected witness and endpoints. For a fixed root p, m>0 and one fixed link rotation per target plaquette z, define E_bad(f) as the sum over all z with graph distance(p,z)+1>=m of integral_[bridge p to z] (f(shift_z u)-f(u))^2 d(pi). At threshold 2*(R+4*r), E_bad(f)<=2*(exp(36*beta*r)+1)*C_m(f;R), where C_m is the proved summed bad-bridge source mass. Consequently E_bad(Pf)<=2*(exp(36*beta*r)+1)*B(2*rho,m)*M(f), for beta>0, R>0, R>=96*envelope(beta), 512*rho<1, on spatial periods 4*n. For beta>=512, rotations of displacement<=(36*beta)^(-1), and R=192*envelope(beta), the response event uses bufferedThreshold=R+4/(36*beta), which tends to zero. The full gauge-averaged transition version is explicit for gauge-invariant sources. Exact slow eigenfunctions Pf=sigma*f with sigma^2>=1/2 inherit the original-source bound. The entire preexisting WilsonCollectiveGram energy for this same family is exactly the sum of this bad-bridge response and its event-complement response. Keeping the power 224 in the exact activity exponent gives rho<=(2*beta+5)^(-224), hence E_bad(f)<=[16*(exp(1)+1)/(2*beta+5)^224]*(1/2)^(m-1)*M(f) for slow eigenfunctions. Even after multiplication by the inverse reference rotation scale squared, (36*beta)^2*E_bad(f)<=[20736*(exp(1)+1)/(2*beta+5)^222]*(1/2)^(m-1)*M(f), including an explicit physical-transition eigenfunction theorem. The root is fixed, rotations can depend on the target but not on the background configuration, and the scaling is the reference finite step rather than the actual displacement of every rotation. The event complement is not assumed to be entirely small-field: it can contain defects and disconnected bad clusters. No bound on that complement, the complete mixed-ground covariance sum, or independent global coercivity is proved. The finite-boundary covariance representation was already accepted. Relating its retained propagation and these source-energy estimates remains the next analytic task. No physical mass gap or nonzero continuum construction is claimed; all twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.WilsonGroundEventTransport",
+    "UnifiedTheory.Clay.YangMills.WilsonBridgeRotationStability",
+    "UnifiedTheory.Clay.YangMills.WilsonBridgeResponseTail",
+    "UnifiedTheory.Clay.YangMills.WilsonBridgeScaledResponse"
+  ],
+  "new_declarations": 27,
+  "retained_declarations": 9433,
+  "cumulative_declarations": 9460,
+  "notation": {
+    "P": "Normalized raw step with original physical ground and eigenvalue; equals full gauge-averaged transition on invariant sources.",
+    "M": "Integral of f squared under original physical ground law pi.",
+    "E_bad": "Fixed root p; sum over all target plaquettes z with graph distance(p,z)+1>=m of integral_[bad bridge p to z] (f(shift_z u)-f(u))^2 d(pi). One fixed single-link rotation per target; m>0.",
+    "bridge": "A connected plaquette set contains both endpoints and all its defects exceed or equal twice the displayed threshold.",
+    "bufferedThreshold": "192*envelope(beta)+4/(36*beta), used at beta>=512; this tends to zero.",
+    "reference_rotation_scale": "r_beta=(36*beta)^(-1), and each rotation displacement is <=r_beta.",
+    "rho": "exp(-beta*(R-96*envelope(beta))/4), with R=192*envelope(beta) for the stated weak-coupling bounds.",
+    "complement": "Exact event complement inside each source-energy integral, including near targets and any configurations without the prescribed rooted bridge; not an all-small-field assumption."
+  },
+  "proved_bounds": [
+    "E_bad(f;R+4*r)<=2*(exp(36*beta*r)+1)*C_m(f;R).",
+    "E_bad(Pf;R+4*r)<=2*(exp(36*beta*r)+1)*B(2*rho,m)*M(f).",
+    "For beta>=512, E_bad(Pf;bufferedThreshold)<=[8*(exp(1)+1)/(2*beta+5)]*2^(-(m-1))*M(f).",
+    "At R=192*envelope(beta), rho<=(2*beta+5)^(-224).",
+    "If P f=sigma*f and sigma^2>=1/2, E_bad(f;bufferedThreshold)<=[16*(exp(1)+1)/(2*beta+5)^224]*2^(-(m-1))*M(f).",
+    "Under the same slow-mode hypotheses, (36*beta)^2*E_bad(f;bufferedThreshold)<=[20736*(exp(1)+1)/(2*beta+5)^222]*2^(-(m-1))*M(f).",
+    "Existing collective energy equals its exact bridge-complement response plus E_bad, for this same family with unit amplitudes."
+  ],
+  "next_attack": [
+    "Estimate the exact bridge-complement response without assuming that absence of a rooted bad bridge means every field is small.",
+    "Use the existing finite-boundary connected-covariance identities to derive a retained propagation estimate compatible with these original-source response forms.",
+    "Control gauge/toron and boundary modes in an independent global coercivity estimate. Preserve reference finite-step scales and source normalization before deriving physical contraction.",
+    "Only then pursue compatible physical scaling and nonzero continuum survival."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. No nonzero continuum Yang-Mills construction or cutoff-uniform physical mass gap is claimed.",
+    "The new estimate controls actual source finite-difference energy restricted to bad-bridge events. It is not a bound on the complete mixed logarithmic ground response or every off-diagonal Gram entry.",
+    "The exact energy split retains its entire complementary term. Absence of a bridge from the chosen root does not imply that all retained plaquettes are small-field; other defects and disconnected clusters can remain.",
+    "The root is fixed. Bounds uniform for each root do not by themselves justify summing over every root without another normalization or overlap argument.",
+    "Rotations are fixed per target and independent of the background configuration. No measure-preserving or bounded-Jacobian claim is made for adaptive masked rotations.",
+    "The arbitrary-source estimate applies to P f. Original-source estimates use an exact eigenfunction equation and sigma^2>=1/2. The general source-loss terms from earlier work are not discarded.",
+    "P denotes the normalized raw step with the original physical ground and eigenvalue. Full gauge-averaged transition statements explicitly require gauge invariance.",
+    "The factor (36*beta)^2 is the inverse reference finite-step scale squared. This does not establish an infinitesimal derivative estimate, a continuum normalization, or a functional inequality.",
+    "The analytic estimates hold on periods 4*n. Distance is discrete plaquette-graph distance. The buffered defect threshold tends to zero, but this alone supplies no physical scale matching.",
+    "Uniform retained-field response, a justified binding to the finite-boundary connected-covariance formula, and independent global coercivity with gauge/toron and boundary effects remain open.",
+    "Multiscale stability, a compatible physical coupling trajectory, normalized reflected-state compactness and nonzero renormalized continuum survival remain separate obligations."
+  ],
+  "verification_report": "data/yang_mills_bridge_response_tail_audit.json",
+  "root_build_checked": false
+}

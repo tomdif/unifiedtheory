@@ -1,0 +1,670 @@
+{
+  "status": "PASS",
+  "exact_rational_checks": 64,
+  "relative_gradient_checks": [
+    {
+      "cutoff": 1,
+      "relative_gradient_identity_error": 8.881784197001252e-16,
+      "one_sided_pairing": -1.6489861668360826,
+      "one_sided_upper_bound": 171.90333127727692,
+      "inverse_estimate_ratio": 0.49485750362292613
+    },
+    {
+      "cutoff": 2,
+      "relative_gradient_identity_error": 1.7763568394002505e-15,
+      "one_sided_pairing": -15.314357121100615,
+      "one_sided_upper_bound": 16633.073872779038,
+      "inverse_estimate_ratio": 0.39276837247046825
+    },
+    {
+      "cutoff": 3,
+      "relative_gradient_identity_error": 1.4210854715202004e-14,
+      "one_sided_pairing": -79.13435706150705,
+      "one_sided_upper_bound": 301867.6259916914,
+      "inverse_estimate_ratio": 0.24451939874950424
+    }
+  ],
+  "exact_reference_checks": {
+    "physical_vs_Bessel_max_error": 3.3306690738754696e-16,
+    "exact_curvature_max_residual": 2.220446049250313e-15,
+    "exact_YM_equation_max_residual": 2.329803017175891e-13,
+    "reference_cutoff": 18,
+    "reference_tail_upper_formula_float": 1.1642911383608124e-27
+  },
+  "parameters": {
+    "initial_amplitude": 0.7,
+    "gauge_amplitudes": [
+      0.28,
+      0.19
+    ],
+    "end_time": 0.25
+  },
+  "cutoff_comparisons": [
+    {
+      "cutoff": 1,
+      "max_L2_error": 0.07899812229234682,
+      "final_L2_error": 0.07899812229234682,
+      "max_projected_reference_error": 0.0668529523069461,
+      "max_curvature_L2_error": 0.5342141161405156,
+      "max_energy_error": 0.13925516336594884,
+      "max_cumulative_dissipation_error": 0.1128918915814568,
+      "rhs_evaluations": 425,
+      "samples": [
+        {
+          "time": 0.0,
+          "L2_error_to_exact_reference": 0.05922283736239178,
+          "L2_error_to_projected_reference": 0.0,
+          "uniform_error_fourier_upper": 0.23974968360726395,
+          "curvature_L2_error": 0.5342141161405156,
+          "energy_error": 0.13925516336594884,
+          "cumulative_dissipation_error": 0.0,
+          "numerical_energy_balance_error": 0.0
+        },
+        {
+          "time": 0.03125,
+          "L2_error_to_exact_reference": 0.060534186585645106,
+          "L2_error_to_projected_reference": 0.02323369757582002,
+          "uniform_error_fourier_upper": 0.2931885554018261,
+          "curvature_L2_error": 0.4637373702058488,
+          "energy_error": 0.09248907359795816,
+          "cumulative_dissipation_error": 0.04676608976865171,
+          "numerical_energy_balance_error": 6.610267888618182e-13
+        },
+        {
+          "time": 0.0625,
+          "L2_error_to_exact_reference": 0.0620451386511916,
+          "L2_error_to_projected_reference": 0.03213183906110194,
+          "uniform_error_fourier_upper": 0.3168700969494913,
+          "curvature_L2_error": 0.43029208694464616,
+          "energy_error": 0.07213108963679399,
+          "cumulative_dissipation_error": 0.06712407372963725,
+          "numerical_energy_balance_error": 4.823919041996305e-13
+        },
+        {
+          "time": 0.09375,
+          "L2_error_to_exact_reference": 0.06376850983156782,
+          "L2_error_to_projected_reference": 0.0387509629705665,
+          "uniform_error_fourier_upper": 0.3331318277561683,
+          "curvature_L2_error": 0.4032189297076765,
+          "energy_error": 0.05835535601062741,
+          "cumulative_dissipation_error": 0.0808998073557961,
+          "numerical_energy_balance_error": 4.746203430272544e-13
+        },
+        {
+          "time": 0.125,
+          "L2_error_to_exact_reference": 0.06613738472601047,
+          "L2_error_to_projected_reference": 0.04494698208440079,
+          "uniform_error_fourier_upper": 0.34621298284805474,
+          "curvature_L2_error": 0.3800142583666487,
+          "energy_error": 0.04830640482893325,
+          "cumulative_dissipation_error": 0.0909487585374899,
+          "numerical_energy_balance_error": 4.742872761198669e-13
+        },
+        {
+          "time": 0.15625,
+          "L2_error_to_exact_reference": 0.06901642201440787,
+          "L2_error_to_projected_reference": 0.050874051980147154,
+          "uniform_error_fourier_upper": 0.3579537070400274,
+          "curvature_L2_error": 0.3598168068891344,
+          "energy_error": 0.04071564239842054,
+          "cumulative_dissipation_error": 0.09853952096800261,
+          "numerical_energy_balance_error": 4.742872761198669e-13
+        },
+        {
+          "time": 0.1875,
+          "L2_error_to_exact_reference": 0.07221016899164936,
+          "L2_error_to_projected_reference": 0.056504728283014095,
+          "uniform_error_fourier_upper": 0.3693006791539182,
+          "curvature_L2_error": 0.3420335291041449,
+          "energy_error": 0.034824446478826404,
+          "cumulative_dissipation_error": 0.10443071688759659,
+          "numerical_energy_balance_error": 4.741762538174044e-13
+        },
+        {
+          "time": 0.21875,
+          "L2_error_to_exact_reference": 0.07557040767295556,
+          "L2_error_to_projected_reference": 0.061827821697916015,
+          "uniform_error_fourier_upper": 0.3799710322400103,
+          "curvature_L2_error": 0.3262225628688313,
+          "energy_error": 0.03014774306437626,
+          "cumulative_dissipation_error": 0.10910742030204668,
+          "numerical_energy_balance_error": 4.741762538174044e-13
+        },
+        {
+          "time": 0.25,
+          "L2_error_to_exact_reference": 0.07899812229234682,
+          "L2_error_to_projected_reference": 0.0668529523069461,
+          "uniform_error_fourier_upper": 0.39006139228472697,
+          "curvature_L2_error": 0.3120476974732257,
+          "energy_error": 0.026363271784966197,
+          "cumulative_dissipation_error": 0.1128918915814568,
+          "numerical_energy_balance_error": 4.741762538174044e-13
+        }
+      ]
+    },
+    {
+      "cutoff": 2,
+      "max_L2_error": 0.005279382829826869,
+      "final_L2_error": 0.00441338376382996,
+      "max_projected_reference_error": 0.002324058439179481,
+      "max_curvature_L2_error": 0.07014108951966429,
+      "max_energy_error": 0.002432571774100445,
+      "max_cumulative_dissipation_error": 0.001710750469676725,
+      "rhs_evaluations": 473,
+      "samples": [
+        {
+          "time": 0.0,
+          "L2_error_to_exact_reference": 0.005279382829826869,
+          "L2_error_to_projected_reference": 0.0,
+          "uniform_error_fourier_upper": 0.019963986200829655,
+          "curvature_L2_error": 0.07014108951966429,
+          "energy_error": 0.002432571774100445,
+          "cumulative_dissipation_error": 0.0,
+          "numerical_energy_balance_error": 0.0
+        },
+        {
+          "time": 0.03125,
+          "L2_error_to_exact_reference": 0.005190136202491488,
+          "L2_error_to_projected_reference": 0.0014516640254701397,
+          "uniform_error_fourier_upper": 0.023977189464827325,
+          "curvature_L2_error": 0.06413654686150269,
+          "energy_error": 0.001822523817783639,
+          "cumulative_dissipation_error": 0.0006100479565079586,
+          "numerical_energy_balance_error": 1.9118040484045196e-13
+        },
+        {
+          "time": 0.0625,
+          "L2_error_to_exact_reference": 0.004983526633404149,
+          "L2_error_to_projected_reference": 0.0015647629328664383,
+          "uniform_error_fourier_upper": 0.023905266109132784,
+          "curvature_L2_error": 0.06085279569413202,
+          "energy_error": 0.001507357920763397,
+          "cumulative_dissipation_error": 0.0009252138535271737,
+          "numerical_energy_balance_error": 1.9012569296705806e-13
+        },
+        {
+          "time": 0.09375,
+          "L2_error_to_exact_reference": 0.004808203014937018,
+          "L2_error_to_projected_reference": 0.0016544434953720993,
+          "uniform_error_fourier_upper": 0.02378539736208024,
+          "curvature_L2_error": 0.05803273546176876,
+          "energy_error": 0.0012806879308759345,
+          "cumulative_dissipation_error": 0.0011518838434146639,
+          "numerical_energy_balance_error": 1.9018120411828932e-13
+        },
+        {
+          "time": 0.125,
+          "L2_error_to_exact_reference": 0.0046702230774435674,
+          "L2_error_to_projected_reference": 0.0017621072059479641,
+          "uniform_error_fourier_upper": 0.023723688754865472,
+          "curvature_L2_error": 0.05556790122875291,
+          "energy_error": 0.0011108916834299543,
+          "cumulative_dissipation_error": 0.0013216800908606996,
+          "numerical_energy_balance_error": 1.9018120411828932e-13
+        },
+        {
+          "time": 0.15625,
+          "L2_error_to_exact_reference": 0.004566284352076903,
+          "L2_error_to_projected_reference": 0.0018884025159488815,
+          "uniform_error_fourier_upper": 0.023705069567182522,
+          "curvature_L2_error": 0.053388880146512954,
+          "energy_error": 0.0009796826701566619,
+          "cumulative_dissipation_error": 0.0014528891041340475,
+          "numerical_energy_balance_error": 1.9029222642075183e-13
+        },
+        {
+          "time": 0.1875,
+          "L2_error_to_exact_reference": 0.00449167955572144,
+          "L2_error_to_projected_reference": 0.0020274859593867258,
+          "uniform_error_fourier_upper": 0.023722758841600067,
+          "curvature_L2_error": 0.05144433973391213,
+          "energy_error": 0.0008756545072667044,
+          "cumulative_dissipation_error": 0.001556917267024005,
+          "numerical_energy_balance_error": 1.9029222642075183e-13
+        },
+        {
+          "time": 0.21875,
+          "L2_error_to_exact_reference": 0.00444198238223925,
+          "L2_error_to_projected_reference": 0.00217397240933476,
+          "uniform_error_fourier_upper": 0.023771873536515723,
+          "curvature_L2_error": 0.04969499386885975,
+          "energy_error": 0.0007913731479284314,
+          "cumulative_dissipation_error": 0.0016411986263621947,
+          "numerical_energy_balance_error": 1.9018120411828932e-13
+        },
+        {
+          "time": 0.25,
+          "L2_error_to_exact_reference": 0.00441338376382996,
+          "L2_error_to_projected_reference": 0.002324058439179481,
+          "uniform_error_fourier_upper": 0.023847176944678236,
+          "curvature_L2_error": 0.04811018315139137,
+          "energy_error": 0.0007218213046138594,
+          "cumulative_dissipation_error": 0.001710750469676725,
+          "numerical_energy_balance_error": 1.9012569296705806e-13
+        }
+      ]
+    },
+    {
+      "cutoff": 3,
+      "max_L2_error": 0.0005863880672212769,
+      "final_L2_error": 0.0005863880672212769,
+      "max_projected_reference_error": 0.0005271149445910931,
+      "max_curvature_L2_error": 0.006440472892709284,
+      "max_energy_error": 2.061177758738708e-05,
+      "max_cumulative_dissipation_error": 1.4913216369649707e-05,
+      "rhs_evaluations": 485,
+      "samples": [
+        {
+          "time": 0.0,
+          "L2_error_to_exact_reference": 0.0003614990803931627,
+          "L2_error_to_projected_reference": 0.0,
+          "uniform_error_fourier_upper": 0.001270516356921344,
+          "curvature_L2_error": 0.006440472892709284,
+          "energy_error": 2.061177758738708e-05,
+          "cumulative_dissipation_error": 0.0,
+          "numerical_energy_balance_error": 0.0
+        },
+        {
+          "time": 0.03125,
+          "L2_error_to_exact_reference": 0.0003574651395583054,
+          "L2_error_to_projected_reference": 0.00010658895637320294,
+          "uniform_error_fourier_upper": 0.001534667491255416,
+          "curvature_L2_error": 0.005952798776368714,
+          "energy_error": 1.5762987712941712e-05,
+          "cumulative_dissipation_error": 4.848789898675987e-06,
+          "numerical_energy_balance_error": 2.425837308805967e-14
+        },
+        {
+          "time": 0.0625,
+          "L2_error_to_exact_reference": 0.00037033049549492074,
+          "L2_error_to_projected_reference": 0.00017938658611772916,
+          "uniform_error_fourier_upper": 0.0016227050892464725,
+          "curvature_L2_error": 0.0056144894542070585,
+          "energy_error": 1.2831551816361308e-05,
+          "cumulative_dissipation_error": 7.780225795422924e-06,
+          "numerical_energy_balance_error": 2.4369395390522186e-14
+        },
+        {
+          "time": 0.09375,
+          "L2_error_to_exact_reference": 0.00039693884637019886,
+          "L2_error_to_projected_reference": 0.00024899406714304985,
+          "uniform_error_fourier_upper": 0.0016993340885266715,
+          "curvature_L2_error": 0.005324822241759877,
+          "energy_error": 1.0736327917260091e-05,
+          "cumulative_dissipation_error": 9.875449694607408e-06,
+          "numerical_energy_balance_error": 2.4480417692984702e-14
+        },
+        {
+          "time": 0.125,
+          "L2_error_to_exact_reference": 0.0004312077212559552,
+          "L2_error_to_projected_reference": 0.00031342357448319974,
+          "uniform_error_fourier_upper": 0.0017708026800631643,
+          "curvature_L2_error": 0.005073272385553273,
+          "energy_error": 9.181966575538825e-06,
+          "cumulative_dissipation_error": 1.1429811036467452e-05,
+          "numerical_energy_balance_error": 2.4591439995447217e-14
+        },
+        {
+          "time": 0.15625,
+          "L2_error_to_exact_reference": 0.00046916064815465824,
+          "L2_error_to_projected_reference": 0.0003729193884587707,
+          "uniform_error_fourier_upper": 0.0018377347164118083,
+          "curvature_L2_error": 0.004852247618124358,
+          "energy_error": 7.992858731875607e-06,
+          "cumulative_dissipation_error": 1.2618918880158425e-05,
+          "numerical_energy_balance_error": 2.4646951146678475e-14
+        },
+        {
+          "time": 0.1875,
+          "L2_error_to_exact_reference": 0.0005084529915999727,
+          "L2_error_to_projected_reference": 0.0004280229506976973,
+          "uniform_error_fourier_upper": 0.0019004941208670082,
+          "curvature_L2_error": 0.004656107856724568,
+          "energy_error": 7.059456062136205e-06,
+          "cumulative_dissipation_error": 1.3552321549870072e-05,
+          "numerical_energy_balance_error": 2.4591439995447217e-14
+        },
+        {
+          "time": 0.21875,
+          "L2_error_to_exact_reference": 0.000547767649097442,
+          "L2_error_to_projected_reference": 0.00047926602168071175,
+          "uniform_error_fourier_upper": 0.0019594698915012393,
+          "curvature_L2_error": 0.004480564750472237,
+          "energy_error": 6.3106238293586525e-06,
+          "cumulative_dissipation_error": 1.4301153782536602e-05,
+          "numerical_energy_balance_error": 2.453592884421596e-14
+        },
+        {
+          "time": 0.25,
+          "L2_error_to_exact_reference": 0.0005863880672212769,
+          "L2_error_to_projected_reference": 0.0005271149445910931,
+          "uniform_error_fourier_upper": 0.002015117757926308,
+          "curvature_L2_error": 0.004322292834360828,
+          "energy_error": 5.698561242301059e-06,
+          "cumulative_dissipation_error": 1.4913216369649707e-05,
+          "numerical_energy_balance_error": 2.4591439995447217e-14
+        }
+      ]
+    },
+    {
+      "cutoff": 4,
+      "max_L2_error": 2.0046474799037012e-05,
+      "final_L2_error": 1.586277581935003e-05,
+      "max_projected_reference_error": 6.976208066251297e-06,
+      "max_curvature_L2_error": 0.0004445960787677152,
+      "max_energy_error": 9.843901283002054e-08,
+      "max_cumulative_dissipation_error": 6.779278860502558e-08,
+      "rhs_evaluations": 845,
+      "samples": [
+        {
+          "time": 0.0,
+          "L2_error_to_exact_reference": 2.0046474799037012e-05,
+          "L2_error_to_projected_reference": 0.0,
+          "uniform_error_fourier_upper": 6.63365371531185e-05,
+          "curvature_L2_error": 0.0004445960787677152,
+          "energy_error": 9.843901283002054e-08,
+          "cumulative_dissipation_error": 0.0,
+          "numerical_energy_balance_error": 0.0
+        },
+        {
+          "time": 0.03125,
+          "L2_error_to_exact_reference": 1.9097958597802316e-05,
+          "L2_error_to_projected_reference": 2.5935578067547577e-06,
+          "uniform_error_fourier_upper": 7.180659354231329e-05,
+          "curvature_L2_error": 0.0004158204751202962,
+          "energy_error": 7.725365602784251e-08,
+          "cumulative_dissipation_error": 2.118535688544476e-08,
+          "numerical_energy_balance_error": 5.551115123125783e-17
+        },
+        {
+          "time": 0.0625,
+          "L2_error_to_exact_reference": 1.82296043792875e-05,
+          "L2_error_to_projected_reference": 3.088435552824709e-06,
+          "uniform_error_fourier_upper": 7.063224427338171e-05,
+          "curvature_L2_error": 0.0003947695657738547,
+          "energy_error": 6.389560258668325e-08,
+          "cumulative_dissipation_error": 3.454353028620183e-08,
+          "numerical_energy_balance_error": 1.2007062011321068e-13
+        },
+        {
+          "time": 0.09375,
+          "L2_error_to_exact_reference": 1.7545113267634284e-05,
+          "L2_error_to_projected_reference": 3.7370363419388166e-06,
+          "uniform_error_fourier_upper": 6.956815466998547e-05,
+          "curvature_L2_error": 0.00037661623830659877,
+          "energy_error": 5.4272152827383735e-08,
+          "cumulative_dissipation_error": 4.416686164021577e-08,
+          "numerical_energy_balance_error": 1.609823385706477e-15
+        },
+        {
+          "time": 0.125,
+          "L2_error_to_exact_reference": 1.700804590669146e-05,
+          "L2_error_to_projected_reference": 4.423590680825843e-06,
+          "uniform_error_fourier_upper": 6.874617168870902e-05,
+          "curvature_L2_error": 0.00036075200374549403,
+          "energy_error": 4.7074881465158924e-08,
+          "cumulative_dissipation_error": 5.1364133113462884e-08,
+          "numerical_energy_balance_error": 1.7208456881689926e-15
+        },
+        {
+          "time": 0.15625,
+          "L2_error_to_exact_reference": 1.659071932929429e-05,
+          "L2_error_to_projected_reference": 5.102523851040958e-06,
+          "uniform_error_fourier_upper": 6.807554626512595e-05,
+          "curvature_L2_error": 0.00034673306063421906,
+          "energy_error": 4.152332883089471e-08,
+          "cumulative_dissipation_error": 5.691568560894922e-08,
+          "numerical_energy_balance_error": 1.609823385706477e-15
+        },
+        {
+          "time": 0.1875,
+          "L2_error_to_exact_reference": 1.6271587855218423e-05,
+          "L2_error_to_projected_reference": 5.757109594857029e-06,
+          "uniform_error_fourier_upper": 6.752190022567693e-05,
+          "curvature_L2_error": 0.0003342274848941223,
+          "energy_error": 3.712935370270287e-08,
+          "cumulative_dissipation_error": 6.130966107020797e-08,
+          "numerical_energy_balance_error": 1.942890293094024e-15
+        },
+        {
+          "time": 0.21875,
+          "L2_error_to_exact_reference": 1.6033540118794827e-05,
+          "L2_error_to_projected_reference": 6.381946372247547e-06,
+          "uniform_error_fourier_upper": 6.709621145125705e-05,
+          "curvature_L2_error": 0.0003229813315655064,
+          "energy_error": 3.357507472045995e-08,
+          "cumulative_dissipation_error": 6.486393971938398e-08,
+          "numerical_energy_balance_error": 1.609823385706477e-15
+        },
+        {
+          "time": 0.25,
+          "L2_error_to_exact_reference": 1.586277581935003e-05,
+          "L2_error_to_projected_reference": 6.976208066251297e-06,
+          "uniform_error_fourier_upper": 6.674570407951677e-05,
+          "curvature_L2_error": 0.0003127965597117521,
+          "energy_error": 3.064622609849632e-08,
+          "cumulative_dissipation_error": 6.779278860502558e-08,
+          "numerical_energy_balance_error": 1.887379141862766e-15
+        }
+      ]
+    },
+    {
+      "cutoff": 6,
+      "max_L2_error": 3.7219656961156305e-08,
+      "final_L2_error": 3.047691429899644e-08,
+      "max_projected_reference_error": 1.5139167543912077e-08,
+      "max_curvature_L2_error": 1.1564380663793387e-06,
+      "max_energy_error": 6.675771047071066e-13,
+      "max_cumulative_dissipation_error": 4.64184246595778e-13,
+      "rhs_evaluations": 1505,
+      "samples": [
+        {
+          "time": 0.0,
+          "L2_error_to_exact_reference": 3.7219656961156305e-08,
+          "L2_error_to_projected_reference": 0.0,
+          "uniform_error_fourier_upper": 1.1361673993984178e-07,
+          "curvature_L2_error": 1.1564380663793387e-06,
+          "energy_error": 6.675771047071066e-13,
+          "cumulative_dissipation_error": 0.0,
+          "numerical_energy_balance_error": 0.0
+        },
+        {
+          "time": 0.03125,
+          "L2_error_to_exact_reference": 3.5326294084167814e-08,
+          "L2_error_to_projected_reference": 3.7180955797462888e-09,
+          "uniform_error_fourier_upper": 1.1988146582567015e-07,
+          "curvature_L2_error": 1.086790319161984e-06,
+          "energy_error": 5.287437154777308e-13,
+          "cumulative_dissipation_error": 1.384170555951414e-13,
+          "numerical_energy_balance_error": 3.885780586188048e-16
+        },
+        {
+          "time": 0.0625,
+          "L2_error_to_exact_reference": 3.380867281125555e-08,
+          "L2_error_to_projected_reference": 5.507566936389445e-09,
+          "uniform_error_fourier_upper": 1.2163089251356575e-07,
+          "curvature_L2_error": 1.0325540522043885e-06,
+          "energy_error": 4.3770542745846797e-13,
+          "cumulative_dissipation_error": 2.339239912885205e-13,
+          "numerical_energy_balance_error": 4.052314039881821e-15
+        },
+        {
+          "time": 0.09375,
+          "L2_error_to_exact_reference": 3.266516761886076e-08,
+          "L2_error_to_projected_reference": 7.348103675750927e-09,
+          "uniform_error_fourier_upper": 1.2117254986874214e-07,
+          "curvature_L2_error": 9.85389088903186e-07,
+          "energy_error": 3.719802244006587e-13,
+          "cumulative_dissipation_error": 2.954581024283698e-13,
+          "numerical_energy_balance_error": 1.6653345369377348e-16
+        },
+        {
+          "time": 0.125,
+          "L2_error_to_exact_reference": 3.1812557752525606e-08,
+          "L2_error_to_projected_reference": 9.072230419279185e-09,
+          "uniform_error_fourier_upper": 1.1662495699511752e-07,
+          "curvature_L2_error": 9.429293472841353e-07,
+          "energy_error": 3.218814104144485e-13,
+          "cumulative_dissipation_error": 3.4822145167368035e-13,
+          "numerical_energy_balance_error": 2.4980018054066022e-15
+        },
+        {
+          "time": 0.15625,
+          "L2_error_to_exact_reference": 3.1241237783169e-08,
+          "L2_error_to_projected_reference": 1.081260314248218e-08,
+          "uniform_error_fourier_upper": 1.2224820975193173e-07,
+          "curvature_L2_error": 9.089629028229814e-07,
+          "energy_error": 2.8649305150452165e-13,
+          "cumulative_dissipation_error": 3.917421942389865e-13,
+          "numerical_energy_balance_error": 1.0658141036401503e-14
+        },
+        {
+          "time": 0.1875,
+          "L2_error_to_exact_reference": 3.082385991848775e-08,
+          "L2_error_to_projected_reference": 1.2315229812839714e-08,
+          "uniform_error_fourier_upper": 1.1870875267936186e-07,
+          "curvature_L2_error": 8.743346161627083e-07,
+          "energy_error": 2.545741395465484e-13,
+          "cumulative_dissipation_error": 4.159450561758149e-13,
+          "numerical_energy_balance_error": 2.942091015256665e-15
+        },
+        {
+          "time": 0.21875,
+          "L2_error_to_exact_reference": 3.0582230865427726e-08,
+          "L2_error_to_projected_reference": 1.3765317072169304e-08,
+          "uniform_error_fourier_upper": 1.1656317272200315e-07,
+          "curvature_L2_error": 8.443863097595389e-07,
+          "energy_error": 2.2976065494617615e-13,
+          "cumulative_dissipation_error": 4.4403369869883136e-13,
+          "numerical_energy_balance_error": 6.2727600891321345e-15
+        },
+        {
+          "time": 0.25,
+          "L2_error_to_exact_reference": 3.047691429899644e-08,
+          "L2_error_to_projected_reference": 1.5139167543912077e-08,
+          "uniform_error_fourier_upper": 1.1511352661889873e-07,
+          "curvature_L2_error": 8.176650993022853e-07,
+          "energy_error": 2.0969337377607644e-13,
+          "cumulative_dissipation_error": 4.64184246595778e-13,
+          "numerical_energy_balance_error": 6.2727600891321345e-15
+        }
+      ]
+    }
+  ],
+  "tightened_N6_endpoint_L2_difference": 1.892065138011566e-12,
+  "transport_comparisons": [
+    {
+      "path": 0,
+      "cutoff": 1,
+      "SU2_operator_error": 0.018328764585774936,
+      "normalized_trace_error": 0.005017918203799487,
+      "length_times_computed_field_upper": 0.23403683537083617
+    },
+    {
+      "path": 0,
+      "cutoff": 2,
+      "SU2_operator_error": 0.0007712639729307162,
+      "normalized_trace_error": 0.00023166767328541837,
+      "length_times_computed_field_upper": 0.014308306166806941
+    },
+    {
+      "path": 0,
+      "cutoff": 3,
+      "SU2_operator_error": 2.5747140898140255e-05,
+      "normalized_trace_error": 6.542715534796351e-06,
+      "length_times_computed_field_upper": 0.0012090706547557848
+    },
+    {
+      "path": 0,
+      "cutoff": 4,
+      "SU2_operator_error": 8.729539932401031e-07,
+      "normalized_trace_error": 1.4417732763227775e-07,
+      "length_times_computed_field_upper": 4.0047422447710065e-05
+    },
+    {
+      "path": 0,
+      "cutoff": 6,
+      "SU2_operator_error": 1.1566055727311536e-09,
+      "normalized_trace_error": 1.31782251777679e-10,
+      "length_times_computed_field_upper": 6.906811597133923e-08
+    },
+    {
+      "path": 1,
+      "cutoff": 1,
+      "SU2_operator_error": 0.04035285625136113,
+      "normalized_trace_error": 0.0003714737293047943,
+      "length_times_computed_field_upper": 0.9361473414833447
+    },
+    {
+      "path": 1,
+      "cutoff": 2,
+      "SU2_operator_error": 0.002004732632054658,
+      "normalized_trace_error": 8.487236302645584e-08,
+      "length_times_computed_field_upper": 0.057233224667227765
+    },
+    {
+      "path": 1,
+      "cutoff": 3,
+      "SU2_operator_error": 0.00021892750225248046,
+      "normalized_trace_error": 5.285822075595803e-07,
+      "length_times_computed_field_upper": 0.004836282619023139
+    },
+    {
+      "path": 1,
+      "cutoff": 4,
+      "SU2_operator_error": 6.946294887315394e-06,
+      "normalized_trace_error": 2.604913718062818e-08,
+      "length_times_computed_field_upper": 0.00016018968979084026
+    },
+    {
+      "path": 1,
+      "cutoff": 6,
+      "SU2_operator_error": 1.6293280652564038e-08,
+      "normalized_trace_error": 4.843204726157069e-10,
+      "length_times_computed_field_upper": 2.762724638853569e-07
+    },
+    {
+      "path": 2,
+      "cutoff": 1,
+      "SU2_operator_error": 0.021047243486715963,
+      "normalized_trace_error": 0.003914235221193496,
+      "length_times_computed_field_upper": 0.3900613922847269
+    },
+    {
+      "path": 2,
+      "cutoff": 2,
+      "SU2_operator_error": 0.0006040235965484204,
+      "normalized_trace_error": 0.00019002255904676524,
+      "length_times_computed_field_upper": 0.023847176944678233
+    },
+    {
+      "path": 2,
+      "cutoff": 3,
+      "SU2_operator_error": 4.06952515595447e-05,
+      "normalized_trace_error": 1.1887487250561435e-05,
+      "length_times_computed_field_upper": 0.0020151177579263075
+    },
+    {
+      "path": 2,
+      "cutoff": 4,
+      "SU2_operator_error": 1.3030018684777817e-06,
+      "normalized_trace_error": 2.7893220433394816e-07,
+      "length_times_computed_field_upper": 6.674570407951676e-05
+    },
+    {
+      "path": 2,
+      "cutoff": 6,
+      "SU2_operator_error": 1.20134641677346e-09,
+      "normalized_trace_error": 2.953209898848286e-10,
+      "length_times_computed_field_upper": 1.1511352661889871e-07
+    }
+  ],
+  "tightened_path_integration_difference": 2.7131289368040713e-12,
+  "qualifications": [
+    "Reference is exact analytic gauge-rotated flow; Bessel tail separately bounded.",
+    "Maximum sampled errors include t=0; final-time errors are also reported.",
+    "ODE and transport tolerances are diagnostics, not rigorous enclosures.",
+    "No assertion that tested cutoffs meet the conservative theorem threshold.",
+    "No novelty or infinite-time-uniform convergence claim."
+  ]
+}

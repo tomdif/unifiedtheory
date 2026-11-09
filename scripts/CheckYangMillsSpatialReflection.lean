@@ -1,0 +1,115 @@
+import UnifiedTheory.Clay.YangMills.HaarHalfEdges
+import UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry
+import UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit
+import UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths
+import UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry
+import UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality
+import UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels
+import UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel
+import UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion
+
+#print axioms UnifiedTheory.Clay.YangMills.HaarHalfEdges.coarsen
+#print axioms UnifiedTheory.Clay.YangMills.HaarHalfEdges.coarsen_continuous
+#print axioms UnifiedTheory.Clay.YangMills.HaarHalfEdges.haar_right
+#print axioms UnifiedTheory.Clay.YangMills.HaarHalfEdges.coarsen_preserving
+#print axioms UnifiedTheory.Clay.YangMills.HaarHalfEdges.integral_coarsen
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.Link
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.HalfEdge
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectVertex
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectVertex_involutive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectVertex_step_tangent
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectVertex_step_normal
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectLink
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectLink_direction
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectLink_involutive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.endpoint
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectHalf
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectHalf_involutive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectHalf_endpoint
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.Positive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.positive_reflected_iff
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.reflectHalf_ne
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.PositiveHalf
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.positiveHalfFintype
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.glue
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.split
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.split_glue
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.glue_split
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeGeometry.piecesEquiv
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.Half
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join_positive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join_negative
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.assemble
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.coarsen_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.assemble_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.assemble_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.halfHaar
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.halfHaar_probability
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.join_preserving
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.assemble_preserving
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeSplit.integral_assemble
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.startPath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.endPath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.path_conjugacy
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.path_character
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.boundary_link_fixed
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.boundary_tangent
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.startPath_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.startPath_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.halfPath
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.startPath_join
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.endPath_join
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteHalfPaths.halfPath_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.VertexPositive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.tangent_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.normal_partition
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.Plaquette
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.reflectPlaquette
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.reflectPlaquette_involutive
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.plaquetteEquiv
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.reflected_tangent
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.reflected_normal
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.character_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialPlaquetteCutGeometry.potential_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.sideHalf
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.join_on_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.link_on_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.holonomy_on_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.startPath_on_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialHalfEdgeLocality.endPath_on_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.Crossing
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.defect_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.noncrossing_side
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.interior_defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.crossing_defect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.crossing_defect_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.crossing_factor
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.diagonalDefect
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.plaquetteKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.plaquetteKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonPlaquetteKernels.plaquetteKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.action
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.weight
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.action_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.action_swap
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.weight_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.positiveKernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.positiveKernel_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.positiveKernel_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.constant_weight
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonReflectionKernel.spatialWeight_kernel
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.crossing_fixed
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.omitted
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.omitted_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.omitted_reflection
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.action_restore
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.weight_restore
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.marked_product_value
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.polynomial_removal
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.constant_source_form
+#print axioms UnifiedTheory.Clay.YangMills.SpatialWilsonInsertion.haar_removal

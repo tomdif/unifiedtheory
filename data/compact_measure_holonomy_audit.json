@@ -1,0 +1,1292 @@
+{
+  "exact": {
+    "arithmetic": "exact SymPy",
+    "antiunitary_matrix": "Matrix([[0, 1, 0, 0], [-1, 0, 0, 0], [0, 0, 0, 1], [0, 0, -1, 0]])",
+    "antiunitary_square": "-I",
+    "clifford_relations": true,
+    "all_125_triple_traces_zero": true,
+    "pair_transition_determinant": true,
+    "free_gap_squared_identity": true
+  },
+  "flat": {
+    "dense_operator_checks": [
+      {
+        "antiperiodic_time": false,
+        "kernel_error": 2.7010255184384213e-14,
+        "projector_error": 1.9180149394474978e-14,
+        "density_norm": 1.059959595559013e-14,
+        "endpoint_gauge_errors": [
+          5.32086195714886e-15,
+          1.0117050086484018e-14,
+          1.0570412134545943e-14,
+          1.580109099089206e-14
+        ],
+        "antiunitary_error": 0.0,
+        "maximum_flat_curvature": 6.948380672916477e-17,
+        "minimum_kernel_gap": 1.1096357382110298
+      },
+      {
+        "antiperiodic_time": true,
+        "kernel_error": 3.046193642532606e-14,
+        "projector_error": 1.860413356544078e-14,
+        "density_norm": 1.131225295879865e-14,
+        "endpoint_gauge_errors": [
+          5.32086195714886e-15,
+          1.0117050086484018e-14,
+          1.0570412134545943e-14,
+          1.580109099089206e-14
+        ],
+        "antiunitary_error": 0.0,
+        "maximum_flat_curvature": 4.9664929829308646e-17,
+        "minimum_kernel_gap": 1.0786596767434924
+      }
+    ],
+    "loops": [
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9997372599538844,
+        "minimum_kernel_gap": 1.009375428634543,
+        "determinant_holonomy": [
+          1.000000000000004,
+          2.515110920868743e-15
+        ],
+        "determinant_error": 4.7223104805803176e-15,
+        "paired_frame_error": 1.958913738051504e-15,
+        "block_holonomy_distance_from_identity": 4.117253530460317
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998842233057746,
+        "minimum_kernel_gap": 1.013760864023509,
+        "determinant_holonomy": [
+          1.0000000000000022,
+          1.0597032005519234e-16
+        ],
+        "determinant_error": 2.2229733166108683e-15,
+        "paired_frame_error": 2.2466291386424825e-15,
+        "block_holonomy_distance_from_identity": 4.136301435966577
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9997362074656783,
+        "minimum_kernel_gap": 1.0073772763137752,
+        "determinant_holonomy": [
+          0.9999999999999982,
+          -2.515986129373063e-15
+        ],
+        "determinant_error": 3.0798749689040454e-15,
+        "paired_frame_error": 2.0730232345193215e-15,
+        "block_holonomy_distance_from_identity": 4.117731251707448
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998811521268148,
+        "minimum_kernel_gap": 1.0005809429639305,
+        "determinant_holonomy": [
+          0.9999999999999982,
+          2.887422616199686e-16
+        ],
+        "determinant_error": 1.7996710017471144e-15,
+        "paired_frame_error": 1.965425203124288e-15,
+        "block_holonomy_distance_from_identity": 2.9265122781383393
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9960262021227478,
+        "minimum_kernel_gap": 1.0369121239238417,
+        "determinant_holonomy": [
+          0.9999999999999994,
+          1.4715990068617787e-15
+        ],
+        "determinant_error": 1.5728167178977121e-15,
+        "paired_frame_error": 2.2930342427246705e-15,
+        "block_holonomy_distance_from_identity": 3.829617517613406
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9984355868236562,
+        "minimum_kernel_gap": 1.1026594634337998,
+        "determinant_holonomy": [
+          1.0000000000000004,
+          2.2188208688881347e-15
+        ],
+        "determinant_error": 2.2628259487903063e-15,
+        "paired_frame_error": 2.1103797968953517e-15,
+        "block_holonomy_distance_from_identity": 3.2812047660595294
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9959587210061431,
+        "minimum_kernel_gap": 1.0286030408719709,
+        "determinant_holonomy": [
+          0.9999999999999998,
+          8.452849413029191e-16
+        ],
+        "determinant_error": 8.739624926561738e-16,
+        "paired_frame_error": 2.0880269836352946e-15,
+        "block_holonomy_distance_from_identity": 4.1047916515435565
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9985057524473444,
+        "minimum_kernel_gap": 1.1279482689625437,
+        "determinant_holonomy": [
+          1.0000000000000013,
+          -1.058431276780801e-15
+        ],
+        "determinant_error": 1.70153278088173e-15,
+        "paired_frame_error": 2.1262049500370043e-15,
+        "block_holonomy_distance_from_identity": 3.1932312266689333
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989777507359247,
+        "minimum_kernel_gap": 1.0232431785075502,
+        "determinant_holonomy": [
+          1.0000000000000027,
+          -3.5328250326017094e-15
+        ],
+        "determinant_error": 4.424997272085755e-15,
+        "paired_frame_error": 2.2978099050550816e-15,
+        "block_holonomy_distance_from_identity": 2.6027808256852496
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9995574825992082,
+        "minimum_kernel_gap": 1.0369982748008293,
+        "determinant_holonomy": [
+          1.0000000000000016,
+          1.9288177188322966e-15
+        ],
+        "determinant_error": 2.477140350226602e-15,
+        "paired_frame_error": 2.3649586359875216e-15,
+        "block_holonomy_distance_from_identity": 2.5602157136604755
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989677063139029,
+        "minimum_kernel_gap": 1.0183130062099004,
+        "determinant_holonomy": [
+          0.999999999999996,
+          2.4698261265338206e-15
+        ],
+        "determinant_error": 4.69834805288354e-15,
+        "paired_frame_error": 2.305953267442703e-15,
+        "block_holonomy_distance_from_identity": 2.6987198051928205
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9995326777320369,
+        "minimum_kernel_gap": 1.009093312118935,
+        "determinant_holonomy": [
+          0.9999999999999992,
+          1.682632433309302e-16
+        ],
+        "determinant_error": 7.951629704759151e-16,
+        "paired_frame_error": 1.9788428928744063e-15,
+        "block_holonomy_distance_from_identity": 3.5803784562046195
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9977357749112322,
+        "minimum_kernel_gap": 1.0309294823997457,
+        "determinant_holonomy": [
+          0.9999999999999968,
+          -2.473329912893692e-15
+        ],
+        "determinant_error": 4.059985984050262e-15,
+        "paired_frame_error": 2.161050046858226e-15,
+        "block_holonomy_distance_from_identity": 3.2271997107518096
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9990499545819896,
+        "minimum_kernel_gap": 1.0614578760843711,
+        "determinant_holonomy": [
+          0.9999999999999994,
+          -6.890188172634471e-17
+        ],
+        "determinant_error": 5.593713081731927e-16,
+        "paired_frame_error": 1.8201022391492996e-15,
+        "block_holonomy_distance_from_identity": 2.4181942489829056
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9977055539554968,
+        "minimum_kernel_gap": 1.0242734083462137,
+        "determinant_holonomy": [
+          0.9999999999999991,
+          1.3794575946961992e-15
+        ],
+        "determinant_error": 1.640659672444604e-15,
+        "paired_frame_error": 2.261672977027943e-15,
+        "block_holonomy_distance_from_identity": 3.1692117084667033
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9990179620726889,
+        "minimum_kernel_gap": 1.043932590287636,
+        "determinant_holonomy": [
+          0.9999999999999974,
+          2.1953708046543447e-15
+        ],
+        "determinant_error": 3.3675037326848046e-15,
+        "paired_frame_error": 2.2658668754774443e-15,
+        "block_holonomy_distance_from_identity": 2.5786483142371774
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.992453298591081,
+        "minimum_kernel_gap": 1.1256183400574014,
+        "determinant_holonomy": [
+          1.0000000000000007,
+          2.1066137060960704e-15
+        ],
+        "determinant_error": 2.2094242611817767e-15,
+        "paired_frame_error": 2.2351471066314343e-15,
+        "block_holonomy_distance_from_identity": 4.030080585193217
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9976837161947127,
+        "minimum_kernel_gap": 1.3583339748574075,
+        "determinant_holonomy": [
+          0.9999999999999984,
+          1.739163442538331e-15
+        ],
+        "determinant_error": 2.332504234101436e-15,
+        "paired_frame_error": 2.3433468910968317e-15,
+        "block_holonomy_distance_from_identity": 2.150567252180194
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9920623555044296,
+        "minimum_kernel_gap": 1.09921768521703,
+        "determinant_holonomy": [
+          1.0000000000000002,
+          2.555543040219704e-15
+        ],
+        "determinant_error": 2.5651713465169692e-15,
+        "paired_frame_error": 2.3067139306159474e-15,
+        "block_holonomy_distance_from_identity": 4.331307319886173
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9980810139063045,
+        "minimum_kernel_gap": 1.491136800061006,
+        "determinant_holonomy": [
+          0.999999999999999,
+          1.4960250257794789e-15
+        ],
+        "determinant_error": 1.799025558720285e-15,
+        "paired_frame_error": 2.04265070440864e-15,
+        "block_holonomy_distance_from_identity": 1.9230847877137704
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": true,
+        "minimum_gram": 0.9999440758209569,
+        "minimum_kernel_gap": 1.002303880544969,
+        "determinant_holonomy": [
+          1.000000000000002,
+          -1.863981887199862e-15
+        ],
+        "determinant_error": 2.7327709030378914e-15,
+        "paired_frame_error": 1.826301320709982e-15,
+        "block_holonomy_distance_from_identity": 0.09215791759070793
+      },
+      {
+        "lengths": [
+          2,
+          3,
+          2,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          1,
+          -1,
+          0,
+          1
+        ],
+        "steps": 192,
+        "curved_path": true,
+        "minimum_gram": 0.9936180973067573,
+        "minimum_kernel_gap": 1.0189092192857414,
+        "determinant_holonomy": [
+          0.9999999999999981,
+          -4.787626808830639e-15
+        ],
+        "determinant_error": 5.146219047589451e-15,
+        "paired_frame_error": 4.006428391926021e-15,
+        "block_holonomy_distance_from_identity": 5.755249146327392
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998810985850465,
+        "minimum_kernel_gap": 1.0003562630764475,
+        "determinant_holonomy": [
+          0.9999999999999982,
+          2.0675047995894592e-16
+        ],
+        "determinant_error": 1.7883482272329685e-15,
+        "paired_frame_error": 2.790339901320825e-15,
+        "block_holonomy_distance_from_identity": 3.345287894652956
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998811200487445,
+        "minimum_kernel_gap": 1.0004472335987897,
+        "determinant_holonomy": [
+          0.9999999999999961,
+          1.6871199503294736e-15
+        ],
+        "determinant_error": 4.236232346176925e-15,
+        "paired_frame_error": 2.921815644079567e-15,
+        "block_holonomy_distance_from_identity": 3.342458494621548
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998810825404483,
+        "minimum_kernel_gap": 1.0002895292715297,
+        "determinant_holonomy": [
+          0.999999999999998,
+          -2.611651441481997e-15
+        ],
+        "determinant_error": 3.2885151032763047e-15,
+        "paired_frame_error": 2.929593333088149e-15,
+        "block_holonomy_distance_from_identity": 3.3478234895764167
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9998810522568411,
+        "minimum_kernel_gap": 1.000161766455624,
+        "determinant_holonomy": [
+          0.999999999999998,
+          -4.393670705397617e-15
+        ],
+        "determinant_error": 4.826795065066525e-15,
+        "paired_frame_error": 3.2972426487203657e-15,
+        "block_holonomy_distance_from_identity": 3.028555156064027
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9983753029225556,
+        "minimum_kernel_gap": 1.0818455186109817,
+        "determinant_holonomy": [
+          0.9999999999999989,
+          8.680413657515157e-16
+        ],
+        "determinant_error": 1.4092874004487472e-15,
+        "paired_frame_error": 3.55956300439632e-15,
+        "block_holonomy_distance_from_identity": 3.7869296175515874
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9984327343453288,
+        "minimum_kernel_gap": 1.1016667429946259,
+        "determinant_holonomy": [
+          0.9999999999999981,
+          -3.6904008793286796e-16
+        ],
+        "determinant_error": 1.923120020081984e-15,
+        "paired_frame_error": 3.050350524301806e-15,
+        "block_holonomy_distance_from_identity": 3.659914914714014
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9983301713301209,
+        "minimum_kernel_gap": 1.0673097135015552,
+        "determinant_holonomy": [
+          0.9999999999999973,
+          -1.680287828433627e-15
+        ],
+        "determinant_error": 3.1500976704494895e-15,
+        "paired_frame_error": 3.4938505694505793e-15,
+        "block_holonomy_distance_from_identity": 3.895622179546117
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -4,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9982385158073919,
+        "minimum_kernel_gap": 1.039050934452013,
+        "determinant_holonomy": [
+          0.9999999999999977,
+          -3.634319476271272e-15
+        ],
+        "determinant_error": 4.317872477348448e-15,
+        "paired_frame_error": 2.9994165109839186e-15,
+        "block_holonomy_distance_from_identity": 4.124449781065333
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9995294236151469,
+        "minimum_kernel_gap": 1.0056082897578427,
+        "determinant_holonomy": [
+          0.9999999999999979,
+          -3.714041000701189e-15
+        ],
+        "determinant_error": 4.271272538530146e-15,
+        "paired_frame_error": 3.113550375088161e-15,
+        "block_holonomy_distance_from_identity": 4.4541905283036485
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9995307451243178,
+        "minimum_kernel_gap": 1.0070341202762105,
+        "determinant_holonomy": [
+          0.9999999999999958,
+          -7.916006330004081e-16
+        ],
+        "determinant_error": 4.2924708194949586e-15,
+        "paired_frame_error": 3.0711324392963675e-15,
+        "block_holonomy_distance_from_identity": 4.4197446418921595
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9995284337707807,
+        "minimum_kernel_gap": 1.0045644622043683,
+        "determinant_holonomy": [
+          0.9999999999999996,
+          1.099002493801091e-15
+        ],
+        "determinant_error": 1.1853361159123896e-15,
+        "paired_frame_error": 2.86608190995804e-15,
+        "block_holonomy_distance_from_identity": 4.485419260884551
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 2,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.999526557319377,
+        "minimum_kernel_gap": 1.0025648671871568,
+        "determinant_holonomy": [
+          1.0000000000000016,
+          2.4694917671799125e-15
+        ],
+        "determinant_error": 2.9179232530018186e-15,
+        "paired_frame_error": 3.0653301109003376e-15,
+        "block_holonomy_distance_from_identity": 4.072521962312249
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989861146009914,
+        "minimum_kernel_gap": 1.027454051886429,
+        "determinant_holonomy": [
+          0.9999999999999988,
+          1.6595599529690976e-15
+        ],
+        "determinant_error": 2.0604803775897186e-15,
+        "paired_frame_error": 3.062316674067608e-15,
+        "block_holonomy_distance_from_identity": 3.306914277772147
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989994403848053,
+        "minimum_kernel_gap": 1.0343292007106073,
+        "determinant_holonomy": [
+          1.0000000000000002,
+          -3.653862870334956e-17
+        ],
+        "determinant_error": 2.2503083780636486e-16,
+        "paired_frame_error": 3.1520116520262723e-15,
+        "block_holonomy_distance_from_identity": 3.19859664722063
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989759935122836,
+        "minimum_kernel_gap": 1.0224248070495594,
+        "determinant_holonomy": [
+          1.0000000000000024,
+          -2.3382195891715324e-15
+        ],
+        "determinant_error": 3.381276599587705e-15,
+        "paired_frame_error": 3.1331796855175162e-15,
+        "block_holonomy_distance_from_identity": 3.404717179664817
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": -3,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9989564102589553,
+        "minimum_kernel_gap": 1.0127502265304238,
+        "determinant_holonomy": [
+          0.9999999999999966,
+          8.7276840188675045e-16
+        ],
+        "determinant_error": 3.550628706763241e-15,
+        "paired_frame_error": 3.4659824832878542e-15,
+        "block_holonomy_distance_from_identity": 3.7666145702957405
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.997118613707513,
+        "minimum_kernel_gap": 1.2173616460778989,
+        "determinant_holonomy": [
+          0.9999999999999982,
+          -3.820217038757614e-16
+        ],
+        "determinant_error": 1.8169711618834754e-15,
+        "paired_frame_error": 3.3046613420500386e-15,
+        "block_holonomy_distance_from_identity": 4.229671829481711
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9973641846293629,
+        "minimum_kernel_gap": 1.273437173742543,
+        "determinant_holonomy": [
+          0.999999999999998,
+          -2.459015725357519e-15
+        ],
+        "determinant_error": 3.1686537630730404e-15,
+        "paired_frame_error": 3.215393532964807e-15,
+        "block_holonomy_distance_from_identity": 3.984587250701639
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9969310459156272,
+        "minimum_kernel_gap": 1.1801824956604445,
+        "determinant_holonomy": [
+          0.9999999999999968,
+          -4.233169655161832e-15
+        ],
+        "determinant_error": 5.3184443836570106e-15,
+        "paired_frame_error": 3.0162551828511006e-15,
+        "block_holonomy_distance_from_identity": 4.382190829595984
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "steps": 96,
+        "curved_path": false,
+        "minimum_gram": 0.9969116834552949,
+        "minimum_kernel_gap": 1.1757434701323997,
+        "determinant_holonomy": [
+          0.999999999999995,
+          2.0749277660087894e-15
+        ],
+        "determinant_error": 5.409748359527715e-15,
+        "paired_frame_error": 3.5500684954276766e-15,
+        "block_holonomy_distance_from_identity": 4.396482567245049
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 1,
+        "winding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "steps": 96,
+        "curved_path": true,
+        "minimum_gram": 0.9999676172924999,
+        "minimum_kernel_gap": 1.000035708561669,
+        "determinant_holonomy": [
+          0.9999999999999978,
+          -8.770373391259846e-16
+        ],
+        "determinant_error": 2.3873783009511734e-15,
+        "paired_frame_error": 2.929110136660817e-15,
+        "block_holonomy_distance_from_identity": 0.08439591406818867
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "charge": 6,
+        "winding": [
+          1,
+          -1,
+          0,
+          1
+        ],
+        "steps": 192,
+        "curved_path": true,
+        "minimum_gram": 0.9948686089161468,
+        "minimum_kernel_gap": 1.0133201301974897,
+        "determinant_holonomy": [
+          0.9999999999999954,
+          5.785009448565237e-15
+        ],
+        "determinant_error": 7.361131640833813e-15,
+        "paired_frame_error": 4.952889295306934e-15,
+        "block_holonomy_distance_from_identity": 10.554216449075597
+      }
+    ],
+    "maximum_determinant_error": 7.361131640833813e-15,
+    "dirac_zero_mode_residual": 0.0,
+    "scope": "All flat holonomies analytically; finite transport diagnostics listed explicitly"
+  },
+  "gauge": {
+    "site": 10,
+    "ward_holonomy_phase": 6.16625994884289e-06,
+    "exact_kato_ward_error": 1.8033458501986142e-15,
+    "species": [
+      {
+        "charge": 1,
+        "multiplicity": 6,
+        "horizontal_error": 1.8192093501963837e-15,
+        "kato_ode_error": 2.2833625023394956e-15,
+        "minimum_kernel_gap": 0.9959626905433454
+      },
+      {
+        "charge": -4,
+        "multiplicity": 3,
+        "horizontal_error": 6.801334339757619e-15,
+        "kato_ode_error": 9.164290632665881e-15,
+        "minimum_kernel_gap": 0.9830114314038069
+      },
+      {
+        "charge": 2,
+        "multiplicity": 3,
+        "horizontal_error": 3.818807350823362e-15,
+        "kato_ode_error": 4.879560008264862e-15,
+        "minimum_kernel_gap": 0.991783486554644
+      },
+      {
+        "charge": -3,
+        "multiplicity": 2,
+        "horizontal_error": 5.375432700462186e-15,
+        "kato_ode_error": 6.81442509242103e-15,
+        "minimum_kernel_gap": 0.9874652755551598
+      },
+      {
+        "charge": 6,
+        "multiplicity": 1,
+        "horizontal_error": 1.3209124962622126e-14,
+        "kato_ode_error": 1.7034686633268643e-14,
+        "minimum_kernel_gap": 0.9737127399450017
+      }
+    ],
+    "direct_transport": [
+      {
+        "steps": 128,
+        "phase": 6.098632054385369e-06,
+        "error": 6.76278944575215e-08,
+        "minimum_gram": 0.9930472271791435
+      },
+      {
+        "steps": 256,
+        "phase": 6.1494295991223084e-06,
+        "error": 1.6830349720581822e-08,
+        "minimum_gram": 0.9982523489529351
+      },
+      {
+        "steps": 512,
+        "phase": 6.1620571864254555e-06,
+        "error": 4.202762417438946e-09,
+        "minimum_gram": 0.9995624945182005
+      }
+    ],
+    "scope": "Compact integer on-site loops above the weak chart; holonomy need not equal one"
+  },
+  "extension_control": {
+    "rows": [
+      {
+        "theta": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "summed_density_hessian_norm": 5.1585041457990996e-14,
+        "total_hessian_sum": 2.6478819137309983e-14
+      },
+      {
+        "theta": [
+          0.37,
+          -0.29,
+          0.43,
+          0.61
+        ],
+        "summed_density_hessian_norm": 4.689697937041558,
+        "total_hessian_sum": 9.414691248821327e-14
+      }
+    ],
+    "conclusion": "Cubic charge cancellation at zero potential does not cancel the finite-volume Hessian at arbitrary flat holonomy"
+  },
+  "source_sha256": {
+    "scripts/compact_measure_holonomy_audit.py": "1f6da67cfca1614ba5b8579b5fb400b0d570683dc3eca1768606ec19e6e0d486",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "UnifiedTheory/Audit/KFCausalCompactHolonomy.lean": "0ad2751700302cdf2b3855d7a61ea78b985cb3ccf317e4bc2bb4d5220dae2972",
+    "COMPACT_MEASURE_HOLONOMY.md": "27876856f79e10dacba7f719a547c96b2825604213982e6fd8dd4bbbc23b062c"
+  }
+}

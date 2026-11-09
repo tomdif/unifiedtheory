@@ -1,0 +1,29 @@
+{
+  "source_repository": "https://github.com/tomdif/RamanujanLean",
+  "source_commit": "ce2dd48f96d62c81117ceeafd52faba5febd20ac",
+  "source_toolchain": "leanprover/lean4:v4.30.0-rc2",
+  "target_toolchain": "leanprover/lean4:v4.28.0",
+  "files": {
+    "OSum.lean": {
+      "source_sha256": "6ced0466ab4f08f4771b57200207501f7110a10b47e06ef6c3818d75c996c558"
+    },
+    "Prod.lean": {
+      "source_sha256": "ab57e895bb6c919151ef5ba22108896a248189963f85902ecd4df8903ed2fccd"
+    },
+    "Euler.lean": {
+      "source_sha256": "09faf350f61d0b7b912865dc9d483e3e256e25a3ad23ba4c012e9c2da51c6922"
+    },
+    "Binom.lean": {
+      "source_sha256": "12d8aa5267a7acdf92dcb4eef53b8dc836451842f8dd7845a3048b68bc14acf0"
+    },
+    "A0.lean": {
+      "source_sha256": "a402f56908f6448fe5e5930247d1776aab30675bea96d7ed5414f19f4ab39bba"
+    },
+    "R1.lean": {
+      "source_sha256": "45af26c16bf58307a2a5f3518f3eddb4808354fe9ad5b6c08826b0b06d821863"
+    },
+    "F0Rel.lean": {
+      "source_sha256": "eb5a89365929d4187a34585d0739c24e1bba769f3d403613dac62faa94699ad3"
+    }
+  }
+}

@@ -1,0 +1,972 @@
+{
+  "modular_rings": {
+    "cases": [
+      {
+        "size": 8,
+        "mass": 0.15,
+        "region": 2,
+        "covariance_error": 1.0859615016286816e-10,
+        "analytic_covariance_error": 1.0859615016286816e-10,
+        "modular_matrix_error": 2.86080340582526e-11,
+        "minimum_regional_symplectic_eigenvalue": 0.5159886756204327,
+        "thermal_covariance_reconstruction_error": 7.499143576176368e-16,
+        "unequal_time_covariance_difference": 0.4902993855747215
+      },
+      {
+        "size": 8,
+        "mass": 0.15,
+        "region": 3,
+        "covariance_error": 1.0859615016286816e-10,
+        "analytic_covariance_error": 1.0859615016286816e-10,
+        "modular_matrix_error": 5.91989075001081e-11,
+        "minimum_regional_symplectic_eigenvalue": 0.5001551063422515,
+        "thermal_covariance_reconstruction_error": 3.0977013017582834e-15,
+        "unequal_time_covariance_difference": 0.4902993855747215
+      },
+      {
+        "size": 8,
+        "mass": 0.4,
+        "region": 2,
+        "covariance_error": 6.50584353591108e-13,
+        "analytic_covariance_error": 6.505857732051706e-13,
+        "modular_matrix_error": 9.88008672038747e-13,
+        "minimum_regional_symplectic_eigenvalue": 0.5133340108107451,
+        "thermal_covariance_reconstruction_error": 3.521787733787174e-16,
+        "unequal_time_covariance_difference": 0.3626241283464926
+      },
+      {
+        "size": 8,
+        "mass": 0.4,
+        "region": 3,
+        "covariance_error": 6.50584353591108e-13,
+        "analytic_covariance_error": 6.505857732051706e-13,
+        "modular_matrix_error": 8.400362364498491e-12,
+        "minimum_regional_symplectic_eigenvalue": 0.500049123332084,
+        "thermal_covariance_reconstruction_error": 1.1261549042556244e-15,
+        "unequal_time_covariance_difference": 0.3626241283464926
+      },
+      {
+        "size": 12,
+        "mass": 0.15,
+        "region": 2,
+        "covariance_error": 2.5189512496826995e-11,
+        "analytic_covariance_error": 2.5189467306209727e-11,
+        "modular_matrix_error": 7.765747760848319e-12,
+        "minimum_regional_symplectic_eigenvalue": 0.5175415724230168,
+        "thermal_covariance_reconstruction_error": 5.4672143489065705e-16,
+        "unequal_time_covariance_difference": 0.5912178814710047
+      },
+      {
+        "size": 12,
+        "mass": 0.15,
+        "region": 3,
+        "covariance_error": 2.5189512496826995e-11,
+        "analytic_covariance_error": 2.5189467306209727e-11,
+        "modular_matrix_error": 9.527606311125374e-12,
+        "minimum_regional_symplectic_eigenvalue": 0.5001991114700143,
+        "thermal_covariance_reconstruction_error": 2.036834269510692e-15,
+        "unequal_time_covariance_difference": 0.5912178814710047
+      },
+      {
+        "size": 12,
+        "mass": 0.4,
+        "region": 2,
+        "covariance_error": 6.982974368289456e-13,
+        "analytic_covariance_error": 6.982934061535575e-13,
+        "modular_matrix_error": 1.329249214595868e-12,
+        "minimum_regional_symplectic_eigenvalue": 0.5140267095737991,
+        "thermal_covariance_reconstruction_error": 1.8619006149354548e-16,
+        "unequal_time_covariance_difference": 0.44075704327914356
+      },
+      {
+        "size": 12,
+        "mass": 0.4,
+        "region": 3,
+        "covariance_error": 6.982974368289456e-13,
+        "analytic_covariance_error": 6.982934061535575e-13,
+        "modular_matrix_error": 3.710947078378176e-11,
+        "minimum_regional_symplectic_eigenvalue": 0.5000423419680812,
+        "thermal_covariance_reconstruction_error": 1.8975718192830377e-15,
+        "unequal_time_covariance_difference": 0.44075704327914356
+      },
+      {
+        "size": 16,
+        "mass": 0.15,
+        "region": 2,
+        "covariance_error": 4.823842819915125e-10,
+        "analytic_covariance_error": 4.823842819915125e-10,
+        "modular_matrix_error": 1.0896950545768474e-10,
+        "minimum_regional_symplectic_eigenvalue": 0.5180136258955402,
+        "thermal_covariance_reconstruction_error": 1.1036113885016265e-15,
+        "unequal_time_covariance_difference": 0.6795239166536987
+      },
+      {
+        "size": 16,
+        "mass": 0.15,
+        "region": 3,
+        "covariance_error": 4.823842819915125e-10,
+        "analytic_covariance_error": 4.823842819915125e-10,
+        "modular_matrix_error": 3.8594482239896593e-10,
+        "minimum_regional_symplectic_eigenvalue": 0.5001876330714069,
+        "thermal_covariance_reconstruction_error": 8.804469334467935e-16,
+        "unequal_time_covariance_difference": 0.6795239166536987
+      },
+      {
+        "size": 16,
+        "mass": 0.4,
+        "region": 2,
+        "covariance_error": 8.381257650243874e-13,
+        "analytic_covariance_error": 8.379958802425168e-13,
+        "modular_matrix_error": 6.304942383354495e-13,
+        "minimum_regional_symplectic_eigenvalue": 0.5141293913220845,
+        "thermal_covariance_reconstruction_error": 5.926969055564841e-16,
+        "unequal_time_covariance_difference": 0.5085650005159543
+      },
+      {
+        "size": 16,
+        "mass": 0.4,
+        "region": 3,
+        "covariance_error": 8.381257650243874e-13,
+        "analytic_covariance_error": 8.379958802425168e-13,
+        "modular_matrix_error": 1.2433074329794564e-12,
+        "minimum_regional_symplectic_eigenvalue": 0.500037172139444,
+        "thermal_covariance_reconstruction_error": 1.1613529941910571e-15,
+        "unequal_time_covariance_difference": 0.5085650005159543
+      }
+    ],
+    "scope": "Finite massive oscillator rings. Independent canonical ground-state and thermal modular reconstructions. Their local spatial factors are legitimate oscillator factors, not TT graviton regions or finite-spin phases."
+  },
+  "finite_volume_stability": {
+    "cases": [
+      {
+        "size": 16,
+        "first_momentum": 0.39269908169872414,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.14429722333148404,
+        "cubic_first_tilted_energy": 0.037030433009013285,
+        "uniform_cone_counterexample": false,
+        "critical_velocity_asymptotic_ratio": 0.9808836751043036,
+        "linear_minimum_phase_velocity_in_window": 0.9296093239808447,
+        "weak_relative_spectral_tolerance": 0.6366197723675814,
+        "strong_relative_spectral_tolerance": 0.009947183943243459
+      },
+      {
+        "size": 32,
+        "first_momentum": 0.19634954084936207,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.036600488029867984,
+        "cubic_first_tilted_energy": -0.002630988022940953,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.995190908888815,
+        "linear_minimum_phase_velocity_in_window": 0.9296093239808447,
+        "weak_relative_spectral_tolerance": 0.9003163161571061,
+        "strong_relative_spectral_tolerance": 0.0049735919716217296
+      },
+      {
+        "size": 64,
+        "first_momentum": 0.09817477042468103,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.009183266992617484,
+        "cubic_first_tilted_energy": -0.00400717339248528,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.9987958431039109,
+        "linear_minimum_phase_velocity_in_window": 0.9296093239808447,
+        "weak_relative_spectral_tolerance": 1.2732395447351628,
+        "strong_relative_spectral_tolerance": 0.0024867959858108648
+      },
+      {
+        "size": 128,
+        "first_momentum": 0.04908738521234052,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.002297892369550004,
+        "cubic_first_tilted_energy": -0.0023415717326964267,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.9996988428853536,
+        "linear_minimum_phase_velocity_in_window": 0.9296093239808447,
+        "weak_relative_spectral_tolerance": 1.8006326323142121,
+        "strong_relative_spectral_tolerance": 0.0012433979929054324
+      },
+      {
+        "size": 256,
+        "first_momentum": 0.02454369260617026,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.0005746028822348372,
+        "cubic_first_tilted_energy": -0.0012130817537963216,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.9999247033510911,
+        "linear_minimum_phase_velocity_in_window": 0.9296093239808447,
+        "weak_relative_spectral_tolerance": 2.5464790894703255,
+        "strong_relative_spectral_tolerance": 0.0006216989964527162
+      },
+      {
+        "size": 512,
+        "first_momentum": 0.01227184630308513,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 0.0001436588334168079,
+        "cubic_first_tilted_energy": -0.0006118293560304849,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.9999811753771,
+        "linear_minimum_phase_velocity_in_window": 0.9288491712536225,
+        "weak_relative_spectral_tolerance": 3.6012652646284242,
+        "strong_relative_spectral_tolerance": 0.0003108494982263581
+      },
+      {
+        "size": 1024,
+        "first_momentum": 0.006135923151542565,
+        "tilt": 0.05,
+        "cubic_critical_velocity": 3.591521542334429e-05,
+        "cubic_first_tilted_energy": -0.0003065757845753195,
+        "uniform_cone_counterexample": true,
+        "critical_velocity_asymptotic_ratio": 0.9999952938154825,
+        "linear_minimum_phase_velocity_in_window": 0.9288491712536225,
+        "weak_relative_spectral_tolerance": 5.092958178940651,
+        "strong_relative_spectral_tolerance": 0.00015542474911317905
+      }
+    ],
+    "scope": "An axial low-momentum lattice slice. Cubic observer stability shrinks as L^-2; the linear branch has a controlled window error. Tilted energies diagnose a proposed translation limit and do not establish microscopic boosts."
+  },
+  "separate_cone_conditions": {
+    "cases": [
+      {
+        "name": "linear",
+        "passes_tilted_energy_test": true,
+        "passes_necessary_group_velocity_test": true,
+        "minimum_phase_velocity": 1.0,
+        "maximum_group_speed": 1.0
+      },
+      {
+        "name": "slower_linear",
+        "passes_tilted_energy_test": false,
+        "passes_necessary_group_velocity_test": true,
+        "minimum_phase_velocity": 0.5,
+        "maximum_group_speed": 0.5
+      },
+      {
+        "name": "faster_linear",
+        "passes_tilted_energy_test": true,
+        "passes_necessary_group_velocity_test": false,
+        "minimum_phase_velocity": 2.0,
+        "maximum_group_speed": 2.0
+      },
+      {
+        "name": "cubic",
+        "passes_tilted_energy_test": false,
+        "passes_necessary_group_velocity_test": false,
+        "minimum_phase_velocity": 1e-06,
+        "maximum_group_speed": 1.9200000000000004
+      },
+      {
+        "name": "positive_cubic_correction",
+        "passes_tilted_energy_test": true,
+        "passes_necessary_group_velocity_test": false,
+        "minimum_phase_velocity": 1.0000002,
+        "maximum_group_speed": 1.3840000000000001
+      },
+      {
+        "name": "negative_cubic_correction",
+        "passes_tilted_energy_test": false,
+        "passes_necessary_group_velocity_test": true,
+        "minimum_phase_velocity": 0.872,
+        "maximum_group_speed": 0.9999994
+      },
+      {
+        "name": "rational_slowing",
+        "passes_tilted_energy_test": false,
+        "passes_necessary_group_velocity_test": true,
+        "minimum_phase_velocity": 0.8865248226950354,
+        "maximum_group_speed": 0.9999994000002
+      }
+    ],
+    "scope": "Dispersion-level tests for a unit spherical cone. Passing the group-velocity test does not prove microcausality. The cubic branch already fails stability in arbitrarily small windows, even where its group velocity is subluminal."
+  },
+  "convex_cones": {
+    "cases": [
+      {
+        "case": 0,
+        "momentum": [
+          -2.194209795824358,
+          0.9526845174654184,
+          -0.3927190222079385
+        ],
+        "ellipsoid_support": 5.267121896682825,
+        "supporting_velocity": [
+          -2.0253791330591775,
+          0.4625888975735308,
+          -0.9735048734003133
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 8.881784197001252e-16,
+        "nonellipsoidal_support": 2.868780603430129
+      },
+      {
+        "case": 1,
+        "momentum": [
+          0.1847595947945925,
+          0.22563934791083978,
+          2.3490639409306837
+        ],
+        "ellipsoid_support": 4.918311136976492,
+        "supporting_velocity": [
+          -0.6492512465740244,
+          0.7504688326782921,
+          2.0727112409938977
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 8.881784197001252e-16,
+        "nonellipsoidal_support": 2.484649264215187
+      },
+      {
+        "case": 2,
+        "momentum": [
+          3.2378782364504577,
+          -1.495469581100767,
+          -0.06403804341661266
+        ],
+        "ellipsoid_support": 8.198185763577913,
+        "supporting_velocity": [
+          1.7469091600776763,
+          -1.664280294772202,
+          -0.8280399434479877
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 1.7763568394002505e-15,
+        "nonellipsoidal_support": 4.08301390496762
+      },
+      {
+        "case": 3,
+        "momentum": [
+          0.18542175630625873,
+          0.22280821559920275,
+          -1.3098104615255035
+        ],
+        "ellipsoid_support": 2.057844222653156,
+        "supporting_velocity": [
+          0.4969988459049119,
+          -1.495414977506259,
+          -1.7551246031462646
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 1.47163391678843
+      },
+      {
+        "case": 4,
+        "momentum": [
+          1.3429684138918345,
+          0.2878843967848199,
+          0.7085589366870428
+        ],
+        "ellipsoid_support": 3.037956218128623,
+        "supporting_velocity": [
+          1.7963683903720178,
+          0.2134037245616373,
+          0.7960588434118612
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.8697555560042023
+      },
+      {
+        "case": 5,
+        "momentum": [
+          0.7059271228726204,
+          -0.4300423057364534,
+          -0.6957233556206851
+        ],
+        "ellipsoid_support": 0.7136901921699145,
+        "supporting_velocity": [
+          0.6785754166291942,
+          -0.4829006174634106,
+          -0.03880523122178323
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 1.402325660466018
+      },
+      {
+        "case": 6,
+        "momentum": [
+          -0.44236200379291996,
+          -1.3303389564954022,
+          1.433772696782029
+        ],
+        "ellipsoid_support": 2.288101966065578,
+        "supporting_velocity": [
+          -0.20768253688691157,
+          -0.39574959937305326,
+          1.164584872887917
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 2.5131993423136896
+      },
+      {
+        "case": 7,
+        "momentum": [
+          1.1090589239282755,
+          -1.0486532388028187,
+          0.8459819659673748
+        ],
+        "ellipsoid_support": 3.0559183364845657,
+        "supporting_velocity": [
+          -0.7768606915392535,
+          -2.8970337548853604,
+          1.0396424799645918
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 8.881784197001252e-16,
+        "nonellipsoidal_support": 2.287191657909783
+      },
+      {
+        "case": 8,
+        "momentum": [
+          0.9992591643102818,
+          -0.019528465097047303,
+          -1.0515512103514708
+        ],
+        "ellipsoid_support": 2.6085049451402815,
+        "supporting_velocity": [
+          0.6484215576739821,
+          -1.898722385099197,
+          -1.82918778328343
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 1.7279937976541853
+      },
+      {
+        "case": 9,
+        "momentum": [
+          1.275751044686817,
+          -1.9028002186848874,
+          -0.8703572606159319
+        ],
+        "ellipsoid_support": 1.610901491712034,
+        "supporting_velocity": [
+          0.28852008362364207,
+          -0.6439295251032694,
+          -0.020166951235020908
+        ],
+        "cone_boundary_error": 4.440892098500626e-16,
+        "radial_integral_error": 2.220446049250313e-16,
+        "nonellipsoidal_support": 3.126919442099992
+      },
+      {
+        "case": 10,
+        "momentum": [
+          -1.3316429194396682,
+          -1.9013812634931402,
+          -1.1321252200485494
+        ],
+        "ellipsoid_support": 3.6383883760650284,
+        "supporting_velocity": [
+          -0.22548840969157574,
+          -1.393007099531831,
+          -0.6090145513154595
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 3.343967865917088
+      },
+      {
+        "case": 11,
+        "momentum": [
+          -1.470077519335938,
+          -0.1063809496932977,
+          -0.7110628909132223
+        ],
+        "ellipsoid_support": 3.3546791289146625,
+        "supporting_velocity": [
+          -2.1077781744737294,
+          0.12297286470971831,
+          -0.3785372467722605
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.9020316923923237
+      },
+      {
+        "case": 12,
+        "momentum": [
+          -0.4060844020368719,
+          -0.16258782053422904,
+          -0.6223441376268578
+        ],
+        "ellipsoid_support": 0.8998598852315192,
+        "supporting_velocity": [
+          -1.0216375665075719,
+          -0.8675622618915423,
+          -0.5526423835383008
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 2.220446049250313e-16,
+        "nonellipsoidal_support": 0.9399889844959296
+      },
+      {
+        "case": 13,
+        "momentum": [
+          -0.5661940017028158,
+          -0.0020858721489923756,
+          0.3019676847818165
+        ],
+        "ellipsoid_support": 0.9505092160204803,
+        "supporting_velocity": [
+          -0.4571354043938151,
+          0.8805688264755894,
+          2.2966651103021904
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 2.220446049250313e-16,
+        "nonellipsoidal_support": 0.7415958350402657
+      },
+      {
+        "case": 14,
+        "momentum": [
+          -0.9493701102789339,
+          0.11388850777337722,
+          -0.1949575906269989
+        ],
+        "ellipsoid_support": 2.132632591784176,
+        "supporting_velocity": [
+          -1.8858572916039293,
+          0.5821624126076543,
+          -1.4154588059007889
+        ],
+        "cone_boundary_error": 1.1102230246251565e-16,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.0750657307844336
+      },
+      {
+        "case": 15,
+        "momentum": [
+          1.161225353082948,
+          0.650685461252487,
+          -2.0089778336523683
+        ],
+        "ellipsoid_support": 6.972969677302624,
+        "supporting_velocity": [
+          1.7008108226505947,
+          -0.32647978107841513,
+          -2.593548116312919
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 2.996142222904178
+      },
+      {
+        "case": 16,
+        "momentum": [
+          -0.5402149675567797,
+          -1.0848195359232662,
+          0.7247846823441373
+        ],
+        "ellipsoid_support": 2.723332117488835,
+        "supporting_velocity": [
+          0.7249221795920464,
+          -1.2505597993745954,
+          2.4259814960902144
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 1.8099082996206404
+      },
+      {
+        "case": 17,
+        "momentum": [
+          0.2796389136663707,
+          -1.2753994755588676,
+          0.6581699548739304
+        ],
+        "ellipsoid_support": 0.980182053136259,
+        "supporting_velocity": [
+          0.49374850597561903,
+          -0.56621112171569,
+          0.1822711424620301
+        ],
+        "cone_boundary_error": 1.1102230246251565e-16,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 1.7684069604632644
+      },
+      {
+        "case": 18,
+        "momentum": [
+          1.2140854249301023,
+          -0.8315259015541605,
+          0.30041474507404886
+        ],
+        "ellipsoid_support": 2.554852361796759,
+        "supporting_velocity": [
+          2.007153914135836,
+          -0.33967258197217753,
+          -0.5474115488707944
+        ],
+        "cone_boundary_error": 1.1102230246251565e-16,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.854430363545092
+      },
+      {
+        "case": 19,
+        "momentum": [
+          1.011117168504219,
+          -1.6210075629338967,
+          -1.6524815635466884e-05
+        ],
+        "ellipsoid_support": 2.5939252581796026,
+        "supporting_velocity": [
+          0.6675512734863772,
+          -1.1837980612569807,
+          -0.4293189575191315
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 0.0,
+        "nonellipsoidal_support": 2.233220647089751
+      },
+      {
+        "case": 20,
+        "momentum": [
+          -1.989246916036886,
+          0.011285493060868375,
+          -1.3928166737708687
+        ],
+        "ellipsoid_support": 5.676296961657369,
+        "supporting_velocity": [
+          -1.3938822277350795,
+          1.4068183983550255,
+          -2.0732408319942643
+        ],
+        "cone_boundary_error": 0.0,
+        "radial_integral_error": 8.881784197001252e-16,
+        "nonellipsoidal_support": 2.860073936534521
+      },
+      {
+        "case": 21,
+        "momentum": [
+          -0.26852250747680356,
+          -1.267162143089746,
+          0.5484064228563518
+        ],
+        "ellipsoid_support": 2.8151369582197283,
+        "supporting_velocity": [
+          -1.444973365465913,
+          -2.0548562237453454,
+          -0.32221892736860797
+        ],
+        "cone_boundary_error": 1.1102230246251565e-16,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.6775980648050908
+      },
+      {
+        "case": 22,
+        "momentum": [
+          1.3975651317187572,
+          -0.6856005324995854,
+          -0.2643563524955299
+        ],
+        "ellipsoid_support": 3.6214494238649495,
+        "supporting_velocity": [
+          2.5239240611811264,
+          0.008918894613663263,
+          -0.37909419918455567
+        ],
+        "cone_boundary_error": 1.1102230246251565e-16,
+        "radial_integral_error": 4.440892098500626e-16,
+        "nonellipsoidal_support": 1.8899830558993849
+      },
+      {
+        "case": 23,
+        "momentum": [
+          -0.2681664838304042,
+          1.2014421221083835,
+          0.7065846180486953
+        ],
+        "ellipsoid_support": 2.9441197921421436,
+        "supporting_velocity": [
+          -0.37844758574436416,
+          1.6401624063353337,
+          1.2342083444971843
+        ],
+        "cone_boundary_error": 2.220446049250313e-16,
+        "radial_integral_error": 8.881784197001252e-16,
+        "nonellipsoidal_support": 1.7316894814566068
+      }
+    ],
+    "scope": "Support-function saturation for positive ellipsoids and the l4 velocity ball. The latter satisfies the dispersion cone conditions without a quadratic metric; no local QFT realization is inferred."
+  },
+  "gaussian_response_control": {
+    "cases": [
+      {
+        "delta": 0.01,
+        "fractional_offset": -1.0,
+        "frequency_factors": [
+          0.99,
+          1.01
+        ],
+        "actual_mode_energies": [
+          0.32966999999999974,
+          0.33632999999999996
+        ],
+        "maximum_sampled_response_relative_error": 0.010101010101010619,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.01,
+        "fractional_offset": -0.6,
+        "frequency_factors": [
+          0.994,
+          1.006
+        ],
+        "actual_mode_energies": [
+          0.3310020000000002,
+          0.3349980000000001
+        ],
+        "maximum_sampled_response_relative_error": 0.006036217303822498,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.01,
+        "fractional_offset": -0.2,
+        "frequency_factors": [
+          0.998,
+          1.002
+        ],
+        "actual_mode_energies": [
+          0.33233399999999985,
+          0.33366599999999996
+        ],
+        "maximum_sampled_response_relative_error": 0.002004008016032463,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.01,
+        "fractional_offset": 0.2,
+        "frequency_factors": [
+          1.002,
+          0.998
+        ],
+        "actual_mode_energies": [
+          0.3323340000000001,
+          0.3336660000000001
+        ],
+        "maximum_sampled_response_relative_error": 0.0020040080160319516,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.01,
+        "fractional_offset": 0.6,
+        "frequency_factors": [
+          1.006,
+          0.994
+        ],
+        "actual_mode_energies": [
+          0.33100200000000013,
+          0.33499800000000024
+        ],
+        "maximum_sampled_response_relative_error": 0.006036217303823053,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.01,
+        "fractional_offset": 1.0,
+        "frequency_factors": [
+          1.01,
+          0.99
+        ],
+        "actual_mode_energies": [
+          0.32967000000000013,
+          0.33633000000000013
+        ],
+        "maximum_sampled_response_relative_error": 0.01010101010100997,
+        "uniform_response_relative_error_bound": 0.010101010101010102
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": -1.0,
+        "frequency_factors": [
+          0.95,
+          1.05
+        ],
+        "actual_mode_energies": [
+          0.3163500000000001,
+          0.34965
+        ],
+        "maximum_sampled_response_relative_error": 0.05263157894736843,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": -0.6,
+        "frequency_factors": [
+          0.97,
+          1.03
+        ],
+        "actual_mode_energies": [
+          0.3230099999999999,
+          0.34299
+        ],
+        "maximum_sampled_response_relative_error": 0.030927835051546577,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": -0.2,
+        "frequency_factors": [
+          0.99,
+          1.01
+        ],
+        "actual_mode_energies": [
+          0.3296700000000001,
+          0.3363300000000001
+        ],
+        "maximum_sampled_response_relative_error": 0.010101010101010006,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": 0.2,
+        "frequency_factors": [
+          1.01,
+          0.99
+        ],
+        "actual_mode_energies": [
+          0.32967000000000013,
+          0.33633000000000013
+        ],
+        "maximum_sampled_response_relative_error": 0.010101010101009967,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": 0.6,
+        "frequency_factors": [
+          1.03,
+          0.97
+        ],
+        "actual_mode_energies": [
+          0.32300999999999996,
+          0.3429900000000002
+        ],
+        "maximum_sampled_response_relative_error": 0.03092783505154638,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.05,
+        "fractional_offset": 1.0,
+        "frequency_factors": [
+          1.05,
+          0.95
+        ],
+        "actual_mode_energies": [
+          0.31635,
+          0.34965
+        ],
+        "maximum_sampled_response_relative_error": 0.052631578947368515,
+        "uniform_response_relative_error_bound": 0.052631578947368425
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": -1.0,
+        "frequency_factors": [
+          0.8,
+          1.2
+        ],
+        "actual_mode_energies": [
+          0.2664,
+          0.3995999999999999
+        ],
+        "maximum_sampled_response_relative_error": 0.24999999999999964,
+        "uniform_response_relative_error_bound": 0.25
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": -0.6,
+        "frequency_factors": [
+          0.88,
+          1.12
+        ],
+        "actual_mode_energies": [
+          0.29303999999999997,
+          0.37296000000000007
+        ],
+        "maximum_sampled_response_relative_error": 0.13636363636363635,
+        "uniform_response_relative_error_bound": 0.25
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": -0.2,
+        "frequency_factors": [
+          0.96,
+          1.04
+        ],
+        "actual_mode_energies": [
+          0.31967999999999996,
+          0.34632
+        ],
+        "maximum_sampled_response_relative_error": 0.04166666666666684,
+        "uniform_response_relative_error_bound": 0.25
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": 0.2,
+        "frequency_factors": [
+          1.04,
+          0.96
+        ],
+        "actual_mode_energies": [
+          0.31968,
+          0.34631999999999996
+        ],
+        "maximum_sampled_response_relative_error": 0.0416666666666667,
+        "uniform_response_relative_error_bound": 0.25
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": 0.6,
+        "frequency_factors": [
+          1.12,
+          0.88
+        ],
+        "actual_mode_energies": [
+          0.2930400000000001,
+          0.37296
+        ],
+        "maximum_sampled_response_relative_error": 0.13636363636363627,
+        "uniform_response_relative_error_bound": 0.25
+      },
+      {
+        "delta": 0.2,
+        "fractional_offset": 1.0,
+        "frequency_factors": [
+          1.2,
+          0.8
+        ],
+        "actual_mode_energies": [
+          0.26639999999999997,
+          0.39960000000000007
+        ],
+        "maximum_sampled_response_relative_error": 0.2499999999999999,
+        "uniform_response_relative_error_bound": 0.25
+      }
+    ],
+    "scope": "Canonical two-polarization Gaussian systems of fixed vacuum width, including non-diagonal real polarization mixing. Frequencies come from full canonical diagonalization, and response errors from inverse kernels."
+  },
+  "exact_identities": {
+    "response_ratio_error": "(-f + s**2)*(f - 1)/(f**2 + s**2)",
+    "pair_creation_coefficient_after_shared_vacuum_condition": "0",
+    "nonquadratic_support_parallelogram_defect": "-4 + 4*sqrt(2)",
+    "scope": "Three exact algebraic identities, supplementary to the analytical cone proof."
+  },
+  "source_sha256": {
+    "CAUSAL_VACUUM_SELECTION.md": "9ba4d36433f95b02c811a9ca1af5c72a6c61c6174ab5cb9d080417865de2b3ca",
+    "scripts/causal_vacuum_selection_audit.py": "a5d30f7e498c6215d07a15e196f4ae5902c4c281b6a5f0d4a49d6b5a645a2049",
+    "PROJECTED_TENSOR_VACUUM.md": "078887d7c82b0e55dec3a9d866566b19490b2176a1526ae0d948c8f3647f572a",
+    "SPIN_STATE_GAUGE_GEOMETRY.md": "daee053da9e4b357478c4c3d288dc015485175a93d93409c7e6200dd56067f47",
+    "PREPOTENTIAL_LATTICE_BRIDGE.md": "e414b4b29a69ea80ae01f265d04f9f466db012804bdc840347ab494771f35920",
+    "COMPACT_TENSOR_DYNAMICS.md": "7c1a93f269dce50e4a992f325142a033e9baf145a3bd9793db57fe56e7933129",
+    "COMPACT_CONSTRAINT_NORMALIZER.md": "2ed6d76c1e601ba3be661642b2e1914c31df70f5a62a8ab133de5829e4b5da8b",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "EINSTEIN_MODEL_DECISION.md": "7d77523c4268eb648c8039861cec9193ad4700b8635250491c27ccdaa4294abc",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8"
+  },
+  "scope": "A common observer-stability and propagation cone conditionally fixes gapless dispersion. For the given canonical two-polarization Gaussian vacuum, a spherical cone fixes the free linear-wave Hamiltonian and its residue. The cubic Gaussian parent fails uniform tilted vacuum stability. Identical regional modular data alone cannot select the clock. No microscopic cone, finite-spin phase, full microcausality, nonlinear Einstein gravity, universal matter coupling, or TOE is proved. No Lean theorem."
+}

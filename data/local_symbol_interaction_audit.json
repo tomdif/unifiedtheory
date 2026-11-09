@@ -1,0 +1,1017 @@
+{
+  "symbol_isometry": {
+    "cases": [
+      {
+        "size": 2,
+        "scalar_dimension": 4,
+        "gram_error": 4.440892098500626e-16,
+        "angular_intertwiner_error": 4.440892098500626e-16,
+        "reality_error": 2.220446049250313e-16,
+        "first_order_dirac_intertwiner_error": 8.881784197001252e-16,
+        "normalized_matrix_coordinate_quartic": 1.0,
+        "pointwise_symbol_coordinate_quartic": 1.8
+      },
+      {
+        "size": 3,
+        "scalar_dimension": 9,
+        "gram_error": 1.3322676295501878e-15,
+        "angular_intertwiner_error": 2.6645352591003757e-15,
+        "reality_error": 6.661338147750939e-16,
+        "first_order_dirac_intertwiner_error": 3.9968028886505635e-15,
+        "normalized_matrix_coordinate_quartic": 1.4999999999999998,
+        "pointwise_symbol_coordinate_quartic": 1.8
+      },
+      {
+        "size": 4,
+        "scalar_dimension": 16,
+        "gram_error": 6.661338147750939e-16,
+        "angular_intertwiner_error": 1.7763568394002505e-15,
+        "reality_error": 4.440892098500626e-16,
+        "first_order_dirac_intertwiner_error": 2.2643150502843932e-15,
+        "normalized_matrix_coordinate_quartic": 1.6400000000000001,
+        "pointwise_symbol_coordinate_quartic": 1.8
+      },
+      {
+        "size": 5,
+        "scalar_dimension": 25,
+        "gram_error": 2.1618382888828976e-15,
+        "angular_intertwiner_error": 4.4846816257018675e-15,
+        "reality_error": 1.5543122344752192e-15,
+        "first_order_dirac_intertwiner_error": 8.969363251403735e-15,
+        "normalized_matrix_coordinate_quartic": 1.7000000000000006,
+        "pointwise_symbol_coordinate_quartic": 1.8
+      }
+    ],
+    "scope": "The unitary angular-momentum intertwiner preserves scalar and first-order fermion quadratic forms and measures. It does not preserve multiplication; the pointwise interaction is a specified model revision."
+  },
+  "packets": {
+    "cases": [
+      {
+        "size": 8,
+        "packet_power": 2,
+        "internal_order": 4,
+        "harmonic_degree": 6,
+        "proper_radius": 8.0,
+        "squared_norm": 36.869165065905385,
+        "independent_polynomial_norm": 36.86916506590548,
+        "geodesic_variance": 11.161983754243112,
+        "rms_proper_width": 3.3409555151547754,
+        "uniform_variance_bound": 547.6798056207257,
+        "quadrature_error": 1.414755665592836e-07
+      },
+      {
+        "size": 16,
+        "packet_power": 2,
+        "internal_order": 8,
+        "harmonic_degree": 14,
+        "proper_radius": 16.0,
+        "squared_norm": 36.08823069527196,
+        "independent_polynomial_norm": 36.0882306952727,
+        "geodesic_variance": 10.94115336283739,
+        "rms_proper_width": 3.307741429259154,
+        "uniform_variance_bound": 547.6798056207257,
+        "quadrature_error": 4.84078528039693e-07
+      },
+      {
+        "size": 32,
+        "packet_power": 2,
+        "internal_order": 16,
+        "harmonic_degree": 30,
+        "proper_radius": 32.0,
+        "squared_norm": 35.896790363891895,
+        "independent_polynomial_norm": 35.89679036389767,
+        "geodesic_variance": 10.885216871388051,
+        "rms_proper_width": 3.299275203948293,
+        "uniform_variance_bound": 547.6798056207257,
+        "quadrature_error": 2.41862914686982e-07
+      },
+      {
+        "size": 64,
+        "packet_power": 2,
+        "internal_order": 32,
+        "harmonic_degree": 62,
+        "proper_radius": 64.0,
+        "squared_norm": 35.84917541855782,
+        "independent_polynomial_norm": 35.8491754236422,
+        "geodesic_variance": 10.871230857342947,
+        "rms_proper_width": 3.2971549641081395,
+        "uniform_variance_bound": 547.6798056207257,
+        "quadrature_error": 2.037684596993535e-07
+      },
+      {
+        "size": 128,
+        "packet_power": 2,
+        "internal_order": 64,
+        "harmonic_degree": 126,
+        "proper_radius": 128.0,
+        "squared_norm": 35.83728715017847,
+        "independent_polynomial_norm": 35.837287153648255,
+        "geodesic_variance": 10.86773788107841,
+        "rms_proper_width": 3.2966252260574618,
+        "uniform_variance_bound": 547.6798056207257,
+        "quadrature_error": 1.7130879531256001e-07
+      },
+      {
+        "size": 8,
+        "packet_power": 3,
+        "internal_order": 3,
+        "harmonic_degree": 6,
+        "proper_radius": 8.0,
+        "squared_norm": 46.3989359863641,
+        "independent_polynomial_norm": 46.3989359863642,
+        "geodesic_variance": 14.210641384000224,
+        "rms_proper_width": 3.769700436904798,
+        "uniform_variance_bound": 1095.7314622678123,
+        "quadrature_error": 3.759249837982648e-08
+      },
+      {
+        "size": 16,
+        "packet_power": 3,
+        "internal_order": 6,
+        "harmonic_degree": 15,
+        "proper_radius": 16.0,
+        "squared_norm": 43.9598708881738,
+        "independent_polynomial_norm": 43.95987088817358,
+        "geodesic_variance": 13.51684559457356,
+        "rms_proper_width": 3.676526294557617,
+        "uniform_variance_bound": 1095.7314622678123,
+        "quadrature_error": 1.2957945416669503e-07
+      },
+      {
+        "size": 32,
+        "packet_power": 3,
+        "internal_order": 11,
+        "harmonic_degree": 30,
+        "proper_radius": 32.0,
+        "squared_norm": 51.677060318413545,
+        "independent_polynomial_norm": 51.677060318413474,
+        "geodesic_variance": 15.902757954785004,
+        "rms_proper_width": 3.9878262192308487,
+        "uniform_variance_bound": 1095.7314622678123,
+        "quadrature_error": 2.006357203259131e-08
+      },
+      {
+        "size": 64,
+        "packet_power": 3,
+        "internal_order": 22,
+        "harmonic_degree": 63,
+        "proper_radius": 64.0,
+        "squared_norm": 51.477205724212034,
+        "independent_polynomial_norm": 51.47720572418262,
+        "geodesic_variance": 15.845273911742828,
+        "rms_proper_width": 3.9806122533779686,
+        "uniform_variance_bound": 1095.7314622678123,
+        "quadrature_error": 6.92152868197321e-07
+      },
+      {
+        "size": 128,
+        "packet_power": 3,
+        "internal_order": 43,
+        "harmonic_degree": 126,
+        "proper_radius": 128.0,
+        "squared_norm": 53.84807466887113,
+        "independent_polynomial_norm": 53.8480746693491,
+        "geodesic_variance": 16.57608109548755,
+        "rms_proper_width": 4.0713733672420105,
+        "uniform_variance_bound": 1095.7314622678123,
+        "quadrature_error": 3.903222945550455e-08
+      }
+    ],
+    "exact_packet_polynomial_identity": true,
+    "scope": "Normalized scalar-symbol packets have a volume-independent proper second moment. They are overlapping band-limited field packets, not positive matrix coherent states or independent sites."
+  },
+  "packet_vertices": {
+    "cases": [
+      {
+        "size": 16,
+        "packet_power": 2,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 0.00020369021707017032,
+            "relative_overlap": 1.0000000000000027,
+            "analytical_diameter_bound": 59424986721.15815
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 0.00010159910139142297,
+            "relative_overlap": 0.49879224860574833,
+            "analytical_diameter_bound": 733641811.3723228
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.1653280685341616e-05,
+            "relative_overlap": 0.05721080203536308,
+            "analytical_diameter_bound": 95079978.75385304
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 2.719618995115524e-09,
+            "relative_overlap": 1.3351740865289742e-05,
+            "analytical_diameter_bound": 9057306.313238554
+          }
+        ]
+      },
+      {
+        "size": 32,
+        "packet_power": 2,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 0.00020459833109110596,
+            "relative_overlap": 1.0,
+            "analytical_diameter_bound": 59424986721.15815
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 0.00010109048163316007,
+            "relative_overlap": 0.49409240580826297,
+            "analytical_diameter_bound": 733641811.3723228
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.1268404913727532e-05,
+            "relative_overlap": 0.05507574208271427,
+            "analytical_diameter_bound": 95079978.75385304
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 2.0828467064905594e-09,
+            "relative_overlap": 1.0180174468593709e-05,
+            "analytical_diameter_bound": 9057306.313238554
+          }
+        ]
+      },
+      {
+        "size": 64,
+        "packet_power": 2,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 0.00020482830736517958,
+            "relative_overlap": 1.0,
+            "analytical_diameter_bound": 59424986721.15815
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 0.00010096508240397712,
+            "relative_overlap": 0.49292543449070647,
+            "analytical_diameter_bound": 733641811.3723228
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.1174675303638648e-05,
+            "relative_overlap": 0.0545563035079707,
+            "analytical_diameter_bound": 95079978.75385304
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 1.9505314728347447e-09,
+            "relative_overlap": 9.522763225090885e-06,
+            "analytical_diameter_bound": 9057306.313238554
+          }
+        ]
+      },
+      {
+        "size": 16,
+        "packet_power": 3,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 0.00013522279764588275,
+            "relative_overlap": 1.0,
+            "analytical_diameter_bound": 3.0920002016356444e+16
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 7.669978059535343e-05,
+            "relative_overlap": 0.5672104255394304,
+            "analytical_diameter_bound": 42414268883890.87
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.3516099995218932e-05,
+            "relative_overlap": 0.0999542993527946,
+            "analytical_diameter_bound": 1978880129046.8123
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 7.041450022521553e-09,
+            "relative_overlap": 5.207295030946988e-05,
+            "analytical_diameter_bound": 58181438798.204216
+          }
+        ]
+      },
+      {
+        "size": 32,
+        "packet_power": 3,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 9.713626667528845e-05,
+            "relative_overlap": 1.0,
+            "analytical_diameter_bound": 3.0920002016356444e+16
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 5.9712042576419184e-05,
+            "relative_overlap": 0.6147244960116424,
+            "analytical_diameter_bound": 42414268883890.87
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.3533905536863581e-05,
+            "relative_overlap": 0.13932906832939482,
+            "analytical_diameter_bound": 1978880129046.8123
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 2.3441625334781374e-08,
+            "relative_overlap": 0.00024132722140890087,
+            "analytical_diameter_bound": 58181438798.204216
+          }
+        ]
+      },
+      {
+        "size": 64,
+        "packet_power": 3,
+        "profile": [
+          {
+            "proper_separation": 0.0,
+            "quartic_vertex": 9.76688590901999e-05,
+            "relative_overlap": 1.0,
+            "analytical_diameter_bound": 3.0920002016356444e+16
+          },
+          {
+            "proper_separation": 4.0,
+            "quartic_vertex": 5.9839598768554115e-05,
+            "relative_overlap": 0.6126783841438199,
+            "analytical_diameter_bound": 42414268883890.87
+          },
+          {
+            "proper_separation": 8.0,
+            "quartic_vertex": 1.3427668592345394e-05,
+            "relative_overlap": 0.13748157516557627,
+            "analytical_diameter_bound": 1978880129046.8123
+          },
+          {
+            "proper_separation": 16.0,
+            "quartic_vertex": 2.2340168592705413e-08,
+            "relative_overlap": 0.00022873379294902635,
+            "analytical_diameter_bound": 58181438798.204216
+          }
+        ]
+      }
+    ],
+    "scope": "Exact positive cubature checks quartic interactions of localized product packets at fixed proper separations. The analytical bound is uniform; the packets do not form independent local sites."
+  },
+  "local_quartic": {
+    "cases": [
+      {
+        "matrix_sizes": [
+          2,
+          2
+        ],
+        "scalar_modes": 16,
+        "positive_quartic_cubature_nodes": 225,
+        "independent_sextic_cubature_nodes": 784,
+        "quartic_action": 0.2586535528002646,
+        "directional_hessian": 1.135790613497531,
+        "squared_gradient": 0.009897218901199798,
+        "bessel_gradient_bound": 0.011211553706060537,
+        "independent_energy_error": 1.6653345369377348e-16
+      },
+      {
+        "matrix_sizes": [
+          2,
+          3
+        ],
+        "scalar_modes": 36,
+        "positive_quartic_cubature_nodes": 675,
+        "independent_sextic_cubature_nodes": 2548,
+        "quartic_action": 0.9618584545310943,
+        "directional_hessian": 3.1964100348793973,
+        "squared_gradient": 0.0489298679488341,
+        "bessel_gradient_bound": 0.056511420737303274,
+        "independent_energy_error": 4.440892098500626e-16
+      },
+      {
+        "matrix_sizes": [
+          3,
+          3
+        ],
+        "scalar_modes": 81,
+        "positive_quartic_cubature_nodes": 2025,
+        "independent_sextic_cubature_nodes": 8281,
+        "quartic_action": 1.770412961441454,
+        "directional_hessian": 7.014963265938362,
+        "squared_gradient": 0.07999495574127932,
+        "bessel_gradient_bound": 0.09176242384245042,
+        "independent_energy_error": 6.661338147750939e-16
+      }
+    ],
+    "scope": "A pointwise O(8) quartic equals a finite positive weighted sum exactly. Node values remain linearly constrained by the harmonic cutoff; this is not a tensor-product site Hamiltonian."
+  },
+  "coefficients": {
+    "cases": [
+      {
+        "mass_ratio": 0.01,
+        "a0": 1.3370994211793978,
+        "a1": 1.3910764705561551,
+        "independent_integrals": [
+          1.3370994211793976,
+          1.3910764705561554
+        ],
+        "quadrature_errors": [
+          4.0801937911495576e-12,
+          8.639127738730957e-11
+        ],
+        "first_coupling_volume_coefficient_over_cutoff_fourth": 0.00023898282511474335,
+        "first_coupling_curvature_coefficient_over_cutoff_squared": 0.0002486302660956371,
+        "free_inverse_newton_over_cutoff_squared": 0.6446678598140309,
+        "first_coupling_inverse_newton_derivative_over_cutoff_squared": -0.012497520278818062
+      },
+      {
+        "mass_ratio": 0.1,
+        "a0": 1.118127519062773,
+        "a1": 0.6559061081078449,
+        "independent_integrals": [
+          1.1181275190627737,
+          0.6559061081078449
+        ],
+        "quadrature_errors": [
+          3.7095292673530824e-10,
+          2.24195389287391e-11
+        ],
+        "first_coupling_volume_coefficient_over_cutoff_fourth": 0.0001671175122018524,
+        "first_coupling_curvature_coefficient_over_cutoff_squared": 9.803300174282577e-05,
+        "free_inverse_newton_over_cutoff_squared": 0.5617388626024763,
+        "first_coupling_inverse_newton_derivative_over_cutoff_squared": -0.0049276761293538685
+      },
+      {
+        "mass_ratio": 1.0,
+        "a0": 0.523248143764548,
+        "a1": 0.12367180192837139,
+        "independent_integrals": [
+          0.523248143764548,
+          0.12367180192836436
+        ],
+        "quadrature_errors": [
+          1.2143794248461021e-09,
+          6.206089317188747e-10
+        ],
+        "first_coupling_volume_coefficient_over_cutoff_fourth": 3.65977749215166e-05,
+        "first_coupling_curvature_coefficient_over_cutoff_squared": 8.650031204218827e-06,
+        "free_inverse_newton_over_cutoff_squared": 0.2956186095009813,
+        "first_coupling_inverse_newton_derivative_over_cutoff_squared": -0.00043479799175194137
+      },
+      {
+        "mass_ratio": 4.0,
+        "a0": 0.20135513550689055,
+        "a1": 0.01916288706230729,
+        "independent_integrals": [
+          0.20135513550688874,
+          0.019162887062307253
+        ],
+        "quadrature_errors": [
+          9.235353151810618e-11,
+          1.1246915154968758e-10
+        ],
+        "first_coupling_volume_coefficient_over_cutoff_fourth": 5.419568507605668e-06,
+        "first_coupling_curvature_coefficient_over_cutoff_squared": 5.157781497662903e-07,
+        "free_inverse_newton_over_cutoff_squared": 0.1221280842576554,
+        "first_coupling_inverse_newton_derivative_over_cutoff_squared": -2.592583753900662e-05
+      }
+    ],
+    "resolvent_integrand_identity": true,
+    "independent_gaussian_wick_count": 80
+  },
+  "full_resolvent_scaling": {
+    "cases": [
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          16,
+          16
+        ],
+        "resolvent_trace": 88368.28004836875,
+        "resolvent_remainder": 27.901229030977788,
+        "analytical_trace_remainder_bound": 10763453.92222539,
+        "first_coupling_derivative": 2515.1963320753543,
+        "first_coupling_volume_term": 2473.240499361928,
+        "first_coupling_curvature_term": 40.20440872552887,
+        "first_coupling_action_remainder": 1.7514239878975175
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "resolvent_trace": 198352.6734958712,
+        "resolvent_remainder": 31.965622939187824,
+        "analytical_trace_remainder_bound": 11552073.444705235,
+        "first_coupling_derivative": 5632.1301932622555,
+        "first_coupling_volume_term": 5564.791123564338,
+        "first_coupling_curvature_term": 65.33216417898441,
+        "first_coupling_action_remainder": 2.00690551893328
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          32,
+          32
+        ],
+        "resolvent_trace": 1404924.2611580486,
+        "resolvent_remainder": 24.973883741365626,
+        "analytical_trace_remainder_bound": 10763453.92222539,
+        "first_coupling_derivative": 39734.24162939606,
+        "first_coupling_volume_term": 39571.84798979085,
+        "first_coupling_curvature_term": 160.8176349021155,
+        "first_coupling_action_remainder": 1.5760047031003808
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "resolvent_trace": 3159272.3059525546,
+        "resolvent_remainder": 29.48746767519424,
+        "analytical_trace_remainder_bound": 11552073.444705235,
+        "first_coupling_derivative": 89299.84536312238,
+        "first_coupling_volume_term": 89036.6579770294,
+        "first_coupling_curvature_term": 261.32865671593765,
+        "first_coupling_action_remainder": 1.8587293770395945
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          64,
+          64
+        ],
+        "resolvent_trace": 22444225.92482178,
+        "resolvent_remainder": 24.42377325079542,
+        "analytical_trace_remainder_bound": 10763453.92222539,
+        "first_coupling_derivative": 633794.3811520403,
+        "first_coupling_volume_term": 633149.5678366536,
+        "first_coupling_curvature_term": 643.270539608462,
+        "first_coupling_action_remainder": 1.542775778305554
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "resolvent_trace": 50492360.06173472,
+        "resolvent_remainder": 28.995904781684658,
+        "analytical_trace_remainder_bound": 11552073.444705235,
+        "first_coupling_derivative": 1425633.6713911542,
+        "first_coupling_volume_term": 1424586.5276324705,
+        "first_coupling_curvature_term": 1045.3146268637506,
+        "first_coupling_action_remainder": 1.8291318199476336
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          128,
+          128
+        ],
+        "resolvent_trace": 358970499.9291004,
+        "resolvent_remainder": 24.293685493139492,
+        "analytical_trace_remainder_bound": 10763453.92222539,
+        "first_coupling_derivative": 10132967.702450497,
+        "first_coupling_volume_term": 10130393.085386457,
+        "first_coupling_curvature_term": 2573.082158433848,
+        "first_coupling_action_remainder": 1.5349056063064381
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "resolvent_trace": 807655109.8121369,
+        "resolvent_remainder": 28.87857038086804,
+        "analytical_trace_remainder_bound": 11552073.444705235,
+        "first_coupling_derivative": 22797567.52268402,
+        "first_coupling_volume_term": 22793384.442119528,
+        "first_coupling_curvature_term": 4181.2585074550025,
+        "first_coupling_action_remainder": 1.8220570364483137
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          256,
+          256
+        ],
+        "resolvent_trace": 5742980640.902774,
+        "resolvent_remainder": 24.261581648461288,
+        "analytical_trace_remainder_bound": 10763453.92222539,
+        "first_coupling_derivative": 162096583.22777972,
+        "first_coupling_volume_term": 162086289.3661833,
+        "first_coupling_curvature_term": 10292.328633735391,
+        "first_coupling_action_remainder": 1.5329626701150119
+      },
+      {
+        "mass_ratio": 0.01,
+        "matrix_sizes": [
+          256,
+          384
+        ],
+        "resolvent_trace": 12921592459.307764,
+        "resolvent_remainder": 28.849550020939205,
+        "analytical_trace_remainder_bound": 11552073.444705235,
+        "first_coupling_derivative": 364710877.92824894,
+        "first_coupling_volume_term": 364694151.07391244,
+        "first_coupling_curvature_term": 16725.03402982001,
+        "first_coupling_action_remainder": 1.8203066801579553
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          16,
+          16
+        ],
+        "resolvent_trace": 73615.71579514944,
+        "resolvent_remainder": 2.286778500331536,
+        "analytical_trace_remainder_bound": 965939.0442919488,
+        "first_coupling_derivative": 1745.5012539316538,
+        "first_coupling_volume_term": 1729.5041981857207,
+        "first_coupling_curvature_term": 15.85228915430185,
+        "first_coupling_action_remainder": 0.1447665916311891
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "resolvent_trace": 165423.03443332075,
+        "resolvent_remainder": 2.709100454760005,
+        "analytical_trace_remainder_bound": 977188.8916610364,
+        "first_coupling_derivative": 3917.31535205022,
+        "first_coupling_volume_term": 3891.3844459178713,
+        "first_coupling_curvature_term": 25.75996987574051,
+        "first_coupling_action_remainder": 0.17093625660830014
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          32,
+          32
+        ],
+        "resolvent_trace": 1173787.2429173805,
+        "resolvent_remainder": 2.2657792093184526,
+        "analytical_trace_remainder_bound": 965939.0442919488,
+        "first_coupling_derivative": 27735.61972918213,
+        "first_coupling_volume_term": 27672.06717097153,
+        "first_coupling_curvature_term": 63.4091566172074,
+        "first_coupling_action_remainder": 0.14340159339096203
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "resolvent_trace": 2640179.3289598203,
+        "resolvent_remainder": 2.6902173132616554,
+        "analytical_trace_remainder_bound": 977188.8916610364,
+        "first_coupling_derivative": 62365.36073990718,
+        "first_coupling_volume_term": 62262.15113468594,
+        "first_coupling_curvature_term": 103.03987950296204,
+        "first_coupling_action_remainder": 0.16972571827437832
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          64,
+          64
+        ],
+        "resolvent_trace": 18764442.346335992,
+        "resolvent_remainder": 2.2606381112518648,
+        "analytical_trace_remainder_bound": 965939.0442919488,
+        "first_coupling_derivative": 443006.854428854,
+        "first_coupling_volume_term": 442753.0747355445,
+        "first_coupling_curvature_term": 253.6366264688296,
+        "first_coupling_action_remainder": 0.14306684067912556
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "resolvent_trace": 42216634.63912468,
+        "resolvent_remainder": 2.6855779584420816,
+        "analytical_trace_remainder_bound": 977188.8916610364,
+        "first_coupling_derivative": 996606.7471007925,
+        "first_coupling_volume_term": 996194.418154975,
+        "first_coupling_curvature_term": 412.15951801184815,
+        "first_coupling_action_remainder": 0.16942780557769765
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          128,
+          128
+        ],
+        "resolvent_trace": 300166565.436474,
+        "resolvent_remainder": 2.2593593633901037,
+        "analytical_trace_remainder_bound": 965939.0442919488,
+        "first_coupling_derivative": 7085063.885258132,
+        "first_coupling_volume_term": 7084049.195768712,
+        "first_coupling_curvature_term": 1014.5465058753184,
+        "first_coupling_action_remainder": 0.14298354425363868
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "resolvent_trace": 675361336.8758368,
+        "resolvent_remainder": 2.6844229384951177,
+        "analytical_trace_remainder_bound": 977188.8916610364,
+        "first_coupling_derivative": 15940759.497905256,
+        "first_coupling_volume_term": 15939110.6904796,
+        "first_coupling_curvature_term": 1648.6380720473926,
+        "first_coupling_action_remainder": 0.16935360803199728
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          256,
+          256
+        ],
+        "resolvent_trace": 4802407100.3166685,
+        "resolvent_remainder": 2.2590396550222067,
+        "analytical_trace_remainder_bound": 965939.0442919488,
+        "first_coupling_derivative": 113348845.46128564,
+        "first_coupling_volume_term": 113344787.1322994,
+        "first_coupling_curvature_term": 4058.1860235012737,
+        "first_coupling_action_remainder": 0.1429627411398542
+      },
+      {
+        "mass_ratio": 0.1,
+        "matrix_sizes": [
+          256,
+          384
+        ],
+        "resolvent_trace": 10805362241.485424,
+        "resolvent_remainder": 2.684135788556887,
+        "analytical_trace_remainder_bound": 977188.8916610364,
+        "first_coupling_derivative": 255032365.76929694,
+        "first_coupling_volume_term": 255025771.0476736,
+        "first_coupling_curvature_term": 6594.55228818957,
+        "first_coupling_action_remainder": 0.16933514173797448
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          16,
+          16
+        ],
+        "resolvent_trace": 34355.030461798786,
+        "resolvent_remainder": 0.12014945804330779,
+        "analytical_trace_remainder_bound": 72157.33583767436,
+        "first_coupling_derivative": 380.15417332403746,
+        "first_coupling_volume_term": 378.7514817391917,
+        "first_coupling_curvature_term": 1.3987411729238983,
+        "first_coupling_action_remainder": 0.003950411921842312
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          16,
+          24
+        ],
+        "resolvent_trace": 77259.11605130692,
+        "resolvent_remainder": 0.14282515733439993,
+        "analytical_trace_remainder_bound": 72948.7518854084,
+        "first_coupling_derivative": 854.4684631445618,
+        "first_coupling_volume_term": 852.1908339131815,
+        "first_coupling_curvature_term": 2.272954406001335,
+        "first_coupling_action_remainder": 0.004674825379052727
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          32,
+          32
+        ],
+        "resolvent_trace": 548918.8454142148,
+        "resolvent_remainder": 0.11996781080088681,
+        "analytical_trace_remainder_bound": 72157.33583767436,
+        "first_coupling_derivative": 6065.622615236238,
+        "first_coupling_volume_term": 6060.0237078270675,
+        "first_coupling_curvature_term": 5.594964691695593,
+        "first_coupling_action_remainder": 0.003942717474758162
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          32,
+          48
+        ],
+        "resolvent_trace": 1234908.9750109194,
+        "resolvent_remainder": 0.14266297889156476,
+        "analytical_trace_remainder_bound": 72948.7518854084,
+        "first_coupling_derivative": 13644.149828318188,
+        "first_coupling_volume_term": 13635.053342610903,
+        "first_coupling_curvature_term": 9.09181762400534,
+        "first_coupling_action_remainder": 0.004668083279614876
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          64,
+          64
+        ],
+        "resolvent_trace": 8779660.36886077,
+        "resolvent_remainder": 0.11992249820616507,
+        "analytical_trace_remainder_bound": 72157.33583767436,
+        "first_coupling_derivative": 96982.76312479847,
+        "first_coupling_volume_term": 96960.37932523308,
+        "first_coupling_curvature_term": 22.379858766782373,
+        "first_coupling_action_remainder": 0.003940798606098639
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          64,
+          96
+        ],
+        "resolvent_trace": 19753602.50310774,
+        "resolvent_remainder": 0.14262250502520146,
+        "analytical_trace_remainder_bound": 72948.7518854084,
+        "first_coupling_derivative": 218197.22541867135,
+        "first_coupling_volume_term": 218160.85348177445,
+        "first_coupling_curvature_term": 36.36727049602136,
+        "first_coupling_action_remainder": 0.004666400881845334
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          128,
+          128
+        ],
+        "resolvent_trace": 140462406.6701067,
+        "resolvent_remainder": 0.11991112665282344,
+        "analytical_trace_remainder_bound": 72157.33583767436,
+        "first_coupling_derivative": 1551455.5925791145,
+        "first_coupling_volume_term": 1551366.0692037293,
+        "first_coupling_curvature_term": 89.51943506712949,
+        "first_coupling_action_remainder": 0.003940318078562655
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          128,
+          192
+        ],
+        "resolvent_trace": 316037882.0820489,
+        "resolvent_remainder": 0.1426123555347658,
+        "analytical_trace_remainder_bound": 72948.7518854084,
+        "first_coupling_derivative": 3490719.129456354,
+        "first_coupling_volume_term": 3490573.655708391,
+        "first_coupling_curvature_term": 145.46908198408545,
+        "first_coupling_action_remainder": 0.004665978534660553
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          256,
+          256
+        ],
+        "resolvent_trace": 2247349875.19177,
+        "resolvent_remainder": 0.1199078256267967,
+        "analytical_trace_remainder_bound": 72157.33583767436,
+        "first_coupling_derivative": 24822215.188940126,
+        "first_coupling_volume_term": 24821857.10725967,
+        "first_coupling_curvature_term": 358.07774026851797,
+        "first_coupling_action_remainder": 0.003940189521074444
+      },
+      {
+        "mass_ratio": 1.0,
+        "matrix_sizes": [
+          256,
+          384
+        ],
+        "resolvent_trace": 5056527087.860285,
+        "resolvent_remainder": 0.14260918928994215,
+        "analytical_trace_remainder_bound": 72948.7518854084,
+        "first_coupling_derivative": 55849760.372328036,
+        "first_coupling_volume_term": 55849178.49133426,
+        "first_coupling_curvature_term": 581.8763279363418,
+        "first_coupling_action_remainder": 0.004665839681592843
+      }
+    ],
+    "scope": "Exact full-spectrum scalar resolvents determine the first derivative in coupling, including the volume and Einstein curvature terms. This does not establish the finite-coupling metric effective action."
+  },
+  "first_coupling_shape_variations": {
+    "cases": [
+      {
+        "k": 2,
+        "scale": 36,
+        "shape_step": 0.4054651081081644,
+        "second_difference": 0.26273497240630606,
+        "fourth_difference": 1.1282325560442708,
+        "einstein_finite_second": 0.26156676028632775,
+        "einstein_finite_fourth": 1.1048748462576703,
+        "second_error": 0.0011682121199783069,
+        "fourth_error": 0.023357709786600456
+      },
+      {
+        "k": 3,
+        "scale": 144,
+        "shape_step": 0.2876820724517809,
+        "second_difference": 0.2546663301845442,
+        "fourth_difference": 1.0479775805890734,
+        "einstein_finite_second": 0.2546009446599502,
+        "einstein_finite_fourth": 1.0468103338287924,
+        "second_error": 6.538552459400826e-05,
+        "fourth_error": 0.0011672467602810155
+      },
+      {
+        "k": 4,
+        "scale": 400,
+        "shape_step": 0.22314355131420976,
+        "second_difference": 0.2518386361166217,
+        "fourth_difference": 1.024291373091385,
+        "einstein_finite_second": 0.2518305225301911,
+        "einstein_finite_fourth": 1.024152697058167,
+        "second_error": 8.11358643060256e-06,
+        "fourth_error": 0.00013867603321804367
+      },
+      {
+        "k": 5,
+        "scale": 900,
+        "shape_step": 0.18232155679395465,
+        "second_difference": 0.2504503019098911,
+        "fourth_difference": 1.0129706559581086,
+        "einstein_finite_second": 0.250448733619842,
+        "einstein_finite_fourth": 1.0129445214931614,
+        "second_error": 1.5682900491031937e-06,
+        "fourth_error": 2.613446494725835e-05
+      }
+    ],
+    "limiting_second": 0.2476920180359664,
+    "limiting_fourth": 0.9907680721438656
+  },
+  "finite_coupling_radial": {
+    "cases": [
+      {
+        "coupling": 0.01,
+        "exact_interaction_action": 0.02086848699462201,
+        "first_order_action": 0.02110857992548704,
+        "actual_taylor_remainder": 0.00024009293086503167,
+        "uniform_analytical_taylor_bound": 0.027375952679158225,
+        "exact_quartic_variance": 4.610942602103598,
+        "uniform_variance_bound": 547.5190535831645
+      },
+      {
+        "coupling": 0.1,
+        "exact_interaction_action": 0.19061030595188316,
+        "first_order_action": 0.2110857992548704,
+        "actual_taylor_remainder": 0.02047549330298723,
+        "uniform_analytical_taylor_bound": 2.7375952679158226,
+        "exact_quartic_variance": 2.9372129583195346,
+        "uniform_variance_bound": 547.5190535831645
+      },
+      {
+        "coupling": 1.0,
+        "exact_interaction_action": 1.1793922800838927,
+        "first_order_action": 2.110857992548704,
+        "actual_taylor_remainder": 0.9314657124648111,
+        "uniform_analytical_taylor_bound": 273.75952679158223,
+        "exact_quartic_variance": 0.4282685455442774,
+        "uniform_variance_bound": 547.5190535831645
+      },
+      {
+        "coupling": 4.0,
+        "exact_interaction_action": 2.557076887323796,
+        "first_order_action": 8.443431970194816,
+        "actual_taylor_remainder": 5.886355082871019,
+        "uniform_analytical_taylor_bound": 4380.152428665316,
+        "exact_quartic_variance": 0.05748429636816485,
+        "uniform_variance_bound": 547.5190535831645
+      }
+    ],
+    "scope": "Independent nonperturbative radial integrals check the coupling-remainder inequalities in the exact constant-mode member. The all-size proof uses convexity and Brascamp-Lieb, not these small cases."
+  },
+  "source_sha256": {
+    "LOCAL_SYMBOL_INTERACTION.md": "a4b02cc8be542c1436b66b25e8c964d722d503a99cf5fc55a507eba390e8f121",
+    "scripts/local_symbol_interaction_audit.py": "1955d28f66772e9078f68f69fb92e655d0454fc52b0e2a22483a0c16ef50990b",
+    "PROPER_RESOLUTION_INDUCTION.md": "ae9b5abb3dbf2d2edef31b84427d0bd38eb6450b36cf9286becf58069d627b26",
+    "scripts/proper_resolution_induction_audit.py": "03228f67f7e5d081fa131a1e04fafacc43ac0125413df73ac995d9fbe93b27bc",
+    "GEOMETRIC_SPECTRAL_INDUCTION.md": "b14ef872fdd6818cc6b3deefa816d4f7ca7705613723203733adfca290033869",
+    "scripts/geometric_spectral_induction_audit.py": "55912200e1fffd1d76c661f12bbeef2288d95dbc1dcb3b7336723bfec40d1d26",
+    "BALANCED_MATTER_INDUCTION.md": "c5d82aa29edbec7344e53b4cd05d47b85cbcdf302ab33d7fa4bdc23ef0695760",
+    "CONTINUUM_EINSTEIN_BRIDGE.md": "5f8afaf33cfd57b024006378d50cd834d73671a73f2ea6084d993f1313b456be",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58"
+  },
+  "scope": "A supplied unitary symbol map preserves the complete free determinant while a new pointwise positive quartic interaction has uniformly localized field packets and an exact finite cubature. The first coupling derivative is a volume term plus the homogeneous Einstein curvature functional with a bounded remainder. Convexity bounds the finite-coupling Taylor error per volume, not per curvature scale. No independent local site algebra, microscopic refinement law, arbitrary-metric finite-coupling Einstein action, Lorentzian gravity, Standard Model, or TOE is proved. No new Lean theorem."
+}

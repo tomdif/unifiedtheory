@@ -1,0 +1,22 @@
+import UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression
+import UnifiedTheory.Clay.YangMills.WilsonAntipodalSource
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.top_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.oppositeCost
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.oppositeCost_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.oppositeCost_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.oppositeCost_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.kinetic_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.spatialWeight_le_one
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.middle_mass_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.ground_comparison
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.endpoint_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSuppression.endpoint_tube_upper
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.tube
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.tube_measurable
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.endpoint_symm
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.source_pointwise
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.sourceMass
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.sourceMass_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.sourceMass_le_loss
+#print axioms UnifiedTheory.Clay.YangMills.WilsonAntipodalSource.sourceMass_upper

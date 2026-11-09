@@ -1,0 +1,649 @@
+{
+  "exact_algebra": {
+    "pointwise_site_derivation_is_zero": true,
+    "bessel_second_moment": "z**2/2",
+    "bessel_fourth_moment": "3*z**4/8 + z**2/2",
+    "product_vacuum_defect_squared_per_site_limit": "7/128",
+    "shear_metric_determinant_one": true,
+    "shear_laplacian_intertwining": true,
+    "scope": "Exact finite-algebra, Parseval moment, transport and metric identities. Infinite-dimensional conclusions use the proofs and stated representation assumptions in the note."
+  },
+  "lattice_transport": {
+    "cases": [
+      {
+        "sites": 16,
+        "spacing": 0.39269908169872414,
+        "smooth_mode_two_defect": 0.4031430072731623,
+        "full_spatial_matrix_defect": 2.4754151802761264,
+        "product_gaussian_commutator_defect": 0.913357739776056,
+        "defect_squared_per_site": 0.05213889755055161,
+        "analytic_squared_per_site": 0.05213889755055158,
+        "local_gaussian_width_cancels": true
+      },
+      {
+        "sites": 24,
+        "spacing": 0.2617993877991494,
+        "smooth_mode_two_defect": 0.1992938376581885,
+        "full_spatial_matrix_defect": 4.073980820123072,
+        "product_gaussian_commutator_defect": 1.1335569433541663,
+        "defect_squared_per_site": 0.0535396393261017,
+        "analytic_squared_per_site": 0.05353963932610168,
+        "local_gaussian_width_cancels": true
+      },
+      {
+        "sites": 32,
+        "spacing": 0.19634954084936207,
+        "smooth_mode_two_defect": 0.11630997051156107,
+        "full_spatial_matrix_defect": 5.716380510285749,
+        "product_gaussian_commutator_defect": 1.3150064582888075,
+        "defect_squared_per_site": 0.05403881204191479,
+        "analytic_squared_per_site": 0.05403881204191477,
+        "local_gaussian_width_cancels": true
+      },
+      {
+        "sites": 64,
+        "spacing": 0.09817477042468103,
+        "smooth_mode_two_defect": 0.03012329999634988,
+        "full_spatial_matrix_defect": 12.320648967108518,
+        "product_gaussian_commutator_defect": 1.8680401991051503,
+        "defect_squared_per_site": 0.054524596648012645,
+        "analytic_squared_per_site": 0.05452459664801264,
+        "local_gaussian_width_cancels": true
+      },
+      {
+        "sites": 128,
+        "spacing": 0.04908738521234052,
+        "smooth_mode_two_defect": 0.007597423263120304,
+        "full_spatial_matrix_defect": 25.54843769050311,
+        "product_gaussian_commutator_defect": 2.6447648706583378,
+        "defect_squared_per_site": 0.05464672828959699,
+        "analytic_squared_per_site": 0.054646728289596956,
+        "local_gaussian_width_cancels": true
+      },
+      {
+        "sites": 256,
+        "spacing": 0.02454369260617026,
+        "smooth_mode_two_defect": 0.0019035377300842384,
+        "full_spatial_matrix_defect": 52.0105163455348,
+        "product_gaussian_commutator_defect": 3.7413085780145208,
+        "defect_squared_per_site": 0.05467730420283217,
+        "analytic_squared_per_site": 0.05467730420283216,
+        "local_gaussian_width_cancels": true
+      }
+    ],
+    "scope": "Exact centered finite-difference trace-channel generators on a circle. The discrete vector bracket removes the inhomogeneous residual, but the full-output quantum commutator on the product Gaussian retains an extensive defect. This is not a no-go for all stencils or states."
+  },
+  "spatial_generator_fock_test": {
+    "cases": [
+      {
+        "spatial_dimension": 1,
+        "cutoff": 4,
+        "nonzero_pair_channels": 8,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.25000000000000006
+      },
+      {
+        "spatial_dimension": 1,
+        "cutoff": 8,
+        "nonzero_pair_channels": 24,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.12500000000000003
+      },
+      {
+        "spatial_dimension": 1,
+        "cutoff": 12,
+        "nonzero_pair_channels": 40,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.08333333333333336
+      },
+      {
+        "spatial_dimension": 1,
+        "cutoff": 16,
+        "nonzero_pair_channels": 56,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.06250000000000001
+      },
+      {
+        "spatial_dimension": 1,
+        "cutoff": 24,
+        "nonzero_pair_channels": 88,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.04166666666666668
+      },
+      {
+        "spatial_dimension": 1,
+        "cutoff": 32,
+        "nonzero_pair_channels": 120,
+        "vacuum_pair_norm_squared": 1.0000000000000002,
+        "vacuum_pair_norm": 1.0,
+        "squared_norm_per_cutoff_volume": 0.03125000000000001
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 4,
+        "nonzero_pair_channels": 140,
+        "vacuum_pair_norm_squared": 0.6120187145983701,
+        "vacuum_pair_norm": 0.7823162497343195,
+        "squared_norm_per_cutoff_volume": 0.03825116966239813
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 8,
+        "nonzero_pair_channels": 540,
+        "vacuum_pair_norm_squared": 2.391933489420719,
+        "vacuum_pair_norm": 1.5465876921211803,
+        "squared_norm_per_cutoff_volume": 0.03737396077219873
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 12,
+        "nonzero_pair_channels": 1196,
+        "vacuum_pair_norm_squared": 5.314921123656988,
+        "vacuum_pair_norm": 2.3054112699596545,
+        "squared_norm_per_cutoff_volume": 0.03690917446984019
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 16,
+        "nonzero_pair_channels": 2108,
+        "vacuum_pair_norm_squared": 9.380152116139378,
+        "vacuum_pair_norm": 3.0627033999620954,
+        "squared_norm_per_cutoff_volume": 0.036641219203669445
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 24,
+        "nonzero_pair_channels": 4700,
+        "vacuum_pair_norm_squared": 20.936362290736298,
+        "vacuum_pair_norm": 4.575626983347342,
+        "squared_norm_per_cutoff_volume": 0.03634785119919496
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 32,
+        "nonzero_pair_channels": 8316,
+        "vacuum_pair_norm_squared": 37.05962959074884,
+        "vacuum_pair_norm": 6.087662079218002,
+        "squared_norm_per_cutoff_volume": 0.036191044522215665
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 4,
+        "nonzero_pair_channels": 1292,
+        "vacuum_pair_norm_squared": 2.913641636865089,
+        "vacuum_pair_norm": 1.7069392598640083,
+        "squared_norm_per_cutoff_volume": 0.04552565057601701
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 8,
+        "nonzero_pair_channels": 9244,
+        "vacuum_pair_norm_squared": 21.55442353323668,
+        "vacuum_pair_norm": 4.642674179095135,
+        "squared_norm_per_cutoff_volume": 0.04209848346335289
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 12,
+        "nonzero_pair_channels": 29996,
+        "vacuum_pair_norm_squared": 70.6079608037038,
+        "vacuum_pair_norm": 8.402854324793678,
+        "squared_norm_per_cutoff_volume": 0.040861088428069334
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 16,
+        "nonzero_pair_channels": 69692,
+        "vacuum_pair_norm_squared": 164.77082241695067,
+        "vacuum_pair_norm": 12.836308753568943,
+        "squared_norm_per_cutoff_volume": 0.040227251566638346
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 24,
+        "nonzero_pair_channels": 230492,
+        "vacuum_pair_norm_squared": 547.2105584176952,
+        "vacuum_pair_norm": 23.39253210786928,
+        "squared_norm_per_cutoff_volume": 0.039584097107761514
+      },
+      {
+        "spatial_dimension": 3,
+        "cutoff": 32,
+        "nonzero_pair_channels": 540796,
+        "vacuum_pair_norm_squared": 1286.4456466116253,
+        "vacuum_pair_norm": 35.86705517061061,
+        "squared_norm_per_cutoff_volume": 0.03925920552403642
+      }
+    ],
+    "independent_real_gaussian_checks": [
+      {
+        "spatial_dimension": 1,
+        "cutoff": 3,
+        "real_gaussian_wick_norm_squared": 0.9999999999999998,
+        "fock_pair_norm_squared": 1.0000000000000002,
+        "difference": 4.440892098500626e-16
+      },
+      {
+        "spatial_dimension": 2,
+        "cutoff": 3,
+        "real_gaussian_wick_norm_squared": 0.34594089773607256,
+        "fock_pair_norm_squared": 0.34594089773607256,
+        "difference": 0.0
+      }
+    ],
+    "scope": "Pair-creation norm of the spatial generator in a massless scalar Fock vacuum, with nonzero modes in a Fourier cube. One dimension uses cos(3x); two and three dimensions use the volume-preserving shear cos(y) partial_x. Zero-mode and finite linear density-shift terms do not affect the ultraviolet conclusion. Generator divergence alone is not a finite-unitary no-go."
+  },
+  "finite_shear_obstruction": {
+    "cases": [
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          4,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.00018117921321456694,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.41447250048633605,
+        "proved_probability_lower_bound": 0.07142857142857142,
+        "cumulative_selected_columns_squared_norm": 0.0018086893595246735,
+        "proved_cumulative_lower_bound": 1.0731294818991975e-06,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          8,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.000111098777583618,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.949872919015531,
+        "proved_probability_lower_bound": 0.125,
+        "cumulative_selected_columns_squared_norm": 0.002315752311526168,
+        "proved_cumulative_lower_bound": 5.365647409495988e-06,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 4.440892098500626e-16
+      },
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          16,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 9.306802641011996e-05,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.8335485861722576,
+        "proved_probability_lower_bound": 0.15384615384615385,
+        "cumulative_selected_columns_squared_norm": 0.0030999083391172323,
+        "proved_cumulative_lower_bound": 1.3950683264689568e-05,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 1.1102230246251565e-16
+      },
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          32,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 8.853137313053344e-05,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.6653773881281557,
+        "proved_probability_lower_bound": 0.16326530612244897,
+        "cumulative_selected_columns_squared_norm": 0.00453840585962476,
+        "proved_cumulative_lower_bound": 3.1120754975076725e-05,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 4.440892098500626e-16
+      },
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          64,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 8.739545008979504e-05,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.6689341472700259,
+        "proved_probability_lower_bound": 0.16580310880829016,
+        "cumulative_selected_columns_squared_norm": 0.007346617369366233,
+        "proved_cumulative_lower_bound": 6.546089839585105e-05,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 0.25,
+        "incoming_mode": [
+          128,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 8.7111360145362e-05,
+        "proved_uniform_column_lower_bound": 1.0731294818991975e-06,
+        "tail_event_probability": 0.6857584536508557,
+        "proved_probability_lower_bound": 0.16644993498049415,
+        "cumulative_selected_columns_squared_norm": 0.012927664028880745,
+        "proved_cumulative_lower_bound": 0.0001341411852373997,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          4,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.001420094977197136,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.949872919015531,
+        "proved_probability_lower_bound": 0.125,
+        "cumulative_selected_columns_squared_norm": 0.00897304908300038,
+        "proved_cumulative_lower_bound": 4.9227136593591006e-05,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 4.440892098500626e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          8,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.001262419636600265,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.8335485861722576,
+        "proved_probability_lower_bound": 0.15384615384615385,
+        "cumulative_selected_columns_squared_norm": 0.01415982825306253,
+        "proved_cumulative_lower_bound": 0.00011486331871837901,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 1.1102230246251565e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          16,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.001224102436775345,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.6653773881281557,
+        "proved_probability_lower_bound": 0.16326530612244897,
+        "cumulative_selected_columns_squared_norm": 0.02403634146115727,
+        "proved_cumulative_lower_bound": 0.00024613568296795506,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 4.440892098500626e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          32,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.0012145918999127115,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.6689341472700259,
+        "proved_probability_lower_bound": 0.16580310880829016,
+        "cumulative_selected_columns_squared_norm": 0.04351586279347113,
+        "proved_cumulative_lower_bound": 0.0005086804114671071,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          64,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.0012122185261409617,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.6857584536508557,
+        "proved_probability_lower_bound": 0.16644993498049415,
+        "cumulative_selected_columns_squared_norm": 0.08233099532383797,
+        "proved_cumulative_lower_bound": 0.001033769868465411,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 0.5,
+        "incoming_mode": [
+          128,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.001211625448349564,
+        "proved_uniform_column_lower_bound": 1.6409045531197002e-05,
+        "tail_event_probability": 0.6682540799647543,
+        "proved_probability_lower_bound": 0.1666124308493329,
+        "cumulative_selected_columns_squared_norm": 0.15988738110403583,
+        "proved_cumulative_lower_bound": 0.002083948782462019,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 5.551115123125783e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          4,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.01271097722740951,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.8335485861722576,
+        "proved_probability_lower_bound": 0.15384615384615385,
+        "cumulative_selected_columns_squared_norm": 0.05503148135393465,
+        "proved_cumulative_lower_bound": 0.0008900842678436241,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 1.1102230246251565e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          8,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.01267114928839699,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.6653773881281557,
+        "proved_probability_lower_bound": 0.16326530612244897,
+        "cumulative_selected_columns_squared_norm": 0.10575070309365327,
+        "proved_cumulative_lower_bound": 0.0017801685356872482,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 4.440892098500626e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          16,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.012661550140102463,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.6689341472700259,
+        "proved_probability_lower_bound": 0.16580310880829016,
+        "cumulative_selected_columns_squared_norm": 0.20706402959034886,
+        "proved_cumulative_lower_bound": 0.0035603370713744964,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          32,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.01265917905382082,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.6857584536508557,
+        "proved_probability_lower_bound": 0.16644993498049415,
+        "cumulative_selected_columns_squared_norm": 0.40962236982509087,
+        "proved_cumulative_lower_bound": 0.007120674142748993,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 2.220446049250313e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          64,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.012658588098176916,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.6682540799647543,
+        "proved_probability_lower_bound": 0.1666124308493329,
+        "cumulative_selected_columns_squared_norm": 0.8147031988833956,
+        "proved_cumulative_lower_bound": 0.014241348285497986,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 5.551115123125783e-16
+      },
+      {
+        "shear": 1.0,
+        "incoming_mode": [
+          128,
+          0,
+          0
+        ],
+        "beta_column_squared_norm": 0.012658440473028339,
+        "proved_uniform_column_lower_bound": 0.00022252106696090602,
+        "tail_event_probability": 0.6670992610073057,
+        "proved_probability_lower_bound": 0.16665310440231101,
+        "cumulative_selected_columns_squared_norm": 1.6248464649138847,
+        "proved_cumulative_lower_bound": 0.02848269657099597,
+        "bessel_sum_refinement": 0.0,
+        "normalization_error": 7.327471962526033e-15
+      }
+    ],
+    "scope": "An exact smooth volume-preserving shear has a non-Hilbert-Schmidt Bogoliubov coefficient in two or more dimensions. The note's Bessel/Parseval and probability bound proves divergence; finite Bessel sums only illustrate it. All outgoing transverse momenta enter the analytical column bound."
+  },
+  "metric_carried_covariance": {
+    "cases": [
+      {
+        "grid_per_axis": 7,
+        "shear": 0.2,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.02310017800912794,
+        "transported_covariance_beta_norm": 1.545605521376063e-14,
+        "transported_pure_gaussian_residual": 1.1569392185711609e-14,
+        "covariance_laplacian_match": 3.3228467144335807e-15,
+        "finite_transport_composition_error": 2.935632472312305e-16,
+        "independently_discretized_metric_smooth_intertwining_error": 0.0005296810477845648
+      },
+      {
+        "grid_per_axis": 7,
+        "shear": 0.5,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.13734165224764364,
+        "transported_covariance_beta_norm": 2.1460241422518087e-14,
+        "transported_pure_gaussian_residual": 1.1607565183565024e-14,
+        "covariance_laplacian_match": 2.4295616939650974e-15,
+        "finite_transport_composition_error": 4.378389754101566e-16,
+        "independently_discretized_metric_smooth_intertwining_error": 0.01072422133853153
+      },
+      {
+        "grid_per_axis": 7,
+        "shear": 0.8,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.3216286547301855,
+        "transported_covariance_beta_norm": 2.421329103728565e-14,
+        "transported_pure_gaussian_residual": 1.1807359896261455e-14,
+        "covariance_laplacian_match": 3.387085411780975e-15,
+        "finite_transport_composition_error": 8.015483530603061e-16,
+        "independently_discretized_metric_smooth_intertwining_error": 0.054751418963840545
+      },
+      {
+        "grid_per_axis": 11,
+        "shear": 0.2,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.06901735831868065,
+        "transported_covariance_beta_norm": 1.784611900699949e-13,
+        "transported_pure_gaussian_residual": 1.989969141413597e-13,
+        "covariance_laplacian_match": 9.801959591745016e-15,
+        "finite_transport_composition_error": 6.468253309932144e-16,
+        "independently_discretized_metric_smooth_intertwining_error": 7.652034078171634e-07
+      },
+      {
+        "grid_per_axis": 11,
+        "shear": 0.5,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.40707034362959527,
+        "transported_covariance_beta_norm": 1.7606549321649615e-13,
+        "transported_pure_gaussian_residual": 1.9896104430273415e-13,
+        "covariance_laplacian_match": 9.934331294236558e-15,
+        "finite_transport_composition_error": 9.219758772124661e-16,
+        "independently_discretized_metric_smooth_intertwining_error": 8.667931776708489e-05
+      },
+      {
+        "grid_per_axis": 11,
+        "shear": 0.8,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.9465538333881458,
+        "transported_covariance_beta_norm": 1.740427859774816e-13,
+        "transported_pure_gaussian_residual": 1.9885948328392802e-13,
+        "covariance_laplacian_match": 9.86744467917071e-15,
+        "finite_transport_composition_error": 1.4640733533046219e-15,
+        "independently_discretized_metric_smooth_intertwining_error": 0.00104014393116684
+      },
+      {
+        "grid_per_axis": 15,
+        "shear": 0.2,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.13788301174713283,
+        "transported_covariance_beta_norm": 9.928910004614658e-14,
+        "transported_pure_gaussian_residual": 6.502611808606531e-14,
+        "covariance_laplacian_match": 6.174967531844977e-15,
+        "finite_transport_composition_error": 1.0754192122155338e-15,
+        "independently_discretized_metric_smooth_intertwining_error": 3.6115849285266057e-10
+      },
+      {
+        "grid_per_axis": 15,
+        "shear": 0.5,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 0.8081209038681092,
+        "transported_covariance_beta_norm": 1.5322903496733146e-13,
+        "transported_pure_gaussian_residual": 6.494560226078308e-14,
+        "covariance_laplacian_match": 1.2101373557087602e-14,
+        "finite_transport_composition_error": 1.403368772702179e-15,
+        "independently_discretized_metric_smooth_intertwining_error": 2.446184673244819e-07
+      },
+      {
+        "grid_per_axis": 15,
+        "shear": 0.8,
+        "mass": 0.7,
+        "fixed_covariance_beta_squared_norm": 1.8734715301755358,
+        "transported_covariance_beta_norm": 1.1055799362115741e-13,
+        "transported_pure_gaussian_residual": 6.512764317504234e-14,
+        "covariance_laplacian_match": 7.461412218848435e-15,
+        "finite_transport_composition_error": 2.086342241039964e-15,
+        "independently_discretized_metric_smooth_intertwining_error": 7.23250318975193e-06
+      }
+    ],
+    "scope": "Finite spectral scalar system: transporting covariance with the pulled-back metric removes relative Bogoliubov mixing exactly and composes consistently. The exact carried regulator is dense; an independent metric Laplacian is checked on smooth inputs only. This is a kinematic map between Gaussian representations, not one fixed-Fock unitary continuum limit or a gravity Hamiltonian."
+  },
+  "source_sha256": {
+    "SPATIAL_METRIC_VACUUM.md": "ace18b372464f57b7d5bdf97773fac8e6da5319231e1ad99f4815b5bb9914059",
+    "scripts/spatial_metric_vacuum_audit.py": "dc01164e1c2f6a641226a6b3116d10a236f42aa546ae349e4d464e204f5b9524",
+    "AFFINE_SPIN_METRIC.md": "64c802085e526a9c325fa6ed52b5951ef348ef7e8037ff00e087a7ba9e14c8c7",
+    "SPIN_CLOCK_BRACKET.md": "4851c8c2ef7831cb6e936535c2ecc78b68cb726b20219fdf3e841113fbf04937",
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "PROJECTED_TENSOR_VACUUM.md": "078887d7c82b0e55dec3a9d866566b19490b2176a1526ae0d948c8f3647f572a",
+    "SPIN_STATE_GAUGE_GEOMETRY.md": "daee053da9e4b357478c4c3d288dc015485175a93d93409c7e6200dd56067f47",
+    "EMBEDDING_VERSUS_GRAVITY.md": "0adaf0f87b0a625643ff09764aa47aef22c66322b79bbeb925c7a6475737aa9b"
+  },
+  "scope": "Spatial coordinate covariance requires more than onsite affine metric kinematics. A specified lattice product vacuum has a nonvanishing commutator defect density. An explicit finite shear is not unitarily implementable in a fixed massless scalar Fock representation in two or more dimensions, applying also to the metric trace if that channel is assigned this independent Fock representation. A metric-carried Gaussian covariance repairs kinematic transport between representations. This is established representation theory with an explicit repository diagnostic; it does not rule out quantum gravity or derive its microscopic phase, constraints or TOE."
+}

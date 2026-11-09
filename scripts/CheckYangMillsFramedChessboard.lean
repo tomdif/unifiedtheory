@@ -1,0 +1,89 @@
+import UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames
+import UnifiedTheory.Clay.YangMills.WilsonProfileTransport
+import UnifiedTheory.Clay.YangMills.KernelPartitionEquivalence
+import UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport
+import UnifiedTheory.Clay.YangMills.WilsonFramedDeletion
+import UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum
+import UnifiedTheory.Clay.YangMills.BlockReflectionVariation
+import UnifiedTheory.Clay.YangMills.BlockLabelSymmetry
+import UnifiedTheory.Clay.YangMills.BlockChessboardExtremum
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.planeMap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.planeMap_inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.planeEquiv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.plane_defect
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.Frame
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.composition
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.rotation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.translation
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.affine
+#print axioms UnifiedTheory.Clay.YangMills.WilsonPlaquetteFrames.affine_plaquette
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push_inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.inverse_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push_sum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push_deficit
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.action_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.weight_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.pushSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.pushSet_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.pushSet_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.pushSet_inverse
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.push_omitted
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.historyEquiv
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.history_preserving
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.density_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileTransport.partition_push
+#print axioms UnifiedTheory.Clay.YangMills.KernelPartitionEquivalence.norm_le
+#print axioms UnifiedTheory.Clay.YangMills.KernelPartitionEquivalence.norm_eq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport.endpoint_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport.norm_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport.norm_pushSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonProfileNormTransport.priced_push
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.positiveSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.negativeSet
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.positiveSet_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.negativeSet_mem
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.copies_card
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.norm_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.priced
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.priced_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.priced_schwarz
+#print axioms UnifiedTheory.Clay.YangMills.WilsonFramedDeletion.priced_choice
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum.schwarz_at_max
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum.finite_max_min_rank
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum.maximal_copies
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum.exists_ranked_maximizer
+#print axioms UnifiedTheory.Clay.YangMills.WilsonReflectionExtremum.exists_count_balanced_maximizer
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.positiveCopy
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.negativeCopy
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.edgeCost
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.variation
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.CrossEdge
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.edge_partition
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.reflected_cost
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.interior_cost
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.crossing_cost
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.cost_le
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.cost_strict
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.reflected_sum
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.variation_le
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.variation_strict
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.step_iterate
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.coordinate_shift
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.constant_of_step
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.variation_zero_iff
+#print axioms UnifiedTheory.Clay.YangMills.BlockReflectionVariation.exists_disagreement
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.vertexFrame
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.edgeFrame
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.pull
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.frame_step
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.cost_pull
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.variation_pull
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.seamVertex
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.seam_crossing
+#print axioms UnifiedTheory.Clay.YangMills.BlockLabelSymmetry.move_disagreement
+#print axioms UnifiedTheory.Clay.YangMills.BlockChessboardExtremum.constant_maximum
+#print axioms UnifiedTheory.Clay.YangMills.BlockChessboardExtremum.binary_bound

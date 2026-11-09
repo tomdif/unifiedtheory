@@ -1,0 +1,154 @@
+{
+  "arithmetic": "float64 quadrature and direct-rotation refinement; no interval certificate",
+  "contractible_loop": [
+    {
+      "error": 7.845285903742416e-11,
+      "kato_transport_phase": 1.3610030961513042e-08,
+      "minimum_neighbor_overlap": 0.9999974491922754,
+      "radial_current_integral": 1.368848382055039e-08,
+      "steps": 32
+    },
+    {
+      "error": 1.9628625708736933e-11,
+      "kato_transport_phase": 1.3668855194513339e-08,
+      "minimum_neighbor_overlap": 0.9999993601566896,
+      "radial_current_integral": 1.3688483820221764e-08,
+      "steps": 64
+    },
+    {
+      "error": 4.919048946124996e-12,
+      "kato_transport_phase": 1.3683564771225813e-08,
+      "minimum_neighbor_overlap": 0.9999998399400142,
+      "radial_current_integral": 1.3688483820170687e-08,
+      "steps": 128
+    }
+  ],
+  "interpretation": "nonconstant determinant phase retained on this ray; physical continuum equivalence is not established",
+  "radial_determinant_phase_terms": [
+    {
+      "charge": 1,
+      "multiplicity": 6,
+      "radial_phase_integral": 1.7023262129395285e-12,
+      "species": "Q",
+      "transports": [
+        {
+          "determinant_phase": 1.7024437415358299e-12,
+          "error": 4.593780548241483e-16,
+          "steps": 32
+        },
+        {
+          "determinant_phase": 1.7013890296624354e-12,
+          "error": 1.2911906908281788e-15,
+          "steps": 64
+        },
+        {
+          "determinant_phase": 1.7037760091653805e-12,
+          "error": 1.466701368061044e-15,
+          "steps": 128
+        }
+      ]
+    },
+    {
+      "charge": -4,
+      "multiplicity": 3,
+      "radial_phase_integral": -1.7404020224778657e-09,
+      "species": "uc",
+      "transports": [
+        {
+          "determinant_phase": -1.7400729190875085e-09,
+          "error": 3.2910406451156e-13,
+          "steps": 32
+        },
+        {
+          "determinant_phase": -1.7403186947095849e-09,
+          "error": 8.333043082036592e-14,
+          "steps": 64
+        },
+        {
+          "determinant_phase": -1.7403823937556242e-09,
+          "error": 1.962903621659284e-14,
+          "steps": 128
+        }
+      ]
+    },
+    {
+      "charge": 2,
+      "multiplicity": 3,
+      "radial_phase_integral": 5.445724677786882e-11,
+      "species": "dc",
+      "transports": [
+        {
+          "determinant_phase": 5.444672490639842e-11,
+          "error": 1.0542936663852746e-14,
+          "steps": 32
+        },
+        {
+          "determinant_phase": 5.445627282441021e-11,
+          "error": 1.0704207424170884e-15,
+          "steps": 64
+        },
+        {
+          "determinant_phase": 5.445308093321446e-11,
+          "error": 4.189448282382634e-15,
+          "steps": 128
+        }
+      ]
+    },
+    {
+      "charge": -3,
+      "multiplicity": 2,
+      "radial_phase_integral": -4.1331481119094044e-10,
+      "species": "L",
+      "transports": [
+        {
+          "determinant_phase": -4.132366948628176e-10,
+          "error": 7.811703817339693e-14,
+          "steps": 32
+        },
+        {
+          "determinant_phase": -4.1329517586063947e-10,
+          "error": 1.9636585747796702e-14,
+          "steps": 64
+        },
+        {
+          "determinant_phase": -4.133092201819009e-10,
+          "error": 5.608618127886241e-15,
+          "steps": 128
+        }
+      ]
+    },
+    {
+      "charge": 6,
+      "multiplicity": 1,
+      "radial_phase_integral": 1.3187593666584299e-08,
+      "species": "ec",
+      "transports": [
+        {
+          "determinant_phase": 1.3185094266399133e-08,
+          "error": 2.499400187631151e-12,
+          "steps": 32
+        },
+        {
+          "determinant_phase": 1.3186968655931605e-08,
+          "error": 6.250107414360505e-13,
+          "steps": 64
+        },
+        {
+          "determinant_phase": 1.3187434366734856e-08,
+          "error": 1.5930081663051465e-13,
+          "steps": 128
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalRadialMeasure.lean": "215a9d06ca147fe1d1441d65d6350cf7e1789dfabc67e02ec95f9e37d0df03f2",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/radial_measure_phase_audit.py": "96e57d9a848ce0b91de03e79b0c8cab8c555605d8bd66b3a1a2011922f45dbff"
+  },
+  "total_hypercharge_radial_determinant_phase": 7.313343674380064e-09
+}

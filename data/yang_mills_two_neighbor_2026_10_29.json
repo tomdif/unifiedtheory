@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-29",
+  "status": "actual_two_neighbor_obstruction_no_clay_claim",
+  "scope": "For the actual periodic SU(2) Wilson coordinate laws with period n>1, two distinct neighbors (x,1) and (x,2) of target (x,0) each have every global LocalInfluence coefficient at least 1-K/beta. K is a constructed positive constant independent of n, volume and beta, obtained from the orientations of the actual staple fields 6 and 5+i. The proof uses a bounded continuous squared-distance separator and the exact tilted-Haar orientation second moment; no Gaussian approximation or supplied neighbor-influence estimate is assumed. The actual row is at least 2-2*K/beta, so beta>2*K excludes every global row budget at most one, including shrinking strict margins. Nonnegative weighting by numbers>=1 cannot restore contraction. This is a global raw-link comparison obstruction, not an obstruction to a physical mass gap or a gauge-invariant collective estimate. All twelve Clay obligations remain open.",
+  "squared_separator": {
+    "definition": "For distinct unit quaternions a,b, f(q)=|q-b|^2/(|q-a|^2+|q-b|^2). It is continuous, has values in [0,1], and has oscillation at most one.",
+    "pointwise_bound": "The triangle inequality gives |a-b|^2<=2*(|q-a|^2+|q-b|^2). Hence 1-f(q)<=2*|q-a|^2/|a-b|^2 and f(q)<=2*|q-b|^2/|a-b|^2.",
+    "haar_input": "For the actual tilt law with field A!=0 and beta>0, E|q-orientation(A)|^2=2*(1-axisMean(2*beta*|A|))<=3/(2*beta*|A|).",
+    "separation": "For fields A,B with distinct orientations a,b, E_A f-E_B f >= 1-(3/|A|+3/|B|)/(beta*|a-b|^2). This improves the earlier unaudited distance-ratio proposal from inverse-square-root beta to inverse beta."
+  },
+  "actual_wilson_geometry": {
+    "target": "(x,0), for any vertex x on every periodic lattice n>1.",
+    "neighbors": "(x,1) and (x,2) are proved distinct actual coordinates. Varying each aligned rotor separately changes only that exterior coordinate.",
+    "baseline": "Both rotor angles zero give actual target field A=6*1.",
+    "changes": "A pi/2 rotor in either of the two neighbors gives actual target field B=5*1+imaginaryUnit. The equalities concern the literal coordinateLaw, not a proxy conditional.",
+    "orientations": "A and B are proved nonzero and have different unit-quaternion orientations."
+  },
+  "constant": {
+    "definition": "K=(3/|A|+3/|B|)/|orientation(A)-orientation(B)|^2, with A=6*1 and B=5*1+imaginaryUnit.",
+    "property": "K>0 is proved; K has no lattice-size, coupling or volume parameter.",
+    "no_numerical_cutoff_claim": "The formal threshold is the exact constant 2*K; a decimal approximation is not used in the proof."
+  },
+  "influence_consequences": {
+    "nonnegativity": "The LocalInfluence predicate itself forces C(i,j)>=0: use equal configurations, the zero test, and oscillation budget one.",
+    "individual": "Each of C((x,0),(x,1)) and C((x,0),(x,2)) is at least 1-K/beta.",
+    "row": "The actual row is at least 2-2*K/beta. For beta>2*K it is strictly larger than one.",
+    "trajectory": "Along every diverging coupling sequence, including varying periods N_k>1, eventually no global LocalInfluence matrix can have all rows at most one.",
+    "weighted": "Weights at least one only increase the row, since nonnegativity is derived from admissibility."
+  },
+  "scope_limits": [
+    "The theorem concerns every global comparison in the raw one-link oscillation norm. It does not claim that the Wilson model fails to mix.",
+    "The rotated endpoint has nonzero plaquette energy. No estimate on its equilibrium probability is supplied or needed for the global supremum obstruction. Good-field restrictions require a separate argument.",
+    "The theorem does not analyze gauge quotients, gauge-fixed collective blocks or gauge-invariant observable propagation. Removing the prior flat gauge direction is not proved sufficient for contraction.",
+    "Neither the continuum limit, the original-transfer physical mass gap, nor a finite-energy continuum excitation follows."
+  ],
+  "next_attack": {
+    "space": "Construct the actual collective block representation and its physical source dictionary. A global microscopic strict row budget can now be excluded as the entry mechanism at sufficiently large beta.",
+    "estimate": "At fixed physical spacing ell, prove weighted covariance or original-transfer slab contraction on physical observables, incorporating correlated bad blocks and all generated boundary/source terms.",
+    "survival": "Pair the physical decay estimate with nonzero finite-energy source survival and compatible all-order renormalized bounds.",
+    "existing_physical_dictionary": {
+      "response": "WilsonTemporalInfluence.response_covariance already expresses the change of the actual temporal-gauge ground-row expectation under a localized input perturbation as covariance with its explicit local tilt, divided by the tilt expectation.",
+      "increments": "WilsonTemporalInfluence.invariant_increment already identifies squared increments for gauge-invariant observables with those of the original full transition.",
+      "target": "Prove the required collective covariance/factorization estimate for the actual row or a finite physical slab and use these existing identities. Do not assume that the small-mixed-budget theorem applies to the ground-row law: its ground-density factor still requires control."
+    }
+  },
+  "new_declaration_count": 44,
+  "predecessor_declaration_count": 7124,
+  "remaining": [
+    "Construct a gauge-invariant or explicitly gauge-fixed collective block comparison with an exact Wilson law and source dictionary at a fixed physical scale.",
+    "Prove the physical-scale estimate uniformly along an independently justified beta(a)->infinity trajectory, including boundary terms and correlated large-field clusters.",
+    "Bind the collective estimate to original transfer powers over a fixed physical slab; auxiliary one-link update time is not physical time.",
+    "Construct a surviving nonzero finite-energy excitation and compatible all-order renormalized continuum bounds on the same physical trajectory.",
+    "All twelve full Clay obligations remain open."
+  ],
+  "continuum_limit_proved": false,
+  "mass_gap_proved": false,
+  "all_twelve_clay_obligations_remain_open": true
+}

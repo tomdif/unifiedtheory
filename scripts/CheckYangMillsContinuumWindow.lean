@@ -1,0 +1,57 @@
+import UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow
+import UnifiedTheory.Clay.YangMills.PhysicalTimeMesh
+import UnifiedTheory.Clay.YangMills.TransferEnergySurvival
+import UnifiedTheory.Clay.YangMills.TransferSpectralScale
+import UnifiedTheory.Clay.YangMills.WilsonSpectralWindowBridge
+
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.laplace
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.laplace_integrable
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.laplace_nonneg
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.window_lower
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.window_upper
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.positive_signal_forces_window
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.window_limit_positive
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escapingMeasure
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escaping_probability
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escaping_laplace
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escaping_zero_time
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escaping_positive
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escaping_tendsto_zero
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.laplace_le_mass
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.exists_positive_subsequence
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.positive_limit_forces_window
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.escape_forces_zero
+#print axioms UnifiedTheory.Clay.YangMills.ContinuumSpectralWindow.gapped_upper
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.steps
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.time
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.time_le
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.time_lower
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.time_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.steps_tendsto
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.positive_limit
+#print axioms UnifiedTheory.Clay.YangMills.PhysicalTimeMesh.exists_surviving_subsequence
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.convex_sequence_lower
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate_zero
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate_succ
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate_add
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate_symmetric
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.dirichlet
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.even_pairing
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.norm_square_convex
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.one_step_loss
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.propagated_lower
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.physical_time_lower
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.half_norm_survives
+#print axioms UnifiedTheory.Clay.YangMills.TransferEnergySurvival.iterate_contraction
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.Eigenvalue
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.energy
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.energy_continuous
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.energy_le_iff
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.physicalMeasure
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.physicalMeasure_finite
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.window_dictionary
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.zero_energy_iff
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.laplace_steps
+#print axioms UnifiedTheory.Clay.YangMills.TransferSpectralScale.band_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonSpectralWindowBridge.exists_candidate_from_window

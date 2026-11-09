@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-30",
+  "goal": "prove yang mills in lean",
+  "goal_status": "active",
+  "previous_goal_turn_classification": "verified progress: rooted connected-cluster entropy and actual source-weighted bad bridges, with 9414 cumulative audited declarations",
+  "current_goal_turn_classification": "progress: volume-independent all-target bad-bridge output sums and slow physical eigenfunction control",
+  "scope": "The entire row of actual all-high-defect bridge events has a volume-independent squared-source bound after one original normalized raw transfer step. For a root p and m>0, C_m(f) sums integral_[bad bridge p to q] f^2 d(pi) over every plaquette q with graph distance(p,q)+1>=m. The graph and bridge events are the previously constructed actual shared-link spatial plaquette geometry. A bridge witness is a rooted connected plaquette set of size at least m containing its target. A finite marked-event covering theorem counts all possible endpoints by the witness cardinality before integration. The weighted cluster activity sum sum_S |S|*rho^|S| is bounded by B(2*rho,m), using |S|<=2^|S| and the proved rooted count. The direct cutoff output estimate then gives C_m(Pf)<=B(2*rho,m)*M(f), where B(2*rho,m)=2*rho*(512*rho)^(m-1)/(1-512*rho), without a source-loss term or ambient-volume factor. This holds on periods 4*n with n>0, beta>0, R>0, R>=96*envelope(beta), rho=exp(-beta*(R-96*envelope(beta))/4), and 512*rho<1; each bridge plaquette has defect>=2*R. For beta>=512 and R=192*envelope(beta), C_m(Pf)<=[4/(2*beta+5)]*(1/2)^(m-1)*M(f). For an actual eigenfunction Pf=sigma*f, sigma^2*C_m(f)<=B(2*rho,m)*M(f); if sigma^2>=1/2, C_m(f)<=[8/(2*beta+5)]*(1/2)^(m-1)*M(f). The full gauge-averaged transition output and eigenfunction versions explicitly require gauge invariance. The older general-source tail retains its loss term; it is not discarded here. The new estimates instead use smoothing or an exact eigenfunction equation. Previously accepted WilsonBoundaryPointwise, WilsonBoundaryMixedLimit and WilsonBoundaryConnected already supply a finite-boundary representation of the actual mixed-ground response. What remains is a justified decomposition or signed comparison connecting that response to the controlled bad-bridge form and a controlled retained-field term, plus independent global coercivity. No uniform bound on the complete distant mixed-ground sum, physical contraction, mass gap or nonzero continuum construction follows yet. All twelve full Clay requirements remain open.",
+  "new_modules": [
+    "UnifiedTheory.Clay.YangMills.FiniteMarkedEventSum",
+    "UnifiedTheory.Clay.YangMills.WilsonMarkedClusterActivity",
+    "UnifiedTheory.Clay.YangMills.WilsonBridgeOutputSum"
+  ],
+  "new_declarations": 19,
+  "retained_declarations": 9414,
+  "cumulative_declarations": 9433,
+  "notation": {
+    "P": "Normalized raw step with the original physical ground and eigenvalue; equals the full gauge-averaged transition on invariant sources.",
+    "M": "Integral of f squared under the original physical ground law pi.",
+    "C_m": "Sum over all target plaquettes q with discrete graph distance(p,q)+1>=m of integral_[bad connected bridge p to q] f^2 d(pi). Root p is fixed. m>0.",
+    "bad_bridge": "A connected plaquette set contains p and q, and all its plaquettes have defect>=2*R.",
+    "activity": "rho=exp(-beta*(R-96*envelope(beta))/4). Marked activity budget B(2*rho,m)=2*rho*(512*rho)^(m-1)/(1-512*rho).",
+    "weak_threshold": "beta>=512; R=192*envelope(beta); actual defect threshold is 384*envelope(beta), tending to zero."
+  },
+  "proved_bounds": [
+    "C_m(Pf)<=B(2*rho,m)*M(f).",
+    "C_m(Pf)<=[4/(2*beta+5)]*2^(-(m-1))*M(f) at the weak-coupling threshold.",
+    "Pf=sigma*f implies sigma^2*C_m(f)<=B(2*rho,m)*M(f).",
+    "If also sigma^2>=1/2, C_m(f)<=[8/(2*beta+5)]*2^(-(m-1))*M(f)."
+  ],
+  "research_decision": "The earlier finite-boundary response representation was found already proved in WilsonBoundaryPointwise, WilsonBoundaryMixedLimit and WilsonBoundaryConnected. Duplicate constant-boundary drafts were removed before audit; none is counted as progress. The accepted new work instead removes the repeated-loss obstruction for the entire bad-bridge row of a smoothed source or slow eigenfunction.",
+  "next_attack": [
+    "Use the existing exact finite-boundary connected-covariance representation to derive a response decomposition with controlled retained-field propagation.",
+    "Bind any bad-bridge contribution to the actual smoothed-source or slow-eigenfunction quadratic form now bounded, without asserting that every response requires an all-bad path.",
+    "Prove independent retained-region global coercivity before deriving physical-scale contraction and nonzero continuum survival."
+  ],
+  "not_inferred": [
+    "All twelve full Clay requirements remain open. No continuum Yang-Mills construction or cutoff-uniform physical mass gap is claimed.",
+    "The bridge sum is a sum of actual high-defect connectivity events, not the distant mixed logarithmic ground response or a covariance bound for arbitrary sources.",
+    "The loss-free arbitrary-source estimate applies to P f. The corresponding estimate for f requires its exact eigenfunction equation and a lower bound on the squared eigenvalue. The earlier general-source tail still retains its loss term.",
+    "P is the normalized raw transition with the original physical ground and eigenvalue. Full gauge-averaged transition conclusions explicitly require gauge-invariant sources.",
+    "The new estimate is uniform in spatial volume but restricted to fine periods 4*n. Distance is discrete plaquette-graph distance, not physical continuum separation.",
+    "The accepted finite-boundary response and integrated connected-covariance identities already exist. A uniform retained-field response estimate and a justified decomposition into controlled bad and retained contributions are still missing.",
+    "Independent global retained-region coercivity must handle gauge, toron and boundary effects; suppression of bad bridges for slow modes does not exclude those modes.",
+    "Multiscale stability, physical scale matching, normalized reflected-state compactness and nonzero renormalized continuum survival remain separate obligations."
+  ],
+  "verification_report": "data/yang_mills_bridge_output_audit.json",
+  "root_build_checked": false
+}

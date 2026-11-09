@@ -1,0 +1,102 @@
+{
+  "symbolic": {
+    "metric_components": 10,
+    "derivative_components": 40,
+    "quadratic": "0",
+    "quadratic_variation": "z*(-dh101 - dh202 - dh303)/(2*L**4)",
+    "proper_time_pullback_exact": true
+  },
+  "lattice": [
+    {
+      "length": 4,
+      "sites": 256,
+      "maximum_action_density": 0.0,
+      "maximum_integrated_variation": 2.636779683484747e-16,
+      "maximum_local_variation_identity_error": 1.0658141036401503e-14,
+      "maximum_local_response": 42.02155158137501,
+      "necessary_metric_lipschitz_constant": 3.2
+    },
+    {
+      "length": 6,
+      "sites": 1296,
+      "maximum_action_density": 0.0,
+      "maximum_integrated_variation": 2.8509430755806487e-16,
+      "maximum_local_variation_identity_error": 2.842170943040401e-14,
+      "maximum_local_response": 94.94130053937958,
+      "necessary_metric_lipschitz_constant": 4.800000000000001
+    },
+    {
+      "length": 8,
+      "sites": 4096,
+      "maximum_action_density": 0.0,
+      "maximum_integrated_variation": 2.940356291780688e-16,
+      "maximum_local_variation_identity_error": 7.105427357601002e-14,
+      "maximum_local_response": 185.33689074441472,
+      "necessary_metric_lipschitz_constant": 6.4
+    }
+  ],
+  "quotient": [
+    {
+      "length": 8,
+      "coordinate_error": 0.007957747154594769,
+      "coordinate_error_bound": 0.007957747154594767,
+      "raw_metric_lipschitz_lower": 6.4,
+      "normalized_metric_error": 0.0
+    },
+    {
+      "length": 16,
+      "coordinate_error": 0.003978873577297426,
+      "coordinate_error_bound": 0.0039788735772973835,
+      "raw_metric_lipschitz_lower": 12.8,
+      "normalized_metric_error": 0.0
+    },
+    {
+      "length": 32,
+      "coordinate_error": 0.001989436788648713,
+      "coordinate_error_bound": 0.0019894367886486917,
+      "raw_metric_lipschitz_lower": 25.6,
+      "normalized_metric_error": 0.0
+    },
+    {
+      "length": 64,
+      "coordinate_error": 0.0009947183943243565,
+      "coordinate_error_bound": 0.0009947183943243459,
+      "raw_metric_lipschitz_lower": 51.2,
+      "normalized_metric_error": 0.0
+    },
+    {
+      "length": 128,
+      "coordinate_error": 0.000497359197162206,
+      "coordinate_error_bound": 0.0004973591971621729,
+      "raw_metric_lipschitz_lower": 102.4,
+      "normalized_metric_error": 0.0
+    }
+  ],
+  "support": {
+    "spacelike_cross_pairs": 437,
+    "minimum_spacelike_interval": 0.3191780218384837,
+    "recurrence": {
+      "c": 0.2,
+      "A": 3.0,
+      "starting_rank": 40,
+      "B": 1600,
+      "final_expected_pair_upper": 270.9206820287581,
+      "scope": "Synthetic recurrence verification, not a fit to the growth law"
+    },
+    "maximum_full_KL_splitting_error": 2.220446049250313e-16,
+    "coin_example": {
+      "marginal_error": 0.0,
+      "length_8_relative_entropy": 1.0464962875290957,
+      "scope": "Illustrates singular infinite limits, not causal geometry"
+    }
+  },
+  "source_sha256": {
+    "scripts/emergence_support_audit.py": "34a63188d60df1ea5cb0a96ec1edb208b73922cfeab47f033ee44250d275525a",
+    "scripts/continuum_einstein_audit.py": "5cba5f07516e1445e5f647b5d01b08321eb438a9f94a53cf3a29c98740901912",
+    "EMERGENCE_SUPPORT_AND_GAUGE_COMPACTNESS.md": "338375c8335a29bade5a558d681a504043fac1fe45608a05b147f71472a63747",
+    "HARMONIC_BORN_EVENTUAL_CHAIN_COLLAPSE.md": "381205670a8ea7c4ebb85c8f1a42925b85a169ceadd2aa525c066f5dd1b13449",
+    "CONTINUUM_EINSTEIN_BRIDGE.md": "5f8afaf33cfd57b024006378d50cd834d73671a73f2ea6084d993f1313b456be",
+    "UnifiedTheory/Audit/KFCausalEmergenceSupport.lean": "716ff1d86c684083b54609f398b9d71d5f9a76d9b7239a0fb277874422f69c6c"
+  },
+  "scope": "Support obstruction using the earlier analytic collapse theorem; lapse-only quotient compactness for a supplied classical action. No selected physical geometry, general compactness, or quantum TOE."
+}

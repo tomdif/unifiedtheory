@@ -1,0 +1,42 @@
+import UnifiedTheory.Clay.YangMills.SU2StableStarRemainder
+import UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation
+import UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration
+
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.radial_antitone
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.error_radial
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.radial_classical_upper
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.error_upper
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.error_lower_of_two_le
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.error_nonneg_of_norm_le_two
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.error_lower
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.positiveRemainder
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.penalty
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.stabilizedPotential
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.positiveRemainder_bounds
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.penalty_continuous
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.stabilized_difference
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.penalty_bounds
+#print axioms UnifiedTheory.Clay.YangMills.SU2StableStarRemainder.penalty_weight_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.partition_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.freeEnergy_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.normalizedWeight
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.normalizedWeight_eq
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.normalizedWeight_ratio_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.expectation_difference
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.blockAction_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.action_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.stage_density_ratio_bounds
+#print axioms UnifiedTheory.Clay.YangMills.GibbsOrderedPerturbation.stage_expectation_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.edgeDecidableEq
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.penaltySum
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.penaltySum_continuous
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.penaltySum_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.stabilizedAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.action_difference
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.one_link_effectiveAction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.singleton_split
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.iterated_action_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.iterated_density_bounds
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.iterated_expectation_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonStabilizedIntegration.iterated_expectation_tendsto

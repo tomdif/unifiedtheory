@@ -1,0 +1,176 @@
+{
+  "microscopic_trace": {
+    "hilbert_dimension": 16,
+    "active_dimension": 7,
+    "inactive_dimension": 9,
+    "scalar_transition_amplitude": "-sqrt(3)/4",
+    "six_channel_identities": 36,
+    "scalar_creation_from_exchange": true,
+    "complete_tensor_norm_identity": true,
+    "single_cell_quadrature_square": "(6 P_0 + N)/2",
+    "naive_kinetic_vacuum_energy_over_J": 1.5,
+    "naive_kinetic_excited_energy_over_J": 0.25,
+    "scope": "Exact finite-spin kinematics; scalar promotion changes the onsite Hamiltonian."
+  },
+  "blocks": {
+    "flavors": 6,
+    "input_occupation_cutoff": 3,
+    "matrix_dimension": 210,
+    "compressed_dimension": 84,
+    "commutator_checks": 144,
+    "rows": [
+      {
+        "copies": 8,
+        "creation_error": 0.41886116991581024,
+        "creation_bound": 0.75,
+        "commutator_error": 0.7499999999999991,
+        "commutator_bound": 0.75
+      },
+      {
+        "copies": 16,
+        "creation_error": 0.19722436226800544,
+        "creation_bound": 0.375,
+        "commutator_error": 0.375,
+        "commutator_bound": 0.375
+      },
+      {
+        "copies": 64,
+        "creation_error": 0.047437581023336506,
+        "creation_bound": 0.09375,
+        "commutator_error": 0.09375,
+        "commutator_bound": 0.09375
+      },
+      {
+        "copies": 256,
+        "creation_error": 0.011753284926641738,
+        "creation_bound": 0.0234375,
+        "commutator_error": 0.023437499999999556,
+        "commutator_bound": 0.0234375
+      }
+    ],
+    "scope": "Exact symmetric-block occupation representation; no ground-phase selection or dynamics convergence claimed."
+  },
+  "dispersion": {
+    "pairing_identity": true,
+    "clock_principal_symbol_identities": true,
+    "positive_band_minmax_cases": 80,
+    "maximum_minmax_ratio": 0.8755216642376462,
+    "gapless_paired_exponent": 1,
+    "number_conserving_seed_exponent": 2,
+    "scope": "Canonical pairing and finite positive-matrix checks; not a microscopic paired phase."
+  },
+  "coefficient_algebra": {
+    "curvature_variation_contraction": true,
+    "closure_solution": {
+      "gravity_product": "1",
+      "lambda": "1/2",
+      "matter_product": "1"
+    },
+    "trace_anomaly_witness_integral": "pi",
+    "gravitational_legendre_transform": true,
+    "scalar_legendre_transform": true,
+    "scope": "Polynomial and integrated identities within the stated continuum ansatz; functional geometry remains an analytical supplier."
+  },
+  "functional_brackets": {
+    "grid_vertices": 4096,
+    "rows": [
+      {
+        "trial": 0,
+        "trace_coefficient": 0.0,
+        "gravity_bracket_error": 1.7763568394002505e-15,
+        "scalar_bracket_error": 0.0
+      },
+      {
+        "trial": 1,
+        "trace_coefficient": 0.5,
+        "gravity_bracket_error": 1.7763568394002505e-15,
+        "scalar_bracket_error": 0.0
+      },
+      {
+        "trial": 2,
+        "trace_coefficient": 1.0,
+        "gravity_bracket_error": 1.887379141862766e-15,
+        "scalar_bracket_error": 9.71445146547012e-17
+      },
+      {
+        "trial": 3,
+        "trace_coefficient": 0.0,
+        "gravity_bracket_error": 8.604228440844963e-16,
+        "scalar_bracket_error": 3.469446951953614e-17
+      },
+      {
+        "trial": 4,
+        "trace_coefficient": 0.5,
+        "gravity_bracket_error": 8.881784197001252e-16,
+        "scalar_bracket_error": 1.1102230246251565e-16
+      },
+      {
+        "trial": 5,
+        "trace_coefficient": 1.0,
+        "gravity_bracket_error": 1.5543122344752192e-15,
+        "scalar_bracket_error": 2.7755575615628914e-17
+      },
+      {
+        "trial": 6,
+        "trace_coefficient": 0.0,
+        "gravity_bracket_error": 6.661338147750939e-16,
+        "scalar_bracket_error": 6.245004513516506e-17
+      },
+      {
+        "trial": 7,
+        "trace_coefficient": 0.5,
+        "gravity_bracket_error": 1.790234627208065e-15,
+        "scalar_bracket_error": 2.7755575615628914e-16
+      },
+      {
+        "trial": 8,
+        "trace_coefficient": 1.0,
+        "gravity_bracket_error": 3.1086244689504383e-15,
+        "scalar_bracket_error": 3.608224830031759e-16
+      },
+      {
+        "trial": 9,
+        "trace_coefficient": 0.0,
+        "gravity_bracket_error": 3.1086244689504383e-15,
+        "scalar_bracket_error": 1.700029006457271e-16
+      },
+      {
+        "trial": 10,
+        "trace_coefficient": 0.5,
+        "gravity_bracket_error": 1.4988010832439613e-15,
+        "scalar_bracket_error": 9.540979117872439e-18
+      },
+      {
+        "trial": 11,
+        "trace_coefficient": 1.0,
+        "gravity_bracket_error": 3.552713678800501e-15,
+        "scalar_bracket_error": 2.7755575615628914e-17
+      }
+    ],
+    "scope": "Flat-metric phase-space samples with variable momentum and lapse. The curved-metric functional identity is derived analytically, not established by these finite samples."
+  },
+  "physical_consequences": {
+    "static_einstein_tensor": true,
+    "energy_constraint": "laplacian Psi = 4 pi G rho",
+    "newton_potential": "-G m/r",
+    "newton_flux": "4*pi*G*m",
+    "elastic_soft_ward_vector": [
+      "0",
+      "-gA*p + gB*p",
+      "gA*p - gB*p",
+      "0"
+    ],
+    "scope": "Weak-field and soft-factor consequences conditional on the gravitational action and stated scattering hypotheses."
+  },
+  "source_sha256": {
+    "GRAVITY_FROM_CLOCK_CONSTRAINTS.md": "c11459843208813f8fdda6559378b4c41156bd324396305c83f6c925792a3f58",
+    "scripts/gravity_constraint_audit.py": "e54db23021148296d5c0ab8861eb898a15e644d7d9e16e03e37093f0b5adee90",
+    "UnifiedTheory/Audit/KFCausalGravityConstraint.lean": "e7765384b7677cce193b273b0b4ab0102e8db7ef9f384996459e7baebfd815ed",
+    "MICROSCOPIC_SPIN_TWO_SEED.md": "0f5c2db9e104a824d00d6acc4247786b7fd573ada0a4a5024b7b6ce027938045",
+    "scripts/microscopic_spin_two_audit.py": "bbcd8399832d531626a2b60458364f17cdfa96e7366241646b73b430698b1922",
+    "BOND_TENSOR_CONSTRAINTS.md": "d194fa72d3049734858fc7c9f1c9a88c266f2d8fda444b68f1595d2fddc6951d",
+    "LOCAL_CAUSAL_CLOCK.md": "998bbe5d1364ef2d1eec5558f6ca87e4af408a04c917e4b5f8494439dbf820a8",
+    "COLLECTIVE_WAVE_SPACETIME.md": "62213097be8db3b9da02c611a18fbdc591ffe32e29fa5298956318bb64207087"
+  },
+  "scope": "Exact microscopic trace transition and symmetric-block kinematics; conditional canonical pairing and metric/scalar constraint-algebra derivation of Einstein dynamics. No stable microscopic sector realizing the nonlinear deformation algebra, quantum gravitational continuum, selected spacetime, or TOE is proved."
+}

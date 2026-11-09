@@ -1,0 +1,121 @@
+import UnifiedTheory.Audit.KFCausalParticlePureTensors
+import UnifiedTheory.Audit.KFCausalParticlePermutations
+import UnifiedTheory.Audit.KFCausalBosonicSectorProjection
+import UnifiedTheory.Audit.KFCausalParticleDomainTensors
+import UnifiedTheory.Audit.KFCausalParticleCoreCovariance
+import UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian
+import UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle
+import UnifiedTheory.Audit.KFCausalBosonicFock
+import UnifiedTheory.Audit.KFCausalBosonicEnergyGap
+import UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian
+
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.pureTuple
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.pureTuple_inner
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.pureTuple_snoc
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.total
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.Core
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.embedding
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.embedding_single
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.embedding_dense
+#print axioms UnifiedTheory.Audit.KFCausalParticlePureTensors.linear_ext
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.tuplePerm
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.corePerm
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.pure_inner_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.core_inner_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.core_norm_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.action
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.action_embedding
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.action_pure
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.action_one
+#print axioms UnifiedTheory.Audit.KFCausalParticlePermutations.action_mul
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.invariant
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.invariant_closed
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.invariantComplete
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.average
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.average_apply
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.average_fixed
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.projection
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.average_on_invariant
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.projection_surjective
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.average_idempotent
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorProjection.symmetric_core_dense
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.Tuple
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.inputTuple
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.actionTuple
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.tuple_graph
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.total_domain
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.Core
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.input
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.output
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.input_dense
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.core_graph
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.coreDomain
+#print axioms UnifiedTheory.Audit.KFCausalParticleDomainTensors.coreDomain_value
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.oneJet
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.pairingJet
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.pairingJet_product
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.pairing_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.vector_ext
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.actionTuple_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.domainPerm
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.input_permute
+#print axioms UnifiedTheory.Audit.KFCausalParticleCoreCovariance.output_permute
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.averageCore
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.input_average
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.output_average
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonInput
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonAction
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonEnergy
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.input_coe
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.action_coe
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonInput_dense
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.factorization
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonForm
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.bosonHamiltonian
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.CoreGraph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.core_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.lower_bound
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorHamiltonian.variational_domain
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.all_invariant
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.identification
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.average_one
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.original_core_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.hamiltonian_inclusion
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.GraphIdentification
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.graph_iff
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.DomainIdentification
+#print axioms UnifiedTheory.Audit.KFCausalBosonicSectorOneParticle.domain_iff
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.sector
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.sectorHamiltonian
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.sector_selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.vacuum_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.sector_positive
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.BosonFock
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.fullHamiltonian
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.full_selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.full_positive
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.full_graph
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.full_domain
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.vacuum
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.vacuum_stationary
+#print axioms UnifiedTheory.Audit.KFCausalBosonicFock.vacuum_norm
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.sector_lower
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.component_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.weighted_summable
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.number_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.vacuum_gap
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.vacuumCoefficient
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.zero_energy_kernel
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.orthogonal_vacuum_iff
+#print axioms UnifiedTheory.Audit.KFCausalBosonicEnergyGap.orthogonal_energy_gap
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.sector_selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.core_graph
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.one_particle_graph_identification
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.one_particle_domain_identification
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.full_selfAdjoint
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.vacuum_stationary
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.sector_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.number_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.excitation_energy_gap
+#print axioms UnifiedTheory.Audit.KFCausalInteractingBosonicHamiltonian.vacuum_kernel_unique

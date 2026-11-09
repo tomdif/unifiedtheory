@@ -1,0 +1,12 @@
+import UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget
+
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.area_bound_of_budget
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.positive_margin
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.saturated_step
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.saturated_margin_iff
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.reciprocal_pair_sum
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.near_area_budget
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.near_area_positive_margin
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_normalized_cost_not_summable
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_cost_is_subarea
+#print axioms UnifiedTheory.Clay.YangMills.Twisted.TwistedWeightedBudget.harmonic_budget_diverges

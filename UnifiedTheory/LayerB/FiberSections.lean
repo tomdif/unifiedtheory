@@ -1,25 +1,16 @@
 /-
-  LayerB/FiberSections.lean — Sections of O(1) on CP^n are linear forms.
+  LayerB/FiberSections.lean — Coordinate projections and degree-one homogeneity.
 
-  This formalizes the Kaluza-Klein reduction step:
-
-  THEOREM: The space of degree-1 homogeneous functions on ℂ^{n+1}
-  (= sections of O(1) on CP^n) has dimension n+1.
-
-  PROOF:
-  1. The coordinate projections π_k(z) = z_k are homogeneous of degree 1.
-  2. They are linearly independent.
-  3. Any degree-1 homogeneous function is a linear combination of them.
-  4. Therefore dim H⁰(CP^n, O(1)) = n+1.
-
-  This is the content of Step B in the generation argument:
-  the source functional z ∈ ℂ^{N_c}, restricted to the gauge orbit fiber
-  CP^{N_c-1}, gives N_c independent sections. Each section is a generation.
+  This file proves homogeneity, pairwise distinctness, and the cardinality
+  of the coordinate index set. It does not prove linear independence,
+  spanning, a holomorphic section-space identification, or a physical
+  generation count. Homogeneity alone does not imply complex linearity.
 
   Zero sorry. Zero custom axioms.
 -/
 import Mathlib.Data.Complex.Basic
 import Mathlib.Data.Fin.Basic
+import Mathlib.Data.Fintype.Card
 
 namespace UnifiedTheory.LayerB.FiberSections
 
@@ -28,7 +19,8 @@ namespace UnifiedTheory.LayerB.FiberSections
   A function f: ℂ^{n+1} → ℂ is homogeneous of degree 1 if
   f(λz) = λ · f(z) for all λ ∈ ℂ, z ∈ ℂ^{n+1}.
 
-  These are exactly the sections of the hyperplane bundle O(1) on CP^n.
+  This algebraic condition alone does not identify the holomorphic sections
+  of the hyperplane bundle O(1) on CP^n.
 -/
 
 /-- A function on ℂ^{n+1} is homogeneous of degree 1. -/
@@ -57,7 +49,7 @@ theorem coordProj_distinct {n : ℕ} (j k : Fin n) (hjk : j ≠ k) :
   rw [h] at h1
   exact absurd (h1.symm.trans h2) one_ne_zero
 
-/-- WHAT IS PROVEN HERE about sections of O(1):
+/- WHAT IS PROVEN HERE about coordinate projections:
 
     1. coordProj_homogeneous: The n+1 coordinate projections are degree-1
        homogeneous functions on ℂ^{n+1}. (PROVEN)
@@ -65,10 +57,9 @@ theorem coordProj_distinct {n : ℕ} (j k : Fin n) (hjk : j ≠ k) :
     3. There are exactly n+1 of them. (TRIVIAL: Fin (n+1) has card n+1)
 
     WHAT IS NOT PROVEN HERE:
-    4. That these are ALL the degree-1 homogeneous functions (completeness/spanning).
-       This requires showing that linear forms on ℂ^{n+1} have dimension n+1,
-       which is a real Mathlib theorem (Module.finrank_fin_fun) but not invoked here.
-    5. That degree-1 homogeneous functions = sections of O(1) (sheaf cohomology).
+    4. Spanning or a dimension computation for the space of complex linear forms.
+       Arbitrary degree-one homogeneous functions need not be linear.
+    5. An identification with holomorphic sections of O(1).
 
     The "key theorem" `n + 1 = n + 1 := rfl` was rightly flagged as a tautology.
     It is replaced below with a reference to Mathlib's dimension computation. -/

@@ -1,0 +1,46 @@
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.relative_gradient_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.relative_square_completion' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.relative_gradient_upper' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.bracket_normsq_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.bracket_pair_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.forcing_young' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.envelope_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.envelope_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.envelope_mono' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.envelope_hasDerivAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.contact_derivative_strict' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.riccati_envelope_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.spectral_threshold' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.rotated_curvature' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.rotated_gradient_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'UnifiedTheory.LayerA.NonabelianYangMillsGlobal.rotated_gradient_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

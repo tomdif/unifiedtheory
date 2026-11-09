@@ -1,0 +1,189 @@
+{
+  "scope": "First cohomological descent only; field-strength and torus winding remainder retained",
+  "exact_chain_checks": {
+    "arithmetic": "exact int64 (small bounded sums; no overflow)",
+    "curvature_gradient_zero": true,
+    "discrete_stokes_duality": true,
+    "contraction_and_boundary_squared": [
+      {
+        "lengths": [
+          3
+        ],
+        "all_degrees_exact": true
+      },
+      {
+        "lengths": [
+          3,
+          4
+        ],
+        "all_degrees_exact": true
+      },
+      {
+        "lengths": [
+          3,
+          4,
+          3
+        ],
+        "all_degrees_exact": true
+      },
+      {
+        "lengths": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "all_degrees_exact": true
+      }
+    ],
+    "translated_local_loop_fillings": [
+      {
+        "length": 6,
+        "filling_nonzero_faces": 1
+      },
+      {
+        "length": 10,
+        "filling_nonzero_faces": 1
+      },
+      {
+        "length": 16,
+        "filling_nonzero_faces": 1
+      }
+    ],
+    "noncontractible_cycle_retained": true
+  },
+  "jacobian_checks": {
+    "reference_norm": 0.0004590721277685704,
+    "quadrature": [
+      {
+        "nodes": 16,
+        "error_against_spectral_derivative": 3.6139798825168015e-11
+      },
+      {
+        "nodes": 24,
+        "error_against_spectral_derivative": 4.8766023656699806e-14
+      },
+      {
+        "nodes": 32,
+        "error_against_spectral_derivative": 2.4462560424071924e-15
+      }
+    ],
+    "large_real_gauge_change_error": 2.4620950762787846e-14
+  },
+  "overlap_descent": [
+    {
+      "lengths": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "field_nodes": 6,
+      "resolvent_nodes": 32,
+      "minimum_sampled_kernel_gap": 0.9746776366120882,
+      "density_norm": 1.5975154592366953e-06,
+      "free_density_roundoff": 0.0,
+      "fundamental_theorem_error": 2.850906392767767e-14,
+      "average_density_error": 2.7252448129602342e-14,
+      "topological_column_sum_error": 8.281515249087711e-15,
+      "first_descent": {
+        "h": 1.9596036565661246e-06,
+        "div_h": 2.156331465670189e-06,
+        "remainder": 2.5854209329902793e-06,
+        "anchored": 2.3720305695126474e-06,
+        "winding": 1.6652934426041383e-06,
+        "phi": 8.792231791950438e-05,
+        "harmonic": 0.00010621998307182622,
+        "cycle_error": 6.870770890466247e-15,
+        "row_error": 7.244526539127058e-15,
+        "reconstruction_error": 1.6333533411754063e-16,
+        "phi_boundary_norm": 0.00013341102924698455,
+        "finite_torus_constraint_error": 1.5587946737033195e-14
+      },
+      "averaged_first_descent": {
+        "h": 3.9291723237422293e-07,
+        "div_h": 4.324183916764468e-07,
+        "remainder": 5.183648352689881e-07,
+        "anchored": 4.7563573120081845e-07,
+        "winding": 3.338653289600649e-07,
+        "phi": 1.762811709136702e-05,
+        "harmonic": 2.1294354050521326e-05,
+        "cycle_error": 3.636900721418649e-15,
+        "row_error": 3.4897582011023866e-15,
+        "reconstruction_error": 8.996627826875292e-17,
+        "phi_boundary_norm": 2.6749105771858683e-05,
+        "finite_torus_constraint_error": 8.742335161001958e-15
+      },
+      "phase_and_gauge_checks": {
+        "kernel_gauge_error": 1.8787793404229245e-14,
+        "current_h_gauge_error": 3.0586984021646605e-16,
+        "remainder_gauge_error": 3.7141415886648093e-16,
+        "phase_correction": -2.0088680156773317e-09,
+        "phase_change": -5.974334154243982e-08,
+        "predicted_phase_change": -5.974334131921032e-08,
+        "phase_change_error": 2.2322949813912167e-16,
+        "ward_defect_before": -2.5100746535937664e-08,
+        "ward_defect_after": -8.484408807837748e-08,
+        "predicted_remaining_ward_defect": -8.484412507584451e-08,
+        "corrected_ward_error": 3.6997467029248945e-14,
+        "kernel_quadrature_refinement_error": 1.8048191770987296e-14,
+        "weighted_kernel_quadrature_refinement_error": 1.0244181432347643e-14,
+        "phase_quadrature_refinement_error": 1.609014770335592e-18
+      }
+    },
+    {
+      "lengths": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "field_nodes": 6,
+      "resolvent_nodes": 32,
+      "minimum_sampled_kernel_gap": 0.9729601864502807,
+      "density_norm": 3.2173269109255767e-06,
+      "free_density_roundoff": 0.0,
+      "fundamental_theorem_error": 9.894262737344089e-14,
+      "average_density_error": 4.4400490674260727e-14,
+      "topological_column_sum_error": 1.3498810251444667e-14,
+      "first_descent": {
+        "h": 5.035341398541823e-06,
+        "div_h": 6.1269431684797676e-06,
+        "remainder": 6.261341716695436e-06,
+        "anchored": 6.2606110453307045e-06,
+        "winding": 7.582055295366185e-07,
+        "phi": 0.00029627987817367374,
+        "harmonic": 6.617320742037527e-05,
+        "cycle_error": 5.748753580193912e-15,
+        "row_error": 5.6552661144815125e-15,
+        "reconstruction_error": 3.0194449022447655e-16,
+        "phi_boundary_norm": 9.256956740430746e-05,
+        "finite_torus_constraint_error": 3.271318019539517e-14
+      },
+      "averaged_first_descent": {
+        "h": 1.0069443877643113e-06,
+        "div_h": 1.2251139787786124e-06,
+        "remainder": 1.2516667054747046e-06,
+        "anchored": 1.2515330921357967e-06,
+        "winding": 1.5187336011456598e-07,
+        "phi": 5.922346239115854e-05,
+        "harmonic": 1.3257843756293414e-05,
+        "cycle_error": 3.4283896528730738e-15,
+        "row_error": 3.1596179304053e-15,
+        "reconstruction_error": 1.7504427701699841e-16,
+        "phi_boundary_norm": 1.8541372429354704e-05,
+        "finite_torus_constraint_error": 1.8325370120760004e-14
+      }
+    }
+  ],
+  "source_sha256": {
+    "scripts/local_cohomology_audit.py": "202b264c252337534595b9067c7bfc27b245c749ac738fd9487ed3439b01672e",
+    "scripts/radial_measure_audit.py": "7944b720e99bd4be4aebc77f16deeeb8d094e98bf48d178f0e0628067fb6dded",
+    "scripts/positive_measure_audit.py": "e1ab46ec671f591ef143812230303e4b05bf3423352aca9c7ba4903d99f0593e",
+    "scripts/gauge_dressed_measure_audit.py": "9f2cbb11fdaa0e1c020a53f96eaac1c296740bbbe2a9a957dae9e781ff07b471",
+    "scripts/chiral_measure_audit.py": "f14cc1ed1d9beb995170a0e9221d08dd4b8c85254dcd626b3f513e8ed194eac2",
+    "scripts/overlap_chirality_audit.py": "0c7cc24393bb63e4d60c257e05d4b5d35b23b9b5d1abeeacf27107e1461e22f3",
+    "UnifiedTheory/Audit/KFCausalLocalCohomology.lean": "d665a52f241940e08795d1a9dc03ef7264b79a0dd993433aeb797e5284d09c70"
+  },
+  "arithmetic": "Float64 diagnostics except explicit bounded integer chain checks; no interval certificate"
+}

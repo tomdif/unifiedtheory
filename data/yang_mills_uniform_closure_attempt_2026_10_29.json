@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-29",
+  "request": "Close the distant mixed-ground sum and the lower bound needed for physical-slab contraction.",
+  "status": "not_closed",
+  "record_type": "analytical_closure_review_not_a_new_Lean_certificate",
+  "latest_proof_certificate": "data/yang_mills_near_far_gram_audit.json",
+  "certified_progress_since_variance_dissipation": {
+    "new_declarations": 59,
+    "new_modules": 6,
+    "cumulative_declarations": 7381,
+    "all_twelve_clay_obligations": "open"
+  },
+  "uniform_upper_target": {
+    "quantity": "farCost(u,e)=sum_(d outside near(e)) |exp(Delta_e Delta_d log g(u))-1|",
+    "needed": "A bound R independent of cutoff and spatial volume along the same justified physical trajectory, for the chosen source/variation construction, or a valid weighted exceptional-input substitute.",
+    "proved_nearby_part": "card(near(e))<=16 and sum_(d in near(e))|G_ed|<=16*D; for beta*norm(q_d-1)<=1, D=(exp(4)-1)^2.",
+    "attempt_global_Cauchy_Schwarz": {
+      "premise": "Use the already proved actual-row bound |G_ed|<=D on every distant link.",
+      "derived_on_paper": "farCost(u,e)<=card(univ \\ near(e))*D <= 3*V*D, where V is the number of spatial vertices.",
+      "failure": "The resulting upper bound grows with volume. This failure of the bound does not prove that the actual farCost grows or that uniform control is impossible."
+    },
+    "attempt_ground_equation": {
+      "identity": "Z(u)=lambda*g(u)/spatialWeight(u). For disjoint affected plaquettes, G_ed+1=Z(u)Z(R_e R_d u)/(Z(R_e u)Z(R_d u))=g(u)g(R_e R_d u)/(g(R_e u)g(R_d u)).",
+      "failure": "Substitution gives the already proved mixed-ground identity but supplies no sign, spatial decay or summable estimate. Treating the four ground factors as independent would discard the quantity to be bounded."
+    }
+  },
+  "uniform_lower_target": {
+    "quantity": "Var_pi(P^k f) <= C_obs * sum_(j<k) sum_i a_i^2 E_i(P^(j+1) f)",
+    "needed": "Adequate variations and uniform control of C_obs*kappa on a fixed physical slab, for all required gauge-invariant observables. With the proved upper estimate, the contraction factor is C_obs*kappa/(1+C_obs*kappa).",
+    "coverage_issue": "One arbitrary rotation at each link is not an established observability family; the existing proofs do not supply the lower inequality.",
+    "attempt_existing_finite_cutoff_gap": {
+      "proved_ratio_cap": "q(n,beta)=1-exp(-24*beta*V).",
+      "failure": "Using this finite-cutoff gap imports its degenerating constants. It cannot be reported as a uniform physical-slab closure.",
+      "illustrative_path_on_paper": "Set beta=log m, spatial period n=m, k=m and temporal spacing a=1/m, m>=2. Then V=m^3 and delta=exp(-24*log(m)*m^3)<=m^(-2). Bernoulli gives 1-2/m <= (1-delta)^(2*m) <= 1, so this variance contraction upper bound tends to 1 over the fixed physical slab k*a=1.",
+      "scope_limit": "This is a diagnostic for the existing bound, not an asserted physical coupling trajectory, not a lower bound on the actual transfer norm, and not evidence that the actual physical gap vanishes."
+    }
+  },
+  "primary_source_check": [
+    {
+      "url": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+      "scope": "Official page continues to list the full Yang-Mills mass-gap problem as unsolved; no theorem is imported."
+    },
+    {
+      "url": "https://arxiv.org/abs/2204.12737",
+      "title": "A stochastic analysis approach to lattice Yang--Mills at strong coupling",
+      "examined": "Abstract and explicit coupling restriction.",
+      "scope": "The SU(N) functional inequalities are stated for |beta|<1/(16(d-1)). This does not supply the required beta(a)->infinity squared-ground-law coercivity."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.35286",
+      "title": "Log-Sobolev inequality for 2D SU(N) lattice gauge theory at all couplings",
+      "examined": "Abstract and dimensional/coupling scope.",
+      "scope": "The stated volume-uniform result is for two-dimensional Wilson measure at fixed beta, with a beta-dependent constant. No transfer to the present four-dimensional theory or its squared-ground law is established."
+    }
+  ],
+  "claim_status": "No uniform distant-ground estimate, physical-slab coercivity, continuum limit or mass-gap proof was obtained. All prior conditional premises remain explicitly open."
+}

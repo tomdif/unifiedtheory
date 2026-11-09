@@ -1,0 +1,18 @@
+import UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget
+import UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction
+
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.response_zero
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.response_oscillation_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.supported_total_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.plaquette_total_le
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.slab_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.explicit_slab_contraction
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarBudget.coercivity_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.logarithmic_fourth_bound
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.coefficient_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.actual_logarithmic_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.standard_budget
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.standard_rate_lower
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.no_uniform_cap
+#print axioms UnifiedTheory.Clay.YangMills.WilsonDirectHaarObstruction.no_eventual_cap

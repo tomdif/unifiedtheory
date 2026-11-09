@@ -1,0 +1,74 @@
+/- Incremental audit after the source-validated 639-declaration particle audit. -/
+import UnifiedTheory.Audit.KFCausalTensorEnergyEstimate
+import UnifiedTheory.Audit.KFCausalEnergyCoreFloor
+import UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor
+import UnifiedTheory.Audit.KFCausalParticleEnergyGap
+import UnifiedTheory.Audit.KFCausalFormInvolution
+import UnifiedTheory.Audit.KFCausalTensorExchange
+import UnifiedTheory.Audit.KFCausalTwoBosonFormBridge
+import UnifiedTheory.Audit.KFCausalTwoBosonRestriction
+import UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap
+import UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction
+
+#print axioms UnifiedTheory.Audit.KFCausalTensorEnergyEstimate.norm_sum_tmul
+#print axioms UnifiedTheory.Audit.KFCausalTensorEnergyEstimate.finite_right_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorEnergyEstimate.right_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorEnergyEstimate.left_lower
+#print axioms UnifiedTheory.Audit.KFCausalEnergyCoreFloor.closure_lower
+#print axioms UnifiedTheory.Audit.KFCausalEnergyCoreFloor.form_lower
+#print axioms UnifiedTheory.Audit.KFCausalEnergyCoreFloor.hamiltonian_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.LowerBound
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.domainEnergy_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.core_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.tensor_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.tensor_form_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.boson_core_lower
+#print axioms UnifiedTheory.Audit.KFCausalTensorSumEnergyFloor.boson_lower
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.nonempty_lower
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.sector_lower
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.component_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.weighted_summable
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.number_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.vacuum_gap
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.vacuumCoefficient
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.zero_energy_kernel
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.orthogonal_vacuum_iff
+#print axioms UnifiedTheory.Audit.KFCausalParticleEnergyGap.orthogonal_energy_gap
+#print axioms UnifiedTheory.Audit.KFCausalFormInvolution.transform
+#print axioms UnifiedTheory.Audit.KFCausalFormInvolution.embedding_transform
+#print axioms UnifiedTheory.Audit.KFCausalFormInvolution.output_transform
+#print axioms UnifiedTheory.Audit.KFCausalFormInvolution.inner_involution
+#print axioms UnifiedTheory.Audit.KFCausalFormInvolution.hamiltonian_graph
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.flip
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.flip_include
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.flip_pure
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.flip_flip
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.energySwap
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.energySwap_involutive
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.output_exchange
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.energy_graph_exchange
+#print axioms UnifiedTheory.Audit.KFCausalTensorExchange.hamiltonian_exchange
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.include_graph
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.output_symmetrize
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.project_graph
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.lift
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.project
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.output_fixed
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonFormBridge.hamiltonian_inclusion
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonRestriction.GraphIdentification
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonRestriction.graph_iff
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonRestriction.DomainIdentification
+#print axioms UnifiedTheory.Audit.KFCausalTwoBosonRestriction.domain_iff
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.two_boson_graph_identification
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.two_boson_domain_identification
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.original_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.sector_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.two_boson_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.number_energy_lower
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.excitation_energy_gap
+#print axioms UnifiedTheory.Audit.KFCausalInteractingParticleEnergyGap.vacuum_kernel_unique
+#print axioms UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction.family
+#print axioms UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction.family_lower
+#print axioms UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction.Gapped
+#print axioms UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction.every_coupling_gapped
+#print axioms UnifiedTheory.Audit.KFCausalGappedIdentificationObstruction.watson_gapped_countermodel

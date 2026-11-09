@@ -1,0 +1,296 @@
+{
+  "checks": [
+    {
+      "command": [
+        "lake",
+        "--rehash",
+        "build",
+        "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform"
+      ],
+      "exit_code": 0,
+      "log": "/var/folders/4y/j74qpf6s40540trhptstlxt40000gn/T/unifiedtheory-joint-hermite-fourier-audit-p54fpti1/0.log",
+      "log_sha256": "eec0e823be97152634bcd6ab9252264d244f31e5b13f8425b49b8e0d96d0998c"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "scripts/CheckJointHermiteFourier.lean"
+      ],
+      "exit_code": 0,
+      "log": "/var/folders/4y/j74qpf6s40540trhptstlxt40000gn/T/unifiedtheory-joint-hermite-fourier-audit-p54fpti1/1.log",
+      "log_sha256": "b6aefdb109c004371c3e27fc72990a35b84b96e7eee40681ffb5072a3bac5154"
+    }
+  ],
+  "audited_declarations": {
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.column_total": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.partialTransform": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.partialTransform_column": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.coefficient_inner": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.partialTransform_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.partialTransform_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.product_total": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.productBasis": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalProductHilbertExpansion.product_orthonormal": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.lineIsometry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.chargedBasis": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.planeBasis_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.chargedBasis_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.charged_expansion": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalHermiteProductBasis.mapBasis_apply": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.flow_preserves": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.assemble_flow": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.mixed_action": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.productAction_eq_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.physicalCoordinates": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalChargedSpectatorCoordinates.physical_action": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.transform": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.neutralFourier_product": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.transform_packet": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.inverse_single": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.reconstruction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.chargeMatrix_integral": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.coefficientAction_series": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.charge_intertwining": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.physical_charge_series": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.zero_charge_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.inverse_charge_intertwining": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.charge_graph_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.charge_domain_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.zero_projection_integral": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform.matchedTransform": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "source_sha256": {
+    "UnifiedTheory/Audit/KFCausalChargedSpectatorCoordinates.lean": "12dad8d22362f42184d52b0ab8414ba913c7708fd88d33d23bd73e19ad0d36d9",
+    "UnifiedTheory/Audit/KFCausalComplexClockChart.lean": "9cfced6b09e271dee4690d6ccab6822735cb0e4ea6455bc70a0f532581af7826",
+    "UnifiedTheory/Audit/KFCausalComplexClockCoercivity.lean": "81c7eefd2550095ccfc212e1bb0b919504dede4ec362ee7b4e8e679280a9ed83",
+    "UnifiedTheory/Audit/KFCausalComplexClockImage.lean": "b4398c9f0979c6489a0023d0f2516dbdd12ad19f0ba188cc1276aeef08a7578e",
+    "UnifiedTheory/Audit/KFCausalComplexClockInverse.lean": "b9c491e4e2e837622545cd4cb1556eb72dfda3c1e1fa182cb370ec20afe693ce",
+    "UnifiedTheory/Audit/KFCausalComplexClockWeights.lean": "f837a3b0f9dc309f10f2c83bc46d86a83ae15fb88eec6b976988ac4e8cafa6c0",
+    "UnifiedTheory/Audit/KFCausalComplexPhaseWinding.lean": "5ba56d6f5dd653e66815d4a6cb198ceb80f282899248bdf3c50a6e2532c50328",
+    "UnifiedTheory/Audit/KFCausalConfigurationTestSpace.lean": "826bcd7f782cd2b60c845af08a4764ae9274f3d46e7e384cb20274c08778dbb7",
+    "UnifiedTheory/Audit/KFCausalConfigurationTranslation.lean": "c3f07847c948669bdaa9ce505942755de17e9554be0737bcf67b69689b79ad94",
+    "UnifiedTheory/Audit/KFCausalCoupledCoordinateHomeomorph.lean": "a8973bad0eec70cd3c1391e688a0797c6aad9b06756ce8673ffe5f943dc30a82",
+    "UnifiedTheory/Audit/KFCausalCoupledDampedGaussian.lean": "43d5d9a57db937da54950cfc6db8fcb27197e3bb20a379dad38bbf8d98dba31c",
+    "UnifiedTheory/Audit/KFCausalCoupledGaussianObstruction.lean": "0036a03e66d8a919784b88f51034a8792abb2f1d4ff25ab4002862c2814038fb",
+    "UnifiedTheory/Audit/KFCausalCoupledLongitudinalFlow.lean": "c1c957a02bb33b7434a5a6bf4881c154e960602cbb862ffcf3149d50b0c4933e",
+    "UnifiedTheory/Audit/KFCausalDampedGaussianStrip.lean": "2eb64bd5d8a1e1486997c9b854212c2342fb0ebcc52bc89b21105f9a057e3e1b",
+    "UnifiedTheory/Audit/KFCausalDenseUnitaryExtension.lean": "d46ea952ac035a6fb4f1b3d65a170425eae05c7283287ffd2b7b669359fd4ebe",
+    "UnifiedTheory/Audit/KFCausalEuclideanConfiguration.lean": "db9f0bff2f490a68867352e25d00502caab07b4fada5171a181aba66f87c4a83",
+    "UnifiedTheory/Audit/KFCausalEuclideanFourierUniqueness.lean": "f77fd337292ac537055ae346f3384f4cefa1db15162911f49309abdaae7d2188",
+    "UnifiedTheory/Audit/KFCausalEuclideanProductCoordinates.lean": "88aa7d8d2c6a2d4372b6ca710e80649325af70c97963b4bb2c7e662ea2df9dc8",
+    "UnifiedTheory/Audit/KFCausalEuclideanTensorDensity.lean": "421cb085e89f1984966938760da369eb5f15b794bdd64072a55833fbc4d0ab39",
+    "UnifiedTheory/Audit/KFCausalEuclideanTensorUnitary.lean": "3efbda1b075ddda3f7232ed8b91c0260a1b90b89b8c93adb45c5d6926c931d5c",
+    "UnifiedTheory/Audit/KFCausalFieldCoefficientTrials.lean": "faf9291f0c03691f175420fae7d8f231416028c1e591d0def240f697c4a9bcb3",
+    "UnifiedTheory/Audit/KFCausalFourierStripDecay.lean": "f587bfeb45ab21c1117be58a335878ebe583d2577066038955582a8dcf166da3",
+    "UnifiedTheory/Audit/KFCausalFourierUniqueness.lean": "29bb4bce91b943c7005c34091474fae7b03ec2a810948903011315f900088a30",
+    "UnifiedTheory/Audit/KFCausalGaussianContourShift.lean": "e3fc8d261f5c54072087e532ae8422c904c0166f6495d5e4eed0e8fbaef802f4",
+    "UnifiedTheory/Audit/KFCausalGaussianPolynomialTotality.lean": "29fbefe5866a145cd5dd69fe3539ffe9de9aa1a57eba5fa50f16b4ea07e9787d",
+    "UnifiedTheory/Audit/KFCausalGaussianQuadraticFourier.lean": "7de9da77977c7b218884af1f85e79a86c240c47efb276258dc4819185ab964c5",
+    "UnifiedTheory/Audit/KFCausalGaussianSliceDomain.lean": "62c3a7a5c46f009909c6b130b2ee7d49089be9bec9b7c99a62c88195cbca805b",
+    "UnifiedTheory/Audit/KFCausalHaarConjugation.lean": "938c0b4a4270f729696e5c7d588e19b00132fecbf591d36f7a213579492e8202",
+    "UnifiedTheory/Audit/KFCausalHermiteHilbertBasis.lean": "f48f914dd8b7cde86da7c41f18ae58874c3ff7c7b3d2537ba61f026487056849",
+    "UnifiedTheory/Audit/KFCausalHermiteL2Completeness.lean": "36e7f5702361b22f92b09a62831edad6c95f498235e0859e64cd2003916673c6",
+    "UnifiedTheory/Audit/KFCausalHermiteOscillatorFunctions.lean": "9f1f0b0cfdd9569a1d4b25768d91e0369b2d2bb123e8bad43bad9946bbda9d4d",
+    "UnifiedTheory/Audit/KFCausalHermiteOscillatorPolynomial.lean": "b1ffc49b5a89ea65f1f87ebbb875cfb85e4b9f980340bf43c8c0c12d82e31da9",
+    "UnifiedTheory/Audit/KFCausalHermitePolynomials.lean": "d1723cf78762ac6d559fab7004ecb4d9533db77ed3c32ae859c50b3033bbdf84",
+    "UnifiedTheory/Audit/KFCausalHermiteProductBasis.lean": "1710ea7e27cbbc8d56274cb4f4132e625ac8cd6458a3da4956b3021352040704",
+    "UnifiedTheory/Audit/KFCausalJointHermiteFourierTransform.lean": "88371a5332be7aa7c52caf35cd28e2c20682b4a3e8c5e0cbd7668c2bd14c0ec5",
+    "UnifiedTheory/Audit/KFCausalL2FourierIntegral.lean": "bedb6d35da3db09e0b01ce18ab4984a21cbfc8e14a18cbcb4c2441375bf44543",
+    "UnifiedTheory/Audit/KFCausalL2TensorEmbedding.lean": "9d2a27435a03961edb8c1aa1c9b44d8ea675efe3bf30ead1aa69d84a8c1519e8",
+    "UnifiedTheory/Audit/KFCausalLocalStripContour.lean": "d73a58bc16cb8f6e9e7391c17694760afa4c7d5e6f043cb00d709b4035788e21",
+    "UnifiedTheory/Audit/KFCausalLpPhaseTranslation.lean": "8dd72b32f4aca179d671961b86c47273a0d6d3cc0cdcf0eef0d9a659b48174a8",
+    "UnifiedTheory/Audit/KFCausalMeasureUnitaryPullback.lean": "4867f8d77e8da55a17b4c60770f3b2916b0b63cf9ecc161a7441bd465019ef67",
+    "UnifiedTheory/Audit/KFCausalMixedCircleAction.lean": "09b123bc51e42096b61be8877f4c8e59c237dadb4e81e4c6aeb97cad37814300",
+    "UnifiedTheory/Audit/KFCausalNeutralHermiteBasis.lean": "3f7a1ed7f7e0477052eb96bcf1340fae236b84c38c0fb36dd291142180aedf14",
+    "UnifiedTheory/Audit/KFCausalNormalizedChargeFlow.lean": "ef80e802e2084a3caa684cf0a1ff177921814ef8c4e40ab4fde2911cf3d20dfe",
+    "UnifiedTheory/Audit/KFCausalPairedModeCoordinates.lean": "a51f37591b8b7fd890089866faba1aa86ff46c59f78e6e90e2fe43790293dbaa",
+    "UnifiedTheory/Audit/KFCausalPairedRotation.lean": "82eedeaeaa3cb5739f9bda233b81a6d9435c49751867fcdaef4451ca2d9e89d4",
+    "UnifiedTheory/Audit/KFCausalPartialFourier.lean": "cd0220bb87adbeff93aa662f7fe86bc1ff6a7c9a5559be22f4fb34806893a73e",
+    "UnifiedTheory/Audit/KFCausalPeriodicUnitaryMean.lean": "af24c2dc6e4aa0ea48b5b9b0d5c0da79d314aaaa72df4b2689e025efa755f39e",
+    "UnifiedTheory/Audit/KFCausalPhysicalCircleAction.lean": "4cc16bc00a55f8eff087ac57f066da1f38013c429c07bb1820dcc63ca1f08fa6",
+    "UnifiedTheory/Audit/KFCausalPhysicalMixedCoordinates.lean": "db457507f3b0746055bc9796e35047dfac14ba09d8d318664d687a025c68d6d2",
+    "UnifiedTheory/Audit/KFCausalPolynomialGaussianIntegrals.lean": "2f6807a730de83ab704b74082e54fd2044360a69b70b014f57c3a8a545d1f61e",
+    "UnifiedTheory/Audit/KFCausalProductHilbertExpansion.lean": "9cf857961ce66b8d7de68605da0f6c21b8d4654663ae6aa4f78bf72faadc80b7",
+    "UnifiedTheory/Audit/KFCausalProductPhaseTranslation.lean": "6fb0c19a179d5734b3ad3f7795af7a2c970187a15ecc5d2ad034011732790ecd",
+    "UnifiedTheory/Audit/KFCausalRegularizedLongitudinalChart.lean": "152bf170505f4fce2327c91e620a11641906493b4befbc172430ac9fac02db94",
+    "UnifiedTheory/Audit/KFCausalStandingChargeOperator.lean": "39472d5f9983e95910d096f6c542df317d9a17405322632f8b740412a6f93d63",
+    "UnifiedTheory/Audit/KFCausalStrongUnitaryContinuity.lean": "124844cb05fcf8c979acfa83dfd67ff94947f35afb6e9f2fa6b760039b67e4a2",
+    "UnifiedTheory/Audit/KFCausalStrongUnitaryGenerator.lean": "cee45738cadd42e4e5f80777e94c3fccaf67c34e59c0403f903facf1c979ac35",
+    "UnifiedTheory/Audit/KFCausalTransverseDerivativeScaling.lean": "67f4f44f32f52286340047f41edea304cf5053b67a2e2742aa5b6582ef1bd9b3",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationFlow.lean": "ad1f61e4d562d0079db177749941d6db76dae0c9e0c58e86fec415301d3440f8",
+    "UnifiedTheory/Audit/KFCausalTransverseDilationPullback.lean": "74dd50e99a22d4e13e459e4b1977c58bf2a545bb2fa7394e7058ab6813914944",
+    "UnifiedTheory/Audit/KFCausalUnitModulusMultiplier.lean": "ce5ff7c53a5a1bcf9720fb99d740977fddb5498833141f5110c2cfb525b9a2e7",
+    "UnifiedTheory/Audit/KFCausalUnitaryMomentumEvolution.lean": "11f2ccda36bb2ccb78624ce573993d7c8439ba1f89513dfdd9dce7efc310f68c",
+    "UnifiedTheory/Audit/KFCausalUnitaryMomentumSelfAdjoint.lean": "d6f55721c23aea6b926268e9e362a48eff71bbc6b828b86b7038be8b1d055321",
+    "UnifiedTheory/Audit/KFCausalUnitaryOrbitAverage.lean": "8c93164f32f05eab41dd4b6f1c9383e854539fa5bf40f4573faf5b853c086132",
+    "UnifiedTheory/Audit/KFCausalUnitaryWeakGenerator.lean": "ca190c8e7bc67fb7b0d1998539db32da83121624bcce4b113bf0e749a1c3d78f",
+    "UnifiedTheory/Audit/KFCausalWeightedConfigurationTests.lean": "d0a26cf004e3d2feb09aadef6c917b9eb260c71d1cab4cdbc76b0d55c173a99e",
+    "UnifiedTheory/Audit/KFCausalWeightedLpRepresentative.lean": "cd86eac66b01f6c4c7de3bd6c3113ffb3161cfbfccfa2ce67d836b8cb33bba0b",
+    "UnifiedTheory/Audit/KFCausalWeightedTensorRepresentative.lean": "a0eea12133fad64d5e24ec387f6ac9d269e3db3d4a95b4d6483e4ce8a85ebaa4",
+    "scripts/CheckJointHermiteFourier.lean": "9e85597f0e64abb05e0863e676bee004a0695caa28fe19dd84ba01e94e698803",
+    "scripts/joint_hermite_fourier_audit.py": "56bb48554a84bcdfded504afb364982797f26e07ce4b7477e6097bedb07a0ba6",
+    "scripts/free_balanced_hamiltonian_audit.py": "de7d5937e78f848816bdd28a8bc3ff01801f6e8743da210a157f7bb68d0644bc",
+    "UnifiedTheory.lean": "ff0877f43d9d5db20fb84a3f7ea657d7e71e0c9723f35a1be3e58012b54abb2b",
+    "lakefile.toml": "54419a1fdcd7e61f2bcd5c8dcd8c2269c7c61aa05240eb13027183b9c4ab9ae8",
+    "lake-manifest.json": "4201230dd8432c335849b1cd31666f52732dde8d1d2eeb4f2456ff0fceb3a627",
+    "lean-toolchain": "db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028"
+  },
+  "local_lean_dependency_count": 67,
+  "root_imports_present": [
+    "UnifiedTheory.Audit.KFCausalJointHermiteFourierTransform"
+  ],
+  "root_build_checked": false,
+  "uses_temporary_dependency_overlay": false,
+  "scope": "A derived complete four-dimensional Cartesian Hermite basis and a surjective physical transform into l2(N^4; L2(clock, neutral frequency)), with exact norm-convergent reconstruction. The actual physical circle action splits into charged and spectator factors and is intertwined with an explicit convergent Hermite matrix series. The entire maximal standing-charge graph, its domain, fixed sector and zero projection are identified in this representation. No diagonal occupation-charge law, maximal spectral Hamiltonian domain, fiber energy multiplicity, or Watson/R1 physical identification is claimed."
+}
