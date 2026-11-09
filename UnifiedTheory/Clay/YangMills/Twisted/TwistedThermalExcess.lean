@@ -11,6 +11,12 @@ excess at temperature `1/t`, so `Z(t) = 1 + P(t)`.
 * `log_z_telescope`: `f 0 - f n / 2^n = Σ_{k<n} (2 f k - f (k+1)) / 2^(k+1)`. With `f k = log Z(2^k t)` and the limit, the
   thermal free energy `log(1 + P(t))` equals `Σ_k 2^{-(k+1)} log Kper(2^k t)`, an exact sum of measured quantities.
 
+* `flux_projection_le` and `kper_flux_split`: split `Z = Σ_e Z_e` over the 8 electric-flux sectors `e ∈ (ℤ₂)³`, with
+  `Z_e = 2⁻³ Σ_m (-1)^{e·m} Z(m)` over spatial twists `m`. Since every `Z(m) ≥ 0`, each `Z_e ≤ Z_0` (elementary), so
+  `S = Σ_{e≠0} Z_e/Z_0 ∈ [0, 7]` (using `Z_e ≥ 0`, sector positivity, cited). Then
+  `Kper = K₀ (1+S(t))²/(1+S(2t))` lies in `[K₀/8, 64 K₀]`, where `K₀` is the zero-flux ratio. So `K̄` is a statement
+  about the zero-flux spectrum only; the flux sectors cost at most a factor 64.
+
 The identification with lattice traces is by hand, as in the other Twisted files. The boundedness of `P` itself is NOT
 proved here. -/
 import Mathlib
@@ -51,5 +57,24 @@ theorem log_z_telescope (f : ℕ → ℝ) (n : ℕ) :
     rw [Finset.sum_range_succ, ← ih]
     field_simp
     ring
+
+/-- A signed sum of nonnegative terms is at most the plain sum (the flux projection `Z_e ≤ Z_0`). -/
+theorem flux_projection_le {ι : Type*} (s : Finset ι) (Z ε : ι → ℝ) (hZ : ∀ m ∈ s, 0 ≤ Z m)
+    (hε : ∀ m ∈ s, ε m = 1 ∨ ε m = -1) : ∑ m ∈ s, ε m * Z m ≤ ∑ m ∈ s, Z m := by
+  apply Finset.sum_le_sum; intro m hm
+  rcases hε m hm with h | h <;> rw [h] <;> nlinarith [hZ m hm]
+
+/-- Flux split: `Kper = K₀ (1+a)²/(1+b)` with `0 ≤ a, b ≤ s` lies in `[K₀/(1+s), K₀ (1+s)²]`. -/
+theorem kper_flux_split {K₀ a b s : ℝ} (hK : 0 ≤ K₀) (ha : 0 ≤ a) (has : a ≤ s) (hb : 0 ≤ b) (hbs : b ≤ s) :
+    K₀ / (1 + s) ≤ K₀ * (1 + a) ^ 2 / (1 + b) ∧ K₀ * (1 + a) ^ 2 / (1 + b) ≤ K₀ * (1 + s) ^ 2 := by
+  have hb1 : 0 < 1 + b := by linarith
+  have hs1 : 0 < 1 + s := by linarith
+  have h1 : 1 ≤ (1 + a) ^ 2 := by nlinarith
+  have h2 : (1 + a) ^ 2 ≤ (1 + s) ^ 2 := by nlinarith
+  constructor
+  · rw [div_le_div_iff₀ hs1 hb1]
+    nlinarith [mul_le_mul_of_nonneg_left h1 hK, mul_nonneg hK (sub_nonneg.mpr hbs)]
+  · rw [div_le_iff₀ hb1]
+    nlinarith [mul_le_mul_of_nonneg_left h2 hK, mul_nonneg hK (sq_nonneg (1 + s)), mul_nonneg (mul_nonneg hK (sq_nonneg (1 + s))) hb]
 
 end UnifiedTheory.Clay.YangMills.Twisted.TwistedThermalExcess
